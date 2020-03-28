@@ -87,8 +87,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     this.hideLineNumbers = false;
     this.focused = false;
     this.__libPath =
-      decodeURIComponent(import.meta.url) +
-      "/../../../monaco-editor/min/vs";
+      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
     import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {

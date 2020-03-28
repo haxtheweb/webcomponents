@@ -7,12 +7,10 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
-import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-container.js";
 import "../lrnsys-comment.js";
 
 /**
@@ -98,16 +96,16 @@ class LrnsysCommentList extends PolymerElement {
           hover-class="blue white-text"
           label="Add Comment"
         ></lrnsys-button>
-        <dropdown-select
+        <simple-fields-container
           id="filtertype"
           label="Filter Comments by"
           value="attributes.body"
         >
-          <paper-item value="attributes.body">Body</paper-item>
-          <paper-item value="relationships.author.data.name"
-            >User Name</paper-item
-          >
-        </dropdown-select>
+          <select>
+            <option value="attributes.body">Body</option>
+            <option value="relationships.author.data.name">User Name</option>
+          </select>
+        </simple-fields-container>
         <paper-input
           label="Filter Text"
           id="filtercomments"

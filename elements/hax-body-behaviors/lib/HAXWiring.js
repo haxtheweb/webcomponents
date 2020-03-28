@@ -147,6 +147,8 @@
  * objects that contain focus which may cause issues when doing a pure clone as the
  * reference is being garbage collected on save (see grid-plate).
  */
+import { SimpleFields } from "@lrnwebcomponents/simple-fields/simple-fields.js";
+
 /**
  * Object to validate HAX schema. Can be used in and out of element contexts
  */
@@ -558,7 +560,7 @@ export class HAXWiring {
         type: "object",
         properties: {}
       };
-      schema.properties = target._getHaxJSONSchemaProperty(settings, target);
+      schema.properties = SimpleFields.fieldsToSchema(settings);
       // support post processing of schema in order to allow for really
       // custom implementations that are highly dynamic in nature
       // post process hook needs to see if there's a class overriding this
@@ -590,541 +592,25 @@ export class HAXWiring {
      * Internal helper for getHaxJSONSchema to buiild the properties object
      * correctly with support for recursive nesting thx to objects / arrays.
      */
-    this._getHaxJSONSchemaProperty = (settings, target) => {
-      var props = {};
-      for (var value in settings) {
-        if (settings.hasOwnProperty(value)) {
-          if (typeof settings[value].property !== typeof undefined) {
-            props[settings[value].property] = {
-              title: settings[value].title,
-              type: this.getHaxJSONSchemaType(settings[value].inputMethod)
-            };
-            if (typeof target[settings[value].property] !== typeof undefined) {
-              props[settings[value].property].value =
-                target[settings[value].property];
-            }
-            if (settings[value].validationType == "url") {
-              props[settings[value].property].format = "uri";
-            }
-            if (settings[value].inputMethod == "datepicker") {
-              props[settings[value].property].format = "date-time";
-            }
-            if (settings[value].validation != ".*") {
-              props[settings[value].property].pattern =
-                settings[value].validation;
-            }
-            switch (settings[value].inputMethod) {
-              case "number":
-                props[settings[value].property].component = {
-                  name: "paper-input",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    type: "number"
-                  }
-                };
-                break;
-              case "select":
-                let options = [];
-                for (var option in settings[value].options) {
-                  let item = [
-                    {
-                      alt: settings[value].options[option],
-                      value: option
-                    }
-                  ];
-                  options.push(item);
-                }
-                props[settings[value].property].component = {
-                  name: "simple-picker",
-                  valueProperty: "value",
-                  properties: {
-                    allowNull: settings[value].allowNull,
-                    blockLabel: true,
-                    required: settings[value].required,
-                    options: options,
-                    disabled: settings[value].disabled
-                  }
-                };
-                break;
-              case "textarea":
-                props[settings[value].property].component = {
-                  name: "paper-textarea",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    //"auto-validate": "auto-validate",
-                    "char-counter": "char-counter"
-                  }
-                };
-                break;
-              case "code-editor":
-                props[settings[value].property].component = {
-                  name: "code-editor",
-                  valueProperty: "value",
-                  properties: {
-                    editorValue: settings[value].value,
-                    title: settings[value].title,
-                    theme: "vs",
-                    mode: "html",
-                    className: "hax-code-editor"
-                  }
-                };
-                break;
-              case "array":
-                props[settings[value].property].component = {
-                  valueProperty: "value"
-                };
-                props[settings[value].property].items = {
-                  type: "object",
-                  properties: this._getHaxJSONSchemaProperty(
-                    settings[value].properties,
-                    target
-                  ),
-                  itemLabel: settings[value].itemLabel
-                };
-                props[settings[value].property].type = "array";
-                break;
-              case "fieldset":
-                props[settings[value].property].component = {
-                  valueProperty: "value"
-                };
-                props[settings[value].property].items = {
-                  type: "object",
-                  properties: this._getHaxJSONSchemaProperty(
-                    settings[value].properties,
-                    target
-                  )
-                };
-                props[settings[value].property].type = "fieldset";
-                break;
-              case "tabs":
-                props[settings[value].property].component = {
-                  valueProperty: "value"
-                };
-                settings[value].properties.map(tab => {
-                  tab.inputMethod = "tab";
-                  return tab;
-                });
-                props[settings[value].property].items = {
-                  type: "object",
-                  properties: this._getHaxJSONSchemaProperty(
-                    settings[value].properties,
-                    target
-                  )
-                };
-                props[settings[value].property].type = "tabs";
-                break;
-              case "tab":
-                props[settings[value].property].property =
-                  settings[value].property;
-                props[settings[value].property].items = {
-                  type: "object",
-                  properties: this._getHaxJSONSchemaProperty(
-                    settings[value].properties,
-                    target
-                  ),
-                  label: settings[value].itemLabel
-                };
-                props[settings[value].property].type = "tabs";
-                break;
-              case "textfield":
-                props[settings[value].property].component = {
-                  name: "paper-input",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    "auto-validate": "auto-validate"
-                  }
-                };
-                break;
-              case "markup":
-                props[settings[value].property].component = {
-                  name: "marked-element",
-                  valueProperty: "markdown"
-                };
-                props[settings[value].property].slot = settings[value].value;
-                break;
-              case "alt":
-                props[settings[value].property].component = {
-                  name: "paper-input-flagged",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    "auto-validate": "auto-validate"
-                  }
-                };
-                break;
-              case "colorpicker":
-                props[settings[value].property].component = {
-                  name: "simple-colors-picker",
-                  valueProperty: "value",
-                  properties: {
-                    allowNull: settings[value].allowNull,
-                    blockLabel: true,
-                    required: settings[value].required,
-                    label: settings[value].title,
-                    disabled: settings[value].disabled
-                  }
-                };
-                break;
-              case "iconpicker":
-                props[settings[value].property].component = {
-                  name: "simple-icon-picker",
-                  valueProperty: "value",
-                  properties: {
-                    allowNull: settings[value].allowNull,
-                    blockLabel: true,
-                    required: settings[value].required,
-                    hideOptionLabels: true,
-                    label: settings[value].title,
-                    disabled: settings[value].disabled
-                  }
-                };
-                // support options array of icons to pick from
-                let opts =
-                  settings[value].options !== undefined &&
-                  settings[value].options !== null
-                    ? settings[value].options
-                    : [];
-                props[
-                  settings[value].property
-                ].component.properties.icons = opts;
-                break;
-              case "datepicker":
-                props[settings[value].property].component = {
-                  name: "paper-input",
-                  valueProperty: "date",
-                  properties: {
-                    type: "date",
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  }
-                };
-                break;
-              case "haxupload":
-                props[settings[value].property].component = {
-                  name: "hax-upload-field",
-                  valueProperty: "value",
-                  properties: {
-                    formDataName: "file-upload",
-                    disabled: settings[value].disabled,
-                    required: settings[value].required,
-                    noCamera: settings[value].noCamera,
-                    noVoiceRecord: settings[value].noVoiceRecord
-                  }
-                };
-                break;
-              case "slider":
-                props[settings[value].property].component = {
-                  name: "paper-slider",
-                  valueProperty: "immediateValue",
-                  properties: {
-                    pin: true,
-                    value: settings[value].value,
-                    required: settings[value].required,
-                    disabled: settings[value].disabled,
-                    min: settings[value].min,
-                    max: settings[value].max,
-                    step: settings[value].step
-                  }
-                };
-                break;
-            }
-            if (settings[value].hidden !== typeof undefined) {
-              props[settings[value].property].hidden = settings[value].hidden;
-            }
-            if (settings[value].description !== typeof undefined) {
-              props[settings[value].property].description =
-                settings[value].description;
-            }
-          } else if (typeof settings[value].attribute !== typeof undefined) {
-            props[settings[value].attribute] = {
-              title: settings[value].title,
-              type: target.getHaxJSONSchemaType(settings[value].inputMethod)
-            };
-            // special support for className, style, and lazy loading
-            if (settings[value].attribute === "class") {
-              props[settings[value].attribute].value = target.className;
-            } else if (settings[value].attribute === "style") {
-              props[settings[value].attribute].value = target.style.cssText;
-            } else if (settings[value].attribute === "loading") {
-              props[settings[value].attribute].value = "lazy";
-            } else if (
-              typeof target.attributes[settings[value].attribute] !==
-              typeof undefined
-            ) {
-              props[settings[value].attribute].value = target.getAttribute(
-                settings[value].attribute
-              );
-            }
-            // special validation on uri based attributes
-            if (value == "href" || value == "src") {
-              props[settings[value].attribute].format = "uri";
-            }
-            if (settings[value].validationType == "url") {
-              props[settings[value].attribute].format = "uri";
-            }
-            if (settings[value].inputMethod == "datepicker") {
-              props[settings[value].attribute].format = "date-time";
-            }
-            if (settings[value].validation != ".*") {
-              props[settings[value].attribute].pattern =
-                settings[value].validation;
-            }
-            switch (settings[value].inputMethod) {
-              case "number":
-                props[settings[value].attribute].component = {
-                  name: "paper-input",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    type: "number"
-                  }
-                };
-                break;
-              case "select":
-                let options = [];
-                for (var option in settings[value].options) {
-                  let item = [
-                    {
-                      alt: settings[value].options[option],
-                      value: option
-                    }
-                  ];
-                  options.push(item);
-                }
-                props[settings[value].attribute].component = {
-                  name: "simple-picker",
-                  valueProperty: "value",
-                  properties: {
-                    allowNull: settings[value].allowNull,
-                    blockLabel: true,
-                    required: settings[value].required,
-                    options: options,
-                    disabled: settings[value].disabled
-                  }
-                };
-                break;
-              case "textarea":
-                props[settings[value].attribute].component = {
-                  name: "paper-textarea",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    //"auto-validate": "auto-validate",
-                    "char-counter": "char-counter"
-                  }
-                };
-                break;
-              case "code-editor":
-                props[settings[value].attribute].component = {
-                  name: "code-editor",
-                  valueProperty: "value",
-                  properties: {
-                    editorValue: props[settings[value].attribute].value,
-                    title: settings[value].title,
-                    readOnly: false,
-                    theme: "vs",
-                    mode: "html",
-                    className: "hax-code-editor"
-                  }
-                };
-                break;
-              case "textfield":
-                props[settings[value].attribute].component = {
-                  name: "paper-input",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    "auto-validate": "auto-validate"
-                  }
-                };
-                break;
-              case "alt":
-                props[settings[value].attribute].component = {
-                  name: "paper-input-flagged",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  },
-                  attributes: {
-                    "auto-validate": "auto-validate"
-                  }
-                };
-                break;
-              case "colorpicker":
-                props[settings[value].attribute].component = {
-                  name: "simple-colors-picker",
-                  valueProperty: "value",
-                  properties: {
-                    required: settings[value].required,
-                    disabled: settings[value].disabled
-                  }
-                };
-                break;
-              case "haxupload":
-                props[settings[value].attribute].component = {
-                  name: "hax-upload-field",
-                  valueProperty: "value",
-                  properties: {
-                    formDataName: "file-upload",
-                    required: settings[value].required,
-                    disabled: settings[value].disabled,
-                    noCamera: settings[value].noCamera,
-                    noVoiceRecord: settings[value].noVoiceRecord
-                  }
-                };
-                break;
-              case "slider":
-                props[settings[value].attribute].component = {
-                  name: "paper-slider",
-                  valueProperty: "immediateValue",
-                  properties: {
-                    pin: true,
-                    value: settings[value].value,
-                    required: settings[value].required,
-                    disabled: settings[value].disabled,
-                    min: settings[value].min,
-                    max: settings[value].max,
-                    step: settings[value].step
-                  }
-                };
-                break;
-            }
-            if (settings[value].description !== typeof undefined) {
-              props[settings[value].attribute].description =
-                settings[value].description;
-            }
-          } else {
-            // @todo slot should support other editor types... maybe
-            props[settings[value].slot] = {
-              title: settings[value].title,
-              type: target.getHaxJSONSchemaType(settings[value].inputMethod),
-              value: "",
-              component: {
-                name: "code-editor",
-                valueProperty: "value",
-                properties: {
-                  editorValue: settings[value].value,
-                  title: settings[value].title,
-                  theme: "vs",
-                  mode: "html",
-                  className: "hax-code-editor"
-                }
-              }
-            };
-            var slot = "";
-            // test for slotted content values names is tricky
-            for (var i in target.childNodes) {
-              // this is crazy... you know that right
-              if (typeof target.childNodes[i] !== typeof undefined) {
-                if (target.childNodes[i].nodeType === 1) {
-                  // make sure slots that are named line up
-                  if (settings[value].slot === target.childNodes[i].slot) {
-                    slot += target.childNodes[i].innerHTML;
-                  }
-                } else if (
-                  target.childNodes[i].nodeType !== 1 &&
-                  typeof target.childNodes[i].textContent !==
-                    typeof undefined &&
-                  target.childNodes[i].textContent !== ""
-                ) {
-                  slot += target.childNodes[i].textContent;
-                }
-              }
-            }
-            // @todo verify this stuff actually works
-            props[
-              settings[value].slot
-            ].component.properties.editorValue = slot.trim();
-            if (settings[value].description !== typeof undefined) {
-              props[settings[value].slot].description =
-                settings[value].description;
-            }
-          }
-        }
-      }
-      return props;
+    this._getHaxJSONSchemaProperty = settings => {
+      return SimpleFields.fieldsToSchema(settings);
     };
     /**
      * Convert input method to schema type
      */
     this.getHaxJSONSchemaType = inputMethod => {
-      var methods = this.validHAXPropertyInputMethod();
-      if (methods.includes(inputMethod)) {
-        switch (inputMethod) {
-          case "flipboolean":
-          case "boolean":
-            return "boolean";
-            break;
-          case "number":
-          case "slider":
-            return "number";
-            break;
-          case "select":
-          case "textarea":
-          case "colorpicker":
-          case "iconpicker":
-          case "datepicker":
-          case "haxupload":
-          case "markup":
-          case "textfield":
-          case "alt":
-            return "string";
-            break;
-          case "array":
-            return "array";
-            break;
-          default:
-            return "string";
-            break;
-        }
-      }
+      var method =
+        SimpleFields.fieldsConversion.inputMethod[inputMethod] ||
+        SimpleFields.fieldsConversion;
+      return method && method.defaultSettings && method.defaultSettings.type
+        ? method.defaultSettings.type
+        : "string";
     };
     /**
      * List valid input methods.
      */
     this.validHAXPropertyInputMethod = () => {
-      var methods = [
-        "flipboolean",
-        "boolean",
-        "select",
-        "textfield",
-        "textarea",
-        "datepicker",
-        "haxupload",
-        "slider",
-        "markup",
-        "colorpicker",
-        "iconpicker",
-        "alt",
-        "number",
-        "code-editor",
-        "array"
-      ];
+      var methods = Object.keys(SimpleFields.fieldsConversion.inputMethod);
       return methods;
     };
     /**
@@ -1337,8 +823,8 @@ export const HAXElement = function(SuperClass) {
      * Internal helper for getHaxJSONSchema to buiild the properties object
      * correctly with support for recursive nesting thx to objects / arrays.
      */
-    _getHaxJSONSchemaProperty(settings, target) {
-      return this.HAXWiring._getHaxJSONSchemaProperty(settings, target);
+    _getHaxJSONSchemaProperty(settings) {
+      return SimpleFields.fieldsToSchema(settings);
     }
     /**
      * Convert input method to schedma type
@@ -1430,8 +916,8 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * Internal helper for getHaxJSONSchema to buiild the properties object
    * correctly with support for recursive nesting thx to objects / arrays.
    */
-  _getHaxJSONSchemaProperty: function(settings, target) {
-    return window.HAXWiring._getHaxJSONSchemaProperty(settings, target);
+  _getHaxJSONSchemaProperty: function(settings) {
+    return SimpleFields.fieldsToSchema(settings);
   },
   /**
    * Convert input method to schedma type

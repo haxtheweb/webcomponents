@@ -2,44 +2,20 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
-import "./lrndesign-gallery-details.js";
+import "@polymer/iron-image/iron-image.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "./lrndesign-gallery-zoom.js";
 
 /**
  * `lrndesign-gallery-carousel`
+ * An element that renders a collection of gallery items into a carousel or a single media item into a layout.
+ *
  * @customElement lrndesign-gallery-carousel
- * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
- *
- * @microcopy - language worth noting:```
- <lrndesign-gallery-carousel 
-  accent-color="grey"               //optional, the accent color from simple-colors; default is grey
-  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)
-  id="mygallery1"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load
-  sources="[]"                      //required, array of image sources
-  sizing="contain"                  //optional, "cover" for cropping (default) or "contain" for letterboxing
-  title="My Gallery">               //optional, the title of the gallery
-  Optional description of the gallery.
-</lrndesign-gallery-carousel>```
- * where `sources` array is:```
-[{
-  "alt": "IMAGE ALT TEXT",                          //required
-  "details": "TEXT ABOUT IMAGE HERE",               //optional 
-  "heading": "IMAGE HEADING HERE",                  //required, the image heading when in zoom mode
-  "id": "123"                                       //required, unique id  
-  "sizing": "contain",                              //optional, "cover" for cropping (default) or "contain" for letterboxing, default is parent's sizing
-  "large": "PATH/TO/LARGE/IMAGE/HERE.JPG",          //optional, larger image for zoom instead of src 
-  "src": "PATH/TO/FULL/IMAGE/HERE.JPG",             //required
-  "thumbnail": "PATH/TO/THUMBAIL/IMAGE/HERE.JPG",   //required
-  "tooltip": "IMAGE TOOLTIP HERE",                  //required, the tooltip for the image thumbnail
-  "title": "IMAGE TITLE HERE",                      //optional, the image title when viewed
-  "type": "image",                                  //required, "image", "video", "audio", etc.
-}]```
- *
-
- * @polymer
+ * @extends LrndesignGalleryBehaviors
  * @demo ./demo/index.html demo
+ *
  */
 class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   /**
@@ -48,21 +24,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   static get tag() {
     return "lrndesign-gallery-carousel";
   }
-
-  //get gallery behaviors
-  static get behaviors() {
-    return [LrndesignGalleryBehaviors];
-  }
-
-  // render function
-  static get template() {
-    return html`
-      <style is="custom-style" include="lrndesign-gallery-shared-styles">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           margin: 15px 0 0;
           padding: 0;
         }
-        :host #carouselitem {
+        #carouselitem {
           width: 100%;
           color: var(--lrndesign-gallery-color);
           background-color: var(--lrndesign-gallery-background-color);
@@ -91,21 +61,21 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           height: 400px;
           max-height: 400px;
         }
-        :host #carouselimage {
+        #carouselimage {
           position: relative;
         }
-        :host #carouselimage iron-image {
+        #carouselimage iron-image {
           width: 100%;
           height: 100%;
         }
-        :host #prevnextnav {
+        #prevnextnav {
           left: 0;
           top: 0;
           height: 100%;
           width: 100%;
           position: absolute;
         }
-        :host #prevnextnav paper-button {
+        #prevnextnav button {
           position: absolute;
           display: flex;
           align-items: center;
@@ -116,35 +86,55 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           height: 100%;
           opacity: 0;
           margin: 0;
+          border-width: 0;
           border-radius: 0;
           color: var(--lrndesign-gallery-color);
           background-color: var(--lrndesign-gallery-background-color);
-          --paper-button-ink-color: var(--lrndesign-gallery-background-color);
+          --button-ink-color: var(--lrndesign-gallery-background-color);
           background: var(--lrndesign-gallery-next-bg);
           transition: opacity 0.5s;
         }
-        :host #prevnextnav paper-button#carouselprev {
+        #prevnextnav button[hidden] {
+          display: none;
+        }
+        #prevnextnav button#carouselprev {
           left: 0;
           justify-content: flex-start;
           background: var(--lrndesign-gallery-prev-bg);
         }
-        :host #prevnextnav paper-button[item="-1"] {
+        #prevnextnav button[item="-1"] {
           display: none;
         }
-        :host #prevnextnav paper-button:focus,
-        :host #prevnextnav paper-button:hover {
+        #prevnextnav button:focus,
+        #prevnextnav button:hover {
+          outline: none;
           opacity: 0.8;
         }
-        :host #prevnextnav iron-icon {
+        #prevnextnav button[disabled]:focus,
+        #prevnextnav button[disabled]:hover {
+          cursor: not-allowed;
+          opacity: 0.1;
+        }
+        #prevnextnav button:focus iron-icon,
+        #prevnextnav button:hover iron-icon {
+          outline: 1px solid var(--lrndesign-gallery-color);
+        }
+        #prevnextnav iron-icon {
           margin: 10%;
         }
-        :host lrndesign-gallery-zoom {
-          left: 3px;
-          bottom: 0;
-          z-index: 2;
+        lrndesign-gallery-zoom {
+          width: 24px;
+          height: 24px;
+          left: 5px;
+          bottom: 5px;
           position: absolute;
         }
-        :host #details {
+        .zoombg,
+        .zoomicon {
+          top: 0;
+          left: 0;
+        }
+        #details {
           flex-grow: 1;
           flex-shrink: 1;
           overflow-y: auto;
@@ -154,7 +144,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           margin-top: -4px;
           border-top: 4px solid var(--lrndesign-gallery-focus-color);
         }
-        :host #details-inner {
+        #details-inner {
           height: 100%;
           display: flex;
           position: relative;
@@ -163,26 +153,32 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           align-items: stretch;
           align-content: stretch;
         }
-        :host #itemdetails,
-        :host #thumbnails {
+        #itemdetails,
+        #thumbnails {
           padding: 20px;
           flex-basis: 100%;
         }
-        :host #itemdetails {
+        #itemdetails {
           align-self: flex-start;
           flex-grow: 1;
           flex-shrink: 1;
           overflow-y: auto;
         }
-        :host #thumbnails {
+        #thumbnails {
           align-self: flex-end;
         }
-        :host .gallerythumb[disabled] {
+        /*TODO .gallerythumb[disabled] {
           @apply --lrndesign-gallery-thumbnail-image-selected;
-        }
-        :host .gallerythumb iron-image {
+        }*/
+        .gallerythumb,
+        .gallerythumb iron-image {
           width: 40px;
           height: 40px;
+          overflow: hidden;
+        }
+        .gallerythumb:hover,
+        .gallerythumb:focus {
+          outline: 1px solid var(--lrndesign-gallery-color);
         }
         :host([responsive-size="xs"]) .gallerythumb iron-image {
           display: none;
@@ -196,98 +192,107 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 50px;
           height: 50px;
         }
-        :host #itemtitle {
+        #itemtitle {
           margin-top: 0;
         }
-        :host .x-of-y {
+        .x-of-y {
           font-size: 85%;
           font-style: italic;
           text-align: right;
           padding: 0;
           margin: 0;
         }
-        :host #xystart,
-        :host #xyend {
+        #xystart,
+        #xyend {
           position: absolute;
           right: 20px;
           top: 20px;
         }
-      </style>
+      `
+    ];
+  }
+
+  // render function
+  render() {
+    return html`
       <article id="carousel">
-        <template is="dom-if" if="[[_isAttrSet(title)]]">
-          <h1 id="gallerytitle">[[title]]</h1>
-        </template>
-        <div id="gallerydescription"><slot></slot></div>
+        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">
+          ${this.galleryTitle}
+        </h1>
+        <div id="gallerydescription">
+          <slot></slot>
+        </div>
         <p class="sr-only">A carousel of items:</p>
         <div id="galleryscreen">
           <div
             id="carouselitem"
-            aspect-ratio$="[[aspectRatio]]"
-            dark$="[[dark]]"
-            extra-wide$="[[extraWide]]"
-            image-style$="[[__imageStyle]]"
-            item="[[selected]]"
-            responsive-size$="[[responsiveSize]]"
+            aspect-ratio="${this.aspectRatio}"
+            ?dark="${this.dark}"
+            ?extra-wide="${this.extraWide}"
+            image-style="${this.imageStyle}"
+            responsive-size="${this.responsiveSize}"
           >
-            <p id="xystart" class="sr-only" hidden$="[[_hideNav(items)]]">
-              Slide [[selected.xofy]] selected.
+            <p id="xystart" class="sr-only" ?hidden="${this.hideNav}">
+              Slide ${this.selected.xofy} selected.
             </p>
             <div id="carouselimage">
               <iron-image
-                alt$="[[selected.alt]]"
-                fade=""
-                id$="[[selected.id]]"
-                placeholder$="[[selected.thumbnail]]"
-                sizing$="[[selected.sizing]]"
-                src$="[[selected.src]]"
-                style$="[[__imageStyle]]"
+                alt="${this.selected.alt}"
+                fade
+                id="${this.selected.id}"
+                placeholder="${this.selected.thumbnail}"
+                sizing="${this.selected.sizing}"
+                src="${this.selected.src}"
+                style="${this.imageStyle}"
               >
               </iron-image>
               <lrndesign-gallery-zoom
-                details$="[[selected.details]]"
-                heading$="[[selected.heading]]"
+                details="${this.selected.details}"
+                heading="${this.selected.heading}"
                 id="galleryzoom"
-                item-id="[[selected.id]]"
-                src$="[[selected.large]]"
-                tooltip$="[[selected.tooltip]]"
-                zoom-alt$="[[selected.alt]]"
-                zoomed$="[[selected.zoom]]"
+                src="${this.selected.large}"
+                tooltip="${this.selected.tooltip}"
+                zoom-alt="${this.selected.alt}"
               >
-                <iron-icon
-                  icon="zoom-in"
-                  hidden$="[[!_isAttrSet(icon)]]"
-                ></iron-icon>
+                <div class="zoombg"></div>
+                <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
+              <simple-tooltip
+                for="galleryzoom"
+                position="right"
+                controls="zoomtpl"
+                >${this.selected.tooltip}</simple-tooltip
+              >
               <div id="prevnextnav">
-                <paper-button
+                <button
                   id="carouselprev"
-                  aria-controls$="[[__gallery.id]]"
+                  aria-controls="carousel"
                   aria-label="prev"
-                  hidden$="[[_hideNav(items)]]"
-                  index$="[[selected.prev]]"
-                  on-click="_onPrev"
-                  target$="[[__gallery]]"
+                  ?hidden="${this.hideNav}"
+                  ?disabled="${!this.selected || this.selected.prev < 0}"
+                  @click="${e =>
+                    this._itemChanged(this.selected ? this.selected.prev : 0)}"
                   tabindex="-1"
-                  title=""
                 >
+                  <span class="sr-only">Previous</span>
                   <iron-icon icon="chevron-left"></iron-icon>
-                </paper-button>
+                </button>
                 <simple-tooltip for="carouselprev" position="top"
                   >previous</simple-tooltip
                 >
-                <paper-button
+                <button
                   id="carouselnext"
-                  aria-controls$="[[__gallery.id]]"
+                  aria-controls="carousel"
                   aria-label="next"
-                  hidden$="[[_hideNav(items)]]"
-                  index$="[[selected.next]]"
-                  on-click="_onNext"
-                  target="[[__gallery]]"
+                  ?hidden="${this.hideNav}"
+                  ?disabled="${!this.selected || this.selected.next < 0}"
+                  @click="${e =>
+                    this._itemChanged(this.selected ? this.selected.next : 0)}"
                   tabindex="-1"
-                  title=""
                 >
+                  <span class="sr-only">Next</span>
                   <iron-icon icon="chevron-right"></iron-icon>
-                </paper-button>
+                </button>
                 <simple-tooltip for="carouselnext" position="top"
                   >next</simple-tooltip
                 >
@@ -296,55 +301,62 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             <div id="details" class="item-info">
               <div id="details-inner">
                 <div id="itemdetails">
-                  <h2 id="itemtitle" hidden="[[!_isAttrSet(selected.title)]]">
-                    [[selected.title]]
+                  <h2
+                    id="itemtitle"
+                    ?hidden="${!this.selected.title ||
+                      this.selected.title == ""}"
+                  >
+                    ${this.selected.title}
                   </h2>
                   <div id="itembody">
-                    <lrndesign-gallery-details
-                      details$="[[selected.details]]"
-                    ></lrndesign-gallery-details>
+                    <div id="details">
+                      ${this.selected.details || ""}
+                    </div>
                   </div>
                 </div>
-                <div id="xyend">
-                  <p class="x-of-y" hidden$="[[_hideNav(items)]]">
-                    (<span class="sr-only"> End of slide </span>
-                    [[selected.xofy]]<span class="sr-only">.</span>)
+                <div id="xyend" ?hidden="${this.hideNav}">
+                  <p class="x-of-y">
+                    (<span class="sr-only"> End of slide </span> ${this.selected
+                      .xofy}<span class="sr-only">.</span>)
                   </p>
                 </div>
-                <div id="thumbnails" class="item-info">
+                <div
+                  id="thumbnails"
+                  class="item-info"
+                  ?hidden="${this.hideNav}"
+                >
                   <div id="thumbnails-inner">
                     <div>
-                      <p class="sr-only" hidden$="[[_hideNav(items)]]">
+                      <p class="sr-only" ?hidden="${this.hideNav}">
                         Slides list:
                       </p>
-                      <template is="dom-repeat" items="[[items]]" as="item">
-                        <paper-button
-                          id$="[[item.id]]"
-                          aria-controls$="[[__gallery.id]]"
-                          class="gallerythumb"
-                          hidden$="[[_hideNav(items)]]"
-                          index$="[[item.index]]"
-                          on-click="_onNavTapped"
-                          disabled$="[[_isSelected(selected,item)]]"
-                          target$="[[item.target]]"
-                          title
-                        >
-                          <iron-image
-                            alt$="[[item.alt]]"
-                            fade
-                            sizing="cover"
-                            src$="[[item.thumbnail]]"
+                      ${this.sources.map(
+                        item => html`
+                          <button
+                            id="${item.id}"
+                            aria-controls="carousel"
+                            class="gallerythumb"
+                            index="${item.index}"
+                            @click="${e => this._itemChanged(item.id)}"
+                            ?disabled="${this.selected.id === item.id}"
                           >
-                          </iron-image>
-                        </paper-button>
-                        <simple-tooltip
-                          for$="[[item.id]]"
-                          hidden$="[[_isSelected(selected,item)]]"
-                          position="top"
-                        >
-                          [[item.alt]]
-                        </simple-tooltip>
-                      </template>
+                            <iron-image
+                              alt="${item.alt}"
+                              fade
+                              sizing="cover"
+                              src="${item.thumbnail}"
+                            >
+                            </iron-image>
+                          </button>
+                          <simple-tooltip
+                            for="${item.id}"
+                            ?hidden="${this.selected.id === item.id}"
+                            position="top"
+                          >
+                            ${item.alt}
+                          </simple-tooltip>
+                        `
+                      )}
                     </div>
                   </div>
                 </div>
@@ -352,136 +364,49 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             </div>
           </div>
         </div>
-        <div id="galleryprint">
-          <template id="printlist" is="dom-repeat" items="[[items]]" as="item">
-            <section>
-              <template is="dom-if" if="[[_isAttrSet(item.title)]]">
-                <h2>[[item.title]]</h2>
-              </template>
-              <lrndesign-gallery-details
-                details$="[[item.details]]"
-              ></lrndesign-gallery-details>
-              <img
-                class="print-image"
-                alt$="[[item.alt]]"
-                src$="[[item.src]]"
-              />
-            </section>
-          </template>
-        </div>
+        ${this.galleryPrint}
       </article>
     `;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * height css of iron image (sets aspect ratio in xs or extraWide)
-       */
-      __imageStyle: {
-        type: String,
-        computed: "_getImageStyle(extraWide,responsiveSize)"
-      }
+      ...super.properties
     };
   }
 
   /**
    * life cycle, element is ready
    */
-  ready() {
-    super.ready();
-    if (this.selected.scroll) {
-      let target = this.shadowRoot.querySelector("#carouselitem");
+  constructor() {
+    super();
+    /*let target = this.shadowRoot.querySelector("#carouselitem");
+    if (this.selected.scroll && target) {
       this._scrollIntoView([this._getParentOffset(target)]);
       if (!this.selected.zoomed) target.focus();
-    }
+    }*/
   }
-
   /**
-   * go to item by id, or index
+   * gets whether navigation should be hidden
    *
-   * @param {o}
+   * @readonly
+   * @memberof LrndesignGalleryCarousel
    */
-  goToItem(index) {
-    let root = this;
-    if (typeof index === "number" && index >= 0 && index < root.items.length) {
-      root.selected = root.items[index];
-    }
-  }
-
-  /**
-   * returns the proper padding to maintain image aspect ratio and
-   *
-   * @param {boolean} whether on not the first image is extra wide
-   * @param {string} the responsive size of the gallery, as in 'xs','sm','md','lg', or 'xl'
-   * @returns {string} the style for the image
-   */
-  _getImageStyle(extraWide, responsiveSize) {
-    if (extraWide || responsiveSize === "xs") {
-      return "padding-bottom: " + 100 / this.aspectRatio + "%;";
-    } else {
-      if (responsiveSize === "xl") {
-        return "width: " + this.aspectRatio * 400 + "px; height: 400px;";
-      } else if (responsiveSize === "lg") {
-        return "width: " + this.aspectRatio * 300 + "px; height: 300px;";
-      } else if (responsiveSize === "md") {
-        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
-      } else {
-        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
-      }
-    }
-  }
-
-  /**
-   * returns index of the previous or next item
-   *
-   *
-   */
-  _getIndex(index, step) {
-    return index + step;
-  }
-
-  /**
-   * gets unique id for carousel and sets it as a target
-   */
-  _hideNav(items) {
-    return items !== undefined ? items.length < 2 : true;
-  }
-
-  /**
-   * when a prev is tapped, goes to the prev item
-   */
-  _onPrev(e) {
-    this.goToItem(
-      parseInt(
-        this.shadowRoot.querySelector("#carouselprev").getAttribute("index")
-      )
+  get hideNav() {
+    console.log(
+      "hideNav",
+      this,
+      this.sources,
+      this.sources !== undefined ? this.sources.length < 2 : true
     );
-  }
-
-  /**
-   * when a next is tapped, goes to the next item
-   */
-  _onNext(e) {
-    this.goToItem(
-      parseInt(
-        this.shadowRoot.querySelector("#carouselnext").getAttribute("index")
-      )
-    );
+    return this.sources !== undefined ? this.sources.length < 2 : true;
   }
 
   /**
    * when a thumbnail is tapped, goes to that item
    */
-  _onNavTapped(e) {
-    this.goToItem(e.model.item.index);
-  }
-
-  /**
-   * updates the item details
-   */
-  _updateDetails() {
-    this.shadowRoot.querySelector("#itembody").innerHTML = this.item.details;
+  _onNavTapped(item) {
+    this.goToItem(item.index);
   }
 }
 window.customElements.define(

@@ -3,19 +3,19 @@
   "tags": [
     {
       "name": "code-editor",
-      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` - \n\n  * `value-changed` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `__libPath` {`string`} - ",
+      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` - \n\n  * `value-changed` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `code-pen-data` - Code pen data, computed based on the HTML editor\n\n  * `editor-value` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `tab-size` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `tabSize` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `__libPath` {`string`} - ",
       "attributes": [
         {
           "name": "title",
           "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
-          "name": "codePenData",
-          "description": "`codePenData` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData"
+          "name": "code-pen-data",
+          "description": "`code-pen-data` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData"
         },
         {
-          "name": "editorValue",
-          "description": "`editorValue` {`string`} - contents of the editor\n\nProperty: editorValue"
+          "name": "editor-value",
+          "description": "`editor-value` {`string`} - contents of the editor\n\nProperty: editorValue"
         },
         {
           "name": "value",
@@ -46,6 +46,10 @@
         {
           "name": "font-size",
           "description": "`font-size` {`number`} - font size for the editor\n\nProperty: fontSize\n\nDefault: 16"
+        },
+        {
+          "name": "tab-size",
+          "description": "`tab-size` {`number`} - number of characters for tabs\n\nProperty: tabSize\n\nDefault: 2"
         },
         {
           "name": "autofocus",
@@ -74,19 +78,19 @@
     },
     {
       "name": "code-editor",
-      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` - \n\n  * `value-changed` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `__libPath` {`string`} - ",
+      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` - \n\n  * `value-changed` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `code-pen-data` - Code pen data, computed based on the HTML editor\n\n  * `editor-value` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `tab-size` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `tabSize` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `__libPath` {`string`} - ",
       "attributes": [
         {
           "name": "title",
           "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
-          "name": "codePenData",
-          "description": "`codePenData` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData"
+          "name": "code-pen-data",
+          "description": "`code-pen-data` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData"
         },
         {
-          "name": "editorValue",
-          "description": "`editorValue` {`string`} - contents of the editor\n\nProperty: editorValue"
+          "name": "editor-value",
+          "description": "`editor-value` {`string`} - contents of the editor\n\nProperty: editorValue"
         },
         {
           "name": "value",
@@ -117,6 +121,10 @@
         {
           "name": "font-size",
           "description": "`font-size` {`number`} - font size for the editor\n\nProperty: fontSize\n\nDefault: 16"
+        },
+        {
+          "name": "tab-size",
+          "description": "`tab-size` {`number`} - number of characters for tabs\n\nProperty: tabSize\n\nDefault: 2"
         },
         {
           "name": "autofocus",
@@ -181,19 +189,19 @@
     },
     {
       "name": "code-editor",
-      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` - \n\n  * `value-changed` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `__libPath` {`string`} - ",
+      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` - \n\n  * `value-changed` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `code-pen-data` - Code pen data, computed based on the HTML editor\n\n  * `editor-value` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `tab-size` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `tabSize` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `__libPath` {`string`} - ",
       "attributes": [
         {
           "name": "title",
           "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
-          "name": "codePenData",
-          "description": "`codePenData` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData"
+          "name": "code-pen-data",
+          "description": "`code-pen-data` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData"
         },
         {
-          "name": "editorValue",
-          "description": "`editorValue` {`string`} - contents of the editor\n\nProperty: editorValue"
+          "name": "editor-value",
+          "description": "`editor-value` {`string`} - contents of the editor\n\nProperty: editorValue"
         },
         {
           "name": "value",
@@ -226,6 +234,10 @@
           "description": "`font-size` {`number`} - font size for the editor\n\nProperty: fontSize\n\nDefault: 16"
         },
         {
+          "name": "tab-size",
+          "description": "`tab-size` {`number`} - number of characters for tabs\n\nProperty: tabSize\n\nDefault: 2"
+        },
+        {
           "name": "autofocus",
           "description": "`autofocus` {`boolean`} - automatically set focus on the editor\n\nProperty: autofocus\n\nDefault: false",
           "valueSet": "v"
@@ -252,7 +264,7 @@
     },
     {
       "name": "monaco-element",
-      "description": "`monaco-element`\nWebcomponent wrapper for the monaco editor.\n\nSets value, language and theme.\nOffers a value-changed event.\n\nPartly influenced by https://github.com/PolymerVis/monaco-editor\n\nEvents:\n\n  * `value-changed` - \n\n  * `code-editor-focus` - \n\n  * `code-editor-blur` - \n\n  * `monaco-element-ready` - \n\nAttributes:\n\n  * `unique-key` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\n  * `value` {`string`} - \n\n  * `font-size` {`number`} - \n\n  * `read-only` {`boolean`} - \n\n  * `eventTypes` - \n\n  * `language` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `lib-path` {`string`} - \n\n  * `autofocus` {`boolean`} - automatically set focus on the iframe\n\n  * `hide-line-numbers` {`boolean`} - hide line numbers\n\n  * `editor-reference` {`string`} - \n\nProperties:\n\n  * `uniqueKey` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\n  * `document` - \n\n  * `iframe` - \n\n  * `value` {`string`} - \n\n  * `fontSize` {`number`} - \n\n  * `readOnly` {`boolean`} - \n\n  * `eventTypes` - \n\n  * `language` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `libPath` {`string`} - \n\n  * `autofocus` {`boolean`} - automatically set focus on the iframe\n\n  * `hideLineNumbers` {`boolean`} - hide line numbers\n\n  * `editorReference` {`string`} - ",
+      "description": "`monaco-element`\nWebcomponent wrapper for the monaco editor.\n\nSets value, language and theme.\nOffers a value-changed event.\n\nPartly influenced by https://github.com/PolymerVis/monaco-editor\n\nEvents:\n\n  * `value-changed` - \n\n  * `code-editor-focus` - \n\n  * `code-editor-blur` - \n\n  * `monaco-element-ready` - \n\nAttributes:\n\n  * `unique-key` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\n  * `value` {`string`} - \n\n  * `font-size` {`number`} - \n\n  * `tab-size` {`number`} - \n\n  * `read-only` {`boolean`} - \n\n  * `eventTypes` - \n\n  * `language` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `lib-path` {`string`} - \n\n  * `autofocus` {`boolean`} - automatically set focus on the iframe\n\n  * `hide-line-numbers` {`boolean`} - hide line numbers\n\n  * `editor-reference` {`string`} - \n\nProperties:\n\n  * `uniqueKey` {`string`} - THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET\n\n  * `document` - \n\n  * `iframe` - \n\n  * `value` {`string`} - \n\n  * `fontSize` {`number`} - \n\n  * `tabSize` {`number`} - \n\n  * `readOnly` {`boolean`} - \n\n  * `eventTypes` - \n\n  * `language` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `libPath` {`string`} - \n\n  * `autofocus` {`boolean`} - automatically set focus on the iframe\n\n  * `hideLineNumbers` {`boolean`} - hide line numbers\n\n  * `editorReference` {`string`} - ",
       "attributes": [
         {
           "name": "unique-key",
@@ -265,6 +277,10 @@
         {
           "name": "font-size",
           "description": "`font-size` {`number`} - \n\nProperty: fontSize\n\nDefault: 16"
+        },
+        {
+          "name": "tab-size",
+          "description": "`tab-size` {`number`} - \n\nProperty: tabSize\n\nDefault: 2"
         },
         {
           "name": "read-only",

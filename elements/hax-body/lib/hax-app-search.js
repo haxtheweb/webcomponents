@@ -72,7 +72,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     this.media = [];
     this.resultMap = {};
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-container.js");
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");

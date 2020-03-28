@@ -133,11 +133,10 @@ class SimpleFields extends SimpleFieldsLite {
   }
   constructor() {
     super();
+    this.activeTabs = {};
     this.fieldsConversion = {
       defaultSettings: {
-        defaultSettings: {
-          type: "string"
-        }
+        type: "string"
       },
       inputMethod: {
         alt: {
@@ -314,7 +313,8 @@ class SimpleFields extends SimpleFieldsLite {
               type: "select"
             },
             properties: {
-              options: "options"
+              options: "options",
+              items: "itemsList"
             }
           }
         },
@@ -382,7 +382,7 @@ class SimpleFields extends SimpleFieldsLite {
             properties: {
               minimum: "min",
               maximum: "max",
-              multiplef: "step"
+              multipleOf: "step"
             }
           }
         },
@@ -563,6 +563,7 @@ class SimpleFields extends SimpleFieldsLite {
         }
       }
     };
+    this.addEventListener("active-tab-changed", this._handleActiveTab);
     setTimeout(() => {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
@@ -573,8 +574,9 @@ class SimpleFields extends SimpleFieldsLite {
       import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     }, 0);
   }
+
   /**
-   * fields converted to JSON schema
+   * fields converted to JSON schema =
    *
    * @readonly
    * @returns object
@@ -586,7 +588,7 @@ class SimpleFields extends SimpleFieldsLite {
       title: this.label,
       type: "object",
       required: [],
-      properties: this._fieldsToSchema(this.fields)
+      properties: this.fieldsToSchema(this.fields)
     };
     return schema;
   }
@@ -595,6 +597,36 @@ class SimpleFields extends SimpleFieldsLite {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "fields") this.schema = this.convertedSchema;
+      if (propName === "__activeTabs" && this.activeTabs !== oldValue)
+        this._handleActiveTabs();
+    });
+  }
+  /**
+   * updates the active tabs object
+   *
+   * @param {string} tabId, eg. 'settings.permisions.groups'
+   * @memberof SimpleFields
+   */
+  setActiveTab(tabId) {
+    let tabsId = tabId.replace(/\.[0-9a-z]+$/, ""),
+      tabs = this.querySelector(`#${tabsId}`),
+      tab = tabs.querySelector(`#${tabId}`);
+
+    if (tabs && tab) tabs.activeTab = tabId;
+  }
+
+  /**
+   * sets active tabs by path, eg. 'settings/permissions/groups'
+   *
+   * @param {string} path, eg. 'settings/permissions/groups'
+   * @memberof SimpleFields
+   */
+  setActivePath(path) {
+    let parts = path.split("/"),
+      tabId = "";
+    parts.forEach(part => {
+      this.setActiveTab(part);
+      tabId += part;
     });
   }
 
@@ -627,7 +659,7 @@ class SimpleFields extends SimpleFieldsLite {
 
   /**
    * converts fields array to schema properties
-   * @param {*} field field object to convert
+   * @param {object} field field object to convert
    * @returns object schema properties
    * @memberof SimpleFieldsLite
    */
@@ -644,12 +676,12 @@ class SimpleFields extends SimpleFieldsLite {
         if (conversion.type === "array" && Array.isArray(field.properties)) {
           schema.items = {
             type: "object",
-            properties: this._fieldsToSchema(field.properties)
+            properties: this.fieldsToSchema(field.properties)
           };
         } else if (conversion.type === "array") {
           schema.items = this._fieldToSchema(field.properties);
         } else {
-          schema.properties = this._fieldsToSchema(field.properties);
+          schema.properties = this.fieldsToSchema(field.properties);
         }
         /*} else if (key === "slot") {
         schema[key] = !field[key] || field[key] === "" 
@@ -678,7 +710,7 @@ class SimpleFields extends SimpleFieldsLite {
    * @returns object schema properties
    * @memberof SimpleFieldsLite
    */
-  _fieldsToSchema(fields) {
+  fieldsToSchema(fields) {
     let schema = {};
     if (fields && fields.forEach) {
       fields.forEach(field => {
@@ -687,6 +719,32 @@ class SimpleFields extends SimpleFieldsLite {
       });
     }
     return schema;
+  }
+  /**
+   * handles active tabs changes
+   *
+   * @event "active-tabs-changed"
+   * @memberof SimpleFields
+   */
+  _handleActiveTabs() {
+    this.dispatchEvent(
+      new CustomEvent("active-tabs-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: false,
+        detail: this
+      })
+    );
+  }
+  /**
+   * updates the active tabs object
+   *
+   * @param {event} e
+   * @memberof SimpleFields
+   */
+  _handleActiveTab(e) {
+    if (e && e.detail && e.detail.id)
+      this.activeTabs[e.detail.id] = e.detail.activeTab;
   }
 }
 window.customElements.define(SimpleFields.tag, SimpleFields);

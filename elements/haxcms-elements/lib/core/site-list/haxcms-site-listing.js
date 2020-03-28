@@ -80,7 +80,7 @@ class HAXCMSSiteListing extends PolymerElement {
           z-index: 3;
         }
         .hide-camera {
-          display:none;
+          display: none;
         }
         .login-prompt div#selfie img {
           z-index: 2;
@@ -91,13 +91,17 @@ class HAXCMSSiteListing extends PolymerElement {
           display: block;
         }
         simple-login {
-          background: #EEEEEE;
+          background: #eeeeee;
           color: var(--haxcms-system-bg);
           --primary-color: var(--haxcms-system-bg);
           --primary-text-color: var(--haxcms-system-bg);
-          --paper-input-container-focus-color: var(--haxcms-system-action-color);
+          --paper-input-container-focus-color: var(
+            --haxcms-system-action-color
+          );
           --login-btn-background-color: var(--haxcms-system-bg);
-          --login-btn-raised-background-color: var(--haxcms-system-action-color);
+          --login-btn-raised-background-color: var(
+            --haxcms-system-action-color
+          );
           --login-form-color: var(--haxcms-system-bg);
           --login-btn-width: 80%;
           --login-btn-display: flex;
@@ -158,7 +162,9 @@ class HAXCMSSiteListing extends PolymerElement {
           margin-right: 8px;
         }
         paper-input {
-          --paper-input-container-focus-color: var(--haxcms-site-listing-color-hover);
+          --paper-input-container-focus-color: var(
+            --haxcms-site-listing-color-hover
+          );
         }
         .small-location {
           font-size: 11px;
@@ -223,7 +229,7 @@ class HAXCMSSiteListing extends PolymerElement {
         #add {
           background-color: var(--haxcms-site-listing-color-hover);
           color: (--haxcms-site-listing-color-light);
-          transition: .2s all linear;
+          transition: 0.2s all linear;
         }
         #add:hover,
         #add:active,
@@ -259,7 +265,7 @@ class HAXCMSSiteListing extends PolymerElement {
         .selected-operations paper-button:hover,
         .selected-operations paper-button:focus {
           background-color: var(--haxcms-site-listing-color-hover);
-          color: var(--haxcms-site-listing-color-light); !important;
+          color: var(--haxcms-site-listing-color-light) !important;
         }
         .danger {
           color: var(--simple-colors-default-theme-red-7) !important;
@@ -275,17 +281,17 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         @media screen and (max-width: 1080px) {
           .selected-operations .small-hide {
-            display:none;
+            display: none;
           }
         }
         @media screen and (max-width: 800px) {
           .main-title {
-            display:none;
+            display: none;
           }
         }
         @media screen and (max-width: 700px) {
           .small-hide {
-            display:none;
+            display: none;
           }
         }
       </style>

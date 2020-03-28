@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 /**
  * `dropdown-select`
  * an easy to use, works as expected dropdown menu.
@@ -12,47 +13,37 @@ class DropdownSelect extends LitElement {
       css`
         :host {
           display: block;
+          --simple-picker-border-width: 0;
+          --simple-picker-options-border-width: 1px;
+          --simple-picker-options-border-color: var(
+            --simple-fields-accent-color
+          );
+          --simple-picker-background-color: rgba(255, 255, 255, 0);
         }
-        paper-listbox ::slotted(paper-item) {
-          display: block;
-          width: calc(100% - 32px);
-          padding: 0 16px;
-          min-height: 32px;
-          vertical-align: text-top;
-          line-height: 32px;
+        :host([hidden]) {
+          display: none;
         }
       `
     ];
   }
   render() {
     return html`
-      <paper-dropdown-menu
+      <simple-fields-container
         id="menu"
         .error-message="${this.errorMessage}"
-        .horizontal-align="${this.horizontalAlign}"
         .label="${this.label}"
-        .placeholder="${this.placeholder}"
-        .vertical-align="${this.verticalAlign}"
-        .vertical-offset="${this.verticalOffset}"
-        ?allow-outside-scroll="${this.allowOutsideScroll}"
-        ?always-float-label="${this.alwaysFloatLabel}"
-        ?dynamic-align="${this.dynamicAlign}"
-        ?no-animations="${this.noAnimations}"
-        ?no-label-float="${this.noLabelFloat}"
-        ?restore-focus-on-close="${this.restoreFocusOnClose}"
-        @paper-dropdown-open="${this._onOpen}"
-        @paper-dropdown-close="${this.onClose}"
-        @selected-item-changed="${this._dropDownChanged}"
       >
-        <paper-listbox
-          id="listbox"
-          slot="dropdown-content"
-          class="dropdown-content"
-          .selected="${this.selectedItemIndex}"
+        <simple-picker
+          id="picker"
+          slot="field"
+          value="${this.value}"
+          @expand="${this._onOpen}"
+          @collapse="${this.onClose}"
+          @changed="${this._dropDownChanged}"
         >
-          <slot id="content"></slot>
-        </paper-listbox>
-      </paper-dropdown-menu>
+        </simple-picker>
+      </simple-fields-container>
+      <slot id="content" hidden></slot>
     `;
   }
 
@@ -61,56 +52,26 @@ class DropdownSelect extends LitElement {
   }
   constructor() {
     super();
-    this.allowOutsideScroll = false;
-    this.alwaysFloatLabel = false;
-    this.dynamicAlign = false;
-    this.horizontalAlign = "right";
     this.label = "Select an option.";
-    this.noAnimations = false;
-    this.noLabelFloat = false;
+    this.options = [[]];
     this.opened = false;
-    this.restoreFocusOnClose = true;
-    this.selectedItemIndex = null;
-    this.selectedItemLabel = null;
-    this.value = null;
-    this.verticalAlign = "top";
-    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
+    this.setOptions();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: false
+    });
+
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-container.js");
+  }
+
+  disconnectedCallback() {
+    this.observer.disconnect();
+    super.disconnectedCallback();
   }
 
   static get properties() {
     return {
-      /**
-       * @property {boolean} allowOutsideScroll
-       *
-       * Set to true in order to prevent scroll from being constrained
-       * to the dropdown when it opens.
-       */
-      allowOutsideScroll: {
-        attribute: "allow-outside-scroll",
-        type: Boolean
-      },
-
-      /**
-       * Set to true to always float the label.
-       */
-      alwaysFloatLabel: {
-        attribute: "always-float-label",
-        type: Boolean
-      },
-
-      /**
-       * If true, the `horizontalAlign` and `verticalAlign` properties will
-       * be considered preferences instead of strict requirements when
-       * positioning the dropdown and may be changed if doing so reduces
-       * the area of the dropdown falling outside of `fitInto`.
-       */
-      dynamicAlign: {
-        attribute: "dynamic-align",
-        type: Boolean
-      },
-
       /**
        * The error message to display when invalid.
        */
@@ -120,58 +81,22 @@ class DropdownSelect extends LitElement {
       },
 
       /**
-       * The orientation against which to align the menu dropdown
-       * horizontally relative to the dropdown trigger.
-       */
-      horizontalAlign: {
-        attribute: "horizontal-align",
-        type: String
-      },
-
-      /**
        * The label of the select menu
        */
       label: {
         type: String
       },
-
-      /**
-       * Set to true to disable animations when opening and closing the
-       * dropdown.
-       */
-      noAnimations: {
-        attribute: "no-animations",
-        type: Boolean
-      },
-
-      /**
-       * Set to true to disable the floating label.
-       */
-      noLabelFloat: {
-        attribute: "no-label-float",
-        type: Boolean
-      },
-
       /**
        * True if the dropdown is open. Otherwise, false.
        */
       opened: {
         type: Boolean
       },
-
       /**
-       * The placeholder for the dropdown.
+       * Optional options array
        */
-      placeholder: {
-        type: String
-      },
-
-      /**
-       * Whether focus should be restored to the dropdown when the menu closes.
-       */
-      restoreFocusOnClose: {
-        attribute: "restore-focus-on-close",
-        type: Boolean
+      options: {
+        type: Array
       },
 
       /**
@@ -204,38 +129,54 @@ class DropdownSelect extends LitElement {
       value: {
         type: String,
         reflect: true
-      },
-
-      /**
-       * The orientation against which to align the menu dropdown
-       * vertically relative to the dropdown trigger.
-       */
-      verticalAlign: {
-        attribute: "vertical-align",
-        type: String
-      },
-
-      /**
-       * Overrides the vertical offset computed in
-       * _computeMenuVerticalOffset.
-       */
-      verticalOffset: {
-        attribute: "vertical-offset",
-        type: Number
       }
     };
   }
+  /**
+   * mutation observer for dropdown
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this.setOptions();
+    return new MutationObserver(callback);
+  }
+  setOptions() {
+    let options = [];
+    this.querySelectorAll("paper-item").forEach((option, index) => {
+      options.push([
+        {
+          alt: option.innerHTML,
+          style: option.getAttribute("style") || undefined,
+          icon: option.querySelector("[icon]")
+            ? option.querySelector("[icon]").getAttribute("icon")
+            : undefined,
+          value:
+            option.getAttribute("value") || option.getAttribute("id") || index
+        }
+      ]);
+    });
+    if (options === []) options = [[]];
+    this.options = options;
+  }
 
   updated(changedProperties) {
+    let picker =
+      this.shadowRoot && this.shadowRoot.querySelector("#picker")
+        ? this.shadowRoot.querySelector("#picker")
+        : undefined;
     changedProperties.forEach((oldValue, propName) => {
+      console.log(propName, oldValue, this[propName]);
       if (propName === "value") this._valueChanged(this.value, oldValue);
+      if (propName === "options" && this.options !== oldValue)
+        picker.options = this.options;
     });
     this.dispatchEvent(
       new CustomEvent("change", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { value: this.value }
+        detail: this
       })
     );
   }
@@ -274,7 +215,11 @@ class DropdownSelect extends LitElement {
    * @param {event} e change event
    */
   _dropDownChanged(e) {
-    this.value = e.detail.value ? e.detail.value.getAttribute("value") : null;
+    let picker =
+      this.shadowRoot && this.shadowRoot.querySelector("#picker")
+        ? this.shadowRoot.querySelector("#picker")
+        : undefined;
+    this.value = picker.value;
   }
   /**
    * Notice value has changed and ensure data model is accurate
@@ -284,14 +229,24 @@ class DropdownSelect extends LitElement {
    * @fires value-changed
    */
   _valueChanged(newValue, oldValue) {
-    let items = Array.prototype.slice.call(this.querySelectorAll(`paper-item`));
-    this.selectedItem = this.querySelector(`paper-item[value="${newValue}"]`);
-    this.selectedItemLabel = this.selectedItem
-      ? this.selectedItem.innerHTML
-      : null;
-    this.selectedItemIndex = this.selectedItem
-      ? items.indexOf(this.selectedItem)
-      : null;
+    let label = null,
+      index = null,
+      ctr = -1;
+    console.log("value-changed", {
+      value: newValue,
+      oldValue: oldValue
+    });
+    this.selectedItem = this.value;
+    this.options.forEach(row =>
+      row.forEach(item => {
+        if (this.value === item.value) {
+          label = item.alt || item.value;
+          index = ctr++;
+        }
+      })
+    );
+    this.selectedItemLabel = label;
+    this.selectedItemIndex = index;
     if (typeof oldValue !== typeof undefined) {
       this.dispatchEvent(
         new CustomEvent("value-changed", {

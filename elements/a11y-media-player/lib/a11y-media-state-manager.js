@@ -162,18 +162,17 @@ class A11yMediaStateManager extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
     // listen for a player that starts playing
-    window.addEventListener("a11y-player-playing", root.__stickyManager);
+    window.addEventListener("a11y-player-playing", this.__stickyManager);
 
     // listen for a player toggles fullscreen mode
-    window.addEventListener("a11y-player-fullscreen", root.__activeManager);
+    window.addEventListener("a11y-player-fullscreen", this.__activeManager);
 
     // listen for scrolling and find out if a player is off-screen
-    window.addEventListener("scroll", root.__scrollChecker);
+    window.addEventListener("scroll", this.__scrollChecker);
 
     // listen for a players added to the page
-    window.addEventListener("a11y-player", root.__playerLoader);
+    window.addEventListener("a11y-player", this.__playerLoader);
   }
   /**
    * life cycle, element is removed from the DOM

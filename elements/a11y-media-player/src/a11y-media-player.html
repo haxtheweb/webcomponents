@@ -172,52 +172,33 @@
         <div class="setting-text">
           ${this._getLocal(this.localization,'captions','label')}
         </div>
-        <dropdown-select
+        <simple-fields-field
           id="cc_tracks"
           class="setting-control"
-          no-label-float
           value="${this.captionsTrackKey}"
+          .options="${this.captionsPicker}"
           ?hidden="${!this.hasCaptions}"
           ?disabled="${!this.hasCaptions}"
           @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
+          type="select"
         >
-          <paper-item value="-1" aria-selected="${this.captionsTrackKey === -1}"
-            >${this._getLocal(this.localization,'captions','off')}</paper-item
-          >
-          ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
-            return html`
-              <paper-item value="${key}" aria-selected="${this.captionsTrackKey === key}">
-                ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
-              </paper-item>
-            `;
-          })}
-        </dropdown-select>
+        </simple-fields-field>
       </div>
       <div class="setting" ?hidden="${!this.hasCaptions}">                      
         <div class="setting-text">
           ${this._getLocal(this.localization,'transcript','label')}
         </div>
-        <dropdown-select
+        <simple-fields-field
           id="transcript_tracks"
           class="setting-control"
-          no-label-float
-          placeholder=""
           .value="${this.transcriptTrackKey}"
+          .options="${this.transcriptPicker}"
           ?hidden="${!this.hasCaptions}"
           ?disabled="${!this.hasCaptions}"
           @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
+          type="select"
         >
-          <paper-item value="-1" aria-selected="${this.transcriptTrackKey === -1}"
-            >${this._getLocal(this.localization,'transcript','off')}</paper-item
-          >
-          ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
-            return html`
-              <paper-item value="${key}" aria-selected="${this.transcriptTrackKey === key}">
-                ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
-              </paper-item>
-            `;
-          })}
-        </dropdown-select>
+        </simple-fields-field>
       </div>
       <div class="setting" ?hidden="${!this.hasCaptions}">                      
         <div id="print-label" class="setting-text">

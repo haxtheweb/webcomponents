@@ -49,20 +49,12 @@ class SimpleModalTemplate extends LitElement {
   }
   constructor() {
     super();
-    this.modalId = null;
     this.title = "";
     this.modal = window.SimpleModal.requestAvailability();
   }
   //render function
   static get properties() {
     return {
-      /**
-       * the desired id for the modal
-       */
-      modalId: {
-        type: Object,
-        attribute: "modal-id"
-      },
       /**
        * the simple-modal
        */

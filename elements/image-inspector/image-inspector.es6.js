@@ -1,6 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/exif-data/exif-data.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 /**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
@@ -35,8 +38,9 @@ class ImageInspector extends LitElement {
           display: inline-flex;
         }
 
-        .top {
-          top: 0px;
+        .top-rotated {
+          top: 150px;
+          pointer-events: none; /** disable pointer events when rotated bc of HTML canvas issue */
         }
         .showData {
           display: block;
@@ -65,16 +69,11 @@ class ImageInspector extends LitElement {
     this.noLeft = false;
     this.degrees = 0;
     this.hoverClass = "blue white-text";
-    setTimeout(() => {
-      import("@polymer/app-layout/app-layout.js");
-      import("@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/image-icons.js");
-    }, 0);
+    this.src = "";
   }
   render() {
     return html`
-      <app-toolbar>
+      <div style="border-bottom: 1px solid black;">
         <lrnsys-button
           alt="Zoom in"
           icon="zoom-in"
@@ -119,7 +118,7 @@ class ImageInspector extends LitElement {
           hover-class="${this.hoverClass}"
         ></lrnsys-button>
         <slot name="toolbar"></slot>
-      </app-toolbar>
+      </div>
       <exif-data
         id="exif"
         @click=${this.hideData}
@@ -187,10 +186,10 @@ class ImageInspector extends LitElement {
     // spin 90
     this.degrees += 90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    if (this.__img.classList.contains("top")) {
-      this.__img.classList.remove("top");
+    if (this.__img.classList.contains("top-rotated")) {
+      this.__img.classList.remove("top-rotated");
     } else {
-      this.__img.classList.add("top");
+      this.__img.classList.add("top-rotated");
     }
   }
 
@@ -201,10 +200,10 @@ class ImageInspector extends LitElement {
     // go back 90
     this.degrees += -90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    if (this.__img.classList.contains("top")) {
-      this.__img.classList.remove("top");
+    if (this.__img.classList.contains("top-rotated")) {
+      this.__img.classList.remove("top-rotated");
     } else {
-      this.__img.classList.add("top");
+      this.__img.classList.add("top-rotated");
     }
   }
 

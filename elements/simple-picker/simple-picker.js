@@ -184,6 +184,7 @@ class SimplePicker extends LitElement {
           );
           transition: all 0.5s;
         }
+
         :host(:focus-within) #listbox {
           border-width: var(
             --simple-picker-listbox-border-width,
@@ -201,6 +202,7 @@ class SimplePicker extends LitElement {
             )
           );
         }
+
         #listbox:focus-within,
         :host(:focus-within) #listbox {
           outline: var(--simple-picker-listbox-outline, unset);
@@ -267,6 +269,7 @@ class SimplePicker extends LitElement {
           max-height: var(--simple-picker-options-max-height, 250px);
           overflow-y: auto;
         }
+
         :host([align-right]) #collapse .rows {
           left: unset;
           right: calc(
@@ -354,11 +357,13 @@ class SimplePicker extends LitElement {
           :host {
             position: static;
           }
+
           #collapse {
             top: 0;
             margin-top: 0;
             position: relative;
           }
+
           .rows {
             position: absolute;
           }

@@ -3,8 +3,20 @@
   "tags": [
     {
       "name": "a11y-collapse",
-      "description": "`a11y-collapse`\nan accessible expand collapse\n\n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n\nEvents:\n\n  * `a11y-collapse-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperties:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded",
+      "description": "`a11y-collapse`\nan accessible expand collapse\n\n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n`--a11y-collapse-overflow-y` | override default overflow behavior | hidden\n`--a11y-collapse-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `a11y-collapse-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
       "attributes": [
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+        },
         {
           "name": "accordion",
           "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
@@ -25,24 +37,12 @@
           "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
         },
         {
-          "name": "icon-expanded",
-          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
-        },
-        {
           "name": "label",
           "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
         },
         {
-          "name": "label-expanded",
-          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
-        },
-        {
           "name": "tooltip",
           "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
-        },
-        {
-          "name": "tooltip-expanded",
-          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
         },
         {
           "name": "ona11y-collapse-attached",
@@ -76,8 +76,20 @@
     },
     {
       "name": "a11y-collapse",
-      "description": "`a11y-collapse`\nan accessible expand collapse\n\n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n\nEvents:\n\n  * `a11y-collapse-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperties:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded",
+      "description": "`a11y-collapse`\nan accessible expand collapse\n\n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n`--a11y-collapse-overflow-y` | override default overflow behavior | hidden\n`--a11y-collapse-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `a11y-collapse-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
       "attributes": [
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+        },
         {
           "name": "accordion",
           "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
@@ -98,24 +110,12 @@
           "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
         },
         {
-          "name": "icon-expanded",
-          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
-        },
-        {
           "name": "label",
           "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
         },
         {
-          "name": "label-expanded",
-          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
-        },
-        {
           "name": "tooltip",
           "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
-        },
-        {
-          "name": "tooltip-expanded",
-          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
         },
         {
           "name": "ona11y-collapse-attached",
@@ -207,8 +207,20 @@
     },
     {
       "name": "a11y-collapse",
-      "description": "`a11y-collapse`\nan accessible expand collapse\n\n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n\nEvents:\n\n  * `a11y-collapse-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperties:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded",
+      "description": "`a11y-collapse`\nan accessible expand collapse\n\n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n`--a11y-collapse-overflow-y` | override default overflow behavior | hidden\n`--a11y-collapse-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `a11y-collapse-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
       "attributes": [
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+        },
         {
           "name": "accordion",
           "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
@@ -229,24 +241,12 @@
           "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
         },
         {
-          "name": "icon-expanded",
-          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
-        },
-        {
           "name": "label",
           "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
         },
         {
-          "name": "label-expanded",
-          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
-        },
-        {
           "name": "tooltip",
           "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
-        },
-        {
-          "name": "tooltip-expanded",
-          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
         },
         {
           "name": "ona11y-collapse-attached",

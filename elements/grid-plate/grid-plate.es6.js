@@ -408,7 +408,7 @@ class GridPlate extends LitElement {
           class="column"
           id="col1"
           data-label="column 1"
-          .style="${this._getColumnWidth(0, this.columnWidths)}"
+          .style="${this._getColumnWidth(0, this.__columnWidths)}"
         >
           <slot name="col-1"></slot>
         </div>
@@ -416,7 +416,7 @@ class GridPlate extends LitElement {
           class="column"
           id="col2"
           data-label="column 2"
-          .style="${this._getColumnWidth(1, this.columnWidths)}"
+          .style="${this._getColumnWidth(1, this.__columnWidths)}"
         >
           <slot name="col-2"></slot>
         </div>
@@ -424,7 +424,7 @@ class GridPlate extends LitElement {
           class="column"
           id="col3"
           data-label="column 3"
-          .style="${this._getColumnWidth(2, this.columnWidths)}"
+          .style="${this._getColumnWidth(2, this.__columnWidths)}"
         >
           <slot name="col-3"></slot>
         </div>
@@ -432,7 +432,7 @@ class GridPlate extends LitElement {
           class="column"
           id="col4"
           data-label="column 4"
-          .style="${this._getColumnWidth(3, this.columnWidths)}"
+          .style="${this._getColumnWidth(3, this.__columnWidths)}"
         >
           <slot name="col-4"></slot>
         </div>
@@ -440,7 +440,7 @@ class GridPlate extends LitElement {
           class="column"
           id="col5"
           data-label="column 5"
-          .style="${this._getColumnWidth(4, this.columnWidths)}"
+          .style="${this._getColumnWidth(4, this.__columnWidths)}"
         >
           <slot name="col-5"></slot>
         </div>
@@ -448,7 +448,7 @@ class GridPlate extends LitElement {
           class="column"
           id="col6"
           data-label="column 6"
-          .style="${this._getColumnWidth(5, this.columnWidths)}"
+          .style="${this._getColumnWidth(5, this.__columnWidths)}"
         >
           <slot name="col-6"></slot>
         </div>
@@ -601,7 +601,7 @@ class GridPlate extends LitElement {
         });
       }
     }
-    this.columnWidths = this._getColumnWidths(
+    this.__columnWidths = this._getColumnWidths(
       this.responsiveSize,
       this.layout,
       this.layouts,
@@ -822,9 +822,8 @@ class GridPlate extends LitElement {
       /**
        * name of selected layout
        */
-      columnWidths: {
-        type: String,
-        attribute: "column-widths"
+      __columnWidths: {
+        type: String
       }
     };
   }
@@ -836,7 +835,7 @@ class GridPlate extends LitElement {
           propName
         )
       ) {
-        this.columnWidths = this._getColumnWidths(
+        this.__columnWidths = this._getColumnWidths(
           this.responsiveSize,
           this.layout,
           this.layouts,
@@ -858,7 +857,7 @@ class GridPlate extends LitElement {
           this._activeItemChanged(this[propName], oldValue);
           break;
         // observer, ensure we are sized correctly after widths change
-        case "columnWidths":
+        case "__columnWidths":
           // widths changed because of layout somehow, wait for the resize transition
           // to have processed, then fire a resize event which we are listening for
           // which will then ensure the arrows are positioned correctly
@@ -1071,9 +1070,9 @@ class GridPlate extends LitElement {
    * @param {object} an object with a layout's column sizes at the current responsive width
    * @returns {string} a given column's current width based on layout and current responsive width
    */
-  _getColumnWidth(column, columnWidths) {
-    return columnWidths !== undefined && columnWidths[column] !== undefined
-      ? "width:" + columnWidths[column]
+  _getColumnWidth(column, __columnWidths) {
+    return __columnWidths !== undefined && __columnWidths[column] !== undefined
+      ? "width:" + __columnWidths[column]
       : "min-height: unset";
   }
   /**
@@ -1082,8 +1081,8 @@ class GridPlate extends LitElement {
    * @param {string} the name of selected layout
    * @returns {number} the number of columns in this layout
    */
-  _getColumns(columnWidths) {
-    return columnWidths.length;
+  _getColumns(__columnWidths) {
+    return __columnWidths.length;
   }
   /**
    * Focus / tab / click event normalization
@@ -1358,10 +1357,10 @@ class GridPlate extends LitElement {
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
-        typeof target !== typeof undefined &&
-        target !== null &&
+        target &&
         typeof local !== typeof undefined &&
         local.getAttribute("slot") != null &&
+        local.parentNode &&
         target !== local
       ) {
         target.setAttribute("slot", local.getAttribute("slot"));
@@ -1373,7 +1372,11 @@ class GridPlate extends LitElement {
       }
       // special case for dropping on an empty column or between items
       // which could involve a miss on the column
-      else if (local.tagName === "DIV" && local.classList.contains("column")) {
+      else if (
+        target &&
+        local.tagName === "DIV" &&
+        local.classList.contains("column")
+      ) {
         var col = local.id.replace("col", "");
         target.setAttribute("slot", "col-" + col);
         this.appendChild(target);

@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrndesignGallery: lrndesign-gallery Demo</title>
-    
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lrndesign-gallery.js';
     </script>
@@ -15,7 +16,7 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>lrndesign-gallery Demo</h1>
+      <h1>Basic lrndesign-gallery demo</h1>
       <h2>Basic lrndesign-gallery</h2>
       <demo-snippet>
         <template>

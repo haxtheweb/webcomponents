@@ -11,21 +11,22 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@polymer/paper-button/paper-button.js';
-      import '@polymer/paper-item/paper-item.js';
-      import '@lrnwebcomponents/dropdown-select/dropdown-select.js';
+      import '@lrnwebcomponents/simple-fields/lib/simple-fields-container.js';
       import '../simple-modal.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
   </head>
   <body>
-    <dropdown-select id="sitetheme" label="Theme" value="simple-blog">
-      <paper-item value="simple-blog">Simple blog</paper-item>
-      <paper-item value="outline-player">Basic outline</paper-item>
-      <paper-item value="lrnapp-book">Course outline</paper-item>
-      <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
-      <paper-item value="infinite-scroll">Infinite scroll</paper-item>
-    </dropdown-select>
+    <simple-fields-container id="sitetheme" label="Theme">
+      <select value="simple-blog">
+        <option value="simple-blog" selected>Simple blog</option>
+        <option value="outline-player">Basic outline</option>
+        <option value="lrnapp-book">Course outline</option>
+        <option value="haxcms-dev-theme">DEVELOPER THEME</option>
+        <option value="infinite-scroll">Infinite scroll</option>
+      </select>
+    </simple-fields-container>
     <div id="somediv"><p>This is to illustrate the notion of some DIV being handed off to the modal but just a clone, not the real thing.</p></div>
     <div class="vertical-section-container centered">
       <h3>Basic simple-modal demo</h3>

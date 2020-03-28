@@ -178,7 +178,7 @@ class A11yTabs extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id") this._idChanged(this.id, oldValue);
-      if (propName === "activeTab")
+      if (propName === "activeTab" && this.activeTab !== oldValue)
         this._activeTabChanged(this.activeTab, oldValue);
       if (propName === "iconBreakpoint") this._breakpointChanged();
       if (propName === "layoutBreakpoint") this._breakpointChanged();
@@ -190,16 +190,17 @@ class A11yTabs extends LitElement {
    * @param {string} id the active tab's id
    */
   selectTab(id) {
-    let tabs = this.querySelectorAll(this.tabQuery),
-      filtered = Object.keys(tabs || []).filter(tab => tabs[tab].id === id),
-      selected = filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : tabs[0];
-    if (selected && selected.id !== id) {
-      this.activeTab = selected.id;
-      return;
-    } else if (tabs && tabs.length > 0) {
+    let tabs = this.querySelectorAll(this.tabQuery);
+    if (tabs && tabs.length > 0) {
+      let enabled = Object.keys(tabs || [])
+          .filter(key => !tabs[key].disabled)
+          .map(key => tabs[key].id),
+        filtered = enabled.filter(tabid => tabid === id),
+        selected = filtered[0] || enabled[0];
       tabs.forEach(tab => {
-        tab.hidden = tab.id !== id;
+        tab.hidden = tab.id !== selected;
       });
+      this.activeTab = selected;
     }
   }
   /**
@@ -214,7 +215,16 @@ class A11yTabs extends LitElement {
    * @param {string} newValue the new active tab's id
    */
   _activeTabChanged(newValue, oldValue) {
+    console.log("_activeTabChanged", this, newValue, oldValue);
     if (newValue !== oldValue) this.selectTab(newValue);
+    window.dispatchEvent(
+      new CustomEvent("active-tab-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
   /**
    * handles any breakpoint changes
@@ -242,6 +252,7 @@ class A11yTabs extends LitElement {
    * @param {event} e the tab tap event
    */
   _handleTab(tab) {
+    console.log("_handleTab", this, tab);
     if (!tab.disabled) this.activeTab = tab.id;
   }
   /**

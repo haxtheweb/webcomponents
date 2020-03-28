@@ -17,5 +17,12 @@
    */
   "label": {
     "type": "String"
+  },
+  /**
+   * tracks all activeTabs as an object
+   */
+  "__activeTabs": {
+    "type": "Object",
+    "attribute": "active-path"
   }
 }

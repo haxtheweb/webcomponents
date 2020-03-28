@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/beaker-broker": "^2.6.2",
-    "@lrnwebcomponents/dropdown-select": "^2.6.2",
     "@lrnwebcomponents/hax-body": "^2.6.2",
     "@lrnwebcomponents/hax-body-behaviors": "^2.6.2",
     "@lrnwebcomponents/jwt-login": "^2.6.2",
@@ -51,6 +50,7 @@
     "@lrnwebcomponents/map-menu": "^2.6.2",
     "@lrnwebcomponents/schema-behaviors": "^2.6.2",
     "@lrnwebcomponents/simple-colors": "^2.6.2",
+    "@lrnwebcomponents/simple-fields": "^2.5.0",
     "@lrnwebcomponents/simple-icon-picker": "^2.6.2",
     "@lrnwebcomponents/simple-picker": "^2.6.2",
     "@lrnwebcomponents/simple-tooltip": "^2.5.0",

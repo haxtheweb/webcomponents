@@ -115,6 +115,10 @@ class HaxTray extends winEventsElement(LitElement) {
             --simple-colors-default-theme-cyan-8,
             #007999
           );
+          --simple-fields-accent-color: var(
+            --simple-colors-default-theme-cyan-8,
+            #007999
+          );
           --a11y-tabs-focus-color: var(
             --hax-contextual-action-hover-color,
             var(--simple-colors-default-theme-cyan-8, #007999)
@@ -147,6 +151,10 @@ class HaxTray extends winEventsElement(LitElement) {
             --simple-colors-default-theme-purple-8,
             #8a009b
           );
+          --simple-fields-accent-color: var(
+            --simple-colors-default-theme-purple-8,
+            #8a009b
+          );
         }
         #settingscollapse {
           --hax-tray-panel-accent-text: var(
@@ -154,6 +162,10 @@ class HaxTray extends winEventsElement(LitElement) {
             #fff
           );
           --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-green-8,
+            #00762e
+          );
+          --simple-fields-accent-color: var(
             --simple-colors-default-theme-green-8,
             #00762e
           );
@@ -167,6 +179,10 @@ class HaxTray extends winEventsElement(LitElement) {
             --simple-colors-default-theme-cyan-8,
             #007999
           );
+          --simple-fields-accent-color: var(
+            --simple-colors-default-theme-cyan-8,
+            #007999
+          );
         }
         #templateslayouts {
           --hax-tray-panel-accent-text: var(
@@ -174,6 +190,10 @@ class HaxTray extends winEventsElement(LitElement) {
             #fff
           );
           --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-pink-8,
+            #b80042
+          );
+          --simple-fields-accent-color: var(
             --simple-colors-default-theme-pink-8,
             #b80042
           );
@@ -275,6 +295,8 @@ class HaxTray extends winEventsElement(LitElement) {
           --a11y-collapse-border-between: 1px solid
             var(--simple-colors-default-theme-grey-3, #dddddd);
           transition: all 0.5ms ease-in-out;
+          border-left: 3px solid
+            var(--simple-colors-default-theme-grey-3, #dddddd);
         }
         a11y-collapse:not([expanded]) div[slot="content"] {
           display: none;
@@ -293,15 +315,22 @@ class HaxTray extends winEventsElement(LitElement) {
             var(--simple-colors-default-theme-grey-1, #fff)
           );
         }
+        a11y-collapse:hover {
+          border-left: 3px solid
+            var(
+              --hax-tray-panel-accent,
+              var(--hax-contextual-action-hover-color)
+            );
+        }
         a11y-collapse[expanded],
         a11y-collapse[expanded]:hover {
           --a11y-collapse-heading-color: var(
-            --hax-tray-panel-accent-text,
-            var(--simple-colors-default-theme-grey-1)
-          );
-          --a11y-collapse-heading-background-color: var(
             --hax-tray-panel-accent,
             var(--hax-contextual-action-hover-color)
+          );
+          --a11y-collapse-heading-background-color: var(
+            --hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1)
           );
         }
         a11y-collapse[disabled] {
@@ -1134,7 +1163,7 @@ class HaxTray extends winEventsElement(LitElement) {
         advanced: {}
       }
     };
-    this.shadowRoot.querySelector("#settingsform").fields = {};
+    this.shadowRoot.querySelector("#settingsform").fields = [];
     this.shadowRoot.querySelector("#settingsform").value = {};
     // see if we can get schema off of this.
     if (
@@ -1327,7 +1356,6 @@ class HaxTray extends winEventsElement(LitElement) {
           description: "Position the element relative to other items",
           disabled: true
         });
-        disable.push("item-0");
       }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
@@ -1344,7 +1372,6 @@ class HaxTray extends winEventsElement(LitElement) {
           description: "Configure the element",
           disabled: true
         });
-        disable.push("item-1");
       }
       // see if we have any configure settings or disable
       if (props.settings.advanced.length > 0) {
@@ -1361,7 +1388,6 @@ class HaxTray extends winEventsElement(LitElement) {
           description: "Advanced element settings",
           disabled: true
         });
-        disable.push("item-2");
       }
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
@@ -1370,57 +1396,6 @@ class HaxTray extends winEventsElement(LitElement) {
       this.shadowRoot.querySelector("#settingsform").value = {
         ...this.activeValue
       };
-      // allow form to rebuild, then switch it to the correct input
-      if (
-        this.shadowRoot &&
-        this.shadowRoot.querySelector("#settingsform").shadowRoot
-      ) {
-        setTimeout(() => {
-          // wrap in a try just to be safe
-          try {
-            // @todo in the future this will have to match nikki's rewrite of the fields stuff
-            disable.forEach(id => {
-              this.shadowRoot
-                .querySelector("#settingsform")
-                .shadowRoot.querySelector("simple-fields")
-                .shadowRoot.querySelector("#" + id).disabled = true;
-            });
-            // check for active tab being disabled
-            if (
-              this.shadowRoot
-                .querySelector("#settingsform")
-                .shadowRoot.querySelector("simple-fields")
-                .shadowRoot.querySelector("#" + this.activeTab).disabled
-            ) {
-              // support active tab being disabled and having to move down
-              // to a new active tab
-              switch (this.activeTab) {
-                case "item-0":
-                  this.activeTab = "item-1";
-                  if (
-                    this.shadowRoot
-                      .querySelector("#settingsform")
-                      .shadowRoot.querySelector("simple-fields")
-                      .shadowRoot.querySelector("#" + this.activeTab).disabled
-                  ) {
-                    this.activeTab = "item-2";
-                  }
-                  break;
-                case "item-1":
-                  // advanced is ALWAYS alive because it has the class
-                  // and other HTML attributes in it
-                  this.activeTab = "item-2";
-                  break;
-              }
-            }
-            this.shadowRoot
-              .querySelector("#settingsform")
-              .shadowRoot.querySelector(
-                "simple-fields"
-              ).activeTab = this.activeTab;
-          } catch (e) {}
-        }, 10);
-      }
     }
   }
   /**

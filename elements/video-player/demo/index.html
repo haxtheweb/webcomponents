@@ -26,13 +26,13 @@
       <demo-snippet>
         <template>
           <video-player accent-color="yellow" dark>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="//www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>
             <video><track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default></video>
           </video-player>
           <video-player id="example" accent-color="amber" linkable>
             <video>
-              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
+              <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+              <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
               <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
               <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
               <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
@@ -44,10 +44,10 @@
       <h2>video-player for youtube + repair to correctly normalize embed address</h2>
       <demo-snippet>
         <template>
-          <video-player preload="auto" source="https://www.youtube.com/watch?v=LrS7dqokTLE" track="samples/HAXshort.vtt"></video-player>
-          <video-player class="max-600" dark source="https://www.youtube-nocookie.com/embed/LrS7dqokTLE"></video-player>
-          <video-player class="max-600" accent-color="orange" source="https://www.youtube.com/embed/LrS7dqokTLE"></video-player>
-          <video-player class="max-600" accent-color="orange" dark source="https://youtu.be/LrS7dqokTLE"></video-player>
+          <video-player preload="auto" source="//www.youtube.com/watch?v=LrS7dqokTLE" track="./samples/HAXshort.vtt"></video-player>
+          <video-player class="max-600" dark source="//www.youtube-nocookie.com/embed/LrS7dqokTLE"></video-player>
+          <video-player class="max-600" accent-color="orange" source="//www.youtube.com/embed/LrS7dqokTLE"></video-player>
+          <video-player class="max-600" accent-color="orange" dark source="//youtu.be/LrS7dqokTLE"></video-player>
         </template>
       </demo-snippet>
 
@@ -57,14 +57,14 @@
           <video-player 
             accent-color="red" 
             preload="none"
-            source="https://www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s">
+            source="//www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s">
           </video-player>
           <video-player 
             accent-color="red"
             dark 
-            source="https://personal.psu.edu/lnm105/stclair.mp4#t=60,120" 
-            track="samples/stclair.vtt"
-            thumbnail-src="samples/stclair.jpg">
+            source="//personal.psu.edu/lnm105/stclair.mp4" 
+            track="./samples/stclair.vtt"
+            thumbnail-src="./samples/stclair.jpg">
             <div slot="caption">This is a video caption.</div>
           </video-player>
         </template>
@@ -74,11 +74,11 @@
       <demo-snippet>
         <template>
           <video-player 
-            source="https://vimeo.com/144218562" 
+            source="//vimeo.com/144218562" 
             caption="Things and stuff, is where the world is.">
           </video-player>
           <video-player
-            source="https://player.vimeo.com/video/144218562">
+            source="//player.vimeo.com/video/144218562">
           </video-player>
         </template>
       </demo-snippet>
@@ -90,16 +90,16 @@
             accent-color="cyan" 
             linkable
             player-id="any-address"
-            sources="[{&quot;src&quot;: &quot;https://clips.vorwaerts-gmbh.de/big_buck_bunny.webm&quot;}]">
+            sources="[{&quot;src&quot;: &quot;//personal.psu.edu/lnm105/stclair.mp4&quot;}]">
           </video-player>
           <video-player 
             accent-color="cyan" 
             dark
             linkable
             player-id="any-address2"
-            thumbnail-src="https://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg?itok=_1HEhahr" 
-            track="samples/stclair.vtt" 
-            sources="[{ &quot;src&quot;:&quot;https://personal.psu.edu/lnm105/stclair.mp4&quot;, &quot;type&quot;:&quot;video/mp4&quot; }]">
+            thumbnail-src="//www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg?itok=_1HEhahr" 
+            track="./samples/stclair.vtt" 
+            sources="[{ &quot;src&quot;:&quot;//personal.psu.edu/lnm105/stclair.mp4&quot;, &quot;type&quot;:&quot;video/mp4&quot; }]">
           </video-player>
         </template>
       </demo-snippet>
@@ -108,26 +108,26 @@
       <demo-snippet>
         <template>
           <video-player 
-            source="https://vimeo.com/144218562" 
+            source="//vimeo.com/144218562" 
             width="400" height="200">
           </video-player>
           <video-player
             accent-color="light-green" 
             dark 
-            source="https://www.youtube.com/watch?v=o9RypkhGqrg">
+            source="//www.youtube.com/watch?v=o9RypkhGqrg">
           </video-player>
-          <video-player source="https://sketchfab.com/models/25332df5b7174ea6a7301ff67cf0ecff/embed"></video-player>
+          <video-player source="//sketchfab.com/models/25332df5b7174ea6a7301ff67cf0ecff/embed"></video-player>
         </template>
       </demo-snippet>
 
       <h2>video-player with not-responsive flag to disable it</h2>
       <demo-snippet>
         <template>
-          <video-player source="https://vimeo.com/144218562" not-responsive width="400" height="200"></video-player>
+          <video-player source="//vimeo.com/144218562" not-responsive width="400" height="200"></video-player>
           <video-player 
             accent-color="pink" 
             dark
-            source="https://www.youtube.com/watch?v=o9RypkhGqrg" 
+            source="//www.youtube.com/watch?v=o9RypkhGqrg" 
             not-responsive>
           </video-player>
         </template>
@@ -138,9 +138,9 @@
         <template>
           <video-player 
             accent-color="deep-purple"
-            source="https://personal.psu.edu/lnm105/stclair.mp4" 
-            track="samples/stclair.vtt"
-            thumbnail-src="samples/stclair.jpg">
+            source="//personal.psu.edu/lnm105/stclair.mp4" 
+            track="./samples/stclair.vtt"
+            thumbnail-src="./samples/stclair.jpg">
             <div slot="caption">This is a video caption.</div>
           </video-player>
         </template>

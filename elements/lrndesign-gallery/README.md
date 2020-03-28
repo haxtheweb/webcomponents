@@ -1,22 +1,26 @@
 # &lt;lrndesign-gallery&gt;
 
 Gallery
-> Start of lrndesign-gallery
+> displays images as a carousel or grid with the ability to zoom
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
-/* In an existing module / web component */
-import '@lrnwebcomponents/lrndesign-gallery.js';
-/* At top of an application */
-<script type="module" src="lrndesign-gallery.js"></script>
+/* In an existing JS module / web component */
+import '@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js';
+/* At top of an application with build routine */
+<script type="module" src="@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrndesign-gallery.js';
-
+  import '@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js';
+  // imperative form
   import {LrndesignGallery} from '@lrnwebcomponents/lrndesign-gallery';
+  // if you don't have a build routine and need to reference directly
+  import './node_modules/@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js';
 </script>
+// via unpkg CDN (good for testing)
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js"></script>
 ```
 
 ## Develop / Demo
@@ -40,7 +44,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`

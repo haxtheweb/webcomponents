@@ -49,9 +49,16 @@ class SimpleFieldsContainer extends LitElement {
         #fieldmeta {
           text-align: right;
         }
+        :host .label-main:after {
+          content: var(--simple-fields-label-flag,'');
+        }
         :host(:focus-within) .label-main {
           color: var(--simple-fields-accent-color, #3f51b5);
           transition: color 0.3s ease-in-out;
+        }
+        .inline {
+          --simple-fields-radio-option-display: flex;
+          --simple-fields-radio-option-flex-wrap: wrap;
         }
         .inline label {
           margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
@@ -73,6 +80,14 @@ class SimpleFieldsContainer extends LitElement {
           transition: opacity ease-in-out;
           flex: 1 0 auto;
         }
+        ::slotted([slot="field"]:focus) {
+          outline: none;
+        }
+        :host[inline] ::slotted([slot="field"]:focus), 
+        ::slotted([type="checkbox"][slot="radio"]:focus),
+        ::slotted([type="checkbox"][slot="field"]:focus) {
+          outline: unset;
+        }
         .field-main.inline .field,
         .field-main.inline ::slotted([slot="field"]) {
           min-width: var(--simple-fields-detail-line-height, 22px);
@@ -93,13 +108,6 @@ class SimpleFieldsContainer extends LitElement {
         .border-bottom {
           height: 0;
         }
-        :host([type="checkbox"]) .border-bottom,
-        :host([type="color"]) .border-bottom,
-        :host([type="file"]) .border-bottom,
-        :host([type="radio"]) .border-bottom,
-        :host([type="range"]) .border-bottom {
-          display: none;
-        }
         :host([disabled]) .border-bottom {
           border-bottom: 1px dashed var(--simple-fields-border-color, #999);
         }
@@ -117,6 +125,30 @@ class SimpleFieldsContainer extends LitElement {
           width: 100%;
           transition: width 0.5s ease-in-out;
         }
+        :host([type="checkbox"]) .border-bottom,
+        :host([type="color"]) .border-bottom,
+        :host([type="file"]) .border-bottom,
+        :host([type="radio"]) .border-bottom,
+        :host([type="range"]) .border-bottom {
+          display: none;
+        }
+        ::slotted(textarea[slot="field"]) {
+          margin: 0;
+          transition: height 0.5s ease-in-out;
+          box-sizing: border-box;
+          vertical-align: bottom;
+        }
+        ::slotted(fieldset[slot="field"]) {
+          margin: 0;
+          padding: 0;
+          border: none;
+          font-size: var(--simple-fields-font-size, 16px);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          display: var(--simple-fields-radio-option-display, block);
+          flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
+          transition: color 0.3s ease-in-out;
+        }
       `
     ];
   }
@@ -132,6 +164,12 @@ class SimpleFieldsContainer extends LitElement {
        */
       autovalidate: {
         type: Boolean
+      },
+      /**
+       * a counter text and textareas: "character", "word" or unset for none
+       */
+      counter: {
+        type: String
       },
       /**
        * Optional description of the field (or use slot="description")
@@ -205,11 +243,47 @@ class SimpleFieldsContainer extends LitElement {
         type: String
       },
       /**
+       * Minimum number of checked items in fieldset
+       */
+      minchecked: {
+        type: Number
+      },
+      /**
+       * Minimum number of checked items in fieldset
+       */
+      maxchecked: {
+        type: Number
+      },
+      /**
+       * Maximum number of words in textarea
+       */
+      maxwords: {
+        type: Number
+      },
+      /**
        * Name of the input form control. Submitted with the form as part of a name/value pair.
        */
       name: {
         type: String,
         reflect: true
+      },
+      /**
+       * error message when number of items selected is not between min and max
+       */
+      numberMessage: {
+        type: String
+      },
+      /**
+       * regex pattern the value must match to be valid
+       */
+      pattern: {
+        type: String
+      },
+      /**
+       * error message when field does not match pattern
+       */
+      patternMessage: {
+        type: String
       },
       /**
        * Optional prefix string (or use slot="prefix")
@@ -232,23 +306,22 @@ class SimpleFieldsContainer extends LitElement {
         reflect: true
       },
       /**
+       * error message when field is required and has no value
+       */
+      requiredMessage: {
+        type: String
+      },
+      /**
        * Optional suffix string (or use slot="suffix")
        */
       suffix: {
         type: String
       },
       /**
-       * Current value of the form control. Submitted with the form as part of a name/value pair.
-       */
-      value: {
-        reflect: true
-      },
-      /**
        * Type of input form control
        */
       type: {
-        type: String,
-        reflect: true
+        type: String
       },
       /**
        * List of valid field types
@@ -260,10 +333,12 @@ class SimpleFieldsContainer extends LitElement {
   }
   constructor() {
     super();
+    this.counter = "none";
     this.autovalidate = false;
     this.disabled = false;
     this.hidden = false;
     this.error = false;
+    this.id = this._generateUUID();
     this.inline = false;
     this.validTypes = [
       "checkbox",
@@ -272,6 +347,7 @@ class SimpleFieldsContainer extends LitElement {
       "datetime-local",
       "email",
       "file",
+      "fieldset",
       "hidden",
       "month",
       "number",
@@ -300,13 +376,11 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsContainer
    */
-  autoGrow(field) {
-    if (field) return;
-    this._updateCount();
-    if (field) {
-      field.style.height = "auto";
-      field.style.height = `${field.scrollHeight}px`;
-      field.style.overflowY = "hidden";
+  autoGrow(field = this.field) {
+    if (this.field) {
+      this.field.style.height = "auto";
+      this.field.style.height = `${this.field.scrollHeight}px`;
+      this.field.style.overflowY = "hidden";
     }
   }
   /**
@@ -388,22 +462,6 @@ class SimpleFieldsContainer extends LitElement {
       </div>
     `;
   }
-  /**
-   * gets field element tag in shadow DOM
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsContainer
-   */
-  get fieldElementTag() {
-    return this.type === "select"
-      ? "select"
-      : this.type === "textarea"
-      ? "textarea"
-      : this.hasFieldSet
-      ? "fieldset"
-      : "input";
-  }
 
   /**
    * gets field's id
@@ -465,11 +523,32 @@ class SimpleFieldsContainer extends LitElement {
    */
   get labelTemplate() {
     return html`
-      <label for="${this.fieldId}" class="label-main">
+      <label for="${this.fieldId}" class="label-main" ?hidden="${this.type ==="fieldset"}">
         <slot name="label"></slot>
         ${this.label}${this.error || this.required ? "*" : ""}
       </label>
     `;
+  }
+  /**
+   * determines if number of items selected
+   * is not between min and max
+   *
+   * @readonly
+   * @memberof SimpleFieldsContainer
+   */
+  get numberError() {
+    let multicheck = this.type === "fieldset" && this.field.querySelector('input[type=checkbox]'),
+      items = this._getFieldValue() ? this._getFieldValue().length : false,
+      min = this.type === "select" ? this.min : multicheck ? this.minchecked : false,
+      max = this.type === "select" ? this.max : multicheck ? this.maxchecked : false;
+
+      let more = min && items && min > items 
+        ? min - items 
+        : false,
+      less = max && items && max < items 
+        ? max - items
+        : more;
+    return less;
   }
 
   /**
@@ -490,6 +569,22 @@ class SimpleFieldsContainer extends LitElement {
       "range"
     ].includes(this.type);
   }
+  /**
+   * determines if value does not match regex pattern
+   *
+   * @readonly
+   * @memberof SimpleFieldsContainer
+   */
+  get patternError() {
+    return (
+      this.pattern &&
+      this.pattern !== "" &&
+      this._getFieldValue() &&
+      (!this.field.multiple
+        ? !this._getFieldValue().match(this.pattern)
+        : this._getFieldValue().filter(value => !value.match(this.pattern)))
+    );
+  }
 
   /**
    * template for slotted or shadow DOM prefix
@@ -503,6 +598,15 @@ class SimpleFieldsContainer extends LitElement {
       <slot name="prefix"></slot>
       ${this.prefix}
     `;
+  }
+  /**
+   * determines if field is required and blank
+   *
+   * @readonly
+   * @memberof SimpleFieldsContainer
+   */
+  get requiredError() {
+    return !this._getFieldValue() && this.required;
   }
 
   /**
@@ -530,7 +634,6 @@ class SimpleFieldsContainer extends LitElement {
       ${this.suffix}
     `;
   }
-
   /**
    * focuses on field
    * @memberof SimpleFieldsContainer
@@ -602,24 +705,30 @@ class SimpleFieldsContainer extends LitElement {
   }
 
   /**
-   * checks validation constraints and returns error data (for slotted field)
-   * @returns {object}
+   * checks validation constraints and returns error data
    * @memberof SimpleFieldsContainer
    */
   validate() {
-    let value = this.field.value,
-      pattern = this.field.pattern,
-      requiredError =
-        !value && this.required
-          ? this.defaultRequiredMessage || this.defaultErrorMessage
-          : false,
-      patternError =
-        pattern !== "" && value && !value.match(pattern)
-          ? this.defaultErrorMessage
-          : false;
-    this.errorMessage = requiredError || patternError;
-    this.error = this.errorMessage !== false;
+    let legend = this.field.querySelector('legend');
+    if (this.requiredError) {
+      this.error = true;
+      this.errorMessage = this.requiredMessage || `required`;
+    } else if (this.numberError) {
+      this.error = true;
+      this.errorMessage =
+        this.numberMessage || (this.numberError > 0
+          ? `select ${this.numberError} more`
+          : `select ${0 - this.numberError} fewer`);
+    } else if (this.patternError) {
+      this.error = true;
+      this.errorMessage = this.patternMessage || `invalid format`;
+    }
+    if(this.type === "fieldset" && legend) {
+      legend.innerHTML = legend.innerHTML.replace(/\**\s*$/,this.error ? '*' : '');
+      legend.style.color = this.error ? 'var(--simple-fields-error-color, #dd2c00)' : '';
+    }
   }
+
   /**
    * fires when error changes
    * @event error-changed
@@ -635,6 +744,50 @@ class SimpleFieldsContainer extends LitElement {
     );
   }
   /**
+   * generates a unique id
+   * @returns {string } unique id
+   */
+  _generateUUID() {
+    return "ss-s-s-s-sss".replace(
+      /s/g,
+      Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1)
+    );
+  }
+
+  /**
+   * gets the value of a field based on field type
+   *
+   * @memberof SimpleFieldsContainer
+   */
+  _getFieldValue(){
+    let checked, value;
+    if(this.field){
+      if(this.type === "fieldset" && this.field.querySelector('input[type=radio]')){
+        checked = this.field.querySelector('input:checked');
+        value = checked ? checked.value : undefined;
+      } else if(this.type === "fieldset" && this.field.querySelector('input[type=checkbox]')) {
+        value = []; 
+        checked = this.field.querySelectorAll('input:checked');
+        checked.forEach(input=>value.push(input.value))
+      } else if(this.type === "checkbox"){
+        value = this.field.checked ? this.field.value || true : undefined;
+      } else if(this.type === "radio"){
+        value = this.field.checked ? this.field.value || true : undefined;
+      } else if(this.type === "select"){
+        value = this.multiple
+          ? Object.keys(this.field.selectedOptions).map(
+              option => this.field.selectedOptions[option].value
+            )
+          : this.field.selectedOptions[0].value;
+      } else {
+        value = this.field.value;
+      }
+    }
+    return value;
+  }
+  /**
    * gets a valid version of a given type
    *
    * @param {string} type
@@ -648,6 +801,16 @@ class SimpleFieldsContainer extends LitElement {
       return type;
     }
     return "text";
+  }
+  /**
+   * handles field changes by field type
+   *
+   * @memberof SimpleFieldsContainer
+   */
+  _handleFieldChange(){
+    if(this.type === "text" || this.type === "textarea") this._updateCount();
+    if(this.autovalidate) this.validate();
+    if(this.type === "textarea") this.autoGrow();
   }
   /**
    * observes slotted field and listens for focusout
@@ -696,25 +859,98 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   _updateField() {
+    let oldfield = this.field;
+
     this.field =
       this.querySelector && this.querySelector("[slot=field]")
         ? this.querySelector("[slot=field]")
         : undefined;
     this.id = `${this.fieldId || ""}-wrapper`;
+
     if (this.field) {
       let tag = this.field.tagName.toLowerCase(),
-        type = this.field.type || this.field.getAttribute("type") || "text";
+        type = this.field.getAttribute("type") || "text";
       this.type = this._getValidType(tag === "input" ? type : tag);
       this.required = this.field.required;
       this.disabled = this.field.disabled;
       this.readonly = this.field.readonly;
       this.field.setAttribute("aria-describedby", "field-bottom");
+      /** add event listeners */
+      this.field.addEventListener('change',e => this._handleFieldChange());
+      this.field.addEventListener('input',e => this._handleFieldChange());
+
+      /** field type-specific adjustments */
+      if(this.type  ===  "select") this.multiple = this.field.multiple;
+      if(this.type  ===  "textarea") {
+        if(!this.field.getAttribute('rows')) this.field.setAttribute('rows',1);
+        this.field.addEventListener('keydown',e => e.stopPropagation());
+      }
+      if(this.type  ===  "fieldset") {
+        let legend = this.querySelector('legend')
+        if(legend){
+          legend.style.fontSize = 'var(--simple-fields-detail-font-size, 12px)';
+          legend.style.fontFamily = 'var(--simple-fields-detail-font-family, sans-serif)';
+          legend.style.lineHeight = 'var(--simple-fields-detail-line-height, 22px)';
+          legend.style.paddingInlineStart = 0;
+          legend.style.paddingInlineEnd = 0;
+        }
+        this.querySelectorAll('label, input').forEach(el=>el.style.marginRight = 'var(--simple-fields-margin, 16px)');
+        this.querySelectorAll('label input').forEach(el=>el.style.marginLeft = 'calc(0 - var(--simple-fields-margin, 16px))');
+      }
     } else {
       this.disabled = false;
       this.readonly = false;
       this.required = false;
       this.type = undefined;
+
+      /** remove event listeners from old field */
+      if(oldfield){
+        if(oldfield.tagName.toLowerCase() === "textarea") 
+          oldfield.addEventListener('keydown',e => e.stopPropagation());
+        oldfield.removeEventListener('change',e => this._handleFieldChange());
+        oldfield.removeEventListener('input',e => this._handleFieldChange());
+      }
     }
+  }
+
+  /**
+   * updates counter and sets maximum word count
+   *
+   * @memberof SimpleFieldsContainer
+   */
+  _updateCount() {
+    let count = ``,
+      word = `[\\w\\-\\']+`,
+      wordcounter = new RegExp(word, "gim"),
+      maxlength = this.field.getAttribute('maxlength') || this.maxlength || false,
+      maxword = this.maxwords || false,
+      countmax = this.counter === "word" ? maxword : maxlength,
+      regex = new RegExp(`.{0,${maxlength || 1}}`, "g"),
+      wordregex = new RegExp(`(${word}\\W*){0,${maxword || 1}}`, "g"),
+      length = ()=> !this.field.value ? 0 : this.field.value.length,
+      wordlength = () => {
+        return !this.field.value 
+          || !this.field.value.match(wordcounter)
+          ? 0
+          : this.field.value.match(wordcounter).length
+        },
+      correctLength = (length,max,regex)=>{
+        if (
+          length &&
+          max &&
+          max < length &&
+          this.field.value.match(regex)
+        ) {
+          this.field.value = this.field.value.match(regex)[0].trim();
+        }
+      };
+    correctLength(length(),maxlength,regex);
+    correctLength(wordlength(),maxword,wordregex);
+    count = this.counter === "word" ? wordlength() : length();
+    if (this.counter !== 'none' && this.shadowRoot && this.shadowRoot.querySelector("#fieldmeta"))
+      this.shadowRoot.querySelector("#fieldmeta").innerHTML = countmax
+        ? `${count}/${countmax}`
+        : count;
   }
 }
 window.customElements.define(SimpleFieldsContainer.tag, SimpleFieldsContainer);

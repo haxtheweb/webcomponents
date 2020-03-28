@@ -20,9 +20,11 @@ class SocialShareLink extends LitElement {
         :host {
           display: inline;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         :host a {
           display: inline-flex;
           align-items: center;
@@ -32,19 +34,23 @@ class SocialShareLink extends LitElement {
           padding: var(--social-share-button-padding, 0px);
           border-radius: var(--social-share-button-border-radius, 0px);
         }
+
         :host a:visited {
           color: var(--social-share-visited-link-color, inherit);
         }
+
         :host a:focus,
         :host a:hover {
           color: var(--social-share-link-hover-color, inherit);
         }
+
         :host([disabled]) a,
         :host([disabled]) a:focus,
         :host([disabled]) a:hover,
         :host([disabled]) a:visited {
           color: var(--social-share-disabled-link-color, #ddd);
         }
+
         :host([button-style]) a {
           padding: var(--social-share-button-padding, 5px 10px);
           border-radius: var(--social-share-button-border-radius, 3px);
@@ -53,14 +59,17 @@ class SocialShareLink extends LitElement {
           text-decoration: none;
           transition: all 0.5s;
         }
+
         :host([button-style]) a:visited {
           color: var(--social-share-visited-button-color, white);
         }
+
         :host([button-style]) a:focus,
         :host([button-style]) a:hover {
           color: var(--social-share-button-hover-color, white);
           background-color: var(--social-share-button-hover-bg, #0044ee);
         }
+
         :host([button-style][disabled]) a,
         :host([button-style][disabled]) a:focus,
         :host([button-style][disabled]) a:hover,
@@ -68,12 +77,15 @@ class SocialShareLink extends LitElement {
           color: var(--social-share-disabled-button-color, #ddd);
           background-color: var(--social-share-disabled-button-bg, #666);
         }
+
         :host iron-icon {
           margin-right: 5px;
         }
+
         :host a.text-only iron-icon {
           display: none;
         }
+
         :host a.icon-only .linktext {
           position: absolute;
           left: -999999px;
@@ -82,6 +94,7 @@ class SocialShareLink extends LitElement {
           width: 0;
           overflow: hidden;
         }
+
         :host a.icon-only iron-icon {
           margin-right: 0;
         }

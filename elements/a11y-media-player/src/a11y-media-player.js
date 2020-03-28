@@ -171,10 +171,9 @@ class A11yMediaPlayer extends SimpleColors {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
     import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-input/paper-input.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
@@ -260,6 +259,23 @@ class A11yMediaPlayer extends SimpleColors {
           })
         : this.captionsTrack.activeCues;
     return cues;
+  }
+
+  /**
+   * gets options for captions picker
+   *
+   * @readonly
+   * @memberof A11yMediaPlayer
+   */
+  get captionsPicker() {
+    let options = {};
+    options[-1] = this._getLocal(this.localization, "captions", "off");
+    Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
+      options[key] =
+        this.loadedTracks.textTracks[key].label ||
+        this.loadedTracks.textTracks[key].language;
+    });
+    return options;
   }
 
   /**
@@ -720,6 +736,23 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * gets options for transcript picker
+   *
+   * @readonly
+   * @memberof A11yMediaPlayer
+   */
+  get transcriptPicker() {
+    let options = {};
+    options[-1] = this._getLocal(this.localization, "transcript", "off");
+    Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
+      options[key] =
+        this.loadedTracks.textTracks[key].label ||
+        this.loadedTracks.textTracks[key].language;
+    });
+    return options;
+  }
+
+  /**
    * `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values
    */
   get transcriptTrackKey() {
@@ -767,18 +800,6 @@ class A11yMediaPlayer extends SimpleColors {
       root._handleTimeUpdate(e)
     );
     this._addResponsiveUtility();
-    /**
-     * Fires when a new player is ready for a11y-media-state-manager
-     * @event a11y-player
-     */
-    window.dispatchEvent(
-      new CustomEvent("a11y-player", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
     this.__playerReady = true;
   }
 
@@ -845,8 +866,6 @@ class A11yMediaPlayer extends SimpleColors {
       if (this.media !== null) {
         if (mediaChange("cc"))
           this._setAttribute("cc", this.cc, this.__loadedTracks);
-        if (mediaChange("crossorigin"))
-          this._setAttribute("crossorigin", this.crossorigin, media);
         if (mediaChange("isYoutube") && this.__loadedTracks)
           this.__loadedTracks.hidden === this.isYoutube;
         if (mediaChange("mediaLang"))
@@ -1217,12 +1236,16 @@ class A11yMediaPlayer extends SimpleColors {
    * @readonly
    */
   getloadedTracks() {
-    let media = this.querySelectorAll("audio,video"),
+    let media = this.querySelector("audio,video"),
+      crossorigin = media ? media.getAttribute("crossorigin") : undefined,
       primary = null;
-    media.forEach(medium => {
-      medium.removeAttribute("autoplay");
-      medium.setAttribute("preload", "metadata");
-    });
+
+    if (media) {
+      if (!crossorigin) media.setAttribute("crossorigin", this.crossorigin);
+      media.removeAttribute("autoplay");
+      media.setAttribute("preload", "metadata");
+    }
+
     if (!this.youtubeId) {
       let iframeSrc =
           this.querySelector("iframe") && this.querySelector("iframe")
@@ -1238,21 +1261,22 @@ class A11yMediaPlayer extends SimpleColors {
       }
     }
 
-    if (media.length > 0) {
-      primary = media[0];
-      this.audioOnly = primary.tagName === "AUDIO";
-    } else {
+    if (!media) {
       primary = document.createElement(
         this.querySelectorAll('source[type*="audio"]').length > 0
           ? "audio"
           : "video"
       );
+      if (!crossorigin) primary.setAttribute("crossorigin", this.crossorigin);
       primary.setAttribute("preload", "metadata");
       this.querySelectorAll("source,track").forEach(node => {
         if (node.parentNode === this) primary.appendChild(node);
       });
       this.appendChild(primary);
+    } else {
+      primary = media;
     }
+    this.audioOnly = primary.tagName === "AUDIO";
     primary.style.width = "100%";
     primary.style.maxWidth = "100%";
 
@@ -1368,10 +1392,14 @@ class A11yMediaPlayer extends SimpleColors {
    */
   toggleFullscreen(mode) {
     if (this.fullscreenButton) {
-      this.fullscreen = mode === undefined ? !this.fullscreen : mode;
-      //this.toggleTranscript(this.fullscreen);
-      if (screenfull)
-        screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+      let fullscreen = mode === undefined ? !this.fullscreen : mode;
+      if (screenfull){
+        if(fullscreen){
+          screenfull.request(this.shadowRoot.querySelector("#player-section"));
+        } else {
+          screenfull.exit(this.shadowRoot.querySelector("#player-section"));
+        }
+      }
 
       /**
        * Fires when fullscreen is toggled
@@ -1724,6 +1752,19 @@ class A11yMediaPlayer extends SimpleColors {
   firstUpdated() {
     setTimeout(() => {
       window.A11yMediaStateManager.requestAvailability();
+
+      /**
+       * Fires when a new player is ready for a11y-media-state-manager
+       * @event a11y-player
+       */
+      window.dispatchEvent(
+        new CustomEvent("a11y-player", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
     }, 1000);
   }
   /**
