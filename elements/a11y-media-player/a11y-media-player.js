@@ -1628,15 +1628,18 @@ ${this.poster
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
-    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("screenfullLib", location);
-    window.addEventListener(
-      "es-bridge-screenfullLib-loaded",
-      this._onScreenfullLoaded.bind(this)
-    );
+    if (typeof screenfull === "object") {
+      this._onScreenfullLoaded();
+    } else {
+      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      const location = `${basePath}lib/screenfull/dist/screenfull.js`;
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load("screenfullLib", location);
+      window.addEventListener(
+        "es-bridge-screenfullLib-loaded",
+        this._onScreenfullLoaded
+      );
+    }
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
@@ -1791,7 +1794,6 @@ ${this.poster
    * @returns {boolean}
    */
   get fullscreenButton() {
-    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
@@ -2261,7 +2263,7 @@ ${this.poster
   disconnectedCallback() {
     window.removeEventListener(
       "es-bridge-screenfullLib-loaded",
-      this._onScreenfullLoaded.bind(this)
+      this._onScreenfullLoaded
     );
     super.disconnectedCallback();
   }
@@ -2848,8 +2850,10 @@ ${this.poster
       if (screenfull){
         if(fullscreen){
           screenfull.request(this.shadowRoot.querySelector("#player-section"));
+          this.fullscreen = true;
         } else {
           screenfull.exit(this.shadowRoot.querySelector("#player-section"));
+          this.fullscreen = false;
         }
       }
 
@@ -3190,14 +3194,13 @@ ${this.poster
    * and adds an event listener for screenfull
    * @param {event} e screenfull load
    */
-  _onScreenfullLoaded(e) {
-    let root = this;
+  _onScreenfullLoaded() {
     this.__screenfullLoaded = true;
 
     // handles fullscreen
     if (screenfull) {
-      screenfull.on("change", () => {
-        if (screenfull.enabled) root.fullscreen = screenfull.isFullscreen;
+      screenfull.on("change", (e) => {
+        if (screenfull.enabled) this.fullscreen = screenfull.isFullscreen;
       });
     }
   }
