@@ -21,7 +21,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
   ```
  * It will retrieve the items from the url automatically.
  * @demo demo/index.html
- * @customElement rss-items
+ * @element rss-items
  */
 class RssItems extends LitElement {
   //styles function

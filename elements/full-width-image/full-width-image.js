@@ -11,7 +11,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *  - images are best used when stretched across content
  *
  * @demo demo/index.html
- * @customElement full-width-image
+ * @element full-width-image
  */
 class FullWidthImage extends LitElement {
   //styles function

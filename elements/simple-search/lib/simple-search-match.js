@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `simple-search-match`
- * @customElement simple-search-match
+ * @element simple-search-match
  * matched term that can be searched with simple-search
  * 
 ### Styling

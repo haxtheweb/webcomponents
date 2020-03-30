@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `lrn-shared-styles-demo`
- * @customElement lrn-shared-styles-demo
+ * @element lrn-shared-styles-demo
  * `a demo of lrn-shared-styles`
  *
  * @microcopy - language worth noting:

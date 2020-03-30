@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * and aria-invalid functionality if needed.
  *
  * @group simple-fields
- * @customElement simple-fields-container
+ * @element simple-fields-container
  * @demo ./demo/container.html
  */
 class SimpleFieldsContainer extends LitElement {

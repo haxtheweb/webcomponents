@@ -9,7 +9,7 @@ import "@polymer/iron-icons/av-icons.js";
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
  *
- * @customElement a11y-media-button
+ * @element a11y-media-button
  */
 class A11yMediaButton extends LitElement {
   // properties available to the custom element for data binding

@@ -8,7 +8,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `simple-blog-post`
- * @customElement simple-blog-post
+ * @element simple-blog-post
  * `A simple blog and associated elements`
  */
 class SimpleBlogPost extends SimpleColors {

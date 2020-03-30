@@ -13,11 +13,11 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
- * @customElement a11y-collapse-group
+ * @element a11y-collapse-group
  * @extends A11yCollapse
  * @see ../a11y-collapse.js
  * @demo ./demo/group.html collapse groups
- * @customElement a11y-collapse-group
+ * @element a11y-collapse-group
  */
 class A11yCollapseGroup extends LitElement {
   static get styles() {

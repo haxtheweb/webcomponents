@@ -12,7 +12,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  *  -
  *
  * @demo demo/index.html
- * @customElement retro-card
+ * @element retro-card
  */
 class RetroCard extends SimpleColors {
   

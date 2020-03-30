@@ -4,7 +4,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `Polymer wrapper for a qr code.`
  *
  * @demo demo/index.html
- * @customElement q-r
+ * @element q-r
  */
 class QR extends LitElement {
   /**

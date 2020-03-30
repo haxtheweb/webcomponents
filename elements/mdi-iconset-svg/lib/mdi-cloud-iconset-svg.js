@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-cloud-iconset-svg`
- * @customElement mdi-cloud-iconset-svg is a iconset for the Material Design Icons collection with the "cloud" tag
+ * @element mdi-cloud-iconset-svg is a iconset for the Material Design Icons collection with the "cloud" tag
  *
  * Example:
  *   <iron-icon icon="mdi-cloud:cloud"></iron-icon>

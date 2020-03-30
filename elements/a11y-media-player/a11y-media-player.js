@@ -91,7 +91,7 @@ Custom property | Description | Default
 `--paper-toast-color` | toast text color | `--a11y-media-color`
 `--paper-toast-background-color` | toast background color | `--a11y-media-bg-color`
  *
- * @customElement a11y-media-player
+ * @element a11y-media-player
  * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo

@@ -24,7 +24,7 @@ Custom property | Description | Default
  * @extends SimpleColors
  * @extends SchemaBehaviors
  * @demo ./demo/index.html
- * @customElement self-check
+ * @element self-check
  * 
  */
 class SelfCheck extends SchemaBehaviors(SimpleColors) {

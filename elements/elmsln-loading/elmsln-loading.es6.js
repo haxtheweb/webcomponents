@@ -13,7 +13,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  *  - elmsln - an open source NGDLE to save education
  *
  * @demo demo/index.html
- * @customElement elmsln-loading
+ * @element elmsln-loading
  */
 class ElmslnLoading extends SimpleColors {
   /**

@@ -18,7 +18,7 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
  * @demo ./demo/editor.html
  *
  * @polymer
- * @customElement editable-table-editor-rowcol
+ * @element editable-table-editor-rowcol
  * @appliesMixin cellBehaviors
  */
 class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {

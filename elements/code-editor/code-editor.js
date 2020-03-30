@@ -11,7 +11,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - monaco is the VS code editor
- * @customElement code-editor
+ * @element code-editor
  */
 class CodeEditor extends SchemaBehaviors(LitElement) {
   /**

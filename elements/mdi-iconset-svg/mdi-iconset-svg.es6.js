@@ -2,7 +2,7 @@
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  *
  * `mdi-iconset-svg`
- * @customElement mdi-iconset-svg is a iconset for the Material Design Icons collection
+ * @element mdi-iconset-svg is a iconset for the Material Design Icons collection
  *
  * Example:
  *   <link rel="import" href="mdi-logo-iconset-svg.html">

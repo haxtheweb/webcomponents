@@ -4,7 +4,7 @@ import "@lrnwebcomponents/simple-drawer/simple-drawer.js";
 import "./lrnsys-button-inner.js";
 /**
  * `lrnsys-drawer`
- * @customElement lrnsys-drawer
+ * @element lrnsys-drawer
  *
  * @demo demo/index.html
  */

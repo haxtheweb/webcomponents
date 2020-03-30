@@ -20,7 +20,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
     `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`
     `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`
  * @demo demo/index.html
- * @customElement simple-tooltip
+ * @element simple-tooltip
  */
 class SimpleTooltip extends LitElement {
   //styles function
@@ -202,12 +202,13 @@ class SimpleTooltip extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+      ...super.properties
       /**
        * The id of the element that the tooltip is anchored to. This element
        * must be a sibling of the tooltip. If this property is not set,
        * then the tooltip will be centered to the parent node containing it.
-       */ for: { type: String },
+       */,
+      for: { type: String },
       /**
        * Set this to true if you want to manually control when the tooltip
        * is shown or hidden.

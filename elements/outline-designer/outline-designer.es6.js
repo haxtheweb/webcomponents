@@ -28,7 +28,7 @@ import "./lib/sortable-list.js";
 import { pagemap } from "./lib/pagemap.js";
 /**
  * `outline-designer`
- * @customElement outline-designer
+ * @element outline-designer
  * `tools to modify and visualize JSON Outline Schema for editing`
  *
  * @microcopy - language worth noting:

@@ -10,7 +10,7 @@ import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
  * `editable-outline`
  * `a simple outline thats contenteditable in nature`
  * @demo demo/index.html
- * @customElement editable-outline
+ * @element editable-outline
  */
 class EditableOutline extends LitElement {
   //styles function

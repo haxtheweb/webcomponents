@@ -30,7 +30,7 @@ Custom property | Description | Default
 `--a11y-gif-player-button-bg` | button background color when no static image | #cccccc
  *
  * @demo ./demo/index.html
- * @customElement a11y-gif-player
+ * @element a11y-gif-player
  */
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   constructor() {

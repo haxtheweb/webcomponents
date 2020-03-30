@@ -207,7 +207,7 @@ type: {                                       //For properties in "this.schema",
 }
 ``` 
 
- * @customElement simple-fields-lite
+ * @element simple-fields-lite
  * @demo ./demo/lite.html Demo
  */
 class SimpleFieldsLite extends LitElement {

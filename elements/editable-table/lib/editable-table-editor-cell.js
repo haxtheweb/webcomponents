@@ -14,7 +14,7 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
  * @demo ./demo/editor.html
  *
  * @polymer
- * @customElement editable-table-editor-cell
+ * @element editable-table-editor-cell
  * @appliesMixin cellBehaviors
  */
 class EditableTableEditorCell extends cellBehaviors(PolymerElement) {

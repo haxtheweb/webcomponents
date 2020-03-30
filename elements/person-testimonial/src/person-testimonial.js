@@ -2,7 +2,7 @@ import { html } from "@polymer/polymer/polymer-element.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `person-testimonial`
- * @customElement person-testimonial
+ * @element person-testimonial
  * `Leaving a testimonial from a person to say your company rocks!`
  * @demo demo/index.html
  */

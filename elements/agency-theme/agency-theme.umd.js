@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `agency-theme`
  * @demo demo/index.html
- * @customElement agency-theme
+ * @element agency-theme
  */
 class AgencyTheme extends LitElement {
   

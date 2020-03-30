@@ -10,7 +10,7 @@ import "./simple-fields-array-item.js";
  *
  * @group simple-fields
  * @extends simple-fields-fieldset
- * @customElement simple-fields-array
+ * @element simple-fields-array
  */
 class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get tag() {

@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrnsys-button-inner`
- * @customElement lrnsys-button-inner
+ * @element lrnsys-button-inner
  */
 class LrnsysButtonInner extends LitElement {
   /**

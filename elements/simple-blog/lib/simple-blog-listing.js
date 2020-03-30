@@ -4,7 +4,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js";
 /**
  * `simple-blog-listing`
- * @customElement simple-blog-listing
+ * @element simple-blog-listing
  * `A simple blog and associated elements`
  */
 class SimpleBlogListing extends SimpleColors {

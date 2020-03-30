@@ -7,7 +7,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `accent-card`
- * @customElement accent-card
+ * @element accent-card
  * a card with optional accent stylings.
  * 
 ### Styling

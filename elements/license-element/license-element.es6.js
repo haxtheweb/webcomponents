@@ -54,7 +54,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * `license-element`
  * `A simple way of applying a semantically accurate license to work.`
  * @demo demo/index.html
- * @customElement license-element
+ * @element license-element
  */
 class LicenseElement extends SchemaBehaviors(LitElement) {
   /**

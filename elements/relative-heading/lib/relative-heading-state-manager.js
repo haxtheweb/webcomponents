@@ -21,7 +21,7 @@ window.RelativeHeadingStateManager.requestAvailability = () => {
 /**
  * `relative-heading-state-manager`
  * ` A utility that determines headings relative to their parents.`
- * @customElement relative-heading-state-manager
+ * @element relative-heading-state-manager
  *
  * @microcopy - language worth noting:
  *  -

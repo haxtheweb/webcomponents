@@ -23,7 +23,7 @@ window.PouchDb.requestAvailability = () => {
  * `read and write localized data elements`
  * @polymer
  * @demo demo/index.html
- * @customElement pouch-db
+ * @element pouch-db
  */
 class PouchDb extends PolymerElement {
   

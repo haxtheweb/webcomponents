@@ -7,7 +7,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `flash-card`
- * @customElement flash-card
+ * @element flash-card
  * @demo demo/index.html
  */
 class FlashCard extends SchemaBehaviors(PolymerElement) {

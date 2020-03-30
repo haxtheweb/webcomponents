@@ -8,7 +8,7 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 
 /**
  * `simple-icon-picker`
- * @customElement simple-icon-picker
+ * @element simple-icon-picker
  * Uses simple-picker to create an icon picker
  *
 

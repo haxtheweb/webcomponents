@@ -26,96 +26,95 @@ Custom property | Description | Default
 `--extensible-toolbar-hidden-until-xl` | display for items that should only be hidden when `responsiveSize` < `xl` | none
  * 
  *
- * @customElement
+ * @element
  * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
 class ExtensibleToolbar extends LitElement {
+  
   // render function
   render() {
     return html`
-      <style>
-        :host {
-          display: flex;
-          opacity: 1;
-          z-index: 1;
-          margin: 0;
-          align-items: stretch;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          transition: all 0.5s;
-          --extensible-toolbar-visible-until-sm: unset;
-          --extensible-toolbar-visible-until-md: unset;
-          --extensible-toolbar-visible-until-lg: unset;
-          --extensible-toolbar-visible-until-xl: unset;
-          --extensible-toolbar-hidden-until-sm: none;
-          --extensible-toolbar-hidden-until-md: none;
-          --extensible-toolbar-hidden-until-lg: none;
-          --extensible-toolbar-hidden-until-xl: none;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-        :host([aria-hidden]) {
-          visibility: hidden;
-          opacity: 0;
-          height: 0;
-        }
-        :host([sticky]) {
-          position: sticky;
-          top: 0;
-        }
-        :host([collapsed]:not([responsive-size="xs"])) {
-          --extensible-toolbar-visible-until-sm: none;
-          --extensible-toolbar-hidden-until-sm: unset;
-        }
-        :host([collapsed]:not([responsive-size*="s"])) {
-          --extensible-toolbar-visible-until-md: none;
-          --extensible-toolbar-hidden-until-md: none;
-        }
-        :host([collapsed][responsive-size*="l"]) {
-          --extensible-toolbar-visible-until-lg: none;
-          --extensible-toolbar-hidden-until-lg: none;
-        }
-        :host([collapsed][responsive-size="xl"]) {
-          --extensible-toolbar-visible-until-xl: none;
-          --extensible-toolbar-hidden-until-xl: none;
-        }
-      </style>
-      <slot></slot>
-    `;
+<style>:host {
+  display: flex;
+  opacity: 1;
+  z-index: 1;
+  margin: 0;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  transition: all 0.5s;
+  --extensible-toolbar-visible-until-sm: unset;
+  --extensible-toolbar-visible-until-md: unset;
+  --extensible-toolbar-visible-until-lg: unset;
+  --extensible-toolbar-visible-until-xl: unset;
+  --extensible-toolbar-hidden-until-sm: none;
+  --extensible-toolbar-hidden-until-md: none;
+  --extensible-toolbar-hidden-until-lg: none;
+  --extensible-toolbar-hidden-until-xl: none;
+}
+:host([hidden]) {
+  display: none;
+}
+:host([aria-hidden]) {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+:host([sticky]) {
+  position: sticky;
+  top: 0;
+}
+:host([collapsed]:not([responsive-size="xs"])){
+  --extensible-toolbar-visible-until-sm: none;
+  --extensible-toolbar-hidden-until-sm: unset;
+}
+:host([collapsed]:not([responsive-size*="s"])){
+  --extensible-toolbar-visible-until-md: none;
+  --extensible-toolbar-hidden-until-md: none;
+}
+:host([collapsed][responsive-size*="l"]){
+  --extensible-toolbar-visible-until-lg: none;
+  --extensible-toolbar-hidden-until-lg: none;
+}
+:host([collapsed][responsive-size="xl"]){
+  --extensible-toolbar-visible-until-xl: none;
+  --extensible-toolbar-hidden-until-xl: none;
+}</style>
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * Is the toolbar collapsed?
-       */
-      collapsed: {
-        attribute: "collapsed",
-        reflect: true,
-        type: "Boolean"
-      },
+  /**
+   * Is the toolbar collapsed?
+   */
+  "collapsed": {
+    "attribute": "collapsed",
+    "reflect": true,
+    "type": "Boolean"
+  },
 
-      /**
-       * Size of the toolbar, as `xs`, `sm`, `md`, `lg`, or `xl`.
-       */
-      responsiveSize: {
-        attribute: "responsive-size",
-        type: "String"
-      },
+  /**
+   * Size of the toolbar, as `xs`, `sm`, `md`, `lg`, or `xl`.
+   */
+  "responsiveSize": {
+    "attribute": "responsive-size",
+    "type": "String"
+  },
 
-      /**
-       * Should the toolbar stick to top so that it's always visible?
-       */
-      sticky: {
-        attribute: "sticky",
-        type: "Boolean",
-        reflectToAttribute: true
-      }
-    };
+  /**
+   * Should the toolbar stick to top so that it's always visible?
+   */
+  "sticky": {
+    "attribute": "sticky",
+    "type": "Boolean",
+    "reflectToAttribute": true
+  }
+}
+;
   }
 
   /**

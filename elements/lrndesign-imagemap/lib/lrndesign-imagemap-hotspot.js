@@ -3,7 +3,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `lrndesign-imagemap-hotspot`
  * creates an accessible image map
  * @demo demo/index.html
- * @customElement lrndesign-imagemap-hotspot
+ * @element lrndesign-imagemap-hotspot
  */
 class LrndesignImagemapHotspot extends LitElement {
   /**

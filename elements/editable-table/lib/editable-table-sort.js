@@ -14,7 +14,7 @@ import "./editable-table-iconset.js";
  * @demo ./demo/display.html
  *
  * @polymer
- * @customElement editable-table-editor-sort
+ * @element editable-table-editor-sort
  */
 class EditableTableSort extends PolymerElement {
   static get template() {

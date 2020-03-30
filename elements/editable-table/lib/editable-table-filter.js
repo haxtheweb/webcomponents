@@ -14,7 +14,7 @@ import "./editable-table-iconset.js";
  *
  * @demo ./demo/display.html
  * @polymer
- * @customElement editable-table-editor-filter
+ * @element editable-table-editor-filter
  */
 class EditableTableFilter extends LitElement {
   static get styles() {

@@ -8,7 +8,7 @@ import "../simple-modal.js";
  * `simple-modal-template`
  * `A simple modal that ensures accessibility and stack order context appropriately`
  * @demo ./demo/template.html
- * @customElement simple-modal-template
+ * @element simple-modal-template
  */
 class SimpleModalTemplate extends LitElement {
   /**

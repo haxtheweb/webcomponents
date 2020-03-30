@@ -20,7 +20,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
     `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`
     `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`
  * @demo demo/index.html
- * @customElement simple-tooltip
+ * @element simple-tooltip
  */
 class SimpleTooltip extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

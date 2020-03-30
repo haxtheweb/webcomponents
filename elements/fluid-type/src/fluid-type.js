@@ -5,7 +5,7 @@
 
 /**
  * `fluid-type`
- * @customElement fluid-type
+ * @element fluid-type
  * `A simple fluid-type sizing wrapper element to apply to anything`
  *
  * @microcopy - language worth noting:

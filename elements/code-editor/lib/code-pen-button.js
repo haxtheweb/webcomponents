@@ -3,7 +3,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `code-pen-button`
  * `Post data to codepen to form a new pen`
  * @demo demo/index.html
- * @customElement code-pen-button
+ * @element code-pen-button
  */
 class CodePenButton extends LitElement {
   /**

@@ -19,7 +19,7 @@ import "./editable-table-styles.js";
  *
  * @polymer
  * @appliesMixin displayBehaviors
- * @customElement editable-table-display
+ * @element editable-table-display
  * @appliesMixin ResponsiveUtilityBehaviors
  */
 class EditableTableDisplay extends displayBehaviors(

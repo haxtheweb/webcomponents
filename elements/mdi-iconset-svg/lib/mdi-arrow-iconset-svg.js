@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-arrow-iconset-svg`
- * @customElement mdi-arrow-iconset-svg is a iconset for the Material Design Icons collection with the "arrow" tag
+ * @element mdi-arrow-iconset-svg is a iconset for the Material Design Icons collection with the "arrow" tag
  *
  * Example:
  *   <iron-icon icon="mdi-arrow:arrow-left"></iron-icon>

@@ -12,7 +12,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *  -
  *
  * @demo demo/index.html
- * @customElement simple-pages
+ * @element simple-pages
  */
 class SimplePages extends LitElement {
   // render function

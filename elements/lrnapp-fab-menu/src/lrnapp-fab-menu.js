@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `lrnapp-fab-menu`
  * `floating action button with menu`
  * @demo demo/index.html
- * @customElement lrnapp-fab-menu
+ * @element lrnapp-fab-menu
  */
 class LrnappFabMenu extends LitElement {
   constructor() {

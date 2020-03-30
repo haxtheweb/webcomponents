@@ -75,7 +75,7 @@ class PaperFabSpeedDial extends PolymerElement {
       /**
        * The direction in which to expand the options. One of `top`, `bottom`
        * `left`
-       * @customElement left and `right`.
+       * @element left and `right`.
        */
       direction: {
         type: String,

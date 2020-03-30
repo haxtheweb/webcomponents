@@ -4,7 +4,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * `image-compare-slider`
  * Layers images over each other with a slider interface to compare them
  * @demo demo/index.html
- * @customElement image-compare-slider
+ * @element image-compare-slider
  */
 class ImageCompareSlider extends SchemaBehaviors(LitElement) {
   /**

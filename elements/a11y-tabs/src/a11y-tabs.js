@@ -63,7 +63,7 @@ Custom property | Description | Default
  * @demo ./demo/index.html
  * @demo ./demo/vertical.html Always Vertical
  * @demo ./demo/horizontal.html Always Horizontal
- * @customElement a11y-tabs
+ * @element a11y-tabs
  */
 class A11yTabs extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

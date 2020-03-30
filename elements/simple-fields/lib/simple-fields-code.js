@@ -9,7 +9,7 @@ import "@lrnwebcomponents/code-editor/code-editor.js";
  *
  * @group simple-fields
  * @extends simple-fields-container
- * @customElement simple-fields-code
+ * @element simple-fields-code
  * @demo ./demo/field.html
  */
 class SimpleFieldsCode extends SimpleFieldsContainer {

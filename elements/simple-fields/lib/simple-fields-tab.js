@@ -6,7 +6,7 @@ import { A11yTab } from "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
  * exposing a `value` property that represents an array described by the schema.
  *
  * @group simple-fields
- * @customElement simple-fields-tab
+ * @element simple-fields-tab
  * @extends a11y-tab
  * @extends simple-fields-fieldset
  */

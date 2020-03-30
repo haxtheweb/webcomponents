@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-text-context`
- * @customElement hax-text-context
+ * @element hax-text-context
  * `A context menu that provides common text based authoring options.`
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.

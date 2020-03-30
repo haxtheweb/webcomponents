@@ -9,7 +9,7 @@ import "./lib/absolute-position-state-manager";
  * `absolute-position-behavior`
  * abstracts absolute positioning behavior to be resusable in other elements
  * @demo ./demo/index.html
- * @customElement absolute-position-behavior
+ * @element absolute-position-behavior
  */
 class AbsolutePositionBehavior extends LitElement {
   

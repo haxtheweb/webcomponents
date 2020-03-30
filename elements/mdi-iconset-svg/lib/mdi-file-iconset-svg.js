@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-file-iconset-svg`
- * @customElement mdi-file-iconset-svg is a iconset for the Material Design Icons collection with the "file" tag
+ * @element mdi-file-iconset-svg is a iconset for the Material Design Icons collection with the "file" tag
  *
  * Example:
  *   <iron-icon icon="mdi-file:file-document"></iron-icon>

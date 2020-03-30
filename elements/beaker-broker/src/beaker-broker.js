@@ -14,7 +14,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *  - dat - a communication protocol for serving sites up p2p
  *
  * @demo demo/index.html
- * @customElement beaker-broker
+ * @element beaker-broker
  */
 class BeakerBroker extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

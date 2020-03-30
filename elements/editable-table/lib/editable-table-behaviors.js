@@ -8,7 +8,7 @@
  *
  * @polymer
  * @mixinFunction
- * @customElement editable-table-behaviors
+ * @element editable-table-behaviors
  */
 
 /**

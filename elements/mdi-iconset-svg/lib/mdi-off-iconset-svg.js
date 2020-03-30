@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-off-iconset-svg`
- * @customElement mdi-off-iconset-svg is a iconset for the Material Design Icons collection with the "off" tag
+ * @element mdi-off-iconset-svg is a iconset for the Material Design Icons collection with the "off" tag
  *
  * Example:
  *   <iron-icon icon="mdi-off:airplane-off"></iron-icon>

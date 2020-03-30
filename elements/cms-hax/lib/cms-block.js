@@ -6,7 +6,7 @@ import "@polymer/paper-spinner/paper-spinner.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `cms-block`
- * @customElement cms-block
+ * @element cms-block
  * `Render and process a  / block from a content management system.`
  */
 class CMSBlock extends PolymerElement {

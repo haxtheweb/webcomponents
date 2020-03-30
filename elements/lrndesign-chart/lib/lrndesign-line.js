@@ -6,7 +6,7 @@ import { LrndesignChart } from "../lrndesign-chart.js";
 
 /**
  * `lrndesign-line`
- * @customElement lrndesign-line
+ * @element lrndesign-line
  * a line chart
  *
 

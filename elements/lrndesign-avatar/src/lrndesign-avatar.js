@@ -4,7 +4,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * `lrndesign-avatar`
  * `Visualize a user account eitehr with an image, a label, or as abstract art.`
  * @demo demo/index.html
- * @customElement lrndesign-avatar
+ * @element lrndesign-avatar
  */
 class LrndesignAvatar extends SimpleColors {
   /**

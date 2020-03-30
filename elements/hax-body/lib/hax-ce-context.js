@@ -5,7 +5,7 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
  * `A context menu that provides common custom-element based authoring options.
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
- * @customElement hax-ce-context
+ * @element hax-ce-context
  */
 class HaxCeContext extends winEventsElement(LitElement) {
   /**

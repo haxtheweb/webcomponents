@@ -8,7 +8,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
 /**
  * `progress-donut`
- * @customElement progress-donut
+ * @element progress-donut
  * shows progress in as a rounded shape w/ hollow middle
  *
 

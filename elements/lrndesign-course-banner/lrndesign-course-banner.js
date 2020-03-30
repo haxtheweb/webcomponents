@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `lrndesign-course-banner`
- * @customElement lrndesign-course-banner
+ * @element lrndesign-course-banner
  * @demo demo/index.html
  */
 class LrndesignCourseBanner extends PolymerElement {

@@ -9,7 +9,7 @@ import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/c
  * `lrn-button`
  * `Simple button wrapper with a few options`
  * @demo demo/index.html
- * @customElement lrn-button
+ * @element lrn-button
  */
 class LrnButton extends LitElement {
   

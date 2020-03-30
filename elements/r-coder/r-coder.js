@@ -8,7 +8,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `r-coder`
  * `R coder interface for the r-service backend.`
  * @demo demo/index.html
- * @customElement r-coder
+ * @element r-coder
  */
 class RCoder extends LitElement {
   //styles function

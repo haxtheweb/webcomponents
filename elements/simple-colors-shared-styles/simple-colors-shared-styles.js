@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `simple-colors-shared-styles`
- * @customElement simple-colors-shared-styles
+ * @element simple-colors-shared-styles
  * a shared set of styles for `simple-colors`
  *
  *

@@ -10,7 +10,7 @@ import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-elemen
  * based off of https://github.com/PolymerEl/type-writer
  *
  * @demo demo/index.html
- * @customElement type-writer
+ * @element type-writer
  */
 class TypeWriter extends IntersectionObserverMixin(LitElement) {
   //styles function

@@ -15,7 +15,7 @@ import "../lrnsys-comment.js";
 
 /**
  * `lrnsys-comment-list`
- * @customElement lrnsys-comment-list
+ * @element lrnsys-comment-list
  * `A listing and event handling for comments.`
  * @demo demo/index.html
  */

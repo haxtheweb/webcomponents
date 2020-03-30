@@ -12,7 +12,7 @@ import "@polymer/paper-styles/typography.js";
 import "@polymer/paper-styles/color.js";
 /**
  * `simple-login`
- * @customElement simple-login
+ * @element simple-login
  * `a simple login form`
  *
  * @microcopy - language worth noting:

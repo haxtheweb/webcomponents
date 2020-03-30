@@ -11,7 +11,7 @@ import "@polymer/iron-icons/iron-icons.js";
  * `lrnsys-button`
  * `A simple button for use in systems`
  * @demo demo/index.html
- * @customElement lrnsys-button
+ * @element lrnsys-button
  */
 class LrnsysButton extends LitElement {
   static get styles() {

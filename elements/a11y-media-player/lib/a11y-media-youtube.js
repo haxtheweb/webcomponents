@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `a11y-media-youtube`
  * uses YouTubeAPI to create and control an embedded YouTube video.
- * @customElement a11y-media-youtube
+ * @element a11y-media-youtube
  */
 class A11yMediaYoutube extends LitElement {
   // properties available to the custom element for data binding

@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-alert-iconset-svg`
- * @customElement mdi-alert-iconset-svg is a iconset for the Material Design Icons collection with the "alert" tag
+ * @element mdi-alert-iconset-svg is a iconset for the Material Design Icons collection with the "alert" tag
  *
  * Example:
  *   <iron-icon icon="mdi-alert:alert"></iron-icon>

@@ -7,11 +7,11 @@ import { varGet } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-autoloader`
- * @customElement hax-autoloader
+ * @element hax-autoloader
  * `Automatically load elements based on the most logical location with future fallback support for CDNs.`
  * @microcopy - the mental model for this element
  * - hax-autoloader - autoloading of custom element imports which can then emmit events as needed
- * @customElement hax-autoloader
+ * @element hax-autoloader
  */
 class HaxAutoloader extends HAXElement(LitElement) {
   /**

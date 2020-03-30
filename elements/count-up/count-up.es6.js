@@ -11,7 +11,7 @@ import { CountUp } from "countup.js";
  * `count up js wrapper with minimal styling`
  * @litElement
  * @demo demo/index.html
- * @customElement count-up
+ * @element count-up
  */
 class CountUpElement extends IntersectionObserverMixin(LitElement) {
   

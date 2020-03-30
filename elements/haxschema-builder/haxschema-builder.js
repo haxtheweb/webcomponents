@@ -13,7 +13,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behavio
  * `haxschema-builder`
  * `dynamically build and visualize HAXschema`
  * @demo demo/index.html
- * @customElement haxschema-builder
+ * @element haxschema-builder
  */
 class HaxschemaBuilder extends LitElement {
   //styles function

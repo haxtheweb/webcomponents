@@ -13,7 +13,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  *
  * @litelement
  * @demo demo/index.html
- * @customElement undo-manager
+ * @element undo-manager
  */
 class UndoManager extends LitElement {
   /**

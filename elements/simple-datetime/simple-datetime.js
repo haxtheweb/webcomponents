@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/date.format.js";
 /**
  * `simple-datetime`
- * @customElement simple-datetime
+ * @element simple-datetime
  * A simple datetime element that takes in unix timestamp and outputs a date.
  * @demo demo/index.html
  * @microcopy - the mental model for this element

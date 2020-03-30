@@ -8,7 +8,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
  * `lrnsys-progress`
- * @customElement lrnsys-progress
+ * @element lrnsys-progress
  * `track progression as a circle and series of circles`
  *
  * @demo demo/index.html

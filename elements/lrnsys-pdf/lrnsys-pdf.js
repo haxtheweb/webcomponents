@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `lrnsys-pdf`
- * @customElement lrnsys-pdf
+ * @element lrnsys-pdf
  * @demo demo/index.html
  */
 class LrnsysPdf extends SchemaBehaviors(PolymerElement) {

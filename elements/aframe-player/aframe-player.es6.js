@@ -10,7 +10,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * `A wrapper to do data binding into aframe`
  *
  * @demo demo/index.html
- * @customElement aframe-player
+ * @element aframe-player
  */
 class AframePlayer extends SchemaBehaviors(LitElement) {
   /**

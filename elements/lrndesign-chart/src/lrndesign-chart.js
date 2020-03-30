@@ -8,7 +8,7 @@ import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-rende
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lrndesign-chart-behaviors`
- * @customElement lrndesign-chart-behaviors
+ * @element lrndesign-chart-behaviors
  * a line chart
  *
 

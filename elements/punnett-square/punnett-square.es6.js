@@ -7,7 +7,7 @@ import "@polymer/paper-input/paper-input.js";
 
 /**
  * `punnett-square`
- * @customElement punnett-square
+ * @element punnett-square
  * @lit-element
  * @demo demo/index.html
  */

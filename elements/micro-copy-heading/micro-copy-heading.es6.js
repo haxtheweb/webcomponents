@@ -11,7 +11,7 @@ import {
 } from "lit-element/lit-element.js";
 /**
  * `micro-copy-heading`
- * @customElement micro-copy-heading
+ * @element micro-copy-heading
  * `small call to action / attention that acts as a heading too`
  *
  * @microcopy - language worth noting:

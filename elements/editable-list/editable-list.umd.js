@@ -8,7 +8,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
  * `editable-list`
  * `a listing of items that can be edited in place with operations`
  * @demo demo/index.html
- * @customElement editable-list
+ * @element editable-list
  */
 class EditableList extends LitElement {
   

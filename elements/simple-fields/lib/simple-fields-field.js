@@ -8,7 +8,7 @@ import { SimpleFieldsContainer } from "./simple-fields-container.js";
  *
  * @group simple-fields
  * @extends simple-fields-container
- * @customElement simple-fields-field
+ * @element simple-fields-field
  * @demo ./demo/field.html
  */
 class SimpleFieldsField extends SimpleFieldsContainer {

@@ -52,7 +52,7 @@ Custom property | Description | Default
 `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
  * @extends SchemaBehaviors
  * @demo ./demo/index.html 
- * @customElement chartist-render
+ * @element chartist-render
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {
   //styles function

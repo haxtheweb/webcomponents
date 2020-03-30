@@ -13,7 +13,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *  </magazine-cover>
  *  ```
  * @demo demo/index.html
- * @customElement magazine-cover
+ * @element magazine-cover
  */
 class MagazineCover extends LitElement {
   /**

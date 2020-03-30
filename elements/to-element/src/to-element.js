@@ -5,7 +5,7 @@
 
 /**
  * `to-element`
- * @customElement to-element
+ * @element to-element
  * `Replicate any DOM node passed in and turn it into a web component`
  *
  * @microcopy - language worth noting:

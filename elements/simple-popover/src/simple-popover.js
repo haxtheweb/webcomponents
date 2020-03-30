@@ -22,7 +22,7 @@ Custom property | Description | Default
 `--simple-popover-border-color` | popover border-color | #bbb
 `--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
  *
- * @customElement simple-popover
+ * @element simple-popover
  * @demo ./demo/index.html
  */
 class SimplePopover extends AbsolutePositionBehavior {

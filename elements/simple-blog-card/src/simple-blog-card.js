@@ -12,7 +12,7 @@ import "time-elements/dist/time-elements.js";
  * `a card commonly found on a blogging website`
  * @lit-element
  * @demo demo/index.html
- * @customElement simple-blog-card
+ * @element simple-blog-card
  */
 class SimpleBlogCard extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

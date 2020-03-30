@@ -5,7 +5,7 @@ import { OERSchema } from "@lrnwebcomponents/oer-schema/lib/oerschema.js";
  * `oer-schema`
  * `A LRN element to wrap an oer schema prefix onto materials.`
  * @demo demo/index.html
- * @customElement oer-schema
+ * @element oer-schema
  */
 class OerSchemaElement extends SchemaBehaviors(LitElement) {
   /**

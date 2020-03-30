@@ -9,7 +9,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * `A wrapper to make a cleaner abbreviation deign element`
  *
  * @demo demo/index.html
- * @customElement lrndesign-abbreviation
+ * @element lrndesign-abbreviation
  */
 class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
   constructor() {

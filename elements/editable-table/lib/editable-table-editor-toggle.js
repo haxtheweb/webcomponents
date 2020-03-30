@@ -24,7 +24,7 @@ import "./editable-table-iconset.js";
  * @demo ./demo/editor.html
  * 
  * @polymer
- * @customElement editable-table-editor-toggle
+ * @element editable-table-editor-toggle
  */
 class EditableTableEditorToggle extends PolymerElement {
   static get template() {

@@ -11,7 +11,7 @@ window.__H5PBridgeTimeOut = function() {
 };
 /**
  * `h5p-element`
- * @customElement h5p-element
+ * @element h5p-element
  * `h5p wrapper for loading and presenting .h5p files`
  *
  * @microcopy - language worth noting:

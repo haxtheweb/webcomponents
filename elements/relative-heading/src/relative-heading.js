@@ -13,7 +13,7 @@ import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
  * @demo demo/index.html
  * @demo demo/nolinks.html Disable Links
  * @demo demo/rightalign.html Right-Align Links
- * @customElement relative-heading
+ * @element relative-heading
  */
 class RelativeHeading extends RelativeHeadingLite {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

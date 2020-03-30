@@ -6,7 +6,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 /**
  * `cms-views`
- * @customElement cms-views
+ * @element cms-views
  * `Render and process a  / views from a content management system.`
  */
 class CMSViews extends PolymerElement {

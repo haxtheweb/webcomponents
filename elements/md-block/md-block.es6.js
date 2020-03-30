@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `md-block`
  * `a markdown block`
  * @demo demo/index.html
- * @customElement md-block
+ * @element md-block
  */
 class MdBlock extends LitElement {
   

@@ -10,7 +10,7 @@ import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 /**
  * `rich-text-editor`
- * @customElement rich-text-editor
+ * @element rich-text-editor
  * `a standalone rich text editor`
  *
  * @microcopy - language worth noting:
@@ -24,131 +24,134 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host([hidden]) {
-          display: none;
-        }
-        :host {
-          display: block;
-          min-height: 20px;
-          cursor: pointer;
-          @apply --rich-text-editor-content;
-        }
-        :host([contenteditable="true"]) {
-          border: var(--rich-text-editor-border);
-          overflow: auto;
-          @apply --rich-text-editor-content-edit;
-        }
-        :host(.heightmax[contenteditable="true"]) {
-          max-height: calc(100vh - 200px);
-          overflow-y: scroll;
-          @apply --rich-text-editor-heightmax;
-        }
-        :host(:empty) {
-          border: 1px dashed var(--rich-text-editor-border-color);
-          @apply --rich-text-editor-empty;
-        }
-        :host(:not([contenteditable="true"]):empty):before {
-          content: attr(placeholder);
-          padding: 0 5px;
-          display: block;
-          color: var(--rich-text-editor-button-disabled-color);
-          @apply --rich-text-editor-empty-placeholder;
-        }
-        :host([contenteditable="true"]:empty):before {
-          @apply --rich-text-editor-empty-editable;
-        }
-      </style>
-      <style include="rich-text-editor-styles"></style>
-      <slot></slot>
-    `;
+<style>
+:host([hidden]) {
+  display: none;
+}
+:host {
+  display: block;
+  min-height: 20px;
+  cursor: pointer;
+  @apply --rich-text-editor-content;
+}
+:host([contenteditable="true"]) {
+  border: var(--rich-text-editor-border);
+  overflow: auto;
+  @apply --rich-text-editor-content-edit;
+}
+:host(.heightmax[contenteditable="true"]) {
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
+  @apply --rich-text-editor-heightmax;
+}
+:host(:empty) {
+  border: 1px dashed var(--rich-text-editor-border-color);
+  @apply --rich-text-editor-empty;
+}
+:host(:not([contenteditable="true"]):empty):before {
+  content: attr(placeholder);
+  padding: 0 5px;
+  display: block;
+  color: var(--rich-text-editor-button-disabled-color);
+  @apply --rich-text-editor-empty-placeholder;
+}
+:host([contenteditable="true"]:empty):before {
+  @apply --rich-text-editor-empty-editable;
+}
+        </style>
+<style include="rich-text-editor-styles"></style>
+<slot></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
+  
+  ...super.properties,
+  
+  /**
+   * The editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": String,
+    "value": ""
+  },
 
-      /**
-       * The editor's unique id
-       */
-      id: {
-        name: "id",
-        type: String,
-        value: ""
-      },
+  /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": String,
+    "reflectToAttribute": true,
+    "value": "Click to edit"
+  },
 
-      /**
-       * Placeholder text for empty editable regions
-       */
-      placeholder: {
-        name: "placeholder",
-        type: String,
-        reflectToAttribute: true,
-        value: "Click to edit"
-      },
+  /**
+   * The id for the toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "value": ""
+  },
 
-      /**
-       * The id for the toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        value: ""
-      },
-
-      /**
-       * The type of editor toolbar, i.e.
-       * full - full for full toolbar with breadcrumb,
-       * mini - mini for mini floating toolbar, or
-       * the default toolbar if neither.
-       */
-      type: {
-        name: "type",
-        type: String,
-        value: "rich-text-editor-toolbar"
-      }
-    };
+  /**
+   * The type of editor toolbar, i.e.
+   * full - full for full toolbar with breadcrumb,
+   * mini - mini for mini floating toolbar, or
+   * the default toolbar if neither.
+   */
+  "type": {
+    "name": "type",
+    "type": String,
+    "value": "rich-text-editor-toolbar"
+  }
+}
+;
   }
 
   /**

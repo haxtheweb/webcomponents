@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `full-screen-image`
- * @customElement full-screen-image
+ * @element full-screen-image
  * `full screen banner image with down arrow`
  *
  * @microcopy - language worth noting:

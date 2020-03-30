@@ -10,7 +10,7 @@ import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 /**
  * `rich-text-editor`
- * @customElement rich-text-editor
+ * @element rich-text-editor
  * `a standalone rich text editor`
  *
  * @microcopy - language worth noting:

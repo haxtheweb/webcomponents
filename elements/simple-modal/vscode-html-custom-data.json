@@ -71,12 +71,8 @@
     },
     {
       "name": "simple-modal-template",
-      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `modal-id` - the desired id for the modal\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal\n\nProperties:\n\n  * `modalId` - the desired id for the modal\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal",
+      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal\n\nProperties:\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal",
       "attributes": [
-        {
-          "name": "modal-id",
-          "description": "`modal-id` - the desired id for the modal\n\nProperty: modalId\n\nDefault: null"
-        },
         {
           "name": "title",
           "description": "`title` {`string`} - the modal title\n\nProperty: title\n\nDefault: "

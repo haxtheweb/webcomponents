@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `lrndesign-drawer`
- * @customElement lrndesign-drawer
+ * @element lrndesign-drawer
  * @demo demo/index.html
  */
 class LrndesignDrawer extends PolymerElement {

@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `agency-theme-body`
  * `HAX theme to present an agency style site.`
- * @customElement agency-theme-body
+ * @element agency-theme-body
  */
 class AgencyThemeSpotlight extends LitElement {
   /**

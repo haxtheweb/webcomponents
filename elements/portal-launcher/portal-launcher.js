@@ -5,7 +5,7 @@
 
 /**
  * `portal-launcher`
- * @customElement portal-launcher
+ * @element portal-launcher
  * `silly thing to play with portal tag and progressive enhancement`
  *
  * @microcopy - language worth noting:

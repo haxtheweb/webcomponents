@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `pie-menu`
- * @customElement pie-menu
+ * @element pie-menu
  * SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus
  * @demo demo/index.html
  * @microcopy - the mental model for this element

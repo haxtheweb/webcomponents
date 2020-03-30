@@ -5,7 +5,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
- * @customElement multiple-choice
+ * @element multiple-choice
  */
 class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   /**

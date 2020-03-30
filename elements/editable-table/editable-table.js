@@ -71,7 +71,7 @@ Custom property | Description | Default
  * @demo ./demo/advanced.html Advanced Features
  * 
  * @polymer
- * @customElement editable-table
+ * @element editable-table
  * @appliesMixin displayBehaviors
  * @appliesMixin EditBehaviors
  */
