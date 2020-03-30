@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrndesignTimeline: lrndesign-timeline Demo</title>
-    
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
@@ -27,8 +27,7 @@
             This is lrndesign-timeline
           </lrndesign-timeline>
           <script>
-            let timeline = document.getElementById('mytimeline'); 
-            timeline.set('events',[ 
+            document.getElementById('mytimeline').events = [ 
               { 
                 "heading": "1855 - Charter", 
                 "details": "Charter now in effect signed by Governor Pollock, February 22; first Board of Trustees president, Judge Frederick Watts of Carlisle. Site in Centre County selected from nine offered throughout state; 200 acres donated by James Irvin with $10,000 pledge from citizens of Centre and Huntingdon counties.", 
@@ -48,7 +47,7 @@
                 "heading": "1953 - The Pennsylvania State University", 
                 "details": "The Pennsylvania State University became official name." 
               } 
-            ]);
+            ];
           </script>
         </template>
       </demo-snippet>

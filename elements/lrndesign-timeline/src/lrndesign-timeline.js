@@ -1,53 +1,43 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { LitElement, html } from "lit-element";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
-export { LrndesignTimeline };
 /**
  * `lrndesign-timeline`
+ * an element that displays events on a timeline
+ *
  * @customElement lrndesign-timeline
- * `an element that displays events on a timeline`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @lit-html
+ * @lit-element
  * @demo demo/index.html
  */
-class LrndesignTimeline extends SimpleColorsPolymer {
+class LrndesignTimeline extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  static get tag() {
+  tag() {
     return "lrndesign-timeline";
   }
 
-  /**
-   * gets simple-colors behaviors
-   */
-  static get behaviors() {
-    return [SimpleColors];
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
+  // life cycle
+  constructor() {
+    super();
+    this.events = [];
+    this.timelineSize = "xs";
     super.connectedCallback();
-    let root = this;
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
-          element: root,
+          element: this,
           attribute: "timeline-size",
           relativeToParent: true,
           sm: 600,
@@ -57,68 +47,64 @@ class LrndesignTimeline extends SimpleColorsPolymer {
         }
       })
     );
-    this._checkScroll();
+  }
+
+  /**
+   * handle updates
+   */
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "timelineTitle" && this.title && !this.timelineTitle)
+        this.timelineTitle = this.title;
+    });
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+  /**
+   * events container element
+   *
+   * @readonly
+   * @memberof LrndesignTimeline
+   */
+  get eventsElement(){
+    return this.shadowRoot && this.shadowRoot.querySelector('#events') ? this.shadowRoot.querySelector('#events') : false;
+  }
+
+  /**
+   * ensures that events list is an Array
+   *
+   * @readonly
+   * @memberof LrndesignTimeline
+   */
+  get eventsList() {
+    let events =
+      typeof this.events === "string" ? JSON.parse(this.events) : this.events;
+    return events || [];
   }
 
   /**
    * checks the scroll of each event
    */
   _checkScroll() {
-    let root = this,
-      events = root.shadowRoot.querySelectorAll(".event");
-    if (events.length < 1) root.shadowRoot.querySelector("#repeat").render();
-    events = root.shadowRoot.querySelectorAll(".event");
-    events.forEach(event => {
-      let top = event.offsetTop,
-        target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
-        bottom = event.offsetTop + event.offsetHeight;
-      if (target > top && target < bottom) {
-        event.setAttribute("selected", true);
-      } else {
-        event.removeAttribute("selected");
-      }
-    });
-  }
-
-  /**
-   * returns the media type for a given event, or false if there is no media
-   *
-   * @param {object} the event type to check
-   * @param {object} the media type to check
-   * @returns {string} the media type, or false if there is no media
-   */
-
-  _isMediaType(event, type) {
-    return this._isSet(event.media) && this._isSet(event.media.type)
-      ? event.media.type === type
-      : false;
-  }
-
-  /**
-   * returns true if an property is not null
-   *
-   * @param {object} the property to check
-   * @returns {boolean} property !== undefined && property !== null
-   */
-  _isSet(prop) {
-    return prop !== undefined && prop !== null;
-  }
-
-  /**
-   * gets updated event data
-   *
-   * @param {array} the raw events array
-   */
-  _updateEvents(events) {
-    events = typeof events === "string" ? JSON.parse(events) : events;
-    return events;
-  }
-
-  /**
-   * handles the scroll on the events side
-   */
-  _onScroll(e) {
-    this._checkScroll();
+    if(this.shadowRoot){
+      let events = this.shadowRoot.querySelectorAll('.event') || [];
+      (events).forEach(event => {
+        let top = event.offsetTop,
+          target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
+          bottom = event.offsetTop + event.offsetHeight;
+        if (target > top && target < bottom) {
+          event.setAttribute("selected", true);
+        } else {
+          event.removeAttribute("selected");
+        }
+      });
+    }
   }
 }
-window.customElements.define(LrndesignTimeline.tag, LrndesignTimeline);
+customElements.define("lrndesign-timeline", LrndesignTimeline);
+export { LrndesignTimeline };

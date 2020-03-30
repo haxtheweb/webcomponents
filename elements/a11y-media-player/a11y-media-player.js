@@ -845,9 +845,10 @@ paper-toast:not(:defined) {
       }
     </div>
   </div>
+  <div id="progresslabel" class="sr-only">${this._getLocal(this.localization,'seekSlider', 'label')}</div>
   <paper-slider id="slider"
     class="screen-only"
-    label="${this._getLocal(this.localization,'seekSlider', 'label')}"
+    aria-labelledby="progresslabel"
     min="${0}"
     max="${this.duration}"
     secondary-progress="${this.buffered}"
