@@ -1,17 +1,19 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { LitElement, html } from 'lit-element';
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- *
  * `lrndesign-timeline`
  * an element that displays events on a timeline
  *
  * @customElement lrndesign-timeline
+ * @lit-html
+ * @lit-element
  * @demo demo/index.html
- *
  */
 class LrndesignTimeline extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -20,14 +22,13 @@ class LrndesignTimeline extends SimpleColors {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  static get tag() {
+  tag() {
     return "lrndesign-timeline";
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
+  // life cycle
+  constructor() {
+    super();
     this.events = [];
     this.timelineSize = "xs";
     super.connectedCallback();
@@ -66,6 +67,13 @@ class LrndesignTimeline extends SimpleColors {
         this.timelineTitle = this.title;
     });
   }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    
+  }
 
   /**
    * ensures that events list is an Array
@@ -74,7 +82,7 @@ class LrndesignTimeline extends SimpleColors {
    * @memberof LrndesignTimeline
    */
   get eventsList() {
-    let events = typeof events === "string" ? JSON.parse(events) : events;
+    let events = typeof this.events === "string" ? JSON.parse(this.events) : this.events;
     return events || [];
   }
 
@@ -95,5 +103,5 @@ class LrndesignTimeline extends SimpleColors {
     });
   }
 }
-window.customElements.define(LrndesignTimeline.tag, LrndesignTimeline);
+customElements.define("lrndesign-timeline", LrndesignTimeline);
 export { LrndesignTimeline };

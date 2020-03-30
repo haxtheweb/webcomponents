@@ -7,7 +7,7 @@
         ${this.eventsList.map((event,index)=>html`
           <section class="event" ?has-media="${event.imagesrc && event.imagesrc !== ''}">
             <div class="event-overview">
-              <div class="heading"><h2>${this.event.heading}</h2></div>
+              <div class="heading"><h2>${event.heading}</h2></div>
               <div class="media-outer">
                 ${!event.imagesrc || event.imagesrc === '' 
                   ? `` : 
