@@ -19,14 +19,7 @@
     }
   },
   "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "title",
-        "title": "Timeline Title",
-        "description": "A title for the timeline.",
-        "inputMethod": "textfield"
-      },
+    "quick": [
       {
         "property": "accentColor",
         "title": "Accent Color",
@@ -40,6 +33,26 @@
         "description": "Enable Dark Theme",
         "inputMethod": "boolean",
         "icon": "icons:invert-colors"
+      }
+    ],
+    "configure": [
+      {
+        "property": "timelineTitle",
+        "title": "Timeline Title",
+        "description": "A title for the timeline.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
       },
       {
         "slot": "",
@@ -58,29 +71,25 @@
             "property": "heading",
             "title": "Event Heading",
             "description": "The heading for the event.",
-            "inputMethod": "textfield",
-            "icon": "editor:title"
+            "inputMethod": "textfield"
           },
           {
             "property": "details",
             "title": "Event Details",
             "description": "The body text with details for the event.",
-            "inputMethod": "textfield",
-            "icon": "editor:title"
+            "inputMethod": "textfield"
           },
           {
             "property": "imagesrc",
             "title": "Event Image",
             "description": "The path of the image.",
-            "inputMethod": "haxupload",
-            "icon": "editor:title"
+            "inputMethod": "haxupload"
           },
           {
             "property": "imagealt",
             "title": "Event Image Alt Text",
             "description": "The alt text of the image (for accessibility).",
-            "inputMethod": "alt",
-            "icon": "editor:title"
+            "inputMethod": "alt"
           }
         ]
       }

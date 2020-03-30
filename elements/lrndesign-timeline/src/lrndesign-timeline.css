@@ -22,7 +22,7 @@
 :host([hidden]) {
   display: none;
 }
-:host #timeline {
+#timeline {
   display: block;
   border-radius: 3px;
   border: 1px solid var(--lrndesign-timeline-border-print);
@@ -30,39 +30,39 @@
   background-color: var(--lrndesign-timeline-background-print);
   color: var(--lrndesign-timeline-color-print);
 }
-:host #events {
+#events {
   padding: 0;
   width: 100%;
   min-height: 300px;
 }
-:host .heading {
+.heading {
   margin: 0;
   color: var(--lrndesign-timeline-accent-print);
 }
-:host .heading h2 {
+.heading h2 {
   font-size: 24px;
   font-weight: 300;
 }
-:host .heading h2,
-:host .details,
-:host .media {
+.heading h2,
+.details,
+.media {
   padding: 0 40px;
 }
-:host .details {
+.details {
   margin: 15px 0; 
 }
-:host .media { 
+.media { 
   opacity: 1;
   transition: opacity 0.5s;
 }
-:host .media, 
-:host .media * { 
+.media, 
+.media * { 
   margin: 0 auto;
   max-width: 100%;
   max-height: 260px;
 }
 @media screen {
-  :host #timeline {
+  #timeline {
     color: var(--lrndesign-timeline-color);
     background-color: var(--lrndesign-accent-background);
     border: 1px solid var(--lrndesign-timeline-border);
@@ -71,7 +71,7 @@
   :host([dark]) #timeline {
     background-color: var(--lrndesign-timeline-background);
   }
-  :host h2 {
+  h2 {
     color:  var(--lrndesign-timeline-header-accent);
   }
   :host(:not([timeline-size="xs"])) #timeline {

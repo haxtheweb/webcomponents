@@ -1,12 +1,5 @@
 {
   /**
-   * the title of the timeline
-   */
-  "title": {
-    "type": String,
-    "value": null
-  },
-  /**
    * the events of the timeline, in the desired order, as in:```
 [
   {
@@ -22,24 +15,30 @@
 ]```
    */
   "events": {
-    "type": Array,
-    "value": [],
-    "notify": true
-  },
-  /**
-   * the updated list of events
-   */
-  "__events": {
-    "type": Array,
-    "computed": "_updateEvents(events)",
-    "notify": true
+    "type": "Array"
   },
   /**
    * the timline size, calculated by responsive utility
    */
   "timelineSize": {
-    "type": String,
+    "type": "String",
+    "reflect": true,
+    "attribute": "timeline-size",
     "value": "xs",
-    "reflectToAttribute": true
+    /**
+     * title of timeline
+     */
+    "timelineTitle": {
+      "type": "String",
+      "reflect": true,
+      "attribute": "timeline-title"
+    },
+    /**
+     * DEPRECATED: title of timeline
+     */
+    "title": {
+      "type": "String",
+      "attribute": "title"
+    }
   }
 }
