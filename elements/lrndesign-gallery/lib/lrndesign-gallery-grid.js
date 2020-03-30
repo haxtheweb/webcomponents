@@ -10,7 +10,7 @@ import "./lrndesign-gallery-details.js";
  * `lrndesign-gallery-grid`
  * An element that renders a collection of gallery items into a grid or a single media item into a layout.
  *
- * @customElement lrndesign-gallery-grid
+ * @element lrndesign-gallery-grid
  * @extends LrndesignGalleryBehaviors
  * @demo ./demo/grid.html demo
  *

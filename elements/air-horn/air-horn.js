@@ -4,7 +4,7 @@
  */
 /**
  * `air-horn`
- * @customElement air-horn
+ * @element air-horn
  * `demonstrative purposes via meme`
  *
  * @microcopy - language worth noting:

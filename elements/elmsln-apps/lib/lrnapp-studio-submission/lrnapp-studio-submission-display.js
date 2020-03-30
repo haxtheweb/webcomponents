@@ -16,6 +16,9 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
   static get template() {
     return html`
       <style>
+        [hidden] {
+          display: none !important;
+        }
         :host {
           display: block;
         }

@@ -17,7 +17,7 @@ window["hljs"] = hljs;
  * `code-sample`
  * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.
  * @demo demo/index.html
- * @customElement code-sample
+ * @element code-sample
  */
 class CodeSample extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

@@ -10,7 +10,7 @@ import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
 /**
  * `simple-search`
- * @customElement simple-search
+ * @element simple-search
  * a button used in simple-search
  * 
 ### Styling

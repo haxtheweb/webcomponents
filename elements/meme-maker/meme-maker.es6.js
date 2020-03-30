@@ -9,7 +9,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  *  - go forth and make dank memes yo
- * @customElement meme-maker
+ * @element meme-maker
  */
 class MemeMaker extends LitElement {
   static get styles() {

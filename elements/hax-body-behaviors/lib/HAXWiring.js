@@ -100,7 +100,7 @@
  *   ]
  * }
  * `saveOptions`
- * @customElement saveOptions is a more open ended object which can be used to help
+ * @element saveOptions is a more open ended object which can be used to help
  * support future flexibility / needs. The first major thing this supports
  * is the wipeSlot flag (default false). wipeSlot is used to inform HAX
  * that when it's going to save the current item to a backend (convert to html / text)

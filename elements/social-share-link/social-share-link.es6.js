@@ -10,7 +10,7 @@ import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
  * `social-share-link`
  * `a link to share content on social`
  * @demo demo/index.html
- * @customElement social-share-link
+ * @element social-share-link
  */
 class SocialShareLink extends LitElement {
   

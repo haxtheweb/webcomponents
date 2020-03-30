@@ -4,7 +4,7 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-export-dialog`
- * @customElement hax-export-dialog
+ * @element hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
 class HaxExportDialog extends winEventsElement(

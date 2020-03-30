@@ -13,7 +13,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * @microcopy - language worth noting:
  *  - CSV - Comma separated values
  * @demo demo/index.html
- * @customElement lrn-table
+ * @element lrn-table
  */
 class LrnTable extends SchemaBehaviors(LitElement) {
   constructor() {

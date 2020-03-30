@@ -4,7 +4,7 @@
  */
 /**
  * `elmsln-apps`
- * @customElement elmsln-apps
+ * @element elmsln-apps
  * `This is basically here just for the tooling to be happy but shouldn't be used`
  */
 import "./lib/game-show-scoreboard/game-show-scoreboard.js";

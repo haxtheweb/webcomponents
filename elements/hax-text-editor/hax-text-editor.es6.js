@@ -8,7 +8,7 @@ import "./lib/hax-text-editor-toolbar.js";
 
 /**
  * `hax-text-editor`
- * @customElement hax-text-editor
+ * @element hax-text-editor
  * `rich-text-editor configured for HAX`
  *
  * @microcopy - language worth noting:

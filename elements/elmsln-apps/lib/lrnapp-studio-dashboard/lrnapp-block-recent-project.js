@@ -13,6 +13,9 @@ class LrnappBlockRecentProject extends PolymerElement {
   static get template() {
     return html`
       <style include="materializecss-styles paper-item-styles">
+        [hidden] {
+          display: none !important;
+        }
         :host {
           display: block;
         }

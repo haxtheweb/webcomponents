@@ -10,7 +10,7 @@
  *   <iron-icon icon="editable-table:filter"></iron-icon>
  *
  * @polymer
- * @customElement editable-table-iconset
+ * @element editable-table-iconset
  * @demo ./demo/display.html
  */
 import "@polymer/iron-icon/iron-icon.js";

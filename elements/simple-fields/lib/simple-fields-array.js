@@ -10,7 +10,7 @@ import "./simple-fields-array-item.js";
  *
  * @group simple-fields
  * @extends simple-fields-fieldset
- * @customElement simple-fields-array
+ * @element simple-fields-array
  */
 class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get tag() {
@@ -190,12 +190,12 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
    *
    * @memberof SimpleFieldsArray
    */
-  focus(index){
-    if(this.childNodes && index){
-      if(this.childNodes.length < index) index = this.childNodes.length -1;
+  focus(index) {
+    if (this.childNodes && index) {
+      if (this.childNodes.length < index) index = this.childNodes.length - 1;
       this.childNodes[index].focus();
-    } else if(this.shadowRoot){
-      let id = !this.childNodes ? 'add' : 'expand';
+    } else if (this.shadowRoot) {
+      let id = !this.childNodes ? "add" : "expand";
       this.shadowRoot.getElementById(id).focus();
     }
   }

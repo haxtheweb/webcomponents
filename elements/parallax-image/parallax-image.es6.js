@@ -3,7 +3,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 /**
  * `parallax-image`
  * @demo demo/index.html
- * @customElement parallax-image
+ * @element parallax-image
  */
 class ParallaxImage extends SchemaBehaviors(LitElement) {
   /**

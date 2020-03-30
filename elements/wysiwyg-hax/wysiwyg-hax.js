@@ -4,7 +4,7 @@ import "@lrnwebcomponents/cms-hax/cms-hax.js";
  * `wysiwyg-hax`
  * `Integration of wysiwyg edit form for a page with HAX.`
  * @demo demo/index.html
- * @customElement wysiwyg-hax
+ * @element wysiwyg-hax
  */
 class WysiwygHax extends LitElement {
   /**

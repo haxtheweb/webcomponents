@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `they-live`
- * @customElement they-live
+ * @element they-live
  * `To demonstrate the hidden reality behind the component`
  *
  * @microcopy - language worth noting:

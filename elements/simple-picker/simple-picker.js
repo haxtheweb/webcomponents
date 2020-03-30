@@ -53,7 +53,7 @@ Custom property | Description | Default
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
  *
  * @demo ./demo/index.html
- * @customElement simple-picker
+ * @element simple-picker
  */
 class SimplePicker extends LitElement {
   //styles function

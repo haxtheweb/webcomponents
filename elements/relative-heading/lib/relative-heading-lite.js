@@ -9,7 +9,7 @@ import "./relative-heading-state-manager.js";
  * `outputs the correct heading hierarchy based on parent heading`
  *
  * @demo demo/lite.html
- * @customElement relative-heading-lite
+ * @element relative-heading-lite
  */
 class RelativeHeadingLite extends LitElement {
   //styles function

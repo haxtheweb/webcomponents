@@ -8,7 +8,7 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
  * @microcopy - the mental model for this element
  * - hax-source - a backend that can supply items for selection by the user
  * - hax-body - the text are ultimately we are trying to insert this item into
- * @customElement hax-app-search
+ * @element hax-app-search
  */
 class HaxAppSearch extends winEventsElement(SimpleColors) {
   /**

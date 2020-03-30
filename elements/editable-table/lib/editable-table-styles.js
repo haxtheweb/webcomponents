@@ -7,7 +7,7 @@
  *
 
  * @polymer
- * @customElement editable-table-styles
+ * @element editable-table-styles
  * @demo ./demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";

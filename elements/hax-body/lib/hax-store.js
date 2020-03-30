@@ -8,7 +8,7 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
- * @customElement hax-store
+ * @element hax-store
  */
 class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**

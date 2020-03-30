@@ -9,7 +9,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `display a quick link with styling to a repo to help with contributions`
  * @lit-element
  * @demo demo/index.html
- * @customElement git-corner
+ * @element git-corner
  */
 class GitCorner extends LitElement {
   

@@ -19,7 +19,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  *  - an item is a thing in a list of many which can be modified
  *
  * @demo demo/index.html
- * @customElement editable-list-item
+ * @element editable-list-item
  */
 class EditableListItem extends SimpleColors {
   /**

@@ -35,6 +35,9 @@ class LrnappStudioInstructor extends PolymerElement {
   static get template() {
     return html`
     <style include="materializecss-styles">
+      [hidden] {
+        display: none !important;
+      }
       :host {
         display: block;
         align-content: center;

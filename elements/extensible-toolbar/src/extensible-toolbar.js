@@ -26,7 +26,7 @@ Custom property | Description | Default
 `--extensible-toolbar-hidden-until-xl` | display for items that should only be hidden when `responsiveSize` < `xl` | none
  * 
  *
- * @customElement
+ * @element
  * @lit-html
  * @lit-element
  * @demo demo/index.html

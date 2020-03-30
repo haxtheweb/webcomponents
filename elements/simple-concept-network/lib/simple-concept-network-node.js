@@ -2,7 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-concept-network-node`
- * @customElement simple-concept-network-node
+ * @element simple-concept-network-node
  * A small but effective little data visualizer for topics surrounding
  * a central concept, much like the ELMS:LN snowflake icon.
  * @demo demo/index.html

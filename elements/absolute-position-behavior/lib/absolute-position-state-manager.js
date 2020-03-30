@@ -23,7 +23,7 @@ window.AbsolutePositionStateManager.requestAvailability = () => {
  * `absolute-position-state-manager`
  * manages state of multiple absolute-positioned elements on a page
  *
- * @customElement absolute-position-state-manager
+ * @element absolute-position-state-manager
  */
 class AbsolutePositionStateManager extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

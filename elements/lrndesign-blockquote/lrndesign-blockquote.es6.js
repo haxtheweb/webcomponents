@@ -3,7 +3,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 /**
  * `lrndesign-blockquote`
  * `A structured blockquote element`
- * @customElement lrndesign-blockquote
+ * @element lrndesign-blockquote
  * @demo demo/index.html
  */
 class LrndesignBlockquote extends SchemaBehaviors(LitElement) {

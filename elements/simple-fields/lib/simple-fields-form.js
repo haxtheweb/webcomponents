@@ -6,7 +6,7 @@ import { SimpleFieldsFormLite } from "./simple-fields-form-lite.js";
  * binding and submission capabilities on top of simple-fields
  *
  * @group simple-fields
- * @customElement simple-fields-form
+ * @element simple-fields-form
  * @demo ./demo/form.html
  */
 class SimpleFieldsForm extends SimpleFieldsFormLite {

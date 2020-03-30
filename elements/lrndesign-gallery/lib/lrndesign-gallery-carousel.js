@@ -12,7 +12,7 @@ import "./lrndesign-gallery-zoom.js";
  * `lrndesign-gallery-carousel`
  * An element that renders a collection of gallery items into a carousel or a single media item into a layout.
  *
- * @customElement lrndesign-gallery-carousel
+ * @element lrndesign-gallery-carousel
  * @extends LrndesignGalleryBehaviors
  * @demo ./demo/index.html demo
  *

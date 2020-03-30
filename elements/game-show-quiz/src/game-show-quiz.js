@@ -18,7 +18,7 @@ import "./lib/game-show-quiz-modal.js";
  * @microcopy - the mental model for this element
  * - game show - a display board in the style of Jeopardy
  * @demo demo/index.html
- * @customElement game-show-quiz
+ * @element game-show-quiz
  */
 class GameShowQuiz extends MutableData(PolymerElement) {
   static get tag() {

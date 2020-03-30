@@ -10,7 +10,7 @@ import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
  * `A series of elements that generate a hierarchical menu`
  *
  * @demo demo/index.html
- * @customElement map-menu
+ * @element map-menu
  */
 class MapMenu extends LitElement {
   /**

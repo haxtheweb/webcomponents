@@ -83,7 +83,7 @@ Custom property | Description | Default
  * 
  * @demo demo/index.html
  * @LitElement
- * @customElement hax-body
+ * @element hax-body
  */
 class HaxBody extends SimpleColors {
   /**

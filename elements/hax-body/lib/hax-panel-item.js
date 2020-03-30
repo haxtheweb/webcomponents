@@ -4,7 +4,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
  * `hax-panel-item`
- * @customElement hax-panel-item
+ * @element hax-panel-item
  * `A single button in the hax panel for consistency.`
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed

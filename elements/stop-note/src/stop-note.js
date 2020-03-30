@@ -4,7 +4,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
- * @customElement stop-note
+ * @element stop-note
  */
 class StopNote extends SchemaBehaviors(LitElement) {
   /**

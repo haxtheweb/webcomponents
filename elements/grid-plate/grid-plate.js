@@ -144,7 +144,7 @@ class GridPlateLayoutOptions {
  * `grid-plate`
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
- * @customElement grid-plate
+ * @element grid-plate
  */
 class GridPlate extends LitElement {
   /**

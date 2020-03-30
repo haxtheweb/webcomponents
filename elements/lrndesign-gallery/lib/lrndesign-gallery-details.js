@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `lrndesign-gallery-details`
  * An element that renders the print view of a gallery item.
  *
- * @customElement lrndesign-gallery-details
+ * @element lrndesign-gallery-details
  * 
  * @microcopy - language worth noting:```
 <lrndesign-gallery-details 

@@ -13,7 +13,7 @@ import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
  * `haxor-slevin`
  * `Tech blogger theme`
  * @demo demo/index.html
- * @customElement haxor-slevin
+ * @element haxor-slevin
  */
 class HaxorSlevin extends HAXCMSLitElementTheme {
   static get styles() {

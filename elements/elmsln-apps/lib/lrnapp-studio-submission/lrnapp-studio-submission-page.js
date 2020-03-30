@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -24,6 +23,9 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   static get template() {
     return html`
       <style>
+        [hidden] {
+          display: none !important;
+        }
         :host {
           display: block;
           position: relative;

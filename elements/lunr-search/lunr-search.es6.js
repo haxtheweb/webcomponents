@@ -10,7 +10,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * `lunr-search`
  * `LunrJS search element`
  * @demo demo/index.html
- * @customElement lunr-search
+ * @element lunr-search
  */
 class LunrSearch extends LitElement {
   

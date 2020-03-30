@@ -9,7 +9,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  *
  * @pseudoElement
  * @polymer
- * @customElement simple-colors-shared-styles-polymer
+ * @element simple-colors-shared-styles-polymer
  */
 
 const StyleElement = document.createElement("dom-module");

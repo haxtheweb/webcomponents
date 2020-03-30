@@ -9,7 +9,7 @@ import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
- * @customElement hax-tray
+ * @element hax-tray
  */
 class HaxTray extends winEventsElement(LitElement) {
   /**

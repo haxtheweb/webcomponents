@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-av-iconset-svg`
- * @customElement mdi-av-iconset-svg is a iconset for the Material Design Icons collection with the "av" tag
+ * @element mdi-av-iconset-svg is a iconset for the Material Design Icons collection with the "av" tag
  *
  * Example:
  *   <iron-icon icon="mdi-av:camera"></iron-icon>

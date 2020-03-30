@@ -5,7 +5,7 @@
 
 /**
  * `hex-a-gon`
- * @customElement hex-a-gon
+ * @element hex-a-gon
  * `A simple CSS based hexagon`
  *
  * @microcopy - language worth noting:

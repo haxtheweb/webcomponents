@@ -4,7 +4,7 @@
  */
 /**
  * `html-block`
- * @customElement html-block
+ * @element html-block
  * `A basic HTML block that provides HAXschema wiring`
  *
  * @microcopy - language worth noting:

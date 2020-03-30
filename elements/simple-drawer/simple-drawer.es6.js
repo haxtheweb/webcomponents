@@ -30,7 +30,7 @@ window.SimpleDrawer.requestAvailability = () => {
  * `simple-drawer`
  * `a singleton drawer element`
  * @demo demo/index.html
- * @customElement simple-drawer
+ * @element simple-drawer
  */
 class SimpleDrawer extends SimpleColors {
   

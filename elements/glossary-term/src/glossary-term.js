@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `glossary-term`
  * `Glossary term that shows a popup for the answer`
  * @demo demo/index.html
- * @customElement glossary-term
+ * @element glossary-term
  */
 class GlossaryTerm extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

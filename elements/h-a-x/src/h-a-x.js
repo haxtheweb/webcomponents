@@ -5,7 +5,7 @@
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `h-a-x`
- * @customElement h-a-x
+ * @element h-a-x
  * `Single tag to transform authoring`
  *
  * @microcopy - language worth noting:

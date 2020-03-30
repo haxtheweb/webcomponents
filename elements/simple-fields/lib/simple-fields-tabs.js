@@ -7,7 +7,7 @@ import "./simple-fields-tab.js";
  * exposing a `value` property that represents an array described by the schema.
  *
  * @group simple-fields
- * @customElement simple-fields-tabs
+ * @element simple-fields-tabs
  * @extends a11y-tabs
  * @extends simple-fields-fieldset
  */

@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-settings-iconset-svg`
- * @customElement mdi-settings-iconset-svg is a iconset for the Material Design Icons collection with the "settings" tag
+ * @element mdi-settings-iconset-svg is a iconset for the Material Design Icons collection with the "settings" tag
  *
  * Example:
  *   <iron-icon icon="mdi-settings:settings"></iron-icon>

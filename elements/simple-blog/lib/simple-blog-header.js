@@ -6,7 +6,7 @@ import { varGet } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`
- * @customElement simple-blog-header
+ * @element simple-blog-header
  */
 class SimpleBlogHeader extends SimpleColors {
   /**

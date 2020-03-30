@@ -9,7 +9,7 @@ import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.j
  * `hero-banner`
  * `That thing no one wants to make over and over again yet always does...`
  * @demo demo/index.html
- * @customElement hero-banner
+ * @element hero-banner
  */
 class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {

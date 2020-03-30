@@ -14,7 +14,7 @@ Custom styles:
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
  * @extends A11yMediaBehaviors
- * @customElement a11y-media-play-button
+ * @element a11y-media-play-button
  */
 class A11yMediaPlayButton extends A11yMediaButton {
   // properties available to the custom element for data binding

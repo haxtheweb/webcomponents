@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item`
- * @customElement hax-context-item
+ * @element hax-context-item
  * `A single button in the hax context menu for consistency.`
  * @microcopy - the mental model for this element
  * - context - menu in the page the user can select an item from, this being 1 option in that list

@@ -4,7 +4,7 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
  * `dropdown-select`
  * an easy to use, works as expected dropdown menu.
  *
- * @customElement dropdown-select
+ * @element dropdown-select
  * @demo demo/index.html
  */
 class DropdownSelect extends LitElement {

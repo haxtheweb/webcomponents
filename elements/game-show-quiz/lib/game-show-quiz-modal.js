@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `game-show-quiz-modal`
- * @customElement game-show-quiz-modal
+ * @element game-show-quiz-modal
  * `Modal for the quiz show`
  *  @microcopy - the mental model for this element
  *  - game show - a display board in the style of Jeopardy

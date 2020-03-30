@@ -10,7 +10,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  * `lrndesign-gallery-zoom`
  * An element that renders the zoom feature for the gallery.
  * 
- * @customElement lrndesign-gallery-zoom
+ * @element lrndesign-gallery-zoom
  *
  * @microcopy - language worth noting:```
 <lrndesign-gallery-zoom 

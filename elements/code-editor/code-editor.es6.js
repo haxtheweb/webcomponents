@@ -11,7 +11,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - monaco is the VS code editor
- * @customElement code-editor
+ * @element code-editor
  */
 class CodeEditor extends SchemaBehaviors(LitElement) {
   /**
@@ -87,8 +87,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     this.hideLineNumbers = false;
     this.focused = false;
     this.__libPath =
-      decodeURIComponent(import.meta.url) +
-      "/../../../monaco-editor/min/vs";
+      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
     import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {

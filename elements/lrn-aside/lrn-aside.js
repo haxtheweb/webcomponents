@@ -3,7 +3,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `lrn-aside`
  * A content aside as a panel
  * @demo demo/index.html
- * @customElement lrn-aside
+ * @element lrn-aside
  */
 class LrnAside extends LitElement {
   constructor() {

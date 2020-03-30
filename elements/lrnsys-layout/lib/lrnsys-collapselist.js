@@ -2,7 +2,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrnsys-collapselist`
- * @customElement lrnsys-collapselist
+ * @element lrnsys-collapselist
  */
 class LrnsysCollapselist extends SimpleColors {
   /**

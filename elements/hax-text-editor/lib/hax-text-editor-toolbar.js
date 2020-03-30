@@ -12,7 +12,7 @@ import "./hax-text-editor-inline.js";
 import "./hax-text-editor-math.js";
 /**
  * `hax-text-editor-toolbar`
- * @customElement hax-text-editor-toolbar
+ * @element hax-text-editor-toolbar
  * `a basic toolbar for the HAX text editor`
  *
  * @microcopy - language worth noting:

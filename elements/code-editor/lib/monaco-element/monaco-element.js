@@ -8,7 +8,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *
  * Partly influenced by https://github.com/PolymerVis/monaco-editor
  *
- * @customElement monaco-element
+ * @element monaco-element
  */
 class MonacoElement extends LitElement {
   /**

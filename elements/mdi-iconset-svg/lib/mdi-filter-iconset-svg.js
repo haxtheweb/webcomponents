@@ -1,7 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
  * `mdi-filter-iconset-svg`
- * @customElement mdi-filter-iconset-svg is a iconset for the Material Design Icons collection with the "filter" tag
+ * @element mdi-filter-iconset-svg is a iconset for the Material Design Icons collection with the "filter" tag
  *
  * Example:
  *   <iron-icon icon="mdi-filter:filter"></iron-icon>

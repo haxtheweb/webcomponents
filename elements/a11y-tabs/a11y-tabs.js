@@ -63,7 +63,7 @@ Custom property | Description | Default
  * @demo ./demo/index.html
  * @demo ./demo/vertical.html Always Vertical
  * @demo ./demo/horizontal.html Always Horizontal
- * @customElement a11y-tabs
+ * @element a11y-tabs
  */
 class A11yTabs extends LitElement {
   //styles function
@@ -522,7 +522,6 @@ class A11yTabs extends LitElement {
    * @param {string} newValue the new active tab's id
    */
   _activeTabChanged(newValue, oldValue) {
-    console.log("_activeTabChanged", this, newValue, oldValue);
     if (newValue !== oldValue) this.selectTab(newValue);
     window.dispatchEvent(
       new CustomEvent("active-tab-changed", {
@@ -559,7 +558,6 @@ class A11yTabs extends LitElement {
    * @param {event} e the tab tap event
    */
   _handleTab(tab) {
-    console.log("_handleTab", this, tab);
     if (!tab.disabled) this.activeTab = tab.id;
   }
   /**

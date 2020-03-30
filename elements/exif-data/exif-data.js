@@ -7,7 +7,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * `exif-data`
  * `obtain exif data from slotted elements`
  * @demo demo/index.html
- * @customElement exif-data
+ * @element exif-data
  */
 class ExifData extends HTMLElement {
   /**

@@ -10,7 +10,7 @@ import { record } from "./lib/vmsg-fork.js";
  * `LAME bridge`
  *
  * @demo demo/index.html
- * @customElement voice-recorder
+ * @element voice-recorder
  */
 class VoiceRecorder extends LitElement {
   static get styles() {

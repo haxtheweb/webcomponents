@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `hax-blox-browser`
- * @customElement hax-blox-browser
+ * @element hax-blox-browser
  * `List of layout blox to select from`
  * @microcopy - the mental model for this element
  * - blox - silly name for the general public when talking about custom elements and what it provides in the end.

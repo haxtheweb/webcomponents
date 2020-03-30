@@ -4,7 +4,7 @@
  */
 /**
  * `example-hax-element`
- * @customElement example-hax-element
+ * @element example-hax-element
  * `Provide an example to pick apart of a working HAX element`
  *
  * @microcopy - language worth noting:

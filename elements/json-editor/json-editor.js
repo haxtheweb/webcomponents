@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `json-editor`
  * `simple JSON blob data binding to a text area`
  * @demo demo/index.html
- * @customElement json-editor
+ * @element json-editor
  */
 class JsonEditor extends LitElement {
   //styles function

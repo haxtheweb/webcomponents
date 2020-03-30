@@ -28,7 +28,7 @@ Custom property | Description | Default
 `--simple-fields-array-item-heading-background-color` | background-color for simple-fields-array-item heading | unset
  *
  * @group simple-fields
- * @customElement simple-fields-array-item
+ * @element simple-fields-array-item
  * @demo ./demo/schema.html Schema
  * @demo ./demo/form.html Form
  */

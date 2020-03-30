@@ -117,7 +117,7 @@
   }
 }
 ```
- * @customElement hax-app
+ * @element hax-app
  */
 class HAXApp extends HTMLElement {
   constructor() {
@@ -190,7 +190,7 @@ Register a blox with HAX store.
   ]
 }]
 ```
- * @customElement hax-blox
+ * @element hax-blox
  */
 class HAXBlox extends HAXApp {
   constructor() {
@@ -241,7 +241,7 @@ Register a stax with HAX store.
   ]
 }]
 ```
- * @customElement hax-stax
+ * @element hax-stax
  */
 class HAXStax extends HAXApp {
   constructor() {

@@ -12,7 +12,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  *  - CSV is comma separated values
  *
  * @demo ./demo/index.html
- * @customElement csv-render
+ * @element csv-render
  */
 class CsvRender extends SimpleColors {
   /**

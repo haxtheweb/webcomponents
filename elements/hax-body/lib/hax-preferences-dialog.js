@@ -3,7 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-export-dialog`
- * @customElement hax-export-dialog
+ * @element hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
 class HaxPreferencesDialog extends winEventsElement(SimpleColors) {

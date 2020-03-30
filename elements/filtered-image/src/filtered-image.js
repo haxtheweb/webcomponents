@@ -10,7 +10,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`
  * @demo demo/index.html
  * @demo demo/filters.html Filters
- * @customElement filtered-image
+ * @element filtered-image
  */
 class FilteredImage extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

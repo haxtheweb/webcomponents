@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrnsys-collapselist-item`
- * @customElement lrnsys-collapselist-item
+ * @element lrnsys-collapselist-item
  * @demo demo/index.html
  */
 class LrnsysCollapselistItem extends LitElement {

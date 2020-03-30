@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `figure-label`
- * @customElement figure-label
+ * @element figure-label
  * `Figure label element to mark media assets within content.`
  *
  * @microcopy - language worth noting:

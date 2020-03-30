@@ -12,7 +12,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  * `lerndesign-gallery-behaviors`
  * A set of properties for lerndesign-gallery components.
  *
- * @customElement lerndesign-gallery-behaviors
+ * @element lerndesign-gallery-behaviors
  * @extends SimpleColors
  *
  * @microcopy - language worth noting:

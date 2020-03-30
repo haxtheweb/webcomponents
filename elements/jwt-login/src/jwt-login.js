@@ -6,7 +6,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
- * @customElement jwt-login
+ * @element jwt-login
  */
 class JwtLogin extends LitElement {
   constructor() {

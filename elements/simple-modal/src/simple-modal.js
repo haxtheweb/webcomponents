@@ -27,7 +27,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * @demo ./demo/css.html styling simple-modal via CSS
  * @demo ./demo/details.html styling simple-modal via event details
  * @demo ./demo/template.html using simple-modal-template
- * @customElement simple-modal
+ * @element simple-modal
  */
 class SimpleModal extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

@@ -8,9 +8,9 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 /**
  * `lrndesign-timeline`
- * an element that displays events on a timeline
+ * `an element that displays events on a timeline`
  *
- * @customElement lrndesign-timeline
+ * @element lrndesign-timeline
  * @lit-html
  * @lit-element
  * @demo demo/index.html

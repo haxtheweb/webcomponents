@@ -22,7 +22,7 @@ Custom property | Description | Default
 `--simple-picker-option-size` | size of each simple picker option | 24px
  *
  * @see ../simple-picker.js
- * @customElement simple-picker-option
+ * @element simple-picker-option
  */
 class SimplePickerOption extends LitElement {
   //styles

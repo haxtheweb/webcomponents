@@ -17,7 +17,7 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
  * @demo ./demo/picker.html demo
  * @see "../simple-colors.js"
  * @see "./demo/simple-colors-picker-demo.js"
- * @customElement simple-colors-picker
+ * @element simple-colors-picker
  */
 class SimpleColorsPicker extends SimpleColors {
   static get styles() {

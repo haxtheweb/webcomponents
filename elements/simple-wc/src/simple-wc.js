@@ -8,7 +8,7 @@ import { LitElement, css, html } from "lit-element/lit-element.js";
  * `simple-wc`
  * `A simple web component wrapper to simplify consistent patterns of element creation`
  * @demo demo/index.html
- * @customElement simple-wc
+ * @element simple-wc
  */
 function camelCaseToDash(key) {
   return key.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`);

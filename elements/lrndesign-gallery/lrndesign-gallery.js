@@ -12,7 +12,7 @@ import "./lib/lrndesign-gallery-grid.js";
  * `lrndesign-gallery`
  * displays images as a carousel or grid with the ability to zoom
  *
- * @customElement lrndesign-gallery
+ * @element lrndesign-gallery
  * @lit-html
  * @lit-element
  * @demo demo/index.html

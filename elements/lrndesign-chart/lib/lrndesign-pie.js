@@ -5,7 +5,7 @@
 import { LrndesignChart } from "../lrndesign-chart.js";
 /**
  * `lrndesign-pie`
- * @customElement lrndesign-pie
+ * @element lrndesign-pie
  * a pie chart
  *
 

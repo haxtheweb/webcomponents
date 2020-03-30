@@ -6,7 +6,7 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 
 /**
  * `hax-app-browser`
- * @customElement hax-app-browser
+ * @element hax-app-browser
  *
  * `Browse a list of apps. This provides a listing of our gizmos that we've integrated with.`
  * @microcopy - the mental model for this element

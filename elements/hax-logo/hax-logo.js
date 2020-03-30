@@ -7,7 +7,7 @@
  * `logo element for hax, obviously as a hax capable element.`
  * @demo demo/index.html
  * @demo demo/site.html
- * @customElement hax-logo
+ * @element hax-logo
  */
 class HaxLogo extends HTMLElement {
   // render function

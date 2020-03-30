@@ -22,7 +22,7 @@ window.SimpleToast.requestAvailability = () => {
  * `simple-toast`
  * `A singular toast / message for conistency`
  * @demo demo/index.html
- * @customElement simple-toast
+ * @element simple-toast
  */
 class SimpleToast extends LitElement {
   

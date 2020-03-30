@@ -7,7 +7,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * ### Credits
  * <a href="https://openseadragon.github.io">openSeadragon</a>
  * @demo demo/index.html
- * @customElement img-pan-zoom
+ * @element img-pan-zoom
  */
 class ImgPanZoom extends LitElement {
   /**

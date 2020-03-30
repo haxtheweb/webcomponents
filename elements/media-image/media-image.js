@@ -9,7 +9,7 @@ import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-mo
  * `media-image`
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
- * @customElement media-image
+ * @element media-image
  */
 class MediaImage extends SchemaBehaviors(LitElement) {
   /**
@@ -423,7 +423,7 @@ window.customElements.define(MediaImage.tag, MediaImage);
 /**
  * `media-image-image`
  * `A simple image presentaiton with minor documented options`
- * @customElement media-image-image
+ * @element media-image-image
  */
 class MediaImageImage extends SimpleModalHandler(LitElement) {
   /**
@@ -510,7 +510,7 @@ window.customElements.define(MediaImageImage.tag, MediaImageImage);
  * `media-image-citation`
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
- * @customElement media-image-citation
+ * @element media-image-citation
  */
 class MediaImageCitation extends LitElement {
   /**
@@ -547,7 +547,7 @@ window.customElements.define(MediaImageCitation.tag, MediaImageCitation);
  * `media-image-caption`
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
- * @customElement media-image-caption
+ * @element media-image-caption
  */
 class MediaImageCaption extends LitElement {
   /**

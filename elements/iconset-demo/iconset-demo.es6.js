@@ -10,7 +10,7 @@ import "@polymer/marked-element/marked-element.js";
 export { IconsetDemo };
 /**
  * `iconset-demo`
- * @customElement iconset-demo
+ * @element iconset-demo
  * `iterates through an iconset array to generate a demo of all of the icons`
  *
  * @microcopy - language worth noting:

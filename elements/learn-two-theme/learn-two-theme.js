@@ -10,7 +10,7 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `learn-two-theme`
- * @customElement learn-two-theme
+ * @element learn-two-theme
  * `Learn2 theme for HAXcms`
  *
 

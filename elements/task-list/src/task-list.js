@@ -7,7 +7,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - task - a singular thing to accomplish
- * @customElement task-list
+ * @element task-list
  */
 class TaskList extends SchemaBehaviors(LitElement) {
   /**

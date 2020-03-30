@@ -9,7 +9,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *
  * @silly
  * @demo demo/index.html
- * @customElement awesome-explosion
+ * @element awesome-explosion
  */
 class AwesomeExplosion extends LitElement {
   /**

@@ -11,7 +11,7 @@ import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
  * `simple-blog`
  * `A simple blog and associated elements`
  * @demo demo/index.html
- * @customElement simple-blog
+ * @element simple-blog
  */
 class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   /**

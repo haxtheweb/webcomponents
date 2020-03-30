@@ -3,7 +3,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 /**
  * `cms-hax`
- * @customElement cms-hax
+ * @element cms-hax
  * @demo ../../demo/index.html
  */
 class CmsHax extends LitElement {

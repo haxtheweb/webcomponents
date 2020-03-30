@@ -1,6 +1,6 @@
 /**
  * `simple-login-avatar`
- * @customElement simple-login-avatar
+ * @element simple-login-avatar
  * Inspiration from https://clicknathan.com/web-design/css-avatar-icons/
  */
 class SimpleLoginAvatar extends HTMLElement {

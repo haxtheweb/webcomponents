@@ -4,7 +4,7 @@
  */
 /**
  * `random-item`
- * @customElement random-item
+ * @element random-item
  * `show a random item from a list of items`
  *
  * @microcopy - language worth noting:

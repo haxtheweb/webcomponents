@@ -18,7 +18,7 @@ Custom property | Description | Default
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
 `--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
- * @customElement a11y-tab
+ * @element a11y-tab
  * @demo ./demo/index.html
  * @demo ./demo/vertical.html Always Vertical
  * @demo ./demo/horizontal.html Always Horizontal

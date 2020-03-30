@@ -15,7 +15,7 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  * - `video source` - url / link to video file
  *
  * @demo demo/index.html
- * @customElement video-player
+ * @element video-player
  */
 class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   

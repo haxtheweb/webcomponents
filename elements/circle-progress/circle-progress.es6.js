@@ -12,7 +12,7 @@ import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
  * `Polymer-based web component displaying a circular progress bar.`
  *
  * @demo demo/index.html
- * @customElement circle-progress
+ * @element circle-progress
  */
 class CircleProgress extends mixinBehaviors(
   [IronResizableBehavior],

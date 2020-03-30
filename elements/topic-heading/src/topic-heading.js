@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * `topic-heading`
  * `Semantic and visual meaning behind a heading break`
  * @demo demo/index.html
- * @customElement topic-heading
+ * @element topic-heading
  */
 class TopicHeading extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

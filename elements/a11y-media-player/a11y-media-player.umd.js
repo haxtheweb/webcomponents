@@ -91,7 +91,7 @@ Custom property | Description | Default
 `--paper-toast-color` | toast text color | `--a11y-media-color`
 `--paper-toast-background-color` | toast background color | `--a11y-media-bg-color`
  *
- * @customElement a11y-media-player
+ * @element a11y-media-player
  * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
@@ -845,9 +845,10 @@ paper-toast:not(:defined) {
       }
     </div>
   </div>
+  <div id="progresslabel" class="sr-only">${this._getLocal(this.localization,'seekSlider', 'label')}</div>
   <paper-slider id="slider"
     class="screen-only"
-    label="${this._getLocal(this.localization,'seekSlider', 'label')}"
+    aria-labelledby="progresslabel"
     min="${0}"
     max="${this.duration}"
     secondary-progress="${this.buffered}"
@@ -2251,18 +2252,6 @@ ${this.poster
       root._handleTimeUpdate(e)
     );
     this._addResponsiveUtility();
-    /**
-     * Fires when a new player is ready for a11y-media-state-manager
-     * @event a11y-player
-     */
-    window.dispatchEvent(
-      new CustomEvent("a11y-player", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
     this.__playerReady = true;
   }
 
@@ -2855,10 +2844,14 @@ ${this.poster
    */
   toggleFullscreen(mode) {
     if (this.fullscreenButton) {
-      this.fullscreen = mode === undefined ? !this.fullscreen : mode;
-      //this.toggleTranscript(this.fullscreen);
-      if (screenfull)
-        screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+      let fullscreen = mode === undefined ? !this.fullscreen : mode;
+      if (screenfull){
+        if(fullscreen){
+          screenfull.request(this.shadowRoot.querySelector("#player-section"));
+        } else {
+          screenfull.exit(this.shadowRoot.querySelector("#player-section"));
+        }
+      }
 
       /**
        * Fires when fullscreen is toggled
@@ -3211,6 +3204,19 @@ ${this.poster
   firstUpdated() {
     setTimeout(() => {
       window.A11yMediaStateManager.requestAvailability();
+
+      /**
+       * Fires when a new player is ready for a11y-media-state-manager
+       * @event a11y-player
+       */
+      window.dispatchEvent(
+        new CustomEvent("a11y-player", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
     }, 1000);
   }
   /**

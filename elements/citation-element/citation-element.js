@@ -7,7 +7,7 @@ import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
  * An element dedicated to presenting and managing a correct citation on the web
  * both visually as well as semantically with simple inputs.
  * @demo demo/index.html
- * @customElement citation-element
+ * @element citation-element
  */
 class CitationElement extends SchemaBehaviors(LitElement) {
   /**

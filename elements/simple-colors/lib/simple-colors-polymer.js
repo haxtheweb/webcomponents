@@ -11,7 +11,7 @@ import "./simple-colors-shared-styles-polymer.js";
  * shared set of styles for Polymer @lrnwebcomponents
  *
  * @polymer
- * @customElement simple-colors-polymer
+ * @element simple-colors-polymer
  */
 
 class SimpleColorsPolymer extends PolymerElement {

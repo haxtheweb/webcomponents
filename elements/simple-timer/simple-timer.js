@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `simple-timer`
- * @customElement simple-timer
+ * @element simple-timer
  * `Automated conversion of simple-timer/`
  *
  * @microcopy - language worth noting:

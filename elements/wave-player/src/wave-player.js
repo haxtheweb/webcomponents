@@ -9,7 +9,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * `wave-player`
  * `A player for visualizing a sound file`
  * @demo demo/index.html
- * @customElement wave-player
+ * @element wave-player
  */
 class WavePlayer extends SchemaBehaviors(LitElement) {
   static get styles() {

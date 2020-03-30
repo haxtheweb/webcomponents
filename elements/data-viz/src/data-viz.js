@@ -22,7 +22,7 @@ window.DataViz.requestAvailability = () => {
  * `data-viz`
  * `display pouch-db data using graphs`
  * @demo demo/index.html
- * @customElement data-viz
+ * @element data-viz
  */
 class DataViz extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

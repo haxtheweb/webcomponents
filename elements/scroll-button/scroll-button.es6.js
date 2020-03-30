@@ -11,7 +11,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `scroll-button`
  * `button to scroll to an area or back to top`
  * @demo demo/index.html
- * @customElement scroll-button
+ * @element scroll-button
  */
 class ScrollButton extends LitElement {
   

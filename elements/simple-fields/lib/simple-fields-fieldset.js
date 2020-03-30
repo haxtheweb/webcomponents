@@ -4,7 +4,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * exposing a `value` property that represents an array described by the schema.
  *
  * @group simple-fields
- * @customElement simple-fields-fieldset
+ * @element simple-fields-fieldset
  */
 class SimpleFieldsFieldset extends LitElement {
   static get tag() {

@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
 /**
  * `hax-text-editor-inline`
- * @customElement hax-text-editor-inline
+ * @element hax-text-editor-inline
  * `a button for inline HAX widgets in hax-text-editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:

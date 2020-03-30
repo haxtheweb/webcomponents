@@ -4,7 +4,7 @@
  */
 /**
  * `lazy-import-discover`
- * @customElement lazy-import-discover
+ * @element lazy-import-discover
  * `Break peoples' brains on simplifying webcomponent integrations`
  *
  * @microcopy - language worth noting:

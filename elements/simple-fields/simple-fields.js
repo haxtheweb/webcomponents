@@ -115,7 +115,7 @@ inputMethod: {                //for fields in "this.fields", define elements bas
   }
 }
 ``` 
- * @customElement simple-fields
+ * @element simple-fields
  * @extends simple-fields-lite
  * @demo ./demo/index.html
  * @demo ./demo/schema.html Schema

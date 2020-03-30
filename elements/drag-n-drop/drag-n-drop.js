@@ -7,7 +7,7 @@
 
 /**
  * `drag-n-drop`
- * @customElement drag-n-drop
+ * @element drag-n-drop
  * `drag and drop elements and manager`
  *
  * @microcopy - language worth noting:

@@ -8,7 +8,7 @@ import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
  * @demo demo/index.html
- * @customElement image-inspector
+ * @element image-inspector
  */
 class ImageInspector extends LitElement {
   /**

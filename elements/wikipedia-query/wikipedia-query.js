@@ -4,7 +4,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
  * @demo demo/index.html
- * @customElement wikipedia-query
+ * @element wikipedia-query
  */
 class WikipediaQuery extends LitElement {
   /**

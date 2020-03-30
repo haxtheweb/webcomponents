@@ -13,7 +13,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `example-haxcms-theme`
- * @customElement example-haxcms-theme
+ * @element example-haxcms-theme
  * `A basic, well documented example theme for HAXcms`
  *
  * @microcopy - language worth noting:
