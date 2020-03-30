@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../mutation-observer-import-mixin.js"></script>
+  </head>
+  <body>
+
+    <mutation-observer-import-mixin>
+      This is the element content.
+    </mutation-observer-import-mixin>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <mutation-observer-import-mixin></mutation-observer-import-mixin>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <mutation-observer-import-mixin></mutation-observer-import-mixin>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<mutation-observer-import-mixin>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('mutation-observer-import-mixin'), customElements.get("mutation-observer-import-mixin", 'mutation-observer-import-mixin should be an instance of mutationObserverImportMixin'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

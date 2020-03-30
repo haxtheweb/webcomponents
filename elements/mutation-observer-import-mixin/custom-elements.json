@@ -1,0 +1,24 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "mutation-observer-import-mixin",
+      "path": "./mutation-observer-import-mixin.es6.js",
+      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`"
+    },
+    {
+      "name": "mutation-observer-import-mixin",
+      "path": "./mutation-observer-import-mixin.js",
+      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`"
+    },
+    {
+      "name": "tag",
+      "path": "./mutation-observer-import-mixin.umd.js"
+    },
+    {
+      "name": "mutation-observer-import-mixin",
+      "path": "./src/mutation-observer-import-mixin.js",
+      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`"
+    }
+  ]
+}
