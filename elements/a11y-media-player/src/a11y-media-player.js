@@ -1393,8 +1393,8 @@ class A11yMediaPlayer extends SimpleColors {
   toggleFullscreen(mode) {
     if (this.fullscreenButton) {
       let fullscreen = mode === undefined ? !this.fullscreen : mode;
-      if (screenfull){
-        if(fullscreen){
+      if (screenfull) {
+        if (fullscreen) {
           screenfull.request(this.shadowRoot.querySelector("#player-section"));
         } else {
           screenfull.exit(this.shadowRoot.querySelector("#player-section"));

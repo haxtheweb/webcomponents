@@ -50,7 +50,7 @@ class SimpleFieldsContainer extends LitElement {
           text-align: right;
         }
         :host .label-main:after {
-          content: var(--simple-fields-label-flag,'');
+          content: var(--simple-fields-label-flag, "");
         }
         :host(:focus-within) .label-main {
           color: var(--simple-fields-accent-color, #3f51b5);
@@ -83,7 +83,7 @@ class SimpleFieldsContainer extends LitElement {
         ::slotted([slot="field"]:focus) {
           outline: none;
         }
-        :host[inline] ::slotted([slot="field"]:focus), 
+        :host[inline] ::slotted([slot="field"]:focus),
         ::slotted([type="checkbox"][slot="radio"]:focus),
         ::slotted([type="checkbox"][slot="field"]:focus) {
           outline: unset;
@@ -523,7 +523,11 @@ class SimpleFieldsContainer extends LitElement {
    */
   get labelTemplate() {
     return html`
-      <label for="${this.fieldId}" class="label-main" ?hidden="${this.type ==="fieldset"}">
+      <label
+        for="${this.fieldId}"
+        class="label-main"
+        ?hidden="${this.type === "fieldset"}"
+      >
         <slot name="label"></slot>
         ${this.label}${this.error || this.required ? "*" : ""}
       </label>
@@ -537,17 +541,25 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   get numberError() {
-    let multicheck = this.type === "fieldset" && this.field.querySelector('input[type=checkbox]'),
+    let multicheck =
+        this.type === "fieldset" &&
+        this.field.querySelector("input[type=checkbox]"),
       items = this._getFieldValue() ? this._getFieldValue().length : false,
-      min = this.type === "select" ? this.min : multicheck ? this.minchecked : false,
-      max = this.type === "select" ? this.max : multicheck ? this.maxchecked : false;
+      min =
+        this.type === "select"
+          ? this.min
+          : multicheck
+          ? this.minchecked
+          : false,
+      max =
+        this.type === "select"
+          ? this.max
+          : multicheck
+          ? this.maxchecked
+          : false;
 
-      let more = min && items && min > items 
-        ? min - items 
-        : false,
-      less = max && items && max < items 
-        ? max - items
-        : more;
+    let more = min && items && min > items ? min - items : false,
+      less = max && items && max < items ? max - items : more;
     return less;
   }
 
@@ -709,23 +721,29 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   validate() {
-    let legend = this.field.querySelector('legend');
+    let legend = this.field.querySelector("legend");
     if (this.requiredError) {
       this.error = true;
       this.errorMessage = this.requiredMessage || `required`;
     } else if (this.numberError) {
       this.error = true;
       this.errorMessage =
-        this.numberMessage || (this.numberError > 0
+        this.numberMessage ||
+        (this.numberError > 0
           ? `select ${this.numberError} more`
           : `select ${0 - this.numberError} fewer`);
     } else if (this.patternError) {
       this.error = true;
       this.errorMessage = this.patternMessage || `invalid format`;
     }
-    if(this.type === "fieldset" && legend) {
-      legend.innerHTML = legend.innerHTML.replace(/\**\s*$/,this.error ? '*' : '');
-      legend.style.color = this.error ? 'var(--simple-fields-error-color, #dd2c00)' : '';
+    if (this.type === "fieldset" && legend) {
+      legend.innerHTML = legend.innerHTML.replace(
+        /\**\s*$/,
+        this.error ? "*" : ""
+      );
+      legend.style.color = this.error
+        ? "var(--simple-fields-error-color, #dd2c00)"
+        : "";
     }
   }
 
@@ -761,21 +779,27 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsContainer
    */
-  _getFieldValue(){
+  _getFieldValue() {
     let checked, value;
-    if(this.field){
-      if(this.type === "fieldset" && this.field.querySelector('input[type=radio]')){
-        checked = this.field.querySelector('input:checked');
+    if (this.field) {
+      if (
+        this.type === "fieldset" &&
+        this.field.querySelector("input[type=radio]")
+      ) {
+        checked = this.field.querySelector("input:checked");
         value = checked ? checked.value : undefined;
-      } else if(this.type === "fieldset" && this.field.querySelector('input[type=checkbox]')) {
-        value = []; 
-        checked = this.field.querySelectorAll('input:checked');
-        checked.forEach(input=>value.push(input.value))
-      } else if(this.type === "checkbox"){
+      } else if (
+        this.type === "fieldset" &&
+        this.field.querySelector("input[type=checkbox]")
+      ) {
+        value = [];
+        checked = this.field.querySelectorAll("input:checked");
+        checked.forEach(input => value.push(input.value));
+      } else if (this.type === "checkbox") {
         value = this.field.checked ? this.field.value || true : undefined;
-      } else if(this.type === "radio"){
+      } else if (this.type === "radio") {
         value = this.field.checked ? this.field.value || true : undefined;
-      } else if(this.type === "select"){
+      } else if (this.type === "select") {
         value = this.multiple
           ? Object.keys(this.field.selectedOptions).map(
               option => this.field.selectedOptions[option].value
@@ -807,10 +831,10 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsContainer
    */
-  _handleFieldChange(){
-    if(this.type === "text" || this.type === "textarea") this._updateCount();
-    if(this.autovalidate) this.validate();
-    if(this.type === "textarea") this.autoGrow();
+  _handleFieldChange() {
+    if (this.type === "text" || this.type === "textarea") this._updateCount();
+    if (this.autovalidate) this.validate();
+    if (this.type === "textarea") this.autoGrow();
   }
   /**
    * observes slotted field and listens for focusout
@@ -876,26 +900,35 @@ class SimpleFieldsContainer extends LitElement {
       this.readonly = this.field.readonly;
       this.field.setAttribute("aria-describedby", "field-bottom");
       /** add event listeners */
-      this.field.addEventListener('change',e => this._handleFieldChange());
-      this.field.addEventListener('input',e => this._handleFieldChange());
+      this.field.addEventListener("change", e => this._handleFieldChange());
+      this.field.addEventListener("input", e => this._handleFieldChange());
 
       /** field type-specific adjustments */
-      if(this.type  ===  "select") this.multiple = this.field.multiple;
-      if(this.type  ===  "textarea") {
-        if(!this.field.getAttribute('rows')) this.field.setAttribute('rows',1);
-        this.field.addEventListener('keydown',e => e.stopPropagation());
+      if (this.type === "select") this.multiple = this.field.multiple;
+      if (this.type === "textarea") {
+        if (!this.field.getAttribute("rows"))
+          this.field.setAttribute("rows", 1);
+        this.field.addEventListener("keydown", e => e.stopPropagation());
       }
-      if(this.type  ===  "fieldset") {
-        let legend = this.querySelector('legend')
-        if(legend){
-          legend.style.fontSize = 'var(--simple-fields-detail-font-size, 12px)';
-          legend.style.fontFamily = 'var(--simple-fields-detail-font-family, sans-serif)';
-          legend.style.lineHeight = 'var(--simple-fields-detail-line-height, 22px)';
+      if (this.type === "fieldset") {
+        let legend = this.querySelector("legend");
+        if (legend) {
+          legend.style.fontSize = "var(--simple-fields-detail-font-size, 12px)";
+          legend.style.fontFamily =
+            "var(--simple-fields-detail-font-family, sans-serif)";
+          legend.style.lineHeight =
+            "var(--simple-fields-detail-line-height, 22px)";
           legend.style.paddingInlineStart = 0;
           legend.style.paddingInlineEnd = 0;
         }
-        this.querySelectorAll('label, input').forEach(el=>el.style.marginRight = 'var(--simple-fields-margin, 16px)');
-        this.querySelectorAll('label input').forEach(el=>el.style.marginLeft = 'calc(0 - var(--simple-fields-margin, 16px))');
+        this.querySelectorAll("label, input").forEach(
+          el => (el.style.marginRight = "var(--simple-fields-margin, 16px)")
+        );
+        this.querySelectorAll("label input").forEach(
+          el =>
+            (el.style.marginLeft =
+              "calc(0 - var(--simple-fields-margin, 16px))")
+        );
       }
     } else {
       this.disabled = false;
@@ -904,11 +937,11 @@ class SimpleFieldsContainer extends LitElement {
       this.type = undefined;
 
       /** remove event listeners from old field */
-      if(oldfield){
-        if(oldfield.tagName.toLowerCase() === "textarea") 
-          oldfield.addEventListener('keydown',e => e.stopPropagation());
-        oldfield.removeEventListener('change',e => this._handleFieldChange());
-        oldfield.removeEventListener('input',e => this._handleFieldChange());
+      if (oldfield) {
+        if (oldfield.tagName.toLowerCase() === "textarea")
+          oldfield.addEventListener("keydown", e => e.stopPropagation());
+        oldfield.removeEventListener("change", e => this._handleFieldChange());
+        oldfield.removeEventListener("input", e => this._handleFieldChange());
       }
     }
   }
@@ -922,32 +955,31 @@ class SimpleFieldsContainer extends LitElement {
     let count = ``,
       word = `[\\w\\-\\']+`,
       wordcounter = new RegExp(word, "gim"),
-      maxlength = this.field.getAttribute('maxlength') || this.maxlength || false,
+      maxlength =
+        this.field.getAttribute("maxlength") || this.maxlength || false,
       maxword = this.maxwords || false,
       countmax = this.counter === "word" ? maxword : maxlength,
       regex = new RegExp(`.{0,${maxlength || 1}}`, "g"),
       wordregex = new RegExp(`(${word}\\W*){0,${maxword || 1}}`, "g"),
-      length = ()=> !this.field.value ? 0 : this.field.value.length,
+      length = () => (!this.field.value ? 0 : this.field.value.length),
       wordlength = () => {
-        return !this.field.value 
-          || !this.field.value.match(wordcounter)
+        return !this.field.value || !this.field.value.match(wordcounter)
           ? 0
-          : this.field.value.match(wordcounter).length
-        },
-      correctLength = (length,max,regex)=>{
-        if (
-          length &&
-          max &&
-          max < length &&
-          this.field.value.match(regex)
-        ) {
+          : this.field.value.match(wordcounter).length;
+      },
+      correctLength = (length, max, regex) => {
+        if (length && max && max < length && this.field.value.match(regex)) {
           this.field.value = this.field.value.match(regex)[0].trim();
         }
       };
-    correctLength(length(),maxlength,regex);
-    correctLength(wordlength(),maxword,wordregex);
+    correctLength(length(), maxlength, regex);
+    correctLength(wordlength(), maxword, wordregex);
     count = this.counter === "word" ? wordlength() : length();
-    if (this.counter !== 'none' && this.shadowRoot && this.shadowRoot.querySelector("#fieldmeta"))
+    if (
+      this.counter !== "none" &&
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#fieldmeta")
+    )
       this.shadowRoot.querySelector("#fieldmeta").innerHTML = countmax
         ? `${count}/${countmax}`
         : count;

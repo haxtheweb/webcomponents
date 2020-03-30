@@ -71,8 +71,10 @@ class LrndesignTimeline extends SimpleColors {
    * @readonly
    * @memberof LrndesignTimeline
    */
-  get eventsElement(){
-    return this.shadowRoot && this.shadowRoot.querySelector('#events') ? this.shadowRoot.querySelector('#events') : false;
+  get eventsElement() {
+    return this.shadowRoot && this.shadowRoot.querySelector("#events")
+      ? this.shadowRoot.querySelector("#events")
+      : false;
   }
 
   /**
@@ -91,9 +93,9 @@ class LrndesignTimeline extends SimpleColors {
    * checks the scroll of each event
    */
   _checkScroll() {
-    if(this.shadowRoot){
-      let events = this.shadowRoot.querySelectorAll('.event') || [];
-      (events).forEach(event => {
+    if (this.shadowRoot) {
+      let events = this.shadowRoot.querySelectorAll(".event") || [];
+      events.forEach(event => {
         let top = event.offsetTop,
           target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
           bottom = event.offsetTop + event.offsetHeight;
