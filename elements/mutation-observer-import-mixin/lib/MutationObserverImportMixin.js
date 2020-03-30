@@ -1,4 +1,3 @@
-
 /**
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
@@ -17,7 +16,7 @@ const MutationObserverImportMixin = function(SuperClass) {
     }
     connectedCallback() {
       if (super.connectedCallback) {
-        super.connectedCallback();        
+        super.connectedCallback();
       }
       this._mutationObserver = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
@@ -33,14 +32,14 @@ const MutationObserverImportMixin = function(SuperClass) {
       });
     }
     processElementList(list) {
-      for (var i=0; i < list.length; i++) {
+      for (var i = 0; i < list.length; i++) {
         this.processNewElement(list[i]);
       }
     }
     disconnectedCallback() {
       this._mutationObserver.disconnect();
       if (super.disconnectedCallback) {
-        super.disconnectedCallback();        
+        super.disconnectedCallback();
       }
     }
     /**
@@ -50,6 +49,6 @@ const MutationObserverImportMixin = function(SuperClass) {
       let registry = window.DynamicImportRegistry.requestAvailability();
       registry.loadDefinition(node.tagName);
     }
-  }
+  };
 };
 export { MutationObserverImportMixin };

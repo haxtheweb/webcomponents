@@ -9,7 +9,9 @@ import { MutationObserverImportMixin } from "./lib/MutationObserverImportMixin.j
  * @demo demo/index.html
  * @element mutation-observer-import-mixin
  */
-class MutationObserverImportElement extends MutationObserverImportMixin(HTMLElement) {
+class MutationObserverImportElement extends MutationObserverImportMixin(
+  HTMLElement
+) {
   static get tag() {
     return "mutation-observer-import";
   }

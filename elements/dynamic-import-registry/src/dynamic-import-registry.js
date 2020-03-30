@@ -30,15 +30,20 @@ class DynamicImportRegistry extends HTMLElement {
     super();
     // object for tracking what the registry is
     this.list = {};
-    this.basePath = this.pathFromUrl(
-      decodeURIComponent(import.meta.url)
-    ) + '../../';
+    this.basePath =
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
   }
   connectedCallback() {
-    window.addEventListener('dynamic-import-registry--register', this.registerDefinitionEvent.bind(this));
+    window.addEventListener(
+      "dynamic-import-registry--register",
+      this.registerDefinitionEvent.bind(this)
+    );
   }
   disconnectedCallback() {
-    window.removeEventListener('dynamic-import-registry--register', this.registerDefinitionEvent.bind(this));
+    window.removeEventListener(
+      "dynamic-import-registry--register",
+      this.registerDefinitionEvent.bind(this)
+    );
   }
   register(item) {
     // validate with basic test
@@ -46,9 +51,10 @@ class DynamicImportRegistry extends HTMLElement {
       if (!this.list[item.tag]) {
         this.list[item.tag] = item.path;
       }
-    }
-    else {
-      console.warn('DynamicImportRegistry: registration requires tag and path be set');
+    } else {
+      console.warn(
+        "DynamicImportRegistry: registration requires tag and path be set"
+      );
     }
   }
   /**
@@ -68,26 +74,32 @@ class DynamicImportRegistry extends HTMLElement {
     tag = tag.toLowerCase();
     // only import if we already had it
     if (!window.customElements.get(name) && this.list[tag]) {
-      import(`${this.basePath}${this.list[tag]}`).then((module) => {
-        // dispatch custom event in case anyone cares
-        this.dispatchEvent(new CustomEvent("dynamic-import-registry-loaded", {
-          detail: {
-            tag: name,
-            path: this.list[tag],
-            module: module
-          }
-        }));
-      }).catch((e) => {
-        console.error(e);
-        // fire on error too
-        this.dispatchEvent(new CustomEvent("dynamic-import-registry-failure", {
-          detail: {
-            tag: name,
-            path: this.list[tag],
-            module: null
-          }
-        }));
-      });
+      import(`${this.basePath}${this.list[tag]}`)
+        .then(module => {
+          // dispatch custom event in case anyone cares
+          this.dispatchEvent(
+            new CustomEvent("dynamic-import-registry-loaded", {
+              detail: {
+                tag: name,
+                path: this.list[tag],
+                module: module
+              }
+            })
+          );
+        })
+        .catch(e => {
+          console.error(e);
+          // fire on error too
+          this.dispatchEvent(
+            new CustomEvent("dynamic-import-registry-failure", {
+              detail: {
+                tag: name,
+                path: this.list[tag],
+                module: null
+              }
+            })
+          );
+        });
     }
   }
   // simple path from a url modifier
