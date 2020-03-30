@@ -32,62 +32,62 @@ gulp.task("merge", () => {
   static get haxProperties() {
     return ${HAXProps};
   }`;
-}
-let rawprops = "{}";
-rawprops = fs.readFileSync(
-  path.join("./", packageJson.wcfactory.files.properties)
-);
-let props = `${rawprops}`,
-  comma = props
-    .replace(/\/\*[\s\S]*?\*\//g, "")
-    .replace(/\/\/.*/g, "")
-    .replace(/[\{\s\n\}]/g, "");
-(props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1')),
-  (superprops =
-    comma === "" ? `...super.properties` : `...super.properties,`);
-props = props.replace(/\{([\s\n]*)/, `{$1$1${superprops}$1$1`);
-let cssResult = "";
-if (
-  packageJson.wcfactory.useSass &&
-  packageJson.wcfactory.files.scss
-) {
-  const sass = require("node-sass");
-  cssResult += sass.renderSync({
-    file: path.join("./", packageJson.wcfactory.files.scss)
-  }).css;
-} else if (packageJson.wcfactory.files.css) {
-  cssResult += fs.readFileSync(
-    path.join("./", packageJson.wcfactory.files.css)
-  );
-}
+          }
+          let rawprops = "{}";
+          rawprops = fs.readFileSync(
+            path.join("./", packageJson.wcfactory.files.properties)
+          );
+          let props = `${rawprops}`,
+            comma = props
+              .replace(/\/\*[\s\S]*?\*\//g, "")
+              .replace(/\/\/.*/g, "")
+              .replace(/[\{\s\n\}]/g, "");
+          (props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1')),
+            (superprops =
+              comma === "" ? `...super.properties` : `...super.properties,`);
+          props = props.replace(/\{([\s\n]*)/, `{$1$1${superprops}$1$1`);
+          let cssResult = "";
+          if (
+            packageJson.wcfactory.useSass &&
+            packageJson.wcfactory.files.scss
+          ) {
+            const sass = require("node-sass");
+            cssResult += sass.renderSync({
+              file: path.join("./", packageJson.wcfactory.files.scss)
+            }).css;
+          } else if (packageJson.wcfactory.files.css) {
+            cssResult += fs.readFileSync(
+              path.join("./", packageJson.wcfactory.files.css)
+            );
+          }
 
-cssResult = stripCssComments(cssResult).trim();
-let litResult =
-    packageJson.wcfactory.customElementClass !== "LitElement"
-      ? ``
-      : `
+          cssResult = stripCssComments(cssResult).trim();
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
 //styles function
 static get styles() {
 return  [
 ${
-packageJson.wcfactory.sharedStyles &&
-packageJson.wcfactory.sharedStyles.length > 0
-? `${packageJson.wcfactory.sharedStyles.join(",")},`
-: ``
+  packageJson.wcfactory.sharedStyles &&
+  packageJson.wcfactory.sharedStyles.length > 0
+    ? `${packageJson.wcfactory.sharedStyles.join(",")},`
+    : ``
 }
 css\`
 ${cssResult}
 \`
 ];
 }`,
-  styleResult =
-    packageJson.wcfactory.customElementClass !== "LitElement"
-      ? `<style>
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
 ${cssResult}
 </style>`
-      : ``;
+                : ``;
 
-return `${litResult}
+          return `${litResult}
 
 // render function
 render() {

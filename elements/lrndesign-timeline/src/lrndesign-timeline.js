@@ -1,17 +1,17 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- * 
+ *
  * `lrndesign-timeline`
  * an element that displays events on a timeline
- * 
+ *
  * @customElement lrndesign-timeline
  * @demo demo/index.html
- * 
+ *
  */
 class LrndesignTimeline extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -29,7 +29,7 @@ class LrndesignTimeline extends SimpleColors {
    */
   connectedCallback() {
     this.events = [];
-    this.timelineSize = 'xs';
+    this.timelineSize = "xs";
     super.connectedCallback();
 
     window.ResponsiveUtility.requestAvailability();
@@ -66,14 +66,14 @@ class LrndesignTimeline extends SimpleColors {
         this.timelineTitle = this.title;
     });
   }
-  
+
   /**
    * ensures that events list is an Array
    *
    * @readonly
    * @memberof LrndesignTimeline
    */
-  get eventsList(){
+  get eventsList() {
     let events = typeof events === "string" ? JSON.parse(events) : events;
     return events || [];
   }
