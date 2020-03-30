@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
@@ -47,14 +47,6 @@ class LrndesignTimeline extends SimpleColors {
         }
       })
     );
-    this._checkScroll();
-  }
-  /**
-   * handle initial update
-   */
-  firstUpdated() {
-    super.firstUpdated();
-    this._checkScroll();
   }
 
   /**
@@ -72,7 +64,15 @@ class LrndesignTimeline extends SimpleColors {
    */
   connectedCallback() {
     super.connectedCallback();
-    
+  }
+  /**
+   * events container element
+   *
+   * @readonly
+   * @memberof LrndesignTimeline
+   */
+  get eventsElement(){
+    return this.shadowRoot && this.shadowRoot.querySelector('#events') ? this.shadowRoot.querySelector('#events') : false;
   }
 
   /**
@@ -82,7 +82,8 @@ class LrndesignTimeline extends SimpleColors {
    * @memberof LrndesignTimeline
    */
   get eventsList() {
-    let events = typeof this.events === "string" ? JSON.parse(this.events) : this.events;
+    let events =
+      typeof this.events === "string" ? JSON.parse(this.events) : this.events;
     return events || [];
   }
 
@@ -90,17 +91,19 @@ class LrndesignTimeline extends SimpleColors {
    * checks the scroll of each event
    */
   _checkScroll() {
-    let events = this.shadowRoot.querySelectorAll(".event");
-    events.forEach(event => {
-      let top = event.offsetTop,
-        target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
-        bottom = event.offsetTop + event.offsetHeight;
-      if (target > top && target < bottom) {
-        event.setAttribute("selected", true);
-      } else {
-        event.removeAttribute("selected");
-      }
-    });
+    if(this.shadowRoot){
+      let events = this.shadowRoot.querySelectorAll('.event') || [];
+      (events).forEach(event => {
+        let top = event.offsetTop,
+          target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
+          bottom = event.offsetTop + event.offsetHeight;
+        if (target > top && target < bottom) {
+          event.setAttribute("selected", true);
+        } else {
+          event.removeAttribute("selected");
+        }
+      });
+    }
   }
 }
 customElements.define("lrndesign-timeline", LrndesignTimeline);

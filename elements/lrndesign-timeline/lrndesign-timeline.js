@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
@@ -252,12 +252,11 @@ class LrndesignTimeline extends SimpleColors {
     border-bottom: 1px solid var(--lrndesign-timeline-background);
   }
 }</style>
-<style include="simple-colors-shared-styles-polymer"></style>
 <article>
   <h1 id="title">${this.timelineTitle}</h1>
   <slot></slot>
   <div id="timeline">
-      <div id="events" on-scroll="_onScroll">
+      <div id="events" @scroll="${this._checkScroll}">
         ${this.eventsList.map((event,index)=>html`
           <section class="event" ?has-media="${event.imagesrc && event.imagesrc !== ''}">
             <div class="event-overview">
@@ -358,14 +357,12 @@ class LrndesignTimeline extends SimpleColors {
         }
       })
     );
-    this._checkScroll();
   }
   /**
    * handle initial update
    */
   firstUpdated() {
     super.firstUpdated();
-    this._checkScroll();
   }
 
   /**
@@ -383,7 +380,15 @@ class LrndesignTimeline extends SimpleColors {
    */
   connectedCallback() {
     super.connectedCallback();
-    
+  }
+  /**
+   * events container element
+   *
+   * @readonly
+   * @memberof LrndesignTimeline
+   */
+  get eventsElement(){
+    return this.shadowRoot && this.shadowRoot.querySelector('#events') ? this.shadowRoot.querySelector('#events') : false;
   }
 
   /**
@@ -393,7 +398,8 @@ class LrndesignTimeline extends SimpleColors {
    * @memberof LrndesignTimeline
    */
   get eventsList() {
-    let events = typeof this.events === "string" ? JSON.parse(this.events) : this.events;
+    let events =
+      typeof this.events === "string" ? JSON.parse(this.events) : this.events;
     return events || [];
   }
 
@@ -401,17 +407,26 @@ class LrndesignTimeline extends SimpleColors {
    * checks the scroll of each event
    */
   _checkScroll() {
-    let events = this.shadowRoot.querySelectorAll(".event");
-    events.forEach(event => {
-      let top = event.offsetTop,
-        target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
-        bottom = event.offsetTop + event.offsetHeight;
-      if (target > top && target < bottom) {
-        event.setAttribute("selected", true);
-      } else {
-        event.removeAttribute("selected");
-      }
-    });
+    if(this.shadowRoot){
+      let events = this.shadowRoot.querySelectorAll('.event') || [];
+      (events).forEach(event => {
+        let top = event.offsetTop,
+          target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
+          bottom = event.offsetTop + event.offsetHeight;
+        if (target > top && target < bottom) {
+          event.setAttribute("selected", true);
+        } else {
+          event.removeAttribute("selected");
+        }
+      });
+    }
+  }
+  /**
+    * Called every time the element is removed from the DOM. Useful for 
+    * running clean up code (removing event listeners, etc.).
+    */
+  disconnectedCallback() {
+    super.disconnectedCallback();
   }
 }
 customElements.define("lrndesign-timeline", LrndesignTimeline);

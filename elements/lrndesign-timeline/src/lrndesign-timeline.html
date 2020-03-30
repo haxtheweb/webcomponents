@@ -1,9 +1,8 @@
-<style include="simple-colors-shared-styles-polymer"></style>
 <article>
   <h1 id="title">${this.timelineTitle}</h1>
   <slot></slot>
   <div id="timeline">
-      <div id="events" on-scroll="_onScroll">
+      <div id="events" @scroll="${this._checkScroll}">
         ${this.eventsList.map((event,index)=>html`
           <section class="event" ?has-media="${event.imagesrc && event.imagesrc !== ''}">
             <div class="event-overview">
