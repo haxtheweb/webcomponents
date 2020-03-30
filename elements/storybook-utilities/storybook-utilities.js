@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+//import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
@@ -150,7 +150,7 @@ export class StorybookUtilities {
    *
    * @param {color} optional color as the default value
    * @returns {object} the simple colors properties
-   */
+   * /
   getSimpleColorsPolymer(color = "blue") {
     return {
       accentColor: {

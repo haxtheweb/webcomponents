@@ -1,57 +1,29 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { SimpleTooltip } from "./simple-tooltip.js";
-import "@polymer/iron-demo-helpers/demo-snippet.js";
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Tooltip", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("simple-tooltip", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<simple-tooltip`;
-  // mix in properties defined on the class
-  for (var key in SimpleTooltip.properties) {
-    // skip prototype
-    if (!SimpleTooltip.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (SimpleTooltip.properties[key].type.name) {
-      let method = "text";
-      switch (SimpleTooltip.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = SimpleTooltip.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        SimpleTooltip.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+
+window.StorybookUtilities.requestAvailability();
+
+const SimpleTooltipPattern = {
+  of: "Pattern Library/Molecules/Tooltip",
+  name: "Simple Tooltip",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: []
+};
+window.StorybookUtilities.instance.addPattern(SimpleTooltipPattern);
+
+const SimpleTooltipStory = {
+  of: "Web Components",
+  name: "simple-tooltip",
+  props: SimpleTooltip.properties,
+  before: `<div id="tooltip">Look at my tooltip</div>`,
+  slots: {
+    slot: {
+      name: "slot",
+      type: "String",
+      value: `This is a tooltip`
     }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Tooltip");
-  elementDemo += `> ${innerText}</simple-tooltip>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+  },
+  attr: ``,
+  slotted: ``
+};
+window.StorybookUtilities.instance.addLiveDemo(SimpleTooltipStory);

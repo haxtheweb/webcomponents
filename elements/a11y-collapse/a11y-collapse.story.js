@@ -15,8 +15,8 @@ const A11yCollapsePattern = {
 };
 const A11yCollapseGroupPattern = {
   of: "Pattern Library/Molecules/Layout",
-  name: "Accordion",
-  file: require("raw-loader!./demo/accordion.html"),
+  name: "Collapse Group",
+  file: require("raw-loader!./demo/group.html"),
   replacements: []
 };
 window.StorybookUtilities.instance.addPattern(A11yCollapseGroupPattern);
