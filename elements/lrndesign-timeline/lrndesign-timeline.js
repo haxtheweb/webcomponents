@@ -358,12 +358,6 @@ class LrndesignTimeline extends SimpleColors {
       })
     );
   }
-  /**
-   * handle initial update
-   */
-  firstUpdated() {
-    super.firstUpdated();
-  }
 
   /**
    * handle updates
@@ -420,13 +414,6 @@ class LrndesignTimeline extends SimpleColors {
         }
       });
     }
-  }
-  /**
-    * Called every time the element is removed from the DOM. Useful for 
-    * running clean up code (removing event listeners, etc.).
-    */
-  disconnectedCallback() {
-    super.disconnectedCallback();
   }
 }
 customElements.define("lrndesign-timeline", LrndesignTimeline);
