@@ -166,7 +166,6 @@ class DropdownSelect extends LitElement {
         ? this.shadowRoot.querySelector("#picker")
         : undefined;
     changedProperties.forEach((oldValue, propName) => {
-      console.log(propName, oldValue, this[propName]);
       if (propName === "value") this._valueChanged(this.value, oldValue);
       if (propName === "options" && this.options !== oldValue)
         picker.options = this.options;
@@ -232,10 +231,6 @@ class DropdownSelect extends LitElement {
     let label = null,
       index = null,
       ctr = -1;
-    console.log("value-changed", {
-      value: newValue,
-      oldValue: oldValue
-    });
     this.selectedItem = this.value;
     this.options.forEach(row =>
       row.forEach(item => {
