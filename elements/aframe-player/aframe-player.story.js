@@ -2,10 +2,6 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 import { AframePlayer } from "./aframe-player.js";
 
 window.StorybookUtilities.requestAvailability();
-window.StorybookUtilities.instance.addGlobalScript(
-  "aframePlayer",
-  require("file-loader!./lib/aframe/dist/aframe-master.js")
-);
 
 /**
  * add to the pattern library

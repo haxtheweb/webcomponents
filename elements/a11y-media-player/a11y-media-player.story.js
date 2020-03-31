@@ -1,5 +1,4 @@
 import { A11yMediaPlayer } from "./a11y-media-player.js";
-import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
 import * as deVtt from "./demo/samples/sintel-de.vtt";
 import * as esVtt from "./demo/samples/sintel-es.vtt";

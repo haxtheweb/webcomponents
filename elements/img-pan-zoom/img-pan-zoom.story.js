@@ -5,7 +5,7 @@ import * as image from "./demo/HAXCmsworkflow.jpg";
 window.StorybookUtilities.requestAvailability();
 window.StorybookUtilities.instance.addGlobalScript(
   "openseadragon",
-  require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.js")
+  require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.min.js")
 );
 /**
  * add to the pattern library

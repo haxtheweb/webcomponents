@@ -1,7 +1,7 @@
 import { LrndesignPie } from "./lib/lrndesign-pie.js";
 import { LrndesignLine } from "./lib/lrndesign-line.js";
 import { LrndesignBar } from "./lib/lrndesign-bar.js";
-import { LrndesignChartBehaviors } from "./lib/lrndesign-chart-behaviors.js";
+import { LrndesignChart } from "./lrndesign-chart.js";
 import * as BarCSV from "./demo/bar.csv";
 import * as PieCSV from "./demo/pie.csv";
 import * as LineCSV from "./demo/line.csv";
