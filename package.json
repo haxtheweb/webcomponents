@@ -51,7 +51,7 @@
         "@storybook/addon-viewport": "^5.3.8",
         "@storybook/cli": "^5.3.8",
         "@storybook/polymer": "^5.3.8",
-        "@storybook/source-loader": "^5.3.17",
+        "@storybook/source-loader": "^5.3.18",
         "@storybook/storybook-deployer": "^2.8.1",
         "@webcomponents/webcomponentsjs": "2.4.1",
         "babel-core": "^6.26.3",

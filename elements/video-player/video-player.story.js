@@ -1,6 +1,5 @@
 import { VideoPlayer } from "./video-player.js";
 import { A11yMediaPlayer } from "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
-import { A11yMediaBehaviors } from "@lrnwebcomponents/a11y-media-player/lib/a11y-media-behaviors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
 import * as deVtt from "./demo/samples/sintel-de.vtt";
 import * as esVtt from "./demo/samples/sintel-es.vtt";

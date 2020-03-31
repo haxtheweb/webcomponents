@@ -1,6 +1,8 @@
 const path = require("path");
 
 module.exports = ({ config }) => {
+  config.externals = /node_modules/;
+  config.target = 'node';
   config.module.rules.push({
     //VTT files need to be in the same place at the demo
     test: /\.(vtt|csv|gltf)$/,
