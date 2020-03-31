@@ -4,23 +4,23 @@
 
 Make sure you have [Polyserve][polyserve] and [Web Component Tester][web-component-tester] installed.
 
-    npm install -g polyserve web-component-tester
+    yarn install -g polyserve web-component-tester
 
 ## Dev
 
-    npm start
+    yarn start
 
 ## Test
 
-    npm run test
+    yarn run test
 
 ## Build
 
-    npm run build
+    yarn run build
 
 ## Demo
 
-Run `npm start` and Polyserve will start a server and open your default browser to the demo page of the element.
+Run `yarn start` and Polyserve will start a server and open your default browser to the demo page of the element.
 
 ## Code style
 

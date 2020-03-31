@@ -144,37 +144,37 @@ For a list of  projects using wavesurfer.js, check out
 Install development dependencies:
 
 ```
-npm install
+yarn install
 ```
 Development tasks automatically rebuild certain parts of the library when files are changed (`start` – wavesurfer, `start:plugins` – plugins). Start a dev task and go to `localhost:8080/example/` to test the current build.
 
 Start development server for core library:
 
 ```
-npm run start
+yarn run start
 ```
 
 Start development server for plugins:
 
 ```
-npm run start:plugins
+yarn run start:plugins
 ```
 
 Build all the files. (generated files are placed in the `dist` directory.)
 
 ```
-npm run build
+yarn run build
 ```
 
 Running tests only:
 
 ```
-npm run test
+yarn run test
 ```
 
 Build documentation with esdoc (generated files are placed in the `doc` directory.)
 ```
-npm run doc
+yarn run doc
 ```
 
 ## Editing documentation

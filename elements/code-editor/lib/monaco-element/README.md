@@ -11,7 +11,7 @@ Webcomponent wrapper for the monaco editor implementing basic functionality.
 ## Installation
 
 ```
-npm install monaco-element
+yarn install monaco-element
 ```
 
 ## Usage (Polymer 3)
