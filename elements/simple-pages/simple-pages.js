@@ -15,43 +15,38 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @element simple-pages
  */
 class SimplePages extends LitElement {
+  
   // render function
   render() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
+<style>:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        iron-pages:not(:defined) {
-          display: none;
-        }
-      </style>
-      <iron-pages
-        selected="${this.selected}"
-        selected-attribute="${this.selectedAttribute}"
-        @selected-changed="${this._selectedChanged}"
-      >
-        <slot></slot>
-      </iron-pages>
-    `;
+iron-pages:not(:defined) {
+  display: none;
+}</style>
+<iron-pages selected="${this.selected}" selected-attribute="${this.selectedAttribute}" @selected-changed="${this._selectedChanged}">
+  <slot></slot>
+</iron-pages>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     let props = {
-      selected: {
-        type: Number
-      },
-      selectedAttribute: {
-        type: String,
-        attribute: "selected-attribute"
-      }
-    };
+  "selected": {
+    "type": Number
+  },
+  "selectedAttribute": {
+    "type": String,
+    "attribute": "selected-attribute"
+  }
+}
+;
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }

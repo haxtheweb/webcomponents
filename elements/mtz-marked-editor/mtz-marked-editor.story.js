@@ -6,21 +6,21 @@ window.StorybookUtilities.requestAvailability();
 /**
  * add to the pattern library
  */
-/*const Pattern = {
-  "of": "Pattern Library/Molecules/Layout",       //Pattern library path
-  "name": "Collapse",                             //Pattern name
+const Pattern = {
+  "of": "Pattern Library/Atoms/Forms",       //Pattern library path
+  "name": "MtzMarkedEditor",                             //Pattern name
   "file": require("raw-loader!./demo/index.html"),
   "replacements": []
 };
-window.StorybookUtilities.instance.addPattern(Pattern);*/
+window.StorybookUtilities.instance.addPattern(Pattern);
 
 /**
  * add the live demo
  */
 /*const Story = {
   "of": "Web Components",                   //component folder
-  "name": "a11y-collapse",                  //component tag
-  "props": A11yCollapse.properties,         //component properties that will become knobs
+  "name": "mtz-marked-editor",                  //component tag
+  "props": MtzMarkedEditor.properties,         //component properties that will become knobs
   "slots": {                                //slots that will become knobs
     "heading":                              
       {

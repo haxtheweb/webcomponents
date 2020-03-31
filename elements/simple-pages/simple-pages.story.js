@@ -1,6 +1,5 @@
 import { SimplePages } from "./simple-pages.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
-import * as image from "./demo/HAXCmsworkflow.jpg";
 
 window.StorybookUtilities.requestAvailability();
 /**
