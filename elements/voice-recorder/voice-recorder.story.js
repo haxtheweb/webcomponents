@@ -1,14 +1,14 @@
-/*import { VoiceRecorder } from "./voice-recorder.js";
+import { VoiceRecorder } from "./voice-recorder.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
+/**
+ * add to the pattern library
+ */
 window.StorybookUtilities.instance.addGlobalScript(
   "record",
   require("file-loader!./lib/vmsg-fork.js")
 );
-/**
- * add to the pattern library
- * /
 const Pattern = {
   of: "Pattern Library/Molecules/Forms",
   name: "VoiceRecorder",

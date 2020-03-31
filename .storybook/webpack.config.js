@@ -1,8 +1,6 @@
 const path = require("path");
 
 module.exports = ({ config }) => {
-  config.externals = /node_modules/;
-  config.target = 'node';
   config.module.rules.push({
     //VTT files need to be in the same place at the demo
     test: /\.(vtt|csv|gltf)$/,
@@ -29,7 +27,6 @@ module.exports = ({ config }) => {
         if (rule.exclude[j] === path.resolve("node_modules")) {
           rule.exclude[j] = modulePath => {
             return (
-              /voice-recorder/.test(modulePath) &&
               /node_modules/.test(modulePath) &&
               !/node_modules\/@polymer/.test(modulePath) &&
               !/node_modules\/lit-html/.test(modulePath) &&

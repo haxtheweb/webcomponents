@@ -6,10 +6,14 @@ setOptions({
   hierarchyRootSeparator: /\|/
 });
 
-const req = require.context("../elements", true, /\.story\.js$/);
-
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  req.keys().forEach(filename => {
+    if (filename.includes("node_modules")) {
+      return;
+    }
+
+    return req(filename);
+  });
 }
 
 configure(loadStories, module);
