@@ -1,11 +1,10 @@
-const path = require("path");  
-const fs = require("fs");  
-var node_modules = fs.readdirSync('node_modules').filter(function(x) { return x !== '.bin' });
+const path = require("path");
 
 module.exports = ({ config }) => {
-  config.target = "node";
-  config.externals = node_modules;
-  config.output = {libraryTarget: "commonjs2"};
+  config.externals = {
+    "child_process":"commonjs2 child_process",
+    "fs":"commonjs2 fs"
+  };
   config.module.rules.push({
     //VTT files need to be in the same place at the demo
     test: /\.(vtt|csv|gltf)$/,
