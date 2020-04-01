@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -81,9 +82,7 @@ class LrnsysButton extends LitElement {
   }
   constructor() {
     super();
-    this.href = "#";
     this.label = "";
-    this.target = "_self";
     this.icon = "";
     this.alt = "";
     this.focusState = false;
@@ -102,8 +101,8 @@ class LrnsysButton extends LitElement {
       <a
         tabindex="-1"
         id="lrnsys-button-link"
-        href="${this.href}"
-        target="${this.target}"
+        href="${ifDefined(this.href ? this.href : undefined)}"
+        target="${ifDefined(this.target ? this.target : undefined)}"
         ?disabled="${this.disabled}"
       >
         <paper-button

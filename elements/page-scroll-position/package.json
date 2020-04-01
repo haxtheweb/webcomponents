@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "Automated conversion of page-scroll-position/",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

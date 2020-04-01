@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>MutationObserverImportMixin: mutation-observer-import-mixin Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../mutation-observer-import-mixin.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic mutation-observer-import-mixin demo</h3>
+      <demo-snippet>
+        <template>
+          <mutation-observer-import>
+            <p>stuff</p>
+            <wikipedia-query search="Drupal"></wikipedia-query>
+            <div>Cool</div>
+             <meme-maker alt="high school GIF" image-url="https://media2.giphy.com/media/8RczH5vL2k7Ju/giphy.gif" top-text="LETS ALL GO TO HAXCMS" imageurl="https://media2.giphy.com/media/8RczH5vL2k7Ju/giphy.gif" toptext="high school GIF" style="width: 50%; margin: 0px auto; display: block;">
+              <div>LETS ALL GO TO HAXCMS</div>
+              <img src="https://media2.giphy.com/media/8RczH5vL2k7Ju/giphy.gif" alt="high school GIF" preload="lazy">
+            </meme-maker>
+            <grid-plate layout="1-1-1-1-1" responsive-size="xl" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" style="width: 100%;" hide-ops column-widths="[&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;]"><a11y-gif-player src="https://media0.giphy.com/media/YEongvRqe8sXC/giphy.gif" style="width: 100%;" slot="col-2" class="hax-moving" tooltip="Toggle animation" no-image></a11y-gif-player>
+              <p slot="col-3" style="width: 100%;">We'll cover user experience and generating ways of improving the platform by creating issues about any confusion you've run into when using the platform. <i>Open critique is the best way to improve! </i>
+                This is also practicing a technique called User Story Elicitation / Generation, common in the testing and development of any product.</p>
+               </grid-plate>
+          </mutation-observer-import>
+          <script>
+            let registry = window.DynamicImportRegistry.requestAvailability();
+            registry.basePath = '/node_modules/';
+            registry.register({
+              tag: "wikipedia-query",
+              path: "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
+            });
+            registry.register({
+              tag: "grid-plate",
+              path: "@lrnwebcomponents/grid-plate/grid-plate.js"
+            });
+            window.dispatchEvent(new CustomEvent("dynamic-import-registry--register", {
+              detail: {
+                tag: 'meme-maker',
+                path: '@lrnwebcomponents/meme-maker/meme-maker.js'
+              }
+            }));
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

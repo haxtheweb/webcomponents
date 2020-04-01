@@ -25,7 +25,7 @@ Download the [production version][min] or the [development version][max].
 [max]: https://github.com/sindresorhus/screenfull.js/raw/gh-pages/dist/screenfull.js
 
 ```
-$ npm install screenfull
+$ yarn install screenfull
 ```
 
 Also available on [cdnjs](https://cdnjs.com/libraries/screenfull.js).

@@ -12,9 +12,7 @@ addons:
     firefox: latest
     chrome: stable
 install:
-  - npm install --global yarn lerna
-  - lerna bootstrap
-  - lerna exec -- yarn link
+  - yarn install
 script:
-    - npm test -- --verbose
+    - yarn test -- --verbose
 cache: yarn

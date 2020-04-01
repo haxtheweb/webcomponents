@@ -1,0 +1,47 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "dynamic-import-registry",
+      "path": "./dynamic-import-registry.es6.js",
+      "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-import-registry",
+      "path": "./dynamic-import-registry.js",
+      "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./dynamic-import-registry.umd.js"
+    },
+    {
+      "name": "dynamic-import-registry",
+      "path": "./src/dynamic-import-registry.js",
+      "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
