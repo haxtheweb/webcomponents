@@ -101,12 +101,8 @@ class LrnsysButton extends LitElement {
       <a
         tabindex="-1"
         id="lrnsys-button-link"
-        href="${ifDefined(
-          this.href ? this.href : undefined
-        )}"
-        target="${ifDefined(
-          this.target ? this.target : undefined
-        )}"
+        href="${ifDefined(this.href ? this.href : undefined)}"
+        target="${ifDefined(this.target ? this.target : undefined)}"
         ?disabled="${this.disabled}"
       >
         <paper-button
