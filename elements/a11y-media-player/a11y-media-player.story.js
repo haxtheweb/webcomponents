@@ -9,10 +9,7 @@ import stclairJpg from "./demo/samples/stclair.jpg";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
-window.StorybookUtilities.instance.addGlobalScript(
-  "screenfullLib",
-  require("file-loader!./lib/screenfull/dist/screenfull.js")
-);
+import * as screenfullLib from "./lib/screenfull/dist/screenfull.js";
 /**
  * add to the pattern library
  */
