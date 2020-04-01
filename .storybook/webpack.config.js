@@ -1,6 +1,11 @@
-const path = require("path");
+const path = require("path");  
+const fs = require("fs");  
+var node_modules = fs.readdirSync('node_modules').filter(function(x) { return x !== '.bin' });
 
 module.exports = ({ config }) => {
+  config.target = "node";
+  config.externals = node_modules;
+  config.output = {libraryTarget: "commonjs2"};
   config.module.rules.push({
     //VTT files need to be in the same place at the demo
     test: /\.(vtt|csv|gltf)$/,
@@ -9,7 +14,7 @@ module.exports = ({ config }) => {
   config.module.rules.push({
     test: [/\.js$/],
     loader: require.resolve(
-      "@open-wc/webpack/loaders/import-meta-url-loader.js"
+      "@open-wc/webpack-import-meta-loader"
     )
   });
   config.module.rules.push({
