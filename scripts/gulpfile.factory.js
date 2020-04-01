@@ -159,5 +159,8 @@ module.exports = function factory(packageJson) {
 
   gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-  gulp.task("default", gulp.series("merge", "analyze", "compile", "sourcemaps"));
+  gulp.task(
+    "default",
+    gulp.series("merge", "analyze", "compile", "sourcemaps")
+  );
 };

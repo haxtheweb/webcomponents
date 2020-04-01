@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { SimpleColors  } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
