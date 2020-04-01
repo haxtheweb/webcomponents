@@ -38,7 +38,7 @@ window.StorybookUtilities.instance.addPattern(LrndesignLinePattern);
  */
 let getAllKnobs = (props, csv) => {
   let allKnobs = Object.assign(
-    window.StorybookUtilities.instance.getSimpleColorsPolymer(""),
+    window.StorybookUtilities.instance.getSimpleColors(""),
     LrndesignChartBehaviors.properties,
     props
   );

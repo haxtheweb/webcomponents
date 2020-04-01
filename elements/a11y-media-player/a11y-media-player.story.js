@@ -52,7 +52,7 @@ window.StorybookUtilities.instance.addPattern(A11yMediaPlayerYouTubePattern);
 //combine all of the inherited properties into one object
 let getVideoKnobs = () => {
     let allKnobs = Object.assign(
-      window.StorybookUtilities.instance.getSimpleColorsPolymer(),
+      window.StorybookUtilities.instance.getSimpleColors(),
       A11yMediaPlayer.properties,
       A11yMediaBehaviors.properties
     );

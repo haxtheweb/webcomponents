@@ -29,7 +29,7 @@ window.StorybookUtilities.instance.addPattern(SimpleColorsPatternPicker);
 /**
  * add the live demo
  */
-const colors = window.StorybookUtilities.instance.getSimpleColorsPolymer();
+const colors = window.StorybookUtilities.instance.getSimpleColors();
 colors.accentColor.value = "grey";
 const SimpleColorsStory = {
   of: "Web Components/simple-colors",
