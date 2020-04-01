@@ -504,7 +504,7 @@ class LrnappStudioKanban extends PolymerElement {
       );
       setTimeout(() => {
         window.dispatchEvent(new Event("resize"));
-      }, 500);
+      }, 2000);
     });
   }
   disconnectedCallback() {
