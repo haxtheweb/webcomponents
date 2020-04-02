@@ -6,7 +6,7 @@
 };*/
 module.exports = {
   // Globs of all the stories in your project
-  stories: ["../stories/**.stories.{js,mdx}"],
+  stories: ["../elements/*/**.stories.{js,mdx}"],
 
   // Addons to be loaded, note that you need to import
   // them from storybook-prebuilt
@@ -24,7 +24,7 @@ module.exports = {
   },
 
   // Rollup build output directory (build-storybook only)
-  outputDir: "../dist",
+  outputDir: "../../../storybooks/lrnwebcomponents",
   // Configuration for rollup (build-storybook only)
   rollup: config => {
     return config;
