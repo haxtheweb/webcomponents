@@ -152,37 +152,25 @@ export class StorybookUtilities {
         colors = this.getColors(),
         type;
       if(method === "select" && options){
-        type = "select";
+        type = select(label,options,undefined,group);
       } else if(method === "colorpicker" && colors){
-        options = {};
+        let options = {};
         colors.forEach(color=>options[color]=color);
-        type = "select";
-        defaultValue = this.getColor(defaultValue);
+        type = select(label,options,this.getColor(defaultValue),group);
       } else if(method === "boolean"){
-        type = "boolean";
-        defaultValue = this.getBoolean(defaultValue);
+        type = boolean(label,this.getBoolean(defaultValue),group);
       } else if(method === "haxupload"){
-        type = "text";
-        defaultValue = undefined;
+        type = text(label,'',group);
       } else if(method === "object"){
         type = undefined;
       } else if(method === "array"){
         type = undefined;
       } else if(method === "textarea"){
-        type = "text";
-        defaultValue = this.getTextArea(defaultValue);
+        type = text(label,this.getTextArea(defaultValue),group);
       } else {
-        type = "text";
-        defaultValue = this.getTextField(defaultValue);
+        type = text(label,this.getTextField(defaultValue),group);
       }
-      knobs[name] = {
-        "attribute": attribute,
-        "type": type, 
-        "label": label,
-        "options": options,
-        "defaultValue": defaultValue,
-        "group": group
-      };
+      knobs[group][name] = {"attribute": attribute,"type": type, "method": method};
     });
     console.log('knobs',knobs);
     return knobs;
@@ -207,7 +195,7 @@ export class StorybookUtilities {
    *  }
    * }
    * @returns {object} element
-   * /
+   */
   makeElement(tag,knobs){
     console.log('makeElement',tag,knobs);
     let el = document.createElement(tag);

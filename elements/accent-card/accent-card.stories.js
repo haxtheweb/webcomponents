@@ -4,11 +4,6 @@ import { withKnobs, withWebComponentsKnobs, text, boolean, select } from '@open-
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 const utils = new StorybookUtilities();
-const props = utils.getElementProperties(AccentCard.properties,AccentCard.haxProperties);
-const k = utils.getKnobs(props);
-console.log('----props',props,k.accentColor.label,k.accentColor.options,k.accentColor.defaultValue,k.content.label);
-let accentColor = select(k.accentColor.label,k.accentColor.options,k.accentColor.defaultValue,"Properties");
-const content = text(k.content.label,"I am content.","Slots");
 export default {
   title: "Card",
   component: "accent-card",
@@ -19,7 +14,15 @@ export default {
   stories: ['AccentCardStory']
 };
 
-export const AccentCardStory = () => html`
-  <accent-card accent-color="${select(k.accentColor.label,k.accentColor.options,k.accentColor.defaultValue,"Properties")}">
+export const AccentCardStory = () => {
+  const props = utils.getElementProperties(AccentCard.properties,AccentCard.haxProperties);
+  const k = utils.getKnobs(props);
+  console.log('----props',props,k.props.accentColor);
+  let accentColor = k.props.accentColor.type;//select(k.accentColor.label,k.accentColor.options,k.accentColor.defaultValue,"Properties");
+  const content = '';//text(k.content.label,"I am content.","Slots");
+
+  return html`
+  <accent-card accent-color="${accentColor}">
     <div slot="content">${content}</div>
-  </accent-card>`;
+  </accent-card>`
+  };
