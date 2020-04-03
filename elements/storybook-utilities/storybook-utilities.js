@@ -29,6 +29,7 @@ export class StorybookUtilities {
    * convert camelcase to kebab (for converting properties in attributes)
    * @param {string} camel
    * @returns {string} kebab
+   * @memberof StorybookUtilities
    */
   camelToKebab(camel){
     return camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
@@ -37,6 +38,7 @@ export class StorybookUtilities {
   /**
    * colors from Simple Colors
    * @returns {array}
+   * @memberof StorybookUtilities
    */
   getColors(){
     let simple = window.SimpleColorsSharedStyles.requestAvailability();
@@ -57,9 +59,9 @@ export class StorybookUtilities {
    *     defaultValue: "optional default value to override random value generator",
    *   }
    * ]
+   * @memberof StorybookUtilities
    */
   getElementProperties(props,haxProps){
-    console.log('getElementProperties',props,haxProps);
     let quick = haxProps && haxProps.settings ? haxProps.settings.quick : [],
       configure = haxProps && haxProps.settings ? haxProps.settings.configure : [],
       advanced = haxProps && haxProps.settings ? haxProps.settings.advanced : [], 
@@ -77,12 +79,12 @@ export class StorybookUtilities {
    * default value or random color from Simple Colors
    * @param {string} defaultValue
    * @returns {string}
+   * @memberof StorybookUtilities
    */
   getColor(defaultValue){
     let colors = this.getColors() || [],
       index = Math.floor(Math.random() * Math.floor(colors.length)),
       color = colors.length > 0 ? colors[index] : undefined; 
-    console.log('getColor',defaultValue,colors,index,color);
     return defaultValue || color;
   };
 
@@ -91,6 +93,7 @@ export class StorybookUtilities {
    * default value or randomly true or false
    * @param {string} defaultValue
    * @returns {boolean}
+   * @memberof StorybookUtilities
    */
   getBoolean = (defaultValue) => defaultValue || (Math.random() >= 0.5);
     
@@ -98,6 +101,7 @@ export class StorybookUtilities {
    * default value or random string of 1-5 words
    * @param {string} defaultValue
    * @returns {string}
+   * @memberof StorybookUtilities
    */
   getTextField = (defaultValue) => defaultValue || 'Testing 123';// this.lorem.generateWords(Math.floor(Math.random() * Math.floor(5))+1);
     
@@ -105,6 +109,7 @@ export class StorybookUtilities {
    * default value or random string of 1-5 sentences
    * @param {string} defaultValue
    * @returns {string}
+   * @memberof StorybookUtilities
    */
   getTextArea = (defaultValue) => defaultValue || 'Testing 123. This is a test.';//this.lorem.generateSentences(Math.floor(Math.random() * Math.floor(5))+1);
     
@@ -136,9 +141,9 @@ export class StorybookUtilities {
    *    }
    *  }
    * }
+   * @memberof StorybookUtilities
    */
   getKnobs(properties){
-    console.log('getKnobs',properties);
     let knobs = {props:{},slots:{}};
     (properties||[]).forEach(field=>{
       let title = field.title,
@@ -172,7 +177,6 @@ export class StorybookUtilities {
       }
       knobs[group][name] = {"attribute": attribute,"type": type, "method": method};
     });
-    console.log('knobs',knobs);
     return knobs;
   }
 
@@ -195,15 +199,15 @@ export class StorybookUtilities {
    *  }
    * }
    * @returns {object} element
+   * @memberof StorybookUtilities
    */
   makeElement(tag,knobs){
-    console.log('makeElement',tag,knobs);
     let el = document.createElement(tag);
     Object.keys(knobs.props || {}).forEach(prop=>{
       let knob = knobs.props[prop],attr = knob.attribute, val = knob.type;
-      if(knob.method !=="object" && knob.method !=="array") el.setAttribute(attr,val);
+      if(knob.method !=="object" && knob.method !=="array") el[prop] = val;
     });
-    $Object.keys(knobs.slots||{}).map(slot=>{
+    Object.keys(knobs.slots||{}).map(slot=>{
       let div = document.createElement('div');
       div.slot = knobs.slots[slot].attribute;
       div.innerHTML = knobs.slots[slot].type;
@@ -211,6 +215,19 @@ export class StorybookUtilities {
     });
     return el;
   };
+
+  /**
+   * makes an element based on its class
+   * @param {object} custom element class
+   * @returns {object} element
+   * @memberof StorybookUtilities
+   */
+  makeElementFromClass(el){
+    let tag = el.tag, 
+      props = this.getElementProperties(el.properties,el.haxProperties),
+      knobs = this.getKnobs(props);
+    return this.makeElement(tag,knobs);
+  }
 
   /**
    * gets slots template
