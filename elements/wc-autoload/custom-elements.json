@@ -1,0 +1,47 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "wc-autoload",
+      "path": "./wc-autoload.es6.js",
+      "description": "`wc-autoload`\n`automatically load new tags in the dom`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "wc-autoload",
+      "path": "./wc-autoload.js",
+      "description": "`wc-autoload`\n`automatically load new tags in the dom`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./wc-autoload.umd.js"
+    },
+    {
+      "name": "wc-autoload",
+      "path": "./src/wc-autoload.js",
+      "description": "`wc-autoload`\n`automatically load new tags in the dom`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
