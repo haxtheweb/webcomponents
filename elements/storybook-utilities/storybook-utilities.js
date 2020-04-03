@@ -1,7 +1,6 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { html } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { withKnobs, withWebComponentsKnobs, text, boolean, select } from '@open-wc/demoing-storybook';
 
 /**
  * Copyright 2018 The Pennsylvania State University
@@ -12,234 +11,247 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * Object to help load things in globally scoped and fire events when ready
  */
 export class StorybookUtilities {
-  /**
-   * Cleans the template html
-   * @param {string} the demo html for the story
-   * @param {array} array of regular expressions and replacements
-   * @returns {string} the cleaned demo html for the story
-   */
-  cleanHTML(template, replacements = []) {
-    // need to account for polymer goofiness when webpack rolls this up
-    let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-    //let demo = storiesOf("Pattern Library/Molecules/Media", module);
-    var array_matches = pattern.exec(template);
-    // now template is just the body contents
-    template = array_matches[1];
-    replacements.forEach(replacement => {
-      template = template.replace(
-        new RegExp(replacement.find, "g"),
-        replacement.replace
-      );
+  get lorem(){
+    let LoremIpsum = require("lorem-ipsum");
+    return new LoremIpsum.loremIpsum({
+      sentencesPerParagraph: {
+        max: 8,
+        min: 4
+      },
+      wordsPerSentence: {
+        max: 16,
+        min: 4
+      }
     });
+  }
+  
+  /**
+   * convert camelcase to kebab (for converting properties in attributes)
+   * @param {string} camel
+   * @returns {string} kebab
+   * @memberof StorybookUtilities
+   */
+  camelToKebab(camel){
+    return camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+  }
 
-    template = template.replace(/=\\"\\"/g, "").replace(/\\"/g, '"');
-    return template;
-  }
   /**
-   * Creates a pattern library version based on demos
-   * @param {object} story object with the following: ```
-   {
-    "of": "Pattern Library/Molecules/Media",          //the path in the pattern library
-    "name": 'Video',                                  //the UI pattern name
-    "file": require("raw-loader!./demo/index.html")   //the file to use as a template
-    "replacements": [                                 //a series of replacment patterns
-      {
-        "find": "\.\/samples\/sintel-en.vtt",         //the regex pattern to find
-        "replace": enVtt                              //the replacement string
-      }
-    ]
-  }
-   ```
-   * @returns {object} the pattern library version
+   * colors from Simple Colors
+   * @returns {array}
+   * @memberof StorybookUtilities
    */
-  addPattern(story) {
-    let template = this.cleanHTML(story.file, story.replacements);
-    story.before = story.before || ``;
-    story.after = story.after || ``;
-    story.demo = storiesOf(story.of, module);
-    story.demo.add(story.name, () => {
-      return `${story.before}${template}${story.after}`;
-    });
-    return [story.before, template, story.after];
+  getColors(){
+    let simple = window.SimpleColorsSharedStyles.requestAvailability();
+    return simple && simple.colors ? Object.keys(simple.colors): false;
   }
+    
   /**
-   * Creates a knob and adds an attribute for each property in the given element
-   * @param {object} the element
-   * @param {array} an array of properties to exclude
-   * @returns {string} attributes
+   * gets array of hax properties or properties from an element
+   * @param {object} element
+   * @returns {array} 
+   * [
+   *   {
+   *     title: "User-friendly title",
+   *     property: "propertyName",
+   *     slot: "slotName",
+   *     inputMethod: "HAXschema-compatible inputMethod",
+   *     options: {"value": "select field options object"},
+   *     defaultValue: "optional default value to override random value generator",
+   *   }
+   * ]
+   * @memberof StorybookUtilities
    */
-  getBindings(props) {
-    let binding = {},
-      keys = Object.keys(props).sort();
-    keys.forEach(key => {
-      // skip prototype, private properties, objects, anything in the exclusions array, or any computed property
-      //if (!props.hasOwnProperty(key)) continue;
-      let editable =
-        key.startsWith("__") === false &&
-        (props[key].computed === undefined ||
-          props[key].computed === "undefined") &&
-        props[key].readOnly !== true;
-      if (editable) {
-        let keyType = props[key].type.name || props[key].type;
-        // convert typed props
-        if (keyType) {
-          let method = keyType.toLowerCase(),
-            stringifiedVal = JSON.stringify(props[key].value || "");
-          // ensure ke-bab case
-          let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-            match
-          ) {
-            return "-" + match.toLowerCase();
-          });
-          //See https://github.com/storybooks/storybook/tree/master/addons/knobs for knob types
-          binding[key] = {
-            id: kebab,
-            value:
-              method === "select"
-                ? storybookBridge.select(
-                    key,
-                    props[key].options || [],
-                    props[key].value
-                  )
-                : method === "number"
-                ? storybookBridge.number(
-                    key,
-                    props[key].value !== undefined && props[key].value !== null
-                      ? parseFloat(props[key].value)
-                      : ""
-                  )
-                : method === "boolean"
-                ? storybookBridge.boolean(key, props[key].value)
-                : method === "date"
-                ? storybookBridge.date(key, new Date(props[key].value))
-                : method === "files"
-                ? storybookBridge.files(
-                    key,
-                    props[key].options || {},
-                    props[key].value || ""
-                  )
-                : method === "radios"
-                ? storybookBridge.radios(
-                    key,
-                    props[key].options || {},
-                    props[key].value || ``
-                  )
-                : method === "object"
-                ? storybookBridge.text(key, stringifiedVal || "{}")
-                : //storybookBridge.object(key, props[key].value || {}) :
-                method === "array"
-                ? storybookBridge.text(key, stringifiedVal || "[]")
-                : //storybookBridge.array(key, props[key].value || [], ',') :
-                method === "options"
-                ? storybookBridge.radios(
-                    key,
-                    props[key].valuesObj || {},
-                    props[key].value || ``,
-                    props[key].options || {}
-                  )
-                : //method === "text"
-                  storybookBridge.text(key, props[key].value || ``)
-          };
-        }
+  getElementProperties(props,haxProps){
+    let quick = haxProps && haxProps.settings ? haxProps.settings.quick : [],
+      configure = haxProps && haxProps.settings ? haxProps.settings.configure : [],
+      advanced = haxProps && haxProps.settings ? haxProps.settings.advanced : [], 
+      hax = quick.concat(configure,advanced);
+    return hax.length > 0 ? hax : Object.keys(props || {}).map(property=>{
+      let type = props[property].type;
+      return {
+        property: property,
+        inputMethod: type ? type.name.toLowerCase() : 'textfield'
       }
     });
-    return binding;
   }
+    
   /**
-   * gets properties from simple-colors and sets up accent color as a select
+   * default value or random color from Simple Colors
+   * @param {string} defaultValue
+   * @returns {string}
+   * @memberof StorybookUtilities
+   */
+  getColor(defaultValue){
+    let colors = this.getColors() || [],
+      index = Math.floor(Math.random() * Math.floor(colors.length)),
+      color = colors.length > 0 ? colors[index] : undefined; 
+    return defaultValue || color;
+  };
+
+  
+  /**
+   * default value or randomly true or false
+   * @param {string} defaultValue
+   * @returns {boolean}
+   * @memberof StorybookUtilities
+   */
+  getBoolean = (defaultValue) => defaultValue || (Math.random() >= 0.5);
+    
+  /**
+   * default value or random string of 1-5 words
+   * @param {string} defaultValue
+   * @returns {string}
+   * @memberof StorybookUtilities
+   */
+  getTextField = (defaultValue) => defaultValue || 'Testing 123';// this.lorem.generateWords(Math.floor(Math.random() * Math.floor(5))+1);
+    
+  /**
+   * default value or random string of 1-5 sentences
+   * @param {string} defaultValue
+   * @returns {string}
+   * @memberof StorybookUtilities
+   */
+  getTextArea = (defaultValue) => defaultValue || 'Testing 123. This is a test.';//this.lorem.generateSentences(Math.floor(Math.random() * Math.floor(5))+1);
+    
+  /**
+   * gets knobs object from properties array
+   * @param {array} properties
+   * [
+   *   {
+   *     title: "User-friendly title",
+   *     property: "propertyName",
+   *     slot: "slotName",
+   *     inputMethod: "HAXschema-compatible inputMethod",
+   *     options: {"value": "select field options object"},
+   *     defaultValue: "optional default value to override random value generator",
+   *   }
+   * ]
+   * @returns {object}
+   * {
+   *  properties: {
+   *    { 
+   *      "attribute": "attributeName"
+   *      "type": knobType(label,[options],defaultValue,"properties")
+   *    }
+   *  },
+   *  slots: {
+   *    { 
+   *      "attribute": "attributeName"
+   *      "type": knobType(label,[options],defaultValue,"slots")
+   *    }
+   *  }
+   * }
+   * @memberof StorybookUtilities
+   */
+  getKnobs(properties){
+    let knobs = {props:{},slots:{}};
+    (properties||[]).forEach(field=>{
+      let title = field.title,
+        name = field.property || field.slot,
+        attribute = this.camelToKebab(name),
+        label = title && name ? `${title} (${name})` : (title || name),
+        group = field.property ? 'props' : field.slot ? 'slots' : 'vars',
+        method = field.inputMethod, 
+        options = field.options,
+        defaultValue = field.defaultValue,
+        colors = this.getColors(),
+        type;
+      if(method === "select" && options){
+        type = select(label,options,undefined,group);
+      } else if(method === "colorpicker" && colors){
+        let options = {};
+        colors.forEach(color=>options[color]=color);
+        type = select(label,options,this.getColor(defaultValue),group);
+      } else if(method === "boolean"){
+        type = boolean(label,this.getBoolean(defaultValue),group);
+      } else if(method === "haxupload"){
+        type = text(label,'',group);
+      } else if(method === "object"){
+        type = undefined;
+      } else if(method === "array"){
+        type = undefined;
+      } else if(method === "textarea"){
+        type = text(label,this.getTextArea(defaultValue),group);
+      } else {
+        type = text(label,this.getTextField(defaultValue),group);
+      }
+      knobs[group][name] = {"attribute": attribute,"type": type, "method": method};
+    });
+    return knobs;
+  }
+
+  /**
+   * makes an element based on knobs object
+   * @param {string} tag element's tag
+   * @param {object} knobs 
+   * {
+   *  properties: {
+   *    { 
+   *      "attribute": "attributeName"
+   *      "type": knobType(label,[options],defaultValue,"properties")
+   *    }
+   *  },
+   *  slots: {
+   *    { 
+   *      "attribute": "attributeName"
+   *      "type": knobType(label,[options],defaultValue,"slots")
+   *    }
+   *  }
+   * }
+   * @returns {object} element
+   * @memberof StorybookUtilities
+   */
+  makeElement(tag,knobs){
+    let el = document.createElement(tag);
+    Object.keys(knobs.props || {}).forEach(prop=>{
+      let knob = knobs.props[prop],attr = knob.attribute, val = knob.type;
+      if(knob.method !=="object" && knob.method !=="array") el[prop] = val;
+    });
+    Object.keys(knobs.slots||{}).map(slot=>{
+      let div = document.createElement('div');
+      div.slot = knobs.slots[slot].attribute;
+      div.innerHTML = knobs.slots[slot].type;
+      el.appendChild(div);
+    });
+    return el;
+  };
+
+  /**
+   * makes an element based on its class
+   * @param {object} custom element class
+   * @returns {object} element
+   * @memberof StorybookUtilities
+   */
+  makeElementFromClass(el){
+    let tag = el.tag, 
+      props = this.getElementProperties(el.properties,el.haxProperties),
+      knobs = this.getKnobs(props);
+    return this.makeElement(tag,knobs);
+  }
+
+  /**
+   * gets slots template
    *
-   * @param {color} optional color as the default value
-   * @returns {object} the simple colors properties
+   * @param {object} slots
+   * @returns {object} html template
+   * @memberof StorybookUtilities
    */
-  getSimpleColorsPolymer(color = "blue") {
-    return {
-      accentColor: {
-        name: "accentColor",
-        type: "Select",
-        value: color,
-        options: Object.keys(window.SimpleColorsStyles.colors)
-      },
-      dark: {
-        name: "dark",
-        type: "Boolean",
-        value: false
-      }
-    };
+  getSlots(slots){
+    return html`${Object.keys(slots||{}).map(slot=>html`<div slot=${slots[slot].attribute}>${slots[slot].type}</div>`)}`;
   }
-  /**
-   * Creates slotted HTML bound to knobs for each property or slot
-   * @param {object} story object with the following: ```
-  {
-    "of": "a11y-collapse",                                          //the catergory this story will be under
-    "name": "a11y-collapse-group",                                   //the name of the element
-    "alias": "accordion",                                           //optional alias for storybook menu item
-    "props": A11yCollapseGroup.properties,                          //an object with properties to bind
-    "slots": {
-      "title": { "name": "title", "type": "String", "value": ``},   //an named slot slot to bind
-      "slot": { "name": "slot", "type": "String", "value": ``}      //an unnamed slot to bind
-    }, 
-    "attr": ``,                                                     //unbound attributes
-    "slotted": ``                                                   //unbound slotted content
-  }
-  ```
-   * @returns {object} the slot content to wire to slots
-   */
-  addLiveDemo(story, escape = false) {
-    story.alias = story.alias !== undefined ? story.alias : story.name;
-    story.before = story.before !== undefined ? story.before : ``;
-    story.after = story.after !== undefined ? story.after : ``;
-    story.attr = story.attr !== undefined ? story.attr : ``;
-    story.slotted = story.slotted !== undefined ? story.slotted : ``;
-    story.slots = story.slots !== undefined ? story.slots : {};
-    story.props = story.props !== undefined ? story.props : {};
-    story.demo = storiesOf(story.of, module);
-    story.demo.addDecorator(storybookBridge.withKnobs);
-    story.demo.add(
-      story.alias,
-      () => {
-        story.attrBindings = ``;
-        Object.values(this.getBindings(story.props)).forEach(prop => {
-          if (prop.value !== false && prop.value !== "") {
-            story.attrBindings +=
-              typeof prop.value !== "string"
-                ? ` ${prop.id}="${prop.value}"`
-                : ` ${prop.id}="${prop.value
-                    .replace(/'/g, "&apos;")
-                    .replace(/"/g, "&quot;")}"`;
-          }
-        });
-        story.slotBindings = ``;
-        Object.values(this.getBindings(story.slots)).forEach(slot => {
-          story.slotBindings +=
-            slot.id !== "slot"
-              ? `<div slot="${slot.id}">${slot.value}</div>`
-              : `${slot.value}`;
-        });
-        return `
-        <h1>${story.alias}</h1>
-        ${story.before}
-        <${story.name}${story.attrBindings}${story.attr}>
-          ${story.slotBindings}
-          ${story.slotted}
-        </${story.name}>
-        ${story.after}
-      `;
-      },
-      { knobs: { escapeHTML: escape } }
-    );
-  }
+
   /**
    * prevents the element's load of an unpacked location from failing
    * and loads a packed path specificed by thye story.js file
    * @param {*} name of the resource (should match the name the element is using to load)
    * @param {*} location of the resource, eg., require("file-loader!./path/to/file.js")
-   */
+   * /
   addGlobalScript(name, location) {
     window.ESGlobalBridge.requestAvailability();
     if (!window.ESGlobalBridge.webpack) window.ESGlobalBridge.webpack = {};
     window.ESGlobalBridge.webpack[name] = true;
     window.ESGlobalBridge.instance.load(name, location, true);
-  }
+  }*/
 }
 
 // register global bridge on window if needed

@@ -72,7 +72,7 @@ window.StorybookUtilities.instance.addPattern(AccentCardPatternVariables);
  * add the live demo
  */
 let props = Object.assign(
-  window.StorybookUtilities.instance.getSimpleColorsPolymer("light-blue"),
+  window.StorybookUtilities.instance.getSimpleColors("light-blue"),
   AccentCard.properties
 );
 props.imageSrc.value = image6;

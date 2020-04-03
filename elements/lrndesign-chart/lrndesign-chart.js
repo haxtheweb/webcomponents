@@ -8,7 +8,7 @@ import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-rende
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lrndesign-chart-behaviors`
- * @customElement lrndesign-chart-behaviors
+ * @element lrndesign-chart-behaviors
  * a line chart
  *
 
@@ -28,7 +28,8 @@ import "@polymer/iron-ajax/iron-ajax.js";
 class LrndesignChart extends SimpleColors {
   //styles function
   static get styles() {
-    let styles = [
+    return [
+      ...super.styles,
       css`
         :host {
           --chartist-color-1: var(--simple-colors-default-theme-red-8);
@@ -697,9 +698,8 @@ class LrndesignChart extends SimpleColors {
         }
       `
     ];
-    if (super.styles) styles = Object.assign(super.styles, styles);
-    return styles;
   }
+
   // render function
   render() {
     return html`

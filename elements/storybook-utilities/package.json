@@ -16,7 +16,8 @@
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
     "@lrnwebcomponents/simple-colors": "^2.6.3",
     "@storybook/addon-knobs": "^5.3.13",
-    "@storybook/polymer": "^5.3.13"
+    "@storybook/polymer": "^5.3.13",
+    "lorem-ipsum": "^2.0.3"
   },
   "private": false,
   "publishConfig": {

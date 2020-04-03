@@ -105,6 +105,7 @@ class A11yMediaPlayer extends SimpleColors {
       css`
         :host {
           display: block;
+          overflow: hidden;
           width: calc(100% - 2px);
           font-family: var(--simple-fields-font-family, sans-serif);
           --a11y-media-player-height: unset;
@@ -3437,7 +3438,7 @@ class A11yMediaPlayer extends SimpleColors {
 
     // handles fullscreen
     if (screenfull) {
-      screenfull.on("change", (e) => {
+      screenfull.on("change", e => {
         if (screenfull.enabled) this.fullscreen = screenfull.isFullscreen;
       });
     }

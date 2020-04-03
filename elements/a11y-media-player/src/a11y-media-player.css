@@ -1,5 +1,6 @@
 :host {
   display: block;
+  overflow: hidden;
   width: calc(100% - 2px);
   font-family: var(--simple-fields-font-family,sans-serif);
   --a11y-media-player-height: unset;

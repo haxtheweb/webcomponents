@@ -1,7 +1,7 @@
+/*import { LrndesignChart } from "./lrndesign-chart.js";
 import { LrndesignPie } from "./lib/lrndesign-pie.js";
 import { LrndesignLine } from "./lib/lrndesign-line.js";
 import { LrndesignBar } from "./lib/lrndesign-bar.js";
-import { LrndesignChartBehaviors } from "./lib/lrndesign-chart-behaviors.js";
 import * as BarCSV from "./demo/bar.csv";
 import * as PieCSV from "./demo/pie.csv";
 import * as LineCSV from "./demo/line.csv";
@@ -10,7 +10,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 /**
  * add to the pattern library
- */
+ * /
 const LrndesignPiePattern = {
   of: "Pattern Library/Atoms/Media",
   name: "Pie Chart",
@@ -35,10 +35,10 @@ window.StorybookUtilities.instance.addPattern(LrndesignLinePattern);
 
 /**
  * add the live demo
- */
+ * /
 let getAllKnobs = (props, csv) => {
   let allKnobs = Object.assign(
-    window.StorybookUtilities.instance.getSimpleColorsPolymer(""),
+    window.StorybookUtilities.instance.getSimpleColors(""),
     LrndesignChartBehaviors.properties,
     props
   );
@@ -96,4 +96,4 @@ const LrndesignLineStory = {
 };
 window.StorybookUtilities.instance.addLiveDemo(LrndesignPieStory);
 window.StorybookUtilities.instance.addLiveDemo(LrndesignBarStory);
-window.StorybookUtilities.instance.addLiveDemo(LrndesignLineStory);
+window.StorybookUtilities.instance.addLiveDemo(LrndesignLineStory);*/

@@ -1,0 +1,15 @@
+import { html } from "lit-element/lit-element.js";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
+import { withKnobs, withWebComponentsKnobs } from '@open-wc/demoing-storybook';
+
+<Meta
+  title="WithWebComponentsKnobs|Docs"
+  decorators={[withKnobs, withWebComponentsKnobs]}
+  parameters={{ component: 'accent-card', options: { selectedPanel: 'storybookjs/knobs/panel' } }}
+/>
+
+<Story name="Card Test" height="220px">
+  {html`
+     <accent-card><div slot="content">This also is my card.</div></accent-card>
+  `}
+</Story>

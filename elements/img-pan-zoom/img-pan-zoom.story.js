@@ -1,12 +1,9 @@
 import { ImgPanZoom } from "./img-pan-zoom.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+//import * as openseadragon from "./lib/openseadragon/build/openseadragon/openseadragon.min.js";
 import * as image from "./demo/HAXCmsworkflow.jpg";
 
 window.StorybookUtilities.requestAvailability();
-window.StorybookUtilities.instance.addGlobalScript(
-  "openseadragon",
-  require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.js")
-);
 /**
  * add to the pattern library
  */

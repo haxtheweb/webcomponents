@@ -2,10 +2,7 @@ import { ChartistRender } from "./chartist-render.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
-window.StorybookUtilities.instance.addGlobalScript(
-  "chartistLib",
-  require("file-loader!./lib/chartist/dist/chartist.min.js")
-);
+import * as chartistLib from "./lib/chartist/dist/chartist.min.js";
 
 /**
  * add the live demo
