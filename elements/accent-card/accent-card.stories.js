@@ -16,12 +16,7 @@ export default {
 
 export const AccentCardStory = () => {
   const props = utils.getElementProperties(AccentCard.properties,AccentCard.haxProperties);
-  const k = getKnobs(props);
-  let accentColor = k.props.accentColor.type;//select(k.accentColor.label,k.accentColor.options,k.accentColor.defaultValue,"Properties");
-  const content = '';//text(k.content.label,"I am content.","Slots");
+  const k = utils.getKnobs(props);
+  utils.makeElementFromClass(AccentCard);
   return utils.makeElement('accent-card',k);
-  /*return html`
-  <accent-card accent-color="${accentColor}">
-    ${utils.getSlots(k.slots)}
-  </accent-card>`*/
-  };
+};
