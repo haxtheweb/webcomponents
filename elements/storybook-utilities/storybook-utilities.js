@@ -203,7 +203,7 @@ export class StorybookUtilities {
       let knob = knobs.props[prop],attr = knob.attribute, val = knob.type;
       if(knob.method !=="object" && knob.method !=="array") el.setAttribute(attr,val);
     });
-    Object.keys(knobs.slots || {}).forEach(slot=>{
+    $Object.keys(knobs.slots||{}).map(slot=>{
       let div = document.createElement('div');
       div.slot = knobs.slots[slot].attribute;
       div.innerHTML = knobs.slots[slot].type;
@@ -212,8 +212,15 @@ export class StorybookUtilities {
     return el;
   };
 
+  /**
+   * gets slots template
+   *
+   * @param {object} slots
+   * @returns {object} html template
+   * @memberof StorybookUtilities
+   */
   getSlots(slots){
-    return html`${Object.keys(slots||{}).map(slot=>html`<div slot=${slot.attribute}>${slot.type}</div>`)}`;
+    return html`${Object.keys(slots||{}).map(slot=>html`<div slot=${slots[slot].attribute}>${slots[slot].type}</div>`)}`;
   }
 
   /**
