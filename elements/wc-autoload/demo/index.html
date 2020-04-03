@@ -7,29 +7,24 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-    <script type="module">
-      import '../wc-autoload.js';
+    <script type="module" src="../wc-autoload.js"></script>
+    <script defer="defer" async="async">
+      window.WCAutoloadBasePath = "/node_modules/";
+      window.WCAutoloadRegistry = {
+        "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+        "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
+        "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+        "paper-button": "@polymer/paper-button/paper-button.js",
+      };
     </script>
   </head>
   <body>
     <p>stuff that maybe has a full new web componetn button in it<a href="https://google.com/" target="_blank"><paper-button raised>Stuff</paper-button></a></p>
     <wikipedia-query search="Drupal"></wikipedia-query>
     <div>Cool</div>
-    <meme-maker alt="high school GIF" image-url="https://media2.giphy.com/media/8RczH5vL2k7Ju/giphy.gif" top-text="LETS ALL GO TO HAXCMS" imageurl="https://media2.giphy.com/media/8RczH5vL2k7Ju/giphy.gif" toptext="high school GIF" style="width: 50%; margin: 0px auto; display: block;">
-        <div>LETS ALL GO TO HAXCMS</div>
-        <img src="https://media2.giphy.com/media/8RczH5vL2k7Ju/giphy.gif" alt="high school GIF" preload="lazy">
-    </meme-maker>
     <grid-plate layout="1-1-1-1-1" responsive-size="xl" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" style="width: 100%;" hide-ops column-widths="[&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;]"><a11y-gif-player src="https://media0.giphy.com/media/YEongvRqe8sXC/giphy.gif" style="width: 100%;" slot="col-2" class="hax-moving" tooltip="Toggle animation" no-image></a11y-gif-player>
         <p slot="col-3" style="width: 100%;">We'll cover user experience and generating ways of improving the platform by creating issues about any confusion you've run into when using the platform. <i>Open critique is the best way to improve! </i>
         This is also practicing a technique called User Story Elicitation / Generation, common in the testing and development of any product.</p>
     </grid-plate>
-    <script defer="defer" async="async">
-      window.WCAutoload.registry = {
-        "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-        "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
-        "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-        "paper-button": "@polymer/paper-button/paper-button.js"
-      };
-    </script>
   </body>
 </html>

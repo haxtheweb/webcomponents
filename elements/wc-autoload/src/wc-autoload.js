@@ -10,15 +10,35 @@ window.WCAutoload = window.WCAutoload || {};
 // is rendered through the same modal
 window.WCAutoload.requestAvailability = () => {
   if (!window.WCAutoload.instance) {
-    window.WCAutoload.instance = document.createElement(
-      "wc-autoload"
-    );
+    window.WCAutoload.instance = document.createElement("wc-autoload");
     document.body.appendChild(window.WCAutoload.instance);
   }
   return window.WCAutoload.instance;
 };
-// forces self appending
-window.WCAutoload.requestAvailability();
+// forces self appending which kicks all this off but AFTER dom is loaded
+window.addEventListener('load', (e) => {
+  // find the loader
+  let loader = window.WCAutoload.requestAvailability();
+  // set the basePath if it exists
+  if (window.WCAutoloadBasePath) {
+    loader.registry.basePath = window.WCAutoloadBasePath;
+  }
+  // build out the registry via events translated from object
+  if (window.WCAutoloadRegistry) {
+    for (var i in window.WCAutoloadRegistry) {
+      loader.registry.register({
+        tag: i,
+        path: window.WCAutoloadRegistry[i]
+    });
+    }
+  }
+  // mutation observer will pick up changes after initial load
+  // but this gets us at load time
+  document.querySelectorAll(":not(:defined)").forEach((el, index) => {
+    // process every tag NOT defined when the page loads
+    loader.processNewElement(el);
+  });
+});
 /**
  * `wc-autoload`
  * `automatically load new tags in the dom`
@@ -35,9 +55,9 @@ class WcAutoload extends HTMLElement {
   constructor() {
     super();
     this.registry = window.DynamicImportRegistry.requestAvailability();
-    this.list = window.WCAutoload.registry;
   }
   connectedCallback() {
+    // listen for changes and then process any new node that has a tag name
     this._mutationObserver = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
@@ -47,15 +67,11 @@ class WcAutoload extends HTMLElement {
         });
       });
     });
+    // listen on the body and deep children as well
     this._mutationObserver.observe(document.querySelector("body"), {
       childList: true,
       subtree: true
     });
-  }
-  processElementList(list) {
-    for (var i = 0; i < list.length; i++) {
-      this.processNewElement(list[i]);
-    }
   }
   disconnectedCallback() {
     this._mutationObserver.disconnect();
