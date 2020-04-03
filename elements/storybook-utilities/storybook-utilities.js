@@ -13,7 +13,7 @@ import {
   boolean,
   radios,
   files,
-  optionsKnob,
+  optionsKnob
 } from "@open-wc/demoing-storybook";
 
 /**
@@ -99,7 +99,9 @@ export class StorybookUtilities {
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomColor = () => this.getRandomOption(this.getColors());
+  getRandomColor() {
+    return this.getRandomOption(this.getColors());
+  }
 
   /**
    * default value or random color from Simple Colors
@@ -107,7 +109,12 @@ export class StorybookUtilities {
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomHex= () => `#${[0,0,0].map(i=>this.getRandomNumber(i,255).toString(16)).map(i=>i.length < 2 ? `0${i}`: `${i}`).join('')}`;
+  getRandomHex(){
+    return `#${[0, 0, 0]
+      .map(i => this.getRandomNumber(i, 255).toString(16))
+      .map(i => (i.length < 2 ? `0${i}` : `${i}`))
+      .join("")}`;
+  }
 
   /**
    * default value or random color from Simple Colors
@@ -115,13 +122,15 @@ export class StorybookUtilities {
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomImage = () => this.getRandomOption([
-    "//picsum.photos/1200/900",
-    "//picsum.photos/900/900",
-    "//picsum.photos/1200/800",
-    "//picsum.photos/800/1600",
-    "//picsum.photos/400/1200"
-  ]);
+  getRandomImage(){
+    return this.getRandomOption([
+      "//picsum.photos/1200/900",
+      "//picsum.photos/900/900",
+      "//picsum.photos/1200/800",
+      "//picsum.photos/800/1600",
+      "//picsum.photos/400/1200"
+    ]);
+  }
 
   /**
    * default value or randomly true or false
@@ -129,7 +138,11 @@ export class StorybookUtilities {
    * @returns {boolean}
    * @memberof StorybookUtilities
    */
-  getRandomOption = (options=[]) => options.length > 0 ? options[Math.floor(Math.random() * Math.floor(options.length))] : undefined;
+  getRandomOption(options = []){
+    return options.length > 0
+      ? options[Math.floor(Math.random() * Math.floor(options.length))]
+      : undefined;
+  }
 
   /**
    * default value or randomly true or false
@@ -137,7 +150,9 @@ export class StorybookUtilities {
    * @returns {boolean}
    * @memberof StorybookUtilities
    */
-  getRandomBool = () => Math.random() >= 0.5;
+  getRandomBool(){
+    return Math.random() >= 0.5;
+  }
 
   /**
    * default value or randomly true or false
@@ -145,7 +160,9 @@ export class StorybookUtilities {
    * @returns {boolean}
    * @memberof StorybookUtilities
    */
-  getRandomNumber = (min=0,max=100+min,step=1) => min + Math.floor((Math.random() * Math.floor((max-min)/step))) * step;
+  getRandomNumber(min = 0, max = 100 + min, step = 1){
+    return min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step;
+  }
 
   /**
    * default value or random string of 1-5 words
@@ -153,23 +170,26 @@ export class StorybookUtilities {
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomText = () =>this.getRandomOption([
-    "I regret nothing",
-    "I see your value now.",
-    "Never listen to Pierce.",
-    "Cool cool cool.",
-    "Movie reference",
-    "Pop Pop!",
-    "Six seasons and a movie!",
-    "Umm.. Bitter much?",
-    "Consider yourself Chang'd!",
-    "Put it in a letter, Jane Austen!",
-    "That was a game. This is paintball.",
-    "This is definitely the darkest timeline.",
-    "I need help reacting to something.",
-    "Frankly, my dear, I don't give a dean!",
-    "I give this year a \"D\", for delightful!"
-  ]); // this.lorem.generateWords(Math.floor(Math.random() * Math.floor(5))+1);
+  getRandomText(){ 
+    return this.getRandomOption([
+      "I regret nothing",
+      "I see your value now.",
+      "Never listen to Pierce.",
+      "Cool cool cool.",
+      "Movie reference",
+      "Pop Pop!",
+      "Six seasons and a movie!",
+      "Umm.. Bitter much?",
+      "Consider yourself Chang'd!",
+      "Put it in a letter, Jane Austen!",
+      "That was a game. This is paintball.",
+      "This is definitely the darkest timeline.",
+      "I need help reacting to something.",
+      "Frankly, my dear, I don't give a dean!",
+      'I give this year a "D", for delightful!'
+    ]); // this.lorem.generateWords(Math.floor(Math.random() * Math.floor(5))+1);
+  }
+    
 
   /**
    * default value or random string of 1-5 sentences
@@ -177,19 +197,21 @@ export class StorybookUtilities {
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomTextarea = () =>this.getRandomOption([
-    "Sometimes I think I lost something really important to me, and then it turns out I already ate it.",
-    "Your last blow-off class taught me to live in the moment which I will always regret and never do again.",
-    "Do you understand what a conspiracy is? When you conspire with everyone you come across, you're not really conspiring with anyone. You're just doing random crap.",
-    "I painted a tunnel on the side of the library. When it dries, I'm going for it.",
-    "We'll definitely be back next year. If not, it'll be because an asteroid has destroyed all human civilization. And that's canon.",
-    "Sometimes the hardest prisons to break out of, are the ones without locks.",
-    "When you really know who you are and what you like about yourself, changing for other people isn't such a big deal.",
-    "Look at me. It's clear to you that I am awesome, but I can never admit that, because that would make me an ass.",
-    "Let's do what people do. Let's get a house we can't afford and a dog that makes us angry.",
-    "I discovered at a very early age that if I talked long enough, I could make anything right or wrong. So either I'm god, or thruth is relative. Either way: Booyah.",
-    "The funny thing about being smart, is that you can get through most of life without ever having to do any work."
-  ]);//this.lorem.generateSentences(Math.floor(Math.random() * Math.floor(5))+1);
+  getRandomTextarea(){
+    return this.getRandomOption([
+      "Sometimes I think I lost something really important to me, and then it turns out I already ate it.",
+      "Your last blow-off class taught me to live in the moment which I will always regret and never do again.",
+      "Do you understand what a conspiracy is? When you conspire with everyone you come across, you're not really conspiring with anyone. You're just doing random crap.",
+      "I painted a tunnel on the side of the library. When it dries, I'm going for it.",
+      "We'll definitely be back next year. If not, it'll be because an asteroid has destroyed all human civilization. And that's canon.",
+      "Sometimes the hardest prisons to break out of, are the ones without locks.",
+      "When you really know who you are and what you like about yourself, changing for other people isn't such a big deal.",
+      "Look at me. It's clear to you that I am awesome, but I can never admit that, because that would make me an ass.",
+      "Let's do what people do. Let's get a house we can't afford and a dog that makes us angry.",
+      "I discovered at a very early age that if I talked long enough, I could make anything right or wrong. So either I'm god, or thruth is relative. Either way: Booyah.",
+      "The funny thing about being smart, is that you can get through most of life without ever having to do any work."
+    ]); //this.lorem.generateSentences(Math.floor(Math.random() * Math.floor(5))+1);
+  }
 
   /**
    * gets knobs object from properties array
@@ -219,10 +241,10 @@ export class StorybookUtilities {
    *    }
    *  }
    * }
-   * @see https://github.com/storybookjs/storybook/tree/master/addons/knobs 
+   * @see https://github.com/storybookjs/storybook/tree/master/addons/knobs
    * @memberof StorybookUtilities
    */
-  getKnobs(properties,defaults={}) {
+  getKnobs(properties, defaults = {},exclusions=[]) {
     let knobs = { props: {}, slots: {} };
     (properties || []).forEach(field => {
       let title = field.title,
@@ -235,38 +257,58 @@ export class StorybookUtilities {
         val = defaults[name],
         colors = this.getColors(),
         type;
-      if (options) {
-        if (method === "select") {
-          type = select(label,options,val,group);
-        } else if (method === "radio" && options) {
-          type = radio(label,options,val,group);
-        } else if (method === "options" && options) {
-          type = option(label,options,val,{display:"multi-select"} ,group);
+      console.log(name,val);
+      if(name.indexOf('__') === -1 && !exclusions.includes(name)){
+        if (options) {
+          if (method === "select") {
+            type = select(label, options, val, group);
+          } else if (method === "radio" && options) {
+            type = radio(label, options, val, group);
+          } else if (method === "options" && options) {
+            type = option(
+              label,
+              options,
+              val,
+              { display: "multi-select" },
+              group
+            );
+          }
+        } else if (method === "colorpicker" && colors) {
+          let options = {};
+          colors.forEach(color => (options[color] = color));
+          type = select(label, options, val, group);
+        } else if (method === "boolean") {
+          type = boolean(label, val, group);
+        } else if (method === "haxupload") {
+          type = files(
+            label,
+            ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt",
+            val,
+            group
+          );
+        } else if (method === "datepicker") {
+          type = date(label, val, group);
+        } else if (method === "number") {
+          type = number(label, val, {}, group);
+        } else if (method === "range") {
+          //todo
+          type = number(
+            label,
+            val,
+            { range: true, min: 60, max: 90, step: 1 },
+            group
+          );
+        } else if (method === "color") {
+          type = color(label, val, group);
+        } else if (method === "object" || method === "array") {
+          type = object(label, val, group);
+        } else if (method === "array") {
+          type = array(label, val, ",", group);
+        } else if (method === "textarea") {
+          type = text(label, val || "", group);
+        } else {
+          type = text(label, val || "", group);
         }
-      } else if (method === "colorpicker" && colors) {
-        let options = {};
-        colors.forEach(color => (options[color] = color));
-        type = select(label,options,val,group);
-      } else if (method === "boolean") {
-        type = boolean(label,val,group);
-      } else if (method === "haxupload") {
-        type = files(label,".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt",val, group);
-      } else if (method === "datepicker") {
-        type = date(label, val,group);
-      } else if (method === "number") {
-        type = number(label,val,{},group);
-      } else if (method === "range") { //todo
-        type = number(label,val,{range:true,min:60,max:90,step:1},group);
-      } else if (method === "color") {
-        type = color(label,val,group);
-      } else if (method === "object") {
-        type = object(label,val || {}, group);
-      } else if (method === "array") {
-        type = array(label,val || [],',',group);
-      } else if (method === "textarea") {
-        type = text(label,val||'',group);
-      } else {
-        type = text(label,val||'',group);
       }
       knobs[group][name] = { attribute: attribute, type: type, method: method };
     });
@@ -317,10 +359,10 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElementFromClass(el,defaults={}) {
+  makeElementFromClass(el, defaults = {},exclude=[]) {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
-      knobs = this.getKnobs(props,defaults);
+      knobs = this.getKnobs(props, defaults);
     return this.makeElement(tag, knobs);
   }
 
