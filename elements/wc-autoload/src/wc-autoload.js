@@ -16,7 +16,7 @@ window.WCAutoload.requestAvailability = () => {
   return window.WCAutoload.instance;
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
-window.addEventListener('load', (e) => {
+window.addEventListener("load", e => {
   // find the loader
   let loader = window.WCAutoload.requestAvailability();
   // set the basePath if it exists
@@ -29,7 +29,7 @@ window.addEventListener('load', (e) => {
       loader.registry.register({
         tag: i,
         path: window.WCAutoloadRegistry[i]
-    });
+      });
     }
   }
   // mutation observer will pick up changes after initial load
