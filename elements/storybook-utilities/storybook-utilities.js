@@ -83,7 +83,7 @@ export class StorybookUtilities {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = quick.concat(configure, advanced);
-      console.log(haxProps,quick,configure,advanced);
+    console.log(haxProps, quick, configure, advanced);
     return hax.length > 0
       ? hax
       : Object.keys(props || {}).map(property => {
@@ -251,7 +251,18 @@ export class StorybookUtilities {
       field.name = field.property || field.slot;
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
-        console.debug('getKnob:',knob,'\nfield',field,'\nfield name',field.name,'\nfdefaults',defaults,'\ndefault value',defaults[field.name]);
+        console.debug(
+          "getKnob:",
+          knob,
+          "\nfield",
+          field,
+          "\nfield name",
+          field.name,
+          "\nfdefaults",
+          defaults,
+          "\ndefault value",
+          defaults[field.name]
+        );
         knobs[knob.group][field.name] = knob;
       }
     });
@@ -369,7 +380,14 @@ export class StorybookUtilities {
       div.innerHTML = knobs.slots[slot].knob;
       el.appendChild(div);
     });
-    console.debug('makeElement:',el,'\nproperties',knobs.props,'\nslots',knobs.slots);
+    console.debug(
+      "makeElement:",
+      el,
+      "\nproperties",
+      knobs.props,
+      "\nslots",
+      knobs.slots
+    );
     return el;
   }
 
@@ -383,7 +401,18 @@ export class StorybookUtilities {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs(props, defaults, exclusions);
-      console.debug('makeElementFromClass:',tag,'\nprops',props,'\nknobs',knobs,'\ndefaults',defaults,'\nexclusions',exclusions);
+    console.debug(
+      "makeElementFromClass:",
+      tag,
+      "\nprops",
+      props,
+      "\nknobs",
+      knobs,
+      "\ndefaults",
+      defaults,
+      "\nexclusions",
+      exclusions
+    );
     return this.makeElement(tag, knobs);
   }
 

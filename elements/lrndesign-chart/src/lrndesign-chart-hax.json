@@ -75,7 +75,7 @@
           "ct-major-tenth": "ct-major-tenth  (2:5)",
           "ct-major-eleventh": "ct-major-eleventh  (3:8)",
           "ct-major-twelfth": "ct-major-twelfth  (1:3)",
-          "ct-double-octave": "ct-double-octave  (1:4`)",
+          "ct-double-octave": "ct-double-octave  (1:4`)"
         },
         "icon": "text-field"
       },

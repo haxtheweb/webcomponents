@@ -15,10 +15,11 @@ export default {
 export const A11yGifPlayerStory = () => {
   const utils = new StorybookUtilities();
   let gif = utils.makeElementFromClass(A11yGifPlayer, {
-    alt: "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs" ,
+    alt: "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
     src: "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
-    srcWithoutAnimation: "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"
+    srcWithoutAnimation:
+      "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"
   });
-  gif.style.maxWidth = '200px';
+  gif.style.maxWidth = "200px";
   return gif;
 };

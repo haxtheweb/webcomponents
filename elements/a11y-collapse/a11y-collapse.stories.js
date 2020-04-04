@@ -22,7 +22,7 @@ export const A11yCollapseGroupStory = () => {
   let group = utils.makeElementFromClass(A11yCollapseGroup, {
     id: "group"
   });
-  [1,2,3].forEach(i => {
+  [1, 2, 3].forEach(i => {
     let el = document.createElement("a11y-collapse"),
       p = document.createElement("p"),
       div = document.createElement("div");
@@ -42,6 +42,6 @@ export const A11yCollapseStory = () => {
   return utils.makeElementFromClass(A11yCollapse, {
     heading: utils.getRandomText(),
     content: utils.getRandomTextarea(),
-    icon: 'add'
+    icon: "add"
   });
 };

@@ -17,14 +17,14 @@ export default {
 
 const utils = new StorybookUtilities();
 
-  export const LrndesignPieStory = () => {
-    return utils.makeElementFromClass(LrndesignPie);
-  };
+export const LrndesignPieStory = () => {
+  return utils.makeElementFromClass(LrndesignPie);
+};
 
-  export const LrndesignBarStory = () => {
-    return utils.makeElementFromClass(LrndesignBar);
-  };
+export const LrndesignBarStory = () => {
+  return utils.makeElementFromClass(LrndesignBar);
+};
 
-  export const LrndesignLineStory = () => {
-    return utils.makeElementFromClass(LrndesignLine);
-  };
+export const LrndesignLineStory = () => {
+  return utils.makeElementFromClass(LrndesignLine);
+};
