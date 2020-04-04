@@ -393,12 +393,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @memberof LrndesignGalleryCarousel
    */
   get hideNav() {
-    console.log(
-      "hideNav",
-      this,
-      this.sources,
-      this.sources !== undefined ? this.sources.length < 2 : true
-    );
     return this.sources !== undefined ? this.sources.length < 2 : true;
   }
 

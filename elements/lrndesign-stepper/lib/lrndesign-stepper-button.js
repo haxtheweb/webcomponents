@@ -238,7 +238,6 @@ class LrndesignStepperButton extends PolymerElement {
     setTimeout(() => {
       var target = this.shadowRoot.querySelector("iron-collapse");
       if (this.opened) {
-        console.log("opening in stepper");
         target.show();
       }
     }, 0);
