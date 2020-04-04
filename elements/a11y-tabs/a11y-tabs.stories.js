@@ -15,8 +15,7 @@ export default {
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" }
-  },
-  stories: ["A11yTabsStory"]
+  }
 };
 const utils = new StorybookUtilities();
 export const A11yTabsStory = () => {
@@ -25,8 +24,8 @@ export const A11yTabsStory = () => {
   });
   ["Before", "During", "After"].forEach(tab => {
     let el = document.createElement("a11y-tab");
-    el.id = tab;
-    el.label = tab.toLowerCase();
+    el.label = tab;
+    el.id = tab.toLowerCase();
     el.innerHTML = utils.getRandomTextarea();
     tabs.appendChild(el);
   });

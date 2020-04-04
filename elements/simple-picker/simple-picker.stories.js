@@ -9,8 +9,7 @@ export default {
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" }
-  },
-  stories: ["SimplePickerStory"]
+  }
 };
 
 const utils = new StorybookUtilities();

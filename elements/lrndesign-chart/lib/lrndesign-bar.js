@@ -194,7 +194,7 @@ class LrndesignBar extends LrndesignChart {
       barQuick,
       lineBar.padding
     );
-    haxProps.settings.advanced = haxProps.settings.configure.advanced(
+    haxProps.settings.advanced = haxProps.settings.advanced.concat(
       lineBar.minMax,
       lineBar.xAxis,
       barX,

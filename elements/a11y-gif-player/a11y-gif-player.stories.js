@@ -9,8 +9,7 @@ export default {
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" }
-  },
-  stories: ["A11yGifPlayerStory"]
+  }
 };
 
 export const A11yGifPlayerStory = () => {

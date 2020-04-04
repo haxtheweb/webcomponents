@@ -83,6 +83,7 @@ export class StorybookUtilities {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = quick.concat(configure, advanced);
+      console.log(haxProps,quick,configure,advanced);
     return hax.length > 0
       ? hax
       : Object.keys(props || {}).map(property => {
@@ -155,7 +156,7 @@ export class StorybookUtilities {
    * random number within a range
    * @param {number} min lowest value
    * @param {number} max highest value
-   * @param {number} step 
+   * @param {number} step
    * @returns {number}
    * @memberof StorybookUtilities
    */
@@ -187,7 +188,7 @@ export class StorybookUtilities {
       "I need help reacting to something.",
       "Frankly, my dear, I don't give a dean!",
       'I give this year a "D", for delightful!'
-    ]); 
+    ]);
   }
 
   /**
@@ -250,6 +251,7 @@ export class StorybookUtilities {
       field.name = field.property || field.slot;
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
+        console.debug('getKnob:',knob,'\nfield',field,'\nfield name',field.name,'\nfdefaults',defaults,'\ndefault value',defaults[field.name]);
         knobs[knob.group][field.name] = knob;
       }
     });
@@ -281,7 +283,7 @@ export class StorybookUtilities {
       val = defaultValue,
       colors = this.getColors(),
       knob;
-    if (options) {
+    if (options && options.length > 0) {
       if (method === "select") {
         knob = select(label, options, val, group);
       } else if (method === "radio" && options) {
@@ -298,7 +300,7 @@ export class StorybookUtilities {
     } else if (method === "haxupload") {
       knob = files(
         label,
-        ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt",
+        ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt,.csv",
         val,
         group
       );
@@ -367,6 +369,7 @@ export class StorybookUtilities {
       div.innerHTML = knobs.slots[slot].knob;
       el.appendChild(div);
     });
+    console.debug('makeElement:',el,'\nproperties',knobs.props,'\nslots',knobs.slots);
     return el;
   }
 
@@ -380,6 +383,7 @@ export class StorybookUtilities {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs(props, defaults, exclusions);
+      console.debug('makeElementFromClass:',tag,'\nprops',props,'\nknobs',knobs,'\ndefaults',defaults,'\nexclusions',exclusions);
     return this.makeElement(tag, knobs);
   }
 

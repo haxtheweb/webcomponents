@@ -214,7 +214,7 @@ class LrndesignPie extends LrndesignChart {
       pieQuick,
       pieConfig
     );
-    haxProps.settings.advanced = haxProps.settings.configure.advanced(
+    haxProps.settings.advanced = haxProps.settings.advanced.concat(
       pieAdvanced
     );
     return haxProps;
