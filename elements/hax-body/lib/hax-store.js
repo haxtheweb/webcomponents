@@ -500,9 +500,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 // that did not provide an export
                 try {
                   let el = document.createElement(i);
-                  haxAutoloader.appendChild(el);  
-                }
-                catch(e) {
+                  haxAutoloader.appendChild(el);
+                } catch (e) {
                   console.warn(e);
                 }
               }
