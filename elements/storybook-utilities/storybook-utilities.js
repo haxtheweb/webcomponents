@@ -231,13 +231,13 @@ export class StorybookUtilities {
    *  properties: {
    *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"properties")
+   *      "knob": knobType(label,[options],defaultValue,"properties")
    *    }
    *  },
    *  slots: {
    *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"slots")
+   *      "knob": knobType(label,[options],defaultValue,"slots")
    *    }
    *  }
    * }
@@ -247,72 +247,96 @@ export class StorybookUtilities {
   getKnobs(properties, defaults = {},exclusions=[]) {
     let knobs = { props: {}, slots: {} };
     (properties || []).forEach(field => {
-      let title = field.title,
-        name = field.property || field.slot,
-        attribute = this.camelToKebab(name),
-        label = title && name ? `${title} (${name})` : title || name,
-        group = field.property ? "props" : field.slot ? "slots" : "vars",
-        method = field.inputMethod,
-        options = field.options,
-        val = defaults[name],
-        colors = this.getColors(),
-        type;
-      console.log(name,val);
-      if(name.indexOf('__') === -1 && !exclusions.includes(name)){
-        if (options) {
-          if (method === "select") {
-            type = select(label, options, val, group);
-          } else if (method === "radio" && options) {
-            type = radio(label, options, val, group);
-          } else if (method === "options" && options) {
-            type = option(
-              label,
-              options,
-              val,
-              { display: "multi-select" },
-              group
-            );
-          }
-        } else if (method === "colorpicker" && colors) {
-          let options = {};
-          colors.forEach(color => (options[color] = color));
-          type = select(label, options, val, group);
-        } else if (method === "boolean") {
-          type = boolean(label, val, group);
-        } else if (method === "haxupload") {
-          type = files(
-            label,
-            ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt",
-            val,
-            group
-          );
-        } else if (method === "datepicker") {
-          type = date(label, val, group);
-        } else if (method === "number") {
-          type = number(label, val, {}, group);
-        } else if (method === "range") {
-          //todo
-          type = number(
-            label,
-            val,
-            { range: true, min: 60, max: 90, step: 1 },
-            group
-          );
-        } else if (method === "color") {
-          type = color(label, val, group);
-        } else if (method === "object" || method === "array") {
-          type = object(label, val, group);
-        } else if (method === "array") {
-          type = array(label, val, ",", group);
-        } else if (method === "textarea") {
-          type = text(label, val || "", group);
-        } else {
-          type = text(label, val || "", group);
-        }
+      field.name = field.property || field.slot;
+      if(field.name.indexOf('__') === -1 && !exclusions.includes(field.name)){
+        let knob = this.getKnob(field,defaults[field.name]);
+        knobs[knob.group][field.name] = knob;
       }
-      knobs[group][name] = { attribute: attribute, type: type, method: method };
     });
     return knobs;
+  }
+  /**
+   *
+   * @param {object} field 
+   * {
+   *   title: "User-friendly title",
+   *   property: "propertyName",
+   *   slot: "slotName",
+   *   inputMethod: "HAXschema-compatible inputMethod",
+   *   options: {"value": "select field options object"},
+   *   defaultValue: "optional default value to override random value generator",
+   * }
+   * @param {*} defaultValue optional default value
+   * @returns object
+   * @memberof StorybookUtilities
+   */
+  getKnob(field,defaultValue){
+    let title = field.title,
+      name = field.name,
+      attribute = this.camelToKebab(name),
+      label = title && name ? `${title} (${name})` : title || name,
+      group = field.property ? "props" : field.slot ? "slots" : "vars",
+      method = field.inputMethod,
+      options = field.options,
+      val = defaultValue,
+      colors = this.getColors(),
+      knob;
+    if (options) {
+      if (method === "select") {
+        knob = select(label, options, val, group);
+      } else if (method === "radio" && options) {
+        knob = radio(label, options, val, group);
+      } else if (method === "options" && options) {
+        knob = option(
+          label,
+          options,
+          val,
+          { display: "multi-select" },
+          group
+        );
+      }
+    } else if (method === "colorpicker" && colors) {
+      let options = {};
+      colors.forEach(color => (options[color] = color));
+      knob = select(label, options, val, group);
+    } else if (method === "boolean") {
+      knob = boolean(label, val, group);
+    } else if (method === "haxupload") {
+      knob = files(
+        label,
+        ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt",
+        val,
+        group
+      );
+    } else if (method === "datepicker") {
+      knob = date(label, val, group);
+    } else if (method === "number") {
+      knob = number(label, val, {}, group);
+    } else if (method === "range") {
+      //todo
+      knob = number(
+        label,
+        val,
+        { range: true, min: 60, max: 90, step: 1 },
+        group
+      );
+    } else if (method === "color") {
+      knob = color(label, val, group);
+    } else if (method === "object" || method === "array") {
+      knob = object(label, val, group);
+    } else if (method === "array") {
+      knob = array(label, val, ",", group);
+    } else if (method === "textarea") {
+      knob = text(label, val || "", group);
+    } else {
+      knob = text(label, val || "", group);
+    }
+    return {
+      attribute: attribute,
+      knob: knob,
+      method: method,
+      group: group
+    };
   }
 
   /**
@@ -323,13 +347,13 @@ export class StorybookUtilities {
    *  properties: {
    *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"properties")
+   *      "knob": knobType(label,[options],defaultValue,"properties")
    *    }
    *  },
    *  slots: {
    *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"slots")
+   *      "knob": knobType(label,[options],defaultValue,"slots")
    *    }
    *  }
    * }
@@ -340,14 +364,13 @@ export class StorybookUtilities {
     let el = document.createElement(tag);
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
-        attr = knob.attribute,
-        val = knob.type;
+        val = knob.knob;
       if (knob.method !== "object" && knob.method !== "array") el[prop] = val;
     });
     Object.keys(knobs.slots || {}).map(slot => {
       let div = document.createElement("div");
       div.slot = knobs.slots[slot].attribute;
-      div.innerHTML = knobs.slots[slot].type;
+      div.innerHTML = knobs.slots[slot].knob;
       el.appendChild(div);
     });
     return el;
@@ -359,29 +382,11 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElementFromClass(el, defaults = {},exclude=[]) {
+  makeElementFromClass(el, defaults = {},exclusions=[]) {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
-      knobs = this.getKnobs(props, defaults);
+      knobs = this.getKnobs(props,defaults,exclusions);
     return this.makeElement(tag, knobs);
-  }
-
-  /**
-   * gets slots template
-   *
-   * @param {object} slots
-   * @returns {object} html template
-   * @memberof StorybookUtilities
-   */
-  getSlots(slots) {
-    return html`
-      ${Object.keys(slots || {}).map(
-        slot =>
-          html`
-            <div slot=${slots[slot].attribute}>${slots[slot].type}</div>
-          `
-      )}
-    `;
   }
 
   /**
