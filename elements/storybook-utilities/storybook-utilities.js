@@ -61,7 +61,8 @@ export class StorybookUtilities {
 
   /**
    * gets array of hax properties or properties from an element
-   * @param {object} element
+   * @param {object} props element's properties
+   * @param {object} haxProps element's haxProperties
    * @returns {array}
    * [
    *   {
@@ -94,8 +95,7 @@ export class StorybookUtilities {
   }
 
   /**
-   * default value or random color from Simple Colors
-   * @param {string} defaultValue
+   * random color from Simple Colors
    * @returns {string}
    * @memberof StorybookUtilities
    */
@@ -104,12 +104,11 @@ export class StorybookUtilities {
   }
 
   /**
-   * default value or random color from Simple Colors
-   * @param {string} defaultValue
+   * random color as hex code
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomHex(){
+  getRandomHex() {
     return `#${[0, 0, 0]
       .map(i => this.getRandomNumber(i, 255).toString(16))
       .map(i => (i.length < 2 ? `0${i}` : `${i}`))
@@ -117,12 +116,11 @@ export class StorybookUtilities {
   }
 
   /**
-   * default value or random color from Simple Colors
-   * @param {string} defaultValue
+   * random image url
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomImage(){
+  getRandomImage() {
     return this.getRandomOption([
       "//picsum.photos/1200/900",
       "//picsum.photos/900/900",
@@ -133,44 +131,46 @@ export class StorybookUtilities {
   }
 
   /**
-   * default value or randomly true or false
-   * @param {string} defaultValue
-   * @returns {boolean}
+   * random option from and array of options
+   * @param {array} options
+   * @returns {*}
    * @memberof StorybookUtilities
    */
-  getRandomOption(options = []){
+  getRandomOption(options = []) {
     return options.length > 0
       ? options[Math.floor(Math.random() * Math.floor(options.length))]
       : undefined;
   }
 
   /**
-   * default value or randomly true or false
-   * @param {string} defaultValue
+   * drandomly true or false
    * @returns {boolean}
    * @memberof StorybookUtilities
    */
-  getRandomBool(){
+  getRandomBool() {
     return Math.random() >= 0.5;
   }
 
   /**
-   * default value or randomly true or false
-   * @param {string} defaultValue
-   * @returns {boolean}
+   * random number within a range
+   * @param {number} min lowest value
+   * @param {number} max highest value
+   * @param {number} step 
+   * @returns {number}
    * @memberof StorybookUtilities
    */
-  getRandomNumber(min = 0, max = 100 + min, step = 1){
-    return min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step;
+  getRandomNumber(min = 0, max = 100 + min, step = 1) {
+    return (
+      min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step
+    );
   }
 
   /**
-   * default value or random string of 1-5 words
-   * @param {string} defaultValue
+   * random short string of text
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomText(){ 
+  getRandomText() {
     return this.getRandomOption([
       "I regret nothing",
       "I see your value now.",
@@ -187,17 +187,15 @@ export class StorybookUtilities {
       "I need help reacting to something.",
       "Frankly, my dear, I don't give a dean!",
       'I give this year a "D", for delightful!'
-    ]); // this.lorem.generateWords(Math.floor(Math.random() * Math.floor(5))+1);
+    ]); 
   }
-    
 
   /**
-   * default value or random string of 1-5 sentences
-   * @param {string} defaultValue
+   * random short string of text
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getRandomTextarea(){
+  getRandomTextarea() {
     return this.getRandomOption([
       "Sometimes I think I lost something really important to me, and then it turns out I already ate it.",
       "Your last blow-off class taught me to live in the moment which I will always regret and never do again.",
@@ -210,7 +208,7 @@ export class StorybookUtilities {
       "Let's do what people do. Let's get a house we can't afford and a dog that makes us angry.",
       "I discovered at a very early age that if I talked long enough, I could make anything right or wrong. So either I'm god, or thruth is relative. Either way: Booyah.",
       "The funny thing about being smart, is that you can get through most of life without ever having to do any work."
-    ]); //this.lorem.generateSentences(Math.floor(Math.random() * Math.floor(5))+1);
+    ]);
   }
 
   /**
@@ -226,6 +224,8 @@ export class StorybookUtilities {
    *     defaultValue: "optional default value to override random value generator",
    *   }
    * ]
+   * @param {object} defaults optional collection initial values for knobs, as { propertyName: defaultValue }
+   * @param {array} exclusions optional list pf props that should not be knobs
    * @returns {object}
    * {
    *  properties: {
@@ -244,12 +244,12 @@ export class StorybookUtilities {
    * @see https://github.com/storybookjs/storybook/tree/master/addons/knobs
    * @memberof StorybookUtilities
    */
-  getKnobs(properties, defaults = {},exclusions=[]) {
+  getKnobs(properties, defaults = {}, exclusions = []) {
     let knobs = { props: {}, slots: {} };
     (properties || []).forEach(field => {
       field.name = field.property || field.slot;
-      if(field.name.indexOf('__') === -1 && !exclusions.includes(field.name)){
-        let knob = this.getKnob(field,defaults[field.name]);
+      if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
+        let knob = this.getKnob(field, defaults[field.name]);
         knobs[knob.group][field.name] = knob;
       }
     });
@@ -257,7 +257,7 @@ export class StorybookUtilities {
   }
   /**
    *
-   * @param {object} field 
+   * @param {object} field
    * {
    *   title: "User-friendly title",
    *   property: "propertyName",
@@ -266,11 +266,11 @@ export class StorybookUtilities {
    *   options: {"value": "select field options object"},
    *   defaultValue: "optional default value to override random value generator",
    * }
-   * @param {*} defaultValue optional default value
+   * @param {*} defaultValue optional initial value for field
    * @returns object
    * @memberof StorybookUtilities
    */
-  getKnob(field,defaultValue){
+  getKnob(field, defaultValue) {
     let title = field.title,
       name = field.name,
       attribute = this.camelToKebab(name),
@@ -287,13 +287,7 @@ export class StorybookUtilities {
       } else if (method === "radio" && options) {
         knob = radio(label, options, val, group);
       } else if (method === "options" && options) {
-        knob = option(
-          label,
-          options,
-          val,
-          { display: "multi-select" },
-          group
-        );
+        knob = option(label, options, val, { display: "multi-select" }, group);
       }
     } else if (method === "colorpicker" && colors) {
       let options = {};
@@ -382,10 +376,10 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElementFromClass(el, defaults = {},exclusions=[]) {
+  makeElementFromClass(el, defaults = {}, exclusions = []) {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
-      knobs = this.getKnobs(props,defaults,exclusions);
+      knobs = this.getKnobs(props, defaults, exclusions);
     return this.makeElement(tag, knobs);
   }
 
