@@ -19,7 +19,7 @@ window.WCAutoload.requestAvailability = () => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-window.WCAutoload.process = (e) => {
+window.WCAutoload.process = e => {
   // find the loader
   let loader = window.WCAutoload.requestAvailability();
   // set the basePath if it exists
