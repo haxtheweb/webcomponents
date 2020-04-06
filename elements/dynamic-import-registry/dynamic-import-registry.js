@@ -50,6 +50,14 @@ class DynamicImportRegistry extends HTMLElement {
     if (item.tag && item.path) {
       if (!this.list[item.tag]) {
         this.list[item.tag] = item.path;
+        this.dispatchEvent(
+          new CustomEvent("dynamic-import-registry--new-registration", {
+            detail: {
+              tag: item.tag,
+              path: item.path,
+            }
+          })
+        );
       }
     } else {
       console.warn(
@@ -78,7 +86,7 @@ class DynamicImportRegistry extends HTMLElement {
         .then(module => {
           // dispatch custom event in case anyone cares
           this.dispatchEvent(
-            new CustomEvent("dynamic-import-registry-loaded", {
+            new CustomEvent("dynamic-import-registry--loaded", {
               detail: {
                 tag: name,
                 path: this.list[tag],
@@ -91,7 +99,7 @@ class DynamicImportRegistry extends HTMLElement {
           console.error(e);
           // fire on error too
           this.dispatchEvent(
-            new CustomEvent("dynamic-import-registry-failure", {
+            new CustomEvent("dynamic-import-registry--failure", {
               detail: {
                 tag: name,
                 path: this.list[tag],

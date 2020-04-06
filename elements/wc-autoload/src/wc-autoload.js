@@ -19,9 +19,10 @@ window.WCAutoload.requestAvailability = () => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-window.WCAutoload.process = e => {
+window.WCAutoload.process = (e) => {
   // find the loader
   let loader = window.WCAutoload.requestAvailability();
+  loader.loaded = true;
   // set the basePath if it exists
   if (window.WCAutoloadBasePath) {
     loader.registry.basePath = window.WCAutoloadBasePath;
@@ -36,14 +37,39 @@ window.WCAutoload.process = e => {
     }
   }
   // mutation observer will pick up changes after initial load
-  // but this gets us at load time
-  document.querySelectorAll(":not(:defined)").forEach((el, index) => {
-    // process every tag NOT defined when the page loads
-    loader.processNewElement(el);
-  });
+  // but this gets us at load time with fallback support for legacy
+  try {
+    document.querySelectorAll(":not(:defined)").forEach((el, index) => {
+      // process every tag NOT defined when the page loads
+      loader.processNewElement(el);
+    });
+  }
+  catch(e) {
+    // hack to convert children into array
+    [].slice.call(document.body.children).forEach((el, index) => {
+      // process every tag NOT defined when the page loads
+      loader.processNewElement(el);
+    });
+  }
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
+// function based allows for fallbacks due to timing on legacy browsers
 window.addEventListener("load", window.WCAutoload.process);
+
+// edge case; definition to load comes in AFTER we have loaded the page
+// and MutationObserver doesn't pick up the tag being there
+// this could be the result of a slow page load for example
+// in these cases; see the event of the item being in the registry
+window.WCAutoload.postLoaded = (e) => {
+  setTimeout(() => {
+    let loader = window.WCAutoload.requestAvailability();
+    if (loader.loaded && document.querySelectorAll(e.detail.tag).length > 0) {
+      loader.registry.loadDefinition(e.detail.tag);
+    }
+  },0);
+};
+// listen for new tags being registered
+window.addEventListener("dynamic-import-registry--new-registration", window.WCAutoload.postLoaded);
 /**
  * `wc-autoload`
  * `automatically load new tags in the dom`
@@ -59,6 +85,7 @@ class WcAutoload extends HTMLElement {
   }
   constructor() {
     super();
+    this.loaded = false;
     this.registry = window.DynamicImportRegistry.requestAvailability();
   }
   connectedCallback() {

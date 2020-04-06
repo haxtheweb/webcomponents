@@ -19,7 +19,7 @@ window.WCAutoload.requestAvailability = () => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-window.WCAutoload.process = e => {
+window.WCAutoload.process = (e) => {
   // find the loader
   let loader = window.WCAutoload.requestAvailability();
   // set the basePath if it exists
@@ -36,11 +36,19 @@ window.WCAutoload.process = e => {
     }
   }
   // mutation observer will pick up changes after initial load
-  // but this gets us at load time
-  document.querySelectorAll(":not(:defined)").forEach((el, index) => {
-    // process every tag NOT defined when the page loads
-    loader.processNewElement(el);
-  });
+  // but this gets us at load time with fallback support for legacy
+  try {
+    document.querySelectorAll(":not(:defined)").forEach((el, index) => {
+      // process every tag NOT defined when the page loads
+      loader.processNewElement(el);
+    });
+  }
+  catch(e) {
+    document.body.children.forEach((el, index) => {
+      // process every tag NOT defined when the page loads
+      loader.processNewElement(el);
+    });
+  }
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
 window.addEventListener("load", window.WCAutoload.process);
