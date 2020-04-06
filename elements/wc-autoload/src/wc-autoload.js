@@ -15,8 +15,11 @@ window.WCAutoload.requestAvailability = () => {
   }
   return window.WCAutoload.instance;
 };
-// forces self appending which kicks all this off but AFTER dom is loaded
-window.addEventListener("load", e => {
+/**
+ * process the loading event in case we need to ensure timing is
+ * better handled downstream.
+ */
+window.WCAutoload.process = (e) => {
   // find the loader
   let loader = window.WCAutoload.requestAvailability();
   // set the basePath if it exists
@@ -38,7 +41,9 @@ window.addEventListener("load", e => {
     // process every tag NOT defined when the page loads
     loader.processNewElement(el);
   });
-});
+};
+// forces self appending which kicks all this off but AFTER dom is loaded
+window.addEventListener("load", window.WCAutoload.process);
 /**
  * `wc-autoload`
  * `automatically load new tags in the dom`
