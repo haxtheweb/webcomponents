@@ -68,7 +68,7 @@ class WcAutoload extends HTMLElement {
       });
     });
     // listen on the body and deep children as well
-    this._mutationObserver.observe(document.querySelector("body"), {
+    this._mutationObserver.observe(document.body, {
       childList: true,
       subtree: true
     });
