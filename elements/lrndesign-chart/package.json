@@ -44,9 +44,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/chartist-render": "^2.6.3",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.3",
     "@lrnwebcomponents/simple-colors": "^2.6.3",
-    "@polymer/iron-ajax": "^3.0.0",
     "lit-element": "2.2.1"
   },
   "devDependencies": {

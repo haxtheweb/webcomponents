@@ -2,17 +2,16 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignChart } from "../lrndesign-chart.js";
 /**
  * `lrndesign-pie`
- * @element lrndesign-pie
  * a pie chart
  *
-
+ * @element lrndesign-pie
  * @extends LrndesignChart
  * @see ../lrndesign-chart.js
- *
- * @demo ../demo/pie.html
+ * @demo ./demo/pie.html
  *
  */
 class LrndesignPie extends LrndesignChart {
@@ -85,7 +84,9 @@ class LrndesignPie extends LrndesignChart {
        * in conjunction with the 'labelOffset' option.
        */
       labelPosition: {
-        type: String
+        type: String,
+        attribute: "label-position",
+        reflect: true
       },
       /**
        * If a label should be shown.
@@ -118,6 +119,7 @@ class LrndesignPie extends LrndesignChart {
   static get tag() {
     return "lrndesign-pie";
   }
+
   // haxProperty definition
   static get haxProperties() {
     let haxProps = super.haxProperties,
@@ -219,6 +221,27 @@ class LrndesignPie extends LrndesignChart {
   }
 
   /**
+   * gets options as an array
+   * @returns {array} options
+   * @readonly
+   * @memberof LrndesignChart
+   */
+  static get options() {
+    let options = super.options();
+    options.startAngle = this.startAngle;
+    options.chartPadding = this.chartPadding;
+    options.donut = this.donut;
+    options.donutSolid = this.donutSolid;
+    options.donutWidth = this.donutWidth;
+    options.showLabel = this.showLabel;
+    options.labelOffset = this.labelOffset;
+    options.labelPosition = this.labelPosition;
+    options.labelDirection = this.labelDirection;
+    options.ignoreEmptyValues = this.ignoreEmptyValues;
+    return options;
+  }
+
+  /**
    * Overrides default properties with pie-specific properties.
    */
   setProperties() {
@@ -235,25 +258,6 @@ class LrndesignPie extends LrndesignChart {
     this.labelDirection = "neutral";
     this.ignoreEmptyValues = false;
     this.type = "pie";
-  }
-
-  /**
-   * gets options as an array
-   * @returns {array} options
-   */
-  _getOptions() {
-    let options = super._getOptions();
-    options.startAngle = this.startAngle;
-    options.chartPadding = this.chartPadding;
-    options.donut = this.donut;
-    options.donutSolid = this.donutSolid;
-    options.donutWidth = this.donutWidth;
-    options.showLabel = this.showLabel;
-    options.labelOffset = this.labelOffset;
-    options.labelPosition = this.labelPosition;
-    options.labelDirection = this.labelDirection;
-    options.ignoreEmptyValues = this.ignoreEmptyValues;
-    return options;
   }
 }
 window.customElements.define(LrndesignPie.tag, LrndesignPie);

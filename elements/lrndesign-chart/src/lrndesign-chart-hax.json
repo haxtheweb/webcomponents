@@ -19,6 +19,20 @@
   "settings": {
     "quick": [
       {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean",
+        "icon": "icons:invert-colors"
+      },
+      {
         "property": "chartTitle",
         "title": "Chart Title",
         "description": "Accessible alt text for your chart.",
@@ -29,9 +43,21 @@
     ],
     "configure": [
       {
-        "property": "data-source",
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "dataSource",
         "title": "CSV File",
-        "description": "The URL for your CSV file.",
+        "description": "Load data from a CSV.",
         "inputMethod": "haxupload",
         "icon": "link",
         "required": true

@@ -6,14 +6,12 @@ import { LrndesignChart } from "../lrndesign-chart.js";
 
 /**
  * `lrndesign-line`
- * @element lrndesign-line
  * a line chart
- *
-
+ * 
+ * @element lrndesign-line
  * @extends LrndesignChart
  * @see ../lrndesign-chart.js
- *
- * @demo ../demo/line.html
+ * @demo ./demo/line.html
  *
  */
 class LrndesignLine extends LrndesignChart {
@@ -157,6 +155,24 @@ class LrndesignLine extends LrndesignChart {
   }
 
   /**
+   * gets options as an array
+   * @returns {array} options
+   * @readonly
+   * @memberof LrndesignChart
+   */
+  static get options() {
+    let options = super.options(),
+      lineBar = Object.assign(options, this.lineBarOptions());
+    lineBar.areaBase = this.areaBase;
+    lineBar.fullWidth = this.fullWidth;
+    lineBar.lineSmooth = this.lineSmooth;
+    lineBar.showArea = this.showArea;
+    lineBar.showLine = this.showLine;
+    lineBar.showPoint = this.showPoint;
+    return lineBar;
+  }
+
+  /**
    * Overrides default properties with line-specific properties.
    */
   setProperties() {
@@ -169,22 +185,6 @@ class LrndesignLine extends LrndesignChart {
     this.showLine = true;
     this.showPoint = true;
     this.type = "line";
-  }
-
-  /**
-   * gets options as an array
-   * @returns {array} options
-   */
-  _getOptions() {
-    let options = super._getOptions(),
-      lineBar = Object.assign(options, this._getLineBarOptions());
-    lineBar.areaBase = this.areaBase;
-    lineBar.fullWidth = this.fullWidth;
-    lineBar.lineSmooth = this.lineSmooth;
-    lineBar.showArea = this.showArea;
-    lineBar.showLine = this.showLine;
-    lineBar.showPoint = this.showPoint;
-    return lineBar;
   }
 }
 /**

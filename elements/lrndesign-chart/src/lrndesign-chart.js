@@ -5,10 +5,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lrndesign-chart-behaviors`
- * @element lrndesign-chart-behaviors
+ * @element lrndesign-chart
+ * @demo ./demo/index.html
+ * @demo ./demo/pie.html pie charts
+ * @demo ./demo/bar.html bar charts
+ * @demo ./demo/line.html line charts
  * a line chart
  *
 
@@ -19,24 +22,15 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @extends SchemaBehaviors
  * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js
  *
- * @demo ./demo/index.html
- * @demo ./demo/pie.html pie charts
- * @demo ./demo/bar.html bar charts
- * @demo ./demo/line.html line charts
  *
  */
-class LrndesignChart extends SimpleColors {
+class LrndesignChart extends ChartistRender {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   constructor() {
     super();
     this.setProperties();
-    let checkReady = setInterval(() => {
-      if (this.__dataReady) {
-        this.makeChart();
-        clearInterval(checkReady);
-      }
-    }, 1);
+    this.makeChart();
   }
 
   /**
@@ -361,139 +355,15 @@ class LrndesignChart extends SimpleColors {
       ]
     };
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      /**
-       * Fired when data source changes.
-       *
-       * @event data-source-changed
-       * @param {string} dataSource data source of the chart
-       *
-       */
-      if (propName === "dataSource")
-        this.dispatchEvent(
-          new CustomEvent("data-source-changed", {
-            detail: this
-          })
-        );
-      /**
-       * Fired when raw data changes.
-       *
-       * @event raw-data-changed
-       * @param {string} rawData raw CSV data for the chart which will be converted into an array
-       *
-       */
-      if (propName === "rawData")
-        this.dispatchEvent(
-          new CustomEvent("raw-data-changed", {
-            detail: this
-          })
-        );
-      if (this.__dataReady) {
-        this.makeChart();
-      }
-    });
-  }
-
-  /**
-   * refreshes the chart
-   */
-  makeChart() {
-    let chart = this.shadowRoot.querySelector("#chartist");
-    if (chart) {
-      chart.options = this._getOptions();
-      /**
-       * Fired when chart options change.
-       *
-       * @event options-changed
-       * @param {object} chart options
-       *
-       */
-      this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
-      chart.makeChart();
-      /**
-       * Fired when chart changes.
-       *
-       * @event chart-changed
-       *
-       */
-      this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
-    }
-  }
-
-  /**
-   * Sets properties for chart.
-   * Specific chart types can extend this function
-   * with type-specific properties.
-   */
-  setProperties() {
-    this.chartTitle = null;
-    this.chartDesc = null;
-    this.scale = "ct-minor-seventh";
-    this.reverseData = false;
-    this.rawData = "";
-  }
-
-  /**
-   * Sets properties specific to bar and line charts.
-   * Bar and line charts can include this function
-   * in their extended setProperties function.
-   */
-  setBarLineProperties() {
-    this.high = undefined;
-    this.low = undefined;
-    this.axisXLabelOffsetX = 0;
-    this.axisXLabelOffsetY = 0;
-    this.axisXOffset = 30;
-    this.axisXPosition = "end";
-    this.axisXShowGrid = true;
-    this.axisXShowLabel = true;
-    this.axisXTopLeft = false;
-    this.axisYLabelOffsetX = 0;
-    this.axisYLabelOffsetY = 0;
-    this.axisYOffset = 30;
-    this.axisYOnlyInteger = false;
-    this.axisYPosition = "start";
-    this.axisYScaleMinSpace = 20;
-    this.axisYShowGrid = true;
-    this.axisYshowLabel = true;
-    this.axisYTopLeft = true;
-    this.showGridBackground = false;
-    this.chartPaddingBottom = 5;
-    this.chartPaddingLeft = 10;
-    this.chartPaddingRight = 15;
-    this.chartPaddingTop = 15;
-  }
-
-  /**
-   * Convert from csv text to an array in the table function
-   * @param {event} e event data
-   */
-  handleResponse(e) {
-    this.rawData = e.detail.response;
-    let raw = this.CSVtoArray(this.rawData);
-    this.data = {
-      labels: raw[0],
-      series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
-    };
-    this.__dataReady = true;
-  }
-
-  /**
-   * override this with type-specific options
-   * @returns {object} options
-   */
-  _getOptions() {
-    return {
-      reverseData: this.reverseData
-    };
-  }
 
   /**
    * override this with type-specific options
    * @returns {object} options specific to both bar and line charts
+   * @readonly
+   * @memberof LrndesignChart
+   * @memberof LrndesignChart
    */
-  _getLineBarOptions() {
+  static get lineBarOptions() {
     return {
       high: this.high,
       low: this.low,
@@ -530,39 +400,145 @@ class LrndesignChart extends SimpleColors {
   }
 
   /**
-   * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
-   * @param {string} text csv data
-   * @returns {array} chart data
+   *
+   * override this with type-specific options
+   * @returns {object} options
+   * @readonly
+   * @memberof LrndesignChart
    */
-  CSVtoArray(text) {
-    let p = "",
-      row = [""],
-      ret = [row],
-      i = 0,
-      r = 0,
-      s = !0,
-      l;
-    for (l in text) {
-      l = text[l];
-      if ('"' === l) {
-        if (s && l === p) row[i] += l;
-        s = !s;
-      } else if ("," === l && s) {
-        if (row[i].trim().match(/^\d+$/m) !== null)
-          row[i] = parseInt(row[i].trim());
-        l = row[++i] = "";
-      } else if ("\n" === l && s) {
-        if ("\r" === p) row[i] = row[i].slice(0, -1);
-        if (row[i].trim().match(/^\d+$/m) !== null)
-          row[i] = parseInt(row[i].trim());
-        row = ret[++r] = [(l = "")];
-        i = 0;
-      } else row[i] += l;
-      p = l;
+  static get options() {
+    return {
+      reverseData: this.reverseData
+    };
+  }
+
+  updated(changedProperties) {
+    if(super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      /**
+       * Fired when data source changes.
+       *
+       * @event data-source-changed
+       * @param {string} dataSource data source of the chart
+       *
+       */
+      if (propName === "dataSource")
+        this.dispatchEvent(
+          new CustomEvent("data-source-changed", {
+            detail: this
+          })
+        );
+      /**
+       * Fired when raw data changes.
+       *
+       * @event raw-data-changed
+       * @param {string} rawData raw CSV data for the chart which will be converted into an array
+       *
+       */
+      if (propName === "rawData")
+        this.dispatchEvent(
+          new CustomEvent("raw-data-changed", {
+            detail: this
+          })
+        );
+      if(propName === "data" && this.data && this.data !== oldValue){
+        this._renderTable();
+        this.dispatchEvent(
+          new CustomEvent("data-changed", {
+            detail: this
+          })
+        );
+      }
+    });
+  }
+  /**
+   * creates an accessible table based on data object
+   * @memberof LrndesignChart
+   */
+  _renderTable(){
+    let table = this.querySelector('table');
+    if(table) table.remove();
+    let html = '';
+    table = document.createElement('table');
+    if(this.data.labels) html += `<thead><tr>${(this.data.labels || []).map(label=>`<th scope="col">${label}</th>`).join('')}</tr></thead>`;
+    if(this.data.series) html += `<tbody>
+        ${this.data.series && Array.isArray(this.data.series[0]) 
+          ? (this.data.series || []).map(row=>`<tr>${(row || []).map(col=>`<td>${col}</td>`).join('')}</tr>`).join('')
+          : `<tr>${(this.data.series || []).map(col=>`<td>${col}</td>`).join('')}</tr>`
+        }
+      </tbody>`;
+    table.innerHTML = html;
+    this.appendChild(table);
+    console.log('data-changed',this.data,this.querySelector('table'));
+  }
+
+  /**
+   * refreshes the chart
+   */
+  makeChart() {
+    let chart = this.shadowRoot.querySelector("#chart");
+    if (chart) {
+      chart.options = this._getOptions();
+      /**
+       * Fired when chart options change.
+       *
+       * @event options-changed
+       * @param {object} chart options
+       *
+       */
+      this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
+      chart.makeChart();
+      /**
+       * Fired when chart changes.
+       *
+       * @event chart-changed
+       *
+       */
+      this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
     }
-    if (row[i].trim().match(/^\d+$/m) !== null)
-      row[i] = parseInt(row[i].trim());
-    return ret;
+  }
+
+  /**
+   * Sets properties for chart.
+   * Specific chart types can extend this function
+   * with type-specific properties.
+   */
+  setProperties() {
+    this.dark = false;
+    this.scale = "ct-minor-seventh";
+    this.reverseData = false;
+    this.rawData = "";
+  }
+
+  /**
+   * Sets properties specific to bar and line charts.
+   * Bar and line charts can include this function
+   * in their extended setProperties function.
+   */
+  setBarLineProperties() {
+    this.high = undefined;
+    this.low = undefined;
+    this.axisXLabelOffsetX = 0;
+    this.axisXLabelOffsetY = 0;
+    this.axisXOffset = 30;
+    this.axisXPosition = "end";
+    this.axisXShowGrid = true;
+    this.axisXShowLabel = true;
+    this.axisXTopLeft = false;
+    this.axisYLabelOffsetX = 0;
+    this.axisYLabelOffsetY = 0;
+    this.axisYOffset = 30;
+    this.axisYOnlyInteger = false;
+    this.axisYPosition = "start";
+    this.axisYScaleMinSpace = 20;
+    this.axisYShowGrid = true;
+    this.axisYshowLabel = true;
+    this.axisYTopLeft = true;
+    this.showGridBackground = false;
+    this.chartPaddingBottom = 5;
+    this.chartPaddingLeft = 10;
+    this.chartPaddingRight = 15;
+    this.chartPaddingTop = 15;
   }
   /**
    * life cycle, element is removed from the DOM

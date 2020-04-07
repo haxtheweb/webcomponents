@@ -6,10 +6,9 @@ import { LrndesignChart } from "../lrndesign-chart.js";
 
 /**
  * `lrndesign-bar`
- * @element lrndesign-bar
  * a bar chart
  *
-
+ * @element lrndesign-bar
  * @extends LrndesignChart
  * @see ../lrndesign-chart.js
  * @demo ./demo/bar.html
@@ -205,6 +204,26 @@ class LrndesignBar extends LrndesignChart {
   }
 
   /**
+   * gets options as an array
+   * @returns {array} options
+   * @readonly
+   * @memberof LrndesignChart
+   */
+  static get options() {
+    let options = super.options(),
+      lineBar = Object.assign(options, this.lineBarOptions());
+    lineBar.axisX.onlyInteger = this.axisXOnlyInteger;
+    lineBar.axisX.scaleMinSpace = this.axisXScaleMinSpace;
+    lineBar.distributeSeries = this.distributeSeries;
+    lineBar.horizontalBars = this.horizontalBars;
+    lineBar.referenceValue = this.referenceValue;
+    lineBar.seriesBarDistance = this.seriesBarDistance;
+    lineBar.stackBars = this.stackBars;
+    lineBar.stackMode = this.stackMode;
+    return lineBar;
+  }
+
+  /**
    * Overrides default properties with bar-specific properties.
    */
   setProperties() {
@@ -219,24 +238,6 @@ class LrndesignBar extends LrndesignChart {
     this.stackBars = false;
     this.stackMode = true;
     this.type = "bar";
-  }
-
-  /**
-   * gets options as an array
-   * @returns {array} options
-   */
-  _getOptions() {
-    let options = super._getOptions(),
-      lineBar = Object.assign(options, this._getLineBarOptions());
-    lineBar.axisX.onlyInteger = this.axisXOnlyInteger;
-    lineBar.axisX.scaleMinSpace = this.axisXScaleMinSpace;
-    lineBar.distributeSeries = this.distributeSeries;
-    lineBar.horizontalBars = this.horizontalBars;
-    lineBar.referenceValue = this.referenceValue;
-    lineBar.seriesBarDistance = this.seriesBarDistance;
-    lineBar.stackBars = this.stackBars;
-    lineBar.stackMode = this.stackMode;
-    return lineBar;
   }
 }
 /**
