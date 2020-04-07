@@ -19,7 +19,7 @@ window.WCAutoload.requestAvailability = () => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-window.WCAutoload.process = (e) => {
+window.WCAutoload.process = e => {
   // find the loader
   var loader = window.WCAutoload.requestAvailability();
   loader.loaded = true;
@@ -46,13 +46,12 @@ window.WCAutoload.process = (e) => {
     // mutation observer will pick up changes after initial load
     // but this gets us at load time with fallback support for legacy
     try {
-      target.querySelectorAll(":not(:defined)").forEach((el) => {
+      target.querySelectorAll(":not(:defined)").forEach(el => {
         loader.processNewElement(el);
       });
-    }
-    catch(e) {
+    } catch (e) {
       // hack to convert children into array
-      target.querySelectorAll('*').forEach((el) => {
+      target.querySelectorAll("*").forEach(el => {
         loader.processNewElement(el);
       });
     }
@@ -66,16 +65,19 @@ window.addEventListener("load", window.WCAutoload.process);
 // and MutationObserver doesn't pick up the tag being there
 // this could be the result of a slow page load for example
 // in these cases; see the event of the item being in the registry
-window.WCAutoload.postLoaded = (e) => {
+window.WCAutoload.postLoaded = e => {
   setTimeout(() => {
     let loader = window.WCAutoload.requestAvailability();
     if (loader.loaded && document.querySelectorAll(e.detail.tag).length > 0) {
       loader.registry.loadDefinition(e.detail.tag);
     }
-  },0);
+  }, 0);
 };
 // listen for new tags being registered
-window.addEventListener("dynamic-import-registry--new-registration", window.WCAutoload.postLoaded);
+window.addEventListener(
+  "dynamic-import-registry--new-registration",
+  window.WCAutoload.postLoaded
+);
 /**
  * `wc-autoload`
  * `automatically load new tags in the dom`
@@ -115,12 +117,11 @@ class WcAutoload extends HTMLElement {
       // support window target
       if (window.WCAutoloadTarget) {
         this.target = window.WCAutoloadTarget;
-      }
-      else {
+      } else {
         this.target = document.body;
       }
       // listen on the body and deep children as well
-      this._mutationObserver.observe(this.target, this.options);      
+      this._mutationObserver.observe(this.target, this.options);
     }, 0);
   }
   disconnectedCallback() {
@@ -131,7 +132,12 @@ class WcAutoload extends HTMLElement {
    */
   processNewElement(node) {
     // skip checks for self
-    if (node.tagName && node.tagName.includes('-') && node.tagName != 'DYNAMIC-IMPORT-REGISTRY' && node.tagName != 'WC-AUTOLOAD') {
+    if (
+      node.tagName &&
+      node.tagName.includes("-") &&
+      node.tagName != "DYNAMIC-IMPORT-REGISTRY" &&
+      node.tagName != "WC-AUTOLOAD"
+    ) {
       this.registry.loadDefinition(node.tagName);
     }
   }
