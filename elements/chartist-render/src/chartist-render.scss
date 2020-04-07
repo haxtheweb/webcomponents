@@ -1,19 +1,31 @@
 @import "../lib/chartist/dist/scss/chartist.scss";
+
+$ct-text-color: #{var(--chartist-text-color, #000)};
+$ct-bg-color: #{var(--chartist-bg-color, transparent)};
+$ct-grid-color: #{var(--chartist-grid-color, #{$ct-grid-color})};
+$ct-text-size: #{var(--chartist-text-size, #{$ct-text-size})};
+$ct-text-line-height: #{var(--chartist-line-height, #{$ct-text-line-height})};
+
 :host {
   display: block;
+  width: 100%;
+  background-color: $ct-bg-color;
+  color: $ct-text-color;
 }
 
-.a11y {
+.sr-only {
   position: absolute;
   left: -999999px;
   height: 0;
   overflow: hidden;
 }
 
-$ct-text-color: var(--chartist-text-color, #{$ct-text-color});
-$ct-grid-color: var(--chartist-grid-color, #{$ct-grid-color});
-$ct-text-size: var(--chartist-text-size, #{$ct-text-size});
-$ct-text-line-height: var(--chartist-line-height, #{$ct-text-line-height});
+::slotted(table){
+  border: 1px solid $ct-text-color;
+  border-collapse: collapse;
+  width: 100%;
+}
+
 
 @mixin ct-chart2($ct-container-ratio: $ct-container-ratio, $ct-text-color: $ct-text-color, $ct-text-size: $ct-text-size, $ct-grid-color: $ct-grid-color, $ct-grid-width: $ct-grid-width, $ct-grid-dasharray: $ct-grid-dasharray, $ct-point-size: $ct-point-size, $ct-point-shape: $ct-point-shape, $ct-line-width: $ct-line-width, $ct-bar-width: $ct-bar-width, $ct-donut-width: $ct-donut-width, $ct-series-names: $ct-series-names, $ct-series-colors: $ct-series-colors) {
 

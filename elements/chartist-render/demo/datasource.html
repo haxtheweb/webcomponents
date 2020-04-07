@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ChartistRender: chartist-render from CSV Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../chartist-render.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>chartist-render from CSV demo</h1>
+      <h2>Pie chart from CSV</h2>
+      <demo-snippet>
+        <style>
+          #pie-chart {
+              width: 300px;
+              height: 300px;
+              display: inline-block;
+          }  
+        </style>
+        <template>
+          <chartist-render id="pie-chart" 
+            type="pie"
+            data-source="./pie.csv"
+            show-table
+            scale="ct-square">
+            <h3 slot="heading">A pie chart of favorite fruits (chart)</h3>
+          </chartist-render>
+        </template>
+      </demo-snippet>
+
+      <h2>Line chart from CSV</h2>
+      <demo-snippet>
+        <template>
+          <chartist-render id="line-chart" 
+            options='{"fullWidth": true, "low": 0}' 
+            scale="ct-quarter"
+            data-source="./line.html"
+            type="line">
+            <h3 slot="heading">Sales by Quarter (chart)</h3>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+          </chartist-render>
+        </template>
+      </demo-snippet>
+      <h2>Bar chart from CSV</h2>
+      <demo-snippet>
+        <template>
+          <chartist-render id="bar-chart" 
+            type="bar" 
+            scale="ct-major-twelfth"
+            data-source="./bar.html"
+            chart-desc="">
+            <h3 slot="heading">Sales by Quarter (chart)</h3>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+          </chartist-render>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

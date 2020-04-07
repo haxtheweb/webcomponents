@@ -421,7 +421,7 @@ class A11yMediaPlayer extends SimpleColors {
         #html5 {
           min-width: 100px;
           display: flex;
-          align-items: center;
+          align-items: stretch;
         }
 
         :host([audio-only]) #playbutton {

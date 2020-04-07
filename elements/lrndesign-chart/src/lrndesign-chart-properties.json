@@ -2,22 +2,24 @@
   /**
    * Location of the CSV file.
    */
-  "dataSource": {
+  "accentColor": {
     "type": "String",
-    "attribute": "data-source"
+    "attribute": "accent-color",
+    "reflect": true
+  },
+  /**
+   * Location of the CSV file.
+   */
+  "dark": {
+    "type": "Boolean",
+    "attribute": "dark",
+    "reflect": true
   },
   /**
    * Fixed height for the chart as a string (i.e. '100px' or '50%').
    */
   "height": {
     "type": "String"
-  },
-  /**
-   * Raw data pulled in from the csv file.
-   */
-  "rawData": {
-    "type": "String",
-    "attribute": "raw-data"
   },
   /**
    * Reverse data including labels, the series order as well as
