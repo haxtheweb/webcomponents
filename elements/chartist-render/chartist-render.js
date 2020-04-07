@@ -6,10 +6,15 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 
 /**
  * `chartist-render`
  * uses chartist library to render a chart
+ * 
+ * @extends SchemaBehaviors
+ * @demo ./demo/index.html 
+ * @element chartist-render
  *
 ### Styling
 
@@ -18,8 +23,8 @@ for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
-`--chartist-label-color` | default label color for charts | #000
-`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`
+`--chartist-bg-color` | default label color for charts | #000
+`--chartist-text-color` | default label color for charts | #000
 `--chartist-color-a` | background color for 1st series |  #d70206
 `--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`
 `--chartist-color-b` | background color for 2nd series |  #f05b4f
@@ -50,9 +55,6 @@ Custom property | Description | Default
 `--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`
 `--chartist-color-0` | background color for 15th series |  #a748ca
 `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
- * @extends SchemaBehaviors
- * @demo ./demo/index.html 
- * @element chartist-render
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {
   //styles function
@@ -868,18 +870,27 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
 
         :host {
           display: block;
+          width: 100%;
+          background-color: var(--chartist-bg-color, transparent);
+          color: var(--chartist-text-color, #000);
         }
 
-        .a11y {
+        .sr-only {
           position: absolute;
           left: -999999px;
           height: 0;
           overflow: hidden;
         }
 
+        ::slotted(table) {
+          border: 1px solid var(--chartist-text-color, #000);
+          border-collapse: collapse;
+          width: 100%;
+        }
+
         .ct-label {
-          fill: var(--chartist-text-color, rgba(0, 0, 0, 0.4));
-          color: var(--chartist-text-color, rgba(0, 0, 0, 0.4));
+          fill: var(--chartist-text-color, #000);
+          color: var(--chartist-text-color, #000);
           font-size: var(--chartist-text-size, 0.75rem);
           line-height: var(--chartist-line-height, 1);
         }
@@ -1090,74 +1101,34 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
   // render function
   render() {
     return html`
+      <div id="${this.__chartId}-title">
+        ${this.chartTitle}
+        <slot name="heading"></slot>
+      </div>
+      <div id="${this.__chartId}-desc">
+        ${this.chartDesc}
+        <slot name="desc"></slot>
+      </div>
       <div
         id="chart"
         chart="${this.__chartId}"
+        role="presentation"
+        aria-labelledby="${this.__chartId}-title"
+        aria-describedby="${this.__chartId}-table ${this.__chartId}-desc"
         class="ct-chart ${this.scale}"
       ></div>
-      ${this.data && this.data.series
-        ? html`
-            <table id="${this.__chartId}-desc" class="a11y">
-              <caption>
-                ${this.chartTitle || this.chartDesc
-                  ? html`
-                      ${this.chartTitle}${this.chartDesc}
-                    `
-                  : html`
-                      A ${this.type} chart.
-                    `}
-              </caption>
-              ${this.data.labels
-                ? html`
-                    <thead>
-                      <tr>
-                        ${this.data.labels.map(
-                          cell => html`
-                            <td>${cell || "-"}</td>
-                          `
-                        )}
-                      </tr>
-                    </thead>
-                  `
-                : html``}
-              <tbody>
-                ${this.type === "pie"
-                  ? html`
-                      <tr>
-                        ${this.data.series.map(
-                          cell => html`
-                            <td>${cell || "-"}</td>
-                          `
-                        )}
-                      </tr>
-                    `
-                  : this.data.series.map(
-                      row => html`
-                        <tr>
-                          ${row.map(
-                            cell => html`
-                              <td>${cell || "-"}</td>
-                            `
-                          )}
-                        </tr>
-                      `
-                    )}
-              </tbody>
-            </table>
-          `
-        : html`${
-            this.chartTitle || this.chartDesc
-              ? html`
-                  <div id="${this.__chartId}-title" class="a11y">
-                    <div>${this.chartTitle}</div>
-                    <div>${this.chartDesc}</div>
-                  </div>
-                `
-              : html`
-                  A ${this.type} chart.
-                `
-          }
-</div>`}
+      <div
+        id="${this.__chartId}-table"
+        class="${this.showTable ? "" : "sr-only"}"
+      >
+        <slot></slot>
+      </div>
+      <iron-ajax
+        auto
+        handle-as="text"
+        url="${this.dataSource}"
+        @response="${this._handleResponse}"
+      ></iron-ajax>
     `;
   }
 
@@ -1203,30 +1174,59 @@ Container class	Ratio
         type: String
       },
       /**
-       * The chart title used for accessibility.
+       * DEPRECATED: Use heading slot instead for progressive enhancement.
        */
       chartTitle: {
         type: String,
         attribute: "chart-title"
       },
       /**
-       * The chart description used for accessibility.
+       * DEPRECATED: Use desc slot instead for progressive enhancement.
        */
       chartDesc: {
         type: String,
         attribute: "chart-desc"
       },
       /**
-       * The chart data.
-       */
+   * DEPRECATED: Use an accessible table in unnamed slot for maxium accessibility and SEO.
+   * As table:
+   * <table>
+   *     <thead><tr><th scope="col">label 1</th>...</tr></thead>
+   *     <tbody><tr><td>1</td>...</tr>...</tbody>
+   * </table>
+
+   * DEPRECATED Method: 
+   * {
+   *   labels: ["label 1", "label 2", "label 3"]
+   *   series: [
+   *     [1,2,3],
+   *     [4,5,6]
+   *   ]
+   * }
+   */
       data: {
         type: Object
+      },
+      /**
+       * Location of the CSV file.
+       */
+      dataSource: {
+        type: String,
+        attribute: "data-source",
+        reflect: true
       },
       /**
        * The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.
        */
       options: {
         type: Object
+      },
+      /**
+       * Raw data pulled in from the csv file.
+       */
+      rawData: {
+        type: String,
+        attribute: "raw-data"
       },
       /**
    * The responsive options.
@@ -1277,10 +1277,6 @@ Container class	Ratio
     this.id = "chart";
     this.type = "bar";
     this.scale = "ct-minor-seventh";
-    this.chartTitle = null;
-    this.chartDesc = null;
-    this.data = null;
-    this.options = null;
     this.responsiveOptions = [];
     this.showTable = false;
     this.__chartId = generateResourceID("chart-");
@@ -1292,6 +1288,12 @@ Container class	Ratio
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("chartistLib", location);
+    this._renderChart();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: true
+    });
     /**
      * Fired once once chart is ready.
      *
@@ -1316,9 +1318,36 @@ Container class	Ratio
   static get tag() {
     return "chartist-render";
   }
+  /**
+   * mutation observer for table
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this._renderChart();
+    return new MutationObserver(callback);
+  }
 
   updated(changedProperties) {
-    this._renderChart();
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "data") {
+        if (this.data !== oldValue) this._renderTable();
+      } else if (propName === "dataSource") {
+        if (this.data !== oldValue) this._renderTable();
+      } else {
+        this._renderChart();
+      }
+    });
+  }
+
+  /**
+   * Makes chart and returns the chart object.
+   * @memberof ChartistRender
+   */
+  makeChart() {
+    setTimeout(() => {
+      this.chart = this._renderChart();
+    }, 100);
   }
 
   // simple path from a url modifier
@@ -1343,12 +1372,91 @@ Container class	Ratio
   }
 
   /**
-   * Makes chart and returns the chart object.
+   * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+   * @param {string} text csv data
+   * @returns {array} chart data
    */
-  makeChart() {
-    setTimeout(() => {
-      this.chart = this._renderChart();
-    }, 100);
+  _CSVtoArray(text) {
+    let p = "",
+      row = [""],
+      ret = [row],
+      i = 0,
+      r = 0,
+      s = !0,
+      l;
+    for (l in text) {
+      l = text[l];
+      if ('"' === l) {
+        if (s && l === p) row[i] += l;
+        s = !s;
+      } else if ("," === l && s) {
+        if (row[i].trim().match(/^\d+$/m) !== null)
+          row[i] = parseInt(row[i].trim());
+        l = row[++i] = "";
+      } else if ("\n" === l && s) {
+        if ("\r" === p) row[i] = row[i].slice(0, -1);
+        if (row[i].trim().match(/^\d+$/m) !== null)
+          row[i] = parseInt(row[i].trim());
+        row = ret[++r] = [(l = "")];
+        i = 0;
+      } else row[i] += l;
+      p = l;
+    }
+    if (row[i].trim().match(/^\d+$/m) !== null)
+      row[i] = parseInt(row[i].trim());
+    return ret;
+  }
+
+  /**
+   * Convert from csv text to an array in the table function
+   * @param {event} e event data
+   * @memberof ChartistRender
+   */
+  _handleResponse(e) {
+    this.rawData = e.detail.response;
+    let raw = this._CSVtoArray(this.rawData);
+    this.__dataReady = true;
+    this.data = {
+      labels: raw[0],
+      series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
+    };
+    console.log("raw-data-changed", this.rawData, raw, this.data);
+  }
+  /**
+   * replaces existing slotted table with a new one based on data
+   * @memberof ChartistRender
+   */
+  _renderTable() {
+    let html = "",
+      table = this.querySelector("table");
+    if (this.data) {
+      if (table) table.remove();
+      table = document.createElement("table");
+      if (this.data.labels)
+        html += `<thead><tr>${(this.data.labels || [])
+          .map(label => `<th scope="col">${label}</th>`)
+          .join("")}</tr></thead>`;
+      if (this.data.series)
+        html += `<tbody>
+          ${
+            this.data.series && Array.isArray(this.data.series[0])
+              ? (this.data.series || [])
+                  .map(
+                    row =>
+                      `<tr>${(row || [])
+                        .map(col => `<td>${col}</td>`)
+                        .join("")}</tr>`
+                  )
+                  .join("")
+              : `<tr>${(this.data.series || [])
+                  .map(col => `<td>${col}</td>`)
+                  .join("")}</tr>`
+          }
+        </tbody>`;
+      table.innerHTML = html;
+      this.appendChild(table);
+    }
+    console.log("_renderTable", this.data, this.querySelector("table"));
   }
 
   /**
@@ -1356,8 +1464,34 @@ Container class	Ratio
    */
   _renderChart() {
     let chart = null,
-      target = this.shadowRoot.querySelector("#chart");
-    if (target !== null && typeof Chartist === "object" && this.data !== null) {
+      target = this.shadowRoot.querySelector("#chart"),
+      table = this.querySelector("table")
+        ? this.querySelector("table").cloneNode(true)
+        : false,
+      data = !table
+        ? false
+        : {
+            labels: (
+              [...table.querySelectorAll("thead th[scope=col]")] || []
+            ).map(label => (label.innerHTML || "").trim()),
+            series: ([...table.querySelectorAll("tbody tr")] || []).map(row =>
+              ([...row.querySelectorAll("td")] || []).map(td => {
+                let cell = (td.innerHTML || "").trim();
+                return cell && cell !== null && cell !== ""
+                  ? parseFloat(cell)
+                  : "null";
+              })
+            )
+          };
+    console.log(
+      "_renderChart",
+      this,
+      table,
+      this.querySelector("table"),
+      data,
+      target
+    );
+    if (target !== null && typeof Chartist === "object" && data) {
       if (this.type == "bar") {
         if (
           this.responsiveOptions !== undefined &&
@@ -1380,21 +1514,24 @@ Container class	Ratio
         }
         chart = Chartist.Bar(
           target,
-          this.data,
+          data,
           this.options,
           this.responsiveOptions
         );
       } else if (this.type === "line") {
         chart = Chartist.Line(
           target,
-          this.data,
+          data,
           this.options,
           this.responsiveOptions
         );
       } else if (this.type === "pie") {
         chart = Chartist.Pie(
           target,
-          this.data,
+          {
+            labels: data.labels || [],
+            series: data.series ? data.series[0] : []
+          },
           this.options,
           this.responsiveOptions
         );
@@ -1432,18 +1569,6 @@ Container class	Ratio
       });
     }
     return chart;
-  }
-
-  /**
-   * Add accessibility features.
-   * @param {object} svg chart SVG
-   */
-  addA11yFeatures(svg) {
-    if (this.data && this.data.series) {
-      svg.setAttribute("aria-labelledby", `${this.__chartId}-desc`);
-    } else {
-      svg.setAttribute("aria-labelledby", `${this.__chartId}-title`);
-    }
   }
 
   /**

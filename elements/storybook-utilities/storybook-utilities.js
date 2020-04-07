@@ -1,6 +1,20 @@
 import { html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { withKnobs, withWebComponentsKnobs, text, boolean, select } from '@open-wc/demoing-storybook';
+import {
+  withKnobs,
+  text,
+  button,
+  number,
+  select,
+  date,
+  object,
+  color,
+  array,
+  boolean,
+  radios,
+  files,
+  optionsKnob
+} from "@open-wc/demoing-storybook";
 
 /**
  * Copyright 2018 The Pennsylvania State University
@@ -11,7 +25,7 @@ import { withKnobs, withWebComponentsKnobs, text, boolean, select } from '@open-
  * Object to help load things in globally scoped and fire events when ready
  */
 export class StorybookUtilities {
-  get lorem(){
+  get lorem() {
     let LoremIpsum = require("lorem-ipsum");
     return new LoremIpsum.loremIpsum({
       sentencesPerParagraph: {
@@ -24,15 +38,15 @@ export class StorybookUtilities {
       }
     });
   }
-  
+
   /**
    * convert camelcase to kebab (for converting properties in attributes)
    * @param {string} camel
    * @returns {string} kebab
    * @memberof StorybookUtilities
    */
-  camelToKebab(camel){
-    return camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+  camelToKebab(camel) {
+    return camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
   }
 
   /**
@@ -40,15 +54,16 @@ export class StorybookUtilities {
    * @returns {array}
    * @memberof StorybookUtilities
    */
-  getColors(){
+  getColors() {
     let simple = window.SimpleColorsSharedStyles.requestAvailability();
-    return simple && simple.colors ? Object.keys(simple.colors): false;
+    return simple && simple.colors ? Object.keys(simple.colors) : false;
   }
-    
+
   /**
    * gets array of hax properties or properties from an element
-   * @param {object} element
-   * @returns {array} 
+   * @param {object} props element's properties
+   * @param {object} haxProps element's haxProperties
+   * @returns {array}
    * [
    *   {
    *     title: "User-friendly title",
@@ -61,58 +76,142 @@ export class StorybookUtilities {
    * ]
    * @memberof StorybookUtilities
    */
-  getElementProperties(props,haxProps){
+  getElementProperties(props, haxProps) {
     let quick = haxProps && haxProps.settings ? haxProps.settings.quick : [],
-      configure = haxProps && haxProps.settings ? haxProps.settings.configure : [],
-      advanced = haxProps && haxProps.settings ? haxProps.settings.advanced : [], 
-      hax = quick.concat(configure,advanced);
-    return hax.length > 0 ? hax : Object.keys(props || {}).map(property=>{
-      let type = props[property].type;
-      return {
-        property: property,
-        inputMethod: type ? type.name.toLowerCase() : 'textfield'
-      }
-    });
+      configure =
+        haxProps && haxProps.settings ? haxProps.settings.configure : [],
+      advanced =
+        haxProps && haxProps.settings ? haxProps.settings.advanced : [],
+      hax = quick.concat(configure, advanced);
+    console.log(haxProps, quick, configure, advanced);
+    return hax.length > 0
+      ? hax
+      : Object.keys(props || {}).map(property => {
+          let type = props[property].type;
+          return {
+            property: property,
+            inputMethod: type ? type.name.toLowerCase() : "textfield"
+          };
+        });
   }
-    
+
   /**
-   * default value or random color from Simple Colors
-   * @param {string} defaultValue
+   * random color from Simple Colors
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getColor(defaultValue){
-    let colors = this.getColors() || [],
-      index = Math.floor(Math.random() * Math.floor(colors.length)),
-      color = colors.length > 0 ? colors[index] : undefined; 
-    return defaultValue || color;
-  };
+  getRandomColor() {
+    return this.getRandomOption(this.getColors());
+  }
 
-  
   /**
-   * default value or randomly true or false
-   * @param {string} defaultValue
+   * random color as hex code
+   * @returns {string}
+   * @memberof StorybookUtilities
+   */
+  getRandomHex() {
+    return `#${[0, 0, 0]
+      .map(i => this.getRandomNumber(i, 255).toString(16))
+      .map(i => (i.length < 2 ? `0${i}` : `${i}`))
+      .join("")}`;
+  }
+
+  /**
+   * random image url
+   * @returns {string}
+   * @memberof StorybookUtilities
+   */
+  getRandomImage() {
+    return this.getRandomOption([
+      "//picsum.photos/1200/900",
+      "//picsum.photos/900/900",
+      "//picsum.photos/1200/800",
+      "//picsum.photos/800/1600",
+      "//picsum.photos/400/1200"
+    ]);
+  }
+
+  /**
+   * random option from and array of options
+   * @param {array} options
+   * @returns {*}
+   * @memberof StorybookUtilities
+   */
+  getRandomOption(options = []) {
+    return options.length > 0
+      ? options[Math.floor(Math.random() * Math.floor(options.length))]
+      : undefined;
+  }
+
+  /**
+   * drandomly true or false
    * @returns {boolean}
    * @memberof StorybookUtilities
    */
-  getBoolean = (defaultValue) => defaultValue || (Math.random() >= 0.5);
-    
+  getRandomBool() {
+    return Math.random() >= 0.5;
+  }
+
   /**
-   * default value or random string of 1-5 words
-   * @param {string} defaultValue
+   * random number within a range
+   * @param {number} min lowest value
+   * @param {number} max highest value
+   * @param {number} step
+   * @returns {number}
+   * @memberof StorybookUtilities
+   */
+  getRandomNumber(min = 0, max = 100 + min, step = 1) {
+    return (
+      min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step
+    );
+  }
+
+  /**
+   * random short string of text
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getTextField = (defaultValue) => defaultValue || 'Testing 123';// this.lorem.generateWords(Math.floor(Math.random() * Math.floor(5))+1);
-    
+  getRandomText() {
+    return this.getRandomOption([
+      "I regret nothing",
+      "I see your value now.",
+      "Never listen to Pierce.",
+      "Cool cool cool.",
+      "Movie reference",
+      "Pop Pop!",
+      "Six seasons and a movie!",
+      "Umm.. Bitter much?",
+      "Consider yourself Chang'd!",
+      "Put it in a letter, Jane Austen!",
+      "That was a game. This is paintball.",
+      "This is definitely the darkest timeline.",
+      "I need help reacting to something.",
+      "Frankly, my dear, I don't give a dean!",
+      'I give this year a "D", for delightful!'
+    ]);
+  }
+
   /**
-   * default value or random string of 1-5 sentences
-   * @param {string} defaultValue
+   * random short string of text
    * @returns {string}
    * @memberof StorybookUtilities
    */
-  getTextArea = (defaultValue) => defaultValue || 'Testing 123. This is a test.';//this.lorem.generateSentences(Math.floor(Math.random() * Math.floor(5))+1);
-    
+  getRandomTextarea() {
+    return this.getRandomOption([
+      "Sometimes I think I lost something really important to me, and then it turns out I already ate it.",
+      "Your last blow-off class taught me to live in the moment which I will always regret and never do again.",
+      "Do you understand what a conspiracy is? When you conspire with everyone you come across, you're not really conspiring with anyone. You're just doing random crap.",
+      "I painted a tunnel on the side of the library. When it dries, I'm going for it.",
+      "We'll definitely be back next year. If not, it'll be because an asteroid has destroyed all human civilization. And that's canon.",
+      "Sometimes the hardest prisons to break out of, are the ones without locks.",
+      "When you really know who you are and what you like about yourself, changing for other people isn't such a big deal.",
+      "Look at me. It's clear to you that I am awesome, but I can never admit that, because that would make me an ass.",
+      "Let's do what people do. Let's get a house we can't afford and a dog that makes us angry.",
+      "I discovered at a very early age that if I talked long enough, I could make anything right or wrong. So either I'm god, or thruth is relative. Either way: Booyah.",
+      "The funny thing about being smart, is that you can get through most of life without ever having to do any work."
+    ]);
+  }
+
   /**
    * gets knobs object from properties array
    * @param {array} properties
@@ -126,95 +225,173 @@ export class StorybookUtilities {
    *     defaultValue: "optional default value to override random value generator",
    *   }
    * ]
+   * @param {object} defaults optional collection initial values for knobs, as { propertyName: defaultValue }
+   * @param {array} exclusions optional list pf props that should not be knobs
    * @returns {object}
    * {
    *  properties: {
-   *    { 
+   *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"properties")
+   *      "knob": knobType(label,[options],defaultValue,"properties")
    *    }
    *  },
    *  slots: {
-   *    { 
+   *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"slots")
+   *      "knob": knobType(label,[options],defaultValue,"slots")
    *    }
    *  }
    * }
+   * @see https://github.com/storybookjs/storybook/tree/master/addons/knobs
    * @memberof StorybookUtilities
    */
-  getKnobs(properties){
-    let knobs = {props:{},slots:{}};
-    (properties||[]).forEach(field=>{
-      let title = field.title,
-        name = field.property || field.slot,
-        attribute = this.camelToKebab(name),
-        label = title && name ? `${title} (${name})` : (title || name),
-        group = field.property ? 'props' : field.slot ? 'slots' : 'vars',
-        method = field.inputMethod, 
-        options = field.options,
-        defaultValue = field.defaultValue,
-        colors = this.getColors(),
-        type;
-      if(method === "select" && options){
-        type = select(label,options,undefined,group);
-      } else if(method === "colorpicker" && colors){
-        let options = {};
-        colors.forEach(color=>options[color]=color);
-        type = select(label,options,this.getColor(defaultValue),group);
-      } else if(method === "boolean"){
-        type = boolean(label,this.getBoolean(defaultValue),group);
-      } else if(method === "haxupload"){
-        type = text(label,'',group);
-      } else if(method === "object"){
-        type = undefined;
-      } else if(method === "array"){
-        type = undefined;
-      } else if(method === "textarea"){
-        type = text(label,this.getTextArea(defaultValue),group);
-      } else {
-        type = text(label,this.getTextField(defaultValue),group);
+  getKnobs(properties, defaults = {}, exclusions = []) {
+    let knobs = { props: {}, slots: {} };
+    (properties || []).forEach(field => {
+      field.name = field.property || field.slot;
+      if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
+        let knob = this.getKnob(field, defaults[field.name]);
+        console.debug(
+          "getKnob:",
+          knob,
+          "\nfield",
+          field,
+          "\nfield name",
+          field.name,
+          "\nfdefaults",
+          defaults,
+          "\ndefault value",
+          defaults[field.name]
+        );
+        knobs[knob.group][field.name] = knob;
       }
-      knobs[group][name] = {"attribute": attribute,"type": type, "method": method};
     });
     return knobs;
+  }
+  /**
+   *
+   * @param {object} field
+   * {
+   *   title: "User-friendly title",
+   *   property: "propertyName",
+   *   slot: "slotName",
+   *   inputMethod: "HAXschema-compatible inputMethod",
+   *   options: {"value": "select field options object"},
+   *   defaultValue: "optional default value to override random value generator",
+   * }
+   * @param {*} defaultValue optional initial value for field
+   * @returns object
+   * @memberof StorybookUtilities
+   */
+  getKnob(field, defaultValue) {
+    let title = field.title,
+      name = field.name,
+      attribute = this.camelToKebab(name),
+      label = title && name ? `${title} (${name})` : title || name,
+      group = field.property ? "props" : field.slot ? "slots" : "vars",
+      method = field.inputMethod,
+      options = field.options,
+      val = defaultValue,
+      colors = this.getColors(),
+      knob;
+    console.log("defaultValue", label, defaultValue);
+    if (options && options.length > 0) {
+      if (method === "select") {
+        knob = select(label, options, val, group);
+      } else if (method === "radio" && options) {
+        knob = radio(label, options, val, group);
+      } else if (method === "options" && options) {
+        knob = option(label, options, val, { display: "multi-select" }, group);
+      }
+    } else if (method === "colorpicker" && colors) {
+      let options = {};
+      colors.forEach(color => (options[color] = color));
+      knob = select(label, options, val, group);
+    } else if (method === "boolean") {
+      knob = boolean(label, val, group);
+    } else if (method === "haxupload") {
+      console.log("method to knob", method, label, val);
+      knob = files(
+        label,
+        ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt,.csv",
+        val,
+        group
+      );
+    } else if (method === "datepicker") {
+      knob = date(label, val, group);
+    } else if (method === "number") {
+      knob = number(label, val, {}, group);
+    } else if (method === "range") {
+      //todo
+      knob = number(
+        label,
+        val,
+        { range: true, min: 60, max: 90, step: 1 },
+        group
+      );
+    } else if (method === "color") {
+      knob = color(label, val, group);
+    } else if (method === "object" || method === "array") {
+      knob = object(label, val, group);
+    } else if (method === "array") {
+      knob = array(label, val, ",", group);
+    } else if (method === "textarea") {
+      knob = text(label, val || "", group);
+    } else {
+      knob = text(label, val || "", group);
+    }
+    return {
+      attribute: attribute,
+      knob: knob,
+      method: method,
+      group: group
+    };
   }
 
   /**
    * makes an element based on knobs object
    * @param {string} tag element's tag
-   * @param {object} knobs 
+   * @param {object} knobs
    * {
    *  properties: {
-   *    { 
+   *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"properties")
+   *      "knob": knobType(label,[options],defaultValue,"properties")
    *    }
    *  },
    *  slots: {
-   *    { 
+   *    {
    *      "attribute": "attributeName"
-   *      "type": knobType(label,[options],defaultValue,"slots")
+   *      "knob": knobType(label,[options],defaultValue,"slots")
    *    }
    *  }
    * }
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElement(tag,knobs){
+  makeElement(tag, knobs) {
     let el = document.createElement(tag);
-    Object.keys(knobs.props || {}).forEach(prop=>{
-      let knob = knobs.props[prop],attr = knob.attribute, val = knob.type;
-      if(knob.method !=="object" && knob.method !=="array") el[prop] = val;
+    Object.keys(knobs.props || {}).forEach(prop => {
+      let knob = knobs.props[prop],
+        val = knob.knob;
+      if (knob.method !== "object" && knob.method !== "array") el[prop] = val;
     });
-    Object.keys(knobs.slots||{}).map(slot=>{
-      let div = document.createElement('div');
+    Object.keys(knobs.slots || {}).map(slot => {
+      let div = document.createElement("div");
       div.slot = knobs.slots[slot].attribute;
-      div.innerHTML = knobs.slots[slot].type;
+      div.innerHTML = knobs.slots[slot].knob;
       el.appendChild(div);
     });
+    console.debug(
+      "makeElement:",
+      el,
+      "\nproperties",
+      knobs.props,
+      "\nslots",
+      knobs.slots
+    );
     return el;
-  };
+  }
 
   /**
    * makes an element based on its class
@@ -222,22 +399,23 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElementFromClass(el){
-    let tag = el.tag, 
-      props = this.getElementProperties(el.properties,el.haxProperties),
-      knobs = this.getKnobs(props);
-    return this.makeElement(tag,knobs);
-  }
-
-  /**
-   * gets slots template
-   *
-   * @param {object} slots
-   * @returns {object} html template
-   * @memberof StorybookUtilities
-   */
-  getSlots(slots){
-    return html`${Object.keys(slots||{}).map(slot=>html`<div slot=${slots[slot].attribute}>${slots[slot].type}</div>`)}`;
+  makeElementFromClass(el, defaults = {}, exclusions = []) {
+    let tag = el.tag,
+      props = this.getElementProperties(el.properties, el.haxProperties),
+      knobs = this.getKnobs(props, defaults, exclusions);
+    console.debug(
+      "makeElementFromClass:",
+      tag,
+      "\nprops",
+      props,
+      "\nknobs",
+      knobs,
+      "\ndefaults",
+      defaults,
+      "\nexclusions",
+      exclusions
+    );
+    return this.makeElement(tag, knobs);
   }
 
   /**

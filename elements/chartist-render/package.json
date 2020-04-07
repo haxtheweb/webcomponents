@@ -42,6 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "chartist": "^0.11.0",
+    "@polymer/iron-ajax": "^3.0.0",
     "lit-element": "2.2.1"
   },
   "devDependencies": {

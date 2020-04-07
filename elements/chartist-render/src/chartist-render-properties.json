@@ -36,30 +36,59 @@ Container class	Ratio
     "type": "String"
   },
   /**
-   * The chart title used for accessibility.
+   * DEPRECATED: Use heading slot instead for progressive enhancement.
    */
   "chartTitle": {
     "type": "String",
     "attribute": "chart-title"
   },
   /**
-   * The chart description used for accessibility.
+   * DEPRECATED: Use desc slot instead for progressive enhancement.
    */
   "chartDesc": {
     "type": "String",
     "attribute": "chart-desc"
   },
   /**
-   * The chart data.
+   * DEPRECATED: Use an accessible table in unnamed slot for maxium accessibility and SEO.
+   * As table:
+   * <table>
+   *     <thead><tr><th scope="col">label 1</th>...</tr></thead>
+   *     <tbody><tr><td>1</td>...</tr>...</tbody>
+   * </table>
+
+   * DEPRECATED Method: 
+   * {
+   *   labels: ["label 1", "label 2", "label 3"]
+   *   series: [
+   *     [1,2,3],
+   *     [4,5,6]
+   *   ]
+   * }
    */
   "data": {
     "type": "Object"
+  },
+  /**
+   * Location of the CSV file.
+   */
+  "dataSource": {
+    "type": "String",
+    "attribute": "data-source",
+    "reflect": true
   },
   /**
    * The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.
    */
   "options": {
     "type": "Object"
+  },
+  /**
+   * Raw data pulled in from the csv file.
+   */
+  "rawData": {
+    "type": "String",
+    "attribute": "raw-data"
   },
   /**
    * The responsive options.

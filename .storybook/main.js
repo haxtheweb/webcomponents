@@ -1,9 +1,4 @@
-/*module.exports = {
-  stories: ['../stories/** /*.stories.{js,mdx}'],
-  esDevServer: {
-    // custom es-dev-server options
-  },
-};*/
+const path = require("path");
 module.exports = {
   // Globs of all the stories in your project
   stories: ["../elements/*/**.stories.{js,mdx}"],
