@@ -294,6 +294,7 @@ export class StorybookUtilities {
       val = defaultValue,
       colors = this.getColors(),
       knob;
+      console.log('defaultValue',label,defaultValue);
     if (options && options.length > 0) {
       if (method === "select") {
         knob = select(label, options, val, group);
@@ -309,6 +310,7 @@ export class StorybookUtilities {
     } else if (method === "boolean") {
       knob = boolean(label, val, group);
     } else if (method === "haxupload") {
+      console.log('method to knob',method,label,val);
       knob = files(
         label,
         ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt,.csv",
