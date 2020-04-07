@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "Automated conversion of team-member/",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/mdi-iconset-svg": "^2.6.3",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.3",
+    "@lrnwebcomponents/mdi-iconset-svg": "^2.6.4",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.4",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.1",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

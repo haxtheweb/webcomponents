@@ -127,7 +127,6 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           heading: `${item.title || `Image ${i}`} (Full-Sized)`
         };
       });
-    console.log("items", itemData);
     return itemData;
   }
 
@@ -142,10 +141,8 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       this.selected = this.items[query] || start;
     } else {
       let matches = this.items.filter(item => item.id === query);
-      console.log("matches", query, matches);
       this.selected = matches.length > 0 ? matches[0] : start;
     }
-    console.log("goToItem", query, this.selected);
   }
 
   /**
@@ -160,7 +157,6 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           ? window.location.hash.replace("#", "")
           : false,
       data = hash ? hash.split("---") : [];
-    console.log("anchor", data, hash);
     return {
       id: data.length > 1 ? data[1] : -1,
       gallery: data.length > 0 ? data[0] : -1,

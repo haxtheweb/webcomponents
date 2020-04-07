@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element";
+import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
@@ -374,11 +374,7 @@ class LrndesignTimeline extends SimpleColors {
     };
   }
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  tag() {
+  static get tag() {
     return "lrndesign-timeline";
   }
 
@@ -387,7 +383,6 @@ class LrndesignTimeline extends SimpleColors {
     super();
     this.events = [];
     this.timelineSize = "xs";
-    super.connectedCallback();
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -414,12 +409,6 @@ class LrndesignTimeline extends SimpleColors {
       if (propName === "timelineTitle" && this.title && !this.timelineTitle)
         this.timelineTitle = this.title;
     });
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
   }
   /**
    * events container element
@@ -464,5 +453,5 @@ class LrndesignTimeline extends SimpleColors {
     }
   }
 }
-customElements.define("lrndesign-timeline", LrndesignTimeline);
+customElements.define(LrndesignTimeline.tag, LrndesignTimeline);
 export { LrndesignTimeline };

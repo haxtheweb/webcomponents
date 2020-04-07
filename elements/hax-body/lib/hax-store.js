@@ -498,7 +498,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               } else {
                 // this is the less optimized / legacy polymer element or an element
                 // that did not provide an export
-                haxAutoloader.appendChild(document.createElement(i));
+                try {
+                  let el = document.createElement(i);
+                  haxAutoloader.appendChild(el);
+                } catch (e) {
+                  console.warn(e);
+                }
               }
             }
           })

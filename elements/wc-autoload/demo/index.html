@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>WcAutoload: wc-autoload Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module" src="../wc-autoload.js"></script>
+    <script defer="defer" async="async">
+      window.WCAutoloadBasePath = "/node_modules/";
+      window.WCAutoloadRegistry = {
+        "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+        "h-a-x": "@lrnwebcomponents/h-a-x/h-a-x.js",
+        "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
+        "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+        "paper-button": "@polymer/paper-button/paper-button.js",
+        "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+        "haxcms-site-builder": "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js"
+      };
+    </script>
+  </head>
+  <body>
+    <p>stuff that maybe has a full new web componetn button in it<a href="https://google.com/" target="_blank"><paper-button raised>Stuff</paper-button></a></p>
+    <div>Cool</div>
+    <grid-plate layout="1-1-1-1-1" responsive-size="xl" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" style="width: 100%;" hide-ops column-widths="[&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;,&quot;20%&quot;]">
+        <p slot="col-3" style="width: 100%;">We'll cover user experience and generating ways of improving the platform by creating issues about any confusion you've run into when using the platform. <i>Open critique is the best way to improve! </i>
+        This is also practicing a technique called User Story Elicitation / Generation, common in the testing and development of any product.</p>
+    </grid-plate>
+    <a11y-gif-player src="https://media0.giphy.com/media/YEongvRqe8sXC/giphy.gif" class="hax-moving" tooltip="Toggle animation" no-image></a11y-gif-player>
+  </body>
+</html>
