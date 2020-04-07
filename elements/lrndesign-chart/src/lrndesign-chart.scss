@@ -3,24 +3,24 @@
   super.styles
 */
 $themes: 
-  ("red", "pink","deep-orange","purple","orange"),
-  ("pink", "purple", "red", "purple","deep-orange"),
-  ("purple", "deep-purple", "pink", "indigo", "red"),
-  ("deep-purple", "indigo", "purple", "blue", "pink"),
-  ("indigo", "blue", "deep-purple", "light-blue", "purple"),
-  ("blue", "light-blue", "indigo", "cyan", "deep-purple"),
-  ("light-blue","cyan","blue","teal","indigo"),
-  ("cyan","teal","light-blue","green","blue"),
-  ("teal","green","cyan","light-green","light-blue"),
-  ("green","light-green","teal","lime","cyan"),
-  ("light-green","lime","green","amber","teal"),
-  ("lime","yellow","light-green","orange","green"),
-  ("yellow","amber","lime","deep-orange","light-green"),
-  ("amber","orange","yellow","red","lime"),
-  ("orange","deep-orange","amber","pink","yellow"),
-  ("deep-orange","red","orange","purple","amber"),
-  ("brown","red","deep-orange"),
-  ("blue-grey","light-blue","grey");
+("red", "pink","deep-orange","purple","orange"),
+("pink", "purple", "red", "purple","deep-orange"),
+("purple", "deep-purple", "pink", "indigo", "red"),
+("deep-purple", "indigo", "purple", "blue", "pink"),
+("indigo", "blue", "deep-purple", "light-blue", "purple"),
+("blue", "light-blue", "indigo", "cyan", "deep-purple"),
+("light-blue","cyan","blue","teal","indigo"),
+("cyan","teal","light-blue","green","blue"),
+("teal","green","cyan","light-green","light-blue"),
+("green","light-green","teal","lime","cyan"),
+("light-green","lime","green","amber","teal"),
+("lime","yellow","light-green","orange","green"),
+("yellow","amber","lime","deep-orange","light-green"),
+("amber","orange","yellow","red","lime"),
+("orange","deep-orange","amber","pink","yellow"),
+("deep-orange","red","orange","purple","amber"),
+("brown","red","deep-orange"),
+("blue-grey","light-blue","grey");
 
 @mixin get-theme($row,$theme){
   @for $i from 1 through 15 {
@@ -44,6 +44,7 @@ $themes:
     --chartist-color-#{$i}: #{var(--simple-colors-default-theme-#{$color}-#{$level})};
   }
 }
+
 :host {
   background-color: #{var(--simple-colors-default-theme-grey-1)};
   color: #{var(--simple-colors-default-theme-grey-12)};
@@ -57,12 +58,14 @@ $themes:
     @include get-theme($row,$theme);
   }
 }
+
 #chart {
   font-family: sans-serif;
   --chartist-grid-color: #{var(--simple-colors-default-theme-grey-6)};
   --chartist-bg-color: #{var(--simple-colors-default-theme-grey-1)};
   --chartist-text-color: #{var(--simple-colors-default-theme-grey-12)};
 }
+
 :host([label-position="inside"]) .ct-label {
   --chartist-text-color: #{var(--simple-colors-default-theme-grey-12)};
 }

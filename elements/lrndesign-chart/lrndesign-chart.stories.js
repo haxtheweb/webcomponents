@@ -18,7 +18,9 @@ export default {
 const utils = new StorybookUtilities();
 
 export const LrndesignPieStory = () => {
-  return utils.makeElementFromClass(LrndesignPie,{dataSource: "./lrndesign-chart/demo/pie.csv"});
+  return utils.makeElementFromClass(LrndesignPie, {
+    dataSource: "./lrndesign-chart/demo/pie.csv"
+  });
 };
 
 export const LrndesignBarStory = () => {

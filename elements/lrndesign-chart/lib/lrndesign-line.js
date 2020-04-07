@@ -7,7 +7,7 @@ import { LrndesignChart } from "../lrndesign-chart.js";
 /**
  * `lrndesign-line`
  * a line chart
- * 
+ *
  * @element lrndesign-line
  * @extends LrndesignChart
  * @see ../lrndesign-chart.js

@@ -1024,15 +1024,15 @@ Container class	Ratio
   }
 
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "data") {
-        if(this.data !== oldValue) this._renderTable();
-      } else if (propName === "dataSource") {
-        if(this.data !== oldValue) this._renderTable();
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "data") {
+        if (this.data !== oldValue) this._renderTable();
+      } else if (propName === "dataSource") {
+        if (this.data !== oldValue) this._renderTable();
       } else {
         this._renderChart();
       }
-    });
+    });
   }
 
   /**
@@ -1115,28 +1115,43 @@ Container class	Ratio
       labels: raw[0],
       series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
     };
-    console.log("raw-data-changed",this.rawData,raw,this.data);
+    console.log("raw-data-changed", this.rawData, raw, this.data);
   }
   /**
    * replaces existing slotted table with a new one based on data
    * @memberof ChartistRender
    */
-  _renderTable(){
-    let html = '', table = this.querySelector('table');
-    if(this.data){
-      if(table) table.remove();
-      table = document.createElement('table');
-      if(this.data.labels) html += `<thead><tr>${(this.data.labels || []).map(label=>`<th scope="col">${label}</th>`).join('')}</tr></thead>`;
-      if(this.data.series) html += `<tbody>
-          ${this.data.series && Array.isArray(this.data.series[0]) 
-            ? (this.data.series || []).map(row=>`<tr>${(row || []).map(col=>`<td>${col}</td>`).join('')}</tr>`).join('')
-            : `<tr>${(this.data.series || []).map(col=>`<td>${col}</td>`).join('')}</tr>`
+  _renderTable() {
+    let html = "",
+      table = this.querySelector("table");
+    if (this.data) {
+      if (table) table.remove();
+      table = document.createElement("table");
+      if (this.data.labels)
+        html += `<thead><tr>${(this.data.labels || [])
+          .map(label => `<th scope="col">${label}</th>`)
+          .join("")}</tr></thead>`;
+      if (this.data.series)
+        html += `<tbody>
+          ${
+            this.data.series && Array.isArray(this.data.series[0])
+              ? (this.data.series || [])
+                  .map(
+                    row =>
+                      `<tr>${(row || [])
+                        .map(col => `<td>${col}</td>`)
+                        .join("")}</tr>`
+                  )
+                  .join("")
+              : `<tr>${(this.data.series || [])
+                  .map(col => `<td>${col}</td>`)
+                  .join("")}</tr>`
           }
         </tbody>`;
       table.innerHTML = html;
       this.appendChild(table);
     }
-    console.log('_renderTable',this.data,this.querySelector('table'));
+    console.log("_renderTable", this.data, this.querySelector("table"));
   }
 
   /**
@@ -1145,15 +1160,32 @@ Container class	Ratio
   _renderChart() {
     let chart = null,
       target = this.shadowRoot.querySelector("#chart"),
-      table = this.querySelector('table') ? this.querySelector('table').cloneNode(true) : false, 
-      data = !table ? false : {
-        "labels": ([...table.querySelectorAll('thead th[scope=col]')] || []).map(label=>(label.innerHTML || '').trim()),
-        "series": ([...table.querySelectorAll('tbody tr')] || []).map(row=>([...row.querySelectorAll('td')] || []).map(td=>{
-          let cell = (td.innerHTML || '').trim();
-          return cell && cell !== null && cell !== '' ? parseFloat(cell) : 'null';
-        }))
-      };
-    console.log('_renderChart',this,table,this.querySelector('table'),data,target);
+      table = this.querySelector("table")
+        ? this.querySelector("table").cloneNode(true)
+        : false,
+      data = !table
+        ? false
+        : {
+            labels: (
+              [...table.querySelectorAll("thead th[scope=col]")] || []
+            ).map(label => (label.innerHTML || "").trim()),
+            series: ([...table.querySelectorAll("tbody tr")] || []).map(row =>
+              ([...row.querySelectorAll("td")] || []).map(td => {
+                let cell = (td.innerHTML || "").trim();
+                return cell && cell !== null && cell !== ""
+                  ? parseFloat(cell)
+                  : "null";
+              })
+            )
+          };
+    console.log(
+      "_renderChart",
+      this,
+      table,
+      this.querySelector("table"),
+      data,
+      target
+    );
     if (target !== null && typeof Chartist === "object" && data) {
       if (this.type == "bar") {
         if (
@@ -1192,8 +1224,8 @@ Container class	Ratio
         chart = Chartist.Pie(
           target,
           {
-            "labels": data.labels || [],
-            "series": data.series ? data.series[0] : []
+            labels: data.labels || [],
+            series: data.series ? data.series[0] : []
           },
           this.options,
           this.responsiveOptions

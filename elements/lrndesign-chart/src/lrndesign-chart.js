@@ -413,7 +413,7 @@ class LrndesignChart extends ChartistRender {
   }
 
   updated(changedProperties) {
-    if(super.updated) super.updated(changedProperties);
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       /**
        * Fired when data source changes.
@@ -441,7 +441,7 @@ class LrndesignChart extends ChartistRender {
             detail: this
           })
         );
-      if(propName === "data" && this.data && this.data !== oldValue){
+      if (propName === "data" && this.data && this.data !== oldValue) {
         this._renderTable();
         this.dispatchEvent(
           new CustomEvent("data-changed", {
@@ -455,21 +455,35 @@ class LrndesignChart extends ChartistRender {
    * creates an accessible table based on data object
    * @memberof LrndesignChart
    */
-  _renderTable(){
-    let table = this.querySelector('table');
-    if(table) table.remove();
-    let html = '';
-    table = document.createElement('table');
-    if(this.data.labels) html += `<thead><tr>${(this.data.labels || []).map(label=>`<th scope="col">${label}</th>`).join('')}</tr></thead>`;
-    if(this.data.series) html += `<tbody>
-        ${this.data.series && Array.isArray(this.data.series[0]) 
-          ? (this.data.series || []).map(row=>`<tr>${(row || []).map(col=>`<td>${col}</td>`).join('')}</tr>`).join('')
-          : `<tr>${(this.data.series || []).map(col=>`<td>${col}</td>`).join('')}</tr>`
+  _renderTable() {
+    let table = this.querySelector("table");
+    if (table) table.remove();
+    let html = "";
+    table = document.createElement("table");
+    if (this.data.labels)
+      html += `<thead><tr>${(this.data.labels || [])
+        .map(label => `<th scope="col">${label}</th>`)
+        .join("")}</tr></thead>`;
+    if (this.data.series)
+      html += `<tbody>
+        ${
+          this.data.series && Array.isArray(this.data.series[0])
+            ? (this.data.series || [])
+                .map(
+                  row =>
+                    `<tr>${(row || [])
+                      .map(col => `<td>${col}</td>`)
+                      .join("")}</tr>`
+                )
+                .join("")
+            : `<tr>${(this.data.series || [])
+                .map(col => `<td>${col}</td>`)
+                .join("")}</tr>`
         }
       </tbody>`;
     table.innerHTML = html;
     this.appendChild(table);
-    console.log('data-changed',this.data,this.querySelector('table'));
+    console.log("data-changed", this.data, this.querySelector("table"));
   }
 
   /**
