@@ -21,36 +21,42 @@ window.WCAutoload.requestAvailability = () => {
  */
 window.WCAutoload.process = (e) => {
   // find the loader
-  let loader = window.WCAutoload.requestAvailability();
+  var loader = window.WCAutoload.requestAvailability();
   loader.loaded = true;
-  // set the basePath if it exists
-  if (window.WCAutoloadBasePath) {
-    loader.registry.basePath = window.WCAutoloadBasePath;
-  }
-  // build out the registry via events translated from object
-  if (window.WCAutoloadRegistry) {
-    for (var i in window.WCAutoloadRegistry) {
-      loader.registry.register({
-        tag: i,
-        path: window.WCAutoloadRegistry[i]
+  // microtask timing to ensure window settings are accepted
+  setTimeout(() => {
+    // set the basePath if it exists
+    if (window.WCAutoloadBasePath) {
+      loader.registry.basePath = window.WCAutoloadBasePath;
+    }
+    // build out the registry via events translated from object
+    if (window.WCAutoloadRegistry) {
+      for (var i in window.WCAutoloadRegistry) {
+        loader.registry.register({
+          tag: i,
+          path: window.WCAutoloadRegistry[i]
+        });
+      }
+    }
+    var target = document;
+    if (loader.target) {
+      target = loader.target;
+      loader.processNewElement(target);
+    }
+    // mutation observer will pick up changes after initial load
+    // but this gets us at load time with fallback support for legacy
+    try {
+      target.querySelectorAll(":not(:defined)").forEach((el) => {
+        loader.processNewElement(el);
       });
     }
-  }
-  // mutation observer will pick up changes after initial load
-  // but this gets us at load time with fallback support for legacy
-  try {
-    document.querySelectorAll(":not(:defined)").forEach((el, index) => {
-      // process every tag NOT defined when the page loads
-      loader.processNewElement(el);
-    });
-  }
-  catch(e) {
-    // hack to convert children into array
-    [].slice.call(document.body.children).forEach((el, index) => {
-      // process every tag NOT defined when the page loads
-      loader.processNewElement(el);
-    });
-  }
+    catch(e) {
+      // hack to convert children into array
+      target.querySelectorAll('*').forEach((el) => {
+        loader.processNewElement(el);
+      });
+    }
+  }, 0);
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
 // function based allows for fallbacks due to timing on legacy browsers
@@ -87,23 +93,35 @@ class WcAutoload extends HTMLElement {
     super();
     this.loaded = false;
     this.registry = window.DynamicImportRegistry.requestAvailability();
+    this.options = {
+      childList: true,
+      subtree: true
+    };
   }
   connectedCallback() {
     // listen for changes and then process any new node that has a tag name
     this._mutationObserver = new MutationObserver(mutations => {
       mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
-          if (node.tagName) {
-            this.processNewElement(node);
-          }
+          this.processNewElement(node);
         });
       });
     });
-    // listen on the body and deep children as well
-    this._mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
+    // support window target
+    if (window.WCAutoloadOptions) {
+      this.options = window.WCAutoloadOptions;
+    }
+    setTimeout(() => {
+      // support window target
+      if (window.WCAutoloadTarget) {
+        this.target = window.WCAutoloadTarget;
+      }
+      else {
+        this.target = document.body;
+      }
+      // listen on the body and deep children as well
+      this._mutationObserver.observe(this.target, this.options);      
+    }, 0);
   }
   disconnectedCallback() {
     this._mutationObserver.disconnect();
@@ -112,7 +130,10 @@ class WcAutoload extends HTMLElement {
    * Process new elements
    */
   processNewElement(node) {
-    this.registry.loadDefinition(node.tagName);
+    // skip checks for self
+    if (node.tagName && node.tagName.includes('-') && node.tagName != 'DYNAMIC-IMPORT-REGISTRY' && node.tagName != 'WC-AUTOLOAD') {
+      this.registry.loadDefinition(node.tagName);
+    }
   }
 }
 window.customElements.define(WcAutoload.tag, WcAutoload);
