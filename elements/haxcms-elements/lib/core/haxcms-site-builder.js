@@ -429,6 +429,31 @@ class HAXCMSSiteBuilder extends LitElement {
             );
           }
         }, 5);
+        // if there are, dynamically import them but only if we don't have a global manager
+        if (!window.WCAutoload && varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
+          let tagsFound = findTagsInHTML(html);
+          const basePath = this.pathFromUrl(
+            decodeURIComponent(import.meta.url)
+          );
+          for (var i in tagsFound) {
+            const tagName = tagsFound[i];
+            if (
+              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
+              !window.customElements.get(tagName)
+            ) {
+              import(`${basePath}../../../../../${
+                this.manifest.metadata.node.dynamicElementLoader[tagName]
+              }`)
+                .then(response => {
+                  //console.log(tagName + ' dynamic import');
+                })
+                .catch(error => {
+                  /* Error handling */
+                  console.log(error);
+                });
+            }
+          }
+        }
       }
     }
   }
@@ -586,9 +611,27 @@ class HAXCMSSiteBuilder extends LitElement {
       if (typeof this.__imported[theme.element] !== typeof undefined) {
         this.themeLoaded = true;
       } else {
-        // import the reference to the item dynamically, if we can
-        this.__imported[theme.element] = theme.element;
-        this.themeLoaded = true;
+        // global will handle this
+        if (window.WCAutoload) {
+          this.__imported[theme.element] = theme.element;	
+          this.themeLoaded = true;	
+        }
+        else {
+          // import the reference to the item dynamically, if we can
+          try {
+          import(this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+          "../../../../" +	
+              newValue.path).then(e => {	
+              // add it into ourselves so it unpacks and we kick this off!	
+              this.__imported[theme.element] = theme.element;	
+              this.themeLoaded = true;	
+            });	
+          } catch (err) {	
+            // error in the event this is a double registration	
+            // also strange to be able to reach this but technically possible	
+            this.themeLoaded = true;	
+          }
+        }
       }
     }
   }
