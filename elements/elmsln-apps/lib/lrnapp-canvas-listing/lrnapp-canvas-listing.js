@@ -6,6 +6,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
+import "../elmsln-base-deps.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
 import "@polymer/iron-ajax/iron-ajax.js";

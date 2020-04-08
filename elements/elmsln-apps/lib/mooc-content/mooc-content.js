@@ -13,6 +13,8 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "../elmsln-base-deps.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `lrnapp-book`
@@ -319,6 +321,9 @@ class MoocContent extends PolymerElement {
         // fire drupal behaviors.. this is evil. Polymer is invoking Drupal behaviors..
         if (window.Drupal) {
           window.Drupal.attachBehaviors(document, window.Drupal.settings);
+        }
+        if (window.WCAutoload) {
+          window.WCAutoload.process();
         }
         // first time this fires let's get the outline block in the background
         if (

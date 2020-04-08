@@ -3,6 +3,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
+import "../elmsln-base-deps.js";
 import "@polymer/iron-selector/iron-selector.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";

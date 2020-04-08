@@ -5,6 +5,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
+import "../elmsln-base-deps.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/iron-ajax/iron-ajax.js";

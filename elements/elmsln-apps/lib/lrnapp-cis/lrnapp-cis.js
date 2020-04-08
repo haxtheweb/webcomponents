@@ -8,6 +8,7 @@ import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+import "../elmsln-base-deps.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";

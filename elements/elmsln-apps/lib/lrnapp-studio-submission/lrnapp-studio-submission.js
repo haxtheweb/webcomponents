@@ -6,6 +6,7 @@ import "@polymer/app-route/app-route.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "./lrnapp-studio-submission-page.js";
+import "../elmsln-base-deps.js";
 import "./lrnapp-studio-submission-button.js";
 class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   static get template() {
