@@ -29,15 +29,18 @@ window.WCAutoload.process = e => {
     if (window.WCAutoloadBasePath) {
       loader.registry.basePath = window.WCAutoloadBasePath;
     }
-    if (window.WCAutoloadRegistryFile && !window.WCAutoloadRegistryFileProcessed) {
+    if (
+      window.WCAutoloadRegistryFile &&
+      !window.WCAutoloadRegistryFileProcessed
+    ) {
       await fetch(window.WCAutoloadRegistryFile)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data){
-        window.WCAutoloadRegistryFileProcessed = true;
-        window.WCAutoloadRegistry = data;
-      });
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          window.WCAutoloadRegistryFileProcessed = true;
+          window.WCAutoloadRegistry = data;
+        });
     }
     // build out the registry via events translated from object
     if (window.WCAutoloadRegistry) {

@@ -74,13 +74,16 @@ class DynamicImportRegistry extends HTMLElement {
     // must be lowercase
     tag = tag.toLowerCase();
     // only import if we already had it
-    if (!window.customElements.get(name) && this.list[tag] && !this.__loaded[tag]) {
+    if (
+      !window.customElements.get(name) &&
+      this.list[tag] &&
+      !this.__loaded[tag]
+    ) {
       // let's assume it's there cause we got here
       // this can help things on polyfill environments
-      this.__loaded[tag]=true;
+      this.__loaded[tag] = true;
       try {
-        import(`${this.basePath}${this.list[tag]}`)
-        .then(module => {
+        import(`${this.basePath}${this.list[tag]}`).then(module => {
           // dispatch custom event in case anyone cares
           this.dispatchEvent(
             new CustomEvent("dynamic-import-registry-loaded", {
@@ -92,8 +95,7 @@ class DynamicImportRegistry extends HTMLElement {
             })
           );
         });
-      }
-      catch(e) {
+      } catch (e) {
         console.warn(e);
         // fire on error too
         this.dispatchEvent(
