@@ -2,7 +2,9 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignChart } from "../lrndesign-chart.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `lrndesign-line`
@@ -10,11 +12,12 @@ import { LrndesignChart } from "../lrndesign-chart.js";
  *
  * @element lrndesign-line
  * @extends LrndesignChart
+ * @extends SimpleColors
  * @see ../lrndesign-chart.js
- * @demo ./demo/line.html
+ * @demo ./demo/line.html Line Charts
  *
  */
-class LrndesignLine extends LrndesignChart {
+class LrndesignLine extends LrndesignChart(SimpleColors) {
   constructor() {
     super();
     this.setProperties();

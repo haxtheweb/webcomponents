@@ -4,17 +4,19 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignChart } from "../lrndesign-chart.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrndesign-pie`
  * a pie chart
  *
  * @element lrndesign-pie
  * @extends LrndesignChart
+ * @extends SimpleColors
  * @see ../lrndesign-chart.js
- * @demo ./demo/pie.html
+ * @demo ./demo/pie.html Pie Charts
  *
  */
-class LrndesignPie extends LrndesignChart {
+class LrndesignPie extends LrndesignChart(SimpleColors) {
   constructor() {
     super();
     this.setProperties();

@@ -11,19 +11,18 @@
       import '../chartist-render.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
+      chartist-render[type=pie] {
+          width: 300px;
+      }  
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>Basic chartist-render demo</h1>
+      <p>Basic charts using progressive enhancement. See <a href="./csv.html">chartist-render from CSV demo</a> to load data from a CSV.absolute</p>
       <h2>Basic pie chart</h2>
       <demo-snippet>
         <style>
-          #pie-chart {
-              width: 300px;
-              height: 300px;
-              display: inline-block;
-          }  
         </style>
         <template>
           <chartist-render id="pie-chart" 
@@ -50,13 +49,6 @@
       </demo-snippet>
       <h2>Basic donut chart</h2>
       <demo-snippet>
-        <style>
-          #donut-chart {
-              width: 300px;
-              height: 300px;
-              display: inline-block;
-          }  
-        </style>
         <template>
           <chartist-render id="donut-chart" 
             type="pie"
@@ -117,6 +109,16 @@
       <h2>Bar chart with dynamically added options and data</h2>
       <demo-snippet>
         <template>
+          <style>
+            table { 
+              border-radius: 2px; 
+            }
+            th, td {
+              border: 1px solid var(--chartist-text-color, #000);
+              text-align: right;
+              padding: 2px 5px;
+            }
+          </style>
           <chartist-render id="bar-chart" 
             type="bar" 
             scale="ct-major-twelfth"

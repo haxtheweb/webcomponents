@@ -9,6 +9,8 @@ $ct-text-line-height: #{var(--chartist-line-height, #{$ct-text-line-height})};
 :host {
   display: block;
   width: 100%;
+  padding: #{--chartist-padding, var(0px)};
+  margin: #{--chartist-margin, var(15px 0)};
   background-color: $ct-bg-color;
   color: $ct-text-color;
 }
