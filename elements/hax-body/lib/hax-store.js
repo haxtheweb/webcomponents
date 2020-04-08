@@ -905,17 +905,24 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * allow uniform method of adding voice commands
    */
   addVoiceCommand(command, context, callback) {
-    command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
-    this.voiceCommands[command] = context[callback].bind(context);
-    if (this.__voiceInit) {
-      this.__hal.commands = { ...this.voiceCommands };
+    if (context) {
+      command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
+      this.voiceCommands[command] = context[callback].bind(context);
+      if (this.__voiceInit) {
+        this.__hal.commands = { ...this.voiceCommands };
+      }
     }
   }
   /**
    * event driven version
    */
   _addVoiceCommand(e) {
-    this.addVoiceCommand(e.detail.command, e.detail.context, e.detail.callback);
+    // without context it's almost worthless so try to fallback on where it came from
+    let target = e.detail.context;
+    if (!target) {
+      target = e.target;
+    }
+    this.addVoiceCommand(e.detail.command, target, e.detail.callback);
   }
   /**
    * Position cursor at the start of the position of the requested node

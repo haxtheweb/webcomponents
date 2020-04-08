@@ -24,10 +24,20 @@ window.WCAutoload.process = e => {
   var loader = window.WCAutoload.requestAvailability();
   loader.loaded = true;
   // microtask timing to ensure window settings are accepted
-  setTimeout(() => {
+  setTimeout(async () => {
     // set the basePath if it exists
     if (window.WCAutoloadBasePath) {
       loader.registry.basePath = window.WCAutoloadBasePath;
+    }
+    if (window.WCAutoloadRegistryFile && !window.WCAutoloadRegistryFileProcessed) {
+      await fetch(window.WCAutoloadRegistryFile)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data){
+        window.WCAutoloadRegistryFileProcessed = true;
+        window.WCAutoloadRegistry = data;
+      });
     }
     // build out the registry via events translated from object
     if (window.WCAutoloadRegistry) {

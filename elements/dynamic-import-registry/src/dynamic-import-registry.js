@@ -30,6 +30,7 @@ class DynamicImportRegistry extends HTMLElement {
     super();
     // object for tracking what the registry is
     this.list = {};
+    this.__loaded = {};
     this.basePath =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
   }
@@ -73,8 +74,12 @@ class DynamicImportRegistry extends HTMLElement {
     // must be lowercase
     tag = tag.toLowerCase();
     // only import if we already had it
-    if (!window.customElements.get(name) && this.list[tag]) {
-      import(`${this.basePath}${this.list[tag]}`)
+    if (!window.customElements.get(name) && this.list[tag] && !this.__loaded[tag]) {
+      // let's assume it's there cause we got here
+      // this can help things on polyfill environments
+      this.__loaded[tag]=true;
+      try {
+        import(`${this.basePath}${this.list[tag]}`)
         .then(module => {
           // dispatch custom event in case anyone cares
           this.dispatchEvent(
@@ -86,20 +91,21 @@ class DynamicImportRegistry extends HTMLElement {
               }
             })
           );
-        })
-        .catch(e => {
-          console.error(e);
-          // fire on error too
-          this.dispatchEvent(
-            new CustomEvent("dynamic-import-registry-failure", {
-              detail: {
-                tag: name,
-                path: this.list[tag],
-                module: null
-              }
-            })
-          );
         });
+      }
+      catch(e) {
+        console.warn(e);
+        // fire on error too
+        this.dispatchEvent(
+          new CustomEvent("dynamic-import-registry-failure", {
+            detail: {
+              tag: name,
+              path: this.list[tag],
+              module: null
+            }
+          })
+        );
+      }
     }
   }
   // simple path from a url modifier
