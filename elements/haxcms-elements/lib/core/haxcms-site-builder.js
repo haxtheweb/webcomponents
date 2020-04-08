@@ -430,7 +430,10 @@ class HAXCMSSiteBuilder extends LitElement {
           }
         }, 5);
         // if there are, dynamically import them but only if we don't have a global manager
-        if (!window.WCAutoload && varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
+        if (
+          !window.WCAutoload &&
+          varExists(this.manifest, "metadata.node.dynamicElementLoader")
+        ) {
           let tagsFound = findTagsInHTML(html);
           const basePath = this.pathFromUrl(
             decodeURIComponent(import.meta.url)
@@ -613,23 +616,22 @@ class HAXCMSSiteBuilder extends LitElement {
       } else {
         // global will handle this
         if (window.WCAutoload) {
-          this.__imported[theme.element] = theme.element;	
-          this.themeLoaded = true;	
-        }
-        else {
+          this.__imported[theme.element] = theme.element;
+          this.themeLoaded = true;
+        } else {
           // import the reference to the item dynamically, if we can
           try {
-          import(this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-          "../../../../" +	
-              newValue.path).then(e => {	
-              // add it into ourselves so it unpacks and we kick this off!	
-              this.__imported[theme.element] = theme.element;	
-              this.themeLoaded = true;	
-            });	
-          } catch (err) {	
-            // error in the event this is a double registration	
-            // also strange to be able to reach this but technically possible	
-            this.themeLoaded = true;	
+            import(this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+              "../../../../" +
+              newValue.path).then(e => {
+              // add it into ourselves so it unpacks and we kick this off!
+              this.__imported[theme.element] = theme.element;
+              this.themeLoaded = true;
+            });
+          } catch (err) {
+            // error in the event this is a double registration
+            // also strange to be able to reach this but technically possible
+            this.themeLoaded = true;
           }
         }
       }
