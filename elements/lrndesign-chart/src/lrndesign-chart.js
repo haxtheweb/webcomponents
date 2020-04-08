@@ -8,14 +8,14 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrndesign-chart`
  * common properties and behaviors for lrndesign chart types
- * 
+ *
  * @extends ChartistRenderSuper
  * @see @lrnwebcomponents/chartist-render/chartist-render.js
  * @see @lrnwebcomponents/simple-colors/simple-colors.js
  */
 const LrndesignChart = function(SuperClass) {
   return class extends ChartistRenderSuper(SuperClass) {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+    /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
     constructor() {
       super();
@@ -79,6 +79,35 @@ const LrndesignChart = function(SuperClass) {
           type: Boolean
         },
         /**
+         * Optional title of x-axis
+         */
+        axisXTitle: {
+          attribute: "axis-x-title",
+          type: String
+        },
+        /**
+         * Optional x-offset for x-axis title
+         */
+        axisXTitleOffsetX: {
+          attribute: "axis-x-title-offset",
+          type: Number
+        },
+        /**
+         * Optional y-offset for x-axis title
+         */
+        axisXTitleOffsetY: {
+          attribute: "axis-x-title-offset",
+          type: Number
+        },
+        /**
+         * Optional title of x-axis. Possible values are 'start', 'end' and 'middle'.
+         */
+        axisXTitleAnchor: {
+          attribute: "axis-x-title-anchor",
+          type: String
+        },
+        /**
+        /**
          * Offset X of labels for Y-axis
          */
         axisYLabelOffsetX: {
@@ -133,7 +162,7 @@ const LrndesignChart = function(SuperClass) {
         /**
          * Show axis Y labels?
          */
-        axisYshowLabel: {
+        axisYShowLabel: {
           attribute: "axis-y-show-label",
           type: Boolean
         },
@@ -142,6 +171,45 @@ const LrndesignChart = function(SuperClass) {
          */
         axisYTopLeft: {
           attribute: "axis-y-top-left",
+          type: Boolean
+        },
+        /**
+         * Optional title of y-axis
+         */
+        axisYTitle: {
+          attribute: "axis-y-title",
+          type: String
+        },
+        /**
+         * Optional x-offset for y-axis title.
+         * Please note, x and y offset values for axisY are flipped due to the rotation of the axisY title by 90 degrees.
+         * Therefore changing y moves left/right.
+         */
+        axisYTitleOffsetX: {
+          attribute: "axis-y-title-offset",
+          type: Number
+        },
+        /**
+         * Optional y-offset for y-axis title.
+         * Please note, x and y offset values for axisY are flipped due to the rotation of the axisY title by 90 degrees.
+         * Therefore changing the x value moves up/down the chart.
+         */
+        axisYTitleOffsetY: {
+          attribute: "axis-y-title-offset",
+          type: Number
+        },
+        /**
+         * Optional title of y-axis. Possible values are 'start', 'end' and 'middle'.
+         */
+        axisYTitleAnchor: {
+          attribute: "axis-y-title-anchor",
+          type: String
+        },
+        /**
+         * Optional title of y-axis
+         */
+        axisYTitleFlip: {
+          attribute: "axis-y-title-flip",
           type: Boolean
         },
 
@@ -280,14 +348,43 @@ const LrndesignChart = function(SuperClass) {
           {
             property: "axisXLabelOffsetX",
             title: "X-Axis Label (horizontal offset)",
-            description: "Horizontal position of the X-Axis's label.",
+            description: "Horizontal position of the X-Axis's labels.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitleOffsetY",
+            title: "X-Axis Label (vertical offset)",
+            description: "Vertical position of the X-Axis's labels.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitle",
+            title: "X-Axis Title",
+            description: "Optional title for X-axis.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "axisXTitleOffsetX",
+            title: "X-Axis Title (horizontal offset)",
+            description: "Horizontal position of the X-Axis's title.",
             inputMethod: "number"
           },
           {
             property: "axisXLabelOffsetY",
-            title: "X-Axis Label (vertical offset)",
-            description: "Vertical position of the X-Axis's label.",
+            title: "X-Axis Title (vertical offset)",
+            description: "Vertical position of the X-Axis's title.",
             inputMethod: "number"
+          },
+          {
+            property: "axisXTitleAnchor",
+            title: "X-Axis Title Anchoe",
+            description: "Optional anchor for X-axis's title.",
+            inputMethod: "select",
+            options: {
+              middle: "middle",
+              end: "end",
+              start: "start"
+            }
           }
         ],
         yAxis: [
@@ -341,6 +438,41 @@ const LrndesignChart = function(SuperClass) {
             description:
               "Use only integer values (whole numbers) for the scale steps.",
             inputMethod: "boolean"
+          },
+          {
+            property: "axisYTitle",
+            title: "Y-Axis Title",
+            description: "Optional title for Y-axis.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "axisYTitleOffsetX",
+            title: "Y-Axis Title (vertical offset)",
+            description: "Horizontal position of the Y-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYLabelOffsetY",
+            title: "Y-Axis Title (horizontal offset)",
+            description: "Horizontal position of the Y-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYTitleAnchor",
+            title: "Y-Axis Title Anchoe",
+            description: "Optional anchor for Y-axis's title.",
+            inputMethod: "select",
+            options: {
+              middle: "middle",
+              end: "end",
+              start: "start"
+            }
+          },
+          {
+            property: "axisYTitleFlip",
+            title: "Y-Axis Title Flip",
+            description: "Flip the title for Y-axis?",
+            inputMethod: "boolean"
           }
         ]
       };
@@ -353,7 +485,7 @@ const LrndesignChart = function(SuperClass) {
      * @memberof LrndesignChart
      * @memberof LrndesignChart
      */
-    static get lineBarOptions() {
+    get lineBarOptions() {
       return {
         high: this.high,
         low: this.low,
@@ -381,10 +513,10 @@ const LrndesignChart = function(SuperClass) {
         },
         showGridBackground: this.showGridBackground,
         chartPadding: {
-          bottom: this.chartPaddingBottom,
-          left: this.chartPaddingLeft,
-          right: this.chartPaddingRight,
-          top: this.chartPaddingTop
+          bottom: this.chartPaddingBottom + (this.axisXTitle ? 40 : 0),
+          left: this.chartPaddingLeft + (this.axisYTitle ? 30 : 0),
+          right: this.chartPaddingRight + (this.axisYTitle ? 15 : 0),
+          top: this.chartPaddingTop  + (this.axisXTitle ? 20 : 0)
         }
       };
     }
@@ -396,51 +528,21 @@ const LrndesignChart = function(SuperClass) {
      * @readonly
      * @memberof LrndesignChart
      */
-    static get options() {
+    get options() {
       return {
         reverseData: this.reverseData
       };
     }
 
     updated(changedProperties) {
-      if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        /**
-         * Fired when data source changes.
-         *
-         * @event data-source-changed
-         * @param {string} dataSource data source of the chart
-         *
-         */
-        if (propName === "dataSource")
-          this.dispatchEvent(
-            new CustomEvent("data-source-changed", {
-              detail: this
-            })
-          );
-        /**
-         * Fired when raw data changes.
-         *
-         * @event raw-data-changed
-         * @param {string} rawData raw CSV data for the chart which will be converted into an array
-         *
-         */
-        if (propName === "rawData")
-          this.dispatchEvent(
-            new CustomEvent("raw-data-changed", {
-              detail: this
-            })
-          );
-        if (propName === "data" && this.data && this.data !== oldValue) {
-          this._renderTable();
-          this.dispatchEvent(
-            new CustomEvent("data-changed", {
-              detail: this
-            })
-          );
+        if((propName.indexOf('axisXTitle') > -1 || propName.indexOf('axisYTitle') > -1) && this[propName] !== oldValue){
+          this.pluginAxisTitle = this.axisTitles;
         }
       });
+      if (super.updated) super.updated(changedProperties);
     }
+
     /**
      * creates an accessible table based on data object
      * @memberof LrndesignChart
@@ -473,7 +575,6 @@ const LrndesignChart = function(SuperClass) {
         </tbody>`;
       table.innerHTML = html;
       this.appendChild(table);
-      console.log("data-changed", this.data, this.querySelector("table"));
     }
 
     /**
@@ -490,7 +591,9 @@ const LrndesignChart = function(SuperClass) {
          * @param {object} chart options
          *
          */
-        this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
+        this.dispatchEvent(
+          new CustomEvent("options-changed", { detail: this })
+        );
         chart.makeChart();
         /**
          * Fired when chart changes.
@@ -500,6 +603,26 @@ const LrndesignChart = function(SuperClass) {
          */
         this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
       }
+    }
+    /**
+     * gets axis title options
+     * @readonly
+     */
+    get axisTitles() {
+      let axisTitles = {};
+      if(this.axisXTitle) axisTitles.axisX = {
+        axisTitle: this.axisXTitle,
+        offset: { x: this.axisXTitleOffsetX, y: this.axisXTitleOffsetY },
+        textAnchor: ["start","end","middle"].includes(this.axisXTitleAnchor) ? this.axisXTitleAnchor : "middle"
+      };
+      if(this.axisYTitle) axisTitles.axisY = {
+        axisTitle: this.axisYTitle,
+        offset: { x: this.axisYTitleOffsetX, y: this.axisYTitleOffsetY },
+        textAnchor: ["start","end","middle"].includes(this.axisYTitleAnchor) ? this.axisYTitleAnchor : "middle"
+      };
+      return this.axisXTitle || this.axisYTitle
+        ? axisTitles
+        : undefined;
     }
 
     /**
@@ -529,6 +652,13 @@ const LrndesignChart = function(SuperClass) {
       this.axisXShowGrid = true;
       this.axisXShowLabel = true;
       this.axisXTopLeft = false;
+      this.axisXTitleOffsetX  = 0; 
+      this.axisXTitleOffsetY  = 50;
+      this.axisXTitleAnchor = 'middle'; 
+      this.axisYTitleOffsetX  = 0; 
+      this.axisYTitleOffsetY  = -25; 
+      this.axisYTitleAnchor = 'middle'; 
+      this.axisYTitleFlip = false;
       this.axisYLabelOffsetX = 0;
       this.axisYLabelOffsetY = 0;
       this.axisYOffset = 30;
@@ -536,11 +666,11 @@ const LrndesignChart = function(SuperClass) {
       this.axisYPosition = "start";
       this.axisYScaleMinSpace = 20;
       this.axisYShowGrid = true;
-      this.axisYshowLabel = true;
+      this.axisYShowLabel = true;
       this.axisYTopLeft = true;
       this.showGridBackground = false;
-      this.chartPaddingBottom = 5;
-      this.chartPaddingLeft = 10;
+      this.chartPaddingBottom = 15;
+      this.chartPaddingLeft = 15;
       this.chartPaddingRight = 15;
       this.chartPaddingTop = 15;
     }
@@ -548,6 +678,6 @@ const LrndesignChart = function(SuperClass) {
      * life cycle, element is removed from the DOM
      */
     //disconnectedCallback() {}
-  }
-}
+  };
+};
 export { LrndesignChart };

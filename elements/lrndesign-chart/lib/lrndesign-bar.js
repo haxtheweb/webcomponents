@@ -14,7 +14,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @extends LrndesignChart
  * @extends SimpleColors
  * @see ../lrndesign-chart.js
- * @demo ./demo/bar.html Bar Charts
+ * @demo ./demo/bar.html
  *
  */
 class LrndesignBar extends LrndesignChart(SimpleColors) {
@@ -212,18 +212,21 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
    * @readonly
    * @memberof LrndesignChart
    */
-  static get options() {
-    let options = super.options(),
-      lineBar = Object.assign(options, this.lineBarOptions());
-    lineBar.axisX.onlyInteger = this.axisXOnlyInteger;
-    lineBar.axisX.scaleMinSpace = this.axisXScaleMinSpace;
-    lineBar.distributeSeries = this.distributeSeries;
-    lineBar.horizontalBars = this.horizontalBars;
-    lineBar.referenceValue = this.referenceValue;
-    lineBar.seriesBarDistance = this.seriesBarDistance;
-    lineBar.stackBars = this.stackBars;
-    lineBar.stackMode = this.stackMode;
-    return lineBar;
+  get options() {
+    return { 
+      ...super.options, 
+      ...this.lineBarOptions,
+      axisX: {
+        onlyInteger: this.axisXOnlyInteger,
+        scaleMinSpace: this.axisXScaleMinSpace
+      },
+      distributeSeries: this.distributeSeries,
+      horizontalBars: this.horizontalBars,
+      referenceValue: this.referenceValue,
+      seriesBarDistance: this.seriesBarDistance,
+      stackBars: this.stackBars,
+      stackMode: this.stackMode
+    };
   }
 
   /**

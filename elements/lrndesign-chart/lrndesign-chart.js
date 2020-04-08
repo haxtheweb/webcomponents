@@ -8,14 +8,14 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrndesign-chart`
  * common properties and behaviors for lrndesign chart types
- * 
+ *
  * @extends ChartistRenderSuper
  * @see @lrnwebcomponents/chartist-render/chartist-render.js
  * @see @lrnwebcomponents/simple-colors/simple-colors.js
  */
 const LrndesignChart = function(SuperClass) {
   return class extends ChartistRenderSuper(SuperClass) {
-  
+    
 //styles function
 static get styles() {
 return  [
@@ -332,7 +332,8 @@ css`
   --chartist-color-14: var(--simple-colors-default-theme-red-12);
   --chartist-color-15: var(--simple-colors-default-theme-deep-orange-13); }
 
-#chart {
+#chart,
+::slotted(table) {
   font-family: sans-serif;
   --chartist-grid-color: var(--simple-colors-default-theme-grey-6);
   --chartist-bg-color: var(--simple-colors-default-theme-grey-1);
@@ -340,6 +341,10 @@ css`
 
 :host([label-position="inside"]) .ct-label {
   --chartist-text-color: var(--simple-colors-default-theme-grey-1); }
+
+:host([dark]) ::slotted(table) {
+  --chartist-text-color: var(--simple-colors-default-theme-grey-12);
+  --chartist-grid-color: var(--simple-colors-default-theme-grey-6); }
 `
 ];
 }
@@ -580,6 +585,35 @@ ${super.render()}`;
           type: Boolean
         },
         /**
+         * Optional title of x-axis
+         */
+        axisXTitle: {
+          attribute: "axis-x-title",
+          type: String
+        },
+        /**
+         * Optional x-offset for x-axis title
+         */
+        axisXTitleOffsetX: {
+          attribute: "axis-x-title-offset",
+          type: Number
+        },
+        /**
+         * Optional y-offset for x-axis title
+         */
+        axisXTitleOffsetY: {
+          attribute: "axis-x-title-offset",
+          type: Number
+        },
+        /**
+         * Optional title of x-axis. Possible values are 'start', 'end' and 'middle'.
+         */
+        axisXTitleAnchor: {
+          attribute: "axis-x-title-anchor",
+          type: String
+        },
+        /**
+        /**
          * Offset X of labels for Y-axis
          */
         axisYLabelOffsetX: {
@@ -634,7 +668,7 @@ ${super.render()}`;
         /**
          * Show axis Y labels?
          */
-        axisYshowLabel: {
+        axisYShowLabel: {
           attribute: "axis-y-show-label",
           type: Boolean
         },
@@ -643,6 +677,45 @@ ${super.render()}`;
          */
         axisYTopLeft: {
           attribute: "axis-y-top-left",
+          type: Boolean
+        },
+        /**
+         * Optional title of y-axis
+         */
+        axisYTitle: {
+          attribute: "axis-y-title",
+          type: String
+        },
+        /**
+         * Optional x-offset for y-axis title.
+         * Please note, x and y offset values for axisY are flipped due to the rotation of the axisY title by 90 degrees.
+         * Therefore changing y moves left/right.
+         */
+        axisYTitleOffsetX: {
+          attribute: "axis-y-title-offset",
+          type: Number
+        },
+        /**
+         * Optional y-offset for y-axis title.
+         * Please note, x and y offset values for axisY are flipped due to the rotation of the axisY title by 90 degrees.
+         * Therefore changing the x value moves up/down the chart.
+         */
+        axisYTitleOffsetY: {
+          attribute: "axis-y-title-offset",
+          type: Number
+        },
+        /**
+         * Optional title of y-axis. Possible values are 'start', 'end' and 'middle'.
+         */
+        axisYTitleAnchor: {
+          attribute: "axis-y-title-anchor",
+          type: String
+        },
+        /**
+         * Optional title of y-axis
+         */
+        axisYTitleFlip: {
+          attribute: "axis-y-title-flip",
           type: Boolean
         },
 
@@ -781,14 +854,43 @@ ${super.render()}`;
           {
             property: "axisXLabelOffsetX",
             title: "X-Axis Label (horizontal offset)",
-            description: "Horizontal position of the X-Axis's label.",
+            description: "Horizontal position of the X-Axis's labels.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitleOffsetY",
+            title: "X-Axis Label (vertical offset)",
+            description: "Vertical position of the X-Axis's labels.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitle",
+            title: "X-Axis Title",
+            description: "Optional title for X-axis.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "axisXTitleOffsetX",
+            title: "X-Axis Title (horizontal offset)",
+            description: "Horizontal position of the X-Axis's title.",
             inputMethod: "number"
           },
           {
             property: "axisXLabelOffsetY",
-            title: "X-Axis Label (vertical offset)",
-            description: "Vertical position of the X-Axis's label.",
+            title: "X-Axis Title (vertical offset)",
+            description: "Vertical position of the X-Axis's title.",
             inputMethod: "number"
+          },
+          {
+            property: "axisXTitleAnchor",
+            title: "X-Axis Title Anchoe",
+            description: "Optional anchor for X-axis's title.",
+            inputMethod: "select",
+            options: {
+              middle: "middle",
+              end: "end",
+              start: "start"
+            }
           }
         ],
         yAxis: [
@@ -842,6 +944,41 @@ ${super.render()}`;
             description:
               "Use only integer values (whole numbers) for the scale steps.",
             inputMethod: "boolean"
+          },
+          {
+            property: "axisYTitle",
+            title: "Y-Axis Title",
+            description: "Optional title for Y-axis.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "axisYTitleOffsetX",
+            title: "Y-Axis Title (vertical offset)",
+            description: "Horizontal position of the Y-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYLabelOffsetY",
+            title: "Y-Axis Title (horizontal offset)",
+            description: "Horizontal position of the Y-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYTitleAnchor",
+            title: "Y-Axis Title Anchoe",
+            description: "Optional anchor for Y-axis's title.",
+            inputMethod: "select",
+            options: {
+              middle: "middle",
+              end: "end",
+              start: "start"
+            }
+          },
+          {
+            property: "axisYTitleFlip",
+            title: "Y-Axis Title Flip",
+            description: "Flip the title for Y-axis?",
+            inputMethod: "boolean"
           }
         ]
       };
@@ -854,7 +991,7 @@ ${super.render()}`;
      * @memberof LrndesignChart
      * @memberof LrndesignChart
      */
-    static get lineBarOptions() {
+    get lineBarOptions() {
       return {
         high: this.high,
         low: this.low,
@@ -882,10 +1019,10 @@ ${super.render()}`;
         },
         showGridBackground: this.showGridBackground,
         chartPadding: {
-          bottom: this.chartPaddingBottom,
-          left: this.chartPaddingLeft,
-          right: this.chartPaddingRight,
-          top: this.chartPaddingTop
+          bottom: this.chartPaddingBottom + (this.axisXTitle ? 40 : 0),
+          left: this.chartPaddingLeft + (this.axisYTitle ? 30 : 0),
+          right: this.chartPaddingRight + (this.axisYTitle ? 15 : 0),
+          top: this.chartPaddingTop  + (this.axisXTitle ? 20 : 0)
         }
       };
     }
@@ -897,51 +1034,21 @@ ${super.render()}`;
      * @readonly
      * @memberof LrndesignChart
      */
-    static get options() {
+    get options() {
       return {
         reverseData: this.reverseData
       };
     }
 
     updated(changedProperties) {
-      if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        /**
-         * Fired when data source changes.
-         *
-         * @event data-source-changed
-         * @param {string} dataSource data source of the chart
-         *
-         */
-        if (propName === "dataSource")
-          this.dispatchEvent(
-            new CustomEvent("data-source-changed", {
-              detail: this
-            })
-          );
-        /**
-         * Fired when raw data changes.
-         *
-         * @event raw-data-changed
-         * @param {string} rawData raw CSV data for the chart which will be converted into an array
-         *
-         */
-        if (propName === "rawData")
-          this.dispatchEvent(
-            new CustomEvent("raw-data-changed", {
-              detail: this
-            })
-          );
-        if (propName === "data" && this.data && this.data !== oldValue) {
-          this._renderTable();
-          this.dispatchEvent(
-            new CustomEvent("data-changed", {
-              detail: this
-            })
-          );
+        if((propName.indexOf('axisXTitle') > -1 || propName.indexOf('axisYTitle') > -1) && this[propName] !== oldValue){
+          this.pluginAxisTitle = this.axisTitles;
         }
       });
+      if (super.updated) super.updated(changedProperties);
     }
+
     /**
      * creates an accessible table based on data object
      * @memberof LrndesignChart
@@ -974,7 +1081,6 @@ ${super.render()}`;
         </tbody>`;
       table.innerHTML = html;
       this.appendChild(table);
-      console.log("data-changed", this.data, this.querySelector("table"));
     }
 
     /**
@@ -991,7 +1097,9 @@ ${super.render()}`;
          * @param {object} chart options
          *
          */
-        this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
+        this.dispatchEvent(
+          new CustomEvent("options-changed", { detail: this })
+        );
         chart.makeChart();
         /**
          * Fired when chart changes.
@@ -1001,6 +1109,26 @@ ${super.render()}`;
          */
         this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
       }
+    }
+    /**
+     * gets axis title options
+     * @readonly
+     */
+    get axisTitles() {
+      let axisTitles = {};
+      if(this.axisXTitle) axisTitles.axisX = {
+        axisTitle: this.axisXTitle,
+        offset: { x: this.axisXTitleOffsetX, y: this.axisXTitleOffsetY },
+        textAnchor: ["start","end","middle"].includes(this.axisXTitleAnchor) ? this.axisXTitleAnchor : "middle"
+      };
+      if(this.axisYTitle) axisTitles.axisY = {
+        axisTitle: this.axisYTitle,
+        offset: { x: this.axisYTitleOffsetX, y: this.axisYTitleOffsetY },
+        textAnchor: ["start","end","middle"].includes(this.axisYTitleAnchor) ? this.axisYTitleAnchor : "middle"
+      };
+      return this.axisXTitle || this.axisYTitle
+        ? axisTitles
+        : undefined;
     }
 
     /**
@@ -1030,6 +1158,13 @@ ${super.render()}`;
       this.axisXShowGrid = true;
       this.axisXShowLabel = true;
       this.axisXTopLeft = false;
+      this.axisXTitleOffsetX  = 0; 
+      this.axisXTitleOffsetY  = 50;
+      this.axisXTitleAnchor = 'middle'; 
+      this.axisYTitleOffsetX  = 0; 
+      this.axisYTitleOffsetY  = -25; 
+      this.axisYTitleAnchor = 'middle'; 
+      this.axisYTitleFlip = false;
       this.axisYLabelOffsetX = 0;
       this.axisYLabelOffsetY = 0;
       this.axisYOffset = 30;
@@ -1037,11 +1172,11 @@ ${super.render()}`;
       this.axisYPosition = "start";
       this.axisYScaleMinSpace = 20;
       this.axisYShowGrid = true;
-      this.axisYshowLabel = true;
+      this.axisYShowLabel = true;
       this.axisYTopLeft = true;
       this.showGridBackground = false;
-      this.chartPaddingBottom = 5;
-      this.chartPaddingLeft = 10;
+      this.chartPaddingBottom = 15;
+      this.chartPaddingLeft = 15;
       this.chartPaddingRight = 15;
       this.chartPaddingTop = 15;
     }
@@ -1049,6 +1184,6 @@ ${super.render()}`;
      * life cycle, element is removed from the DOM
      */
     //disconnectedCallback() {}
-  }
-}
+  };
+};
 export { LrndesignChart };

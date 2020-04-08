@@ -9,10 +9,10 @@ $ct-text-line-height: #{var(--chartist-line-height, #{$ct-text-line-height})};
 :host {
   display: block;
   width: 100%;
-  padding: #{--chartist-padding, var(0px)};
-  margin: #{--chartist-margin, var(15px 0)};
+  padding: #{var(--chartist-padding, 0px)};
+  margin: #{var(--chartist-margin, 15px 0)};
   background-color: $ct-bg-color;
-  color: $ct-text-color;
+  color: #{var(--chartist-text-color, #000)};
 }
 
 .sr-only {
@@ -21,11 +21,16 @@ $ct-text-line-height: #{var(--chartist-line-height, #{$ct-text-line-height})};
   height: 0;
   overflow: hidden;
 }
+.ct-axis-title {
+  fill: #{var(--chartist-text-color)};
+}
 
 ::slotted(table){
-  border: 1px solid $ct-text-color;
+  border: 1px solid #{var(--chartist-text-color)};
   border-collapse: collapse;
   width: 100%;
+  max-width: 100%;
+  overflow: auto;
 }
 
 
@@ -41,7 +46,7 @@ $ct-text-line-height: #{var(--chartist-line-height, #{$ct-text-line-height})};
   @if $ct-include-colored-series {
     @for $i from 0 to length($ct-series-names) {
       .#{$ct-class-series}-#{nth($ct-series-names, $i + 1)} {
-        $color: var(--chartist-color-#{$i + 1}, nth($ct-series-colors, $i + 1));
+        $color: #{var(--chartist-color-#{$i + 1}, nth($ct-series-colors, $i + 1))};
 
         @include ct-chart-series-color($color);
       }

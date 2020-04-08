@@ -20,8 +20,7 @@ const ChartistRenderSuper = function(SuperClass) {
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
       window.ESGlobalBridge.requestAvailability();
-      this._loadScripts('chartistLib','lib/chartist/dist/chartist.min.js');
-      console.log(this,'dataSource',this.dataSource);
+      this._loadScripts("chartistLib", "lib/chartist/dist/chartist.min.js");
       this._renderChart();
       this.observer.observe(this, {
         attributes: false,
@@ -44,9 +43,9 @@ const ChartistRenderSuper = function(SuperClass) {
       );
       if (typeof Chartist === "object") this._chartistLoaded.bind(this);
     }
-    _loadScripts(classname,path){
-      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)), 
-      location = `${basePath}${path}`;
+    _loadScripts(classname, path) {
+      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
+        location = `${basePath}${path}`;
       window.addEventListener(
         `es-bridge-${classname}-loaded`,
         this._chartistLoaded.bind(this)
@@ -62,9 +61,20 @@ const ChartistRenderSuper = function(SuperClass) {
       return "chartist-render";
     }
 
-    get plugins(){
+    get plugins() {
       return [
-        ['Chartist.plugins.ctAxisTitle','lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js']
+        [
+          "Chartist.plugins.ctAxisTitle",
+          "lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js"
+        ],
+        [
+          "Chartist.plugins.CtPointLabels",
+          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"
+        ],
+        [
+          "Chartist.plugins.fillDonut",
+          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"
+        ]
       ];
     }
     /**
@@ -79,10 +89,38 @@ const ChartistRenderSuper = function(SuperClass) {
 
     updated(changedProperties) {
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "data") {
-          if (this.data !== oldValue) this._renderTable();
-        } else if (propName === "dataSource") {
-          if (this.data !== oldValue) this._renderTable();
+        if (propName === "data" && this.data !== oldValue) {
+          /**
+           * Fires when data changes
+           * @event data-changed
+           */
+          this.dispatchEvent(
+            new CustomEvent("data-changed", {
+              detail: this
+            })
+          );
+          this._renderTable();
+        } else if (propName === "dataSource" && this.data !== oldValue) {
+          /**
+           * Fires when data-source changes
+           * @event data-source-changed
+           */
+          this.dispatchEvent(
+            new CustomEvent("data-source-changed", {
+              detail: this
+            })
+          );
+          this._renderTable();
+        } else if (propName === "rawData"){
+          /**
+           * Fires when raw-data changes
+           * @event raw-data-changed
+           */
+          this.dispatchEvent(
+            new CustomEvent("raw-data-changed", {
+              detail: this
+            })
+          );
         } else {
           this._renderChart();
         }
@@ -109,7 +147,12 @@ const ChartistRenderSuper = function(SuperClass) {
         "es-bridge-chartistLib-loaded",
         this._chartistLoaded.bind(this)
       );
-      this.plugins.forEach(plugin=>window.removeEventListener(`es-bridge-${plugin[0]}-loaded`,this._pluginLoaded.bind(this)));
+      this.plugins.forEach(plugin =>
+        window.removeEventListener(
+          `es-bridge-${plugin[0]}-loaded`,
+          this._pluginLoaded.bind(this)
+        )
+      );
       super.disconnectedCallback();
     }
 
@@ -119,7 +162,7 @@ const ChartistRenderSuper = function(SuperClass) {
     _chartistLoaded() {
       this.__chartistLoaded = true;
       this._renderChart();
-      this.plugins.forEach(plugin=>this._loadScripts(plugin[0],plugin[1]));
+      this.plugins.forEach(plugin => this._loadScripts(plugin[0], plugin[1]));
     }
 
     /**
@@ -171,14 +214,19 @@ const ChartistRenderSuper = function(SuperClass) {
      * @memberof ChartistRender
      */
     _handleResponse(e) {
-      this.rawData = e.detail.response;
-      let raw = this._CSVtoArray(this.rawData);
+      this.rawData = this._CSVtoArray(e.detail.response);
+      let raw = this.rawData, 
+        body = this.type !== "pie" ? raw.slice(1, raw.length) : raw[1],
+        series = this.type !== "pie" && isNaN(body[0][0]) ? body.map(tr=>tr.slice(1, tr.length)) : body,
+        legend = this.type !== "pie" && isNaN(body[0][0]) ? [raw[0][0]] : undefined
+        if(legend) body.forEach(tr=>legend.push(tr[0]));
       this.__dataReady = true;
       this.data = {
-        labels: raw[0],
-        series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
+        labels: this.type !== "pie" && isNaN(body[0][0]) ? raw[0].slice(1, raw[0].length): raw[0],
+        series: series,
+        legend: legend
       };
-      console.log("raw-data-changed", this.rawData, raw, this.data);
+      console.log('_handleResponse',this.rawData,this.data,raw);
     }
     /**
      * replaces existing slotted table with a new one based on data
@@ -191,19 +239,22 @@ const ChartistRenderSuper = function(SuperClass) {
         if (table) table.remove();
         table = document.createElement("table");
         if (this.data.labels)
-          html += `<thead><tr>${(this.data.labels || [])
-            .map(label => `<th scope="col">${label}</th>`)
-            .join("")}</tr></thead>`;
+          html += `<thead><tr>
+              ${this.data.legend ? `<th scope="row">${this.data.legend[0]}</th>` : ``}
+              ${(this.data.labels || []).map(label => `<th scope="col">${label}</th>`).join("")}
+            </tr></thead>`;
+        console.log('_renderTable',this.data);
         if (this.data.series)
           html += `<tbody>
             ${
               this.data.series && Array.isArray(this.data.series[0])
                 ? (this.data.series || [])
                     .map(
-                      row =>
-                        `<tr>${(row || [])
-                          .map(col => `<td>${col}</td>`)
-                          .join("")}</tr>`
+                      (row,i) =>
+                        `<tr>
+                          ${this.data.legend && this.data.legend[i+1] ? `<th scope="row">${this.data.legend[i+1]}</th>` : ``}
+                          ${(row || []).map(col => `<td>${col}</td>`).join("")}
+                        </tr>`
                     )
                     .join("")
                 : `<tr>${(this.data.series || [])
@@ -213,33 +264,26 @@ const ChartistRenderSuper = function(SuperClass) {
           </tbody>`;
         table.innerHTML = html;
         this.appendChild(table);
+        console.log('_renderTable',this.data,html,table);
       }
     }
-    get xAxis(){
-      return this.xAxisLabel ? {
-        axisTitle: this.xAxisLabel,
-        axisClass: "ct-axis-title",
-        offset: { x: 0, y: 50},
-        textAnchor: "middle"
-      } : undefined;
-    }
-    get yAxis(){
-      return this.yAxisLabel ? {
-        axisTitle: this.yAxisLabel,
-        axisClass: "ct-axis-title",
-        offset: { x: 0, y: -1},
-        flipTitle: false
-      } : undefined;
-    }
-    get axisLabels(){
-      return this.xAxisLabel || this.yAxisLabel ? {axisX: this.xAxis, axisY: this.yAxis } : undefined;
-    }
-    get fullOptions(){
-      let options = {...this.options};
-      if(Chartist.plugins){
+    get fullOptions() {
+      let options = { ...this.options };
+      if (Chartist.plugins) {
         options.plugins = [];
-        if (this.type !== "pie" && this.axisLabels && Chartist.plugins.ctAxisTitle) {
-          options.plugins.push(Chartist.plugins.ctAxisTitle(this.axisLabels));
+        if (
+          this.type !== "pie" &&
+          this.pluginAxisTitle &&
+          Chartist.plugins.ctAxisTitle
+        ) {
+          options.plugins.push(Chartist.plugins.ctAxisTitle(this.pluginAxisTitle));
+        }
+        if(this.type === 'line' && this.pluginPointLabels && Chartist.plugins.ctPointLabels){
+          if(!this.pluginPointLabels.labelInterpolationFnc) this.pluginPointLabels.labelInterpolationFnc = Chartist.noop;
+          options.plugins.push(Chartist.plugins.ctPointLabels(this.pluginPointLabels));
+        }
+        if(this.type === 'pie' && options.donut && this.pluginFillDonutItems && Chartist.plugins.fillDonut){
+          options.plugins.push(Chartist.plugins.fillDonut(this.pluginFillDonutItems));
         }
       }
       return options;
@@ -267,10 +311,12 @@ const ChartistRenderSuper = function(SuperClass) {
                     ? parseFloat(cell)
                     : "null";
                 })
-              )
+              ),
+              legend: ([...table.querySelectorAll("th[scope=row]")] || []).map(legend => (legend.innerHTML || "").trim())
             };
-      
+
       if (target !== null && typeof Chartist === "object" && data) {
+        console.log('_renderChart',table,data,table.querySelectorAll("th[scope=row]"),[...table.querySelectorAll("th[scope=row]")]);
         if (this.type == "bar") {
           if (
             this.responsiveOptions !== undefined &&
@@ -298,7 +344,6 @@ const ChartistRenderSuper = function(SuperClass) {
             this.responsiveOptions
           );
         } else if (this.type === "line") {
-          console.log(this.fullOptions,this.axisLabels,this.xAxisLabel,this.yAxisLabel)
           chart = Chartist.Line(
             target,
             data,
@@ -330,22 +375,23 @@ const ChartistRenderSuper = function(SuperClass) {
             detail: chart
           })
         );
-        if(chart) chart.on("created", () => {
-          /**
-           * Fired once chart is created and accessibility features are added.
-           *
-           * @event chartist-render-created
-           *
-           */
-          this.dispatchEvent(
-            new CustomEvent("chartist-render-created", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: chart
-            })
-          );
-        });
+        if (chart)
+          chart.on("created", () => {
+            /**
+             * Fired once chart is created and accessibility features are added.
+             *
+             * @event chartist-render-created
+             *
+             */
+            this.dispatchEvent(
+              new CustomEvent("chartist-render-created", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: chart
+              })
+            );
+          });
       }
       return chart;
     }
@@ -359,8 +405,8 @@ const ChartistRenderSuper = function(SuperClass) {
       let id = prefix + Date.now();
       return id;
     }
-  }
-}
+  };
+};
 /**
  * @element chartist-render
  * @extends SchemaBehaviors

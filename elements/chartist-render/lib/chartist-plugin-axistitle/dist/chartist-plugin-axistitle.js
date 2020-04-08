@@ -1,19 +1,18 @@
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
+(function(root, factory) {
+  if (typeof define === "function" && define.amd) {
     // AMD. Register as an anonymous module.
-    define(["chartist"], function (Chartist) {
+    define(["chartist"], function(Chartist) {
       return (root.returnExportsGlobal = factory(Chartist));
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof exports === "object") {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like enviroments that support module.exports,
     // like Node.
     module.exports = factory(require("chartist"));
   } else {
-    root['Chartist.plugins.ctAxisTitle'] = factory(Chartist);
+    root["Chartist.plugins.ctAxisTitle"] = factory(Chartist);
   }
-}(this, function (Chartist) {
-
+})(this, function(Chartist) {
   /**
    * Chartist.js plugin to display a title for 1 or 2 axes.
    * version 0.0.7
@@ -143,5 +142,4 @@
   })(Chartist);
 
   return Chartist.plugins.ctAxisTitle;
-
-}));
+});

@@ -1,35 +1,34 @@
-(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
+(function(root, factory) {
+  if (typeof define === "function" && define.amd) {
     // AMD. Register as an anonymous module.
-    define(["chartist"], function (Chartist) {
+    define(["chartist"], function(Chartist) {
       return (root.returnExportsGlobal = factory(Chartist));
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof exports === "object") {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like enviroments that support module.exports,
     // like Node.
     module.exports = factory(require("chartist"));
   } else {
-    root['Chartist.plugins.ctPointLabels'] = factory(Chartist);
+    root["Chartist.plugins.ctPointLabels"] = factory(Chartist);
   }
-}(this, function (Chartist) {
-
+})(this, function(Chartist) {
   /**
    * Chartist.js plugin to display a data label on top of the points in a line chart.
    *
    */
   /* global Chartist */
   (function(window, document, Chartist) {
-    'use strict';
+    "use strict";
 
     var defaultOptions = {
-      labelClass: 'ct-label',
+      labelClass: "ct-label",
       labelOffset: {
         x: 0,
         y: -10
       },
-      textAnchor: 'middle',
-      align: 'center',
+      textAnchor: "middle",
+      align: "center",
       labelInterpolationFnc: Chartist.noop
     };
 
@@ -64,26 +63,35 @@
 
     Chartist.plugins = Chartist.plugins || {};
     Chartist.plugins.ctPointLabels = function(options) {
-
       options = Chartist.extend({}, defaultOptions, options);
 
       function addLabel(position, data) {
         // if x and y exist concat them otherwise output only the existing value
-        var value = data.value.x !== undefined && data.value.y ?
-          (data.value.x + ', ' + data.value.y) :
-          data.value.y || data.value.x;
+        var value =
+          data.value.x !== undefined && data.value.y
+            ? data.value.x + ", " + data.value.y
+            : data.value.y || data.value.x;
 
-        data.group.elem('text', {
-          x: position.x + options.labelOffset.x,
-          y: position.y + options.labelOffset.y,
-          style: 'text-anchor: ' + options.textAnchor
-        }, options.labelClass).text(options.labelInterpolationFnc(value));
+        data.group
+          .elem(
+            "text",
+            {
+              x: position.x + options.labelOffset.x,
+              y: position.y + options.labelOffset.y,
+              style: "text-anchor: " + options.textAnchor
+            },
+            options.labelClass
+          )
+          .text(options.labelInterpolationFnc(value));
       }
 
       return function ctPointLabels(chart) {
         if (chart instanceof Chartist.Line || chart instanceof Chartist.Bar) {
-          chart.on('draw', function(data) {
-            var positonCalculator = labelPositionCalculation[data.type] && labelPositionCalculation[data.type][options.align] || labelPositionCalculation[data.type];
+          chart.on("draw", function(data) {
+            var positonCalculator =
+              (labelPositionCalculation[data.type] &&
+                labelPositionCalculation[data.type][options.align]) ||
+              labelPositionCalculation[data.type];
             if (positonCalculator) {
               addLabel(positonCalculator(data), data);
             }
@@ -91,9 +99,7 @@
         }
       };
     };
-
-  }(window, document, Chartist));
+  })(window, document, Chartist);
 
   return Chartist.plugins.ctPointLabels;
-
-}));
+});
