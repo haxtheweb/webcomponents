@@ -920,6 +920,20 @@ Container class	Ratio
   "showTable": {
     "type": Boolean,
     "attribute": "show-table"
+  },
+  /**
+   * Optional label  for bar or line chart x-axis
+   */
+  "xAxisLabel": {
+    "type": String,
+    "attribute": "x-axis-label"
+  },
+  /**
+   * Optional label  for bar or line chart y-axis
+   */
+  "yAxisLabel": {
+    "type": String,
+    "attribute": "y-axis-label"
   }
 }
 ;
@@ -933,14 +947,8 @@ Container class	Ratio
       this.responsiveOptions = [];
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-      let location = `${basePath}lib/chartist/dist/chartist.min.js`;
-      window.addEventListener(
-        "es-bridge-chartistLib-loaded",
-        this._chartistLoaded.bind(this)
-      );
       window.ESGlobalBridge.requestAvailability();
-      window.ESGlobalBridge.instance.load("chartistLib", location);
+      this._loadScripts('chartistLib','lib/chartist/dist/chartist.min.js');
       console.log(this,'dataSource',this.dataSource);
       this._renderChart();
       this.observer.observe(this, {
@@ -964,6 +972,15 @@ Container class	Ratio
       );
       if (typeof Chartist === "object") this._chartistLoaded.bind(this);
     }
+    _loadScripts(classname,path){
+      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)), 
+      location = `${basePath}${path}`;
+      window.addEventListener(
+        `es-bridge-${classname}-loaded`,
+        this._chartistLoaded.bind(this)
+      );
+      window.ESGlobalBridge.instance.load(classname, location);
+    }
 
     /**
      * Store the tag name to make it easier to obtain directly.
@@ -971,6 +988,12 @@ Container class	Ratio
      */
     static get tag() {
       return "chartist-render";
+    }
+
+    get plugins(){
+      return [
+        ['Chartist.plugins.ctAxisTitle','lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js']
+      ];
     }
     /**
      * mutation observer for table
@@ -988,8 +1011,6 @@ Container class	Ratio
           if (this.data !== oldValue) this._renderTable();
         } else if (propName === "dataSource") {
           if (this.data !== oldValue) this._renderTable();
-
-          console.log("data-source-changed", this.dataSource);
         } else {
           this._renderChart();
         }
@@ -1016,6 +1037,7 @@ Container class	Ratio
         "es-bridge-chartistLib-loaded",
         this._chartistLoaded.bind(this)
       );
+      this.plugins.forEach(plugin=>window.removeEventListener(`es-bridge-${plugin[0]}-loaded`,this._pluginLoaded.bind(this)));
       super.disconnectedCallback();
     }
 
@@ -1024,6 +1046,14 @@ Container class	Ratio
      */
     _chartistLoaded() {
       this.__chartistLoaded = true;
+      this._renderChart();
+      this.plugins.forEach(plugin=>this._loadScripts(plugin[0],plugin[1]));
+    }
+
+    /**
+     * determines if char is ready
+     */
+    _pluginLoaded() {
       this._renderChart();
     }
 
@@ -1113,6 +1143,35 @@ Container class	Ratio
         this.appendChild(table);
       }
     }
+    get xAxis(){
+      return this.xAxisLabel ? {
+        axisTitle: this.xAxisLabel,
+        axisClass: "ct-axis-title",
+        offset: { x: 0, y: 50},
+        textAnchor: "middle"
+      } : undefined;
+    }
+    get yAxis(){
+      return this.yAxisLabel ? {
+        axisTitle: this.yAxisLabel,
+        axisClass: "ct-axis-title",
+        offset: { x: 0, y: -1},
+        flipTitle: false
+      } : undefined;
+    }
+    get axisLabels(){
+      return this.xAxisLabel || this.yAxisLabel ? {axisX: this.xAxis, axisY: this.yAxis } : undefined;
+    }
+    get fullOptions(){
+      let options = {...this.options};
+      if(Chartist.plugins){
+        options.plugins = [];
+        if (this.type !== "pie" && this.axisLabels && Chartist.plugins.ctAxisTitle) {
+          options.plugins.push(Chartist.plugins.ctAxisTitle(this.axisLabels));
+        }
+      }
+      return options;
+    }
 
     /**
      * Renders chart and returns the chart object.
@@ -1138,6 +1197,7 @@ Container class	Ratio
                 })
               )
             };
+      
       if (target !== null && typeof Chartist === "object" && data) {
         if (this.type == "bar") {
           if (
@@ -1162,14 +1222,15 @@ Container class	Ratio
           chart = Chartist.Bar(
             target,
             data,
-            this.options,
+            this.fullOptions,
             this.responsiveOptions
           );
         } else if (this.type === "line") {
+          console.log(this.fullOptions,this.axisLabels,this.xAxisLabel,this.yAxisLabel)
           chart = Chartist.Line(
             target,
             data,
-            this.options,
+            this.fullOptions,
             this.responsiveOptions
           );
         } else if (this.type === "pie") {
@@ -1179,7 +1240,7 @@ Container class	Ratio
               labels: data.labels || [],
               series: data.series ? data.series[0] : []
             },
-            this.options,
+            this.fullOptions,
             this.responsiveOptions
           );
         }
@@ -1197,7 +1258,7 @@ Container class	Ratio
             detail: chart
           })
         );
-        chart.on("created", () => {
+        if(chart) chart.on("created", () => {
           /**
            * Fired once chart is created and accessibility features are added.
            *

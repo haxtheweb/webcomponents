@@ -130,5 +130,19 @@ Container class	Ratio
   "showTable": {
     "type": "Boolean",
     "attribute": "show-table"
+  },
+  /**
+   * Optional label  for bar or line chart x-axis
+   */
+  "xAxisLabel": {
+    "type": "String",
+    "attribute": "x-axis-label"
+  },
+  /**
+   * Optional label  for bar or line chart y-axis
+   */
+  "yAxisLabel": {
+    "type": "String",
+    "attribute": "y-axis-label"
   }
 }
