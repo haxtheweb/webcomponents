@@ -456,8 +456,7 @@ class HAXCMSSiteBuilder extends LitElement {
                 });
             }
           }
-        }
-        else if (window.WCAutoload) {
+        } else if (window.WCAutoload) {
           setTimeout(() => {
             window.WCAutoload.process();
           }, 0);
