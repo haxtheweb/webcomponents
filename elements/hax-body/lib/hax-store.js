@@ -493,8 +493,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               if (typeof CEClass.getHaxProperties === "function") {
                 this.setHaxProperties(CEClass.getHaxProperties(), i);
                 hasClass = true;
-              }
-              else if (typeof CEClass.HAXWiring === "function") {
+              } else if (typeof CEClass.HAXWiring === "function") {
                 this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
                 hasClass = true;
               } else if (CEClass.haxProperties) {
@@ -503,8 +502,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               }
             }
             // fallback for things that don't export a class
-            if (!hasClass && window.customElements.get(i) && window.customElements.get(i).haxProperties) {
-              this.setHaxProperties(window.customElements.get(i).haxProperties, i);
+            if (
+              !hasClass &&
+              window.customElements.get(i) &&
+              window.customElements.get(i).haxProperties
+            ) {
+              this.setHaxProperties(
+                window.customElements.get(i).haxProperties,
+                i
+              );
             }
           })
           .catch(error => {
