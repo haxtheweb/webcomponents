@@ -6,4 +6,4 @@ class ELMSLNBase extends HTMLElement {
     }, 0);
   }
 }
-windiow.customElements.define('elmsln-base', ELMSLNBase);
+windiow.customElements.define("elmsln-base", ELMSLNBase);

@@ -205,6 +205,11 @@ class CMSToken extends PolymerElement {
         let template = document.createElement("template");
         template.innerHTML = newValue.content;
         this.appendChild(document.importNode(template.content, true));
+        setTimeout(() => {
+          if (window.WCAutoload) {
+            window.WCAutoload.process();
+          }
+        }, 0);
         this.loading = false;
       });
     }
