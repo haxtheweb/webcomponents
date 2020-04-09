@@ -55,6 +55,8 @@
     "@lrnwebcomponents/simple-icon-picker": "^2.6.5",
     "@lrnwebcomponents/simple-picker": "^2.6.5",
     "@lrnwebcomponents/simple-tooltip": "^2.6.4",
+    "@lrnwebcomponents/git-corner": "^2.6.3",
+    "@lrnwebcomponents/portal-launcher": "^2.6.3",
     "@lrnwebcomponents/sites-listing": "^2.3.1",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
