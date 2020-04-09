@@ -25,7 +25,7 @@ const ChartistRenderSuper = function(SuperClass) {
         "lib/chartist/dist/chartist.min.js",
         this._chartistLoaded
       );
-      this._updateRawData();
+      this._updateData();
       this.observer.observe(this, {
         attributes: false,
         childList: true,
@@ -82,19 +82,19 @@ const ChartistRenderSuper = function(SuperClass) {
      * @returns {object}
      */
     get observer() {
-      let callback = () => this._updateRawData();
+      let callback = () => this._updateData();
       return new MutationObserver(callback);
     }
 
     updated(changedProperties) {
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "data" && this.data !== oldValue) {
+        if (propName === "chartData" && JSON.stringify(this.chartData) !== JSON.stringify(oldValue)) {
           /**
-           * Fires when data changes
-           * @event data-changed
+           * Fires when chartData changes
+           * @event chart-data-changed
            */
           this.dispatchEvent(
-            new CustomEvent("data-changed", {
+            new CustomEvent("chart-data-changed", {
               detail: this
             })
           );
@@ -109,19 +109,19 @@ const ChartistRenderSuper = function(SuperClass) {
               detail: this
             })
           );
-        } else if (propName === "rawData") {
+        } else if (propName === "data" && JSON.stringify(this.data) !== JSON.stringify(oldValue)) {
           /**
-           * Fires when raw-data changes
-           * @event raw-data-changed
+           * Fires when data changes
+           * @event data-changed
            */
           this.dispatchEvent(
-            new CustomEvent("raw-data-changed", {
+            new CustomEvent("data-changed", {
               detail: this
             })
           );
-          if (JSON.stringify(this.rawData) !== JSON.stringify(oldValue))
-            this._renderTable();
-          this._updateData();
+          console.log(propName,JSON.stringify(this.data),JSON.stringify(oldValue),JSON.stringify(this.data) !== JSON.stringify(oldValue))
+          this._renderTable();
+          this._updateChartData();
         } else {
           this._getChart();
         }
@@ -157,7 +157,7 @@ const ChartistRenderSuper = function(SuperClass) {
     }
 
     /**
-     * determines if char is ready
+     * determines if Chartist is ready
      */
     _chartistLoaded() {
       this.__chartistLoaded = true;
@@ -167,8 +167,8 @@ const ChartistRenderSuper = function(SuperClass) {
 
     /**
      * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
-     * @param {string} text csv data
-     * @returns {array} chart data
+     * @param {string} text csv
+     * @returns {array} chart raw data
      */
     _CSVtoArray(text) {
       let p = "",
@@ -253,13 +253,13 @@ const ChartistRenderSuper = function(SuperClass) {
     }
 
     /**
-     * Renders chart when data changes
+     * Renders chart when chartData changes
      */
     _getChart() {
       let chart = null,
         target = this.shadowRoot.querySelector("#chart");
 
-      if (target !== null && typeof Chartist === "object" && this.data) {
+      if (target !== null && typeof Chartist === "object" && this.chartData) {
         if (this.type == "bar") {
           if (
             this.responsiveOptions !== undefined &&
@@ -282,14 +282,14 @@ const ChartistRenderSuper = function(SuperClass) {
           }
           chart = Chartist.Bar(
             target,
-            this.data,
+            this.chartData,
             this.fullOptions,
             this.responsiveOptions
           );
         } else if (this.type === "line") {
           chart = Chartist.Line(
             target,
-            this.data,
+            this.chartData,
             this.fullOptions,
             this.responsiveOptions
           );
@@ -297,21 +297,21 @@ const ChartistRenderSuper = function(SuperClass) {
           chart = Chartist.Pie(
             target,
             {
-              labels: this.data.labels || [],
-              series: this.data.series ? this.data.series[0] : []
+              labels: this.chartData.labels || [],
+              series: this.chartData.series || []
             },
             this.fullOptions,
             this.responsiveOptions
           );
         }
         /**
-         * Fired when chart is being drawn.
+         * Fired when chart is rendering.
          *
-         * @event chartist-render-draw
+         * @event chartist-render-data
          *
          */
         this.dispatchEvent(
-          new CustomEvent("chartist-render-draw", {
+          new CustomEvent("chartist-render-data", {
             bubbles: true,
             cancelable: true,
             composed: true,
@@ -345,7 +345,7 @@ const ChartistRenderSuper = function(SuperClass) {
      * @memberof ChartistRender
      */
     _handleResponse(e) {
-      this.rawData = this._CSVtoArray(e.detail.response);
+      this.data = this._CSVtoArray(e.detail.response);
     }
 
     /**
@@ -353,7 +353,7 @@ const ChartistRenderSuper = function(SuperClass) {
      *
      * @param {string} classname class to import from script
      * @param {string} path relative path of script
-     * @param {function} [fnc=this._updateRawData] function to reun when script is loaded
+     * @param {function} [fnc=this._updateData] function to reun when script is loaded
      */
     _loadScripts(classname, path, fnc = this._getChart) {
       let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
@@ -363,25 +363,25 @@ const ChartistRenderSuper = function(SuperClass) {
     }
 
     /**
-     * updates table when raw data changes
+     * updates table when data changes
      * @memberof ChartistRender
      */
     _renderTable() {
       let html = "",
         table = this.querySelector("table"),
-        raw = this.rawData ? [...this.rawData] : false;
+        data = this.data ? [...this.data] : false;
 
-      if (raw) {
-        let rowHeads = raw[1] && raw[1][0] && isNaN(raw[1][0]),
-          colHeads = raw[0] && raw[0][1] && isNaN(raw[0][1]),
+      if (data) {
+        let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
+          colHeads = data[0] && data[0][1] && isNaN(data[0][1]),
           thead = !colHeads
-            ? false
+            ? undefined
             : {
-                row: raw[0][0],
-                col: rowHeads ? raw[0].slice(1, raw[0].length) : raw[0]
+                row: rowHeads ? data[0][0] : undefined,
+                col: rowHeads ? data[0].slice(1, data[0].length) : data[0]
               },
-          tbody = raw
-            .slice(thead ? 1 : 0, raw.length)
+          tbody = data
+            .slice(thead ? 1 : 0, data.length)
             .map(row =>
               rowHeads
                 ? { th: row[0], td: row.slice(1, row.length) }
@@ -412,6 +412,7 @@ const ChartistRenderSuper = function(SuperClass) {
               )
               .join("")}
           </tbody>`;
+        console.log('table',html,JSON.stringify(thead),JSON.stringify(tbody));
         table.innerHTML = html;
         this.appendChild(table);
       } else if (table) {
@@ -420,32 +421,32 @@ const ChartistRenderSuper = function(SuperClass) {
     }
 
     /**
-     * updates data from rawData
+     * updates chartData from data
      *
      */
-    _updateData() {
-      let raw = this.rawData,
-        colHeads = raw && raw[0] && raw[0][1] && isNaN(raw[0][1]),
-        rowHeads = raw && raw[1] && raw[1][0] && isNaN(raw[1][0]),
-        labels = colHeads ? raw[0] : undefined, //raw[0].slice(1,raw.length) : raw[0],
-        body = colHeads && raw[1] ? raw.slice(1, raw.length) : raw;
+    _updateChartData() {
+      let data = this.data,
+        colHeads = data && data[0] && data[0][1] && isNaN(data[0][1]),
+        rowHeads = data && data[1] && data[1][0] && isNaN(data[1][0]),
+        labels = colHeads ? data[0] : undefined, 
+        body = colHeads && data[1] ? data.slice(1, data.length) : data;
       if (rowHeads) {
         labels = labels.slice(1, labels.length);
         body = body.map(row => row.slice(1, row.length));
       }
       this.__dataReady = true;
-      this.data = {
+      this.chartData = {
         labels: labels,
         series: this.type === "pie" ? body[0] : body
       };
     }
 
     /**
-     * Updates rawData from table
+     * Updates data from table
      */
-    _updateRawData() {
+    _updateData() {
       let table = this.querySelector("table"),
-        rawData = [];
+        data = [];
       if (table)
         table.querySelectorAll("tr").forEach(tr => {
           let temp = [];
@@ -453,8 +454,10 @@ const ChartistRenderSuper = function(SuperClass) {
             let html = td.innerHTML.trim();
             temp.push(isNaN(html) ? html : parseInt(html));
           });
-          rawData.push(temp);
+          data.push(temp);
         });
+      console.log('_updateData',table ? table.innerHTML : ``,JSON.stringify(this.data),JSON.stringify(data),JSON.stringify(this.data) !== JSON.stringify(data));
+      if(JSON.stringify(this.data) !== JSON.stringify(data)) this.data = data;
     }
   };
 };

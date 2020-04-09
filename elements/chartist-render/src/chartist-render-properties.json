@@ -1,46 +1,17 @@
 {
   /**
-   * The unique identifier of the chart.
-   */
-  "id": {
-    "type": "String"
-  },
-  /**
-   * The type of chart:bar, line, or pie
-   */
-  "type": {
-    "type": "String"
-  },
-  /**
-   * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
-Container class	Ratio
-.ct-square          1
-.ct-minor-second	  15:16
-.ct-major-second	  8:9
-.ct-minor-third	    5:6
-.ct-major-third	    4:5
-.ct-perfect-fourth	3:4
-.ct-perfect-fifth	  2:3
-.ct-minor-sixth	    5:8
-.ct-golden-section	1:1.618
-.ct-major-sixth	    3:5
-.ct-minor-seventh	  9:16
-.ct-major-seventh	  8:15
-.ct-octave	        1:2
-.ct-major-tenth	    2:5
-.ct-major-eleventh	3:8
-.ct-major-twelfth	  1:3
-.ct-double-octave	  1:4```
-   */
-  "scale": {
-    "type": "String"
-  },
-  /**
    * DEPRECATED: Use heading slot instead for progressive enhancement.
    */
   "chartTitle": {
     "type": "String",
     "attribute": "chart-title"
+  },
+  /**
+   * Raw data pulled in from the csv file and converted to an array.
+   */
+  "chartData": {
+    "type": "Array",
+    "attribute": "chart-data"
   },
   /**
    * DEPRECATED: Use desc slot instead for progressive enhancement.
@@ -50,13 +21,13 @@ Container class	Ratio
     "attribute": "chart-desc"
   },
   /**
-   * DEPRECATED: Use an accessible table in unnamed slot for maxium accessibility and SEO.
+   * Use an accessible table in unnamed slot for maxium accessibility and SEO.
    * As table:
    * <table>
    *     <thead><tr><th scope="col">label 1</th>...</tr></thead>
    *     <tbody><tr><td>1</td>...</tr>...</tbody>
    * </table>
-
+   *
    * DEPRECATED Method: 
    * {
    *   labels: ["label 1", "label 2", "label 3"]
@@ -67,7 +38,8 @@ Container class	Ratio
    * }
    */
   "data": {
-    "type": "Object"
+    "type": "Object",
+    "attribute": "data"
   },
   /**
    * Location of the CSV file.
@@ -76,6 +48,12 @@ Container class	Ratio
     "type": "String",
     "attribute": "data-source",
     "reflect": true
+  },
+  /**
+   * The unique identifier of the chart.
+   */
+  "id": {
+    "type": "String"
   },
   /**
    * The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.
@@ -106,13 +84,6 @@ Container class	Ratio
    */
   "pluginFillDonutItems": {
     "type": "Array"
-  },
-  /**
-   * Raw data pulled in from the csv file and converted to an array.
-   */
-  "rawData": {
-    "type": "Array",
-    "attribute": "raw-data"
   },
   /**
    * The responsive options.
@@ -149,10 +120,40 @@ Container class	Ratio
     "attribute": "responsive-options"
   },
   /**
+   * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
+Container class	Ratio
+.ct-square          1
+.ct-minor-second	  15:16
+.ct-major-second	  8:9
+.ct-minor-third	    5:6
+.ct-major-third	    4:5
+.ct-perfect-fourth	3:4
+.ct-perfect-fifth	  2:3
+.ct-minor-sixth	    5:8
+.ct-golden-section	1:1.618
+.ct-major-sixth	    3:5
+.ct-minor-seventh	  9:16
+.ct-major-seventh	  8:15
+.ct-octave	        1:2
+.ct-major-tenth	    2:5
+.ct-major-eleventh	3:8
+.ct-major-twelfth	  1:3
+.ct-double-octave	  1:4```
+   */
+  "scale": {
+    "type": "String"
+  },
+  /**
    * The show data in table form as well? Default is false.
    */
   "showTable": {
     "type": "Boolean",
     "attribute": "show-table"
+  },
+  /**
+   * The type of chart:bar, line, or pie
+   */
+  "type": {
+    "type": "String"
   }
 }

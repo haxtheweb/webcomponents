@@ -8,6 +8,7 @@ import {
   boolean
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
 
 export default {
   title: "Charts|Chartist",
@@ -42,8 +43,38 @@ export const ChartistRenderPieStory = () => {
   let pie = {
     labels: ["Bananas", "Apples", "Grapes"],
     series: [20, 15, 40]
-  };
-  return html`
+  }, props = {...ChartistRender.properties}, input;
+  /**
+   * 
+   * [
+   *   {
+   *     title: "User-friendly title",
+   *     property: "propertyName",
+   *     slot: "slotName",
+   *     inputMethod: "HAXschema-compatible inputMethod",
+   *     options: {"value": "select field options object"},
+   *     defaultValue: "optional default value to override random value generator",
+   *   }
+   * ]
+   */
+  delete props.chartData;
+  delete props.type;
+  delete props.scale;
+  input = utils.getElementProperties(props);
+  input = [...input,...[
+    { property: "accentColor", inputMethod: "colorpicker", defaultValue: utils.getRandomColor() },
+    { property: "dark", inputMethod: "boolean" },
+    { property: "scale", inputMethod: "select", options: scale, defaultValue: "ct-square" },
+    { property: "type", inputMethod: "select", options: ["bar","line","pie"], defaultValue: "pie" },
+    { slot: "", inputMethod: "textarea" },
+    { slot: "heading", inputMethod: "textarea", defaultValue: utils.getRandomTextarea() },
+    { slot: "desc", inputMethod: "textarea", defaultValue: utils.getRandomTextarea() }
+  ]];
+  console.log(props,input);
+  return utils.makeElementFromClass(ChartistRender, {
+    data: {labels: ["Bananas","Apples","Grapes"], series: [20,15,40]}
+  });
+  /*return html`
     <chartist-render
       id=${text("Chart Id (id)", "line-or-pie", "property")}
       chart-title=${text("Chart Title (chartTitle)", "Chart Title", "property")}
@@ -53,14 +84,14 @@ export const ChartistRenderPieStory = () => {
         "property"
       )}
       .data=${pie}
-      show-table=${boolean("Show Table (showTable)", false, "property")}
+      ?show-table=${boolean("Show Table (showTable)", false, "property")}
       scale=${select("Scale (scale)", scale, "ct-quarter", "property")}
       type="pie"
     >
     </chartist-render>
-  `;
+  `;*/
 };
-export const ChartistRenderLineOrBarStory = () => {
+/*export const ChartistRenderLineOrBarStory = () => {
   let data = {
       labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
       series: [
@@ -101,10 +132,10 @@ export const ChartistRenderLineOrBarStory = () => {
       )}
       .data=${data}
       .options=${options}
-      show-table=${boolean("Show Table (showTable)", false, "property")}
+      ?show-table=${boolean("Show Table (showTable)", false, "property")}
       scale=${select("Scale (scale)", scale, "ct-quarter", "property")}
       type=${select("Type (type)", ["line", "bar"], "line", "property")}
     >
     </chartist-render>
   `;
-};
+};*/
