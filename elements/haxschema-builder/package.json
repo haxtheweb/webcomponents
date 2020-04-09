@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "dynamically build and visualize HAXschema",
   "repository": {
     "type": "git",
@@ -41,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.6.4",
-    "@lrnwebcomponents/hax-body": "^2.6.4",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.6.4",
-    "@lrnwebcomponents/json-editor": "^2.6.4",
-    "@lrnwebcomponents/simple-fields": "^2.6.4",
+    "@lrnwebcomponents/code-editor": "^2.6.5",
+    "@lrnwebcomponents/hax-body": "^2.6.5",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.6.5",
+    "@lrnwebcomponents/json-editor": "^2.6.5",
+    "@lrnwebcomponents/simple-fields": "^2.6.5",
     "lit-element": "2.2.1"
   },
   "devDependencies": {

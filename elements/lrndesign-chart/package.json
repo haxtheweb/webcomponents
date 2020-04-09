@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "Automated conversion of lrndesign-chart/",
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^2.6.4",
-    "@lrnwebcomponents/simple-colors": "^2.6.4",
+    "@lrnwebcomponents/chartist-render": "^2.6.5",
+    "@lrnwebcomponents/simple-colors": "^2.6.5",
     "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.4",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
