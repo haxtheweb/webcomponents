@@ -20,7 +20,11 @@ const ChartistRenderSuper = function(SuperClass) {
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
       window.ESGlobalBridge.requestAvailability();
-      this._loadScripts("chartistLib", "lib/chartist/dist/chartist.min.js",this._chartistLoaded);
+      this._loadScripts(
+        "chartistLib",
+        "lib/chartist/dist/chartist.min.js",
+        this._chartistLoaded
+      );
       this._updateRawData();
       this.observer.observe(this, {
         attributes: false,
@@ -105,7 +109,7 @@ const ChartistRenderSuper = function(SuperClass) {
               detail: this
             })
           );
-        } else if (propName === "rawData"){
+        } else if (propName === "rawData") {
           /**
            * Fires when raw-data changes
            * @event raw-data-changed
@@ -115,7 +119,8 @@ const ChartistRenderSuper = function(SuperClass) {
               detail: this
             })
           );
-          if(JSON.stringify(this.rawData) !== JSON.stringify(oldValue)) this._renderTable();
+          if (JSON.stringify(this.rawData) !== JSON.stringify(oldValue))
+            this._renderTable();
           this._updateData();
         } else {
           this._getChart();
@@ -218,14 +223,30 @@ const ChartistRenderSuper = function(SuperClass) {
           this.pluginAxisTitle &&
           Chartist.plugins.ctAxisTitle
         ) {
-          options.plugins.push(Chartist.plugins.ctAxisTitle(this.pluginAxisTitle));
+          options.plugins.push(
+            Chartist.plugins.ctAxisTitle(this.pluginAxisTitle)
+          );
         }
-        if(this.type === 'line' && this.pluginPointLabels && Chartist.plugins.ctPointLabels){
-          if(!this.pluginPointLabels.labelInterpolationFnc) this.pluginPointLabels.labelInterpolationFnc = Chartist.noop;
-          options.plugins.push(Chartist.plugins.ctPointLabels(this.pluginPointLabels));
+        if (
+          this.type === "line" &&
+          this.pluginPointLabels &&
+          Chartist.plugins.ctPointLabels
+        ) {
+          if (!this.pluginPointLabels.labelInterpolationFnc)
+            this.pluginPointLabels.labelInterpolationFnc = Chartist.noop;
+          options.plugins.push(
+            Chartist.plugins.ctPointLabels(this.pluginPointLabels)
+          );
         }
-        if(this.type === 'pie' && options.donut && this.pluginFillDonutItems && Chartist.plugins.fillDonut){
-          options.plugins.push(Chartist.plugins.fillDonut(this.pluginFillDonutItems));
+        if (
+          this.type === "pie" &&
+          options.donut &&
+          this.pluginFillDonutItems &&
+          Chartist.plugins.fillDonut
+        ) {
+          options.plugins.push(
+            Chartist.plugins.fillDonut(this.pluginFillDonutItems)
+          );
         }
       }
       return options;
@@ -236,8 +257,8 @@ const ChartistRenderSuper = function(SuperClass) {
      */
     _getChart() {
       let chart = null,
-      target = this.shadowRoot.querySelector("#chart");
-      
+        target = this.shadowRoot.querySelector("#chart");
+
       if (target !== null && typeof Chartist === "object" && this.data) {
         if (this.type == "bar") {
           if (
@@ -326,7 +347,7 @@ const ChartistRenderSuper = function(SuperClass) {
     _handleResponse(e) {
       this.rawData = this._CSVtoArray(e.detail.response);
     }
-    
+
     /**
      * uses ESGlobalBridge to load scripts
      *
@@ -337,10 +358,7 @@ const ChartistRenderSuper = function(SuperClass) {
     _loadScripts(classname, path, fnc = this._getChart) {
       let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
         location = `${basePath}${path}`;
-      window.addEventListener(
-        `es-bridge-${classname}-loaded`,
-        fnc.bind(this)
-      );
+      window.addEventListener(`es-bridge-${classname}-loaded`, fnc.bind(this));
       window.ESGlobalBridge.instance.load(classname, location);
     }
 
@@ -356,32 +374,48 @@ const ChartistRenderSuper = function(SuperClass) {
       if (raw) {
         let rowHeads = raw[1] && raw[1][0] && isNaN(raw[1][0]),
           colHeads = raw[0] && raw[0][1] && isNaN(raw[0][1]),
-          thead = !colHeads ? false : {
-            row: raw[0][0], 
-            col: rowHeads ? raw[0].slice(1,raw[0].length) : raw[0]
-          },
-          tbody = raw.slice(thead ? 1  : 0,raw.length).map(row=>rowHeads
-            ?{th: row[0], td: row.slice(1,row.length)}
-            :{td: row});
+          thead = !colHeads
+            ? false
+            : {
+                row: raw[0][0],
+                col: rowHeads ? raw[0].slice(1, raw[0].length) : raw[0]
+              },
+          tbody = raw
+            .slice(thead ? 1 : 0, raw.length)
+            .map(row =>
+              rowHeads
+                ? { th: row[0], td: row.slice(1, row.length) }
+                : { td: row }
+            );
         table = table || document.createElement("table");
-        if(thead) html += `
+        if (thead)
+          html += `
           <thead><tr>
             ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
-            ${thead.col ? thead.col.map(th=>`<th scope="col">${th}</th>`).join('') : ``}
+            ${
+              thead.col
+                ? thead.col.map(th => `<th scope="col">${th}</th>`).join("")
+                : ``
+            }
           </tr></thead>`;
-        if(tbody.length > 0) html += `
+        if (tbody.length > 0)
+          html += `
           <tbody>
-            ${tbody.map(tr=> `
+            ${tbody
+              .map(
+                tr => `
               <tr>
                 ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
-                ${tr.td ? tr.td.map(td=>`<td>${td}</td>`).join('') : ``}
+                ${tr.td ? tr.td.map(td => `<td>${td}</td>`).join("") : ``}
               </tr>
-            `).join('')}
+            `
+              )
+              .join("")}
           </tbody>`;
         table.innerHTML = html;
         this.appendChild(table);
-      } else if(table) {
-        table.innerHTML = '';
+      } else if (table) {
+        table.innerHTML = "";
       }
     }
 
@@ -389,15 +423,15 @@ const ChartistRenderSuper = function(SuperClass) {
      * updates data from rawData
      *
      */
-    _updateData(){
-      let raw = this.rawData, 
+    _updateData() {
+      let raw = this.rawData,
         colHeads = raw && raw[0] && raw[0][1] && isNaN(raw[0][1]),
         rowHeads = raw && raw[1] && raw[1][0] && isNaN(raw[1][0]),
         labels = colHeads ? raw[0] : undefined, //raw[0].slice(1,raw.length) : raw[0],
-        body = colHeads && raw[1] ? raw.slice(1,raw.length) : raw;
-      if(rowHeads) {
-        labels = labels.slice(1,labels.length);
-        body = body.map(row=>row.slice(1,row.length));
+        body = colHeads && raw[1] ? raw.slice(1, raw.length) : raw;
+      if (rowHeads) {
+        labels = labels.slice(1, labels.length);
+        body = body.map(row => row.slice(1, row.length));
       }
       this.__dataReady = true;
       this.data = {
@@ -412,14 +446,15 @@ const ChartistRenderSuper = function(SuperClass) {
     _updateRawData() {
       let table = this.querySelector("table"),
         rawData = [];
-      if(table) table.querySelectorAll("tr").forEach(tr=>{
-        let temp = [];
-        tr.querySelectorAll("th,td").forEach(td=>{
-          let html = td.innerHTML.trim();
-          temp.push(isNaN(html) ? html  : parseInt(html));
+      if (table)
+        table.querySelectorAll("tr").forEach(tr => {
+          let temp = [];
+          tr.querySelectorAll("th,td").forEach(td => {
+            let html = td.innerHTML.trim();
+            temp.push(isNaN(html) ? html : parseInt(html));
+          });
+          rawData.push(temp);
         });
-        rawData.push(temp);
-      });
     }
   };
 };
