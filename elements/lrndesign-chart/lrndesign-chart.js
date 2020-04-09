@@ -536,6 +536,241 @@ ${super.render()}`;
       return "lrndesign-chart";
     }
 
+    /**
+     * gets axis title options
+     * @readonly
+     */
+    get axisTitles() {
+      let axisTitles = {};
+      if (this.axisXTitle)
+        axisTitles.axisX = {
+          axisTitle: this.axisXTitle,
+          offset: { x: this.axisXTitleOffsetX, y: this.axisXTitleOffsetY },
+          textAnchor: ["start", "end", "middle"].includes(this.axisXTitleAnchor)
+            ? this.axisXTitleAnchor
+            : "middle"
+        };
+      if (this.axisYTitle)
+        axisTitles.axisY = {
+          axisTitle: this.axisYTitle,
+          offset: { x: this.axisYTitleOffsetX, y: this.axisYTitleOffsetY },
+          textAnchor: ["start", "end", "middle"].includes(this.axisYTitleAnchor)
+            ? this.axisYTitleAnchor
+            : "middle"
+        };
+      return this.axisXTitle || this.axisYTitle ? axisTitles : undefined;
+    }
+
+    // extends haxProperty definition to line and bar properties
+    static get lineBarHaxProperties() {
+      return {
+        gridBackground: [
+          {
+            property: "showGridBackground",
+            title: "Show Grid Background",
+            inputMethod: "boolean"
+          }
+        ],
+        padding: [
+          {
+            property: "chartPaddingTop",
+            title: "Chart Padding (top)",
+            inputMethod: "text-field"
+          },
+          {
+            property: "chartPaddingBottom",
+            title: "Chart Padding (bottom)",
+            inputMethod: "text-field"
+          },
+          {
+            property: "chartPaddingLeft",
+            title: "Chart Padding (left)",
+            inputMethod: "text-field"
+          },
+          {
+            property: "chartPaddingRight",
+            title: "Chart Padding (right)",
+            inputMethod: "text-field"
+          }
+        ],
+        minMax: [
+          {
+            property: "low",
+            title: "Chart Minimum",
+            description: `
+            Overriding the natural low of the chart allows you to zoom in 
+            or limit the chart's lowest displayed value`,
+            inputMethod: "number"
+          },
+          {
+            property: "high",
+            title: "Chart Maximum",
+            description: `
+            Overriding the natural high of the chart allows you to zoom in 
+            or limit the chart's highest displayed value`,
+            inputMethod: "number"
+          }
+        ],
+        xAxis: [
+          {
+            property: "axisXShowGrid",
+            title: "X-Axis Show Grid",
+            description: "Show the X-Axis's grid.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "axisXOffset",
+            title: "X-Axis Offset",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXPosition",
+            title: "X-Axis Position",
+            description: `
+              Position where labels are placed. Can be set to "start" or "end" 
+              where "start" is equivalent to left or top on vertical axis
+              and "end" is equivalent to right or bottom on horizontal axis`,
+            inputMethod: "text-field"
+          },
+          {
+            property: "axisXShowLabel",
+            title: "X-Axis Show Label",
+            description: "Show the X-Axis's label.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "axisXLabelOffsetX",
+            title: "X-Axis Label (horizontal offset)",
+            description: "Horizontal position of the X-Axis's labels.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitleOffsetY",
+            title: "X-Axis Label (vertical offset)",
+            description: "Vertical position of the X-Axis's labels.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitle",
+            title: "X-Axis Title",
+            description: "Optional title for X-axis.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "axisXTitleOffsetX",
+            title: "X-Axis Title (horizontal offset)",
+            description: "Horizontal position of the X-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXLabelOffsetY",
+            title: "X-Axis Title (vertical offset)",
+            description: "Vertical position of the X-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisXTitleAnchor",
+            title: "X-Axis Title Anchoe",
+            description: "Optional anchor for X-axis's title.",
+            inputMethod: "select",
+            options: {
+              middle: "middle",
+              end: "end",
+              start: "start"
+            }
+          }
+        ],
+        yAxis: [
+          {
+            property: "axisYShowGrid",
+            title: "Y-Axis: Show Grid",
+            description: "Show the Y-Axis's grid.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "axisYOffset",
+            title: "Y-Axis Offset",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYPosition",
+            title: "Y-Axis Position",
+            description: `
+              Position where labels are placed. Can be set to "start" or "end" 
+              where "start" is equivalent to left or top on vertical axis
+              and "end" is equivalent to right or bottom on horizontal axis`,
+            inputMethod: "text-field"
+          },
+          {
+            property: "axisYShowLabel",
+            title: "Y-Axis Show Label",
+            description: "Show the Y-Axis's label.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "axisYLabelOffsetX",
+            title: "Y-Axis Label (horizontal offset)",
+            description: "Horizontal position of the Y-Axis's label.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYLabelOffsetY",
+            title: "Y-Axis Label (vertical offset)",
+            description: "Vertical position of the Y-Axis's label.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYScaleMinSpace",
+            title: "Y-Axis Scale Minimum Space",
+            description: "Specifies minimum height in pixel of scale steps.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYOnlyInteger",
+            title: "Y-Axis Scale (only integers)",
+            description:
+              "Use only integer values (whole numbers) for the scale steps.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "axisYTitle",
+            title: "Y-Axis Title",
+            description: "Optional title for Y-axis.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "axisYTitleOffsetX",
+            title: "Y-Axis Title (vertical offset)",
+            description: "Horizontal position of the Y-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYLabelOffsetY",
+            title: "Y-Axis Title (horizontal offset)",
+            description: "Horizontal position of the Y-Axis's title.",
+            inputMethod: "number"
+          },
+          {
+            property: "axisYTitleAnchor",
+            title: "Y-Axis Title Anchoe",
+            description: "Optional anchor for Y-axis's title.",
+            inputMethod: "select",
+            options: {
+              middle: "middle",
+              end: "end",
+              start: "start"
+            }
+          },
+          {
+            property: "axisYTitleFlip",
+            title: "Y-Axis Title Flip",
+            description: "Flip the title for Y-axis?",
+            inputMethod: "boolean"
+          }
+        ]
+      };
+    }
+
     //properties common to line and bar charts
     static get lineBarProperties() {
       return {
@@ -774,216 +1009,6 @@ ${super.render()}`;
       };
     }
 
-    // extends haxProperty definition to line and bar properties
-    static get lineBarHaxProperties() {
-      return {
-        gridBackground: [
-          {
-            property: "showGridBackground",
-            title: "Show Grid Background",
-            inputMethod: "boolean"
-          }
-        ],
-        padding: [
-          {
-            property: "chartPaddingTop",
-            title: "Chart Padding (top)",
-            inputMethod: "text-field"
-          },
-          {
-            property: "chartPaddingBottom",
-            title: "Chart Padding (bottom)",
-            inputMethod: "text-field"
-          },
-          {
-            property: "chartPaddingLeft",
-            title: "Chart Padding (left)",
-            inputMethod: "text-field"
-          },
-          {
-            property: "chartPaddingRight",
-            title: "Chart Padding (right)",
-            inputMethod: "text-field"
-          }
-        ],
-        minMax: [
-          {
-            property: "low",
-            title: "Chart Minimum",
-            description: `
-            Overriding the natural low of the chart allows you to zoom in 
-            or limit the chart's lowest displayed value`,
-            inputMethod: "number"
-          },
-          {
-            property: "high",
-            title: "Chart Maximum",
-            description: `
-            Overriding the natural high of the chart allows you to zoom in 
-            or limit the chart's highest displayed value`,
-            inputMethod: "number"
-          }
-        ],
-        xAxis: [
-          {
-            property: "axisXShowGrid",
-            title: "X-Axis Show Grid",
-            description: "Show the X-Axis's grid.",
-            inputMethod: "boolean"
-          },
-          {
-            property: "axisXOffset",
-            title: "X-Axis Offset",
-            inputMethod: "number"
-          },
-          {
-            property: "axisXPosition",
-            title: "X-Axis Position",
-            description: `
-              Position where labels are placed. Can be set to "start" or "end" 
-              where "start" is equivalent to left or top on vertical axis
-              and "end" is equivalent to right or bottom on horizontal axis`,
-            inputMethod: "text-field"
-          },
-          {
-            property: "axisXShowLabel",
-            title: "X-Axis Show Label",
-            description: "Show the X-Axis's label.",
-            inputMethod: "boolean"
-          },
-          {
-            property: "axisXLabelOffsetX",
-            title: "X-Axis Label (horizontal offset)",
-            description: "Horizontal position of the X-Axis's labels.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisXTitleOffsetY",
-            title: "X-Axis Label (vertical offset)",
-            description: "Vertical position of the X-Axis's labels.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisXTitle",
-            title: "X-Axis Title",
-            description: "Optional title for X-axis.",
-            inputMethod: "textfield"
-          },
-          {
-            property: "axisXTitleOffsetX",
-            title: "X-Axis Title (horizontal offset)",
-            description: "Horizontal position of the X-Axis's title.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisXLabelOffsetY",
-            title: "X-Axis Title (vertical offset)",
-            description: "Vertical position of the X-Axis's title.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisXTitleAnchor",
-            title: "X-Axis Title Anchoe",
-            description: "Optional anchor for X-axis's title.",
-            inputMethod: "select",
-            options: {
-              middle: "middle",
-              end: "end",
-              start: "start"
-            }
-          }
-        ],
-        yAxis: [
-          {
-            property: "axisYShowGrid",
-            title: "Y-Axis: Show Grid",
-            description: "Show the Y-Axis's grid.",
-            inputMethod: "boolean"
-          },
-          {
-            property: "axisYOffset",
-            title: "Y-Axis Offset",
-            inputMethod: "number"
-          },
-          {
-            property: "axisYPosition",
-            title: "Y-Axis Position",
-            description: `
-              Position where labels are placed. Can be set to "start" or "end" 
-              where "start" is equivalent to left or top on vertical axis
-              and "end" is equivalent to right or bottom on horizontal axis`,
-            inputMethod: "text-field"
-          },
-          {
-            property: "axisYShowLabel",
-            title: "Y-Axis Show Label",
-            description: "Show the Y-Axis's label.",
-            inputMethod: "boolean"
-          },
-          {
-            property: "axisYLabelOffsetX",
-            title: "Y-Axis Label (horizontal offset)",
-            description: "Horizontal position of the Y-Axis's label.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisYLabelOffsetY",
-            title: "Y-Axis Label (vertical offset)",
-            description: "Vertical position of the Y-Axis's label.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisYScaleMinSpace",
-            title: "Y-Axis Scale Minimum Space",
-            description: "Specifies minimum height in pixel of scale steps.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisYOnlyInteger",
-            title: "Y-Axis Scale (only integers)",
-            description:
-              "Use only integer values (whole numbers) for the scale steps.",
-            inputMethod: "boolean"
-          },
-          {
-            property: "axisYTitle",
-            title: "Y-Axis Title",
-            description: "Optional title for Y-axis.",
-            inputMethod: "textfield"
-          },
-          {
-            property: "axisYTitleOffsetX",
-            title: "Y-Axis Title (vertical offset)",
-            description: "Horizontal position of the Y-Axis's title.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisYLabelOffsetY",
-            title: "Y-Axis Title (horizontal offset)",
-            description: "Horizontal position of the Y-Axis's title.",
-            inputMethod: "number"
-          },
-          {
-            property: "axisYTitleAnchor",
-            title: "Y-Axis Title Anchoe",
-            description: "Optional anchor for Y-axis's title.",
-            inputMethod: "select",
-            options: {
-              middle: "middle",
-              end: "end",
-              start: "start"
-            }
-          },
-          {
-            property: "axisYTitleFlip",
-            title: "Y-Axis Title Flip",
-            description: "Flip the title for Y-axis?",
-            inputMethod: "boolean"
-          }
-        ]
-      };
-    }
-
     /**
      * override this with type-specific options
      * @returns {object} options specific to both bar and line charts
@@ -1022,7 +1047,7 @@ ${super.render()}`;
           bottom: this.chartPaddingBottom + (this.axisXTitle ? 40 : 0),
           left: this.chartPaddingLeft + (this.axisYTitle ? 30 : 0),
           right: this.chartPaddingRight + (this.axisYTitle ? 15 : 0),
-          top: this.chartPaddingTop  + (this.axisXTitle ? 20 : 0)
+          top: this.chartPaddingTop + (this.axisXTitle ? 20 : 0)
         }
       };
     }
@@ -1042,93 +1067,15 @@ ${super.render()}`;
 
     updated(changedProperties) {
       changedProperties.forEach((oldValue, propName) => {
-        if((propName.indexOf('axisXTitle') > -1 || propName.indexOf('axisYTitle') > -1) && this[propName] !== oldValue){
+        if (
+          (propName.indexOf("axisXTitle") > -1 ||
+            propName.indexOf("axisYTitle") > -1) &&
+          this[propName] !== oldValue
+        ) {
           this.pluginAxisTitle = this.axisTitles;
         }
       });
       if (super.updated) super.updated(changedProperties);
-    }
-
-    /**
-     * creates an accessible table based on data object
-     * @memberof LrndesignChart
-     */
-    _renderTable() {
-      let table = this.querySelector("table");
-      if (table) table.remove();
-      let html = "";
-      table = document.createElement("table");
-      if (this.data.labels)
-        html += `<thead><tr>${(this.data.labels || [])
-          .map(label => `<th scope="col">${label}</th>`)
-          .join("")}</tr></thead>`;
-      if (this.data.series)
-        html += `<tbody>
-          ${
-            this.data.series && Array.isArray(this.data.series[0])
-              ? (this.data.series || [])
-                  .map(
-                    row =>
-                      `<tr>${(row || [])
-                        .map(col => `<td>${col}</td>`)
-                        .join("")}</tr>`
-                  )
-                  .join("")
-              : `<tr>${(this.data.series || [])
-                  .map(col => `<td>${col}</td>`)
-                  .join("")}</tr>`
-          }
-        </tbody>`;
-      table.innerHTML = html;
-      this.appendChild(table);
-    }
-
-    /**
-     * refreshes the chart
-     */
-    makeChart() {
-      let chart = this.shadowRoot.querySelector("#chart");
-      if (chart) {
-        chart.options = this._getOptions();
-        /**
-         * Fired when chart options change.
-         *
-         * @event options-changed
-         * @param {object} chart options
-         *
-         */
-        this.dispatchEvent(
-          new CustomEvent("options-changed", { detail: this })
-        );
-        chart.makeChart();
-        /**
-         * Fired when chart changes.
-         *
-         * @event chart-changed
-         *
-         */
-        this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
-      }
-    }
-    /**
-     * gets axis title options
-     * @readonly
-     */
-    get axisTitles() {
-      let axisTitles = {};
-      if(this.axisXTitle) axisTitles.axisX = {
-        axisTitle: this.axisXTitle,
-        offset: { x: this.axisXTitleOffsetX, y: this.axisXTitleOffsetY },
-        textAnchor: ["start","end","middle"].includes(this.axisXTitleAnchor) ? this.axisXTitleAnchor : "middle"
-      };
-      if(this.axisYTitle) axisTitles.axisY = {
-        axisTitle: this.axisYTitle,
-        offset: { x: this.axisYTitleOffsetX, y: this.axisYTitleOffsetY },
-        textAnchor: ["start","end","middle"].includes(this.axisYTitleAnchor) ? this.axisYTitleAnchor : "middle"
-      };
-      return this.axisXTitle || this.axisYTitle
-        ? axisTitles
-        : undefined;
     }
 
     /**
@@ -1158,12 +1105,12 @@ ${super.render()}`;
       this.axisXShowGrid = true;
       this.axisXShowLabel = true;
       this.axisXTopLeft = false;
-      this.axisXTitleOffsetX  = 0; 
-      this.axisXTitleOffsetY  = 50;
-      this.axisXTitleAnchor = 'middle'; 
-      this.axisYTitleOffsetX  = 0; 
-      this.axisYTitleOffsetY  = -25; 
-      this.axisYTitleAnchor = 'middle'; 
+      this.axisXTitleOffsetX = 0;
+      this.axisXTitleOffsetY = 50;
+      this.axisXTitleAnchor = "middle";
+      this.axisYTitleOffsetX = 0;
+      this.axisYTitleOffsetY = -25;
+      this.axisYTitleAnchor = "middle";
       this.axisYTitleFlip = false;
       this.axisYLabelOffsetX = 0;
       this.axisYLabelOffsetY = 0;

@@ -229,8 +229,8 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
    * @memberof LrndesignChart
    */
   get options() {
-    return { 
-      ...super.options, 
+    return {
+      ...super.options,
       startAngle: this.startAngle,
       chartPadding: this.chartPadding,
       donut: this.donut,

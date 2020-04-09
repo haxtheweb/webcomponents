@@ -21,6 +21,7 @@ $ct-text-line-height: #{var(--chartist-line-height, #{$ct-text-line-height})};
   height: 0;
   overflow: hidden;
 }
+
 .ct-axis-title {
   fill: #{var(--chartist-text-color)};
 }

@@ -116,8 +116,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
       /**
        * Optional interpolation function for point labels
        */
-      pointLabelFunction: {
-      }
+      pointLabelFunction: {}
     };
   }
 
@@ -165,9 +164,9 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
           title: "Show Point Labels",
           inputMethod: "select",
           options: {
-            "middle": "Middle",
-            "start": "Start",
-            "end": "End"
+            middle: "Middle",
+            start: "Start",
+            end: "End"
           }
         },
         {
@@ -222,8 +221,8 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
    * @memberof LrndesignChart
    */
   get options() {
-    return { 
-      ...super.options, 
+    return {
+      ...super.options,
       ...this.lineBarOptions,
       areaBase: this.areaBase,
       fullWidth: this.fullWidth,
@@ -233,7 +232,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
       showPoint: this.showPoint
     };
   }
-  
+
   /**
    * gets axis title options
    * @readonly
@@ -241,22 +240,28 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
   get pointLabels() {
     return this.showPointLabels
       ? {
-        labelOffset: {
-          x: this.pointLabelsOffsetX,
-          y: this.pointLabelsOffsetY,
-        },
-        textAnchor: ["start","end","middle"].includes(this.pointLabelsAnchor) ? this.pointLabelsAnchor : "middle",
-        labelInterpolationFnc: this.pointLabelFunction || undefined
-      }
+          labelOffset: {
+            x: this.pointLabelsOffsetX,
+            y: this.pointLabelsOffsetY
+          },
+          textAnchor: ["start", "end", "middle"].includes(
+            this.pointLabelsAnchor
+          )
+            ? this.pointLabelsAnchor
+            : "middle",
+          labelInterpolationFnc: this.pointLabelFunction || undefined
+        }
       : undefined;
   }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if(
-        (propName === "showPointLabels" || propName.indexOf('pointLabel') > -1) 
-        && propName !== "pluginPointLabels" && this[propName] !== oldValue
-      ){
+      if (
+        (propName === "showPointLabels" ||
+          propName.indexOf("pointLabel") > -1) &&
+        propName !== "pluginPointLabels" &&
+        this[propName] !== oldValue
+      ) {
         this.pluginPointLabels = this.pointLabels;
       }
     });

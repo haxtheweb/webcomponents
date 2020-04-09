@@ -879,23 +879,23 @@ Container class	Ratio
     "type": Object
   },
   /**
-   * Optional data for chartist-plugin-axistitle, 
-   * as in { axisX: { axisTitle: "Time (mins)", offset: { x: 0, y: 50 }, textAnchor: "middle" }, axisY: { axisTitle: "Goals", axisClass: "ct-axis-title", offset: { x: 0, y: -1 }, flipTitle: false } } 
+   * Optional data for chartist-plugin-axistitle,
+   * as in { axisX: { axisTitle: "Time (mins)", offset: { x: 0, y: 50 }, textAnchor: "middle" }, axisY: { axisTitle: "Goals", axisClass: "ct-axis-title", offset: { x: 0, y: -1 }, flipTitle: false } }
    * See https://github.com/alexstanbury/chartist-plugin-axistitle
    */
   "pluginAxisTitle": {
     "type": Object
   },
   /**
-   * Optional data for chartist-plugin-pointlabels, 
-   * as in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop } 
+   * Optional data for chartist-plugin-pointlabels,
+   * as in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }
    * See https://github.com/gionkunz/chartist-plugin-pointlabels
    */
   "pluginPointLabels": {
     "type": Object
   },
   /**
-   * Optional array of items for chartist-plugin-filldonut, 
+   * Optional array of items for chartist-plugin-filldonut,
    * as in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]
    * See https://github.com/moxx/chartist-plugin-fill-donut
    */
@@ -903,10 +903,10 @@ Container class	Ratio
     "type": Array
   },
   /**
-   * Raw data pulled in from the csv file.
+   * Raw data pulled in from the csv file and converted to an array.
    */
   "rawData": {
-    "type": String,
+    "type": Array,
     "attribute": "raw-data"
   },
   /**
@@ -963,8 +963,8 @@ Container class	Ratio
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
       window.ESGlobalBridge.requestAvailability();
-      this._loadScripts("chartistLib", "lib/chartist/dist/chartist.min.js");
-      this._renderChart();
+      this._loadScripts("chartistLib", "lib/chartist/dist/chartist.min.js",this._chartistLoaded);
+      this._updateRawData();
       this.observer.observe(this, {
         attributes: false,
         childList: true,
@@ -986,15 +986,6 @@ Container class	Ratio
       );
       if (typeof Chartist === "object") this._chartistLoaded.bind(this);
     }
-    _loadScripts(classname, path) {
-      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
-        location = `${basePath}${path}`;
-      window.addEventListener(
-        `es-bridge-${classname}-loaded`,
-        this._chartistLoaded.bind(this)
-      );
-      window.ESGlobalBridge.instance.load(classname, location);
-    }
 
     /**
      * Store the tag name to make it easier to obtain directly.
@@ -1003,7 +994,11 @@ Container class	Ratio
     static get tag() {
       return "chartist-render";
     }
-
+    /**
+     * an array of plugins to load as [ [classname,  relativePath] ]
+     *
+     * @readonly
+     */
     get plugins() {
       return [
         [
@@ -1026,7 +1021,7 @@ Container class	Ratio
      * @returns {object}
      */
     get observer() {
-      let callback = () => this._renderChart();
+      let callback = () => this._updateRawData();
       return new MutationObserver(callback);
     }
 
@@ -1042,8 +1037,8 @@ Container class	Ratio
               detail: this
             })
           );
-          this._renderTable();
-        } else if (propName === "dataSource" && this.data !== oldValue) {
+          this._getChart();
+        } else if (propName === "dataSource" && this.dataSource !== oldValue) {
           /**
            * Fires when data-source changes
            * @event data-source-changed
@@ -1053,7 +1048,6 @@ Container class	Ratio
               detail: this
             })
           );
-          this._renderTable();
         } else if (propName === "rawData"){
           /**
            * Fires when raw-data changes
@@ -1064,8 +1058,10 @@ Container class	Ratio
               detail: this
             })
           );
+          if(JSON.stringify(this.rawData) !== JSON.stringify(oldValue)) this._renderTable();
+          this._updateData();
         } else {
-          this._renderChart();
+          this._getChart();
         }
       });
     }
@@ -1075,9 +1071,8 @@ Container class	Ratio
      * @memberof ChartistRender
      */
     makeChart() {
-      setTimeout(() => {
-        this.chart = this._renderChart();
-      }, 100);
+      this._getChart();
+      return this.chart;
     }
 
     // simple path from a url modifier
@@ -1093,7 +1088,7 @@ Container class	Ratio
       this.plugins.forEach(plugin =>
         window.removeEventListener(
           `es-bridge-${plugin[0]}-loaded`,
-          this._pluginLoaded.bind(this)
+          this._getChart.bind(this)
         )
       );
       super.disconnectedCallback();
@@ -1104,15 +1099,8 @@ Container class	Ratio
      */
     _chartistLoaded() {
       this.__chartistLoaded = true;
-      this._renderChart();
+      this._getChart();
       this.plugins.forEach(plugin => this._loadScripts(plugin[0], plugin[1]));
-    }
-
-    /**
-     * determines if char is ready
-     */
-    _pluginLoaded() {
-      this._renderChart();
     }
 
     /**
@@ -1152,64 +1140,18 @@ Container class	Ratio
     }
 
     /**
-     * Convert from csv text to an array in the table function
-     * @param {event} e event data
-     * @memberof ChartistRender
+     * Get unique ID from the chart
+     * @param {string} prefix for unique ID
+     * @returns {string} unique ID
      */
-    _handleResponse(e) {
-      this.rawData = this._CSVtoArray(e.detail.response);
-      let raw = this.rawData, 
-        body = this.type !== "pie" ? raw.slice(1, raw.length) : raw[1],
-        series = this.type !== "pie" && isNaN(body[0][0]) ? body.map(tr=>tr.slice(1, tr.length)) : body,
-        legend = this.type !== "pie" && isNaN(body[0][0]) ? [raw[0][0]] : undefined
-        if(legend) body.forEach(tr=>legend.push(tr[0]));
-      this.__dataReady = true;
-      this.data = {
-        labels: this.type !== "pie" && isNaN(body[0][0]) ? raw[0].slice(1, raw[0].length): raw[0],
-        series: series,
-        legend: legend
-      };
-      console.log('_handleResponse',this.rawData,this.data,raw);
+    _getUniqueId(prefix) {
+      let id = prefix + Date.now();
+      return id;
     }
     /**
-     * replaces existing slotted table with a new one based on data
-     * @memberof ChartistRender
+     * gets options plus plugins
+     * @readonly
      */
-    _renderTable() {
-      let html = "",
-        table = this.querySelector("table");
-      if (this.data) {
-        if (table) table.remove();
-        table = document.createElement("table");
-        if (this.data.labels)
-          html += `<thead><tr>
-              ${this.data.legend ? `<th scope="row">${this.data.legend[0]}</th>` : ``}
-              ${(this.data.labels || []).map(label => `<th scope="col">${label}</th>`).join("")}
-            </tr></thead>`;
-        console.log('_renderTable',this.data);
-        if (this.data.series)
-          html += `<tbody>
-            ${
-              this.data.series && Array.isArray(this.data.series[0])
-                ? (this.data.series || [])
-                    .map(
-                      (row,i) =>
-                        `<tr>
-                          ${this.data.legend && this.data.legend[i+1] ? `<th scope="row">${this.data.legend[i+1]}</th>` : ``}
-                          ${(row || []).map(col => `<td>${col}</td>`).join("")}
-                        </tr>`
-                    )
-                    .join("")
-                : `<tr>${(this.data.series || [])
-                    .map(col => `<td>${col}</td>`)
-                    .join("")}</tr>`
-            }
-          </tbody>`;
-        table.innerHTML = html;
-        this.appendChild(table);
-        console.log('_renderTable',this.data,html,table);
-      }
-    }
     get fullOptions() {
       let options = { ...this.options };
       if (Chartist.plugins) {
@@ -1233,33 +1175,13 @@ Container class	Ratio
     }
 
     /**
-     * Renders chart and returns the chart object.
+     * Renders chart when data changes
      */
-    _renderChart() {
+    _getChart() {
       let chart = null,
-        target = this.shadowRoot.querySelector("#chart"),
-        table = this.querySelector("table")
-          ? this.querySelector("table").cloneNode(true)
-          : false,
-        data = !table
-          ? false
-          : {
-              labels: (
-                [...table.querySelectorAll("thead th[scope=col]")] || []
-              ).map(label => (label.innerHTML || "").trim()),
-              series: ([...table.querySelectorAll("tbody tr")] || []).map(row =>
-                ([...row.querySelectorAll("td")] || []).map(td => {
-                  let cell = (td.innerHTML || "").trim();
-                  return cell && cell !== null && cell !== ""
-                    ? parseFloat(cell)
-                    : "null";
-                })
-              ),
-              legend: ([...table.querySelectorAll("th[scope=row]")] || []).map(legend => (legend.innerHTML || "").trim())
-            };
-
-      if (target !== null && typeof Chartist === "object" && data) {
-        console.log('_renderChart',table,data,table.querySelectorAll("th[scope=row]"),[...table.querySelectorAll("th[scope=row]")]);
+      target = this.shadowRoot.querySelector("#chart");
+      
+      if (target !== null && typeof Chartist === "object" && this.data) {
         if (this.type == "bar") {
           if (
             this.responsiveOptions !== undefined &&
@@ -1282,14 +1204,14 @@ Container class	Ratio
           }
           chart = Chartist.Bar(
             target,
-            data,
+            this.data,
             this.fullOptions,
             this.responsiveOptions
           );
         } else if (this.type === "line") {
           chart = Chartist.Line(
             target,
-            data,
+            this.data,
             this.fullOptions,
             this.responsiveOptions
           );
@@ -1297,8 +1219,8 @@ Container class	Ratio
           chart = Chartist.Pie(
             target,
             {
-              labels: data.labels || [],
-              series: data.series ? data.series[0] : []
+              labels: this.data.labels || [],
+              series: this.data.series ? this.data.series[0] : []
             },
             this.fullOptions,
             this.responsiveOptions
@@ -1336,17 +1258,111 @@ Container class	Ratio
             );
           });
       }
-      return chart;
+      this.chart = chart;
     }
 
     /**
-     * Get unique ID from the chart
-     * @param {string} prefix for unique ID
-     * @returns {string} unique ID
+     * Convert from csv text to an array in the table function
+     * @param {event} e event data
+     * @memberof ChartistRender
      */
-    _getUniqueId(prefix) {
-      let id = prefix + Date.now();
-      return id;
+    _handleResponse(e) {
+      this.rawData = this._CSVtoArray(e.detail.response);
+    }
+    
+    /**
+     * uses ESGlobalBridge to load scripts
+     *
+     * @param {string} classname class to import from script
+     * @param {string} path relative path of script
+     * @param {function} [fnc=this._updateRawData] function to reun when script is loaded
+     */
+    _loadScripts(classname, path, fnc = this._getChart) {
+      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)),
+        location = `${basePath}${path}`;
+      window.addEventListener(
+        `es-bridge-${classname}-loaded`,
+        fnc.bind(this)
+      );
+      window.ESGlobalBridge.instance.load(classname, location);
+    }
+
+    /**
+     * updates table when raw data changes
+     * @memberof ChartistRender
+     */
+    _renderTable() {
+      let html = "",
+        table = this.querySelector("table"),
+        raw = this.rawData ? [...this.rawData] : false;
+
+      if (raw) {
+        let rowHeads = raw[1] && raw[1][0] && isNaN(raw[1][0]),
+          colHeads = raw[0] && raw[0][1] && isNaN(raw[0][1]),
+          thead = !colHeads ? false : {
+            row: raw[0][0], 
+            col: rowHeads ? raw[0].slice(1,raw[0].length) : raw[0]
+          },
+          tbody = raw.slice(thead ? 1  : 0,raw.length).map(row=>rowHeads
+            ?{th: row[0], td: row.slice(1,row.length)}
+            :{td: row});
+        table = table || document.createElement("table");
+        if(thead) html += `
+          <thead><tr>
+            ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
+            ${thead.col ? thead.col.map(th=>`<th scope="col">${th}</th>`).join('') : ``}
+          </tr></thead>`;
+        if(tbody.length > 0) html += `
+          <tbody>
+            ${tbody.map(tr=> `
+              <tr>
+                ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
+                ${tr.td ? tr.td.map(td=>`<td>${td}</td>`).join('') : ``}
+              </tr>
+            `).join('')}
+          </tbody>`;
+        table.innerHTML = html;
+        this.appendChild(table);
+      } else if(table) {
+        table.innerHTML = '';
+      }
+    }
+
+    /**
+     * updates data from rawData
+     *
+     */
+    _updateData(){
+      let raw = this.rawData, 
+        colHeads = raw && raw[0] && raw[0][1] && isNaN(raw[0][1]),
+        rowHeads = raw && raw[1] && raw[1][0] && isNaN(raw[1][0]),
+        labels = colHeads ? raw[0] : undefined, //raw[0].slice(1,raw.length) : raw[0],
+        body = colHeads && raw[1] ? raw.slice(1,raw.length) : raw;
+      if(rowHeads) {
+        labels = labels.slice(1,labels.length);
+        body = body.map(row=>row.slice(1,row.length));
+      }
+      this.__dataReady = true;
+      this.data = {
+        labels: labels,
+        series: this.type === "pie" ? body[0] : body
+      };
+    }
+
+    /**
+     * Updates rawData from table
+     */
+    _updateRawData() {
+      let table = this.querySelector("table"),
+        rawData = [];
+      if(table) table.querySelectorAll("tr").forEach(tr=>{
+        let temp = [];
+        tr.querySelectorAll("th,td").forEach(td=>{
+          let html = td.innerHTML.trim();
+          temp.push(isNaN(html) ? html  : parseInt(html));
+        });
+        rawData.push(temp);
+      });
     }
   };
 };

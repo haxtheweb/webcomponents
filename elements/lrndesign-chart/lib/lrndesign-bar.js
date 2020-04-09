@@ -213,8 +213,8 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
    * @memberof LrndesignChart
    */
   get options() {
-    return { 
-      ...super.options, 
+    return {
+      ...super.options,
       ...this.lineBarOptions,
       axisX: {
         onlyInteger: this.axisXOnlyInteger,

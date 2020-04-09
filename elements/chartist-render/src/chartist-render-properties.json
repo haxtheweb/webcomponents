@@ -84,23 +84,23 @@ Container class	Ratio
     "type": "Object"
   },
   /**
-   * Optional data for chartist-plugin-axistitle, 
-   * as in { axisX: { axisTitle: "Time (mins)", offset: { x: 0, y: 50 }, textAnchor: "middle" }, axisY: { axisTitle: "Goals", axisClass: "ct-axis-title", offset: { x: 0, y: -1 }, flipTitle: false } } 
+   * Optional data for chartist-plugin-axistitle,
+   * as in { axisX: { axisTitle: "Time (mins)", offset: { x: 0, y: 50 }, textAnchor: "middle" }, axisY: { axisTitle: "Goals", axisClass: "ct-axis-title", offset: { x: 0, y: -1 }, flipTitle: false } }
    * See https://github.com/alexstanbury/chartist-plugin-axistitle
    */
   "pluginAxisTitle": {
     "type": "Object"
   },
   /**
-   * Optional data for chartist-plugin-pointlabels, 
-   * as in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop } 
+   * Optional data for chartist-plugin-pointlabels,
+   * as in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }
    * See https://github.com/gionkunz/chartist-plugin-pointlabels
    */
   "pluginPointLabels": {
     "type": "Object"
   },
   /**
-   * Optional array of items for chartist-plugin-filldonut, 
+   * Optional array of items for chartist-plugin-filldonut,
    * as in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]
    * See https://github.com/moxx/chartist-plugin-fill-donut
    */
@@ -108,10 +108,10 @@ Container class	Ratio
     "type": "Array"
   },
   /**
-   * Raw data pulled in from the csv file.
+   * Raw data pulled in from the csv file and converted to an array.
    */
   "rawData": {
-    "type": "String",
+    "type": "Array",
     "attribute": "raw-data"
   },
   /**
