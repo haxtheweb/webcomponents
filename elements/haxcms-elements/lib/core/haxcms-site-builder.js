@@ -444,7 +444,7 @@ class HAXCMSSiteBuilder extends LitElement {
               this.manifest.metadata.node.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
-              import(`${basePath}../../../../../${
+              import(`${basePath}../../../../${
                 this.manifest.metadata.node.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
@@ -456,6 +456,11 @@ class HAXCMSSiteBuilder extends LitElement {
                 });
             }
           }
+        }
+        else if (window.WCAutoload) {
+          setTimeout(() => {
+            window.WCAutoload.process();
+          }, 0);
         }
       }
     }
@@ -618,6 +623,9 @@ class HAXCMSSiteBuilder extends LitElement {
         if (window.WCAutoload) {
           this.__imported[theme.element] = theme.element;
           this.themeLoaded = true;
+          setTimeout(() => {
+            window.WCAutoload.process();
+          }, 0);
         } else {
           // import the reference to the item dynamically, if we can
           try {
