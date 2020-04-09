@@ -483,7 +483,7 @@ class LrndesignChart extends ChartistRender {
       </tbody>`;
     table.innerHTML = html;
     this.appendChild(table);
-    console.log("data-changed", this.data, this.querySelector("table"));
+    //console.log("data-changed", this.data, this.querySelector("table"));
   }
 
   /**

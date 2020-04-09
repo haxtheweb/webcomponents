@@ -428,39 +428,39 @@ class HAXCMSSiteBuilder extends LitElement {
               })
             );
           }
-        }, 5);
-        // if there are, dynamically import them but only if we don't have a global manager
-        if (
-          !window.WCAutoload &&
-          varExists(this.manifest, "metadata.node.dynamicElementLoader")
-        ) {
-          let tagsFound = findTagsInHTML(html);
-          const basePath = this.pathFromUrl(
-            decodeURIComponent(import.meta.url)
-          );
-          for (var i in tagsFound) {
-            const tagName = tagsFound[i];
-            if (
-              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
-              !window.customElements.get(tagName)
-            ) {
-              import(`${basePath}../../../../${
-                this.manifest.metadata.node.dynamicElementLoader[tagName]
-              }`)
-                .then(response => {
-                  //console.log(tagName + ' dynamic import');
-                })
-                .catch(error => {
-                  /* Error handling */
-                  console.log(error);
-                });
+          // if there are, dynamically import them but only if we don't have a global manager
+          if (
+            !window.WCAutoload &&
+            varExists(this.manifest, "metadata.node.dynamicElementLoader")
+          ) {
+            let tagsFound = findTagsInHTML(html);
+            const basePath = this.pathFromUrl(
+              decodeURIComponent(import.meta.url)
+            );
+            for (var i in tagsFound) {
+              const tagName = tagsFound[i];
+              if (
+                this.manifest.metadata.node.dynamicElementLoader[tagName] &&
+                !window.customElements.get(tagName)
+              ) {
+                import(`${basePath}../../../../${
+                  this.manifest.metadata.node.dynamicElementLoader[tagName]
+                }`)
+                  .then(response => {
+                    //console.log(tagName + ' dynamic import');
+                  })
+                  .catch(error => {
+                    /* Error handling */
+                    console.log(error);
+                  });
+              }
             }
+          } else if (window.WCAutoload) {
+            setTimeout(() => {
+              window.WCAutoload.process();
+            }, 0);
           }
-        } else if (window.WCAutoload) {
-          setTimeout(() => {
-            window.WCAutoload.process();
-          }, 0);
-        }
+        }, 5);
       }
     }
   }
@@ -624,7 +624,7 @@ class HAXCMSSiteBuilder extends LitElement {
           this.themeLoaded = true;
           setTimeout(() => {
             window.WCAutoload.process();
-          }, 0);
+          }, 5);
         } else {
           // import the reference to the item dynamically, if we can
           try {

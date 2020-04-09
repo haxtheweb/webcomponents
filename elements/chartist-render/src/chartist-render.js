@@ -207,7 +207,7 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
       labels: raw[0],
       series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
     };
-    console.log("raw-data-changed", this.rawData, raw, this.data);
+    //console.log("raw-data-changed", this.rawData, raw, this.data);
   }
   /**
    * replaces existing slotted table with a new one based on data
@@ -243,7 +243,7 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
       table.innerHTML = html;
       this.appendChild(table);
     }
-    console.log("_renderTable", this.data, this.querySelector("table"));
+    //console.log("_renderTable", this.data, this.querySelector("table"));
   }
 
   /**
@@ -270,14 +270,14 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
               })
             )
           };
-    console.log(
+    /*console.log(
       "_renderChart",
       this,
       table,
       this.querySelector("table"),
       data,
       target
-    );
+    );*/
     if (target !== null && typeof Chartist === "object" && data) {
       if (this.type == "bar") {
         if (
