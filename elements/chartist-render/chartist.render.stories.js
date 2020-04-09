@@ -41,11 +41,13 @@ const utils = new StorybookUtilities(),
   };
 export const ChartistRenderPieStory = () => {
   let pie = {
-    labels: ["Bananas", "Apples", "Grapes"],
-    series: [20, 15, 40]
-  }, props = {...ChartistRender.properties}, input;
+      labels: ["Bananas", "Apples", "Grapes"],
+      series: [20, 15, 40]
+    },
+    props = { ...ChartistRender.properties },
+    input;
   /**
-   * 
+   *
    * [
    *   {
    *     title: "User-friendly title",
@@ -60,20 +62,48 @@ export const ChartistRenderPieStory = () => {
   delete props.chartData;
   delete props.type;
   delete props.scale;
+  delete props.data;
   input = utils.getElementProperties(props);
-  input = [...input,...[
-    { property: "accentColor", inputMethod: "colorpicker", defaultValue: utils.getRandomColor() },
-    { property: "dark", inputMethod: "boolean" },
-    { property: "scale", inputMethod: "select", options: scale, defaultValue: "ct-square" },
-    { property: "type", inputMethod: "select", options: ["bar","line","pie"], defaultValue: "pie" },
-    { slot: "", inputMethod: "textarea" },
-    { slot: "heading", inputMethod: "textarea", defaultValue: utils.getRandomTextarea() },
-    { slot: "desc", inputMethod: "textarea", defaultValue: utils.getRandomTextarea() }
-  ]];
-  console.log(props,input);
-  return utils.makeElementFromClass(ChartistRender, {
-    data: {labels: ["Bananas","Apples","Grapes"], series: [20,15,40]}
-  });
+  input = [
+    ...input,
+    ...[
+      {
+        property: "accentColor",
+        inputMethod: "colorpicker",
+        defaultValue: utils.getRandomColor()
+      },
+      { property: "dark", inputMethod: "boolean" },
+      { 
+        property: "data", 
+        inputMethod: "object", 
+        defaultValue: { "labels": ["Bananas", "Apples", "Grapes"], "series": [20, 15, 40] } },
+      {
+        property: "scale",
+        inputMethod: "select",
+        options: scale,
+        defaultValue: "ct-square"
+      },
+      {
+        property: "type",
+        inputMethod: "select",
+        options: ["bar", "line", "pie"],
+        defaultValue: "pie"
+      },
+      { slot: "", inputMethod: "textarea" },
+      {
+        slot: "heading",
+        inputMethod: "textarea",
+        defaultValue: utils.getRandomTextarea()
+      },
+      {
+        slot: "desc",
+        inputMethod: "textarea",
+        defaultValue: utils.getRandomTextarea()
+      }
+    ]
+  ];
+  console.log(props, input);
+  return utils.makeElementFromClass(ChartistRender);
   /*return html`
     <chartist-render
       id=${text("Chart Id (id)", "line-or-pie", "property")}

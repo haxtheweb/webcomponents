@@ -823,7 +823,7 @@ const ChartistRenderSuper = function(SuperClass) {
    *     <tbody><tr><td>1</td>...</tr>...</tbody>
    * </table>
    *
-   * DEPRECATED Method: 
+   * DEPRECATED Method:
    * {
    *   labels: ["label 1", "label 2", "label 3"]
    *   series: [
@@ -1032,7 +1032,10 @@ Container class	Ratio
 
     updated(changedProperties) {
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "chartData" && JSON.stringify(this.chartData) !== JSON.stringify(oldValue)) {
+        if (
+          propName === "chartData" &&
+          JSON.stringify(this.chartData) !== JSON.stringify(oldValue)
+        ) {
           /**
            * Fires when chartData changes
            * @event chart-data-changed
@@ -1053,7 +1056,10 @@ Container class	Ratio
               detail: this
             })
           );
-        } else if (propName === "data" && JSON.stringify(this.data) !== JSON.stringify(oldValue)) {
+        } else if (
+          propName === "data" &&
+          JSON.stringify(this.data) !== JSON.stringify(oldValue)
+        ) {
           /**
            * Fires when data changes
            * @event data-changed
@@ -1063,7 +1069,12 @@ Container class	Ratio
               detail: this
             })
           );
-          console.log(propName,JSON.stringify(this.data),JSON.stringify(oldValue),JSON.stringify(this.data) !== JSON.stringify(oldValue))
+          console.log(
+            propName,
+            JSON.stringify(this.data),
+            JSON.stringify(oldValue),
+            JSON.stringify(this.data) !== JSON.stringify(oldValue)
+          );
           this._renderTable();
           this._updateChartData();
         } else {
@@ -1356,7 +1367,12 @@ Container class	Ratio
               )
               .join("")}
           </tbody>`;
-        console.log('table',html,JSON.stringify(thead),JSON.stringify(tbody));
+        console.log(
+          "table",
+          html,
+          JSON.stringify(thead),
+          JSON.stringify(tbody)
+        );
         table.innerHTML = html;
         this.appendChild(table);
       } else if (table) {
@@ -1372,7 +1388,7 @@ Container class	Ratio
       let data = this.data,
         colHeads = data && data[0] && data[0][1] && isNaN(data[0][1]),
         rowHeads = data && data[1] && data[1][0] && isNaN(data[1][0]),
-        labels = colHeads ? data[0] : undefined, 
+        labels = colHeads ? data[0] : undefined,
         body = colHeads && data[1] ? data.slice(1, data.length) : data;
       if (rowHeads) {
         labels = labels.slice(1, labels.length);
@@ -1400,8 +1416,14 @@ Container class	Ratio
           });
           data.push(temp);
         });
-      console.log('_updateData',table ? table.innerHTML : ``,JSON.stringify(this.data),JSON.stringify(data),JSON.stringify(this.data) !== JSON.stringify(data));
-      if(JSON.stringify(this.data) !== JSON.stringify(data)) this.data = data;
+      console.log(
+        "_updateData",
+        table ? table.innerHTML : ``,
+        JSON.stringify(this.data),
+        JSON.stringify(data),
+        JSON.stringify(this.data) !== JSON.stringify(data)
+      );
+      if (JSON.stringify(this.data) !== JSON.stringify(data)) this.data = data;
     }
   };
 };

@@ -28,7 +28,7 @@
    *     <tbody><tr><td>1</td>...</tr>...</tbody>
    * </table>
    *
-   * DEPRECATED Method: 
+   * DEPRECATED Method:
    * {
    *   labels: ["label 1", "label 2", "label 3"]
    *   series: [
