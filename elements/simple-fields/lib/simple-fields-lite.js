@@ -601,6 +601,7 @@ class SimpleFieldsLite extends LitElement {
           data.descriptionProperty,
           data.descriptionSlot
         );
+
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
           if (
