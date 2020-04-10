@@ -27,16 +27,15 @@ window.WCAutoload.process = e => {
   if (window.WCAutoloadRegistryFileProcessed) {
     // mutation observer will pick up changes after initial load
     // but this gets us at load time with fallback support for legacy
-    try {
-      target.querySelectorAll(":not(:defined)").forEach(el => {
-        loader.processNewElement(el);
-      });
-    } catch (e) {
-      // hack to convert children into array
-      target.querySelectorAll("*").forEach(el => {
-        loader.processNewElement(el);
-      });
+    let target = document;
+    if (loader.target) {
+      target = loader.target;
+      loader.processNewElement(target);
     }
+    // hack to convert children into array
+    target.querySelectorAll("*").forEach(el => {
+      loader.processNewElement(el);
+    });
   }
   else {
     setTimeout(async () => {
@@ -66,7 +65,7 @@ window.WCAutoload.process = e => {
           });
         }
       }
-      var target = document;
+      let target = document;
       if (loader.target) {
         target = loader.target;
         loader.processNewElement(target);
