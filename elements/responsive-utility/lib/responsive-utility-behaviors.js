@@ -1,17 +1,16 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import {ResponsiveUtility} from "../responsive-utility.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ResponsiveUtility } from "../responsive-utility.js";
 /**
  * `responsive-utility-behaviors`
  * A superclass to that custom elements can extend to automatically use ResponsiveUtility.
- * 
+ *
  * @class ResponsiveUtilityBehaviors
  * @see ResponsiveUtility
  * @demo ../demo/index.html
  */
 
-export const ResponsiveUtilityBehaviors = (SuperClass) => {
+export const ResponsiveUtilityBehaviors = SuperClass => {
   return class extends SuperClass {
-
     static get properties() {
       return {
         /*
@@ -52,14 +51,16 @@ export const ResponsiveUtilityBehaviors = (SuperClass) => {
         }
       };
     }
-    
-    render() {
-      return html`<slot></slot>`;
+
+    render() {
+      return html`
+        <slot></slot>
+      `;
     }
 
-    constructor(){
+    constructor() {
       super();
-      this.responsiveSize = 'xs';
+      this.responsiveSize = "xs";
       this.sm = 600;
       this.md = 900;
       this.lg = 1200;

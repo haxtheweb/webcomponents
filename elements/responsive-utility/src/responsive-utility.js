@@ -1,10 +1,10 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ResizeObserver } from '@juggle/resize-observer';
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ResizeObserver } from "@juggle/resize-observer";
 
 /**
  * `responsive-utility`
  * A singleton that manages responsive resize events for elements that invoke it.
- * 
+ *
  * @element responsive-utility
  * @extends IronResizableBehavior
  * @demo ./index.html
@@ -14,8 +14,10 @@ window.ResponsiveUtility = {};
 
 window.ResponsiveUtility.instance = null;
 class ResponsiveUtility extends LitElement {
-  render() {
-    return html`<slot></slot>`;
+  render() {
+    return html`
+      <slot></slot>
+    `;
   }
   static get tag() {
     return "responsive-utility";
@@ -60,7 +62,7 @@ class ResponsiveUtility extends LitElement {
   /**
    * adds a responsive element to the details array
    *
-   * @param {event} e event to add responsive element 
+   * @param {event} e event to add responsive element
    * @memberof ResponsiveUtility
    */
   responiveElementEvent(e) {
@@ -78,23 +80,24 @@ class ResponsiveUtility extends LitElement {
     window.ResponsiveUtility.setSize(detail);
   }
 
-  _getObserver(detail){
-    return new ResizeObserver(en => 
-      en.forEach(e => 
+  _getObserver(detail) {
+    return new ResizeObserver(en =>
+      en.forEach(e =>
         window.ResponsiveUtility.setSize(
-          detail,e.contentBoxSize || 
-          e.borderBoxSize || 
-          e.contentRect || 
-          e.target 
-            ? e.target.offsetWidth 
-            : 0)));
+          detail,
+          e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
+            ? e.target.offsetWidth
+            : 0
+        )
+      )
+    );
   }
   /**
    * deletes the responsive element from the details array
    * @param {event} e event to add responsive element
    */
   deleteResponiveElementEvent(e) {
-    this.details = this.details.filter(detail=>e.detail !== detail);
+    this.details = this.details.filter(detail => e.detail !== detail);
   }
   /**
    * An array of objects. Each object is contains data about an element
@@ -119,7 +122,8 @@ class ResponsiveUtility extends LitElement {
   constructor() {
     super();
     this.details = [];
-    if (window.ResponsiveUtility.instance == null) window.ResponsiveUtility.instance = this;
+    if (window.ResponsiveUtility.instance == null)
+      window.ResponsiveUtility.instance = this;
   }
 }
 window.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
@@ -141,15 +145,15 @@ window.ResponsiveUtility.requestAvailability = () => {
  * @param {object} detail object with element details, as in {
  *   "element": (the element itself),
  *   "attribute": (the attribute that will be set with the size),
-   *   "sm": (optional custom sm breakpoint, default is 900),
-   *   "md": (optional custom md breakpoint, default is 1200),
-   *   "lg": (optional custom lg breakpoint, default is 1500),
-   *   "xl": (optional custom xl breakpoint, default is 1800),
+ *   "sm": (optional custom sm breakpoint, default is 900),
+ *   "md": (optional custom md breakpoint, default is 1200),
+ *   "lg": (optional custom lg breakpoint, default is 1500),
+ *   "xl": (optional custom xl breakpoint, default is 1800),
  * }
  */
-window.ResponsiveUtility.setSize = (detail,width = 0) => {
+window.ResponsiveUtility.setSize = (detail, width = 0) => {
   let size,
-    el = detail.element, 
+    el = detail.element,
     attr = detail.attribute;
   if (width < detail.sm) {
     size = "xs";
@@ -162,5 +166,6 @@ window.ResponsiveUtility.setSize = (detail,width = 0) => {
   } else {
     size = "xl";
   }
-  if (!el.getAttribute(attr) || size !== el.getAttribute(attr)) el.setAttribute(attr, size);
+  if (!el.getAttribute(attr) || size !== el.getAttribute(attr))
+    el.setAttribute(attr, size);
 };

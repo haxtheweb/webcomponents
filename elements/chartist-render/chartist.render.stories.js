@@ -41,27 +41,33 @@ const utils = new StorybookUtilities(),
     "ct-major-eleventh": "ct-major-eleventh  (3:8)",
     "ct-major-twelfth": "ct-major-twelfth  (1:3)",
     "ct-double-octave": "ct-double-octave  (1:4`)"
-  }, props = utils.getElementProperties(ChartistRender.properties);
+  },
+  props = utils.getElementProperties(ChartistRender.properties);
 
-props.forEach(prop=>{
-  if(prop.property === "dataSource") prop.inputMethod = "haxupload";
-  if(prop.property === "scale") { 
+props.forEach(prop => {
+  if (prop.property === "dataSource") prop.inputMethod = "haxupload";
+  if (prop.property === "scale") {
     prop.inputMethod = "select";
     prop.options = Object.keys(scale);
   }
-  if(prop.property === "type") { 
+  if (prop.property === "type") {
     prop.inputMethod = "select";
-    prop.options = ["bar","pie","line"];
+    prop.options = ["bar", "pie", "line"];
   }
-  if(prop.property === "chartData") prop.property = 'delete';
+  if (prop.property === "chartData") prop.property = "delete";
 });
 export const ChartistRenderPieStory = () => {
   let pie = {
       labels: ["Bananas", "Apples", "Grapes"],
       series: [20, 15, 40]
-    },knobs = utils.getKnobs(props, {data: pie, scale: "ct-square", type: "pie" });
-    delete knobs.props.delete;
-    console.log('ChartistRenderPieStory',props,knobs);
-    //props.push({slot:"",inputMethod: "textarea"});
-  return utils.makeElement('chartist-render',knobs);
+    },
+    knobs = utils.getKnobs(props, {
+      data: pie,
+      scale: "ct-square",
+      type: "pie"
+    });
+  delete knobs.props.delete;
+  console.log("ChartistRenderPieStory", props, knobs);
+  //props.push({slot:"",inputMethod: "textarea"});
+  return utils.makeElement("chartist-render", knobs);
 };

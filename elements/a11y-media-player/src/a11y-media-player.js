@@ -1745,7 +1745,7 @@ class A11yMediaPlayer extends SimpleColors {
 
     // handles fullscreen
     if (screenfull) {
-      screenfull.on("change", (e) => {
+      screenfull.on("change", e => {
         if (screenfull.enabled) this.fullscreen = screenfull.isFullscreen;
       });
     }
@@ -1771,7 +1771,7 @@ class A11yMediaPlayer extends SimpleColors {
           }
         })
       );
-      
+
       window.A11yMediaStateManager.requestAvailability();
 
       /**

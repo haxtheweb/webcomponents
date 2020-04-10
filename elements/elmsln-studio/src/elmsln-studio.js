@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "./lib/elmsln-studio-projectboard.js";
 
@@ -32,7 +32,7 @@ class ElmslnStudio extends LitElement {
   // life cycle
   constructor() {
     super();
-    
+
     this.tag = ElmslnStudio.tag;
     // map our imported properties json to real props on the element
     // @notice static getter of properties is built via tooling
@@ -42,8 +42,7 @@ class ElmslnStudio extends LitElement {
       if (obj.hasOwnProperty(p)) {
         if (this.hasAttribute(p)) {
           this[p] = this.getAttribute(p);
-        }
-        else {
+        } else {
           this.setAttribute(p, obj[p].value);
           this[p] = obj[p].value;
         }
@@ -55,7 +54,6 @@ class ElmslnStudio extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    
   }
   // static get observedAttributes() {
   //   return [];
@@ -63,7 +61,6 @@ class ElmslnStudio extends LitElement {
   // disconnectedCallback() {}
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
-  
 }
 customElements.define("elmsln-studio", ElmslnStudio);
 export { ElmslnStudio };
