@@ -11,36 +11,100 @@
       import '../lib/lrndesign-bar.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
+      th,td {
+        border: 1px solid var(--chartist-grid-color);
+        padding: 2px 5px;
+        text-align: right;
+      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic lrndesign-bar demo</h3>
-      <demo-snippet>
-        <template>
-          <lrndesign-bar scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
-          data-source="bar.csv"></lrndesign-bar>
-        </template>
-      </demo-snippet>
+      <!--h1>Basic lrndesign-bar demo</h1>
+      <h2>lrndesign-bar demo with progressive enhancement</h2>
       <demo-snippet>
         <template>
           <lrndesign-bar 
-            dark scale="ct-double-octave" 
-            chart-title="Sales by Quarter" 
-            chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
-            data-source="bar.csv"></lrndesign-bar>
+            axis-x-title="Quarter"
+            axis-y-title="Sales"
+            scale="ct-double-octave" >
+            <h3 slot="title">Sales by Quarter</h3>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+            <table>
+              <caption>Sales by Quarter (table)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Quarter 1</th>
+                  <th scope="col">Quarter 2</th>
+                  <th scope="col">Quarter 3</th>
+                  <th scope="col">Quarter 4</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>5</td><td>4</td><td>3</td><td>7</td></tr>
+                <tr><td>3</td><td>2</td><td>9</td><td>5</td></tr>
+                <tr><td>1</td><td>5</td><td>8</td><td>4</td></tr>
+                <tr><td>2</td><td>3</td><td>4</td><td>6</td></tr>
+                <tr><td>4</td><td>1</td><td>2</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </lrndesign-bar>
         </template>
       </demo-snippet>
+      <h2>lrndesign-bar demo, dark, with aCSV</h2>
       <demo-snippet>
         <template>
-          <lrndesign-bar accent-color="purple" scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
-          data-source="bar.csv"></lrndesign-bar>
+          <lrndesign-bar 
+            axis-x-title="Quarter"
+            axis-y-title="Sales"
+            dark 
+            data-source="bar.csv"
+            scale="ct-double-octave" 
+            show-table>
+            <h3 slot="title">Sales by Quarter</h3>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+          </lrndesign-bar>
         </template>
       </demo-snippet>
+      <h2>lrndesign-bar demo, dark, with progressive enhancement</h2>
       <demo-snippet>
         <template>
-          <lrndesign-bar dark accent-color="purple" scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
-          data-source="bar.csv"></lrndesign-bar>
+          <lrndesign-bar 
+            accent-color="purple" 
+            dark
+            scale="ct-double-octave">
+            <h3 slot="title">Sales by Quarter</h3>
+            <table>
+              <caption>Sales by Quarter (table)</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Quarter 1</th>
+                  <th scope="col">Quarter 2</th>
+                  <th scope="col">Quarter 3</th>
+                  <th scope="col">Quarter 4</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>5</td><td>4</td><td>3</td><td>7</td></tr>
+                <tr><td>3</td><td>2</td><td>9</td><td>5</td></tr>
+                <tr><td>1</td><td>5</td><td>8</td><td>4</td></tr>
+                <tr><td>2</td><td>3</td><td>4</td><td>6</td></tr>
+                <tr><td>4</td><td>1</td><td>2</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </lrndesign-bar>
+        </template>
+      </demo-snippet-->
+      <h2>lrndesign-bar demo with CSV</h2>
+      <demo-snippet>
+        <template>
+          <lrndesign-bar 
+            accent-color="purple"  
+            data-source="bar.csv"
+            scale="ct-double-octave"
+            show-table>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+          </lrndesign-bar>
         </template>
       </demo-snippet>
     </div>

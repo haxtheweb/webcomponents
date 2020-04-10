@@ -11,26 +11,33 @@
       import '../chartist-render.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
+      chartist-render[type=pie] {
+          width: 300px;
+      }  
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>chartist-render from CSV demo</h1>
+
       <h2>Pie chart from CSV</h2>
       <demo-snippet>
-        <style>
-          #pie-chart {
-              width: 300px;
-              height: 300px;
-              display: inline-block;
-          }  
-        </style>
         <template>
+          <style>
+            table { 
+              border-radius: 2px; 
+            }
+            th, td {
+              border: 1px solid var(--chartist-text-color, #000);
+              text-align: right;
+              padding: 2px 5px;
+            }
+          </style>
           <chartist-render id="pie-chart" 
-            type="pie"
             data-source="./pie.csv"
             show-table
-            scale="ct-square">
+            scale="ct-square"
+            type="pie">
             <h3 slot="heading">A pie chart of favorite fruits (chart)</h3>
           </chartist-render>
         </template>
@@ -40,9 +47,9 @@
       <demo-snippet>
         <template>
           <chartist-render id="line-chart" 
-            options='{"fullWidth": true, "low": 0}' 
             scale="ct-quarter"
-            data-source="./line.html"
+            data-source="./line.csv"
+            options='{"fullWidth": true, "low": 0}' 
             type="line">
             <h3 slot="heading">Sales by Quarter (chart)</h3>
             <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
@@ -52,11 +59,11 @@
       <h2>Bar chart from CSV</h2>
       <demo-snippet>
         <template>
-          <chartist-render id="bar-chart" 
-            type="bar" 
+          <chartist-render id="bar-chart"
+            data-source="./bar.csv" 
             scale="ct-major-twelfth"
-            data-source="./bar.html"
-            chart-desc="">
+            show-table
+            type="bar">
             <h3 slot="heading">Sales by Quarter (chart)</h3>
             <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
           </chartist-render>

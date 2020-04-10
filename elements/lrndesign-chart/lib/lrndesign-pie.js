@@ -4,17 +4,19 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignChart } from "../lrndesign-chart.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrndesign-pie`
  * a pie chart
  *
  * @element lrndesign-pie
  * @extends LrndesignChart
+ * @extends SimpleColors
  * @see ../lrndesign-chart.js
  * @demo ./demo/pie.html
  *
  */
-class LrndesignPie extends LrndesignChart {
+class LrndesignPie extends LrndesignChart(SimpleColors) {
   constructor() {
     super();
     this.setProperties();
@@ -226,19 +228,20 @@ class LrndesignPie extends LrndesignChart {
    * @readonly
    * @memberof LrndesignChart
    */
-  static get options() {
-    let options = super.options();
-    options.startAngle = this.startAngle;
-    options.chartPadding = this.chartPadding;
-    options.donut = this.donut;
-    options.donutSolid = this.donutSolid;
-    options.donutWidth = this.donutWidth;
-    options.showLabel = this.showLabel;
-    options.labelOffset = this.labelOffset;
-    options.labelPosition = this.labelPosition;
-    options.labelDirection = this.labelDirection;
-    options.ignoreEmptyValues = this.ignoreEmptyValues;
-    return options;
+  get options() {
+    return {
+      ...super.options,
+      startAngle: this.startAngle,
+      chartPadding: this.chartPadding,
+      donut: this.donut,
+      donutSolid: this.donutSolid,
+      donutWidth: this.donutWidth,
+      showLabel: this.showLabel,
+      labelOffset: this.labelOffset,
+      labelPosition: this.labelPosition,
+      labelDirection: this.labelDirection,
+      ignoreEmptyValues: this.ignoreEmptyValues
+    };
   }
 
   /**

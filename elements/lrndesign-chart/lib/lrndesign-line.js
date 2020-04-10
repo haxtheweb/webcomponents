@@ -2,7 +2,9 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignChart } from "../lrndesign-chart.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `lrndesign-line`
@@ -10,11 +12,12 @@ import { LrndesignChart } from "../lrndesign-chart.js";
  *
  * @element lrndesign-line
  * @extends LrndesignChart
+ * @extends SimpleColors
  * @see ../lrndesign-chart.js
  * @demo ./demo/line.html
  *
  */
-class LrndesignLine extends LrndesignChart {
+class LrndesignLine extends LrndesignChart(SimpleColors) {
   constructor() {
     super();
     this.setProperties();
@@ -81,7 +84,39 @@ class LrndesignLine extends LrndesignChart {
       showPoint: {
         attribute: "show-point",
         type: Boolean
-      }
+      },
+      /**
+       * Optional point labels
+       */
+      showPointLabels: {
+        attribute: "show-point-labels",
+        type: Boolean
+      },
+      /**
+       * Optional anchor for point labels
+       */
+      pointLabelsAnchor: {
+        attribute: "point-labels-anchor",
+        type: String
+      },
+      /**
+       * Optional x-offset for point labels
+       */
+      pointLabelsOffsetX: {
+        attribute: "point-labels-offset-x",
+        type: Number
+      },
+      /**
+       * Optional y-offset for point labels
+       */
+      pointLabelsOffsetY: {
+        attribute: "point-labels-offset-y",
+        type: Number
+      },
+      /**
+       * Optional interpolation function for point labels
+       */
+      pointLabelFunction: {}
     };
   }
 
@@ -116,9 +151,34 @@ class LrndesignLine extends LrndesignChart {
           property: "fullWidth",
           title: "Full Width",
           inputMethod: "boolean"
+        },
+        {
+          property: "showPointLabels",
+          title: "Show Point Labels",
+          inputMethod: "boolean"
         }
       ],
       lineAdvanced = [
+        {
+          property: "pointLabelsAnchor",
+          title: "Show Point Labels",
+          inputMethod: "select",
+          options: {
+            middle: "Middle",
+            start: "Start",
+            end: "End"
+          }
+        },
+        {
+          property: "pointLabelsOffsetX",
+          title: "Point Labels X-Offset",
+          inputMethod: "number"
+        },
+        {
+          property: "pointLabelsOffsetY",
+          title: "Point Labels Y-Offset",
+          inputMethod: "number"
+        },
         {
           property: "lineSmooth",
           title: "Line Smooth",
@@ -160,16 +220,52 @@ class LrndesignLine extends LrndesignChart {
    * @readonly
    * @memberof LrndesignChart
    */
-  static get options() {
-    let options = super.options(),
-      lineBar = Object.assign(options, this.lineBarOptions());
-    lineBar.areaBase = this.areaBase;
-    lineBar.fullWidth = this.fullWidth;
-    lineBar.lineSmooth = this.lineSmooth;
-    lineBar.showArea = this.showArea;
-    lineBar.showLine = this.showLine;
-    lineBar.showPoint = this.showPoint;
-    return lineBar;
+  get options() {
+    return {
+      ...super.options,
+      ...this.lineBarOptions,
+      areaBase: this.areaBase,
+      fullWidth: this.fullWidth,
+      lineSmooth: this.lineSmooth,
+      showArea: this.showArea,
+      showLine: this.showLine,
+      showPoint: this.showPoint
+    };
+  }
+
+  /**
+   * gets axis title options
+   * @readonly
+   */
+  get pointLabels() {
+    return this.showPointLabels
+      ? {
+          labelOffset: {
+            x: this.pointLabelsOffsetX,
+            y: this.pointLabelsOffsetY
+          },
+          textAnchor: ["start", "end", "middle"].includes(
+            this.pointLabelsAnchor
+          )
+            ? this.pointLabelsAnchor
+            : "middle",
+          labelInterpolationFnc: this.pointLabelFunction || undefined
+        }
+      : undefined;
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        (propName === "showPointLabels" ||
+          propName.indexOf("pointLabel") > -1) &&
+        propName !== "pluginPointLabels" &&
+        this[propName] !== oldValue
+      ) {
+        this.pluginPointLabels = this.pointLabels;
+      }
+    });
+    if (super.updated) super.updated(changedProperties);
   }
 
   /**
@@ -184,6 +280,10 @@ class LrndesignLine extends LrndesignChart {
     this.showArea = false;
     this.showLine = true;
     this.showPoint = true;
+    this.showPointLabels = false;
+    this.pointLabelsAnchor = "middle";
+    this.pointLabelsOffsetX = 0;
+    this.pointLabelsOffsetY = -10;
     this.type = "line";
   }
 }

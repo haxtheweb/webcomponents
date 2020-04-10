@@ -2,6 +2,7 @@ import { html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import {
   withKnobs,
+  withWebComponentsKnobs,
   text,
   button,
   number,
@@ -284,6 +285,8 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnob(field, defaultValue) {
+    //withKnobs.escapeHTML = false;
+    console.log("getKnob", withWebComponentsKnobs);
     let title = field.title,
       name = field.name,
       attribute = this.camelToKebab(name),
@@ -299,9 +302,15 @@ export class StorybookUtilities {
       if (method === "select") {
         knob = select(label, options, val, group);
       } else if (method === "radio" && options) {
-        knob = radio(label, options, val, group);
+        knob = radios(label, options, val, group);
       } else if (method === "options" && options) {
-        knob = option(label, options, val, { display: "multi-select" }, group);
+        knob = optionsKnob(
+          label,
+          options,
+          val,
+          { display: "multi-select" },
+          group
+        );
       }
     } else if (method === "colorpicker" && colors) {
       let options = {};

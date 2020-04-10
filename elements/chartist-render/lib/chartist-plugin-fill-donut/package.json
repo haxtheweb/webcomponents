@@ -1,0 +1,29 @@
+{
+  "name": "chartist-plugin-fill-donut",
+  "version": "0.1.4",
+  "description": "",
+  "main": "./dist/chartist-plugin-fill-donut.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.4.1",
+    "gulp-watch": "^4.3.5",
+    "gulp-umd": "^0.2.0",
+    "jshint": "^2.9.4"
+  },
+  "scripts": {
+    "build": "rm -rf dist && gulp",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags",
+    "test": "./node_modules/jshint/bin/jshint ./src/scripts/chartist-plugin-fill-donut.js"
+  },
+  "author": "moxx",
+  "license": "MIT",
+  "homepage": "https://github.com/moxx/chartist-plugin-fill-donut",
+  "bugs": {
+    "url": "https://github.com/moxx/chartist-plugin-fill-donut/issues",
+    "email": "mo@sbg.at"
+  }
+}

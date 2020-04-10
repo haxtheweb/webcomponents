@@ -1,19 +1,23 @@
-<div id="${this.__chartId}-title">
+<div id="${this.__chartId}-title" class="title">
   ${this.chartTitle}
-<slot name="heading"></slot>
+  <slot name="heading"></slot>
 </div>
-<div id="${this.__chartId}-desc">
-${this.chartDesc}
-<slot name="desc"></slot>
+<div id="${this.__chartId}-desc" class="desc">
+  ${this.chartDesc}
+  <slot name="desc"></slot>
 </div>
 <div id="chart" 
-chart="${this.__chartId}" 
-role="presentation"
-aria-labelledby="${this.__chartId}-title"
-aria-describedby="${this.__chartId}-table ${this.__chartId}-desc"
-class="ct-chart ${this.scale}">
+  chart="${this.__chartId}" 
+  role="presentation"
+  aria-labelledby="${this.__chartId}-title"
+  aria-describedby="${this.__chartId}-table ${this.__chartId}-desc"
+  class="ct-chart ${this.scale}">
 </div>
-<div id="${this.__chartId}-table" class="${this.showTable ? '' : 'sr-only'}"><slot></slot></div>
+<div 
+  id="${this.__chartId}-table" 
+  class="${this.showTable ? 'table' : 'table sr-only'}">
+  <slot></slot>
+</div>
 <iron-ajax
   auto
   handle-as="text"

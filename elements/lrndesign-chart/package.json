@@ -16,7 +16,8 @@
       "hax": "src/lrndesign-chart-hax.json"
     },
     "sharedStyles": [
-      "...super.styles"
+      "...super.styles",
+      "...SimpleColors.styles"
     ]
   },
   "version": "2.6.5",

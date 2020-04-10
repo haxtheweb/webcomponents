@@ -41,7 +41,7 @@ $themes:
       $level: $index % 5 + 9;
     } 
     $color: nth($row, $position);
-    --chartist-color-#{$i}: #{var(--simple-colors-default-theme-#{$color}-#{$level})};
+    #{--chartist-color-#{$i}}: #{var(--simple-colors-default-theme-#{$color}-#{$level})};
   }
 }
 
@@ -51,6 +51,11 @@ $themes:
   $row: ("red", "blue","yellow","purple","green","orange","pink","deep-orange");
   @include get-theme($row,"");
 }
+
+:host([dark]){
+  #{--chartist-padding}: 10px;
+}
+
 @for $i from 1 through 17 {
   $row: nth($themes, $i);
   $theme: nth($row, 1);
@@ -59,13 +64,19 @@ $themes:
   }
 }
 
-#chart {
+#chart,
+::slotted(table) {
   font-family: sans-serif;
-  --chartist-grid-color: #{var(--simple-colors-default-theme-grey-6)};
-  --chartist-bg-color: #{var(--simple-colors-default-theme-grey-1)};
-  --chartist-text-color: #{var(--simple-colors-default-theme-grey-12)};
+  #{--chartist-grid-color}: #{var(--simple-colors-default-theme-grey-6)};
+  #{--chartist-bg-color}: #{var(--simple-colors-default-theme-grey-1)};
+  #{--chartist-text-color}: #{var(--simple-colors-default-theme-grey-12)};
 }
 
 :host([label-position="inside"]) .ct-label {
-  --chartist-text-color: #{var(--simple-colors-default-theme-grey-12)};
+  #{--chartist-text-color}: #{var(--simple-colors-default-theme-grey-1)};
+}
+
+:host([dark]) ::slotted(table){
+  #{--chartist-text-color}: #{var(--simple-colors-default-theme-grey-12)};
+  #{--chartist-grid-color}: #{var(--simple-colors-default-theme-grey-6)};
 }

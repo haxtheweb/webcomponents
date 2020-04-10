@@ -1,0 +1,61 @@
+{
+  "name": "chartist-plugin-pointlabels",
+  "description": "Point Labels Plugin for Chartist.js",
+  "version": "0.0.6",
+  "author": "Gion Kunz",
+  "homepage": "https://gionkunz.github.io/chartist-plugin-pointlabels",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gionkunz/chartist-plugin-pointlabels.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gionkunz/chartist-plugin-pointlabels/issues"
+  },
+  "keywords": [
+    "chartist",
+    "plugin"
+  ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "main": "dist/chartist-plugin-pointlabels.js",
+  "browser": "dist/chartist-plugin-pointlabels.js",
+  "licenses": [
+    {
+      "type": "WTFPL",
+      "url": "https://github.com/gionkunz/chartist-plugin-pointlabels/blob/master/LICENSE"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "chartist": "~0.8.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-jasmine": "~1.1.0",
+    "grunt-contrib-jshint": "~0.12.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-umd": "~2.2.1",
+    "grunt-newer": "^0.8.0",
+    "jasmine-fixture": "~1.2.2",
+    "jshint-stylish": "~1.0.0",
+    "load-grunt-config": "^0.16.0",
+    "time-grunt": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "config": {
+    "banner": "/* chartist-plugin-pointlabels <%= pkg.version %>\n * Copyright © <%= year %> Gion Kunz\n * Free to use under the WTFPL license.\n * http://www.wtfpl.net/\n */\n",
+    "src": "src",
+    "dist": "dist",
+    "tmp": ".tmp",
+    "test": "test"
+  }
+}

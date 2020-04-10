@@ -1,10 +1,15 @@
-import "../responsive-utility.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ResponsiveUtility } from "../responsive-utility.js";
 /**
- * `responsive-utility-nehaviors`
- * @element responsive-utility-nehaviors
- * `A simpler way to use responsive utility.`
+ * `responsive-utility-behaviors`
+ * A superclass to that custom elements can extend to automatically use ResponsiveUtility.
+ *
+ * @class ResponsiveUtilityBehaviors
+ * @see ResponsiveUtility
+ * @demo ../demo/index.html
  */
-export const ResponsiveUtilityBehaviors = function(SuperClass) {
+
+export const ResponsiveUtilityBehaviors = SuperClass => {
   return class extends SuperClass {
     static get properties() {
       return {
@@ -13,50 +18,58 @@ export const ResponsiveUtilityBehaviors = function(SuperClass) {
          */
         responsiveSize: {
           type: String,
-          value: "xs",
-          reflectToAttribute: true
-        },
-        /*
-         * acts like an element query instead of @media query
-         */
-        responsiveToParent: {
-          type: Boolean,
-          value: true
+          attribute: "responsive-size",
+          reflect: true
         },
         /*
          * Miniumum value for small breakpoint
          */
         sm: {
           type: Number,
-          value: 600
+          attribute: "sm"
         },
         /*
          * Miniumum value for medium breakpoint
          */
         md: {
           type: Number,
-          value: 900
+          attribute: "md"
         },
         /*
          * Miniumum value for large breakpoint
          */
-        md: {
+        lg: {
           type: Number,
-          value: 1200
+          attribute: "lg"
         },
         /**
          * Miniumum value for extra-large breakpoint
          */
-        md: {
+        xl: {
           type: Number,
-          value: 1500
+          attribute: "xl"
         }
       };
+    }
+
+    render() {
+      return html`
+        <slot></slot>
+      `;
+    }
+
+    constructor() {
+      super();
+      this.responsiveSize = "xs";
+      this.sm = 600;
+      this.md = 900;
+      this.lg = 1200;
+      this.xl = 1500;
     }
     /**
      * init the utility & register element
      */
-    connectedCallback() {
+    firstUpdated() {
       super.connectedCallback();
       window.ResponsiveUtility.requestAvailability();
       this.dispatchEvent(
@@ -70,7 +83,6 @@ export const ResponsiveUtilityBehaviors = function(SuperClass) {
             md: this.md,
             lg: this.lg,
             xl: this.xl,
-            responsiveToParent: this.responsiveToParent,
             attribute: this.attribute
           }
         })

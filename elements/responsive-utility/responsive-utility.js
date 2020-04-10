@@ -1,19 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ResizeObserver } from "@juggle/resize-observer";
+
+/**
+ * `responsive-utility`
+ * A singleton that manages responsive resize events for elements that invoke it.
+ *
+ * @element responsive-utility
+ * @extends IronResizableBehavior
+ * @demo ./index.html
+ */
+
 window.ResponsiveUtility = {};
+
 window.ResponsiveUtility.instance = null;
-class ResponsiveUtility extends mixinBehaviors(
-  [IronResizableBehavior],
-  PolymerElement
-) {
-  static get template() {
+class ResponsiveUtility extends LitElement {
+  render() {
     return html`
-      <style>
-        :host {
-          display: inline;
-        }
-      </style>
       <slot></slot>
     `;
   }
@@ -25,7 +27,7 @@ class ResponsiveUtility extends mixinBehaviors(
     return {
       ...super.properties,
       /**
-       * Stores
+       * Array of details provided by responsive elements
        */
       details: {
         type: Array
@@ -57,44 +59,45 @@ class ResponsiveUtility extends mixinBehaviors(
     );
     super.disconnectedCallback();
   }
+  /**
+   * adds a responsive element to the details array
+   *
+   * @param {event} e event to add responsive element
+   * @memberof ResponsiveUtility
+   */
   responiveElementEvent(e) {
     let detail = {
       element: e.detail.element,
-      attribute:
-        e.detail.attribute !== undefined && e.detail.attribute !== null
-          ? e.detail.attribute
-          : "responsive-size",
-      relativeToParent:
-        e.detail.relativeToParent !== undefined &&
-        e.detail.relativeToParent !== null
-          ? e.detail.relativeToParent
-          : true,
-      sm: e.detail.sm !== undefined && e.detail.sm !== null ? e.detail.sm : 900,
-      md:
-        e.detail.md !== undefined && e.detail.md !== null ? e.detail.md : 1200,
-      lg:
-        e.detail.lg !== undefined && e.detail.lg !== null ? e.detail.lg : 1500,
-      xl: e.detail.xl !== undefined && e.detail.xl !== null ? e.detail.lg : 1800
+      attribute: e.detail.attribute || "responsive-size",
+      sm: e.detail.sm || 900,
+      md: e.detail.md || 1200,
+      lg: e.detail.lg || 1500,
+      xl: e.detail.xl || 1800
     };
-    if ("ResizeObserver" in window && detail.relativeToParent === true) {
-      let resize = new ResizeObserver(function() {
-          window.ResponsiveUtility.setSize(detail);
-        }),
-        observable =
-          e.detail.parentNode !== undefined && e.detail.parentNode !== null
-            ? e.detail.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE
-              ? e.detail.element.parentNode.host
-              : e.detail.element.parentNode
-            : e.detail.element;
-      resize.observe(observable);
-    }
+    detail.observer = this._getObserver(detail);
+    detail.observer.observe(detail.element);
     this.details.push(detail);
     window.ResponsiveUtility.setSize(detail);
   }
+
+  _getObserver(detail) {
+    return new ResizeObserver(en =>
+      en.forEach(e =>
+        window.ResponsiveUtility.setSize(
+          detail,
+          e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
+            ? e.target.offsetWidth
+            : 0
+        )
+      )
+    );
+  }
+  /**
+   * deletes the responsive element from the details array
+   * @param {event} e event to add responsive element
+   */
   deleteResponiveElementEvent(e) {
-    for (let i = 0; i < this.details.length; i++) {
-      if (e.detail === detail[i]) this.details.splice(i, 1);
-    }
+    this.details = this.details.filter(detail => e.detail !== detail);
   }
   /**
    * An array of objects. Each object is contains data about an element
@@ -106,11 +109,10 @@ class ResponsiveUtility extends mixinBehaviors(
    * {
    *   "element": (the element itself),
    *   "attribute": (the attribute that will be set with the size),
-   *   "relativeToParent": (true for @element query instead of @media query),
-   *   "sm": (optional custom sm breakpoint, default is 600),
-   *   "md": (optional custom md breakpoint, default is 900),
-   *   "lg": (optional custom lg breakpoint, default is 1200),
-   *   "xl": (optional custom xl breakpoint, default is 1500),
+   *   "sm": (optional custom sm breakpoint, default is 900),
+   *   "md": (optional custom md breakpoint, default is 1200),
+   *   "lg": (optional custom lg breakpoint, default is 1500),
+   *   "xl": (optional custom xl breakpoint, default is 1800),
    * }
    *
    */
@@ -120,19 +122,8 @@ class ResponsiveUtility extends mixinBehaviors(
   constructor() {
     super();
     this.details = [];
-    if (window.ResponsiveUtility.instance == null) {
+    if (window.ResponsiveUtility.instance == null)
       window.ResponsiveUtility.instance = this;
-    }
-    this.addEventListener("iron-resize", this._onIronResize.bind(this));
-  }
-
-  /**
-   * On resize, sets sizes of any detail element that has changed.
-   */
-  _onIronResize() {
-    for (let i = 0; i < this.details.length; i++) {
-      window.ResponsiveUtility.setSize(this.details[i]);
-    }
   }
 }
 window.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
@@ -141,7 +132,7 @@ export { ResponsiveUtility };
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.ResponsiveUtility.requestAvailability = function() {
+window.ResponsiveUtility.requestAvailability = () => {
   if (window.ResponsiveUtility.instance == null) {
     window.ResponsiveUtility.instance = document.createElement(
       "responsive-utility"
@@ -150,11 +141,20 @@ window.ResponsiveUtility.requestAvailability = function() {
   document.body.appendChild(window.ResponsiveUtility.instance);
 };
 /**
- * Sets responsive size of detail.
+ * Sets responsive size based on detail provided by reponsive element
+ * @param {object} detail object with element details, as in {
+ *   "element": (the element itself),
+ *   "attribute": (the attribute that will be set with the size),
+ *   "sm": (optional custom sm breakpoint, default is 900),
+ *   "md": (optional custom md breakpoint, default is 1200),
+ *   "lg": (optional custom lg breakpoint, default is 1500),
+ *   "xl": (optional custom xl breakpoint, default is 1800),
+ * }
  */
-window.ResponsiveUtility.setSize = function(detail) {
+window.ResponsiveUtility.setSize = (detail, width = 0) => {
   let size,
-    width = window.ResponsiveUtility._getWidth(detail);
+    el = detail.element,
+    attr = detail.attribute;
   if (width < detail.sm) {
     size = "xs";
   } else if (width < detail.md) {
@@ -166,35 +166,6 @@ window.ResponsiveUtility.setSize = function(detail) {
   } else {
     size = "xl";
   }
-  if (
-    detail.element.getAttribute(detail.attribute) === undefined ||
-    size !== detail.element.getAttribute(detail.attribute)
-  ) {
-    detail.element.setAttribute(detail.attribute, size);
-  }
-};
-/**
- * Returns width of detail.
- *
- * @param {object} the HTML element to check
- * @returns {number} the width of the element or its parent node
- */
-window.ResponsiveUtility._getWidth = function(detail) {
-  let el = detail.element;
-  if (detail.relativeToParent === true) {
-    if (
-      el &&
-      el.offsetWidth !== undefined &&
-      el.offsetWidth !== null &&
-      el.offsetWidth > 0
-    ) {
-      return el.offsetWidth;
-    } else if (el.parentNode !== null) {
-      return el.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE &&
-        el.parentNode.host
-        ? el.parentNode.host.offsetWidth
-        : el.parentNode.offsetWidth;
-    }
-  }
-  return window.outerWidth;
+  if (!el.getAttribute(attr) || size !== el.getAttribute(attr))
+    el.setAttribute(attr, size);
 };

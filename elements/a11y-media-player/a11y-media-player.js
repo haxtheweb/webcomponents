@@ -2482,17 +2482,15 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   connectedCallback() {
-    let root = this;
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
     this._handleMediaLoaded();
     this.__loadedTracks.addEventListener("loadedmetadata", e =>
-      root._handleMediaLoaded(e)
+      this._handleMediaLoaded(e)
     );
     this.__loadedTracks.addEventListener("timeupdate", e =>
-      root._handleTimeUpdate(e)
+      this._handleTimeUpdate(e)
     );
-    this._addResponsiveUtility();
     this.__playerReady = true;
   }
 
@@ -3445,6 +3443,26 @@ class A11yMediaPlayer extends SimpleColors {
   }
   firstUpdated() {
     setTimeout(() => {
+      window.ResponsiveUtility.requestAvailability();
+
+      /**
+       * Fires player needs the size of parent container to add responsive styling
+       * @event responsive-element
+       */
+      window.dispatchEvent(
+        new CustomEvent("responsive-element", {
+          detail: {
+            element: this,
+            attribute: "responsive-size",
+            relativeToParent: true,
+            sm: 300,
+            md: 600,
+            lg: 1000,
+            xl: 1500
+          }
+        })
+      );
+
       window.A11yMediaStateManager.requestAvailability();
 
       /**
@@ -3495,36 +3513,6 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _transcriptScroll(e) {
     this.disableScroll = !this.disableScroll;
-  }
-
-  /**
-   * calls responsive-utility to get parent's responsive size
-   *
-   * @param {object} a set of responsive for options, eg: `{element: root, attribute: "responsive-size", relativeToParent: true}`
-   */
-  _addResponsiveUtility(options) {
-    let root = this;
-    window.ResponsiveUtility.requestAvailability();
-    /**
-     * Fires player needs the size of parent container to add responsive styling
-     * @event responsive-element
-     */
-    window.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail:
-          options !== undefined
-            ? options
-            : {
-                element: root,
-                attribute: "responsive-size",
-                relativeToParent: true,
-                sm: 300,
-                md: 600,
-                lg: 1000,
-                xl: 1500
-              }
-      })
-    );
   }
 
   /**

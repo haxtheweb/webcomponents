@@ -17,22 +17,96 @@
       <h3>Basic lrndesign-line demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-line scale="ct-double-octave" data-source="line.csv"></lrndesign-line>
+          <lrndesign-line 
+            axis-x-title="Quarter"
+            axis-y-title="Sales (in millions)"
+            scale="ct-double-octave">
+            <h3 slot="heading">Sales by Quarter (chart)</h3>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+            <table>
+              <caption>Sales (in millions) by Quarter (table)</caption>
+              <thead>
+                <tr>
+                  <th scope="row">Quarter</th>
+                  <th scope="col">Q1 2018</th>
+                  <th scope="col">Q2 2018</th>
+                  <th scope="col">Q3 2018</th>
+                  <th scope="col">Q4 2018</th>
+                  <th scope="col">Q1 2019</th>
+                  <th scope="col">Q2 2019</th>
+                  <th scope="col">Q3 2019</th>
+                  <th scope="col">Q4 2019</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Northeast</th><td>5</td><td>4</td><td>3</td><td>7</td><td>8</td><td>11</td><td>9</td><td>5</td></tr>
+                <tr><th scope="row">Southeast</th><td>3</td><td>2</td><td>9</td><td>5</td><td>6</td><td>4</td><td>8</td><td>4</td></tr>
+                <tr><th scope="row">Midatlantic</th><td>1</td><td>5</td><td>8</td><td>4</td><td>7</td><td>6</td><td>8</td><td>5</td></tr>
+                <tr><th scope="row">Midwest</th><td>2</td><td>3</td><td>4</td><td>6</td><td>4</td><td>2</td><td>4</td><td>3</td></tr>
+                <tr><th scope="row">West</th><td>4</td><td>1</td><td>2</td><td>1</td><td>0</td><td>null</td><td>3</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </lrndesign-line>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
-          <lrndesign-line dark scale="ct-double-octave" data-source="line.csv"></lrndesign-line>
+          <lrndesign-line 
+            axis-x-title="Quarter"
+            axis-y-title="Sales (in millions)" 
+            data-source="line.csv"
+            dark 
+            scale="ct-double-octave"
+            show-point-labels>
+          </lrndesign-line>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
-          <lrndesign-line accent-color="cyan" scale="ct-double-octave" data-source="line.csv"></lrndesign-line>
+          <lrndesign-line 
+            accent-color="cyan" 
+            axis-x-title="Quarter"
+            axis-y-title="Sales (in millions)"  
+            data-source="line.csv"
+            scale="ct-double-octave"
+            show-table>
+          </lrndesign-line>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
-          <lrndesign-line dark accent-color="cyan" scale="ct-double-octave" data-source="line.csv"></lrndesign-line>
+          <lrndesign-line 
+            dark 
+            accent-color="cyan" 
+            scale="ct-double-octave"
+            show-table>
+            <h3 slot="heading">Sales by Quarter (chart)</h3>
+            <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
+            <table>
+              <caption>Sales by Quarter (table)</caption>
+              <thead>
+                <tr>
+                  <th scope="row">Quarter</th>
+                  <th scope="col">Q1 2018</th>
+                  <th scope="col">Q2 2018</th>
+                  <th scope="col">Q3 2018</th>
+                  <th scope="col">Q4 2018</th>
+                  <th scope="col">Q1 2019</th>
+                  <th scope="col">Q2 2019</th>
+                  <th scope="col">Q3 2019</th>
+                  <th scope="col">Q4 2019</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Northeast</th><td>5</td><td>4</td><td>3</td><td>7</td><td>8</td><td>11</td><td>9</td><td>5</td></tr>
+                <tr><th scope="row">Southeast</th><td>3</td><td>2</td><td>9</td><td>5</td><td>6</td><td>4</td><td>8</td><td>4</td></tr>
+                <tr><th scope="row">Midatlantic</th><td>1</td><td>5</td><td>8</td><td>4</td><td>7</td><td>6</td><td>8</td><td>5</td></tr>
+                <tr><th scope="row">Midwest</th><td>2</td><td>3</td><td>4</td><td>6</td><td>4</td><td>2</td><td>4</td><td>3</td></tr>
+                <tr><th scope="row">West</th><td>4</td><td>1</td><td>2</td><td>1</td><td>0</td><td>null</td><td>3</td><td>0</td></tr>
+              </tbody>
+            </table>
+
+          </lrndesign-line>
         </template>
       </demo-snippet>
     </div>

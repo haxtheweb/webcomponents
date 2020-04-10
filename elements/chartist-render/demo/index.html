@@ -11,19 +11,18 @@
       import '../chartist-render.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
+      chartist-render[type=pie] {
+          width: 300px;
+      }  
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>Basic chartist-render demo</h1>
+      <p>Basic charts using progressive enhancement. See <a href="./csv.html">chartist-render from CSV demo</a> to load data from a CSV.absolute</p>
       <h2>Basic pie chart</h2>
       <demo-snippet>
         <style>
-          #pie-chart {
-              width: 300px;
-              height: 300px;
-              display: inline-block;
-          }  
         </style>
         <template>
           <chartist-render id="pie-chart" 
@@ -50,13 +49,6 @@
       </demo-snippet>
       <h2>Basic donut chart</h2>
       <demo-snippet>
-        <style>
-          #donut-chart {
-              width: 300px;
-              height: 300px;
-              display: inline-block;
-          }  
-        </style>
         <template>
           <chartist-render id="donut-chart" 
             type="pie"
@@ -86,13 +78,16 @@
           <chartist-render id="line-chart" 
             options='{"fullWidth": true, "low": 0}' 
             scale="ct-quarter"
-            type="line">
+            type="line"
+            x-axis-label="Quarter"
+            y-axis-label="Sales in thousands">
             <h3 slot="heading">Sales by Quarter (chart)</h3>
             <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
             <table>
               <caption>Sales by Quarter (table)</caption>
               <thead>
                 <tr>
+                  <th scope="row">Quarter</th>
                   <th scope="col">Q1 2018</th>
                   <th scope="col">Q2 2018</th>
                   <th scope="col">Q3 2018</th>
@@ -104,11 +99,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>5</td><td>4</td><td>3</td><td>7</td><td>8</td><td>11</td><td>9</td><td>5</td></tr>
-                <tr><td>3</td><td>2</td><td>9</td><td>5</td><td>6</td><td>4</td><td>8</td><td>4</td></tr>
-                <tr><td>1</td><td>5</td><td>8</td><td>4</td><td>7</td><td>6</td><td>8</td><td>5</td></tr>
-                <tr><td>2</td><td>3</td><td>4</td><td>6</td><td>4</td><td>2</td><td>4</td><td>3</td></tr>
-                <tr><td>4</td><td>1</td><td>2</td><td>1</td><td>0</td><td>null</td><td>3</td><td>0</td></tr>
+                <tr><th scope="row">Northeast</th><td>5</td><td>4</td><td>3</td><td>7</td><td>8</td><td>11</td><td>9</td><td>5</td></tr>
+                <tr><th scope="row">Southeast</th><td>3</td><td>2</td><td>9</td><td>5</td><td>6</td><td>4</td><td>8</td><td>4</td></tr>
+                <tr><th scope="row">Midatlantic</th><td>1</td><td>5</td><td>8</td><td>4</td><td>7</td><td>6</td><td>8</td><td>5</td></tr>
+                <tr><th scope="row">Midwest</th><td>2</td><td>3</td><td>4</td><td>6</td><td>4</td><td>2</td><td>4</td><td>3</td></tr>
+                <tr><th scope="row">West</th><td>4</td><td>1</td><td>2</td><td>1</td><td>0</td><td>null</td><td>3</td><td>0</td></tr>
               </tbody>
             </table>
           </chartist-render>
@@ -117,12 +112,23 @@
       <h2>Bar chart with dynamically added options and data</h2>
       <demo-snippet>
         <template>
+          <style>
+            table { 
+              border-radius: 2px; 
+            }
+            th, td {
+              border: 1px solid var(--chartist-text-color, #000);
+              text-align: right;
+              padding: 2px 5px;
+            }
+          </style>
           <chartist-render id="bar-chart" 
-            type="bar" 
+            on-chartist-render-ready="makeBar()"
             scale="ct-major-twelfth"
             show-table
-            on-chartist-render-ready="makeBar()"
-            chart-desc="">
+            type="bar" 
+            x-axis-label="Quarter"
+            y-axis-label="Sales in thousands">
             <h3 slot="heading">Sales by Quarter (chart)</h3>
             <p slot="desc">A bar graph of sales by quarter. Each series is a salesperson.</p>
             <table>
