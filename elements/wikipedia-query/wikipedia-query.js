@@ -178,11 +178,18 @@ class WikipediaQuery extends LitElement {
         configure: [
           {
             property: "search",
-            title: "Search term",
+            title: "Article name",
             description: "Word to search wikipedia for.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true
+          },
+          {
+            property: "hideTitle",
+            title: "Hide title",
+            description: "Whether or not to render the title of the article.",
+            inputMethod: "boolean",
+            icon: "editor:title"
           }
         ]
       },
