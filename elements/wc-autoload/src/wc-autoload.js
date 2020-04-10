@@ -36,8 +36,7 @@ window.WCAutoload.process = e => {
     target.querySelectorAll("*").forEach(el => {
       loader.processNewElement(el);
     });
-  }
-  else {
+  } else {
     setTimeout(async () => {
       // set the basePath if it exists
       if (window.WCAutoloadBasePath) {
