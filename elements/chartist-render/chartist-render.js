@@ -1069,12 +1069,6 @@ Container class	Ratio
               detail: this
             })
           );
-          console.log(
-            propName,
-            JSON.stringify(this.data),
-            JSON.stringify(oldValue),
-            JSON.stringify(this.data) !== JSON.stringify(oldValue)
-          );
           this._renderTable();
           this._updateChartData();
         } else {
@@ -1367,12 +1361,6 @@ Container class	Ratio
               )
               .join("")}
           </tbody>`;
-        console.log(
-          "table",
-          html,
-          JSON.stringify(thead),
-          JSON.stringify(tbody)
-        );
         table.innerHTML = html;
         this.appendChild(table);
       } else if (table) {
@@ -1416,13 +1404,6 @@ Container class	Ratio
           });
           data.push(temp);
         });
-      console.log(
-        "_updateData",
-        table ? table.innerHTML : ``,
-        JSON.stringify(this.data),
-        JSON.stringify(data),
-        JSON.stringify(this.data) !== JSON.stringify(data)
-      );
       if (JSON.stringify(this.data) !== JSON.stringify(data)) this.data = data;
     }
   };

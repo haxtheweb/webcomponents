@@ -15,7 +15,10 @@ export default {
   component: "chartist-render",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+    knobs: {
+      escapeHTML: false
+    }
   }
 };
 
@@ -38,134 +41,27 @@ const utils = new StorybookUtilities(),
     "ct-major-eleventh": "ct-major-eleventh  (3:8)",
     "ct-major-twelfth": "ct-major-twelfth  (1:3)",
     "ct-double-octave": "ct-double-octave  (1:4`)"
-  };
+  }, props = utils.getElementProperties(ChartistRender.properties);
+
+props.forEach(prop=>{
+  if(prop.property === "dataSource") prop.inputMethod = "haxupload";
+  if(prop.property === "scale") { 
+    prop.inputMethod = "select";
+    prop.options = Object.keys(scale);
+  }
+  if(prop.property === "type") { 
+    prop.inputMethod = "select";
+    prop.options = ["bar","pie","line"];
+  }
+  if(prop.property === "chartData") prop.property = 'delete';
+});
 export const ChartistRenderPieStory = () => {
   let pie = {
       labels: ["Bananas", "Apples", "Grapes"],
       series: [20, 15, 40]
-    },
-    props = { ...ChartistRender.properties },
-    input;
-  /**
-   *
-   * [
-   *   {
-   *     title: "User-friendly title",
-   *     property: "propertyName",
-   *     slot: "slotName",
-   *     inputMethod: "HAXschema-compatible inputMethod",
-   *     options: {"value": "select field options object"},
-   *     defaultValue: "optional default value to override random value generator",
-   *   }
-   * ]
-   */
-  delete props.chartData;
-  delete props.type;
-  delete props.scale;
-  delete props.data;
-  input = utils.getElementProperties(props);
-  input = [
-    ...input,
-    ...[
-      {
-        property: "accentColor",
-        inputMethod: "colorpicker",
-        defaultValue: utils.getRandomColor()
-      },
-      { property: "dark", inputMethod: "boolean" },
-      { 
-        property: "data", 
-        inputMethod: "object", 
-        defaultValue: { "labels": ["Bananas", "Apples", "Grapes"], "series": [20, 15, 40] } },
-      {
-        property: "scale",
-        inputMethod: "select",
-        options: scale,
-        defaultValue: "ct-square"
-      },
-      {
-        property: "type",
-        inputMethod: "select",
-        options: ["bar", "line", "pie"],
-        defaultValue: "pie"
-      },
-      { slot: "", inputMethod: "textarea" },
-      {
-        slot: "heading",
-        inputMethod: "textarea",
-        defaultValue: utils.getRandomTextarea()
-      },
-      {
-        slot: "desc",
-        inputMethod: "textarea",
-        defaultValue: utils.getRandomTextarea()
-      }
-    ]
-  ];
-  console.log(props, input);
-  return utils.makeElementFromClass(ChartistRender);
-  /*return html`
-    <chartist-render
-      id=${text("Chart Id (id)", "line-or-pie", "property")}
-      chart-title=${text("Chart Title (chartTitle)", "Chart Title", "property")}
-      chart-desc=${text(
-        "Chart Description (chartDesc)",
-        "This is a pie chart",
-        "property"
-      )}
-      .data=${pie}
-      ?show-table=${boolean("Show Table (showTable)", false, "property")}
-      scale=${select("Scale (scale)", scale, "ct-quarter", "property")}
-      type="pie"
-    >
-    </chartist-render>
-  `;*/
+    },knobs = utils.getKnobs(props, {data: pie, scale: "ct-square", type: "pie" });
+    delete knobs.props.delete;
+    console.log('ChartistRenderPieStory',props,knobs);
+    //props.push({slot:"",inputMethod: "textarea"});
+  return utils.makeElement('chartist-render',knobs);
 };
-/*export const ChartistRenderLineOrBarStory = () => {
-  let data = {
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-      series: [
-        [5, 5, 10, 8, 7, 5, 4, null, null, null, 10, 10, 7, 8, 6, 9],
-        [
-          10,
-          15,
-          null,
-          12,
-          null,
-          10,
-          12,
-          15,
-          null,
-          null,
-          12,
-          null,
-          14,
-          null,
-          null,
-          null
-        ],
-        [null, null, null, null, 3, 4, 1, 3, 4, 6, 7, 9, 5, null, null, null]
-      ]
-    },
-    options = {
-      fullWidth: true,
-      low: 0
-    };
-  return html`
-    <chartist-render
-      id=${text("Chart Id (id)", "line-or-pie", "property")}
-      chart-title=${text("Chart Title (chartTitle)", "Chart Title", "property")}
-      chart-desc=${text(
-        "Chart Description (chartDesc)",
-        "This is a bor or a line chart",
-        "property"
-      )}
-      .data=${data}
-      .options=${options}
-      ?show-table=${boolean("Show Table (showTable)", false, "property")}
-      scale=${select("Scale (scale)", scale, "ct-quarter", "property")}
-      type=${select("Type (type)", ["line", "bar"], "line", "property")}
-    >
-    </chartist-render>
-  `;
-};*/

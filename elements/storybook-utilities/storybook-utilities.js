@@ -286,7 +286,7 @@ export class StorybookUtilities {
    */
   getKnob(field, defaultValue) {
     //withKnobs.escapeHTML = false;
-    console.log('getKnob',withWebComponentsKnobs);
+    console.log("getKnob", withWebComponentsKnobs);
     let title = field.title,
       name = field.name,
       attribute = this.camelToKebab(name),
@@ -304,7 +304,13 @@ export class StorybookUtilities {
       } else if (method === "radio" && options) {
         knob = radios(label, options, val, group);
       } else if (method === "options" && options) {
-        knob = optionsKnob(label, options, val, { display: "multi-select" }, group);
+        knob = optionsKnob(
+          label,
+          options,
+          val,
+          { display: "multi-select" },
+          group
+        );
       }
     } else if (method === "colorpicker" && colors) {
       let options = {};
