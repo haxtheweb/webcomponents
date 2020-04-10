@@ -24,38 +24,7 @@ window.WCAutoload.process = e => {
   var loader = window.WCAutoload.requestAvailability();
   loader.loaded = true;
   // microtask timing to ensure window settings are accepted
-  setTimeout(async () => {
-    // set the basePath if it exists
-    if (window.WCAutoloadBasePath) {
-      loader.registry.basePath = window.WCAutoloadBasePath;
-    }
-    if (
-      window.WCAutoloadRegistryFile &&
-      !window.WCAutoloadRegistryFileProcessed
-    ) {
-      await fetch(window.WCAutoloadRegistryFile)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(data) {
-          window.WCAutoloadRegistryFileProcessed = true;
-          window.WCAutoloadRegistry = data;
-        });
-    }
-    // build out the registry via events translated from object
-    if (window.WCAutoloadRegistry) {
-      for (var i in window.WCAutoloadRegistry) {
-        loader.registry.register({
-          tag: i,
-          path: window.WCAutoloadRegistry[i]
-        });
-      }
-    }
-    var target = document;
-    if (loader.target) {
-      target = loader.target;
-      loader.processNewElement(target);
-    }
+  if (window.WCAutoloadRegistryFileProcessed) {
     // mutation observer will pick up changes after initial load
     // but this gets us at load time with fallback support for legacy
     try {
@@ -68,7 +37,47 @@ window.WCAutoload.process = e => {
         loader.processNewElement(el);
       });
     }
-  }, 0);
+  }
+  else {
+    setTimeout(async () => {
+      // set the basePath if it exists
+      if (window.WCAutoloadBasePath) {
+        loader.registry.basePath = window.WCAutoloadBasePath;
+      }
+      if (
+        window.WCAutoloadRegistryFile &&
+        !window.WCAutoloadRegistryFileProcessed
+      ) {
+        await fetch(window.WCAutoloadRegistryFile)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            window.WCAutoloadRegistryFileProcessed = true;
+            window.WCAutoloadRegistry = data;
+          });
+      }
+      // build out the registry via events translated from object
+      if (window.WCAutoloadRegistry) {
+        for (var i in window.WCAutoloadRegistry) {
+          loader.registry.register({
+            tag: i,
+            path: window.WCAutoloadRegistry[i]
+          });
+        }
+      }
+      var target = document;
+      if (loader.target) {
+        target = loader.target;
+        loader.processNewElement(target);
+      }
+      // mutation observer will pick up changes after initial load
+      // but this gets us at load time with fallback support for legacy
+      target.querySelectorAll("*").forEach(el => {
+        loader.processNewElement(el);
+      });
+    }, 0);
+  }
 };
 // forces self appending which kicks all this off but AFTER dom is loaded
 // function based allows for fallbacks due to timing on legacy browsers

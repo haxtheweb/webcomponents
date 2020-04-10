@@ -75,7 +75,7 @@ class DynamicImportRegistry extends HTMLElement {
     tag = tag.toLowerCase();
     // only import if we already had it
     if (
-      !window.customElements.get(name) &&
+      !window.customElements.get(tag) &&
       this.list[tag] &&
       !this.__loaded[tag]
     ) {
@@ -88,7 +88,7 @@ class DynamicImportRegistry extends HTMLElement {
           this.dispatchEvent(
             new CustomEvent("dynamic-import-registry-loaded", {
               detail: {
-                tag: name,
+                tag: tag,
                 path: this.list[tag],
                 module: module
               }
@@ -101,7 +101,7 @@ class DynamicImportRegistry extends HTMLElement {
         this.dispatchEvent(
           new CustomEvent("dynamic-import-registry-failure", {
             detail: {
-              tag: name,
+              tag: tag,
               path: this.list[tag],
               module: null
             }
