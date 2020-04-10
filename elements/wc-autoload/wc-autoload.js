@@ -23,6 +23,7 @@ window.WCAutoload.process = e => {
   // find the loader
   var loader = window.WCAutoload.requestAvailability();
   loader.loaded = true;
+  var list = {};
   // microtask timing to ensure window settings are accepted
   if (window.WCAutoloadRegistryFileProcessed) {
     // mutation observer will pick up changes after initial load
@@ -34,7 +35,10 @@ window.WCAutoload.process = e => {
     }
     // hack to convert children into array
     target.querySelectorAll("*").forEach(el => {
-      loader.processNewElement(el);
+      if (el.tagName && !list[el.tagName]) {
+        loader.processNewElement(el);
+        list[el.tagName] = el.tagName;
+      }
     });
   } else {
     setTimeout(async () => {
@@ -72,7 +76,10 @@ window.WCAutoload.process = e => {
       // mutation observer will pick up changes after initial load
       // but this gets us at load time with fallback support for legacy
       target.querySelectorAll("*").forEach(el => {
-        loader.processNewElement(el);
+        if (el.tagName && !list[el.tagName]) {
+          loader.processNewElement(el);
+          list[el.tagName] = el.tagName;
+        }
       });
     }, 0);
   }

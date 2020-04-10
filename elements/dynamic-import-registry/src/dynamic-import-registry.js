@@ -70,7 +70,7 @@ class DynamicImportRegistry extends HTMLElement {
   /**
    * This implements the definition with checks to ensure it need not run
    */
-  loadDefinition(tag) {
+  async loadDefinition(tag) {
     // must be lowercase
     tag = tag.toLowerCase();
     // only import if we already had it
@@ -83,7 +83,7 @@ class DynamicImportRegistry extends HTMLElement {
       // this can help things on polyfill environments
       this.__loaded[tag] = true;
       try {
-        import(`${this.basePath}${this.list[tag]}`).then(module => {
+        await import(`${this.basePath}${this.list[tag]}`).then(module => {
           // dispatch custom event in case anyone cares
           this.dispatchEvent(
             new CustomEvent("dynamic-import-registry-loaded", {
