@@ -109,7 +109,8 @@ class SimpleFieldsUpload extends SimpleColors {
           --simple-camera-snap-button-container-z-index: 5;
           --simple-camera-snap-button-border-radius: 100%;
           --simple-camera-snap-button-opacity: 0.7;
-        }`
+        }
+      `
     ];
   }
   /**
