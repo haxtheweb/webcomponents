@@ -371,7 +371,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.multiple = false;
     this.readonly = false;
     this.spellcheck = false;
-    this.list = [];
+    this.itemsList = [];
     this.options = {};
     this.wrap = false;
   }
@@ -548,13 +548,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get noOptions() {
-    return (
-      (!this.list || this.itemsList === []) &&
-      (!this.options || this.options === {})
-    );
+    return this.itemsList.length < 1 && Object.keys(this.options).length < 1;
   }
   /**
-   * gets a sorted list of options
+   * gets a sorted list of option
    *
    * @readonly
    * @memberof SimpleFieldsField
