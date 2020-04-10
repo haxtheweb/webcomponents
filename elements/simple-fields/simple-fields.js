@@ -266,10 +266,16 @@ class SimpleFields extends SimpleFieldsLite {
             type: "object"
           }
         },
+        fileupload: {
+          defaultSettings: {
+            type: "string",
+            format: "fileupload"
+          }
+        },
         haxupload: {
           defaultSettings: {
             type: "string",
-            format: "haxupload"
+            format: "fileupload"
           }
         },
         iconpicker: {
@@ -571,9 +577,9 @@ class SimpleFields extends SimpleFieldsLite {
                 }
               }
             },
-            haxupload: {
+            fileupload: {
               defaultSettings: {
-                element: "hax-upload-field",
+                element: "simple-fields-upload",
                 noWrap: true,
                 attributes: {
                   autofocus: true
@@ -637,7 +643,7 @@ class SimpleFields extends SimpleFieldsLite {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
       import("./lib/simple-fields-code.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
+      import("./lib/simple-fields-upload.js");
       import("@lrnwebcomponents/simple-picker/simple-picker.js");
       import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
       import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
