@@ -60,7 +60,7 @@
                 "property": "manifest-metadata-author-image",
                 "title": "Image",
                 "description": "Photo",
-                "inputMethod": "haxupload"
+                "inputMethod": "fileupload"
               },
               {
                 "property": "manifest-metadata-author-name",
@@ -94,7 +94,7 @@
                 "property": "manifest-metadata-theme-variables-image",
                 "title": "Banner",
                 "description": "Image for the site",
-                "inputMethod": "haxupload",
+                "inputMethod": "fileupload",
                 "required": false,
                 "icon": "image:image"
               },
@@ -150,7 +150,7 @@
                       "textfield": "Textfield",
                       "number": "Number",
                       "boolean": "Checkbox",
-                      "haxupload": "File upload",
+                      "fileupload": "File upload",
                       "colorpicker": "Color picker",
                       "iconpicker": "Icon picker",
                       "code-editor": "Code editor",
