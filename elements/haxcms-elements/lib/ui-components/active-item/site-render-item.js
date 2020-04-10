@@ -108,7 +108,10 @@ class SiteRenderItem extends PolymerElement {
           }, 5);
         });
         // if there are, dynamically import them
-        if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
+        if (
+          !window.WCAutoload &&
+          varExists(this.manifest, "metadata.node.dynamicElementLoader")
+        ) {
           let tagsFound = findTagsInHTML(html);
           const basePath = this.pathFromUrl(
             decodeURIComponent(import.meta.url)

@@ -30,6 +30,7 @@ class DynamicImportRegistry extends HTMLElement {
     super();
     // object for tracking what the registry is
     this.list = {};
+    this.__loaded = {};
     this.basePath =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
   }
@@ -69,37 +70,44 @@ class DynamicImportRegistry extends HTMLElement {
   /**
    * This implements the definition with checks to ensure it need not run
    */
-  loadDefinition(tag) {
+  async loadDefinition(tag) {
     // must be lowercase
     tag = tag.toLowerCase();
     // only import if we already had it
-    if (!window.customElements.get(name) && this.list[tag]) {
-      import(`${this.basePath}${this.list[tag]}`)
-        .then(module => {
+    if (
+      !window.customElements.get(tag) &&
+      this.list[tag] &&
+      !this.__loaded[tag]
+    ) {
+      // let's assume it's there cause we got here
+      // this can help things on polyfill environments
+      this.__loaded[tag] = true;
+      try {
+        await import(`${this.basePath}${this.list[tag]}`).then(module => {
           // dispatch custom event in case anyone cares
           this.dispatchEvent(
             new CustomEvent("dynamic-import-registry-loaded", {
               detail: {
-                tag: name,
+                tag: tag,
                 path: this.list[tag],
                 module: module
               }
             })
           );
-        })
-        .catch(e => {
-          console.error(e);
-          // fire on error too
-          this.dispatchEvent(
-            new CustomEvent("dynamic-import-registry-failure", {
-              detail: {
-                tag: name,
-                path: this.list[tag],
-                module: null
-              }
-            })
-          );
         });
+      } catch (e) {
+        console.warn(e);
+        // fire on error too
+        this.dispatchEvent(
+          new CustomEvent("dynamic-import-registry-failure", {
+            detail: {
+              tag: tag,
+              path: this.list[tag],
+              module: null
+            }
+          })
+        );
+      }
     }
   }
   // simple path from a url modifier

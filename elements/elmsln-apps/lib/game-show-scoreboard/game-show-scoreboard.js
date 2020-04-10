@@ -6,6 +6,7 @@ import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
+import "../elmsln-base-deps.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";

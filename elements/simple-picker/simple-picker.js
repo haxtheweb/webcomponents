@@ -231,6 +231,8 @@ class SimplePicker extends LitElement {
 
         :host([expanded]:not([disabled])) #collapse {
           display: block;
+          position: unset;
+          background-color: var(--simple-picker-options-background-color, #fff);
         }
 
         .rows {
@@ -853,7 +855,6 @@ class SimplePicker extends LitElement {
    * @returns {void}
    */
   _setSelectedOption(newVal, oldVal) {
-    console.log('_setSelectedOption',this.options);
     let sel =
       !this.allowNull && this.options.length > 0 && this.options[0].length > 0
         ? this.options[0][0].value

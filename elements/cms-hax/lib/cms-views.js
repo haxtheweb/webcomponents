@@ -153,6 +153,9 @@ class CMSViews extends PolymerElement {
         this.appendChild(newNode);
         setTimeout(() => {
           this.loading = false;
+          if (window.WCAutoload) {
+            window.WCAutoload.process();
+          }
         }, 600);
       });
     }

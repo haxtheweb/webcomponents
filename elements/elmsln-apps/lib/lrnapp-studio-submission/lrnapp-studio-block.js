@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "../elmsln-base-deps.js";
 class LrnappStudioBlock extends PolymerElement {
   static get template() {
     return html`

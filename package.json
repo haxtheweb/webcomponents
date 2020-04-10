@@ -40,6 +40,7 @@
         "@babel/core": "^7.9.0",
         "@emotion/core": "0.13.1",
         "@emotion/styled": "0.10.6",
+        "gulp-minify-html-literals": "1.1.7",
         "@open-wc/building-utils": "2.14.3",
         "@open-wc/demoing-storybook": "^1.15.1",
         "@open-wc/storybook": "^0.2.8",

@@ -5,6 +5,7 @@ import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "../elmsln-base-deps.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 class LrnappGalleryGrid extends PolymerElement {

@@ -123,6 +123,8 @@ label:not([hidden]) {
 
 :host([expanded]:not([disabled])) #collapse {
   display: block;
+  position: unset;
+  background-color: var(--simple-picker-options-background-color, #fff);
 } 
 
 .rows {

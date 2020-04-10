@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "Data binding wrapped on top of a popular code editor",
   "repository": {
     "type": "git",
@@ -41,13 +41,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^2.6.4",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.5",
     "@polymer/polymer": "^3.3.1",
     "monaco-editor": "^0.15.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.4",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

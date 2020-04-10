@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
+import "../elmsln-base-deps.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";

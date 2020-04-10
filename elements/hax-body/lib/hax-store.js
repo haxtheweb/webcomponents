@@ -486,25 +486,31 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (!window.customElements.get(i)) {
         await import(`${basePath}../../../${items[i]}`)
           .then(response => {
+            let hasClass = false;
             for (var cVal in response) {
               // get the custom element definition we used to add that file
               let CEClass = response[cVal];
               if (typeof CEClass.getHaxProperties === "function") {
                 this.setHaxProperties(CEClass.getHaxProperties(), i);
+                hasClass = true;
               } else if (typeof CEClass.HAXWiring === "function") {
                 this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
+                hasClass = true;
               } else if (CEClass.haxProperties) {
                 this.setHaxProperties(CEClass.haxProperties, i);
-              } else {
-                // this is the less optimized / legacy polymer element or an element
-                // that did not provide an export
-                try {
-                  let el = document.createElement(i);
-                  haxAutoloader.appendChild(el);
-                } catch (e) {
-                  console.warn(e);
-                }
+                hasClass = true;
               }
+            }
+            // fallback for things that don't export a class
+            if (
+              !hasClass &&
+              window.customElements.get(i) &&
+              window.customElements.get(i).haxProperties
+            ) {
+              this.setHaxProperties(
+                window.customElements.get(i).haxProperties,
+                i
+              );
             }
           })
           .catch(error => {
@@ -905,17 +911,24 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * allow uniform method of adding voice commands
    */
   addVoiceCommand(command, context, callback) {
-    command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
-    this.voiceCommands[command] = context[callback].bind(context);
-    if (this.__voiceInit) {
-      this.__hal.commands = { ...this.voiceCommands };
+    if (context) {
+      command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
+      this.voiceCommands[command] = context[callback].bind(context);
+      if (this.__voiceInit) {
+        this.__hal.commands = { ...this.voiceCommands };
+      }
     }
   }
   /**
    * event driven version
    */
   _addVoiceCommand(e) {
-    this.addVoiceCommand(e.detail.command, e.detail.context, e.detail.callback);
+    // without context it's almost worthless so try to fallback on where it came from
+    let target = e.detail.context;
+    if (!target) {
+      target = e.target;
+    }
+    this.addVoiceCommand(e.detail.command, target, e.detail.callback);
   }
   /**
    * Position cursor at the start of the position of the requested node
