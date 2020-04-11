@@ -38,7 +38,7 @@
     "reflect": true
   },
   /**
-   * Optional minimum breakpoint for horizontal layout of tabs. 
+   * Optional minimum breakpoint for horizontal layout of tabs.
    * Default is unset (always horizontal).
    * `-1` forces vertical-only mode.
    */

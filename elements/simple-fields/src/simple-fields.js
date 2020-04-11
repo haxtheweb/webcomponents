@@ -432,9 +432,9 @@ class SimpleFields extends SimpleFieldsLite {
                   descriptionSlot: ""
                 },
                 properties: {
-                  "layoutBreakpoint": "layoutBreakpoint",
-                  "iconBreakpoint": "iconBreakpoint",
-                  "sticky": "sticky"
+                  layoutBreakpoint: "layoutBreakpoint",
+                  iconBreakpoint: "iconBreakpoint",
+                  sticky: "sticky"
                 }
               }
             }

@@ -87,12 +87,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @readonly
    * @returns {boolean}
    */
-  get iconsOnly() { 
-    return this.iconBreakpoint 
-      && (this.tabs || []).filter(tab=>!tab.icon).length < 1  
-      && this.responsiveWidth < this.iconBreakpoint;
+  get iconsOnly() {
+    return (
+      this.iconBreakpoint &&
+      (this.tabs || []).filter(tab => !tab.icon).length < 1 &&
+      this.responsiveWidth < this.iconBreakpoint
+    );
   }
-  
+
   /**
    * mutation observer for tabs
    * @readonly
@@ -119,21 +121,23 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @readonly
    * @returns {object}
    */
-  get tabs() {;
+  get tabs() {
     return Object.keys(this.__tabs || {}).map(i => {
       this.__tabs[i].order = i + 1;
       this.__tabs[i].total = this.__tabs.length;
       return this.__tabs[i];
     });
   }
-  
+
   /**
    * determines whether tabs should be in vertical layout
    * @readonly
    * @returns {boolean}
    */
   get vertical() {
-    return this.layoutBreakpoint && this.layoutBreakpoint < this.responsiveWidth;
+    return (
+      this.layoutBreakpoint && this.layoutBreakpoint < this.responsiveWidth
+    );
   }
 
   /**
@@ -159,10 +163,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     super.disconnectedCallback();
   }
 
-  firstUpdated(){
-    if(super.firstUpdated()) super.firstUpdated();
+  firstUpdated() {
+    if (super.firstUpdated()) super.firstUpdated();
     window.ResponsiveUtility.requestAvailability();
-    window.dispatchEvent(new CustomEvent("responsive-element", { detail: { element: this} }));
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", { detail: { element: this } })
+    );
   }
 
   /**
@@ -173,18 +179,18 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       if (propName === "id") this._idChanged(this.id, oldValue);
       if (propName === "activeTab" && this.activeTab !== oldValue)
         this._activeTabChanged(this.activeTab, oldValue);
-      if(propName === "responsiveWidth") {
-        if(this.vertical){
-          this.setAttribute('vertical',true);
+      if (propName === "responsiveWidth") {
+        if (this.vertical) {
+          this.setAttribute("vertical", true);
         } else {
-          this.removeAttribute('vertical');
+          this.removeAttribute("vertical");
         }
       }
-      if(["iconsBreakpoint","responsiveWidth","__tabs"].includes(propName)) {
-        if(this.iconsOnly){
-          this.setAttribute('icons-only',true);
+      if (["iconsBreakpoint", "responsiveWidth", "__tabs"].includes(propName)) {
+        if (this.iconsOnly) {
+          this.setAttribute("icons-only", true);
         } else {
-          this.removeAttribute('icons-only');
+          this.removeAttribute("icons-only");
         }
       }
     });
