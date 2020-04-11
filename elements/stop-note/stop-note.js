@@ -84,6 +84,8 @@ class StopNote extends SchemaBehaviors(LitElement) {
         }
 
         .svg_wrap {
+          display: flex;
+          align-items: center;
           background-color: var(--accent-color);
           padding: 5px;
           width: auto;
