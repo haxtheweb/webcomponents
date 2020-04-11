@@ -72,7 +72,8 @@ class ResponsiveUtility extends LitElement {
       sm: e.detail.sm || 900,
       md: e.detail.md || 1200,
       lg: e.detail.lg || 1500,
-      xl: e.detail.xl || 1800
+      xl: e.detail.xl || 1800,
+      custom: e.detail.custom || "responsive-width"
     };
     detail.observer = this._getObserver(detail);
     detail.observer.observe(detail.element);
@@ -154,7 +155,8 @@ window.ResponsiveUtility.requestAvailability = () => {
 window.ResponsiveUtility.setSize = (detail, width = 0) => {
   let size,
     el = detail.element,
-    attr = detail.attribute;
+    attr = detail.attribute,
+    custom = detail.custom;
   if (width < detail.sm) {
     size = "xs";
   } else if (width < detail.md) {
@@ -166,6 +168,8 @@ window.ResponsiveUtility.setSize = (detail, width = 0) => {
   } else {
     size = "xl";
   }
+  if (!el.getAttribute(custom) || width !== el.getAttribute(custom))
+    el.setAttribute(custom, width);
   if (!el.getAttribute(attr) || size !== el.getAttribute(attr))
     el.setAttribute(attr, size);
 };
