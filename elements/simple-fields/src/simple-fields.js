@@ -431,8 +431,10 @@ class SimpleFields extends SimpleFieldsLite {
                   labelSlot: "label",
                   descriptionSlot: ""
                 },
-                attributes: {
-                  "layout-breakpoint": 0
+                properties: {
+                  layoutBreakpoint: "layoutBreakpoint",
+                  iconBreakpoint: "iconBreakpoint",
+                  sticky: "sticky"
                 }
               }
             }

@@ -19,9 +19,6 @@ Custom property | Description | Default
 `--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
  * @element a11y-tab
- * @demo ./demo/index.html
- * @demo ./demo/vertical.html Always Vertical
- * @demo ./demo/horizontal.html Always Horizontal
  * @see ../a11y-tabs.js
  */
 class A11yTab extends LitElement {

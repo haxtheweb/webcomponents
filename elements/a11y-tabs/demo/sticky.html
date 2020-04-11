@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>A11yTabs: a11y-tabs Demo</title>
+    <title>A11yTabs: Sticky a11y-tabs Demo</title>
     
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -18,34 +18,10 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Horizontal a11y-tabs demo</h3>
+      <h3>Sticky a11y-tabs demo</h3>
       <demo-snippet>
         <template>
-          <a11y-tabs id="tabs" layout-breakpoint="0">
-            <a11y-tab id="eat" icon="maps:restaurant" label="Nearby restaurants">
-              <ul>
-                <li>Tasty Burger</li>
-                <li>Subs &amp; More</li>
-                <li>Lobsterland</li>
-              </ul>
-            </a11y-tab>
-            <a11y-tab id="shop" icon="maps:store-mall-directory" label="Shopping">
-              <ul>
-                <li>Stuff and Things</li>
-                <li>Really Old Books</li>
-                <li>Fast Fashion</li>
-              </ul>
-            </a11y-tab>
-            <a11y-tab id="phone" disabled icon="communication:phone" label="Pay Telephones">
-              <p>Pay telephones are a thing of the past.</p>
-            </a11y-tab>
-          </a11y-tabs>
-        </template>
-      </demo-snippet>
-      <h3>Horizontal sticky a11y-tabs demo</h3>
-      <demo-snippet>
-        <template>
-          <a11y-tabs id="tabs" layout-breakpoint="0" sticky>
+          <a11y-tabs id="tabs" sticky>
             <a11y-tab id="lorem">
               <p slot="label">Lorem ipsum</p>
               <p>

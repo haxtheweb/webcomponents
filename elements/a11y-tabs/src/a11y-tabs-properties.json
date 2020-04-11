@@ -22,9 +22,9 @@
     "reflect": true
   },
   /**
-   * the minimum breakpoint for showing tab text with icons, or
-   * - use `0` to always show icons only
-   * - use `-1` to always show text with icons
+   * Optional minimum breakpoint for showing tab text with icons, or
+   * Default is always text with icons.
+   * `-1` forces icon-only mode.
    */
   "iconBreakpoint": {
     "type": "Number",
@@ -38,9 +38,9 @@
     "reflect": true
   },
   /**
-   * the minimum breakpoint for horizontal layout of tabs, or
-   * - use `0` for horizontal-only
-   * - use `-1` for vertical-only
+   * Optional minimum breakpoint for horizontal layout of tabs.
+   * Default is unset (always horizontal).
+   * `-1` forces vertical-only mode.
    */
   "layoutBreakpoint": {
     "type": "Number",
@@ -63,14 +63,6 @@
     "type": "Boolean",
     "reflect": true,
     "attribute": "sticky"
-  },
-  /**
-   * whether the tabbed interface is in vertical layout mode
-   */
-  "vertical": {
-    "type": "Boolean",
-    "reflect": true,
-    "attribute": "vertical"
   },
   /**
    * an array of tab data based on slotted `a11y-tab` elements
