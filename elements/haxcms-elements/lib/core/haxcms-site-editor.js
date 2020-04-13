@@ -795,7 +795,6 @@ class HAXCMSSiteEditor extends LitElement {
 
   _saveNodeFieldsTap(e) {
     let values = this.__fieldsForm.submit();
-    console.log(values);
     values.id = this.activeItem.id; // fire event with details for saving
 
     window.dispatchEvent(
