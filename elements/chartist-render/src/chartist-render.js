@@ -17,6 +17,8 @@ const ChartistRenderSuper = function(SuperClass) {
       this.type = "bar";
       this.scale = "ct-minor-seventh";
       this.responsiveOptions = [];
+      this.data = [];
+      this.dataSource = '';
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
       window.ESGlobalBridge.requestAvailability();
