@@ -14,11 +14,19 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
     static get properties() {
       return {
         /*
-         * parent size for responsive styling
+         * size for responsive styling: xs, sm, md, lg, xl 
          */
         responsiveSize: {
           type: String,
           attribute: "responsive-size",
+          reflect: true
+        },
+        /*
+         * width in pixels
+         */
+        responsiveWidth: {
+          type: Number,
+          attribute: "responsive-width",
           reflect: true
         },
         /*
@@ -78,12 +86,14 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
           cancelable: true,
           composed: true,
           detail: {
+            attribute: this.attribute,
+            custom: this.custom,
             element: this,
             sm: this.sm,
             md: this.md,
             lg: this.lg,
-            xl: this.xl,
-            attribute: this.attribute
+            xl: this.xl
+            
           }
         })
       );
