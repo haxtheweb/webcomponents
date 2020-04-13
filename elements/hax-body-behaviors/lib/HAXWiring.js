@@ -610,7 +610,9 @@ export class HAXWiring {
      * List valid input methods.
      */
     this.validHAXPropertyInputMethod = () => {
-      var methods = Object.keys(new SimpleFields().fieldsConversion.inputMethod);
+      var methods = Object.keys(
+        new SimpleFields().fieldsConversion.inputMethod
+      );
       return methods;
     };
     /**

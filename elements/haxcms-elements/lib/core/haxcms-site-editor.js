@@ -677,11 +677,11 @@ class HAXCMSSiteEditor extends LitElement {
     this.__nodeFieldsInvoked = e.detail;
     let form = document.createElement("simple-fields-form");
     form.style.margin = "0 0 50px 0";
-    form.setAttribute('autoload', 'autoload');
+    form.setAttribute("autoload", "autoload");
     form.method = this.method;
     form.headers = {
-      "Authorization": `Bearer ${this.jwt}`,
-      "Accept": "application/json",
+      Authorization: `Bearer ${this.jwt}`,
+      Accept: "application/json",
       "Content-Type": "application/json"
     };
     form.body = {
