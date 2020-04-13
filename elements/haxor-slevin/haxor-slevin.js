@@ -614,7 +614,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         this.__disposer.push(reaction);
       });
       autorun(reaction => {
-        this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
+        this.activeManifestIndexCounter = toJS(
+          store.activeManifestIndexCounter
+        );
         this.__disposer.push(reaction);
       });
       autorun(reaction => {
