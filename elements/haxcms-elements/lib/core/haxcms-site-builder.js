@@ -259,17 +259,14 @@ class HAXCMSSiteBuilder extends LitElement {
     };
   }
   _themeNameChanged(newValue) {
-    if (newValue && oldValue) {
-      // theme changed
-      store.themeElement.remove();
+    if (newValue) {
+      // drop old theme element if there is one
+      if (store.themeElement) {
+        store.themeElement.remove();
+      }
       // wipe out what we got
       wipeSlot(this, "*");
       store.themeElement = document.createElement(newValue);
-      this.appendChild(store.themeElement);
-    }
-    if (newValue) {
-      store.themeElement = document.createElement(newValue);
-      wipeSlot(this, "*");
       this.appendChild(store.themeElement);
     }
   }
