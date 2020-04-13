@@ -109,6 +109,11 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
   async fetchData(path, method, headers, body) {
     let response = {};
     if (method == "GET") {
+      if (body) {
+        path += "?" + Object.entries(body)
+        .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+        .join("&");
+      }
       response = await fetch(path, {
         method: method,
         headers: headers

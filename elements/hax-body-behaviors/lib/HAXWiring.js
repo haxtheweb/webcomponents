@@ -560,7 +560,7 @@ export class HAXWiring {
         type: "object",
         properties: {}
       };
-      schema.properties = SimpleFields.fieldsToSchema(settings);
+      schema.properties = new SimpleFields().fieldsToSchema(settings);
       // support post processing of schema in order to allow for really
       // custom implementations that are highly dynamic in nature
       // post process hook needs to see if there's a class overriding this
@@ -593,15 +593,15 @@ export class HAXWiring {
      * correctly with support for recursive nesting thx to objects / arrays.
      */
     this._getHaxJSONSchemaProperty = settings => {
-      return SimpleFields.fieldsToSchema(settings);
+      return new SimpleFields().fieldsToSchema(settings);
     };
     /**
      * Convert input method to schema type
      */
     this.getHaxJSONSchemaType = inputMethod => {
       var method =
-        SimpleFields.fieldsConversion.inputMethod[inputMethod] ||
-        SimpleFields.fieldsConversion;
+        new SimpleFields().fieldsConversion.inputMethod[inputMethod] ||
+        new SimpleFields().fieldsConversion;
       return method && method.defaultSettings && method.defaultSettings.type
         ? method.defaultSettings.type
         : "string";
@@ -610,7 +610,7 @@ export class HAXWiring {
      * List valid input methods.
      */
     this.validHAXPropertyInputMethod = () => {
-      var methods = Object.keys(SimpleFields.fieldsConversion.inputMethod);
+      var methods = Object.keys(new SimpleFields().fieldsConversion.inputMethod);
       return methods;
     };
     /**
@@ -824,7 +824,7 @@ export const HAXElement = function(SuperClass) {
      * correctly with support for recursive nesting thx to objects / arrays.
      */
     _getHaxJSONSchemaProperty(settings) {
-      return SimpleFields.fieldsToSchema(settings);
+      return new SimpleFields().fieldsToSchema(settings);
     }
     /**
      * Convert input method to schedma type
@@ -917,7 +917,7 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * correctly with support for recursive nesting thx to objects / arrays.
    */
   _getHaxJSONSchemaProperty: function(settings) {
-    return SimpleFields.fieldsToSchema(settings);
+    return new SimpleFields().fieldsToSchema(settings);
   },
   /**
    * Convert input method to schedma type
