@@ -2230,7 +2230,7 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
 window.HaxStore.haxElementToNode = (tag, content, properties) => {
   // support sandboxed environments which
   // will hate iframe tags but love webview
-  if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
+  if (window.HaxStore && window.HaxStore.instance && window.HaxStore.instance._isSandboxed && tag === "iframe") {
     tag = "webview";
   }
   var frag = document.createElement(tag);

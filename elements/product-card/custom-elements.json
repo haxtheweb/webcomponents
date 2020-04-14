@@ -1,0 +1,24 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "product-card",
+      "path": "./product-card.es6.js",
+      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`"
+    },
+    {
+      "name": "product-card",
+      "path": "./product-card.js",
+      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`"
+    },
+    {
+      "name": "tag",
+      "path": "./product-card.umd.js"
+    },
+    {
+      "name": "product-card",
+      "path": "./src/product-card.js",
+      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`"
+    }
+  ]
+}

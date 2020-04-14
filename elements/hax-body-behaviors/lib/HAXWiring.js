@@ -9,17 +9,18 @@
  * For example, the default of:
  *
  *  {
- *    'api': '1',
- *    'canScale': true,
- *    'canPosition': true,
- *    'canEditSource': true,
- *    'gizmo': {},
- *    'settings': {
- *      'quick': [],
- *      'configure': [],
- *      'advanced': [],
+ *    "api": "1",
+ *    "canScale": true,
+ *    "canPosition": true,
+ *    "canEditSource": true,
+ *    "gizmo": {},
+ *    "settings": {
+ *      "quick": [],
+ *      "configure": [],
+ *      "advanced": [],
  *    },
- *    'saveOptions': {}
+ *    "saveOptions": {},
+ *    "demoSchema": {}
  *  }
  *
  * This tells hax-body's context menu for custom-elements that this element
@@ -125,6 +126,19 @@
  *     'id',
  *     'colors'
  *   ]
+ * },
+ *  * `demoSchema`
+ * @element demoSchema is used to present this element in demonstrations and
+ * interfaces that want to provide a sample of what the element is. This is
+ * an easy way to ship a demo of this element and is used in HAX settings.
+ * {
+ *   tag: "my-tag",
+ *   content: "<p>inner html</p>",
+ *   properties: {
+ *     endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
+ *     primaryColor: "yellow",
+ *     title: "A cat"
+ *   }
  * },
  *
  * Specialized functions
@@ -339,6 +353,11 @@ export class HAXWiring {
         if (typeof props.saveOptions === typeof undefined) {
           props.saveOptions = {
             wipeSlot: false
+          };
+        }
+        // support for demoSchema
+        if (typeof props.demoSchema === typeof undefined) {
+          props.demoSchema = {
           };
         }
         // fire event so we know they have been set for the store to collect
@@ -720,7 +739,16 @@ export class HAXWiring {
         saveOptions: {
           wipeSlot: false,
           unsetAttributes: ["end-point", "secondary-color"]
-        }
+        },
+        demoSchema: {
+          tag: "my-tag",
+          content: "<p>inner html</p>",
+          properties: {
+            endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
+            primaryColor: "yellow",
+            title: "A cat"
+          }
+        },
       };
       return props;
     };

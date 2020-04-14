@@ -11,6 +11,92 @@ function dashToCamelCase(key) {
   });
 }
 /**
+ * Helper to convert camel case to dash; important when setting attributes.
+ */
+function camelToDash(str) {
+  return str
+    .replace(/\W+/g, "-")
+    .replace(/([a-z\d])([A-Z])/g, "$1-$2")
+    .toLowerCase();
+};
+/**
+ * Helper to convert dash to camel; important when reading attributes.
+ */
+function dashToCamel(str) {
+  return str.replace(/-([a-z])/g, function(g) {
+    return g[1].toUpperCase();
+  });
+};
+/**
+ * Convert a haxElement to a DOM node.
+ */
+function haxElementToNode(haxSchema) {
+  let tag = haxSchema.tag;
+  let content = (haxSchema.content ? haxSchema.content : '');
+  let properties = (haxSchema.properties ? haxSchema.properties : {});
+  // support sandboxed environments which
+  // will hate iframe tags but love webview
+  if (window.HaxStore && window.HaxStore.instance && window.HaxStore.instance._isSandboxed && tag === "iframe") {
+    tag = "webview";
+  }
+  var frag = document.createElement(tag);
+  frag.innerHTML = content;
+  // clone the fragment which will force an escalation to full node
+  var newNode = frag.cloneNode(true);
+
+  // support for properties if they exist
+  for (var property in properties) {
+    let attributeName = camelToDash(property);
+    if (properties.hasOwnProperty(property)) {
+      // special supporting for boolean because html is weird :p
+      if (properties[property] === true) {
+        newNode.setAttribute(attributeName, properties[property]);
+      } else if (properties[property] === false) {
+        newNode.removeAttribute(attributeName);
+      } else if (
+        properties[property] != null &&
+        properties[property].constructor === Array
+      ) {
+        // do nothing if we have additional data to suggest this is actually readOnly
+        // polymer / typed specific thing
+        if (
+          frag.properties &&
+          frag.properties[property] &&
+          frag.properties[property].readOnly
+        ) {
+        } else {
+          if (newNode.set) {
+            newNode.set(attributeName, properties[property]);
+          } else {
+            newNode[attributeName] = [...properties[property]];
+          }
+        }
+      } else if (
+        properties[property] != null &&
+        properties[property].constructor === Object
+      ) {
+        // do nothing if we have additional data to suggest this is actually readOnly
+        // polymer / typed specific thing
+        if (
+          frag.properties &&
+          frag.properties[property] &&
+          frag.properties[property].readOnly
+        ) {
+        } else {
+          if (newNode.set) {
+            newNode.set(attributeName, properties[property]);
+          } else {
+            newNode[attributeName] = { ...properties[property] };
+          }
+        }
+      } else {
+        newNode.setAttribute(attributeName, properties[property]);
+      }
+    }
+  }
+  return newNode;
+};
+/**
  * Conver camel case to dash case
  */
 function camelCaseToDash(key) {
@@ -261,6 +347,9 @@ export const winEventsElement = function(SuperClass) {
 
 export {
   dashToCamelCase,
+  haxElementToNode,
+  dashToCamel,
+  camelToDash,
   camelCaseToDash,
   encapScript,
   findTagsInHTML,
