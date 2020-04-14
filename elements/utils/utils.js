@@ -18,7 +18,7 @@ function camelToDash(str) {
     .replace(/\W+/g, "-")
     .replace(/([a-z\d])([A-Z])/g, "$1-$2")
     .toLowerCase();
-};
+}
 /**
  * Helper to convert dash to camel; important when reading attributes.
  */
@@ -26,17 +26,22 @@ function dashToCamel(str) {
   return str.replace(/-([a-z])/g, function(g) {
     return g[1].toUpperCase();
   });
-};
+}
 /**
  * Convert a haxElement to a DOM node.
  */
 function haxElementToNode(haxSchema) {
   let tag = haxSchema.tag;
-  let content = (haxSchema.content ? haxSchema.content : '');
-  let properties = (haxSchema.properties ? haxSchema.properties : {});
+  let content = haxSchema.content ? haxSchema.content : "";
+  let properties = haxSchema.properties ? haxSchema.properties : {};
   // support sandboxed environments which
   // will hate iframe tags but love webview
-  if (window.HaxStore && window.HaxStore.instance && window.HaxStore.instance._isSandboxed && tag === "iframe") {
+  if (
+    window.HaxStore &&
+    window.HaxStore.instance &&
+    window.HaxStore.instance._isSandboxed &&
+    tag === "iframe"
+  ) {
     tag = "webview";
   }
   var frag = document.createElement(tag);
@@ -95,7 +100,7 @@ function haxElementToNode(haxSchema) {
     }
   }
   return newNode;
-};
+}
 /**
  * Conver camel case to dash case
  */

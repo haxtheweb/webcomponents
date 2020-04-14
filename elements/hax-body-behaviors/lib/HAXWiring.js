@@ -357,8 +357,7 @@ export class HAXWiring {
         }
         // support for demoSchema
         if (typeof props.demoSchema === typeof undefined) {
-          props.demoSchema = {
-          };
+          props.demoSchema = {};
         }
         // fire event so we know they have been set for the store to collect
         // only fire if we haven't already so multiple elements don't keep bubbling
@@ -748,7 +747,7 @@ export class HAXWiring {
             primaryColor: "yellow",
             title: "A cat"
           }
-        },
+        }
       };
       return props;
     };

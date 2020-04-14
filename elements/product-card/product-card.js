@@ -15,12 +15,13 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
  */
 class ProductCard extends SimpleColors {
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
-      :host {
-        display: flex;
-      }
-    `
+        :host {
+          display: flex;
+        }
+      `
     ];
   }
   // render function
@@ -37,11 +38,11 @@ class ProductCard extends SimpleColors {
         }
         :host([disabled]) accent-card {
           cursor: not-allowed;
-          opacity: .5;
+          opacity: 0.5;
         }
         :host([disabled]) accent-card:hover {
           cursor: not-allowed;
-          opacity: .8;
+          opacity: 0.8;
         }
         a11y-collapse-group {
           margin: 0;
@@ -63,31 +64,42 @@ class ProductCard extends SimpleColors {
           height: 40px;
         }
       </style>
-      <accent-card accent-color="${!this.disabled ? this.accentColor : 'grey'}" accent-heading ?flat="${this.disabled}">
+      <accent-card
+        accent-color="${!this.disabled ? this.accentColor : "grey"}"
+        accent-heading
+        ?flat="${this.disabled}"
+      >
         <div slot="heading">
-          ${this.icon ? html`<iron-icon icon="${this.icon}"></iron-icon>`:``}
+          ${this.icon
+            ? html`
+                <iron-icon icon="${this.icon}"></iron-icon>
+              `
+            : ``}
           ${this.heading}
         </div>
         <div slot="subheading">${this.subheading}</div>
         <div slot="content"><slot></slot></div>
         <div slot="footer">
           <a11y-collapse-group>
-          <a11y-collapse ?disabled="${this.disabled}" accordion>
-            <div slot="heading">
-              <slot name="details-collapse-header"></slot>
-            </div>
-            <div slot="content">
-              <slot name="details-collapse-content"></slot>
-            </div>
-          </a11y-collapse>
-          <a11y-collapse ?disabled="${this.disabled || !this.hasDemo}" accordion>
-            <div slot="heading">
-              <slot name="demo-collapse-header"></slot>
-            </div>
-            <div slot="content">
-              <slot name="demo-collapse-content"></slot>
-            </div>
-          </a11y-collapse>
+            <a11y-collapse ?disabled="${this.disabled}" accordion>
+              <div slot="heading">
+                <slot name="details-collapse-header"></slot>
+              </div>
+              <div slot="content">
+                <slot name="details-collapse-content"></slot>
+              </div>
+            </a11y-collapse>
+            <a11y-collapse
+              ?disabled="${this.disabled || !this.hasDemo}"
+              accordion
+            >
+              <div slot="heading">
+                <slot name="demo-collapse-header"></slot>
+              </div>
+              <div slot="content">
+                <slot name="demo-collapse-content"></slot>
+              </div>
+            </a11y-collapse>
           </a11y-collapse-group>
         </div>
       </accent-card>
@@ -103,13 +115,13 @@ class ProductCard extends SimpleColors {
         reflect: true
       },
       heading: {
-        type: String,
+        type: String
       },
       subheading: {
-        type: String,
+        type: String
       },
       icon: {
-        type: String,
+        type: String
       },
       hasDemo: {
         type: Boolean,
@@ -132,7 +144,6 @@ class ProductCard extends SimpleColors {
     super();
     this.disabled = false;
   }
-
 }
 customElements.define(ProductCard.tag, ProductCard);
 export { ProductCard };

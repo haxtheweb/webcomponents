@@ -211,7 +211,7 @@ class MemeMaker extends LitElement {
           topText: "I bring you",
           bottomText: "the death"
         }
-      },
+      }
     };
   }
 }
