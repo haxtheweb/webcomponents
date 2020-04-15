@@ -33,6 +33,13 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
     `;
   }
   /**
+   * allow setting value
+   */
+  setValue(value) {
+    let sf = this.shadowRoot.querySelector("#sf");
+    sf.value = value;
+  }
+  /**
    * first update hook; also implies default settings
    */
   firstUpdated(changedProperties) {

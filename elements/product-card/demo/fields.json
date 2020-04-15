@@ -1,0 +1,68 @@
+{
+  "data": {
+    "fields": [
+      {
+        "property": "haxelements",
+        "inputMethod": "tabs",
+        "properties": [
+          {
+            "property": "search",
+            "title": "Search",
+            "properties": [
+              {
+                "property": "haxelements-search-search",
+                "title": "Search",
+                "description": "Filter elements by name",
+                "inputMethod": "textfield"
+              },
+              {
+                "property": "haxelements-search-tags",
+                "title": "Tags",
+                "description": "Tags to filter on",
+                "inputMethod": "textfield"
+              },
+              {
+                "property": "haxelements-search-hasdemo",
+                "title": "Has demo",
+                "description": "Only show elements with demos",
+                "inputMethod": "boolean"
+              }
+            ]
+          },
+          {
+            "property": "settings",
+            "title": "Settings",
+            "description": "Additional settings and ordering",
+            "properties": [
+              {
+                "property": "haxelements-settings-columns",
+                "title": "Columns",
+                "description": "Columns to organize the results into",
+                "inputMethod": "select",
+                "options": {
+                  "2": "2 Columns",
+                  "3": "3 Columns",
+                  "4": "4 Columns",
+                  "5": "5 Columns"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "value": {
+      "haxelements": {
+        "search": {
+          "haxelements-search-search": "",
+          "haxelements-search-tags": "",
+          "haxelements-search-hasdemo": false
+        },
+        "settings": {
+          "haxelements-settings-columns": ""
+        }
+      }
+    }
+  },
+  "status": 200
+}

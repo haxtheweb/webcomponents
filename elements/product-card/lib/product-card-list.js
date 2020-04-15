@@ -2,12 +2,14 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@material/mwc-switch/mwc-switch.js";
+import "@material/mwc-formfield/mwc-formfield.js";
 import "../product-card.js";
 class ProductCardList extends LitElement {
   constructor() {
     super();
     this.list = [];
     this.enabled = {};
+    this._layout = "1-1-1";
   }
   static get tag() {
     return "product-card-list";
@@ -23,19 +25,10 @@ class ProductCardList extends LitElement {
         product-card {
           display: block;
         }
-        h2 {
-          font-size: 18px;
-          font-weight: bold;
-          margin: 0;
-          padding: 0;
-        }
         product-card div[slot="collapse-header"] {
           padding: 8px 0;
         }
-        label {
-          font-weight: bold;
-        }
-        .card-content {
+        product-card div[slot="details-collapse-content"] {
           max-height: 125px;
           overflow-y: auto;
         }
@@ -49,15 +42,20 @@ class ProductCardList extends LitElement {
       },
       enabled: {
         type: Object
+      },
+      cols: {
+        type: Number
+      },
+      _layout: {
+        type: String,
       }
     };
   }
   render() {
     return html`
-      <grid-plate layout="1-1-1">
+      <grid-plate .layout="${this._layout}">
         ${this.list.map(
           (el, i) => html`
-            ${i}
             <product-card
               .slot="col-${this.__getCol(i)}"
               ?disabled="${!el.status}"
@@ -66,28 +64,23 @@ class ProductCardList extends LitElement {
               icon="${el.schema.gizmo.icon}"
               subheading="${el.schema.gizmo.description}"
               accent-color="${el.schema.gizmo.color}"
+              data-index="${i}"
+              @product-card-demo-show="${this.toggleShowDemo}"
+              @product-card-demo-hide="${this.toggleShowDemo}"
             >
               <div class="switch">
-                <mwc-switch
-                  id="switch-${i}"
-                  data-index="${i}"
-                  data-tag="${el.tag}"
-                  data-file="${el.file}"
-                  checked
-                  @change="${this.elementStatusChange}"
-                ></mwc-switch>
-                <label for="switch-${i}"
-                  >${el.status
-                    ? html`
-                        Enabled
-                      `
-                    : html`
-                        Disabled
-                      `}</label
-                >
+                <mwc-formfield label="${el.status ? `Enabled`:`Disabled`}">
+                  <mwc-switch
+                    data-index="${i}"
+                    data-tag="${el.tag}"
+                    data-file="${el.file}"
+                    checked
+                    @change="${this.elementStatusChange}"
+                  ></mwc-switch>
+                </mwc-formfield>
               </div>
               <div slot="details-collapse-header">Details</div>
-              <div slot="details-collapse-content" class="card-content">
+              <div slot="details-collapse-content">
                 <ul>
                   <li><strong>Location:</strong> <code>${el.file}</code></li>
                   <li><strong>Name:</strong> <code>${el.tag}</code></li>
@@ -115,7 +108,7 @@ class ProductCardList extends LitElement {
               </div>
               <div slot="demo-collapse-header">Demo</div>
               <div slot="demo-collapse-content">
-                ${el.schema.demoSchema
+                ${el.schema.demoSchema && el.showDemo
                   ? html`
                       ${this._haxElementToNode(el.schema.demoSchema)}
                       <code-sample copy-clipboard-button>
@@ -132,6 +125,16 @@ class ProductCardList extends LitElement {
       </grid-plate>
     `;
   }
+  /**
+   * Effectively event binding to the expanded state
+   */
+  toggleShowDemo(e) {
+    this.list[e.path[0].getAttribute("data-index")].showDemo = e.detail.expanded;
+    this.requestUpdate();
+  }
+  /**
+   * Wrap our call so that we can dynamically import code sample since it has a dep tree
+   */
   _haxElementToNode(schema) {
     if (schema && schema.tag) {
       import("@lrnwebcomponents/code-sample/code-sample.js");
@@ -156,6 +159,8 @@ class ProductCardList extends LitElement {
     // bubble up enabled
     this.dispatchEvent(
       new CustomEvent(`enabled-changed`, {
+        bubbles: true,
+        composed: true,
         detail: {
           value: this.enabled
         }
@@ -164,8 +169,8 @@ class ProductCardList extends LitElement {
   }
   __getCol(i) {
     i++;
-    while (i > 3) {
-      i = i - 3;
+    while (i > this.cols) {
+      i = i - this.cols;
     }
     return i;
   }
@@ -178,11 +183,32 @@ class ProductCardList extends LitElement {
       if (propName == "enabled") {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
+            bubbles: true,
+            composed: true,
             detail: {
               value: this[propName]
             }
           })
         );
+      }
+      if (propName == "cols") {
+        switch (this[propName]) {
+          case 3:
+            this._layout = '1-1-1';
+          break;
+          case 4:
+            this._layout = '1-1-1-1';
+          break;
+          case 5:
+            this._layout = '1-1-1-1-1';
+          break;
+          case 6:
+            this._layout = '1-1-1-1-1-1';
+          break;
+          default:
+            this._layout = '1-1';
+          break;
+        }
       }
       if (propName == "list") {
         this._listChanged(this[propName]);

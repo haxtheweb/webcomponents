@@ -41,6 +41,7 @@
   "dependencies": {
     "lit-element":"2.3.1",
     "@material/mwc-switch": "0.14.1",
+    "@material/mwc-formfield": "0.14.1",
     "@lrnwebcomponents/grid-plate": "^2.6.5",
     "@lrnwebcomponents/utils": "^2.5.0",
     "@lrnwebcomponents/a11y-collapse": "^2.6.5",

@@ -8,100 +8,58 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import "@polymer/iron-icons/av-icons.js";
-      import "@polymer/iron-icons/communication-icons.js";
-      import "@polymer/iron-icons/device-icons.js";
-      import "@polymer/iron-icons/editor-icons.js";
-      import "@polymer/iron-icons/hardware-icons.js";
-      import "@polymer/iron-icons/image-icons.js";
-      import "@polymer/iron-icons/iron-icons.js";
-      import "@polymer/iron-icons/maps-icons.js";
-      import "@polymer/iron-icons/notification-icons.js";
-      import "@polymer/iron-icons/places-icons.js";
-      import "@polymer/iron-icons/social-icons.js";
-      import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-      import "@lrnwebcomponents/mdi-iconset-svg/mdi-iconset-svg.js";
-      import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
       import "@lrnwebcomponents/json-editor/json-editor.js";
-      import '../product-card.js';
-      import '../lib/product-card-list.js';
-      // resources to process and generate data off of the haxProperties in place
-      var tags = [
-        '@lrnwebcomponents/meme-maker/meme-maker.js',
-        '@lrnwebcomponents/video-player/video-player.js',
-        '@lrnwebcomponents/self-check/self-check.js',
-        '@lrnwebcomponents/retro-card/retro-card.js',
-        "@lrnwebcomponents/lrn-aside/lrn-aside.js",
-        "@lrnwebcomponents/md-block/md-block.js",
-        "@lrnwebcomponents/grid-plate/grid-plate.js",
-        "@lrnwebcomponents/tab-list/tab-list.js",
-        "@lrnwebcomponents/magazine-cover/magazine-cover.js",
-        "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-        "@lrnwebcomponents/license-element/license-element.js",
-        "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-        "@lrnwebcomponents/oer-schema/oer-schema.js",
-        "@lrnwebcomponents/hero-banner/hero-banner.js",
-        "@lrnwebcomponents/task-list/task-list.js",
-        "@lrnwebcomponents/lrn-table/lrn-table.js",
-        "@lrnwebcomponents/media-image/media-image.js",
-        "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
-        "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-        "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
-        "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-        "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-        "@lrnwebcomponents/lrn-math/lrn-math.js",
-        "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-        "@lrnwebcomponents/citation-element/citation-element.js",
-        "@lrnwebcomponents/place-holder/place-holder.js",
-        "@lrnwebcomponents/stop-note/stop-note.js",
-        "@lrnwebcomponents/q-r/q-r.js",
-        "@lrnwebcomponents/full-width-image/full-width-image.js",
-        "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
-        "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
-        "@lrnwebcomponents/html-block/html-block.js",
-        "@lrnwebcomponents/user-action/user-action.js",
-        "@lrnwebcomponents/rss-items/rss-items.js",
-        "@lrnwebcomponents/random-item/random-item.js"
-      ];
-      tags.forEach(async (el) => {
-        try {
-          await import(`../../../node_modules/${el}`).then(module => {
-            if (module && Object.keys(module)[0] && module[Object.keys(module)[0]].tag && module[Object.keys(module)[0]].haxProperties) {
-              let detail = {
-                tag: module[Object.keys(module)[0]].tag,
-                file: el,
-                status: true,
-                schema: module[Object.keys(module)[0]].haxProperties
-              };
-              console.log(detail);
-              window.dispatchEvent(new CustomEvent('new-data', {
-                detail: detail
-              }));
-            }
-          });
-        }
-        catch(e) {
-          console.warn(e);
-        }
-      });
+      import '../lib/hax-element-list-selector.js';
     </script>
   </head>
   <body>
-    <h2>Product card list</h2>
-    <product-card-list id="productcardlist"></product-card-list>
+    <hax-element-list-selector id="haxlist" cols="3" load-endpoint="./fields.json"></hax-element-list-selector>
     <json-editor id="jsonblob"></json-editor>
-    <script>
-      // tag => properties object
-      window.addEventListener('new-data', (e) => {
+    <script defer="defer" async="async">
+      window.addEventListener('load', (e) => {
         setTimeout(() => {
-          let cards = document.getElementById('productcardlist');
-          let list = cards.list;
-          list.push(e.detail);
-          cards.list = [...list];
+          document.getElementById('haxlist').addEventListener('enabled-changed', (e) => {
+            document.getElementById('jsonblob').value = JSON.stringify(e.detail.value, null, 2);
+          });
+          document.getElementById('haxlist').basePath = "/node_modules/";
+          document.getElementById('haxlist').imports = [
+          '@lrnwebcomponents/meme-maker/meme-maker.js',
+          '@lrnwebcomponents/video-player/video-player.js',
+          '@lrnwebcomponents/self-check/self-check.js',
+          '@lrnwebcomponents/retro-card/retro-card.js',
+          "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+          "@lrnwebcomponents/md-block/md-block.js",
+          "@lrnwebcomponents/grid-plate/grid-plate.js",
+          "@lrnwebcomponents/tab-list/tab-list.js",
+          "@lrnwebcomponents/magazine-cover/magazine-cover.js",
+          "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+          "@lrnwebcomponents/license-element/license-element.js",
+          "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+          "@lrnwebcomponents/oer-schema/oer-schema.js",
+          "@lrnwebcomponents/hero-banner/hero-banner.js",
+          "@lrnwebcomponents/task-list/task-list.js",
+          "@lrnwebcomponents/lrn-table/lrn-table.js",
+          "@lrnwebcomponents/media-image/media-image.js",
+          "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
+          "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+          "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
+          "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
+          "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+          "@lrnwebcomponents/lrn-math/lrn-math.js",
+          "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+          "@lrnwebcomponents/citation-element/citation-element.js",
+          "@lrnwebcomponents/place-holder/place-holder.js",
+          "@lrnwebcomponents/stop-note/stop-note.js",
+          "@lrnwebcomponents/q-r/q-r.js",
+          "@lrnwebcomponents/full-width-image/full-width-image.js",
+          "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
+          "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
+          "@lrnwebcomponents/html-block/html-block.js",
+          "@lrnwebcomponents/user-action/user-action.js",
+          "@lrnwebcomponents/rss-items/rss-items.js",
+          "@lrnwebcomponents/random-item/random-item.js"
+        ];          
         }, 0);
-      });
-      document.getElementById('productcardlist').addEventListener('enabled-changed', (e) => {
-        document.getElementById('jsonblob').value = JSON.stringify(document.getElementById('productcardlist').enabled, null, 2);
       });
     </script>
   </body>

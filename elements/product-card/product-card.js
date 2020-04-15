@@ -60,9 +60,6 @@ class ProductCard extends SimpleColors {
         div[slot="subheading"] {
           height: 30px;
         }
-        div[slot="content"] {
-          height: 40px;
-        }
       </style>
       <accent-card
         accent-color="${!this.disabled ? this.accentColor : "grey"}"
@@ -92,6 +89,8 @@ class ProductCard extends SimpleColors {
             <a11y-collapse
               ?disabled="${this.disabled || !this.hasDemo}"
               accordion
+              @expand="${this.__demoCollapseStatusChange}"
+              @collapse="${this.__demoCollapseStatusChange}"
             >
               <div slot="heading">
                 <slot name="demo-collapse-header"></slot>
@@ -105,7 +104,11 @@ class ProductCard extends SimpleColors {
       </accent-card>
     `;
   }
-
+  __demoCollapseStatusChange(e) {
+    this.dispatchEvent(new CustomEvent('product-card-demo-show', {
+      detail: e.detail
+    }));
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
