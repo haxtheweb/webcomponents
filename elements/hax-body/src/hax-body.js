@@ -331,7 +331,14 @@ class HaxBody extends SimpleColors {
           margin: 0;
           float: right;
         }
+        .hax-context-menu:not(:defined) {
+          display: none;
+        }
         /* drag and drop */
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
+            outline: var(--hax-body-active-outline);
+            background-color: #eeeeee;
+          }
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover):before {
           outline: var(--hax-body-editable-outline);
           background-color: var(--hax-body-possible-target-background-color);
@@ -343,16 +350,24 @@ class HaxBody extends SimpleColors {
           z-index: 2;
           height: 30px;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: var(--hax-body-active-outline);
-          background-color: #eeeeee;
-        }
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
           outline: var(--hax-body-active-outline);
         }
-        .hax-context-menu:not(:defined) {
-          display: none;
+        @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
+        {
+          /*
+            Define here the CSS styles applied only to Safari browsers
+            (any version and any device) via https://solvit.io/bcf61b6
+          */
+          :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover) {
+            outline: var(--hax-body-editable-outline);
+            background-color: var(--hax-body-possible-target-background-color);
+          }
+          :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
+            background-color: var(--hax-body-target-background-color) !important;
+            outline: var(--hax-body-active-outline);
+          }
         }
       `
     ];
@@ -390,16 +405,20 @@ class HaxBody extends SimpleColors {
       this.addEventListener("mousedown", this._focusIn.bind(this));
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
+      this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
   }
   static get tag() {
     return "hax-body";
   }
+  clickEvent(e) {
+    // failsafe to clear to the gravity scrolling
+    clearTimeout(gravityScrollTimer);
+  }
   /**
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
-    console.log("drag-enter");
     const children = this.childNodes;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -2230,28 +2249,35 @@ class HaxBody extends SimpleColors {
    */
   dropEvent(e) {
     if (!this.openDrawer && this.editMode) {
+      // esnure we clear the gravity scrolling drag effect
+      clearTimeout(gravityScrollTimer);
       window.HaxStore.instance._lockContextPosition = false;
       // trick the tray into forcing active to be Configure
       window.HaxStore.instance.haxTray.activeTab = "item-1";
+      var target = null;
+      if (e.path && e.path[0]) {
+        target = e.path[0];
+      }
+      else {
+        target = e.target;
+      }
       // establish an activeNode /container based on drop poisition
-      this.activeNode = e.path[0];
-      window.HaxStore.write("activeNode", e.path[0], this);
+      this.activeNode = target;
+      window.HaxStore.write("activeNode", target, this);
       if (
-        e.path[0].parentNode &&
-        e.path[0].parentNode.tagName === "GRID-PLATE"
+        target.parentNode &&
+        target.parentNode.tagName === "GRID-PLATE"
       ) {
-        this.activeContainerNode = e.path[0].parentNode;
+        this.activeContainerNode = target.parentNode;
         window.HaxStore.write(
           "activeContainerNode",
-          e.path[0].parentNode,
+          target.parentNode,
           this
         );
       } else {
-        this.activeContainerNode = e.path[0].parentNode;
-        window.HaxStore.write("activeContainerNode", e.path[0], this);
+        this.activeContainerNode = target.parentNode;
+        window.HaxStore.write("activeContainerNode", target, this);
       }
-      // esnure we clear the gravity scrolling drag effect
-      clearTimeout(gravityScrollTimer);
       // walk the children and remove the draggable state needed
       setTimeout(() => {
         let children = this.querySelectorAll(
@@ -2311,7 +2337,7 @@ class HaxBody extends SimpleColors {
           );
         } else {
           // set taget based on drag target
-          var target = window.HaxStore.instance.__dragTarget;
+          target = window.HaxStore.instance.__dragTarget;
           var local = e.target;
           // if we have a slot on what we dropped into then we need to mirror that item
           // and place ourselves below it in the DOM
@@ -2361,15 +2387,18 @@ class HaxBody extends SimpleColors {
         console.warn(e);
       }
     }
+    // reset this after the drop goes through
+    window.HaxStore.instance.__dragTarget = null;
   }
   /**
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    console.log(this.openDrawer);
     if (!this.openDrawer && this.editMode && e.target) {
       e.preventDefault();
-      e.target.classList.add("hax-hovered");
+      if (e.target && e.target.classList) {
+        e.target.classList.add("hax-hovered");
+      }
       // perform check for edge of screen
       this.handleMousemove(e);
     }
@@ -2535,8 +2564,7 @@ class HaxBody extends SimpleColors {
    * Leaving an element while dragging.
    */
   dragLeave(e) {
-    console.log(this.openDrawer);
-    if (!this.openDrawer && this.editMode) {
+    if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
       e.target.classList.remove("hax-hovered");
     }
   }

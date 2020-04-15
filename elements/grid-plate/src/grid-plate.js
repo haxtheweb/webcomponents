@@ -158,23 +158,17 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-grey-blue-7,
-            #3b97e3
-          );
-          --grid-plate-active-border-color: var(
-            --simple-colors-default-theme-grey-blue-7,
-            #3b97e3
-          );
+          --grid-plate-editable-border-color: var(--simple-colors-default-theme-cyan-7, #009dc7);
+          --grid-plate-active-border-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
           --grid-plate-target-background-color: var(
-            --simple-colors-default-theme-green-3
+            --simple-colors-default-theme-cyan-2, #9beaff
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
           --grid-plate-arrow-color: #ffffff;
           --grid-plate-arrow-color-hover: #000000;
           --grid-plate-arrow-bg: var(
-            --simple-colors-default-theme-grey-blue-7,
+            --simple-colors-default-theme-cyan-7,
             #3b97e3
           );
         }
@@ -200,7 +194,7 @@ class GridPlate extends LitElement {
           min-height: 150px;
         }
         :host([edit-mode]) .column {
-          outline: 2px solid var(--grid-plate-editable-border-color);
+          outline: 1px solid var(--grid-plate-editable-border-color);
         }
         :host .column:empty[style="min-height: unset;"] {
           display: none;
@@ -234,7 +228,7 @@ class GridPlate extends LitElement {
           display: block;
         }
         :host([edit-mode]) .column ::slotted(.grid-plate-active-item) {
-          outline: 2px solid var(--grid-plate-active-border-color);
+          outline: 1px solid var(--grid-plate-active-border-color);
           background-color: var(--grid-plate-selected-background-color);
         }
         :host([edit-mode]) .column ::slotted(*:focus),
@@ -243,7 +237,7 @@ class GridPlate extends LitElement {
           outline: 2px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) .column ::slotted(*.hax-mover):before {
-          outline: 2px solid var(--grid-plate-editable-border-color);
+          outline: 1px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
           content: " ";
           width: 100%;
@@ -254,14 +248,14 @@ class GridPlate extends LitElement {
           height: 30px;
         }
         :host([edit-mode]) .column ::slotted(img.hax-mover) {
-          outline: 2px solid var(--grid-plate-editable-border-color);
+          outline: 1px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
         }
         :host([edit-mode]) .column.hax-mover {
-          outline: 2px solid var(--grid-plate-editable-border-color);
+          outline: 1px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: 2px solid var(--hax-body-active-border-color);
+          outline: 1px solid var(--hax-body-active-border-color);
           background-color: #eeeeee;
         }
         :host([edit-mode]) .column.hax-mover {
@@ -359,7 +353,8 @@ class GridPlate extends LitElement {
    */
   render() {
     return html`
-      <div class="button-holding-pen" ?hidden="${this.hideOps}">
+    ${!this.hideOps ? html`
+      <div class="button-holding-pen">
         <paper-icon-button
           class="direction"
           icon="hax:arrow-all"
@@ -403,6 +398,7 @@ class GridPlate extends LitElement {
         >
         </paper-icon-button>
       </div>
+      ` : ``}
       <div class="row">
         <div
           class="column"
@@ -1100,70 +1096,72 @@ class GridPlate extends LitElement {
    * Position the arrows to change directions around something
    */
   positionArrows(item, onlyArrows = false) {
-    if (item == null) {
-      this.shadowRoot.querySelectorAll(".direction").forEach(el => {
-        if (!onlyArrows) {
-          el.classList.remove("active");
-        } else {
-          if (el.id != "drag") {
+    if (!this.hideOps) {
+      if (item == null) {
+        this.shadowRoot.querySelectorAll(".direction").forEach(el => {
+          if (!onlyArrows) {
             el.classList.remove("active");
+          } else {
+            if (el.id != "drag") {
+              el.classList.remove("active");
+            }
           }
-        }
-      });
-    } else {
-      this.shadowRoot.querySelectorAll(".direction").forEach(el => {
-        el.classList.add("active");
-      });
+        });
+      } else {
+        this.shadowRoot.querySelectorAll(".direction").forEach(el => {
+          el.classList.add("active");
+        });
 
-      // ensure we disable invalid options contextually
-      // test for an element above us
-      this.shadowRoot.querySelector("#up").disabled = !this.canMoveOrder(
-        item,
-        true
-      );
-      // test for an element below us
-      this.shadowRoot.querySelector("#down").disabled = !this.canMoveOrder(
-        item,
-        false
-      );
-      // test for a column to the left of us
-      this.shadowRoot.querySelector("#left").disabled = !this.canMoveSlot(
-        item,
-        true
-      );
-      // test for a column to the right of us
-      this.shadowRoot.querySelector("#right").disabled = !this.canMoveSlot(
-        item,
-        false
-      );
-      // get coordinates of the page and active element
-      // delay since a transition might move it
-      let bodyRect = this.getBoundingClientRect();
-      let elemRect = item.getBoundingClientRect();
-      let topOffset = elemRect.top - bodyRect.top;
-      let leftOffset = elemRect.left - bodyRect.left;
+        // ensure we disable invalid options contextually
+        // test for an element above us
+        this.shadowRoot.querySelector("#up").disabled = !this.canMoveOrder(
+          item,
+          true
+        );
+        // test for an element below us
+        this.shadowRoot.querySelector("#down").disabled = !this.canMoveOrder(
+          item,
+          false
+        );
+        // test for a column to the left of us
+        this.shadowRoot.querySelector("#left").disabled = !this.canMoveSlot(
+          item,
+          true
+        );
+        // test for a column to the right of us
+        this.shadowRoot.querySelector("#right").disabled = !this.canMoveSlot(
+          item,
+          false
+        );
+        // get coordinates of the page and active element
+        // delay since a transition might move it
+        let bodyRect = this.getBoundingClientRect();
+        let elemRect = item.getBoundingClientRect();
+        let topOffset = elemRect.top - bodyRect.top;
+        let leftOffset = elemRect.left - bodyRect.left;
 
-      // set the arrows to position correctly at all 4 sides
-      this.shadowRoot.querySelector("#up").style.top = topOffset - 10 + "px";
-      this.shadowRoot.querySelector("#down").style.top =
-        topOffset + elemRect.height - 10 + "px";
-      this.shadowRoot.querySelector("#left").style.top =
-        topOffset + elemRect.height / 2 - 10 + "px";
-      this.shadowRoot.querySelector("#right").style.top =
-        topOffset + elemRect.height / 2 - 10 + "px";
+        // set the arrows to position correctly at all 4 sides
+        this.shadowRoot.querySelector("#up").style.top = topOffset - 10 + "px";
+        this.shadowRoot.querySelector("#down").style.top =
+          topOffset + elemRect.height - 10 + "px";
+        this.shadowRoot.querySelector("#left").style.top =
+          topOffset + elemRect.height / 2 - 10 + "px";
+        this.shadowRoot.querySelector("#right").style.top =
+          topOffset + elemRect.height / 2 - 10 + "px";
 
-      this.shadowRoot.querySelector("#drag").style.top = topOffset - 10 + "px";
-      this.shadowRoot.querySelector("#drag").style.left =
-        leftOffset - 10 + "px";
+        this.shadowRoot.querySelector("#drag").style.top = topOffset - 10 + "px";
+        this.shadowRoot.querySelector("#drag").style.left =
+          leftOffset - 10 + "px";
 
-      this.shadowRoot.querySelector("#up").style.left =
-        leftOffset + elemRect.width / 2 - 10 + "px";
-      this.shadowRoot.querySelector("#down").style.left =
-        leftOffset + elemRect.width / 2 - 10 + "px";
-      this.shadowRoot.querySelector("#left").style.left =
-        leftOffset - 10 + "px";
-      this.shadowRoot.querySelector("#right").style.left =
-        leftOffset + elemRect.width - 10 + "px";
+        this.shadowRoot.querySelector("#up").style.left =
+          leftOffset + elemRect.width / 2 - 10 + "px";
+        this.shadowRoot.querySelector("#down").style.left =
+          leftOffset + elemRect.width / 2 - 10 + "px";
+        this.shadowRoot.querySelector("#left").style.left =
+          leftOffset - 10 + "px";
+        this.shadowRoot.querySelector("#right").style.left =
+          leftOffset + elemRect.width - 10 + "px";
+      }
     }
   }
   /**
@@ -1241,14 +1239,16 @@ class GridPlate extends LitElement {
   dragEnter(e) {
     if (this.editMode) {
       e.preventDefault();
-      e.target.classList.add("hax-hovered");
+      if (e.target && e.target.classList) {
+        e.target.classList.add("hax-hovered");
+      }
     }
   }
   /**
    * Leaving an element while dragging.
    */
   dragLeave(e) {
-    if (this.editMode) {
+    if (this.editMode && e.target && e.target.classList) {
       e.target.classList.remove("hax-hovered");
     }
   }
@@ -1295,7 +1295,7 @@ class GridPlate extends LitElement {
    */
   dropEvent(e) {
     if (this.editMode) {
-      let target = this.activeItem;
+      var target = this.activeItem;
       if (this.__dragTarget) {
         target = this.__dragTarget;
       }
@@ -1306,6 +1306,7 @@ class GridPlate extends LitElement {
         window.HaxStore.instance.__dragTarget
       ) {
         target = window.HaxStore.instance.__dragTarget;
+        window.HaxStore.instance.__dragTarget = null;
       }
       setTimeout(() => {
         let children = this.querySelectorAll(
@@ -1392,7 +1393,7 @@ class GridPlate extends LitElement {
           window.HaxStore.ready &&
           window.HaxStore.instance
         ) {
-          if (target.parentNode && target.parentNode.tagName === "GRID-PLATE") {
+          if (target && target.parentNode && target.parentNode.tagName === "GRID-PLATE") {
             window.HaxStore.write("activeNode", target, this);
             window.HaxStore.write(
               "activeContainerNode",
