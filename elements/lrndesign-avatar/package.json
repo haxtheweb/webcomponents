@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.5",
+  "version": "2.6.7",
   "description": "Automated conversion of lrndesign-avatar/",
   "repository": {
     "type": "git",
@@ -41,13 +41,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/paper-avatar": "^2.6.5",
-    "@lrnwebcomponents/simple-colors": "^2.6.5",
+    "@lrnwebcomponents/paper-avatar": "^2.6.7",
+    "@lrnwebcomponents/simple-colors": "^2.6.7",
     "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.5",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

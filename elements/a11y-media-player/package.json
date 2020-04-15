@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.5",
+  "version": "2.6.7",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -46,10 +46,10 @@
     "@lrnwebcomponents/absolute-position-behavior": "^2.6.3",
     "@lrnwebcomponents/anchor-behaviors": "^2.5.0",
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
-    "@lrnwebcomponents/responsive-utility": "^2.6.5",
-    "@lrnwebcomponents/simple-colors": "^2.6.5",
-    "@lrnwebcomponents/simple-fields": "^2.6.5",
-    "@lrnwebcomponents/simple-search": "^2.6.5",
+    "@lrnwebcomponents/responsive-utility": "^2.6.7",
+    "@lrnwebcomponents/simple-colors": "^2.6.7",
+    "@lrnwebcomponents/simple-fields": "^2.6.7",
+    "@lrnwebcomponents/simple-search": "^2.6.7",
     "@lrnwebcomponents/simple-tooltip": "^2.6.4",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
@@ -65,7 +65,7 @@
     "screenfull": "^4.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^2.6.5",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

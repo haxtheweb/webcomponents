@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.5",
+  "version": "2.6.7",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -41,13 +41,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.6.5",
+    "@lrnwebcomponents/a11y-collapse": "^2.6.7",
     "@lrnwebcomponents/absolute-position-behavior": "^2.6.3",
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
-    "@lrnwebcomponents/md-extra-icons": "^2.6.5",
-    "@lrnwebcomponents/responsive-utility": "^2.6.5",
-    "@lrnwebcomponents/simple-fields": "^2.6.5",
-    "@lrnwebcomponents/simple-picker": "^2.6.5",
+    "@lrnwebcomponents/md-extra-icons": "^2.6.7",
+    "@lrnwebcomponents/responsive-utility": "^2.6.7",
+    "@lrnwebcomponents/simple-fields": "^2.6.7",
+    "@lrnwebcomponents/simple-picker": "^2.6.7",
     "@lrnwebcomponents/simple-popover": "^2.6.3",
     "@lrnwebcomponents/simple-tooltip": "^2.6.4",
     "@polymer/iron-a11y-keys": "^3.0.1",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.5",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

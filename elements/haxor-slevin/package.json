@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.6",
+  "version": "2.6.7",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.6.6",
-    "@lrnwebcomponents/simple-blog-card": "^2.6.5",
-    "@lrnwebcomponents/simple-colors": "^2.6.5",
-    "@lrnwebcomponents/social-share-link": "^2.6.5",
+    "@lrnwebcomponents/haxcms-elements": "^2.6.7",
+    "@lrnwebcomponents/simple-blog-card": "^2.6.7",
+    "@lrnwebcomponents/simple-colors": "^2.6.7",
+    "@lrnwebcomponents/social-share-link": "^2.6.7",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-image": "^3.0.1",
