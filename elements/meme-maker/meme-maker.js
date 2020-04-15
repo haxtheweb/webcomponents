@@ -202,16 +202,18 @@ class MemeMaker extends LitElement {
       saveOptions: {
         wipeSlot: true
       },
-      demoSchema: [{
-        tag: "meme-maker",
-        content: "",
-        properties: {
-          alt: "Cat stalking a small toy",
-          imageUrl: "https://cdn2.thecatapi.com/images/9j5.jpg",
-          topText: "I bring you",
-          bottomText: "the death"
+      demoSchema: [
+        {
+          tag: "meme-maker",
+          content: "",
+          properties: {
+            alt: "Cat stalking a small toy",
+            imageUrl: "https://cdn2.thecatapi.com/images/9j5.jpg",
+            topText: "I bring you",
+            bottomText: "the death"
+          }
         }
-      }]
+      ]
     };
   }
 }

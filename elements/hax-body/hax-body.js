@@ -399,7 +399,7 @@ class HaxBody extends SimpleColors {
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
-    console.log('drag-enter');
+    console.log("drag-enter");
     const children = this.childNodes;
     // walk the children and apply the draggable state needed
     for (var i in children) {

@@ -739,15 +739,17 @@ export class HAXWiring {
           wipeSlot: false,
           unsetAttributes: ["end-point", "secondary-color"]
         },
-        demoSchema: [{
-          tag: "my-tag",
-          content: "<p>inner html</p>",
-          properties: {
-            endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
-            primaryColor: "yellow",
-            title: "A cat"
+        demoSchema: [
+          {
+            tag: "my-tag",
+            content: "<p>inner html</p>",
+            properties: {
+              endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
+              primaryColor: "yellow",
+              title: "A cat"
+            }
           }
-        }]
+        ]
       };
       return props;
     };
