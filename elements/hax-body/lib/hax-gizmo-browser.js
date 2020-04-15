@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { winEventsElement, haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-gizmo-browser`
@@ -98,14 +98,27 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
    */
   _dragStart(e) {
     // create the tag
-    let target = document.createElement(e.target.eventData);
+    let schema = window.HaxStore.instance.haxSchemaFromTag(e.target.eventData);
+    var target;
+    if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+      target = haxElementToNode(schema.demoSchema[0]);
+    }
+    else {
+      target = document.createElement(e.target.eventData);
+    }
     window.HaxStore.instance.__dragTarget = target;
     if (e.dataTransfer) {
       this.crt = target.cloneNode(true);
-      this.crt.style.position = "absolute";
-      this.crt.style.top = "-1000px";
-      this.crt.style.right = "-1000px";
-      this.crt.style.transform = "scale(0.25)";
+      if (schema.gizmo.tag && schema.demoSchema && schema.demoSchema[0]) {
+        this.crt.style.width = "200px";
+        this.crt.style.height = "200px";
+      }
+      else {
+        this.crt.style.position = "absolute";
+        this.crt.style.top = "-1000px";
+        this.crt.style.right = "-1000px";
+        this.crt.style.transform = "scale(0.25)";
+      }
       this.crt.style.opacity = ".8";
       this.crt.style.backgroundColor = e.target.getAttribute("drag-color");
       e.dataTransfer.dropEffect = "move";

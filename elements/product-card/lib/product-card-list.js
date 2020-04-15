@@ -110,12 +110,14 @@ class ProductCardList extends LitElement {
               <div slot="demo-collapse-content">
                 ${el.schema.demoSchema && el.showDemo
                   ? html`
-                      ${this._haxElementToNode(el.schema.demoSchema)}
+                    ${el.schema.demoSchema.map(demoItem => html`
+                    ${this._haxElementToNode(demoItem)}
                       <code-sample copy-clipboard-button>
                         <template>
-                          ${this._haxElementToNode(el.schema.demoSchema)}
+                          ${this._haxElementToNode(demoItem)}
                         </template>
                       </code-sample>
+                    `)}
                     `
                   : ``}
               </div>

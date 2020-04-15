@@ -399,6 +399,7 @@ class HaxBody extends SimpleColors {
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
+    console.log('drag-enter');
     const children = this.childNodes;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -484,6 +485,9 @@ class HaxBody extends SimpleColors {
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
         bubbles: true,
@@ -529,6 +533,9 @@ class HaxBody extends SimpleColors {
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
@@ -2359,6 +2366,7 @@ class HaxBody extends SimpleColors {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
+    console.log(this.openDrawer);
     if (!this.openDrawer && this.editMode && e.target) {
       e.preventDefault();
       e.target.classList.add("hax-hovered");
@@ -2527,6 +2535,7 @@ class HaxBody extends SimpleColors {
    * Leaving an element while dragging.
    */
   dragLeave(e) {
+    console.log(this.openDrawer);
     if (!this.openDrawer && this.editMode) {
       e.target.classList.remove("hax-hovered");
     }

@@ -1843,6 +1843,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   /**
+   * get the schema from a tag
+   */
+  haxSchemaFromTag(tag) {
+    if (this.elementList && this.elementList[tag]) {
+      return this.elementList[tag];
+    }
+    return {};
+  }
+  /**
    * Optional send array, to improve performance and event bubbling better
    */
   _haxStoreInsertMultiple(e) {

@@ -257,7 +257,7 @@
   "saveOptions": {
     "unsetAttributes": ["__utils", "__stand-alone", "colors"]
   },
-  "demoSchema": {
+  "demoSchema": [{
     "tag": "video-player",
     "properties": {
       "style": "width: 100%; margin: 0px auto; display: block;",
@@ -274,5 +274,5 @@
       "sourceType": "youtube"
     },
     "content": "    <track src=\"https://haxtheweb.org/files/HAXshort.vtt\" kind=\"subtitles\" label=\"English\" slot=\"track\">\n\n"
-  }
+  }]
 }

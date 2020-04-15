@@ -20,7 +20,7 @@
  *      "advanced": [],
  *    },
  *    "saveOptions": {},
- *    "demoSchema": {}
+ *    "demoSchema": []
  *  }
  *
  * This tells hax-body's context menu for custom-elements that this element
@@ -131,7 +131,7 @@
  * @element demoSchema is used to present this element in demonstrations and
  * interfaces that want to provide a sample of what the element is. This is
  * an easy way to ship a demo of this element and is used in HAX settings.
- * {
+ * [{
  *   tag: "my-tag",
  *   content: "<p>inner html</p>",
  *   properties: {
@@ -139,7 +139,7 @@
  *     primaryColor: "yellow",
  *     title: "A cat"
  *   }
- * },
+ * }],
  *
  * Specialized functions
  * `preProcessHaxNodeToContent`
@@ -357,7 +357,7 @@ export class HAXWiring {
         }
         // support for demoSchema
         if (typeof props.demoSchema === typeof undefined) {
-          props.demoSchema = {};
+          props.demoSchema = [];
         }
         // fire event so we know they have been set for the store to collect
         // only fire if we haven't already so multiple elements don't keep bubbling
@@ -739,7 +739,7 @@ export class HAXWiring {
           wipeSlot: false,
           unsetAttributes: ["end-point", "secondary-color"]
         },
-        demoSchema: {
+        demoSchema: [{
           tag: "my-tag",
           content: "<p>inner html</p>",
           properties: {
@@ -747,7 +747,7 @@ export class HAXWiring {
             primaryColor: "yellow",
             title: "A cat"
           }
-        }
+        }]
       };
       return props;
     };

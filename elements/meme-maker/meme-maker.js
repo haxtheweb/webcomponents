@@ -202,7 +202,7 @@ class MemeMaker extends LitElement {
       saveOptions: {
         wipeSlot: true
       },
-      demoSchema: {
+      demoSchema: [{
         tag: "meme-maker",
         content: "",
         properties: {
@@ -211,7 +211,7 @@ class MemeMaker extends LitElement {
           topText: "I bring you",
           bottomText: "the death"
         }
-      }
+      }]
     };
   }
 }
