@@ -336,9 +336,9 @@ class HaxBody extends SimpleColors {
         }
         /* drag and drop */
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-            outline: var(--hax-body-active-outline);
-            background-color: #eeeeee;
-          }
+          outline: var(--hax-body-active-outline);
+          background-color: #eeeeee;
+        }
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover):before {
           outline: var(--hax-body-editable-outline);
           background-color: var(--hax-body-possible-target-background-color);
@@ -354,8 +354,7 @@ class HaxBody extends SimpleColors {
           background-color: var(--hax-body-target-background-color) !important;
           outline: var(--hax-body-active-outline);
         }
-        @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
-        {
+        @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           /*
             Define here the CSS styles applied only to Safari browsers
             (any version and any device) via https://solvit.io/bcf61b6
@@ -365,7 +364,9 @@ class HaxBody extends SimpleColors {
             background-color: var(--hax-body-possible-target-background-color);
           }
           :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
-            background-color: var(--hax-body-target-background-color) !important;
+            background-color: var(
+              --hax-body-target-background-color
+            ) !important;
             outline: var(--hax-body-active-outline);
           }
         }
@@ -2257,23 +2258,15 @@ class HaxBody extends SimpleColors {
       var target = null;
       if (e.path && e.path[0]) {
         target = e.path[0];
-      }
-      else {
+      } else {
         target = e.target;
       }
       // establish an activeNode /container based on drop poisition
       this.activeNode = target;
       window.HaxStore.write("activeNode", target, this);
-      if (
-        target.parentNode &&
-        target.parentNode.tagName === "GRID-PLATE"
-      ) {
+      if (target.parentNode && target.parentNode.tagName === "GRID-PLATE") {
         this.activeContainerNode = target.parentNode;
-        window.HaxStore.write(
-          "activeContainerNode",
-          target.parentNode,
-          this
-        );
+        window.HaxStore.write("activeContainerNode", target.parentNode, this);
       } else {
         this.activeContainerNode = target.parentNode;
         window.HaxStore.write("activeContainerNode", target, this);

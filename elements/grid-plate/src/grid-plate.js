@@ -158,10 +158,17 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: var(--simple-colors-default-theme-cyan-7, #009dc7);
-          --grid-plate-active-border-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
+          --grid-plate-editable-border-color: var(
+            --simple-colors-default-theme-cyan-7,
+            #009dc7
+          );
+          --grid-plate-active-border-color: var(
+            --simple-colors-default-theme-cyan-7,
+            #3b97e3
+          );
           --grid-plate-target-background-color: var(
-            --simple-colors-default-theme-cyan-2, #9beaff
+            --simple-colors-default-theme-cyan-2,
+            #9beaff
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
@@ -353,52 +360,54 @@ class GridPlate extends LitElement {
    */
   render() {
     return html`
-    ${!this.hideOps ? html`
-      <div class="button-holding-pen">
-        <paper-icon-button
-          class="direction"
-          icon="hax:arrow-all"
-          title="Drag"
-          draggable="true"
-          id="drag"
-          @dragstart="${this.dragStart}"
-          @dragend="${this.dragEnd}"
-        >
-        </paper-icon-button>
-        <paper-icon-button
-          class="direction"
-          icon="hardware:keyboard-arrow-up"
-          title="Move up"
-          id="up"
-          @click="${this.moveActiveElement}"
-        >
-        </paper-icon-button>
-        <paper-icon-button
-          class="direction"
-          icon="hardware:keyboard-arrow-right"
-          title="Move right"
-          id="right"
-          @click="${this.moveActiveElement}"
-        >
-        </paper-icon-button>
-        <paper-icon-button
-          class="direction"
-          icon="hardware:keyboard-arrow-down"
-          title="Move down"
-          id="down"
-          @click="${this.moveActiveElement}"
-        >
-        </paper-icon-button>
-        <paper-icon-button
-          class="direction"
-          icon="hardware:keyboard-arrow-left"
-          title="Move left"
-          id="left"
-          @click="${this.moveActiveElement}"
-        >
-        </paper-icon-button>
-      </div>
-      ` : ``}
+      ${!this.hideOps
+        ? html`
+            <div class="button-holding-pen">
+              <paper-icon-button
+                class="direction"
+                icon="hax:arrow-all"
+                title="Drag"
+                draggable="true"
+                id="drag"
+                @dragstart="${this.dragStart}"
+                @dragend="${this.dragEnd}"
+              >
+              </paper-icon-button>
+              <paper-icon-button
+                class="direction"
+                icon="hardware:keyboard-arrow-up"
+                title="Move up"
+                id="up"
+                @click="${this.moveActiveElement}"
+              >
+              </paper-icon-button>
+              <paper-icon-button
+                class="direction"
+                icon="hardware:keyboard-arrow-right"
+                title="Move right"
+                id="right"
+                @click="${this.moveActiveElement}"
+              >
+              </paper-icon-button>
+              <paper-icon-button
+                class="direction"
+                icon="hardware:keyboard-arrow-down"
+                title="Move down"
+                id="down"
+                @click="${this.moveActiveElement}"
+              >
+              </paper-icon-button>
+              <paper-icon-button
+                class="direction"
+                icon="hardware:keyboard-arrow-left"
+                title="Move left"
+                id="left"
+                @click="${this.moveActiveElement}"
+              >
+              </paper-icon-button>
+            </div>
+          `
+        : ``}
       <div class="row">
         <div
           class="column"
@@ -1149,7 +1158,8 @@ class GridPlate extends LitElement {
         this.shadowRoot.querySelector("#right").style.top =
           topOffset + elemRect.height / 2 - 10 + "px";
 
-        this.shadowRoot.querySelector("#drag").style.top = topOffset - 10 + "px";
+        this.shadowRoot.querySelector("#drag").style.top =
+          topOffset - 10 + "px";
         this.shadowRoot.querySelector("#drag").style.left =
           leftOffset - 10 + "px";
 
@@ -1393,7 +1403,11 @@ class GridPlate extends LitElement {
           window.HaxStore.ready &&
           window.HaxStore.instance
         ) {
-          if (target && target.parentNode && target.parentNode.tagName === "GRID-PLATE") {
+          if (
+            target &&
+            target.parentNode &&
+            target.parentNode.tagName === "GRID-PLATE"
+          ) {
             window.HaxStore.write("activeNode", target, this);
             window.HaxStore.write(
               "activeContainerNode",
