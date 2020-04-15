@@ -47,7 +47,7 @@ class ProductCardList extends LitElement {
         type: Number
       },
       _layout: {
-        type: String,
+        type: String
       }
     };
   }
@@ -69,7 +69,7 @@ class ProductCardList extends LitElement {
               @product-card-demo-hide="${this.toggleShowDemo}"
             >
               <div class="switch">
-                <mwc-formfield label="${el.status ? `Enabled`:`Disabled`}">
+                <mwc-formfield label="${el.status ? `Enabled` : `Disabled`}">
                   <mwc-switch
                     data-index="${i}"
                     data-tag="${el.tag}"
@@ -129,7 +129,8 @@ class ProductCardList extends LitElement {
    * Effectively event binding to the expanded state
    */
   toggleShowDemo(e) {
-    this.list[e.path[0].getAttribute("data-index")].showDemo = e.detail.expanded;
+    this.list[e.path[0].getAttribute("data-index")].showDemo =
+      e.detail.expanded;
     this.requestUpdate();
   }
   /**
@@ -194,20 +195,20 @@ class ProductCardList extends LitElement {
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:
-            this._layout = '1-1-1';
-          break;
+            this._layout = "1-1-1";
+            break;
           case 4:
-            this._layout = '1-1-1-1';
-          break;
+            this._layout = "1-1-1-1";
+            break;
           case 5:
-            this._layout = '1-1-1-1-1';
-          break;
+            this._layout = "1-1-1-1-1";
+            break;
           case 6:
-            this._layout = '1-1-1-1-1-1';
-          break;
+            this._layout = "1-1-1-1-1-1";
+            break;
           default:
-            this._layout = '1-1';
-          break;
+            this._layout = "1-1";
+            break;
         }
       }
       if (propName == "list") {

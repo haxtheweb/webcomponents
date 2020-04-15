@@ -105,9 +105,11 @@ class ProductCard extends SimpleColors {
     `;
   }
   __demoCollapseStatusChange(e) {
-    this.dispatchEvent(new CustomEvent('product-card-demo-show', {
-      detail: e.detail
-    }));
+    this.dispatchEvent(
+      new CustomEvent("product-card-demo-show", {
+        detail: e.detail
+      })
+    );
   }
   // properties available to the custom element for data binding
   static get properties() {

@@ -27,7 +27,8 @@ class HaxElementListSelector extends LitElement {
     this.imports = [];
     this.haxData = [];
     this.method = "GET";
-    this.basePath = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+    this.basePath =
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
   }
   static get properties() {
     return {
@@ -35,13 +36,13 @@ class HaxElementListSelector extends LitElement {
        * JS imports
        */
       imports: {
-        type: Array,
+        type: Array
       },
       /**
        * HAXSchema array
        */
       haxData: {
-        type: Array,
+        type: Array
       },
       /**
        * Data filtered by form changes
@@ -53,20 +54,20 @@ class HaxElementListSelector extends LitElement {
        * Columns to render
        */
       cols: {
-        type: Number,
+        type: Number
       },
       /**
        * End point to load this data
        */
       loadEndpoint: {
         type: String,
-        attribute: "load-endpoint",
+        attribute: "load-endpoint"
       },
       /**
        * Request method
        */
       method: {
-        type: String,
+        type: String
       }
     };
   }
@@ -89,16 +90,22 @@ class HaxElementListSelector extends LitElement {
         id="productlist"
         cols="${this.cols}"
         .list="${this.filteredHaxData}"
-      ></product-card-list>`;
+      ></product-card-list>
+    `;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // when imports changes make sure we import everything found
       if (propName == "imports") {
-        this[propName].forEach(async (el) => {
+        this[propName].forEach(async el => {
           try {
             await import(`${this.basePath}${el}`).then(module => {
-              if (module && Object.keys(module)[0] && module[Object.keys(module)[0]].tag && module[Object.keys(module)[0]].haxProperties) {
+              if (
+                module &&
+                Object.keys(module)[0] &&
+                module[Object.keys(module)[0]].tag &&
+                module[Object.keys(module)[0]].haxProperties
+              ) {
                 let detail = {
                   tag: module[Object.keys(module)[0]].tag,
                   file: el,
@@ -110,8 +117,7 @@ class HaxElementListSelector extends LitElement {
                 this.haxData = [...list];
               }
             });
-          }
-          catch(e) {
+          } catch (e) {
             console.warn(e);
           }
         });
@@ -124,36 +130,40 @@ class HaxElementListSelector extends LitElement {
   }
   applyFilters(filters) {
     let data = [...this.haxData];
-    Object.keys(filters).forEach((key) => {
+    Object.keys(filters).forEach(key => {
       if (filters[key] != "") {
         switch (key) {
           case "haxelements-search-search":
-            data = data.filter((item) => {
-              if (item.schema.gizmo.title.toLowerCase().includes(filters[key].toLowerCase())) {
+            data = data.filter(item => {
+              if (
+                item.schema.gizmo.title
+                  .toLowerCase()
+                  .includes(filters[key].toLowerCase())
+              ) {
                 return true;
               }
               return false;
             });
-          break;
+            break;
           case "haxelements-search-tags":
-            data = data.filter((item) => {
+            data = data.filter(item => {
               if (item.schema.gizmo.groups.includes(filters[key])) {
                 return true;
               }
               return false;
             });
-          break;
+            break;
           case "haxelements-search-hasdemo":
             // only filter if box checked otherwise show all
             if (filters[key]) {
-              data = data.filter((item) => {
+              data = data.filter(item => {
                 if (item.schema.demoSchema) {
                   return true;
                 }
                 return false;
               });
             }
-          break;
+            break;
         }
       }
     });
@@ -164,9 +174,9 @@ class HaxElementListSelector extends LitElement {
    */
   _response(e) {
     // tee up defaults
-    let value = this.shadowRoot.querySelector('#form').submit();
+    let value = this.shadowRoot.querySelector("#form").submit();
     value.haxelements.settings["haxelements-settings-columns"] = this.cols;
-    this.shadowRoot.querySelector('#form').setValue(value);
+    this.shadowRoot.querySelector("#form").setValue(value);
   }
   /**
    * notice any value changing and then getting the form fresh
@@ -174,9 +184,11 @@ class HaxElementListSelector extends LitElement {
   _valueChanged(e) {
     clearTimeout(this.__valueDebounce);
     this.__valueDebounce = setTimeout(() => {
-      let value = this.shadowRoot.querySelector('#form').submit();
+      let value = this.shadowRoot.querySelector("#form").submit();
       if (value && value.haxelements) {
-        this.cols = parseInt(value.haxelements.settings["haxelements-settings-columns"]);
+        this.cols = parseInt(
+          value.haxelements.settings["haxelements-settings-columns"]
+        );
         this.filteredHaxData = [...this.applyFilters(value.haxelements.search)];
         this.shadowRoot.querySelector("#productlist").requestUpdate();
       }
@@ -184,4 +196,7 @@ class HaxElementListSelector extends LitElement {
   }
 }
 
-window.customElements.define(HaxElementListSelector.tag, HaxElementListSelector);
+window.customElements.define(
+  HaxElementListSelector.tag,
+  HaxElementListSelector
+);
