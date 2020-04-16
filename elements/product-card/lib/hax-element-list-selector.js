@@ -79,7 +79,7 @@ class HaxElementListSelector extends LitElement {
        * Valid tags on the CDN but that don't have haxSchema.
        */
       noSchema: {
-        type: Object,
+        type: Object
       },
       /**
        * Data filtered by form changes
@@ -202,14 +202,18 @@ class HaxElementListSelector extends LitElement {
         this.filteredHaxData = [...this.haxData];
         if (this.haxData.length > 0) {
           let value = this.shadowRoot.querySelector("#form").submit();
-          value.haxcore.providerdetails["haxcore-providerdetails-haxtags"] = JSON.stringify(this.haxData, null, 2);
+          value.haxcore.providerdetails[
+            "haxcore-providerdetails-haxtags"
+          ] = JSON.stringify(this.haxData, null, 2);
           this.shadowRoot.querySelector("#form").setValue(value);
         }
       }
       if (propName == "noSchema") {
         if (Object.keys(this.noSchema).length > 0) {
           let value = this.shadowRoot.querySelector("#form").submit();
-          value.haxcore.providerdetails["haxcore-providerdetails-othertags"] = JSON.stringify(this.noSchema, null, 2);
+          value.haxcore.providerdetails[
+            "haxcore-providerdetails-othertags"
+          ] = JSON.stringify(this.noSchema, null, 2);
           this.shadowRoot.querySelector("#form").setValue(value);
         }
       }
@@ -275,15 +279,16 @@ class HaxElementListSelector extends LitElement {
       if (value && value.haxcore) {
         // look for CDN provider
         if (value.haxcore.providers["haxcore-providers-cdn"] == "other") {
-          this.wcRegistryEndpoint = value.haxcore.providers["haxcore-providers-other"] + 'wc-registry.json';
-        }
-        else {
-          this.wcRegistryEndpoint = value.haxcore.providers["haxcore-providers-cdn"] + 'wc-registry.json';
+          this.wcRegistryEndpoint =
+            value.haxcore.providers["haxcore-providers-other"] +
+            "wc-registry.json";
+        } else {
+          this.wcRegistryEndpoint =
+            value.haxcore.providers["haxcore-providers-cdn"] +
+            "wc-registry.json";
         }
         // set columns
-        this.cols = parseInt(
-          value.haxcore.extras["haxcore-extras-columns"]
-        );
+        this.cols = parseInt(value.haxcore.extras["haxcore-extras-columns"]);
         // apply filters
         this.filteredHaxData = [...this.applyFilters(value.haxcore.search)];
         if (this.shadowRoot.querySelector("#productlist").requestUpdate) {

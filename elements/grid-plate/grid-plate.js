@@ -717,7 +717,7 @@ class GridPlate extends LitElement {
        */
       hideOps: {
         type: Boolean,
-        attribute: "hide-ops",
+        attribute: "hide-ops"
       },
       /**
        * allows other systems to trigger editMode in grid plate via property for D&D

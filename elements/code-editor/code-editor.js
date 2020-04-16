@@ -89,11 +89,11 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     // helps in local testing and some edge cases of CDNs
     if (window.WCGlobalBasePath) {
       this.libPath = window.WCGlobalBasePath;
+    } else {
+      this.libPath =
+        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
     }
-    else {
-      this.libPath = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
-    }
-    this.libPath+= "monaco-editor/min/vs";
+    this.libPath += "monaco-editor/min/vs";
     import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {
@@ -103,7 +103,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       );
     }, 0);
   }
-  pathFromUrl(url){
+  pathFromUrl(url) {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
@@ -143,7 +143,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return {
       ...super.properties,
       libPath: {
-        type: String,
+        type: String
       },
       /**
        * Title

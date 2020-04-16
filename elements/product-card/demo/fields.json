@@ -68,49 +68,49 @@
               {
                 "property": "haxcore-integrations-youtube",
                 "title": "Youtube",
-                "description": "https:\/\/developers.google.com\/youtube\/v3\/getting-started",
+                "description": "https://developers.google.com/youtube/v3/getting-started",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-googlepoly",
                 "title": "Google Poly",
-                "description": "https:\/\/developers.google.com\/youtube\/v3\/getting-started",
+                "description": "https://developers.google.com/youtube/v3/getting-started",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-memegenerator",
                 "title": "Meme generator",
-                "description": "https:\/\/memegenerator.net\/Api",
+                "description": "https://memegenerator.net/Api",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-vimeo",
                 "title": "Vimeo",
-                "description": "https:\/\/developer.vimeo.com\/",
+                "description": "https://developer.vimeo.com/",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-giphy",
                 "title": "Giphy",
-                "description": "https:\/\/developers.giphy.com\/docs\/",
+                "description": "https://developers.giphy.com/docs/",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-unsplash",
                 "title": "Unsplash",
-                "description": "https:\/\/unsplash.com\/developers",
+                "description": "https://unsplash.com/developers",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-flickr",
                 "title": "Flickr",
-                "description": "https:\/\/www.flickr.com\/services\/developer\/api\/",
+                "description": "https://www.flickr.com/services/developer/api/",
                 "inputMethod": "textfield"
               },
               {
                 "property": "haxcore-integrations-pixabay",
                 "title": "Pixabay",
-                "description": "https:\/\/pixabay.com\/api\/docs\/",
+                "description": "https://pixabay.com/api/docs/",
                 "inputMethod": "textfield"
               }
             ]
