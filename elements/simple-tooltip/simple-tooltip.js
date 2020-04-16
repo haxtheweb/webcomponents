@@ -23,169 +23,172 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @element simple-tooltip
  */
 class SimpleTooltip extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       css`
-        :host {
-          display: block;
-          position: absolute;
-          outline: none;
-          z-index: 1002;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          -webkit-user-select: none;
-          user-select: none;
-          cursor: default;
-        }
+:host {
+    display: block;
+    position: absolute;
+    outline: none;
+    z-index: 1002;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+  }
 
-        #tooltip {
-          display: block;
-          outline: none;
-          font-size: var(--simple-tooltip-font-size, 10px);
-          line-height: 1;
-          background-color: var(--simple-tooltip-background, #616161);
-          color: var(--simple-tooltip-text-color, white);
-          padding: 8px;
-          border-radius: var(--simple-tooltip-border-radius, 2px);
-          width: var(--simple-tooltip-width);
-        }
+  #tooltip {
+    display: block;
+    outline: none;
+    font-size: var(--simple-tooltip-font-size, 10px);
+    line-height: 1;
+    background-color: var(--simple-tooltip-background, #616161);
+    color: var(--simple-tooltip-text-color, white);
+    padding: 8px;
+    border-radius: var(--simple-tooltip-border-radius, 2px);
+    width: var(--simple-tooltip-width)
+  }
 
-        @keyframes keyFrameScaleUp {
-          0% {
-            transform: scale(0);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
+  @keyframes keyFrameScaleUp {
+    0% {
+      transform: scale(0.0);
+    }
+    100% {
+      transform: scale(1.0);
+    }
+  }
 
-        @keyframes keyFrameScaleDown {
-          0% {
-            transform: scale(1);
-          }
-          100% {
-            transform: scale(0);
-          }
-        }
+  @keyframes keyFrameScaleDown {
+    0% {
+      transform: scale(1.0);
+    }
+    100% {
+      transform: scale(0.0);
+    }
+  }
 
-        @keyframes keyFrameFadeInOpacity {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: var(--simple-tooltip-opacity, 0.9);
-          }
-        }
+  @keyframes keyFrameFadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+  }
 
-        @keyframes keyFrameFadeOutOpacity {
-          0% {
-            opacity: var(--simple-tooltip-opacity, 0.9);
-          }
-          100% {
-            opacity: 0;
-          }
-        }
+  @keyframes keyFrameFadeOutOpacity {
+    0% {
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 
-        @keyframes keyFrameSlideDownIn {
-          0% {
-            transform: translateY(-2000px);
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.2;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: var(--simple-tooltip-opacity, 0.9);
-          }
-        }
+  @keyframes keyFrameSlideDownIn {
+    0% {
+      transform: translateY(-2000px);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+  }
 
-        @keyframes keyFrameSlideDownOut {
-          0% {
-            transform: translateY(0);
-            opacity: var(--simple-tooltip-opacity, 0.9);
-          }
-          10% {
-            opacity: 0.2;
-          }
-          100% {
-            transform: translateY(-2000px);
-            opacity: 0;
-          }
-        }
+  @keyframes keyFrameSlideDownOut {
+    0% {
+      transform: translateY(0);
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+    10% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(-2000px);
+      opacity: 0;
+    }
+  }
 
-        .fade-in-animation {
-          opacity: 0;
-          animation-delay: var(--simple-tooltip-delay-in, 500ms);
-          animation-name: keyFrameFadeInOpacity;
-          animation-iteration-count: 1;
-          animation-timing-function: ease-in;
-          animation-duration: var(--simple-tooltip-duration-in, 500ms);
-          animation-fill-mode: forwards;
-        }
+  .fade-in-animation {
+    opacity: 0;
+    animation-delay: var(--simple-tooltip-delay-in, 500ms);
+    animation-name: keyFrameFadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-in, 500ms);
+    animation-fill-mode: forwards;
+  }
 
-        .fade-out-animation {
-          opacity: var(--simple-tooltip-opacity, 0.9);
-          animation-delay: var(--simple-tooltip-delay-out, 0ms);
-          animation-name: keyFrameFadeOutOpacity;
-          animation-iteration-count: 1;
-          animation-timing-function: ease-in;
-          animation-duration: var(--simple-tooltip-duration-out, 500ms);
-          animation-fill-mode: forwards;
-        }
+  .fade-out-animation {
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-out, 0ms);
+    animation-name: keyFrameFadeOutOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
 
-        .scale-up-animation {
-          transform: scale(0);
-          opacity: var(--simple-tooltip-opacity, 0.9);
-          animation-delay: var(--simple-tooltip-delay-in, 500ms);
-          animation-name: keyFrameScaleUp;
-          animation-iteration-count: 1;
-          animation-timing-function: ease-in;
-          animation-duration: var(--simple-tooltip-duration-in, 500ms);
-          animation-fill-mode: forwards;
-        }
+  .scale-up-animation {
+    transform: scale(0);
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-in, 500ms);
+    animation-name: keyFrameScaleUp;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-in, 500ms);
+    animation-fill-mode: forwards;
+  }
 
-        .scale-down-animation {
-          transform: scale(1);
-          opacity: var(--simple-tooltip-opacity, 0.9);
-          animation-delay: var(--simple-tooltip-delay-out, 500ms);
-          animation-name: keyFrameScaleDown;
-          animation-iteration-count: 1;
-          animation-timing-function: ease-in;
-          animation-duration: var(--simple-tooltip-duration-out, 500ms);
-          animation-fill-mode: forwards;
-        }
+  .scale-down-animation {
+    transform: scale(1);
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-out, 500ms);
+    animation-name: keyFrameScaleDown;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
 
-        .slide-down-animation {
-          transform: translateY(-2000px);
-          opacity: 0;
-          animation-delay: var(--simple-tooltip-delay-out, 500ms);
-          animation-name: keyFrameSlideDownIn;
-          animation-iteration-count: 1;
-          animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-          animation-duration: var(--simple-tooltip-duration-out, 500ms);
-          animation-fill-mode: forwards;
-        }
+  .slide-down-animation {
+    transform: translateY(-2000px);
+    opacity: 0;
+    animation-delay: var(--simple-tooltip-delay-out, 500ms);
+    animation-name: keyFrameSlideDownIn;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
 
-        .slide-down-animation-out {
-          transform: translateY(0);
-          opacity: var(--simple-tooltip-opacity, 0.9);
-          animation-delay: var(--simple-tooltip-delay-out, 500ms);
-          animation-name: keyFrameSlideDownOut;
-          animation-iteration-count: 1;
-          animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
-          animation-duration: var(--simple-tooltip-duration-out, 500ms);
-          animation-fill-mode: forwards;
-        }
+  .slide-down-animation-out {
+    transform: translateY(0);
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-out, 500ms);
+    animation-name: keyFrameSlideDownOut;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
 
-        .cancel-animation {
-          animation-delay: -30s !important;
-        }
+  .cancel-animation {
+    animation-delay: -30s !important;
+  }
 
-        .hidden {
-          display: none !important;
-        }
+  
+
+  .hidden {
+    display: none !important;
+  }
       `
     ];
   }
@@ -193,70 +196,72 @@ class SimpleTooltip extends LitElement {
   // render function
   render() {
     return html`
-      <div id="tooltip" class="hidden" @animationend="${this._onAnimationEnd}">
-        <slot></slot>
-      </div>
-    `;
+
+<div id="tooltip" class="hidden" @animationend="${this._onAnimationEnd}">
+  <slot></slot>
+</div>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-      /**
-       * The id of the element that the tooltip is anchored to. This element
-       * must be a sibling of the tooltip. If this property is not set,
-       * then the tooltip will be centered to the parent node containing it.
-       */ for: { type: String },
-      /**
-       * Set this to true if you want to manually control when the tooltip
-       * is shown or hidden.
-       */
-      manualMode: { type: Boolean, attribute: "manual-mode" },
-      /**
-       * Positions the tooltip to the top, right, bottom, left of its content.
-       */
-      position: { type: String },
-      /**
-       * If true, no parts of the tooltip will ever be shown offscreen.
-       */
-      fitToVisibleBounds: {
-        type: Boolean,
-        attribute: "fit-to-visible-bounds"
-      },
-      /**
-       * The spacing between the top of the tooltip and the element it is
-       * anchored to.
-       */
-      offset: { type: Number },
-      /**
-       * This property is deprecated, but left over so that it doesn't
-       * break exiting code. Please use `offset` instead. If both `offset` and
-       * `marginTop` are provided, `marginTop` will be ignored.
-       * @deprecated since version 1.0.3
-       */
-      marginTop: { type: Number, attribute: "margin-top" },
-      /**
-       * The delay that will be applied before the `entry` animation is
-       * played when showing the tooltip.
-       */
-      animationDelay: { type: Number, attribute: "animation-delay" },
-      /**
-       * The animation that will be played on entry.  This replaces the
-       * deprecated animationConfig.  Entries here will override the
-       * animationConfig settings.  You can enter your own animation
-       * by setting it to the css class name.
-       */
-      animationEntry: { type: String, attribute: "animation-entry" },
-      /**
-       * The animation that will be played on exit.  This replaces the
-       * deprecated animationConfig.  Entries here will override the
-       * animationConfig settings.  You can enter your own animation
-       * by setting it to the css class name.
-       */
-      animationExit: { type: String, attribute: "animation-exit" },
-      _showing: { type: Boolean }
-    };
+  ...super.properties
+  ,/**
+   * The id of the element that the tooltip is anchored to. This element
+   * must be a sibling of the tooltip. If this property is not set,
+   * then the tooltip will be centered to the parent node containing it.
+   */
+  "for": { "type": String },
+  /**
+   * Set this to true if you want to manually control when the tooltip
+   * is shown or hidden.
+   */
+  "manualMode": { "type": Boolean, "attribute": "manual-mode" },
+  /**
+   * Positions the tooltip to the top, right, bottom, left of its content.
+   */
+  "position": { "type": String },
+  /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "fitToVisibleBounds": {
+    "type": Boolean,
+    "attribute": "fit-to-visible-bounds"
+  },
+  /**
+   * The spacing between the top of the tooltip and the element it is
+   * anchored to.
+   */
+  "offset": { "type": Number },
+  /**
+   * This property is deprecated, but left over so that it doesn't
+   * break exiting code. Please use `offset` instead. If both `offset` and
+   * `marginTop` are provided, `marginTop` will be ignored.
+   * @deprecated since version 1.0.3
+   */
+  "marginTop": { "type": Number, "attribute": "margin-top" },
+  /**
+   * The delay that will be applied before the `entry` animation is
+   * played when showing the tooltip.
+   */
+  "animationDelay": { "type": Number, "attribute": "animation-delay" },
+  /**
+   * The animation that will be played on entry.  This replaces the
+   * deprecated animationConfig.  Entries here will override the
+   * animationConfig settings.  You can enter your own animation
+   * by setting it to the css class name.
+   */
+  "animationEntry": { "type": String, "attribute": "animation-entry" },
+  /**
+   * The animation that will be played on exit.  This replaces the
+   * deprecated animationConfig.  Entries here will override the
+   * animationConfig settings.  You can enter your own animation
+   * by setting it to the css class name.
+   */
+  "animationExit": { "type": String, "attribute": "animation-exit" },
+  "_showing": { "type": Boolean }
+}
+;
   }
 
   /**
