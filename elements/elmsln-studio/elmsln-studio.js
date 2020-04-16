@@ -19,26 +19,25 @@ import "@polymer/iron-flex-layout/iron-flex-layout.js";
  * @demo demo/index.html
  */
 class ElmslnStudio extends LitElement {
-  
   // render function
   render() {
     return html`
-<style>
+      <style>
+        :host {
+          display: block;
+        }
 
-
-:host {
-  display: block; }
-
-:host([hidden]) {
-  display: none; }
-</style>
-<lrnapp-studio-projectboard></lrnapp-studio-projectboard>`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <lrnapp-studio-projectboard></lrnapp-studio-projectboard>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {}
-;
+    return {};
   }
 
   /**

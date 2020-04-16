@@ -22,24 +22,26 @@ class HaxElementListSelector extends LitElement {
     return "hax-element-list-selector";
   }
   static get styles() {
-    return [css`
-      :host {
-        display: block;
-      }
-      :host([loading]) hax-element-card-list {
-        visibility: hidden;
-        opacity: 0;
-        transition: 1s ease-in-out all;
-      }
-      hax-element-card-list {
-        visibility: visible;
-        opacity: 1;
-      }
-      hexagon-loader[loading] {
-        position: absolute;
-        width: 100%;
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: block;
+        }
+        :host([loading]) hax-element-card-list {
+          visibility: hidden;
+          opacity: 0;
+          transition: 1s ease-in-out all;
+        }
+        hax-element-card-list {
+          visibility: visible;
+          opacity: 1;
+        }
+        hexagon-loader[loading] {
+          position: absolute;
+          width: 100%;
+        }
+      `
+    ];
   }
   constructor() {
     super();
@@ -106,7 +108,7 @@ class HaxElementListSelector extends LitElement {
       },
       loading: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       }
     };
   }
@@ -143,11 +145,13 @@ class HaxElementListSelector extends LitElement {
     changedProperties.forEach(async (oldValue, propName) => {
       if (propName == "wcRegistryEndpoint") {
         this.loading = true;
-        fetch(this[propName]).then((response) => {
-          return response.json();
-        }).then((data) => {
-          this.imports = data;
-        });
+        fetch(this[propName])
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            this.imports = data;
+          });
       }
       // when imports changes make sure we import everything found
       if (propName == "imports") {
@@ -176,8 +180,7 @@ class HaxElementListSelector extends LitElement {
                   console.log(this.haxData);
                   this.loading = false;
                 }, 1000);
-              }
-              else {
+              } else {
                 //console.log(`${tag} doesn't have haxSchema`);
               }
             });
@@ -254,7 +257,7 @@ class HaxElementListSelector extends LitElement {
           value.haxelements.settings["haxelements-settings-columns"]
         );
         this.filteredHaxData = [...this.applyFilters(value.haxelements.search)];
-        if ( this.shadowRoot.querySelector("#productlist").requestUpdate) {
+        if (this.shadowRoot.querySelector("#productlist").requestUpdate) {
           this.shadowRoot.querySelector("#productlist").requestUpdate();
         }
       }

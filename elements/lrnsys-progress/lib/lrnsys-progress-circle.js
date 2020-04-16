@@ -522,8 +522,12 @@ class LrnsysProgressCircle extends PolymerElement {
   }
   constructor() {
     super();
-    this.completeSound = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/assets/complete.mp3";
-    this.finishedSound = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/assets/finished.mp3";
+    this.completeSound =
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+      "lib/assets/complete.mp3";
+    this.finishedSound =
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+      "lib/assets/finished.mp3";
     setTimeout(() => {
       this.addEventListener("click", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.focusOn.bind(this));

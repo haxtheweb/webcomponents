@@ -358,7 +358,7 @@ class HAXCMSSiteBuilder extends LitElement {
     );
     // dyanmcially import the editor builder which figures out if we should have one
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
-      .then((response) => {
+      .then(response => {
         this.editorBuilder = document.createElement("haxcms-editor-builder");
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);
@@ -685,8 +685,12 @@ window.HAXme = function(context = null) {
   }
   // apply context
   if (document.body) {
-    document.body.getElementsByTagName("haxcms-editor-builder")[0].__appliedContext = false;
-    document.body.getElementsByTagName("haxcms-editor-builder")[0].applyContext(context);
+    document.body.getElementsByTagName(
+      "haxcms-editor-builder"
+    )[0].__appliedContext = false;
+    document.body
+      .getElementsByTagName("haxcms-editor-builder")[0]
+      .applyContext(context);
   }
 };
 

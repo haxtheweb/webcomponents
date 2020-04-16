@@ -376,7 +376,7 @@ const ChartistRenderSuper = function(SuperClass) {
     _renderTable() {
       let html = "",
         table = this.querySelector("table"),
-        data = (Array.isArray(this.data) ? [...this.data] : false);
+        data = Array.isArray(this.data) ? [...this.data] : false;
 
       if (data) {
         let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
