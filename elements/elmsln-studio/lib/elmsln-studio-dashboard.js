@@ -2,10 +2,10 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element";
-import "./lrnapp-studio-dashboard-profile.js";
-import "./lrnapp-studio-dashboard-widget.js";
-import "./lrnapp-studio-dashboard-keywords.js";
+import { LitElement, html, css } from "lit-element";
+//import "./lrnapp-studio-dashboard-profile.js";
+//import "./lrnapp-studio-dashboard-widget.js";
+//import "./lrnapp-studio-dashboard-keywords.js";
 
 /**
  * `elmsln-studio-dashboard`

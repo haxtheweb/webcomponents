@@ -20,6 +20,11 @@ import "./lib/lrnsys-progress-circle.js";
  *  - bar - the underlayed bar that's tracking overall progression
  */
 class LrnsysProgress extends PolymerElement {
+  constructor() {
+    super();
+    this.completeSound = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/assets/complete.mp3";
+    this.finishedSound = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/assets/finished.mp3";
+  }
   static get template() {
     return html`
       <style include="paper-material-styles">
@@ -215,9 +220,6 @@ class LrnsysProgress extends PolymerElement {
        */
       completeSound: {
         type: String,
-        value:
-          this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-          "lib/assets/complete.mp3",
         reflectToAttribute: true
       },
       /**
@@ -225,9 +227,6 @@ class LrnsysProgress extends PolymerElement {
        */
       finishedSound: {
         type: String,
-        value:
-          this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-          "lib/assets/finished.mp3",
         reflectToAttribute: true
       },
       /**

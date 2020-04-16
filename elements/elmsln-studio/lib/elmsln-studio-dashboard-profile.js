@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element";
+import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/progress-donut/progress-donut.js";
 import "@lrnwebcomponents/accent-card/accent-card.js";

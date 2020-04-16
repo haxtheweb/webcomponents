@@ -1,4 +1,5 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "@polymer/iron-icons/device-icons.js";
@@ -14,16 +15,36 @@ import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@lrnwebcomponents/mdi-iconset-svg/mdi-iconset-svg.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
-import "./product-card-list.js";
+import "./hax-element-card-list.js";
 
 class HaxElementListSelector extends LitElement {
   static get tag() {
     return "hax-element-list-selector";
   }
+  static get styles() {
+    return [css`
+      :host {
+        display: block;
+      }
+      :host([loading]) hax-element-card-list {
+        visibility: hidden;
+        opacity: 0;
+        transition: 1s ease-in-out all;
+      }
+      hax-element-card-list {
+        visibility: visible;
+        opacity: 1;
+      }
+      hexagon-loader[loading] {
+        position: absolute;
+        width: 100%;
+      }
+    `];
+  }
   constructor() {
     super();
+    this.loading = false;
     this.cols = 3;
-    this.__loaded = false;
     this.imports = [];
     this.haxData = [];
     this.method = "GET";
@@ -33,10 +54,17 @@ class HaxElementListSelector extends LitElement {
   static get properties() {
     return {
       /**
+       * base path
+       */
+      basePath: {
+        type: String,
+        attribute: "base-path"
+      },
+      /**
        * JS imports
        */
       imports: {
-        type: Array
+        type: Object
       },
       /**
        * HAXSchema array
@@ -59,15 +87,26 @@ class HaxElementListSelector extends LitElement {
       /**
        * End point to load this data
        */
-      loadEndpoint: {
+      fieldsEndpoint: {
         type: String,
-        attribute: "load-endpoint"
+        attribute: "fields-endpoint"
+      },
+      /**
+       * End point to load up a list of imports
+       */
+      wcRegistryEndpoint: {
+        type: String,
+        attribute: "wc-registry-endpoint"
       },
       /**
        * Request method
        */
       method: {
         type: String
+      },
+      loading: {
+        type: Boolean,
+        reflect: true,
       }
     };
   }
@@ -80,47 +119,72 @@ class HaxElementListSelector extends LitElement {
       <simple-fields-form
         id="form"
         autoload
-        load-endpoint="${this.loadEndpoint}"
+        load-endpoint="${this.fieldsEndpoint}"
         method="${this.method}"
         @response="${this._response}"
         @value-changed="${this._valueChanged}"
       >
       </simple-fields-form>
-      <product-card-list
+      <hexagon-loader
+        item-count="4"
+        color="blue"
+        ?loading="${this.loading}"
+        size="large"
+      ></hexagon-loader>
+      <hax-element-card-list
         id="productlist"
         cols="${this.cols}"
         .list="${this.filteredHaxData}"
-      ></product-card-list>
+      ></hax-element-card-list>
     `;
   }
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
+    var importBackstop;
+    changedProperties.forEach(async (oldValue, propName) => {
+      if (propName == "wcRegistryEndpoint") {
+        this.loading = true;
+        fetch(this[propName]).then((response) => {
+          return response.json();
+        }).then((data) => {
+          this.imports = data;
+        });
+      }
       // when imports changes make sure we import everything found
       if (propName == "imports") {
-        this[propName].forEach(async el => {
+        for (var tag in this[propName]) {
+          let file = this[propName][tag];
           try {
-            await import(`${this.basePath}${el}`).then(module => {
+            await import(`${this.basePath}${file}`).then(module => {
               if (
                 module &&
                 Object.keys(module)[0] &&
-                module[Object.keys(module)[0]].tag &&
-                module[Object.keys(module)[0]].haxProperties
+                module[Object.keys(module)[0]].haxProperties &&
+                module[Object.keys(module)[0]].haxProperties.gizmo &&
+                module[Object.keys(module)[0]].haxProperties.gizmo.title
               ) {
                 let detail = {
-                  tag: module[Object.keys(module)[0]].tag,
-                  file: el,
+                  tag: tag,
+                  file: file,
                   status: true,
                   schema: module[Object.keys(module)[0]].haxProperties
                 };
                 let list = this.haxData;
                 list.push(detail);
-                this.haxData = [...list];
+                clearTimeout(importBackstop);
+                importBackstop = setTimeout(() => {
+                  this.haxData = [...list];
+                  console.log(this.haxData);
+                  this.loading = false;
+                }, 1000);
+              }
+              else {
+                //console.log(`${tag} doesn't have haxSchema`);
               }
             });
           } catch (e) {
             console.warn(e);
           }
-        });
+        }
       }
       // this is the local data we don't let change
       if (propName == "haxData") {
@@ -190,7 +254,9 @@ class HaxElementListSelector extends LitElement {
           value.haxelements.settings["haxelements-settings-columns"]
         );
         this.filteredHaxData = [...this.applyFilters(value.haxelements.search)];
-        this.shadowRoot.querySelector("#productlist").requestUpdate();
+        if ( this.shadowRoot.querySelector("#productlist").requestUpdate) {
+          this.shadowRoot.querySelector("#productlist").requestUpdate();
+        }
       }
     }, 50);
   }

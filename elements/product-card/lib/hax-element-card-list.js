@@ -4,7 +4,7 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@material/mwc-switch/mwc-switch.js";
 import "@material/mwc-formfield/mwc-formfield.js";
 import "../product-card.js";
-class ProductCardList extends LitElement {
+class HAXElementCardList extends LitElement {
   constructor() {
     super();
     this.list = [];
@@ -12,7 +12,7 @@ class ProductCardList extends LitElement {
     this._layout = "1-1-1";
   }
   static get tag() {
-    return "product-card-list";
+    return "hax-element-card-list";
   }
   static get styles() {
     return [
@@ -229,5 +229,5 @@ class ProductCardList extends LitElement {
     });
   }
 }
-customElements.define(ProductCardList.tag, ProductCardList);
-export { ProductCardList };
+customElements.define(HAXElementCardList.tag, HAXElementCardList);
+export { HAXElementCardList };

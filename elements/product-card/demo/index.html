@@ -13,7 +13,13 @@
     </script>
   </head>
   <body>
-    <hax-element-list-selector id="haxlist" cols="3" load-endpoint="./fields.json"></hax-element-list-selector>
+    <hax-element-list-selector
+      id="haxlist"
+      base-path="/node_modules/"
+      fields-endpoint="./fields.json"
+      wc-registry-endpoint="./wc-registry.json"
+      cols="3"
+    ></hax-element-list-selector>
     <json-editor id="jsonblob"></json-editor>
     <script defer="defer" async="async">
       window.addEventListener('load', (e) => {
@@ -21,44 +27,6 @@
           document.getElementById('haxlist').addEventListener('enabled-changed', (e) => {
             document.getElementById('jsonblob').value = JSON.stringify(e.detail.value, null, 2);
           });
-          document.getElementById('haxlist').basePath = "/node_modules/";
-          document.getElementById('haxlist').imports = [
-          '@lrnwebcomponents/meme-maker/meme-maker.js',
-          '@lrnwebcomponents/video-player/video-player.js',
-          '@lrnwebcomponents/self-check/self-check.js',
-          '@lrnwebcomponents/retro-card/retro-card.js',
-          "@lrnwebcomponents/lrn-aside/lrn-aside.js",
-          "@lrnwebcomponents/md-block/md-block.js",
-          "@lrnwebcomponents/grid-plate/grid-plate.js",
-          "@lrnwebcomponents/tab-list/tab-list.js",
-          "@lrnwebcomponents/magazine-cover/magazine-cover.js",
-          "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-          "@lrnwebcomponents/license-element/license-element.js",
-          "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-          "@lrnwebcomponents/oer-schema/oer-schema.js",
-          "@lrnwebcomponents/hero-banner/hero-banner.js",
-          "@lrnwebcomponents/task-list/task-list.js",
-          "@lrnwebcomponents/lrn-table/lrn-table.js",
-          "@lrnwebcomponents/media-image/media-image.js",
-          "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
-          "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-          "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
-          "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
-          "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-          "@lrnwebcomponents/lrn-math/lrn-math.js",
-          "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-          "@lrnwebcomponents/citation-element/citation-element.js",
-          "@lrnwebcomponents/place-holder/place-holder.js",
-          "@lrnwebcomponents/stop-note/stop-note.js",
-          "@lrnwebcomponents/q-r/q-r.js",
-          "@lrnwebcomponents/full-width-image/full-width-image.js",
-          "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
-          "@lrnwebcomponents/lrndesign-timeline/lrndesign-timeline.js",
-          "@lrnwebcomponents/html-block/html-block.js",
-          "@lrnwebcomponents/user-action/user-action.js",
-          "@lrnwebcomponents/rss-items/rss-items.js",
-          "@lrnwebcomponents/random-item/random-item.js"
-        ];          
         }, 0);
       });
     </script>

@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
