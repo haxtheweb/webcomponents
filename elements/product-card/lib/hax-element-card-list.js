@@ -53,7 +53,7 @@ class HAXElementCardList extends LitElement {
   }
   render() {
     return html`
-      <grid-plate .layout="${this._layout}">
+      <grid-plate .layout="${this._layout}" hide-ops>
         ${this.list.map(
           (el, i) => html`
             <product-card
@@ -163,7 +163,7 @@ class HAXElementCardList extends LitElement {
     this.requestUpdate();
     // bubble up enabled
     this.dispatchEvent(
-      new CustomEvent(`enabled-changed`, {
+      new CustomEvent("enabled-changed", {
         bubbles: true,
         composed: true,
         detail: {
@@ -187,11 +187,11 @@ class HAXElementCardList extends LitElement {
       // notify
       if (propName == "enabled") {
         this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
+          new CustomEvent("enabled-changed", {
             bubbles: true,
             composed: true,
             detail: {
-              value: this[propName]
+              value: this.enabled
             }
           })
         );

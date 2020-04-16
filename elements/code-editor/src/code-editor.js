@@ -86,8 +86,14 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     this.autofocus = false;
     this.hideLineNumbers = false;
     this.focused = false;
-    this.__libPath =
-      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
+    // helps in local testing and some edge cases of CDNs
+    if (window.WCGlobalBasePath) {
+      this.libPath = window.WCGlobalBasePath;
+    }
+    else {
+      this.libPath = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
+    }
+    this.libPath+= "monaco-editor/min/vs";
     import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {
@@ -96,6 +102,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.editorReady.bind(this)
       );
     }, 0);
+  }
+  pathFromUrl(url){
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * LitElement render
@@ -107,7 +116,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         id="codeeditor"
         ?autofocus="${this.autofocus}"
         ?hide-line-numbers="${this.hideLineNumbers}"
-        lib-path="${this.__libPath}"
+        lib-path="${this.libPath}"
         language="${this.language}"
         tab-size="${this.tabSize}"
         theme="${this.theme}"
@@ -133,6 +142,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      libPath: {
+        type: String,
+      },
       /**
        * Title
        */

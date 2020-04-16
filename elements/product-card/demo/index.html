@@ -3,24 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>ProductCard: product-card Demo</title>
+    <title>HAX registry builder demo</title>
     <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
       import "@lrnwebcomponents/json-editor/json-editor.js";
       import '../lib/hax-element-list-selector.js';
     </script>
   </head>
   <body>
+    <a11y-collapse accordian>
+      <div slot="heading">Debug area</div>
+      <json-editor id="jsonblob"></json-editor>
+    </a11y-collapse>
     <hax-element-list-selector
       id="haxlist"
       base-path="/node_modules/"
       fields-endpoint="./fields.json"
-      wc-registry-endpoint="./wc-registry.json"
       cols="3"
     ></hax-element-list-selector>
-    <json-editor id="jsonblob"></json-editor>
     <script defer="defer" async="async">
       window.addEventListener('load', (e) => {
         setTimeout(() => {

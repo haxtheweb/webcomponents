@@ -49,6 +49,7 @@ class HaxElementListSelector extends LitElement {
     this.cols = 3;
     this.imports = [];
     this.haxData = [];
+    this.noSchema = {};
     this.method = "GET";
     this.basePath =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
@@ -73,6 +74,12 @@ class HaxElementListSelector extends LitElement {
        */
       haxData: {
         type: Array
+      },
+      /**
+       * Valid tags on the CDN but that don't have haxSchema.
+       */
+      noSchema: {
+        type: Object,
       },
       /**
        * Data filtered by form changes
@@ -141,12 +148,13 @@ class HaxElementListSelector extends LitElement {
     `;
   }
   updated(changedProperties) {
-    var importBackstop;
     changedProperties.forEach(async (oldValue, propName) => {
       if (propName == "wcRegistryEndpoint") {
-        this.loading = true;
+        this.haxData = [];
+        this.imports = [];
         fetch(this[propName])
           .then(response => {
+            this.loading = true;
             return response.json();
           })
           .then(data => {
@@ -155,6 +163,8 @@ class HaxElementListSelector extends LitElement {
       }
       // when imports changes make sure we import everything found
       if (propName == "imports") {
+        let list = this.haxData;
+        let noSchema = this.noSchema;
         for (var tag in this[propName]) {
           let file = this[propName][tag];
           try {
@@ -172,15 +182,9 @@ class HaxElementListSelector extends LitElement {
                   status: true,
                   schema: module[Object.keys(module)[0]].haxProperties
                 };
-                let list = this.haxData;
                 list.push(detail);
-                clearTimeout(importBackstop);
-                importBackstop = setTimeout(() => {
-                  this.haxData = [...list];
-                  console.log(this.haxData);
-                  this.loading = false;
-                }, 1000);
               } else {
+                noSchema[tag] = file;
                 //console.log(`${tag} doesn't have haxSchema`);
               }
             });
@@ -188,10 +192,26 @@ class HaxElementListSelector extends LitElement {
             console.warn(e);
           }
         }
+        this.haxData = [...list];
+        this.noSchema = {};
+        this.noSchema = noSchema;
+        this.loading = false;
       }
       // this is the local data we don't let change
       if (propName == "haxData") {
-        this.filteredHaxData = [...this[propName]];
+        this.filteredHaxData = [...this.haxData];
+        if (this.haxData.length > 0) {
+          let value = this.shadowRoot.querySelector("#form").submit();
+          value.haxcore.providerdetails["haxcore-providerdetails-haxtags"] = JSON.stringify(this.haxData, null, 2);
+          this.shadowRoot.querySelector("#form").setValue(value);
+        }
+      }
+      if (propName == "noSchema") {
+        if (Object.keys(this.noSchema).length > 0) {
+          let value = this.shadowRoot.querySelector("#form").submit();
+          value.haxcore.providerdetails["haxcore-providerdetails-othertags"] = JSON.stringify(this.noSchema, null, 2);
+          this.shadowRoot.querySelector("#form").setValue(value);
+        }
       }
     });
   }
@@ -200,7 +220,7 @@ class HaxElementListSelector extends LitElement {
     Object.keys(filters).forEach(key => {
       if (filters[key] != "") {
         switch (key) {
-          case "haxelements-search-search":
+          case "haxcore-search-search":
             data = data.filter(item => {
               if (
                 item.schema.gizmo.title
@@ -212,7 +232,7 @@ class HaxElementListSelector extends LitElement {
               return false;
             });
             break;
-          case "haxelements-search-tags":
+          case "haxcore-search-tags":
             data = data.filter(item => {
               if (item.schema.gizmo.groups.includes(filters[key])) {
                 return true;
@@ -220,7 +240,7 @@ class HaxElementListSelector extends LitElement {
               return false;
             });
             break;
-          case "haxelements-search-hasdemo":
+          case "haxcore-search-hasdemo":
             // only filter if box checked otherwise show all
             if (filters[key]) {
               data = data.filter(item => {
@@ -242,7 +262,7 @@ class HaxElementListSelector extends LitElement {
   _response(e) {
     // tee up defaults
     let value = this.shadowRoot.querySelector("#form").submit();
-    value.haxelements.settings["haxelements-settings-columns"] = this.cols;
+    value.haxcore.extras["haxcore-extras-columns"] = this.cols;
     this.shadowRoot.querySelector("#form").setValue(value);
   }
   /**
@@ -252,11 +272,20 @@ class HaxElementListSelector extends LitElement {
     clearTimeout(this.__valueDebounce);
     this.__valueDebounce = setTimeout(() => {
       let value = this.shadowRoot.querySelector("#form").submit();
-      if (value && value.haxelements) {
+      if (value && value.haxcore) {
+        // look for CDN provider
+        if (value.haxcore.providers["haxcore-providers-cdn"] == "other") {
+          this.wcRegistryEndpoint = value.haxcore.providers["haxcore-providers-other"] + 'wc-registry.json';
+        }
+        else {
+          this.wcRegistryEndpoint = value.haxcore.providers["haxcore-providers-cdn"] + 'wc-registry.json';
+        }
+        // set columns
         this.cols = parseInt(
-          value.haxelements.settings["haxelements-settings-columns"]
+          value.haxcore.extras["haxcore-extras-columns"]
         );
-        this.filteredHaxData = [...this.applyFilters(value.haxelements.search)];
+        // apply filters
+        this.filteredHaxData = [...this.applyFilters(value.haxcore.search)];
         if (this.shadowRoot.querySelector("#productlist").requestUpdate) {
           this.shadowRoot.querySelector("#productlist").requestUpdate();
         }
