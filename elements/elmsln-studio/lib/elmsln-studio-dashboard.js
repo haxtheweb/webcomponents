@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import '@polymer/iron-ajax/iron-ajax.js';
-import '@lrnwebcomponents/accent-card/accent-card.js';
-import '@lrnwebcomponents/a11y-collapse/a11y-collapse.js';
-import '@lrnwebcomponents/progress-donut/progress-donut.js';
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@lrnwebcomponents/progress-donut/progress-donut.js";
 import "@polymer/iron-icons/iron-icons.js";
 
 /**
@@ -26,10 +26,13 @@ class ElmslnStudioDashboard extends LitElement {
           font-family: var(--elmsln-studio--FontFamily, sans-serif);
           font-size: 13px;
         }
-        h1, h2, h3, accent-card > [slot=heading] {
+        h1,
+        h2,
+        h3,
+        accent-card > [slot="heading"] {
           font-size: 14px;
           font-weight: normal;
-          color: var(--simple-colors-default-theme-grey-7,#666);
+          color: var(--simple-colors-default-theme-grey-7, #666);
           margin: 0;
         }
         accent-card {
@@ -54,7 +57,8 @@ class ElmslnStudioDashboard extends LitElement {
         accent-card td {
           text-align: left;
           min-height: 25px;
-          border-bottom: 1px solid var(--simple-colors-default-theme-grey-4,#666);
+          border-bottom: 1px solid
+            var(--simple-colors-default-theme-grey-4, #666);
         }
         accent-card table {
           width: 100%;
@@ -75,14 +79,14 @@ class ElmslnStudioDashboard extends LitElement {
           top: calc(50% - 12px);
         }
         .linklist-heading::after {
-          content: ' ';
+          content: " ";
           position: absolute;
           left: 0;
           right: 0;
           top: 0;
           bottom: 0;
         }
-        .linklist li:focus, 
+        .linklist li:focus,
         .linklist li:focus-within .linklist-heading::after {
           outline: 1px solid blue;
         }
@@ -101,7 +105,7 @@ class ElmslnStudioDashboard extends LitElement {
         .linklist-subheading {
           font-size: 12px;
         }
-        @media screen and (min-width: 600px){
+        @media screen and (min-width: 600px) {
           :host {
             display: flex;
             align-items: stretch;
@@ -114,56 +118,102 @@ class ElmslnStudioDashboard extends LitElement {
             padding-right: var(--elmsln-studio--Padding, 20px);
             width: calc(33.33333333% - var(--elmsln-studio--Padding, 20px));
           }
-          h1, h2 {
+          h1,
+          h2 {
             flex: 0 0 calc(100% - var(--elmsln-studio--Margin, 20px));
             padding: 0 var(--elmsln-studio--Margin, 20px);
           }
         }
-        @media screen and (min-width: 900px){
+        @media screen and (min-width: 900px) {
           #cards > div {
             display: flex;
             align-items: stretch;
             justify-content: space-between;
             flex-wrap: wrap;
           }
-        }`
+        }
+      `
     ];
   }
   // render function
   render() {
     return html`
-      <iron-ajax auto url="${this.activitySrc}" @response="${e=> this._handleArrayData(e,'__activity')}"></iron-ajax>
-      <iron-ajax auto url="${this.assignmentsSrc}" @response="${e=> this._handleArrayData(e,'__assignments')}"></iron-ajax>
-      <iron-ajax auto url="${this.commentsSrc}" @response="${e=> this._handleArrayData(e,'__comments')}"></iron-ajax>
-      <iron-ajax auto url="${this.profileSrc}" @response="${e=> this._handleObjectData(e,'__profile')}"></iron-ajax>
-      <iron-ajax auto url="${this.submissionsSrc}" @response="${e=> this._handleObjectData(e,'__submissions')}"></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.activitySrc}"
+        @response="${e => this._handleArrayData(e, "__activity")}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.assignmentsSrc}"
+        @response="${e => this._handleArrayData(e, "__assignments")}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.commentsSrc}"
+        @response="${e => this._handleArrayData(e, "__comments")}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.profileSrc}"
+        @response="${e => this._handleObjectData(e, "__profile")}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.submissionsSrc}"
+        @response="${e => this._handleObjectData(e, "__submissions")}"
+      ></iron-ajax>
       <!--h1 class="sr-only">Overview</h1-->
       <div id="cards">
         <div id="profile">
           <h2 class="sr-only">My Progress</h2>
           <accent-card accent-color="purple">
-            <span slot="heading">${this.__profile.student.data.display_name}</span>
+            <span slot="heading"
+              >${this.__profile.student.data.display_name}</span
+            >
             <table slot="content">
               <tbody>
-                <tr><th scope="row">Course Progress</th><td>0%</td></tr>
-                <tr><th scope="row">Comments</th><td>0</td></tr>
-                <tr><th scope="row">Submissions</th><td>0</td></tr>
+                <tr>
+                  <th scope="row">Course Progress</th>
+                  <td>0%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Comments</th>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th scope="row">Submissions</th>
+                  <td>0</td>
+                </tr>
               </tbody>
             </table>
           </accent-card>
           <accent-card accent-color="green">
             <span slot="heading">Work Due</span>
             <ul class="linklist" slot="content">
-              ${this.__assignments.map(assign=>html`
-                <li>
-                  <iron-icon aria-hidden="true" icon="chevron-right"></iron-icon>
-                  <button class="linklist-heading">${assign.attributes.title}</button>
-                  <span class="linklist-subheading">${this._getDueDate(assign) ?
-                    html`Due ${this.date(parseInt(this._getDueDate(assign))*1000)}`
-                    :``}
-                  </span>
-                </li>
-              `)}
+              ${this.__assignments.map(
+                assign => html`
+                  <li>
+                    <iron-icon
+                      aria-hidden="true"
+                      icon="chevron-right"
+                    ></iron-icon>
+                    <button class="linklist-heading">
+                      ${assign.attributes.title}
+                    </button>
+                    <span class="linklist-subheading"
+                      >${this._getDueDate(assign)
+                        ? html`
+                            Due
+                            ${this.date(
+                              parseInt(this._getDueDate(assign)) * 1000
+                            )}
+                          `
+                        : ``}
+                    </span>
+                  </li>
+                `
+              )}
             </ul>
           </accent-card>
         </div>
@@ -173,13 +223,24 @@ class ElmslnStudioDashboard extends LitElement {
             <span slot="heading">Submissions</span>
             <button slot="subheading">All submissions</button>
             <ul class="linklist" slot="content">
-              ${Object.keys(this.__submissions).map(submission=>html`
-                <li>
-                  <iron-icon aria-hidden="true" icon="chevron-right"></iron-icon>
-                  <button class="linklist-heading">${this.__submissions[submission].attributes.title}</button>
-                  <span class="linklist-subheading">${this.date(this.__submissions[submission].meta.changed)}</span>
-                </li>
-              `)}
+              ${Object.keys(this.__submissions).map(
+                submission => html`
+                  <li>
+                    <iron-icon
+                      aria-hidden="true"
+                      icon="chevron-right"
+                    ></iron-icon>
+                    <button class="linklist-heading">
+                      ${this.__submissions[submission].attributes.title}
+                    </button>
+                    <span class="linklist-subheading"
+                      >${this.date(
+                        this.__submissions[submission].meta.changed
+                      )}</span
+                    >
+                  </li>
+                `
+              )}
             </ul>
           </accent-card>
           <accent-card accent-color="cyan">
@@ -187,39 +248,53 @@ class ElmslnStudioDashboard extends LitElement {
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
             <ul class="linklist" slot="content">
-              ${this.__comments.map(comment=>html`
-                <li>
-                  <iron-icon aria-hidden="true" icon="chevron-right"></iron-icon>
-                  <button class="linklist-heading">${comment.attributes.subject}</button>
-                  <span class="linklist-subheading">${this.date(comment.attributes.changed)}</span>
-                </li>
-              `)}
+              ${this.__comments.map(
+                comment => html`
+                  <li>
+                    <iron-icon
+                      aria-hidden="true"
+                      icon="chevron-right"
+                    ></iron-icon>
+                    <button class="linklist-heading">
+                      ${comment.attributes.subject}
+                    </button>
+                    <span class="linklist-subheading"
+                      >${this.date(comment.attributes.changed)}</span
+                    >
+                  </li>
+                `
+              )}
             </ul>
           </accent-card>
         </div>
       </div>
       <div id="comments">
-        <h2>Recent Activity</h2><ul class="linklist">
-          ${this.__activity.map(activity=>html`
-            <li>
-              <iron-icon aria-hidden="true" icon="chevron-right"></iron-icon>
-              <button class="linklist-heading">
-                ${activity.relationships.author.data.sis.sortable_name.replace(/.*,/,'')} 
-                ${activity.type === "comment" ? 'commented' :'submitted'} 
-                ${activity.type === "comment" 
-                  ? activity.attributes.subject
-                  : activity.attributes.title
-                }
-              </button>
-              <span class="linklist-subheading">
-                ${this.date(
-                  activity.type === "comment" 
-                    ? activity.attributes.changed
-                    : activity.meta.changed
-                )}
-              </span>
-            </li>
-          `)}
+        <h2>Recent Activity</h2>
+        <ul class="linklist">
+          ${this.__activity.map(
+            activity => html`
+              <li>
+                <iron-icon aria-hidden="true" icon="chevron-right"></iron-icon>
+                <button class="linklist-heading">
+                  ${activity.relationships.author.data.sis.sortable_name.replace(
+                    /.*,/,
+                    ""
+                  )}
+                  ${activity.type === "comment" ? "commented" : "submitted"}
+                  ${activity.type === "comment"
+                    ? activity.attributes.subject
+                    : activity.attributes.title}
+                </button>
+                <span class="linklist-subheading">
+                  ${this.date(
+                    activity.type === "comment"
+                      ? activity.attributes.changed
+                      : activity.meta.changed
+                  )}
+                </span>
+              </li>
+            `
+          )}
         </ul>
       </div>
     `;
@@ -229,7 +304,7 @@ class ElmslnStudioDashboard extends LitElement {
   static get properties() {
     return {
       /*
-       * source JSON for all activity 
+       * source JSON for all activity
        * (submissions and comments by anyone)
        */
       activitySrc: {
@@ -237,7 +312,7 @@ class ElmslnStudioDashboard extends LitElement {
         attribute: "activity-src"
       },
       /*
-       * source JSON for upcoming assignments 
+       * source JSON for upcoming assignments
        * that student hasn't submitted yet
        */
       assignmentsSrc: {
@@ -245,7 +320,7 @@ class ElmslnStudioDashboard extends LitElement {
         attribute: "assignments-src"
       },
       /*
-       * source JSON for most recent comments in response to 
+       * source JSON for most recent comments in response to
        * student's comment or submission
        */
       commentsSrc: {
@@ -267,7 +342,7 @@ class ElmslnStudioDashboard extends LitElement {
         attribute: "submissions-src"
       },
       /*
-       * recent activity 
+       * recent activity
        * (submissions and comments from everyone)
        */
       __activity: {
@@ -280,14 +355,14 @@ class ElmslnStudioDashboard extends LitElement {
         type: Array
       },
       /*
-       * most recent comments in response to 
+       * most recent comments in response to
        * student's comment or submission
        */
       __comments: {
         type: Array
       },
       /*
-       * student's profile data 
+       * student's profile data
        * (name & course progress)
        */
       __profileSrc: {
@@ -317,57 +392,67 @@ class ElmslnStudioDashboard extends LitElement {
     this.__assignments = [];
     this.__comments = [];
     this.__profile = {
-      "student": {
-        "data": {
-          "type": "user",
-          "id": "371",
-          "name": "toc5234",
-          "display_name": "Tom Cat",
-          "avatar": "http://placekitten.com/300/150",
-          "sis": {
-            "id": 6966348,
-            "name": "Tom Cat",
-            "created_at": "2019-07-24T16:16:51-04:00",
-            "sortable_name": "Cat, Tom",
-            "short_name": "Tom Cat",
-            "sis_user_id": "toc5234@psu.edu",
-            "integration_id": null,
-            "avatar_url": "http://placekitten.com/300/150"
+      student: {
+        data: {
+          type: "user",
+          id: "371",
+          name: "toc5234",
+          display_name: "Tom Cat",
+          avatar: "http://placekitten.com/300/150",
+          sis: {
+            id: 6966348,
+            name: "Tom Cat",
+            created_at: "2019-07-24T16:16:51-04:00",
+            sortable_name: "Cat, Tom",
+            short_name: "Tom Cat",
+            sis_user_id: "toc5234@psu.edu",
+            integration_id: null,
+            avatar_url: "http://placekitten.com/300/150"
           }
         },
-        "progress": {
-          "comments": 0,
-          "submissions": [],
+        progress: {
+          comments: 0,
+          submissions: []
         }
       }
     };
     this.__submissions = [];
     this.tag = ElmslnStudioDashboard.tag;
   }
-  _getDueDates(item){
-    return item.meta.rationale && item.meta.rationale.data ? item.meta.rationale.data : undefined;
+  _getDueDates(item) {
+    return item.meta.rationale && item.meta.rationale.data
+      ? item.meta.rationale.data
+      : undefined;
   }
-  _getDueDate(item){
+  _getDueDate(item) {
     //console.log('_getDueDate',item,this._getDueDates(item));
-    return this._getDueDates(item) ? this._getDueDates(item)[1] || this._getDueDates(item)[0] : undefined;
+    return this._getDueDates(item)
+      ? this._getDueDates(item)[1] || this._getDueDates(item)[0]
+      : undefined;
   }
-  _handleArrayData(e,propName){
-    this[propName] = e && e.detail && e.detail.response && e.detail.response.data 
-      ? e.detail.response.data : [];
-    console.log('_handleArrayData',e,propName,this[propName]);
+  _handleArrayData(e, propName) {
+    this[propName] =
+      e && e.detail && e.detail.response && e.detail.response.data
+        ? e.detail.response.data
+        : [];
+    console.log("_handleArrayData", e, propName, this[propName]);
   }
-  _handleObjectData(e,propName){
-    this[propName] = e && e.detail && e.detail.response && e.detail.response.data 
-      ? e.detail.response.data : {};
+  _handleObjectData(e, propName) {
+    this[propName] =
+      e && e.detail && e.detail.response && e.detail.response.data
+        ? e.detail.response.data
+        : {};
     //console.log('_handleObjectData',e,propName,this[propName]);
   }
 
   date(time) {
-    let date, options = { 
-      //weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' };
+    let date,
+      options = {
+        //weekday: 'long',
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      };
     if (time && isNaN(time)) {
       let parts = time.split(/\D+/);
       date = new Date(...parts);
@@ -380,10 +465,10 @@ class ElmslnStudioDashboard extends LitElement {
       '\ntoTimeString',date.toTimeString(),
       '\ntoLocaleTimeString',date.toLocaleTimeString()
       );*/
-    } else if(time) {
+    } else if (time) {
       date = new Date(parseInt(time));
     }
-    return date.toLocaleDateString(undefined,options); 
+    return date.toLocaleDateString(undefined, options);
   }
   /**
    * life cycle, element is afixed to the DOM

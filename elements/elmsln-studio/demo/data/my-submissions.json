@@ -1,116 +1,88 @@
 {
-    "status": 200,
-    "data": {
-      "d3e0bbc7-6da2-4117-9284-3617679d56c3": {
-          "type": "cle_submission",
-          "id": "4847",
-          "display": {
-            "image": null,
-            "icon": "file-download"
-          },
+  "status": 200,
+  "data": {
+    "d3e0bbc7-6da2-4117-9284-3617679d56c3": {
+      "type": "cle_submission",
+      "id": "4847",
+      "display": {
+        "image": null,
+        "icon": "file-download"
+      },
+      "attributes": {
+        "title": "Submission for Develop: Test",
+        "download_files": "/dmd100/download/cle_submission/node-field_download-4847-0",
+        "body": " ",
+        "state": "submission_ready",
+        "relatedSubmission": null,
+        "files": [
+          {
+            "fid": 13033,
+            "uid": 371,
+            "filename": "developtest.doc",
+            "uri": "private://submission_files/toc5234/developtest.doc",
+            "filemime": "application/msword",
+            "filesize": 29184,
+            "status": 1,
+            "timestamp": 1574628909,
+            "origname": "Develop_Test.doc",
+            "type": "document",
+            "uuid": "02721da8-d45c-4f3e-9619-f749f06cb72d",
+            "metadata": [],
+            "display": 0,
+            "description": null,
+            "url": "https://studio.aanda.psu.edu/dmd100/system/files/submission_files/toc5234/developtest.doc",
+            "created": "2019-11-24T15:55:09-05:00"
+          }
+        ],
+        "links": null,
+        "video": null,
+        "images": null
+      },
+      "meta": {
+        "created": "2019-11-24T15:54:41-05:00",
+        "changed": "2019-11-24T15:55:09-05:00",
+        "humandate": "November 24, 2019, 3:55 pm",
+        "revision_timestamp": "2019-11-24T15:55:09-05:00",
+        "canUpdate": 1,
+        "canDelete": 1,
+        "canCritique": 1,
+        "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+        "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+        "state_icon": "done",
+        "state_color": "green lighten-3",
+        "submissionType": "default",
+        "comment_count": 0,
+        "comment_new": "0"
+      },
+      "relationships": {
+        "assignment": {
+          "type": "cle_assignment",
+          "id": "3964",
           "attributes": {
-            "title": "Submission for Develop: Test",
-            "download_files": "/dmd100/download/cle_submission/node-field_download-4847-0",
-            "body": " ",
-            "state": "submission_ready",
-            "relatedSubmission": null,
-            "files": [
-              {
-                "fid": 13033,
-                "uid": 371,
-                "filename": "developtest.doc",
-                "uri": "private://submission_files/toc5234/developtest.doc",
-                "filemime": "application/msword",
-                "filesize": 29184,
-                "status": 1,
-                "timestamp": 1574628909,
-                "origname": "Develop_Test.doc",
-                "type": "document",
-                "uuid": "02721da8-d45c-4f3e-9619-f749f06cb72d",
-                "metadata": [],
-                "display": 0,
-                "description": null,
-                "url": "https://studio.aanda.psu.edu/dmd100/system/files/submission_files/toc5234/developtest.doc",
-                "created": "2019-11-24T15:55:09-05:00"
-              }
-            ],
-            "links": null,
-            "video": null,
-            "images": null
+            "title": "Develop: Test",
+            "body": null,
+            "critiqueOutline": null
           },
           "meta": {
-            "created": "2019-11-24T15:54:41-05:00",
-            "changed": "2019-11-24T15:55:09-05:00",
-            "humandate": "November 24, 2019, 3:55 pm",
-            "revision_timestamp": "2019-11-24T15:55:09-05:00",
+            "created": "2019-08-15T11:15:34-04:00",
+            "changed": "2019-08-15T11:15:34-04:00",
+            "humandate": "August 15, 2019, 11:15 am",
+            "revision_timestamp": "2019-08-15T11:15:34-04:00",
             "canUpdate": 1,
             "canDelete": 1,
-            "canCritique": 1,
-            "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
-            "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
-            "state_icon": "done",
-            "state_color": "green lighten-3",
-            "submissionType": "default",
-            "comment_count": 0,
-            "comment_new": "0"
+            "afterDueDate": 0,
+            "canCritique": 0,
+            "relatedSubmissions": null,
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1
           },
           "relationships": {
-            "assignment": {
-              "type": "cle_assignment",
-              "id": "3964",
-              "attributes": {
-                "title": "Develop: Test",
-                "body": null,
-                "critiqueOutline": null
-              },
-              "meta": {
-                "created": "2019-08-15T11:15:34-04:00",
-                "changed": "2019-08-15T11:15:34-04:00",
-                "humandate": "August 15, 2019, 11:15 am",
-                "revision_timestamp": "2019-08-15T11:15:34-04:00",
-                "canUpdate": 1,
-                "canDelete": 1,
-                "afterDueDate": 0,
-                "canCritique": 0,
-                "relatedSubmissions": null,
-                "rationale": {
-                  "text": "The assignment is open for submission, there is no due date.",
-                  "code": "date-none"
-                },
-                "submissionActive": 1
-              },
-              "relationships": {
-                "project": {
-                  "data": {
-                    "id": "3957"
-                  }
-                },
-                "group": {
-                  "data": {
-                    "id": "3935"
-                  }
-                },
-                "author": {
-                  "data": {
-                    "type": "user",
-                    "id": "10",
-                    "name": "yay33"
-                  }
-                }
-              },
-              "actions": null,
-              "links": {
-                "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3964",
-                "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3964",
-                "direct": "https://studio.aanda.psu.edu/dmd100/node/3964",
-                "delete": "https://studio.aanda.psu.edu/dmd100/node/3964/delete?destination=",
-                "update": "https://studio.aanda.psu.edu/dmd100/node/3964/edit?destination="
-              }
-            },
             "project": {
               "data": {
-                "id": "3957",
-                "title": "Open Kit Project"
+                "id": "3957"
               }
             },
             "group": {
@@ -121,310 +93,338 @@
             "author": {
               "data": {
                 "type": "user",
-                "id": "371",
-                "name": "toc5234",
-                "display_name": "Tom Cat",
-                "avatar": "http://placekitten.com/300/150",
-                "sis": {
-                  "id": 6966348,
-                  "name": "Tom Cat",
-                  "created_at": "2019-07-24T16:16:51-04:00",
-                  "sortable_name": "Cat, Tom",
-                  "short_name": "Tom Cat",
-                  "sis_user_id": "toc5234@psu.edu",
-                  "integration_id": null,
-                  "avatar_url": "http://placekitten.com/300/150"
-                }
+                "id": "10",
+                "name": "yay33"
               }
-            },
-            "relatedSubmission": {},
-            "comments": null
+            }
           },
-          "actions": null
+          "actions": null,
+          "links": {
+            "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3964",
+            "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3964",
+            "direct": "https://studio.aanda.psu.edu/dmd100/node/3964",
+            "delete": "https://studio.aanda.psu.edu/dmd100/node/3964/delete?destination=",
+            "update": "https://studio.aanda.psu.edu/dmd100/node/3964/edit?destination="
+          }
+        },
+        "project": {
+          "data": {
+            "id": "3957",
+            "title": "Open Kit Project"
+          }
+        },
+        "group": {
+          "data": {
+            "id": "3935"
+          }
+        },
+        "author": {
+          "data": {
+            "type": "user",
+            "id": "371",
+            "name": "toc5234",
+            "display_name": "Tom Cat",
+            "avatar": "http://placekitten.com/300/150",
+            "sis": {
+              "id": 6966348,
+              "name": "Tom Cat",
+              "created_at": "2019-07-24T16:16:51-04:00",
+              "sortable_name": "Cat, Tom",
+              "short_name": "Tom Cat",
+              "sis_user_id": "toc5234@psu.edu",
+              "integration_id": null,
+              "avatar_url": "http://placekitten.com/300/150"
+            }
+          }
+        },
+        "relatedSubmission": {},
+        "comments": null
       },
-      "c5630a17-998b-4a7c-b85d-45cdfdae5e3a": {
-        "type": "cle_submission",
-        "id": "4806",
-        "display": {
-          "image": null,
-          "icon": "file-download"
-        },
-        "attributes": {
-          "title": "Submission for Develop: Instructions",
-          "download_files": "/dmd100/download/cle_submission/node-field_download-4806-0",
-          "body": " ",
-          "state": "submission_ready",
-          "relatedSubmission": null,
-          "files": [
-            {
-              "fid": 12936,
-              "uid": 371,
-              "filename": "gearedioinstructions.pdf",
-              "uri": "private://submission_files/toc5234/gearedioinstructions.pdf",
-              "filemime": "application/pdf",
-              "filesize": 25274863,
-              "status": 1,
-              "timestamp": 1574053086,
-              "origname": "Gearedio_Instructions.pdf",
-              "type": "document",
-              "uuid": "31d5da26-9667-4453-9ea6-cccbf3d25472",
-              "metadata": [],
-              "display": 0,
-              "description": null,
-              "url": "https://studio.aanda.psu.edu/dmd100/system/files/submission_files/toc5234/gearedioinstructions.pdf",
-              "created": "2019-11-17T23:58:06-05:00"
-            }
-          ],
-          "links": null,
-          "video": null,
-          "images": null
-        },
-        "meta": {
-          "created": "2019-11-17T23:41:13-05:00",
-          "changed": "2019-11-17T23:58:06-05:00",
-          "humandate": "November 17, 2019, 11:58 pm",
-          "revision_timestamp": "2019-11-17T23:58:06-05:00",
-          "canUpdate": 1,
-          "canDelete": 1,
-          "canCritique": 1,
-          "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
-          "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
-          "state_icon": "done",
-          "state_color": "green lighten-3",
-          "submissionType": "default",
-          "comment_count": 0,
-          "comment_new": "0"
-        },
-        "relationships": {
-          "assignment": {
-            "type": "cle_assignment",
-            "id": "3963",
-            "attributes": {
-              "title": "Develop: Instructions",
-              "body": null,
-              "critiqueOutline": null
-            },
-            "meta": {
-              "created": "2019-08-15T11:15:34-04:00",
-              "changed": "2019-08-15T11:15:34-04:00",
-              "humandate": "August 15, 2019, 11:15 am",
-              "revision_timestamp": "2019-08-15T11:15:34-04:00",
-              "canUpdate": 1,
-              "canDelete": 1,
-              "afterDueDate": 0,
-              "canCritique": 0,
-              "relatedSubmissions": null,
-              "rationale": {
-                "text": "The assignment is open for submission, there is no due date.",
-                "code": "date-none"
-              },
-              "submissionActive": 1
-            },
-            "relationships": {
-              "project": {
-                "data": {
-                  "id": "3957"
-                }
-              },
-              "group": {
-                "data": {
-                  "id": "3935"
-                }
-              },
-              "author": {
-                "data": {
-                  "type": "user",
-                  "id": "10",
-                  "name": "yay33"
-                }
-              }
-            },
-            "actions": null,
-            "links": {
-              "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3963",
-              "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3963",
-              "direct": "https://studio.aanda.psu.edu/dmd100/node/3963",
-              "delete": "https://studio.aanda.psu.edu/dmd100/node/3963/delete?destination=",
-              "update": "https://studio.aanda.psu.edu/dmd100/node/3963/edit?destination="
-            }
-          },
-          "project": {
-            "data": {
-              "id": "3957",
-              "title": "Open Kit Project"
-            }
-          },
-          "group": {
-            "data": {
-              "id": "3935"
-            }
-          },
-          "author": {
-            "data": {
-              "type": "user",
-              "id": "371",
-              "name": "toc5234",
-              "display_name": "Tom Cat",
-              "avatar": "http://placekitten.com/300/150",
-              "sis": {
-                "id": 6966348,
-                "name": "Tom Cat",
-                "created_at": "2019-07-24T16:16:51-04:00",
-                "sortable_name": "Cat, Tom",
-                "short_name": "Tom Cat",
-                "sis_user_id": "toc5234@psu.edu",
-                "integration_id": null,
-                "avatar_url": "http://placekitten.com/300/150"
-              }
-            }
-          },
-          "relatedSubmission": {},
-          "comments": null
-        },
-        "actions": null
-      },
-      "469cedb2-f10e-4277-82b0-680a414fb0f9": {
-        "type": "cle_submission",
-        "id": "4788",
-        "display": {
-          "image": null,
-          "icon": "file-download"
-        },
-        "attributes": {
-          "title": "Submission for Develop: Instructions",
-          "download_files": "/dmd100/download/cle_submission/node-field_download-4788-0",
-          "body": " ",
-          "state": "submission_ready",
-          "relatedSubmission": null,
-          "files": [
-            {
-              "fid": 12781,
-              "uid": 368,
-              "filename": "Rex-Cornish-instructions.pdf",
-              "uri": "private://submission_files/nxn121/Rex-Cornish-instructions.pdf",
-              "filemime": "application/pdf",
-              "filesize": 1483778,
-              "status": 1,
-              "timestamp": 1574037719,
-              "origname": "Rex Cornish Instructions.pdf",
-              "type": "document",
-              "uuid": "ee4d7412-62f8-479e-99f9-06560fab3adf",
-              "metadata": [],
-              "display": 0,
-              "description": null,
-              "url": "https://studio.aanda.psu.edu/dmd100/system/files/submission_files/nxn121/Rex-Cornish-instructions.pdf",
-              "created": "2019-11-17T19:41:59-05:00"
-            }
-          ],
-          "links": null,
-          "video": null,
-          "images": null
-        },
-        "meta": {
-          "created": "2019-11-17T19:41:13-05:00",
-          "changed": "2019-11-17T19:41:59-05:00",
-          "humandate": "November 17, 2019, 7:41 pm",
-          "revision_timestamp": "2019-11-17T19:41:59-05:00",
-          "canUpdate": 1,
-          "canDelete": 1,
-          "canCritique": 1,
-          "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
-          "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
-          "state_icon": "done",
-          "state_color": "green lighten-3",
-          "submissionType": "default",
-          "comment_count": 0,
-          "comment_new": "0"
-        },
-        "relationships": {
-          "assignment": {
-            "type": "cle_assignment",
-            "id": "3963",
-            "attributes": {
-              "title": "Develop: Instructions",
-              "body": null,
-              "critiqueOutline": null
-            },
-            "meta": {
-              "created": "2019-08-15T11:15:34-04:00",
-              "changed": "2019-08-15T11:15:34-04:00",
-              "humandate": "August 15, 2019, 11:15 am",
-              "revision_timestamp": "2019-08-15T11:15:34-04:00",
-              "canUpdate": 1,
-              "canDelete": 1,
-              "afterDueDate": 0,
-              "canCritique": 0,
-              "relatedSubmissions": null,
-              "rationale": {
-                "text": "The assignment is open for submission, there is no due date.",
-                "code": "date-none"
-              },
-              "submissionActive": 1
-            },
-            "relationships": {
-              "project": {
-                "data": {
-                  "id": "3957"
-                }
-              },
-              "group": {
-                "data": {
-                  "id": "3935"
-                }
-              },
-              "author": {
-                "data": {
-                  "type": "user",
-                  "id": "10",
-                  "name": "yay33"
-                }
-              }
-            },
-            "actions": null,
-            "links": {
-              "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3963",
-              "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3963",
-              "direct": "https://studio.aanda.psu.edu/dmd100/node/3963",
-              "delete": "https://studio.aanda.psu.edu/dmd100/node/3963/delete?destination=",
-              "update": "https://studio.aanda.psu.edu/dmd100/node/3963/edit?destination="
-            }
-          },
-          "project": {
-            "data": {
-              "id": "3957",
-              "title": "Open Kit Project"
-            }
-          },
-          "group": {
-            "data": {
-              "id": "3935"
-            }
-          },
-          "author": {
-            "data": {
-              "type": "user",
-              "id": "368",
-              "name": "nxn121",
-              "display_name": "Cornish Rex",
-              "avatar": "http://placekitten.com/150/300",
-              "sis": {
-                "id": 6950745,
-                "name": "Cornish Rex",
-                "created_at": "2019-06-05T16:06:24-04:00",
-                "sortable_name": "Rex, Cornish",
-                "short_name": "Cornish Rex",
-                "sis_user_id": "nxn121@psu.edu",
-                "integration_id": null,
-                "avatar_url": "http://placekitten.com/150/300"
-              }
-            }
-          },
-          "relatedSubmission": {},
-          "comments": null
-        },
-        "actions": null
-      }
+      "actions": null
     },
-    "detail": "",
-    "environment": []
-  }
+    "c5630a17-998b-4a7c-b85d-45cdfdae5e3a": {
+      "type": "cle_submission",
+      "id": "4806",
+      "display": {
+        "image": null,
+        "icon": "file-download"
+      },
+      "attributes": {
+        "title": "Submission for Develop: Instructions",
+        "download_files": "/dmd100/download/cle_submission/node-field_download-4806-0",
+        "body": " ",
+        "state": "submission_ready",
+        "relatedSubmission": null,
+        "files": [
+          {
+            "fid": 12936,
+            "uid": 371,
+            "filename": "gearedioinstructions.pdf",
+            "uri": "private://submission_files/toc5234/gearedioinstructions.pdf",
+            "filemime": "application/pdf",
+            "filesize": 25274863,
+            "status": 1,
+            "timestamp": 1574053086,
+            "origname": "Gearedio_Instructions.pdf",
+            "type": "document",
+            "uuid": "31d5da26-9667-4453-9ea6-cccbf3d25472",
+            "metadata": [],
+            "display": 0,
+            "description": null,
+            "url": "https://studio.aanda.psu.edu/dmd100/system/files/submission_files/toc5234/gearedioinstructions.pdf",
+            "created": "2019-11-17T23:58:06-05:00"
+          }
+        ],
+        "links": null,
+        "video": null,
+        "images": null
+      },
+      "meta": {
+        "created": "2019-11-17T23:41:13-05:00",
+        "changed": "2019-11-17T23:58:06-05:00",
+        "humandate": "November 17, 2019, 11:58 pm",
+        "revision_timestamp": "2019-11-17T23:58:06-05:00",
+        "canUpdate": 1,
+        "canDelete": 1,
+        "canCritique": 1,
+        "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+        "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+        "state_icon": "done",
+        "state_color": "green lighten-3",
+        "submissionType": "default",
+        "comment_count": 0,
+        "comment_new": "0"
+      },
+      "relationships": {
+        "assignment": {
+          "type": "cle_assignment",
+          "id": "3963",
+          "attributes": {
+            "title": "Develop: Instructions",
+            "body": null,
+            "critiqueOutline": null
+          },
+          "meta": {
+            "created": "2019-08-15T11:15:34-04:00",
+            "changed": "2019-08-15T11:15:34-04:00",
+            "humandate": "August 15, 2019, 11:15 am",
+            "revision_timestamp": "2019-08-15T11:15:34-04:00",
+            "canUpdate": 1,
+            "canDelete": 1,
+            "afterDueDate": 0,
+            "canCritique": 0,
+            "relatedSubmissions": null,
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1
+          },
+          "relationships": {
+            "project": {
+              "data": {
+                "id": "3957"
+              }
+            },
+            "group": {
+              "data": {
+                "id": "3935"
+              }
+            },
+            "author": {
+              "data": {
+                "type": "user",
+                "id": "10",
+                "name": "yay33"
+              }
+            }
+          },
+          "actions": null,
+          "links": {
+            "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3963",
+            "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3963",
+            "direct": "https://studio.aanda.psu.edu/dmd100/node/3963",
+            "delete": "https://studio.aanda.psu.edu/dmd100/node/3963/delete?destination=",
+            "update": "https://studio.aanda.psu.edu/dmd100/node/3963/edit?destination="
+          }
+        },
+        "project": {
+          "data": {
+            "id": "3957",
+            "title": "Open Kit Project"
+          }
+        },
+        "group": {
+          "data": {
+            "id": "3935"
+          }
+        },
+        "author": {
+          "data": {
+            "type": "user",
+            "id": "371",
+            "name": "toc5234",
+            "display_name": "Tom Cat",
+            "avatar": "http://placekitten.com/300/150",
+            "sis": {
+              "id": 6966348,
+              "name": "Tom Cat",
+              "created_at": "2019-07-24T16:16:51-04:00",
+              "sortable_name": "Cat, Tom",
+              "short_name": "Tom Cat",
+              "sis_user_id": "toc5234@psu.edu",
+              "integration_id": null,
+              "avatar_url": "http://placekitten.com/300/150"
+            }
+          }
+        },
+        "relatedSubmission": {},
+        "comments": null
+      },
+      "actions": null
+    },
+    "469cedb2-f10e-4277-82b0-680a414fb0f9": {
+      "type": "cle_submission",
+      "id": "4788",
+      "display": {
+        "image": null,
+        "icon": "file-download"
+      },
+      "attributes": {
+        "title": "Submission for Develop: Instructions",
+        "download_files": "/dmd100/download/cle_submission/node-field_download-4788-0",
+        "body": " ",
+        "state": "submission_ready",
+        "relatedSubmission": null,
+        "files": [
+          {
+            "fid": 12781,
+            "uid": 368,
+            "filename": "Rex-Cornish-instructions.pdf",
+            "uri": "private://submission_files/nxn121/Rex-Cornish-instructions.pdf",
+            "filemime": "application/pdf",
+            "filesize": 1483778,
+            "status": 1,
+            "timestamp": 1574037719,
+            "origname": "Rex Cornish Instructions.pdf",
+            "type": "document",
+            "uuid": "ee4d7412-62f8-479e-99f9-06560fab3adf",
+            "metadata": [],
+            "display": 0,
+            "description": null,
+            "url": "https://studio.aanda.psu.edu/dmd100/system/files/submission_files/nxn121/Rex-Cornish-instructions.pdf",
+            "created": "2019-11-17T19:41:59-05:00"
+          }
+        ],
+        "links": null,
+        "video": null,
+        "images": null
+      },
+      "meta": {
+        "created": "2019-11-17T19:41:13-05:00",
+        "changed": "2019-11-17T19:41:59-05:00",
+        "humandate": "November 17, 2019, 7:41 pm",
+        "revision_timestamp": "2019-11-17T19:41:59-05:00",
+        "canUpdate": 1,
+        "canDelete": 1,
+        "canCritique": 1,
+        "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+        "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+        "state_icon": "done",
+        "state_color": "green lighten-3",
+        "submissionType": "default",
+        "comment_count": 0,
+        "comment_new": "0"
+      },
+      "relationships": {
+        "assignment": {
+          "type": "cle_assignment",
+          "id": "3963",
+          "attributes": {
+            "title": "Develop: Instructions",
+            "body": null,
+            "critiqueOutline": null
+          },
+          "meta": {
+            "created": "2019-08-15T11:15:34-04:00",
+            "changed": "2019-08-15T11:15:34-04:00",
+            "humandate": "August 15, 2019, 11:15 am",
+            "revision_timestamp": "2019-08-15T11:15:34-04:00",
+            "canUpdate": 1,
+            "canDelete": 1,
+            "afterDueDate": 0,
+            "canCritique": 0,
+            "relatedSubmissions": null,
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1
+          },
+          "relationships": {
+            "project": {
+              "data": {
+                "id": "3957"
+              }
+            },
+            "group": {
+              "data": {
+                "id": "3935"
+              }
+            },
+            "author": {
+              "data": {
+                "type": "user",
+                "id": "10",
+                "name": "yay33"
+              }
+            }
+          },
+          "actions": null,
+          "links": {
+            "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3963",
+            "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3963",
+            "direct": "https://studio.aanda.psu.edu/dmd100/node/3963",
+            "delete": "https://studio.aanda.psu.edu/dmd100/node/3963/delete?destination=",
+            "update": "https://studio.aanda.psu.edu/dmd100/node/3963/edit?destination="
+          }
+        },
+        "project": {
+          "data": {
+            "id": "3957",
+            "title": "Open Kit Project"
+          }
+        },
+        "group": {
+          "data": {
+            "id": "3935"
+          }
+        },
+        "author": {
+          "data": {
+            "type": "user",
+            "id": "368",
+            "name": "nxn121",
+            "display_name": "Cornish Rex",
+            "avatar": "http://placekitten.com/150/300",
+            "sis": {
+              "id": 6950745,
+              "name": "Cornish Rex",
+              "created_at": "2019-06-05T16:06:24-04:00",
+              "sortable_name": "Rex, Cornish",
+              "short_name": "Cornish Rex",
+              "sis_user_id": "nxn121@psu.edu",
+              "integration_id": null,
+              "avatar_url": "http://placekitten.com/150/300"
+            }
+          }
+        },
+        "relatedSubmission": {},
+        "comments": null
+      },
+      "actions": null
+    }
+  },
+  "detail": "",
+  "environment": []
+}
