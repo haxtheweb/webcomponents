@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit-element";
-import "@polymer/iron-flex-layout/iron-flex-layout.js";
-import "./lib/elmsln-studio-projectboard.js";
+import "./lib/elmsln-studio-dashboard.js";
 
 /**
  * `elmsln-studio`
@@ -19,25 +18,26 @@ import "./lib/elmsln-studio-projectboard.js";
  * @demo demo/index.html
  */
 class ElmslnStudio extends LitElement {
+  
   // render function
   render() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
+<style>
 
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <lrnapp-studio-projectboard></lrnapp-studio-projectboard>
-    `;
+
+:host {
+  display: block; }
+
+:host([hidden]) {
+  display: none; }
+</style>
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return {}
+;
   }
 
   /**

@@ -20,7 +20,13 @@
       <demo-snippet>
         <template>
           <elmsln-studio>
-            This is elmsln-studio
+            <elmsln-studio-dashboard 
+              activity-src="./data/recent-activity.json"
+              assignments-src="./data/assignments.json"
+              comments-src="./data/my-comments.json"
+              profile-src="./data/profile.json"
+              submissions-src="./data/my-submissions.json">
+            </elmsln-studio-dashboard>
           </elmsln-studio>
         </template>
       </demo-snippet>

@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit-element";
-import "@polymer/iron-flex-layout/iron-flex-layout.js";
-import "./lib/elmsln-studio-projectboard.js";
+import "./lib/elmsln-studio-dashboard.js";
 
 /**
  * `elmsln-studio`
