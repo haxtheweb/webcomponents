@@ -104,11 +104,11 @@ class AccentCard extends SimpleColors {
           );
           --accent-card-footer-border-color: var(--accent-card-border-color);
         }
-        :host section {
+        :host article {
           width: 100%;
           box-sizing: border-box;
         }
-        :host([horizontal]) section {
+        :host([horizontal]) article {
           display: flex;
           justify-content: space-between;
           align-items: stretch;
@@ -119,10 +119,10 @@ class AccentCard extends SimpleColors {
         :host([flat]:not([accent-background])) {
           border: 1px solid var(--accent-card-footer-border-color);
         }
-        :host(:not([horizontal]):not([no-border])) section {
+        :host(:not([horizontal]):not([no-border])) article {
           border-top: 4px solid var(--accent-card-border-color);
         }
-        :host([horizontal]:not([no-border])) section {
+        :host([horizontal]:not([no-border])) article {
           border-left: 4px solid var(--accent-card-border-color);
         }
         :host .image-outer {
@@ -203,7 +203,7 @@ class AccentCard extends SimpleColors {
   }
   render() {
     return html`
-      <section id="card">
+      <article id="card">
         <div class="image-outer" ?hidden="${!this.imageSrc}">
           <div
             class="image"
@@ -218,7 +218,7 @@ class AccentCard extends SimpleColors {
           <div id="content"><slot name="content"></slot></div>
           <div id="footer"><slot name="footer"></slot></div>
         </div>
-      </section>
+      </article>
     `;
   }
 
