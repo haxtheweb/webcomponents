@@ -10,99 +10,110 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @element md-block
  */
 class MdBlock extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <div>
-        <marked-element markdown="${this.markdown}">
-          <div slot="markdown-html"></div>
-          <script
-            type="text/markdown"
-            .src="${this.source ? this.source : undefined}"
-          ></script>
-        </marked-element>
-      </div>
-    `;
+
+<div>
+  <marked-element markdown="${this.markdown}">
+    <div slot="markdown-html"></div>
+      <script type="text/markdown" .src="${this.source ? this.source : undefined}"></script>
+  </marked-element>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Markdown",
-        description: "A block of markdown content directly or remote loaded",
-        icon: "icons:code",
-        color: "yellow",
-        groups: ["Block"],
-        handles: [
-          {
-            type: "markdown",
-            source: "source",
-            src: "source"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [
-          {
-            property: "source",
-            title: "Source",
-            description: "Source file for markdown",
-            inputMethod: "textfield",
-            icon: "icons:link"
-          }
-        ],
-        configure: [
-          {
-            property: "markdown",
-            title: "Markdown",
-            description: "Raw markdown",
-            inputMethod: "code-editor"
-          },
-          {
-            property: "source",
-            title: "Source",
-            description: "Source file for markdown",
-            inputMethod: "haxupload"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Markdown",
+    "description": "A block of markdown content directly or remote loaded",
+    "icon": "icons:code",
+    "color": "yellow",
+    "groups": ["Block"],
+    "handles": [
+      {
+        "type": "markdown",
+        "source": "source",
+        "src": "source"
       }
-    };
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Source file for markdown",
+        "inputMethod": "textfield",
+        "icon": "icons:link"
+      }
+    ],
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Raw markdown",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Source file for markdown",
+        "inputMethod": "haxupload"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "md-block",
+      "properties": {
+        "source": "https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
+      },
+      "content": ""
+    }
+  ]
+}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      source: {
-        type: String
-      },
-      markdown: {
-        type: String
-      }
-    };
+  
+  ...super.properties,
+  
+  "source": {
+    "type": String
+  },
+  "markdown": {
+    "type": String
+  }
+}
+;
   }
   constructor() {
     super();

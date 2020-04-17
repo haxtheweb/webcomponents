@@ -160,7 +160,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
   _onChange(e) {
     if (!e.path[0]) return;
     if (this.value !== e.path[0].value) this.value = e.path[0].value;
-    this.autoGrow(e.path[0]);
+    //this.autoGrow(e.path[0]);
   }
 
   /**

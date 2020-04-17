@@ -161,12 +161,25 @@ class HaxElementListSelector extends LitElement {
             <h2 ?hidden="${!this.loading}">Loading HAX elements..</h2>
             <hax-element-card-list
               id="productlist"
+              @enabled-changed="${this._enabledChanged}"
               cols="${this.cols}"
               .list="${this.filteredHaxData}"
             ></hax-element-card-list>
           `
         : ``}
     `;
+  }
+  _enabledChanged(e) {
+    this.haxData.forEach((el,i) => {
+      if (el.tag == e.detail.tag) {
+        this.haxData[i].status = e.detail.status;
+      }
+    });
+    this.dispatchEvent(new CustomEvent("appstore-changed", {
+      detail: {
+        value: this.getAppstoreValues()
+      }
+    }));
   }
   _activeTabChanged(e) {
     if (e.detail.activeTab == "haxcore.search") {
@@ -229,20 +242,22 @@ class HaxElementListSelector extends LitElement {
       if (propName == "haxData") {
         this.filteredHaxData = [...this.haxData];
         if (this.haxData.length > 0) {
-          let value = this.shadowRoot.querySelector("#form").submit();
-          value.haxcore.providerdetails[
-            "haxcore-providerdetails-haxtags"
-          ] = JSON.stringify(this.haxData, null, 2);
-          this.shadowRoot.querySelector("#form").setValue(value);
+          let renderHaxData = {};
+          for (var i in this.haxData) {
+            renderHaxData[this.haxData[i].tag] = this.haxData[i].file;
+          }
+          this.shadowRoot.querySelector("#form")
+           .shadowRoot.querySelector('#sf')
+           .querySelector('[name="haxcore.providerdetails.haxcore-providerdetails-haxtags"]')
+           .editorValue = JSON.stringify(renderHaxData, null, 2);
         }
       }
       if (propName == "noSchema") {
         if (Object.keys(this.noSchema).length > 0) {
-          let value = this.shadowRoot.querySelector("#form").submit();
-          value.haxcore.providerdetails[
-            "haxcore-providerdetails-othertags"
-          ] = JSON.stringify(this.noSchema, null, 2);
-          this.shadowRoot.querySelector("#form").setValue(value);
+          this.shadowRoot.querySelector("#form")
+           .shadowRoot.querySelector('#sf')
+           .querySelector('[name="haxcore.providerdetails.haxcore-providerdetails-othertags"]')
+           .editorValue = JSON.stringify(this.noSchema, null, 2);
         }
       }
     });
@@ -323,7 +338,41 @@ class HaxElementListSelector extends LitElement {
           this.shadowRoot.querySelector("#productlist").requestUpdate();
         }
       }
+      this.dispatchEvent(new CustomEvent("appstore-changed", {
+        detail: {
+          value: this.getAppstoreValues()
+        }
+      }));
     }, 50);
+  }
+  getAppstoreValues() {
+    // get form values
+    let value = this.shadowRoot.querySelector("#form").submit();
+    let appstore = {
+      apps: {},
+      blox: value.haxcore.templates['haxcore-templates-templates'],
+      stax: value.haxcore.templates['haxcore-templates-layouts'],
+      autoloader: {}
+    };
+    // find the API keys
+    for (var key in value.haxcore.integrations) {
+      appstore.apps[key.replace('haxcore-integrations-', '')] = value.haxcore.integrations[key];
+    }
+    // calculate based on what's currently enabled
+    appstore.autoloader = this.getAutoloader(this.haxData);
+    return appstore;
+  }
+  /**
+   * Autoloader is a simple keypair
+   */
+  getAutoloader(data) {
+    let autoload = {};
+    for (var i in data) {
+      if (data[i].status) {
+        autoload[data[i].tag] = data[i].file;
+      }
+    }
+    return autoload;
   }
 }
 

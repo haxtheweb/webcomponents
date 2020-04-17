@@ -2,14 +2,16 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@material/mwc-switch/mwc-switch.js";
+import "@material/mwc-button/mwc-button.js";
 import "@material/mwc-formfield/mwc-formfield.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "../product-card.js";
 class HAXElementCardList extends LitElement {
   constructor() {
     super();
     this.list = [];
-    this.enabled = {};
     this._layout = "1-1-1";
+    window.SimpleModal.requestAvailability();
   }
   static get tag() {
     return "hax-element-card-list";
@@ -82,8 +84,6 @@ class HAXElementCardList extends LitElement {
               <div slot="details-collapse-header">Details</div>
               <div slot="details-collapse-content">
                 <ul>
-                  <li><strong>Location:</strong> <code>${el.file}</code></li>
-                  <li><strong>Name:</strong> <code>${el.tag}</code></li>
                   <li>
                     <strong>Tags:</strong> ${el.schema.gizmo.groups.map(
                       group =>
@@ -92,6 +92,8 @@ class HAXElementCardList extends LitElement {
                         `
                     )}
                   </li>
+                  <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
+                  <li><strong>Developer usage:</strong> <code>import "${el.file}";</code></li>
                   ${el.schema.gizmo.meta
                     ? html`
                         ${Object.keys(el.schema.gizmo.meta).map(
@@ -112,7 +114,8 @@ class HAXElementCardList extends LitElement {
                   ? html`
                       ${el.schema.demoSchema.map(
                         demoItem => html`
-                          ${this._haxElementToNode(demoItem)}
+                          <mwc-button data-tag="${demoItem.tag}" @click="${this._viewDemo}">Pop up demo</mwc-button>
+                          <div class="demo">${this._haxElementToNode(demoItem)}</div>
                           <code-sample copy-clipboard-button>
                             <template>
                               ${this._haxElementToNode(demoItem)}
@@ -128,6 +131,29 @@ class HAXElementCardList extends LitElement {
         )}
       </grid-plate>
     `;
+  }
+  _viewDemo(e) {
+    if (e.target && e.target.nextElementSibling) {
+      console.log(e.target.nextElementSibling);
+      window.dispatchEvent(new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          title: "Demo of " + e.target.getAttribute('data-tag'),
+          styles: {
+            "--simple-modal-width": "75vw",
+            "--simple-modal-max-width": "75vw"
+          },
+          elements: {
+            content: e.target.nextElementSibling,
+          },
+          invokedBy: e.target,
+          clone: true,
+          modal: true
+        }
+      }));
+    }
   }
   /**
    * Effectively event binding to the expanded state
@@ -153,24 +179,16 @@ class HAXElementCardList extends LitElement {
   elementStatusChange(e) {
     this.list[parseInt(e.path[0].getAttribute("data-index"))].status =
       e.path[0].checked;
-    if (e.path[0].checked) {
-      this.enabled[e.path[0].getAttribute("data-tag")] = e.path[0].getAttribute(
-        "data-file"
-      );
-    } else {
-      delete this.enabled[e.path[0].getAttribute("data-tag")];
-    }
-    this.requestUpdate();
-    // bubble up enabled
+    // send up so list can update
     this.dispatchEvent(
       new CustomEvent("enabled-changed", {
-        bubbles: true,
-        composed: true,
         detail: {
-          value: this.enabled
+          tag: e.path[0].getAttribute("data-tag"),
+          status: e.path[0].checked
         }
       })
     );
+    this.requestUpdate();
   }
   __getCol(i) {
     i++;
@@ -184,18 +202,6 @@ class HAXElementCardList extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      // notify
-      if (propName == "enabled") {
-        this.dispatchEvent(
-          new CustomEvent("enabled-changed", {
-            bubbles: true,
-            composed: true,
-            detail: {
-              value: this.enabled
-            }
-          })
-        );
-      }
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:
@@ -214,17 +220,6 @@ class HAXElementCardList extends LitElement {
             this._layout = "1-1";
             break;
         }
-      }
-      if (propName == "list") {
-        this._listChanged(this[propName]);
-      }
-    });
-  }
-  _listChanged(list) {
-    this.enabled = {};
-    list.forEach(el => {
-      if (el.status) {
-        this.enabled[el.tag] = el.file;
       }
     });
   }

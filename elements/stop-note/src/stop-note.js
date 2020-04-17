@@ -249,7 +249,24 @@ class StopNote extends SchemaBehaviors(LitElement) {
           }
         ],
         advanced: []
-      }
+      },
+      demoSchema: [
+        {
+          "tag": "stop-note",
+          "properties": {
+            "title": "Hold up there"
+          },
+          "content": "<span slot=\"message\"><strong>Read these important things!</strong>\n</span>\n"
+        },
+        {
+          "tag": "stop-note",
+          "properties": {
+            "title": "Warning",
+            "icon": "stopnoteicons:warning-icon"
+          },
+          "content": "<span slot=\"message\">You can write any warning message you want here.</span>\n"
+        }
+      ]
     };
   }
 }

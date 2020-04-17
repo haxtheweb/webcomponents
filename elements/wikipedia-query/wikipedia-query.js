@@ -196,7 +196,17 @@ class WikipediaQuery extends LitElement {
       saveOptions: {
         wipeSlot: true,
         unsetAttributes: ["_title"]
-      }
+      },
+      demoSchema: [
+        {
+          "tag": "wikipedia-query",
+          "properties": {
+            "hideTitle": false,
+            "search": "Internet"
+          },
+          "content": ""
+        }
+      ]
     };
   }
   /**

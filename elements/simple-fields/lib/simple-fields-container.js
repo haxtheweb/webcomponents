@@ -379,6 +379,8 @@ class SimpleFieldsContainer extends LitElement {
   autoGrow(field = this.field) {
     if (this.field) {
       this.field.style.height = "auto";
+      // @todo this breaks if we're inside of a tab / element is not visible
+      // when value changes
       this.field.style.height = `${this.field.scrollHeight}px`;
       this.field.style.overflowY = "hidden";
     }
@@ -834,7 +836,7 @@ class SimpleFieldsContainer extends LitElement {
   _handleFieldChange() {
     if (this.type === "text" || this.type === "textarea") this._updateCount();
     if (this.autovalidate) this.validate();
-    if (this.type === "textarea") this.autoGrow();
+    //if (this.type === "textarea") this.autoGrow();
   }
   /**
    * observes slotted field and listens for focusout
