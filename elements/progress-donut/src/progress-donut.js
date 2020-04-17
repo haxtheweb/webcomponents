@@ -30,14 +30,12 @@ class ProgressDonut extends LrndesignPie {
     this.desc = "";
     this.imageSrc = "";
     this.imageAlt = "";
-    this.donut = true;
+    this.donut = false;
     this.showLabel = false;
-    /*this.donutWidth = "25%";
-    this.chartPadding = 0;
-    this.startAngle = 0;*/
     this.showTable = false;
     this.addEventListener("chartist-render-draw", this.addAnimation);
   }
+
   static get tag() {
     return "progress-donut";
   }
@@ -46,8 +44,8 @@ class ProgressDonut extends LrndesignPie {
    * running clean up code (removing event listeners, etc.).
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.removeEventListener("chartist-render-draw", this.addAnimation);
+    super.disconnectedCallback();
   }
 
   /**
@@ -57,32 +55,45 @@ class ProgressDonut extends LrndesignPie {
   addAnimation(e) {
     let data = e && e.detail ? e.detail : undefined;
     if (this.animation > 0 && data && data.type && data.type === "slice") {
-      var pathLength = data.element._node.getTotalLength(),
+      var opacity = 1,
         val = data.value || this.donutTotal / this.donutData.length,
         dur = (this.animation * val) / this.donutTotal;
       data.element.attr({
-        "stroke-dasharray": pathLength + "px " + pathLength + "px"
+        "c": opacity
       });
       var animationDefinition = {
-        "stroke-dashoffset": {
+        "opacity": {
           id: "anim" + data.index,
           dur: dur,
-          from: -pathLength + "px",
-          to: "0px",
+          from: -opacity,
+          to: 1,
           fill: "freeze"
         }
       };
       if (data.index !== 0) {
-        animationDefinition["stroke-dashoffset"].begin =
+        animationDefinition["opacity"].begin =
           "anim" + (data.index - 1) + ".end";
       } else {
-        animationDefinition["stroke-dashoffset"].begin = this.animationDelay;
+        animationDefinition["opacity"].begin = this.animationDelay;
       }
       if (this.donutData.length > 0)
-        animationDefinition["stroke-dashoffset"].easing =
+        animationDefinition["opacity"].easing =
           Chartist.Svg.Easing.easeOutQuint;
-      data.element.attr({ "stroke-dashoffset": -pathLength + "px" });
+      data.element.attr({ "opacity": -opacity });
       data.element.animate(animationDefinition, false);
+    }
+    console.log(data,data.element._node.getTotalLength());
+    if(data && data.index === this.complete.length -1 && this.chart) {
+      data.group.append(new Chartist.Svg('ellipse', {
+        cx: "50%",
+        cy: "50%",
+        rx: "32%",
+        ry: "32%"
+      }, 'ct-center-ellipse'));
+      data.group.append(new Chartist.Svg('image', {
+        href: this.imageSrc,
+        alt: this.imageAlt
+      }, 'ct-center-image'));
     }
   }
   get donutData() {

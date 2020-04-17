@@ -256,7 +256,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
     this.donut = false;
     this.total = undefined;
     this.donutSolid = false;
-    this.donutWidth = 60;
+    this.donutWidth = 20;
     this.showLabel = true;
     this.labelOffset = 0;
     this.labelPosition = "inside";

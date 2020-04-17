@@ -250,7 +250,7 @@ const ChartistRenderSuper = function(SuperClass) {
           Chartist.plugins.fillDonut
         ) {
           options.plugins.push(
-            Chartist.plugins.fillDonut({items: this.pluginFillDonutItems})
+            Chartist.plugins.fillDonut({ items: this.pluginFillDonutItems })
           );
         }
       }
@@ -326,7 +326,7 @@ const ChartistRenderSuper = function(SuperClass) {
         if (chart) {
           chart.on("created", e => {
             /**
-             * Fired once chart is created and accessibility features are added.
+             * Fired once chart is created features are added.
              *
              * @event chartist-render-created
              *
@@ -342,7 +342,7 @@ const ChartistRenderSuper = function(SuperClass) {
           });
           chart.on("draw", e => {
             /**
-             * Fired once chart is created and accessibility features are added.
+             * Fired as shapes are being drawn.
              *
              * @event chartist-render-draw
              *

@@ -78,7 +78,7 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
      * init the utility & register element
      */
     firstUpdated() {
-      super.connectedCallback();
+      super.firstUpdated();
       window.ResponsiveUtility.requestAvailability();
       this.dispatchEvent(
         new CustomEvent("responsive-element", {
@@ -86,8 +86,8 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
           cancelable: true,
           composed: true,
           detail: {
-            attribute: this.attribute,
-            custom: this.custom,
+            attribute: "responsive-size",
+            custom: "responsive-width",
             element: this,
             sm: this.sm,
             md: this.md,
