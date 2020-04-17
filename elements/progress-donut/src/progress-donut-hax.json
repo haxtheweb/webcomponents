@@ -8,8 +8,7 @@
     "icon": "av:play-circle-filled",
     "color": "grey",
     "groups": ["Presentation", "Data"],
-    "handles": [
-    ],
+    "handles": [],
     "meta": {
       "author": "ELMS:LN"
     }

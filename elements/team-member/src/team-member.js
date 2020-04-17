@@ -123,8 +123,7 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         icon: "av:play-circle-filled",
         color: "grey",
         groups: ["Content", "Presentation"],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "ELMS:LN"
         }

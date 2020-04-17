@@ -1050,8 +1050,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         icon: "av:play-circle-filled",
         color: "grey",
         groups: ["Education", "Interactive"],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "ELMS:LN"
         }

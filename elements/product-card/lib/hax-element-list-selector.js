@@ -56,7 +56,8 @@ class HaxElementListSelector extends LitElement {
     this.noSchema = {};
     this.method = "GET";
     // default fields json blob, most implementations should provide their own though obviously
-    this.fieldsEndpoint = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json"
+    this.fieldsEndpoint =
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json";
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
@@ -64,7 +65,10 @@ class HaxElementListSelector extends LitElement {
         this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
     }
     setTimeout(() => {
-      window.addEventListener("active-tab-changed", this._activeTabChanged.bind(this));
+      window.addEventListener(
+        "active-tab-changed",
+        this._activeTabChanged.bind(this)
+      );
     }, 0);
   }
   static get properties() {
@@ -73,7 +77,7 @@ class HaxElementListSelector extends LitElement {
        * Show card list so that it SEEMS like its happenign when we click HAX elements
        */
       showCardList: {
-        type: Boolean,
+        type: Boolean
       },
       /**
        * JS imports
@@ -146,27 +150,28 @@ class HaxElementListSelector extends LitElement {
         @value-changed="${this._valueChanged}"
       >
       </simple-fields-form>
-      ${this.showCardList ? html`
-      <hexagon-loader
-        item-count="4"
-        color="blue"
-        ?loading="${this.loading}"
-        size="large"
-      ></hexagon-loader>
-      <h2 ?hidden="${!this.loading}">Loading HAX elements..</h2>
-      <hax-element-card-list
-        id="productlist"
-        cols="${this.cols}"
-        .list="${this.filteredHaxData}"
-      ></hax-element-card-list>
-      `: ``}
+      ${this.showCardList
+        ? html`
+            <hexagon-loader
+              item-count="4"
+              color="blue"
+              ?loading="${this.loading}"
+              size="large"
+            ></hexagon-loader>
+            <h2 ?hidden="${!this.loading}">Loading HAX elements..</h2>
+            <hax-element-card-list
+              id="productlist"
+              cols="${this.cols}"
+              .list="${this.filteredHaxData}"
+            ></hax-element-card-list>
+          `
+        : ``}
     `;
   }
   _activeTabChanged(e) {
     if (e.detail.activeTab == "haxcore.search") {
       this.showCardList = true;
-    }
-    else {
+    } else {
       this.showCardList = false;
     }
   }

@@ -100,8 +100,7 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
         icon: "av:play-circle-filled",
         color: "grey",
         groups: ["Education", "Interactive"],
-        handles: [
-        ],
+        handles: [],
         meta: {
           author: "ELMS:LN"
         }
