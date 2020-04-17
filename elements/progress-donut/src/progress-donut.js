@@ -3,116 +3,104 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/chartist-render/chartist-render.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { LrndesignPie } from "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js";
 /**
  * `progress-donut`
  * @element progress-donut
  * shows progress in as a rounded shape w/ hollow middle
  *
-
- * @extends ChartistRender
+ * @extends LrndesignPie
+ * @see @lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js
+ * @see @lrnwebcomponents/lrndesign-chart/lrndesign-chart.js
  * @see @lrnwebcomponents/chartist-render/chartist-render.js
- * @extends SimpleColors
  * @see @lrnwebcomponents/simple-colors/simple-colors.js
- * @extends SchemaBehaviors
- * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js
  *
  * @demo demo/index.html
  */
-class ProgressDonut extends SchemaBehaviors(SimpleColors) {
+class ProgressDonut extends LrndesignPie {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   constructor() {
     super();
-    this.animated = false;
-    this.accentColor = "grey";
-    this.dark = false;
+    super.setProperties();
+    this.animation = -1;
+    this.animationDelay = 0;
     this.complete = [];
     this.desc = "";
-    this.title = "";
     this.imageSrc = "";
     this.imageAlt = "";
-    this.total = 100;
+    this.donut = true;
+    this.showLabel = false;
+    /*this.donutWidth = "25%";
+    this.chartPadding = 0;
+    this.startAngle = 0;*/
+    this.showTable = false;
+    this.addEventListener('chartist-render-draw',this.addAnimation);
   }
   static get tag() {
     return "progress-donut";
   }
-
-  updated(changedProperties) {
-    this.makeChart();
+  /**
+    * Called every time the element is removed from the DOM. Useful for 
+    * running clean up code (removing event listeners, etc.).
+    */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('chartist-render-draw',this.addAnimation);
   }
 
   /**
    * Handles chart creation event.
    * @param {event} e create event
    */
-  _onCreated(e) {
-    if (this.animated)
-      e.detail.on("draw", function(data) {
-        if (data.type === "slice") {
-          var pathLength = data.element._node.getTotalLength();
-          data.element.attr({
-            "stroke-dasharray": pathLength + "px " + pathLength + "px"
-          });
-          var animationDefinition = {
-            "stroke-dashoffset": {
-              id: "anim" + data.index,
-              dur: 500,
-              from: -pathLength + "px",
-              to: "0px",
-              easing: Chartist.Svg.Easing.easeOutQuint,
-              fill: "freeze"
-            }
-          };
-          if (data.index !== 0) {
-            animationDefinition["stroke-dashoffset"].begin =
-              "anim" + (data.index - 1) + ".end";
-          }
-          data.element.attr({ "stroke-dashoffset": -pathLength + "px" });
-          data.element.animate(animationDefinition, false);
-        }
+  addAnimation(e) {
+    let data = e && e.detail ? e.detail : undefined;
+    if (this.animation > 0 && data && data.type && data.type === "slice") {
+      var pathLength = data.element._node.getTotalLength(),
+        val = data.value || this.donutTotal/this.donutData.length, 
+        dur = this.animation * val / this.donutTotal;
+      data.element.attr({
+        "stroke-dasharray": pathLength + "px " + pathLength + "px"
       });
-  }
-
-  /**
-   * refreshes the chart
-   */
-  makeChart() {
-    let sum = 0,
-      chart = this.shadowRoot.querySelector("#chart");
-    for (let i = 0; i < this.complete.length; i++) {
-      sum += parseFloat(this.complete[i]);
-    }
-    if (chart) {
-      chart.data = { series: this.complete };
-      chart.options = {
-        donut: true,
-        donutWidth: "25%",
-        chartPadding: 0,
-        showLabel: false,
-        startAngle: 0,
-        total: Math.max(sum, this.total)
+      var animationDefinition = {
+        "stroke-dashoffset": {
+          id: "anim" + data.index,
+          dur: dur,
+          from: -pathLength + "px",
+          to: "0px",
+          fill: "freeze"
+        }
       };
-      /**
-       * Fired when options change.
-       *
-       * @event options-changed
-       *
-       */
-      this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
-      chart.makeChart();
+      if (data.index !== 0) {
+        animationDefinition["stroke-dashoffset"].begin =
+          "anim" + (data.index - 1) + ".end";
+      } else {
+        animationDefinition["stroke-dashoffset"].begin = this.animationDelay;
+      }
+      if(this.donutData.length > 0) animationDefinition["stroke-dashoffset"].easing = Chartist.Svg.Easing.easeOutQuint;
+      data.element.attr({ "stroke-dashoffset": -pathLength + "px" });
+      data.element.animate(animationDefinition, false);
     }
-    /**
-     * Fired when chart changes.
-     *
-     * @event chart-changed
-     *
-     */
-    this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
-    return chart;
   }
+  get donutData(){
+    return Array.isArray(this.complete) ? this.complete : JSON.parse(this.complete || '[]')
+  }
+  get donutLabels(){
+    return this.donutData.map((h,i)=>`Item ${i+1}`);
+  }
+  get donutTotal(){
+    return Math.max(this.donutData.reduce((sum,val)=>sum+val),this.total);
+  }
+  get options(){
+    return super.options;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "complete" && this.complete !== oldValue) this.data = [this.donutLabels,this.donutData];
+    });
+    super.updated(changedProperties);
+  }
 }
 window.customElements.define(ProgressDonut.tag, ProgressDonut);
 export { ProgressDonut };

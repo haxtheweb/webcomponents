@@ -55,6 +55,7 @@ class ElmslnStudioDashboard extends LitElement {
         .linklist li,
         accent-card th,
         accent-card td {
+          padding: 5px 0;
           text-align: left;
           min-height: 25px;
           border-bottom: 1px solid
@@ -62,6 +63,7 @@ class ElmslnStudioDashboard extends LitElement {
         }
         accent-card table {
           width: 100%;
+          border-collapse: collapse;
         }
         accent-card button,
         .linklist button {
@@ -171,19 +173,29 @@ class ElmslnStudioDashboard extends LitElement {
             <span slot="heading"
               >${this.__profile.student.data.display_name}</span
             >
+            <progress-donut 
+              accent-color="purple"
+              slot="content" 
+              animation="500" 
+              animation-delay="500" 
+              complete="[5,3,2,6]" 
+              donut-width="25%"
+              chart-padding="0"
+              start-angle="0"
+              total="30"></progress-donut>
             <table slot="content">
               <tbody>
                 <tr>
                   <th scope="row">Course Progress</th>
-                  <td>0%</td>
+                  <td>${Math.round(this.__profile.student.progress.submissions.reduce((sum,val)=>sum+val)*100/this.__profile.student.progress.totalAssignments)}%</td>
                 </tr>
                 <tr>
                   <th scope="row">Comments</th>
-                  <td>0</td>
+                  <td>${this.__profile.student.progress.comments}</td>
                 </tr>
                 <tr>
                   <th scope="row">Submissions</th>
-                  <td>0</td>
+                  <td>${this.__profile.student.progress.submissions.reduce((sum,val)=>sum+val)}</td>
                 </tr>
               </tbody>
             </table>
@@ -411,8 +423,9 @@ class ElmslnStudioDashboard extends LitElement {
           }
         },
         progress: {
-          comments: 0,
-          submissions: []
+          comments: 22,
+          submissions: [5,3,2,6],
+          totalAssignments: 30
         }
       }
     };
@@ -435,7 +448,7 @@ class ElmslnStudioDashboard extends LitElement {
       e && e.detail && e.detail.response && e.detail.response.data
         ? e.detail.response.data
         : [];
-    console.log("_handleArrayData", e, propName, this[propName]);
+    //console.log("_handleArrayData", e, propName, this[propName]);
   }
   _handleObjectData(e, propName) {
     this[propName] =

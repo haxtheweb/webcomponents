@@ -1,18 +1,1 @@
-<div id="wrapper">
-  <img
-    id="image"
-    alt="${this.imageAlt}"
-    aria-hidden="true"
-    src="${this.imageSrc}"
-    ?hidden="${!this.imageSrc || this.imageSrc == ''}"
-  />
-  <chartist-render
-    id="chart"
-    type="pie"
-    scale="ct-square"
-    .chart-title="${this.title}"
-    .chart-desc="${this.desc}"
-    @chartist-render-draw="${this._onCreated}"
-  >
-  </chartist-render>
-</div>
+${super.render()}

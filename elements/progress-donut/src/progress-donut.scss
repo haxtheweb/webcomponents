@@ -1,30 +1,4 @@
 
-@import "../lrndesign-chart/lib/lrndesign-chart-themes.scss";
-:host {
-  overflow: visible;
-  display: flex;
-  margin: 15px;
-}
-:host #wrapper {
-  margin: 0 auto;
-  position: relative;
-  padding-top: 100%;
-  display: flex;
-  align-items: stretch;
-  justify-content: space-around;
-}
-:host #wrapper > * {
-  position: absolute;
-}
-:host #chart {
-  left: 0;
-  top: 0;
-  flex: 1 1 100%;
-}
-:host #wrapper,
-:host #chart {
-  width: 100%;
-}
 :host #image {
   left: 15%;
   top: 15%; 

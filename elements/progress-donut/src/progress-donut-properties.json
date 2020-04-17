@@ -1,9 +1,17 @@
 {
   /**
-   * Whether progress animates on first load
+   * Timing for animation or -1 for false
    */
-  "animated": {
-    "type": "Boolean"
+  "animation": {
+    "type": "Number",
+    "attribute": "animation"
+  },
+  /**
+   * Timing for animation or 0 none
+   */
+  "animationDelay": {
+    "type": "Number",
+    "attribute": "animation-delay"
   },
   /**
    * An array of completed values
@@ -32,24 +40,5 @@
     "attribute": "image-alt",
     "type": "String",
     "reflect": true
-  },
-  /**
-   * Donut angle where progress starts
-   */
-  "startAngle": {
-    "attribute": "start-angle",
-    "type": "Number"
-  },
-  /**
-   * Title of donut
-   */
-  "title": {
-    "type": "String"
-  },
-  /**
-   * Array of incomplete values
-   */
-  "total": {
-    "type": "Number"
   }
 }
