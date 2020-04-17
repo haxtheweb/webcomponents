@@ -276,7 +276,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Promo-Tile",
+        title: "Promo Tile",
         description: "A tile element for promoting content.",
         icon: "icons:dashboard",
         color: "orange",

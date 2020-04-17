@@ -118,19 +118,15 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Sample gizmo",
+        title: "Team Member",
         description: "The user will be able to see this for selection in a UI.",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Video", "Media"],
+        groups: ["Content", "Presentation"],
         handles: [
-          {
-            type: "video",
-            url: "source"
-          }
         ],
         meta: {
-          author: "Your organization on github"
+          author: "ELMS:LN"
         }
       },
       settings: {

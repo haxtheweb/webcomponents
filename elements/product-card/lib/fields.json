@@ -36,27 +36,52 @@
             ]
           },
           {
-            "property": "providerdetails",
-            "title": "Provider details",
-            "description": "Detailing the functionality provided by this provider",
+            "property": "search",
+            "title": "HAX Elements",
             "properties": [
               {
-                "property": "haxcore-providerdetails-name",
-                "title": "Name",
-                "description": "Content delivery network that supplies your elements and HAX definitions",
+                "property": "haxcore-search-search",
+                "title": "Search",
+                "description": "Filter elements by name",
                 "inputMethod": "textfield"
               },
               {
-                "property": "haxcore-providerdetails-haxtags",
-                "title": "HAX editable tags",
-                "description": "Tags that extend HAX editor",
-                "inputMethod": "code-editor"
+                "property": "haxcore-search-tags",
+                "title": "Tags",
+                "description": "Tags to filter on",
+                "inputMethod": "select",
+                "options": {
+                  "": "",
+                  "Video": "Video",
+                  "Image": "Image",
+                  "Media": "Media",
+                  "Card": "Card",
+                  "Content": "Content",
+                  "Table": "Table",
+                  "Layout": "Layout",
+                  "Presentation": "Presentation",
+                  "Data": "Data",
+                  "Education": "Education",
+                  "Funny": "Funny"
+                }
               },
               {
-                "property": "haxcore-providerdetails-othertags",
-                "title": "Other web components",
-                "description": "Valid tags discovered that don't provide HAX wiring, useful for building other applications",
-                "inputMethod": "textarea"
+                "property": "haxcore-search-hasdemo",
+                "title": "Has demo",
+                "description": "Only show elements with demos",
+                "inputMethod": "boolean"
+              },
+              {
+                "property": "haxcore-search-columns",
+                "title": "Columns",
+                "description": "Columns to organize the results into",
+                "inputMethod": "select",
+                "options": {
+                  "2": "2 Columns",
+                  "3": "3 Columns",
+                  "4": "4 Columns",
+                  "5": "5 Columns"
+                }
               }
             ]
           },
@@ -116,45 +141,40 @@
             ]
           },
           {
-            "property": "search",
-            "title": "HAX Elements",
+            "property": "providerdetails",
+            "title": "Provider details",
+            "description": "Detailing the functionality provided by this provider",
             "properties": [
               {
-                "property": "haxcore-search-search",
-                "title": "Search",
-                "description": "Filter elements by name",
+                "property": "haxcore-providerdetails-name",
+                "title": "Name",
+                "description": "Content delivery network that supplies your elements and HAX definitions",
                 "inputMethod": "textfield"
               },
               {
-                "property": "haxcore-search-tags",
-                "title": "Tags",
-                "description": "Tags to filter on",
-                "inputMethod": "textfield"
+                "property": "haxcore-providerdetails-haxtags",
+                "title": "HAX editable tags",
+                "description": "Tags that extend HAX editor",
+                "inputMethod": "markup"
               },
               {
-                "property": "haxcore-search-hasdemo",
-                "title": "Has demo",
-                "description": "Only show elements with demos",
-                "inputMethod": "boolean"
+                "property": "haxcore-providerdetails-othertags",
+                "title": "Other web components",
+                "description": "Valid tags discovered that don't provide HAX wiring, useful for building other applications",
+                "inputMethod": "markup"
               }
             ]
           },
           {
-            "property": "extras",
-            "title": "Extras",
-            "description": "Additional settings and ordering",
+            "property": "help",
+            "title": "Help",
+            "description": "Help info and how to get started",
             "properties": [
               {
-                "property": "haxcore-extras-columns",
-                "title": "Columns",
-                "description": "Columns to organize the results into",
-                "inputMethod": "select",
-                "options": {
-                  "2": "2 Columns",
-                  "3": "3 Columns",
-                  "4": "4 Columns",
-                  "5": "5 Columns"
-                }
+                "property": "haxcore-help-docs",
+                "title": "Documentation",
+                "description": "Help using HAX and related projects",
+                "inputMethod": "md-block"
               }
             ]
           }
@@ -164,14 +184,15 @@
     "value": {
       "haxcore": {
         "providers": {
-          "haxcore-providers-cdn": "https://cdn.webcomponents.psu.edu/cdn/",
-          "haxcore-providers-other": "",
+          "haxcore-providers-cdn": "other",
+          "haxcore-providers-other": "./",
           "haxcore-providers-pk": ""
         },
-        "providerdetails": {
-          "haxcore-providerdetails-name": "Penn State",
-          "haxcore-providerdetails-haxtags": "",
-          "haxcore-providerdetails-othertags": ""
+        "search": {
+          "haxcore-search-search": "",
+          "haxcore-search-tags": "",
+          "haxcore-search-hasdemo": false,
+          "haxcore-search-columns": ""
         },
         "integrations": {
           "haxcore-integrations-youtube": "",
@@ -183,13 +204,13 @@
           "haxcore-integrations-flickr": "",
           "haxcore-integrations-pixabay": ""
         },
-        "search": {
-          "haxcore-search-search": "",
-          "haxcore-search-tags": "",
-          "haxcore-search-hasdemo": false
+        "providerdetails": {
+          "haxcore-providerdetails-name": "Local",
+          "haxcore-providerdetails-haxtags": "",
+          "haxcore-providerdetails-othertags": ""
         },
-        "extras": {
-          "haxcore-extras-columns": ""
+        "help": {
+          "haxcore-help-docs": "https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
         }
       }
     }

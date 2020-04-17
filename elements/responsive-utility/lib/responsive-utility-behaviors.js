@@ -12,7 +12,11 @@ import { ResponsiveUtility } from "../responsive-utility.js";
 export const ResponsiveUtilityBehaviors = SuperClass => {
   return class extends SuperClass {
     static get properties() {
-      return {
+      let props = {};
+      if (super.properties) {
+        props = super.properties;
+      }
+      return {...props,
         /*
          * size for responsive styling: xs, sm, md, lg, xl 
          */

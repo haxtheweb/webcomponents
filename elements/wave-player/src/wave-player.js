@@ -481,7 +481,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
         description: "Audio that is just like spotify.",
         icon: "av:play-circle-filled",
         color: "purple",
-        groups: ["Video", "Media"],
+        groups: ["Audio", "Media"],
         handles: [
           {
             type: "audio",

@@ -295,7 +295,7 @@ class PlaceHolder extends SimpleColors {
           "A place holder that can be converted into the media type that's been selected",
         icon: "image:transform",
         color: "grey",
-        groups: ["Placeholder"],
+        groups: ["Placeholder", "Content"],
         handles: [],
         meta: {
           author: "ELMS:LN"

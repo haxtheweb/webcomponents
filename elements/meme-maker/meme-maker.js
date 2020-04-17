@@ -143,7 +143,7 @@ class MemeMaker extends LitElement {
         description: "Make a meme out of an image",
         icon: "editor:title",
         color: "orange",
-        groups: ["Content", "Text", "Meme", "Funny"],
+        groups: ["Media", "Funny"],
         handles: [
           {
             type: "image",

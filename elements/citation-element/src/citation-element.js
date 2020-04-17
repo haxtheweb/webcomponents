@@ -273,7 +273,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         description: "A basic citation element with 3 presentation modes",
         icon: "editor:title",
         color: "grey",
-        groups: ["Content", "Text", "Copyright"],
+        groups: ["Content", "Copyright"],
         handles: [
           {
             type: "citation",

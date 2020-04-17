@@ -122,75 +122,75 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-          --simple-picker-background-color: var(
-            --simple-fields-background-color,
-            white
-          );
-          --simple-picker-border-width: 0;
-          --simple-picker-focus-border-width: 0;
-          --simple-picker-display: block;
-          --simple-picker-listbox-border-width: 1px;
-          --simple-picker-listbox-outline: none;
-        }
+:host {
+  display: block;
+  --simple-picker-background-color: var(--simple-fields-background-color,white);
+  --simple-picker-border-width: 0;
+  --simple-picker-focus-border-width: 0;
+  --simple-picker-display: block;
+  --simple-picker-listbox-border-width: 1px;
+  --simple-picker-listbox-outline: none;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <div id="schema-fields" aria-live="polite">
-        <slot></slot>
-      </div>
-    `;
+<div id="schema-fields" aria-live="polite">
+  <slot></slot>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Fields to convert to JSON Schema.
-       */
-      fields: {
-        type: Array
-      },
-      /**
-       * Conversion from inputMethods to JSON schema types and formats.
-       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-       */
-      fieldsConversion: {
-        type: Object
-      },
-      /**
-       * Schema label
-       */
-      label: {
-        type: String
-      },
-      /**
-       * tracks all activeTabs as an object
-       */
-      __activeTabs: {
-        type: Object,
-        attribute: "active-path"
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "fields": {
+    "type": Array
+  },
+  /**
+   * Conversion from inputMethods to JSON schema types and formats.
+   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+   */
+  "fieldsConversion": {
+    "type": Object
+  },
+  /**
+   * Schema label
+   */
+  "label": {
+    "type": String
+  },
+  /**
+   * tracks all activeTabs as an object
+   */
+  "__activeTabs": {
+    "type": Object,
+    "attribute": "active-path"
+  }
+}
+;
   }
 
   /**
@@ -287,6 +287,11 @@ class SimpleFields extends SimpleFieldsLite {
         markup: {
           defaultSettings: {
             type: "markup"
+          }
+        },
+        "md-block": {
+          defaultSettings: {
+            type: "md-block"
           }
         },
         monthpicker: {
@@ -468,6 +473,13 @@ class SimpleFields extends SimpleFieldsLite {
             noWrap: true
           }
         },
+        "md-block": {
+          defaultSettings: {
+            element: "md-block",
+            setValueProperty: "source",
+            noWrap: true
+          }
+        },
         number: {
           defaultSettings: {
             element: "simple-fields-field",
@@ -500,8 +512,10 @@ class SimpleFields extends SimpleFieldsLite {
                   labelSlot: "label",
                   descriptionSlot: ""
                 },
-                attributes: {
-                  "layout-breakpoint": 0
+                properties: {
+                  layoutBreakpoint: "layoutBreakpoint",
+                  iconBreakpoint: "iconBreakpoint",
+                  sticky: "sticky"
                 }
               }
             }

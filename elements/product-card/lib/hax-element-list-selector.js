@@ -40,6 +40,9 @@ class HaxElementListSelector extends LitElement {
           position: absolute;
           width: 100%;
         }
+        [hidden] {
+          display: none !important;
+        }
       `
     ];
   }
@@ -47,21 +50,30 @@ class HaxElementListSelector extends LitElement {
     super();
     this.loading = false;
     this.cols = 3;
+    this.showCardList = false;
     this.imports = [];
     this.haxData = [];
     this.noSchema = {};
     this.method = "GET";
-    this.basePath =
-      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+    // default fields json blob, most implementations should provide their own though obviously
+    this.fieldsEndpoint = this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json"
+    if (window.WCGlobalBasePath) {
+      this.basePath = window.WCGlobalBasePath;
+    } else {
+      this.basePath =
+        this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+    }
+    setTimeout(() => {
+      window.addEventListener("active-tab-changed", this._activeTabChanged.bind(this));
+    }, 0);
   }
   static get properties() {
     return {
       /**
-       * base path
+       * Show card list so that it SEEMS like its happenign when we click HAX elements
        */
-      basePath: {
-        type: String,
-        attribute: "base-path"
+      showCardList: {
+        type: Boolean,
       },
       /**
        * JS imports
@@ -134,18 +146,29 @@ class HaxElementListSelector extends LitElement {
         @value-changed="${this._valueChanged}"
       >
       </simple-fields-form>
+      ${this.showCardList ? html`
       <hexagon-loader
         item-count="4"
         color="blue"
         ?loading="${this.loading}"
         size="large"
       ></hexagon-loader>
+      <h2 ?hidden="${!this.loading}">Loading HAX elements..</h2>
       <hax-element-card-list
         id="productlist"
         cols="${this.cols}"
         .list="${this.filteredHaxData}"
       ></hax-element-card-list>
+      `: ``}
     `;
+  }
+  _activeTabChanged(e) {
+    if (e.detail.activeTab == "haxcore.search") {
+      this.showCardList = true;
+    }
+    else {
+      this.showCardList = false;
+    }
   }
   updated(changedProperties) {
     changedProperties.forEach(async (oldValue, propName) => {
@@ -266,7 +289,7 @@ class HaxElementListSelector extends LitElement {
   _response(e) {
     // tee up defaults
     let value = this.shadowRoot.querySelector("#form").submit();
-    value.haxcore.extras["haxcore-extras-columns"] = this.cols;
+    value.haxcore.search["haxcore-search-columns"] = this.cols;
     this.shadowRoot.querySelector("#form").setValue(value);
   }
   /**
@@ -288,10 +311,10 @@ class HaxElementListSelector extends LitElement {
             "wc-registry.json";
         }
         // set columns
-        this.cols = parseInt(value.haxcore.extras["haxcore-extras-columns"]);
+        this.cols = parseInt(value.haxcore.search["haxcore-search-columns"]);
         // apply filters
         this.filteredHaxData = [...this.applyFilters(value.haxcore.search)];
-        if (this.shadowRoot.querySelector("#productlist").requestUpdate) {
+        if (this.shadowRoot.querySelector("#productlist")) {
           this.shadowRoot.querySelector("#productlist").requestUpdate();
         }
       }

@@ -1049,15 +1049,11 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         description: "Tweak the game show options",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Video", "Media"],
+        groups: ["Education", "Interactive"],
         handles: [
-          {
-            type: "video",
-            url: "source"
-          }
         ],
         meta: {
-          author: "Your organization on github"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -4,18 +4,14 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Progress Donut",
-    "description": "The user will be able to see this for selection in a UI.",
+    "description": "Progression donut",
     "icon": "av:play-circle-filled",
     "color": "grey",
-    "groups": ["Video", "Media"],
+    "groups": ["Presentation", "Data"],
     "handles": [
-      {
-        "type": "image",
-        "url": "source"
-      }
     ],
     "meta": {
-      "author": "Your organization on github"
+      "author": "ELMS:LN"
     }
   },
   "settings": {

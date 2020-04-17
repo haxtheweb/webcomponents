@@ -173,7 +173,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
         description: "A stack of papers",
         icon: "icons:content-copy",
         color: "grey",
-        groups: ["Video", "Media"],
+        groups: ["Content", "Layout"],
         handles: [],
         meta: {
           author: "ELMS:LN"

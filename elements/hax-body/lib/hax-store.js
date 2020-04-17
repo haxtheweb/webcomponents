@@ -1468,7 +1468,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        groups: ["Text"],
+        groups: ["Content"],
         handles: [
           {
             type: "content",
@@ -1496,7 +1496,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         description: "A table for displaying data",
         icon: "image:grid-on",
         color: "blue-grey",
-        groups: ["Text"],
+        groups: ["Content", "Table", "Data"],
         meta: {
           author: "W3C"
         }

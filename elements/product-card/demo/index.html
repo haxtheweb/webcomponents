@@ -10,24 +10,20 @@
     <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
       import "@lrnwebcomponents/json-editor/json-editor.js";
+      import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
       import '../lib/hax-element-list-selector.js';
     </script>
   </head>
   <body>
-    <a11y-collapse accordian>
+    <a11y-collapse accordion>
       <div slot="heading">Debug area</div>
       <json-editor id="jsonblob"></json-editor>
     </a11y-collapse>
-    <hax-element-list-selector
-      id="haxlist"
-      base-path="/node_modules/"
-      fields-endpoint="./fields.json"
-      cols="3"
-    ></hax-element-list-selector>
+    <hax-element-list-selector></hax-element-list-selector>
     <script defer="defer" async="async">
       window.addEventListener('load', (e) => {
         setTimeout(() => {
-          document.getElementById('haxlist').addEventListener('enabled-changed', (e) => {
+          document.getElementsByTagName('hax-element-list-selector')[0].addEventListener('enabled-changed', (e) => {
             document.getElementById('jsonblob').value = JSON.stringify(e.detail.value, null, 2);
           });
         }, 0);

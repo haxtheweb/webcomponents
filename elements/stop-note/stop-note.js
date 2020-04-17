@@ -84,8 +84,6 @@ class StopNote extends SchemaBehaviors(LitElement) {
         }
 
         .svg_wrap {
-          display: flex;
-          align-items: center;
           background-color: var(--accent-color);
           padding: 5px;
           width: auto;
@@ -187,7 +185,7 @@ class StopNote extends SchemaBehaviors(LitElement) {
         description: "A message to alert readers to specific directions.",
         icon: "icons:report",
         color: "orange",
-        groups: ["Video", "Media"],
+        groups: ["Education", "Content"],
         handles: [
           {
             type: "text",
