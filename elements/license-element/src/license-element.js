@@ -339,14 +339,14 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
       },
       demoSchema: [
         {
-          "tag": "license-element",
-          "properties": {
-            "title": "Wonderland",
-            "creator": "Mad Hatter",
-            "source": "https://haxtheweb.org/",
-            "license": "by"
+          tag: "license-element",
+          properties: {
+            title: "Wonderland",
+            creator: "Mad Hatter",
+            source: "https://haxtheweb.org/",
+            license: "by"
           },
-          "content": ""
+          content: ""
         }
       ]
     };

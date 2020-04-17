@@ -170,16 +170,18 @@ class HaxElementListSelector extends LitElement {
     `;
   }
   _enabledChanged(e) {
-    this.haxData.forEach((el,i) => {
+    this.haxData.forEach((el, i) => {
       if (el.tag == e.detail.tag) {
         this.haxData[i].status = e.detail.status;
       }
     });
-    this.dispatchEvent(new CustomEvent("appstore-changed", {
-      detail: {
-        value: this.getAppstoreValues()
-      }
-    }));
+    this.dispatchEvent(
+      new CustomEvent("appstore-changed", {
+        detail: {
+          value: this.getAppstoreValues()
+        }
+      })
+    );
   }
   _activeTabChanged(e) {
     if (e.detail.activeTab == "haxcore.search") {
@@ -246,18 +248,22 @@ class HaxElementListSelector extends LitElement {
           for (var i in this.haxData) {
             renderHaxData[this.haxData[i].tag] = this.haxData[i].file;
           }
-          this.shadowRoot.querySelector("#form")
-           .shadowRoot.querySelector('#sf')
-           .querySelector('[name="haxcore.providerdetails.haxcore-providerdetails-haxtags"]')
-           .editorValue = JSON.stringify(renderHaxData, null, 2);
+          this.shadowRoot
+            .querySelector("#form")
+            .shadowRoot.querySelector("#sf")
+            .querySelector(
+              '[name="haxcore.providerdetails.haxcore-providerdetails-haxtags"]'
+            ).editorValue = JSON.stringify(renderHaxData, null, 2);
         }
       }
       if (propName == "noSchema") {
         if (Object.keys(this.noSchema).length > 0) {
-          this.shadowRoot.querySelector("#form")
-           .shadowRoot.querySelector('#sf')
-           .querySelector('[name="haxcore.providerdetails.haxcore-providerdetails-othertags"]')
-           .editorValue = JSON.stringify(this.noSchema, null, 2);
+          this.shadowRoot
+            .querySelector("#form")
+            .shadowRoot.querySelector("#sf")
+            .querySelector(
+              '[name="haxcore.providerdetails.haxcore-providerdetails-othertags"]'
+            ).editorValue = JSON.stringify(this.noSchema, null, 2);
         }
       }
     });
@@ -338,11 +344,13 @@ class HaxElementListSelector extends LitElement {
           this.shadowRoot.querySelector("#productlist").requestUpdate();
         }
       }
-      this.dispatchEvent(new CustomEvent("appstore-changed", {
-        detail: {
-          value: this.getAppstoreValues()
-        }
-      }));
+      this.dispatchEvent(
+        new CustomEvent("appstore-changed", {
+          detail: {
+            value: this.getAppstoreValues()
+          }
+        })
+      );
     }, 50);
   }
   getAppstoreValues() {
@@ -350,13 +358,14 @@ class HaxElementListSelector extends LitElement {
     let value = this.shadowRoot.querySelector("#form").submit();
     let appstore = {
       apps: {},
-      blox: value.haxcore.templates['haxcore-templates-templates'],
-      stax: value.haxcore.templates['haxcore-templates-layouts'],
+      blox: value.haxcore.templates["haxcore-templates-templates"],
+      stax: value.haxcore.templates["haxcore-templates-layouts"],
       autoloader: {}
     };
     // find the API keys
     for (var key in value.haxcore.integrations) {
-      appstore.apps[key.replace('haxcore-integrations-', '')] = value.haxcore.integrations[key];
+      appstore.apps[key.replace("haxcore-integrations-", "")] =
+        value.haxcore.integrations[key];
     }
     // calculate based on what's currently enabled
     appstore.autoloader = this.getAutoloader(this.haxData);

@@ -93,7 +93,10 @@ class HAXElementCardList extends LitElement {
                     )}
                   </li>
                   <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
-                  <li><strong>Developer usage:</strong> <code>import "${el.file}";</code></li>
+                  <li>
+                    <strong>Developer usage:</strong>
+                    <code>import "${el.file}";</code>
+                  </li>
                   ${el.schema.gizmo.meta
                     ? html`
                         ${Object.keys(el.schema.gizmo.meta).map(
@@ -114,8 +117,14 @@ class HAXElementCardList extends LitElement {
                   ? html`
                       ${el.schema.demoSchema.map(
                         demoItem => html`
-                          <mwc-button data-tag="${demoItem.tag}" @click="${this._viewDemo}">Pop up demo</mwc-button>
-                          <div class="demo">${this._haxElementToNode(demoItem)}</div>
+                          <mwc-button
+                            data-tag="${demoItem.tag}"
+                            @click="${this._viewDemo}"
+                            >Pop up demo</mwc-button
+                          >
+                          <div class="demo">
+                            ${this._haxElementToNode(demoItem)}
+                          </div>
                           <code-sample copy-clipboard-button>
                             <template>
                               ${this._haxElementToNode(demoItem)}
@@ -135,24 +144,26 @@ class HAXElementCardList extends LitElement {
   _viewDemo(e) {
     if (e.target && e.target.nextElementSibling) {
       console.log(e.target.nextElementSibling);
-      window.dispatchEvent(new CustomEvent("simple-modal-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          title: "Demo of " + e.target.getAttribute('data-tag'),
-          styles: {
-            "--simple-modal-width": "75vw",
-            "--simple-modal-max-width": "75vw"
-          },
-          elements: {
-            content: e.target.nextElementSibling,
-          },
-          invokedBy: e.target,
-          clone: true,
-          modal: true
-        }
-      }));
+      window.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: "Demo of " + e.target.getAttribute("data-tag"),
+            styles: {
+              "--simple-modal-width": "75vw",
+              "--simple-modal-max-width": "75vw"
+            },
+            elements: {
+              content: e.target.nextElementSibling
+            },
+            invokedBy: e.target,
+            clone: true,
+            modal: true
+          }
+        })
+      );
     }
   }
   /**

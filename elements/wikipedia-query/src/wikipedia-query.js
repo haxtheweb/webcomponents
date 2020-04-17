@@ -199,12 +199,12 @@ class WikipediaQuery extends LitElement {
       },
       demoSchema: [
         {
-          "tag": "wikipedia-query",
-          "properties": {
-            "hideTitle": false,
-            "search": "Internet"
+          tag: "wikipedia-query",
+          properties: {
+            hideTitle: false,
+            search: "Internet"
           },
-          "content": ""
+          content: ""
         }
       ]
     };
