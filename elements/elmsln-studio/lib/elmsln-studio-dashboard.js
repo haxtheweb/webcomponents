@@ -173,21 +173,30 @@ class ElmslnStudioDashboard extends LitElement {
             <span slot="heading"
               >${this.__profile.student.data.display_name}</span
             >
-            <progress-donut 
+            <progress-donut
               accent-color="purple"
-              slot="content" 
-              animation="500" 
-              animation-delay="500" 
-              complete="[5,3,2,6]" 
+              slot="content"
+              animation="500"
+              animation-delay="500"
+              complete="[5,3,2,6]"
               donut-width="25%"
               chart-padding="0"
               start-angle="0"
-              total="30"></progress-donut>
+              total="30"
+            ></progress-donut>
             <table slot="content">
               <tbody>
                 <tr>
                   <th scope="row">Course Progress</th>
-                  <td>${Math.round(this.__profile.student.progress.submissions.reduce((sum,val)=>sum+val)*100/this.__profile.student.progress.totalAssignments)}%</td>
+                  <td>
+                    ${Math.round(
+                      (this.__profile.student.progress.submissions.reduce(
+                        (sum, val) => sum + val
+                      ) *
+                        100) /
+                        this.__profile.student.progress.totalAssignments
+                    )}%
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Comments</th>
@@ -195,7 +204,11 @@ class ElmslnStudioDashboard extends LitElement {
                 </tr>
                 <tr>
                   <th scope="row">Submissions</th>
-                  <td>${this.__profile.student.progress.submissions.reduce((sum,val)=>sum+val)}</td>
+                  <td>
+                    ${this.__profile.student.progress.submissions.reduce(
+                      (sum, val) => sum + val
+                    )}
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -424,7 +437,7 @@ class ElmslnStudioDashboard extends LitElement {
         },
         progress: {
           comments: 22,
-          submissions: [5,3,2,6],
+          submissions: [5, 3, 2, 6],
           totalAssignments: 30
         }
       }

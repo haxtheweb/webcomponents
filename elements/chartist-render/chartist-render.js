@@ -1016,7 +1016,7 @@ Container class	Ratio
         ],
         [
           "Chartist.plugins.fillDonut",
-          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"
+          "lib/chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js"
         ]
       ];
     }
@@ -1194,7 +1194,7 @@ Container class	Ratio
           Chartist.plugins.fillDonut
         ) {
           options.plugins.push(
-            Chartist.plugins.fillDonut(this.pluginFillDonutItems)
+            Chartist.plugins.fillDonut({items: this.pluginFillDonutItems})
           );
         }
       }
@@ -1267,8 +1267,8 @@ Container class	Ratio
             detail: chart
           })
         );
-        if (chart){
-          chart.on("created", (e) => {
+        if (chart) {
+          chart.on("created", e => {
             /**
              * Fired once chart is created and accessibility features are added.
              *
@@ -1284,7 +1284,7 @@ Container class	Ratio
               })
             );
           });
-          chart.on("draw", (e) => {
+          chart.on("draw", e => {
             /**
              * Fired once chart is created and accessibility features are added.
              *
@@ -1338,7 +1338,10 @@ Container class	Ratio
         data = this.data ? [...this.data] : false;
       if (data) {
         let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
-          colHeads = data[0] && data[0][rowHeads ? 1 : 0] && isNaN(data[0][rowHeads ? 1 : 0]),
+          colHeads =
+            data[0] &&
+            data[0][rowHeads ? 1 : 0] &&
+            isNaN(data[0][rowHeads ? 1 : 0]),
           thead = !colHeads
             ? undefined
             : {
@@ -1391,7 +1394,11 @@ Container class	Ratio
     _updateChartData() {
       let data = this.data,
         rowHeads = data && data[1] && data[1][0] && isNaN(data[1][0]),
-        colHeads = data && data[0] && data[0][rowHeads ? 1 : 0] && isNaN(data[0][rowHeads ? 1 : 0]),
+        colHeads =
+          data &&
+          data[0] &&
+          data[0][rowHeads ? 1 : 0] &&
+          isNaN(data[0][rowHeads ? 1 : 0]),
         labels = colHeads ? data[0] : undefined,
         body = colHeads && data[1] ? data.slice(1, data.length) : data;
       if (rowHeads) {

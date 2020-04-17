@@ -223,18 +223,18 @@ ${super.render()}`;
     this.chartPadding = 0;
     this.startAngle = 0;*/
     this.showTable = false;
-    this.addEventListener('chartist-render-draw',this.addAnimation);
+    this.addEventListener("chartist-render-draw", this.addAnimation);
   }
   static get tag() {
     return "progress-donut";
   }
   /**
-    * Called every time the element is removed from the DOM. Useful for 
-    * running clean up code (removing event listeners, etc.).
-    */
+   * Called every time the element is removed from the DOM. Useful for
+   * running clean up code (removing event listeners, etc.).
+   */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('chartist-render-draw',this.addAnimation);
+    this.removeEventListener("chartist-render-draw", this.addAnimation);
   }
 
   /**
@@ -245,8 +245,8 @@ ${super.render()}`;
     let data = e && e.detail ? e.detail : undefined;
     if (this.animation > 0 && data && data.type && data.type === "slice") {
       var pathLength = data.element._node.getTotalLength(),
-        val = data.value || this.donutTotal/this.donutData.length, 
-        dur = this.animation * val / this.donutTotal;
+        val = data.value || this.donutTotal / this.donutData.length,
+        dur = (this.animation * val) / this.donutTotal;
       data.element.attr({
         "stroke-dasharray": pathLength + "px " + pathLength + "px"
       });
@@ -265,29 +265,34 @@ ${super.render()}`;
       } else {
         animationDefinition["stroke-dashoffset"].begin = this.animationDelay;
       }
-      if(this.donutData.length > 0) animationDefinition["stroke-dashoffset"].easing = Chartist.Svg.Easing.easeOutQuint;
+      if (this.donutData.length > 0)
+        animationDefinition["stroke-dashoffset"].easing =
+          Chartist.Svg.Easing.easeOutQuint;
       data.element.attr({ "stroke-dashoffset": -pathLength + "px" });
       data.element.animate(animationDefinition, false);
     }
   }
-  get donutData(){
-    return Array.isArray(this.complete) ? this.complete : JSON.parse(this.complete || '[]')
+  get donutData() {
+    return Array.isArray(this.complete)
+      ? this.complete
+      : JSON.parse(this.complete || "[]");
   }
-  get donutLabels(){
-    return this.donutData.map((h,i)=>`Item ${i+1}`);
+  get donutLabels() {
+    return this.donutData.map((h, i) => `Item ${i + 1}`);
   }
-  get donutTotal(){
-    return Math.max(this.donutData.reduce((sum,val)=>sum+val),this.total);
+  get donutTotal() {
+    return Math.max(this.donutData.reduce((sum, val) => sum + val), this.total);
   }
-  get options(){
+  get options() {
     return super.options;
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "complete" && this.complete !== oldValue) this.data = [this.donutLabels,this.donutData];
-    });
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "complete" && this.complete !== oldValue)
+        this.data = [this.donutLabels, this.donutData];
+    });
     super.updated(changedProperties);
-  }
+  }
 }
 window.customElements.define(ProgressDonut.tag, ProgressDonut);
 export { ProgressDonut };
