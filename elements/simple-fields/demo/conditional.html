@@ -21,18 +21,18 @@
         <style>#submission {width: 100%;}</style>
         <script>
           window.onload = () => {
-            let schema = document.getElementById('schema'),
+            let simplefields = document.getElementById('simplefields'),
               usa = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ],
               can = ['AB', 'BC', 'MB', 'NB', 'NL', 'NT', 'NS', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT'],
               countryChanged = (e) => {
-                schema.formElements["province"].element.itemsList = e.value === "USA" ? usa : can;
-                schema.formElements["province"].element.value = schema.formElements["province"].element.itemsList[0];
+                simplefields.formElements["province"].element.itemsList = e.value === "USA" ? usa : can;
+                simplefields.formElements["province"].element.value = simplefields.formElements["province"].element.itemsList[0];
               },
               contactChanged = (e) => {
-                schema.formElements["phoneNumbers"].element.value = undefined;
-                schema.formElements["phoneNumbers"].element.hidden = !e.value;
+                simplefields.formElements["phoneNumbers"].element.value = undefined;
+                simplefields.formElements["phoneNumbers"].element.hidden = !e.value;
               };
-            schema.schema = {
+            simplefields.schema = {
               $schema: "http://json-schema.org/schema#",
               title: "Store",
               type: "object",
@@ -83,7 +83,8 @@
           };
         </script>
         <template>
-          <form id="form"><simple-fields id="schema"></simple-fields></form>
+          <form id="form">
+            <simple-fields id="simplefields"></simple-fields>
           </form>
         </template>
       </demo-snippet>

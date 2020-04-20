@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>simple-fields with Sub-schemas</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-fields.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>simple-fields with Sub-schemas</h1>
+      <demo-snippet>
+        <style>#submission {width: 100%;}</style>
+        <script>
+          window.onload = () => {
+            let simplefields = document.getElementById('simplefields'),
+              contactChanged = (e) => {
+                let contactinfo = simplefields.formElements["contactInfo"].element,
+                  schema = e.detail.value === "none" 
+                  ? {} 
+                  : e.detail.value === "email" 
+                    ? emailFields 
+                    : phoneFields;
+                //contactinfo.hidden = e.value === "none" || !e.value;
+                contactinfo.schema = schema;
+                console.log('contactChanged',e.detail.value,contactinfo.hidden,schema,contactinfo.schema);
+              }, 
+              phoneFields = {
+                $schema: "http://json-schema.org/schema#",
+                title: "Phone Number(s)",
+                type: "object",
+                properties: {
+                  phoneNumbers: {
+                    title: "Phone numbers",
+                    description: "List phone numbers and type of number.",
+                    type: "array",
+                    items: {
+                      type: "object",
+                      previewBy: ["phoneNumber"],
+                      properties: {
+                        type: {
+                          title: "Type",
+                          type: "string",
+                          options: {
+                            "cell": "Cell",
+                            "home": "Home",
+                            "work": "Work"
+                          }
+                        },
+                        phoneNumber: {
+                          title: "Phone Number",
+                          type: "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }, 
+              emailFields = {
+                $schema: "http://json-schema.org/schema#",
+                title: "Email",
+                type: "object",
+                properties: {
+                  email: {
+                    title: "Email",
+                    type: "string",
+                    pattern:
+                      "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
+                  }
+                }
+              };
+            simplefields.schema = {
+              $schema: "http://json-schema.org/schema#",
+              title: "Store",
+              type: "object",
+              properties: {
+                contact: {
+                  title: "Contact Method",
+                  type: "text",
+                  itemsList: ["none","email","phone"],
+                  onValueChanged: contactChanged
+                },
+                contactInfo: {
+                  type: "object",
+                  format: "fields"
+                }
+              }
+            };
+          };
+        </script>
+        <template>
+          <form id="form">
+            <simple-fields id="simplefields"></simple-fields>
+          </form>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

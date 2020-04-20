@@ -119,79 +119,80 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @extends simple-fields-lite
  * @demo ./demo/index.html
  * @demo ./demo/schema.html Schema
- * @demo ./demo/conditional.html Conditionals
+ * @demo ./demo/conditional.html Conditional Logic
+ * @demo ./demo/subschema.html Subschemas
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-          --simple-picker-background-color: var(
-            --simple-fields-background-color,
-            white
-          );
-          --simple-picker-border-width: 0;
-          --simple-picker-focus-border-width: 0;
-          --simple-picker-display: block;
-          --simple-picker-listbox-border-width: 1px;
-          --simple-picker-listbox-outline: none;
-        }
+:host {
+  display: block;
+  --simple-picker-background-color: var(--simple-fields-background-color,white);
+  --simple-picker-border-width: 0;
+  --simple-picker-focus-border-width: 0;
+  --simple-picker-display: block;
+  --simple-picker-listbox-border-width: 1px;
+  --simple-picker-listbox-outline: none;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <div id="schema-fields" aria-live="polite">
-        <slot></slot>
-      </div>
-    `;
+<div id="schema-fields" aria-live="polite">
+  <slot></slot>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Fields to convert to JSON Schema.
-       */
-      fields: {
-        type: Array
-      },
-      /**
-       * Conversion from inputMethods to JSON schema types and formats.
-       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-       */
-      fieldsConversion: {
-        type: Object
-      },
-      /**
-       * Schema label
-       */
-      label: {
-        type: String
-      },
-      /**
-       * tracks all activeTabs as an object
-       */
-      __activeTabs: {
-        type: Object,
-        attribute: "active-path"
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "fields": {
+    "type": Array
+  },
+  /**
+   * Conversion from inputMethods to JSON schema types and formats.
+   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+   */
+  "fieldsConversion": {
+    "type": Object
+  },
+  /**
+   * Schema label
+   */
+  "label": {
+    "type": String
+  },
+  /**
+   * tracks all activeTabs as an object
+   */
+  "__activeTabs": {
+    "type": Object,
+    "attribute": "active-path"
+  }
+}
+;
   }
 
   /**
@@ -208,6 +209,14 @@ class SimpleFields extends SimpleFieldsLite {
       defaultSettings: {
         type: "string"
       },
+      format: {
+        "simple-fields": {
+          defaultSettings: {
+            type: "object",
+            format: "simple-fields"
+          }
+        }
+      },
       inputMethod: {
         alt: {
           defaultSettings: {
@@ -217,10 +226,10 @@ class SimpleFields extends SimpleFieldsLite {
         },
         array: {
           defaultSettings: {
-            type: "array",
-            properties: {
-              label: "itemLabel"
-            }
+            type: "array"
+          },
+          properties: {
+            label: "itemLabel"
           }
         },
         boolean: {
@@ -505,6 +514,16 @@ class SimpleFields extends SimpleFieldsLite {
                   layoutBreakpoint: "layoutBreakpoint",
                   iconBreakpoint: "iconBreakpoint",
                   sticky: "sticky"
+                }
+              }
+            },
+            fields: {
+              defaultSettings: {
+                element: "simple-fields",
+                noWrap: true,
+                descriptionProperty: "description",
+                properties: {
+                  schema: "schema"
                 }
               }
             }

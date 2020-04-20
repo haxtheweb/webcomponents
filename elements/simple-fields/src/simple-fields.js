@@ -119,7 +119,8 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @extends simple-fields-lite
  * @demo ./demo/index.html
  * @demo ./demo/schema.html Schema
- * @demo ./demo/conditional.html Conditionals
+ * @demo ./demo/conditional.html Conditional Logic
+ * @demo ./demo/subschema.html Subschemas
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
@@ -138,6 +139,14 @@ class SimpleFields extends SimpleFieldsLite {
     this.fieldsConversion = {
       defaultSettings: {
         type: "string"
+      },
+      format: {
+        "simple-fields": {
+          defaultSettings: {
+            type: "object",
+            format: "simple-fields"
+          }
+        }
       },
       inputMethod: {
         alt: {
@@ -436,6 +445,16 @@ class SimpleFields extends SimpleFieldsLite {
                   layoutBreakpoint: "layoutBreakpoint",
                   iconBreakpoint: "iconBreakpoint",
                   sticky: "sticky"
+                }
+              }
+            },
+            fields: {
+              defaultSettings: {
+                element: "simple-fields",
+                noWrap: true,
+                descriptionProperty: "description",
+                properties: {
+                  schema: "schema"
                 }
               }
             }
