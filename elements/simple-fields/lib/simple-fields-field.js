@@ -557,7 +557,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get sortedOptions() {
-    let sorted = (this.itemsList || []).map((item,i) =>
+    let sorted = (this.itemsList || []).map((item, i) =>
       typeof item === "object" ? item : { value: item, text: item }
     );
     Object.keys(this.options || {})
