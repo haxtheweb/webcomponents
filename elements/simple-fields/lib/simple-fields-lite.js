@@ -518,7 +518,9 @@ class SimpleFieldsLite extends LitElement {
     this._clearForm();
     this._addToForm();
     let firstField =
-      this.__formElementsArray && this.__formElementsArray[0] && this.__formElementsArray[0].field
+      this.__formElementsArray &&
+      this.__formElementsArray[0] &&
+      this.__formElementsArray[0].field
         ? this.__formElementsArray[0].field
         : false;
     if (firstField) firstField.autofocus = !this.disableAutofocus;
@@ -596,8 +598,8 @@ class SimpleFieldsLite extends LitElement {
         element.id = id;
         element.setAttribute("name", id);
         element.setAttribute("language", this.language);
-        if(schemaProp.options) element.options = schemaProp.options;
-        if(schemaProp.itemsList) element.itemsList = schemaProp.itemsList; 
+        if (schemaProp.options) element.options = schemaProp.options;
+        if (schemaProp.itemsList) element.itemsList = schemaProp.itemsList;
         if (required && required.includes(key))
           element.setAttribute("required", true);
         if (schemaProp.disabled) {
@@ -677,7 +679,12 @@ class SimpleFieldsLite extends LitElement {
               data.valueSlot
             );
           element.addEventListener(data.valueChangedProperty, e =>
-            this._handleChange(element, data.valueProperty, schemaProp.onValueChanged,e)
+            this._handleChange(
+              element,
+              data.valueProperty,
+              schemaProp.onValueChanged,
+              e
+            )
           );
           wrapper.addEventListener(data.errorChangedProperty, e => {
             let error = this._deepClone(this.error || {}),
@@ -919,13 +926,13 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} element element that changed
    * @param {object} valueProperty
    */
-  _handleChange(element, valueProperty,onchange,e) {
+  _handleChange(element, valueProperty, onchange, e) {
     this._setValue(
       element.id || element.getAttribute("id"),
       element[valueProperty]
     );
     this._fireValueChanged();
-    if(onchange) onchange(e);
+    if (onchange) onchange(e);
   }
 
   /**
