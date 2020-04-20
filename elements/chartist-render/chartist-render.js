@@ -1083,12 +1083,16 @@ const ChartistRenderSuper = function(SuperClass) {
         >
           <slot></slot>
         </div>
-        <iron-ajax
-          auto
-          handle-as="text"
-          url="${this.dataSource}"
-          @response="${this._handleResponse}"
-        ></iron-ajax>
+        ${this.dataSource != ""
+          ? html`
+              <iron-ajax
+                auto
+                handle-as="text"
+                url="${this.dataSource}"
+                @response="${this._handleResponse}"
+              ></iron-ajax>
+            `
+          : ``}
       `;
     }
 
@@ -1263,6 +1267,8 @@ Container class	Ratio
       this.type = "bar";
       this.scale = "ct-minor-seventh";
       this.responsiveOptions = [];
+      this.data = [];
+      this.dataSource = "";
       this.showTable = false;
       this.__chartId = generateResourceID("chart-");
       window.ESGlobalBridge.requestAvailability();

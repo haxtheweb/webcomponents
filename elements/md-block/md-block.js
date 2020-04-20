@@ -88,7 +88,17 @@ class MdBlock extends LitElement {
           }
         ],
         advanced: []
-      }
+      },
+      demoSchema: [
+        {
+          tag: "md-block",
+          properties: {
+            source:
+              "https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
+          },
+          content: ""
+        }
+      ]
     };
   }
   // properties available to the custom element for data binding

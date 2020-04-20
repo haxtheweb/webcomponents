@@ -242,7 +242,7 @@ class A11yCollapse extends LitElement {
         description: "A single instance of an expand collapse.",
         icon: "view-day",
         color: "grey",
-        groups: ["Text"]
+        groups: ["Content", "Presentation", "Collapse"]
       },
       settings: {
         quick: [

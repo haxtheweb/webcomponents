@@ -84,8 +84,6 @@ class StopNote extends SchemaBehaviors(LitElement) {
         }
 
         .svg_wrap {
-          display: flex;
-          align-items: center;
           background-color: var(--accent-color);
           padding: 5px;
           width: auto;
@@ -187,7 +185,7 @@ class StopNote extends SchemaBehaviors(LitElement) {
         description: "A message to alert readers to specific directions.",
         icon: "icons:report",
         color: "orange",
-        groups: ["Video", "Media"],
+        groups: ["Education", "Content"],
         handles: [
           {
             type: "text",
@@ -251,7 +249,26 @@ class StopNote extends SchemaBehaviors(LitElement) {
           }
         ],
         advanced: []
-      }
+      },
+      demoSchema: [
+        {
+          tag: "stop-note",
+          properties: {
+            title: "Hold up there"
+          },
+          content:
+            '<span slot="message"><strong>Read these important things!</strong>\n</span>\n'
+        },
+        {
+          tag: "stop-note",
+          properties: {
+            title: "Warning",
+            icon: "stopnoteicons:warning-icon"
+          },
+          content:
+            '<span slot="message">You can write any warning message you want here.</span>\n'
+        }
+      ]
     };
   }
 }

@@ -381,7 +381,28 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
       },
       saveOptions: {
         unsetAttributes: ["__utils", "__stand-alone", "colors"]
-      }
+      },
+      demoSchema: [
+        {
+          tag: "video-player",
+          properties: {
+            style: "width: 100%; margin: 0px auto; display: block;",
+            accentColor: "orange",
+            dark: true,
+            crossorigin: "anonymous",
+            lang: "en",
+            mediaTitle: "Why do I need to go anywhere?",
+            preload: "metadata",
+            source: "https://www.youtube.com/watch?v=LrS7dqokTLE",
+            stickyCorner: "top-right",
+            track: "https://haxtheweb.org/files/HAXshort.vtt",
+            youtubeId: "LrS7dqokTLE?undefined",
+            sourceType: "youtube"
+          },
+          content:
+            '    <track src="https://haxtheweb.org/files/HAXshort.vtt" kind="subtitles" label="English" slot="track">\n\n'
+        }
+      ]
     };
   }
   // properties available to the custom element for data binding

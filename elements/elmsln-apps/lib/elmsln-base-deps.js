@@ -11,5 +11,4 @@ import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@lrnwebcomponents/mdi-iconset-svg/mdi-iconset-svg.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";

@@ -260,12 +260,10 @@ class HAXCMSSiteBuilder extends LitElement {
   }
   _themeNameChanged(newValue) {
     if (newValue) {
-      store.themeElement = document.createElement(newValue);
-      wipeSlot(this, "*");
-      this.appendChild(store.themeElement);
-    } else if (newValue && oldValue) {
-      // theme changed
-      store.themeElement.remove();
+      // drop old theme element if there is one
+      if (store.themeElement) {
+        store.themeElement.remove();
+      }
       // wipe out what we got
       wipeSlot(this, "*");
       store.themeElement = document.createElement(newValue);
@@ -645,7 +643,6 @@ class HAXCMSSiteBuilder extends LitElement {
     }
   }
 }
-window.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
 // this global allows a backdoor into activating the HAXcms editor UI
 // this is only going to be visually enabled but it won't actually
 // be able to talk to the backend correctly bc the JWT won't exist
@@ -687,7 +684,15 @@ window.HAXme = function(context = null) {
     window.__haxCMSContextDemo = true;
   }
   // apply context
-  document.body.querySelector("haxcms-editor-builder").__appliedContext = false;
-  document.body.querySelector("haxcms-editor-builder").applyContext(context);
+  if (document.body) {
+    document.body.getElementsByTagName(
+      "haxcms-editor-builder"
+    )[0].__appliedContext = false;
+    document.body
+      .getElementsByTagName("haxcms-editor-builder")[0]
+      .applyContext(context);
+  }
 };
+
+window.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
 export { HAXCMSSiteBuilder };

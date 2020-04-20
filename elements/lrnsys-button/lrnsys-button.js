@@ -6,8 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/elmsln-apps/lib/elmsln-base-deps.js";
 /**
  * `lrnsys-button`
  * `A simple button for use in systems`

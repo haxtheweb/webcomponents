@@ -233,7 +233,7 @@ class AccentCard extends SimpleColors {
         description: "A card with optional accent styling.",
         icon: "chrome-reader-mode",
         color: "light-blue",
-        groups: ["Media", "Text"],
+        groups: ["Media", "Content", "Presentation"],
         handles: [
           {
             type: "media",

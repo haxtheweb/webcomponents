@@ -23,10 +23,6 @@ import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
  * `rich-text-editor-toolbar`
  * `a basic toolbar for the rich text editor`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
  * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/config.html custom configuration
@@ -882,7 +878,5 @@ class RichTextEditorToolbar extends PolymerElement {
     this.collapsed = !this.collapsed;
   }
 }
-
-export { RichTextEditorToolbar };
-
 window.customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
+export { RichTextEditorToolbar };

@@ -230,6 +230,11 @@ class SimpleFields extends SimpleFieldsLite {
             type: "markup"
           }
         },
+        "md-block": {
+          defaultSettings: {
+            type: "md-block"
+          }
+        },
         monthpicker: {
           defaultSettings: {
             type: "string",
@@ -406,6 +411,13 @@ class SimpleFields extends SimpleFieldsLite {
           defaultSettings: {
             element: "simple-fields-code",
             setValueProperty: "editorValue",
+            noWrap: true
+          }
+        },
+        "md-block": {
+          defaultSettings: {
+            element: "md-block",
+            setValueProperty: "source",
             noWrap: true
           }
         },

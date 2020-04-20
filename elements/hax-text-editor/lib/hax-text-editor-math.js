@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import { MathTex } from "@lrnwebcomponents/lrn-math/lrn-math.js";
+import { LrnMath } from "@lrnwebcomponents/lrn-math/lrn-math.js";
 /**
  * `hax-text-editor-math`
  * @element hax-text-editor-math
@@ -20,7 +20,7 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
   constructor() {
     super();
     this.inlineWidget = true;
-    let element = MathTex;
+    let element = LrnMath;
     this.fields = element.haxProperties.settings.configure;
     this.tag = element.tag;
     this.icon = element.haxProperties.gizmo.icon;

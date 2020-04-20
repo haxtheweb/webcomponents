@@ -457,7 +457,6 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   disconnectedCallback() {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     this.removeEventListener("a11y-tab-changed", e => this.updateTabs());
-    this._unsetBreakpoints();
     super.disconnectedCallback();
   }
 

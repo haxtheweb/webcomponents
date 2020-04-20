@@ -336,7 +336,19 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield"
           }
         ]
-      }
+      },
+      demoSchema: [
+        {
+          tag: "license-element",
+          properties: {
+            title: "Wonderland",
+            creator: "Mad Hatter",
+            source: "https://haxtheweb.org/",
+            license: "by"
+          },
+          content: ""
+        }
+      ]
     };
   }
   /**

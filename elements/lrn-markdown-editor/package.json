@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.5",
+  "version": "2.6.7",
   "description": "markdown editor wrapper with preview editor",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/mtz-marked-editor": "^2.6.5",
+    "@lrnwebcomponents/mtz-marked-editor": "^2.6.7",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-pages": "^3.0.0",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.5",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

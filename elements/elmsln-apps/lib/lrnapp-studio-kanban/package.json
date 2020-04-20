@@ -1,6 +1,5 @@
 {
   "name": "@polymer/lrnapp-studio-kanban",
-  "flat": true,
   "version": "",
   "description": "studio kanban board",
   "main": "index.html",

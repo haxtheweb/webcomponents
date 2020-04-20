@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-timeline-hax.json"
     }
   },
-  "version": "2.6.5",
+  "version": "2.6.7",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^2.6.5",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.5",
-    "@lrnwebcomponents/simple-colors": "^2.6.5",
-    "lit-element": "2.0.1"
+    "@lrnwebcomponents/responsive-utility": "^2.6.7",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.7",
+    "@lrnwebcomponents/simple-colors": "^2.6.7",
+    "lit-element": "^2.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

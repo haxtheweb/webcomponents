@@ -1,6 +1,5 @@
 {
   "name": "@polymer/lrnapp-canvas-listing",
-  "flat": true,
   "version": "",
   "description": "listing of courses from canvas",
   "main": "index.html",

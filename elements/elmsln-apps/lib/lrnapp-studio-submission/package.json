@@ -1,6 +1,5 @@
 {
   "name": "@polymer/lrnapp-studio-submission",
-  "flat": true,
   "version": "",
   "description": "A LRN app",
   "main": "lrnapp-studio-submission.html",

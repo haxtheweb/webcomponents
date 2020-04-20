@@ -587,50 +587,54 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.__mainPosts = [];
     this.__extraPosts = [];
     this.__followUpPosts = [];
-    this.selectedPage = 0;
-    import("@polymer/iron-pages/iron-pages.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
-    import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
-    autorun(reaction => {
-      let location = toJS(store.location);
-      this._noticeLocationChange(location);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      let manifest = toJS(store.manifest);
-      this.title = varGet(manifest, "title", "");
-      this.image = varGet(
-        manifest,
-        "metadata.theme.variables.image",
-        "assets/banner.jpg"
-      );
-      this.icon = varGet(
-        manifest,
-        "metadata.theme.variables.icon",
-        "icons:record-voice-over"
-      );
-      this.author = varGet(manifest, "metadata.author", {});
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.activeTitle = toJS(store.activeTitle);
-      this.shareUrl = document.location.href;
-      this.shareMsg = this.activeTitle + " " + this.shareUrl;
-      if (varGet(store.activeItem, "metadata.fields.subtitle", false)) {
-        this.subtitle = store.activeItem.metadata.fields.subtitle;
-      } else {
-        this.subtitle = false;
-      }
-      // look for image on the post and make it the pin share
-      if (varGet(store.activeItem, "metadata.fields.images.0.src", false)) {
-        this.activeImage = store.activeItem.metadata.fields.images[0].src;
-      }
-      this.__disposer.push(reaction);
-    });
+    setTimeout(() => {
+      this.selectedPage = 0;
+      import("@polymer/iron-pages/iron-pages.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
+      import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
+      autorun(reaction => {
+        let location = toJS(store.location);
+        this._noticeLocationChange(location);
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        let manifest = toJS(store.manifest);
+        this.title = varGet(manifest, "title", "");
+        this.image = varGet(
+          manifest,
+          "metadata.theme.variables.image",
+          "assets/banner.jpg"
+        );
+        this.icon = varGet(
+          manifest,
+          "metadata.theme.variables.icon",
+          "icons:record-voice-over"
+        );
+        this.author = varGet(manifest, "metadata.author", {});
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.activeManifestIndexCounter = toJS(
+          store.activeManifestIndexCounter
+        );
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.activeTitle = toJS(store.activeTitle);
+        this.shareUrl = document.location.href;
+        this.shareMsg = this.activeTitle + " " + this.shareUrl;
+        if (varGet(store.activeItem, "metadata.fields.subtitle", false)) {
+          this.subtitle = store.activeItem.metadata.fields.subtitle;
+        } else {
+          this.subtitle = false;
+        }
+        // look for image on the post and make it the pin share
+        if (varGet(store.activeItem, "metadata.fields.images.0.src", false)) {
+          this.activeImage = store.activeItem.metadata.fields.images[0].src;
+        }
+        this.__disposer.push(reaction);
+      });
+    }, 0);
   }
   /**
    * LitElement shadowDom ready

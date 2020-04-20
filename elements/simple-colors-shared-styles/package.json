@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@rhelements/rh-sass": "*",
-    "lit-element": "2.2.1"
+    "lit-element": "^2.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

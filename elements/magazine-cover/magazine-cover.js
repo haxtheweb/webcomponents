@@ -292,7 +292,7 @@ class MagazineCover extends LitElement {
           "Present a full screen cover image with a call to action. Good for starting off a series of content",
         icon: "flip-to-front",
         color: "teal",
-        groups: ["Image", "Media", "Presentation"],
+        groups: ["Image", "Presentation"],
         handles: [
           {
             type: "image",

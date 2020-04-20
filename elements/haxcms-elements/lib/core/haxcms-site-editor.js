@@ -5,15 +5,13 @@
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./haxcms-site-dashboard.js";
 /**
  * `haxcms-site-editor`
@@ -179,17 +177,6 @@ class HAXCMSSiteEditor extends LitElement {
         @response="${this._handleDeleteResponse}"
         @last-error-changed="${this.lastErrorChanged}"
         @last-response-changed="${this.__deleteNodeResponseChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers='{"Authorization": "Bearer ${this.jwt}"}'
-        id="getnodefieldsajax"
-        .url="${this.getNodeFieldsPath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleGetNodeFieldsResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
         reject-with-request
@@ -688,7 +675,16 @@ class HAXCMSSiteEditor extends LitElement {
 
   loadNodeFields(e) {
     this.__nodeFieldsInvoked = e.detail;
-    this.querySelector("#getnodefieldsajax").body = {
+    let form = document.createElement("simple-fields-form");
+    form.style.margin = "0 0 50px 0";
+    form.setAttribute("autoload", "autoload");
+    form.method = this.method;
+    form.headers = {
+      Authorization: `Bearer ${this.jwt}`,
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    };
+    form.body = {
       jwt: this.jwt,
       token: this.getFormToken,
       site: {
@@ -698,7 +694,48 @@ class HAXCMSSiteEditor extends LitElement {
         id: this.activeItem.id
       }
     };
-    this.querySelector("#getnodefieldsajax").generateRequest();
+    form.loadEndpoint = this.getNodeFieldsPath;
+    this.__fieldsForm = form;
+    let b1 = document.createElement("paper-button");
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:save";
+    b1.appendChild(icon);
+    b1.appendChild(document.createTextNode("Save fields"));
+    b1.style.color = "white";
+    b1.style.backgroundColor = "#2196f3";
+    b1.setAttribute("dialog-confirm", "dialog-confirm");
+    b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("div");
+    b.style.position = "absolute";
+    b.style.bottom = 0;
+    b.style.left = 0;
+    b.style.right = 0;
+    b.style.zIndex = 1000000;
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: "Edit " + store.activeTitle + " fields",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
+        elements: {
+          content: form,
+          buttons: b
+        },
+        invokedBy: this.__nodeFieldsInvoked,
+        clone: false,
+        modal: true
+      }
+    });
+    window.dispatchEvent(evt);
   }
   /**
    * Load site fields
@@ -733,74 +770,6 @@ class HAXCMSSiteEditor extends LitElement {
       store.dashboardOpened = !store.dashboardOpened;
     }, 300);
   }
-  /**
-   * Handle getting fields response
-   */
-
-  _handleGetNodeFieldsResponse(e) {
-    let wiring = new HAXWiring();
-    this._haxSchema = wiring.prototypeHaxProperties();
-    this._haxSchema.settings = e.detail.response.haxSchema;
-    let values = e.detail.response.values;
-    let c = document.createElement("hax-schema-form"); // set a min width of 50 viewable
-
-    c.style.minWidth = "50vw";
-
-    for (var key in this._haxSchema.settings) {
-      let schema = wiring.getHaxJSONSchema(key, this._haxSchema);
-
-      for (var i in schema.properties) {
-        if (values[i]) {
-          schema.properties[i].value = values[i];
-        }
-      }
-
-      c.set(key + "Schema", schema);
-    }
-
-    this.__fieldsForm = c; // we get back HAXSchema from the server
-
-    let b1 = document.createElement("paper-button");
-    let icon = document.createElement("iron-icon");
-    icon.icon = "icons:save";
-    b1.appendChild(icon);
-    b1.appendChild(document.createTextNode("Save fields"));
-    b1.style.color = "white";
-    b1.style.backgroundColor = "#2196f3";
-    b1.setAttribute("dialog-confirm", "dialog-confirm");
-    b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
-    let b2 = document.createElement("paper-button");
-    b2.appendChild(document.createTextNode("cancel"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    let b = document.createElement("div");
-    b.style.position = "absolute";
-    b.style.bottom = 0;
-    b.style.left = 0;
-    b.style.right = 0;
-    b.style.zIndex = 1000000;
-    b.appendChild(b1);
-    b.appendChild(b2);
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: "Edit " + store.activeTitle + " fields",
-        styles: {
-          "--simple-modal-width": "75vw",
-          "--simple-modal-max-width": "75vw"
-        },
-        elements: {
-          content: c,
-          buttons: b
-        },
-        invokedBy: this.__nodeFieldsInvoked,
-        clone: false,
-        modal: true
-      }
-    });
-    window.dispatchEvent(evt);
-  }
 
   _schemaFormValueChanged(e) {
     let customTag = {
@@ -825,7 +794,7 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   _saveNodeFieldsTap(e) {
-    let values = this.__fieldsForm.value;
+    let values = this.__fieldsForm.submit();
     values.id = this.activeItem.id; // fire event with details for saving
 
     window.dispatchEvent(

@@ -95,19 +95,14 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Sample gizmo",
-        description: "The user will be able to see this for selection in a UI.",
+        title: "Flash card",
+        description: "Flip the card over to learn the term",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Video", "Media"],
-        handles: [
-          {
-            type: "video",
-            url: "source"
-          }
-        ],
+        groups: ["Education", "Interactive"],
+        handles: [],
         meta: {
-          author: "Your organization on github"
+          author: "ELMS:LN"
         }
       },
       settings: {

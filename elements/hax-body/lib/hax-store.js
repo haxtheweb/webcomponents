@@ -1468,7 +1468,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        groups: ["Text"],
+        groups: ["Content"],
         handles: [
           {
             type: "content",
@@ -1496,7 +1496,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         description: "A table for displaying data",
         icon: "image:grid-on",
         color: "blue-grey",
-        groups: ["Text"],
+        groups: ["Content", "Table", "Data"],
         meta: {
           author: "W3C"
         }
@@ -1841,6 +1841,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         window.HaxStore.write("gizmoList", gizmoList, this);
       }, 10);
     }
+  }
+  /**
+   * get the schema from a tag
+   */
+  haxSchemaFromTag(tag) {
+    if (this.elementList && this.elementList[tag]) {
+      return this.elementList[tag];
+    }
+    return {};
   }
   /**
    * Optional send array, to improve performance and event bubbling better
@@ -2230,7 +2239,12 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
 window.HaxStore.haxElementToNode = (tag, content, properties) => {
   // support sandboxed environments which
   // will hate iframe tags but love webview
-  if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
+  if (
+    window.HaxStore &&
+    window.HaxStore.instance &&
+    window.HaxStore.instance._isSandboxed &&
+    tag === "iframe"
+  ) {
     tag = "webview";
   }
   var frag = document.createElement(tag);

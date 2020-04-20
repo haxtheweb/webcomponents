@@ -1,6 +1,5 @@
 {
   "name": "@polymer/lrnapp-cis",
-  "flat": true,
   "version": "",
   "description": "A LRN app",
   "main": "lrnapp-cis.html",

@@ -9,17 +9,18 @@
  * For example, the default of:
  *
  *  {
- *    'api': '1',
- *    'canScale': true,
- *    'canPosition': true,
- *    'canEditSource': true,
- *    'gizmo': {},
- *    'settings': {
- *      'quick': [],
- *      'configure': [],
- *      'advanced': [],
+ *    "api": "1",
+ *    "canScale": true,
+ *    "canPosition": true,
+ *    "canEditSource": true,
+ *    "gizmo": {},
+ *    "settings": {
+ *      "quick": [],
+ *      "configure": [],
+ *      "advanced": [],
  *    },
- *    'saveOptions': {}
+ *    "saveOptions": {},
+ *    "demoSchema": []
  *  }
  *
  * This tells hax-body's context menu for custom-elements that this element
@@ -126,6 +127,19 @@
  *     'colors'
  *   ]
  * },
+ *  * `demoSchema`
+ * @element demoSchema is used to present this element in demonstrations and
+ * interfaces that want to provide a sample of what the element is. This is
+ * an easy way to ship a demo of this element and is used in HAX settings.
+ * [{
+ *   tag: "my-tag",
+ *   content: "<p>inner html</p>",
+ *   properties: {
+ *     endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
+ *     primaryColor: "yellow",
+ *     title: "A cat"
+ *   }
+ * }],
  *
  * Specialized functions
  * `preProcessHaxNodeToContent`
@@ -340,6 +354,10 @@ export class HAXWiring {
           props.saveOptions = {
             wipeSlot: false
           };
+        }
+        // support for demoSchema
+        if (typeof props.demoSchema === typeof undefined) {
+          props.demoSchema = [];
         }
         // fire event so we know they have been set for the store to collect
         // only fire if we haven't already so multiple elements don't keep bubbling
@@ -560,7 +578,7 @@ export class HAXWiring {
         type: "object",
         properties: {}
       };
-      schema.properties = SimpleFields.fieldsToSchema(settings);
+      schema.properties = new SimpleFields().fieldsToSchema(settings);
       // support post processing of schema in order to allow for really
       // custom implementations that are highly dynamic in nature
       // post process hook needs to see if there's a class overriding this
@@ -593,15 +611,15 @@ export class HAXWiring {
      * correctly with support for recursive nesting thx to objects / arrays.
      */
     this._getHaxJSONSchemaProperty = settings => {
-      return SimpleFields.fieldsToSchema(settings);
+      return new SimpleFields().fieldsToSchema(settings);
     };
     /**
      * Convert input method to schema type
      */
     this.getHaxJSONSchemaType = inputMethod => {
       var method =
-        SimpleFields.fieldsConversion.inputMethod[inputMethod] ||
-        SimpleFields.fieldsConversion;
+        new SimpleFields().fieldsConversion.inputMethod[inputMethod] ||
+        new SimpleFields().fieldsConversion;
       return method && method.defaultSettings && method.defaultSettings.type
         ? method.defaultSettings.type
         : "string";
@@ -610,7 +628,9 @@ export class HAXWiring {
      * List valid input methods.
      */
     this.validHAXPropertyInputMethod = () => {
-      var methods = Object.keys(SimpleFields.fieldsConversion.inputMethod);
+      var methods = Object.keys(
+        new SimpleFields().fieldsConversion.inputMethod
+      );
       return methods;
     };
     /**
@@ -718,7 +738,18 @@ export class HAXWiring {
         saveOptions: {
           wipeSlot: false,
           unsetAttributes: ["end-point", "secondary-color"]
-        }
+        },
+        demoSchema: [
+          {
+            tag: "my-tag",
+            content: "<p>inner html</p>",
+            properties: {
+              endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
+              primaryColor: "yellow",
+              title: "A cat"
+            }
+          }
+        ]
       };
       return props;
     };
@@ -824,7 +855,7 @@ export const HAXElement = function(SuperClass) {
      * correctly with support for recursive nesting thx to objects / arrays.
      */
     _getHaxJSONSchemaProperty(settings) {
-      return SimpleFields.fieldsToSchema(settings);
+      return new SimpleFields().fieldsToSchema(settings);
     }
     /**
      * Convert input method to schedma type
@@ -917,7 +948,7 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * correctly with support for recursive nesting thx to objects / arrays.
    */
   _getHaxJSONSchemaProperty: function(settings) {
-    return SimpleFields.fieldsToSchema(settings);
+    return new SimpleFields().fieldsToSchema(settings);
   },
   /**
    * Convert input method to schedma type

@@ -43,29 +43,8 @@ class ElmslnStudio extends LitElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "elmsln-studio";
-  }
-
-  // life cycle
-  constructor() {
-    super();
-
-    this.tag = ElmslnStudio.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/elmsln-studio-properties.json
-    let obj = ElmslnStudio.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -80,5 +59,5 @@ class ElmslnStudio extends LitElement {
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("elmsln-studio", ElmslnStudio);
+customElements.define(ElmslnStudio.tag, ElmslnStudio);
 export { ElmslnStudio };
