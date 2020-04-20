@@ -18,25 +18,26 @@ import "./lib/elmsln-studio-dashboard.js";
  * @demo demo/index.html
  */
 class ElmslnStudio extends LitElement {
+  
   // render function
   render() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
+<style>
 
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <slot></slot>
-    `;
+
+:host {
+  display: block; }
+
+:host([hidden]) {
+  display: none; }
+</style>
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return {}
+;
   }
 
   /**

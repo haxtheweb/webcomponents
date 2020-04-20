@@ -275,14 +275,12 @@ ${super.render()}`;
       data.group.append(new Chartist.Svg('ellipse', {
         cx: "50%",
         cy: "50%",
-        rx: "30%",
-        ry: "30%",
-        zIndex: 200
+        rx: "32%",
+        ry: "32%"
       }, 'ct-center-ellipse'));
       data.group.append(new Chartist.Svg('image', {
         href: this.imageSrc,
-        alt: this.imageAlt,
-        zIndex: 400
+        alt: this.imageAlt
       }, 'ct-center-image'));
     }
   }
