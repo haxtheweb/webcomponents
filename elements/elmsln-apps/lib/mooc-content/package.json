@@ -1,6 +1,5 @@
 {
   "name": "@polymer/lrnapp-book",
-  "flat": true,
   "version": "",
   "description": "A LRN app",
   "main": "lrnapp-book.html",

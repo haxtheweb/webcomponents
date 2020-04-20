@@ -43,8 +43,8 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
     "@polymer/iron-ajax": "^3.0.1",
-    "lit-element": "2.2.1",
-    "lunr": "^2.3.6"
+    "lit-element": "^2.3.0",
+    "lunr": "2.3.6"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "0.2.0",

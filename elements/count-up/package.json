@@ -43,7 +43,7 @@
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^2.6.0",
     "countup.js": "^2.0.4",
-    "lit-element": "2.2.1"
+    "lit-element": "^2.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
