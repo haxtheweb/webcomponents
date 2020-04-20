@@ -17,4 +17,8 @@ export const ElmslnStudioDashboardStory = () => {
   const utils = new StorybookUtilities();
   return utils.makeElementFromClass(ElmslnStudioDashboard);
 };
-console.log('ElmslnStudioDashboard',ElmslnStudioDashboard,ElmslnStudioDashboardStory);
+console.log(
+  "ElmslnStudioDashboard",
+  ElmslnStudioDashboard,
+  ElmslnStudioDashboardStory
+);

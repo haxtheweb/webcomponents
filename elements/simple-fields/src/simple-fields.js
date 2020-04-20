@@ -119,6 +119,7 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @extends simple-fields-lite
  * @demo ./demo/index.html
  * @demo ./demo/schema.html Schema
+ * @demo ./demo/conditional.html Conditionals
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {

@@ -34,15 +34,15 @@
                 "arrays": {
                   "phoneNumbers": [
                     {
-                      "type": "home",
+                      "type": "Home",
                       "phoneNumber": "1-555-867-5309"
                     },
                     {
-                      "type": "cell",
+                      "type": "Cell",
                       "phoneNumber": "1-555-555-5555"
                     },
                     {
-                      "type": "work",
+                      "type": "Work",
                       "phoneNumber": "1-800-888-8888"
                     }
                   ],
@@ -145,7 +145,12 @@
                             properties: {
                               type: {
                                 title: "Type",
-                                type: "string"
+                                type: "string",
+                                options: {
+                                  "cell": "Cell",
+                                  "home": "Home",
+                                  "work": "Work"
+                                }
                               },
                               phoneNumber: {
                                 title: "Phone Number",

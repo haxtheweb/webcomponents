@@ -410,7 +410,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get fieldElementTag() {
-    return this.type === "select"
+    return this.type === "select" || (this.type === "text" && !this.noOptions)
       ? "select"
       : this.type === "textarea"
       ? "textarea"
@@ -557,7 +557,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get sortedOptions() {
-    let sorted = (this.itemsList || []).slice();
+    let sorted = (this.itemsList || []).map(item=>typeof item === "object" ? item : {value: item, text: item});
     Object.keys(this.options || {})
       .sort((a, b) => (a > b ? 1 : -1))
       .forEach(key => sorted.push({ value: key, text: this.options[key] }));

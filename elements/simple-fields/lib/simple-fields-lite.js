@@ -290,10 +290,16 @@ class SimpleFieldsLite extends LitElement {
         type: Object
       },
       /*
-       * array of fields and config data in schema
+       * form elements by id and config data in schema
        */
-      __fields: {
+      __formElements: {
         type: Object
+      },
+      /*
+       * list form elements in order and config data in schema
+       */
+      __formElementsArray: {
+        type: Array
       }
     };
   }
@@ -449,7 +455,8 @@ class SimpleFieldsLite extends LitElement {
         }
       }
     };
-    this.__fields = [];
+    this.__formElements = {};
+    this.__formElementsArray = [];
     this.schema = {};
     this.value = {};
     setTimeout(() => {
@@ -471,13 +478,22 @@ class SimpleFieldsLite extends LitElement {
     });
   }
   /**
-   * field data
+   * form elements by id
    *
    * @readonly
    * @memberof SimpleFieldsLite
    */
-  get fields() {
-    return this.__fields;
+  get formElements() {
+    return this.__formElements;
+  }
+  /**
+   * list of form elements in order
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
+  get formElementsArray() {
+    return this.__formElementsArray;
   }
   /**
    * whether there are no errors
@@ -502,8 +518,8 @@ class SimpleFieldsLite extends LitElement {
     this._clearForm();
     this._addToForm();
     let firstField =
-      this.__fields && this.__fields[0] && this.__fields[0].field
-        ? this.__fields[0].field
+      this.__formElementsArray && this.__formElementsArray[0] && this.__formElementsArray[0].field
+        ? this.__formElementsArray[0].field
         : false;
     if (firstField) firstField.autofocus = !this.disableAutofocus;
   }
@@ -542,7 +558,8 @@ class SimpleFieldsLite extends LitElement {
           desc =
             schemaProp.description && (schemaProp.label || schemaProp.title)
               ? schemaProp.description
-              : undefined;
+              : undefined,
+          onValueChanged = schemaProp.onValueChanged;
         data.labelSlot = schema.labelSlot || data.labelSlot;
         data.descriptionSlot = schema.descriptionSlot || data.descriptionSlot;
         data.errorMessageSlot =
@@ -579,6 +596,8 @@ class SimpleFieldsLite extends LitElement {
         element.id = id;
         element.setAttribute("name", id);
         element.setAttribute("language", this.language);
+        if(schemaProp.options) element.options = schemaProp.options;
+        if(schemaProp.itemsList) element.itemsList = schemaProp.itemsList; 
         if (required && required.includes(key))
           element.setAttribute("required", true);
         if (schemaProp.disabled) {
@@ -658,19 +677,22 @@ class SimpleFieldsLite extends LitElement {
               data.valueSlot
             );
           element.addEventListener(data.valueChangedProperty, e =>
-            this._handleChange(element, data.valueProperty)
+            this._handleChange(element, data.valueProperty, schemaProp.onValueChanged,e)
           );
           wrapper.addEventListener(data.errorChangedProperty, e => {
-            let error = this._deepClone(this.error || {});
+            let error = this._deepClone(this.error || {}),
+              errorEvent = schemaProp.onErrorChanged;
             if (wrapper[data.errorProperty]) {
               error[id] = wrapper[data.errorMessageProperty] || "";
             } else if (error && error[id]) {
               delete error[id];
             }
             this.error = error;
+            wrapper.errorEvent(e);
           });
         }
-        this.__fields.push({ id: id, field: wrapper, data: data });
+        this.__formElementsArray.push({ id: id, field: wrapper, data: data });
+        this.__formElements[id] = { element: element, field: wrapper };
       }
     });
   }
@@ -745,7 +767,7 @@ class SimpleFieldsLite extends LitElement {
         vals = this._getValue(parent.name) || [],
         index = id.replace(`${parent.name}.`, "");
       vals.splice(parseInt(index), 1);
-      this.__fields = this.__fields.filter(
+      this.__formElementsArray = this.__formElementsArray.filter(
         field => field.id.indexOf(parent.name) === 0
       );
       parent.innerHTML = "";
@@ -775,7 +797,7 @@ class SimpleFieldsLite extends LitElement {
    */
   _clearForm() {
     this.querySelectorAll("*").forEach(child => child.remove());
-    this.__fields = [];
+    this.__formElementsArray = [];
   }
 
   /**
@@ -817,7 +839,7 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
-    this.fields.forEach(field => {
+    this.formElementsArray.forEach(field => {
       let data = field.data || {},
         el = field.field,
         id = field.id;
@@ -897,12 +919,13 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} element element that changed
    * @param {object} valueProperty
    */
-  _handleChange(element, valueProperty) {
+  _handleChange(element, valueProperty,onchange,e) {
     this._setValue(
       element.id || element.getAttribute("id"),
       element[valueProperty]
     );
     this._fireValueChanged();
+    if(onchange) onchange(e);
   }
 
   /**
