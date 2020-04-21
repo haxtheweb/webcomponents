@@ -4,9 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/elmsln-apps/lib/elmsln-base-deps.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `lrnsys-button`
  * `A simple button for use in systems`
@@ -81,6 +81,8 @@ class LrnsysButton extends LitElement {
   }
   constructor() {
     super();
+    this.href = null;
+    this.target = null;
     this.label = "";
     this.icon = "";
     this.alt = "";
@@ -92,16 +94,26 @@ class LrnsysButton extends LitElement {
       this.addEventListener("focusin", this.tapEventOn.bind(this));
       this.addEventListener("focusout", this.tapEventOff.bind(this));
       this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
+  }
+  firstUpdated(changedProperties) {
+    this.updated(changedProperties);
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldvalue, propName) => {
+      if (this.shadowRoot && ['href', 'target'].includes(propName)) {
+        if (this[propName]) {
+          this.shadowRoot.querySelector('#lrnsys-button-link')[propName] = this[propName];
+        }
+        else {
+          this.shadowRoot.querySelector('#lrnsys-button-link').removeAttribute(propName);
+        }
+      }
+    });
   }
   render() {
     return html`
-      <a
-        tabindex="-1"
-        id="lrnsys-button-link"
-        href="${ifDefined(this.href ? this.href : undefined)}"
-        target="${ifDefined(this.target ? this.target : undefined)}"
+      <a tabindex="-1" id="lrnsys-button-link"
         ?disabled="${this.disabled}"
       >
         <paper-button
