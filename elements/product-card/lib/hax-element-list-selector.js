@@ -353,10 +353,18 @@ class HaxElementListSelector extends LitElement {
       );
     }, 50);
   }
+  /**
+   * Return the appstore values
+   */
   getAppstoreValues() {
     // get form values
     let value = this.shadowRoot.querySelector("#form").submit();
     let appstore = {
+      provider: {
+        cdn: value.haxcore.providers["haxcore-providers-cdn"],
+        other: value.haxcore.providers["haxcore-providers-other"],
+        pk: value.haxcore.providers["haxcore-providers-pk"]
+      },
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],

@@ -42,7 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^2.6.0",
-    "countup.js": "^2.0.4",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
