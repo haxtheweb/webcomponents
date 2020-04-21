@@ -156,8 +156,8 @@ This element accepts JSON schema with additional features noted in the example b
   }
 ```
 
-### Configuring schemaConverstion Property
-You can customise elements from JSON schema conversion by setting `schemaConverstion` property.
+### Configuring schemaConversion Property
+You can customise elements from JSON schema conversion by setting `schemaConversion` property.
 ```
 type: {                                       //For properties in "this.schema", define elements based on a property's "type"
   object: {                                   //Defines element used when property's "type" is an "object"
@@ -210,6 +210,145 @@ type: {                                       //For properties in "this.schema",
  * @element simple-fields-lite
  * @demo ./demo/lite.html Demo
  */
+export const SimpleFieldsSchemaConversionLite = {
+  defaultSettings: {
+    element: "input",
+    attributes: {
+      type: "text"
+    },
+    properties: {
+      minLength: "minlength",
+      maxLength: "maxlength"
+    }
+  },
+  type: {
+    array: {
+      defaultSettings: {
+        element: "simple-fields-array",
+        invalidProperty: "invalid",
+        noWrap: true,
+        descriptionProperty: "description",
+        child: {
+          element: "simple-fields-array-item",
+          noWrap: true,
+          descriptionProperty: "description",
+          properties: {
+            previewBy: "previewBy"
+          }
+        }
+      }
+    },
+    boolean: {
+      defaultSettings: {
+        element: "input",
+        valueProperty: "checked",
+        valueChangedProperty: "click",
+        attributes: {
+          type: "checkbox",
+          value: false
+        }
+      }
+    },
+    file: {
+      defaultSettings: {
+        element: "input",
+        attributes: {
+          type: "url"
+        }
+      }
+    },
+    integer: {
+      defaultSettings: {
+        element: "input",
+        attributes: {
+          autofocus: true,
+          step: 1,
+          type: "number"
+        },
+        properties: {
+          minimum: "min",
+          maximum: "max",
+          multipleOf: "step"
+        }
+      }
+    },
+    markup: {
+      defaultSettings: {
+        element: "textarea"
+      }
+    },
+    number: {
+      defaultSettings: {
+        element: "input",
+        attributes: {
+          autofocus: true,
+          type: "number"
+        },
+        properties: {
+          minimum: "min",
+          maximum: "max",
+          multipleOf: "step"
+        }
+      }
+    },
+    object: {
+      defaultSettings: {
+        element: "simple-fields-fieldset",
+        noWrap: true,
+        descriptionProperty: "description"
+      }
+    },
+    string: {
+      format: {
+        "date-time": {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "datetime-local"
+            }
+          }
+        },
+        time: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "time"
+            }
+          }
+        },
+        date: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "date"
+            }
+          }
+        },
+        email: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "email"
+            }
+          }
+        },
+        uri: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "url"
+            }
+          }
+        }
+      }
+    }
+  }
+};
 class SimpleFieldsLite extends LitElement {
   //styles function
   static get styles() {
@@ -278,10 +417,11 @@ class SimpleFieldsLite extends LitElement {
       },
       /**
        * Conversion from JSON Schema to HTML form elements.
-       * _See [Configuring schemaConverstion Property](configuring-the-schemaconverstion-property) above._
+       * _See [Configuring schemaConversion Property](configuring-the-schemaConversion-property) above._
        */
-      schemaConverstion: {
-        type: Object
+      schemaConversion: {
+        type: Object,
+        attribute: "schema-conversion"
       },
       /*
        * value of fields
@@ -316,145 +456,7 @@ class SimpleFieldsLite extends LitElement {
     this.disableAutofocus = false;
     this.language = "en";
     this.resources = {};
-    this.schemaConversion = {
-      defaultSettings: {
-        element: "input",
-        attributes: {
-          type: "text"
-        },
-        properties: {
-          minLength: "minlength",
-          maxLength: "maxlength"
-        }
-      },
-      type: {
-        array: {
-          defaultSettings: {
-            element: "simple-fields-array",
-            invalidProperty: "invalid",
-            noWrap: true,
-            descriptionProperty: "description",
-            child: {
-              element: "simple-fields-array-item",
-              noWrap: true,
-              descriptionProperty: "description",
-              properties: {
-                previewBy: "previewBy"
-              }
-            }
-          }
-        },
-        boolean: {
-          defaultSettings: {
-            element: "input",
-            valueProperty: "checked",
-            valueChangedProperty: "click",
-            attributes: {
-              type: "checkbox",
-              value: false
-            }
-          }
-        },
-        file: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              type: "url"
-            }
-          }
-        },
-        integer: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              step: 1,
-              type: "number"
-            },
-            properties: {
-              minimum: "min",
-              maximum: "max",
-              multipleOf: "step"
-            }
-          }
-        },
-        markup: {
-          defaultSettings: {
-            element: "textarea"
-          }
-        },
-        number: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "number"
-            },
-            properties: {
-              minimum: "min",
-              maximum: "max",
-              multipleOf: "step"
-            }
-          }
-        },
-        object: {
-          defaultSettings: {
-            element: "simple-fields-fieldset",
-            noWrap: true,
-            descriptionProperty: "description"
-          }
-        },
-        string: {
-          format: {
-            "date-time": {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "datetime-local"
-                }
-              }
-            },
-            time: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "time"
-                }
-              }
-            },
-            date: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "date"
-                }
-              }
-            },
-            email: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "email"
-                }
-              }
-            },
-            uri: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "url"
-                }
-              }
-            }
-          }
-        }
-      }
-    };
+    this.schemaConversion = SimpleFieldsSchemaConversionLite;
     this.__formElements = {};
     this.__formElementsArray = [];
     this.schema = {};
@@ -472,8 +474,9 @@ class SimpleFieldsLite extends LitElement {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "schemaConversion" && this.schemaConversion !== oldValue) console.log('schemaConversion',this.schemaConversion,oldValue);
       if (propName === "error" && this.error !== oldValue) this._errorChanged();
-      if (propName === "schema") this._schemaChanged(this.schema, oldValue);
+      if (["schema","schemaConversion"].includes(propName)) this._schemaChanged(this.schema, oldValue);
       if (propName === "value") this._valueChanged(this.value, oldValue);
     });
   }
@@ -515,8 +518,10 @@ class SimpleFieldsLite extends LitElement {
    * clears and rebuilds form
    */
   rebuildForm() {
+    console.log('schema & value',this.schema,this.schemaConversion,this.value);
     this._clearForm();
     this._addToForm();
+    console.log('form elements',this.formElements);
     let firstField =
       this.__formElementsArray &&
       this.__formElementsArray[0] &&
@@ -525,6 +530,7 @@ class SimpleFieldsLite extends LitElement {
         : false;
     if (firstField) firstField.autofocus = !this.disableAutofocus;
   }
+  
 
   /**
    * converts schema properties to HTML elements and appends them
@@ -540,7 +546,7 @@ class SimpleFieldsLite extends LitElement {
       schemaKeys = Object.keys(schemaProps || {});
     schemaKeys.forEach(key => {
       let schemaProp = schemaProps[key],
-        data = config || this._convertSchema(schemaProp, this.schemaConversion);
+        data = config || this._convertSchema(schemaProp);
       if (data && data.element) {
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
@@ -551,8 +557,8 @@ class SimpleFieldsLite extends LitElement {
             data.noWrap
               ? element
               : document.createElement("simple-fields-container"),
-          value = this._getValue(`${prefix}${key}`),
-          label =
+          value = this._getValue(`${prefix}${key}`);
+          let label =
             schemaProp.label ||
             schemaProp.title ||
             schemaProp.description ||
@@ -561,7 +567,8 @@ class SimpleFieldsLite extends LitElement {
             schemaProp.description && (schemaProp.label || schemaProp.title)
               ? schemaProp.description
               : undefined,
-          onValueChanged = schemaProp.onValueChanged;
+          onValueChanged = schemaProp.onValueChanged,
+          errorEvent = schemaProp.onErrorChanged;
         data.labelSlot = schema.labelSlot || data.labelSlot;
         data.descriptionSlot = schema.descriptionSlot || data.descriptionSlot;
         data.errorMessageSlot =
@@ -682,20 +689,18 @@ class SimpleFieldsLite extends LitElement {
             this._handleChange(
               element,
               data.valueProperty,
-              schemaProp.onValueChanged,
               e
             )
           );
           wrapper.addEventListener(data.errorChangedProperty, e => {
-            let error = this._deepClone(this.error || {}),
-              errorEvent = schemaProp.onErrorChanged;
+            let error = this._deepClone(this.error || {});
             if (wrapper[data.errorProperty]) {
               error[id] = wrapper[data.errorMessageProperty] || "";
             } else if (error && error[id]) {
               delete error[id];
             }
             this.error = error;
-            wrapper.errorEvent(e);
+            if(errorEvent) errorEvent(e);
           });
         }
         this.__formElementsArray.push({ id: id, field: wrapper, data: data });
@@ -814,12 +819,12 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} settings closest current match's defaultSettings object
    * @returns {object}
    */
-  _convertSchema(property, conversion, settings) {
+  _convertSchema(property, conversion = this.schemaConversion, settings) {
     let propKeys = Object.keys(property || {}),
-      convKeys = Object.keys(conversion || {}).filter(key =>
+      convKeys = Object.keys(conversion).filter(key =>
         propKeys.includes(key)
       );
-    if (conversion.defaultSettings) settings = conversion.defaultSettings;
+    if (conversion.defaultSettings) settings = this._deepClone(conversion.defaultSettings);
     convKeys.forEach(key => {
       let val = property[key],
         convData = conversion ? conversion[key] : undefined,
@@ -926,13 +931,24 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} element element that changed
    * @param {object} valueProperty
    */
-  _handleChange(element, valueProperty, onchange, e) {
-    this._setValue(
-      element.id || element.getAttribute("id"),
-      element[valueProperty]
+  _handleChange(element, valueProperty, e) {
+    if(e && e.stopPropagation) e.stopPropagation();
+    let id = element.id || element.getAttribute("id"), val = element[valueProperty];
+    this._setValue(id,val);
+    console.log('_handleChange',this.value,id,val);
+    this.dispatchEvent(
+      new CustomEvent(`${id}-value-changed`, {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          id: id,
+          element: element,
+          value: val
+        }
+      })
     );
     this._fireValueChanged();
-    if (onchange) onchange(e);
   }
 
   /**

@@ -21,17 +21,9 @@
         <style>#submission {width: 100%;}</style>
         <script>
           window.onload = () => {
+
             let simplefields = document.getElementById('simplefields'),
               contactChanged = (e) => {
-                let contactinfo = simplefields.formElements["contactInfo"].element,
-                  schema = e.detail.value === "none" 
-                  ? {} 
-                  : e.detail.value === "email" 
-                    ? emailFields 
-                    : phoneFields;
-                //contactinfo.hidden = e.value === "none" || !e.value;
-                contactinfo.schema = schema;
-                console.log('contactChanged',e.detail.value,contactinfo.hidden,schema,contactinfo.schema);
               }, 
               phoneFields = {
                 $schema: "http://json-schema.org/schema#",
@@ -77,6 +69,17 @@
                   }
                 }
               };
+            simplefields.addEventListener("contact-value-changed",(e) => {
+                let contactinfo = simplefields.formElements["contactInfo"].element,
+                  schema = e.detail.value === "none" 
+                  ? {} 
+                  : e.detail.value === "email" 
+                    ? emailFields 
+                    : phoneFields;
+                //contactinfo.hidden = e.value === "none" || !e.value;
+                contactinfo.schema = schema;
+                console.log('contactChanged',e.detail.value,contactinfo.hidden,schema,contactinfo.schema);
+            });
             simplefields.schema = {
               $schema: "http://json-schema.org/schema#",
               title: "Store",

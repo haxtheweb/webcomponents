@@ -41,6 +41,7 @@ class A11yCollapse extends LitElement {
           display: block;
           margin: var(--a11y-collapse-margin, 15px 0);
           border: var(--a11y-collapse-border, 1px solid);
+          border-color: var(--a11y-collapse-border-color, inherit);
           transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         :host(:not(:first-of-type)) {
@@ -102,6 +103,7 @@ class A11yCollapse extends LitElement {
               var(--a11y-collapse-horizontal-padding, 16px)
             );
           border-top: 0px solid;
+          border-color: var(--a11y-collapse-border-color, inherit);
           max-height: 0;
           transition: all 0.75s ease;
           overflow-y: hidden;
@@ -128,6 +130,7 @@ class A11yCollapse extends LitElement {
               var(--a11y-collapse-horizontal-padding, 16px)
             );
           border-top: var(--a11y-collapse-border, 1px solid);
+          border-color: var(--a11y-collapse-border-color, inherit);
           max-height: 200000000000vh;
         }
         :host([expanded]) #content-inner {

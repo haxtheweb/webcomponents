@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsLite } from "./simple-fields-lite.js";
+import { SimpleFieldsSchemaConversionLite, SimpleFieldsLite } from "./simple-fields-lite.js";
+import { SimpleFields } from "../simple-fields.js";
 /**
  * `simple-fields-form-lite`
  * binding and submission capabilities on top of simple-fields-lite
@@ -9,7 +10,7 @@ import { SimpleFieldsLite } from "./simple-fields-lite.js";
  * @extends simple-fields-lite
  * @demo ./demo/form-lite.html
  */
-class SimpleFieldsFormLite extends SimpleFieldsLite {
+class SimpleFieldsFormLite extends LitElement {
   static get styles() {
     return [
       css`
@@ -27,17 +28,34 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
     return html`
       <form>
         <slot name="before"></slot>
-        <simple-fields-lite id="sf" autofocus></simple-fields-lite>
+        <simple-fields-lite 
+          id="sf" 
+          .autofocus="${!this.disableAutofocus}"
+          .language="${this.language}"
+          .resources="${this.resources}"
+          .schema="${this.schema}"
+          .schema-conversion="${this.schemaConversion}"
+          @value-changed="${this._valueChanged}">
+        </simple-fields-lite>
+        <slot name="after"></slot>
         <slot></slot>
       </form>
     `;
   }
   /**
+   * updates the form value when a field changes
+   *
+   * @param {*} e value-changed event
+   * @memberof SimpleFieldsFormLite
+   */
+  _valueChanged(e){
+    this.value = e.detail.value;
+  }
+  /**
    * allow setting value
    */
   setValue(value) {
-    let sf = this.shadowRoot.querySelector("#sf");
-    sf.value = value;
+    this.value = value;
   }
   /**
    * first update hook; also implies default settings
@@ -81,11 +99,11 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
    * @memberof SimpleFieldsFormLite
    */
   _applyLoadedData() {
-    let sf = this.shadowRoot.querySelector("#sf");
     if (this.loadResponse.data.schema) {
-      sf.schema = this.loadResponse.data.schema;
+      this.schema = this.loadResponse.data.schema;
     }
-    if (this.loadResponse.data.value) sf.value = this.loadResponse.data.value;
+    if (this.loadResponse.data.value) this.value = this.loadResponse.data.value;
+    console.log('_applyLoadedData',this.loadResponse.data,this.schema,this.value);
   }
   /**
    * load data from the end point
@@ -144,6 +162,29 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
   }
   constructor() {
     super();
+    this._setFieldProperties();
+    this._setFormProperties();
+    console.log(' form constructor',this.schemaConversion);
+  }
+  /**
+   * allows constructor to be overridden
+   *
+   * @memberof SimpleFieldsFormLite
+   */
+  _setFieldProperties(){
+    this.disableAutofocus = false;
+    this.language = "en";
+    this.resources = {};
+    this.schemaConversion = SimpleFieldsSchemaConversionLite;
+    this.schema = {};
+    this.value = {};
+  }
+  /**
+   * allows constructor to be overridden
+   *
+   * @memberof SimpleFieldsFormLite
+   */
+  _setFormProperties(){
     this.method = "POST";
     this.loading = false;
     this.autoload = false;
@@ -170,11 +211,73 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
     return sf.value;
   }
   /**
-   * Props down
+   * properties specific to field function
+   *
+   * @readonly
+   * @static
+   * @memberof SimpleFieldsFormLite
    */
-  static get properties() {
+  static get fieldProperties(){
     return {
-      ...super.properties,
+      /*
+       * Disables autofocus on fields.
+       */
+      disableAutofocus: {
+        type: Boolean
+      },
+      /*
+       * Error messages by field name,
+       * eg. `{ contactinfo.email: "A valid email is required." }`
+       */
+      error: {
+        type: Object
+      },
+      /*
+       * Language of the fields.
+       */
+      language: {
+        type: String,
+        attribute: "lang",
+        reflect: true
+      },
+      /*
+       * resource link
+       */
+      resources: {
+        type: Object
+      },
+      /*
+       * Fields schema.
+       * _See [Fields Schema Format](fields-schema-format) above._
+       */
+      schema: {
+        type: Object
+      },
+      /**
+       * Conversion from JSON Schema to HTML form elements.
+       * _See [Configuring schemaConversion Property](configuring-the-schemaConversion-property) above._
+       */
+      schemaConversion: {
+        type: Object,
+        attribute: "schema-conversion"
+      },
+      /*
+       * value of fields
+       */
+      value: {
+        type: Object
+      }
+    };
+  }
+  /**
+   * properties specific to form function
+   *
+   * @readonly
+   * @static
+   * @memberof SimpleFieldsFormLite
+   */
+  static get formProperties(){
+    return {
       autoload: {
         type: Boolean,
         reflect: true
@@ -203,6 +306,43 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
       loadResponse: {
         type: Object
       }
+    };
+
+  }
+  /**
+   * gets the simple-fields object
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
+  get formFields(){
+    return this.shadowRoot && this.shadowRoot.querySelector && this.shadowRoot.querySelector('#sf') ? this.shadowRoot.querySelector('#sf') : undefined;
+  }
+  /**
+   * form elements by id
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
+  get formElements() {
+    return this.formFields ? this.formFields.formElements : {};
+  }
+  /**
+   * list of form elements in order
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
+  get formElementsArray() {
+    return this.formFields ? this.formFields.formElementsArray : [];
+  }
+  /**
+   * Props down
+   */
+  static get properties() {
+    return {
+      ...this.fieldProperties,
+      ...this.formProperties,
     };
   }
 }

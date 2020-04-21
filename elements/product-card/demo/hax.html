@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>HAX registry builder demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>window.WCGlobalBasePath = "/node_modules/";</script>
+    <script type="module">
+      import "@lrnwebcomponents/json-editor/json-editor.js";
+      import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+      import "../lib/hax-element-list-selector.js";
+    </script>
+  </head>
+  <body>
+    <hax-element-list-selector></hax-element-list-selector>
+    <a11y-collapse accordion>
+      <div slot="heading">Debug area</div>
+      <button id="appstore">Get appstore values</button>
+      <json-editor id="jsonblob"></json-editor>
+    </a11y-collapse>
+    <script defer="defer" async="async">
+      window.addEventListener('load', (e) => {
+        setTimeout(() => {
+          document.getElementsByTagName('hax-element-list-selector')[0].addEventListener('appstore-changed', (e) => {
+            document.getElementById('jsonblob').value = JSON.stringify(e.detail.value, null, 2);
+          });
+          document.getElementById('appstore').addEventListener('click', (e) => {
+            const values = document.getElementsByTagName('hax-element-list-selector')[0].getAppstoreValues();
+            console.log(values);
+            alert(JSON.stringify(values, null, 2));
+          });
+        }, 0);
+      });
+    </script>
+  </body>
+</html>

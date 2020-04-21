@@ -12,21 +12,45 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * 
 ### Styling
 
-`<accent-card>` provides the following custom properties and mixins
+`<accent-card>` provides following custom properties and mixins
 for styling:
 
+#### Defaults
 Custom property | Description | Default
 ----------------|-------------|----------
 `--accent-card-image-width` | Width of image when card is horizontal. | 30%
 `--accent-card-image-height` | Height of image when card is vertical. | 10%
-`--accent-card-padding` | Sets padding inside the accent card. | 20px
+`--accent-card-padding` | Sets padding inside accent card. | 20px
 `--accent-card-footer-border-color` | Card footer's border color.* | `--simple-colors-default-theme-grey-3`
 `--accent-card-box-shadow` | Card footer's box-shadow. | 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+
+#### Overriding Default Padding
+Custom property | Description | Default
+----------------|-------------|----------
+`--accent-card-heading-padding-top` | Overrides top padding of heading. | `--accent-card-padding`
+`--accent-card-heading-padding-left` | Overrides left padding of heading. | `--accent-card-padding`
+`--accent-card-heading-padding-right` | Overrides right padding of heading. | `--accent-card-padding`
+`--accent-card-heading-padding-bottom` | Overrides bottom padding of heading. | 0
+`--accent-card-subheading-padding-top` | Overrides top padding of subheading. | unset
+`--accent-card-subheading-padding-left` | Overrides left padding of subheading. | `--accent-card-padding`
+`--accent-card-subheading-padding-right` | Overrides right padding of subheading. | `--accent-card-padding`
+`--accent-card-subheading-padding-bottom` | Overrides bottom padding of subheading. | unset
+`--accent-card-content-padding-top` | Overrides top padding of content. | `--accent-card-padding`
+`--accent-card-content-padding-left` | Overrides left padding of content. | `--accent-card-padding`
+`--accent-card-content-padding-right` | Overrides right padding of content. | `--accent-card-padding`
+`--accent-card-content-padding-bottom` | Overrides bottom padding of content. | --accent-card-padding`
+`--accent-card-footer-padding-top` | Overrides top padding of footer. | unset
+`--accent-card-footer-padding-left` | Overrides left padding of footer. | `--accent-card-padding`
+`--accent-card-footer-padding-right` | Overrides right padding of footer. | `--accent-card-padding`
+`--accent-card-footer-padding-bottom` | Overrides bottom padding of footer. | unset
+
+#### Overriding Default Colors
+Custom property | Description | Default
+----------------|-------------|----------
 `--accent-card-color`	| Card's text color.* | `--simple-colors-default-theme-grey-9`
 `--accent-card-background-color` | Card's background color.* | varies based on attributes
 `--accent-card-border-color` | Card's border color.* | varies based on attributes
 `--accent-card-heading-color` | Card's heading color.* | varies based on attributes
-* Overrides colors set by accent-color and dark attributes.
  *
  * @extends SimpleColors
 
@@ -39,7 +63,7 @@ Custom property | Description | Default
  */
 class AccentCard extends SimpleColors {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
@@ -172,10 +196,10 @@ class AccentCard extends SimpleColors {
           overflow: visible;
         }
         :host #heading {
-          padding-top: var(--accent-card-padding, 20px);
-          padding-left: var(--accent-card-padding, 20px);
-          padding-right: var(--accent-card-padding, 20px);
-          padding-bottom: 0;
+          padding-top: var(--accent-card-heading-padding-top, var(--accent-card-padding, 20px));
+          padding-left: var(--accent-card-heading-padding-left, var(--accent-card-padding, 20px));
+          padding-right: var(--accent-card-heading-padding-right, var(--accent-card-padding, 20px));
+          padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
         }
         :host([accent-heading][accent-color]) #heading {
@@ -184,19 +208,26 @@ class AccentCard extends SimpleColors {
         :host #subheading {
           font-size: 90%;
           font-style: italic;
-          padding-left: var(--accent-card-padding, 20px);
-          padding-right: var(--accent-card-padding, 20px);
+          padding-top: var(--accent-card-subheading-padding-top, unset);
+          padding-left: var(--accent-card-subheading-padding-left, var(--accent-card-padding, 20px));
+          padding-right: var(--accent-card-subheading-padding-right, var(--accent-card-padding, 20px));
+          padding-bottom: var(--accent-card-subheading-padding-bottom, unset);
         }
         :host #content {
           font-size: 100%;
-          padding: var(--accent-card-padding, 20px);
+          padding-top: var(--accent-card-content-padding-top, var(--accent-card-padding, 20px));
+          padding-left: var(--accent-card-content-padding-left, var(--accent-card-padding, 20px));
+          padding-right: var(--accent-card-content-padding-right, var(--accent-card-padding, 20px));
+          padding-bottom: var(--accent-card-content-padding-bottom, var(--accent-card-padding, 20px));
         }
         :host #content:not(:last-child) {
           border-bottom: 1px solid var(--accent-card-footer-border-color);
         }
         :host #footer {
-          padding-left: var(--accent-card-padding, 20px);
-          padding-right: var(--accent-card-padding, 20px);
+          padding-top: var(--accent-card-footer-padding-top, unset);
+          padding-left: var(--accent-card-footer-padding-left, var(--accent-card-padding, 20px));
+          padding-right: var(--accent-card-footer-padding-right, var(--accent-card-padding, 20px));
+          padding-bottom: var(--accent-card-footer-padding-bottom, unset);
         }
       `
     ];
@@ -276,25 +307,25 @@ class AccentCard extends SimpleColors {
           {
             slot: "heading",
             title: "Heading",
-            description: "A heading for the card.",
+            description: "A heading for card.",
             inputMethod: "textfield"
           },
           {
             slot: "subheading",
             title: "Subheading",
-            description: "An optional subheading for the card.",
+            description: "An optional subheading for card.",
             inputMethod: "textfield"
           },
           {
             slot: "content",
             title: "Content",
-            description: "Content for the card.",
+            description: "Content for card.",
             inputMethod: "textfield"
           },
           {
             slot: "footer",
             title: "Footer",
-            description: "An optional footer for the card.",
+            description: "An optional footer for card.",
             inputMethod: "textfield"
           },
           {
@@ -349,25 +380,25 @@ class AccentCard extends SimpleColors {
           {
             property: "accentHeading",
             title: "Heading Accent",
-            description: "Apply the accent color to the heading?",
+            description: "Apply accent color to heading?",
             inputMethod: "boolean"
           },
           {
             property: "accentBackground",
             title: "Background Accent",
-            description: "Apply the accent color to the card background?",
+            description: "Apply accent color to card background?",
             inputMethod: "boolean"
           },
           {
             property: "noBorder",
             title: "No Border Accent",
-            description: "Remove the border accent?",
+            description: "Remove border accent?",
             inputMethod: "boolean"
           },
           {
             property: "flat",
             title: "Flat",
-            description: "Remove the box shadow?",
+            description: "Remove box shadow?",
             inputMethod: "boolean"
           }
         ],
@@ -390,7 +421,7 @@ class AccentCard extends SimpleColors {
     this.noBorder = false;
   }
 
-  // properties available to the custom element for data binding
+  // properties available to custom element for data binding
   static get properties() {
     return {
       ...super.properties,
@@ -414,7 +445,7 @@ class AccentCard extends SimpleColors {
       },
 
       /**
-       * Display the card as flat (no box shadow);
+       * Display card as flat (no box shadow);
        */
       flat: {
         type: Boolean,
@@ -422,7 +453,7 @@ class AccentCard extends SimpleColors {
       },
 
       /**
-       * Display the card as a horizontal layout? Default is vertical.
+       * Display card as a horizontal layout? Default is vertical.
        */
       horizontal: {
         type: Boolean,
@@ -430,11 +461,11 @@ class AccentCard extends SimpleColors {
       },
 
       /**
-       * "Optional": The horizontal alignment of the image, so that:
-       * - "left" will align the left edge of the image.
-       * - "right" will align the right edge of the image.
-       * - "center" will align the center of the image
-       * - A null will allow temporary support to the deprecated CSS variables
+       * "Optional": Horizontal alignment of image, so that:
+       * - "left" will align left edge of image.
+       * - "right" will align right edge of image.
+       * - "center" will align center of image
+       * - A null will allow temporary support to deprecated CSS variables
        */
       imageAlign: {
         type: String,
@@ -443,7 +474,7 @@ class AccentCard extends SimpleColors {
       },
 
       /**
-       * "Optional": The source for an image on the card
+       * "Optional": source for an image on card
        */
       imageSrc: {
         type: String,
@@ -451,11 +482,11 @@ class AccentCard extends SimpleColors {
       },
 
       /**
-       * "Optional": The vertical alignment of the image, so that:
-       * - "top" will align the top of edge of the image.
-       * - "bottom" will align the bottom edge of the image.
-       * - "center" will align the middle of the image.
-       * - A null will allow temporary support to the deprecated CSS variables
+       * "Optional": vertical alignment of image, so that:
+       * - "top" will align top of edge of image.
+       * - "bottom" will align bottom edge of image.
+       * - "center" will align middle of image.
+       * - A null will allow temporary support to deprecated CSS variables
        */
       imageValign: {
         type: String,
@@ -464,7 +495,7 @@ class AccentCard extends SimpleColors {
       },
 
       /**
-       * Removes the think accent border
+       * Removes think accent border
        */
       noBorder: {
         type: Boolean,

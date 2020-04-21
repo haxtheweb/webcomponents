@@ -10,7 +10,8 @@
    * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
    */
   "fieldsConversion": {
-    "type": "Object"
+    "type": "Object", 
+    "attribute": "fields-conversion"
   },
   /**
    * Schema label
