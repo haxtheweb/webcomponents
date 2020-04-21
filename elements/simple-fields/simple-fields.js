@@ -50,8 +50,8 @@ Custom property | Description | Default
 `--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex
 `--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap
 
-### Configuring schemaConverstion Property
-You can customise elements from JSON schema conversion by setting `schemaConverstion` property.
+### Configuring schemaConversion Property
+You can customise elements from JSON schema conversion by setting `schemaConversion` property.
 ```
 type: {                                       //For properties in "this.schema", define elements based on a property's "type"
   object: {                                   //Defines element used when property's "type" is an "object"
@@ -176,7 +176,8 @@ class SimpleFields extends SimpleFieldsLite {
    * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
    */
   "fieldsConversion": {
-    "type": Object
+    "type": Object, 
+    "attribute": "fields-conversion"
   },
   /**
    * Schema label
@@ -204,6 +205,9 @@ class SimpleFields extends SimpleFieldsLite {
   }
   constructor() {
     super();
+    this.setAdvancedProperties();
+  }
+  setAdvancedProperties(){
     this.activeTabs = {};
     this.fieldsConversion = {
       defaultSettings: {
@@ -301,7 +305,8 @@ class SimpleFields extends SimpleFieldsLite {
         },
         "md-block": {
           defaultSettings: {
-            type: "md-block"
+            type: "markup",
+            format: "md-block"
           }
         },
         monthpicker: {
@@ -481,13 +486,15 @@ class SimpleFields extends SimpleFieldsLite {
             element: "simple-fields-code",
             setValueProperty: "editorValue",
             noWrap: true
-          }
-        },
-        "md-block": {
-          defaultSettings: {
-            element: "md-block",
-            setValueProperty: "source",
-            noWrap: true
+          },
+          format: {
+            "md-block": {
+              defaultSettings: {
+                element: "md-block",
+                setValueProperty: "source",
+                noWrap: true
+              }
+            }
           }
         },
         number: {
@@ -701,11 +708,158 @@ class SimpleFields extends SimpleFieldsLite {
     };
     return schema;
   }
+  /**
+   * gets default schemaConversion so parts of it can be overridden easily
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
+  get defaultSchemaConversion(){
+    return {
+      defaultSettings: {
+        element: "input",
+        attributes: {
+          type: "text"
+        },
+        properties: {
+          minLength: "minlength",
+          maxLength: "maxlength"
+        }
+      },
+      type: {
+        array: {
+          defaultSettings: {
+            element: "simple-fields-array",
+            invalidProperty: "invalid",
+            noWrap: true,
+            descriptionProperty: "description",
+            child: {
+              element: "simple-fields-array-item",
+              noWrap: true,
+              descriptionProperty: "description",
+              properties: {
+                previewBy: "previewBy"
+              }
+            }
+          }
+        },
+        boolean: {
+          defaultSettings: {
+            element: "input",
+            valueProperty: "checked",
+            valueChangedProperty: "click",
+            attributes: {
+              type: "checkbox",
+              value: false
+            }
+          }
+        },
+        file: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              type: "url"
+            }
+          }
+        },
+        integer: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              step: 1,
+              type: "number"
+            },
+            properties: {
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step"
+            }
+          }
+        },
+        markup: {
+          defaultSettings: {
+            element: "textarea"
+          }
+        },
+        number: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "number"
+            },
+            properties: {
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step"
+            }
+          }
+        },
+        object: {
+          defaultSettings: {
+            element: "simple-fields-fieldset",
+            noWrap: true,
+            descriptionProperty: "description"
+          }
+        },
+        string: {
+          format: {
+            "date-time": {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "datetime-local"
+                }
+              }
+            },
+            time: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "time"
+                }
+              }
+            },
+            date: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "date"
+                }
+              }
+            },
+            email: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "email"
+                }
+              }
+            },
+            uri: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "url"
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
 
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "fields") this.schema = this.convertedSchema;
+      if (["fields","fieldsConversion"].includes(propName)) this.schema = this.convertedSchema;
       if (propName === "__activeTabs" && this.activeTabs !== oldValue)
         this._handleActiveTabs();
     });
