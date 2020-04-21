@@ -14,204 +14,199 @@ import { CountUp } from "./lib/countup.js";
  * @element count-up
  */
 class CountUpElement extends IntersectionObserverMixin(LitElement) {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: inline-flex;
-  --count-up-color: #000000;
-}
+        :host {
+          display: inline-flex;
+          --count-up-color: #000000;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-.wrapper {
-  display: block;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
+        .wrapper {
+          display: block;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+        }
 
-#counter {
-  color: var(--count-up-color);
-  font-weight: var(--count-up-number-font-weight);
-  font-size: var(--count-up-number-font-size);
-}
+        #counter {
+          color: var(--count-up-color);
+          font-weight: var(--count-up-number-font-weight);
+          font-size: var(--count-up-number-font-size);
+        }
       `
     ];
   }
   // render function
   render() {
     return html`
-
-<div class="wrapper">
-  <slot name="prefix"></slot>
-  <div id="counter"></div>
-  <slot name="suffix"></slot>
-</div>`;
+      <div class="wrapper">
+        <slot name="prefix"></slot>
+        <div id="counter"></div>
+        <slot name="suffix"></slot>
+      </div>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Count up",
-    "description": "count up js wrapper with minimal styling",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Up"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Count up",
+        description: "count up js wrapper with minimal styling",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Up"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "start",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "end",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "duration",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "noeasing",
+            description: "",
+            inputMethod: "boolean"
+          },
+          {
+            property: "decimalplaces",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "separator",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "decimal",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "prefix",
+            description: "",
+            inputMethod: "textfield"
+          },
+          {
+            property: "suffix",
+            description: "",
+            inputMethod: "textfield"
+          }
+        ],
+        advanced: []
       }
-    ],
-    "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "start",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "end",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "duration",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "noeasing",
-        "description": "",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "decimalplaces",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "separator",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "decimal",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "prefix",
-        "description": "",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "suffix",
-        "description": "",
-        "inputMethod": "textfield"
-      }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * Starting point for counting
-   */
-  "start": {
-    "type": Number
-  },
-  /**
-   * End point for counting stopping
-   */
-  "end": {
-    "type": Number
-  },
-  /**
-   * Duration to count
-   */
-  "duration": {
-    "type": Number
-  },
-  /**
-   * Disable easing animation
-   */
-  "noeasing": {
-    "type": Boolean
-  },
-  /**
-   * decimal places to show
-   */
-  "decimalplaces": {
-    "type": Number
-  },
-  /**
-   * separator for 100s groupings
-   */
-  "separator": {
-    "type": String
-  },
-  /**
-   * decimal point character
-   */
-  "decimal": {
-    "type": String
-  },
-  /**
-   * prefix string before the number counting
-   */
-  "prefixtext": {
-    "type": String
-  },
-  /**
-   * suffix string after the number counting
-   */
-  "suffixtext": {
-    "type": String
-  },
-  "thresholds": {
-    "type": Array
-  },
-  "rootMargin": {
-    "type": String,
-    "attribute": "root-margin"
-  },
-  "ratio": {
-    "type": Number,
-    "reflect": true
-  },
-  "visibleLimit": {
-    "type": Number,
-    "reflect": true,
-    "attribute": "visible-limit"
-  },
-  "elementVisible": {
-    "type": Boolean
-  }
-}
-;
+      ...super.properties,
+
+      /**
+       * Starting point for counting
+       */
+      start: {
+        type: Number
+      },
+      /**
+       * End point for counting stopping
+       */
+      end: {
+        type: Number
+      },
+      /**
+       * Duration to count
+       */
+      duration: {
+        type: Number
+      },
+      /**
+       * Disable easing animation
+       */
+      noeasing: {
+        type: Boolean
+      },
+      /**
+       * decimal places to show
+       */
+      decimalplaces: {
+        type: Number
+      },
+      /**
+       * separator for 100s groupings
+       */
+      separator: {
+        type: String
+      },
+      /**
+       * decimal point character
+       */
+      decimal: {
+        type: String
+      },
+      /**
+       * prefix string before the number counting
+       */
+      prefixtext: {
+        type: String
+      },
+      /**
+       * suffix string after the number counting
+       */
+      suffixtext: {
+        type: String
+      },
+      thresholds: {
+        type: Array
+      },
+      rootMargin: {
+        type: String,
+        attribute: "root-margin"
+      },
+      ratio: {
+        type: Number,
+        reflect: true
+      },
+      visibleLimit: {
+        type: Number,
+        reflect: true,
+        attribute: "visible-limit"
+      },
+      elementVisible: {
+        type: Boolean
+      }
+    };
   }
 
   /**
