@@ -101,21 +101,22 @@ class LrnsysButton extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldvalue, propName) => {
-      if (this.shadowRoot && ['href', 'target'].includes(propName)) {
+      if (this.shadowRoot && ["href", "target"].includes(propName)) {
         if (this[propName]) {
-          this.shadowRoot.querySelector('#lrnsys-button-link')[propName] = this[propName];
-        }
-        else {
-          this.shadowRoot.querySelector('#lrnsys-button-link').removeAttribute(propName);
+          this.shadowRoot.querySelector("#lrnsys-button-link")[propName] = this[
+            propName
+          ];
+        } else {
+          this.shadowRoot
+            .querySelector("#lrnsys-button-link")
+            .removeAttribute(propName);
         }
       }
     });
   }
   render() {
     return html`
-      <a tabindex="-1" id="lrnsys-button-link"
-        ?disabled="${this.disabled}"
-      >
+      <a tabindex="-1" id="lrnsys-button-link" ?disabled="${this.disabled}">
         <paper-button
           id="button"
           title="${this.alt}"
