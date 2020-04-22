@@ -33,6 +33,16 @@ class HAXElementCardList extends LitElement {
           max-height: 125px;
           overflow-y: auto;
         }
+        product-card label[slot="card-header"] {
+          float: right;
+          line-height: 1.5em;
+        }
+        .sr-only {
+          position: absolute;
+          left: -9999999999px;
+          width: 0;
+          overflow: hidden;
+        }
         .grid {
           display: grid;
           align-items: stretch;
@@ -68,10 +78,10 @@ class HAXElementCardList extends LitElement {
         type: String
       },
       _firstList: {
-        type: Array
+        type: Boolean
       },
       _firstValue: {
-        type: Array
+        type: Boolean
       }
     };
   }
@@ -90,7 +100,7 @@ class HAXElementCardList extends LitElement {
             class="grid"
             style="--hax-element-card--cols: repeat(${this.cols}, 1fr)"
           >
-            ${this.list.map(
+            ${this.productList.map(
               (el, i) => html`
                 <product-card
                   .slot="col-${this.__getCol(i)}"
@@ -104,16 +114,12 @@ class HAXElementCardList extends LitElement {
                   @product-card-demo-show="${this.toggleShowDemo}"
                   @product-card-demo-hide="${this.toggleShowDemo}"
                 >
-                  <div class="switch">
-                    <mwc-formfield
-                      label="${el.status ? `Enabled` : `Disabled`}"
-                    >
-                      <mwc-switch
-                        ?checked="${el.status}"
-                        @change="${e => this.elementStatusChange(el)}"
-                      ></mwc-switch>
-                    </mwc-formfield>
-                  </div>
+                  <label slot="card-header">
+                    <span class="sr-only">${el.status ? `Enabled` : `Disabled`}</span>
+                    <input type="checkbox"
+                      ?checked="${el.status}"
+                      @change="${e => this.elementStatusChange(el)}">
+                  </label>
                   <div slot="details-collapse-header">Details</div>
                   <div slot="details-collapse-content">
                     <ul>
@@ -174,6 +180,22 @@ class HAXElementCardList extends LitElement {
           </div>
         `;
   }
+  /**
+   * updates list with status based on current value
+   *
+   * @readonly
+   * @memberof HAXElementCardList
+   */
+  get productList(){
+    return this.list.map(item => {
+      return {
+        tag: item.tag,
+        file: item.file,
+        schema: item.schema,
+        status: this.value[item.tag] ? true : false
+      };
+    });
+  }
   _viewDemo(e) {
     if (e.target && e.target.nextElementSibling) {
       window.dispatchEvent(
@@ -202,7 +224,7 @@ class HAXElementCardList extends LitElement {
    * Effectively event binding to the expanded state
    */
   toggleShowDemo(e) {
-    this.list[e.path[0].getAttribute("data-index")].showDemo =
+    this.productList[e.path[0].getAttribute("data-index")].showDemo =
       e.detail.expanded;
     this.requestUpdate();
   }
@@ -246,37 +268,15 @@ class HAXElementCardList extends LitElement {
     }
   }
   /**
-   * only set these once both the initial list and values are available
-   */
-  _updateList() {
-    if (this._firstValue && this._firstList) {
-      this.value = JSON.stringify(JSON.parse(this.value));
-      this.value = {};
-      this.list.forEach(item => {
-        this._updateItem(
-          item.tag,
-          item.file,
-          this._firstValue[item.tag] ? true : false
-        );
-        this.value[item.tag] = item.file;
-      });
-    }
-  }
-  /**
    * LitElement life cycle - property changed
    */
-  updated(changedProperties) {
+  updated(changedProperties){
     console.log(
       "updated",
-      this._firstList,
       this.list,
-      this._firstValue,
       this.value
     );
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "list" && this.list !== oldValue && !this._firstList)
-        this._firstList = true;
-      if (propName == "value" && !this._firstValue) this._firstValue = true;
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:
