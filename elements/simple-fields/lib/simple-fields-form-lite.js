@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsSchemaConversionLite, SimpleFieldsLite } from "./simple-fields-lite.js";
+import { SimpleFieldsLite } from "./simple-fields-lite.js";
 import { SimpleFields } from "../simple-fields.js";
 /**
  * `simple-fields-form-lite`
@@ -28,14 +28,15 @@ class SimpleFieldsFormLite extends LitElement {
     return html`
       <form>
         <slot name="before"></slot>
-        <simple-fields-lite 
-          id="sf" 
+        <simple-fields-lite
+          id="sf"
           .autofocus="${!this.disableAutofocus}"
           .language="${this.language}"
           .resources="${this.resources}"
           .schema="${this.schema}"
-          .schema-conversion="${this.schemaConversion}"
-          @value-changed="${this._valueChanged}">
+          .elementizer="${this.elementizer}"
+          @value-changed="${this._valueChanged}"
+        >
         </simple-fields-lite>
         <slot name="after"></slot>
         <slot></slot>
@@ -48,7 +49,7 @@ class SimpleFieldsFormLite extends LitElement {
    * @param {*} e value-changed event
    * @memberof SimpleFieldsFormLite
    */
-  _valueChanged(e){
+  _valueChanged(e) {
     this.value = e.detail.value;
   }
   /**
@@ -103,7 +104,12 @@ class SimpleFieldsFormLite extends LitElement {
       this.schema = this.loadResponse.data.schema;
     }
     if (this.loadResponse.data.value) this.value = this.loadResponse.data.value;
-    console.log('_applyLoadedData',this.loadResponse.data,this.schema,this.value);
+    console.log(
+      "_applyLoadedData",
+      this.loadResponse.data,
+      this.schema,
+      this.value
+    );
   }
   /**
    * load data from the end point
@@ -164,14 +170,14 @@ class SimpleFieldsFormLite extends LitElement {
     super();
     this._setFieldProperties();
     this._setFormProperties();
-    console.log(' form constructor',this.schemaConversion);
+    console.log(" form constructor", this.schemaConversion);
   }
   /**
    * allows constructor to be overridden
    *
    * @memberof SimpleFieldsFormLite
    */
-  _setFieldProperties(){
+  _setFieldProperties() {
     this.disableAutofocus = false;
     this.language = "en";
     this.resources = {};
@@ -184,7 +190,7 @@ class SimpleFieldsFormLite extends LitElement {
    *
    * @memberof SimpleFieldsFormLite
    */
-  _setFormProperties(){
+  _setFormProperties() {
     this.method = "POST";
     this.loading = false;
     this.autoload = false;
@@ -217,7 +223,7 @@ class SimpleFieldsFormLite extends LitElement {
    * @static
    * @memberof SimpleFieldsFormLite
    */
-  static get fieldProperties(){
+  static get fieldProperties() {
     return {
       /*
        * Disables autofocus on fields.
@@ -276,7 +282,7 @@ class SimpleFieldsFormLite extends LitElement {
    * @static
    * @memberof SimpleFieldsFormLite
    */
-  static get formProperties(){
+  static get formProperties() {
     return {
       autoload: {
         type: Boolean,
@@ -307,7 +313,6 @@ class SimpleFieldsFormLite extends LitElement {
         type: Object
       }
     };
-
   }
   /**
    * gets the simple-fields object
@@ -315,8 +320,12 @@ class SimpleFieldsFormLite extends LitElement {
    * @readonly
    * @memberof SimpleFieldsLite
    */
-  get formFields(){
-    return this.shadowRoot && this.shadowRoot.querySelector && this.shadowRoot.querySelector('#sf') ? this.shadowRoot.querySelector('#sf') : undefined;
+  get formFields() {
+    return this.shadowRoot &&
+      this.shadowRoot.querySelector &&
+      this.shadowRoot.querySelector("#sf")
+      ? this.shadowRoot.querySelector("#sf")
+      : undefined;
   }
   /**
    * form elements by id
@@ -342,7 +351,7 @@ class SimpleFieldsFormLite extends LitElement {
   static get properties() {
     return {
       ...this.fieldProperties,
-      ...this.formProperties,
+      ...this.formProperties
     };
   }
 }

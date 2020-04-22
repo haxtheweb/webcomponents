@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFormLite } from "./simple-fields-form-lite.js";
-import { SimpleFields, SimpleFieldsSchemaConversion, SimpleFieldsFieldConversion } from "../simple-fields.js";
+import { SimpleFields } from "../simple-fields.js";
 /**
  * `simple-fields-form`
  * binding and submission capabilities on top of simple-fields
@@ -18,15 +18,17 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
     return html`
       <form>
         <slot name="before"></slot>
-        <simple-fields id="sf"
+        <simple-fields
+          id="sf"
           .autofocus="${!this.disableAutofocus}"
           .language="${this.language}"
           .resources="${this.resources}"
           .schema="${this.schema}"
           .fields="${this.fields}"
-          .fields-conversion="${this.fieldsConversion}"
-          .schema-conversion="${this.schemaConversion}"
-          @value-changed="${this._valueChanged}">
+          .schematizer="${this.fieldsConversion}"
+          .elementizer="${this.elementizer}"
+          @value-changed="${this._valueChanged}"
+        >
         </simple-fields>
         <slot></slot>
       </form>
@@ -38,7 +40,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    * @memberof SimpleFieldsFormLite
    */
   _applyLoadedData() {
-    console.log('_applyLoadedData',this.loadResponse.data);
+    console.log("_applyLoadedData", this.loadResponse.data);
     if (this.loadResponse.data.schema) {
       this.schema = this.loadResponse.data.schema;
     } else if (this.loadResponse.data.fields) {
@@ -53,32 +55,32 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    * @static
    * @memberof SimpleFieldsFormLite
    */
-  static get fieldProperties(){
+  static get fieldProperties() {
     return {
       ...super.fieldProperties,
       /**
        * Fields to convert to JSON Schema.
        */
-      "fields": {
-        "type": "Array"
+      fields: {
+        type: "Array"
       },
       /**
        * Conversion from inputMethods to JSON schema types and formats.
        * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
        */
-      "fieldsConversion": {
-        "type": "Object", 
-        "attribute": "fields-conversion"
+      fieldsConversion: {
+        type: "Object",
+        attribute: "fields-conversion"
       }
-    }
+    };
   }
-  
+
   /**
    * allows constructor to be overridden
    *
    * @memberof SimpleFieldsFormLite
    */
-  _setFieldProperties(){
+  _setFieldProperties() {
     this.fieldsConversion = SimpleFieldsFieldConversion;
     this.schemaConversion = SimpleFieldsSchemaConversion;
   }
@@ -89,7 +91,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    * @readonly
    * @memberof SimpleFields
    */
-  get defaultSchemaConversion(){
+  get defaultSchemaConversion() {
     return SimpleFields.defaultSchemaConversion;
   }
 }

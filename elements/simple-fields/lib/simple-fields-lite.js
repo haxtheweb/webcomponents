@@ -210,145 +210,6 @@ type: {                                       //For properties in "this.schema",
  * @element simple-fields-lite
  * @demo ./demo/lite.html Demo
  */
-export const SimpleFieldsSchemaConversionLite = {
-  defaultSettings: {
-    element: "input",
-    attributes: {
-      type: "text"
-    },
-    properties: {
-      minLength: "minlength",
-      maxLength: "maxlength"
-    }
-  },
-  type: {
-    array: {
-      defaultSettings: {
-        element: "simple-fields-array",
-        invalidProperty: "invalid",
-        noWrap: true,
-        descriptionProperty: "description",
-        child: {
-          element: "simple-fields-array-item",
-          noWrap: true,
-          descriptionProperty: "description",
-          properties: {
-            previewBy: "previewBy"
-          }
-        }
-      }
-    },
-    boolean: {
-      defaultSettings: {
-        element: "input",
-        valueProperty: "checked",
-        valueChangedProperty: "click",
-        attributes: {
-          type: "checkbox",
-          value: false
-        }
-      }
-    },
-    file: {
-      defaultSettings: {
-        element: "input",
-        attributes: {
-          type: "url"
-        }
-      }
-    },
-    integer: {
-      defaultSettings: {
-        element: "input",
-        attributes: {
-          autofocus: true,
-          step: 1,
-          type: "number"
-        },
-        properties: {
-          minimum: "min",
-          maximum: "max",
-          multipleOf: "step"
-        }
-      }
-    },
-    markup: {
-      defaultSettings: {
-        element: "textarea"
-      }
-    },
-    number: {
-      defaultSettings: {
-        element: "input",
-        attributes: {
-          autofocus: true,
-          type: "number"
-        },
-        properties: {
-          minimum: "min",
-          maximum: "max",
-          multipleOf: "step"
-        }
-      }
-    },
-    object: {
-      defaultSettings: {
-        element: "simple-fields-fieldset",
-        noWrap: true,
-        descriptionProperty: "description"
-      }
-    },
-    string: {
-      format: {
-        "date-time": {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "datetime-local"
-            }
-          }
-        },
-        time: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "time"
-            }
-          }
-        },
-        date: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "date"
-            }
-          }
-        },
-        email: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "email"
-            }
-          }
-        },
-        uri: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "url"
-            }
-          }
-        }
-      }
-    }
-  }
-};
 class SimpleFieldsLite extends LitElement {
   //styles function
   static get styles() {
@@ -419,9 +280,10 @@ class SimpleFieldsLite extends LitElement {
        * Conversion from JSON Schema to HTML form elements.
        * _See [Configuring schemaConversion Property](configuring-the-schemaConversion-property) above._
        */
-      schemaConversion: {
+      elementizer: {
         type: Object,
-        attribute: "schema-conversion"
+        attribute: "elementizer",
+        reflect: true
       },
       /*
        * value of fields
@@ -456,7 +318,7 @@ class SimpleFieldsLite extends LitElement {
     this.disableAutofocus = false;
     this.language = "en";
     this.resources = {};
-    this.schemaConversion = SimpleFieldsSchemaConversionLite;
+    this.schemaConversion;
     this.__formElements = {};
     this.__formElementsArray = [];
     this.schema = {};
@@ -473,10 +335,13 @@ class SimpleFieldsLite extends LitElement {
   }
 
   updated(changedProperties) {
+    console.log('schemaConversion',this,this.schemaConversion);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "schemaConversion" && this.schemaConversion !== oldValue) console.log('schemaConversion',this.schemaConversion,oldValue);
+      if (propName === "schemaConversion" && this.schemaConversion !== oldValue)
+        console.log("schemaConversion", this.schemaConversion, oldValue);
       if (propName === "error" && this.error !== oldValue) this._errorChanged();
-      if (["schema","schemaConversion"].includes(propName)) this._schemaChanged(this.schema, oldValue);
+      if (["schema", "schemaConversion"].includes(propName))
+        this._schemaChanged(this.schema, oldValue);
       if (propName === "value") this._valueChanged(this.value, oldValue);
     });
   }
@@ -499,6 +364,153 @@ class SimpleFieldsLite extends LitElement {
     return this.__formElementsArray;
   }
   /**
+   * gets JSON schema to form element conversion object
+   *
+   * @readonly
+   * @memberof SimpleFields
+   */
+  get schemaConversion(){
+    return this.elementizer || {
+      defaultSettings: {
+        element: "input",
+        attributes: {
+          type: "text"
+        },
+        properties: {
+          minLength: "minlength",
+          maxLength: "maxlength"
+        }
+      },
+      type: {
+        array: {
+          defaultSettings: {
+            element: "simple-fields-array",
+            invalidProperty: "invalid",
+            noWrap: true,
+            descriptionProperty: "description",
+            child: {
+              element: "simple-fields-array-item",
+              noWrap: true,
+              descriptionProperty: "description",
+              properties: {
+                previewBy: "previewBy"
+              }
+            }
+          }
+        },
+        boolean: {
+          defaultSettings: {
+            element: "input",
+            valueProperty: "checked",
+            valueChangedProperty: "click",
+            attributes: {
+              type: "checkbox",
+              value: false
+            }
+          }
+        },
+        file: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              type: "url"
+            }
+          }
+        },
+        integer: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              step: 1,
+              type: "number"
+            },
+            properties: {
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step"
+            }
+          }
+        },
+        markup: {
+          defaultSettings: {
+            element: "textarea"
+          }
+        },
+        number: {
+          defaultSettings: {
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "number"
+            },
+            properties: {
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step"
+            }
+          }
+        },
+        object: {
+          defaultSettings: {
+            element: "simple-fields-fieldset",
+            noWrap: true,
+            descriptionProperty: "description"
+          }
+        },
+        string: {
+          format: {
+            "date-time": {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "datetime-local"
+                }
+              }
+            },
+            time: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "time"
+                }
+              }
+            },
+            date: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "date"
+                }
+              }
+            },
+            email: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "email"
+                }
+              }
+            },
+            uri: {
+              defaultSettings: {
+                element: "input",
+                attributes: {
+                  autofocus: true,
+                  type: "url"
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
+  /**
    * whether there are no errors
    *
    * @readonly
@@ -518,10 +530,15 @@ class SimpleFieldsLite extends LitElement {
    * clears and rebuilds form
    */
   rebuildForm() {
-    console.log('schema & value',this.schema,this.schemaConversion,this.value);
+    console.log(
+      "schema & value",
+      this.schema,
+      this.schemaConversion,
+      this.value
+    );
     this._clearForm();
     this._addToForm();
-    console.log('form elements',this.formElements);
+    console.log("form elements", this.formElements);
     let firstField =
       this.__formElementsArray &&
       this.__formElementsArray[0] &&
@@ -530,7 +547,6 @@ class SimpleFieldsLite extends LitElement {
         : false;
     if (firstField) firstField.autofocus = !this.disableAutofocus;
   }
-  
 
   /**
    * converts schema properties to HTML elements and appends them
@@ -558,7 +574,7 @@ class SimpleFieldsLite extends LitElement {
               ? element
               : document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`);
-          let label =
+        let label =
             schemaProp.label ||
             schemaProp.title ||
             schemaProp.description ||
@@ -686,11 +702,7 @@ class SimpleFieldsLite extends LitElement {
               data.valueSlot
             );
           element.addEventListener(data.valueChangedProperty, e =>
-            this._handleChange(
-              element,
-              data.valueProperty,
-              e
-            )
+            this._handleChange(element, data.valueProperty, e)
           );
           wrapper.addEventListener(data.errorChangedProperty, e => {
             let error = this._deepClone(this.error || {});
@@ -700,7 +712,7 @@ class SimpleFieldsLite extends LitElement {
               delete error[id];
             }
             this.error = error;
-            if(errorEvent) errorEvent(e);
+            if (errorEvent) errorEvent(e);
           });
         }
         this.__formElementsArray.push({ id: id, field: wrapper, data: data });
@@ -821,10 +833,9 @@ class SimpleFieldsLite extends LitElement {
    */
   _convertSchema(property, conversion = this.schemaConversion, settings) {
     let propKeys = Object.keys(property || {}),
-      convKeys = Object.keys(conversion).filter(key =>
-        propKeys.includes(key)
-      );
-    if (conversion.defaultSettings) settings = this._deepClone(conversion.defaultSettings);
+      convKeys = Object.keys(conversion).filter(key => propKeys.includes(key));
+    if (conversion.defaultSettings)
+      settings = this._deepClone(conversion.defaultSettings);
     convKeys.forEach(key => {
       let val = property[key],
         convData = conversion ? conversion[key] : undefined,
@@ -932,10 +943,11 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} valueProperty
    */
   _handleChange(element, valueProperty, e) {
-    if(e && e.stopPropagation) e.stopPropagation();
-    let id = element.id || element.getAttribute("id"), val = element[valueProperty];
-    this._setValue(id,val);
-    console.log('_handleChange',this.value,id,val);
+    if (e && e.stopPropagation) e.stopPropagation();
+    let id = element.id || element.getAttribute("id"),
+      val = element[valueProperty];
+    this._setValue(id, val);
+    console.log("_handleChange", this.value, id, val);
     this.dispatchEvent(
       new CustomEvent(`${id}-value-changed`, {
         bubbles: true,
