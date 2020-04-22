@@ -40,8 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@rhelements/rh-sass": "*",
-    "lit-element": "^2.3.0"
+    "lit-element":"^2.3.0",
+    "@rhelements/rh-sass":"*",
+    "@polymer/iron-ajax":"^3.0.0",
+    "@polymer/iron-icons":"^3.0.1",
+    "@lrnwebcomponents/accent-card":"^2.6.5",
+    "@lrnwebcomponents/a11y-collapse":"^2.6.5",
+    "@lrnwebcomponents/progress-donut":"^2.6.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

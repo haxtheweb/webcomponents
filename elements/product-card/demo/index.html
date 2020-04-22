@@ -11,29 +11,24 @@
     <script type="module">
       import "@lrnwebcomponents/json-editor/json-editor.js";
       import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+      import "../product-card.js";
       import "../lib/hax-element-list-selector.js";
     </script>
   </head>
   <body>
-    <hax-element-list-selector></hax-element-list-selector>
-    <a11y-collapse accordion>
-      <div slot="heading">Debug area</div>
-      <button id="appstore">Get appstore values</button>
-      <json-editor id="jsonblob"></json-editor>
-    </a11y-collapse>
-    <script defer="defer" async="async">
-      window.addEventListener('load', (e) => {
-        setTimeout(() => {
-          document.getElementsByTagName('hax-element-list-selector')[0].addEventListener('appstore-changed', (e) => {
-            document.getElementById('jsonblob').value = JSON.stringify(e.detail.value, null, 2);
-          });
-          document.getElementById('appstore').addEventListener('click', (e) => {
-            const values = document.getElementsByTagName('hax-element-list-selector')[0].getAppstoreValues();
-            console.log(values);
-            alert(JSON.stringify(values, null, 2));
-          });
-        }, 0);
-      });
-    </script>
+    <demo-snippet>
+      <template>
+        <product-card 
+          heading="my heading" 
+          subheading="my subheading"
+          icon="close"
+          accent-color="purple">
+          <div slot="details-collapse-header">Details</div>
+          <div slot="details-collapse-content">My details</div>
+          <div slot="demo-collapse-header">Demo</div>
+          <div slot="demo-collapse-content">My Demo</div>
+        </product-card>
+      </template>
+    </demo-snippet>
   </body>
 </html>

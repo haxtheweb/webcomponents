@@ -15,7 +15,7 @@
       "properties": "src/progress-donut-properties.json",
       "hax": "src/progress-donut-hax.json"
     },
-    "sharedStyles": []
+    "sharedStyles": ["...super.styles"]
   },
   "version": "2.6.7",
   "description": "Start of progress-donut",

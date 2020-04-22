@@ -1,4 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import {
+  HaxSchematizer,
+  HaxElementizer
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-schema-form`
  * @element hax-schema-form
@@ -10,6 +14,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class HaxSchemaForm extends PolymerElement {
   constructor() {
     super();
+    console.log("HaxElementizer", HaxElementizer);
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-tabs/paper-tabs.js");
@@ -104,6 +109,8 @@ class HaxSchemaForm extends PolymerElement {
         <simple-fields
           id="form"
           schema="[[schema]]"
+          .schematizer="${HaxSchematizer}"
+          .elementizer="${HaxElementizer}"
           value="{{value}}"
         ></simple-fields>
       </paper-card>

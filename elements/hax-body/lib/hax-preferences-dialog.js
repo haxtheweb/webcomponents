@@ -1,6 +1,10 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import {
+  HaxSchematizer,
+  HaxElementizer
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
@@ -131,7 +135,12 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
         <div style="height: 100%; overflow: auto;" class="pref-container">
-          <simple-fields id="settingsform"></simple-fields>
+          <simple-fields
+            id="settingsform"
+            .schematizer="${HaxSchematizer}"
+            .elementizer="${HaxElementizer}"
+          >
+          </simple-fields>
         </div>
         <a
           href="${this.ghLink}"

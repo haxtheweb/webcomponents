@@ -1,15 +1,18 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@material/mwc-switch/mwc-switch.js";
 import "@material/mwc-button/mwc-button.js";
 import "@material/mwc-formfield/mwc-formfield.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "../product-card.js";
 class HAXElementCardList extends LitElement {
   constructor() {
     super();
+    this.showCardList = false;
     this.list = [];
+    this.value = {};
+    this.cols = 2;
     this._layout = "1-1-1";
     window.SimpleModal.requestAvailability();
   }
@@ -21,18 +24,24 @@ class HAXElementCardList extends LitElement {
       css`
         :host {
           display: block;
-          border: 2px solid green;
           min-height: 100px;
         }
         product-card {
           display: block;
         }
         product-card div[slot="collapse-header"] {
-          padding: 8px 0;
         }
         product-card div[slot="details-collapse-content"] {
           max-height: 125px;
           overflow-y: auto;
+        }
+        .grid {
+          display: grid;
+          align-items: stretch;
+          grid-template-columns: var(--hax-element-card--cols, repeat(2, 1fr));
+          grid-gap: 15px;
+          overflow-x: auto;
+          padding: 2px;
         }
       `
     ];
@@ -48,98 +57,118 @@ class HAXElementCardList extends LitElement {
       cols: {
         type: Number
       },
+      value: {
+        type: Object
+      },
+      hidden: {
+        type: Boolean
+      },
+      showCardList: {
+        type: Boolean
+      },
       _layout: {
         type: String
       }
     };
   }
   render() {
-    return html`
-      <grid-plate .layout="${this._layout}" hide-ops>
-        ${this.list.map(
-          (el, i) => html`
-            <product-card
-              .slot="col-${this.__getCol(i)}"
-              ?disabled="${!el.status}"
-              ?has-demo="${el.schema.demoSchema}"
-              heading="${el.schema.gizmo.title}"
-              icon="${el.schema.gizmo.icon}"
-              subheading="${el.schema.gizmo.description}"
-              accent-color="${el.schema.gizmo.color}"
-              data-index="${i}"
-              @product-card-demo-show="${this.toggleShowDemo}"
-              @product-card-demo-hide="${this.toggleShowDemo}"
-            >
-              <div class="switch">
-                <mwc-formfield label="${el.status ? `Enabled` : `Disabled`}">
-                  <mwc-switch
-                    data-index="${i}"
-                    data-tag="${el.tag}"
-                    data-file="${el.file}"
-                    checked
-                    @change="${this.elementStatusChange}"
-                  ></mwc-switch>
-                </mwc-formfield>
-              </div>
-              <div slot="details-collapse-header">Details</div>
-              <div slot="details-collapse-content">
-                <ul>
-                  <li>
-                    <strong>Tags:</strong> ${el.schema.gizmo.groups.map(
-                      group =>
-                        html`
-                          ${group},
-                        `
-                    )}
-                  </li>
-                  <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
-                  <li>
-                    <strong>Developer usage:</strong>
-                    <code>import "${el.file}";</code>
-                  </li>
-                  ${el.schema.gizmo.meta
-                    ? html`
-                        ${Object.keys(el.schema.gizmo.meta).map(
-                          mel => html`
-                            <li>
-                              <strong>${this.capFirst(mel)}:</strong>
-                              <span>${el.schema.gizmo.meta[mel]}</span>
-                            </li>
-                          `
+    return !this.showCardList
+      ? ``
+      : html`
+          <hexagon-loader
+            item-count="4"
+            color="blue"
+            ?loading="${this.loading}"
+            size="large"
+          ></hexagon-loader>
+          <h2 ?hidden="${!this.loading}">Loading HAX elements..</h2>
+          <div
+            class="grid"
+            style="--hax-element-card--cols: repeat(${this.cols}, 1fr)"
+          >
+            ${this.list.map(
+              (el, i) => html`
+                <product-card
+                  .slot="col-${this.__getCol(i)}"
+                  ?disabled="${!el.status}"
+                  ?has-demo="${el.schema.demoSchema}"
+                  heading="${el.schema.gizmo.title}"
+                  icon="${el.schema.gizmo.icon}"
+                  subheading="${el.schema.gizmo.description}"
+                  accent-color="${el.schema.gizmo.color}"
+                  data-index="${i}"
+                  @product-card-demo-show="${this.toggleShowDemo}"
+                  @product-card-demo-hide="${this.toggleShowDemo}"
+                >
+                  <div class="switch">
+                    <mwc-formfield
+                      label="${el.status ? `Enabled` : `Disabled`}"
+                    >
+                      <mwc-switch
+                        ?checked="${this.value[tag] === this.value[file]}"
+                        @change="${e => this.elementStatusChange(el)}"
+                      ></mwc-switch>
+                    </mwc-formfield>
+                  </div>
+                  <div slot="details-collapse-header">Details</div>
+                  <div slot="details-collapse-content">
+                    <ul>
+                      <li>
+                        <strong>Tags:</strong> ${el.schema.gizmo.groups.map(
+                          group =>
+                            html`
+                              ${group},
+                            `
                         )}
-                      `
-                    : ``}
-                </ul>
-              </div>
-              <div slot="demo-collapse-header">Demo</div>
-              <div slot="demo-collapse-content">
-                ${el.schema.demoSchema && el.showDemo
-                  ? html`
-                      ${el.schema.demoSchema.map(
-                        demoItem => html`
-                          <mwc-button
-                            data-tag="${demoItem.tag}"
-                            @click="${this._viewDemo}"
-                            >Pop up demo</mwc-button
-                          >
-                          <div class="demo">
-                            ${this._haxElementToNode(demoItem)}
-                          </div>
-                          <code-sample copy-clipboard-button>
-                            <template>
-                              ${this._haxElementToNode(demoItem)}
-                            </template>
-                          </code-sample>
+                      </li>
+                      <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
+                      <li>
+                        <strong>Developer usage:</strong>
+                        <code>import "${el.file}";</code>
+                      </li>
+                      ${el.schema.gizmo.meta
+                        ? html`
+                            ${Object.keys(el.schema.gizmo.meta).map(
+                              mel => html`
+                                <li>
+                                  <strong>${this.capFirst(mel)}:</strong>
+                                  <span>${el.schema.gizmo.meta[mel]}</span>
+                                </li>
+                              `
+                            )}
+                          `
+                        : ``}
+                    </ul>
+                  </div>
+                  <div slot="demo-collapse-header">Demo</div>
+                  <div slot="demo-collapse-content">
+                    ${el.schema.demoSchema && el.showDemo
+                      ? html`
+                          ${el.schema.demoSchema.map(
+                            demoItem => html`
+                              <mwc-button
+                                data-tag="${demoItem.tag}"
+                                @click="${this._viewDemo}"
+                                >Pop up demo</mwc-button
+                              >
+                              <div class="demo">
+                                ${this._haxElementToNode(demoItem)}
+                              </div>
+                              <code-sample copy-clipboard-button>
+                                <template>
+                                  ${this._haxElementToNode(demoItem)}
+                                </template>
+                              </code-sample>
+                            `
+                          )}
                         `
-                      )}
-                    `
-                  : ``}
-              </div>
-            </product-card>
-          `
-        )}
-      </grid-plate>
-    `;
+                      : ``}
+                  </div>
+                </product-card>
+              `
+            )}
+          </div>
+        `;
   }
   _viewDemo(e) {
     if (e.target && e.target.nextElementSibling) {
@@ -186,16 +215,13 @@ class HAXElementCardList extends LitElement {
   capFirst(s) {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
-  elementStatusChange(e) {
-    this.list[parseInt(e.path[0].getAttribute("data-index"))].status =
-      e.path[0].checked;
+  elementStatusChange(el, status) {
+    if (!status) status = !this.value[el.tag];
+    this._updateItem(el.tag, el.file, status);
     // send up so list can update
     this.dispatchEvent(
-      new CustomEvent("enabled-changed", {
-        detail: {
-          tag: e.path[0].getAttribute("data-tag"),
-          status: e.path[0].checked
-        }
+      new CustomEvent("value-changed", {
+        detail: this
       })
     );
     this.requestUpdate();
@@ -207,11 +233,25 @@ class HAXElementCardList extends LitElement {
     }
     return i;
   }
+  _updateItem(tag, file, status = false) {
+    if (!status) {
+      delete this.value[tag];
+    } else {
+      this.value[tag] = file;
+    }
+  }
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    console.log("updated", this.cols);
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "list" && this.list !== oldValue) {
+        this.value = {};
+        this.list.forEach(item =>
+          this._updateItem(item.tag, item.file, item.status)
+        );
+      }
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:

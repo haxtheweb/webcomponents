@@ -1,0 +1,169 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "type": "comment",
+      "id": "1310",
+      "attributes": {
+        "subject": "Feedback from pur43",
+        "body": "<a href=\"https://studio.aanda.psu.edu/dmd100/system/files/submission_files/pur43/adventures-Chloe-devine.html\">https://studio.aanda.psu.edu/dmd100/system/files/submission_files/asc565...</a>",
+        "thread": "01.01/",
+        "threadDepth": 2,
+        "parentComment": "1308",
+        "created": "2020-03-29T14:50:08-04:00",
+        "changed": "2020-03-29T14:50:08-04:00"
+      },
+      "metadata": {
+        "editing": false,
+        "disabled": false
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "user",
+            "id": "411",
+            "name": "pur43",
+            "display_name": "Tabby Nebelung",
+            "avatar": "http://placekitten.com/400/400",
+            "visual": {
+              "icon": false,
+              "label": false
+            },
+            "sis": {
+              "id": 6946649,
+              "name": "Tabby Nebelung",
+              "created_at": "2019-05-09T10:43:56-04:00",
+              "sortable_name": "Nebelung, Tabby",
+              "short_name": "Tabby Nebelung",
+              "sis_user_id": "pur43@psu.edu",
+              "integration_id": null,
+              "avatar_url": "http://placekitten.com/400/400"
+            }
+          }
+        },
+        "node": {
+          "data": {
+            "type": "node",
+            "id": "5388"
+          }
+        }
+      },
+      "actions": {
+        "reply": true,
+        "like": false,
+        "edit": true,
+        "delete": true
+      }
+    },
+    {
+      "type": "comment",
+      "id": "1309",
+      "attributes": {
+        "subject": "Feedback from pur43",
+        "body": "Hi Kitty. I didn't save the file correctly before, it should be working now.",
+        "thread": "01.00/",
+        "threadDepth": 2,
+        "parentComment": "1308",
+        "created": "2020-03-29T14:37:33-04:00",
+        "changed": "2020-03-29T14:37:33-04:00"
+      },
+      "metadata": {
+        "editing": false,
+        "disabled": false
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "user",
+            "id": "411",
+            "name": "pur43",
+            "display_name": "Tabby Nebelung",
+            "avatar": "http://placekitten.com/400/400",
+            "visual": {
+              "icon": false,
+              "label": false
+            },
+            "sis": {
+              "id": 6946649,
+              "name": "Tabby Nebelung",
+              "created_at": "2019-05-09T10:43:56-04:00",
+              "sortable_name": "Nebelung, Tabby",
+              "short_name": "Tabby Nebelung",
+              "sis_user_id": "pur43@psu.edu",
+              "integration_id": null,
+              "avatar_url": "http://placekitten.com/400/400"
+            }
+          }
+        },
+        "node": {
+          "data": {
+            "type": "node",
+            "id": "5388"
+          }
+        }
+      },
+      "actions": {
+        "reply": true,
+        "like": false,
+        "edit": true,
+        "delete": true
+      }
+    },
+    {
+      "type": "comment",
+      "id": "1308",
+      "attributes": {
+        "subject": "Feedback from kit78",
+        "body": "The link is not working for me for some reason",
+        "thread": "01/",
+        "threadDepth": 1,
+        "parentComment": "0",
+        "created": "2020-03-27T15:35:26-04:00",
+        "changed": "2020-03-27T15:35:26-04:00"
+      },
+      "metadata": {
+        "editing": false,
+        "disabled": false
+      },
+      "relationships": {
+        "author": {
+          "data": {
+            "type": "user",
+            "id": "372",
+            "name": "kit78",
+            "display_name": "Kitty Korat",
+            "avatar": "http://placekitten.com/400/200",
+            "visual": {
+              "icon": false,
+              "label": false
+            },
+            "sis": {
+              "id": 6629402,
+              "name": "Kitty Korat",
+              "created_at": "2015-10-21T14:05:58-04:00",
+              "sortable_name": "Korat, Kitty",
+              "short_name": "Kitty Korat",
+              "sis_user_id": "kit78@psu.edu",
+              "integration_id": null,
+              "avatar_url": "http://placekitten.com/400/200"
+            }
+          }
+        },
+        "node": {
+          "data": {
+            "type": "node",
+            "id": "5388"
+          }
+        }
+      },
+      "actions": {
+        "reply": true,
+        "like": false,
+        "edit": true,
+        "delete": true
+      }
+    }
+  ],
+  "detail": "",
+  "environment": []
+}

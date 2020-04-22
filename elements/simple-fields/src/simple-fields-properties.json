@@ -6,11 +6,13 @@
     "type": "Array"
   },
   /**
-   * Conversion from inputMethods to JSON schema types and formats.
+   * Conversion from fields array with inputMethods to JSON schema types and formats.
    * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
    */
-  "fieldsConversion": {
-    "type": "Object"
+  "schematizer": {
+    "type": "Object",
+    "attribute": "schematizer",
+    "reflect": true
   },
   /**
    * Schema label

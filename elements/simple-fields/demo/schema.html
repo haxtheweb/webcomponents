@@ -21,12 +21,12 @@
         <style>#submission {width: 100%;}</style>
         <script>
           window.onload = () => {
-            let schema = document.getElementById('schema'),
-              schemaError = {
+            let simplefields = document.getElementById('simplefields'),
+              error = {
                 "settings.basic-input.name": "That's not your real name.",
                 "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
               };
-            schema.value = {
+              simplefields.value = {
                 "settings": {
                 "basic-input": {
                   "name":"NikkiMK"
@@ -34,15 +34,15 @@
                 "arrays": {
                   "phoneNumbers": [
                     {
-                      "type": "home",
+                      "type": "Home",
                       "phoneNumber": "1-555-867-5309"
                     },
                     {
-                      "type": "cell",
+                      "type": "Cell",
                       "phoneNumber": "1-555-555-5555"
                     },
                     {
-                      "type": "work",
+                      "type": "Work",
                       "phoneNumber": "1-800-888-8888"
                     }
                   ],
@@ -55,7 +55,7 @@
                 }
                 }
               }; 
-            schema.schema = data = {
+              simplefields.schema = {
                 $schema: "http://json-schema.org/schema#",
                 title: "Store",
                 type: "object",
@@ -145,7 +145,12 @@
                             properties: {
                               type: {
                                 title: "Type",
-                                type: "string"
+                                type: "string",
+                                options: {
+                                  "cell": "Cell",
+                                  "home": "Home",
+                                  "work": "Work"
+                                }
                               },
                               phoneNumber: {
                                 title: "Phone Number",
@@ -184,23 +189,24 @@
                 }
               };
             setErrors = () => {
-              schema.error = schemaError;
-              console.log('error',schema.error,schemaError);
+              simplefields.error = error;
+              console.log('error',simplefields.error,error);
               document.getElementById('getvals').disabled = true;
             }
             getValues =() => {
-              let val = schema.value;
+              let val = simplefields.value;
               console.log(`value`,val);
-              if(schema.valid) {
-                document.getElementById('submission').innerHTML = JSON.stringify(schema.value);
+              if(simplefields.valid) {
+                document.getElementById('submission').innerHTML = JSON.stringify(simplefields.value);
                 console.log('Value Submitted:',val);
               };
-              document.getElementById('getvals').disabled = !schema.valid;
+              document.getElementById('getvals').disabled = !simplefields.valid;
             }
           };
         </script>
         <template>
-          <form id="form"><simple-fields id="schema"></simple-fields></form>
+          <form id="form">
+            <simple-fields id="simplefields"></simple-fields>
             <p>
               <input onclick="setErrors()" value="Add fake errors" type="button">
               <input onclick="getValues()" value="Get Values" id="getvals" type="button">

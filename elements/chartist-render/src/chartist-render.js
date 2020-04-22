@@ -74,7 +74,7 @@ const ChartistRenderSuper = function(SuperClass) {
         ],
         [
           "Chartist.plugins.fillDonut",
-          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"
+          "lib/chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js"
         ]
       ];
     }
@@ -252,7 +252,7 @@ const ChartistRenderSuper = function(SuperClass) {
           Chartist.plugins.fillDonut
         ) {
           options.plugins.push(
-            Chartist.plugins.fillDonut(this.pluginFillDonutItems)
+            Chartist.plugins.fillDonut({ items: this.pluginFillDonutItems })
           );
         }
       }
@@ -325,10 +325,10 @@ const ChartistRenderSuper = function(SuperClass) {
             detail: chart
           })
         );
-        if (chart)
-          chart.on("created", () => {
+        if (chart) {
+          chart.on("created", e => {
             /**
-             * Fired once chart is created and accessibility features are added.
+             * Fired once chart is created features are added.
              *
              * @event chartist-render-created
              *
@@ -338,12 +338,29 @@ const ChartistRenderSuper = function(SuperClass) {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: chart
+                detail: e
               })
             );
           });
+          chart.on("draw", e => {
+            /**
+             * Fired as shapes are being drawn.
+             *
+             * @event chartist-render-draw
+             *
+             */
+            this.dispatchEvent(
+              new CustomEvent("chartist-render-draw", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: e
+              })
+            );
+          });
+          this.chart = chart;
+        }
       }
-      this.chart = chart;
     }
 
     /**
@@ -376,11 +393,13 @@ const ChartistRenderSuper = function(SuperClass) {
     _renderTable() {
       let html = "",
         table = this.querySelector("table"),
-        data = Array.isArray(this.data) ? [...this.data] : false;
-
+        data = this.data ? [...this.data] : false;
       if (data) {
         let rowHeads = data[1] && data[1][0] && isNaN(data[1][0]),
-          colHeads = data[0] && data[0][1] && isNaN(data[0][1]),
+          colHeads =
+            data[0] &&
+            data[0][rowHeads ? 1 : 0] &&
+            isNaN(data[0][rowHeads ? 1 : 0]),
           thead = !colHeads
             ? undefined
             : {
@@ -432,8 +451,12 @@ const ChartistRenderSuper = function(SuperClass) {
      */
     _updateChartData() {
       let data = this.data,
-        colHeads = data && data[0] && data[0][1] && isNaN(data[0][1]),
         rowHeads = data && data[1] && data[1][0] && isNaN(data[1][0]),
+        colHeads =
+          data &&
+          data[0] &&
+          data[0][rowHeads ? 1 : 0] &&
+          isNaN(data[0][rowHeads ? 1 : 0]),
         labels = colHeads ? data[0] : undefined,
         body = colHeads && data[1] ? data.slice(1, data.length) : data;
       if (rowHeads) {

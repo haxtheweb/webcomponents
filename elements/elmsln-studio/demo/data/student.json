@@ -1,0 +1,1762 @@
+{
+  "status": 200,
+  "data": {
+    "students": {
+      "266": {
+        "assignmentComments": {
+          "3937": [],
+          "3938": [],
+          "3939": [],
+          "3940": [],
+          "3941": [],
+          "3942": [],
+          "3943": [],
+          "3944": [],
+          "3945": []
+        },
+        "assignments": {
+          "3937": {
+            "type": "cle_submission",
+            "id": "4052",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=eJsrtnBk",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Discover: Interview",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4052-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 10606,
+                  "uid": 266,
+                  "filename": "20190908_220326.jpg",
+                  "uri": "private://submission_images/20190908_220326.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 2188674,
+                  "status": 1,
+                  "timestamp": 1567995048,
+                  "origname": "20190908_220326.jpg",
+                  "type": "image",
+                  "uuid": "63aec9d4-bd0a-4f25-8541-38dea4ca6f66",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 1960,
+                    "width": 4032
+                  },
+                  "height": "1960",
+                  "width": "4032",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=6d_2qDOp",
+                  "display": 0,
+                  "created": "2019-09-08T22:10:48-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=6d_2qDOp",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=Y8T5qDyX",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=2Z8fYuV4",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=32sNKJBg",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=71L0Y4pe",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=Yh_SWa_i",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=NSOmMKE6",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=ZarJY2Dm",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=VVEFeG5B",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=6GVNaDYI",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=4iMx9MBq",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=-bHMX41N"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/20190908_220326.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220326.jpg?itok=VVEFeG5B"
+                },
+                {
+                  "fid": 10607,
+                  "uid": 266,
+                  "filename": "20190908_220331.jpg",
+                  "uri": "private://submission_images/20190908_220331.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 2002966,
+                  "status": 1,
+                  "timestamp": 1567995048,
+                  "origname": "20190908_220331.jpg",
+                  "type": "image",
+                  "uuid": "21a12e9d-c299-4a43-aa8b-17e513e0c6dc",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 1960,
+                    "width": 4032
+                  },
+                  "height": "1960",
+                  "width": "4032",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=hPN9_rBL",
+                  "display": 0,
+                  "created": "2019-09-08T22:10:48-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=hPN9_rBL",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=KXd73e7Y",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=dvsAUCFQ",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=aLwL98tT",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=i2jW6hBF",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=7Vjbktr1",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=iIpy2Z0o",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=LeDKtmnk",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=eJsrtnBk",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=nM1q3tqn",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=Jx5JKgc_",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=8My255_l"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/20190908_220331.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220331.jpg?itok=eJsrtnBk"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-09-08T22:08:57-04:00",
+              "changed": "2019-09-08T22:10:48-04:00",
+              "humandate": "September 8, 2019, 10:10 pm",
+              "revision_timestamp": "2019-09-08T22:10:48-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3937",
+                "attributes": {
+                  "title": "Discover: Interview",
+                  "body": "",
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "10",
+                      "name": "yay33"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3937",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3937",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3937",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3937/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3937/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "266",
+                  "name": "cxm5199",
+                  "display_name": "Cat Nebelung",
+                  "avatar": false,
+                  "sis": {
+                    "id": 6797743,
+                    "name": "Cat Nebelung",
+                    "created_at": "2016-07-21T20:01:20-04:00",
+                    "sortable_name": "Nebelung, Cat",
+                    "short_name": "Cat Nebelung",
+                    "sis_user_id": "cxm5199@psu.edu",
+                    "integration_id": null
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3938": false,
+          "3939": {
+            "type": "cle_submission",
+            "id": "4053",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=vBhJ3BeV",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Define: Themes &amp; Insights",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4053-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 10608,
+                  "uid": 266,
+                  "filename": "20190908_220302.jpg",
+                  "uri": "private://submission_images/20190908_220302.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 2163768,
+                  "status": 1,
+                  "timestamp": 1567995162,
+                  "origname": "20190908_220302.jpg",
+                  "type": "image",
+                  "uuid": "6bc66346-2ebd-4053-8ef3-d59cb60fa9f3",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 1960,
+                    "width": 4032
+                  },
+                  "height": "1960",
+                  "width": "4032",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=rWPSGA-v",
+                  "display": 0,
+                  "created": "2019-09-08T22:12:42-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=rWPSGA-v",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=PbOiV8fC",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=PE4JgcP4",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=-wow8IyG",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=-Yk09yxw",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=UlVCIDKE",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=t41uNmFe",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=_nkKk8-h",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=PhqVi0wl",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=SO_ZGXVn",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=OPY7g_kJ",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=vrORxLan"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/20190908_220302.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220302.jpg?itok=PhqVi0wl"
+                },
+                {
+                  "fid": 10609,
+                  "uid": 266,
+                  "filename": "20190908_220311.jpg",
+                  "uri": "private://submission_images/20190908_220311.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 2229892,
+                  "status": 1,
+                  "timestamp": 1567995162,
+                  "origname": "20190908_220311.jpg",
+                  "type": "image",
+                  "uuid": "509a7f22-669c-4c67-b3e3-4d41d5c4ea45",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 1960,
+                    "width": 4032
+                  },
+                  "height": "1960",
+                  "width": "4032",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=GWE8x-4p",
+                  "display": 0,
+                  "created": "2019-09-08T22:12:42-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=GWE8x-4p",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=de0SURz1",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=9m4tCZCb",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=MtQll28Y",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=92ZunA1O",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=kF9kVS9J",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=M3ftZGk0",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=LbUkpvxQ",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=vBhJ3BeV",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=s8KNHqRA",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=Tw3ynubR",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=YMfo0YV-"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/20190908_220311.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190908_220311.jpg?itok=vBhJ3BeV"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-09-08T22:11:15-04:00",
+              "changed": "2019-09-08T22:12:42-04:00",
+              "humandate": "September 8, 2019, 10:12 pm",
+              "revision_timestamp": "2019-09-08T22:12:42-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3939",
+                "attributes": {
+                  "title": "Define: Themes & Insights",
+                  "body": null,
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "1",
+                      "name": "cat666"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3939",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3939",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3939",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3939/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3939/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "266",
+                  "name": "cxm5199",
+                  "display_name": "Cat Nebelung",
+                  "avatar": false,
+                  "sis": {
+                    "id": 6797743,
+                    "name": "Cat Nebelung",
+                    "created_at": "2016-07-21T20:01:20-04:00",
+                    "sortable_name": "Nebelung, Cat",
+                    "short_name": "Cat Nebelung",
+                    "sis_user_id": "cxm5199@psu.edu",
+                    "integration_id": null
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3940": {
+            "type": "cle_submission",
+            "id": "4141",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=Q3-K5M4X",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Define: HMW",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4141-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 10805,
+                  "uid": 266,
+                  "filename": "20190915_171823.jpg",
+                  "uri": "private://submission_images/20190915_171823.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 1915097,
+                  "status": 1,
+                  "timestamp": 1568597043,
+                  "origname": "20190915_171823.jpg",
+                  "type": "image",
+                  "uuid": "a0a46cc1-10a3-4e13-a725-6156669173d9",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 1960,
+                    "width": 4032
+                  },
+                  "height": "1960",
+                  "width": "4032",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=LjU8RKHP",
+                  "display": 0,
+                  "created": "2019-09-15T21:24:03-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=LjU8RKHP",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=cPn2okZz",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=Wm1lv3Ou",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=n1lGqW_H",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=bXp--Ydb",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=l3Rz5xK1",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=L0zJY3XX",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=KqQ6YoJu",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=Q3-K5M4X",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=LtlxzXwk",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=v14fFxdO",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=43h-OL6u"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/20190915_171823.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/20190915_171823.jpg?itok=Q3-K5M4X"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-09-15T21:23:06-04:00",
+              "changed": "2019-09-15T21:24:03-04:00",
+              "humandate": "September 15, 2019, 9:24 pm",
+              "revision_timestamp": "2019-09-15T21:24:03-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3940",
+                "attributes": {
+                  "title": "Define: HMW",
+                  "body": null,
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "10",
+                      "name": "yay33"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3940",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3940",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3940",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3940/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3940/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "266",
+                  "name": "cxm5199",
+                  "display_name": "Cat Nebelung",
+                  "avatar": false,
+                  "sis": {
+                    "id": 6797743,
+                    "name": "Cat Nebelung",
+                    "created_at": "2016-07-21T20:01:20-04:00",
+                    "sortable_name": "Nebelung, Cat",
+                    "short_name": "Cat Nebelung",
+                    "sis_user_id": "cxm5199@psu.edu",
+                    "integration_id": null
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3941": false,
+          "3942": false,
+          "3943": false,
+          "3944": false,
+          "3945": false
+        },
+        "id": 266,
+        "name": "cxm5199",
+        "display_name": "Cat Nebelung",
+        "avatar": false,
+        "visual": {
+          "icon": false,
+          "label": false
+        },
+        "sis": {
+          "id": 6797743,
+          "name": "Cat Nebelung",
+          "created_at": "2016-07-21T20:01:20-04:00",
+          "sortable_name": "Nebelung, Cat",
+          "short_name": "Cat Nebelung",
+          "sis_user_id": "cxm5199@psu.edu",
+          "integration_id": null
+        }
+      },
+      "372": {
+        "assignmentComments": {
+          "3937": [],
+          "3938": [],
+          "3939": [],
+          "3940": [],
+          "3941": [],
+          "3942": [],
+          "3943": [],
+          "3944": [],
+          "3945": [],
+          "4964": {
+            "5159": "5159",
+            "5179": "5179"
+          },
+          "4972": {
+            "5367": "5367",
+            "5388": "5388"
+          }
+        },
+        "assignments": {
+          "3937": {
+            "type": "cle_submission",
+            "id": "4059",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=X013iu2m",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Discover: Interview",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4059-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 10620,
+                  "uid": 372,
+                  "filename": "69644572_392188908391026_3428000590792228864_n.jpg",
+                  "uri": "private://submission_images/69644572_392188908391026_3428000590792228864_n.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 37588,
+                  "status": 1,
+                  "timestamp": 1567998822,
+                  "origname": "69644572_392188908391026_3428000590792228864_n.jpg",
+                  "type": "image",
+                  "uuid": "653f7613-1f53-476c-9d42-291f76a7325b",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 504,
+                    "width": 272
+                  },
+                  "height": "504",
+                  "width": "272",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=UzBrKpIN",
+                  "display": 0,
+                  "created": "2019-09-08T23:13:42-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=UzBrKpIN",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=3HFHvAiN",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=G6PCbGBV",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=zDQlzeIi",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=6Z4GXDgN",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=SKBtZex7",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=HrvYJKtV",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=slHhKj0F",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=1cGt_kYO",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=GuRrs1YS",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=4AJ6oLM9",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=Q9KkLpVU"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/69644572_392188908391026_3428000590792228864_n.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69644572_392188908391026_3428000590792228864_n.jpg?itok=1cGt_kYO"
+                },
+                {
+                  "fid": 10622,
+                  "uid": 372,
+                  "filename": "69753713_463337737593057_493360956261269504_n.jpg",
+                  "uri": "private://submission_images/69753713_463337737593057_493360956261269504_n.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 605720,
+                  "status": 1,
+                  "timestamp": 1567998822,
+                  "origname": "69753713_463337737593057_493360956261269504_n.jpg",
+                  "type": "image",
+                  "uuid": "7ee32fbd-0557-42e4-8f5b-5613f33b2991",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 2268,
+                    "width": 4032
+                  },
+                  "height": "2268",
+                  "width": "4032",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=fg4XJXAb",
+                  "display": 0,
+                  "created": "2019-09-08T23:13:42-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=fg4XJXAb",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=chnBX9UR",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=zu23iH1O",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=mjxuEKHo",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=BsXRE6Fn",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=WYY2t4iq",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=RLXnMtWL",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=gFXj8s2S",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=PRDl44QD",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=_uJhfH4B",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=Sx006BGD",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=z9orOFbZ"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/69753713_463337737593057_493360956261269504_n.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69753713_463337737593057_493360956261269504_n.jpg?itok=PRDl44QD"
+                },
+                {
+                  "fid": 10621,
+                  "uid": 372,
+                  "filename": "69709365_2115427332084157_7149732302740783104_n.jpg",
+                  "uri": "private://submission_images/69709365_2115427332084157_7149732302740783104_n.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 677783,
+                  "status": 1,
+                  "timestamp": 1567998822,
+                  "origname": "69709365_2115427332084157_7149732302740783104_n.jpg",
+                  "type": "image",
+                  "uuid": "0d3654d7-f893-4793-b972-105003ef3f0e",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 4032,
+                    "width": 2256
+                  },
+                  "height": "4032",
+                  "width": "2256",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=qtC-7e3V",
+                  "display": 0,
+                  "created": "2019-09-08T23:13:42-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=qtC-7e3V",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=XSU1HIFN",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=J-UvZHDw",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=RdAoCF8h",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=pidJ2ohV",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=phVMyM1u",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=jVa3GuaH",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=cc-023LP",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=X013iu2m",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=OlB7kv78",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=Z79LkC3g",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=Gpxm9NTf"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/69709365_2115427332084157_7149732302740783104_n.jpg?itok=X013iu2m"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-09-08T23:10:37-04:00",
+              "changed": "2019-09-08T23:13:42-04:00",
+              "humandate": "September 8, 2019, 11:13 pm",
+              "revision_timestamp": "2019-09-08T23:13:42-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3937",
+                "attributes": {
+                  "title": "Discover: Interview",
+                  "body": "",
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "10",
+                      "name": "yay33"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3937",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3937",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3937",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3937/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3937/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "372",
+                  "name": "kit78",
+                  "display_name": "Kitty Korat",
+                  "avatar": "http://placekitten.com/400/200",
+                  "sis": {
+                    "id": 6629402,
+                    "name": "Kitty Korat",
+                    "created_at": "2015-10-21T14:05:58-04:00",
+                    "sortable_name": "Korat, Kitty",
+                    "short_name": "Kitty Korat",
+                    "sis_user_id": "kit78@psu.edu",
+                    "integration_id": null,
+                    "avatar_url": "http://placekitten.com/400/200"
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3938": false,
+          "3939": {
+            "type": "cle_submission",
+            "id": "4069",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=0ZMWvrVr",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Define: Themes &amp; Insights",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4069-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 10646,
+                  "uid": 372,
+                  "filename": "Core Insights.jpg",
+                  "uri": "private://submission_images/Core Insights_6.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 33611,
+                  "status": 1,
+                  "timestamp": 1568001061,
+                  "origname": "Core Insights.jpg",
+                  "type": "image",
+                  "uuid": "de797ba5-48a3-457a-ac85-86fe395c1066",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 504,
+                    "width": 272
+                  },
+                  "height": "504",
+                  "width": "272",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=fYm0DqSE",
+                  "display": 0,
+                  "created": "2019-09-08T23:51:01-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=fYm0DqSE",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=TnBWsbbY",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=3tcPQzOO",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=o0rkt0Z3",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=LjlLWecx",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=Q3IT6mvz",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=kR_Kbp-7",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=GkGkTZhE",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=BGag2i_s",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=teot3nm9",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=epbQwebq",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=K3frMNxS"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/Core%20Insights_6.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Core%20Insights_6.jpg?itok=BGag2i_s"
+                },
+                {
+                  "fid": 10647,
+                  "uid": 372,
+                  "filename": "Themes.jpg",
+                  "uri": "private://submission_images/Themes_14.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 23660,
+                  "status": 1,
+                  "timestamp": 1568001061,
+                  "origname": "Themes.jpg",
+                  "type": "image",
+                  "uuid": "33b9c926-d6cc-4155-8f6a-8687ff20ead5",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 480,
+                    "width": 250
+                  },
+                  "height": "480",
+                  "width": "250",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=CSsIL6U2",
+                  "display": 0,
+                  "created": "2019-09-08T23:51:01-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=CSsIL6U2",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=cZmK4Qa7",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=7dUQ5zOS",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=JT_PjZp-",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=rpYj3_7q",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=iw44jEFu",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=jQG0u34k",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=wiz1AoFl",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=0ZMWvrVr",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=x-u0ihaI",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=mW2cHbcU",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=1Y4vEo-X"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/Themes_14.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Themes_14.jpg?itok=0ZMWvrVr"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-09-08T23:48:22-04:00",
+              "changed": "2019-09-08T23:51:01-04:00",
+              "humandate": "September 8, 2019, 11:51 pm",
+              "revision_timestamp": "2019-09-08T23:51:01-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3939",
+                "attributes": {
+                  "title": "Define: Themes & Insights",
+                  "body": null,
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "1",
+                      "name": "cat666"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3939",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3939",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3939",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3939/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3939/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "372",
+                  "name": "kit78",
+                  "display_name": "Kitty Korat",
+                  "avatar": "http://placekitten.com/400/200",
+                  "sis": {
+                    "id": 6629402,
+                    "name": "Kitty Korat",
+                    "created_at": "2015-10-21T14:05:58-04:00",
+                    "sortable_name": "Korat, Kitty",
+                    "short_name": "Kitty Korat",
+                    "sis_user_id": "kit78@psu.edu",
+                    "integration_id": null,
+                    "avatar_url": "http://placekitten.com/400/200"
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3940": {
+            "type": "cle_submission",
+            "id": "4162",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=pam0rmol",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Define: HMW",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4162-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 10845,
+                  "uid": 372,
+                  "filename": "Define - How Might We.jpg",
+                  "uri": "private://submission_images/Define - How Might We.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 42093,
+                  "status": 1,
+                  "timestamp": 1568761334,
+                  "origname": "Define - How Might We.jpg",
+                  "type": "image",
+                  "uuid": "ea7798b1-9976-4e6d-b0bf-404b6219707a",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 504,
+                    "width": 272
+                  },
+                  "height": "504",
+                  "width": "272",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=CfSeIKdG",
+                  "display": 0,
+                  "created": "2019-09-17T19:02:14-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=CfSeIKdG",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=3HCUOcL_",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=O-EELJqD",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=02nHY_r6",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=S-P0_BAQ",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=xM7gZ7TU",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=i3OW2asV",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=mrFpT7hY",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=pam0rmol",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=T_lDQDwO",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=dFzH4lod",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=9g5-95Qg"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/Define%20-%20How%20Might%20We.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/Define%20-%20How%20Might%20We.jpg?itok=pam0rmol"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-09-17T18:59:58-04:00",
+              "changed": "2019-09-17T19:02:14-04:00",
+              "humandate": "September 17, 2019, 7:02 pm",
+              "revision_timestamp": "2019-09-17T19:02:14-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3940",
+                "attributes": {
+                  "title": "Define: HMW",
+                  "body": null,
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "10",
+                      "name": "yay33"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3940",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3940",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3940",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3940/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3940/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "372",
+                  "name": "kit78",
+                  "display_name": "Kitty Korat",
+                  "avatar": "http://placekitten.com/400/200",
+                  "sis": {
+                    "id": 6629402,
+                    "name": "Kitty Korat",
+                    "created_at": "2015-10-21T14:05:58-04:00",
+                    "sortable_name": "Korat, Kitty",
+                    "short_name": "Kitty Korat",
+                    "sis_user_id": "kit78@psu.edu",
+                    "integration_id": null,
+                    "avatar_url": "http://placekitten.com/400/200"
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3941": false,
+          "3942": {
+            "type": "cle_submission",
+            "id": "4327",
+            "display": {
+              "image": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=aZh2qaKf",
+              "icon": false
+            },
+            "attributes": {
+              "title": "Submission for Develop: Storyboard",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4327-0",
+              "body": " ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": null,
+              "video": null,
+              "images": [
+                {
+                  "fid": 11652,
+                  "uid": 372,
+                  "filename": "KittyKorat-Develop-Ritual-Storyboard.jpg",
+                  "uri": "private://submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg",
+                  "filemime": "image/jpeg",
+                  "filesize": 281462,
+                  "status": 1,
+                  "timestamp": 1570150458,
+                  "origname": "KittyKorat-Develop-Ritual-Storyboard.jpg",
+                  "type": "image",
+                  "uuid": "cd2700d4-049c-4892-bca7-c5e52148b032",
+                  "field_file_image_alt_text": [],
+                  "field_file_image_title_text": [],
+                  "metadata": {
+                    "height": 1081,
+                    "width": 1395
+                  },
+                  "height": "1081",
+                  "width": "1395",
+                  "alt": "",
+                  "title": "",
+                  "url": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=fJcpqRyw",
+                  "display": 0,
+                  "created": "2019-10-03T20:54:18-04:00",
+                  "image_styles": {
+                    "elmsln_normalize": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=fJcpqRyw",
+                    "elmsln_gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=tstybJkU",
+                    "elmsln_large": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=y1aLe3kV",
+                    "elmsln_large__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=3l_7CdbF",
+                    "elmsln_medium": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=Qd_c8l1a",
+                    "elmsln_medium__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=vJGcy3dZ",
+                    "elmsln_micro": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=9Dp3S79E",
+                    "elmsln_micro__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=8TXs1zCw",
+                    "elmsln_small": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=aZh2qaKf",
+                    "elmsln_small__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=M9pNomLB",
+                    "elmsln_thumb": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=obkv0X5R",
+                    "elmsln_thumb__gray": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=dvRE5ODh"
+                  },
+                  "originalurl": "https://studio.aanda.psu.edu/dmd100/system/files/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg",
+                  "thumbnail": "https://studio.aanda.psu.edu/dmd100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/KittyKorat-Develop-Ritual-Storyboard.jpg?itok=aZh2qaKf"
+                }
+              ]
+            },
+            "meta": {
+              "created": "2019-10-03T20:43:22-04:00",
+              "changed": "2019-10-03T20:54:18-04:00",
+              "humandate": "October 3, 2019, 8:54 pm",
+              "revision_timestamp": "2019-10-03T20:54:18-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3942",
+                "attributes": {
+                  "title": "Develop: Storyboard",
+                  "body": null,
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "10",
+                      "name": "yay33"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3942",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3942",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3942",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3942/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3942/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "372",
+                  "name": "kit78",
+                  "display_name": "Kitty Korat",
+                  "avatar": "http://placekitten.com/400/200",
+                  "sis": {
+                    "id": 6629402,
+                    "name": "Kitty Korat",
+                    "created_at": "2015-10-21T14:05:58-04:00",
+                    "sortable_name": "Korat, Kitty",
+                    "short_name": "Kitty Korat",
+                    "sis_user_id": "kit78@psu.edu",
+                    "integration_id": null,
+                    "avatar_url": "http://placekitten.com/400/200"
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3943": {
+            "type": "cle_submission",
+            "id": "4384",
+            "display": {
+              "image": null,
+              "icon": "link"
+            },
+            "attributes": {
+              "title": "Submission for Develop: Prototype",
+              "download_files": "/dmd100/download/cle_submission/node-field_download-4384-0",
+              "body": "Asdflkjaertvlkjasntvkjn (sits on keyboard) rub face on everything cat cat moo moo lick ears lick paws and eat half my food and ask for more, for i is not fat, i is fluffy ooh, are those your $250 dollar sandals? lemme use that as my litter box. Fight an alligator and win asdflkjaertvlkjasntvkjn (sits on keyboard) touch my tail, i shred your hand purrrr, but run in circles. Ooooh feather moving feather! making sure that fluff gets into the owner's eyes, bite the neighbor's bratty kid or i’m so hungry i’m so hungry but ew not for that but in the middle of the night i crawl onto your chest and purr gently to help you sleep, for claws in the eye of the beholder. ",
+              "state": "submission_ready",
+              "relatedSubmission": null,
+              "files": null,
+              "links": [
+                {
+                  "url": "https://KittyKorat677138.invisionapp.com/public/share/K7WTVTHCY",
+                  "title": null,
+                  "attributes": [],
+                  "original_title": null,
+                  "original_url": "https://KittyKorat677138.invisionapp.com/public/share/K7WTVTHCY"
+                }
+              ],
+              "video": null,
+              "images": null
+            },
+            "meta": {
+              "created": "2019-10-11T00:41:49-04:00",
+              "changed": "2019-10-11T00:46:29-04:00",
+              "humandate": "October 11, 2019, 12:46 am",
+              "revision_timestamp": "2019-10-11T00:46:29-04:00",
+              "canUpdate": 1,
+              "canDelete": 1,
+              "canCritique": 1,
+              "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+              "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+              "state_icon": "done",
+              "state_color": "green lighten-3",
+              "submissionType": "default",
+              "comment_count": 0,
+              "comment_new": "0"
+            },
+            "relationships": {
+              "assignment": {
+                "type": "cle_assignment",
+                "id": "3943",
+                "attributes": {
+                  "title": "Develop: Prototype",
+                  "body": null,
+                  "critiqueOutline": null
+                },
+                "meta": {
+                  "created": "2019-08-15T11:15:34-04:00",
+                  "changed": "2019-08-15T11:15:34-04:00",
+                  "humandate": "August 15, 2019, 11:15 am",
+                  "revision_timestamp": "2019-08-15T11:15:34-04:00",
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "afterDueDate": 0,
+                  "canCritique": 0,
+                  "relatedSubmissions": {
+                    "canCreate": 1,
+                    "complete": {
+                      "icon": "assignment",
+                      "color": "grey lighten-4",
+                      "status": 0,
+                      "rationale": {
+                        "text": "You have not submitted anything",
+                        "code": "submission-nosubmission"
+                      },
+                      "submission": [],
+                      "submissions": []
+                    }
+                  },
+                  "rationale": {
+                    "text": "The assignment is open for submission, there is no due date.",
+                    "code": "date-none"
+                  },
+                  "submissionActive": 1
+                },
+                "relationships": {
+                  "project": {
+                    "data": {
+                      "id": "3936"
+                    }
+                  },
+                  "group": {
+                    "data": {
+                      "id": "3935"
+                    }
+                  },
+                  "author": {
+                    "data": {
+                      "type": "user",
+                      "id": "10",
+                      "name": "yay33"
+                    }
+                  }
+                },
+                "actions": null,
+                "links": {
+                  "self": "https://studio.aanda.psu.edu/dmd100/api/v1/cle/assignments/3943",
+                  "url": "https://studio.aanda.psu.edu/dmd100/cle/app/assignments/3943",
+                  "direct": "https://studio.aanda.psu.edu/dmd100/node/3943",
+                  "delete": "https://studio.aanda.psu.edu/dmd100/node/3943/delete?destination=",
+                  "update": "https://studio.aanda.psu.edu/dmd100/node/3943/edit?destination="
+                }
+              },
+              "project": {
+                "data": {
+                  "id": "3936",
+                  "title": "Ritual Project"
+                }
+              },
+              "group": {
+                "data": {
+                  "id": "3935"
+                }
+              },
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "372",
+                  "name": "kit78",
+                  "display_name": "Kitty Korat",
+                  "avatar": "http://placekitten.com/400/200",
+                  "sis": {
+                    "id": 6629402,
+                    "name": "Kitty Korat",
+                    "created_at": "2015-10-21T14:05:58-04:00",
+                    "sortable_name": "Korat, Kitty",
+                    "short_name": "Kitty Korat",
+                    "sis_user_id": "kit78@psu.edu",
+                    "integration_id": null,
+                    "avatar_url": "http://placekitten.com/400/200"
+                  }
+                }
+              },
+              "relatedSubmission": {},
+              "comments": null
+            },
+            "actions": null
+          },
+          "3944": false,
+          "3945": false
+        },
+        "id": 372,
+        "name": "kit78",
+        "display_name": "Kitty Korat",
+        "avatar": "http://placekitten.com/400/200",
+        "visual": {
+          "icon": false,
+          "label": false
+        },
+        "sis": {
+          "id": 6629402,
+          "name": "Kitty Korat",
+          "created_at": "2015-10-21T14:05:58-04:00",
+          "sortable_name": "Korat, Kitty",
+          "short_name": "Kitty Korat",
+          "sis_user_id": "kit78@psu.edu",
+          "integration_id": null,
+          "avatar_url": "http://placekitten.com/400/200"
+        }
+      }
+    },
+    "assignments": {
+      "3937": {
+        "id": "3937",
+        "title": "Discover: Interview"
+      },
+      "3938": {
+        "id": "3938",
+        "title": "Discover: Journey Map"
+      },
+      "3939": {
+        "id": "3939",
+        "title": "Define: Themes & Insights"
+      },
+      "3940": {
+        "id": "3940",
+        "title": "Define: HMW"
+      },
+      "3941": {
+        "id": "3941",
+        "title": "Develop: Brainstorm "
+      },
+      "3942": {
+        "id": "3942",
+        "title": "Develop: Storyboard"
+      },
+      "3943": {
+        "id": "3943",
+        "title": "Develop: Prototype"
+      },
+      "3944": {
+        "id": "3944",
+        "title": "Develop: Test and Iterate"
+      },
+      "3945": {
+        "id": "3945",
+        "title": "Deliver: Final Prototype"
+      }
+    },
+    "stats": {
+      "stats": {
+        "byassignment": {
+          "comments": {
+            "3937": 0,
+            "3938": 0,
+            "3939": 0,
+            "3940": 0,
+            "3941": 0,
+            "3942": 0,
+            "3943": 0,
+            "3944": 0,
+            "3945": 0
+          },
+          "submissions": {
+            "3937": 2,
+            "3939": 2,
+            "3940": 2,
+            "3942": 1,
+            "3943": 1
+          },
+          "commenters": []
+        },
+        "bystudent": {
+          "assignments": {
+            "266": 3,
+            "372": 5
+          },
+          "comments": []
+        },
+        "bysubmission": {
+          "comments": []
+        }
+      },
+      "overview": "2 students that have produced 8 submissions and made 0 comments across 9 assignments."
+    }
+  },
+  "detail": "",
+  "environment": []
+}

@@ -11,6 +11,7 @@ import "@lrnwebcomponents/accent-card/accent-card.js";
  * `product-card`
  * `basic display of a product with advanced data driven helpers`
  * @demo demo/index.html
+ * @demo demo/hax.html HAX Demo
  * @element product-card
  */
 class ProductCard extends SimpleColors {
@@ -44,21 +45,26 @@ class ProductCard extends SimpleColors {
           cursor: not-allowed;
           opacity: 0.8;
         }
-        a11y-collapse-group {
-          margin: 0;
-        }
-        a11y-collapse {
-          margin: 0 -20px;
-          padding: 8px;
-        }
         accent-card {
           margin: 0;
+          --accent-card-footer-padding-left: 0;
+          --accent-card-footer-padding-right: 0;
         }
-        div[slot="heading"] {
+        accent-card > div[slot="heading"] {
           height: 40px;
         }
         div[slot="subheading"] {
           height: 30px;
+        }
+        a11y-collapse-group {
+          margin: 0;
+          --a11y-collapse-border-color: #ddd;
+        }
+        a11y-collapse > div[slot="heading"] {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          min-height: 40px;
         }
       </style>
       <accent-card

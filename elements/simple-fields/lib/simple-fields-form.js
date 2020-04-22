@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFields } from "../simple-fields.js";
 import { SimpleFieldsFormLite } from "./simple-fields-form-lite.js";
+import { SimpleFields } from "../simple-fields.js";
 /**
  * `simple-fields-form`
  * binding and submission capabilities on top of simple-fields
@@ -18,35 +18,21 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
     return html`
       <form>
         <slot name="before"></slot>
-        <simple-fields id="sf" autofocus></simple-fields>
+        <simple-fields
+          id="sf"
+          .autofocus="${!this.disableAutofocus}"
+          .language="${this.language}"
+          .resources="${this.resources}"
+          .schema="${this.schema}"
+          .fields="${this.fields}"
+          .schematizer="${this.fieldsConversion}"
+          .elementizer="${this.elementizer}"
+          @value-changed="${this._valueChanged}"
+        >
+        </simple-fields>
         <slot></slot>
       </form>
     `;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (this.autoload && !this.loadResponse && !this.loading) {
-        if (propName === "loadEndpoint" || propName === "autoload") {
-          this.loadData();
-        }
-      }
-      // we have response data from an end point this should create the form
-      if (propName === "loadResponse" && this.loadResponse.data) {
-        this._applyLoadedData();
-        /**
-         * fires event for things to react to about the response
-         * @event response
-         */
-        this.dispatchEvent(
-          new CustomEvent("response", {
-            bubbles: true,
-            composed: true,
-            cancelable: false,
-            detail: this.loadResponse
-          })
-        );
-      }
-    });
   }
   /**
    * applies loaded datda to simple-fields-lite
@@ -54,23 +40,48 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    * @memberof SimpleFieldsFormLite
    */
   _applyLoadedData() {
-    let sf = this.shadowRoot.querySelector("#sf");
-    //console.log(this.loadResponse.data.schema, this.loadResponse.data.fields);
     if (this.loadResponse.data.schema) {
-      sf.schema = this.loadResponse.data.schema;
+      this.schema = this.loadResponse.data.schema;
     } else if (this.loadResponse.data.fields) {
-      sf.fields = this.loadResponse.data.fields;
+      this.fields = this.loadResponse.data.fields;
     }
-    if (this.loadResponse.data.value) sf.value = this.loadResponse.data.value;
+    if (this.loadResponse.data.value) this.value = this.loadResponse.data.value;
   }
   /**
-   * Props down
+   * properties specific to field function
+   *
+   * @readonly
+   * @static
+   * @memberof SimpleFieldsFormLite
    */
-  static get properties() {
+  static get fieldProperties() {
     return {
-      ...super.properties,
-      ...SimpleFields.properties
+      ...super.fieldProperties,
+      /**
+       * Fields to convert to JSON Schema.
+       */
+      fields: {
+        type: "Array"
+      },
+      /**
+       * Conversion from inputMethods to JSON schema types and formats.
+       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+       */
+      fieldsConversion: {
+        type: "Object",
+        attribute: "fields-conversion"
+      }
     };
+  }
+
+  /**
+   * gets default schemaConversion so parts of it can be overridden easily
+   *
+   * @readonly
+   * @memberof SimpleFields
+   */
+  get defaultSchemaConversion() {
+    return SimpleFields.defaultSchemaConversion;
   }
 }
 window.customElements.define(SimpleFieldsForm.tag, SimpleFieldsForm);

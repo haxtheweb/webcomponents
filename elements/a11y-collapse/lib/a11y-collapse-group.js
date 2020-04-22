@@ -33,7 +33,7 @@ class A11yCollapseGroup extends LitElement {
         }
         .wrapper {
           border-radius: 0;
-          --a11y-collapse-margin: 0;
+          --a11y-collapse-margin: 0 0;
           --a11y-collapse-border-between: none;
         }
       `

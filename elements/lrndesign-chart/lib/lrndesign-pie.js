@@ -234,6 +234,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
       startAngle: this.startAngle,
       chartPadding: this.chartPadding,
       donut: this.donut,
+      total: this.total,
       donutSolid: this.donutSolid,
       donutWidth: this.donutWidth,
       showLabel: this.showLabel,
@@ -253,9 +254,10 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
     this.startAngle = 0;
     this.chartPadding = 5;
     this.donut = false;
+    this.total = undefined;
     this.donutSolid = false;
-    this.donutWidth = 60;
-    this.showLabel = false;
+    this.donutWidth = 20;
+    this.showLabel = true;
     this.labelOffset = 0;
     this.labelPosition = "inside";
     this.labelDirection = "neutral";

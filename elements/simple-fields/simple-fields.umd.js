@@ -50,8 +50,8 @@ Custom property | Description | Default
 `--simple-fields-radio-option-display` | display label with field (flex) or above (block) | flex
 `--simple-fields-radio-option-flex-wrap` | allow radio options to wrap to next line | wrap
 
-### Configuring schemaConverstion Property
-You can customise elements from JSON schema conversion by setting `schemaConverstion` property.
+### Configuring schemaConversion Property
+You can customise elements from JSON schema conversion by setting `schemaConversion` property.
 ```
 type: {                                       //For properties in "this.schema", define elements based on a property's "type"
   object: {                                   //Defines element used when property's "type" is an "object"

@@ -99,7 +99,7 @@ class RelativeHeadingStateManager extends LitElement {
   static get styles() {
     return [
       css`
-        paper-toast:not(:defined) {
+        simple-toast:not(:defined) {
           display: none;
         }
       `
@@ -108,7 +108,7 @@ class RelativeHeadingStateManager extends LitElement {
 
   render() {
     return html`
-      <paper-toast
+      <simple-toast
         id="relative-heading-toast"
         duration="5000"
         ?hidden="${!this.usesCopyLink}"
@@ -122,7 +122,7 @@ class RelativeHeadingStateManager extends LitElement {
           title="${this.copyHeading.closeLabel || this.closeLabel}"
           @click="${this.closeCopyLink}"
         ></paper-icon-button>
-      </paper-toast>
+      </simple-toast>
     `;
   }
 
@@ -145,7 +145,7 @@ class RelativeHeadingStateManager extends LitElement {
       this.usesCopyLink = true;
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@polymer/paper-toast/paper-toast.js");
+      import("@lrnwebcomponents/simple-toast/simple-toast.js");
     }
   }
 
