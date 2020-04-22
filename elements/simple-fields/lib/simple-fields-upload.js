@@ -123,7 +123,6 @@ class SimpleFieldsUpload extends SimpleColors {
     this.label = null;
     this.noCamera = false;
     this.options = [];
-    this.option = '';
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = true;
