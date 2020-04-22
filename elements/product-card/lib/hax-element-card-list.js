@@ -115,10 +115,14 @@ class HAXElementCardList extends LitElement {
                   @product-card-demo-hide="${this.toggleShowDemo}"
                 >
                   <label slot="card-header">
-                    <span class="sr-only">${el.status ? `Enabled` : `Disabled`}</span>
-                    <input type="checkbox"
+                    <span class="sr-only"
+                      >${el.status ? `Enabled` : `Disabled`}</span
+                    >
+                    <input
+                      type="checkbox"
                       ?checked="${el.status}"
-                      @change="${e => this.elementStatusChange(el)}">
+                      @change="${e => this.elementStatusChange(el)}"
+                    />
                   </label>
                   <div slot="details-collapse-header">Details</div>
                   <div slot="details-collapse-content">
@@ -186,7 +190,7 @@ class HAXElementCardList extends LitElement {
    * @readonly
    * @memberof HAXElementCardList
    */
-  get productList(){
+  get productList() {
     return this.list.map(item => {
       return {
         tag: item.tag,
@@ -270,12 +274,8 @@ class HAXElementCardList extends LitElement {
   /**
    * LitElement life cycle - property changed
    */
-  updated(changedProperties){
-    console.log(
-      "updated",
-      this.list,
-      this.value
-    );
+  updated(changedProperties) {
+    console.log("updated", this.list, this.value);
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "cols") {
         switch (this[propName]) {

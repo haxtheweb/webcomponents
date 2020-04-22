@@ -27,7 +27,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
           .fields="${this.fields}"
           .schematizer="${this.fieldsConversion}"
           .elementizer="${this.elementizer}"
-          .value = "${this.value}"
+          .value="${this.value}"
           @value-changed="${this._valueChanged}"
         >
         </simple-fields>
