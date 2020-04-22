@@ -104,12 +104,6 @@ class SimpleFieldsFormLite extends LitElement {
       this.schema = this.loadResponse.data.schema;
     }
     if (this.loadResponse.data.value) this.value = this.loadResponse.data.value;
-    console.log(
-      "_applyLoadedData",
-      this.loadResponse.data,
-      this.schema,
-      this.value
-    );
   }
   /**
    * load data from the end point
@@ -170,7 +164,6 @@ class SimpleFieldsFormLite extends LitElement {
     super();
     this._setFieldProperties();
     this._setFormProperties();
-    console.log(" form constructor", this.schemaConversion);
   }
   /**
    * allows constructor to be overridden
@@ -181,7 +174,6 @@ class SimpleFieldsFormLite extends LitElement {
     this.disableAutofocus = false;
     this.language = "en";
     this.resources = {};
-    this.schemaConversion = SimpleFieldsSchemaConversionLite;
     this.schema = {};
     this.value = {};
   }

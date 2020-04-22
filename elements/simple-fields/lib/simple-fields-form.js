@@ -40,7 +40,6 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    * @memberof SimpleFieldsFormLite
    */
   _applyLoadedData() {
-    console.log("_applyLoadedData", this.loadResponse.data);
     if (this.loadResponse.data.schema) {
       this.schema = this.loadResponse.data.schema;
     } else if (this.loadResponse.data.fields) {
@@ -73,16 +72,6 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
         attribute: "fields-conversion"
       }
     };
-  }
-
-  /**
-   * allows constructor to be overridden
-   *
-   * @memberof SimpleFieldsFormLite
-   */
-  _setFieldProperties() {
-    this.fieldsConversion = SimpleFieldsFieldConversion;
-    this.schemaConversion = SimpleFieldsSchemaConversion;
   }
 
   /**

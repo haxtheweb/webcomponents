@@ -21,10 +21,7 @@ import {
   HaxSchematizer,
   HaxElementizer
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import {
-  SimpleFieldsSchemaConversion,
-  SimpleFieldsFieldConversion
-} from "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { SimpleFieldsForm } from "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "./hax-element-card-list.js";
 /**
@@ -293,14 +290,15 @@ class HaxElementListSelector extends LitElement {
           if (this.cardList) this.cardList.list = this.filteredHaxData;
           if (this.haxTags)
             this.haxTags.editorValue = JSON.stringify(renderHaxData, null, 2);
+
+            console.log(
+              "haxData changed",
+              this.haxData,
+              this.filteredHaxData,
+              renderHaxData,
+              this.haxTags
+            );
         }
-        console.log(
-          "haxData changed",
-          this.haxData,
-          this.filteredHaxData,
-          renderHaxData,
-          this.haxTags
-        );
       }
       if (
         propName == "noSchema" &&
