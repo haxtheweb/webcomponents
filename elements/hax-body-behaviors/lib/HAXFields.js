@@ -1,6 +1,6 @@
 import "@lrnwebcomponents/hax-body/lib/hax-upload-field.js";
 /**
- * fields array of input methods to JSON schema object conversion configuration 
+ * fields array of input methods to JSON schema object conversion configuration
  * that can be reused outside of Simple Fields
  */
 export const HaxSchematizer = {
@@ -159,7 +159,7 @@ export const HaxSchematizer = {
 };
 
 /**
- * JSON schema object to form element conversion configuration object 
+ * JSON schema object to form element conversion configuration object
  * that can be reused outside of Simple Fields
  */
 export const HaxElementizer = {
@@ -318,6 +318,12 @@ export const HaxElementizer = {
         noWrap: true
       },
       format: {
+        cardlist: {
+          defaultSettings: {
+            element: "hax-element-card-list",
+            noWrap: true
+          }
+        },
         tabs: {
           defaultSettings: {
             element: "simple-fields-tabs",

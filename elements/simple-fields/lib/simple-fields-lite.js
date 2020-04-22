@@ -335,10 +335,7 @@ class SimpleFieldsLite extends LitElement {
   }
 
   updated(changedProperties) {
-    console.log('schemaConversion',this,this.schemaConversion);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "schemaConversion" && this.schemaConversion !== oldValue)
-        console.log("schemaConversion", this.schemaConversion, oldValue);
       if (propName === "error" && this.error !== oldValue) this._errorChanged();
       if (["schema", "schemaConversion"].includes(propName))
         this._schemaChanged(this.schema, oldValue);
@@ -369,146 +366,148 @@ class SimpleFieldsLite extends LitElement {
    * @readonly
    * @memberof SimpleFields
    */
-  get schemaConversion(){
-    return this.elementizer || {
-      defaultSettings: {
-        element: "input",
-        attributes: {
-          type: "text"
+  get schemaConversion() {
+    return (
+      this.elementizer || {
+        defaultSettings: {
+          element: "input",
+          attributes: {
+            type: "text"
+          },
+          properties: {
+            minLength: "minlength",
+            maxLength: "maxlength"
+          }
         },
-        properties: {
-          minLength: "minlength",
-          maxLength: "maxlength"
-        }
-      },
-      type: {
-        array: {
-          defaultSettings: {
-            element: "simple-fields-array",
-            invalidProperty: "invalid",
-            noWrap: true,
-            descriptionProperty: "description",
-            child: {
-              element: "simple-fields-array-item",
+        type: {
+          array: {
+            defaultSettings: {
+              element: "simple-fields-array",
+              invalidProperty: "invalid",
               noWrap: true,
               descriptionProperty: "description",
+              child: {
+                element: "simple-fields-array-item",
+                noWrap: true,
+                descriptionProperty: "description",
+                properties: {
+                  previewBy: "previewBy"
+                }
+              }
+            }
+          },
+          boolean: {
+            defaultSettings: {
+              element: "input",
+              valueProperty: "checked",
+              valueChangedProperty: "click",
+              attributes: {
+                type: "checkbox",
+                value: false
+              }
+            }
+          },
+          file: {
+            defaultSettings: {
+              element: "input",
+              attributes: {
+                type: "url"
+              }
+            }
+          },
+          integer: {
+            defaultSettings: {
+              element: "input",
+              attributes: {
+                autofocus: true,
+                step: 1,
+                type: "number"
+              },
               properties: {
-                previewBy: "previewBy"
+                minimum: "min",
+                maximum: "max",
+                multipleOf: "step"
               }
             }
-          }
-        },
-        boolean: {
-          defaultSettings: {
-            element: "input",
-            valueProperty: "checked",
-            valueChangedProperty: "click",
-            attributes: {
-              type: "checkbox",
-              value: false
+          },
+          markup: {
+            defaultSettings: {
+              element: "textarea"
             }
-          }
-        },
-        file: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              type: "url"
+          },
+          number: {
+            defaultSettings: {
+              element: "input",
+              attributes: {
+                autofocus: true,
+                type: "number"
+              },
+              properties: {
+                minimum: "min",
+                maximum: "max",
+                multipleOf: "step"
+              }
             }
-          }
-        },
-        integer: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              step: 1,
-              type: "number"
-            },
-            properties: {
-              minimum: "min",
-              maximum: "max",
-              multipleOf: "step"
+          },
+          object: {
+            defaultSettings: {
+              element: "simple-fields-fieldset",
+              noWrap: true,
+              descriptionProperty: "description"
             }
-          }
-        },
-        markup: {
-          defaultSettings: {
-            element: "textarea"
-          }
-        },
-        number: {
-          defaultSettings: {
-            element: "input",
-            attributes: {
-              autofocus: true,
-              type: "number"
-            },
-            properties: {
-              minimum: "min",
-              maximum: "max",
-              multipleOf: "step"
-            }
-          }
-        },
-        object: {
-          defaultSettings: {
-            element: "simple-fields-fieldset",
-            noWrap: true,
-            descriptionProperty: "description"
-          }
-        },
-        string: {
-          format: {
-            "date-time": {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "datetime-local"
+          },
+          string: {
+            format: {
+              "date-time": {
+                defaultSettings: {
+                  element: "input",
+                  attributes: {
+                    autofocus: true,
+                    type: "datetime-local"
+                  }
                 }
-              }
-            },
-            time: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "time"
+              },
+              time: {
+                defaultSettings: {
+                  element: "input",
+                  attributes: {
+                    autofocus: true,
+                    type: "time"
+                  }
                 }
-              }
-            },
-            date: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "date"
+              },
+              date: {
+                defaultSettings: {
+                  element: "input",
+                  attributes: {
+                    autofocus: true,
+                    type: "date"
+                  }
                 }
-              }
-            },
-            email: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "email"
+              },
+              email: {
+                defaultSettings: {
+                  element: "input",
+                  attributes: {
+                    autofocus: true,
+                    type: "email"
+                  }
                 }
-              }
-            },
-            uri: {
-              defaultSettings: {
-                element: "input",
-                attributes: {
-                  autofocus: true,
-                  type: "url"
+              },
+              uri: {
+                defaultSettings: {
+                  element: "input",
+                  attributes: {
+                    autofocus: true,
+                    type: "url"
+                  }
                 }
               }
             }
           }
         }
       }
-    };
+    );
   }
   /**
    * whether there are no errors
@@ -530,15 +529,8 @@ class SimpleFieldsLite extends LitElement {
    * clears and rebuilds form
    */
   rebuildForm() {
-    console.log(
-      "schema & value",
-      this.schema,
-      this.schemaConversion,
-      this.value
-    );
     this._clearForm();
     this._addToForm();
-    console.log("form elements", this.formElements);
     let firstField =
       this.__formElementsArray &&
       this.__formElementsArray[0] &&
@@ -947,7 +939,6 @@ class SimpleFieldsLite extends LitElement {
     let id = element.id || element.getAttribute("id"),
       val = element[valueProperty];
     this._setValue(id, val);
-    console.log("_handleChange", this.value, id, val);
     this.dispatchEvent(
       new CustomEvent(`${id}-value-changed`, {
         bubbles: true,

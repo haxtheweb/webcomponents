@@ -413,7 +413,6 @@
   "simple-fields-tab": "@lrnwebcomponents/simple-fields/lib/simple-fields-tab.js",
   "simple-fields-tabs": "@lrnwebcomponents/simple-fields/lib/simple-fields-tabs.js",
   "simple-fields-upload": "@lrnwebcomponents/simple-fields/lib/simple-fields-upload.js",
-  "simple-fields-uri": "@lrnwebcomponents/simple-fields/lib/simple-fields-uri.js",
   "simple-fields": "@lrnwebcomponents/simple-fields/simple-fields.js",
   "simple-icon-picker": "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js",
   "simple-image": "@lrnwebcomponents/simple-image/simple-image.js",

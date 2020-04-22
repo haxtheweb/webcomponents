@@ -196,9 +196,18 @@ class AccentCard extends SimpleColors {
           overflow: visible;
         }
         :host #heading {
-          padding-top: var(--accent-card-heading-padding-top, var(--accent-card-padding, 20px));
-          padding-left: var(--accent-card-heading-padding-left, var(--accent-card-padding, 20px));
-          padding-right: var(--accent-card-heading-padding-right, var(--accent-card-padding, 20px));
+          padding-top: var(
+            --accent-card-heading-padding-top,
+            var(--accent-card-padding, 20px)
+          );
+          padding-left: var(
+            --accent-card-heading-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-heading-padding-right,
+            var(--accent-card-padding, 20px)
+          );
           padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
         }
@@ -209,24 +218,48 @@ class AccentCard extends SimpleColors {
           font-size: 90%;
           font-style: italic;
           padding-top: var(--accent-card-subheading-padding-top, unset);
-          padding-left: var(--accent-card-subheading-padding-left, var(--accent-card-padding, 20px));
-          padding-right: var(--accent-card-subheading-padding-right, var(--accent-card-padding, 20px));
+          padding-left: var(
+            --accent-card-subheading-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-subheading-padding-right,
+            var(--accent-card-padding, 20px)
+          );
           padding-bottom: var(--accent-card-subheading-padding-bottom, unset);
         }
         :host #content {
           font-size: 100%;
-          padding-top: var(--accent-card-content-padding-top, var(--accent-card-padding, 20px));
-          padding-left: var(--accent-card-content-padding-left, var(--accent-card-padding, 20px));
-          padding-right: var(--accent-card-content-padding-right, var(--accent-card-padding, 20px));
-          padding-bottom: var(--accent-card-content-padding-bottom, var(--accent-card-padding, 20px));
+          padding-top: var(
+            --accent-card-content-padding-top,
+            var(--accent-card-padding, 20px)
+          );
+          padding-left: var(
+            --accent-card-content-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-content-padding-right,
+            var(--accent-card-padding, 20px)
+          );
+          padding-bottom: var(
+            --accent-card-content-padding-bottom,
+            var(--accent-card-padding, 20px)
+          );
         }
         :host #content:not(:last-child) {
           border-bottom: 1px solid var(--accent-card-footer-border-color);
         }
         :host #footer {
           padding-top: var(--accent-card-footer-padding-top, unset);
-          padding-left: var(--accent-card-footer-padding-left, var(--accent-card-padding, 20px));
-          padding-right: var(--accent-card-footer-padding-right, var(--accent-card-padding, 20px));
+          padding-left: var(
+            --accent-card-footer-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-footer-padding-right,
+            var(--accent-card-padding, 20px)
+          );
           padding-bottom: var(--accent-card-footer-padding-bottom, unset);
         }
       `

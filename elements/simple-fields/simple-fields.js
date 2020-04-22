@@ -124,77 +124,77 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...super.styles,
       css`
-:host {
-  display: block;
-  --simple-picker-background-color: var(--simple-fields-background-color,white);
-  --simple-picker-border-width: 0;
-  --simple-picker-focus-border-width: 0;
-  --simple-picker-display: block;
-  --simple-picker-listbox-border-width: 1px;
-  --simple-picker-listbox-outline: none;
-}
+        :host {
+          display: block;
+          --simple-picker-background-color: var(
+            --simple-fields-background-color,
+            white
+          );
+          --simple-picker-border-width: 0;
+          --simple-picker-focus-border-width: 0;
+          --simple-picker-display: block;
+          --simple-picker-listbox-border-width: 1px;
+          --simple-picker-listbox-outline: none;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
       `
     ];
   }
   // render function
   render() {
     return html`
-<div id="schema-fields" aria-live="polite">
-  <slot></slot>
-</div>`;
+      <div id="schema-fields" aria-live="polite">
+        <slot></slot>
+      </div>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {}
-;
+    return {};
   }
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * Fields to convert to JSON Schema.
-   */
-  "fields": {
-    "type": Array
-  },
-  /**
-   * Conversion from fields array with inputMethods to JSON schema types and formats.
-   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-   */
-  "schematizer": {
-    "type": Object,
-    "attribute": "schematizer",
-    "reflect": true
-  },
-  /**
-   * Schema label
-   */
-  "label": {
-    "type": String
-  },
-  /**
-   * tracks all activeTabs as an object
-   */
-  "__activeTabs": {
-    "type": Object,
-    "attribute": "active-path"
-  }
-}
-;
+      ...super.properties,
+
+      /**
+       * Fields to convert to JSON Schema.
+       */
+      fields: {
+        type: Array
+      },
+      /**
+       * Conversion from fields array with inputMethods to JSON schema types and formats.
+       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+       */
+      schematizer: {
+        type: Object,
+        attribute: "schematizer",
+        reflect: true
+      },
+      /**
+       * Schema label
+       */
+      label: {
+        type: String
+      },
+      /**
+       * tracks all activeTabs as an object
+       */
+      __activeTabs: {
+        type: Object,
+        attribute: "active-path"
+      }
+    };
   }
 
   /**
@@ -242,323 +242,325 @@ class SimpleFields extends SimpleFieldsLite {
    * @readonly
    * @memberof SimpleFields
    */
-  get schemaConversion(){
-    return this.elementizer || {
-      defaultSettings: {
-        element: "simple-fields-field",
-        errorProperty: "errorMessage",
-        invalidProperty: "invalid",
-        noWrap: true,
-        attributes: {
-          type: "text"
-        },
-        properties: {
-          minLength: "minlength",
-          maxLength: "maxlength"
-        }
-      },
-      format: {
-        radio: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            attributes: {
-              autofocus: true,
-              type: "radio"
-            },
-            properties: {
-              options: "options"
-            },
-            child: {
-              element: "simple-fields-array-item",
-              noWrap: true,
-              descriptionProperty: "description",
-              properties: {
-                previewBy: "previewBy"
-              }
-            }
-          }
-        },
-        select: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            attributes: {
-              autofocus: true,
-              type: "select"
-            },
-            properties: {
-              options: "options",
-              items: "itemsList"
-            }
-          }
-        },
-        "simple-picker": {
-          defaultSettings: {
-            element: "simple-picker",
-            attributes: {
-              autofocus: true
-            },
-            properties: {
-              options: "options"
-            }
-          }
-        }
-      },
-      type: {
-        array: {
-          defaultSettings: {
-            element: "simple-fields-array",
-            noWrap: true,
-            descriptionProperty: "description",
-            child: {
-              element: "simple-fields-array-item",
-              noWrap: true,
-              descriptionProperty: "description",
-              properties: {
-                previewBy: "previewBy"
-              }
-            }
-          }
-        },
-        boolean: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            attributes: {
-              autofocus: true,
-              type: "checkbox",
-              value: false
-            }
-          }
-        },
-        file: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            attributes: {
-              autofocus: true,
-              type: "file"
-            },
-            properties: {
-              accepts: "accepts"
-            }
-          }
-        },
-        integer: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            attributes: {
-              autofocus: true,
-              step: 1,
-              type: "number"
-            },
-            properties: {
-              minimum: "min",
-              maximum: "max",
-              multipleOf: "step"
-            }
-          }
-        },
-        markup: {
-          defaultSettings: {
-            element: "simple-fields-code",
-            setValueProperty: "editorValue",
-            noWrap: true
+  get schemaConversion() {
+    return (
+      this.elementizer || {
+        defaultSettings: {
+          element: "simple-fields-field",
+          errorProperty: "errorMessage",
+          invalidProperty: "invalid",
+          noWrap: true,
+          attributes: {
+            type: "text"
           },
-          format: {
-            "md-block": {
-              defaultSettings: {
-                element: "md-block",
-                setValueProperty: "source",
-                noWrap: true
-              }
-            }
+          properties: {
+            minLength: "minlength",
+            maxLength: "maxlength"
           }
         },
-        number: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            type: "number",
-            attributes: {
-              autofocus: true,
-              type: "number"
-            },
-            properties: {
-              minimum: "min",
-              maximum: "max",
-              multipleOf: "step"
-            }
-          }
-        },
-        object: {
-          defaultSettings: {
-            element: "simple-fields-fieldset",
-            noWrap: true
-          },
-          format: {
-            tabs: {
-              defaultSettings: {
-                element: "simple-fields-tabs",
-                noWrap: true,
-                child: {
-                  element: "simple-fields-tab",
-                  noWrap: true,
-                  labelSlot: "label",
-                  descriptionSlot: ""
-                },
-                properties: {
-                  layoutBreakpoint: "layoutBreakpoint",
-                  iconBreakpoint: "iconBreakpoint",
-                  sticky: "sticky"
-                }
-              }
-            },
-            fields: {
-              defaultSettings: {
-                element: "simple-fields",
+        format: {
+          radio: {
+            defaultSettings: {
+              element: "simple-fields-field",
+              noWrap: true,
+              attributes: {
+                autofocus: true,
+                type: "radio"
+              },
+              properties: {
+                options: "options"
+              },
+              child: {
+                element: "simple-fields-array-item",
                 noWrap: true,
                 descriptionProperty: "description",
                 properties: {
-                  schema: "schema"
+                  previewBy: "previewBy"
                 }
+              }
+            }
+          },
+          select: {
+            defaultSettings: {
+              element: "simple-fields-field",
+              noWrap: true,
+              attributes: {
+                autofocus: true,
+                type: "select"
+              },
+              properties: {
+                options: "options",
+                items: "itemsList"
+              }
+            }
+          },
+          "simple-picker": {
+            defaultSettings: {
+              element: "simple-picker",
+              attributes: {
+                autofocus: true
+              },
+              properties: {
+                options: "options"
               }
             }
           }
         },
-        string: {
-          format: {
-            alt: {
-              defaultSettings: {
-                element: "simple-fields-field",
+        type: {
+          array: {
+            defaultSettings: {
+              element: "simple-fields-array",
+              noWrap: true,
+              descriptionProperty: "description",
+              child: {
+                element: "simple-fields-array-item",
                 noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  required: true
+                descriptionProperty: "description",
+                properties: {
+                  previewBy: "previewBy"
                 }
               }
+            }
+          },
+          boolean: {
+            defaultSettings: {
+              element: "simple-fields-field",
+              noWrap: true,
+              attributes: {
+                autofocus: true,
+                type: "checkbox",
+                value: false
+              }
+            }
+          },
+          file: {
+            defaultSettings: {
+              element: "simple-fields-field",
+              noWrap: true,
+              attributes: {
+                autofocus: true,
+                type: "file"
+              },
+              properties: {
+                accepts: "accepts"
+              }
+            }
+          },
+          integer: {
+            defaultSettings: {
+              element: "simple-fields-field",
+              noWrap: true,
+              attributes: {
+                autofocus: true,
+                step: 1,
+                type: "number"
+              },
+              properties: {
+                minimum: "min",
+                maximum: "max",
+                multipleOf: "step"
+              }
+            }
+          },
+          markup: {
+            defaultSettings: {
+              element: "simple-fields-code",
+              setValueProperty: "editorValue",
+              noWrap: true
             },
-            color: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "color"
+            format: {
+              "md-block": {
+                defaultSettings: {
+                  element: "md-block",
+                  setValueProperty: "source",
+                  noWrap: true
                 }
               }
+            }
+          },
+          number: {
+            defaultSettings: {
+              element: "simple-fields-field",
+              noWrap: true,
+              type: "number",
+              attributes: {
+                autofocus: true,
+                type: "number"
+              },
+              properties: {
+                minimum: "min",
+                maximum: "max",
+                multipleOf: "step"
+              }
+            }
+          },
+          object: {
+            defaultSettings: {
+              element: "simple-fields-fieldset",
+              noWrap: true
             },
-            colorpicker: {
-              defaultSettings: {
-                element: "simple-colors-picker",
-                attributes: {
-                  autofocus: true
+            format: {
+              tabs: {
+                defaultSettings: {
+                  element: "simple-fields-tabs",
+                  noWrap: true,
+                  child: {
+                    element: "simple-fields-tab",
+                    noWrap: true,
+                    labelSlot: "label",
+                    descriptionSlot: ""
+                  },
+                  properties: {
+                    layoutBreakpoint: "layoutBreakpoint",
+                    iconBreakpoint: "iconBreakpoint",
+                    sticky: "sticky"
+                  }
+                }
+              },
+              fields: {
+                defaultSettings: {
+                  element: "simple-fields",
+                  noWrap: true,
+                  descriptionProperty: "description",
+                  properties: {
+                    schema: "schema"
+                  }
                 }
               }
-            },
-            date: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "date"
+            }
+          },
+          string: {
+            format: {
+              alt: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    required: true
+                  }
                 }
-              }
-            },
-            "date-time": {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "datetime-local"
+              },
+              color: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "color"
+                  }
                 }
-              }
-            },
-            date: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "date"
+              },
+              colorpicker: {
+                defaultSettings: {
+                  element: "simple-colors-picker",
+                  attributes: {
+                    autofocus: true
+                  }
                 }
-              }
-            },
-            email: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "email"
+              },
+              date: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "date"
+                  }
                 }
-              }
-            },
-            fileupload: {
-              defaultSettings: {
-                element: "simple-fields-upload",
-                noWrap: true,
-                attributes: {
-                  autofocus: true
+              },
+              "date-time": {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "datetime-local"
+                  }
                 }
-              }
-            },
-            iconpicker: {
-              defaultSettings: {
-                element: "simple-icon-picker",
-                attributes: {
-                  autofocus: true
+              },
+              date: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "date"
+                  }
                 }
-              }
-            },
-            month: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "month"
+              },
+              email: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "email"
+                  }
                 }
-              }
-            },
-            textarea: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "textarea"
+              },
+              fileupload: {
+                defaultSettings: {
+                  element: "simple-fields-upload",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true
+                  }
                 }
-              }
-            },
-            time: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "time"
+              },
+              iconpicker: {
+                defaultSettings: {
+                  element: "simple-icon-picker",
+                  attributes: {
+                    autofocus: true
+                  }
                 }
-              }
-            },
-            uri: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "file"
+              },
+              month: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "month"
+                  }
+                }
+              },
+              textarea: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "textarea"
+                  }
+                }
+              },
+              time: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "time"
+                  }
+                }
+              },
+              uri: {
+                defaultSettings: {
+                  element: "simple-fields-field",
+                  noWrap: true,
+                  attributes: {
+                    autofocus: true,
+                    type: "file"
+                  }
                 }
               }
             }
           }
         }
       }
-    };
+    );
   }
   /**
    * gets fields array to JSON schema conversion object
@@ -566,166 +568,167 @@ class SimpleFields extends SimpleFieldsLite {
    * @readonly
    * @memberof SimpleFields
    */
-  get fieldsConversion(){
-    return this.schematizer || {
-      defaultSettings: {
-        type: "string"
-      },
-      format: {
-        "simple-fields": {
-          defaultSettings: {
-            type: "object",
-            format: "simple-fields"
-          }
-        }
-      },
-      inputMethod: {
-        alt: {
-          defaultSettings: {
-            type: "string",
-            format: "alt"
+  get fieldsConversion() {
+    return (
+      this.schematizer || {
+        defaultSettings: {
+          type: "string"
+        },
+        format: {
+          "simple-fields": {
+            defaultSettings: {
+              type: "object",
+              format: "simple-fields"
+            }
           }
         },
-        array: {
-          defaultSettings: {
-            type: "array"
+        inputMethod: {
+          alt: {
+            defaultSettings: {
+              type: "string",
+              format: "alt"
+            }
           },
-          properties: {
-            label: "itemLabel"
-          }
-        },
-        boolean: {
-          defaultSettings: {
-            type: "boolean"
-          }
-        },
-        code: {
-          defaultSettings: {
-            type: "markup"
-          }
-        },
-        "code-editor": {
-          defaultSettings: {
-            type: "markup"
-          }
-        },
-        color: {
-          defaultSettings: {
-            type: "string",
-            format: "color"
-          }
-        },
-        colorpicker: {
-          defaultSettings: {
-            type: "string",
-            format: "colorpicker"
-          }
-        },
-        "date-time": {
-          defaultSettings: {
-            type: "string",
-            format: "date-time"
-          }
-        },
-        datepicker: {
-          defaultSettings: {
-            type: "string",
-            format: "date"
-          }
-        },
-        fieldset: {
-          defaultSettings: {
-            type: "object"
-          }
-        },
-        fileupload: {
-          defaultSettings: {
-            type: "string",
-            format: "fileupload"
-          }
-        },
-        haxupload: {
-          defaultSettings: {
-            type: "string",
-            format: "fileupload"
-          }
-        },
-        iconpicker: {
-          defaultSettings: {
-            type: "string",
-            format: "iconpicker"
-          }
-        },
-        markup: {
-          defaultSettings: {
-            type: "markup"
-          }
-        },
-        "md-block": {
-          defaultSettings: {
-            type: "markup",
-            format: "md-block"
-          }
-        },
-        monthpicker: {
-          defaultSettings: {
-            type: "string",
-            format: "month"
-          }
-        },
-        number: {
-          defaultSettings: {
-            type: "number"
-          }
-        },
-        object: {
-          defaultSettings: {
-            type: "object"
-          }
-        },
-        select: {
-          defaultSettings: {
-            type: "string",
-            format: "select"
-          }
-        },
-        slider: {
-          defaultSettings: {
-            type: "number",
-            format: "slider"
-          }
-        },
-        tabs: {
-          defaultSettings: {
-            type: "object",
-            format: "tabs"
-          }
-        },
-        textarea: {
-          defaultSettings: {
-            type: "string",
-            format: "textarea"
-          }
-        },
-        timepicker: {
-          defaultSettings: {
-            type: "string",
-            format: "time"
-          }
-        },
-        weekpicker: {
-          defaultSettings: {
-            type: "string",
-            format: "week"
+          array: {
+            defaultSettings: {
+              type: "array"
+            },
+            properties: {
+              label: "itemLabel"
+            }
+          },
+          boolean: {
+            defaultSettings: {
+              type: "boolean"
+            }
+          },
+          code: {
+            defaultSettings: {
+              type: "markup"
+            }
+          },
+          "code-editor": {
+            defaultSettings: {
+              type: "markup"
+            }
+          },
+          color: {
+            defaultSettings: {
+              type: "string",
+              format: "color"
+            }
+          },
+          colorpicker: {
+            defaultSettings: {
+              type: "string",
+              format: "colorpicker"
+            }
+          },
+          "date-time": {
+            defaultSettings: {
+              type: "string",
+              format: "date-time"
+            }
+          },
+          datepicker: {
+            defaultSettings: {
+              type: "string",
+              format: "date"
+            }
+          },
+          fieldset: {
+            defaultSettings: {
+              type: "object"
+            }
+          },
+          fileupload: {
+            defaultSettings: {
+              type: "string",
+              format: "fileupload"
+            }
+          },
+          haxupload: {
+            defaultSettings: {
+              type: "string",
+              format: "fileupload"
+            }
+          },
+          iconpicker: {
+            defaultSettings: {
+              type: "string",
+              format: "iconpicker"
+            }
+          },
+          markup: {
+            defaultSettings: {
+              type: "markup"
+            }
+          },
+          "md-block": {
+            defaultSettings: {
+              type: "markup",
+              format: "md-block"
+            }
+          },
+          monthpicker: {
+            defaultSettings: {
+              type: "string",
+              format: "month"
+            }
+          },
+          number: {
+            defaultSettings: {
+              type: "number"
+            }
+          },
+          object: {
+            defaultSettings: {
+              type: "object"
+            }
+          },
+          select: {
+            defaultSettings: {
+              type: "string",
+              format: "select"
+            }
+          },
+          slider: {
+            defaultSettings: {
+              type: "number",
+              format: "slider"
+            }
+          },
+          tabs: {
+            defaultSettings: {
+              type: "object",
+              format: "tabs"
+            }
+          },
+          textarea: {
+            defaultSettings: {
+              type: "string",
+              format: "textarea"
+            }
+          },
+          timepicker: {
+            defaultSettings: {
+              type: "string",
+              format: "time"
+            }
+          },
+          weekpicker: {
+            defaultSettings: {
+              type: "string",
+              format: "week"
+            }
           }
         }
       }
-    };
+    );
   }
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    console.log('fieldsConversion',this,this.fieldsConversion);
     changedProperties.forEach((oldValue, propName) => {
       if (["fields", "fieldsConversion"].includes(propName))
         this.schema = this.convertedSchema;
@@ -850,7 +853,6 @@ class SimpleFields extends SimpleFieldsLite {
         schema[prop] = this._fieldToSchema(field);
       });
     }
-    console.log('fieldsToSchema',schema,this.fieldsConversion,this.schemaConversion);
     return schema;
   }
   /**

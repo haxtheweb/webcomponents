@@ -1,5 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HaxSchematizer, HaxElementizer } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import {
+  HaxSchematizer,
+  HaxElementizer
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-schema-form`
  * @element hax-schema-form
@@ -11,7 +14,7 @@ import { HaxSchematizer, HaxElementizer } from "@lrnwebcomponents/hax-body-behav
 class HaxSchemaForm extends PolymerElement {
   constructor() {
     super();
-    console.log('HaxElementizer',HaxElementizer);
+    console.log("HaxElementizer", HaxElementizer);
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-tabs/paper-tabs.js");

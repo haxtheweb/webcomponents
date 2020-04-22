@@ -15,7 +15,10 @@ import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
-import { HaxSchematizer, HaxElementizer } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import {
+  HaxSchematizer,
+  HaxElementizer
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `haxcms-site-listing`
  * `A listing of all sites being managed by this instance.`
@@ -750,11 +753,12 @@ class HAXCMSSiteListing extends PolymerElement {
         <h2 class="dialog-header">Create new site</h2>
         <paper-dialog-scrollable>
           <form>
-            <simple-fields 
-              id="createsitefields" 
+            <simple-fields
+              id="createsitefields"
               autofocus
               .schematizer="${HaxSchematizer}"
-              .elementizer="${HaxElementizer}">
+              .elementizer="${HaxElementizer}"
+            >
             </simple-fields>
           </form>
         </paper-dialog-scrollable>
@@ -798,7 +802,8 @@ class HAXCMSSiteListing extends PolymerElement {
           <simple-fields
             id="settingsform"
             .schematizer="${HaxSchematizer}"
-            .elementizer="${HaxElementizer}">
+            .elementizer="${HaxElementizer}"
+          >
           </simple-fields>
         </paper-dialog-scrollable>
         <div class="buttons">

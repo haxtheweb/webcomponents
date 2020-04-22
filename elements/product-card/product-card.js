@@ -22,7 +22,6 @@ class ProductCard extends SimpleColors {
         :host {
           display: flex;
         }
-        
       `
     ];
   }

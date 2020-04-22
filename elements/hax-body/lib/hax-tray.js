@@ -6,7 +6,10 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import { HaxSchematizer, HaxElementizer } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import {
+  HaxSchematizer,
+  HaxElementizer
+} from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -656,9 +659,11 @@ class HaxTray extends winEventsElement(LitElement) {
                 .activeTagName}
             </div>
             <div slot="content">
-              <simple-fields id="settingsform"
+              <simple-fields
+                id="settingsform"
                 .schematizer="${HaxSchematizer}"
-                .elementizer="${HaxElementizer}">
+                .elementizer="${HaxElementizer}"
+              >
               </simple-fields>
             </div>
           </a11y-collapse>
