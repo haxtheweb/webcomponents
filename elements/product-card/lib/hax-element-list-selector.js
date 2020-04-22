@@ -284,10 +284,9 @@ class HaxElementListSelector extends LitElement {
             this.haxTags
           );
         }
-        
       }
-      if(propName == "filteredHaxData" && this.cardList) 
-      this.cardList.filteredTags = this.filteredHaxData.map(el=>el.tag);
+      if (propName == "filteredHaxData" && this.cardList)
+        this.cardList.filteredTags = this.filteredHaxData.map(el => el.tag);
       if (
         propName == "noSchema" &&
         Object.keys(this.noSchema).length > 0 &&
@@ -336,7 +335,7 @@ class HaxElementListSelector extends LitElement {
       }
     });
     if (cols) this.cols = cols;
-    console.log('filteredHaxData',this.filteredHaxData);
+    console.log("filteredHaxData", this.filteredHaxData);
     this.filteredHaxData = [...data];
   }
   /**

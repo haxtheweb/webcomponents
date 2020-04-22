@@ -106,7 +106,9 @@ class HAXElementCardList extends LitElement {
                 <product-card
                   .slot="col-${this.__getCol(i)}"
                   ?disabled="${!el.status}"
-                  ?hidden="${!(this.filteredTags && this.filteredTags.includes(el.tag))}"
+                  ?hidden="${!(
+                    this.filteredTags && this.filteredTags.includes(el.tag)
+                  )}"
                   ?has-demo="${el.schema.demoSchema}"
                   heading="${el.schema.gizmo.title}"
                   icon="${el.schema.gizmo.icon}"
@@ -299,12 +301,7 @@ class HAXElementCardList extends LitElement {
         }
       }
     });
-    console.log(
-      "updated 2",
-      this.list,
-      this.value,
-      this.filteredTags
-    );
+    console.log("updated 2", this.list, this.value, this.filteredTags);
   }
 }
 customElements.define(HAXElementCardList.tag, HAXElementCardList);
