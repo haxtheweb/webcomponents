@@ -1,5 +1,8 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 /**
  *`simple-fields-uri`
  * HTML inputs (excluding submit, reset, button, and image)
@@ -353,7 +356,7 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
        */
       options: {
-        type: Object
+        type: Array
       },
       /**
        * regex pattern the value must match to be valid
@@ -384,7 +387,7 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
     this.spellcheck = false;
     this.id = this._generateUUID();
     this.wrap = false;
-    this.options = {};
+    this.options = [];
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection"
     };
@@ -393,10 +396,6 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = true;
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@vaadin/vaadin-upload/vaadin-upload.js");
-    import("@lrnwebcomponents/simple-picker/lib/simple-picker-option.js");
   }
 
   updated(changedProperties) {
@@ -421,9 +420,9 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
   }
   /**
    * Respond to uploading a file
-   * /
+   */
   _fileAboutToUpload(e) {
-    if (!this.__allowUpload) {
+    if (window.HaxStore && !this.__allowUpload) {
       // cancel the event so we can jump in
       e.preventDefault();
       e.stopPropagation();
@@ -461,7 +460,7 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
   /**
    * Respond to successful file upload, now inject url into url field and
    * do a gizmo guess from there!
-   * /
+   */
   _fileUploadResponse(e) {
     // convert response to object
     let response = JSON.parse(e.detail.xhr.response);
@@ -502,7 +501,7 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
   /**
    * Event for an app being selected from a picker
    * This happens when multiple upload targets support the given type
-   * /
+   */
   _haxAppPickerSelection(e) {
     // details for where to upload the file
     let connection = e.detail.connection;

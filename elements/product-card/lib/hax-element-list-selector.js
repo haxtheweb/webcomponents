@@ -343,14 +343,14 @@ class HaxElementListSelector extends LitElement {
         if (this.shadowRoot.querySelector("#productlist")) {
           this.shadowRoot.querySelector("#productlist").requestUpdate();
         }
+        this.dispatchEvent(
+          new CustomEvent("appstore-changed", {
+            detail: {
+              value: this.getAppstoreValues()
+            }
+          })
+        );
       }
-      this.dispatchEvent(
-        new CustomEvent("appstore-changed", {
-          detail: {
-            value: this.getAppstoreValues()
-          }
-        })
-      );
     }, 50);
   }
   /**
