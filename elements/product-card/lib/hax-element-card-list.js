@@ -11,6 +11,7 @@ class HAXElementCardList extends LitElement {
     super();
     this.showCardList = false;
     this.list = [];
+    this.filteredTags = [];
     this.value = {};
     this.cols = 2;
     this._layout = "1-1-1";
@@ -28,6 +29,9 @@ class HAXElementCardList extends LitElement {
         }
         product-card {
           display: block;
+        }
+        product-card[hidden] {
+          display: none;
         }
         product-card div[slot="details-collapse-content"] {
           max-height: 125px;
@@ -62,6 +66,9 @@ class HAXElementCardList extends LitElement {
       enabled: {
         type: Object
       },
+      filteredTags: {
+        type: Object
+      },
       cols: {
         type: Number
       },
@@ -76,12 +83,6 @@ class HAXElementCardList extends LitElement {
       },
       _layout: {
         type: String
-      },
-      _firstList: {
-        type: Boolean
-      },
-      _firstValue: {
-        type: Boolean
       }
     };
   }
@@ -105,6 +106,7 @@ class HAXElementCardList extends LitElement {
                 <product-card
                   .slot="col-${this.__getCol(i)}"
                   ?disabled="${!el.status}"
+                  ?hidden="${!(this.filteredTags && this.filteredTags.includes(el.tag))}"
                   ?has-demo="${el.schema.demoSchema}"
                   heading="${el.schema.gizmo.title}"
                   icon="${el.schema.gizmo.icon}"
@@ -185,7 +187,7 @@ class HAXElementCardList extends LitElement {
         `;
   }
   /**
-   * updates list with status based on current value
+   * updated list with status based on current value
    *
    * @readonly
    * @memberof HAXElementCardList
@@ -275,7 +277,7 @@ class HAXElementCardList extends LitElement {
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
-    console.log("updated", this.list, this.value);
+    console.log("updated", this.list, this.value, this.filteredTags);
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "cols") {
         switch (this[propName]) {
@@ -299,10 +301,9 @@ class HAXElementCardList extends LitElement {
     });
     console.log(
       "updated 2",
-      this._firstList,
       this.list,
-      this._firstValue,
-      this.value
+      this.value,
+      this.filteredTags
     );
   }
 }

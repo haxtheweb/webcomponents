@@ -284,7 +284,10 @@ class HaxElementListSelector extends LitElement {
             this.haxTags
           );
         }
+        
       }
+      if(propName == "filteredHaxData" && this.cardList) 
+      this.cardList.filteredTags = this.filteredHaxData.map(el=>el.tag);
       if (
         propName == "noSchema" &&
         Object.keys(this.noSchema).length > 0 &&
@@ -332,7 +335,9 @@ class HaxElementListSelector extends LitElement {
         }
       }
     });
-    return data;
+    if (cols) this.cols = cols;
+    console.log('filteredHaxData',this.filteredHaxData);
+    this.filteredHaxData = [...data];
   }
   /**
    * Listen for response and then apply initial settings
@@ -368,8 +373,7 @@ class HaxElementListSelector extends LitElement {
             haxcore.providers["haxcore-providers-cdn"] + "wc-registry.json";
         }
         // apply filters
-        this.filteredHaxData = [...this.applyFilters(haxcore.search)];
-        if (cols) this.cols = cols;
+        this.applyFilters(haxcore.search);
         if (this.cardList) this.cardList.requestUpdate();
         if (this.cardList) {
           console.log("cardList", this.cardList.list, this.cardList.value);
