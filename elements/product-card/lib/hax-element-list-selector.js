@@ -70,7 +70,7 @@ class HaxElementListSelector extends LitElement {
     this.method = "GET";
     this.autoload = true;
     // default fields json blob, most implementations should provide their own though obviously
-    this.loadEndpoint =
+    this.fieldsEndpoint =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json";
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
@@ -161,7 +161,7 @@ class HaxElementListSelector extends LitElement {
       <simple-fields-form
         id="form"
         autoload
-        load-endpoint="${this.loadEndpoint}"
+        load-endpoint="${this.fieldsEndpoint}"
         method="${this.method}"
         .schematizer="${HaxSchematizer}"
         .elementizer="${HaxElementizer}"
