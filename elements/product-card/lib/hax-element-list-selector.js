@@ -291,13 +291,13 @@ class HaxElementListSelector extends LitElement {
           if (this.haxTags)
             this.haxTags.editorValue = JSON.stringify(renderHaxData, null, 2);
 
-            console.log(
-              "haxData changed",
-              this.haxData,
-              this.filteredHaxData,
-              renderHaxData,
-              this.haxTags
-            );
+          console.log(
+            "haxData changed",
+            this.haxData,
+            this.filteredHaxData,
+            renderHaxData,
+            this.haxTags
+          );
         }
       }
       if (
