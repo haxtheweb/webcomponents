@@ -29,8 +29,6 @@ class HAXElementCardList extends LitElement {
         product-card {
           display: block;
         }
-        product-card div[slot="collapse-header"] {
-        }
         product-card div[slot="details-collapse-content"] {
           max-height: 125px;
           overflow-y: auto;
@@ -68,6 +66,12 @@ class HAXElementCardList extends LitElement {
       },
       _layout: {
         type: String
+      },
+      _firstList: {
+        type: Array
+      },
+      _firstValue: {
+        type: Array
       }
     };
   }
@@ -105,7 +109,7 @@ class HAXElementCardList extends LitElement {
                       label="${el.status ? `Enabled` : `Disabled`}"
                     >
                       <mwc-switch
-                        ?checked="${this.value[tag] === this.value[file]}"
+                        ?checked="${el.status}"
                         @change="${e => this.elementStatusChange(el)}"
                       ></mwc-switch>
                     </mwc-formfield>
@@ -216,7 +220,8 @@ class HAXElementCardList extends LitElement {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
   elementStatusChange(el, status) {
-    if (!status) status = !this.value[el.tag];
+    if (!status) status = !el.status;
+    el.status = status;
     this._updateItem(el.tag, el.file, status);
     // send up so list can update
     this.dispatchEvent(
@@ -241,17 +246,26 @@ class HAXElementCardList extends LitElement {
     }
   }
   /**
+   * only set these once both the initial list and values are available
+   */
+  _updateList(){
+    if(this._firstValue && this._firstList){
+      this.value = JSON.stringify(JSON.parse(this.value));
+      this.value = {};
+      this.list.forEach(item =>{
+        this._updateItem(item.tag, item.file, this._firstValue[item.tag] ? true : false);
+        this.value[item.tag] = item.file;
+      });
+    }
+  }
+  /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
-    console.log("updated", this.cols);
+    console.log("updated", this._firstList,this.list,this._firstValue,this.value);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "list" && this.list !== oldValue) {
-        this.value = {};
-        this.list.forEach(item =>
-          this._updateItem(item.tag, item.file, item.status)
-        );
-      }
+      if (propName == "list" && this.list !== oldValue && !this._firstList) this._firstList = true;
+      if(propName == "value" && !this._firstValue) this._firstValue = true;
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:
@@ -272,6 +286,7 @@ class HAXElementCardList extends LitElement {
         }
       }
     });
+    console.log("updated 2", this._firstList,this.list,this._firstValue,this.value);
   }
 }
 customElements.define(HAXElementCardList.tag, HAXElementCardList);

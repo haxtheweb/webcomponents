@@ -175,21 +175,6 @@ class HaxElementListSelector extends LitElement {
       </simple-fields-form>
     `;
   }
-  _enabledChanged(e) {
-    this.haxData.forEach((el, i) => {
-      if (el.tag == e.detail.tag) {
-        this.haxData[i].status = e.detail.status;
-      }
-    });
-    this.dispatchEvent(
-      new CustomEvent("appstore-changed", {
-        detail: {
-          value: this.getAppstoreValues()
-        }
-      })
-    );
-    console.log("appstore-changed", this.haxData);
-  }
   _activeTabChanged(e) {
     if (e.detail.activeTab == "haxcore.search") {
       this.showCardList = true;
@@ -234,7 +219,7 @@ class HaxElementListSelector extends LitElement {
       if (propName == "wcRegistryEndpoint") {
         this.haxData = [];
         this.imports = [];
-        fetch(this[propName])
+        fetch(this.wcRegistryEndpoint)
           .then(response => {
             this.loading = true;
             return response.json();
@@ -261,7 +246,6 @@ class HaxElementListSelector extends LitElement {
                 let detail = {
                   tag: tag,
                   file: file,
-                  status: true,
                   schema: module[Object.keys(module)[0]].haxProperties
                 };
                 list.push(detail);
@@ -281,6 +265,7 @@ class HaxElementListSelector extends LitElement {
       }
       // this is the local data we don't let change
       if (propName == "haxData") {
+        if(this.form) console.log("imports",this.form.value);
         this.filteredHaxData = [...this.haxData];
         if (this.haxData.length > 0) {
           let renderHaxData = {};
@@ -355,24 +340,24 @@ class HaxElementListSelector extends LitElement {
   _response(e) {
     if (this.searchColumns) this.searchColumns.value = this.cols;
     if (this.cardList) this.cardList.cols = this.cols;
+    //this._valueChanged(e);
   }
   /**
    * notice any value changing and then getting the form fresh
    */
-  _valueChanged(e) {
+  _valueChanged() {
     clearTimeout(this.__valueDebounce);
     this.__valueDebounce = setTimeout(() => {
-      console.log("__valueDebounce", this.form.value);
-      let haxcore =
-        this.form && this.form.value && this.form.value.haxcore
-          ? this.form.value.haxcore
-          : undefined;
+      let haxcore = this.form && this.form.value && this.form.value.haxcore
+          ? this.form.value.haxcore : undefined;
+          console.log("_valueChanged", this.value,this.form.value,haxcore);
       if (haxcore) {
         let cols =
           haxcore.search && haxcore.search["haxcore-search-columns"]
             ? haxcore.search["haxcore-search-columns"]
             : undefined;
         // look for CDN provider
+          console.log("haxcore.providers", haxcore, haxcore.providers);
         if (haxcore.providers["haxcore-providers-cdn"] == "other") {
           this.wcRegistryEndpoint =
             haxcore.providers["haxcore-providers-other"] + "wc-registry.json";
@@ -384,13 +369,16 @@ class HaxElementListSelector extends LitElement {
         this.filteredHaxData = [...this.applyFilters(haxcore.search)];
         if (cols) this.cols = cols;
         if (this.cardList) this.cardList.requestUpdate();
-        this.dispatchEvent(
-          new CustomEvent("appstore-changed", {
-            detail: {
-              value: this.getAppstoreValues()
-            }
-          })
-        );
+        if (this.cardList) {
+          console.log("cardList", this.cardList.list,this.cardList.value);
+          this.dispatchEvent(
+            new CustomEvent("appstore-changed", {
+              detail: {
+                value: this.getAppstoreValues()
+              }
+            })
+          );
+        }
       }
     }, 50);
   }
@@ -400,12 +388,13 @@ class HaxElementListSelector extends LitElement {
   getAppstoreValues() {
     // get form values
     let value = this.shadowRoot.querySelector("#form").submit();
-    console.log("value", value);
+    console.log("getAppstoreValues", value);
     value.haxcore = value.haxcore || {
-      templates: {}
+      templates: {},
+      providers: {}
     };
     let appstore = {
-      provider: {
+      providers: {
         cdn: value.haxcore.providers["haxcore-providers-cdn"],
         other: value.haxcore.providers["haxcore-providers-other"],
         pk: value.haxcore.providers["haxcore-providers-pk"]
@@ -413,7 +402,7 @@ class HaxElementListSelector extends LitElement {
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
-      autoloader: this.cardList.value
+      autoloader: value.haxcore.search["haxcore-search-autoloader"]
     };
     // find the API keys
     for (var key in value.haxcore.integrations) {
