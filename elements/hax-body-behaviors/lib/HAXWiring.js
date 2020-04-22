@@ -162,6 +162,7 @@
  * reference is being garbage collected on save (see grid-plate).
  */
 import { SimpleFields } from "@lrnwebcomponents/simple-fields/simple-fields.js";
+import { HaxSchematizer, HaxElementizer } from "./HAXFields.js";
 
 /**
  * Object to validate HAX schema. Can be used in and out of element contexts

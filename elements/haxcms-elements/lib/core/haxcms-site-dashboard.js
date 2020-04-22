@@ -13,6 +13,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/notification-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
+import { HaxSchematizer, HaxElementizer } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 
 /**
  * `haxcms-site-dashboard`
@@ -217,6 +218,8 @@ class HAXCMSSiteDashboard extends LitElement {
           autoload
           .headers="${this.headers}"
           .body="${this.body}"
+          .schematizer="${HaxSchematizer}"
+          .elementizer="${HaxElementizer}"
           load-endpoint="${this.loadEndpoint}"
           method="${this.method}"
         ></simple-fields-form>
