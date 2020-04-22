@@ -265,7 +265,7 @@ class HaxElementListSelector extends LitElement {
       }
       // this is the local data we don't let change
       if (propName == "haxData") {
-        if(this.form) console.log("imports",this.form.value);
+        if (this.form) console.log("imports", this.form.value);
         this.filteredHaxData = [...this.haxData];
         if (this.haxData.length > 0) {
           let renderHaxData = {};
@@ -348,16 +348,18 @@ class HaxElementListSelector extends LitElement {
   _valueChanged() {
     clearTimeout(this.__valueDebounce);
     this.__valueDebounce = setTimeout(() => {
-      let haxcore = this.form && this.form.value && this.form.value.haxcore
-          ? this.form.value.haxcore : undefined;
-          console.log("_valueChanged", this.value,this.form.value,haxcore);
+      let haxcore =
+        this.form && this.form.value && this.form.value.haxcore
+          ? this.form.value.haxcore
+          : undefined;
+      console.log("_valueChanged", this.value, this.form.value, haxcore);
       if (haxcore) {
         let cols =
           haxcore.search && haxcore.search["haxcore-search-columns"]
             ? haxcore.search["haxcore-search-columns"]
             : undefined;
         // look for CDN provider
-          console.log("haxcore.providers", haxcore, haxcore.providers);
+        console.log("haxcore.providers", haxcore, haxcore.providers);
         if (haxcore.providers["haxcore-providers-cdn"] == "other") {
           this.wcRegistryEndpoint =
             haxcore.providers["haxcore-providers-other"] + "wc-registry.json";
@@ -370,7 +372,7 @@ class HaxElementListSelector extends LitElement {
         if (cols) this.cols = cols;
         if (this.cardList) this.cardList.requestUpdate();
         if (this.cardList) {
-          console.log("cardList", this.cardList.list,this.cardList.value);
+          console.log("cardList", this.cardList.list, this.cardList.value);
           this.dispatchEvent(
             new CustomEvent("appstore-changed", {
               detail: {

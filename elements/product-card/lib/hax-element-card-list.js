@@ -248,12 +248,16 @@ class HAXElementCardList extends LitElement {
   /**
    * only set these once both the initial list and values are available
    */
-  _updateList(){
-    if(this._firstValue && this._firstList){
+  _updateList() {
+    if (this._firstValue && this._firstList) {
       this.value = JSON.stringify(JSON.parse(this.value));
       this.value = {};
-      this.list.forEach(item =>{
-        this._updateItem(item.tag, item.file, this._firstValue[item.tag] ? true : false);
+      this.list.forEach(item => {
+        this._updateItem(
+          item.tag,
+          item.file,
+          this._firstValue[item.tag] ? true : false
+        );
         this.value[item.tag] = item.file;
       });
     }
@@ -262,10 +266,17 @@ class HAXElementCardList extends LitElement {
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
-    console.log("updated", this._firstList,this.list,this._firstValue,this.value);
+    console.log(
+      "updated",
+      this._firstList,
+      this.list,
+      this._firstValue,
+      this.value
+    );
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "list" && this.list !== oldValue && !this._firstList) this._firstList = true;
-      if(propName == "value" && !this._firstValue) this._firstValue = true;
+      if (propName == "list" && this.list !== oldValue && !this._firstList)
+        this._firstList = true;
+      if (propName == "value" && !this._firstValue) this._firstValue = true;
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:
@@ -286,7 +297,13 @@ class HAXElementCardList extends LitElement {
         }
       }
     });
-    console.log("updated 2", this._firstList,this.list,this._firstValue,this.value);
+    console.log(
+      "updated 2",
+      this._firstList,
+      this.list,
+      this._firstValue,
+      this.value
+    );
   }
 }
 customElements.define(HAXElementCardList.tag, HAXElementCardList);
