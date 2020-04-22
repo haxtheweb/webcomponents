@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
-import { CountUp } from "countup.js";
+import { CountUp } from "./lib/countup.js";
 
 /**
  * `count-up`

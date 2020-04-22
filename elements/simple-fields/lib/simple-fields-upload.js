@@ -1,6 +1,8 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
  * `simple-fields-upload` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -120,12 +122,10 @@ class SimpleFieldsUpload extends SimpleColors {
     super();
     this.label = null;
     this.noCamera = false;
+    this.options = [];
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = true;
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-    import("@vaadin/vaadin-upload/vaadin-upload.js");
-    import("@lrnwebcomponents/simple-picker/lib/simple-picker-option.js");
   }
   /**
    * LitElement life cycle - render callback

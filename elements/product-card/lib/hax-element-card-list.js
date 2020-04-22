@@ -172,7 +172,6 @@ class HAXElementCardList extends LitElement {
   }
   _viewDemo(e) {
     if (e.target && e.target.nextElementSibling) {
-      console.log(e.target.nextElementSibling);
       window.dispatchEvent(
         new CustomEvent("simple-modal-show", {
           bubbles: true,

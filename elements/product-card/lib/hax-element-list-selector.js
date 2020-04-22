@@ -386,16 +386,19 @@ class HaxElementListSelector extends LitElement {
         this.filteredHaxData = [...this.applyFilters(haxcore.search)];
         if (cols) this.cols = cols;
         if (this.cardList) this.cardList.requestUpdate();
+        this.dispatchEvent(
+          new CustomEvent("appstore-changed", {
+            detail: {
+              value: this.getAppstoreValues()
+            }
+          })
+        );
       }
-      this.dispatchEvent(
-        new CustomEvent("appstore-changed", {
-          detail: {
-            value: this.getAppstoreValues()
-          }
-        })
-      );
     }, 50);
   }
+  /**
+   * Return the appstore values
+   */
   getAppstoreValues() {
     // get form values
     let value = this.shadowRoot.querySelector("#form").submit();
@@ -404,6 +407,11 @@ class HaxElementListSelector extends LitElement {
       templates: {}
     };
     let appstore = {
+      provider: {
+        cdn: value.haxcore.providers["haxcore-providers-cdn"],
+        other: value.haxcore.providers["haxcore-providers-other"],
+        pk: value.haxcore.providers["haxcore-providers-pk"]
+      },
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
