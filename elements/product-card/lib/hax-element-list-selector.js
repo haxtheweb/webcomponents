@@ -415,7 +415,7 @@ class HaxElementListSelector extends LitElement {
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
-      autoloader: (this.cardList ? this.cardList.value : {})
+      autoloader: this.cardList ? this.cardList.value : {}
     };
     // find the API keys
     for (var key in value.haxcore.integrations) {
