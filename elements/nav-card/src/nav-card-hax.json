@@ -7,9 +7,7 @@
     "description": "an accent card of link lists",
     "icon": "icons:android",
     "color": "green",
-    "groups": [
-      "Card"
-    ],
+    "groups": ["Card"],
     "handles": [
       {
         "type": "todo:read-the-docs-for-usage"

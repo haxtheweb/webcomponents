@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from "lit-element";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/accent-card/accent-card.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -10,7 +10,7 @@ import "@polymer/iron-icons/iron-icons.js";
 /**
  * `nav-card`
  * an accent card of link lists
- * 
+ *
  * @customElement nav-card
  * @lit-html
  * @lit-element
@@ -50,7 +50,7 @@ class NavCard extends LitElement {
     this.HAXWiring.setup(NavCard.haxProperties, NavCard.tag, this);
   }
   firstUpdated(changedProperties) {
-    if(super.firstUpdated) super.firstUpdated(changedProperties);
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.updateList();
   }
 
@@ -63,23 +63,27 @@ class NavCard extends LitElement {
     let callback = () => this.updateList();
     return new MutationObserver(callback);
   }
-  updated(changedProperties){
-     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "linkIcon" && this.shadowRoot) 
-        this.shadowRoot.querySelectorAll('#linklist li > iron-icon').forEach(icon=>icon.icon = this.linkIcon);
-    });
-  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "linkIcon" && this.shadowRoot)
+        this.shadowRoot
+          .querySelectorAll("#linklist li > iron-icon")
+          .forEach(icon => (icon.icon = this.linkIcon));
+    });
+  }
 
-  updateList(){
-    if(this.shadowRoot && this.shadowRoot.querySelector('#linklist')) {
-      let linklist = this.shadowRoot.querySelector('#linklist'),
-        ul = this.querySelector('ul[slot="linklist"],ol[slot="linklist"]').cloneNode(true);
-      ul.querySelectorAll('li').forEach((li,i)=>this._getLi(li,i));
-      linklist.innerHTML = '';
-      if(ul) {
-        ul.classList.add('linklist');
-        linklist.appendChild(ul); 
-      }     
+  updateList() {
+    if (this.shadowRoot && this.shadowRoot.querySelector("#linklist")) {
+      let linklist = this.shadowRoot.querySelector("#linklist"),
+        ul = this.querySelector(
+          'ul[slot="linklist"],ol[slot="linklist"]'
+        ).cloneNode(true);
+      ul.querySelectorAll("li").forEach((li, i) => this._getLi(li, i));
+      linklist.innerHTML = "";
+      if (ul) {
+        ul.classList.add("linklist");
+        linklist.appendChild(ul);
+      }
     }
   }
   /**
@@ -89,17 +93,18 @@ class NavCard extends LitElement {
    * @param {number} i index
    * @memberof NavCard
    */
-  _getLi(li,i){
-    let heading = this._getHeading(li,i), 
+  _getLi(li, i) {
+    let heading = this._getHeading(li, i),
       subheading = this._getSubheading(li);
-    
+
     heading.id = heading.id || `${this.id || `nav-card`}-heading${i}`;
-    if(subheading) {
+    if (subheading) {
       subheading.id = `subheading${i}`;
-      subheading.id = subheading.id || `${this.id || `nav-card`}-subheading${i}`;
-      heading.setAttribute('aria-describedby',subheading.id);
+      subheading.id =
+        subheading.id || `${this.id || `nav-card`}-subheading${i}`;
+      heading.setAttribute("aria-describedby", subheading.id);
     }
-    this._makeIcon(li,heading);
+    this._makeIcon(li, heading);
   }
   /**
    * formats each heading
@@ -108,19 +113,21 @@ class NavCard extends LitElement {
    * @returns
    * @memberof NavCard
    */
-  _getHeading(li){
-    let heading = li.querySelector('.linklist-heading'),
-      button = li.querySelector('button,a');
-    if(!heading) {
-      if(button) { //preferred: set heading to whatever the link or button is
+  _getHeading(li) {
+    let heading = li.querySelector(".linklist-heading"),
+      button = li.querySelector("button,a");
+    if (!heading) {
+      if (button) {
+        //preferred: set heading to whatever the link or button is
         heading = button;
-      } else { //last resort: just use dump all contents into heading
-        heading = document.createElement('span')
+      } else {
+        //last resort: just use dump all contents into heading
+        heading = document.createElement("span");
         heading.innerHTML = li.innerHTML;
-        li.innerHTML = '';
+        li.innerHTML = "";
         li.appendChild(heading);
       }
-      heading.classList.add('.linklist-heading');
+      heading.classList.add(".linklist-heading");
     }
     return heading;
   }
@@ -132,13 +139,13 @@ class NavCard extends LitElement {
    * @memberof NavCard
    */
   _getSubheading(li) {
-    let subheading = li.querySelector('.linklist-subheading');
-    if(!subheading) {
-      let contents = li.querySelectorAll(':not(.linklist-heading)');
-      if(contents) {
-        subheading = document.createElement('div');
-        contents.forEach(item=>subheading.append(item));
-        subheading.classList.add('.linklist-subheading');
+    let subheading = li.querySelector(".linklist-subheading");
+    if (!subheading) {
+      let contents = li.querySelectorAll(":not(.linklist-heading)");
+      if (contents) {
+        subheading = document.createElement("div");
+        contents.forEach(item => subheading.append(item));
+        subheading.classList.add(".linklist-subheading");
       }
     }
     return subheading;
@@ -150,12 +157,12 @@ class NavCard extends LitElement {
    * @param {object} heading heading inside list item
    * @memberof NavCard
    */
-  _makeIcon(li,heading){
-    if(li && heading) {
-      let icon = document.createElement('iron-icon');
+  _makeIcon(li, heading) {
+    if (li && heading) {
+      let icon = document.createElement("iron-icon");
       icon.icon = this.linkIcon;
-      icon.setAttribute('aria-hidden',true);
-      li.insertBefore(icon,heading);
+      icon.setAttribute("aria-hidden", true);
+      li.insertBefore(icon, heading);
     }
   }
   // static get observedAttributes() {
@@ -168,7 +175,6 @@ class NavCard extends LitElement {
   }
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
-  
 }
 customElements.define("nav-card", NavCard);
 export { NavCard };
