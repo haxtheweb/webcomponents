@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.3",
+  "version": "2.6.8",
   "description": "button to scroll to an area or back to top",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@lrnwebcomponents/deduping-fix": "^2.6.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

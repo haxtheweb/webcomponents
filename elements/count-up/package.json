@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.3",
+  "version": "2.6.8",
   "description": "count up js wrapper with minimal styling",
   "repository": {
     "type": "git",
@@ -41,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^2.6.0",
+    "@lrnwebcomponents/intersection-element": "^2.6.8",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@lrnwebcomponents/deduping-fix": "^2.6.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
