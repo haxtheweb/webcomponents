@@ -402,7 +402,9 @@ class HaxElementListSelector extends LitElement {
     let value = this.shadowRoot.querySelector("#form").submit();
     console.log("value", value);
     value.haxcore = value.haxcore || {
-      templates: {}
+      providers: {},
+      templates: {},
+      integrations: {}
     };
     let appstore = {
       provider: {
@@ -413,7 +415,7 @@ class HaxElementListSelector extends LitElement {
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
-      autoloader: this.cardList.value
+      autoloader: (this.cardList ? this.cardList.value : {})
     };
     // find the API keys
     for (var key in value.haxcore.integrations) {
