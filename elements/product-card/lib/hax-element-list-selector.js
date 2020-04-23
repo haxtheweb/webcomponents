@@ -166,8 +166,6 @@ class HaxElementListSelector extends LitElement {
         .schematizer="${HaxSchematizer}"
         .elementizer="${HaxElementizer}"
         @response="${this._response}"
-        @haxcore.search.haxcore-search-autoloader-value-changed="${e =>
-          console.log("--changed", e, e.detail)}"
         @haxcore.search.haxcore-search-columns-value-changed="${e =>
           (this.cols = e.detail.value)}"
         @value-changed="${this._valueChanged}"
@@ -213,8 +211,7 @@ class HaxElementListSelector extends LitElement {
       if (propName == "showCardList" && this.cardList)
         this.cardList.showCardList = this.showCardList;
       if (propName == "cols" && this.cardList) this.cardList.cols = this.cols;
-      if (propName == "cols" && this.searchColumns)
-        this.searchColumns.value = this.cols;
+      if (propName == "cols" && this.searchColumns) this.searchColumns.value = this.cols;
 
       if (propName == "wcRegistryEndpoint") {
         this.haxData = [];
@@ -246,6 +243,7 @@ class HaxElementListSelector extends LitElement {
                 let detail = {
                   tag: tag,
                   file: file,
+                  showDemo: false,
                   schema: module[Object.keys(module)[0]].haxProperties
                 };
                 list.push(detail);
@@ -265,28 +263,25 @@ class HaxElementListSelector extends LitElement {
       }
       // this is the local data we don't let change
       if (propName == "haxData") {
-        if (this.form) console.log("imports", this.form.value);
         this.filteredHaxData = [...this.haxData];
         if (this.haxData.length > 0) {
           let renderHaxData = {};
           for (var i in this.haxData) {
             renderHaxData[this.haxData[i].tag] = this.haxData[i].file;
           }
-          if (this.cardList) this.cardList.list = this.filteredHaxData;
+          if (this.cardList) {
+            let search =
+              this.form && this.form.value && this.form.value.haxcore && this.form.value.haxcore.search
+                ? this.form.value.haxcore.search
+                : undefined;
+            this.cardList.list = this.filteredHaxData;
+            if(search) this.applyFilters(search);
+            this.cardList.requestUpdate();
+          }
           if (this.haxTags)
             this.haxTags.editorValue = JSON.stringify(renderHaxData, null, 2);
-
-          console.log(
-            "haxData changed",
-            this.haxData,
-            this.filteredHaxData,
-            renderHaxData,
-            this.haxTags
-          );
         }
       }
-      if (propName == "filteredHaxData" && this.cardList)
-        this.cardList.filteredTags = this.filteredHaxData.map(el => el.tag);
       if (
         propName == "noSchema" &&
         Object.keys(this.noSchema).length > 0 &&
@@ -296,47 +291,48 @@ class HaxElementListSelector extends LitElement {
     });
   }
   applyFilters(filters) {
-    let data = [...this.haxData];
-    Object.keys(filters || {}).forEach(key => {
-      if (filters[key] != "") {
-        switch (key) {
-          case "haxcore-search-search":
-            data = data.filter(item => {
-              if (
-                item.schema.gizmo.title
-                  .toLowerCase()
-                  .includes(filters[key].toLowerCase())
-              ) {
-                return true;
-              }
-              return false;
-            });
-            break;
-          case "haxcore-search-tags":
-            data = data.filter(item => {
-              if (item.schema.gizmo.groups.includes(filters[key])) {
-                return true;
-              }
-              return false;
-            });
-            break;
-          case "haxcore-search-hasdemo":
-            // only filter if box checked otherwise show all
-            if (filters[key]) {
+    if(this.cardList) {
+      let data = [...this.haxData];
+      Object.keys(filters || {}).forEach(key => {
+        if (filters[key] != "") {
+          switch (key) {
+            case "haxcore-search-search":
               data = data.filter(item => {
-                if (item.schema.demoSchema) {
+                if (
+                  item.schema.gizmo.title
+                    .toLowerCase()
+                    .includes(filters[key].toLowerCase())
+                ) {
                   return true;
                 }
                 return false;
               });
-            }
-            break;
+              break;
+            case "haxcore-search-tags":
+              data = data.filter(item => {
+                if (item.schema.gizmo.groups.includes(filters[key])) {
+                  return true;
+                }
+                return false;
+              });
+              break;
+            case "haxcore-search-hasdemo":
+              // only filter if box checked otherwise show all
+              if (filters[key]) {
+                data = data.filter(item => {
+                  if (item.schema.demoSchema) {
+                    return true;
+                  }
+                  return false;
+                });
+              }
+              break;
+          }
         }
-      }
-    });
-    if (cols) this.cols = cols;
-    console.log("filteredHaxData", this.filteredHaxData);
-    this.filteredHaxData = [...data];
+      });
+      this.cardList.filteredTags = [...data].map(item=>item.tag);
+      this.cardList.requestUpdate();
+    }
   }
   /**
    * Listen for response and then apply initial settings
@@ -356,14 +352,14 @@ class HaxElementListSelector extends LitElement {
         this.form && this.form.value && this.form.value.haxcore
           ? this.form.value.haxcore
           : undefined;
-      console.log("_valueChanged", this.value, this.form.value, haxcore);
       if (haxcore) {
         let cols =
           haxcore.search && haxcore.search["haxcore-search-columns"]
             ? haxcore.search["haxcore-search-columns"]
             : undefined;
+        //set columns
+        if (cols) this.cols = cols;
         // look for CDN provider
-        console.log("haxcore.providers", haxcore, haxcore.providers);
         if (haxcore.providers["haxcore-providers-cdn"] == "other") {
           this.wcRegistryEndpoint =
             haxcore.providers["haxcore-providers-other"] + "wc-registry.json";
@@ -373,9 +369,7 @@ class HaxElementListSelector extends LitElement {
         }
         // apply filters
         this.applyFilters(haxcore.search);
-        if (this.cardList) this.cardList.requestUpdate();
         if (this.cardList) {
-          console.log("cardList", this.cardList.list, this.cardList.value);
           this.dispatchEvent(
             new CustomEvent("appstore-changed", {
               detail: {
@@ -393,7 +387,6 @@ class HaxElementListSelector extends LitElement {
   getAppstoreValues() {
     // get form values
     let value = this.shadowRoot.querySelector("#form").submit();
-    console.log("getAppstoreValues", value);
     value.haxcore = value.haxcore || {
       templates: {},
       providers: {}

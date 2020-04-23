@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { haxElementToNode } from "@lrnwebcomponents/utils/utils.js";
-import "@material/mwc-switch/mwc-switch.js";
 import "@material/mwc-button/mwc-button.js";
-import "@material/mwc-formfield/mwc-formfield.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "../product-card.js";
@@ -27,8 +25,15 @@ class HAXElementCardList extends LitElement {
           display: block;
           min-height: 100px;
         }
+        :host([loading]) {
+          border: 1px solid var(--simple-colors-default-theme-grey-6);
+        }
         product-card {
           display: block;
+          max-width: 100%;
+          overflow-x: auto;
+          --mdc-theme-on-primary: var(--simple-colors-default-theme-grey-1);
+          --mdc-theme-primary: var(--simple-colors-default-theme-accent-8);
         }
         product-card[hidden] {
           display: none;
@@ -41,6 +46,10 @@ class HAXElementCardList extends LitElement {
           float: right;
           line-height: 1.5em;
         }
+        mwc-button {
+          text-transform: unset;
+          margin-bottom: 5px;
+        }
         .sr-only {
           position: absolute;
           left: -9999999999px;
@@ -51,9 +60,15 @@ class HAXElementCardList extends LitElement {
           display: grid;
           align-items: stretch;
           grid-template-columns: var(--hax-element-card--cols, repeat(2, 1fr));
-          grid-gap: 15px;
+          grid-gap: var(--hax-element-card--gridGap, 15px);
           overflow-x: auto;
           padding: 2px;
+        }
+        hexagon-loader {
+          padding: 15px 0;
+        }
+        .loaderText {
+          text-align: center;
         }
       `
     ];
@@ -78,6 +93,10 @@ class HAXElementCardList extends LitElement {
       hidden: {
         type: Boolean
       },
+      loading: {
+        type: Boolean,
+        reflect: true
+      },
       showCardList: {
         type: Boolean
       },
@@ -90,13 +109,13 @@ class HAXElementCardList extends LitElement {
     return !this.showCardList
       ? ``
       : html`
+          <p class="loaderText" ?hidden="${!this.loading}">Loading HAX elements..</p>
           <hexagon-loader
             item-count="4"
             color="blue"
             ?loading="${this.loading}"
             size="large"
           ></hexagon-loader>
-          <h2 ?hidden="${!this.loading}">Loading HAX elements..</h2>
           <div
             class="grid"
             style="--hax-element-card--cols: repeat(${this.cols}, 1fr)"
@@ -114,9 +133,8 @@ class HAXElementCardList extends LitElement {
                   icon="${el.schema.gizmo.icon}"
                   subheading="${el.schema.gizmo.description}"
                   accent-color="${el.schema.gizmo.color}"
-                  data-index="${i}"
-                  @product-card-demo-show="${this.toggleShowDemo}"
-                  @product-card-demo-hide="${this.toggleShowDemo}"
+                  @product-card-demo-show="${e=>this.toggleShowDemo(e,i)}"
+                  @product-card-demo-hide="${e=>this.toggleShowDemo(e,i)}"
                 >
                   <label slot="card-header">
                     <span class="sr-only"
@@ -166,6 +184,7 @@ class HAXElementCardList extends LitElement {
                             demoItem => html`
                               <mwc-button
                                 data-tag="${demoItem.tag}"
+                                outlined
                                 @click="${this._viewDemo}"
                                 >Pop up demo</mwc-button
                               >
@@ -200,6 +219,7 @@ class HAXElementCardList extends LitElement {
         tag: item.tag,
         file: item.file,
         schema: item.schema,
+        showDemo: item.showDemo,
         status: this.value[item.tag] ? true : false
       };
     });
@@ -231,9 +251,8 @@ class HAXElementCardList extends LitElement {
   /**
    * Effectively event binding to the expanded state
    */
-  toggleShowDemo(e) {
-    this.productList[e.path[0].getAttribute("data-index")].showDemo =
-      e.detail.expanded;
+  toggleShowDemo(e,index) {
+    this.list[index].showDemo = e.detail.expanded;
     this.requestUpdate();
   }
   /**
@@ -279,8 +298,15 @@ class HAXElementCardList extends LitElement {
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
-    console.log("updated", this.list, this.value, this.filteredTags);
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "list") this.dispatchEvent(
+        new CustomEvent("hax-element-card-list-changed", {
+          detail: {
+            bubbles: true,
+            value: this.getAppstoreValues()
+          }
+        })
+      );
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:
@@ -301,7 +327,6 @@ class HAXElementCardList extends LitElement {
         }
       }
     });
-    console.log("updated 2", this.list, this.value, this.filteredTags);
   }
 }
 customElements.define(HAXElementCardList.tag, HAXElementCardList);
