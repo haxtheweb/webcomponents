@@ -33,11 +33,20 @@ gulp.task("merge", () => {
     return ${HAXProps};
   }`;
           }
-          let props = "{}";
-          props = fs.readFileSync(
+          let rawprops = "{}";
+          rawprops = fs.readFileSync(
             path.join("./", packageJson.wcfactory.files.properties)
           );
-          let cssResult = "<style>";
+          let props = `${rawprops}`,
+            comma = props
+              .replace(/\/\*[\s\S]*?\*\//g, "")
+              .replace(/\/\/.*/g, "")
+              .replace(/[\{\s\n\}]/g, "");
+          (props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1')),
+            (superprops =
+              comma === "" ? `...super.properties` : `...super.properties,`);
+          props = props.replace(/\{([\s\n]*)/, `{$1$1${superprops}$1$1`);
+          let cssResult = "";
           if (
             packageJson.wcfactory.useSass &&
             packageJson.wcfactory.files.scss
@@ -51,28 +60,58 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
-          cssResult += "</style>";
+
           cssResult = stripCssComments(cssResult).trim();
-          return `
-  // render function
-  get html() {
-    return \`
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
+  //styles function
+  static get styles() {
+    return  [
+      ${
+        packageJson.wcfactory.sharedStyles &&
+        packageJson.wcfactory.sharedStyles.length > 0
+          ? `${packageJson.wcfactory.sharedStyles.join(",")},`
+          : ``
+      }
+      css\`
 ${cssResult}
+      \`
+    ];
+  }`,
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
+${cssResult}
+        </style>`
+                : ``;
+
+          return `${litResult}
+
+// render function
+  render() {
+    return html\`
+${styleResult}
 ${html}\`;
   }
 ${haxString}
   // properties available to the custom element for data binding
   static get properties() {
-    let props = ${props};
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
+    return ${props};
   }`;
         }
       )
     )
     .pipe(gulp.dest("./"));
+});
+// run polymer build to generate everything fully
+gulp.task("build", () => {
+  const spawn = require("child_process").spawn;
+  let child = spawn("polymer", ["build"]);
+  return child.on("close", function(code) {
+    console.log("child process exited with code " + code);
+  });
 });
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
@@ -90,14 +129,21 @@ gulp.task("analyze", () => {
 gulp.task("compile", () => {
   // copy outputs
   gulp
-    .src("./" + packageJson.wcfactory.elementName + ".js")
+    .src("./build/es6/" + packageJson.wcfactory.elementName + ".js")
     .pipe(
       rename({
         suffix: ".es6"
       })
     )
     .pipe(gulp.dest("./"));
-
+  gulp
+    .src("./build/es5-amd/" + packageJson.wcfactory.elementName + ".js")
+    .pipe(
+      rename({
+        suffix: ".amd"
+      })
+    )
+    .pipe(gulp.dest("./"));
   return gulp
     .src("./" + packageJson.wcfactory.elementName + ".js")
     .pipe(
@@ -128,4 +174,7 @@ gulp.task("sourcemaps", () => {
 
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile", "sourcemaps"));
+gulp.task(
+  "default",
+  gulp.series("merge", "analyze", "build", "compile", "sourcemaps")
+);

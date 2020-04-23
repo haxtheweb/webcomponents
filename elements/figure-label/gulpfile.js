@@ -88,7 +88,8 @@ ${cssResult}
                 : ``;
 
           return `${litResult}
-  // render function
+
+// render function
   render() {
     return html\`
 ${styleResult}
@@ -104,6 +105,14 @@ ${haxString}
     )
     .pipe(gulp.dest("./"));
 });
+// run polymer build to generate everything fully
+gulp.task("build", () => {
+  const spawn = require("child_process").spawn;
+  let child = spawn("polymer", ["build"]);
+  return child.on("close", function(code) {
+    console.log("child process exited with code " + code);
+  });
+});
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
   var exec = require("child_process").exec;
@@ -118,12 +127,20 @@ gulp.task("analyze", () => {
 });
 // copy from the built locations pulling them together
 gulp.task("compile", () => {
-  // copy outputs so we have a "module" field for bundlers
+  // copy outputs
   gulp
-    .src("./" + packageJson.wcfactory.elementName + ".js")
+    .src("./build/es6/" + packageJson.wcfactory.elementName + ".js")
     .pipe(
       rename({
         suffix: ".es6"
+      })
+    )
+    .pipe(gulp.dest("./"));
+  gulp
+    .src("./build/es5-amd/" + packageJson.wcfactory.elementName + ".js")
+    .pipe(
+      rename({
+        suffix: ".amd"
       })
     )
     .pipe(gulp.dest("./"));
@@ -157,4 +174,7 @@ gulp.task("sourcemaps", () => {
 
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile", "sourcemaps"));
+gulp.task(
+  "default",
+  gulp.series("merge", "analyze", "build", "compile", "sourcemaps")
+);
