@@ -109,7 +109,9 @@ class HAXElementCardList extends LitElement {
     return !this.showCardList
       ? ``
       : html`
-          <p class="loaderText" ?hidden="${!this.loading}">Loading HAX elements..</p>
+          <p class="loaderText" ?hidden="${!this.loading}">
+            Loading HAX elements..
+          </p>
           <hexagon-loader
             item-count="4"
             color="blue"
@@ -133,8 +135,8 @@ class HAXElementCardList extends LitElement {
                   icon="${el.schema.gizmo.icon}"
                   subheading="${el.schema.gizmo.description}"
                   accent-color="${el.schema.gizmo.color}"
-                  @product-card-demo-show="${e=>this.toggleShowDemo(e,i)}"
-                  @product-card-demo-hide="${e=>this.toggleShowDemo(e,i)}"
+                  @product-card-demo-show="${e => this.toggleShowDemo(e, i)}"
+                  @product-card-demo-hide="${e => this.toggleShowDemo(e, i)}"
                 >
                   <label slot="card-header">
                     <span class="sr-only"
@@ -251,7 +253,7 @@ class HAXElementCardList extends LitElement {
   /**
    * Effectively event binding to the expanded state
    */
-  toggleShowDemo(e,index) {
+  toggleShowDemo(e, index) {
     this.list[index].showDemo = e.detail.expanded;
     this.requestUpdate();
   }
@@ -299,14 +301,15 @@ class HAXElementCardList extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "list") this.dispatchEvent(
-        new CustomEvent("hax-element-card-list-changed", {
-          detail: {
-            bubbles: true,
-            value: this.getAppstoreValues()
-          }
-        })
-      );
+      if (propName == "list")
+        this.dispatchEvent(
+          new CustomEvent("hax-element-card-list-changed", {
+            detail: {
+              bubbles: true,
+              value: this.getAppstoreValues()
+            }
+          })
+        );
       if (propName == "cols") {
         switch (this[propName]) {
           case 3:

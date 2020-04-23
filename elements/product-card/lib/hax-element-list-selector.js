@@ -211,7 +211,8 @@ class HaxElementListSelector extends LitElement {
       if (propName == "showCardList" && this.cardList)
         this.cardList.showCardList = this.showCardList;
       if (propName == "cols" && this.cardList) this.cardList.cols = this.cols;
-      if (propName == "cols" && this.searchColumns) this.searchColumns.value = this.cols;
+      if (propName == "cols" && this.searchColumns)
+        this.searchColumns.value = this.cols;
 
       if (propName == "wcRegistryEndpoint") {
         this.haxData = [];
@@ -271,11 +272,14 @@ class HaxElementListSelector extends LitElement {
           }
           if (this.cardList) {
             let search =
-              this.form && this.form.value && this.form.value.haxcore && this.form.value.haxcore.search
+              this.form &&
+              this.form.value &&
+              this.form.value.haxcore &&
+              this.form.value.haxcore.search
                 ? this.form.value.haxcore.search
                 : undefined;
             this.cardList.list = this.filteredHaxData;
-            if(search) this.applyFilters(search);
+            if (search) this.applyFilters(search);
             this.cardList.requestUpdate();
           }
           if (this.haxTags)
@@ -291,7 +295,7 @@ class HaxElementListSelector extends LitElement {
     });
   }
   applyFilters(filters) {
-    if(this.cardList) {
+    if (this.cardList) {
       let data = [...this.haxData];
       Object.keys(filters || {}).forEach(key => {
         if (filters[key] != "") {
@@ -330,7 +334,7 @@ class HaxElementListSelector extends LitElement {
           }
         }
       });
-      this.cardList.filteredTags = [...data].map(item=>item.tag);
+      this.cardList.filteredTags = [...data].map(item => item.tag);
       this.cardList.requestUpdate();
     }
   }
