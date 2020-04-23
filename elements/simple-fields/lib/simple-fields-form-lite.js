@@ -35,6 +35,7 @@ class SimpleFieldsFormLite extends LitElement {
           .resources="${this.resources}"
           .schema="${this.schema}"
           .elementizer="${this.elementizer}"
+          .value="${this.value}"
           @value-changed="${this._valueChanged}"
         >
         </simple-fields-lite>

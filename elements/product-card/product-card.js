@@ -79,8 +79,12 @@ class ProductCard extends SimpleColors {
               `
             : ``}
           ${this.heading}
+          <slot name="card-header"></slot>
         </div>
-        <div slot="subheading">${this.subheading}</div>
+        <div slot="subheading">
+          ${this.subheading}
+          <slot name="card-subheader"></slot>
+        </div>
         <div slot="content"><slot></slot></div>
         <div slot="footer">
           <a11y-collapse-group>

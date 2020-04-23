@@ -88,8 +88,9 @@ ${cssResult}
                 : ``;
 
           return `${litResult}
-  // render function
-  static get template() {
+
+// render function
+  render() {
     return html\`
 ${styleResult}
 ${html}\`;

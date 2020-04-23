@@ -17,14 +17,11 @@ gulp.task("merge", () => {
         /\/\* REQUIRED FOR TOOLING DO NOT TOUCH \*\//g,
         (classStatement, character, jsFile) => {
           // pull these off the package wcfactory files area
-          let html = "";
-          if (packageJson.wcfactory.files.html) {
-            html = fs
-              .readFileSync(path.join("./", packageJson.wcfactory.files.html))
-              .toString()
-              .trim();
-            html = decomment(html);
-          }
+          let html = fs
+            .readFileSync(path.join("./", packageJson.wcfactory.files.html))
+            .toString()
+            .trim();
+          html = decomment(html);
           let haxString = "";
           if (packageJson.wcfactory.useHAX) {
             let HAXProps = fs.readFileSync(
@@ -37,18 +34,18 @@ gulp.task("merge", () => {
   }`;
           }
           let rawprops = "{}";
-          if (packageJson.wcfactory.files.properties) {
-            rawprops = fs.readFileSync(
-              path.join("./", packageJson.wcfactory.files.properties)
-            );
-          }
-          let props = `${rawprops}`;
-          props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
-          props = props.replace(/\{([\s\n]*)/, "{$1...super.properties$1");
-          props = props.replace(
-            /(\/\*[\s\S]*?\*\/)|(\/\/.*)?([\s\n]*)*(\"?\w*\"?[\s\n]*\:[\s\n]*\{)/,
-            ",$3$1$2$3$4"
+          rawprops = fs.readFileSync(
+            path.join("./", packageJson.wcfactory.files.properties)
           );
+          let props = `${rawprops}`,
+            comma = props
+              .replace(/\/\*[\s\S]*?\*\//g, "")
+              .replace(/\/\/.*/g, "")
+              .replace(/[\{\s\n\}]/g, "");
+          (props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1')),
+            (superprops =
+              comma === "" ? `...super.properties` : `...super.properties,`);
+          props = props.replace(/\{([\s\n]*)/, `{$1$1${superprops}$1$1`);
           let cssResult = "";
           if (
             packageJson.wcfactory.useSass &&
@@ -63,25 +60,7 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
-          let styleRegex = /\/\*[\s]*LIST SHARED STYLES BELOW[\s]*((?:(?:\w+)[\s,]*)*)\*\//g,
-            styleArray =
-              cssResult.match(styleRegex) &&
-              cssResult.match(styleRegex).length > 0
-                ? cssResult
-                    .match(styleRegex)[0]
-                    .replace(styleRegex, "$1")
-                    .match(/(\w+)[\s,]*/g)
-                : [];
-          sharedStyles =
-            styleArray && styleArray.length > 0
-              ? styleArray.map(style =>
-                  style.replace(
-                    /(\w+)[\s,]*/g,
-                    `
-        $1`
-                  )
-                )
-              : ``;
+
           cssResult = stripCssComments(cssResult).trim();
           let litResult =
               packageJson.wcfactory.customElementClass !== "LitElement"
@@ -89,7 +68,13 @@ gulp.task("merge", () => {
                 : `
   //styles function
   static get styles() {
-    return  [${sharedStyles ? `${sharedStyles},` : ``}
+    return  [
+      ${
+        packageJson.wcfactory.sharedStyles &&
+        packageJson.wcfactory.sharedStyles.length > 0
+          ? `${packageJson.wcfactory.sharedStyles.join(",")},`
+          : ``
+      }
       css\`
 ${cssResult}
       \`
@@ -104,7 +89,7 @@ ${cssResult}
 
           return `${litResult}
 
-  // render function
+// render function
   render() {
     return html\`
 ${styleResult}
@@ -119,6 +104,14 @@ ${haxString}
       )
     )
     .pipe(gulp.dest("./"));
+});
+// run polymer build to generate everything fully
+gulp.task("build", () => {
+  const spawn = require("child_process").spawn;
+  let child = spawn("polymer", ["build"]);
+  return child.on("close", function(code) {
+    console.log("child process exited with code " + code);
+  });
 });
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
@@ -136,14 +129,21 @@ gulp.task("analyze", () => {
 gulp.task("compile", () => {
   // copy outputs
   gulp
-    .src("./" + packageJson.wcfactory.elementName + ".js")
+    .src("./build/es6/" + packageJson.wcfactory.elementName + ".js")
     .pipe(
       rename({
         suffix: ".es6"
       })
     )
     .pipe(gulp.dest("./"));
-
+  gulp
+    .src("./build/es5-amd/" + packageJson.wcfactory.elementName + ".js")
+    .pipe(
+      rename({
+        suffix: ".amd"
+      })
+    )
+    .pipe(gulp.dest("./"));
   return gulp
     .src("./" + packageJson.wcfactory.elementName + ".js")
     .pipe(
@@ -174,4 +174,7 @@ gulp.task("sourcemaps", () => {
 
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile", "sourcemaps"));
+gulp.task(
+  "default",
+  gulp.series("merge", "analyze", "build", "compile", "sourcemaps")
+);

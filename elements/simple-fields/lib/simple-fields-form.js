@@ -21,12 +21,13 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
         <simple-fields
           id="sf"
           .autofocus="${!this.disableAutofocus}"
-          .language="${this.language}"
+          language="${this.language || ""}"
           .resources="${this.resources}"
           .schema="${this.schema}"
           .fields="${this.fields}"
           .schematizer="${this.fieldsConversion}"
           .elementizer="${this.elementizer}"
+          .value="${this.value}"
           @value-changed="${this._valueChanged}"
         >
         </simple-fields>

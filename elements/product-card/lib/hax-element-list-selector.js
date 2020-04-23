@@ -166,29 +166,12 @@ class HaxElementListSelector extends LitElement {
         .schematizer="${HaxSchematizer}"
         .elementizer="${HaxElementizer}"
         @response="${this._response}"
-        @haxcore.search.haxcore-search-autoloader-value-changed="${e =>
-          console.log("--changed", e, e.detail)}"
         @haxcore.search.haxcore-search-columns-value-changed="${e =>
           (this.cols = e.detail.value)}"
         @value-changed="${this._valueChanged}"
       >
       </simple-fields-form>
     `;
-  }
-  _enabledChanged(e) {
-    this.haxData.forEach((el, i) => {
-      if (el.tag == e.detail.tag) {
-        this.haxData[i].status = e.detail.status;
-      }
-    });
-    this.dispatchEvent(
-      new CustomEvent("appstore-changed", {
-        detail: {
-          value: this.getAppstoreValues()
-        }
-      })
-    );
-    console.log("appstore-changed", this.haxData);
   }
   _activeTabChanged(e) {
     if (e.detail.activeTab == "haxcore.search") {
@@ -234,7 +217,7 @@ class HaxElementListSelector extends LitElement {
       if (propName == "wcRegistryEndpoint") {
         this.haxData = [];
         this.imports = [];
-        fetch(this[propName])
+        fetch(this.wcRegistryEndpoint)
           .then(response => {
             this.loading = true;
             return response.json();
@@ -261,7 +244,7 @@ class HaxElementListSelector extends LitElement {
                 let detail = {
                   tag: tag,
                   file: file,
-                  status: true,
+                  showDemo: false,
                   schema: module[Object.keys(module)[0]].haxProperties
                 };
                 list.push(detail);
@@ -287,17 +270,20 @@ class HaxElementListSelector extends LitElement {
           for (var i in this.haxData) {
             renderHaxData[this.haxData[i].tag] = this.haxData[i].file;
           }
-          if (this.cardList) this.cardList.list = this.filteredHaxData;
+          if (this.cardList) {
+            let search =
+              this.form &&
+              this.form.value &&
+              this.form.value.haxcore &&
+              this.form.value.haxcore.search
+                ? this.form.value.haxcore.search
+                : undefined;
+            this.cardList.list = this.filteredHaxData;
+            if (search) this.applyFilters(search);
+            this.cardList.requestUpdate();
+          }
           if (this.haxTags)
             this.haxTags.editorValue = JSON.stringify(renderHaxData, null, 2);
-
-          console.log(
-            "haxData changed",
-            this.haxData,
-            this.filteredHaxData,
-            renderHaxData,
-            this.haxTags
-          );
         }
       }
       if (
@@ -309,45 +295,48 @@ class HaxElementListSelector extends LitElement {
     });
   }
   applyFilters(filters) {
-    let data = [...this.haxData];
-    Object.keys(filters || {}).forEach(key => {
-      if (filters[key] != "") {
-        switch (key) {
-          case "haxcore-search-search":
-            data = data.filter(item => {
-              if (
-                item.schema.gizmo.title
-                  .toLowerCase()
-                  .includes(filters[key].toLowerCase())
-              ) {
-                return true;
-              }
-              return false;
-            });
-            break;
-          case "haxcore-search-tags":
-            data = data.filter(item => {
-              if (item.schema.gizmo.groups.includes(filters[key])) {
-                return true;
-              }
-              return false;
-            });
-            break;
-          case "haxcore-search-hasdemo":
-            // only filter if box checked otherwise show all
-            if (filters[key]) {
+    if (this.cardList) {
+      let data = [...this.haxData];
+      Object.keys(filters || {}).forEach(key => {
+        if (filters[key] != "") {
+          switch (key) {
+            case "haxcore-search-search":
               data = data.filter(item => {
-                if (item.schema.demoSchema) {
+                if (
+                  item.schema.gizmo.title
+                    .toLowerCase()
+                    .includes(filters[key].toLowerCase())
+                ) {
                   return true;
                 }
                 return false;
               });
-            }
-            break;
+              break;
+            case "haxcore-search-tags":
+              data = data.filter(item => {
+                if (item.schema.gizmo.groups.includes(filters[key])) {
+                  return true;
+                }
+                return false;
+              });
+              break;
+            case "haxcore-search-hasdemo":
+              // only filter if box checked otherwise show all
+              if (filters[key]) {
+                data = data.filter(item => {
+                  if (item.schema.demoSchema) {
+                    return true;
+                  }
+                  return false;
+                });
+              }
+              break;
+          }
         }
-      }
-    });
-    return data;
+      });
+      this.cardList.filteredTags = [...data].map(item => item.tag);
+      this.cardList.requestUpdate();
+    }
   }
   /**
    * Listen for response and then apply initial settings
@@ -355,14 +344,14 @@ class HaxElementListSelector extends LitElement {
   _response(e) {
     if (this.searchColumns) this.searchColumns.value = this.cols;
     if (this.cardList) this.cardList.cols = this.cols;
+    //this._valueChanged(e);
   }
   /**
    * notice any value changing and then getting the form fresh
    */
-  _valueChanged(e) {
+  _valueChanged() {
     clearTimeout(this.__valueDebounce);
     this.__valueDebounce = setTimeout(() => {
-      console.log("__valueDebounce", this.form.value);
       let haxcore =
         this.form && this.form.value && this.form.value.haxcore
           ? this.form.value.haxcore
@@ -372,6 +361,8 @@ class HaxElementListSelector extends LitElement {
           haxcore.search && haxcore.search["haxcore-search-columns"]
             ? haxcore.search["haxcore-search-columns"]
             : undefined;
+        //set columns
+        if (cols) this.cols = cols;
         // look for CDN provider
         if (haxcore.providers["haxcore-providers-cdn"] == "other") {
           this.wcRegistryEndpoint =
@@ -381,16 +372,16 @@ class HaxElementListSelector extends LitElement {
             haxcore.providers["haxcore-providers-cdn"] + "wc-registry.json";
         }
         // apply filters
-        this.filteredHaxData = [...this.applyFilters(haxcore.search)];
-        if (cols) this.cols = cols;
-        if (this.cardList) this.cardList.requestUpdate();
-        this.dispatchEvent(
-          new CustomEvent("appstore-changed", {
-            detail: {
-              value: this.getAppstoreValues()
-            }
-          })
-        );
+        this.applyFilters(haxcore.search);
+        if (this.cardList) {
+          this.dispatchEvent(
+            new CustomEvent("appstore-changed", {
+              detail: {
+                value: this.getAppstoreValues()
+              }
+            })
+          );
+        }
       }
     }, 50);
   }
@@ -400,14 +391,12 @@ class HaxElementListSelector extends LitElement {
   getAppstoreValues() {
     // get form values
     let value = this.shadowRoot.querySelector("#form").submit();
-    console.log("value", value);
     value.haxcore = value.haxcore || {
-      providers: {},
       templates: {},
-      integrations: {}
+      providers: {}
     };
     let appstore = {
-      provider: {
+      providers: {
         cdn: value.haxcore.providers["haxcore-providers-cdn"],
         other: value.haxcore.providers["haxcore-providers-other"],
         pk: value.haxcore.providers["haxcore-providers-pk"]
@@ -415,7 +404,7 @@ class HaxElementListSelector extends LitElement {
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
-      autoloader: this.cardList ? this.cardList.value : {}
+      autoloader: value.haxcore.search["haxcore-search-autoloader"]
     };
     // find the API keys
     for (var key in value.haxcore.integrations) {

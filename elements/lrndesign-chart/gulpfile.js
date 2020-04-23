@@ -66,35 +66,35 @@ gulp.task("merge", () => {
               packageJson.wcfactory.customElementClass !== "LitElement"
                 ? ``
                 : `
-//styles function
-static get styles() {
-return  [
-${
-  packageJson.wcfactory.sharedStyles &&
-  packageJson.wcfactory.sharedStyles.length > 0
-    ? `${packageJson.wcfactory.sharedStyles.join(",")},`
-    : ``
-}
-css\`
+  //styles function
+  static get styles() {
+    return  [
+      ${
+        packageJson.wcfactory.sharedStyles &&
+        packageJson.wcfactory.sharedStyles.length > 0
+          ? `${packageJson.wcfactory.sharedStyles.join(",")},`
+          : ``
+      }
+      css\`
 ${cssResult}
-\`
-];
-}`,
+      \`
+    ];
+  }`,
             styleResult =
               packageJson.wcfactory.customElementClass !== "LitElement"
                 ? `<style>
 ${cssResult}
-</style>`
+        </style>`
                 : ``;
 
           return `${litResult}
 
 // render function
-render() {
-return html\`
+  render() {
+    return html\`
 ${styleResult}
 ${html}\`;
-}
+  }
 ${haxString}
   // properties available to the custom element for data binding
   static get properties() {

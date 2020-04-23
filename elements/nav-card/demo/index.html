@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>NavCard: nav-card Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../nav-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic nav-card demo</h3>
+      <demo-snippet>
+        <template>
+          <nav-card accent-color="green" link-icon="chevron-right">
+            <div slot="heading">Useful Links</div>
+            <div slot="subheading">(...or just <a href="//google.com">Google it</a>)</div>
+            <p slot="body">
+              Check out these useful links.
+            </p>
+            <ul slot="linklist">
+              <li>
+                <a class="linklist-heading" href="#">Accessible link text</a>
+                <span class="linklist-subheading">A subheading that provides more description</span>
+              </li>
+              <li>
+                <a class="linklist-heading" href="#">Accessible link text</a>
+                <span class="linklist-subheading">A subheading that provides more description</span>
+              </li>
+              <li>
+                <a class="linklist-heading" href="#">Accessible link text</a>
+                <span class="linklist-subheading">A subheading that provides more description</span>
+              </li>
+              <li>
+                <a class="linklist-heading" href="#">Accessible link text</a>
+                <span class="linklist-subheading">A subheading that provides more description</span>
+              </li>
+            </ul>
+            <p slot="footer">&lt;nav-card&gt;&copy The Pennsylvania State University</p>
+          </nav-card>
+          <style>
+            [slot=footer] {font-size:80%; text-align: center;}
+          </style>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

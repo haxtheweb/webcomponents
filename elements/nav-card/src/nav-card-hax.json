@@ -1,0 +1,62 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Nav card",
+    "description": "an accent card of link lists",
+    "icon": "av:playlist-play",
+    "color": "pink",
+    "groups": ["Card","Nav","List"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Select an accent color.",
+        "inputMethod": "colorpicker",
+        "required": false
+      },
+      {
+        "property": "Dark",
+        "title": "Dark",
+        "description": "Display the card as dark theme?",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "description": "Disable all links and buttons?",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "hidden",
+        "title": "Hidden",
+        "description": "",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "linkIcon",
+        "title": "Link Icon",
+        "description": "Select an icon.",
+        "inputMethod": "iconpicker",
+        "required": false
+      }
+    ],
+    "advanced": []
+  }
+}
