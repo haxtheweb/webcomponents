@@ -1,0 +1,14 @@
+<accent-card 
+  accent-color="${this.accentColor}" 
+  ?dark="${this.dark}" 
+  ?disabled="${this.disabled}"
+  ?hidden="${this.hidden}" >
+  <div slot="heading"><slot name="heading"></slot></div>
+  <div slot="subheading"><slot name="subheading"></slot></div>
+  <div slot="content">
+    <slot name="body"></slot>
+    <slot name="linklist"></slot>
+    <div id="linklist"></div>
+  </div>
+  <div slot="footer"><slot name="footer"></slot></div>
+</accent-card>

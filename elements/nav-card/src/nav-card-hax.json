@@ -1,0 +1,43 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Nav card",
+    "description": "an accent card of link lists",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": [
+      "Card"
+    ],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "hidden",
+        "description": "",
+        "inputMethod": "boolean",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "disabled",
+        "description": "",
+        "inputMethod": "boolean",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}

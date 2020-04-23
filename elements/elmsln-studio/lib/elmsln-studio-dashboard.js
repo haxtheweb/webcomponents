@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/accent-card/accent-card.js";
+import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@lrnwebcomponents/progress-donut/progress-donut.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -17,6 +18,7 @@ import "@polymer/iron-icons/iron-icons.js";
  * @lit-html
  * @lit-element
  * @demo demo/index.html
+ * @demo demo/test.html
  */
 class ElmslnStudioDashboard extends LitElement {
   static get styles() {
@@ -26,26 +28,26 @@ class ElmslnStudioDashboard extends LitElement {
           font-family: var(--elmsln-studio--FontFamily, sans-serif);
           font-size: 13px;
         }
+        #comments .linklist {
+          padding: 0 var(--elmsln-studio--Margin, 20px);
+        }
         h1,
         h2,
         h3,
-        accent-card > [slot="heading"] {
+        nav-card > [slot="heading"] {
           font-size: 14px;
           font-weight: normal;
           color: var(--simple-colors-default-theme-grey-7, #666);
           margin: 0;
         }
-        accent-card {
+        nav-card {
           margin: var(--elmsln-studio--Margin, 20px);
           flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
-          --accent-card-footer-border-color: transparent;
+          --nav-card-footer-border-color: transparent;
         }
         .linklist {
           list-style-type: none;
           padding-inline-start: 0;
-        }
-        #comments .linklist {
-          padding: 0 var(--elmsln-studio--Margin, 20px);
         }
         .linklist li {
           position: relative;
@@ -54,15 +56,15 @@ class ElmslnStudioDashboard extends LitElement {
           opacity: 0.8;
         }
         .linklist li,
-        accent-card th,
-        accent-card td {
+        nav-card th,
+        nav-card td {
           padding: 5px 0;
           text-align: left;
           min-height: 25px;
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
-        accent-card table {
+        nav-card table {
           width: 100%;
           border-collapse: collapse;
         }
@@ -73,7 +75,7 @@ class ElmslnStudioDashboard extends LitElement {
         button[slot="subheading"]:hover {
           text-decoration: none;
         }
-        accent-card button,
+        nav-card button,
         .linklist button {
           border: none;
           padding: 0;
@@ -185,7 +187,7 @@ class ElmslnStudioDashboard extends LitElement {
       <div id="cards">
         <div id="profile">
           <h2 class="sr-only">My Progress</h2>
-          <accent-card accent-color="purple">
+          <nav-card accent-color="purple" icon="chevron-right">
             <span slot="heading"
               >${this.__profile.student.data.display_name}</span
             >
@@ -228,10 +230,10 @@ class ElmslnStudioDashboard extends LitElement {
                 </tr>
               </tbody>
             </table>
-          </accent-card>
-          <accent-card accent-color="green">
+          </nav-card>
+          <nav-card accent-color="green">
             <span slot="heading">Work Due</span>
-            <ul class="linklist" slot="content">
+            <ul slot="linklist">
               ${this.__assignments.map(
                 assign => html`
                   <li>
@@ -256,14 +258,14 @@ class ElmslnStudioDashboard extends LitElement {
                 `
               )}
             </ul>
-          </accent-card>
+          </nav-card>
         </div>
         <div id="work">
           <h2>Recent Work</h2>
-          <accent-card accent-color="amber">
+          <nav-card accent-color="amber">
             <span slot="heading">Submissions</span>
             <button slot="subheading">All submissions</button>
-            <ul class="linklist" slot="content">
+            <ul slot="linklist">
               ${Object.keys(this.__submissions).map(
                 submission => html`
                   <li>
@@ -283,12 +285,12 @@ class ElmslnStudioDashboard extends LitElement {
                 `
               )}
             </ul>
-          </accent-card>
-          <accent-card accent-color="cyan">
+          </nav-card>
+          <nav-card accent-color="cyan">
             <span slot="heading">Comments</span>
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
-            <ul class="linklist" slot="content">
+            <ul slot="linklist">
               ${this.__comments.map(
                 comment => html`
                   <li>
@@ -306,12 +308,12 @@ class ElmslnStudioDashboard extends LitElement {
                 `
               )}
             </ul>
-          </accent-card>
+          </nav-card>
         </div>
       </div>
       <div id="comments">
         <h2>Recent Activity</h2>
-        <ul class="linklist">
+        <ul slot="linklist">
           ${this.__activity.map(
             activity => html`
               <li>
