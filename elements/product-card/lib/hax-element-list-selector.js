@@ -93,10 +93,10 @@ class HaxElementListSelector extends LitElement {
     return {
       ...SimpleFieldsForm.properties,
       HaxSchematizer: {
-        type: Object,
+        type: Object
       },
       HaxElementizer: {
-        type: Object,
+        type: Object
       },
       /**
        * Show card list so that it SEEMS like its happenign when we click HAX elements
