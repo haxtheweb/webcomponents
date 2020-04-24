@@ -33,6 +33,8 @@ class HAXCMSSiteListing extends PolymerElement {
     this.SimpleColors = new SimpleColorsPolymer();
     setPassiveTouchGestures(true);
     window.HAXCMS = {};
+    this.HaxSchematizer = HaxSchematizer;
+    this.HaxElementizer = HaxElementizer;
     import("@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js");
   }
   /**
@@ -756,8 +758,8 @@ class HAXCMSSiteListing extends PolymerElement {
             <simple-fields
               id="createsitefields"
               autofocus
-              .schematizer="${HaxSchematizer}"
-              .elementizer="${HaxElementizer}"
+              schematizer="[[HaxSchematizer]]"
+              elementizer="[[HaxElementizer]]"
             >
             </simple-fields>
           </form>
@@ -801,8 +803,8 @@ class HAXCMSSiteListing extends PolymerElement {
         <paper-dialog-scrollable>
           <simple-fields
             id="settingsform"
-            .schematizer="${HaxSchematizer}"
-            .elementizer="${HaxElementizer}"
+            schematizer="[[HaxSchematizer]]"
+            elementizer="[[HaxElementizer]]"
           >
           </simple-fields>
         </paper-dialog-scrollable>
@@ -962,6 +964,12 @@ class HAXCMSSiteListing extends PolymerElement {
       },
       activeOpertion: {
         type: String
+      },
+      HaxSchematizer: {
+        type: Object
+      },
+      HaxElementizer: {
+        type: Object
       },
       selectedItems: {
         type: Array,
