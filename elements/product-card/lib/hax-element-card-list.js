@@ -306,7 +306,7 @@ class HAXElementCardList extends LitElement {
           new CustomEvent("hax-element-card-list-changed", {
             detail: {
               bubbles: true,
-              value: this.getAppstoreValues()
+              value: this[propName]
             }
           })
         );

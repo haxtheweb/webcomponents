@@ -69,6 +69,8 @@ class HaxElementListSelector extends LitElement {
     this.noSchema = {};
     this.method = "GET";
     this.autoload = true;
+    this.HaxSchematizer = HaxSchematizer;
+    this.HaxElementizer = HaxElementizer;
     // default fields json blob, most implementations should provide their own though obviously
     this.fieldsEndpoint =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json";
@@ -90,6 +92,12 @@ class HaxElementListSelector extends LitElement {
   static get properties() {
     return {
       ...SimpleFieldsForm.properties,
+      HaxSchematizer: {
+        type: Object,
+      },
+      HaxElementizer: {
+        type: Object,
+      },
       /**
        * Show card list so that it SEEMS like its happenign when we click HAX elements
        */
@@ -163,8 +171,8 @@ class HaxElementListSelector extends LitElement {
         autoload
         load-endpoint="${this.fieldsEndpoint}"
         method="${this.method}"
-        .schematizer="${HaxSchematizer}"
-        .elementizer="${HaxElementizer}"
+        .schematizer="${this.HaxSchematizer}"
+        .elementizer="${this.HaxElementizer}"
         @response="${this._response}"
         @haxcore.search.haxcore-search-columns-value-changed="${e =>
           (this.cols = e.detail.value)}"
