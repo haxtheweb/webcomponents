@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "2.6.8",
+  "version": "2.6.9",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
