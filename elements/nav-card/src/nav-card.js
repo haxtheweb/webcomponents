@@ -75,9 +75,7 @@ class NavCard extends LitElement {
   updateList() {
     if (this.shadowRoot && this.shadowRoot.querySelector("#linklist")) {
       let linklist = this.shadowRoot.querySelector("#linklist"),
-        ul = this.querySelector(
-          'ul[slot="linklist"],ol[slot="linklist"]'
-        );
+        ul = this.querySelector('ul[slot="linklist"],ol[slot="linklist"]');
       if (ul) {
         linklist.innerHTML = "";
         let list = ul.cloneNode(true);

@@ -66,6 +66,7 @@ class ResponsiveUtility extends LitElement {
    * @memberof ResponsiveUtility
    */
   responiveElementEvent(e) {
+    console.log('responiveElementEvent',e,e.detail.element);
     let detail = {
       element: e.detail.element,
       attribute: e.detail.attribute || "responsive-size",
@@ -82,6 +83,7 @@ class ResponsiveUtility extends LitElement {
   }
 
   _getObserver(detail) {
+    console.log('_getObserver',detail);
     return new ResizeObserver(en =>
       en.forEach(e =>
         window.ResponsiveUtility.setSize(
@@ -172,4 +174,5 @@ window.ResponsiveUtility.setSize = (detail, width = 0) => {
     el.setAttribute(custom, width);
   if (!el.getAttribute(attr) || size !== el.getAttribute(attr))
     el.setAttribute(attr, size);
+  console.log('setSize',detail,detail.element,detail.attribute,detail.custom,width,size);
 };

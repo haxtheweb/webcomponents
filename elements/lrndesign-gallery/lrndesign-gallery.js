@@ -18,88 +18,85 @@ import "./lib/lrndesign-gallery-grid.js";
  * @demo demo/index.html
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...super.styles,
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none; 
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-::slotted(figure){
-  display: none;
-}
+        ::slotted(figure) {
+          display: none;
+        }
       `
     ];
   }
 
-// render function
+  // render function
   render() {
     return html`
-
-<div id="gallery">
-  ${this.grid
-    ? html`
-        <lrndesign-gallery-grid
-          accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspect}"
-          .extra-wide="${this.extra}"
-          ?dark="${this.dark}"
-          .gallery-id="${this.id}"
-          @item-changed="${e=>this.goToItem(e.detail)}"
-          responsive-size="${this.responsiveSize}"
-          .selected="${this.selected}"
-          sizing="${this.sizing}"
-          .sources="${this.items}"
-          gallery-title="${this.galleryTitle}"
-        >
-          <slot></slot>
-        </lrndesign-gallery-grid>
-      `
-    : html`
-        <lrndesign-gallery-carousel
-          accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspect}"
-          .extra-wide="${this.extra}"
-          ?dark="${this.dark}"
-          .gallery-id="${this.id}"
-          @item-changed="${e=>this.goToItem(e.detail)}"
-          responsive-size="${this.responsiveSize}"
-          .selected="${this.selected}"
-          sizing="${this.sizing}"
-          .sources="${this.items}"
-          gallery-title="${this.galleryTitle}"
-        >
-          <slot></slot>
-        </lrndesign-gallery-carousel>`
-    }
-</div>`;
+      <div id="gallery">
+        ${this.grid
+          ? html`
+              <lrndesign-gallery-grid
+                accent-color="${this.accentColor}"
+                .aspect-ratio="${this.aspect}"
+                .extra-wide="${this.extra}"
+                ?dark="${this.dark}"
+                .gallery-id="${this.id}"
+                @item-changed="${e => this.goToItem(e.detail)}"
+                responsive-size="${this.responsiveSize}"
+                .selected="${this.selected}"
+                sizing="${this.sizing}"
+                .sources="${this.items}"
+                gallery-title="${this.galleryTitle}"
+              >
+                <slot></slot>
+              </lrndesign-gallery-grid>
+            `
+          : html`
+              <lrndesign-gallery-carousel
+                accent-color="${this.accentColor}"
+                .aspect-ratio="${this.aspect}"
+                .extra-wide="${this.extra}"
+                ?dark="${this.dark}"
+                .gallery-id="${this.id}"
+                @item-changed="${e => this.goToItem(e.detail)}"
+                responsive-size="${this.responsiveSize}"
+                .selected="${this.selected}"
+                sizing="${this.sizing}"
+                .sources="${this.items}"
+                gallery-title="${this.galleryTitle}"
+              >
+                <slot></slot>
+              </lrndesign-gallery-carousel>
+            `}
+      </div>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "id": {
-    "type": String,
-    "reflect": true,
-    "attribute": "id"
-  },
-  "responsiveSize": {
-    "type": String,
-    "reflect": true,
-    "attribute": "responsive-size"
-  }
-}
-;
+      ...super.properties,
+
+      id: {
+        type: String,
+        reflect: true,
+        attribute: "id"
+      },
+      responsiveSize: {
+        type: String,
+        reflect: true,
+        attribute: "responsive-size"
+      }
+    };
   }
 
   /**

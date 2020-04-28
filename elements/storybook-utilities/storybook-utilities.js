@@ -250,6 +250,8 @@ export class StorybookUtilities {
     let knobs = { props: {}, slots: {} };
     (properties || []).forEach(field => {
       field.name = field.property || field.slot;
+      if(!field.name && field.hasOwnProperty('slot')) field.name = 'emptyslot';
+      console.log(field.name,field);
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
         console.debug(
@@ -291,13 +293,17 @@ export class StorybookUtilities {
       name = field.name,
       attribute = this.camelToKebab(name),
       label = title && name ? `${title} (${name})` : title || name,
-      group = field.property ? "props" : field.slot ? "slots" : "vars",
+      group = field.hasOwnProperty('property') ? "props" : field.hasOwnProperty('slot') ? "slots" : "vars",
       method = field.inputMethod,
       options = field.options,
       val = defaultValue,
       colors = this.getColors(),
       knob;
-    console.log("defaultValue", label, defaultValue);
+    if(!options && field.itemsList){
+      options = {};
+      field.itemsList.forEach(item=>options[item]=item);
+    }
+    console.log("defaultValue", label, field, defaultValue, name, group,'----> options',options,field.itemsList);
     if (options && options.length > 0) {
       if (method === "select") {
         knob = select(label, options, val, group);
@@ -412,6 +418,7 @@ export class StorybookUtilities {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs(props, defaults, exclusions);
+      console.log('language',el,el.properties, el.haxProperties);
     console.debug(
       "makeElementFromClass:",
       tag,
