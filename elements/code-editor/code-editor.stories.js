@@ -21,12 +21,12 @@ export default {
 const utils = new StorybookUtilities();
 export const CodeEditorStory = () => {
   let template = document.createElement("template");
-  template.innerHTML = '<p>Things and stuff</p>'; 
-  
+  template.innerHTML = "<p>Things and stuff</p>";
+
   let editor = utils.makeElementFromClass(CodeEditor, {
     id: "code",
     language: "html",
     "": template
   });
-return editor;
+  return editor;
 };

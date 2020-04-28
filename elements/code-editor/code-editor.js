@@ -252,11 +252,10 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         description: "A code editor.",
         icon: "polymer",
         color: "cyan",
-        groups: ["Code" ]
+        groups: ["Code"]
       },
       settings: {
-        quick: [
-        ],
+        quick: [],
         configure: [
           {
             slot: "title",
@@ -296,24 +295,67 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             property: "theme",
             title: "Theme",
             inputMethod: "select",
-            itemsList: [ "hc-black", "vs-light", "vs-dark" ]
+            itemsList: ["hc-black", "vs-light", "vs-dark"]
           },
           {
             property: "language",
             title: "Code Language",
             inputMethod: "select",
             itemsList: [
-              "apex","azcli","bat","c","clojure","coffeescript",
-              "cpp","csharp","csp","css","dockerfile","fsharp",
-              "go","handlebars","html","ini","java","javascript",
-              "json","less","lua","markdown","msdax","mysql",
-              "objective-c","perl","pgsql","php","plaintext","postiats",
-              "powerquery","powershell","pug","python","r","razor",
-              "redis","redshift","ruby","rust","sb","scheme",
-              "scss","shell","sol","sql","st","swift","typescript",
-              "vb","xml","yaml"
+              "apex",
+              "azcli",
+              "bat",
+              "c",
+              "clojure",
+              "coffeescript",
+              "cpp",
+              "csharp",
+              "csp",
+              "css",
+              "dockerfile",
+              "fsharp",
+              "go",
+              "handlebars",
+              "html",
+              "ini",
+              "java",
+              "javascript",
+              "json",
+              "less",
+              "lua",
+              "markdown",
+              "msdax",
+              "mysql",
+              "objective-c",
+              "perl",
+              "pgsql",
+              "php",
+              "plaintext",
+              "postiats",
+              "powerquery",
+              "powershell",
+              "pug",
+              "python",
+              "r",
+              "razor",
+              "redis",
+              "redshift",
+              "ruby",
+              "rust",
+              "sb",
+              "scheme",
+              "scss",
+              "shell",
+              "sol",
+              "sql",
+              "st",
+              "swift",
+              "typescript",
+              "vb",
+              "xml",
+              "yaml"
             ]
-          },
+          }
         ],
         advanced: [
           {
@@ -331,12 +373,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             title: "Editor Value",
             description: "Initial contents of the editor",
             inputMethod: "textfield"
-          },
+          }
         ]
       }
     };
   }
-  
+
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editorValue") {
