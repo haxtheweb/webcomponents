@@ -26,6 +26,63 @@
           <p>Link to this page with bird automatically selected using the anchor <a href="#gallery1---bird" target="_blank">#gallery1---bird</a>.</p>
         </template>
       </demo-snippet>
+
+      <h2>Basic lrndesign-gallery using progressive enhancement</h2>
+      <demo-snippet>
+        <template>
+          <lrndesign-gallery 
+            id="gallery1a" 
+            accent-color="blue" 
+            title="Carousel">
+            <div slot="description">This is an <strong>carousel</strong> of animal images.</div>
+            <figure>
+              <img 
+                srcset="./images/thumbnails/cat.jpeg 480w, ./images/cat.jpeg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/cat.jpeg"
+                alt="A picture of a cat.">
+              <figcaption>
+                <h3>Cat</h3>
+                <p>This is a <em>cat</em> picture that is in <strong>landscape</strong>.</p>
+              </figcaption>
+            </figure>
+            <figure sizing="contain">
+              <img 
+                srcset="./images/thumbnails/dog.jpg 480w, ./images/dog.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/dog.jpg"
+                alt="A picture of a dog.">
+              <figcaption>
+                <h3>Dog</h3>
+                <p>This is a <em>dog</em> picture that is in <strong>portrait</strong>.</p>
+              </figcaption>
+            </figure>
+            <figure>
+              <img 
+                srcset="./images/thumbnails/bird.jpg 480w, ./images/bird.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/bird.jpg"
+                alt="A picture of a bird.">
+              <figcaption>
+                <h3>Bird</h3>
+                <p>This is a <em>bird</em> picture that is almost a <strong>square</strong>.</p>
+              </figcaption>
+            </figure>
+            <figure>
+              <img 
+                srcset="./images/thumbnails/fish.jpg 480w, ./images/fish.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/fish.jpg"
+                alt="A picture of a fish.">
+              <figcaption>
+                <h3>Fish</h3>
+                <p>This is a <em>fish</em> picture in <strong>landscape</strong> orientation.</p>
+              </figcaption>
+            </figure>
+          </lrndesign-gallery>
+          <p>Link to this page with bird automatically selected using the anchor <a href="#gallery1a---bird" target="_blank">#gallery1a---bird</a>.</p>
+        </template>
+      </demo-snippet>
     
       <h2>Dark lrndesign-gallery</h2>
       <demo-snippet>

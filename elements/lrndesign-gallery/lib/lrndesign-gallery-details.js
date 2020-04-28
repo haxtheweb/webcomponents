@@ -39,9 +39,7 @@ class LrndesignGalleryDetails extends LitElement {
   }
   // render function
   render() {
-    return html`
-      <div id="details"></div>
-    `;
+    return html`<slot></slot>`;
   }
   constructor() {
     super();
@@ -68,9 +66,7 @@ class LrndesignGalleryDetails extends LitElement {
    * updates the details
    */
   _detailsChanged(newValue) {
-    if (this.shadowRoot) {
-      this.shadowRoot.querySelector("#details").innerHTML = newValue;
-    }
+    this.innerHTML = newValue;
   }
 }
 window.customElements.define(

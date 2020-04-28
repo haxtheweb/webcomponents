@@ -7,6 +7,7 @@ import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./lrndesign-gallery-zoom.js";
+import "./lrndesign-gallery-details.js";
 
 /**
  * `lrndesign-gallery-carousel`
@@ -134,13 +135,12 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           top: 0;
           left: 0;
         }
-        #details {
-          flex-grow: 1;
-          flex-shrink: 1;
+        #details-outer {
+          flex: 1 1 auto;
           overflow-y: auto;
         }
-        :host([responsive-size="xs"]) #details,
-        :host([extra-wide]) #details {
+        :host([responsive-size="xs"]) #details-outer,
+        :host([extra-wide]) #details-outer {
           margin-top: -4px;
           border-top: 4px solid var(--lrndesign-gallery-focus-color);
         }
@@ -170,11 +170,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         /*TODO .gallerythumb[disabled] {
           @apply --lrndesign-gallery-thumbnail-image-selected;
         }*/
-        .gallerythumb,
-        .gallerythumb iron-image {
+        .gallerythumb {
           width: 40px;
           height: 40px;
-          overflow: hidden;
+          background-color: var(--lrndesign-gallery-focus-color);
+          background-image: var(--lrndesign-gallery-thumb-url);
+          background-size: cover;
+          background-position: center;
         }
         .gallerythumb:hover,
         .gallerythumb:focus {
@@ -298,7 +300,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 >
               </div>
             </div>
-            <div id="details" class="item-info">
+            <div id="details-outer" class="item-info">
               <div id="details-inner">
                 <div id="itemdetails">
                   <h2
@@ -306,12 +308,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     ?hidden="${!this.selected.title ||
                       this.selected.title == ""}"
                   >
-                    ${this.selected.title}
+                    <lrndesign-gallery-details 
+                      details="${this.selected.title ||  ''}">
+                    </lrndesign-gallery-details>
                   </h2>
                   <div id="itembody">
-                    <div id="details">
-                      ${this.selected.details || ""}
-                    </div>
+                    <lrndesign-gallery-details 
+                      id="details" 
+                      details="${this.selected.details ||  ''}">
+                    </lrndesign-gallery-details>
                   </div>
                 </div>
                 <div id="xyend" ?hidden="${this.hideNav}">
@@ -337,16 +342,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                             aria-controls="carousel"
                             class="gallerythumb"
                             index="${item.index}"
+                            style="--lrndesign-gallery-thumb-url:url('${item.thumbnail}')"
                             @click="${e => this._itemChanged(item.id)}"
                             ?disabled="${this.selected.id === item.id}"
                           >
-                            <iron-image
-                              alt="${item.alt}"
-                              fade
-                              sizing="cover"
-                              src="${item.thumbnail}"
-                            >
-                            </iron-image>
+                            <span class="sr-only">${item.alt}</span>
                           </button>
                           <simple-tooltip
                             for="${item.id}"

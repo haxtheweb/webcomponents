@@ -3,5 +3,10 @@
     "type": "String",
     "reflect": true,
     "attribute": "id"
+  },
+  "responsiveSize": {
+    "type": "String",
+    "reflect": true,
+    "attribute": "responsive-size"
   }
 }
