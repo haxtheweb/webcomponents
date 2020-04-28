@@ -4,7 +4,7 @@
     "elements/*",
     "themes/*"
   ],
-  "version": "2.6.8",
+  "version": "2.6.9",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "workspaces": [
