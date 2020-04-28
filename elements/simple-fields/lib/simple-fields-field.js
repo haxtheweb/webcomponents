@@ -524,7 +524,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         @change="${e => this._handleFieldChange()}"
-        ?checked="${this.value === true}"
+        ?checked="${!!this.value}"
         class="field ${["checkbox", "color", "file", "radio", "range"].includes(
           this.type
         )
