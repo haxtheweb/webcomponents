@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/elmsln-studio-dashboard.js";
 
 /**
@@ -18,31 +18,32 @@ import "./lib/elmsln-studio-dashboard.js";
  * @demo demo/index.html
  */
 class ElmslnStudio extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block; }
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none; }
       `
     ];
   }
 
-  // render function
+// render function
   render() {
     return html`
-      <slot></slot>
-    `;
+
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return { ...super.properties };
+    return {...super.properties}
+;
   }
 
   /**
