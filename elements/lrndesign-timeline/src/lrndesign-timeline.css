@@ -24,6 +24,9 @@
 :host([hidden]) {
   display: none;
 }
+::slotted(section) {
+  display: none;
+}
 
 #timeline {
   display: block;
@@ -52,7 +55,7 @@
 
 .heading h2,
 .details,
-.media {
+.media-outer > div {
   padding: 0 40px;
 }
 
@@ -60,13 +63,13 @@
   margin: 15px 0; 
 }
 
-.media { 
+.media-outer > div { 
   opacity: 1;
   transition: opacity 0.5s;
 }
 
-.media, 
-.media * { 
+.media-outer > div, 
+.media-outer > div * { 
   margin: 0 auto;
   max-width: 100%;
   max-height: 260px;
@@ -188,14 +191,14 @@
     height: 300px;
   }
 
-  :host(:not([timeline-size="xs"])) .media {
+  :host(:not([timeline-size="xs"])) .media-outer > div {
     display: flex;
     padding: 20px 20px 20px 50px;
     opacity: 0;
     transition: opacity 0.3s delay 0.3s;
   }
 
-  :host(:not([timeline-size="xs"])) .event[selected] .media {
+  :host(:not([timeline-size="xs"])) .event[selected] .media-outer > div {
     opacity: 1;
     transition-delay: 0s;
   }
