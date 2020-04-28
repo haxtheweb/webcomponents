@@ -24,6 +24,7 @@
 :host([hidden]) {
   display: none;
 }
+
 ::slotted(section) {
   display: none;
 }

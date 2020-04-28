@@ -14,7 +14,13 @@
       "js": "src/lrndesign-timeline.js",
       "properties": "src/lrndesign-timeline-properties.json",
       "hax": "src/lrndesign-timeline-hax.json"
-    }
+    },
+    "sharedStyles": [
+      "...super.styles"
+    ],
+    "sharedProperties": [
+      "...super.properties"
+    ]
   },
   "version": "2.6.8",
   "description": "an element that displays events on a timeline",

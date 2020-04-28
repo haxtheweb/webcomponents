@@ -14,11 +14,11 @@
       "js": "src/lrndesign-gallery.js",
       "properties": "src/lrndesign-gallery-properties.json",
       "hax": "src/lrndesign-gallery-hax.json"
-    }
+    },
+    "sharedStyles": [
+      "...super.styles"
+    ]
   },
-  "sharedStyles": [
-    "...super.styles"
-  ],
   "version": "2.6.8",
   "description": "displays images as a carousel or grid with the ability to zoom",
   "repository": {

@@ -1,9 +1,11 @@
 :host {
   display: block;
 }
+
 :host([hidden]) {
   display: none; 
 }
+
 ::slotted(figure){
   display: none;
 }

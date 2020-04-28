@@ -39,7 +39,9 @@ class LrndesignGalleryDetails extends LitElement {
   }
   // render function
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <slot></slot>
+    `;
   }
   constructor() {
     super();

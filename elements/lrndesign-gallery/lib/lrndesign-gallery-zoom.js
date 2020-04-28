@@ -93,8 +93,9 @@ class LrndesignGalleryZoom extends LitElement {
         <lrndesign-gallery-details
           id="details"
           slot="header"
-          ?hidden="${!this.details || this.details === ""}" 
-          details="${this.details ||  ''}">
+          ?hidden="${!this.details || this.details === ""}"
+          details="${this.details || ""}"
+        >
         </lrndesign-gallery-details>
 
         <div slot="content" ?hidden="${!this.src || this.src === ""}">

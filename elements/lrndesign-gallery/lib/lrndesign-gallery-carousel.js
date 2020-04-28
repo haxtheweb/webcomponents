@@ -173,7 +173,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         .gallerythumb {
           width: 40px;
           height: 40px;
-          background-color: var(--lrndesign-gallery-focus-color);
+          background-color: var(--lrndesign-gallery-color);
           background-image: var(--lrndesign-gallery-thumb-url);
           background-size: cover;
           background-position: center;
@@ -308,14 +308,16 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     ?hidden="${!this.selected.title ||
                       this.selected.title == ""}"
                   >
-                    <lrndesign-gallery-details 
-                      details="${this.selected.title ||  ''}">
+                    <lrndesign-gallery-details
+                      details="${this.selected.title || ""}"
+                    >
                     </lrndesign-gallery-details>
                   </h2>
                   <div id="itembody">
-                    <lrndesign-gallery-details 
-                      id="details" 
-                      details="${this.selected.details ||  ''}">
+                    <lrndesign-gallery-details
+                      id="details"
+                      details="${this.selected.details || ""}"
+                    >
                     </lrndesign-gallery-details>
                   </div>
                 </div>

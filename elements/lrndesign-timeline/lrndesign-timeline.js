@@ -20,7 +20,7 @@ class LrndesignTimeline extends SimpleColors {
   //styles function
   static get styles() {
     return  [
-      
+      ...super.styles,
       css`
 :host {
   font-size: 14px;
@@ -48,6 +48,7 @@ class LrndesignTimeline extends SimpleColors {
 :host([hidden]) {
   display: none;
 }
+
 ::slotted(section) {
   display: none;
 }
@@ -370,7 +371,7 @@ class LrndesignTimeline extends SimpleColors {
     );
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.updateTimeline();
     this.observer.observe(this, {
@@ -442,52 +443,59 @@ class LrndesignTimeline extends SimpleColors {
       });
     }
   }
-  updateTimeline(){
-    let events = this.shadowRoot && this.shadowRoot.querySelector('#events') 
-      ? this.shadowRoot.querySelector('#events') 
-      : undefined, 
-      sections = document.querySelectorAll('section');
-    if(this.events.length < 1 && sections.length > 0 && events){
-      events.innerHTML = '';
-      sections.forEach(section=>{
+  updateTimeline() {
+    let events =
+        this.shadowRoot && this.shadowRoot.querySelector("#events")
+          ? this.shadowRoot.querySelector("#events")
+          : undefined,
+      sections = document.querySelectorAll("section");
+    if (this.events.length < 1 && sections.length > 0 && events) {
+      events.innerHTML = "";
+      sections.forEach(section => {
         let clone = section.cloneNode(true),
-          div = document.createElement('div'),
+          div = document.createElement("div"),
           overview = div.cloneNode(),
           details = div.cloneNode(),
           heading = div.cloneNode(),
-          media = clone.querySelector(".media") ? clone.querySelector(".media") : undefined,
-          cloneHeading = clone.querySelector('h1,h2,h3,h4,h5,h6') ? clone.querySelector('h1,h2,h3,h4,h5,h6') : undefined;
-        
-          //get heading
-        overview.classList.add('event-overview');
-        if(cloneHeading) {
-          let inner = document.createElement('h2');
-            heading.appendChild(inner);
-          heading.classList.add('heading');
+          media = clone.querySelector(".media")
+            ? clone.querySelector(".media")
+            : undefined,
+          cloneHeading = clone.querySelector("h1,h2,h3,h4,h5,h6")
+            ? clone.querySelector("h1,h2,h3,h4,h5,h6")
+            : undefined;
+
+        //get heading
+        overview.classList.add("event-overview");
+        if (cloneHeading) {
+          let inner = document.createElement("h2");
+          heading.appendChild(inner);
+          heading.classList.add("heading");
           inner.innerHTML = cloneHeading.innerHTML;
           cloneHeading.remove();
         }
         overview.appendChild(heading);
 
         //get media
-        if(media) {
-          let outer = div.cloneNode(), 
+        if (media) {
+          let outer = div.cloneNode(),
             inner = div.cloneNode();
           outer.appendChild(inner);
           div.appendChild(outer);
           inner.appendChild(media.cloneNode(true));
           media.remove();
-          clone.setAttribute('has-media',true);
+          clone.setAttribute("has-media", true);
         }
-        div.classList.add('media-outer');
+        div.classList.add("media-outer");
         overview.appendChild(div);
 
         //get details
-        Object.keys(clone.children || []).forEach(child=>details.append(clone.children[child]));
-        details.classList.add('details');
+        Object.keys(clone.children || []).forEach(child =>
+          details.append(clone.children[child])
+        );
+        details.classList.add("details");
 
         //add to events
-        clone.classList.add('event');
+        clone.classList.add("event");
         clone.appendChild(overview);
         clone.appendChild(details);
         events.appendChild(clone);
