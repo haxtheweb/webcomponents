@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "./lrndesign-gallery-details.js";
 /**
  * `lrndesign-gallery-zoom`
  * An element that renders the zoom feature for the gallery.
@@ -89,13 +90,14 @@ class LrndesignGalleryZoom extends LitElement {
         <slot></slot>
       </button>
       <simple-modal-template id="zoomtpl" title="${this.heading}">
-        <div
+        <lrndesign-gallery-details
           id="details"
           slot="header"
           ?hidden="${!this.details || this.details === ""}"
+          details="${this.details || ""}"
         >
-          ${this.details}
-        </div>
+        </lrndesign-gallery-details>
+
         <div slot="content" ?hidden="${!this.src || this.src === ""}">
           <img-pan-zoom
             id="img"

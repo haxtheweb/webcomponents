@@ -798,9 +798,9 @@ class SimpleFieldsContainer extends LitElement {
         checked = this.field.querySelectorAll("input:checked");
         checked.forEach(input => value.push(input.value));
       } else if (this.type === "checkbox") {
-        value = this.field.checked ? this.field.value || true : undefined;
+        value = this.field.checked ? true : false;
       } else if (this.type === "radio") {
-        value = this.field.checked ? this.field.value || true : undefined;
+        value = this.field.checked ? true : false;
       } else if (this.type === "select") {
         value = this.multiple
           ? Object.keys(this.field.selectedOptions).map(

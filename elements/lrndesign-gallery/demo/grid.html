@@ -26,6 +26,51 @@
           <p>Link to this page with carrots dialog automatically open using the anchor <a href="#gallery4---carrots---zoom" target="_blank">#gallery4---carrots---zoom</a>.</p>
         </template>
       </demo-snippet>
+      <h2>Basic lrndesign-gallery-grid with Progressive Enhancement</h2>
+      <demo-snippet>
+        <template>
+          <lrndesign-gallery 
+            id="gallery4a" 
+            grid title="Regular Thumbnails" 
+            accent-color="indigo">
+            <div slot="description">This is a <em>regular</em> <strong>grid</strong>.</div>
+            <figure id="apple">
+              <img 
+                srcset="./images/thumbnails/apple.jpg 480w, ./images/apple.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/apple.jpg"
+                alt="A picture of an apple.">
+              <figcaption>
+                <h3>Apple</h3>
+                <p>This is an <em>apple</em> picture.</p>
+              </figcaption>
+            </figure>
+            <figure id="bananas">
+              <img 
+                srcset="./images/thumbnails/banana.jpg 480w, ./images/banana.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/banana.jpg"
+                alt="A picture of bananas.">
+              <figcaption>
+                <h3>Bananas</h3>
+                <p>This is a picture of <em>bananas</em>.</p>
+              </figcaption>
+            </figure>
+            <figure id="carrots">
+              <img 
+                srcset="./images/thumbnails/carrot.jpeg 480w, ./images/carrot.jpeg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/carrot.jpeg"
+                alt="A picture of carrots.">
+              <figcaption>
+                <h3>Carrots</h3>
+                <p>This is a picture of <em>carrots</em>.</p>
+              </figcaption>
+            </figure>
+          </lrndesign-gallery>
+          <p>Link to this page with carrots dialog automatically open using the anchor <a href="#gallery4a---carrots---zoom" target="_blank">#gallery4a---carrots---zoom</a>.</p>
+        </template>
+      </demo-snippet>
     
       <h2>Single lrndesign-gallery-grid Thumbnail with Custom Styles</h2>
       <demo-snippet>

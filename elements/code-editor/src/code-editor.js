@@ -242,6 +242,143 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       }
     };
   }
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Code Editor",
+        description: "A code editor.",
+        icon: "polymer",
+        color: "cyan",
+        groups: ["Code"]
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            slot: "title",
+            title: "Title",
+            description: "Optional title for editor",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "",
+            title: "Content",
+            description: "Code inside editor",
+            inputMethod: "code-editor"
+          },
+          {
+            property: "readOnly",
+            title: "Read-only",
+            description: "Prevent the code from being edited?",
+            inputMethod: "boolean"
+          },
+          {
+            property: "hideLineNumbers",
+            title: "Hide Line Numbers",
+            inputMethod: "boolean"
+          },
+          {
+            property: "showCodePen",
+            title: "CodePen",
+            description: "Include a link to CodePen?",
+            inputMethod: "boolean"
+          },
+          {
+            property: "tabSize",
+            title: "Tab Size",
+            inputMethod: "number"
+          },
+          {
+            property: "theme",
+            title: "Theme",
+            inputMethod: "select",
+            itemsList: ["hc-black", "vs-light", "vs-dark"]
+          },
+          {
+            property: "language",
+            title: "Code Language",
+            inputMethod: "select",
+            itemsList: [
+              "apex",
+              "azcli",
+              "bat",
+              "c",
+              "clojure",
+              "coffeescript",
+              "cpp",
+              "csharp",
+              "csp",
+              "css",
+              "dockerfile",
+              "fsharp",
+              "go",
+              "handlebars",
+              "html",
+              "ini",
+              "java",
+              "javascript",
+              "json",
+              "less",
+              "lua",
+              "markdown",
+              "msdax",
+              "mysql",
+              "objective-c",
+              "perl",
+              "pgsql",
+              "php",
+              "plaintext",
+              "postiats",
+              "powerquery",
+              "powershell",
+              "pug",
+              "python",
+              "r",
+              "razor",
+              "redis",
+              "redshift",
+              "ruby",
+              "rust",
+              "sb",
+              "scheme",
+              "scss",
+              "shell",
+              "sol",
+              "sql",
+              "st",
+              "swift",
+              "typescript",
+              "vb",
+              "xml",
+              "yaml"
+            ]
+          }
+        ],
+        advanced: [
+          {
+            property: "autofocus",
+            title: "Autofocus",
+            inputMethod: "boolean"
+          },
+          {
+            property: "fontSize",
+            title: "Font Size",
+            inputMethod: "number"
+          },
+          {
+            property: "editorValue",
+            title: "Editor Value",
+            description: "Initial contents of the editor",
+            inputMethod: "textfield"
+          }
+        ]
+      }
+    };
+  }
+
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editorValue") {

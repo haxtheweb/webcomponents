@@ -37,6 +37,7 @@ class ProgressDonut extends LrndesignPie {
       `
     ];
   }
+
   // render function
   render() {
     return html`
@@ -52,18 +53,13 @@ class ProgressDonut extends LrndesignPie {
       canEditSource: false,
       gizmo: {
         title: "Progress Donut",
-        description: "The user will be able to see this for selection in a UI.",
+        description: "Progression donut",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Video", "Media"],
-        handles: [
-          {
-            type: "image",
-            url: "source"
-          }
-        ],
+        groups: ["Presentation", "Data"],
+        handles: [],
         meta: {
-          author: "Your organization on github"
+          author: "ELMS:LN"
         }
       },
       settings: {

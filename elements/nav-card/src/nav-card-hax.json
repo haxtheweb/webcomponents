@@ -7,7 +7,7 @@
     "description": "an accent card of link lists",
     "icon": "av:playlist-play",
     "color": "pink",
-    "groups": ["Card","Nav","List"],
+    "groups": ["Card", "Nav", "List"],
     "handles": [
       {
         "type": "todo:read-the-docs-for-usage"
