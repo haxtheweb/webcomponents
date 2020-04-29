@@ -38,18 +38,27 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   connectedCallback() {
     super.connectedCallback();
     window.ResponsiveUtility.requestAvailability();
+    this.updateGallery();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: false
+    });
+  }
+  firstUpdated() {
+    super.firstUpdated();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
           element: this,
           attribute: "responsive-size",
-          relativeToParent: true
+          sm: 300,
+          md: 600,
+          lg: 1000,
+          xl: 1500
         }
       })
     );
-  }
-  firstUpdated() {
-    super.firstUpdated();
     this.anchorData = this._getAnchorData();
     if (this.anchorData.gallery === this.id) {
       this.goToItem(this.anchorData.id);
@@ -131,6 +140,16 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   }
 
   /**
+   * mutation observer for tabs
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this.updateGallery();
+    return new MutationObserver(callback);
+  }
+
+  /**
    * go to item by id, or index
    *
    * @param {string} query
@@ -143,6 +162,52 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       let matches = this.items.filter(item => item.id === query);
       this.selected = matches.length > 0 ? matches[0] : start;
     }
+  }
+  updateGallery() {
+    let sources = [],
+      figures = this.querySelectorAll("figure");
+    figures.forEach(figure => {
+      let id = figure.getAttribute("id"),
+        img = figure.querySelector("img"),
+        sizing = figure.getAttribute("sizing"),
+        query = [1, 2, 3, 4, 5, 6].map(num => `h${num}:first-child`).join(","),
+        src =
+          img && img.getAttribute("src") ? img.getAttribute("src") : undefined,
+        srcset =
+          img && img.getAttribute("srcset")
+            ? img.getAttribute("srcset").split(",")
+            : undefined,
+        thumbset = srcset && srcset[0] ? srcset[0].split(" ") : undefined,
+        largeset =
+          srcset && srcset[srcset.length - 1]
+            ? srcset[srcset.length - 1].split(" ")
+            : undefined,
+        thumbnail = thumbset && thumbset[0] ? thumbset[0] : undefined,
+        large = largeset && largeset[0] ? largeset[0] : undefined,
+        details = figure.querySelector("figcaption")
+          ? figure.querySelector("figcaption").cloneNode(true)
+          : undefined,
+        alt =
+          img && img.getAttribute("alt") ? img.getAttribute("alt") : undefined,
+        figheading =
+          details && details.querySelector(query)
+            ? details.querySelector(query)
+            : undefined,
+        title = figheading.innerHTML;
+      if (figheading) figheading.remove();
+      sources.push({
+        alt: alt,
+        id: id,
+        src: src,
+        thumbnail: thumbnail,
+        large: large,
+        title: title,
+        details: details.innerHTML,
+        sizing: sizing
+      });
+    });
+    if (sources.length > 0 && this.sources.length < 1) this.sources = sources;
+    console.log(sources, this.items);
   }
 
   /**

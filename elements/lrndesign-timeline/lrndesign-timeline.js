@@ -16,10 +16,11 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
  * @demo demo/index.html
  */
 class LrndesignTimeline extends SimpleColors {
-  // render function
-  render() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           font-size: 14px;
           font-weight: 100;
@@ -68,6 +69,10 @@ class LrndesignTimeline extends SimpleColors {
           display: none;
         }
 
+        ::slotted(section) {
+          display: none;
+        }
+
         #timeline {
           display: block;
           border-radius: 3px;
@@ -95,7 +100,7 @@ class LrndesignTimeline extends SimpleColors {
 
         .heading h2,
         .details,
-        .media {
+        .media-outer > div {
           padding: 0 40px;
         }
 
@@ -103,13 +108,13 @@ class LrndesignTimeline extends SimpleColors {
           margin: 15px 0;
         }
 
-        .media {
+        .media-outer > div {
           opacity: 1;
           transition: opacity 0.5s;
         }
 
-        .media,
-        .media * {
+        .media-outer > div,
+        .media-outer > div * {
           margin: 0 auto;
           max-width: 100%;
           max-height: 260px;
@@ -241,14 +246,17 @@ class LrndesignTimeline extends SimpleColors {
             height: 300px;
           }
 
-          :host(:not([timeline-size="xs"])) .media {
+          :host(:not([timeline-size="xs"])) .media-outer > div {
             display: flex;
             padding: 20px 20px 20px 50px;
             opacity: 0;
             transition: opacity 0.3s delay 0.3s;
           }
 
-          :host(:not([timeline-size="xs"])) .event[selected] .media {
+          :host(:not([timeline-size="xs"]))
+            .event[selected]
+            .media-outer
+            > div {
             opacity: 1;
             transition-delay: 0s;
           }
@@ -287,7 +295,13 @@ class LrndesignTimeline extends SimpleColors {
             border-bottom: 1px solid var(--lrndesign-timeline-background);
           }
         }
-      </style>
+      `
+    ];
+  }
+
+  // render function
+  render() {
+    return html`
       <article>
         <h1 id="title">${this.timelineTitle}</h1>
         <slot></slot>
@@ -305,9 +319,9 @@ class LrndesignTimeline extends SimpleColors {
                       ${!event.imagesrc || event.imagesrc === ""
                         ? ``
                         : html`
-                            <div class="media">
+                            <div>
                               <div>
-                                <image
+                                <img
                                   alt="${event.imagealt}"
                                   src="${event.imagesrc}"
                                 />
@@ -329,6 +343,8 @@ class LrndesignTimeline extends SimpleColors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
+
       /**
    * the events of the timeline, in the desired order, as in:```
 [
@@ -345,13 +361,13 @@ class LrndesignTimeline extends SimpleColors {
 ]```
    */
       events: {
-        type: "Array"
+        type: Array
       },
       /**
        * the timline size, calculated by responsive utility
        */
       timelineSize: {
-        type: "String",
+        type: String,
         reflect: true,
         attribute: "timeline-size",
         value: "xs",
@@ -359,7 +375,7 @@ class LrndesignTimeline extends SimpleColors {
          * title of timeline
          */
         timelineTitle: {
-          type: "String",
+          type: String,
           reflect: true,
           attribute: "timeline-title"
         },
@@ -367,7 +383,7 @@ class LrndesignTimeline extends SimpleColors {
          * DEPRECATED: title of timeline
          */
         title: {
-          type: "String",
+          type: String,
           attribute: "title"
         }
       }
@@ -400,6 +416,15 @@ class LrndesignTimeline extends SimpleColors {
     );
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.updateTimeline();
+    this.observer.observe(this, {
+      childList: true,
+      subtree: false
+    });
+  }
+
   /**
    * handle updates
    */
@@ -409,6 +434,7 @@ class LrndesignTimeline extends SimpleColors {
       if (propName === "timelineTitle" && this.title && !this.timelineTitle)
         this.timelineTitle = this.title;
     });
+    this.updateTimeline();
   }
   /**
    * events container element
@@ -435,6 +461,16 @@ class LrndesignTimeline extends SimpleColors {
   }
 
   /**
+   * mutation observer for tabs
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this.updateTimeline();
+    return new MutationObserver(callback);
+  }
+
+  /**
    * checks the scroll of each event
    */
   _checkScroll() {
@@ -451,6 +487,66 @@ class LrndesignTimeline extends SimpleColors {
         }
       });
     }
+  }
+  updateTimeline() {
+    let events =
+        this.shadowRoot && this.shadowRoot.querySelector("#events")
+          ? this.shadowRoot.querySelector("#events")
+          : undefined,
+      sections = document.querySelectorAll("section");
+    if (this.events.length < 1 && sections.length > 0 && events) {
+      events.innerHTML = "";
+      sections.forEach(section => {
+        let clone = section.cloneNode(true),
+          div = document.createElement("div"),
+          overview = div.cloneNode(),
+          details = div.cloneNode(),
+          heading = div.cloneNode(),
+          media = clone.querySelector(".media")
+            ? clone.querySelector(".media")
+            : undefined,
+          cloneHeading = clone.querySelector("h1,h2,h3,h4,h5,h6")
+            ? clone.querySelector("h1,h2,h3,h4,h5,h6")
+            : undefined;
+
+        //get heading
+        overview.classList.add("event-overview");
+        if (cloneHeading) {
+          let inner = document.createElement("h2");
+          heading.appendChild(inner);
+          heading.classList.add("heading");
+          inner.innerHTML = cloneHeading.innerHTML;
+          cloneHeading.remove();
+        }
+        overview.appendChild(heading);
+
+        //get media
+        if (media) {
+          let outer = div.cloneNode(),
+            inner = div.cloneNode();
+          outer.appendChild(inner);
+          div.appendChild(outer);
+          inner.appendChild(media.cloneNode(true));
+          media.remove();
+          clone.setAttribute("has-media", true);
+        }
+        div.classList.add("media-outer");
+        overview.appendChild(div);
+
+        //get details
+        Object.keys(clone.children || []).forEach(child =>
+          details.append(clone.children[child])
+        );
+        details.classList.add("details");
+
+        //add to events
+        clone.classList.add("event");
+        clone.appendChild(overview);
+        clone.appendChild(details);
+        events.appendChild(clone);
+      });
+    }
+    this._checkScroll();
   }
 }
 customElements.define(LrndesignTimeline.tag, LrndesignTimeline);

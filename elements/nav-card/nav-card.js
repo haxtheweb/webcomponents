@@ -24,9 +24,11 @@ class NavCard extends LitElement {
         :host {
           display: block;
         }
+
         ::slotted([slot="linklist"]) {
           display: none;
         }
+
         h1,
         h2,
         h3,
@@ -36,21 +38,25 @@ class NavCard extends LitElement {
           color: var(--simple-colors-default-theme-grey-7, #666);
           margin: 0;
         }
+
         accent-card {
           margin: var(--elmsln-studio--Margin, 20px);
           flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
           --accent-card-footer-border-color: transparent;
         }
+
         .linklist {
           list-style-type: none;
           padding-inline-start: 0;
         }
+
         .linklist li {
           position: relative;
           padding: 5px 0;
           margin-bottom: 1px;
           opacity: 0.8;
         }
+
         .linklist li {
           padding: 5px 0;
           text-align: left;
@@ -58,13 +64,16 @@ class NavCard extends LitElement {
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
+
         button[slot="subheading"] {
           text-decoration: underline;
         }
+
         button[slot="subheading"]:focus,
         button[slot="subheading"]:hover {
           text-decoration: none;
         }
+
         ::slotted(button),
         .linklist button {
           border: none;
@@ -73,6 +82,7 @@ class NavCard extends LitElement {
           font-size: inherit;
           font-weight: inherit;
         }
+
         .linklist iron-icon {
           position: absolute;
           width: 24px;
@@ -80,6 +90,7 @@ class NavCard extends LitElement {
           right: 0px;
           top: calc(50% - 12px);
         }
+
         .linklist-heading::after {
           content: " ";
           position: absolute;
@@ -88,26 +99,32 @@ class NavCard extends LitElement {
           top: 0;
           bottom: 0;
         }
+
         .linklist-heading:focus {
           outline: none;
         }
+
         .linklist li:focus,
         .linklist li:focus-within .linklist-heading::after {
           outline: 1px solid blue;
         }
+
         .linklist li:hover .linklist-heading,
         .linklist li:focus .linklist-heading,
         .linklist li:focus-within .linklist-heading {
           text-decoration: underline;
         }
+
         .linklist-heading,
         .linklist-subheading {
           display: block;
           width: calc(100% - 24px);
         }
+
         .linklist-heading {
           font-weight: bold;
         }
+
         .linklist-subheading {
           font-size: 11px;
         }
@@ -145,9 +162,9 @@ class NavCard extends LitElement {
       gizmo: {
         title: "Nav card",
         description: "an accent card of link lists",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Card"],
+        icon: "av:playlist-play",
+        color: "pink",
+        groups: ["Card", "Nav", "List"],
         handles: [
           {
             type: "todo:read-the-docs-for-usage"
@@ -162,18 +179,39 @@ class NavCard extends LitElement {
         quick: [],
         configure: [
           {
-            property: "hidden",
-            description: "",
+            property: "accentColor",
+            title: "Accent Color",
+            description: "Select an accent color.",
+            inputMethod: "colorpicker",
+            required: false
+          },
+          {
+            property: "Dark",
+            title: "Dark",
+            description: "Display the card as dark theme?",
             inputMethod: "boolean",
-            required: false,
-            icon: "icons:android"
+            required: false
           },
           {
             property: "disabled",
+            title: "Disabled",
+            description: "Disable all links and buttons?",
+            inputMethod: "boolean",
+            required: false
+          },
+          {
+            property: "hidden",
+            title: "Hidden",
             description: "",
             inputMethod: "boolean",
-            required: false,
-            icon: "icons:android"
+            required: false
+          },
+          {
+            property: "linkIcon",
+            title: "Link Icon",
+            description: "Select an icon.",
+            inputMethod: "iconpicker",
+            required: false
           }
         ],
         advanced: []
@@ -185,13 +223,17 @@ class NavCard extends LitElement {
     return {
       ...super.properties,
 
+      accentColor: {
+        attribute: "accent-color",
+        type: String
+      },
       dark: {
         attribute: "dark",
         type: Boolean
       },
-      accentColor: {
-        attribute: "accent-color",
-        type: String
+      disabled: {
+        attribute: "disabled",
+        type: Boolean
       },
       hidden: {
         attribute: "hidden",
@@ -200,10 +242,6 @@ class NavCard extends LitElement {
       linkIcon: {
         attribute: "link-icon",
         type: String
-      },
-      disabled: {
-        attribute: "disabled",
-        type: Boolean
       }
     };
   }
@@ -264,14 +302,13 @@ class NavCard extends LitElement {
   updateList() {
     if (this.shadowRoot && this.shadowRoot.querySelector("#linklist")) {
       let linklist = this.shadowRoot.querySelector("#linklist"),
-        ul = this.querySelector(
-          'ul[slot="linklist"],ol[slot="linklist"]'
-        ).cloneNode(true);
-      ul.querySelectorAll("li").forEach((li, i) => this._getLi(li, i));
-      linklist.innerHTML = "";
+        ul = this.querySelector('ul[slot="linklist"],ol[slot="linklist"]');
       if (ul) {
-        ul.classList.add("linklist");
-        linklist.appendChild(ul);
+        linklist.innerHTML = "";
+        let list = ul.cloneNode(true);
+        list.querySelectorAll("li").forEach((li, i) => this._getLi(li, i));
+        list.classList.add("linklist");
+        linklist.appendChild(list);
       }
     }
   }

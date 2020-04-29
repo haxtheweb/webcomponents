@@ -75,14 +75,13 @@ class NavCard extends LitElement {
   updateList() {
     if (this.shadowRoot && this.shadowRoot.querySelector("#linklist")) {
       let linklist = this.shadowRoot.querySelector("#linklist"),
-        ul = this.querySelector(
-          'ul[slot="linklist"],ol[slot="linklist"]'
-        ).cloneNode(true);
-      ul.querySelectorAll("li").forEach((li, i) => this._getLi(li, i));
-      linklist.innerHTML = "";
+        ul = this.querySelector('ul[slot="linklist"],ol[slot="linklist"]');
       if (ul) {
-        ul.classList.add("linklist");
-        linklist.appendChild(ul);
+        linklist.innerHTML = "";
+        let list = ul.cloneNode(true);
+        list.querySelectorAll("li").forEach((li, i) => this._getLi(li, i));
+        list.classList.add("linklist");
+        linklist.appendChild(list);
       }
     }
   }

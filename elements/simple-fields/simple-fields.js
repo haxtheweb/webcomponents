@@ -148,6 +148,7 @@ class SimpleFields extends SimpleFieldsLite {
       `
     ];
   }
+
   // render function
   render() {
     return html`
