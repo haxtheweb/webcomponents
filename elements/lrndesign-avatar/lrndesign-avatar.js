@@ -2,7 +2,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrndesign-avatar`
- * `Visualize a user account eitehr with an image, a label, or as abstract art.`
+ * `Visualize a user account either with an image, a label, or as abstract art.`
  * @demo demo/index.html
  * @element lrndesign-avatar
  */
@@ -16,12 +16,13 @@ class LrndesignAvatar extends SimpleColors {
       css`
         :host {
           display: block;
-        }
-        paper-avatar {
-          color: var(--simple-colors-default-theme-grey-1);
           --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
           --paper-avatar-height: var(--lrndesign-avatar-height, 40px);
-          --paper-avatar-text-color: var(--simple-colors-default-theme-grey-1);
+          --paper-avatar-bgcolor: var(--lrndesign-avatar-bg, var(--simple-colors-default-theme-accent-1, #000));
+          --paper-avatar-text-color: var(--lrndesign-avatar-color, var(--simple-colors-default-theme-grey-12, #fff));
+        }
+        paper-avatar {
+          color: var(--lrndesign-avatar-color, var(--simple-colors-default-theme-grey-1, #fff));
         }
       `
     ];
@@ -40,7 +41,6 @@ class LrndesignAvatar extends SimpleColors {
         label="${this.label}"
         src="${this.src}"
         ?two-chars="${this.twoChars}"
-        style="background-color:${this.hexColor} !important;"
         ?jdenticon="${this.jdenticon}"
       ></paper-avatar>
     `;
@@ -50,40 +50,12 @@ class LrndesignAvatar extends SimpleColors {
     return "lrndesign-avatar";
   }
 
-  _getAccentColor(color) {
-    // legacy API bridge
-    color = color.replace("-text", "");
-    if (
-      (!this.accentColor || this.accentColor === "grey") &&
-      this.colors[color]
-    ) {
-      this.accentColor = color;
-    }
-  }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
-    }
-    return "#000000";
-  }
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "color") {
-        this._getAccentColor(this[propName]);
-      }
-      if (propName == "accentColor") {
-        this.hexColor = this._getHexColor(this[propName]);
-      }
-    });
-  }
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Deprecated: Approximated hex color work to apply
+       */
       hexColor: {
         type: String
       },
@@ -107,7 +79,7 @@ class LrndesignAvatar extends SimpleColors {
         attribute: "two-chars"
       },
       /**
-       * Color class work to apply
+       * Deprecated: Color class work to apply
        */
       color: {
         type: String,
@@ -120,6 +92,28 @@ class LrndesignAvatar extends SimpleColors {
         type: Boolean
       }
     };
+  }
+
+  _getAccentColor(color) {
+    // legacy API bridge
+    color = color.replace("-text", "");
+    if (this.colors[color]) {
+      this.accentColor = this.color;
+    }
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "color") {
+        this._getAccentColor(this[propName]);
+      }
+      if (propName == "hexColor") {
+        console.log(parseInt(this.hexColor.replace('#','')),this.colors);
+      }
+    });
   }
 }
 window.customElements.define(LrndesignAvatar.tag, LrndesignAvatar);

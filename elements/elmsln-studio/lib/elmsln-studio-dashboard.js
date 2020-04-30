@@ -5,9 +5,9 @@
 import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/progress-donut/progress-donut.js";
-import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
 /**
  * `elmsln-studio-dashboard`
@@ -23,50 +23,66 @@ class ElmslnStudioDashboard extends LitElement {
     return [
       css`
         :host {
-          font-family: var(--elmsln-studio--FontFamily, sans-serif);
+          font-family: var(--elmsln-studio-FontFamily, sans-serif);
           font-size: 13px;
+        }
+        .sr-only {
+          position: absolute;
+          left: -9999999px;
+          width: 0;
+          overflow: hidden;
         }
         h1,
         h2,
         h3,
-        [slot="heading"] {
+        .card [slot="heading"] {
           font-size: 14px;
           font-weight: normal;
-          color: var(--simple-colors-default-theme-grey-7, #666);
           margin: 0;
+          color: var(--simple-colors-default-theme-grey-7, #666);
         }
-        [slot="subheading"] {
+        h2,
+        #comments [slot=heading] {
+          font-size: 18px;
+        }
+        .card {
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) var(--elmsln-studio-margin, 20px) calc(2 * var(--elmsln-studio-margin, 20px)) ;
+          flex: 1 0 calc(50% - 2 * var(--elmsln-studio-margin, 20px));
+          --accent-card-footer-border-color: transparent;
+        }
+        .card [slot=subheading] {
           text-decoration: underline;
         }
-        [slot="subheading"]:focus,
-        [slot="subheading"]:hover {
+        .card [slot=subheading]:focus,
+        .card [slot=subheading]:hover {
           text-decoration: none;
         }
-        accent-card {
-          margin: var(--elmsln-studio--Margin, 20px);
-          flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
-        }
-        .linklist {
-          list-style-type: none;
-          padding-inline-start: 0;
-        }
-        #comments .linklist {
-          padding: 0 var(--elmsln-studio--Margin, 20px);
-        }
-        .linklist li {
-          position: relative;
-          padding: 5px 0;
-          margin-bottom: 1px;
-          opacity: 0.8;
-        }
-        .linklist li,
-        accent-card th,
-        accent-card td {
+        .card th,
+        .card td {
           padding: 5px 0;
           text-align: left;
           min-height: 25px;
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
+        }
+        #cards .card [slot="heading"],
+        #cards .card [slot="subheading"] {
+          text-align: center;
+          display: block;
+          margin: 0 auto;
+        }
+        #comments {
+          margin-top: 0;
+          --accent-card-heading-padding-top: 0;
+          --nav-card-linklist-margin-top: 0;
+          --nav-card-linklist-left-size: 36px;
+        }
+        accent-card {
+          --accent-card-heading-padding-top: 0;
+        }
+        progress-donut {
+          max-width: 100px;
+          margin: 0 auto;
         }
         accent-card table {
           width: 100%;
@@ -80,66 +96,51 @@ class ElmslnStudioDashboard extends LitElement {
           font-size: inherit;
           font-weight: inherit;
         }
-        nav-card [slot=heading],
-        accent-card [slot=heading],
-        nav-card [slot=subheading],
-        accent-card [slot=subheading] {
+        .linklist-footer {
           text-align: center;
-        }
-        .linklist iron-icon {
-          position: absolute;
-          width: 24px;
-          height: 24px;
-          right: 0px;
-          top: calc(50% - 12px);
-        }
-        .linklist-heading::after {
-          content: " ";
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-        }
-        .linklist li:focus,
-        .linklist li:focus-within .linklist-heading::after {
-          outline: 1px solid blue;
-        }
-        .linklist li:hover {
-          cursor: pointer;
-          opacity: 1;
-        }
-        .linklist-heading,
-        .linklist-subheading {
           display: block;
-          width: calc(100% - 24px);
+          padding: 5px 10px;
+          margin: 0 auto;
+          border-radius: 3px;
+          background-color: var(--simple-colors-default-theme-grey-2, #eee);
+          color: var(--simple-colors-default-theme-grey11, #222);
         }
-        .linklist-heading {
-          font-weight: bold;
-        }
-        .linklist-subheading {
-          font-size: 12px;
+        .linklist-footer:focus,
+        .linklist-footer:hover {
+          background-color: var(--simple-colors-default-theme-grey-3, #ddd);
+          color: var(--simple-colors-default-theme-grey12, #000);
         }
         @media screen and (min-width: 600px) {
+          progress-donut {
+            max-width: 150px;
+          }
           :host {
             display: flex;
             align-items: stretch;
             justify-content: space-between;
           }
           #cards {
-            width: calc(66.66666667%);
+            flex: 0 0 calc(50%);
           }
           #comments {
-            padding-right: var(--elmsln-studio--Padding, 20px);
-            width: calc(33.33333333% - var(--elmsln-studio--Padding, 20px));
+            flex: 0 0 calc(50%);
           }
           h1,
           h2 {
-            flex: 0 0 calc(100% - var(--elmsln-studio--Margin, 20px));
-            padding: 0 var(--elmsln-studio--Margin, 20px);
+            flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
+            padding: 0 var(--elmsln-studio-margin, 20px);
           }
         }
         @media screen and (min-width: 900px) {
+          progress-donut {
+            max-width: 200px;
+          }
+          #cards {
+            flex: 0 0 calc(66.66666667%);
+          }
+          #comments {
+            flex: 0 0 calc(33.33333333%);
+          }
           #cards > div {
             display: flex;
             align-items: stretch;
@@ -178,14 +179,12 @@ class ElmslnStudioDashboard extends LitElement {
         url="${this.submissionsSrc}"
         @response="${e => this._handleObjectData(e, "__submissions")}"
       ></iron-ajax>
-      <!--h1 class="sr-only">Overview</h1-->
+      <h1 class="sr-only">Overview</h1>
       <div id="cards">
         <div id="profile">
-          <h2 class="sr-only">My Progress</h2>
-          <accent-card accent-color="purple">
-            <span slot="heading"
-              >${this.__profile.student.data.display_name}</span
-            >
+          <h2>${this.__profile.student.data.display_name}</h2>
+          <accent-card accent-color="purple" class="card">
+            <span slot="heading" class="sr-only">My Progress</span>
             <progress-donut
               accent-color="purple"
               slot="content"
@@ -229,16 +228,12 @@ class ElmslnStudioDashboard extends LitElement {
               </tbody>
             </table>
           </accent-card>
-          <accent-card accent-color="green">
+          <nav-card accent-color="green" class="card" link-icon="chevron-right">
             <span slot="heading">Work Due</span>
-            <ul class="linklist" slot="content">
+            <ul class="linklist" slot="linklist">
               ${this.__assignments.map(
                 assign => html`
                   <li>
-                    <iron-icon
-                      aria-hidden="true"
-                      icon="chevron-right"
-                    ></iron-icon>
                     <button class="linklist-heading">
                       ${assign.attributes.title}
                     </button>
@@ -256,21 +251,17 @@ class ElmslnStudioDashboard extends LitElement {
                 `
               )}
             </ul>
-          </accent-card>
+          </nav-card>
         </div>
         <div id="work">
           <h2>Recent Work</h2>
-          <accent-card accent-color="amber">
+          <nav-card accent-color="amber" class="card" link-icon="chevron-right">
             <span slot="heading">Submissions</span>
             <button slot="subheading">All submissions</button>
-            <ul class="linklist" slot="content">
+            <ul class="linklist" slot="linklist">
               ${Object.keys(this.__submissions).map(
                 submission => html`
                   <li>
-                    <iron-icon
-                      aria-hidden="true"
-                      icon="chevron-right"
-                    ></iron-icon>
                     <button class="linklist-heading">
                       ${this.__submissions[submission].attributes.title}
                     </button>
@@ -283,12 +274,12 @@ class ElmslnStudioDashboard extends LitElement {
                 `
               )}
             </ul>
-          </accent-card>
-          <accent-card accent-color="cyan">
+          </nav-card>
+          <nav-card accent-color="cyan"  class="card" link-icon="chevron-right">
             <span slot="heading">Comments</span>
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
-            <ul class="linklist" slot="content">
+            <ul class="linklist" slot="linklist">
               ${this.__comments.map(
                 comment => html`
                   <li>
@@ -306,16 +297,25 @@ class ElmslnStudioDashboard extends LitElement {
                 `
               )}
             </ul>
-          </accent-card>
+          </nav-card>
         </div>
       </div>
-      <div id="comments">
-        <h2>Recent Activity</h2>
-        <ul class="linklist">
+      <nav-card id="comments" flat no-border class="card" link-icon="chevron-right">
+        <span slot="heading">Recent Activity</span>
+        <ul class="linklist" slot="linklist">
           ${this.__activity.map(
             activity => html`
               <li>
-                <iron-icon aria-hidden="true" icon="chevron-right"></iron-icon>
+                ${activity.relationships.author.data.avatar 
+                ? `<img src="${activity.relationships.author.data.avatar}" class="linklist-left">`
+                : `<lrndesign-avatar 
+                    aria-hidden="true" 
+                    two-chars
+                    label="${activity.relationships.author.data.sis.sortable_name.replace(
+                      /(?:.).*,(?:.).*/,""
+                    )}">
+                  </lrndesign-avatar>`
+                }
                 <button class="linklist-heading">
                   ${activity.relationships.author.data.sis.sortable_name.replace(
                     /.*,/,
@@ -337,7 +337,8 @@ class ElmslnStudioDashboard extends LitElement {
             `
           )}
         </ul>
-      </div>
+        <button class="linklist-footer" slot="footer">Load More</button>
+      </nav-card>
     `;
   }
 

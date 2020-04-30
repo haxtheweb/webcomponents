@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrndesign-avatar",
   "wcfactory": {
     "className": "LrndesignAvatar",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrndesign-avatar",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/paper-avatar": "^2.6.8",
-    "@lrnwebcomponents/simple-colors": "^2.6.8",
+    "@lrnwebcomponents/paper-avatar": "latest",
+    "@lrnwebcomponents/simple-colors": "latest",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
