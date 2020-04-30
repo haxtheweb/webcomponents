@@ -24,13 +24,14 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "lrndesign-gallery";
   }
 
   // life cycle
   constructor() {
     super();
+    this.sizing = "cover";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -120,6 +121,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       total = items.length,
       itemData = (items || []).map((item, i) => {
         return {
+          alt: item.alt,
           details: item.details,
           index: i,
           id: item.id || `gallery-${this.id}-item-${i}`,

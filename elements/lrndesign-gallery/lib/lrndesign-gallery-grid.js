@@ -38,6 +38,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         }
         lrndesign-gallery-zoom {
           position: relative;
+          margin: 0 7.5px 7.5px;
           width: var(--lrndesign-gallery-grid-thumbnail-xs, 100px);
         }
         :host([responsive-size="sm"]) lrndesign-gallery-zoom {
@@ -104,9 +105,9 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 zoom-alt="${item.zoomAlt}"
               >
                 <iron-image
-                  alt="${item.zoomAlt}"
+                  alt="${item.alt}"
                   fade
-                  sizing="cover"
+                  sizing="${this.selected.sizing || this.sizing || "cover"}"
                   src="${item.thumbnail}"
                   style="${this.imageStyle}"
                 >

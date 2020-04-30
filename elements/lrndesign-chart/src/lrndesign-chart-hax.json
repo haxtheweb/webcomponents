@@ -33,12 +33,10 @@
         "icon": "icons:invert-colors"
       },
       {
-        "property": "chartTitle",
+        "slot": "heading",
         "title": "Chart Title",
-        "description": "Accessible alt text for your chart.",
         "inputMethod": "textfield",
-        "icon": "text-field",
-        "required": true
+        "icon": "text-field"
       }
     ],
     "configure": [
@@ -59,26 +57,22 @@
         "title": "CSV File",
         "description": "Load data from a CSV.",
         "inputMethod": "haxupload",
-        "icon": "link",
-        "required": true
+        "icon": "link"
       },
       {
-        "property": "chartTitle",
+        "slot": "heading",
         "title": "Chart Title",
         "description": "Accessible alt text for your chart.",
         "inputMethod": "textfield",
-        "icon": "text-field",
-        "required": true
+        "icon": "text-field"
       },
       {
-        "property": "chartDesc",
+        "slot": "desc",
         "title": "Chart Description",
         "description": "Accessible description of your chart.",
         "inputMethod": "textfield",
         "icon": "text-field"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "scale",
         "title": "Scale Name",
@@ -102,15 +96,21 @@
           "ct-major-eleventh": "ct-major-eleventh  (3:8)",
           "ct-major-twelfth": "ct-major-twelfth  (1:3)",
           "ct-double-octave": "ct-double-octave  (1:4`)"
-        },
-        "icon": "text-field"
-      },
+        }
+      }
+    ],
+    "advanced": [
       {
         "property": "reverseData",
         "title": "Reverse Data",
         "description": "Reverse data including labels, the series order as well as the whole series data arrays.",
-        "inputMethod": "boolean",
-        "icon": "check-box"
+        "inputMethod": "boolean"
+      },
+      {
+        "slot": "",
+        "title": "HTML Table",
+        "description": "Optional: Load data as an HTML table.",
+        "inputMethod": "code-editor"
       }
     ]
   }

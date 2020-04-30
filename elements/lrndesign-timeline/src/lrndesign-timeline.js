@@ -27,6 +27,10 @@ class LrndesignTimeline extends SimpleColors {
     super();
     this.events = [];
     this.timelineSize = "xs";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -42,10 +46,7 @@ class LrndesignTimeline extends SimpleColors {
         }
       })
     );
-  }
 
-  connectedCallback() {
-    super.connectedCallback();
     this.updateTimeline();
     this.observer.observe(this, {
       childList: true,
@@ -97,11 +98,19 @@ class LrndesignTimeline extends SimpleColors {
     let callback = () => this.updateTimeline();
     return new MutationObserver(callback);
   }
+  _setScroll(e){
+    let el = e.path[0], parent = e.path[0].parentNode;
+    parent.scroll({
+      top: el.offsetTop,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 
   /**
    * checks the scroll of each event
    */
-  _checkScroll() {
+  _checkScroll(e) {
     if (this.shadowRoot) {
       let events = this.shadowRoot.querySelectorAll(".event") || [];
       events.forEach(event => {

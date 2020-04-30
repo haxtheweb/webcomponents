@@ -4,7 +4,7 @@
   <div id="timeline">
       <div id="events" @scroll="${this._checkScroll}">
         ${this.eventsList.map((event,index)=>html`
-          <section class="event" ?has-media="${event.imagesrc && event.imagesrc !== ''}">
+          <section class="event" ?has-media="${event.imagesrc && event.imagesrc !== ''}" tabindex="0" @focus="${this._setScroll}">
             <div class="event-overview">
               <div class="heading"><h2>${event.heading}</h2></div>
               <div class="media-outer">

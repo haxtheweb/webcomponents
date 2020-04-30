@@ -1,5 +1,6 @@
 import { html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import {
   withKnobs,
   withWebComponentsKnobs,
@@ -61,6 +62,107 @@ export class StorybookUtilities {
   }
 
   /**
+   * gets a HAX property by property or slot name
+   *
+   * @param {object} el custom element
+   * @param {string} title property or slot name
+   * @returns {object} HAX property object
+   * @memberof StorybookUtilities
+   */
+  getHaxField(el,title){
+    let settings =  el.haxProperties && el.haxProperties.settings ? el.haxProperties.settings : undefined,
+      quick = settings && settings.quick ? settings.quick : [],
+      configure = settings && settings.configure ? settings.configure : [],
+      advanced = settings && settings.advanced ? settings.advanced : [],
+      all = [...configure, ...advanced, ...quick],
+      filter = all.filter(prop=>prop.property===title || prop.slot===title);
+    return filter && filter.length > 0 ? filter[0] : undefined;
+  }
+
+  /**
+   * gets a random object based on properties
+   * @param {object} JSON sschema properties
+   * @param {array} HAX fields array
+   * @returns {object}
+   * @memberof StorybookUtilities
+   */
+  getRandomObject(props = []) {
+    let obj = {};
+    props.forEach(prop=>{
+      let id = prop.property || prop.slot;
+      switch (prop.inputMethod) {
+        case "array":
+          obj[id] = this.getRandomArray(undefined,prop.properties);
+          break;
+        case "boolean":
+          obj[id] = this.getRandomBool();
+          break;
+        case "color":
+          obj[id] = this.getRandomHex();
+          break;
+        case "colorpicker":
+          obj[id] = this.getRandomColor();
+          break;
+        case "fieldset":
+          obj[id] = this.getRandomObject(prop.properties);
+          break;
+        case "fileupload":
+          obj[id] = this.getRandomImage();
+          break;
+        case "haxupload":
+          obj[id] = this.getRandomImage();
+          break;
+        case "iconpicker":
+          obj[id] = this.getRandomIcon();
+          break;
+        case "number":
+          obj[id] = this.getRandomNumber(prop.min,prop.max,prop.step);
+          break;
+        case "object":
+          obj[id] = this.getRandomObject(prop.properties);
+          break;
+        case "select":
+          obj[id] = this.getRandomOption(prop.options ? Object.keys(prop.options) : prop.itemsList );
+          break;
+        case "slider":
+          obj[id] = this.getRandomNumber(prop.min,prop.max,prop.step);
+          break;
+        case "tabs":
+          obj[id] = prop.properties.map(tab=>tabs[tab.property || tab.slot] = this.getRandomObject(tab.properties));
+          break;
+        case "textarea":
+          obj[id] = this.getRandomTextarea();
+          break;
+        default: 
+          switch (prop.format){
+            case "simple-fields":
+              obj[id] = this.getRandomObject(prop.properties);
+              break;
+            default: 
+              obj[id] = this.getRandomText();
+              break;
+          }
+      }
+    });
+    return obj;
+  }
+
+  /**
+   * gets a random array based on properties
+   * @param {object} JSON sschema properties
+   * @param {array} HAX fields array
+   * @returns {array}
+   * @memberof StorybookUtilities
+   */
+  getRandomArray(properties,hax = []) {
+    let arr = [], ctr = this.getRandomNumber(2,5);
+    for(let i=0;i<ctr;i++){
+      arr.push(this.getRandomObject(properties,hax))
+    }
+    return arr;
+  }
+
+  /**
    * gets array of hax properties or properties from an element
    * @param {object} props element's properties
    * @param {object} haxProps element's haxProperties
@@ -84,7 +186,7 @@ export class StorybookUtilities {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = quick.concat(configure, advanced);
-    console.log(haxProps, quick, configure, advanced);
+    console.log(haxProps, hax, quick, configure, advanced);
     return hax.length > 0
       ? hax
       : Object.keys(props || {}).map(property => {
@@ -128,7 +230,22 @@ export class StorybookUtilities {
       "//picsum.photos/900/900",
       "//picsum.photos/1200/800",
       "//picsum.photos/800/1600",
-      "//picsum.photos/400/1200"
+      "//picsum.photos/400/1200",
+      "//placekitten.com//1200/900",
+      "//placekitten.com/900/900",
+      "//placekitten.com/1200/800",
+      "//placekitten.com/800/1600",
+      "//placekitten.com/400/1200",
+      "//loremflickr.com//1200/900",
+      "//loremflickr.com/900/900",
+      "//loremflickr.com/1200/800",
+      "//loremflickr.com/800/1600",
+      "//loremflickr.com/400/1200",
+      "//placeimg.com//1200/900",
+      "//placeimg.com/900/900",
+      "//placeimg.com/1200/800",
+      "//placeimg.com/800/1600",
+      "//placeimg.com/400/1200"
     ]);
   }
 
@@ -251,7 +368,6 @@ export class StorybookUtilities {
     (properties || []).forEach(field => {
       field.name = field.property || field.slot;
       if (!field.name && field.hasOwnProperty("slot")) field.name = "emptyslot";
-      console.log(field.name, field);
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
         console.debug(
@@ -287,92 +403,91 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnob(field, defaultValue) {
-    //withKnobs.escapeHTML = false;
-    console.log("getKnob", withWebComponentsKnobs);
     let title = field.title,
       name = field.name,
+      editedName = name === "emptyslot" ? '""': name,
       attribute = this.camelToKebab(name),
-      label = title && name ? `${title} (${name})` : title || name,
+      label = title && name 
+        ? `${title} (${editedName})` 
+        : title || editedName,
       group = field.hasOwnProperty("property")
         ? "props"
         : field.hasOwnProperty("slot")
         ? "slots"
         : "vars",
+      groupName = {
+        props: "Properties",
+        slots: "Slots",
+        vars: "CSS"
+      },
       method = field.inputMethod,
       options = field.options,
       val = defaultValue,
       colors = this.getColors(),
+      unescape = false,
       knob;
     if (!options && field.itemsList) {
       options = {};
       field.itemsList.forEach(item => (options[item] = item));
     }
-    console.log(
-      "defaultValue",
-      label,
-      field,
-      defaultValue,
-      name,
-      group,
-      "----> options",
-      options,
-      field.itemsList
-    );
     if (options && options.length > 0) {
       if (method === "select") {
-        knob = select(label, options, val, group);
+        knob = select(label, options, val, groupName[group]);
       } else if (method === "radio" && options) {
-        knob = radios(label, options, val, group);
+        knob = radios(label, options, val, groupName[group]);
       } else if (method === "options" && options) {
         knob = optionsKnob(
           label,
           options,
           val,
           { display: "multi-select" },
-          group
+          groupName[group]
         );
       }
     } else if (method === "colorpicker" && colors) {
       let options = {};
       colors.forEach(color => (options[color] = color));
-      knob = select(label, options, val, group);
+      knob = select(label, options, val, groupName[group]);
     } else if (method === "boolean") {
-      knob = boolean(label, val, group);
+      knob = boolean(label, val, groupName[group]);
     } else if (method === "haxupload") {
-      console.log("method to knob", method, label, val);
       knob = files(
         label,
         ".pdf,.docx,xlsx,.pptx,.png,.jpg,.jpeg,.gif,.mp4,.mp3,.vtt,.csv",
         val,
-        group
+        groupName[group]
       );
     } else if (method === "datepicker") {
-      knob = date(label, val, group);
+      knob = date(label, val, groupName[group]);
     } else if (method === "number") {
-      knob = number(label, val, {}, group);
+      knob = number(label, val, {}, groupName[group]);
     } else if (method === "range") {
       //todo
       knob = number(
         label,
         val,
         { range: true, min: 60, max: 90, step: 1 },
-        group
+        groupName[group]
       );
     } else if (method === "color") {
-      knob = color(label, val, group);
+      knob = color(label, val, groupName[group]);
     } else if (method === "object" || method === "array") {
-      knob = object(label, val, group);
+      knob = object(label, val, groupName[group]);
     } else if (method === "array") {
-      knob = array(label, val, ",", group);
+      knob = array(label, val, ",", groupName[group]);
     } else if (method === "textarea") {
-      knob = text(label, val || "", group);
+      knob = text(label, val || "", groupName[group]);
+    } else if (method === "code-editor") {
+      unescape = true;
+      knob = text(label, val || "", groupName[group]);
     } else {
-      knob = text(label, val || "", group);
+      knob = text(label, val || "", groupName[group]);
     }
     return {
       attribute: attribute,
       knob: knob,
       method: method,
+      unescape: unescape,
       group: group
     };
   }
@@ -403,13 +518,21 @@ export class StorybookUtilities {
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
         val = knob.knob;
-      if (knob.method !== "object" && knob.method !== "array") el[prop] = val;
+        el[prop] = val;
     });
     Object.keys(knobs.slots || {}).map(slot => {
-      let div = document.createElement("div");
-      div.slot = knobs.slots[slot].attribute;
-      div.innerHTML = knobs.slots[slot].knob;
-      el.appendChild(div);
+      let div = document.createElement("div"), 
+        empty = knobs.slots[slot].attribute === "emptyslot",
+        knobval = knobs.slots[slot].unescape 
+        ? knobs.slots[slot].knob.replace(/&lt;/gi,'<').replace(/&gt;/gi,'>').replace(/&amp;/gi,'&')
+          : knobs.slots[slot].knob ;
+      if(empty && knobs.slots[slot].unescape) {
+        el.innerHTML += knobval;
+      } else {
+        if(!empty) div.slot = knobs.slots[slot].attribute;
+        div.innerHTML = knobval;
+        el.appendChild(div);
+      }
     });
     console.debug(
       "makeElement:",
@@ -432,7 +555,6 @@ export class StorybookUtilities {
     let tag = el.tag,
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs(props, defaults, exclusions);
-    console.log("language", el, el.properties, el.haxProperties);
     console.debug(
       "makeElementFromClass:",
       tag,

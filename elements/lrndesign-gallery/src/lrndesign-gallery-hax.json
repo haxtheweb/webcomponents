@@ -40,13 +40,6 @@
         "description": "Display as grid?",
         "inputMethod": "boolean",
         "icon": "icons:view-module"
-      },
-      {
-        "property": "grid",
-        "title": "Grid View",
-        "description": "Display as grid?",
-        "inputMethod": "boolean",
-        "icon": "icons:view-module"
       }
     ],
     "configure": [

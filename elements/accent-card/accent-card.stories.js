@@ -14,10 +14,12 @@ export default {
 
 export const AccentCardStory = () => {
   const utils = new StorybookUtilities();
-  return utils.makeElementFromClass(AccentCard, {
+  let card = utils.makeElementFromClass(AccentCard, {
     heading: utils.getRandomText(),
     content: utils.getRandomTextarea(),
     color: utils.getRandomColor(),
     imageSrc: utils.getRandomImage()
   });
+  card.style.maxWidth = "600px";
+  return card;
 };

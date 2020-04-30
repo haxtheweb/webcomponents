@@ -22,7 +22,13 @@ export const A11yTabsStory = () => {
   let tabs = utils.makeElementFromClass(A11yTabs, {
     id: "tabs"
   });
-  ["Before", "During", "After"].forEach(tab => {
+  [ "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"].forEach(tab => {
     let el = document.createElement("a11y-tab");
     el.label = tab;
     el.id = tab.toLowerCase();
@@ -47,14 +53,7 @@ export const A11yTabStory = () => {
       >
         ${text('Tab Content (slot="")', utils.getRandomTextarea(), "slot")}
       </a11y-tab>
-      ${[
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ].map(
+      ${["Before", "During", "After"].map(
         tab => html`
           <a11y-tab id="${tab.toLowerCase()}" label="${tab}">
             ${utils.getRandomTextarea()}

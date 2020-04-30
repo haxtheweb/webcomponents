@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./lrndesign-gallery-zoom.js";
@@ -241,9 +242,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               <iron-image
                 alt="${this.selected.alt}"
                 fade
-                id="${this.selected.id}"
                 placeholder="${this.selected.thumbnail}"
-                sizing="${this.selected.sizing}"
+                sizing="${this.selected.sizing || this.sizing || "cover"}"
                 src="${this.selected.src}"
                 style="${this.imageStyle}"
               >
@@ -259,12 +259,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
-              <simple-tooltip
-                for="galleryzoom"
-                position="right"
-                controls="zoomtpl"
-                >${this.selected.tooltip}</simple-tooltip
-              >
               <div id="prevnextnav">
                 <button
                   id="carouselprev"
@@ -348,7 +342,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                             @click="${e => this._itemChanged(item.id)}"
                             ?disabled="${this.selected.id === item.id}"
                           >
-                            <span class="sr-only">${item.alt}</span>
+                            <span class="sr-only">${item.alt || `Item ${parseInt(item.index)+1}`}</span>
                           </button>
                           <simple-tooltip
                             for="${item.id}"

@@ -18,98 +18,241 @@ import "./lib/lrndesign-gallery-grid.js";
  * @demo demo/index.html
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none; 
+}
 
-        ::slotted(figure) {
-          display: none;
-        }
+::slotted(figure){
+  display: none;
+}
       `
     ];
   }
 
-  // render function
+// render function
   render() {
     return html`
-      <div id="gallery">
-        ${this.grid
-          ? html`
-              <lrndesign-gallery-grid
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery-id="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-                gallery-title="${this.galleryTitle}"
-              >
-                <slot></slot>
-              </lrndesign-gallery-grid>
-            `
-          : html`
-              <lrndesign-gallery-carousel
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery-id="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-                gallery-title="${this.galleryTitle}"
-              >
-                <slot></slot>
-              </lrndesign-gallery-carousel>
-            `}
-      </div>
-    `;
+
+<div id="gallery">
+  ${this.grid
+    ? html`
+        <lrndesign-gallery-grid
+          accent-color="${this.accentColor}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
+          ?dark="${this.dark}"
+          .gallery-id="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
+          responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
+          sizing="${this.sizing}"
+          .sources="${this.items}"
+          gallery-title="${this.galleryTitle}"
+        >
+          <slot></slot>
+        </lrndesign-gallery-grid>
+      `
+    : html`
+        <lrndesign-gallery-carousel
+          accent-color="${this.accentColor}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
+          ?dark="${this.dark}"
+          .gallery-id="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
+          responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
+          sizing="${this.sizing}"
+          .sources="${this.items}"
+          gallery-title="${this.galleryTitle}"
+        >
+          <slot></slot>
+        </lrndesign-gallery-carousel>`
+    }
+</div>`;
   }
 
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Image Gallery",
+    "description": "An image gallery displayed as a carousel or a grid",
+    "icon": "image:collections",
+    "color": "cyan",
+    "groups": ["Content", "Instructional", "Media", "Image"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean",
+        "icon": "icons:invert-colors"
+      },
+      {
+        "property": "grid",
+        "title": "Grid View",
+        "description": "Display as grid?",
+        "inputMethod": "boolean",
+        "icon": "icons:view-module"
+      }
+    ],
+    "configure": [
+      {
+        "property": "galleryTitle",
+        "title": "Gallery Title",
+        "description": "A title for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "grid",
+        "title": "Grid View",
+        "description": "Display as grid?",
+        "inputMethod": "boolean"
+      },
+      {
+        "slot": "description",
+        "title": "Gallery Description",
+        "description": "An optional description for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "sources",
+        "title": "Gallery Images",
+        "description": "The images for the gallery.",
+        "inputMethod": "array",
+        "itemLabel": "title",
+        "properties": [
+          {
+            "property": "title",
+            "title": "Image Title",
+            "description": "The heading for the image.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "details",
+            "title": "Image Details",
+            "description": "The body text with details for the image.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "src",
+            "title": "Image",
+            "description": "Default Image",
+            "inputMethod": "haxupload"
+          },
+          {
+            "property": "thumbnail",
+            "title": "Optional Thumbnail Image",
+            "description": "Optional smaller thumbnail version of the image.",
+            "inputMethod": "haxupload"
+          },
+          {
+            "property": "large",
+            "title": "Optional Full Image",
+            "description": "Optional larger full-sized version of the image for zooming.",
+            "inputMethod": "haxupload"
+          }
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "aspectRatio",
+        "title": "Aspect Ratio",
+        "description": "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "sizing",
+        "title": "Fit to Aspect Ratio",
+        "description": "Fit images to aspect ratio",
+        "inputMethod": "select",
+        "options": {
+          "cover": "crop",
+          "contain": "letterbox"
+        }
+      }
+    ]
+  }
+}
+;
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      id: {
-        type: String,
-        reflect: true,
-        attribute: "id"
-      },
-      responsiveSize: {
-        type: String,
-        reflect: true,
-        attribute: "responsive-size"
-      }
-    };
+  
+  ...super.properties,
+  
+  "id": {
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  },
+  "responsiveSize": {
+    "type": String,
+    "reflect": true,
+    "attribute": "responsive-size"
+  }
+}
+;
   }
 
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "lrndesign-gallery";
   }
 
   // life cycle
   constructor() {
     super();
+    this.sizing = "cover";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -199,6 +342,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       total = items.length,
       itemData = (items || []).map((item, i) => {
         return {
+          alt: item.alt,
           details: item.details,
           index: i,
           id: item.id || `gallery-${this.id}-item-${i}`,

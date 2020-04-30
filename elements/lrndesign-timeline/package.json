@@ -5,7 +5,7 @@
     "customElementClass": "LitElement",
     "elementName": "lrndesign-timeline",
     "generator-wcfactory-version": "0.7.1",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
       "css": "src/lrndesign-timeline.css",
