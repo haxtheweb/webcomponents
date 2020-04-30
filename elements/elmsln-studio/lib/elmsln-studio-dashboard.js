@@ -80,6 +80,12 @@ class ElmslnStudioDashboard extends LitElement {
           font-size: inherit;
           font-weight: inherit;
         }
+        nav-card [slot=heading],
+        accent-card [slot=heading],
+        nav-card [slot=subheading],
+        accent-card [slot=subheading] {
+          text-align: center;
+        }
         .linklist iron-icon {
           position: absolute;
           width: 24px;

@@ -246,11 +246,10 @@ class AccentCard extends SimpleColors {
             --accent-card-content-padding-bottom,
             var(--accent-card-padding, 20px)
           );
-        }
-        :host #content:not(:last-child) {
-          border-bottom: 1px solid var(--accent-card-footer-border-color);
+          flex: 1 1 auto;
         }
         :host #footer {
+          border-top: 1px solid var(--accent-card-footer-border-color);
           padding-top: var(--accent-card-footer-padding-top, unset);
           padding-left: var(
             --accent-card-footer-padding-left,

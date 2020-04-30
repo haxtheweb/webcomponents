@@ -17,233 +17,237 @@ import "@polymer/iron-icons/iron-icons.js";
  * @demo demo/index.html
  */
 class NavCard extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        ::slotted([slot="linklist"]) {
-          display: none;
-        }
+::slotted([slot=linklist]) {
+  display: none;
+}
 
-        h1,
-        h2,
-        h3,
-        accent-card > [slot="heading"] {
-          font-size: 14px;
-          font-weight: normal;
-          color: var(--simple-colors-default-theme-grey-7, #666);
-          margin: 0;
-        }
+h1,
+h2,
+h3,
+accent-card > [slot="heading"] {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--simple-colors-default-theme-grey-7, #666);
+  margin: 0;
+}
 
-        accent-card {
-          margin: var(--elmsln-studio--Margin, 20px);
-          flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
-          --accent-card-footer-border-color: transparent;
-        }
+accent-card {
+  margin: var(--elmsln-studio--Margin, 20px);
+  flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
+  --accent-card-footer-border-color: transparent;
+}
 
-        .linklist {
-          list-style-type: none;
-          padding-inline-start: 0;
-        }
+.linklist {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
 
-        .linklist li {
-          position: relative;
-          padding: 5px 0;
-          margin-bottom: 1px;
-          opacity: 0.8;
-        }
+.linklist li {
+  position: relative;
+  padding: 5px 0;
+  margin-bottom: 1px;
+  opacity: 0.8;
+}
 
-        .linklist li {
-          padding: 5px 0;
-          text-align: left;
-          min-height: 25px;
-          border-bottom: 1px solid
-            var(--simple-colors-default-theme-grey-4, #666);
-        }
+.linklist li {
+  padding: 5px 0;
+  text-align: left;
+  min-height: 25px;
+  border-bottom: 1px solid
+  var(--simple-colors-default-theme-grey-4, #666);
+}
 
-        button[slot="subheading"] {
-          text-decoration: underline;
-        }
+button[slot="subheading"] {
+  text-decoration: underline;
+}
 
-        button[slot="subheading"]:focus,
-        button[slot="subheading"]:hover {
-          text-decoration: none;
-        }
+button[slot="subheading"]:focus,
+button[slot="subheading"]:hover {
+  text-decoration: none;
+}
 
-        ::slotted(button),
-        .linklist button {
-          border: none;
-          padding: 0;
-          text-align: left;
-          font-size: inherit;
-          font-weight: inherit;
-        }
+::slotted(button),
+.linklist button {
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-size: inherit;
+  font-weight: inherit;
+}
 
-        .linklist iron-icon {
-          position: absolute;
-          width: 24px;
-          height: 24px;
-          right: 0px;
-          top: calc(50% - 12px);
-        }
+.linklist iron-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 0px;
+  top: calc(50% - 12px);
+}
 
-        .linklist-heading::after {
-          content: " ";
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-        }
+.linklist-heading::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
 
-        .linklist-heading:focus {
-          outline: none;
-        }
+.linklist-heading:focus {
+  outline: none;
+}
 
-        .linklist li:focus,
-        .linklist li:focus-within .linklist-heading::after {
-          outline: 1px solid blue;
-        }
+.linklist li:focus,
+.linklist li:focus-within .linklist-heading::after {
+  outline: 1px solid blue;
+}
 
-        .linklist li:hover .linklist-heading,
-        .linklist li:focus .linklist-heading,
-        .linklist li:focus-within .linklist-heading {
-          text-decoration: underline;
-        }
+.linklist li:hover .linklist-heading,
+.linklist li:focus .linklist-heading,
+.linklist li:focus-within .linklist-heading {
+  text-decoration: underline;
+}
 
-        .linklist-heading,
-        .linklist-subheading {
-          display: block;
-          width: calc(100% - 24px);
-        }
+.linklist-heading,
+.linklist-subheading {
+  display: block;
+  width: calc(100% - 24px);
+}
 
-        .linklist-heading {
-          font-weight: bold;
-        }
+.linklist-heading {
+  font-weight: bold;
+}
 
-        .linklist-subheading {
-          font-size: 11px;
-        }
+.linklist-subheading {
+  font-size: 11px;
+}
       `
     ];
   }
 
-  // render function
+// render function
   render() {
     return html`
-      <accent-card
-        accent-color="${this.accentColor}"
-        ?dark="${this.dark}"
-        ?disabled="${this.disabled}"
-        ?hidden="${this.hidden}"
-      >
-        <div slot="heading"><slot name="heading"></slot></div>
-        <div slot="subheading"><slot name="subheading"></slot></div>
-        <div slot="content">
-          <slot name="body"></slot>
-          <slot name="linklist"></slot>
-          <div id="linklist"></div>
-        </div>
-        <div slot="footer"><slot name="footer"></slot></div>
-      </accent-card>
-    `;
+
+<accent-card 
+  accent-color="${this.accentColor}" 
+  ?dark="${this.dark}" 
+  ?disabled="${this.disabled}"
+  ?hidden="${this.hidden}" >
+  <div slot="heading"><slot name="heading"></slot></div>
+  <div slot="subheading"><slot name="subheading"></slot></div>
+  <div slot="content">
+    <slot name="body"></slot>
+    <slot name="linklist"></slot>
+    <div id="linklist"></div>
+  </div>
+  <div slot="footer"><slot name="footer"></slot></div>
+</accent-card>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Nav card",
-        description: "an accent card of link lists",
-        icon: "av:playlist-play",
-        color: "pink",
-        groups: ["Card", "Nav", "List"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "Select an accent color.",
-            inputMethod: "colorpicker",
-            required: false
-          },
-          {
-            property: "Dark",
-            title: "Dark",
-            description: "Display the card as dark theme?",
-            inputMethod: "boolean",
-            required: false
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            description: "Disable all links and buttons?",
-            inputMethod: "boolean",
-            required: false
-          },
-          {
-            property: "hidden",
-            title: "Hidden",
-            description: "",
-            inputMethod: "boolean",
-            required: false
-          },
-          {
-            property: "linkIcon",
-            title: "Link Icon",
-            description: "Select an icon.",
-            inputMethod: "iconpicker",
-            required: false
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Nav card",
+    "description": "an accent card of link lists",
+    "icon": "av:playlist-play",
+    "color": "pink",
+    "groups": ["Card", "Nav", "List"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Select an accent color.",
+        "inputMethod": "colorpicker",
+        "required": false
+      },
+      {
+        "property": "Dark",
+        "title": "Dark",
+        "description": "Display the card as dark theme?",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "description": "Disable all links and buttons?",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "hidden",
+        "title": "Hidden",
+        "description": "",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "linkIcon",
+        "title": "Link Icon",
+        "description": "Select an icon.",
+        "inputMethod": "iconpicker",
+        "required": false
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      accentColor: {
-        attribute: "accent-color",
-        type: String
-      },
-      dark: {
-        attribute: "dark",
-        type: Boolean
-      },
-      disabled: {
-        attribute: "disabled",
-        type: Boolean
-      },
-      hidden: {
-        attribute: "hidden",
-        type: Boolean
-      },
-      linkIcon: {
-        attribute: "link-icon",
-        type: String
-      }
-    };
+  
+  ...super.properties,
+  
+  "accentColor": {
+    "attribute": "accent-color",
+    "type": String
+  },
+  "dark": {
+    "attribute": "dark",
+    "type": Boolean
+  },
+  "disabled": {
+    "attribute": "disabled",
+    "type": Boolean
+  },
+  "hidden": {
+    "attribute": "hidden",
+    "type": Boolean
+  },
+  "linkIcon": {
+    "attribute": "link-icon",
+    "type": String
+  }
+}
+;
   }
 
   /**
