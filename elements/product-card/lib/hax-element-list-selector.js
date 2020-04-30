@@ -40,22 +40,6 @@ class HaxElementListSelector extends LitElement {
         :host {
           display: block;
         }
-        :host([loading]) hax-element-card-list {
-          visibility: hidden;
-          opacity: 0;
-          transition: 1s ease-in-out all;
-        }
-        hax-element-card-list {
-          visibility: visible;
-          opacity: 1;
-        }
-        hexagon-loader[loading] {
-          position: absolute;
-          width: 100%;
-        }
-        [hidden] {
-          display: none !important;
-        }
       `
     ];
   }
@@ -74,11 +58,19 @@ class HaxElementListSelector extends LitElement {
     // default fields json blob, most implementations should provide their own though obviously
     this.fieldsEndpoint =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "fields.json";
+    // allow flobal base path focibly set
     if (window.WCGlobalBasePath) {
       this.basePath = window.WCGlobalBasePath;
     } else {
       this.basePath =
         this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../../";
+    }
+    // allow global definition of wc-registry for custom ones
+    if (window.WCGlobalRegistryFileName) {
+      this.__regFile = window.WCGlobalRegistryFileName;
+    }
+    else {
+      this.__regFile = "wc-registry.json";
     }
     setTimeout(() => {
       window.addEventListener(
@@ -244,7 +236,9 @@ class HaxElementListSelector extends LitElement {
             await import(`${this.basePath}${file}`).then(module => {
               if (
                 module &&
+                Object.keys(module) &&
                 Object.keys(module)[0] &&
+                module[Object.keys(module)[0]] &&
                 module[Object.keys(module)[0]].haxProperties &&
                 module[Object.keys(module)[0]].haxProperties.gizmo &&
                 module[Object.keys(module)[0]].haxProperties.gizmo.title
@@ -256,6 +250,7 @@ class HaxElementListSelector extends LitElement {
                   schema: module[Object.keys(module)[0]].haxProperties
                 };
                 list.push(detail);
+                this.haxData = [...list];
               } else {
                 noSchema[tag] = file;
                 //console.log(`${tag} doesn't have haxSchema`);
@@ -265,7 +260,6 @@ class HaxElementListSelector extends LitElement {
             console.warn(e);
           }
         }
-        this.haxData = [...list];
         this.noSchema = {};
         this.noSchema = noSchema;
         this.loading = false;
@@ -374,10 +368,10 @@ class HaxElementListSelector extends LitElement {
         // look for CDN provider
         if (haxcore.providers["haxcore-providers-cdn"] == "other") {
           this.wcRegistryEndpoint =
-            haxcore.providers["haxcore-providers-other"] + "wc-registry.json";
+            haxcore.providers["haxcore-providers-other"] + this.__regFile;
         } else {
           this.wcRegistryEndpoint =
-            haxcore.providers["haxcore-providers-cdn"] + "wc-registry.json";
+            haxcore.providers["haxcore-providers-cdn"] + this.__regFile;
         }
         // apply filters
         this.applyFilters(haxcore.search);
