@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
@@ -16,7 +16,7 @@ import "@polymer/iron-icons/iron-icons.js";
  * @lit-element
  * @demo demo/index.html
  */
-class NavCard extends LitElement {
+class NavCard extends AccentCard {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -30,15 +30,12 @@ class NavCard extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.accentColor = "grey";
-    this.dark = false;
-    this.disabled = false;
     this.hidden = false;
     this.tag = NavCard.tag;
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false
+      subtree: true
     });
   }
   /**
@@ -64,6 +61,7 @@ class NavCard extends LitElement {
     return new MutationObserver(callback);
   }
   updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "linkIcon" && this.shadowRoot)
         this.shadowRoot
@@ -94,8 +92,12 @@ class NavCard extends LitElement {
    */
   _getLi(li, i) {
     let heading = this._getHeading(li, i),
-      subheading = this._getSubheading(li);
-
+      subheading = this._getSubheading(li),
+      left = li.querySelector(".linklist-left");
+    if(left) {
+      li.classList.add('left-icon');
+      li.appendChild(left.cloneNode(true));
+    }
     heading.id = heading.id || `${this.id || `nav-card`}-heading${i}`;
     if (subheading) {
       subheading.id = `subheading${i}`;

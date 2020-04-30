@@ -1,20 +1,4 @@
 {
-  "accentColor": {
-    "attribute": "accent-color",
-    "type": "String"
-  },
-  "dark": {
-    "attribute": "dark",
-    "type": "Boolean"
-  },
-  "disabled": {
-    "attribute": "disabled",
-    "type": "Boolean"
-  },
-  "hidden": {
-    "attribute": "hidden",
-    "type": "Boolean"
-  },
   "linkIcon": {
     "attribute": "link-icon",
     "type": "String"

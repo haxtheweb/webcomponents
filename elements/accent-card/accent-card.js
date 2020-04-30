@@ -196,6 +196,7 @@ class AccentCard extends SimpleColors {
           overflow: visible;
         }
         :host #heading {
+          flex: 0 0 auto;
           padding-top: var(
             --accent-card-heading-padding-top,
             var(--accent-card-padding, 20px)
@@ -215,6 +216,7 @@ class AccentCard extends SimpleColors {
           color: var(--accent-card-heading-color);
         }
         :host #subheading {
+          flex: 0 0 auto;
           font-size: 90%;
           font-style: italic;
           padding-top: var(--accent-card-subheading-padding-top, unset);
@@ -249,6 +251,7 @@ class AccentCard extends SimpleColors {
           flex: 1 1 auto;
         }
         :host #footer {
+          flex: 0 0 auto;
           border-top: 1px solid var(--accent-card-footer-border-color);
           padding-top: var(--accent-card-footer-padding-top, unset);
           padding-left: var(

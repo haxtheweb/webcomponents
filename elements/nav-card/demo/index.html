@@ -27,10 +27,12 @@
             </p>
             <ul slot="linklist">
               <li>
+                <img src="//placekitten.com/200/200" class="linklist-left">
                 <a class="linklist-heading" href="#">Accessible link text</a>
                 <span class="linklist-subheading">A subheading that provides more description</span>
               </li>
               <li>
+                <img src="//placekitten.com/190/200" class="linklist-left">
                 <a class="linklist-heading" href="#">Accessible link text</a>
                 <span class="linklist-subheading">A subheading that provides more description</span>
               </li>
@@ -46,7 +48,14 @@
             <p slot="footer">&lt;nav-card&gt;&copy The Pennsylvania State University</p>
           </nav-card>
           <style>
-            [slot=footer] {font-size:80%; text-align: center;}
+            nav-card {
+              --accent-card-footer-padding-bottom: 5px;
+              --nav-card-linklist-left-size: 40px;
+            }
+            [slot=footer] {
+              font-size:80%; 
+              text-align: center;
+            }
           </style>
         </template>
       </demo-snippet>

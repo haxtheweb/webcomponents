@@ -36,24 +36,40 @@
         "required": false
       },
       {
-        "property": "disabled",
-        "title": "Disabled",
-        "description": "Disable all links and buttons?",
-        "inputMethod": "boolean",
-        "required": false
-      },
-      {
-        "property": "hidden",
-        "title": "Hidden",
-        "description": "",
-        "inputMethod": "boolean",
-        "required": false
-      },
-      {
         "property": "linkIcon",
         "title": "Link Icon",
         "description": "Select an icon.",
         "inputMethod": "iconpicker",
+        "required": false
+      },
+      {
+        "slot": "heading",
+        "title": "Heading",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "subheading",
+        "title": "Subheading",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "body",
+        "title": "Body",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "linklist",
+        "title": "Link List",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "inputMethod": "code-editor",
         "required": false
       }
     ],

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
@@ -16,66 +16,53 @@ import "@polymer/iron-icons/iron-icons.js";
  * @lit-element
  * @demo demo/index.html
  */
-class NavCard extends LitElement {
+class NavCard extends AccentCard {
   
   //styles function
   static get styles() {
     return  [
-      
+      ...super.styles,
       css`
 :host {
   display: block;
+  --accent-card-content-padding-bottom: 0px;
+  --nav-card-linklist-icon-size: 24px;
 }
-
 ::slotted([slot=linklist]) {
   display: none;
 }
-
-h1,
-h2,
-h3,
-accent-card > [slot="heading"] {
-  font-size: 14px;
-  font-weight: normal;
-  color: var(--simple-colors-default-theme-grey-7, #666);
-  margin: 0;
-}
-
-accent-card {
-  margin: var(--elmsln-studio--Margin, 20px);
-  flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
-  --accent-card-footer-border-color: transparent;
-}
-
 .linklist {
   list-style-type: none;
   padding-inline-start: 0;
+  margin-top: var(--nav-card-linklist-margin-top, 20px);
+  margin-bottom: var(--nav-card-linklist-margin-bottom, 20px);
 }
-
-.linklist li {
+.linklist > li {
   position: relative;
   padding: 5px 0;
   margin-bottom: 1px;
-  opacity: 0.8;
+  opacity: 0.8;  
+  min-height: calc(1px + var(--nav-card-linklist-left-size, 24px));
+  display: flex;
+  flex-direction: column;
+  justify-content: var(--nav-card-linklist-li-justify, center);
 }
-
-.linklist li {
+.linklist > li {
   padding: 5px 0;
   text-align: left;
-  min-height: 25px;
-  border-bottom: 1px solid
-  var(--simple-colors-default-theme-grey-4, #666);
+  border-bottom: var(--nav-card-linklist-border-bottom, 1px solid
+    var(--simple-colors-default-theme-grey-4, #666));
 }
-
+.linklist > li:last-of-type {
+  border-bottom: none;
+}
 button[slot="subheading"] {
   text-decoration: underline;
 }
-
 button[slot="subheading"]:focus,
 button[slot="subheading"]:hover {
   text-decoration: none;
 }
-
 ::slotted(button),
 .linklist button {
   border: none;
@@ -84,15 +71,26 @@ button[slot="subheading"]:hover {
   font-size: inherit;
   font-weight: inherit;
 }
-
+.linklist-left,
 .linklist iron-icon {
   position: absolute;
-  width: 24px;
-  height: 24px;
   right: 0px;
-  top: calc(50% - 12px);
 }
-
+.linklist-left {
+  left: 0px;
+  top: calc(50% - 0.5 * var(--nav-card-linklist-left-size, 24px));
+  width: var(--nav-card-linklist-left-size, 24px);
+  height: var(--nav-card-linklist-left-size, 24px);
+  border-radius: var(--nav-card-linklist-left-border-radius, 50%); 
+  border: var(--nav-card-linklist-left-border, 
+    var(--nav-card-linklist-border-bottom, 1px solid
+    var(--simple-colors-default-theme-grey-4, #666))); 
+}
+.linklist iron-icon {
+  top: calc(50% - 0.5 * var(--nav-card-linklist-icon-size, 24px));
+  width: var(--nav-card-linklist-icon-size, 24px);
+  height: var(--nav-card-linklist-icon-size, 24px);
+}
 .linklist-heading::after {
   content: " ";
   position: absolute;
@@ -101,32 +99,40 @@ button[slot="subheading"]:hover {
   top: 0;
   bottom: 0;
 }
-
 .linklist-heading:focus {
   outline: none;
 }
-
 .linklist li:focus,
 .linklist li:focus-within .linklist-heading::after {
   outline: 1px solid blue;
 }
-
 .linklist li:hover .linklist-heading,
 .linklist li:focus .linklist-heading,
 .linklist li:focus-within .linklist-heading {
   text-decoration: underline;
 }
-
 .linklist-heading,
 .linklist-subheading {
   display: block;
-  width: calc(100% - 24px);
+  width: 100%;
 }
-
+:host([link-icon]) .linklist-heading,
+:host([link-icon]) .linklist-subheading,
+li.left-icon .linklist-heading,
+li.left-icon .linklist-subheading {
+  width: calc(100% - 7px - var(--nav-card-linklist-icon-size, 24px));
+}
+:host([link-icon]) li.left-icon .linklist-heading,
+:host([link-icon]) li.left-icon .linklist-subheading {
+  width: calc(100% - 14px - var(--nav-card-linklist-icon-size, 24px) - var(--nav-card-linklist-left-size, 24px));
+}
+li.left-icon .linklist-heading,
+li.left-icon .linklist-subheading {
+  margin-left: calc(7px + var(--nav-card-linklist-left-size, 24px));
+}
 .linklist-heading {
   font-weight: bold;
 }
-
 .linklist-subheading {
   font-size: 11px;
 }
@@ -138,20 +144,26 @@ button[slot="subheading"]:hover {
   render() {
     return html`
 
-<accent-card 
-  accent-color="${this.accentColor}" 
-  ?dark="${this.dark}" 
-  ?disabled="${this.disabled}"
-  ?hidden="${this.hidden}" >
-  <div slot="heading"><slot name="heading"></slot></div>
-  <div slot="subheading"><slot name="subheading"></slot></div>
-  <div slot="content">
-    <slot name="body"></slot>
-    <slot name="linklist"></slot>
-    <div id="linklist"></div>
+<article id="card">
+  <div class="image-outer" ?hidden="${!this.imageSrc}">
+    <div
+      class="image"
+      .style="${this.imageSrc
+        ? `background-image: url(${this.imageSrc});`
+        : `display: none;`}"
+    ></div>
   </div>
-  <div slot="footer"><slot name="footer"></slot></div>
-</accent-card>`;
+  <div class="body">
+    <h1 id="heading"><slot name="heading"></slot></h1>
+    <div id="subheading"><slot name="subheading"></slot></div>
+    <div id="content">
+      <slot name="body"></slot>
+      <div id="linklist"></div>
+      <slot name="linklist"></slot>
+    </div>
+    <div id="footer"><slot name="footer"></slot></div>
+  </div>
+</article>`;
   }
 
   // haxProperty definition
@@ -194,24 +206,40 @@ button[slot="subheading"]:hover {
         "required": false
       },
       {
-        "property": "disabled",
-        "title": "Disabled",
-        "description": "Disable all links and buttons?",
-        "inputMethod": "boolean",
-        "required": false
-      },
-      {
-        "property": "hidden",
-        "title": "Hidden",
-        "description": "",
-        "inputMethod": "boolean",
-        "required": false
-      },
-      {
         "property": "linkIcon",
         "title": "Link Icon",
         "description": "Select an icon.",
         "inputMethod": "iconpicker",
+        "required": false
+      },
+      {
+        "slot": "heading",
+        "title": "Heading",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "subheading",
+        "title": "Subheading",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "body",
+        "title": "Body",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "linklist",
+        "title": "Link List",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "inputMethod": "code-editor",
         "required": false
       }
     ],
@@ -226,22 +254,6 @@ button[slot="subheading"]:hover {
   
   ...super.properties,
   
-  "accentColor": {
-    "attribute": "accent-color",
-    "type": String
-  },
-  "dark": {
-    "attribute": "dark",
-    "type": Boolean
-  },
-  "disabled": {
-    "attribute": "disabled",
-    "type": Boolean
-  },
-  "hidden": {
-    "attribute": "hidden",
-    "type": Boolean
-  },
   "linkIcon": {
     "attribute": "link-icon",
     "type": String
@@ -261,15 +273,12 @@ button[slot="subheading"]:hover {
   // life cycle
   constructor() {
     super();
-    this.accentColor = "grey";
-    this.dark = false;
-    this.disabled = false;
     this.hidden = false;
     this.tag = NavCard.tag;
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false
+      subtree: true
     });
   }
   /**
@@ -295,6 +304,7 @@ button[slot="subheading"]:hover {
     return new MutationObserver(callback);
   }
   updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "linkIcon" && this.shadowRoot)
         this.shadowRoot
@@ -325,8 +335,12 @@ button[slot="subheading"]:hover {
    */
   _getLi(li, i) {
     let heading = this._getHeading(li, i),
-      subheading = this._getSubheading(li);
-
+      subheading = this._getSubheading(li),
+      left = li.querySelector(".linklist-left");
+    if(left) {
+      li.classList.add('left-icon');
+      li.appendChild(left.cloneNode(true));
+    }
     heading.id = heading.id || `${this.id || `nav-card`}-heading${i}`;
     if (subheading) {
       subheading.id = `subheading${i}`;
