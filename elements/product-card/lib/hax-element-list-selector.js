@@ -68,8 +68,7 @@ class HaxElementListSelector extends LitElement {
     // allow global definition of wc-registry for custom ones
     if (window.WCGlobalRegistryFileName) {
       this.__regFile = window.WCGlobalRegistryFileName;
-    }
-    else {
+    } else {
       this.__regFile = "wc-registry.json";
     }
     setTimeout(() => {

@@ -117,12 +117,14 @@ class HAXElementCardList extends LitElement {
       ? ``
       : html`
           <p class="loaderText" ?hidden="${!this.loading}">
-            <strong>Scanning Web Component Registry for more HAX elements..</strong><hexagon-loader
-            item-count="4"
-            color="orange"
-            ?loading="${this.loading}"
-            size="small"
-          ></hexagon-loader>
+            <strong
+              >Scanning Web Component Registry for more HAX elements..</strong
+            ><hexagon-loader
+              item-count="4"
+              color="orange"
+              ?loading="${this.loading}"
+              size="small"
+            ></hexagon-loader>
           </p>
           <div
             class="grid"
