@@ -40,18 +40,17 @@ let scale = {
     "ct-double-octave": "ct-double-octave  (1:4`)"
   },
   salesData = [
-    ["Quarter","Quarter 1","Quarter 2","Quarter 3","Quarter 4"],
-    ["Northeast",5,4,3,7],
-    ["Midaltantic",3,2,9,5],
-    ["Southeast",1,5,8,4],
-    ["Midwest",2,3,4,6],
-    ["West",4,1,2,1]
+    ["Quarter", "Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"],
+    ["Northeast", 5, 4, 3, 7],
+    ["Midaltantic", 3, 2, 9, 5],
+    ["Southeast", 1, 5, 8, 4],
+    ["Midwest", 2, 3, 4, 6],
+    ["West", 4, 1, 2, 1]
   ],
-  pieData = [
-    ["Banana", "Apple", "Pumpkin"],
-    [20, 15, 40]
-  ],
-  props = utils.getElementProperties(ChartistRender.properties).filter(prop=>prop.property !== "chartData");
+  pieData = [["Banana", "Apple", "Pumpkin"], [20, 15, 40]],
+  props = utils
+    .getElementProperties(ChartistRender.properties)
+    .filter(prop => prop.property !== "chartData");
 
 props.forEach(prop => {
   if (prop.property === "dataSource") prop.inputMethod = "haxupload";
@@ -68,7 +67,8 @@ export const ChartistRenderBarStory = () => {
   let knobs = utils.getKnobs(props, {
       data: salesData,
       chartTitle: "Sales by Quarter",
-      chartDesc: "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
+      chartDesc:
+        "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
       type: "bar"
     }),
@@ -77,13 +77,14 @@ export const ChartistRenderBarStory = () => {
 };
 export const ChartistRenderLineStory = () => {
   let knobs = utils.getKnobs(props, {
-    data: salesData,
-    chartTitle: "Sales by Quarter",
-    chartDesc: "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
-    scale: "ct-double-octave",
-    type: "line"
-  }),
-  line = utils.makeElement("chartist-render", knobs);
+      data: salesData,
+      chartTitle: "Sales by Quarter",
+      chartDesc:
+        "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
+      scale: "ct-double-octave",
+      type: "line"
+    }),
+    line = utils.makeElement("chartist-render", knobs);
   return line;
 };
 export const ChartistRenderPieStory = () => {
@@ -95,33 +96,35 @@ export const ChartistRenderPieStory = () => {
       type: "pie"
     }),
     donut = utils.makeElement("chartist-render", knobs);
-    donut.style.maxWidth = "300px";
-    return donut;
+  donut.style.maxWidth = "300px";
+  return donut;
 };
 export const ChartistRenderDonutStory = () => {
-  let donutData = [["Boston Cream","Chocolate","Glazed"],[10,24,28]],
+  let donutData = [["Boston Cream", "Chocolate", "Glazed"], [10, 24, 28]],
     knobs = utils.getKnobs(props, {
-    data: donutData,
-    chartTitle: "Favorite Pie",
-    chartDesc: "A pie chart of favorite pie.",
-    scale: "ct-square",
-    type: "pie",
-    options: {donut: true}
-  }),
-  pie = utils.makeElement("chartist-render", knobs);
+      data: donutData,
+      chartTitle: "Favorite Pie",
+      chartDesc: "A pie chart of favorite pie.",
+      scale: "ct-square",
+      type: "pie",
+      options: { donut: true }
+    }),
+    pie = utils.makeElement("chartist-render", knobs);
   pie.style.maxWidth = "300px";
   return pie;
 };
 export const ChartistWithSlots = () => {
-  let table = document.createElement('table');
+  let table = document.createElement("table");
   table.innerHTML = `
   <tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead>
   <tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody>`;
   let propsSlots = [
-      {slot:"heading",inputMethod:"string",name:"heading"},
-      {slot:"desc",inputMethod:"textarea",name:"desc"},
-      {slot:"",inputMethod:"textarea",name:""},
-      ...props.filter(prop=>!["chartTitle","chartDesc","data"].includes(prop.name))
+      { slot: "heading", inputMethod: "string", name: "heading" },
+      { slot: "desc", inputMethod: "textarea", name: "desc" },
+      { slot: "", inputMethod: "textarea", name: "" },
+      ...props.filter(
+        prop => !["chartTitle", "chartDesc", "data"].includes(prop.name)
+      )
     ],
     knobs = utils.getKnobs(propsSlots, {
       data: pieData,
@@ -129,10 +132,10 @@ export const ChartistWithSlots = () => {
       desc: "A pie chart of favorite pie.",
       scale: "ct-square",
       type: "pie",
-      "emptyslot": `<table>${table.innerHTML}</table>`
+      emptyslot: `<table>${table.innerHTML}</table>`
     }),
     pie = utils.makeElement("chartist-render", knobs);
-    pie.style.maxWidth = "300px";
-    pie.appendChild(table);
-    return pie;
+  pie.style.maxWidth = "300px";
+  pie.appendChild(table);
+  return pie;
 };

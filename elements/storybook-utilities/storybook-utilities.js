@@ -69,13 +69,18 @@ export class StorybookUtilities {
    * @returns {object} HAX property object
    * @memberof StorybookUtilities
    */
-  getHaxField(el,title){
-    let settings =  el.haxProperties && el.haxProperties.settings ? el.haxProperties.settings : undefined,
+  getHaxField(el, title) {
+    let settings =
+        el.haxProperties && el.haxProperties.settings
+          ? el.haxProperties.settings
+          : undefined,
       quick = settings && settings.quick ? settings.quick : [],
       configure = settings && settings.configure ? settings.configure : [],
       advanced = settings && settings.advanced ? settings.advanced : [],
       all = [...configure, ...advanced, ...quick],
-      filter = all.filter(prop=>prop.property===title || prop.slot===title);
+      filter = all.filter(
+        prop => prop.property === title || prop.slot === title
+      );
     return filter && filter.length > 0 ? filter[0] : undefined;
   }
 
@@ -88,11 +93,11 @@ export class StorybookUtilities {
    */
   getRandomObject(props = []) {
     let obj = {};
-    props.forEach(prop=>{
+    props.forEach(prop => {
       let id = prop.property || prop.slot;
       switch (prop.inputMethod) {
         case "array":
-          obj[id] = this.getRandomArray(undefined,prop.properties);
+          obj[id] = this.getRandomArray(undefined, prop.properties);
           break;
         case "boolean":
           obj[id] = this.getRandomBool();
@@ -116,29 +121,36 @@ export class StorybookUtilities {
           obj[id] = this.getRandomIcon();
           break;
         case "number":
-          obj[id] = this.getRandomNumber(prop.min,prop.max,prop.step);
+          obj[id] = this.getRandomNumber(prop.min, prop.max, prop.step);
           break;
         case "object":
           obj[id] = this.getRandomObject(prop.properties);
           break;
         case "select":
-          obj[id] = this.getRandomOption(prop.options ? Object.keys(prop.options) : prop.itemsList );
+          obj[id] = this.getRandomOption(
+            prop.options ? Object.keys(prop.options) : prop.itemsList
+          );
           break;
         case "slider":
-          obj[id] = this.getRandomNumber(prop.min,prop.max,prop.step);
+          obj[id] = this.getRandomNumber(prop.min, prop.max, prop.step);
           break;
         case "tabs":
-          obj[id] = prop.properties.map(tab=>tabs[tab.property || tab.slot] = this.getRandomObject(tab.properties));
+          obj[id] = prop.properties.map(
+            tab =>
+              (tabs[tab.property || tab.slot] = this.getRandomObject(
+                tab.properties
+              ))
+          );
           break;
         case "textarea":
           obj[id] = this.getRandomTextarea();
           break;
-        default: 
-          switch (prop.format){
+        default:
+          switch (prop.format) {
             case "simple-fields":
               obj[id] = this.getRandomObject(prop.properties);
               break;
-            default: 
+            default:
               obj[id] = this.getRandomText();
               break;
           }
@@ -154,10 +166,11 @@ export class StorybookUtilities {
    * @returns {array}
    * @memberof StorybookUtilities
    */
-  getRandomArray(properties,hax = []) {
-    let arr = [], ctr = this.getRandomNumber(2,5);
-    for(let i=0;i<ctr;i++){
-      arr.push(this.getRandomObject(properties,hax))
+  getRandomArray(properties, hax = []) {
+    let arr = [],
+      ctr = this.getRandomNumber(2, 5);
+    for (let i = 0; i < ctr; i++) {
+      arr.push(this.getRandomObject(properties, hax));
     }
     return arr;
   }
@@ -405,11 +418,9 @@ export class StorybookUtilities {
   getKnob(field, defaultValue) {
     let title = field.title,
       name = field.name,
-      editedName = name === "emptyslot" ? '""': name,
+      editedName = name === "emptyslot" ? '""' : name,
       attribute = this.camelToKebab(name),
-      label = title && name 
-        ? `${title} (${editedName})` 
-        : title || editedName,
+      label = title && name ? `${title} (${editedName})` : title || editedName,
       group = field.hasOwnProperty("property")
         ? "props"
         : field.hasOwnProperty("slot")
@@ -518,18 +529,21 @@ export class StorybookUtilities {
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
         val = knob.knob;
-        el[prop] = val;
+      el[prop] = val;
     });
     Object.keys(knobs.slots || {}).map(slot => {
-      let div = document.createElement("div"), 
+      let div = document.createElement("div"),
         empty = knobs.slots[slot].attribute === "emptyslot",
-        knobval = knobs.slots[slot].unescape 
-        ? knobs.slots[slot].knob.replace(/&lt;/gi,'<').replace(/&gt;/gi,'>').replace(/&amp;/gi,'&')
-          : knobs.slots[slot].knob ;
-      if(empty && knobs.slots[slot].unescape) {
+        knobval = knobs.slots[slot].unescape
+          ? knobs.slots[slot].knob
+              .replace(/&lt;/gi, "<")
+              .replace(/&gt;/gi, ">")
+              .replace(/&amp;/gi, "&")
+          : knobs.slots[slot].knob;
+      if (empty && knobs.slots[slot].unescape) {
         el.innerHTML += knobval;
       } else {
-        if(!empty) div.slot = knobs.slots[slot].attribute;
+        if (!empty) div.slot = knobs.slots[slot].attribute;
         div.innerHTML = knobval;
         el.appendChild(div);
       }

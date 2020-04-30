@@ -89,7 +89,9 @@ class LrndesignGalleryZoom extends LitElement {
       <button id="zoombtn" @click="${this.zoom}" aria-label="${this.tooltip}">
         <slot></slot>
       </button>
-      <simple-tooltip for="zoombtn" position="right" controls="zoomtpl">${this.tooltip}</simple-tooltip>
+      <simple-tooltip for="zoombtn" position="right" controls="zoomtpl"
+        >${this.tooltip}</simple-tooltip
+      >
       <simple-modal-template id="zoomtpl" title="${this.heading}">
         <lrndesign-gallery-details
           id="details"

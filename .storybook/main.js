@@ -11,7 +11,7 @@ module.exports = {
     "storybook-prebuilt/addon-a11y/register.js",
     "storybook-prebuilt/addon-docs/register.js"
   ],
-  
+
   // Configuration for es-dev-server (start-storybook only)
   esDevServer: {
     nodeResolve: true,

@@ -26,7 +26,7 @@ export const CodeEditorStory = () => {
   let editor = utils.makeElementFromClass(CodeEditor, {
     id: "code",
     language: "html",
-    fontSize:10,
+    fontSize: 10,
     "": template
   });
   return editor;

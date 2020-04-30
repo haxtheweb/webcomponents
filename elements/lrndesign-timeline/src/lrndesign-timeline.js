@@ -98,12 +98,13 @@ class LrndesignTimeline extends SimpleColors {
     let callback = () => this.updateTimeline();
     return new MutationObserver(callback);
   }
-  _setScroll(e){
-    let el = e.path[0], parent = e.path[0].parentNode;
+  _setScroll(e) {
+    let el = e.path[0],
+      parent = e.path[0].parentNode;
     parent.scroll({
       top: el.offsetTop,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
   }
 

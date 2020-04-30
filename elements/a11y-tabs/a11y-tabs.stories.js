@@ -22,13 +22,15 @@ export const A11yTabsStory = () => {
   let tabs = utils.makeElementFromClass(A11yTabs, {
     id: "tabs"
   });
-  [ "Monday",
+  [
+    "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday"].forEach(tab => {
+    "Sunday"
+  ].forEach(tab => {
     let el = document.createElement("a11y-tab");
     el.label = tab;
     el.id = tab.toLowerCase();

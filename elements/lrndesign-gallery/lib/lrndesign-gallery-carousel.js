@@ -342,7 +342,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                             @click="${e => this._itemChanged(item.id)}"
                             ?disabled="${this.selected.id === item.id}"
                           >
-                            <span class="sr-only">${item.alt || `Item ${parseInt(item.index)+1}`}</span>
+                            <span class="sr-only"
+                              >${item.alt ||
+                                `Item ${parseInt(item.index) + 1}`}</span
+                            >
                           </button>
                           <simple-tooltip
                             for="${item.id}"
