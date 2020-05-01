@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import * as md5 from "./lib/md5.min.js";
 /**
 `paper-avatar`
@@ -43,14 +45,15 @@ class PaperAvatar extends LitElement {
           height: var(--paper-avatar-width);
           border-radius: 50%;
           cursor: default;
-          background-color: var(
-            --paper-avatar-color,
-            var(--paper-avatar-bgcolor)
-          );
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
           user-select: none;
+          color: var(--paper-avatar-text-color,#ffffff);
+          background-color: var(
+            --paper-avatar-color,
+            var(--paper-avatar-calculated-bg, #000)
+          );
         }
 
         :host > * {
@@ -84,26 +87,40 @@ class PaperAvatar extends LitElement {
           -ms-flex-align: center;
           align-items: center;
         }
+        #label[hidden] {
+          display: none;
+        }
         #label span {
           display: block;
           width: 100%;
           font-weight: 400;
-          color: var(--paper-avatar-text-color, rgba(255, 255, 255, 0.8));
+          color: var(--paper-avatar-text-color,#ffffff);
           text-transform: capitalize;
           font-family: "Roboto", "Noto", sans-serif;
           -webkit-font-smoothing: antialiased;
           text-align: center;
-          font-size: calc(var(--paper-avatar-width) / 1.65);
+          font-size: calc(var(--paper-avatar-width) * 0.7);
+          opacity: 0.8;
+        }
+        #label span[two-chars] {
+          font-size: calc(var(--paper-avatar-width) * 0.5);
+        }
+        #label iron-icon {
+          margin: 0 auto;
+          width: calc(var(--paper-avatar-width) * 0.90);
+          height: calc(var(--paper-avatar-width) * 0.90);
         }
         #jdenticon {
           width: var(--paper-avatar-width);
           height: var(--paper-avatar-width);
         }
         #jdenticon * {
-          fill: var(
-            --paper-avatar-text-color,
-            rgba(255, 255, 255, 0.8)
-          ) !important;
+          fill: var(--paper-avatar-text-color,#ffffff);
+          opacity: 0.8;
+        }
+        ::slotted(*){
+          fill: var(--paper-avatar-text-color,#ffffff);
+          opacity: 0.8;
         }
       `
     ];
@@ -119,20 +136,22 @@ class PaperAvatar extends LitElement {
    */
   render() {
     return html`
-      <div id="label" title="${this.label}">
-        <span>${this._label(this.label)}</span>
-      </div>
       <svg id="jdenticon" width="40" height="40"><slot></slot></svg>
+      <div id="label" title="${this.label}" ?hidden="${this.jdenticonExists && this.jdenticon}">
+      ${this.icon 
+        ? html`<iron-icon icon="${this.icon}"></iron-icon>` 
+        : html`<span ?two-chars="${this.twoChars}">${this._label(this.label)} </span>`
+      }
+      </div>
       ${this.src
         ? html`
             <img
               id="img"
               loading="lazy"
-              src="${this.src}"
-              title="${this.label}"
+              .src="${this.src || ''}"
               @load="${this._onImgLoad}"
               @error="${this._onImgError}"
-              alt=""
+              aria-hidden="true"
             />
           `
         : ``}
@@ -164,6 +183,12 @@ class PaperAvatar extends LitElement {
    */
   static get properties() {
     return {
+      /**
+       * Optional iron-icon
+       */
+      icon: {
+        type: String
+      },
       /**
        * Image address or base64
        */
@@ -211,21 +236,14 @@ class PaperAvatar extends LitElement {
   _observerLabel(label) {
     if (label) {
       if (this.jdenticonExists && this.jdenticon) {
-        this.shadowRoot.querySelector("#label").hidden = true;
+        this.shadowRoot.querySelector("#label").hidden = true
 
-        window.jdenticon.config = {
-          lightness: {
-            color: [1, 1],
-            grayscale: [1, 1]
-          },
-          saturation: 1
-        };
         window.jdenticon.update(
           this.shadowRoot.querySelector("#jdenticon"),
           window.md5(label)
         );
       }
-      this.style.backgroundColor = this._parseColor(label);
+      this.style.setProperty('--paper-avatar-calculated-bg',this._parseColor(label));
     }
   }
   // simple path from a url modifier

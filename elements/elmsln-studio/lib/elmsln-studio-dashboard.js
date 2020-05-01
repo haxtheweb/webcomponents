@@ -35,7 +35,7 @@ class ElmslnStudioDashboard extends LitElement {
         h1,
         h2,
         h3,
-        .card [slot="heading"] {
+        .card [slot=heading] {
           font-size: 14px;
           font-weight: normal;
           margin: 0;
@@ -52,6 +52,10 @@ class ElmslnStudioDashboard extends LitElement {
         }
         .card [slot=subheading] {
           text-decoration: underline;
+          border: none;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: normal;
         }
         .card [slot=subheading]:focus,
         .card [slot=subheading]:hover {
@@ -65,8 +69,8 @@ class ElmslnStudioDashboard extends LitElement {
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
-        #cards .card [slot="heading"],
-        #cards .card [slot="subheading"] {
+        #cards .card [slot=heading],
+        #cards .card [slot=subheading] {
           text-align: center;
           display: block;
           margin: 0 auto;
@@ -76,6 +80,7 @@ class ElmslnStudioDashboard extends LitElement {
           --accent-card-heading-padding-top: 0;
           --nav-card-linklist-margin-top: 0;
           --nav-card-linklist-left-size: 36px;
+          --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
         }
         accent-card {
           --accent-card-heading-padding-top: 0;
@@ -228,17 +233,20 @@ class ElmslnStudioDashboard extends LitElement {
               </tbody>
             </table>
           </accent-card>
-          <nav-card accent-color="green" class="card" link-icon="chevron-right">
+          <nav-card accent-color="green" class="card">
             <span slot="heading">Work Due</span>
-            <ul class="linklist" slot="linklist">
+            <div slot="linklist">
               ${this.__assignments.map(
-                assign => html`
-                  <li>
-                    <button class="linklist-heading">
+                (assign,i) => html`
+                  <nav-card-item icon="chevron-right">
+                    <button 
+                      id="due-${i}" 
+                      aria-describedby="due-desc-${i}" 
+                      slot="label">
                       ${assign.attributes.title}
                     </button>
-                    <span class="linklist-subheading"
-                      >${this._getDueDate(assign)
+                    <span id="due-desc-${i}" slot="description">
+                      ${this._getDueDate(assign)
                         ? html`
                             Due
                             ${this.date(
@@ -247,10 +255,10 @@ class ElmslnStudioDashboard extends LitElement {
                           `
                         : ``}
                     </span>
-                  </li>
+                  </nav-card-item>
                 `
               )}
-            </ul>
+            </div>
           </nav-card>
         </div>
         <div id="work">
@@ -258,65 +266,62 @@ class ElmslnStudioDashboard extends LitElement {
           <nav-card accent-color="amber" class="card" link-icon="chevron-right">
             <span slot="heading">Submissions</span>
             <button slot="subheading">All submissions</button>
-            <ul class="linklist" slot="linklist">
+            <div slot="linklist">
               ${Object.keys(this.__submissions).map(
-                submission => html`
-                  <li>
-                    <button class="linklist-heading">
+                (submission,i) => html`
+                  <nav-card-item icon="chevron-right">
+                    <button 
+                      id="submission-${i}" 
+                      aria-describedby="submission-desc-${i}" 
+                      slot="label">
                       ${this.__submissions[submission].attributes.title}
                     </button>
-                    <span class="linklist-subheading"
+                    <span id="submission-desc-${i}" slot="description"
                       >${this.date(
                         this.__submissions[submission].meta.changed
                       )}</span
                     >
-                  </li>
+                  </nav-card-item>
                 `
               )}
-            </ul>
+            </div>
           </nav-card>
           <nav-card accent-color="cyan"  class="card" link-icon="chevron-right">
             <span slot="heading">Comments</span>
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
-            <ul class="linklist" slot="linklist">
+            <div slot="linklist">
               ${this.__comments.map(
-                comment => html`
-                  <li>
-                    <iron-icon
-                      aria-hidden="true"
-                      icon="chevron-right"
-                    ></iron-icon>
-                    <button class="linklist-heading">
+                (comment,i) => html`
+                  <nav-card-item icon="chevron-right">
+                    <button 
+                      id="comment-${i}" 
+                      aria-describedby="comment-desc-${i}" 
+                      slot="label">
                       ${comment.attributes.subject}
                     </button>
-                    <span class="linklist-subheading"
+                    <span id="comment-${i}"  slot="description"
                       >${this.date(comment.attributes.changed)}</span
                     >
-                  </li>
+                  </nav-card-item>
                 `
               )}
-            </ul>
+            </div>
           </nav-card>
         </div>
       </div>
       <nav-card id="comments" flat no-border class="card" link-icon="chevron-right">
         <span slot="heading">Recent Activity</span>
-        <ul class="linklist" slot="linklist">
+        <div slot="linklist">
           ${this.__activity.map(
-            activity => html`
-              <li>
-                ${activity.relationships.author.data.avatar 
-                ? `<img src="${activity.relationships.author.data.avatar}" class="linklist-left">`
-                : `<lrndesign-avatar 
-                    aria-hidden="true" 
-                    two-chars
-                    label="${activity.relationships.author.data.sis.sortable_name.replace(
-                      /(?:.).*,(?:.).*/,""
-                    )}">
-                  </lrndesign-avatar>`
-                }
-                <button class="linklist-heading">
+            (activity,i) => html`
+              <nav-card-item 
+                icon="chevron-right" 
+                avatar="${activity.relationships.author.data.avatar || ''}"
+                initials="${activity.relationships.author.data.display_name || ''}">
+                <button id="activity-${i}" 
+                  aria-describedby="activity-desc-${i}" 
+                  slot="label">
                   ${activity.relationships.author.data.sis.sortable_name.replace(
                     /.*,/,
                     ""
@@ -326,17 +331,18 @@ class ElmslnStudioDashboard extends LitElement {
                     ? activity.attributes.subject
                     : activity.attributes.title}
                 </button>
-                <span class="linklist-subheading">
+                <span id="activity-desc-${i}" 
+                  slot="description">
                   ${this.date(
                     activity.type === "comment"
                       ? activity.attributes.changed
                       : activity.meta.changed
                   )}
                 </span>
-              </li>
+              </nav-card-item>
             `
           )}
-        </ul>
+        </div>
         <button class="linklist-footer" slot="footer">Load More</button>
       </nav-card>
     `;
