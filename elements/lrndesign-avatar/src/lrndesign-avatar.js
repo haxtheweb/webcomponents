@@ -8,10 +8,12 @@ import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 
 /**
  * `lrndesign-avatar`
- * `Visualize a user account either with an image, a label, or as abstract art.`
+ * Visualize a user account either with an image, icon, initials, or as abstract art.
  *
- * @microcopy - language worth noting:
- *  -
+### Styling
+Custom property | Description | Default
+----------------|-------------|----------
+`--lrndesign-avatar-width` | Size (width and height) of the avatar image | 40px
  *
  * @customElement
  * @lit-html
@@ -25,7 +27,7 @@ class LrndesignAvatar extends SimpleColors {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "lrndesign-avatar";
   }
 
@@ -34,10 +36,10 @@ class LrndesignAvatar extends SimpleColors {
     super();
     this.tag = LrndesignAvatar.tag;
     import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
-    this.label = "|";
+    this.dark = false;
     this.twoChars = false;
-    this.color = "blue";
     this.jdenticon = false;
+    this.label = "|";
   }
   /**
    * life cycle, element is afixed to the DOM

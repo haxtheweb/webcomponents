@@ -1,6 +1,8 @@
 import { html } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
+import { IconsetDemo } from "@lrnwebcomponents/iconset-demo/iconset-demo.js";
+import "@polymer/iron-icons/iron-icons.js";
 import {
   withKnobs,
   withWebComponentsKnobs,
@@ -22,7 +24,23 @@ import {
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+window.getStorybookIconset = () => {
+  let iconset = document.createElement('iconset-demo');
+  iconset.hidden = true;
+  document.body.appendChild(iconset);
+  return iconset;
+}; 
+window.StorybookIconset = window.StorybookIconset && window.StorybookIconset.length > 0 
+  ? window.StorybookIconset 
+  : window.getStorybookIconset();
 
+window.getStorybookIcons = () => {
+  let iconset = window.StorybookIconset,
+    list = iconset && iconset.__iconList ? iconset.__iconList : [[]],
+    icons = (list).map(group=>group.icons.map(icon=>icon.replace(/^icons\:/,''))).flat();
+  return icons;
+}; 
+window.StorybookIcons = window.StorybookIcons || window.getStorybookIcons();
 /**
  * Object to help load things in globally scoped and fire events when ready
  */
@@ -377,9 +395,9 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnobs(properties, defaults = {}, exclusions = []) {
-    let knobs = { props: {}, slots: {} };
+    let knobs = { props: {}, slots: {}, css: {} };
     (properties || []).forEach(field => {
-      field.name = field.property || field.slot;
+      field.name = field.property || field.slot || field.css;
       if (!field.name && field.hasOwnProperty("slot")) field.name = "emptyslot";
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
@@ -425,11 +443,11 @@ export class StorybookUtilities {
         ? "props"
         : field.hasOwnProperty("slot")
         ? "slots"
-        : "vars",
+        : "css",
       groupName = {
         props: "Properties",
         slots: "Slots",
-        vars: "CSS"
+        css: "CSS"
       },
       method = field.inputMethod,
       options = field.options,
@@ -455,6 +473,10 @@ export class StorybookUtilities {
           groupName[group]
         );
       }
+    } else if (method === "iconpicker") {
+      let icons = window.StorybookIcons;
+      icons.unshift('');
+      knob = select(label, icons || ["","star","check","history"], val, groupName[group]);
     } else if (method === "colorpicker" && colors) {
       let options = {};
       colors.forEach(color => (options[color] = color));
@@ -540,12 +562,22 @@ export class StorybookUtilities {
               .replace(/&gt;/gi, ">")
               .replace(/&amp;/gi, "&")
           : knobs.slots[slot].knob;
-      if (empty && knobs.slots[slot].unescape) {
+      if (knobs.slots[slot].unescape) {
         el.innerHTML += knobval;
       } else {
         if (!empty) div.slot = knobs.slots[slot].attribute;
         div.innerHTML = knobval;
         el.appendChild(div);
+      }
+    });
+    Object.keys(knobs.css || {}).forEach(prop => {
+      console.log('css',prop,knobs)
+      let knob = knobs.css[prop],
+        val = knob.knob;
+      if(prop.indexOf('--') === 0){
+        el.style.setProperty(prop,val);
+      } else {
+        el.style[prop] = val;
       }
     });
     console.debug(
@@ -563,12 +595,12 @@ export class StorybookUtilities {
    * makes an element based on its class
    * @param {object} custom element class
    * @returns {object} element
-   * @memberof StorybookUtilities
+   * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromClass(el, defaults = {}, exclusions = []) {
-    let tag = el.tag,
+  makeElementFromClass(el, defaults = {}, exclusions = [], additions=[]) {
+    let tag = el.tag || this.name.camelToKebab(el),
       props = this.getElementProperties(el.properties, el.haxProperties),
-      knobs = this.getKnobs(props, defaults, exclusions);
+      knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
     console.debug(
       "makeElementFromClass:",
       tag,

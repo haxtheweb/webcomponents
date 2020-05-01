@@ -8,23 +8,12 @@ import * as md5 from "./lib/md5.min.js";
 User avatar in material style
 
 ### Styling
-
-To change the background color:
-
-    paper-avatar {
-      --paper-avatar-color: red;
-    }
-	
-To change the size of the avatar:
-
-    paper-avatar {
-      --paper-avatar-width: 60px;
-    }
-
 Custom property | Description | Default
 ----------------|-------------|----------
-`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`
-`--paper-avatar-color` | Background color of the avatar image | 
+`--paper-avatar-width` | Size (width and height) of the avatar image | 40px
+`--paper-avatar-color` | Background color of the avatar image | `--paper-avatar-calculated-bg`
+`--paper-avatar-text-color` | Text color of the avatar image | #fff
+`--paper-avatar-calculated-bg` | Do NOT use. Thi is an automatically set variable that can be overriden `--paper-avatar-color` | #000
 
 
 * @demo demo/index.html 

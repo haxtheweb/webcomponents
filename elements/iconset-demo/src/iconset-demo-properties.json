@@ -4,7 +4,7 @@
    */
   "__iconList": {
     "name": "__iconList",
-    "type": Array,
+    "type": "Array",
     "value": []
   },
   /**
@@ -12,7 +12,7 @@
    */
   "includeSets": {
     "name": "includeSets",
-    "type": String,
+    "type": "String",
     "value": null
   },
   /**
@@ -20,7 +20,7 @@
    */
   "excludeSets": {
     "name": "excludeSets",
-    "type": String,
+    "type": "String",
     "value": null
   }
 }

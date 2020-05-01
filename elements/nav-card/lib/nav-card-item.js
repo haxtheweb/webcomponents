@@ -31,38 +31,118 @@ class NavCardItem extends LitElement {
        * optional iron-icon or image URI as avatar on left of link
        */
       avatar: {
-        type: "String",
+        type: String,
         attribute: "avatar"
       },
       /**
        * iron-icon on right of link
        */
       icon: {
-        type: "String",
+        type: String,
         attribute: "icon"
       },
       /**
        * optional accent-color for avatar
        */
       accentColor: {
-        type: "String",
+        type: String,
         attribute: "accent-color"
       },
       /**
        * optional dark text for avatar icon
        */
       dark: {
-        type: "Boolean",
+        type: Boolean,
         attribute: "dark"
       },
       /**
        * optional use up to two initials if no avatar
        */
       initials: {
-        type: "String",
+        type: String,
         attribute: "initials"
       }
     };
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Nav card",
+    "description": "an accent card of link lists",
+    "icon": "av:playlist-play",
+    "color": "pink",
+    "groups": ["Card", "Nav", "List"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Select an accent color.",
+        "inputMethod": "colorpicker",
+        "required": false
+      },
+      {
+        "property": "Dark",
+        "title": "Dark",
+        "description": "Display the card as dark theme?",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "avatar",
+        "title": "Image",
+        "description": "Upload an Image",
+        "inputMethod": "haxupload",
+        "required": false
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Select an icon.",
+        "inputMethod": "iconpicker",
+        "required": false
+      },
+      {
+        "slot": "label",
+        "title": "Button or Link",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "description",
+        "title": "Additional description",
+        "inputMethod": "code-editor",
+        "required": false
+      }
+    ],
+    "advanced": [
+      {
+        "property": "avatar",
+        "title": "Icon",
+        "description": "Select an icon",
+        "inputMethod": "iconpicker",
+        "required": false
+      }
+    ]
+  }
+}
+;
   }
 
   static get styles() {

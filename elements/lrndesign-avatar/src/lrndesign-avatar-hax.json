@@ -1,1 +1,94 @@
-{}
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Avatar",
+    "description": "Visualize a user account either with an image, icon, initials, or as abstract art.",
+    "icon": "image:collections",
+    "color": "yellow",
+    "groups": ["Media", "Image"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Pick an accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Use dark text (and light background) for avatar.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Optional: Pick an icon for avatar.",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "property": "src",
+        "title": "Image Source",
+        "description": "Optional: Upload an image for avatar.",
+        "inputMethod": "haxupload"
+      },
+    ],
+    "configure": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "Pick an accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Use dark text (and light background) for avatar.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Optional: Pick an icon for avatar.",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "property": "src",
+        "title": "Image Source",
+        "description": "Optional: Upload an image for avatar.",
+        "inputMethod": "haxupload"
+      },
+      {
+        "property": "label",
+        "title": "Two-character initials",
+        "description": "Label used to create initials or unique Jdenticon.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "twoChars",
+        "title": "Two-character initials",
+        "description": "When no Jdenticon, image, or icon, use two-character for initials.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "jdenticon",
+        "title": "Jdenticon",
+        "description": "Optional: Unique icon design based on label.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  }
+}
