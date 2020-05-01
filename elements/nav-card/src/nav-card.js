@@ -7,7 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
-import './lib/nav-card-item.js';
+import "./lib/nav-card-item.js";
 /**
  * `nav-card`
  * an accent card of link lists

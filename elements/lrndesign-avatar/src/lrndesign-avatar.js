@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 
@@ -44,13 +44,15 @@ class LrndesignAvatar extends SimpleColors {
    */
   connectedCallback() {
     super.connectedCallback();
-    
   }
 
   _getAccentColor(color) {
     // legacy API bridge
     color = color.replace("-text", "");
-    if (this.colors[color] && (!this.accentColor || this.accentColor === "grey")) {
+    if (
+      this.colors[color] &&
+      (!this.accentColor || this.accentColor === "grey")
+    ) {
       this.accentColor = this.color;
     }
   }
@@ -65,7 +67,6 @@ class LrndesignAvatar extends SimpleColors {
       }
     });
   }
-  
 }
 customElements.define("lrndesign-avatar", LrndesignAvatar);
 export { LrndesignAvatar };

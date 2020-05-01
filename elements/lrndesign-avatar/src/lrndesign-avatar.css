@@ -2,9 +2,11 @@
   display: block;
   border-radius: 50%;
 }
+
 :host([hidden]) {
   display: none;
 }
+
 paper-avatar {
   --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
   --paper-avatar-height: var(--lrndesign-avatar-height, 40px);

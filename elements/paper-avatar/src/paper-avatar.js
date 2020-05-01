@@ -49,7 +49,7 @@ class PaperAvatar extends LitElement {
           -moz-user-select: none;
           -ms-user-select: none;
           user-select: none;
-          color: var(--paper-avatar-text-color,#ffffff);
+          color: var(--paper-avatar-text-color, #ffffff);
           background-color: var(
             --paper-avatar-color,
             var(--paper-avatar-calculated-bg, #000)
@@ -94,7 +94,7 @@ class PaperAvatar extends LitElement {
           display: block;
           width: 100%;
           font-weight: 400;
-          color: var(--paper-avatar-text-color,#ffffff);
+          color: var(--paper-avatar-text-color, #ffffff);
           text-transform: capitalize;
           font-family: "Roboto", "Noto", sans-serif;
           -webkit-font-smoothing: antialiased;
@@ -107,19 +107,19 @@ class PaperAvatar extends LitElement {
         }
         #label iron-icon {
           margin: 0 auto;
-          width: calc(var(--paper-avatar-width) * 0.90);
-          height: calc(var(--paper-avatar-width) * 0.90);
+          width: calc(var(--paper-avatar-width) * 0.9);
+          height: calc(var(--paper-avatar-width) * 0.9);
         }
         #jdenticon {
           width: var(--paper-avatar-width);
           height: var(--paper-avatar-width);
         }
         #jdenticon * {
-          fill: var(--paper-avatar-text-color,#ffffff);
+          fill: var(--paper-avatar-text-color, #ffffff);
           opacity: 0.8;
         }
-        ::slotted(*){
-          fill: var(--paper-avatar-text-color,#ffffff);
+        ::slotted(*) {
+          fill: var(--paper-avatar-text-color, #ffffff);
           opacity: 0.8;
         }
       `
@@ -137,18 +137,27 @@ class PaperAvatar extends LitElement {
   render() {
     return html`
       <svg id="jdenticon" width="40" height="40"><slot></slot></svg>
-      <div id="label" title="${this.label}" ?hidden="${this.jdenticonExists && this.jdenticon}">
-      ${this.icon 
-        ? html`<iron-icon icon="${this.icon}"></iron-icon>` 
-        : html`<span ?two-chars="${this.twoChars}">${this._label(this.label)} </span>`
-      }
+      <div
+        id="label"
+        title="${this.label}"
+        ?hidden="${this.jdenticonExists && this.jdenticon}"
+      >
+        ${this.icon
+          ? html`
+              <iron-icon icon="${this.icon}"></iron-icon>
+            `
+          : html`
+              <span ?two-chars="${this.twoChars}"
+                >${this._label(this.label)}
+              </span>
+            `}
       </div>
       ${this.src
         ? html`
             <img
               id="img"
               loading="lazy"
-              .src="${this.src || ''}"
+              .src="${this.src || ""}"
               @load="${this._onImgLoad}"
               @error="${this._onImgError}"
               aria-hidden="true"
@@ -236,14 +245,17 @@ class PaperAvatar extends LitElement {
   _observerLabel(label) {
     if (label) {
       if (this.jdenticonExists && this.jdenticon) {
-        this.shadowRoot.querySelector("#label").hidden = true
+        this.shadowRoot.querySelector("#label").hidden = true;
 
         window.jdenticon.update(
           this.shadowRoot.querySelector("#jdenticon"),
           window.md5(label)
         );
       }
-      this.style.setProperty('--paper-avatar-calculated-bg',this._parseColor(label));
+      this.style.setProperty(
+        "--paper-avatar-calculated-bg",
+        this._parseColor(label)
+      );
     }
   }
   // simple path from a url modifier

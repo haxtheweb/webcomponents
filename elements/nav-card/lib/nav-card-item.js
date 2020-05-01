@@ -30,42 +30,42 @@ class NavCardItem extends LitElement {
       /**
        * optional iron-icon or image URI as avatar on left of link
        */
-      "avatar": {
+      avatar: {
         type: "String",
         attribute: "avatar"
       },
       /**
        * iron-icon on right of link
        */
-      "icon": {
+      icon: {
         type: "String",
         attribute: "icon"
       },
       /**
        * optional accent-color for avatar
        */
-      "accentColor": {
+      accentColor: {
         type: "String",
         attribute: "accent-color"
       },
       /**
        * optional dark text for avatar icon
        */
-      "dark": {
+      dark: {
         type: "Boolean",
         attribute: "dark"
       },
       /**
        * optional use up to two initials if no avatar
        */
-      "initials": {
+      initials: {
         type: "String",
         attribute: "initials"
       }
     };
   }
 
-  static get styles(){
+  static get styles() {
     return [
       css`
         :host {
@@ -76,10 +76,12 @@ class NavCardItem extends LitElement {
           text-decoration: none;
           padding: 5px 0;
           margin-bottom: 1px;
-          border-bottom: var(--nav-card-linklist-border-bottom, 1px solid
-            var(--simple-colors-default-theme-grey-4, #666));
+          border-bottom: var(
+            --nav-card-linklist-border-bottom,
+            1px solid var(--simple-colors-default-theme-grey-4, #666)
+          );
         }
-        :host(:last-of-type){
+        :host(:last-of-type) {
           border-bottom: none;
         }
         :host([hidden]) {
@@ -88,21 +90,21 @@ class NavCardItem extends LitElement {
         :host div {
           flex: 1 1 auto;
         }
-        ::slotted([slot=label]:hover),
-        ::slotted([slot=label]:focus),
-        :host(:hover) ::slotted([slot=label]),
-        :host(:focus-within) ::slotted([slot=label]) {
+        ::slotted([slot="label"]:hover),
+        ::slotted([slot="label"]:focus),
+        :host(:hover) ::slotted([slot="label"]),
+        :host(:focus-within) ::slotted([slot="label"]) {
           text-decoration: underline;
         }
-        ::slotted(*){
+        ::slotted(*) {
           display: block;
         }
-        ::slotted([slot=label]),
-        ::slotted([slot=description])  {
+        ::slotted([slot="label"]),
+        ::slotted([slot="description"]) {
           color: inherit;
           font-family: inherit;
         }
-        ::slotted([slot=label]) {
+        ::slotted([slot="label"]) {
           text-decoration: inherit;
           outline: none;
           border: none;
@@ -111,55 +113,87 @@ class NavCardItem extends LitElement {
           font-size: var(--nav-card-item-label-font-size, inherit);
           font-weight: var(--nav-card-item-label-font-weight, bold);
         }
-        ::slotted([slot=description]) {
+        ::slotted([slot="description"]) {
           font-size: var(--nav-card-item-label-font-size, 11px);
           font-weight: var(--nav-card-item-label-font-weight, normal);
         }
-        ::slotted([slot=label]):after {
-          content: '';
+        ::slotted([slot="label"]):after {
+          content: "";
           position: absolute;
           left: 0;
           top: 0;
           right: 0;
           bottom: 0;
         }
-        ::slotted([slot=label]:focus):after {
+        ::slotted([slot="label"]:focus):after {
           outline: 1px solid blue;
         }
         lrndesign-avatar {
           margin-right: 10px;
-          width: var(--nav-card-item-avatar-width, var(--nav-card-item-avatar-size));
-          height: var(--nav-card-item-avatar-height,var(--nav-card-item-avatar-size));
-          --lrndesign-avatar-width: var(--nav-card-item-avatar-width, var(--nav-card-item-avatar-size));
-          --lrndesign-avatar-height: var(--nav-card-item-avatar-height, var(--nav-card-item-avatar-size));
+          width: var(
+            --nav-card-item-avatar-width,
+            var(--nav-card-item-avatar-size)
+          );
+          height: var(
+            --nav-card-item-avatar-height,
+            var(--nav-card-item-avatar-size)
+          );
+          --lrndesign-avatar-width: var(
+            --nav-card-item-avatar-width,
+            var(--nav-card-item-avatar-size)
+          );
+          --lrndesign-avatar-height: var(
+            --nav-card-item-avatar-height,
+            var(--nav-card-item-avatar-size)
+          );
         }
         iron-icon {
           margin-left: 10px;
-          width: var(--nav-card-item-icon-width, var(--nav-card-item-icon-size));
-          height: var(--nav-card-item-icon-height, var(--nav-card-item-icon-size));
-          --lrndesign-icon-width: var(--nav-card-item-icon-width, var(--nav-card-item-icon-size));
-          --lrndesign-icon-height: var(--nav-card-item-icon-height, var(--nav-card-item-icon-size));
+          width: var(
+            --nav-card-item-icon-width,
+            var(--nav-card-item-icon-size)
+          );
+          height: var(
+            --nav-card-item-icon-height,
+            var(--nav-card-item-icon-size)
+          );
+          --lrndesign-icon-width: var(
+            --nav-card-item-icon-width,
+            var(--nav-card-item-icon-size)
+          );
+          --lrndesign-icon-height: var(
+            --nav-card-item-icon-height,
+            var(--nav-card-item-icon-size)
+          );
         }
       `
     ];
   }
 
-  render(){
+  render() {
     return html`
-      ${!this.avatar && !this.initials  ? `` : html`
-        <lrndesign-avatar 
-          .accentColor="${this.accentColor || ''}"
-          ?dark="${this.dark}"
-          .icon="${this.ico || ''}"
-          .src="${this.src || ''}"
-          .label="${this.label}"
-          ?two-chars="${this.twoChars}">
-        </lrndesign-avatar>`}
+      ${!this.avatar && !this.initials
+        ? ``
+        : html`
+            <lrndesign-avatar
+              .accentColor="${this.accentColor || ""}"
+              ?dark="${this.dark}"
+              .icon="${this.ico || ""}"
+              .src="${this.src || ""}"
+              .label="${this.label}"
+              ?two-chars="${this.twoChars}"
+            >
+            </lrndesign-avatar>
+          `}
       <div>
         <slot name="label"></slot>
         <slot name="description"></slot>
       </div>
-      ${!this.icon ? `` : html`<iron-icon icon="${this.icon}"></iron-icon>`}
+      ${!this.icon
+        ? ``
+        : html`
+            <iron-icon icon="${this.icon}"></iron-icon>
+          `}
     `;
   }
 
@@ -176,7 +210,7 @@ class NavCardItem extends LitElement {
    * @readonly
    * @memberof NavCardItem
    */
-  get twoChars(){
+  get twoChars() {
     return this.label && this.label.split(/\s*/).length > 1;
   }
   /**
@@ -185,9 +219,11 @@ class NavCardItem extends LitElement {
    * @readonly
    * @memberof NavCardItem
    */
-  get label(){
-    let parts = this.initials && this.initials.split(' ');
-    return parts && parts[0] ?`${parts[0][0]} ${parts[1] ? parts[1][0] : parts[0][1] || ``}}` : this.initials;
+  get label() {
+    let parts = this.initials && this.initials.split(" ");
+    return parts && parts[0]
+      ? `${parts[0][0]} ${parts[1] ? parts[1][0] : parts[0][1] || ``}}`
+      : this.initials;
   }
   /**
    * gets the avatar icon
@@ -195,8 +231,8 @@ class NavCardItem extends LitElement {
    * @readonly
    * @memberof NavCardItem
    */
-  get ico(){
-    return this.avatar && this.avatar.indexOf('.') < 0 ? this.avatar : '';
+  get ico() {
+    return this.avatar && this.avatar.indexOf(".") < 0 ? this.avatar : "";
   }
   /**
    * gets the avatar src
@@ -204,8 +240,8 @@ class NavCardItem extends LitElement {
    * @readonly
    * @memberof NavCardItem
    */
-  get src(){
-    return this.avatar && this.avatar.indexOf('.') > -1 ? this.avatar : '';
+  get src() {
+    return this.avatar && this.avatar.indexOf(".") > -1 ? this.avatar : "";
   }
 }
 customElements.define("nav-card-item", NavCardItem);

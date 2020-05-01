@@ -4,6 +4,7 @@
   --nav-card-item-avatar-size: 36px;
   --nav-card-item-icon-size: 24px;
 }
+
 ::slotted([slot=linklist]){
   margin-top: var(--nav-card-linklist-margin-top, 20px);
   margin-bottom: var(--nav-card-linklist-margin-bottom, 20px);

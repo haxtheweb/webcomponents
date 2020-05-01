@@ -35,30 +35,32 @@ class ElmslnStudioDashboard extends LitElement {
         h1,
         h2,
         h3,
-        .card [slot=heading] {
+        .card [slot="heading"] {
           font-size: 14px;
           font-weight: normal;
           margin: 0;
           color: var(--simple-colors-default-theme-grey-7, #666);
         }
         h2,
-        #comments [slot=heading] {
+        #comments [slot="heading"] {
           font-size: 18px;
         }
         .card {
-          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) var(--elmsln-studio-margin, 20px) calc(2 * var(--elmsln-studio-margin, 20px)) ;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
+            var(--elmsln-studio-margin, 20px)
+            calc(2 * var(--elmsln-studio-margin, 20px));
           flex: 1 0 calc(50% - 2 * var(--elmsln-studio-margin, 20px));
           --accent-card-footer-border-color: transparent;
         }
-        .card [slot=subheading] {
+        .card [slot="subheading"] {
           text-decoration: underline;
           border: none;
           font-family: inherit;
           font-size: inherit;
           font-weight: normal;
         }
-        .card [slot=subheading]:focus,
-        .card [slot=subheading]:hover {
+        .card [slot="subheading"]:focus,
+        .card [slot="subheading"]:hover {
           text-decoration: none;
         }
         .card th,
@@ -69,8 +71,8 @@ class ElmslnStudioDashboard extends LitElement {
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
-        #cards .card [slot=heading],
-        #cards .card [slot=subheading] {
+        #cards .card [slot="heading"],
+        #cards .card [slot="subheading"] {
           text-align: center;
           display: block;
           margin: 0 auto;
@@ -237,12 +239,13 @@ class ElmslnStudioDashboard extends LitElement {
             <span slot="heading">Work Due</span>
             <div slot="linklist">
               ${this.__assignments.map(
-                (assign,i) => html`
+                (assign, i) => html`
                   <nav-card-item icon="chevron-right">
-                    <button 
-                      id="due-${i}" 
-                      aria-describedby="due-desc-${i}" 
-                      slot="label">
+                    <button
+                      id="due-${i}"
+                      aria-describedby="due-desc-${i}"
+                      slot="label"
+                    >
                       ${assign.attributes.title}
                     </button>
                     <span id="due-desc-${i}" slot="description">
@@ -268,12 +271,13 @@ class ElmslnStudioDashboard extends LitElement {
             <button slot="subheading">All submissions</button>
             <div slot="linklist">
               ${Object.keys(this.__submissions).map(
-                (submission,i) => html`
+                (submission, i) => html`
                   <nav-card-item icon="chevron-right">
-                    <button 
-                      id="submission-${i}" 
-                      aria-describedby="submission-desc-${i}" 
-                      slot="label">
+                    <button
+                      id="submission-${i}"
+                      aria-describedby="submission-desc-${i}"
+                      slot="label"
+                    >
                       ${this.__submissions[submission].attributes.title}
                     </button>
                     <span id="submission-desc-${i}" slot="description"
@@ -286,21 +290,22 @@ class ElmslnStudioDashboard extends LitElement {
               )}
             </div>
           </nav-card>
-          <nav-card accent-color="cyan"  class="card" link-icon="chevron-right">
+          <nav-card accent-color="cyan" class="card" link-icon="chevron-right">
             <span slot="heading">Comments</span>
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
             <div slot="linklist">
               ${this.__comments.map(
-                (comment,i) => html`
+                (comment, i) => html`
                   <nav-card-item icon="chevron-right">
-                    <button 
-                      id="comment-${i}" 
-                      aria-describedby="comment-desc-${i}" 
-                      slot="label">
+                    <button
+                      id="comment-${i}"
+                      aria-describedby="comment-desc-${i}"
+                      slot="label"
+                    >
                       ${comment.attributes.subject}
                     </button>
-                    <span id="comment-${i}"  slot="description"
+                    <span id="comment-${i}" slot="description"
                       >${this.date(comment.attributes.changed)}</span
                     >
                   </nav-card-item>
@@ -310,18 +315,28 @@ class ElmslnStudioDashboard extends LitElement {
           </nav-card>
         </div>
       </div>
-      <nav-card id="comments" flat no-border class="card" link-icon="chevron-right">
+      <nav-card
+        id="comments"
+        flat
+        no-border
+        class="card"
+        link-icon="chevron-right"
+      >
         <span slot="heading">Recent Activity</span>
         <div slot="linklist">
           ${this.__activity.map(
-            (activity,i) => html`
-              <nav-card-item 
-                icon="chevron-right" 
-                avatar="${activity.relationships.author.data.avatar || ''}"
-                initials="${activity.relationships.author.data.display_name || ''}">
-                <button id="activity-${i}" 
-                  aria-describedby="activity-desc-${i}" 
-                  slot="label">
+            (activity, i) => html`
+              <nav-card-item
+                icon="chevron-right"
+                avatar="${activity.relationships.author.data.avatar || ""}"
+                initials="${activity.relationships.author.data.display_name ||
+                  ""}"
+              >
+                <button
+                  id="activity-${i}"
+                  aria-describedby="activity-desc-${i}"
+                  slot="label"
+                >
                   ${activity.relationships.author.data.sis.sortable_name.replace(
                     /.*,/,
                     ""
@@ -331,8 +346,7 @@ class ElmslnStudioDashboard extends LitElement {
                     ? activity.attributes.subject
                     : activity.attributes.title}
                 </button>
-                <span id="activity-desc-${i}" 
-                  slot="description">
+                <span id="activity-desc-${i}" slot="description">
                   ${this.date(
                     activity.type === "comment"
                       ? activity.attributes.changed
