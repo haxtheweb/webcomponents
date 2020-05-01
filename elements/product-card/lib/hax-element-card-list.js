@@ -65,10 +65,17 @@ class HAXElementCardList extends LitElement {
           padding: 2px;
         }
         hexagon-loader {
-          padding: 15px 0;
+          float: right;
+          margin: -60px 0 0 0;
         }
         .loaderText {
-          text-align: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+        .checkbox {
+          height: 36px;
+          width: 36px;
         }
       `
     ];
@@ -110,14 +117,15 @@ class HAXElementCardList extends LitElement {
       ? ``
       : html`
           <p class="loaderText" ?hidden="${!this.loading}">
-            Loading HAX elements..
+            <strong
+              >Scanning Web Component Registry for more HAX elements..</strong
+            ><hexagon-loader
+              item-count="4"
+              color="orange"
+              ?loading="${this.loading}"
+              size="small"
+            ></hexagon-loader>
           </p>
-          <hexagon-loader
-            item-count="4"
-            color="blue"
-            ?loading="${this.loading}"
-            size="large"
-          ></hexagon-loader>
           <div
             class="grid"
             style="--hax-element-card--cols: repeat(${this.cols}, 1fr)"
@@ -143,6 +151,7 @@ class HAXElementCardList extends LitElement {
                       >${el.status ? `Enabled` : `Disabled`}</span
                     >
                     <input
+                      class="checkbox"
                       type="checkbox"
                       ?checked="${el.status}"
                       @change="${e => this.elementStatusChange(el)}"
