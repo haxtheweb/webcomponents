@@ -204,6 +204,7 @@ class HAXCMSSiteEditorUI extends LitElement {
   render() {
     return html`
       <paper-avatar
+        @click=${this.redirectToSites}
         id="username"
         label="${this.userName}"
         two-chars
@@ -260,7 +261,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="edit site settings"
       ></paper-icon-button>
       <simple-tooltip for="username" position="right" offset="14"
-        >${this.userName}</simple-tooltip
+        >${this.userName} dashboard</simple-tooltip
       >
       <simple-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel editing</simple-tooltip
@@ -285,6 +286,23 @@ class HAXCMSSiteEditorUI extends LitElement {
       >
     `;
   }
+
+  /*
+   * Function to redirect back to sites page
+   */
+  redirectToSites(){
+    let redirectUrl = "";
+    let webTypeRegex = /^http/;
+    let tmp = document.createElement('a');
+    tmp.href = window.location.href;
+    if (webTypeRegex.test(tmp.href)){
+      redirectUrl = `http://${tmp.host}`;
+    } else{
+      redirectUrl = `https://${tmp.host}`;
+    }
+    window.location.replace(redirectUrl); 
+  }
+
   firstUpdated(changedProperties) {
     // load user data
     this.dispatchEvent(
