@@ -1476,15 +1476,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           }
         ],
         meta: {
-          author: "W3C",
-          hidden: true
+          author: "W3C"
         }
       },
       settings: {
         quick: [],
         configure: [],
         advanced: []
-      }
+      },
+      demoSchema: [{
+        tag: "p",
+        content: "Text",
+        properties: {
+        }
+      }]
     };
     this.setHaxProperties(p, "p");
     let table = {
@@ -1636,14 +1641,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: prims[tag].title,
             icon: prims[tag].icon,
             meta: {
-              hidden: true
+              hidden: (tag == 'h2' ? false : true)
             }
           },
           settings: {
             quick: [],
             configure: [],
             advanced: []
-          }
+          },
+          demoSchema: [{
+            tag: tag,
+            content: (tag == 'h2' ? "Heading" : ""),
+            properties: {
+            }
+          }]
         },
         tag
       );
@@ -1657,7 +1668,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Horizontal line",
         icon: "hax:hr",
         meta: {
-          hidden: true
+          author: "W3C"
         }
       },
       canPosition: false,
@@ -1666,7 +1677,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         quick: [],
         configure: [],
         advanced: []
-      }
+      },
+      demoSchema: [{
+        tag: "hr",
+        content: "",
+        properties: {
+          style: "width:50%;"
+        }
+      }]
     };
     this.setHaxProperties(hr, "hr");
   }

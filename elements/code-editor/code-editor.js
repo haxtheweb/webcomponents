@@ -536,9 +536,11 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     } else {
       this.childNodes.forEach(node => this.updateEditorValue(node));
     }
-    this._observer.observe(this, {
-      childList: true
-    });
+    if (this._observer) {
+      this._observer.observe(this, {
+        childList: true
+      });
+    }
   }
 }
 window.customElements.define(CodeEditor.tag, CodeEditor);

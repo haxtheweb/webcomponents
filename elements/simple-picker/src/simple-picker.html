@@ -26,7 +26,7 @@
     <div class="rows">
         ${this.__options ? this.__options.map((row,rownum) => html`
           <div class="row">
-            ${row ? row.map((option,colnum) => html`
+            ${Array.isArray(row) ? row.map((option,colnum) => html`
               <simple-picker-option
                 @option-focus="${this._handleOptionFocus}"
                 @set-selected-option="${this._handleSetSelectedOption}"
