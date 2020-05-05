@@ -1,4 +1,8 @@
+
 const path = require("path");
+const cpy = require('rollup-plugin-cpy');
+
+
 module.exports = {
   // Globs of all the stories in your project
   stories: ["../elements/*/**.stories.{js,mdx}"],
@@ -26,6 +30,19 @@ module.exports = {
   outputDir: "../../../storybooks/lrnwebcomponents",
   // Configuration for rollup (build-storybook only)
   rollup: config => {
-    return config;
+    return [
+      config[0],
+      {
+        ...config[1],
+        plugins: [
+          ...config[1].plugins,
+          cpy({
+            files: ['elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}'],
+            dest: '../../storybooks/lrnwebcomponents/',
+            options: { parents: true },
+          }),
+        ],
+      }   
+    ];
   }
 };

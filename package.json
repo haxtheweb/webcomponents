@@ -40,7 +40,6 @@
         "@babel/core": "^7.9.0",
         "@emotion/core": "0.13.1",
         "@emotion/styled": "0.10.6",
-        "gulp-minify-html-literals": "1.1.7",
         "@open-wc/building-utils": "2.14.3",
         "@open-wc/demoing-storybook": "^1.15.1",
         "@open-wc/storybook": "^0.2.8",
@@ -70,6 +69,7 @@
         "gulp-clean-css": "4.0.0",
         "gulp-concat-util": "0.5.5",
         "gulp-copy": "4.0.1",
+        "gulp-minify-html-literals": "1.1.7",
         "gulp-rename": "1.4.0",
         "gulp-replace": "1.0.0",
         "gulp-sass": "4.0.2",
@@ -119,6 +119,7 @@
     },
     "dependencies": {
         "@open-wc/storybook-prebuilt": "^1.2.0",
+        "rollup-plugin-cpy": "^2.0.1",
         "fetch-ie8": "1.5.0",
         "lunr": "2.3.6",
         "promise-polyfill": "8.1.3"
