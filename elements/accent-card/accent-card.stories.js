@@ -13,9 +13,11 @@ export default {
 };
 
 export const AccentCardStory = () => {
-  const utils = new StorybookUtilities(), 
-    images = [1,2,3,4,5,6,7,8].map(i=>new URL(`demo/images/image${i}.jpg`, import.meta.url));
-    
+  const utils = new StorybookUtilities(),
+    images = [1, 2, 3, 4, 5, 6, 7, 8].map(
+      i => new URL(`demo/images/image${i}.jpg`, import.meta.url)
+    );
+
   return utils.makeElementFromClass(
     AccentCard,
     {

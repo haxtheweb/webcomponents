@@ -1,7 +1,5 @@
-
 const path = require("path");
-const cpy = require('rollup-plugin-cpy');
-
+const cpy = require("rollup-plugin-cpy");
 
 module.exports = {
   // Globs of all the stories in your project
@@ -37,12 +35,12 @@ module.exports = {
         plugins: [
           ...config[1].plugins,
           cpy({
-            files: ['elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}'],
-            dest: '../../storybooks/lrnwebcomponents/',
-            options: { parents: true },
-          }),
-        ],
-      }   
+            files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
+            dest: "../../storybooks/lrnwebcomponents/",
+            options: { parents: true }
+          })
+        ]
+      }
     ];
   }
 };
