@@ -1484,12 +1484,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         configure: [],
         advanced: []
       },
-      demoSchema: [{
-        tag: "p",
-        content: "Text",
-        properties: {
+      demoSchema: [
+        {
+          tag: "p",
+          content: "Text",
+          properties: {}
         }
-      }]
+      ]
     };
     this.setHaxProperties(p, "p");
     let table = {
@@ -1641,7 +1642,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: prims[tag].title,
             icon: prims[tag].icon,
             meta: {
-              hidden: (tag == 'h2' ? false : true)
+              hidden: tag == "h2" ? false : true
             }
           },
           settings: {
@@ -1649,12 +1650,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             configure: [],
             advanced: []
           },
-          demoSchema: [{
-            tag: tag,
-            content: (tag == 'h2' ? "Heading" : ""),
-            properties: {
+          demoSchema: [
+            {
+              tag: tag,
+              content: tag == "h2" ? "Heading" : "",
+              properties: {}
             }
-          }]
+          ]
         },
         tag
       );
@@ -1678,13 +1680,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         configure: [],
         advanced: []
       },
-      demoSchema: [{
-        tag: "hr",
-        content: "",
-        properties: {
-          style: "width:50%;"
+      demoSchema: [
+        {
+          tag: "hr",
+          content: "",
+          properties: {
+            style: "width:50%;"
+          }
         }
-      }]
+      ]
     };
     this.setHaxProperties(hr, "hr");
   }
