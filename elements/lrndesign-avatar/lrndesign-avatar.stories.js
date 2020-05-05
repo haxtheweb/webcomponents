@@ -20,13 +20,18 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const LrndesignAvatarStory = () => {
-  return utils.makeElementFromClass(LrndesignAvatar, { 
-      label: 'Your Name Here' 
-    },[],[
+  return utils.makeElementFromClass(
+    LrndesignAvatar,
+    {
+      label: "Your Name Here"
+    },
+    [],
+    [
       {
         css: "--lrndesign-avatar-width",
-        title: 'Size',
-        inputMethod: 'textfield'
+        title: "Size",
+        inputMethod: "textfield"
       }
-    ]);
+    ]
+  );
 };

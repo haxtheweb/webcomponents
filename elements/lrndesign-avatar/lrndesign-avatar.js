@@ -105,7 +105,7 @@ paper-avatar {
         "title": "Image Source",
         "description": "Optional: Upload an image for avatar.",
         "inputMethod": "haxupload"
-      },
+      }
     ],
     "configure": [
       {

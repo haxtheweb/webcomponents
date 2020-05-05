@@ -3,6 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import { IconsetDemo } from "@lrnwebcomponents/iconset-demo/iconset-demo.js";
 import "@polymer/iron-icons/iron-icons.js";
+
 import {
   withKnobs,
   withWebComponentsKnobs,
@@ -25,21 +26,24 @@ import {
  * @license Apache-2.0, see License.md for full text.
  */
 window.getStorybookIconset = () => {
-  let iconset = document.createElement('iconset-demo');
+  let iconset = document.createElement("iconset-demo");
   iconset.hidden = true;
   document.body.appendChild(iconset);
   return iconset;
-}; 
-window.StorybookIconset = window.StorybookIconset && window.StorybookIconset.length > 0 
-  ? window.StorybookIconset 
-  : window.getStorybookIconset();
+};
+window.StorybookIconset =
+  window.StorybookIconset && window.StorybookIconset.length > 0
+    ? window.StorybookIconset
+    : window.getStorybookIconset();
 
 window.getStorybookIcons = () => {
   let iconset = window.StorybookIconset,
     list = iconset && iconset.__iconList ? iconset.__iconList : [[]],
-    icons = (list).map(group=>group.icons.map(icon=>icon.replace(/^icons\:/,''))).flat();
+    icons = list
+      .map(group => group.icons.map(icon => icon.replace(/^icons\:/, "")))
+      .flat();
   return icons;
-}; 
+};
 window.StorybookIcons = window.StorybookIcons || window.getStorybookIcons();
 /**
  * Object to help load things in globally scoped and fire events when ready
@@ -475,8 +479,13 @@ export class StorybookUtilities {
       }
     } else if (method === "iconpicker") {
       let icons = window.StorybookIcons;
-      icons.unshift('');
-      knob = select(label, icons || ["","star","check","history"], val, groupName[group]);
+      icons.unshift("");
+      knob = select(
+        label,
+        icons || ["", "star", "check", "history"],
+        val,
+        groupName[group]
+      );
     } else if (method === "colorpicker" && colors) {
       let options = {};
       colors.forEach(color => (options[color] = color));
@@ -571,11 +580,11 @@ export class StorybookUtilities {
       }
     });
     Object.keys(knobs.css || {}).forEach(prop => {
-      console.log('css',prop,knobs)
+      console.log("css", prop, knobs);
       let knob = knobs.css[prop],
         val = knob.knob;
-      if(prop.indexOf('--') === 0){
-        el.style.setProperty(prop,val);
+      if (prop.indexOf("--") === 0) {
+        el.style.setProperty(prop, val);
       } else {
         el.style[prop] = val;
       }
@@ -597,22 +606,10 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromClass(el, defaults = {}, exclusions = [], additions=[]) {
+  makeElementFromClass(el, defaults = {}, exclusions = [], additions = []) {
     let tag = el.tag || this.name.camelToKebab(el),
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
-    console.debug(
-      "makeElementFromClass:",
-      tag,
-      "\nprops",
-      props,
-      "\nknobs",
-      knobs,
-      "\ndefaults",
-      defaults,
-      "\nexclusions",
-      exclusions
-    );
     return this.makeElement(tag, knobs);
   }
 

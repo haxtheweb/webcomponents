@@ -68,81 +68,80 @@ class NavCardItem extends LitElement {
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Nav card",
-    "description": "an accent card of link lists",
-    "icon": "av:playlist-play",
-    "color": "pink",
-    "groups": ["Card", "Nav", "List"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Nav card",
+        description: "an accent card of link lists",
+        icon: "av:playlist-play",
+        color: "pink",
+        groups: ["Card", "Nav", "List"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "The Pennsylvania State University"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "Select an accent color.",
+            inputMethod: "colorpicker",
+            required: false
+          },
+          {
+            property: "Dark",
+            title: "Dark",
+            description: "Display the card as dark theme?",
+            inputMethod: "boolean",
+            required: false
+          },
+          {
+            property: "avatar",
+            title: "Image",
+            description: "Upload an Image",
+            inputMethod: "haxupload",
+            required: false
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "Select an icon.",
+            inputMethod: "iconpicker",
+            required: false
+          },
+          {
+            slot: "label",
+            title: "Button or Link",
+            inputMethod: "code-editor",
+            required: false
+          },
+          {
+            slot: "description",
+            title: "Additional description",
+            inputMethod: "code-editor",
+            required: false
+          }
+        ],
+        advanced: [
+          {
+            property: "avatar",
+            title: "Icon",
+            description: "Select an icon",
+            inputMethod: "iconpicker",
+            required: false
+          }
+        ]
       }
-    ],
-    "meta": {
-      "author": "nikkimk",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "accentColor",
-        "title": "Accent Color",
-        "description": "Select an accent color.",
-        "inputMethod": "colorpicker",
-        "required": false
-      },
-      {
-        "property": "Dark",
-        "title": "Dark",
-        "description": "Display the card as dark theme?",
-        "inputMethod": "boolean",
-        "required": false
-      },
-      {
-        "property": "avatar",
-        "title": "Image",
-        "description": "Upload an Image",
-        "inputMethod": "haxupload",
-        "required": false
-      },
-      {
-        "property": "icon",
-        "title": "Icon",
-        "description": "Select an icon.",
-        "inputMethod": "iconpicker",
-        "required": false
-      },
-      {
-        "slot": "label",
-        "title": "Button or Link",
-        "inputMethod": "code-editor",
-        "required": false
-      },
-      {
-        "slot": "description",
-        "title": "Additional description",
-        "inputMethod": "code-editor",
-        "required": false
-      }
-    ],
-    "advanced": [
-      {
-        "property": "avatar",
-        "title": "Icon",
-        "description": "Select an icon",
-        "inputMethod": "iconpicker",
-        "required": false
-      }
-    ]
-  }
-}
-;
+    };
   }
 
   static get styles() {
