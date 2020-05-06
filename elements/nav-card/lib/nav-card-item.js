@@ -9,6 +9,27 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 /**
  * `nav-card-item`
  * links fr the nav card
+### Styling
+
+`<nav-card-item>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--nav-card-item-background-color` | item's default background-color | unset
+`--nav-card-item-color` | item's default teext color | unset
+`--nav-card-item-label-font-weight` | item's default font-weight | bold
+`--nav-card-linklist-border-bottom` | item's border-bottom | 1px solid var(--simple-colors-default-theme-grey-4)
+`--nav-card-item-label-font-size` | item's default font-size | inherit
+`--nav-card-item-label-font-weight` | item's default font-weight | bold
+`--nav-card-item-label-font-size` | item description's default font-weight | 11px
+`--nav-card-item-label-font-weight` | item description's default font-wight | normal
+`--nav-card-item-avatar-size` | default size for item's avatar | 36px
+`--nav-card-item-avatar-width` | default width for item's avatar | --nav-card-item-avatar-size
+`--nav-card-item-avatar-height` | default height for item's avatar | --nav-card-item-avatar-size
+`--nav-card-item-icon-size` | default size for item's icon | 24px
+`--nav-card-item-icon-width` | default width for item's icon | --nav-card-item-icon-size
+`--nav-card-item-icon-height` | default height for item's icon | --nav-card-item-icon-size
  *
  * @customElement nav-card-item
  * @lit-html
@@ -98,17 +119,10 @@ class NavCardItem extends LitElement {
             required: false
           },
           {
-            property: "Dark",
+            property: "dark",
             title: "Dark",
             description: "Display the card as dark theme?",
             inputMethod: "boolean",
-            required: false
-          },
-          {
-            property: "avatar",
-            title: "Image",
-            description: "Upload an Image",
-            inputMethod: "haxupload",
             required: false
           },
           {
@@ -116,6 +130,20 @@ class NavCardItem extends LitElement {
             title: "Icon",
             description: "Select an icon.",
             inputMethod: "iconpicker",
+            required: false
+          },
+          {
+            property: "initials",
+            title: "Initials",
+            description: "Initials to display if there is no icon.",
+            inputMethod: "textfield",
+            required: false
+          },
+          {
+            property: "avatar",
+            title: "Avatar Image",
+            description: "Select an image",
+            inputMethod: "haxupload",
             required: false
           },
           {
@@ -134,8 +162,8 @@ class NavCardItem extends LitElement {
         advanced: [
           {
             property: "avatar",
-            title: "Icon",
-            description: "Select an icon",
+            title: "Avatar Icon",
+            description: "Select an icon.",
             inputMethod: "iconpicker",
             required: false
           }
@@ -155,6 +183,8 @@ class NavCardItem extends LitElement {
           text-decoration: none;
           padding: 5px 0;
           margin-bottom: 1px;
+          color: var(--nav-card-item-color,unset);
+          background-color: var(--nav-card-item-background-color,unset);
           border-bottom: var(
             --nav-card-linklist-border-bottom,
             1px solid var(--simple-colors-default-theme-grey-4, #666)
@@ -189,6 +219,8 @@ class NavCardItem extends LitElement {
           border: none;
           padding: 0;
           text-align: left;
+          color: var(--nav-card-item-color,unset);
+          background-color: var(--nav-card-item-background-color,unset);
           font-size: var(--nav-card-item-label-font-size, inherit);
           font-weight: var(--nav-card-item-label-font-weight, bold);
         }
@@ -211,38 +243,38 @@ class NavCardItem extends LitElement {
           margin-right: 10px;
           width: var(
             --nav-card-item-avatar-width,
-            var(--nav-card-item-avatar-size)
+            var(--nav-card-item-avatar-size, 36px)
           );
           height: var(
             --nav-card-item-avatar-height,
-            var(--nav-card-item-avatar-size)
+            var(--nav-card-item-avatar-size, 36px)
           );
           --lrndesign-avatar-width: var(
             --nav-card-item-avatar-width,
-            var(--nav-card-item-avatar-size)
+            var(--nav-card-item-avatar-size, 36px)
           );
           --lrndesign-avatar-height: var(
             --nav-card-item-avatar-height,
-            var(--nav-card-item-avatar-size)
+            var(--nav-card-item-avatar-size, 36px)
           );
         }
         iron-icon {
           margin-left: 10px;
           width: var(
             --nav-card-item-icon-width,
-            var(--nav-card-item-icon-size)
+            var(--nav-card-item-icon-size, 24px)
           );
           height: var(
             --nav-card-item-icon-height,
-            var(--nav-card-item-icon-size)
+            var(--nav-card-item-icon-size, 24px)
           );
           --lrndesign-icon-width: var(
             --nav-card-item-icon-width,
-            var(--nav-card-item-icon-size)
+            var(--nav-card-item-icon-size, 24px)
           );
           --lrndesign-icon-height: var(
             --nav-card-item-icon-height,
-            var(--nav-card-item-icon-size)
+            var(--nav-card-item-icon-size 24px)
           );
         }
       `

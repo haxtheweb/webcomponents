@@ -39,15 +39,48 @@ let scale = {
     "ct-major-twelfth": "ct-major-twelfth  (1:3)",
     "ct-double-octave": "ct-double-octave  (1:4`)"
   },
-  salesData = [
-    ["Quarter", "Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"],
-    ["Northeast", 5, 4, 3, 7],
-    ["Midaltantic", 3, 2, 9, 5],
-    ["Southeast", 1, 5, 8, 4],
-    ["Midwest", 2, 3, 4, 6],
-    ["West", 4, 1, 2, 1]
+  styles = [
+    {css: "maxWidth"},
+    { css: "--chartist-bg-padding", title: "padding inside chartist-render" },
+    { css: "--chartist-bg-margin", title: "margin chartist chartist-render" },
+    { css: "--chartist-text-color", title: "default label color for charts" },
+    { css: "--chartist-bg-color", title: "default label color for charts" },
+    { css: "--chartist-text-color", title: "default label color for charts" },
+    { css: "--chartist-color-a", title: "background color for 1st series" },
+    { css: "--chartist-color-label-a", title: "color for 1st series label" },
+    { css: "--chartist-color-b", title: "background color for 2nd series" },
+    { css: "--chartist-color-label-b", title: "color for 2nd series label" },
+    { css: "--chartist-color-c", title: "background color for 3rd series" },
+    { css: "--chartist-color-label-c", title: "color for 3rd series label" },
+    { css: "--chartist-color-d", title: "background color for 4th series" },
+    { css: "--chartist-color-label-d", title: "color for 4th series label" },
+    { css: "--chartist-color-e", title: "background color for 5th series" },
+    { css: "--chartist-color-label-e", title: "color for 5th series label" },
+    { css: "--chartist-color-f", title: "background color for 6th series" },
+    { css: "--chartist-color-label-f", title: "color for 6th series label" },
+    { css: "--chartist-color-g", title: "background color for 7th series" },
+    { css: "--chartist-color-label-g", title: "color for 7th series label" },
+    { css: "--chartist-color-h", title: "background color for 8th series" },
+    { css: "--chartist-color-label-h", title: "color for 8th series label" },
+    { css: "--chartist-color-i", title: "background color for 9th series" },
+    { css: "--chartist-color-label-i", title: "color for 9th series label" },
+    { css: "--chartist-color-j", title: "background color for 10th series" },
+    { css: "--chartist-color-label-j", title: "color for 10th series label" },
+    { css: "--chartist-color-k", title: "background color for 11th series" },
+    { css: "--chartist-color-label-k", title: "color for 11th series label" },
+    { css: "--chartist-color-l", title: "background color for 12th series" },
+    { css: "--chartist-color-label-l", title: "color for 12th series label" },
+    { css: "--chartist-color-m", title: "background color for 13th series" },
+    { css: "--chartist-color-label-m", title: "color for 13th series label" },
+    { css: "--chartist-color-n", title: "background color for 14th series" },
+    { css: "--chartist-color-label-n", title: "color for 15th series label" },
+    { css: "--chartist-color-0", title: "background color for 15th series" },
+    { css: "--chartist-color-label-o", title: "color for 15th series label" },
   ],
-  pieData = [["Banana", "Apple", "Pumpkin"], [20, 15, 40]],
+  barData = new URL(`demo/bar.csv`, import.meta.url),
+  donutData =  new URL(`demo/donut.csv`, import.meta.url),
+  lineData = new URL(`demo/line.csv`, import.meta.url),
+  pieData = new URL(`demo/pie.csv`, import.meta.url),
   props = utils
     .getElementProperties(ChartistRender.properties)
     .filter(prop => prop.property !== "chartData");
@@ -63,79 +96,65 @@ props.forEach(prop => {
     prop.options = ["bar", "pie", "line"];
   }
 });
+props = [...props,...styles];
 export const ChartistRenderBarStory = () => {
-  let knobs = utils.getKnobs(props, {
-      data: salesData,
+  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+      dataSource: barData,
       chartTitle: "Sales by Quarter",
       chartDesc:
         "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
-      type: "bar"
-    }),
-    bar = utils.makeElement("chartist-render", knobs);
-  return bar;
+      type: "bar",
+      maxWidth: '600px'
+    }));
 };
 export const ChartistRenderLineStory = () => {
-  let knobs = utils.getKnobs(props, {
-      data: salesData,
+  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+      dataSource: lineData,
       chartTitle: "Sales by Quarter",
       chartDesc:
         "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
-      type: "line"
-    }),
-    line = utils.makeElement("chartist-render", knobs);
-  return line;
+      type: "line",
+      maxWidth: '600px'
+    }));
 };
 export const ChartistRenderPieStory = () => {
-  let knobs = utils.getKnobs(props, {
-      data: pieData,
-      chartTitle: "Favorite Donuts",
-      chartDesc: "A pie chart of favorite pie.",
-      scale: "ct-square",
-      type: "pie"
-    }),
-    donut = utils.makeElement("chartist-render", knobs);
-  donut.style.maxWidth = "300px";
-  return donut;
-};
-export const ChartistRenderDonutStory = () => {
-  let donutData = [["Boston Cream", "Chocolate", "Glazed"], [10, 24, 28]],
-    knobs = utils.getKnobs(props, {
-      data: donutData,
+  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+      dataSource: pieData,
       chartTitle: "Favorite Pie",
-      chartDesc: "A pie chart of favorite pie.",
+      chartDesc: "A pie chart of favorite pies.",
       scale: "ct-square",
       type: "pie",
-      options: { donut: true }
-    }),
-    pie = utils.makeElement("chartist-render", knobs);
-  pie.style.maxWidth = "300px";
-  return pie;
+      maxWidth: '300px'
+    }));
+};
+export const ChartistRenderDonutStory = () => {
+  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+      dataSource: donutData,
+      chartTitle: "Favorite Donuts",
+      chartDesc: "A donut chart of favorite donuts.",
+      scale: "ct-square",
+      type: "pie",
+      options: { donut: true },
+      maxWidth: '300px'
+    }));
 };
 export const ChartistWithSlots = () => {
-  let table = document.createElement("table");
-  table.innerHTML = `
-  <tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead>
-  <tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody>`;
-  let propsSlots = [
+  return utils.makeElement("chartist-render", utils.getKnobs([
       { slot: "heading", inputMethod: "string", name: "heading" },
       { slot: "desc", inputMethod: "textarea", name: "desc" },
       { slot: "", inputMethod: "textarea", name: "" },
       ...props.filter(
         prop => !["chartTitle", "chartDesc", "data"].includes(prop.name)
       )
-    ],
-    knobs = utils.getKnobs(propsSlots, {
-      data: pieData,
+    ],{
+      dataSource: pieData,
       heading: "Favorite Pie",
       desc: "A pie chart of favorite pie.",
       scale: "ct-square",
       type: "pie",
-      emptyslot: `<table>${table.innerHTML}</table>`
-    }),
-    pie = utils.makeElement("chartist-render", knobs);
-  pie.style.maxWidth = "300px";
-  pie.appendChild(table);
-  return pie;
+      emptyslot: '<table><thead><tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead><tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody></table>',
+      maxWidth: '300px'
+    }));
 };

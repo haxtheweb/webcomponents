@@ -274,11 +274,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       <paper-button
         id="${tab.id}-button"
         controls="${tab.id}"
-        class="${tab.id === this.activeTab ? "active" : ""}"
+        class="${(tab.id === this.activeTab) && !this.disabled ? "active" : ""}"
         @click="${e => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab || tab.disabled}"
-        .flag="${tab.flag}"
-      >
+        ?disabled="${tab.id === this.activeTab || tab.disabled || this.disabled}"
+        .flag="${tab.flag}">
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
       </paper-button>
@@ -314,7 +313,8 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         class="icon"
         ?hidden="${!tab[icon]}"
         .icon="${tab[icon]}"
-      ></iron-icon>
+        .title="${tab[flag]}">
+      </iron-icon>
     `;
   }
 

@@ -28,6 +28,9 @@ class A11yCollapseGroup extends LitElement {
           margin: var(--a11y-collapse-group-margin, 15px 0);
           --a11y-collapse-margin: 15px;
         }
+        :host([hidden]) {
+          display: none;
+        }
         #heading {
           font-weight: bold;
         }
@@ -101,13 +104,23 @@ class A11yCollapseGroup extends LitElement {
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "disabled"
       },
       /**
-       * is every a11y-collapse item radio button?
+       * is disabled?
+       */
+      hidden: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hidden"
+      },
+      /**
+       * Acts like a radio button. (Items can only be expanded one at a time.)
        */
       radio: {
-        type: Boolean
+        type: Boolean,
+        attribute: "radio"
       },
       /**
        * is radio button
@@ -118,7 +131,61 @@ class A11yCollapseGroup extends LitElement {
     };
   }
   static get haxProperties() {
-    return null;
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Expand Collapse Group",
+        description: "A group of expand collapse elements.",
+        icon: "view-day",
+        color: "grey",
+        groups: ["Content", "Presentation", "Collapse"]
+      },
+      settings: {
+        quick: [
+          {
+            property: "radio",
+            title: "Expand only one",
+            description: "Only one item can be expanded.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
+            description: "Disable items.",
+            inputMethod: "boolean"
+          }
+        ],
+        configure: [
+          {
+            property: "radio",
+            title: "Expand only one",
+            description: "Only one item can be expanded.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
+            description: "Disable items.",
+            inputMethod: "boolean"
+          },
+          {
+            slot: "",
+            title: "Collapse Items",
+            description: "The collapse items.",
+            inputMethod: "code-editor"
+          },
+        ],
+        advanced: [
+          {
+            property: "hidden",
+            title: "Hidden",
+            inputMethod: "boolean"
+          }
+        ]
+      }
+    };
   }
 
   get items() {

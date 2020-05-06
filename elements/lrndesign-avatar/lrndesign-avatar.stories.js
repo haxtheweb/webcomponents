@@ -25,7 +25,6 @@ export const LrndesignAvatarStory = () => {
     {
       label: "Your Name Here"
     },
-    [],
     [
       {
         css: "--lrndesign-avatar-width",

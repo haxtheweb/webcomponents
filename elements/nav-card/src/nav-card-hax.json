@@ -29,18 +29,17 @@
         "required": false
       },
       {
-        "property": "Dark",
+        "property": "dark",
         "title": "Dark",
         "description": "Display the card as dark theme?",
         "inputMethod": "boolean",
         "required": false
       },
       {
-        "property": "linkIcon",
-        "title": "Link Icon",
-        "description": "Select an icon.",
-        "inputMethod": "iconpicker",
-        "required": false
+        "property": "imageSrc",
+        "title": "Image",
+        "description": "Optional image",
+        "inputMethod": "haxupload"
       },
       {
         "slot": "heading",
@@ -58,6 +57,13 @@
         "slot": "body",
         "title": "Body",
         "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "property": "linkIcon",
+        "title": "Link Icon",
+        "description": "Select an icon.",
+        "inputMethod": "iconpicker",
         "required": false
       },
       {

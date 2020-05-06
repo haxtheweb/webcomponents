@@ -32,6 +32,8 @@ class NavCard extends AccentCard {
 }
 
 ::slotted([slot=linklist]){
+  --nav-card-item-color: var(--accent-card-color);
+  --nav-card-item-background-color: var(--accent-card-background-color);
   margin-top: var(--nav-card-linklist-margin-top, 20px);
   margin-bottom: var(--nav-card-linklist-margin-bottom, 20px);
 }
@@ -99,18 +101,17 @@ class NavCard extends AccentCard {
         "required": false
       },
       {
-        "property": "Dark",
+        "property": "dark",
         "title": "Dark",
         "description": "Display the card as dark theme?",
         "inputMethod": "boolean",
         "required": false
       },
       {
-        "property": "linkIcon",
-        "title": "Link Icon",
-        "description": "Select an icon.",
-        "inputMethod": "iconpicker",
-        "required": false
+        "property": "imageSrc",
+        "title": "Image",
+        "description": "Optional image",
+        "inputMethod": "haxupload"
       },
       {
         "slot": "heading",
@@ -128,6 +129,13 @@ class NavCard extends AccentCard {
         "slot": "body",
         "title": "Body",
         "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "property": "linkIcon",
+        "title": "Link Icon",
+        "description": "Select an icon.",
+        "inputMethod": "iconpicker",
         "required": false
       },
       {

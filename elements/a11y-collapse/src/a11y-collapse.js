@@ -78,6 +78,13 @@ class A11yCollapse extends LitElement {
             unset
           );
         }
+        :host([disabled]) #heading {
+          color: var(--a11y-collapse-disabled-heading-color, unset);
+          background-color: var(
+            --a11y-collapse-heading-disabled-background-color,
+            unset
+          );
+        }
         #text {
           flex-grow: 1;
           overflow: hidden;
@@ -142,7 +149,7 @@ class A11yCollapse extends LitElement {
   }
   render() {
     return html`
-      ${this.accordion ? this._makeAccordionButton() : this._makeIconButton()}
+      ${this.headingButton ? this._makeHeadingButton() : this._makeIconButton()}
       <div
         id="content"
         aria-hidden="${this.expanded ? "false" : "true"}"
@@ -164,18 +171,28 @@ class A11yCollapse extends LitElement {
   static get properties() {
     return {
       /**
-       * accordion-style: whole header acts as button? default is just icon.
+       * Heading is the expand button.
        */
-      accordion: {
+      headingButton: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "heading-button"
       },
       /**
-       * is disabled?
+       * disbled
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "disabled"
+      },
+      /**
+       * hidden
+       */
+      hidden: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hidden"
       },
       /**
        * icon when expanded
@@ -222,14 +239,24 @@ class A11yCollapse extends LitElement {
       tooltipExpanded: {
         type: String,
         attribute: "tooltip-expanded"
+      },
+      /**
+       * @deprecated Use {@link headingButton} instead
+       */
+      accordion: {
+        type: Boolean,
+        reflect: true,
+        attribute: "accordion"
       }
     };
   }
 
   constructor() {
     super();
+    this.headingButton = false;
     this.accordion = false;
     this.disabled = false;
+    this.hidden = false;
     this.expanded = false;
     this.icon = "icons:expand-more";
     this.label = "expand / collapse";
@@ -250,15 +277,20 @@ class A11yCollapse extends LitElement {
       settings: {
         quick: [
           {
-            property: "accordion",
-            title: "Heading Button",
-            description: "Make entire heading clickble.",
-            inputMethod: "boolean"
-          },
-          {
             property: "expanded",
             title: "Expanded",
             description: "Expand by default",
+            inputMethod: "boolean"
+          },
+          {
+            property: "headingButton",
+            title: "Heading Button",
+            description: "Make entire heading clickble instead of just the icon.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
             inputMethod: "boolean"
           }
         ],
@@ -276,15 +308,20 @@ class A11yCollapse extends LitElement {
             inputMethod: "code-editor"
           },
           {
-            property: "accordion",
+            property: "headingButton",
             title: "Heading Button",
-            description: "Make entire heading clickble.",
+            description: "Make entire heading clickble instead of just the icon.",
             inputMethod: "boolean"
           },
           {
             property: "expanded",
             title: "Expanded",
             description: "Expand by default",
+            inputMethod: "boolean"
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
             inputMethod: "boolean"
           },
           {
@@ -329,7 +366,13 @@ class A11yCollapse extends LitElement {
             inputMethod: "textfield"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "hidden",
+            title: "Hidden",
+            inputMethod: "boolean"
+          }
+        ]
       }
     };
   }
@@ -394,8 +437,10 @@ class A11yCollapse extends LitElement {
   }
 
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
+    changedProperties.forEach((oldValue, propName) => {    
       if (propName === "expanded") this._fireToggleEvents();
+      if (propName === "headingButton" && this.headingButton !== oldValue) this.accordion = this.headingButton;
+      if (propName === "accordion" && this.accordion !== oldValue) this.headingButton = this.accordion;
     });
   }
 
@@ -417,7 +462,7 @@ class A11yCollapse extends LitElement {
       })
     );
     /**
-     * Deprecated. Fires when toggled.
+     * Fires when toggled. @deprecated Use `toggle` instead
      *
      * @event a11y-collapse-toggle
      */
@@ -473,7 +518,7 @@ class A11yCollapse extends LitElement {
    * renders collapse item where only entire heading is clickable button
    * @returns {object} html template for a heading as a clickable button
    */
-  _makeAccordionButton() {
+  _makeHeadingButton() {
     return html`
       <div
         id="heading"
@@ -568,6 +613,14 @@ class A11yCollapse extends LitElement {
         })
       );
     }
+  }
+  /**
+   *  @deprecated Use  {@link _makeHeadingButton} instead
+   *
+   * @memberof A11yCollapse
+   */
+  _makeAccordionButton(){
+    this._makeHeadingButton();
   }
 }
 window.customElements.define(A11yCollapse.tag, A11yCollapse);

@@ -318,6 +318,17 @@ export class StorybookUtilities {
       min + Math.floor(Math.random() * Math.floor((max - min) / step)) * step
     );
   }
+  /**
+   * gets a random icon for an iconpicker
+   *
+   * @param {boolean} [includeNull=false] include a 50/50 change of no icon?
+   * @returns string
+   * @memberof StorybookUtilities
+   */
+  getRandomIcon(includeNull = false){
+    let random = this.getRandomOption(window.StorybookIcons);
+    return includeNull ? this.getRandomOption([...random,""]) : random;
+  }
 
   /**
    * random short string of text
@@ -455,9 +466,9 @@ export class StorybookUtilities {
       },
       method = field.inputMethod,
       options = field.options,
-      val = defaultValue,
+      val = (group === "slots" || method === "code-editor") 
+        ? this.updateSlot(defaultValue,field.slot) : defaultValue,
       colors = this.getColors(),
-      unescape = false,
       knob;
     if (!options && field.itemsList) {
       options = {};
@@ -520,7 +531,6 @@ export class StorybookUtilities {
     } else if (method === "textarea") {
       knob = text(label, val || "", groupName[group]);
     } else if (method === "code-editor") {
-      unescape = true;
       knob = text(label, val || "", groupName[group]);
     } else {
       knob = text(label, val || "", groupName[group]);
@@ -529,9 +539,38 @@ export class StorybookUtilities {
       attribute: attribute,
       knob: knob,
       method: method,
-      unescape: unescape,
       group: group
     };
+  }
+  /**
+   * makes sure slot 
+   *
+   * @param {string} text slot's text knob
+   * @param {string} slot name of slot
+   * @returns string
+   * @memberof StorybookUtilities
+   */
+  updateSlot(text,slot){
+    if(text){
+      let div = document.createElement("div"),
+        inner = div.cloneNode(),
+        parent = div,
+        target = inner,
+        html = text
+              .replace(/&lt;/gi, "<")
+              .replace(/&gt;/gi, ">")
+              .replace(/&amp;/gi, "&");
+      div.appendChild(inner);
+      inner.innerHTML = html;
+      if (inner.children.length === 1 || slot === "") {
+        parent = inner;
+        target = inner.children[0];
+      }
+      if (slot !== "") target.slot = slot;
+      return parent.innerHTML;
+    } else {
+      return undefined;
+    }
   }
 
   /**
@@ -563,21 +602,11 @@ export class StorybookUtilities {
       el[prop] = val;
     });
     Object.keys(knobs.slots || {}).map(slot => {
-      let div = document.createElement("div"),
-        empty = knobs.slots[slot].attribute === "emptyslot",
-        knobval = knobs.slots[slot].unescape
-          ? knobs.slots[slot].knob
-              .replace(/&lt;/gi, "<")
-              .replace(/&gt;/gi, ">")
-              .replace(/&amp;/gi, "&")
-          : knobs.slots[slot].knob;
-      if (knobs.slots[slot].unescape) {
-        el.innerHTML += knobval;
-      } else {
-        if (!empty) div.slot = knobs.slots[slot].attribute;
-        div.innerHTML = knobval;
-        el.appendChild(div);
-      }
+      if(knobs.slots[slot].knob) el.innerHTML += knobs.slots[slot].knob
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/&quot;/gi, '"')
+      .replace(/&amp;/gi, "&");
     });
     Object.keys(knobs.css || {}).forEach(prop => {
       console.log("css", prop, knobs);
@@ -606,25 +635,12 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromClass(el, defaults = {}, exclusions = [], additions = []) {
+  makeElementFromClass(el, defaults = {}, additions = [], exclusions = []) {
     let tag = el.tag || this.name.camelToKebab(el),
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
     return this.makeElement(tag, knobs);
   }
-
-  /**
-   * prevents the element's load of an unpacked location from failing
-   * and loads a packed path specificed by thye story.js file
-   * @param {*} name of the resource (should match the name the element is using to load)
-   * @param {*} location of the resource, eg., require("file-loader!./path/to/file.js")
-   * /
-  addGlobalScript(name, location) {
-    window.ESGlobalBridge.requestAvailability();
-    if (!window.ESGlobalBridge.webpack) window.ESGlobalBridge.webpack = {};
-    window.ESGlobalBridge.webpack[name] = true;
-    window.ESGlobalBridge.instance.load(name, location, true);
-  }*/
 }
 
 // register global bridge on window if needed

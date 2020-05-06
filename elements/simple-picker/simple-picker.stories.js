@@ -19,6 +19,7 @@ export const SimplePickerStory = () => {
     {
       label: "Pick a font-family"
     },
+    [],
     ["options"]
   );
   picker.options = [
@@ -52,6 +53,7 @@ export const SwatchPickerStory = () => {
       hideOptionLabels: true,
       value: "Yellow"
     },
+    [],
     ["options"]
   );
   picker.options = [
@@ -95,7 +97,7 @@ export const IconPickerStory = () => {
       alignRight: true,
       hideOptionLabels: true,
       value: "search"
-    },
+    },[],
     ["options"]
   );
   picker.options = [
