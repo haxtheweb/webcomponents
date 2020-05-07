@@ -9,19 +9,6 @@ import "./lrndesign-gallery-details.js";
 /**
  * `lrndesign-gallery-grid`
  * An element that renders a collection of gallery items into a grid or a single media item into a layout.
- * 
-### Styling
-
-`<lrndesign-gallery-grid>` provides following custom properties and mixins
-for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--lrndesign-gallery-grid-columns-xs` | size of grid items when gallery is extra small | 100px
-`--lrndesign-gallery-grid-columns-sm` | size of grid items when gallery is small | 150px
-`--lrndesign-gallery-grid-columns-md` | size of grid items when gallery is medium | 200px
-`--lrndesign-gallery-grid-columns-lg` | size of grid items when gallery is large | 250px
-`--lrndesign-gallery-grid-columns-xl` | size of grid items when gallery is extra large | 300px
  *
  * @element lrndesign-gallery-grid
  * @extends LrndesignGalleryBehaviors
@@ -48,19 +35,19 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         #galleryscreen {
           display: grid;
           grid-gap: 7.5px;
-          grid-template-columns: repeat(2,1fr);
+          grid-template-columns: repeat(2, 1fr);
         }
-        :host([responsive-size=sm]) #galleryscreen {
-          grid-template-columns: repeat(3,1fr);
+        :host([responsive-size="sm"]) #galleryscreen {
+          grid-template-columns: repeat(3, 1fr);
         }
-        :host([responsive-size=md]) #galleryscreen {
-          grid-template-columns: repeat(4,1fr);
+        :host([responsive-size="md"]) #galleryscreen {
+          grid-template-columns: repeat(4, 1fr);
         }
-        :host([responsive-size=lg]) #galleryscreen {
-          grid-template-columns: repeat(5,1fr);
+        :host([responsive-size="lg"]) #galleryscreen {
+          grid-template-columns: repeat(5, 1fr);
         }
-        :host([responsive-size=xl]) #galleryscreen {
-          grid-template-columns: repeat(6,1fr);
+        :host([responsive-size="xl"]) #galleryscreen {
+          grid-template-columns: repeat(6, 1fr);
         }
         lrndesign-gallery-zoom {
           position: relative;
@@ -68,6 +55,14 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         }
         lrndesign-gallery-zoom img {
           width: 100%;
+          transition: outline 0.25s ease-in-out;
+          outline: 1px solid var(--lrndesign-gallery-color);
+        }
+        lrndesign-gallery-zoom:hover img,
+        lrndesign-gallery-zoom:focus img,
+        lrndesign-gallery-zoom:focus-within img {
+          transition: outline 0.25s ease-in-out;
+          outline: 2px solid var(--lrndesign-gallery-focus-color);
         }
         .zoombg,
         .zoomicon {
@@ -106,45 +101,27 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           ${this.sources.map(
             item => html`
               <lrndesign-gallery-zoom
-                id="${item.id}"
-                details="${item.details}"
-                heading="${item.heading}"
-                src="${item.large}"
-                tooltip="${item.tooltip}"
-                zoom-alt="${item.zoomAlt}"
+                .id="${item.id}"
+                .details="${item.details}"
+                .heading="${item.heading}"
+                .src="${item.large}"
+                .tooltip="${item.tooltip}"
+                .zoom-alt="${item.zoomAlt}"
               >
-                <img 
-                  alt="${item.alt}"
+                <img
+                  .alt="${item.alt}"
                   fade
                   sizing="${this.selected.sizing || this.sizing || "cover"}"
-                  src="${item.src}"
-                >
+                  .src="${item.src}"
+                />
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
             `
           )}
         </div>
-        ${this.galleryPrint}
       </div>
     `;
-  }
-
-  /**
-   * returns the proper padding to maintain image aspect ratio and updates
-   *
-   * @param {array} an array of items
-   * @returns {string} the style based on the first item
-   */
-  get imageStyle() {
-    let img = new Image(),
-      padding = 75;
-    if (this.items !== undefined && this.items.length > 0) {
-      img.src = this.items[0].src;
-      if (img.naturalWidth > 0 && img.naturalHeight > 0)
-        padding = (100 * img.naturalHeight) / img.naturalWidth;
-    }
-    return `padding-bottom: ${padding}%;`;
   }
 
   /**

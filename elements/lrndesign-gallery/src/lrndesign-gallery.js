@@ -7,6 +7,7 @@ import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js"
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
+import "./lib/lrndesign-gallery-masonry.js";
 
 /**
  * `lrndesign-gallery`
@@ -209,7 +210,8 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         sizing: sizing
       });
     });
-    if (sources.length > 0 && (!this.sources || this.sources.length < 1)) this.sources = sources;
+    if (sources.length > 0 && (!this.sources || this.sources.length < 1))
+      this.sources = sources;
   }
 
   /**

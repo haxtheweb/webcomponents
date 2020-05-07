@@ -1,7 +1,9 @@
 <div id="gallery" style="--lrndesign-gallery-image-aspect:${this.aspectRatio};--lrndesign-gallery-image-height:${100/this.aspectRatio}%">
-  ${this.grid
+  <div slot="title"><slot name="title"></slot></div>
+  <div slot="description"><slot name="description"></slot></div>
+  ${this.layout === 'masonry'
     ? html`
-        <lrndesign-gallery-grid
+        <lrndesign-gallery-masonry
           accent-color="${this.accentColor}"
           .aspect-ratio="${this.aspect}"
           .extra-wide="${this.extra}"
@@ -13,25 +15,38 @@
           sizing="${this.sizing}"
           .sources="${this.items}"
         >
-        <div slot="title"><slot name="title"></slot></div>
-        <div slot="description"><slot name="description"></slot></div>
-      </lrndesign-gallery-grid>
+      </lrndesign-gallery-masonry>
       `
-    : html`
-        <lrndesign-gallery-carousel
-          accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspect}"
-          .extra-wide="${this.extra}"
-          ?dark="${this.dark}"
-          .gallery-id="${this.id}"
-          @item-changed="${e=>this.goToItem(e.detail)}"
-          responsive-size="${this.responsiveSize}"
-          .selected="${this.selected}"
-          sizing="${this.sizing}"
-          .sources="${this.items}"
-        >
-        <div slot="title"><slot name="title"></slot></div>
-        <div slot="description"><slot name="description"></slot></div>
-        </lrndesign-gallery-carousel>`
-    }
+    : this.grid || this.layout === 'grid'
+      ? html`
+          <lrndesign-gallery-grid
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            sizing="${this.sizing}"
+            .sources="${this.items}"
+          >
+        </lrndesign-gallery-grid>
+        `
+      : html`
+          <lrndesign-gallery-carousel
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            sizing="${this.sizing}"
+            .sources="${this.items}"
+          >
+          </lrndesign-gallery-carousel>`
+      }
 </div>
+<slot hidden></slot>

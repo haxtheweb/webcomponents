@@ -56,22 +56,25 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           padding: 0;
           --carousel-image-height: unset;
         }
-        :host([responsive-size=md]){
-          --carousel-image-border-top: 4px solid var(--lrndesign-gallery-focus-color);
+        :host([responsive-size="md"]) {
+          --carousel-image-border-top: 4px solid
+            var(--lrndesign-gallery-focus-color);
           --lrndesign-gallery-image-height: unset;
-          --carousel-image-height: var(--carousel-image-height-md,200px);
+          --carousel-image-height: var(--carousel-image-height-md, 200px);
         }
-        :host([responsive-size=lg]){
-          --carousel-image-border-top: 4px solid var(--lrndesign-gallery-focus-color);
+        :host([responsive-size="lg"]) {
+          --carousel-image-border-top: 4px solid
+            var(--lrndesign-gallery-focus-color);
           --lrndesign-gallery-image-height: unset;
-          --carousel-image-height: var(--carousel-image-height-lg,300px);
+          --carousel-image-height: var(--carousel-image-height-lg, 300px);
         }
-        :host([responsive-size=xl]){
-          --carousel-image-border-top: 4px solid var(--lrndesign-gallery-focus-color);
+        :host([responsive-size="xl"]) {
+          --carousel-image-border-top: 4px solid
+            var(--lrndesign-gallery-focus-color);
           --lrndesign-gallery-image-height: unset;
-          --carousel-image-height: var(--carousel-image-height-xl,400px);
+          --carousel-image-height: var(--carousel-image-height-xl, 400px);
         }
-        :host([responsive-size*=s]),
+        :host([responsive-size*="s"]),
         :host([extra-wide]) {
           --carousel-image-height: unset;
           --carousel-image-border-top: unset;
@@ -82,13 +85,17 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           background-color: var(--lrndesign-gallery-background-color);
           border: 1px solid var(--lrndesign-gallery-border-color);
           border-top: var(--lrndesign-gallery-border-top);
-          --carousel-image-flex: 0 0 calc(var(--carousel-image-height,200px) * var(--lrndesign-gallery-image-aspect,1.33333333333));
+          --carousel-image-flex: 0 0
+            calc(
+              var(--carousel-image-height, 200px) *
+                var(--lrndesign-gallery-image-aspect, 1.33333333333)
+            );
         }
         #carouselimage,
         #carouseltext,
         #thumbnails,
         .prevnextnav,
-        :host(:not([responsive-size*="s"]):not([extra-wide])) #carouselitem  {
+        :host(:not([responsive-size*="s"]):not([extra-wide])) #carouselitem {
           display: flex;
           justify-content: space-between;
           align-items: stretch;
@@ -103,7 +110,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           position: relative;
         }
         :host([responsive-size*="s"]) #carouselimage,
-        :host([extra-wide]) #carouselimage  {
+        :host([extra-wide]) #carouselimage {
           width: 100%;
           padding-top: var(--lrndesign-gallery-image-height, 75%);
         }
@@ -163,6 +170,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           bottom: 5px;
           position: absolute;
         }
+        lrndesign-gallery-zoom {
+          border: 1px solid transparent;
+          transition: outline 0.25s ease-in-out;
+        }
+        lrndesign-gallery-zoom:focus-within,
+        lrndesign-gallery-zoom:hover {
+          border: 1px solid var(--lrndesign-gallery-color);
+          transition: outline 0.25s ease-in-out;
+        }
         .zoombg,
         .zoomicon {
           top: 0;
@@ -184,10 +200,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         #details {
           flex: 1 1 auto;
         }
-        #itemtitle, 
+        #itemtitle,
         #thumbails {
           flex: 0 0 auto;
-        } 
+        }
         #itemtitle {
           font-size: 160%;
         }
@@ -198,32 +214,31 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           flex-direction: row;
           flex-wrap: wrap;
           flex: 0 0 auto;
+          height: 46px;
           justify-content: flex-start;
           overflow-x: auto;
         }
-        .gallerythumb {
+        .gallerythumb,
+        .gallerythumb img {
           width: 40px;
           height: 40px;
-          margin: 0 2px;
-          background-color: var(--lrndesign-gallery-color);
+        }
+        .gallerythumb {
+          margin: 0 3px;
           background-image: var(--lrndesign-gallery-thumb-url);
           background-size: cover;
           background-position: center;
         }
-        .gallerythumb:hover,
-        .gallerythumb:focus {
+        .gallerythumb img {
           outline: 1px solid var(--lrndesign-gallery-color);
+          transition: all 0.25s ease-in-out;
         }
-        .gallerythumb iron-image {
-          display: none;
-        }
-        :host([responsive-size="md"]) .gallerythumb iron-image {
-          width: 40px;
-          height: 40px;
-        }
-        :host([responsive-size*="l"]) .gallerythumb iron-image {
-          width: 50px;
-          height: 50px;
+        .gallerythumb:not([disabled]):hover img,
+        .gallerythumb:not([disabled]):focus img {
+          width: 42px;
+          height: 42px;
+          outline: 1px solid var(--lrndesign-gallery-focus-color);
+          transition: all 0.25s ease-in-out;
         }
         .x-of-y {
           font-size: 85%;
@@ -247,8 +262,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   // render function
   render() {
     return html`
-      <slot name="title"></slot>
-      <slot name="description"></slot>
       <article id="carousel">
         <p class="sr-only">A carousel of items:</p>
         <div
@@ -261,23 +274,22 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             Slide ${this.selected.xofy}.
           </p>
           <div id="carouselimage">
-            <div id="spacer"></div>
             <iron-image
-              alt="${this.selected.alt}"
+              .alt="${this.selected.alt}"
               fade
               aria-describedby="carouseltitle details"
-              placeholder="${this.selected.thumbnail}"
+              .placeholder="${this.selected.thumbnail}"
               sizing="${this.selected.sizing || this.sizing || "cover"}"
-              src="${this.selected.src}"
+              .src="${this.selected.src}"
             >
             </iron-image>
             <lrndesign-gallery-zoom
-              details="${this.selected.details}"
-              heading="${this.selected.heading}"
+              .details="${this.selected.details}"
+              .heading="${this.selected.heading}"
               id="galleryzoom"
-              src="${this.selected.large}"
-              tooltip="${this.selected.tooltip}"
-              zoom-alt="${this.selected.alt}"
+              .src="${this.selected.large}"
+              .tooltip="${this.selected.tooltip}"
+              .zoom-alt="${this.selected.alt}"
             >
               <div class="zoombg"></div>
               <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
@@ -318,15 +330,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             >
           </div>
           <div id="carouseltext" class="item-info">
-            <h1 id="carouseltitle"
-              ?hidden="${!this.selected.title ||
-                this.selected.title == ""}"
+            <h1
+              id="carouseltitle"
+              ?hidden="${!this.selected.title || this.selected.title == ""}"
             >
-              <lrndesign-gallery-details
-                details="${this.selected.title || ""}"
-              >
+              <lrndesign-gallery-details details="${this.selected.title || ""}">
               </lrndesign-gallery-details>
-              </h1>
+            </h1>
             <lrndesign-gallery-details
               id="details"
               details="${this.selected.details || ""}"
@@ -338,11 +348,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   .xofy}<span class="sr-only">.</span>)
               </p>
             </div>
-            <div
-              id="thumbnails"
-              class="item-info"
-              ?hidden="${this.hideNav}"
-            >
+            <div id="thumbnails" class="item-info" ?hidden="${this.hideNav}">
               <p class="sr-only" ?hidden="${this.hideNav}">
                 Slides list:
               </p>
@@ -352,18 +358,16 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     id="${item.id}"
                     aria-controls="carousel"
                     class="gallerythumb"
-                    index="${item.index}"
-                    style="--lrndesign-gallery-thumb-url:url('${item.thumbnail}')"
+                    .index="${item.index}"
                     @click="${e => this._itemChanged(item.id)}"
                     ?disabled="${this.selected.id === item.id}"
                   >
-                    <span class="sr-only"
-                      >${item.alt ||
-                        `Item ${parseInt(item.index) + 1}`}</span
-                    >
+                    <img 
+                      alt="${item.alt || `Item ${parseInt(item.index) + 1}`}" 
+                      src="${item.thumbnail}">
                   </button>
                   <simple-tooltip
-                    for="${item.id}"
+                    .for="${item.id}"
                     ?hidden="${this.selected.id === item.id}"
                     position="top"
                   >
@@ -374,7 +378,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             </div>
           </div>
         </div>
-        ${this.galleryPrint}
       </article>
     `;
   }

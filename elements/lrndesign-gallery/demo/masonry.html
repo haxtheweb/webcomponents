@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LrndesignGallery: lrndesign-gallery-masonry Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lrndesign-gallery.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>lrndesign-gallery-masonry demo</h1>
+      <h2>Basic lrndesign-gallery-masonry with Progressive Enhancement</h2>
+      <demo-snippet>
+        <template>
+          <lrndesign-gallery 
+            id="masonry" 
+            layout="masonry" title="Regular Thumbnails" 
+            accent-color="indigo">
+            <div slot="description">This is a <em>regular</em> <strong>grid</strong>.</div>
+            <figure>
+              <img 
+                srcset="./images/thumbnails/cat.jpeg 480w, ./images/cat.jpeg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/cat.jpeg"
+                alt="A picture of a cat.">
+              <figcaption>
+                <h3>Cat</h3>
+                <p>This is a <em>cat</em> picture that is in <strong>landscape</strong>.</p>
+              </figcaption>
+            </figure>
+            <figure sizing="contain">
+              <img 
+                srcset="./images/thumbnails/dog.jpg 480w, ./images/dog.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/dog.jpg"
+                alt="A picture of a dog.">
+              <figcaption>
+                <h3>Dog</h3>
+                <p>This is a <em>dog</em> picture that is in <strong>portrait</strong>.</p>
+              </figcaption>
+            </figure>
+            <figure>
+              <img 
+                srcset="./images/thumbnails/bird.jpg 480w, ./images/bird.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/bird.jpg"
+                alt="A picture of a bird.">
+              <figcaption>
+                <h3>Bird</h3>
+                <p>This is a <em>bird</em> picture that is almost a <strong>square</strong>.</p>
+              </figcaption>
+            </figure>
+            <figure>
+              <img 
+                srcset="./images/thumbnails/fish.jpg 480w, ./images/fish.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/fish.jpg"
+                alt="A picture of a fish.">
+              <figcaption>
+                <h3>Fish</h3>
+                <p>This is a <em>fish</em> picture in <strong>landscape</strong> orientation.</p>
+              </figcaption>
+            </figure>
+            <figure id="apple">
+              <img 
+                srcset="./images/thumbnails/apple.jpg 480w, ./images/apple.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/apple.jpg"
+                alt="A picture of an apple.">
+              <figcaption>
+                <h3>Apple</h3>
+                <p>This is an <em>apple</em> picture.</p>
+              </figcaption>
+            </figure>
+            <figure id="bananas">
+              <img 
+                srcset="./images/thumbnails/banana.jpg 480w, ./images/banana.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/banana.jpg"
+                alt="A picture of bananas.">
+              <figcaption>
+                <h3>Bananas</h3>
+                <p>This is a picture of <em>bananas</em>.</p>
+              </figcaption>
+            </figure>
+            <figure id="carrots">
+              <img 
+                srcset="./images/thumbnails/carrot.jpeg 480w, ./images/carrot.jpeg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/carrot.jpeg"
+                alt="A picture of carrots.">
+              <figcaption>
+                <h3>Carrots</h3>
+                <p>This is a picture of <em>carrots</em>.</p>
+              </figcaption>
+            </figure>
+            <figure id="atari">
+              <img 
+                srcset="./images/thumbnails/nintendo.jpg 480w, ./images/atari.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/atari.jpg"
+                alt="A picture of Atari.">
+              <figcaption>
+                <h3>Atari</h3>
+                <p>This is an <em>Atari</em> picture.</p>
+              </figcaption>
+            </figure>
+            <figure id="nintendo">
+              <img 
+                srcset="./images/thumbnails/nintendo.png 480w, ./images/nintendo.png 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/nintendo.png"
+                alt="A picture of Nintendo.">
+              <figcaption>
+                <h3>Nintendo</h3>
+                <p>This is a <em>Nintendo</em> picture.</p>
+              </figcaption>
+            </figure>
+            <figure id="sega">
+              <img 
+                srcset="./images/thumbnails/sega.jpg 480w, ./images/sega.jpg 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/sega.jpg"
+                alt="A picture of Sega.">
+              <figcaption>
+                <h3>Sega</h3>
+                <p>This is a picture of <em>Sega</em>.</p>
+              </figcaption>
+            </figure>
+            <figure id="xbox">
+              <img 
+                srcset="./images/thumbnails/xbox.png 480w, ./images/xbox.png 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+                src="./images/xbox.png"
+                alt="A picture of Xbox.">
+              <figcaption>
+                <h3>Xbox</h3>
+                <p>This is a picture of an <em>Xbox</em>.</p>
+              </figcaption>
+            </figure>
+          </lrndesign-gallery>
+          <p>Link to this page with carrots dialog automatically open using the anchor <a href="#masonry---carrots---zoom" target="_blank">#masonry---carrots---zoom</a>.</p>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

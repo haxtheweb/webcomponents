@@ -35,11 +35,11 @@
         "icon": "icons:invert-colors"
       },
       {
-        "property": "grid",
-        "title": "Grid View",
+        "property": "layout",
+        "title": "Layout",
         "description": "Display as grid?",
-        "inputMethod": "boolean",
-        "icon": "icons:view-module"
+        "inputMethod": "select",
+        "itemsList": ["carousel","grid","masonry"]
       }
     ],
     "configure": [
@@ -68,10 +68,11 @@
         "inputMethod": "boolean"
       },
       {
-        "property": "grid",
-        "title": "Grid View",
+        "property": "layout",
+        "title": "Layout",
         "description": "Display as grid?",
-        "inputMethod": "boolean"
+        "inputMethod": "select",
+        "itemsList": ["carousel","grid","masonry"]
       },
       {
         "property": "sources",

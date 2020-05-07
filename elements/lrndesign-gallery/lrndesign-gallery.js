@@ -7,6 +7,7 @@ import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js"
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
+import "./lib/lrndesign-gallery-masonry.js";
 
 /**
  * `lrndesign-gallery`
@@ -31,9 +32,21 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
 :host([hidden]) {
   display: none; 
 }
-
 ::slotted(figure){
-  display: none;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 400px;
+  max-height: 400px;
+  display: block;
+  border: 1px solid #ddd;
+  page-break-inside: avoid;
+}
+
+@media screen {
+  ::slotted(figure){
+    display: none;
+  }
 }
       `
     ];
@@ -44,9 +57,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
     return html`
 
 <div id="gallery" style="--lrndesign-gallery-image-aspect:${this.aspectRatio};--lrndesign-gallery-image-height:${100/this.aspectRatio}%">
-  ${this.grid
+  <div slot="title"><slot name="title"></slot></div>
+  <div slot="description"><slot name="description"></slot></div>
+  ${this.layout === 'masonry'
     ? html`
-        <lrndesign-gallery-grid
+        <lrndesign-gallery-masonry
           accent-color="${this.accentColor}"
           .aspect-ratio="${this.aspect}"
           .extra-wide="${this.extra}"
@@ -58,28 +73,41 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           sizing="${this.sizing}"
           .sources="${this.items}"
         >
-        <div slot="title"><slot name="title"></slot></div>
-        <div slot="description"><slot name="description"></slot></div>
-      </lrndesign-gallery-grid>
+      </lrndesign-gallery-masonry>
       `
-    : html`
-        <lrndesign-gallery-carousel
-          accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspect}"
-          .extra-wide="${this.extra}"
-          ?dark="${this.dark}"
-          .gallery-id="${this.id}"
-          @item-changed="${e=>this.goToItem(e.detail)}"
-          responsive-size="${this.responsiveSize}"
-          .selected="${this.selected}"
-          sizing="${this.sizing}"
-          .sources="${this.items}"
-        >
-        <div slot="title"><slot name="title"></slot></div>
-        <div slot="description"><slot name="description"></slot></div>
-        </lrndesign-gallery-carousel>`
-    }
-</div>`;
+    : this.grid || this.layout === 'grid'
+      ? html`
+          <lrndesign-gallery-grid
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            sizing="${this.sizing}"
+            .sources="${this.items}"
+          >
+        </lrndesign-gallery-grid>
+        `
+      : html`
+          <lrndesign-gallery-carousel
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            sizing="${this.sizing}"
+            .sources="${this.items}"
+          >
+          </lrndesign-gallery-carousel>`
+      }
+</div>
+<slot hidden></slot>`;
   }
 
   // haxProperty definition
@@ -121,11 +149,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         "icon": "icons:invert-colors"
       },
       {
-        "property": "grid",
-        "title": "Grid View",
+        "property": "layout",
+        "title": "Layout",
         "description": "Display as grid?",
-        "inputMethod": "boolean",
-        "icon": "icons:view-module"
+        "inputMethod": "select",
+        "itemsList": ["carousel","grid","masonry"]
       }
     ],
     "configure": [
@@ -154,10 +182,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         "inputMethod": "boolean"
       },
       {
-        "property": "grid",
-        "title": "Grid View",
+        "property": "layout",
+        "title": "Layout",
         "description": "Display as grid?",
-        "inputMethod": "boolean"
+        "inputMethod": "select",
+        "itemsList": ["carousel","grid","masonry"]
       },
       {
         "property": "sources",
@@ -430,7 +459,8 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         sizing: sizing
       });
     });
-    if (sources.length > 0 && (!this.sources || this.sources.length < 1)) this.sources = sources;
+    if (sources.length > 0 && (!this.sources || this.sources.length < 1))
+      this.sources = sources;
   }
 
   /**

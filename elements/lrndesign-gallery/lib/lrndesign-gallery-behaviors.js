@@ -140,13 +140,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         }
         lrndesign-gallery-zoom {
           z-index: 2;
-          border: 1px solid transparent;
-          transition: outline 0.5s ease-in-out;
-        }
-        lrndesign-gallery-zoom:focus-within,
-        lrndesign-gallery-zoom:hover {
-          border: 1px solid var(--lrndesign-gallery-color);
-          transition: outline 0.5s ease-in-out;
         }
         simple-tooltip {
           z-index: 2;
@@ -177,26 +170,9 @@ class LrndesignGalleryBehaviors extends SimpleColors {
           opacity: 1;
           transition: opacity 0.5s ease-in-out;
         }
-        #galleryprint {
-          display: none;
-        }
         @media print {
           #galleryscreen {
             display: none !important;
-          }
-          #galleryprint {
-            display: block;
-          }
-          #galleryprint section {
-            margin-top: 15px;
-            margin-bottom: 15px;
-          }
-          #galleryprint .print-image {
-            max-width: 400px;
-            max-height: 400px;
-            display: block;
-            border: 1px solid #ddd;
-            page-break-inside: avoid;
           }
         }
       `
@@ -242,10 +218,17 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         attribute: "gallery-title"
       },
       /**
-       * size for responsive CSS
+       * @deprecated Use @link{layout} instead
        */
       grid: {
         type: Boolean
+      },
+      /**
+       * layout type: currently masonry, carousel, and grid
+       */
+      layout: {
+        type: String,
+        attribute: 'layout'
       },
       /*
        * parent size for responsive styling
@@ -302,49 +285,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       )
         this.galleryTitle = this.title;
     });
-  }
-
-  get galleryPrint() {
-    return html`
-      <div id="galleryprint">
-        ${(this.sources || []).map(
-          item =>
-            html`
-              <article>
-                <h1 ?hidden="${!item.title || item.title === ""}">
-                  ${item.title}
-                </h1>
-                <lrndesign-gallery-details
-                  details="${item.details}"
-                ></lrndesign-gallery-details>
-                <img class="print-image" alt="${item.alt}" src="${item.src}" />
-              </article>
-            `
-        )}
-      </div>
-    `;
-  }
-
-  /**
-   * returns the proper padding to maintain image aspect ratio and
-   *
-   * @readonly
-   * @memberof LrndesignGalleryBehaviors
-   */
-  get imageStyle() {
-    if (this.extraWide || this.responsiveSize === "xs") {
-      return "padding-bottom: " + 100 / this.aspectRatio + "%;";
-    } else {
-      if (this.responsiveSize === "xl") {
-        return "width: " + this.aspectRatio * 400 + "px; height: 400px;";
-      } else if (this.responsiveSize === "lg") {
-        return "width: " + this.aspectRatio * 300 + "px; height: 300px;";
-      } else if (this.responsiveSize === "md") {
-        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
-      } else {
-        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
-      }
-    }
   }
 
   /**
