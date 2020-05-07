@@ -5,6 +5,7 @@
 :host([hidden]) {
   display: none; 
 }
+
 ::slotted(figure){
   display: block;
   margin-top: 15px;

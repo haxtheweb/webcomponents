@@ -228,7 +228,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
        */
       layout: {
         type: String,
-        attribute: 'layout'
+        attribute: "layout"
       },
       /*
        * parent size for responsive styling

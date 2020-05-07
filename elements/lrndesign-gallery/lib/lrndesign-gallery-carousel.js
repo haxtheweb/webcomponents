@@ -362,9 +362,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     @click="${e => this._itemChanged(item.id)}"
                     ?disabled="${this.selected.id === item.id}"
                   >
-                    <img 
-                      alt="${item.alt || `Item ${parseInt(item.index) + 1}`}" 
-                      src="${item.thumbnail}">
+                    <img
+                      alt="${item.alt || `Item ${parseInt(item.index) + 1}`}"
+                      src="${item.thumbnail}"
+                    />
                   </button>
                   <simple-tooltip
                     .for="${item.id}"

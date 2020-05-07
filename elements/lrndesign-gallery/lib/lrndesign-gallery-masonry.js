@@ -9,7 +9,7 @@ import "./lrndesign-gallery-details.js";
 /**
  * `lrndesign-gallery-masonry`
  * An element that renders a collection of gallery items into a grid or a single media item into a layout.
- * 
+ *
  * @element lrndesign-gallery-masonry
  * @extends LrndesignGalleryBehaviors
  * @demo ./demo/masonry.html demo
@@ -41,7 +41,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
         lrndesign-gallery-zoom {
           position: relative;
           margin: 0 10px;
-          flex: 0 1 var(--lrndesign-gallery-image-width,200px);
+          flex: 0 1 var(--lrndesign-gallery-image-width, 200px);
           max-width: 35%;
         }
         lrndesign-gallery-zoom,
@@ -75,7 +75,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     return {
       ...super.properties,
       __aspects: {
-          type: Object
+        type: Object
       },
       __columns: {
         type: Array
@@ -107,32 +107,34 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
         <p class="sr-only">A list of columns buttons items:</p>
         <div id="galleryscreen">
           ${(this.__items || []).map(
-            (row,i) => html`
-            <div>
-              ${(row.cols || []).map(
-                (col,j) => html`
-                <lrndesign-gallery-zoom
-                  .id="${col.id}"
-                  .details="${col.details}"
-                  .heading="${col.heading}"
-                  .src="${col.large}"
-                  .tooltip="${col.tooltip}"
-                  .zoom-alt="${col.zoomAlt}"
-                  style="${this._getStyle(col.aspect,row.aspect)}"
-                >
-                  <img
-                    .alt="${col.alt}"
-                    fade
-                    sizing="${col.sizing || this.sizing || "cover"}"
-                    .src="${col.src}"
-                    @load="${e=>this._handleImgLoad(e)}"
-                  />
-                  <div class="zoombg"></div>
-                  <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
-                </lrndesign-gallery-zoom>
-              `)}
-            </div>
-          `)}
+            (row, i) => html`
+              <div>
+                ${(row.cols || []).map(
+                  (col, j) => html`
+                    <lrndesign-gallery-zoom
+                      .id="${col.id}"
+                      .details="${col.details}"
+                      .heading="${col.heading}"
+                      .src="${col.large}"
+                      .tooltip="${col.tooltip}"
+                      .zoom-alt="${col.zoomAlt}"
+                      style="${this._getStyle(col.aspect, row.aspect)}"
+                    >
+                      <img
+                        .alt="${col.alt}"
+                        fade
+                        sizing="${col.sizing || this.sizing || "cover"}"
+                        .src="${col.src}"
+                        @load="${e => this._handleImgLoad(e)}"
+                      />
+                      <div class="zoombg"></div>
+                      <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                    </lrndesign-gallery-zoom>
+                  `
+                )}
+              </div>
+            `
+          )}
         </div>
       </div>
     `;
@@ -148,41 +150,53 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
       if (propName === "responsiveSize") this._updateItems();
     });
   }
-  _getStyle(aspect,total){
-    let a = `--lrndesign-gallery-image-aspect:${aspect || 100/75};`,
-      h = `--lrndesign-gallery-image-height:${100/aspect || 75}%;`,
-      w =`--lrndesign-gallery-image-width:${aspect*100/total || 0.75}%`;
-    return [a,h,w].join('');
+  _getStyle(aspect, total) {
+    let a = `--lrndesign-gallery-image-aspect:${aspect || 100 / 75};`,
+      h = `--lrndesign-gallery-image-height:${100 / aspect || 75}%;`,
+      w = `--lrndesign-gallery-image-width:${(aspect * 100) / total || 0.75}%`;
+    return [a, h, w].join("");
   }
-  _handleImgLoad(e){
-    if(e.path && e.path.length > 0 && e.path[0].naturalWidth > 0){
+  _handleImgLoad(e) {
+    if (e.path && e.path.length > 0 && e.path[0].naturalWidth > 0) {
       this._updateItems();
     }
   }
-  _updateItems(){
-    let items = [], settings = {
-      "xs": 2, 
-      "sm": 3,
-      "md": 4, 
-      "lg": 5, 
-      "xl": 6
-    }, cols = settings[this.responsiveSize || "xs"],
-      rows = Math.ceil(this.sources.length/cols);
-    for(let i = 0; i < rows;i++){
-      let row = {aspect: 0,cols: []};
-      console.log('row',i);
-      for(let j = i*cols; j < Math.min(this.sources.length,(i+1)*cols); j++){
-        let item = JSON.parse(JSON.stringify(this.sources[j])), 
-        img = this.shadowRoot.querySelector(`img[src="${item.src}"]`);
-        item.aspect = img && img.naturalWidth > 0 ? img.naturalWidth/img.naturalHeight : 100/75;
+  _updateItems() {
+    let items = [],
+      settings = {
+        xs: 2,
+        sm: 3,
+        md: 4,
+        lg: 5,
+        xl: 6
+      },
+      cols = settings[this.responsiveSize || "xs"],
+      rows = Math.ceil(this.sources.length / cols);
+    for (let i = 0; i < rows; i++) {
+      let row = { aspect: 0, cols: [] };
+      console.log("row", i);
+      for (
+        let j = i * cols;
+        j < Math.min(this.sources.length, (i + 1) * cols);
+        j++
+      ) {
+        let item = JSON.parse(JSON.stringify(this.sources[j])),
+          img = this.shadowRoot.querySelector(`img[src="${item.src}"]`);
+        item.aspect =
+          img && img.naturalWidth > 0
+            ? img.naturalWidth / img.naturalHeight
+            : 100 / 75;
         row.aspect += item.aspect;
         row.cols.push(item);
       }
       items.push(row);
     }
     this.__items = items;
-    console.log('this.__items',this.__items);
+    console.log("this.__items", this.__items);
   }
 }
-window.customElements.define(LrndesignGalleryMasonry.tag, LrndesignGalleryMasonry);
+window.customElements.define(
+  LrndesignGalleryMasonry.tag,
+  LrndesignGalleryMasonry
+);
 export { LrndesignGalleryMasonry };
