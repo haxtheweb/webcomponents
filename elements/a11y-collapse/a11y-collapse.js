@@ -285,7 +285,8 @@ class A11yCollapse extends LitElement {
           {
             property: "headingButton",
             title: "Heading Button",
-            description: "Make entire heading clickble instead of just the icon.",
+            description:
+              "Make entire heading clickble instead of just the icon.",
             inputMethod: "boolean"
           },
           {
@@ -310,7 +311,8 @@ class A11yCollapse extends LitElement {
           {
             property: "headingButton",
             title: "Heading Button",
-            description: "Make entire heading clickble instead of just the icon.",
+            description:
+              "Make entire heading clickble instead of just the icon.",
             inputMethod: "boolean"
           },
           {
@@ -437,10 +439,12 @@ class A11yCollapse extends LitElement {
   }
 
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {    
+    changedProperties.forEach((oldValue, propName) => {
       if (propName === "expanded") this._fireToggleEvents();
-      if (propName === "headingButton" && this.headingButton !== oldValue) this.accordion = this.headingButton;
-      if (propName === "accordion" && this.accordion !== oldValue) this.headingButton = this.accordion;
+      if (propName === "headingButton" && this.headingButton !== oldValue)
+        this.accordion = this.headingButton;
+      if (propName === "accordion" && this.accordion !== oldValue)
+        this.headingButton = this.accordion;
     });
   }
 
@@ -619,7 +623,7 @@ class A11yCollapse extends LitElement {
    *
    * @memberof A11yCollapse
    */
-  _makeAccordionButton(){
+  _makeAccordionButton() {
     this._makeHeadingButton();
   }
 }

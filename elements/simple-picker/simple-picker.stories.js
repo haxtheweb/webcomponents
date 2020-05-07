@@ -97,7 +97,8 @@ export const IconPickerStory = () => {
       alignRight: true,
       hideOptionLabels: true,
       value: "search"
-    },[],
+    },
+    [],
     ["options"]
   );
   picker.options = [

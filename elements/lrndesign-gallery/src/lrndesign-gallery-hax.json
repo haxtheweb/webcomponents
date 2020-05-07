@@ -44,9 +44,15 @@
     ],
     "configure": [
       {
-        "property": "galleryTitle",
-        "title": "Gallery Title",
-        "description": "A title for the gallery.",
+        "slot": "title",
+        "title": "Optional Gallery Title",
+        "description": "Am optional title for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "description",
+        "title": "OptionalGallery Description",
+        "description": "An optional description for the gallery.",
         "inputMethod": "textfield"
       },
       {
@@ -66,12 +72,6 @@
         "title": "Grid View",
         "description": "Display as grid?",
         "inputMethod": "boolean"
-      },
-      {
-        "slot": "description",
-        "title": "Gallery Description",
-        "description": "An optional description for the gallery.",
-        "inputMethod": "textfield"
       },
       {
         "property": "sources",

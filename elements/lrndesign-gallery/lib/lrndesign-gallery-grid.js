@@ -9,6 +9,19 @@ import "./lrndesign-gallery-details.js";
 /**
  * `lrndesign-gallery-grid`
  * An element that renders a collection of gallery items into a grid or a single media item into a layout.
+ * 
+### Styling
+
+`<lrndesign-gallery-grid>` provides following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--lrndesign-gallery-grid-columns-xs` | size of grid items when gallery is extra small | 100px
+`--lrndesign-gallery-grid-columns-sm` | size of grid items when gallery is small | 150px
+`--lrndesign-gallery-grid-columns-md` | size of grid items when gallery is medium | 200px
+`--lrndesign-gallery-grid-columns-lg` | size of grid items when gallery is large | 250px
+`--lrndesign-gallery-grid-columns-xl` | size of grid items when gallery is extra large | 300px
  *
  * @element lrndesign-gallery-grid
  * @extends LrndesignGalleryBehaviors
@@ -27,33 +40,33 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
       ...super.styles,
       css`
         :host {
-          margin: 15px 0 0;
+          margin: 15px 0;
           padding: 0;
           max-width: 100%;
           display: block;
         }
         #galleryscreen {
-          display: flex;
-          flex-wrap: wrap;
+          display: grid;
+          grid-gap: 7.5px;
+          grid-template-columns: repeat(2,1fr);
+        }
+        :host([responsive-size=sm]) #galleryscreen {
+          grid-template-columns: repeat(3,1fr);
+        }
+        :host([responsive-size=md]) #galleryscreen {
+          grid-template-columns: repeat(4,1fr);
+        }
+        :host([responsive-size=lg]) #galleryscreen {
+          grid-template-columns: repeat(5,1fr);
+        }
+        :host([responsive-size=xl]) #galleryscreen {
+          grid-template-columns: repeat(6,1fr);
         }
         lrndesign-gallery-zoom {
           position: relative;
-          margin: 0 7.5px 7.5px;
-          width: var(--lrndesign-gallery-grid-thumbnail-xs, 100px);
+          width: 100%;
         }
-        :host([responsive-size="sm"]) lrndesign-gallery-zoom {
-          width: var(--lrndesign-gallery-grid-thumbnail-sm, 150px);
-        }
-        :host([responsive-size="md"]) lrndesign-gallery-zoom {
-          width: var(--lrndesign-gallery-grid-thumbnail-md, 200px);
-        }
-        :host([responsive-size="lg"]) lrndesign-gallery-zoom {
-          width: var(--lrndesign-gallery-grid-thumbnail-lg, 250px);
-        }
-        :host([responsive-size="xl"]) lrndesign-gallery-zoom {
-          width: var(--lrndesign-gallery-grid-thumbnail-lg, 300px);
-        }
-        iron-image {
+        lrndesign-gallery-zoom img {
           width: 100%;
         }
         .zoombg,
@@ -87,12 +100,8 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   // render function
   render() {
     return html`
-      <article id="grid">
-        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">
-          ${this.galleryTitle}
-        </h1>
-        <div id="gallery-description"><slot></slot></div>
-        <p class="sr-only">A list of thumbnail buttons items:</p>
+      <div id="grid">
+        <p class="sr-only">A list of columns buttons items:</p>
         <div id="galleryscreen">
           ${this.sources.map(
             item => html`
@@ -104,28 +113,20 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 tooltip="${item.tooltip}"
                 zoom-alt="${item.zoomAlt}"
               >
-                <iron-image
+                <img 
                   alt="${item.alt}"
                   fade
                   sizing="${this.selected.sizing || this.sizing || "cover"}"
-                  src="${item.thumbnail}"
-                  style="${this.imageStyle}"
+                  src="${item.src}"
                 >
-                </iron-image>
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
-              <simple-tooltip
-                for="${item.id}"
-                position="bottom"
-                controls="zoomtpl"
-                >${item.tooltip}</simple-tooltip
-              >
             `
           )}
         </div>
         ${this.galleryPrint}
-      </article>
+      </div>
     `;
   }
 

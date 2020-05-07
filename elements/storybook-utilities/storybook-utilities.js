@@ -325,9 +325,9 @@ export class StorybookUtilities {
    * @returns string
    * @memberof StorybookUtilities
    */
-  getRandomIcon(includeNull = false){
+  getRandomIcon(includeNull = false) {
     let random = this.getRandomOption(window.StorybookIcons);
-    return includeNull ? this.getRandomOption([...random,""]) : random;
+    return includeNull ? this.getRandomOption([...random, ""]) : random;
   }
 
   /**
@@ -466,8 +466,10 @@ export class StorybookUtilities {
       },
       method = field.inputMethod,
       options = field.options,
-      val = (group === "slots" || method === "code-editor") 
-        ? this.updateSlot(defaultValue,field.slot) : defaultValue,
+      val =
+        group === "slots" || method === "code-editor"
+          ? this.updateSlot(defaultValue, field.slot)
+          : defaultValue,
       colors = this.getColors(),
       knob;
     if (!options && field.itemsList) {
@@ -543,23 +545,23 @@ export class StorybookUtilities {
     };
   }
   /**
-   * makes sure slot 
+   * makes sure slot
    *
    * @param {string} text slot's text knob
    * @param {string} slot name of slot
    * @returns string
    * @memberof StorybookUtilities
    */
-  updateSlot(text,slot){
-    if(text){
+  updateSlot(text, slot) {
+    if (text) {
       let div = document.createElement("div"),
         inner = div.cloneNode(),
         parent = div,
         target = inner,
         html = text
-              .replace(/&lt;/gi, "<")
-              .replace(/&gt;/gi, ">")
-              .replace(/&amp;/gi, "&");
+          .replace(/&lt;/gi, "<")
+          .replace(/&gt;/gi, ">")
+          .replace(/&amp;/gi, "&");
       div.appendChild(inner);
       inner.innerHTML = html;
       if (inner.children.length === 1 || slot === "") {
@@ -602,11 +604,12 @@ export class StorybookUtilities {
       el[prop] = val;
     });
     Object.keys(knobs.slots || {}).map(slot => {
-      if(knobs.slots[slot].knob) el.innerHTML += knobs.slots[slot].knob
-      .replace(/&lt;/gi, "<")
-      .replace(/&gt;/gi, ">")
-      .replace(/&quot;/gi, '"')
-      .replace(/&amp;/gi, "&");
+      if (knobs.slots[slot].knob)
+        el.innerHTML += knobs.slots[slot].knob
+          .replace(/&lt;/gi, "<")
+          .replace(/&gt;/gi, ">")
+          .replace(/&quot;/gi, '"')
+          .replace(/&amp;/gi, "&");
     });
     Object.keys(knobs.css || {}).forEach(prop => {
       console.log("css", prop, knobs);

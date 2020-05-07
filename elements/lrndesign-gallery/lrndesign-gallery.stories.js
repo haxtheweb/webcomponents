@@ -13,67 +13,180 @@ export default {
 };
 
 const utils = new StorybookUtilities();
-let sources = [
-  {
-    title: "The entanglement",
-    details:
-      "Photograph shows four kittens wearing clothes playing with a ball of twine.",
-    src: "//tile.loc.gov/storage-services/service/pnp/ds/04000/04034r.jpg",
-    thumbnail:
-      "//tile.loc.gov/storage-services/service/pnp/ds/04000/04034_150px.jpg",
-    large: "//tile.loc.gov/storage-services/service/pnp/ds/04000/04034v.jpg"
-  },
-  {
-    title: "The Black Cat, December",
-    details:
-      'Poster shows a black cat wearing a collar with a "5 cents" charm as the cover illustration for The Black Cat for December.',
-    src: "//tile.loc.gov/storage-services/service/pnp/ppmsca/43500/43507r.jpg",
-    thumbnail:
-      "//tile.loc.gov/storage-services/service/pnp/ppmsca/43500/43507_150px.jpg",
-    large: "//tile.loc.gov/storage-services/service/pnp/ppmsca/43500/43507v.jpg"
-  },
-  {
-    title: "Harper's May / Edward Penfield.",
-    details: "Woman holding two cats.",
-    sizing: "contain",
-    src:
-      "//tile.loc.gov/storage-services/service/pnp/cph/3g00000/3g03000/3g03000/3g03063r.jpg",
-    thumbnail:
-      "//tile.loc.gov/storage-services/service/pnp/cph/3g00000/3g03000/3g03000/3g03063_150px.jpg",
-    large:
-      "//tile.loc.gov/storage-services/service/pnp/cph/3g00000/3g03000/3g03000/3g03063v.jpg"
-  },
-  {
-    title: "Brünnhilde",
-    details: "Photograph shows cat dressed in Viking helmet and shield.",
-    sizing: "contain",
-    src: "//tile.loc.gov/storage-services/service/pnp/ppmsca/51500/51533r.jpg",
-    thumbnail:
-      "//tile.loc.gov/storage-services/service/pnp/ppmsca/51500/51533_150px.jpg",
-    large: "//tile.loc.gov/storage-services/service/pnp/ppmsca/51500/51533v.jpg"
-  }
+let options = [
+    {
+      slot: "",
+      title: "Gallery Figures",
+      inputMethod: "code-editor"
+    },
+    { css: "maxWidth"},
+    { css: "--lrndesign-gallery-color", title: "text color" },
+    { css: "--lrndesign-gallery-background-color", title: "background color" },
+    { css: "--lrndesign-gallery-border-color", title: "subtle border color" },
+    { css: "--lrndesign-gallery-focus-color", title: "accent color" },
+    { css: "--lrndesign-gallery-thumbnail-outline", title: "thumbnail outline color" },
+    { css: "--lrndesign-gallery-dialog-color", title: "zoom dialog text color" },
+    { css: "--lrndesign-gallery-dialog-background-color", title: "zoom dialog background-color" },
+    { css: "--lrndesign-gallery-dialog-titlebar-color", title: "zoom dialog title bar text color" },
+    { css: "--lrndesign-gallery-dialog-titlebar-background-color", title: "zoom dialog title bar background-color" },
+    { css: "--lrndesign-gallery-dialog-header-color", title: "zoom dialog header bar text color" },
+    { css: "--lrndesign-gallery-dialog-header-background-color", title: "zoom dialog header bar background-color" },
+    { css: "--lrndesign-gallery-grid-thumbnail-xs", title: "size of grid items when gallery is extra small" },
+    { css: "--lrndesign-gallery-grid-thumbnail-sm", title: "size of grid items when gallery is small" },
+    { css: "--lrndesign-gallery-grid-thumbnail-md", title: "size of grid items when gallery is medium" },
+    { css: "--lrndesign-gallery-grid-thumbnail-lg", title: "size of grid items when gallery is large" },
+    { css: "--lrndesign-gallery-grid-thumbnail-xl", title: "size of grid items when gallery is extra large" },
+    { css: "--lrndesign-gallery-carousel-next-bg", title: "gradient on carousel next button" },
+    { css: "--lrndesign-gallery-carousel-prev-bg", title: "gradient on carousel prev button" }
+  ],
+  sources = [
+  [
+    {
+      title: "Bird",
+      details: utils.getRandomTextarea(),
+      alt: "A bird with bright blue feathers.",
+      src: new URL(`demo/images/bird.jpg`, import.meta.url),
+      large: new URL(`demo/images/bird.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/bird.jpg`, import.meta.url)
+    },
+    {
+      title: "Cat",
+      alt: "A tabby cat's face.",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/cat.jpeg`, import.meta.url),
+      large: new URL(`demo/images/cat.jpeg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/cat.jpeg`, import.meta.url)
+    },
+    {
+      title: "Dog",
+      alt: "A dog tilting its head.",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/dog.jpg`, import.meta.url),
+      large: new URL(`demo/images/dog.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/dog.jpg`, import.meta.url)
+    },
+    {
+      title: "Fish",
+      alt: "A bright red-orange fish",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/fish.jpg`, import.meta.url),
+      large: new URL(`demo/images/fish.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/fish.jpg`, import.meta.url)
+    }
+  ],
+  [
+    {
+      title: "Atari",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/atari.jpg`, import.meta.url),
+      large: new URL(`demo/images/atari.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/atari.jpg`, import.meta.url)
+    },
+    {
+      title: "Nintendo",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/nintendo.png`, import.meta.url),
+      large: new URL(`demo/images/nintendo.png`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/nintendo.png`, import.meta.url)
+    },
+    {
+      title: "PS4",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/ps4.jpg`, import.meta.url),
+      large: new URL(`demo/images/ps4.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/ps4.jpg`, import.meta.url)
+    },
+    {
+      title: "Sega",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/sega.jpg`, import.meta.url),
+      large: new URL(`demo/images/sega.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/sega.jpg`, import.meta.url)
+    },
+    {
+      title: "XBox",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/xbox.png`, import.meta.url),
+      large: new URL(`demo/images/xbox.png`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/xbox.png`, import.meta.url)
+    }
+  ],
+  [
+    {
+      title: "Apple",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/apple.jpg`, import.meta.url),
+      large: new URL(`demo/images/apple.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/apple.jpg`, import.meta.url)
+    },
+    {
+      title: "Banana",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/banana.jpg`, import.meta.url),
+      large: new URL(`demo/images/banana.jpg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/banana.jpg`, import.meta.url)
+    },
+    {
+      title: "Carrot",
+      details: utils.getRandomTextarea(),
+      src: new URL(`demo/images/carrot.jpeg`, import.meta.url),
+      large: new URL(`demo/images/carrot.jpeg`, import.meta.url),
+      thumbnail:new URL(`demo/images/thumbnails/carrot.jpeg`, import.meta.url)
+    }
+  ]
 ];
 export const LrndesignGalleryCarousel = () => {
-  let carousel = utils.makeElementFromClass(LrndesignGallery, {
+  return utils.makeElementFromClass(LrndesignGallery, {
     accentColor: utils.getRandomColor(),
-    galleryTitle: utils.getRandomText(),
+    title: utils.getRandomText(),
     description: utils.getRandomTextarea(),
-    sources: sources,
-    imageSrc: utils.getRandomImage()
-  });
-  carousel.style.maxWidth = "800px";
-  return carousel;
+    sources: utils.getRandomOption(sources),
+    imagesrc: utils.getRandomImage(),
+    maxWidth: "800px"
+  },options);
 };
 
 export const LrndesignGalleryGrid = () => {
-  let grid = utils.makeElementFromClass(LrndesignGallery, {
+  return utils.makeElementFromClass(LrndesignGallery, {
     accentColor: utils.getRandomColor(),
     grid: true,
-    galleryTitle: utils.getRandomText(),
+    title: utils.getRandomText(),
     description: utils.getRandomTextarea(),
-    sources: sources,
-    imageSrc: utils.getRandomImage()
-  });
-  grid.style.maxWidth = "800px";
-  return grid;
+    sources: utils.getRandomOption(sources),
+    imagesrc: utils.getRandomImage(),
+    maxWidth: "800px"
+  },options);
+};
+
+export const LrndesignGalleryWithJustOneFigure = () => {
+  return utils.makeElementFromClass(LrndesignGallery, {
+    accentColor: utils.getRandomColor(),
+    title: utils.getRandomText(),
+    description: utils.getRandomTextarea(),
+    sources: [utils.getRandomOption(utils.getRandomOption(sources))],
+    imagesrc: utils.getRandomImage(),
+    maxWidth: "800px"
+  },options);
+};
+
+export const LrndesignGalleryWithSlots = () => {
+  return utils.makeElementFromClass(LrndesignGallery, {
+    accentColor: utils.getRandomColor(),
+    title: utils.getRandomText(),
+    description: utils.getRandomTextarea(),
+    imagesrc: utils.getRandomImage(),
+    maxWidth: "800px",
+    emptyslot: utils.getRandomOption(sources).map(source=>
+      `<figure>
+        <img srcset="${source.thumbnail || source.src} 480w, ${source.src} 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        src="${source.src || source.large}"
+        alt="${source.alt}">
+        <figcaption>
+          ${source.title ? `<h3>${source.title}</h3>` : ''}
+          ${source.details ? `<p>${source.details}</p>` : ''}
+        </figcaption>
+      </figure>
+      `).join('')
+  },options);
 };

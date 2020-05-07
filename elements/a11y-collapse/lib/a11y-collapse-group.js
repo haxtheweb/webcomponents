@@ -175,7 +175,7 @@ class A11yCollapseGroup extends LitElement {
             title: "Collapse Items",
             description: "The collapse items.",
             inputMethod: "code-editor"
-          },
+          }
         ],
         advanced: [
           {

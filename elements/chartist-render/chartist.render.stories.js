@@ -40,7 +40,7 @@ let scale = {
     "ct-double-octave": "ct-double-octave  (1:4`)"
   },
   styles = [
-    {css: "maxWidth"},
+    { css: "maxWidth" },
     { css: "--chartist-bg-padding", title: "padding inside chartist-render" },
     { css: "--chartist-bg-margin", title: "margin chartist chartist-render" },
     { css: "--chartist-text-color", title: "default label color for charts" },
@@ -75,10 +75,10 @@ let scale = {
     { css: "--chartist-color-n", title: "background color for 14th series" },
     { css: "--chartist-color-label-n", title: "color for 15th series label" },
     { css: "--chartist-color-0", title: "background color for 15th series" },
-    { css: "--chartist-color-label-o", title: "color for 15th series label" },
+    { css: "--chartist-color-label-o", title: "color for 15th series label" }
   ],
   barData = new URL(`demo/bar.csv`, import.meta.url),
-  donutData =  new URL(`demo/donut.csv`, import.meta.url),
+  donutData = new URL(`demo/donut.csv`, import.meta.url),
   lineData = new URL(`demo/line.csv`, import.meta.url),
   pieData = new URL(`demo/pie.csv`, import.meta.url),
   props = utils
@@ -96,65 +96,84 @@ props.forEach(prop => {
     prop.options = ["bar", "pie", "line"];
   }
 });
-props = [...props,...styles];
+props = [...props, ...styles];
 export const ChartistRenderBarStory = () => {
-  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+  return utils.makeElement(
+    "chartist-render",
+    utils.getKnobs(props, {
       dataSource: barData,
       chartTitle: "Sales by Quarter",
       chartDesc:
         "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
       type: "bar",
-      maxWidth: '600px'
-    }));
+      maxWidth: "600px"
+    })
+  );
 };
 export const ChartistRenderLineStory = () => {
-  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+  return utils.makeElement(
+    "chartist-render",
+    utils.getKnobs(props, {
       dataSource: lineData,
       chartTitle: "Sales by Quarter",
       chartDesc:
         "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
       type: "line",
-      maxWidth: '600px'
-    }));
+      maxWidth: "600px"
+    })
+  );
 };
 export const ChartistRenderPieStory = () => {
-  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+  return utils.makeElement(
+    "chartist-render",
+    utils.getKnobs(props, {
       dataSource: pieData,
       chartTitle: "Favorite Pie",
       chartDesc: "A pie chart of favorite pies.",
       scale: "ct-square",
       type: "pie",
-      maxWidth: '300px'
-    }));
+      maxWidth: "300px"
+    })
+  );
 };
 export const ChartistRenderDonutStory = () => {
-  return utils.makeElement("chartist-render", utils.getKnobs(props, {
+  return utils.makeElement(
+    "chartist-render",
+    utils.getKnobs(props, {
       dataSource: donutData,
       chartTitle: "Favorite Donuts",
       chartDesc: "A donut chart of favorite donuts.",
       scale: "ct-square",
       type: "pie",
       options: { donut: true },
-      maxWidth: '300px'
-    }));
+      maxWidth: "300px"
+    })
+  );
 };
 export const ChartistWithSlots = () => {
-  return utils.makeElement("chartist-render", utils.getKnobs([
-      { slot: "heading", inputMethod: "string", name: "heading" },
-      { slot: "desc", inputMethod: "textarea", name: "desc" },
-      { slot: "", inputMethod: "textarea", name: "" },
-      ...props.filter(
-        prop => !["chartTitle", "chartDesc", "data"].includes(prop.name)
-      )
-    ],{
-      dataSource: pieData,
-      heading: "Favorite Pie",
-      desc: "A pie chart of favorite pie.",
-      scale: "ct-square",
-      type: "pie",
-      emptyslot: '<table><thead><tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead><tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody></table>',
-      maxWidth: '300px'
-    }));
+  return utils.makeElement(
+    "chartist-render",
+    utils.getKnobs(
+      [
+        { slot: "heading", inputMethod: "string", name: "heading" },
+        { slot: "desc", inputMethod: "textarea", name: "desc" },
+        { slot: "", inputMethod: "textarea", name: "" },
+        ...props.filter(
+          prop => !["chartTitle", "chartDesc", "data"].includes(prop.name)
+        )
+      ],
+      {
+        dataSource: pieData,
+        heading: "Favorite Pie",
+        desc: "A pie chart of favorite pie.",
+        scale: "ct-square",
+        type: "pie",
+        emptyslot:
+          '<table><thead><tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead><tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody></table>',
+        maxWidth: "300px"
+      }
+    )
+  );
 };

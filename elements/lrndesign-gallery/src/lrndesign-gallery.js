@@ -31,6 +31,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // life cycle
   constructor() {
     super();
+    this.sources = [];
     this.sizing = "cover";
   }
   /**
@@ -208,8 +209,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         sizing: sizing
       });
     });
-    if (sources.length > 0 && this.sources.length < 1) this.sources = sources;
-    console.log(sources, this.items);
+    if (sources.length > 0 && (!this.sources || this.sources.length < 1)) this.sources = sources;
   }
 
   /**

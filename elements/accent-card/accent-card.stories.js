@@ -28,35 +28,83 @@ export const AccentCardStory = () => {
       maxWidth: "600px"
     },
     [
-      { css: "--accent-card-image-width", title:"Width of horizontal image" },
-      { css: "--accent-card-image-height", title:"Height of vertical image" },
-      { css: "--accent-card-padding", title:"Default padding unit" },
-      { css: "--accent-card-footer-border-color", title:"Footer border color" },
-      { css: "--accent-card-box-shadow", title:"Card box-shadow" },
-      { css: "--accent-card-padding-top", title:"Card padding-top " },
-      { css: "--accent-card-padding-left", title:"Card padding-left" },
-      { css: "--accent-card-padding-right", title:"Card padding-right" },
-      { css: "--accent-card-padding-bottom", title:"Card padding-bottom" },
-      { css: "--accent-card-heading-padding-top", title:"Heading padding-top" },
-      { css: "--accent-card-heading-padding-left", title:"Heading padding-left" },
-      { css: "--accent-card-heading-padding-right", title:"Heading padding-right" },
-      { css: "--accent-card-heading-padding-bottom", title:"Heading padding-bottom" },
-      { css: "--accent-card-subheading-padding-top", title:"Subeading padding-top" },
-      { css: "--accent-card-subheading-padding-left", title:"Subeading padding-left" },
-      { css: "--accent-card-subheading-padding-right", title:"Subeading padding-right" },
-      { css: "--accent-card-subheading-padding-bottom", title:"Subeading padding-bottom" },
-      { css: "--accent-card-content-padding-top", title:"Content padding-top" },
-      { css: "--accent-card-content-padding-left", title:"Content padding-left" },
-      { css: "--accent-card-content-padding-right", title:"Content padding-right" },
-      { css: "--accent-card-content-padding-bottom", title:"Content padding-bottom" },
-      { css: "--accent-card-footer-padding-top", title:"Footer padding-top" },
-      { css: "--accent-card-footer-padding-left", title:"Footer padding-left" },
-      { css: "--accent-card-footer-padding-right", title:"Footer padding-right" },
-      { css: "--accent-card-footer-padding-bottom", title:"Footer padding-bottom" },
-      { css: "--accent-card-color", title:"Card text color" },
-      { css: "--accent-card-background-color", title:"Card background color" },
-      { css: "--accent-card-border-color", title:"Card background color" },
-      { css: "--accent-card-border-color", title:"Card heading text color" },
+      { css: "--accent-card-image-width", title: "Width of horizontal image" },
+      { css: "--accent-card-image-height", title: "Height of vertical image" },
+      { css: "--accent-card-padding", title: "Default padding unit" },
+      {
+        css: "--accent-card-footer-border-color",
+        title: "Footer border color"
+      },
+      { css: "--accent-card-box-shadow", title: "Card box-shadow" },
+      { css: "--accent-card-padding-top", title: "Card padding-top " },
+      { css: "--accent-card-padding-left", title: "Card padding-left" },
+      { css: "--accent-card-padding-right", title: "Card padding-right" },
+      { css: "--accent-card-padding-bottom", title: "Card padding-bottom" },
+      {
+        css: "--accent-card-heading-padding-top",
+        title: "Heading padding-top"
+      },
+      {
+        css: "--accent-card-heading-padding-left",
+        title: "Heading padding-left"
+      },
+      {
+        css: "--accent-card-heading-padding-right",
+        title: "Heading padding-right"
+      },
+      {
+        css: "--accent-card-heading-padding-bottom",
+        title: "Heading padding-bottom"
+      },
+      {
+        css: "--accent-card-subheading-padding-top",
+        title: "Subeading padding-top"
+      },
+      {
+        css: "--accent-card-subheading-padding-left",
+        title: "Subeading padding-left"
+      },
+      {
+        css: "--accent-card-subheading-padding-right",
+        title: "Subeading padding-right"
+      },
+      {
+        css: "--accent-card-subheading-padding-bottom",
+        title: "Subeading padding-bottom"
+      },
+      {
+        css: "--accent-card-content-padding-top",
+        title: "Content padding-top"
+      },
+      {
+        css: "--accent-card-content-padding-left",
+        title: "Content padding-left"
+      },
+      {
+        css: "--accent-card-content-padding-right",
+        title: "Content padding-right"
+      },
+      {
+        css: "--accent-card-content-padding-bottom",
+        title: "Content padding-bottom"
+      },
+      { css: "--accent-card-footer-padding-top", title: "Footer padding-top" },
+      {
+        css: "--accent-card-footer-padding-left",
+        title: "Footer padding-left"
+      },
+      {
+        css: "--accent-card-footer-padding-right",
+        title: "Footer padding-right"
+      },
+      {
+        css: "--accent-card-footer-padding-bottom",
+        title: "Footer padding-bottom"
+      },
+      { css: "--accent-card-color", title: "Card text color" },
+      { css: "--accent-card-background-color", title: "Card background color" },
+      { css: "--accent-card-border-color", title: "Card background color" },
+      { css: "--accent-card-border-color", title: "Card heading text color" },
       { css: "width" },
       { css: "maxWidth" }
     ]

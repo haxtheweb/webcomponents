@@ -62,73 +62,73 @@ class A11yTab extends LitElement {
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": false,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Tab",
-    "description": "A single tab.",
-    "icon": "view-day",
-    "color": "grey",
-    "groups": ["Content", "Presentation", "Tabs"]
-  },
-  "settings": {
-    "quick": [
-      {
-        "property": "disabled",
-        "title": "Disabled",
-        "inputMethod": "boolean"
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Tab",
+        description: "A single tab.",
+        icon: "view-day",
+        color: "grey",
+        groups: ["Content", "Presentation", "Tabs"]
       },
-      {
-        "property": "sticky",
-        "title": "Sticky.",
-        "desc": "Horizontal tabs stick to the top of the window when scrolling.",
-        "inputMethod": "boolean"
+      settings: {
+        quick: [
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean"
+          },
+          {
+            property: "sticky",
+            title: "Sticky.",
+            desc:
+              "Horizontal tabs stick to the top of the window when scrolling.",
+            inputMethod: "boolean"
+          }
+        ],
+        configure: [
+          {
+            property: "icon",
+            title: "Tab Icon",
+            inputMethod: "iconpicker"
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean"
+          },
+          {
+            property: "label",
+            title: "Tab Label",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "",
+            title: "Tab Content",
+            description: "A content of the tab.",
+            inputMethod: "code-editor"
+          }
+        ],
+        advanced: [
+          {
+            property: "id",
+            title: "Unique ID",
+            inputMethod: "textfield"
+          },
+          {
+            property: "flag",
+            title: "Optional Flag Text",
+            inputMethod: "textfield"
+          },
+          {
+            property: "flagIcon",
+            title: "Optional Flag Icon",
+            inputMethod: "iconpicker"
+          }
+        ]
       }
-    ],
-    "configure": [
-      {
-        "property": "icon",
-        "title": "Tab Icon",
-        "inputMethod": "iconpicker"
-      },
-      {
-        "property": "disabled",
-        "title": "Disabled",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "label",
-        "title": "Tab Label",
-        "inputMethod": "textfield"
-      },
-      {
-        "slot": "",
-        "title": "Tab Content",
-        "description": "A content of the tab.",
-        "inputMethod": "code-editor"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "id",
-        "title": "Unique ID",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "flag",
-        "title": "Optional Flag Text",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "flagIcon",
-        "title": "Optional Flag Icon",
-        "inputMethod": "iconpicker"
-      }
-
-    ]
-  }
-};
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {

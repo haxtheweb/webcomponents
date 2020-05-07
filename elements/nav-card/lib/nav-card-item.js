@@ -183,8 +183,8 @@ class NavCardItem extends LitElement {
           text-decoration: none;
           padding: 5px 0;
           margin-bottom: 1px;
-          color: var(--nav-card-item-color,unset);
-          background-color: var(--nav-card-item-background-color,unset);
+          color: var(--nav-card-item-color, unset);
+          background-color: var(--nav-card-item-background-color, unset);
           border-bottom: var(
             --nav-card-linklist-border-bottom,
             1px solid var(--simple-colors-default-theme-grey-4, #666)
@@ -219,8 +219,8 @@ class NavCardItem extends LitElement {
           border: none;
           padding: 0;
           text-align: left;
-          color: var(--nav-card-item-color,unset);
-          background-color: var(--nav-card-item-background-color,unset);
+          color: var(--nav-card-item-color, unset);
+          background-color: var(--nav-card-item-background-color, unset);
           font-size: var(--nav-card-item-label-font-size, inherit);
           font-weight: var(--nav-card-item-label-font-weight, bold);
         }

@@ -138,14 +138,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
           position: static !important;
           cursor: pointer;
         }
-        /*TODO
-        :host .gallerythumb iron-image {
-          @apply --lrndesign-gallery-thumbnail-image;
-        }
-        :host .gallerythumb:focus iron-image,
-        :host .gallerythumb:hover iron-image {
-          @apply --lrndesign-gallery-thumbnail-image-focus;
-        }*/
         lrndesign-gallery-zoom {
           z-index: 2;
           border: 1px solid transparent;
@@ -246,6 +238,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
        */
       galleryTitle: {
         type: String,
+        reflect: true,
         attribute: "gallery-title"
       },
       /**
@@ -317,15 +310,15 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         ${(this.sources || []).map(
           item =>
             html`
-              <section>
-                <h2 ?hidden="${!item.title || item.title === ""}">
+              <article>
+                <h1 ?hidden="${!item.title || item.title === ""}">
                   ${item.title}
-                </h2>
+                </h1>
                 <lrndesign-gallery-details
                   details="${item.details}"
                 ></lrndesign-gallery-details>
                 <img class="print-image" alt="${item.alt}" src="${item.src}" />
-              </section>
+              </article>
             `
         )}
       </div>

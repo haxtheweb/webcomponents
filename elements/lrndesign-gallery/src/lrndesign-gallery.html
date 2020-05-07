@@ -1,4 +1,4 @@
-<div id="gallery">
+<div id="gallery" style="--lrndesign-gallery-image-aspect:${this.aspectRatio};--lrndesign-gallery-image-height:${100/this.aspectRatio}%">
   ${this.grid
     ? html`
         <lrndesign-gallery-grid
@@ -12,10 +12,10 @@
           .selected="${this.selected}"
           sizing="${this.sizing}"
           .sources="${this.items}"
-          gallery-title="${this.galleryTitle}"
         >
-          <slot></slot>
-        </lrndesign-gallery-grid>
+        <div slot="title"><slot name="title"></slot></div>
+        <div slot="description"><slot name="description"></slot></div>
+      </lrndesign-gallery-grid>
       `
     : html`
         <lrndesign-gallery-carousel
@@ -29,9 +29,9 @@
           .selected="${this.selected}"
           sizing="${this.sizing}"
           .sources="${this.items}"
-          gallery-title="${this.galleryTitle}"
         >
-          <slot></slot>
+        <div slot="title"><slot name="title"></slot></div>
+        <div slot="description"><slot name="description"></slot></div>
         </lrndesign-gallery-carousel>`
     }
 </div>

@@ -69,8 +69,7 @@
         "property": "id",
         "title": "Unique ID",
         "inputMethod": "textfield"
-      },
-
+      }
     ]
   }
 }
