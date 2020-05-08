@@ -31,105 +31,111 @@ const utils = new StorybookUtilities(),
     hideTimestamps: utils.getRandomBool(),
     linkable: utils.getRandomBool(),
     standalone: utils.getRandomBool(),
-    stickyCorner: utils.getRandomOption(["none","top-left","top-right","bottom-left","bottom-right"]),
+    stickyCorner: utils.getRandomOption([
+      "none",
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right"
+    ])
   },
   fields = [
     {
-      "property": "accentColor",
-      "title": "Accent color",
-      "inputMethod": "colorpicker"
+      property: "accentColor",
+      title: "Accent color",
+      inputMethod: "colorpicker"
     },
     {
-      "property": "dark",
-      "title": "Dark theme",
-      "inputMethod": "boolean"
+      property: "dark",
+      title: "Dark theme",
+      inputMethod: "boolean"
     },
     {
-      "property": "mediaTitle",
-      "title": "Title",
-      "inputMethod": "textfield"
+      property: "mediaTitle",
+      title: "Title",
+      inputMethod: "textfield"
     },
     {
-      "property": "source",
-      "title": "Source",
-      "inputMethod": "haxupload"
+      property: "source",
+      title: "Source",
+      inputMethod: "haxupload"
     },
     {
-      "property": "track",
-      "title": "Closed captions",
-      "inputMethod": "haxupload"
+      property: "track",
+      title: "Closed captions",
+      inputMethod: "haxupload"
     },
     {
-      "property": "thumbnailSrc",
-      "title": "Thumbnail image",
-      "inputMethod": "haxupload"
+      property: "thumbnailSrc",
+      title: "Thumbnail image",
+      inputMethod: "haxupload"
     },
     {
-      "property": "linkable",
-      "title": "Share Link",
-      "inputMethod": "boolean"
+      property: "linkable",
+      title: "Share Link",
+      inputMethod: "boolean"
     },
     {
-      "property": "disableSearch",
-      "title": "Disable Transcript Search",
-      "inputMethod": "boolean"
+      property: "disableSearch",
+      title: "Disable Transcript Search",
+      inputMethod: "boolean"
     },
     {
-      "property": "disableInteractive",
-      "title": "Disable Interactive Transcript",
-      "inputMethod": "boolean"
+      property: "disableInteractive",
+      title: "Disable Interactive Transcript",
+      inputMethod: "boolean"
     },
     {
-      "property": "hideTimestamps",
-      "title": "Remove Transcript Timestamps",
-      "inputMethod": "boolean"
+      property: "hideTimestamps",
+      title: "Remove Transcript Timestamps",
+      inputMethod: "boolean"
     },
     {
-      "property": "crossorigin",
-      "title": "Crossorigin",
-      "inputMethod": "select",
-      "options": {
+      property: "crossorigin",
+      title: "Crossorigin",
+      inputMethod: "select",
+      options: {
         "": "",
-        "anonymous": "anonymous",
+        anonymous: "anonymous",
         "use-credentials": "use-credentials"
       }
     },
     {
-      "property": "darkTranscript",
-      "title": "Dark theme for transcript",
-      "inputMethod": "boolean"
+      property: "darkTranscript",
+      title: "Dark theme for transcript",
+      inputMethod: "boolean"
     },
     {
-      "property": "disableInteractive",
-      "title": "Disable Interactive",
-      "inputMethod": "boolean"
+      property: "disableInteractive",
+      title: "Disable Interactive",
+      inputMethod: "boolean"
     },
     {
-      "property": "hideTimestamps",
-      "title": "Hide timestamps",
-      "inputMethod": "boolean"
+      property: "hideTimestamps",
+      title: "Hide timestamps",
+      inputMethod: "boolean"
     },
     {
-      "property": "hideTranscript",
-      "title": "Hide Transcript",
-      "inputMethod": "boolean"
+      property: "hideTranscript",
+      title: "Hide Transcript",
+      inputMethod: "boolean"
     },
     {
-      "property": "lang",
-      "title": "Language",
-      "inputMethod": "textfield"
+      property: "lang",
+      title: "Language",
+      inputMethod: "textfield"
     },
     {
-      "property": "linkable",
-      "title": "Include a share link?",
-      "inputMethod": "boolean"
+      property: "linkable",
+      title: "Include a share link?",
+      inputMethod: "boolean"
     },
     {
-      "property": "stickyCorner",
-      "title": "Sticky Corner",
-      "inputMethod": "select",
-      "options": {
-        "none": "none/off",
+      property: "stickyCorner",
+      title: "Sticky Corner",
+      inputMethod: "select",
+      options: {
+        none: "none/off",
         "top-left": "top-left",
         "top-right": "top-right",
         "bottom-left": "bottom-left",
@@ -137,78 +143,87 @@ const utils = new StorybookUtilities(),
       }
     },
     {
-      "property": "preload",
-      "title": "Preload source(s).",
-      "inputMethod": "select",
-      "options": {
-        "preload": "Preload all media",
-        "metadata": "Preload media metadata only",
-        "none": "Don't preload anything"
+      property: "preload",
+      title: "Preload source(s).",
+      inputMethod: "select",
+      options: {
+        preload: "Preload all media",
+        metadata: "Preload media metadata only",
+        none: "Don't preload anything"
       }
     },
     {
-      "property": "sources",
-      "title": "Other sources",
-      "inputMethod": "array"
+      property: "sources",
+      title: "Other sources",
+      inputMethod: "array"
     },
     {
-      "property": "tracks",
-      "title": "Track list",
-      "inputMethod": "array"
+      property: "tracks",
+      title: "Track list",
+      inputMethod: "array"
     },
     {
-      "property": "height",
-      "title": "Height",
-      "inputMethod": "textfield"
+      property: "height",
+      title: "Height",
+      inputMethod: "textfield"
     },
     {
-      "property": "width",
-      "title": "width",
-      "inputMethod": "textfield"
+      property: "width",
+      title: "width",
+      inputMethod: "textfield"
     },
     {
-      "slot": "",
-      "title": "<video>",
-      "inputMethod": "code-editor"
+      slot: "",
+      title: "<video>",
+      inputMethod: "code-editor"
     }
   ];
 
 export const A11yMediaPlayerStory = () => {
   return utils.makeElement(
     "a11y-media-player",
-    utils.getKnobs(fields, 
-      {
-        ...defaults,
-        thumbnailSrc: `${new URL(`demo/samples/stclair.jpg`, import.meta.url)}`,
-        sources: [{
-          src: "//www.personal.psu.edu/lnm105/stclair.mp4", 
+    utils.getKnobs(fields, {
+      ...defaults,
+      thumbnailSrc: `${new URL(`demo/samples/stclair.jpg`, import.meta.url)}`,
+      sources: [
+        {
+          src: "//www.personal.psu.edu/lnm105/stclair.mp4",
           type: "video/mp4"
-        }],
-        tracks: [{
-          label: "English", 
-          kind: "subtitles", 
-          srclang: "en", 
+        }
+      ],
+      tracks: [
+        {
+          label: "English",
+          kind: "subtitles",
+          srclang: "en",
           src: `${new URL(`demo/samples/stclair.vtt`, import.meta.url)}`,
           default: true
-        }]
-      }
-    )
+        }
+      ]
+    })
   );
 };
 export const A11yMediaPlayerWithSlots = () => {
   return utils.makeElement(
     "a11y-media-player",
-    utils.getKnobs(fields, 
-      {
-        ...defaults,
-        emptyslot: `<video crossorigin="anonymous">
+    utils.getKnobs(fields, {
+      ...defaults,
+      emptyslot: `<video crossorigin="anonymous">
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-        <track label="English" kind="subtitles" srclang="en" src="${new URL(`demo/samples/sintel-de.vtt`, import.meta.url)}" default>
-        <track label="Deutsch" kind="subtitles" srclang="de" src="${new URL(`demo/samples/sintel-de.vtt`, import.meta.url)}">
-        <track label="Español" kind="subtitles" srclang="es" src="${new URL(`demo/samples/sintel-de.vtt`, import.meta.url)}">
+        <track label="English" kind="subtitles" srclang="en" src="${new URL(
+          `demo/samples/sintel-de.vtt`,
+          import.meta.url
+        )}" default>
+        <track label="Deutsch" kind="subtitles" srclang="de" src="${new URL(
+          `demo/samples/sintel-de.vtt`,
+          import.meta.url
+        )}">
+        <track label="Español" kind="subtitles" srclang="es" src="${new URL(
+          `demo/samples/sintel-de.vtt`,
+          import.meta.url
+        )}">
       </video>`
-      }
-    )
+    })
   );
 };

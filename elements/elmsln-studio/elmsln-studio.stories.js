@@ -15,14 +15,11 @@ export default {
 const utils = new StorybookUtilities();
 
 export const ElmslnStudioDashboardStory = () => {
-  return utils.makeElementFromClass(
-    ElmslnStudioDashboard,
-    {
-      activitySrc: new URL(`./demo/data/recent-activity.json`, import.meta.url),
-      assignmentsSrc: new URL(`./demo/data/assignments.json`, import.meta.url),
-      commentsSrc: new URL(`./demo/data/my-comments.json`, import.meta.url),
-      profileSrc: new URL(`./demo/data/profile.json`, import.meta.url),
-      submissionsSrc: new URL(`./demo/data/my-submissions.json`, import.meta.url)
-    }
-  )
+  return utils.makeElementFromClass(ElmslnStudioDashboard, {
+    activitySrc: new URL(`./demo/data/recent-activity.json`, import.meta.url),
+    assignmentsSrc: new URL(`./demo/data/assignments.json`, import.meta.url),
+    commentsSrc: new URL(`./demo/data/my-comments.json`, import.meta.url),
+    profileSrc: new URL(`./demo/data/profile.json`, import.meta.url),
+    submissionsSrc: new URL(`./demo/data/my-submissions.json`, import.meta.url)
+  });
 };

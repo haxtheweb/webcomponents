@@ -150,7 +150,9 @@ export class StorybookUtilities {
           break;
         case "select":
           obj[id] = this.getRandomOption(
-            prop.options ? Object.keys(prop.options) : prop.itemsList || Object.keys(prop.options)
+            prop.options
+              ? Object.keys(prop.options)
+              : prop.itemsList || Object.keys(prop.options)
           );
           break;
         case "slider":
@@ -221,7 +223,14 @@ export class StorybookUtilities {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = quick.concat(configure, advanced);
-    console.log('getElementProperties',haxProps, hax, quick, configure, advanced);
+    console.log(
+      "getElementProperties",
+      haxProps,
+      hax,
+      quick,
+      configure,
+      advanced
+    );
     return hax.length > 0
       ? hax
       : Object.keys(props || {}).map(property => {
@@ -450,7 +459,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnob(field, defaultValue) {
-    console.log('getKnob',field, defaultValue);
+    console.log("getKnob", field, defaultValue);
     let title = field.title,
       name = field.name,
       editedName = name === "emptyslot" ? '""' : name,
@@ -470,7 +479,11 @@ export class StorybookUtilities {
         css: "CSS"
       },
       method = field.inputMethod,
-      options = field.itemsList || (Array.isArray(field.options) ? field.options : Object.keys(field.options || {})),
+      options =
+        field.itemsList ||
+        (Array.isArray(field.options)
+          ? field.options
+          : Object.keys(field.options || {})),
       val =
         group === "slots" || method === "code-editor"
           ? this.updateSlot(defaultValue, field.slot)
@@ -605,15 +618,18 @@ export class StorybookUtilities {
     let el = document.createElement(tag);
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
-        val = knob.method ===  'haxupload' && Array.isArray(knob.knob) ? knob.knob[0] : knob.knob;
-      console.log('makeElement----',knob,knob.method,knob.knob,val);
+        val =
+          knob.method === "haxupload" && Array.isArray(knob.knob)
+            ? knob.knob[0]
+            : knob.knob;
+      console.log("makeElement----", knob, knob.method, knob.knob, val);
       el[prop] = val;
     });
     Object.keys(knobs.attr || {}).forEach(attr => {
       let knob = knobs.props[attr],
         val = knob.knob;
-      if(val) {
-        el.setAttribute(attr,val);
+      if (val) {
+        el.setAttribute(attr, val);
       } else {
         el.removeAttribute(val);
       }

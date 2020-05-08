@@ -128,7 +128,11 @@ class LrndesignTimeline extends SimpleColors {
   }
   updateTimeline() {
     let sections = document.querySelectorAll("section") || [];
-    if (this.eventsList.length < 1 && sections.length > 0 && this.eventsElement) {
+    if (
+      this.eventsList.length < 1 &&
+      sections.length > 0 &&
+      this.eventsElement
+    ) {
       this.eventsElement.innerHTML = "";
       sections.forEach(section => {
         let clone = section.cloneNode(true),

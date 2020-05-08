@@ -1239,8 +1239,12 @@ class A11yMediaPlayer extends SimpleColors {
     let media = this.querySelector("audio,video"),
       crossorigin = media ? media.getAttribute("crossorigin") : undefined,
       primary = null,
-      sourceVideo = this.source && !this.source && this.source.match(/webm|ogv|mov|mp4$/),
-      sourcesVideo = (this.sources || []).filter(source=>`${source.type || ''}${source.kind || ''}`.match(/video|mp4|webm|ogv/)).length > 0,
+      sourceVideo =
+        this.source && !this.source && this.source.match(/webm|ogv|mov|mp4$/),
+      sourcesVideo =
+        (this.sources || []).filter(source =>
+          `${source.type || ""}${source.kind || ""}`.match(/video|mp4|webm|ogv/)
+        ).length > 0,
       hasVideo = this.isYoutube || sourceVideo || sourcesVideo;
 
     if (media) {
