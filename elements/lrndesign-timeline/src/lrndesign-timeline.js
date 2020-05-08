@@ -127,13 +127,9 @@ class LrndesignTimeline extends SimpleColors {
     }
   }
   updateTimeline() {
-    let events =
-        this.shadowRoot && this.shadowRoot.querySelector("#events")
-          ? this.shadowRoot.querySelector("#events")
-          : undefined,
-      sections = document.querySelectorAll("section");
-    if (this.events.length < 1 && sections.length > 0 && events) {
-      events.innerHTML = "";
+    let sections = document.querySelectorAll("section") || [];
+    if (this.eventsList.length < 1 && sections.length > 0 && this.eventsElement) {
+      this.eventsElement.innerHTML = "";
       sections.forEach(section => {
         let clone = section.cloneNode(true),
           div = document.createElement("div"),
@@ -181,7 +177,7 @@ class LrndesignTimeline extends SimpleColors {
         clone.classList.add("event");
         clone.appendChild(overview);
         clone.appendChild(details);
-        events.appendChild(clone);
+        this.eventsElement.appendChild(clone);
       });
     }
     this._checkScroll();

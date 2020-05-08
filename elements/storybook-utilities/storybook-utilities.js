@@ -150,7 +150,7 @@ export class StorybookUtilities {
           break;
         case "select":
           obj[id] = this.getRandomOption(
-            prop.options ? Object.keys(prop.options) : prop.itemsList
+            prop.options ? Object.keys(prop.options) : prop.itemsList || Object.keys(prop.options)
           );
           break;
         case "slider":
@@ -221,7 +221,7 @@ export class StorybookUtilities {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = quick.concat(configure, advanced);
-    console.log(haxProps, hax, quick, configure, advanced);
+    console.log('getElementProperties',haxProps, hax, quick, configure, advanced);
     return hax.length > 0
       ? hax
       : Object.keys(props || {}).map(property => {
@@ -412,7 +412,8 @@ export class StorybookUtilities {
   getKnobs(properties, defaults = {}, exclusions = []) {
     let knobs = { props: {}, slots: {}, css: {} };
     (properties || []).forEach(field => {
-      field.name = field.property || field.slot || field.css;
+      field.name = field.property || field.attribute || field.slot || field.css;
+      console.log(field);
       if (!field.name && field.hasOwnProperty("slot")) field.name = "emptyslot";
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
@@ -449,6 +450,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnob(field, defaultValue) {
+    console.log('getKnob',field, defaultValue);
     let title = field.title,
       name = field.name,
       editedName = name === "emptyslot" ? '""' : name,
@@ -458,14 +460,17 @@ export class StorybookUtilities {
         ? "props"
         : field.hasOwnProperty("slot")
         ? "slots"
+        : field.hasOwnProperty("attribute")
+        ? "attr"
         : "css",
       groupName = {
+        attr: "Attributes",
         props: "Properties",
         slots: "Slots",
         css: "CSS"
       },
       method = field.inputMethod,
-      options = field.options,
+      options = field.itemsList || (Array.isArray(field.options) ? field.options : Object.keys(field.options || {})),
       val =
         group === "slots" || method === "code-editor"
           ? this.updateSlot(defaultValue, field.slot)
@@ -600,8 +605,18 @@ export class StorybookUtilities {
     let el = document.createElement(tag);
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
-        val = knob.knob;
+        val = knob.method ===  'haxupload' && Array.isArray(knob.knob) ? knob.knob[0] : knob.knob;
+      console.log('makeElement----',knob,knob.method,knob.knob,val);
       el[prop] = val;
+    });
+    Object.keys(knobs.attr || {}).forEach(attr => {
+      let knob = knobs.props[attr],
+        val = knob.knob;
+      if(val) {
+        el.setAttribute(attr,val);
+      } else {
+        el.removeAttribute(val);
+      }
     });
     Object.keys(knobs.slots || {}).map(slot => {
       if (knobs.slots[slot].knob)
