@@ -4,7 +4,8 @@ import "@polymer/iron-icon/iron-icon.js";
 
 class CourseCard extends SimpleColors {
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       url: { type: String },
       image: { type: String },
       alt: { type: String },
@@ -12,7 +13,7 @@ class CourseCard extends SimpleColors {
       name: { type: String },
       icon: { type: String },
       author: { type: String }
-    }
+    };
   }
   constructor() {
     super();
@@ -25,7 +26,8 @@ class CourseCard extends SimpleColors {
     this.author = "";
   }
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -34,7 +36,10 @@ class CourseCard extends SimpleColors {
         a {
           text-decoration: none;
           color: var(--simple-colors-default-theme-accent-12, #363533);
-          background-color: var(--simple-colors-default-theme-accent-1, #ffffff);
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            #ffffff
+          );
           display: block;
           width: 100%;
           min-height: 300px;
@@ -44,8 +49,10 @@ class CourseCard extends SimpleColors {
         a:active,
         a:hover,
         a:focus {
-          outline: 1px solid var(--simple-colors-default-theme-accent-7, #e2801e);
-          box-shadow:  4px 4px 10px var(--simple-colors-default-theme-accent-2, #dcdcdc);
+          outline: 1px solid
+            var(--simple-colors-default-theme-accent-7, #e2801e);
+          box-shadow: 4px 4px 10px
+            var(--simple-colors-default-theme-accent-2, #dcdcdc);
         }
 
         #card_wrap {
@@ -96,7 +103,8 @@ class CourseCard extends SimpleColors {
         #course_author {
           margin-top: -10px;
         }
-    `];
+      `
+    ];
   }
   render() {
     return html`
@@ -115,7 +123,6 @@ class CourseCard extends SimpleColors {
           <div id="course_author">By: ${this.author}</div>
         </div>
       </a>
-     
     `;
   }
   static get tag() {

@@ -60,8 +60,8 @@ class IconsetDemo extends PolymerElement {
         }
       });
     }
-    this.set('__iconList', []);
-    this.set('__iconList', temp);
+    this.set("__iconList", []);
+    this.set("__iconList", temp);
   }
   /**
    *  determines if a given iconset should be hidden
