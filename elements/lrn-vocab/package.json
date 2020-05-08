@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.8",
+  "version": "2.6.10",
   "description": "A simple vocabulary term highlighted with pop up for more details",
   "repository": {
     "type": "git",
@@ -42,15 +42,15 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-iconset": "^2.6.8",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.8",
-    "@lrnwebcomponents/simple-modal": "^2.6.8",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.10",
+    "@lrnwebcomponents/simple-modal": "^2.6.10",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.8",
-    "@lrnwebcomponents/video-player": "^2.6.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@lrnwebcomponents/video-player": "^2.6.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/iron-image": "^3.0.0",

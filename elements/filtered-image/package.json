@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.8",
+  "version": "2.6.10",
   "description": "An image using an SVG filter. Can be used to make background images have more contrast with text.",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.6.8",
+    "@lrnwebcomponents/simple-colors": "^2.6.10",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

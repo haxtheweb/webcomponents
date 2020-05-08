@@ -16,7 +16,7 @@
       "hax": "src/nav-card-hax.json"
     }
   },
-  "version": "2.6.8",
+  "version": "2.6.10",
   "description": "an accent card of link lists",
   "repository": {
     "type": "git",
