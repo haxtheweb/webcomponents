@@ -9,11 +9,105 @@
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
-      import "@lrnwebcomponents/json-editor/json-editor.js";
-      import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import "../product-card.js";
+      import "../lib/course-card.js";
+      import "../lib/product-banner.js";
+      import "@lrnwebcomponents/lrn-icons/lib/course-icons.js";
       import "../lib/hax-element-list-selector.js";
     </script>
+    <style>
+
+h1, h2, h3 {
+  font-family: roboto, sans-serif;
+  font-weight: 400;
+}
+
+p {
+  font-family: roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  width: 80%;
+  margin: 0 auto 25px auto;
+}
+
+#nav {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #e2801e;
+}
+
+.link {
+  background-color: #363533;
+  border-bottom: solid 4px #fff;
+  width: auto;
+}
+
+.link a {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  font-family: roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 15px;
+}
+
+@media only screen and (max-width: 700px) {
+  .link a {
+    font-size: 16px;
+    padding: 5px;
+  }
+}
+
+homepage-banner {
+  margin-bottom: 160px;
+}
+
+@media only screen and (max-width: 1600px) {
+  homepage-banner {
+    margin-bottom: 90px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  homepage-banner {
+    margin-bottom: 60px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  homepage-banner {
+    margin-bottom: 50px;
+  }
+}
+
+scroll-button {
+  position: fixed;
+  right: 0;
+  bottom: 65px;
+  margin-right: 25px;
+  border: 1px solid #f5f5f5;
+  --scroll-button-button: {
+    background-color: #e2801e;
+  }
+
+  --scroll-button-button-active: {
+    background-color: #e2801e;
+  }
+}
+    </style>
   </head>
   <body>
     <demo-snippet>
@@ -30,5 +124,134 @@
         </product-card>
       </template>
     </demo-snippet>
+    <demo-snippet>
+      <template>
+        <product-banner
+          primary-text="HAX Camp"
+          accent-color="blue"
+          secondary-text="#HAXTheWeb"
+          logo="assets/images/edtechjoker.jpg"
+          image="assets/images/haxcamp.jpg"
+        ></product-banner>
+        <product-banner
+          primary-text="HAX The Web"
+          accent-color="purple"
+          secondary-text="ELMS: Learning Network"
+          logo="assets/images/elmsln.jpg"
+          image="assets/images/dark.jpg"
+        ></product-banner>
+        <product-banner
+          style="--product-banner-color: #e2801e;"
+          primary-text="OER Courses"
+          secondary-text="Office of Digital Learning"
+          logo="assets/images/theme-images/odl-logo.png"
+          alt="A simple walk through the university that once was"
+          image="assets/images/theme-images/oer-homepage-banner.jpg"
+        ></product-banner>
+        <p style="margin:100px 0 0 0">Some text under here to do things</p>
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <course-card
+          image="assets/images/course-banners/phys211.png"
+          alt="This is my sweet alt text."
+          number="Phys 211"
+          icon="courseicons:phys2"
+          name="Mechanics"
+          author="Dr. Some one"
+          url="https://phys211.courses.science.psu.edu/"
+        ></course-card>
+      </template>
+    </demo-snippet>
+    <div
+    id="course-cards"
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-column-gap: 2vw;
+      grid-row-gap: 2vw;
+    "
+  ><course-card
+      image="assets/images/course-banners/astro130.png"
+      alt="This is my sweet alt text."
+      number="Astro 130"
+      accent-color="green"
+          dark
+      icon="courseicons:astro1"
+      name="Black Holes in the Universe"
+      author="Dr. Some one"
+      url="https://astro130.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/astro140.png"
+      alt="This is my sweet alt text."
+      number="Astro 140"
+      accent-color="blue"
+          dark
+      icon="courseicons:astro2"
+      name="Life in the Universe"
+      author="Dr. Some one"
+      url="http://astro140.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/biol110.png"
+      alt="This is my sweet alt text."
+      number="Biol 110"
+      icon="courseicons:bio1"
+      accent-color="red"
+      name="Basic Concepts and Biodiversity"
+      author="Dr. Some one"
+      url="https://biol110.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/chem110.png"
+      alt="This is my sweet alt text."
+      number="Chem 110"
+      accent-color="yellow"
+      icon="courseicons:chem1"
+      name="Chemical Principles"
+      author="Dr. Some one"
+      url="https://chem110.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/chem202.png"
+      alt="This is my sweet alt text."
+      number="Chem 202"
+      accent-color="orange"
+      dark
+      icon="courseicons:chem2"
+      name="Organic Foundations"
+      author="Dr. Some one"
+      url="https://chem202.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/phys010.png"
+      alt="This is my sweet alt text."
+      number="Phys 010"
+      icon="courseicons:phys1"
+      name="Behind the Headlines"
+      author="Dr. Some one"
+      url="http://phys010.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/phys211.png"
+      alt="This is my sweet alt text."
+      number="Phys 211"
+      icon="courseicons:phys2"
+      name="Mechanics"
+      author="Dr. Some one"
+      url="https://phys211.courses.science.psu.edu/"
+    >
+    </course-card><course-card
+      image="assets/images/course-banners/phys212.png"
+      alt="This is my sweet alt text."
+      number="Phys 212"
+      icon="courseicons:phys3"
+      name="Electricity and Magnetism"
+      author="Dr. Some one"
+      url="https://phys212.courses.science.psu.edu/"
+    >
+    </course-card></div>
   </body>
 </html>

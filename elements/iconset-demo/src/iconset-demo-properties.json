@@ -3,7 +3,6 @@
    * all the iconsets
    */
   "__iconList": {
-    "name": "__iconList",
     "type": Array,
     "value": []
   },
@@ -11,7 +10,6 @@
    * a space-separated whitelist of iconsets by name
    */
   "includeSets": {
-    "name": "includeSets",
     "type": String,
     "value": null
   },
@@ -19,7 +17,6 @@
    * a space-separated blacklist of iconsets by name
    */
   "excludeSets": {
-    "name": "excludeSets",
     "type": String,
     "value": null
   }
