@@ -14,7 +14,52 @@
  * @demo demo/index.html
  */
 class HtmlBlock extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  get html() {
+    return `
+<style>
+
+        </style>
+<slot></slot>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Html block",
+        description: "A basic HTML block that provides HAXschema wiring",
+        icon: "icons:warning",
+        color: "red",
+        groups: ["Block"],
+        handles: [
+          {
+            type: "html",
+            content: "slot"
+          }
+        ],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            slot: "",
+            title: "HTML",
+            description: "HTML code you want to present in content",
+            inputMethod: "code-editor"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -31,9 +76,6 @@ class HtmlBlock extends HTMLElement {
 
     // set tag for later use
     this.tag = HtmlBlock.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HtmlBlock-properties.json
   }
   /**
    * life cycle, element is afixed to the DOM

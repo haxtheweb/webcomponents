@@ -5,15 +5,10 @@
     "customElementClass": "HTMLElement",
     "elementName": "html-block",
     "generator-wcfactory-version": "0.7.3",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/html-block.css",
-      "scss": "src/html-block.scss",
-      "html": "src/html-block.html",
-      "js": "src/html-block.js",
-      "properties": "src/html-block-properties.json",
-      "hax": "src/html-block-hax.json"
+      "js": "src/html-block.js"
     },
     "sharedStyles": []
   },

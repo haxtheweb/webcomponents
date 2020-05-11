@@ -60,10 +60,6 @@ class HtmlBlock extends HTMLElement {
       }
     };
   }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
-  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -80,9 +76,6 @@ class HtmlBlock extends HTMLElement {
 
     // set tag for later use
     this.tag = HtmlBlock.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HtmlBlock-properties.json
   }
   /**
    * life cycle, element is afixed to the DOM

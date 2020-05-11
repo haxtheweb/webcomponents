@@ -8,12 +8,7 @@
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/json-outline-schema.css",
-      "scss": "src/json-outline-schema.scss",
-      "html": "src/json-outline-schema.html",
-      "js": "src/json-outline-schema.js",
-      "properties": "src/json-outline-schema-properties.json",
-      "hax": "src/json-outline-schema-hax.json"
+      "js": "src/json-outline-schema.js"
     },
     "sharedStyles": []
   },

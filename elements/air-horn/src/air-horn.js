@@ -14,7 +14,29 @@
  * @demo demo/index.html
  */
 class AirHorn extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  get html() {
+    return `
+<style>
+:host {
+  display: inline-flex;
+}
+
+:host([hidden]) {
+  display: none;
+}
+        </style>
+<slot></slot>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {};
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return { ...super.properties };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.

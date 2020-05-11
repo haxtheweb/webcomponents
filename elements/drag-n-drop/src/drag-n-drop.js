@@ -17,7 +17,49 @@
  * @demo demo/index.html
  */
 class DragNDrop extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  get html() {
+    return `
+<style>
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([editing]) .items ::slotted(.hold) {
+  border: solid 5px #ccc;
+}
+
+:host([editing]) .items ::slotted([data-droppable]) {
+  margin: 10px;
+  border: solid 3px salmon;
+  background: white;
+}
+
+:host([editing]) .items ::slotted(.hovered) {
+  background: #f4f4f4;
+  border-style: dashed;
+}
+        </style>
+<div class="items">
+  <slot></slot>
+</div>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      editing: {
+        name: "editing",
+        type: Boolean
+      }
+    };
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
