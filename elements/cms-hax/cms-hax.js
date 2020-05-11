@@ -108,7 +108,8 @@ class CmsHax extends LitElement {
        * to be saved in the first place.
        */
       allowedTags: {
-        type: Array
+        type: Array,
+        attribute: 'allowed-tags'
       },
       /**
        * Location to save content to.

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>JOS render Demo</title>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import "@polymer/iron-icons/device-icons.js";
+      import "@polymer/iron-icons/iron-icons.js";
+      import "@polymer/iron-icons/communication-icons.js";
+      import "@polymer/iron-icons/maps-icons.js";
+      import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
+      import '../lib/jos-render.js';
+    </script>
+    <script defer>
+      window.WCAutoloadBasePath = "/node_modules/";
+      // these examples are based on some locally loaded HAXcms data
+      // for rendering in a local demo environment. It's also demonstrating
+      // transform statements for the heck of it
+      window.__haxcmsBase = 'https://haxcms.ddev.site';
+      let jos = document.createElement('jos-render');
+      jos.source = "./siteList.json";
+      jos.map = {
+        tag: "course-card",
+        path: "@lrnwebcomponents/product-card/lib/course-card.js",
+        properties: {
+          name: 'title',
+          number: 'title',
+          url: {
+            transform: function(e, item) {
+              return window.__haxcmsBase + e;
+            },
+            value: 'location'
+          },
+          image: 'https://haxtheweb.org/assets/banner.jpg',
+          icon: {
+            transform: function(e) {
+              return (e ? e : "icons:android");
+            },
+            value: 'metadata.theme.variables.icon'
+          },
+          author: 'metadata.author.name',
+          accentColor: {
+            transform: function(e) {
+              return e.replace('--simple-colors-default-theme-', '').replace('-7', '');
+            },
+            value: 'metadata.theme.variables.cssVariable'
+          },
+          dark: true
+        }
+      };
+      setTimeout(() => {
+        document.body.appendChild(jos);
+      },0)
+    </script>
+  </head>
+  <body></body>
+</html>
