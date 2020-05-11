@@ -1,11 +1,11 @@
-import { LitElement, html, css} from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "../json-outline-schema.js";
 import { wipeSlot, varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";
 
 class JosRender extends LitElement {
   static get tag() {
-    return 'jos-render';
+    return "jos-render";
   }
   constructor() {
     super();
@@ -16,30 +16,32 @@ class JosRender extends LitElement {
     this.items = [];
   }
   static get styles() {
-    return [css`
-      :host {
-        display: block;
-      }
-      .children {
-        display: block;
-        margin: 16px auto;
-      }
-      .children ::slotted(*) {
-        display: inline-flex;
-        min-width: var(--jos-render-width, 350px);
-        width: var(--jos-render-width, 350px);
-        margin: var(--jos-render-margin, 8px);
-        padding: var(--jos-render-padding, 8px);
-      }
-    `];
+    return [
+      css`
+        :host {
+          display: block;
+        }
+        .children {
+          display: block;
+          margin: 16px auto;
+        }
+        .children ::slotted(*) {
+          display: inline-flex;
+          min-width: var(--jos-render-width, 350px);
+          width: var(--jos-render-width, 350px);
+          margin: var(--jos-render-margin, 8px);
+          padding: var(--jos-render-padding, 8px);
+        }
+      `
+    ];
   }
   static get properties() {
     return {
       source: {
-        type: String,
+        type: String
       },
       map: {
-        type: Object,
+        type: Object
       },
       items: {
         type: Array
@@ -54,15 +56,15 @@ class JosRender extends LitElement {
     `;
   }
   updated(changedProperties) {
-    changedProperties.forEach( async (oldValue, propName) => {
-      if (propName == 'source') {
+    changedProperties.forEach(async (oldValue, propName) => {
+      if (propName == "source") {
         let site = window.JSONOutlineSchema.requestAvailability();
         // load source
         if (await site.load(this[propName])) {
           this.items = [...site.items];
         }
       }
-      if (propName == 'map' && this.map.path && this.map.tag) {
+      if (propName == "map" && this.map.path && this.map.tag) {
         // register
         this.registry.register({
           tag: this.map.tag,
@@ -74,7 +76,7 @@ class JosRender extends LitElement {
           this.renderItems(this.items);
         }
       }
-      if (propName == 'items') {
+      if (propName == "items") {
         this.renderItems(this.items);
       }
     });
@@ -89,7 +91,7 @@ class JosRender extends LitElement {
       // wipe slot
       wipeSlot(this);
       setTimeout(() => {
-        items.forEach((item) => {
+        items.forEach(item => {
           // create tag for the map
           let n = document.createElement(this.map.tag);
           for (var key in this.map.properties) {
@@ -98,22 +100,24 @@ class JosRender extends LitElement {
             // prior to being set
             if (value === true || value === false || value === null) {
               n[key] = value;
-            }
-            else if (value.transform && value.value && varExists(item, value.value)) {
+            } else if (
+              value.transform &&
+              value.value &&
+              varExists(item, value.value)
+            ) {
               n[key] = value.transform(varGet(item, value.value), item);
             }
             // only set the value in the node IF we have a match in the item for data
             // odd trap but the transform case can potentially miss above and this then pass
             // which varExists requires value be a string
-            else if (typeof value === 'string' && varExists(item, value)) {
+            else if (typeof value === "string" && varExists(item, value)) {
               n[key] = varGet(item, value);
-            }
-            else {
+            } else {
               n[key] = value;
             }
           }
           this.appendChild(n);
-        });      
+        });
       }, 0);
     }
   }
