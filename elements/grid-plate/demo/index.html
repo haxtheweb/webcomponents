@@ -14,23 +14,6 @@
       import '../grid-plate.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
-    <script>
-      window.onload = function(){
-        let sel = document.getElementById('select'), 
-        grid = document.getElementById('grid'),
-        layouts = Object.keys(grid.layouts);
-        for (i = 0; i < layouts.length; i++) {
-          let option = document.createElement('OPTION');
-          option.setAttribute('value',layouts[i]);
-          option.innerHTML = grid.layouts[layouts[i]].columnLayout;
-          if (layouts[i] === grid.layout) option.setAttribute('selected',"selected");
-          sel.appendChild(option);
-        }
-        sel.onchange = function(){
-          grid.layout = sel.value;
-        };
-      };
-    </script>
   </head>
   <body>
     <div class="vertical-section-container">
@@ -77,6 +60,23 @@
         </template>
       </demo-snippet>
     </div>
+    <script defer async>
+      setTimeout(() => {
+      let sel = document.getElementById('select'), 
+      grid = document.getElementById('grid'),
+      layouts = Object.keys(grid.layouts);
+      for (i = 0; i < layouts.length; i++) {
+        let option = document.createElement('OPTION');
+        option.setAttribute('value',layouts[i]);
+        option.innerHTML = grid.layouts[layouts[i]].columnLayout;
+        if (layouts[i] === grid.layout) option.setAttribute('selected',"selected");
+        sel.appendChild(option);
+      }
+      sel.onchange = function(){
+        grid.layout = sel.value;
+      };
+    }, 1000);
+    </script>
     <!--grid-plate areas="2">
       <video-player slot="area1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
         responsive="" style="width: 100%;" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0"
