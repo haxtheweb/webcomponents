@@ -662,8 +662,8 @@ class GridPlate extends LitElement {
             title: "Disable responsive",
             description:
               "Check box to force layout to stick regardless of screen breakpoins",
-            inputMethod: "boolean",
-          },
+            inputMethod: "boolean"
+          }
         ],
         advanced: [
           {

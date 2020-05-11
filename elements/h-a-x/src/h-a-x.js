@@ -206,10 +206,10 @@ class HAX extends HTMLElement {
     }
   }
   render() {
-      this.__rendered = true;
-      this.shadowRoot.innerHTML = null;
-      this.template.innerHTML = this.html;
-      this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    this.__rendered = true;
+    this.shadowRoot.innerHTML = null;
+    this.template.innerHTML = this.html;
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
   /**
    * Apply tags to the screen to establish HAX
