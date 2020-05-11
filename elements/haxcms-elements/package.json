@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.10",
+  "version": "2.6.11",
   "description": "HAX CMS series of elements to provide a full on CMS",
   "repository": {
     "type": "git",
@@ -43,9 +43,9 @@
   "dependencies": {
     "@lrnwebcomponents/beaker-broker": "^2.6.10",
     "@lrnwebcomponents/git-corner": "^2.6.8",
-    "@lrnwebcomponents/hax-body": "^2.6.10",
+    "@lrnwebcomponents/hax-body": "^2.6.11",
     "@lrnwebcomponents/hax-body-behaviors": "^2.6.10",
-    "@lrnwebcomponents/json-outline-schema": "^2.6.10",
+    "@lrnwebcomponents/json-outline-schema": "^2.6.11",
     "@lrnwebcomponents/jwt-login": "^2.6.10",
     "@lrnwebcomponents/lunr-search": "^2.6.8",
     "@lrnwebcomponents/magazine-cover": "^2.6.10",

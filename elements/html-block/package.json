@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.8",
+  "version": "2.6.11",
   "description": "A basic HTML block that provides HAXschema wiring",
   "repository": {
     "type": "git",

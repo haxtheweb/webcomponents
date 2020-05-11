@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "2.6.10",
+  "version": "2.6.11",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "@lrnwebcomponents/a11y-collapse": "^2.6.10",
     "@lrnwebcomponents/accent-card": "^2.6.10",
     "@lrnwebcomponents/code-sample": "^2.6.10",
-    "@lrnwebcomponents/grid-plate": "^2.6.10",
+    "@lrnwebcomponents/grid-plate": "^2.6.11",
     "@lrnwebcomponents/simple-colors": "^2.6.10",
     "@lrnwebcomponents/utils": "^2.6.8",
     "@material/mwc-button": "0.14.1",
@@ -58,9 +58,9 @@
     "@lrnwebcomponents/grid-plate": "^2.6.5",
     "@lrnwebcomponents/hax-iconset": "^2.6.8",
     "@lrnwebcomponents/hero-banner": "^2.6.10",
-    "@lrnwebcomponents/html-block": "^2.6.8",
+    "@lrnwebcomponents/html-block": "^2.6.11",
     "@lrnwebcomponents/image-compare-slider": "^2.6.10",
-    "@lrnwebcomponents/json-editor": "^2.6.10",
+    "@lrnwebcomponents/json-editor": "^2.6.11",
     "@lrnwebcomponents/license-element": "^2.6.10",
     "@lrnwebcomponents/lrn-aside": "^2.6.10",
     "@lrnwebcomponents/lrn-icons": "^2.6.10",

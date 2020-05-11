@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.10",
+  "version": "2.6.11",
   "description": "A game show style quiz interaction",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/chartist-render": "^2.6.10",
-    "@lrnwebcomponents/hax-body": "^2.6.10",
+    "@lrnwebcomponents/hax-body": "^2.6.11",
     "@lrnwebcomponents/multiple-choice": "^2.6.10",
     "@lrnwebcomponents/responsive-grid": "^2.6.10",
     "@lrnwebcomponents/simple-colors": "^2.6.10",
