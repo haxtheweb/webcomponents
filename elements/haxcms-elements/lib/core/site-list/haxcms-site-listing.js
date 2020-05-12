@@ -334,7 +334,6 @@ class HAXCMSSiteListing extends PolymerElement {
             display: none;
           }
         }
-        
       </style>
       <jwt-login
         id="jwt"
@@ -498,27 +497,27 @@ class HAXCMSSiteListing extends PolymerElement {
       <div class="toolbar">
         <slot name="app-header-pre"></slot>
         <div class="operations">
-            <paper-button
-              on-click="_addTap"
-              id="add"
-              raised
-              hidden$="[[!loggedIn]]"
-              title="Create new site"
-            >
-              <iron-icon icon="icons:add"></iron-icon>
-              <span class="small-hide">New site</span>
-            </paper-button>
-            <paper-button
-              on-click="_importTap"
-              id="import"
-              raised
-              hidden$="[[!loggedIn]]"
-              title="Import site"
-            >
-              <iron-icon icon="icons:cloud-download"></iron-icon>
-              <span class="small-hide">Import</span>
-            </paper-button>
-          </div>
+          <paper-button
+            on-click="_addTap"
+            id="add"
+            raised
+            hidden$="[[!loggedIn]]"
+            title="Create new site"
+          >
+            <iron-icon icon="icons:add"></iron-icon>
+            <span class="small-hide">New site</span>
+          </paper-button>
+          <paper-button
+            on-click="_importTap"
+            id="import"
+            raised
+            hidden$="[[!loggedIn]]"
+            title="Import site"
+          >
+            <iron-icon icon="icons:cloud-download"></iron-icon>
+            <span class="small-hide">Import</span>
+          </paper-button>
+        </div>
         <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
         <div class="operations right">
           <paper-button
@@ -538,10 +537,7 @@ class HAXCMSSiteListing extends PolymerElement {
             title="Logout"
           >
             <template is="dom-if" if="[[!logoutPhoto]]">
-              <iron-icon
-                icon="[[__loginIcon]]"
-                class="small-hide"
-              ></iron-icon>
+              <iron-icon icon="[[__loginIcon]]" class="small-hide"></iron-icon>
             </template>
             <template is="dom-if" if="[[logoutPhoto]]">
               <img id="userphoto" src="[[logoutPhoto]]" class="small-hide" />
@@ -551,70 +547,70 @@ class HAXCMSSiteListing extends PolymerElement {
         </div>
       </div>
       <a11y-collapse-group radio hidden$="[[!loggedIn]]">
-      <a11y-collapse expanded accordion>
-        <div slot="heading">Card view</div>
-        <jos-render slot="content"></jos-render>
-      </a11y-collapse>
-      <a11y-collapse accordion>
-        <div slot="heading">Table view / bulk operations</div>
-        <div slot="content">
-        <div class="selected-operations" id="ops">
-            <paper-button
-              title="Publish"
-              on-click="_bulkSitesConfirm"
-              id="publish"
-              raised
-            >
-              <iron-icon icon="editor:publish"></iron-icon>
-              <span class="small-hide">Publish site</span>
-            </paper-button>
-            <paper-button
-              title="Sync git"
-              on-click="_bulkSitesConfirm"
-              id="sync"
-              raised
-            >
-              <iron-icon icon="notification:sync"></iron-icon>
-              <span class="small-hide">Sync git</span>
-            </paper-button>
-            <paper-button
-              title="Copy site"
-              on-click="_bulkSitesConfirm"
-              id="clone"
-              raised
-            >
-              <iron-icon icon="icons:content-copy"></iron-icon>
-              <span class="small-hide">Copy site</span>
-            </paper-button>
-            <paper-button
-              title="Download zip"
-              on-click="_bulkSitesConfirm"
-              id="download"
-              raised
-            >
-              <iron-icon icon="icons:file-download"></iron-icon>
-              <span class="small-hide">Download zip</span>
-            </paper-button>
-            <paper-button
-              title="Archive"
-              on-click="_bulkSitesConfirm"
-              id="archive"
-              raised
-            >
-              <iron-icon icon="icons:archive"></iron-icon>
-              <span class="small-hide">Archive site</span>
-            </paper-button>
-            <paper-button
-              on-click="_bulkSitesConfirm"
-              id="delete"
-              raised
-              class="danger"
-              title="Delete forever"
-            >
-              <iron-icon icon="icons:delete-forever"></iron-icon>
-              <span class="small-hide">Delete forever</span>
-            </paper-button>
-          </div>
+        <a11y-collapse expanded accordion>
+          <div slot="heading">Card view</div>
+          <jos-render slot="content"></jos-render>
+        </a11y-collapse>
+        <a11y-collapse accordion>
+          <div slot="heading">Table view / bulk operations</div>
+          <div slot="content">
+            <div class="selected-operations" id="ops">
+              <paper-button
+                title="Publish"
+                on-click="_bulkSitesConfirm"
+                id="publish"
+                raised
+              >
+                <iron-icon icon="editor:publish"></iron-icon>
+                <span class="small-hide">Publish site</span>
+              </paper-button>
+              <paper-button
+                title="Sync git"
+                on-click="_bulkSitesConfirm"
+                id="sync"
+                raised
+              >
+                <iron-icon icon="notification:sync"></iron-icon>
+                <span class="small-hide">Sync git</span>
+              </paper-button>
+              <paper-button
+                title="Copy site"
+                on-click="_bulkSitesConfirm"
+                id="clone"
+                raised
+              >
+                <iron-icon icon="icons:content-copy"></iron-icon>
+                <span class="small-hide">Copy site</span>
+              </paper-button>
+              <paper-button
+                title="Download zip"
+                on-click="_bulkSitesConfirm"
+                id="download"
+                raised
+              >
+                <iron-icon icon="icons:file-download"></iron-icon>
+                <span class="small-hide">Download zip</span>
+              </paper-button>
+              <paper-button
+                title="Archive"
+                on-click="_bulkSitesConfirm"
+                id="archive"
+                raised
+              >
+                <iron-icon icon="icons:archive"></iron-icon>
+                <span class="small-hide">Archive site</span>
+              </paper-button>
+              <paper-button
+                on-click="_bulkSitesConfirm"
+                id="delete"
+                raised
+                class="danger"
+                title="Delete forever"
+              >
+                <iron-icon icon="icons:delete-forever"></iron-icon>
+                <span class="small-hide">Delete forever</span>
+              </paper-button>
+            </div>
             <vaadin-grid
               id="grid"
               items="[[sites]]"
@@ -623,23 +619,24 @@ class HAXCMSSiteListing extends PolymerElement {
               multi-sort
             >
               <vaadin-grid-selection-column
-              width="5em"
+                width="5em"
                 auto-select
                 frozen
               ></vaadin-grid-selection-column>
               <vaadin-grid-filter-column
-              header="Site name"
-              width="300px"
-              path="title">
+                header="Site name"
+                width="300px"
+                path="title"
+              >
                 <template>
                   <portal-launcher>
                     <a tabindex="-1" href$="[[item.location]]">
                       <paper-button raised class="site-title">
                         <div>[[item.title]]</div>
                         <div class="small-location">
-                        [[cleanLocation(item.location)]]
-                      </div>
-                        </paper-button>
+                          [[cleanLocation(item.location)]]
+                        </div>
+                      </paper-button>
                     </a>
                   </portal-launcher>
                 </template>
@@ -648,10 +645,7 @@ class HAXCMSSiteListing extends PolymerElement {
                 path="metadata.theme.name"
                 header="Theme"
               ></vaadin-grid-filter-column>
-              <vaadin-grid-sort-column
-                header="Updated"
-                path="metadata.updated"
-              >
+              <vaadin-grid-sort-column header="Updated" path="metadata.updated">
                 <template>
                   <template is="dom-if" if="[[item.metadata.site.updated]]">
                     <simple-datetime
@@ -662,10 +656,7 @@ class HAXCMSSiteListing extends PolymerElement {
                   </template>
                 </template>
               </vaadin-grid-sort-column>
-              <vaadin-grid-sort-column
-                header="Created"
-                path="metadata.created"
-              >
+              <vaadin-grid-sort-column header="Created" path="metadata.created">
                 <template>
                   <template is="dom-if" if="[[item.metadata.site.created]]">
                     <simple-datetime
@@ -722,8 +713,8 @@ class HAXCMSSiteListing extends PolymerElement {
                 ></template>
               </vaadin-grid-column>
             </vaadin-grid>
-      </div>
-      </a11y-collapse>
+          </div>
+        </a11y-collapse>
       </a11y-collapse-group>
       <div class="login-prompt" hidden$="[[loggedIn]]">
         <simple-login>
@@ -870,14 +861,17 @@ class HAXCMSSiteListing extends PolymerElement {
         this.title = newValue.title;
         this.set("sites", []);
         this.set("sites", newValue.items);
-        this.shadowRoot.querySelector('jos-render').items = newValue.items;
+        this.shadowRoot.querySelector("jos-render").items = newValue.items;
         this.notifyPath("sites.*");
       }
     }
   }
 
   cleanLocation(location) {
-    return location.replace("/_sites/", "").replace("/sites/", "").replace("/", "");
+    return location
+      .replace("/_sites/", "")
+      .replace("/sites/", "")
+      .replace("/", "");
   }
 
   static get properties() {
@@ -1448,7 +1442,7 @@ class HAXCMSSiteListing extends PolymerElement {
                 description:
                   "Addition detail, for personal use as well as search engine optimization",
                 inputMethod: "textfield"
-              }/*,
+              } /*,
               {
                 property: "domain",
                 title: "URL (optional)",
@@ -1461,7 +1455,7 @@ class HAXCMSSiteListing extends PolymerElement {
             property: "theme",
             title: "Theme settings",
             properties: [
-/*              {
+              /*              {
                 property: "image",
                 title: "Image",
                 description:
@@ -1557,46 +1551,53 @@ class HAXCMSSiteListing extends PolymerElement {
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
-    const jos = this.shadowRoot.querySelector('jos-render');
+    const jos = this.shadowRoot.querySelector("jos-render");
     jos.map = {
       tag: "course-card",
       path: "@lrnwebcomponents/product-card/lib/course-card.js",
       properties: {
-        number: 'title',
+        number: "title",
         name: {
           transform: function(e) {
-            return e.replace("/_sites/", "").replace("/sites/", "").replace("/", "")
+            return e
+              .replace("/_sites/", "")
+              .replace("/sites/", "")
+              .replace("/", "");
           },
-          value: 'location'
+          value: "location"
         },
-        url: 'location',
+        url: "location",
         image: {
           transform: function(e, item) {
-            return item.location + (e ? e.replace(' ', '%20') : 'assets/banner.jpg');
+            return (
+              item.location + (e ? e.replace(" ", "%20") : "assets/banner.jpg")
+            );
           },
-          value: 'metadata.site.logo'
+          value: "metadata.site.logo"
         },
         icon: {
           transform: function(e) {
-            return (e ? e : "icons:android");
+            return e ? e : "icons:android";
           },
-          value: 'metadata.theme.variables.icon'
+          value: "metadata.theme.variables.icon"
         },
-        author: 'metadata.author.name',
+        author: "metadata.author.name",
         accentColor: {
           transform: function(e) {
-            return e.replace('--simple-colors-default-theme-', '').replace('-7', '');
+            return e
+              .replace("--simple-colors-default-theme-", "")
+              .replace("-7", "");
           },
-          value: 'metadata.theme.variables.cssVariable'
+          value: "metadata.theme.variables.cssVariable"
         },
-        size: 'small',
+        size: "small",
         dark: true,
         alt: {
           transform: function(e) {
-            return 'Select to access ' + e;
+            return "Select to access " + e;
           },
-          value: 'title'
-        },
+          value: "title"
+        }
       }
     };
   }

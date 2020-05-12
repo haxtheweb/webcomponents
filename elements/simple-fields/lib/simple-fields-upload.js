@@ -174,7 +174,12 @@ class SimpleFieldsUpload extends SimpleColors {
     this.option = e.detail.value;
     // make sure there's not null here, possible when dynamically  built
     if (e.detail.value == null || e.detail.value == "null") {
-      if (this.options && this.options[0] && this.options[0][0] && this.options[0][0].value) {
+      if (
+        this.options &&
+        this.options[0] &&
+        this.options[0][0] &&
+        this.options[0][0].value
+      ) {
         this.option = this.options[0][0].value;
       }
     }

@@ -31,6 +31,6 @@ import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import '@lrnwebcomponents/json-outline-schema/lib/jos-render.js';
+import "@lrnwebcomponents/json-outline-schema/lib/jos-render.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";

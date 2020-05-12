@@ -36,7 +36,7 @@ class CourseCard extends SimpleColors {
 
         a {
           filter: var(--course-card-filter);
-          transition: .2s all ease-in-out;
+          transition: 0.2s all ease-in-out;
           text-decoration: none;
           color: var(--simple-colors-default-theme-accent-12, #363533);
           background-color: var(
@@ -112,7 +112,10 @@ class CourseCard extends SimpleColors {
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center center;
-          background-color: var(--simple-colors-default-theme-accent-11, #363533);
+          background-color: var(
+            --simple-colors-default-theme-accent-11,
+            #363533
+          );
           width: 100%;
           height: 150px;
         }
@@ -136,7 +139,11 @@ class CourseCard extends SimpleColors {
           </div>
           <div id="course_number">${this.number}</div>
           <div id="course_name">${this.name}</div>
-          ${this.author ? html`<div id="course_author">By: ${this.author}</div>`: ``}
+          ${this.author
+            ? html`
+                <div id="course_author">By: ${this.author}</div>
+              `
+            : ``}
         </div>
       </a>
     `;
