@@ -16,7 +16,7 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
    * Respond to uploading a file
    */
   _fileAboutToUpload(e) {
-    if (!this.__allowUpload) {
+    if (!this.__allowUpload && window.HaxStore) {
       // cancel the event so we can jump in
       e.preventDefault();
       e.stopPropagation();

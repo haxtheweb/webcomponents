@@ -51,24 +51,53 @@ class HAXCMSSiteListing extends PolymerElement {
         paper-icon-button {
           --paper-icon-button-ink-color: var(--haxcms-system-action-color);
         }
-        app-toolbar div.main-title {
+        .toolbar div.main-title {
           margin-left: 50px;
           font-size: 24px;
         }
-        app-header {
-          color: var(--haxcms-site-listing-color-light);
-          @apply --layout-fixed-top;
-          --app-header-background-rear-layer: {
-            background-color: var(--haxcms-site-listing-color-dark);
-          }
-        }
-        app-toolbar {
+        .toolbar {
+          display: flex;
+          padding: 8px;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
           color: var(--haxcms-site-listing-color-light);
           background-color: var(--haxcms-site-listing-color-dark);
         }
-        vaadin-grid {
+        a11y-collapse-group {
           margin-top: 64px;
+        }
+        a11y-collapse div[slot="heading"] {
+          height: 64px;
+          line-height: 64px;
+          font-size: 30px;
+          cursor: pointer;
+        }
+        jos-render {
+          --jos-render-margin: 0px;
+          --jos-render-padding: 8px;
+        }
+        course-card {
+          height: 350px;
+          width: 150px;
+          overflow: hidden;
+          --course-card-filter: grayscale(80%);
+        }
+        course-card:active,
+        course-card:hover {
+          --course-card-filter-hover: grayscale(0%);
+        }
+        vaadin-grid {
+          margin-top: 24px;
           height: calc(100vh - 64px);
+        }
+        simple-datetime {
+          color: black;
+        }
+        vaadin-checkbox {
+          border: 1px solid black;
+          background-color: var(--simple-colors-default-theme-blue-1);
         }
         .login-prompt {
           margin: 80px auto 0;
@@ -196,14 +225,18 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         a {
           text-decoration: none;
+          color: black;
         }
         .site-title {
+          display: block;
           font-size: 20px;
           color: black;
           text-align: center;
           width: 100%;
           text-transform: unset;
           min-width: unset;
+          background-color: var(--simple-colors-default-theme-blue-1);
+          border: 1px solid black;
         }
         .site-title:hover,
         .site-title:active,
@@ -253,9 +286,10 @@ class HAXCMSSiteListing extends PolymerElement {
           justify-content: space-evenly;
           width: 100%;
         }
-        .selected-operations[hidden] {
+        *[hidden] {
           visibility: hidden;
           opacity: 0;
+          display: none;
         }
         .selected-operations paper-button {
           background-color: var(--haxcms-site-listing-color-light);
@@ -300,160 +334,159 @@ class HAXCMSSiteListing extends PolymerElement {
             display: none;
           }
         }
+        
       </style>
-      <div>
-        <jwt-login
-          id="jwt"
-          method="[[method]]"
-          url="[[__loginPath]]"
-          refresh-url="[[__refreshPath]]"
-          logout-url="[[__logoutPath]]"
-          jwt="{{jwt}}"
-        ></jwt-login>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="loaddata"
-          auto=""
-          loading="{{__loading}}"
-          url="[[dataSource]]"
-          handle-as="json"
-          debounce-duration="250"
-          last-response="{{sitesResponse}}"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="createrequest"
-          method="[[method]]"
-          body="[[createParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__createNewSitePath]]"
-          handle-as="json"
-          on-response="handleCreateResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="gitimportrequest"
-          method="[[method]]"
-          body="[[gitImportParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__gitImportSitePath]]"
-          handle-as="json"
-          on-response="handleGitImportResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="downloadrequest"
-          method="[[method]]"
-          body="[[downloadParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__downloadSitePath]]"
-          handle-as="json"
-          on-response="handleDownloadResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="archiverequest"
-          method="[[method]]"
-          body="[[archiveParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__archiveSitePath]]"
-          handle-as="json"
-          on-response="handleArchiveResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="deleterequest"
-          method="[[method]]"
-          body="[[deleteParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__deleteSitePath]]"
-          handle-as="json"
-          on-response="handleDeleteResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="clonerequest"
-          method="[[method]]"
-          body="[[cloneParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__cloneSitePath]]"
-          handle-as="json"
-          on-response="handleCloneResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="publishrequest"
-          method="[[method]]"
-          body="[[publishParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__publishSitePath]]"
-          handle-as="json"
-          on-response="handlePublishResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="syncrequest"
-          method="[[method]]"
-          body="[[syncParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__syncSitePath]]"
-          handle-as="json"
-          on-response="handleSyncResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="getconfigrequest"
-          method="[[method]]"
-          body="[[configParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__getConfigPath]]"
-          handle-as="json"
-          on-response="handleConfigResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="setconfigrequest"
-          method="[[method]]"
-          body="[[setConfigParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__setConfigPath]]"
-          handle-as="json"
-          on-response="handleSetConfigResponse"
-        ></iron-ajax>
-        <iron-ajax
-          reject-with-request
-          on-last-error-changed="lastErrorChanged"
-          id="getuserdatarequest"
-          method="[[method]]"
-          body="[[getUserDataParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__getUserDataPath]]"
-          handle-as="json"
-          on-response="handleGetUserDataResponse"
-        ></iron-ajax>
-      </div>
+      <jwt-login
+        id="jwt"
+        method="[[method]]"
+        url="[[__loginPath]]"
+        refresh-url="[[__refreshPath]]"
+        logout-url="[[__logoutPath]]"
+        jwt="{{jwt}}"
+      ></jwt-login>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="loaddata"
+        auto=""
+        loading="{{__loading}}"
+        url="[[dataSource]]"
+        handle-as="json"
+        debounce-duration="250"
+        last-response="{{sitesResponse}}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="createrequest"
+        method="[[method]]"
+        body="[[createParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__createNewSitePath]]"
+        handle-as="json"
+        on-response="handleCreateResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="gitimportrequest"
+        method="[[method]]"
+        body="[[gitImportParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__gitImportSitePath]]"
+        handle-as="json"
+        on-response="handleGitImportResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="downloadrequest"
+        method="[[method]]"
+        body="[[downloadParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__downloadSitePath]]"
+        handle-as="json"
+        on-response="handleDownloadResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="archiverequest"
+        method="[[method]]"
+        body="[[archiveParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__archiveSitePath]]"
+        handle-as="json"
+        on-response="handleArchiveResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="deleterequest"
+        method="[[method]]"
+        body="[[deleteParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__deleteSitePath]]"
+        handle-as="json"
+        on-response="handleDeleteResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="clonerequest"
+        method="[[method]]"
+        body="[[cloneParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__cloneSitePath]]"
+        handle-as="json"
+        on-response="handleCloneResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="publishrequest"
+        method="[[method]]"
+        body="[[publishParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__publishSitePath]]"
+        handle-as="json"
+        on-response="handlePublishResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="syncrequest"
+        method="[[method]]"
+        body="[[syncParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__syncSitePath]]"
+        handle-as="json"
+        on-response="handleSyncResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="getconfigrequest"
+        method="[[method]]"
+        body="[[configParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__getConfigPath]]"
+        handle-as="json"
+        on-response="handleConfigResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="setconfigrequest"
+        method="[[method]]"
+        body="[[setConfigParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__setConfigPath]]"
+        handle-as="json"
+        on-response="handleSetConfigResponse"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        on-last-error-changed="lastErrorChanged"
+        id="getuserdatarequest"
+        method="[[method]]"
+        body="[[getUserDataParams]]"
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        content-type="application/json"
+        url="[[__getUserDataPath]]"
+        handle-as="json"
+        on-response="handleGetUserDataResponse"
+      ></iron-ajax>
       <div id="loading" data-loading\$="[[!__loading]]">
         <hexagon-loader
           item-count="4"
@@ -462,10 +495,9 @@ class HAXCMSSiteListing extends PolymerElement {
           size="large"
         ></hexagon-loader>
       </div>
-      <app-header reveals>
-        <app-toolbar>
-          <slot name="app-header-pre"></slot>
-          <div class="operations">
+      <div class="toolbar">
+        <slot name="app-header-pre"></slot>
+        <div class="operations">
             <paper-button
               on-click="_addTap"
               id="add"
@@ -474,7 +506,7 @@ class HAXCMSSiteListing extends PolymerElement {
               title="Create new site"
             >
               <iron-icon icon="icons:add"></iron-icon>
-              <span class="small-hide">Create</span>
+              <span class="small-hide">New site</span>
             </paper-button>
             <paper-button
               on-click="_importTap"
@@ -487,41 +519,46 @@ class HAXCMSSiteListing extends PolymerElement {
               <span class="small-hide">Import</span>
             </paper-button>
           </div>
-          <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
-          <div class="operations right">
-            <paper-button
-              on-click="_settingsTap"
-              id="settings"
-              raised
-              title="Settings"
-              hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
-            >
-              <iron-icon icon="icons:settings"></iron-icon>
-              <span class="small-hide">Settings</span>
-            </paper-button>
-            <paper-button
-              hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
-              id="login"
-              on-click="_logoutUserRoutine"
-              title="Logout"
-            >
-              <template is="dom-if" if="[[!logoutPhoto]]">
-                <iron-icon
-                  icon="[[__loginIcon]]"
-                  class="small-hide"
-                ></iron-icon>
-              </template>
-              <template is="dom-if" if="[[logoutPhoto]]">
-                <img id="userphoto" src="[[logoutPhoto]]" class="small-hide" />
-              </template>
-              [[__loginText]]</paper-button
-            >
-          </div>
-        </app-toolbar>
-      </app-header>
-      <app-header class="selected-operations" id="ops">
-        <app-toolbar>
-          <div>
+        <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
+        <div class="operations right">
+          <paper-button
+            on-click="_settingsTap"
+            id="settings"
+            raised
+            title="Settings"
+            hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
+          >
+            <iron-icon icon="icons:settings"></iron-icon>
+            <span class="small-hide">Settings</span>
+          </paper-button>
+          <paper-button
+            hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
+            id="login"
+            on-click="_logoutUserRoutine"
+            title="Logout"
+          >
+            <template is="dom-if" if="[[!logoutPhoto]]">
+              <iron-icon
+                icon="[[__loginIcon]]"
+                class="small-hide"
+              ></iron-icon>
+            </template>
+            <template is="dom-if" if="[[logoutPhoto]]">
+              <img id="userphoto" src="[[logoutPhoto]]" class="small-hide" />
+            </template>
+            [[__loginText]]</paper-button
+          >
+        </div>
+      </div>
+      <a11y-collapse-group radio hidden$="[[!loggedIn]]">
+      <a11y-collapse expanded accordion>
+        <div slot="heading">Card view</div>
+        <jos-render slot="content"></jos-render>
+      </a11y-collapse>
+      <a11y-collapse accordion>
+        <div slot="heading">Table view / bulk operations</div>
+        <div slot="content">
+        <div class="selected-operations" id="ops">
             <paper-button
               title="Publish"
               on-click="_bulkSitesConfirm"
@@ -578,118 +615,116 @@ class HAXCMSSiteListing extends PolymerElement {
               <span class="small-hide">Delete forever</span>
             </paper-button>
           </div>
-        </app-toolbar>
-      </app-header>
-
-      <vaadin-grid
-        hidden$="[[!loggedIn]]"
-        id="grid"
-        items="[[sites]]"
-        theme="row-dividers"
-        column-reordering-allowed
-        multi-sort
-      >
-        <vaadin-grid-selection-column
-          auto-select
-          frozen
-        ></vaadin-grid-selection-column>
-        <vaadin-grid-filter-column width="6em" path="title">
-          <template>
-            <portal-launcher>
-              <a tabindex="-1" href$="[[item.location]]">
-                <paper-button raised class="site-title">
-                  [[item.title]]
-                </paper-button>
-                <div class="small-location">
-                  [[cleanLocation(item.location)]]
-                </div>
-              </a>
-            </portal-launcher>
-          </template>
-        </vaadin-grid-filter-column>
-        <vaadin-grid-filter-column
-          width="2em"
-          path="metadata.theme.name"
-          header="Theme"
-        ></vaadin-grid-filter-column>
-        <vaadin-grid-sort-column
-          width="1em"
-          path="metadata.pageCount"
-          header="Pages"
-        ></vaadin-grid-sort-column>
-        <vaadin-grid-sort-column
-          width="1em"
-          header="Last published"
-          path="metadata.lastPublished"
-        >
-          <template>
-            <template
-              is="dom-if"
-              if="[[item.metadata.site.static.lastPublished]]"
+            <vaadin-grid
+              id="grid"
+              items="[[sites]]"
+              theme="row-dividers"
+              column-reordering-allowed
+              multi-sort
             >
-              <simple-datetime
-                format="M jS, Y"
-                timestamp="[[item.metadata.site.static.lastPublished]]"
-                unix
-              ></simple-datetime>
-            </template>
-          </template>
-        </vaadin-grid-sort-column>
-        <vaadin-grid-sort-column
-          width="1em"
-          header="Updated"
-          path="metadata.updated"
-        >
-          <template>
-            <template is="dom-if" if="[[item.metadata.site.updated]]">
-              <simple-datetime
-                format="M jS, Y"
-                timestamp="[[item.metadata.site.updated]]"
-                unix
-              ></simple-datetime>
-            </template>
-          </template>
-        </vaadin-grid-sort-column>
-        <vaadin-grid-sort-column
-          width="1em"
-          header="Created"
-          path="metadata.created"
-        >
-          <template>
-            <template is="dom-if" if="[[item.metadata.site.created]]">
-              <simple-datetime
-                format="M jS, Y"
-                timestamp="[[item.metadata.site.created]]"
-                unix
-              ></simple-datetime>
-            </template>
-          </template>
-        </vaadin-grid-sort-column>
-        <vaadin-grid-column width="1em" header="Icon">
-          <template
-            ><iron-icon
-              icon="[[item.metadata.theme.variables.icon]]"
-            ></iron-icon
-          ></template>
-        </vaadin-grid-column>
-        <vaadin-grid-column width="1em" header="Color">
-          <template>
-            <div
-              style$="border:1px solid black;width:48px;height:48px;background-color:[[item.metadata.theme.variables.hexCode]];"
-            ></div>
-          </template>
-        </vaadin-grid-column>
-        <vaadin-grid-column width="1em" header="Banner">
-          <template
-            ><iron-image
-              sizing="contain"
-              preload
-              src$="[[item.metadata.theme.variables.image]]"
-              style="width:100px; height:48px;"
-            ></iron-image
-          ></template>
-        </vaadin-grid-column>
-      </vaadin-grid>
+              <vaadin-grid-selection-column
+              width="5em"
+                auto-select
+                frozen
+              ></vaadin-grid-selection-column>
+              <vaadin-grid-filter-column
+              header="Site name"
+              width="300px"
+              path="title">
+                <template>
+                  <portal-launcher>
+                    <a tabindex="-1" href$="[[item.location]]">
+                      <paper-button raised class="site-title">
+                        <div>[[item.title]]</div>
+                        <div class="small-location">
+                        [[cleanLocation(item.location)]]
+                      </div>
+                        </paper-button>
+                    </a>
+                  </portal-launcher>
+                </template>
+              </vaadin-grid-filter-column>
+              <vaadin-grid-filter-column
+                path="metadata.theme.name"
+                header="Theme"
+              ></vaadin-grid-filter-column>
+              <vaadin-grid-sort-column
+                header="Updated"
+                path="metadata.updated"
+              >
+                <template>
+                  <template is="dom-if" if="[[item.metadata.site.updated]]">
+                    <simple-datetime
+                      format="M jS, Y"
+                      timestamp="[[item.metadata.site.updated]]"
+                      unix
+                    ></simple-datetime>
+                  </template>
+                </template>
+              </vaadin-grid-sort-column>
+              <vaadin-grid-sort-column
+                header="Created"
+                path="metadata.created"
+              >
+                <template>
+                  <template is="dom-if" if="[[item.metadata.site.created]]">
+                    <simple-datetime
+                      format="M jS, Y"
+                      timestamp="[[item.metadata.site.created]]"
+                      unix
+                    ></simple-datetime>
+                  </template>
+                </template>
+              </vaadin-grid-sort-column>
+              <vaadin-grid-column header="Icon">
+                <template
+                  ><iron-icon
+                    icon="[[item.metadata.theme.variables.icon]]"
+                  ></iron-icon
+                ></template>
+              </vaadin-grid-column>
+              <vaadin-grid-sort-column
+                header="Last published"
+                path="metadata.lastPublished"
+              >
+                <template>
+                  <template
+                    is="dom-if"
+                    if="[[item.metadata.site.static.lastPublished]]"
+                  >
+                    <simple-datetime
+                      format="M jS, Y"
+                      timestamp="[[item.metadata.site.static.lastPublished]]"
+                      unix
+                    ></simple-datetime>
+                  </template>
+                </template>
+              </vaadin-grid-sort-column>
+              <vaadin-grid-sort-column
+                path="metadata.pageCount"
+                header="Pages"
+              ></vaadin-grid-sort-column>
+              <vaadin-grid-column header="Color">
+                <template>
+                  <div
+                    style$="border:1px solid black;width:64px;height:48px;background-color:[[item.metadata.theme.variables.hexCode]];"
+                  ></div>
+                </template>
+              </vaadin-grid-column>
+              <vaadin-grid-column header="Logo" width="64px">
+                <template
+                  ><iron-image
+                    sizing="contain"
+                    preload
+                    src$="[[item.location]][[item.metadata.site.logo]]"
+                    style="width:64px; height:64px;"
+                  ></iron-image
+                ></template>
+              </vaadin-grid-column>
+            </vaadin-grid>
+      </div>
+      </a11y-collapse>
+      </a11y-collapse-group>
       <div class="login-prompt" hidden$="[[loggedIn]]">
         <simple-login>
           <hax-logo size="mini" hide-hax><span>HAXcms login</span></hax-logo>
@@ -835,13 +870,14 @@ class HAXCMSSiteListing extends PolymerElement {
         this.title = newValue.title;
         this.set("sites", []);
         this.set("sites", newValue.items);
+        this.shadowRoot.querySelector('jos-render').items = newValue.items;
         this.notifyPath("sites.*");
       }
     }
   }
 
   cleanLocation(location) {
-    return location.replace("/_sites/", "").replace("/", "");
+    return location.replace("/_sites/", "").replace("/sites/", "").replace("/", "");
   }
 
   static get properties() {
@@ -1387,7 +1423,7 @@ class HAXCMSSiteListing extends PolymerElement {
         properties: [
           {
             property: "site",
-            title: "Details",
+            title: "Site details",
             properties: [
               {
                 property: "name",
@@ -1398,40 +1434,42 @@ class HAXCMSSiteListing extends PolymerElement {
                 required: true
               },
               {
-                property: "domain",
-                title: "Domain",
-                description: "Optional domain name",
-                inputMethod: "textfield"
-              },
-              {
-                property: "description",
-                title: "Description",
-                description:
-                  "Addition detail, for personal use as well as search engine optimization",
-                inputMethod: "textfield"
-              }
-            ]
-          },
-          {
-            property: "theme",
-            title: "Theme",
-            properties: [
-              {
-                property: "name",
+                property: "theme",
                 title: "Theme",
                 description: "Design for presenting your new site",
                 inputMethod: "select",
                 allowNull: false,
-                options: themeOptions
+                options: themeOptions,
+                required: true
               },
               {
+                property: "description",
+                title: "Description (optional)",
+                description:
+                  "Addition detail, for personal use as well as search engine optimization",
+                inputMethod: "textfield"
+              }/*,
+              {
+                property: "domain",
+                title: "URL (optional)",
+                description: "Optional domain name",
+                inputMethod: "textfield"
+              }*/
+            ]
+          },
+          {
+            property: "theme",
+            title: "Theme settings",
+            properties: [
+/*              {
                 property: "image",
                 title: "Image",
                 description:
                   "The image is typically used as the banner in themes",
-                inputMethod: "haxupload",
-                validationType: "url"
-              },
+                inputMethod: "fileupload",
+                validationType: "url",
+                disabled: true
+              },*/
               {
                 property: "icon",
                 title: "Pick an icon.",
@@ -1456,12 +1494,12 @@ class HAXCMSSiteListing extends PolymerElement {
       manifest: {
         site: {
           name: "",
-          domain: "",
-          description: ""
+          description: "",
+          //domain: "",
+          theme: firstTheme
         },
         theme: {
-          name: firstTheme,
-          image: "assets/banner.jpg",
+          //image: "assets/banner.jpg",
           color: "blue",
           icon: "icons:add-circle-outline"
         }
@@ -1519,6 +1557,48 @@ class HAXCMSSiteListing extends PolymerElement {
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
+    const jos = this.shadowRoot.querySelector('jos-render');
+    jos.map = {
+      tag: "course-card",
+      path: "@lrnwebcomponents/product-card/lib/course-card.js",
+      properties: {
+        number: 'title',
+        name: {
+          transform: function(e) {
+            return e.replace("/_sites/", "").replace("/sites/", "").replace("/", "")
+          },
+          value: 'location'
+        },
+        url: 'location',
+        image: {
+          transform: function(e, item) {
+            return item.location + (e ? e.replace(' ', '%20') : 'assets/banner.jpg');
+          },
+          value: 'metadata.site.logo'
+        },
+        icon: {
+          transform: function(e) {
+            return (e ? e : "icons:android");
+          },
+          value: 'metadata.theme.variables.icon'
+        },
+        author: 'metadata.author.name',
+        accentColor: {
+          transform: function(e) {
+            return e.replace('--simple-colors-default-theme-', '').replace('-7', '');
+          },
+          value: 'metadata.theme.variables.cssVariable'
+        },
+        size: 'small',
+        dark: true,
+        alt: {
+          transform: function(e) {
+            return 'Select to access ' + e;
+          },
+          value: 'title'
+        },
+      }
+    };
   }
   /**
    * Simple method of loading whatever's been dictated as active.

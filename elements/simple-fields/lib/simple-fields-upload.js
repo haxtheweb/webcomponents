@@ -172,6 +172,12 @@ class SimpleFieldsUpload extends SimpleColors {
   }
   optionChanged(e) {
     this.option = e.detail.value;
+    // make sure there's not null here, possible when dynamically  built
+    if (e.detail.value == null || e.detail.value == "null") {
+      if (this.options && this.options[0] && this.options[0][0] && this.options[0][0].value) {
+        this.option = this.options[0][0].value;
+      }
+    }
   }
   valueChanged(e) {
     this.value = e.detail.value;
@@ -250,6 +256,8 @@ class SimpleFieldsUpload extends SimpleColors {
    * do a gizmo guess from there!
    */
   _fileUploadResponse(e) {
+    // set the value of the url which will update our URL and notify
+    this.shadowRoot.querySelector("#url").value = item.url;
     this.dispatchEvent(
       new CustomEvent("upload-response", {
         bubbles: true,

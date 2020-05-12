@@ -27,8 +27,6 @@ class JosRender extends LitElement {
         }
         .children ::slotted(*) {
           display: inline-flex;
-          min-width: var(--jos-render-width, 350px);
-          width: var(--jos-render-width, 350px);
           margin: var(--jos-render-margin, 8px);
           padding: var(--jos-render-padding, 8px);
         }
@@ -90,35 +88,33 @@ class JosRender extends LitElement {
     if (this.map && this.map.properties) {
       // wipe slot
       wipeSlot(this);
-      setTimeout(() => {
-        items.forEach(item => {
-          // create tag for the map
-          let n = document.createElement(this.map.tag);
-          for (var key in this.map.properties) {
-            let value = this.map.properties[key];
-            // complex transform capability for values that need processing
-            // prior to being set
-            if (value === true || value === false || value === null) {
-              n[key] = value;
-            } else if (
-              value.transform &&
-              value.value &&
-              varExists(item, value.value)
-            ) {
-              n[key] = value.transform(varGet(item, value.value), item);
-            }
-            // only set the value in the node IF we have a match in the item for data
-            // odd trap but the transform case can potentially miss above and this then pass
-            // which varExists requires value be a string
-            else if (typeof value === "string" && varExists(item, value)) {
-              n[key] = varGet(item, value);
-            } else {
-              n[key] = value;
-            }
+      items.forEach(item => {
+        // create tag for the map
+        let n = document.createElement(this.map.tag);
+        for (var key in this.map.properties) {
+          let value = this.map.properties[key];
+          // complex transform capability for values that need processing
+          // prior to being set
+          if (value === true || value === false || value === null) {
+            n[key] = value;
+          } else if (
+            value.transform &&
+            value.value &&
+            varExists(item, value.value)
+          ) {
+            n[key] = value.transform(varGet(item, value.value), item);
           }
-          this.appendChild(n);
-        });
-      }, 0);
+          // only set the value in the node IF we have a match in the item for data
+          // odd trap but the transform case can potentially miss above and this then pass
+          // which varExists requires value be a string
+          else if (typeof value === "string" && varExists(item, value)) {
+            n[key] = varGet(item, value);
+          } else {
+            n[key] = value;
+          }
+        }
+        this.appendChild(n);
+      });
     }
   }
 }
