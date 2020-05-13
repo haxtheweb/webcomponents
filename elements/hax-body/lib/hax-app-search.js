@@ -130,7 +130,10 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         this.shadowRoot.querySelector("#request")[propName] = this[propName];
       }
       if (propName == "requestEndPoint" || propName == "requestParams") {
-        this.shadowRoot.querySelector("#request").url = this.requestUrl(this.requestEndPoint, this.requestParams);
+        this.shadowRoot.querySelector("#request").url = this.requestUrl(
+          this.requestEndPoint,
+          this.requestParams
+        );
       }
       if (propName == "activeApp") {
         this._resetAppSearch(this[propName], oldValue);
@@ -140,11 +143,11 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       }
     });
   }
-  requestUrl(url = '', params = {}) {
+  requestUrl(url = "", params = {}) {
     var queryString = this.queryStringData(params);
 
     if (queryString) {
-      var bindingChar = url.indexOf('?') >= 0 ? '&' : '?';
+      var bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
       return url + bindingChar + queryString;
     }
 
@@ -164,16 +167,16 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
 
       if (Array.isArray(value)) {
         for (var i = 0; i < value.length; i++) {
-          queryParts.push(param + '=' + window.encodeURIComponent(value[i]));
+          queryParts.push(param + "=" + window.encodeURIComponent(value[i]));
         }
       } else if (value !== null) {
-        queryParts.push(param + '=' + window.encodeURIComponent(value));
+        queryParts.push(param + "=" + window.encodeURIComponent(value));
       } else {
         queryParts.push(param);
       }
     }
 
-    return queryParts.join('&');
+    return queryParts.join("&");
   }
   static get tag() {
     return "hax-app-search";
@@ -352,7 +355,8 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       // list to dig into
       if (this.resultMap.items) {
         if (
-          typeof this._resolveObjectPath(map.items, newValue) !== typeof undefined
+          typeof this._resolveObjectPath(map.items, newValue) !==
+          typeof undefined
         ) {
           data = this._resolveObjectPath(map.items, newValue);
         } else {
@@ -360,8 +364,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
             data = newValue;
           }
         }
-      }
-      else {
+      } else {
         data = newValue;
       }
       if (data != null) {
@@ -453,11 +456,11 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           // and if we dont get a hit then fallback to just the default
           if (typeof map.gizmo.type !== typeof undefined) {
             media[i].type = this._resolveObjectPath(map.gizmo.type, data[i]);
-          }
-          else if (typeof map.gizmo.mimetype !== typeof undefined) {
-            media[i].type = window.HaxStore.mimeTypeToGizmoType(this._resolveObjectPath(map.gizmo.mimetype, data[i]));
-          }
-          else if (window.HaxStore.guessGizmoType(map.gizmo) != '*'){
+          } else if (typeof map.gizmo.mimetype !== typeof undefined) {
+            media[i].type = window.HaxStore.mimeTypeToGizmoType(
+              this._resolveObjectPath(map.gizmo.mimetype, data[i])
+            );
+          } else if (window.HaxStore.guessGizmoType(map.gizmo) != "*") {
             // try and guess the type based on file ending
             media[i].type = window.HaxStore.guessGizmoType(map.gizmo);
           }

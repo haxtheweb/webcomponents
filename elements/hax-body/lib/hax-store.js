@@ -2711,35 +2711,35 @@ window.HaxStore.write = (prop, value, obj) => {
  * Convert a data mime type to gizmo type for rendering
  */
 window.HaxStore.mimeTypeToGizmoType = mime => {
-  let parts = mime.split('/');
+  let parts = mime.split("/");
   switch (parts[0]) {
-    case 'audio':
-      return 'audio';
-    break;
-    case 'image':
-      if (parts[1] == 'svg+xml') {
-        return 'svg';
+    case "audio":
+      return "audio";
+      break;
+    case "image":
+      if (parts[1] == "svg+xml") {
+        return "svg";
       }
-      return 'image';
-    break;
-    case 'video':
-      return 'video';
-    break;
-    case 'text':
-      if (['csv','html','markdown'].includes(parts[1])) {
+      return "image";
+      break;
+    case "video":
+      return "video";
+      break;
+    case "text":
+      if (["csv", "html", "markdown"].includes(parts[1])) {
         return parts[1];
       }
-      return 'document';
-    break;
-    case 'application':
-      if (parts[1] == 'pdf') {
-        return 'pdf';
+      return "document";
+      break;
+    case "application":
+      if (parts[1] == "pdf") {
+        return "pdf";
       }
-      if (['zip','gzip','x-tar'].includes(parts[1])) {
-        return 'archive';
+      if (["zip", "gzip", "x-tar"].includes(parts[1])) {
+        return "archive";
       }
-      return 'document';
-    break;
+      return "document";
+      break;
   }
 };
 /**
