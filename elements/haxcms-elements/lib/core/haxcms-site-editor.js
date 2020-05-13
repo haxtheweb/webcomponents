@@ -8,6 +8,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
+import "@lrnwebcomponents/mdi-iconset-svg/lib/mdi-action-iconset-svg.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-button/paper-button.js";
