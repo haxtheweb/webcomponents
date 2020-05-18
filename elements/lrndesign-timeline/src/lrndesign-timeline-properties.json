@@ -34,7 +34,7 @@
       "attribute": "timeline-title"
     },
     /**
-     * DEPRECATED: title of timeline
+     * @depeacated: title of timeline
      */
     "title": {
       "type": "String",

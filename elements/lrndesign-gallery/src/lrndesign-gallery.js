@@ -48,6 +48,10 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       subtree: false
     });
   }
+  disconnectedCallback(){
+    if(this.observer  && this.observer.disconnect) this.observer.disconnect();
+    if(super.disconnectedCallback)  super.disconnectedCallback();
+  }
   firstUpdated() {
     super.firstUpdated();
     window.dispatchEvent(

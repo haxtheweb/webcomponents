@@ -160,6 +160,7 @@ const ChartistRenderSuper = function(SuperClass) {
           this._getChart.bind(this)
         )
       );
+      if (this.observer && this.observer.disconnect) this.observer.disconnect();
       super.disconnectedCallback();
     }
 

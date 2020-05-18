@@ -18,7 +18,6 @@ export default {
     options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
   }
 };
-
 const utils = new StorybookUtilities();
 let scale = {
     "ct-square": "ct-square (1:1)",

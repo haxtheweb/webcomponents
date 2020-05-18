@@ -19,258 +19,256 @@ import "./lib/lrndesign-gallery-masonry.js";
  * @demo demo/index.html
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
-        ::slotted(figure) {
-          display: block;
-          margin-top: 15px;
-          margin-bottom: 15px;
-          max-width: 400px;
-          max-height: 400px;
-          display: block;
-          border: 1px solid #ddd;
-          page-break-inside: avoid;
-        }
+:host([hidden]) {
+  display: none; 
+}
 
-        @media screen {
-          ::slotted(figure) {
-            display: none;
-          }
-        }
+::slotted(figure){
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 400px;
+  max-height: 400px;
+  display: block;
+  border: 1px solid #ddd;
+  page-break-inside: avoid;
+}
+
+@media screen {
+  ::slotted(figure){
+    display: none;
+  }
+}
       `
     ];
   }
 
-  // render function
+// render function
   render() {
     return html`
-      <div
-        id="gallery"
-        style="--lrndesign-gallery-image-aspect:${this
-          .aspectRatio};--lrndesign-gallery-image-height:${100 /
-          this.aspectRatio}%"
-      >
-        <div slot="title"><slot name="title"></slot></div>
-        <div slot="description"><slot name="description"></slot></div>
-        ${this.layout === "masonry"
-          ? html`
-              <lrndesign-gallery-masonry
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery-id="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-              >
-              </lrndesign-gallery-masonry>
-            `
-          : this.grid || this.layout === "grid"
-          ? html`
-              <lrndesign-gallery-grid
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery-id="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-              >
-              </lrndesign-gallery-grid>
-            `
-          : html`
-              <lrndesign-gallery-carousel
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery-id="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-              >
-              </lrndesign-gallery-carousel>
-            `}
-      </div>
-      <slot hidden></slot>
-    `;
+
+<div id="gallery" style="--lrndesign-gallery-image-aspect:${this.aspectRatio};--lrndesign-gallery-image-height:${100/this.aspectRatio}%">
+  <div slot="title"><slot name="title"></slot></div>
+  <div slot="description"><slot name="description"></slot></div>
+  ${this.layout === 'masonry'
+    ? html`
+        <lrndesign-gallery-masonry
+          accent-color="${this.accentColor}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
+          ?dark="${this.dark}"
+          .gallery-id="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
+          responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
+          sizing="${this.sizing}"
+          .sources="${this.items}"
+        >
+      </lrndesign-gallery-masonry>
+      `
+    : this.grid || this.layout === 'grid'
+      ? html`
+          <lrndesign-gallery-grid
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            sizing="${this.sizing}"
+            .sources="${this.items}"
+          >
+        </lrndesign-gallery-grid>
+        `
+      : html`
+          <lrndesign-gallery-carousel
+            accent-color="${this.accentColor}"
+            .aspect-ratio="${this.aspect}"
+            .extra-wide="${this.extra}"
+            ?dark="${this.dark}"
+            .gallery-id="${this.id}"
+            @item-changed="${e=>this.goToItem(e.detail)}"
+            responsive-size="${this.responsiveSize}"
+            .selected="${this.selected}"
+            sizing="${this.sizing}"
+            .sources="${this.items}"
+          >
+          </lrndesign-gallery-carousel>`
+      }
+</div>
+<slot hidden></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: false,
-      canPosition: false,
-      canEditSource: true,
-      gizmo: {
-        title: "Image Gallery",
-        description: "An image gallery displayed as a carousel or a grid",
-        icon: "image:collections",
-        color: "cyan",
-        groups: ["Content", "Instructional", "Media", "Image"],
-        handles: [
-          {
-            type: "image",
-            source: "image"
-          }
-        ],
-        meta: {
-          author: "ELMS:LN"
-        }
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Image Gallery",
+    "description": "An image gallery displayed as a carousel or a grid",
+    "icon": "image:collections",
+    "color": "cyan",
+    "groups": ["Content", "Instructional", "Media", "Image"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
       },
-      settings: {
-        quick: [
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean",
+        "icon": "icons:invert-colors"
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Display as grid?",
+        "inputMethod": "select",
+        "itemsList": ["carousel", "grid", "masonry"]
+      }
+    ],
+    "configure": [
+      {
+        "slot": "title",
+        "title": "Optional Gallery Title",
+        "description": "Am optional title for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "description",
+        "title": "OptionalGallery Description",
+        "description": "An optional description for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Display as grid?",
+        "inputMethod": "select",
+        "itemsList": ["carousel", "grid", "masonry"]
+      },
+      {
+        "property": "sources",
+        "title": "Gallery Images",
+        "description": "The images for the gallery.",
+        "inputMethod": "array",
+        "itemLabel": "title",
+        "properties": [
           {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            "property": "title",
+            "title": "Image Title",
+            "description": "The heading for the image.",
+            "inputMethod": "textfield"
           },
           {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean",
-            icon: "icons:invert-colors"
+            "property": "details",
+            "title": "Image Details",
+            "description": "The body text with details for the image.",
+            "inputMethod": "textfield"
           },
           {
-            property: "layout",
-            title: "Layout",
-            description: "Display as grid?",
-            inputMethod: "select",
-            itemsList: ["carousel", "grid", "masonry"]
-          }
-        ],
-        configure: [
-          {
-            slot: "title",
-            title: "Optional Gallery Title",
-            description: "Am optional title for the gallery.",
-            inputMethod: "textfield"
+            "property": "src",
+            "title": "Image",
+            "description": "Default Image",
+            "inputMethod": "haxupload"
           },
           {
-            slot: "description",
-            title: "OptionalGallery Description",
-            description: "An optional description for the gallery.",
-            inputMethod: "textfield"
+            "property": "thumbnail",
+            "title": "Optional Thumbnail Image",
+            "description": "Optional smaller thumbnail version of the image.",
+            "inputMethod": "haxupload"
           },
           {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker"
-          },
-          {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "boolean"
-          },
-          {
-            property: "layout",
-            title: "Layout",
-            description: "Display as grid?",
-            inputMethod: "select",
-            itemsList: ["carousel", "grid", "masonry"]
-          },
-          {
-            property: "sources",
-            title: "Gallery Images",
-            description: "The images for the gallery.",
-            inputMethod: "array",
-            itemLabel: "title",
-            properties: [
-              {
-                property: "title",
-                title: "Image Title",
-                description: "The heading for the image.",
-                inputMethod: "textfield"
-              },
-              {
-                property: "details",
-                title: "Image Details",
-                description: "The body text with details for the image.",
-                inputMethod: "textfield"
-              },
-              {
-                property: "src",
-                title: "Image",
-                description: "Default Image",
-                inputMethod: "haxupload"
-              },
-              {
-                property: "thumbnail",
-                title: "Optional Thumbnail Image",
-                description: "Optional smaller thumbnail version of the image.",
-                inputMethod: "haxupload"
-              },
-              {
-                property: "large",
-                title: "Optional Full Image",
-                description:
-                  "Optional larger full-sized version of the image for zooming.",
-                inputMethod: "haxupload"
-              }
-            ]
-          }
-        ],
-        advanced: [
-          {
-            property: "aspectRatio",
-            title: "Aspect Ratio",
-            description:
-              "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
-            inputMethod: "textfield"
-          },
-          {
-            property: "sizing",
-            title: "Fit to Aspect Ratio",
-            description: "Fit images to aspect ratio",
-            inputMethod: "select",
-            options: {
-              cover: "crop",
-              contain: "letterbox"
-            }
+            "property": "large",
+            "title": "Optional Full Image",
+            "description": "Optional larger full-sized version of the image for zooming.",
+            "inputMethod": "haxupload"
           }
         ]
       }
-    };
+    ],
+    "advanced": [
+      {
+        "property": "aspectRatio",
+        "title": "Aspect Ratio",
+        "description": "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "sizing",
+        "title": "Fit to Aspect Ratio",
+        "description": "Fit images to aspect ratio",
+        "inputMethod": "select",
+        "options": {
+          "cover": "crop",
+          "contain": "letterbox"
+        }
+      }
+    ]
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      id: {
-        type: String,
-        reflect: true,
-        attribute: "id"
-      },
-      responsiveSize: {
-        type: String,
-        reflect: true,
-        attribute: "responsive-size"
-      }
-    };
+  
+  ...super.properties,
+  
+  "id": {
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  },
+  "responsiveSize": {
+    "type": String,
+    "reflect": true,
+    "attribute": "responsive-size"
+  }
+}
+;
   }
 
   /**
@@ -299,6 +297,10 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       childList: true,
       subtree: false
     });
+  }
+  disconnectedCallback(){
+    if(this.observer  && this.observer.disconnect) this.observer.disconnect();
+    if(super.disconnectedCallback)  super.disconnectedCallback();
   }
   firstUpdated() {
     super.firstUpdated();

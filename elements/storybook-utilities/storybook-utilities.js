@@ -25,6 +25,9 @@ import {
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+let nodeModules = import.meta.url.match(/node_modules/) ? new URL('../../', import.meta.url) : new URL('../../node_modules/', import.meta.url);
+window.WCGlobalBasePath = nodeModules;
+
 window.getStorybookIconset = () => {
   let iconset = document.createElement("iconset-demo");
   iconset.hidden = true;
@@ -615,6 +618,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   makeElement(tag, knobs) {
+    console.log('makeElement',tag,knobs);
     let el = document.createElement(tag);
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
@@ -673,6 +677,7 @@ export class StorybookUtilities {
     let tag = el.tag || this.name.camelToKebab(el),
       props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
+    console.log('makeElementFromClass',el,tag,props,knobs);
     return this.makeElement(tag, knobs);
   }
 }
