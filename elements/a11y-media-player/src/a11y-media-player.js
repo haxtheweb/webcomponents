@@ -331,7 +331,6 @@ class A11yMediaPlayer extends SimpleColors {
   get fullFlex() {
     return (
       this.flexLayout &&
-      !this.height &&
       this.responsiveSize !== "xs" &&
       this.responsiveSize !== "sm"
     );
