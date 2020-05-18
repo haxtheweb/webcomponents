@@ -12,7 +12,6 @@
           @item-changed="${e=>this.goToItem(e.detail)}"
           responsive-size="${this.responsiveSize}"
           .selected="${this.selected}"
-          sizing="${this.sizing}"
           .sources="${this.items}"
         >
       </lrndesign-gallery-masonry>
@@ -28,7 +27,7 @@
             @item-changed="${e=>this.goToItem(e.detail)}"
             responsive-size="${this.responsiveSize}"
             .selected="${this.selected}"
-            sizing="${this.sizing}"
+            sizing="${this.sizing === 'cover' || 'contain'}"
             .sources="${this.items}"
           >
         </lrndesign-gallery-grid>
@@ -43,7 +42,7 @@
             @item-changed="${e=>this.goToItem(e.detail)}"
             responsive-size="${this.responsiveSize}"
             .selected="${this.selected}"
-            sizing="${this.sizing}"
+            sizing="${this.sizing === 'cover' || 'contain'}"
             .sources="${this.items}"
           >
           </lrndesign-gallery-carousel>`

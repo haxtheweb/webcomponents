@@ -111,7 +111,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 <img
                   .alt="${item.alt}"
                   fade
-                  sizing="${this.selected.sizing || this.sizing || "cover"}"
+                  sizing="${this.selected.sizing || this.sizing === 'cover' || 'contain'}"
                   .src="${item.src}"
                 />
                 <div class="zoombg"></div>

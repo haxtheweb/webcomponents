@@ -123,7 +123,6 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
                       <img
                         .alt="${col.alt}"
                         fade
-                        sizing="${col.sizing || this.sizing || "cover"}"
                         .src="${col.src}"
                         @load="${e => this._handleImgLoad(e)}"
                       />
