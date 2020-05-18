@@ -212,10 +212,6 @@ class A11yMediaPlayer extends SimpleColors {
   overflow: unset;
 }
 
-:host[height] #transcript-section {
-  display: none;
-}
-
 :host([height]) #player-section {
   max-height: var(--a11y-media-player-height);
 }
