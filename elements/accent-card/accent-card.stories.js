@@ -4,27 +4,28 @@ import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Card|Accent Card",
+  title: "Layout|Card",
   component: "accent-card",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
     options: { selectedPanel: "storybookjs/knobs/panel" }
   }
 };
-
+const utils = new StorybookUtilities();
 export const AccentCardStory = () => {
-  const utils = new StorybookUtilities(),
-    images = [1, 2, 3, 4, 5, 6, 7, 8].map(
-      i => new URL(`demo/images/image${i}.jpg`, import.meta.url)
-    );
-
+  let defaultData = utils.getRandomOption([
+    { accentColor: "red", dark: true, horizontal: true, imageSrc: new URL(`demo/images/image1.jpg`, import.meta.url)},
+    { accentColor: "red", accentHeading: true, imageSrc: new URL(`demo/images/image5.jpg`, import.meta.url)},
+    { accentColor: "pink", dark: true, horizontal: true, imageValign: "top", imageSrc: new URL(`demo/images/image3.jpg`, import.meta.url)},
+    { accentColor: "light-blue", imageSrc: new URL(`demo/images/image6.jpg`, import.meta.url)},
+    { accentColor: "green", horizontal: true, imageSrc: new URL(`demo/images/image7.jpg`, import.meta.url)}
+  ]);
   return utils.makeElementFromClass(
     AccentCard,
     {
+      ...defaultData,
       heading: utils.getRandomText(),
       content: utils.getRandomTextarea(),
-      color: utils.getRandomColor(),
-      imageSrc: utils.getRandomOption(images),
       maxWidth: "600px"
     },
     [
@@ -110,3 +111,4 @@ export const AccentCardStory = () => {
     ]
   );
 };
+export const AccentCardHaxStory = () => utils.makeElementFromHaxDemo(AccentCard);
