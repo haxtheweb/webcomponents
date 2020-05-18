@@ -25,7 +25,7 @@ module.exports = {
   },
 
   // Rollup build output directory (build-storybook only)
-  outputDir: "../../../storybooks/lrnwebcomponents",
+  outputDir: "../../../storybooks/styleguide",
   // Configuration for rollup (build-storybook only)
   rollup: config => {
     return [
@@ -36,7 +36,21 @@ module.exports = {
           ...config[1].plugins,
           cpy({
             files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
-            dest: "../../storybooks/lrnwebcomponents/",
+            dest: "../../storybooks/styleguide",
+            options: { parents: true }
+          }),
+          cpy({
+            files: [
+              "node_modules/monaco-editor/min/**/*",
+            ],
+            dest: "../../storybooks/styleguide/",
+            options: { parents: true }
+          }),
+          cpy({
+            files: [
+              "elements/chartist-render/lib/chartist/dist/chartist.min.*",
+            ],
+            dest: "../../storybooks/styleguide/",
             options: { parents: true }
           })
         ]

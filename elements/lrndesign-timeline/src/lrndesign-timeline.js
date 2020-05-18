@@ -53,9 +53,9 @@ class LrndesignTimeline extends SimpleColors {
       subtree: false
     });
   }
-  disconnectedCallback(){
-    if(this.observer && this.observer.disconnect) this.observer.disconnect();
-    if(super.disconnectedCallback) super.disconnectedCallback();
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (super.disconnectedCallback) super.disconnectedCallback();
   }
 
   /**

@@ -16,17 +16,14 @@ const utils = new StorybookUtilities();
 export const ImageCompareSliderStory = () => {
   return utils.makeElementFromClass(
     ImageCompareSlider,
-    { 
+    {
       topSrc: new URL(`./demo/images/Matterhorn01.png`, import.meta.url),
       bottomSrc: new URL(`./demo/images/Matterhorn02.png`, import.meta.url),
       heading: `<h2>Image Compare Slider</h2>`,
-      description: '<p>Use the slider to comapre images.</p>',
+      description: "<p>Use the slider to comapre images.</p>",
       width: "100%",
       maxWidth: "400px"
     },
-    [
-      { css: "width" },
-      { css: "maxWidth" }
-    ]
+    [{ css: "width" }, { css: "maxWidth" }]
   );
 };
