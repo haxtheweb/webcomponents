@@ -85,7 +85,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   kebabToCamel(camel) {
-    return camel.replace(/-./g, x=>x.toUpperCase()[1]);
+    return camel.replace(/-./g, x => x.toUpperCase()[1]);
   }
 
   /**
@@ -688,27 +688,32 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities camelToKebab(camel)
    */
   makeElementFromHaxDemo(el, defaults = {}, additions = [], exclusions = []) {
-    let demo = el.haxProperties && el.haxProperties.demoSchema 
-        && el.haxProperties.demoSchema.length > 0 
-        ? this.getRandomOption(el.haxProperties.demoSchema) 
-        : {},
-      props = demo.properties, 
-      styles = demo.properties.style ? demo.properties.style.replace(/;$/,'').split(/;/) : [],
-      content = document.createElement('div');
-      delete props.styles;
-      styles.forEach(style=>{
-        let parts = style.split(/:/), 
-          camel = parts[0].trim();
-          props[this.kebabToCamel(camel)] = parts[1].trim();
-        if(additions.filter(addition=>addition.css === camel)) additions.push({css: camel});
-      });
-      content.innerHTML = demo.content || '';
-      Object.keys(content.children || {}).forEach(child=>{
-        let node = content.children[child];
-        if(node.slot) props[node.slot] = node.outerHTML;
-      });
-      Object.keys(defaults || {}).forEach(item=>props[item]=defaults[item]);
-      return this.makeElementFromClass(el, props, additions, exclusions);
+    let demo =
+        el.haxProperties &&
+        el.haxProperties.demoSchema &&
+        el.haxProperties.demoSchema.length > 0
+          ? this.getRandomOption(el.haxProperties.demoSchema)
+          : {},
+      props = demo.properties,
+      styles = demo.properties.style
+        ? demo.properties.style.replace(/;$/, "").split(/;/)
+        : [],
+      content = document.createElement("div");
+    delete props.styles;
+    styles.forEach(style => {
+      let parts = style.split(/:/),
+        camel = parts[0].trim();
+      props[this.kebabToCamel(camel)] = parts[1].trim();
+      if (additions.filter(addition => addition.css === camel))
+        additions.push({ css: camel });
+    });
+    content.innerHTML = demo.content || "";
+    Object.keys(content.children || {}).forEach(child => {
+      let node = content.children[child];
+      if (node.slot) props[node.slot] = node.outerHTML;
+    });
+    Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
+    return this.makeElementFromClass(el, props, additions, exclusions);
   }
 
   /**

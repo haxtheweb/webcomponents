@@ -280,7 +280,9 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               fade
               aria-describedby="carouseltitle details"
               .placeholder="${this.selected.thumbnail}"
-              sizing="${this.selected.sizing || this.sizing === 'contain' || 'cover'}"
+              sizing="${this.selected.sizing ||
+                this.sizing === "contain" ||
+                "cover"}"
               .src="${this.selected.src}"
             >
             </iron-image>
@@ -362,9 +364,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     .index="${item.index}"
                     @click="${e => this._itemChanged(item.id)}"
                     ?disabled="${this.selected.id === item.id}"
-                    .style="--lrndesign-gallery-thumb-url:url(${item.thumbnail});background-size:${item.sizing || this.sizing === 'contain' || 'cover'}"
+                    .style="--lrndesign-gallery-thumb-url:url(${item.thumbnail});background-size:${item.sizing ||
+                      this.sizing === "contain" ||
+                      "cover"}"
                   >
-                    <span class="sr-only">${item.alt || `Item ${parseInt(item.index) + 1}`}</span>
+                    <span class="sr-only"
+                      >${item.alt || `Item ${parseInt(item.index) + 1}`}</span
+                    >
                   </button>
                   <simple-tooltip
                     .for="${item.id}"
