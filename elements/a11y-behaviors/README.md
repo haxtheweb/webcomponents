@@ -1,4 +1,4 @@
-# &lt;a-11-y-behaviors&gt;
+# &lt;a11y-behaviors&gt;
 
 11
 > Behaviors / mixins to improve A11y in elements
@@ -8,14 +8,14 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/a-11-y-behaviors.js';
+import '@lrnwebcomponents/a11y-behaviors.js';
 /* At top of an application */
-<script type="module" src="a-11-y-behaviors.js"></script>
+<script type="module" src="a11y-behaviors.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/a-11-y-behaviors.js';
+  import '@lrnwebcomponents/a11y-behaviors.js';
 
-  import {A11YBehaviors} from '@lrnwebcomponents/a-11-y-behaviors';
+  import {A11YBehaviors} from '@lrnwebcomponents/a11y-behaviors';
 </script>
 ```
 

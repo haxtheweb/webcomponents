@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 
 /**
  * `a11y-image-description`
@@ -34,7 +34,8 @@ class A11YImageDescription extends LitElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return {}
+;
   }
 
   /**
@@ -48,7 +49,7 @@ class A11YImageDescription extends LitElement {
   // life cycle
   constructor() {
     super();
-    
+
     this.tag = A11YImageDescription.tag;
     // map our imported properties json to real props on the element
     // @notice static getter of properties is built via tooling
@@ -58,8 +59,7 @@ class A11YImageDescription extends LitElement {
       if (obj.hasOwnProperty(p)) {
         if (this.hasAttribute(p)) {
           this[p] = this.getAttribute(p);
-        }
-        else {
+        } else {
           this.setAttribute(p, obj[p].value);
           this[p] = obj[p].value;
         }
@@ -71,7 +71,6 @@ class A11YImageDescription extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    
   }
   // static get observedAttributes() {
   //   return [];
@@ -79,7 +78,6 @@ class A11YImageDescription extends LitElement {
   // disconnectedCallback() {}
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
-  
 }
 customElements.define("a11y-image-description", A11YImageDescription);
 export { A11YImageDescription };

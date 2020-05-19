@@ -1,19 +1,19 @@
 {
-  "name": "@lrnwebcomponents/a-11-y-image-description",
+  "name": "@lrnwebcomponents/a11y-image-description",
   "wcfactory": {
     "className": "A11YImageDescription",
     "customElementClass": "LitElement",
-    "elementName": "a-11-y-image-description",
+    "elementName": "a11y-image-description",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/a-11-y-image-description.css",
-      "scss": "src/a-11-y-image-description.scss",
-      "html": "src/a-11-y-image-description.html",
-      "js": "src/a-11-y-image-description.js",
-      "properties": "src/a-11-y-image-description-properties.json",
-      "hax": "src/a-11-y-image-description-hax.json"
+      "css": "src/a11y-image-description.css",
+      "scss": "src/a11y-image-description.scss",
+      "html": "src/a11y-image-description.html",
+      "js": "src/a11y-image-description.js",
+      "properties": "src/a11y-image-description-properties.json",
+      "hax": "src/a11y-image-description-hax.json"
     }
   },
   "version": "2.6.9",
@@ -22,12 +22,12 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "a-11-y-image-description.js",
-  "module": "a-11-y-image-description.es6.js",
-  "umd": "a-11-y-image-description.umd.js",
-  "amd": "a-11-y-image-description.amd.js",
+  "main": "a11y-image-description.js",
+  "module": "a11y-image-description.es6.js",
+  "umd": "a11y-image-description.umd.js",
+  "amd": "a11y-image-description.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a-11-y-image-description/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-image-description/test/",
     "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
