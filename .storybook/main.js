@@ -40,15 +40,13 @@ module.exports = {
             options: { parents: true }
           }),
           cpy({
-            files: [
-              "node_modules/monaco-editor/min/**/*",
-            ],
+            files: ["node_modules/monaco-editor/min/**/*"],
             dest: "../../storybooks/styleguide/",
             options: { parents: true }
           }),
           cpy({
             files: [
-              "elements/chartist-render/lib/chartist/dist/chartist.min.*",
+              "elements/chartist-render/lib/chartist/dist/chartist.min.*"
             ],
             dest: "../../storybooks/styleguide/",
             options: { parents: true }
