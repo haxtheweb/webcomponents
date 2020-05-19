@@ -129,11 +129,11 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       if (["auto", "method", "headers"].includes(propName)) {
         this.shadowRoot.querySelector("#request")[propName] = this[propName];
       }
-      if (propName == "requestEndPoint") {
-        this.shadowRoot.querySelector("#request").url = this[propName];
-      }
-      if (propName == "requestParams") {
-        this.shadowRoot.querySelector("#request").params = this[propName];
+      if (propName == "requestEndPoint" || propName == "requestParams") {
+        this.shadowRoot.querySelector("#request").url = this.requestUrl(
+          this.requestEndPoint,
+          this.requestParams
+        );
       }
       if (propName == "activeApp") {
         this._resetAppSearch(this[propName], oldValue);
@@ -142,6 +142,41 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         this._requestDataChanged(this[propName], oldValue);
       }
     });
+  }
+  requestUrl(url = "", params = {}) {
+    var queryString = this.queryStringData(params);
+
+    if (queryString) {
+      var bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
+      return url + bindingChar + queryString;
+    }
+
+    return url;
+  }
+  /**
+   * from iron-ajax for queryString but without encoding param
+   */
+  queryStringData(params) {
+    var queryParts = [];
+    var param;
+    var value;
+
+    for (param in params) {
+      value = params[param];
+      //param = window.encodeURIComponent(param);
+
+      if (Array.isArray(value)) {
+        for (var i = 0; i < value.length; i++) {
+          queryParts.push(param + "=" + window.encodeURIComponent(value[i]));
+        }
+      } else if (value !== null) {
+        queryParts.push(param + "=" + window.encodeURIComponent(value));
+      } else {
+        queryParts.push(param);
+      }
+    }
+
+    return queryParts.join("&");
   }
   static get tag() {
     return "hax-app-search";
@@ -309,7 +344,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
   _requestDataChanged(newValue, oldValue) {
     if (
       this.resultMap &&
-      this.resultMap.items &&
       typeof newValue != {} &&
       typeof oldValue !== typeof undefined
     ) {
@@ -317,14 +351,21 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       let map = this.resultMap;
       let data = [];
       // look for the items element to draw our data from at its root
-      if (
-        typeof this._resolveObjectPath(map.items, newValue) !== typeof undefined
-      ) {
-        data = this._resolveObjectPath(map.items, newValue);
-      } else {
-        if (newValue != null) {
-          data = newValue;
+      // while supporting data that's purely direct result without an items
+      // list to dig into
+      if (this.resultMap.items) {
+        if (
+          typeof this._resolveObjectPath(map.items, newValue) !==
+          typeof undefined
+        ) {
+          data = this._resolveObjectPath(map.items, newValue);
+        } else {
+          if (newValue != null) {
+            data = newValue;
+          }
         }
+      } else {
+        data = newValue;
       }
       if (data != null) {
         // step through and translate response data into a form we can easily
@@ -410,9 +451,18 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           // type of asset like video. If the item coming across can
           // effectively check what kind of gizmo is required for it
           // to work then we need to support that asset declaring the
-          // gizmo type needed
+          // gizmo type needed or we can use mimetype or a total guess
+          // based on the file path returned (obviously the least accurate)
+          // and if we dont get a hit then fallback to just the default
           if (typeof map.gizmo.type !== typeof undefined) {
             media[i].type = this._resolveObjectPath(map.gizmo.type, data[i]);
+          } else if (typeof map.gizmo.mimetype !== typeof undefined) {
+            media[i].type = window.HaxStore.mimeTypeToGizmoType(
+              this._resolveObjectPath(map.gizmo.mimetype, data[i])
+            );
+          } else if (window.HaxStore.guessGizmoType(map.gizmo) != "*") {
+            // try and guess the type based on file ending
+            media[i].type = window.HaxStore.guessGizmoType(map.gizmo);
           }
         }
         // this will trigger an aggressive repaint of the items

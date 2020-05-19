@@ -1538,7 +1538,6 @@
     "lrndesign-gallery": "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js",
     "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
     "a11y-gif-player": "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-    "paper-audio-player": "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
     "wikipedia-query": "@lrnwebcomponents/wikipedia-query/wikipedia-query.js",
     "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
     "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",

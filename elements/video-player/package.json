@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.8",
+  "version": "2.6.10",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -43,17 +43,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-media-player": "^2.6.8",
-    "@lrnwebcomponents/media-behaviors": "^2.6.8",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.8",
-    "@lrnwebcomponents/simple-colors": "^2.6.8",
+    "@lrnwebcomponents/a11y-media-player": "^2.6.10",
+    "@lrnwebcomponents/media-behaviors": "^2.6.10",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.10",
+    "@lrnwebcomponents/simple-colors": "^2.6.10",
     "@lrnwebcomponents/simple-colors-shared-styles": "^2.6.8",
     "@lrnwebcomponents/utils": "^2.6.8",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

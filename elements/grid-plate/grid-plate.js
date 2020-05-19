@@ -656,6 +656,13 @@ class GridPlate extends LitElement {
               "Style to present these items (may change for small screens)",
             inputMethod: "select",
             options: new GridPlateLayoutOptions().options
+          },
+          {
+            property: "disableResponsive",
+            title: "Disable responsive",
+            description:
+              "Check box to force layout to stick regardless of screen breakpoins",
+            inputMethod: "boolean"
           }
         ],
         advanced: [
@@ -704,7 +711,6 @@ class GridPlate extends LitElement {
           "droppable",
           "ignorehax",
           "hideops",
-          "disableresponsive",
           "activeitem"
         ]
       }

@@ -90,7 +90,7 @@ ${cssResult}
           return `${litResult}
 
 // render function
-  render() {
+  static get template() {
     return html\`
 ${styleResult}
 ${html}\`;

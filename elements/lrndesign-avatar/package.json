@@ -17,7 +17,7 @@
     },
     "sharedStyles": ["...super.styles"]
   },
-  "version": "2.6.9",
+  "version": "2.6.10",
   "description": "Visualize a user account either with an image, a label, or as abstract art.",
   "repository": {
     "type": "git",
@@ -36,10 +36,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element":"2.0.1"
+    "@lrnwebcomponents/paper-avatar": "^2.6.10",
+    "@lrnwebcomponents/simple-colors": "^2.6.10",
+    "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"2.0.5","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.7","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.5","lodash":"4.17.11","polymer-cli":"1.9.7","polymer-build":"3.1.2","wct-browser-legacy":"1.0.2"
+    "@lrnwebcomponents/deduping-fix": "^2.6.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.1",
+    "concurrently": "5.1.0",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.4",
+    "lodash": "4.17.13",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {

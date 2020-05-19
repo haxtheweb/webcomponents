@@ -20,19 +20,30 @@ window.JSONOutlineSchema.requestAvailability = () => {
 };
 /**
  * `json-outline-schema`
- * @element json-outline-schema
  * `JS based state management helper for the json outline schema spec`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @demo demo/index.html
+ * @demo demo/index.html Demo
+ * @demo demo/listing.html Listing
+ * @element json-outline-schema
  */
-
 class JsonOutlineSchema extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
+  // render function
+  get html() {
+    return `
+<style>
+:host {
+  display: block;
+}
+:host([debug]) {
+  font-family: monospace;
+  white-space: pre;
+  margin: 16px 0px;
+}
+:host([hidden]) {
+  display: none;
+}
+        </style>
+<slot></slot>`;
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly

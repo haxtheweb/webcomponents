@@ -421,7 +421,7 @@ class SimplePicker extends LitElement {
               ? this.__options.map(
                   (row, rownum) => html`
                     <div class="row">
-                      ${row
+                      ${Array.isArray(row)
                         ? row.map(
                             (option, colnum) => html`
                               <simple-picker-option

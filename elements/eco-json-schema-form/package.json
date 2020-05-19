@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.8",
+  "version": "2.6.11",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -36,9 +36,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.6.8",
-    "@lrnwebcomponents/a11y-tabs": "^2.6.8",
-    "@lrnwebcomponents/hax-body": "^2.6.8",
+    "@lrnwebcomponents/a11y-collapse": "^2.6.10",
+    "@lrnwebcomponents/a11y-tabs": "^2.6.10",
+    "@lrnwebcomponents/hax-body": "^2.6.11",
     "@lrnwebcomponents/simple-tooltip": "^2.6.8",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
@@ -66,7 +66,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/paper-material": "^3.0.1",

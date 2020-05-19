@@ -8,16 +8,11 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/hax-logo.css",
-      "scss": "src/hax-logo.scss",
-      "html": "src/hax-logo.html",
-      "js": "src/hax-logo.js",
-      "properties": "src/hax-logo-properties.json",
-      "hax": "src/hax-logo-hax.json"
+      "js": "src/hax-logo.js"
     },
     "sharedStyles": []
   },
-  "version": "2.6.8",
+  "version": "2.6.11",
   "description": "logo element for hax, obviously as a hax capable element.",
   "repository": {
     "type": "git",

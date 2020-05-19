@@ -180,7 +180,8 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
    */
   newAssetConfigure() {
     let values = {
-      source: this.shadowRoot.querySelector("#url").value
+      source: this.shadowRoot.querySelector("#url").value,
+      title: this.shadowRoot.querySelector("#url").value
     };
     // we have no clue what this is.. let's try and guess..
     let type = window.HaxStore.guessGizmoType(values);

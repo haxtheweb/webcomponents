@@ -5,19 +5,14 @@
     "customElementClass": "HTMLElement",
     "elementName": "html-block",
     "generator-wcfactory-version": "0.7.3",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/html-block.css",
-      "scss": "src/html-block.scss",
-      "html": "src/html-block.html",
-      "js": "src/html-block.js",
-      "properties": "src/html-block-properties.json",
-      "hax": "src/html-block-hax.json"
+      "js": "src/html-block.js"
     },
     "sharedStyles": []
   },
-  "version": "2.6.8",
+  "version": "2.6.11",
   "description": "A basic HTML block that provides HAXschema wiring",
   "repository": {
     "type": "git",

@@ -244,7 +244,9 @@ class HaxBody extends SimpleColors {
           padding-left: var(--hax-base-styles-list-padding-left, 20px);
           padding-left: var(--hax-base-styles-list-margin-left, 20px);
         }
-
+        :host([edit-mode]) #bodycontainer ::slotted(img[data-editable]) {
+          max-width: 100%;
+        }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
           outline: none;
           caret-color: var(--hax-color-text);

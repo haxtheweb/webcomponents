@@ -58,6 +58,7 @@ class HaxTray extends winEventsElement(LitElement) {
       import("@polymer/iron-icons/hardware-icons.js");
       import("@polymer/iron-icons/communication-icons.js");
       import("@polymer/iron-icons/social-icons.js");
+      import("@polymer/iron-icons/image-icons.js");
       import("@polymer/iron-icons/av-icons.js");
       import("@polymer/iron-icons/maps-icons.js");
       import("@polymer/iron-icons/places-icons.js");
@@ -561,46 +562,6 @@ class HaxTray extends winEventsElement(LitElement) {
           </div>
           <div class="quick">
             <slot name="tray-buttons-pre"></slot>
-            <hax-tray-button
-              mini
-              icon="hax:paragraph"
-              label="Insert paragraph"
-              event-name="insert-tag"
-              event-data="p"
-              voice-command="insert (text)(paragraph)"
-              class="hide-small"
-            ></hax-tray-button>
-            <hax-tray-button
-              mini
-              icon="hax:h2"
-              label="Insert header"
-              event-name="insert-tag"
-              event-data="h2"
-              event-content="Header"
-              voice-command="insert header"
-              class="hide-small"
-            ></hax-tray-button>
-            <hax-tray-button
-              mini
-              hidden
-              icon="image:image"
-              label="Insert image"
-              event-name="insert-tag"
-              event-properties='{"src":"https://haxtheweb.org/assets/banner.jpg"}'
-              event-data="img"
-              voice-command="insert image"
-              class="hide-small"
-            ></hax-tray-button>
-            <hax-tray-button
-              mini
-              icon="hax:hr"
-              label="Insert horizontal line"
-              event-name="insert-tag"
-              event-data="hr"
-              event-properties='{"style":"width:75%;"}'
-              voice-command="insert horizontal line"
-              class="hide-small"
-            ></hax-tray-button>
             <hax-tray-button
               mini
               event-name="open-export-dialog"

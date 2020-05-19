@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/marked-element/marked-element.js";
 
-export { IconsetDemo };
 /**
  * `iconset-demo`
  * @element iconset-demo
@@ -33,8 +33,8 @@ class IconsetDemo extends PolymerElement {
   /**
    * life cycle, element is ready
    */
-  ready() {
-    super.ready();
+  connectedCallback() {
+    super.connectedCallback();
     const iconSets = new IronMeta({ type: "iconset" });
     let temp = [],
       root = this;
@@ -60,7 +60,8 @@ class IconsetDemo extends PolymerElement {
         }
       });
     }
-    this.__iconList = temp;
+    this.set("__iconList", []);
+    this.set("__iconList", temp);
   }
   /**
    *  determines if a given iconset should be hidden
@@ -75,9 +76,6 @@ class IconsetDemo extends PolymerElement {
       excluded = esets.length.length > 0 && esets.includes(name);
     return !included || excluded;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(IconsetDemo.tag, IconsetDemo);
+export { IconsetDemo };

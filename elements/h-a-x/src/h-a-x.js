@@ -16,7 +16,105 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  // render function
+  get html() {
+    return `
+    <style>
+    :host {
+      display: block;
+      font-size: var(--haxcms-base-styles-body-font-size, 16px);
+      font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
+      line-height: var(--haxcms-base-styles-body-line-height, 1.8);
+      letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
+    }
+
+    :host([hidden]) {
+      display: none;
+    }
+
+    hax-body {
+      font-size: var(--haxcms-base-styles-body-font-size, 16px);
+      font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
+      line-height: var(--haxcms-base-styles-body-line-height, 1.8);
+      letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
+    }
+
+    h1 {
+      font-size: var(--hax-base-styles-h1-font-size, 2.5em);
+      line-height: var(--hax-base-styles-h1-line-height, 2.5em);
+    }
+
+    h2 {
+      font-size: var(--hax-base-styles-h2-font-size, 2em);
+    }
+
+    h3 {
+      font-size: var(--hax-base-styles-h3-font-size, 1.75em);
+    }
+
+    h4 {
+      font-size: var(--hax-base-styles-h4-font-size, 1.5em);
+    }
+
+    h5 {
+      font-size: var(--hax-base-styles-h5-font-size, 1.25em);  
+    }
+
+    h6 {
+      font-size: var(--hax-base-styles-h6-font-size, 1.25em);
+    }
+
+    p {
+      min-height: var(--hax-base-styles-p-min-height, 43px);
+      font-size: var(--hax-base-styles-p-font-size, 24px);
+      line-height: var(--hax-base-styles-p-line-height, 1.8);
+      letter-spacing: var(--hax-base-styles-p-letter-spacing, .5px);
+    }
+
+    a,
+    a:-webkit-any-link {
+      color: var(--hax-base-styles-a-color, #2196f3);
+      font-size: var(--hax-base-styles-a-font-size, 24px);
+      font-weight: var(--hax-base-styles-a-font-weight, normal);
+    }
+
+    a:visited {
+      color: var(--hax-base-styles-a-color-visited, #2196f3);
+    }
+
+    a:active,
+    a:focus,
+    a:hover {
+      color: var(--hax-base-styles-a-color-active, #2196f3);
+      font-weight: var(--hax-base-styles-a-font-weight-active, normal);
+    }
+
+    ol,
+    ul
+    ol li,
+    ul li {
+      line-height: var(--hax-base-styles-list-line-height, 1.8);
+      font-size: var(--hax-base-styles-list-font-size, 24px);
+      max-width: var(--hax-base-styles-list-max-width, 28em);
+    }
+
+    ul ul,
+    ul ol,
+    ol ul,
+    ol ol {
+      padding-bottom: unset;
+    }
+
+    ul,
+    ol {
+      padding-left: var(--hax-base-styles-list-padding-left, 1em);
+      margin-left: var(--hax-base-styles-list-margin-left, 1em);
+    }
+    </style>
+    <hax-body>
+        <slot></slot>
+    </hax-body>`;
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -30,6 +128,7 @@ class HAX extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
+    this.__rendered = false;
     // set tag for later use
     this.tag = HAX.tag;
     this.template = document.createElement("template");
@@ -45,7 +144,7 @@ class HAX extends HTMLElement {
       this.appStoreReady.bind(this)
     );
     // dynamically import definitions for all needed tags
-    import("@lrnwebcomponents/h-a-x/lib/h-a-x-dependencies.js");
+    import("./lib/h-a-x-dependencies.js");
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -107,12 +206,10 @@ class HAX extends HTMLElement {
     }
   }
   render() {
-    if (!this.__rendered) {
-      this.__rendered = true;
-      this.shadowRoot.innerHTML = null;
-      this.template.innerHTML = this.html;
-      this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-    }
+    this.__rendered = true;
+    this.shadowRoot.innerHTML = null;
+    this.template.innerHTML = this.html;
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
   /**
    * Apply tags to the screen to establish HAX

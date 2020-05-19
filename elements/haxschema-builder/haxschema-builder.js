@@ -33,6 +33,7 @@ class HaxschemaBuilder extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`
