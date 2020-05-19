@@ -14,11 +14,33 @@ export default {
 const utils = new StorybookUtilities();
 export const AccentCardStory = () => {
   let defaultData = utils.getRandomOption([
-    { accentColor: "red", dark: true, horizontal: true, imageSrc: new URL(`demo/images/image1.jpg`, import.meta.url)},
-    { accentColor: "red", accentHeading: true, imageSrc: new URL(`demo/images/image5.jpg`, import.meta.url)},
-    { accentColor: "pink", dark: true, horizontal: true, imageValign: "top", imageSrc: new URL(`demo/images/image3.jpg`, import.meta.url)},
-    { accentColor: "light-blue", imageSrc: new URL(`demo/images/image6.jpg`, import.meta.url)},
-    { accentColor: "green", horizontal: true, imageSrc: new URL(`demo/images/image7.jpg`, import.meta.url)}
+    {
+      accentColor: "red",
+      dark: true,
+      horizontal: true,
+      imageSrc: new URL(`demo/images/image1.jpg`, import.meta.url)
+    },
+    {
+      accentColor: "red",
+      accentHeading: true,
+      imageSrc: new URL(`demo/images/image5.jpg`, import.meta.url)
+    },
+    {
+      accentColor: "pink",
+      dark: true,
+      horizontal: true,
+      imageValign: "top",
+      imageSrc: new URL(`demo/images/image3.jpg`, import.meta.url)
+    },
+    {
+      accentColor: "light-blue",
+      imageSrc: new URL(`demo/images/image6.jpg`, import.meta.url)
+    },
+    {
+      accentColor: "green",
+      horizontal: true,
+      imageSrc: new URL(`demo/images/image7.jpg`, import.meta.url)
+    }
   ]);
   return utils.makeElementFromClass(
     AccentCard,
@@ -111,4 +133,5 @@ export const AccentCardStory = () => {
     ]
   );
 };
-export const AccentCardHaxStory = () => utils.makeElementFromHaxDemo(AccentCard);
+export const AccentCardHaxStory = () =>
+  utils.makeElementFromHaxDemo(AccentCard);

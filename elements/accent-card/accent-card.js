@@ -446,10 +446,10 @@ class AccentCard extends SimpleColors {
             style: "maxWidth:600px;width:100%;",
             accentColor: "cyan",
             dark: true,
-            horizontal: true,
-            imageSrc: "http://placekitten.com/200/600",
+            imageSrc: "http://placekitten.com/200/600"
           },
-          content: '<span slot="heading">Card Heading</span>\n<p slot="content">This is the body of the card.</p>'
+          content:
+            '<h1 slot="heading">Card Heading</h1>\n<p slot="content">This is the body of the card.</p>'
         }
       ],
       saveOptions: {
