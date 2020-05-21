@@ -1,12 +1,20 @@
 {
-  "open": {
-    "type": "Boolean",
-    "attribute": "open",
+  /**
+   * optional text for when summary button is open, 
+   * eg. "Hide", "Less" or "Close"
+   */
+  "closeText": {
+    "type": "String",
+    "attribute": "close-text",
     "reflect": true
   },
-  "position": {
-    "type": "Boolean",
-    "attribute": "position",
+  /**
+   * optional text for when summary button is closed, 
+   * eg. "Show", "More" or "Open"
+   */
+  "openText": {
+    "type": "String",
+    "attribute": "open-text",
     "reflect": true
   }
 }
