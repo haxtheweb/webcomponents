@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
 
 /**
@@ -31,7 +31,7 @@ class A11yFigure extends A11yDetails {
   // life cycle
   constructor() {
     super();
-    
+
     this.tag = A11yFigure.tag;
     // map our imported properties json to real props on the element
     // @notice static getter of properties is built via tooling
@@ -41,8 +41,7 @@ class A11yFigure extends A11yDetails {
       if (obj.hasOwnProperty(p)) {
         if (this.hasAttribute(p)) {
           this[p] = this.getAttribute(p);
-        }
-        else {
+        } else {
           this.setAttribute(p, obj[p].value);
           this[p] = obj[p].value;
         }
@@ -54,7 +53,6 @@ class A11yFigure extends A11yDetails {
    */
   connectedCallback() {
     super.connectedCallback();
-    
   }
   // static get observedAttributes() {
   //   return [];
@@ -62,7 +60,6 @@ class A11yFigure extends A11yDetails {
   // disconnectedCallback() {}
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
-  
 }
 customElements.define("a11y-figure", A11yFigure);
 export { A11yFigure };
