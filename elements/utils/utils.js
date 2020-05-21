@@ -2,16 +2,16 @@
  * A collection of utility functions exported for convenience
  */
 
- /**
-  * Take an array of items and apply a map of values to generate a new
-  * array that is the structure you're looking for with default values
-  * filling in the gaps.
-  */
+/**
+ * Take an array of items and apply a map of values to generate a new
+ * array that is the structure you're looking for with default values
+ * filling in the gaps.
+ */
 function valueMapTransform(items, map) {
   // ensure we have a map to render
   let tmpAry = [];
   if (map) {
-    items.forEach((item) => {
+    items.forEach(item => {
       // create tag for the map
       let tmp = {};
       for (var key in map) {
@@ -20,11 +20,10 @@ function valueMapTransform(items, map) {
         // prior to being set
         if (value === true || value === false || value === null) {
           tmp[key] = value;
-        } else if (typeof value === 'function') {
+        } else if (typeof value === "function") {
           try {
             tmp[key] = value(item);
-          }
-          catch(e) {
+          } catch (e) {
             console.warn(e);
           }
         }

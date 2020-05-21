@@ -1572,8 +1572,8 @@ class HAXCMSSiteListing extends PolymerElement {
         },
         icon: function(item) {
           if (
-            item.metadata.theme && 
-            item.metadata.theme.variables && 
+            item.metadata.theme &&
+            item.metadata.theme.variables &&
             item.metadata.theme.variables.icon
           ) {
             return item.metadata.theme.variables.icon;
@@ -1587,10 +1587,11 @@ class HAXCMSSiteListing extends PolymerElement {
             item.metadata.theme.variables &&
             item.metadata.theme.variables.cssVariable
           ) {
-            return item.metadata.theme.variables.cssVariable.replace("--simple-colors-default-theme-", "")
-            .replace("-7", "");
+            return item.metadata.theme.variables.cssVariable
+              .replace("--simple-colors-default-theme-", "")
+              .replace("-7", "");
           }
-          return '';
+          return "";
         },
         size: "small",
         dark: true,
