@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/a11y-gif-player",
   "wcfactory": {
-    "className": "A11YGifPlayer",
+    "className": "A11yGifPlayer",
     "customElementClass": "LitElement",
     "elementName": "a11y-gif-player",
     "generator-wcfactory-version": "0.3.1",

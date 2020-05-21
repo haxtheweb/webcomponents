@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/a11y-collapse",
   "wcfactory": {
-    "className": "A11YCollapse",
+    "className": "A11yCollapse",
     "customElementClass": "LitElement",
     "elementName": "a11y-collapse",
     "generator-wcfactory-version": "0.3.2",

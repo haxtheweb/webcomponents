@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>A11yFigure: a11y-figure Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../a11y-figure.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic a11y-figure demo</h3>
+      <demo-snippet>
+        <template>
+          <a11y-figure>
+            <figure>
+              <img src="//:placekitten.com/400/300" alt="random kitten">
+              <figcaption>
+                <h4>Random Kitten</h4>
+                <a11y-details id="custom" close-text="Hide Aenean" open-text="Show Aenean" >
+                  <details>
+                    <summary>Aenean</summary>
+                    Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
+                    Pellentesque magna velit, tincidunt quis pharetra id, gravida 
+                    placerat erat. Maecenas id dui pretium risus pulvinar feugiat 
+                    vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
+                    purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
+                    Nunc convallis justo sed nibh consectetur, at pharetra nulla 
+                    accumsan.
+                  </details>
+                </a11y-details>
+              </figcaption>
+            </figure>
+          </a11y-figure>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

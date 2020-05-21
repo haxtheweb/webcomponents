@@ -15,7 +15,7 @@ import '@lrnwebcomponents/a11y-collapse.js';
 <script type="module">
   import '@lrnwebcomponents/a11y-collapse.js';
 
-  import {A11YCollapse} from '@lrnwebcomponents/a11y-collapse';
+  import {A11yCollapse} from '@lrnwebcomponents/a11y-collapse';
 </script>
 ```
 
