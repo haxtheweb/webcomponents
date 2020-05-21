@@ -1,14 +1,21 @@
-<accent-card 
-  accent-color="${this.accentColor}" 
-  ?dark="${this.dark}" 
-  ?disabled="${this.disabled}"
-  ?hidden="${this.hidden}" >
-  <div slot="heading"><slot name="heading"></slot></div>
-  <div slot="subheading"><slot name="subheading"></slot></div>
-  <div slot="content">
-    <slot name="body"></slot>
-    <slot name="linklist"></slot>
-    <div id="linklist"></div>
+<article id="card">
+  <div class="image-outer" ?hidden="${!this.imageSrc}">
+    <div
+      class="image"
+      .style="${this.imageSrc
+        ? `background-image: url(${this.imageSrc});`
+        : `display: none;`}"
+    ></div>
   </div>
-  <div slot="footer"><slot name="footer"></slot></div>
-</accent-card>
+  <div class="body">
+    <h1 id="heading"><slot name="heading"></slot></h1>
+    <div id="subheading"><slot name="subheading"></slot></div>
+    <div id="content">
+      <slot name="body"></slot>
+      <div id="linklist">
+        <slot name="linklist"></slot>
+      </div>
+    </div>
+    <div id="footer"><slot name="footer"></slot></div>
+  </div>
+</article>

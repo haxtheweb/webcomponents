@@ -7,6 +7,7 @@ import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js"
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
+import "./lib/lrndesign-gallery-masonry.js";
 
 /**
  * `lrndesign-gallery`
@@ -24,13 +25,15 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "lrndesign-gallery";
   }
 
   // life cycle
   constructor() {
     super();
+    this.sources = [];
+    this.sizing = "cover";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -44,6 +47,10 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       childList: true,
       subtree: false
     });
+  }
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (super.disconnectedCallback) super.disconnectedCallback();
   }
   firstUpdated() {
     super.firstUpdated();
@@ -120,6 +127,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       total = items.length,
       itemData = (items || []).map((item, i) => {
         return {
+          alt: item.alt,
           details: item.details,
           index: i,
           id: item.id || `gallery-${this.id}-item-${i}`,
@@ -206,8 +214,8 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         sizing: sizing
       });
     });
-    if (sources.length > 0 && this.sources.length < 1) this.sources = sources;
-    console.log(sources, this.items);
+    if (sources.length > 0 && (!this.sources || this.sources.length < 1))
+      this.sources = sources;
   }
 
   /**

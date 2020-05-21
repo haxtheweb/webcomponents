@@ -321,10 +321,6 @@ class A11yMediaPlayer extends SimpleColors {
           overflow: unset;
         }
 
-        :host[height] #transcript-section {
-          display: none;
-        }
-
         :host([height]) #player-section {
           max-height: var(--a11y-media-player-height);
         }
@@ -1099,7 +1095,9 @@ class A11yMediaPlayer extends SimpleColors {
                 "label"
               )}"
               ?disabled="${!this.hasCaptions}"
-              ?hidden="${!this.hasCaptions || this.standAlone || this.height}"
+              ?hidden="${!this.hasCaptions ||
+                this.standAlone ||
+                (this.height && this.responsiveSize.indexOf("s") > -1)}"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${e => this.toggleTranscript()}"
             >
@@ -1258,7 +1256,7 @@ class A11yMediaPlayer extends SimpleColors {
         : ``}
       <div
         id="transcript-section"
-        ?hidden="${this.standAlone || !this.hasCaptions || this.height}"
+        ?hidden="${this.standAlone || !this.hasCaptions || !this.fullFlex}"
       >
         <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
           <div id="searchbar">
@@ -2023,7 +2021,6 @@ class A11yMediaPlayer extends SimpleColors {
   get fullFlex() {
     return (
       this.flexLayout &&
-      !this.height &&
       this.responsiveSize !== "xs" &&
       this.responsiveSize !== "sm"
     );
@@ -2930,7 +2927,14 @@ class A11yMediaPlayer extends SimpleColors {
   getloadedTracks() {
     let media = this.querySelector("audio,video"),
       crossorigin = media ? media.getAttribute("crossorigin") : undefined,
-      primary = null;
+      primary = null,
+      sourceVideo =
+        this.source && !this.source && this.source.match(/webm|ogv|mov|mp4$/),
+      sourcesVideo =
+        (this.sources || []).filter(source =>
+          `${source.type || ""}${source.kind || ""}`.match(/video|mp4|webm|ogv/)
+        ).length > 0,
+      hasVideo = this.isYoutube || sourceVideo || sourcesVideo;
 
     if (media) {
       if (!crossorigin) media.setAttribute("crossorigin", this.crossorigin);
@@ -2955,7 +2959,7 @@ class A11yMediaPlayer extends SimpleColors {
 
     if (!media) {
       primary = document.createElement(
-        this.querySelectorAll('source[type*="audio"]').length > 0
+        this.querySelectorAll('source[type*="audio"]').length > 0 || !hasVideo
           ? "audio"
           : "video"
       );
@@ -2973,14 +2977,14 @@ class A11yMediaPlayer extends SimpleColors {
     primary.style.maxWidth = "100%";
 
     /* handle deprecated tracks */
-    this.tracks.forEach(track => {
+    (this.tracks || []).forEach(track => {
       let node = document.createElement("track");
       Object.keys(track).forEach(key => node.setAttribute(key, track[key]));
       primary.appendChild(node);
     });
 
     /* handle deprecated sources */
-    this.sources.forEach(source => {
+    (this.sources || []).forEach(source => {
       let node = document.createElement("source");
       Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
       primary.appendChild(node);

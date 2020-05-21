@@ -27,6 +27,10 @@ class LrndesignTimeline extends SimpleColors {
     super();
     this.events = [];
     this.timelineSize = "xs";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -42,15 +46,16 @@ class LrndesignTimeline extends SimpleColors {
         }
       })
     );
-  }
 
-  connectedCallback() {
-    super.connectedCallback();
     this.updateTimeline();
     this.observer.observe(this, {
       childList: true,
       subtree: false
     });
+  }
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (super.disconnectedCallback) super.disconnectedCallback();
   }
 
   /**
@@ -97,11 +102,20 @@ class LrndesignTimeline extends SimpleColors {
     let callback = () => this.updateTimeline();
     return new MutationObserver(callback);
   }
+  _setScroll(e) {
+    let el = e.path[0],
+      parent = e.path[0].parentNode;
+    parent.scroll({
+      top: el.offsetTop,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
 
   /**
    * checks the scroll of each event
    */
-  _checkScroll() {
+  _checkScroll(e) {
     if (this.shadowRoot) {
       let events = this.shadowRoot.querySelectorAll(".event") || [];
       events.forEach(event => {
@@ -117,13 +131,13 @@ class LrndesignTimeline extends SimpleColors {
     }
   }
   updateTimeline() {
-    let events =
-        this.shadowRoot && this.shadowRoot.querySelector("#events")
-          ? this.shadowRoot.querySelector("#events")
-          : undefined,
-      sections = document.querySelectorAll("section");
-    if (this.events.length < 1 && sections.length > 0 && events) {
-      events.innerHTML = "";
+    let sections = document.querySelectorAll("section") || [];
+    if (
+      this.eventsList.length < 1 &&
+      sections.length > 0 &&
+      this.eventsElement
+    ) {
+      this.eventsElement.innerHTML = "";
       sections.forEach(section => {
         let clone = section.cloneNode(true),
           div = document.createElement("div"),
@@ -171,7 +185,7 @@ class LrndesignTimeline extends SimpleColors {
         clone.classList.add("event");
         clone.appendChild(overview);
         clone.appendChild(details);
-        events.appendChild(clone);
+        this.eventsElement.appendChild(clone);
       });
     }
     this._checkScroll();

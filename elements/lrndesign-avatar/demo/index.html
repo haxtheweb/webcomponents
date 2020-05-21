@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrndesignAvatar: lrndesign-avatar Demo</title>
-    
-    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lrndesign-avatar.js';
     </script>
@@ -17,9 +19,12 @@
       <h3>Basic lrndesign-avatar demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-avatar label="Sing 100"></lrndesign-avatar>
-          <lrndesign-avatar label="Sing 100" jdenticon color="grey"></lrndesign-avatar>
-          <lrndesign-avatar accent-color="yellow" dark label="Sing 100" two-chars></lrndesign-avatar>
+          <lrndesign-avatar></lrndesign-avatar>
+          <lrndesign-avatar icon="star" dark></lrndesign-avatar>
+          <lrndesign-avatar accent-color="yellow" dark label="Sing 100"></lrndesign-avatar>
+          <lrndesign-avatar accent-color="cyan" dark jdenticon></lrndesign-avatar>
+          <lrndesign-avatar accent-color="pink" label="Hello" jdenticon></lrndesign-avatar>
+          <lrndesign-avatar accent-color="deep-purple" dark label="Sing 100" two-chars></lrndesign-avatar>
         </template>
       </demo-snippet>
     </div>

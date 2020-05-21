@@ -258,7 +258,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         quick: [],
         configure: [
           {
-            slot: "title",
+            property: "title",
             title: "Title",
             description: "Optional title for editor",
             inputMethod: "textfield"

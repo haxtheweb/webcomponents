@@ -107,6 +107,7 @@ class SimplePopover extends AbsolutePositionBehavior {
       `
     ];
   }
+
   // render function
   render() {
     return html`

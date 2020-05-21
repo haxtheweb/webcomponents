@@ -1,4 +1,4 @@
-# &lt;a-11-y-gif-player&gt;
+# &lt;a11y-gif-player&gt;
 
 11
 > An accessible animated gif "player"
@@ -8,14 +8,14 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/a-11-y-gif-player.js';
+import '@lrnwebcomponents/a11y-gif-player.js';
 /* At top of an application */
-<script type="module" src="a-11-y-gif-player.js"></script>
+<script type="module" src="a11y-gif-player.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/a-11-y-gif-player.js';
+  import '@lrnwebcomponents/a11y-gif-player.js';
 
-  import {A11YGifPlayer} from '@lrnwebcomponents/a-11-y-gif-player';
+  import {A11YGifPlayer} from '@lrnwebcomponents/a11y-gif-player';
 </script>
 ```
 

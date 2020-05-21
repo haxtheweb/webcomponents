@@ -19,29 +19,62 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const A11yCollapseGroupStory = () => {
-  let group = utils.makeElementFromClass(A11yCollapseGroup, {
-    id: "group"
-  });
-  [1, 2, 3].forEach(i => {
-    let el = document.createElement("a11y-collapse"),
-      p = document.createElement("p"),
-      div = document.createElement("div");
-    el.id = `Item ${i}`;
-    p.slot = "heading";
-    div.slot = "content";
-    p.innerHTML = utils.getRandomText();
-    div.innerHTML = utils.getRandomTextarea();
-    el.appendChild(p);
-    el.appendChild(div);
-    group.appendChild(el);
-  });
-  return group;
+  let props = utils.getElementProperties(
+    A11yCollapseGroup.properties,
+    A11yCollapseGroup.haxProperties
+  );
+  return utils.makeElementFromClass(
+    A11yCollapseGroup,
+    {
+      id: "group",
+      emptyslot: [1, 2, 3]
+        .map(
+          i =>
+            `<a11y-collapse id="Item ${i}">
+          <p slot="heading">${utils.getRandomText()}</p>
+          <div slot="content">${utils.getRandomTextarea()}</div>
+          </a11y-collapse>`
+        )
+        .join("")
+    },
+    [
+      { css: "--a11y-collapse-group-margin", title: "Collapse group's margin" },
+      { css: "--a11y-collapse-margin", title: "Collapse item's margin" }
+    ]
+  );
 };
-
 export const A11yCollapseStory = () => {
-  return utils.makeElementFromClass(A11yCollapse, {
-    heading: utils.getRandomText(),
-    content: utils.getRandomTextarea(),
-    icon: "add"
-  });
+  return utils.makeElementFromClass(
+    A11yCollapse,
+    {
+      heading: `<p>${utils.getRandomText()}</p>`,
+      content: utils.getRandomTextarea(),
+      icon: "add"
+    },
+    [
+      { css: "--a11y-collapse-margin" },
+      { css: "--a11y-collapse-border" },
+      {
+        css: "--a11y-collapse-horizontal-padding",
+        title: "default horizontal-padding"
+      },
+      { css: "--a11y-collapse-padding-left" },
+      { css: "--a11y-collapse-padding-right" },
+      {
+        css: "--a11y-collapse-vertical-padding",
+        title: "default vertical-padding"
+      },
+      { css: "--a11y-collapse-padding-top", title: "padding-top" },
+      { css: "--a11y-collapse-padding-bottom", title: "padding-bottom" },
+      {
+        css: "--a11y-collapse-border-between",
+        title: "vorder between heading and content"
+      },
+      { css: "--a11y-collapse-heading-font-weight" },
+      { css: "--a11y-collapse-heading-color" },
+      { css: "--a11y-collapse-heading-background-color" },
+      { css: "--a11y-collapse-overflow-y" },
+      { css: "--a11y-collapse-max-height" }
+    ]
+  );
 };

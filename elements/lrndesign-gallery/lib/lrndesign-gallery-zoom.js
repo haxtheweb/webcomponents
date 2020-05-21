@@ -86,9 +86,12 @@ class LrndesignGalleryZoom extends LitElement {
   }
   render() {
     return html`
-      <button id="zoombtn" @click="${this.zoom}">
+      <button id="zoombtn" @click="${this.zoom}" aria-label="${this.tooltip}">
         <slot></slot>
       </button>
+      <simple-tooltip for="zoombtn" position="right" controls="zoomtpl"
+        >${this.tooltip}</simple-tooltip
+      >
       <simple-modal-template id="zoomtpl" title="${this.heading}">
         <lrndesign-gallery-details
           id="details"
@@ -100,7 +103,6 @@ class LrndesignGalleryZoom extends LitElement {
 
         <div slot="content" ?hidden="${!this.src || this.src === ""}">
           <img-pan-zoom
-            id="img"
             alt="${this.zoomAlt}"
             src="${this.src}"
             max-zoom-pixel-ratio="1.5"
@@ -152,7 +154,8 @@ class LrndesignGalleryZoom extends LitElement {
        * gallery item's alt text
        */
       zoomAlt: {
-        type: String
+        type: String,
+        attribute: "zoom-alt"
       }
     };
   }

@@ -205,14 +205,13 @@ class LrndesignTimeline extends SimpleColors {
             padding: 0 20px;
             line-height: 50px;
             height: 50px;
-            background-color: var(--lrndesign-timeline-header-accent);
-            color: var(--lrndesign-timeline-header);
-            opacity: 0.6;
-            transition: opacity 0.3s;
+            background-color: var(--lrndesign-timeline-background);
+            color: var(--lrndesign-timeline-header-accent);
           }
 
           :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
-            opacity: 1;
+            background-color: var(--lrndesign-timeline-header-accent);
+            color: var(--lrndesign-timeline-header);
           }
 
           :host(:not([timeline-size="xs"]))
@@ -224,8 +223,9 @@ class LrndesignTimeline extends SimpleColors {
             left: calc(100% - 48px);
             top: 17px;
             height: 50px;
+            opacity: 0;
             width: 0px;
-            transition: all 0.3s;
+            transition: opacity 0.3s;
             background-color: var(--lrndesign-timeline-background);
           }
 
@@ -234,6 +234,7 @@ class LrndesignTimeline extends SimpleColors {
             .heading
             h2:after {
             width: 13px;
+            opacity: 1;
             background-color: var(--lrndesign-timeline-header-accent);
           }
 
@@ -312,6 +313,8 @@ class LrndesignTimeline extends SimpleColors {
                 <section
                   class="event"
                   ?has-media="${event.imagesrc && event.imagesrc !== ""}"
+                  tabindex="0"
+                  @focus="${this._setScroll}"
                 >
                   <div class="event-overview">
                     <div class="heading"><h2>${event.heading}</h2></div>
@@ -340,6 +343,108 @@ class LrndesignTimeline extends SimpleColors {
     `;
   }
 
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      gizmo: {
+        title: "Timeline",
+        description: "A timeline of events with images and text",
+        icon: "icons:timeline",
+        color: "indigo",
+        groups: ["Content", "Instructional", "Media", "Image"],
+        handles: [
+          {
+            type: "image",
+            source: "image"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
+          }
+        ],
+        configure: [
+          {
+            property: "timelineTitle",
+            title: "Timeline Title",
+            description: "A title for the timeline.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean"
+          },
+          {
+            slot: "",
+            title: "Timeline Description",
+            description: "Optional text describing the timeline.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "events",
+            title: "Timeline Events",
+            description: "The events in the timeline",
+            inputMethod: "array",
+            itemLabel: "heading",
+            properties: [
+              {
+                property: "heading",
+                title: "Event Heading",
+                description: "The heading for the event.",
+                inputMethod: "textfield"
+              },
+              {
+                property: "details",
+                title: "Event Details",
+                description: "The body text with details for the event.",
+                inputMethod: "textfield"
+              },
+              {
+                property: "imagesrc",
+                title: "Event Image",
+                description: "The path of the image.",
+                inputMethod: "haxupload"
+              },
+              {
+                property: "imagealt",
+                title: "Event Image Alt Text",
+                description: "The alt text of the image (for accessibility).",
+                inputMethod: "alt"
+              }
+            ]
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -380,7 +485,7 @@ class LrndesignTimeline extends SimpleColors {
           attribute: "timeline-title"
         },
         /**
-         * DEPRECATED: title of timeline
+         * @depeacated: title of timeline
          */
         title: {
           type: String,
@@ -399,6 +504,10 @@ class LrndesignTimeline extends SimpleColors {
     super();
     this.events = [];
     this.timelineSize = "xs";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -414,15 +523,16 @@ class LrndesignTimeline extends SimpleColors {
         }
       })
     );
-  }
 
-  connectedCallback() {
-    super.connectedCallback();
     this.updateTimeline();
     this.observer.observe(this, {
       childList: true,
       subtree: false
     });
+  }
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (super.disconnectedCallback) super.disconnectedCallback();
   }
 
   /**
@@ -469,11 +579,20 @@ class LrndesignTimeline extends SimpleColors {
     let callback = () => this.updateTimeline();
     return new MutationObserver(callback);
   }
+  _setScroll(e) {
+    let el = e.path[0],
+      parent = e.path[0].parentNode;
+    parent.scroll({
+      top: el.offsetTop,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
 
   /**
    * checks the scroll of each event
    */
-  _checkScroll() {
+  _checkScroll(e) {
     if (this.shadowRoot) {
       let events = this.shadowRoot.querySelectorAll(".event") || [];
       events.forEach(event => {
@@ -489,13 +608,13 @@ class LrndesignTimeline extends SimpleColors {
     }
   }
   updateTimeline() {
-    let events =
-        this.shadowRoot && this.shadowRoot.querySelector("#events")
-          ? this.shadowRoot.querySelector("#events")
-          : undefined,
-      sections = document.querySelectorAll("section");
-    if (this.events.length < 1 && sections.length > 0 && events) {
-      events.innerHTML = "";
+    let sections = document.querySelectorAll("section") || [];
+    if (
+      this.eventsList.length < 1 &&
+      sections.length > 0 &&
+      this.eventsElement
+    ) {
+      this.eventsElement.innerHTML = "";
       sections.forEach(section => {
         let clone = section.cloneNode(true),
           div = document.createElement("div"),
@@ -543,7 +662,7 @@ class LrndesignTimeline extends SimpleColors {
         clone.classList.add("event");
         clone.appendChild(overview);
         clone.appendChild(details);
-        events.appendChild(clone);
+        this.eventsElement.appendChild(clone);
       });
     }
     this._checkScroll();

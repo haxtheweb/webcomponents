@@ -30,9 +30,6 @@ class A11yTab extends LitElement {
           height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
           overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);
         }
-        /*:host([disabled]) {
-          display:none;
-        }*/
         :host([hidden]) {
           display: none;
         }
@@ -61,6 +58,77 @@ class A11yTab extends LitElement {
         End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
       </span>
     `;
+  }
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Tab",
+        description: "A single tab.",
+        icon: "view-day",
+        color: "grey",
+        groups: ["Content", "Presentation", "Tabs"]
+      },
+      settings: {
+        quick: [
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean"
+          },
+          {
+            property: "sticky",
+            title: "Sticky.",
+            desc:
+              "Horizontal tabs stick to the top of the window when scrolling.",
+            inputMethod: "boolean"
+          }
+        ],
+        configure: [
+          {
+            property: "icon",
+            title: "Tab Icon",
+            inputMethod: "iconpicker"
+          },
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean"
+          },
+          {
+            property: "label",
+            title: "Tab Label",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "",
+            title: "Tab Content",
+            description: "A content of the tab.",
+            inputMethod: "code-editor"
+          }
+        ],
+        advanced: [
+          {
+            property: "id",
+            title: "Unique ID",
+            inputMethod: "textfield"
+          },
+          {
+            property: "flag",
+            title: "Optional Flag Text",
+            inputMethod: "textfield"
+          },
+          {
+            property: "flagIcon",
+            title: "Optional Flag Icon",
+            inputMethod: "iconpicker"
+          }
+        ]
+      }
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -92,7 +160,8 @@ class A11yTab extends LitElement {
        */
       hidden: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "hidden"
       },
       /**
        * icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`
@@ -130,6 +199,7 @@ class A11yTab extends LitElement {
   }
   constructor() {
     super();
+    this.disabled = false;
     this.hidden = false;
     this.order = 1;
     this.total = 1;

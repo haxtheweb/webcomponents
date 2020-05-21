@@ -35,25 +35,24 @@
         "icon": "icons:invert-colors"
       },
       {
-        "property": "grid",
-        "title": "Grid View",
+        "property": "layout",
+        "title": "Layout",
         "description": "Display as grid?",
-        "inputMethod": "boolean",
-        "icon": "icons:view-module"
-      },
-      {
-        "property": "grid",
-        "title": "Grid View",
-        "description": "Display as grid?",
-        "inputMethod": "boolean",
-        "icon": "icons:view-module"
+        "inputMethod": "select",
+        "itemsList": ["carousel", "grid", "masonry"]
       }
     ],
     "configure": [
       {
-        "property": "galleryTitle",
-        "title": "Gallery Title",
-        "description": "A title for the gallery.",
+        "slot": "title",
+        "title": "Optional Gallery Title",
+        "description": "Am optional title for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "description",
+        "title": "OptionalGallery Description",
+        "description": "An optional description for the gallery.",
         "inputMethod": "textfield"
       },
       {
@@ -69,16 +68,11 @@
         "inputMethod": "boolean"
       },
       {
-        "property": "grid",
-        "title": "Grid View",
+        "property": "layout",
+        "title": "Layout",
         "description": "Display as grid?",
-        "inputMethod": "boolean"
-      },
-      {
-        "slot": "description",
-        "title": "Gallery Description",
-        "description": "An optional description for the gallery.",
-        "inputMethod": "textfield"
+        "inputMethod": "select",
+        "itemsList": ["carousel", "grid", "masonry"]
       },
       {
         "property": "sources",

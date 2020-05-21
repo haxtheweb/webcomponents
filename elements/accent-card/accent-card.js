@@ -196,6 +196,7 @@ class AccentCard extends SimpleColors {
           overflow: visible;
         }
         :host #heading {
+          flex: 0 0 auto;
           padding-top: var(
             --accent-card-heading-padding-top,
             var(--accent-card-padding, 20px)
@@ -215,6 +216,7 @@ class AccentCard extends SimpleColors {
           color: var(--accent-card-heading-color);
         }
         :host #subheading {
+          flex: 0 0 auto;
           font-size: 90%;
           font-style: italic;
           padding-top: var(--accent-card-subheading-padding-top, unset);
@@ -246,11 +248,11 @@ class AccentCard extends SimpleColors {
             --accent-card-content-padding-bottom,
             var(--accent-card-padding, 20px)
           );
-        }
-        :host #content:not(:last-child) {
-          border-bottom: 1px solid var(--accent-card-footer-border-color);
+          flex: 1 1 auto;
         }
         :host #footer {
+          flex: 0 0 auto;
+          border-top: 1px solid var(--accent-card-footer-border-color);
           padding-top: var(--accent-card-footer-padding-top, unset);
           padding-left: var(
             --accent-card-footer-padding-left,
@@ -437,6 +439,19 @@ class AccentCard extends SimpleColors {
         ],
         advanced: []
       },
+      demoSchema: [
+        {
+          tag: "accent-card",
+          properties: {
+            style: "maxWidth:600px;width:100%;",
+            accentColor: "cyan",
+            dark: true,
+            imageSrc: "http://placekitten.com/200/600"
+          },
+          content:
+            '<h1 slot="heading">Card Heading</h1>\n<p slot="content">This is the body of the card.</p>'
+        }
+      ],
       saveOptions: {
         unsetAttributes: ["colors"]
       }
