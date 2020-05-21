@@ -7,9 +7,7 @@
     "description": "Accessible progressive disclosure with detail and summary",
     "icon": "icons:android",
     "color": "green",
-    "groups": [
-      "11"
-    ],
+    "groups": ["11"],
     "handles": [
       {
         "type": ""
@@ -25,13 +23,13 @@
     "configure": [
       {
         "slot": "summary",
-        "title": "Button", 
+        "title": "Button",
         "description": "Summary of the content that if concealed, eg. \"info\", \"medatadata\", etc. ",
         "inputMethod": "code-editor"
       },
       {
         "slot": "details",
-        "title": "Content", 
+        "title": "Content",
         "description": "Detailed content that can be hidden or shown",
         "inputMethod": "code-editor"
       }
@@ -39,13 +37,13 @@
     "advanced": [
       {
         "property": "open",
-        "title": "Open", 
+        "title": "Open",
         "inputMethod": "boolean",
         "required": false
       },
       {
         "property": "position",
-        "title": "Position", 
+        "title": "Position",
         "description": "Content position relative to button",
         "inputMethod": "select",
         "options": {

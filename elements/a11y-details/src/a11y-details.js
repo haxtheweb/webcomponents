@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from "lit-element";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
@@ -48,20 +48,20 @@ class A11YDetails extends LitElement {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
   }
-  firstUpdated(){
-    if(super.firstUpdated) super.firstUpdated();
+  firstUpdated() {
+    if (super.firstUpdated) super.firstUpdated();
     this._updateElement();
     this.observer.observe(this, { childList: true, subtree: true });
   }
-  get details(){
-    return this && this.shadowRoot && this.shadowRoot.querySelector('details') 
-      ? this.shadowRoot.querySelector('details') 
+  get details() {
+    return this && this.shadowRoot && this.shadowRoot.querySelector("details")
+      ? this.shadowRoot.querySelector("details")
       : undefined;
   }
 
   attributeChangedCallback(name, oldval, newval) {
     super.attributeChangedCallback(name, oldval, newval);
-    if(name === 'open') this.open = newval;
+    if (name === "open") this.open = newval;
   }
 
   /**
@@ -70,7 +70,7 @@ class A11YDetails extends LitElement {
    * @returns {object}
    */
   get observer() {
-    let callback = (mutationsList) => this._watchChildren(mutationsList);
+    let callback = mutationsList => this._watchChildren(mutationsList);
     return new MutationObserver(callback);
   }
 
@@ -83,16 +83,21 @@ class A11YDetails extends LitElement {
     let callback = () => this._updateElement();
     return new MutationObserver(callback);
   }
-  _handleClick(e){
-    if(this.details && typeof this.details.open === "undefined"){
+  _handleClick(e) {
+    if (this.details && typeof this.details.open === "undefined") {
       this._toggleOpen();
       e.preventDefault();
       e.stopPropagation();
     }
   }
-  _handleKeyup(e){
-    if(this.details && typeof this.details.open === "undefined" && e.keyCode == 13 || e.keyCode == 32) {
-      this._toggleOpen();	
+  _handleKeyup(e) {
+    if (
+      (this.details &&
+        typeof this.details.open === "undefined" &&
+        e.keyCode == 13) ||
+      e.keyCode == 32
+    ) {
+      this._toggleOpen();
       e.preventDefault();
       e.stopPropagation();
     }
@@ -104,53 +109,60 @@ class A11YDetails extends LitElement {
       this.details.setAttribute("open", "");
     }
   }
-  _updateElement(){
-    let details = this.querySelector('* > details'),
-      summary = details ? details.querySelector('* > summary') : undefined;
-    console.log('_updateElement',details,summary);
-    if(summary) this._copyToSlot('summary',summary.cloneNode(true));
-    if(details) {
-      let clone = details.cloneNode(true), 
-        filtered = clone.querySelectorAll('* > summary');
-      Object.keys(filtered || {}).forEach(i=>filtered[i].remove());
-      this._copyToSlot('details',clone);
-      console.log('details',clone,filtered);
+  _updateElement() {
+    let details = this.querySelector("* > details"),
+      summary = details ? details.querySelector("* > summary") : undefined;
+    console.log("_updateElement", details, summary);
+    if (summary) this._copyToSlot("summary", summary.cloneNode(true));
+    if (details) {
+      let clone = details.cloneNode(true),
+        filtered = clone.querySelectorAll("* > summary");
+      Object.keys(filtered || {}).forEach(i => filtered[i].remove());
+      this._copyToSlot("details", clone);
+      console.log("details", clone, filtered);
     }
   }
-  _watchChildren(mutationsList){
-    if(this._searchMutations(mutationsList)){
+  _watchChildren(mutationsList) {
+    if (this._searchMutations(mutationsList)) {
       this._updateElement();
-      this.detailsObserver.observe(
-        this.querySelector('* > details'), 
-        { childList: true, subtree: true, characterData: true }
-      );
-    } else if(
-      this._searchMutations(mutationsList,"removedNodes") 
-      && this.detailsObserver.disconnect
-    ){
+      this.detailsObserver.observe(this.querySelector("* > details"), {
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+    } else if (
+      this._searchMutations(mutationsList, "removedNodes") &&
+      this.detailsObserver.disconnect
+    ) {
       this.detailsObserver.disconnect();
     }
   }
-  _searchMutations(mutationsList,nodeListType="addedNodes"){
-    return Object.keys(mutationsList || {}).filter(i=> {
-      let nodes = mutationsList[i][nodeListType];
-      return Object.keys(nodes || {}).filter(j=>{
-        let nodeName = nodes[j].tagName;
-        return nodeName === "DETAILS"
-      }).length > 0;
-    }).length > 0
+  _searchMutations(mutationsList, nodeListType = "addedNodes") {
+    return (
+      Object.keys(mutationsList || {}).filter(i => {
+        let nodes = mutationsList[i][nodeListType];
+        return (
+          Object.keys(nodes || {}).filter(j => {
+            let nodeName = nodes[j].tagName;
+            return nodeName === "DETAILS";
+          }).length > 0
+        );
+      }).length > 0
+    );
   }
-  _copyToSlot(slotName,clone){
+  _copyToSlot(slotName, clone) {
     let slot = this._getSlot(slotName);
     slot.innerHTML = clone.innerHTML;
-    console.log('_copyToSlot',slot,clone);
+    console.log("_copyToSlot", slot, clone);
     clone.remove();
   }
-  _getSlot(slotName,inline=true){
+  _getSlot(slotName, inline = true) {
     let slot = this.querySelector(`[slot=${slotName}]`);
-    if(!slot) {
-      slot = inline ? document.createElement('span') : document.createElement('div');
-      slot.slot = slotName
+    if (!slot) {
+      slot = inline
+        ? document.createElement("span")
+        : document.createElement("div");
+      slot.slot = slotName;
       this.append(slot);
     }
     return slot;

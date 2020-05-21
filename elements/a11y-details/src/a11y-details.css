@@ -1,12 +1,15 @@
 :host {
   display: inline-flex;
 }
+
 :host(:defined) {
   --a11y-details-more-less-slot-display: inline;
 }
+
 :host([hidden]) {
   display: none;
 }
+
 summary {
   cursor: pointer;
   font-size: var(--a11y-details-summary-fontSize, 0.8em);
@@ -18,6 +21,7 @@ summary {
   border-radius: var(--a11y-details-summary-borderRadius, 3px);
   padding: var(--a11y-details-summary-padding, 0.5em);
 }
+
 summary:focus {
   outline: var(--a11y-details-summary-focus-outline,1px solid #006688);
   color: var(--a11y-details-summary-focus-color, var(--a11y-details-summary-color,#000));
@@ -27,6 +31,7 @@ summary:focus {
   border-style: var(--a11y-details-summary-focus-borderStyle, var(--a11y-details-summary-borderStyle, dotted));
   border-radius: var(--a11y-details-summary-focus-borderRadius, var(--a11y-details-summary-borderRadius, 3px));
 }
+
 absolute-position-behavior {
   overflow: hidden;
   max-height: 0px;
@@ -40,30 +45,37 @@ absolute-position-behavior {
   border-style: var(--a11y-details-borderStyle, solid);
   border-radius: var(--a11y-details-borderRadius, 3px);
 }
+
 ::slotted(*) {
   display: none;
 }
+
 ::slotted([slot="summary"]){
   display: inline;
 }
+
 details ::slotted([slot="less"]),
 details[open] ::slotted([slot="more"])  {
   --a11y-details-more-less-slot-display: none;
 }
+
 details[open] ::slotted([slot="less"]) {
   --a11y-details-more-less-slot-display: inline;
 }
+
 ::slotted([slot="details"]) {
   display: block;
-  height:auto;
+  height: auto;
   max-height: 0;
   overflow-y: auto;
   transition: all 0.7s ease-in-out 0.2s;
 }
+
 details[open] ::slotted([slot="details"]) {
   max-height: var(--a11y-details-maxHeight,400px);
   transition: all 0.7s ease-in-out 0.2s;
 }
+
 details[open] absolute-position-behavior {
   padding: var(--a11y-details-padding, 0.5em);
   max-height: var(--a11y-details-maxHeight,400px);
