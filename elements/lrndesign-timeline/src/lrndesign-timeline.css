@@ -157,14 +157,13 @@
     padding: 0 20px;
     line-height: 50px;
     height: 50px;
-    background-color: var(--lrndesign-timeline-header-accent);
-    color: var(--lrndesign-timeline-header);
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    background-color: var(--lrndesign-timeline-background);
+    color: var(--lrndesign-timeline-header-accent);
   }
 
   :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
-    opacity: 1;
+    background-color: var(--lrndesign-timeline-header-accent);
+    color: var(--lrndesign-timeline-header);
   }
 
   :host(:not([timeline-size="xs"])) .event[has-media] .heading h2:after {
@@ -173,13 +172,15 @@
     left: calc(100% - 48px);
     top: 17px;
     height: 50px;
+    opacity: 0;
     width: 0px;
-    transition: all 0.3s;
+    transition: opacity 0.3s;
     background-color: var(--lrndesign-timeline-background);
   }
 
   :host(:not([timeline-size="xs"])) .event[has-media][selected] .heading h2:after {
     width: 13px;
+    opacity: 1;
     background-color: var(--lrndesign-timeline-header-accent);
   }
 

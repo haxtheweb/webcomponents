@@ -1,4 +1,6 @@
 const path = require("path");
+const cpy = require("rollup-plugin-cpy");
+
 module.exports = {
   // Globs of all the stories in your project
   stories: ["../elements/*/**.stories.{js,mdx}"],
@@ -15,13 +17,42 @@ module.exports = {
   // Configuration for es-dev-server (start-storybook only)
   esDevServer: {
     nodeResolve: true,
-    open: true
+    open: true,
+    watch: true,
+    https: true,
+    dedupe: true,
+    preserveSymlinks: true
   },
 
   // Rollup build output directory (build-storybook only)
-  outputDir: "../../../storybooks/lrnwebcomponents",
+  outputDir: "../../../storybooks/styleguide",
   // Configuration for rollup (build-storybook only)
   rollup: config => {
-    return config;
+    return [
+      config[0],
+      {
+        ...config[1],
+        plugins: [
+          ...config[1].plugins,
+          cpy({
+            files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
+            dest: "../../storybooks/styleguide",
+            options: { parents: true }
+          }),
+          cpy({
+            files: ["node_modules/monaco-editor/min/**/*"],
+            dest: "../../storybooks/styleguide/",
+            options: { parents: true }
+          }),
+          cpy({
+            files: [
+              "elements/chartist-render/lib/chartist/dist/chartist.min.*"
+            ],
+            dest: "../../storybooks/styleguide/",
+            options: { parents: true }
+          })
+        ]
+      }
+    ];
   }
 };

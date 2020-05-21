@@ -3,21 +3,24 @@
    * all the iconsets
    */
   "__iconList": {
-    "type": Array,
+    "name": "__iconList",
+    "type": "Array",
     "value": []
   },
   /**
    * a space-separated whitelist of iconsets by name
    */
   "includeSets": {
-    "type": String,
+    "name": "includeSets",
+    "type": "String",
     "value": null
   },
   /**
    * a space-separated blacklist of iconsets by name
    */
   "excludeSets": {
-    "type": String,
+    "name": "excludeSets",
+    "type": "String",
     "value": null
   }
 }

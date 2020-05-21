@@ -12,14 +12,16 @@
    */
   "disabled": {
     "type": "Boolean",
-    "reflect": true
+    "reflect": true,
+    "attribute": "disabled"
   },
   /**
    * whether the tabbed interface is hidden
    */
   "hidden": {
     "type": "Boolean",
-    "reflect": true
+    "reflect": true,
+    "attribute": "hidden"
   },
   /**
    * Optional minimum breakpoint for showing tab text with icons, or

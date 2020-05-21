@@ -290,17 +290,17 @@ class HAXCMSSiteEditorUI extends LitElement {
   /*
    * Function to redirect back to sites page
    */
-  redirectToSites(){
+  redirectToSites() {
     let redirectUrl = "";
     let webTypeRegex = /^http/;
-    let tmp = document.createElement('a');
+    let tmp = document.createElement("a");
     tmp.href = window.location.href;
-    if (webTypeRegex.test(tmp.href)){
+    if (webTypeRegex.test(tmp.href)) {
       redirectUrl = `http://${tmp.host}`;
-    } else{
+    } else {
       redirectUrl = `https://${tmp.host}`;
     }
-    window.location.replace(redirectUrl); 
+    window.location.replace(redirectUrl);
   }
 
   firstUpdated(changedProperties) {

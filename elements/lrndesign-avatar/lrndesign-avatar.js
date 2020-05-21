@@ -1,90 +1,176 @@
-import { html, css } from "lit-element/lit-element.js";
+/**
+ * Copyright 2020 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { LitElement, html, css } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
+
 /**
  * `lrndesign-avatar`
- * `Visualize a user account eitehr with an image, a label, or as abstract art.`
+ * Visualize a user account either with an image, icon, initials, or as abstract art.
+ *
+### Styling
+Custom property | Description | Default
+----------------|-------------|----------
+`--lrndesign-avatar-width` | Size (width and height) of the avatar image | 40px
+ *
+ * @customElement
+ * @lit-html
+ * @lit-element
  * @demo demo/index.html
- * @element lrndesign-avatar
  */
 class LrndesignAvatar extends SimpleColors {
-  /**
-   * LitElement constructable styles enhancement
-   */
+  //styles function
   static get styles() {
     return [
       ...super.styles,
       css`
         :host {
           display: block;
+          border-radius: 50%;
         }
+
+        :host([hidden]) {
+          display: none;
+        }
+
         paper-avatar {
-          color: var(--simple-colors-default-theme-grey-1);
           --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
-          --paper-avatar-height: var(--lrndesign-avatar-height, 40px);
-          --paper-avatar-text-color: var(--simple-colors-default-theme-grey-1);
+          --paper-avatar-color: var(
+            --simple-colors-default-theme-accent-8,
+            #444
+          );
+          --paper-avatar-text-color: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
         }
       `
     ];
   }
-  constructor() {
-    super();
-    import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
-    this.label = "avatar";
-    this.twoChars = false;
-    this.color = "blue";
-    this.jdenticon = false;
-  }
+
+  // render function
   render() {
     return html`
       <paper-avatar
-        label="${this.label}"
-        src="${this.src}"
+        .label="${this.label || ""}"
+        .icon="${this.icon || ""}"
+        .src="${this.src || ""}"
         ?two-chars="${this.twoChars}"
-        style="background-color:${this.hexColor} !important;"
         ?jdenticon="${this.jdenticon}"
       ></paper-avatar>
     `;
   }
 
-  static get tag() {
-    return "lrndesign-avatar";
-  }
-
-  _getAccentColor(color) {
-    // legacy API bridge
-    color = color.replace("-text", "");
-    if (
-      (!this.accentColor || this.accentColor === "grey") &&
-      this.colors[color]
-    ) {
-      this.accentColor = color;
-    }
-  }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
-    }
-    return "#000000";
-  }
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "color") {
-        this._getAccentColor(this[propName]);
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: false,
+      canEditSource: false,
+      gizmo: {
+        title: "Avatar",
+        description:
+          "Visualize a user account either with an image, icon, initials, or as abstract art.",
+        icon: "image:collections",
+        color: "yellow",
+        groups: ["Media", "Image"],
+        handles: [
+          {
+            type: "image",
+            source: "image"
+          }
+        ],
+        meta: {
+          author: "ELMS:LN"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "Pick an accent color.",
+            inputMethod: "colorpicker"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark text (and light background) for avatar.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "Optional: Pick an icon for avatar.",
+            inputMethod: "iconpicker"
+          },
+          {
+            property: "src",
+            title: "Image Source",
+            description: "Optional: Upload an image for avatar.",
+            inputMethod: "haxupload"
+          }
+        ],
+        configure: [
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "Pick an accent color.",
+            inputMethod: "colorpicker"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark text (and light background) for avatar.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "Optional: Pick an icon for avatar.",
+            inputMethod: "iconpicker"
+          },
+          {
+            property: "src",
+            title: "Image Source",
+            description: "Optional: Upload an image for avatar.",
+            inputMethod: "haxupload"
+          },
+          {
+            property: "label",
+            title: "Two-character initials",
+            description: "Label used to create initials or unique Jdenticon.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "twoChars",
+            title: "Two-character initials",
+            description:
+              "When no Jdenticon, image, or icon, use two-character for initials.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "jdenticon",
+            title: "Jdenticon",
+            description: "Optional: Unique icon design based on label.",
+            inputMethod: "boolean"
+          }
+        ],
+        advanced: []
       }
-      if (propName == "accentColor") {
-        this.hexColor = this._getHexColor(this[propName]);
-      }
-    });
+    };
   }
+  // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
-      hexColor: {
+
+      /**
+       * optional iron-icon
+       */
+      icon: {
         type: String
       },
       /**
@@ -107,11 +193,10 @@ class LrndesignAvatar extends SimpleColors {
         attribute: "two-chars"
       },
       /**
-       * Color class work to apply
+       * "Deprecated": Color class work to apply
        */
       color: {
-        type: String,
-        reflect: true
+        type: String
       },
       /**
        * Form abstract art from hash of label
@@ -121,6 +206,53 @@ class LrndesignAvatar extends SimpleColors {
       }
     };
   }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "lrndesign-avatar";
+  }
+
+  // life cycle
+  constructor() {
+    super();
+    this.tag = LrndesignAvatar.tag;
+    import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
+    this.dark = false;
+    this.twoChars = false;
+    this.jdenticon = false;
+    this.label = "|";
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  _getAccentColor(color) {
+    // legacy API bridge
+    color = color.replace("-text", "");
+    if (
+      this.colors[color] &&
+      (!this.accentColor || this.accentColor === "grey")
+    ) {
+      this.accentColor = this.color;
+    }
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "color") {
+        this._getAccentColor(this[propName]);
+      }
+    });
+  }
 }
-window.customElements.define(LrndesignAvatar.tag, LrndesignAvatar);
+customElements.define("lrndesign-avatar", LrndesignAvatar);
 export { LrndesignAvatar };

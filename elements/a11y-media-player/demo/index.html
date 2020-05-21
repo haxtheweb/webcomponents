@@ -125,6 +125,21 @@
           </template>
         </demo-snippet>
       </div>
+
+      <h2>Video example, with height (useful if iframed in) only set </h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player id="height-demo" accent-color="yellow" dark linkable height="270px">
+            <video crossorigin="anonymous">
+              <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+              <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
+              <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
+              <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
+              <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
+            </video>
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
       
       <h2>Video example, with dark transcript and custom microcopy</h2>
       <demo-snippet>

@@ -31,9 +31,14 @@
         }  
       </style>
       <template>
-        <image-compare-slider title="Default Compare Mode" top-src="./images/Matterhorn02.png" bottom-src="./images/Matterhorn01.png">
+        <image-compare-slider>
+          <h2 slot="heading">Default Compare Mode</h2>
+          <p slot="description">The slider will wipe away the top image</p>
+          <img slot="top" src="./images/Matterhorn02.png">
+          <img slot="bottom" src="./images/Matterhorn01.png">
         </image-compare-slider>
         <image-compare-slider opacity title="Opacity Compare Mode" top-src="./images/Matterhorn02.png" bottom-src="./images/Matterhorn01.png">
+          <p slot="description">The slider will fade away the top image</p>
         </image-compare-slider>
       </template>
     </demo-snippet>

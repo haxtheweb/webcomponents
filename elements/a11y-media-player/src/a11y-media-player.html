@@ -129,7 +129,7 @@
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
         ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions || this.standAlone || this.height}"
+        ?hidden="${!this.hasCaptions || this.standAlone || (this.height && this.responsiveSize.indexOf('s') > -1)}"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -270,7 +270,8 @@ ${this.poster
   ? html`<img id="print-thumbnail" aria-hidden="true" .src="${this.poster}" />` 
   : ``
 }
-<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions || this.height}">
+<div id="transcript-section" 
+  ?hidden="${this.standAlone || !this.hasCaptions || !this.fullFlex}">
   <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
     <div id="searchbar">
       <div id="searching">

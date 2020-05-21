@@ -2,9 +2,9 @@
   "name": "@lrnwebcomponents/lrndesign-avatar",
   "wcfactory": {
     "className": "LrndesignAvatar",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrndesign-avatar",
-    "generator-wcfactory-version": "0.3.1",
+    "generator-wcfactory-version": "0.7.1",
     "useHAX": true,
     "useSass": false,
     "files": {
@@ -15,29 +15,24 @@
       "properties": "src/lrndesign-avatar-properties.json",
       "hax": "src/lrndesign-avatar-hax.json"
     },
-    "sharedStyles": []
+    "sharedStyles": ["...super.styles"]
   },
   "version": "2.6.10",
-  "description": "Automated conversion of lrndesign-avatar/",
+  "description": "Visualize a user account either with an image, a label, or as abstract art.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "type": "module",
   "main": "lrndesign-avatar.js",
   "module": "lrndesign-avatar.es6.js",
   "umd": "lrndesign-avatar.umd.js",
+  "amd": "lrndesign-avatar.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-avatar/test/",
-    "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
-    "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev",
-    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
-    "name": "btopro"
+    "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -65,6 +60,5 @@
   "keywords": [
     "web-components",
     "html"
-  ],
-  "gitHead": "e38751e6f76a812e00ae87ef826fafcdbfec4083"
+  ]
 }

@@ -47,7 +47,15 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
   render() {
     return html`
       <div>
-        <h2>${this.title}</h2>
+        ${this.title
+          ? html`
+              <h2>${this.title}</h2>
+            `
+          : ""}
+        <slot name="heading"></slot>
+        <slot name="description"></slot>
+        <slot name="top" hidden></slot>
+        <slot name="bottom" hidden></slot>
         <div id="container" style="background-image: url(${this.bottomSrc});">
           <div id="top" style="background-image: url(${this.topSrc});"></div>
         </div>
@@ -67,7 +75,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
     return {
       ...super.properties,
       /**
-       * Title
+       * @deprecated Use `slot=heading`
        */
       title: {
         type: String
@@ -93,6 +101,29 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
         attribute: "bottom-src"
       }
     };
+  }
+
+  /**
+   * mutation observer for tabs
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this.slotUpdate();
+    return new MutationObserver(callback);
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.slotUpdate();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: false
+    });
+  }
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    if (super.disconnectedCallback) super.disconnectedCallback();
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -129,7 +160,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
       settings: {
         quick: [
           {
-            property: "title",
+            slot: "heading",
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
@@ -140,27 +171,20 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             title: "Slider Behavior",
             description:
               "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
-            inputMethod: "select",
-            options: {
-              false: "wipe across",
-              true: "adjust opacity"
-            },
+            inputMethod: "boolean",
             icon: "image:compare"
           }
         ],
         configure: [
           {
-            property: "title",
+            slot: "heading",
             title: "Title",
-            description: "The title of the element",
             inputMethod: "textfield"
           },
           {
-            property: "bottomSrc",
-            title: "Bottom image",
-            description: "The base image to swipe over",
-            inputMethod: "haxupload",
-            validationType: "url"
+            slot: "description",
+            title: "Optional Desscription",
+            inputMethod: "code-editor"
           },
           {
             property: "topSrc",
@@ -168,10 +192,44 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             description: "The top image that swipes over",
             inputMethod: "haxupload",
             validationType: "url"
+          },
+          {
+            property: "bottomSrc",
+            title: "Bottom image",
+            description: "The base image to swipe over",
+            inputMethod: "haxupload",
+            validationType: "url"
           }
         ],
         advanced: []
-      }
+      },
+      demoSchema: [
+        {
+          tag: "image-compare-slider",
+          properties: {
+            topSrc: new URL(`./demo/images/Matterhorn01.png`, import.meta.url),
+            bottomSrc: new URL(
+              `./demo/images/Matterhorn02.png`,
+              import.meta.url
+            ),
+            style: "width:100%;max-width:400px"
+          },
+          content: `<h2 slot="heading">Image Compare Slider Default</h2><p slot="description">The slider will fade away the top image.</p>`
+        },
+        {
+          tag: "image-compare-slider",
+          properties: {
+            opacity: true,
+            topSrc: new URL(`./demo/images/Matterhorn01.png`, import.meta.url),
+            bottomSrc: new URL(
+              `./demo/images/Matterhorn02.png`,
+              import.meta.url
+            ),
+            style: "width:100%;max-width:400px"
+          },
+          content: `<h2 slot="heading">Image Compare Slider Wipe</h2><p slot="description">The slider will wipe away the top image.</p>`
+        }
+      ]
     };
   }
   firstUpdated() {
@@ -180,6 +238,23 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
       .addEventListener("immediate-value-changed", e => {
         this._slide();
       });
+  }
+  /**
+   * updates element based on slotted data
+   * @memberof ImageCompareSlider
+   */
+  slotUpdate() {
+    console.log(
+      this,
+      this.querySelector("[slot=top]"),
+      this.querySelector("[slot=bottom]")
+    );
+    let top = this.querySelector("[slot=top]"),
+      topSrc = top ? top.getAttribute("src") : false,
+      bottom = this.querySelector("[slot=bottom]"),
+      bottomSrc = bottom ? bottom.getAttribute("src") : false;
+    if (topSrc) this.topSrc = topSrc;
+    if (bottomSrc) this.bottomSrc = bottomSrc;
   }
   /**
    * updates the slider

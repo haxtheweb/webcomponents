@@ -59,7 +59,7 @@ class RichTextEditorToolbar extends PolymerElement {
           border: var(--rich-text-editor-border);
           font-size: 12px;
           transition: all 0.5s;
-          @apply --rich-text-editor-toolbar;
+          /*@apply --rich-text-editor-toolbar;*/
         }
         :host #toolbar[aria-hidden] {
           visibility: hidden;
@@ -72,12 +72,12 @@ class RichTextEditorToolbar extends PolymerElement {
           justify-content: space-evenly;
           align-items: stretch;
           padding: 0 3px;
-          @apply --rich-text-editor-toolbar-group;
+          /*@apply --rich-text-editor-toolbar-group;*/
         }
         :host #toolbar .group:not(:last-of-type) {
           margin-right: 3px;
           border-right: var(--rich-text-editor-border);
-          @apply --rich-text-editor-toolbar-divider;
+          /*@apply --rich-text-editor-toolbar-divider;*/
         }
         :host #toolbar .button {
           display: flex;
@@ -492,6 +492,7 @@ class RichTextEditorToolbar extends PolymerElement {
     if (navigator.clipboard) {
       this.addEventListener("paste-button", root._handlePasteButton.bind(root));
     }
+    this.config = this.config;
     window.RichTextEditorSelection.requestAvailability();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -743,36 +744,40 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {array} the buttons array
    */
   _getButtons(config) {
-    let root = this,
-      toolbar = root.shadowRoot.querySelector("#toolbar"),
-      more = this.shadowRoot.querySelector("#morebutton"),
-      max = 0,
-      sizes = ["xs", "sm", "md", "lg", "xl"],
-      temp = [];
-    toolbar.innerHTML = "";
-    this.set("__shortcutKeys", []);
-    config.forEach(item => {
-      if (item.type === "button-group") {
-        let group = document.createElement("div");
-        group.setAttribute("class", "group");
-        if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
-          group.setAttribute("collapsed-until", item.collapsedUntil);
-        max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-        item.buttons.forEach(button => {
-          max = Math.max(max, sizes.indexOf(button.collapsedUntil));
-          if (navigator.clipboard || button.command !== "paste")
-            temp.push(root._addButton(button, group)); //firefox doesn't allow for clipboard button
-        });
-        toolbar.appendChild(group);
-      } else {
-        max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-        if (navigator.clipboard || item.command !== "paste")
-          temp.push(root._addButton(item, toolbar)); //firefox doesn't allow for clipboard button
-      }
-      toolbar.appendChild(more);
-      more.collapseMax = sizes[max];
-    });
-    return temp;
+    console.log(this,this.shadowRoot);
+    if(this.shadowRoot){
+      let root = this,
+        toolbar = root.shadowRoot.querySelector("#toolbar"),
+        more = this.shadowRoot.querySelector("#morebutton"),
+        max = 0,
+        sizes = ["xs", "sm", "md", "lg", "xl"],
+        temp = [];
+      toolbar.innerHTML = "";
+      this.set("__shortcutKeys", []);
+      config.forEach(item => {
+        if (item.type === "button-group") {
+          let group = document.createElement("div");
+          group.setAttribute("class", "group");
+          if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
+            group.setAttribute("collapsed-until", item.collapsedUntil);
+          max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+          item.buttons.forEach(button => {
+            max = Math.max(max, sizes.indexOf(button.collapsedUntil));
+            if (navigator.clipboard || button.command !== "paste")
+              temp.push(root._addButton(button, group)); //firefox doesn't allow for clipboard button
+          });
+          toolbar.appendChild(group);
+        } else {
+          max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+          if (navigator.clipboard || item.command !== "paste")
+            temp.push(root._addButton(item, toolbar)); //firefox doesn't allow for clipboard button
+        }
+        toolbar.appendChild(more);
+        more.collapseMax = sizes[max];
+      });
+      return temp;
+    }
+    return [];
   }
 
   /**

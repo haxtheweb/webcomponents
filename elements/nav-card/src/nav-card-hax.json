@@ -29,24 +29,34 @@
         "required": false
       },
       {
-        "property": "Dark",
+        "property": "dark",
         "title": "Dark",
         "description": "Display the card as dark theme?",
         "inputMethod": "boolean",
         "required": false
       },
       {
-        "property": "disabled",
-        "title": "Disabled",
-        "description": "Disable all links and buttons?",
-        "inputMethod": "boolean",
+        "property": "imageSrc",
+        "title": "Image",
+        "description": "Optional image",
+        "inputMethod": "haxupload"
+      },
+      {
+        "slot": "heading",
+        "title": "Heading",
+        "inputMethod": "code-editor",
         "required": false
       },
       {
-        "property": "hidden",
-        "title": "Hidden",
-        "description": "",
-        "inputMethod": "boolean",
+        "slot": "subheading",
+        "title": "Subheading",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "body",
+        "title": "Body",
+        "inputMethod": "code-editor",
         "required": false
       },
       {
@@ -54,6 +64,18 @@
         "title": "Link Icon",
         "description": "Select an icon.",
         "inputMethod": "iconpicker",
+        "required": false
+      },
+      {
+        "slot": "linklist",
+        "title": "Link List",
+        "inputMethod": "code-editor",
+        "required": false
+      },
+      {
+        "slot": "footer",
+        "title": "Footer",
+        "inputMethod": "code-editor",
         "required": false
       }
     ],

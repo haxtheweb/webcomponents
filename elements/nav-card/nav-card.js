@@ -4,9 +4,10 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "./lib/nav-card-item.js";
 /**
  * `nav-card`
  * an accent card of link lists
@@ -16,117 +17,24 @@ import "@polymer/iron-icons/iron-icons.js";
  * @lit-element
  * @demo demo/index.html
  */
-class NavCard extends LitElement {
+class NavCard extends AccentCard {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
+          --accent-card-content-padding-bottom: 0px;
+          --nav-card-item-avatar-size: 36px;
+          --nav-card-item-icon-size: 24px;
         }
 
         ::slotted([slot="linklist"]) {
-          display: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        accent-card > [slot="heading"] {
-          font-size: 14px;
-          font-weight: normal;
-          color: var(--simple-colors-default-theme-grey-7, #666);
-          margin: 0;
-        }
-
-        accent-card {
-          margin: var(--elmsln-studio--Margin, 20px);
-          flex: 1 0 calc(50% - 2 * var(--elmsln-studio--Margin, 20px));
-          --accent-card-footer-border-color: transparent;
-        }
-
-        .linklist {
-          list-style-type: none;
-          padding-inline-start: 0;
-        }
-
-        .linklist li {
-          position: relative;
-          padding: 5px 0;
-          margin-bottom: 1px;
-          opacity: 0.8;
-        }
-
-        .linklist li {
-          padding: 5px 0;
-          text-align: left;
-          min-height: 25px;
-          border-bottom: 1px solid
-            var(--simple-colors-default-theme-grey-4, #666);
-        }
-
-        button[slot="subheading"] {
-          text-decoration: underline;
-        }
-
-        button[slot="subheading"]:focus,
-        button[slot="subheading"]:hover {
-          text-decoration: none;
-        }
-
-        ::slotted(button),
-        .linklist button {
-          border: none;
-          padding: 0;
-          text-align: left;
-          font-size: inherit;
-          font-weight: inherit;
-        }
-
-        .linklist iron-icon {
-          position: absolute;
-          width: 24px;
-          height: 24px;
-          right: 0px;
-          top: calc(50% - 12px);
-        }
-
-        .linklist-heading::after {
-          content: " ";
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-        }
-
-        .linklist-heading:focus {
-          outline: none;
-        }
-
-        .linklist li:focus,
-        .linklist li:focus-within .linklist-heading::after {
-          outline: 1px solid blue;
-        }
-
-        .linklist li:hover .linklist-heading,
-        .linklist li:focus .linklist-heading,
-        .linklist li:focus-within .linklist-heading {
-          text-decoration: underline;
-        }
-
-        .linklist-heading,
-        .linklist-subheading {
-          display: block;
-          width: calc(100% - 24px);
-        }
-
-        .linklist-heading {
-          font-weight: bold;
-        }
-
-        .linklist-subheading {
-          font-size: 11px;
+          --nav-card-item-color: var(--accent-card-color);
+          --nav-card-item-background-color: var(--accent-card-background-color);
+          margin-top: var(--nav-card-linklist-margin-top, 20px);
+          margin-bottom: var(--nav-card-linklist-margin-bottom, 20px);
         }
       `
     ];
@@ -135,21 +43,27 @@ class NavCard extends LitElement {
   // render function
   render() {
     return html`
-      <accent-card
-        accent-color="${this.accentColor}"
-        ?dark="${this.dark}"
-        ?disabled="${this.disabled}"
-        ?hidden="${this.hidden}"
-      >
-        <div slot="heading"><slot name="heading"></slot></div>
-        <div slot="subheading"><slot name="subheading"></slot></div>
-        <div slot="content">
-          <slot name="body"></slot>
-          <slot name="linklist"></slot>
-          <div id="linklist"></div>
+      <article id="card">
+        <div class="image-outer" ?hidden="${!this.imageSrc}">
+          <div
+            class="image"
+            .style="${this.imageSrc
+              ? `background-image: url(${this.imageSrc});`
+              : `display: none;`}"
+          ></div>
         </div>
-        <div slot="footer"><slot name="footer"></slot></div>
-      </accent-card>
+        <div class="body">
+          <h1 id="heading"><slot name="heading"></slot></h1>
+          <div id="subheading"><slot name="subheading"></slot></div>
+          <div id="content">
+            <slot name="body"></slot>
+            <div id="linklist">
+              <slot name="linklist"></slot>
+            </div>
+          </div>
+          <div id="footer"><slot name="footer"></slot></div>
+        </div>
+      </article>
     `;
   }
 
@@ -186,24 +100,34 @@ class NavCard extends LitElement {
             required: false
           },
           {
-            property: "Dark",
+            property: "dark",
             title: "Dark",
             description: "Display the card as dark theme?",
             inputMethod: "boolean",
             required: false
           },
           {
-            property: "disabled",
-            title: "Disabled",
-            description: "Disable all links and buttons?",
-            inputMethod: "boolean",
+            property: "imageSrc",
+            title: "Image",
+            description: "Optional image",
+            inputMethod: "haxupload"
+          },
+          {
+            slot: "heading",
+            title: "Heading",
+            inputMethod: "code-editor",
             required: false
           },
           {
-            property: "hidden",
-            title: "Hidden",
-            description: "",
-            inputMethod: "boolean",
+            slot: "subheading",
+            title: "Subheading",
+            inputMethod: "code-editor",
+            required: false
+          },
+          {
+            slot: "body",
+            title: "Body",
+            inputMethod: "code-editor",
             required: false
           },
           {
@@ -211,6 +135,18 @@ class NavCard extends LitElement {
             title: "Link Icon",
             description: "Select an icon.",
             inputMethod: "iconpicker",
+            required: false
+          },
+          {
+            slot: "linklist",
+            title: "Link List",
+            inputMethod: "code-editor",
+            required: false
+          },
+          {
+            slot: "footer",
+            title: "Footer",
+            inputMethod: "code-editor",
             required: false
           }
         ],
@@ -220,187 +156,22 @@ class NavCard extends LitElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
-      ...super.properties,
-
-      accentColor: {
-        attribute: "accent-color",
-        type: String
-      },
-      dark: {
-        attribute: "dark",
-        type: Boolean
-      },
-      disabled: {
-        attribute: "disabled",
-        type: Boolean
-      },
-      hidden: {
-        attribute: "hidden",
-        type: Boolean
-      },
-      linkIcon: {
-        attribute: "link-icon",
-        type: String
-      }
-    };
+    return { ...super.properties };
   }
 
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "nav-card";
   }
 
   // life cycle
   constructor() {
     super();
-    this.accentColor = "grey";
-    this.dark = false;
-    this.disabled = false;
-    this.hidden = false;
     this.tag = NavCard.tag;
-    this.observer.observe(this, {
-      attributes: false,
-      childList: true,
-      subtree: false
-    });
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(NavCard.haxProperties, NavCard.tag, this);
-  }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-    this.updateList();
-  }
-
-  /**
-   * mutation observer for tabs
-   * @readonly
-   * @returns {object}
-   */
-  get observer() {
-    let callback = () => this.updateList();
-    return new MutationObserver(callback);
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "linkIcon" && this.shadowRoot)
-        this.shadowRoot
-          .querySelectorAll("#linklist li > iron-icon")
-          .forEach(icon => (icon.icon = this.linkIcon));
-    });
-  }
-
-  updateList() {
-    if (this.shadowRoot && this.shadowRoot.querySelector("#linklist")) {
-      let linklist = this.shadowRoot.querySelector("#linklist"),
-        ul = this.querySelector('ul[slot="linklist"],ol[slot="linklist"]');
-      if (ul) {
-        linklist.innerHTML = "";
-        let list = ul.cloneNode(true);
-        list.querySelectorAll("li").forEach((li, i) => this._getLi(li, i));
-        list.classList.add("linklist");
-        linklist.appendChild(list);
-      }
-    }
-  }
-  /**
-   * formats each list item
-   *
-   * @param {object} li list item
-   * @param {number} i index
-   * @memberof NavCard
-   */
-  _getLi(li, i) {
-    let heading = this._getHeading(li, i),
-      subheading = this._getSubheading(li);
-
-    heading.id = heading.id || `${this.id || `nav-card`}-heading${i}`;
-    if (subheading) {
-      subheading.id = `subheading${i}`;
-      subheading.id =
-        subheading.id || `${this.id || `nav-card`}-subheading${i}`;
-      heading.setAttribute("aria-describedby", subheading.id);
-    }
-    this._makeIcon(li, heading);
-  }
-  /**
-   * formats each heading
-   *
-   * @param {object} li list item
-   * @returns
-   * @memberof NavCard
-   */
-  _getHeading(li) {
-    let heading = li.querySelector(".linklist-heading"),
-      button = li.querySelector("button,a");
-    if (!heading) {
-      if (button) {
-        //preferred: set heading to whatever the link or button is
-        heading = button;
-      } else {
-        //last resort: just use dump all contents into heading
-        heading = document.createElement("span");
-        heading.innerHTML = li.innerHTML;
-        li.innerHTML = "";
-        li.appendChild(heading);
-      }
-      heading.classList.add(".linklist-heading");
-    }
-    return heading;
-  }
-  /**
-   * formats each subheading
-   *
-   * @param {object} li list item
-   * @returns
-   * @memberof NavCard
-   */
-  _getSubheading(li) {
-    let subheading = li.querySelector(".linklist-subheading");
-    if (!subheading) {
-      let contents = li.querySelectorAll(":not(.linklist-heading)");
-      if (contents) {
-        subheading = document.createElement("div");
-        contents.forEach(item => subheading.append(item));
-        subheading.classList.add(".linklist-subheading");
-      }
-    }
-    return subheading;
-  }
-  /**
-   * adds icon to li
-   *
-   * @param {object} li list-item
-   * @param {object} heading heading inside list item
-   * @memberof NavCard
-   */
-  _makeIcon(li, heading) {
-    if (li && heading) {
-      let icon = document.createElement("iron-icon");
-      icon.icon = this.linkIcon;
-      icon.setAttribute("aria-hidden", true);
-      li.insertBefore(icon, heading);
-    }
-  }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this.observer && this.observer.disconnect) this.observer.disconnect();
-  }
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 customElements.define("nav-card", NavCard);
 export { NavCard };

@@ -132,7 +132,7 @@
             "id": "390",
             "name": "def3456",
             "display_name": "Minskin Minskin Mau",
-            "avatar": "http://placekitten.com/300/300",
+            "avatar": false,
             "visual": {
               "icon": false,
               "label": false

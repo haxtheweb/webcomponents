@@ -286,7 +286,85 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Tabs",
+        description: "A set of tabs.",
+        icon: "view-day",
+        color: "grey",
+        groups: ["Content", "Presentation", "Tabs"]
+      },
+      settings: {
+        quick: [
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean"
+          },
+          {
+            property: "hidden",
+            title: "Hidden",
+            inputMethod: "boolean"
+          },
+          {
+            property: "sticky",
+            title: "Sticky",
+            desc:
+              "Horizontal tabs stick to the top of the window when scrolling.",
+            inputMethod: "boolean"
+          }
+        ],
+        configure: [
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean"
+          },
+          {
+            property: "hidden",
+            title: "Hidden",
+            inputMethod: "boolean"
+          },
+          {
+            property: "sticky",
+            title: "Sticky.",
+            desc:
+              "Horizontal tabs stick to the top of the window when scrolling.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "layoutBreakpoint",
+            title: "Layout Breakpoint",
+            inputMethod: "Number",
+            descripton:
+              "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode."
+          },
+          {
+            property: "iconBreakpoint",
+            title: "Icon Breakpoint",
+            inputMethod: "Number",
+            descripton:
+              "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode."
+          },
+          {
+            slot: "",
+            title: "Tabs",
+            description: "A series of <a11y-tab/> elements.",
+            inputMethod: "code-editor"
+          }
+        ],
+        advanced: [
+          {
+            property: "id",
+            title: "Unique ID",
+            inputMethod: "textfield"
+          }
+        ]
+      }
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -306,14 +384,16 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "disabled"
       },
       /**
        * whether the tabbed interface is hidden
        */
       hidden: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "hidden"
       },
       /**
        * Optional minimum breakpoint for showing tab text with icons, or
@@ -572,9 +652,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       <paper-button
         id="${tab.id}-button"
         controls="${tab.id}"
-        class="${tab.id === this.activeTab ? "active" : ""}"
+        class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
         @click="${e => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab || tab.disabled}"
+        ?disabled="${tab.id === this.activeTab ||
+          tab.disabled ||
+          this.disabled}"
         .flag="${tab.flag}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
@@ -612,7 +694,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         class="icon"
         ?hidden="${!tab[icon]}"
         .icon="${tab[icon]}"
-      ></iron-icon>
+        .title="${tab[flag]}"
+      >
+      </iron-icon>
     `;
   }
 

@@ -1,0 +1,15 @@
+<details id="details">
+  <summary 
+    @click="${this._handleClick}"  
+    @keyup="${this._handleKeyup}" 
+    tabindex="0"
+    role="button">
+    <slot name="more"></slot>
+    <slot name="less"></slot>
+    <slot name="summary"></slot>
+  </summary>
+  <absolute-position-behavior ?auto="${this.open}" for="details" .position="${this.position || undefined}">
+    <slot name="details" ?aria-hidden="${!this.open}"></slot>
+  </absolute-position-behavior>
+</details>
+<slot hidden></slot>

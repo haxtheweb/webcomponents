@@ -1,0 +1,39 @@
+{
+  /**
+   * optional iron-icon
+   */
+  "icon": {
+    "type": "String"
+  },
+  /**
+   * text to use for avatar
+   */
+  "label": {
+    "type": "String"
+  },
+  /**
+   * link to an image, optional
+   */
+  "src": {
+    "type": "String"
+  },
+  /**
+   * Mode for presenting 1st two letters
+   */
+  "twoChars": {
+    "type": "Boolean",
+    "attribute": "two-chars"
+  },
+  /**
+   * "Deprecated": Color class work to apply
+   */
+  "color": {
+    "type": "String"
+  },
+  /**
+   * Form abstract art from hash of label
+   */
+  "jdenticon": {
+    "type": "Boolean"
+  }
+}

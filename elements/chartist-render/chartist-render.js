@@ -1058,6 +1058,7 @@ const ChartistRenderSuper = function(SuperClass) {
         `
       ];
     }
+
     // render function
     render() {
       return html`
@@ -1410,6 +1411,7 @@ Container class	Ratio
           this._getChart.bind(this)
         )
       );
+      if (this.observer && this.observer.disconnect) this.observer.disconnect();
       super.disconnectedCallback();
     }
 
@@ -1578,7 +1580,7 @@ Container class	Ratio
         if (chart) {
           chart.on("created", e => {
             /**
-             * Fired once chart is created and accessibility features are added.
+             * Fired once chart is created features are added.
              *
              * @event chartist-render-created
              *
@@ -1594,7 +1596,7 @@ Container class	Ratio
           });
           chart.on("draw", e => {
             /**
-             * Fired once chart is created and accessibility features are added.
+             * Fired as shapes are being drawn.
              *
              * @event chartist-render-draw
              *

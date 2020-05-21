@@ -82,9 +82,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           overflow: hidden;
           max-height: 0;
         }
-        /*:host([sortable]) {
-          padding: 0 0 0 calc(var(--simple-fields-margin-small, 8px) * 2 + var(--simple-fields-line-height, 22px));
-        }*/
         :host #content-inner {
           display: flex;
           align-items: flex-end;
@@ -156,14 +153,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       <div id="content">
         <div id="content-inner">
           <div><slot></slot></div>
-          <!--paper-icon-button
-            id="copy"
-            controls="${this.id}"
-            icon="content-copy"
-            label="Copy this item"
-            ?disabled="${this.disabled}"
-            @click="${e => this._handleCopy()}"
-  -->
           </paper-icon-button>
           <paper-icon-button
             id="remove"

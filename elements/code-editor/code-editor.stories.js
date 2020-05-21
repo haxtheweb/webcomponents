@@ -20,13 +20,10 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const CodeEditorStory = () => {
-  let template = document.createElement("template");
-  template.innerHTML = "<p>Things and stuff</p>";
-
-  let editor = utils.makeElementFromClass(CodeEditor, {
+  return utils.makeElementFromClass(CodeEditor, {
     id: "code",
     language: "html",
-    "": template
+    fontSize: 13,
+    emptyslot: `<template><p>Things and stuff</p></template>`
   });
-  return editor;
 };
