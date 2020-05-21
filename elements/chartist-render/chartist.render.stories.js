@@ -98,7 +98,7 @@ props.forEach(prop => {
 props = [...props, ...styles];
 export const ChartistRenderBarStory = () => {
   return utils.makeElement(
-    "chartist-render",
+    ChartistRender,
     utils.getKnobs(props, {
       dataSource: barData,
       chartTitle: "Sales by Quarter",
@@ -112,7 +112,7 @@ export const ChartistRenderBarStory = () => {
 };
 export const ChartistRenderLineStory = () => {
   return utils.makeElement(
-    "chartist-render",
+    ChartistRender,
     utils.getKnobs(props, {
       dataSource: lineData,
       chartTitle: "Sales by Quarter",
@@ -126,7 +126,7 @@ export const ChartistRenderLineStory = () => {
 };
 export const ChartistRenderPieStory = () => {
   return utils.makeElement(
-    "chartist-render",
+    ChartistRender,
     utils.getKnobs(props, {
       dataSource: pieData,
       chartTitle: "Favorite Pie",
@@ -139,7 +139,7 @@ export const ChartistRenderPieStory = () => {
 };
 export const ChartistRenderDonutStory = () => {
   return utils.makeElement(
-    "chartist-render",
+    ChartistRender,
     utils.getKnobs(props, {
       dataSource: donutData,
       chartTitle: "Favorite Donuts",
@@ -153,7 +153,7 @@ export const ChartistRenderDonutStory = () => {
 };
 export const ChartistWithSlots = () => {
   return utils.makeElement(
-    "chartist-render",
+    ChartistRender,
     utils.getKnobs(
       [
         { slot: "heading", inputMethod: "string", name: "heading" },
