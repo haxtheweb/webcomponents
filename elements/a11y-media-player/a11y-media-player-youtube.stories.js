@@ -171,7 +171,7 @@ const utils = new StorybookUtilities(),
 
 export const A11yMediaPlayerYoutubeStory = () => {
   return utils.makeElement(
-    "a11y-media-player",
+    A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
       youtubeId: "BKorP55Aqvg"
@@ -180,7 +180,7 @@ export const A11yMediaPlayerYoutubeStory = () => {
 };
 export const A11yMediaPlayerYoutubeWithSlot = () => {
   return utils.makeElement(
-    "a11y-media-player",
+    A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
       tracks: [

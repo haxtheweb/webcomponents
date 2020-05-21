@@ -4,12 +4,10 @@
     @keyup="${this._handleKeyup}" 
     tabindex="0"
     role="button">
-    <slot name="more"></slot>
-    <slot name="less"></slot>
-    <slot name="summary"></slot>
+    <span class="open-text">${this.openText}</span>
+    <span class="close-text">${this.closeText}</span>
+    <slot name="summary" class="${this.summaryClasses}"></slot>
   </summary>
-  <absolute-position-behavior ?auto="${this.open}" for="details" .position="${this.position || undefined}">
-    <slot name="details" ?aria-hidden="${!this.open}"></slot>
-  </absolute-position-behavior>
+  <div id="details-inner"><slot name="details"></slot></div>
 </details>
 <slot hidden></slot>

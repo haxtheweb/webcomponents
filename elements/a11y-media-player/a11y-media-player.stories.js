@@ -181,7 +181,7 @@ const utils = new StorybookUtilities(),
 
 export const A11yMediaPlayerStory = () => {
   return utils.makeElement(
-    "a11y-media-player",
+    A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
       thumbnailSrc: `${new URL(`demo/samples/stclair.jpg`, import.meta.url)}`,
@@ -205,7 +205,7 @@ export const A11yMediaPlayerStory = () => {
 };
 export const A11yMediaPlayerWithSlots = () => {
   return utils.makeElement(
-    "a11y-media-player",
+    A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
       emptyslot: `<video crossorigin="anonymous">

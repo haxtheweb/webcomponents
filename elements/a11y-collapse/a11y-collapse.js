@@ -149,7 +149,9 @@ class A11yCollapse extends LitElement {
   }
   render() {
     return html`
-      ${this.headingButton ? this._makeHeadingButton() : this._makeIconButton()}
+      ${this.headingButton || this.accordion
+        ? this._makeHeadingButton()
+        : this._makeIconButton()}
       <div
         id="content"
         aria-hidden="${this.expanded ? "false" : "true"}"
@@ -441,10 +443,6 @@ class A11yCollapse extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "expanded") this._fireToggleEvents();
-      if (propName === "headingButton" && this.headingButton !== oldValue)
-        this.accordion = this.headingButton;
-      if (propName === "accordion" && this.accordion !== oldValue)
-        this.headingButton = this.accordion;
     });
   }
 
@@ -542,7 +540,7 @@ class A11yCollapse extends LitElement {
           id="expand"
           class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
           .icon="${this._getExpanded(
-            this.icon,
+            this.icon || "icons:expand-more",
             this.iconExpanded,
             this.expanded
           )}"
@@ -578,7 +576,7 @@ class A11yCollapse extends LitElement {
             this.expanded
           )}"
           .icon="${this._getExpanded(
-            this.icon,
+            this.icon || "icons:expand-more",
             this.iconExpanded,
             this.expanded
           )}"

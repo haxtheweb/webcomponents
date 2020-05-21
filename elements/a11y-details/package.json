@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/a11y-details",
   "wcfactory": {
-    "className": "A11YDetails",
+    "className": "A11yDetails",
     "customElementClass": "LitElement",
     "elementName": "a11y-details",
     "generator-wcfactory-version": "0.7.1",

@@ -1,9 +1,7 @@
-:host {
+:host,
+details {
   display: inline-flex;
-}
-
-:host(:defined) {
-  --a11y-details-more-less-slot-display: inline;
+  overflow: visible;
 }
 
 :host([hidden]) {
@@ -12,6 +10,7 @@
 
 summary {
   cursor: pointer;
+  display: inline-flex;
   font-size: var(--a11y-details-summary-fontSize, 0.8em);
   color: var(--a11y-details-summary-color, #000);
   background-color: var(--a11y-details-summary-backgroundColor, #fff);
@@ -32,10 +31,12 @@ summary:focus {
   border-radius: var(--a11y-details-summary-focus-borderRadius, var(--a11y-details-summary-borderRadius, 3px));
 }
 
-absolute-position-behavior {
-  overflow: hidden;
+#details-inner {
+  position: absolute;
+  display: none;
   max-height: 0px;
   transition: all 0.7s ease-in-out 0.2s;
+  overflow-y: auto;
   padding: 0;
   font-size: var(--a11y-details-fontSize, 0.8em);
   color: var(--a11y-details-color,#000);
@@ -46,28 +47,26 @@ absolute-position-behavior {
   border-radius: var(--a11y-details-borderRadius, 3px);
 }
 
-::slotted(*) {
+::slotted(*:not[slot=summary]) {
   display: none;
 }
 
-::slotted([slot="summary"]){
+.close-text,
+details[open] .open-text,
+details:not([open]) .has-open-text,
+details[open] .has-close-text {
+  display: none;
+}
+
+details[open] .close-text {
   display: inline;
-}
-
-details ::slotted([slot="less"]),
-details[open] ::slotted([slot="more"])  {
-  --a11y-details-more-less-slot-display: none;
-}
-
-details[open] ::slotted([slot="less"]) {
-  --a11y-details-more-less-slot-display: inline;
 }
 
 ::slotted([slot="details"]) {
   display: block;
   height: auto;
   max-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
   transition: all 0.7s ease-in-out 0.2s;
 }
 
@@ -76,7 +75,9 @@ details[open] ::slotted([slot="details"]) {
   transition: all 0.7s ease-in-out 0.2s;
 }
 
-details[open] absolute-position-behavior {
+details[open] #details-inner {
+  z-index: 9999999999;
+  display: block;
   padding: var(--a11y-details-padding, 0.5em);
   max-height: var(--a11y-details-maxHeight,400px);
   padding: var(--a11y-details-padding, 0.5em);

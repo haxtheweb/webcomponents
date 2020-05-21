@@ -36,22 +36,15 @@
     ],
     "advanced": [
       {
-        "property": "open",
-        "title": "Open",
-        "inputMethod": "boolean",
+        "property": "openText",
+        "title": "Optional change button text when open",
+        "inputMethod": "textfield",
         "required": false
       },
       {
-        "property": "position",
-        "title": "Position",
-        "description": "Content position relative to button",
-        "inputMethod": "select",
-        "options": {
-          "top": "top",
-          "bottom": "bottom",
-          "left": "left",
-          "right": "right"
-        },
+        "property": "closeText",
+        "title": "Optional change button text when closed",
+        "inputMethod": "textfield",
         "required": false
       }
     ]
@@ -60,9 +53,11 @@
     {
       "tag": "a11y-details",
       "properties": {
+        "openText": "Show Aenean",
+        "closeText": "Hide Aenean",
         "position": "bottom"
       },
-      "content": "<details>\n<summary>Aenean</summary>\nAenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</details>"
+      "content": "<div slot=\"summary\">Show Aenean</div>\n<div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>"
     }
   ]
 }

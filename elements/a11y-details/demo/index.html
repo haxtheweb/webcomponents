@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>A11YDetails: a11y-details Demo</title>
+    <title>A11yDetails: a11y-details Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -19,7 +19,7 @@
       <h3>Basic a11y-details demo</h3>
       <demo-snippet>
         <template>
-          <a11y-details id="details">
+          <a11y-details>
             <div slot="summary">Aenean</div>
             <div slot="details">
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
@@ -36,10 +36,7 @@
       <h3>a11y-details with custom more/less text</h3>
       <demo-snippet>
         <template>
-          <a11y-details>
-            <div slot="more">Show Info</div>
-            <div slot="less">Hide Info</div>
-            <div slot="summary">Aenean</div>
+          <a11y-details open-text="Show Aenean" close-text="Hide Aenean" open>
             <div slot="details">
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
               Pellentesque magna velit, tincidunt quis pharetra id, gravida 
@@ -55,7 +52,7 @@
       <h3>a11y-details with progressive enhancement</h3>
       <demo-snippet>
         <template>
-          <a11y-details position="right">
+          <a11y-details>
             <details>
               <summary>Aenean</summary>
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
@@ -73,17 +70,8 @@
       <demo-snippet>
         <template>
           <style>
-            #custom [slot=more],
-            #custom [slot=less] {
-              display:var(--a11y-details-more-less-slot-display,none);
-            }
-            #custom [slot=summary] {
-              display: none;
-            }
           </style>
-          <a11y-details id="custom" position="above">
-            <div slot="more">Show more</div>
-            <div slot="less">Show less</div>
+          <a11y-details id="custom" close-text="Hide Aenean" open-text="Show Aenean" >
             <details>
               <summary>Aenean</summary>
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 

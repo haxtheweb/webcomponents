@@ -1,26 +1,26 @@
-# &lt;a11y-details&gt;
+# &lt;a11y-figure&gt;
 
 11
-> accessible progressive disclosure with detail and summary
+> accessible figure with image description in details
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/a11y-details/a11y-details.js';
+import '@lrnwebcomponents/a11y-figure/a11y-figure.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/a11y-details/a11y-details.js"></script>
+<script type="module" src="@lrnwebcomponents/a11y-figure/a11y-figure.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/a11y-details/a11y-details.js';
+  import '@lrnwebcomponents/a11y-figure/a11y-figure.js';
   // imperative form
-  import {A11yDetails} from '@lrnwebcomponents/a11y-details';
+  import {A11yFigure} from '@lrnwebcomponents/a11y-figure';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/a11y-details/a11y-details.js';
+  import './node_modules/@lrnwebcomponents/a11y-figure/a11y-figure.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/a11y-details/a11y-details.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/a11y-figure/a11y-figure.js"></script>
 ```
 
 ## Develop / Demo
