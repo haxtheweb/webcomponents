@@ -14,7 +14,6 @@ import {
 class HaxSchemaForm extends PolymerElement {
   constructor() {
     super();
-    console.log("HaxElementizer", HaxElementizer);
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-tabs/paper-tabs.js");

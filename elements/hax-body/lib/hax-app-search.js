@@ -55,6 +55,24 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           justify-content: flex-end;
           justify-content: center;
         }
+        .tos-text {
+          font-size: 12px;
+        }
+        .tos-text ul {
+          padding: 4px;
+          margin: 0 16px;
+        }
+        }
+        .tos-text a {
+          font-size: 12px;
+          color: blue;
+          text-decoration: underline;
+        }
+        .tos-text a:hover,
+        .tos-text a:focus,
+        .tos-text a:active {
+          outline: 2px solid blue;
+        }
       `
     ];
   }
@@ -70,6 +88,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     this.loading = false;
     this.requestData = {};
     this.media = [];
+    this.tos = [];
     this.resultMap = {};
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-container.js");
@@ -89,6 +108,14 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         @loading-changed="${this._loadingChanged}"
         debounce-duration="200"
       ></iron-ajax>
+      ${(this.tos.length > 0) ? html`
+      <div class="tos-text">Terms of service:</div>
+      <ul class="tos-text">
+      ${this.tos.map(item => {
+        return html`<li><a href="${item.link}" target="_blank" rel="noopener nofollow noreferrer">${item.title}</a></li>`;
+      })}
+      </ul>
+      `: ``}
       <hax-app-search-inputs
         id="searchinput"
         .label="${this.label}"
@@ -190,6 +217,12 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         type: Object
       },
       /**
+       * Terms of service object
+       */
+      tos:{
+        type: Array
+      },
+      /**
        * Immediatley perform a request.
        */
       auto: {
@@ -263,6 +296,14 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     if (typeof newValue !== typeof undefined && newValue !== null) {
       let app = newValue;
       var requestParams = {};
+      this.label = app.details.title;
+      // support presenting ToS links for legacy reasons
+      if (app.details.tos && app.details.tos.length > 0) {
+        this.tos = [...app.details.tos];
+      }
+      else {
+        this.tos = [];
+      }
       this.label = app.details.title;
       // disable auto for a moment while we switch inputs
       this.auto = false;
@@ -414,10 +455,11 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
               } else {
                 _id = this._resolveObjectPath(map.gizmo.id, data[i]);
               }
-              media[i].map.source = map.gizmo._url_source.replace(
+              map.gizmo.source = map.gizmo._url_source.replace(
                 "<%= id %>",
                 _id
               );
+              media[i].map.source = map.gizmo.source;
             } else {
               if (map.gizmo[prop].constructor === Object) {
                 let tmp = this._resolveObjectPath(
