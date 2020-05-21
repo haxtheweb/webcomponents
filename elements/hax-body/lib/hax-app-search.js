@@ -108,14 +108,25 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         @loading-changed="${this._loadingChanged}"
         debounce-duration="200"
       ></iron-ajax>
-      ${(this.tos.length > 0) ? html`
-      <div class="tos-text">Terms of service:</div>
-      <ul class="tos-text">
-      ${this.tos.map(item => {
-        return html`<li><a href="${item.link}" target="_blank" rel="noopener nofollow noreferrer">${item.title}</a></li>`;
-      })}
-      </ul>
-      `: ``}
+      ${this.tos.length > 0
+        ? html`
+            <div class="tos-text">Terms of service:</div>
+            <ul class="tos-text">
+              ${this.tos.map(item => {
+                return html`
+                  <li>
+                    <a
+                      href="${item.link}"
+                      target="_blank"
+                      rel="noopener nofollow noreferrer"
+                      >${item.title}</a
+                    >
+                  </li>
+                `;
+              })}
+            </ul>
+          `
+        : ``}
       <hax-app-search-inputs
         id="searchinput"
         .label="${this.label}"
@@ -219,7 +230,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       /**
        * Terms of service object
        */
-      tos:{
+      tos: {
         type: Array
       },
       /**
@@ -300,8 +311,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       // support presenting ToS links for legacy reasons
       if (app.details.tos && app.details.tos.length > 0) {
         this.tos = [...app.details.tos];
-      }
-      else {
+      } else {
         this.tos = [];
       }
       this.label = app.details.title;

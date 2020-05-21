@@ -614,9 +614,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse
-            id="settingscollapse"
-            accordion>
+          <a11y-collapse id="settingscollapse" accordion>
             <div slot="heading">
               <iron-icon icon="${this.activeTagIcon}"></iron-icon> ${this
                 .activeTagName}
