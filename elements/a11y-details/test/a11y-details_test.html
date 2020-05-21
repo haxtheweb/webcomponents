@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../a11y-details.js"></script>
+  </head>
+  <body>
+
+    <a11y-details>
+      This is the element content.
+    </a11y-details>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <a11y-details></a11y-details>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <a11y-details></a11y-details>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<a11y-details>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('a11y-details'), customElements.get("a11y-details", 'a11y-details should be an instance of a11YDetails'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

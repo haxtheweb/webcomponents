@@ -1,0 +1,12 @@
+{
+  "open": {
+    "type": "Boolean",
+    "attribute": "open",
+    "reflect": true
+  },
+  "position": {
+    "type": "Boolean",
+    "attribute": "position",
+    "reflect": true
+  }
+}
