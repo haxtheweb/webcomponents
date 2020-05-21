@@ -64,6 +64,7 @@ details {
   display: inline-flex;
   overflow: visible;
 }
+
 :host([hidden]) {
   display: none;
 }
@@ -117,6 +118,7 @@ details:not([open]) .has-open-text,
 details[open] .has-close-text {
   display: none;
 }
+
 details[open] .close-text {
   display: inline;
 }
@@ -215,7 +217,7 @@ details[open] #details-inner {
         "title": "Optional change button text when closed",
         "inputMethod": "textfield",
         "required": false
-      },
+      }
     ]
   },
   "demoSchema": [
@@ -239,7 +241,7 @@ details[open] #details-inner {
   ...super.properties,
   
   /**
-   * optional text for when summary button is open, 
+   * optional text for when summary button is open,
    * eg. "Hide", "Less" or "Close"
    */
   "closeText": {
@@ -248,7 +250,7 @@ details[open] #details-inner {
     "reflect": true
   },
   /**
-   * optional text for when summary button is closed, 
+   * optional text for when summary button is closed,
    * eg. "Show", "More" or "Open"
    */
   "openText": {
@@ -271,8 +273,8 @@ details[open] #details-inner {
   // life cycle
   constructor() {
     super();
-    this.closeText = '';
-    this.openText = '';
+    this.closeText = "";
+    this.openText = "";
     this.tag = A11yDetails.tag;
   }
   /**
@@ -312,11 +314,15 @@ details[open] #details-inner {
    * @readonly
    * @memberof A11yDetails
    */
-  get summaryClasses(){
+  get summaryClasses() {
     return [
-      this.openText && this.openText.trim && this.openText.trim() !== '' ? 'has-open-text':'',
-      this.closeText && this.closeText.trim && this.closeText.trim() !== '' ? 'has-close-text':''
-    ].join(' ');
+      this.openText && this.openText.trim && this.openText.trim() !== ""
+        ? "has-open-text"
+        : "",
+      this.closeText && this.closeText.trim && this.closeText.trim() !== ""
+        ? "has-close-text"
+        : ""
+    ].join(" ");
   }
 
   /**
@@ -375,10 +381,10 @@ details[open] #details-inner {
   toggleOpen() {
     if (this.details.hasAttribute("open")) {
       this.details.removeAttribute("open");
-      if(this.details.open) this.details.open = false;
+      if (this.details.open) this.details.open = false;
     } else {
       this.details.setAttribute("open", "");
-      if(this.details.open) this.details.open = true;
+      if (this.details.open) this.details.open = true;
     }
   }
   /**
@@ -398,7 +404,7 @@ details[open] #details-inner {
     }
   }
   /**
-   * watches the element's slots for a <details/> element 
+   * watches the element's slots for a <details/> element
    *
    * @param {object} mutationsList
    * @memberof A11yDetails
@@ -412,9 +418,9 @@ details[open] #details-inner {
         characterData: true
       });
     } else if (
-      this._hasMutations(mutationsList, "removedNodes") 
-      && !this.querySelector("* > details") 
-      && this.detailsObserver.disconnect
+      this._hasMutations(mutationsList, "removedNodes") &&
+      !this.querySelector("* > details") &&
+      this.detailsObserver.disconnect
     ) {
       this.detailsObserver.disconnect();
     }

@@ -1,6 +1,6 @@
 {
   /**
-   * optional text for when summary button is open, 
+   * optional text for when summary button is open,
    * eg. "Hide", "Less" or "Close"
    */
   "closeText": {
@@ -9,7 +9,7 @@
     "reflect": true
   },
   /**
-   * optional text for when summary button is closed, 
+   * optional text for when summary button is closed,
    * eg. "Show", "More" or "Open"
    */
   "openText": {

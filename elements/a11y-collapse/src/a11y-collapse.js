@@ -149,7 +149,9 @@ class A11yCollapse extends LitElement {
   }
   render() {
     return html`
-      ${this.headingButton || this.accordion ? this._makeHeadingButton() : this._makeIconButton()}
+      ${this.headingButton || this.accordion
+        ? this._makeHeadingButton()
+        : this._makeIconButton()}
       <div
         id="content"
         aria-hidden="${this.expanded ? "false" : "true"}"

@@ -46,7 +46,7 @@
         "title": "Optional change button text when closed",
         "inputMethod": "textfield",
         "required": false
-      },
+      }
     ]
   },
   "demoSchema": [

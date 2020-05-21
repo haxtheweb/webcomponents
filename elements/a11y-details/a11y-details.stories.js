@@ -13,13 +13,14 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const A11yDetailsStory = () => utils.makeElementFromHaxDemo(A11yDetails);
-export const A11yDetailsWithProgressiveEnhancement = () => utils.makeElementFromClass(
-  A11yDetails,
-  {
-    position: "bottom",
-    openText: `Show Aenean`,
-    closeText: `Hide Aenean`,
-    emptyslot: `<details>
+export const A11yDetailsWithProgressiveEnhancement = () =>
+  utils.makeElementFromClass(
+    A11yDetails,
+    {
+      position: "bottom",
+      openText: `Show Aenean`,
+      closeText: `Hide Aenean`,
+      emptyslot: `<details>
         <summary>Aenean</summary>
         Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
         Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. 
@@ -28,35 +29,37 @@ export const A11yDetailsWithProgressiveEnhancement = () => utils.makeElementFrom
         Donec eu dui a metus vehicula bibendum sed nec tortor. 
         Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.
       </details>`
-  },
-  [
-    {
-      "slot": "",
-      "title": "Content",
-      "description": "Details element",
-      "inputMethod": "code-editor"
     },
-    { css: "--a11y-details-summary-fontSize" },
-    { css: "--a11y-details-summary-color" },
-    { css: "--a11y-details-summary-backgroundColor" },
-    { css: "--a11y-details-summary-borderColor" },
-    { css: "--a11y-details-summary-borderWidth" },
-    { css: "--a11y-details-summary-borderStyle" },
-    { css: "--a11y-details-summary-borderRadius" },
-    { css: "--a11y-details-summary-padding" },
-    { css: "--a11y-details-summary-focus-color" },
-    { css: "--a11y-details-summary-focus-backgroundColor" },
-    { css: "--a11y-details-summary-focus-borderColor" },
-    { css: "--a11y-details-summary-focus-borderWidth" },
-    { css: "--a11y-details-summary-focus-borderStyle" },
-    { css: "--a11y-details-summary-focus-borderRadius" },
-    { css: "--a11y-details-fontSize" },
-    { css: "--a11y-details-color" },
-    { css: "--a11y-details-backgroundColor" },
-    { css: "--a11y-details-borderColor" },
-    { css: "--a11y-details-borderWidth" },
-    { css: "--a11y-details-borderStyle" },
-    { css: "--a11y-details-borderRadius" },
-    { css: "--a11y-details-padding" },
-    { css: "--a11y-details-maxHeight" }
-  ],["summary","details"]);
+    [
+      {
+        slot: "",
+        title: "Content",
+        description: "Details element",
+        inputMethod: "code-editor"
+      },
+      { css: "--a11y-details-summary-fontSize" },
+      { css: "--a11y-details-summary-color" },
+      { css: "--a11y-details-summary-backgroundColor" },
+      { css: "--a11y-details-summary-borderColor" },
+      { css: "--a11y-details-summary-borderWidth" },
+      { css: "--a11y-details-summary-borderStyle" },
+      { css: "--a11y-details-summary-borderRadius" },
+      { css: "--a11y-details-summary-padding" },
+      { css: "--a11y-details-summary-focus-color" },
+      { css: "--a11y-details-summary-focus-backgroundColor" },
+      { css: "--a11y-details-summary-focus-borderColor" },
+      { css: "--a11y-details-summary-focus-borderWidth" },
+      { css: "--a11y-details-summary-focus-borderStyle" },
+      { css: "--a11y-details-summary-focus-borderRadius" },
+      { css: "--a11y-details-fontSize" },
+      { css: "--a11y-details-color" },
+      { css: "--a11y-details-backgroundColor" },
+      { css: "--a11y-details-borderColor" },
+      { css: "--a11y-details-borderWidth" },
+      { css: "--a11y-details-borderStyle" },
+      { css: "--a11y-details-borderRadius" },
+      { css: "--a11y-details-padding" },
+      { css: "--a11y-details-maxHeight" }
+    ],
+    ["summary", "details"]
+  );

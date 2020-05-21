@@ -174,19 +174,21 @@ class A11yCollapseGroup extends LitElement {
    */
   _attachItem(item) {
     this.__items.push(item);
-    console.log('_attachItem',item,A11yCollapseGroup.properties);
-    Object.keys(A11yCollapseGroup.properties || {}).forEach(propName=>this._updateItem(item,propName));
+    console.log("_attachItem", item, A11yCollapseGroup.properties);
+    Object.keys(A11yCollapseGroup.properties || {}).forEach(propName =>
+      this._updateItem(item, propName)
+    );
   }
   /**
    * Updates a11y-collapse item when properties change
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      console.log('updated',propName,oldValue,this[propName]);
-      this.__items.forEach(item => this._updateItem(item,propName,oldValue));
+      console.log("updated", propName, oldValue, this[propName]);
+      this.__items.forEach(item => this._updateItem(item, propName, oldValue));
     });
   }
-  _updateItem(item,propName,oldValue = undefined){
+  _updateItem(item, propName, oldValue = undefined) {
     if (propName === "globalOptions" || propName === "__items") {
       if (this.globalOptions !== {})
         for (let key in this.globalOptions) {
@@ -197,9 +199,10 @@ class A11yCollapseGroup extends LitElement {
     } else if (propName === "radio" && this.radio) {
       item.expanded = false;
     } else {
-      if (this[propName] !== null || typeof this[propName] !== typeof undefined) item[propName] = this[propName];
+      if (this[propName] !== null || typeof this[propName] !== typeof undefined)
+        item[propName] = this[propName];
     }
-    console.log('updated',propName,oldValue,this[propName],item);
+    console.log("updated", propName, oldValue, this[propName], item);
   }
 
   /**

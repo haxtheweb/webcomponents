@@ -3,6 +3,7 @@ details {
   display: inline-flex;
   overflow: visible;
 }
+
 :host([hidden]) {
   display: none;
 }
@@ -56,6 +57,7 @@ details:not([open]) .has-open-text,
 details[open] .has-close-text {
   display: none;
 }
+
 details[open] .close-text {
   display: inline;
 }

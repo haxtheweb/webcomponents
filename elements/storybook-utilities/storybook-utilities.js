@@ -75,7 +75,9 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   camelToKebab(camel) {
-    return camel ? camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase() : undefined;
+    return camel
+      ? camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase()
+      : undefined;
   }
 
   /**
@@ -699,7 +701,7 @@ export class StorybookUtilities {
         ? demo.properties.style.replace(/;$/, "").split(/;/)
         : [],
       content = document.createElement("div"),
-      emptyslot = '';
+      emptyslot = "";
     delete props.styles;
     styles.forEach(style => {
       let parts = style.split(/:/),
@@ -711,10 +713,10 @@ export class StorybookUtilities {
     content.innerHTML = demo.content || "";
     Object.keys(content.children || {}).forEach(child => {
       let node = content.children[child];
-      if (node.slot){
+      if (node.slot) {
         props[node.slot] = node.outerHTML;
       } else {
-        props['emptyslot'] = `${props['emptyslot'] || ''}${node.outerHTML}`;
+        props["emptyslot"] = `${props["emptyslot"] || ""}${node.outerHTML}`;
         console.log("content", content, node, props);
       }
     });

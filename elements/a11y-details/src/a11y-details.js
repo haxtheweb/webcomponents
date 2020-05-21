@@ -66,8 +66,8 @@ class A11yDetails extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.closeText = '';
-    this.openText = '';
+    this.closeText = "";
+    this.openText = "";
     this.tag = A11yDetails.tag;
   }
   /**
@@ -107,11 +107,15 @@ class A11yDetails extends LitElement {
    * @readonly
    * @memberof A11yDetails
    */
-  get summaryClasses(){
+  get summaryClasses() {
     return [
-      this.openText && this.openText.trim && this.openText.trim() !== '' ? 'has-open-text':'',
-      this.closeText && this.closeText.trim && this.closeText.trim() !== '' ? 'has-close-text':''
-    ].join(' ');
+      this.openText && this.openText.trim && this.openText.trim() !== ""
+        ? "has-open-text"
+        : "",
+      this.closeText && this.closeText.trim && this.closeText.trim() !== ""
+        ? "has-close-text"
+        : ""
+    ].join(" ");
   }
 
   /**
@@ -170,10 +174,10 @@ class A11yDetails extends LitElement {
   toggleOpen() {
     if (this.details.hasAttribute("open")) {
       this.details.removeAttribute("open");
-      if(this.details.open) this.details.open = false;
+      if (this.details.open) this.details.open = false;
     } else {
       this.details.setAttribute("open", "");
-      if(this.details.open) this.details.open = true;
+      if (this.details.open) this.details.open = true;
     }
   }
   /**
@@ -193,7 +197,7 @@ class A11yDetails extends LitElement {
     }
   }
   /**
-   * watches the element's slots for a <details/> element 
+   * watches the element's slots for a <details/> element
    *
    * @param {object} mutationsList
    * @memberof A11yDetails
@@ -207,9 +211,9 @@ class A11yDetails extends LitElement {
         characterData: true
       });
     } else if (
-      this._hasMutations(mutationsList, "removedNodes") 
-      && !this.querySelector("* > details") 
-      && this.detailsObserver.disconnect
+      this._hasMutations(mutationsList, "removedNodes") &&
+      !this.querySelector("* > details") &&
+      this.detailsObserver.disconnect
     ) {
       this.detailsObserver.disconnect();
     }
