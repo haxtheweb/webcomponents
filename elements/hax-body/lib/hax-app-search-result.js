@@ -182,8 +182,11 @@ class HaxAppSearchResult extends LitElement {
     var gizmoType = this.type;
     // sanity check as well as guessing based on type if we absolutely have to
     if (
-      (gizmoType === null || gizmoType === "") &&
-      typeof map.source !== typeof undefined
+      (!gizmoType ||
+        gizmoType === null ||
+        gizmoType === "" ||
+        gizmoType === "undefined") &&
+      map.source
     ) {
       gizmoType = window.HaxStore.guessGizmoType(map.source);
     }
@@ -211,7 +214,7 @@ class HaxAppSearchResult extends LitElement {
         );
       }
     } else {
-      window.HaxStore.toast("Sorry, I don't know how to handle that link yet.");
+      window.HaxStore.toast("Sorry, HAX can't handle that link yet.");
     }
   }
 }

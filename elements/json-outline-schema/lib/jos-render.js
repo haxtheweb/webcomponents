@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "../json-outline-schema.js";
-import { wipeSlot, varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
+import { wipeSlot, valueMapTransform } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";
 
 class JosRender extends LitElement {
@@ -88,31 +88,10 @@ class JosRender extends LitElement {
     if (this.map && this.map.properties) {
       // wipe slot
       wipeSlot(this);
-      items.forEach(item => {
-        // create tag for the map
+      let values = valueMapTransform(items, this.map.properties);
+      values.forEach(item => {
         let n = document.createElement(this.map.tag);
-        for (var key in this.map.properties) {
-          let value = this.map.properties[key];
-          // complex transform capability for values that need processing
-          // prior to being set
-          if (value === true || value === false || value === null) {
-            n[key] = value;
-          } else if (
-            value.transform &&
-            value.value &&
-            varExists(item, value.value)
-          ) {
-            n[key] = value.transform(varGet(item, value.value), item);
-          }
-          // only set the value in the node IF we have a match in the item for data
-          // odd trap but the transform case can potentially miss above and this then pass
-          // which varExists requires value be a string
-          else if (typeof value === "string" && varExists(item, value)) {
-            n[key] = varGet(item, value);
-          } else {
-            n[key] = value;
-          }
-        }
+        Object.assign(n, item);
         this.appendChild(n);
       });
     }

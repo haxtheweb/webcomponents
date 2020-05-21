@@ -28,25 +28,16 @@
         properties: {
           name: 'title',
           number: 'title',
-          url: {
-            transform: function(e, item) {
-              return window.__haxcmsBase + e;
-            },
-            value: 'location'
+          url: function(item) {
+            return window.__haxcmsBase + item.location;
           },
           image: 'https://haxtheweb.org/assets/banner.jpg',
-          icon: {
-            transform: function(e) {
-              return (e ? e : "icons:android");
-            },
-            value: 'metadata.theme.variables.icon'
+          icon: function(item) {
+            return (item.metadata.theme.variables.icon ? item.metadata.theme.variables.icon : "icons:android");
           },
           author: 'metadata.author.name',
-          accentColor: {
-            transform: function(e) {
-              return e.replace('--simple-colors-default-theme-', '').replace('-7', '');
-            },
-            value: 'metadata.theme.variables.cssVariable'
+          accentColor: function(item) {
+            return item.metadata.theme.variables.cssVariable.replace('--simple-colors-default-theme-', '').replace('-7', '');
           },
           dark: true
         }

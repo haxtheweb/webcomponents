@@ -1557,46 +1557,46 @@ class HAXCMSSiteListing extends PolymerElement {
       path: "@lrnwebcomponents/product-card/lib/course-card.js",
       properties: {
         number: "title",
-        name: {
-          transform: function(e) {
-            return e
-              .replace("/_sites/", "")
-              .replace("/sites/", "")
-              .replace("/", "");
-          },
-          value: "location"
+        name: function(item) {
+          return item.location
+            .replace("/_sites/", "")
+            .replace("/sites/", "")
+            .replace("/", "");
         },
         url: "location",
-        image: {
-          transform: function(e, item) {
-            return (
-              item.location + (e ? e.replace(" ", "%20") : "assets/banner.jpg")
-            );
-          },
-          value: "metadata.site.logo"
+        image: function(item) {
+          if (item.metadata.site && item.metadata.site.logo) {
+            return item.location + item.metadata.site.logo.replace(" ", "%20");
+          }
+          return item.location + "assets/banner.jpg";
         },
-        icon: {
-          transform: function(e) {
-            return e ? e : "icons:android";
-          },
-          value: "metadata.theme.variables.icon"
+        icon: function(item) {
+          if (
+            item.metadata.theme &&
+            item.metadata.theme.variables &&
+            item.metadata.theme.variables.icon
+          ) {
+            return item.metadata.theme.variables.icon;
+          }
+          return "icons:android";
         },
         author: "metadata.author.name",
-        accentColor: {
-          transform: function(e) {
-            return e
+        accentColor: function(item) {
+          if (
+            item.metadata.theme &&
+            item.metadata.theme.variables &&
+            item.metadata.theme.variables.cssVariable
+          ) {
+            return item.metadata.theme.variables.cssVariable
               .replace("--simple-colors-default-theme-", "")
               .replace("-7", "");
-          },
-          value: "metadata.theme.variables.cssVariable"
+          }
+          return "";
         },
         size: "small",
         dark: true,
-        alt: {
-          transform: function(e) {
-            return "Select to access " + e;
-          },
-          value: "title"
+        alt: function(item) {
+          return "Select to access " + item.title;
         }
       }
     };

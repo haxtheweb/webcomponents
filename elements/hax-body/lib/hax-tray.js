@@ -599,7 +599,7 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
           </div>
         </div>
-        <a11y-collapse-group radio>
+        <a11y-collapse-group accordion>
           <slot name="tray-collapse-pre"></slot>
           <a11y-collapse
             id="addcollapse"

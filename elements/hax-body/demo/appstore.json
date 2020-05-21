@@ -9,7 +9,17 @@
         "author": "Google, Youtube LLC",
         "description": "The most popular online video sharing and remix site.",
         "status": "available",
-        "tags": ["video", "crowdsourced"]
+        "tags": ["video", "crowdsourced"],
+        "tos": [
+          {
+            "title": "YouTube Terms of Service",
+            "link": "https://www.youtube.com/t/terms"
+          },
+          {
+            "title": "Google Privacy Policy",
+            "link": "https://policies.google.com/privacy"
+          }
+        ]
       },
       "connection": {
         "protocol": "https",
@@ -393,7 +403,13 @@
         "author": "Google",
         "description": "Google 3D object sharing service",
         "status": "available",
-        "tags": ["3D", "creative commons", "crowdsourced"]
+        "tags": ["3D", "creative commons", "crowdsourced"],
+        "tos": [
+          {
+            "title": "Google Privacy Policy",
+            "link": "https://policies.google.com/privacy"
+          }
+        ]
       },
       "connection": {
         "protocol": "https",

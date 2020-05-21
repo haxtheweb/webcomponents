@@ -3,6 +3,46 @@
  */
 
 /**
+ * Take an array of items and apply a map of values to generate a new
+ * array that is the structure you're looking for with default values
+ * filling in the gaps.
+ */
+function valueMapTransform(items, map) {
+  // ensure we have a map to render
+  let tmpAry = [];
+  if (map) {
+    items.forEach(item => {
+      // create tag for the map
+      let tmp = {};
+      for (var key in map) {
+        let value = map[key];
+        // complex transform capability for values that need processing
+        // prior to being set
+        if (value === true || value === false || value === null) {
+          tmp[key] = value;
+        } else if (typeof value === "function") {
+          try {
+            tmp[key] = value(item);
+          } catch (e) {
+            console.warn(e);
+          }
+        }
+        // only set the value in the node IF we have a match in the item for data
+        // odd trap but the transform case can potentially miss above and this then pass
+        // which varExists requires value be a string
+        else if (typeof value === "string" && varExists(item, value)) {
+          tmp[key] = varGet(item, value);
+        } else {
+          tmp[key] = value;
+        }
+      }
+      tmpAry.push(tmp);
+    });
+  }
+  return tmpAry;
+}
+
+/**
  * Convert dash case to camel case
  */
 function dashToCamelCase(key) {
@@ -351,6 +391,7 @@ export const winEventsElement = function(SuperClass) {
 };
 
 export {
+  valueMapTransform,
   dashToCamelCase,
   haxElementToNode,
   dashToCamel,
