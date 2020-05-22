@@ -85,11 +85,11 @@ class A11yFigure extends A11yDetails {
           background-color: var(--a11y-figure-figcaption-backgroundColor, #fff);
           color: var(--a11y-figure-figcaption-color, #000);
         }
-        ::slotted([slot=figcaption]){
+        ::slotted([slot="figcaption"]) {
           margin: 0;
           outline: 1px solid purple;
         }
-        ::slotted([slot=image]){
+        ::slotted([slot="image"]) {
           width: 100%;
           outline: 1px solid blue;
         }
@@ -120,8 +120,7 @@ class A11yFigure extends A11yDetails {
     let haxProps = JSON.parse(JSON.stringify(super.haxProperties));
     haxProps.gizmo = {
       title: "Accessible Details Button",
-      description:
-        "Accessible progressive disclosure with detail and summary",
+      description: "Accessible progressive disclosure with detail and summary",
       icon: "icons:android",
       color: "green",
       groups: ["11"],
@@ -196,7 +195,9 @@ class A11yFigure extends A11yDetails {
     let figure = this.querySelector("* > figure"),
       image = figure ? figure.querySelector("* > image") : undefined,
       figcaption = figure ? figure.querySelector("* > figcaption") : undefined,
-      details = figcaption ? figcaption.querySelector("* > details") : undefined;
+      details = figcaption
+        ? figcaption.querySelector("* > details")
+        : undefined;
     if (image) this._copyToSlot("image", image.cloneNode(true));
     if (details) this._copyToSlot("figdetails", details.cloneNode(true));
     if (figcaption) {
