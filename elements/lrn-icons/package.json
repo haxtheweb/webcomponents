@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.10",
+  "version": "2.6.12",
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/iconset-demo": "^2.6.10",
+    "@lrnwebcomponents/iconset-demo": "^2.6.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

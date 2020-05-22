@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.10",
+  "version": "2.6.12",
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",
@@ -43,15 +43,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^2.6.10",
-    "@lrnwebcomponents/lrndesign-chart": "^2.6.10",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.10",
-    "@lrnwebcomponents/simple-colors": "^2.6.10",
+    "@lrnwebcomponents/chartist-render": "^2.6.12",
+    "@lrnwebcomponents/lrndesign-chart": "^2.6.12",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.12",
+    "@lrnwebcomponents/simple-colors": "^2.6.12",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

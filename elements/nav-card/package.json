@@ -15,9 +15,11 @@
       "properties": "src/nav-card-properties.json",
       "hax": "src/nav-card-hax.json"
     },
-    "sharedStyles": ["...super.styles"]
+    "sharedStyles": [
+      "...super.styles"
+    ]
   },
-  "version": "2.6.10",
+  "version": "2.6.12",
   "description": "an accent card of link lists",
   "repository": {
     "type": "git",
@@ -41,9 +43,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/accent-card": "latest",
     "@lrnwebcomponents/hax-body-behaviors": "latest",
-    "lit-element": "2.0.1",
-    "@lrnwebcomponents/accent-card": "latest"
+    "lit-element": "2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

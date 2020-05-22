@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.10",
+  "version": "2.6.12",
   "description": "Automated conversion of paper-fab-transitions/",
   "repository": {
     "type": "git",
@@ -48,8 +48,8 @@
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

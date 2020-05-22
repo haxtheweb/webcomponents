@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.10",
+  "version": "2.6.12",
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",
@@ -41,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^2.6.10",
-    "@lrnwebcomponents/lrn-shared-styles": "^2.6.8",
+    "@lrnwebcomponents/lrn-icons": "^2.6.12",
+    "@lrnwebcomponents/lrn-shared-styles": "^2.6.12",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-iconset": "^3.0.0",
     "@polymer/iron-meta": "^3.0.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
     "@lrnwebcomponents/lrn-icons": "^0.0.30",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

@@ -16,7 +16,7 @@
       "hax": "src/simple-wc-hax.json"
     }
   },
-  "version": "2.6.8",
+  "version": "2.6.12",
   "description": "A simple web component wrapper to simplify consistent patterns of element creation",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",

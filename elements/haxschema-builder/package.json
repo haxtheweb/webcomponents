@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.11",
+  "version": "2.6.12",
   "description": "dynamically build and visualize HAXschema",
   "repository": {
     "type": "git",
@@ -41,15 +41,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.6.10",
-    "@lrnwebcomponents/hax-body": "^2.6.11",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.6.10",
-    "@lrnwebcomponents/json-editor": "^2.6.11",
-    "@lrnwebcomponents/simple-fields": "^2.6.10",
+    "@lrnwebcomponents/code-editor": "^2.6.12",
+    "@lrnwebcomponents/hax-body": "^2.6.12",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.6.12",
+    "@lrnwebcomponents/json-editor": "^2.6.12",
+    "@lrnwebcomponents/simple-fields": "^2.6.12",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

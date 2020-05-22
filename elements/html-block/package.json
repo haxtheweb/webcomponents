@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.11",
+  "version": "2.6.12",
   "description": "A basic HTML block that provides HAXschema wiring",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
