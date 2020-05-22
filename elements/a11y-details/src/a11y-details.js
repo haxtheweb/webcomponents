@@ -4,10 +4,45 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `a11y-details`
- * `accessible progressive disclosure with detail and summary`
+ * accessible progressive disclosure with detail and summary
+### Styling
+#### Summary Button
+Custom property | Description | Default
+----------------|-------------|----------
+--a11y-details-summary-fontSize | font-size | 0.8em
+--a11y-details-summary-color | text color | #000
+--a11y-details-summary-backgroundColor | background-color | #fff
+--a11y-details-summary-borderColor | border-color | #000
+--a11y-details-summary-borderWidth | border-width | 1px
+--a11y-details-summary-borderStyle | border-style | solid
+--a11y-details-summary-borderRadius | border-radius | 3px
+--a11y-details-summary-padding | padding | 0.5em
+
+#### Summary Button (:focus state)
+Custom property | Description | Default
+----------------|-------------|----------
+--a11y-details-summary-focus-color | text color | #000
+--a11y-details-summary-focus-backgroundColor | background-color | #fff
+--a11y-details-summary-focus-borderColor | border-color | #000
+--a11y-details-summary-focus-borderWidth | border-width | 1px
+--a11y-details-summary-focus-borderStyle | border-style | dotted
+--a11y-details-summary-focus-borderRadius | border-radius | 3px
+
+#### Details
+Custom property | Description | Default
+----------------|-------------|----------
+--a11y-details-fontSize | font-size  | 0.8em
+--a11y-details-color | text color | #000
+--a11y-details-backgroundColor | background-color | rgba(255,255,255,0.8)
+--a11y-details-borderColor | border-color | #000
+--a11y-details-borderWidth | border-width | 1px
+--a11y-details-borderStyle | border-style | solid
+--a11y-details-borderRadius | border-radius | 3px
+--a11y-details-padding | padding | 0.5em
+--a11y-details-maxHeight | max-height | 400px
+
  *
  * @microcopy - language worth noting:
  *  -
@@ -17,7 +52,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * @lit-element
  * @demo demo/index.html
  */
-class A11YDetails extends LitElement {
+class A11yDetails extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -31,7 +66,9 @@ class A11YDetails extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.tag = A11YDetails.tag;
+    this.closeText = "";
+    this.openText = "";
+    this.tag = A11yDetails.tag;
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -39,7 +76,7 @@ class A11YDetails extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(A11YDetails.haxProperties, A11YDetails.tag, this);
+    this.HAXWiring.setup(A11yDetails.haxProperties, A11yDetails.tag, this);
   }
   /**
    * life cycle, element is removed from the DOM
@@ -53,15 +90,32 @@ class A11YDetails extends LitElement {
     this._updateElement();
     this.observer.observe(this, { childList: true, subtree: true });
   }
+  /**
+   * gets the details element in shadowRoot
+   *
+   * @readonly
+   * @memberof A11yDetails
+   */
   get details() {
     return this && this.shadowRoot && this.shadowRoot.querySelector("details")
       ? this.shadowRoot.querySelector("details")
       : undefined;
   }
-
-  attributeChangedCallback(name, oldval, newval) {
-    super.attributeChangedCallback(name, oldval, newval);
-    if (name === "open") this.open = newval;
+  /**
+   * gets classe sfor summary to hide summary slot if open/closed text is provided
+   *
+   * @readonly
+   * @memberof A11yDetails
+   */
+  get summaryClasses() {
+    return [
+      this.openText && this.openText.trim && this.openText.trim() !== ""
+        ? "has-open-text"
+        : "",
+      this.closeText && this.closeText.trim && this.closeText.trim() !== ""
+        ? "has-close-text"
+        : ""
+    ].join(" ");
   }
 
   /**
@@ -83,13 +137,25 @@ class A11YDetails extends LitElement {
     let callback = () => this._updateElement();
     return new MutationObserver(callback);
   }
+  /**
+   * provides click for keyboard if open property is not supported by browser
+   *
+   * @param {event} e
+   * @memberof A11yDetails
+   */
   _handleClick(e) {
     if (this.details && typeof this.details.open === "undefined") {
-      this._toggleOpen();
+      this.toggleOpen();
       e.preventDefault();
       e.stopPropagation();
     }
   }
+  /**
+   * provides support for keyboard if open property is not supported by browser
+   *
+   * @param {event} e
+   * @memberof A11yDetails
+   */
   _handleKeyup(e) {
     if (
       (this.details &&
@@ -97,33 +163,47 @@ class A11YDetails extends LitElement {
         e.keyCode == 13) ||
       e.keyCode == 32
     ) {
-      this._toggleOpen();
+      this.toggleOpen();
       e.preventDefault();
       e.stopPropagation();
     }
   }
-  _toggleOpen() {
+  /**
+   * toggles the element
+   */
+  toggleOpen() {
     if (this.details.hasAttribute("open")) {
       this.details.removeAttribute("open");
+      if (this.details.open) this.details.open = false;
     } else {
       this.details.setAttribute("open", "");
+      if (this.details.open) this.details.open = true;
     }
   }
+  /**
+   * updates an element based on changes in slot
+   *
+   * @memberof A11yDetails
+   */
   _updateElement() {
     let details = this.querySelector("* > details"),
       summary = details ? details.querySelector("* > summary") : undefined;
-    console.log("_updateElement", details, summary);
     if (summary) this._copyToSlot("summary", summary.cloneNode(true));
     if (details) {
       let clone = details.cloneNode(true),
         filtered = clone.querySelectorAll("* > summary");
       Object.keys(filtered || {}).forEach(i => filtered[i].remove());
       this._copyToSlot("details", clone);
-      console.log("details", clone, filtered);
     }
   }
+  /**
+   * watches the element's slots for a <details/> element
+   *
+   * @param {object} mutationsList
+   * @memberof A11yDetails
+   */
   _watchChildren(mutationsList) {
-    if (this._searchMutations(mutationsList)) {
+    if (this._hasMutations(mutationsList)) {
       this._updateElement();
       this.detailsObserver.observe(this.querySelector("* > details"), {
         childList: true,
@@ -131,13 +211,22 @@ class A11YDetails extends LitElement {
         characterData: true
       });
     } else if (
-      this._searchMutations(mutationsList, "removedNodes") &&
+      this._hasMutations(mutationsList, "removedNodes") &&
+      !this.querySelector("* > details") &&
       this.detailsObserver.disconnect
     ) {
       this.detailsObserver.disconnect();
     }
   }
-  _searchMutations(mutationsList, nodeListType = "addedNodes") {
+  /**
+   * searches a mutations list to see if a <details/> element was added or removed
+   *
+   * @param {object} mutationsList
+   * @param {string} [nodeListType="addedNodes"] "addedNodes" of "removedNodes"
+   * @returns {boolean}
+   * @memberof A11yDetails
+   */
+  _hasMutations(mutationsList, nodeListType = "addedNodes") {
     return (
       Object.keys(mutationsList || {}).filter(i => {
         let nodes = mutationsList[i][nodeListType];
@@ -150,12 +239,26 @@ class A11YDetails extends LitElement {
       }).length > 0
     );
   }
+  /**
+   * moves content cloned from unnamed slot to designated named slot
+   *
+   * @param {string} slotName 'details' or 'summary' slot
+   * @param {object} clone content cloned from unnamed slot
+   * @memberof A11yDetails
+   */
   _copyToSlot(slotName, clone) {
     let slot = this._getSlot(slotName);
     slot.innerHTML = clone.innerHTML;
-    console.log("_copyToSlot", slot, clone);
     clone.remove();
   }
+  /**
+   * gets an existing named slot or makes one
+   *
+   * @param {string} slotName
+   * @param {boolean} [inline=true]
+   * @returns {object}
+   * @memberof A11yDetails
+   */
   _getSlot(slotName, inline = true) {
     let slot = this.querySelector(`[slot=${slotName}]`);
     if (!slot) {
@@ -168,5 +271,5 @@ class A11YDetails extends LitElement {
     return slot;
   }
 }
-customElements.define("a11y-details", A11YDetails);
-export { A11YDetails };
+customElements.define("a11y-details", A11yDetails);
+export { A11yDetails };

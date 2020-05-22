@@ -75,7 +75,9 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   camelToKebab(camel) {
-    return camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
+    return camel
+      ? camel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase()
+      : undefined;
   }
 
   /**
@@ -84,8 +86,8 @@ export class StorybookUtilities {
    * @returns {string} kebab
    * @memberof StorybookUtilities
    */
-  kebabToCamel(camel) {
-    return camel.replace(/-./g, x => x.toUpperCase()[1]);
+  kebabToCamel(kebab) {
+    return kebab ? kebab.replace(/-./g, x => x.toUpperCase()[1]) : undefined;
   }
 
   /**
@@ -629,9 +631,9 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElement(tag, knobs) {
-    console.log("makeElement", tag, knobs);
-    let el = document.createElement(tag);
+  makeElement(obj, knobs) {
+    console.log("makeElement", obj, knobs);
+    let el = new obj();
     Object.keys(knobs.props || {}).forEach(prop => {
       let knob = knobs.props[prop],
         val =
@@ -698,7 +700,8 @@ export class StorybookUtilities {
       styles = demo.properties.style
         ? demo.properties.style.replace(/;$/, "").split(/;/)
         : [],
-      content = document.createElement("div");
+      content = document.createElement("div"),
+      emptyslot = "";
     delete props.styles;
     styles.forEach(style => {
       let parts = style.split(/:/),
@@ -710,7 +713,12 @@ export class StorybookUtilities {
     content.innerHTML = demo.content || "";
     Object.keys(content.children || {}).forEach(child => {
       let node = content.children[child];
-      if (node.slot) props[node.slot] = node.outerHTML;
+      if (node.slot) {
+        props[node.slot] = node.outerHTML;
+      } else {
+        props["emptyslot"] = `${props["emptyslot"] || ""}${node.outerHTML}`;
+        console.log("content", content, node, props);
+      }
     });
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
     return this.makeElementFromClass(el, props, additions, exclusions);
@@ -726,11 +734,10 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities camelToKebab(camel)
    */
   makeElementFromClass(el, defaults = {}, additions = [], exclusions = []) {
-    let tag = el.tag || this.name.camelToKebab(el),
-      props = this.getElementProperties(el.properties, el.haxProperties),
+    let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
-    console.log("makeElementFromClass", el, tag, props, knobs);
-    return this.makeElement(tag, knobs);
+    console.log("makeElementFromClass", el, props, knobs);
+    return this.makeElement(el, knobs);
   }
 }
 

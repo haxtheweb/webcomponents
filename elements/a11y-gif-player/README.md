@@ -15,7 +15,7 @@ import '@lrnwebcomponents/a11y-gif-player.js';
 <script type="module">
   import '@lrnwebcomponents/a11y-gif-player.js';
 
-  import {A11YGifPlayer} from '@lrnwebcomponents/a11y-gif-player';
+  import {A11yGifPlayer} from '@lrnwebcomponents/a11y-gif-player';
 </script>
 ```
 

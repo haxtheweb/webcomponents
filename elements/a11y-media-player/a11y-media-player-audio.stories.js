@@ -186,7 +186,7 @@ const utils = new StorybookUtilities(),
 
 export const A11yMediaPlayerAudio = () => {
   return utils.makeElement(
-    "a11y-media-player",
+    A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
       tracks: [
@@ -208,7 +208,7 @@ export const A11yMediaPlayerAudio = () => {
 };
 export const A11yMediaPlayerAudioWithSlot = () => {
   return utils.makeElement(
-    "a11y-media-player",
+    A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
       emptyslot: `

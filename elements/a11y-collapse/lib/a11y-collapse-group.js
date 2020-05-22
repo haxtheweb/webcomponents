@@ -49,15 +49,6 @@ class A11yCollapseGroup extends LitElement {
   }
   constructor() {
     super();
-    this.accordion = null;
-    this.disabled = null;
-    this.expanded = null;
-    this.icon = null;
-    this.iconExpanded = null;
-    this.label = null;
-    this.labelExpanded = null;
-    this.tooltip = null;
-    this.tooltipExpanded = null;
     this.globalOptions = {};
     this.radio = false;
     this.__items = [];
@@ -90,6 +81,7 @@ class A11yCollapseGroup extends LitElement {
   static get properties() {
     return {
       ...super.properties,
+      ...A11yCollapse.properties,
       /**
        * an array of globalProperties to override every a11y-collapse item
        * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
@@ -98,22 +90,6 @@ class A11yCollapseGroup extends LitElement {
         type: Object,
         attribute: "global-options",
         reflect: true
-      },
-      /**
-       * is disabled?
-       */
-      disabled: {
-        type: Boolean,
-        reflect: true,
-        attribute: "disabled"
-      },
-      /**
-       * is disabled?
-       */
-      hidden: {
-        type: Boolean,
-        reflect: true,
-        attribute: "hidden"
       },
       /**
        * Acts like a radio button. (Items can only be expanded one at a time.)
@@ -198,41 +174,35 @@ class A11yCollapseGroup extends LitElement {
    */
   _attachItem(item) {
     this.__items.push(item);
+    console.log("_attachItem", item, A11yCollapseGroup.properties);
+    Object.keys(A11yCollapseGroup.properties || {}).forEach(propName =>
+      this._updateItem(item, propName)
+    );
   }
   /**
    * Updates a11y-collapse item when properties change
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      this.__items.forEach(item => {
-        if (propName === "globalOptions" || propName === "__items") {
-          if (this.globalOptions !== {})
-            for (let key in this.globalOptions) {
-              if (this.globalOptions.hasOwnProperty(key)) {
-                item[key] = this.globalOptions[key];
-              }
-            }
-        }
-        if (propName === "expanded" && this.expanded) {
-          item.expanded = true;
-        }
-        if (propName === "radio" && this.radio) {
-          item.expanded = false;
-        }
-        if (
-          propName === "accordion" ||
-          propName === "disabled" ||
-          propName === "icon" ||
-          propName === "iconExpanded" ||
-          propName === "label" ||
-          propName === "lanelExpanded" ||
-          propName === "tooltip" ||
-          propName === "tooltipExpanded"
-        ) {
-          if (this[propName] !== null) item[propName] = this[propName];
-        }
-      });
+      console.log("updated", propName, oldValue, this[propName]);
+      this.__items.forEach(item => this._updateItem(item, propName, oldValue));
     });
+  }
+  _updateItem(item, propName, oldValue = undefined) {
+    if (propName === "globalOptions" || propName === "__items") {
+      if (this.globalOptions !== {})
+        for (let key in this.globalOptions) {
+          if (this.globalOptions.hasOwnProperty(key)) {
+            item[key] = this.globalOptions[key];
+          }
+        }
+    } else if (propName === "radio" && this.radio) {
+      item.expanded = false;
+    } else {
+      if (this[propName] !== null || typeof this[propName] !== typeof undefined)
+        item[propName] = this[propName];
+    }
+    console.log("updated", propName, oldValue, this[propName], item);
   }
 
   /**
