@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, css, svg } from "lit-element/lit-element.js";
 import { A11yMediaButton } from "./a11y-media-button.js";
 
 /**
@@ -75,6 +75,20 @@ class A11yMediaPlayButton extends A11yMediaButton {
       `
     ];
   }
+  static get properties() {
+    return {
+      ...super.properties, 
+      youtubeId: {
+        attribute: 'youtube-id',
+        type: String,
+      }
+    };
+  }
+
+  constructor() {
+    super();
+    this.youtubeId = 'null';
+  }
 
   //render function
   render() {
@@ -88,7 +102,26 @@ class A11yMediaPlayButton extends A11yMediaButton {
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
       >
-        <svg
+      ${this.youtubeId != 'null' ? html`
+        <svg 
+          id="svg"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 70 60"
+          preserveAspectRatio="xMidYMid meet" 
+          focusable="false"
+          width="30%"
+          height="30%"
+          opacity="0.5"><g viewBox="0 0 70 60" preserveAspectRatio="xMidYMid meet" class="style-scope ytd-topbar-logo-renderer">
+        <g class="style-scope ytd-topbar-logo-renderer">
+          <path fill="#FF0000" d="M63,14.87c-0.72-2.7-2.85-4.83-5.56-5.56C52.54,8,32.88,8,32.88,8S13.23,8,8.32,9.31
+            c-2.7,0.72-4.83,2.85-5.56,5.56C1.45,19.77,1.45,30,1.45,30s0,10.23,1.31,15.13c0.72,2.7,2.85,4.83,5.56,5.56
+            C13.23,52,32.88,52,32.88,52s19.66,0,24.56-1.31c2.7-0.72,4.83-2.85,5.56-5.56C64.31,40.23,64.31,30,64.31,30
+            S64.31,19.77,63,14.87z" class="style-scope ytd-topbar-logo-renderer"></path>
+          <polygon fill="#FFFFFF" points="26.6,39.43 42.93,30 26.6,20.57" class="style-scope ytd-topbar-logo-renderer"></polygon>
+        </g>
+              </g></svg>`:html`
+      <svg
           id="svg"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +149,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
               ${this.label}
             </text>
           </g>
-        </svg>
+        </svg>`}
       </button>
     `;
   }

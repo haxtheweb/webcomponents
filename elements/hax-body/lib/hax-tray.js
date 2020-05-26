@@ -591,6 +591,13 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
+              event-name="open-map-dialog"
+              icon="maps:map"
+              label="Content map"
+              voice-command="open map"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
               ?hidden="${this.hidePreferencesButton}"
               event-name="open-preferences-dialog"
               icon="settings"
@@ -779,6 +786,13 @@ class HaxTray extends winEventsElement(LitElement) {
           this
         );
         break;
+        case "open-map-dialog":
+          window.HaxStore.write(
+            "openDrawer",
+            window.HaxStore.instance.haxMap,
+            this
+          );
+          break;
       case "toggle-element-align":
         this.elementAlign = this.elementAlign === "right" ? "left" : "right";
         break;
@@ -1094,11 +1108,6 @@ class HaxTray extends winEventsElement(LitElement) {
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
           this.shadowRoot.querySelector("#settingscollapse").disabled = false;
-          if (!this.shadowRoot.querySelector("#settingscollapse").expanded) {
-            this.shadowRoot
-              .querySelector('#settingscollapse div[slot="heading"]')
-              .click();
-          }
           // process fields
           this.activeHaxElement = window.HaxStore.nodeToHaxElement(
             this.activeNode,
@@ -1109,11 +1118,6 @@ class HaxTray extends winEventsElement(LitElement) {
           this.activeTagName = "Select an element to configure";
           this.activeTagIcon = "icons:settings";
           this.shadowRoot.querySelector("#settingscollapse").disabled = true;
-          if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
-            this.shadowRoot
-              .querySelector('#addcollapse div[slot="heading"]')
-              .click();
-          }
         }
       }
     });

@@ -93,23 +93,23 @@ class HaxBody extends SimpleColors {
     return [
       ...super.styles,
       css`
-        :host,
-        :host * ::slotted(*) {
+        :host([edit-mode]),
+        :host([edit-mode]) * ::slotted(*) {
           line-height: 1.8;
         }
-        :host ul,
-        :host * ::slotted(ul),
-        :host ol,
-        :host * ::slotted(ol) {
+        :host([edit-mode]) ul,
+        :host([edit-mode]) * ::slotted(ul),
+        :host([edit-mode]) ol,
+        :host([edit-mode]) * ::slotted(ol) {
           padding-left: 20px;
           margin-left: 20px;
         }
-        :host ul,
-        :host * ::slotted(ul) {
+        :host([edit-mode]) ul,
+        :host([edit-mode]) * ::slotted(ul) {
           list-style-type: disc;
         }
-        :host li,
-        :host * ::slotted(li) {
+        :host([edit-mode]) li,
+        :host([edit-mode]) * ::slotted(li) {
           margin-bottom: 6px;
         }
         :host {
@@ -176,32 +176,13 @@ class HaxBody extends SimpleColors {
         .hax-context-visible.hax-active-hover {
           margin-left: unset;
         }
-        :host #bodycontainer ::slotted(h1) {
-          font-size: var(--hax-base-styles-h1-font-size, 2.5em);
-          line-height: var(--hax-base-styles-h1-line-height, 2.5em);
-        }
-        :host #bodycontainer ::slotted(h2) {
-          font-size: var(--hax-base-styles-h2-font-size, 2em);
-        }
-        :host #bodycontainer ::slotted(h3) {
-          font-size: var(--hax-base-styles-h3-font-size, 1.75em);
-        }
-        :host #bodycontainer ::slotted(h4) {
-          font-size: var(--hax-base-styles-h4-font-size, 1.5em);
-        }
-        :host #bodycontainer ::slotted(h5) {
-          font-size: var(--hax-base-styles-h5-font-size, 1.25em);
-        }
-        :host #bodycontainer ::slotted(h6) {
-          font-size: var(--hax-base-styles-h6-font-size, 1.25em);
-        }
-        :host #bodycontainer ::slotted(p) {
+        :host([edit-mode]) #bodycontainer ::slotted(p) {
           min-height: var(--hax-base-styles-p-min-height, 43px);
           font-size: var(--hax-base-styles-p-font-size, 24px);
           line-height: var(--hax-base-styles-p-line-height, 1.8);
           letter-spacing: var(--hax-base-styles-p-letter-spacing, 0.5px);
         }
-        :host #bodycontainer ::slotted(a) {
+        :host([edit-mode]) #bodycontainer ::slotted(a) {
           color: var(
             --hax-base-styles-a-color,
             var(--simple-colors-default-theme-grey-12, #000)
@@ -209,38 +190,38 @@ class HaxBody extends SimpleColors {
           font-size: var(--hax-base-styles-a-font-size, 24px);
           font-weight: var(--hax-base-styles-a-font-weight, normal);
         }
-        :host #bodycontainer ::slotted(a:visited) {
+        :host([edit-mode]) #bodycontainer ::slotted(a:visited) {
           color: var(
             --hax-base-styles-a-color-visited,
             var(--simple-colors-default-theme-light-blue, #007ffc)
           );
         }
-        :host #bodycontainer ::slotted(a:active),
-        :host #bodycontainer ::slotted(a:focus),
-        :host #bodycontainer ::slotted(a:hover) {
+        :host([edit-mode]) #bodycontainer ::slotted(a:active),
+        :host([edit-mode]) #bodycontainer ::slotted(a:focus),
+        :host([edit-mode]) #bodycontainer ::slotted(a:hover) {
           color: var(
             --hax-base-styles-a-color-active,
             var(--simple-colors-default-theme-light-blue, #007ffc)
           );
           font-weight: var(--hax-base-styles-a-font-weight-active, normal);
         }
-        :host #bodycontainer ::slotted(ol),
-        :host #bodycontainer ::slotted(ul),
-        :host #bodycontainer ::slotted(li) {
+        :host([edit-mode]) #bodycontainer ::slotted(ol),
+        :host([edit-mode]) #bodycontainer ::slotted(ul),
+        :host([edit-mode]) #bodycontainer ::slotted(li) {
           padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);
           line-height: var(--hax-base-styles-list-line-height, 40px);
           font-size: var(--hax-base-styles-list-font-size, 24px);
           max-width: var(--hax-base-styles-list-max-width, 28em);
         }
-        :host #bodycontainer ::slotted(ol > li:last-child),
-        :host #bodycontainer ::slotted(ul > li:last-child) {
+        :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
+        :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {
           padding-bottom: var(
             --hax-base-styles-list-last-child-padding-bottom,
             1em
           );
         }
-        :host #bodycontainer ::slotted(ul),
-        :host #bodycontainer ::slotted(ol) {
+        :host([edit-mode]) #bodycontainer ::slotted(ul),
+        :host([edit-mode]) #bodycontainer ::slotted(ol) {
           padding-left: var(--hax-base-styles-list-padding-left, 20px);
           padding-left: var(--hax-base-styles-list-margin-left, 20px);
         }
@@ -249,7 +230,11 @@ class HaxBody extends SimpleColors {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
           outline: none;
+          transition: .8s ease-in-out outline;
           caret-color: var(--hax-color-text);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {
+          outline: 8px solid var(--hax-contextual-action-hover-color);
         }
         :host([edit-mode])
           #bodycontainer
