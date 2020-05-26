@@ -230,7 +230,7 @@ class HaxBody extends SimpleColors {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
           outline: none;
-          transition: .8s ease-in-out outline;
+          transition: 0.8s ease-in-out outline;
           caret-color: var(--hax-color-text);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {

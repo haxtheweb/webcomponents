@@ -786,13 +786,13 @@ class HaxTray extends winEventsElement(LitElement) {
           this
         );
         break;
-        case "open-map-dialog":
-          window.HaxStore.write(
-            "openDrawer",
-            window.HaxStore.instance.haxMap,
-            this
-          );
-          break;
+      case "open-map-dialog":
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxMap,
+          this
+        );
+        break;
       case "toggle-element-align":
         this.elementAlign = this.elementAlign === "right" ? "left" : "right";
         break;

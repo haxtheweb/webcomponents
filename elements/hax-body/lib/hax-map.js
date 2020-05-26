@@ -100,10 +100,12 @@ class HaxMap extends SimpleColors {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // notify when any of these change
-      if (propName === 'opened') {
-        let list = window.HaxStore.htmlToHaxElements(window.HaxStore.instance.activeHaxBody.haxToContent());
+      if (propName === "opened") {
+        let list = window.HaxStore.htmlToHaxElements(
+          window.HaxStore.instance.activeHaxBody.haxToContent()
+        );
         let elements = [];
-        for (var i=0; i< list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
           let def = window.HaxStore.instance.haxSchemaFromTag(list[i].tag);
           elements.push({
             icon: def.gizmo.icon,
@@ -129,9 +131,19 @@ class HaxMap extends SimpleColors {
         </paper-button>
         <div class="container">
           <ul>
-          ${this.elementList.map((element, index) => {
-            return html`<li><a @click="${this.scrollInMap}" data-index="${index}"><iron-icon data-index="${index}" icon="${element.icon}"></iron-icon>${element.name}</a></li>`;
-          })}
+            ${this.elementList.map((element, index) => {
+              return html`
+                <li>
+                  <a @click="${this.scrollInMap}" data-index="${index}"
+                    ><iron-icon
+                      data-index="${index}"
+                      icon="${element.icon}"
+                    ></iron-icon
+                    >${element.name}</a
+                  >
+                </li>
+              `;
+            })}
           </ul>
         </div>
       </paper-dialog>
@@ -144,16 +156,19 @@ class HaxMap extends SimpleColors {
     } else {
       target = e.target;
     }
-    if (target.getAttribute('data-index')) {
-      let activeChild = window.HaxStore.instance.activeHaxBody.children[parseInt(target.getAttribute('data-index'))];
+    if (target.getAttribute("data-index")) {
+      let activeChild =
+        window.HaxStore.instance.activeHaxBody.children[
+          parseInt(target.getAttribute("data-index"))
+        ];
       activeChild.scrollIntoView({
         behavior: "smooth",
         block: "start",
-        inline: "center",
+        inline: "center"
       });
-      activeChild.classList.add('blinkfocus');
+      activeChild.classList.add("blinkfocus");
       setTimeout(() => {
-        activeChild.classList.remove('blinkfocus');        
+        activeChild.classList.remove("blinkfocus");
       }, 800);
     }
   }
