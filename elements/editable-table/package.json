@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.12",
+  "version": "2.6.14",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^2.6.12",
+    "@lrnwebcomponents/responsive-utility": "^2.6.14",
     "@lrnwebcomponents/simple-picker": "^2.6.12",
     "@lrnwebcomponents/simple-tooltip": "^2.6.12",
     "@polymer/iron-a11y-keys": "^3.0.1",
@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.12",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

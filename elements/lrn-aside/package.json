@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.12",
+  "version": "2.6.14",
   "description": "A simple textual aside",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-panelcard": "^2.6.12",
+    "@lrnwebcomponents/lrndesign-panelcard": "^2.6.14",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.12",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

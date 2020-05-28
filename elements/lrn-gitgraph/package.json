@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.12",
+  "version": "2.6.14",
   "description": "Render git data in a graphing tree format",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.12",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

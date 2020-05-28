@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.12",
+  "version": "2.6.14",
   "description": "Automated conversion of lrndesign-panelcard/",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.6.12",
+    "@lrnwebcomponents/simple-colors": "^2.6.14",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-styles": "^3.0.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.12",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
