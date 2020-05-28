@@ -576,7 +576,9 @@ class HAXCMSSiteBuilder extends LitElement {
       // repair slug not being in earlier builds of json schema
       newValue.items.forEach((item, index, array) => {
         if (!item.slug) {
-          array[index].slug = item.location.replace('pages/', '').replace('/index.html', '');
+          array[index].slug = item.location
+            .replace("pages/", "")
+            .replace("/index.html", "");
         }
       });
       var site = new JsonOutlineSchema();

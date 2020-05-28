@@ -564,20 +564,21 @@ class HAXCMSSiteEditorUI extends LitElement {
     // get a prototype schema for an item
     this.__newForm.fields = [
       {
-        "property": "title",
-        "title": "Title",
-        "description": "Main title for this page in menus",
-        "inputMethod": "textfield",
-        "required": true,
-        "icon": "editor:title"
+        property: "title",
+        title: "Title",
+        description: "Main title for this page in menus",
+        inputMethod: "textfield",
+        required: true,
+        icon: "editor:title"
       },
       {
-        "property": "location",
-        "title": "Location",
-        "description": "What is displayed in the bnowser bar after your site name / URL",
-        "inputMethod": "textfield",
-        "required": true,
-        "icon": "device:gps-fixed"
+        property: "location",
+        title: "Location",
+        description:
+          "What is displayed in the bnowser bar after your site name / URL",
+        inputMethod: "textfield",
+        required: true,
+        icon: "device:gps-fixed"
       }
     ];
     let b1 = document.createElement("paper-button");

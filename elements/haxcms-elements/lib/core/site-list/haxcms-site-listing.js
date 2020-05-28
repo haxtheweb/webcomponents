@@ -546,10 +546,7 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </div>
       </div>
-      <a11y-collapse-group
-        heading-button
-        expanded
-        hidden$="[[!loggedIn]]">
+      <a11y-collapse-group heading-button expanded hidden$="[[!loggedIn]]">
         <a11y-collapse>
           <div slot="heading">Card view</div>
           <jos-render slot="content"></jos-render>
