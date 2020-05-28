@@ -546,12 +546,15 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </div>
       </div>
-      <a11y-collapse-group radio hidden$="[[!loggedIn]]">
-        <a11y-collapse expanded accordion>
+      <a11y-collapse-group
+        heading-button
+        expanded
+        hidden$="[[!loggedIn]]">
+        <a11y-collapse>
           <div slot="heading">Card view</div>
           <jos-render slot="content"></jos-render>
         </a11y-collapse>
-        <a11y-collapse accordion>
+        <a11y-collapse>
           <div slot="heading">Table view / bulk operations</div>
           <div slot="content">
             <div class="selected-operations" id="ops">
@@ -630,11 +633,11 @@ class HAXCMSSiteListing extends PolymerElement {
               >
                 <template>
                   <portal-launcher>
-                    <a tabindex="-1" href$="[[item.location]]">
+                    <a tabindex="-1" href$="[[item.slug]]">
                       <paper-button raised class="site-title">
                         <div>[[item.title]]</div>
                         <div class="small-location">
-                          [[cleanLocation(item.location)]]
+                          [[cleanLocation(item.slug)]]
                         </div>
                       </paper-button>
                     </a>
@@ -707,7 +710,7 @@ class HAXCMSSiteListing extends PolymerElement {
                   ><iron-image
                     sizing="contain"
                     preload
-                    src$="[[item.location]][[item.metadata.site.logo]]"
+                    src$="[[item.slug]][[item.metadata.site.logo]]"
                     style="width:64px; height:64px;"
                   ></iron-image
                 ></template>
@@ -1558,7 +1561,7 @@ class HAXCMSSiteListing extends PolymerElement {
       properties: {
         number: "title",
         name: function(item) {
-          return item.location
+          return item.slug
             .replace("/_sites/", "")
             .replace("/sites/", "")
             .replace("/", "");
@@ -1566,9 +1569,9 @@ class HAXCMSSiteListing extends PolymerElement {
         url: "location",
         image: function(item) {
           if (item.metadata.site && item.metadata.site.logo) {
-            return item.location + item.metadata.site.logo.replace(" ", "%20");
+            return item.slug + item.metadata.site.logo.replace(" ", "%20");
           }
-          return item.location + "assets/banner.jpg";
+          return item.slug + "assets/banner.jpg";
         },
         icon: function(item) {
           if (
@@ -1615,8 +1618,8 @@ class HAXCMSSiteListing extends PolymerElement {
     });
     let item = findSite.pop(); // if location isn't there, push out to it
 
-    if (item.location) {
-      window.open(item.location);
+    if (item.slug) {
+      window.open(item.slug);
     } else {
       window.open(this.basePath + "_sites/" + item.metadata.site.name + "/");
     }

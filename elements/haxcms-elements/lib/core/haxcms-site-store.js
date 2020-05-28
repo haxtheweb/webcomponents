@@ -132,23 +132,24 @@ class Store {
       }
       let manifestItems = manifest.items.map(i => {
         let parentLocation = null;
+        let parentSlug = null;
         let parent = manifest.items.find(d => i.parent === d.id);
         if (parent) {
-          parentLocation = parent.location
-            .replace("pages/", "")
-            .replace("/index.html", "");
+          parentLocation = parent.location;
+          parentSlug = parent.slug;
         }
         // get local storage and look for data from this to mesh up
         let metadata = i.metadata;
         if (typeof accessData[i.id] !== typeof undefined) {
           metadata.accessData = accessData[i.id];
         }
-        let location = i.location
-          .replace("pages/", "")
-          .replace("/index.html", "");
+        let location = i.location;
+        let slug = i.slug;
         return Object.assign({}, i, {
           parentLocation: parentLocation,
+          parentSlug: parentSlug,
           location: location,
+          slug: slug,
           metadata: metadata
         });
       });
@@ -215,9 +216,7 @@ class Store {
         i => typeof i.id !== "undefined"
       );
       if (firstItem) {
-        return firstItem.location
-          .replace("pages/", "")
-          .replace("/index.html", "");
+        return firstItem.slug;
       }
     }
     return "/";
@@ -244,6 +243,7 @@ class Store {
         title: this.activeItem.title,
         description: this.activeItem.description,
         location: this.activeItem.location,
+        slug: this.activeItem.slug,
         created: this.activeItem.metadata.created,
         updated: this.activeItem.metadata.created
       };

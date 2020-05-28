@@ -70,7 +70,7 @@ class SimpleBlogListing extends SimpleColors {
               item-id="${item.id}"
               title="${item.title}"
               description="${item.description}"
-              link="${item.location}"
+              link="${item.slug}"
               changed="${item.metadata.created}"
             ></simple-blog-overview>
           `

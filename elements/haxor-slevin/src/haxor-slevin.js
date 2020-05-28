@@ -337,7 +337,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                     color="${this.color}"
                     .title="${post.title}"
                     size="large"
-                    .link="${post.location}"
+                    .link="${post.slug}"
                     .image="${this._showImage(
                       post.metadata.fields &&
                         post.metadata.fields.images &&
@@ -377,7 +377,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                     color="${this.color}"
                     .title="${post.title}"
                     size="small"
-                    .link="${post.location}"
+                    .link="${post.slug}"
                     .image="${this._showImage(
                       post.metadata.fields &&
                         post.metadata.fields.images &&
@@ -429,7 +429,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                     color="${this.color}"
                     .title="${post.title}"
                     size="small"
-                    .link="${post.location}"
+                    .link="${post.slug}"
                     .image="${this._showImage(
                       post.metadata.fields &&
                         post.metadata.fields.images &&

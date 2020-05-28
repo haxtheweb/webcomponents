@@ -250,6 +250,7 @@ class JsonOutlineSchema extends HTMLElement {
           newItem.id = item.id;
           newItem.indent = item.indent;
           newItem.location = item.location;
+          newItem.slug = item.slug;
           newItem.order = item.order;
           newItem.parent = item.parent;
           newItem.title = item.title;
@@ -537,6 +538,9 @@ class JsonOutlineSchema extends HTMLElement {
       if (tree[i].location) {
         li.setAttribute("data-jos-location", tree[i].location);
       }
+      if (tree[i].slug) {
+        li.setAttribute("data-jos-slug", tree[i].slug);
+      }
       appendTarget.appendChild(li);
       if (tree[i].children && tree[i].children.length > 0) {
         appendTarget.appendChild(
@@ -642,6 +646,11 @@ class JsonOutlineSchema extends HTMLElement {
             item.location = child.getAttribute("data-jos-location");
           } else {
             item.location = "";
+          }
+          if (child.getAttribute("data-jos-slug")) {
+            item.slug = child.getAttribute("data-jos-slug");
+          } else {
+            item.slug = "";
           }
           item.indent = indent;
           item.order = order;

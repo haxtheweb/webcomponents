@@ -19,6 +19,7 @@ class JSONOutlineSchemaItem {
     this.id = "item-" + this.generateUUID();
     this.title = "New item";
     this.location = "";
+    this.slug = "";
     this.description = "";
     this.parent = "";
     this.metadata = {};

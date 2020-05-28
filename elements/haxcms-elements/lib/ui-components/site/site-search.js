@@ -116,10 +116,10 @@ class SiteSearch extends LitElement {
 
       ${this.__results.map(
         item => html`
-          <a class="result" .href="${item.location}">
+          <a class="result" .href="${item.slug}">
             <div class="title">
               ${item.title}<span class="link-text" aria-hidden="true"
-                >(${item.location})</span
+                >(${item.slug})</span
               >
             </div>
             <div class="date">

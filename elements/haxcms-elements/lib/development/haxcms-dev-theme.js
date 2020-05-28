@@ -187,11 +187,12 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             >
               <div class="card-content">
                 <div>description: [[item.description]]</div>
+                <div>slug: [[item.slug]]</div>
                 <div>location: [[item.location]]</div>
                 <div>changed: [[item.metadata.updated]]</div>
               </div>
               <div class="card-actions">
-                <a tabindex="-1" href$="[[item.location]]"
+                <a tabindex="-1" href$="[[item.slug]]"
                   ><paper-button data-id$="[[item.id]]"
                     >Set as active</paper-button
                   ></a

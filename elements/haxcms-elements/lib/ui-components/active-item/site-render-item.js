@@ -78,7 +78,7 @@ class SiteRenderItem extends PolymerElement {
     if (itemId && render) {
       let item = store.findItem(itemId);
       // ensure it loads fresh
-      return item.location + "?" + Math.floor(Date.now() / 1000);
+      return item.slug + "?" + Math.floor(Date.now() / 1000);
     }
   }
   locationChanged(newValue) {

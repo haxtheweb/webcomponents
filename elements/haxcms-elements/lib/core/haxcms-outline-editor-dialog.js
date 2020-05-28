@@ -2,7 +2,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -41,7 +40,6 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           background-color: var(--simple-modal-button-background, #000000);
         }
         editable-outline:not(:defined),
-        json-editor:not(:defined),
         paper-button:not(:defined) {
           display: none;
         }
@@ -53,8 +51,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           color: white;
           background-color: var(--haxcms-color, #2196f3);
         }
-        editable-outline,
-        json-editor {
+        editable-outline {
           margin-bottom: 32px;
         }
       `
@@ -75,23 +72,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         .hidden="${this.viewMode}"
         .items="${this.manifestItems}"
       ></editable-outline>
-      <json-editor
-        id="editor"
-        @current-data-changed="${this.currentDataChangedEvent}"
-        label="JSON Outline Schema items"
-        value="${this.manifestItemsStatic}"
-        .hidden="${!this.viewMode}"
-      ></json-editor>
       <div class="buttons">
         <paper-button id="savebtn" dialog-confirm @click="${this._saveTap}"
           ><iron-icon icon="icons:save"></iron-icon>Save</paper-button
         >
         <paper-button dialog-dismiss
           ><iron-icon icon="icons:cancel"></iron-icon>Cancel</paper-button
-        >
-        <paper-button id="toggle" @click="${this.toggleView}"
-          ><iron-icon icon="${this._viewIcon}"></iron-icon>${this
-            .viewLabel}</paper-button
         >
       </div>
     `;
@@ -138,12 +124,6 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       }
     };
   }
-  currentDataChangedEvent(e) {
-    if (e.detail.value) {
-      this.manifestItems = [...e.detail.value];
-      this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
-    }
-  }
   /**
    * LitElement property change life cycle
    */
@@ -167,12 +147,6 @@ class HAXCMSOutlineEditorDialog extends LitElement {
           })
         );
       }
-      if (propName == "viewMode") {
-        // computed
-        this.viewLabel = this._getViewLabel(this[propName]);
-        // observer
-        this._viewModeChanged(this[propName], oldValue);
-      }
     });
   }
   _manifestItemsChanged(newValue) {
@@ -180,6 +154,9 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       window.JSONOutlineSchema.requestAvailability().items = newValue;
       this.manifestItemsStatic = JSON.stringify(newValue, null, 2);
     }
+  }
+  firstUpdated() {
+    this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
   }
   connectedCallback() {
     super.connectedCallback();
@@ -196,38 +173,6 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
-  }
-  /**
-   * Switch view
-   */
-  toggleView(e) {
-    this.viewMode = !this.viewMode;
-  }
-  /**
-   * Get the active label
-   */
-  _getViewLabel(mode) {
-    if (mode) {
-      this._viewIcon = "icons:view-list";
-      return "Outline mode";
-    } else {
-      this._viewIcon = "icons:code";
-      return "Developer mode";
-    }
-  }
-  /**
-   * Ensure that data is correct between the outline and advanced view
-   */
-  _viewModeChanged(newValue, oldValue) {
-    // odd I know, but this is the default outline view
-    if (!newValue) {
-      this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
-    } else {
-      const items = this.shadowRoot
-        .querySelector("#outline")
-        .exportJsonOutlineSchemaItems(true);
-      this.manifestItems = items;
-    }
   }
 
   /**

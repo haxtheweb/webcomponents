@@ -573,6 +573,12 @@ class HAXCMSSiteBuilder extends LitElement {
         delete newValue.metadata.dynamicElementLoader;
         delete newValue.metadata.fields;
       }
+      // repair slug not being in earlier builds of json schema
+      newValue.items.forEach((item, index, array) => {
+        if (!item.slug) {
+          array[index].slug = item.location.replace('pages/', '').replace('/index.html', '');
+        }
+      });
       var site = new JsonOutlineSchema();
       // we already have our items, pass them in
       var nodes = site.itemsToNodes(newValue.items);

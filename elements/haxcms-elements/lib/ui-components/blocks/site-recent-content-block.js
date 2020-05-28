@@ -102,7 +102,7 @@ class SiteRecentContentBlock extends PolymerElement {
                 ></iron-image>
               </div>
               <div class="item-heading">
-                <a href\$="[[item.location]]">[[item.title]]</a>
+                <a href\$="[[item.slug]]">[[item.title]]</a>
               </div>
             </div>
           </template>

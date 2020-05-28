@@ -724,8 +724,8 @@ class HAXCMSSiteEditor extends LitElement {
       detail: {
         title: "Edit " + store.activeTitle + " fields",
         styles: {
-          "--simple-modal-width": "75vw",
-          "--simple-modal-max-width": "75vw"
+          "--simple-modal-width": "70vw",
+          "--simple-modal-max-width": "70vw"
         },
         elements: {
           content: form,
@@ -1012,11 +1012,11 @@ class HAXCMSSiteEditor extends LitElement {
     // node response may include the item that got updated
     // it also may be a new path so let's ensure that's reflected
     if (
-      typeof e.detail.location !== "undefined" &&
-      this.activeItem.location !== e.detail.location
+      typeof e.detail.slug !== "undefined" &&
+      this.activeItem.slug !== e.detail.slug
     ) {
-      window.location(e.detail.location);
-      window.history.pushState({}, null, e.detail.location);
+      window.location(e.detail.slug);
+      window.history.pushState({}, null, e.detail.slug);
       window.dispatchEvent(new PopStateEvent("popstate"));
       const active = this.manifest.items.find(i => {
         return i.id === e.detail.id;

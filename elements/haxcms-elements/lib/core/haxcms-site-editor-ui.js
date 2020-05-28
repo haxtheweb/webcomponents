@@ -196,7 +196,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/paper-fab/paper-fab.js");
-      import("@lrnwebcomponents/simple-fields/simple-fields.js");
+      import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
       import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
     }, 0);
   }
@@ -229,21 +229,21 @@ class HAXCMSSiteEditorUI extends LitElement {
         id="editdetails"
         icon="hax:page-details"
         @click="${this._editDetailsButtonTap}"
-        title="Edit page details"
+        title="Edit details"
         voice-command="edit (page) details"
       ></paper-fab>
       <paper-icon-button
         id="addbutton"
         icon="hax:add-page"
         @click="${this._addButtonTap}"
-        title="Add new page"
+        title="Add page"
         voice-command="add page"
       ></paper-icon-button>
       <paper-fab
         id="deletebutton"
         icon="icons:delete"
         @click="${this._deleteButtonTap}"
-        title="Delete this page"
+        title="Delete page"
         voice-command="delete page"
       ></paper-fab>
       <paper-icon-button
@@ -270,16 +270,16 @@ class HAXCMSSiteEditorUI extends LitElement {
         >${this.__editText}</simple-tooltip
       >
       <simple-tooltip for="editdetails" position="right" offset="14"
-        >Edit page details</simple-tooltip
+        >Edit details</simple-tooltip
       >
       <simple-tooltip for="deletebutton" position="right" offset="14"
-        >Delete this page</simple-tooltip
+        >Delete page</simple-tooltip
       >
       <simple-tooltip for="addbutton" position="right" offset="14"
-        >Add new page</simple-tooltip
+        >Add page</simple-tooltip
       >
       <simple-tooltip for="outlinebutton" position="right" offset="14"
-        >Organize site content</simple-tooltip
+        >Edit site outline</simple-tooltip
       >
       <simple-tooltip for="manifestbutton" position="right" offset="14"
         >${this.__settingsText}</simple-tooltip
@@ -560,18 +560,26 @@ class HAXCMSSiteEditorUI extends LitElement {
    * @todo simplify this to just what's needed; no crazy options
    */
   _addButtonTap(e) {
-    this.__newForm = document.createElement("simple-fields");
-    let outline = window.JSONOutlineSchema.requestAvailability();
+    this.__newForm = document.createElement("simple-fields-form");
     // get a prototype schema for an item
-    this.__newForm.schema = outline.getItemSchema("item");
-    // drop these for now cause we just care about title
-    delete this.__newForm.schema.properties.id;
-    delete this.__newForm.schema.properties.description;
-    delete this.__newForm.schema.properties.order;
-    delete this.__newForm.schema.properties.parent;
-    delete this.__newForm.schema.properties.metadata;
-    delete this.__newForm.schema.properties.indent;
-    this.__newForm.schema.properties.title.value = "";
+    this.__newForm.fields = [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Main title for this page in menus",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "editor:title"
+      },
+      {
+        "property": "location",
+        "title": "Location",
+        "description": "What is displayed in the bnowser bar after your site name / URL",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "device:gps-fixed"
+      }
+    ];
     let b1 = document.createElement("paper-button");
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:add";
@@ -593,8 +601,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Add a new page",
         styles: {
-          "--simple-modal-width": "75vw",
-          "--simple-modal-max-width": "75vw"
+          "--simple-modal-width": "70vw",
+          "--simple-modal-max-width": "70vw"
         },
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#addbutton"),
@@ -616,6 +624,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         values: this.__newForm.value
       }
     });
+    console.log(this.__newForm.value);
     this.dispatchEvent(evt);
   }
   /**
@@ -677,8 +686,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Are you sure you want to delete this page?",
         styles: {
-          "--simple-modal-width": "75vw",
-          "--simple-modal-max-width": "75vw"
+          "--simple-modal-width": "70vw",
+          "--simple-modal-max-width": "70vw"
         },
         elements: { content: c, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#deletebutton"),
@@ -713,10 +722,10 @@ class HAXCMSSiteEditorUI extends LitElement {
       detail: {
         title: "Edit site outline",
         styles: {
-          "--simple-modal-width": "75vw",
-          "--simple-modal-height": "75vh",
-          "--simple-modal-max-width": "75vw",
-          "--simple-modal-max-height": "75vh"
+          "--simple-modal-width": "70vw",
+          "--simple-modal-height": "70vh",
+          "--simple-modal-max-width": "70vw",
+          "--simple-modal-max-height": "70vh"
         },
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog")

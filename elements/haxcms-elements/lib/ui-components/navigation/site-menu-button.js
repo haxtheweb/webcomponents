@@ -249,7 +249,7 @@ class SiteMenuButton extends LitElement {
         activeRouterManifestIndex > 0 &&
         items[activeRouterManifestIndex - 1]
       ) {
-        return items[activeRouterManifestIndex - 1].location;
+        return items[activeRouterManifestIndex - 1].slug;
       }
       return null;
     } else if (type === "next" && items) {
@@ -257,7 +257,7 @@ class SiteMenuButton extends LitElement {
         activeRouterManifestIndex < items.length - 1 &&
         items[activeRouterManifestIndex + 1]
       ) {
-        return items[activeRouterManifestIndex + 1].location;
+        return items[activeRouterManifestIndex + 1].slug;
       }
       return null;
     }

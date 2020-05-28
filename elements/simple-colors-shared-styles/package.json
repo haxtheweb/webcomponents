@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@rhelements/rh-sass": "^2.6.12",
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
+    "@rhelements/rh-sass": "1.0.0-prerelease.7",
     "@lrnwebcomponents/deduping-fix": "2.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
