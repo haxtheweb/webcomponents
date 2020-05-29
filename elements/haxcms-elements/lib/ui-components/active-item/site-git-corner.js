@@ -50,7 +50,7 @@ class SiteGitCorner extends LitElement {
       if (store.activeItem) {
         this.activeGitFileLink =
           varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-          store.activeItem.slug;
+          store.activeItem.location;
       }
       this.__disposer.push(reaction);
     });

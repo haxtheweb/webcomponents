@@ -108,6 +108,11 @@ class HAXCMSSiteEditorUI extends LitElement {
             0 3px 14px 2px rgba(0, 0, 0, 0.12),
             0 5px 5px -3px rgba(0, 0, 0, 0.4);
         }
+        paper-avatar:hover,
+        paper-avatar:focus,
+        paper-avatar:active {
+          cursor: pointer;
+        }
         paper-fab:hover,
         paper-fab:focus,
         paper-fab:active,
@@ -261,7 +266,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="edit site settings"
       ></paper-icon-button>
       <simple-tooltip for="username" position="right" offset="14"
-        >${this.userName} dashboard</simple-tooltip
+        >Back to site list</simple-tooltip
       >
       <simple-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel editing</simple-tooltip
@@ -625,7 +630,6 @@ class HAXCMSSiteEditorUI extends LitElement {
         values: this.__newForm.value
       }
     });
-    console.log(this.__newForm.value);
     this.dispatchEvent(evt);
   }
   /**

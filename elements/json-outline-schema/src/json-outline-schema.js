@@ -580,6 +580,7 @@ class JsonOutlineSchema extends HTMLElement {
     for (var i in node.children) {
       node.removeAttribute("data-jos-id");
       node.removeAttribute("data-jos-location");
+      node.removeAttribute("data-jos-slug");
       // deep scrub child references
       if (node.children[i].children) {
         this.scrubElementJOSData(node.children[i]);

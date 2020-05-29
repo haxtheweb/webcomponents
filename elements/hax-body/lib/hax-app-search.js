@@ -182,13 +182,26 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     });
   }
   requestUrl(url = "", params = {}) {
-    var queryString = this.queryStringData(params);
-
+    var queryString = "";
+    // support specialized appending data that is a string
+    // to allow devs more flexibility
+    if (window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null && params.__HAXAPPENDUPLOADENDPOINT__) {
+      queryString = window.HaxStore.instance.connectionRewrites.appendUploadEndPoint + '&';
+    }
+    // specialized support for an internal facing path which requires a JWT
+    // this is deep in the weeds but is useful in allowing for safely
+    // searching internal app paths that leverage JWT for security
+    if (window.HaxStore.instance.connectionRewrites.appendJwt != null && params.__HAXJWT__) {
+      params[window.HaxStore.instance.connectionRewrites.appendJwt] = localStorage.getItem(
+        window.HaxStore.instance.connectionRewrites.appendJwt
+      );
+    }
+    queryString = queryString + this.queryStringData(params);
+    // look for a specialized param
     if (queryString) {
       var bindingChar = url.indexOf("?") >= 0 ? "&" : "?";
       return url + bindingChar + queryString;
     }
-
     return url;
   }
   /**
@@ -202,8 +215,10 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     for (param in params) {
       value = params[param];
       //param = window.encodeURIComponent(param);
-
-      if (Array.isArray(value)) {
+      if (param == "__HAXJWT__" || param == "__HAXAPPENDUPLOADENDPOINT__" ) {
+        // do nothing we skip these internal values
+      }
+      else if (Array.isArray(value)) {
         for (var i = 0; i < value.length; i++) {
           queryParts.push(param + "=" + window.encodeURIComponent(value[i]));
         }
