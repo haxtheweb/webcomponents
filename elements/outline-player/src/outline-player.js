@@ -135,7 +135,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         :host([edit-mode]) #slot {
           display: none !important;
         }
-        :host([edit-mode]) #content {
+        :host([edit-mode]) #contentcontainer {
           padding: 32px 8px 8px 8px;
         }
         :host([is-logged-in]) app-drawer,
@@ -168,6 +168,17 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         site-active-title {
           --site-active-title-margin: 0px;
           --site-active-title-padding: 0px;
+        }
+        @media screen and (max-width: 800px) {
+          :host([edit-mode][is-logged-in]) app-drawer,
+          :host([edit-mode][is-logged-in]) app-drawer-layout[narrow] {
+            left: 0;
+          }
+        }
+        @media screen and (max-width: 640px) {
+          #content {
+            padding: 8px 8px 8px 8px;
+          }
         }
       `
     ];

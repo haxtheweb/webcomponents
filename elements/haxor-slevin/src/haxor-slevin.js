@@ -211,7 +211,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           margin-left: 50px;
         }
         .annoy-inner {
-          max-width: 700px;
+          max-width: 800px;
           margin: 0 auto;
           display: flex;
         }
@@ -279,6 +279,14 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           .annoy-inner {
             max-width: unset;
             margin: 0;
+          }
+          :host([edit-mode][is-logged-in]) {
+            margin-left: 0px;
+          }
+        }
+        @media screen and (max-width: 640px) {
+          :host([is-logged-in][edit-mode]) {
+            padding-left: 8px;
           }
         }
       `
