@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "2.6.14",
+  "version": "2.6.15",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -60,13 +60,13 @@
     "@lrnwebcomponents/hero-banner": "^2.6.14",
     "@lrnwebcomponents/html-block": "^2.6.12",
     "@lrnwebcomponents/image-compare-slider": "^2.6.14",
-    "@lrnwebcomponents/json-editor": "^2.6.14",
+    "@lrnwebcomponents/json-editor": "^2.6.15",
     "@lrnwebcomponents/license-element": "^2.6.14",
     "@lrnwebcomponents/lrn-aside": "^2.6.14",
     "@lrnwebcomponents/lrn-icons": "^2.6.12",
     "@lrnwebcomponents/lrn-math": "^2.6.14",
     "@lrnwebcomponents/lrn-table": "^2.6.14",
-    "@lrnwebcomponents/lrn-vocab": "^2.6.14",
+    "@lrnwebcomponents/lrn-vocab": "^2.6.15",
     "@lrnwebcomponents/lrndesign-blockquote": "^2.6.14",
     "@lrnwebcomponents/lrndesign-gallery": "^2.6.14",
     "@lrnwebcomponents/lrndesign-timeline": "^2.6.14",
@@ -89,7 +89,7 @@
     "@lrnwebcomponents/tab-list": "^2.6.14",
     "@lrnwebcomponents/task-list": "^2.6.14",
     "@lrnwebcomponents/user-action": "^2.6.12",
-    "@lrnwebcomponents/video-player": "^2.6.14",
+    "@lrnwebcomponents/video-player": "^2.6.15",
     "@lrnwebcomponents/wikipedia-query": "^2.6.14",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
