@@ -2,27 +2,20 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-input/paper-input.js";
+import { css, html } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-progress/paper-progress.js";
-import "@polymer/paper-styles/shadow.js";
-import "@polymer/paper-styles/typography.js";
-import "@polymer/paper-styles/color.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@material/mwc-button/mwc-button.js";
 /**
  * `simple-login`
  * @element simple-login
  * `a simple login form`
  *
  * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
  */
-class SimpleLogin extends PolymerElement {
+class SimpleLogin extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -37,20 +30,38 @@ class SimpleLogin extends PolymerElement {
    */
   constructor() {
     super();
-    afterNextRender(this, function() {
-      this.shadowRoot
-        .querySelector("#loginform")
-        .addEventListener("keypress", this._keyPressLogin.bind(this));
+    this.password = '';
+    this.username = '';
+    this.loading = false;
+    this.userInputLabel = "User name";
+    this.userInputErrMsg = "User name required";
+    this.passwordInputLabel = "Password";
+    this.passwordInputErrMsg = "Password required";
+    this.loginBtnText = "Login";    
+  }
+
+  updated(changedProperties) {
+    super.updated();
+    changedProperties.forEach((oldValue, propName) => {
+      // notify
+      if (['username', 'password'].includes(propName)) {
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
     });
   }
-  /**
-   * life cycle
-   */
-  disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#loginform")
-      .removeEventListener("keypress", this._keyPressLogin.bind(this));
-    super.disconnectedCallback();
+
+  firstUpdated() {
+    setTimeout(() => {
+      this.shadowRoot
+        .querySelector("#loginform")
+        .addEventListener("keypress", this._keyPressLogin.bind(this)); 
+    },0);
   }
   /**
    * Key pressed for the login
@@ -61,6 +72,12 @@ class SimpleLogin extends PolymerElement {
       this._login();
       return false;
     }
+  }
+  _passwordChanged(e) {
+    this.password = e.detail.value;
+  }
+  _usernameChanged(e) {
+    this.username = e.detail.value;
   }
   /**
    * Login

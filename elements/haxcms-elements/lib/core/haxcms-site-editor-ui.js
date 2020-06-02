@@ -466,8 +466,10 @@ class HAXCMSSiteEditorUI extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     autorun(reaction => {
-      this.userName = toJS(store.userData.userName);
-      this.userPicture = toJS(store.userData.userPicture);
+      if (store.userData) {
+        this.userName = toJS(store.userData.userName);
+        this.userPicture = toJS(store.userData.userPicture);
+      }
       this.__disposer.push(reaction);
     });
     autorun(reaction => {

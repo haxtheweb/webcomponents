@@ -47,6 +47,8 @@ class MapMenu extends LitElement {
           display: var(--map-menu-container-display);
           flex-direction: var(--map-menu-container-flex-direction);
           flex: var(--map-menu-container-flex);
+          background-color: var(--map-menu-container-background-color);
+          color: var(--map-menu-container-color);
         }
 
         /* turn default active color if indicator is on */

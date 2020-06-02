@@ -1,16 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
-import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import {
   encapScript,
   findTagsInHTML,
   wipeSlot,
-  varExists,
-  varGet
+  varExists
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -72,22 +69,6 @@ class HAXCMSSiteBuilder extends LitElement {
     return html`
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
       <paper-progress .hidden="${!this.loading}" indeterminate></paper-progress>
-      <iron-ajax
-        id="manifest"
-        .url="${this.outlineLocation}${this.file}${this._timeStamp}"
-        handle-as="json"
-        @last-response-changed="${this._updateManifest}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        id="activecontent"
-        .url="${this.outlineLocation}${this.activeItemLocation}${this
-          ._timeStamp}"
-        handle-as="text"
-        @loading-changed="${this._updateLoading}"
-        @last-response-changed="${this._updateActiveItemContent}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
       <div id="slot"><slot></slot></div>
       <simple-colors-polymer></simple-colors-polymer>
     `;
@@ -95,31 +76,73 @@ class HAXCMSSiteBuilder extends LitElement {
   /**
    * Simple "two way" data binding from the element below via events
    */
-  _updateManifest(e) {
-    this.manifest = { ...e.detail.value };
+  _updateManifest(data) {
+    this.manifest = { ...data };
   }
   _updateLoading(e) {
     this.loading = e.detail.value;
   }
-  _updateActiveItemContent(e) {
-    this.activeItemContent = e.detail.value;
+  _updateActiveItemContent(data) {
+    this.activeItemContent = data;
   }
   firstUpdated() {
-    this.shadowRoot.querySelector("#manifest").generateRequest();
+    this.loadJOSData();
+  }
+  /**
+   * Load Page data
+   */
+  async loadPageData() {
+    // file required or we have nothing; other two mixed in for pathing
+    if (this.activeItemLocation) {
+      this.loading = true;
+      await fetch(`${this.outlineLocation}${this.activeItemLocation}${this._timeStamp}`)
+      .then((response) => {
+        return response.text();
+      })
+      .then((data) => {
+        this._updateActiveItemContent(data);
+        this.loading = false;
+      })
+      .catch((err) => {
+        this.lastErrorChanged(err);
+      });
+    }
+  }
+  /**
+   * Load JSON Outline Schema / site.json format
+   */
+  loadJOSData() {
+    // file required or we have nothing; other two mixed in for pathing
+    if (this.file) {
+      fetch(`${this.outlineLocation}${this.file}${this._timeStamp}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this._updateManifest(data);
+      })
+      .catch((err) => {
+        this.lastErrorChanged(err);
+      });
+    }
   }
   /**
    * life cycle updated
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (["outlineLocation", "activeItemLocation", "_timeStamp"].includes(propName)) {
+        this.loadPageData();
+      }
+      if (["outlineLocation", "file", "_timeStamp"].includes(propName)) {
+        this.loadJOSData();
+      }
       if (propName == "dashboardOpened") {
         this._dashboardOpenedChanged(this[propName], oldValue);
       } else if (propName == "themeData") {
         this._themeChanged(this[propName], oldValue);
       } else if (propName == "themeName") {
         this._themeNameChanged(this[propName], oldValue);
-      } else if (propName == "file") {
-        this._fileChanged(this[propName], oldValue);
       } else if (propName == "outlineLocation") {
         // fire an to match notify
         this.dispatchEvent(
@@ -254,7 +277,8 @@ class HAXCMSSiteBuilder extends LitElement {
        * Injected by HAXcms
        */
       baseURI: {
-        type: String
+        type: String,
+        attribute: "base-uri"
       }
     };
   }
@@ -274,7 +298,7 @@ class HAXCMSSiteBuilder extends LitElement {
    * Alert there was an internal error in getting the file
    */
   lastErrorChanged(e) {
-    if (e.detail.value) {
+    if (e) {
       console.error(e);
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -482,7 +506,6 @@ class HAXCMSSiteBuilder extends LitElement {
       } else {
         this._timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
-      this.shadowRoot.querySelector("#activecontent").generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
     else if (oldValue && !newValue) {
@@ -506,7 +529,6 @@ class HAXCMSSiteBuilder extends LitElement {
     if (this.editorBuilder && this.editorBuilder.getContext() !== "published") {
       this._timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
-    this.shadowRoot.querySelector("#manifest").generateRequest();
   }
 
   /**
@@ -523,18 +545,7 @@ class HAXCMSSiteBuilder extends LitElement {
     }
     // ensure we don't get a miss on initial load
     if (this.activeItem.location) {
-      this.shadowRoot.querySelector("#activecontent").generateRequest();
-    }
-  }
-  /**
-   * File changed so let's pull from the location
-   */
-  _fileChanged(newValue, oldValue) {
-    if (
-      this.shadowRoot.querySelector("#manifest").generateRequest &&
-      typeof newValue !== typeof undefined
-    ) {
-      this.shadowRoot.querySelector("#manifest").generateRequest();
+      this.loadPageData();
     }
   }
   /**
@@ -542,69 +553,7 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   _manifestChanged(newValue, oldValue) {
     if (newValue && newValue.metadata && newValue.items) {
-      // @todo replace this with a schema version mapper
-      // once we have versions
-      if (varExists(newValue, "metadata.siteName")) {
-        let git = varGet(newValue, "publishing.git", {});
-        newValue.metadata.site = {
-          name: newValue.metadata.siteName,
-          git: git,
-          created: newValue.metadata.created,
-          updated: newValue.metadata.updated
-        };
-        newValue.metadata.theme.variables = {
-          image: newValue.metadata.image,
-          icon: newValue.metadata.icon,
-          hexCode: newValue.metadata.hexCode,
-          cssVariable: newValue.metadata.cssVariable
-        };
-        newValue.metadata.node = {
-          dynamicElementLoader: newValue.metadata.dynamicElementLoader,
-          fields: newValue.metadata.fields
-        };
-        delete newValue.metadata.publishing;
-        delete newValue.metadata.created;
-        delete newValue.metadata.updated;
-        delete newValue.metadata.siteName;
-        delete newValue.metadata.image;
-        delete newValue.metadata.icon;
-        delete newValue.metadata.hexCode;
-        delete newValue.metadata.cssVariable;
-        delete newValue.metadata.dynamicElementLoader;
-        delete newValue.metadata.fields;
-      }
-      // repair slug not being in earlier builds of json schema
-      newValue.items.forEach((item, index, array) => {
-        if (!item.slug) {
-          array[index].slug = item.location
-            .replace("pages/", "")
-            .replace("/index.html", "");
-        }
-      });
-      var site = new JsonOutlineSchema();
-      // we already have our items, pass them in
-      var nodes = site.itemsToNodes(newValue.items);
-      // smash outline into flat to get the correct order
-      var correctOrder = site.nodesToItems(nodes);
-      var newItems = [];
-      // build a new array in the correct order by pushing the old items around
-      for (var key in correctOrder) {
-        newItems.push(
-          newValue.items.find(element => {
-            return element.id === correctOrder[key].id;
-          })
-        );
-      }
-      newValue.items = newItems;
-      store.manifest = newValue;
-      this.dispatchEvent(
-        new CustomEvent("json-outline-schema-changed", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: newValue
-        })
-      );
+      store.loadManifest(newValue, this);
     }
   }
   // simple path from a url modifier

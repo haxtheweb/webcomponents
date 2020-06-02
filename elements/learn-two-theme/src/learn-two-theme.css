@@ -59,7 +59,16 @@ site-git-corner {
   position: absolute;
   z-index: 1000;
 }
-
+paper-icon-button:not(:defined),
+site-breadcrumb:not(:defined),
+site-rss-button:not(:defined),
+site-print-button:not(:defined),
+site-menu-button:not(:defined),
+site-modal:not(:defined),
+site-git-corner:not(:defined),
+site-menu-button:not(:defined) {
+  display: none;
+}
 site-menu::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
   border-radius: 0;

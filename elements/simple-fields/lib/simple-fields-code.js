@@ -180,6 +180,8 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
       this.error = true;
       this.errorMessage = this.requiredMessage || `required`;
     }
+    // to match container response
+    return !this.error;
   }
 
   /**

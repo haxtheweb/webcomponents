@@ -668,7 +668,7 @@ class HAXCMSSiteEditor extends LitElement {
     this.querySelector("#getuserdata").body = {
       jwt: this.jwt
     };
-    this.querySelector("#getuserdata").generateRequest();
+    this.querySelector("#getuserdata").generateRequest();      
   }
   /**
    * Load and display node fields

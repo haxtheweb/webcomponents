@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
@@ -13,6 +12,8 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import {
@@ -32,7 +33,6 @@ class HAXCMSSiteListing extends PolymerElement {
     super();
     this.SimpleColors = new SimpleColorsPolymer();
     setPassiveTouchGestures(true);
-    window.HAXCMS = {};
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
     import("@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js");
@@ -64,6 +64,7 @@ class HAXCMSSiteListing extends PolymerElement {
           right: 0;
           color: var(--haxcms-site-listing-color-light);
           background-color: var(--haxcms-site-listing-color-dark);
+          z-index: 1;
         }
         a11y-collapse-group {
           margin-top: 64px;
@@ -130,7 +131,7 @@ class HAXCMSSiteListing extends PolymerElement {
           color: var(--haxcms-system-bg);
           --primary-color: var(--haxcms-system-bg);
           --primary-text-color: var(--haxcms-system-bg);
-          --paper-input-container-focus-color: var(
+          --simple-fields-accent-color: var(
             --haxcms-system-action-color
           );
           --login-btn-background-color: var(--haxcms-system-bg);
@@ -158,6 +159,9 @@ class HAXCMSSiteListing extends PolymerElement {
           width: 100%;
           justify-content: center;
           display: flex;
+        }
+        simple-modal-template[modal-id="help"] {
+          --simple-modal-width: 60vw;
         }
         paper-dialog {
           width: 60vw;
@@ -196,8 +200,8 @@ class HAXCMSSiteListing extends PolymerElement {
         .action-button iron-icon {
           margin-right: 8px;
         }
-        paper-input {
-          --paper-input-container-focus-color: var(
+        simple-fields-field {
+          --simple-fields-accent-color: var(
             --haxcms-site-listing-color-hover
           );
         }
@@ -207,7 +211,6 @@ class HAXCMSSiteListing extends PolymerElement {
           font-style: italic;
         }
         #loading {
-          width: 100%;
           z-index: 1000;
           opacity: 1;
           padding: 24px;
@@ -521,6 +524,16 @@ class HAXCMSSiteListing extends PolymerElement {
         <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
         <div class="operations right">
           <paper-button
+            on-click="_helpTap"
+            id="help"
+            raised
+            title="Help"
+            hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
+          >
+            <iron-icon icon="icons:help"></iron-icon>
+            <span class="small-hide">Help</span>
+          </paper-button>
+          <paper-button
             on-click="_settingsTap"
             id="settings"
             raised
@@ -748,6 +761,13 @@ class HAXCMSSiteListing extends PolymerElement {
           id="fileupload"
         ></vaadin-upload>
       </div>
+      <simple-modal-template modal-id="help" title="Help">
+        <div slot="header">Help directions</div>
+        <p slot="content">
+          <md-block source="https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"></md-block>
+        </p>
+        <div slot="buttons"><mwc-button dialog-dismiss>Close</mwc-button></div>
+      </simple-modal-template>
       <paper-dialog id="confirm">
         <h2 class="dialog-header">
           [[activeOpertion]] these [[selectedItems.length]] sites
@@ -808,7 +828,11 @@ class HAXCMSSiteListing extends PolymerElement {
       </paper-dialog>
       <paper-dialog id="importsite">
         <h2 class="dialog-header">Import site from git repo</h2>
-        <paper-input id="importurl" label="Git url"></paper-input>
+        <simple-fields-field
+          id="importurl"
+          label="Git url"
+          type="text"
+        ></simple-fields-field>
         <div class="buttons">
           <paper-button
             on-click="_gitImportSite"
@@ -868,10 +892,13 @@ class HAXCMSSiteListing extends PolymerElement {
   }
 
   cleanLocation(location) {
-    return location
-      .replace("/_sites/", "")
-      .replace("/sites/", "")
-      .replace("/", "");
+    if (location) {
+      return location
+        .replace("/_sites/", "")
+        .replace("/sites/", "")
+        .replace("/", "");
+    }
+    return location;
   }
 
   static get properties() {
@@ -1198,7 +1225,6 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * _settingsTap
    */
-
   _settingsTap(e) {
     this._loadConfig();
 
@@ -1251,7 +1277,7 @@ class HAXCMSSiteListing extends PolymerElement {
       "sites-listing-refresh-data",
       this.refreshData.bind(this)
     );
-    afterNextRender(this, function() {
+    setTimeout(() => {
       /**
        * These are our bad actors in polyfill'ed browsers.
        * This means that https://github.com/webcomponents/webcomponentsjs/commit/ce464bb533bf39b544c312906499a6044ee0d30d
@@ -1329,7 +1355,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.shadowRoot
         .querySelector("#newsnap")
         .addEventListener("click", this.clearPhoto.bind(this));
-    });
+    }, 0);
   }
 
   async snapPhoto(e) {
@@ -1548,6 +1574,9 @@ class HAXCMSSiteListing extends PolymerElement {
     this.shadowRoot
       .querySelector("#jwt")
       .addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+    setTimeout(() => {
+      this.shadowRoot.querySelector('[modal-id="help"]').associateEvents(this.shadowRoot.querySelector('#help'));
+    }, 0);
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
@@ -1558,10 +1587,10 @@ class HAXCMSSiteListing extends PolymerElement {
       properties: {
         number: "title",
         name: function(item) {
-          return item.slug
+          return (item.slug ? item.slug
             .replace("/_sites/", "")
             .replace("/sites/", "")
-            .replace("/", "");
+            .replace("/", "") : '');
         },
         url: "location",
         image: function(item) {

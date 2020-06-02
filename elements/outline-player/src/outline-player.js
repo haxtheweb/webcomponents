@@ -228,27 +228,23 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             --site-menu-scrolltrack-bg-color: rgba(0, 0, 0, 0.3);
             --site-menu-bg-shadow: rgba(0, 0, 0, 0.3);
             --site-menu-bg-color: #fafafa;
-            --site-menu: {
-              padding: 0;
-              background-color: #ffffff;
-              color: #000000;
-            }
-            --site-menu-container: {
-              padding: 0;
-              background-color: #ffffff;
-              color: #000000;
-            }
+            --site-menu-padding: 0;
+            --site-menu-background-color: #ffffff;
+            --site-menu-color: #000000;
+
+            --site-menu-container-padding: 0;
+            --site-menu-container-background-color: #ffffff;
+            --site-menu-container-color: #000000;
+            
             --site-menu-item-active-item-color: #000000;
           }
           site-menu-button {
+            --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.2);
             --site-menu-button-button: {
               border-radius: 50%;
               background-color: rgba(0, 0, 0, 0.1);
               height: 40px;
               width: 40px;
-            }
-            --site-menu-button-button-hover: {
-              background-color: rgba(0, 0, 0, 0.2);
             }
           }
         </style>

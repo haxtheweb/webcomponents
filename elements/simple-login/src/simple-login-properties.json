@@ -16,55 +16,50 @@
    */
   "username": {
     "type": String,
-    "notify": true
   },
   /**
    * Content of the password field
    */
   "password": {
     "type": String,
-    "notify": true
   },
   /**
    * When true, all fields are disabled and the progress bar is visible
    */
   "loading": {
     "type": Boolean,
-    "value": false
   },
   /**
    * Placeholder of the username field
    */
   "userInputLabel": {
     "type": String,
-    "value": "Username"
+    "attribute": "user-input-label",
   },
   /**
    * Error message of the username field
    */
   "userInputErrMsg": {
     "type": String,
-    "value": "Username required"
   },
   /**
    * Placeholder of the password field
    */
   "passwordInputLabel": {
     "type": String,
-    "value": "Password"
+    "attribute": "password-input-label",
   },
   /**
    * Error message of the password field
    */
   "passwordInputErrMsg": {
     "type": String,
-    "value": "Password required"
   },
   /**
    * Login button label
    */
   "loginBtnText": {
     "type": String,
-    "value": "Login"
+    "attribute": "login-btn-text",
   }
 }
