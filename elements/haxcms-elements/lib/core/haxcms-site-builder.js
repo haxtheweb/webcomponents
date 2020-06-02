@@ -95,17 +95,19 @@ class HAXCMSSiteBuilder extends LitElement {
     // file required or we have nothing; other two mixed in for pathing
     if (this.activeItemLocation) {
       this.loading = true;
-      await fetch(`${this.outlineLocation}${this.activeItemLocation}${this._timeStamp}`)
-      .then((response) => {
-        return response.text();
-      })
-      .then((data) => {
-        this._updateActiveItemContent(data);
-        this.loading = false;
-      })
-      .catch((err) => {
-        this.lastErrorChanged(err);
-      });
+      await fetch(
+        `${this.outlineLocation}${this.activeItemLocation}${this._timeStamp}`
+      )
+        .then(response => {
+          return response.text();
+        })
+        .then(data => {
+          this._updateActiveItemContent(data);
+          this.loading = false;
+        })
+        .catch(err => {
+          this.lastErrorChanged(err);
+        });
     }
   }
   /**
@@ -115,15 +117,15 @@ class HAXCMSSiteBuilder extends LitElement {
     // file required or we have nothing; other two mixed in for pathing
     if (this.file) {
       fetch(`${this.outlineLocation}${this.file}${this._timeStamp}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this._updateManifest(data);
-      })
-      .catch((err) => {
-        this.lastErrorChanged(err);
-      });
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this._updateManifest(data);
+        })
+        .catch(err => {
+          this.lastErrorChanged(err);
+        });
     }
   }
   /**
@@ -131,7 +133,11 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["outlineLocation", "activeItemLocation", "_timeStamp"].includes(propName)) {
+      if (
+        ["outlineLocation", "activeItemLocation", "_timeStamp"].includes(
+          propName
+        )
+      ) {
         this.loadPageData();
       }
       if (["outlineLocation", "file", "_timeStamp"].includes(propName)) {

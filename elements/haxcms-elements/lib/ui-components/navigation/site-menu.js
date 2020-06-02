@@ -26,9 +26,13 @@ class SiteMenu extends LitElement {
           color: var(--site-menu-color);
           --map-menu-active-color: var(--site-menu-active-color);
           --map-menu-container-padding: var(--site-menu-container-padding);
-          --map-menu-container-background-color: var(--site-menu-container-background-color);
+          --map-menu-container-background-color: var(
+            --site-menu-container-background-color
+          );
           --map-menu-container-color: var(--site-menu-container-color);
-          --map-menu-item-active-item-color: var(--site-menu-item-active-item-color);
+          --map-menu-item-active-item-color: var(
+            --site-menu-item-active-item-color
+          );
         }
         map-menu[disabled] {
           pointer-events: none;

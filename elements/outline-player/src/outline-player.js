@@ -235,11 +235,16 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             --site-menu-container-padding: 0;
             --site-menu-container-background-color: #ffffff;
             --site-menu-container-color: #000000;
-            
+
             --site-menu-item-active-item-color: #000000;
           }
           site-menu-button {
-            --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.2);
+            --site-menu-button-button-hover-background-color: rgba(
+              0,
+              0,
+              0,
+              0.2
+            );
             --site-menu-button-button: {
               border-radius: 50%;
               background-color: rgba(0, 0, 0, 0.1);

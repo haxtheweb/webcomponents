@@ -104,8 +104,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         // IF we're in a live environment this will always be 2 levels back
         if (window.appSettings && window.appSettings.connectionSettings) {
           script.src = window.appSettings.connectionSettings;
-        }
-        else {
+        } else {
           script.src = `../../system/api/connectionSettings`;
         }
         fetch(script.src).then(response => {

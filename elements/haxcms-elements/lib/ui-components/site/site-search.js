@@ -60,10 +60,7 @@ class SiteSearch extends LitElement {
         #search {
           flex-grow: 2;
           margin-right: 4px;
-          --simple-fields-accent-color: var(
-            --site-search-text-color,
-            #000
-          );
+          --simple-fields-accent-color: var(--site-search-text-color, #000);
           color: var(--site-search-placeholder-color, #222);
         }
       `
@@ -87,7 +84,6 @@ class SiteSearch extends LitElement {
   // render function
   render() {
     return html`
-
       <simple-fields-field
         id="search"
         always-float-label
@@ -95,7 +91,7 @@ class SiteSearch extends LitElement {
         type="text"
         @value-changed="${this._searchValueChanged}"
       >
-      <iron-icon icon="search" slot="prefix"></iron-icon>
+        <iron-icon icon="search" slot="prefix"></iron-icon>
       </simple-fields-field>
       ${this.search.length > 0
         ? html`

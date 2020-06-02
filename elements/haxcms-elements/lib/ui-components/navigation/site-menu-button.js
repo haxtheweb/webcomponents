@@ -45,7 +45,10 @@ class SiteMenuButton extends LitElement {
         paper-button:focus,
         paper-button:active {
           color: var(--site-menu-button-button-hover-color, inherit);
-          background-color: var(--site-menu-button-button-hover-background-color, inherit);
+          background-color: var(
+            --site-menu-button-button-hover-background-color,
+            inherit
+          );
         }
         iron-icon {
           display: block;
@@ -183,7 +186,8 @@ class SiteMenuButton extends LitElement {
       if (
         ["type", "activeRouterManifestIndex", "routerManifest"].includes(
           propName
-        ) && this.routerManifest
+        ) &&
+        this.routerManifest
       ) {
         this.link = this.pageLink(
           this.type,
@@ -203,8 +207,8 @@ class SiteMenuButton extends LitElement {
           "routerManifest",
           "editMode",
           "link"
-        ].includes(propName)
-        && this.routerManifest
+        ].includes(propName) &&
+        this.routerManifest
       ) {
         this.disabled = this.pageLinkStatus(
           this.type,

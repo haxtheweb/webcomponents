@@ -30,21 +30,21 @@ class SimpleLogin extends SimpleColors {
    */
   constructor() {
     super();
-    this.password = '';
-    this.username = '';
+    this.password = "";
+    this.username = "";
     this.loading = false;
     this.userInputLabel = "User name";
     this.userInputErrMsg = "User name required";
     this.passwordInputLabel = "Password";
     this.passwordInputErrMsg = "Password required";
-    this.loginBtnText = "Login";    
+    this.loginBtnText = "Login";
   }
 
   updated(changedProperties) {
     super.updated();
     changedProperties.forEach((oldValue, propName) => {
       // notify
-      if (['username', 'password'].includes(propName)) {
+      if (["username", "password"].includes(propName)) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
@@ -60,8 +60,8 @@ class SimpleLogin extends SimpleColors {
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#loginform")
-        .addEventListener("keypress", this._keyPressLogin.bind(this)); 
-    },0);
+        .addEventListener("keypress", this._keyPressLogin.bind(this));
+    }, 0);
   }
   /**
    * Key pressed for the login

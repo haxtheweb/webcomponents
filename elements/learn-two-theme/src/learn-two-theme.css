@@ -3,16 +3,18 @@
   --__learn-two-theme-default-background: var(--learn-two-theme-default-background, #ffffff);
   display: block;
   font-family: var(
-    --learn-two-theme-font-family,
-    var(--__learn-two-theme-default-font-family)
-  );
+  --learn-two-theme-font-family,
+  var(--__learn-two-theme-default-font-family)
+);
   letter-spacing: var(--learn-two-theme-letter-spacing, -0.03rem);
   font-weight: var(--learn-two-theme-font-weight, 400);
   background: var( --learn-two-theme-background, var(--__learn-two-theme-default-background));
 }
+
 html,body {
   background: var( --learn-two-theme-html-body-background, var(--__learn-two-theme-default-background));
 }
+
 h1,
 h2,
 h3,
@@ -20,14 +22,14 @@ h4,
 h5,
 h6 {
   font-family: var(
-    --learn-two-theme-headers-font-family,
-    var(--__learn-two-theme-default-font-family)
-  );
+  --learn-two-theme-headers-font-family,
+  var(--__learn-two-theme-default-font-family)
+);
   font-weight: var(--learn-two-theme-headers-font-weight, 400);
   text-rendering: var(
-    --learn-two-theme-headers-text-rendering,
-    optimizeLegibility
-  );
+  --learn-two-theme-headers-text-rendering,
+  optimizeLegibility
+);
   line-height: var(--learn-two-theme-headers-line-height, 150%);
   letter-spacing: var(--learn-two-theme-headers-letter-spacing, 150%);
 }
@@ -59,6 +61,7 @@ site-git-corner {
   position: absolute;
   z-index: 1000;
 }
+
 paper-icon-button:not(:defined),
 site-breadcrumb:not(:defined),
 site-rss-button:not(:defined),
@@ -69,24 +72,29 @@ site-git-corner:not(:defined),
 site-menu-button:not(:defined) {
   display: none;
 }
+
 site-menu::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
   border-radius: 0;
   background-color: #383f45;
 }
+
 site-menu::-webkit-scrollbar {
   width: 2px;
   background-color: #383f45;
 }
+
 site-menu::-webkit-scrollbar-thumb {
   border-radius: 1px;
   -webkit-box-shadow: inset 0 0 4px #747474;
   background-color: #383f45;
 }
+
 .rss-buttons {
   justify-content: space-evenly;
   display: flex;
 }
+
 site-print-button {
   --site-print-button-button: {
     color: white;
@@ -105,12 +113,13 @@ h-a-x {
 :host([is-logged-in]) app-drawer {
   left: 48px;
 }
+
 :host([is-logged-in]) app-drawer-layout[narrow] {
   margin: 0 0 0 48px;
 }
 
 git-corner {
-  float:right;
+  float: right;
 }
 
 app-drawer {
@@ -120,36 +129,45 @@ app-drawer {
   overflow: hidden;
   width: 300px;
 }
+
 app-drawer-layout[narrow] #contentcontainer {
   padding: 0 16px;
 }
+
 #menubutton,
 #menubutton2 {
   display: none;
 }
+
 app-drawer-layout[narrow] #menubutton {
   display: block;
 }
+
 app-drawer-layout[narrow] #menubutton2 {
   display: block;
   position: absolute;
   z-index: 1;
 }
+
 app-drawer-layout[narrow] .header {
   padding: 0;
 }
+
 :host([is-logged-in]) site-menu-button[type="prev"] {
   left: 348px;
 }
+
 site-menu-button:not([disabled]):hover,
 site-menu-button:not([disabled]):active,
 site-menu-button:not([disabled]):focus {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 app-drawer-layout[narrow] site-menu {
   max-height: calc(100vh - 160px);
 }
+
 site-menu-button[type="next"] {
   right: 0;
   left: unset;
@@ -159,10 +177,11 @@ site-menu-button[type="next"] {
 app-drawer-layout[narrow] site-menu-button[type="prev"] {
   left: unset;
 }
+
 :host([opened]) app-drawer-layout[narrow] site-menu-button[type="prev"],
 :host([opened])
-  app-drawer-layout[narrow]
-  site-menu-button[type="next"] {
+app-drawer-layout[narrow]
+site-menu-button[type="next"] {
   display: none;
 }
 
@@ -170,6 +189,7 @@ site-title {
   position: relative;
   overflow: hidden;
 }
+
 site-menu {
   background-color: #383f45;
   color: #ffffff;
@@ -179,6 +199,7 @@ site-menu {
   --site-menu-active-color: #ffffff;
   --site-menu-item-active-item-color: #2d3237;
 }
+
 app-drawer-layout {
   min-height: 100vh;
   min-height: -moz-available;
@@ -187,6 +208,7 @@ app-drawer-layout {
   --app-drawer-width: 300px;
   --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
 }
+
 site-menu-button {
   position: fixed;
   top: 0;
@@ -197,10 +219,12 @@ site-menu-button {
   --site-menu-button-icon-height: 64px;
   --site-menu-button-icon-fill-color: #2d3237;
 }
+
 app-drawer-layout[narrow] site-menu-button {
   bottom: 0;
   top: unset;
 }
+
 site-menu,
 map-menu,
 map-menu * {

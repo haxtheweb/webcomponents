@@ -604,9 +604,7 @@ window.HAXCMS = window.HAXCMS || {};
 // is rendered through the same modal
 window.HAXCMS.requestAvailability = () => {
   if (!window.HAXCMS.instance) {
-    window.HAXCMS.instance = document.createElement(
-      "haxcms-site-store"
-    );
+    window.HAXCMS.instance = document.createElement("haxcms-site-store");
     document.body.appendChild(window.HAXCMS.instance);
   }
   return window.HAXCMS.instance;
@@ -620,7 +618,7 @@ class HAXCMSSiteStore extends HTMLElement {
   constructor() {
     super();
     this.store = store;
-    this.source = '';
+    this.source = "";
     /**
      * When location changes update activeItem
      */
@@ -694,29 +692,29 @@ class HAXCMSSiteStore extends HTMLElement {
     return "haxcms-site-store";
   }
   static get observedAttributes() {
-    return ['source'];
+    return ["source"];
   }
   set source(value) {
     this[name] = value;
     if (value) {
-      this.setAttribute('source', value);
+      this.setAttribute("source", value);
     }
   }
   get source() {
-    return this.getAttribute('source');
+    return this.getAttribute("source");
   }
   attributeChangedCallback(name, oldVal, newVal) {
-    if (name == 'source' && newVal != '') {
+    if (name == "source" && newVal != "") {
       fetch(this[name])
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.store.loadManifest(data);
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.store.loadManifest(data);
+        })
+        .catch(err => {
+          console.warn(err);
+        });
     }
   }
 }

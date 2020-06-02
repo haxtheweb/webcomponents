@@ -235,7 +235,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             --site-menu-container-padding: 0;
             --site-menu-container-background-color: #ffffff;
             --site-menu-container-color: #000000;
-            
+
             --site-menu-item-active-item-color: #000000;
           }
           site-menu-button {

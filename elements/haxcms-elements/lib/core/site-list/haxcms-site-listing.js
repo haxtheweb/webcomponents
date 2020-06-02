@@ -131,9 +131,7 @@ class HAXCMSSiteListing extends PolymerElement {
           color: var(--haxcms-system-bg);
           --primary-color: var(--haxcms-system-bg);
           --primary-text-color: var(--haxcms-system-bg);
-          --simple-fields-accent-color: var(
-            --haxcms-system-action-color
-          );
+          --simple-fields-accent-color: var(--haxcms-system-action-color);
           --login-btn-background-color: var(--haxcms-system-bg);
           --login-btn-raised-background-color: var(
             --haxcms-system-action-color
@@ -201,9 +199,7 @@ class HAXCMSSiteListing extends PolymerElement {
           margin-right: 8px;
         }
         simple-fields-field {
-          --simple-fields-accent-color: var(
-            --haxcms-site-listing-color-hover
-          );
+          --simple-fields-accent-color: var(--haxcms-site-listing-color-hover);
         }
         .small-location {
           font-size: 11px;
@@ -764,7 +760,9 @@ class HAXCMSSiteListing extends PolymerElement {
       <simple-modal-template modal-id="help" title="Help">
         <div slot="header">Help directions</div>
         <p slot="content">
-          <md-block source="https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"></md-block>
+          <md-block
+            source="https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
+          ></md-block>
         </p>
         <div slot="buttons"><mwc-button dialog-dismiss>Close</mwc-button></div>
       </simple-modal-template>
@@ -1575,7 +1573,9 @@ class HAXCMSSiteListing extends PolymerElement {
       .querySelector("#jwt")
       .addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
     setTimeout(() => {
-      this.shadowRoot.querySelector('[modal-id="help"]').associateEvents(this.shadowRoot.querySelector('#help'));
+      this.shadowRoot
+        .querySelector('[modal-id="help"]')
+        .associateEvents(this.shadowRoot.querySelector("#help"));
     }, 0);
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
@@ -1587,10 +1587,12 @@ class HAXCMSSiteListing extends PolymerElement {
       properties: {
         number: "title",
         name: function(item) {
-          return (item.slug ? item.slug
-            .replace("/_sites/", "")
-            .replace("/sites/", "")
-            .replace("/", "") : '');
+          return item.slug
+            ? item.slug
+                .replace("/_sites/", "")
+                .replace("/sites/", "")
+                .replace("/", "")
+            : "";
         },
         url: "location",
         image: function(item) {
