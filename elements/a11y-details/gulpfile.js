@@ -164,17 +164,10 @@ gulp.task("watch", () => {
   return gulp.watch("./src/*", gulp.series("merge", "analyze"));
 });
 
-// shift build files around a bit and build source maps
-gulp.task("sourcemaps", () => {
-  return gulp
-    .src("./" + packageJson.wcfactory.elementName + ".es6.js")
-    .pipe(sourcemaps.init())
-    .pipe(sourcemaps.write("./"));
-});
-
+// simple developer flow
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
 gulp.task(
   "default",
-  gulp.series("merge", "analyze", "build", "compile", "sourcemaps")
+  gulp.series("merge", "analyze", "build", "compile")
 );

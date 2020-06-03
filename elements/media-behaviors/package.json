@@ -20,16 +20,16 @@
   },
   "type": "module",
   "main": "media-behaviors.js",
-  "module": "media-behaviors.es6.js",
+  "module": "media-behaviors.js",
   "umd": "media-behaviors.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/media-behaviors/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev",
+    "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
     "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "btopro"

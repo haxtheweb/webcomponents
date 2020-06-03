@@ -92,7 +92,6 @@ body, html, :root {
 }
 
 body, html {
-  overflow-y: scroll;
   padding: 0;
   margin: 0;
   font-size: var(--haxcms-base-styles-body-font-size, 16px);
