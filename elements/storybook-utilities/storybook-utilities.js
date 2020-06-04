@@ -697,18 +697,20 @@ export class StorybookUtilities {
           ? this.getRandomOption(el.haxProperties.demoSchema)
           : {},
       props = demo.properties,
-      styles = demo.properties.style
+      styles = demo.properties && demo.properties.style
         ? demo.properties.style.replace(/;$/, "").split(/;/)
         : [],
-      content = document.createElement("div"),
-      emptyslot = "";
-    delete props.styles;
+      content = document.createElement("div");
+    if(styles.length > 0) delete demo.properties.style;
+
     styles.forEach(style => {
       let parts = style.split(/:/),
-        camel = parts[0].trim();
-      props[this.kebabToCamel(camel)] = parts[1].trim();
+        camel = this.kebabToCamel(parts[0]).trim();
+      props[camel] = parts[1].trim();
       if (additions.filter(addition => addition.css === camel))
         additions.push({ css: camel });
+      
+      console.log('style',parts[0],camel,props,additions);
     });
     content.innerHTML = demo.content || "";
     Object.keys(content.children || {}).forEach(child => {
@@ -721,6 +723,7 @@ export class StorybookUtilities {
       }
     });
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
+    console.log('makeElementFromHaxDemo',props, additions, exclusions);
     return this.makeElementFromClass(el, props, additions, exclusions);
   }
 
@@ -736,7 +739,7 @@ export class StorybookUtilities {
   makeElementFromClass(el, defaults = {}, additions = [], exclusions = []) {
     let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
-    console.log("makeElementFromClass", el, props, knobs);
+    console.log("makeElementFromClass", el, props, additions, knobs);
     return this.makeElement(el, knobs);
   }
 }

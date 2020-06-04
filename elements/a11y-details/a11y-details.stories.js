@@ -34,8 +34,8 @@ export const A11yDetailsWithProgressiveEnhancement = () =>
     [
       {
         slot: "",
-        title: "Content",
-        description: "Details element",
+        title: "Unnamed Slot",
+        description: "<details> element",
         inputMethod: "code-editor"
       },
       { css: "--a11y-details-summary-fontSize" },

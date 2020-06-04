@@ -90,6 +90,7 @@ class A11yFigure extends A11yDetails {
         ::slotted([slot="figcaption"]) {
           margin: 0;
         }
+        img,
         ::slotted([slot="image"]) {
           width: 100%;
         }
@@ -101,10 +102,11 @@ class A11yFigure extends A11yDetails {
   render() {
     return html`
       <figure>
-        <slot name="image"></slot>
+        ${this.imgSrc ? html`<img src="${this.imgSrc}" alt="${this.imgAlt}">` : ``}
+        <slot name="image" ?hidden="${this.imgSrc}"></slot>
         <figcaption>
           <slot name="figcaption"></slot>
-          <a11y-details>
+          <a11y-details open-text="${this.openText}" close-text="${this.closeText}">
             <div slot="summary"><slot name="summary"></slot></div>
             <div slot="details"><slot name="details"></slot></div>
             <slot name="figdetails"></slot>
@@ -117,40 +119,102 @@ class A11yFigure extends A11yDetails {
 
   // haxProperty definition
   static get haxProperties() {
-    let haxProps = JSON.parse(JSON.stringify(super.haxProperties));
-    haxProps.gizmo = {
-      title: "Accessible Details Button",
-      description: "Accessible progressive disclosure with detail and summary",
-      icon: "icons:android",
-      color: "green",
-      groups: ["11"],
-      handles: [
-        {
-          type: ""
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Accessible Figure",
+        description: "Accessible figure with long description",
+        icon: "av:call-to-action",
+        color: "grey",
+        groups: ["11"],
+        handles: [
+          {
+            type: "image"
+          }
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "The Pennsylvania State University"
         }
-      ],
-      meta: {
-        author: "nikkimk",
-        owner: "The Pennsylvania State University"
-      }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "imgSrc",
+            title: "Image",
+            inputMethod: "haxupload"
+          },
+          {
+            property: "imgAlt",
+            title: "Alt Text",
+            inputMethod: "textfield",
+            required: true
+          },
+          {
+            slot: "figcaption",
+            title: "Figure Caption",
+            description: "Figure caption text that is always visible.",
+            inputMethod: "code-editor"
+          },
+          {
+            slot: "details",
+            title: "Decription",
+            description: "Detailed image description that can be hidden or shown",
+            inputMethod: "code-editor"
+          },
+          {
+            slot: "summary",
+            title: "Decription Button",
+            description: "Default for button that shows/hides description text, eg. \"info\", \"medatadata\", etc. ",
+            inputMethod: "code-editor"
+          }
+        ],
+        advanced: [
+          {
+            property: "openText",
+            title: "Optional summary text when details are open",
+            inputMethod: "textfield",
+            required: false
+          },
+          {
+            property: "closeText",
+            title: "Optional summary text when details are closed",
+            inputMethod: "textfield",
+            required: false
+          }
+        ],
+      },
+      demoSchema: [
+        {
+          tag: "a11y-figure",
+          properties: {
+            imgSrc: "//placekitten.com/400/300",
+            imgAlt: "random kitten",
+            openText: "Show Description",
+            closeText: "Hide Description",
+            style: "max-width:400px"
+          },
+          content: '<h4 slot="figcaption">Random Kitten</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>'
+        }
+      ]
     };
-    haxProps.demoSchema = [
-      {
-        tag: "a11y-details",
-        properties: {
-          openText: "Show Aenean",
-          closeText: "Hide Aenean",
-          position: "bottom"
-        },
-        content:
-          '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>'
-      }
-    ];
-    return haxProps;
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return { ...super.properties };
+    return { 
+      ...super.properties,
+      imgSrc: {
+        type: String,
+        attribute: "img-src"
+      },
+      imgAlt: {
+        type: String,
+        attribute: "img-alt"
+      }
+    };
   }
 
   /**
@@ -195,7 +259,6 @@ class A11yFigure extends A11yDetails {
     let figure = this.querySelector("* > figure"),
       image = figure ? figure.querySelector("* > img") : undefined,
       figcaption = figure ? figure.querySelector("* > figcaption") : undefined;
-    console.log("_updateElement", figure, image, figcaption);
     if (image) {
       (this.querySelectorAll("[slot=image]") || []).forEach(image =>
         image.remove()
@@ -218,7 +281,6 @@ class A11yFigure extends A11yDetails {
         clone && childname
           ? clone.querySelector(`* > ${childname}`)
           : undefined;
-    console.log("_copyAndFilter", clone, childname, child);
     if (child) {
       this._copyAndFilter(child, nodenames, i + 1);
       Object.keys(child || {}).forEach(index => child[index].remove());
@@ -232,9 +294,7 @@ class A11yFigure extends A11yDetails {
    * @memberof A11yDetails
    */
   _watchChildren(mutationsList) {
-    console.log("_watchChildren");
     if (this._hasMutations(mutationsList)) {
-      console.log("watching figure");
       this._updateElement();
       this.figureObserver.observe(this.querySelector("* > figure"), {
         childList: true,
@@ -246,7 +306,6 @@ class A11yFigure extends A11yDetails {
       !this.querySelector("* > figureObserver") &&
       this.detailsObserver.disconnect
     ) {
-      console.log("end watching figure");
       this.detailsObserver.disconnect();
     }
   }
