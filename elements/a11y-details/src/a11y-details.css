@@ -80,6 +80,7 @@ details[open] ::slotted([slot="details"]) {
 details[open] #details-inner {
   z-index: 9999999999;
   display: block;
+  left: 0;
   padding: var(--a11y-details-padding, 0.5em);
   max-height: var(--a11y-details-maxHeight,400px);
   padding: var(--a11y-details-padding, 0.5em);

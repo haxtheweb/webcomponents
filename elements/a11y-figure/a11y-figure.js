@@ -73,12 +73,14 @@ class A11yFigure extends A11yDetails {
         :host([hidden]) {
           display: none;
         }
+        figure {
+          position: relative;
+        }
         figcaption {
           display: flex;
           width: 100%;
           align-items: center;
           justify-content: space-between;
-          outline: 1px solid green;
           margin: var(--a11y-figure-figcaption-margin, 0);
           padding: var(--a11y-figure-figcaption-padding, 0);
           font-size: var(--a11y-figure-figcaption-fontSize, unset);
@@ -87,11 +89,9 @@ class A11yFigure extends A11yDetails {
         }
         ::slotted([slot="figcaption"]) {
           margin: 0;
-          outline: 1px solid purple;
         }
         ::slotted([slot="image"]) {
           width: 100%;
-          outline: 1px solid blue;
         }
       `
     ];
@@ -193,16 +193,28 @@ class A11yFigure extends A11yDetails {
    */
   _updateElement() {
     let figure = this.querySelector("* > figure"),
-      image = figure ? figure.querySelector("* > image") : undefined,
+      image = figure ? figure.querySelector("* > img") : undefined,
       figcaption = figure ? figure.querySelector("* > figcaption") : undefined,
       details = figcaption
         ? figcaption.querySelector("* > details")
         : undefined;
-    if (image) this._copyToSlot("image", image.cloneNode(true));
-    if (details) this._copyToSlot("figdetails", details.cloneNode(true));
+    console.log('_updateElement',figure,image,details,figcaption);
+    if (image) {
+      (this.querySelectorAll('[slot=image]') || []).forEach(image=>image.remove());
+      image.cloneNode();
+      image.slot = 'image';
+      this.appendChild(image);
+    }
+    if (details) {
+      (this.querySelectorAll('[slot=details]') || []).forEach(image=>image.remove());
+      details.cloneNode();
+      details.slot = 'details';
+      this.appendChild(details);
+    }
     if (figcaption) {
       let clone = figcaption.cloneNode(true),
-        filtered = clone.querySelectorAll("* > details");
+        filtered = details;
+        console.log('clone',clone,filtered);
       Object.keys(filtered || {}).forEach(i => filtered[i].remove());
       this._copyToSlot("figcaption", clone);
     }
@@ -214,7 +226,9 @@ class A11yFigure extends A11yDetails {
    * @memberof A11yDetails
    */
   _watchChildren(mutationsList) {
+    console.log('_watchChildren');
     if (this._hasMutations(mutationsList)) {
+      console.log('watching figure');
       this._updateElement();
       this.figureObserver.observe(this.querySelector("* > figure"), {
         childList: true,
@@ -226,6 +240,7 @@ class A11yFigure extends A11yDetails {
       !this.querySelector("* > figureObserver") &&
       this.detailsObserver.disconnect
     ) {
+      console.log('end watching figure');
       this.detailsObserver.disconnect();
     }
   }
