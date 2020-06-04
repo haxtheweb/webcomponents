@@ -283,6 +283,7 @@ class HAXCMSBackendBeaker extends LitElement {
         let directory = page.location.replace("/index.html", "");
         element.id = page.id;
         element.location = page.location;
+        element.slug = page.title;
         element.order = page.order;
         element.indent = page.indent;
         element.parent = page.parent;
@@ -294,7 +295,7 @@ class HAXCMSBackendBeaker extends LitElement {
         // make the page
         this.shadowRoot
           .querySelector("#beaker")
-          .write(page.location, "<p>My great new content!</p>");
+          .write(page.slug, "<p>My great new content!</p>");
         this.manifest.items[index] = element;
       }
     });

@@ -225,6 +225,7 @@ class HAX extends HTMLElement {
     document.body.appendChild(document.createElement("hax-app-picker"));
     document.body.appendChild(document.createElement("hax-preferences-dialog"));
     document.body.appendChild(document.createElement("hax-export-dialog"));
+    document.body.appendChild(document.createElement("hax-map"));
     document.body.appendChild(document.createElement("hax-autoloader"));
     return true;
   }

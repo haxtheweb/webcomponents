@@ -179,8 +179,7 @@ class SimpleFields extends SimpleFieldsLite {
        */
       schematizer: {
         type: Object,
-        attribute: "schematizer",
-        reflect: true
+        attribute: "schematizer"
       },
       /**
        * Schema label

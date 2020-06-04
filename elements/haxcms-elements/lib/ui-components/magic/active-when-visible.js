@@ -120,9 +120,7 @@ class ActiveWhenVisible extends LitElement {
         // now we care
         if (this.itemId) {
           let item = store.findItem(this.itemId);
-          this._a = item.location
-            .replace("pages/", "")
-            .replace("/index.html", "");
+          this._a = item.slug;
           this.isVisible = true;
           setTimeout(() => {
             this.shadowRoot.querySelector("#a").click();

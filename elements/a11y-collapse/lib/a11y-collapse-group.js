@@ -174,7 +174,6 @@ class A11yCollapseGroup extends LitElement {
    */
   _attachItem(item) {
     this.__items.push(item);
-    console.log("_attachItem", item, A11yCollapseGroup.properties);
     Object.keys(A11yCollapseGroup.properties || {}).forEach(propName =>
       this._updateItem(item, propName)
     );
@@ -184,7 +183,6 @@ class A11yCollapseGroup extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      console.log("updated", propName, oldValue, this[propName]);
       this.__items.forEach(item => this._updateItem(item, propName, oldValue));
     });
   }
@@ -202,7 +200,6 @@ class A11yCollapseGroup extends LitElement {
       if (this[propName] !== null || typeof this[propName] !== typeof undefined)
         item[propName] = this[propName];
     }
-    console.log("updated", propName, oldValue, this[propName], item);
   }
 
   /**

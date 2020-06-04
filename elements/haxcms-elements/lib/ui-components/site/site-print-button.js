@@ -151,7 +151,7 @@ class SitePrintButton extends LitElement {
         true
       );
       for (var i in result) {
-        content += await fetch("pages/" + result[i].location + "/index.html")
+        content += await fetch(result[i].location)
           .then(function(response) {
             return response.text();
           })
@@ -175,7 +175,7 @@ class SitePrintButton extends LitElement {
         true
       );
       for (var i in result) {
-        content += await fetch("pages/" + result[i].location + "/index.html")
+        content += await fetch(result[i].location)
           .then(function(response) {
             return response.text();
           })
@@ -191,7 +191,7 @@ class SitePrintButton extends LitElement {
     } else if (type === "site") {
       const result = store.routerManifest.items;
       for (var i in result) {
-        content += await fetch("pages/" + result[i].location + "/index.html")
+        content += await fetch(result[i].location)
           .then(function(response) {
             return response.text();
           })

@@ -163,7 +163,7 @@ class SiteTopMenu extends PolymerElement {
                 class="link"
                 tabindex="-1"
                 title$="Go to [[item.title]]"
-                href$="[[item.location]]"
+                href$="[[item.slug]]"
               >
                 <paper-button id$="item-[[item.id]]" noink="[[noink]]">
                   <span class="link-index">[[humanIndex(index)]]</span>

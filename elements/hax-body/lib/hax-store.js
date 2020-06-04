@@ -158,6 +158,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object
       },
       /**
+       * Hax export dialog element.
+       */
+      haxMap: {
+        type: Object
+      },
+      /**
        * Hax preferences dialog element.
        */
       haxPreferences: {
@@ -647,6 +653,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "activeHaxBody",
           "haxToast",
           "haxExport",
+          "haxMap",
           "haxPreferences",
           "haxAppPicker",
           "haxTray"
@@ -658,6 +665,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeHaxBody,
           this.haxToast,
           this.haxExport,
+          this.haxMap,
           this.haxPreferences,
           this.haxAppPicker,
           this.haxTray
@@ -769,6 +777,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     activeHaxBody,
     haxToast,
     haxExport,
+    haxMap,
     haxPreferences,
     haxAppPicker,
     haxTray
@@ -779,6 +788,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       haxAutoloader &&
       haxToast &&
       haxExport &&
+      haxMap &&
       haxPreferences &&
       haxAppPicker &&
       haxTray
@@ -1729,7 +1739,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
-    let drawers = ["haxAppPicker", "haxPreferences", "haxExport"];
+    let drawers = ["haxAppPicker", "haxPreferences", "haxMap", "haxExport"];
     for (var i in drawers) {
       if (active === this[drawers[i]]) {
         active.open();

@@ -134,7 +134,7 @@ class SiteChildrenBlock extends PolymerElement {
                 data-id$="[[item.id]]"
                 class="link"
                 tabindex="-1"
-                href$="[[item.location]]"
+                href$="[[item.slug]]"
               >
                 <paper-button noink="[[noink]]">
                   <div class$="indent indent-[[item.indent]]"></div>

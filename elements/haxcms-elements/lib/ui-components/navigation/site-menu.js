@@ -6,13 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-menu`
  * `Menu hierarchy`
- *
  */
 class SiteMenu extends LitElement {
   /**
@@ -24,6 +19,20 @@ class SiteMenu extends LitElement {
         :host {
           display: block;
           height: 100vh;
+        }
+        map-menu {
+          padding: var(--site-menu-padding);
+          background-color: var(--site-menu-background-color);
+          color: var(--site-menu-color);
+          --map-menu-active-color: var(--site-menu-active-color);
+          --map-menu-container-padding: var(--site-menu-container-padding);
+          --map-menu-container-background-color: var(
+            --site-menu-container-background-color
+          );
+          --map-menu-container-color: var(--site-menu-container-color);
+          --map-menu-item-active-item-color: var(
+            --site-menu-item-active-item-color
+          );
         }
         map-menu[disabled] {
           pointer-events: none;
@@ -82,16 +91,6 @@ class SiteMenu extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          map-menu {
-            @apply --site-menu;
-            --map-menu-active-color: var(--site-menu-active-color);
-            --map-menu-container: var(--site-menu-container);
-            --map-menu-item-active-item: var(--site-menu-item-active-item);
-          }
-        </style>
-      </custom-style>
       <map-menu
         ?disabled="${this.editMode}"
         .selected="${this.activeId}"

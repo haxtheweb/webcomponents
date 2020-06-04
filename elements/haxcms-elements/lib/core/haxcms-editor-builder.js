@@ -57,6 +57,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
    */
   getContext() {
     let context = "";
+    // @todo review if we even need this because newer contexts don't care
     // figure out the context we need to apply for where the editing creds
     // and API might come from
     if (typeof DatArchive !== typeof undefined) {
@@ -64,7 +65,6 @@ class HAXCMSEditorBuilder extends HTMLElement {
     } else if (window.__haxCMSContextPublished === true) {
       context = "published";
     } else if (window.__haxCMSContextNode === true) {
-      // @todo add support for node js based back end
       context = "nodejs";
     } else if (window.__haxCMSContextDemo === true) {
       context = "demo";
@@ -102,7 +102,11 @@ class HAXCMSEditorBuilder extends HTMLElement {
         // this is a unique case since it's server side generated in HAXCMS
         let script = document.createElement("script");
         // IF we're in a live environment this will always be 2 levels back
-        script.src = `../../system/api/connectionSettings`;
+        if (window.appSettings && window.appSettings.connectionSettings) {
+          script.src = window.appSettings.connectionSettings;
+        } else {
+          script.src = `../../system/api/connectionSettings`;
+        }
         fetch(script.src).then(response => {
           if (response.status != 404) {
             document.documentElement.appendChild(script);

@@ -35,6 +35,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
       `
     ];
   }
+
   // render function
   render() {
     return html`

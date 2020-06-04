@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -57,22 +60,7 @@ class SiteSearch extends LitElement {
         #search {
           flex-grow: 2;
           margin-right: 4px;
-          --paper-input-container-input-color: var(
-            --site-search-text-color,
-            #000
-          );
-          --paper-input-container-shared-input-style_-_color: var(
-            --site-search-text-color,
-            #000
-          );
-          --paper-input-container-focus-color: var(
-            --site-search-line-color,
-            #000
-          );
-          --paper-input-container-color: var(
-            --site-search-placeholder-color,
-            #222
-          );
+          --simple-fields-accent-color: var(--site-search-text-color, #000);
           color: var(--site-search-placeholder-color, #222);
         }
       `
@@ -89,9 +77,6 @@ class SiteSearch extends LitElement {
     this.search = "";
     this.__results = [];
     setTimeout(() => {
-      import("@polymer/paper-input/paper-input.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icon/iron-icon.js");
       import("@lrnwebcomponents/lunr-search/lunr-search.js");
       import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
     }, 0);
@@ -99,14 +84,15 @@ class SiteSearch extends LitElement {
   // render function
   render() {
     return html`
-      <paper-input
+      <simple-fields-field
         id="search"
         always-float-label
         label="Search"
+        type="text"
         @value-changed="${this._searchValueChanged}"
       >
         <iron-icon icon="search" slot="prefix"></iron-icon>
-      </paper-input>
+      </simple-fields-field>
       ${this.search.length > 0
         ? html`
             Found ${this.__results.length} results.

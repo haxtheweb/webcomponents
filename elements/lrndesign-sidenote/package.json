@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.10",
+  "version": "2.6.14",
   "description": "Automated conversion of lrndesign-sidenote/",
   "repository": {
     "type": "git",
@@ -25,16 +25,16 @@
   },
   "type": "module",
   "main": "lrndesign-sidenote.js",
-  "module": "lrndesign-sidenote.es6.js",
+  "module": "lrndesign-sidenote.js",
   "umd": "lrndesign-sidenote.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-sidenote/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev",
+    "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
     "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "btopro"
@@ -46,8 +46,8 @@
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

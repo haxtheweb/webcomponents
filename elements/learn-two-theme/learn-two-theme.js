@@ -4,6 +4,12 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import "@polymer/app-layout/app-drawer/app-drawer.js";
+import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -95,7 +101,16 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           position: absolute;
           z-index: 1000;
         }
-
+        paper-icon-button:not(:defined),
+        site-breadcrumb:not(:defined),
+        site-rss-button:not(:defined),
+        site-print-button:not(:defined),
+        site-menu-button:not(:defined),
+        site-modal:not(:defined),
+        site-git-corner:not(:defined),
+        site-menu-button:not(:defined) {
+          display: none;
+        }
         site-menu::-webkit-scrollbar-track {
           -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
           border-radius: 0;
@@ -246,6 +261,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
       `
     ];
   }
+
   // render function
   render() {
     return html`
@@ -398,16 +414,11 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
   constructor() {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
-    setInterval(() => {
-      import("@polymer/app-layout/app-drawer/app-drawer.js");
-      import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+    setTimeout(() => {
       import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");

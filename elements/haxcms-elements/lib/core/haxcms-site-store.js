@@ -7,6 +7,7 @@ import {
   toJS
 } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 
 class Store {
   constructor() {
@@ -26,6 +27,82 @@ class Store {
     };
     this.dashboardOpened = false;
   }
+  /**
+   * Load a manifest / site.json / JSON outline schema
+   * and prep it for usage in HAXcms
+   */
+  loadManifest(manifest, target = null) {
+    // support a custom target or ensure event fires off window
+    if (target == null && window) {
+      target = window;
+    }
+    // @todo replace this with a schema version mapper
+    // once we have versions
+    if (varExists(manifest, "metadata.siteName")) {
+      let git = varGet(manifest, "publishing.git", {});
+      manifest.metadata.site = {
+        name: manifest.metadata.siteName,
+        git: git,
+        created: manifest.metadata.created,
+        updated: manifest.metadata.updated
+      };
+      manifest.metadata.theme.variables = {
+        image: manifest.metadata.image,
+        icon: manifest.metadata.icon,
+        hexCode: manifest.metadata.hexCode,
+        cssVariable: manifest.metadata.cssVariable
+      };
+      manifest.metadata.node = {
+        dynamicElementLoader: manifest.metadata.dynamicElementLoader,
+        fields: manifest.metadata.fields
+      };
+      delete manifest.metadata.publishing;
+      delete manifest.metadata.created;
+      delete manifest.metadata.updated;
+      delete manifest.metadata.siteName;
+      delete manifest.metadata.image;
+      delete manifest.metadata.icon;
+      delete manifest.metadata.hexCode;
+      delete manifest.metadata.cssVariable;
+      delete manifest.metadata.dynamicElementLoader;
+      delete manifest.metadata.fields;
+    }
+    // repair slug not being in earlier builds of json schema
+    manifest.items.forEach((item, index, array) => {
+      if (!item.slug) {
+        array[index].slug = item.location
+          .replace("pages/", "")
+          .replace("/index.html", "");
+      }
+    });
+    var site = new JsonOutlineSchema();
+    // we already have our items, pass them in
+    var nodes = site.itemsToNodes(manifest.items);
+    // smash outline into flat to get the correct order
+    var correctOrder = site.nodesToItems(nodes);
+    var newItems = [];
+    // build a new array in the correct order by pushing the old items around
+    for (var key in correctOrder) {
+      newItems.push(
+        manifest.items.find(element => {
+          return element.id === correctOrder[key].id;
+        })
+      );
+    }
+    manifest.items = newItems;
+    this.manifest = manifest;
+    target.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: manifest
+      })
+    );
+  }
+  /**
+   * Ensure there's a copy of the site-editor globally available
+   */
   cmsSiteEditorAvailability() {
     if (!this.cmsSiteEditor.instance) {
       this.cmsSiteEditor.instance = document.createElement(
@@ -132,23 +209,24 @@ class Store {
       }
       let manifestItems = manifest.items.map(i => {
         let parentLocation = null;
+        let parentSlug = null;
         let parent = manifest.items.find(d => i.parent === d.id);
         if (parent) {
-          parentLocation = parent.location
-            .replace("pages/", "")
-            .replace("/index.html", "");
+          parentLocation = parent.location;
+          parentSlug = parent.slug;
         }
         // get local storage and look for data from this to mesh up
         let metadata = i.metadata;
         if (typeof accessData[i.id] !== typeof undefined) {
           metadata.accessData = accessData[i.id];
         }
-        let location = i.location
-          .replace("pages/", "")
-          .replace("/index.html", "");
+        let location = i.location;
+        let slug = i.slug;
         return Object.assign({}, i, {
           parentLocation: parentLocation,
+          parentSlug: parentSlug,
           location: location,
+          slug: slug,
           metadata: metadata
         });
       });
@@ -215,9 +293,7 @@ class Store {
         i => typeof i.id !== "undefined"
       );
       if (firstItem) {
-        return firstItem.location
-          .replace("pages/", "")
-          .replace("/index.html", "");
+        return firstItem.slug;
       }
     }
     return "/";
@@ -244,6 +320,7 @@ class Store {
         title: this.activeItem.title,
         description: this.activeItem.description,
         location: this.activeItem.location,
+        slug: this.activeItem.slug,
         created: this.activeItem.metadata.created,
         updated: this.activeItem.metadata.created
       };
@@ -492,7 +569,6 @@ class Store {
     }
   }
 }
-
 decorate(Store, {
   location: observable.ref, // router location in url
   editMode: observable, // global editing state
@@ -517,77 +593,130 @@ decorate(Store, {
   ancestorTitle: computed, // active page ancestor title
   changeActiveItem: action.bound
 });
-
 /**
  * Central store
  */
 export const store = new Store();
-
+// register globally so we can make sure there is only one
+window.HAXCMS = window.HAXCMS || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+window.HAXCMS.requestAvailability = () => {
+  if (!window.HAXCMS.instance) {
+    window.HAXCMS.instance = document.createElement("haxcms-site-store");
+    document.body.appendChild(window.HAXCMS.instance);
+  }
+  return window.HAXCMS.instance;
+};
+// weird, but self appending
+window.HAXCMS.requestAvailability();
 /**
- * When location changes update activeItem
+ * HTMLElement
  */
-autorun(() => {
-  if (
-    store.location &&
-    store.location.route &&
-    store.location.route.component
-  ) {
-    // get the id from the router
-    const id = store.location.route.name;
-    // make sure that we aren't in edit mode
-    let found = store.manifest.items.filter(item => {
-      if (item.id !== id) {
-        return false;
+class HAXCMSSiteStore extends HTMLElement {
+  constructor() {
+    super();
+    this.store = store;
+    this.source = "";
+    /**
+     * When location changes update activeItem
+     */
+    autorun(() => {
+      if (
+        store.location &&
+        store.location.route &&
+        store.location.route.component
+      ) {
+        // get the id from the router
+        const id = store.location.route.name;
+        // make sure that we aren't in edit mode
+        let found = store.manifest.items.filter(item => {
+          if (item.id !== id) {
+            return false;
+          }
+          return true;
+        });
+        if (found) {
+          store.activeId = id;
+        }
       }
-      return true;
     });
-    if (found) {
-      store.activeId = id;
-    }
-  }
-});
 
-/**
- * When Active Item Changes notify json-outline-schema to have the backend
- * change the page.
- */
-autorun(() => {
-  const foundItem = toJS(store.findItem(store.activeId));
-  if (foundItem) {
-    document.body.dispatchEvent(
-      new CustomEvent("json-outline-schema-active-item-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: foundItem
-      })
-    );
+    /**
+     * When Active Item Changes notify json-outline-schema to have the backend
+     * change the page.
+     */
+    autorun(() => {
+      const foundItem = toJS(store.findItem(store.activeId));
+      if (foundItem) {
+        document.body.dispatchEvent(
+          new CustomEvent("json-outline-schema-active-item-changed", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: foundItem
+          })
+        );
+      }
+    });
+    /**
+     * When editMode changes notify HAXeditor.
+     */
+    autorun(() => {
+      const editMode = toJS(store.editMode);
+      // trap for early setup
+      if (window.HaxStore && window.HaxStore.write) {
+        window.dispatchEvent(
+          new CustomEvent("haxcms-edit-mode-changed", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: editMode
+          })
+        );
+        window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
+        // @todo hack to keep voice controls active if enabled
+        if (
+          window.HaxStore.instance &&
+          window.HaxStore.instance.globalPreferences.haxVoiceCommands
+        ) {
+          setTimeout(() => {
+            window.HaxStore.instance.__hal.auto = true;
+          }, 10);
+        }
+      }
+    });
   }
-});
-/**
- * When editMode changes notify HAXeditor.
- */
-autorun(() => {
-  const editMode = toJS(store.editMode);
-  // trap for early setup
-  if (window.HaxStore && window.HaxStore.write) {
-    window.dispatchEvent(
-      new CustomEvent("haxcms-edit-mode-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: editMode
-      })
-    );
-    window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
-    // @todo hack to keep voice controls active if enabled
-    if (
-      window.HaxStore.instance &&
-      window.HaxStore.instance.globalPreferences.haxVoiceCommands
-    ) {
-      setTimeout(() => {
-        window.HaxStore.instance.__hal.auto = true;
-      }, 10);
+  static get tag() {
+    return "haxcms-site-store";
+  }
+  static get observedAttributes() {
+    return ["source"];
+  }
+  set source(value) {
+    this[name] = value;
+    if (value) {
+      this.setAttribute("source", value);
     }
   }
-});
+  get source() {
+    return this.getAttribute("source");
+  }
+  attributeChangedCallback(name, oldVal, newVal) {
+    if (name == "source" && newVal != "") {
+      fetch(this[name])
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.store.loadManifest(data);
+        })
+        .catch(err => {
+          console.warn(err);
+        });
+    }
+  }
+}
+window.customElements.define(HAXCMSSiteStore.tag, HAXCMSSiteStore);
+export { HAXCMSSiteStore };

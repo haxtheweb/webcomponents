@@ -7,60 +7,49 @@
 }
 
 #loginform {
-    width: var(--login-form-width, 450px);
-    height: var(--login-form-height, auto);
-    --simple-camera-snap-color: var(--login-form-color, #36bed4);
-    --simple-camera-snap-error: var(--login-form-error, red);
-    --simple-camera-snap-width: var(--login-form-image-width, 200px);
-    --simple-camera-snap-height: var(--login-form-image-height, 200px);
-    --simple-camera-snap-background: var(--login-form-background, white);
-    --simple-camera-snap-border-radius: var(--login-form-image-bnorder-radius,100%);
-    box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
-                    0 4px 22px 3px rgba(0, 0, 0, 0.12),
-                    0 6px 7px -4px rgba(0, 0, 0, 0.4);
+  width: var(--login-form-width, 450px);
+  height: var(--login-form-height, auto);
+  --simple-camera-snap-color: var(--login-form-color, #36bed4);
+  --simple-camera-snap-error: var(--login-form-error, red);
+  --simple-camera-snap-width: var(--login-form-image-width, 200px);
+  --simple-camera-snap-height: var(--login-form-image-height, 200px);
+  --simple-camera-snap-background: var(--login-form-background, white);
+  --simple-camera-snap-border-radius: var(--login-form-image-bnorder-radius,100%);
+  box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
+  0 4px 22px 3px rgba(0, 0, 0, 0.12),
+  0 6px 7px -4px rgba(0, 0, 0, 0.4);
 }
 
 #loginformcontent {
-    padding: var(--login-form-padding, 48px);
+  padding: var(--login-form-padding, 48px);
 }
 
 #loginformcontent>* {
-    margin-top: var(--login-form-margin-top, var(--login-form-margin, 8px));
-    margin-bottom: var(--login-form-margin-bottom, var(--login-form-margin, 8px));
+  margin-top: var(--login-form-margin-top, var(--login-form-margin, 8px));
+  margin-bottom: var(--login-form-margin-bottom, var(--login-form-margin, 8px));
 }
 
 #loginbtn,
-#buttons ::slotted(paper-button) {
-    background-color: var(--login-btn-background-color, var(--login-form-color, var(--paper-indigo-500)));
-    color: var(--login-btn-text-color, var(--login-form-background, white));
-    width: var(--login-btn-width, auto);
-    margin: var(--login-btn-margin, 24px auto 0);
-    display: var(--login-btn-display, inline-flex);
-    --paper-button-raised-keyboard-focus: {
-        background-color: var(--login-btn-raised-background-color, var(--paper-pink-a200)) !important;
-        color: var(--login-btn-text-color, var(--login-form-background, white)) !important;
-    };
-    @apply --login-btn;
+#buttons ::slotted(mwc-button) {
+  width: var(--login-btn-width, auto);
+  margin: var(--login-btn-margin, 24px auto 0);
+  display: var(--login-btn-display, inline-flex);
 }
 
 #loginbtn[disabled] {
-    background-color: var(--login-btn-disabled-background-color, var(--paper-indigo-100));
+  background-color: var(--login-btn-disabled-background-color, var(--simple-colors-default-theme-accent-12, #000000));
 }
 
 h1 {
-    @apply --paper-font-display1;
-    margin: 0;
-    @apply --login-title;
+  margin: 0;
 }
 
 h2 {
-    @apply --paper-font-title;
-    margin: 0;
-    @apply --login-subtitle;
+  margin: 0;
 }
 
 paper-progress {
-    width: 100%;
+  width: 100%;
 }
 
 ::slotted(simple-login-avatar) {
@@ -68,7 +57,6 @@ paper-progress {
 }
 
 #errormsg {
-    margin-top: 16px;
-    color: var(--login-error-label-color, var(--error-color));
-    @apply --paper-font-menu;
+  margin-top: 16px;
+  color: var(--login-error-label-color, var(--error-color));
 }

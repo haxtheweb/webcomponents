@@ -10,7 +10,8 @@
         label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @button-click="${e => this.togglePlay()}"
         ?audio-only="${this.audioOnly}"
-        ?disabled="${this.audioNoThumb}">
+        ?disabled="${this.audioNoThumb}"
+        youtube-id="${this.youtubeId}">
       </a11y-media-play-button>
       <div id="html5">
         <slot></slot>

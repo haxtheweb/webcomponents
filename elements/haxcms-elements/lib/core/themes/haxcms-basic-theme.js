@@ -142,10 +142,10 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
           display: flex;
         }
         site-menu-button {
+          --site-menu-button-button-hover-color: var(
+            --haxcms-basic-theme-accent-color
+          );
           --site-menu-button-icon-fill-color: white;
-          --site-menu-button-button-hover: {
-            color: var(--haxcms-basic-theme-accent-color);
-          }
         }
         site-footer {
           padding: 32px 64px;

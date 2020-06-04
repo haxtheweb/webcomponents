@@ -934,6 +934,7 @@ class A11yMediaPlayer extends SimpleColors {
               @button-click="${e => this.togglePlay()}"
               ?audio-only="${this.audioOnly}"
               ?disabled="${this.audioNoThumb}"
+              youtube-id="${this.youtubeId}"
             >
             </a11y-media-play-button>
             <div id="html5">

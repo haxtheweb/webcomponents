@@ -125,14 +125,14 @@ class SiteBreadcrumb extends LitElement {
         if (itemBuilder) {
           items.unshift({
             title: itemBuilder.title,
-            location: itemBuilder.location
+            location: itemBuilder.slug
           });
         }
       }
       for (var i in items) {
         let icon = document.createElement("iron-icon");
         icon.icon = "icons:chevron-right";
-        if (items[i].location != null) {
+        if (items[i].slug != null) {
           let button = document.createElement("paper-button");
           button.innerText = items[i].title;
           button.noink = true;
@@ -142,7 +142,7 @@ class SiteBreadcrumb extends LitElement {
             this.shadowRoot.querySelector("#space").appendChild(button);
           } else {
             let link = document.createElement("a");
-            link.setAttribute("href", items[i].location);
+            link.setAttribute("href", items[i].slug);
             link.setAttribute("tabindex", "-1");
             link.setAttribute("itemprop", "url");
             link.appendChild(button);

@@ -169,15 +169,13 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
       <custom-style>
         <style>
           site-menu-button {
+            --site-menu-button-button-hover-color: var(--haxcms-color, yellow);
             --site-menu-button-button: {
               height: 60px;
               width: 60px;
               padding: 0;
               margin: 0;
               line-height: 60px;
-            }
-            --site-menu-button-button-hover: {
-              color: var(--haxcms-color, yellow);
             }
           }
           site-title {

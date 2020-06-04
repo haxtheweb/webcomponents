@@ -41,6 +41,15 @@ class SiteMenuButton extends LitElement {
           transition: 0.3s all ease-in-out;
           min-width: unset;
         }
+        paper-button:hover,
+        paper-button:focus,
+        paper-button:active {
+          color: var(--site-menu-button-button-hover-color, inherit);
+          background-color: var(
+            --site-menu-button-button-hover-background-color,
+            inherit
+          );
+        }
         iron-icon {
           display: block;
           font-size: 16px;
@@ -100,11 +109,6 @@ class SiteMenuButton extends LitElement {
         <style>
           paper-button {
             @apply --site-menu-button-button;
-          }
-          paper-button:hover,
-          paper-button:focus,
-          paper-button:active {
-            @apply --site-menu-button-button-hover;
           }
         </style>
       </custom-style>
@@ -182,7 +186,8 @@ class SiteMenuButton extends LitElement {
       if (
         ["type", "activeRouterManifestIndex", "routerManifest"].includes(
           propName
-        )
+        ) &&
+        this.routerManifest
       ) {
         this.link = this.pageLink(
           this.type,
@@ -202,7 +207,8 @@ class SiteMenuButton extends LitElement {
           "routerManifest",
           "editMode",
           "link"
-        ].includes(propName)
+        ].includes(propName) &&
+        this.routerManifest
       ) {
         this.disabled = this.pageLinkStatus(
           this.type,
@@ -249,7 +255,7 @@ class SiteMenuButton extends LitElement {
         activeRouterManifestIndex > 0 &&
         items[activeRouterManifestIndex - 1]
       ) {
-        return items[activeRouterManifestIndex - 1].location;
+        return items[activeRouterManifestIndex - 1].slug;
       }
       return null;
     } else if (type === "next" && items) {
@@ -257,7 +263,7 @@ class SiteMenuButton extends LitElement {
         activeRouterManifestIndex < items.length - 1 &&
         items[activeRouterManifestIndex + 1]
       ) {
-        return items[activeRouterManifestIndex + 1].location;
+        return items[activeRouterManifestIndex + 1].slug;
       }
       return null;
     }

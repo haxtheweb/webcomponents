@@ -122,7 +122,7 @@ class SiteOutlineBlock extends PolymerElement {
                 class="link"
                 tabindex="-1"
                 title$="Go to [[item.title]]"
-                href$="[[item.location]]"
+                href$="[[item.slug]]"
                 ><paper-button noink="[[noink]]"
                   ><span class="link-index">[[humanIndex(index)]]</span
                   ><span class="link-title">[[item.title]]</span></paper-button

@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.10",
+  "version": "2.6.14",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -27,30 +27,30 @@
   },
   "type": "module",
   "main": "a11y-media-player.js",
-  "module": "a11y-media-player.es6.js",
+  "module": "a11y-media-player.js",
   "umd": "a11y-media-player.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-media-player/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others 'yarn run watch' 'yarn run serve'",
-    "watch": "../../node_modules/.bin/gulp dev",
+    "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
     "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^2.6.8",
-    "@lrnwebcomponents/anchor-behaviors": "^2.6.8",
-    "@lrnwebcomponents/es-global-bridge": "^2.6.8",
-    "@lrnwebcomponents/responsive-utility": "^2.6.10",
-    "@lrnwebcomponents/simple-colors": "^2.6.10",
-    "@lrnwebcomponents/simple-fields": "^2.6.10",
-    "@lrnwebcomponents/simple-search": "^2.6.10",
-    "@lrnwebcomponents/simple-tooltip": "^2.6.8",
+    "@lrnwebcomponents/absolute-position-behavior": "^2.6.12",
+    "@lrnwebcomponents/anchor-behaviors": "^2.6.12",
+    "@lrnwebcomponents/es-global-bridge": "^2.6.12",
+    "@lrnwebcomponents/responsive-utility": "^2.6.14",
+    "@lrnwebcomponents/simple-colors": "^2.6.14",
+    "@lrnwebcomponents/simple-fields": "^2.6.14",
+    "@lrnwebcomponents/simple-search": "^2.6.14",
+    "@lrnwebcomponents/simple-tooltip": "^2.6.12",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
@@ -64,7 +64,7 @@
     "screenfull": "^4.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^2.6.10",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

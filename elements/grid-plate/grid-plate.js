@@ -568,7 +568,9 @@ class GridPlate extends LitElement {
           ) {
             return true;
           }
-          this.shadowRoot.querySelector("#right").focus();
+          if (!this.hideOps) {
+            this.shadowRoot.querySelector("#right").focus();
+          }
           break;
         // clear active
         case "Escape":

@@ -150,6 +150,7 @@ class RetroCard extends SimpleColors {
       `
     ];
   }
+
   // render function
   render() {
     return html`

@@ -148,7 +148,7 @@ class SiteDotIndicator extends LitElement {
         li.classList.add("active");
       }
       let link = document.createElement("a");
-      link.href = routerManifest.items[i].location;
+      link.href = routerManifest.items[i].slug;
       li.appendChild(link);
       this.shadowRoot.querySelector("#list").appendChild(li);
     }

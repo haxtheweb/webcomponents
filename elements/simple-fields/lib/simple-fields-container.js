@@ -747,6 +747,9 @@ class SimpleFieldsContainer extends LitElement {
         ? "var(--simple-fields-error-color, #dd2c00)"
         : "";
     }
+    // return true if we have no errors
+    // return false if we DO have errors
+    return !this.error;
   }
 
   /**
