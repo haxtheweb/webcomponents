@@ -113,15 +113,17 @@ class HAXCMSSiteBuilder extends LitElement {
   /**
    * Load JSON Outline Schema / site.json format
    */
-  loadJOSData() {
+  async loadJOSData() {
     // file required or we have nothing; other two mixed in for pathing
     if (this.file) {
-      fetch(`${this.outlineLocation}${this.file}${this._timeStamp}`)
+      this.loading = true;
+      await fetch(`${this.outlineLocation}${this.file}${this._timeStamp}`)
         .then(response => {
           return response.json();
         })
         .then(data => {
           this._updateManifest(data);
+          this.loading = false;
         })
         .catch(err => {
           this.lastErrorChanged(err);
