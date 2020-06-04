@@ -205,17 +205,22 @@ class A11yFigure extends A11yDetails {
       this.appendChild(image);
     }
     if (figcaption) {
-      this._copyAndFilter(figcaption.cloneNode(true),["figcaption","details","summary"]);
+      this._copyAndFilter(figcaption.cloneNode(true), [
+        "figcaption",
+        "details",
+        "summary"
+      ]);
     }
   }
-  _copyAndFilter(clone, nodenames = [], i = 0){
-    let childname = nodenames[i+1], 
-      child = clone && childname 
-        ? clone.querySelector(`* > ${childname}`)
-        : undefined;
+  _copyAndFilter(clone, nodenames = [], i = 0) {
+    let childname = nodenames[i + 1],
+      child =
+        clone && childname
+          ? clone.querySelector(`* > ${childname}`)
+          : undefined;
     console.log("_copyAndFilter", clone, childname, child);
-    if(child) {
-      this._copyAndFilter(child, nodenames, i+1);
+    if (child) {
+      this._copyAndFilter(child, nodenames, i + 1);
       Object.keys(child || {}).forEach(index => child[index].remove());
     }
     this._copyToSlot(nodenames[i], clone);

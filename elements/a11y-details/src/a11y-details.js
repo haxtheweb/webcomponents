@@ -248,16 +248,18 @@ class A11yDetails extends LitElement {
    * @memberof A11yDetails
    */
   _copyToSlot(slotName, clone, tagName = "span") {
-    let filteredNodes = Object.keys(clone.childNodes || {}).filter(i=>{
-      let node = clone.childNodes[i]
-      return !!node.tagName || node.textContent.trim().length > 0;
-    }).map(i=>clone.childNodes[ parseInt(i)]);
-    if(filteredNodes.length === 1 && filteredNodes[0].tagName) {
+    let filteredNodes = Object.keys(clone.childNodes || {})
+      .filter(i => {
+        let node = clone.childNodes[i];
+        return !!node.tagName || node.textContent.trim().length > 0;
+      })
+      .map(i => clone.childNodes[parseInt(i)]);
+    if (filteredNodes.length === 1 && filteredNodes[0].tagName) {
       clone = filteredNodes[0];
       tagName = clone.tagName;
     }
-    let slot = this._getSlot(slotName,tagName);
-      slot.innerHTML = clone.innerHTML;
+    let slot = this._getSlot(slotName, tagName);
+    slot.innerHTML = clone.innerHTML;
     clone.remove();
   }
   /**
@@ -269,7 +271,7 @@ class A11yDetails extends LitElement {
    */
   _getSlot(slotName, tagName = "span") {
     let slot = this.querySelector(`[slot=${slotName}]`);
-    if(slot && slot.tagName !== tagName) slot.remove();
+    if (slot && slot.tagName !== tagName) slot.remove();
     if (!slot) {
       slot = document.createElement(tagName);
       slot.slot = slotName;
