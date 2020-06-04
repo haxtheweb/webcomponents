@@ -198,23 +198,27 @@ class A11yFigure extends A11yDetails {
       details = figcaption
         ? figcaption.querySelector("* > details")
         : undefined;
-    console.log('_updateElement',figure,image,details,figcaption);
+    console.log("_updateElement", figure, image, details, figcaption);
     if (image) {
-      (this.querySelectorAll('[slot=image]') || []).forEach(image=>image.remove());
+      (this.querySelectorAll("[slot=image]") || []).forEach(image =>
+        image.remove()
+      );
       image.cloneNode();
-      image.slot = 'image';
+      image.slot = "image";
       this.appendChild(image);
     }
     if (details) {
-      (this.querySelectorAll('[slot=details]') || []).forEach(image=>image.remove());
+      (this.querySelectorAll("[slot=details]") || []).forEach(image =>
+        image.remove()
+      );
       details.cloneNode();
-      details.slot = 'details';
+      details.slot = "details";
       this.appendChild(details);
     }
     if (figcaption) {
       let clone = figcaption.cloneNode(true),
         filtered = details;
-        console.log('clone',clone,filtered);
+      console.log("clone", clone, filtered);
       Object.keys(filtered || {}).forEach(i => filtered[i].remove());
       this._copyToSlot("figcaption", clone);
     }
@@ -226,9 +230,9 @@ class A11yFigure extends A11yDetails {
    * @memberof A11yDetails
    */
   _watchChildren(mutationsList) {
-    console.log('_watchChildren');
+    console.log("_watchChildren");
     if (this._hasMutations(mutationsList)) {
-      console.log('watching figure');
+      console.log("watching figure");
       this._updateElement();
       this.figureObserver.observe(this.querySelector("* > figure"), {
         childList: true,
@@ -240,7 +244,7 @@ class A11yFigure extends A11yDetails {
       !this.querySelector("* > figureObserver") &&
       this.detailsObserver.disconnect
     ) {
-      console.log('end watching figure');
+      console.log("end watching figure");
       this.detailsObserver.disconnect();
     }
   }
