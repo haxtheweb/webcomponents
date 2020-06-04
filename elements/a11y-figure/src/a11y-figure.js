@@ -194,11 +194,8 @@ class A11yFigure extends A11yDetails {
   _updateElement() {
     let figure = this.querySelector("* > figure"),
       image = figure ? figure.querySelector("* > img") : undefined,
-      figcaption = figure ? figure.querySelector("* > figcaption") : undefined,
-      details = figcaption
-        ? figcaption.querySelector("* > details")
-        : undefined;
-    console.log("_updateElement", figure, image, details, figcaption);
+      figcaption = figure ? figure.querySelector("* > figcaption") : undefined;
+    console.log("_updateElement", figure, image, figcaption);
     if (image) {
       (this.querySelectorAll("[slot=image]") || []).forEach(image =>
         image.remove()
@@ -207,21 +204,21 @@ class A11yFigure extends A11yDetails {
       image.slot = "image";
       this.appendChild(image);
     }
-    if (details) {
-      (this.querySelectorAll("[slot=details]") || []).forEach(image =>
-        image.remove()
-      );
-      details.cloneNode();
-      details.slot = "details";
-      this.appendChild(details);
-    }
     if (figcaption) {
-      let clone = figcaption.cloneNode(true),
-        filtered = details;
-      console.log("clone", clone, filtered);
-      Object.keys(filtered || {}).forEach(i => filtered[i].remove());
-      this._copyToSlot("figcaption", clone);
+      this._copyAndFilter(figcaption.cloneNode(true),["figcaption","details","summary"]);
     }
+  }
+  _copyAndFilter(clone, nodenames = [], i = 0){
+    let childname = nodenames[i+1], 
+      child = clone && childname 
+        ? clone.querySelector(`* > ${childname}`)
+        : undefined;
+    console.log("_copyAndFilter", clone, childname, child);
+    if(child) {
+      this._copyAndFilter(child, nodenames, i+1);
+      Object.keys(child || {}).forEach(index => child[index].remove());
+    }
+    this._copyToSlot(nodenames[i], clone);
   }
   /**
    * watches the element's slots for a <details/> element
