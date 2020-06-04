@@ -20,7 +20,7 @@ export const A11yFigureWithProgressiveEnhancement = () =>
     {
       openText: `Show Description`,
       closeText: `Hide Description`,
-      maxWidth: '500px',
+      maxWidth: "500px",
       emptyslot: `<figure>
         <img src="//placekitten.com/400/300" alt="random kitten">
         <figcaption>
@@ -70,11 +70,5 @@ export const A11yFigureWithProgressiveEnhancement = () =>
       { css: "--a11y-figure-maxHeight" },
       { css: "maxWidth" }
     ],
-    [
-      "summary", 
-      "details", 
-      "figcaption", 
-      "imgSrc", 
-      "imgAlt"
-    ]
+    ["summary", "details", "figcaption", "imgSrc", "imgAlt"]
   );

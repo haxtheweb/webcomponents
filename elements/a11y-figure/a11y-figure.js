@@ -102,11 +102,18 @@ class A11yFigure extends A11yDetails {
   render() {
     return html`
       <figure>
-        ${this.imgSrc ? html`<img src="${this.imgSrc}" alt="${this.imgAlt}">` : ``}
+        ${this.imgSrc
+          ? html`
+              <img src="${this.imgSrc}" alt="${this.imgAlt}" />
+            `
+          : ``}
         <slot name="image" ?hidden="${this.imgSrc}"></slot>
         <figcaption>
           <slot name="figcaption"></slot>
-          <a11y-details open-text="${this.openText}" close-text="${this.closeText}">
+          <a11y-details
+            open-text="${this.openText}"
+            close-text="${this.closeText}"
+          >
             <div slot="summary"><slot name="summary"></slot></div>
             <div slot="details"><slot name="details"></slot></div>
             <slot name="figdetails"></slot>
@@ -162,13 +169,15 @@ class A11yFigure extends A11yDetails {
           {
             slot: "details",
             title: "Decription",
-            description: "Detailed image description that can be hidden or shown",
+            description:
+              "Detailed image description that can be hidden or shown",
             inputMethod: "code-editor"
           },
           {
             slot: "summary",
             title: "Decription Button",
-            description: "Default for button that shows/hides description text, eg. \"info\", \"medatadata\", etc. ",
+            description:
+              'Default for button that shows/hides description text, eg. "info", "medatadata", etc. ',
             inputMethod: "code-editor"
           }
         ],
@@ -185,7 +194,7 @@ class A11yFigure extends A11yDetails {
             inputMethod: "textfield",
             required: false
           }
-        ],
+        ]
       },
       demoSchema: [
         {
@@ -197,14 +206,15 @@ class A11yFigure extends A11yDetails {
             closeText: "Hide Description",
             style: "max-width:400px"
           },
-          content: '<h4 slot="figcaption">Random Kitten</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>'
+          content:
+            '<h4 slot="figcaption">Random Kitten</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>'
         }
       ]
     };
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return { 
+    return {
       ...super.properties,
       imgSrc: {
         type: String,

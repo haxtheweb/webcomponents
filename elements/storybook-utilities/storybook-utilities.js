@@ -697,11 +697,12 @@ export class StorybookUtilities {
           ? this.getRandomOption(el.haxProperties.demoSchema)
           : {},
       props = demo.properties,
-      styles = demo.properties && demo.properties.style
-        ? demo.properties.style.replace(/;$/, "").split(/;/)
-        : [],
+      styles =
+        demo.properties && demo.properties.style
+          ? demo.properties.style.replace(/;$/, "").split(/;/)
+          : [],
       content = document.createElement("div");
-    if(styles.length > 0) delete demo.properties.style;
+    if (styles.length > 0) delete demo.properties.style;
 
     styles.forEach(style => {
       let parts = style.split(/:/),
@@ -709,8 +710,8 @@ export class StorybookUtilities {
       props[camel] = parts[1].trim();
       if (additions.filter(addition => addition.css === camel))
         additions.push({ css: camel });
-      
-      console.log('style',parts[0],camel,props,additions);
+
+      console.log("style", parts[0], camel, props, additions);
     });
     content.innerHTML = demo.content || "";
     Object.keys(content.children || {}).forEach(child => {
@@ -723,7 +724,7 @@ export class StorybookUtilities {
       }
     });
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
-    console.log('makeElementFromHaxDemo',props, additions, exclusions);
+    console.log("makeElementFromHaxDemo", props, additions, exclusions);
     return this.makeElementFromClass(el, props, additions, exclusions);
   }
 
