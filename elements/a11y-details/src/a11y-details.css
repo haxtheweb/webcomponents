@@ -10,7 +10,9 @@ details {
 
 summary {
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: var(--a11y-details-summary-fontSize, 0.8em);
   color: var(--a11y-details-summary-color, #000);
   background-color: var(--a11y-details-summary-backgroundColor, #fff);
@@ -78,6 +80,7 @@ details[open] ::slotted([slot="details"]) {
 details[open] #details-inner {
   z-index: 9999999999;
   display: block;
+  left: 0;
   padding: var(--a11y-details-padding, 0.5em);
   max-height: var(--a11y-details-maxHeight,400px);
   padding: var(--a11y-details-padding, 0.5em);

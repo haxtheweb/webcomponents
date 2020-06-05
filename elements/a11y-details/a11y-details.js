@@ -69,7 +69,9 @@ class A11yDetails extends LitElement {
 
         summary {
           cursor: pointer;
-          display: inline-flex;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           font-size: var(--a11y-details-summary-fontSize, 0.8em);
           color: var(--a11y-details-summary-color, #000);
           background-color: var(--a11y-details-summary-backgroundColor, #fff);
@@ -158,6 +160,7 @@ class A11yDetails extends LitElement {
         details[open] #details-inner {
           z-index: 9999999999;
           display: block;
+          left: 0;
           padding: var(--a11y-details-padding, 0.5em);
           max-height: var(--a11y-details-maxHeight, 400px);
           padding: var(--a11y-details-padding, 0.5em);
@@ -420,7 +423,7 @@ class A11yDetails extends LitElement {
       let clone = details.cloneNode(true),
         filtered = clone.querySelectorAll("* > summary");
       Object.keys(filtered || {}).forEach(i => filtered[i].remove());
-      this._copyToSlot("details", clone);
+      this._copyToSlot("details", clone, "div");
     }
   }
   /**
@@ -470,11 +473,22 @@ class A11yDetails extends LitElement {
    * moves content cloned from unnamed slot to designated named slot
    *
    * @param {string} slotName 'details' or 'summary' slot
+   * @param {string} tagName the tag that will become a slot
    * @param {object} clone content cloned from unnamed slot
    * @memberof A11yDetails
    */
-  _copyToSlot(slotName, clone) {
-    let slot = this._getSlot(slotName);
+  _copyToSlot(slotName, clone, tagName = "span") {
+    let filteredNodes = Object.keys(clone.childNodes || {})
+      .filter(i => {
+        let node = clone.childNodes[i];
+        return !!node.tagName || node.textContent.trim().length > 0;
+      })
+      .map(i => clone.childNodes[parseInt(i)]);
+    if (filteredNodes.length === 1 && filteredNodes[0].tagName) {
+      clone = filteredNodes[0];
+      tagName = clone.tagName;
+    }
+    let slot = this._getSlot(slotName, tagName);
     slot.innerHTML = clone.innerHTML;
     clone.remove();
   }
@@ -482,16 +496,14 @@ class A11yDetails extends LitElement {
    * gets an existing named slot or makes one
    *
    * @param {string} slotName
-   * @param {boolean} [inline=true]
    * @returns {object}
    * @memberof A11yDetails
    */
-  _getSlot(slotName, inline = true) {
+  _getSlot(slotName, tagName = "span") {
     let slot = this.querySelector(`[slot=${slotName}]`);
+    if (slot && slot.tagName !== tagName) slot.remove();
     if (!slot) {
-      slot = inline
-        ? document.createElement("span")
-        : document.createElement("div");
+      slot = document.createElement(tagName);
       slot.slot = slotName;
       this.append(slot);
     }

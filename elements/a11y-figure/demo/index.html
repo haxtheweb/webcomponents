@@ -16,26 +16,43 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic a11y-figure demo</h3>
+      <h3>a11y-figure demo</h3>
       <demo-snippet>
         <template>
-          <a11y-figure>
+          <a11y-figure close-text="Hide Aenean" open-text="Show Aenean">
+            <img slot="image" src="//placekitten.com/400/300" alt="random kitten">
+            <h4 slot="figcaption">Random Kitten</h4>
+            <div slot="summary">Aenean</div>
+            <div slot="details">
+              Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
+              Pellentesque magna velit, tincidunt quis pharetra id, gravida 
+              placerat erat. Maecenas id dui pretium risus pulvinar feugiat 
+              vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
+              purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
+              Nunc convallis justo sed nibh consectetur, at pharetra nulla 
+              accumsan.
+            </div>
+          </a11y-figure>
+        </template>
+      </demo-snippet>
+      <h3>a11y-figure demo with progressive enhancement</h3>
+      <demo-snippet>
+        <template>
+          <a11y-figure close-text="Hide Aenean" open-text="Show Aenean">
             <figure>
-              <img src="//:placekitten.com/400/300" alt="random kitten">
+              <img src="//placekitten.com/400/300" alt="random kitten">
               <figcaption>
                 <h4>Random Kitten</h4>
-                <a11y-details id="custom" close-text="Hide Aenean" open-text="Show Aenean" >
-                  <details>
-                    <summary>Aenean</summary>
-                    Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
-                    Pellentesque magna velit, tincidunt quis pharetra id, gravida 
-                    placerat erat. Maecenas id dui pretium risus pulvinar feugiat 
-                    vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
-                    purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
-                    Nunc convallis justo sed nibh consectetur, at pharetra nulla 
-                    accumsan.
-                  </details>
-                </a11y-details>
+                <details>
+                  <summary>Aenean</summary>
+                  Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
+                  Pellentesque magna velit, tincidunt quis pharetra id, gravida 
+                  placerat erat. Maecenas id dui pretium risus pulvinar feugiat 
+                  vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
+                  purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
+                  Nunc convallis justo sed nibh consectetur, at pharetra nulla 
+                  accumsan.
+                </details>
               </figcaption>
             </figure>
           </a11y-figure>

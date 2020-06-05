@@ -13,6 +13,7 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const A11yDetailsStory = () => utils.makeElementFromHaxDemo(A11yDetails);
+
 export const A11yDetailsWithProgressiveEnhancement = () =>
   utils.makeElementFromClass(
     A11yDetails,
@@ -33,8 +34,8 @@ export const A11yDetailsWithProgressiveEnhancement = () =>
     [
       {
         slot: "",
-        title: "Content",
-        description: "Details element",
+        title: "Unnamed Slot",
+        description: "<details> element",
         inputMethod: "code-editor"
       },
       { css: "--a11y-details-summary-fontSize" },

@@ -5,19 +5,11 @@
     "customElementClass": "LitElement",
     "elementName": "a11y-figure",
     "generator-wcfactory-version": "0.7.1",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/a11y-figure.css",
-      "scss": "src/a11y-figure.scss",
-      "html": "src/a11y-figure.html",
-      "js": "src/a11y-figure.js",
-      "properties": "src/a11y-figure-properties.json",
-      "hax": "src/a11y-figure-hax.json"
-    },
-    "sharedStyles": [
-      "...super.styles"
-    ]
+      "js": "src/a11y-figure.js"
+    }
   },
   "version": "2.6.16",
   "description": "accessible figure with image description in details",
