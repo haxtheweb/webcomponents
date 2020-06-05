@@ -39,7 +39,7 @@
     "@lrnwebcomponents/schema-behaviors": "^2.6.16",
     "@lrnwebcomponents/simple-tooltip": "^2.6.16",
     "@polymer/iron-image": "^3.0.0",
-    "lit-element": "^2.3.0"
+    "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",

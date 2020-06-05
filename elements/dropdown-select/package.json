@@ -38,7 +38,7 @@
   "dependencies": {
     "@lrnwebcomponents/simple-fields": "^2.6.16",
     "@lrnwebcomponents/simple-picker": "^2.6.16",
-    "lit-element": "^2.3.0"
+    "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
