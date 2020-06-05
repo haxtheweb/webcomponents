@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.12",
+  "version": "2.6.16",
   "description": "LunrJS search element",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.6.12",
+    "@lrnwebcomponents/es-global-bridge": "^2.6.16",
     "@polymer/iron-ajax": "^3.0.1",
     "lit-element": "^2.3.0",
     "lunr": "2.3.6"

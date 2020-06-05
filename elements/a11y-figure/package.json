@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.13",
+  "version": "2.6.16",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^2.6.12",
+    "@lrnwebcomponents/a11y-details": "^2.6.16",
     "lit-element": "2.3.1"
   },
   "devDependencies": {

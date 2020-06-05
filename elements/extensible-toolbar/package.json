@@ -16,7 +16,7 @@
       "hax": "src/extensible-toolbar-hax.json"
     }
   },
-  "version": "2.6.12",
+  "version": "2.6.16",
   "description": "a toolbar that can be customised with with mixins and json",
   "repository": {
     "type": "git",

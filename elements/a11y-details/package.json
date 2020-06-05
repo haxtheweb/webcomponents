@@ -16,7 +16,7 @@
       "hax": "src/a11y-details-hax.json"
     }
   },
-  "version": "2.6.12",
+  "version": "2.6.16",
   "description": "accessible progressive disclosure with detail and summary",
   "repository": {
     "type": "git",

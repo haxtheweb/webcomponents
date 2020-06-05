@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.14",
+  "version": "2.6.16",
   "description": "Uses JSON Schema or an array of fields to display a series of fields",
   "repository": {
     "type": "git",
@@ -43,12 +43,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-tabs": "^2.6.14",
-    "@lrnwebcomponents/code-editor": "^2.6.14",
-    "@lrnwebcomponents/simple-colors": "^2.6.14",
-    "@lrnwebcomponents/simple-icon-picker": "^2.6.14",
-    "@lrnwebcomponents/simple-picker": "^2.6.12",
-    "@lrnwebcomponents/simple-tooltip": "^2.6.12",
+    "@lrnwebcomponents/a11y-tabs": "^2.6.16",
+    "@lrnwebcomponents/code-editor": "^2.6.16",
+    "@lrnwebcomponents/simple-colors": "^2.6.16",
+    "@lrnwebcomponents/simple-icon-picker": "^2.6.16",
+    "@lrnwebcomponents/simple-picker": "^2.6.16",
+    "@lrnwebcomponents/simple-tooltip": "^2.6.16",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",
@@ -58,7 +58,7 @@
     "lit-element": "^2.3.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
