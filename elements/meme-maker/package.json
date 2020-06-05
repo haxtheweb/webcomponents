@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.16",
+  "version": "2.6.17",
   "description": "Automated conversion of meme-maker/",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.16",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.17",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
