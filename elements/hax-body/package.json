@@ -65,6 +65,7 @@
     "@lrnwebcomponents/simple-toast": "^2.6.14",
     "@lrnwebcomponents/simple-tooltip": "^2.6.12",
     "@lrnwebcomponents/utils": "^2.6.12",
+    "@lrnwebcomponents/a11y-collapse": "^2.6.14",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/iron-a11y-keys": "^3.0.1",
