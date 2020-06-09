@@ -57,7 +57,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           --carousel-image-height: unset;
           border: 1px solid var(--lrndesign-gallery-border-color);
         }
-        :host([hidden]), :host [hidden] {
+        :host([hidden]),
+        :host [hidden] {
           display: none !important;
         }
         :host([responsive-size="md"]) {
