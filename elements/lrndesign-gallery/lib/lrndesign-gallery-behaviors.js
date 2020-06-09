@@ -33,6 +33,8 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       css`
         :host {
           display: block;
+          border-radius: var(--lrndesign-gallery-border-radius, 0px);
+          box-shadow: var(--lrndesign-gallery-box-shadow, unset);
         }
 
         :host([hidden]) {
@@ -42,7 +44,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
           display: block;
           --lrndesign-gallery-color: var(--simple-colors-default-theme-grey-12);
           --lrndesign-gallery-background-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-default-theme-grey-1
           );
           --lrndesign-gallery-focus-color: var(
             --simple-colors-default-theme-accent-9
@@ -100,6 +102,9 @@ class LrndesignGalleryBehaviors extends SimpleColors {
           }
         }
         :host([dark]) {
+          --lrndesign-gallery-background-color: var(
+            --simple-colors-default-theme-grey-2
+          );
           --lrndesign-gallery-border-color: var(
             --simple-colors-default-theme-grey-1
           );

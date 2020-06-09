@@ -55,6 +55,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           margin: 15px 0;
           padding: 0;
           --carousel-image-height: unset;
+          border: 1px solid var(--lrndesign-gallery-border-color);
+        }
+        :host([hidden]), :host [hidden] {
+          display: none !important;
         }
         :host([responsive-size="md"]) {
           --carousel-image-border-top: 4px solid
@@ -83,7 +87,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 100%;
           color: var(--lrndesign-gallery-color);
           background-color: var(--lrndesign-gallery-background-color);
-          border: 1px solid var(--lrndesign-gallery-border-color);
           border-top: var(--lrndesign-gallery-border-top);
           --carousel-image-flex: 0 0
             calc(
