@@ -27,10 +27,13 @@ export const HaxIconsetDemo = () => {
   iconset.includeSets = "hax";
   iconset.hidden = "hidden";
   document.body.appendChild(iconset);
-  let list = iconset && iconset.__iconList ? iconset.__iconList : [{name: "icons", icons: ["star", "check", "history"]}],
+  let list =
+      iconset && iconset.__iconList
+        ? iconset.__iconList
+        : [{ name: "icons", icons: ["star", "check", "history"] }],
     icons = list[0].icons,
-    knob = select("icon",icons,utils.getRandomOption(icons),"Properties"),
-    icon = document.createElement('iron-icon');
-    icon.setAttribute("icon",knob);
+    knob = select("icon", icons, utils.getRandomOption(icons), "Properties"),
+    icon = document.createElement("iron-icon");
+  icon.setAttribute("icon", knob);
   return icon;
 };

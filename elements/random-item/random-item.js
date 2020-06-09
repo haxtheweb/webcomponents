@@ -14,80 +14,76 @@
  * @demo demo/index.html
  */
 class RandomItem extends HTMLElement {
-  
-
-// render function
+  // render function
   render() {
     return html`
-<style>
-:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-        </style>
-${this.dataPoint}`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      ${this.dataPoint}
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Random item",
-    "description": "Show a random item from a list of items",
-    "icon": "places:casino",
-    "color": "red",
-    "groups": ["Item"],
-    "handles": [],
-    "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "field",
-        "title": "Field",
-        "description": "Field in the file to show",
-        "inputMethod": "textfield",
-        "required": false
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Random item",
+        description: "Show a random item from a list of items",
+        icon: "places:casino",
+        color: "red",
+        groups: ["Item"],
+        handles: [],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University"
+        }
       },
-      {
-        "property": "source",
-        "title": "Source",
-        "description": "URL pointing to a CSV file",
-        "inputMethod": "haxupload",
-        "required": true
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "field",
+            title: "Field",
+            description: "Field in the file to show",
+            inputMethod: "textfield",
+            required: false
+          },
+          {
+            property: "source",
+            title: "Source",
+            description: "URL pointing to a CSV file",
+            inputMethod: "haxupload",
+            required: true
+          }
+        ],
+        advanced: []
       }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "source": {
-    "name": "source",
-    "type": String
-  },
-  "field": {
-    "name": "field",
-    "type": String
-  }
-}
-;
+      ...super.properties,
+
+      source: {
+        name: "source",
+        type: String
+      },
+      field: {
+        name: "field",
+        type: String
+      }
+    };
   }
 
   /**
