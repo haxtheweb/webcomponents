@@ -23,7 +23,7 @@ class ElmslnStudioDashboard extends LitElement {
     return [
       css`
         :host {
-          font-family: var(--elmsln-studio-FontFamily, 'Roboto', sans-serif);
+          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
           font-size: 13px;
         }
         .sr-only {

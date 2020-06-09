@@ -25,7 +25,7 @@ class ElmslnStudioSubmissions extends LitElement {
     return [
       css`
         :host {
-          font-family: var(--elmsln-studio-FontFamily, 'Roboto', sans-serif);
+          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
           font-size: 13px;
         }
         .sr-only {
@@ -35,8 +35,9 @@ class ElmslnStudioSubmissions extends LitElement {
           overflow: hidden;
         }
         lrndesign-gallery {
-         --lrndesign-gallery-border-radius: 2px;
-         --lrndesign-gallery-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          --lrndesign-gallery-border-radius: 2px;
+          --lrndesign-gallery-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         #cards {
           margin: var(--elmsln-studio-margin, 20px)
@@ -48,14 +49,30 @@ class ElmslnStudioSubmissions extends LitElement {
         }
         .card {
           --accent-card-padding: 0;
-          --accent-card-heading-padding-top: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-heading-padding-left: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-heading-padding-right: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-subheading-padding-left: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-subheading-padding-right: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-content-padding-left: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-content-padding-right: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          --accent-card-content-padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          --accent-card-heading-padding-top: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-heading-padding-left: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-heading-padding-right: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-subheading-padding-left: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-subheading-padding-right: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-content-padding-left: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-content-padding-right: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-content-padding-bottom: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
           --accent-card-image-height: 200px;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
             calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -68,18 +85,18 @@ class ElmslnStudioSubmissions extends LitElement {
         .card [slot="corner"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 12px;
-          color: #AFAFAF;
+          color: #afafaf;
         }
         .card [slot="subheading"] {
           font-weight: var(--elmsln-studio-FontWeightBold, 500);
           font-size: 18px;
           font-style: normal;
-          color: #5D5E5F;
+          color: #5d5e5f;
         }
         .card [slot="content"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 14px;
-          color: #7E7E7E;
+          color: #7e7e7e;
         }
         .card [slot="footer"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
@@ -88,7 +105,7 @@ class ElmslnStudioSubmissions extends LitElement {
           display: flex;
           align-items: stretch;
           justify-content: space-between;
-          color: #95989A;
+          color: #95989a;
         }
         .card button {
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -179,12 +196,10 @@ class ElmslnStudioSubmissions extends LitElement {
                 <span slot="corner" id="date-${s.id}">
                   ${s.date}
                 </span>
-                <span slot="subheading"
-                  id="assignment-${s.id}">
+                <span slot="subheading" id="assignment-${s.id}">
                   ${s.assignment}
                 </span>
-                <span slot="content" 
-                  id="project-${s.id}">
+                <span slot="content" id="project-${s.id}">
                   ${s.project}
                 </span>
                 <div slot="footer">
