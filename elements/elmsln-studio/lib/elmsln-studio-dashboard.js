@@ -16,14 +16,14 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
  * @customElement elmsln-studio-dashboard
  * @lit-html
  * @lit-element
- * @demo demo/index.html
+ * @demo demo/dashboard.html
  */
 class ElmslnStudioDashboard extends LitElement {
   static get styles() {
     return [
       css`
         :host {
-          font-family: var(--elmsln-studio-FontFamily, sans-serif);
+          font-family: var(--elmsln-studio-FontFamily, 'Roboto', sans-serif);
           font-size: 13px;
         }
         .sr-only {

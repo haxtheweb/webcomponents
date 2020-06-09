@@ -2,6 +2,7 @@
 
 :host {
   display: block;
+  font-family: var(--elmsln-studio-FontFamily, sans-serif);
 }
 
 :host([hidden]) {
