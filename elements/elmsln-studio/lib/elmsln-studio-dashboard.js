@@ -42,7 +42,7 @@ class ElmslnStudioDashboard extends LitElement {
           color: var(--simple-colors-default-theme-grey-7, #666);
         }
         h2,
-        #comments [slot="heading"] {
+        #secondary [slot="heading"] {
           font-size: 18px;
         }
         .card {
@@ -71,13 +71,13 @@ class ElmslnStudioDashboard extends LitElement {
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
-        #cards .card [slot="heading"],
-        #cards .card [slot="subheading"] {
+        #primary .card [slot="heading"],
+        #primary .card [slot="subheading"] {
           text-align: center;
           display: block;
           margin: 0 auto;
         }
-        #comments {
+        #secondary {
           margin-top: 0;
           --accent-card-heading-padding-top: 0;
           --nav-card-linklist-margin-top: 0;
@@ -126,10 +126,10 @@ class ElmslnStudioDashboard extends LitElement {
             align-items: stretch;
             justify-content: space-between;
           }
-          #cards {
+          #primary {
             flex: 0 0 calc(50%);
           }
-          #comments {
+          #secondary {
             flex: 0 0 calc(50%);
           }
           h1,
@@ -142,13 +142,13 @@ class ElmslnStudioDashboard extends LitElement {
           progress-donut {
             max-width: 200px;
           }
-          #cards {
+          #primary {
             flex: 0 0 calc(66.66666667%);
           }
-          #comments {
+          #secondary {
             flex: 0 0 calc(33.33333333%);
           }
-          #cards > div {
+          #primary > div {
             display: flex;
             align-items: stretch;
             justify-content: space-between;
@@ -187,7 +187,7 @@ class ElmslnStudioDashboard extends LitElement {
         @response="${e => this._handleObjectData(e, "__submissions")}"
       ></iron-ajax>
       <h1 class="sr-only">Overview</h1>
-      <div id="cards">
+      <div id="primary">
         <div id="profile">
           <h2>${this.__profile.student.data.display_name}</h2>
           <accent-card accent-color="purple" class="card">
@@ -316,7 +316,7 @@ class ElmslnStudioDashboard extends LitElement {
         </div>
       </div>
       <nav-card
-        id="comments"
+        id="secondary"
         flat
         no-border
         class="card"
