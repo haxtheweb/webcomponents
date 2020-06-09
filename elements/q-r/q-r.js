@@ -91,7 +91,7 @@ class QR extends LitElement {
       gizmo: {
         title: "QR Code",
         description: "A code to scan from a smartphone.",
-        icon: "hardware:developer-board",
+        icon: "hax:qr-code",
         color: "grey",
         groups: ["QR"],
         handles: [

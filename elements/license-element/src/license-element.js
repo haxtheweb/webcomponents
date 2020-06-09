@@ -263,7 +263,7 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
       gizmo: {
         title: "License",
         description: "Provide a license for you rwork",
-        icon: "icons:theaters",
+        icon: "icons:copyright",
         color: "grey",
         groups: ["Content", "Copyright"],
         handles: [

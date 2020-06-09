@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "Random item",
     "description": "Show a random item from a list of items",
-    "icon": "communication:rss-feed",
+    "icon": "places:casino",
     "color": "red",
     "groups": ["Item"],
     "handles": [],

@@ -264,6 +264,74 @@ const template = html`
         </g>
       </defs>
     </svg>
+    <!-- multiple-choice -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="multiple-choice">
+          <rect x="5" width="12" height="4"/><circle cx="2" cy="2" r="2"/>
+          <rect opacity="0.7" x="5" y="10" width="12" height="4"/>
+          <circle opacity="0.7" cx="2" cy="7" r="2"/>
+          <rect opacity="0.7" x="5" y="5" width="12" height="4"/>
+          <circle opacity="0.7" cx="2" cy="12" r="2"/>
+        </g>
+      </defs>
+    </svg>
+    <!-- timeline -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="timeline">
+          <rect class="cls-1" x="13.22" y="3.96" width="1.97" height="10.25"/>
+          <circle class="cls-1" cx="14.24" cy="2.63" r="2.63"/>
+          <circle class="cls-1" cx="14.2" cy="15.54" r="2.63"/>
+          <circle class="cls-1" cx="14.2" cy="9.09" r="2.63"/>
+          <rect class="cls-1" x="0.04" y="0.63" width="9.24" height="4.01"/>
+          <rect class="cls-1" x="0.05" y="7.08" width="9.24" height="4.01"/>
+          <rect class="cls-1" y="13.53" width="9.24" height="4.01"/>
+        </g>
+      </defs>
+    </svg>
+    <!-- meme -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="meme">
+          <path d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3ZM16.55,4.72H18.6v1h-.82v.9h.77v.9h-.77v1h.91v1H16.55Zm-4.3,0h1.59c.05.28.1.62.15,1l.17,1.2.29-2.21h1.6V9.46H15V6.26l-.43,3.2h-.76l-.45-3.13V9.46H12.25Zm-2.5,0h2.06v1H11v.9h.77v.9H11v1h.9v1H9.75Zm-4.3,0h1.6c0,.28.09.62.14,1l.18,1.2.28-2.21H9.26V9.46H8.18V6.26l-.43,3.2H7L6.53,6.33V9.46H5.45ZM5,18l3.5-4.5,2.5,3L14.5,12,19,18Z" transform="translate(-3 -3)"/>
+        </g>
+      </defs>
+    </svg>
+    <!-- qr-code -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="qr-code">
+          <path d="M12.8,3v8.2H21V3H12.8z M19.2,9.4h-4.7V4.8h4.7V9.4z"/>
+          <rect x="15.8" y="6.1" width="2.2" height="2.2"/>
+          <path d="M3,12.7v8.3h8.2v-8.3H3z M9.5,19.1H4.8v-4.7h4.7V19.1z"/>
+          <rect x="6.1" y="15.7" width="2" height="2.2"/>
+          <path d="M3,3v8.2h8.2V3H3z M9.5,9.4H4.8V4.8h4.7V9.4z"/>
+          <rect x="6" y="6.1" width="2.2" height="2.2"/>
+          <polygon points="17.7,12.7 12.8,12.7 12.8,14.5 14.5,14.5 14.8,14.5 17.7,14.5 "/>
+          <polygon points="14.5,19.2 14.5,19.1 14.5,18.8 14.5,15.9 12.8,15.9 12.8,20.9 14.5,20.9 16.3,20.9 16.3,19.2 "/>
+          <polygon points="19.2,19.1 19.2,17.7 21,17.7 21,12.7 19.2,12.7 19.2,14.5 19.2,14.8 19.2,15.9 17.5,15.9 15.7,15.9 15.7,17.7 17.5,17.7 19.2,17.7 19.2,17.7 17.5,17.7 17.5,19.2 19.2,19.2 19.2,20.9 21,20.9 21,19.1 "/>
+        </g>
+      </defs>
+    </svg>
+    <!-- placeholder-image -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="placeholder-image">
+          <path d="M19,3H5A2,2,0,0,0,3,5V19a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V5A2,2,0,0,0,19,3Zm0,2h0Zm-8.6,7L5,17.43V6.62ZM6.53,5h10.9L12,10.45ZM12,13.6l5.4,5.4H6.57ZM13.55,12,19,6.57v10.9Z" transform="translate(-3 -3)"/>
+        </g>
+      </defs>
+    </svg>
+    <!-- html-code -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="html-code">
+          <polygon points="15.8 0 19.93 7.96 15.76 16 18.83 16 23 7.96 18.88 0 15.8 0"/>
+          <polygon points="7.2 16 3.07 8.04 7.24 0 4.17 0 0 8.04 4.12 16 7.2 16"/>
+          <polygon points="10.6 16 14.94 0 12.4 0 8.06 16 10.6 16"/>
+        </g>
+      </defs>
+    </svg>
     <!-- pi -->
     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
       <defs>
