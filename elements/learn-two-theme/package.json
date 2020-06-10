@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.15",
+  "version": "2.6.17",
   "description": "Learn2 theme for HAXcms",
   "repository": {
     "type": "git",
@@ -41,16 +41,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.6.15",
-    "@lrnwebcomponents/map-menu": "^2.6.14",
-    "@lrnwebcomponents/simple-colors": "^2.6.14",
-    "@lrnwebcomponents/simple-tooltip": "^2.6.12",
+    "@lrnwebcomponents/haxcms-elements": "^2.6.17",
+    "@lrnwebcomponents/map-menu": "^2.6.17",
+    "@lrnwebcomponents/simple-colors": "^2.6.17",
+    "@lrnwebcomponents/simple-tooltip": "^2.6.17",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

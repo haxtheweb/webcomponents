@@ -2324,7 +2324,7 @@ class HaxBody extends SimpleColors {
           if (
             (target &&
               target.removeAttribute &&
-              target !== null &&
+              target != null &&
               typeof local !== typeof undefined &&
               target !== local &&
               target !== local.parentNode &&

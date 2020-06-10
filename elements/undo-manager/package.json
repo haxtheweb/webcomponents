@@ -16,7 +16,7 @@
       "hax": "src/undo-manager-hax.json"
     }
   },
-  "version": "2.6.12",
+  "version": "2.6.17",
   "description": "an undo history manager element",
   "repository": {
     "type": "git",
@@ -40,11 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "^2.3.0",
+    "lit-element": "^2.3.1",
     "undo.js": "0.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

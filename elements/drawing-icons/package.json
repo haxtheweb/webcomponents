@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.14",
+  "version": "2.6.17",
   "description": "iconset for drawing toolbar buttons",
   "repository": {
     "type": "git",
@@ -45,9 +45,9 @@
     "@polymer/iron-iconset-svg": "^3.0.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.12",
-    "@lrnwebcomponents/iconset-demo": "^2.6.12",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.14",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
+    "@lrnwebcomponents/iconset-demo": "^2.6.16",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.17",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

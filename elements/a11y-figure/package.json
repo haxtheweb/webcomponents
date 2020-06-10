@@ -11,7 +11,7 @@
       "js": "src/a11y-figure.js"
     }
   },
-  "version": "2.6.13",
+  "version": "2.6.17",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",
@@ -35,8 +35,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^2.6.12",
-    "lit-element": "2.3.1"
+    "@lrnwebcomponents/a11y-details": "^2.6.17",
+    "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",
