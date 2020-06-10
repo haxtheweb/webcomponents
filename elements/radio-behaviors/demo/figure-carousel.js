@@ -16,16 +16,17 @@ class figureCarousel extends RadioBehaviors(LitElement) {
     return [
       css`
         :host,
-        ::slotted(figure){
+        ::slotted(figure) {
           display: block;
           width: 400px;
           margin: 0;
         }
         :host([hidden]),
-        ::slotted(figure:not([active])){
+        ::slotted(figure:not([active])) {
           display: none !important;
         }
-    `];
+      `
+    ];
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -47,22 +48,31 @@ class figureCarousel extends RadioBehaviors(LitElement) {
   constructor() {
     super();
   }
-  render(){
-    console.log('this.itemData',this.itemData);
+  render() {
+    console.log("this.itemData", this.itemData);
     return html`
-      ${(this.itemData || []).map(item =>
-        html`<button id="select-${item.id}" @click="${e => this.selectItem(`${item.id}`)}">${item.id}</button>`
-      )}<slot></slot>`;
+      ${(this.itemData || []).map(
+        item =>
+          html`
+            <button
+              id="select-${item.id}"
+              @click="${e => this.selectItem(`${item.id}`)}"
+            >
+              ${item.id}
+            </button>
+          `
+      )}<slot></slot>
+    `;
   }
   /**
    * query selector for slotted children, can be overridden
    * @readonly
    */
-  get _query(){
-    return 'figure';
+  get _query() {
+    return "figure";
   }
-  get _selected(){
-    return 'active';
+  get _selected() {
+    return "active";
   }
 }
 window.customElements.define(figureCarousel.tag, figureCarousel);
