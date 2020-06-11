@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "HAX CMS series of elements to provide a full on CMS",
   "repository": {
     "type": "git",
@@ -43,8 +43,8 @@
   "dependencies": {
     "@lrnwebcomponents/beaker-broker": "^2.6.17",
     "@lrnwebcomponents/git-corner": "^2.6.17",
-    "@lrnwebcomponents/hax-body": "^2.6.17",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.6.17",
+    "@lrnwebcomponents/hax-body": "^2.6.18",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.6.18",
     "@lrnwebcomponents/json-outline-schema": "^2.6.17",
     "@lrnwebcomponents/jwt-login": "^2.6.17",
     "@lrnwebcomponents/lunr-search": "^2.6.17",
@@ -52,8 +52,8 @@
     "@lrnwebcomponents/map-menu": "^2.6.17",
     "@lrnwebcomponents/portal-launcher": "^2.6.16",
     "@lrnwebcomponents/schema-behaviors": "^2.6.17",
-    "@lrnwebcomponents/simple-colors": "^2.6.17",
-    "@lrnwebcomponents/simple-fields": "^2.6.17",
+    "@lrnwebcomponents/simple-colors": "^2.6.18",
+    "@lrnwebcomponents/simple-fields": "^2.6.18",
     "@lrnwebcomponents/simple-icon-picker": "^2.6.17",
     "@lrnwebcomponents/simple-picker": "^2.6.17",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",

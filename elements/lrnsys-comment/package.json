@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@lrnwebcomponents/materializecss-styles": "^2.6.17",
     "@lrnwebcomponents/moment-element": "^2.6.17",
     "@lrnwebcomponents/mtz-marked-editor": "^2.6.17",
-    "@lrnwebcomponents/simple-modal": "^2.6.17",
+    "@lrnwebcomponents/simple-modal": "^2.6.18",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",
     "@lrnwebcomponents/word-count": "^2.6.17",
     "@polymer/app-layout": "^3.0.2",

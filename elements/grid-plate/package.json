@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "a grid element with 1 to 4 columns via slots",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^2.6.16",
+    "@lrnwebcomponents/hax-iconset": "^2.6.18",
     "@lrnwebcomponents/responsive-grid": "^2.6.17",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",

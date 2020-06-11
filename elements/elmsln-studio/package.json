@@ -16,7 +16,7 @@
       "hax": "src/elmsln-studio-hax.json"
     }
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "Studio App for ELMS:LN",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.6.17",
-    "@lrnwebcomponents/lrndesign-gallery": "^2.6.17",
-    "@lrnwebcomponents/accent-card": "^2.6.17",
+    "@lrnwebcomponents/accent-card": "^2.6.18",
+    "@lrnwebcomponents/lrndesign-gallery": "^2.6.18",
     "@lrnwebcomponents/progress-donut": "^2.6.17",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",

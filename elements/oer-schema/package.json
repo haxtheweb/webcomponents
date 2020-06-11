@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "Automated conversion of oer-schema/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-iconset": "^2.6.16",
+    "@lrnwebcomponents/hax-iconset": "^2.6.18",
     "@lrnwebcomponents/schema-behaviors": "^2.6.17",
     "lit-element": "^2.3.1"
   },
