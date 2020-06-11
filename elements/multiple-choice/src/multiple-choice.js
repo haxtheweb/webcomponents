@@ -501,7 +501,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       gizmo: {
         title: "Multiple choice",
         description: "Multiple choice self check",
-        icon: "icons:list",
+        icon: "hax:multiple-choice",
         color: "purple",
         groups: ["Instructional"],
         handles: [],

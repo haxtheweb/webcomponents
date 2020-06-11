@@ -15,18 +15,19 @@
  */
 class RandomItem extends HTMLElement {
   // render function
-  get html() {
-    return `
-<style>
-:host {
-  display: block;
-}
+  render() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-        </style>
-${this.dataPoint}`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      ${this.dataPoint}
+    `;
   }
 
   // haxProperty definition
@@ -38,7 +39,7 @@ ${this.dataPoint}`;
       gizmo: {
         title: "Random item",
         description: "Show a random item from a list of items",
-        icon: "communication:rss-feed",
+        icon: "places:casino",
         color: "red",
         groups: ["Item"],
         handles: [],

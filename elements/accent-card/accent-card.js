@@ -23,6 +23,7 @@ Custom property | Description | Default
 `--accent-card-padding` | Sets padding inside accent card. | 20px
 `--accent-card-footer-border-color` | Card footer's border color.* | `--simple-colors-default-theme-grey-3`
 `--accent-card-box-shadow` | Card footer's box-shadow. | 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+`--accent-card-heading-align` | Corner and heading align-items | unset
 
 #### Overriding Default Padding
 Custom property | Description | Default
@@ -128,7 +129,7 @@ class AccentCard extends SimpleColors {
           );
           --accent-card-footer-border-color: var(--accent-card-border-color);
         }
-        :host article {
+        article {
           width: 100%;
           box-sizing: border-box;
         }
@@ -149,7 +150,7 @@ class AccentCard extends SimpleColors {
         :host([horizontal]:not([no-border])) article {
           border-left: 4px solid var(--accent-card-border-color);
         }
-        :host .image-outer {
+        .image-outer {
           box-sizing: border-box;
           position: relative;
           overflow: visible;
@@ -162,7 +163,7 @@ class AccentCard extends SimpleColors {
           height: auto;
           width: 100%;
         }
-        :host .image {
+        .image {
           height: 100%;
           width: 100%;
           background-size: cover;
@@ -191,12 +192,15 @@ class AccentCard extends SimpleColors {
           height: 0;
           padding-top: var(--accent-card-image-height);
         }
-        :host .body {
+        .body {
           flex-grow: 1;
           overflow: visible;
         }
-        :host #heading {
+        #heading {
           flex: 0 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: var(--accent-card-heading-align, unset);
           padding-top: var(
             --accent-card-heading-padding-top,
             var(--accent-card-padding, 20px)
@@ -212,10 +216,17 @@ class AccentCard extends SimpleColors {
           padding-bottom: var(--accent-card-heading-padding-bottom, 0px);
           margin: 0;
         }
-        :host([accent-heading][accent-color]) #heading {
+        #heading h1 {
+          margin: 0;
+          flex: 1 1 auto;
+        }
+        #heading div {
+          flex: 0 0 auto;
+        }
+        :host([accent-heading][accent-color]) #heading h1 {
           color: var(--accent-card-heading-color);
         }
-        :host #subheading {
+        #subheading {
           flex: 0 0 auto;
           font-size: 90%;
           font-style: italic;
@@ -230,7 +241,7 @@ class AccentCard extends SimpleColors {
           );
           padding-bottom: var(--accent-card-subheading-padding-bottom, unset);
         }
-        :host #content {
+        #content {
           font-size: 100%;
           padding-top: var(
             --accent-card-content-padding-top,
@@ -250,7 +261,7 @@ class AccentCard extends SimpleColors {
           );
           flex: 1 1 auto;
         }
-        :host #footer {
+        #footer {
           flex: 0 0 auto;
           border-top: 1px solid var(--accent-card-footer-border-color);
           padding-top: var(--accent-card-footer-padding-top, unset);
@@ -279,7 +290,10 @@ class AccentCard extends SimpleColors {
           ></div>
         </div>
         <div class="body">
-          <h1 id="heading"><slot name="heading"></slot></h1>
+          <div id="heading">
+            <h1><slot name="heading"></slot></h1>
+            <div><slot name="corner"></slot></div>
+          </div>
           <div id="subheading"><slot name="subheading"></slot></div>
           <div id="content"><slot name="content"></slot></div>
           <div id="footer"><slot name="footer"></slot></div>

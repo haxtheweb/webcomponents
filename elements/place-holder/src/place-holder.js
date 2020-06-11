@@ -293,7 +293,7 @@ class PlaceHolder extends SimpleColors {
         title: "Placeholder",
         description:
           "A place holder that can be converted into the media type that's been selected",
-        icon: "image:transform",
+        icon: "hax:placeholder-image",
         color: "grey",
         groups: ["Placeholder", "Content"],
         handles: [],

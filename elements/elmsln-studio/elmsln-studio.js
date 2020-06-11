@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/elmsln-studio-dashboard.js";
+import "./lib/elmsln-studio-submissions.js";
 
 /**
  * `elmsln-studio`
@@ -24,6 +25,7 @@ class ElmslnStudio extends LitElement {
       css`
         :host {
           display: block;
+          font-family: var(--elmsln-studio-FontFamily, sans-serif);
         }
 
         :host([hidden]) {
@@ -36,6 +38,10 @@ class ElmslnStudio extends LitElement {
   // render function
   render() {
     return html`
+      <link
+        href="//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet"
+      />
       <slot></slot>
     `;
   }

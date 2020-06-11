@@ -352,7 +352,7 @@ class LrndesignTimeline extends SimpleColors {
       gizmo: {
         title: "Timeline",
         description: "A timeline of events with images and text",
-        icon: "icons:timeline",
+        icon: "hax:timeline",
         color: "indigo",
         groups: ["Content", "Instructional", "Media", "Image"],
         handles: [

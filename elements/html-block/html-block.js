@@ -32,7 +32,7 @@ class HtmlBlock extends HTMLElement {
       gizmo: {
         title: "Html block",
         description: "A basic HTML block that provides HAXschema wiring",
-        icon: "icons:warning",
+        icon: "hax:html-code",
         color: "red",
         groups: ["Block"],
         handles: [

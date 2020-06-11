@@ -141,7 +141,7 @@ class MemeMaker extends LitElement {
       gizmo: {
         title: "Meme",
         description: "Make a meme out of an image",
-        icon: "editor:title",
+        icon: "hax:meme",
         color: "orange",
         groups: ["Media", "Funny"],
         handles: [
