@@ -1,6 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import { winEventsElement, stripMSWord } from "@lrnwebcomponents/utils/utils.js";
+import {
+  winEventsElement,
+  stripMSWord
+} from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog

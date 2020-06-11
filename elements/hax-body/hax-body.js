@@ -183,23 +183,17 @@ class HaxBody extends SimpleColors {
           letter-spacing: var(--hax-base-styles-p-letter-spacing);
         }
         :host([edit-mode]) #bodycontainer ::slotted(a) {
-          color: var(
-            --hax-base-styles-a-color
-          );
+          color: var(--hax-base-styles-a-color);
           font-size: var(--hax-base-styles-a-font-size);
           font-weight: var(--hax-base-styles-a-font-weight);
         }
         :host([edit-mode]) #bodycontainer ::slotted(a:visited) {
-          color: var(
-            --hax-base-styles-a-color-visited
-          );
+          color: var(--hax-base-styles-a-color-visited);
         }
         :host([edit-mode]) #bodycontainer ::slotted(a:active),
         :host([edit-mode]) #bodycontainer ::slotted(a:focus),
         :host([edit-mode]) #bodycontainer ::slotted(a:hover) {
-          color: var(
-            --hax-base-styles-a-color-active
-          );
+          color: var(--hax-base-styles-a-color-active);
           font-weight: var(--hax-base-styles-a-font-weight-active);
         }
         :host([edit-mode]) #bodycontainer ::slotted(ol),
@@ -212,10 +206,7 @@ class HaxBody extends SimpleColors {
         }
         :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
         :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {
-          padding-bottom: var(
-            --hax-base-styles-list-last-child-padding-bottom,
-            
-          );
+          padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom);
         }
         :host([edit-mode]) #bodycontainer ::slotted(ul),
         :host([edit-mode]) #bodycontainer ::slotted(ol) {
