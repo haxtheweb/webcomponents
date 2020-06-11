@@ -49,6 +49,7 @@
     "@lrnwebcomponents/simple-icon-picker": "^2.6.17",
     "@lrnwebcomponents/simple-picker": "^2.6.17",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",
+    "@lrnwebcomponents/voice-recorder": "^2.6.17",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",
