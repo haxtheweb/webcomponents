@@ -22,10 +22,10 @@ class HAX extends HTMLElement {
     <style>
     :host {
       display: block;
-      font-size: var(--haxcms-base-styles-body-font-size, 16px);
-      font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
-      line-height: var(--haxcms-base-styles-body-line-height, 1.8);
-      letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
+      font-size: var(--haxcms-base-styles-body-font-size);
+      font-family: var(--haxcms-base-styles-body-font-family);
+      line-height: var(--haxcms-base-styles-body-line-height);
+      letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
     }
 
     :host([hidden]) {
@@ -33,69 +33,69 @@ class HAX extends HTMLElement {
     }
 
     hax-body {
-      font-size: var(--haxcms-base-styles-body-font-size, 16px);
-      font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
-      line-height: var(--haxcms-base-styles-body-line-height, 1.8);
-      letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
+      font-size: var(--haxcms-base-styles-body-font-size);
+      font-family: var(--haxcms-base-styles-body-font-family);
+      line-height: var(--haxcms-base-styles-body-line-height);
+      letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
     }
 
     h1 {
-      font-size: var(--hax-base-styles-h1-font-size, 2.5em);
-      line-height: var(--hax-base-styles-h1-line-height, 2.5em);
+      font-size: var(--hax-base-styles-h1-font-size);
+      line-height: var(--hax-base-styles-h1-line-height);
     }
 
     h2 {
-      font-size: var(--hax-base-styles-h2-font-size, 2em);
+      font-size: var(--hax-base-styles-h2-font-size);
     }
 
     h3 {
-      font-size: var(--hax-base-styles-h3-font-size, 1.75em);
+      font-size: var(--hax-base-styles-h3-font-size);
     }
 
     h4 {
-      font-size: var(--hax-base-styles-h4-font-size, 1.5em);
+      font-size: var(--hax-base-styles-h4-font-size);
     }
 
     h5 {
-      font-size: var(--hax-base-styles-h5-font-size, 1.25em);  
+      font-size: var(--hax-base-styles-h5-font-size);  
     }
 
     h6 {
-      font-size: var(--hax-base-styles-h6-font-size, 1.25em);
+      font-size: var(--hax-base-styles-h6-font-size);
     }
 
     p {
-      min-height: var(--hax-base-styles-p-min-height, 43px);
-      font-size: var(--hax-base-styles-p-font-size, 24px);
-      line-height: var(--hax-base-styles-p-line-height, 1.8);
-      letter-spacing: var(--hax-base-styles-p-letter-spacing, .5px);
+      min-height: var(--hax-base-styles-p-min-heigh);
+      font-size: var(--hax-base-styles-p-font-size);
+      line-height: var(--hax-base-styles-p-line-height);
+      letter-spacing: var(--hax-base-styles-p-letter-spacing);
     }
 
     a,
     a:-webkit-any-link {
-      color: var(--hax-base-styles-a-color, #2196f3);
-      font-size: var(--hax-base-styles-a-font-size, 24px);
-      font-weight: var(--hax-base-styles-a-font-weight, normal);
+      color: var(--hax-base-styles-a-color);
+      font-size: var(--hax-base-styles-a-font-size);
+      font-weight: var(--hax-base-styles-a-font-weigh);
     }
 
     a:visited {
-      color: var(--hax-base-styles-a-color-visited, #2196f3);
+      color: var(--hax-base-styles-a-color-visited);
     }
 
     a:active,
     a:focus,
     a:hover {
-      color: var(--hax-base-styles-a-color-active, #2196f3);
-      font-weight: var(--hax-base-styles-a-font-weight-active, normal);
+      color: var(--hax-base-styles-a-color-active);
+      font-weight: var(--hax-base-styles-a-font-weight-active);
     }
 
     ol,
     ul
     ol li,
     ul li {
-      line-height: var(--hax-base-styles-list-line-height, 1.8);
-      font-size: var(--hax-base-styles-list-font-size, 24px);
-      max-width: var(--hax-base-styles-list-max-width, 28em);
+      line-height: var(--hax-base-styles-list-line-height);
+      font-size: var(--hax-base-styles-list-font-size);
+      max-width: var(--hax-base-styles-list-max-width);
     }
 
     ul ul,
@@ -107,8 +107,8 @@ class HAX extends HTMLElement {
 
     ul,
     ol {
-      padding-left: var(--hax-base-styles-list-padding-left, 1em);
-      margin-left: var(--hax-base-styles-list-margin-left, 1em);
+      padding-left: var(--hax-base-styles-list-padding-left);
+      margin-left: var(--hax-base-styles-list-margin-left);
     }
     </style>
     <hax-body>

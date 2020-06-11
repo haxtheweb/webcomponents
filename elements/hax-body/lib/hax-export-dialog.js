@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-
+import { winEventsElement, stripMSWord } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-export-dialog`
  * @element hax-export-dialog
@@ -110,6 +109,12 @@ class HaxExportDialog extends winEventsElement(
               ?color-meaning="${true}"
               icon="icons:code"
               @click="${this.importContent}"
+            >
+            </hax-tray-button>
+            <hax-tray-button
+              @click="${this.scrubContent}"
+              icon="editor:format-clear"
+              label="Word / GDoc clean up"
             >
             </hax-tray-button>
             <hax-tray-button
@@ -223,13 +228,25 @@ class HaxExportDialog extends winEventsElement(
   }
 
   /**
-   * Download file.
+   * Import content into body area.
    */
   importContent(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.shadowRoot.querySelector("#textarea").value;
     window.HaxStore.toast("Content updated");
-    return window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
+    window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
+    this.close();
+  }
+
+  /**
+   * Scrub and then import content as if pasted from Word / GDocs
+   */
+  scrubContent(e) {
+    // import contents of this text area into the activeHaxBody
+    const htmlBody = this.shadowRoot.querySelector("#textarea").value;
+    window.HaxStore.toast("Scrubbed, Content updated");
+    window.HaxStore.instance.activeHaxBody.importContent(stripMSWord(htmlBody));
+    this.close();
   }
 
   /**

@@ -35,6 +35,10 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       display: block;
       margin-top: -2px;
       background-color:white;
+      --hax-contextual-action-color: var(
+        --simple-colors-default-theme-cyan-8,
+        #007999
+      );
     }
     hax-context-item {
       display: block;
