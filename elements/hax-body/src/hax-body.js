@@ -71,7 +71,6 @@ Custom property | Description | Default
 --hax-base-styles-list-padding-bottom |   | 1.5em
 --hax-base-styles-list-line-height |   | 40px
 --hax-base-styles-list-font-size |   | 24px
---hax-base-styles-list-max-width |   | 28em
 --hax-base-styles-list-last-child-padding-bottom |   | 1em
 --hax-base-styles-list-padding-left |   | 20px
 --hax-base-styles-list-margin-left |   | 20px
@@ -202,16 +201,10 @@ class HaxBody extends SimpleColors {
           padding-bottom: var(--hax-base-styles-list-padding-bottom);
           line-height: var(--hax-base-styles-list-line-height);
           font-size: var(--hax-base-styles-list-font-size);
-          max-width: var(--hax-base-styles-list-max-width);
         }
         :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
         :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {
           padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(ul),
-        :host([edit-mode]) #bodycontainer ::slotted(ol) {
-          padding-left: var(--hax-base-styles-list-padding-left);
-          padding-left: var(--hax-base-styles-list-margin-left);
         }
         :host([edit-mode]) #bodycontainer ::slotted(img[data-editable]) {
           max-width: 100%;
@@ -1978,15 +1971,6 @@ class HaxBody extends SimpleColors {
         // we only allow disconnected node from container when
         // the container is a grid plate
         else if (!window.HaxStore.instance.isGridPlateElement(containerNode)) {
-          activeNode = containerNode;
-        }
-        // won't deal with lists inside of p tags
-        else if (
-          ["UL", "OL", "LI", "P", "GRID-PLATE"].includes(
-            containerNode.tagName
-          ) &&
-          ["UL", "OL", "LI"].includes(activeNode.tagName)
-        ) {
           activeNode = containerNode;
         }
         // ensure this is a tag we care about / have support for and

@@ -65,7 +65,7 @@ class HAX extends HTMLElement {
     }
 
     p {
-      min-height: var(--hax-base-styles-p-min-heigh);
+      min-height: var(--hax-base-styles-p-min-height);
       font-size: var(--hax-base-styles-p-font-size);
       line-height: var(--hax-base-styles-p-line-height);
       letter-spacing: var(--hax-base-styles-p-letter-spacing);
@@ -73,20 +73,7 @@ class HAX extends HTMLElement {
 
     a,
     a:-webkit-any-link {
-      color: var(--hax-base-styles-a-color);
       font-size: var(--hax-base-styles-a-font-size);
-      font-weight: var(--hax-base-styles-a-font-weigh);
-    }
-
-    a:visited {
-      color: var(--hax-base-styles-a-color-visited);
-    }
-
-    a:active,
-    a:focus,
-    a:hover {
-      color: var(--hax-base-styles-a-color-active);
-      font-weight: var(--hax-base-styles-a-font-weight-active);
     }
 
     ol,
@@ -95,7 +82,6 @@ class HAX extends HTMLElement {
     ul li {
       line-height: var(--hax-base-styles-list-line-height);
       font-size: var(--hax-base-styles-list-font-size);
-      max-width: var(--hax-base-styles-list-max-width);
     }
 
     ul ul,
@@ -103,12 +89,6 @@ class HAX extends HTMLElement {
     ol ul,
     ol ol {
       padding-bottom: unset;
-    }
-
-    ul,
-    ol {
-      padding-left: var(--hax-base-styles-list-padding-left);
-      margin-left: var(--hax-base-styles-list-margin-left);
     }
     </style>
     <hax-body>
