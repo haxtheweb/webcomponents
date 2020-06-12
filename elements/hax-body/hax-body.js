@@ -179,7 +179,10 @@ class HaxBody extends SimpleColors {
         }
         :host([edit-mode]) #bodycontainer ::slotted(a) {
           color: var(--hax-base-styles-a-color);
-          font-size: var(--hax-base-styles-a-font-size, var(--hax-base-styles-p-font-size));
+          font-size: var(
+            --hax-base-styles-a-font-size,
+            var(--hax-base-styles-p-font-size)
+          );
           font-weight: var(--hax-base-styles-a-font-weight);
         }
         :host([edit-mode]) #bodycontainer ::slotted(a:visited) {
@@ -195,8 +198,14 @@ class HaxBody extends SimpleColors {
         :host([edit-mode]) #bodycontainer ::slotted(ul),
         :host([edit-mode]) #bodycontainer ::slotted(li) {
           padding-bottom: var(--hax-base-styles-list-padding-bottom);
-          line-height: var(--hax-base-styles-list-line-height,var(--hax-base-styles-p-line-height));
-          font-size: var(--hax-base-styles-list-font-size, var(--hax-base-styles-p-font-size));
+          line-height: var(
+            --hax-base-styles-list-line-height,
+            var(--hax-base-styles-p-line-height)
+          );
+          font-size: var(
+            --hax-base-styles-list-font-size,
+            var(--hax-base-styles-p-font-size)
+          );
         }
         :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
         :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {
