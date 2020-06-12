@@ -37,6 +37,7 @@ class WysiwygHax extends LitElement {
         .end-point="${this.endPoint}"
         app-store-connection="${this.appStoreConnection}"
         offset-margin="${this.offsetMargin}"
+        .allowed-tags="${this.allowedTags}"
         ?open-default="${this.openDefault}"
         ?sync-body="${this.syncBody}"
         ?hide-panel-ops="${this.hidePanelOps}"
@@ -62,6 +63,7 @@ class WysiwygHax extends LitElement {
     this.fieldId = "textarea-input-field";
     this.fieldName = "data[content]";
     this.endPoint = null;
+    this.allowedTags = [];
     this.__imported = false;
     this.redirectLocation = "";
     this.updatePageData = "";
@@ -123,6 +125,17 @@ class WysiwygHax extends LitElement {
       bodyValue: {
         type: String,
         attribute: "body-value"
+      },
+      /**
+       * allowed Tags, usually as dictated by the input filtering
+       * layer of the backend system that HAX is riding on.
+       * While not fullproof, this at least will enforce front-end
+       * filtering to match what actually is going to be allowed
+       * to be saved in the first place.
+       */
+      allowedTags: {
+        type: Array,
+        attribute: "allowed-tags"
       },
       /**
        * Connection object for talking to an app store.

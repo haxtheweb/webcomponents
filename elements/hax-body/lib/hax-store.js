@@ -542,7 +542,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   _editModeChanged(newValue) {
-    if (newValue && this.globalPreferences.haxVoiceCommands) {
+    if (newValue && this.globalPreferences.haxVoiceCommands && this.__hal) {
       this.__hal.auto = true;
     } else {
       this.__hal.auto = false;
@@ -560,7 +560,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
-      if (newValue.haxVoiceCommands && this.editMode) {
+      if (newValue.haxVoiceCommands && this.editMode && this.__hal) {
         this.__hal.auto = true;
       } else {
         this.__hal.auto = false;
