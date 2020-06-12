@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
+
 /**
  * `a11y-gif-player`
  * plays gifs in an accessible way by having the user click to play their animation
@@ -42,7 +44,6 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     this.tooltipPlaying = null;
     this.srcWithoutAnimation = null;
     this.__playing = false;
-    this.noImage = true;
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/iron-image/iron-image.js");
   }
@@ -55,42 +56,50 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         :host {
           display: inline-flex;
         }
-        *[hidden] {
+        :host([hidden]) {
           display: none;
         }
-        button {
+        .sr-only {
+          position: absolute;
+          left: -9999999px;
+          top: 0;
+          width: 0;
+          overflow: hidden;
+        }
+        #container {
           padding: 0;
-          display: flex;
-          align-items: stretch;
+          margin: 0;
           position: relative;
-          width: auto;
+          width: min-content;
           border: var(--a11y-gif-player-border, none);
           border-radius: var(--a11y-gif-player-border-radius, 0);
+        }
+        button {
+          position: absolute;
+          width: 100%;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background-size: contain;
+          background-color: var(--a11y-gif-player-button-bg, #cccccc);
         }
         button:active,
         button:focus,
         button:hover {
           border: var(--a11y-gif-player-focus-border, none);
-          cursor: var(--a11y-gif-player-cursor, pointer);
           outline: var(--a11y-gif-player-outline, 3px solid);
         }
         button[disabled] {
           cursor: var(--a11y-gif-player-disabled-cursor, not-allowed);
         }
-        button > * {
-          width: 100%;
-          min-width: 100%;
-          min-height: 100%;
-          flex: 1 1 100%;
-        }
-        div {
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          position: absolute;
+        button[aria-pressed="true"] {
+          opacity: 0;
         }
         svg {
-          flex: 1 1 100%;
+          position: absolute;
+          top: 35%;
+          left: 35%;
           width: var(--a11y-gif-player-arrow-size, 30%);
           height: var(--a11y-gif-player-arrow-size, 30%);
         }
@@ -110,18 +119,12 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         text {
           fill: var(--a11y-gif-player-button-text-color, #ffffff);
         }
-        img {
+        #longdesc {
           position: absolute;
-        }
-        button[aria-pressed="true"] svg,
-        button[aria-pressed="true"] img {
-          opacity: 0;
-        }
-        button[data-no-image] .button-bg {
-          background-color: var(--a11y-gif-player-button-bg, #cccccc);
-        }
-        button[aria-pressed="true"][data-no-image] .button-bg {
-          background-color: transparent;
+          left: 2px; 
+          bottom: 2px;;
+          width: calc(100% - 2px);
+          font-size: 80%;
         }
         simple-tooltip {
           --simple-tooltip-background: #000000;
@@ -134,29 +137,25 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   }
   render() {
     return html`
-      <button
-        id="button"
-        aria-controls="gif"
-        aria-pressed="${this.__playing ? "true" : "false"}"
-        @click="${this.toggle}"
-        ?data-no-image="${this.noImage}"
-        ?disabled="${this.disabled || !this.src}"
-      >
-        <iron-image id="gif" src="${this.src}" ?hidden="${!this.src}">
+      <div id="container">
+        <iron-image id="gif" 
+          src="${this.src}" 
+          alt="${this.alt}" 
+          ?hidden="${!this.src}"
+          slot="summary"
+          .aria-describedby="${this.getAriaDescribedby}">
         </iron-image>
-        ${!this.noImage
-          ? html`
-              <img
-                id="static"
-                loading="lazy"
-                alt="${this.alt}"
-                src="${this.srcWithoutAnimation}"
-              />
-            `
-          : html``}
-        <div class="button-bg">
+        <button
+          id="button"
+          aria-controls="gif"
+          aria-pressed="${this.__playing ? "true" : "false"}"
+          @click="${this.toggle}"
+          ?disabled="${this.disabled || !this.src}"
+          style="background-image: url('${this.srcWithoutAnimation}')"
+        >
           <svg
             id="svg"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 200 200"
           >
@@ -165,9 +164,19 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
               <text x="50" y="115" font-size="40px">GIF</text>
             </g>
           </svg>
-        </div>
-      </button>
-
+          <span class="sr-only">
+            ${this.__playing && this.tooltipPlaying
+              ? this.tooltipPlaying
+              : this.tooltip}
+          </span>
+        </button>
+        <a11y-details id="longdesc" 
+          ?hidden="${!this.src || !this.longdesc}" 
+          style="opacity:${this.__playing ? 0 : 1}">
+          <div slot="summary">info</div>
+          <div slot="details">${this.longdesc}</div>
+        </a11y-details>
+      </div>
       <simple-tooltip for="button" offset="30" animation-delay="0">
         ${this.__playing && this.tooltipPlaying
           ? this.tooltipPlaying
@@ -198,6 +207,20 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
        */
       disabled: {
         type: Boolean
+      },
+      /*
+       * other id's to add to aria-describedby
+       */
+      externalAriaDescribedby: {
+        attribute: "external-aria-decsribedby",
+        type: String
+      },
+      /**
+       * longer image description for accesibility
+       */
+      longdesc: {
+        type: String,
+        attribute: "longdesc"
       },
       /**
        * Source of animated gif
@@ -230,28 +253,21 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
        */
       __playing: {
         type: Boolean
-      },
-      /**
-       * Boolean for if theres a source image or not
-       */
-      noImage: {
-        type: Boolean
       }
     };
   }
-  /**
-   * LitElement properties updated
+  /*
+   * calculate aria-describedby attribute for image
+   *
+   * @param {string} longdesc a long description
+   * @param {string} ariaDescribedBy manual aria-describedby attribute
+   * @returns {string}
+   * @memberof ImageCompareSlider
    */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "srcWithoutAnimation") {
-        if (this[propName] != null && this[propName] != "") {
-          this.noImage = false;
-        } else {
-          this.noImage = true;
-        }
-      }
-    });
+  getAriaDescribedby() {
+   return !this.longdesc && !this.externalAriaDescribedby
+     ? ""
+     : `${this.longdesc ? 'longdesc' : ''} ${this.externalAriaDescribedby || ''}`.trim();
   }
   /**
    * plays the animation regarless of previous state
@@ -368,7 +384,15 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             required: true
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "ariaDescribedby",
+            title: "aria-decsribedby",
+            description:
+              "Space-separated id list for long descriptions that appear elsewhere",
+            inputMethod: "textfield"
+          }
+        ]
       }
     };
   }
