@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.18",
+  "version": "2.6.19",
   "description": "Learn2 theme for HAXcms",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.6.18",
+    "@lrnwebcomponents/haxcms-elements": "^2.6.19",
     "@lrnwebcomponents/map-menu": "^2.6.17",
     "@lrnwebcomponents/simple-colors": "^2.6.18",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",
