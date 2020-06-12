@@ -238,10 +238,22 @@ class GridPlate extends LitElement {
           outline: 1px solid var(--grid-plate-active-border-color);
           background-color: var(--grid-plate-selected-background-color);
         }
+        :host([edit-mode]) .column ::slotted(ol.grid-plate-active-item),
+        :host([edit-mode]) .column ::slotted(ul.grid-plate-active-item) {
+          outline-offset: 8px;
+        }
         :host([edit-mode]) .column ::slotted(*:focus),
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
           outline: 2px solid var(--grid-plate-editable-border-color);
+        }
+        :host([edit-mode]) .column ::slotted(ol:focus),
+        :host([edit-mode]) .column ::slotted(ol:hover),
+        :host([edit-mode]) .column ::slotted(ol:active),
+        :host([edit-mode]) .column ::slotted(ul:focus),
+        :host([edit-mode]) .column ::slotted(ul:hover),
+        :host([edit-mode]) .column ::slotted(ul:active) {
+          outline-offset: 8px;
         }
         :host([edit-mode]) .column ::slotted(*.hax-mover):before {
           outline: 1px solid var(--grid-plate-editable-border-color);

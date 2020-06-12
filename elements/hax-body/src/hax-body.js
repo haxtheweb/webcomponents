@@ -97,18 +97,14 @@ class HaxBody extends SimpleColors {
           line-height: 1.8;
         }
         :host([edit-mode]) ul,
-        :host([edit-mode]) * ::slotted(ul),
-        :host([edit-mode]) ol,
-        :host([edit-mode]) * ::slotted(ol) {
+        :host([edit-mode]) ol {
           padding-left: 20px;
           margin-left: 20px;
         }
-        :host([edit-mode]) ul,
-        :host([edit-mode]) * ::slotted(ul) {
+        :host([edit-mode]) ul {
           list-style-type: disc;
         }
-        :host([edit-mode]) li,
-        :host([edit-mode]) * ::slotted(li) {
+        :host([edit-mode]) li {
           margin-bottom: 6px;
         }
         :host {
@@ -176,14 +172,14 @@ class HaxBody extends SimpleColors {
           margin-left: unset;
         }
         :host([edit-mode]) #bodycontainer ::slotted(p) {
-          min-height: var(--hax-base-styles-p-min-height);
+          min-height: var(--hax-base-styles-p-min-height, 1rem);
           font-size: var(--hax-base-styles-p-font-size);
           line-height: var(--hax-base-styles-p-line-height);
           letter-spacing: var(--hax-base-styles-p-letter-spacing);
         }
         :host([edit-mode]) #bodycontainer ::slotted(a) {
           color: var(--hax-base-styles-a-color);
-          font-size: var(--hax-base-styles-a-font-size);
+          font-size: var(--hax-base-styles-a-font-size, var(--hax-base-styles-p-font-size));
           font-weight: var(--hax-base-styles-a-font-weight);
         }
         :host([edit-mode]) #bodycontainer ::slotted(a:visited) {
@@ -199,8 +195,8 @@ class HaxBody extends SimpleColors {
         :host([edit-mode]) #bodycontainer ::slotted(ul),
         :host([edit-mode]) #bodycontainer ::slotted(li) {
           padding-bottom: var(--hax-base-styles-list-padding-bottom);
-          line-height: var(--hax-base-styles-list-line-height);
-          font-size: var(--hax-base-styles-list-font-size);
+          line-height: var(--hax-base-styles-list-line-height,var(--hax-base-styles-p-line-height));
+          font-size: var(--hax-base-styles-list-font-size, var(--hax-base-styles-p-font-size));
         }
         :host([edit-mode]) #bodycontainer ::slotted(ol > li:last-child),
         :host([edit-mode]) #bodycontainer ::slotted(ul > li:last-child) {

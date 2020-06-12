@@ -73,15 +73,15 @@ class HAX extends HTMLElement {
 
     a,
     a:-webkit-any-link {
-      font-size: var(--hax-base-styles-a-font-size);
+      font-size: var(--hax-base-styles-a-font-size,var(--hax-base-styles-p-font-size));
     }
 
     ol,
     ul
     ol li,
     ul li {
-      line-height: var(--hax-base-styles-list-line-height);
-      font-size: var(--hax-base-styles-list-font-size);
+      line-height: var(--hax-base-styles-list-line-height,var(--hax-base-styles-p-line-height));
+      font-size: var(--hax-base-styles-list-font-size,var(--hax-base-styles-p-font-size));
     }
 
     ul ul,
