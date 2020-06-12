@@ -11,6 +11,12 @@
       import '../image-compare-slider.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered {
+        max-width: 80%;
+      }
+      image-compare-slider {
+        max-width: 400px;
+      }  
     </style>
     <script>
       window.addEventListener('user-engagement', (e) => {
@@ -22,22 +28,34 @@
   <div class="vertical-section-container centered">
     <h3>Basic image-compare-slider demo</h3>
     <demo-snippet>
-      <style> 
-        .vertical-section-container.centered {
-          max-width: 80%;
-        }
-        image-compare-slider {
-          width: 49%;
-        }  
-      </style>
       <template>
         <image-compare-slider>
           <h2 slot="heading">Default Compare Mode</h2>
-          <p slot="description">The slider will wipe away the top image</p>
-          <img slot="top" src="./images/Matterhorn02.png">
-          <img slot="bottom" src="./images/Matterhorn01.png">
+          <img aria-describedby="longdesc" slot="top" src="./images/Matterhorn02.png" alt="Matterhorn without snow">
+          <img aria-describedby="longdesc" slot="bottom" src="./images/Matterhorn01.png" alt="Matterhorn with snow">
+          <div slot="description">
+            <p slot="description">The slider will wipe away the top image</p>
+            <a11y-details id="longdesc">
+              <details>
+                <summary>Image Info</summary>
+                <p>The image on the top or when slider is moved all the way to the right is the Matterhorn on a cloudy day without snow. As you move the slider to the left, the image below it reveals the Matterhorn on a clear day with snow.</p>
+              </details>
+            </a11y-details>
+          </div>
         </image-compare-slider>
-        <image-compare-slider opacity title="Opacity Compare Mode" top-src="./images/Matterhorn02.png" bottom-src="./images/Matterhorn01.png">
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <image-compare-slider 
+          opacity 
+          title="Opacity Compare Mode" 
+          top-src="./images/Matterhorn02.png" 
+          top-alt="Matterhorn without snow"
+          top-longdesc="The image on the top or when slider is moved all the way to the right is the Matterhorn on a cloudy day without snow."
+          bottom-src="./images/Matterhorn01.png"
+          bottom-alt="Matterhorn with snow"
+          bottom-longdesc="As you move the slider to the left, the image below it reveals the Matterhorn on a clear day with snow.">
           <p slot="description">The slider will fade away the top image</p>
         </image-compare-slider>
       </template>
