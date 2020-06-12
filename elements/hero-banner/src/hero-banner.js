@@ -121,7 +121,7 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
       `
     ];
   }
-  render(){
+  render() {
     return html`
       <iron-image
         class="image"
@@ -129,13 +129,18 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
         fade
         preload
         sizing="cover"
-        aria-describedby="${this.ariaDescribedby || ''}"
+        aria-describedby="${this.ariaDescribedby || ""}"
       ></iron-image>
       <div class="itemwrapper">
         <div class="title">${this.title}</div>
         <div class="details">${this.details}</div>
-        <a class="linkbutton" href="${this.buttonLink || ''}" ?hidden="${!this.buttonLink}"
-          ><paper-button raised="">${this.buttonText || "Find out more"}</paper-button></a
+        <a
+          class="linkbutton"
+          href="${this.buttonLink || ""}"
+          ?hidden="${!this.buttonLink}"
+          ><paper-button raised=""
+            >${this.buttonText || "Find out more"}</paper-button
+          ></a
         >
       </div>
     `;
@@ -179,6 +184,13 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
       buttonLink: {
         type: String,
         attribute: "button-link"
+      },
+      /*
+       * accessible long description
+       */
+      ariaDescribedby: {
+        attribute: "aria-decsribedby",
+        type: String
       }
     };
   }
