@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "2.6.19",
+  "version": "2.6.20",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "@lrnwebcomponents/a11y-collapse": "^2.6.17",
     "@lrnwebcomponents/accent-card": "^2.6.18",
     "@lrnwebcomponents/code-sample": "^2.6.17",
-    "@lrnwebcomponents/grid-plate": "^2.6.18",
+    "@lrnwebcomponents/grid-plate": "^2.6.20",
     "@lrnwebcomponents/simple-colors": "^2.6.18",
     "@lrnwebcomponents/utils": "^2.6.19",
     "@material/mwc-button": "0.14.1",

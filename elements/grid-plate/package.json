@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.18",
+  "version": "2.6.20",
   "description": "a grid element with 1 to 4 columns via slots",
   "repository": {
     "type": "git",

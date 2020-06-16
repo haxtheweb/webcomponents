@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.19",
+  "version": "2.6.20",
   "description": "HAX as a bookmarklet script",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^2.6.19",
+    "@lrnwebcomponents/cms-hax": "^2.6.20",
     "@lrnwebcomponents/hax-body-behaviors": "^2.6.18",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
