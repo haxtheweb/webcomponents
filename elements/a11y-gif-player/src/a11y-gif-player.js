@@ -121,8 +121,8 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         }
         #longdesc {
           position: absolute;
-          left: 2px; 
-          bottom: 2px;;
+          left: 2px;
+          bottom: 2px;
           width: calc(100% - 2px);
           font-size: 80%;
         }
@@ -137,13 +137,19 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   }
   render() {
     return html`
-      <div id="container">
-        <iron-image id="gif" 
-          src="${this.src}" 
-          alt="${this.alt}" 
+      <div
+        id="container"
+        aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
+          this.externalAriaDescribedby || ""
+        ).trim()}"
+      >
+        <iron-image
+          id="gif"
+          src="${this.src}"
+          alt="${this.alt}"
           ?hidden="${!this.src}"
           slot="summary"
-          .aria-describedby="${this.getAriaDescribedby}">
+        >
         </iron-image>
         <button
           id="button"
@@ -170,9 +176,11 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
               : this.tooltip}
           </span>
         </button>
-        <a11y-details id="longdesc" 
-          ?hidden="${!this.src || !this.longdesc}" 
-          style="opacity:${this.__playing ? 0 : 1}">
+        <a11y-details
+          id="longdesc"
+          ?hidden="${!this.src || !this.longdesc}"
+          style="opacity:${this.__playing ? 0 : 1}"
+        >
           <div slot="summary">info</div>
           <div slot="details">${this.longdesc}</div>
         </a11y-details>
@@ -255,19 +263,6 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         type: Boolean
       }
     };
-  }
-  /*
-   * calculate aria-describedby attribute for image
-   *
-   * @param {string} longdesc a long description
-   * @param {string} ariaDescribedBy manual aria-describedby attribute
-   * @returns {string}
-   * @memberof ImageCompareSlider
-   */
-  getAriaDescribedby() {
-   return !this.longdesc && !this.externalAriaDescribedby
-     ? ""
-     : `${this.longdesc ? 'longdesc' : ''} ${this.externalAriaDescribedby || ''}`.trim();
   }
   /**
    * plays the animation regarless of previous state
@@ -382,12 +377,18 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "alt",
             icon: "accessibility",
             required: true
+          },
+          {
+            property: "longdesc",
+            title: "Long Description",
+            description: "Long descriptions of the GOF for accessibiility",
+            inputMethod: "textarea"
           }
         ],
         advanced: [
           {
-            property: "ariaDescribedby",
-            title: "aria-decsribedby",
+            property: "externalDescribedby",
+            title: "external-aria-decsribedby",
             description:
               "Space-separated id list for long descriptions that appear elsewhere",
             inputMethod: "textfield"
