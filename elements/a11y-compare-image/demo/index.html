@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>a11yCompareImage: a11y-compare-image Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../a11y-compare-image.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered {
+        max-width: 80%;
+      }
+      a11y-compare-image {
+        max-width: 400px;
+      }  
+    </style>
+    <script>
+      window.addEventListener('user-engagement', (e) => {
+        console.log(e.detail);
+      });
+    </script>
+  </head>
+  <body>
+  <div class="vertical-section-container centered">
+    <h3>Basic a11y-compare-image demo</h3>
+    <demo-snippet>
+      <template>
+        <a11y-compare-image>
+          <h2 slot="heading">Default Compare Mode</h2>
+          <p slot="description">
+            The image on the top or when slider is moved all the way to the 
+            right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>.
+            As you move the slider to the left, the image below it 
+            reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.
+          </p>
+          <img slot="top" 
+            aria-describedBy="cloudy" 
+            src="./images/Matterhorn02.png" 
+            alt="Matterhorn without snow">
+          <img slot="bottom" 
+            aria-describedBy="snowy" 
+            src="./images/Matterhorn01.png" 
+            alt="Matterhorn with snow">
+        </a11y-compare-image>
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <a11y-compare-image opacity>
+          <h2 slot="heading">Opacity Compare Mode</h2>
+          <p slot="description">
+            The image on the top or when slider is moved all the way to the 
+            right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>.
+            As you move the slider to the left, the image below it 
+            reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.
+          </p>
+          <img slot="top" 
+            aria-describedBy="cloudy" 
+            src="./images/Matterhorn02.png" 
+            alt="Matterhorn without snow">
+          <img slot="bottom" 
+            aria-describedBy="snowy" 
+            src="./images/Matterhorn01.png" 
+            alt="Matterhorn with snow">
+        </a11y-compare-image>
+      </template>
+      <style>
+        details {
+          display: inline;
+        }
+      </style>
+    </demo-snippet>
+  </div>
+  </body>
+</html>
