@@ -31,21 +31,25 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
     return html`
       <a11y-compare-image ?opacity="${this.opacity}">
         <div slot="heading">
-          ${this.title ? html` <h2>${this.title}</h2>` : ``}
-          <slot name="heading"></slot> 
+          ${this.title
+            ? html`
+                <h2>${this.title}</h2>
+              `
+            : ``}
+          <slot name="heading"></slot>
         </div>
         <div id="description"><slot name="description"></slot></div>
         <img
           slot="bottom"
           src="${this.bottomSrc}"
           alt="${this.bottomAlt}"
-          aria-describedby="${this.bottomDescriptionId || 'description'}"
+          aria-describedby="${this.bottomDescriptionId || "description"}"
         />
         <img
           slot="top"
           src="${this.topSrc}"
           alt="${this.topAlt}"
-          aria-describedby="${this.topDescriptionId || 'description'}"
+          aria-describedby="${this.topDescriptionId || "description"}"
         />
       </a11y-compare-image>
     `;
@@ -111,7 +115,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
       topSrc: {
         type: String,
         attribute: "top-src"
-      },
+      }
     };
   }
   static get haxProperties() {

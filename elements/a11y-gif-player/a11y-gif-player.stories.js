@@ -19,7 +19,8 @@ export const A11yGifPlayerStory = () => {
     src: "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
     srcWithoutAnimation:
       "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg",
-    longdesc: "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop."
+    longdesc:
+      "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop."
   });
   gif.style.maxWidth = "200px";
   return gif;
