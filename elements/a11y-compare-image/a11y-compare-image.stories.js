@@ -17,8 +17,14 @@ export const a11yCompareImageStory = () => {
     a11yCompareImage,
     {
       opacity: utils.getRandomBool(),
-      top: `<img aria-describedBy="cloudy" src="${new URL(`./demo/images/Matterhorn01.png`, import.meta.url)}" alt="Matterhorn without snow">`,      
-      bottom: `<img aria-describedBy="snowy" src="${new URL(`./demo/images/Matterhorn02.png`, import.meta.url)}" alt="Matterhorn with snow">`,
+      top: `<img aria-describedBy="cloudy" src="${new URL(
+        `./demo/images/Matterhorn01.png`,
+        import.meta.url
+      )}" alt="Matterhorn without snow">`,
+      bottom: `<img aria-describedBy="snowy" src="${new URL(
+        `./demo/images/Matterhorn02.png`,
+        import.meta.url
+      )}" alt="Matterhorn with snow">`,
       heading: `<h2>Image Compare Slider</h2>`,
       description: `<p>
       The image on the top or when slider is moved all the way to the 
@@ -30,11 +36,11 @@ export const a11yCompareImageStory = () => {
       maxWidth: "400px"
     },
     [
-      { title: "Heading", slot: "heading" }, 
+      { title: "Heading", slot: "heading" },
       { title: "Description", slot: "description" },
-      { title: "Top Image", slot: "top" }, 
-      { title: "Bottom Image", slot: "bottom" }, 
-      { css: "width" }, 
+      { title: "Top Image", slot: "top" },
+      { title: "Bottom Image", slot: "bottom" },
+      { css: "width" },
       { css: "maxWidth" }
     ]
   );

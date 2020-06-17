@@ -165,6 +165,7 @@ class MagazineCover extends LitElement {
         fade=""
         sizing="cover"
         id="image"
+        aria-describedby="${this.describedBy || ''}"
       ></iron-image>
       <div class="overlay">
         <h2 id="header" ?hidden="${!this.header}">${this.header}</h2>
@@ -234,6 +235,13 @@ class MagazineCover extends LitElement {
         type: String
       },
       /**
+       * aria-describedby attribute
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
+      },
+      /**
        * Call to action icon
        */
       icon: {
@@ -300,7 +308,8 @@ class MagazineCover extends LitElement {
             title: "header",
             caption: "subheader",
             citation: "subheader",
-            description: "text"
+            description: "text",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -407,6 +416,12 @@ class MagazineCover extends LitElement {
           }
         ],
         advanced: [
+          {
+            property: "describedBy",
+            title: "aria-describedby",
+            description: "Space-separated list of IDs for elements that describe the image.",
+            inputMethod: "textfield"
+          },
           {
             property: "event-name",
             title: "Event name",

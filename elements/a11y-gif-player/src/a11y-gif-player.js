@@ -139,14 +139,14 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     return html`
       <div
         id="container"
-        aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
-          this.externalAriaDescribedby || ""
-        ).trim()}"
       >
         <iron-image
           id="gif"
           src="${this.src}"
           alt="${this.alt}"
+          aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
+            this.describedBy || ""
+          ).trim()}"
           ?hidden="${!this.src}"
           slot="summary"
         >
@@ -219,8 +219,8 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
       /*
        * other id's to add to aria-describedby
        */
-      externalAriaDescribedby: {
-        attribute: "external-aria-decsribedby",
+      describedBy: {
+        attribute: "described-by",
         type: String
       },
       /**
@@ -315,7 +315,8 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             type: "image",
             source: "src",
             source2: "srcWithoutAnimation",
-            alt: "alt"
+            alt: "alt",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -387,14 +388,28 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         ],
         advanced: [
           {
-            property: "externalDescribedby",
-            title: "external-aria-decsribedby",
+            property: "describedBy",
+            title: "aria-decsribedby",
             description:
               "Space-separated id list for long descriptions that appear elsewhere",
             inputMethod: "textfield"
           }
         ]
-      }
+      },
+      demoSchema: [
+        {
+          tag: "a11y-gif-player",
+          properties: {
+            alt: "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
+            src: "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
+            srcWithoutAnimation:
+              "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg",
+            longdesc:
+              "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.",
+            style: "max-width:400px"
+          }
+        }
+      ]
     };
   }
 }
