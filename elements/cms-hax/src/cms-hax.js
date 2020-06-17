@@ -229,7 +229,11 @@ class CmsHax extends LitElement {
     if (window.HaxStore.ready) {
       // double check because this can cause issues
       if (allowedTags) {
-        window.HaxStore.instance.validTagList = allowedTags;
+        const defaultTags = window.HaxStore.instance.validTagList;
+        window.HaxStore.instance.validTagList = [
+          ...defaultTags,
+          ...allowedTags
+        ];
       }
       setTimeout(() => {
         window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;

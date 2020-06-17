@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.17",
+  "version": "2.6.19",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -43,12 +43,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-media-player": "^2.6.17",
+    "@lrnwebcomponents/a11y-media-player": "^2.6.18",
     "@lrnwebcomponents/media-behaviors": "^2.6.17",
     "@lrnwebcomponents/schema-behaviors": "^2.6.17",
-    "@lrnwebcomponents/simple-colors": "^2.6.17",
+    "@lrnwebcomponents/simple-colors": "^2.6.18",
     "@lrnwebcomponents/simple-colors-shared-styles": "^2.6.17",
-    "@lrnwebcomponents/utils": "^2.6.16",
+    "@lrnwebcomponents/utils": "^2.6.19",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

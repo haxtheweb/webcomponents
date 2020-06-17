@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "Wire any element up to HAX",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-fields": "^2.6.17",
+    "@lrnwebcomponents/simple-fields": "^2.6.18",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

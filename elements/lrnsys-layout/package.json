@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
@@ -43,9 +43,9 @@
   "dependencies": {
     "@lrnwebcomponents/lrn-icons": "^2.6.16",
     "@lrnwebcomponents/paper-avatar": "^2.6.17",
-    "@lrnwebcomponents/simple-colors": "^2.6.17",
+    "@lrnwebcomponents/simple-colors": "^2.6.18",
     "@lrnwebcomponents/simple-drawer": "^2.6.17",
-    "@lrnwebcomponents/simple-modal": "^2.6.17",
+    "@lrnwebcomponents/simple-modal": "^2.6.18",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-collapse": "^3.0.0",

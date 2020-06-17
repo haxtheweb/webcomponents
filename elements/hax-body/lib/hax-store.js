@@ -542,7 +542,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   _editModeChanged(newValue) {
-    if (newValue && this.globalPreferences.haxVoiceCommands) {
+    if (newValue && this.globalPreferences.haxVoiceCommands && this.__hal) {
       this.__hal.auto = true;
     } else {
       this.__hal.auto = false;
@@ -560,7 +560,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       storageData.globalPreferences = newValue;
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
-      if (newValue.haxVoiceCommands && this.editMode) {
+      if (newValue.haxVoiceCommands && this.editMode && this.__hal) {
         this.__hal.auto = true;
       } else {
         this.__hal.auto = false;
@@ -1001,6 +1001,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
+      console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing

@@ -274,8 +274,13 @@ function stripMSWord(input) {
   }
   // 5. remove attributes ' style="..."', align, start
   output = output.replace(/ style='(\s|.)*?'/gim, "");
+  output = output.replace(/ face="(\s|.)*?"/gim, "");
   output = output.replace(/ align=.*? /g, "");
   output = output.replace(/ start='.*?'/g, "");
+  // Google Docs ones
+  output = output.replace(/ dir="(\s|.)*?"/gim, "");
+  output = output.replace(/ role="(\s|.)*?"/gim, "");
+  output = output.replace(/ id="(\s|.)*?"/gim, "");
 
   // 6. some HAX specific things in case this was moving content around
   // these are universally true tho so fine to have here
@@ -293,6 +298,11 @@ function stripMSWord(input) {
   // double, do it twice for nesting
   output = output.replace(/<\/p><\/p>/gm, "</p>");
   output = output.replace(/<\/p><\/p>/gm, "</p>");
+  // some other things we know not to allow to wrap
+  output = output.replace(/<b><p>/gm, "<p>");
+  output = output.replace(/<\/p><\/b>/gm, "</p>");
+  output = output.replace(/<span><p>/gm, "<p>");
+  output = output.replace(/<\/p><\/span>/gm, "</p>");
   // empty with lots of space
   output = output.replace(/<p>(\s*)<\/p>/gm, " ");
   // empty p / more or less empty

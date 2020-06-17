@@ -14,6 +14,10 @@ class HaxTextContext extends winEventsElement(LitElement) {
         :host {
           display: block;
           pointer-events: none;
+          --hax-contextual-action-color: var(
+            --simple-colors-default-theme-cyan-8,
+            #007999
+          );
         }
         hax-context-item-textop:not(:defined),
         hax-context-item-menu:not(:defined),

@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.17",
+  "version": "2.6.18",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -47,8 +47,8 @@
     "@lrnwebcomponents/anchor-behaviors": "^2.6.16",
     "@lrnwebcomponents/es-global-bridge": "^2.6.16",
     "@lrnwebcomponents/responsive-utility": "^2.6.17",
-    "@lrnwebcomponents/simple-colors": "^2.6.17",
-    "@lrnwebcomponents/simple-fields": "^2.6.17",
+    "@lrnwebcomponents/simple-colors": "^2.6.18",
+    "@lrnwebcomponents/simple-fields": "^2.6.18",
     "@lrnwebcomponents/simple-search": "^2.6.17",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",
     "@polymer/iron-ajax": "^3.0.0",
