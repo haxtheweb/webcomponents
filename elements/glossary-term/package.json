@@ -57,7 +57,10 @@
     "polymer-cli": "1.8.1",
     "wct-browser-legacy": "1.0.2"
   },
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "web-components",
     "html"
