@@ -5,7 +5,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @demo demo/index.html
  * @element a11y-compare-image
  */
-class a11yCompareImage extends SchemaBehaviors(LitElement) {
+class a11yCompareImage extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
@@ -151,7 +151,7 @@ class a11yCompareImage extends SchemaBehaviors(LitElement) {
       topSrc: {
         type: String,
         attribute: "top-src"
-      },
+      }
     };
   }
   updated(changedProperties) {
