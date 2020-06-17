@@ -551,7 +551,11 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
   render() {
     return html`
       <div id="wrap" class="mb-wrap">
-        <div id="thumb" class="mb-thumb" aria-describedby="${this.describedBy || ''}"></div>
+        <div
+          id="thumb"
+          class="mb-thumb"
+          aria-describedby="${this.describedBy || ""}"
+        ></div>
         <blockquote cite="${this.sourceLink}">
           <p><slot></slot></p>
         </blockquote>
@@ -816,7 +820,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           }
         ]

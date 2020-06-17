@@ -125,7 +125,7 @@ class PersonTestimonial extends SimpleColorsPolymer {
             src="[[image]]"
             sizing="cover"
             preload=""
-            fade="" 
+            fade=""
             aria-describedby$="[[describedBy]]"
           ></iron-image>
         </div>
@@ -300,7 +300,8 @@ class PersonTestimonial extends SimpleColorsPolymer {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           }
         ]

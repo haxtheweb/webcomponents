@@ -165,7 +165,7 @@ class MagazineCover extends LitElement {
         fade=""
         sizing="cover"
         id="image"
-        aria-describedby="${this.describedBy || ''}"
+        aria-describedby="${this.describedBy || ""}"
       ></iron-image>
       <div class="overlay">
         <h2 id="header" ?hidden="${!this.header}">${this.header}</h2>
@@ -419,7 +419,8 @@ class MagazineCover extends LitElement {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           },
           {

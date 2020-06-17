@@ -1390,7 +1390,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           {
             attribute: "aria-describedby",
             title: "Aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield",
             icon: "accessibility"
           },

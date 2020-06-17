@@ -70,7 +70,7 @@ class ImgPanZoom extends LitElement {
               ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
               src="${this.src}"
-              described-by="${this.describedBy || ''}"
+              described-by="${this.describedBy || ""}"
             ></img-loader>
           `
         : ""}

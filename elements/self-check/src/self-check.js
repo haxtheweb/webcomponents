@@ -228,7 +228,11 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
   }
   render() {
     return html`
-      <paper-card image="${this.image}" alt="${this.alt}"  aria-describedby="${this.describedBy || ''}">
+      <paper-card
+        image="${this.image}"
+        alt="${this.alt}"
+        aria-describedby="${this.describedBy || ""}"
+      >
         <div class="triangle"></div>
         <div id="header_wrap">
           <iron-icon id="questionmark" icon="icons:help"></iron-icon>
@@ -470,7 +474,8 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           }
         ]

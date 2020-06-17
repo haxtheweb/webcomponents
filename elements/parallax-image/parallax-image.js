@@ -65,7 +65,10 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   }
   render() {
     return html`
-      <div class="parallax_container" aria-describedby="${this.describedBy || ''}">
+      <div
+        class="parallax_container"
+        aria-describedby="${this.describedBy || ""}"
+      >
         <div id="bgParallax" class="parallax">
           <div class="title" id="titleParallax">
             <slot name="parallax_heading"></slot>
@@ -182,7 +185,8 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           }
         ]

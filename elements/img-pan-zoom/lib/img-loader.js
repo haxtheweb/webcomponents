@@ -8,7 +8,13 @@ class ImgLoader extends LitElement {
    */
   render() {
     return html`
-      <img loading="lazy" id="img" hidden="" src="${this.src}" aria-describedby="${this.describedBy || ''}" />
+      <img
+        loading="lazy"
+        id="img"
+        hidden=""
+        src="${this.src}"
+        aria-describedby="${this.describedBy || ""}"
+      />
     `;
   }
   /**

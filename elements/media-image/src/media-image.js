@@ -434,7 +434,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           }
         ]
@@ -446,7 +447,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             source: "http://unsplash.it/600",
             figureLabelTitle: "1.3",
             figureLabelDescription: "This is the description of the figure.",
-            citation: "This is my citation.",
+            citation: "This is my citation."
           }
         }
       ]
@@ -506,10 +507,11 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
   }
   render() {
     return html`
-      <iron-image 
-        src="${this.source}" 
-        alt="${this.alt}" 
-        aria-describedby="${this.describedBy || ''}">
+      <iron-image
+        src="${this.source}"
+        alt="${this.alt}"
+        aria-describedby="${this.describedBy || ""}"
+      >
       </iron-image>
     `;
   }

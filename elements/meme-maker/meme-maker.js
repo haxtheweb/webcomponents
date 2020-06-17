@@ -73,7 +73,12 @@ class MemeMaker extends LitElement {
   render() {
     return html`
       <figure>
-        <img loading="lazy" src="${this.imageUrl}" .alt="${this.alt}" aria-describedby="${this.describedBy || ''}"/>
+        <img
+          loading="lazy"
+          src="${this.imageUrl}"
+          .alt="${this.alt}"
+          aria-describedby="${this.describedBy || ""}"
+        />
         <figcaption class="top-text">${this.topText}</figcaption>
         <figcaption class="bottom-text">${this.bottomText}</figcaption>
       </figure>
@@ -134,7 +139,9 @@ class MemeMaker extends LitElement {
   haxProgressiveEnhancement() {
     return `
     ${this.topText ? `<div>${this.topText}</div>` : ""}
-      <img src="${this.imageUrl}" alt="${this.alt}" preload="lazy" aria-describedby="${this.describedBy || ''}"/>
+      <img src="${this.imageUrl}" alt="${
+      this.alt
+    }" preload="lazy" aria-describedby="${this.describedBy || ""}"/>
     ${this.bottomText ? `<div>${this.bottomText}</div>` : ""}`;
   }
   /**
@@ -209,7 +216,8 @@ class MemeMaker extends LitElement {
           {
             property: "describedBy",
             title: "aria-describedby",
-            description: "Space-separated list of IDs for elements that describe the image.",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield"
           }
         ]

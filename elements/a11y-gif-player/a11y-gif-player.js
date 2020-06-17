@@ -137,9 +137,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   }
   render() {
     return html`
-      <div
-        id="container"
-      >
+      <div id="container">
         <iron-image
           id="gif"
           src="${this.src}"
