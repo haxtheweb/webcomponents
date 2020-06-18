@@ -15,7 +15,6 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
           display: block;
           margin: 15px 0;
           padding: 0;
-
         }
         :host([hidden]),
         ::slotted(figure:not([active])) {
