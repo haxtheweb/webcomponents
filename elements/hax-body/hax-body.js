@@ -4,7 +4,9 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import {
   encapScript,
   wipeSlot,
-  generateResourceID
+  generateResourceID,
+  nodeToHaxElement,
+  haxElementToNode
 } from "@lrnwebcomponents/utils/utils.js";
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
@@ -953,7 +955,7 @@ class HaxBody extends SimpleColors {
     if (activeNode == null) {
       activeNode = this.activeNode;
     }
-    let element = window.HaxStore.nodeToHaxElement(activeNode, null);
+    let element = nodeToHaxElement(activeNode, null);
     let type = "*";
     let skipPropMatch = false;
     // special support for place holder which defines exactly
@@ -1311,7 +1313,7 @@ class HaxBody extends SimpleColors {
     // move the context menu before duplicating!!!!
     this.hideContextMenus(false);
     // convert the node to a hax element
-    let haxElement = window.HaxStore.nodeToHaxElement(node, null);
+    let haxElement = nodeToHaxElement(node, null);
     // support for deep API call to clean up special elements
     if (typeof node.preProcessHaxInsertContent !== typeof undefined) {
       haxElement = node.preProcessHaxInsertContent(haxElement);
@@ -1321,11 +1323,11 @@ class HaxBody extends SimpleColors {
     }
     // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
     // correctly and that we get a brand new object
-    var nodeClone = window.HaxStore.haxElementToNode(
-      haxElement.tag,
-      haxElement.content,
-      haxElement.properties
-    );
+    var nodeClone = haxElementToNode({
+      tag: haxElement.tag,
+      content: haxElement.content,
+      properties: haxElement.properties
+    });
     if (
       nodeClone.tagName.toLowerCase() === "webview" &&
       window.HaxStore.instance._isSandboxed &&

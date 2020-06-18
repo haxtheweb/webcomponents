@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../page-contents-menu.js"></script>
+  </head>
+  <body>
+
+    <page-contents-menu>
+      This is the element content.
+    </page-contents-menu>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <page-contents-menu></page-contents-menu>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <page-contents-menu></page-contents-menu>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<page-contents-menu>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('page-contents-menu'), customElements.get("page-contents-menu", 'page-contents-menu should be an instance of pageContentsMenu'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
