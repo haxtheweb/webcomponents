@@ -1,0 +1,170 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "a11y-carousel",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "top-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "bottom-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "opacity",
+          "description": "mode for the slider: wipe",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "topSrc",
+          "attribute": "top-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "bottomSrc",
+          "attribute": "bottom-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "opacity",
+          "attribute": "opacity",
+          "description": "mode for the slider: wipe",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "a11y-carousel",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "top-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "bottom-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "opacity",
+          "description": "mode for the slider: wipe",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "topSrc",
+          "attribute": "top-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "bottomSrc",
+          "attribute": "bottom-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "opacity",
+          "attribute": "opacity",
+          "description": "mode for the slider: wipe",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "a11y-carousel",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "top-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "bottom-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "opacity",
+          "description": "mode for the slider: wipe",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "topSrc",
+          "attribute": "top-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "bottomSrc",
+          "attribute": "bottom-src",
+          "description": "src for top image",
+          "type": "string"
+        },
+        {
+          "name": "opacity",
+          "attribute": "opacity",
+          "description": "mode for the slider: wipe",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}
