@@ -228,7 +228,11 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
   }
   render() {
     return html`
-      <paper-card image="${this.image}" alt="${this.alt}">
+      <paper-card
+        image="${this.image}"
+        alt="${this.alt}"
+        aria-describedby="${this.describedBy || ""}"
+      >
         <div class="triangle"></div>
         <div id="header_wrap">
           <iron-icon id="questionmark" icon="icons:help"></iron-icon>
@@ -329,6 +333,13 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
         reflect: true
       },
       /**
+       * Aria-describedby data passed down to appropriate tag
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
+      },
+      /**
        * Link for more information.
        */
       link: {
@@ -368,7 +379,8 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             type: "image",
             source: "image",
             title: "question",
-            description: "answer"
+            description: "answer",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -458,7 +470,15 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             required: true
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "describedBy",
+            title: "aria-describedby",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
+            inputMethod: "textfield"
+          }
+        ]
       },
       saveOptions: {
         unsetAttributes: ["colors"]

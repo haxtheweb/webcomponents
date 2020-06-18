@@ -70,6 +70,7 @@ class ImgPanZoom extends LitElement {
               ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
               src="${this.src}"
+              described-by="${this.describedBy || ""}"
             ></img-loader>
           `
         : ""}
@@ -88,6 +89,13 @@ class ImgPanZoom extends LitElement {
       // Image source
       src: {
         type: String
+      },
+      /**
+       * aria-describedby attribute
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
       },
       // Set to true if you are using a deep zoom image
       dzi: {

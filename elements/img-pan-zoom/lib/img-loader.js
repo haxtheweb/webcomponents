@@ -8,7 +8,13 @@ class ImgLoader extends LitElement {
    */
   render() {
     return html`
-      <img loading="lazy" id="img" hidden="" src="${this.src}" />
+      <img
+        loading="lazy"
+        id="img"
+        hidden=""
+        src="${this.src}"
+        aria-describedby="${this.describedBy || ""}"
+      />
     `;
   }
   /**
@@ -37,6 +43,13 @@ class ImgLoader extends LitElement {
        */
       loading: {
         type: Boolean
+      },
+      /**
+       * aria-describedby attribute
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
       },
       /**
        * Read-only value that indicates that the last set `src` failed to load.
