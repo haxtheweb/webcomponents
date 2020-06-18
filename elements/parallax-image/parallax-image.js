@@ -65,7 +65,10 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
   }
   render() {
     return html`
-      <div class="parallax_container">
+      <div
+        class="parallax_container"
+        aria-describedby="${this.describedBy || ""}"
+      >
         <div id="bgParallax" class="parallax">
           <div class="title" id="titleParallax">
             <slot name="parallax_heading"></slot>
@@ -89,6 +92,13 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         type: String,
         attribute: "image-bg",
         reflect: true
+      },
+      /**
+       * Aria-describedby data passed down to appropriate tag
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
       }
     };
   }
@@ -139,7 +149,8 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "image",
-            url: "source"
+            url: "source",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -170,7 +181,15 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             inputMethod: "textarea"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "describedBy",
+            title: "aria-describedby",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
+            inputMethod: "textfield"
+          }
+        ]
       }
     };
   }

@@ -551,7 +551,11 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
   render() {
     return html`
       <div id="wrap" class="mb-wrap">
-        <div id="thumb" class="mb-thumb"></div>
+        <div
+          id="thumb"
+          class="mb-thumb"
+          aria-describedby="${this.describedBy || ""}"
+        ></div>
         <blockquote cite="${this.sourceLink}">
           <p><slot></slot></p>
         </blockquote>
@@ -583,6 +587,13 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
        */
       image: {
         type: String
+      },
+      /**
+       * Aria-describedby data passed down to appropriate tag
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
       },
       /**
        * Optional author of the quote
@@ -704,7 +715,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             src: "image",
             author: "author",
             description: "",
-            citation: "citation"
+            citation: "citation",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -804,7 +816,15 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             validationType: "url"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "describedBy",
+            title: "aria-describedby",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
+            inputMethod: "textfield"
+          }
+        ]
       }
     };
   }

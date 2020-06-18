@@ -126,6 +126,7 @@ class PersonTestimonial extends SimpleColorsPolymer {
             sizing="cover"
             preload=""
             fade=""
+            aria-describedby$="[[describedBy]]"
           ></iron-image>
         </div>
         <div class="arrow_right"></div>
@@ -163,6 +164,13 @@ class PersonTestimonial extends SimpleColorsPolymer {
         reflectToAttribute: true
       },
       /**
+       * Aria-describedby data passed down to appropriate tag
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
+      },
+      /**
        * The profile image to display to the left of the quote.
        */
       image: {
@@ -198,7 +206,8 @@ class PersonTestimonial extends SimpleColorsPolymer {
             type: "image",
             source: "image",
             title: "name",
-            caption: "position"
+            caption: "position",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -287,7 +296,15 @@ class PersonTestimonial extends SimpleColorsPolymer {
             icon: "icons:work"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "describedBy",
+            title: "aria-describedby",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
+            inputMethod: "textfield"
+          }
+        ]
       }
     };
   }

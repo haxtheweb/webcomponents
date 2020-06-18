@@ -138,7 +138,11 @@ class A11yFigure extends A11yDetails {
         groups: ["11"],
         handles: [
           {
-            type: "image"
+            type: "image",
+            source: "imgSrc",
+            alt: "imgAlt",
+            caption: "figcaption",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {

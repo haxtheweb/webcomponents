@@ -143,6 +143,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         source="${this.source}"
         modal-title="${this.modalTitle}"
         alt="${this.alt}"
+        .described-by="${this.describedBy}"
       ></media-image-image>
       <media-image-citation>
         <slot name="citation">
@@ -188,6 +189,13 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         type: String
       },
       /**
+       * image aria-described by
+       */
+      describedBy: {
+        type: String,
+        attribute: "described-by"
+      },
+      /**
        * Image caption.
        */
       caption: {
@@ -218,6 +226,13 @@ class MediaImage extends SchemaBehaviors(LitElement) {
       card: {
         type: Boolean,
         reflect: true
+      },
+      /**
+       * Sets aria-describedby attribute.
+       */
+      describedBy: {
+        type: String,
+        attrbute: "described-by"
       },
       /**
        * Applies box styling.
@@ -299,7 +314,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "alt",
             alt: "alt",
             citation: "citation",
-            caption: "caption"
+            caption: "caption",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -413,8 +429,28 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             icon: "text-format",
             required: false
           }
+        ],
+        advanced: [
+          {
+            property: "describedBy",
+            title: "aria-describedby",
+            description:
+              "Space-separated list of IDs for elements that describe the image.",
+            inputMethod: "textfield"
+          }
         ]
-      }
+      },
+      demoSchema: [
+        {
+          tag: "media-image",
+          properties: {
+            source: "http://unsplash.it/600",
+            figureLabelTitle: "1.3",
+            figureLabelDescription: "This is the description of the figure.",
+            citation: "This is my citation."
+          }
+        }
+      ]
     };
   }
 }
@@ -471,7 +507,12 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
   }
   render() {
     return html`
-      <iron-image src="${this.source}" alt="${this.alt}"></iron-image>
+      <iron-image
+        src="${this.source}"
+        alt="${this.alt}"
+        aria-describedby="${this.describedBy || ""}"
+      >
+      </iron-image>
     `;
   }
   updated(changedProperties) {
@@ -489,6 +530,10 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
       },
       alt: {
         type: String
+      },
+      describedBy: {
+        type: String,
+        attribute: "described-by"
       },
       round: {
         type: Boolean,

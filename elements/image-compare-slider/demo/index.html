@@ -11,6 +11,12 @@
       import '../image-compare-slider.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered {
+        max-width: 80%;
+      }
+      image-compare-slider {
+        max-width: 400px;
+      }  
     </style>
     <script>
       window.addEventListener('user-engagement', (e) => {
@@ -22,25 +28,48 @@
   <div class="vertical-section-container centered">
     <h3>Basic image-compare-slider demo</h3>
     <demo-snippet>
-      <style> 
-        .vertical-section-container.centered {
-          max-width: 80%;
-        }
-        image-compare-slider {
-          width: 49%;
-        }  
-      </style>
       <template>
-        <image-compare-slider>
+        <image-compare-slider
+          top-description-id="cloudy"
+          top-src="./images/Matterhorn02.png" 
+          top-alt="Matterhorn without snow"
+          bottom-description-id="snowy"
+          bottom-src="./images/Matterhorn01.png"
+          bottom-alt="Matterhorn with snow">
           <h2 slot="heading">Default Compare Mode</h2>
-          <p slot="description">The slider will wipe away the top image</p>
-          <img slot="top" src="./images/Matterhorn02.png">
-          <img slot="bottom" src="./images/Matterhorn01.png">
-        </image-compare-slider>
-        <image-compare-slider opacity title="Opacity Compare Mode" top-src="./images/Matterhorn02.png" bottom-src="./images/Matterhorn01.png">
-          <p slot="description">The slider will fade away the top image</p>
+          <div slot="description">
+            The slider will fade away the top image
+            <span id="cloudy">(Matterhorn on a cloudy day without snow)</span> 
+            to reveal the bottom image
+            <span id="snowy">(Matterhorn on a clear day with snow)</span>.
+          </div>
         </image-compare-slider>
       </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <image-compare-slider 
+          opacity 
+          title="Opacity Compare Mode" 
+          top-description-id="cloudy"
+          top-src="./images/Matterhorn02.png" 
+          top-alt="Matterhorn without snow"
+          bottom-description-id="snowy"
+          bottom-src="./images/Matterhorn01.png"
+          bottom-alt="Matterhorn with snow">
+          <div slot="description">
+            The slider will fade away the top image
+            <span id="cloudy">(Matterhorn on a cloudy day without snow)</span> 
+            to reveal the bottom image
+            <span id="snowy">(Matterhorn on a clear day with snow)</span>.
+          </div>
+        </image-compare-slider>
+      </template>
+      <style>
+        details {
+          display: inline;
+        }
+      </style>
     </demo-snippet>
   </div>
   </body>

@@ -8,8 +8,25 @@
   <body>
     <div style="padding:50px;">
     <h-a-x app-store='{"url": "appstore.json"}' offset-margin="0px 0px 0px 48px" element-align="right">
+        <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
         <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
+        <image-compare-slider 
+          bottom-alt="Kitten in color" 
+          bottom-src="//placekitten.com/400/200" 
+          top-alt="Kitten in greyscale" 
+          top-src="//placekitten.com/g/400/200" 
+          top-description-id="grey" 
+          bottom-description-id="color"
+          style="width: 400px">
+          <h2 slot="heading">Image Compare Slider</h2>
+          <p slot="description">
+            The image on the top or when slider is moved all the way to the 
+            right is the <span id="grey">random kitten image in greyscale</span>.
+            As you move the slider to the left, the image below it 
+            reveals the <span id="color">random kitten image in color</span>.
+          </p>
+        </image-compare-slider>
         <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
         <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
         <p>coool</p>
@@ -25,66 +42,39 @@
             </p>
           </div>
         </accent-card>
-        <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
         <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
         <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
         <p>coool</p>
         <h3 id="specific">With id</h3>
-        <accent-card accent-color="cyan" accent-heading horizontal image-src="https://cdn.pixabay.com/photo/2015/08/24/12/54/banner-904887_960_720.jpg">
-          <div slot="heading">Accent Card</div>
-          <div slot="subheading">A card with optional accent stylings.</div>
-          <div slot="content">
-            <p>
-              This card is highly customizable. 
-              There are a number of options for using <tt>accent-card</tt>. 
-              See documentation for more info. 
-            </p>
-          </div>
-        </accent-card>
+        <marked-element>Hello</marked-element>
         <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
         <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
-        <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
-        <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
-        <p>coool</p>
         <h3 id="specific">With id</h3>
-        <accent-card accent-color="cyan" accent-heading horizontal image-src="https://cdn.pixabay.com/photo/2015/08/24/12/54/banner-904887_960_720.jpg">
-          <div slot="heading">Accent Card</div>
-          <div slot="subheading">A card with optional accent stylings.</div>
-          <div slot="content">
-            <p>
-              This card is highly customizable. 
-              There are a number of options for using <tt>accent-card</tt>. 
-              See documentation for more info. 
-            </p>
-          </div>
-        </accent-card>
-        <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
-        <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
-        <p>testxt</p>
-        <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
-        <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
-        <p>coool</p>
-        <h3 id="specific">With id</h3>
-        <accent-card accent-color="cyan" accent-heading horizontal image-src="https://cdn.pixabay.com/photo/2015/08/24/12/54/banner-904887_960_720.jpg">
-          <div slot="heading">Accent Card</div>
-          <div slot="subheading">A card with optional accent stylings.</div>
-          <div slot="content">
-            <p>
-              This card is highly customizable. 
-              There are a number of options for using <tt>accent-card</tt>. 
-              See documentation for more info. 
-            </p>
-          </div>
-        </accent-card>
-        <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
-        <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
-        <p>testxt</p>
-        <task-list name="Plan for World Domination" tasks="[{&quot;name&quot;:&quot;Use HAX&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;???&quot;,&quot;link&quot;:&quot;&quot;},{&quot;name&quot;:&quot;Profit&quot;,&quot;link&quot;:&quot;&quot;}]"></task-list>
-        <h3 id="header-d3827ba5-5aa8-5fb0-367b-1673f353579b">Another</h3>
-        <p>coool</p>
+        <a11y-gif-player 
+          style="width: 200px;"
+          alt="It's Always Sunny in Philadelphia GIF Meme" 
+          src="https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif"
+          src-without-animation="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg"
+          longdesc="Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.".>
+        </a11y-gif-player>
+        <!--lrndesign-gallery id="gallery2" accent-color="green" dark title="Dark Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of an Atari console&quot;, &quot;details&quot;: &quot;This console was made by <em>Atari</em>.&quot;, &quot;id&quot;: &quot;atari&quot;, &quot;src&quot;: &quot;./images/atari.jpg&quot;, &quot;thumbnail&quot;: &quot;./images/thumbnails/atari.jpg&quot;, &quot;title&quot;: &quot;Atari&quot; }, { &quot;alt&quot;: &quot;A picture of an Microsoft console&quot;, &quot;details&quot;: &quot;This console was made by <em>Microsoft</em>.&quot;, &quot;id&quot;: &quot;microsoft&quot;, &quot;src&quot;: &quot;./images/xbox.png&quot;, &quot;thumbnail&quot;: &quot;./images/thumbnails/xbox.png&quot;, &quot;title&quot;: &quot;Microsoft&quot; }, { &quot;alt&quot;: &quot;A picture of an Nintendo console&quot;, &quot;details&quot;: &quot;This console was made by <em>Nintendo</em>.&quot;, &quot;id&quot;: &quot;nintendo&quot;, &quot;src&quot;: &quot;./images/nintendo.png&quot;, &quot;thumbnail&quot;: &quot;./images/thumbnails/nintendo.png&quot;, &quot;title&quot;: &quot;Nintendo&quot; }, { &quot;alt&quot;: &quot;A picture of an Sega console&quot;, &quot;details&quot;: &quot;This console was made by <em>Sega</em>.&quot;, &quot;id&quot;: &quot;sega&quot;, &quot;src&quot;: &quot;./images/sega.jpg&quot;, &quot;thumbnail&quot;: &quot;./images/thumbnails/sega.jpg&quot;, &quot;title&quot;: &quot;Sega&quot; }, { &quot;alt&quot;: &quot;A picture of an Sony console&quot;, &quot;details&quot;: &quot;This console was made by <em>Sony</em>.&quot;, &quot;id&quot;: &quot;sony&quot;, &quot;src&quot;: &quot;./images/ps4.jpg&quot;, &quot;thumbnail&quot;: &quot;./images/thumbnails/ps4.jpg&quot;, &quot;title&quot;: &quot;Sony&quot; }]">
+          <div slot="description">This is a <strong>carousel</strong> of game consoles with the <em>dark</em> theme.</div>
+        </lrndesign-gallery>
+        <lrndesign-timeline id="mytimeline" accent-color="blue">
+          This is lrndesign-timeline
+        </lrndesign-timeline>
+        <chartist-render id="pie-chart" 
+          chart-title="A pie chart of favorite foods" 
+          data='{ 
+            "labels": ["Bananas", "Apples", "Grapes"], 
+            "series": [20, 15, 40]
+          }'
+          type="pie"
+          scale="ct-square">
+        </chartist-render-->
       </h-a-x>
     </div>
     <script type="module">
