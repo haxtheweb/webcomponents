@@ -13,10 +13,7 @@
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container.centered {
         max-width: 80%;
-      }
-      a11y-carousel {
-        max-width: 400px;
-      }  
+      } 
     </style>
     <script>
       window.addEventListener('user-engagement', (e) => {
@@ -30,6 +27,15 @@
     <demo-snippet>
       <template>
         <a11y-carousel>
+          <div id="buttons">
+            <a11y-carousel-button button-type="first" controls="figure-1">first</a11y-carousel-button>
+            <a11y-carousel-button button-type="prev" controls="figure-1">prev</a11y-carousel-button>
+            <a11y-carousel-button controls="figure-1">1</a11y-carousel-button>
+            <a11y-carousel-button controls="figure-2">2</a11y-carousel-button>
+            <a11y-carousel-button controls="figure-3">3</a11y-carousel-button>
+            <a11y-carousel-button button-type="next" controls="figure-2">next</a11y-carousel-button>
+            <a11y-carousel-button button-type="last" controls="figure-3">last</a11y-carousel-button>
+          </div>
           <figure id="figure-1">
             <img src="//placekitten.com/400/200"/>
             <figcaption>Item 1</figcaption>
