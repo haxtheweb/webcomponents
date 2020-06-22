@@ -34,7 +34,7 @@ const RadioBehaviors = function(SuperClass) {
 
     constructor() {
       super();
-      this.addEventListener(this._selectEvent,this._handleSelectItem);
+      this.addEventListener(this._selectEvent, this._handleSelectItem);
     }
 
     render() {
@@ -78,16 +78,16 @@ const RadioBehaviors = function(SuperClass) {
      * name of event that selects item, can be overridden
      * @readonly
      */
-    get _selectEvent(){
+    get _selectEvent() {
       return "select-item";
     }
     /**
      * index of selected item
      * @readonly
      */
-    get selectedIndex(){
-      let item = this.itemData.filter(i=>i.id===this.selection);
-      return item && item[0] ? (item[0].index) : 0;
+    get selectedIndex() {
+      let item = this.itemData.filter(i => i.id === this.selection);
+      return item && item[0] ? item[0].index : 0;
     }
     /**
      * id of selected item
@@ -181,7 +181,7 @@ const RadioBehaviors = function(SuperClass) {
      * handles item selection event
      * @param {event} e
      */
-    _handleSelectItem(e){
+    _handleSelectItem(e) {
       e.stopPropagation();
       this.selectItem(e.detail.controls);
     }
@@ -231,7 +231,7 @@ const RadioBehaviors = function(SuperClass) {
      */
     disconnectedCallback() {
       if (this.observer && this.observer.disconnect) this.observer.disconnect();
-      this.removeEventListener(this._selectEvent,this._handleSelectItem);
+      this.removeEventListener(this._selectEvent, this._handleSelectItem);
       super.disconnectedCallback();
     }
   };

@@ -1,12 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RadioBehaviors } from "@lrnwebcomponents/radio-behaviors/radio-behaviors.js";
 /**
- * `a11y-carousel-button`
+ * `a11y-carousel-buttons`
  * button that controls a carousel
  * @demo demo/index.html
- * @element a11y-carousel-button
+ * @element a11y-carousel-buttons
  */
-class a11yCarouselButton extends LitElement {
+class a11yCarouselButtons extends LitElement {
   //styles function
   static get styles() {
     return [
@@ -69,7 +69,7 @@ class a11yCarouselButton extends LitElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "a11y-carousel-button";
+    return "a11y-carousel-buttons";
   }
   constructor() {
     super();
@@ -121,5 +121,5 @@ class a11yCarouselButton extends LitElement {
     }
   }
 }
-window.customElements.define(a11yCarouselButton.tag, a11yCarouselButton);
-export { a11yCarouselButton };
+window.customElements.define(a11yCarouselButtons.tag, a11yCarouselButtons);
+export { a11yCarouselButtons };
