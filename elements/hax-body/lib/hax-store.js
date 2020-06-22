@@ -2593,6 +2593,7 @@ window.HaxStore.guessGizmoType = guess => {
       source.indexOf(".docx") != -1 ||
       source.indexOf(".xls") != -1 ||
       source.indexOf(".xlsx") != -1 ||
+      source.indexOf(".vtt") != -1 ||
       source.indexOf(".ppt") != -1
     ) {
       return "document";

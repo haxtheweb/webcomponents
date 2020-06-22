@@ -85,9 +85,6 @@ class HAXCMSSiteBuilder extends LitElement {
   _updateActiveItemContent(data) {
     this.activeItemContent = data;
   }
-  firstUpdated() {
-    this.loadJOSData();
-  }
   /**
    * Load Page data
    */

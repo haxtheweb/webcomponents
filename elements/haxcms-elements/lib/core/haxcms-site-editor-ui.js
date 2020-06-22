@@ -575,8 +575,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         title: "Title",
         description: "Main title for this page in menus",
         inputMethod: "textfield",
-        required: true,
-        icon: "editor:title"
+        required: true
       },
       {
         property: "location",
@@ -585,9 +584,23 @@ class HAXCMSSiteEditorUI extends LitElement {
           "What is displayed in the bnowser bar after your site name / URL",
         inputMethod: "textfield",
         required: true,
-        icon: "device:gps-fixed"
+      },
+      {
+        property: "parentId",
+        title: "Parent ID",
+        description: "Parent id",
+        inputMethod: "textfield",
+        hidden: true,
+        required: true,
       }
     ];
+    // default values
+    this.__newForm.value = {
+      "title": "New page",
+      "location": "",
+      // parentId is the active page item or the site in general if none found
+      "parentId": ((store.activeItem && store.activeItem.id) ? store.activeItem.id : store.manifest.id)
+    }
     let b1 = document.createElement("paper-button");
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:add";
