@@ -94,7 +94,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
               ?dark-transcript="${this.darkTranscript}"
               ?disable-interactive="${this.disableInteractive}"
               ?hide-timestamps="${this.hideTimestamps}"
-              ?hide-transcript="${this.hideTiranscript}"
+              ?hide-transcript="${this.hideTranscript}"
               id="${this.playerId}"
               lang="${this.lang || "en"}"
               ?linkable="${this.linkable}"

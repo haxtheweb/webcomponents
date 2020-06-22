@@ -13,10 +13,7 @@
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container.centered {
         max-width: 80%;
-      }
-      a11y-carousel {
-        max-width: 400px;
-      }  
+      } 
     </style>
     <script>
       window.addEventListener('user-engagement', (e) => {
@@ -29,7 +26,7 @@
     <h3>Basic a11y-carousel demo</h3>
     <demo-snippet>
       <template>
-        <a11y-carousel>
+        <a11y-carousel id="demo1">
           <figure id="figure-1">
             <img src="//placekitten.com/400/200"/>
             <figcaption>Item 1</figcaption>
@@ -42,7 +39,77 @@
             <img src="//placekitten.com/400/300"/>
             <figcaption>Item 3</figcaption>
           </figure>
+          <div slot="bottom-buttons">
+            <a11y-carousel-button button-type="first" controls="figure-1">first</a11y-carousel-button>
+            <a11y-carousel-button button-type="prev" controls="figure-1">prev</a11y-carousel-button>
+            <a11y-carousel-button controls="figure-1">1</a11y-carousel-button>
+            <a11y-carousel-button controls="figure-2">2</a11y-carousel-button>
+            <a11y-carousel-button controls="figure-3">3</a11y-carousel-button>
+            <a11y-carousel-button button-type="next" controls="figure-2">next</a11y-carousel-button>
+            <a11y-carousel-button button-type="last" controls="figure-3">last</a11y-carousel-button>
+          </div>
         </a11y-carousel>
+        <style>
+          #demo1 {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+          }
+        </style>
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <a11y-carousel id="demo2">
+          <div slot="top-buttons">
+            <a11y-carousel-button controls="figure-1"><span class="sr-only">1</span></a11y-carousel-button>
+            <a11y-carousel-button controls="figure-2"><span class="sr-only">2</span></a11y-carousel-button>
+            <a11y-carousel-button controls="figure-3"><span class="sr-only">3</span></a11y-carousel-button>
+          </div>
+          <figure id="figure-1">
+            <img slot="img" src="//placekitten.com/400/200"/>
+            <figcaption>Item 1</figcaption>
+          </figure>
+          <figure id="figure-2">
+            <img part="img" src="//placekitten.com/300/100"/>
+            <figcaption>Item 2</figcaption>
+          </figure>
+          <figure id="figure-3">
+            <img src="//placekitten.com/400/300"/>
+            <figcaption>Item 3</figcaption>
+          </figure>
+          <span class="sr-only"slot="prev">previous</span>
+          <span aria-hidden="true"slot="prev">&lt;</span>
+          <span class="sr-only"slot="next">next</span>
+          <span aria-hidden="true"slot="next">&gt;</span>
+        </a11y-carousel>
+        <style>
+          .sr-only {
+            position: absolute;
+            left: -999999px;
+            top: 0;
+            width: 0;
+            overflow: hidden;
+          }
+          #demo2 img {
+            width: 100%;
+          }
+          [slot=top-buttons] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+          }
+          [slot=top-buttons] a11y-carousel-button {
+            padding: 0;
+            margin: 0 5px;
+            min-width: 20px;
+            height: 5px;
+            background-color: black;
+          }
+        </style>
       </template>
     </demo-snippet>
   </div>

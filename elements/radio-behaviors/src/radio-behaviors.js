@@ -34,6 +34,7 @@ const RadioBehaviors = function(SuperClass) {
 
     constructor() {
       super();
+      this.addEventListener(this._selectEvent, this._handleSelectItem);
     }
 
     render() {
@@ -50,32 +51,6 @@ const RadioBehaviors = function(SuperClass) {
         this._handleItemChange(mutationsList, observer);
       return new MutationObserver(callback);
     }
-    /**
-     * query selector for slotted children, can be overridden
-     * @readonly
-     */
-    get _query() {
-      return "> item";
-    }
-    get _selected() {
-      return "selected";
-    }
-
-    getDataFromItems(selected) {
-      let slotted = this.querySelectorAll(`${this._query}`);
-      return Object.keys(slotted || {}).map(key =>
-        this.getDataFromItem(slotted[key], selected)
-      );
-    }
-    getDataFromItem(item, selected) {
-      let data = {
-        id: item.id,
-        innerHTML: item.innerHTML,
-        selected: item.getAttribute(selected)
-      };
-      return data;
-    }
-
     // properties available to the custom element for data binding
     static get properties() {
       return {
@@ -85,13 +60,72 @@ const RadioBehaviors = function(SuperClass) {
         }
       };
     }
-
+    /**
+     * query selector for slotted children, can be overridden
+     * @readonly
+     */
+    get _query() {
+      return "> item";
+    }
+    /**
+     * attribute to apply to selected item, can be overridden
+     * @readonly
+     */
+    get _selected() {
+      return "selected";
+    }
+    /**
+     * name of event that selects item, can be overridden
+     * @readonly
+     */
+    get _selectEvent() {
+      return "select-item";
+    }
+    /**
+     * index of selected item
+     * @readonly
+     */
+    get selectedIndex() {
+      let item = this.itemData.filter(i => i.id === this.selection);
+      return item && item[0] ? item[0].index : 0;
+    }
+    /**
+     * id of selected item
+     * @readonly
+     */
     get selection() {
       return this.getAttribute("selection");
     }
-
+    /**
+     * sets id of selected item
+     * @readonly
+     */
     set selection(value) {
       this.setAttribute("selection", value);
+    }
+    /**
+     * updates array of items
+     * @returns
+     */
+    _getDataFromItems() {
+      let slotted = this.querySelectorAll(`${this._query}`);
+      return Object.keys(slotted || {}).map(key =>
+        this._getDataFromItem(slotted[key], key, this.selected)
+      );
+    }
+    /**
+     * updates iitem for item array
+     * @returns
+     */
+    _getDataFromItem(item, index, selected) {
+      let data = {
+        id: item.id,
+        index: parseInt(index),
+        node: item,
+        innerHTML: item.innerHTML,
+        selected: item.getAttribute(selected)
+      };
+      return data;
     }
 
     /**
@@ -101,12 +135,6 @@ const RadioBehaviors = function(SuperClass) {
     selectItem(item) {
       if (typeof item === "string")
         item = this.querySelector(`${this._query}#${item}`);
-      console.log(
-        "selectItem",
-        item,
-        this.querySelector(`${this._query}`),
-        this.selection
-      );
       if (item && item.id && !item.disabled && item.id !== this.selection) {
         this.setAttribute("selection", item.id);
         this._handleSelectionChange();
@@ -123,10 +151,13 @@ const RadioBehaviors = function(SuperClass) {
       }
       this._updateItemData();
     }
-
+    /**
+     * updates when slotted item changes
+     * @param {*} mutationsList
+     * @param {*} observer
+     */
     _handleItemChange(mutationsList, observer) {
       let changed = false;
-      console.log("_handleItemChange", mutationsList, observer, changed);
       mutationsList.forEach(m => {
         let added = m.type === "childList" ? m.addedNodes.length > 0 : false,
           removed =
@@ -137,44 +168,34 @@ const RadioBehaviors = function(SuperClass) {
               : false,
           id = m.type === "attributes" && m.attributeName === "id";
         changed = changed || added || removed || id;
-        console.log("m", m, added, removed, id, changed);
       });
       if (changed) {
         this.querySelectorAll(`${this._query}`).forEach(i => {
           if (!i.id) i.id = `item-${this._generateUUID()}`;
         });
-        this.selectItem(this.selectedItem);
+        this.selectItem(this.selection);
       }
       this._updateItemData();
     }
-    _updateItemData() {
-      this.itemData = this.getDataFromItems(this._selected);
-      if (this.render) this.render();
-      console.log("this.itemData", this.itemData, this.render);
+    /**
+     * handles item selection event
+     * @param {event} e
+     */
+    _handleSelectItem(e) {
+      e.stopPropagation();
+      this.selectItem(e.detail.controls);
     }
     /**
      * shows or hides items based on selection
-     *
      */
     _handleSelectionChange() {
-      console.log(
-        "_handleSelectionChange",
-        this.selection,
-        this.querySelectorAll(`${this._query}`)
-      );
       this.querySelectorAll(`${this._query}`).forEach(i => {
         i.id !== this.selection
           ? i.removeAttribute(this._selected)
           : i.setAttribute(this._selected, true);
       });
-      console.log(
-        "after selection Change",
-        this.selection,
-        this.querySelectorAll(`${this._query}`)
-      );
       /**
        * Fires when selection update, so that parent radio group can listen for it.
-       *
        * @event selection-changed
        */
       this.dispatchEvent(
@@ -185,6 +206,13 @@ const RadioBehaviors = function(SuperClass) {
           detail: this
         })
       );
+    }
+    /**
+     * updates items list and rerenders as needed;
+     */
+    _updateItemData() {
+      this.itemData = this._getDataFromItems();
+      if (this.render) this.render();
     }
     /**
      * generates a unique id
@@ -203,6 +231,7 @@ const RadioBehaviors = function(SuperClass) {
      */
     disconnectedCallback() {
       if (this.observer && this.observer.disconnect) this.observer.disconnect();
+      this.removeEventListener(this._selectEvent, this._handleSelectItem);
       super.disconnectedCallback();
     }
   };
