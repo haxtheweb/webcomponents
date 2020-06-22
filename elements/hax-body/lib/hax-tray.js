@@ -2,7 +2,9 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import {
   winEventsElement,
   camelCaseToDash,
-  wipeSlot
+  wipeSlot,
+  nodeToHaxElement,
+  haxElementToNode
 } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
@@ -728,11 +730,11 @@ class HaxTray extends winEventsElement(LitElement) {
       case "insert-blox":
         let content = "";
         for (var i = 0; i < e.path[0].blox.length; i++) {
-          let node = window.HaxStore.haxElementToNode(
-            e.path[0].blox[i].tag,
-            e.path[0].blox[i].content,
-            e.path[0].blox[i].properties
-          );
+          let node = haxElementToNode({
+            tag: e.path[0].blox[i].tag,
+            content: e.path[0].blox[i].content,
+            properties: e.path[0].blox[i].properties
+          });
           content += window.HaxStore.nodeToContent(node);
         }
         // generate a hax element
@@ -1109,10 +1111,7 @@ class HaxTray extends winEventsElement(LitElement) {
         if (this.activeNode && this.activeNode.tagName) {
           this.shadowRoot.querySelector("#settingscollapse").disabled = false;
           // process fields
-          this.activeHaxElement = window.HaxStore.nodeToHaxElement(
-            this.activeNode,
-            null
-          );
+          this.activeHaxElement = nodeToHaxElement(this.activeNode, null);
           this._setupForm();
         } else {
           this.activeTagName = "Select an element to configure";

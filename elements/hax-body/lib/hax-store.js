@@ -4,7 +4,9 @@ import {
   getRange,
   encapScript,
   wipeSlot,
-  stripMSWord
+  stripMSWord,
+  nodeToHaxElement,
+  haxElementToNode
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -1030,11 +1032,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           delete haxElements[i].properties.start;
           delete haxElements[i].properties.align;
           // this is not the right function.
-          let node = window.HaxStore.haxElementToNode(
-            haxElements[i].tag,
-            haxElements[i].content.replace(/<span>&nbsp;<\/span>/g, " ").trim(),
-            haxElements[i].properties
-          );
+          let node = haxElementToNode({
+            tag: haxElements[i].tag,
+            content: haxElements[i].content
+              .replace(/<span>&nbsp;<\/span>/g, " ")
+              .trim(),
+            properties: haxElements[i].properties
+          });
           newContent += window.HaxStore.nodeToContent(node);
         }
       }
@@ -1812,11 +1816,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
       if (details.replace && details.replacement) {
-        let node = window.HaxStore.haxElementToNode(
-          details.tag,
-          details.content,
-          properties
-        );
+        let node = haxElementToNode({
+          tag: details.tag,
+          content: details.content,
+          properties: properties
+        });
         if (this.activePlaceHolder) {
           this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
           this.activePlaceHolder = null;
@@ -1827,11 +1831,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         typeof details.__type !== typeof undefined &&
         details.__type === "inline"
       ) {
-        let node = window.HaxStore.haxElementToNode(
-          details.tag,
-          details.content,
-          properties
-        );
+        let node = haxElementToNode({
+          tag: details.tag,
+          content: details.content,
+          properties: properties
+        });
         // replace what WAS the active selection w/ this new node
         if (this.activePlaceHolder !== null) {
           this.activePlaceHolder.deleteContents();
@@ -1840,11 +1844,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         // set it to nothing
         this.activePlaceHolder = null;
       } else if (this.activeContainerNode != null) {
-        let node = window.HaxStore.haxElementToNode(
-          details.tag,
-          details.content,
-          properties
-        );
+        let node = haxElementToNode({
+          tag: details.tag,
+          content: details.content,
+          properties: properties
+        });
         // allow for inserting things into things but not grid plate
         if (
           this.activeContainerNode &&
@@ -2154,213 +2158,10 @@ window.HaxStore.htmlToHaxElements = html => {
       typeof children[i].tagName !== typeof undefined &&
       validTags.includes(children[i].tagName.toLowerCase())
     ) {
-      elements.push(window.HaxStore.nodeToHaxElement(children[i], null));
+      elements.push(nodeToHaxElement(children[i], null));
     }
   }
   return elements;
-};
-/**
- * Convert a node to a HAX element. Hax elements ensure
- * a certain level of sanitization by verifying tags and
- * properties / attributes that have values.
- */
-window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
-  if (!node) {
-    return null;
-  }
-  // build out the properties to send along
-  var props = {};
-  // support basic styles
-  if (typeof node.style !== typeof undefined) {
-    props.style = node.getAttribute("style");
-  }
-  // don't set a null style
-  if (props.style === null || props.style === "null") {
-    delete props.style;
-  }
-  // test if a class exists, not everything scopes
-  if (typeof node.attributes.class !== typeof undefined) {
-    props.class = node.attributes.class.nodeValue.replace("hax-active", "");
-  }
-  // test if a id exists as its a special case in attributes... of course
-  if (typeof node.attributes.id !== typeof undefined) {
-    props.id = node.getAttribute("id");
-  }
-  let tmpProps;
-  // relatively cross library
-  if (customElements.get(node.tagName.toLowerCase())) {
-    tmpProps = customElements.get(node.tagName.toLowerCase()).properties;
-  }
-  // weak fallback
-  if (typeof tmpProps === typeof undefined) {
-    tmpProps = node.__data;
-  }
-  // complex elements need complex support
-  if (typeof tmpProps !== typeof undefined) {
-    // run through attributes, though non-reflected props won't be here
-    // run through props, we always defer to property values
-    for (var property in tmpProps) {
-      // make sure we only set things that have a value
-      if (
-        property != "class" &&
-        property != "style" &&
-        tmpProps.hasOwnProperty(property) &&
-        typeof node[property] !== undefined &&
-        node[property] != null &&
-        node[property] != ""
-      ) {
-        props[property] = node[property];
-      }
-      // special support for false boolean
-      else if (node[property] === false) {
-        props[property] = node[property];
-      } else {
-      }
-    }
-    for (var attribute in node.attributes) {
-      // make sure we only set things that have a value
-      if (
-        typeof node.attributes[attribute].name !== typeof undefined &&
-        node.attributes[attribute].name != "class" &&
-        node.attributes[attribute].name != "style" &&
-        node.attributes[attribute].name != "id" &&
-        node.attributes.hasOwnProperty(attribute) &&
-        typeof node.attributes[attribute].value !== undefined &&
-        node.attributes[attribute].value != null &&
-        node.attributes[attribute].value != "" &&
-        !tmpProps.hasOwnProperty(
-          window.HaxStore.dashToCamel(node.attributes[attribute].name)
-        )
-      ) {
-        props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
-          node.attributes[attribute].value;
-      } else {
-        // note: debug here if experiencing attributes that won't bind
-      }
-    }
-  } else {
-    // much easier case, usually just in primatives
-    for (var attribute in node.attributes) {
-      // make sure we only set things that have a value
-      if (
-        typeof node.attributes[attribute].name !== typeof undefined &&
-        node.attributes[attribute].name != "class" &&
-        node.attributes[attribute].name != "style" &&
-        node.attributes[attribute].name != "id" &&
-        node.attributes.hasOwnProperty(attribute) &&
-        typeof node.attributes[attribute].value !== undefined &&
-        node.attributes[attribute].value != null &&
-        node.attributes[attribute].value != ""
-      ) {
-        props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
-          node.attributes[attribute].value;
-      }
-    }
-  }
-  // support sandboxed environments which
-  // will hate iframe tags but love webview
-  let tag = node.tagName.toLowerCase();
-  if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
-    tag = "webview";
-  }
-  let slotContent = window.HaxStore.getHAXSlot(node);
-  // support fallback on inner text if there were no nodes
-  if (slotContent == "") {
-    slotContent = node.innerText;
-  }
-  // special edge case for slot binding in primatives
-  if (tag === "a") {
-    props.innerText = slotContent;
-  } else if (
-    tag === "p" ||
-    tag === "table" ||
-    tag === "ol" ||
-    tag === "ul" ||
-    tag === "div"
-  ) {
-    props.innerHTML = slotContent;
-  }
-  let element = {
-    tag: tag,
-    properties: props,
-    content: slotContent
-  };
-
-  if (eventName !== null) {
-    element.eventName = eventName;
-  }
-  return element;
-};
-/**
- * Convert a haxElement to a DOM node.
- */
-window.HaxStore.haxElementToNode = (tag, content, properties) => {
-  // support sandboxed environments which
-  // will hate iframe tags but love webview
-  if (
-    window.HaxStore &&
-    window.HaxStore.instance &&
-    window.HaxStore.instance._isSandboxed &&
-    tag === "iframe"
-  ) {
-    tag = "webview";
-  }
-  var frag = document.createElement(tag);
-  frag.innerHTML = content;
-  // clone the fragment which will force an escalation to full node
-  var newNode = frag.cloneNode(true);
-
-  // support for properties if they exist
-  for (var property in properties) {
-    let attributeName = window.HaxStore.camelToDash(property);
-    if (properties.hasOwnProperty(property)) {
-      // special supporting for boolean because html is weird :p
-      if (properties[property] === true) {
-        newNode.setAttribute(attributeName, properties[property]);
-      } else if (properties[property] === false) {
-        newNode.removeAttribute(attributeName);
-      } else if (
-        properties[property] != null &&
-        properties[property].constructor === Array
-      ) {
-        // do nothing if we have additional data to suggest this is actually readOnly
-        // polymer / typed specific thing
-        if (
-          frag.properties &&
-          frag.properties[property] &&
-          frag.properties[property].readOnly
-        ) {
-        } else {
-          if (newNode.set) {
-            newNode.set(attributeName, properties[property]);
-          } else {
-            newNode[attributeName] = [...properties[property]];
-          }
-        }
-      } else if (
-        properties[property] != null &&
-        properties[property].constructor === Object
-      ) {
-        // do nothing if we have additional data to suggest this is actually readOnly
-        // polymer / typed specific thing
-        if (
-          frag.properties &&
-          frag.properties[property] &&
-          frag.properties[property].readOnly
-        ) {
-        } else {
-          if (newNode.set) {
-            newNode.set(attributeName, properties[property]);
-          } else {
-            newNode[attributeName] = { ...properties[property] };
-          }
-        }
-      } else {
-        newNode.setAttribute(attributeName, properties[property]);
-      }
-    }
-  }
-  return newNode;
 };
 /**
  * Convert a node to the correct content object for saving.
@@ -2792,6 +2593,7 @@ window.HaxStore.guessGizmoType = guess => {
       source.indexOf(".docx") != -1 ||
       source.indexOf(".xls") != -1 ||
       source.indexOf(".xlsx") != -1 ||
+      source.indexOf(".vtt") != -1 ||
       source.indexOf(".ppt") != -1
     ) {
       return "document";

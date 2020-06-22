@@ -365,6 +365,139 @@ function objectValFromStringPos(o, s, r = null) {
 }
 
 /**
+ * Convert a node to a HAX element. Hax elements ensure
+ * a certain level of sanitization by verifying tags and
+ * properties / attributes that have values.
+ */
+function nodeToHaxElement(node, eventName = "insert-element") {
+  if (!node) {
+    return null;
+  }
+  // build out the properties to send along
+  var props = {};
+  // support basic styles
+  if (typeof node.style !== typeof undefined) {
+    props.style = node.getAttribute("style");
+  }
+  // don't set a null style
+  if (props.style === null || props.style === "null") {
+    delete props.style;
+  }
+  // test if a class exists, not everything scopes
+  if (typeof node.attributes.class !== typeof undefined) {
+    props.class = node.attributes.class.nodeValue.replace("hax-active", "");
+  }
+  // test if a id exists as its a special case in attributes... of course
+  if (typeof node.attributes.id !== typeof undefined) {
+    props.id = node.getAttribute("id");
+  }
+  let tmpProps;
+  // relatively cross library
+  if (customElements.get(node.tagName.toLowerCase())) {
+    tmpProps = customElements.get(node.tagName.toLowerCase()).properties;
+  }
+  // weak fallback
+  if (typeof tmpProps === typeof undefined) {
+    tmpProps = node.__data;
+  }
+  // complex elements need complex support
+  if (typeof tmpProps !== typeof undefined) {
+    // run through attributes, though non-reflected props won't be here
+    // run through props, we always defer to property values
+    for (var property in tmpProps) {
+      // make sure we only set things that have a value
+      if (
+        property != "class" &&
+        property != "style" &&
+        tmpProps.hasOwnProperty(property) &&
+        typeof node[property] !== undefined &&
+        node[property] != null &&
+        node[property] != ""
+      ) {
+        props[property] = node[property];
+      }
+      // special support for false boolean
+      else if (node[property] === false) {
+        props[property] = node[property];
+      } else {
+      }
+    }
+    for (var attribute in node.attributes) {
+      // make sure we only set things that have a value
+      if (
+        typeof node.attributes[attribute].name !== typeof undefined &&
+        node.attributes[attribute].name != "class" &&
+        node.attributes[attribute].name != "style" &&
+        node.attributes[attribute].name != "id" &&
+        node.attributes.hasOwnProperty(attribute) &&
+        typeof node.attributes[attribute].value !== undefined &&
+        node.attributes[attribute].value != null &&
+        node.attributes[attribute].value != "" &&
+        !tmpProps.hasOwnProperty(
+          window.HaxStore.dashToCamel(node.attributes[attribute].name)
+        )
+      ) {
+        props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
+          node.attributes[attribute].value;
+      } else {
+        // note: debug here if experiencing attributes that won't bind
+      }
+    }
+  } else {
+    // much easier case, usually just in primatives
+    for (var attribute in node.attributes) {
+      // make sure we only set things that have a value
+      if (
+        typeof node.attributes[attribute].name !== typeof undefined &&
+        node.attributes[attribute].name != "class" &&
+        node.attributes[attribute].name != "style" &&
+        node.attributes[attribute].name != "id" &&
+        node.attributes.hasOwnProperty(attribute) &&
+        typeof node.attributes[attribute].value !== undefined &&
+        node.attributes[attribute].value != null &&
+        node.attributes[attribute].value != ""
+      ) {
+        props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
+          node.attributes[attribute].value;
+      }
+    }
+  }
+  // support sandboxed environments which
+  // will hate iframe tags but love webview
+  let tag = node.tagName.toLowerCase();
+  if (window.HaxStore.instance._isSandboxed && tag === "iframe") {
+    tag = "webview";
+  }
+  let slotContent = window.HaxStore.getHAXSlot(node);
+  // support fallback on inner text if there were no nodes
+  if (slotContent == "") {
+    slotContent = node.innerText;
+  }
+  // special edge case for slot binding in primatives
+  if (tag === "a") {
+    props.innerText = slotContent;
+  } else if (
+    tag === "p" ||
+    tag === "table" ||
+    tag === "ol" ||
+    tag === "ul" ||
+    tag === "div"
+  ) {
+    props.innerHTML = slotContent;
+  }
+  let element = {
+    tag: tag,
+    properties: props,
+    content: slotContent
+  };
+
+  if (eventName !== null) {
+    element.eventName = eventName;
+  }
+  return element;
+}
+
+/**
  * Manage window based events in a consistent and simple manner
  */
 export const winEventsElement = function(SuperClass) {
@@ -414,7 +547,8 @@ export {
   stripMSWord,
   varExists,
   varGet,
-  objectValFromStringPos
+  objectValFromStringPos,
+  nodeToHaxElement
 };
 
 /**

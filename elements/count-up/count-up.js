@@ -42,6 +42,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
       `
     ];
   }
+
   // render function
   render() {
     return html`
