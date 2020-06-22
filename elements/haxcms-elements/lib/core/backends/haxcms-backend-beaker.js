@@ -4,6 +4,7 @@
  */
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 
@@ -54,6 +55,12 @@ class HAXCMSBackendBeaker extends LitElement {
    */
   constructor() {
     super();
+    this.__disposer = [];
+    // see up a tag to place RIGHT next to the site-builder itself
+    autorun(reaction => {
+      this.jwt = toJS(store.jwt);
+      this.__disposer.push(reaction);
+    });
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
     // HAX CMS events to intercept
     document.body.addEventListener(
@@ -385,6 +392,15 @@ class HAXCMSBackendBeaker extends LitElement {
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = this.jwt;
     }
+  }
+  /**
+   * Detatched life cycle
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    super.disconnectedCallback();
   }
   /**
    * Attached life cycle

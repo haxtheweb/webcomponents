@@ -4,6 +4,7 @@
  */
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-nodejs`
@@ -50,43 +51,65 @@ class HAXCMSBackendNodeJS extends LitElement {
     }
   }
   /**
+   * Detatched life cycle
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    super.disconnectedCallback();
+  }
+  /**
    * HTMLElement
    */
   constructor() {
     super();
+    this.__disposer = [];
+    // see up a tag to place RIGHT next to the site-builder itself
+    autorun(reaction => {
+      this.jwt = toJS(store.jwt);
+      this.__disposer.push(reaction);
+    });
   }
   /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
-    if (window.appSettings) {
-      let jwtlogin = this.shadowRoot.querySelector("#jwt");
-      jwtlogin.url = window.appSettings.login;
-      jwtlogin.refreshUrl = window.appSettings.refreshUrl;
-      jwtlogin.logoutUrl = window.appSettings.logout;
-      jwtlogin.redirectUrl = window.appSettings.redirectUrl;
-    }
-    if (
-      this.jwt != null &&
-      this.jwt != "null" &&
-      this.jwt != "" &&
-      typeof this.jwt == "string"
-    ) {
-      this.dynamicallyImportEditor();
-    } else {
-      // other things will have to sort out the fact that while we
-      // DO have a dynamic backend, we didn't get a hit on the JWT
-      // meaning that we are in a dynamic environment but logged out
-      // at the moment (or viewing a site we don't have authorization to)
-      window.dispatchEvent(
-        new CustomEvent("haxcms-not-logged-in", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this
-        })
-      );
-    }
+    setTimeout(() => {
+      if (window.appSettings) {
+        let jwtlogin = this.shadowRoot.querySelector("#jwt");
+        jwtlogin.url = window.appSettings.login;
+        jwtlogin.refreshUrl = window.appSettings.refreshUrl;
+        jwtlogin.logoutUrl = window.appSettings.logout;
+        jwtlogin.redirectUrl = window.appSettings.redirectUrl;
+        // allow setting in session driven environments
+        // its not a real JWT but it drives the environment to operate correctly
+        if (window.appSettings.jwt) {
+          this.jwt = window.appSettings.jwt;
+        }
+      }
+      if (
+        this.jwt != null &&
+        this.jwt != "null" &&
+        this.jwt != "" &&
+        typeof this.jwt == "string"
+      ) {
+        this.dynamicallyImportEditor();
+      } else {
+        // other things will have to sort out the fact that while we
+        // DO have a dynamic backend, we didn't get a hit on the JWT
+        // meaning that we are in a dynamic environment but logged out
+        // at the moment (or viewing a site we don't have authorization to)
+        window.dispatchEvent(
+          new CustomEvent("haxcms-not-logged-in", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: this
+          })
+        );
+      }
+    }, 500);
   }
   /**
    * LitElement / popular convention
@@ -122,6 +145,7 @@ class HAXCMSBackendNodeJS extends LitElement {
           if (window.appSettings) {
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
+            store.jwt = this.jwt;
             store.cmsSiteEditor.instance.saveNodePath =
               window.appSettings.saveNodePath;
             store.cmsSiteEditor.instance.saveManifestPath =
