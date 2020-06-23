@@ -208,23 +208,46 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
   get _selectEvent() {
     return "select-carousel-item";
   }
-
+  /**
+   * gets id for first figure
+   *
+   * @readonly
+   * @memberof a11yCarousel
+   */
   get first() {
     return this.itemData && this.itemData[0] ? this.itemData[0].id : undefined;
   }
 
+  /**
+   * gets id for previous figure
+   *
+   * @readonly
+   * @memberof a11yCarousel
+   */
   get prev() {
     return this.itemData && this.itemData[this.selectedIndex - 1]
       ? this.itemData[this.selectedIndex - 1].id
       : this.first;
   }
 
+  /**
+   * gets id for last figure
+   *
+   * @readonly
+   * @memberof a11yCarousel
+   */
   get last() {
     return this.itemData && this.itemData[this.itemData.length - 1]
       ? this.itemData[this.itemData.length - 1].id
       : undefined;
   }
 
+  /**
+   * gets id for next figure
+   *
+   * @readonly
+   * @memberof a11yCarousel
+   */
   get next() {
     return this.itemData && this.itemData[this.selectedIndex + 1]
       ? this.itemData[this.selectedIndex + 1].id
@@ -235,6 +258,12 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this._handleSelectionChange();
   }
+  /**
+   * gets image css for selected image
+   *
+   * @returns
+   * @memberof a11yCarousel
+   */
   _getImage() {
     let img =
       this.querySelector(`figure#${this.selection} > img`) ||

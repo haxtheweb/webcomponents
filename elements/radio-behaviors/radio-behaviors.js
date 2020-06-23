@@ -118,6 +118,7 @@ const RadioBehaviors = function(SuperClass) {
      * @returns
      */
     _getDataFromItem(item, index, selected) {
+      if(!item.id || item.id.trim().length < 1) item.id = this._generateUUID();
       let data = {
         id: item.id,
         index: parseInt(index),
@@ -127,18 +128,28 @@ const RadioBehaviors = function(SuperClass) {
       };
       return data;
     }
+    /**
+     * sets item _selected attribute
+     *
+     * @param {*} item
+     */
+    _setItemSelected(item){
+      item.id !== this.selection
+          ? item.removeAttribute(this._selected)
+          : item.setAttribute(this._selected, true);  
+    }
 
     /**
      * selects an item
      * @param {string|object} item id or node
      */
     selectItem(item) {
-      if (typeof item === "string")
+      if (typeof item === "string" && item.trim().length > 0)
         item = this.querySelector(`${this._query}#${item}`);
       if (item && item.id && !item.disabled && item.id !== this.selection) {
         this.setAttribute("selection", item.id);
         this._handleSelectionChange();
-      } else if (!this.querySelector(`${this._query}#${this.selection}`)) {
+      } else if (this.selection && !this.querySelector(`${this._query}#${this.selection}`)) {
         let sel =
           this.querySelector(`${this._query}[${this._selected}]`) ||
           this.querySelector(`${this._query}`);
@@ -171,7 +182,7 @@ const RadioBehaviors = function(SuperClass) {
       });
       if (changed) {
         this.querySelectorAll(`${this._query}`).forEach(i => {
-          if (!i.id) i.id = `item-${this._generateUUID()}`;
+          if (!i.id) i.id = this._generateUUID();
         });
         this.selectItem(this.selection);
       }
@@ -182,18 +193,14 @@ const RadioBehaviors = function(SuperClass) {
      * @param {event} e
      */
     _handleSelectItem(e) {
-      e.stopPropagation();
+      if(e.stopPropagation) e.stopPropagation();
       this.selectItem(e.detail.controls);
     }
     /**
      * shows or hides items based on selection
      */
     _handleSelectionChange() {
-      this.querySelectorAll(`${this._query}`).forEach(i => {
-        i.id !== this.selection
-          ? i.removeAttribute(this._selected)
-          : i.setAttribute(this._selected, true);
-      });
+      this.querySelectorAll(`${this._query}`).forEach(i => this._setItemSelected(i));
       /**
        * Fires when selection update, so that parent radio group can listen for it.
        * @event selection-changed
@@ -219,7 +226,7 @@ const RadioBehaviors = function(SuperClass) {
      * @returns {string } unique id
      */
     _generateUUID() {
-      return "ss-s-s-s-sss".replace(
+      return "item-ss-s-s-s-sss".replace(
         /s/g,
         Math.floor((1 + Math.random()) * 0x10000)
           .toString(16)
