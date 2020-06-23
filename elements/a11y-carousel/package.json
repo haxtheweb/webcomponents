@@ -43,9 +43,9 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.6.17",
     "@lrnwebcomponents/radio-behaviors": "^2.6.17",
-    "@lrnwebcomponents/user-action": "^2.6.16",
     "@lrnwebcomponents/a11y-details": "^2.6.16",
-    "@polymer/iron-image": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
   },
