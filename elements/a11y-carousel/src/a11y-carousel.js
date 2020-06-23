@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RadioBehaviors } from "@lrnwebcomponents/radio-behaviors/radio-behaviors.js";
-import '@polymer/iron-icon/iron-icon.js';
-import '@polymer/iron-icons/iron-icons.js';
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "./lib/a11y-carousel-button.js";
 /**
  * `a11y-carousel`
@@ -75,11 +75,11 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             opacity: 1;
             color: var(--a11y-carousel-button-background-color, black);
           }
-          a11y-carousel-button[button-type=prev] {
+          a11y-carousel-button[button-type="prev"] {
             left: 0;
             right: 50%;
           }
-          a11y-carousel-button[button-type=next]{
+          a11y-carousel-button[button-type="next"] {
             right: 0;
             left: 50%;
             align-items: flex-end;
@@ -89,9 +89,15 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             height: var(--a11y-carousel-button-height, 10px);
             margin: var(--a11y-carousel-button-margin, 5px);
             padding: var(--a11y-carousel-button-padding, 0px);
-            background-color: var(--a11y-carousel-button-background-color, black);
+            background-color: var(
+              --a11y-carousel-button-background-color,
+              black
+            );
             border: var(--a11y-carousel-button-border, 1px solid black);
-            border-radius: var(--a11y-carousel-button-border-radius, 1px solid black);
+            border-radius: var(
+              --a11y-carousel-button-border-radius,
+              1px solid black
+            );
           }
         }
       `
@@ -103,41 +109,42 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
       <div id="inner">
         <slot name="img"></slot>
         <slot></slot>
-        ${this.noPrevNext 
-          ? `` 
+        ${this.noPrevNext
+          ? ``
           : html`
-            <a11y-carousel-button 
-              class="prevnext" 
-              button-type="prev" 
-              controls="${this.prev}"
-              title="${this.prevLabel}">
-              <span class="sr-only">${this.nextLabel}</span>
-              <iron-icon icon="icons:chevron-left"></iron-icon>
-            </a11y-carousel-button>
-            <a11y-carousel-button 
-              class="prevnext" 
-              button-type="next" 
-              controls="${this.next}" 
-              title="${this.nextLabel}">
-              <span class="sr-only">${this.nextLabel}</span>
-              <iron-icon icon="icons:chevron-right"></iron-icon>
-            </a11y-carousel-button>
-          `
-        }
-      </div>
-      ${this.noButtons 
-        ? `` 
-        : html`
-          <div class="buttons">
-            ${(this.itemData || []).map(item=>html`
-              <a11y-carousel-button 
-                class="button" controls="${item.id}">
-                <span class="sr-only">${item.index+1}</span>
+              <a11y-carousel-button
+                class="prevnext"
+                button-type="prev"
+                controls="${this.prev}"
+                title="${this.prevLabel}"
+              >
+                <span class="sr-only">${this.nextLabel}</span>
+                <iron-icon icon="icons:chevron-left"></iron-icon>
               </a11y-carousel-button>
-            `)}
-          </div>
-        `
-        }
+              <a11y-carousel-button
+                class="prevnext"
+                button-type="next"
+                controls="${this.next}"
+                title="${this.nextLabel}"
+              >
+                <span class="sr-only">${this.nextLabel}</span>
+                <iron-icon icon="icons:chevron-right"></iron-icon>
+              </a11y-carousel-button>
+            `}
+      </div>
+      ${this.noButtons
+        ? ``
+        : html`
+            <div class="buttons">
+              ${(this.itemData || []).map(
+                item => html`
+                  <a11y-carousel-button class="button" controls="${item.id}">
+                    <span class="sr-only">${item.index + 1}</span>
+                  </a11y-carousel-button>
+                `
+              )}
+            </div>
+          `}
       <div><slot name="below"></slot></div>
     `;
   }
@@ -202,34 +209,36 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     return "select-carousel-item";
   }
 
-  get first(){
-    return this.itemData  && this.itemData[0] ? this.itemData[0].id : undefined;
+  get first() {
+    return this.itemData && this.itemData[0] ? this.itemData[0].id : undefined;
   }
 
-  get prev(){
+  get prev() {
     return this.itemData && this.itemData[this.selectedIndex - 1]
-    ? this.itemData[this.selectedIndex - 1].id
-    : this.first;
+      ? this.itemData[this.selectedIndex - 1].id
+      : this.first;
   }
 
-  get last(){
-    return this.itemData && this.itemData[this.itemData.length-1] 
-    ? this.itemData[this.itemData.length-1].id 
-    : undefined;
+  get last() {
+    return this.itemData && this.itemData[this.itemData.length - 1]
+      ? this.itemData[this.itemData.length - 1].id
+      : undefined;
   }
 
-  get next(){
+  get next() {
     return this.itemData && this.itemData[this.selectedIndex + 1]
-    ? this.itemData[this.selectedIndex + 1].id
-    : this.last;
+      ? this.itemData[this.selectedIndex + 1].id
+      : this.last;
   }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this._handleSelectionChange();
   }
-  _getImage(){
-    let img = this.querySelector(`figure#${this.selection} > img`) || this.querySelector(`figure > img`);
+  _getImage() {
+    let img =
+      this.querySelector(`figure#${this.selection} > img`) ||
+      this.querySelector(`figure > img`);
     return img ? `url("${img.src}")` : undefined;
   }
 
@@ -240,7 +249,10 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     super._handleSelectionChange();
     this._updateItemData();
     let buttons = this.querySelectorAll(`a11y-carousel-button`);
-    this.style.setProperty("--a11y-carousel-background-image", this._getImage());
+    this.style.setProperty(
+      "--a11y-carousel-background-image",
+      this._getImage()
+    );
     Object.keys(buttons || {}).forEach(key => {
       let button = buttons[key];
       if (button.buttonType === "first") button.controls = this.first;

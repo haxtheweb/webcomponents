@@ -65,8 +65,8 @@ export const a11yCarouselButtonStory = () => {
     </figure>`;
   div.appendChild(
     utils.makeElementFromClass(a11yCarouselButton, {
-      buttonType: utils.getRandomOption(["","first","next","prev","last"]),
-      controls: utils.getRandomOption(["","figure-1","figure-2","figure-3"]),
+      buttonType: utils.getRandomOption(["", "first", "next", "prev", "last"]),
+      controls: utils.getRandomOption(["", "figure-1", "figure-2", "figure-3"]),
       emptyslot: "Custom Button"
     })
   );
