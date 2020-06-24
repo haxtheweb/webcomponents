@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import {unsafeHTML} from 'lit-html/directives/unsafe-html.js';
 import "@polymer/paper-input/paper-input.js";
 
 /**
@@ -22,9 +23,19 @@ class PunnettSquare extends LitElement {
 
   static get properties() {
     return {
+      /**
+       * Varient 1 - example XY
+       */
       variant1: { type: String },
+      /**
+       * Varient 2 - example XX
+       */
       variant2: { type: String },
-      editable: { type: Boolean }
+      /**
+       * Editable - allow users to change the varient values
+       */
+      editable: { type: Boolean },
+      __results: { type: Array }
     };
   }
 
@@ -34,13 +45,25 @@ class PunnettSquare extends LitElement {
     this.variant1 = "";
     this.variant2 = "";
     this.editable = false;
+    // Gather Lightdom Rendered Results
+    const results = this.querySelectorAll("[data-variant]");
+    let _renderedResults = [];
+    for (let result of results) {
+      let variant = result.getAttribute("data-variant")
+      variant = this.__sortVariant(variant);
+      let item = {
+        variant,
+        ref: result
+      };
+      _renderedResults = [..._renderedResults, item];
+    }
+    this.__results = _renderedResults;
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  __sortVariant(variant) {
+    return variant.split("")
+        .sort()
+        .join("");
   }
 
   /**
@@ -57,6 +80,9 @@ class PunnettSquare extends LitElement {
   render() {
     let value1 = this.__ensureArray(this.variant1);
     let value2 = this.__ensureArray(this.variant2);
+
+    const asdf = (value1[0].length < 1 && value2[0].length < 1)
+    console.log('asdf:', asdf)
 
     return html`
       <style>
@@ -128,6 +154,7 @@ class PunnettSquare extends LitElement {
               `
         }</div>
       </div>
+
       <table>
         <thead>
           <tr>
@@ -155,7 +182,9 @@ class PunnettSquare extends LitElement {
                       v1.map(
                         allele1 =>
                           html`
-                            <td>${allele1}${allele}</td>
+                            <td>
+                              ${this.renderVariant(`${allele1}${allele}`)}
+                            </td>
                           `
                       )
                     )}
@@ -168,7 +197,19 @@ class PunnettSquare extends LitElement {
       </table>
     `;
   }
+  
+  renderVariant(variant) {
+    const _variant = this.__sortVariant(variant);
+    const result = this.__results.find(i => i.variant === _variant)
+    if (result) {
+      return html`${unsafeHTML(result.ref.outerHTML)}`
+    }
+    else {
+      return html`${_variant}`
+    }
+  }
 }
+
 customElements.define(PunnettSquare.tag, PunnettSquare);
 
 export { PunnettSquare };
