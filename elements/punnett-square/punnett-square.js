@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import {unsafeHTML} from 'lit-html/directives/unsafe-html.js';
+import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
 import "@polymer/paper-input/paper-input.js";
 
 /**
@@ -49,7 +49,7 @@ class PunnettSquare extends LitElement {
     const results = this.querySelectorAll("[data-variant]");
     let _renderedResults = [];
     for (let result of results) {
-      let variant = result.getAttribute("data-variant")
+      let variant = result.getAttribute("data-variant");
       variant = this.__sortVariant(variant);
       let item = {
         variant,
@@ -61,9 +61,10 @@ class PunnettSquare extends LitElement {
   }
 
   __sortVariant(variant) {
-    return variant.split("")
-        .sort()
-        .join("");
+    return variant
+      .split("")
+      .sort()
+      .join("");
   }
 
   /**
@@ -81,8 +82,8 @@ class PunnettSquare extends LitElement {
     let value1 = this.__ensureArray(this.variant1);
     let value2 = this.__ensureArray(this.variant2);
 
-    const asdf = (value1[0].length < 1 && value2[0].length < 1)
-    console.log('asdf:', asdf)
+    const asdf = value1[0].length < 1 && value2[0].length < 1;
+    console.log("asdf:", asdf);
 
     return html`
       <style>
@@ -197,15 +198,18 @@ class PunnettSquare extends LitElement {
       </table>
     `;
   }
-  
+
   renderVariant(variant) {
     const _variant = this.__sortVariant(variant);
-    const result = this.__results.find(i => i.variant === _variant)
+    const result = this.__results.find(i => i.variant === _variant);
     if (result) {
-      return html`${unsafeHTML(result.ref.outerHTML)}`
-    }
-    else {
-      return html`${_variant}`
+      return html`
+        ${unsafeHTML(result.ref.outerHTML)}
+      `;
+    } else {
+      return html`
+        ${_variant}
+      `;
     }
   }
 }
