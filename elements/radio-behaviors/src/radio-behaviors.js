@@ -118,7 +118,7 @@ const RadioBehaviors = function(SuperClass) {
      * @returns
      */
     _getDataFromItem(item, index, selected) {
-      if(!item.id || item.id.trim().length < 1) item.id = this._generateUUID();
+      if (!item.id || item.id.trim().length < 1) item.id = this._generateUUID();
       let data = {
         id: item.id,
         index: parseInt(index),
@@ -133,10 +133,10 @@ const RadioBehaviors = function(SuperClass) {
      *
      * @param {*} item
      */
-    _setItemSelected(item){
+    _setItemSelected(item) {
       item.id !== this.selection
-          ? item.removeAttribute(this._selected)
-          : item.setAttribute(this._selected, true);  
+        ? item.removeAttribute(this._selected)
+        : item.setAttribute(this._selected, true);
     }
 
     /**
@@ -149,7 +149,10 @@ const RadioBehaviors = function(SuperClass) {
       if (item && item.id && !item.disabled && item.id !== this.selection) {
         this.setAttribute("selection", item.id);
         this._handleSelectionChange();
-      } else if (this.selection && !this.querySelector(`${this._query}#${this.selection}`)) {
+      } else if (
+        this.selection &&
+        !this.querySelector(`${this._query}#${this.selection}`)
+      ) {
         let sel =
           this.querySelector(`${this._query}[${this._selected}]`) ||
           this.querySelector(`${this._query}`);
@@ -193,14 +196,16 @@ const RadioBehaviors = function(SuperClass) {
      * @param {event} e
      */
     _handleSelectItem(e) {
-      if(e.stopPropagation) e.stopPropagation();
+      if (e.stopPropagation) e.stopPropagation();
       this.selectItem(e.detail.controls);
     }
     /**
      * shows or hides items based on selection
      */
     _handleSelectionChange() {
-      this.querySelectorAll(`${this._query}`).forEach(i => this._setItemSelected(i));
+      this.querySelectorAll(`${this._query}`).forEach(i =>
+        this._setItemSelected(i)
+      );
       /**
        * Fires when selection update, so that parent radio group can listen for it.
        * @event selection-changed
