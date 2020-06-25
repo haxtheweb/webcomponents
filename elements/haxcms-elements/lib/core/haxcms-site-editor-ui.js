@@ -321,58 +321,64 @@ class HAXCMSSiteEditorUI extends LitElement {
     setTimeout(() => {
       let ary = [
         {
-          varPath: 'getNodeFieldsPath',
-          selector: '#editdetails'
+          varPath: "getNodeFieldsPath",
+          selector: "#editdetails"
         },
         {
-          varPath: 'deleteNodePath',
-          selector: '#deletebutton'
+          varPath: "deleteNodePath",
+          selector: "#deletebutton"
         },
         {
-          varPath: 'saveNodePath',
-          selector: '#editbutton'
+          varPath: "saveNodePath",
+          selector: "#editbutton"
         },
         {
-          varPath: 'createNodePath',
-          selector: '#addbutton'
+          varPath: "createNodePath",
+          selector: "#addbutton"
         },
         {
-          varPath: 'saveOutlinePath',
-          selector: '#outlinebutton',
+          varPath: "saveOutlinePath",
+          selector: "#outlinebutton"
         },
         {
-          varPath: 'saveManifestPath',
-          selector: '#manifestbutton',
-          dep: 'getSiteFieldsPath',
+          varPath: "saveManifestPath",
+          selector: "#manifestbutton",
+          dep: "getSiteFieldsPath"
         },
         {
-          varPath: 'getSiteFieldsPath',
-          selector: '#manifestbutton',
-          dep: 'saveManifestPath',
-        },
+          varPath: "getSiteFieldsPath",
+          selector: "#manifestbutton",
+          dep: "saveManifestPath"
+        }
       ];
       // see which features should be enabled
-      ary.forEach((pair) => {
-        if (window.appSettings && window.appSettings[pair.varPath] &&
+      ary.forEach(pair => {
+        if (
+          window.appSettings &&
+          window.appSettings[pair.varPath] &&
           window.appSettings[pair.varPath] != null &&
           window.appSettings[pair.varPath] != "" &&
           window.appSettings[pair.varPath] != "null"
         ) {
           if (pair.dep) {
-            if (window.appSettings[pair.dep] != null &&
-            window.appSettings[pair.dep] != "" &&
-            window.appSettings[pair.dep] != "null") {
-              this.shadowRoot.querySelector(pair.selector).removeAttribute('hidden');
-            }
-            else {
+            if (
+              window.appSettings[pair.dep] != null &&
+              window.appSettings[pair.dep] != "" &&
+              window.appSettings[pair.dep] != "null"
+            ) {
+              this.shadowRoot
+                .querySelector(pair.selector)
+                .removeAttribute("hidden");
+            } else {
               // a dependency didn't meet the requirement
             }
+          } else {
+            this.shadowRoot
+              .querySelector(pair.selector)
+              .removeAttribute("hidden");
           }
-          else {
-            this.shadowRoot.querySelector(pair.selector).removeAttribute('hidden');
-          }
-        }  
-      })
+        }
+      });
     }, 0);
     // load user data
     this.dispatchEvent(
