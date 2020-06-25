@@ -39,34 +39,7 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <a11y-carousel id="demo2">
-          <figure id="figure-1">
-            <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
-          </figure>
-          <figure id="figure-2">
-            <img src="//placekitten.com/300/100" alt="Random Kitten, 300 X 100"/>
-          </figure>
-          <figure id="figure-3">
-            <img src="//placekitten.com/400/300" alt="Random Kitten, 400 X 300"/>
-          </figure>
-        </a11y-carousel>
-        <style>
-          @media screen {
-            #demo2:defined {
-              display: block;
-              background-image: var(--a11y-carousel-background-image,none);
-              background-size: cover;
-            }
-            #demo2:defined img {
-              opacity: 0;
-            }
-          }
-        </style>
-      </template>
-    </demo-snippet>
-    <demo-snippet>
-      <template>
-        <a11y-carousel id="demo3" no-buttons no-prev-next>
+        <a11y-carousel id="demo2" no-buttons no-prev-next>
           <figure id="figure-1">
             <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
             <figcaption>Item 1</figcaption>
@@ -90,7 +63,7 @@
           </div>
         </a11y-carousel>
         <style>
-          #demo3 [slot="below"] {
+          #demo2 [slot="below"] {
             display: flex;
             align-items: stretch;
             justify-content: center;
@@ -100,7 +73,7 @@
     </demo-snippet>
     <demo-snippet>
       <template>
-        <a11y-carousel id="demo4" no-buttons>
+        <a11y-carousel id="demo3" no-buttons>
           <figure id="figure-1">
             <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
           </figure>
@@ -114,7 +87,7 @@
             <a11y-carousel-button controls="figure-1">
               <span>1</span>
             </a11y-carousel-button>
-            <a11y-carousel-button controls="figure-2">
+            <a11y-carousel-button controls="figure-2" disabled>
               <span>2</span>
             </a11y-carousel-button>
             <a11y-carousel-button controls="figure-3">
@@ -123,34 +96,34 @@
           </div>
         </a11y-carousel>
         <style>
-          #demo4 [slot="below"] {
+          #demo3 [slot="below"] {
             display: none;
           }
           @media screen {
-            #demo4 [slot="below"] {
+            #demo3 [slot="below"] {
               display: flex;
               align-items: stretch;
               justify-content: center;
             }
-            #demo4:defined a11y-carousel-button {
+            #demo3:defined a11y-carousel-button {
               background-size: cover;
               background-position: center;
               width: 20px;
               height: 20px;
             }
-            #demo4:defined a11y-carousel-button span {
+            #demo3:defined a11y-carousel-button span {
               position: absolute;
               left: -99999px;
               width: 0;
               overflow: hidden;
             }
-            #demo4:defined a11y-carousel-button[controls="figure-1"] {
+            #demo3:defined a11y-carousel-button[controls="figure-1"] {
               background-image: url("//placekitten.com/400/200")
             }
-            #demo4:defined a11y-carousel-button[controls="figure-2"] {
+            #demo3:defined a11y-carousel-button[controls="figure-2"] {
               background-image: url("//placekitten.com/300/100")
             }
-            #demo4:defined a11y-carousel-button[controls="figure-3"] {
+            #demo3:defined a11y-carousel-button[controls="figure-3"] {
               background-image: url("//placekitten.com/400/300")
             }
           }

@@ -4,7 +4,7 @@ import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Media|Image Compare Slider",
+  title: "Media|Image Compare",
   component: "a11y-compare-image",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
@@ -25,7 +25,7 @@ export const a11yCompareImageStory = () => {
         `./demo/images/Matterhorn02.png`,
         import.meta.url
       )}" alt="Matterhorn with snow">`,
-      heading: `<h2>Image Compare Slider</h2>`,
+      heading: `<h2>A11y Compare Image</h2>`,
       description: `<p>
       The image on the top or when slider is moved all the way to the 
       right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>.

@@ -85,6 +85,7 @@ class a11yCarouselButton extends LitElement {
     this.addEventListener("keydown", this._handleClick);
     this.active = false;
     this.hidden = false;
+    this.disabled = false;
   }
   disconnectedCallback() {
     this.removeEventListener("click", this._handleClick);

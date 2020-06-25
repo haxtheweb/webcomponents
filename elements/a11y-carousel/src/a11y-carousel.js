@@ -152,9 +152,6 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      figures: {
-        type: Array
-      },
       nextLabel: {
         type: String
       },
@@ -190,7 +187,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
    * overrides query selector for slotted children
    * @readonly
    */
-  get _query() {
+  get __query() {
     return "figure";
   }
   /**
@@ -198,14 +195,14 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
    * overrides attribute to apply to selected item
    * @readonly
    */
-  get _selected() {
+  get __selected() {
     return "active";
   }
   /**
    * overrides name of event that selects item
    * @readonly
    */
-  get _selectEvent() {
+  get __selectEvent() {
     return "select-carousel-item";
   }
   /**
