@@ -52,13 +52,13 @@ export const a11yCarouselButtonStory = () => {
     carousel = document.createElement("a11y-carousel");
   above.slot = "above";
   below.slot = "below";
-  [ above, below ].forEach(div=>{
+  [above, below].forEach(div => {
     div.style.display = "flex";
     div.style.alignItems = "stretch";
     div.style.justifyContent = "center";
   });
   carousel.noButtons = true;
-  
+
   carousel.innerHTML = `
     <figure id="figure-1">
       <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
@@ -82,13 +82,16 @@ export const a11yCarouselButtonStory = () => {
     <a11y-carousel-button button-type="last" controls="figure-3">last</a11y-carousel-button>
   `;
   above.appendChild(
-    utils.makeElementFromClass(a11yCarouselButton, {
-      buttonType: utils.getRandomOption(),
-      controls: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
-      emptyslot: "Custom Button"
-    },[
-      { title: "Content", slot: "" }
-    ],["active","disabled"])
+    utils.makeElementFromClass(
+      a11yCarouselButton,
+      {
+        buttonType: utils.getRandomOption(),
+        controls: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
+        emptyslot: "Custom Button"
+      },
+      [{ title: "Content", slot: "" }],
+      ["active", "disabled"]
+    )
   );
   carousel.appendChild(above);
   carousel.appendChild(below);

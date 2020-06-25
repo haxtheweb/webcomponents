@@ -40,7 +40,8 @@ const RadioBehaviors = function(SuperClass) {
      * life cycle, element is removed from the DOM
      */
     disconnectedCallback() {
-      if (this.__observer && this.__observer.disconnect) this.__observer.disconnect();
+      if (this.__observer && this.__observer.disconnect)
+        this.__observer.disconnect();
       this.removeEventListener(this.__selectEvent, this._handleSelectItem);
       super.disconnectedCallback();
     }
@@ -59,7 +60,8 @@ const RadioBehaviors = function(SuperClass) {
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if(propName === "selection" && this.selection !== oldValue) this.selectItem(this.selection);
+        if (propName === "selection" && this.selection !== oldValue)
+          this.selectItem(this.selection);
       });
     }
     /**
@@ -85,7 +87,7 @@ const RadioBehaviors = function(SuperClass) {
      * allows no item to be selected
      * @readonly
      */
-    get __allowNull(){
+    get __allowNull() {
       return false;
     }
     /**
@@ -116,30 +118,29 @@ const RadioBehaviors = function(SuperClass) {
      */
     selectItem(item) {
       //make sure item is an object
-        item = typeof item === "string" 
-        && item.trim().length > 0 
-        ? this._getItemById(item) 
-        : typeof item === "integer"
-        ? this._getItemByIndex(item) 
-        : item;
-      
+      item =
+        typeof item === "string" && item.trim().length > 0
+          ? this._getItemById(item)
+          : typeof item === "integer"
+          ? this._getItemByIndex(item)
+          : item;
+
       //make sure an item is selected if null is unallowed
-      if(!this.__allowNull && (!item || item.disabled)) {
-        item = this.selection 
-        && this._getItemByQuery(`#${this.selection}`)
-        ? this._getItemByQuery(`#${this.selection}`)
-        : this.__selected 
-        && this._getItemByQuery(`[${this.__selected}]`)
-        ? this._getItemByQuery(`[${this.__selected}]`)
-        : this._getItemByQuery();
+      if (!this.__allowNull && (!item || item.disabled)) {
+        item =
+          this.selection && this._getItemByQuery(`#${this.selection}`)
+            ? this._getItemByQuery(`#${this.selection}`)
+            : this.__selected && this._getItemByQuery(`[${this.__selected}]`)
+            ? this._getItemByQuery(`[${this.__selected}]`)
+            : this._getItemByQuery();
       }
-      
+
       //only update if item isn't already selected
-      if(item && !this._isItemSelected(item)) {
+      if (item && !this._isItemSelected(item)) {
         item.id = item.id || this._generateUUID();
         this.selection = item.id;
         this._handleSelectionChange();
-      } else if(!item && this.__allowNull && this.selection) {
+      } else if (!item && this.__allowNull && this.selection) {
         this.selection = undefined;
         this._handleSelectionChange();
       }
@@ -191,7 +192,7 @@ const RadioBehaviors = function(SuperClass) {
      * @param {string} id
      * @returns object
      */
-    _getItemById(id){
+    _getItemById(id) {
       return this._getItemByQuery(`#${id}`);
     }
 
@@ -201,9 +202,11 @@ const RadioBehaviors = function(SuperClass) {
      * @param {integer} index
      * @returns object
      */
-    _getItemByIndex(index){
+    _getItemByIndex(index) {
       let items = this.querySelectorAll(this.__query);
-      return items && items[index] && !items[index].disabled  ? items[index] : undefined;
+      return items && items[index] && !items[index].disabled
+        ? items[index]
+        : undefined;
     }
 
     /**
@@ -212,7 +215,7 @@ const RadioBehaviors = function(SuperClass) {
      * @param {string} query
      * @returns object
      */
-    _getItemByQuery(query = ''){
+    _getItemByQuery(query = "") {
       let item = this.querySelector(`${this.__query}${query}`);
       return item && !item.disabled ? item : undefined;
     }
@@ -277,10 +280,11 @@ const RadioBehaviors = function(SuperClass) {
      * @param {*} item
      * @returns
      */
-    _isItemSelected(item){
-      return item && (
-        (item.id && item.id === this.selection) 
-        || item.hasAttribute(this.__selected)
+    _isItemSelected(item) {
+      return (
+        item &&
+        ((item.id && item.id === this.selection) ||
+          item.hasAttribute(this.__selected))
       );
     }
     /**

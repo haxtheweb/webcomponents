@@ -12,7 +12,7 @@ export default {
   }
 };
 let images = [
-  new URL(`./demo/images/Matterhorn01.png`, import.meta.url), 
+  new URL(`./demo/images/Matterhorn01.png`, import.meta.url),
   new URL(`./demo/images/Matterhorn02.png`, import.meta.url)
 ];
 

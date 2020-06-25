@@ -692,16 +692,23 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromHaxDemo(el, defaults = {}, additions = [], exclusions = [],index) {
-    let demoschema = el.haxProperties 
-      && el.haxProperties.demoSchema 
-      ? el.haxProperties.demoSchema 
-      : undefined,
-      demo = demoschema && index && demoschema[index] 
-        ? demoschema[index] 
-        : demoschema.length > 0 
-        ? this.getRandomOption(el.haxProperties.demoSchema)
-        : {},
+  makeElementFromHaxDemo(
+    el,
+    defaults = {},
+    additions = [],
+    exclusions = [],
+    index
+  ) {
+    let demoschema =
+        el.haxProperties && el.haxProperties.demoSchema
+          ? el.haxProperties.demoSchema
+          : undefined,
+      demo =
+        demoschema && index && demoschema[index]
+          ? demoschema[index]
+          : demoschema.length > 0
+          ? this.getRandomOption(el.haxProperties.demoSchema)
+          : {},
       props = demo.properties,
       styles =
         demo.properties && demo.properties.style
