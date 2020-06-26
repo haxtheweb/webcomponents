@@ -391,7 +391,7 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   firstUpdated(changedProperties) {
-    if(super.firstUpdated) super.firstUpdated(changedProperties);
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
     this._updateField();
   }
   /**

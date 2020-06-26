@@ -216,7 +216,7 @@ class AccentCard extends SimpleColors {
             var(--accent-card-padding, 20px)
           );
         }
-        ::slotted([slot="image-corner"]){
+        ::slotted([slot="image-corner"]) {
           text-align: right;
           color: var(
             --accent-card-background-color,

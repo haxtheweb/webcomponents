@@ -378,7 +378,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   }
 
   updated(changedProperties) {
-    if(!this.field) this._updateField();
+    if (!this.field) this._updateField();
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
       if (this._getAttributes(this.type).includes(propName))
@@ -522,7 +522,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   get inputTemplate() {
     return html`
       <input
-        aria-descrbedby="${this.describedBy || ''}"
+        aria-descrbedby="${this.describedBy || ""}"
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         @change="${e => this._handleFieldChange()}"
