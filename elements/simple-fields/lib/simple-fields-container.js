@@ -390,7 +390,8 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsContainer
    */
-  firstUpdated() {
+  firstUpdated(changedProperties) {
+    if(super.firstUpdated) super.firstUpdated(changedProperties);
     this._updateField();
   }
   /**
@@ -895,7 +896,6 @@ class SimpleFieldsContainer extends LitElement {
         ? this.querySelector("[slot=field]")
         : undefined;
     this.id = `${this.fieldId || ""}-wrapper`;
-
     if (this.field) {
       let tag = this.field.tagName.toLowerCase(),
         type = this.field.getAttribute("type") || "text";
