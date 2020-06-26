@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/communication-icons.js";
@@ -34,20 +33,61 @@ class ElmslnStudioSubmissions extends LitElement {
           width: 0;
           overflow: hidden;
         }
-        lrndesign-gallery {
-          --lrndesign-gallery-border-radius: 2px;
-          --lrndesign-gallery-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        .filters {
+          padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          border-bottom: 1px solid #ddd;
+          height: calc(2 * var(--elmsln-studio-FontSize, 13px));
+        }
+        .filters, #layout {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+        #primary .filters > *, #layout > * {
+          flex: 0 1 auto;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        simple-fields-field {
+          color: #95989A;
+          --simple-fields-border-color: transparent;
+          --simple-fields-font-size: calc(1.5 * var(--elmsln-studio-FontSize, 13px));
+          --simple-fields-detail-font-size: calc(1.5 * var(--elmsln-studio-FontSize, 13px));
+          --simple-fields-font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
+          --simple-fields-detail-font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
+        }
+        #layout > button {
+          background-color: transparent;
+          border: 0px solid rgba(0,0,0,0);
+          opacity: 0.25;
+          transform: opacity 0.5s ease-in-out;
+          margin: 0 5px;
+        }
+        #layout button:focus,
+        #layout button:hover {
+          opacity: 0.75;
+        }
+        #layout button[aria-pressed=true] {
+          opacity: 1;
         }
         #cards {
           margin: var(--elmsln-studio-margin, 20px)
             calc(-0.5 * var(--elmsln-studio-margin, 20px));
           display: flex;
           align-items: stretch;
-          justify-content: space-between;
+          justify-content: flex-start;
           flex-wrap: wrap;
         }
-        .card {
+        .no-submissions {
+          font-weight: var(--elmsln-studio-FontWeightLight, 300);
+          font-size: 22px;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          padding: var(--elmsln-studio-margin, 20px);
+          width: calc(100% - 2 * var(--elmsln-studio-margin, 20px));
+          background-color: #e8e8e8;
+          text-align: center;
+        }
+        accent-card {
           --accent-card-padding: 0;
           --accent-card-heading-padding-top: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
@@ -73,32 +113,68 @@ class ElmslnStudioSubmissions extends LitElement {
           --accent-card-content-padding-bottom: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
           );
+          --accent-card-footer-padding-top: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-footer-padding-bottom: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-footer-padding-left: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-footer-padding-right: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-image-padding-bottom: 5px;
+          --accent-card-image-padding-right: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-image-width: 33.33333%;
           --accent-card-image-height: 200px;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
         }
-        .card [slot="heading"] {
+        .grid accent-card {
+          --accent-card-image-width: 50%;
+        }
+        .feature {
+          margin-top: var(--elmsln-studio-margin, 20px);
+          height: calc(var(--accent-card-image-height,200px) - var(--elmsln-studio-margin, 20px));
+          overflow: auto;
+        }
+        accent-card [slot="image-corner"] {
+          display: inline-flex;
+          right: 5px;
+          bottom: 10px;
+          position: absolute;
+          border-radius: 3px;
+          background-color: rgba(0,0,0,0.25);
+        }
+        accent-card [slot="image-corner"]:focus-within,
+        accent-card [slot="image-corner"]:hover {
+          background-color: rgba(0,0,0,0.5);
+        }
+        accent-card [slot="heading"] {
           font-weight: var(--elmsln-studio-FontWeightLight, 300);
           font-size: 22px;
         }
-        .card [slot="corner"] {
+        accent-card [slot="corner"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 12px;
-          color: #afafaf;
         }
-        .card [slot="subheading"] {
+        accent-card [slot="subheading"] {
           font-weight: var(--elmsln-studio-FontWeightBold, 500);
           font-size: 18px;
           font-style: normal;
           color: #5d5e5f;
         }
-        .card [slot="content"] {
+        accent-card [slot="content"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 14px;
           color: #7e7e7e;
         }
-        .card [slot="footer"] {
+        accent-card [slot="footer"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 12px;
           text-transform: uppercase;
@@ -107,9 +183,12 @@ class ElmslnStudioSubmissions extends LitElement {
           justify-content: space-between;
           color: #95989a;
         }
-        .card button {
+        accent-card button {
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           background-color: transparent;
+        }
+        accent-card button:last-child {
+          text-align: right;
         }
         #secondary {
           margin-top: 0;
@@ -117,8 +196,20 @@ class ElmslnStudioSubmissions extends LitElement {
           --nav-card-linklist-left-size: 36px;
           --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
         }
+        #secondary .filters {
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          font-size: calc(1.5 * var(--elmsln-studio-FontSize, 13px));
+        }
+        .comments,
+        .comments-by {
+          color: #95989A;
+        }
+        .comments-by {
+          font-style: italic;
+        }
         nav-card {
-          margin: 0;
+          margin: calc(1.5 *  var(--elmsln-studio-margin, 20px)) 0 0;
         }
         accent-card button {
           border: none;
@@ -128,44 +219,45 @@ class ElmslnStudioSubmissions extends LitElement {
           font-weight: inherit;
           flex: 1 1 auto;
         }
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 500px) {
+          .grid accent-card:not([horizontal]) {
+            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+          }
+        }
+        @media screen and (min-width: 900px) {
           :host {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
           }
           #primary {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
-          #secondary {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
-          .card {
-            flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
-          }
-        }
-        @media screen and (min-width: 900px) {
-          #primary {
             flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
           }
           #secondary {
             flex: 0 0 calc(33.33333333% - var(--elmsln-studio-margin, 20px));
           }
-          .card {
+          .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
         @media screen and (min-width: 1200px) {
-          .card {
+          .grid accent-card[horizontal] {
+            flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
+          }
+          .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(33.3333333333% - var(--elmsln-studio-margin, 20px));
           }
         }
         @media screen and (min-width: 1600px) {
-          #cards {
-            justify-content: space-around;
+          .grid accent-card[horizontal] {
+          --accent-card-image-width: 33.33333%;
+            flex: 0 0 calc(75% - var(--elmsln-studio-margin, 20px));
           }
-          .card {
-            flex: 0 0 calc(400px - var(--elmsln-studio-margin, 20px));
+          .grid accent-card:not([horizontal]) {
+            flex: 0 0 calc(25% - var(--elmsln-studio-margin, 20px));
+          }
+          .list accent-card {
+            --accent-card-image-width: 50%;
           }
         }
       `
@@ -174,34 +266,61 @@ class ElmslnStudioSubmissions extends LitElement {
   // render function
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="${this.commentsSrc}"
-        @response="${e => this._handleArrayData(e, "__comments")}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.submissionsSrc}"
-        @response="${e => this._handleObjectData(e, "__submissions")}"
-      ></iron-ajax>
       <div id="primary">
-        <lrndesign-gallery .sources="${this.featured}"></lrndesign-gallery>
-        <div id="cards">
+        <div class="filters">
+          <simple-fields-field 
+            inline
+            label="Assignment:"
+            .options="${this.assignments}" 
+            @value-changed="${e => this.assignment = e.detail.value}">
+          </simple-fields-field>
+          <simple-fields-field 
+            inline
+            label="Student:"
+            .options="${this.students}" 
+            @value-changed="${e => this.student = e.detail.value}">
+          </simple-fields-field>
+          <div id="layout">
+            <button 
+              aria-pressed="${this.grid ? 'false' : 'true'}" 
+              @click="${e => this.grid = false}">
+              <iron-icon icon="icons:view-list"></iron-icon>
+              <span class="sr-only">display as list</span>
+            </button>
+            <button
+              aria-pressed="${this.grid ? 'true' : 'false'}" 
+              @click="${e => this.grid = true}">
+              <iron-icon icon="icons:view-module"></iron-icon>
+              <span class="sr-only">display as grid</span>
+            </button>
+          </div>
+        </div>
+        <div id="cards" class="${this.grid ? 'grid': 'list'}">
+          ${this.noSubmissions ? html`<div class="no-submissions">No submissions for applied filters.</div>` : ``}
           ${this.submissions.map(
-            s => html`
-              <accent-card no-border class="card" image-src="${s.src}">
-                <span slot="heading" id="student-${s.id}" class="card-student">
+            s => !this._isFiltered(s.studentId,s.assignmentId) ? `` : html`
+              <accent-card no-border  
+                image-src="${s.image}"
+                ?horizontal="${s.feature || !this.grid ? true : false}"
+                image-align="${this._getAlign(s.feature, s.gravity)}">
+                <div slot="image-corner" class="image-zoom">
+                  <iron-icon icon="zoom-in"></iron-icon>
+                </div>
+                <div slot="heading" id="student-${s.id}" class="card-student">
                   ${s.student}
-                </span>
-                <span slot="corner" id="date-${s.id}">
+                </div>
+                <div slot="corner" id="date-${s.id}">
                   ${s.date}
-                </span>
-                <span slot="subheading" id="assignment-${s.id}">
+                </div>
+                <div slot="subheading" id="assignment-${s.id}">
                   ${s.assignment}
-                </span>
-                <span slot="content" id="project-${s.id}">
+                </div>
+                <div slot="content" id="project-${s.id}">
                   ${s.project}
-                </span>
+                </div>
+                <div slot="content" class="feature" ?hidden="${!s.feature}">
+                  ${s.feature}
+                </div>
                 <div slot="footer">
                   <button
                     id="discussion"
@@ -223,82 +342,52 @@ class ElmslnStudioSubmissions extends LitElement {
           )}
         </div>
       </div>
-      <nav-card
-        id="secondary"
-        flat
-        no-border
-        class="card"
-        link-icon="chevron-right"
-      >
-        <span slot="heading">Recent Comments</span>
-        <div slot="linklist">
-          ${this.__comments.map(
-            (comment, i) => html`
-              <nav-card-item
-                icon="chevron-right"
-                avatar="${comment.relationships.author.data.avatar || ""}"
-                initials="${comment.relationships.author.data.display_name ||
-                  ""}"
-              >
-                <button
-                  id="comment-${i}"
-                  aria-describedby="comment-desc-${i}"
-                  slot="label"
-                >
-                  ${comment.relationships.author.data.sis.sortable_name.replace(
-                    /.*,/,
-                    ""
-                  )}
-                  ${comment.type === "comment" ? "commented" : "submitted"}
-                  ${comment.type === "comment"
-                    ? comment.attributes.subject
-                    : comment.attributes.title}
-                </button>
-                <span id="comment-desc-${i}" slot="description">
-                  ${this.date(
-                    comment.type === "comment"
-                      ? comment.attributes.changed
-                      : comment.meta.changed
-                  )}
-                </span>
-              </nav-card-item>
-            `
-          )}
+      <div id="secondary">
+        <div class="filters">
+          <span class="comments">Comments:&nbsp;</span> 
+          <span class="comments-filter">${this.assignments[this.assignment]}&nbsp;</span> 
+          <span class="comments-by">by&nbsp;</span> 
+          <span class="comments-filter">${this.students[this.student]}&nbsp;</span>
         </div>
-      </nav-card>
+        <nav-card flat no-border class="card" link-icon="chevron-right">
+          <span slot="heading">Recent Comments</span>
+          <div slot="linklist">
+            ${this.comments.map(c => !this._isFiltered(c.studentId,c.assignmentId) ? `` : html` 
+                <nav-card-item
+                  icon="chevron-right"
+                  .avatar="${c.image}"
+                  initials="${c.firstName} ${c.lastName}">
+                  <button
+                    id="comment-${c.id}"
+                    aria-describedby="comment-desc-${c.id}"
+                    slot="label"
+                  >
+                    ${c.firstName} commented on 
+                    ${c.student}'s ${c.project} ${c.assignment}
+                  </button>
+                  <span id="comment-desc-${c.id}" slot="description">
+                    ${c.date}
+                  </span>
+                </nav-card-item>
+              `
+            )}
+          </div>
+        </nav-card>
+      </div>
     `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /*
-       * source JSON for most recent comments in response to
-       * student's comment or submission
-       */
-      commentsSrc: {
-        type: String,
-        attribute: "comments-src"
+      grid: {
+        type: Boolean
       },
-      /*
-       * source JSON for student's most recent submissions
-       */
-      submissionsSrc: {
-        type: String,
-        attribute: "submissions-src"
+      student: {
+        type: String
       },
-      /*
-       * most recent comments in response to
-       * student's comment or submission
-       */
-      __comments: {
-        type: Array
-      },
-      /*
-       * student's submissions
-       */
-      __submissions: {
-        type: Object
+      assignment: {
+        type: String
       }
     };
   }
@@ -314,139 +403,199 @@ class ElmslnStudioSubmissions extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.__comments = [];
-    this.__submissions = [];
+    this.student = "";
+    this.assignment = "";
+    this.grid = false;
+    this.__fakeData = this.fakeData;
     this.tag = ElmslnStudioSubmissions.tag;
   }
-  get submissions() {
-    return [
+  get fakeData(){
+    let submissions = [], 
+      comments = [],
+      ctr = 0,
+      students = [
       {
-        id: "e865ade8-a8e9-4e35-8fda-54aa86e57ab3",
-        student: "Havana Brown",
-        date: "March 30, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/400/400",
-        large: "//placekitten.com/800/800",
-        thumb: "//placekitten.com/200/200",
-        viewLink: "#",
-        discussLink: "#",
-        features: `Ptracy give me some of your food give me some of your food give me some of your food meh, i don't want it. Cough skid on floor, crash into wall . Knock over christmas tree intrigued by the shower spread kitty litter all over house.`
+        id: "hxb5122",
+        lastName: "Brown",
+        firstName: "Havana",
       },
       {
-        id: "e865ade8-a8e9-4e35-9fda-54aa86e57ab3",
-        student: "Tabby Nebelung",
-        date: "April 22, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/400/300",
-        large: "//placekitten.com/800/600",
-        thumb: "//placekitten.com/200/150",
-        viewLink: "#",
-        discussLink: "#"
+        id: "tmn823",
+        lastName: "Nebelung",
+        firstName: "Tabby",
       },
       {
-        id: "e865ade8-a8e9-8e35-9fda-54aa86e57ab3",
-        student: "Kitty Korat",
-        date: "May 1, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/400/200",
-        large: "//placekitten.com/800/400",
-        thumb: "//placekitten.com/200/100",
-        viewLink: "#",
-        discussLink: "#"
+        id: "kmk5124",
+        lastName: "Korat",
+        firstName: "Kitty",
+        image: `//placekitten.com/g/350/500`
       },
       {
-        id: "d865ade8-a8e9-8e35-9fda-54aa86e57ab3",
-        student: "Tortie Manx",
-        date: "March 5, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/600/400",
-        large: "//placekitten.com/900/600",
-        thumb: "//placekitten.com/300/200",
-        viewLink: "#",
-        discussLink: "#",
-        feature: `Paw at beetle and eat it before it gets away cat sit like bread stuff and things cry louder at reflection. Push your water glass on the floor bleghbleghvomit my furball really tie the room together but pose purrfectly to show my beauty.`
-      }
-    ];
-  }
-  get featured() {
-    console.log(
-      "submissions",
-      this.submissions,
-      this.submissions.filter(s => s.feature),
-      this.submissions
-        .filter(s => s.feature)
-        .map(s => {
-          s.title = "Featured Work";
-          s.detail = s.feature;
-          return s;
-        })
-    );
-    return this.submissions
-      .filter(s => s.feature)
-      .map(s => {
-        s.title = `Featured Work: ${s.student}`;
-        s.details = s.feature;
-        return s;
+        id: "tjm5488",
+        lastName: "Manx",
+        firstName: "Tortie",
+        image: `//placekitten.com/350/500`
+      },
+      {
+        id: "fms9811",
+        lastName: "Sphinx",
+        firstName: "Felix",
+      },
+      {
+        id: "tjc5167",
+        lastName: "Cat",
+        firstName: "Tom",
+        image: `//placekitten.com/g/400/400`
+      },
+      {
+        id: "cac488",
+        lastName: "Coe",
+        firstName: "Callie",
+      },
+      {
+        id: "srf325",
+        lastName: "Fold",
+        firstName: "Scott",
+        image: `//placekitten.com/400/400`
+      },
+      ], 
+      assignments = [
+        {
+          id: "assignment-1",
+          project: "Hypertext Narrative Project",
+          assignment: "Develop: Test and Iterate"
+        },
+        {
+          id: "assignment-2",
+          project: "Ritual Project",
+          assignment: "Define: Themes & Insights"
+        },
+        {
+          id: "assignment-3",
+          project: "Ritual Project",
+          assignment: "Discover: Journey Map"
+        }
+      ],
+      images = [
+        {image: '400/300', gravity: "center" },
+        {image: '200/300', gravity: "center" },
+        {image: '300/400', gravity: "center" },
+        {image: '200/400', gravity: "center" },
+        {image: '100/300', gravity: "center" },
+        {image: '300/100', gravity: "center" },
+        {image: '150/300', gravity: "center" },
+        {image: '300/150', gravity: "center" },
+        {image: '100/350', gravity: "center" },
+        {image: '350/100', gravity: "center" },
+        {image: '400/500', gravity: "center" },
+        {image: '500/400', gravity: "center" },
+        {image: '300/500', gravity: "center" },
+        {image: '500/300', gravity: "center" },
+        {image: '500/350', gravity: "center" },
+        {image: '300/550', gravity: "center" },
+        {image: '550/300', gravity: "center" },
+        {image: 'g/400/300', gravity: "center" },
+        {image: 'g/200/300', gravity: "center" },
+        {image: 'g/300/400', gravity: "center" },
+        {image: 'g/200/400', gravity: "center" },
+        {image: 'g/100/300', gravity: "center" },
+        {image: 'g/300/100', gravity: "center" },
+        {image: 'g/150/300', gravity: "center" },
+        {image: 'g/300/150', gravity: "center" },
+        {image: 'g/100/350', gravity: "center" },
+        {image: 'g/350/100', gravity: "center" },
+        {image: 'g/400/500', gravity: "center" },
+        {image: 'g/500/400', gravity: "center" },
+        {image: 'g/300/500', gravity: "center" },
+        {image: 'g/500/300', gravity: "center" },
+        {image: 'g/500/350', gravity: "center" },
+        {image: 'g/300/550', gravity: "center" },
+        {image: 'g/550/300', gravity: "center" }
+      ],
+      randomDate = () => {
+        return `${['January','February','March','April'][Math.floor(Math.random()*4)]} ${Math.floor(Math.random()*28+1)}, 2020`
+      };
+
+    assignments.forEach(a=>{
+      students.forEach(s=>{
+        submissions.push({
+          id: `submission-${ctr}`,
+          date: randomDate(),
+          assignmentId: a.id,
+          assignment: a.assignment,
+          project: a.project,
+          image: `//placekitten.com/${images[ctr].image}`,
+          gravity: images[ctr].gravity,
+          studentId: s.id,
+          student: `${s.firstName} ${s.lastName}`
+        });
+        students.forEach(c=>{
+          if(c.id !== s.id) comments.push({
+            id: `comment-${ctr}`,
+            firstName: c.firstName,
+            lastName: c.lastName,
+            image: c.image,
+            date: randomDate(),
+            student: s.firstName,
+            studentId: s.id,
+            assignmentId: a.id,
+            assignment: a.assignment,
+            project: a.project
+          });
+        });
+        ctr++;
       });
+    });
+
+    submissions[0].feature = `Lick arm hair make meme, make cute face. Making sure that fluff gets into the owner's eyes hey! you there, with the hands, side-eyes your \"jerk\" other hand while being petted loved it, hated it, loved it, hated it spill litter box, scratch at owner, destroy all furniture, especially couch groom yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day - checked. Thanks!`
+    submissions[5].feature = `Cough hairball on conveniently placed pants mew drool bury the poop bury it deep lay on arms while you're using the keyboard for cat fur is the new black or attack the child. Decide to want nothing to do with my owner today pretend you want to go out but then don't yet meow to be let in swat turds around the house but leave hair on owner's clothes. Headbutt owner's knee stinky cat for hack, or that box? i can fit in that box stare at ceiling, for i shall purr myself to sleep thug cat . Eat all the power cords paw at your fat belly, for catch eat throw up catch eat throw up bad birds or cat walks in keyboard swipe at owner's legs and meeeeouw get my claw stuck in the dog's ear. Catasstrophe thug cat , and so you're just gonna scroll by without saying meowdy? or check cat door for ambush 10 times before coming in bathe private parts with tongue then lick owner's face jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed yet roll over and sun my belly.`
+    submissions[11].feature = `Havana, I fixed the link so this should allow you to see the following passages. Let me know if it still gives you any issues!`;
+
+    return {
+      students: students,
+      comments: comments,
+      assignments: assignments,
+      submissions: submissions,
+    };
   }
-  _getDueDates(item) {
-    return item.meta.rationale && item.meta.rationale.data
-      ? item.meta.rationale.data
-      : undefined;
+  get comments() {
+    return this.__fakeData.comments;
   }
-  _getDueDate(item) {
-    //console.log('_getDueDate',item,this._getDueDates(item));
-    return this._getDueDates(item)
-      ? this._getDueDates(item)[1] || this._getDueDates(item)[0]
-      : undefined;
-  }
-  _handleArrayData(e, propName) {
-    this[propName] =
-      e && e.detail && e.detail.response && e.detail.response.data
-        ? e.detail.response.data
-        : [];
-    //console.log("_handleArrayData", e, propName, this[propName]);
-  }
-  _handleObjectData(e, propName) {
-    this[propName] =
-      e && e.detail && e.detail.response && e.detail.response.data
-        ? e.detail.response.data
-        : {};
-    //console.log('_handleObjectData',e,propName,this[propName]);
+  get submissions() {
+    return this.__fakeData.submissions;
   }
 
-  date(time) {
-    let date,
-      options = {
-        //weekday: 'long',
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      };
-    if (time && isNaN(time)) {
-      let parts = time.split(/\D+/);
-      date = new Date(...parts);
-      /*console.log('date',parts,
-      '\ndate',date,
-      '\ntoString',date.toString(),
-      '\ntoLocaleString',date.toLocaleString(),
-      '\ntoLocaleDateString',date.toLocaleDateString(undefined,options),
-      '\ntoUTCString',date.toUTCString(),
-      '\ntoTimeString',date.toTimeString(),
-      '\ntoLocaleTimeString',date.toLocaleTimeString()
-      );*/
-    } else if (time) {
-      date = new Date(parseInt(time));
-    }
-    return date.toLocaleDateString(undefined, options);
+  get students() {
+    let students = {"": "All"};
+    (this.__fakeData.students||[]).forEach(s=>students[s.id] = `${s.lastName}, ${s.firstName}`);
+    return students;
+  }
+  get assignments() {
+    let assignments = {"": "All"};
+    (this.__fakeData.assignments||[]).forEach(a=>assignments[a.id] = a.assignment);
+    return assignments;
+  }
+  get filteredSubmissions(){
+    return (this.submissions||[]).filter(a=>!this._isFiltered(a.studentId,a.assignmentId));
+  }
+  get noSubmissions(){
+    return this.filteredSubmissions.length === this.submissions.length;
+  }
+  _getAlign(feature,gravity){
+    let horizontal = !this.grid || feature;
+    return horizontal && gravity.indexOf("left") > -1 
+      ? "left"
+      : horizontal && gravity.indexOf("right") > -1 
+      ? "right"
+      : !horizontal && gravity.indexOf("top") > -1 
+      ? "top"
+      : !horizontal && gravity.indexOf("bottom") > -1 
+      ? "bottom"
+      : "center"
+  }
+  _isFiltered(student,assignment){
+    //console.log(student,assignment,this.student,this.assignment,(this.student === "" || student === this.student) && (this.assignment === "" || assignment === this.assignment))
+    return (this.student === "" || student === this.student) && (this.assignment === "" || assignment === this.assignment);
   }
   /**
    * life cycle, element is afixed to the DOM
