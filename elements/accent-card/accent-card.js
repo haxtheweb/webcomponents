@@ -28,6 +28,10 @@ Custom property | Description | Default
 #### Overriding Default Padding
 Custom property | Description | Default
 ----------------|-------------|----------
+`--accent-card-image-padding-top` | Overrides top padding of image. | 0
+`--accent-card-image-padding-left` | Overrides left padding of image. | `--accent-card-padding`
+`--accent-card-image-padding-right` | Overrides right padding of image. | `--accent-card-padding`
+`--accent-card-image-padding-bottom` | Overrides bottom padding of image. | `--accent-card-padding`
 `--accent-card-heading-padding-top` | Overrides top padding of heading. | `--accent-card-padding`
 `--accent-card-heading-padding-left` | Overrides left padding of heading. | `--accent-card-padding`
 `--accent-card-heading-padding-right` | Overrides right padding of heading. | `--accent-card-padding`
@@ -158,6 +162,7 @@ class AccentCard extends SimpleColors {
         :host([horizontal]) .image-outer {
           height: auto;
           width: var(--accent-card-image-width);
+          flex: 0 0 auto;
         }
         :host(:not([horizontal])) .image-outer {
           height: auto;
@@ -191,6 +196,32 @@ class AccentCard extends SimpleColors {
         :host(:not([horizontal])) .image {
           height: 0;
           padding-top: var(--accent-card-image-height);
+        }
+        #imagecorner {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding-top: var(--accent-card-image-padding-top, 0);
+          padding-bottom: var(
+            --accent-card-image-padding-bottom,
+            var(--accent-card-padding, 20px)
+          );
+          padding-left: var(
+            --accent-card-image-padding-left,
+            var(--accent-card-padding, 20px)
+          );
+          padding-right: var(
+            --accent-card-image-padding-right,
+            var(--accent-card-padding, 20px)
+          );
+        }
+        ::slotted([slot="image-corner"]){
+          text-align: right;
+          color: var(
+            --accent-card-background-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
         }
         .body {
           flex-grow: 1;
@@ -288,6 +319,7 @@ class AccentCard extends SimpleColors {
               ? `background-image: url(${this.imageSrc});`
               : `display: none;`}"
           ></div>
+          <div id="imagecorner"><slot name="image-corner"></slot></div>
         </div>
         <div class="body">
           <div id="heading">
