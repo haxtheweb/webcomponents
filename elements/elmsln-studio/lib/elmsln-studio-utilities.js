@@ -15,7 +15,11 @@ const ElmslnStudioUtilities = function(SuperClass) {
       return [
         css`
           :host {
-            font-family: var(--elmsln-studio-secondary-FontFamily, "Helvetica Neue", sans-serif);
+            font-family: var(
+              --elmsln-studio-secondary-FontFamily,
+              "Helvetica Neue",
+              sans-serif
+            );
             font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
             font-size: var(--elmsln-studio-FontSize, 16px);
           }
@@ -42,9 +46,16 @@ const ElmslnStudioUtilities = function(SuperClass) {
             color: #95989a;
             --simple-fields-border-color: transparent;
             --simple-fields-font-size: var(--elmsln-studio-FontSize, 16px);
-            --simple-fields-detail-font-size: var(--elmsln-studio-FontSize, 16px);
-            --simple-fields-line-height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
-            --simple-fields-detail-line-height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+            --simple-fields-detail-font-size: var(
+              --elmsln-studio-FontSize,
+              16px
+            );
+            --simple-fields-line-height: calc(
+              1.5 * var(--elmsln-studio-FontSize, 16px)
+            );
+            --simple-fields-detail-line-height: calc(
+              1.5 * var(--elmsln-studio-FontSize, 16px)
+            );
             --simple-fields-font-family: var(
               --elmsln-studio-FontFamily,
               "Roboto",
@@ -97,8 +108,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
 
     // properties available to the custom element for data binding
     static get properties() {
-      return {
-      };
+      return {};
     }
     get fakeData() {
       let submissions = [],
@@ -227,7 +237,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
             ]
           } ${Math.floor(Math.random() * 28 + 1)}, 2020`;
         };
-  
+
       assignments.forEach(a => {
         students.forEach(s => {
           ctr++;
@@ -243,7 +253,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
             studentId: s.id,
             student: `${s.firstName} ${s.lastName}`
           });
-          students.forEach((c,i) => {
+          students.forEach((c, i) => {
             if (c.id !== s.id)
               comments.push({
                 id: `comment-${ctr}-${i}`,
@@ -262,41 +272,43 @@ const ElmslnStudioUtilities = function(SuperClass) {
         });
       });
 
-      assignments.push(...[
-        {
-          id: "assignment-4",
-          projectId: "project-1",
-          project: "Ritual Project",
-          assignment: "Develop: Storyboard",
-          date: randomDate()
-        },
-        {
-          id: "assignment-4",
-          projectId: "project-2",
-          project: "Hypertext Narrative Project",
-          assignment: "Discover: Word-Pairs",
-          date: randomDate()
-        },
-        {
-          id: "assignment-5",
-          projectId: "project-1",
-          project: "Ritual Project",
-          assignment: "Define: Synopsis",
-          date: randomDate()
-        },
-        {
-          id: "assignment-6",
-          projectId: "project-3",
-          project: "App Project",
-          assignment: "Deliver: Iterate",
-          date: randomDate()
-        }
-      ]);
+      assignments.push(
+        ...[
+          {
+            id: "assignment-4",
+            projectId: "project-1",
+            project: "Ritual Project",
+            assignment: "Develop: Storyboard",
+            date: randomDate()
+          },
+          {
+            id: "assignment-4",
+            projectId: "project-2",
+            project: "Hypertext Narrative Project",
+            assignment: "Discover: Word-Pairs",
+            date: randomDate()
+          },
+          {
+            id: "assignment-5",
+            projectId: "project-1",
+            project: "Ritual Project",
+            assignment: "Define: Synopsis",
+            date: randomDate()
+          },
+          {
+            id: "assignment-6",
+            projectId: "project-3",
+            project: "App Project",
+            assignment: "Deliver: Iterate",
+            date: randomDate()
+          }
+        ]
+      );
 
       submissions[0].feature = `Lick arm hair make meme, make cute face. Making sure that fluff gets into the owner's eyes hey! you there, with the hands, side-eyes your \"jerk\" other hand while being petted loved it, hated it, loved it, hated it spill litter box, scratch at owner, destroy all furniture, especially couch groom yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day - checked. Thanks!`;
       submissions[5].feature = `Cough hairball on conveniently placed pants mew drool bury the poop bury it deep lay on arms while you're using the keyboard for cat fur is the new black or attack the child. Decide to want nothing to do with my owner today pretend you want to go out but then don't yet meow to be let in swat turds around the house but leave hair on owner's clothes. Headbutt owner's knee stinky cat for hack, or that box? i can fit in that box stare at ceiling, for i shall purr myself to sleep thug cat . Eat all the power cords paw at your fat belly, for catch eat throw up catch eat throw up bad birds or cat walks in keyboard swipe at owner's legs and meeeeouw get my claw stuck in the dog's ear. Catasstrophe thug cat , and so you're just gonna scroll by without saying meowdy? or check cat door for ambush 10 times before coming in bathe private parts with tongue then lick owner's face jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed yet roll over and sun my belly.`;
       submissions[11].feature = `Havana, I fixed the link so this should allow you to see the following passages. Let me know if it still gives you any issues!`;
-  
+
       return {
         students: students,
         comments: comments,
@@ -319,7 +331,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
           : {};
       //console.log('_handleObjectData',e,propName,this[propName]);
     }
-    getFakeData(){
+    getFakeData() {
       let data = this.fakeData;
     }
 
@@ -349,5 +361,5 @@ const ElmslnStudioUtilities = function(SuperClass) {
       return date.toLocaleDateString(undefined, options);
     }
   };
-}
+};
 export { ElmslnStudioUtilities };

@@ -25,7 +25,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
         h3,
         .card [slot="heading"] {
           margin: 0;
-          color: #9D9D9D; 
+          color: #9d9d9d;
           font-weight: normal;
           font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
           font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
@@ -44,7 +44,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
             calc(2 * var(--elmsln-studio-margin, 20px));
           flex: 1 0 50%;
-          color: #95989A;
+          color: #95989a;
           --accent-card-footer-border-color: transparent;
         }
         .card [slot="subheading"] {
@@ -64,7 +64,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           margin: 0 auto;
         }
         .card.primary [slot="label"] {
-          color: #5C5C5C;
+          color: #5c5c5c;
         }
         .card.primary [slot="description"] {
           color: #818181;
@@ -88,10 +88,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
         accent-card table {
           width: 100%;
           border-collapse: collapse;
-          font-family: var(--elmsln-studio-ssecondary-FontFamily, "Helvetica Neue", sans-serif);
+          font-family: var(
+            --elmsln-studio-ssecondary-FontFamily,
+            "Helvetica Neue",
+            sans-serif
+          );
         }
-        accent-card  th,
-        accent-card  td {
+        accent-card th,
+        accent-card td {
           font-weight: normal;
           padding: 5px 0;
           text-align: left;
@@ -169,7 +173,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
               donut-width="25%"
               chart-padding="0"
               .image-src="${this.profile.image}"
-              image-alt="Profile picture for ${this.profile.firstName} ${this.profile.lastName}"
+              image-alt="Profile picture for ${this.profile.firstName} ${this
+                .profile.lastName}"
               start-angle="0"
               total="${this.assignments.length}"
             ></progress-donut>
@@ -179,7 +184,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                   <th scope="row">Course Progress</th>
                   <td>
                     ${this.submissions.length} /${this.assignments.length} =
-                    ${(Math.round(100 * this.submissions.length / this.assignments.length) ) }%
+                    ${Math.round(
+                      (100 * this.submissions.length) / this.assignments.length
+                    )}%
                   </td>
                 </tr>
                 <tr>
@@ -196,16 +203,19 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           <nav-card accent-color="green" class="card primary">
             <span slot="heading">Work Due</span>
             <div slot="linklist">
-              ${this.assignments.slice(3,7).map(assign => html`
+              ${this.assignments.slice(3, 7).map(
+                assign => html`
                   <nav-card-item icon="chevron-right">
                     <button
                       id="due-${assign.id}"
                       aria-describedby="due-desc-${assign.id}"
                       slot="label"
                     >
-                    ${assign.project}: ${assign.assignment}
+                      ${assign.project}: ${assign.assignment}
                     </button>
-                    <span id="due-desc-${assign.id}" slot="description">${assign.date}</span>
+                    <span id="due-desc-${assign.id}" slot="description"
+                      >${assign.date}</span
+                    >
                   </nav-card-item>
                 `
               )}
@@ -214,11 +224,16 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
         </div>
         <div id="work">
           <h2>Recent Work</h2>
-          <nav-card accent-color="amber" class="card primary" link-icon="chevron-right">
+          <nav-card
+            accent-color="amber"
+            class="card primary"
+            link-icon="chevron-right"
+          >
             <span slot="heading">Submissions</span>
             <button slot="subheading">All submissions</button>
             <div slot="linklist">
-              ${this.submissions.slice(0,5).map(submission => html`
+              ${this.submissions.slice(0, 5).map(
+                submission => html`
                   <nav-card-item icon="chevron-right">
                     <button
                       id="submission-${submission.id}"
@@ -227,18 +242,27 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                     >
                       ${submission.project}: ${submission.assignment}
                     </button>
-                    <span id="submission-desc-${submission.id}" slot="description">${submission.date}</span>
+                    <span
+                      id="submission-desc-${submission.id}"
+                      slot="description"
+                      >${submission.date}</span
+                    >
                   </nav-card-item>
                 `
               )}
             </div>
           </nav-card>
-          <nav-card accent-color="cyan" class="card primary" link-icon="chevron-right">
+          <nav-card
+            accent-color="cyan"
+            class="card primary"
+            link-icon="chevron-right"
+          >
             <span slot="heading">Comments</span>
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
             <div slot="linklist">
-              ${this.comments.slice(0,5).map(comment => html`
+              ${this.comments.slice(0, 5).map(
+                comment => html`
                   <nav-card-item icon="chevron-right">
                     <button
                       id="comment-${comment.id}"
@@ -247,7 +271,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                     >
                       ${comment.firstName}'s feedback on ${comment.assignment}
                     </button>
-                    <span id="comment-${comment.id}" slot="description">${comment.date}</span>
+                    <span id="comment-${comment.id}" slot="description"
+                      >${comment.date}</span
+                    >
                   </nav-card-item>
                 `
               )}
@@ -264,7 +290,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
         >
           <span slot="heading">Recent Activity</span>
           <div slot="linklist">
-            ${this.activity.map(activity => html`
+            ${this.activity.map(
+              activity => html`
                 <nav-card-item
                   icon="chevron-right"
                   .avatar="${activity.image}"
@@ -274,20 +301,24 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                     id="activity-${activity.id}"
                     aria-describedby="activity-desc-${activity.id}"
                     slot="label"
-                  > ${activity.firstName} commented on 
-                    ${activity.student}'s ${activity.assignment}
+                  >
+                    ${activity.firstName} commented on ${activity.student}'s
+                    ${activity.assignment}
                   </button>
-                  <span id="activity-desc-${activity.id}" slot="description">${activity.date}</span>
+                  <span id="activity-desc-${activity.id}" slot="description"
+                    >${activity.date}</span
+                  >
                 </nav-card-item>
               `
             )}
           </div>
-          <button 
-            class="linklist-footer" 
-            slot="footer" 
+          <button
+            class="linklist-footer"
+            slot="footer"
             ?disabled="${this.activity.length === this.activities.length}"
             ?hidden="${this.activity.length === this.activities.length}"
-            @click="${this._loadMoreComments}">
+            @click="${this._loadMoreComments}"
+          >
             Load More
           </button>
         </nav-card>
@@ -324,7 +355,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
       },
       submissions: {
         type: Array
-      },
+      }
     };
   }
 
@@ -342,8 +373,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
     this.getFakeData();
     this.tag = ElmslnStudioDashboard.tag;
   }
-  _loadMoreComments(e){
-    this.activity = this.activities.slice(0,this.activity.length+10);
+  _loadMoreComments(e) {
+    this.activity = this.activities.slice(0, this.activity.length + 10);
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -352,24 +383,31 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
     super.connectedCallback();
   }
 
-  getFakeData(){
+  getFakeData() {
     let data = this.fakeData,
-    students = data && data.students ? data.students : [], 
-    random = Math.floor(Math.random() * students.length);
+      students = data && data.students ? data.students : [],
+      random = Math.floor(Math.random() * students.length);
     this.profile = students.length > 0 ? students[random] : {};
-    this.studentId = this.profile && this.profile.id ? this.profile.id : undefined;
+    this.studentId =
+      this.profile && this.profile.id ? this.profile.id : undefined;
     this.activities = data && data.comments ? data.comments : [];
-    this.activity = this.activities.slice(0,15);
-    this.contributions = this.activities.filter(c=>this.studentId === c.commenterId);
-    this.comments = this.activities.filter(c=>this.studentId === c.studentId);
+    this.activity = this.activities.slice(0, 15);
+    this.contributions = this.activities.filter(
+      c => this.studentId === c.commenterId
+    );
+    this.comments = this.activities.filter(c => this.studentId === c.studentId);
     this.assignments = data && data.assignments ? data.assignments : [];
-    this.submissions = data && data.submissions ? data.submissions.filter(s=>this.studentId === s.studentId) : [];
+    this.submissions =
+      data && data.submissions
+        ? data.submissions.filter(s => this.studentId === s.studentId)
+        : [];
     this.projects = [];
-    if(data && data.projects) data.projects.forEach(p=>{
-      this.projects.push(
-        this.submissions.filter(s=>s.projectId ===  p.id).length
-      );
-    });
+    if (data && data.projects)
+      data.projects.forEach(p => {
+        this.projects.push(
+          this.submissions.filter(s => s.projectId === p.id).length
+        );
+      });
   }
   // static get observedAttributes() {
   //   return [];

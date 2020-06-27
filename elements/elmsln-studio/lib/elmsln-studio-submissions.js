@@ -23,7 +23,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
     return [
-      ...super.styles, 
+      ...super.styles,
       css`
         #layout {
           display: flex;
@@ -41,12 +41,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
           opacity: 0.25;
           transform: opacity 0.5s ease-in-out;
           margin: 0 5px;
-          height: calc(
-            2 * var(--elmsln-studio-FontSize, 16px)
-          );
-          width: calc(
-            2 * var(--elmsln-studio-FontSize, 16px)
-          );
+          height: calc(2 * var(--elmsln-studio-FontSize, 16px));
+          width: calc(2 * var(--elmsln-studio-FontSize, 16px));
         }
         #layout button:focus,
         #layout button:hover {
@@ -329,7 +325,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       <div id="secondary">
         <div class="filters">
           <span class="comments">Comments:&nbsp;</span>
-          <span class="comments-filter">${this.assignment !== "" || this.student !== "" ? 'Filtered' : 'All'}</span>
+          <span class="comments-filter"
+            >${this.assignment !== "" || this.student !== ""
+              ? "Filtered"
+              : "All"}</span
+          >
         </div>
         <nav-card flat no-border class="card" link-icon="chevron-right">
           <span slot="heading">Recent Comments</span>
@@ -416,16 +416,20 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     return this.filteredSubmissions.length === this.submissions.length;
   }
 
-  getFakeData(){
+  getFakeData() {
     let data = this.fakeData;
     this.students = { "": "All" };
     this.assignments = { "": "All" };
-    if(data && data.students) data.students.forEach(d => this.students[d.id] = `${d.lastName}, ${d.firstName}`);
-    if(data && data.assignments) data.assignments.forEach(d => (this.assignments[d.id] = d.assignment));
+    if (data && data.students)
+      data.students.forEach(
+        d => (this.students[d.id] = `${d.lastName}, ${d.firstName}`)
+      );
+    if (data && data.assignments)
+      data.assignments.forEach(d => (this.assignments[d.id] = d.assignment));
     this.comments = data && data.comments ? data.comments : [];
     this.submissions = data && data.submissions ? data.submissions : [];
   }
-  
+
   _getValign(gravity) {
     return gravity.indexOf("top") > -1
       ? "top"
@@ -433,7 +437,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       ? "bottom"
       : "center";
   }
-  
+
   _getAlign(gravity) {
     return gravity.indexOf("left") > -1
       ? "left"
