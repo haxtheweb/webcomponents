@@ -3,11 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/nav-card/nav-card.js";
+import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/progress-donut/progress-donut.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
 /**
  * `elmsln-studio-dashboard`
@@ -18,99 +15,110 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
  * @lit-element
  * @demo demo/dashboard.html
  */
-class ElmslnStudioDashboard extends LitElement {
+class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
     return [
+      ...super.styles,
       css`
-        :host {
-          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
-          font-size: 13px;
-        }
-        .sr-only {
-          position: absolute;
-          left: -9999999px;
-          width: 0;
-          overflow: hidden;
-        }
         h1,
         h2,
         h3,
         .card [slot="heading"] {
-          font-size: 14px;
-          font-weight: normal;
           margin: 0;
-          color: var(--simple-colors-default-theme-grey-7, #666);
+          color: #9D9D9D; 
+          font-weight: normal;
+          font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
         }
         h2,
         #secondary [slot="heading"] {
-          font-size: 18px;
+          font-weight: bold;
+          color: #989898;
+        }
+        #primary > div {
+          margin: 0;
         }
         .card {
-          margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
-            var(--elmsln-studio-margin, 20px)
+          font-size: var(--elmsln-studio-FontSize, 16px);
+          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
             calc(2 * var(--elmsln-studio-margin, 20px));
-          flex: 1 0 calc(50% - 2 * var(--elmsln-studio-margin, 20px));
+          flex: 1 0 50%;
+          color: #95989A;
           --accent-card-footer-border-color: transparent;
         }
         .card [slot="subheading"] {
+          font-weight: bold;
           text-decoration: underline;
           border: none;
-          font-family: inherit;
-          font-size: inherit;
-          font-weight: normal;
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
         }
         .card [slot="subheading"]:focus,
         .card [slot="subheading"]:hover {
           text-decoration: none;
         }
-        .card th,
-        .card td {
+        .card.primary [slot="heading"],
+        .card.primary [slot="subheading"] {
+          text-align: center;
+          display: block;
+          margin: 0 auto;
+        }
+        .card.primary [slot="label"] {
+          color: #5C5C5C;
+        }
+        .card.primary [slot="description"] {
+          color: #818181;
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+        }
+        .card.secondary {
+          margin-top: 0;
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+          --accent-card-heading-padding-top: 0;
+          --nav-card-linklist-margin-top: 0;
+          --nav-card-linklist-left-size: 36px;
+          --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
+        }
+        progress-donut {
+          max-width: 100px;
+          margin: 0 auto;
+        }
+        accent-card {
+          --accent-card-heading-padding-top: 0;
+        }
+        accent-card table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: var(--elmsln-studio-ssecondary-FontFamily, "Helvetica Neue", sans-serif);
+        }
+        accent-card  th,
+        accent-card  td {
+          font-weight: normal;
           padding: 5px 0;
           text-align: left;
           min-height: 25px;
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
-        #primary .card [slot="heading"],
-        #primary .card [slot="subheading"] {
-          text-align: center;
-          display: block;
-          margin: 0 auto;
-        }
-        #secondary {
-          margin-top: 0;
-          --accent-card-heading-padding-top: 0;
-          --nav-card-linklist-margin-top: 0;
-          --nav-card-linklist-left-size: 36px;
-          --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
-        }
-        accent-card {
-          --accent-card-heading-padding-top: 0;
-        }
-        progress-donut {
-          max-width: 100px;
-          margin: 0 auto;
-        }
-        accent-card table {
-          width: 100%;
-          border-collapse: collapse;
+        nav-card button,
+        accent-card button {
+          background-color: transparent;
         }
         accent-card button,
         .linklist button {
           border: none;
           padding: 0;
           text-align: left;
-          font-size: inherit;
-          font-weight: inherit;
         }
         .linklist-footer {
           text-align: center;
           display: block;
-          padding: 5px 10px;
-          margin: 0 auto;
+          padding: 10px;
+          margin: 0;
           border-radius: 3px;
+          border: none;
           background-color: var(--simple-colors-default-theme-grey-2, #eee);
           color: var(--simple-colors-default-theme-grey11, #222);
+          width: calc(100% - 20px);
         }
         .linklist-footer:focus,
         .linklist-footer:hover {
@@ -121,38 +129,23 @@ class ElmslnStudioDashboard extends LitElement {
           progress-donut {
             max-width: 150px;
           }
-          :host {
-            display: flex;
-            align-items: stretch;
-            justify-content: space-between;
-          }
-          #primary {
-            flex: 0 0 calc(50%);
-          }
-          #secondary {
-            flex: 0 0 calc(50%);
-          }
           h1,
           h2 {
-            flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
-            padding: 0 var(--elmsln-studio-margin, 20px);
-          }
-        }
-        @media screen and (min-width: 900px) {
-          progress-donut {
-            max-width: 200px;
-          }
-          #primary {
-            flex: 0 0 calc(66.66666667%);
-          }
-          #secondary {
-            flex: 0 0 calc(33.33333333%);
+            flex: 0 0 100%;
           }
           #primary > div {
             display: flex;
             align-items: stretch;
             justify-content: space-between;
             flex-wrap: wrap;
+          }
+          .card.primary {
+            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+          }
+        }
+        @media screen and (min-width: 900px) {
+          progress-donut {
+            max-width: 200px;
           }
         }
       `
@@ -161,103 +154,58 @@ class ElmslnStudioDashboard extends LitElement {
   // render function
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="${this.activitySrc}"
-        @response="${e => this._handleArrayData(e, "__activity")}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.assignmentsSrc}"
-        @response="${e => this._handleArrayData(e, "__assignments")}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.commentsSrc}"
-        @response="${e => this._handleArrayData(e, "__comments")}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.profileSrc}"
-        @response="${e => this._handleObjectData(e, "__profile")}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.submissionsSrc}"
-        @response="${e => this._handleObjectData(e, "__submissions")}"
-      ></iron-ajax>
       <h1 class="sr-only">Overview</h1>
       <div id="primary">
         <div id="profile">
-          <h2>${this.__profile.student.data.display_name}</h2>
-          <accent-card accent-color="purple" class="card">
+          <h2>${this.profile.firstName} ${this.profile.lastName}</h2>
+          <accent-card accent-color="purple" class="card primary">
             <span slot="heading" class="sr-only">My Progress</span>
             <progress-donut
               accent-color="purple"
               slot="content"
               animation="500"
               animation-delay="500"
-              complete="[5,3,2,6]"
+              .complete="${this.projects}"
               donut-width="25%"
               chart-padding="0"
-              image-src="${this.__profile.student.data.sis.avatar_url}"
-              image-alt="Profile picture for ${this.__profile.student.data
-                .display_name}"
+              .image-src="${this.profile.image}"
+              image-alt="Profile picture for ${this.profile.firstName} ${this.profile.lastName}"
               start-angle="0"
-              total="30"
+              total="${this.assignments.length}"
             ></progress-donut>
             <table slot="content">
               <tbody>
                 <tr>
                   <th scope="row">Course Progress</th>
                   <td>
-                    ${Math.round(
-                      (this.__profile.student.progress.submissions.reduce(
-                        (sum, val) => sum + val
-                      ) *
-                        100) /
-                        this.__profile.student.progress.totalAssignments
-                    )}%
+                    ${this.submissions.length} /${this.assignments.length} =
+                    ${(Math.round(100 * this.submissions.length / this.assignments.length) ) }%
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">Comments</th>
-                  <td>${this.__profile.student.progress.comments}</td>
+                  <td>${this.contributions.length}</td>
                 </tr>
                 <tr>
                   <th scope="row">Submissions</th>
-                  <td>
-                    ${this.__profile.student.progress.submissions.reduce(
-                      (sum, val) => sum + val
-                    )}
-                  </td>
+                  <td>${this.submissions.length}</td>
                 </tr>
               </tbody>
             </table>
           </accent-card>
-          <nav-card accent-color="green" class="card">
+          <nav-card accent-color="green" class="card primary">
             <span slot="heading">Work Due</span>
             <div slot="linklist">
-              ${this.__assignments.map(
-                (assign, i) => html`
+              ${this.assignments.slice(3,7).map(assign => html`
                   <nav-card-item icon="chevron-right">
                     <button
-                      id="due-${i}"
-                      aria-describedby="due-desc-${i}"
+                      id="due-${assign.id}"
+                      aria-describedby="due-desc-${assign.id}"
                       slot="label"
                     >
-                      ${assign.attributes.title}
+                    ${assign.project}: ${assign.assignment}
                     </button>
-                    <span id="due-desc-${i}" slot="description">
-                      ${this._getDueDate(assign)
-                        ? html`
-                            Due
-                            ${this.date(
-                              parseInt(this._getDueDate(assign)) * 1000
-                            )}
-                          `
-                        : ``}
-                    </span>
+                    <span id="due-desc-${assign.id}" slot="description">${assign.date}</span>
                   </nav-card-item>
                 `
               )}
@@ -266,48 +214,40 @@ class ElmslnStudioDashboard extends LitElement {
         </div>
         <div id="work">
           <h2>Recent Work</h2>
-          <nav-card accent-color="amber" class="card" link-icon="chevron-right">
+          <nav-card accent-color="amber" class="card primary" link-icon="chevron-right">
             <span slot="heading">Submissions</span>
             <button slot="subheading">All submissions</button>
             <div slot="linklist">
-              ${Object.keys(this.__submissions).map(
-                (submission, i) => html`
+              ${this.submissions.slice(0,5).map(submission => html`
                   <nav-card-item icon="chevron-right">
                     <button
-                      id="submission-${i}"
-                      aria-describedby="submission-desc-${i}"
+                      id="submission-${submission.id}"
+                      aria-describedby="submission-desc-${submission.id}"
                       slot="label"
                     >
-                      ${this.__submissions[submission].attributes.title}
+                      ${submission.project}: ${submission.assignment}
                     </button>
-                    <span id="submission-desc-${i}" slot="description"
-                      >${this.date(
-                        this.__submissions[submission].meta.changed
-                      )}</span
-                    >
+                    <span id="submission-desc-${submission.id}" slot="description">${submission.date}</span>
                   </nav-card-item>
                 `
               )}
             </div>
           </nav-card>
-          <nav-card accent-color="cyan" class="card" link-icon="chevron-right">
+          <nav-card accent-color="cyan" class="card primary" link-icon="chevron-right">
             <span slot="heading">Comments</span>
             <button slot="subheading">All comments</button>
             <!-- TODO need a comments list where student is in the thread or thread is about student submission -->
             <div slot="linklist">
-              ${this.__comments.map(
-                (comment, i) => html`
+              ${this.comments.slice(0,5).map(comment => html`
                   <nav-card-item icon="chevron-right">
                     <button
-                      id="comment-${i}"
-                      aria-describedby="comment-desc-${i}"
+                      id="comment-${comment.id}"
+                      aria-describedby="comment-desc-${comment.id}"
                       slot="label"
                     >
-                      ${comment.attributes.subject}
+                      ${comment.firstName}'s feedback on ${comment.assignment}
                     </button>
-                    <span id="comment-${i}" slot="description"
-                      >${this.date(comment.attributes.changed)}</span
-                    >
+                    <span id="comment-${comment.id}" slot="description">${comment.date}</span>
                   </nav-card-item>
                 `
               )}
@@ -315,127 +255,76 @@ class ElmslnStudioDashboard extends LitElement {
           </nav-card>
         </div>
       </div>
-      <nav-card
-        id="secondary"
-        flat
-        no-border
-        class="card"
-        link-icon="chevron-right"
-      >
-        <span slot="heading">Recent Activity</span>
-        <div slot="linklist">
-          ${this.__activity.map(
-            (activity, i) => html`
-              <nav-card-item
-                icon="chevron-right"
-                avatar="${activity.relationships.author.data.avatar || ""}"
-                initials="${activity.relationships.author.data.display_name ||
-                  ""}"
-              >
-                <button
-                  id="activity-${i}"
-                  aria-describedby="activity-desc-${i}"
-                  slot="label"
+      <div id="secondary">
+        <nav-card
+          flat
+          no-border
+          class="card secondary"
+          link-icon="chevron-right"
+        >
+          <span slot="heading">Recent Activity</span>
+          <div slot="linklist">
+            ${this.activity.map(activity => html`
+                <nav-card-item
+                  icon="chevron-right"
+                  .avatar="${activity.image}"
+                  .initials="${activity.firstName} ${activity.lastName}"
                 >
-                  ${activity.relationships.author.data.sis.sortable_name.replace(
-                    /.*,/,
-                    ""
-                  )}
-                  ${activity.type === "comment" ? "commented" : "submitted"}
-                  ${activity.type === "comment"
-                    ? activity.attributes.subject
-                    : activity.attributes.title}
-                </button>
-                <span id="activity-desc-${i}" slot="description">
-                  ${this.date(
-                    activity.type === "comment"
-                      ? activity.attributes.changed
-                      : activity.meta.changed
-                  )}
-                </span>
-              </nav-card-item>
-            `
-          )}
-        </div>
-        <button class="linklist-footer" slot="footer">Load More</button>
-      </nav-card>
+                  <button
+                    id="activity-${activity.id}"
+                    aria-describedby="activity-desc-${activity.id}"
+                    slot="label"
+                  > ${activity.firstName} commented on 
+                    ${activity.student}'s ${activity.assignment}
+                  </button>
+                  <span id="activity-desc-${activity.id}" slot="description">${activity.date}</span>
+                </nav-card-item>
+              `
+            )}
+          </div>
+          <button 
+            class="linklist-footer" 
+            slot="footer" 
+            ?disabled="${this.activity.length === this.activities.length}"
+            ?hidden="${this.activity.length === this.activities.length}"
+            @click="${this._loadMoreComments}">
+            Load More
+          </button>
+        </nav-card>
+      </div>
     `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /*
-       * source JSON for all activity
-       * (submissions and comments by anyone)
-       */
-      activitySrc: {
-        type: String,
-        attribute: "activity-src"
-      },
-      /*
-       * source JSON for upcoming assignments
-       * that student hasn't submitted yet
-       */
-      assignmentsSrc: {
-        type: String,
-        attribute: "assignments-src"
-      },
-      /*
-       * source JSON for most recent comments in response to
-       * student's comment or submission
-       */
-      commentsSrc: {
-        type: String,
-        attribute: "comments-src"
-      },
-      /*
-       * source JSON for student's profile data (name & course progress)
-       */
-      profileSrc: {
-        type: String,
-        attribute: "profile-src"
-      },
-      /*
-       * source JSON for student's most recent submissions
-       */
-      submissionsSrc: {
-        type: String,
-        attribute: "submissions-src"
-      },
-      /*
-       * recent activity
-       * (submissions and comments from everyone)
-       */
-      __activity: {
+      activities: {
         type: Array
       },
-      /*
-       * upcoming assignments
-       */
-      __assignments: {
+      activity: {
         type: Array
       },
-      /*
-       * most recent comments in response to
-       * student's comment or submission
-       */
-      __comments: {
+      assignments: {
         type: Array
       },
-      /*
-       * student's profile data
-       * (name & course progress)
-       */
-      __profileSrc: {
+      comments: {
+        type: Array
+      },
+      contributions: {
+        type: Array
+      },
+      profile: {
         type: Object
       },
-      /*
-       * student's submissions
-       */
-      __submissions: {
-        type: Object
-      }
+      projects: {
+        type: Array
+      },
+      studentId: {
+        type: String
+      },
+      submissions: {
+        type: Array
+      },
     };
   }
 
@@ -450,94 +339,37 @@ class ElmslnStudioDashboard extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.__activity = [];
-    this.__assignments = [];
-    this.__comments = [];
-    this.__profile = {
-      student: {
-        data: {
-          type: "user",
-          id: "371",
-          name: "toc5234",
-          display_name: "Tom Cat",
-          avatar: "http://placekitten.com/300/150",
-          sis: {
-            id: 6966348,
-            name: "Tom Cat",
-            created_at: "2019-07-24T16:16:51-04:00",
-            sortable_name: "Cat, Tom",
-            short_name: "Tom Cat",
-            sis_user_id: "toc5234@psu.edu",
-            integration_id: null,
-            avatar_url: "http://placekitten.com/300/150"
-          }
-        },
-        progress: {
-          comments: 22,
-          submissions: [5, 3, 2, 6],
-          totalAssignments: 30
-        }
-      }
-    };
-    this.__submissions = [];
+    this.getFakeData();
     this.tag = ElmslnStudioDashboard.tag;
   }
-  _getDueDates(item) {
-    return item.meta.rationale && item.meta.rationale.data
-      ? item.meta.rationale.data
-      : undefined;
-  }
-  _getDueDate(item) {
-    //console.log('_getDueDate',item,this._getDueDates(item));
-    return this._getDueDates(item)
-      ? this._getDueDates(item)[1] || this._getDueDates(item)[0]
-      : undefined;
-  }
-  _handleArrayData(e, propName) {
-    this[propName] =
-      e && e.detail && e.detail.response && e.detail.response.data
-        ? e.detail.response.data
-        : [];
-    //console.log("_handleArrayData", e, propName, this[propName]);
-  }
-  _handleObjectData(e, propName) {
-    this[propName] =
-      e && e.detail && e.detail.response && e.detail.response.data
-        ? e.detail.response.data
-        : {};
-    //console.log('_handleObjectData',e,propName,this[propName]);
-  }
-
-  date(time) {
-    let date,
-      options = {
-        //weekday: 'long',
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      };
-    if (time && isNaN(time)) {
-      let parts = time.split(/\D+/);
-      date = new Date(...parts);
-      /*console.log('date',parts,
-      '\ndate',date,
-      '\ntoString',date.toString(),
-      '\ntoLocaleString',date.toLocaleString(),
-      '\ntoLocaleDateString',date.toLocaleDateString(undefined,options),
-      '\ntoUTCString',date.toUTCString(),
-      '\ntoTimeString',date.toTimeString(),
-      '\ntoLocaleTimeString',date.toLocaleTimeString()
-      );*/
-    } else if (time) {
-      date = new Date(parseInt(time));
-    }
-    return date.toLocaleDateString(undefined, options);
+  _loadMoreComments(e){
+    this.activity = this.activities.slice(0,this.activity.length+10);
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
+  }
+
+  getFakeData(){
+    let data = this.fakeData,
+    students = data && data.students ? data.students : [], 
+    random = Math.floor(Math.random() * students.length);
+    this.profile = students.length > 0 ? students[random] : {};
+    this.studentId = this.profile && this.profile.id ? this.profile.id : undefined;
+    this.activities = data && data.comments ? data.comments : [];
+    this.activity = this.activities.slice(0,15);
+    this.contributions = this.activities.filter(c=>this.studentId === c.commenterId);
+    this.comments = this.activities.filter(c=>this.studentId === c.studentId);
+    this.assignments = data && data.assignments ? data.assignments : [];
+    this.submissions = data && data.submissions ? data.submissions.filter(s=>this.studentId === s.studentId) : [];
+    this.projects = [];
+    if(data && data.projects) data.projects.forEach(p=>{
+      this.projects.push(
+        this.submissions.filter(s=>s.projectId ===  p.id).length
+      );
+    });
   }
   // static get observedAttributes() {
   //   return [];

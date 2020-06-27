@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
+import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/communication-icons.js";
@@ -19,27 +20,11 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
  * @lit-element
  * @demo demo/index.html
  */
-class ElmslnStudioSubmissions extends LitElement {
+class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
     return [
+      ...super.styles, 
       css`
-        :host {
-          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
-          font-size: 13px;
-        }
-        .sr-only {
-          position: absolute;
-          left: -9999999px;
-          width: 0;
-          overflow: hidden;
-        }
-        .filters {
-          padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          border-bottom: 1px solid #ddd;
-          height: calc(2 * var(--elmsln-studio-FontSize, 13px));
-        }
-        .filters,
         #layout {
           display: flex;
           align-items: flex-end;
@@ -50,32 +35,18 @@ class ElmslnStudioSubmissions extends LitElement {
           flex: 0 1 auto;
           margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
-        simple-fields-field {
-          color: #95989a;
-          --simple-fields-border-color: transparent;
-          --simple-fields-font-size: calc(
-            1.5 * var(--elmsln-studio-FontSize, 13px)
-          );
-          --simple-fields-detail-font-size: calc(
-            1.5 * var(--elmsln-studio-FontSize, 13px)
-          );
-          --simple-fields-font-family: var(
-            --elmsln-studio-FontFamily,
-            "Roboto",
-            sans-serif
-          );
-          --simple-fields-detail-font-family: var(
-            --elmsln-studio-FontFamily,
-            "Roboto",
-            sans-serif
-          );
-        }
         #layout > button {
           background-color: transparent;
           border: 0px solid rgba(0, 0, 0, 0);
           opacity: 0.25;
           transform: opacity 0.5s ease-in-out;
           margin: 0 5px;
+          height: calc(
+            2 * var(--elmsln-studio-FontSize, 16px)
+          );
+          width: calc(
+            2 * var(--elmsln-studio-FontSize, 16px)
+          );
         }
         #layout button:focus,
         #layout button:hover {
@@ -102,6 +73,7 @@ class ElmslnStudioSubmissions extends LitElement {
           text-align: center;
         }
         accent-card {
+          line-height: 160%;
           --accent-card-padding: 0;
           --accent-card-heading-padding-top: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
@@ -214,27 +186,13 @@ class ElmslnStudioSubmissions extends LitElement {
           --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
         }
         #secondary .filters {
-          flex-wrap: wrap;
           justify-content: flex-start;
-          font-size: calc(1.5 * var(--elmsln-studio-FontSize, 13px));
         }
-        .comments,
-        .comments-by {
+        .comments {
           color: #95989a;
-        }
-        .comments-by {
-          font-style: italic;
         }
         nav-card {
           margin: calc(1.5 * var(--elmsln-studio-margin, 20px)) 0 0;
-        }
-        accent-card button {
-          border: none;
-          padding: 0;
-          text-align: left;
-          font-size: inherit;
-          font-weight: inherit;
-          flex: 1 1 auto;
         }
         @media screen and (min-width: 500px) {
           .grid accent-card:not([horizontal]) {
@@ -242,17 +200,6 @@ class ElmslnStudioSubmissions extends LitElement {
           }
         }
         @media screen and (min-width: 900px) {
-          :host {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-          }
-          #primary {
-            flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
-          }
-          #secondary {
-            flex: 0 0 calc(33.33333333% - var(--elmsln-studio-margin, 20px));
-          }
           .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
@@ -332,7 +279,9 @@ class ElmslnStudioSubmissions extends LitElement {
                     no-border
                     image-src="${s.image}"
                     ?horizontal="${s.feature || !this.grid ? true : false}"
-                    image-align="${this._getAlign(s.feature, s.gravity)}"
+                    image-align="${this._getAlign(s.gravity)}"
+                    image-valign="${this._getValign(s.gravity)}"
+                    gravity="${s.gravity}"
                   >
                     <div slot="image-corner" class="image-zoom">
                       <iron-icon icon="zoom-in"></iron-icon>
@@ -380,13 +329,7 @@ class ElmslnStudioSubmissions extends LitElement {
       <div id="secondary">
         <div class="filters">
           <span class="comments">Comments:&nbsp;</span>
-          <span class="comments-filter"
-            >${this.assignments[this.assignment]}&nbsp;</span
-          >
-          <span class="comments-by">by&nbsp;</span>
-          <span class="comments-filter"
-            >${this.students[this.student]}&nbsp;</span
-          >
+          <span class="comments-filter">${this.assignment !== "" || this.student !== "" ? 'Filtered' : 'All'}</span>
         </div>
         <nav-card flat no-border class="card" link-icon="chevron-right">
           <span slot="heading">Recent Comments</span>
@@ -405,7 +348,7 @@ class ElmslnStudioSubmissions extends LitElement {
                         aria-describedby="comment-desc-${c.id}"
                         slot="label"
                       >
-                        ${c.firstName} commented on ${c.student}'s ${c.project}
+                        ${c.firstName} commented on ${c.student}'s
                         ${c.assignment}
                       </button>
                       <span id="comment-desc-${c.id}" slot="description">
@@ -423,14 +366,26 @@ class ElmslnStudioSubmissions extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      comments: {
+        type: Array
+      },
       grid: {
         type: Boolean
+      },
+      assignment: {
+        type: String
+      },
+      assignments: {
+        type: Array
       },
       student: {
         type: String
       },
-      assignment: {
-        type: String
+      students: {
+        type: Array
+      },
+      submissions: {
+        type: Array
       }
     };
   }
@@ -446,186 +401,11 @@ class ElmslnStudioSubmissions extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.student = "";
     this.assignment = "";
+    this.student = "";
+    this.getFakeData();
     this.grid = false;
-    this.__fakeData = this.fakeData;
     this.tag = ElmslnStudioSubmissions.tag;
-  }
-  get fakeData() {
-    let submissions = [],
-      comments = [],
-      ctr = 0,
-      students = [
-        {
-          id: "hxb5122",
-          lastName: "Brown",
-          firstName: "Havana"
-        },
-        {
-          id: "tmn823",
-          lastName: "Nebelung",
-          firstName: "Tabby"
-        },
-        {
-          id: "kmk5124",
-          lastName: "Korat",
-          firstName: "Kitty",
-          image: `//placekitten.com/g/350/500`
-        },
-        {
-          id: "tjm5488",
-          lastName: "Manx",
-          firstName: "Tortie",
-          image: `//placekitten.com/350/500`
-        },
-        {
-          id: "fms9811",
-          lastName: "Sphinx",
-          firstName: "Felix"
-        },
-        {
-          id: "tjc5167",
-          lastName: "Cat",
-          firstName: "Tom",
-          image: `//placekitten.com/g/400/400`
-        },
-        {
-          id: "cac488",
-          lastName: "Coe",
-          firstName: "Callie"
-        },
-        {
-          id: "srf325",
-          lastName: "Fold",
-          firstName: "Scott",
-          image: `//placekitten.com/400/400`
-        }
-      ],
-      assignments = [
-        {
-          id: "assignment-1",
-          project: "Hypertext Narrative Project",
-          assignment: "Develop: Test and Iterate"
-        },
-        {
-          id: "assignment-2",
-          project: "Ritual Project",
-          assignment: "Define: Themes & Insights"
-        },
-        {
-          id: "assignment-3",
-          project: "Ritual Project",
-          assignment: "Discover: Journey Map"
-        }
-      ],
-      images = [
-        { image: "400/300", gravity: "center" },
-        { image: "200/300", gravity: "center" },
-        { image: "300/400", gravity: "center" },
-        { image: "200/400", gravity: "center" },
-        { image: "100/300", gravity: "center" },
-        { image: "300/100", gravity: "center" },
-        { image: "150/300", gravity: "center" },
-        { image: "300/150", gravity: "center" },
-        { image: "100/350", gravity: "center" },
-        { image: "350/100", gravity: "center" },
-        { image: "400/500", gravity: "center" },
-        { image: "500/400", gravity: "center" },
-        { image: "300/500", gravity: "center" },
-        { image: "500/300", gravity: "center" },
-        { image: "500/350", gravity: "center" },
-        { image: "300/550", gravity: "center" },
-        { image: "550/300", gravity: "center" },
-        { image: "g/400/300", gravity: "center" },
-        { image: "g/200/300", gravity: "center" },
-        { image: "g/300/400", gravity: "center" },
-        { image: "g/200/400", gravity: "center" },
-        { image: "g/100/300", gravity: "center" },
-        { image: "g/300/100", gravity: "center" },
-        { image: "g/150/300", gravity: "center" },
-        { image: "g/300/150", gravity: "center" },
-        { image: "g/100/350", gravity: "center" },
-        { image: "g/350/100", gravity: "center" },
-        { image: "g/400/500", gravity: "center" },
-        { image: "g/500/400", gravity: "center" },
-        { image: "g/300/500", gravity: "center" },
-        { image: "g/500/300", gravity: "center" },
-        { image: "g/500/350", gravity: "center" },
-        { image: "g/300/550", gravity: "center" },
-        { image: "g/550/300", gravity: "center" }
-      ],
-      randomDate = () => {
-        return `${
-          ["January", "February", "March", "April"][
-            Math.floor(Math.random() * 4)
-          ]
-        } ${Math.floor(Math.random() * 28 + 1)}, 2020`;
-      };
-
-    assignments.forEach(a => {
-      students.forEach(s => {
-        submissions.push({
-          id: `submission-${ctr}`,
-          date: randomDate(),
-          assignmentId: a.id,
-          assignment: a.assignment,
-          project: a.project,
-          image: `//placekitten.com/${images[ctr].image}`,
-          gravity: images[ctr].gravity,
-          studentId: s.id,
-          student: `${s.firstName} ${s.lastName}`
-        });
-        students.forEach(c => {
-          if (c.id !== s.id)
-            comments.push({
-              id: `comment-${ctr}`,
-              firstName: c.firstName,
-              lastName: c.lastName,
-              image: c.image,
-              date: randomDate(),
-              student: s.firstName,
-              studentId: s.id,
-              assignmentId: a.id,
-              assignment: a.assignment,
-              project: a.project
-            });
-        });
-        ctr++;
-      });
-    });
-
-    submissions[0].feature = `Lick arm hair make meme, make cute face. Making sure that fluff gets into the owner's eyes hey! you there, with the hands, side-eyes your \"jerk\" other hand while being petted loved it, hated it, loved it, hated it spill litter box, scratch at owner, destroy all furniture, especially couch groom yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day - checked. Thanks!`;
-    submissions[5].feature = `Cough hairball on conveniently placed pants mew drool bury the poop bury it deep lay on arms while you're using the keyboard for cat fur is the new black or attack the child. Decide to want nothing to do with my owner today pretend you want to go out but then don't yet meow to be let in swat turds around the house but leave hair on owner's clothes. Headbutt owner's knee stinky cat for hack, or that box? i can fit in that box stare at ceiling, for i shall purr myself to sleep thug cat . Eat all the power cords paw at your fat belly, for catch eat throw up catch eat throw up bad birds or cat walks in keyboard swipe at owner's legs and meeeeouw get my claw stuck in the dog's ear. Catasstrophe thug cat , and so you're just gonna scroll by without saying meowdy? or check cat door for ambush 10 times before coming in bathe private parts with tongue then lick owner's face jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed yet roll over and sun my belly.`;
-    submissions[11].feature = `Havana, I fixed the link so this should allow you to see the following passages. Let me know if it still gives you any issues!`;
-
-    return {
-      students: students,
-      comments: comments,
-      assignments: assignments,
-      submissions: submissions
-    };
-  }
-  get comments() {
-    return this.__fakeData.comments;
-  }
-  get submissions() {
-    return this.__fakeData.submissions;
-  }
-
-  get students() {
-    let students = { "": "All" };
-    (this.__fakeData.students || []).forEach(
-      s => (students[s.id] = `${s.lastName}, ${s.firstName}`)
-    );
-    return students;
-  }
-  get assignments() {
-    let assignments = { "": "All" };
-    (this.__fakeData.assignments || []).forEach(
-      a => (assignments[a.id] = a.assignment)
-    );
-    return assignments;
   }
   get filteredSubmissions() {
     return (this.submissions || []).filter(
@@ -635,16 +415,30 @@ class ElmslnStudioSubmissions extends LitElement {
   get noSubmissions() {
     return this.filteredSubmissions.length === this.submissions.length;
   }
-  _getAlign(feature, gravity) {
-    let horizontal = !this.grid || feature;
-    return horizontal && gravity.indexOf("left") > -1
-      ? "left"
-      : horizontal && gravity.indexOf("right") > -1
-      ? "right"
-      : !horizontal && gravity.indexOf("top") > -1
+
+  getFakeData(){
+    let data = this.fakeData;
+    this.students = { "": "All" };
+    this.assignments = { "": "All" };
+    if(data && data.students) data.students.forEach(d => this.students[d.id] = `${d.lastName}, ${d.firstName}`);
+    if(data && data.assignments) data.assignments.forEach(d => (this.assignments[d.id] = d.assignment));
+    this.comments = data && data.comments ? data.comments : [];
+    this.submissions = data && data.submissions ? data.submissions : [];
+  }
+  
+  _getValign(gravity) {
+    return gravity.indexOf("top") > -1
       ? "top"
-      : !horizontal && gravity.indexOf("bottom") > -1
+      : gravity.indexOf("bottom") > -1
       ? "bottom"
+      : "center";
+  }
+  
+  _getAlign(gravity) {
+    return gravity.indexOf("left") > -1
+      ? "left"
+      : gravity.indexOf("right") > -1
+      ? "right"
       : "center";
   }
   _isFiltered(student, assignment) {
