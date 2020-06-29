@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 const ElmslnStudioUtilities = function(SuperClass) {
@@ -89,6 +89,22 @@ const ElmslnStudioUtilities = function(SuperClass) {
           accent-card button:last-child {
             text-align: right;
           }
+        .load-more {
+          text-align: center;
+          display: block;
+          padding: 10px;
+          margin: 0;
+          border-radius: 3px;
+          border: none;
+          background-color: var(--simple-colors-default-theme-grey-2, #eee);
+          color: var(--simple-colors-default-theme-grey11, #222);
+          width: 100%;
+        }
+        .load-more:focus,
+        .load-more:hover {
+          background-color: var(--simple-colors-default-theme-grey-3, #ddd);
+          color: var(--simple-colors-default-theme-grey12, #000);
+        }
           @media screen and (min-width: 900px) {
             :host {
               display: flex;
@@ -333,6 +349,16 @@ const ElmslnStudioUtilities = function(SuperClass) {
     }
     getFakeData() {
       let data = this.fakeData;
+    }
+
+    getAccentColor(str){
+      let card = new AccentCard(), 
+        colors = !card || !card.colors ? [""] : Object.keys(card.colors),
+        i = str && str.charCodeAt(0) ? str.charCodeAt(0) : Math.floor(Math.random() * 16);
+      return colors[i%16+1] ? colors[i%16+1] : colors[Math.floor(Math.random() * colors.length)];
+    }
+    _loadMore(e,filteredName,fullListName,increment) {
+      this[filteredName] = this[fullListName].slice(0, this[filteredName].length + increment);
     }
 
     date(time) {

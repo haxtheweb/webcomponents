@@ -1,6 +1,7 @@
 import { html } from "lit-element/lit-element.js";
 import { ElmslnStudio } from "@lrnwebcomponents/elmsln-studio/elmsln-studio.js";
 import { ElmslnStudioDashboard } from "@lrnwebcomponents/elmsln-studio/lib/elmsln-studio-dashboard.js";
+import { ElmslnStudioSubmissions } from "@lrnwebcomponents/elmsln-studio/lib/elmsln-studio-submissions.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -21,5 +22,17 @@ export const ElmslnStudioDashboardStory = () => {
     commentsSrc: new URL(`./demo/data/my-comments.json`, import.meta.url),
     profileSrc: new URL(`./demo/data/profile.json`, import.meta.url),
     submissionsSrc: new URL(`./demo/data/my-submissions.json`, import.meta.url)
+  });
+};
+export const ElmslnStudioSubmissionsStory = () => {
+  let sub = new ElmslnStudioSubmissions();
+  sub.getFakeData();
+  return utils.makeElementFromClass(ElmslnStudioSubmissions, {
+    comments: sub.comments,
+    assignments: sub.assignments,
+    students: sub.students,
+    submissions: sub.submissions,
+    activites: sub.activites,
+    activty: sub.activty,
   });
 };

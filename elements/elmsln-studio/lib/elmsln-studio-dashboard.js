@@ -113,22 +113,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           padding: 0;
           text-align: left;
         }
-        .linklist-footer {
-          text-align: center;
-          display: block;
-          padding: 10px;
-          margin: 0;
-          border-radius: 3px;
-          border: none;
-          background-color: var(--simple-colors-default-theme-grey-2, #eee);
-          color: var(--simple-colors-default-theme-grey11, #222);
-          width: calc(100% - 20px);
-        }
-        .linklist-footer:focus,
-        .linklist-footer:hover {
-          background-color: var(--simple-colors-default-theme-grey-3, #ddd);
-          color: var(--simple-colors-default-theme-grey12, #000);
-        }
         @media screen and (min-width: 600px) {
           progress-donut {
             max-width: 150px;
@@ -293,8 +277,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
             ${this.activity.map(
               activity => html`
                 <nav-card-item
-                  icon="chevron-right"
+                  accent-color="${this.getAccentColor(activity.firstName)}"
                   .avatar="${activity.image}"
+                  icon="chevron-right"
                   .initials="${activity.firstName} ${activity.lastName}"
                 >
                   <button
@@ -313,11 +298,11 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
             )}
           </div>
           <button
-            class="linklist-footer"
+            class="load-more"
             slot="footer"
             ?disabled="${this.activity.length === this.activities.length}"
             ?hidden="${this.activity.length === this.activities.length}"
-            @click="${this._loadMoreComments}"
+            @click="${e=>this._loadMore(e,"activity","activities",10)}"
           >
             Load More
           </button>

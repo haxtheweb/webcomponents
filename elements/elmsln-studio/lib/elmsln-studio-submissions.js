@@ -101,12 +101,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
           --accent-card-footer-padding-bottom: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
           );
-          --accent-card-footer-padding-left: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
-          --accent-card-footer-padding-right: calc(
-            0.5 * var(--elmsln-studio-margin, 20px)
-          );
+          --accent-card-footer-padding-left: 0;
+          --accent-card-footer-padding-right: 0;
           --accent-card-image-padding-bottom: 5px;
           --accent-card-image-padding-right: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
@@ -171,6 +167,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         accent-card button {
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           background-color: transparent;
+          text-align: left;
         }
         accent-card button:last-child {
           text-align: right;
@@ -267,7 +264,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                 </div>
               `
             : ``}
-          ${this.submissions.map(s =>
+          ${(this.submissions || []).map(s =>
             !this._isFiltered(s.studentId, s.assignmentId)
               ? ``
               : html`
@@ -331,16 +328,26 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
               : "All"}</span
           >
         </div>
-        <nav-card flat no-border class="card" link-icon="chevron-right">
+        <nav-card 
+          flat 
+          no-border 
+          class="card" 
+          link-icon="chevron-right">
           <span slot="heading">Recent Comments</span>
+          <div 
+            slot="body" 
+            ?hidden="${this.comments && this.comments.length > 0}">
+            No comments for applied filters.
+          </div>
           <div slot="linklist">
-            ${this.comments.map(c =>
+            ${(this.comments || []).map(c =>
               !this._isFiltered(c.studentId, c.assignmentId)
                 ? ``
                 : html`
                     <nav-card-item
-                      icon="chevron-right"
+                      accent-color="${this.getAccentColor(c.firstName)}"
                       .avatar="${c.image}"
+                      icon="chevron-right"
                       initials="${c.firstName} ${c.lastName}"
                     >
                       <button
@@ -413,7 +420,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     );
   }
   get noSubmissions() {
-    return this.filteredSubmissions.length === this.submissions.length;
+    return !this.submissions || this.filteredSubmissions.length === this.submissions.length;
   }
 
   getFakeData() {
