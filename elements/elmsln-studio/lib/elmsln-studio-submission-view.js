@@ -20,7 +20,8 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
     return [
       ...super.styles,
       css`
-        :host, section {
+        :host,
+        section {
           display: block;
           width: 80%;
           margin: var(--elmsln-studio-margin, 20px) auto;
@@ -39,11 +40,11 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         .student-name {
           font-size: calc(2 * var(--elmsln-studio-FontSize, 16px));
           font-weight: bold;
-          color: #4B4B4B;
+          color: #4b4b4b;
         }
         .project-name {
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
-          color: #95989A;
+          color: #95989a;
         }
         .view-comments {
           text-align: right;
@@ -51,18 +52,18 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         article button {
           background-color: transparent;
           border: none;
-          color: #95989A;
+          color: #95989a;
           font-size: var(--elmsln-studio-FontSize, 16px);
           text-transform: uppercase;
         }
         article button:focus,
         article button:hover {
-          color: #4B4B4B;
+          color: #4b4b4b;
         }
         section {
           margin: calc(2 * var(--elmsln-studio-margin, 20px)) auto;
-          border-top: 2px solid #EAEAEA;
-        } 
+          border-top: 2px solid #eaeaea;
+        }
         h2 {
           margin: calc(2 * var(--elmsln-studio-margin, 20px)) auto;
           text-align: center;
@@ -73,12 +74,13 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         }
         .submission-date {
           font-size: var(--elmsln-studio-FontSize, 16px);
-          color: #95989A;
+          color: #95989a;
         }
         .submission-body {
-          color: #95989A;
+          color: #95989a;
           line-height: 160%;
-          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) auto var(--elmsln-studio-margin, 20px);
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) auto
+            var(--elmsln-studio-margin, 20px);
         }
         .submission-body:first-child {
           margin-top: 0;
@@ -132,43 +134,64 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
             aria-hidden="true"
             label="${this.firstName} ${this.lastName}"
             src="${this.image}"
-            two-chars>
+            two-chars
+          >
           </lrndesign-avatar>
           <span class="student-name">${this.firstName} ${this.lastName}</span>
           <span class="project-name">${this.project}</span>
         </h1>
         <div class="view-comments">
           <button class="view-comment-button">
-            <iron-icon aria-hidden="true" icon="communication:comment"></iron-icon>
+            <iron-icon
+              aria-hidden="true"
+              icon="communication:comment"
+            ></iron-icon>
             <span class="sr-only">View Comments</span>
           </button>
         </div>
-        ${this.submissions.map(s=>html`
-          <section>
-            <h2>
-              <span class="assignment-name">${s.assignment}</span>
-              <span class="submission-date">Submitted: ${s.date}</span>
-            </h2>
-            <div class="submission-body">
-              ${s.links && s.links.length > 0
-                ? html`
-                  <ul class="submission-links">
-                    ${s.links.map(link=>html`
-                      <li>
-                        <a href="${link.url}" target="external">
-                          <iron-icon aria-hidden="true" icon="${link.type === "pdf" ? "description" : "link"}"></iron-icon>
-                          ${link.text || link.url}
-                        </a>
-                      </li>
-                    `)}
-                  </ul>`
-                : s.sources && s.sources.length > 0
-                ? html` <lrndesign-gallery class="submission-image" layout="grid" .sources="${s.sources}"></lrndesign-gallery>` 
-                : html`${s.body}`
-              }
-            </div>
-          </section>
-        `)}
+        ${this.submissions.map(
+          s => html`
+            <section>
+              <h2>
+                <span class="assignment-name">${s.assignment}</span>
+                <span class="submission-date">Submitted: ${s.date}</span>
+              </h2>
+              <div class="submission-body">
+                ${s.links && s.links.length > 0
+                  ? html`
+                      <ul class="submission-links">
+                        ${s.links.map(
+                          link => html`
+                            <li>
+                              <a href="${link.url}" target="external">
+                                <iron-icon
+                                  aria-hidden="true"
+                                  icon="${link.type === "pdf"
+                                    ? "description"
+                                    : "link"}"
+                                ></iron-icon>
+                                ${link.text || link.url}
+                              </a>
+                            </li>
+                          `
+                        )}
+                      </ul>
+                    `
+                  : s.sources && s.sources.length > 0
+                  ? html`
+                      <lrndesign-gallery
+                        class="submission-image"
+                        layout="grid"
+                        .sources="${s.sources}"
+                      ></lrndesign-gallery>
+                    `
+                  : html`
+                      ${s.body}
+                    `}
+              </div>
+            </section>
+          `
+        )}
       </article>
     `;
   }
@@ -218,10 +241,11 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   }
 
   getFakeData() {
-    let data = this.fakeData, 
-      student = data.students[Math.floor(Math.random() * (data.students || []).length)];
-    
-    console.log(data,student);
+    let data = this.fakeData,
+      student =
+        data.students[Math.floor(Math.random() * (data.students || []).length)];
+
+    console.log(data, student);
     this.firstName = student.firstName;
     this.lastName = student.lastName;
     this.image = student.image;
@@ -235,5 +259,8 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("elmsln-studio-submission-view", ElmslnStudioSubmissionView);
+customElements.define(
+  "elmsln-studio-submission-view",
+  ElmslnStudioSubmissionView
+);
 export { ElmslnStudioSubmissionView };

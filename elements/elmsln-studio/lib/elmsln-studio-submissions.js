@@ -328,15 +328,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
               : "All"}</span
           >
         </div>
-        <nav-card 
-          flat 
-          no-border 
-          class="card" 
-          link-icon="chevron-right">
+        <nav-card flat no-border class="card" link-icon="chevron-right">
           <span slot="heading">Recent Comments</span>
-          <div 
-            slot="body" 
-            ?hidden="${this.comments && this.comments.length > 0}">
+          <div
+            slot="body"
+            ?hidden="${this.comments && this.comments.length > 0}"
+          >
             No comments for applied filters.
           </div>
           <div slot="linklist">
@@ -420,7 +417,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     );
   }
   get noSubmissions() {
-    return !this.submissions || this.filteredSubmissions.length === this.submissions.length;
+    return (
+      !this.submissions ||
+      this.filteredSubmissions.length === this.submissions.length
+    );
   }
 
   getFakeData() {
