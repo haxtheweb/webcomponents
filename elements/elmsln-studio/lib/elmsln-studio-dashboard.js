@@ -302,7 +302,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
             slot="footer"
             ?disabled="${this.activity.length === this.activities.length}"
             ?hidden="${this.activity.length === this.activities.length}"
-            @click="${e=>this._loadMore(e,"activity","activities",10)}"
+            @click="${e => this._loadMore(e, "activity", "activities", 10)}"
           >
             Load More
           </button>

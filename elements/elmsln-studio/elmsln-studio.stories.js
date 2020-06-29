@@ -33,6 +33,6 @@ export const ElmslnStudioSubmissionsStory = () => {
     students: sub.students,
     submissions: sub.submissions,
     activites: sub.activites,
-    activty: sub.activty,
+    activty: sub.activty
   });
 };
