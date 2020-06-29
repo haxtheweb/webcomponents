@@ -2,6 +2,7 @@ import { html } from "lit-element/lit-element.js";
 import { ElmslnStudio } from "@lrnwebcomponents/elmsln-studio/elmsln-studio.js";
 import { ElmslnStudioDashboard } from "@lrnwebcomponents/elmsln-studio/lib/elmsln-studio-dashboard.js";
 import { ElmslnStudioSubmissions } from "@lrnwebcomponents/elmsln-studio/lib/elmsln-studio-submissions.js";
+import { ElmslnStudioSubmissionView } from "@lrnwebcomponents/elmsln-studio/lib/elmsln-studio-submission-view.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -15,16 +16,22 @@ export default {
 };
 const utils = new StorybookUtilities();
 
-export const ElmslnStudioDashboardStory = () => {
+export const Dashboard = () => {
+  let sub = new ElmslnStudioDashboard();
+  sub.getFakeData();
   return utils.makeElementFromClass(ElmslnStudioDashboard, {
-    activitySrc: new URL(`./demo/data/recent-activity.json`, import.meta.url),
-    assignmentsSrc: new URL(`./demo/data/assignments.json`, import.meta.url),
-    commentsSrc: new URL(`./demo/data/my-comments.json`, import.meta.url),
-    profileSrc: new URL(`./demo/data/profile.json`, import.meta.url),
-    submissionsSrc: new URL(`./demo/data/my-submissions.json`, import.meta.url)
+    profile: sub.profile,
+    studentId: sub.studentId,
+    activities: sub.activities,
+    activity: sub.activity,
+    contributions: sub.contributions,
+    comments: sub.activities,
+    assignments: sub.assignments,
+    submissions: sub.submissions,
+    projects: sub.projects
   });
 };
-export const ElmslnStudioSubmissionsStory = () => {
+export const Submissions = () => {
   let sub = new ElmslnStudioSubmissions();
   sub.getFakeData();
   return utils.makeElementFromClass(ElmslnStudioSubmissions, {
@@ -34,5 +41,16 @@ export const ElmslnStudioSubmissionsStory = () => {
     submissions: sub.submissions,
     activites: sub.activites,
     activty: sub.activty
+  });
+};
+export const SubmissionView = () => {
+  let sub = new ElmslnStudioSubmissionView();
+  sub.getFakeData();
+  return utils.makeElementFromClass(ElmslnStudioSubmissionView, {
+    firstName: sub.firstName,
+    lastName: sub.lastName,
+    image: sub.image,
+    project: sub.propject,
+    submissions: sub.submissions
   });
 };

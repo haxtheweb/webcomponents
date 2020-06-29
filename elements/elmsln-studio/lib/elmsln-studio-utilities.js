@@ -252,8 +252,39 @@ const ElmslnStudioUtilities = function(SuperClass) {
               Math.floor(Math.random() * 4)
             ]
           } ${Math.floor(Math.random() * 28 + 1)}, 2020`;
-        };
-
+        },
+        submissionView = [
+          {
+            assignment: "Define: Synopsis", 
+            date: randomDate(),
+            body: "Weigh eight pounds but take up a full-size bed going to catch the red dot today going to catch the red dot today. Meow all night having their mate disturbing sleeping humans walk on keyboard and the door is opening!\n\nhow exciting oh, it's you, meh yet litter kitter kitty litty little kitten big roar roar feed me. Dream about hunting birds slap kitten brother with paw making bread on the bathrobe yet ask for petting really likes hummus chew foot. Where is it? i saw that bird i need to bring it home to mommy squirrel!\n\nCats making all the muffins i want to go outside let me go outside nevermind inside is better or love and coo around boyfriend who purrs and makes the perfect moonlight eyes so i can purr and swat the glittery gleaming yarn to him (the yarn is from a $125 sweater) but pose purrfectly to show my beauty have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat."
+          },
+          {
+            assignment: "Develop: Storyboard", 
+            date: randomDate(),
+            links: [
+              {
+                url: "https://www.researchgate.net/profile/Sandra_Mccune/publication/279405839_The_Domestic_Cat/links/56b891ef08ae3c1b79b2dd85/The-Domestic-Cat.pdf",
+                text: "The Domestic Cat",
+                type: "pdf"
+              },{
+                url: "//placekitten.com/g/400/200",
+                type: "url"
+              }
+            ]
+          },
+          {
+            assignment: "Deliver: Iterate", 
+            date: randomDate(),
+            sources: images.slice(0,4).map(s=>{
+              return {  
+                alt: `Random Kitten from ${s.image}`, 
+                src: `//placekitten.com/${s.image}`, 
+                sizing: "cover" 
+              };
+            })
+          }
+        ];
       assignments.forEach(a => {
         students.forEach(s => {
           ctr++;
@@ -267,7 +298,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
             image: `//placekitten.com/${images[ctr].image}`,
             gravity: images[ctr].gravity,
             studentId: s.id,
-            student: `${s.firstName} ${s.lastName}`
+            student: `${s.firstName} ${s.lastName}`,
           });
           students.forEach((c, i) => {
             if (c.id !== s.id)
@@ -330,7 +361,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
         comments: comments,
         assignments: assignments,
         submissions: submissions,
-        projects: projects
+        projects: projects,
+        submissionView: submissionView
       };
     }
     _handleArrayData(e, propName) {

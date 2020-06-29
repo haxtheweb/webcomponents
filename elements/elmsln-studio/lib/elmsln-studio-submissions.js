@@ -18,7 +18,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
  * @customElement elmsln-studio-submissions
  * @lit-html
  * @lit-element
- * @demo demo/index.html
+ * @demo demo/submission.html
  */
 class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   static get styles() {

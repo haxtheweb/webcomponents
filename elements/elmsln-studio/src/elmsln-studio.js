@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/elmsln-studio-dashboard.js";
 import "./lib/elmsln-studio-submissions.js";
+import "./lib/elmsln-studio-submission-view.js";
 
 /**
  * `elmsln-studio`
