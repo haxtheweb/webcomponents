@@ -190,12 +190,10 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             }
           }
           site-active-title {
-            --site-active-title-heading: {
-              color: black;
-              font-size: 28px;
-              margin: 0;
-              padding: 0;
-            }
+            color: black;
+            font-size: 28px;
+            margin: 0;
+            padding: 0;
           }
         </style>
       </custom-style>

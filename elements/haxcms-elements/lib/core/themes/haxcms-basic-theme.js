@@ -102,16 +102,14 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
         }
         site-active-title {
           display: inline-flex;
-          --site-active-title-heading: {
-            font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
-              sans-serif;
-            font-size: 16px;
-            line-height: 32px;
-            margin-bottom: 8px;
-            text-rendering: optimizelegibility;
-            font-weight: 600;
-            color: white;
-          }
+          font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
+            sans-serif;
+          font-size: 16px;
+          line-height: 32px;
+          margin-bottom: 8px;
+          text-rendering: optimizelegibility;
+          font-weight: 600;
+          color: white;
         }
         site-title {
           margin: 0 32px;

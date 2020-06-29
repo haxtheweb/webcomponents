@@ -86,6 +86,9 @@ class MapMenuBuilder extends LitElement {
       }
     };
   }
+  createRenderRoot() {
+    return this;
+  }
 }
 window.customElements.define(MapMenuBuilder.tag, MapMenuBuilder);
 export { MapMenuBuilder };
