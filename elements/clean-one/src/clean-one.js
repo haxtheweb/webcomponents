@@ -24,11 +24,10 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
  * @demo demo/index.html
  * @element clean-one
  */
-  class CleanOne extends HAXCMSLitElementTheme {
-  
+class CleanOne extends HAXCMSLitElementTheme {
   //styles function
   static get styles() {
-    return  [
+    return [
       css`
         :host {
           display: block;
@@ -864,13 +863,12 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
     ];
   }
   toggleMenu(e) {
-    if (this.withMenu == 'with-menu') {
-      this.withMenu = '';
-      this.shadowRoot.querySelector('#nav').setAttribute('tabindex','-1');
-    }
-    else {
-      this.withMenu = 'with-menu';
-      this.shadowRoot.querySelector('#nav').removeAttribute('tabindex');
+    if (this.withMenu == "with-menu") {
+      this.withMenu = "";
+      this.shadowRoot.querySelector("#nav").setAttribute("tabindex", "-1");
+    } else {
+      this.withMenu = "with-menu";
+      this.shadowRoot.querySelector("#nav").removeAttribute("tabindex");
     }
   }
   toggleSettings(e) {
@@ -887,75 +885,142 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
     }
   }
   fontFamilyChange(e) {
-    this.fontFamily = parseInt(e.path[0].getAttribute('data-font'));
+    this.fontFamily = parseInt(e.path[0].getAttribute("data-font"));
   }
   colorThemeChange(e) {
-    this.colorTheme = parseInt(e.path[0].getAttribute('data-theme'));
+    this.colorTheme = parseInt(e.path[0].getAttribute("data-theme"));
   }
-  
-// render function
+
+  // render function
   render() {
     return html`
-  <div class="site without-animation ${this.withMenu} font-size-${this.fontSize} font-family-${this.fontFamily} color-theme-${this.colorTheme}">
-    <div class="menu-outline">
-      <nav id="nav" role="navigation">
-        <site-menu></site-menu>
-      </nav>
-    </div>
-    <div class="site-body">
-    <div id="top"></div>
-      <div class="site-inner">
-        <div class="site-header" role="navigation">
-          <div class="btn-container">
-            <paper-icon-button class="btn" icon="icons:menu" @click="${this.toggleMenu}"></paper-icon-button>
-            <paper-icon-button class="btn" icon="editor:format-size" @click="${this.toggleSettings}" id="popovertarget"></paper-icon-button>
-            <simple-popover class="dropdown pull-left font-settings js-toolbar-action settings-container" ?hidden="${this.hideSettings}" auto>
-              <div class="dropdown-menu dropdown-right open">
-                <div class="dropdown-caret">
-                  <span class="caret-outer"></span>
-                  <span class="caret-inner"></span>
-                </div>
-                <div class="buttons">
-                  <button class="button size-2 font-reduce" @click="${this.sizeDown}">A</button>
-                  <button class="button size-2 font-enlarge" @click="${this.sizeUp}">A</button>
-                </div>
-                <div class="buttons">
-                  <button class="button size-2" data-font="0" @click="${this.fontFamilyChange}">Serif</button>
-                  <button class="button size-2" data-font="1" @click="${this.fontFamilyChange}">Sans</button>
-                </div>
-                <div class="buttons">
-                  <button class="button size-3" data-theme="0" @click="${this.colorThemeChange}">White</button>
-                  <button class="button size-3" data-theme="1" @click="${this.colorThemeChange}">Sepia</button>
-                  <button class="button size-3" data-theme="2" @click="${this.colorThemeChange}">Night</button>
-                </div>
-              </div>
-            </simple-popover>
-          </div>
-          <site-active-title></site-active-title>
+      <div
+        class="site without-animation ${this.withMenu} font-size-${this
+          .fontSize} font-family-${this.fontFamily} color-theme-${this
+          .colorTheme}"
+      >
+        <div class="menu-outline">
+          <nav id="nav" role="navigation">
+            <site-menu></site-menu>
+          </nav>
         </div>
-        <div class="page-wrapper" role="main">
-          <div class="main-content page-inner">
-            <section class="normal main-section">
-              <div id="contentcontainer">
-                <div id="slot">
-                  <slot></slot>
-                </div>
+        <div class="site-body">
+          <div id="top"></div>
+          <div class="site-inner">
+            <div class="site-header" role="navigation">
+              <div class="btn-container">
+                <paper-icon-button
+                  class="btn"
+                  icon="icons:menu"
+                  @click="${this.toggleMenu}"
+                ></paper-icon-button>
+                <paper-icon-button
+                  class="btn"
+                  icon="editor:format-size"
+                  @click="${this.toggleSettings}"
+                  id="popovertarget"
+                ></paper-icon-button>
+                <simple-popover
+                  class="dropdown pull-left font-settings js-toolbar-action settings-container"
+                  ?hidden="${this.hideSettings}"
+                  auto
+                >
+                  <div class="dropdown-menu dropdown-right open">
+                    <div class="dropdown-caret">
+                      <span class="caret-outer"></span>
+                      <span class="caret-inner"></span>
+                    </div>
+                    <div class="buttons">
+                      <button
+                        class="button size-2 font-reduce"
+                        @click="${this.sizeDown}"
+                      >
+                        A
+                      </button>
+                      <button
+                        class="button size-2 font-enlarge"
+                        @click="${this.sizeUp}"
+                      >
+                        A
+                      </button>
+                    </div>
+                    <div class="buttons">
+                      <button
+                        class="button size-2"
+                        data-font="0"
+                        @click="${this.fontFamilyChange}"
+                      >
+                        Serif
+                      </button>
+                      <button
+                        class="button size-2"
+                        data-font="1"
+                        @click="${this.fontFamilyChange}"
+                      >
+                        Sans
+                      </button>
+                    </div>
+                    <div class="buttons">
+                      <button
+                        class="button size-3"
+                        data-theme="0"
+                        @click="${this.colorThemeChange}"
+                      >
+                        White
+                      </button>
+                      <button
+                        class="button size-3"
+                        data-theme="1"
+                        @click="${this.colorThemeChange}"
+                      >
+                        Sepia
+                      </button>
+                      <button
+                        class="button size-3"
+                        data-theme="2"
+                        @click="${this.colorThemeChange}"
+                      >
+                        Night
+                      </button>
+                    </div>
+                  </div>
+                </simple-popover>
               </div>
-            </section>
+              <site-active-title></site-active-title>
+            </div>
+            <div class="page-wrapper" role="main">
+              <div class="main-content page-inner">
+                <section class="normal main-section">
+                  <div id="contentcontainer">
+                    <div id="slot">
+                      <slot></slot>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
           </div>
+          <!-- These two buttons allow you to go left and right through the pages in the manifest -->
+          <site-menu-button
+            type="prev"
+            position="right"
+            class="navigation"
+          ></site-menu-button>
+          <site-menu-button
+            type="next"
+            position="left"
+            class="navigation"
+          ></site-menu-button>
         </div>
       </div>
-      <!-- These two buttons allow you to go left and right through the pages in the manifest -->
-      <site-menu-button type="prev" position="right" class="navigation"></site-menu-button>
-      <site-menu-button type="next" position="left" class="navigation"></site-menu-button>
-    </div>
-  </div>
-  <scroll-button></scroll-button>`;
+      <scroll-button></scroll-button>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       withMenu: {
         type: String
       },
@@ -965,17 +1030,17 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
       fontSize: {
         type: Number,
         reflect: true,
-        attribute: 'font-size',
+        attribute: "font-size"
       },
       fontFamily: {
         type: Number,
         reflect: true,
-        attribute: 'font-family',
+        attribute: "font-family"
       },
       colorTheme: {
         type: Number,
         reflect: true,
-        attribute: 'color-theme',
+        attribute: "color-theme"
       }
     };
   }
@@ -996,7 +1061,7 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
     this.fontSize = 1;
     this.fontFamily = 0;
     this.colorTheme = 0;
-    this.withMenu = 'with-menu';
+    this.withMenu = "with-menu";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
@@ -1014,9 +1079,13 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
       super.firstUpdated(changedProperties);
     }
     // hook up the scroll target
-    this.shadowRoot.querySelector('scroll-button').target = this.shadowRoot.querySelector('#top');
+    this.shadowRoot.querySelector(
+      "scroll-button"
+    ).target = this.shadowRoot.querySelector("#top");
     // hook up the pop over menu
-    this.shadowRoot.querySelector('simple-popover').target = this.shadowRoot.querySelector('#popovertarget');
+    this.shadowRoot.querySelector(
+      "simple-popover"
+    ).target = this.shadowRoot.querySelector("#popovertarget");
   }
   /**
    * life cycle, element is removed from the DOM
