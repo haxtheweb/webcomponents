@@ -7,16 +7,19 @@
 :host([hidden]) {
   display: none;
 }
+
 paper-icon-button {
   background-color: var(--scroll-button-background-color, rgba(0,0,0,.6) );
   color: var(--scroll-button-color, white);
 }
+
 paper-icon-button:hover,
 paper-icon-button:active,
 paper-icon-button:focus {
   color: var(--scroll-button-background-color, rgba(0,0,0,1) );
   background-color: var(--scroll-button-color, white);
 }
+
 simple-tooltip {
   --simple-tooltip-background: #000000;
   --simple-tooltip-opacity: 1;

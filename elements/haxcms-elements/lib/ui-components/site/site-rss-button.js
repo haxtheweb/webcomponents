@@ -40,7 +40,7 @@ class SiteRSSButton extends LitElement {
     super();
     this.type = "rss";
     this.raised = false;
-    this.position = 'bottom';
+    this.position = "bottom";
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/communication-icons.js");
@@ -59,12 +59,17 @@ class SiteRSSButton extends LitElement {
         .aria-title="${this.label}"
       >
         <paper-icon-button
-        icon="${this.icon}"
-        @click="${this.print}"
-        .aria-title="${this.label}"
-        ?disabled="${this.disabled}"></paper-icon-button>
+          icon="${this.icon}"
+          @click="${this.print}"
+          .aria-title="${this.label}"
+          ?disabled="${this.disabled}"
+        ></paper-icon-button>
       </a>
-      <simple-tooltip .for="btn${this.type}" position="${this.position}" offset="14">
+      <simple-tooltip
+        .for="btn${this.type}"
+        position="${this.position}"
+        offset="14"
+      >
         ${this.label}
       </simple-tooltip>
     `;

@@ -49,7 +49,11 @@ class SitePrintButton extends LitElement {
         .aria-title="${this.label}"
         ?disabled="${this.disabled}"
       ></paper-icon-button>
-      <simple-tooltip .for="btn${this.type}" position="${this.position}" offset="14">
+      <simple-tooltip
+        .for="btn${this.type}"
+        position="${this.position}"
+        offset="14"
+      >
         ${this.label}
       </simple-tooltip>
     `;

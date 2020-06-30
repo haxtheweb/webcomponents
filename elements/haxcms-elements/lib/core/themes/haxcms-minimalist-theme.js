@@ -275,7 +275,7 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
-        
+
         site-top-menu:not([sticky]) site-print-button paper-icon-button {
           color: black;
           display: inline-flex;

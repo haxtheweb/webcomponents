@@ -990,7 +990,7 @@ class CleanOne extends HAXCMSLitElementTheme {
                   @click="${this.toggleMenu}"
                 ></paper-icon-button>
                 <simple-tooltip for="menubtn">
-                Toggle menu
+                  Toggle menu
                 </simple-tooltip>
                 <paper-icon-button
                   class="btn"
@@ -999,7 +999,7 @@ class CleanOne extends HAXCMSLitElementTheme {
                   id="popovertarget"
                 ></paper-icon-button>
                 <simple-tooltip for="popovertarget">
-                Text settings
+                  Text settings
                 </simple-tooltip>
                 <simple-popover
                   class="dropdown pull-left font-settings js-toolbar-action settings-container"
@@ -1067,8 +1067,13 @@ class CleanOne extends HAXCMSLitElementTheme {
                   </div>
                 </simple-popover>
                 <div class="pull-right link-actions">
-                  <site-print-button class="btn js-toolbar-action"></site-print-button>
-                  <site-print-button type="site" class="btn js-toolbar-action"></site-print-button>
+                  <site-print-button
+                    class="btn js-toolbar-action"
+                  ></site-print-button>
+                  <site-print-button
+                    type="site"
+                    class="btn js-toolbar-action"
+                  ></site-print-button>
                   <site-rss-button type="rss"></site-rss-button>
                 </div>
               </div>
