@@ -74,7 +74,10 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           left: 0;
           right: 0;
           background-image: var(--lrndesign-gallery-grid-backgroundImage, none);
-          background-position: var(--lrndesign-gallery-grid-backgroundPosition, center);
+          background-position: var(
+            --lrndesign-gallery-grid-backgroundPosition,
+            center
+          );
           background-size: var(--lrndesign-gallery-grid-backgroundSize, cover);
         }
         .zoombg,
@@ -122,11 +125,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 .zoom-alt="${item.zoomAlt}"
                 .style="${this._getStyle(item)}"
               >
-                <img
-                  .alt="${item.alt}"
-                  fade
-                  .src="${item.src}"
-                />
+                <img .alt="${item.alt}" fade .src="${item.src}" />
                 <div class="imgbg"></div>
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
@@ -139,10 +138,13 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   }
   _getStyle(item) {
     return [
-      `--lrndesign-gallery-grid-paddingTop: ${100/this.aspectRatio}%;`,
+      `--lrndesign-gallery-grid-paddingTop: ${100 / this.aspectRatio}%;`,
       `--lrndesign-gallery-grid-backgroundImage: url(${item.src});`,
-      `--lrndesign-gallery-grid-backgroundPosition: ${item.gravity || "center"};`,
-      `--lrndesign-gallery-grid-backgroundSize: ${item.sizing || this.sizing === "cover" || "contain"}`
+      `--lrndesign-gallery-grid-backgroundPosition: ${item.gravity ||
+        "center"};`,
+      `--lrndesign-gallery-grid-backgroundSize: ${item.sizing ||
+        this.sizing === "cover" ||
+        "contain"}`
     ].join("");
   }
   /**

@@ -368,7 +368,12 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     .index="${item.index}"
                     @click="${e => this._itemChanged(item.id)}"
                     ?disabled="${this.selected.id === item.id}"
-                    .style="--lrndesign-gallery-thumb-url:url(${item.thumbnail});background-size:${item.sizing || this.sizing || "cover"};background-position:${item.gravity ? item.gravity.replace('-',' ') : "center"}">
+                    .style="--lrndesign-gallery-thumb-url:url(${item.thumbnail});background-size:${item.sizing ||
+                      this.sizing ||
+                      "cover"};background-position:${item.gravity
+                      ? item.gravity.replace("-", " ")
+                      : "center"}"
+                  >
                     <span class="sr-only"
                       >${item.alt || `Item ${parseInt(item.index) + 1}`}</span
                     >
