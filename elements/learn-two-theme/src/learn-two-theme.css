@@ -95,10 +95,8 @@ site-menu::-webkit-scrollbar-thumb {
   display: flex;
 }
 
-site-print-button {
-  --site-print-button-button: {
-    color: white;
-  }
+site-print-button paper-icon-button {
+  color: white;
 }
 
 h-a-x {

@@ -104,18 +104,6 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             color: #ffffff;
           }
         }
-        site-print-button {
-          --site-print-button-button: {
-            color: white;
-          }
-          --site-print-button-tooltip: {
-            --simple-tooltip-background: #000000;
-            --simple-tooltip-opacity: 1;
-            --simple-tooltip-text-color: #ffffff;
-            --simple-tooltip-delay-in: 0;
-            --simple-tooltip-border-radius: 0;
-          }
-        }
       </style>
       <site-top-menu noink indicator="arrow" arrow-size="8">
         <div slot="suffix" class="spacing">

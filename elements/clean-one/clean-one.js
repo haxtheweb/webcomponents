@@ -45,12 +45,24 @@ class CleanOne extends HAXCMSLitElementTheme {
           --hax-base-styles-list-max-width: auto;
           --haxcms-base-styles-p-min-height: auto;
           --hax-base-styles-list-padding-bottom: auto;
-          --hax-base-styles-h1-font-size: inherit;          
-          --hax-base-styles-h2-font-size: inherit;          
-          --hax-base-styles-h3-font-size: inherit;          
-          --hax-base-styles-h4-font-size: inherit;          
-          --hax-base-styles-h5-font-size: inherit;          
-          --hax-base-styles-h6-font-size: inherit;          
+          --hax-base-styles-h1-font-size: inherit;
+          --hax-base-styles-h2-font-size: inherit;
+          --hax-base-styles-h3-font-size: inherit;
+          --hax-base-styles-h4-font-size: inherit;
+          --hax-base-styles-h5-font-size: inherit;
+          --hax-base-styles-h6-font-size: inherit;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
+        }
+        simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
 
         :host([font-family="0"]) {
@@ -130,6 +142,7 @@ class CleanOne extends HAXCMSLitElementTheme {
         simple-popover:not(:defined) {
           display: none;
         }
+        
         .btn-container {
           position: fixed;
           z-index: 2;
@@ -142,13 +155,43 @@ class CleanOne extends HAXCMSLitElementTheme {
           --site-menu-active-color: #F5F5F5;
           --site-menu-item-active-item-color: #008cff;
         }
+        .site.color-theme-0 scroll-button {
+          --scroll-button-color: #252737;
+          --scroll-button-background-color: #F5F5F5;
+        }
+        .site.color-theme-0 paper-icon-button {
+          --iron-icon-fill-color: #252737;
+        }
+        .site.color-theme-0 site-menu-button {
+          --site-menu-button-icon-fill-color: #252737;
+        }
         .site.color-theme-1 site-menu {
           --site-menu-active-color: #1C1C1C;
           --site-menu-item-active-item-color: #704214;
         }
+        .site.color-theme-1 scroll-button {
+          --scroll-button-color: #1C1C1C;
+          --scroll-button-background-color: #704214;
+        }
+        .site.color-theme-1 paper-icon-button {
+          --iron-icon-fill-color: #704214;
+        }
+        .site.color-theme-1 site-menu-button {
+          --site-menu-button-icon-fill-color: #704214;
+        }
         .site.color-theme-2 site-menu {
           --site-menu-active-color: #252737;
           --site-menu-item-active-item-color: #f4f4f5;
+        }
+        .site.color-theme-2 paper-icon-button {
+          --iron-icon-fill-color: #a6a6a6;
+        }
+        .site.color-theme-2 site-menu-button {
+          --site-menu-button-icon-fill-color: #a6a6a6;
+        }
+        .site.color-theme-2 scroll-button {
+          --scroll-button-color: #a6a6a6;
+          --scroll-button-background-color: #252737;
         }
         /**
         * Hide the slotted content during edit mode. This must be here to work.
@@ -250,7 +293,9 @@ class CleanOne extends HAXCMSLitElementTheme {
         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5 {
           page-break-after: avoid;
         }
-
+        .pull-right {
+          float: right;
+        }
         .main-content *,
         .main-content ::slotted(*) {
           box-sizing: border-box;
@@ -429,6 +474,10 @@ class CleanOne extends HAXCMSLitElementTheme {
           -moz-text-size-adjust: 100%;
         }
         /* Navigation arrows */
+        site-menu-button {
+          --site-menu-button-icon-width: 64px;
+          --site-menu-button-icon-height: 64px;
+        }
         :host([is-logged-in]) .site.with-menu site-menu-button[type="prev"] {
           left: 348px;
         }
@@ -476,7 +525,11 @@ class CleanOne extends HAXCMSLitElementTheme {
           */
           .color-theme-1 .dropdown-menu {
             background-color: #111111;
-            border-color: #7e888b;
+            border-color: #afa790;
+          }
+          .color-theme-1 simple-popover {
+            --simple-popover-color: #afa790;
+            --simple-popover-background-color: #111111;
           }
           .color-theme-1 .dropdown-menu .dropdown-caret .caret-inner {
             border-bottom: 9px solid #111111;
@@ -495,6 +548,14 @@ class CleanOne extends HAXCMSLitElementTheme {
           /*
           * Theme 2
           */
+          .color-theme-2 simple-popover {
+            --simple-popover-color: #CCCCCC;
+            --simple-popover-background-color: #2d3143;
+          }
+          .color-theme-2 .dropdown-menu {
+            background-color: #2d3143;
+            border-color: #272a3a;
+          }
           .color-theme-2 .dropdown-menu {
             background-color: #2d3143;
             border-color: #272a3a;
@@ -506,7 +567,7 @@ class CleanOne extends HAXCMSLitElementTheme {
             border-color: #272a3a;
           }
           .color-theme-2 .dropdown-menu .button {
-            color: #62677f;
+            color: #CCCCCC;
           }
           .color-theme-2 .dropdown-menu .button:hover,
           .color-theme-2 .dropdown-menu .button:focus,
@@ -558,6 +619,14 @@ class CleanOne extends HAXCMSLitElementTheme {
             list-style: none;
             font-size: 14px;
             background-color: #fafafa;
+          }
+          .color-theme-0 .dropdown-menu {
+            background-color: #fafafa;
+            border-color: #222222;
+          }
+          .color-theme-0 simple-popover {
+            --simple-popover-color: #222222;
+            --simple-popover-background-color: #fafafa;
           }
           .dropdown-menu .buttons:after, .dropdown-menu .buttons:before {
             content: " ";
@@ -859,6 +928,11 @@ class CleanOne extends HAXCMSLitElementTheme {
             bottom: 0;
             right: 16px;
           }
+          .link-actions {
+            position: fixed;
+            top: 0;
+            right: 16px;
+          }
       `
     ];
   }
@@ -912,14 +986,21 @@ class CleanOne extends HAXCMSLitElementTheme {
                 <paper-icon-button
                   class="btn"
                   icon="icons:menu"
+                  id="menubtn"
                   @click="${this.toggleMenu}"
                 ></paper-icon-button>
+                <simple-tooltip for="menubtn">
+                Toggle menu
+                </simple-tooltip>
                 <paper-icon-button
                   class="btn"
                   icon="editor:format-size"
                   @click="${this.toggleSettings}"
                   id="popovertarget"
                 ></paper-icon-button>
+                <simple-tooltip for="popovertarget">
+                Text settings
+                </simple-tooltip>
                 <simple-popover
                   class="dropdown pull-left font-settings js-toolbar-action settings-container"
                   ?hidden="${this.hideSettings}"
@@ -985,6 +1066,11 @@ class CleanOne extends HAXCMSLitElementTheme {
                     </div>
                   </div>
                 </simple-popover>
+                <div class="pull-right link-actions">
+                  <site-print-button class="btn js-toolbar-action"></site-print-button>
+                  <site-print-button type="site" class="btn js-toolbar-action"></site-print-button>
+                  <site-rss-button type="rss"></site-rss-button>
+                </div>
               </div>
               <site-active-title></site-active-title>
             </div>
@@ -1012,8 +1098,8 @@ class CleanOne extends HAXCMSLitElementTheme {
             class="navigation"
           ></site-menu-button>
         </div>
+        <scroll-button></scroll-button>
       </div>
-      <scroll-button></scroll-button>
     `;
   }
 
@@ -1065,6 +1151,8 @@ class CleanOne extends HAXCMSLitElementTheme {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
     this.__disposer = [];
     autorun(reaction => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);

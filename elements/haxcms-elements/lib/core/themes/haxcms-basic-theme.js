@@ -172,16 +172,14 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
           }
         }
         site-print-button {
-          --site-print-button-button: {
-            color: white;
-          }
-          --site-print-button-tooltip: {
-            --simple-tooltip-background: #000000;
-            --simple-tooltip-opacity: 1;
-            --simple-tooltip-text-color: #ffffff;
-            --simple-tooltip-delay-in: 0;
-            --simple-tooltip-border-radius: 0;
-          }
+          color: white;
+        }
+        site-print-button simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
       </style>
       ${template}
