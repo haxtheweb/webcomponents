@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 
 /**
  * `elmsln-studio-submission-view`
@@ -13,7 +14,7 @@ import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
  * @customElement elmsln-studio-submission-view
  * @lit-html
  * @lit-element
- * @demo demo/dashboard.html
+ * @demo demo/submission-view.html
  */
 class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
@@ -115,84 +116,175 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         .submission-links a:hover iron-icon {
           text-decoration: none;
         }
+        #secondary {
+          background-color: #eaeaea;
+          padding: 1px;
+        }
+        .comment {
+          background-color: white;
+          margin: 1px;          
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0;
+        }
+        .comment-reply {
+          margin-left: calc(1 * var(--elmsln-studio-margin, 20px));
+        }
+        .comment-header,
+        .comment-footer {
+          display: flex;
+          align-items: stretch;
+          justify-content: space-between;
+        }
+        .comment-header, 
+        .comment-body {
+          padding: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        .comment-header > div {
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+          flex: 1 1 auto;
+        }
+        .comment-name {
+          margin: 0 0 calc(0.25 * var(--elmsln-studio-margin, 20px));
+          font-size: var(--elmsln-studio-FontSize, 16px);   
+          font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px)); 
+          font-weight: bold;
+          color: #4b4b4b;
+        }
+        .comment-date {
+          margin: 0;
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px)); 
+          font-weight: normal;  
+          color: #95989a;
+        }
+        .comment-body {
+          line-height: 160%;
+          font-size: calc(0.8 * var(--elmsln-studio-FontSize, 16px)); 
+          color: #95989a;
+        }
+        .comment-header iron-icon {
+          color: var(--simple-colors-default-theme-grey-4);
+        }
+        .comment-read iron-icon {
+          color: var(--simple-colors-default-theme-light-blue-7);
+        }
+        .comment-footer {
+          justify-content: flex-end;
+          padding: 0;
+        }
+        .comment button {
+          border: none;
+          background-color: transparent;
+        }
       `
     ];
   }
   // render function
   render() {
     return html`
-      <article>
-        <div class="close-view">
-          <button class="close-view-button">
-            <iron-icon aria-hidden="true" icon="close"></iron-icon>
-            <span>Close</span>
-          </button>
-        </div>
-        <h1>
-          <lrndesign-avatar
-            accent-color="${this.getAccentColor(this.firstName)}"
-            aria-hidden="true"
-            label="${this.firstName} ${this.lastName}"
-            src="${this.image}"
-            two-chars
-          >
-          </lrndesign-avatar>
-          <span class="student-name">${this.firstName} ${this.lastName}</span>
-          <span class="project-name">${this.project}</span>
-        </h1>
-        <div class="view-comments">
-          <button class="view-comment-button">
-            <iron-icon
+      <div id="primary">
+        <article>
+          <div class="close-view">
+            <button class="close-view-button">
+              <iron-icon aria-hidden="true" icon="close"></iron-icon>
+              <span>Close</span>
+            </button>
+          </div>
+          <h1>
+            <lrndesign-avatar
+              accent-color="${this.getAccentColor(this.firstName)}"
               aria-hidden="true"
-              icon="communication:comment"
-            ></iron-icon>
-            <span class="sr-only">View Comments</span>
-          </button>
-        </div>
-        ${this.submissions.map(
-          s => html`
-            <section>
-              <h2>
-                <span class="assignment-name">${s.assignment}</span>
-                <span class="submission-date">Submitted: ${s.date}</span>
-              </h2>
-              <div class="submission-body">
-                ${s.links && s.links.length > 0
-                  ? html`
-                      <ul class="submission-links">
-                        ${s.links.map(
-                          link => html`
-                            <li>
-                              <a href="${link.url}" target="external">
-                                <iron-icon
-                                  aria-hidden="true"
-                                  icon="${link.type === "pdf"
-                                    ? "description"
-                                    : "link"}"
-                                ></iron-icon>
-                                ${link.text || link.url}
-                              </a>
-                            </li>
-                          `
-                        )}
-                      </ul>
-                    `
-                  : s.sources && s.sources.length > 0
-                  ? html`
-                      <lrndesign-gallery
-                        class="submission-image"
-                        layout="grid"
-                        .sources="${s.sources}"
-                      ></lrndesign-gallery>
-                    `
-                  : html`
-                      ${s.body}
-                    `}
+              label="${this.firstName} ${this.lastName}"
+              src="${this.image}"
+              two-chars
+            >
+            </lrndesign-avatar>
+            <span class="student-name">${this.firstName} ${this.lastName}</span>
+            <span class="project-name">${this.project}</span>
+          </h1>
+          <div class="view-comments">
+            <button class="view-comment-button">
+              <iron-icon
+                aria-hidden="true"
+                icon="communication:comment"
+              ></iron-icon>
+              <span class="sr-only">View Comments</span>
+            </button>
+          </div>
+          ${this.submissions.map(
+            s => html`
+              <section>
+                <h2>
+                  <span class="assignment-name">${s.assignment}</span>
+                  <span class="submission-date">Submitted: ${s.date}</span>
+                </h2>
+                <div class="submission-body">
+                  ${s.links && s.links.length > 0
+                    ? html`
+                        <ul class="submission-links">
+                          ${s.links.map(
+                            link => html`
+                              <li>
+                                <a href="${link.url}" target="external">
+                                  <iron-icon
+                                    aria-hidden="true"
+                                    icon="${link.type === "pdf"
+                                      ? "hax:file-pdf"
+                                      : "link"}"
+                                  ></iron-icon>
+                                  ${link.text || link.url}
+                                </a>
+                              </li>
+                            `
+                          )}
+                        </ul>
+                      `
+                    : s.sources && s.sources.length > 0
+                    ? html`
+                        <lrndesign-gallery
+                          class="submission-image"
+                          layout="grid"
+                          .sources="${s.sources}"
+                        ></lrndesign-gallery>
+                      `
+                    : html`
+                        ${s.body}
+                      `}
+                </div>
+              </section>
+            `
+          )}
+        </article>
+      </div>
+      <div id="secondary">
+        ${(this.threads || []).map(t=>html`
+          <div class="thread">
+            ${t.comments.map(c=>html`
+              <div id="${c.id}" class="comment ${c.replyTo ? 'comment-reply' : ''}" aria-describedby="${c.replyTo || ''}">
+                <div class="comment-header ${c.read ? 'comment-read' : ''}">
+                  <lrndesign-avatar 
+                    initials="${c.firstName} ${c.lastName}"
+                    .src="${c.image}"
+                    two-chars>
+                  </lrndesign-avatar>
+                  <div>
+                    <p class="comment-name">${c.firstName} ${c.lastName}</p>
+                    <p class="comment-date">${c.date}</p>
+                  </div>
+                  <iron-icon icon="thumb-up"></iron-icon>
+                </div>
+                <div class="comment-body">
+                  <p>${c.body}</p>
+                </div>
+                <div class="comment-footer">
+                  <button>
+                    Reply
+                    <iron-icon icon="arrow-forward"></iron-icon>
+                  </button>
+                </div>
               </div>
-            </section>
-          `
-        )}
-      </article>
+            `)}
+          </div>
+        `)}
+      </div>
     `;
   }
 
@@ -245,12 +337,13 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
       student =
         data.students[Math.floor(Math.random() * (data.students || []).length)];
 
-    console.log(data, student);
     this.firstName = student.firstName;
     this.lastName = student.lastName;
     this.image = student.image;
     this.project = "Hypertext Narrative Project";
     this.submissions = data.submissionView;
+    this.threads = data.threads;
+    console.log(data, student);
   }
   // static get observedAttributes() {
   //   return [];
