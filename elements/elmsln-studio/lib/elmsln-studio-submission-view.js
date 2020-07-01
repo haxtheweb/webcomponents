@@ -122,7 +122,7 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         }
         .comment {
           background-color: white;
-          margin: 1px;          
+          margin: 1px;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0;
         }
         .comment-reply {
@@ -134,7 +134,7 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
           align-items: stretch;
           justify-content: space-between;
         }
-        .comment-header, 
+        .comment-header,
         .comment-body {
           padding: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
@@ -144,20 +144,20 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         }
         .comment-name {
           margin: 0 0 calc(0.25 * var(--elmsln-studio-margin, 20px));
-          font-size: var(--elmsln-studio-FontSize, 16px);   
-          font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px)); 
+          font-size: var(--elmsln-studio-FontSize, 16px);
+          font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
           font-weight: bold;
           color: #4b4b4b;
         }
         .comment-date {
           margin: 0;
-          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px)); 
-          font-weight: normal;  
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+          font-weight: normal;
           color: #95989a;
         }
         .comment-body {
           line-height: 160%;
-          font-size: calc(0.8 * var(--elmsln-studio-FontSize, 16px)); 
+          font-size: calc(0.8 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
         .comment-header iron-icon {
@@ -255,35 +255,44 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         </article>
       </div>
       <div id="secondary">
-        ${(this.threads || []).map(t=>html`
-          <div class="thread">
-            ${t.comments.map(c=>html`
-              <div id="${c.id}" class="comment ${c.replyTo ? 'comment-reply' : ''}" aria-describedby="${c.replyTo || ''}">
-                <div class="comment-header ${c.read ? 'comment-read' : ''}">
-                  <lrndesign-avatar 
-                    initials="${c.firstName} ${c.lastName}"
-                    .src="${c.image}"
-                    two-chars>
-                  </lrndesign-avatar>
-                  <div>
-                    <p class="comment-name">${c.firstName} ${c.lastName}</p>
-                    <p class="comment-date">${c.date}</p>
+        ${(this.threads || []).map(
+          t => html`
+            <div class="thread">
+              ${t.comments.map(
+                c => html`
+                  <div
+                    id="${c.id}"
+                    class="comment ${c.replyTo ? "comment-reply" : ""}"
+                    aria-describedby="${c.replyTo || ""}"
+                  >
+                    <div class="comment-header ${c.read ? "comment-read" : ""}">
+                      <lrndesign-avatar
+                        initials="${c.firstName} ${c.lastName}"
+                        .src="${c.image}"
+                        two-chars
+                      >
+                      </lrndesign-avatar>
+                      <div>
+                        <p class="comment-name">${c.firstName} ${c.lastName}</p>
+                        <p class="comment-date">${c.date}</p>
+                      </div>
+                      <iron-icon icon="thumb-up"></iron-icon>
+                    </div>
+                    <div class="comment-body">
+                      <p>${c.body}</p>
+                    </div>
+                    <div class="comment-footer">
+                      <button>
+                        Reply
+                        <iron-icon icon="arrow-forward"></iron-icon>
+                      </button>
+                    </div>
                   </div>
-                  <iron-icon icon="thumb-up"></iron-icon>
-                </div>
-                <div class="comment-body">
-                  <p>${c.body}</p>
-                </div>
-                <div class="comment-footer">
-                  <button>
-                    Reply
-                    <iron-icon icon="arrow-forward"></iron-icon>
-                  </button>
-                </div>
-              </div>
-            `)}
-          </div>
-        `)}
+                `
+              )}
+            </div>
+          `
+        )}
       </div>
     `;
   }

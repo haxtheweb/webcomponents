@@ -234,34 +234,49 @@ const ElmslnStudioUtilities = function(SuperClass) {
           `Praesent pulvinar consectetur scelerisque. Integer sodales pharetra sem in dignissim. Cras sit amet massa at ex suscipit aliquet et in libero. Etiam magna ipsum, mollis ut tortor non, fringilla dictum lacus. Morbi dictum tempor libero, vel ornare lacus sagittis vitae. Sed molestie, nibh at vehicula gravida, turpis quam tristique quam, eu commodo orci justo rhoncus dui. In sit amet tincidunt orci, ut blandit sapien.`,
           `Quisque pellentesque augue ac dignissim pretium. Curabitur ut vestibulum nisi. Aenean accumsan purus sed metus consectetur semper. Integer et elit sit amet nulla mollis luctus. Morbi ac tortor non leo hendrerit porta sed et magna. Cras euismod cursus lorem ac dictum. Nulla maximus libero turpis, quis scelerisque velit maximus ac. Vestibulum sit amet egestas odio. Nullam feugiat finibus augue vel ultricies. Nam urna elit, dignissim eget quam ut, eleifend placerat arcu. Suspendisse nec diam vestibulum, feugiat orci et, convallis nunc. Sed dapibus commodo nibh, ut tempor diam euismod in. Phasellus eget consectetur nibh. Sed ac consequat orci, vitae congue felis. Ut in purus diam. Nam rutrum, magna rutrum blandit luctus, turpis erat fermentum ipsum, sed pretium tellus nunc ac risus.`,
           `Quisque tincidunt imperdiet purus in congue. Sed id risus ipsum. Integer tincidunt lacinia neque sed vulputate. Donec eget consectetur nibh. In nec nulla quis augue molestie posuere a non sapien. Fusce ultricies efficitur urna sed porta. Maecenas vitae fringilla ipsum. Cras venenatis, mauris non dictum interdum, quam risus lacinia enim, sed scelerisque diam nunc in risus. Integer tempor vitae leo a cursus. Vivamus suscipit nisi eu risus accumsan, vel rhoncus nulla mattis. Integer vulputate felis vel nulla aliquet, ac placerat nunc varius. Nulla sodales accumsan nibh, id sollicitudin diam placerat at.`
-        ], 
-        sentences = paragraphs.map(p=>p.split(/[\.\?\!]+\s+/)).flat(),
-        words = paragraphs.map(p=>p.split(/\W+/)).flat(),
-        loremIpsum = (min = 0,max = 15, arr = paragraphs) => {
-          let rand = min + Math.floor(Math.random() * (max - min)), result = [];
-          while(result.length < rand){
-            result = [...arr, ...arr].slice(0,rand); 
+        ],
+        sentences = paragraphs.map(p => p.split(/[\.\?\!]+\s+/)).flat(),
+        words = paragraphs.map(p => p.split(/\W+/)).flat(),
+        loremIpsum = (min = 0, max = 15, arr = paragraphs) => {
+          let rand = min + Math.floor(Math.random() * (max - min)),
+            result = [];
+          while (result.length < rand) {
+            result = [...arr, ...arr].slice(0, rand);
           }
-          return result; 
+          return result;
         },
         randomAspect = () => {
           let w = 200 + Math.floor(Math.random() * 600),
             h = 200 + Math.floor(Math.random() * 600);
           return `${w}/${h}`;
         },
-        randomItem = (items) => {
+        randomItem = items => {
           return items[Math.floor(Math.random() * items.length)];
         },
         randomGravity = () => {
           return randomItem([
-            "center","center","center","center",
-            "center","center","center","center",
-            "top","top-left","top-right","left",
-            "bottom","bottom-left","bottom-right","right",
+            "center",
+            "center",
+            "center",
+            "center",
+            "center",
+            "center",
+            "center",
+            "center",
+            "top",
+            "top-left",
+            "top-right",
+            "left",
+            "bottom",
+            "bottom-left",
+            "bottom-right",
+            "right"
           ]);
         },
-        randomTopic = () => randomItem(["any","animals","nature","people","tech"]),
-        randomFilter = () => randomItem(["","","","","/greyscale","/greyscale","/sepia"]),
+        randomTopic = () =>
+          randomItem(["any", "animals", "nature", "people", "tech"]),
+        randomFilter = () =>
+          randomItem(["", "", "", "", "/greyscale", "/greyscale", "/sepia"]),
         submissionView = [
           {
             assignment: "Define: Synopsis",
@@ -288,7 +303,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
           {
             assignment: "Deliver: Iterate",
             date: randomDate(),
-            sources: [1,2,3,4].map(s => {
+            sources: [1, 2, 3, 4].map(s => {
               return {
                 alt: `Random image from //plageimg.com`,
                 src: `http://placeimg.com/${randomAspect()}/any${randomFilter()}`,
@@ -298,25 +313,26 @@ const ElmslnStudioUtilities = function(SuperClass) {
           }
         ];
 
-      for(let i = 0; i < 3; i++){
+      for (let i = 0; i < 3; i++) {
         let thread = {
           id: `thread-${i}`,
           comments: []
         };
-        for(let j = 0; j < 1 + Math.floor(Math.random() * 4); j++){
+        for (let j = 0; j < 1 + Math.floor(Math.random() * 4); j++) {
           let c = randomItem(students),
-            s = randomItem(students.filter(f=>f !== c));
-            thread.comments.push({
+            s = randomItem(students.filter(f => f !== c));
+          thread.comments.push({
             id: `thread-${i}-comment-${j}`,
             commenterId: c.id,
             firstName: c.firstName,
             lastName: c.lastName,
             image: c.image,
             date: randomDate(),
-            replyTo: thread.comments.length > 0 ? thread.comments[0].id : undefined,
+            replyTo:
+              thread.comments.length > 0 ? thread.comments[0].id : undefined,
             student: s.firstName,
             studentId: s.id,
-            body: `${loremIpsum(1,8,sentences).join(', ')}.`,
+            body: `${loremIpsum(1, 8, sentences).join(", ")}.`,
             read: Math.random() < 0.5
           });
         }
