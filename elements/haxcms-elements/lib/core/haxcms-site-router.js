@@ -28,7 +28,6 @@ class HAXCMSSiteRouter extends HTMLElement {
     if (this.baseURI) {
       options.baseUrl = this.baseURI;
     }
-    console.log(options);
     this.router = new Router(this, options);
     /**
      * Subscribe to changes in the manifest
