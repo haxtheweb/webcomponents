@@ -52,8 +52,6 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         lrndesign-gallery-zoom {
           position: relative;
           overflow: hidden;
-          width: 100%;
-          padding-top: var(--lrndesign-gallery-grid-paddingTop, 75%);
           transition: outline 0.25s ease-in-out;
           outline: 1px solid var(--lrndesign-gallery-color);
         }
@@ -68,11 +66,8 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           opacity: 0 !important;
         }
         .imgbg {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
+          width: 100%;
+          padding-top: var(--lrndesign-gallery-grid-paddingTop, 75%);
           background-image: var(--lrndesign-gallery-grid-backgroundImage, none);
           background-position: var(
             --lrndesign-gallery-grid-backgroundPosition,
@@ -123,10 +118,9 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 .src="${item.large}"
                 .tooltip="${item.tooltip}"
                 .zoom-alt="${item.zoomAlt}"
-                .style="${this._getStyle(item)}"
               >
-                <img .alt="${item.alt}" fade .src="${item.src}" />
-                <div class="imgbg"></div>
+                <span class="sr-only">${item.zoomAlt}</span>
+                <div class="imgbg" .style="${this._getStyle(item)}"></div>
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
