@@ -170,7 +170,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
             <lrndesign-avatar
               accent-color="${this.getAccentColor(this.profile.firstName)}"
               slot="content"
-              .image-src="${this.profile.image ? this.profile.image : undefined}"
+              .image-src="${this.profile.image
+                ? this.profile.image
+                : undefined}"
               label="${this.profile.firstName} ${this.profile.lastName}"
               two-chars
               size="200px"
@@ -179,142 +181,158 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
               <tbody>
                 <tr>
                   <th scope="row">Feedback Given</th>
-                  <td>${!this.profile ? 0 : (this.profile.feedbackByMe || []).length}</td>
+                  <td>
+                    ${!this.profile
+                      ? 0
+                      : (this.profile.feedbackByMe || []).length}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Replies Made</th>
-                  <td>${!this.profile ? 0 : (this.profile.repliesByMe || []).length}</td>
+                  <td>
+                    ${!this.profile
+                      ? 0
+                      : (this.profile.repliesByMe || []).length}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Assgnments Submitted</th>
-                  <td>${!this.profile ? 0 : (this.profile.submissions || []).length}</td>
+                  <td>
+                    ${!this.profile
+                      ? 0
+                      : (this.profile.submissions || []).length}
+                  </td>
                 </tr>
               </tbody>
             </table>
           </accent-card>
           <nav-card accent-color="green" class="card primary">
-          <span slot="heading">Work Due</span>
-          <div slot="linklist">
-            ${this.recent("assignments",5).map(
-              a => html`
-                <nav-card-item icon="chevron-right">
-                  <button
-                    id="due-${a.id}"
-                    aria-describedby="due-${a.id}-desc"
-                    slot="label"
-                  >
-                  ${a.assignment}
-                  </button>
-                  <span id="due-${a.id}-desc" slot="description"
-                    >${this.fullDate(a.date)}</span
-                  >
-                </nav-card-item>
-              `
-            )}
-          </div>
-        </nav-card>
-      </div>
-      <div id="work">
-        <h2>Recent Work</h2>
-        <nav-card
-          accent-color="amber"
-          class="card primary"
-          link-icon="chevron-right"
-        >
-          <span slot="heading">Submissions</span>
-          <button slot="subheading">All submissions</button>
-          <div slot="linklist">
-            ${this.profile.submissions.slice(0, 5).map(
-              s => html`
-                <nav-card-item icon="chevron-right">
-                  <button
-                    id="sub-${s.id}"
-                    aria-describedby="sub-${s.id}-desc"
-                    slot="label"
-                  >
-                  ${s.assignment}
-                  </button>
-                  <span
-                    id="sub-${s.id}-desc"
-                    slot="description"
-                    >${this.medDate(s.date)}</span
-                  >
-                </nav-card-item>
-              `
-            )}
-          </div>
-        </nav-card>
-        <nav-card
-          accent-color="cyan"
-          class="card primary"
-          link-icon="chevron-right"
-        >
-          <span slot="heading">Feedback</span>
-          <button slot="subheading">All feedback</button>
-          <div slot="linklist">
-            ${!this.profile ? '' : (this.profile.feedbackForMe || []).slice(0, 3).map(
-              f => html`
-                <nav-card-item icon="chevron-right">
-                  <button
-                    id="feed-${f.id}"
-                    aria-describedby="feed-${f.id}-desc"
-                    slot="label"
-                  >
-                    ${this.user(f.userId).firstName }'s feedback
-                  </button>
-                  <span id="feed-${f.id}-desc" slot="description"
-                    >${this.medDate(f.date)}</span
-                  >
-                </nav-card-item>
-              `
-            )}
-          </div>
-        </nav-card>
-      </div>
-    </div>
-    <div id="secondary">
-      <nav-card
-        flat
-        no-border
-        class="card secondary"
-        link-icon="chevron-right"
-      >
-        <span slot="heading">Recent Activity</span>
-        <div slot="linklist">
-          ${this.activity.map(
-            a => html`
-              <nav-card-item
-                accent-color="${this.getAccentColor(this.user(a.userId).firstName)}"
-                .avatar="${this.user(a.userId).image}"
-                icon="chevron-right"
-                .initials="${this.user(a.userId).firstName} ${this.user(a.userId).lastName}"
-              >
-                <button
-                  id="act-${a.id}"
-                  aria-describedby="act-${a.id}-desc"
-                  slot="label"
-                >
-                  ${this.user(a.userId).firstName} 
-                  ${this._getActivity(a)}
-                </button>
-                <span id="act-${a.id}-desc" slot="description"
-                  >${this.medDate(a.date)}</span
-                >
-              </nav-card-item>
-            `
-          )}
+            <span slot="heading">Work Due</span>
+            <div slot="linklist">
+              ${this.recent("assignments", 5).map(
+                a => html`
+                  <nav-card-item icon="chevron-right">
+                    <button
+                      id="due-${a.id}"
+                      aria-describedby="due-${a.id}-desc"
+                      slot="label"
+                    >
+                      ${a.assignment}
+                    </button>
+                    <span id="due-${a.id}-desc" slot="description"
+                      >${this.fullDate(a.date)}</span
+                    >
+                  </nav-card-item>
+                `
+              )}
+            </div>
+          </nav-card>
         </div>
-        <button
-          class="load-more"
-          slot="footer"
-          ?disabled="${this.activity.length === this.activities.length}"
-          ?hidden="${this.activity.length === this.activities.length}"
-          @click="${e => this._loadMore(e, "activity", "activities", 10)}"
+        <div id="work">
+          <h2>Recent Work</h2>
+          <nav-card
+            accent-color="amber"
+            class="card primary"
+            link-icon="chevron-right"
+          >
+            <span slot="heading">Submissions</span>
+            <button slot="subheading">All submissions</button>
+            <div slot="linklist">
+              ${this.profile.submissions.slice(0, 5).map(
+                s => html`
+                  <nav-card-item icon="chevron-right">
+                    <button
+                      id="sub-${s.id}"
+                      aria-describedby="sub-${s.id}-desc"
+                      slot="label"
+                    >
+                      ${s.assignment}
+                    </button>
+                    <span id="sub-${s.id}-desc" slot="description"
+                      >${this.medDate(s.date)}</span
+                    >
+                  </nav-card-item>
+                `
+              )}
+            </div>
+          </nav-card>
+          <nav-card
+            accent-color="cyan"
+            class="card primary"
+            link-icon="chevron-right"
+          >
+            <span slot="heading">Feedback</span>
+            <button slot="subheading">All feedback</button>
+            <div slot="linklist">
+              ${!this.profile
+                ? ""
+                : (this.profile.feedbackForMe || []).slice(0, 3).map(
+                    f => html`
+                      <nav-card-item icon="chevron-right">
+                        <button
+                          id="feed-${f.id}"
+                          aria-describedby="feed-${f.id}-desc"
+                          slot="label"
+                        >
+                          ${this.user(f.userId).firstName}'s feedback
+                        </button>
+                        <span id="feed-${f.id}-desc" slot="description"
+                          >${this.medDate(f.date)}</span
+                        >
+                      </nav-card-item>
+                    `
+                  )}
+            </div>
+          </nav-card>
+        </div>
+      </div>
+      <div id="secondary">
+        <nav-card
+          flat
+          no-border
+          class="card secondary"
+          link-icon="chevron-right"
         >
-          Load More
-        </button>
-      </nav-card>
-    </div>`;
+          <span slot="heading">Recent Activity</span>
+          <div slot="linklist">
+            ${this.activity.map(
+              a => html`
+                <nav-card-item
+                  accent-color="${this.getAccentColor(
+                    this.user(a.userId).firstName
+                  )}"
+                  .avatar="${this.user(a.userId).image}"
+                  icon="chevron-right"
+                  .initials="${this.user(a.userId).firstName} ${this.user(
+                    a.userId
+                  ).lastName}"
+                >
+                  <button
+                    id="act-${a.id}"
+                    aria-describedby="act-${a.id}-desc"
+                    slot="label"
+                  >
+                    ${this.user(a.userId).firstName} ${this._getActivity(a)}
+                  </button>
+                  <span id="act-${a.id}-desc" slot="description"
+                    >${this.medDate(a.date)}</span
+                  >
+                </nav-card-item>
+              `
+            )}
+          </div>
+          <button
+            class="load-more"
+            slot="footer"
+            ?disabled="${this.activity.length === this.activities.length}"
+            ?hidden="${this.activity.length === this.activities.length}"
+            @click="${e => this._loadMore(e, "activity", "activities", 10)}"
+          >
+            Load More
+          </button>
+        </nav-card>
+      </div>
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -343,25 +361,28 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.activities = [];
-    this.activity = [];
-    this.profile = {};
     this.tag = ElmslnStudioDashboard.tag;
-    this.getFakeData();
   }
-  _getActivity(activity){
+
+  _getActivity(activity) {
     console.log(activity);
-    if(activity.activity === "submission") {
-      return html`submitted ${this.assignment(activity.assignmentId).assignment}`;
-    } else if(activity.activity === "feedback") {
+    if (activity.activity === "submission") {
+      return html`
+        submitted ${this.assignment(activity.assignmentId).assignment}
+      `;
+    } else if (activity.activity === "feedback") {
       let submission = this.submission(activity.submissionId),
         u = this.user(submission.userId),
         a = this.assignment(submission.assignmentId);
-      return html`left feedback on ${u.firstName}'s ${a.assignment}`;
+      return html`
+        left feedback on ${u.firstName}'s ${a.assignment}
+      `;
     } else {
       let f = this.feedback(activity.feedbackId),
         u = this.user(f.userId);
-      return html`replied to ${u.firstName}`;
+      return html`
+        replied to ${u.firstName}
+      `;
     }
   }
   _loadMoreComments(e) {
@@ -374,39 +395,47 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
     super.connectedCallback();
   }
 
-  getFakeData() {
-    super.getFakeData();
-    let data = window.ElmslnStudioFakeData, 
-      me = data && data.me ? data && data.me : undefined, 
-      feedback = this.recent("feedback"), 
+  initData(data){
+    super.initData();
+    let me = data && data.me ? data && data.me : undefined,
+      feedback = this.recent("feedback"),
       replies = this.recent("replies");
     this.activities = data.activities;
     this.activity = this.activities.slice(0, 15);
 
     this.profile = data.users[me];
-    this.profile.submissions = data 
-      ? this.recent("submissions").filter(i=>i.userId===data.me).map(i=>{
-        let a = i.assignmentId ? data.assignments[i.assignmentId] : undefined;
-        i.assignment = a.assignment;
-        i.project = a.projectId  && data.projects[a.projectId] 
-          ? data.projects[a.projectId].project 
-          : undefined;
-          
-        return i;
-      })
+    this.profile.submissions = data
+      ? this.recent("submissions")
+          .filter(i => i.userId === data.me)
+          .map(i => {
+            let a = i.assignmentId
+              ? data.assignments[i.assignmentId]
+              : undefined;
+            i.assignment = a.assignment;
+            i.project =
+              a.projectId && data.projects[a.projectId]
+                ? data.projects[a.projectId].project
+                : undefined;
+
+            return i;
+          })
       : [];
-    this.profile.feedbackByMe = data 
-      ? feedback.filter(i=>i.userId===data.me)
+    this.profile.feedbackByMe = data
+      ? feedback.filter(i => i.userId === data.me)
       : [];
-    this.profile.repliesByMe = data 
-      ? replies.filter(i=>i.userId===data.me)
+    this.profile.repliesByMe = data
+      ? replies.filter(i => i.userId === data.me)
       : [];
-    this.profile.feedbackForMe = data 
-        ? feedback.filter(i=>this.profile.submissions.map(j=>j.id).includes(i.submissionId))
-        : [];
-    this.profile.repliesForMe = data 
-        ? replies.filter(i=>this.profile.submissions.map(j=>j.id).includes(i.submissionId))
-        : [];
+    this.profile.feedbackForMe = data
+      ? feedback.filter(i =>
+          this.profile.submissions.map(j => j.id).includes(i.submissionId)
+        )
+      : [];
+    this.profile.repliesForMe = data
+      ? replies.filter(i =>
+          this.profile.submissions.map(j => j.id).includes(i.submissionId)
+        )
+      : [];
   }
   // static get observedAttributes() {
   //   return [];

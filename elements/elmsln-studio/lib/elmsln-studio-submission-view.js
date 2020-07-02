@@ -197,7 +197,9 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
               two-chars
             >
             </lrndesign-avatar>
-            <span class="student-name">${this.student.firstName} ${this.student.lastName}</span>
+            <span class="student-name"
+              >${this.student.firstName} ${this.student.lastName}</span
+            >
             <span class="project-name">${this.projectName}</span>
           </h1>
           <div class="view-comments">
@@ -213,8 +215,12 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
             s => html`
               <section>
                 <h2>
-                  <span class="assignment-name">${this.assignment(s.assignmentId).assignment}</span>
-                  <span class="submission-date">Submitted: ${this.medDate(s.date)}</span>
+                  <span class="assignment-name"
+                    >${this.assignment(s.assignmentId).assignment}</span
+                  >
+                  <span class="submission-date"
+                    >Submitted: ${this.medDate(s.date)}</span
+                  >
                 </h2>
                 <div class="submission-body">
                   ${s.links && s.links.length > 0
@@ -255,19 +261,21 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         </article>
       </div>
       <div id="secondary">
-        ${this.recent("feedback").reverse().map(
-          f => html`
-            <div class="thread">
-              ${this.makeComment(f)}
-              ${f.replies.map(r => this.makeComment(this.reply(r)))}
-            </div>
-          `
-        )}
+        ${this.recent("feedback")
+          .reverse()
+          .map(
+            f => html`
+              <div class="thread">
+                ${this.makeComment(f)}
+                ${f.replies.map(r => this.makeComment(this.reply(r)))}
+              </div>
+            `
+          )}
       </div>
     `;
   }
 
-  makeComment(c){
+  makeComment(c) {
     let user = this.user(c.userId);
     return html`
       <div
@@ -328,9 +336,6 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.submissions = [];
-    this.student = {};
-    this.projectName = "";
     this.tag = ElmslnStudioSubmissionView.tag;
   }
   /**
@@ -338,21 +343,29 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.getFakeData();
   }
 
-  getFakeData() {
-    super.getFakeData();
+  initData(data){
+    super.initData();
     let submission = this._randomItem(this.recent("submissions")),
       assignment = this.assignment(submission.assignmentId);
     this.student = this.user(submission.userId);
     this.projectName = this.project(assignment.projectId).project;
-    this.submissions = this.recent("submissions").reverse().filter(i=>{
-      let a = this.assignment(i.assignmentId);
-      //console.log(a,i,i.userId,submission.userId,a.projectId,assignment.projectId)
-      return i.userId === submission.userId && a.projectId === assignment.projectId;
-    });
-    console.log(assignment,this.projectName,this.recent("submissions").reverse(),this.submissions);
+    this.submissions = this.recent("submissions")
+      .reverse()
+      .filter(i => {
+        let a = this.assignment(i.assignmentId);
+        //console.log(a,i,i.userId,submission.userId,a.projectId,assignment.projectId)
+        return (
+          i.userId === submission.userId && a.projectId === assignment.projectId
+        );
+      });
+    console.log(
+      assignment,
+      this.projectName,
+      this.recent("submissions").reverse(),
+      this.submissions
+    );
   }
   // static get observedAttributes() {
   //   return [];

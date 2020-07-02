@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ElmslnStudioUtilities } from "./lib/elmsln-studio-utilities.js";
 import "./lib/elmsln-studio-dashboard.js";
 import "./lib/elmsln-studio-submissions.js";
 import "./lib/elmsln-studio-submission-view.js";
@@ -56,6 +57,12 @@ class ElmslnStudio extends LitElement {
    */
   static get tag() {
     return "elmsln-studio";
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  constructor() {
+    super();
   }
   /**
    * life cycle, element is afixed to the DOM

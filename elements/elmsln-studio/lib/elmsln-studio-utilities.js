@@ -10,7 +10,6 @@ import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
-
 const ElmslnStudioUtilities = function(SuperClass) {
   return class extends SuperClass {
     static get styles() {
@@ -126,26 +125,38 @@ const ElmslnStudioUtilities = function(SuperClass) {
 
     // properties available to the custom element for data binding
     static get properties() {
-      return {};
+      return {
+      };
     }
+    // life cycle
+    constructor() {
+      super();
+      if (!window.ElmslnStudioFakeData)
+        window.ElmslnStudioFakeData = this._makeFakeData();
+      this.initData(window.ElmslnStudioFakeData);
+    }
+    initData(data){
+    }
+    
     /**
      * sorts array by most recent
      * @param {array} arr array
      * @returns {arr} sorted array
      */
-    _sortRecent(arr){
-      return arr.sort((a,b)=>b.date - a.date);
+    _sortRecent(arr) {
+      return arr.sort((a, b) => b.date - a.date);
     }
     /**
      * gets shuffled array
      * @param {array} arr array
      * @returns {arr} shuffled array
      */
-    _shuffle(arr = []){
-      return arr.sort((a,b)=>{
-        let c = Math.random(), d = Math.random();
+    _shuffle(arr = []) {
+      return arr.sort((a, b) => {
+        let c = Math.random(),
+          d = Math.random();
         return c - d;
-      })
+      });
     }
     /**
      * draws x-y items from shuffled array
@@ -154,27 +165,27 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {number} max max number of items
      * @returns {arr} shuffled array of x items
      */
-    _draw(arr = [],min = 0,max = min) {
-      let rand = Math.floor(Math.random() * (max-min));
-      return this._shuffle(arr).slice(0,min+rand)
+    _draw(arr = [], min = 0, max = min) {
+      let rand = Math.floor(Math.random() * (max - min));
+      return this._shuffle(arr).slice(0, min + rand);
     }
     /**
      * gets date x days from start date
      * @param {date} start starting date
      * @param {number} days number of weeks
-     * @returns {date} 
+     * @returns {date}
      */
-    _addDays(start=new Date(),amt=0) { 
-      return new Date(Date.parse(start)+(amt*86400000))
+    _addDays(start = new Date(), amt = 0) {
+      return new Date(Date.parse(start) + amt * 86400000);
     }
     /**
      * gets date x weeks from start date
      * @param {date} start starting date
      * @param {number} weeks number of weeks
-     * @returns {date} 
+     * @returns {date}
      */
-    _addWeeks(start=new Date(),amt=0) { 
-      return new Date(Date.parse(start)+(amt*604800000))
+    _addWeeks(start = new Date(), amt = 0) {
+      return new Date(Date.parse(start) + amt * 604800000);
     }
     /**
      * distributes items over a period of x days
@@ -183,29 +194,29 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {number} qty number of items
      * @param {number} days number of days to distributes items
      * @param {number} offset optional offset from start date
-     * @returns {date} 
+     * @returns {date}
      */
-    _nextDate(start,index=1,qty=1,days=1,offset=0) {
-      return this._addDays(start,(days*index/qty)+offset);
+    _nextDate(start, index = 1, qty = 1, days = 1, offset = 0) {
+      return this._addDays(start, (days * index) / qty + offset);
     }
     /**
      * convert object to array
      * @param {object} obj object to convert
      * @param {props} additional properties to set
-     * @returns {array} 
+     * @returns {array}
      */
-    _toArray(obj,props) {
+    _toArray(obj, props) {
       return Object.keys(obj || {}).map(i => {
         let item = obj[i];
         item.id = i;
-        Object.keys(props || {}).forEach(j=>item[j] = props[j]);
+        Object.keys(props || {}).forEach(j => (item[j] = props[j]));
         return item;
       });
     }
     /**
      * converts and sorts arrat
      * @param {object} obj object to convert
-     * @returns {array} 
+     * @returns {array}
      */
     _recentArray(arr) {
       return this._sortRecent(this._toArray(arr));
@@ -213,71 +224,74 @@ const ElmslnStudioUtilities = function(SuperClass) {
     /**
      * draws a random item from array of items
      * @param {array} array of items
-     * @returns {*} 
+     * @returns {*}
      */
     _randomItem(items) {
       return items[Math.floor(Math.random() * items.length)];
-    
-    }
-  
-    getFakeData() {
-      if(!window.ElmslnStudioFakeData) window.ElmslnStudioFakeData = this._makeFakeData();
-    }
-    
-    fullDate(d){
-      return d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    }
-    medDate(d){
-      return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
-    }
-    shortDate(d){
-      return d.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
     }
 
-    activities(id){
-      return this._getById('activities',id);
+    fullDate(d) {
+      return d.toLocaleDateString(undefined, {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
     }
-    assignment(id){
-      return this._getById('assignments',id);
+    medDate(d) {
+      return d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
     }
-    feedback(id){
-      return this._getById('feedback',id);
+    shortDate(d) {
+      return d.toLocaleDateString(undefined, { month: "long", day: "numeric" });
     }
-    project(id){
-      return this._getById('projects',id);
+
+    activities(id) {
+      return this._getById("activities", id);
     }
-    reply(id){
-      return this._getById('replies',id);
+    assignment(id) {
+      return this._getById("assignments", id);
     }
-    submission(id){
-      return this._getById('submissions',id);
+    feedback(id) {
+      return this._getById("feedback", id);
     }
-    user(id){
-      return this._getById('users',id);
+    project(id) {
+      return this._getById("projects", id);
     }
-    _getById(type,id){
-      return type 
-        && id 
-        && window.ElmslnStudioFakeData[type] 
-        && window.ElmslnStudioFakeData[type][id]
-        ? window.ElmslnStudioFakeData[type][id] 
+    reply(id) {
+      return this._getById("replies", id);
+    }
+    submission(id) {
+      return this._getById("submissions", id);
+    }
+    user(id) {
+      return this._getById("users", id);
+    }
+    _getById(type, id) {
+      return type &&
+        id &&
+        window.ElmslnStudioFakeData[type] &&
+        window.ElmslnStudioFakeData[type][id]
+        ? window.ElmslnStudioFakeData[type][id]
         : undefined;
     }
-    recent(type,count){
-      let arr = window.ElmslnStudioFakeData 
-        && window.ElmslnStudioFakeData[type] 
-        ? this._recentArray(window.ElmslnStudioFakeData[type]) 
-        : [];
-      return count ? arr.slice(0,count) : arr;
+    recent(type, count) {
+      let arr =
+        window.ElmslnStudioFakeData && window.ElmslnStudioFakeData[type]
+          ? this._recentArray(window.ElmslnStudioFakeData[type])
+          : [];
+      return count ? arr.slice(0, count) : arr;
     }
     /**
      * generates fake data
-     * @returns {obj} 
+     * @returns {obj}
      */
     _makeFakeData() {
       /* date functions */
-      let 
-        /* all projects */
+      let /* all projects */
         projects = {
           "project-0": {
             project: "Hypertext Narrative Project",
@@ -308,8 +322,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
               "Deliver: Final Prototype"
             ]
           },
-          "project-2":
-          {
+          "project-2": {
             project: "Open Kit Project",
             assignments: [
               "Discover: Toy Research",
@@ -326,55 +339,57 @@ const ElmslnStudioUtilities = function(SuperClass) {
         },
         /* all users including instructor */
         users = {
-          "ixp23": {
+          ixp23: {
             lastName: "Instructor",
             firstName: "Person",
             instructor: true,
             image: `//placekitten.com/300/400`
           },
-          "hxb5122": {
+          hxb5122: {
             lastName: "Brown",
             firstName: "Havana"
           },
-          "tmn823": {
+          tmn823: {
             lastName: "Nebelung",
             firstName: "Tabby"
           },
-          "kmk5124": {
+          kmk5124: {
             lastName: "Korat",
             firstName: "Kitty",
             image: `//placekitten.com/g/400/300`
           },
-          "tjm5488": {
+          tjm5488: {
             lastName: "Manx",
             firstName: "Tortie",
             image: `//placekitten.com/400/300`
           },
-          "fms9811": {
+          fms9811: {
             lastName: "Sphinx",
             firstName: "Felix"
           },
-          "tjc5167": {
+          tjc5167: {
             lastName: "Cat",
             firstName: "Tom",
             image: `//placekitten.com/g/400/400`
           },
-          "cac488": {
+          cac488: {
             lastName: "Coe",
             firstName: "Callie"
           },
-          "srf325": {
+          srf325: {
             lastName: "Fold",
             firstName: "Scott",
             image: `//placekitten.com/400/400`
           }
-        }, 
+        },
         /* total weeks to complete all assgnments */
-        weeks = Object.keys(projects || {}).map(p=> projects[p].assignments).flat().length,
+        weeks = Object.keys(projects || {})
+          .map(p => projects[p].assignments)
+          .flat().length,
         /* end date = now */
-        endDate = this._addWeeks(new Date(),Math.floor(weeks/2)),
+        endDate = this._addWeeks(new Date(), Math.floor(weeks / 2)),
         /* startDate */
-        startDate = this._addWeeks(endDate,(weeks+1) * -1),
+        startDate = this._addWeeks(endDate, (weeks + 1) * -1),
         /* fake data object */
         data = {
           startDate: startDate,
@@ -406,18 +421,31 @@ const ElmslnStudioUtilities = function(SuperClass) {
           `Quisque tincidunt imperdiet purus in congue. Sed id risus ipsum. Integer tincidunt lacinia neque sed vulputate. Donec eget consectetur nibh. In nec nulla quis augue molestie posuere a non sapien. Fusce ultricies efficitur urna sed porta. Maecenas vitae fringilla ipsum. Cras venenatis, mauris non dictum interdum, quam risus lacinia enim, sed scelerisque diam nunc in risus. Integer tempor vitae leo a cursus. Vivamus suscipit nisi eu risus accumsan, vel rhoncus nulla mattis. Integer vulputate felis vel nulla aliquet, ac placerat nunc varius. Nulla sodales accumsan nibh, id sollicitudin diam placerat at.`
         ],
         /* lorem ipsum sentence list */
-        sentences = paragraphs.map(p => p.split(/[\.\?\!]+\s+/)).flat().map(s=>`${s}${this._randomItem(".",".",".",".","?","?","?","!")}`),
+        sentences = paragraphs
+          .map(p => p.split(/[\.\?\!]+\s+/))
+          .flat()
+          .map(
+            s =>
+              `${s}${this._randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
+          ),
         /* lorem ipsum word list */
-        words = [...new Set(paragraphs.map(p => p.split(/\W+/)).flat().map(w=>w.toLowerCase()))],
+        words = [
+          ...new Set(
+            paragraphs
+              .map(p => p.split(/\W+/))
+              .flat()
+              .map(w => w.toLowerCase())
+          )
+        ],
         /* advances to next date */
         /* generates random link data */
         randomLink = () => {
-          let w = this._draw(words,1,4), 
-          file = this._randomItem(["url","pdf"]),
-          base = this._randomItem(words),
-          extension = file !== "url" ? `.${file}` : '',
-          url = `http://${base}.com/${w.join('/')}${extension}`,
-          text = w.length > 0 ? w.join(' ') : base;
+          let w = this._draw(words, 1, 4),
+            file = this._randomItem(["url", "pdf"]),
+            base = this._randomItem(words),
+            extension = file !== "url" ? `.${file}` : "",
+            url = `http://${base}.com/${w.join("/")}${extension}`,
+            text = w.length > 0 ? w.join(" ") : base;
           return {
             url: url.toLowerCase(),
             text: text,
@@ -426,41 +454,51 @@ const ElmslnStudioUtilities = function(SuperClass) {
         },
         /* genterates random image data */
         randomImage = (topic = "any") => {
-          let filter = this._randomItem(["", "", "", "", "/greyscale", "/greyscale", "/sepia"]), 
-            aspect = `${200 + Math.floor(Math.random() * 600)}/${200 + Math.floor(Math.random() * 600)}`,
+          let filter = this._randomItem([
+              "",
+              "",
+              "",
+              "",
+              "/greyscale",
+              "/greyscale",
+              "/sepia"
+            ]),
+            aspect = `${200 + Math.floor(Math.random() * 600)}/${200 +
+              Math.floor(Math.random() * 600)}`,
             gravity = this._randomItem([
-                "center",
-                "center",
-                "center",
-                "center",
-                "center",
-                "center",
-                "center",
-                "center",
-                "top",
-                "top-left",
-                "top-right",
-                "left",
-                "bottom",
-                "bottom-left",
-                "bottom-right",
-                "right"
-              ]);
+              "center",
+              "center",
+              "center",
+              "center",
+              "center",
+              "center",
+              "center",
+              "center",
+              "top",
+              "top-left",
+              "top-right",
+              "left",
+              "bottom",
+              "bottom-left",
+              "bottom-right",
+              "right"
+            ]);
           return {
             alt: `Random ${topic} image from http://plageimg.com`,
             src: `http://placeimg.com/${aspect}/${topic}${filter}`,
             sizing: "cover",
             gravity: gravity
-          }
+          };
         },
         /* make submission assets based on topic and type */
-        makeAssets = (topic,type) => {
-          if(type === "body"){
-            return `${this._draw(sentences,4,10).join('. ')}.`;
+        makeAssets = (topic, type) => {
+          if (type === "body") {
+            return `${this._draw(sentences, 4, 10).join(". ")}.`;
           } else {
-            let times =  1 + Math.floor( Math.random() * 7), assets = [];
-            for(let i=0; i < times; i++){
-              if(type === "links"){
+            let times = 1 + Math.floor(Math.random() * 7),
+              assets = [];
+            for (let i = 0; i < times; i++) {
+              if (type === "links") {
                 assets.push(randomLink());
               } else {
                 assets.push(randomImage(topic));
@@ -470,10 +508,10 @@ const ElmslnStudioUtilities = function(SuperClass) {
           }
         },
         /* make feedback or reply as comment */
-        makeComment = (id,key,userId,start) => {
+        makeComment = (id, key, userId, start) => {
           let comment = {
             userId: userId,
-            date: start, 
+            date: start,
             body: `${this._draw(sentences, 1, 4).join(" ")}`,
             read: Math.random() < 0.5,
             like: Math.random() < 0.5
@@ -482,61 +520,83 @@ const ElmslnStudioUtilities = function(SuperClass) {
           return comment;
         },
         /* make feedback thread based on reviewer */
-        makeReply = (feedbackId,commenterId,start) => {
+        makeReply = (feedbackId, commenterId, start) => {
           let id = `reply-${Object.keys(data.replies).length}`;
-          data.replies[id] = makeComment(feedbackId,"feedbackId",commenterId,start);
+          data.replies[id] = makeComment(
+            feedbackId,
+            "feedbackId",
+            commenterId,
+            start
+          );
           return id;
         },
         /* make feedback thread based on reviewer */
-        makeFeedback = (submissionId,reviewerId,start) => {
+        makeFeedback = (submissionId, reviewerId, start) => {
           let id = `feedback-${Object.keys(data.feedback).length}`,
-            replies = Math.floor(Math.random()*4);
-          data.feedback[id] = makeComment(submissionId,"submissionId",reviewerId,start);
+            replies = Math.floor(Math.random() * 4);
+          data.feedback[id] = makeComment(
+            submissionId,
+            "submissionId",
+            reviewerId,
+            start
+          );
           data.feedback[id].replies = [];
-          for(let i=0;i<replies;i++){
-            if(this._addDays(start,3) < new Date()) data.feedback[id].replies.push(
+          for (let i = 0; i < replies; i++) {
+            data.feedback[id].replies.push(
               makeReply(
                 id,
                 this._randomItem(Object.keys(data.students)),
-                this._nextDate(start,i,replies,3)
+                this._nextDate(start, i, replies, 3)
               )
             );
           }
           return id;
         },
         /* make assignment submission by student */
-        makeSubmission = (assignmentId,studentId,start) => {
-          let id = `submission-${Object.keys(data.submissions).length}`, 
+        makeSubmission = (assignmentId, studentId, start) => {
+          let id = `submission-${Object.keys(data.submissions).length}`,
             reviewers = [
-              this._randomItem(Object.keys(data.instructors)), 
-              ...this._draw(Object.keys(data.students),2,5)
+              this._randomItem(Object.keys(data.instructors)),
+              ...this._draw(Object.keys(data.students), 1, 3)
             ],
             assignment = data.assignments[assignmentId];
-            data.submissions[id] = {
-              date: start,
-              assignmentId: assignmentId,
-              userId: studentId,
-              image: randomImage(assignment.topic),
-              feature: Math.random() < 0.2 ? this._draw(sentences,2,10).join(' ') : undefined,
-              feedback: []
-            };
-    
-            data.submissions[id][assignment.type] = makeAssets(assignment.topic,assignment.type);
-            if(this._addDays(start,3) < new Date()) data.submissions[id].feedback = reviewers.map((userId,i)=>{
+          data.submissions[id] = {
+            date: start,
+            assignmentId: assignmentId,
+            userId: studentId,
+            image: randomImage(assignment.topic),
+            feature:
+              Math.random() < 0.2
+                ? this._draw(sentences, 2, 10).join(" ")
+                : undefined,
+            feedback: []
+          };
+
+          data.submissions[id][assignment.type] = makeAssets(
+            assignment.topic,
+            assignment.type
+          );
+          data.submissions[id].feedback = reviewers.map((userId, i) => {
               return makeFeedback(
                 id,
                 userId,
-                this._nextDate(start,i,reviewers.length,3)
-              )
+                this._nextDate(start, i, reviewers.length, 3)
+              );
             });
           return id;
         },
         /* make project assignment */
-        makeAssignment = (projectId,assignmentName) => {
-          let topic = this._randomItem(["any", "animals", "nature", "people", "tech"]), 
-            type = this._randomItem(["links","body","sources"]),
+        makeAssignment = (projectId, assignmentName) => {
+          let topic = this._randomItem([
+              "any",
+              "animals",
+              "nature",
+              "people",
+              "tech"
+            ]),
+            type = this._randomItem(["links", "body", "sources"]),
             completed = Object.keys(data.assignments).length,
-            id=`assignment-${completed}`,
+            id = `assignment-${completed}`,
             start = this._addWeeks(startDate + completed),
             studentsList = this._shuffle(Object.keys(data.students));
           data.assignments[id] = {
@@ -547,42 +607,47 @@ const ElmslnStudioUtilities = function(SuperClass) {
             type: type,
             submissions: []
           };
-          if(this._addDays(start,7) < new Date()) data.assignments[id].submissions = studentsList.map((studentId,i)=>{
-            return makeSubmission(
-              id,
-              studentId,
-              this._nextDate(start,i,studentsList.length,7)
+          if (this._addDays(start, 7) < new Date())
+            data.assignments[id].submissions = studentsList.map(
+              (studentId, i) => {
+                return makeSubmission(
+                  id,
+                  studentId,
+                  this._nextDate(start, i, studentsList.length, 7)
+                );
+              }
             );
-          });
           return id;
         };
-    
+
       /* filter users to get students  */
       data.students = JSON.parse(JSON.stringify(users));
-      Object.keys(data.students || {}).forEach(s=>{
-        if(data.students[s].instructor) delete data.students[s];
+      Object.keys(data.students || {}).forEach(s => {
+        if (data.students[s].instructor) delete data.students[s];
       });
-    
+
       /* filter users to get instructors  */
       data.instructors = JSON.parse(JSON.stringify(users));
-      Object.keys(data.instructors || {}).forEach(s=>{
-        if(!data.instructors[s].instructor) delete data.instructors[s];
+      Object.keys(data.instructors || {}).forEach(s => {
+        if (!data.instructors[s].instructor) delete data.instructors[s];
       });
-    
+
       /* populate fake data starting with projects */
-      Object.keys(projects || {}).forEach(p=>{
-        projects[p].assignments = projects[p].assignments.map(a=>makeAssignment(p,a));
+      Object.keys(projects || {}).slice(2).forEach(p => {
+        projects[p].assignments = projects[p].assignments.map(a =>
+          makeAssignment(p, a)
+        );
       });
-    
+
       data.activities = this._sortRecent([
-        ...this._toArray(data.submissions,{activity: "submission"}),
-        ...this._toArray(data.feedback,{activity: "feedback"}),
-        ...this._toArray(data.replies,{activity: "replies"}),
+        ...this._toArray(data.submissions, { activity: "submission" }),
+        ...this._toArray(data.feedback, { activity: "feedback" }),
+        ...this._toArray(data.replies, { activity: "replies" })
       ]);
       data.me = this._randomItem(Object.keys(data.students || {}));
       return data;
     }
-    
+
     _handleArrayData(e, propName) {
       this[propName] =
         e && e.detail && e.detail.response && e.detail.response.data
