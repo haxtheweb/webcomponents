@@ -190,22 +190,29 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
               <iron-icon aria-hidden="true" icon="close"></iron-icon>
               <span>Close</span>
             </button>
-          </div>${!this.portfolioData ? html`` : html`
-          <h1>
-            <lrndesign-avatar
-              accent-color="${this.getAccentColor(this.getFullName(this.portfolioData.student))}"
-              aria-hidden="true"
-              label="${this.getFullName(this.portfolioData.student)}"
-              src="${this.portfolioData.student.image}"
-              two-chars
-            >
-            </lrndesign-avatar>
-            <span class="student-name"
-              >${this.getFullName(this.portfolioData.student)}</span
-            >
-            <span class="project-name">${this.portfolioData.project}</span>
-          </h1>
-          `}
+          </div>
+          ${!this.portfolioData
+            ? html``
+            : html`
+                <h1>
+                  <lrndesign-avatar
+                    accent-color="${this.getAccentColor(
+                      this.getFullName(this.portfolioData.student)
+                    )}"
+                    aria-hidden="true"
+                    label="${this.getFullName(this.portfolioData.student)}"
+                    src="${this.portfolioData.student.image}"
+                    two-chars
+                  >
+                  </lrndesign-avatar>
+                  <span class="student-name"
+                    >${this.getFullName(this.portfolioData.student)}</span
+                  >
+                  <span class="project-name"
+                    >${this.portfolioData.project}</span
+                  >
+                </h1>
+              `}
           ${this.portfolioData.submissions.map(
             s => html`
               <section>
@@ -218,10 +225,13 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
                   >
                 </h2>
                 <div class="view-comments">
-                  <button 
-                    class="view-comment-button ${s.feedback.length < 1 ? '' : 'has-comments'}"
+                  <button
+                    class="view-comment-button ${s.feedback.length < 1
+                      ? ""
+                      : "has-comments"}"
                     aria-describedby="sub-${s.id}"
-                    @click="${e=>this.submissionId = s.id}">
+                    @click="${e => (this.submissionId = s.id)}"
+                  >
                     <iron-icon
                       aria-hidden="true"
                       icon="communication:comment"
@@ -269,13 +279,13 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
       </div>
       <div id="secondary">
         ${this.feedback.map(
-            f => html`
-              <div class="thread">
-                ${this.makeComment(f)}
-                ${f.replies.map(r => this.makeComment(this.reply(r)))}
-              </div>
-            `
-          )}
+          f => html`
+            <div class="thread">
+              ${this.makeComment(f)}
+              ${f.replies.map(r => this.makeComment(this.reply(r)))}
+            </div>
+          `
+        )}
       </div>
     `;
   }
@@ -359,36 +369,62 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   }
 
   initDemo() {
-    if (!this.portfolioId) this.portfolioId = this._randomItem(Object.keys(this.loremData.portfolios));
+    if (!this.portfolioId)
+      this.portfolioId = this._randomItem(
+        Object.keys(this.loremData.portfolios)
+      );
     this.portfolioData = this.loremData.portfolios[this.portfolioId];
-    this.portfolioData.project = this.loremData.projects[this.portfolioData.projectId]; 
-    this.portfolioData.student = this.loremData.users[this.portfolioData.studentId];
-    this.portfolioData.submissions = this.portfolioData.submissions.map(i=>{
-      let s = this.loremData.submissions[i];
-      s.assignment = this.loremData.assignments[s.assignmentId];
-    }).sort((a,b)=>a.date-b.date);
-    this.submissionId = this.portfolioData.submissions ? this.portfolioData.submissions[0] : undefined;
+    this.portfolioData.project = this.loremData.projects[
+      this.portfolioData.projectId
+    ];
+    this.portfolioData.student = this.loremData.users[
+      this.portfolioData.studentId
+    ];
+    this.portfolioData.submissions = this.portfolioData.submissions
+      .map(i => {
+        let s = this.loremData.submissions[i];
+        s.assignment = this.loremData.assignments[s.assignmentId];
+      })
+      .sort((a, b) => a.date - b.date);
+    this.submissionId = this.portfolioData.submissions
+      ? this.portfolioData.submissions[0]
+      : undefined;
   }
 
-  demoFeedback(){
-    if(!this.submissionId || !this.portfolioData.submissions.includes(this.submissionId)) this.submissionId = this.portfolioData.submissions ? this.portfolioData.submissions[0] : undefined;
-    this.feedback = this.loremData.submissions[submissionId] 
-      ? this.loremData.submissions[submissionId].feedback.map(i=>{
-          let feedback = this.loremData.feedback[i];
-          feedback.id = i;
-          feedback.replies = feedback.replies.map(j=>{
-            let reply = this.loremData.feedback[j];
-            reply.id = j;
-          }).sort((a,b)=>a.date-b.date);
-        }).sort((a,b)=>a.date-b.date) 
+  demoFeedback() {
+    if (
+      !this.submissionId ||
+      !this.portfolioData.submissions.includes(this.submissionId)
+    )
+      this.submissionId = this.portfolioData.submissions
+        ? this.portfolioData.submissions[0]
+        : undefined;
+    this.feedback = this.loremData.submissions[submissionId]
+      ? this.loremData.submissions[submissionId].feedback
+          .map(i => {
+            let feedback = this.loremData.feedback[i];
+            feedback.id = i;
+            feedback.replies = feedback.replies
+              .map(j => {
+                let reply = this.loremData.feedback[j];
+                reply.id = j;
+              })
+              .sort((a, b) => a.date - b.date);
+          })
+          .sort((a, b) => a.date - b.date)
       : [];
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (["portfolioId","demoMode"].includes(propName) && this.demoMode) this.initDemo();
-      if (["portfolioId","submissionId","demoMode"].includes(propName) && this.demoMode) this.demoFeedback();
+      if (["portfolioId", "demoMode"].includes(propName) && this.demoMode)
+        this.initDemo();
+      if (
+        ["portfolioId", "submissionId", "demoMode"].includes(propName) &&
+        this.demoMode
+      )
+        this.demoFeedback();
     });
   }
   // static get observedAttributes() {

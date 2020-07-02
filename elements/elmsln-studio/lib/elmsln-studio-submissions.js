@@ -4,12 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/communication-icons.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
 /**
  * `elmsln-studio-submissions`

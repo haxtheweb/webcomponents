@@ -6,9 +6,9 @@ import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
-import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
 const ElmslnStudioUtilities = function(SuperClass) {
   return class extends SuperClass {
@@ -156,10 +156,10 @@ const ElmslnStudioUtilities = function(SuperClass) {
         if (propName === "demoMode" && this.demoMode) {
           if (!window.ElmslnStudioLoremData)
             window.ElmslnStudioLoremData = this._makeLoremData();
-            this.loremData = window.ElmslnStudioLoremData;
-            this.userId = this.loremData 
-              ? this._randomItem(Object.keys(this.loremData.students)).id 
-              : undefined;
+          this.loremData = window.ElmslnStudioLoremData;
+          this.userId = this.loremData
+            ? this._randomItem(Object.keys(this.loremData.students)).id
+            : undefined;
         }
       });
     }
@@ -255,7 +255,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
     _randomItem(items) {
       return items[Math.floor(Math.random() * items.length)];
     }
-    getFullName(user){
+    getFullName(user) {
       return this.user ? `${user.firstName} ${user.firstName}` : ``;
     }
 
@@ -628,11 +628,12 @@ const ElmslnStudioUtilities = function(SuperClass) {
             completed = Object.keys(data.assignments).length,
             id = `assignment-${completed}`,
             start = this._addWeeks(startDate + completed),
-            studentsList = projectId !== "project-3"
-              ? []
-              : projectId !== "project-2"
-              ? this._draw(Object.keys(data.students),4,6)
-              : this._shuffle(Object.keys(data.students));
+            studentsList =
+              projectId !== "project-3"
+                ? []
+                : projectId !== "project-2"
+                ? this._draw(Object.keys(data.students), 4, 6)
+                : this._shuffle(Object.keys(data.students));
           data.assignments[id] = {
             projectId: projectId,
             assignment: assignmentName,
@@ -669,13 +670,13 @@ const ElmslnStudioUtilities = function(SuperClass) {
 
       /* populate fake data starting with projects */
       Object.keys(projects || {}).forEach(p => {
-        Object.keys(students || {}).forEach(s=>{
+        Object.keys(students || {}).forEach(s => {
           data.portfolios.push({
             id: `portfolio-${s}-${p}`,
-            submissions:[]
-          })
+            submissions: []
+          });
         });
-        projects[p].assignments =  projects[p].assignments.map(a =>
+        projects[p].assignments = projects[p].assignments.map(a =>
           makeAssignment(p, a)
         );
       });
@@ -730,54 +731,77 @@ const ElmslnStudioUtilities = function(SuperClass) {
 
     _getFeedBackTitle(feedback) {
       let details = this._getFeedBackDetails(feedback);
-      return html`${details.reviewerFirstName} left feedback on ${details.studentFirstName}'s ${details.assignmentName}`;
+      return html`
+        ${details.reviewerFirstName} left feedback on
+        ${details.studentFirstName}'s ${details.assignmentName}
+      `;
     }
 
     _getReplyTitle(reply) {
       let f = this.feedback(reply.feedbackId),
         r = this.user(reply.userId),
         u = this.user(f.userId);
-      return html`${r.firstName} replied to ${u.firstName}'s feedback`;
+      return html`
+        ${r.firstName} replied to ${u.firstName}'s feedback
+      `;
     }
 
     _getSubmissionTitle(submission) {
       let u = this.user(submission.userId);
-      return html`${u.firstName} submitted ${this.assignment(activity.assignmentId).assignment}`;
+      return html`
+        ${u.firstName} submitted
+        ${this.assignment(activity.assignmentId).assignment}
+      `;
     }
 
-    _getUserSubmissions(userId){
+    _getUserSubmissions(userId) {
       let data = window.ElmslnStudioLoremData;
-      return userId && data && data.submissions 
-        ? this.recent("submissions").filter(i=>i.userId === userId).map(i=>{
-          let a = i.assignmentId
-            ? data.assignments[i.assignmentId]
-            : undefined;
-          i.assignment = a.assignment;
-          i.project =
-            a.projectId && data.projects[a.projectId]
-              ? data.projects[a.projectId].project
-              : undefined;
+      return userId && data && data.submissions
+        ? this.recent("submissions")
+            .filter(i => i.userId === userId)
+            .map(i => {
+              let a = i.assignmentId
+                ? data.assignments[i.assignmentId]
+                : undefined;
+              i.assignment = a.assignment;
+              i.project =
+                a.projectId && data.projects[a.projectId]
+                  ? data.projects[a.projectId].project
+                  : undefined;
 
-          return i;
-        })
+              return i;
+            })
         : [];
     }
 
-    _getProfile(userId){
+    _getProfile(userId) {
       let data = window.ElmslnStudioLoremData,
         feedback = this.recent("feedback"),
         replies = this.recent("replies"),
         profile = userId ? this.user(userId) : {};
       profile.submissions = this._getUserSubmissions(userId);
-      profile.assignments = [ ...new Set(profile.submissions.map(i=>i.assignmentId))];
-      profile.feedbackBy =  data && data.submissions ? feedback.filter(i=>i.userId === userId) : [];
-      profile.feedbackFor = profile.submissions.map(i=>feedback.filter(j=>j.submissionId == i.id)).flat().map(i=>{
-        let props = this._getFeedBackDetails(i);
-        Object.keys(props).map(key=>i[key] = props[key]);
-        return i;
-      });
-      profile.repliesBy =  data && data.submissions ? replies.filter(i=>i.userId === userId) : [];
-      profile.repliesFor = profile.submissions.map(i=>replies.map(j=>j.submissionId == i.id)).flat();
+      profile.assignments = [
+        ...new Set(profile.submissions.map(i => i.assignmentId))
+      ];
+      profile.feedbackBy =
+        data && data.submissions
+          ? feedback.filter(i => i.userId === userId)
+          : [];
+      profile.feedbackFor = profile.submissions
+        .map(i => feedback.filter(j => j.submissionId == i.id))
+        .flat()
+        .map(i => {
+          let props = this._getFeedBackDetails(i);
+          Object.keys(props).map(key => (i[key] = props[key]));
+          return i;
+        });
+      profile.repliesBy =
+        data && data.submissions
+          ? replies.filter(i => i.userId === userId)
+          : [];
+      profile.repliesFor = profile.submissions
+        .map(i => replies.map(j => j.submissionId == i.id))
+        .flat();
       return profile;
     }
 
