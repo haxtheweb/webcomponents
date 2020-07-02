@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
@@ -72,7 +73,6 @@ class SiteMenu extends LitElement {
    */
   constructor() {
     super();
-    import("@lrnwebcomponents/map-menu/map-menu.js");
     this.hideActiveIndicator = false;
     this.preventAutoScroll = false;
     this.trackIcon = "";
@@ -93,10 +93,8 @@ class SiteMenu extends LitElement {
     return html`
       <map-menu
         ?disabled="${this.editMode}"
-        .selected="${this.activeId}"
         .manifest="${this.routerManifest}"
         ?active-indicator="${!this.hideActiveIndicator}"
-        selected="${this.activeId}"
         ?auto-scroll="${!this.preventAutoScroll}"
         @active-item="${this.mapMenuActiveChanged}"
       ></map-menu>
@@ -107,6 +105,9 @@ class SiteMenu extends LitElement {
     autorun(reaction => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
+      setTimeout(() => {
+        this.shadowRoot.querySelector('map-menu').selected = this.activeId;        
+      }, 100);
     });
   }
   /**
