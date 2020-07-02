@@ -409,7 +409,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     let filter = this.submissions.filter(a =>
       this._isFiltered(a.userId, a.assignmentId)
     );
-    console.log("submissions", this.submissions, filter);
+    //console.log("submissions", this.submissions, filter);
     return filter;
   }
   get filteredComments() {
@@ -419,7 +419,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         this.submission(i.submissionId).assignmentId
       )
     );
-    console.log("feedback", this.recent("feedback"), filter);
+    //console.log("feedback", this.recent("feedback"), filter);
     return filter;
   }
   get noSubmissions() {
@@ -440,7 +440,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       d => (this.assignmentOptions[d.id] = d.assignment)
     );
     this.submissions = this.recent("submissions");
-    console.log("submissions", this.submissions, this.studentOptions);
+    //console.log("submissions", this.submissions, this.studentOptions);
   }
 
   _getValign(gravity) {
