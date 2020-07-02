@@ -229,7 +229,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
             inline
             label="Assignment:"
             .options="${this.assignments}"
-            @value-changed="${e => (this.assignment = e.detail.value)}"
+            @value-changed="${e => (this.assignmentFilter = e.detail.value)}"
           >
           </simple-fields-field>
           <simple-fields-field
@@ -264,13 +264,13 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                 </div>
               `
             : ``}
-          ${(this.submissions || []).map(s =>
+          ${this.submissions.map(s =>
             !this._isFiltered(s.studentId, s.assignmentId)
               ? ``
               : html`
                   <accent-card
                     no-border
-                    image-src="${s.image}"
+                    image-src="${s.image.src}"
                     ?horizontal="${s.feature || !this.grid ? true : false}"
                     image-align="${this._getAlign(s.gravity)}"
                     image-valign="${this._getValign(s.gravity)}"
@@ -284,16 +284,16 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                       id="student-${s.id}"
                       class="card-student"
                     >
-                      ${s.student}
+                      ${this.user(s.userId).firstName} ${this.user(s.userId).lastName}
                     </div>
                     <div slot="corner" id="date-${s.id}">
-                      ${s.date}
+                      ${this.grid ? this.shortDate(s.date) : this.medDate(s.date)}
                     </div>
                     <div slot="subheading" id="assignment-${s.id}">
-                      ${s.assignment}
+                      ${this.assignment(s.assignmentId).assignment}
                     </div>
                     <div slot="content" id="project-${s.id}">
-                      ${s.project}
+                      ${this.project(this.assignment(s.assignmentId).projectId).project}
                     </div>
                     <div slot="content" class="feature" ?hidden="${!s.feature}">
                       ${s.feature}
@@ -323,7 +323,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         <div class="filters">
           <span class="comments">Comments:&nbsp;</span>
           <span class="comments-filter"
-            >${this.assignment !== "" || this.student !== ""
+            >${this.assignmentFilter !== "" || this.student !== ""
               ? "Filtered"
               : "All"}</span
           >
@@ -332,31 +332,33 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
           <span slot="heading">Recent Comments</span>
           <div
             slot="body"
-            ?hidden="${this.comments && this.comments.length > 0}"
+            ?hidden="${this.recent("feedback") && this.recent("feedback").length > 0}"
           >
             No comments for applied filters.
           </div>
           <div slot="linklist">
-            ${(this.comments || []).map(c =>
-              !this._isFiltered(c.studentId, c.assignmentId)
+            ${this.recent("feedback").map(f =>
+              !this._isFiltered(f.studentId, f.assignmentId)
                 ? ``
                 : html`
                     <nav-card-item
-                      accent-color="${this.getAccentColor(c.firstName)}"
-                      .avatar="${c.image}"
+                      accent-color="${this.getAccentColor(this.user(f.userId).firstName)}"
+                      .avatar="${this.user(f.userId).image}"
                       icon="chevron-right"
-                      initials="${c.firstName} ${c.lastName}"
+                      initials="${this.user(f.userId).firstName} ${this.user(f.userId).lastName}"
                     >
                       <button
-                        id="comment-${c.id}"
-                        aria-describedby="comment-desc-${c.id}"
+                        id="comment-${this.user(f.userId).id}"
+                        aria-describedby="comment-${this.user(f.userId).id}-desc"
                         slot="label"
                       >
-                        ${c.firstName} commented on ${c.student}'s
-                        ${c.assignment}
+                        ${this.user(f.userId).firstName} 
+                        feedback on 
+                        ${this.user(this.submission(f.submissionId).userId).firstName}'s
+                        ${this.assignment(this.submission(f.submissionId).assignmentId).assignment}
                       </button>
-                      <span id="comment-desc-${c.id}" slot="description">
-                        ${c.date}
+                      <span id="comment-${f.id}v" slot="description">
+                        ${this.medDate(f.date)}
                       </span>
                     </nav-card-item>
                   `
@@ -370,17 +372,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      comments: {
-        type: Array
-      },
-      grid: {
-        type: Boolean
-      },
-      assignment: {
+      assignmentFilter: {
         type: String
       },
       assignments: {
         type: Array
+      },
+      grid: {
+        type: Boolean
       },
       student: {
         type: String
@@ -405,14 +404,17 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.assignment = "";
-    this.student = "";
-    this.getFakeData();
+    this.assignmentFilter = "";
+    this.assignments = [];
     this.grid = false;
+    this.student = "";
+    this.students = [];
+    this.submissions = [];
+    this.getFakeData();
     this.tag = ElmslnStudioSubmissions.tag;
   }
   get filteredSubmissions() {
-    return (this.submissions || []).filter(
+    return this.submissions.filter(
       a => !this._isFiltered(a.studentId, a.assignmentId)
     );
   }
@@ -424,31 +426,32 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   }
 
   getFakeData() {
-    let data = this.fakeData;
+    super.getFakeData();
+    let data = window.ElmslnStudioFakeData;
     this.students = { "": "All" };
     this.assignments = { "": "All" };
     if (data && data.students)
-      data.students.forEach(
-        d => (this.students[d.id] = `${d.lastName}, ${d.firstName}`)
-      );
+      this._toArray(data.students).forEach(d => {
+        this.students[d.id] = `${d.lastName}, ${d.firstName}`;
+      });
     if (data && data.assignments)
-      data.assignments.forEach(d => (this.assignments[d.id] = d.assignment));
-    this.comments = data && data.comments ? data.comments : [];
-    this.submissions = data && data.submissions ? data.submissions : [];
+    this._toArray(data.assignments).forEach(d => (this.assignments[d.id] = d.assignment));
+    this.submissions = this.recent("submissions");
+    console.log("submissions",this.submissions);
   }
 
   _getValign(gravity) {
-    return gravity.indexOf("top") > -1
+    return gravity && gravity.indexOf("top") > -1
       ? "top"
-      : gravity.indexOf("bottom") > -1
+      : gravity && gravity.indexOf("bottom") > -1
       ? "bottom"
       : "center";
   }
 
   _getAlign(gravity) {
-    return gravity.indexOf("left") > -1
+    return gravity && gravity.indexOf("left") > -1
       ? "left"
-      : gravity.indexOf("right") > -1
+      : gravity && gravity.indexOf("right") > -1
       ? "right"
       : "center";
   }
@@ -456,7 +459,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     //console.log(student,assignment,this.student,this.assignment,(this.student === "" || student === this.student) && (this.assignment === "" || assignment === this.assignment))
     return (
       (this.student === "" || student === this.student) &&
-      (this.assignment === "" || assignment === this.assignment)
+      (this.assignmentFilter === "" || assignment === this.assignmentFilter)
     );
   }
   /**

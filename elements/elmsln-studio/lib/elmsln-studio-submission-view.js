@@ -190,15 +190,15 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
           </div>
           <h1>
             <lrndesign-avatar
-              accent-color="${this.getAccentColor(this.firstName)}"
+              accent-color="${this.getAccentColor(this.student.firstName)}"
               aria-hidden="true"
-              label="${this.firstName} ${this.lastName}"
-              src="${this.image}"
+              label="${this.student.firstName} ${this.student.lastName}"
+              src="${this.student.image}"
               two-chars
             >
             </lrndesign-avatar>
-            <span class="student-name">${this.firstName} ${this.lastName}</span>
-            <span class="project-name">${this.project}</span>
+            <span class="student-name">${this.student.firstName} ${this.student.lastName}</span>
+            <span class="project-name">${this.projectName}</span>
           </h1>
           <div class="view-comments">
             <button class="view-comment-button">
@@ -213,8 +213,8 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
             s => html`
               <section>
                 <h2>
-                  <span class="assignment-name">${s.assignment}</span>
-                  <span class="submission-date">Submitted: ${s.date}</span>
+                  <span class="assignment-name">${this.assignment(s.assignmentId).assignment}</span>
+                  <span class="submission-date">Submitted: ${this.medDate(s.date)}</span>
                 </h2>
                 <div class="submission-body">
                   ${s.links && s.links.length > 0
@@ -255,41 +255,11 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         </article>
       </div>
       <div id="secondary">
-        ${(this.threads || []).map(
-          t => html`
+        ${this.recent("feedback").reverse().map(
+          f => html`
             <div class="thread">
-              ${t.comments.map(
-                c => html`
-                  <div
-                    id="${c.id}"
-                    class="comment ${c.replyTo ? "comment-reply" : ""}"
-                    aria-describedby="${c.replyTo || ""}"
-                  >
-                    <div class="comment-header ${c.read ? "comment-read" : ""}">
-                      <lrndesign-avatar
-                        initials="${c.firstName} ${c.lastName}"
-                        .src="${c.image}"
-                        two-chars
-                      >
-                      </lrndesign-avatar>
-                      <div>
-                        <p class="comment-name">${c.firstName} ${c.lastName}</p>
-                        <p class="comment-date">${c.date}</p>
-                      </div>
-                      <iron-icon icon="thumb-up"></iron-icon>
-                    </div>
-                    <div class="comment-body">
-                      <p>${c.body}</p>
-                    </div>
-                    <div class="comment-footer">
-                      <button>
-                        Reply
-                        <iron-icon icon="arrow-forward"></iron-icon>
-                      </button>
-                    </div>
-                  </div>
-                `
-              )}
+              ${this.makeComment(f)}
+              ${f.replies.map(r => this.makeComment(this.reply(r)))}
             </div>
           `
         )}
@@ -297,23 +267,52 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
     `;
   }
 
+  makeComment(c){
+    let user = this.user(c.userId);
+    return html`
+      <div
+        id="${c.id}"
+        class="comment ${c.feedbackId ? "comment-reply" : ""}"
+        aria-describedby="${c.feedbackId || ""}"
+      >
+        <div class="comment-header ${c.feedbackId ? "comment-read" : ""}">
+          <lrndesign-avatar
+            accent-color="${this.getAccentColor(user.firstName)}"
+            initials="${user.firstName} ${user.lastName}"
+            .src="${user.image}"
+            two-chars
+          >
+          </lrndesign-avatar>
+          <div>
+            <p class="comment-name">${user.firstName} ${user.lastName}</p>
+            <p class="comment-date">${this.medDate(c.date)}</p>
+          </div>
+          <iron-icon icon="thumb-up"></iron-icon>
+        </div>
+        <div class="comment-body">
+          <p>${c.body}</p>
+        </div>
+        <div class="comment-footer">
+          <button>
+            Reply
+            <iron-icon icon="arrow-forward"></iron-icon>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      firstName: {
-        type: String
-      },
-      lastName: {
-        type: String
-      },
-      image: {
-        type: String
-      },
-      project: {
+      projectName: {
         type: String
       },
       submissions: {
         type: Array
+      },
+      student: {
+        type: Object
       }
     };
   }
@@ -329,9 +328,9 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.links = [];
-    this.sources = [];
-    this.getFakeData();
+    this.submissions = [];
+    this.student = {};
+    this.projectName = "";
     this.tag = ElmslnStudioSubmissionView.tag;
   }
   /**
@@ -339,20 +338,21 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    this.getFakeData();
   }
 
   getFakeData() {
-    let data = this.fakeData,
-      student =
-        data.students[Math.floor(Math.random() * (data.students || []).length)];
-
-    this.firstName = student.firstName;
-    this.lastName = student.lastName;
-    this.image = student.image;
-    this.project = "Hypertext Narrative Project";
-    this.submissions = data.submissionView;
-    this.threads = data.threads;
-    console.log(data, student);
+    super.getFakeData();
+    let submission = this._randomItem(this.recent("submissions")),
+      assignment = this.assignment(submission.assignmentId);
+    this.student = this.user(submission.userId);
+    this.projectName = this.project(assignment.projectId).project;
+    this.submissions = this.recent("submissions").reverse().filter(i=>{
+      let a = this.assignment(i.assignmentId);
+      //console.log(a,i,i.userId,submission.userId,a.projectId,assignment.projectId)
+      return i.userId === submission.userId && a.projectId === assignment.projectId;
+    });
+    console.log(assignment,this.projectName,this.recent("submissions").reverse(),this.submissions);
   }
   // static get observedAttributes() {
   //   return [];

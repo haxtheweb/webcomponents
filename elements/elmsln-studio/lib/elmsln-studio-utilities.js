@@ -9,6 +9,8 @@ import "@polymer/iron-icons/iron-icons.js";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+
+
 const ElmslnStudioUtilities = function(SuperClass) {
   return class extends SuperClass {
     static get styles() {
@@ -126,98 +128,266 @@ const ElmslnStudioUtilities = function(SuperClass) {
     static get properties() {
       return {};
     }
-    get fakeData() {
-      let submissions = [],
-        comments = [],
-        threadedComments = [],
-        ctr = 0,
-        students = [
+    /**
+     * sorts array by most recent
+     * @param {array} arr array
+     * @returns {arr} sorted array
+     */
+    _sortRecent(arr){
+      return arr.sort((a,b)=>b.date - a.date);
+    }
+    /**
+     * gets shuffled array
+     * @param {array} arr array
+     * @returns {arr} shuffled array
+     */
+    _shuffle(arr = []){
+      return arr.sort((a,b)=>{
+        let c = Math.random(), d = Math.random();
+        return c - d;
+      })
+    }
+    /**
+     * draws x-y items from shuffled array
+     * @param {array} arr array
+     * @param {number} min minimum number of items
+     * @param {number} max max number of items
+     * @returns {arr} shuffled array of x items
+     */
+    _draw(arr = [],min = 0,max = min) {
+      let rand = Math.floor(Math.random() * (max-min));
+      return this._shuffle(arr).slice(0,min+rand)
+    }
+    /**
+     * gets date x days from start date
+     * @param {date} start starting date
+     * @param {number} days number of weeks
+     * @returns {date} 
+     */
+    _addDays(start=new Date(),amt=0) { 
+      return new Date(Date.parse(start)+(amt*86400000))
+    }
+    /**
+     * gets date x weeks from start date
+     * @param {date} start starting date
+     * @param {number} weeks number of weeks
+     * @returns {date} 
+     */
+    _addWeeks(start=new Date(),amt=0) { 
+      return new Date(Date.parse(start)+(amt*604800000))
+    }
+    /**
+     * distributes items over a period of x days
+     * @param {date} start starting date
+     * @param {number} index index of item
+     * @param {number} qty number of items
+     * @param {number} days number of days to distributes items
+     * @param {number} offset optional offset from start date
+     * @returns {date} 
+     */
+    _nextDate(start,index=1,qty=1,days=1,offset=0) {
+      return this._addDays(start,(days*index/qty)+offset);
+    }
+    /**
+     * convert object to array
+     * @param {object} obj object to convert
+     * @param {props} additional properties to set
+     * @returns {array} 
+     */
+    _toArray(obj,props) {
+      return Object.keys(obj || {}).map(i => {
+        let item = obj[i];
+        item.id = i;
+        Object.keys(props || {}).forEach(j=>item[j] = props[j]);
+        return item;
+      });
+    }
+    /**
+     * converts and sorts arrat
+     * @param {object} obj object to convert
+     * @returns {array} 
+     */
+    _recentArray(arr) {
+      return this._sortRecent(this._toArray(arr));
+    }
+    /**
+     * draws a random item from array of items
+     * @param {array} array of items
+     * @returns {*} 
+     */
+    _randomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
+    
+    }
+  
+    getFakeData() {
+      if(!window.ElmslnStudioFakeData) window.ElmslnStudioFakeData = this._makeFakeData();
+    }
+    
+    fullDate(d){
+      return d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    medDate(d){
+      return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    shortDate(d){
+      return d.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
+    }
+
+    activities(id){
+      return this._getById('activities',id);
+    }
+    assignment(id){
+      return this._getById('assignments',id);
+    }
+    feedback(id){
+      return this._getById('feedback',id);
+    }
+    project(id){
+      return this._getById('projects',id);
+    }
+    reply(id){
+      return this._getById('replies',id);
+    }
+    submission(id){
+      return this._getById('submissions',id);
+    }
+    user(id){
+      return this._getById('users',id);
+    }
+    _getById(type,id){
+      return type 
+        && id 
+        && window.ElmslnStudioFakeData[type] 
+        && window.ElmslnStudioFakeData[type][id]
+        ? window.ElmslnStudioFakeData[type][id] 
+        : undefined;
+    }
+    recent(type,count){
+      let arr = window.ElmslnStudioFakeData 
+        && window.ElmslnStudioFakeData[type] 
+        ? this._recentArray(window.ElmslnStudioFakeData[type]) 
+        : [];
+      return count ? arr.slice(0,count) : arr;
+    }
+    /**
+     * generates fake data
+     * @returns {obj} 
+     */
+    _makeFakeData() {
+      /* date functions */
+      let 
+        /* all projects */
+        projects = {
+          "project-0": {
+            project: "Hypertext Narrative Project",
+            assignments: [
+              "Discover: Word-Pairs",
+              "Define: Synopsis",
+              "Develop: Story and Plot Elements",
+              "Develop: Characters",
+              "Deliver: Hypertext Narrative Draft",
+              "Deliver: Feedback",
+              "Deliver: Iterate",
+              "Deliver: Iterate critique",
+              "Deliver: Iterate critique",
+              "Deliver: Hypertext Narrative"
+            ]
+          },
+          "project-1": {
+            project: "Ritual Project",
+            assignments: [
+              "Discover: Interview",
+              "Discover: Journey Map",
+              "Define: Themes & Insights",
+              "Define: HMW",
+              "Develop: Brainstorm",
+              "Develop: Storyboard",
+              "Develop: Prototype",
+              "Develop: Test and Iterate",
+              "Deliver: Final Prototype"
+            ]
+          },
+          "project-2":
           {
-            id: "hxb5122",
+            project: "Open Kit Project",
+            assignments: [
+              "Discover: Toy Research",
+              "Discover: Modular Research",
+              "Discover: Resources",
+              "Define: Product Pitch",
+              "Develop: Prototyping",
+              "Develop: Instructions",
+              "Develop: Test",
+              "Develop: Iterate",
+              "Deliver: Open Toy"
+            ]
+          }
+        },
+        /* all users including instructor */
+        users = {
+          "ixp23": {
+            lastName: "Instructor",
+            firstName: "Person",
+            instructor: true,
+            image: `//placekitten.com/300/400`
+          },
+          "hxb5122": {
             lastName: "Brown",
             firstName: "Havana"
           },
-          {
-            id: "tmn823",
+          "tmn823": {
             lastName: "Nebelung",
             firstName: "Tabby"
           },
-          {
-            id: "kmk5124",
+          "kmk5124": {
             lastName: "Korat",
             firstName: "Kitty",
             image: `//placekitten.com/g/400/300`
           },
-          {
-            id: "tjm5488",
+          "tjm5488": {
             lastName: "Manx",
             firstName: "Tortie",
             image: `//placekitten.com/400/300`
           },
-          {
-            id: "fms9811",
+          "fms9811": {
             lastName: "Sphinx",
             firstName: "Felix"
           },
-          {
-            id: "tjc5167",
+          "tjc5167": {
             lastName: "Cat",
             firstName: "Tom",
             image: `//placekitten.com/g/400/400`
           },
-          {
-            id: "cac488",
+          "cac488": {
             lastName: "Coe",
             firstName: "Callie"
           },
-          {
-            id: "srf325",
+          "srf325": {
             lastName: "Fold",
             firstName: "Scott",
             image: `//placekitten.com/400/400`
           }
-        ],
-        projects = [
-          {
-            id: "project-1",
-            project: "Hypertext Narrative Project"
-          },
-          {
-            id: "project-2",
-            project: "Ritual Project"
-          },
-          {
-            id: "project-3",
-            project: "App Project"
-          }
-        ],
-        assignments = [
-          {
-            id: "assignment-1",
-            projectId: "project-2",
-            project: "Hypertext Narrative Project",
-            assignment: "Develop: Test and Iterate"
-          },
-          {
-            id: "assignment-2",
-            project: "Ritual Project",
-            projectId: "project-1",
-            assignment: "Define: Themes & Insights"
-          },
-          {
-            id: "assignment-3",
-            project: "Ritual Project",
-            projectId: "project-1",
-            assignment: "Discover: Journey Map"
-          }
-        ],
-        randomDate = () => {
-          return `${
-            ["January", "February", "March", "April"][
-              Math.floor(Math.random() * 4)
-            ]
-          } ${Math.floor(Math.random() * 28 + 1)}, 2020`;
+        }, 
+        /* total weeks to complete all assgnments */
+        weeks = Object.keys(projects || {}).map(p=> projects[p].assignments).flat().length,
+        /* end date = now */
+        endDate = this._addWeeks(new Date(),Math.floor(weeks/2)),
+        /* startDate */
+        startDate = this._addWeeks(endDate,(weeks+1) * -1),
+        /* fake data object */
+        data = {
+          startDate: startDate,
+          endDate: endDate,
+          weeks: weeks,
+          projects: projects,
+          users: users,
+          assignments: {},
+          submissions: {},
+          feedback: {},
+          replies: {}
         },
+        /* lorem ipsum paragraph list */
         paragraphs = [
           `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius est ac sapien viverra lacinia. Aenean tempor risus ut egestas facilisis. Sed eu eros finibus, gravida lorem et, luctus massa. Aliquam tincidunt convallis enim sed molestie. Etiam facilisis varius felis sed imperdiet. Nunc ut eros id ligula ornare mattis id bibendum nibh. Fusce sagittis libero non enim placerat aliquam et ac sapien. Ut ac est porta, pulvinar odio et, efficitur lorem. Curabitur vitae vulputate est. Morbi est tellus, dapibus id nisi quis, dapibus sagittis nisi. Ut bibendum finibus purus. Quisque rhoncus lacus leo, tincidunt varius odio posuere sit amet. Suspendisse sodales nisl nec tincidunt elementum.`,
           `Pellentesque nec arcu in risus sodales feugiat eget et nisl. Maecenas fringilla risus at augue suscipit, id mollis sapien sodales. Duis auctor at dolor at pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam sem dolor, scelerisque quis convallis at, fringilla nec purus. Aenean eget dapibus tellus. Sed pretium dictum ipsum, ut posuere tellus bibendum eget. Donec eget tempor lorem. Aenean justo velit, laoreet eget rhoncus eu, finibus ac justo. Donec convallis quis elit non dapibus. Donec lacinia, arcu eget ornare bibendum, ante lectus pretium dolor, sed aliquet nulla massa ut sem. Nullam luctus arcu et augue posuere molestie. Phasellus eget elit nec mauris imperdiet consectetur ac vel nibh. Ut euismod ex sagittis ipsum dapibus, eget sollicitudin nunc venenatis. Praesent augue justo, porta a hendrerit vel, fringilla vitae quam.`,
@@ -235,191 +405,184 @@ const ElmslnStudioUtilities = function(SuperClass) {
           `Quisque pellentesque augue ac dignissim pretium. Curabitur ut vestibulum nisi. Aenean accumsan purus sed metus consectetur semper. Integer et elit sit amet nulla mollis luctus. Morbi ac tortor non leo hendrerit porta sed et magna. Cras euismod cursus lorem ac dictum. Nulla maximus libero turpis, quis scelerisque velit maximus ac. Vestibulum sit amet egestas odio. Nullam feugiat finibus augue vel ultricies. Nam urna elit, dignissim eget quam ut, eleifend placerat arcu. Suspendisse nec diam vestibulum, feugiat orci et, convallis nunc. Sed dapibus commodo nibh, ut tempor diam euismod in. Phasellus eget consectetur nibh. Sed ac consequat orci, vitae congue felis. Ut in purus diam. Nam rutrum, magna rutrum blandit luctus, turpis erat fermentum ipsum, sed pretium tellus nunc ac risus.`,
           `Quisque tincidunt imperdiet purus in congue. Sed id risus ipsum. Integer tincidunt lacinia neque sed vulputate. Donec eget consectetur nibh. In nec nulla quis augue molestie posuere a non sapien. Fusce ultricies efficitur urna sed porta. Maecenas vitae fringilla ipsum. Cras venenatis, mauris non dictum interdum, quam risus lacinia enim, sed scelerisque diam nunc in risus. Integer tempor vitae leo a cursus. Vivamus suscipit nisi eu risus accumsan, vel rhoncus nulla mattis. Integer vulputate felis vel nulla aliquet, ac placerat nunc varius. Nulla sodales accumsan nibh, id sollicitudin diam placerat at.`
         ],
-        sentences = paragraphs.map(p => p.split(/[\.\?\!]+\s+/)).flat(),
-        words = paragraphs.map(p => p.split(/\W+/)).flat(),
-        loremIpsum = (min = 0, max = 15, arr = paragraphs) => {
-          let rand = min + Math.floor(Math.random() * (max - min)),
-            result = [];
-          while (result.length < rand) {
-            result = [...arr, ...arr].slice(0, rand);
+        /* lorem ipsum sentence list */
+        sentences = paragraphs.map(p => p.split(/[\.\?\!]+\s+/)).flat().map(s=>`${s}${this._randomItem(".",".",".",".","?","?","?","!")}`),
+        /* lorem ipsum word list */
+        words = [...new Set(paragraphs.map(p => p.split(/\W+/)).flat().map(w=>w.toLowerCase()))],
+        /* advances to next date */
+        /* generates random link data */
+        randomLink = () => {
+          let w = this._draw(words,1,4), 
+          file = this._randomItem(["url","pdf"]),
+          base = this._randomItem(words),
+          extension = file !== "url" ? `.${file}` : '',
+          url = `http://${base}.com/${w.join('/')}${extension}`,
+          text = w.length > 0 ? w.join(' ') : base;
+          return {
+            url: url.toLowerCase(),
+            text: text,
+            type: file
+          };
+        },
+        /* genterates random image data */
+        randomImage = (topic = "any") => {
+          let filter = this._randomItem(["", "", "", "", "/greyscale", "/greyscale", "/sepia"]), 
+            aspect = `${200 + Math.floor(Math.random() * 600)}/${200 + Math.floor(Math.random() * 600)}`,
+            gravity = this._randomItem([
+                "center",
+                "center",
+                "center",
+                "center",
+                "center",
+                "center",
+                "center",
+                "center",
+                "top",
+                "top-left",
+                "top-right",
+                "left",
+                "bottom",
+                "bottom-left",
+                "bottom-right",
+                "right"
+              ]);
+          return {
+            alt: `Random ${topic} image from http://plageimg.com`,
+            src: `http://placeimg.com/${aspect}/${topic}${filter}`,
+            sizing: "cover",
+            gravity: gravity
           }
-          return result;
         },
-        randomAspect = () => {
-          let w = 200 + Math.floor(Math.random() * 600),
-            h = 200 + Math.floor(Math.random() * 600);
-          return `${w}/${h}`;
-        },
-        randomItem = items => {
-          return items[Math.floor(Math.random() * items.length)];
-        },
-        randomGravity = () => {
-          return randomItem([
-            "center",
-            "center",
-            "center",
-            "center",
-            "center",
-            "center",
-            "center",
-            "center",
-            "top",
-            "top-left",
-            "top-right",
-            "left",
-            "bottom",
-            "bottom-left",
-            "bottom-right",
-            "right"
-          ]);
-        },
-        randomTopic = () =>
-          randomItem(["any", "animals", "nature", "people", "tech"]),
-        randomFilter = () =>
-          randomItem(["", "", "", "", "/greyscale", "/greyscale", "/sepia"]),
-        submissionView = [
-          {
-            assignment: "Define: Synopsis",
-            date: randomDate(),
-            body:
-              "Weigh eight pounds but take up a full-size bed going to catch the red dot today going to catch the red dot today. Meow all night having their mate disturbing sleeping humans walk on keyboard and the door is opening!\n\nhow exciting oh, it's you, meh yet litter kitter kitty litty little kitten big roar roar feed me. Dream about hunting birds slap kitten brother with paw making bread on the bathrobe yet ask for petting really likes hummus chew foot. Where is it? i saw that bird i need to bring it home to mommy squirrel!\n\nCats making all the muffins i want to go outside let me go outside nevermind inside is better or love and coo around boyfriend who purrs and makes the perfect moonlight eyes so i can purr and swat the glittery gleaming yarn to him (the yarn is from a $125 sweater) but pose purrfectly to show my beauty have a lot of grump in yourself because you can't forget to be grumpy and not be like king grumpy cat."
-          },
-          {
-            assignment: "Develop: Storyboard",
-            date: randomDate(),
-            links: [
-              {
-                url:
-                  "https://www.researchgate.net/profile/Sandra_Mccune/publication/279405839_The_Domestic_Cat/links/56b891ef08ae3c1b79b2dd85/The-Domestic-Cat.pdf",
-                text: "The Domestic Cat",
-                type: "pdf"
-              },
-              {
-                url: "//placekitten.com/g/400/200",
-                type: "url"
+        /* make submission assets based on topic and type */
+        makeAssets = (topic,type) => {
+          if(type === "body"){
+            return `${this._draw(sentences,4,10).join('. ')}.`;
+          } else {
+            let times =  1 + Math.floor( Math.random() * 7), assets = [];
+            for(let i=0; i < times; i++){
+              if(type === "links"){
+                assets.push(randomLink());
+              } else {
+                assets.push(randomImage(topic));
               }
-            ]
-          },
-          {
-            assignment: "Deliver: Iterate",
-            date: randomDate(),
-            sources: [1, 2, 3, 4].map(s => {
-              return {
-                alt: `Random image from //plageimg.com`,
-                src: `http://placeimg.com/${randomAspect()}/any${randomFilter()}`,
-                sizing: "cover"
-              };
-            })
+            }
+            return assets;
           }
-        ];
-
-      for (let i = 0; i < 3; i++) {
-        let thread = {
-          id: `thread-${i}`,
-          comments: []
+        },
+        /* make feedback or reply as comment */
+        makeComment = (id,key,userId,start) => {
+          let comment = {
+            userId: userId,
+            date: start, 
+            body: `${this._draw(sentences, 1, 4).join(" ")}`,
+            read: Math.random() < 0.5,
+            like: Math.random() < 0.5
+          };
+          comment[key] = id;
+          return comment;
+        },
+        /* make feedback thread based on reviewer */
+        makeReply = (feedbackId,commenterId,start) => {
+          let id = `reply-${Object.keys(data.replies).length}`;
+          data.replies[id] = makeComment(feedbackId,"feedbackId",commenterId,start);
+          return id;
+        },
+        /* make feedback thread based on reviewer */
+        makeFeedback = (submissionId,reviewerId,start) => {
+          let id = `feedback-${Object.keys(data.feedback).length}`,
+            replies = Math.floor(Math.random()*4);
+          data.feedback[id] = makeComment(submissionId,"submissionId",reviewerId,start);
+          data.feedback[id].replies = [];
+          for(let i=0;i<replies;i++){
+            if(this._addDays(start,3) < new Date()) data.feedback[id].replies.push(
+              makeReply(
+                id,
+                this._randomItem(Object.keys(data.students)),
+                this._nextDate(start,i,replies,3)
+              )
+            );
+          }
+          return id;
+        },
+        /* make assignment submission by student */
+        makeSubmission = (assignmentId,studentId,start) => {
+          let id = `submission-${Object.keys(data.submissions).length}`, 
+            reviewers = [
+              this._randomItem(Object.keys(data.instructors)), 
+              ...this._draw(Object.keys(data.students),2,5)
+            ],
+            assignment = data.assignments[assignmentId];
+            data.submissions[id] = {
+              date: start,
+              assignmentId: assignmentId,
+              userId: studentId,
+              image: randomImage(assignment.topic),
+              feature: Math.random() < 0.2 ? this._draw(sentences,2,10).join(' ') : undefined,
+              feedback: []
+            };
+    
+            data.submissions[id][assignment.type] = makeAssets(assignment.topic,assignment.type);
+            if(this._addDays(start,3) < new Date()) data.submissions[id].feedback = reviewers.map((userId,i)=>{
+              return makeFeedback(
+                id,
+                userId,
+                this._nextDate(start,i,reviewers.length,3)
+              )
+            });
+          return id;
+        },
+        /* make project assignment */
+        makeAssignment = (projectId,assignmentName) => {
+          let topic = this._randomItem(["any", "animals", "nature", "people", "tech"]), 
+            type = this._randomItem(["links","body","sources"]),
+            completed = Object.keys(data.assignments).length,
+            id=`assignment-${completed}`,
+            start = this._addWeeks(startDate + completed),
+            studentsList = this._shuffle(Object.keys(data.students));
+          data.assignments[id] = {
+            projectId: projectId,
+            assignment: assignmentName,
+            date: start,
+            topic: topic,
+            type: type,
+            submissions: []
+          };
+          if(this._addDays(start,7) < new Date()) data.assignments[id].submissions = studentsList.map((studentId,i)=>{
+            return makeSubmission(
+              id,
+              studentId,
+              this._nextDate(start,i,studentsList.length,7)
+            );
+          });
+          return id;
         };
-        for (let j = 0; j < 1 + Math.floor(Math.random() * 4); j++) {
-          let c = randomItem(students),
-            s = randomItem(students.filter(f => f !== c));
-          thread.comments.push({
-            id: `thread-${i}-comment-${j}`,
-            commenterId: c.id,
-            firstName: c.firstName,
-            lastName: c.lastName,
-            image: c.image,
-            date: randomDate(),
-            replyTo:
-              thread.comments.length > 0 ? thread.comments[0].id : undefined,
-            student: s.firstName,
-            studentId: s.id,
-            body: `${loremIpsum(1, 8, sentences).join(", ")}.`,
-            read: Math.random() < 0.5
-          });
-        }
-        threadedComments.push(thread);
-      }
-      assignments.forEach(a => {
-        let topic = randomTopic();
-        students.forEach(s => {
-          ctr++;
-          submissions.push({
-            id: `submission-${ctr}`,
-            date: randomDate(),
-            assignmentId: a.id,
-            assignment: a.assignment,
-            projectId: a.projectId,
-            project: a.project,
-            image: `http://placeimg.com/${randomAspect()}/${topic}${randomFilter()}`,
-            gravity: randomGravity(),
-            studentId: s.id,
-            student: `${s.firstName} ${s.lastName}`
-          });
-          students.forEach((c, i) => {
-            if (c.id !== s.id)
-              comments.push({
-                id: `comment-${ctr}-${i}`,
-                commenterId: c.id,
-                firstName: c.firstName,
-                lastName: c.lastName,
-                image: c.image,
-                date: randomDate(),
-                student: s.firstName,
-                studentId: s.id,
-                assignmentId: a.id,
-                assignment: a.assignment,
-                project: a.project
-              });
-          });
-        });
+    
+      /* filter users to get students  */
+      data.students = JSON.parse(JSON.stringify(users));
+      Object.keys(data.students || {}).forEach(s=>{
+        if(data.students[s].instructor) delete data.students[s];
       });
-
-      assignments.push(
-        ...[
-          {
-            id: "assignment-4",
-            projectId: "project-1",
-            project: "Ritual Project",
-            assignment: "Develop: Storyboard",
-            date: randomDate()
-          },
-          {
-            id: "assignment-4",
-            projectId: "project-2",
-            project: "Hypertext Narrative Project",
-            assignment: "Discover: Word-Pairs",
-            date: randomDate()
-          },
-          {
-            id: "assignment-5",
-            projectId: "project-1",
-            project: "Ritual Project",
-            assignment: "Define: Synopsis",
-            date: randomDate()
-          },
-          {
-            id: "assignment-6",
-            projectId: "project-3",
-            project: "App Project",
-            assignment: "Deliver: Iterate",
-            date: randomDate()
-          }
-        ]
-      );
-
-      submissions[0].feature = `Lick arm hair make meme, make cute face. Making sure that fluff gets into the owner's eyes hey! you there, with the hands, side-eyes your \"jerk\" other hand while being petted loved it, hated it, loved it, hated it spill litter box, scratch at owner, destroy all furniture, especially couch groom yourself 4 hours - checked, have your beauty sleep 18 hours - checked, be fabulous for the rest of the day - checked. Thanks!`;
-      submissions[5].feature = `Cough hairball on conveniently placed pants mew drool bury the poop bury it deep lay on arms while you're using the keyboard for cat fur is the new black or attack the child. Decide to want nothing to do with my owner today pretend you want to go out but then don't yet meow to be let in swat turds around the house but leave hair on owner's clothes. Headbutt owner's knee stinky cat for hack, or that box? i can fit in that box stare at ceiling, for i shall purr myself to sleep thug cat . Eat all the power cords paw at your fat belly, for catch eat throw up catch eat throw up bad birds or cat walks in keyboard swipe at owner's legs and meeeeouw get my claw stuck in the dog's ear. Catasstrophe thug cat , and so you're just gonna scroll by without saying meowdy? or check cat door for ambush 10 times before coming in bathe private parts with tongue then lick owner's face jump launch to pounce upon little yarn mouse, bare fangs at toy run hide in litter box until treats are fed yet roll over and sun my belly.`;
-      submissions[11].feature = `Havana, I fixed the link so this should allow you to see the following passages. Let me know if it still gives you any issues!`;
-
-      return {
-        students: students,
-        comments: comments,
-        assignments: assignments,
-        submissions: submissions,
-        projects: projects,
-        submissionView: submissionView,
-        threads: threadedComments
-      };
+    
+      /* filter users to get instructors  */
+      data.instructors = JSON.parse(JSON.stringify(users));
+      Object.keys(data.instructors || {}).forEach(s=>{
+        if(!data.instructors[s].instructor) delete data.instructors[s];
+      });
+    
+      /* populate fake data starting with projects */
+      Object.keys(projects || {}).forEach(p=>{
+        projects[p].assignments = projects[p].assignments.map(a=>makeAssignment(p,a));
+      });
+    
+      data.activities = this._sortRecent([
+        ...this._toArray(data.submissions,{activity: "submission"}),
+        ...this._toArray(data.feedback,{activity: "feedback"}),
+        ...this._toArray(data.replies,{activity: "replies"}),
+      ]);
+      data.me = this._randomItem(Object.keys(data.students || {}));
+      return data;
     }
+    
     _handleArrayData(e, propName) {
       this[propName] =
         e && e.detail && e.detail.response && e.detail.response.data
@@ -433,9 +596,6 @@ const ElmslnStudioUtilities = function(SuperClass) {
           ? e.detail.response.data
           : {};
       //console.log('_handleObjectData',e,propName,this[propName]);
-    }
-    getFakeData() {
-      let data = this.fakeData;
     }
 
     getAccentColor(str) {
