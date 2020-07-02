@@ -429,8 +429,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     );
   }
 
-  initData(data) {
-    super.initData();
+  initDemo(data) {
+    super.initDemo();
     this.studentOptions = { "": "All" };
     this.assignmentOptions = { "": "All" };
     this._toArray(data.students).forEach(

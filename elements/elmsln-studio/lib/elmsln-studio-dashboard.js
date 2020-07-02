@@ -110,6 +110,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           border-bottom: 1px solid
             var(--simple-colors-default-theme-grey-4, #666);
         }
+        accent-card td {
+          text-align: right;
+        }
         nav-card button,
         accent-card button {
           background-color: transparent;
@@ -162,130 +165,130 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   render() {
     return html`
       <h1 class="sr-only">Overview</h1>
-      <div id="primary">
-        <div id="profile">
-          <h2>${this.profile.firstName} ${this.profile.lastName}</h2>
-          <accent-card accent-color="purple" class="card primary">
-            <span slot="heading" class="sr-only">My Progress</span>
-            <lrndesign-avatar
-              accent-color="${this.getAccentColor(this.profile.firstName)}"
-              slot="content"
-              .image-src="${this.profile.image
-                ? this.profile.image
-                : undefined}"
-              label="${this.profile.firstName} ${this.profile.lastName}"
-              two-chars
-              size="200px"
-            ></lrndesign-avatar>
-            <table slot="content">
-              <tbody>
-                <tr>
-                  <th scope="row">Feedback Given</th>
-                  <td>
-                    ${!this.profile
-                      ? 0
-                      : (this.profile.feedbackByMe || []).length}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Replies Made</th>
-                  <td>
-                    ${!this.profile
-                      ? 0
-                      : (this.profile.repliesByMe || []).length}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Assgnments Submitted</th>
-                  <td>
-                    ${!this.profile
-                      ? 0
-                      : (this.profile.submissions || []).length}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </accent-card>
-          <nav-card accent-color="green" class="card primary">
-            <span slot="heading">Work Due</span>
-            <div slot="linklist">
-              ${this.recent("assignments", 5).map(
-                a => html`
-                  <nav-card-item icon="chevron-right">
-                    <button
-                      id="due-${a.id}"
-                      aria-describedby="due-${a.id}-desc"
-                      slot="label"
-                    >
-                      ${a.assignment}
-                    </button>
-                    <span id="due-${a.id}-desc" slot="description"
-                      >${this.fullDate(a.date)}</span
-                    >
-                  </nav-card-item>
-                `
-              )}
-            </div>
-          </nav-card>
+      ${!this.userData ? html`` : html`
+        <div id="primary">
+          <div id="profile">
+            <h2>${this.getFullName(this.userData)}</h2>
+            <accent-card accent-color="purple" class="card primary">
+              <span slot="heading" class="sr-only">My Progress</span>
+              <lrndesign-avatar
+                accent-color="${this.getAccentColor(this.getFullName(this.userData))}"
+                slot="content"
+                .image-src="${this.userData.image
+                  ? this.userData.image
+                  : undefined}"
+                label="${this.getFullName(this.userData)}"
+                two-chars
+                size="200px"
+              ></lrndesign-avatar>
+              <table slot="content">
+                <tbody>
+                  <tr>
+                    <th scope="row">Feedback Given</th>
+                    <td>
+                      ${this._userStat("feedbackBy")}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Conversations</th>
+                    <td>
+                      ${this._userStat("repliesBy")+this._userStat("feedbackBy")}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Total Submissions</th>
+                    <td>
+                      ${this._userStat("submissions")}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Assignments Completed</th>
+                    <td>
+                      ${this._userStat("assignments")} / ${this.assignments.length}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </accent-card>
+            <nav-card accent-color="green" class="card primary">
+              <span slot="heading">Work Due</span>
+              <div slot="linklist">
+                ${this.workDue.map(
+                  a => html`
+                    <nav-card-item icon="chevron-right">
+                      <button
+                        id="due-${a.id}"
+                        aria-describedby="due-${a.id}-desc"
+                        slot="label"
+                      >
+                        ${a.assignment}
+                      </button>
+                      <span id="due-${a.id}-desc" slot="description"
+                        >${this.fullDate(a.date)}</span
+                      >
+                    </nav-card-item>
+                  `
+                )}
+              </div>
+            </nav-card>
+          </div>
+          <div id="work">
+            <h2>Recent Work</h2>
+            <nav-card
+              accent-color="amber"
+              class="card primary"
+              link-icon="chevron-right"
+            >
+              <span slot="heading">Submissions</span>
+              <button slot="subheading">All submissions</button>
+              <div slot="linklist">
+                ${(this.userData.submissions || []).slice(0, 5).map(
+                  s => html`
+                    <nav-card-item icon="chevron-right">
+                      <button
+                        id="sub-${s.id}"
+                        aria-describedby="sub-${s.id}-desc"
+                        slot="label"
+                      >
+                        ${s.assignment}
+                      </button>
+                      <span id="sub-${s.id}-desc" slot="description"
+                        >${this.medDate(s.date)}</span
+                      >
+                    </nav-card-item>
+                  `
+                )}
+              </div>
+            </nav-card> 
+            <nav-card
+              accent-color="cyan"
+              class="card primary"
+              link-icon="chevron-right"
+            >
+              <span slot="heading">Feedback</span>
+              <button slot="subheading">All feedback</button>
+              <div slot="linklist">
+                ${(this.userData.feedbackFor || []).slice(0, 3).map(
+                  f => html`
+                    <nav-card-item icon="chevron-right">
+                      <button
+                        id="feed-${f.id}"
+                        aria-describedby="feed-${f.id}-desc"
+                        slot="label"
+                      >
+                        ${this.user(f.userId).firstName}'s feedback
+                      </button>
+                      <span id="feed-${f.id}-desc" slot="description"
+                        >${this.medDate(f.date)}</span
+                      >
+                    </nav-card-item>
+                  `
+                )}
+              </div>
+            </nav-card>
+          </div>
         </div>
-        <div id="work">
-          <h2>Recent Work</h2>
-          <nav-card
-            accent-color="amber"
-            class="card primary"
-            link-icon="chevron-right"
-          >
-            <span slot="heading">Submissions</span>
-            <button slot="subheading">All submissions</button>
-            <div slot="linklist">
-              ${this.profile.submissions.slice(0, 5).map(
-                s => html`
-                  <nav-card-item icon="chevron-right">
-                    <button
-                      id="sub-${s.id}"
-                      aria-describedby="sub-${s.id}-desc"
-                      slot="label"
-                    >
-                      ${s.assignment}
-                    </button>
-                    <span id="sub-${s.id}-desc" slot="description"
-                      >${this.medDate(s.date)}</span
-                    >
-                  </nav-card-item>
-                `
-              )}
-            </div>
-          </nav-card>
-          <nav-card
-            accent-color="cyan"
-            class="card primary"
-            link-icon="chevron-right"
-          >
-            <span slot="heading">Feedback</span>
-            <button slot="subheading">All feedback</button>
-            <div slot="linklist">
-              ${!this.profile
-                ? ""
-                : (this.profile.feedbackForMe || []).slice(0, 3).map(
-                    f => html`
-                      <nav-card-item icon="chevron-right">
-                        <button
-                          id="feed-${f.id}"
-                          aria-describedby="feed-${f.id}-desc"
-                          slot="label"
-                        >
-                          ${this.user(f.userId).firstName}'s feedback
-                        </button>
-                        <span id="feed-${f.id}-desc" slot="description"
-                          >${this.medDate(f.date)}</span
-                        >
-                      </nav-card-item>
-                    `
-                  )}
-            </div>
-          </nav-card>
-        </div>
-      </div>
+      `}
       <div id="secondary">
         <nav-card
           flat
@@ -312,7 +315,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
                   >
-                    ${this.user(a.userId).firstName} ${this._getActivity(a)}
+                    ${this._getActivityTitle(a)}
                   </button>
                   <span id="act-${a.id}-desc" slot="description"
                     >${this.medDate(a.date)}</span
@@ -338,14 +341,23 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       activities: {
         type: Array
       },
       activity: {
         type: Array
       },
-      profile: {
-        type: Object
+      assignments: {
+        type: Array
+      },
+      userData: {
+        type: Object,
+        attirbute: "user-data"
+      },
+      activityLoad: {
+        type: Number,
+        attirbute: "activity-load"
       }
     };
   }
@@ -361,32 +373,37 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
+    this.assignments = [];
+    this.activities = [];
+    this.activityLoad = 15;
     this.tag = ElmslnStudioDashboard.tag;
+  }  
+
+  get activity(){
+    return this.activities.slice(0, this.activityLoad);
+  }
+  get workDue(){
+    return this.assignments.filter(i=>!this.userData || !this.userData.assignments || !this.userData.assignments.includes(i.id));
   }
 
-  _getActivity(activity) {
-    console.log(activity);
-    if (activity.activity === "submission") {
-      return html`
-        submitted ${this.assignment(activity.assignmentId).assignment}
-      `;
-    } else if (activity.activity === "feedback") {
-      let submission = this.submission(activity.submissionId),
-        u = this.user(submission.userId),
-        a = this.assignment(submission.assignmentId);
-      return html`
-        left feedback on ${u.firstName}'s ${a.assignment}
-      `;
-    } else {
-      let f = this.feedback(activity.feedbackId),
-        u = this.user(f.userId);
-      return html`
-        replied to ${u.firstName}
-      `;
-    }
+  _userStat(arr){
+    return this.userData && this.userData[arr] ? this.userData[arr].length : 0;
   }
-  _loadMoreComments(e) {
-    this.activity = this.activities.slice(0, this.activity.length + 10);
+
+  initDemo() {
+    let data = this.loremData;
+    if(!this.userId) this.userId = this._randomItem(Object.keys(this.loremData.students));
+    this.userData = this._getProfile(this.userId);
+    this.assignments = this._toArray(data.assignments);
+    this.activities = data.activities;
+  }
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "demoMode" && this.demoMode) this.initDemo();
+      if (propName === "userId" && this.demoMode) this.userData = this._getProfile(this.userId);
+    });
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -395,47 +412,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
     super.connectedCallback();
   }
 
-  initData(data) {
-    super.initData();
-    let me = data && data.me ? data && data.me : undefined,
-      feedback = this.recent("feedback"),
-      replies = this.recent("replies");
-    this.activities = data.activities;
-    this.activity = this.activities.slice(0, 15);
-
-    this.profile = data.users[me];
-    this.profile.submissions = data
-      ? this.recent("submissions")
-          .filter(i => i.userId === data.me)
-          .map(i => {
-            let a = i.assignmentId
-              ? data.assignments[i.assignmentId]
-              : undefined;
-            i.assignment = a.assignment;
-            i.project =
-              a.projectId && data.projects[a.projectId]
-                ? data.projects[a.projectId].project
-                : undefined;
-
-            return i;
-          })
-      : [];
-    this.profile.feedbackByMe = data
-      ? feedback.filter(i => i.userId === data.me)
-      : [];
-    this.profile.repliesByMe = data
-      ? replies.filter(i => i.userId === data.me)
-      : [];
-    this.profile.feedbackForMe = data
-      ? feedback.filter(i =>
-          this.profile.submissions.map(j => j.id).includes(i.submissionId)
-        )
-      : [];
-    this.profile.repliesForMe = data
-      ? replies.filter(i =>
-          this.profile.submissions.map(j => j.id).includes(i.submissionId)
-        )
-      : [];
+  _loadMoreComments(e) {
+    this.activityLoad += 10;
   }
   // static get observedAttributes() {
   //   return [];

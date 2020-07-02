@@ -18,30 +18,16 @@ const utils = new StorybookUtilities();
 
 export const Dashboard = () => {
   let sub = new ElmslnStudioDashboard();
-  sub.getFakeData();
   return utils.makeElementFromClass(ElmslnStudioDashboard, {
-    profile: sub.profile,
-    studentId: sub.studentId,
     activities: sub.activities,
     activity: sub.activity,
-    contributions: sub.contributions,
-    comments: sub.activities,
-    assignments: sub.assignments,
-    submissions: sub.submissions,
-    projects: sub.projects
+    profile: sub.profile
   });
 };
 export const Submissions = () => {
   let sub = new ElmslnStudioSubmissions();
   sub.getFakeData();
-  return utils.makeElementFromClass(ElmslnStudioSubmissions, {
-    comments: sub.comments,
-    assignments: sub.assignments,
-    students: sub.students,
-    submissions: sub.submissions,
-    activites: sub.activites,
-    activty: sub.activty
-  });
+  return utils.makeElementFromClass(ElmslnStudioSubmissions);
 };
 export const SubmissionView = () => {
   let sub = new ElmslnStudioSubmissionView();

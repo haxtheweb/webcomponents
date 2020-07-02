@@ -125,16 +125,44 @@ const ElmslnStudioUtilities = function(SuperClass) {
 
     // properties available to the custom element for data binding
     static get properties() {
-      return {};
+      return {
+        /** mode without json data sources */
+        demoMode: {
+          type: Boolean,
+          attribute: "demo-mode",
+          reflect: true
+        },
+        /** user who is logged in */
+        userId: {
+          type: String,
+          attribute: "user-id"
+        },
+        /** demo mode fake data */
+        loremData: {
+          type: String,
+          attribute: "lorem-data"
+        }
+      };
     }
     // life cycle
     constructor() {
       super();
-      if (!window.ElmslnStudioFakeData)
-        window.ElmslnStudioFakeData = this._makeFakeData();
-      this.initData(window.ElmslnStudioFakeData);
+      this.demoMode = false;
     }
-    initData(data) {}
+
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "demoMode" && this.demoMode) {
+          if (!window.ElmslnStudioLoremData)
+            window.ElmslnStudioLoremData = this._makeLoremData();
+            this.loremData = window.ElmslnStudioLoremData;
+            this.userId = this.loremData 
+              ? this._randomItem(Object.keys(this.loremData.students)).id 
+              : undefined;
+        }
+      });
+    }
 
     /**
      * sorts array by most recent
@@ -227,6 +255,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
     _randomItem(items) {
       return items[Math.floor(Math.random() * items.length)];
     }
+    getFullName(user){
+      return this.user ? `${user.firstName} ${user.firstName}` : ``;
+    }
 
     fullDate(d) {
       return d.toLocaleDateString(undefined, {
@@ -271,15 +302,15 @@ const ElmslnStudioUtilities = function(SuperClass) {
     _getById(type, id) {
       return type &&
         id &&
-        window.ElmslnStudioFakeData[type] &&
-        window.ElmslnStudioFakeData[type][id]
-        ? window.ElmslnStudioFakeData[type][id]
+        window.ElmslnStudioLoremData[type] &&
+        window.ElmslnStudioLoremData[type][id]
+        ? window.ElmslnStudioLoremData[type][id]
         : undefined;
     }
     recent(type, count) {
       let arr =
-        window.ElmslnStudioFakeData && window.ElmslnStudioFakeData[type]
-          ? this._recentArray(window.ElmslnStudioFakeData[type])
+        window.ElmslnStudioLoremData && window.ElmslnStudioLoremData[type]
+          ? this._recentArray(window.ElmslnStudioLoremData[type])
           : [];
       return count ? arr.slice(0, count) : arr;
     }
@@ -287,7 +318,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * generates fake data
      * @returns {obj}
      */
-    _makeFakeData() {
+    _makeLoremData() {
       /* date functions */
       let /* all projects */
         projects = {
@@ -395,6 +426,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
           weeks: weeks,
           projects: projects,
           users: users,
+          portfolios: {},
           assignments: {},
           submissions: {},
           feedback: {},
@@ -596,7 +628,11 @@ const ElmslnStudioUtilities = function(SuperClass) {
             completed = Object.keys(data.assignments).length,
             id = `assignment-${completed}`,
             start = this._addWeeks(startDate + completed),
-            studentsList = this._shuffle(Object.keys(data.students));
+            studentsList = projectId !== "project-3"
+              ? []
+              : projectId !== "project-2"
+              ? this._draw(Object.keys(data.students),4,6)
+              : this._shuffle(Object.keys(data.students));
           data.assignments[id] = {
             projectId: projectId,
             assignment: assignmentName,
@@ -605,16 +641,17 @@ const ElmslnStudioUtilities = function(SuperClass) {
             type: type,
             submissions: []
           };
-          if (this._addDays(start, 7) < new Date())
-            data.assignments[id].submissions = studentsList.map(
-              (studentId, i) => {
-                return makeSubmission(
-                  id,
-                  studentId,
-                  this._nextDate(start, i, studentsList.length, 7)
-                );
-              }
-            );
+          data.assignments[id].submissions = studentsList.map(
+            (studentId, i) => {
+              let sid = makeSubmission(
+                id,
+                studentId,
+                this._nextDate(start, i, studentsList.length, 7)
+              );
+              data.portfolios[`portfolio-${studentId}-${projectId}`].push(sid);
+              return sid;
+            }
+          );
           return id;
         };
 
@@ -631,20 +668,26 @@ const ElmslnStudioUtilities = function(SuperClass) {
       });
 
       /* populate fake data starting with projects */
-      Object.keys(projects || {})
-        .slice(2)
-        .forEach(p => {
-          projects[p].assignments = projects[p].assignments.map(a =>
-            makeAssignment(p, a)
-          );
+      Object.keys(projects || {}).forEach(p => {
+        Object.keys(students || {}).forEach(s=>{
+          data.portfolios.push({
+            id: `portfolio-${s}-${p}`,
+            submissions:[]
+          })
         });
+        projects[p].assignments =  projects[p].assignments.map(a =>
+          makeAssignment(p, a)
+        );
+      });
 
       data.activities = this._sortRecent([
         ...this._toArray(data.submissions, { activity: "submission" }),
         ...this._toArray(data.feedback, { activity: "feedback" }),
         ...this._toArray(data.replies, { activity: "replies" })
       ]);
-      data.me = this._randomItem(Object.keys(data.students || {}));
+
+      /** make a profile */
+      data.userId = this._randomItem(Object.keys(data.students || {}));
       return data;
     }
 
@@ -661,6 +704,81 @@ const ElmslnStudioUtilities = function(SuperClass) {
           ? e.detail.response.data
           : {};
       //console.log('_handleObjectData',e,propName,this[propName]);
+    }
+
+    _getActivityTitle(activity) {
+      if (activity.activity === "submission") {
+        return this._getSubmissionTitle(activity);
+      } else if (activity.activity === "feedback") {
+        return this._getFeedBackTitle(activity);
+      } else {
+        return this._getReplyTitle(activity);
+      }
+    }
+
+    _getFeedBackDetails(feedback) {
+      let submission = this.submission(feedback.submissionId),
+        u = this.user(submission.userId),
+        f = this.user(feedback.userId),
+        a = this.assignment(submission.assignmentId);
+      return {
+        reviewerFirstName: f.firstName,
+        studentFirstName: u.firstName,
+        assignmentName: a.assignment
+      };
+    }
+
+    _getFeedBackTitle(feedback) {
+      let details = this._getFeedBackDetails(feedback);
+      return html`${details.reviewerFirstName} left feedback on ${details.studentFirstName}'s ${details.assignmentName}`;
+    }
+
+    _getReplyTitle(reply) {
+      let f = this.feedback(reply.feedbackId),
+        r = this.user(reply.userId),
+        u = this.user(f.userId);
+      return html`${r.firstName} replied to ${u.firstName}'s feedback`;
+    }
+
+    _getSubmissionTitle(submission) {
+      let u = this.user(submission.userId);
+      return html`${u.firstName} submitted ${this.assignment(activity.assignmentId).assignment}`;
+    }
+
+    _getUserSubmissions(userId){
+      let data = window.ElmslnStudioLoremData;
+      return userId && data && data.submissions 
+        ? this.recent("submissions").filter(i=>i.userId === userId).map(i=>{
+          let a = i.assignmentId
+            ? data.assignments[i.assignmentId]
+            : undefined;
+          i.assignment = a.assignment;
+          i.project =
+            a.projectId && data.projects[a.projectId]
+              ? data.projects[a.projectId].project
+              : undefined;
+
+          return i;
+        })
+        : [];
+    }
+
+    _getProfile(userId){
+      let data = window.ElmslnStudioLoremData,
+        feedback = this.recent("feedback"),
+        replies = this.recent("replies"),
+        profile = userId ? this.user(userId) : {};
+      profile.submissions = this._getUserSubmissions(userId);
+      profile.assignments = [ ...new Set(profile.submissions.map(i=>i.assignmentId))];
+      profile.feedbackBy =  data && data.submissions ? feedback.filter(i=>i.userId === userId) : [];
+      profile.feedbackFor = profile.submissions.map(i=>feedback.filter(j=>j.submissionId == i.id)).flat().map(i=>{
+        let props = this._getFeedBackDetails(i);
+        Object.keys(props).map(key=>i[key] = props[key]);
+        return i;
+      });
+      profile.repliesBy =  data && data.submissions ? replies.filter(i=>i.userId === userId) : [];
+      profile.repliesFor = profile.submissions.map(i=>replies.map(j=>j.submissionId == i.id)).flat();
+      return profile;
     }
 
     getAccentColor(str) {
