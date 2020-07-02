@@ -106,7 +106,7 @@ class SiteMenu extends LitElement {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
       setTimeout(() => {
-        this.shadowRoot.querySelector('map-menu').selected = this.activeId;        
+        this.shadowRoot.querySelector("map-menu").selected = this.activeId;
       }, 100);
     });
   }
