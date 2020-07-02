@@ -257,63 +257,60 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
           </div>
         </div>
         <div id="cards" class="${this.grid ? "grid" : "list"}">
-          <div class="no-submissions"
-            ?hidden="${this.filteredSubmissions.length > 0}">
+          <div
+            class="no-submissions"
+            ?hidden="${this.filteredSubmissions.length > 0}"
+          >
             No submissions for applied filters.
           </div>
-          ${this.filteredSubmissions.map(s =>html`
-            <accent-card
-              no-border
-              image-src="${s.image.src}"
-              ?horizontal="${s.feature || !this.grid ? true : false}"
-              image-align="${this._getAlign(s.gravity)}"
-              image-valign="${this._getValign(s.gravity)}"
-              gravity="${s.gravity}"
-            >
-              <div slot="image-corner" class="image-zoom">
-                <iron-icon icon="zoom-in"></iron-icon>
-              </div>
-              <div
-                slot="heading"
-                id="student-${s.id}"
-                class="card-student"
+          ${this.filteredSubmissions.map(
+            s => html`
+              <accent-card
+                no-border
+                image-src="${s.image.src}"
+                ?horizontal="${s.feature || !this.grid ? true : false}"
+                image-align="${this._getAlign(s.gravity)}"
+                image-valign="${this._getValign(s.gravity)}"
+                gravity="${s.gravity}"
               >
-                ${this.user(s.userId).firstName}
-                ${this.user(s.userId).lastName}
-              </div>
-              <div slot="corner" id="date-${s.id}">
-                ${this.grid
-                  ? this.shortDate(s.date)
-                  : this.medDate(s.date)}
-              </div>
-              <div slot="subheading" id="assignment-${s.id}">
-                ${this.assignment(s.assignmentId).assignment}
-              </div>
-              <div slot="content" id="project-${s.id}">
-                ${this.project(this.assignment(s.assignmentId).projectId)
-                  .project}
-              </div>
-              <div slot="content" class="feature" ?hidden="${!s.feature}">
-                ${s.feature}
-              </div>
-              <div slot="footer">
-                <button
-                  id="discussion"
-                  aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                >
-                  <iron-icon icon="communication:comment"></iron-icon>
-                  Discussion
-                </button>
-                <button
-                  id="view"
-                  aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                >
-                  <iron-icon icon="visibility"></iron-icon>
-                  View
-                </button>
-              </div>
-            </accent-card>
-          `
+                <div slot="image-corner" class="image-zoom">
+                  <iron-icon icon="zoom-in"></iron-icon>
+                </div>
+                <div slot="heading" id="student-${s.id}" class="card-student">
+                  ${this.user(s.userId).firstName}
+                  ${this.user(s.userId).lastName}
+                </div>
+                <div slot="corner" id="date-${s.id}">
+                  ${this.grid ? this.shortDate(s.date) : this.medDate(s.date)}
+                </div>
+                <div slot="subheading" id="assignment-${s.id}">
+                  ${this.assignment(s.assignmentId).assignment}
+                </div>
+                <div slot="content" id="project-${s.id}">
+                  ${this.project(this.assignment(s.assignmentId).projectId)
+                    .project}
+                </div>
+                <div slot="content" class="feature" ?hidden="${!s.feature}">
+                  ${s.feature}
+                </div>
+                <div slot="footer">
+                  <button
+                    id="discussion"
+                    aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                  >
+                    <iron-icon icon="communication:comment"></iron-icon>
+                    Discussion
+                  </button>
+                  <button
+                    id="view"
+                    aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                  >
+                    <iron-icon icon="visibility"></iron-icon>
+                    View
+                  </button>
+                </div>
+              </accent-card>
+            `
           )}
         </div>
       </div>
@@ -328,42 +325,40 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         </div>
         <nav-card flat no-border class="card" link-icon="chevron-right">
           <span slot="heading">Recent Comments</span>
-          <div
-            slot="body"
-            ?hidden="${this.filteredComments.length > 0}"
-          >
+          <div slot="body" ?hidden="${this.filteredComments.length > 0}">
             No comments for applied filters.
           </div>
           <div slot="linklist">
-            ${this.filteredComments.map(f => html`
-              <nav-card-item
-                accent-color="${this.getAccentColor(
-                  this.user(f.userId).firstName
-                )}"
-                .avatar="${this.user(f.userId).image}"
-                icon="chevron-right"
-                initials="${this.user(f.userId).firstName} ${this.user(
-                  f.userId
-                ).lastName}"
-              >
-                <button
-                  id="comment-${this.user(f.userId).id}"
-                  aria-describedby="comment-${this.user(f.userId)
-                    .id}-desc"
-                  slot="label"
+            ${this.filteredComments.map(
+              f => html`
+                <nav-card-item
+                  accent-color="${this.getAccentColor(
+                    this.user(f.userId).firstName
+                  )}"
+                  .avatar="${this.user(f.userId).image}"
+                  icon="chevron-right"
+                  initials="${this.user(f.userId).firstName} ${this.user(
+                    f.userId
+                  ).lastName}"
                 >
-                  ${this.user(f.userId).firstName} feedback on
-                  ${this.user(this.submission(f.submissionId).userId)
-                    .firstName}'s
-                  ${this.assignment(
-                    this.submission(f.submissionId).assignmentId
-                  ).assignment}
-                </button>
-                <span id="comment-${f.id}v" slot="description">
-                  ${this.medDate(f.date)}
-                </span>
-              </nav-card-item>
-            `)}
+                  <button
+                    id="comment-${this.user(f.userId).id}"
+                    aria-describedby="comment-${this.user(f.userId).id}-desc"
+                    slot="label"
+                  >
+                    ${this.user(f.userId).firstName} feedback on
+                    ${this.user(this.submission(f.submissionId).userId)
+                      .firstName}'s
+                    ${this.assignment(
+                      this.submission(f.submissionId).assignmentId
+                    ).assignment}
+                  </button>
+                  <span id="comment-${f.id}v" slot="description">
+                    ${this.medDate(f.date)}
+                  </span>
+                </nav-card-item>
+              `
+            )}
           </div>
         </nav-card>
       </div>
@@ -411,19 +406,20 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     this.tag = ElmslnStudioSubmissions.tag;
   }
   get filteredSubmissions() {
-    let filter = this.submissions.filter(a => this._isFiltered(a.userId, a.assignmentId));
-    console.log(
-      "submissions", 
-      this.submissions, filter
+    let filter = this.submissions.filter(a =>
+      this._isFiltered(a.userId, a.assignmentId)
     );
+    console.log("submissions", this.submissions, filter);
     return filter;
   }
   get filteredComments() {
-    let filter = this.recent("feedback").filter(i => this._isFiltered(this.submission(i.submissionId).userId, this.submission(i.submissionId).assignmentId));
-    console.log(
-      "feedback", 
-      this.recent("feedback"), filter
+    let filter = this.recent("feedback").filter(i =>
+      this._isFiltered(
+        this.submission(i.submissionId).userId,
+        this.submission(i.submissionId).assignmentId
+      )
     );
+    console.log("feedback", this.recent("feedback"), filter);
     return filter;
   }
   get noSubmissions() {
@@ -433,14 +429,18 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     );
   }
 
-  initData(data){
+  initData(data) {
     super.initData();
     this.studentOptions = { "": "All" };
     this.assignmentOptions = { "": "All" };
-    this._toArray(data.students).forEach(d => this.studentOptions[d.id] = `${d.lastName}, ${d.firstName}`);
-    this._toArray(data.assignments).forEach(d => this.assignmentOptions[d.id] = d.assignment);
+    this._toArray(data.students).forEach(
+      d => (this.studentOptions[d.id] = `${d.lastName}, ${d.firstName}`)
+    );
+    this._toArray(data.assignments).forEach(
+      d => (this.assignmentOptions[d.id] = d.assignment)
+    );
     this.submissions = this.recent("submissions");
-    console.log("submissions", this.submissions,this.studentOptions);
+    console.log("submissions", this.submissions, this.studentOptions);
   }
 
   _getValign(gravity) {
@@ -460,18 +460,24 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   }
   _isFiltered(student = "", assignment = "") {
     console.log(
-      student,'-',
-      this._isFilteredStudent(student),'-',
-      assignment,'-',
-      this._isFilteredAssignment(assignment),'=',
+      student,
+      "-",
+      this._isFilteredStudent(student),
+      "-",
+      assignment,
+      "-",
+      this._isFilteredAssignment(assignment),
+      "=",
       this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
     );
-    return this._isFilteredStudent(student) && this._isFilteredAssignment(assignment);
+    return (
+      this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
+    );
   }
-  _isFilteredAssignment(assignment = ""){
+  _isFilteredAssignment(assignment = "") {
     return this.assignmentFilter === "" || assignment === this.assignmentFilter;
   }
-  _isFilteredStudent(student = ""){
+  _isFilteredStudent(student = "") {
     return this.studentFilter === "" || student === this.studentFilter;
   }
   /**

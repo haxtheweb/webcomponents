@@ -395,7 +395,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
     super.connectedCallback();
   }
 
-  initData(data){
+  initData(data) {
     super.initData();
     let me = data && data.me ? data && data.me : undefined,
       feedback = this.recent("feedback"),

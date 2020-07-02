@@ -345,7 +345,7 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
     super.connectedCallback();
   }
 
-  initData(data){
+  initData(data) {
     super.initData();
     let submission = this._randomItem(this.recent("submissions")),
       assignment = this.assignment(submission.assignmentId);

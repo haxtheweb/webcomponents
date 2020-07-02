@@ -125,8 +125,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
 
     // properties available to the custom element for data binding
     static get properties() {
-      return {
-      };
+      return {};
     }
     // life cycle
     constructor() {
@@ -135,9 +134,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
         window.ElmslnStudioFakeData = this._makeFakeData();
       this.initData(window.ElmslnStudioFakeData);
     }
-    initData(data){
-    }
-    
+    initData(data) {}
+
     /**
      * sorts array by most recent
      * @param {array} arr array
@@ -577,12 +575,12 @@ const ElmslnStudioUtilities = function(SuperClass) {
             assignment.type
           );
           data.submissions[id].feedback = reviewers.map((userId, i) => {
-              return makeFeedback(
-                id,
-                userId,
-                this._nextDate(start, i, reviewers.length, 3)
-              );
-            });
+            return makeFeedback(
+              id,
+              userId,
+              this._nextDate(start, i, reviewers.length, 3)
+            );
+          });
           return id;
         },
         /* make project assignment */
@@ -633,11 +631,13 @@ const ElmslnStudioUtilities = function(SuperClass) {
       });
 
       /* populate fake data starting with projects */
-      Object.keys(projects || {}).slice(2).forEach(p => {
-        projects[p].assignments = projects[p].assignments.map(a =>
-          makeAssignment(p, a)
-        );
-      });
+      Object.keys(projects || {})
+        .slice(2)
+        .forEach(p => {
+          projects[p].assignments = projects[p].assignments.map(a =>
+            makeAssignment(p, a)
+          );
+        });
 
       data.activities = this._sortRecent([
         ...this._toArray(data.submissions, { activity: "submission" }),
