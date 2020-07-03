@@ -17,7 +17,8 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: inline-flex;
@@ -34,10 +35,7 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
             #000000
           );
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(
-            --haxcms-tooltip-color,
-            #ffffff
-          );
+          --simple-tooltip-text-color: var(--haxcms-tooltip-color, #ffffff);
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
@@ -86,12 +84,11 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
       if (propName == "type") {
         this._typeChanged(this[propName], oldValue);
       }
-      if (propName === 'editMode') {
+      if (propName === "editMode") {
         if (this[propName]) {
-          this.setAttribute('part', 'edit-mode-active');
-        }
-        else {
-          this.removeAttribute('part');
+          this.setAttribute("part", "edit-mode-active");
+        } else {
+          this.removeAttribute("part");
         }
       }
     });
@@ -100,7 +97,8 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
    * Props
    */
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       /**
        * icon
        */

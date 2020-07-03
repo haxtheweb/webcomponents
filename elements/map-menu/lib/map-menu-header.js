@@ -44,7 +44,10 @@ class MapMenuHeader extends LitElement {
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color)
           );
-          text-decoration: var(--map-menu-header-a-text-decoration-hover, underline);
+          text-decoration: var(
+            --map-menu-header-a-text-decoration-hover,
+            underline
+          );
         }
         lrndesign-avatar {
           display: inline-block;

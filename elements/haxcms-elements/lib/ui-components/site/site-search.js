@@ -33,14 +33,17 @@ class SiteSearch extends LitElement {
         }
         .result {
           display: block;
-          background-color: var(--site-search-result-background-color,#eeeeee);
-          color: var(--site-search-result-color,#222222);
+          background-color: var(--site-search-result-background-color, #eeeeee);
+          color: var(--site-search-result-color, #222222);
           margin-bottom: 1.5rem;
           padding-bottom: 0.5rem;
         }
         .result:hover,
         .result:focus {
-          background-color: var(--site-search-result-background-color-hover,#dddddd);
+          background-color: var(
+            --site-search-result-background-color-hover,
+            #dddddd
+          );
           color: var(--site-search-link-color-hover, #000000);
           text-decoration: none;
           outline: 2px solid grey;
@@ -110,16 +113,25 @@ class SiteSearch extends LitElement {
       </simple-fields-field>
       ${this.search.length > 0
         ? html`
-            <h1 class="results-found-text">Found ${this.__results.length} results.</h1>
+            <h1 class="results-found-text">
+              Found ${this.__results.length} results.
+            </h1>
           `
         : html``}
       <lunr-search id="lunr"></lunr-search>
 
       ${this.__results.map(
         item => html`
-          <a class="result" .href="${item.location}" @click="${this.selectionMade}">
+          <a
+            class="result"
+            .href="${item.location}"
+            @click="${this.selectionMade}"
+          >
             <div class="title">
-              ${item.title}<span ?hidden="${!this.showPath}" class="link-text" aria-hidden="true"
+              ${item.title}<span
+                ?hidden="${!this.showPath}"
+                class="link-text"
+                aria-hidden="true"
                 >(${item.location})</span
               >
             </div>
@@ -138,7 +150,7 @@ class SiteSearch extends LitElement {
     this.dispatchEvent(
       new CustomEvent(`search-item-selected`, {
         detail: {
-          value: e.detail,
+          value: e.detail
         }
       })
     );
@@ -164,15 +176,15 @@ class SiteSearch extends LitElement {
       },
       showDate: {
         type: Boolean,
-        attribute: 'show-date',
+        attribute: "show-date"
       },
       showPath: {
         type: Boolean,
-        attribute: 'show-path',
+        attribute: "show-path"
       },
       hideInput: {
         type: Boolean,
-        attribute: 'hide-input',
+        attribute: "hide-input"
       },
       search: {
         type: String

@@ -46,7 +46,10 @@ class MapMenuItem extends LitElement {
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color)
           );
-          text-decoration: var(--map-menu-item-a-text-decoration-hover, underline);
+          text-decoration: var(
+            --map-menu-item-a-text-decoration-hover,
+            underline
+          );
         }
         #track {
           transition: 0.1s all ease-in-out;

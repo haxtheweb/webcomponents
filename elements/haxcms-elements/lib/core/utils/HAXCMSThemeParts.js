@@ -17,28 +17,38 @@ const HAXCMSThemeParts = function(SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [...styles, css`
-        [part="edit-mode-active"] {
-          pointer-events: var(--haxcms-theme-parts-edit-mode-active-pointer-events, none);
-          opacity: var(--haxcms-theme-parts-edit-mode-active-opacity, 0.5);
-          filter: var(--haxcms-theme-parts-edit-mode-active-filter, blur(1px));
-        }
-      `];
+      return [
+        ...styles,
+        css`
+          [part="edit-mode-active"] {
+            pointer-events: var(
+              --haxcms-theme-parts-edit-mode-active-pointer-events,
+              none
+            );
+            opacity: var(--haxcms-theme-parts-edit-mode-active-opacity, 0.5);
+            filter: var(
+              --haxcms-theme-parts-edit-mode-active-filter,
+              blur(1px)
+            );
+          }
+        `
+      ];
     }
     static get properties() {
       let props = {};
       if (super.properties) {
         props = super.props;
       }
-      return {...props,
+      return {
+        ...props,
         editMode: {
           type: Boolean,
-          attribute: 'edit-mode',
+          attribute: "edit-mode",
           reflect: true
         }
       };
     }
-  }
-}
+  };
+};
 
 export { HAXCMSThemeParts };

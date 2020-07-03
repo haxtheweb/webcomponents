@@ -23,7 +23,8 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -67,10 +68,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
             #000000
           );
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(
-            --haxcms-tooltip-color,
-            #ffffff
-          );
+          --simple-tooltip-text-color: var(--haxcms-tooltip-color, #ffffff);
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
@@ -141,7 +139,8 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
    * Props
    */
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       type: {
         type: String,
         reflect: true

@@ -22,14 +22,14 @@ paper-icon-button:focus {
 
 simple-tooltip {
   --simple-tooltip-background: var(
-    --scroll-button-tooltip-background-color,
-    #000000
-  );
+  --scroll-button-tooltip-background-color,
+  #000000
+);
   --simple-tooltip-opacity: 1;
   --simple-tooltip-text-color: var(
-    --scroll-button-tooltip-color,
-    #ffffff
-  );
+  --scroll-button-tooltip-color,
+  #ffffff
+);
   --simple-tooltip-delay-in: 0;
   --simple-tooltip-border-radius: 0;
 }

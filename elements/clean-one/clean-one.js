@@ -28,7 +28,8 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
 class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
   //styles function
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -1059,9 +1060,15 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           .colorTheme}"
       >
         <div class="menu-outline">
-        <div id="site-search-input" role="search">
-          <input type="text" placeholder="Type to search" .value="${this.searchTerm}" id="search" @input="${this.searchChanged}" />
-        </div>
+          <div id="site-search-input" role="search">
+            <input
+              type="text"
+              placeholder="Type to search"
+              .value="${this.searchTerm}"
+              id="search"
+              @input="${this.searchChanged}"
+            />
+          </div>
           <nav id="nav" role="navigation" aria-labelledby="leftnavheading">
             <site-menu id="leftnavheading"></site-menu>
           </nav>
@@ -1069,7 +1076,11 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         <div class="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <div class="site-header" role="navigation" .part="${this.editMode ? `edit-mode-active` : ``}">
+            <div
+              class="site-header"
+              role="navigation"
+              .part="${this.editMode ? `edit-mode-active` : ``}"
+            >
               <div class="btn-container">
                 <paper-icon-button
                   .part="${this.editMode ? `edit-mode-active` : ``}"
@@ -1173,11 +1184,15 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
               <div class="main-content page-inner">
                 <section class="normal main-section">
                   <site-search
-                  hide-input
-                  search="${this.searchTerm}"
-                  @search-item-selected="${this.searchItemSelected}"
-                  ?hidden="${this.searchTerm != "" ? false : true}"></site-search>
-                  <div id="contentcontainer" ?hidden="${this.searchTerm != "" ? true : false}">
+                    hide-input
+                    search="${this.searchTerm}"
+                    @search-item-selected="${this.searchItemSelected}"
+                    ?hidden="${this.searchTerm != "" ? false : true}"
+                  ></site-search>
+                  <div
+                    id="contentcontainer"
+                    ?hidden="${this.searchTerm != "" ? true : false}"
+                  >
                     <div id="slot">
                       <slot></slot>
                     </div>
@@ -1206,16 +1221,17 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
   }
   searchItemSelected(e) {
     // an item was picked, let's just make the UI jump to that item
-    this.searchTerm = '';
+    this.searchTerm = "";
   }
   searchChanged(e) {
     if (e.path[0].value) {
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(() => {
-        this.searchTerm = e.path[0].value;
-      });
-    }
-    else {
-      this.searchTerm = '';
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
+        () => {
+          this.searchTerm = e.path[0].value;
+        }
+      );
+    } else {
+      this.searchTerm = "";
     }
   }
   // properties available to the custom element for data binding
@@ -1226,7 +1242,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         type: String
       },
       searchTerm: {
-        type: String,
+        type: String
       },
       hideSettings: {
         type: Boolean
@@ -1264,7 +1280,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
     this.hideSettings = true;
     this.fontSize = 1;
     this.fontFamily = 0;
-    this.searchTerm = '';
+    this.searchTerm = "";
     this.colorTheme = 0;
     this.withMenu = "with-menu";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
@@ -1277,11 +1293,16 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    this.addEventListener('click', this.checkMenuOpen.bind(this));
+    this.addEventListener("click", this.checkMenuOpen.bind(this));
   }
 
   checkMenuOpen(e) {
-    if (!this.hideSettings && e.path && !e.path.includes(this.__toggleTarget) && !e.path.includes(this.shadowRoot.querySelector("simple-popover"))) {
+    if (
+      !this.hideSettings &&
+      e.path &&
+      !e.path.includes(this.__toggleTarget) &&
+      !e.path.includes(this.shadowRoot.querySelector("simple-popover"))
+    ) {
       this.hideSettings = true;
     }
   }

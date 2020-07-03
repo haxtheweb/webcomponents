@@ -16,7 +16,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -106,7 +107,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
    * LitElement life cycle - properties definition
    */
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       /**
        * Manifest with router / location enhancements
        */
