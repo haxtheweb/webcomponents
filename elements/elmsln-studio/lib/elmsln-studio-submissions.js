@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js"
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
@@ -282,7 +282,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                   ${this.user(s.userId).lastName}
                 </div>
                 <div slot="corner" id="date-${s.id}">
-                  ${this.grid ? this.dateFormat(s.date,"short") : this.dateFormat(s.date)}
+                  ${this.grid
+                    ? this.dateFormat(s.date, "short")
+                    : this.dateFormat(s.date)}
                 </div>
                 <div slot="subheading" id="assignment-${s.id}">
                   ${this.assignment(s.assignmentId).assignment}
@@ -297,14 +299,18 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                 <div slot="footer">
                   <button
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e=>location.href='./portfolio?submission=${s.id}'}&feedback=${s.feedback[0]}'}"
+                    @click="${e =>
+                      (location.href =
+                        "./portfolio?submission=${s.id}")}&feedback=${s
+                      .feedback[0]}'}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
                   </button>
                   <button
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e=>location.href='./portfolio?submission=${s.id}'}"
+                    @click="${e =>
+                      (location.href = "./portfolio?submission=${s.id}")}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
@@ -377,7 +383,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       assignmentOptions: {
         type: Array
       },
-      feedbackData:{
+      feedbackData: {
         type: Array
       },
       grid: {
@@ -421,7 +427,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "demoMode" && this.demoMode) console.log(propName,oldValue,this.demoMode);
+      if (propName === "demoMode" && this.demoMode)
+        console.log(propName, oldValue, this.demoMode);
       if (propName === "demoMode" && this.demoMode) this.initDemo();
     });
   }
@@ -429,23 +436,40 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   initDemo() {
     this.studentOptions = { "": "All" };
     this.assignmentOptions = { "": "All" };
-    Object.keys(this.loremData.students).forEach(i => this.studentOptions[i] = `${this.loremData.users[i].lastName}, ${this.loremData.users[i].firstName}`);
-    Object.keys(this.loremData.assignments).forEach(i => this.assignmentOptions[i] = this.loremData.assignments[i].assignment);
-    this.submissionData = Object.keys(this.loremData.submissions).map(i=>{
-      let submission = this.loremData.submissions[i];
-      submission.id = i;
-      return submission;
-    }).sort((a,b)=>b.date-a.date);
-    this.feedbackData = Object.keys(this.loremData.feedback).map(i=>{
-      let feedback = this.loremData.feedback[i];
-      feedback.id = i;
-      return feedback;
-    }).sort((a,b)=>b.date-a.date);
-    console.log("submissions", this.submissionData, this.studentOptions,this.filteredSubmissions);
+    Object.keys(this.loremData.students).forEach(
+      i =>
+        (this.studentOptions[i] = `${this.loremData.users[i].lastName}, ${
+          this.loremData.users[i].firstName
+        }`)
+    );
+    Object.keys(this.loremData.assignments).forEach(
+      i =>
+        (this.assignmentOptions[i] = this.loremData.assignments[i].assignment)
+    );
+    this.submissionData = Object.keys(this.loremData.submissions)
+      .map(i => {
+        let submission = this.loremData.submissions[i];
+        submission.id = i;
+        return submission;
+      })
+      .sort((a, b) => b.date - a.date);
+    this.feedbackData = Object.keys(this.loremData.feedback)
+      .map(i => {
+        let feedback = this.loremData.feedback[i];
+        feedback.id = i;
+        return feedback;
+      })
+      .sort((a, b) => b.date - a.date);
+    console.log(
+      "submissions",
+      this.submissionData,
+      this.studentOptions,
+      this.filteredSubmissions
+    );
   }
   get filteredSubmissions() {
     let filter = this.submissionData.filter(a =>
-    this._isFiltered(a.userId, a.assignmentId)
+      this._isFiltered(a.userId, a.assignmentId)
     );
     //console.log("submissions", this.submissionData, filter);
     return filter;
@@ -460,7 +484,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
     return filter;
   }
 
-  _discussionClick(id){
+  _discussionClick(id) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
      *
@@ -475,7 +499,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       })
     );
   }
-  _viewClick(id){
+  _viewClick(id) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
      *
@@ -489,9 +513,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         detail: id
       })
     );
-
   }
-  _zoomClick(id){
+  _zoomClick(id) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
      *
@@ -505,7 +528,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         detail: id
       })
     );
-
   }
 
   _getValign(gravity) {

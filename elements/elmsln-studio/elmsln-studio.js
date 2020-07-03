@@ -23,8 +23,7 @@ import "./lib/elmsln-studio-portfolio.js";
  * @lit-element
  * @demo demo/index.html
  */
-class ElmslnStudio extends  router(ElmslnStudioUtilities(LitElement)) {
-
+class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -91,12 +90,14 @@ class ElmslnStudio extends  router(ElmslnStudioUtilities(LitElement)) {
   /**
    * Handle response for the whole projects object.
    */
-  _handleResponse(event) {
-  }
+  _handleResponse(event) {}
 
   render() {
     return html`
-      <link ref="//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+      <link
+        ref="//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet"
+      />
       <iron-ajax
         auto
         url="${this.profileSource}"
@@ -104,7 +105,8 @@ class ElmslnStudio extends  router(ElmslnStudioUtilities(LitElement)) {
         handle-as="json"
         last-response="${this.profileData}"
         on-response="${this._activitiesLoaded}"
-      ></iron-ajax><iron-ajax
+      ></iron-ajax
+      ><iron-ajax
         auto
         url="${this.feedbackSource}"
         params="${this.feedbackParams}"
@@ -130,7 +132,9 @@ class ElmslnStudio extends  router(ElmslnStudioUtilities(LitElement)) {
       <iron-ajax
         auto
         url="${this.portfolioSource}"
-        params="${this.params.portfolio ? `{"portfolio": "portfolio-${this.params.portfolio}"}` : undefined}"
+        params="${this.params.portfolio
+          ? `{"portfolio": "portfolio-${this.params.portfolio}"}`
+          : undefined}"
         handle-as="json"
         last-response="${this.portfolioData}"
         on-response="${this._portfolioLoaded}"
@@ -138,18 +142,31 @@ class ElmslnStudio extends  router(ElmslnStudioUtilities(LitElement)) {
       <p>
         <elmsln-studio-link href="/">Dashboard</elmsln-studio-link>
         <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
-        <elmsln-studio-link href="/submissions?assignment=assignment-1">Submissions for Assignment 1</elmsln-studio-link>
-        <elmsln-studio-link href="/submissions?student=kmk5124">Submissions by kmk5124</elmsln-studio-link>
-        <elmsln-studio-link href="/submissions?assignment=assignment-1&student=kmk5124">Submissions for Assignment 1 by kmk5124</elmsln-studio-link>
-        <elmsln-studio-link href="/portfolios/kmk5124-project-0">kmk5124-project-0</elmsln-studio-link>
+        <elmsln-studio-link href="/submissions?assignment=assignment-1"
+          >Submissions for Assignment 1</elmsln-studio-link
+        >
+        <elmsln-studio-link href="/submissions?student=kmk5124"
+          >Submissions by kmk5124</elmsln-studio-link
+        >
+        <elmsln-studio-link
+          href="/submissions?assignment=assignment-1&student=kmk5124"
+          >Submissions for Assignment 1 by kmk5124</elmsln-studio-link
+        >
+        <elmsln-studio-link href="/portfolios/kmk5124-project-0"
+          >kmk5124-project-0</elmsln-studio-link
+        >
         <elmsln-studio-link href="/portfolios">portfolios</elmsln-studio-link>
       </p>
-      <br>
-      <elmsln-studio-main active-route="${this.route}" data-params="${JSON.stringify(this.params)}">
-        <elmsln-studio-dashboard 
+      <br />
+      <elmsln-studio-main
+        active-route="${this.route}"
+        data-params="${JSON.stringify(this.params)}"
+      >
+        <elmsln-studio-dashboard
           .profile-data=${this.profileData}
           .activity-data=${this.activityData}
-          route="dashboard">
+          route="dashboard"
+        >
         </elmsln-studio-dashboard>
         <!--elmsln-studio-submissions 
           route="submissions" 

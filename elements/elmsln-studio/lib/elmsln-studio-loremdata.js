@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from "lit-element/lit-element.js"
+import { LitElement } from "lit-element/lit-element.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 
 /**
@@ -21,7 +21,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   static get tag() {
     return "elmsln-studio-loremdata";
   }
-  
+
   static get properties() {
     return {
       projects: {
@@ -76,7 +76,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         type: String
       },
       target: {
-        type: String,
+        type: String
       }
     };
   }
@@ -203,17 +203,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     ];
     this.refreshData();
   }
-  updated(){
+  updated() {
     this.refreshData();
   }
-  refreshData(){
+  refreshData() {
     /* lorem ipsum sentence list */
     this.sentences = this.paragraphs
       .map(p => p.split(/[\.\?\!]+\s+/))
       .flat()
       .map(
-        s =>
-          `${s}${this.randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
+        s => `${s}${this.randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
       );
     /* lorem ipsum word list */
     this.words = [
@@ -225,12 +224,13 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       )
     ];
     /* total weeks to complete all assgnments */
-    this.weeks = Object.keys(this.projects || {}).map(i => this.projects[i].assignments)
+    this.weeks = Object.keys(this.projects || {})
+      .map(i => this.projects[i].assignments)
       .flat().length;
     /* set start and end so we are halfway though course */
     this.endDate = this.addWeeks(new Date(), Math.floor(this.weeks / 2));
     this.startDate = this.addWeeks(this.endDate, (this.weeks + 1) * -1);
-    
+
     /* filter users to get students  */
     this.students = JSON.parse(JSON.stringify(this.users));
     Object.keys(this.students || {}).forEach(s => {
@@ -282,40 +282,44 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       })
     );
   }
-  get projectsList(){
+  get projectsList() {
     this.toArray(this.projects);
   }
-  get assignmentsList(){
+  get assignmentsList() {
     this.toArray(this.assignments);
   }
-  get portfoliosList(){
+  get portfoliosList() {
     this.toArray(this.portfolios);
   }
-  get submissionsList(){
+  get submissionsList() {
     this.toArray(this.submissions);
   }
-  get feedbackList(){
+  get feedbackList() {
     this.toArray(this.feedback);
   }
-  get repliesList(){
+  get repliesList() {
     this.toArray(this.replies);
   }
-  setTarget(){
-    let target = document.getElementById(this.target || 'elmsln-studio');
-    if(target) {
+  setTarget() {
+    let target = document.getElementById(this.target || "elmsln-studio");
+    if (target) {
       target.profileData = this.makeProfile();
       target.activityData = this.activities;
       target.submissionsData = this.submissions;
     }
   }
-  makeProfile(){
+  makeProfile() {
     let profile = this.users[this.userId];
-    profile.submissions = this.submissionsList.filter(i=>this.submissions[i].userId === this.userId);
+    profile.submissions = this.submissionsList.filter(
+      i => this.submissions[i].userId === this.userId
+    );
     profile.assignments = this.assignmentsList;
-    profile.feedbackFor = profile.submissions.feedback.map(i=>this.feedback[i]);
+    profile.feedbackFor = profile.submissions.feedback.map(
+      i => this.feedback[i]
+    );
     profile.repliesBy = this.repliesList.filter(i => i.userId === userId);
     profile.feedbackBy = this.feedbackList.filter(i => i.userId === userId);
-    profile.repliesFor = profile.feedbackBy.replies.map(i=>this.replies[i]);
+    profile.repliesFor = profile.feedbackBy.replies.map(i => this.replies[i]);
     return profile;
   }
   /**
@@ -324,7 +328,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    * @returns {arr} shuffled array
    */
   shuffle(arr = []) {
-    return arr.sort((a, b) => Math.random()- Math.random());
+    return arr.sort((a, b) => Math.random() - Math.random());
   }
   /**
    * draws x-y items from shuffled array
@@ -334,7 +338,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    * @returns {arr} shuffled array of x items
    */
   draw(arr = [], min = 0, max = min) {
-    return this.shuffle(arr).slice(0, min + (Math.floor(Math.random() * (max - min))));
+    return this.shuffle(arr).slice(
+      0,
+      min + Math.floor(Math.random() * (max - min))
+    );
   }
   /**
    * distributes items over a period of x days
@@ -349,7 +356,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     return this.addDays(start, (days * index) / qty + offset);
   }
   /**
-   * generates random link data 
+   * generates random link data
    * @returns {object} link as { url, text, type }
    * */
   randomLink() {
@@ -374,7 +381,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     return items[Math.floor(Math.random() * items.length)];
   }
   /**
-   * genterates random image data 
+   * genterates random image data
    * @param {string} topic optional image topic
    * @returns {object} image's {alt, src, sizing, gravity}
    */
@@ -416,7 +423,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     };
   }
   /**
-   * make submission assets based on topic and type 
+   * make submission assets based on topic and type
    * @param {string} topic optional topic for image assets
    * @returns {array} array of assets
    */
@@ -445,7 +452,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    * @param {object} created date comment was created
    * @returns {object} comment data
    */
-  makeComment(id,val, key, userId, created) {
+  makeComment(id, val, key, userId, created) {
     let comment = {
       id: id,
       userId: userId,
@@ -504,7 +511,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     }
     return id;
   }
-  /** 
+  /**
    * make assignment submission by student
    * @param {string} assignmentId assignment identifier
    * @param {string} studentId author identifier
@@ -543,21 +550,15 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       );
     });
     return id;
-  }
-  /** 
-   * make project assignment 
+  };
+  /**
+   * make project assignment
    * @param {string} projectId project identifier
    * @param {string} assignmentName assignment name
    * @returns {object} assignment data
    */
   makeAssignment = (projectId, assignmentName) => {
-    let topic = this.randomItem([
-        "any",
-        "animals",
-        "nature",
-        "people",
-        "tech"
-      ]),
+    let topic = this.randomItem(["any", "animals", "nature", "people", "tech"]),
       type = this.randomItem(["links", "body", "sources"]),
       completed = Object.keys(this.assignments).length,
       id = `assignment-${completed}`,
@@ -577,19 +578,19 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       type: type,
       submissions: []
     };
-    this.assignments[id].submissions = studentsList.map(
-      (studentId, i) => {
-        let sid = makeSubmission(
-          id,
-          studentId,
-          this.nextDate(created, i, studentsList.length, 7)
-        );
-        this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(sid);
-        return sid;
-      }
-    );
+    this.assignments[id].submissions = studentsList.map((studentId, i) => {
+      let sid = makeSubmission(
+        id,
+        studentId,
+        this.nextDate(created, i, studentsList.length, 7)
+      );
+      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(
+        sid
+      );
+      return sid;
+    });
     return id;
-  }
+  };
 }
 customElements.define("elmsln-studio-loremdata", ElmslnStudioLoremdata);
 export { ElmslnStudioLoremdata };

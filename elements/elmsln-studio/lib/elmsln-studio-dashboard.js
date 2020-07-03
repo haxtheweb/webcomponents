@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js"
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 
@@ -225,7 +225,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                             ${a.assignment}
                           </button>
                           <span id="due-${a.id}-desc" slot="description"
-                            >${this.dateFormat(a.date,"long")}</span
+                            >${this.dateFormat(a.date, "long")}</span
                           >
                         </nav-card-item>
                       `
@@ -316,7 +316,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
                   >
-                    ${this.activityTitle(a,a.activity)}
+                    ${this.activityTitle(a, a.activity)}
                   </button>
                   <span id="act-${a.id}-desc" slot="description"
                     >${this.dateFormat(a.date)}</span
@@ -380,18 +380,20 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   get activity() {
     return this.activityData.slice(0, this.activityLoad);
   }
-  get assignmentsCompleted(){
-    let assignments = this.profileData.submissions.map(i=>this.getAncestor(i,["assignmentId","assignmnents"]).id);
+  get assignmentsCompleted() {
+    let assignments = this.profileData.submissions.map(
+      i => this.getAncestor(i, ["assignmentId", "assignmnents"]).id
+    );
     return [...this.Set(profile.assignments)];
   }
   get workDue() {
-    return this.profileData 
-      && this.profileData.assignments
+    return this.profileData && this.profileData.assignments
       ? this.profileData.assignments.filter(
-      i =>
-        !this.profileData.assignmentsCompleted ||
-        !this.profileData.assignmentsCompleted.includes(i.id)
-    ) : [];
+          i =>
+            !this.profileData.assignmentsCompleted ||
+            !this.profileData.assignmentsCompleted.includes(i.id)
+        )
+      : [];
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -401,7 +403,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   }
 
   userStat(arr) {
-    return this.profileData && this.profileData[arr] ? this.profileData[arr].length : 0;
+    return this.profileData && this.profileData[arr]
+      ? this.profileData[arr].length
+      : 0;
   }
 
   loadMoreComments(e) {

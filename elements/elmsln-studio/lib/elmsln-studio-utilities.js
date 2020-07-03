@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element/lit-element.js"
+import { LitElement, html } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -18,8 +18,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {boolean} sort by most recent? (default is true)
      * @returns {arr} sorted array
      */
-    sortDates(arr,recent=true) {
-      return arr.sort((a, b) => recent ? b.date - a.date : a.date - b.date);
+    sortDates(arr, recent = true) {
+      return arr.sort((a, b) => (recent ? b.date - a.date : a.date - b.date));
     }
     /**
      * gets date x days from start date
@@ -62,12 +62,12 @@ const ElmslnStudioUtilities = function(SuperClass) {
       return this.sortDates(this.toArray(arr));
     }
     //submission  assignmnent assignmentId
-    getAncestor(child,path){
-      if(path && path.length > 0){
+    getAncestor(child, path) {
+      if (path && path.length > 0) {
         let foreignkey = path[0][1],
           parent = path[0][0],
           key = child[foreignkey];
-        return getAncestors(parent[key],path.slice(1));
+        return getAncestors(parent[key], path.slice(1));
       } else {
         return child;
       }
@@ -78,34 +78,34 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {boolean} sortable last name first
      * @returns {string} `Firstname Lastname` (or if sortable, `Lastname, Firstname`)
      */
-    fullName(user, sortable=false) {
-      return user && !sortable 
-        ? `${user.firstName} ${user.lastName}` 
-        : user 
+    fullName(user, sortable = false) {
+      return user && !sortable
+        ? `${user.firstName} ${user.lastName}`
+        : user
         ? `${user.lastName}, ${user.firstName}`
-        :``;
+        : ``;
     }
     /**
      * gets formatted date
      * @param {object} date
-     * @param {format} long (Weekday, Month, Day, Year), short (Month, Day), or default (Month, Day, Year) 
+     * @param {format} long (Weekday, Month, Day, Year), short (Month, Day), or default (Month, Day, Year)
      * @returns {string} date as string
      */
-    dateFormat(d,format) {
+    dateFormat(d, format) {
       return format === "long"
         ? d.toLocaleDateString(undefined, {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric"
-        })
-        : format === "short" 
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          })
+        : format === "short"
         ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
         : d.toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "long",
-          day: "numeric"
-        });
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          });
     }
 
     /**
@@ -130,12 +130,10 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {array} full
      * @param {number} increment
      * @returns {array}
-     */ 
+     */
+
     loadMore(truncated, full, increment) {
-      truncated = full.slice(
-        0,
-        truncated.length + increment
-      );
+      truncated = full.slice(0, truncated.length + increment);
     }
     /**
      * gets title of a given activity
@@ -143,7 +141,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {string} type of activtiy
      * @returns {string} title
      */
-    activityTitle(activity,type) {
+    activityTitle(activity, type) {
       if (type === "submission") {
         return this.submissionTitle(activity);
       } else if (activity.activity === "feedback") {
@@ -178,8 +176,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
         f = this.user(feedback.userId),
         a = this.assignment(submission.assignmentId);
       return html`
-        ${f.firstName} left feedback on
-        ${u.firstName}'s ${a.assignment}
+        ${f.firstName} left feedback on ${u.firstName}'s ${a.assignment}
       `;
     }
 

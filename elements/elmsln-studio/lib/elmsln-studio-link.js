@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js"
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { navigator } from "lit-element-router";
 
 /**
@@ -14,7 +14,6 @@ import { navigator } from "lit-element-router";
  * @lit-element
  */
 class ElmslnStudioLink extends navigator(LitElement) {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -22,7 +21,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
   static get tag() {
     return "elmsln-studio-link";
   }
-  
+
   static get properties() {
     return {
       href: { type: String }

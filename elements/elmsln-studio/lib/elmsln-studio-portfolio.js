@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js"
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
@@ -206,19 +206,17 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
               )}"
               aria-hidden="true"
               label="${this.fullName(this.studentData)}"
-              src="${this.studentData && this.studentData.image ? this.studentData.image : undefined}"
+              src="${this.studentData && this.studentData.image
+                ? this.studentData.image
+                : undefined}"
               two-chars
             >
             </lrndesign-avatar>
-            <span class="student-name"
-              >${this.fullName(this.studentData)}</span
-            >
-            <span class="project-name"
-              >${this.portfolioData.project}</span
-            >
+            <span class="student-name">${this.fullName(this.studentData)}</span>
+            <span class="project-name">${this.portfolioData.project}</span>
           </h1>
           ${this.submissionData.map(
-            (s,i) => html`
+            (s, i) => html`
               <section>
                 <h2 id="sub-${s.id}">
                   <span class="assignment-name"
@@ -285,8 +283,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
         ${this.feedbackData.map(
           f => html`
             <div class="thread">
-              ${this.makeComment(f)}
-              ${f.replies.map(r => this.makeComment(r))}
+              ${this.makeComment(f)} ${f.replies.map(r => this.makeComment(r))}
             </div>
           `
         )}
@@ -392,9 +389,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
     this.portfolioData.project = this.loremData.projects[
       this.portfolioData.projectId
     ].project;
-    this.studentData = this.loremData.users[
-      this.portfolioData.userId
-    ];
+    this.studentData = this.loremData.users[this.portfolioData.userId];
     this.submissionData = this.portfolioData.submissions
       .map(i => {
         let s = this.loremData.submissions[i];
@@ -403,10 +398,8 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
         return s;
       })
       .sort((a, b) => a.date - b.date);
-    this.submissionIndex = this.submissionData 
-      && this.submissionData.length > 0
-      ? 0
-      : undefined;
+    this.submissionIndex =
+      this.submissionData && this.submissionData.length > 0 ? 0 : undefined;
   }
 
   demoFeedback() {
@@ -415,10 +408,8 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
       !this.submissionData ||
       !this.submissionData[this.submissionIndex]
     )
-    this.submissionIndex = this.submissionData 
-      && this.submissionData.length > 0
-      ? 0
-      : undefined;
+      this.submissionIndex =
+        this.submissionData && this.submissionData.length > 0 ? 0 : undefined;
     this.feedbackData = this.submissionData[this.submissionIndex]
       ? this.submissionData[this.submissionIndex].feedback
           .map(i => {
@@ -433,7 +424,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
                 return reply;
               })
               .sort((a, b) => a.date - b.date);
-              return feedback;
+            return feedback;
           })
           .sort((a, b) => a.date - b.date)
       : [];
@@ -449,7 +440,8 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
         this.demoMode
       )
         this.demoFeedback();
-      if(propName === "submissionIndex" && this.shadowRoot) console.log('------- "sub-${s.id}"',this.submissionIndex); 
+      if (propName === "submissionIndex" && this.shadowRoot)
+        console.log('------- "sub-${s.id}"', this.submissionIndex);
     });
   }
   // static get observedAttributes() {
@@ -459,8 +451,5 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define(
-  "elmsln-studio-portfolio",
-  ElmslnStudioPortfolio
-);
+customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);
 export { ElmslnStudioPortfolio };
