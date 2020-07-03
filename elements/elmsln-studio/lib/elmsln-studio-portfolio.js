@@ -2,24 +2,25 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js"
+import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 
 /**
- * `elmsln-studio-submission-view`
+ * `elmsln-studio-portfolio`
  * Studio App for ELMS:LN
  *
- * @customElement elmsln-studio-submission-view
+ * @customElement elmsln-studio-portfolio
  * @lit-html
  * @lit-element
- * @demo demo/submission-view.html
+ * @demo demo/portfolio.html
  */
-class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
+class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
     return [
-      ...super.styles,
+      ...ElmslnStudioStyles.styles,
       css`
         :host,
         section {
@@ -177,6 +178,13 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
           border: none;
           background-color: transparent;
         }
+        @media screen and (min-width: 900px) {
+          :host {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+          }
+        }
       `
     ];
   }
@@ -191,30 +199,26 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
               <span>Close</span>
             </button>
           </div>
-          ${!this.portfolioData
-            ? html``
-            : html`
-                <h1>
-                  <lrndesign-avatar
-                    accent-color="${this.getAccentColor(
-                      this.getFullName(this.portfolioData.student)
-                    )}"
-                    aria-hidden="true"
-                    label="${this.getFullName(this.portfolioData.student)}"
-                    src="${this.portfolioData.student.image}"
-                    two-chars
-                  >
-                  </lrndesign-avatar>
-                  <span class="student-name"
-                    >${this.getFullName(this.portfolioData.student)}</span
-                  >
-                  <span class="project-name"
-                    >${this.portfolioData.project}</span
-                  >
-                </h1>
-              `}
-          ${this.portfolioData.submissions.map(
-            s => html`
+          <h1>
+            <lrndesign-avatar
+              accent-color="${this.accentColor(
+                this.fullName(this.studentData)
+              )}"
+              aria-hidden="true"
+              label="${this.fullName(this.studentData)}"
+              src="${this.studentData && this.studentData.image ? this.studentData.image : undefined}"
+              two-chars
+            >
+            </lrndesign-avatar>
+            <span class="student-name"
+              >${this.fullName(this.studentData)}</span
+            >
+            <span class="project-name"
+              >${this.portfolioData.project}</span
+            >
+          </h1>
+          ${this.submissionData.map(
+            (s,i) => html`
               <section>
                 <h2 id="sub-${s.id}">
                   <span class="assignment-name"
@@ -230,7 +234,7 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
                       ? ""
                       : "has-comments"}"
                     aria-describedby="sub-${s.id}"
-                    @click="${e => (this.submissionId = s.id)}"
+                    @click="${e => (this.submissionIndex = i)}"
                   >
                     <iron-icon
                       aria-hidden="true"
@@ -246,7 +250,7 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
                           ${s.links.map(
                             link => html`
                               <li>
-                                <a href="${link.url}" target="external">
+                                <a href="${link.url}" target="_blank">
                                   <iron-icon
                                     aria-hidden="true"
                                     icon="${link.type === "pdf"
@@ -278,11 +282,11 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
         </article>
       </div>
       <div id="secondary">
-        ${this.feedback.map(
+        ${this.feedbackData.map(
           f => html`
             <div class="thread">
               ${this.makeComment(f)}
-              ${f.replies.map(r => this.makeComment(this.reply(r)))}
+              ${f.replies.map(r => this.makeComment(r))}
             </div>
           `
         )}
@@ -291,7 +295,6 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   }
 
   makeComment(c) {
-    let user = this.user(c.userId);
     return html`
       <div
         id="${c.id}"
@@ -300,14 +303,14 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
       >
         <div class="comment-header ${c.feedbackId ? "comment-read" : ""}">
           <lrndesign-avatar
-            accent-color="${this.getAccentColor(user.firstName)}"
-            initials="${user.firstName} ${user.lastName}"
-            .src="${user.image}"
+            accent-color="${this.accentColor(c.user.firstName)}"
+            initials="${c.user.firstName} ${c.user.lastName}"
+            .src="${c.user.image}"
             two-chars
           >
           </lrndesign-avatar>
           <div>
-            <p class="comment-name">${user.firstName} ${user.lastName}</p>
+            <p class="comment-name">${c.user.firstName} ${c.user.lastName}</p>
             <p class="comment-date">${this.medDate(c.date)}</p>
           </div>
           <iron-icon icon="thumb-up"></iron-icon>
@@ -329,19 +332,29 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      feedback: {
+      feedbackData: {
         type: Array
+      },
+      portfolioData: {
+        type: Object
       },
       portfolioId: {
         type: String,
         attribute: "portfolio-id"
       },
-      submissionId: {
-        type: String,
-        attribute: "submission-id"
-      },
-      portfolioData: {
+      studentData: {
         type: Object
+      },
+      submissionData: {
+        type: Object
+      },
+      submissionFilter: {
+        type: String,
+        attribute: "submission-filter"
+      },
+      commentFilter: {
+        type: String,
+        attribute: "comment-filter"
       }
     };
   }
@@ -351,15 +364,17 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "elmsln-studio-submission-view";
+    return "elmsln-studio-portfolio";
   }
 
   // life cycle
   constructor() {
     super();
+    this.feedbackData = [];
     this.portfolioData = {};
-    this.feedback = [];
-    this.tag = ElmslnStudioSubmissionView.tag;
+    this.studentData = [];
+    this.submissionData = [];
+    this.tag = ElmslnStudioPortfolio.tag;
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -376,40 +391,49 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
     this.portfolioData = this.loremData.portfolios[this.portfolioId];
     this.portfolioData.project = this.loremData.projects[
       this.portfolioData.projectId
+    ].project;
+    this.studentData = this.loremData.users[
+      this.portfolioData.userId
     ];
-    this.portfolioData.student = this.loremData.users[
-      this.portfolioData.studentId
-    ];
-    this.portfolioData.submissions = this.portfolioData.submissions
+    this.submissionData = this.portfolioData.submissions
       .map(i => {
         let s = this.loremData.submissions[i];
+        s.id = i;
         s.assignment = this.loremData.assignments[s.assignmentId];
+        return s;
       })
       .sort((a, b) => a.date - b.date);
-    this.submissionId = this.portfolioData.submissions
-      ? this.portfolioData.submissions[0]
+    this.submissionIndex = this.submissionData 
+      && this.submissionData.length > 0
+      ? 0
       : undefined;
   }
 
   demoFeedback() {
     if (
-      !this.submissionId ||
-      !this.portfolioData.submissions.includes(this.submissionId)
+      !this.submissionIndex ||
+      !this.submissionData ||
+      !this.submissionData[this.submissionIndex]
     )
-      this.submissionId = this.portfolioData.submissions
-        ? this.portfolioData.submissions[0]
-        : undefined;
-    this.feedback = this.loremData.submissions[submissionId]
-      ? this.loremData.submissions[submissionId].feedback
+    this.submissionIndex = this.submissionData 
+      && this.submissionData.length > 0
+      ? 0
+      : undefined;
+    this.feedbackData = this.submissionData[this.submissionIndex]
+      ? this.submissionData[this.submissionIndex].feedback
           .map(i => {
             let feedback = this.loremData.feedback[i];
             feedback.id = i;
+            feedback.user = this.loremData.users[feedback.userId];
             feedback.replies = feedback.replies
               .map(j => {
-                let reply = this.loremData.feedback[j];
+                let reply = this.loremData.replies[j];
+                reply.user = this.loremData.users[reply.userId];
                 reply.id = j;
+                return reply;
               })
               .sort((a, b) => a.date - b.date);
+              return feedback;
           })
           .sort((a, b) => a.date - b.date)
       : [];
@@ -421,10 +445,11 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
       if (["portfolioId", "demoMode"].includes(propName) && this.demoMode)
         this.initDemo();
       if (
-        ["portfolioId", "submissionId", "demoMode"].includes(propName) &&
+        ["portfolioId", "submissionIndex", "demoMode"].includes(propName) &&
         this.demoMode
       )
         this.demoFeedback();
+      if(propName === "submissionIndex" && this.shadowRoot) console.log('------- "sub-${s.id}"',this.submissionIndex); 
     });
   }
   // static get observedAttributes() {
@@ -435,7 +460,7 @@ class ElmslnStudioSubmissionView extends ElmslnStudioUtilities(LitElement) {
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 customElements.define(
-  "elmsln-studio-submission-view",
-  ElmslnStudioSubmissionView
+  "elmsln-studio-portfolio",
+  ElmslnStudioPortfolio
 );
-export { ElmslnStudioSubmissionView };
+export { ElmslnStudioPortfolio };

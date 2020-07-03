@@ -2,7 +2,8 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js"
+import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 
 /**
@@ -17,7 +18,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
     return [
-      ...super.styles,
+      ...ElmslnStudioStyles.styles,
       css`
         h1,
         h2,
@@ -140,6 +141,11 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           }
         }
         @media screen and (min-width: 900px) {
+          :host {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+          }
           #profile {
             --lrndesign-avatar-width: 200px;
           }
@@ -154,23 +160,23 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   render() {
     return html`
       <h1 class="sr-only">Overview</h1>
-      ${!this.userData
+      ${!this.profileData
         ? html``
         : html`
             <div id="primary">
               <div id="profile">
-                <h2>${this.getFullName(this.userData)}</h2>
+                <h2>${this.fullName(this.profileData)}</h2>
                 <accent-card accent-color="purple" class="card primary">
                   <span slot="heading" class="sr-only">My Progress</span>
                   <lrndesign-avatar
-                    accent-color="${this.getAccentColor(
-                      this.getFullName(this.userData)
+                    accent-color="${this.accentColor(
+                      this.fullName(this.profileData)
                     )}"
                     slot="content"
-                    .image-src="${this.userData.image
-                      ? this.userData.image
+                    .image-src="${this.profileData.image
+                      ? this.profileData.image
                       : undefined}"
-                    label="${this.getFullName(this.userData)}"
+                    label="${this.fullName(this.profileData)}"
                     two-chars
                     size="200px"
                   ></lrndesign-avatar>
@@ -179,27 +185,27 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                       <tr>
                         <th scope="row">Feedback Given</th>
                         <td>
-                          ${this._userStat("feedbackBy")}
+                          ${this.userStat("feedbackBy")}
                         </td>
                       </tr>
                       <tr>
                         <th scope="row">Conversations</th>
                         <td>
-                          ${this._userStat("repliesBy") +
-                            this._userStat("feedbackBy")}
+                          ${this.userStat("repliesBy") +
+                            this.userStat("feedbackBy")}
                         </td>
                       </tr>
                       <tr>
                         <th scope="row">Total Submissions</th>
                         <td>
-                          ${this._userStat("submissions")}
+                          ${this.userStat("submissions")}
                         </td>
                       </tr>
                       <tr>
                         <th scope="row">Assignments Completed</th>
                         <td>
-                          ${this._userStat("assignments")} /
-                          ${this.assignments.length}
+                          ${this.userStat("assignmentsCompleted")} /
+                          ${this.userStat("assignments")}
                         </td>
                       </tr>
                     </tbody>
@@ -219,7 +225,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                             ${a.assignment}
                           </button>
                           <span id="due-${a.id}-desc" slot="description"
-                            >${this.fullDate(a.date)}</span
+                            >${this.dateFormat(a.date,"long")}</span
                           >
                         </nav-card-item>
                       `
@@ -237,7 +243,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                   <span slot="heading">Submissions</span>
                   <button slot="subheading">All submissions</button>
                   <div slot="linklist">
-                    ${(this.userData.submissions || []).slice(0, 5).map(
+                    ${(this.profileData.submissions || []).slice(0, 5).map(
                       s => html`
                         <nav-card-item icon="chevron-right">
                           <button
@@ -248,7 +254,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                             ${s.assignment}
                           </button>
                           <span id="sub-${s.id}-desc" slot="description"
-                            >${this.medDate(s.date)}</span
+                            >${this.dateFormat(s.date)}</span
                           >
                         </nav-card-item>
                       `
@@ -263,7 +269,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                   <span slot="heading">Feedback</span>
                   <button slot="subheading">All feedback</button>
                   <div slot="linklist">
-                    ${(this.userData.feedbackFor || []).slice(0, 3).map(
+                    ${(this.profileData.feedbackFor || []).slice(0, 3).map(
                       f => html`
                         <nav-card-item icon="chevron-right">
                           <button
@@ -274,7 +280,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                             ${this.user(f.userId).firstName}'s feedback
                           </button>
                           <span id="feed-${f.id}-desc" slot="description"
-                            >${this.medDate(f.date)}</span
+                            >${this.dateFormat(f.date)}</span
                           >
                         </nav-card-item>
                       `
@@ -296,7 +302,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
             ${this.activity.map(
               a => html`
                 <nav-card-item
-                  accent-color="${this.getAccentColor(
+                  accent-color="${this.accentColor(
                     this.user(a.userId).firstName
                   )}"
                   .avatar="${this.user(a.userId).image}"
@@ -310,10 +316,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
                   >
-                    ${this._getActivityTitle(a)}
+                    ${this.activityTitle(a,a.activity)}
                   </button>
                   <span id="act-${a.id}-desc" slot="description"
-                    >${this.medDate(a.date)}</span
+                    >${this.dateFormat(a.date)}</span
                   >
                 </nav-card-item>
               `
@@ -323,8 +329,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
             class="load-more"
             slot="footer"
             ?disabled="${this.activity.length === this.activities.length}"
-            ?hidden="${this.activity.length === this.activities.length}"
-            @click="${e => this._loadMore(e, "activity", "activities", 10)}"
+            ?hidden="${this.activity.length === this.activityData.length}"
+            @click="${e => this.loadMore(this.activity, this.activityData, 10)}"
           >
             Load More
           </button>
@@ -337,22 +343,20 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      activities: {
-        type: Array
-      },
       activity: {
         type: Array
       },
-      assignments: {
-        type: Array
-      },
-      userData: {
-        type: Object,
-        attirbute: "user-data"
+      activityData: {
+        type: Array,
+        attirbute: "activity-data"
       },
       activityLoad: {
         type: Number,
         attirbute: "activity-load"
+      },
+      profileData: {
+        type: Object,
+        attirbute: "user-data"
       }
     };
   }
@@ -368,44 +372,26 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.assignments = [];
-    this.activities = [];
+    this.activityData = [];
     this.activityLoad = 15;
     this.tag = ElmslnStudioDashboard.tag;
   }
 
   get activity() {
-    return this.activities.slice(0, this.activityLoad);
+    return this.activityData.slice(0, this.activityLoad);
+  }
+  get assignmentsCompleted(){
+    let assignments = this.profileData.submissions.map(i=>this.getAncestor(i,["assignmentId","assignmnents"]).id);
+    return [...this.Set(profile.assignments)];
   }
   get workDue() {
-    return this.assignments.filter(
+    return this.profileData 
+      && this.profileData.assignments
+      ? this.profileData.assignments.filter(
       i =>
-        !this.userData ||
-        !this.userData.assignments ||
-        !this.userData.assignments.includes(i.id)
-    );
-  }
-
-  _userStat(arr) {
-    return this.userData && this.userData[arr] ? this.userData[arr].length : 0;
-  }
-
-  initDemo() {
-    let data = this.loremData;
-    if (!this.userId)
-      this.userId = this._randomItem(Object.keys(this.loremData.students));
-    this.userData = this._getProfile(this.userId);
-    this.assignments = this._toArray(data.assignments);
-    this.activities = data.activities;
-  }
-
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "demoMode" && this.demoMode) this.initDemo();
-      if (propName === "userId" && this.demoMode)
-        this.userData = this._getProfile(this.userId);
-    });
+        !this.profileData.assignmentsCompleted ||
+        !this.profileData.assignmentsCompleted.includes(i.id)
+    ) : [];
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -414,7 +400,11 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
     super.connectedCallback();
   }
 
-  _loadMoreComments(e) {
+  userStat(arr) {
+    return this.profileData && this.profileData[arr] ? this.profileData[arr].length : 0;
+  }
+
+  loadMoreComments(e) {
     this.activityLoad += 10;
   }
   // static get observedAttributes() {

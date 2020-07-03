@@ -2,7 +2,8 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js"
+import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
 
@@ -18,7 +19,7 @@ import "@polymer/iron-icons/communication-icons.js";
 class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   static get styles() {
     return [
-      ...super.styles,
+      ...ElmslnStudioStyles.styles,
       css`
         #layout {
           display: flex;
@@ -188,6 +189,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
           }
         }
         @media screen and (min-width: 900px) {
+          :host {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+          }
           .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
@@ -276,7 +282,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                   ${this.user(s.userId).lastName}
                 </div>
                 <div slot="corner" id="date-${s.id}">
-                  ${this.grid ? this.shortDate(s.date) : this.medDate(s.date)}
+                  ${this.grid ? this.dateFormat(s.date,"short") : this.dateFormat(s.date)}
                 </div>
                 <div slot="subheading" id="assignment-${s.id}">
                   ${this.assignment(s.assignmentId).assignment}
@@ -290,15 +296,15 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                 </div>
                 <div slot="footer">
                   <button
-                    id="discussion"
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                    @click="${e=>location.href='./portfolio?submission=${s.id}'}&feedback=${s.feedback[0]}'}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
                   </button>
                   <button
-                    id="view"
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                    @click="${e=>location.href='./portfolio?submission=${s.id}'}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
@@ -327,7 +333,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
             ${this.filteredComments.map(
               f => html`
                 <nav-card-item
-                  accent-color="${this.getAccentColor(
+                  accent-color="${this.accentColor(
                     this.user(f.userId).firstName
                   )}"
                   .avatar="${this.user(f.userId).image}"
@@ -349,7 +355,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                     ).assignment}
                   </button>
                   <span id="comment-${f.id}v" slot="description">
-                    ${this.medDate(f.date)}
+                    ${this.dateFormat(f.date)}
                   </span>
                 </nav-card-item>
               `
@@ -363,22 +369,29 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       assignmentFilter: {
-        type: String
+        type: String,
+        attribute: "assignment-filter"
       },
       assignmentOptions: {
         type: Array
       },
+      feedbackData:{
+        type: Array
+      },
       grid: {
-        type: Boolean
+        type: Boolean,
+        attribute: "grid"
       },
       studentFilter: {
-        type: String
+        type: String,
+        attribute: "student-filter"
       },
       studentOptions: {
         type: Array
       },
-      submissions: {
+      submissionData: {
         type: Array
       }
     };
@@ -395,47 +408,104 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.studentFilter = "";
     this.assignmentFilter = "";
+    this.assignmentOptions = { "": "All" };
     this.grid = false;
+    this.studentOptions = { "": "All" };
+    this.studentFilter = "";
+    this.submissionData = [];
+    this.feedbackData = [];
     this.tag = ElmslnStudioSubmissions.tag;
   }
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "demoMode" && this.demoMode) console.log(propName,oldValue,this.demoMode);
+      if (propName === "demoMode" && this.demoMode) this.initDemo();
+    });
+  }
+
+  initDemo() {
+    this.studentOptions = { "": "All" };
+    this.assignmentOptions = { "": "All" };
+    Object.keys(this.loremData.students).forEach(i => this.studentOptions[i] = `${this.loremData.users[i].lastName}, ${this.loremData.users[i].firstName}`);
+    Object.keys(this.loremData.assignments).forEach(i => this.assignmentOptions[i] = this.loremData.assignments[i].assignment);
+    this.submissionData = Object.keys(this.loremData.submissions).map(i=>{
+      let submission = this.loremData.submissions[i];
+      submission.id = i;
+      return submission;
+    }).sort((a,b)=>b.date-a.date);
+    this.feedbackData = Object.keys(this.loremData.feedback).map(i=>{
+      let feedback = this.loremData.feedback[i];
+      feedback.id = i;
+      return feedback;
+    }).sort((a,b)=>b.date-a.date);
+    console.log("submissions", this.submissionData, this.studentOptions,this.filteredSubmissions);
+  }
   get filteredSubmissions() {
-    let filter = this.submissions.filter(a =>
-      this._isFiltered(a.userId, a.assignmentId)
+    let filter = this.submissionData.filter(a =>
+    this._isFiltered(a.userId, a.assignmentId)
     );
-    //console.log("submissions", this.submissions, filter);
+    //console.log("submissions", this.submissionData, filter);
     return filter;
   }
   get filteredComments() {
-    let filter = this.recent("feedback").filter(i =>
+    let filter = this.feedbackData.filter(i =>
       this._isFiltered(
         this.submission(i.submissionId).userId,
         this.submission(i.submissionId).assignmentId
       )
     );
-    //console.log("feedback", this.recent("feedback"), filter);
     return filter;
   }
-  get noSubmissions() {
-    return (
-      !this.submissions ||
-      this.filteredSubmissions.length === this.submissions.length
+
+  _discussionClick(id){
+    /**
+     * Fires when constructed, so that parent radio group can listen for it.
+     *
+     * @event a11y-collapse-attached
+     */
+    this.dispatchEvent(
+      new CustomEvent("discuss-submission", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: id
+      })
     );
   }
+  _viewClick(id){
+    /**
+     * Fires when constructed, so that parent radio group can listen for it.
+     *
+     * @event a11y-collapse-attached
+     */
+    this.dispatchEvent(
+      new CustomEvent("view-submission", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: id
+      })
+    );
 
-  initDemo(data) {
-    super.initDemo();
-    this.studentOptions = { "": "All" };
-    this.assignmentOptions = { "": "All" };
-    this._toArray(data.students).forEach(
-      d => (this.studentOptions[d.id] = `${d.lastName}, ${d.firstName}`)
+  }
+  _zoomClick(id){
+    /**
+     * Fires when constructed, so that parent radio group can listen for it.
+     *
+     * @event a11y-collapse-attached
+     */
+    this.dispatchEvent(
+      new CustomEvent("zoom-submission", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: id
+      })
     );
-    this._toArray(data.assignments).forEach(
-      d => (this.assignmentOptions[d.id] = d.assignment)
-    );
-    this.submissions = this.recent("submissions");
-    //console.log("submissions", this.submissions, this.studentOptions);
+
   }
 
   _getValign(gravity) {
@@ -454,7 +524,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       : "center";
   }
   _isFiltered(student = "", assignment = "") {
-    console.log(
+    //console.log(this.assignmentFilter,this.studentFilter);
+    /*console.log(
       student,
       "-",
       this._isFilteredStudent(student),
@@ -463,8 +534,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
       "-",
       this._isFilteredAssignment(assignment),
       "=",
-      this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
-    );
+      this._isFilteredStudent(student) || this._isFilteredAssignment(assignment)
+    );*/
     return (
       this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
     );
