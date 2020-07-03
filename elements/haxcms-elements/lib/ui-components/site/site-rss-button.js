@@ -4,10 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
  *
@@ -22,25 +18,14 @@ class SiteRSSButton extends LitElement {
       css`
         :host {
           display: block;
-          font-size: 16px;
-          color: var(--site-rss-color, #383f45);
+          color: inherit;
         }
         a {
-          text-decoration: var(--site-rss-text-decoration, none);
+          text-decoration: var(--site-rss-text-decoration);
+          outline: none;
         }
-        paper-button {
-          text-transform: unset;
-          color: white;
-          background-color: var(--site-rss-bg-color, #383f45);
-          font-size: var(--site-rss-font-size, 13px);
-          margin: var(--site-rss-paper-button-margin, 0);
-          border-radius: var(--site-rss-border-radius, 3px);
-          padding: var(--site-rss-paper-button-padding, 0);
-        }
-        paper-button:hover,
-        paper-button:focus,
-        paper-button:active {
-          background-color: var(--site-rss-bg-active, #2d3237);
+        paper-icon-button {
+          color: grey;
         }
       `
     ];
@@ -55,32 +40,42 @@ class SiteRSSButton extends LitElement {
     super();
     this.type = "rss";
     this.raised = false;
-    import("@polymer/paper-button/paper-button.js");
+    this.position = "bottom";
+    import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/communication-icons.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-button {
-            @apply --site-rss-paper-button;
-          }
-        </style>
-      </custom-style>
       <a
         ?disabled="${this.disabled}"
         tabindex="-1"
         href="${this.href}"
+        .id="btn${this.type}"
         target="_blank"
         rel="noopener noreferrer"
+        .aria-title="${this.label}"
       >
-        <paper-button ?raised="${this.raised}">
-          <iron-icon icon="${this.icon}"></iron-icon> ${this.label}
-        </paper-button>
+        <paper-icon-button
+          icon="${this.icon}"
+          @click="${this.print}"
+          .aria-title="${this.label}"
+          ?disabled="${this.disabled}"
+        ></paper-icon-button>
       </a>
+      <simple-tooltip
+        .for="btn${this.type}"
+        position="${this.position}"
+        offset="14"
+      >
+        ${this.label}
+      </simple-tooltip>
     `;
+  }
+  createRenderRoot() {
+    return this;
   }
   /**
    * Mix in an opened status
@@ -103,9 +98,8 @@ class SiteRSSButton extends LitElement {
       type: {
         type: String
       },
-      raised: {
-        type: Boolean,
-        reflect: true
+      position: {
+        type: String
       }
     };
   }

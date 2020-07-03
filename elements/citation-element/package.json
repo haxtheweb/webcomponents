@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.18",
+  "version": "2.6.21",
   "description": "A simple way of citing things on the web.",
   "repository": {
     "type": "git",
@@ -36,13 +36,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/license-element": "^2.6.18",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.17",
+    "@lrnwebcomponents/license-element": "^2.6.21",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.21",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.17",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.21",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

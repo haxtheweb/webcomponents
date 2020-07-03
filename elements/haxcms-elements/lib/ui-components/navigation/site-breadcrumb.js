@@ -114,7 +114,7 @@ class SiteBreadcrumb extends LitElement {
       var items = [
         {
           title: activeItem.title,
-          location: null
+          slug: null
         }
       ];
       let itemBuilder = activeItem;
@@ -125,7 +125,7 @@ class SiteBreadcrumb extends LitElement {
         if (itemBuilder) {
           items.unshift({
             title: itemBuilder.title,
-            location: itemBuilder.slug
+            slug: itemBuilder.slug
           });
         }
       }

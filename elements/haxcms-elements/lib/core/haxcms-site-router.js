@@ -6,6 +6,12 @@ import { store } from "./haxcms-site-store.js";
  * `front-end router for haxcms`
  */
 class HAXCMSSiteRouter extends HTMLElement {
+  get baseURI() {
+    return this.getAttribute("base-uri");
+  }
+  set baseURI($value) {
+    this.setAttribute("base-uri", $value);
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */

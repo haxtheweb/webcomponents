@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.6.21",
   "description": "Automated conversion of media-image/",
   "repository": {
     "type": "git",
@@ -42,14 +42,14 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/figure-label": "^2.6.17",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.17",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.21",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.17",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.21",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

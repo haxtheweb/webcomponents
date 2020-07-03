@@ -48,6 +48,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
             var(--__learn-two-theme-default-background)
           );
         }
+
         html,
         body {
           background: var(
@@ -55,6 +56,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
             var(--__learn-two-theme-default-background)
           );
         }
+
         h1,
         h2,
         h3,
@@ -101,6 +103,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           position: absolute;
           z-index: 1000;
         }
+
         paper-icon-button:not(:defined),
         site-breadcrumb:not(:defined),
         site-rss-button:not(:defined),
@@ -111,28 +114,35 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         site-menu-button:not(:defined) {
           display: none;
         }
+
+        site-rss-button a {
+          color: white;
+        }
+
         site-menu::-webkit-scrollbar-track {
           -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
           border-radius: 0;
           background-color: #383f45;
         }
+
         site-menu::-webkit-scrollbar {
           width: 2px;
           background-color: #383f45;
         }
+
         site-menu::-webkit-scrollbar-thumb {
           border-radius: 1px;
           -webkit-box-shadow: inset 0 0 4px #747474;
           background-color: #383f45;
         }
+
         .rss-buttons {
           justify-content: space-evenly;
           display: flex;
         }
-        site-print-button {
-          --site-print-button-button: {
-            color: white;
-          }
+
+        site-print-button paper-icon-button {
+          color: white;
         }
 
         h-a-x {
@@ -147,6 +157,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         :host([is-logged-in]) app-drawer {
           left: 48px;
         }
+
         :host([is-logged-in]) app-drawer-layout[narrow] {
           margin: 0 0 0 48px;
         }
@@ -162,36 +173,45 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           overflow: hidden;
           width: 300px;
         }
+
         app-drawer-layout[narrow] #contentcontainer {
           padding: 0 16px;
         }
+
         #menubutton,
         #menubutton2 {
           display: none;
         }
+
         app-drawer-layout[narrow] #menubutton {
           display: block;
         }
+
         app-drawer-layout[narrow] #menubutton2 {
           display: block;
           position: absolute;
           z-index: 1;
         }
+
         app-drawer-layout[narrow] .header {
           padding: 0;
         }
+
         :host([is-logged-in]) site-menu-button[type="prev"] {
           left: 348px;
         }
+
         site-menu-button:not([disabled]):hover,
         site-menu-button:not([disabled]):active,
         site-menu-button:not([disabled]):focus {
           opacity: 1;
           background-color: rgba(0, 0, 0, 0.1);
         }
+
         app-drawer-layout[narrow] site-menu {
           max-height: calc(100vh - 160px);
         }
+
         site-menu-button[type="next"] {
           right: 0;
           left: unset;
@@ -203,6 +223,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         app-drawer-layout[narrow] site-menu-button[type="prev"] {
           left: unset;
         }
+
         :host([opened]) app-drawer-layout[narrow] site-menu-button[type="prev"],
         :host([opened])
           app-drawer-layout[narrow]
@@ -214,6 +235,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           position: relative;
           overflow: hidden;
         }
+
         site-menu {
           background-color: #383f45;
           color: #ffffff;
@@ -223,6 +245,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           --site-menu-active-color: #ffffff;
           --site-menu-item-active-item-color: #2d3237;
         }
+
         app-drawer-layout {
           min-height: 100vh;
           min-height: -moz-available;
@@ -231,6 +254,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           --app-drawer-width: 300px;
           --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
         }
+
         site-menu-button {
           position: fixed;
           top: 0;
@@ -241,10 +265,12 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           --site-menu-button-icon-height: 64px;
           --site-menu-button-icon-fill-color: #2d3237;
         }
+
         app-drawer-layout[narrow] site-menu-button {
           bottom: 0;
           top: unset;
         }
+
         site-menu,
         map-menu,
         map-menu * {
@@ -268,16 +294,14 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
       <custom-style>
         <style>
           site-active-title {
-            --site-active-title-heading: {
-              font-family: var(--__learn-two-theme-default-font-family);
-              font-size: 52px;
-              line-height: 78px;
-              margin-bottom: 27.2px;
-              margin-top: 13.6px;
-              text-align: center;
-              text-rendering: optimizelegibility;
-              font-weight: 100;
-            }
+            font-family: var(--__learn-two-theme-default-font-family);
+            font-size: 52px;
+            line-height: 78px;
+            margin-bottom: 27.2px;
+            margin-top: 13.6px;
+            text-align: center;
+            text-rendering: optimizelegibility;
+            font-weight: 100;
           }
           site-title {
             --site-title-link: {
@@ -309,11 +333,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
               overflow: hidden;
               background-color: #383f45;
               position: relative;
-            }
-          }
-          site-print-button {
-            --site-print-button-button: {
-              color: white;
             }
           }
           site-menu-button {

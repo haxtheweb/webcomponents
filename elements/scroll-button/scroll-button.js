@@ -28,13 +28,17 @@ class ScrollButton extends LitElement {
           display: none;
         }
         paper-icon-button {
-          background-color: rgba(0, 0, 0, 0.6);
-          color: white;
+          background-color: var(
+            --scroll-button-background-color,
+            rgba(0, 0, 0, 0.6)
+          );
+          color: var(--scroll-button-color, white);
         }
         paper-icon-button:hover,
         paper-icon-button:active,
         paper-icon-button:focus {
-          background-color: rgba(0, 0, 0, 1);
+          color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
+          background-color: var(--scroll-button-color, white);
         }
         simple-tooltip {
           --simple-tooltip-background: #000000;
@@ -46,6 +50,7 @@ class ScrollButton extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

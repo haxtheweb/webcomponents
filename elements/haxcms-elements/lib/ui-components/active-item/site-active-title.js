@@ -6,10 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-active-title`
  * `Title of the active page in the site`
  *
@@ -52,13 +48,6 @@ class SiteActiveTitle extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          h2 {
-            @apply --site-active-title-heading;
-          }
-        </style>
-      </custom-style>
       <h2>${this.__title}</h2>
     `;
   }
@@ -170,6 +159,12 @@ class SiteActiveTitle extends LitElement {
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
+  }
+  /**
+   * Break shadowRoot
+   */
+  createRenderRoot() {
+    return this;
   }
 }
 window.customElements.define(SiteActiveTitle.tag, SiteActiveTitle);

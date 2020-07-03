@@ -103,6 +103,7 @@ class IconsetDemo extends PolymerElement {
        * all the iconsets
        */
       __iconList: {
+        name: "__iconList",
         type: Array,
         value: []
       },
@@ -110,6 +111,7 @@ class IconsetDemo extends PolymerElement {
        * a space-separated whitelist of iconsets by name
        */
       includeSets: {
+        name: "includeSets",
         type: String,
         value: null
       },
@@ -117,6 +119,7 @@ class IconsetDemo extends PolymerElement {
        * a space-separated blacklist of iconsets by name
        */
       excludeSets: {
+        name: "excludeSets",
         type: String,
         value: null
       }

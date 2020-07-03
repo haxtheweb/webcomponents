@@ -114,27 +114,23 @@ class SimpleBlogPost extends SimpleColors {
       <custom-style>
         <style>
           site-active-title {
-            --site-active-title-heading: {
-              font-weight: 700;
-              font-style: normal;
-              letter-spacing: -0.04em;
-              font-size: 50px;
-              line-height: 1.1;
-              color: black;
-            }
+            font-weight: 700;
+            font-style: normal;
+            letter-spacing: -0.04em;
+            font-size: 50px;
+            line-height: 1.1;
+            color: black;
           }
           :host([has-image]) site-active-title {
-            --site-active-title-heading: {
-              font-weight: 700;
-              font-style: normal;
-              letter-spacing: -0.04em;
-              font-size: 50px;
-              line-height: 1.1;
-              margin-bottom: 16px;
-              text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5),
-                0 0 1px rgba(0, 0, 0, 0.5);
-              color: white;
-            }
+            font-weight: 700;
+            font-style: normal;
+            letter-spacing: -0.04em;
+            font-size: 50px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5),
+              0 0 1px rgba(0, 0, 0, 0.5);
+            color: white;
           }
         </style>
       </custom-style>

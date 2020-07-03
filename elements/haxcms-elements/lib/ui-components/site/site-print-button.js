@@ -5,10 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
  *
@@ -46,29 +42,18 @@ class SitePrintButton extends LitElement {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-icon-button {
-            @apply --site-print-button-button;
-          }
-          paper-icon-button:hover,
-          paper-icon-button:focus,
-          paper-icon-button:active {
-            @apply --site-print-button-button-hover;
-          }
-          simple-tooltip {
-            @apply --site-print-button-tooltip;
-          }
-        </style>
-      </custom-style>
       <paper-icon-button
-        id="btn"
+        .id="btn${this.type}"
         icon="${this.icon}"
         @click="${this.print}"
-        .title="${this.label}"
+        .aria-title="${this.label}"
         ?disabled="${this.disabled}"
       ></paper-icon-button>
-      <simple-tooltip for="btn" position="${this.position}" offset="14">
+      <simple-tooltip
+        .for="btn${this.type}"
+        position="${this.position}"
+        offset="14"
+      >
         ${this.label}
       </simple-tooltip>
     `;
@@ -255,6 +240,9 @@ ${content}`;
     print.focus();
     print.print();
     print.close();
+  }
+  createRenderRoot() {
+    return this;
   }
 }
 window.customElements.define(SitePrintButton.tag, SitePrintButton);

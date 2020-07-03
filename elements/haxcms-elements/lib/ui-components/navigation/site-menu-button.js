@@ -112,13 +112,13 @@ class SiteMenuButton extends LitElement {
           }
         </style>
       </custom-style>
-      <a tabindex="-1" ?disabled="${this.disabled}" .title="${this.label}">
+      <a tabindex="-1" ?disabled="${this.disabled}" .aria-label="${this.label}">
         <paper-button
           id="menulink"
           noink
           ?disabled="${this.disabled}"
           ?raised="${this.raised}"
-          title="${this.label}"
+          aria-label="${this.label}"
         >
           <slot name="prefix"></slot>
           <iron-icon icon="${this.icon}"></iron-icon>

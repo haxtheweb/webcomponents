@@ -208,6 +208,7 @@ class HAXCMSSiteEditorUI extends LitElement {
   // render function
   render() {
     return html`
+      <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
       <paper-avatar
         @click=${this.redirectToSites}
         id="username"
@@ -215,7 +216,9 @@ class HAXCMSSiteEditorUI extends LitElement {
         two-chars
         src="${this.userPicture}"
       ></paper-avatar>
+      <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
       <paper-fab
+        hidden
         id="editbutton"
         icon="${this.__editIcon}"
         @click="${this._editButtonTap}"
@@ -231,6 +234,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="cancel (editing)"
       ></paper-fab>
       <paper-fab
+        hidden
         id="editdetails"
         icon="hax:page-details"
         @click="${this._editDetailsButtonTap}"
@@ -238,6 +242,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="edit (page) details"
       ></paper-fab>
       <paper-icon-button
+        hidden
         id="addbutton"
         icon="hax:add-page"
         @click="${this._addButtonTap}"
@@ -245,6 +250,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="add page"
       ></paper-icon-button>
       <paper-fab
+        hidden
         id="deletebutton"
         icon="icons:delete"
         @click="${this._deleteButtonTap}"
@@ -252,6 +258,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="delete page"
       ></paper-fab>
       <paper-icon-button
+        hidden
         id="outlinebutton"
         icon="hax:site-map"
         @click="${this._outlineButtonTap}"
@@ -259,6 +266,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="edit site outline"
       ></paper-icon-button>
       <paper-icon-button
+        hidden
         id="manifestbutton"
         icon="${this.icon}"
         @click="${this._manifestButtonTap}"
@@ -289,6 +297,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       <simple-tooltip for="manifestbutton" position="right" offset="14"
         >${this.__settingsText}</simple-tooltip
       >
+      <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
     `;
   }
 
@@ -309,6 +318,68 @@ class HAXCMSSiteEditorUI extends LitElement {
   }
 
   firstUpdated(changedProperties) {
+    setTimeout(() => {
+      let ary = [
+        {
+          varPath: "getNodeFieldsPath",
+          selector: "#editdetails"
+        },
+        {
+          varPath: "deleteNodePath",
+          selector: "#deletebutton"
+        },
+        {
+          varPath: "saveNodePath",
+          selector: "#editbutton"
+        },
+        {
+          varPath: "createNodePath",
+          selector: "#addbutton"
+        },
+        {
+          varPath: "saveOutlinePath",
+          selector: "#outlinebutton"
+        },
+        {
+          varPath: "saveManifestPath",
+          selector: "#manifestbutton",
+          dep: "getSiteFieldsPath"
+        },
+        {
+          varPath: "getSiteFieldsPath",
+          selector: "#manifestbutton",
+          dep: "saveManifestPath"
+        }
+      ];
+      // see which features should be enabled
+      ary.forEach(pair => {
+        if (
+          window.appSettings &&
+          window.appSettings[pair.varPath] &&
+          window.appSettings[pair.varPath] != null &&
+          window.appSettings[pair.varPath] != "" &&
+          window.appSettings[pair.varPath] != "null"
+        ) {
+          if (pair.dep) {
+            if (
+              window.appSettings[pair.dep] != null &&
+              window.appSettings[pair.dep] != "" &&
+              window.appSettings[pair.dep] != "null"
+            ) {
+              this.shadowRoot
+                .querySelector(pair.selector)
+                .removeAttribute("hidden");
+            } else {
+              // a dependency didn't meet the requirement
+            }
+          } else {
+            this.shadowRoot
+              .querySelector(pair.selector)
+              .removeAttribute("hidden");
+          }
+        }
+      });
+    }, 0);
     // load user data
     this.dispatchEvent(
       new CustomEvent("haxcms-load-user-data", {

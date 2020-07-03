@@ -16,7 +16,7 @@
       "hax": "src/a11y-details-hax.json"
     }
   },
-  "version": "2.6.18",
+  "version": "2.6.21",
   "description": "accessible progressive disclosure with detail and summary",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/absolute-position-behavior": "^2.6.17",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.6.18",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.6.21",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

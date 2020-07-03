@@ -285,14 +285,6 @@ class MapMenu extends LitElement {
     }
   }
   /**
-   * LitElement life cycle - ready
-   */
-  firstUpdated(changedProperties) {
-    if (this.activeItem) {
-      this.refreshActiveChildren(this.activeItem, false);
-    }
-  }
-  /**
    * Convert data from a linear array
    * to a nested array for template rendering
    */

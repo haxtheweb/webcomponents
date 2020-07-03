@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.18",
+  "version": "2.6.21",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -41,11 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/editable-list": "^2.6.18",
-    "@lrnwebcomponents/item-overlay-ops": "^2.6.17",
-    "@lrnwebcomponents/lrnsys-outline": "^2.6.18",
-    "@lrnwebcomponents/simple-colors": "^2.6.18",
-    "@lrnwebcomponents/simple-modal": "^2.6.18",
+    "@lrnwebcomponents/editable-list": "^2.6.21",
+    "@lrnwebcomponents/item-overlay-ops": "^2.6.21",
+    "@lrnwebcomponents/lrnsys-outline": "^2.6.21",
+    "@lrnwebcomponents/simple-colors": "^2.6.21",
+    "@lrnwebcomponents/simple-modal": "^2.6.21",
     "@lrnwebcomponents/simple-tooltip": "^2.6.17",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.17",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.21",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
