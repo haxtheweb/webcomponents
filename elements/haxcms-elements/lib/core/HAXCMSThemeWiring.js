@@ -31,7 +31,7 @@ const HAXCMSTheme = function(SuperClass) {
         // is selected
         autoScroll: false
       };
-      this.__disposer = [];
+      this.__disposer = this.__disposer ? this.__disposer : [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
     }
     /**

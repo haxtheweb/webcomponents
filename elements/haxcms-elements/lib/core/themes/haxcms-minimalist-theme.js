@@ -260,14 +260,6 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
             background-color: #dee2e6;
           }
         }
-        site-print-button paper-icon-button {
-          color: black;
-        }
-        site-print-button paper-icon-button:hover,
-        site-print-button paper-icon-button:focus,
-        site-print-button paper-icon-button:active {
-          background-color: #dee2e6;
-        }
         site-print-button simple-tooltip {
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
@@ -276,22 +268,11 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
           --simple-tooltip-border-radius: 0;
         }
 
-        site-top-menu:not([sticky]) site-print-button paper-icon-button {
-          color: black;
-          display: inline-flex;
-          border: 1px solid #dee2e6;
-          height: 50px;
-          width: 50px;
-          line-height: 1.5;
-        }
         scroll-button {
           position: fixed;
           right: 0;
           bottom: 50px;
           z-index: 10000;
-          --scroll-button-button: {
-            border-radius: 10px;
-          }
         }
         .spacing {
           height: 50px;

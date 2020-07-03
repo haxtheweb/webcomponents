@@ -167,9 +167,6 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
           left: 0;
           bottom: 0;
           z-index: 10000000;
-          --scroll-button-button: {
-            background-color: var(--site-top-menu-bg);
-          }
         }
         site-print-button {
           color: white;

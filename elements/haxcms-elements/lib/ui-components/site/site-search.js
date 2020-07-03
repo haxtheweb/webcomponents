@@ -28,19 +28,23 @@ class SiteSearch extends LitElement {
           height: 55vh;
           width: 60vh;
         }
+        [hidden] {
+          display: none;
+        }
         .result {
           display: block;
-          background-color: #eeeeee;
-          color: #222222;
-          border: 1px solid black;
-          padding: 16px;
+          background-color: var(--site-search-result-background-color,#eeeeee);
+          color: var(--site-search-result-color,#222222);
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.5rem;
         }
         .result:hover,
         .result:focus {
-          background-color: #dddddd;
-          color: black;
+          background-color: var(--site-search-result-background-color-hover,#dddddd);
           color: var(--site-search-link-color-hover, #000000);
-          text-decoration: underline;
+          text-decoration: none;
+          outline: 2px solid grey;
+          outline-offset: 4px;
         }
         .result .title {
           font-size: 28px;
@@ -51,11 +55,18 @@ class SiteSearch extends LitElement {
           color: var(--site-search-link-color, #444444);
           text-decoration: none;
         }
+        simple-datetime {
+          color: var(--site-search-link-color, #444444);
+        }
         .result .link-text {
           font-size: 12px;
           color: var(--site-search-link-text-color, #999999);
           font-style: italic;
           padding-left: 8px;
+        }
+        .results-found-text {
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.5rem;
         }
         #search {
           flex-grow: 2;
@@ -74,7 +85,10 @@ class SiteSearch extends LitElement {
   }
   constructor() {
     super();
+    this.hideInput = false;
     this.search = "";
+    this.showPath = false;
+    this.showDate = false;
     this.__results = [];
     setTimeout(() => {
       import("@lrnwebcomponents/lunr-search/lunr-search.js");
@@ -85,6 +99,7 @@ class SiteSearch extends LitElement {
   render() {
     return html`
       <simple-fields-field
+        ?hidden="${this.hideInput}"
         id="search"
         always-float-label
         label="Search"
@@ -95,20 +110,20 @@ class SiteSearch extends LitElement {
       </simple-fields-field>
       ${this.search.length > 0
         ? html`
-            Found ${this.__results.length} results.
+            <h1 class="results-found-text">Found ${this.__results.length} results.</h1>
           `
         : html``}
       <lunr-search id="lunr"></lunr-search>
 
       ${this.__results.map(
         item => html`
-          <a class="result" .href="${item.location}">
+          <a class="result" .href="${item.location}" @click="${this.selectionMade}">
             <div class="title">
-              ${item.title}<span class="link-text" aria-hidden="true"
+              ${item.title}<span ?hidden="${!this.showPath}" class="link-text" aria-hidden="true"
                 >(${item.location})</span
               >
             </div>
-            <div class="date">
+            <div class="date" ?hidden="${!this.showDate}">
               <simple-datetime format="M jS" .timestamp="${item.created}" unix
                 >${item.created}</simple-datetime
               >
@@ -118,6 +133,15 @@ class SiteSearch extends LitElement {
         `
       )}
     `;
+  }
+  selectionMade(e) {
+    this.dispatchEvent(
+      new CustomEvent(`search-item-selected`, {
+        detail: {
+          value: e.detail,
+        }
+      })
+    );
   }
   _searchValueChanged(e) {
     this.search = e.detail.value;
@@ -137,6 +161,18 @@ class SiteSearch extends LitElement {
       dataSource: {
         type: String,
         attribute: "data-source"
+      },
+      showDate: {
+        type: Boolean,
+        attribute: 'show-date',
+      },
+      showPath: {
+        type: Boolean,
+        attribute: 'show-path',
+      },
+      hideInput: {
+        type: Boolean,
+        attribute: 'hide-input',
       },
       search: {
         type: String

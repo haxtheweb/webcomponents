@@ -14,30 +14,6 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  */
 class SiteActiveTitle extends LitElement {
   /**
-   * LitElement
-   */
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-          transition: 0.2s opacity linear;
-          opacity: 1;
-        }
-        :host([edit-mode]) {
-          opacity: 0.2;
-        }
-        h2 {
-          text-rendering: optimizelegibility;
-          font-family: sans-serif;
-          color: var(--site-active-title-color, #383f45);
-          margin: var(--site-active-title-margin);
-          padding: var(--site-active-title-padding);
-        }
-      `
-    ];
-  }
-  /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
@@ -48,7 +24,24 @@ class SiteActiveTitle extends LitElement {
    */
   render() {
     return html`
-      <h2>${this.__title}</h2>
+      <style>
+        :host {
+          display: block;
+          transition: 0.2s opacity linear;
+          opacity: 1;
+        }
+        :host([edit-mode]) {
+          opacity: 0.2;
+        }
+        h1 {
+          text-rendering: optimizelegibility;
+          font-family: sans-serif;
+          color: var(--site-active-title-color);
+          margin: var(--site-active-title-margin);
+          padding: var(--site-active-title-padding);
+        }
+      </style>
+      <h1>${this.__title}</h1>
     `;
   }
   /**

@@ -33,20 +33,20 @@ class MapMenuItem extends LitElement {
         .title {
           text-transform: none;
         }
+        a:visited,
         a {
           display: block;
           color: var(--map-menu-item-a-color);
-          text-decoration: var(--map-menu-item-a-text-decoration);
+          text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
-        a,
         a:hover,
-        a:visited,
+        a:active,
         a:focus {
           color: var(
             --map-menu-item-a-active-color,
             var(--map-menu-item-a-color)
           );
-          text-decoration: var(--map-menu-item-a-text-decoration);
+          text-decoration: var(--map-menu-item-a-text-decoration-hover, underline);
         }
         #track {
           transition: 0.1s all ease-in-out;

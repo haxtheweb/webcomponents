@@ -3,29 +3,43 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
 /**
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
  *
 
  */
-class SiteRSSButton extends LitElement {
+class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
-          display: block;
-          color: inherit;
+          display: inline-flex;
+          color: var(--site-rss-button-color, black);
         }
         a {
           text-decoration: var(--site-rss-text-decoration);
           outline: none;
         }
         paper-icon-button {
-          color: grey;
+          color: var(--site-rss-button-color, black);
+        }
+        simple-tooltip {
+          --simple-tooltip-background: var(
+            --haxcms-tooltip-background-color,
+            #000000
+          );
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: var(
+            --haxcms-tooltip-color,
+            #ffffff
+          );
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
       `
     ];
@@ -57,12 +71,14 @@ class SiteRSSButton extends LitElement {
         target="_blank"
         rel="noopener noreferrer"
         .aria-title="${this.label}"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <paper-icon-button
           icon="${this.icon}"
           @click="${this.print}"
           .aria-title="${this.label}"
           ?disabled="${this.disabled}"
+          .part="${this.editMode ? `edit-mode-active` : ``}"
         ></paper-icon-button>
       </a>
       <simple-tooltip
@@ -74,14 +90,11 @@ class SiteRSSButton extends LitElement {
       </simple-tooltip>
     `;
   }
-  createRenderRoot() {
-    return this;
-  }
   /**
    * Mix in an opened status
    */
   static get properties() {
-    return {
+    return {...super.properties,
       disabled: {
         type: Boolean,
         reflect: true
@@ -104,6 +117,9 @@ class SiteRSSButton extends LitElement {
     };
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {
         this._generateLink(this[propName], oldValue);

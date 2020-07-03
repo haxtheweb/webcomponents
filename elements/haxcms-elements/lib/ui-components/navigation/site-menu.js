@@ -6,16 +6,17 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
  */
-class SiteMenu extends LitElement {
+class SiteMenu extends HAXCMSThemeParts(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
@@ -35,9 +36,7 @@ class SiteMenu extends LitElement {
             --site-menu-item-active-item-color
           );
         }
-        map-menu[disabled] {
-          pointer-events: none;
-          opacity: 0.5;
+        map-menu[part="edit-mode-active"] {
           background-color: grey;
         }
         map-menu:not(:defined) {
@@ -45,19 +44,13 @@ class SiteMenu extends LitElement {
         }
 
         map-menu::-webkit-scrollbar-track {
-          -webkit-box-shadow: inset 0 0 4px
-            var(--site-menu-scrolltrack-bg-color, rgba(56, 63, 69, 0.9));
           border-radius: 0;
-          background-color: var(--site-menu-bg-color, #383f45);
         }
         map-menu::-webkit-scrollbar {
           width: 2px;
-          background-color: var(--site-menu-bg-color, #383f45);
         }
         map-menu::-webkit-scrollbar-thumb {
           border-radius: 1px;
-          -webkit-box-shadow: inset 0 0 4px var(--site-menu-bg-shadow, #747474);
-          background-color: var(--site-menu-bg-color, #383f45);
         }
       `
     ];
@@ -81,10 +74,6 @@ class SiteMenu extends LitElement {
       this.routerManifest = Object.assign({}, toJS(store.routerManifest));
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
   }
   /**
    * LitElement life cycle - render callback
@@ -92,7 +81,7 @@ class SiteMenu extends LitElement {
   render() {
     return html`
       <map-menu
-        ?disabled="${this.editMode}"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
         .manifest="${this.routerManifest}"
         ?active-indicator="${!this.hideActiveIndicator}"
         ?auto-scroll="${!this.preventAutoScroll}"
@@ -101,6 +90,9 @@ class SiteMenu extends LitElement {
     `;
   }
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     autorun(reaction => {
       this.activeId = toJS(store.activeId);
@@ -114,7 +106,7 @@ class SiteMenu extends LitElement {
    * LitElement life cycle - properties definition
    */
   static get properties() {
-    return {
+    return {...super.properties,
       /**
        * Manifest with router / location enhancements
        */
