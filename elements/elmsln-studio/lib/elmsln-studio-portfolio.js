@@ -206,8 +206,8 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
               )}"
               aria-hidden="true"
               label="${this.fullName(this.studentData)}"
-              src="${this.studentData && this.studentData.image
-                ? this.studentData.image
+              src="${this.studentData && this.studentData.avatar
+                ? this.studentData.avatar
                 : undefined}"
               two-chars
             >

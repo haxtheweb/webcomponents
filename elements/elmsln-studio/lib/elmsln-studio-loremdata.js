@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 
 /**
@@ -20,63 +20,61 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    */
   static get tag() {
     return "elmsln-studio-loremdata";
-  }
-
-  static get properties() {
+  }static get properties() {
     return {
-      projects: {
+      activities: {
         type: Object
       },
       assignments: {
         type: Object
       },
-      portfolios: {
-        type: Object
-      },
-      submissions: {
+      endDate: {
         type: Object
       },
       feedback: {
         type: Object
       },
-      replies: {
-        type: Object
-      },
-      activities: {
-        type: Object
-      },
-      users: {
-        type: Object
-      },
-      students: {
-        type: Object
-      },
       instructors: {
         type: Object
       },
-      weeks: {
-        type: Number
-      },
-      endDate: {
-        type: Object
-      },
-      startDate: {
+      replies: {
         type: Object
       },
       paragraphs: {
         type: Array
       },
+      projects: {
+        type: Object
+      },
+      portfolios: {
+        type: Object
+      },
       sentences: {
         type: Array
       },
-      words: {
-        type: Array
+      startDate: {
+        type: Object
+      },
+      students: {
+        type: Object
+      },
+      submissions: {
+        type: Object
+      },
+      target: {
+        type: String
+      },
+      users: {
+        type: Object
       },
       userId: {
         type: String
       },
-      target: {
-        type: String
+      weeks: {
+        type: Number
+      },
+      words: {
+        type: Array
       }
     };
   }
@@ -87,46 +85,46 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         id: "project-0",
         project: "Hypertext Narrative Project",
         assignments: [
-          "Discover: Word-Pairs",
-          "Define: Synopsis",
-          "Develop: Story and Plot Elements",
-          "Develop: Characters",
-          "Deliver: Hypertext Narrative Draft",
-          "Deliver: Feedback",
-          "Deliver: Iterate",
-          "Deliver: Iterate critique",
-          "Deliver: Iterate critique",
-          "Deliver: Hypertext Narrative"
+          {assignment: "Discover: Word-Pairs"},
+          {assignment: "Define: Synopsis"},
+          {assignment: "Develop: Story and Plot Elements"},
+          {assignment: "Develop: Characters"},
+          {assignment: "Deliver: Hypertext Narrative Draft"},
+          {assignment: "Deliver: Feedback"},
+          {assignment: "Deliver: Iterate"},
+          {assignment: "Deliver: Iterate critique"},
+          {assignment: "Deliver: Iterate critique"},
+          {assignment: "Deliver: Hypertext Narrative"}
         ]
       },
       "project-1": {
         id: "project-1",
         project: "Ritual Project",
         assignments: [
-          "Discover: Interview",
-          "Discover: Journey Map",
-          "Define: Themes & Insights",
-          "Define: HMW",
-          "Develop: Brainstorm",
-          "Develop: Storyboard",
-          "Develop: Prototype",
-          "Develop: Test and Iterate",
-          "Deliver: Final Prototype"
+          {assignment: "Discover: Interview"},
+          {assignment: "Discover: Journey Map"},
+          {assignment: "Define: Themes & Insights"},
+          {assignment: "Define: HMW"},
+          {assignment: "Develop: Brainstorm"},
+          {assignment: "Develop: Storyboard"},
+          {assignment: "Develop: Prototype"},
+          {assignment: "Develop: Test and Iterate"},
+          {assignment: "Deliver: Final Prototype"}
         ]
       },
       "project-2": {
         id: "project-2",
         project: "Open Kit Project",
         assignments: [
-          "Discover: Toy Research",
-          "Discover: Modular Research",
-          "Discover: Resources",
-          "Define: Product Pitch",
-          "Develop: Prototyping",
-          "Develop: Instructions",
-          "Develop: Test",
-          "Develop: Iterate",
-          "Deliver: Open Toy"
+          {assignment: "Discover: Toy Research"},
+          {assignment: "Discover: Modular Research"},
+          {assignment: "Discover: Resources"},
+          {assignment: "Define: Product Pitch"},
+          {assignment: "Develop: Prototyping"},
+          {assignment: "Develop: Instructions"},
+          {assignment: "Develop: Test"},
+          {assignment: "Develop: Iterate"},
+          {assignment: "Deliver: Open Toy"}
         ]
       }
     };
@@ -203,132 +201,31 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     ];
     this.refreshData();
   }
-  updated() {
-    this.refreshData();
-  }
-  refreshData() {
-    /* lorem ipsum sentence list */
-    this.sentences = this.paragraphs
-      .map(p => p.split(/[\.\?\!]+\s+/))
-      .flat()
-      .map(
-        s => `${s}${this.randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
-      );
-    /* lorem ipsum word list */
-    this.words = [
-      ...new Set(
-        this.paragraphs
-          .map(p => p.split(/\W+/))
-          .flat()
-          .map(w => w.toLowerCase())
-      )
-    ];
-    /* total weeks to complete all assgnments */
-    this.weeks = Object.keys(this.projects || {})
-      .map(i => this.projects[i].assignments)
-      .flat().length;
-    /* set start and end so we are halfway though course */
-    this.endDate = this.addWeeks(new Date(), Math.floor(this.weeks / 2));
-    this.startDate = this.addWeeks(this.endDate, (this.weeks + 1) * -1);
-
-    /* filter users to get students  */
-    this.students = JSON.parse(JSON.stringify(this.users));
-    Object.keys(this.students || {}).forEach(s => {
-      if (this.students[s].instructor) delete this.students[s];
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if(["target","users","projects","paragraphs"].includes(propName)) {
+        this.refreshData();
+      }
     });
-
-    /* filter users to get instructors  */
-    this.instructors = JSON.parse(JSON.stringify(this.users));
-    Object.keys(this.instructors || {}).forEach(s => {
-      if (!this.instructors[s].instructor) delete this.instructors[s];
-    });
-
-    /* populate fake data starting with projects */
-    Object.keys(this.projects || {}).forEach(p => {
-      Object.keys(this.students || {}).forEach(s => {
-        this.portfolios[`portfolio-${s}-${p}`] = {
-          id: `portfolio-${s}-${p}`,
-          userId: s,
-          projectId: p,
-          submissions: []
-        };
-      });
-      this.projects[p].assignments = this.projects[p].assignments.map(a =>
-        makeAssignment(p, a)
-      );
-    });
-
-    this.activities = this.sortDates([
-      ...this.toArray(this.submissions, { activity: "submission" }),
-      ...this.toArray(this.feedback, { activity: "feedback" }),
-      ...this.toArray(this.replies, { activity: "replies" })
-    ]);
-
-    /** make a profile */
-    this.userId = this.randomItem(Object.keys(this.students || {}));
-    this.setTarget();
-
-    /**
-     * Fires when data is ready
-     *
-     * @event data-loaded
-     */
-    this.dispatchEvent(
-      new CustomEvent("data-loaded", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
   }
   get projectsList() {
-    this.toArray(this.projects);
+    return this.toArray(this.projects);
   }
   get assignmentsList() {
-    this.toArray(this.assignments);
+    return this.toArray(this.assignments);
   }
   get portfoliosList() {
-    this.toArray(this.portfolios);
+    return this.toArray(this.portfolios);
   }
   get submissionsList() {
-    this.toArray(this.submissions);
+    return this.toArray(this.submissions);
   }
   get feedbackList() {
-    this.toArray(this.feedback);
+    return this.toArray(this.feedback);
   }
   get repliesList() {
-    this.toArray(this.replies);
-  }
-  setTarget() {
-    let target = document.getElementById(this.target || "elmsln-studio");
-    if (target) {
-      target.profileData = this.makeProfile();
-      target.activityData = this.activities;
-      target.submissionsData = this.submissions;
-    }
-  }
-  makeProfile() {
-    let profile = this.users[this.userId];
-    profile.submissions = this.submissionsList.filter(
-      i => this.submissions[i].userId === this.userId
-    );
-    profile.assignments = this.assignmentsList;
-    profile.feedbackFor = profile.submissions.feedback.map(
-      i => this.feedback[i]
-    );
-    profile.repliesBy = this.repliesList.filter(i => i.userId === userId);
-    profile.feedbackBy = this.feedbackList.filter(i => i.userId === userId);
-    profile.repliesFor = profile.feedbackBy.replies.map(i => this.replies[i]);
-    return profile;
-  }
-  /**
-   * gets shuffled array
-   * @param {array} arr array
-   * @returns {arr} shuffled array
-   */
-  shuffle(arr = []) {
-    return arr.sort((a, b) => Math.random() - Math.random());
+    return this.toArray(this.replies);
   }
   /**
    * draws x-y items from shuffled array
@@ -344,6 +241,220 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     );
   }
   /**
+   * make submission assets based on topic and type
+   * @param {string} topic optional topic for image assets
+   * @returns {array} array of assets
+   */
+  makeAssets(topic = "any", type) {
+    if (type === "body") {
+      return `${this.draw(this.sentences, 4, 10).join(". ")}.`;
+    } else {
+      let times = 1 + Math.floor(Math.random() * 7),
+        assets = [];
+      for (let i = 0; i < times; i++) {
+        if (type === "links") {
+          assets.push(this.randomLink());
+        } else {
+          assets.push(this.randomImage(topic));
+        }
+      }
+      return assets;
+    }
+  }
+  /**
+   * make project assignment
+   * @param {string} projectId project identifier
+   * @param {string} assignmentName assignment name
+   * @returns {object} assignment data
+   */
+  makeAssignment(projectId, a) {
+    let topic = this.randomItem(["any", "animals", "nature", "people", "tech"]),
+      type = this.randomItem(["links", "body", "sources"]),
+      completed = Object.keys(this.assignments).length,
+      id = `assignment-${completed}`,
+      created = this.addWeeks(this.startDate + completed),
+      studentsList =
+        projectId === "project-2"
+          ? []
+          : projectId === "project-1"
+          ? this.draw(Object.keys(this.students), 4, 6)
+          : this.shuffle(Object.keys(this.students));
+    this.assignments[id] = {
+      id: id,
+      projectId: projectId,
+      project: this.projects[projectId].project,
+      assignment: a.assignment,
+      date: created,
+      topic: topic,
+      type: type,
+      submissions: []
+    };
+    this.assignments[id].submissions = studentsList.map((studentId, i) => {
+      let sid = this.makeSubmission(
+        id,
+        studentId,
+        this.nextDate(created, i, studentsList.length, 7)
+      );
+      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(
+        sid
+      );
+      return sid;
+    });
+    return this.assignments[id];
+  }
+  /**
+   * make feedback or reply as comment
+   * @param {string} id comment identifier
+   * @param {string} val value of foreign key
+   * @param {string} key foreign key
+   * @param {string} comment author identifier
+   * @param {object} created date comment was created
+   * @returns {object} comment data
+   */
+  makeComment(id, submissionId, userId, created) {
+    let assignmentId = this.submissions[submissionId].assignmentId, 
+      comment = {
+        id: id,
+        userId: userId,
+        submissionId: submissionId,
+        submissionImage: this.submissions[submissionId].image,
+        creator: this.submissions[submissionId].userId,
+        creatorFirstName: this.submissions[submissionId].firstName,
+        creatorLastName: this.submissions[submissionId].lastName,
+        creatorAvatar: this.submissions[submissionId].avatar,
+        assignmentId: assignmentId,
+        assignment: this.assignments[assignmentId].assignment,
+        project: this.assignments[assignmentId].project,
+        projectId: this.assignments[assignmentId].projectId,
+        firstName: this.users[userId].firstName,
+        lastName: this.users[userId].lastName,
+        avatar: this.users[userId].image,
+        date: created,
+        body: `${this.draw(this.sentences, 1, 4).join(" ")}`,
+        read: Math.random() < 0.5,
+        like: Math.random() < 0.5,
+      };
+    return comment;
+  }
+  /**
+   * make feedback with threaded replies
+   * @param {string} submissionId submission identifier
+   * @param {string} reviewerId feedback author identifier
+   * @param {object} created date comment was created
+   * @returns {object} feedback data
+   */
+  makeFeedback(submissionId, reviewerId, created) {
+    let id = `feedback-${Object.keys(this.feedback).length}`,
+      replies = Math.floor(Math.random() * 4);
+    this.feedback[id] = this.makeComment(
+      id,
+      submissionId,
+      reviewerId,
+      created
+    );
+
+    this.feedback[id].replies = [];
+    for (let i = 0; i < replies; i++) {
+      let reply = this.makeReply(
+        id,
+        this.randomItem(Object.keys(this.students)),
+        this.nextDate(created, i, replies, 3)
+      );
+      this.replies[reply].feedbackId = id;
+      this.replies[reply].feedbackFirstName = this.feedback[id].firstName;
+      this.replies[reply].feedbackLastName = this.feedback[id].firstName;
+      this.replies[reply].feedbackAvatar = this.feedback[id].avatar;
+      this.feedback[id].replies.push(reply);
+    }
+    return id;
+  }
+  /**
+   * makes user profile data
+   * @returns {object}
+   */
+  makeProfile(userId) {
+    let profile = this.users[userId];
+    profile.assignments = this.assignmentsList;
+    profile.submissions = this.submissionsList.filter(i => i.userId === userId);
+    profile.feedbackFor = profile.submissions.map(
+      submission => submission.feedback.map(i=>this.feedback[i])
+    ).flat();
+    profile.repliesBy = this.repliesList.filter(i => i.userId === userId);
+    profile.feedbackBy = this.feedbackList.filter(i => i.userId === userId);
+    profile.repliesFor = profile.feedbackBy.map(
+      feedback=>feedback.replies.map(i =>this.replies[i])).flat();
+    let assignments = profile.submissions.map(i=>this.assignments[i.assignmentId].id);
+    profile.assignmentsCompleted = [...new Set(assignments.flat())];
+    profile.workDue = this.assignmentsList.filter(
+        i => !(profile.assignmentsCompleted || []).includes(i.id)
+      )
+    return profile;
+  }
+  /**
+   * make a reply to feedback
+   * @param {string} feedbackId feedback identifier
+   * @param {string} commenterId reply author identifier
+   * @param {object} created date comment was created
+   * @returns {object} reply data
+   */
+  makeReply(feedbackId, commenterId, created) {
+    let id = `reply-${Object.keys(this.replies).length}`;
+    this.replies[id] = this.makeComment(
+      id,
+      this.feedback[feedbackId].submissionId,
+      commenterId,
+      created,
+      feedbackId
+    );
+    return id;
+  }
+  /**
+   * make assignment submission by student
+   * @param {string} assignmentId assignment identifier
+   * @param {string} studentId author identifier
+   * @param {object} created date comment was created
+   * @returns {object} submission data
+   */
+  makeSubmission(assignmentId, studentId, created) {
+    let id = `submission-${Object.keys(this.submissions).length}`,
+      reviewers = [
+        this.randomItem(Object.keys(this.instructors)),
+        ...this.draw(Object.keys(this.students), 1, 3)
+      ],
+      assignment = this.assignments[assignmentId];
+    this.submissions[id] = {
+      id: id,
+      date: created,
+      assignmentId: assignmentId,
+      projectId: assignment.projectId,
+      project: assignment.project,
+      assignment: assignment.assignment,
+      userId: studentId,
+      firstName: this.users[studentId].firstName,
+      lastName: this.users[studentId].lastName,
+      avatar: this.users[studentId].image,
+      image: this.randomImage(assignment.topic),
+      feature:
+        Math.random() < 0.2
+          ? this.draw(this.sentences, 2, 10).join(" ")
+          : undefined,
+      feedback: []
+    };
+
+    this.submissions[id][assignment.type] = this.makeAssets(
+      assignment.topic,
+      assignment.type
+    );
+    this.submissions[id].feedback = reviewers.map((userId, i) => {
+      return this.makeFeedback(
+        id,
+        userId,
+        this.nextDate(created, i, reviewers.length, 3)
+      );
+    });
+    return id;
+  }
+  /**
    * distributes items over a period of x days
    * @param {date} start starting date
    * @param {number} index index of item
@@ -354,31 +465,6 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    */
   nextDate(start, index = 1, qty = 1, days = 1, offset = 0) {
     return this.addDays(start, (days * index) / qty + offset);
-  }
-  /**
-   * generates random link data
-   * @returns {object} link as { url, text, type }
-   * */
-  randomLink() {
-    let w = this.draw(this.words, 1, 4),
-      file = this.randomItem(["url", "pdf"]),
-      base = this.randomItem(this.words),
-      extension = file !== "url" ? `.${file}` : "",
-      url = `http://${base}.com/${w.join("/")}${extension}`,
-      text = w.length > 0 ? w.join(" ") : base;
-    return {
-      url: url.toLowerCase(),
-      text: text,
-      type: file
-    };
-  }
-  /**
-   * draws a random item from array of items
-   * @param {array} array of items
-   * @returns {*}
-   */
-  randomItem(items) {
-    return items[Math.floor(Math.random() * items.length)];
   }
   /**
    * genterates random image data
@@ -423,174 +509,149 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     };
   }
   /**
-   * make submission assets based on topic and type
-   * @param {string} topic optional topic for image assets
-   * @returns {array} array of assets
+   * draws a random item from array of items
+   * @param {array} array of items
+   * @returns {*}
    */
-  makeAssets(topic = "any", type) {
-    if (type === "body") {
-      return `${this.draw(this.sentences, 4, 10).join(". ")}.`;
-    } else {
-      let times = 1 + Math.floor(Math.random() * 7),
-        assets = [];
-      for (let i = 0; i < times; i++) {
-        if (type === "links") {
-          assets.push(randomLink());
-        } else {
-          assets.push(randomImage(topic));
-        }
-      }
-      return assets;
-    }
+  randomItem(items) {
+    return items[Math.floor(Math.random() * items.length)];
   }
   /**
-   * make feedback or reply as comment
-   * @param {string} id comment identifier
-   * @param {string} val value of foreign key
-   * @param {string} key foreign key
-   * @param {string} comment author identifier
-   * @param {object} created date comment was created
-   * @returns {object} comment data
-   */
-  makeComment(id, val, key, userId, created) {
-    let comment = {
-      id: id,
-      userId: userId,
-      date: created,
-      body: `${this.draw(this.sentences, 1, 4).join(" ")}`,
-      read: Math.random() < 0.5,
-      like: Math.random() < 0.5
+   * generates random link data
+   * @returns {object} link as { url, text, type }
+   * */
+  randomLink() {
+    let w = this.draw(this.words, 1, 4),
+      file = this.randomItem(["url", "pdf"]),
+      base = this.randomItem(this.words),
+      extension = file !== "url" ? `.${file}` : "",
+      url = `http://${base}.com/${w.join("/")}${extension}`,
+      text = w.length > 0 ? w.join(" ") : base;
+    return {
+      url: url.toLowerCase(),
+      text: text,
+      type: file
     };
-    comment[key] = val;
-    return comment;
   }
   /**
-   * make a reply to feedback
-   * @param {string} feedbackId feedback identifier
-   * @param {string} commenterId reply author identifier
-   * @param {object} created date comment was created
-   * @returns {object} reply data
+   * updates the data
    */
-  makeReply(feedbackId, commenterId, created) {
-    let id = `reply-${Object.keys(this.replies).length}`;
-    this.replies[id] = makeComment(
-      id,
-      feedbackId,
-      "feedbackId",
-      commenterId,
-      created
-    );
-    return id;
-  }
-  /**
-   * make feedback with threaded replies
-   * @param {string} submissionId submission identifier
-   * @param {string} reviewerId feedback author identifier
-   * @param {object} created date comment was created
-   * @returns {object} feedback data
-   */
-  makeFeedback(submissionId, reviewerId, created) {
-    let id = `feedback-${Object.keys(this.feedback).length}`,
-      replies = Math.floor(Math.random() * 4);
-    this.feedback[id] = makeComment(
-      id,
-      submissionId,
-      "submissionId",
-      reviewerId,
-      created
-    );
-    this.feedback[id].replies = [];
-    for (let i = 0; i < replies; i++) {
-      this.feedback[id].replies.push(
-        makeReply(
-          id,
-          this.randomItem(Object.keys(this.students)),
-          this.nextDate(start, i, replies, 3)
-        )
+  refreshData() {
+    this.resetData();
+    /* lorem ipsum sentence list */
+    this.sentences = this.paragraphs
+      .map(p => p.split(/[\.\?\!]+\s+/))
+      .flat()
+      .map(
+        s => `${s}${this.randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
       );
-    }
-    return id;
-  }
-  /**
-   * make assignment submission by student
-   * @param {string} assignmentId assignment identifier
-   * @param {string} studentId author identifier
-   * @param {object} created date comment was created
-   * @returns {object} submission data
-   */
-  makeSubmission = (assignmentId, studentId, created) => {
-    let id = `submission-${Object.keys(this.submissions).length}`,
-      reviewers = [
-        this.randomItem(Object.keys(this.instructors)),
-        ...this.draw(Object.keys(this.students), 1, 3)
-      ],
-      assignment = this.assignments[assignmentId];
-    this.submissions[id] = {
-      id: id,
-      date: created,
-      assignmentId: assignmentId,
-      userId: studentId,
-      image: randomImage(assignment.topic),
-      feature:
-        Math.random() < 0.2
-          ? this.draw(this.sentences, 2, 10).join(" ")
-          : undefined,
-      feedback: []
-    };
+    /* lorem ipsum word list */
+    this.words = [
+      ...new Set(
+        this.paragraphs
+          .map(p => p.split(/\W+/))
+          .flat()
+          .map(w => w.toLowerCase())
+      )
+    ];
+    /* total weeks to complete all assgnments */
+    this.weeks = Object.keys(this.projects || {})
+      .map(i => this.projects[i].assignments)
+      .flat().length;
+    /* set start and end so we are halfway though course */
+    this.endDate = this.addWeeks(new Date(), Math.floor(this.weeks / 2));
+    this.startDate = this.addWeeks(this.endDate, (this.weeks + 1) * -1);
 
-    this.submissions[id][assignment.type] = makeAssets(
-      assignment.topic,
-      assignment.type
+    /* filter users to get students  */
+    this.students = JSON.parse(JSON.stringify(this.users));
+    Object.keys(this.students || {}).forEach(s => {
+      if (this.students[s].instructor) delete this.students[s];
+    });
+
+    /* filter users to get instructors  */
+    this.instructors = JSON.parse(JSON.stringify(this.users));
+    Object.keys(this.instructors || {}).forEach(s => {
+      if (!this.instructors[s].instructor) delete this.instructors[s];
+    });
+
+    /* populate fake data starting with projects */
+    Object.keys(this.projects || {}).forEach(p => {
+      Object.keys(this.students || {}).forEach(s => {
+        this.portfolios[`portfolio-${s}-${p}`] = {
+          id: `portfolio-${s}-${p}`,
+          userId: s,
+          firstName: this.users[s].firstName,
+          lastName: this.users[s].lastName,
+          avatar: this.users[s].image,
+          projectId: p,
+          submissions: []
+        };
+      });
+      this.projects[p].assignments = this.projects[p].assignments.map(a =>
+        this.makeAssignment(p, a)
+      );
+    });
+
+    this.activities = this.sortDates([
+      ...this.toArray(this.submissions, { activity: "submission" }),
+      ...this.toArray(this.feedback, { activity: "feedback" }),
+      ...this.toArray(this.replies, { activity: "replies" })
+    ]);
+
+    /** make a profile */
+    this.userId = this.randomItem(Object.keys(this.students || {}));
+    this.profile = this.makeProfile(this.userId);
+    this.setTarget();
+
+    /**
+     * Fires when data is ready
+     *
+     * @event data-loaded
+     */
+    this.dispatchEvent(
+      new CustomEvent("data-loaded", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
     );
-    this.submissions[id].feedback = reviewers.map((userId, i) => {
-      return makeFeedback(
-        id,
-        userId,
-        this.nextDate(created, i, reviewers.length, 3)
-      );
-    });
-    return id;
-  };
+  }
   /**
-   * make project assignment
-   * @param {string} projectId project identifier
-   * @param {string} assignmentName assignment name
-   * @returns {object} assignment data
+   * resets the objects
+   * 
    */
-  makeAssignment = (projectId, assignmentName) => {
-    let topic = this.randomItem(["any", "animals", "nature", "people", "tech"]),
-      type = this.randomItem(["links", "body", "sources"]),
-      completed = Object.keys(this.assignments).length,
-      id = `assignment-${completed}`,
-      created = this.addWeeks(this.startDate + completed),
-      studentsList =
-        projectId === "project-3"
-          ? []
-          : projectId === "project-2"
-          ? this.draw(Object.keys(this.students), 4, 6)
-          : this._shuffle(Object.keys(this.students));
-    this.assignments[id] = {
-      id: id,
-      projectId: projectId,
-      assignment: assignmentName,
-      date: created,
-      topic: topic,
-      type: type,
-      submissions: []
-    };
-    this.assignments[id].submissions = studentsList.map((studentId, i) => {
-      let sid = makeSubmission(
-        id,
-        studentId,
-        this.nextDate(created, i, studentsList.length, 7)
-      );
-      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(
-        sid
-      );
-      return sid;
-    });
-    return id;
-  };
+  resetData(){
+    this.activities = [];
+    this.assignments = {};
+    this.feedback = {};
+    this.instructors = {};
+    this.portfolios = {};
+    this.replies = {};
+    this.sentences = [];
+    this.students = {};
+    this.submissions = {};
+    this.words = [];
+  }
+  /**
+   * sends data to a specified target
+   */
+  setTarget() {
+    let target = document.getElementById(this.target || "elmsln-studio");
+    if (target) {
+      target.activityData = this.activities;
+      target.submissionsData = this.submissions;
+      target.profileData = this.profile;
+    }
+  }
+  /**
+   * gets shuffled array
+   * @param {array} arr array
+   * @returns {arr} shuffled array
+   */
+  shuffle(arr = []) {
+    return arr.sort((a, b) => Math.random() - Math.random());
+  }
 }
 customElements.define("elmsln-studio-loremdata", ElmslnStudioLoremdata);
 export { ElmslnStudioLoremdata };

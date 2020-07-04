@@ -16,7 +16,16 @@ import "@polymer/iron-icons/communication-icons.js";
  * @lit-element
  * @demo demo/submission.html
  */
-class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
+class ElmslnStudioSubmissions extends ElmslnStudioUtilities(ElmslnStudioStyles(LitElement)){
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "elmsln-studio-submissions";
+  }
+
   static get styles() {
     return [
       ...ElmslnStudioStyles.styles,
@@ -278,8 +287,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                   <iron-icon icon="zoom-in"></iron-icon>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">
-                  ${this.user(s.userId).firstName}
-                  ${this.user(s.userId).lastName}
+                  ${s.firstName}
+                  ${s.lastName}
                 </div>
                 <div slot="corner" id="date-${s.id}">
                   ${this.grid
@@ -287,11 +296,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                     : this.dateFormat(s.date)}
                 </div>
                 <div slot="subheading" id="assignment-${s.id}">
-                  ${this.assignment(s.assignmentId).assignment}
+                  ${s.assignment}
                 </div>
                 <div slot="content" id="project-${s.id}">
-                  ${this.project(this.assignment(s.assignmentId).projectId)
-                    .project}
+                  ${s.project}
                 </div>
                 <div slot="content" class="feature" ?hidden="${!s.feature}">
                   ${s.feature}
@@ -299,18 +307,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                 <div slot="footer">
                   <button
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e =>
-                      (location.href =
-                        "./portfolio?submission=${s.id}")}&feedback=${s
-                      .feedback[0]}'}"
+                    @click="${e => this._handleLinkButton(e,this.feedbackLink(s.feedback[0]))}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
                   </button>
                   <button
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e =>
-                      (location.href = "./portfolio?submission=${s.id}")}"
+                    @click="${e => this._handleLinkButton(e,this.submissionLink(s))}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
@@ -342,25 +346,19 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
                   accent-color="${this.accentColor(
                     this.user(f.userId).firstName
                   )}"
-                  .avatar="${this.user(f.userId).image}"
+                  .avatar="${f.avatar}"
                   icon="chevron-right"
-                  initials="${this.user(f.userId).firstName} ${this.user(
-                    f.userId
-                  ).lastName}"
+                  initials="${f.firstName} ${f.lastName}"
                 >
-                  <button
-                    id="comment-${this.user(f.userId).id}"
-                    aria-describedby="comment-${this.user(f.userId).id}-desc"
+                  <a
+                    id="comment-${f.id}"
+                    aria-describedby="comment-${f.id}-desc"
                     slot="label"
+                    href="${this.feedbackLink(f)}"
                   >
-                    ${this.user(f.userId).firstName} feedback on
-                    ${this.user(this.submission(f.submissionId).userId)
-                      .firstName}'s
-                    ${this.assignment(
-                      this.submission(f.submissionId).assignmentId
-                    ).assignment}
-                  </button>
-                  <span id="comment-${f.id}v" slot="description">
+                    ${this.feedbackTitle(f)}
+                  </a>
+                  <span id="comment-${f.id}" slot="description">
                     ${this.dateFormat(f.date)}
                   </span>
                 </nav-card-item>
@@ -380,12 +378,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         type: String,
         attribute: "assignment-filter"
       },
-      assignmentOptions: {
-        type: Array
-      },
-      feedbackData: {
-        type: Array
-      },
       grid: {
         type: Boolean,
         attribute: "grid"
@@ -394,170 +386,54 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
         type: String,
         attribute: "student-filter"
       },
-      studentOptions: {
-        type: Array
-      },
-      submissionData: {
-        type: Array
+      submissionsData: {
+        type: String,
+        attribute: "submissions-data"
       }
     };
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "elmsln-studio-submissions";
   }
 
   // life cycle
   constructor() {
     super();
     this.assignmentFilter = "";
-    this.assignmentOptions = { "": "All" };
     this.grid = false;
-    this.studentOptions = { "": "All" };
     this.studentFilter = "";
-    this.submissionData = [];
-    this.feedbackData = [];
     this.tag = ElmslnStudioSubmissions.tag;
+    console.log('constructor',this.submissionsData);
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "demoMode" && this.demoMode)
-        console.log(propName, oldValue, this.demoMode);
-      if (propName === "demoMode" && this.demoMode) this.initDemo();
+    changedProperties.forEach((oldValue, propName) => {    
     });
+    console.log("submissions data",this.submissionsData,this.submissionsJSON,this.commentsJSON);
   }
-
-  initDemo() {
-    this.studentOptions = { "": "All" };
-    this.assignmentOptions = { "": "All" };
-    Object.keys(this.loremData.students).forEach(
-      i =>
-        (this.studentOptions[i] = `${this.loremData.users[i].lastName}, ${
-          this.loremData.users[i].firstName
-        }`)
-    );
-    Object.keys(this.loremData.assignments).forEach(
-      i =>
-        (this.assignmentOptions[i] = this.loremData.assignments[i].assignment)
-    );
-    this.submissionData = Object.keys(this.loremData.submissions)
-      .map(i => {
-        let submission = this.loremData.submissions[i];
-        submission.id = i;
-        return submission;
-      })
-      .sort((a, b) => b.date - a.date);
-    this.feedbackData = Object.keys(this.loremData.feedback)
-      .map(i => {
-        let feedback = this.loremData.feedback[i];
-        feedback.id = i;
-        return feedback;
-      })
-      .sort((a, b) => b.date - a.date);
-    console.log(
-      "submissions",
-      this.submissionData,
-      this.studentOptions,
-      this.filteredSubmissions
-    );
+  get submissionsJSON(){
+    console.log('submissionsJSON',this.submissionsData);
+    return JSON.parse(this.submissionsData || '[]');
+  }
+  get commentsJSON(){
+    return this.submissionsJSON.map(i=>i.feedback).flat();
+  }
+  get studentOptions(){
+    let options = {"": "All"};
+    this.submissionsJSON.forEach(i => options[i.userId] = this.studentName(submission));
+  }
+  get assignmentOptions(){
+    let options = {"": "All"};
+    this.submissionsJSON.forEach(i => options[i.assignmentId] = i.assignment);
   }
   get filteredSubmissions() {
-    let filter = this.submissionData.filter(a =>
+    console.log('filteredSubmissions',this.submissionsData);
+    return this.submissionsJSON.filter(a =>
       this._isFiltered(a.userId, a.assignmentId)
     );
-    //console.log("submissions", this.submissionData, filter);
-    return filter;
   }
   get filteredComments() {
-    let filter = this.feedbackData.filter(i =>
-      this._isFiltered(
-        this.submission(i.submissionId).userId,
-        this.submission(i.submissionId).assignmentId
-      )
-    );
-    return filter;
-  }
-
-  _discussionClick(id) {
-    /**
-     * Fires when constructed, so that parent radio group can listen for it.
-     *
-     * @event a11y-collapse-attached
-     */
-    this.dispatchEvent(
-      new CustomEvent("discuss-submission", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: id
-      })
-    );
-  }
-  _viewClick(id) {
-    /**
-     * Fires when constructed, so that parent radio group can listen for it.
-     *
-     * @event a11y-collapse-attached
-     */
-    this.dispatchEvent(
-      new CustomEvent("view-submission", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: id
-      })
-    );
-  }
-  _zoomClick(id) {
-    /**
-     * Fires when constructed, so that parent radio group can listen for it.
-     *
-     * @event a11y-collapse-attached
-     */
-    this.dispatchEvent(
-      new CustomEvent("zoom-submission", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: id
-      })
-    );
-  }
-
-  _getValign(gravity) {
-    return gravity && gravity.indexOf("top") > -1
-      ? "top"
-      : gravity && gravity.indexOf("bottom") > -1
-      ? "bottom"
-      : "center";
-  }
-
-  _getAlign(gravity) {
-    return gravity && gravity.indexOf("left") > -1
-      ? "left"
-      : gravity && gravity.indexOf("right") > -1
-      ? "right"
-      : "center";
+    return this.commentsJSON.filter(i =>this._isFiltered(i.creator,i.assignmentId));
   }
   _isFiltered(student = "", assignment = "") {
-    //console.log(this.assignmentFilter,this.studentFilter);
-    /*console.log(
-      student,
-      "-",
-      this._isFilteredStudent(student),
-      "-",
-      assignment,
-      "-",
-      this._isFilteredAssignment(assignment),
-      "=",
-      this._isFilteredStudent(student) || this._isFilteredAssignment(assignment)
-    );*/
     return (
       this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
     );
@@ -568,18 +444,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(LitElement) {
   _isFilteredStudent(student = "") {
     return this.studentFilter === "" || student === this.studentFilter;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 customElements.define("elmsln-studio-submissions", ElmslnStudioSubmissions);
 export { ElmslnStudioSubmissions };

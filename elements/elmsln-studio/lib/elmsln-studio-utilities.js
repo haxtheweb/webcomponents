@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -63,11 +63,11 @@ const ElmslnStudioUtilities = function(SuperClass) {
     }
     //submission  assignmnent assignmentId
     getAncestor(child, path) {
-      if (path && path.length > 0) {
+      if (child && path && path.length > 0) {
         let foreignkey = path[0][1],
           parent = path[0][0],
-          key = child[foreignkey];
-        return getAncestors(parent[key], path.slice(1));
+          key = child[`${path[0][1]}`];
+        return this.getAncestor(parent[key], path.slice(1));
       } else {
         return child;
       }
@@ -92,6 +92,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} date as string
      */
     dateFormat(d, format) {
+      if(typeof d === "string") d = new Date(d);
       return format === "long"
         ? d.toLocaleDateString(undefined, {
             weekday: "long",
@@ -125,15 +126,19 @@ const ElmslnStudioUtilities = function(SuperClass) {
         : colors[Math.floor(Math.random() * colors.length)];
     }
     /**
-     * load more items for truncated array
-     * @param {array} truncated
-     * @param {array} full
-     * @param {number} increment
-     * @returns {array}
+     * gets link of a given activity
+     * @param {object} activity object
+     * @param {string} type of activtiy
+     * @returns {string} link
      */
-
-    loadMore(truncated, full, increment) {
-      truncated = full.slice(0, truncated.length + increment);
+    activityLink(activity, type) {
+      if (type === "submission") {
+        return this.submissionLink(activity);
+      } else if (activity.activity === "feedback") {
+        return this.feedbackLink(activity);
+      } else {
+        return this.replyLink(activity);
+      }
     }
     /**
      * gets title of a given activity
@@ -152,6 +157,15 @@ const ElmslnStudioUtilities = function(SuperClass) {
     }
 
     /**
+     * gets link to given submission
+     * @param {object} submission object
+     * @returns {string} link
+     */
+    submissionLink(submission) {
+      return `./portfolio/${submission.userId}-${submission.projectId}?submission=${submission.id}`
+    }
+
+    /**
      * gets title of a given submission
      * @param {object} submission object
      * @returns {string} title
@@ -159,9 +173,18 @@ const ElmslnStudioUtilities = function(SuperClass) {
     submissionTitle(submission) {
       let u = this.user(submission.userId);
       return html`
-        ${u.firstName} submitted
-        ${this.assignment(activity.assignmentId).assignment}
+        ${submission.firstName} submitted
+        ${submission.assignment}
       `;
+    }
+
+    /**
+     * gets link to given feedback
+     * @param {object} feedback object
+     * @returns {string} link
+     */
+    feedbackLink(feedback) {
+      return `./portfolio/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&feedback=${feedback.id}`
     }
 
     /**
@@ -170,14 +193,18 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     feedbackTitle(feedback) {
-      let details = this._getFeedBackDetails(feedback),
-        submission = this.submission(feedback.submissionId),
-        u = this.user(submission.userId),
-        f = this.user(feedback.userId),
-        a = this.assignment(submission.assignmentId);
       return html`
-        ${f.firstName} left feedback on ${u.firstName}'s ${a.assignment}
+        ${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s ${feedback.assignment}
       `;
+    }
+
+    /**
+     * gets link to given reply
+     * @param {object} reply object
+     * @returns {string} link
+     */
+    replyLink(reply) {
+      return `./portfolio/${reply.creator}-${reply.projectId}?submission=${reply.submissionId}&reply=${reply.id}`
     }
 
     /**
@@ -186,12 +213,47 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     replyTitle(reply) {
-      let f = this.feedback(reply.feedbackId),
-        r = this.user(reply.userId),
-        u = this.user(f.userId);
       return html`
-        ${r.firstName} replied to ${u.firstName}'s feedback
+        ${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback
       `;
+    }
+
+    _getValign(gravity) {
+      return gravity && gravity.indexOf("top") > -1
+        ? "top"
+        : gravity && gravity.indexOf("bottom") > -1
+        ? "bottom"
+        : "center";
+    }
+  
+    _getAlign(gravity) {
+      return gravity && gravity.indexOf("left") > -1
+        ? "left"
+        : gravity && gravity.indexOf("right") > -1
+        ? "right"
+        : "center";
+    }
+    /**
+     * handles buttons that work like links
+     *
+     * @param {*} e event
+     * @param {string} path
+     */
+    _handleLinkButton(e,path){
+      location.href = path;
+      /**
+       * Fires when button is clicked
+       *
+       * @event link-button-click
+       */
+      this.dispatchEvent(
+        new CustomEvent("link-button-click", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: path
+        })
+      );
     }
   };
 };

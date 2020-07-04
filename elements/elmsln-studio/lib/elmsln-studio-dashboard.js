@@ -2,9 +2,9 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
+import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
+import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 
 /**
  * `elmsln-studio-dashboard`
@@ -15,10 +15,19 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
  * @lit-element
  * @demo demo/dashboard.html
  */
-class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
+class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(LitElement)) {
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "elmsln-studio-dashboard";
+  }
+
   static get styles() {
     return [
-      ...ElmslnStudioStyles.styles,
+      ...super.styles,
       css`
         h1,
         h2,
@@ -47,6 +56,11 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           color: #95989a;
           --accent-card-footer-border-color: transparent;
         }
+        .card a:link {
+          color: var(--accent-card-color);
+          font-style: normal;
+        }
+        .card a[slot="subheading"]:link,
         .card [slot="subheading"] {
           font-weight: bold;
           text-decoration: underline;
@@ -160,136 +174,132 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   render() {
     return html`
       <h1 class="sr-only">Overview</h1>
-      ${!this.profileData
-        ? html``
-        : html`
-            <div id="primary">
-              <div id="profile">
-                <h2>${this.fullName(this.profileData)}</h2>
-                <accent-card accent-color="purple" class="card primary">
-                  <span slot="heading" class="sr-only">My Progress</span>
-                  <lrndesign-avatar
-                    accent-color="${this.accentColor(
-                      this.fullName(this.profileData)
-                    )}"
-                    slot="content"
-                    .image-src="${this.profileData.image
-                      ? this.profileData.image
-                      : undefined}"
-                    label="${this.fullName(this.profileData)}"
-                    two-chars
-                    size="200px"
-                  ></lrndesign-avatar>
-                  <table slot="content">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Feedback Given</th>
-                        <td>
-                          ${this.userStat("feedbackBy")}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Conversations</th>
-                        <td>
-                          ${this.userStat("repliesBy") +
-                            this.userStat("feedbackBy")}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Total Submissions</th>
-                        <td>
-                          ${this.userStat("submissions")}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Assignments Completed</th>
-                        <td>
-                          ${this.userStat("assignmentsCompleted")} /
-                          ${this.userStat("assignments")}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </accent-card>
-                <nav-card accent-color="green" class="card primary">
-                  <span slot="heading">Work Due</span>
-                  <div slot="linklist">
-                    ${this.workDue.map(
-                      a => html`
-                        <nav-card-item icon="chevron-right">
-                          <button
-                            id="due-${a.id}"
-                            aria-describedby="due-${a.id}-desc"
-                            slot="label"
-                          >
-                            ${a.assignment}
-                          </button>
-                          <span id="due-${a.id}-desc" slot="description"
-                            >${this.dateFormat(a.date, "long")}</span
-                          >
-                        </nav-card-item>
-                      `
-                    )}
-                  </div>
-                </nav-card>
-              </div>
-              <div id="work">
-                <h2>Recent Work</h2>
-                <nav-card
-                  accent-color="amber"
-                  class="card primary"
-                  link-icon="chevron-right"
-                >
-                  <span slot="heading">Submissions</span>
-                  <button slot="subheading">All submissions</button>
-                  <div slot="linklist">
-                    ${(this.profileData.submissions || []).slice(0, 5).map(
-                      s => html`
-                        <nav-card-item icon="chevron-right">
-                          <button
-                            id="sub-${s.id}"
-                            aria-describedby="sub-${s.id}-desc"
-                            slot="label"
-                          >
-                            ${s.assignment}
-                          </button>
-                          <span id="sub-${s.id}-desc" slot="description"
-                            >${this.dateFormat(s.date)}</span
-                          >
-                        </nav-card-item>
-                      `
-                    )}
-                  </div>
-                </nav-card>
-                <nav-card
-                  accent-color="cyan"
-                  class="card primary"
-                  link-icon="chevron-right"
-                >
-                  <span slot="heading">Feedback</span>
-                  <button slot="subheading">All feedback</button>
-                  <div slot="linklist">
-                    ${(this.profileData.feedbackFor || []).slice(0, 3).map(
-                      f => html`
-                        <nav-card-item icon="chevron-right">
-                          <button
-                            id="feed-${f.id}"
-                            aria-describedby="feed-${f.id}-desc"
-                            slot="label"
-                          >
-                            ${this.user(f.userId).firstName}'s feedback
-                          </button>
-                          <span id="feed-${f.id}-desc" slot="description"
-                            >${this.dateFormat(f.date)}</span
-                          >
-                        </nav-card-item>
-                      `
-                    )}
-                  </div>
-                </nav-card>
-              </div>
+      <div id="primary">
+        <div id="profile">
+          <h2>${this.profileName}</h2>
+          <accent-card accent-color="purple" class="card primary">
+            <span slot="heading" class="sr-only">My Progress</span>
+            <lrndesign-avatar
+              accent-color="${this.accentColor(this.profileName)}"
+              slot="content"
+              src="${!this.profileJSON ? 'unknown' : this.profileJSON.image}"
+              label="${this.profileName}"
+              two-chars
+              size="200px"
+            ></lrndesign-avatar>
+            <table slot="content">
+              <tbody>
+                <tr>
+                  <th scope="row">Feedback Given</th>
+                  <td>
+                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.feedbackBy || []).length}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Conversations</th>
+                  <td>
+                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.repliesBy || []).length + (this.profileJSON.feedbackBy || []).length }
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <a href="./submissions${!this.profileJSON ? '' : `?student=${this.profileJSON.userId}`}">
+                      Total Submissions
+                    </a>
+                  </th>
+                  <td>
+                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.submissions || []).length}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Assignments Completed</th>
+                  <td>
+                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.assignmentsCompleted || []).length + (this.profileJSON.assignmentsCompleted || []).length }
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </accent-card>
+          <nav-card accent-color="green" class="card primary">
+            <span slot="heading">Work Due</span>
+            <div slot="linklist">
+              ${!this.profileJSON ? 'unknown' : (this.profileJSON.workDue || []).slice(0,5).map(
+                a => html`
+                  <nav-card-item icon="chevron-right">
+                    <button
+                      id="due-${a.id}"
+                      aria-describedby="due-${a.id}-desc"
+                      slot="label"
+                    >
+                      ${a.assignment}
+                   </button>
+                    <span id="due-${a.id}-desc" slot="description"
+                      >${this.dateFormat(a.date, "long")}</span
+                    >
+                  </nav-card-item>
+                `
+              )}
             </div>
-          `}
+          </nav-card>
+        </div>
+        <div id="work">
+          <h2>Recent Work</h2>
+          <nav-card
+            accent-color="amber"
+            class="card primary"
+            link-icon="chevron-right"
+          >
+            <span slot="heading">Submissions</span>
+            <a slot="subheading" href="./submissions">All submissions</a>
+            <div slot="linklist">
+              ${!this.profileJSON ? 'unknown' : (this.profileJSON.submissions || []).slice(0, 5).map(
+                s => html`
+                  <nav-card-item icon="chevron-right">
+                    <button
+                      id="sub-${s.id}"
+                      aria-describedby="sub-${s.id}-desc"
+                      slot="label"
+                      href="${e => this.submissionLink(s)}"
+                    >
+                      ${s.assignment}
+                    </button>
+                    <span id="sub-${s.id}-desc" slot="description"
+                      >${this.dateFormat(s.date)}</span
+                    >
+                  </nav-card-item>
+                `
+              )}
+            </div>
+          </nav-card>
+          <nav-card
+            accent-color="cyan"
+            class="card primary"
+            link-icon="chevron-right"
+          >
+            <span slot="heading">Feedback</span>
+            <a slot="subheading">All feedback</a>
+            <div slot="linklist">
+              ${!this.profileJSON ? 'unknown' : (this.profileJSON.feedbackFor || []).slice(0, 3).map(
+                f => html`
+                  <nav-card-item icon="chevron-right">
+                    <a
+                      id="feed-${f.id}"
+                      aria-describedby="feed-${f.id}-desc"
+                      slot="label"
+                      href="${this.feedbackLink(f)}"
+                    >
+                      ${f.firstName}'s feedback
+                    </a>
+                    <span id="feed-${f.id}-desc" slot="description"
+                      >${this.dateFormat(f.date)}</span
+                    >
+                  </nav-card-item>
+                `
+              )}
+            </div>
+          </nav-card>
+        </div>
+      </div>
       <div id="secondary">
         <nav-card
           flat
@@ -299,27 +309,26 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
         >
           <span slot="heading">Recent Activity</span>
           <div slot="linklist">
-            ${this.activity.map(
+            ${(this.activityJSON || []).slice(0, this.activityLoad).map(
               a => html`
                 <nav-card-item
                   accent-color="${this.accentColor(
-                    this.user(a.userId).firstName
+                    a.firstName
                   )}"
-                  .avatar="${this.user(a.userId).image}"
+                  .avatar="${a.avatar}"
                   icon="chevron-right"
-                  .initials="${this.user(a.userId).firstName} ${this.user(
-                    a.userId
-                  ).lastName}"
+                  .initials="${this.fullName(a)}"
                 >
-                  <button
+                  <a
                     id="act-${a.id}"
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
+                    href="${this.activityLink(a)}"
                   >
                     ${this.activityTitle(a, a.activity)}
-                  </button>
-                  <span id="act-${a.id}-desc" slot="description"
-                    >${this.dateFormat(a.date)}</span
+                  </a>
+                  <div id="act-${a.id}-desc" slot="description"
+                    >${this.dateFormat(a.date)}</div
                   >
                 </nav-card-item>
               `
@@ -328,14 +337,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
           <button
             class="load-more"
             slot="footer"
-            ?disabled="${this.activity.length === this.activities.length}"
-            ?hidden="${this.activity.length === this.activityData.length}"
-            @click="${e => this.loadMore(this.activity, this.activityData, 10)}"
+            ?disabled="${this.activityLoad >= this.activityJSON.length}"
+            ?hidden="${this.activityLoad >= this.activityJSON.length}"
+            @click="${e => this.activityLoad+=10}"
           >
             Load More
           </button>
         </nav-card>
-      </div>
+      </div-->
     `;
   }
 
@@ -343,69 +352,41 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      activity: {
-        type: Array
-      },
       activityData: {
-        type: Array,
-        attirbute: "activity-data"
+        type: String,
+        attribute: "activity-data"
       },
       activityLoad: {
         type: Number,
-        attirbute: "activity-load"
+        attribute: "activity-load"
       },
-      profileData: {
-        type: Object,
-        attirbute: "user-data"
+      profileData: { 
+        type: String,
+        attribute: "profile-data"
       }
     };
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "elmsln-studio-dashboard";
   }
 
   // life cycle
   constructor() {
     super();
-    this.activityData = [];
     this.activityLoad = 15;
     this.tag = ElmslnStudioDashboard.tag;
   }
-
-  get activity() {
-    return this.activityData.slice(0, this.activityLoad);
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName === "activityData") this.activityLoad = 15;
+    });
   }
-  get assignmentsCompleted() {
-    let assignments = this.profileData.submissions.map(
-      i => this.getAncestor(i, ["assignmentId", "assignmnents"]).id
-    );
-    return [...this.Set(profile.assignments)];
+  get activityJSON(){
+    return JSON.parse(this.activityData || '[]');
   }
-  get workDue() {
-    return this.profileData && this.profileData.assignments
-      ? this.profileData.assignments.filter(
-          i =>
-            !this.profileData.assignmentsCompleted ||
-            !this.profileData.assignmentsCompleted.includes(i.id)
-        )
-      : [];
+  get profileJSON(){
+    return JSON.parse(this.profileData || '{}');
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  userStat(arr) {
-    return this.profileData && this.profileData[arr]
-      ? this.profileData[arr].length
-      : 0;
+  get profileName(){
+    return this.profileJSON  && this.profileJSON.firstName && this.profileJSON.lastName ? `${this.profileJSON.firstName} ${this.profileJSON.lastName}` : ``;
   }
 
   loadMoreComments(e) {
