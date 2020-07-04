@@ -15,8 +15,9 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
  * @lit-element
  * @demo demo/dashboard.html
  */
-class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(LitElement)) {
-
+class ElmslnStudioDashboard extends ElmslnStudioUtilities(
+  ElmslnStudioStyles(LitElement)
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -182,7 +183,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
             <lrndesign-avatar
               accent-color="${this.accentColor(this.profileName)}"
               slot="content"
-              src="${!this.profileJSON ? 'unknown' : this.profileJSON.image}"
+              src="${!this.profileJSON ? "unknown" : this.profileJSON.image}"
               label="${this.profileName}"
               two-chars
               size="200px"
@@ -192,29 +193,51 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
                 <tr>
                   <th scope="row">Feedback Given</th>
                   <td>
-                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.feedbackBy || []).length}
+                    ${
+                      !this.profileJSON
+                        ? "unknown"
+                        : (this.profileJSON.feedbackBy || []).length
+                    }
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">Conversations</th>
                   <td>
-                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.repliesBy || []).length + (this.profileJSON.feedbackBy || []).length }
+                    ${
+                      !this.profileJSON
+                        ? "unknown"
+                        : (this.profileJSON.repliesBy || []).length +
+                          (this.profileJSON.feedbackBy || []).length
+                    }
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <a href="./submissions${!this.profileJSON ? '' : `?student=${this.profileJSON.userId}`}">
+                    <a href="./submissions${
+                      !this.profileJSON
+                        ? ""
+                        : `?student=${this.profileJSON.userId}`
+                    }">
                       Total Submissions
                     </a>
                   </th>
                   <td>
-                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.submissions || []).length}
+                    ${
+                      !this.profileJSON
+                        ? "unknown"
+                        : (this.profileJSON.submissions || []).length
+                    }
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">Assignments Completed</th>
                   <td>
-                    ${!this.profileJSON ? 'unknown' : (this.profileJSON.assignmentsCompleted || []).length + (this.profileJSON.assignmentsCompleted || []).length }
+                    ${
+                      !this.profileJSON
+                        ? "unknown"
+                        : (this.profileJSON.assignmentsCompleted || []).length +
+                          (this.profileJSON.assignmentsCompleted || []).length
+                    }
                   </td>
                 </tr>
               </tbody>
@@ -223,22 +246,26 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
           <nav-card accent-color="green" class="card primary">
             <span slot="heading">Work Due</span>
             <div slot="linklist">
-              ${!this.profileJSON ? 'unknown' : (this.profileJSON.workDue || []).slice(0,5).map(
-                a => html`
-                  <nav-card-item icon="chevron-right">
-                    <button
-                      id="due-${a.id}"
-                      aria-describedby="due-${a.id}-desc"
-                      slot="label"
-                    >
-                      ${a.assignment}
-                   </button>
-                    <span id="due-${a.id}-desc" slot="description"
-                      >${this.dateFormat(a.date, "long")}</span
-                    >
-                  </nav-card-item>
-                `
-              )}
+              ${
+                !this.profileJSON
+                  ? "unknown"
+                  : (this.profileJSON.workDue || []).slice(0, 5).map(
+                      a => html`
+                        <nav-card-item icon="chevron-right">
+                          <button
+                            id="due-${a.id}"
+                            aria-describedby="due-${a.id}-desc"
+                            slot="label"
+                          >
+                            ${a.assignment}
+                          </button>
+                          <span id="due-${a.id}-desc" slot="description"
+                            >${this.dateFormat(a.date, "long")}</span
+                          >
+                        </nav-card-item>
+                      `
+                    )
+              }
             </div>
           </nav-card>
         </div>
@@ -252,23 +279,27 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
             <span slot="heading">Submissions</span>
             <a slot="subheading" href="./submissions">All submissions</a>
             <div slot="linklist">
-              ${!this.profileJSON ? 'unknown' : (this.profileJSON.submissions || []).slice(0, 5).map(
-                s => html`
-                  <nav-card-item icon="chevron-right">
-                    <button
-                      id="sub-${s.id}"
-                      aria-describedby="sub-${s.id}-desc"
-                      slot="label"
-                      href="${e => this.submissionLink(s)}"
-                    >
-                      ${s.assignment}
-                    </button>
-                    <span id="sub-${s.id}-desc" slot="description"
-                      >${this.dateFormat(s.date)}</span
-                    >
-                  </nav-card-item>
-                `
-              )}
+              ${
+                !this.profileJSON
+                  ? "unknown"
+                  : (this.profileJSON.submissions || []).slice(0, 5).map(
+                      s => html`
+                        <nav-card-item icon="chevron-right">
+                          <button
+                            id="sub-${s.id}"
+                            aria-describedby="sub-${s.id}-desc"
+                            slot="label"
+                            href="${e => this.submissionLink(s)}"
+                          >
+                            ${s.assignment}
+                          </button>
+                          <span id="sub-${s.id}-desc" slot="description"
+                            >${this.dateFormat(s.date)}</span
+                          >
+                        </nav-card-item>
+                      `
+                    )
+              }
             </div>
           </nav-card>
           <nav-card
@@ -279,23 +310,27 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
             <span slot="heading">Feedback</span>
             <a slot="subheading">All feedback</a>
             <div slot="linklist">
-              ${!this.profileJSON ? 'unknown' : (this.profileJSON.feedbackFor || []).slice(0, 3).map(
-                f => html`
-                  <nav-card-item icon="chevron-right">
-                    <a
-                      id="feed-${f.id}"
-                      aria-describedby="feed-${f.id}-desc"
-                      slot="label"
-                      href="${this.feedbackLink(f)}"
-                    >
-                      ${f.firstName}'s feedback
-                    </a>
-                    <span id="feed-${f.id}-desc" slot="description"
-                      >${this.dateFormat(f.date)}</span
-                    >
-                  </nav-card-item>
-                `
-              )}
+              ${
+                !this.profileJSON
+                  ? "unknown"
+                  : (this.profileJSON.feedbackFor || []).slice(0, 3).map(
+                      f => html`
+                        <nav-card-item icon="chevron-right">
+                          <a
+                            id="feed-${f.id}"
+                            aria-describedby="feed-${f.id}-desc"
+                            slot="label"
+                            href="${this.feedbackLink(f)}"
+                          >
+                            ${f.firstName}'s feedback
+                          </a>
+                          <span id="feed-${f.id}-desc" slot="description"
+                            >${this.dateFormat(f.date)}</span
+                          >
+                        </nav-card-item>
+                      `
+                    )
+              }
             </div>
           </nav-card>
         </div>
@@ -312,9 +347,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
             ${(this.activityJSON || []).slice(0, this.activityLoad).map(
               a => html`
                 <nav-card-item
-                  accent-color="${this.accentColor(
-                    a.firstName
-                  )}"
+                  accent-color="${this.accentColor(a.firstName)}"
                   .avatar="${a.avatar}"
                   icon="chevron-right"
                   .initials="${this.fullName(a)}"
@@ -327,9 +360,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
                   >
                     ${this.activityTitle(a, a.activity)}
                   </a>
-                  <div id="act-${a.id}-desc" slot="description"
-                    >${this.dateFormat(a.date)}</div
-                  >
+                  <div id="act-${a.id}-desc" slot="description">
+                    ${this.dateFormat(a.date)}
+                  </div>
                 </nav-card-item>
               `
             )}
@@ -339,7 +372,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
             slot="footer"
             ?disabled="${this.activityLoad >= this.activityJSON.length}"
             ?hidden="${this.activityLoad >= this.activityJSON.length}"
-            @click="${e => this.activityLoad+=10}"
+            @click="${e => (this.activityLoad += 10)}"
           >
             Load More
           </button>
@@ -360,7 +393,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
         type: Number,
         attribute: "activity-load"
       },
-      profileData: { 
+      profileData: {
         type: String,
         attribute: "profile-data"
       }
@@ -376,17 +409,21 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(ElmslnStudioStyles(Lit
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "activityData") this.activityLoad = 15;
+      if (propName === "activityData") this.activityLoad = 15;
     });
   }
-  get activityJSON(){
-    return JSON.parse(this.activityData || '[]');
+  get activityJSON() {
+    return JSON.parse(this.activityData || "[]");
   }
-  get profileJSON(){
-    return JSON.parse(this.profileData || '{}');
+  get profileJSON() {
+    return JSON.parse(this.profileData || "{}");
   }
-  get profileName(){
-    return this.profileJSON  && this.profileJSON.firstName && this.profileJSON.lastName ? `${this.profileJSON.firstName} ${this.profileJSON.lastName}` : ``;
+  get profileName() {
+    return this.profileJSON &&
+      this.profileJSON.firstName &&
+      this.profileJSON.lastName
+      ? `${this.profileJSON.firstName} ${this.profileJSON.lastName}`
+      : ``;
   }
 
   loadMoreComments(e) {

@@ -16,8 +16,9 @@ import "@polymer/iron-icons/communication-icons.js";
  * @lit-element
  * @demo demo/submission.html
  */
-class ElmslnStudioSubmissions extends ElmslnStudioUtilities(ElmslnStudioStyles(LitElement)){
-
+class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
+  ElmslnStudioStyles(LitElement)
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -287,8 +288,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(ElmslnStudioStyles(L
                   <iron-icon icon="zoom-in"></iron-icon>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">
-                  ${s.firstName}
-                  ${s.lastName}
+                  ${s.firstName} ${s.lastName}
                 </div>
                 <div slot="corner" id="date-${s.id}">
                   ${this.grid
@@ -307,14 +307,19 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(ElmslnStudioStyles(L
                 <div slot="footer">
                   <button
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e => this._handleLinkButton(e,this.feedbackLink(s.feedback[0]))}"
+                    @click="${e =>
+                      this._handleLinkButton(
+                        e,
+                        this.feedbackLink(s.feedback[0])
+                      )}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
                   </button>
                   <button
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e => this._handleLinkButton(e,this.submissionLink(s))}"
+                    @click="${e =>
+                      this._handleLinkButton(e, this.submissionLink(s))}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
@@ -400,38 +405,46 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(ElmslnStudioStyles(L
     this.grid = false;
     this.studentFilter = "";
     this.tag = ElmslnStudioSubmissions.tag;
-    console.log('constructor',this.submissionsData);
+    console.log("constructor", this.submissionsData);
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {    
-    });
-    console.log("submissions data",this.submissionsData,this.submissionsJSON,this.commentsJSON);
+    changedProperties.forEach((oldValue, propName) => {});
+    console.log(
+      "submissions data",
+      this.submissionsData,
+      this.submissionsJSON,
+      this.commentsJSON
+    );
   }
-  get submissionsJSON(){
-    console.log('submissionsJSON',this.submissionsData);
-    return JSON.parse(this.submissionsData || '[]');
+  get submissionsJSON() {
+    console.log("submissionsJSON", this.submissionsData);
+    return JSON.parse(this.submissionsData || "[]");
   }
-  get commentsJSON(){
-    return this.submissionsJSON.map(i=>i.feedback).flat();
+  get commentsJSON() {
+    return this.submissionsJSON.map(i => i.feedback).flat();
   }
-  get studentOptions(){
-    let options = {"": "All"};
-    this.submissionsJSON.forEach(i => options[i.userId] = this.studentName(submission));
+  get studentOptions() {
+    let options = { "": "All" };
+    this.submissionsJSON.forEach(
+      i => (options[i.userId] = this.studentName(submission))
+    );
   }
-  get assignmentOptions(){
-    let options = {"": "All"};
-    this.submissionsJSON.forEach(i => options[i.assignmentId] = i.assignment);
+  get assignmentOptions() {
+    let options = { "": "All" };
+    this.submissionsJSON.forEach(i => (options[i.assignmentId] = i.assignment));
   }
   get filteredSubmissions() {
-    console.log('filteredSubmissions',this.submissionsData);
+    console.log("filteredSubmissions", this.submissionsData);
     return this.submissionsJSON.filter(a =>
       this._isFiltered(a.userId, a.assignmentId)
     );
   }
   get filteredComments() {
-    return this.commentsJSON.filter(i =>this._isFiltered(i.creator,i.assignmentId));
+    return this.commentsJSON.filter(i =>
+      this._isFiltered(i.creator, i.assignmentId)
+    );
   }
   _isFiltered(student = "", assignment = "") {
     return (

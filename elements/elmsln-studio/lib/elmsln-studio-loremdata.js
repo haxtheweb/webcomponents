@@ -20,7 +20,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    */
   static get tag() {
     return "elmsln-studio-loremdata";
-  }static get properties() {
+  }
+  static get properties() {
     return {
       activities: {
         type: Object
@@ -85,46 +86,46 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         id: "project-0",
         project: "Hypertext Narrative Project",
         assignments: [
-          {assignment: "Discover: Word-Pairs"},
-          {assignment: "Define: Synopsis"},
-          {assignment: "Develop: Story and Plot Elements"},
-          {assignment: "Develop: Characters"},
-          {assignment: "Deliver: Hypertext Narrative Draft"},
-          {assignment: "Deliver: Feedback"},
-          {assignment: "Deliver: Iterate"},
-          {assignment: "Deliver: Iterate critique"},
-          {assignment: "Deliver: Iterate critique"},
-          {assignment: "Deliver: Hypertext Narrative"}
+          { assignment: "Discover: Word-Pairs" },
+          { assignment: "Define: Synopsis" },
+          { assignment: "Develop: Story and Plot Elements" },
+          { assignment: "Develop: Characters" },
+          { assignment: "Deliver: Hypertext Narrative Draft" },
+          { assignment: "Deliver: Feedback" },
+          { assignment: "Deliver: Iterate" },
+          { assignment: "Deliver: Iterate critique" },
+          { assignment: "Deliver: Iterate critique" },
+          { assignment: "Deliver: Hypertext Narrative" }
         ]
       },
       "project-1": {
         id: "project-1",
         project: "Ritual Project",
         assignments: [
-          {assignment: "Discover: Interview"},
-          {assignment: "Discover: Journey Map"},
-          {assignment: "Define: Themes & Insights"},
-          {assignment: "Define: HMW"},
-          {assignment: "Develop: Brainstorm"},
-          {assignment: "Develop: Storyboard"},
-          {assignment: "Develop: Prototype"},
-          {assignment: "Develop: Test and Iterate"},
-          {assignment: "Deliver: Final Prototype"}
+          { assignment: "Discover: Interview" },
+          { assignment: "Discover: Journey Map" },
+          { assignment: "Define: Themes & Insights" },
+          { assignment: "Define: HMW" },
+          { assignment: "Develop: Brainstorm" },
+          { assignment: "Develop: Storyboard" },
+          { assignment: "Develop: Prototype" },
+          { assignment: "Develop: Test and Iterate" },
+          { assignment: "Deliver: Final Prototype" }
         ]
       },
       "project-2": {
         id: "project-2",
         project: "Open Kit Project",
         assignments: [
-          {assignment: "Discover: Toy Research"},
-          {assignment: "Discover: Modular Research"},
-          {assignment: "Discover: Resources"},
-          {assignment: "Define: Product Pitch"},
-          {assignment: "Develop: Prototyping"},
-          {assignment: "Develop: Instructions"},
-          {assignment: "Develop: Test"},
-          {assignment: "Develop: Iterate"},
-          {assignment: "Deliver: Open Toy"}
+          { assignment: "Discover: Toy Research" },
+          { assignment: "Discover: Modular Research" },
+          { assignment: "Discover: Resources" },
+          { assignment: "Define: Product Pitch" },
+          { assignment: "Develop: Prototyping" },
+          { assignment: "Develop: Instructions" },
+          { assignment: "Develop: Test" },
+          { assignment: "Develop: Iterate" },
+          { assignment: "Deliver: Open Toy" }
         ]
       }
     };
@@ -204,7 +205,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if(["target","users","projects","paragraphs"].includes(propName)) {
+      if (["target", "users", "projects", "paragraphs"].includes(propName)) {
         this.refreshData();
       }
     });
@@ -312,7 +313,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
    * @returns {object} comment data
    */
   makeComment(id, submissionId, userId, created) {
-    let assignmentId = this.submissions[submissionId].assignmentId, 
+    let assignmentId = this.submissions[submissionId].assignmentId,
       comment = {
         id: id,
         userId: userId,
@@ -332,7 +333,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         date: created,
         body: `${this.draw(this.sentences, 1, 4).join(" ")}`,
         read: Math.random() < 0.5,
-        like: Math.random() < 0.5,
+        like: Math.random() < 0.5
       };
     return comment;
   }
@@ -346,12 +347,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   makeFeedback(submissionId, reviewerId, created) {
     let id = `feedback-${Object.keys(this.feedback).length}`,
       replies = Math.floor(Math.random() * 4);
-    this.feedback[id] = this.makeComment(
-      id,
-      submissionId,
-      reviewerId,
-      created
-    );
+    this.feedback[id] = this.makeComment(id, submissionId, reviewerId, created);
 
     this.feedback[id].replies = [];
     for (let i = 0; i < replies; i++) {
@@ -376,18 +372,21 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     let profile = this.users[userId];
     profile.assignments = this.assignmentsList;
     profile.submissions = this.submissionsList.filter(i => i.userId === userId);
-    profile.feedbackFor = profile.submissions.map(
-      submission => submission.feedback.map(i=>this.feedback[i])
-    ).flat();
+    profile.feedbackFor = profile.submissions
+      .map(submission => submission.feedback.map(i => this.feedback[i]))
+      .flat();
     profile.repliesBy = this.repliesList.filter(i => i.userId === userId);
     profile.feedbackBy = this.feedbackList.filter(i => i.userId === userId);
-    profile.repliesFor = profile.feedbackBy.map(
-      feedback=>feedback.replies.map(i =>this.replies[i])).flat();
-    let assignments = profile.submissions.map(i=>this.assignments[i.assignmentId].id);
+    profile.repliesFor = profile.feedbackBy
+      .map(feedback => feedback.replies.map(i => this.replies[i]))
+      .flat();
+    let assignments = profile.submissions.map(
+      i => this.assignments[i.assignmentId].id
+    );
     profile.assignmentsCompleted = [...new Set(assignments.flat())];
     profile.workDue = this.assignmentsList.filter(
-        i => !(profile.assignmentsCompleted || []).includes(i.id)
-      )
+      i => !(profile.assignmentsCompleted || []).includes(i.id)
+    );
     return profile;
   }
   /**
@@ -619,9 +618,9 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
   /**
    * resets the objects
-   * 
+   *
    */
-  resetData(){
+  resetData() {
     this.activities = [];
     this.assignments = {};
     this.feedback = {};

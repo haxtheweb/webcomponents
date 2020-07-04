@@ -92,7 +92,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} date as string
      */
     dateFormat(d, format) {
-      if(typeof d === "string") d = new Date(d);
+      if (typeof d === "string") d = new Date(d);
       return format === "long"
         ? d.toLocaleDateString(undefined, {
             weekday: "long",
@@ -162,7 +162,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     submissionLink(submission) {
-      return `./portfolio/${submission.userId}-${submission.projectId}?submission=${submission.id}`
+      return `./portfolio/${submission.userId}-${
+        submission.projectId
+      }?submission=${submission.id}`;
     }
 
     /**
@@ -173,8 +175,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
     submissionTitle(submission) {
       let u = this.user(submission.userId);
       return html`
-        ${submission.firstName} submitted
-        ${submission.assignment}
+        ${submission.firstName} submitted ${submission.assignment}
       `;
     }
 
@@ -184,7 +185,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     feedbackLink(feedback) {
-      return `./portfolio/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&feedback=${feedback.id}`
+      return `./portfolio/${feedback.creator}-${
+        feedback.projectId
+      }?submission=${feedback.submissionId}&feedback=${feedback.id}`;
     }
 
     /**
@@ -194,7 +197,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
      */
     feedbackTitle(feedback) {
       return html`
-        ${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s ${feedback.assignment}
+        ${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s
+        ${feedback.assignment}
       `;
     }
 
@@ -204,7 +208,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     replyLink(reply) {
-      return `./portfolio/${reply.creator}-${reply.projectId}?submission=${reply.submissionId}&reply=${reply.id}`
+      return `./portfolio/${reply.creator}-${reply.projectId}?submission=${
+        reply.submissionId
+      }&reply=${reply.id}`;
     }
 
     /**
@@ -225,7 +231,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
         ? "bottom"
         : "center";
     }
-  
+
     _getAlign(gravity) {
       return gravity && gravity.indexOf("left") > -1
         ? "left"
@@ -239,7 +245,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {*} e event
      * @param {string} path
      */
-    _handleLinkButton(e,path){
+    _handleLinkButton(e, path) {
       location.href = path;
       /**
        * Fires when button is clicked

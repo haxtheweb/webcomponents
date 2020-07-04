@@ -33,15 +33,15 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
 
   static get properties() {
     return {
-      activityData: { 
+      activityData: {
         type: Array,
         attribute: "activity-data"
-       },
-      profileData: { 
+      },
+      profileData: {
         type: Object,
         attribute: "profile-data"
       },
-      submissionsData: { 
+      submissionsData: {
         type: Array,
         attribute: "submissions-data"
       },
@@ -98,7 +98,7 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
-    console.log("studio data",this.submissionsData);
+    console.log("studio data", this.submissionsData);
   }
 
   render() {
@@ -143,7 +143,7 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
         <elmsln-studio-link href="/submissions?student=kmk5124"
           >Submissions by kmk5124</elmsln-studio-link
         >
-      <textarea> ${JSON.stringify(this.profile||{})} </textarea>
+      <textarea> ${JSON.stringify(this.profile || {})} </textarea>
         <elmsln-studio-link
           href="/submissions?assignment=assignment-1&student=kmk5124"
           >Submissions for Assignment 1 by kmk5124</elmsln-studio-link
@@ -157,16 +157,18 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
       <elmsln-studio-main active-route="${this.route}">
         <elmsln-studio-dashboard
           route="dashboard"
-          profile-data="${JSON.stringify(this.profileData||{})}"
-          activity-data="${JSON.stringify(this.activityData||[])}"
-          route="dashboard">
+          profile-data="${JSON.stringify(this.profileData || {})}"
+          activity-data="${JSON.stringify(this.activityData || [])}"
+          route="dashboard"
+        >
         </elmsln-studio-dashboard>
-        <elmsln-studio-submissions 
-          route="submissions" 
-          submissions-data="${JSON.stringify(this.submissionsData||[])}"
+        <elmsln-studio-submissions
+          route="submissions"
+          submissions-data="${JSON.stringify(this.submissionsData || [])}"
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
-          assignment-filter="${this.query.assignment || ""}">
+          assignment-filter="${this.query.assignment || ""}"
+        >
         </elmsln-studio-submissions>
         <!--elmsln-studio-portfolio 
           route="portfolios" 

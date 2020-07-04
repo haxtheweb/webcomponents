@@ -41,7 +41,10 @@ const ElmslnStudioStyles = function(SuperClass) {
             color: #95989a;
             --simple-fields-border-color: transparent;
             --simple-fields-font-size: var(--elmsln-studio-FontSize, 16px);
-            --simple-fields-detail-font-size: var(--elmsln-studio-FontSize, 16px);
+            --simple-fields-detail-font-size: var(
+              --elmsln-studio-FontSize,
+              16px
+            );
             --simple-fields-line-height: calc(
               1.5 * var(--elmsln-studio-FontSize, 16px)
             );
@@ -107,7 +110,7 @@ const ElmslnStudioStyles = function(SuperClass) {
           }
         `
       ];
-    };
+    }
   };
 };
 export { ElmslnStudioStyles };
