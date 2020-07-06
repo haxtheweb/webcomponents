@@ -102,6 +102,7 @@ site-menu::-webkit-scrollbar-thumb {
 site-print-button {
   color: var(--site-print-button-color, white);
 }
+
 paper-icon-button,
 site-rss-button,
 site-print-button {
@@ -117,6 +118,7 @@ h-a-x {
 :host([edit-mode]) {
   opacity: 1;
 }
+
 :host([edit-mode]) app-drawer {
   opacity: 0.2;
   pointer-events: none;

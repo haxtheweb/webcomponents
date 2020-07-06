@@ -33,14 +33,14 @@ class PageContentsMenu extends LitElement {
         }
         .header {
           display: flex;
-          color: var(--page-contents-menu-heading-color, #9DAAB6);
+          color: var(--page-contents-menu-heading-color, #9daab6);
           padding: 0 24px 0 0;
           margin: 0 0 8px 0;
         }
         .header .svg {
           padding-right: 6px;
           display: inline-flex;
-          color: var(--page-contents-menu-link, #74818D);
+          color: var(--page-contents-menu-link, #74818d);
         }
         svg {
           width: 1em;
@@ -72,7 +72,7 @@ class PageContentsMenu extends LitElement {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-        } 
+        }
         .link {
           font-family: Content-font, Roboto, sans-serif;
           line-height: 1.5;
@@ -81,7 +81,7 @@ class PageContentsMenu extends LitElement {
           font-size: var(--page-contents-menu-link-font-size, 12px);
           text-decoration: none;
           font-weight: var(--page-contents-menu-link-font-weight, 500);
-          color: var(--page-contents-menu-link, #74818D);
+          color: var(--page-contents-menu-link, #74818d);
           cursor: pointer;
           margin: 0;
           align-items: center;
@@ -120,38 +120,69 @@ class PageContentsMenu extends LitElement {
   // render function
   render() {
     return html`
-    <section class="wrapper" role="navigation">
-      <div class="header">
-        <a
-          class="svg"
-          @click="${this.toggleSettings}"
-          @keypress="${this.keyToggle}"
-          id="popovertarget"
-          aria-title="${this.label}"
-        >
-          <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="7" y2="18"></line></g></svg>
-        </a>
-        <simple-tooltip for="popovertarget" offset="32" ?hidden="${!this.mobile || !this.hideSettings}">
-          ${this.label}
-        </simple-tooltip>
-        ${!this.mobile ? html`<h2 class="label">${this.label}</h2>` : ``}
-      </div>
-      ${this.mobile ? html`
-      <simple-popover
-        class="dropdown pull-left font-settings js-toolbar-action settings-container"
-        ?hidden="${this.hideSettings}"
-        auto
-      >
-        <ol class="contents">
-          ${this.items.map((item, index) => this.renderItem(item, index))}
-        </ol>
-      </simple-popover>` : html`
-      <ol class="contents">
-        ${this.items.map((item, index) => this.renderItem(item, index))}
-      </ol>
-      `}
-     
-    </section>
+      <section class="wrapper" role="navigation">
+        <div class="header">
+          <a
+            class="svg"
+            @click="${this.toggleSettings}"
+            @keypress="${this.keyToggle}"
+            id="popovertarget"
+            aria-title="${this.label}"
+          >
+            <svg
+              preserveAspectRatio="xMidYMid meet"
+              height="1em"
+              width="1em"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke="currentColor"
+              class="icon-7f6730be--text-3f89f380"
+            >
+              <g>
+                <line x1="21" y1="10" x2="7" y2="10"></line>
+                <line x1="21" y1="6" x2="3" y2="6"></line>
+                <line x1="21" y1="14" x2="3" y2="14"></line>
+                <line x1="21" y1="18" x2="7" y2="18"></line>
+              </g>
+            </svg>
+          </a>
+          <simple-tooltip
+            for="popovertarget"
+            offset="32"
+            ?hidden="${!this.mobile || !this.hideSettings}"
+          >
+            ${this.label}
+          </simple-tooltip>
+          ${!this.mobile
+            ? html`
+                <h2 class="label">${this.label}</h2>
+              `
+            : ``}
+        </div>
+        ${this.mobile
+          ? html`
+              <simple-popover
+                class="dropdown pull-left font-settings js-toolbar-action settings-container"
+                ?hidden="${this.hideSettings}"
+                auto
+              >
+                <ol class="contents">
+                  ${this.items.map((item, index) =>
+                    this.renderItem(item, index)
+                  )}
+                </ol>
+              </simple-popover>
+            `
+          : html`
+              <ol class="contents">
+                ${this.items.map((item, index) => this.renderItem(item, index))}
+              </ol>
+            `}
+      </section>
     `;
   }
   keyToggle(e) {
@@ -170,11 +201,13 @@ class PageContentsMenu extends LitElement {
     }
   }
   scrollToObject(e) {
-    if (e.path && e.path[0] && e.path[0].getAttribute('data-index')) {
+    if (e.path && e.path[0] && e.path[0].getAttribute("data-index")) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      this.items[parseInt(e.path[0].getAttribute('data-index'))].object.scrollIntoView({
+      this.items[
+        parseInt(e.path[0].getAttribute("data-index"))
+      ].object.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest"
@@ -187,14 +220,30 @@ class PageContentsMenu extends LitElement {
     if (item.link == null && item.object) {
       // tab index ensures browser treats it like a normal link
       return html`
-      <li class="item">
-        <a class="link indent-${item.indent}" tabindex="0" @click="${this.scrollToObject}" @keypress="${this.keyScroll}" data-index="${index}">${item.title}</a>
-      </li>`;
+        <li class="item">
+          <a
+            class="link indent-${item.indent}"
+            tabindex="0"
+            @click="${this.scrollToObject}"
+            @keypress="${this.keyScroll}"
+            data-index="${index}"
+            >${item.title}</a
+          >
+        </li>
+      `;
     }
     return html`
-    <li class="item">
-      <a class="link indent-${item.indent}" href="${item.link}" @click="${this.scrollToObject}" @keypress="${this.keyScroll}" data-index="${index}">${item.title}</a>
-    </li>`;
+      <li class="item">
+        <a
+          class="link indent-${item.indent}"
+          href="${item.link}"
+          @click="${this.scrollToObject}"
+          @keypress="${this.keyScroll}"
+          data-index="${index}"
+          >${item.title}</a
+        >
+      </li>
+    `;
   }
 
   // haxProperty definition
@@ -241,23 +290,23 @@ class PageContentsMenu extends LitElement {
       },
       mobile: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       label: {
-        type: String,
+        type: String
       },
       hideSettings: {
         type: Boolean
       },
       hideIfEmpty: {
         type: Boolean,
-        attribute: 'hide-if-empty',
-        reflect: true,
+        attribute: "hide-if-empty",
+        reflect: true
       },
       isEmpty: {
         type: Boolean,
-        attribute: 'is-empty',
-        reflect: true,
+        attribute: "is-empty",
+        reflect: true
       }
     };
   }
@@ -290,7 +339,7 @@ class PageContentsMenu extends LitElement {
     window.addEventListener("click", this.checkMenuOpen.bind(this));
     // default to all hierarchy tags to obtain mini-menu
     // opens the door for us adding OTHER tags in the future
-    this.hierarchyTags = ["h1","h2","h3","h4","h5","h6"];
+    this.hierarchyTags = ["h1", "h2", "h3", "h4", "h5", "h6"];
   }
 
   checkMenuOpen(e) {
@@ -341,22 +390,25 @@ class PageContentsMenu extends LitElement {
         this._contentContainerChanged(this[propName]);
       }
       // dynamic import pop over if we go mobile mode
-      if (propName == 'mobile') {
+      if (propName == "mobile") {
         if (this[propName]) {
-          import('@lrnwebcomponents/simple-popover/simple-popover.js').then((module) => {
-            setTimeout(() => {
-              // hook up the pop over menu
-              this.__toggleTarget = this.shadowRoot.querySelector("#popovertarget");
-              this.__toggleTarget.setAttribute('tabindex', '0');
-              this.shadowRoot.querySelector(
-                "simple-popover"
-              ).target = this.__toggleTarget;
-            }, 0);
-          });
-          import('@lrnwebcomponents/simple-tooltip/simple-tooltip.js');
-        }
-        else if (oldValue && !this[propName]) {
-          this.__toggleTarget.removeAttribute('tabindex');
+          import("@lrnwebcomponents/simple-popover/simple-popover.js").then(
+            module => {
+              setTimeout(() => {
+                // hook up the pop over menu
+                this.__toggleTarget = this.shadowRoot.querySelector(
+                  "#popovertarget"
+                );
+                this.__toggleTarget.setAttribute("tabindex", "0");
+                this.shadowRoot.querySelector(
+                  "simple-popover"
+                ).target = this.__toggleTarget;
+              }, 0);
+            }
+          );
+          import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+        } else if (oldValue && !this[propName]) {
+          this.__toggleTarget.removeAttribute("tabindex");
         }
       }
       /* computed example
@@ -373,31 +425,30 @@ class PageContentsMenu extends LitElement {
    */
   updateMenu() {
     const validTags = this.hierarchyTags;
-      let items = [];
-      // loop over the new nodes
-      for (var i = 0; i < this.contentContainer.childNodes.length; i++) {
-        // verify this tag is a valid one
-        let item = this.contentContainer.childNodes[i];
-        if (
-          typeof item.tagName !== typeof undefined &&
-          validTags.includes(item.tagName.toLowerCase())
-        ) {
-          let reference = {
-            title: item.innerText,
-            link: (item.id ? '#' + item.id : null),
-            object: item,
-            indent: parseInt(item.tagName.toLowerCase().replace('h',''))
-          };
-          items.push(reference);
-        }
+    let items = [];
+    // loop over the new nodes
+    for (var i = 0; i < this.contentContainer.childNodes.length; i++) {
+      // verify this tag is a valid one
+      let item = this.contentContainer.childNodes[i];
+      if (
+        typeof item.tagName !== typeof undefined &&
+        validTags.includes(item.tagName.toLowerCase())
+      ) {
+        let reference = {
+          title: item.innerText,
+          link: item.id ? "#" + item.id : null,
+          object: item,
+          indent: parseInt(item.tagName.toLowerCase().replace("h", ""))
+        };
+        items.push(reference);
       }
-      if (items.length === 0) {
-        this.isEmpty = true;
-      }
-      else {
-        this.isEmpty = false;
-      }
-      this.items = [...items];
+    }
+    if (items.length === 0) {
+      this.isEmpty = true;
+    } else {
+      this.isEmpty = false;
+    }
+    this.items = [...items];
   }
   /**
    * When our content container changes, process the hierarchy in question

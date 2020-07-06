@@ -22,10 +22,10 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
  * @demo demo/index.html
  * @element clean-two
  */
-  class CleanTwo extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
+class CleanTwo extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
   //styles function
   static get styles() {
-    return  [      
+    return [
       css`
         :host {
           display: block;
@@ -437,86 +437,88 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
       this.searchTerm = "";
     }
   }
-// render function
+  // render function
   render() {
     return html`
-  <div class="body-wrapper">
-    <div class="left-col">
-      <nav id="nav" role="navigation" aria-labelledby="leftnavheading">
-        <site-menu id="leftnavheading"></site-menu>
-      </nav>
-    </div>
-    <div class="content-wrapper">
-      <div class="content">
-        <page-contents-menu mobile hide-if-empty></page-contents-menu>
-        <site-active-title></site-active-title>
-        <site-search
-          hide-input
-          search="${this.searchTerm}"
-          @search-item-selected="${this.searchItemSelected}"
-          ?hidden="${this.searchTerm != "" ? false : true}"
-        ></site-search>
-        <div
-          id="contentcontainer"
-          ?hidden="${this.searchTerm != "" ? true : false}"
-        >
-          <div id="slot">
-            <slot></slot>
+      <div class="body-wrapper">
+        <div class="left-col">
+          <nav id="nav" role="navigation" aria-labelledby="leftnavheading">
+            <site-menu id="leftnavheading"></site-menu>
+          </nav>
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <page-contents-menu mobile hide-if-empty></page-contents-menu>
+            <site-active-title></site-active-title>
+            <site-search
+              hide-input
+              search="${this.searchTerm}"
+              @search-item-selected="${this.searchItemSelected}"
+              ?hidden="${this.searchTerm != "" ? false : true}"
+            ></site-search>
+            <div
+              id="contentcontainer"
+              ?hidden="${this.searchTerm != "" ? true : false}"
+            >
+              <div id="slot">
+                <slot></slot>
+              </div>
+            </div>
+            <div class="link-actions">
+              <div class="inner">
+                <site-menu-button
+                  hide-label
+                  type="prev"
+                  position="right"
+                  class="navigation"
+                  @label-changed="${this.__prevPageLabelChanged}"
+                >
+                  <div slot="suffix" class="wrapper">
+                    <div class="top">Previous</div>
+                    <div class="bottom">${this.prevPage}</div>
+                  </div>
+                </site-menu-button>
+                <site-menu-button
+                  hide-label
+                  type="next"
+                  position="left"
+                  class="navigation"
+                  @label-changed="${this.__nextPageLabelChanged}"
+                >
+                  <div slot="prefix" class="wrapper">
+                    <div class="top">Next</div>
+                    <div class="bottom">${this.nextPage}</div>
+                  </div>
+                </site-menu-button>
+              </div>
+            </div>
+            <div class="footer">
+              <div class="footer-left">
+                <simple-datetime
+                  .timestamp="${this.pageTimestamp}"
+                ></simple-datetime>
+              </div>
+              <div class="footer-right">
+                <site-print-button
+                  class="btn js-toolbar-action"
+                ></site-print-button>
+                <site-print-button
+                  type="site"
+                  class="btn js-toolbar-action"
+                ></site-print-button>
+                <site-rss-button type="rss"></site-rss-button>
+                <site-git-corner size="small" circle></site-git-corner>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="link-actions">
-          <div class="inner">
-            <site-menu-button
-              hide-label
-              type="prev"
-              position="right"
-              class="navigation"
-              @label-changed="${this.__prevPageLabelChanged}"
-            >
-              <div slot="suffix" class="wrapper">
-                <div class="top">Previous</div>
-                <div class="bottom">${this.prevPage}</div>
-              </div>
-            </site-menu-button>
-            <site-menu-button
-              hide-label
-              type="next"
-              position="left"
-              class="navigation"
-              @label-changed="${this.__nextPageLabelChanged}"
-            >
-              <div slot="prefix" class="wrapper">
-                <div class="top">Next</div>
-                <div class="bottom">${this.nextPage}</div>
-              </div>
-            </site-menu-button>
-          </div>
-        </div>
-        <div class="footer">
-          <div class="footer-left">
-            <simple-datetime .timestamp="${this.pageTimestamp}"></simple-datetime>
-          </div>
-          <div class="footer-right">
-            <site-print-button
-              class="btn js-toolbar-action"
-            ></site-print-button>
-            <site-print-button
-              type="site"
-              class="btn js-toolbar-action"
-            ></site-print-button>
-            <site-rss-button type="rss"></site-rss-button>
-            <site-git-corner size="small" circle></site-git-corner>
+        <div class="right-col">
+          <div class="page-contents-menu-wrapper">
+            <page-contents-menu hide-if-empty></page-contents-menu>
           </div>
         </div>
       </div>
-    </div>
-    <div class="right-col">
-      <div class="page-contents-menu-wrapper">
-        <page-contents-menu hide-if-empty></page-contents-menu>
-      </div>
-    </div>
-  </div>
-`;
+    `;
   }
 
   __prevPageLabelChanged(e) {
@@ -533,14 +535,14 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
         type: String
       },
       prevPage: {
-        type: String,
+        type: String
       },
       nextPage: {
-        type: String,
+        type: String
       },
       pageTimestamp: {
-        type: Number,
-      },
+        type: Number
+      }
     };
   }
 
@@ -565,20 +567,27 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
     });
     autorun(reaction => {
       this.activeItemContent = toJS(store.activeItemContent);
-      if (this.shadowRoot && this.shadowRoot.querySelector('page-contents-menu')) {
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("page-contents-menu")
+      ) {
         // when page changes, tell the menu to update again
         setTimeout(() => {
-          this.shadowRoot.querySelectorAll('page-contents-menu')[0].updateMenu();          
-          this.shadowRoot.querySelectorAll('page-contents-menu')[1].updateMenu();          
+          this.shadowRoot
+            .querySelectorAll("page-contents-menu")[0]
+            .updateMenu();
+          this.shadowRoot
+            .querySelectorAll("page-contents-menu")[1]
+            .updateMenu();
         }, 50);
       }
     });
-    
+
     autorun(reaction => {
       this.pageTimestamp = toJS(store.activeItem.metadata.created);
       this.__disposer.push(reaction);
     });
-    
+
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
@@ -586,7 +595,6 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
-
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -596,8 +604,12 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
       super.firstUpdated(changedProperties);
     }
     // ensure this monitors the page itself
-    this.shadowRoot.querySelectorAll('page-contents-menu')[0].contentContainer = this;
-    this.shadowRoot.querySelectorAll('page-contents-menu')[1].contentContainer = this;
+    this.shadowRoot.querySelectorAll(
+      "page-contents-menu"
+    )[0].contentContainer = this;
+    this.shadowRoot.querySelectorAll(
+      "page-contents-menu"
+    )[1].contentContainer = this;
   }
   /**
    * life cycle, element is removed from the DOM
@@ -608,7 +620,6 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
     }
     super.disconnectedCallback();
   }
-  
 }
 window.customElements.define(CleanTwo.tag, CleanTwo);
 export { CleanTwo };

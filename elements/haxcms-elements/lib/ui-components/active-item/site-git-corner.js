@@ -70,8 +70,8 @@ class SiteGitCorner extends LitElement {
   }
   static get properties() {
     return {
-      circle: { type: Boolean, },
-      size: { type: String, },
+      circle: { type: Boolean },
+      size: { type: String },
       activeGitFileLink: { type: String, attribute: "active-git-file-link" },
       direction: { type: String, reflect: true },
       alt: { type: String }

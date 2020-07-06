@@ -142,11 +142,17 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           <slot name="suffix"></slot>
         </paper-button>
       </a>
-      ${!this.hideLabel ? html`
-      <simple-tooltip for="menulink" offset="8" .position="${this.position}">
-        ${this.label}
-      </simple-tooltip>
-      ` : ``}
+      ${!this.hideLabel
+        ? html`
+            <simple-tooltip
+              for="menulink"
+              offset="8"
+              .position="${this.position}"
+            >
+              ${this.label}
+            </simple-tooltip>
+          `
+        : ``}
     `;
   }
   /**
@@ -184,9 +190,9 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
       label: {
         type: String
       },
-      hideLabel:{
+      hideLabel: {
         type: Boolean,
-        attribute: 'hide-label',
+        attribute: "hide-label"
       },
       icon: {
         type: String
@@ -214,7 +220,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
