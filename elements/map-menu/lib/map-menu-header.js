@@ -31,16 +31,24 @@ class MapMenuHeader extends LitElement {
         #center {
           flex: 1 1 auto;
         }
-
-        a,
-        a:hover,
         a:visited,
-        a:focus {
+        a {
           display: block;
-          color: var(--map-menu-header-a-color, inherit);
-          text-decoration: var(--map-menu-header-a-text-decoration, inherit);
+          color: var(--map-menu-item-a-color);
+          text-decoration: var(--map-menu-header-a-text-decoration, none);
         }
-
+        a:hover,
+        a:active,
+        a:focus {
+          color: var(
+            --map-menu-item-a-active-color,
+            var(--map-menu-item-a-color)
+          );
+          text-decoration: var(
+            --map-menu-header-a-text-decoration-hover,
+            underline
+          );
+        }
         lrndesign-avatar {
           display: inline-block;
           background: #fff;

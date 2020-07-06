@@ -4,8 +4,9 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -24,10 +25,11 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
  * @demo demo/index.html
  * @element clean-one
  */
-class CleanOne extends HAXCMSLitElementTheme {
+class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -58,9 +60,15 @@ class CleanOne extends HAXCMSLitElementTheme {
           --simple-tooltip-border-radius: 0;
         }
         simple-tooltip {
-          --simple-tooltip-background: #000000;
+          --simple-tooltip-background: var(
+            --haxcms-tooltip-background-color,
+            #000000
+          );
+          --simple-tooltip-text-color: var(
+            --haxcms-tooltip-color,
+            #ffffff
+          );
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
@@ -136,6 +144,9 @@ class CleanOne extends HAXCMSLitElementTheme {
         :host([hidden]) {
           display: none;
         }
+        [hidden] {
+          display: none;
+        }
         site-menu:not(:defined),
         site-menu-button:not(:defined),
         paper-icon-button:not(:defined),
@@ -148,50 +159,92 @@ class CleanOne extends HAXCMSLitElementTheme {
           z-index: 2;
         }
         site-menu {
-          margin: 36px 0 0 0;
-          height: calc(100vh - 36px);
+          height: auto;
+        }
+        .site.color-theme-0 simple-tooltip {
+          --simple-tooltip-background:#252737;
+          --simple-tooltip-text-color:#F5F5F5;
         }
         .site.color-theme-0 site-menu {
           --site-menu-active-color: #F5F5F5;
-          --site-menu-item-active-item-color: #008cff;
+          --site-menu-item-active-item-color: var(--simple-colors-default-theme-blue-8,
+            #4183c4);
+          --haxcms-tooltip-color: #F5F5F5;
+          --haxcms-tooltip-background-color: #252737;
         }
         .site.color-theme-0 scroll-button {
           --scroll-button-color: #252737;
           --scroll-button-background-color: #F5F5F5;
+          --scroll-button-tooltip-background-color:#252737;
+          --scroll-button-tooltip-color:#F5F5F5;
         }
-        .site.color-theme-0 paper-icon-button {
+        .site.color-theme-0 paper-icon-button,
+        .site.color-theme-0 site-rss-button,
+        .site.color-theme-0 site-print-button {
           --iron-icon-fill-color: #252737;
+          --haxcms-tooltip-color: #F5F5F5;
+          --haxcms-tooltip-background-color: #252737;
         }
         .site.color-theme-0 site-menu-button {
           --site-menu-button-icon-fill-color: #252737;
+          --haxcms-tooltip-color: #F5F5F5;
+          --haxcms-tooltip-background-color: #252737;
         }
         .site.color-theme-1 site-menu {
           --site-menu-active-color: #1C1C1C;
           --site-menu-item-active-item-color: #704214;
+          --haxcms-tooltip-color: #f3eacb;
+          --haxcms-tooltip-background-color: #704214;
+        }
+        .site.color-theme-1 simple-tooltip {
+          --simple-tooltip-background:#704214;
+          --simple-tooltip-text-color:#f3eacb;
         }
         .site.color-theme-1 scroll-button {
-          --scroll-button-color: #1C1C1C;
-          --scroll-button-background-color: #704214;
+          --scroll-button-color: #704214;
+          --scroll-button-background-color: #f3eacb;
+          --scroll-button-tooltip-background-color:#704214;
+          --scroll-button-tooltip-color:#f3eacb;
         }
-        .site.color-theme-1 paper-icon-button {
+        .site.color-theme-1 paper-icon-button,
+        .site.color-theme-1 site-rss-button,
+        .site.color-theme-1 site-print-button {
           --iron-icon-fill-color: #704214;
+          --haxcms-tooltip-color: #f3eacb;
+          --haxcms-tooltip-background-color: #704214;
         }
         .site.color-theme-1 site-menu-button {
           --site-menu-button-icon-fill-color: #704214;
+          --haxcms-tooltip-color: #f3eacb;
+          --haxcms-tooltip-background-color: #704214;
         }
         .site.color-theme-2 site-menu {
           --site-menu-active-color: #252737;
           --site-menu-item-active-item-color: #f4f4f5;
+          --haxcms-tooltip-color: #a6a6a6;
+          --haxcms-tooltip-background-color: #252737;
         }
-        .site.color-theme-2 paper-icon-button {
+        .site.color-theme-2 simple-tooltip {
+          --simple-tooltip-background:#252737;
+          --simple-tooltip-text-color:#a6a6a6;
+        }
+        .site.color-theme-2 paper-icon-button,
+        .site.color-theme-2 site-rss-button,
+        .site.color-theme-2 site-print-button {
           --iron-icon-fill-color: #a6a6a6;
+          --haxcms-tooltip-color: #a6a6a6;
+          --haxcms-tooltip-background-color: #252737;
         }
         .site.color-theme-2 site-menu-button {
           --site-menu-button-icon-fill-color: #a6a6a6;
+          --haxcms-tooltip-color: #a6a6a6;
+          --haxcms-tooltip-background-color: #252737;
         }
         .site.color-theme-2 scroll-button {
           --scroll-button-color: #a6a6a6;
           --scroll-button-background-color: #252737;
+          --scroll-button-tooltip-background-color:#252737;
+          --scroll-button-tooltip-color:#a6a6a6;
         }
         /**
         * Hide the slotted content during edit mode. This must be here to work.
@@ -214,8 +267,10 @@ class CleanOne extends HAXCMSLitElementTheme {
         }
         /* links */
         :host([color-theme="0"]) {
-          --hax-base-styles-a-color-visited: #4183c4;
-          --hax-base-styles-a-color: #4183c4;
+          --hax-base-styles-a-color-visited: var(--simple-colors-default-theme-blue-7,
+            #4183c4);
+          --hax-base-styles-a-color: var(--simple-colors-default-theme-blue-7,
+            #4183c4);
           --hax-base-styles-a-color-active: #000000;
         }
         :host([color-theme="1"]) {
@@ -224,21 +279,11 @@ class CleanOne extends HAXCMSLitElementTheme {
           --hax-base-styles-a-color-active: #000000;
         }
         :host([color-theme="2"]) {
-          --hax-base-styles-a-color-visited: #3eb1d0;
-          --hax-base-styles-a-color: #3eb1d0;
+          --hax-base-styles-a-color-visited: var(--simple-colors-default-theme-light-blue-2,
+            #3eb1d0);
+          --hax-base-styles-a-color: var(--simple-colors-default-theme-light-blue-2,
+            #3eb1d0);
           --hax-base-styles-a-color-active:#FFFFFF;
-        }
-        .site.color-theme-0 section ::slotted(a) {
-          color: #4183c4;
-          text-decoration: none;
-        }
-        .site.color-theme-1 section ::slotted(a) {
-          color: #704214;
-          text-decoration: none;
-        }
-        .site.color-theme-2 section ::slotted(a) {
-          color: #3eb1d0;
-          text-decoration: none;
         }
         a {
           text-decoration: none;
@@ -285,6 +330,10 @@ class CleanOne extends HAXCMSLitElementTheme {
         .main-section h1 {
           font-size: 2em;
         }
+        :host([edit-mode]) .main-section {
+          outline: 1px solid grey;
+          outline-offset: 20px;
+        }
         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
           margin-top: 1.275em;
           margin-bottom: .85em;
@@ -306,16 +355,14 @@ class CleanOne extends HAXCMSLitElementTheme {
           transition: none!important;
         }
 
-        @media (min-width: 600px) {
-          .site.with-menu .site-body {
-            left: 300px;
-          }
-          :host([is-logged-in]) .site.with-menu .site-body {
-            left: 348px;
-          }
-          :host([is-logged-in]) .site .site-body {
-            left: 48px;
-          }
+        .site.with-menu .site-body {
+          left: 300px;
+        }
+        :host([is-logged-in]) .site.with-menu .site-body {
+          left: 348px;
+        }
+        :host([is-logged-in]) .site .site-body {
+          left: 48px;
         }
         .site-body {
           position: absolute;
@@ -388,7 +435,7 @@ class CleanOne extends HAXCMSLitElementTheme {
           color: #7e888b;
           background: 0 0;
         }
-        .site-header site-active-title h2 {
+        .site-header site-active-title h1 {
           color: inherit;
           text-decoration: none;
           position: absolute;
@@ -416,11 +463,11 @@ class CleanOne extends HAXCMSLitElementTheme {
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        .site-header site-active-title h2:hover {
+        .site-header site-active-title h1:hover {
           opacity: 1;
         }
         @media (max-width: 1000px){
-          .book-header site-active-title {
+          .site-header site-active-title {
               display: none;
           }
         }
@@ -460,12 +507,12 @@ class CleanOne extends HAXCMSLitElementTheme {
           position: relative;
           max-width: 800px;
           margin: 0 auto;
+          min-height: 90vh;
           padding: 20px 15px 40px 15px;
         }
         .main-section {
           display: block;
           word-wrap: break-word;
-          overflow: hidden;
           color: #333;
           line-height: 1.7;
           text-size-adjust: 100%;
@@ -672,7 +719,7 @@ class CleanOne extends HAXCMSLitElementTheme {
             background: #f3eacb;
           }
           .site.color-theme-2 .site-body {
-            color: #bdcadb;
+            color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
             background: #1c1f2b;
           }
           .site.color-theme-2 .site-body .page-wrapper .page-inner section {
@@ -748,10 +795,11 @@ class CleanOne extends HAXCMSLitElementTheme {
             background-color: #fbeecb;
           }
           .site.color-theme-2 .site-body .page-wrapper .page-inner section.normal {
-            color: #bdcadb;
+            color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
           }
           .site.color-theme-2 .site-body .page-wrapper .page-inner section.normal a {
-            color: #3eb1d0;
+            color: var(--simple-colors-default-theme-light-blue-2,
+            #3eb1d0);
           }
           .site.color-theme-2 .site-body .page-wrapper .page-inner section.normal h1,
           .site.color-theme-2 .site-body .page-wrapper .page-inner section.normal h2,
@@ -825,7 +873,7 @@ class CleanOne extends HAXCMSLitElementTheme {
             background: none;
           }
           .site.color-theme-2 .site-header site-active-title {
-            color: #bdcadb;
+            color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
           }
           .site.color-theme-1 .site-body .navigation {
             color: #afa790;
@@ -850,13 +898,6 @@ class CleanOne extends HAXCMSLitElementTheme {
             color: #afa790;
             background: #111111;
             border-right: 1px solid rgba(0, 0, 0, 0.07);
-          }
-          .site.color-theme-1 .menu-outline .site-search {
-            background: transparent;
-          }
-          .site.color-theme-1 .menu-outline .site-search input,
-          .site.color-theme-1 .menu-outline .site-search input:focus {
-            border: 1px solid transparent;
           }
           .site.color-theme-1 .menu-outline ul.summary li.divider {
             background: #7e888b;
@@ -886,13 +927,6 @@ class CleanOne extends HAXCMSLitElementTheme {
             color: #bcc1d2;
             background: #2d3143;
             border-right: none;
-          }
-          .site.color-theme-2 .menu-outline .site-search {
-            background: transparent;
-          }
-          .site.color-theme-2 .menu-outline .site-search input,
-          .site.color-theme-2 .menu-outline .site-search input:focus {
-            border: 1px solid transparent;
           }
           .site.color-theme-2 .menu-outline ul.summary li.divider {
             background: #272a3a;
@@ -932,6 +966,58 @@ class CleanOne extends HAXCMSLitElementTheme {
             position: fixed;
             top: 0;
             right: 16px;
+          }
+          #site-search-input {
+            padding: 6px;
+            background: 0 0;
+            transition: top .5s ease;
+            background: #fff;
+            border-bottom: 1px solid rgba(0,0,0,.07);
+            border-top: 1px solid rgba(0,0,0,.07);
+            margin-bottom: 10px;
+            margin-top: -1px;
+          }
+          #site-search-input input, #site-search-input input:focus, #site-search-input input:hover {
+            width: 100%;
+            background: 0 0;
+            border: 1px solid transparent;
+            box-shadow: none;
+            outline: 0;
+            line-height: 22px;
+            padding: 7px 7px;
+            color: inherit;
+          }
+          site-search {
+            height: auto;
+            width: auto;
+            font-size: inherit;
+          }
+          .site.color-theme-0 site-search {
+            color: #252737;
+            --site-search-result-background-color: transparent;
+            --site-search-result-background-color-hover: #F5F5F5;
+            --site-search-link-color-hover: #252737;
+            --site-search-link-text-color: #252737;
+            --site-search-link-color: #252737;
+            --site-search-result-color: #252737;
+          }
+          .site.color-theme-1 site-search {
+            color: #704214;
+            --site-search-result-background-color: transparent;
+            --site-search-result-background-color-hover: transparent;
+            --site-search-link-color-hover: #704214;
+            --site-search-link-text-color: #704214;
+            --site-search-link-color: #704214;
+            --site-search-result-color: #704214;
+          }
+          .site.color-theme-2 site-search {
+            color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
+            --site-search-result-background-color: transparent;
+            --site-search-result-background-color-hover: transparent;
+            --site-search-link-color-hover: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
+            --site-search-link-text-color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
+            --site-search-link-color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
+            --site-search-result-color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
           }
       `
     ];
@@ -974,16 +1060,30 @@ class CleanOne extends HAXCMSLitElementTheme {
           .colorTheme}"
       >
         <div class="menu-outline">
-          <nav id="nav" role="navigation">
-            <site-menu></site-menu>
+          <div id="site-search-input" role="search">
+            <input
+              type="text"
+              placeholder="Type to search"
+              .value="${this.searchTerm}"
+              id="search"
+              @input="${this.searchChanged}"
+            />
+          </div>
+          <nav id="nav" role="navigation" aria-labelledby="leftnavheading">
+            <site-menu id="leftnavheading"></site-menu>
           </nav>
         </div>
         <div class="site-body">
           <div id="top"></div>
           <div class="site-inner">
-            <div class="site-header" role="navigation">
+            <div
+              class="site-header"
+              role="navigation"
+              .part="${this.editMode ? `edit-mode-active` : ``}"
+            >
               <div class="btn-container">
                 <paper-icon-button
+                  .part="${this.editMode ? `edit-mode-active` : ``}"
                   class="btn"
                   icon="icons:menu"
                   id="menubtn"
@@ -993,6 +1093,7 @@ class CleanOne extends HAXCMSLitElementTheme {
                   Toggle menu
                 </simple-tooltip>
                 <paper-icon-button
+                  .part="${this.editMode ? `edit-mode-active` : ``}"
                   class="btn"
                   icon="editor:format-size"
                   @click="${this.toggleSettings}"
@@ -1082,7 +1183,16 @@ class CleanOne extends HAXCMSLitElementTheme {
             <div class="page-wrapper" role="main">
               <div class="main-content page-inner">
                 <section class="normal main-section">
-                  <div id="contentcontainer">
+                  <site-search
+                    hide-input
+                    search="${this.searchTerm}"
+                    @search-item-selected="${this.searchItemSelected}"
+                    ?hidden="${this.searchTerm != "" ? false : true}"
+                  ></site-search>
+                  <div
+                    id="contentcontainer"
+                    ?hidden="${this.searchTerm != "" ? true : false}"
+                  >
                     <div id="slot">
                       <slot></slot>
                     </div>
@@ -1103,16 +1213,35 @@ class CleanOne extends HAXCMSLitElementTheme {
             class="navigation"
           ></site-menu-button>
         </div>
-        <scroll-button></scroll-button>
+        <scroll-button
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+        ></scroll-button>
       </div>
     `;
   }
-
+  searchItemSelected(e) {
+    // an item was picked, let's just make the UI jump to that item
+    this.searchTerm = "";
+  }
+  searchChanged(e) {
+    if (e.path[0].value) {
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
+        () => {
+          this.searchTerm = e.path[0].value;
+        }
+      );
+    } else {
+      this.searchTerm = "";
+    }
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
       withMenu: {
+        type: String
+      },
+      searchTerm: {
         type: String
       },
       hideSettings: {
@@ -1151,6 +1280,7 @@ class CleanOne extends HAXCMSLitElementTheme {
     this.hideSettings = true;
     this.fontSize = 1;
     this.fontFamily = 0;
+    this.searchTerm = "";
     this.colorTheme = 0;
     this.withMenu = "with-menu";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
@@ -1158,12 +1288,25 @@ class CleanOne extends HAXCMSLitElementTheme {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    this.__disposer = [];
+    this.__disposer = this.__disposer ? this.__disposer : [];
     autorun(reaction => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
+    this.addEventListener("click", this.checkMenuOpen.bind(this));
   }
+
+  checkMenuOpen(e) {
+    if (
+      !this.hideSettings &&
+      e.path &&
+      !e.path.includes(this.__toggleTarget) &&
+      !e.path.includes(this.shadowRoot.querySelector("simple-popover"))
+    ) {
+      this.hideSettings = true;
+    }
+  }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -1171,6 +1314,7 @@ class CleanOne extends HAXCMSLitElementTheme {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this.__toggleTarget = this.shadowRoot.querySelector("#popovertarget");
     // hook up the scroll target
     this.shadowRoot.querySelector(
       "scroll-button"
@@ -1178,7 +1322,7 @@ class CleanOne extends HAXCMSLitElementTheme {
     // hook up the pop over menu
     this.shadowRoot.querySelector(
       "simple-popover"
-    ).target = this.shadowRoot.querySelector("#popovertarget");
+    ).target = this.__toggleTarget;
   }
   /**
    * life cycle, element is removed from the DOM

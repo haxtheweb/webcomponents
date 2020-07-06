@@ -27,6 +27,7 @@ class ScrollButton extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         paper-icon-button {
           background-color: var(
             --scroll-button-background-color,
@@ -34,16 +35,24 @@ class ScrollButton extends LitElement {
           );
           color: var(--scroll-button-color, white);
         }
+
         paper-icon-button:hover,
         paper-icon-button:active,
         paper-icon-button:focus {
           color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
           background-color: var(--scroll-button-color, white);
         }
+
         simple-tooltip {
-          --simple-tooltip-background: #000000;
+          --simple-tooltip-background: var(
+            --scroll-button-tooltip-background-color,
+            #000000
+          );
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-text-color: var(
+            --scroll-button-tooltip-color,
+            #ffffff
+          );
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
@@ -73,7 +82,7 @@ class ScrollButton extends LitElement {
         @click="${this.scrollEvent}"
         id="btn"
         icon="${this.icon}"
-        title="${this.label}"
+        aria-title="${this.label}"
       ></paper-icon-button>
       <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}

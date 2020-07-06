@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -17,12 +18,13 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteMenuButton extends LitElement {
+class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -62,14 +64,11 @@ class SiteMenuButton extends LitElement {
         }
         simple-tooltip {
           --simple-tooltip-background: var(
-            --site-menu-button-tooltip-bg,
+            --haxcms-tooltip-background-color,
             #000000
           );
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(
-            --site-menu-button-tooltip-text,
-            #ffffff
-          );
+          --simple-tooltip-text-color: var(--haxcms-tooltip-color, #ffffff);
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
@@ -84,7 +83,7 @@ class SiteMenuButton extends LitElement {
   }
   constructor() {
     super();
-    this.__disposer = [];
+    this.__disposer = this.__disposer ? this.__disposer : [];
     autorun(reaction => {
       this.activeRouterManifestIndex = toJS(store.activeRouterManifestIndex);
       this.__disposer.push(reaction);
@@ -112,13 +111,19 @@ class SiteMenuButton extends LitElement {
           }
         </style>
       </custom-style>
-      <a tabindex="-1" ?disabled="${this.disabled}" .aria-label="${this.label}">
+      <a
+        tabindex="-1"
+        ?disabled="${this.disabled}"
+        .aria-label="${this.label}"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+      >
         <paper-button
           id="menulink"
           noink
           ?disabled="${this.disabled}"
           ?raised="${this.raised}"
           aria-label="${this.label}"
+          .part="${this.editMode ? `edit-mode-active` : ``}"
         >
           <slot name="prefix"></slot>
           <iron-icon icon="${this.icon}"></iron-icon>
@@ -135,6 +140,7 @@ class SiteMenuButton extends LitElement {
    */
   static get properties() {
     return {
+      ...super.properties,
       type: {
         type: String,
         reflect: true
@@ -176,6 +182,9 @@ class SiteMenuButton extends LitElement {
     };
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {
         this._typeChanged(this[propName], oldValue);

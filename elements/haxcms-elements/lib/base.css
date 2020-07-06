@@ -3,13 +3,15 @@ body, html, :root {
   --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
   --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
   --paper-toast-color: #FFFFFF;
-  --paper-toast-background-color: var(--haxcms-system-bg, black);
+  --paper-toast-background-color: var(--haxcms-system-bg, #000000);
   --simple-modal-titlebar-color: #FFFFFF;
   --simple-modal-titlebar-background: var(--haxcms-system-bg);
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;
   --simple-modal-button-background: var(--simple-colors-default-theme-blue-grey-7, #37474f);
+  --haxcms-tooltip-color: #FFFFFF;
+  --haxcms-tooltip-background-color: #000000;
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
 
   /** HAX specific settings **/
@@ -101,72 +103,72 @@ body, html {
 }
 
 h1 {
-  font-size: var(--hax-base-styles-h1-font-size, 2.5em);
-  line-height: var(--hax-base-styles-h1-line-height, 2.5em);
+  font-size: var(--hax-base-styles-h1-font-size);
+  line-height: var(--hax-base-styles-h1-line-height);
 }
 
 h2 {
-  font-size: var(--hax-base-styles-h2-font-size, 2em);
+  font-size: var(--hax-base-styles-h2-font-size);
 }
 
 h3 {
-  font-size: var(--hax-base-styles-h3-font-size, 1.75em);
+  font-size: var(--hax-base-styles-h3-font-size);
 }
 
 h4 {
-  font-size: var(--hax-base-styles-h4-font-size, 1.5em);
+  font-size: var(--hax-base-styles-h4-font-size);
 }
 
 h5 {
-  font-size: var(--hax-base-styles-h5-font-size, 1.25em);  
+  font-size: var(--hax-base-styles-h5-font-size);  
 }
 
 h6 {
-  font-size: var(--hax-base-styles-h6-font-size, 1.25em);
+  font-size: var(--hax-base-styles-h6-font-size);
 }
 
 p {
-  min-height: var(--hax-base-styles-p-min-height, 43px);
-  font-size: var(--hax-base-styles-p-font-size, 24px);
-  line-height: var(--hax-base-styles-p-line-height, 1.8);
-  letter-spacing: var(--hax-base-styles-p-letter-spacing, .5px);
+  min-height: var(--hax-base-styles-p-min-height);
+  font-size: var(--hax-base-styles-p-font-size);
+  line-height: var(--hax-base-styles-p-line-height);
+  letter-spacing: var(--hax-base-styles-p-letter-spacing);
 }
 
 a,
 a:-webkit-any-link {
-  color: var(--hax-base-styles-a-color, #2196f3);
-  font-size: var(--hax-base-styles-a-font-size, 24px);
-  font-weight: var(--hax-base-styles-a-font-weight, normal);
+  color: var(--hax-base-styles-a-color);
+  font-size: var(--hax-base-styles-a-font-size);
+  font-weight: var(--hax-base-styles-a-font-weight);
 }
 
 a:visited {
-  color: var(--hax-base-styles-a-color-visited, #2196f3);
+  color: var(--hax-base-styles-a-color-visited);
 }
 
 a:active,
 a:focus,
 a:hover {
-  color: var(--hax-base-styles-a-color-active, #2196f3);
-  font-weight: var(--hax-base-styles-a-font-weight-active, normal);
+  color: var(--hax-base-styles-a-color-active);
+  font-weight: var(--hax-base-styles-a-font-weight-active);
 }
 
 ol,
 ul
 ol li,
 ul li {
-  padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);
-  line-height: var(--hax-base-styles-list-line-height, 40px);
-  font-size: var(--hax-base-styles-list-font-size, 24px);
-  max-width: var(--hax-base-styles-list-max-width, 28em);
+  padding-bottom: var(--hax-base-styles-list-padding-bottom);
+  line-height: var(--hax-base-styles-list-line-height);
+  font-size: var(--hax-base-styles-list-font-size);
+  max-width: var(--hax-base-styles-list-max-width);
 }
 
 ol li:last-child,
 ul li:last-child {
-  padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom, 1em);
+  padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom);
 }
 
 ul,
 ol {
-  padding-left: var(--hax-base-styles-list-padding-left, 20px);
-  padding-left: var(--hax-base-styles-list-margin-left, 20px);
+  padding-left: var(--hax-base-styles-list-padding-left);
+  padding-left: var(--hax-base-styles-list-margin-left);
 }

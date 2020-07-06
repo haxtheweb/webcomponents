@@ -4,23 +4,40 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts";
+
 /**
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
  *
 
  */
-class SitePrintButton extends LitElement {
+class SitePrintButton extends HAXCMSThemeParts(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
-          display: block;
+          display: inline-flex;
           text-rendering: optimizelegibility;
           position: relative;
+          color: var(--site-print-button-color, black);
+        }
+        paper-icon-button {
+          color: var(--site-print-button-color, black);
+        }
+        simple-tooltip {
+          --simple-tooltip-background: var(
+            --haxcms-tooltip-background-color,
+            #000000
+          );
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: var(--haxcms-tooltip-color, #ffffff);
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
       `
     ];
@@ -48,6 +65,7 @@ class SitePrintButton extends LitElement {
         @click="${this.print}"
         .aria-title="${this.label}"
         ?disabled="${this.disabled}"
+        .part="${this.editMode ? `edit-mode-active` : ``}"
       ></paper-icon-button>
       <simple-tooltip
         .for="btn${this.type}"
@@ -59,9 +77,19 @@ class SitePrintButton extends LitElement {
     `;
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {
         this._typeChanged(this[propName], oldValue);
+      }
+      if (propName === "editMode") {
+        if (this[propName]) {
+          this.setAttribute("part", "edit-mode-active");
+        } else {
+          this.removeAttribute("part");
+        }
       }
     });
   }
@@ -70,6 +98,7 @@ class SitePrintButton extends LitElement {
    */
   static get properties() {
     return {
+      ...super.properties,
       /**
        * icon
        */
@@ -240,9 +269,6 @@ ${content}`;
     print.focus();
     print.print();
     print.close();
-  }
-  createRenderRoot() {
-    return this;
   }
 }
 window.customElements.define(SitePrintButton.tag, SitePrintButton);
