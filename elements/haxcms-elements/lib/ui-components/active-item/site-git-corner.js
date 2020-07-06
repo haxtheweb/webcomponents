@@ -20,19 +20,26 @@ class SiteGitCorner extends LitElement {
         :host([direction="left"]) {
           float: left;
         }
+        git-corner {
+          --github-corner-color: var(--site-git-corner-color);
+          --github-corner-background: var(--site-git-corner-background);
+        }
       `
     ];
   }
   render() {
     return html`
       <git-corner
+        size="${this.size}"
         alt="${this.alt}"
+        ?circle="${this.circle}"
         source="${this.activeGitFileLink}"
       ></git-corner>
     `;
   }
   constructor() {
     super();
+    this.circle = false;
     this.alt = "See page source";
     this.direction = "right";
     this.activeGitFileLink = "";
@@ -63,6 +70,8 @@ class SiteGitCorner extends LitElement {
   }
   static get properties() {
     return {
+      circle: { type: Boolean, },
+      size: { type: String, },
       activeGitFileLink: { type: String, attribute: "active-git-file-link" },
       direction: { type: String, reflect: true },
       alt: { type: String }

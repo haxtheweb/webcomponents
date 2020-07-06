@@ -12,7 +12,7 @@ class MapMenuItem extends LitElement {
         :host {
           display: block;
           transition: 0.1s all ease-in-out;
-          font-size: var(--map-menu-item-font-size, 14px);
+          font-size: var(--map-menu-item-font-size);
           --map-menu-item-height: 24px;
           --map-menu-item-a-color: inherit;
         }
@@ -70,7 +70,7 @@ class MapMenuItem extends LitElement {
           opacity: 1;
         }
         #wrapper {
-          font-size: var(--map-menu-font-size, 16px);
+          font-size: var(--map-menu-font-size);
         }
       `
     ];

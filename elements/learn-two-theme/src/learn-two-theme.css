@@ -73,7 +73,7 @@ site-menu-button:not(:defined) {
   display: none;
 }
 
-site-rss-button a {
+site-rss-button {
   color: white;
 }
 
@@ -102,11 +102,21 @@ site-menu::-webkit-scrollbar-thumb {
 site-print-button {
   color: var(--site-print-button-color, white);
 }
+paper-icon-button,
+site-rss-button,
+site-print-button {
+  --iron-icon-fill-color: white;
+  --haxcms-tooltip-color: #F5F5F5;
+  --haxcms-tooltip-background-color: #252737;
+}
 
 h-a-x {
   padding: 0 !important;
 }
 
+:host([edit-mode]) {
+  opacity: 1;
+}
 :host([edit-mode]) app-drawer {
   opacity: 0.2;
   pointer-events: none;

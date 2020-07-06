@@ -32,7 +32,16 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
       ...super.styles,
       css`
         :host {
-          display: block;
+          color: #242A31;
+          width: 100%;
+          margin: 0;
+          display: flex;
+          padding: 0;
+          background: #F5F7F9;
+          min-height: 100vh;
+          flex-direction: column;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
           --haxcms-base-styles-body-font-size:14px;
           --hax-base-styles-a-font-size: 14px;
           --hax-base-styles-p-font-size: 14px;
@@ -58,6 +67,9 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
+        }
+        site-git-corner {
+          --site-git-corner-background: black;
         }
         simple-tooltip {
           --simple-tooltip-background: var(
@@ -153,7 +165,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         simple-popover:not(:defined) {
           display: none;
         }
-        
         .btn-container {
           position: fixed;
           z-index: 2;
@@ -333,6 +344,9 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         :host([edit-mode]) .main-section {
           outline: 1px solid grey;
           outline-offset: 20px;
+        }
+        :host([edit-mode]) {
+          opacity: 1;
         }
         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
           margin-top: 1.275em;
@@ -1176,6 +1190,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
                     class="btn js-toolbar-action"
                   ></site-print-button>
                   <site-rss-button type="rss"></site-rss-button>
+                  <site-git-corner size="small"></site-git-corner>
                 </div>
               </div>
               <site-active-title></site-active-title>
@@ -1277,6 +1292,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
    */
   constructor() {
     super();
+    this.HAXCMSThemeSettings.autoScroll = true;
     this.hideSettings = true;
     this.fontSize = 1;
     this.fontFamily = 0;
@@ -1288,6 +1304,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun(reaction => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
