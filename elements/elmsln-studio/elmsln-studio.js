@@ -5,9 +5,11 @@
 import { LitElement, html, css } from "lit-element";
 import { router } from "lit-element-router";
 import { ElmslnStudioUtilities } from "./lib/elmsln-studio-utilities.js";
+import { ElmslnStudioStyles } from "./lib/elmsln-studio-styles.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "./lib/elmsln-studio-main.js";
 import "./lib/elmsln-studio-link.js";
+import "./lib/elmsln-studio-button.js";
 import "./lib/elmsln-studio-dashboard.js";
 import "./lib/elmsln-studio-submissions.js";
 import "./lib/elmsln-studio-portfolio.js";
@@ -23,7 +25,7 @@ import "./lib/elmsln-studio-portfolio.js";
  * @lit-element
  * @demo demo/index.html
  */
-class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
+class ElmslnStudio extends router(ElmslnStudioUtilities(ElmslnStudioStyles(LitElement))) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -64,10 +66,12 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
         handle-as="json"
         @response="${this._portfoliosLoaded}"
       ></iron-ajax>
-      <p>
-        <elmsln-studio-link href="/">Dashboard</elmsln-studio-link>
-        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
-      </p>
+      <div id="studio-nav">
+        <elmsln-studio-link ?active="${this.route==="dashboard"}" href="/">Dashboard</elmsln-studio-link>
+        <elmsln-studio-link ?active="${this.route==="submissions" || this.route==="portfolios"}" href="/submissions">Submissions</elmsln-studio-link>
+        <elmsln-studio-link ?active="${this.route==="assignments"}" href="/assignments">Assignments</elmsln-studio-link>
+        <elmsln-studio-link ?active="${this.route==="activity"}" href="/activity">Activity Index</elmsln-studio-link>
+      </div>
       <br />
       <elmsln-studio-main active-route="${this.route}">
         <elmsln-studio-dashboard
@@ -95,9 +99,9 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
             this.params.portfolio,
             "portfolio-"
           )}"
-          .feedback="${this._filterBy(this.discussions, this.query.submission)
-            .feedback || []}"
-          .discussion-filter="${this.query.submission || ""}"
+          .submission="${this._filterBy(this.discussion, this.query.submission)}"
+          submission-filter="${this.query.submission || ""}"
+          comment="${this.query.comment || ""}"
         >
         </elmsln-studio-portfolio>
       </elmsln-studio-main>
@@ -188,12 +192,12 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "params") console.log, "params"(this.params);
+      if (propName === "params") console.log("params", this.params);
       if (propName === "query") console.log("query", this.query);
     });
   }
 
-  _filterBy(lookup, query, prefix) {
+  _filterBy(lookup, query, prefix="") {
     return lookup && query && lookup[`${prefix}${query}`]
       ? lookup[`${prefix}${query}`]
       : {};

@@ -27,6 +27,29 @@ const ElmslnStudioStyles = function(SuperClass) {
             width: 0;
             overflow: hidden;
           }
+          #studio-nav {
+            display:flex;
+            align-items:stretch;
+            justify-content:center;
+            margin-bottom: var(--elmsln-studio-margin, 20px)
+          }
+          #studio-nav elmsln-studio-link {
+            font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
+            font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+            flex: 0 1 auto;
+            color: #9D9D9D;
+            padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(0.25 * var(--elmsln-studio-margin, 20px));
+          }
+          #studio-nav elmsln-studio-link[active] {
+            font-weight: bold;
+            color: #000;
+            --elmsln-studio-link-TextDecoration: underline !important;
+            --elmsln-studio-link-TextDecorationThickness: 3px;
+          }
+          #studio-nav elmsln-studio-link:focus-within,
+          #studio-nav elmsln-studio-link:hover {
+            --elmsln-studio-link-TextDecoration: underline !important;
+          }
           .filters {
             padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
             margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -91,26 +114,18 @@ const ElmslnStudioStyles = function(SuperClass) {
           .card elmsln-studio-link[slot="subheading"]:focus-within,
           .card elmsln-studio-link[slot="subheading"]:hover {
             --elmsln-studio-link-TextDecoration: none !important;
-          } /*
-          accent-card button {
-            padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          button {
             background-color: transparent;
             border: none;
-            padding: 0;
-            flex: 1 1 auto;
+            text-align: center;
+            display: block;
+            color: #4b4b4b;
           }
-          accent-card button:last-child {
-            text-align: right;
+          button:focus,
+          button:hover {
+            color: var(--simple-colors-default-theme-grey11, #222);
           }
-          accent-card button {
-            text-align: left;
-            text-decoration: none;
-            color: #95989a;
-          }
-          accent-card button:focus,
-          accent-card button:hover {
-            color: #95989a;
-          }*/
           button.load-more {
             text-align: center;
             display: block;
@@ -118,16 +133,24 @@ const ElmslnStudioStyles = function(SuperClass) {
             margin: 0;
             border-radius: 3px;
             border: none;
-            background-color: var(--simple-colors-default-theme-grey-2, #eee);
-            color: var(--simple-colors-default-theme-grey11, #222);
             width: 100%;
+            color: var(--simple-colors-default-theme-grey11, #222);
+            background-color: var(--simple-colors-default-theme-grey-2, #eee);
           }
           button.load-more:focus,
           button.load-more:hover {
-            background-color: var(--simple-colors-default-theme-grey-3, #ddd);
             color: var(--simple-colors-default-theme-grey12, #000);
+            background-color: var(--simple-colors-default-theme-grey-3, #ddd);
+          }
+          @media screen and (min-width: 600px) {
+            #studio-nav elmsln-studio-link {
+              padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(0.5 * var(--elmsln-studio-margin, 20px));
+            }
           }
           @media screen and (min-width: 900px) {
+            #studio-nav elmsln-studio-link {
+              padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(1 * var(--elmsln-studio-margin, 20px));
+            }
             #primary {
               flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
             }

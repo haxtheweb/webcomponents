@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import "./elmsln-studio-link.js";
+import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-dashboard`

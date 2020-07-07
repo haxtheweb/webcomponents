@@ -186,7 +186,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
     feedbackLink(feedback) {
       return `/portfolios/${feedback.creator}-${
         feedback.projectId
-      }?submission=${feedback.submissionId}&feedback=${feedback.id}`;
+      }?submission=${feedback.submissionId}&comment=${feedback.id}`;
     }
 
     /**
@@ -209,7 +209,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
     replyLink(reply) {
       return `/portfolios/${reply.creator}-${reply.projectId}?submission=${
         reply.submissionId
-      }&reply=${reply.id}`;
+      }&comment=${reply.id}`;
     }
 
     /**

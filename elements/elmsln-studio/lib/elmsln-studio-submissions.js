@@ -6,6 +6,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
+import "./elmsln-studio-link.js";
+import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-submissions`
@@ -322,7 +324,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 <div slot="footer">
                   <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${s.link}"
+                    href="${s.link}&comment=true"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
@@ -436,12 +438,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     return options;
   }
   get filteredSubmissions() {
-    console.log(
-      "filteredSubmissions",
-      (this.submissions || []).filter(i =>
-        this._isFiltered(i.userId, i.assignmentId)
-      )[0]
-    );
     return (this.submissions || []).filter(i =>
       this._isFiltered(i.userId, i.assignmentId)
     );

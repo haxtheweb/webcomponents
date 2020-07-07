@@ -29,23 +29,36 @@ class ElmslnStudioLink extends navigator(LitElement) {
   }
   static get styles() {
     return css`
+      :host {
+        display: block;
+      }
+      :host([hidden]) {
+        display: none;
+      }
       a,
       a:link {
-        position: relative;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        transition: var(--elmsln-studio-link-Transition);
         background: transparent;
         color: var(--elmsln-studio-link-Color);
         text-decoration: var(--elmsln-studio-link-TextDecoration);
-        transition: var(--elmsln-studio-link-Transition);
+        text-decoration-style: var(--elmsln-studio-link-TextDecorationStyle);
+        text-decoration-skip: var(--elmsln-studio-link-TextDecorationSkip);
+        text-decoration-skip-ink: var(--elmsln-studio-link-TextDecorationSkipInk);
+        text-decoration-line: var(--elmsln-studio-link-TextDecorationLine);
+        text-decoration-color: var(--elmsln-studio-link-TextDecorationColor);
+        text-decoration: var(--elmsln-studio-link-TextDecoration);
+        text-decoration-thickness: var(--elmsln-studio-link-TextDecorationThickness);
       }
     `;
   }
   constructor() {
     super();
     this.href = "";
+    this.addEventListener("click",this.linkClick);
+  }
+  disconnectedCallback(){
+    if(super.disconnectedCallback) super.disconnectedCallback();
+    this.removeEventListener("click",this.linkClick);
   }
   render() {
     return html`

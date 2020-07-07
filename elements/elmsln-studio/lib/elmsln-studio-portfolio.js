@@ -7,6 +7,8 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
+import "./elmsln-studio-link.js";
+import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-portfolio`
@@ -24,11 +26,8 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     return [
       ...super.styles,
       css`
-        :host,
-        section {
+        :host {
           display: block;
-          width: 80%;
-          margin: var(--elmsln-studio-margin, 20px) auto;
         }
         h1 {
           text-align: center;
@@ -50,26 +49,40 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
-        .view-discussions {
-          text-align: right;
+        .submission-header {
+          position: relative;
         }
-        article button {
-          background-color: transparent;
-          border: none;
+        .submission-header elmsln-studio-button {
           color: #95989a;
           font-size: var(--elmsln-studio-FontSize, 16px);
           text-transform: uppercase;
+          position: absolute;
+          right: 0;
+          top: 0;
         }
-        article button.has-discussions {
-          font-weight: normal;
-        }
-        article button:focus,
-        article button:hover {
+        .submission-header elmsln-studio-button:focus,
+        .submission-header elmsln-studio-button:hover {
           color: #4b4b4b;
         }
+        .submission-header elmsln-studio-button.has-discussions {
+          color: var(--simple-colors-default-theme-light-blue-3);
+
+        }
+        .submission-header elmsln-studio-button.has-discussions:focus,
+        .submission-header elmsln-studio-button.has-discussions:hover {
+          color: var(--simple-colors-default-theme-light-blue-5);
+        }
         section {
-          margin: calc(2 * var(--elmsln-studio-margin, 20px)) auto;
           border-top: 2px solid #eaeaea;
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0 var(--elmsln-studio-margin, 20px);
+        }
+        .view-discussion section {
+          opacity: 0.4;
+        }
+        .view-discussion section.section-discussion {
+          border: 4px solid #95989a;
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) calc(0.5 * var(--elmsln-studio-margin, 20px)) var(--elmsln-studio-margin, 20px);
+          opacity: 1;
         }
         h2 {
           margin: calc(2 * var(--elmsln-studio-margin, 20px)) auto;
@@ -122,9 +135,67 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         .submission-links a:hover iron-icon {
           text-decoration: none;
         }
-        #secondary {
+        .callout {
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+          border: 1px solid #eaeaea;
+          padding: 0;
+        }
+        .discussion-label {
+          text-align: left;
+          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
+          margin: var(--elmsln-studio-margin, 20px) 0 calc(0.25 * var(--elmsln-studio-margin, 20px));
+        }
+        .callout > * {
+          padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        .callout .callout-label {
+          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
+          font-weight: normal;
+          display:flex;
+          align-items:center;
+          justify-content: flex-start;
+          margin: 0;
+          color: #4b4b4b;
+          border-bottom: 1px solid #eaeaea;
+        }
+        .callout .callout-label iron-icon {
+          margin-right: 1em;
+        }
+        .comment-textarea {
+          flex: 1 0 100%;
+          height: 100px;
+          overflow-x: auto;
+          border: none;
+          resize: none;
+          border-bottom: 1px solid #eaeaea;
+        }
+        .comment-form {
+          display: flex;
+          justify-content: flex-end;
+          flex-wrap: wrap;
+        }
+        .callout .comment-form {
+          width: calc(100% - var(--elmsln-studio-margin, 20px));
+        }
+        .comment-submit {
+          border: none;
+          text-align: center;
+          display: inline;
+          background-color: #4b4b4b;
+          color: #fff;
+          margin: calc(0.25 * var(--elmsln-studio-margin, 20px)) 0;
+        }
+        .comment-submit:focus,
+        .comment-submit:hover {
+          background-color: var(--simple-colors-default-theme-grey11, #222);
+        }
+        #threads {
           background-color: #eaeaea;
           padding: 1px;
+        }
+        .thread {
+          width: 100%;
+          transition: all 0.5s ease-in-out;
         }
         .comment {
           background-color: white;
@@ -176,15 +247,20 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           justify-content: flex-end;
           padding: 0;
         }
-        .comment button {
-          border: none;
-          background-color: transparent;
-        }
-        @media screen and (min-width: 900px) {
+        @media screen and (min-width: 600px) {
           :host {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
+          }
+          #primary.view-discussion {
+            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+          }
+          #primary {
+            flex: 1 0 100%;
+          }
+          #secondary {
+            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
       `
@@ -193,14 +269,14 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   // render function
   render() {
     return html`
-      <div id="primary">
+      <div id="primary" ?hidden="${!this.portfolio}" class="${this.comment && this.comment !== "" ? 'view-discussion' : ''}">
         <article>
-          <div class="close-view">
+          <!--div class="close-view" hidden>
             <button class="close-view-button">
               <iron-icon aria-hidden="true" icon="close"></iron-icon>
               <span>Close</span>
             </button>
-          </div>
+          </div-->
           <h1>
             <lrndesign-avatar
               accent-color="${this.accentColor(this.fullName(this.portfolio))}"
@@ -219,27 +295,24 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             ? ``
             : (this.portfolio.submissions || []).map(
                 s => html`
-                  <section>
-                    <h2 id="sub-${s.id}">
-                      <span class="assignment-name">${s.assignment}</span>
-                      <span class="submission-date"
-                        >Submitted: ${this.dateFormat(s.date)}</span
-                      >
-                    </h2>
-                    <div class="view-discussions">
-                      <elmsln-studio-link
+                  <section class="${this.submissionFilter === s.id ? 'section-discussion' : ''}">
+                    <div class="submission-header">
+                      <h2 id="sub-${s.id}">
+                        <span class="assignment-name">${s.assignment}</span>
+                        <span class="submission-date"
+                          >Submitted: ${this.dateFormat(s.date)}</span
+                        >
+                      </h2>
+                      <elmsln-studio-button
                         class="view-discussion-button ${s.feedback.length < 1
                           ? ""
                           : "has-discussions"}"
                         aria-describedby="sub-${s.id}"
-                        href="${s.link}"
+                        icon="communication:comment"
+                        path="${s.link}&comment=show"
                       >
-                        <iron-icon
-                          aria-hidden="true"
-                          icon="communication:comment"
-                        ></iron-icon>
                         <span class="sr-only">View Comments</span>
-                      </elmsln-studio-link>
+                      </elmsln-studio-button>
                     </div>
                     <div class="submission-body">
                       ${s.links && s.links.length > 0
@@ -282,14 +355,62 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
               )}
         </article>
       </div>
-      <div id="secondary" ?hidden=${!this.submission}>
-        ${(this.feedback || []).map(
-          f => html`
-            <div class="thread">
-              ${this.makeComment(f)} ${f.replies.map(r => this.makeComment(r))}
+      <div id="secondary" ?hidden=${!this.portfolio || !this.comment || this.comment ===""}>
+        <aside>
+          <div class="instructions callout">
+            <h2 class="callout-label">
+              <iron-icon icon="info" aria-hidden="true"></iron-icon>
+              Directions for Assignment
+            </h2>
+            <div>
+              <ul>
+                <li>Step 1. Do something.</li>
+                <li>Step 2. Do another thing.</li>
+                <li>Step 3. Do something else.</li>
+                <li>Step 4. Do ALL THE THINGS!</li>
+              </ul>
             </div>
-          `
-        )}
+          </div>
+          <h2 class="discussion-label">
+            Discussion for Submission
+          </h2>
+          <div class="discussion callout">
+            <label class="callout-label" for="feedback">
+              <iron-icon icon="communication:comment" aria-hidden="true"></iron-icon>
+              Feedback
+            </label>
+            ${this.makeWrite("feedback",`sub-${this.submission.id}`)}
+          </div>
+          <div id="threads">
+            ${(this.submission.feedback || []).map(
+              f => html`
+                <div class="thread">
+                  ${this.makeComment(f)}
+                  ${f.replies.map(r => this.makeComment(r))}
+                </div>
+              `
+            )}
+          </div>
+        </aside>
+      </div>
+    `;
+  }
+
+  makeWrite(id,describedby="",hidden=false,label) {
+    return html`
+      <div id="${id}-div" ?hidden=${hidden} class="comment-form">
+        ${label ? html`<label class="sr-only" for="${id}" >${label}</label>`: ``}
+        <textarea 
+          id="${id}" 
+          aria-desccribedby="${describedby}" 
+          class="comment-textarea"></textarea>
+        <button 
+          controls="${id}" 
+          @click="${e=>this._handleComment(id,describedby)}"
+          class="comment-submit">
+          <iron-icon icon="send" aria-hidden="true"></iron-icon>
+          Submit
+        </button>
       </div>
     `;
   }
@@ -318,11 +439,14 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         <div class="comment-body">
           <p>${c.body}</p>
         </div>
-        <div class="comment-footer">
-          <button>
+        <div class="comment-footer" ?hidden="${c.feedbackId}">
+          <button 
+            controls="reply-to-${c.id}-div"
+            @click="${e=>this._handleReply(`reply-to-${c.id}`)}">
             Reply
             <iron-icon icon="arrow-forward"></iron-icon>
           </button>
+          ${this.makeWrite(`reply-to-${c.id}`,c.id,true,'Write Reply')}
         </div>
       </div>
     `;
@@ -335,9 +459,17 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       portfolio: {
         type: Object
       },
-      feedback: {
-        type: Array
-      }
+      submission: {
+        type: Object
+      },
+      comment: {
+        type: String,
+        attribute: 'comment'
+      },
+      submissionFilter: {
+        type: String,
+        attribute: 'submission-filter'
+      },
     };
   }
 
@@ -353,7 +485,9 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   constructor() {
     super();
     this.portfolio = {};
-    this.feedback = [];
+    this.submission = {};
+    this.submissionFilter = "";
+    this.comment = "";
     this.tag = ElmslnStudioPortfolio.tag;
   }
   /**
@@ -362,21 +496,15 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   connectedCallback() {
     super.connectedCallback();
   }
-  _loadDiscussion(submissionId) {
-    console.log(submissionId);
-    /**
-     * Fires when constructed, so that parent radio group can listen for it.
-     *
-     * @event a11y-collapse-attached
-     */
-    this.dispatchEvent(
-      new CustomEvent("load-discussion", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: submissionId
-      })
-    );
+  _handleReply(replyform){
+    let form = this.shadowRoot.querySelector(`#${replyform}-div`),
+      button = this.shadowRoot.querySelector(`[controls=${replyform}]`);
+    console.log('_handleComment',replyform,form,button);
+  }
+  _handleComment(id,target){
+    let form = this.shadowRoot.querySelector(`#${id}`),
+      parent = this.shadowRoot.querySelector(`#${target}`);
+    console.log('_handleComment',id,target,form,parent);
   }
 
   updated(changedProperties) {
@@ -384,12 +512,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     changedProperties.forEach((oldValue, propName) => {});
     console.log("portfolio", this.portfolio, this.feedback);
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);
 export { ElmslnStudioPortfolio };

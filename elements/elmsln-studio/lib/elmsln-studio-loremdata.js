@@ -674,8 +674,8 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
     ]);
 
     /* feedback by submission */
-    this.discussion = Object.keys(this.submissions || {}).map(i => {
-      return {
+    Object.keys(this.submissions || {}).forEach(i => {
+      this.discussion[i] =  {
         id: i,
         feedback: this.submissions[i].feedback.map(j => {
           return {
