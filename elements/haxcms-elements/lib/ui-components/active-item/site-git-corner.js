@@ -9,7 +9,8 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
     return "site-git-corner";
   }
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
         :host {
           display: block;

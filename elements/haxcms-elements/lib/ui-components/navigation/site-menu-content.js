@@ -31,7 +31,11 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
    * wrap the base render function in a part that demonstrates edit mode
    */
   render() {
-    return html`<div .part="${this.editMode ? `edit-mode-active` : ``}">${super.render()}</div>`;
+    return html`
+      <div .part="${this.editMode ? `edit-mode-active` : ``}">
+        ${super.render()}
+      </div>
+    `;
   }
   static get styles() {
     return [
