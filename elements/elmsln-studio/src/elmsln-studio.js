@@ -35,36 +35,36 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   static get properties() {
     return {
       activity: { type: Array },
-      activitySource: { 
+      activitySource: {
         type: String,
         reflect: true,
         attribute: "activity-source"
-       },
+      },
       discussion: { type: Array },
-      discussionSource: { 
+      discussionSource: {
         type: String,
         reflect: true,
         attribute: "discussion-source"
       },
       portfolios: { type: Object },
-      portfoliosSource: { 
+      portfoliosSource: {
         type: String,
         reflect: true,
         attribute: "portfolios-source"
       },
       profile: { type: Object },
-      profileSource: { 
+      profileSource: {
         type: String,
         reflect: true,
         attribute: "profile-source"
       },
-      sourcePath: { 
+      sourcePath: {
         type: String,
         reflect: true,
         attribute: "source-path"
       },
       submissions: { type: Array },
-      submissionsSource: { 
+      submissionsSource: {
         type: String,
         reflect: true,
         attribute: "submissions-source"
@@ -97,8 +97,8 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   constructor() {
     super();
     this.activity = [];
-    this.discussion = [];  
-    this.portfolios = {}; 
+    this.discussion = [];
+    this.portfolios = {};
     this.profile = {};
     this.submissions = [];
     this.route = "";
@@ -116,36 +116,38 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if(propName==="params") console.log,"params"(this.params);
-      if(propName==="query") console.log("query",this.query);
+      if (propName === "params") console.log, "params"(this.params);
+      if (propName === "query") console.log("query", this.query);
     });
   }
 
-  _filterBy(lookup,query,prefix){
-    return lookup && query && lookup[`${prefix}${query}`] ? lookup[`${prefix}${query}`] : {};
+  _filterBy(lookup, query, prefix) {
+    return lookup && query && lookup[`${prefix}${query}`]
+      ? lookup[`${prefix}${query}`]
+      : {};
   }
 
-  _loadDiscussion(e){
+  _loadDiscussion(e) {
     this.query.discussion = e.detail || true;
   }
-  _profileLoaded(e){
-    console.log('_profileLoaded',e.detail.__data.response);
+  _profileLoaded(e) {
+    console.log("_profileLoaded", e.detail.__data.response);
     this.profile = e.detail.__data.response;
   }
-  _activityLoaded(e){
-    console.log('_activityLoaded',e.detail.__data.response);
+  _activityLoaded(e) {
+    console.log("_activityLoaded", e.detail.__data.response);
     this.activity = e.detail.__data.response;
   }
-  _submissionsLoaded(e){
-    console.log('_submissionsLoaded',e.detail.__data.response);
+  _submissionsLoaded(e) {
+    console.log("_submissionsLoaded", e.detail.__data.response);
     this.submissions = e.detail.__data.response;
   }
-  _discussionLoaded(e){
-    console.log('_discussionLoaded',e.detail.__data.response);
+  _discussionLoaded(e) {
+    console.log("_discussionLoaded", e.detail.__data.response);
     this.discussion = e.detail.__data.response;
   }
-  _portfoliosLoaded(e){
-    console.log('_portfoliosLoaded',e.detail.__data.response);
+  _portfoliosLoaded(e) {
+    console.log("_portfoliosLoaded", e.detail.__data.response);
     this.portfolios = e.detail.__data.response;
   }
 
@@ -182,7 +184,7 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
         @response="${this._discussionLoaded}"
       ></iron-ajax>
       <iron-ajax
-      auto
+        auto
         url="${this.portfoliosSource}"
         handle-as="json"
         .last-response="${this.portfolios}"
@@ -205,7 +207,7 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
         <elmsln-studio-link href="/portfolios/kmk5124-project-0"
           >kmk5124-project-0</elmsln-studio-link
         >
-          .feedback="${this._filterBy(this.discussion,this.query.discussion)}"
+          .feedback="${this._filterBy(this.discussion, this.query.discussion)}"
         <elmsln-studio-link href="/portfolios">portfolios</elmsln-studio-link-->
       </p>
       <br />
@@ -220,16 +222,25 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
         <elmsln-studio-submissions
           route="submissions"
           .submissions="${this.submissions}"
-          .comments="${Object.keys(this.discussion).map(i=>this.discussion[i].feedback).flat()}"
+          .comments="${Object.keys(this.discussion)
+            .map(i => this.discussion[i].feedback)
+            .flat()}"
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
-          assignment-filter="${this.query.assignment || ""}">
+          assignment-filter="${this.query.assignment || ""}"
+        >
         </elmsln-studio-submissions>
-        <elmsln-studio-portfolio 
-          route="portfolios" 
-          .portfolio="${this._filterBy(this.portfolios,this.params.portfolio,'portfolio-')}"
-          .feedback="${this._filterBy(this.discussions,this.query.submission).feedback || []}"
-          .discussion-filter="${this.query.submission || ""}">
+        <elmsln-studio-portfolio
+          route="portfolios"
+          .portfolio="${this._filterBy(
+            this.portfolios,
+            this.params.portfolio,
+            "portfolio-"
+          )}"
+          .feedback="${this._filterBy(this.discussions, this.query.submission)
+            .feedback || []}"
+          .discussion-filter="${this.query.submission || ""}"
+        >
         </elmsln-studio-portfolio>
       </elmsln-studio-main>
       <a href="${this.discussionSource}" target="_blank">Studio</a>

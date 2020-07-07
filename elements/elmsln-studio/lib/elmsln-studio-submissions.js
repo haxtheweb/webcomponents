@@ -292,9 +292,15 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 no-border
                 image-src="${s.image && s.image.src ? s.image.src : ""}"
                 ?horizontal="${s.feature || !this.grid ? true : false}"
-                image-align="${this._getAlign(s.image && s.image.gravity ? s.image.gravity: undefined)}"
-                image-valign="${this._getValign(s.image && s.image.gravity ? s.image.gravity: undefined)}"
-                .gravity="${s.image && s.image.gravity ? s.image.gravity: undefined}"
+                image-align="${this._getAlign(
+                  s.image && s.image.gravity ? s.image.gravity : undefined
+                )}"
+                image-valign="${this._getValign(
+                  s.image && s.image.gravity ? s.image.gravity : undefined
+                )}"
+                .gravity="${s.image && s.image.gravity
+                  ? s.image.gravity
+                  : undefined}"
               >
                 <div slot="image-corner" class="image-zoom">
                   <iron-icon icon="zoom-in"></iron-icon>
@@ -324,8 +330,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
                   </a>
-                  <a aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${s.link}">
+                  <a
+                    aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                    href="${s.link}"
+                  >
                     <iron-icon icon="visibility"></iron-icon>
                     View
                   </a>
@@ -353,9 +361,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             ${this.filteredComments.map(
               f => html`
                 <nav-card-item
-                  accent-color="${this.accentColor(
-                    this.fullName(f)
-                  )}"
+                  accent-color="${this.accentColor(this.fullName(f))}"
                   .avatar="${f.avatar}"
                   icon="chevron-right"
                   initials="${this.fullName(f)}"
@@ -420,18 +426,25 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   }
   get studentOptions() {
     let options = { "": "All" };
-    (this.submissions || []).forEach(i => options[i.userId] = this.fullName(i));
+    (this.submissions || []).forEach(
+      i => (options[i.userId] = this.fullName(i))
+    );
     return options;
   }
   get assignmentOptions() {
     let options = { "": "All" };
-    (this.submissions || []).forEach(i => (options[i.assignmentId] = i.assignment));
+    (this.submissions || []).forEach(
+      i => (options[i.assignmentId] = i.assignment)
+    );
     return options;
   }
   get filteredSubmissions() {
-    console.log('filteredSubmissions',(this.submissions || []).filter(i =>
-      this._isFiltered(i.userId, i.assignmentId)
-    )[0])
+    console.log(
+      "filteredSubmissions",
+      (this.submissions || []).filter(i =>
+        this._isFiltered(i.userId, i.assignmentId)
+      )[0]
+    );
     return (this.submissions || []).filter(i =>
       this._isFiltered(i.userId, i.assignmentId)
     );

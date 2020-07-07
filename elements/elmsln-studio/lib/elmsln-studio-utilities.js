@@ -93,7 +93,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
      */
     dateFormat(d, format) {
       if (typeof d === "string") d = new Date(d);
-      return !d ? ''
+      return !d
+        ? ""
         : format === "long"
         ? d.toLocaleDateString(undefined, {
             weekday: "long",
@@ -194,7 +195,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     feedbackTitle(feedback) {
-      return `${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s
+      return `${feedback.firstName} left feedback on ${
+        feedback.creatorFirstName
+      }'s
         ${feedback.assignment}`;
     }
 
@@ -215,7 +218,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     replyTitle(reply) {
-      return `${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback`;
+      return `${reply.firstName} replied to ${
+        reply.feedbackFirstName
+      }'s feedback`;
     }
 
     _getValign(gravity) {

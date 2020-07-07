@@ -550,7 +550,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get noOptions() {
-    return this.itemsList.length < 1 && Object.keys(this.options).length < 1;
+    return this.itemsList.length < 1 && Object.keys(this.options||{}).length < 1;
   }
   /**
    * gets a sorted list of option

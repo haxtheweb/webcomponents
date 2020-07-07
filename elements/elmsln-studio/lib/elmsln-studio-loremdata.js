@@ -230,18 +230,20 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       `
     ];
   }
-  render(){
+  render() {
     return html`
       <label>profile</label>
-      <textarea>${JSON.stringify(this.profile)}</textarea><br>
+      <textarea>${JSON.stringify(this.profile)}</textarea><br />
       <label>activity</label>
-      <textarea>${JSON.stringify(this.activity)}</textarea><br>
+      <textarea>${JSON.stringify(this.activity)}</textarea><br />
       <label>submissions</label>
-      <textarea>${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea><br>
+      <textarea>
+${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
+      ><br />
       <label>portfolios</label>
-      <textarea>${JSON.stringify(this.portfolios)}</textarea><br>
+      <textarea>${JSON.stringify(this.portfolios)}</textarea><br />
       <label>discussion</label>
-      <textarea>${JSON.stringify(this.discussion)}</textarea><br>
+      <textarea>${JSON.stringify(this.discussion)}</textarea><br />
     `;
   }
   /**
@@ -312,10 +314,12 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         studentId,
         this.nextDate(created, i, studentsList.length, 7)
       );
-      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(this.submissions[sid]);
+      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(
+        this.submissions[sid]
+      );
       return sid;
     });
-    if(studentsList.includes(this.userId)) {
+    if (studentsList.includes(this.userId)) {
       this.profile.assignmentsCompleted++;
     } else {
       this.profile.workDue.push({
@@ -376,34 +380,38 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     for (let i = 0; i < replies; i++) {
       let commenterId = this.randomItem(Object.keys(this.students)),
         reply = this.makeReply(
-        id,
-        commenterId,
-        this.nextDate(created, i, replies, 3)
-      );
+          id,
+          commenterId,
+          this.nextDate(created, i, replies, 3)
+        );
       this.replies[reply].feedbackId = id;
       this.replies[reply].feedbackFirstName = this.feedback[id].firstName;
       this.replies[reply].feedbackLastName = this.feedback[id].firstName;
       this.replies[reply].feedbackAvatar = this.feedback[id].avatar;
       this.replies[reply].link = this.replyLink(this.replies[reply]);
       this.feedback[id].replies.push(reply);
-      if(reviewerId === this.userId) this.profile.repliesFor.push({
-        id: reply,
-        title: this.replyTitle(this.replies[reply]),
-        link: this.replies[reply].link,
-        name: this.fullName(this.replies[reply]),
-        avatar: this.replies[reply].avatar
-      });
-      if(commenterId === this.userId) this.profile.repliesBy++;
+      if (reviewerId === this.userId)
+        this.profile.repliesFor.push({
+          id: reply,
+          title: this.replyTitle(this.replies[reply]),
+          link: this.replies[reply].link,
+          name: this.fullName(this.replies[reply]),
+          avatar: this.replies[reply].avatar
+        });
+      if (commenterId === this.userId) this.profile.repliesBy++;
     }
-    if(reviewerId === this.userId) this.profile.feedbackBy++;
-    if(this.submissions[submissionId].userId === this.userId) this.profile.feedbackFor.push({
-      id: id,
-      title: `${this.fullName(this.feedback[id])}'s feedback on ${this.submissions[submissionId].assignment}`,
-      link: this.feedback[id].link,
-      name: this.fullName(this.feedback[id]),
-      avatar: this.feedback[id].avatar,
-      date: this.feedback[id].date
-    });
+    if (reviewerId === this.userId) this.profile.feedbackBy++;
+    if (this.submissions[submissionId].userId === this.userId)
+      this.profile.feedbackFor.push({
+        id: id,
+        title: `${this.fullName(this.feedback[id])}'s feedback on ${
+          this.submissions[submissionId].assignment
+        }`,
+        link: this.feedback[id].link,
+        name: this.fullName(this.feedback[id]),
+        avatar: this.feedback[id].avatar,
+        date: this.feedback[id].date
+      });
     return id;
   }
   /**
@@ -469,12 +477,13 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         this.nextDate(created, i, reviewers.length, 3)
       );
     });
-    if(studentId === this.userId) this.profile.submissions.push({
-      id: id,
-      title: this.submissions[id].assignment,
-      date: this.submissions[id].date,
-      link: this.submissions[id].link
-    });
+    if (studentId === this.userId)
+      this.profile.submissions.push({
+        id: id,
+        title: this.submissions[id].assignment,
+        date: this.submissions[id].date,
+        link: this.submissions[id].link
+      });
     return id;
   }
   /**
@@ -599,8 +608,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
 
     /** view user profile */
     this.userId = this.randomItem(Object.keys(this.students || {}));
-    this.profile = this.students[this.userId ];
-    this.profile.assignmentsTotal = Object.keys(this.projects).map(i=>this.projects[i].assignments).flat().length;
+    this.profile = this.students[this.userId];
+    this.profile.assignmentsTotal = Object.keys(this.projects)
+      .map(i => this.projects[i].assignments)
+      .flat().length;
     this.profile.assignmentsCompleted = 0;
     this.profile.workDue = [];
     this.profile.submissions = [];
@@ -630,7 +641,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
 
     /** view all activity */
     this.activity = this.sortDates([
-      ...Object.keys(this.submissions).map(i=>{
+      ...Object.keys(this.submissions).map(i => {
         return {
           id: i,
           date: this.submissions[i].date,
@@ -640,7 +651,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           link: this.submissions[i].link
         };
       }),
-      ...Object.keys(this.feedback).map(i=>{
+      ...Object.keys(this.feedback).map(i => {
         return {
           id: i,
           date: this.feedback[i].date,
@@ -650,7 +661,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           link: this.feedback[i].link
         };
       }),
-      ...Object.keys(this.replies).map(i=>{
+      ...Object.keys(this.replies).map(i => {
         return {
           id: i,
           date: this.replies[i].date,
@@ -663,10 +674,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     ]);
 
     /* feedback by submission */
-    this.discussion = Object.keys(this.submissions || {}).map(i=>{
+    this.discussion = Object.keys(this.submissions || {}).map(i => {
       return {
         id: i,
-        feedback: this.submissions[i].feedback.map(j=>{
+        feedback: this.submissions[i].feedback.map(j => {
           return {
             id: j,
             firstName: this.feedback[j].firstName,
@@ -682,7 +693,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             assignmentId: this.submissions[i].assignmentId,
             userId: this.submissions[i].userId,
             link: this.feedback[j].link,
-            replies: this.feedback[j].replies.map(k=>{
+            replies: this.feedback[j].replies.map(k => {
               return {
                 id: k,
                 firstName: this.replies[k].firstName,
@@ -699,10 +710,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         })
       };
     });
-    this.profile.workDue = this.profile.workDue.slice(0,5);
-    this.profile.submissions = this.profile.submissions.slice(0,5);
-    this.profile.repliesFor = this.profile.repliesFor.slice(0,5);
-    this.profile.feedbackFor = this.profile.feedbackFor.slice(0,5);
+    this.profile.workDue = this.profile.workDue.slice(0, 5);
+    this.profile.submissions = this.profile.submissions.slice(0, 5);
+    this.profile.repliesFor = this.profile.repliesFor.slice(0, 5);
+    this.profile.feedbackFor = this.profile.feedbackFor.slice(0, 5);
   }
   /**
    * resets the objects

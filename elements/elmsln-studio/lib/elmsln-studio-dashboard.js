@@ -204,18 +204,18 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   <th scope="row">Conversations</th>
                   <td>
                     ${
-                      !this.profile || !this.profile.feedbackBy || !this.profile.repliesBy
+                      !this.profile ||
+                      !this.profile.feedbackBy ||
+                      !this.profile.repliesBy
                         ? "unknown"
-                        : (this.profile.repliesBy + this.profile.feedbackBy)
+                        : this.profile.repliesBy + this.profile.feedbackBy
                     }
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
                     <a href="/submissions${
-                      !this.profile
-                        ? ""
-                        : `?student=${this.profile.id}`
+                      !this.profile ? "" : `?student=${this.profile.id}`
                     }">
                       Total Submissions
                     </a>
@@ -232,9 +232,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   <th scope="row">Assignments Completed</th>
                   <td>
                     ${
-                      !this.profile || !this.profile.assignmentsCompleted || !this.profile.workDue || !this.profile.assignmentsTotal
+                      !this.profile ||
+                      !this.profile.assignmentsCompleted ||
+                      !this.profile.workDue ||
+                      !this.profile.assignmentsTotal
                         ? "unknown"
-                        : `${this.profile.assignmentsCompleted} / ${this.profile.assignmentsTotal}`
+                        : `${this.profile.assignmentsCompleted} / ${
+                            this.profile.assignmentsTotal
+                          }`
                     }
                   </td>
                 </tr>
@@ -276,9 +281,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           >
             <span slot="heading">Submissions</span>
             <a slot="subheading" href="/submissions${
-              !this.profile
-                ? ""
-                : `?student=${this.profile.id}`
+              !this.profile ? "" : `?student=${this.profile.id}`
             }">All submissions</a>
             <div slot="linklist">
               ${
@@ -415,9 +418,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
     });
   }
   get profileName() {
-    return this.profile &&
-      this.profile.firstName &&
-      this.profile.lastName
+    return this.profile && this.profile.firstName && this.profile.lastName
       ? `${this.profile.firstName} ${this.profile.lastName}`
       : ``;
   }

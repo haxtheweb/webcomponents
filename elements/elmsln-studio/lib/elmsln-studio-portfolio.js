@@ -203,9 +203,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           </div>
           <h1>
             <lrndesign-avatar
-              accent-color="${this.accentColor(
-                this.fullName(this.portfolio)
-              )}"
+              accent-color="${this.accentColor(this.fullName(this.portfolio))}"
               aria-hidden="true"
               label="${this.fullName(this.portfolio)}"
               .src="${this.portfolio && this.portfolio.avatar
@@ -217,74 +215,75 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             <span class="student-name">${this.fullName(this.portfolio)}</span>
             <span class="project-name">${this.portfolio.project}</span>
           </h1>
-          ${!this.portfolio ? `` : (this.portfolio.submissions || []).map(s=>html`
-            <section>
-              <h2 id="sub-${s.id}">
-                <span class="assignment-name"
-                  >${s.assignment}</span
-                >
-                <span class="submission-date"
-                  >Submitted: ${this.dateFormat(s.date)}</span
-                >
-              </h2>
-              <div class="view-discussions">
-                <a
-                  class="view-discussion-button ${s.feedback.length < 1
-                    ? ""
-                    : "has-discussions"}"
-                  aria-describedby="sub-${s.id}"
-                  href="${s.link}"
-                >
-                  <iron-icon
-                    aria-hidden="true"
-                    icon="communication:comment"
-                  ></iron-icon>
-                  <span class="sr-only">View Comments</span>
-                  </a>
-              </div>
-              <div class="submission-body">
-                ${s.links && s.links.length > 0
-                  ? html`
-                      <ul class="submission-links">
-                        ${s.links.map(
-                          link => html`
-                            <li>
-                              <a href="${link.url}" target="_blank">
-                                <iron-icon
-                                  aria-hidden="true"
-                                  icon="${link.type === "pdf"
-                                    ? "hax:file-pdf"
-                                    : "link"}"
-                                ></iron-icon>
-                                ${link.text || link.url}
-                              </a>
-                            </li>
+          ${!this.portfolio
+            ? ``
+            : (this.portfolio.submissions || []).map(
+                s => html`
+                  <section>
+                    <h2 id="sub-${s.id}">
+                      <span class="assignment-name">${s.assignment}</span>
+                      <span class="submission-date"
+                        >Submitted: ${this.dateFormat(s.date)}</span
+                      >
+                    </h2>
+                    <div class="view-discussions">
+                      <a
+                        class="view-discussion-button ${s.feedback.length < 1
+                          ? ""
+                          : "has-discussions"}"
+                        aria-describedby="sub-${s.id}"
+                        href="${s.link}"
+                      >
+                        <iron-icon
+                          aria-hidden="true"
+                          icon="communication:comment"
+                        ></iron-icon>
+                        <span class="sr-only">View Comments</span>
+                      </a>
+                    </div>
+                    <div class="submission-body">
+                      ${s.links && s.links.length > 0
+                        ? html`
+                            <ul class="submission-links">
+                              ${s.links.map(
+                                link => html`
+                                  <li>
+                                    <a href="${link.url}" target="_blank">
+                                      <iron-icon
+                                        aria-hidden="true"
+                                        icon="${link.type === "pdf"
+                                          ? "hax:file-pdf"
+                                          : "link"}"
+                                      ></iron-icon>
+                                      ${link.text || link.url}
+                                    </a>
+                                  </li>
+                                `
+                              )}
+                            </ul>
                           `
-                        )}
-                      </ul>
-                    `
-                  : s.sources && s.sources.length > 0
-                  ? html`
-                      <lrndesign-gallery
-                        class="submission-image"
-                        layout="grid"
-                        .sources="${s.sources}"
-                      ></lrndesign-gallery>
-                    `
-                  : html`
-                      ${s.body}
-                    `}
-              </div>
-            </section>
-          `)}
+                        : s.sources && s.sources.length > 0
+                        ? html`
+                            <lrndesign-gallery
+                              class="submission-image"
+                              layout="grid"
+                              .sources="${s.sources}"
+                            ></lrndesign-gallery>
+                          `
+                        : html`
+                            ${s.body}
+                          `}
+                    </div>
+                  </section>
+                `
+              )}
         </article>
       </div>
       <div id="secondary" ?hidden=${!this.submission}>
         ${(this.feedback || []).map(
           f => html`
             <div class="thread">
-              ${this.makeComment(f)}
-              ${f.replies.map(r => this.makeComment(r))}
+              ${this.makeComment(f)} ${f.replies.map(r => this.makeComment(r))}
             </div>
           `
         )}
@@ -360,28 +359,27 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   connectedCallback() {
     super.connectedCallback();
   }
-  _loadDiscussion(submissionId){
+  _loadDiscussion(submissionId) {
     console.log(submissionId);
-      /**
-       * Fires when constructed, so that parent radio group can listen for it.
-       *
-       * @event a11y-collapse-attached
-       */
-      this.dispatchEvent(
-        new CustomEvent("load-discussion", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: submissionId
-        })
-      );
+    /**
+     * Fires when constructed, so that parent radio group can listen for it.
+     *
+     * @event a11y-collapse-attached
+     */
+    this.dispatchEvent(
+      new CustomEvent("load-discussion", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: submissionId
+      })
+    );
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-    });
-    console.log("portfolio", this.portfolio,this.feedback);
+    changedProperties.forEach((oldValue, propName) => {});
+    console.log("portfolio", this.portfolio, this.feedback);
   }
   // static get observedAttributes() {
   //   return [];
