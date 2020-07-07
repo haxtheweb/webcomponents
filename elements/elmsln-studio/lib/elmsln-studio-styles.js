@@ -78,12 +78,12 @@ const ElmslnStudioStyles = function(SuperClass) {
             --elmsln-studio-link-Color: var(--accent-card-color);
             --elmsln-studio-link-TextDecoration: none !important;
           }
-          .card  elmsln-studio-link:focus,
+          .card elmsln-studio-link:focus,
           .card elmsln-studio-link:focus-within,
           .card elmsln-studio-link:hover {
             --elmsln-studio-link-TextDecoration: underline !important;
           }
-          .card elmsln-studio-link[slot="subheading"]{
+          .card elmsln-studio-link[slot="subheading"] {
             --elmsln-studio-link-FontWeight: bold;
             --elmsln-studio-link-TextDecoration: underline !important;
           }
@@ -91,7 +91,7 @@ const ElmslnStudioStyles = function(SuperClass) {
           .card elmsln-studio-link[slot="subheading"]:focus-within,
           .card elmsln-studio-link[slot="subheading"]:hover {
             --elmsln-studio-link-TextDecoration: none !important;
-          }/*
+          } /*
           accent-card button {
             padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
             background-color: transparent;

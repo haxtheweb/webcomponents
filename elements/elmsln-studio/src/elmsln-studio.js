@@ -31,7 +31,7 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   static get tag() {
     return "elmsln-studio";
   }
-  
+
   render() {
     return html`
       <iron-ajax

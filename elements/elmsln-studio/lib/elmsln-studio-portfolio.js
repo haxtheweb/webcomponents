@@ -248,7 +248,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                               ${s.links.map(
                                 link => html`
                                   <li>
-                                    <elmsln-studio-link href="${link.url}" target="_blank">
+                                    <elmsln-studio-link
+                                      href="${link.url}"
+                                      target="_blank"
+                                    >
                                       <iron-icon
                                         aria-hidden="true"
                                         icon="${link.type === "pdf"

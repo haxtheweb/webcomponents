@@ -120,7 +120,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         }
         accent-card.card th elmsln-studio-link:focus,
         accent-card.card th elmsln-studio-link:focus-within,
-        accent-card.card th elmsln-studio-link:hover{
+        accent-card.card th elmsln-studio-link:hover {
           --elmsln-studio-link-TextDecoration: none !important;
         }
         @media screen and (min-width: 600px) {

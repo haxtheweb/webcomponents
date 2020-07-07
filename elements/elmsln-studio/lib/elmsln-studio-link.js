@@ -29,7 +29,8 @@ class ElmslnStudioLink extends navigator(LitElement) {
   }
   static get styles() {
     return css`
-      a, a:link {
+      a,
+      a:link {
         position: relative;
         top: 0;
         bottom: 0;
