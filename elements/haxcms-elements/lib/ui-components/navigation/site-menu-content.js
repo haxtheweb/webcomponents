@@ -43,10 +43,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
             none
           );
           opacity: var(--haxcms-theme-parts-edit-mode-active-opacity, 0.5);
-          filter: var(
-            --haxcms-theme-parts-edit-mode-active-filter,
-            blur(1px)
-          );
+          filter: var(--haxcms-theme-parts-edit-mode-active-filter, blur(1px));
         }
         :host([hide-if-empty][is-empty]) {
           display: none !important;
