@@ -28,17 +28,18 @@ const ElmslnStudioStyles = function(SuperClass) {
             overflow: hidden;
           }
           #studio-nav {
-            display:flex;
-            align-items:stretch;
-            justify-content:center;
-            margin-bottom: var(--elmsln-studio-margin, 20px)
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            margin-bottom: var(--elmsln-studio-margin, 20px);
           }
           #studio-nav elmsln-studio-link {
             font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
             font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
             flex: 0 1 auto;
-            color: #9D9D9D;
-            padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(0.25 * var(--elmsln-studio-margin, 20px));
+            color: #9d9d9d;
+            padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
+              calc(0.25 * var(--elmsln-studio-margin, 20px));
           }
           #studio-nav elmsln-studio-link[active] {
             font-weight: bold;
@@ -144,12 +145,14 @@ const ElmslnStudioStyles = function(SuperClass) {
           }
           @media screen and (min-width: 600px) {
             #studio-nav elmsln-studio-link {
-              padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(0.5 * var(--elmsln-studio-margin, 20px));
+              padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
+                calc(0.5 * var(--elmsln-studio-margin, 20px));
             }
           }
           @media screen and (min-width: 900px) {
             #studio-nav elmsln-studio-link {
-              padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(1 * var(--elmsln-studio-margin, 20px));
+              padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
+                calc(1 * var(--elmsln-studio-margin, 20px));
             }
             #primary {
               flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));

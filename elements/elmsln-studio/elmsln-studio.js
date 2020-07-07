@@ -25,7 +25,9 @@ import "./lib/elmsln-studio-portfolio.js";
  * @lit-element
  * @demo demo/index.html
  */
-class ElmslnStudio extends router(ElmslnStudioUtilities(ElmslnStudioStyles(LitElement))) {
+class ElmslnStudio extends router(
+  ElmslnStudioUtilities(ElmslnStudioStyles(LitElement))
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -67,10 +69,25 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(ElmslnStudioStyles(LitEl
         @response="${this._portfoliosLoaded}"
       ></iron-ajax>
       <div id="studio-nav">
-        <elmsln-studio-link ?active="${this.route==="dashboard"}" href="/">Dashboard</elmsln-studio-link>
-        <elmsln-studio-link ?active="${this.route==="submissions" || this.route==="portfolios"}" href="/submissions">Submissions</elmsln-studio-link>
-        <elmsln-studio-link ?active="${this.route==="assignments"}" href="/assignments">Assignments</elmsln-studio-link>
-        <elmsln-studio-link ?active="${this.route==="activity"}" href="/activity">Activity Index</elmsln-studio-link>
+        <elmsln-studio-link ?active="${this.route === "dashboard"}" href="/"
+          >Dashboard</elmsln-studio-link
+        >
+        <elmsln-studio-link
+          ?active="${this.route === "submissions" ||
+            this.route === "portfolios"}"
+          href="/submissions"
+          >Submissions</elmsln-studio-link
+        >
+        <elmsln-studio-link
+          ?active="${this.route === "assignments"}"
+          href="/assignments"
+          >Assignments</elmsln-studio-link
+        >
+        <elmsln-studio-link
+          ?active="${this.route === "activity"}"
+          href="/activity"
+          >Activity Index</elmsln-studio-link
+        >
       </div>
       <br />
       <elmsln-studio-main active-route="${this.route}">
@@ -99,7 +116,10 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(ElmslnStudioStyles(LitEl
             this.params.portfolio,
             "portfolio-"
           )}"
-          .submission="${this._filterBy(this.discussion, this.query.submission)}"
+          .submission="${this._filterBy(
+            this.discussion,
+            this.query.submission
+          )}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
         >
@@ -197,7 +217,7 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(ElmslnStudioStyles(LitEl
     });
   }
 
-  _filterBy(lookup, query, prefix="") {
+  _filterBy(lookup, query, prefix = "") {
     return lookup && query && lookup[`${prefix}${query}`]
       ? lookup[`${prefix}${query}`]
       : {};

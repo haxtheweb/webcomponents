@@ -32,20 +32,20 @@ class ElmslnStudioButton extends navigator(LitElement) {
   }
   static get styles() {
     return css`
-    :host {
-      display: block;
-    }
-    :host([hidden]) {
-      display: none;
-    }
-    button {
-      border: none;
-      background-color: transparent;
-    }
-    button:focus,
-    button:hover {
-      outline: none;
-    }
+      :host {
+        display: block;
+      }
+      :host([hidden]) {
+        display: none;
+      }
+      button {
+        border: none;
+        background-color: transparent;
+      }
+      button:focus,
+      button:hover {
+        outline: none;
+      }
     `;
   }
   constructor() {

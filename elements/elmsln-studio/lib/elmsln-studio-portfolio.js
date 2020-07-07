@@ -66,7 +66,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         }
         .submission-header elmsln-studio-button.has-discussions {
           color: var(--simple-colors-default-theme-light-blue-3);
-
         }
         .submission-header elmsln-studio-button.has-discussions:focus,
         .submission-header elmsln-studio-button.has-discussions:hover {
@@ -74,14 +73,17 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         }
         section {
           border-top: 2px solid #eaeaea;
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0 var(--elmsln-studio-margin, 20px);
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
+            var(--elmsln-studio-margin, 20px);
         }
         .view-discussion section {
           opacity: 0.4;
         }
         .view-discussion section.section-discussion {
           border: 4px solid #95989a;
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) calc(0.5 * var(--elmsln-studio-margin, 20px)) var(--elmsln-studio-margin, 20px);
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
+            calc(0.5 * var(--elmsln-studio-margin, 20px))
+            var(--elmsln-studio-margin, 20px);
           opacity: 1;
         }
         h2 {
@@ -143,16 +145,18 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         .discussion-label {
           text-align: left;
           font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
-          margin: var(--elmsln-studio-margin, 20px) 0 calc(0.25 * var(--elmsln-studio-margin, 20px));
+          margin: var(--elmsln-studio-margin, 20px) 0
+            calc(0.25 * var(--elmsln-studio-margin, 20px));
         }
         .callout > * {
-          padding: calc(0.25 * var(--elmsln-studio-margin, 20px)) calc(0.5 * var(--elmsln-studio-margin, 20px));
+          padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
+            calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
         .callout .callout-label {
           font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
           font-weight: normal;
-          display:flex;
-          align-items:center;
+          display: flex;
+          align-items: center;
           justify-content: flex-start;
           margin: 0;
           color: #4b4b4b;
@@ -269,7 +273,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   // render function
   render() {
     return html`
-      <div id="primary" ?hidden="${!this.portfolio}" class="${this.comment && this.comment !== "" ? 'view-discussion' : ''}">
+      <div
+        id="primary"
+        ?hidden="${!this.portfolio}"
+        class="${this.comment && this.comment !== "" ? "view-discussion" : ""}"
+      >
         <article>
           <!--div class="close-view" hidden>
             <button class="close-view-button">
@@ -295,7 +303,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             ? ``
             : (this.portfolio.submissions || []).map(
                 s => html`
-                  <section class="${this.submissionFilter === s.id ? 'section-discussion' : ''}">
+                  <section
+                    class="${this.submissionFilter === s.id
+                      ? "section-discussion"
+                      : ""}"
+                  >
                     <div class="submission-header">
                       <h2 id="sub-${s.id}">
                         <span class="assignment-name">${s.assignment}</span>
@@ -355,7 +367,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
               )}
         </article>
       </div>
-      <div id="secondary" ?hidden=${!this.portfolio || !this.comment || this.comment ===""}>
+      <div
+        id="secondary"
+        ?hidden=${!this.portfolio || !this.comment || this.comment === ""}
+      >
         <aside>
           <div class="instructions callout">
             <h2 class="callout-label">
@@ -376,10 +391,13 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           </h2>
           <div class="discussion callout">
             <label class="callout-label" for="feedback">
-              <iron-icon icon="communication:comment" aria-hidden="true"></iron-icon>
+              <iron-icon
+                icon="communication:comment"
+                aria-hidden="true"
+              ></iron-icon>
               Feedback
             </label>
-            ${this.makeWrite("feedback",`sub-${this.submission.id}`)}
+            ${this.makeWrite("feedback", `sub-${this.submission.id}`)}
           </div>
           <div id="threads">
             ${(this.submission.feedback || []).map(
@@ -396,18 +414,24 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     `;
   }
 
-  makeWrite(id,describedby="",hidden=false,label) {
+  makeWrite(id, describedby = "", hidden = false, label) {
     return html`
       <div id="${id}-div" ?hidden=${hidden} class="comment-form">
-        ${label ? html`<label class="sr-only" for="${id}" >${label}</label>`: ``}
-        <textarea 
-          id="${id}" 
-          aria-desccribedby="${describedby}" 
-          class="comment-textarea"></textarea>
-        <button 
-          controls="${id}" 
-          @click="${e=>this._handleComment(id,describedby)}"
-          class="comment-submit">
+        ${label
+          ? html`
+              <label class="sr-only" for="${id}">${label}</label>
+            `
+          : ``}
+        <textarea
+          id="${id}"
+          aria-desccribedby="${describedby}"
+          class="comment-textarea"
+        ></textarea>
+        <button
+          controls="${id}"
+          @click="${e => this._handleComment(id, describedby)}"
+          class="comment-submit"
+        >
           <iron-icon icon="send" aria-hidden="true"></iron-icon>
           Submit
         </button>
@@ -440,13 +464,14 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           <p>${c.body}</p>
         </div>
         <div class="comment-footer" ?hidden="${c.feedbackId}">
-          <button 
+          <button
             controls="reply-to-${c.id}-div"
-            @click="${e=>this._handleReply(`reply-to-${c.id}`)}">
+            @click="${e => this._handleReply(`reply-to-${c.id}`)}"
+          >
             Reply
             <iron-icon icon="arrow-forward"></iron-icon>
           </button>
-          ${this.makeWrite(`reply-to-${c.id}`,c.id,true,'Write Reply')}
+          ${this.makeWrite(`reply-to-${c.id}`, c.id, true, "Write Reply")}
         </div>
       </div>
     `;
@@ -464,12 +489,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       },
       comment: {
         type: String,
-        attribute: 'comment'
+        attribute: "comment"
       },
       submissionFilter: {
         type: String,
-        attribute: 'submission-filter'
-      },
+        attribute: "submission-filter"
+      }
     };
   }
 
@@ -496,15 +521,15 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   connectedCallback() {
     super.connectedCallback();
   }
-  _handleReply(replyform){
+  _handleReply(replyform) {
     let form = this.shadowRoot.querySelector(`#${replyform}-div`),
       button = this.shadowRoot.querySelector(`[controls=${replyform}]`);
-    console.log('_handleComment',replyform,form,button);
+    console.log("_handleComment", replyform, form, button);
   }
-  _handleComment(id,target){
+  _handleComment(id, target) {
     let form = this.shadowRoot.querySelector(`#${id}`),
       parent = this.shadowRoot.querySelector(`#${target}`);
-    console.log('_handleComment',id,target,form,parent);
+    console.log("_handleComment", id, target, form, parent);
   }
 
   updated(changedProperties) {
