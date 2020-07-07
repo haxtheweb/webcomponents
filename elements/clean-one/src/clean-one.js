@@ -1209,7 +1209,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
                   <site-search
                     hide-input
                     search="${this.searchTerm}"
-                    @search-item-selected="${this.searchItemSelected}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
                   <div
@@ -1242,10 +1241,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
       </div>
     `;
   }
-  searchItemSelected(e) {
-    // an item was picked, let's just make the UI jump to that item
-    this.searchTerm = "";
-  }
+
   searchChanged(e) {
     if (e.path[0].value) {
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
@@ -1304,7 +1300,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
     this.hideSettings = true;
     this.fontSize = 1;
     this.fontFamily = 0;
-    this.searchTerm = "";
     this.colorTheme = 0;
     this.withMenu = "with-menu";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
@@ -1316,6 +1311,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun(reaction => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
+      this.searchTerm = "";
       this.__disposer.push(reaction);
     });
     this.addEventListener("click", this.checkMenuOpen.bind(this));
