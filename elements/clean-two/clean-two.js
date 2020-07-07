@@ -207,7 +207,7 @@ class CleanTwo extends HAXCMSThemeParts(
           font-size: 16px;
           color: #3B454E;
           background-color: #ffffff;
-          width: 100%;
+          width: auto;
           margin: 0 auto;
           display: flex;
           padding: 0;
@@ -227,7 +227,7 @@ class CleanTwo extends HAXCMSThemeParts(
           display: -webkit-flex;
           display: flex;
         }
-        @media screen and (max-width: 1024px) {
+
           :host([is-logged-in]) .body-wrapper.with-menu nav {
             margin-left: 48px;
           }
@@ -236,15 +236,14 @@ class CleanTwo extends HAXCMSThemeParts(
           }
           :host .body-wrapper .content-wrapper {
             margin-left: 48px;
-            margin-right: 48px;
             width: auto;
           }
           .body-wrapper .content-wrapper .content {
             width: auto;
             margin: 0;
-            padding: 32px;
+            padding: 32px 64px;
           }
-        }
+        
         nav {
           display: -webkit-box;
           display: -moz-box;
@@ -332,6 +331,11 @@ class CleanTwo extends HAXCMSThemeParts(
         @media screen and (min-width: 1024px) {
           .content-wrapper {
             margin: 0px 88px;
+          }
+        }
+        @media screen and (min-width: 1514px) {
+          .body-wrapper .content-wrapper .content {
+            padding: 32px;
           }
         }
         .content {
@@ -538,10 +542,6 @@ class CleanTwo extends HAXCMSThemeParts(
               </div>
               <div class="footer-right">
                 <site-print-button
-                  class="btn js-toolbar-action"
-                ></site-print-button>
-                <site-print-button
-                  type="site"
                   class="btn js-toolbar-action"
                 ></site-print-button>
                 <site-rss-button type="rss"></site-rss-button>

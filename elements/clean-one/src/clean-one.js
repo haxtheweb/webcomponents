@@ -166,8 +166,9 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           display: none;
         }
         .btn-container {
-          position: fixed;
           z-index: 2;
+          height: 50px;
+          padding: 6px;
         }
         site-menu {
           height: auto;
@@ -191,7 +192,10 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site.color-theme-0 paper-icon-button,
         .site.color-theme-0 site-rss-button,
-        .site.color-theme-0 site-print-button {
+        .site.color-theme-0 site-print-button,
+        .site.color-theme-0 site-git-corner {
+          --site-git-corner-background: #252737;
+          --site-git-corner-color: #F5F5F5;
           --iron-icon-fill-color: #252737;
           --haxcms-tooltip-color: #F5F5F5;
           --haxcms-tooltip-background-color: #252737;
@@ -203,23 +207,26 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site.color-theme-1 site-menu {
           --site-menu-active-color: #1C1C1C;
-          --site-menu-item-active-item-color: #704214;
+          --site-menu-item-active-item-color: #eee8e0;
           --haxcms-tooltip-color: #f3eacb;
-          --haxcms-tooltip-background-color: #704214;
+          --haxcms-tooltip-background-color: #eee8e0;
         }
         .site.color-theme-1 simple-tooltip {
-          --simple-tooltip-background:#704214;
+          --simple-tooltip-background:#eee8e0;
           --simple-tooltip-text-color:#f3eacb;
         }
         .site.color-theme-1 scroll-button {
-          --scroll-button-color: #704214;
+          --scroll-button-color: #eee8e0;
           --scroll-button-background-color: #f3eacb;
           --scroll-button-tooltip-background-color:#704214;
           --scroll-button-tooltip-color:#f3eacb;
         }
         .site.color-theme-1 paper-icon-button,
         .site.color-theme-1 site-rss-button,
-        .site.color-theme-1 site-print-button {
+        .site.color-theme-1 site-print-button,
+        .site.color-theme-1 site-git-corner {
+          --site-git-corner-background: #704214;
+          --site-git-corner-color: #f3eacb;
           --iron-icon-fill-color: #704214;
           --haxcms-tooltip-color: #f3eacb;
           --haxcms-tooltip-background-color: #704214;
@@ -241,7 +248,10 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site.color-theme-2 paper-icon-button,
         .site.color-theme-2 site-rss-button,
-        .site.color-theme-2 site-print-button {
+        .site.color-theme-2 site-print-button,
+        .site.color-theme-2 site-git-corner {
+          --site-git-corner-background: #a6a6a6;
+          --site-git-corner-color: #252737;
           --iron-icon-fill-color: #a6a6a6;
           --haxcms-tooltip-color: #a6a6a6;
           --haxcms-tooltip-background-color: #252737;
@@ -457,7 +467,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           top: 0;
           left: 0;
           right: 0;
-          margin: 0;
+          margin: 10px 200px;
           font-size: 20px;
           font-weight: 200;
           text-align: center;
@@ -467,8 +477,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           -moz-transition: opacity ease .4s;
           -o-transition: opacity ease .4s;
           transition: opacity ease .4s;
-          padding-left: 200px;
-          padding-right: 200px;
           -webkit-transition: opacity .2s ease;
           -moz-transition: opacity .2s ease;
           -o-transition: opacity .2s ease;
@@ -479,6 +487,11 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site-header site-active-title h1:hover {
           opacity: 1;
+        }
+        @media (max-width: 700px){
+          .link-actions {
+            display: none;
+          }
         }
         @media (max-width: 1000px){
           .site-header site-active-title {
@@ -604,7 +617,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           .color-theme-1 .dropdown-menu .button:hover,
           .color-theme-1 .dropdown-menu .button:focus,
           .color-theme-1 .dropdown-menu .button:active {
-            color: #73553c;
+            color: #eee8e0;
           }
           /*
           * Theme 2
@@ -862,12 +875,12 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
             background: transparent;
           }
           .site.color-theme-1 .site-header .btn {
-            color: #afa790;
+            color: #eee8e0;
           }
           .site.color-theme-1 .site-header .btn:hover,
           .site.color-theme-1 .site-header .btn:focus,
           .site.color-theme-1 .site-header .btn:active {
-            color: #73553c;
+            color: #eee8e0;
             background: none;
           }
           .site.color-theme-1 .site-header site-active-title {
@@ -895,7 +908,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           .site.color-theme-1 .site-body .navigation:hover,
           .site.color-theme-1 .site-body .navigation:focus,
           .site.color-theme-1 .site-body .navigation:active {
-            color: #73553c;
+            color: #eee8e0;
           }
           .site.color-theme-2 .site-body .navigation {
             color: #383f52;
@@ -977,7 +990,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
             right: 16px;
           }
           .link-actions {
-            position: fixed;
             top: 0;
             right: 16px;
           }
@@ -1183,10 +1195,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
                 </simple-popover>
                 <div class="pull-right link-actions">
                   <site-print-button
-                    class="btn js-toolbar-action"
-                  ></site-print-button>
-                  <site-print-button
-                    type="site"
                     class="btn js-toolbar-action"
                   ></site-print-button>
                   <site-rss-button type="rss"></site-rss-button>
