@@ -170,22 +170,18 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           justify-content: space-between;
           color: #95989a;
         }
-        accent-card a:link,
-        accent-card button {
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          background-color: transparent;
+        accent-card.card.submission-card elmsln-studio-link {
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
           text-align: left;
-          text-decoration: none;
-          color: #95989a;
+          --elmsln-studio-link-Color: #7e7e7e;
         }
-        accent-card a:focus,
-        accent-card a:hover,
-        accent-card button:focus,
-        accent-card button:hover {
-          text-decoration: underline;
+        accent-card.card.submission-card elmsln-studio-link:focus,
+        accent-card.card.submission-card elmsln-studio-link:focus-within,
+        accent-card.card.submission-card elmsln-studio-link:hover {
+          --elmsln-studio-link-Color: #95989a;
+          --elmsln-studio-link-TextDecoration: none !important;
         }
-        accent-card a:link:last-child,
-        accent-card button:last-child {
+        accent-card.card.submission-card elmsln-studio-link:last-child {
           text-align: right;
         }
         #secondary {
@@ -290,6 +286,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             s => html`
               <accent-card
                 no-border
+                class="card submission-card"
                 image-src="${s.image && s.image.src ? s.image.src : ""}"
                 ?horizontal="${s.feature || !this.grid ? true : false}"
                 image-align="${this._getAlign(
@@ -323,20 +320,20 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   ${s.feature}
                 </div>
                 <div slot="footer">
-                  <a
+                  <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
                     href="${s.link}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
-                  </a>
-                  <a
+                  </elmsln-studio-link>
+                  <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
                     href="${s.link}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
-                  </a>
+                  </elmsln-studio-link>
                 </div>
               </accent-card>
             `
@@ -366,14 +363,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   icon="chevron-right"
                   initials="${this.fullName(f)}"
                 >
-                  <a
+                  <elmsln-studio-link
                     id="comment-${f.id}"
                     aria-describedby="comment-${f.id}-desc"
                     slot="label"
                     href="${f.link}"
                   >
                     ${f.title}
-                  </a>
+                  </elmsln-studio-link>
                   <span id="comment-${f.id}" slot="description">
                     ${this.dateFormat(f.date)}
                   </span>

@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
+import "./elmsln-studio-link.js";
 
 /**
  * `elmsln-studio-dashboard`
@@ -57,20 +58,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           color: #95989a;
           --accent-card-footer-border-color: transparent;
         }
-        .card a:link {
-          color: var(--accent-card-color);
-          font-style: normal;
-        }
-        .card a[slot="subheading"]:link,
         .card [slot="subheading"] {
           font-weight: bold;
-          text-decoration: underline;
           border: none;
           font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
-        }
-        .card [slot="subheading"]:focus,
-        .card [slot="subheading"]:hover {
-          text-decoration: none;
         }
         .card.primary [slot="heading"],
         .card.primary [slot="subheading"] {
@@ -124,15 +115,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         accent-card td {
           text-align: right;
         }
-        nav-card button,
-        accent-card button {
-          background-color: transparent;
+        accent-card.card th elmsln-studio-link {
+          --elmsln-studio-link-TextDecoration: underline !important;
         }
-        accent-card button,
-        .linklist button {
-          border: none;
-          padding: 0;
-          text-align: left;
+        accent-card.card th elmsln-studio-link:focus,
+        accent-card.card th elmsln-studio-link:focus-within,
+        accent-card.card th elmsln-studio-link:hover{
+          --elmsln-studio-link-TextDecoration: none !important;
         }
         @media screen and (min-width: 600px) {
           #profile {
@@ -214,11 +203,11 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                 </tr>
                 <tr>
                   <th scope="row">
-                    <a href="/submissions${
+                    <elmsln-studio-link href="/submissions${
                       !this.profile ? "" : `?student=${this.profile.id}`
                     }">
                       Total Submissions
-                    </a>
+                    </elmsln-studio-link>
                   </th>
                   <td>
                     ${
@@ -255,13 +244,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   : (this.profile.workDue || []).slice(0, 5).map(
                       a => html`
                         <nav-card-item icon="chevron-right">
-                          <a
+                          <elmsln-studio-link
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"
                             slot="label"
                           >
                             ${a.title}
-                          </a>
+                          </elmsln-studio-link>
                           <span id="due-${a.id}-desc" slot="description"
                             >${this.dateFormat(a.date, "long")}</span
                           >
@@ -280,9 +269,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             link-icon="chevron-right"
           >
             <span slot="heading">Submissions</span>
-            <a slot="subheading" href="/submissions${
+            <elmsln-studio-link slot="subheading" href="/submissions${
               !this.profile ? "" : `?student=${this.profile.id}`
-            }">All submissions</a>
+            }">All submissions</elmsln-studio-link>
             <div slot="linklist">
               ${
                 !this.profile
@@ -290,14 +279,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   : (this.profile.submissions || []).slice(0, 5).map(
                       s => html`
                         <nav-card-item icon="chevron-right">
-                          <a
+                          <elmsln-studio-link
                             id="sub-${s.id}"
                             aria-describedby="sub-${s.id}-desc"
                             slot="label"
                             href="${s.link}"
                           >
                             ${s.title}
-                          </a>
+                          </elmsln-studio-link>
                           <span id="sub-${s.id}-desc" slot="description"
                             >${this.dateFormat(s.date)}</span
                           >
@@ -313,7 +302,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             link-icon="chevron-right"
           >
             <span slot="heading">Feedback</span>
-            <a slot="subheading">All feedback</a>
+            <elmsln-studio-link slot="subheading">All feedback</elmsln-studio-link>
             <div slot="linklist">
               ${
                 !this.profile
@@ -321,14 +310,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   : (this.profile.feedbackFor || []).slice(0, 5).map(
                       f => html`
                         <nav-card-item icon="chevron-right">
-                          <a
+                          <elmsln-studio-link
                             id="feed-${f.id}"
                             aria-describedby="feed-${f.id}-desc"
                             slot="label"
                             href="${f.link}"
                           >
                             ${f.title}
-                          </a>
+                          </elmsln-studio-link>
                           <span id="feed-${f.id}-desc" slot="description"
                             >${this.dateFormat(f.date)}</span
                           >
@@ -357,14 +346,14 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   icon="chevron-right"
                   .initials="${a.name}"
                 >
-                  <a
+                  <elmsln-studio-link
                     id="act-${a.id}"
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
                     href="${a.link}"
                   >
                     ${a.title}
-                  </a>
+                  </elmsln-studio-link>
                   <div id="act-${a.id}-desc" slot="description">
                     ${this.dateFormat(a.date)}
                   </div>

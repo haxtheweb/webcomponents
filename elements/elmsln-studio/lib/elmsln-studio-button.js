@@ -24,7 +24,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
 
   static get properties() {
     return {
-      href: { type: String }
+      path: { type: String }
     };
   }
   static get styles() {
@@ -44,18 +44,18 @@ class ElmslnStudioLink extends navigator(LitElement) {
   }
   constructor() {
     super();
-    this.href = "";
+    this.path = "";
   }
   render() {
     return html`
-      <a href="${this.href}" @click="${this.linkClick}">
+      <button @click="${this.buttonClick}">
         <slot></slot>
-      </a>
+      </button>
     `;
   }
-  linkClick(event) {
+  buttonClick(event) {
     event.preventDefault();
-    this.navigate(this.href);
+    this.navigate(this.path);
   }
 }
 customElements.define("elmsln-studio-link", ElmslnStudioLink);

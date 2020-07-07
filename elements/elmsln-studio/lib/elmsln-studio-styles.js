@@ -74,6 +74,24 @@ const ElmslnStudioStyles = function(SuperClass) {
           accent-card [slot="image-corner"]:hover {
             background-color: rgba(0, 0, 0, 0.5);
           }
+          .card elmsln-studio-link {
+            --elmsln-studio-link-Color: var(--accent-card-color);
+            --elmsln-studio-link-TextDecoration: none !important;
+          }
+          .card  elmsln-studio-link:focus,
+          .card elmsln-studio-link:focus-within,
+          .card elmsln-studio-link:hover {
+            --elmsln-studio-link-TextDecoration: underline !important;
+          }
+          .card elmsln-studio-link[slot="subheading"]{
+            --elmsln-studio-link-FontWeight: bold;
+            --elmsln-studio-link-TextDecoration: underline !important;
+          }
+          .card elmsln-studio-link[slot="subheading"]:focus,
+          .card elmsln-studio-link[slot="subheading"]:focus-within,
+          .card elmsln-studio-link[slot="subheading"]:hover {
+            --elmsln-studio-link-TextDecoration: none !important;
+          }/*
           accent-card button {
             padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
             background-color: transparent;
@@ -84,7 +102,16 @@ const ElmslnStudioStyles = function(SuperClass) {
           accent-card button:last-child {
             text-align: right;
           }
-          .load-more {
+          accent-card button {
+            text-align: left;
+            text-decoration: none;
+            color: #95989a;
+          }
+          accent-card button:focus,
+          accent-card button:hover {
+            color: #95989a;
+          }*/
+          button.load-more {
             text-align: center;
             display: block;
             padding: 10px;
@@ -95,8 +122,8 @@ const ElmslnStudioStyles = function(SuperClass) {
             color: var(--simple-colors-default-theme-grey11, #222);
             width: 100%;
           }
-          .load-more:focus,
-          .load-more:hover {
+          button.load-more:focus,
+          button.load-more:hover {
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
             color: var(--simple-colors-default-theme-grey12, #000);
           }

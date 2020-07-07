@@ -31,6 +31,78 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   static get tag() {
     return "elmsln-studio";
   }
+  
+  render() {
+    return html`
+      <iron-ajax
+        auto
+        url="${this.profileSource}"
+        handle-as="json"
+        @response="${this._profileLoaded}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.activitySource}"
+        handle-as="json"
+        @response="${this._activityLoaded}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.submissionsSource}"
+        handle-as="json"
+        @response="${this._submissionsLoaded}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.discussionSource}"
+        handle-as="json"
+        @response="${this._discussionLoaded}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.portfoliosSource}"
+        handle-as="json"
+        @response="${this._portfoliosLoaded}"
+      ></iron-ajax>
+      <p>
+        <elmsln-studio-link href="/">Dashboard</elmsln-studio-link>
+        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
+      </p>
+      <br />
+      <elmsln-studio-main active-route="${this.route}">
+        <elmsln-studio-dashboard
+          route="dashboard"
+          .profile="${this.profile || {}}"
+          .activity="${this.activity || []}"
+          route="dashboard"
+        >
+        </elmsln-studio-dashboard>
+        <elmsln-studio-submissions
+          route="submissions"
+          .submissions="${this.submissions}"
+          .comments="${Object.keys(this.discussion || {})
+            .map(i => this.discussion[i].feedback)
+            .flat()}"
+          ?grid="${this.query.grid || false}"
+          student-filter="${this.query.student || ""}"
+          assignment-filter="${this.query.assignment || ""}"
+        >
+        </elmsln-studio-submissions>
+        <elmsln-studio-portfolio
+          route="portfolios"
+          .portfolio="${this._filterBy(
+            this.portfolios,
+            this.params.portfolio,
+            "portfolio-"
+          )}"
+          .feedback="${this._filterBy(this.discussions, this.query.submission)
+            .feedback || []}"
+          .discussion-filter="${this.query.submission || ""}"
+        >
+        </elmsln-studio-portfolio>
+      </elmsln-studio-main>
+    `;
+  }
 
   static get properties() {
     return {
@@ -149,102 +221,6 @@ class ElmslnStudio extends router(ElmslnStudioUtilities(LitElement)) {
   _portfoliosLoaded(e) {
     console.log("_portfoliosLoaded", e.detail.__data.response);
     this.portfolios = e.detail.__data.response;
-  }
-
-  render() {
-    return html`
-      <link
-        ref="//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet"
-      />
-      <iron-ajax
-        auto
-        url="${this.profileSource}"
-        handle-as="json"
-        @response="${this._profileLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.activitySource}"
-        handle-as="json"
-        @response="${this._activityLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.submissionsSource}"
-        handle-as="json"
-        .last-response="${this.submissions}"
-        @response="${this._submissionsLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.discussionSource}"
-        handle-as="json"
-        .last-response="${this.discussion}"
-        @response="${this._discussionLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.portfoliosSource}"
-        handle-as="json"
-        .last-response="${this.portfolios}"
-        @response="${this._portfoliosLoaded}"
-      ></iron-ajax>
-      <p>
-        <elmsln-studio-link href="/">Dashboard</elmsln-studio-link>
-        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
-        <!--
-        data-params="${JSON.stringify(this.params)}"
-
-        <elmsln-studio-link href="/submissions?student=kmk5124"
-          >Submissions by kmk5124</elmsln-studio-link
-        >
-      <textarea> ${JSON.stringify(this.profile || {})} </textarea>
-        <elmsln-studio-link
-          href="/submissions?assignment=assignment-1&student=kmk5124"
-          >Submissions for Assignment 1 by kmk5124</elmsln-studio-link
-        >
-        <elmsln-studio-link href="/portfolios/kmk5124-project-0"
-          >kmk5124-project-0</elmsln-studio-link
-        >
-          .feedback="${this._filterBy(this.discussion, this.query.discussion)}"
-        <elmsln-studio-link href="/portfolios">portfolios</elmsln-studio-link-->
-      </p>
-      <br />
-      <elmsln-studio-main active-route="${this.route}">
-        <elmsln-studio-dashboard
-          route="dashboard"
-          .profile="${this.profile || {}}"
-          .activity="${this.activity || []}"
-          route="dashboard"
-        >
-        </elmsln-studio-dashboard>
-        <elmsln-studio-submissions
-          route="submissions"
-          .submissions="${this.submissions}"
-          .comments="${Object.keys(this.discussion)
-            .map(i => this.discussion[i].feedback)
-            .flat()}"
-          ?grid="${this.query.grid || false}"
-          student-filter="${this.query.student || ""}"
-          assignment-filter="${this.query.assignment || ""}"
-        >
-        </elmsln-studio-submissions>
-        <elmsln-studio-portfolio
-          route="portfolios"
-          .portfolio="${this._filterBy(
-            this.portfolios,
-            this.params.portfolio,
-            "portfolio-"
-          )}"
-          .feedback="${this._filterBy(this.discussions, this.query.submission)
-            .feedback || []}"
-          .discussion-filter="${this.query.submission || ""}"
-        >
-        </elmsln-studio-portfolio>
-      </elmsln-studio-main>
-      <a href="${this.discussionSource}" target="_blank">Studio</a>
-    `;
   }
 }
 customElements.define(ElmslnStudio.tag, ElmslnStudio);

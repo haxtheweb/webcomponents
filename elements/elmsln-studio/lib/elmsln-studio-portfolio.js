@@ -227,7 +227,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                       >
                     </h2>
                     <div class="view-discussions">
-                      <a
+                      <elmsln-studio-link
                         class="view-discussion-button ${s.feedback.length < 1
                           ? ""
                           : "has-discussions"}"
@@ -239,7 +239,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                           icon="communication:comment"
                         ></iron-icon>
                         <span class="sr-only">View Comments</span>
-                      </a>
+                      </elmsln-studio-link>
                     </div>
                     <div class="submission-body">
                       ${s.links && s.links.length > 0
@@ -248,7 +248,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                               ${s.links.map(
                                 link => html`
                                   <li>
-                                    <a href="${link.url}" target="_blank">
+                                    <elmsln-studio-link href="${link.url}" target="_blank">
                                       <iron-icon
                                         aria-hidden="true"
                                         icon="${link.type === "pdf"
@@ -256,7 +256,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                           : "link"}"
                                       ></iron-icon>
                                       ${link.text || link.url}
-                                    </a>
+                                    </elmsln-studio-link>
                                   </li>
                                 `
                               )}
