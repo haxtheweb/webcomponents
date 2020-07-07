@@ -82,6 +82,9 @@ class CleanTwo extends HAXCMSThemeParts(
         :host([hidden]) {
           display: none;
         }
+        [hidden] {
+          display: none !important;
+        }
         .link-actions {
           margin: 0;
           display: block;
@@ -327,6 +330,7 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         .content #menubtn {
           float: left;
+          margin-left: -8px
         }
         @media screen and (min-width: 1024px) {
           .content-wrapper {
@@ -335,7 +339,7 @@ class CleanTwo extends HAXCMSThemeParts(
         }
         @media screen and (min-width: 1514px) {
           .body-wrapper .content-wrapper .content {
-            padding: 32px;
+            padding: 32px 64px;
           }
         }
         .content {
@@ -473,22 +477,25 @@ class CleanTwo extends HAXCMSThemeParts(
         </div>
         <div class="content-wrapper">
           <div class="content">
-            ${this.responsiveSize != "xl"
-              ? html`
-                  <div class="header">
-                    <paper-icon-button
-                      .part="${this.editMode ? `edit-mode-active` : ``}"
-                      icon="icons:menu"
-                      id="menubtn"
-                      @click="${this.toggleMenu}"
-                    ></paper-icon-button>
-                    <site-menu-content
-                      .part="${this.editMode ? `edit-mode-active` : ``}"
-                      mobile
-                    ></site-menu-content>
-                  </div>
-                `
-              : ``}
+            <div class="header">
+              <paper-icon-button
+                .part="${this.editMode ? `edit-mode-active` : ``}"
+                icon="icons:menu"
+                id="menubtn"
+                aria-label="Toggle menu"
+                @click="${this.toggleMenu}"
+              ></paper-icon-button>
+              <simple-tooltip
+                for="menubtn"
+              >
+                Toggle menu
+              </simple-tooltip>
+              <site-menu-content
+                ?hidden="${this.responsiveSize == "xl" ? true : false}"
+                .part="${this.editMode ? `edit-mode-active` : ``}"
+                mobile
+              ></site-menu-content>
+            </div>
             <site-active-title></site-active-title>
             <site-search
               hide-input

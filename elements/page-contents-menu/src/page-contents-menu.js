@@ -27,6 +27,12 @@ class PageContentsMenu extends LitElement {
         [hidden] {
           display: none;
         }
+        :host([mobile]) .wrapper,
+        :host([mobile]) .header,
+        :host([mobile]) .header .svg {
+          padding: 0;
+          margin: 0;
+        }
         .wrapper {
           display: inline-block;
           padding: 8px;
