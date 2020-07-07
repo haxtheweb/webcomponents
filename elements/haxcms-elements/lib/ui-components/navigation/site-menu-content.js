@@ -5,7 +5,7 @@ import { css } from "lit-element/lit-element.js";
 
 class SiteMenuContent extends PageContentsMenu {
   static get tag() {
-    return 'site-menu-content'
+    return "site-menu-content";
   }
   constructor() {
     super();
@@ -14,27 +14,33 @@ class SiteMenuContent extends PageContentsMenu {
     autorun(reaction => {
       this.contentContainer = toJS(store.themeElement);
       setTimeout(() => {
-        this.updateMenu();        
+        this.updateMenu();
       }, 10);
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
       let content = toJS(store.activeItemContent);
       setTimeout(() => {
-        this.updateMenu();        
+        this.updateMenu();
       }, 10);
       this.__disposer.push(reaction);
     });
   }
   static get styles() {
-    return [...super.styles, css`
-      :host {
-        --page-contents-menu-link-hover:  var(--haxcms-color, var(--simple-colors-default-theme-purple-7));
-      }
-      :host([hide-if-empty][is-empty]) {
-        display: none !important;
-      }
-    `]
+    return [
+      ...super.styles,
+      css`
+        :host {
+          --page-contents-menu-link-hover: var(
+            --haxcms-color,
+            var(--simple-colors-default-theme-purple-7)
+          );
+        }
+        :host([hide-if-empty][is-empty]) {
+          display: none !important;
+        }
+      `
+    ];
   }
 }
 

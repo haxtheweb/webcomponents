@@ -21,7 +21,9 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSThemeParts(ResponsiveUtilityBehaviors(HAXCMSLitElementTheme)) {
+class CleanTwo extends HAXCMSThemeParts(
+  ResponsiveUtilityBehaviors(HAXCMSLitElementTheme)
+) {
   //styles function
   static get styles() {
     return [
@@ -460,24 +462,26 @@ class CleanTwo extends HAXCMSThemeParts(ResponsiveUtilityBehaviors(HAXCMSLitElem
   render() {
     return html`
       <div class="body-wrapper ${this.withMenu}">
-      <div class="left-col">
+        <div class="left-col">
           <nav id="nav" role="navigation" aria-labelledby="leftnavheading">
             <site-menu id="leftnavheading"></site-menu>
           </nav>
         </div>
         <div class="content-wrapper">
           <div class="content">
-            ${this.responsiveSize != 'xl' ? html`
-            <div class="header">
-              <paper-icon-button
-                .part="${this.editMode ? `edit-mode-active` : ``}"
-                icon="icons:menu"
-                id="menubtn"
-                @click="${this.toggleMenu}"
-              ></paper-icon-button>
-              <site-menu-content mobile></site-menu-content>
-            </div>
-            ` : ``}
+            ${this.responsiveSize != "xl"
+              ? html`
+                  <div class="header">
+                    <paper-icon-button
+                      .part="${this.editMode ? `edit-mode-active` : ``}"
+                      icon="icons:menu"
+                      id="menubtn"
+                      @click="${this.toggleMenu}"
+                    ></paper-icon-button>
+                    <site-menu-content mobile></site-menu-content>
+                  </div>
+                `
+              : ``}
             <site-active-title></site-active-title>
             <site-search
               hide-input
@@ -523,7 +527,7 @@ class CleanTwo extends HAXCMSThemeParts(ResponsiveUtilityBehaviors(HAXCMSLitElem
             </div>
             <div class="footer">
               <div class="footer-left">
-                Last updated  
+                Last updated
                 <simple-datetime
                   unix
                   .timestamp="${this.pageTimestamp}"
@@ -543,11 +547,15 @@ class CleanTwo extends HAXCMSThemeParts(ResponsiveUtilityBehaviors(HAXCMSLitElem
             </div>
           </div>
         </div>
-        ${this.responsiveSize == 'xl' ? html`<div class="right-col">
-          <div class="site-menu-content-wrapper">
-            <site-menu-content></site-menu-content>
-          </div>
-        </div>` : ``}
+        ${this.responsiveSize == "xl"
+          ? html`
+              <div class="right-col">
+                <div class="site-menu-content-wrapper">
+                  <site-menu-content></site-menu-content>
+                </div>
+              </div>
+            `
+          : ``}
       </div>
     `;
   }
@@ -566,7 +574,7 @@ class CleanTwo extends HAXCMSThemeParts(ResponsiveUtilityBehaviors(HAXCMSLitElem
         type: String
       },
       withMenu: {
-        type: String,
+        type: String
       },
       prevPage: {
         type: String
@@ -602,7 +610,11 @@ class CleanTwo extends HAXCMSThemeParts(ResponsiveUtilityBehaviors(HAXCMSLitElem
     });
 
     autorun(reaction => {
-      if (store.activeItem && store.activeItem.metadata && store.activeItem.metadata.updated) {
+      if (
+        store.activeItem &&
+        store.activeItem.metadata &&
+        store.activeItem.metadata.updated
+      ) {
         this.pageTimestamp = toJS(store.activeItem.metadata.updated);
       }
       this.__disposer.push(reaction);
