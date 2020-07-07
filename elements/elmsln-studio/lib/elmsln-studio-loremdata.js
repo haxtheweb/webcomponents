@@ -10,6 +10,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
  * Generates fake data for ELMS:LN Studio
  *
  * @customElement elmsln-studio-loremdata
+ * @demo demo/loremdata.html
  * @lit-html
  * @lit-element
  */
@@ -23,10 +24,15 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
   static get properties() {
     return {
-      activities: {
+      /* view all activity */
+      activity: {
         type: Object
       },
       assignments: {
+        type: Object
+      },
+      /* discussion (feedback and replies) by submission id */
+      discussion: {
         type: Object
       },
       endDate: {
@@ -44,11 +50,19 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       paragraphs: {
         type: Array
       },
+      /* user profile for dashboard */
+      profile: {
+        type: Object
+      },
       projects: {
         type: Object
       },
+      /* raw portfolio data */
       portfolios: {
         type: Object
+      },
+      ready: {
+        type: Boolean
       },
       sentences: {
         type: Array
@@ -59,11 +73,9 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       students: {
         type: Object
       },
+      /* raw submission data */
       submissions: {
         type: Object
-      },
-      target: {
-        type: String
       },
       users: {
         type: Object
@@ -79,6 +91,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       }
     };
   }
+
   constructor() {
     super();
     this.projects = {
@@ -202,31 +215,34 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     ];
     this.refreshData();
   }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (["target", "users", "projects", "paragraphs"].includes(propName)) {
-        this.refreshData();
-      }
-    });
+  static get styles() {
+    return [
+      css`
+        label {
+          font-size: 200%;
+          margin-top: 15px;
+        }
+        textarea {
+          width: 100%;
+          height: 150px;
+          margin-bottom: 15px;
+        }
+      `
+    ];
   }
-  get projectsList() {
-    return this.toArray(this.projects);
-  }
-  get assignmentsList() {
-    return this.toArray(this.assignments);
-  }
-  get portfoliosList() {
-    return this.toArray(this.portfolios);
-  }
-  get submissionsList() {
-    return this.toArray(this.submissions);
-  }
-  get feedbackList() {
-    return this.toArray(this.feedback);
-  }
-  get repliesList() {
-    return this.toArray(this.replies);
+  render(){
+    return html`
+      <label>profile</label>
+      <textarea>${JSON.stringify(this.profile)}</textarea><br>
+      <label>activity</label>
+      <textarea>${JSON.stringify(this.activity)}</textarea><br>
+      <label>submissions</label>
+      <textarea>${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea><br>
+      <label>portfolios</label>
+      <textarea>${JSON.stringify(this.portfolios)}</textarea><br>
+      <label>discussion</label>
+      <textarea>${JSON.stringify(this.discussion)}</textarea><br>
+    `;
   }
   /**
    * draws x-y items from shuffled array
@@ -296,11 +312,18 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         studentId,
         this.nextDate(created, i, studentsList.length, 7)
       );
-      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(
-        sid
-      );
+      this.portfolios[`portfolio-${studentId}-${projectId}`].submissions.push(this.submissions[sid]);
       return sid;
     });
+    if(studentsList.includes(this.userId)) {
+      this.profile.assignmentsCompleted++;
+    } else {
+      this.profile.workDue.push({
+        id: id,
+        title: this.assignments[id].assignment,
+        date: this.assignments[id].date
+      });
+    }
     return this.assignments[id];
   }
   /**
@@ -348,46 +371,40 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     let id = `feedback-${Object.keys(this.feedback).length}`,
       replies = Math.floor(Math.random() * 4);
     this.feedback[id] = this.makeComment(id, submissionId, reviewerId, created);
-
+    this.feedback[id].link = this.feedbackLink(this.feedback[id]);
     this.feedback[id].replies = [];
     for (let i = 0; i < replies; i++) {
-      let reply = this.makeReply(
+      let commenterId = this.randomItem(Object.keys(this.students)),
+        reply = this.makeReply(
         id,
-        this.randomItem(Object.keys(this.students)),
+        commenterId,
         this.nextDate(created, i, replies, 3)
       );
       this.replies[reply].feedbackId = id;
       this.replies[reply].feedbackFirstName = this.feedback[id].firstName;
       this.replies[reply].feedbackLastName = this.feedback[id].firstName;
       this.replies[reply].feedbackAvatar = this.feedback[id].avatar;
+      this.replies[reply].link = this.replyLink(this.replies[reply]);
       this.feedback[id].replies.push(reply);
+      if(reviewerId === this.userId) this.profile.repliesFor.push({
+        id: reply,
+        title: this.replyTitle(this.replies[reply]),
+        link: this.replies[reply].link,
+        name: this.fullName(this.replies[reply]),
+        avatar: this.replies[reply].avatar
+      });
+      if(commenterId === this.userId) this.profile.repliesBy++;
     }
+    if(reviewerId === this.userId) this.profile.feedbackBy++;
+    if(this.submissions[submissionId].userId === this.userId) this.profile.feedbackFor.push({
+      id: id,
+      title: `${this.fullName(this.feedback[id])}'s feedback on ${this.submissions[submissionId].assignment}`,
+      link: this.feedback[id].link,
+      name: this.fullName(this.feedback[id]),
+      avatar: this.feedback[id].avatar,
+      date: this.feedback[id].date
+    });
     return id;
-  }
-  /**
-   * makes user profile data
-   * @returns {object}
-   */
-  makeProfile(userId) {
-    let profile = this.users[userId];
-    profile.assignments = this.assignmentsList;
-    profile.submissions = this.submissionsList.filter(i => i.userId === userId);
-    profile.feedbackFor = profile.submissions
-      .map(submission => submission.feedback.map(i => this.feedback[i]))
-      .flat();
-    profile.repliesBy = this.repliesList.filter(i => i.userId === userId);
-    profile.feedbackBy = this.feedbackList.filter(i => i.userId === userId);
-    profile.repliesFor = profile.feedbackBy
-      .map(feedback => feedback.replies.map(i => this.replies[i]))
-      .flat();
-    let assignments = profile.submissions.map(
-      i => this.assignments[i.assignmentId].id
-    );
-    profile.assignmentsCompleted = [...new Set(assignments.flat())];
-    profile.workDue = this.assignmentsList.filter(
-      i => !(profile.assignmentsCompleted || []).includes(i.id)
-    );
-    return profile;
   }
   /**
    * make a reply to feedback
@@ -440,6 +457,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       feedback: []
     };
 
+    this.submissions[id].link = this.submissionLink(this.submissions[id]);
     this.submissions[id][assignment.type] = this.makeAssets(
       assignment.topic,
       assignment.type
@@ -450,6 +468,12 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         userId,
         this.nextDate(created, i, reviewers.length, 3)
       );
+    });
+    if(studentId === this.userId) this.profile.submissions.push({
+      id: id,
+      title: this.submissions[id].assignment,
+      date: this.submissions[id].date,
+      link: this.submissions[id].link
     });
     return id;
   }
@@ -573,16 +597,29 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       if (!this.instructors[s].instructor) delete this.instructors[s];
     });
 
+    /** view user profile */
+    this.userId = this.randomItem(Object.keys(this.students || {}));
+    this.profile = this.students[this.userId ];
+    this.profile.assignmentsTotal = Object.keys(this.projects).map(i=>this.projects[i].assignments).flat().length;
+    this.profile.assignmentsCompleted = 0;
+    this.profile.workDue = [];
+    this.profile.submissions = [];
+    this.profile.feedbackFor = [];
+    this.profile.feedbackBy = 0;
+    this.profile.repliesFor = [];
+    this.profile.repliesBy = 0;
+
     /* populate fake data starting with projects */
     Object.keys(this.projects || {}).forEach(p => {
       Object.keys(this.students || {}).forEach(s => {
         this.portfolios[`portfolio-${s}-${p}`] = {
-          id: `portfolio-${s}-${p}`,
+          id: `portfolio${s}-${p}`,
           userId: s,
           firstName: this.users[s].firstName,
           lastName: this.users[s].lastName,
           avatar: this.users[s].image,
           projectId: p,
+          project: this.projects[p].project,
           submissions: []
         };
       });
@@ -591,57 +628,100 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       );
     });
 
-    this.activities = this.sortDates([
-      ...this.toArray(this.submissions, { activity: "submission" }),
-      ...this.toArray(this.feedback, { activity: "feedback" }),
-      ...this.toArray(this.replies, { activity: "replies" })
+    /** view all activity */
+    this.activity = this.sortDates([
+      ...Object.keys(this.submissions).map(i=>{
+        return {
+          id: i,
+          date: this.submissions[i].date,
+          title: this.submissionTitle(this.submissions[i]),
+          avatar: this.submissions[i].avatar,
+          name: this.fullName(this.submissions[i]),
+          link: this.submissions[i].link
+        };
+      }),
+      ...Object.keys(this.feedback).map(i=>{
+        return {
+          id: i,
+          date: this.feedback[i].date,
+          title: this.feedbackTitle(this.feedback[i]),
+          avatar: this.feedback[i].avatar,
+          name: this.fullName(this.feedback[i]),
+          link: this.feedback[i].link
+        };
+      }),
+      ...Object.keys(this.replies).map(i=>{
+        return {
+          id: i,
+          date: this.replies[i].date,
+          title: this.replyTitle(this.replies[i]),
+          avatar: this.replies[i].avatar,
+          name: this.fullName(this.replies[i]),
+          link: this.replies[i].link
+        };
+      })
     ]);
 
-    /** make a profile */
-    this.userId = this.randomItem(Object.keys(this.students || {}));
-    this.profile = this.makeProfile(this.userId);
-    this.setTarget();
-
-    /**
-     * Fires when data is ready
-     *
-     * @event data-loaded
-     */
-    this.dispatchEvent(
-      new CustomEvent("data-loaded", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
+    /* feedback by submission */
+    this.discussion = Object.keys(this.submissions || {}).map(i=>{
+      return {
+        id: i,
+        feedback: this.submissions[i].feedback.map(j=>{
+          return {
+            id: j,
+            firstName: this.feedback[j].firstName,
+            lastName: this.feedback[j].lastName,
+            avatar: this.feedback[j].avatar,
+            date: this.feedback[j].date,
+            body: this.feedback[j].body,
+            read: this.feedback[j].read,
+            like: this.feedback[j].like,
+            title: this.feedbackTitle(this.feedback[j]),
+            submissionId: i,
+            assignment: this.submissions[i].assignment,
+            assignmentId: this.submissions[i].assignmentId,
+            userId: this.submissions[i].userId,
+            link: this.feedback[j].link,
+            replies: this.feedback[j].replies.map(k=>{
+              return {
+                id: k,
+                firstName: this.replies[k].firstName,
+                lastName: this.replies[k].lastName,
+                avatar: this.replies[k].avatar,
+                date: this.replies[k].date,
+                body: this.replies[k].body,
+                read: this.replies[k].read,
+                like: this.replies[k].like,
+                link: this.replies[k].link
+              };
+            })
+          };
+        })
+      };
+    });
+    this.profile.workDue = this.profile.workDue.slice(0,5);
+    this.profile.submissions = this.profile.submissions.slice(0,5);
+    this.profile.repliesFor = this.profile.repliesFor.slice(0,5);
+    this.profile.feedbackFor = this.profile.feedbackFor.slice(0,5);
   }
   /**
    * resets the objects
    *
    */
   resetData() {
-    this.activities = [];
+    this.ready = false;
+    this.activity = [];
     this.assignments = {};
     this.feedback = {};
+    this.discussion = {};
     this.instructors = {};
     this.portfolios = {};
     this.replies = {};
     this.sentences = [];
     this.students = {};
     this.submissions = {};
+    this.profile = {};
     this.words = [];
-  }
-  /**
-   * sends data to a specified target
-   */
-  setTarget() {
-    let target = document.getElementById(this.target || "elmsln-studio");
-    if (target) {
-      target.activityData = this.activities;
-      target.submissionsData = this.submissions;
-      target.profileData = this.profile;
-    }
   }
   /**
    * gets shuffled array

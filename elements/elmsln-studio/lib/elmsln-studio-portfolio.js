@@ -17,10 +17,12 @@ import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
  * @lit-element
  * @demo demo/portfolio.html
  */
-class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
+class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
+  ElmslnStudioStyles(LitElement)
+) {
   static get styles() {
     return [
-      ...ElmslnStudioStyles.styles,
+      ...super.styles,
       css`
         :host,
         section {
@@ -48,7 +50,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
-        .view-comments {
+        .view-discussions {
           text-align: right;
         }
         article button {
@@ -58,7 +60,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
           font-size: var(--elmsln-studio-FontSize, 16px);
           text-transform: uppercase;
         }
-        article button.has-comments {
+        article button.has-discussions {
           font-weight: normal;
         }
         article button:focus,
@@ -202,88 +204,87 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
           <h1>
             <lrndesign-avatar
               accent-color="${this.accentColor(
-                this.fullName(this.studentData)
+                this.fullName(this.portfolio)
               )}"
               aria-hidden="true"
-              label="${this.fullName(this.studentData)}"
-              src="${this.studentData && this.studentData.avatar
-                ? this.studentData.avatar
+              label="${this.fullName(this.portfolio)}"
+              .src="${this.portfolio && this.portfolio.avatar
+                ? this.portfolio.avatar
                 : undefined}"
               two-chars
             >
             </lrndesign-avatar>
-            <span class="student-name">${this.fullName(this.studentData)}</span>
-            <span class="project-name">${this.portfolioData.project}</span>
+            <span class="student-name">${this.fullName(this.portfolio)}</span>
+            <span class="project-name">${this.portfolio.project}</span>
           </h1>
-          ${this.submissionData.map(
-            (s, i) => html`
-              <section>
-                <h2 id="sub-${s.id}">
-                  <span class="assignment-name"
-                    >${s.assignment.assignment}</span
-                  >
-                  <span class="submission-date"
-                    >Submitted: ${this.medDate(s.date)}</span
-                  >
-                </h2>
-                <div class="view-comments">
-                  <button
-                    class="view-comment-button ${s.feedback.length < 1
-                      ? ""
-                      : "has-comments"}"
-                    aria-describedby="sub-${s.id}"
-                    @click="${e => (this.submissionIndex = i)}"
-                  >
-                    <iron-icon
-                      aria-hidden="true"
-                      icon="communication:comment"
-                    ></iron-icon>
-                    <span class="sr-only">View Comments</span>
-                  </button>
-                </div>
-                <div class="submission-body">
-                  ${s.links && s.links.length > 0
-                    ? html`
-                        <ul class="submission-links">
-                          ${s.links.map(
-                            link => html`
-                              <li>
-                                <a href="${link.url}" target="_blank">
-                                  <iron-icon
-                                    aria-hidden="true"
-                                    icon="${link.type === "pdf"
-                                      ? "hax:file-pdf"
-                                      : "link"}"
-                                  ></iron-icon>
-                                  ${link.text || link.url}
-                                </a>
-                              </li>
-                            `
-                          )}
-                        </ul>
-                      `
-                    : s.sources && s.sources.length > 0
-                    ? html`
-                        <lrndesign-gallery
-                          class="submission-image"
-                          layout="grid"
-                          .sources="${s.sources}"
-                        ></lrndesign-gallery>
-                      `
-                    : html`
-                        ${s.body}
-                      `}
-                </div>
-              </section>
-            `
-          )}
+          ${!this.portfolio ? `` : (this.portfolio.submissions || []).map(s=>html`
+            <section>
+              <h2 id="sub-${s.id}">
+                <span class="assignment-name"
+                  >${s.assignment}</span
+                >
+                <span class="submission-date"
+                  >Submitted: ${this.dateFormat(s.date)}</span
+                >
+              </h2>
+              <div class="view-discussions">
+                <a
+                  class="view-discussion-button ${s.feedback.length < 1
+                    ? ""
+                    : "has-discussions"}"
+                  aria-describedby="sub-${s.id}"
+                  href="${s.link}"
+                >
+                  <iron-icon
+                    aria-hidden="true"
+                    icon="communication:comment"
+                  ></iron-icon>
+                  <span class="sr-only">View Comments</span>
+                  </a>
+              </div>
+              <div class="submission-body">
+                ${s.links && s.links.length > 0
+                  ? html`
+                      <ul class="submission-links">
+                        ${s.links.map(
+                          link => html`
+                            <li>
+                              <a href="${link.url}" target="_blank">
+                                <iron-icon
+                                  aria-hidden="true"
+                                  icon="${link.type === "pdf"
+                                    ? "hax:file-pdf"
+                                    : "link"}"
+                                ></iron-icon>
+                                ${link.text || link.url}
+                              </a>
+                            </li>
+                          `
+                        )}
+                      </ul>
+                    `
+                  : s.sources && s.sources.length > 0
+                  ? html`
+                      <lrndesign-gallery
+                        class="submission-image"
+                        layout="grid"
+                        .sources="${s.sources}"
+                      ></lrndesign-gallery>
+                    `
+                  : html`
+                      ${s.body}
+                    `}
+              </div>
+            </section>
+          `)}
         </article>
       </div>
-      <div id="secondary">
-        ${this.feedbackData.map(
+      <div id="secondary" ?hidden=${!this.submission}>
+        ${(this.feedback || []).map(
           f => html`
             <div class="thread">
-              ${this.makeComment(f)} ${f.replies.map(r => this.makeComment(r))}
+              ${this.makeComment(f)}
+              ${f.replies.map(r => this.makeComment(r))}
             </div>
           `
         )}
@@ -300,15 +301,15 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
       >
         <div class="comment-header ${c.feedbackId ? "comment-read" : ""}">
           <lrndesign-avatar
-            accent-color="${this.accentColor(c.user.firstName)}"
-            initials="${c.user.firstName} ${c.user.lastName}"
-            .src="${c.user.image}"
+            accent-color="${this.accentColor(this.fullName(c))}"
+            initials="${this.fullName(c)}"
+            .src="${c.avatar}"
             two-chars
           >
           </lrndesign-avatar>
           <div>
-            <p class="comment-name">${c.user.firstName} ${c.user.lastName}</p>
-            <p class="comment-date">${this.medDate(c.date)}</p>
+            <p class="comment-name">${this.fullName(c)}</p>
+            <p class="comment-date">${this.dateFormat(c.date)}</p>
           </div>
           <iron-icon icon="thumb-up"></iron-icon>
         </div>
@@ -329,29 +330,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      feedbackData: {
+      portfolio: {
+        type: Object
+      },
+      feedback: {
         type: Array
-      },
-      portfolioData: {
-        type: Object
-      },
-      portfolioId: {
-        type: String,
-        attribute: "portfolio-id"
-      },
-      studentData: {
-        type: Object
-      },
-      submissionData: {
-        type: Object
-      },
-      submissionFilter: {
-        type: String,
-        attribute: "submission-filter"
-      },
-      commentFilter: {
-        type: String,
-        attribute: "comment-filter"
       }
     };
   }
@@ -367,10 +350,8 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
   // life cycle
   constructor() {
     super();
-    this.feedbackData = [];
-    this.portfolioData = {};
-    this.studentData = [];
-    this.submissionData = [];
+    this.portfolio = {};
+    this.feedback = [];
     this.tag = ElmslnStudioPortfolio.tag;
   }
   /**
@@ -379,70 +360,28 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(LitElement) {
   connectedCallback() {
     super.connectedCallback();
   }
-
-  initDemo() {
-    if (!this.portfolioId)
-      this.portfolioId = this._randomItem(
-        Object.keys(this.loremData.portfolios)
+  _loadDiscussion(submissionId){
+    console.log(submissionId);
+      /**
+       * Fires when constructed, so that parent radio group can listen for it.
+       *
+       * @event a11y-collapse-attached
+       */
+      this.dispatchEvent(
+        new CustomEvent("load-discussion", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: submissionId
+        })
       );
-    this.portfolioData = this.loremData.portfolios[this.portfolioId];
-    this.portfolioData.project = this.loremData.projects[
-      this.portfolioData.projectId
-    ].project;
-    this.studentData = this.loremData.users[this.portfolioData.userId];
-    this.submissionData = this.portfolioData.submissions
-      .map(i => {
-        let s = this.loremData.submissions[i];
-        s.id = i;
-        s.assignment = this.loremData.assignments[s.assignmentId];
-        return s;
-      })
-      .sort((a, b) => a.date - b.date);
-    this.submissionIndex =
-      this.submissionData && this.submissionData.length > 0 ? 0 : undefined;
-  }
-
-  demoFeedback() {
-    if (
-      !this.submissionIndex ||
-      !this.submissionData ||
-      !this.submissionData[this.submissionIndex]
-    )
-      this.submissionIndex =
-        this.submissionData && this.submissionData.length > 0 ? 0 : undefined;
-    this.feedbackData = this.submissionData[this.submissionIndex]
-      ? this.submissionData[this.submissionIndex].feedback
-          .map(i => {
-            let feedback = this.loremData.feedback[i];
-            feedback.id = i;
-            feedback.user = this.loremData.users[feedback.userId];
-            feedback.replies = feedback.replies
-              .map(j => {
-                let reply = this.loremData.replies[j];
-                reply.user = this.loremData.users[reply.userId];
-                reply.id = j;
-                return reply;
-              })
-              .sort((a, b) => a.date - b.date);
-            return feedback;
-          })
-          .sort((a, b) => a.date - b.date)
-      : [];
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (["portfolioId", "demoMode"].includes(propName) && this.demoMode)
-        this.initDemo();
-      if (
-        ["portfolioId", "submissionIndex", "demoMode"].includes(propName) &&
-        this.demoMode
-      )
-        this.demoFeedback();
-      if (propName === "submissionIndex" && this.shadowRoot)
-        console.log('------- "sub-${s.id}"', this.submissionIndex);
     });
+    console.log("portfolio", this.portfolio,this.feedback);
   }
   // static get observedAttributes() {
   //   return [];

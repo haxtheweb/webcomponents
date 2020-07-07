@@ -93,7 +93,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
      */
     dateFormat(d, format) {
       if (typeof d === "string") d = new Date(d);
-      return format === "long"
+      return !d ? ''
+        : format === "long"
         ? d.toLocaleDateString(undefined, {
             weekday: "long",
             year: "numeric",
@@ -162,7 +163,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     submissionLink(submission) {
-      return `./portfolio/${submission.userId}-${
+      return `/portfolios/${submission.userId}-${
         submission.projectId
       }?submission=${submission.id}`;
     }
@@ -173,10 +174,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     submissionTitle(submission) {
-      let u = this.user(submission.userId);
-      return html`
-        ${submission.firstName} submitted ${submission.assignment}
-      `;
+      return `${submission.firstName} submitted ${submission.assignment}`;
     }
 
     /**
@@ -185,7 +183,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     feedbackLink(feedback) {
-      return `./portfolio/${feedback.creator}-${
+      return `/portfolios/${feedback.creator}-${
         feedback.projectId
       }?submission=${feedback.submissionId}&feedback=${feedback.id}`;
     }
@@ -196,10 +194,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     feedbackTitle(feedback) {
-      return html`
-        ${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s
-        ${feedback.assignment}
-      `;
+      return `${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s
+        ${feedback.assignment}`;
     }
 
     /**
@@ -208,7 +204,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     replyLink(reply) {
-      return `./portfolio/${reply.creator}-${reply.projectId}?submission=${
+      return `/portfolios/${reply.creator}-${reply.projectId}?submission=${
         reply.submissionId
       }&reply=${reply.id}`;
     }
@@ -219,9 +215,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     replyTitle(reply) {
-      return html`
-        ${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback
-      `;
+      return `${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback`;
     }
 
     _getValign(gravity) {

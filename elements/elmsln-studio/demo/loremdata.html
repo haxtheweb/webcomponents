@@ -13,9 +13,6 @@
       import '../elmsln-studio.js';
       import '../lib/elmsln-studio-loremdata.js';
     </script>
-    <script>
-      console.log(window.location);
-    </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
@@ -23,14 +20,7 @@
       <h3>Basic elmsln-studio demo</h3>
       <demo-snippet>
         <template>
-          <elmsln-studio 
-            source-path="/components/@lrnwebcomponents/elmsln-studio/demo/"
-            activity-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/activity.json" 
-            discussion-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/discussion.json"
-            portfolios-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/portfolios.json" 
-            profile-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/profile.json"
-            submissions-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/submissions.json">
-          </elmsln-studio>
+          <elmsln-studio-loremdata></elmsln-studio-loremdata>
         </template>
       </demo-snippet>
     </div>

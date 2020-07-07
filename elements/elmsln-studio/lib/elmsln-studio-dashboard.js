@@ -183,7 +183,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             <lrndesign-avatar
               accent-color="${this.accentColor(this.profileName)}"
               slot="content"
-              src="${!this.profileJSON ? "unknown" : this.profileJSON.image}"
+              src="${!this.profile ? "unknown" : this.profile.image}"
               label="${this.profileName}"
               two-chars
               size="200px"
@@ -194,9 +194,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   <th scope="row">Feedback Given</th>
                   <td>
                     ${
-                      !this.profileJSON
+                      !this.profile || !this.profile.feedbackBy
                         ? "unknown"
-                        : (this.profileJSON.feedbackBy || []).length
+                        : this.profile.feedbackBy
                     }
                   </td>
                 </tr>
@@ -204,28 +204,27 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   <th scope="row">Conversations</th>
                   <td>
                     ${
-                      !this.profileJSON
+                      !this.profile || !this.profile.feedbackBy || !this.profile.repliesBy
                         ? "unknown"
-                        : (this.profileJSON.repliesBy || []).length +
-                          (this.profileJSON.feedbackBy || []).length
+                        : (this.profile.repliesBy + this.profile.feedbackBy)
                     }
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <a href="./submissions${
-                      !this.profileJSON
+                    <a href="/submissions${
+                      !this.profile
                         ? ""
-                        : `?student=${this.profileJSON.userId}`
+                        : `?student=${this.profile.id}`
                     }">
                       Total Submissions
                     </a>
                   </th>
                   <td>
                     ${
-                      !this.profileJSON
+                      !this.profile
                         ? "unknown"
-                        : (this.profileJSON.submissions || []).length
+                        : (this.profile.submissions || []).length
                     }
                   </td>
                 </tr>
@@ -233,10 +232,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   <th scope="row">Assignments Completed</th>
                   <td>
                     ${
-                      !this.profileJSON
+                      !this.profile || !this.profile.assignmentsCompleted || !this.profile.workDue || !this.profile.assignmentsTotal
                         ? "unknown"
-                        : (this.profileJSON.assignmentsCompleted || []).length +
-                          (this.profileJSON.assignmentsCompleted || []).length
+                        : `${this.profile.assignmentsCompleted} / ${this.profile.assignmentsTotal}`
                     }
                   </td>
                 </tr>
@@ -247,18 +245,18 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             <span slot="heading">Work Due</span>
             <div slot="linklist">
               ${
-                !this.profileJSON
+                !this.profile
                   ? "unknown"
-                  : (this.profileJSON.workDue || []).slice(0, 5).map(
+                  : (this.profile.workDue || []).slice(0, 5).map(
                       a => html`
                         <nav-card-item icon="chevron-right">
-                          <button
+                          <a
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"
                             slot="label"
                           >
-                            ${a.assignment}
-                          </button>
+                            ${a.title}
+                          </a>
                           <span id="due-${a.id}-desc" slot="description"
                             >${this.dateFormat(a.date, "long")}</span
                           >
@@ -277,22 +275,26 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             link-icon="chevron-right"
           >
             <span slot="heading">Submissions</span>
-            <a slot="subheading" href="./submissions">All submissions</a>
+            <a slot="subheading" href="/submissions${
+              !this.profile
+                ? ""
+                : `?student=${this.profile.id}`
+            }">All submissions</a>
             <div slot="linklist">
               ${
-                !this.profileJSON
+                !this.profile
                   ? "unknown"
-                  : (this.profileJSON.submissions || []).slice(0, 5).map(
+                  : (this.profile.submissions || []).slice(0, 5).map(
                       s => html`
                         <nav-card-item icon="chevron-right">
-                          <button
+                          <a
                             id="sub-${s.id}"
                             aria-describedby="sub-${s.id}-desc"
                             slot="label"
-                            href="${e => this.submissionLink(s)}"
+                            href="${s.link}"
                           >
-                            ${s.assignment}
-                          </button>
+                            ${s.title}
+                          </a>
                           <span id="sub-${s.id}-desc" slot="description"
                             >${this.dateFormat(s.date)}</span
                           >
@@ -311,18 +313,18 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             <a slot="subheading">All feedback</a>
             <div slot="linklist">
               ${
-                !this.profileJSON
+                !this.profile
                   ? "unknown"
-                  : (this.profileJSON.feedbackFor || []).slice(0, 3).map(
+                  : (this.profile.feedbackFor || []).slice(0, 5).map(
                       f => html`
                         <nav-card-item icon="chevron-right">
                           <a
                             id="feed-${f.id}"
                             aria-describedby="feed-${f.id}-desc"
                             slot="label"
-                            href="${this.feedbackLink(f)}"
+                            href="${f.link}"
                           >
-                            ${f.firstName}'s feedback
+                            ${f.title}
                           </a>
                           <span id="feed-${f.id}-desc" slot="description"
                             >${this.dateFormat(f.date)}</span
@@ -344,21 +346,21 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         >
           <span slot="heading">Recent Activity</span>
           <div slot="linklist">
-            ${(this.activityJSON || []).slice(0, this.activityLoad).map(
+            ${(this.activity || []).slice(0, this.activityLoad).map(
               a => html`
                 <nav-card-item
-                  accent-color="${this.accentColor(a.firstName)}"
+                  accent-color="${this.accentColor(a.name)}"
                   .avatar="${a.avatar}"
                   icon="chevron-right"
-                  .initials="${this.fullName(a)}"
+                  .initials="${a.name}"
                 >
                   <a
                     id="act-${a.id}"
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
-                    href="${this.activityLink(a)}"
+                    href="${a.link}"
                   >
-                    ${this.activityTitle(a, a.activity)}
+                    ${a.title}
                   </a>
                   <div id="act-${a.id}-desc" slot="description">
                     ${this.dateFormat(a.date)}
@@ -370,8 +372,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           <button
             class="load-more"
             slot="footer"
-            ?disabled="${this.activityLoad >= this.activityJSON.length}"
-            ?hidden="${this.activityLoad >= this.activityJSON.length}"
+            ?disabled="${this.activityLoad >= this.activity.length}"
+            ?hidden="${this.activityLoad >= this.activity.length}"
             @click="${e => (this.activityLoad += 10)}"
           >
             Load More
@@ -385,17 +387,15 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
-      activityData: {
-        type: String,
-        attribute: "activity-data"
+      activity: {
+        type: Array
       },
       activityLoad: {
         type: Number,
         attribute: "activity-load"
       },
-      profileData: {
-        type: String,
-        attribute: "profile-data"
+      profile: {
+        type: Object
       }
     };
   }
@@ -403,26 +403,22 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
+    this.activity = [];
+    this.profile = {};
     this.activityLoad = 15;
     this.tag = ElmslnStudioDashboard.tag;
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "activityData") this.activityLoad = 15;
+      if (propName === "activity") this.activityLoad = 15;
     });
   }
-  get activityJSON() {
-    return JSON.parse(this.activityData || "[]");
-  }
-  get profileJSON() {
-    return JSON.parse(this.profileData || "{}");
-  }
   get profileName() {
-    return this.profileJSON &&
-      this.profileJSON.firstName &&
-      this.profileJSON.lastName
-      ? `${this.profileJSON.firstName} ${this.profileJSON.lastName}`
+    return this.profile &&
+      this.profile.firstName &&
+      this.profile.lastName
+      ? `${this.profile.firstName} ${this.profile.lastName}`
       : ``;
   }
 

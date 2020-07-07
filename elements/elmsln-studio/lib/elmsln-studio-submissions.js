@@ -29,7 +29,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
 
   static get styles() {
     return [
-      ...ElmslnStudioStyles.styles,
+      ...super.styles,
       css`
         #layout {
           display: flex;
@@ -170,11 +170,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           justify-content: space-between;
           color: #95989a;
         }
+        accent-card a:link,
         accent-card button {
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           background-color: transparent;
           text-align: left;
+          text-decoration: none;
+          color: #95989a;
         }
+        accent-card a:focus,
+        accent-card a:hover,
+        accent-card button:focus,
+        accent-card button:hover {
+          text-decoration: underline;
+        }
+        accent-card a:link:last-child,
         accent-card button:last-child {
           text-align: right;
         }
@@ -240,6 +250,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             inline
             label="Assignment:"
             .options="${this.assignmentOptions}"
+            value="${this.assignmentFilter || ""}"
             @value-changed="${e => (this.assignmentFilter = e.detail.value)}"
           >
           </simple-fields-field>
@@ -247,6 +258,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             inline
             label="Student:"
             .options="${this.studentOptions}"
+            value="${this.studentFilter || ""}"
             @value-changed="${e => (this.studentFilter = e.detail.value)}"
           >
           </simple-fields-field>
@@ -278,11 +290,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             s => html`
               <accent-card
                 no-border
-                image-src="${s.image.src}"
+                image-src="${s.image && s.image.src ? s.image.src : ""}"
                 ?horizontal="${s.feature || !this.grid ? true : false}"
-                image-align="${this._getAlign(s.gravity)}"
-                image-valign="${this._getValign(s.gravity)}"
-                gravity="${s.gravity}"
+                image-align="${this._getAlign(s.image && s.image.gravity ? s.image.gravity: undefined)}"
+                image-valign="${this._getValign(s.image && s.image.gravity ? s.image.gravity: undefined)}"
+                .gravity="${s.image && s.image.gravity ? s.image.gravity: undefined}"
               >
                 <div slot="image-corner" class="image-zoom">
                   <iron-icon icon="zoom-in"></iron-icon>
@@ -305,25 +317,18 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   ${s.feature}
                 </div>
                 <div slot="footer">
-                  <button
+                  <a
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e =>
-                      this._handleLinkButton(
-                        e,
-                        this.feedbackLink(s.feedback[0])
-                      )}"
+                    href="${s.link}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
-                  </button>
-                  <button
-                    aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    @click="${e =>
-                      this._handleLinkButton(e, this.submissionLink(s))}"
-                  >
+                  </a>
+                  <a aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                    href="${s.link}">
                     <iron-icon icon="visibility"></iron-icon>
                     View
-                  </button>
+                  </a>
                 </div>
               </accent-card>
             `
@@ -349,19 +354,19 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
               f => html`
                 <nav-card-item
                   accent-color="${this.accentColor(
-                    this.user(f.userId).firstName
+                    this.fullName(f)
                   )}"
                   .avatar="${f.avatar}"
                   icon="chevron-right"
-                  initials="${f.firstName} ${f.lastName}"
+                  initials="${this.fullName(f)}"
                 >
                   <a
                     id="comment-${f.id}"
                     aria-describedby="comment-${f.id}-desc"
                     slot="label"
-                    href="${this.feedbackLink(f)}"
+                    href="${f.link}"
                   >
-                    ${this.feedbackTitle(f)}
+                    ${f.title}
                   </a>
                   <span id="comment-${f.id}" slot="description">
                     ${this.dateFormat(f.date)}
@@ -383,6 +388,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         type: String,
         attribute: "assignment-filter"
       },
+      comments: {
+        type: Array
+      },
       grid: {
         type: Boolean,
         attribute: "grid"
@@ -391,9 +399,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         type: String,
         attribute: "student-filter"
       },
-      submissionsData: {
-        type: String,
-        attribute: "submissions-data"
+      submissions: {
+        type: Array
       }
     };
   }
@@ -401,49 +408,32 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.assignmentFilter = "";
     this.grid = false;
-    this.studentFilter = "";
+    this.submissions = [];
+    this.comments = [];
     this.tag = ElmslnStudioSubmissions.tag;
-    console.log("constructor", this.submissionsData);
   }
-
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
-    console.log(
-      "submissions data",
-      this.submissionsData,
-      this.submissionsJSON,
-      this.commentsJSON
+  get filteredComments() {
+    return (this.comments || []).filter(i =>
+      this._isFiltered(i.userId, i.assignmentId)
     );
-  }
-  get submissionsJSON() {
-    console.log("submissionsJSON", this.submissionsData);
-    return JSON.parse(this.submissionsData || "[]");
-  }
-  get commentsJSON() {
-    return this.submissionsJSON.map(i => i.feedback).flat();
   }
   get studentOptions() {
     let options = { "": "All" };
-    this.submissionsJSON.forEach(
-      i => (options[i.userId] = this.studentName(submission))
-    );
+    (this.submissions || []).forEach(i => options[i.userId] = this.fullName(i));
+    return options;
   }
   get assignmentOptions() {
     let options = { "": "All" };
-    this.submissionsJSON.forEach(i => (options[i.assignmentId] = i.assignment));
+    (this.submissions || []).forEach(i => (options[i.assignmentId] = i.assignment));
+    return options;
   }
   get filteredSubmissions() {
-    console.log("filteredSubmissions", this.submissionsData);
-    return this.submissionsJSON.filter(a =>
-      this._isFiltered(a.userId, a.assignmentId)
-    );
-  }
-  get filteredComments() {
-    return this.commentsJSON.filter(i =>
-      this._isFiltered(i.creator, i.assignmentId)
+    console.log('filteredSubmissions',(this.submissions || []).filter(i =>
+      this._isFiltered(i.userId, i.assignmentId)
+    )[0])
+    return (this.submissions || []).filter(i =>
+      this._isFiltered(i.userId, i.assignmentId)
     );
   }
   _isFiltered(student = "", assignment = "") {
