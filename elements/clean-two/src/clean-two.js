@@ -485,9 +485,7 @@ class CleanTwo extends HAXCMSThemeParts(
                 aria-label="Toggle menu"
                 @click="${this.toggleMenu}"
               ></paper-icon-button>
-              <simple-tooltip
-                for="menubtn"
-              >
+              <simple-tooltip for="menubtn">
                 Toggle menu
               </simple-tooltip>
               <site-menu-content
