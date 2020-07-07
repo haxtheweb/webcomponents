@@ -478,7 +478,7 @@ class CleanTwo extends HAXCMSThemeParts(
                       id="menubtn"
                       @click="${this.toggleMenu}"
                     ></paper-icon-button>
-                    <site-menu-content mobile></site-menu-content>
+                    <site-menu-content .part="${this.editMode ? `edit-mode-active` : ``}" mobile></site-menu-content>
                   </div>
                 `
               : ``}
@@ -551,7 +551,8 @@ class CleanTwo extends HAXCMSThemeParts(
           ? html`
               <div class="right-col">
                 <div class="site-menu-content-wrapper">
-                  <site-menu-content></site-menu-content>
+                  <site-menu-content .part="${this.editMode ? `edit-mode-active` : ``}"
+></site-menu-content>
                 </div>
               </div>
             `
