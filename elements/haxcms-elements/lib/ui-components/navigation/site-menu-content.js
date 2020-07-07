@@ -2,7 +2,7 @@ import { PageContentsMenu } from "@lrnwebcomponents/page-contents-menu/page-cont
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { css } from "lit-element/lit-element.js";
+import { css, html } from "lit-element/lit-element.js";
 
 class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
   static get tag() {
@@ -27,6 +27,12 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
       this.__disposer.push(reaction);
     });
   }
+  /**
+   * wrap the base render function in a part that demonstrates edit mode
+   */
+  render() {
+    return html`<div .part="${this.editMode ? `edit-mode-active` : ``}">${super.render()}</div>`;
+  }
   static get styles() {
     return [
       ...super.styles,
@@ -36,14 +42,6 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
             --haxcms-color,
             var(--simple-colors-default-theme-purple-7)
           );
-        }
-        :host([part="edit-mode-active"]) {
-          pointer-events: var(
-            --haxcms-theme-parts-edit-mode-active-pointer-events,
-            none
-          );
-          opacity: var(--haxcms-theme-parts-edit-mode-active-opacity, 0.5);
-          filter: var(--haxcms-theme-parts-edit-mode-active-filter, blur(1px));
         }
         :host([hide-if-empty][is-empty]) {
           display: none !important;

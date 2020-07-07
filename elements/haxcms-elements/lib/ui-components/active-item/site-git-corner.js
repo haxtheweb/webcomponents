@@ -2,13 +2,14 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varGet } from "@lrnwebcomponents/utils/utils.js";
+import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 
-class SiteGitCorner extends LitElement {
+class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
   static get tag() {
     return "site-git-corner";
   }
   static get styles() {
-    return [
+    return [...super.styles,
       css`
         :host {
           display: block;
@@ -30,6 +31,7 @@ class SiteGitCorner extends LitElement {
   render() {
     return html`
       <git-corner
+        .part="${this.editMode ? `edit-mode-active` : ``}"
         size="${this.size}"
         alt="${this.alt}"
         ?circle="${this.circle}"
