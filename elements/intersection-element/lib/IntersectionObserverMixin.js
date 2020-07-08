@@ -35,11 +35,12 @@ const IntersectionObserverMixin = function(SuperClass) {
       if (super.properties) {
         props = super.properties;
       }
-      return {...props,
+      return {
+        ...props,
         elementVisible: {
           type: Boolean,
-          attribute: 'element-visible',
-          reflect: true,
+          attribute: "element-visible",
+          reflect: true
         }
       };
     }

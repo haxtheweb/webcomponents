@@ -285,7 +285,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         <div class="image-outer" ?hidden="${!this.imageSrc}">
           <div
             class="image"
-            .style="${(this.elementVisible && this.imageSrc)
+            .style="${this.elementVisible && this.imageSrc
               ? `background-image: url(${this.imageSrc});`
               : `display: none;`}"
           ></div>
