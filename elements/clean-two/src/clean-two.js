@@ -488,12 +488,14 @@ class CleanTwo extends HAXCMSThemeParts(
               <simple-tooltip for="menubtn">
                 Toggle menu
               </simple-tooltip>
-              ${this.responsiveSize != "xl" ? html`
-              <site-menu-content
-                .part="${this.editMode ? `edit-mode-active` : ``}"
-                mobile
-              ></site-menu-content>
-              ` : ``}
+              ${this.responsiveSize != "xl"
+                ? html`
+                    <site-menu-content
+                      .part="${this.editMode ? `edit-mode-active` : ``}"
+                      mobile
+                    ></site-menu-content>
+                  `
+                : ``}
             </div>
             <site-active-title></site-active-title>
             <site-search

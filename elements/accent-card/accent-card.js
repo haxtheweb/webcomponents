@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 
 /**
  * `accent-card`
@@ -62,7 +63,7 @@ Custom property | Description | Default
  * @demo ./demo/images.html image aligmnent
  * @demo ./demo/variables.html css variables
  */
-class AccentCard extends SimpleColors {
+class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   /**
    * Store tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -284,7 +285,7 @@ class AccentCard extends SimpleColors {
         <div class="image-outer" ?hidden="${!this.imageSrc}">
           <div
             class="image"
-            .style="${this.imageSrc
+            .style="${(this.elementVisible && this.imageSrc)
               ? `background-image: url(${this.imageSrc});`
               : `display: none;`}"
           ></div>
