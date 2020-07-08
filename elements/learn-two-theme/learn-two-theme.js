@@ -115,7 +115,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           display: none;
         }
 
-        site-rss-button a {
+        site-rss-button {
           color: white;
         }
 
@@ -141,14 +141,24 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           display: flex;
         }
 
-        site-print-button paper-icon-button {
-          color: white;
+        site-print-button {
+          color: var(--site-print-button-color, white);
+        }
+        paper-icon-button,
+        site-rss-button,
+        site-print-button {
+          --iron-icon-fill-color: white;
+          --haxcms-tooltip-color: #f5f5f5;
+          --haxcms-tooltip-background-color: #252737;
         }
 
         h-a-x {
           padding: 0 !important;
         }
 
+        :host([edit-mode]) {
+          opacity: 1;
+        }
         :host([edit-mode]) app-drawer {
           opacity: 0.2;
           pointer-events: none;

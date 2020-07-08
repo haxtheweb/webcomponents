@@ -27,6 +27,7 @@ class LunrSearch extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`
@@ -220,7 +221,7 @@ class LunrSearch extends LitElement {
             data,
             this.fields,
             true,
-            index
+            this.__lunrLoaded
           );
         }
         searched = this.indexNoStopWords.search(search);

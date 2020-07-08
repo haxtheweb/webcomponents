@@ -18,9 +18,106 @@ class PageContentsMenu extends LitElement {
         :host {
           display: block;
         }
-
+        :host([is-empty][hide-if-empty]) {
+          display: none;
+        }
         :host([hidden]) {
           display: none;
+        }
+        [hidden] {
+          display: none;
+        }
+        :host([mobile]) .wrapper,
+        :host([mobile]) .header,
+        :host([mobile]) .header .svg {
+          padding: 0;
+          margin: 0;
+        }
+        .wrapper {
+          display: inline-block;
+          padding: 8px;
+        }
+        .header {
+          display: flex;
+          color: var(--page-contents-menu-heading-color, #9daab6);
+          padding: 0 24px 0 0;
+          margin: 0 0 8px 0;
+        }
+        .header .svg {
+          padding-right: 6px;
+          display: inline-flex;
+          color: var(--page-contents-menu-link, #74818d);
+        }
+        svg {
+          width: 1em;
+          height: 1em;
+          vertical-align: middle;
+        }
+        .header .label {
+          align-items: center;
+          display: inline-flex;
+          font-size: var(--page-contents-menu-heading-font-size, 10px);
+          font-weight: var(--page-contents-menu-heading-font-weight, 700);
+          padding: 0;
+          margin: 0;
+          font-family: Content-font, Roboto, sans-serif;
+          line-height: 1;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+        }
+
+        .contents {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+        }
+        .item {
+          margin: 0;
+          display: block;
+          padding: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .link {
+          font-family: Content-font, Roboto, sans-serif;
+          line-height: 1.5;
+          display: flex;
+          padding: 4px 16px 4px 24px;
+          font-size: var(--page-contents-menu-link-font-size, 12px);
+          text-decoration: none;
+          font-weight: var(--page-contents-menu-link-font-weight, 500);
+          color: var(--page-contents-menu-link, #74818d);
+          cursor: pointer;
+          margin: 0;
+          align-items: center;
+          vertical-align: middle;
+          -webkit-box-align: center;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .link:hover,
+        .link:focus,
+        .link:active {
+          text-decoration: underline;
+          color: var(--page-contents-menu-link-hover, rgb(56, 132, 255));
+        }
+        .link:focus {
+          outline: 1px solid var(--page-contents-menu-link, black);
+          outline-offset: 4px;
+        }
+        .indent-1 {
+          padding-left: 0px;
+        }
+        .indent-2 {
+          padding-left: 16px;
+        }
+        .indent-3,
+        .indent-4,
+        .indent-5,
+        .indent-6 {
+          padding-left: 32px;
         }
       `
     ];
@@ -29,117 +126,129 @@ class PageContentsMenu extends LitElement {
   // render function
   render() {
     return html`
-      <div class="reset-3c756112--pageSideSection-542f1fd5">
-        <div
-          class="reset-3c756112--menu-5b8a7448--pageToc-16c35922--pageTocLive-542f1fd5"
-        >
-          <div
-            class="reset-3c756112--withScrollbar-39338630--scrollAxisY-7680295e--menuItems-2e6f017b--pageTocLiveItems-67c61496"
+      <section class="wrapper" role="navigation">
+        <div class="header">
+          <a
+            class="svg"
+            @click="${this.toggleSettings}"
+            @keypress="${this.keyToggle}"
+            id="popovertarget"
+            aria-title="${this.label}"
           >
-            <div
-              class="reset-3c756112--menuHeader-342906de--menuHeaderLight-2c5d8183"
+            <svg
+              preserveAspectRatio="xMidYMid meet"
+              height="1em"
+              width="1em"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke="currentColor"
+              class="icon-7f6730be--text-3f89f380"
             >
-              <div class="reset-3c756112--menuHeaderIcon-0c3ed569">
-                <svg
-                  preserveAspectRatio="xMidYMid meet"
-                  height="1em"
-                  width="1em"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke="currentColor"
-                  class="icon-7f6730be--text-3f89f380"
-                >
-                  <g>
-                    <line x1="21" y1="10" x2="7" y2="10"></line>
-                    <line x1="21" y1="6" x2="3" y2="6"></line>
-                    <line x1="21" y1="14" x2="3" y2="14"></line>
-                    <line x1="21" y1="18" x2="7" y2="18"></line>
-                  </g>
-                </svg>
-              </div>
-              <div class="reset-3c756112">
-                <span
-                  class="text-4505230f--InfoH100-1e92e1d1--textContentFamily-49a318e1"
-                  >Contents</span
-                >
-              </div>
-            </div>
-            <a
-              class="reset-3c756112--menuItem-aa02f6ec--menuItemLight-757d5235--menuItemInline-173bdf97--pageTocItem-f4427024"
-              href="#i-have-a-github-sync-error"
-              style=""
-              ><div class="reset-3c756112--menuItemContent-c44ec79e">
-                <span
-                  class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"
-                  ><span
-                    class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1"
-                  >
-                    I have a GitHub sync error</span
-                  ></span
-                >
-              </div></a
-            ><a
-              class="reset-3c756112--menuItem-aa02f6ec--menuItemLight-757d5235--menuItemInline-173bdf97--pageTocItem-f4427024"
-              href="#gitbook-is-not-using-my-docs-folder"
-              style=""
-              ><div class="reset-3c756112--menuItemContent-c44ec79e">
-                <span
-                  class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"
-                  ><span
-                    class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1"
-                    >&#8203; GitBook is not using my docs folder?</span
-                  ></span
-                >
-              </div></a
-            ><a
-              class="reset-3c756112--menuItem-aa02f6ec--menuItemLight-757d5235--menuItemInline-173bdf97--pageTocItem-f4427024"
-              href="#gitbook-is-creating-new-markdown-files"
-              style=""
-              ><div class="reset-3c756112--menuItemContent-c44ec79e">
-                <span
-                  class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"
-                  ><span
-                    class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1"
-                  >
-                    GitBook is creating new markdown files?</span
-                  ></span
-                >
-              </div></a
-            ><a
-              class="reset-3c756112--menuItem-aa02f6ec--menuItemLight-757d5235--menuItemInline-173bdf97--pageTocItem-f4427024"
-              href="#my-repository-is-not-listed"
-              style=""
-              ><div class="reset-3c756112--menuItemContent-c44ec79e">
-                <span
-                  class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"
-                  ><span
-                    class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1"
-                    >&#8203; My repository is not listed?</span
-                  ></span
-                >
-              </div></a
-            ><a
-              class="reset-3c756112--menuItem-aa02f6ec--menuItemLight-757d5235--menuItemInline-173bdf97--pageTocItem-f4427024"
-              href="#nothing-happens-on-gitbook-after-adding-a-new-file-to-my-repository"
-              style=""
-              ><div class="reset-3c756112--menuItemContent-c44ec79e">
-                <span
-                  class="text-4505230f--UIH300-2063425d--textContentFamily-49a318e1"
-                  ><span
-                    class="text-4505230f--UIH200-50ead35f--textContentFamily-49a318e1"
-                    >&#8203; Nothing happens on GitBook after adding a new file
-                    to my repository</span
-                  ></span
-                >
-              </div></a
-            >
-          </div>
+              <g>
+                <line x1="21" y1="10" x2="7" y2="10"></line>
+                <line x1="21" y1="6" x2="3" y2="6"></line>
+                <line x1="21" y1="14" x2="3" y2="14"></line>
+                <line x1="21" y1="18" x2="7" y2="18"></line>
+              </g>
+            </svg>
+          </a>
+          <simple-tooltip
+            for="popovertarget"
+            offset="32"
+            ?hidden="${!this.mobile || !this.hideSettings}"
+          >
+            ${this.label}
+          </simple-tooltip>
+          ${!this.mobile
+            ? html`
+                <h2 class="label">${this.label}</h2>
+              `
+            : ``}
         </div>
-      </div>
+        ${this.mobile
+          ? html`
+              <simple-popover
+                class="dropdown pull-left font-settings js-toolbar-action settings-container"
+                ?hidden="${this.hideSettings}"
+                auto
+              >
+                <ol class="contents">
+                  ${this.items.map((item, index) =>
+                    this.renderItem(item, index)
+                  )}
+                </ol>
+              </simple-popover>
+            `
+          : html`
+              <ol class="contents">
+                ${this.items.map((item, index) => this.renderItem(item, index))}
+              </ol>
+            `}
+      </section>
+    `;
+  }
+  keyToggle(e) {
+    if (["Enter", "Space"].includes(e.key)) {
+      this.toggleSettings(e);
+    }
+  }
+  keyScroll(e) {
+    if (e.key == "Enter") {
+      this.scrollToObject(e);
+    }
+  }
+  toggleSettings(e) {
+    if (this.mobile) {
+      this.hideSettings = !this.hideSettings;
+    }
+  }
+  scrollToObject(e) {
+    if (e.path && e.path[0] && e.path[0].getAttribute("data-index")) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.items[
+        parseInt(e.path[0].getAttribute("data-index"))
+      ].object.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+      // close menu
+      this.hideSettings = true;
+    }
+  }
+  renderItem(item, index) {
+    if (item.link == null && item.object) {
+      // tab index ensures browser treats it like a normal link
+      return html`
+        <li class="item">
+          <a
+            class="link indent-${item.indent}"
+            tabindex="0"
+            @click="${this.scrollToObject}"
+            @keypress="${this.keyScroll}"
+            data-index="${index}"
+            >${item.title}</a
+          >
+        </li>
+      `;
+    }
+    return html`
+      <li class="item">
+        <a
+          class="link indent-${item.indent}"
+          href="${item.link}"
+          @click="${this.scrollToObject}"
+          @keypress="${this.keyScroll}"
+          data-index="${index}"
+          >${item.title}</a
+        >
+      </li>
     `;
   }
 
@@ -182,8 +291,28 @@ class PageContentsMenu extends LitElement {
       relationship: {
         type: String
       },
-      _items: {
+      items: {
         type: Array
+      },
+      mobile: {
+        type: Boolean,
+        reflect: true
+      },
+      label: {
+        type: String
+      },
+      hideSettings: {
+        type: Boolean
+      },
+      hideIfEmpty: {
+        type: Boolean,
+        attribute: "hide-if-empty",
+        reflect: true
+      },
+      isEmpty: {
+        type: Boolean,
+        attribute: "is-empty",
+        reflect: true
       }
     };
   }
@@ -203,9 +332,32 @@ class PageContentsMenu extends LitElement {
     // default is to use the parent container unless a content container
     // is defined otherwise. This would imply usage of placing this at the TOP of
     // content area though next, pervious and none are valid
-    this.relationship = "parent";
-    this._items = [];
+    this.relationship = null;
+    this.items = [];
+    this.isEmpty = true;
+    this.hideIfEmpty = false;
     this.contentContainer = null;
+    this.mobile = false;
+    // only useful with mobile
+    this.hideSettings = true;
+    this.label = "Contents";
+    // so we can close the menu
+    window.addEventListener("click", this.checkMenuOpen.bind(this));
+    // default to all hierarchy tags to obtain mini-menu
+    // opens the door for us adding OTHER tags in the future
+    this.hierarchyTags = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  }
+
+  checkMenuOpen(e) {
+    if (
+      this.mobile &&
+      !this.hideSettings &&
+      e.path &&
+      !e.path.includes(this.__toggleTarget) &&
+      !e.path.includes(this.shadowRoot.querySelector("simple-popover"))
+    ) {
+      this.hideSettings = true;
+    }
   }
   firstUpdated() {
     // if we are told to use the parent and we're connected...
@@ -243,6 +395,28 @@ class PageContentsMenu extends LitElement {
       if (propName == "contentContainer") {
         this._contentContainerChanged(this[propName]);
       }
+      // dynamic import pop over if we go mobile mode
+      if (propName == "mobile") {
+        if (this[propName]) {
+          import("@lrnwebcomponents/simple-popover/simple-popover.js").then(
+            module => {
+              setTimeout(() => {
+                // hook up the pop over menu
+                this.__toggleTarget = this.shadowRoot.querySelector(
+                  "#popovertarget"
+                );
+                this.__toggleTarget.setAttribute("tabindex", "0");
+                this.shadowRoot.querySelector(
+                  "simple-popover"
+                ).target = this.__toggleTarget;
+              }, 0);
+            }
+          );
+          import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+        } else if (oldValue && !this[propName]) {
+          this.__toggleTarget.removeAttribute("tabindex");
+        }
+      }
       /* computed example
       if (['id', 'selected'].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
@@ -251,13 +425,44 @@ class PageContentsMenu extends LitElement {
     });
   }
   /**
+   * Update the menu. This can be run manually to easily wire into mutationobservers
+   * or other events that modify what's in the content container node without
+   * constantly monitoring it for changes.
+   */
+  updateMenu() {
+    const validTags = this.hierarchyTags;
+    let items = [];
+    // loop over the new nodes
+    for (var i = 0; i < this.contentContainer.childNodes.length; i++) {
+      // verify this tag is a valid one
+      let item = this.contentContainer.childNodes[i];
+      if (
+        typeof item.tagName !== typeof undefined &&
+        validTags.includes(item.tagName.toLowerCase())
+      ) {
+        let reference = {
+          title: item.innerText,
+          link: item.id ? "#" + item.id : null,
+          object: item,
+          indent: parseInt(item.tagName.toLowerCase().replace("h", ""))
+        };
+        items.push(reference);
+      }
+    }
+    if (items.length === 0) {
+      this.isEmpty = true;
+    } else {
+      this.isEmpty = false;
+    }
+    this.items = [...items];
+  }
+  /**
    * When our content container changes, process the hierarchy in question
    */
   _contentContainerChanged(newValue) {
-    if (newValue && newValue.innerHTML) {
-      // @todo use HAX element scrappign thing to take a blob of content
-      // and convert it into a hierarchy, much like the map does
-      this._items = [];
+    // simple test that this has content in it to parse
+    if (newValue && newValue.childNodes && newValue.childNodes.length > 0) {
+      this.updateMenu();
     }
   }
 }

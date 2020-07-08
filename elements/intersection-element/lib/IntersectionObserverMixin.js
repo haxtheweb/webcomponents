@@ -28,6 +28,23 @@ const IntersectionObserverMixin = function(SuperClass) {
       this.IODelay = 100;
     }
     /**
+     * Properties, LitElement format
+     */
+    static get properties() {
+      let props = {};
+      if (super.properties) {
+        props = super.properties;
+      }
+      return {
+        ...props,
+        elementVisible: {
+          type: Boolean,
+          attribute: "element-visible",
+          reflect: true
+        }
+      };
+    }
+    /**
      * HTMLElement specification
      */
     connectedCallback() {

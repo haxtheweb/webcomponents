@@ -29,27 +29,38 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         :host {
           display: block;
           font-size: 16px;
-          transition: 0.3s all ease-in-out;
         }
         :host([disabled]) {
           pointer-events: none;
           opacity: 0.3;
         }
         a {
-          color: var(--site-menu-button-link-color, black);
+          display: block;
+          color: var(--site-menu-button-link-color);
           text-decoration: var(--site-menu-button-link-decoration, underline);
         }
         paper-button {
-          transition: 0.3s all ease-in-out;
+          display: flex;
+          transition: 0.2s color linear;
           min-width: unset;
         }
         paper-button:hover,
         paper-button:focus,
         paper-button:active {
           color: var(--site-menu-button-button-hover-color, inherit);
+          outline: 2px solid var(--site-menu-button-button-hover-color, inherit);
+          outline-offset: 2px;
           background-color: var(
             --site-menu-button-button-hover-background-color,
             inherit
+          );
+        }
+        paper-button:hover iron-icon,
+        paper-button:focus iron-icon,
+        paper-button:active iron-icon {
+          --iron-icon-fill-color: var(
+            --site-menu-button-button-hover-color,
+            black
           );
         }
         iron-icon {
@@ -83,6 +94,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
   }
   constructor() {
     super();
+    this.hideLabel = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun(reaction => {
       this.activeRouterManifestIndex = toJS(store.activeRouterManifestIndex);
@@ -130,9 +142,17 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           <slot name="suffix"></slot>
         </paper-button>
       </a>
-      <simple-tooltip for="menulink" offset="8" .position="${this.position}">
-        ${this.label}
-      </simple-tooltip>
+      ${!this.hideLabel
+        ? html`
+            <simple-tooltip
+              for="menulink"
+              offset="8"
+              .position="${this.position}"
+            >
+              ${this.label}
+            </simple-tooltip>
+          `
+        : ``}
     `;
   }
   /**
@@ -170,6 +190,10 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
       label: {
         type: String
       },
+      hideLabel: {
+        type: Boolean,
+        attribute: "hide-label"
+      },
       icon: {
         type: String
       },
@@ -191,6 +215,15 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
       }
       if (propName == "link") {
         this._linkChanged(this[propName]);
+      }
+      if (propName == "label") {
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
       }
       if (
         ["type", "activeRouterManifestIndex", "routerManifest"].includes(

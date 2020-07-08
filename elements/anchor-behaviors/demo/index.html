@@ -46,7 +46,9 @@
             window.onload = function(){
               let anchor = window.AnchorBehaviors,
                 detail = document.getElementById('detail');
-              window.AnchorBehaviors.getTarget();
+              setTimeout(() => {
+                window.AnchorBehaviors.getTarget();                
+              }, 500);
               detail.innerHTML = `window.AnchorBehaviors.params = ${JSON.stringify(anchor.params)};`;
               if(anchor.target !== null) anchor.target.appendChild(detail);
             }

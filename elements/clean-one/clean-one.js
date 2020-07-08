@@ -32,7 +32,16 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
       ...super.styles,
       css`
         :host {
-          display: block;
+          color: #242A31;
+          width: 100%;
+          margin: 0;
+          display: flex;
+          padding: 0;
+          background: #F5F7F9;
+          min-height: 100vh;
+          flex-direction: column;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
           --haxcms-base-styles-body-font-size:14px;
           --hax-base-styles-a-font-size: 14px;
           --hax-base-styles-p-font-size: 14px;
@@ -58,6 +67,9 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
+        }
+        site-git-corner {
+          --site-git-corner-background: black;
         }
         simple-tooltip {
           --simple-tooltip-background: var(
@@ -153,10 +165,10 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         simple-popover:not(:defined) {
           display: none;
         }
-        
         .btn-container {
-          position: fixed;
           z-index: 2;
+          height: 50px;
+          padding: 6px;
         }
         site-menu {
           height: auto;
@@ -180,7 +192,10 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site.color-theme-0 paper-icon-button,
         .site.color-theme-0 site-rss-button,
-        .site.color-theme-0 site-print-button {
+        .site.color-theme-0 site-print-button,
+        .site.color-theme-0 site-git-corner {
+          --site-git-corner-background: #252737;
+          --site-git-corner-color: #F5F5F5;
           --iron-icon-fill-color: #252737;
           --haxcms-tooltip-color: #F5F5F5;
           --haxcms-tooltip-background-color: #252737;
@@ -192,23 +207,26 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site.color-theme-1 site-menu {
           --site-menu-active-color: #1C1C1C;
-          --site-menu-item-active-item-color: #704214;
+          --site-menu-item-active-item-color: #eee8e0;
           --haxcms-tooltip-color: #f3eacb;
-          --haxcms-tooltip-background-color: #704214;
+          --haxcms-tooltip-background-color: #eee8e0;
         }
         .site.color-theme-1 simple-tooltip {
-          --simple-tooltip-background:#704214;
+          --simple-tooltip-background:#eee8e0;
           --simple-tooltip-text-color:#f3eacb;
         }
         .site.color-theme-1 scroll-button {
-          --scroll-button-color: #704214;
+          --scroll-button-color: #eee8e0;
           --scroll-button-background-color: #f3eacb;
           --scroll-button-tooltip-background-color:#704214;
           --scroll-button-tooltip-color:#f3eacb;
         }
         .site.color-theme-1 paper-icon-button,
         .site.color-theme-1 site-rss-button,
-        .site.color-theme-1 site-print-button {
+        .site.color-theme-1 site-print-button,
+        .site.color-theme-1 site-git-corner {
+          --site-git-corner-background: #704214;
+          --site-git-corner-color: #f3eacb;
           --iron-icon-fill-color: #704214;
           --haxcms-tooltip-color: #f3eacb;
           --haxcms-tooltip-background-color: #704214;
@@ -230,7 +248,10 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site.color-theme-2 paper-icon-button,
         .site.color-theme-2 site-rss-button,
-        .site.color-theme-2 site-print-button {
+        .site.color-theme-2 site-print-button,
+        .site.color-theme-2 site-git-corner {
+          --site-git-corner-background: #a6a6a6;
+          --site-git-corner-color: #252737;
           --iron-icon-fill-color: #a6a6a6;
           --haxcms-tooltip-color: #a6a6a6;
           --haxcms-tooltip-background-color: #252737;
@@ -333,6 +354,9 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         :host([edit-mode]) .main-section {
           outline: 1px solid grey;
           outline-offset: 20px;
+        }
+        :host([edit-mode]) {
+          opacity: 1;
         }
         .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
           margin-top: 1.275em;
@@ -443,7 +467,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           top: 0;
           left: 0;
           right: 0;
-          margin: 0;
+          margin: 10px 200px;
           font-size: 20px;
           font-weight: 200;
           text-align: center;
@@ -453,8 +477,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           -moz-transition: opacity ease .4s;
           -o-transition: opacity ease .4s;
           transition: opacity ease .4s;
-          padding-left: 200px;
-          padding-right: 200px;
           -webkit-transition: opacity .2s ease;
           -moz-transition: opacity .2s ease;
           -o-transition: opacity .2s ease;
@@ -465,6 +487,11 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
         }
         .site-header site-active-title h1:hover {
           opacity: 1;
+        }
+        @media (max-width: 700px){
+          .link-actions {
+            display: none;
+          }
         }
         @media (max-width: 1000px){
           .site-header site-active-title {
@@ -590,7 +617,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           .color-theme-1 .dropdown-menu .button:hover,
           .color-theme-1 .dropdown-menu .button:focus,
           .color-theme-1 .dropdown-menu .button:active {
-            color: #73553c;
+            color: #eee8e0;
           }
           /*
           * Theme 2
@@ -848,12 +875,12 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
             background: transparent;
           }
           .site.color-theme-1 .site-header .btn {
-            color: #afa790;
+            color: #eee8e0;
           }
           .site.color-theme-1 .site-header .btn:hover,
           .site.color-theme-1 .site-header .btn:focus,
           .site.color-theme-1 .site-header .btn:active {
-            color: #73553c;
+            color: #eee8e0;
             background: none;
           }
           .site.color-theme-1 .site-header site-active-title {
@@ -881,7 +908,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
           .site.color-theme-1 .site-body .navigation:hover,
           .site.color-theme-1 .site-body .navigation:focus,
           .site.color-theme-1 .site-body .navigation:active {
-            color: #73553c;
+            color: #eee8e0;
           }
           .site.color-theme-2 .site-body .navigation {
             color: #383f52;
@@ -963,7 +990,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
             right: 16px;
           }
           .link-actions {
-            position: fixed;
             top: 0;
             right: 16px;
           }
@@ -1171,11 +1197,8 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
                   <site-print-button
                     class="btn js-toolbar-action"
                   ></site-print-button>
-                  <site-print-button
-                    type="site"
-                    class="btn js-toolbar-action"
-                  ></site-print-button>
                   <site-rss-button type="rss"></site-rss-button>
+                  <site-git-corner size="small"></site-git-corner>
                 </div>
               </div>
               <site-active-title></site-active-title>
@@ -1186,7 +1209,6 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
                   <site-search
                     hide-input
                     search="${this.searchTerm}"
-                    @search-item-selected="${this.searchItemSelected}"
                     ?hidden="${this.searchTerm != "" ? false : true}"
                   ></site-search>
                   <div
@@ -1219,10 +1241,7 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
       </div>
     `;
   }
-  searchItemSelected(e) {
-    // an item was picked, let's just make the UI jump to that item
-    this.searchTerm = "";
-  }
+
   searchChanged(e) {
     if (e.path[0].value) {
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
@@ -1277,10 +1296,10 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
    */
   constructor() {
     super();
+    this.HAXCMSThemeSettings.autoScroll = true;
     this.hideSettings = true;
     this.fontSize = 1;
     this.fontFamily = 0;
-    this.searchTerm = "";
     this.colorTheme = 0;
     this.withMenu = "with-menu";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
@@ -1288,9 +1307,11 @@ class CleanOne extends HAXCMSThemeParts(HAXCMSLitElementTheme) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun(reaction => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
+      this.searchTerm = "";
       this.__disposer.push(reaction);
     });
     this.addEventListener("click", this.checkMenuOpen.bind(this));

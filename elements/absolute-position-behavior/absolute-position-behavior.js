@@ -28,6 +28,7 @@ class AbsolutePositionBehavior extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

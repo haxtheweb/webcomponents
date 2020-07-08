@@ -16,14 +16,46 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
+      <h3>Basic page-contents-menu mobile</h3>
+      <demo-snippet>
+        <template>
+          <page-contents-menu mobile id="t1"></page-contents-menu>
+        </template>
+      </demo-snippet>
       <h3>Basic page-contents-menu demo</h3>
       <demo-snippet>
         <template>
-          <page-contents-menu>
-            This is page-contents-menu
-          </page-contents-menu>
+          <page-contents-menu id="t2"></page-contents-menu>
         </template>
       </demo-snippet>
     </div>
+    <page-contents-menu mobile relationship="next"></page-contents-menu>
+    <div id="content">
+      <page-contents-menu mobile relationship="parent"></page-contents-menu>
+      <h1>This is a menu position to a heading</h1>
+      <p>Stuff and things</p>
+      <h2>Something else</h2>
+      <p>Stuff and things</p>
+      <h2 id="whatever">Something 2</h2>
+      <p>Stuff and things</p>
+      <p>Stuff and thingsStuff and thingsStuff and thingsStuff and thingsStuff and thingsStuff and thingsStuff and thingsStuff and things
+        Stuff and thingsStuff and thingsStuff and thingsStuff and thingsStuff and things
+        Stuff and thingsStuff and thingsStuff and thingsStuff and things
+        Stuff and thingsStuff and thingsStuff and things
+      </p>
+      <p>Stuff and things</p>
+      <p>Stuff and things</p>
+      <h3 id="cool">Something deeper</h3>
+      <p>Stuff and things</p>
+      <p>Stuff and things</p>
+      <p>Stuff and things</p>
+      <h2>Something else 2</h2>
+    </div>
+    <script defer async>
+      setTimeout(() => {
+        document.getElementById('t1').contentContainer = document.getElementById('content');
+        document.getElementById('t2').contentContainer = document.getElementById('content');        
+      }, 500);
+    </script>
   </body>
 </html>

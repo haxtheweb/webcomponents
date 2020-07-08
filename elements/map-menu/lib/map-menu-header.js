@@ -68,7 +68,7 @@ class MapMenuHeader extends LitElement {
         }
 
         .title {
-          font-size: var(--map-menu-font-size, 16px);
+          font-size: var(--map-menu-font-size);
         }
 
         #right iron-icon {

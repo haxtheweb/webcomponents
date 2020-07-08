@@ -22,7 +22,6 @@ class MapMenu extends LitElement {
         :host {
           --map-menu-active-color: rgba(0, 0, 0, 0.1);
           --map-menu-size: 1;
-          --map-menu-font-size: 16px;
           display: block;
           overflow-y: scroll;
           position: relative;

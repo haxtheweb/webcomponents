@@ -160,6 +160,7 @@ class AbsolutePositionStateManager extends LitElement {
       el.for !== undefined &&
       target === null &&
       ancestor !== null &&
+      ancestor.parentNode !== null &&
       ancestor !== document
     ) {
       ancestor = ancestor.parentNode;

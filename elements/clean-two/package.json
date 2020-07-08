@@ -1,35 +1,35 @@
 {
-  "name": "@lrnwebcomponents/clean-one",
+  "name": "@lrnwebcomponents/clean-two",
   "wcfactory": {
-    "className": "CleanOne",
+    "className": "CleanTwo",
     "customElementClass": "LitElement",
-    "elementName": "clean-one",
+    "elementName": "clean-two",
     "generator-wcfactory-version": "0.8.4",
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/clean-one.css",
-      "scss": "src/clean-one.scss",
-      "html": "src/clean-one.html",
-      "js": "src/clean-one.js",
-      "properties": "src/clean-one-properties.json",
-      "hax": "src/clean-one-hax.json"
+      "css": "src/clean-two.css",
+      "scss": "src/clean-two.scss",
+      "html": "src/clean-two.html",
+      "js": "src/clean-two.js",
+      "properties": "src/clean-two-properties.json",
+      "hax": "src/clean-two-hax.json"
     },
     "sharedHaxProps": [],
     "sharedProps": [],
     "sharedStyles": []
   },
   "version": "2.6.22",
-  "description": "Clean HAXcms theme, one.",
+  "description": "A 2nd clean theme",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "clean-one.js",
-  "module": "clean-one.js",
-  "umd": "clean-one.umd.js",
+  "main": "clean-two.js",
+  "module": "clean-two.js",
+  "umd": "clean-two.umd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/clean-one/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/clean-two/test/",
     "start": "yarn run dev",
     "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
@@ -43,13 +43,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/haxcms-elements": "^2.6.22",
-    "@lrnwebcomponents/scroll-button": "^2.6.22",
-    "@lrnwebcomponents/simple-colors": "^2.6.21",
-    "@lrnwebcomponents/simple-popover": "^2.6.21",
-    "@polymer/iron-icons": "3.0.1",
-    "@polymer/paper-icon-button": "3.0.2",
-    "lit-element": "2.3.1",
-    "mobx": "5.15.4"
+    "@lrnwebcomponents/simple-colors": "^2.6.2",
+    "lit-element": "2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.4.0",

@@ -64,11 +64,6 @@
     "type": Number,
     "reflect": true
   },
-  "visibleLimit": {
-    "type": Number,
-    "reflect": true,
-    "attribute": "visible-limit"
-  },
   "elementVisible": {
     "type": Boolean
   }

@@ -143,7 +143,7 @@ class LunrSearch extends LitElement {
             data,
             this.fields,
             true,
-            index
+            this.__lunrLoaded
           );
         }
         searched = this.indexNoStopWords.search(search);
