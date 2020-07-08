@@ -12,103 +12,108 @@ import "./lib/absolute-position-state-manager";
  * @element absolute-position-behavior
  */
 class AbsolutePositionBehavior extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: inline-block;
-          z-index: 99999999;
-          position: absolute;
-        }
+:host {
+  display: inline-block;
+  z-index: 99999999;
+  position: absolute;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
-  // render function
+
+// render function
   render() {
     return html`
-      <slot></slot>
-    `;
+
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Element is positioned from connected to disconnected?
-       * Otherwise setPosition and unsetPosition must be called manually.
-       */
-      auto: {
-        type: Boolean,
-        attribute: "auto"
-      },
-      /**
-       * If true, no parts of the tooltip will ever be shown offscreen.
-       */
-      fitToVisibleBounds: {
-        type: Boolean,
-        attribute: "fit-to-visible-bounds"
-      },
-      /**
-       * If true, no parts of the tooltip will ever be shown offscreen.
-       */
-      hidden: {
-        type: Boolean,
-        attribute: "hidden"
-      },
-      /**
-       * The id of the element that the tooltip is anchored to. This element
-       * must be a sibling of the tooltip. If this property is not set,
-       * then the tooltip will be centered to the parent node containing it.
-       */
-      for: {
-        type: String,
-        attribute: "for",
-        reflect: true
-      },
-      /**
-       * The spacing between the top of the tooltip and the element it is
-       * anchored to.
-       */
-      offset: {
-        type: Number,
-        attribute: "offset"
-      },
-      /**
-       * Positions the tooltip to the top, right, bottom, left of its content.
-       */
-      position: {
-        type: String,
-        attribute: "position",
-        reflect: true
-      },
-      /**
-       * Aligns at the start, or end fo target. Default is centered.
-       */
-      positionAlign: {
-        type: String,
-        attribute: "position-align",
-        reflect: true
-      },
-      /**
-       * The actual target element
-       */
-      target: {
-        type: Object
-      },
-      /**
-       * The element's style
-       */
-      __positions: {
-        type: Object
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Element is positioned from connected to disconnected?
+   * Otherwise setPosition and unsetPosition must be called manually.
+   */
+  "auto": {
+    "type": Boolean,
+    "attribute": "auto"
+  },
+  /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "fitToVisibleBounds": {
+    "type": Boolean,
+    "attribute": "fit-to-visible-bounds"
+  },
+  /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "hidden": {
+    "type": Boolean,
+    "attribute": "hidden"
+  },
+  /**
+   * The id of the element that the tooltip is anchored to. This element
+   * must be a sibling of the tooltip. If this property is not set,
+   * then the tooltip will be centered to the parent node containing it.
+   */
+  "for": {
+    "type": String,
+    "attribute": "for",
+    "reflect": true
+  },
+  /**
+   * The spacing between the top of the tooltip and the element it is
+   * anchored to.
+   */
+  "offset": {
+    "type": Number,
+    "attribute": "offset"
+  },
+  /**
+   * Positions the tooltip to the top, right, bottom, left of its content.
+   */
+  "position": {
+    "type": String,
+    "attribute": "position",
+    "reflect": true
+  },
+  /**
+   * Aligns at the start, or end fo target. Default is centered.
+   */
+  "positionAlign": {
+    "type": String,
+    "attribute": "position-align",
+    "reflect": true
+  },
+  /**
+   * The actual target element
+   */
+  "target": {
+    "type": Object
+  },
+  /**
+   * The element's style
+   */
+  "__positions": {
+    "type": Object
+  }
+}
+;
   }
 
   /**

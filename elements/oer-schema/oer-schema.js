@@ -76,7 +76,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
       relatedResource: {
         type: String,
         attribute: "related-resource"
-      },
+      }
     };
   }
   static get haxProperties() {
