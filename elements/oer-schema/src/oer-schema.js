@@ -77,12 +77,6 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
         type: String,
         attribute: "related-resource"
       },
-      /**
-       * License link object for semantic meaning
-       */
-      _OERLink: {
-        type: Object
-      }
     };
   }
   static get haxProperties() {
@@ -164,15 +158,17 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
     };
   }
   _generateforComponentLink(source) {
-    // remove existing if this is moving around
-    if (this._OERLink) {
-      document.head.removeChild(this._OERLink);
+    if (document && document.head) {
+      // remove existing if this is moving around
+      if (this._OERLink) {
+        document.head.removeChild(this._OERLink);
+      }
+      let link = document.createElement("link");
+      link.setAttribute("property", "oer:forComponent");
+      link.setAttribute("content", this.relatedResource);
+      document.head.appendChild(link);
+      return link;
     }
-    let link = document.createElement("link");
-    link.setAttribute("property", "oer:forComponent");
-    link.setAttribute("content", this.relatedResource);
-    document.head.appendChild(link);
-    return link;
   }
 }
 window.customElements.define(OerSchemaElement.tag, OerSchemaElement);
