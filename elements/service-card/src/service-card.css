@@ -1,0 +1,11 @@
+/* 
+  LIST SHARED STYLES BELOW
+
+*/
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}

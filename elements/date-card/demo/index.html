@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>DateCard: date-card Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../date-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic date-card demo</h3>
+      <demo-snippet>
+        <template>
+          <date-card month="August" date="2" day="Wednesday"></date-card><br>
+          <date-card></date-card><br>
+          <date-card month="August" date="4" day="Friday" title="IST Ice Cream Social" start-time="4PM" end-time="6PM" location="West Dining Commons" accent-color="orange"></date-card><br>
+          <date-card month="August" date="4" day="Friday" title="IST Ice Cream Social" start-time="4PM" end-time="6PM"></date-card><br>
+          <date-card month="August" date="4" day="Friday" title="IST Ice Cream Social" start-time="4PM" location="West Dining Commons" accent-color="green"></date-card><br>
+          <date-card month="August" date="4" day="Friday" title="IST Ice Cream Social" end-time="6PM" location="West Dining Commons" border-spacing="20" accent-color="blue" dark></date-card><br>
+          <date-card month="August" date="4" title="IST Ice Cream Social" end-time="6PM" location="West Dining Commons" accent-color="purple"></date-card>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
