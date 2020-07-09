@@ -29,13 +29,92 @@ class DateCard extends SimpleColors {
     };
   }
 
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Date card",
+        description: "Displays a calendar date with details",
+        icon: "hax:calendar",
+        color: "green",
+        groups: ["Date"],
+        handles: [],
+        meta: {
+          author: "McGarvelcuddy",
+          owner: "elmsln"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "month",
+            title: "Month",
+            description: "Month to display on card",
+            inputMethod: "textfield"
+          },
+          {
+            property: "date",
+            title: "Day of month",
+            description: "Numeric date of the month",
+            inputMethod: "number"
+          },
+          {
+            property: "day",
+            title: "Day of week",
+            description: "Textual day of the week",
+            inputMethod: "textfield"
+          },
+          {
+            property: "title",
+            title: "Title",
+            description: "Name of the event",
+            inputMethod: "textfield"
+          },
+          {
+            property: "location",
+            title: "Location",
+            description: "Where it is taking place",
+            inputMethod: "textfield"
+          },
+          {
+            property: "startTime",
+            title: "Start",
+            description: "Start time",
+            inputMethod: "textfield"
+          },
+          {
+            property: "endTime",
+            title: "End",
+            description: "Start time",
+            inputMethod: "textfield"
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean"
+          },
+        ],
+        advanced: []
+      }
+    };
+  }
   constructor() {
     super();
     this.borderSpacing = 5;
     this.accentColor = "light-blue";
   }
 
-  nth = function(d) {
+  nth(d) {
     if (!d) {
       return "";
     }
@@ -50,7 +129,7 @@ class DateCard extends SimpleColors {
       default:
         return "th";
     }
-  };
+  }
 
   static get styles() {
     return [
@@ -176,5 +255,5 @@ class DateCard extends SimpleColors {
     `;
   }
 }
-window.customElements.define(DateCard.tag, DateCard);
+customElements.define(DateCard.tag, DateCard);
 export { DateCard };

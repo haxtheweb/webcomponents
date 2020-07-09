@@ -102,7 +102,7 @@ class DateCard extends SimpleColors {
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean"
-          }
+          },
         ],
         advanced: []
       }
@@ -114,7 +114,7 @@ class DateCard extends SimpleColors {
     this.accentColor = "light-blue";
   }
 
-  nth = function(d) {
+  nth(d) {
     if (!d) {
       return "";
     }
@@ -129,7 +129,7 @@ class DateCard extends SimpleColors {
       default:
         return "th";
     }
-  };
+  }
 
   static get styles() {
     return [
@@ -255,5 +255,5 @@ class DateCard extends SimpleColors {
     `;
   }
 }
-window.customElements.define(DateCard.tag, DateCard);
+customElements.define(DateCard.tag, DateCard);
 export { DateCard };

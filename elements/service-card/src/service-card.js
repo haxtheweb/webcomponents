@@ -17,10 +17,58 @@ class ServiceCard extends LitElement {
 
   static get properties() {
     return {
-      image: { type: String },
+      source: { type: String },
       title: { type: String },
-      info: { type: String },
       alt: { type: String }
+    };
+  }
+
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Service card",
+        description: "Simple presentation of services or info",
+        icon: "icons:credit-card",
+        color: "orange",
+        groups: ["Card"],
+        handles: [],
+        meta: {
+          author: "McGarvelcuddy",
+          owner: "elmsln"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "source",
+            title: "Source",
+            inputMethod: "haxupload",
+          },
+          {
+            property: "alt",
+            title: "Alt Text",
+            description: "Alternative text for non-sighted users",
+            inputMethod: "alt"
+          },
+          {
+            property: "title",
+            title: "Title",
+            description: "Service title / name",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "",
+            title: "Decription",
+            description: "Details of the service",
+            inputMethod: "code-editor"
+          },
+        ],
+        advanced: []
+      }
     };
   }
 
@@ -71,7 +119,7 @@ class ServiceCard extends LitElement {
           <img
             loading="lazy"
             class="avatar"
-            src="${this.image}"
+            src="${this.source}"
             alt="${this.alt}"
           />
           <h3 class="title"><b>${this.title}</b></h3>
