@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "threaded-discussion",
+      "description": "`threaded-discussion`\nan accessible expand collapse\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-margin` | margin around threaded-discussion | 15px 0\n`--threaded-discussion-border` | border around threaded-discussion | 1px solid\n`--threaded-discussion-horizontal-padding` | horizontal padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-left` | left padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-horizontal-padding-right` | right padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-vertical-padding` | vertical padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-top` | top padding inside threaded-discussion | `--threaded-discussion-vertical-padding`\n`--threaded-discussion-horizontal-padding-bottom` | bottom padding inside threaded-discussion | --threaded-discussion-vertical-padding\n`--threaded-discussion-border-between` | border between threaded-discussion heading and content | --threaded-discussion-border\n`--threaded-discussion-heading-font-weight` | font-weight for threaded-discussion heading | bold\n`--threaded-discussion-heading-color` | text color for threaded-discussion heading | unset\n`--threaded-discussion-heading-background-color` | background-color for threaded-discussion heading | unset\n`--threaded-discussion-overflow-y` | override default overflow behavior | hidden\n`--threaded-discussion-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `threaded-discussion-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `threaded-discussion-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
+      "attributes": [
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+        },
+        {
+          "name": "accordion",
+          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
+        },
+        {
+          "name": "onthreaded-discussion-attached",
+          "description": "`threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it."
+        },
+        {
+          "name": "onthreaded-discussion-detached",
+          "description": "`threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "onthreaded-discussion-toggle",
+          "description": "`threaded-discussion-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "onthreaded-discussion-click",
+          "description": "`threaded-discussion-click` - Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "threaded-discussion",
+      "description": "`threaded-discussion`\nan accessible expand collapse\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-margin` | margin around threaded-discussion | 15px 0\n`--threaded-discussion-border` | border around threaded-discussion | 1px solid\n`--threaded-discussion-horizontal-padding` | horizontal padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-left` | left padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-horizontal-padding-right` | right padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-vertical-padding` | vertical padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-top` | top padding inside threaded-discussion | `--threaded-discussion-vertical-padding`\n`--threaded-discussion-horizontal-padding-bottom` | bottom padding inside threaded-discussion | --threaded-discussion-vertical-padding\n`--threaded-discussion-border-between` | border between threaded-discussion heading and content | --threaded-discussion-border\n`--threaded-discussion-heading-font-weight` | font-weight for threaded-discussion heading | bold\n`--threaded-discussion-heading-color` | text color for threaded-discussion heading | unset\n`--threaded-discussion-heading-background-color` | background-color for threaded-discussion heading | unset\n`--threaded-discussion-overflow-y` | override default overflow behavior | hidden\n`--threaded-discussion-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `threaded-discussion-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `threaded-discussion-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
+      "attributes": [
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+        },
+        {
+          "name": "accordion",
+          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
+        },
+        {
+          "name": "onthreaded-discussion-attached",
+          "description": "`threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it."
+        },
+        {
+          "name": "onthreaded-discussion-detached",
+          "description": "`threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "onthreaded-discussion-toggle",
+          "description": "`threaded-discussion-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "onthreaded-discussion-click",
+          "description": "`threaded-discussion-click` - Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "threaded-discussion-group",
+      "description": "`threaded-discussion-group`\na group of `threaded-discussion` elements\n\n### Styling\n\n`<threaded-discussion-group>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-group-margin` | margin around the threaded-discussion-group | 15px 0\n\nAttributes:\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `global-options` - an array of globalProperties to override every threaded-discussion item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\n  * `radio` {`boolean`} - is every threaded-discussion item radio button?\n\n  * `__items` {`any[]`} - is radio button\n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `accordion` - \n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` - \n\n  * `icon` - \n\n  * `iconExpanded` - \n\n  * `label` - \n\n  * `labelExpanded` - \n\n  * `tooltip` - \n\n  * `tooltipExpanded` - \n\n  * `globalOptions` - an array of globalProperties to override every threaded-discussion item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\n  * `radio` {`boolean`} - is every threaded-discussion item radio button?\n\n  * `__items` {`any[]`} - is radio button",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: null",
+          "valueSet": "v"
+        },
+        {
+          "name": "global-options",
+          "description": "`global-options` - an array of globalProperties to override every threaded-discussion item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\nProperty: globalOptions\n\nDefault: [object Object]"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - is every threaded-discussion item radio button?\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - is radio button\n\nProperty: __items\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `threaded-discussion-attached` - \n\n  * `threaded-discussion-detached` - \n\n  * `toggle` - \n\n  * `threaded-discussion-toggle` - \n\n  * `expand` - \n\n  * `collapse` - \n\n  * `threaded-discussion-click` - ",
+      "attributes": [
+        {
+          "name": "onthreaded-discussion-attached",
+          "description": "`threaded-discussion-attached` - "
+        },
+        {
+          "name": "onthreaded-discussion-detached",
+          "description": "`threaded-discussion-detached` - "
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - "
+        },
+        {
+          "name": "onthreaded-discussion-toggle",
+          "description": "`threaded-discussion-toggle` - "
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - "
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - "
+        },
+        {
+          "name": "onthreaded-discussion-click",
+          "description": "`threaded-discussion-click` - "
+        }
+      ]
+    },
+    {
+      "name": "threaded-discussion",
+      "description": "`threaded-discussion`\nan accessible expand collapse\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-margin` | margin around threaded-discussion | 15px 0\n`--threaded-discussion-border` | border around threaded-discussion | 1px solid\n`--threaded-discussion-horizontal-padding` | horizontal padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-left` | left padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-horizontal-padding-right` | right padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-vertical-padding` | vertical padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-top` | top padding inside threaded-discussion | `--threaded-discussion-vertical-padding`\n`--threaded-discussion-horizontal-padding-bottom` | bottom padding inside threaded-discussion | --threaded-discussion-vertical-padding\n`--threaded-discussion-border-between` | border between threaded-discussion heading and content | --threaded-discussion-border\n`--threaded-discussion-heading-font-weight` | font-weight for threaded-discussion heading | bold\n`--threaded-discussion-heading-color` | text color for threaded-discussion heading | unset\n`--threaded-discussion-heading-background-color` | background-color for threaded-discussion heading | unset\n`--threaded-discussion-overflow-y` | override default overflow behavior | hidden\n`--threaded-discussion-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `threaded-discussion-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `threaded-discussion-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
+      "attributes": [
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+        },
+        {
+          "name": "accordion",
+          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
+        },
+        {
+          "name": "onthreaded-discussion-attached",
+          "description": "`threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it."
+        },
+        {
+          "name": "onthreaded-discussion-detached",
+          "description": "`threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "onthreaded-discussion-toggle",
+          "description": "`threaded-discussion-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "onthreaded-discussion-click",
+          "description": "`threaded-discussion-click` - Fires when clicked."
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}
