@@ -41,10 +41,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-tooltip": "^2.6.17",
+    "@lrnwebcomponents/lrndesign-avatar": "2.0.5",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/paper-icon-button": "^3.0.2",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
