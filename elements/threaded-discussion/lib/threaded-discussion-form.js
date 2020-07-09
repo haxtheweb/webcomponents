@@ -285,14 +285,14 @@ class ThreadedDiscussionForm extends LitElement {
 
   _handleSubmit(e) {
     e.preventDefault();
-    if(this.demo) {
+    if (this.demo) {
       this.dispatchEvent(
         new CustomEvent("comment-demo", {
           bubbles: true,
           cancelable: true,
           composed: true,
           detail: {
-            textarea: this.shadowRoot.querySelector('textarea'),
+            textarea: this.shadowRoot.querySelector("textarea"),
             thread: this.thread
           }
         })

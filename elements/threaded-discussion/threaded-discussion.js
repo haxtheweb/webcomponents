@@ -149,7 +149,7 @@ class ThreadedDiscussion extends LitElement {
       ${this.ascending ? `` : this.threads}
       <div id="new-thread">
         <slot name="before-new-thread"></slot>
-        <threaded-discussion-form 
+        <threaded-discussion-form
           button-label="${this.commentButtonLabel || "Submit"}"
           class="comment-form"
           @comment-demo="${this._handleDemo}"
@@ -160,7 +160,8 @@ class ThreadedDiscussion extends LitElement {
           ?hidden="${this.hidden}"
           ?disabled="${this.disabled}"
           .submit="${this._getPath(this.submit, this.params)}"
-          textarea-label="${this.commentTextareaLabel || "Enter comment"}">
+          textarea-label="${this.commentTextareaLabel || "Enter comment"}"
+        >
         </threaded-discussion-form>
         <slot name="after-new-thread"></slot>
       </div>
@@ -221,7 +222,14 @@ class ThreadedDiscussion extends LitElement {
           </div>
         </div>
         <div class="comment-body">
-          ${!comment.body ? `` : comment.body.split(/[\r\n]+/).map(p=>html`<p>${p}</p>`)}
+          ${!comment.body
+            ? ``
+            : comment.body.split(/[\r\n]+/).map(
+                p =>
+                  html`
+                    <p>${p}</p>
+                  `
+              )}
         </div>
       </div>
     `;
@@ -342,37 +350,42 @@ class ThreadedDiscussion extends LitElement {
    */
   get mappedData() {
     let data = this._getArray(this.data || []);
-    return (data || []).filter(comment => !this._getMap(comment,"thread","replyThread")).map(thread => {
-      let params = this.params,
-        id = this._getMap(thread,"id"),
-        replies = this._getMap(thread,"replies") ||
-          (data || []).filter(comment => this._getMap(comment,"thread","replyThread") === id);
-      params[this._mapProp("thread")] = id;
-      return {
-        //gets all threads and comments if they are not mapped as nested array of thread
-        id: id,
-        firstName: this._getMap(thread,"firstName"),
-        lastName: this._getMap(thread,"lastName"),
-        avatar: this._getMap(thread,"avatar"),
-        body: this._getMap(thread,"body"),
-        color: this._getMap(thread,"color"),
-        date: this._getMap(thread,"date"),
-        submit: this._getPath(this.submit, params),
-        replies: this._getArray(replies).map(reply => {
-          //gets all comments if they are mapped as nested array of thread
-          return {
-            id: this._getMap(reply,"id","replyId"),
-            thread: this._getMap(reply,"thread","replyThread"),
-            firstName: this._getMap(reply,"firstName","replyFirstName"),
-            lastName: this._getMap(reply,"lastName","replyLastName"),
-            avatar: this._getMap(reply,"avatar","replyAvatar"),
-            body: this._getMap(reply,"body","replyBody"),
-            color: this._getMap(reply,"color","replyColor"),
-            date: this._getMap(reply,"date","replyDate")
-          };
-        })
-      };
-    });
+    return (data || [])
+      .filter(comment => !this._getMap(comment, "thread", "replyThread"))
+      .map(thread => {
+        let params = this.params,
+          id = this._getMap(thread, "id"),
+          replies =
+            this._getMap(thread, "replies") ||
+            (data || []).filter(
+              comment => this._getMap(comment, "thread", "replyThread") === id
+            );
+        params[this._mapProp("thread")] = id;
+        return {
+          //gets all threads and comments if they are not mapped as nested array of thread
+          id: id,
+          firstName: this._getMap(thread, "firstName"),
+          lastName: this._getMap(thread, "lastName"),
+          avatar: this._getMap(thread, "avatar"),
+          body: this._getMap(thread, "body"),
+          color: this._getMap(thread, "color"),
+          date: this._getMap(thread, "date"),
+          submit: this._getPath(this.submit, params),
+          replies: this._getArray(replies).map(reply => {
+            //gets all comments if they are mapped as nested array of thread
+            return {
+              id: this._getMap(reply, "id", "replyId"),
+              thread: this._getMap(reply, "thread", "replyThread"),
+              firstName: this._getMap(reply, "firstName", "replyFirstName"),
+              lastName: this._getMap(reply, "lastName", "replyLastName"),
+              avatar: this._getMap(reply, "avatar", "replyAvatar"),
+              body: this._getMap(reply, "body", "replyBody"),
+              color: this._getMap(reply, "color", "replyColor"),
+              date: this._getMap(reply, "date", "replyDate")
+            };
+          })
+        };
+      });
   }
   /**
    * gets a property value based on a conversion map
@@ -384,8 +397,8 @@ class ThreadedDiscussion extends LitElement {
    * @returns {*} property value
    * @memberof ThreadedDiscussion
    */
-  _getMap(obj,prop,map1,map2){
-    return obj[this._mapProp(prop,map1,map2)];
+  _getMap(obj, prop, map1, map2) {
+    return obj[this._mapProp(prop, map1, map2)];
   }
   /**
    * gets a mapped property based on a conversion map
@@ -397,7 +410,7 @@ class ThreadedDiscussion extends LitElement {
    * @returns {*} property
    * @memberof ThreadedDiscussion
    */
-  _mapProp(prop,map1,map2){
+  _mapProp(prop, map1, map2) {
     let map = this.map || {};
     map1 = map1 || prop;
     map2 = map2 || map1;
@@ -419,19 +432,25 @@ class ThreadedDiscussion extends LitElement {
    * @memberof ThreadedDiscussion
    */
   _handleDemo(e) {
-    if(e.detail && e.detail.textarea) {
-      let newComment = {}, data = this.data;
+    if (e.detail && e.detail.textarea) {
+      let newComment = {},
+        data = this.data;
       newComment[this._mapProp("id")] = `comment-${Date.now()}`;
       newComment[this._mapProp("firstName")] = "DEMO";
       newComment[this._mapProp("lastName")] = "USER";
       newComment[this._mapProp("date")] = this._getDate(new Date());
       newComment[this._mapProp("body")] = e.detail.textarea.value;
-      if(e.detail.thread){
-        let filter = data.filter(thread =>thread[this._mapProp("id")] === e.detail.thread),
+      if (e.detail.thread) {
+        let filter = data.filter(
+            thread => thread[this._mapProp("id")] === e.detail.thread
+          ),
           thread = filter ? filter[0] : undefined;
-          newComment[this._mapProp("thread","replyThread")] = e.detail.thread;
-        if(thread){
-          thread[this._mapProp("replies")] = [...thread[this._mapProp("replies")],newComment];
+        newComment[this._mapProp("thread", "replyThread")] = e.detail.thread;
+        if (thread) {
+          thread[this._mapProp("replies")] = [
+            ...thread[this._mapProp("replies")],
+            newComment
+          ];
         } else {
           data.push(newComment);
         }
@@ -441,7 +460,7 @@ class ThreadedDiscussion extends LitElement {
       }
       this.data = data;
       this.mappedData;
-      e.detail.textarea.value = '';
+      e.detail.textarea.value = "";
     }
   }
 

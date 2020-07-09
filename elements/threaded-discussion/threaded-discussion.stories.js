@@ -18,12 +18,9 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const ThreadedDiscussionStory = () => {
-  return utils.makeElementFromClass(
-    ThreadedDiscussion,
-    {
-      source: new URL(`./demo/discussion.json`, import.meta.url),
-      commentIcon: 'send',
-      demo: true
-    }
-  );
+  return utils.makeElementFromClass(ThreadedDiscussion, {
+    source: new URL(`./demo/discussion.json`, import.meta.url),
+    commentIcon: "send",
+    demo: true
+  });
 };
