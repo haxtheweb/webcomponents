@@ -22,7 +22,7 @@
       "...super.properties"
     ]
   },
-  "version": "2.6.21",
+  "version": "2.6.23",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",
@@ -46,9 +46,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^2.6.21",
-    "@lrnwebcomponents/schema-behaviors": "^2.6.21",
-    "@lrnwebcomponents/simple-colors": "^2.6.21",
+    "@lrnwebcomponents/responsive-utility": "^2.6.23",
+    "@lrnwebcomponents/schema-behaviors": "^2.6.23",
+    "@lrnwebcomponents/simple-colors": "^2.6.23",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
