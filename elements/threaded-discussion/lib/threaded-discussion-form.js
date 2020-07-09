@@ -177,7 +177,8 @@ class ThreadedDiscussionForm extends LitElement {
       <form 
         action="${this.submit}"
         ?hidden=${this.hidden || this.disabled}
-        class="${this.thread ? "reply-form" : "comment-form"}">
+        class="${this.thread ? "reply-form" : "comment-form"}"
+        @submit="${this._handleSubmit}">
         <label for="${this.field}">${this.textareaLabel}</label>
         <textarea
           id="${this.field}"
@@ -214,6 +215,12 @@ class ThreadedDiscussionForm extends LitElement {
         type: String,
         attribute: "button-label",
         reflect: true
+      },
+      /**
+       * whetherin demo mode
+       */
+      demo: {
+        type: Boolean
       },
       /**
        * whether form is disabled
@@ -276,16 +283,31 @@ class ThreadedDiscussionForm extends LitElement {
     import("@polymer/iron-icons/iron-icons.js");
   }
 
-  _handleSubmit() {
-    this.replying = false;
-    this.dispatchEvent(
-      new CustomEvent("reply-submitted", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
+  _handleSubmit(e) {
+    e.preventDefault();
+    if(this.demo) {
+      this.dispatchEvent(
+        new CustomEvent("comment-demo", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            textarea: this.shadowRoot.querySelector('textarea'),
+            thread: this.thread
+          }
+        })
+      );
+      return false;
+    } else {
+      this.dispatchEvent(
+        new CustomEvent("comment-submitted", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
   }
 }
 window.customElements.define(

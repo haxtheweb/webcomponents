@@ -149,15 +149,18 @@ class ThreadedDiscussion extends LitElement {
       ${this.ascending ? `` : this.threads}
       <div id="new-thread">
         <slot name="before-new-thread"></slot>
-        <threaded-discussion-form
+        <threaded-discussion-form 
           button-label="${this.commentButtonLabel || "Submit"}"
+          class="comment-form"
+          @comment-demo="${this._handleDemo}"
+          @comment-submitted="${this._handleSubmit}"
+          ?demo="${this.demo}"
           field="${this.map.body || "body"}"
           .icon="${this.commentIcon}"
-          ?hidden="${this.disabled}"
+          ?hidden="${this.hidden}"
+          ?disabled="${this.disabled}"
           .submit="${this._getPath(this.submit, this.params)}"
-          textarea-label="${this.commentTextareaLabel || "Enter comment"}"
-          @thread-submitted="${e => this._handleSubmit(e)}"
-        >
+          textarea-label="${this.commentTextareaLabel || "Enter comment"}">
         </threaded-discussion-form>
         <slot name="after-new-thread"></slot>
       </div>
@@ -178,6 +181,9 @@ class ThreadedDiscussion extends LitElement {
               <threaded-discussion-form
                 button-label="${this.replyButtonLabel || "Reply"}"
                 class="reply-form"
+                @comment-demo="${this._handleDemo}"
+                @comment-submitted="${this._handleSubmit}"
+                ?demo="${this.demo}"
                 field="${this.map.replyBody || this.map.body || "body"}"
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
@@ -185,7 +191,6 @@ class ThreadedDiscussion extends LitElement {
                 .submit="${this._getPath(this.submit, this.params)}"
                 textarea-label="${this.replyTextareaLabel || "Enter reply"}"
                 .thread="${thread.id}"
-                @thread-submitted="${e => this._handleSubmit(e)}"
               >
               </threaded-discussion-form>
             </div>
@@ -216,7 +221,7 @@ class ThreadedDiscussion extends LitElement {
           </div>
         </div>
         <div class="comment-body">
-          ${comment.body}
+          ${!comment.body ? `` : comment.body.split(/[\r\n]+/).map(p=>html`<p>${p}</p>`)}
         </div>
       </div>
     `;
@@ -305,7 +310,7 @@ class ThreadedDiscussion extends LitElement {
     this.demo = false;
     this.map = {};
     this.params = {};
-    this.submit = "";
+    this.submit = window.location.href;
     import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -336,57 +341,108 @@ class ThreadedDiscussion extends LitElement {
    * @memberof ThreadedDiscussion
    */
   get mappedData() {
-    console.log("mappedData", this.data);
     let data = this._getArray(this.data || []);
-    return (this.map = {}
-      ? data || []
-      : (data || [])
-          .filter(comment => !comment[this.map.thread || "thread"])
-          .map(thread => {
-            let params = this.params,
-              id = thread[this.map.id || "id"],
-              threads =
-                thread[this.map.threads || "threads"] ||
-                (data || []).filter(
-                  comment =>
-                    comment[this.map.thread || "thread"] ===
-                    thread[this.map.id || "id"]
-                );
-            params[this.map.thread || "thread"] = id;
-            return {
-              //gets all threads and comments if they are not mapped as nested array of thread
-              id: id,
-              firstName: thread[this.map.firstName || "firstName"],
-              lastName: thread[this.map.lastName || "lastName"],
-              avatar: thread[this.map.avatar || "avatar"],
-              body: thread[this.map.body || "body"],
-              color: thread[this.map.color || "color"],
-              date: thread[this.map.date || "date"],
-              submit: this._getPath(this.submit, params),
-              replies: this._getArray(threads).map(reply => {
-                //gets all comments if they are mapped as nested array of thread
-                return {
-                  id: reply[this.map.replyId || this.map.id || "id"],
-                  firstName:
-                    thread[
-                      his.map.replyFirstName ||
-                        this.map.firstName ||
-                        "firstName"
-                    ],
-                  lastName:
-                    thread[
-                      his.map.replyLastName || this.map.lastName || "lastName"
-                    ],
-                  avatar:
-                    reply[this.map.replyAvatar || this.map.avatar || "avatar"],
-                  body: reply[this.map.replyBody || this.map.body || "body"],
-                  color:
-                    reply[this.map.replyColor || this.map.color || "color"],
-                  date: reply[this.map.replyDate || this.map.date || "date"]
-                };
-              })
-            };
-          }));
+    return (data || []).filter(comment => !this._getMap(comment,"thread","replyThread")).map(thread => {
+      let params = this.params,
+        id = this._getMap(thread,"id"),
+        replies = this._getMap(thread,"replies") ||
+          (data || []).filter(comment => this._getMap(comment,"thread","replyThread") === id);
+      params[this._mapProp("thread")] = id;
+      return {
+        //gets all threads and comments if they are not mapped as nested array of thread
+        id: id,
+        firstName: this._getMap(thread,"firstName"),
+        lastName: this._getMap(thread,"lastName"),
+        avatar: this._getMap(thread,"avatar"),
+        body: this._getMap(thread,"body"),
+        color: this._getMap(thread,"color"),
+        date: this._getMap(thread,"date"),
+        submit: this._getPath(this.submit, params),
+        replies: this._getArray(replies).map(reply => {
+          //gets all comments if they are mapped as nested array of thread
+          return {
+            id: this._getMap(reply,"id","replyId"),
+            thread: this._getMap(reply,"thread","replyThread"),
+            firstName: this._getMap(reply,"firstName","replyFirstName"),
+            lastName: this._getMap(reply,"lastName","replyLastName"),
+            avatar: this._getMap(reply,"avatar","replyAvatar"),
+            body: this._getMap(reply,"body","replyBody"),
+            color: this._getMap(reply,"color","replyColor"),
+            date: this._getMap(reply,"date","replyDate")
+          };
+        })
+      };
+    });
+  }
+  /**
+   * gets a property value based on a conversion map
+   *
+   * @param {object} obj item to check
+   * @param {string} prop default property name
+   * @param {string} map1 second mapped property to check
+   * @param {string} map2 first mapped property to check
+   * @returns {*} property value
+   * @memberof ThreadedDiscussion
+   */
+  _getMap(obj,prop,map1,map2){
+    return obj[this._mapProp(prop,map1,map2)];
+  }
+  /**
+   * gets a mapped property based on a conversion map
+   *
+   * @param {object} obj item to check
+   * @param {string} prop default property name
+   * @param {string} map1 second mapped property to check
+   * @param {string} map2 first mapped property to check
+   * @returns {*} property
+   * @memberof ThreadedDiscussion
+   */
+  _mapProp(prop,map1,map2){
+    let map = this.map || {};
+    map1 = map1 || prop;
+    map2 = map2 || map1;
+    return map[map2] || map[map1] || prop;
+  }
+  /**
+   * refreshes comments
+   *
+   * @param {event} e
+   * @memberof ThreadedDiscussion
+   */
+  _handleSubmit(e) {
+    this.fetchDiscussion();
+  }
+  /**
+   * demonstrates how data will appear when a comment is submitted
+   *
+   * @param {event} e
+   * @memberof ThreadedDiscussion
+   */
+  _handleDemo(e) {
+    if(e.detail && e.detail.textarea) {
+      let newComment = {}, data = this.data;
+      newComment[this._mapProp("id")] = `comment-${Date.now()}`;
+      newComment[this._mapProp("firstName")] = "DEMO";
+      newComment[this._mapProp("lastName")] = "USER";
+      newComment[this._mapProp("date")] = this._getDate(new Date());
+      newComment[this._mapProp("body")] = e.detail.textarea.value;
+      if(e.detail.thread){
+        let filter = data.filter(thread =>thread[this._mapProp("id")] === e.detail.thread),
+          thread = filter ? filter[0] : undefined;
+          newComment[this._mapProp("thread","replyThread")] = e.detail.thread;
+        if(thread){
+          thread[this._mapProp("replies")] = [...thread[this._mapProp("replies")],newComment];
+        } else {
+          data.push(newComment);
+        }
+      } else {
+        newComment[this._mapProp("replies")] = [];
+        data.push(newComment);
+      }
+      this.data = data;
+      this.mappedData;
+      e.detail.textarea.value = '';
+    }
   }
 
   /**
@@ -427,11 +483,6 @@ class ThreadedDiscussion extends LitElement {
       typeof this.dateFormat === "string"
         ? JSON.parse(this.dateFormat)
         : this.dateFormat;
-    console.log(
-      d && new Date(d)
-        ? new Date(d).toLocaleString(this.dateLocale, format)
-        : ""
-    );
     return d && new Date(d)
       ? new Date(d).toLocaleString(this.dateLocale, format)
       : "";
