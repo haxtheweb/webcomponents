@@ -2,16 +2,26 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from "lit-element/lit-element.js";
+import { css, LitElement } from "lit-element/lit-element.js";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
+import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * LitElement Version of HAXCMSTheme
  */
-class HAXCMSLitElementTheme extends HAXCMSTheme(LitElement) {
+class HAXCMSLitElementTheme extends HAXCMSTheme(
+  ResponsiveUtilityBehaviors(LitElement)
+) {
   constructor() {
     super();
     this.editMode = false;
     this.isLoggedIn = false;
+    this.__disposer = this.__disposer ? this.__disposer : [];
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
   }
   static get properties() {
     return {
@@ -59,6 +69,42 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(LitElement) {
         type: Object
       }
     };
+  }
+  static get styles() {
+    let styles = [];
+    if (super.styles) {
+      styles = super.styles;
+    }
+    return [
+      ...styles,
+      css`
+        :host([edit-mode]) {
+          opacity: 1;
+          --hax-base-styles-p-min-height: 38px;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        [hidden] {
+          display: none !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            transition: none !important;
+          }
+        }
+        /**
+        * Hide the slotted content during edit mode. This must be here to work.
+        */
+        :host([edit-mode]) #slot {
+          display: none;
+        }
+        #slot {
+          min-height: 50vh;
+        }
+      `
+    ];
   }
   // LitElement life cycle
   firstUpdated(changedProperties) {

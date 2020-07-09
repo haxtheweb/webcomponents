@@ -29,7 +29,8 @@ const HAXCMSTheme = function(SuperClass) {
       this.HAXCMSThemeSettings = {
         // should we scroll to the top when a new page
         // is selected
-        autoScroll: false
+        autoScroll: false,
+        scrollTarget: window
       };
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
@@ -119,7 +120,7 @@ const HAXCMSTheme = function(SuperClass) {
         }
       }
       if (this.HAXCMSThemeSettings.autoScroll) {
-        window.scrollTo({
+        this.HAXCMSThemeSettings.scrollTarget.scrollTo({
           top: 0,
           left: 0
         });
@@ -145,6 +146,23 @@ const HAXCMSTheme = function(SuperClass) {
         }
         this.__styleReapply();
       }, 50);
+      // keep editMode in sync globally
+      autorun(reaction => {
+        this.activeItemContent = toJS(store.activeItemContent);
+        setTimeout(() => {
+          if (this.HAXCMSThemeSettings.autoScroll) {
+            this.HAXCMSThemeSettings.scrollTarget.scrollTo({
+              top: 0,
+              left: 0
+            });
+            setTimeout(() => {
+              // try scrolling to the target ID after content gets imported
+              window.AnchorBehaviors.getTarget(store.themeElement);
+            }, 500);
+          }
+        }, 10);
+        this.__disposer.push(reaction);
+      });
       // keep editMode in sync globally
       autorun(reaction => {
         this.editMode = toJS(store.editMode);

@@ -38,9 +38,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
           );
           --map-menu-font-size: var(--site-menu-font-size);
         }
-        map-menu[part="edit-mode-active"] {
-          background-color: grey;
-        }
         map-menu:not(:defined) {
           display: none;
         }

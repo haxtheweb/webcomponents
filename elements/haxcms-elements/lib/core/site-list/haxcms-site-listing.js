@@ -1611,7 +1611,12 @@ class HAXCMSSiteListing extends PolymerElement {
           }
           return "icons:android";
         },
-        author: "metadata.author.name",
+        author: function(item) {
+          if (item.metadata.author && item.metadata.author.name) {
+            return item.metadata.author.name;
+          }
+          return "";
+        },
         accentColor: function(item) {
           if (
             item.metadata.theme &&

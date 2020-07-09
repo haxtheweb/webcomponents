@@ -49,6 +49,7 @@
     "@polymer/iron-icons": "3.0.1",
     "@polymer/paper-icon-button": "3.0.2",
     "lit-element": "2.3.1",
+    "@lrnwebcomponents/responsive-utility": "^2.6.21",
     "mobx": "5.15.4"
   },
   "devDependencies": {
