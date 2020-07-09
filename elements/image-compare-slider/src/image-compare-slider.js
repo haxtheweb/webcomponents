@@ -230,13 +230,10 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
         {
           tag: "image-compare-slider",
           properties: {
-            topSrc: new URL(`./demo/images/Matterhorn02.png`, import.meta.url),
+            topSrc: "./demo/images/Matterhorn02.png",
             topAlt: "Matterhorn no snow.",
             topDescription: "cloudy",
-            bottomSrc: new URL(
-              `./demo/images/Matterhorn01.png`,
-              import.meta.url
-            ),
+            bottomSrc: "./demo/images/Matterhorn01.png",
             bottomAlt: "Matterhorn with snow.",
             bottomDescription: "snowy",
             style: "width:100%;max-width:400px"
@@ -247,18 +244,22 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
           tag: "image-compare-slider",
           properties: {
             opacity: true,
-            topSrc: new URL(`./demo/images/Matterhorn02.png`, import.meta.url),
+            topSrc: "./demo/images/Matterhorn02.png",
             topAlt: "Matterhorn no snow.",
-            topDescription: "cloudy",
-            bottomSrc: new URL(
-              `./demo/images/Matterhorn01.png`,
-              import.meta.url
-            ),
+            topDescriptionId: "cloudy",
+            bottomSrc: "./demo/images/Matterhorn01.png",
             bottomAlt: "Matterhorn with snow.",
-            bottomDescription: "snowy",
+            bottomDescriptionId: "snowy",
             style: "width:100%;max-width:400px"
           },
-          content: `<h2 slot="heading">Image Compare Slider Default</h2><p slot="description">The image on the top or when slider is moved all the way to the right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>. As you move the slider to the left, the image below it reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.</p>`
+          content: `
+            <h2 slot="heading">Image Compare Slider Opacity</h2>
+            <div slot="description">
+              The slider will fade away the top image
+              <span id="cloudy">(Matterhorn on a cloudy day without snow)</span> 
+              to reveal the bottom image
+              <span id="snowy">(Matterhorn on a clear day with snow)</span>.
+            </div>`
         }
       ]
     };

@@ -139,6 +139,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           next: i + 1 < total ? i + 1 : -1,
           prev: i - 1 > -1 ? i - 1 : -1,
           sizing: item.sizing && item.sizing != "" ? item.sizing : this.sizing,
+          gravity: item.gravity || "center",
           title: item.title,
           tooltip: `${item.title || `Image ${i}`} (Zoom In)`,
           heading: `${item.title || `Image ${i}`} (Full-Sized)`

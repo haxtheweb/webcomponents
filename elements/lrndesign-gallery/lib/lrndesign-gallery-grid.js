@@ -51,18 +51,29 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         }
         lrndesign-gallery-zoom {
           position: relative;
-          width: 100%;
-        }
-        lrndesign-gallery-zoom img {
-          width: 100%;
+          overflow: hidden;
           transition: outline 0.25s ease-in-out;
           outline: 1px solid var(--lrndesign-gallery-color);
         }
-        lrndesign-gallery-zoom:hover img,
-        lrndesign-gallery-zoom:focus img,
-        lrndesign-gallery-zoom:focus-within img {
+        lrndesign-gallery-zoom:hover,
+        lrndesign-gallery-zoom:focus,
+        lrndesign-gallery-zoom:focus-within {
           transition: outline 0.25s ease-in-out;
           outline: 2px solid var(--lrndesign-gallery-focus-color);
+        }
+        lrndesign-gallery-zoom img {
+          position: absolute;
+          opacity: 0 !important;
+        }
+        .imgbg {
+          width: 100%;
+          padding-top: var(--lrndesign-gallery-grid-paddingTop, 75%);
+          background-image: var(--lrndesign-gallery-grid-backgroundImage, none);
+          background-position: var(
+            --lrndesign-gallery-grid-backgroundPosition,
+            center
+          );
+          background-size: var(--lrndesign-gallery-grid-backgroundSize, cover);
         }
         .zoombg,
         .zoomicon {
@@ -108,14 +119,8 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 .tooltip="${item.tooltip}"
                 .zoom-alt="${item.zoomAlt}"
               >
-                <img
-                  .alt="${item.alt}"
-                  fade
-                  sizing="${this.selected.sizing ||
-                    this.sizing === "cover" ||
-                    "contain"}"
-                  .src="${item.src}"
-                />
+                <span class="sr-only">${item.zoomAlt}</span>
+                <div class="imgbg" .style="${this._getStyle(item)}"></div>
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
@@ -125,7 +130,17 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
       </div>
     `;
   }
-
+  _getStyle(item) {
+    return [
+      `--lrndesign-gallery-grid-paddingTop: ${100 / this.aspectRatio}%;`,
+      `--lrndesign-gallery-grid-backgroundImage: url(${item.src});`,
+      `--lrndesign-gallery-grid-backgroundPosition: ${item.gravity ||
+        "center"};`,
+      `--lrndesign-gallery-grid-backgroundSize: ${item.sizing ||
+        this.sizing === "cover" ||
+        "contain"}`
+    ].join("");
+  }
   /**
    * handles gallery-scroll event
    * /

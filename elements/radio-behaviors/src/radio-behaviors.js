@@ -4,9 +4,32 @@
  */
 const RadioBehaviors = function(SuperClass) {
   return class extends SuperClass {
+    render() {
+      return ``;
+    }
+
+    // properties available to the custom element for data binding
+    static get properties() {
+      return {
+        ...super.properties,
+        itemData: {
+          type: Array
+        },
+        selection: {
+          type: String,
+          attribute: "selection"
+        }
+      };
+    }
+
+    constructor() {
+      super();
+      this.addEventListener(this.__selectEvent, this._handleSelectItem);
+    }
+
     connectedCallback() {
       super.connectedCallback();
-      this.observer.observe(this, {
+      this.__observer.observe(this, {
         attributes: true,
         childList: true,
         subtree: true
@@ -14,72 +37,32 @@ const RadioBehaviors = function(SuperClass) {
     }
 
     /**
+     * life cycle, element is removed from the DOM
+     */
+    disconnectedCallback() {
+      if (this.__observer && this.__observer.disconnect)
+        this.__observer.disconnect();
+      this.removeEventListener(this.__selectEvent, this._handleSelectItem);
+      super.disconnectedCallback();
+    }
+
+    /**
      * listen for change event
      */
     firstUpdated(changedProperties) {
       if (super.firstUpdated) super.firstUpdated(changedProperties);
-      this.selectItem(this.selected);
+      this.selectItem(this.selection);
     }
 
     /**
-     * handle updates
+     * listen for change event
      */
-
-    attributeChangedCallback(name, oldVal, newVal) {
-      if (super.attributeChangedCallback)
-        super.attributeChangedCallback(name, oldVal, newVal);
-      if (name === "selection" && this.selection !== oldValue)
-        this._handleSelectionChange();
-    }
-
-    constructor() {
-      super();
-      this.addEventListener(this._selectEvent, this._handleSelectItem);
-    }
-
-    render() {
-      return ``;
-    }
-
-    /**
-     * mutation observer for tabs
-     * @readonly
-     * @returns {object}
-     */
-    get observer() {
-      let callback = (mutationsList, observer) =>
-        this._handleItemChange(mutationsList, observer);
-      return new MutationObserver(callback);
-    }
-    // properties available to the custom element for data binding
-    static get properties() {
-      return {
-        ...super.properties,
-        itemData: {
-          type: Array
-        }
-      };
-    }
-    /**
-     * query selector for slotted children, can be overridden
-     * @readonly
-     */
-    get _query() {
-      return "> item";
-    }
-    /**
-     * attribute to apply to selected item, can be overridden
-     * @readonly
-     */
-    get _selected() {
-      return "selected";
-    }
-    /**
-     * name of event that selects item, can be overridden
-     * @readonly
-     */
-    get _selectEvent() {
-      return "select-item";
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName === "selection" && this.selection !== oldValue)
+          this.selectItem(this.selection);
+      });
     }
     /**
      * index of selected item
@@ -89,28 +72,90 @@ const RadioBehaviors = function(SuperClass) {
       let item = this.itemData.filter(i => i.id === this.selection);
       return item && item[0] ? item[0].index : 0;
     }
+
     /**
-     * id of selected item
+     * mutation observer for tabs
      * @readonly
+     * @returns {object}
      */
-    get selection() {
-      return this.getAttribute("selection");
+    get __observer() {
+      let callback = (mutationsList, observer) =>
+        this._handleItemChange(mutationsList, observer);
+      return new MutationObserver(callback);
     }
     /**
-     * sets id of selected item
+     * allows no item to be selected
      * @readonly
      */
-    set selection(value) {
-      this.setAttribute("selection", value);
+    get __allowNull() {
+      return false;
+    }
+    /**
+     * query selector for slotted children, can be overridden
+     * @readonly
+     */
+    get __query() {
+      return "> item";
+    }
+    /**
+     * attribute to apply to selected item, can be overridden
+     * @readonly
+     */
+    get __selected() {
+      return "selected";
+    }
+    /**
+     * name of event that selects item, can be overridden
+     * @readonly
+     */
+    get __selectEvent() {
+      return "select-item";
+    }
+
+    /**
+     * selects an item
+     * @param {string|object} item id or node
+     */
+    selectItem(item) {
+      //make sure item is an object
+      item =
+        typeof item === "string" && item.trim().length > 0
+          ? this._getItemById(item)
+          : typeof item === "integer"
+          ? this._getItemByIndex(item)
+          : item;
+
+      //make sure an item is selected if null is unallowed
+      if (!this.__allowNull && (!item || item.disabled)) {
+        item =
+          this.selection && this._getItemByQuery(`#${this.selection}`)
+            ? this._getItemByQuery(`#${this.selection}`)
+            : this.__selected && this._getItemByQuery(`[${this.__selected}]`)
+            ? this._getItemByQuery(`[${this.__selected}]`)
+            : this._getItemByQuery();
+      }
+
+      //only update if item isn't already selected
+      if (item && !this._isItemSelected(item)) {
+        item.id = item.id || this._generateUUID();
+        this.selection = item.id;
+        this._handleSelectionChange();
+      } else if (!item && this.__allowNull && this.selection) {
+        this.selection = undefined;
+        this._handleSelectionChange();
+      }
+
+      //make sure itemData is up-to-date
+      this._updateItemData();
     }
     /**
      * updates array of items
      * @returns
      */
     _getDataFromItems() {
-      let slotted = this.querySelectorAll(`${this._query}`);
+      let slotted = this.querySelectorAll(`${this.__query}`);
       return Object.keys(slotted || {}).map(key =>
-        this._getDataFromItem(slotted[key], key, this.selected)
+        this._getDataFromItem(slotted[key], key, this.__selected)
       );
     }
     /**
@@ -118,6 +163,7 @@ const RadioBehaviors = function(SuperClass) {
      * @returns
      */
     _getDataFromItem(item, index, selected) {
+      if (!item.id || item.id.trim().length < 1) item.id = this._generateUUID();
       let data = {
         id: item.id,
         index: parseInt(index),
@@ -127,29 +173,51 @@ const RadioBehaviors = function(SuperClass) {
       };
       return data;
     }
+    /**
+     * generates a unique id
+     * @returns {string } unique id
+     */
+    _generateUUID() {
+      return "item-ss-s-s-s-sss".replace(
+        /s/g,
+        Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1)
+      );
+    }
 
     /**
-     * selects an item
-     * @param {string|object} item id or node
+     * gets first non-disabled item that matches a given id
+     *
+     * @param {string} id
+     * @returns object
      */
-    selectItem(item) {
-      if (typeof item === "string")
-        item = this.querySelector(`${this._query}#${item}`);
-      if (item && item.id && !item.disabled && item.id !== this.selection) {
-        this.setAttribute("selection", item.id);
-        this._handleSelectionChange();
-      } else if (!this.querySelector(`${this._query}#${this.selection}`)) {
-        let sel =
-          this.querySelector(`${this._query}[${this._selected}]`) ||
-          this.querySelector(`${this._query}`);
-        this.setAttribute("selection", sel ? sel.id : undefined);
-        this._handleSelectionChange();
-      } else if (
-        this.querySelectorAll(`${this._query}[${this._selected}]`).length > 1
-      ) {
-        this._handleSelectionChange();
-      }
-      this._updateItemData();
+    _getItemById(id) {
+      return this._getItemByQuery(`#${id}`);
+    }
+
+    /**
+     * gets non-disabled item at a given index
+     *
+     * @param {integer} index
+     * @returns object
+     */
+    _getItemByIndex(index) {
+      let items = this.querySelectorAll(this.__query);
+      return items && items[index] && !items[index].disabled
+        ? items[index]
+        : undefined;
+    }
+
+    /**
+     * gets first non-disabled item that matches query
+     *
+     * @param {string} query
+     * @returns object
+     */
+    _getItemByQuery(query = "") {
+      let item = this.querySelector(`${this.__query}${query}`);
+      return item && !item.disabled ? item : undefined;
     }
     /**
      * updates when slotted item changes
@@ -158,6 +226,7 @@ const RadioBehaviors = function(SuperClass) {
      */
     _handleItemChange(mutationsList, observer) {
       let changed = false;
+      //see if any mutations are relevant enough
       mutationsList.forEach(m => {
         let added = m.type === "childList" ? m.addedNodes.length > 0 : false,
           removed =
@@ -170,8 +239,8 @@ const RadioBehaviors = function(SuperClass) {
         changed = changed || added || removed || id;
       });
       if (changed) {
-        this.querySelectorAll(`${this._query}`).forEach(i => {
-          if (!i.id) i.id = `item-${this._generateUUID()}`;
+        this.querySelectorAll(`${this.__query}`).forEach(i => {
+          if (!i.id) i.id = this._generateUUID();
         });
         this.selectItem(this.selection);
       }
@@ -182,18 +251,16 @@ const RadioBehaviors = function(SuperClass) {
      * @param {event} e
      */
     _handleSelectItem(e) {
-      e.stopPropagation();
+      if (e.stopPropagation) e.stopPropagation();
       this.selectItem(e.detail.controls);
     }
     /**
      * shows or hides items based on selection
      */
     _handleSelectionChange() {
-      this.querySelectorAll(`${this._query}`).forEach(i => {
-        i.id !== this.selection
-          ? i.removeAttribute(this._selected)
-          : i.setAttribute(this._selected, true);
-      });
+      this.querySelectorAll(`${this.__query}`).forEach(i =>
+        this._setItemSelected(i)
+      );
       /**
        * Fires when selection update, so that parent radio group can listen for it.
        * @event selection-changed
@@ -208,31 +275,34 @@ const RadioBehaviors = function(SuperClass) {
       );
     }
     /**
+     * checks to see if item is the selected item
+     *
+     * @param {*} item
+     * @returns
+     */
+    _isItemSelected(item) {
+      return (
+        item &&
+        ((item.id && item.id === this.selection) ||
+          item.hasAttribute(this.__selected))
+      );
+    }
+    /**
+     * sets item __selected attribute
+     *
+     * @param {*} item
+     */
+    _setItemSelected(item) {
+      item.id !== this.selection
+        ? item.removeAttribute(this.__selected)
+        : item.setAttribute(this.__selected, true);
+    }
+    /**
      * updates items list and rerenders as needed;
      */
     _updateItemData() {
       this.itemData = this._getDataFromItems();
       if (this.render) this.render();
-    }
-    /**
-     * generates a unique id
-     * @returns {string } unique id
-     */
-    _generateUUID() {
-      return "ss-s-s-s-sss".replace(
-        /s/g,
-        Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1)
-      );
-    }
-    /**
-     * life cycle, element is removed from the DOM
-     */
-    disconnectedCallback() {
-      if (this.observer && this.observer.disconnect) this.observer.disconnect();
-      this.removeEventListener(this._selectEvent, this._handleSelectItem);
-      super.disconnectedCallback();
     }
   };
 };

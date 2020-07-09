@@ -25,6 +25,11 @@ class a11yCarouselButton extends LitElement {
         :host([disabled]) {
           opacity: 0.5;
         }
+        @media print {
+          :host {
+            display: none !important;
+          }
+        }
       `
     ];
   }
@@ -80,6 +85,7 @@ class a11yCarouselButton extends LitElement {
     this.addEventListener("keydown", this._handleClick);
     this.active = false;
     this.hidden = false;
+    this.disabled = false;
   }
   disconnectedCallback() {
     this.removeEventListener("click", this._handleClick);
@@ -108,7 +114,7 @@ class a11yCarouselButton extends LitElement {
       e.key === "Spacebar"
     ) {
       if (!this.disabled) {
-        event.preventDefault();
+        e.preventDefault();
         this.dispatchEvent(
           new CustomEvent("select-carousel-item", {
             bubbles: true,

@@ -11,19 +11,29 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../elmsln-studio.js';
+      import '../lib/elmsln-studio-loremdata.js';
+    </script>
+    <script>
+      console.log(window.location);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <link
+      ref="//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic elmsln-studio demo</h3>
       <demo-snippet>
         <template>
-          <elmsln-studio>
-            <elmsln-studio-submissions 
-              comments-src="./data/recent-comments.json"
-              submissions-src="./data/recent-submissions.json">
-            </elmsln-studio-submissions>
+          <elmsln-studio 
+            source-path="/components/@lrnwebcomponents/elmsln-studio/demo/"
+            activity-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/activity.json" 
+            discussion-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/discussion.json"
+            portfolios-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/portfolios.json" 
+            profile-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/profile.json"
+            submissions-source="/components/@lrnwebcomponents/elmsln-studio/demo/data/submissions.json">
           </elmsln-studio>
         </template>
       </demo-snippet>

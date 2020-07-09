@@ -1,10 +1,11 @@
 import { html } from "lit-element/lit-element.js";
 import { a11yCarousel } from "@lrnwebcomponents/a11y-carousel/a11y-carousel.js";
+import { a11yCarouselButton } from "@lrnwebcomponents/a11y-carousel/lib/a11y-carousel-button.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Media|Image Compare Slider",
+  title: "Media|Carousel",
   component: "a11y-carousel",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
@@ -16,32 +17,83 @@ export const a11yCarouselStory = () => {
   return utils.makeElementFromClass(
     a11yCarousel,
     {
-      opacity: utils.getRandomBool(),
-      top: `<img aria-describedBy="cloudy" src="${new URL(
-        `./demo/images/Matterhorn01.png`,
-        import.meta.url
-      )}" alt="Matterhorn without snow">`,
-      bottom: `<img aria-describedBy="snowy" src="${new URL(
-        `./demo/images/Matterhorn02.png`,
-        import.meta.url
-      )}" alt="Matterhorn with snow">`,
-      heading: `<h2>Image Compare Slider</h2>`,
-      description: `<p>
-      The image on the top or when slider is moved all the way to the 
-      right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>.
-      As you move the slider to the left, the image below it 
-      reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.
-      </p>`,
+      noPrevNext: true,
+      noButtons: false,
+      selection: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
+      emptyslot: `
+        <figure id="figure-1">
+          <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
+          <figcaption>Item 1</figcaption>
+        </figure>
+        <figure id="figure-2">
+          <img src="//placekitten.com/300/100" alt="Random Kitten, 300 X 100"/>
+          <figcaption>Item 2</figcaption>
+        </figure>
+        <figure id="figure-3">
+          <img src="//placekitten.com/400/300" alt="Random Kitten, 400 X 300"/>
+          <figcaption>Item 3</figcaption>
+        </figure>`,
       width: "100%",
       maxWidth: "400px"
     },
     [
-      { title: "Heading", slot: "heading" },
-      { title: "Description", slot: "description" },
-      { title: "Top Image", slot: "top" },
-      { title: "Bottom Image", slot: "bottom" },
+      { title: "Content", slot: "" },
+      { title: "Above Carousel", slot: "above" },
+      { title: "Below Carousel", slot: "below" },
       { css: "width" },
       { css: "maxWidth" }
     ]
   );
+};
+
+export const a11yCarouselButtonStory = () => {
+  let above = document.createElement("div"),
+    below = document.createElement("div"),
+    carousel = document.createElement("a11y-carousel");
+  above.slot = "above";
+  below.slot = "below";
+  [above, below].forEach(div => {
+    div.style.display = "flex";
+    div.style.alignItems = "stretch";
+    div.style.justifyContent = "center";
+  });
+  carousel.noButtons = true;
+
+  carousel.innerHTML = `
+    <figure id="figure-1">
+      <img src="//placekitten.com/400/200" alt="Random Kitten, 400 X 200"/>
+      <figcaption>Item 1 (figure id: figure-1)</figcaption>
+    </figure>
+    <figure id="figure-2">
+      <img src="//placekitten.com/300/100" alt="Random Kitten, 300 X 100"/>
+      <figcaption>Item 2 (figure id: figure-2)</figcaption>
+    </figure>
+    <figure id="figure-3">
+      <img src="//placekitten.com/400/300" alt="Random Kitten, 400 X 300"/>
+      <figcaption>Item 3 (figure id: figure-3)</figcaption>
+    </figure>`;
+  below.innerHTML = `
+    <a11y-carousel-button button-type="first" controls="figure-1">first</a11y-carousel-button>
+    <a11y-carousel-button button-type="prev" controls="figure-1">prev</a11y-carousel-button>
+    <a11y-carousel-button controls="figure-1">Item 1</a11y-carousel-button>
+    <a11y-carousel-button controls="figure-2">Item 2</a11y-carousel-button>
+    <a11y-carousel-button controls="figure-3">Item 3</a11y-carousel-button>
+    <a11y-carousel-button button-type="next" controls="figure-2">next</a11y-carousel-button>
+    <a11y-carousel-button button-type="last" controls="figure-3">last</a11y-carousel-button>
+  `;
+  above.appendChild(
+    utils.makeElementFromClass(
+      a11yCarouselButton,
+      {
+        buttonType: utils.getRandomOption(),
+        controls: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
+        emptyslot: "Custom Button"
+      },
+      [{ title: "Content", slot: "" }],
+      ["active", "disabled"]
+    )
+  );
+  carousel.appendChild(above);
+  carousel.appendChild(below);
+  return carousel;
 };

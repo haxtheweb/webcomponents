@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>ElmslnStudio: elmsln-studio Demo</title>
+    <title>ElmslnStudio: elmsln-studio-dashboard Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -16,17 +16,11 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic elmsln-studio demo</h3>
+      <h3>Basic elmsln-studio-dashboard demo</h3>
       <demo-snippet>
         <template>
           <elmsln-studio>
-            <elmsln-studio-dashboard 
-              activity-src="./data/recent-activity.json"
-              assignments-src="./data/assignments.json"
-              comments-src="./data/my-comments.json"
-              profile-src="./data/profile.json"
-              submissions-src="./data/my-submissions.json">
-            </elmsln-studio-dashboard>
+            <elmsln-studio-dashboard demo-mode></elmsln-studio-dashboard>
           </elmsln-studio>
         </template>
       </demo-snippet>

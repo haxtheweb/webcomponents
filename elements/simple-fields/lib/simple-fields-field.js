@@ -277,7 +277,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
        * eg. [{value: "b", text: "Option B"}, {value: "a", text: "Option A"}, {value: "c", text: "Option C"}]
        */
       itemsList: {
-        type: Array
+        type: Array,
+        attribute: "items-list"
       },
       /**
        * Value of the id attribute of the `<datalist>` of autocomplete options
@@ -377,6 +378,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   }
 
   updated(changedProperties) {
+    if (!this.field) this._updateField();
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
       if (this._getAttributes(this.type).includes(propName))
@@ -520,7 +522,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   get inputTemplate() {
     return html`
       <input
-        aria-descrbedby="${this.describedBy}"
+        aria-descrbedby="${this.describedBy || ""}"
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         @change="${e => this._handleFieldChange()}"
@@ -548,7 +550,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get noOptions() {
-    return this.itemsList.length < 1 && Object.keys(this.options).length < 1;
+    return (
+      this.itemsList.length < 1 && Object.keys(this.options || {}).length < 1
+    );
   }
   /**
    * gets a sorted list of option

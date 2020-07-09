@@ -2,14 +2,12 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
+import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
-import "@lrnwebcomponents/accent-card/accent-card.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "./elmsln-studio-link.js";
+import "./elmsln-studio-button.js";
 
 /**
  * `elmsln-studio-submissions`
@@ -18,36 +16,68 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
  * @customElement elmsln-studio-submissions
  * @lit-html
  * @lit-element
- * @demo demo/index.html
+ * @demo demo/submission.html
  */
-class ElmslnStudioSubmissions extends LitElement {
+class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
+  ElmslnStudioStyles(LitElement)
+) {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "elmsln-studio-submissions";
+  }
+
   static get styles() {
     return [
+      ...super.styles,
       css`
-        :host {
-          font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
-          font-size: 13px;
+        #layout {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
         }
-        .sr-only {
-          position: absolute;
-          left: -9999999px;
-          width: 0;
-          overflow: hidden;
+        #primary .filters > *,
+        #layout > * {
+          flex: 0 1 auto;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
-        lrndesign-gallery {
-          --lrndesign-gallery-border-radius: 2px;
-          --lrndesign-gallery-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        #layout > button {
+          background-color: transparent;
+          border: 0px solid rgba(0, 0, 0, 0);
+          opacity: 0.25;
+          transform: opacity 0.5s ease-in-out;
+          margin: 0 5px;
+          height: calc(2 * var(--elmsln-studio-FontSize, 16px));
+          width: calc(2 * var(--elmsln-studio-FontSize, 16px));
+        }
+        #layout button:focus,
+        #layout button:hover {
+          opacity: 0.75;
+        }
+        #layout button[aria-pressed="true"] {
+          opacity: 1;
         }
         #cards {
           margin: var(--elmsln-studio-margin, 20px)
             calc(-0.5 * var(--elmsln-studio-margin, 20px));
           display: flex;
           align-items: stretch;
-          justify-content: space-between;
+          justify-content: flex-start;
           flex-wrap: wrap;
         }
-        .card {
+        .no-submissions {
+          font-weight: var(--elmsln-studio-FontWeightLight, 300);
+          font-size: 22px;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          padding: var(--elmsln-studio-margin, 20px);
+          width: calc(100% - 2 * var(--elmsln-studio-margin, 20px));
+          background-color: #e8e8e8;
+          text-align: center;
+        }
+        accent-card {
+          line-height: 160%;
           --accent-card-padding: 0;
           --accent-card-heading-padding-top: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
@@ -73,32 +103,67 @@ class ElmslnStudioSubmissions extends LitElement {
           --accent-card-content-padding-bottom: calc(
             0.5 * var(--elmsln-studio-margin, 20px)
           );
+          --accent-card-footer-padding-top: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-footer-padding-bottom: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-footer-padding-left: 0;
+          --accent-card-footer-padding-right: 0;
+          --accent-card-image-padding-bottom: 5px;
+          --accent-card-image-padding-right: calc(
+            0.5 * var(--elmsln-studio-margin, 20px)
+          );
+          --accent-card-image-width: 33.33333%;
           --accent-card-image-height: 200px;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px))
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
         }
-        .card [slot="heading"] {
+        .grid accent-card {
+          --accent-card-image-width: 50%;
+        }
+        .feature {
+          margin-top: var(--elmsln-studio-margin, 20px);
+          height: calc(
+            var(--accent-card-image-height, 200px) -
+              var(--elmsln-studio-margin, 20px)
+          );
+          overflow: auto;
+        }
+        accent-card [slot="image-corner"] {
+          display: inline-flex;
+          right: 5px;
+          bottom: 10px;
+          position: absolute;
+          border-radius: 3px;
+          background-color: rgba(0, 0, 0, 0.25);
+        }
+        accent-card [slot="image-corner"]:focus-within,
+        accent-card [slot="image-corner"]:hover {
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+        accent-card [slot="heading"] {
           font-weight: var(--elmsln-studio-FontWeightLight, 300);
           font-size: 22px;
         }
-        .card [slot="corner"] {
+        accent-card [slot="corner"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 12px;
-          color: #afafaf;
         }
-        .card [slot="subheading"] {
+        accent-card [slot="subheading"] {
           font-weight: var(--elmsln-studio-FontWeightBold, 500);
           font-size: 18px;
           font-style: normal;
           color: #5d5e5f;
         }
-        .card [slot="content"] {
+        accent-card [slot="content"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 14px;
           color: #7e7e7e;
         }
-        .card [slot="footer"] {
+        accent-card [slot="footer"] {
           font-weight: var(--elmsln-studio-FontWeightNormal, 400);
           font-size: 12px;
           text-transform: uppercase;
@@ -107,9 +172,19 @@ class ElmslnStudioSubmissions extends LitElement {
           justify-content: space-between;
           color: #95989a;
         }
-        .card button {
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
-          background-color: transparent;
+        accent-card.card.submission-card elmsln-studio-link {
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+          text-align: left;
+          --elmsln-studio-link-Color: #7e7e7e;
+        }
+        accent-card.card.submission-card elmsln-studio-link:focus,
+        accent-card.card.submission-card elmsln-studio-link:focus-within,
+        accent-card.card.submission-card elmsln-studio-link:hover {
+          --elmsln-studio-link-Color: #95989a;
+          --elmsln-studio-link-TextDecoration: none !important;
+        }
+        accent-card.card.submission-card elmsln-studio-link:last-child {
+          text-align: right;
         }
         #secondary {
           margin-top: 0;
@@ -117,55 +192,48 @@ class ElmslnStudioSubmissions extends LitElement {
           --nav-card-linklist-left-size: 36px;
           --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
         }
+        #secondary .filters {
+          justify-content: flex-start;
+        }
+        .comments {
+          color: #95989a;
+        }
         nav-card {
-          margin: 0;
+          margin: calc(1.5 * var(--elmsln-studio-margin, 20px)) 0 0;
         }
-        accent-card button {
-          border: none;
-          padding: 0;
-          text-align: left;
-          font-size: inherit;
-          font-weight: inherit;
-          flex: 1 1 auto;
+        @media screen and (min-width: 500px) {
+          .grid accent-card:not([horizontal]) {
+            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+          }
         }
-        @media screen and (min-width: 600px) {
+        @media screen and (min-width: 900px) {
           :host {
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
           }
-          #primary {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
-          #secondary {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
-          .card {
-            flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
-          }
-        }
-        @media screen and (min-width: 900px) {
-          #primary {
-            flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
-          }
-          #secondary {
-            flex: 0 0 calc(33.33333333% - var(--elmsln-studio-margin, 20px));
-          }
-          .card {
+          .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
         @media screen and (min-width: 1200px) {
-          .card {
+          .grid accent-card[horizontal] {
+            flex: 0 0 calc(66.66666667% - var(--elmsln-studio-margin, 20px));
+          }
+          .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(33.3333333333% - var(--elmsln-studio-margin, 20px));
           }
         }
         @media screen and (min-width: 1600px) {
-          #cards {
-            justify-content: space-around;
+          .grid accent-card[horizontal] {
+            --accent-card-image-width: 33.33333%;
+            flex: 0 0 calc(75% - var(--elmsln-studio-margin, 20px));
           }
-          .card {
-            flex: 0 0 calc(400px - var(--elmsln-studio-margin, 20px));
+          .grid accent-card:not([horizontal]) {
+            flex: 0 0 calc(25% - var(--elmsln-studio-margin, 20px));
+          }
+          .list accent-card {
+            --accent-card-image-width: 50%;
           }
         }
       `
@@ -174,292 +242,217 @@ class ElmslnStudioSubmissions extends LitElement {
   // render function
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="${this.commentsSrc}"
-        @response="${e => this._handleArrayData(e, "__comments")}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.submissionsSrc}"
-        @response="${e => this._handleObjectData(e, "__submissions")}"
-      ></iron-ajax>
       <div id="primary">
-        <lrndesign-gallery .sources="${this.featured}"></lrndesign-gallery>
-        <div id="cards">
-          ${this.submissions.map(
+        <div class="filters">
+          <simple-fields-field
+            inline
+            label="Assignment:"
+            .options="${this.assignmentOptions}"
+            value="${this.assignmentFilter || ""}"
+            @value-changed="${e => (this.assignmentFilter = e.detail.value)}"
+          >
+          </simple-fields-field>
+          <simple-fields-field
+            inline
+            label="Student:"
+            .options="${this.studentOptions}"
+            value="${this.studentFilter || ""}"
+            @value-changed="${e => (this.studentFilter = e.detail.value)}"
+          >
+          </simple-fields-field>
+          <div id="layout">
+            <button
+              aria-pressed="${this.grid ? "false" : "true"}"
+              @click="${e => (this.grid = false)}"
+            >
+              <iron-icon icon="icons:view-list"></iron-icon>
+              <span class="sr-only">display as list</span>
+            </button>
+            <button
+              aria-pressed="${this.grid ? "true" : "false"}"
+              @click="${e => (this.grid = true)}"
+            >
+              <iron-icon icon="icons:view-module"></iron-icon>
+              <span class="sr-only">display as grid</span>
+            </button>
+          </div>
+        </div>
+        <div id="cards" class="${this.grid ? "grid" : "list"}">
+          <div
+            class="no-submissions"
+            ?hidden="${this.filteredSubmissions.length > 0}"
+          >
+            No submissions for applied filters.
+          </div>
+          ${this.filteredSubmissions.map(
             s => html`
-              <accent-card no-border class="card" image-src="${s.src}">
-                <span slot="heading" id="student-${s.id}" class="card-student">
-                  ${s.student}
-                </span>
-                <span slot="corner" id="date-${s.id}">
-                  ${s.date}
-                </span>
-                <span slot="subheading" id="assignment-${s.id}">
+              <accent-card
+                no-border
+                class="card submission-card"
+                image-src="${s.image && s.image.src ? s.image.src : ""}"
+                ?horizontal="${s.feature || !this.grid ? true : false}"
+                image-align="${this._getAlign(
+                  s.image && s.image.gravity ? s.image.gravity : undefined
+                )}"
+                image-valign="${this._getValign(
+                  s.image && s.image.gravity ? s.image.gravity : undefined
+                )}"
+                .gravity="${s.image && s.image.gravity
+                  ? s.image.gravity
+                  : undefined}"
+              >
+                <div slot="image-corner" class="image-zoom">
+                  <iron-icon icon="zoom-in"></iron-icon>
+                </div>
+                <div slot="heading" id="student-${s.id}" class="card-student">
+                  ${s.firstName} ${s.lastName}
+                </div>
+                <div slot="corner" id="date-${s.id}">
+                  ${this.grid
+                    ? this.dateFormat(s.date, "short")
+                    : this.dateFormat(s.date)}
+                </div>
+                <div slot="subheading" id="assignment-${s.id}">
                   ${s.assignment}
-                </span>
-                <span slot="content" id="project-${s.id}">
+                </div>
+                <div slot="content" id="project-${s.id}">
                   ${s.project}
-                </span>
+                </div>
+                <div slot="content" class="feature" ?hidden="${!s.feature}">
+                  ${s.feature}
+                </div>
                 <div slot="footer">
-                  <button
-                    id="discussion"
+                  <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                    href="${s.link}&comment=true"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion
-                  </button>
-                  <button
-                    id="view"
+                  </elmsln-studio-link>
+                  <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
+                    href="${s.link}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
-                  </button>
+                  </elmsln-studio-link>
                 </div>
               </accent-card>
             `
           )}
         </div>
       </div>
-      <nav-card
-        id="secondary"
-        flat
-        no-border
-        class="card"
-        link-icon="chevron-right"
-      >
-        <span slot="heading">Recent Comments</span>
-        <div slot="linklist">
-          ${this.__comments.map(
-            (comment, i) => html`
-              <nav-card-item
-                icon="chevron-right"
-                avatar="${comment.relationships.author.data.avatar || ""}"
-                initials="${comment.relationships.author.data.display_name ||
-                  ""}"
-              >
-                <button
-                  id="comment-${i}"
-                  aria-describedby="comment-desc-${i}"
-                  slot="label"
-                >
-                  ${comment.relationships.author.data.sis.sortable_name.replace(
-                    /.*,/,
-                    ""
-                  )}
-                  ${comment.type === "comment" ? "commented" : "submitted"}
-                  ${comment.type === "comment"
-                    ? comment.attributes.subject
-                    : comment.attributes.title}
-                </button>
-                <span id="comment-desc-${i}" slot="description">
-                  ${this.date(
-                    comment.type === "comment"
-                      ? comment.attributes.changed
-                      : comment.meta.changed
-                  )}
-                </span>
-              </nav-card-item>
-            `
-          )}
+      <div id="secondary">
+        <div class="filters">
+          <span class="comments">Comments:&nbsp;</span>
+          <span class="comments-filter"
+            >${this.assignmentFilter !== "" || this.studentFilter !== ""
+              ? "Filtered"
+              : "All"}</span
+          >
         </div>
-      </nav-card>
+        <nav-card flat no-border class="card" link-icon="chevron-right">
+          <span slot="heading">Recent Comments</span>
+          <div slot="body" ?hidden="${this.filteredComments.length > 0}">
+            No comments for applied filters.
+          </div>
+          <div slot="linklist">
+            ${this.filteredComments.map(
+              f => html`
+                <nav-card-item
+                  accent-color="${this.accentColor(this.fullName(f))}"
+                  .avatar="${f.avatar}"
+                  icon="chevron-right"
+                  initials="${this.fullName(f)}"
+                >
+                  <elmsln-studio-link
+                    id="comment-${f.id}"
+                    aria-describedby="comment-${f.id}-desc"
+                    slot="label"
+                    href="${f.link}"
+                  >
+                    ${f.title}
+                  </elmsln-studio-link>
+                  <span id="comment-${f.id}" slot="description">
+                    ${this.dateFormat(f.date)}
+                  </span>
+                </nav-card-item>
+              `
+            )}
+          </div>
+        </nav-card>
+      </div>
     `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /*
-       * source JSON for most recent comments in response to
-       * student's comment or submission
-       */
-      commentsSrc: {
+      ...super.properties,
+      assignmentFilter: {
         type: String,
-        attribute: "comments-src"
+        attribute: "assignment-filter"
       },
-      /*
-       * source JSON for student's most recent submissions
-       */
-      submissionsSrc: {
-        type: String,
-        attribute: "submissions-src"
-      },
-      /*
-       * most recent comments in response to
-       * student's comment or submission
-       */
-      __comments: {
+      comments: {
         type: Array
       },
-      /*
-       * student's submissions
-       */
-      __submissions: {
-        type: Object
+      grid: {
+        type: Boolean,
+        attribute: "grid"
+      },
+      studentFilter: {
+        type: String,
+        attribute: "student-filter"
+      },
+      submissions: {
+        type: Array
       }
     };
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "elmsln-studio-submissions";
   }
 
   // life cycle
   constructor() {
     super();
-    this.__comments = [];
-    this.__submissions = [];
+    this.grid = false;
+    this.submissions = [];
+    this.comments = [];
     this.tag = ElmslnStudioSubmissions.tag;
   }
-  get submissions() {
-    return [
-      {
-        id: "e865ade8-a8e9-4e35-8fda-54aa86e57ab3",
-        student: "Havana Brown",
-        date: "March 30, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/400/400",
-        large: "//placekitten.com/800/800",
-        thumb: "//placekitten.com/200/200",
-        viewLink: "#",
-        discussLink: "#",
-        features: `Ptracy give me some of your food give me some of your food give me some of your food meh, i don't want it. Cough skid on floor, crash into wall . Knock over christmas tree intrigued by the shower spread kitty litter all over house.`
-      },
-      {
-        id: "e865ade8-a8e9-4e35-9fda-54aa86e57ab3",
-        student: "Tabby Nebelung",
-        date: "April 22, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/400/300",
-        large: "//placekitten.com/800/600",
-        thumb: "//placekitten.com/200/150",
-        viewLink: "#",
-        discussLink: "#"
-      },
-      {
-        id: "e865ade8-a8e9-8e35-9fda-54aa86e57ab3",
-        student: "Kitty Korat",
-        date: "May 1, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/400/200",
-        large: "//placekitten.com/800/400",
-        thumb: "//placekitten.com/200/100",
-        viewLink: "#",
-        discussLink: "#"
-      },
-      {
-        id: "d865ade8-a8e9-8e35-9fda-54aa86e57ab3",
-        student: "Tortie Manx",
-        date: "March 5, 2020",
-        assignment: "Discover: Interview",
-        project: "Ritual Project",
-        alt: `preview of Tortie Manx's submission for Discover: Interview`,
-        src: "//placekitten.com/600/400",
-        large: "//placekitten.com/900/600",
-        thumb: "//placekitten.com/300/200",
-        viewLink: "#",
-        discussLink: "#",
-        feature: `Paw at beetle and eat it before it gets away cat sit like bread stuff and things cry louder at reflection. Push your water glass on the floor bleghbleghvomit my furball really tie the room together but pose purrfectly to show my beauty.`
-      }
-    ];
-  }
-  get featured() {
-    console.log(
-      "submissions",
-      this.submissions,
-      this.submissions.filter(s => s.feature),
-      this.submissions
-        .filter(s => s.feature)
-        .map(s => {
-          s.title = "Featured Work";
-          s.detail = s.feature;
-          return s;
-        })
+  get filteredComments() {
+    return (this.comments || []).filter(i =>
+      this._isFiltered(i.userId, i.assignmentId)
     );
-    return this.submissions
-      .filter(s => s.feature)
-      .map(s => {
-        s.title = `Featured Work: ${s.student}`;
-        s.details = s.feature;
-        return s;
-      });
   }
-  _getDueDates(item) {
-    return item.meta.rationale && item.meta.rationale.data
-      ? item.meta.rationale.data
-      : undefined;
+  get studentOptions() {
+    let options = { "": "All" };
+    (this.submissions || []).forEach(
+      i => (options[i.userId] = this.fullName(i))
+    );
+    return options;
   }
-  _getDueDate(item) {
-    //console.log('_getDueDate',item,this._getDueDates(item));
-    return this._getDueDates(item)
-      ? this._getDueDates(item)[1] || this._getDueDates(item)[0]
-      : undefined;
+  get assignmentOptions() {
+    let options = { "": "All" };
+    (this.submissions || []).forEach(
+      i => (options[i.assignmentId] = i.assignment)
+    );
+    return options;
   }
-  _handleArrayData(e, propName) {
-    this[propName] =
-      e && e.detail && e.detail.response && e.detail.response.data
-        ? e.detail.response.data
-        : [];
-    //console.log("_handleArrayData", e, propName, this[propName]);
+  get filteredSubmissions() {
+    return (this.submissions || []).filter(i =>
+      this._isFiltered(i.userId, i.assignmentId)
+    );
   }
-  _handleObjectData(e, propName) {
-    this[propName] =
-      e && e.detail && e.detail.response && e.detail.response.data
-        ? e.detail.response.data
-        : {};
-    //console.log('_handleObjectData',e,propName,this[propName]);
+  _isFiltered(student = "", assignment = "") {
+    return (
+      this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
+    );
   }
-
-  date(time) {
-    let date,
-      options = {
-        //weekday: 'long',
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      };
-    if (time && isNaN(time)) {
-      let parts = time.split(/\D+/);
-      date = new Date(...parts);
-      /*console.log('date',parts,
-      '\ndate',date,
-      '\ntoString',date.toString(),
-      '\ntoLocaleString',date.toLocaleString(),
-      '\ntoLocaleDateString',date.toLocaleDateString(undefined,options),
-      '\ntoUTCString',date.toUTCString(),
-      '\ntoTimeString',date.toTimeString(),
-      '\ntoLocaleTimeString',date.toLocaleTimeString()
-      );*/
-    } else if (time) {
-      date = new Date(parseInt(time));
-    }
-    return date.toLocaleDateString(undefined, options);
+  _isFilteredAssignment(assignment = "") {
+    return this.assignmentFilter === "" || assignment === this.assignmentFilter;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  _isFilteredStudent(student = "") {
+    return this.studentFilter === "" || student === this.studentFilter;
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 customElements.define("elmsln-studio-submissions", ElmslnStudioSubmissions);
 export { ElmslnStudioSubmissions };

@@ -242,6 +242,7 @@ export class StorybookUtilities {
       hax = quick.concat(configure, advanced);
     console.log(
       "getElementProperties",
+      props,
       haxProps,
       hax,
       quick,
@@ -639,6 +640,8 @@ export class StorybookUtilities {
         val =
           knob.method === "haxupload" && Array.isArray(knob.knob)
             ? knob.knob[0]
+            : knob.method === "boolean"
+            ? knob.knob === true
             : knob.knob;
       console.log("makeElement----", knob, knob.method, knob.knob, val);
       el[prop] = val;
@@ -646,7 +649,7 @@ export class StorybookUtilities {
     Object.keys(knobs.attr || {}).forEach(attr => {
       let knob = knobs.props[attr],
         val = knob.knob;
-      if (val) {
+      if (val === true) {
         el.setAttribute(attr, val);
       } else {
         el.removeAttribute(val);
@@ -689,11 +692,21 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromHaxDemo(el, defaults = {}, additions = [], exclusions = []) {
-    let demo =
-        el.haxProperties &&
-        el.haxProperties.demoSchema &&
-        el.haxProperties.demoSchema.length > 0
+  makeElementFromHaxDemo(
+    el,
+    defaults = {},
+    additions = [],
+    exclusions = [],
+    index
+  ) {
+    let demoschema =
+        el.haxProperties && el.haxProperties.demoSchema
+          ? el.haxProperties.demoSchema
+          : undefined,
+      demo =
+        demoschema && index && demoschema[index]
+          ? demoschema[index]
+          : demoschema.length > 0
           ? this.getRandomOption(el.haxProperties.demoSchema)
           : {},
       props = demo.properties,
