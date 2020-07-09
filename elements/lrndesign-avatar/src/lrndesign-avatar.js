@@ -48,14 +48,19 @@ class LrndesignAvatar extends SimpleColors {
     super.connectedCallback();
   }
 
-  _getAccentColor(color) {
+  _getAccentColor() {
     // legacy API bridge
-    color = color.replace("-text", "");
-    if (
-      this.colors[color] &&
-      (!this.accentColor || this.accentColor === "grey")
-    ) {
-      this.accentColor = this.color;
+    if(this.colors && (!this.accentColor || this.accentColor === "grey")){
+      let color = (this.color || "").replace("-text", "");
+      if(color && this.colors[color]) {
+        this.accentColor = color;
+      } else {
+        let str = this.label || this.icon,
+          char = str && str.charCodeAt(0)  ? str.charCodeAt(0) : Math.floor(Math.random() * 16),
+          colors = Object.keys(this.colors);
+        color = colors[(char % 16) + 1];
+        this.accentColor = colors[(char % 16) + 1] || colors[Math.floor(Math.random() * this.colors.length)];
+      }
     }
   }
 
@@ -64,8 +69,8 @@ class LrndesignAvatar extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "color") {
-        this._getAccentColor(this[propName]);
+      if (propName == "color" || propName == "label" || propName == "icon") {
+        this._getAccentColor();
       }
     });
   }

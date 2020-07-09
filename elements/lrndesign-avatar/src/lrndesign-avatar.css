@@ -1,6 +1,7 @@
 :host {
   display: block;
-  border-radius: 50%;
+  margin: 0;
+  padding: 0;
 }
 
 :host([hidden]) {
@@ -8,7 +9,9 @@
 }
 
 paper-avatar {
+  border-radius: 50%;
   --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
   --paper-avatar-color: var(--simple-colors-default-theme-accent-8, #444);
   --paper-avatar-text-color: var(--simple-colors-default-theme-grey-1, #fff);
+  max-height: var(--lrndesign-avatar-width, 40px);
 }
