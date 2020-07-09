@@ -5,9 +5,9 @@
 import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { HAXCMSThemeParts } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { HAXCMSMobileMenuMixin } from "@lrnwebcomponents/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 
 /**
@@ -21,12 +21,11 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSThemeParts(
-  ResponsiveUtilityBehaviors(HAXCMSLitElementTheme)
-) {
+class CleanTwo extends HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)) {
   //styles function
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -65,25 +64,6 @@ class CleanTwo extends HAXCMSThemeParts(
           --site-search-link-text-color: #252737;
           --site-search-link-color: #252737;
           --site-search-result-color: #252737;
-        }
-        :host([edit-mode]) {
-          opacity: 1;
-        }
-        /**
-        * Hide the slotted content during edit mode. This must be here to work.
-        */
-       :host([edit-mode]) #slot {
-          display: none;
-        }
-        #slot {
-          min-height: 50vh;
-        }
-
-        :host([hidden]) {
-          display: none;
-        }
-        [hidden] {
-          display: none !important;
         }
         .link-actions {
           margin: 0;
@@ -220,10 +200,10 @@ class CleanTwo extends HAXCMSThemeParts(
           -webkit-box-align: stretch;
           -webkit-transition: margin-bottom 250ms ease;
         }
-        :host([is-logged-in]) .body-wrapper.with-menu {
+        :host([is-logged-in][menu-open]) .body-wrapper {
           margin-left: 48px;
         }
-        .body-wrapper.with-menu .left-col {
+        :host([menu-open]) .body-wrapper .left-col {
           display: -webkit-box;
           display: -moz-box;
           display: -ms-flexbox;
@@ -231,13 +211,13 @@ class CleanTwo extends HAXCMSThemeParts(
           display: flex;
         }
 
-          :host([is-logged-in]) .body-wrapper.with-menu nav {
+          :host([is-logged-in][menu-open]) .body-wrapper nav {
             margin-left: 48px;
           }
-          :host([is-logged-in]) .body-wrapper.with-menu .content-wrapper {
+          :host([is-logged-in][menu-open]) .body-wrapper .content-wrapper {
             margin-left: 0;
           }
-          :host .body-wrapper .content-wrapper {
+          :host([is-logged-in]) .body-wrapper .content-wrapper {
             margin-left: 48px;
             width: auto;
           }
@@ -293,7 +273,7 @@ class CleanTwo extends HAXCMSThemeParts(
           overflow-y: auto;
           flex: 1 1 auto;
           width: 300px;
-          margin: 32px 0 32px -24px;
+          margin: 32px 0 32px 0;
           display: block;
           padding: 0;
           position: fixed;
@@ -303,6 +283,7 @@ class CleanTwo extends HAXCMSThemeParts(
         }
 
         .content-wrapper {
+          max-width: 100%;
           flex: 1 1 auto;
           margin: 0;
           display: flex;
@@ -318,19 +299,33 @@ class CleanTwo extends HAXCMSThemeParts(
           width: 100%;
           padding: 0;
           margin: 0;
-          background-color: white;
           z-index: 2;
           height: 40px;
         }
-        .content site-menu-content {
+        .header #haxcmsmobilemenubutton {
+          float: left;
+          margin-left: -52px
+        }
+        .header site-menu-content {
           display: inline-flex;
           float: right;
           color: black;
           font-size: 1.5em;
+          margin-right: -52px;
         }
-        .content #menubtn {
-          float: left;
-          margin-left: -8px
+        @media screen and (max-width: 600px) {
+          .header site-menu-content {
+            margin-right: -40px;
+          }
+          .link-actions .inner {
+            display: block;
+          }
+          site-menu-button {
+            margin: 10px 0;
+          }
+          #slot ::slotted(iframe) {
+            width: auto;
+          }
         }
         @media screen and (min-width: 1024px) {
           .content-wrapper {
@@ -469,25 +464,14 @@ class CleanTwo extends HAXCMSThemeParts(
   // render function
   render() {
     return html`
-      <div class="body-wrapper ${this.withMenu}">
+      <div class="body-wrapper">
         <div class="left-col">
-          <nav id="nav" role="navigation" aria-labelledby="leftnavheading">
-            <site-menu id="leftnavheading"></site-menu>
-          </nav>
+          ${this.HAXCMSMobileMenu()}
         </div>
         <div class="content-wrapper">
           <div class="content">
             <div class="header">
-              <paper-icon-button
-                .part="${this.editMode ? `edit-mode-active` : ``}"
-                icon="icons:menu"
-                id="menubtn"
-                aria-label="Toggle menu"
-                @click="${this.toggleMenu}"
-              ></paper-icon-button>
-              <simple-tooltip for="menubtn">
-                Toggle menu
-              </simple-tooltip>
+              ${this.HAXCMSMobileMenuButton()}
               ${this.responsiveSize != "xl"
                 ? html`
                     <site-menu-content
@@ -586,9 +570,6 @@ class CleanTwo extends HAXCMSThemeParts(
       searchTerm: {
         type: String
       },
-      withMenu: {
-        type: String
-      },
       prevPage: {
         type: String
       },
@@ -613,7 +594,6 @@ class CleanTwo extends HAXCMSThemeParts(
    */
   constructor() {
     super();
-    this.withMenu = "with-menu";
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
@@ -641,15 +621,6 @@ class CleanTwo extends HAXCMSThemeParts(
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
-  }
-  toggleMenu(e) {
-    if (this.withMenu == "with-menu") {
-      this.withMenu = "";
-      this.shadowRoot.querySelector("#nav").setAttribute("tabindex", "-1");
-    } else {
-      this.withMenu = "with-menu";
-      this.shadowRoot.querySelector("#nav").removeAttribute("tabindex");
-    }
   }
   /**
    * life cycle, element is removed from the DOM

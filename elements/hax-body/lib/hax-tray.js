@@ -1096,6 +1096,11 @@ class HaxTray extends winEventsElement(LitElement) {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title + " Settings";
           this.activeTagIcon = this.activeGizmo.icon;
+          if (!oldValue && !this.shadowRoot.querySelector("#settingscollapse").expanded) {
+            this.shadowRoot
+              .querySelector('#settingscollapse div[slot="heading"]')
+              .click();
+          }
         } else {
           this.activeTagName = "Select an element";
           this.activeTagIcon = "icons:settings";
@@ -1314,22 +1319,6 @@ class HaxTray extends winEventsElement(LitElement) {
       ];
       // array of things to forcibly disable
       let disable = [];
-      // see if we have any layout settings or disable
-      if (props.settings.layout.length > 0) {
-        this.activeSchema[0].properties.push({
-          property: "layout",
-          title: "Layout",
-          description: "Position the element relative to other items",
-          properties: props.settings.layout
-        });
-      } else {
-        this.activeSchema[0].properties.push({
-          property: "layout",
-          title: "Layout",
-          description: "Position the element relative to other items",
-          disabled: true
-        });
-      }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
         this.activeSchema[0].properties.push({
@@ -1343,6 +1332,22 @@ class HaxTray extends winEventsElement(LitElement) {
           property: "configure",
           title: "Configure",
           description: "Configure the element",
+          disabled: true
+        });
+      }
+      // see if we have any layout settings or disable
+      if (props.settings.layout.length > 0) {
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
+          properties: props.settings.layout
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
           disabled: true
         });
       }

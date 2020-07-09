@@ -47,8 +47,18 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
             var(--simple-colors-default-theme-purple-7)
           );
         }
+        @media screen and (max-width: 600px) {
+          .indent-1, .indent-2, .indent-3, .indent-4, .indent-5, .indent-6 {
+            padding-left: 0;
+          }
+        }
         :host([hide-if-empty][is-empty]) {
           display: none !important;
+        }
+        simple-popover,
+        ol,
+        .item {
+          max-width: 175px;
         }
       `
     ];
