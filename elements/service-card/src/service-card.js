@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element/lit-element.js';
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `service-card`
@@ -25,14 +25,11 @@ class ServiceCard extends LitElement {
    */
   constructor() {
     super();
-    
   }
   /**
    * LitElement ready
    */
-  firstUpdated(changedProperties) {
-    
-  }
+  firstUpdated(changedProperties) {}
   /**
    * LitElement life cycle - property changed
    */
@@ -62,7 +59,6 @@ class ServiceCard extends LitElement {
       */
     });
   }
-  
 }
 customElements.define(ServiceCard.tag, ServiceCard);
 export { ServiceCard };
