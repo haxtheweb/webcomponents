@@ -46,7 +46,7 @@ class ServiceCard extends LitElement {
           {
             property: "source",
             title: "Source",
-            inputMethod: "haxupload",
+            inputMethod: "haxupload"
           },
           {
             property: "alt",
@@ -65,7 +65,7 @@ class ServiceCard extends LitElement {
             title: "Decription",
             description: "Details of the service",
             inputMethod: "code-editor"
-          },
+          }
         ],
         advanced: []
       }

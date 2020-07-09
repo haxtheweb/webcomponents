@@ -102,7 +102,7 @@ class DateCard extends SimpleColors {
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean"
-          },
+          }
         ],
         advanced: []
       }
