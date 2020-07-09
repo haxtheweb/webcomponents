@@ -39,9 +39,7 @@ class DateCard extends SimpleColors {
         description: "Displays a calendar date with details",
         icon: "hax:calendar",
         color: "green",
-        groups: [
-          "Date"
-        ],
+        groups: ["Date"],
         handles: [],
         meta: {
           author: "McGarvelcuddy",
@@ -55,56 +53,56 @@ class DateCard extends SimpleColors {
             property: "month",
             title: "Month",
             description: "Month to display on card",
-            inputMethod: "textfield",
+            inputMethod: "textfield"
           },
           {
             property: "date",
             title: "Day of month",
             description: "Numeric date of the month",
-            inputMethod: "number",
+            inputMethod: "number"
           },
           {
             property: "day",
             title: "Day of week",
             description: "Textual day of the week",
-            inputMethod: "textfield",
+            inputMethod: "textfield"
           },
           {
             property: "title",
             title: "Title",
             description: "Name of the event",
-            inputMethod: "textfield",
+            inputMethod: "textfield"
           },
           {
             property: "location",
             title: "Location",
             description: "Where it is taking place",
-            inputMethod: "textfield",
+            inputMethod: "textfield"
           },
           {
             property: "startTime",
             title: "Start",
             description: "Start time",
-            inputMethod: "textfield",
+            inputMethod: "textfield"
           },
           {
             property: "endTime",
             title: "End",
             description: "Start time",
-            inputMethod: "textfield",
+            inputMethod: "textfield"
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
-            inputMethod: "colorpicker",
+            inputMethod: "colorpicker"
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
-            inputMethod: "boolean",
-          },
+            inputMethod: "boolean"
+          }
         ],
         advanced: []
       }
