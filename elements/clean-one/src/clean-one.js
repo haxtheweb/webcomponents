@@ -24,11 +24,7 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
  * @element clean-one
  */
 class CleanOne extends HAXCMSThemeParts(
-  HAXCMSUserStylesMenuMixin(
-    HAXCMSMobileMenuMixin(
-      HAXCMSLitElementTheme
-    )
-  )
+  HAXCMSUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme))
 ) {
   //styles function
   static get styles() {
@@ -624,9 +620,7 @@ class CleanOne extends HAXCMSThemeParts(
   // render function
   render() {
     return html`
-      <div
-        class="site"
-      >
+      <div class="site">
         <div class="menu-outline">
           <div id="site-search-input" role="search">
             <input
@@ -648,8 +642,7 @@ class CleanOne extends HAXCMSThemeParts(
               .part="${this.editMode ? `edit-mode-active` : ``}"
             >
               <div class="btn-container">
-              ${this.HAXCMSMobileMenuButton()}
-              ${this.HAXCMSUserStylesMenu()}
+                ${this.HAXCMSMobileMenuButton()} ${this.HAXCMSUserStylesMenu()}
                 <div class="pull-right link-actions">
                   <site-print-button
                     class="btn js-toolbar-action"
@@ -716,7 +709,7 @@ class CleanOne extends HAXCMSThemeParts(
       ...super.properties,
       searchTerm: {
         type: String
-      },
+      }
     };
   }
 
@@ -753,7 +746,9 @@ class CleanOne extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.HAXCMSThemeSettings.scrollTarget = this.shadowRoot.querySelector('#body');
+    this.HAXCMSThemeSettings.scrollTarget = this.shadowRoot.querySelector(
+      "#body"
+    );
     // hook up the scroll target
     this.shadowRoot.querySelector(
       "scroll-button"

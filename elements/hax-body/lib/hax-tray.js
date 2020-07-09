@@ -1096,7 +1096,10 @@ class HaxTray extends winEventsElement(LitElement) {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title + " Settings";
           this.activeTagIcon = this.activeGizmo.icon;
-          if (!oldValue && !this.shadowRoot.querySelector("#settingscollapse").expanded) {
+          if (
+            !oldValue &&
+            !this.shadowRoot.querySelector("#settingscollapse").expanded
+          ) {
             this.shadowRoot
               .querySelector('#settingscollapse div[slot="heading"]')
               .click();

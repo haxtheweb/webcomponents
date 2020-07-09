@@ -21,7 +21,9 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
  * @demo demo/index.html
  * @element clean-two
  */
-class CleanTwo extends HAXCMSThemeParts(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)) {
+class CleanTwo extends HAXCMSThemeParts(
+  HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)
+) {
   //styles function
   static get styles() {
     return [

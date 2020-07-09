@@ -151,7 +151,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
        */
       title: {
         type: String,
-        value: '',
+        value: ""
       },
       /**
        * icon

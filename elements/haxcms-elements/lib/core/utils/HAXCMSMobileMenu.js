@@ -27,33 +27,42 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
       import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       return html`
-      <paper-icon-button
-        class="btn"
-        icon="icons:menu"
-        id="haxcmsmobilemenubutton"
-        .part="${this.editMode ? `edit-mode-active` : ``}"
-        @click="${this.__HAXCMSMobileMenuToggle}"
-      ></paper-icon-button>
-      <simple-tooltip for="haxcmsmobilemenubutton">
-        Toggle menu
-      </simple-tooltip>
-    `;
+        <paper-icon-button
+          class="btn"
+          icon="icons:menu"
+          id="haxcmsmobilemenubutton"
+          .part="${this.editMode ? `edit-mode-active` : ``}"
+          @click="${this.__HAXCMSMobileMenuToggle}"
+        ></paper-icon-button>
+        <simple-tooltip for="haxcmsmobilemenubutton">
+          Toggle menu
+        </simple-tooltip>
+      `;
     }
     __HAXCMSMobileMenuToggle(e) {
       if (this.menuOpen) {
         this.menuOpen = false;
-        this.shadowRoot.querySelector("#haxcmsmobilemenunav").setAttribute("tabindex", "-1");
+        this.shadowRoot
+          .querySelector("#haxcmsmobilemenunav")
+          .setAttribute("tabindex", "-1");
       } else {
         this.menuOpen = true;
-        this.shadowRoot.querySelector("#haxcmsmobilemenunav").removeAttribute("tabindex");
+        this.shadowRoot
+          .querySelector("#haxcmsmobilemenunav")
+          .removeAttribute("tabindex");
       }
     }
     HAXCMSMobileMenu(e) {
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
       return html`
-      <nav id="haxcmsmobilemenunav" role="navigation" aria-labelledby="sitemenu">
-        <site-menu id="sitemenu"></site-menu>
-      </nav>`;
+        <nav
+          id="haxcmsmobilemenunav"
+          role="navigation"
+          aria-labelledby="sitemenu"
+        >
+          <site-menu id="sitemenu"></site-menu>
+        </nav>
+      `;
     }
     /**
      * Notice small size and if menu is open, close it
@@ -63,15 +72,15 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
         super.updated(changedProperties);
       }
       changedProperties.forEach((oldValue, propName) => {
-        if (propName == 'responsiveSize') {
+        if (propName == "responsiveSize") {
           switch (this[propName]) {
-            case 'sm':
-            case 'xs':
+            case "sm":
+            case "xs":
               // auto close for small layouts
               if (this.menuOpen) {
                 this.__HAXCMSMobileMenuToggle({});
               }
-            break;
+              break;
             default: {
               // auto open for large layouts
               if (!this.menuOpen) {
@@ -92,8 +101,8 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
         menuOpen: {
           type: Boolean,
           reflect: true,
-          attribute: 'menu-open',
-        },
+          attribute: "menu-open"
+        }
       };
     }
   };

@@ -48,7 +48,12 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
           );
         }
         @media screen and (max-width: 600px) {
-          .indent-1, .indent-2, .indent-3, .indent-4, .indent-5, .indent-6 {
+          .indent-1,
+          .indent-2,
+          .indent-3,
+          .indent-4,
+          .indent-5,
+          .indent-6 {
             padding-left: 0;
           }
         }

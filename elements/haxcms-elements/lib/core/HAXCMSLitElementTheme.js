@@ -10,7 +10,9 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * LitElement Version of HAXCMSTheme
  */
-class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitElement)) {
+class HAXCMSLitElementTheme extends HAXCMSTheme(
+  ResponsiveUtilityBehaviors(LitElement)
+) {
   constructor() {
     super();
     this.editMode = false;
@@ -87,15 +89,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
           display: none !important;
         }
 
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            transition: none !important;
+          }
         }
-      }
         /**
         * Hide the slotted content during edit mode. This must be here to work.
         */
-       :host([edit-mode]) #slot {
+        :host([edit-mode]) #slot {
           display: none;
         }
         #slot {
