@@ -12,7 +12,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  */
 class ServiceCard extends LitElement {
   static get tag() {
-    return 'service-card';
+    return "service-card";
   }
 
   static get properties() {
@@ -20,13 +20,13 @@ class ServiceCard extends LitElement {
       image: { type: String },
       title: { type: String },
       info: { type: String },
-      alt: { type: String },
+      alt: { type: String }
     };
   }
 
   constructor() {
     super();
-    this.alt = '';
+    this.alt = "";
   }
 
   static get styles() {
@@ -54,7 +54,7 @@ class ServiceCard extends LitElement {
       .title {
         padding: 4px 4px 4px 4px;
         text-align: center;
-        font-family: 'Courier New', courier, sans-serif;
+        font-family: "Courier New", courier, sans-serif;
       }
       .info {
         padding: 4px 4px 4px 4px;
@@ -68,7 +68,12 @@ class ServiceCard extends LitElement {
     return html`
       <div class="card">
         <div class="container">
-          <img loading="lazy" class="avatar" src="${this.image}" alt="${this.alt}" />
+          <img
+            loading="lazy"
+            class="avatar"
+            src="${this.image}"
+            alt="${this.alt}"
+          />
           <h3 class="title"><b>${this.title}</b></h3>
           <p class="info"><slot></slot></p>
         </div>
