@@ -50,16 +50,21 @@ class LrndesignAvatar extends SimpleColors {
 
   _getAccentColor() {
     // legacy API bridge
-    if(this.colors && (!this.accentColor || this.accentColor === "grey")){
+    if (this.colors && (!this.accentColor || this.accentColor === "grey")) {
       let color = (this.color || "").replace("-text", "");
-      if(color && this.colors[color]) {
+      if (color && this.colors[color]) {
         this.accentColor = color;
       } else {
         let str = this.label || this.icon,
-          char = str && str.charCodeAt(0)  ? str.charCodeAt(0) : Math.floor(Math.random() * 16),
+          char =
+            str && str.charCodeAt(0)
+              ? str.charCodeAt(0)
+              : Math.floor(Math.random() * 16),
           colors = Object.keys(this.colors);
         color = colors[(char % 16) + 1];
-        this.accentColor = colors[(char % 16) + 1] || colors[Math.floor(Math.random() * this.colors.length)];
+        this.accentColor =
+          colors[(char % 16) + 1] ||
+          colors[Math.floor(Math.random() * this.colors.length)];
       }
     }
   }

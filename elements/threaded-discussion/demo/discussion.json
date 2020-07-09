@@ -68,7 +68,8 @@
         "date": "2020-03-26T17:40:39.000Z",
         "body": "Praesent pulvinar consectetur scelerisque. Praesent venenatis in nunc ut maximus.. Donec lobortis condimentum leo.",
         "read": false,
-        "like": false      },
+        "like": false
+      },
       {
         "id": "reply-4",
         "firstName": "Felix",
@@ -76,7 +77,8 @@
         "date": "2020-03-27T17:40:39.000Z",
         "body": "Morbi ac tortor non leo hendrerit porta sed et magna. Suspendisse porttitor aliquet pellentesque. Morbi at dolor eget massa eleifend dictum.",
         "read": true,
-        "like": false      },
+        "like": false
+      },
       {
         "id": "reply-5",
         "firstName": "Tom",
@@ -85,7 +87,8 @@
         "date": "2020-03-28T17:40:39.000Z",
         "body": "Nunc ullamcorper nisl mi, nec maximus nisi euismod ac. Nulla sollicitudin quam eget ipsum imperdiet, non pellentesque massa lobortis.",
         "read": true,
-        "like": false      }
+        "like": false
+      }
     ]
   }
 ]

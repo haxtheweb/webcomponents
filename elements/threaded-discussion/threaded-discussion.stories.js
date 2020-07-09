@@ -38,7 +38,10 @@ export const ThreadedDiscussionGroupStory = () => {
         .join("")
     },
     [
-      { css: "--threaded-discussion-group-margin", title: "Collapse group's margin" },
+      {
+        css: "--threaded-discussion-group-margin",
+        title: "Collapse group's margin"
+      },
       { css: "--threaded-discussion-margin", title: "Collapse item's margin" }
     ]
   );

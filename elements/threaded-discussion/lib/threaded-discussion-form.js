@@ -69,22 +69,36 @@ class ThreadedDiscussionForm extends LitElement {
           flex: 1 1 100%;
           height: var(--threaded-discussion-textarea-Height, 16px);
           opacity: var(--threaded-discussion-textarea-Opacity, 0);
-          width: calc(100% - 2 * var(--threaded-discussion-comment-Padding, 10px));
+          width: calc(
+            100% - 2 * var(--threaded-discussion-comment-Padding, 10px)
+          );
           padding: var(--threaded-discussion-comment-Padding, 10px);
           margin: 1px;
           border: none;
           resize: none;
           transition: all 0.5s ease-in-out;
-          color: var(--threaded-discussion-textarea-Color, var(--threaded-discussion-Color, #4b4b4b));
-          line-height: var(--threaded-discussion-textarea-LineHeight, var(--threaded-discussion-LineHeight, 160%));
+          color: var(
+            --threaded-discussion-textarea-Color,
+            var(--threaded-discussion-Color, #4b4b4b)
+          );
+          line-height: var(
+            --threaded-discussion-textarea-LineHeight,
+            var(--threaded-discussion-LineHeight, 160%)
+          );
           font-weight: var(--threaded-discussion-textarea-FontWeight);
-          font-size: var(--threaded-discussion-textarea-FontSize, var(--threaded-discussion-FontSize, 14px));
-          font-family: var(--threaded-discussion-textarea-FontFamily, var(--threaded-discussion-FontFamily));
+          font-size: var(
+            --threaded-discussion-textarea-FontSize,
+            var(--threaded-discussion-FontSize, 14px)
+          );
+          font-family: var(
+            --threaded-discussion-textarea-FontFamily,
+            var(--threaded-discussion-FontFamily)
+          );
         }
         textarea:focus,
         :host:focus-within textarea {
-          height: var(--threaded-discussion-textarea-focus-Height,100px);
-          opacity: var(--threaded-discussion-textarea-focus-Opacity,1);
+          height: var(--threaded-discussion-textarea-focus-Height, 100px);
+          opacity: var(--threaded-discussion-textarea-focus-Opacity, 1);
         }
         form {
           display: flex;
@@ -103,34 +117,53 @@ class ThreadedDiscussionForm extends LitElement {
           margin: 1px;
           min-height: 24px;
           font-weight: var(--threaded-discussion-button-FontWeight);
-          font-size: var(--threaded-discussion-button-FontSize, var(--threaded-discussion-FontSize, 14px));
+          font-size: var(
+            --threaded-discussion-button-FontSize,
+            var(--threaded-discussion-FontSize, 14px)
+          );
           font-family: var(--threaded-discussion-button-FontFamily);
           border-radius: var(--threaded-discussion-button-BorderRadius, 3px);
         }
         .reply-form button {
-          color: var(--threaded-discussion-reply-button-Color,#4b4b4b);
-          background-color: var(--threaded-discussion-reply-button-BackgroundColor,#fff);
-          border: 1px solid var(--threaded-discussion-reply-button-BorderColor,#4b4b4b);
+          color: var(--threaded-discussion-reply-button-Color, #4b4b4b);
+          background-color: var(
+            --threaded-discussion-reply-button-BackgroundColor,
+            #fff
+          );
+          border: 1px solid
+            var(--threaded-discussion-reply-button-BorderColor, #4b4b4b);
         }
         .reply-form button:focus,
         .reply-form button:hover {
-          color: var(--threaded-discussion-reply-button-focus-Color,#222);
-          background-color: var(--threaded-discussion-reply-button-focus-BackgroundColor,#fff);
-          border: 1px solid var(--threaded-discussion-reply-button-focus-BorderColor,#222);
+          color: var(--threaded-discussion-reply-button-focus-Color, #222);
+          background-color: var(
+            --threaded-discussion-reply-button-focus-BackgroundColor,
+            #fff
+          );
+          border: 1px solid
+            var(--threaded-discussion-reply-button-focus-BorderColor, #222);
         }
         .comment-form button {
           font-weight: var(--threaded-discussion-comment-button-FontWeight);
           font-size: var(--threaded-discussion-comment-button-FontSize);
           font-family: var(--threaded-discussion-button-FontFamily);
-          color: var(--threaded-discussion-comment-button-Color,#fff);
-          background-color: var(--threaded-discussion-comment-button-BackgroundColor,#4b4b4b);
-          border: 1px solid var(--threaded-discussion-comment-button-BorderColor,#4b4b4b);
+          color: var(--threaded-discussion-comment-button-Color, #fff);
+          background-color: var(
+            --threaded-discussion-comment-button-BackgroundColor,
+            #4b4b4b
+          );
+          border: 1px solid
+            var(--threaded-discussion-comment-button-BorderColor, #4b4b4b);
         }
         .comment-form button:focus,
         .comment-form button:hover {
-          color: var(--threaded-discussion-comment-button-focus-Color,#fff);
-          background-color: var(--threaded-discussion-comment-button-focus-BackgroundColor,#222);
-          border: 1px solid var(--threaded-discussion-comment-button-focus-BorderColor,#222);
+          color: var(--threaded-discussion-comment-button-focus-Color, #fff);
+          background-color: var(
+            --threaded-discussion-comment-button-focus-BackgroundColor,
+            #222
+          );
+          border: 1px solid
+            var(--threaded-discussion-comment-button-focus-BorderColor, #222);
         }
         button iron-icon {
           margin-left: 5px;
@@ -168,65 +201,65 @@ class ThreadedDiscussionForm extends LitElement {
 
   static get properties() {
     return {
-      /** 
+      /**
        * reply button id
        */
       button: {
         type: String
       },
-      /** 
+      /**
        * label for button
        */
       buttonLabel: {
         type: String,
-        attribute: 'button-label',
+        attribute: "button-label",
         reflect: true
       },
-      /** 
+      /**
        * whether form is disabled
        */
       disabled: {
         type: Boolean,
-        attribute: 'disabled',
+        attribute: "disabled",
         reflect: true
       },
-      /** 
+      /**
        * field name for comment body
        */
       field: {
         type: String
       },
-      /** 
+      /**
        * whether form is hidden
        */
       hidden: {
         type: Boolean,
-        attribute: 'hidden',
+        attribute: "hidden",
         reflect: true
       },
-      /** 
+      /**
        * button icon
        */
       icon: {
         type: String,
-        attribute: 'icon',
+        attribute: "icon",
         reflect: true
       },
-      /** 
+      /**
        * form action on submit
        */
       submit: {
         type: String
       },
-      /** 
+      /**
        * label for textarea
        */
       textareaLabel: {
         type: String,
-        attribute: 'textarea-label',
+        attribute: "textarea-label",
         reflect: true
       },
-      /** 
+      /**
        * thread id if this form is replying to a thread
        */
       thread: {
@@ -239,11 +272,11 @@ class ThreadedDiscussionForm extends LitElement {
     super();
     this.disabled = false;
     this.hidden = false;
-    import ("@polymer/iron-icon/iron-icon.js");
-    import ("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
   }
 
-  _handleSubmit(){
+  _handleSubmit() {
     this.replying = false;
     this.dispatchEvent(
       new CustomEvent("reply-submitted", {
@@ -255,5 +288,8 @@ class ThreadedDiscussionForm extends LitElement {
     );
   }
 }
-window.customElements.define(ThreadedDiscussionForm.tag, ThreadedDiscussionForm);
+window.customElements.define(
+  ThreadedDiscussionForm.tag,
+  ThreadedDiscussionForm
+);
 export { ThreadedDiscussionForm };
