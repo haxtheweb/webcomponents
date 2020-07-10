@@ -429,8 +429,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     this.tag = ElmslnStudioSubmissions.tag;
   }
   get filteredComments() {
-    return (this.comments || []).filter(i =>
-      this._isFilteredStudent(i.userId) && this._isFilteredAssignment(i.assignmentId) && this._isFilteredProject(i.projectId)
+    return (this.comments || []).filter(
+      i =>
+        this._isFilteredStudent(i.userId) &&
+        this._isFilteredAssignment(i.assignmentId) &&
+        this._isFilteredProject(i.projectId)
     );
   }
   get studentOptions() {
@@ -442,25 +445,24 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   }
   get assignmentOptions() {
     let options = { "": "All" };
-    (this.submissions || []).filter(i=>this._isFilteredProject(i.projectId)).forEach(
-      i => (options[i.assignmentId] = i.assignment)
-    );
+    (this.submissions || [])
+      .filter(i => this._isFilteredProject(i.projectId))
+      .forEach(i => (options[i.assignmentId] = i.assignment));
     return options;
   }
   get projectOptions() {
     let options = { "": "All" };
-    (this.submissions || []).forEach(
-      i => (options[i.projectId] = i.project)
-    );
+    (this.submissions || []).forEach(i => (options[i.projectId] = i.project));
     return options;
   }
   get filteredSubmissions() {
     return (this.submissions || []).filter(i => {
       return (
-        this._isFilteredStudent(i.userId) && this._isFilteredAssignment(i.assignmentId) && this._isFilteredProject(i.projectId)
+        this._isFilteredStudent(i.userId) &&
+        this._isFilteredAssignment(i.assignmentId) &&
+        this._isFilteredProject(i.projectId)
       );
-    }
-    );
+    });
   }
   _isFilteredAssignment(assignment = "") {
     return this.assignmentFilter === "" || assignment === this.assignmentFilter;

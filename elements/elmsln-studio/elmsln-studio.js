@@ -192,8 +192,10 @@ class ElmslnStudio extends router(
   }
 
   constructor() {
-    var dosomething = ()=>{};
-    var query = document.getElementById("search").addEventListener("test",dosomething);
+    var dosomething = () => {};
+    var query = document
+      .getElementById("search")
+      .addEventListener("test", dosomething);
     super();
     this.activity = [];
     this.discussion = [];

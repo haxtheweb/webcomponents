@@ -314,7 +314,9 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                         icon="${this._getFeedbackIcon(s.feedback.length)}"
                         path="${s.link}&comment=show"
                       >
-                        <span class="sr-only">Give / View Feedback (${s.feedback.length})</span>
+                        <span class="sr-only"
+                          >Give / View Feedback (${s.feedback.length})</span
+                        >
                       </elmsln-studio-button>
                     </div>
                     <div class="submission-body">
@@ -512,10 +514,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   connectedCallback() {
     super.connectedCallback();
   }
-  _getFeedbackIcon(comments){
-    if(comments === 0){
+  _getFeedbackIcon(comments) {
+    if (comments === 0) {
       return "communication:comment";
-    } else if(comments < 10){
+    } else if (comments < 10) {
       return `hax:messages-${comments}`;
     }
     return "hax:messages-9-plus";

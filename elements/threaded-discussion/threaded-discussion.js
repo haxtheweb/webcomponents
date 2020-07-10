@@ -70,7 +70,10 @@ class ThreadedDiscussion extends LitElement {
         }
         .thread:focus-within,
         #new-thread:focus-within {
-          border-left: var(--threaded-discussion-thread-focus-BorderLeft, 4px solid blue);
+          border-left: var(
+            --threaded-discussion-thread-focus-BorderLeft,
+            4px solid blue
+          );
         }
         #new-thread:focus-within {
           border-left: var(--threaded-discussion-new-thread-focus-BorderLeft);
@@ -201,7 +204,10 @@ class ThreadedDiscussion extends LitElement {
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
                 .icon="${this.replyIcon}"
-                .submit="${this._getPath(this.submit, this._getThreadParams(thread.id))}"
+                .submit="${this._getPath(
+                  this.submit,
+                  this._getThreadParams(thread.id)
+                )}"
                 textarea-label="${this.replyTextareaLabel || "Enter reply"}"
                 .thread="${thread.id}"
               >
@@ -251,85 +257,85 @@ class ThreadedDiscussion extends LitElement {
 
   static get properties() {
     return {
-      /** 
-       * sort comments latest-first  
+      /**
+       * sort comments latest-first
        */
       latest: {
         type: Boolean,
         attribute: "latest",
         reflect: true
       },
-      /** 
+      /**
        * label for comment submit button
        */
       commentButtonLabel: {
         type: String,
         attribute: "comment-button-label"
       },
-      /** 
+      /**
        * label for comment textarea
        */
       commentTextareaLabel: {
         type: String,
         attribute: "comment-textarea-label"
       },
-      /** 
+      /**
        * optional icon for comment button
        */
       commentIcon: {
         type: String,
         attribute: "comment-icon"
       },
-      /** 
+      /**
        * raw data, can be Object or Array
        */
       data: {
         type: Object
       },
-      /** 
+      /**
        * locale for date formatting
        */
       dateLocale: {
         type: String
       },
-      /** 
+      /**
        * JS format object for dates
        */
       dateFormat: {
         type: Object
       },
-      /** 
-       * discussion in demo mode? 
-       * Instead of submitting, 
+      /**
+       * discussion in demo mode?
+       * Instead of submitting,
        * submission is temporarily inserted into data.
        */
       demo: {
         type: Boolean
       },
-      /** 
+      /**
        * text that displays while discussion data loads
        */
       loadingText: {
         type: String,
         attribute: "loading-text"
       },
-      /** 
-       * object that will reformat data, 
-       * where key is final formatted property, 
+      /**
+       * object that will reformat data,
+       * where key is final formatted property,
        * and value is raw data property to map.
-       * Example: {avatar: "image"} 
+       * Example: {avatar: "image"}
        * would use raw data's image property as a avatar
        */
       map: {
         type: Object
       },
-      /** 
+      /**
        * query paramerters for getting and sending data
        */
       params: {
         type: Object
       },
-      /** 
+      /**
        * label for reply submit button
        */
       replyButtonLabel: {
@@ -337,7 +343,7 @@ class ThreadedDiscussion extends LitElement {
         attribute: "reply-button-label",
         reflect: true
       },
-      /** 
+      /**
        * label for reply textarea
        */
       replyTextareaLabel: {
@@ -345,7 +351,7 @@ class ThreadedDiscussion extends LitElement {
         attribute: "reply-textarea-label",
         reflect: true
       },
-      /** 
+      /**
        * icon for reply submit button
        */
       replyIcon: {
@@ -353,25 +359,25 @@ class ThreadedDiscussion extends LitElement {
         attribute: "reply-icon",
         reflect: true
       },
-      /** 
+      /**
        * path (without parameters) for fetching data
        */
       source: {
         type: String
       },
-      /** 
+      /**
        * path (without parameters) for sending data
        */
       submit: {
         type: String
       },
-      /** 
+      /**
        * formatted data
        */
       __data: {
         type: Array
       },
-      /** 
+      /**
        * whether data is still loading
        */
       __loading: {
@@ -406,7 +412,7 @@ class ThreadedDiscussion extends LitElement {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (["params", "source"].includes(propName) && this.source){
+      if (["params", "source"].includes(propName) && this.source) {
         this.__loading = true;
         this.fetchDiscussion();
       }
@@ -519,16 +525,11 @@ class ThreadedDiscussion extends LitElement {
       newComment.date = this._getDate(new Date());
       newComment.body = e.detail.textarea.value;
       if (e.detail.thread) {
-        let filter = data.filter(
-            thread => thread.id === e.detail.thread
-          ),
+        let filter = data.filter(thread => thread.id === e.detail.thread),
           thread = filter ? filter[0] : undefined;
         newComment.thread = e.detail.thread;
         if (thread) {
-          thread.replies = [
-            ...thread.replies,
-            newComment
-          ];
+          thread.replies = [...thread.replies, newComment];
         } else {
           data.push(newComment);
         }
@@ -591,7 +592,7 @@ class ThreadedDiscussion extends LitElement {
    * @returns
    * @memberof ThreadedDiscussion
    */
-  _getThreadParams(id){
+  _getThreadParams(id) {
     let params = this.params;
     params[this._mapProp("id")] = id;
     return params;

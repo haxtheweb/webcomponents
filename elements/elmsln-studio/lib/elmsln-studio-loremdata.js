@@ -256,7 +256,7 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
   draw(arr = [], min = 0, max = min) {
     return this.shuffle(arr).slice(
       0,
-      Math.min(0,min + Math.floor(Math.random() * (max - min)))
+      Math.min(0, min + Math.floor(Math.random() * (max - min)))
     );
   }
   /**
