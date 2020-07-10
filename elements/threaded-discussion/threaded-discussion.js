@@ -15,8 +15,10 @@ Custom property | Description | Default
 `--threaded-discussion-Color` | default text color | #95989a
 `--threaded-discussion-threads-BackgroundColor` | default thread backbround-color | #eaeaea
 `--threaded-discussion-threads-Margin` | default thread margin | 0
+`--threaded-discussion-thread-focus-BorderLeft` | default thread border left color when commenting | 4px solid blue
 `--threaded-discussion-new-thread-BackgroundColor` | overrides default thread backbround-color for new thread | var(--threaded-discussion-threads-BackgroundColor, #eaeaea)
 `--threaded-discussion-new-thread-Margin` | overrides default thread margin for new thread | var(--threaded-discussion-threads-Margin, 0))
+`--threaded-discussion-new-thread-focus-BorderLeft` | overrides default border left color when posting a new thread | 
 `--threaded-discussion-comment-BackgroundColor` | comment bacground color | #fff
 `--threaded-discussion-comment-Padding` | comment padding | 10px
 `--threaded-discussion-reply-indent` | left-indent for thread replies | calc(2 * var(--threaded-discussion-comment-Padding,10px))));
@@ -65,6 +67,13 @@ class ThreadedDiscussion extends LitElement {
             --threaded-discussion-new-thread-Margin,
             var(--threaded-discussion-threads-Margin, 0)
           );
+        }
+        .thread:focus-within,
+        #new-thread:focus-within {
+          border-left: var(--threaded-discussion-thread-focus-BorderLeft, 4px solid blue);
+        }
+        #new-thread:focus-within {
+          border-left: var(--threaded-discussion-new-thread-focus-BorderLeft);
         }
         .thread > *,
         #new-thread > * {
@@ -146,7 +155,7 @@ class ThreadedDiscussion extends LitElement {
   render() {
     return html`
       <slot name="before-discussion"></slot>
-      ${this.ascending ? `` : this.threads}
+      ${this.latest ? `` : this.threads}
       <div id="new-thread">
         <slot name="before-new-thread"></slot>
         <threaded-discussion-form
@@ -165,14 +174,17 @@ class ThreadedDiscussion extends LitElement {
         </threaded-discussion-form>
         <slot name="after-new-thread"></slot>
       </div>
-      ${!this.ascending ? `` : this.threads}
+      ${!this.latest ? `` : this.threads}
       <slot name="after-discussion"></slot>
     `;
   }
   get threads() {
     return html`
       <div id="threads">
-        ${(this.sortedData || []).map(
+        <div class="thread" ?hidden="${!this.__loading}">
+          ${this.loadingText}
+        </div>
+        ${this.sortData(this.__data).map(
           thread => html`
             <div class="thread">
               ${this.getComment(thread)}
@@ -189,7 +201,7 @@ class ThreadedDiscussion extends LitElement {
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
                 .icon="${this.replyIcon}"
-                .submit="${this._getPath(this.submit, this.params)}"
+                .submit="${this._getPath(this.submit, this._getThreadParams(thread.id))}"
                 textarea-label="${this.replyTextareaLabel || "Enter reply"}"
                 .thread="${thread.id}"
               >
@@ -222,14 +234,12 @@ class ThreadedDiscussion extends LitElement {
           </div>
         </div>
         <div class="comment-body">
-          ${!comment.body
-            ? ``
-            : comment.body.split(/[\r\n]+/).map(
-                p =>
-                  html`
-                    <p>${p}</p>
-                  `
-              )}
+          ${(comment.body || "").split(/[\r\n]+/).map(
+            p =>
+              html`
+                <p>${p}</p>
+              `
+          )}
         </div>
       </div>
     `;
@@ -241,71 +251,138 @@ class ThreadedDiscussion extends LitElement {
 
   static get properties() {
     return {
-      ascending: {
+      /** 
+       * sort comments latest-first  
+       */
+      latest: {
         type: Boolean,
-        attribute: "ascending",
+        attribute: "latest",
         reflect: true
       },
+      /** 
+       * label for comment submit button
+       */
       commentButtonLabel: {
         type: String,
-        attribute: "comment-button-label",
-        reflect: true
+        attribute: "comment-button-label"
       },
+      /** 
+       * label for comment textarea
+       */
       commentTextareaLabel: {
         type: String,
-        attribute: "comment-textarea-label",
-        reflect: true
+        attribute: "comment-textarea-label"
       },
+      /** 
+       * optional icon for comment button
+       */
       commentIcon: {
         type: String,
-        attribute: "comment-icon",
-        reflect: true
+        attribute: "comment-icon"
       },
+      /** 
+       * raw data, can be Object or Array
+       */
       data: {
-        type: Array
+        type: Object
       },
+      /** 
+       * locale for date formatting
+       */
       dateLocale: {
         type: String
       },
+      /** 
+       * JS format object for dates
+       */
       dateFormat: {
         type: Object
       },
-      map: {
-        type: Object
-      },
+      /** 
+       * discussion in demo mode? 
+       * Instead of submitting, 
+       * submission is temporarily inserted into data.
+       */
       demo: {
         type: Boolean
       },
+      /** 
+       * text that displays while discussion data loads
+       */
+      loadingText: {
+        type: String,
+        attribute: "loading-text"
+      },
+      /** 
+       * object that will reformat data, 
+       * where key is final formatted property, 
+       * and value is raw data property to map.
+       * Example: {avatar: "image"} 
+       * would use raw data's image property as a avatar
+       */
+      map: {
+        type: Object
+      },
+      /** 
+       * query paramerters for getting and sending data
+       */
       params: {
         type: Object
       },
+      /** 
+       * label for reply submit button
+       */
       replyButtonLabel: {
         type: String,
         attribute: "reply-button-label",
         reflect: true
       },
+      /** 
+       * label for reply textarea
+       */
       replyTextareaLabel: {
         type: String,
         attribute: "reply-textarea-label",
         reflect: true
       },
+      /** 
+       * icon for reply submit button
+       */
       replyIcon: {
         type: String,
         attribute: "reply-icon",
         reflect: true
       },
+      /** 
+       * path (without parameters) for fetching data
+       */
       source: {
         type: String
       },
+      /** 
+       * path (without parameters) for sending data
+       */
       submit: {
         type: String
+      },
+      /** 
+       * formatted data
+       */
+      __data: {
+        type: Array
+      },
+      /** 
+       * whether data is still loading
+       */
+      __loading: {
+        type: Boolean
       }
     };
   }
 
   constructor() {
     super();
-    this.ascending = false;
+    this.latest = false;
     this.data = [];
     this.dateLocale = "en-US";
     this.dateFormat = {
@@ -319,6 +396,8 @@ class ThreadedDiscussion extends LitElement {
     this.map = {};
     this.params = {};
     this.submit = window.location.href;
+    this.__data = [];
+    this.__loading = false;
     import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -327,8 +406,10 @@ class ThreadedDiscussion extends LitElement {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (["params", "source"].includes(propName) && this.source)
+      if (["params", "source"].includes(propName) && this.source){
+        this.__loading = true;
         this.fetchDiscussion();
+      }
     });
   }
   /**
@@ -337,9 +418,9 @@ class ThreadedDiscussion extends LitElement {
    * @readonly
    * @memberof ThreadedDiscussion
    */
-  get sortedData() {
-    return this.mappedData.sort((a, b) => {
-      return this.ascending ? a.date - b.date : b.date - a.date;
+  sortData(data) {
+    return data.sort((a, b) => {
+      return this.latest ? a.date - b.date : b.date - a.date;
     });
   }
   /**
@@ -348,19 +429,17 @@ class ThreadedDiscussion extends LitElement {
    * @readonly
    * @memberof ThreadedDiscussion
    */
-  get mappedData() {
-    let data = this._getArray(this.data || []);
-    return (data || [])
+  _handleRawData(data) {
+    this.__loading = false;
+    return this._getArray(data || [])
       .filter(comment => !this._getMap(comment, "thread", "replyThread"))
       .map(thread => {
-        let params = this.params,
-          id = this._getMap(thread, "id"),
+        let id = this._getMap(thread, "id"),
           replies =
             this._getMap(thread, "replies") ||
             (data || []).filter(
               comment => this._getMap(comment, "thread", "replyThread") === id
             );
-        params[this._mapProp("thread")] = id;
         return {
           //gets all threads and comments if they are not mapped as nested array of thread
           id: id,
@@ -370,12 +449,11 @@ class ThreadedDiscussion extends LitElement {
           body: this._getMap(thread, "body"),
           color: this._getMap(thread, "color"),
           date: this._getMap(thread, "date"),
-          submit: this._getPath(this.submit, params),
           replies: this._getArray(replies).map(reply => {
             //gets all comments if they are mapped as nested array of thread
             return {
               id: this._getMap(reply, "id", "replyId"),
-              thread: this._getMap(reply, "thread", "replyThread"),
+              thread: this._getMap(reply, "thread", "replyThread") || id,
               firstName: this._getMap(reply, "firstName", "replyFirstName"),
               lastName: this._getMap(reply, "lastName", "replyLastName"),
               avatar: this._getMap(reply, "avatar", "replyAvatar"),
@@ -434,32 +512,32 @@ class ThreadedDiscussion extends LitElement {
   _handleDemo(e) {
     if (e.detail && e.detail.textarea) {
       let newComment = {},
-        data = this.data;
-      newComment[this._mapProp("id")] = `comment-${Date.now()}`;
-      newComment[this._mapProp("firstName")] = "DEMO";
-      newComment[this._mapProp("lastName")] = "USER";
-      newComment[this._mapProp("date")] = this._getDate(new Date());
-      newComment[this._mapProp("body")] = e.detail.textarea.value;
+        data = this.__data;
+      newComment.id = `comment-${Date.now()}`;
+      newComment.firstName = "DEMO";
+      newComment.lastName = "USER";
+      newComment.date = this._getDate(new Date());
+      newComment.body = e.detail.textarea.value;
       if (e.detail.thread) {
         let filter = data.filter(
-            thread => thread[this._mapProp("id")] === e.detail.thread
+            thread => thread.id === e.detail.thread
           ),
           thread = filter ? filter[0] : undefined;
-        newComment[this._mapProp("thread", "replyThread")] = e.detail.thread;
+        newComment.thread = e.detail.thread;
         if (thread) {
-          thread[this._mapProp("replies")] = [
-            ...thread[this._mapProp("replies")],
+          thread.replies = [
+            ...thread.replies,
             newComment
           ];
         } else {
           data.push(newComment);
         }
       } else {
-        newComment[this._mapProp("replies")] = [];
+        newComment.replies = [];
         data.push(newComment);
       }
-      this.data = data;
-      this.mappedData;
+      this.__data = [];
+      this.__data = data;
       e.detail.textarea.value = "";
     }
   }
@@ -472,7 +550,7 @@ class ThreadedDiscussion extends LitElement {
   fetchDiscussion() {
     fetch(this._getPath(this.source, this.params))
       .then(response => response.json())
-      .then(data => (this.data = data));
+      .then(data => (this.__data = this._handleRawData(data)));
   }
   /**
    * converts object to array
@@ -505,6 +583,18 @@ class ThreadedDiscussion extends LitElement {
     return d && new Date(d)
       ? new Date(d).toLocaleString(this.dateLocale, format)
       : "";
+  }
+  /**
+   * adds thread id to parameters
+   *
+   * @param {*} id
+   * @returns
+   * @memberof ThreadedDiscussion
+   */
+  _getThreadParams(id){
+    let params = this.params;
+    params[this._mapProp("id")] = id;
+    return params;
   }
   /**
    * gets full path with encoded params

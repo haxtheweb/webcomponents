@@ -102,8 +102,7 @@ ${haxString}
   }`;
         }
       )
-    )
-    .pipe(gulp.dest("./"));
+    ).pipe(gulp.dest("./"));
 });
 // run polymer build to generate everything fully
 gulp.task("build", () => {

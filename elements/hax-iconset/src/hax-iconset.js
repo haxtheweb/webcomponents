@@ -556,7 +556,46 @@ const template = html`
         <path d="M13.66,12.88H15v4.29H13.66Z"/>
       </g>
     </svg>
-	    	
+    <!-- messages-1 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-1"><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM13.13,15h-2V7h-2V5h4Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-2 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-2"><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,8.82a2,2,0,0,1-2,2H11v2h4v2H9v-4a2,2,0,0,1,2-2h2v-2H9v-2h4a2,2,0,0,1,2,2Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-3 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-3"><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,8.5A1.5,1.5,0,0,1,13.5,10,1.5,1.5,0,0,1,15,11.5V13a2,2,0,0,1-2,2H9V13h4V11H11V9h2V7H9V5h4a2,2,0,0,1,2,2Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-4 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-4"><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,15.26H13v-4H9v-6h2v4h2v-4h2Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-5 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-5"><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,7H11V9h2a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H9V13h4V11H9V5h6Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-6 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-6"><rect x="9" y="9" width="2" height="2"/><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,7H11V9h2a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H11a2,2,0,0,1-2-2V7a2,2,0,0,1,2-2h4Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-7 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-7"><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,7l-4,8H9l4-8H9V5h6Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-8 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-8"><rect x="9" y="9" width="2" height="2"/><rect x="9" y="5" width="2" height="2"/><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,8.5A1.5,1.5,0,0,1,13.5,10,1.5,1.5,0,0,1,15,11.5V13a2,2,0,0,1-2,2H11a2,2,0,0,1-2-2V11.5A1.5,1.5,0,0,1,10.5,10,1.5,1.5,0,0,1,9,8.5V7a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-9 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-9"><rect x="9" y="5" width="2" height="2"/><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM15,13a2,2,0,0,1-2,2H9V13h4V11H11A2,2,0,0,1,9,9V7a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2Z" transform="translate(-2 -2)"/></g>
+    </svg>
+    <!-- messages-9-plus -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="messages-9-plus"><rect x="6" y="6" width="1" height="1"/><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM11,12a2,2,0,0,1-2,2H6V12H9V11H8A2,2,0,0,1,6,9V8A2,2,0,0,1,8,6H9a2,2,0,0,1,2,2Zm7-1H16v2H14V11H12V9h2V7h2V9h2Z" transform="translate(-2 -2)"/></g>
+    </svg>
   </iron-iconset-svg>
 `;
 
