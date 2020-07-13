@@ -73,7 +73,7 @@ class HAXCMSBackendDemo extends LitElement {
     });
   }
   _jwtChanged(newValue) {
-    console.warn('JWT now set to: ' + newValue);
+    console.warn("JWT now set to: " + newValue);
   }
   /**
    * LitElement life cycle - properties changed

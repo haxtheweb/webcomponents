@@ -93,11 +93,10 @@ class HAXCMSSiteBuilder extends LitElement {
     if (this.activeItemLocation) {
       this.loading = true;
       let url = `${this.outlineLocation}${this.activeItemLocation}`;
-      if (this._timeStamp != '') {
-        if (url.indexOf('?') != -1) {
+      if (this._timeStamp != "") {
+        if (url.indexOf("?") != -1) {
           url += `&${this._timeStamp}`;
-        }
-        else {
+        } else {
           url += `?${this._timeStamp}`;
         }
       }
@@ -122,11 +121,10 @@ class HAXCMSSiteBuilder extends LitElement {
     if (this.file) {
       this.loading = true;
       let url = `${this.outlineLocation}${this.file}`;
-      if (this._timeStamp != '') {
-        if (url.indexOf('?') != -1) {
+      if (this._timeStamp != "") {
+        if (url.indexOf("?") != -1) {
           url += `&${this._timeStamp}`;
-        }
-        else {
+        } else {
           url += `?${this._timeStamp}`;
         }
       }
@@ -154,11 +152,15 @@ class HAXCMSSiteBuilder extends LitElement {
       if (
         ["outlineLocation", "activeItemLocation", "_timeStamp"].includes(
           propName
-        ) && this[propName] != ''
+        ) &&
+        this[propName] != ""
       ) {
         loadPage = true;
       }
-      if (["outlineLocation", "file", "_timeStamp"].includes(propName) && this[propName] != '') {
+      if (
+        ["outlineLocation", "file", "_timeStamp"].includes(propName) &&
+        this[propName] != ""
+      ) {
         loadOutline = true;
       }
       if (propName == "dashboardOpened") {
@@ -354,8 +356,8 @@ class HAXCMSSiteBuilder extends LitElement {
     this.loading = false;
     this.__imported = {};
     this.themeLoaded = false;
-    this.outlineLocation = '';
-    this.activeItemLocation = '';
+    this.outlineLocation = "";
+    this.activeItemLocation = "";
     import("./haxcms-site-router.js");
   }
   firstUpdated(changedProperties) {
@@ -378,13 +380,10 @@ class HAXCMSSiteBuilder extends LitElement {
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);
         // get fresh data if not published / demo which is a form of published
-        if (
-          this.editorBuilder.getContext() !== "published"
-        ) {
+        if (this.editorBuilder.getContext() !== "published") {
           this._timeStamp = Math.floor(Date.now() / 1000);
-        }
-        else {
-          this._timeStamp = '';
+        } else {
+          this._timeStamp = "";
         }
       })
       .catch(error => {
@@ -552,9 +551,8 @@ class HAXCMSSiteBuilder extends LitElement {
     // get fresh data if not published
     if (this.editorBuilder) {
       this._timeStamp = Math.floor(Date.now() / 1000);
-    }
-    else {
-      this._timeStamp = '';
+    } else {
+      this._timeStamp = "";
     }
   }
 
