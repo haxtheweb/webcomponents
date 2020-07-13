@@ -1916,7 +1916,7 @@ class HAXCMSSiteListing extends PolymerElement {
         cancelable: true,
         detail: {
           text: toast,
-          duration: 5000
+          duration: 2000
         }
       })
     );

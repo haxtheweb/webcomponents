@@ -9,13 +9,13 @@ body, html, :root {
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;
-  --simple-modal-button-background: var(--simple-colors-default-theme-blue-grey-7, #37474f);
+  --simple-modal-button-background: var(--haxcms-system-bg, #37474f);
   --haxcms-tooltip-color: #FFFFFF;
   --haxcms-tooltip-background-color: #000000;
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
 
   /** HAX specific settings **/
-  --hax-color-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
+  --hax-color-bg: var(--haxcms-system-bg, #37474f);
   --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
   --hax-color-menu-heading-bg: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
   --hax-color-accent-text: #FFFFFF;
@@ -70,10 +70,14 @@ body, html, :root {
   /** simple-toast **/
   --simple-toast-z-index: 10000000;
   --simple-toast-color: white;
-  --simple-toast-bg: var(--simple-colors-default-theme-blue-grey-7, #3b97e3);
+  --simple-toast-bg: black;
   --simple-toast-border: 1px solid black;
-  --simple-toast-font-size: 14px;
-  --simple-toast-margin: 16px 16px 16px 60px;
+  --simple-toast-font-size: 16px;
+  --simple-toast-margin: 0;
+  --simple-toast-left: 0;
+  --simple-toast-bottom: 0;
+  --simple-toast-right: 0;
+  --simple-toast-height: 80px;
 
   /** hax forms **/
   --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);

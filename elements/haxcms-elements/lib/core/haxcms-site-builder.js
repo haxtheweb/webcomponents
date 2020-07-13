@@ -92,9 +92,16 @@ class HAXCMSSiteBuilder extends LitElement {
     // file required or we have nothing; other two mixed in for pathing
     if (this.activeItemLocation) {
       this.loading = true;
-      await fetch(
-        `${this.outlineLocation}${this.activeItemLocation}${this._timeStamp}`
-      )
+      let url = `${this.outlineLocation}${this.activeItemLocation}`;
+      if (this._timeStamp != '') {
+        if (url.indexOf('?') != -1) {
+          url += `&${this._timeStamp}`;
+        }
+        else {
+          url += `?${this._timeStamp}`;
+        }
+      }
+      await fetch(url)
         .then(response => {
           return response.text();
         })
@@ -114,7 +121,16 @@ class HAXCMSSiteBuilder extends LitElement {
     // file required or we have nothing; other two mixed in for pathing
     if (this.file) {
       this.loading = true;
-      await fetch(`${this.outlineLocation}${this.file}${this._timeStamp}`)
+      let url = `${this.outlineLocation}${this.file}`;
+      if (this._timeStamp != '') {
+        if (url.indexOf('?') != -1) {
+          url += `&${this._timeStamp}`;
+        }
+        else {
+          url += `?${this._timeStamp}`;
+        }
+      }
+      await fetch(url)
         .then(response => {
           return response.json();
         })
@@ -131,16 +147,19 @@ class HAXCMSSiteBuilder extends LitElement {
    * life cycle updated
    */
   updated(changedProperties) {
+    // track these so we can debounce if multiple values updated at once
+    let loadOutline = false;
+    let loadPage = false;
     changedProperties.forEach((oldValue, propName) => {
       if (
         ["outlineLocation", "activeItemLocation", "_timeStamp"].includes(
           propName
-        )
+        ) && this[propName] != ''
       ) {
-        this.loadPageData();
+        loadPage = true;
       }
-      if (["outlineLocation", "file", "_timeStamp"].includes(propName)) {
-        this.loadJOSData();
+      if (["outlineLocation", "file", "_timeStamp"].includes(propName) && this[propName] != '') {
+        loadOutline = true;
       }
       if (propName == "dashboardOpened") {
         this._dashboardOpenedChanged(this[propName], oldValue);
@@ -193,6 +212,12 @@ class HAXCMSSiteBuilder extends LitElement {
         this._activeItemContentChanged(this[propName], oldValue);
       }
     });
+    if (loadOutline && this.__ready && this._timeStamp) {
+      this.loadJOSData();
+    }
+    if (loadPage && this.__ready && this._timeStamp) {
+      this.loadPageData();
+    }
   }
   static get properties() {
     return {
@@ -329,10 +354,46 @@ class HAXCMSSiteBuilder extends LitElement {
     this.loading = false;
     this.__imported = {};
     this.themeLoaded = false;
-    this._timeStamp = "";
-    this.outlineLocation = "";
-    this.activeItemLocation = "";
+    this.outlineLocation = '';
+    this.activeItemLocation = '';
     import("./haxcms-site-router.js");
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.__ready = true;
+    this.dispatchEvent(
+      new CustomEvent("haxcms-ready", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+    // dyanmcially import the editor builder which figures out if we should have one
+    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
+      .then(response => {
+        this.editorBuilder = document.createElement("haxcms-editor-builder");
+        // attach editor builder after we've appended to the screen
+        document.body.appendChild(this.editorBuilder);
+        // get fresh data if not published / demo which is a form of published
+        if (
+          this.editorBuilder.getContext() !== "published"
+        ) {
+          this._timeStamp = Math.floor(Date.now() / 1000);
+        }
+        else {
+          this._timeStamp = '';
+        }
+      })
+      .catch(error => {
+        /* Error handling */
+        console.log(error);
+      });
+    var evt = document.createEvent("UIEvents");
+    evt.initUIEvent("resize", true, false, window, 0);
+    window.dispatchEvent(evt);
     import("@polymer/paper-progress/paper-progress.js");
     import("@lrnwebcomponents/simple-toast/simple-toast.js");
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
@@ -374,38 +435,6 @@ class HAXCMSSiteBuilder extends LitElement {
       this.removeAttribute("aria-hidden");
       this.removeAttribute("tabindex");
     }
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.dispatchEvent(
-      new CustomEvent("haxcms-ready", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
-    // dyanmcially import the editor builder which figures out if we should have one
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
-      .then(response => {
-        this.editorBuilder = document.createElement("haxcms-editor-builder");
-        // attach editor builder after we've appended to the screen
-        document.body.appendChild(this.editorBuilder);
-        // get fresh data if not published / demo which is a form of published
-        if (
-          this.editorBuilder.getContext() !== "published" &&
-          this.editorBuilder.getContext() !== "demo"
-        ) {
-          this._timeStamp = "?" + Math.floor(Date.now() / 1000);
-        }
-      })
-      .catch(error => {
-        /* Error handling */
-        console.log(error);
-      });
-    var evt = document.createEvent("UIEvents");
-    evt.initUIEvent("resize", true, false, window, 0);
-    window.dispatchEvent(evt);
   }
   /**
    * Detached life cycle
@@ -501,16 +530,6 @@ class HAXCMSSiteBuilder extends LitElement {
       typeof newValue.id !== typeof undefined
     ) {
       this.queryParams.nodeId = newValue.id;
-      // if published, keep it static on request
-      // @todo might revisit this in the future
-      if (
-        this.editorBuilder &&
-        this.editorBuilder.getContext() === "published"
-      ) {
-        this._timeStamp = "";
-      } else {
-        this._timeStamp = "?" + Math.floor(Date.now() / 1000);
-      }
     }
     // we had something, now we don't. wipe out the content area of the theme
     else if (oldValue && !newValue) {
@@ -531,8 +550,11 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   _triggerUpdatedData(e) {
     // get fresh data if not published
-    if (this.editorBuilder && this.editorBuilder.getContext() !== "published") {
-      this._timeStamp = "?" + Math.floor(Date.now() / 1000);
+    if (this.editorBuilder) {
+      this._timeStamp = Math.floor(Date.now() / 1000);
+    }
+    else {
+      this._timeStamp = '';
     }
   }
 
@@ -540,14 +562,6 @@ class HAXCMSSiteBuilder extends LitElement {
    * got a message that we need to update our page content
    */
   _triggerUpdatedNode(e) {
-    // get fresh data if not published
-    if (
-      this.editorBuilder &&
-      this.editorBuilder.getContext() !== "published" &&
-      this.editorBuilder.getContext() !== "demo"
-    ) {
-      this._timeStamp = "?" + Math.floor(Date.now() / 1000);
-    }
     // ensure we don't get a miss on initial load
     if (this.activeItem.location) {
       this.loadPageData();
