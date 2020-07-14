@@ -708,11 +708,9 @@ class HaxTray extends winEventsElement(LitElement) {
     var target = null;
     if (e.path && e.path[0]) {
       target = e.path[0];
-    }
-    else if (e.originalTarget) {
+    } else if (e.originalTarget) {
       target = e.originalTarget;
-    }
-    else {
+    } else {
       target = e.target;
     }
     // support a simple insert event to bubble up or everything else
