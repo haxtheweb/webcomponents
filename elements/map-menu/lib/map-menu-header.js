@@ -246,6 +246,16 @@ class MapMenuHeader extends LitElement {
   }
 
   __toggleEventHandler(e) {
+    var target = null;
+      if (e.path && e.path[0]) {
+        target = e.path[0];
+      }
+      else if (e.originalTarget) {
+        target = e.originalTarget;
+      }
+      else {
+        target = e.target;
+      }
     if (e.originalTarget && e.originalTarget.id === "toggle") {
       this.dispatchEvent(
         new CustomEvent("toggle-header", {
@@ -255,17 +265,15 @@ class MapMenuHeader extends LitElement {
           detail: true
         })
       );
-    } else if (e.path && typeof e.path[0] !== "undefined") {
-      if (typeof e.path[0].id !== "undefined" && e.path[0].id === "toggle") {
-        this.dispatchEvent(
-          new CustomEvent("toggle-header", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-      }
+    } else if (target && target.id === "toggle") {
+      this.dispatchEvent(
+        new CustomEvent("toggle-header", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
     }
   }
 }

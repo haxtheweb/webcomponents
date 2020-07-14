@@ -156,7 +156,17 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     return [a, h, w].join("");
   }
   _handleImgLoad(e) {
-    if (e.path && e.path.length > 0 && e.path[0].naturalWidth > 0) {
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path[0];
+    }
+    else if (e.originalTarget) {
+      target = e.originalTarget;
+    }
+    else {
+      target = e.target;
+    }
+    if (target.naturalWidth > 0) {
       this._updateItems();
     }
   }

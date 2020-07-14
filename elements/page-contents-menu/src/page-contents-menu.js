@@ -207,12 +207,22 @@ class PageContentsMenu extends LitElement {
     }
   }
   scrollToObject(e) {
-    if (e.path && e.path[0] && e.path[0].getAttribute("data-index")) {
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path[0];
+    }
+    else if (e.originalTarget) {
+      target = e.originalTarget;
+    }
+    else {
+      target = e.target;
+    }
+    if (target.getAttribute("data-index")) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
       this.items[
-        parseInt(e.path[0].getAttribute("data-index"))
+        parseInt(target.getAttribute("data-index"))
       ].object.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -349,12 +359,21 @@ class PageContentsMenu extends LitElement {
   }
 
   checkMenuOpen(e) {
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path;
+    }
+    else if (e.originalTarget) {
+      target = [e.originalTarget];
+    }
+    else {
+      target = [e.target];
+    }
     if (
       this.mobile &&
       !this.hideSettings &&
-      e.path &&
-      !e.path.includes(this.__toggleTarget) &&
-      !e.path.includes(this.shadowRoot.querySelector("simple-popover"))
+      !target.includes(this.__toggleTarget) &&
+      !target.includes(this.shadowRoot.querySelector("simple-popover"))
     ) {
       this.hideSettings = true;
     }
