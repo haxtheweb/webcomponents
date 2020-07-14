@@ -255,8 +255,7 @@ class MapMenuHeader extends LitElement {
           detail: true
         })
       );
-    }
-    else if (e.path && typeof e.path[0] !== "undefined") {
+    } else if (e.path && typeof e.path[0] !== "undefined") {
       if (typeof e.path[0].id !== "undefined" && e.path[0].id === "toggle") {
         this.dispatchEvent(
           new CustomEvent("toggle-header", {
