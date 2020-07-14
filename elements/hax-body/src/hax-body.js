@@ -2304,8 +2304,8 @@ class HaxBody extends SimpleColors {
           // and place ourselves below it in the DOM
           if (
             (target &&
-              target.removeAttribute &&
               target != null &&
+              target.removeAttribute &&
               typeof local !== typeof undefined &&
               target !== local &&
               target !== local.parentNode &&

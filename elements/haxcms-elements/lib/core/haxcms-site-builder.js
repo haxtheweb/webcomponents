@@ -150,7 +150,7 @@ class HAXCMSSiteBuilder extends LitElement {
     let loadPage = false;
     changedProperties.forEach((oldValue, propName) => {
       if (
-        ["outlineLocation", "activeItemLocation", "_timeStamp"].includes(
+        ["outlineLocation", "activeItemLocation"].includes(
           propName
         ) &&
         this[propName] != ""
@@ -158,7 +158,7 @@ class HAXCMSSiteBuilder extends LitElement {
         loadPage = true;
       }
       if (
-        ["outlineLocation", "file", "_timeStamp"].includes(propName) &&
+        ["outlineLocation", "file"].includes(propName) &&
         this[propName] != ""
       ) {
         loadOutline = true;
@@ -332,15 +332,29 @@ class HAXCMSSiteBuilder extends LitElement {
   lastErrorChanged(e) {
     if (e) {
       console.error(e);
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          text: e.detail.value.status + " " + e.detail.value.statusText
+      // not every error has a value if it just failed
+      if (e.detail.value) {
+        // if we force reloads then let's do it now
+        if (window && window.location && window.appSettings && window.appSettings.reloadOnError) {
+          window.location.reload();
         }
-      });
-      window.dispatchEvent(evt);
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            text: e.detail.value.status + " " + e.detail.value.statusText
+          }
+        });
+        window.dispatchEvent(evt);
+      }
+      else {
+        // no detail is bad, this implies a server level connection error
+        // if we force reloads then let's do it now
+        if (window && window.location && window.appSettings && window.appSettings.reloadOnError) {
+          window.location.reload();
+        }
+      }
     }
   }
   /**
