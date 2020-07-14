@@ -353,7 +353,7 @@ class MapMenu extends LitElement {
    */
   __toggleUpdated(e) {
     const action = e.detail.opened ? "opened" : "closed";
-    const target = e.path[0];
+    const target = (e.path ? e.path[0] : e.originalTarget);
     if (typeof this.activeItem !== "undefined") {
       this.__updateActiveIndicator(this.activeItem, false);
       this.activeItem.dispatchEvent(

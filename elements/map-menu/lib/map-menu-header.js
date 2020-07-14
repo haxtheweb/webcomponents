@@ -246,7 +246,17 @@ class MapMenuHeader extends LitElement {
   }
 
   __toggleEventHandler(e) {
-    if (e.path && typeof e.path[0] !== "undefined") {
+    if (e.originalTarget && e.originalTarget.id === "toggle") {
+      this.dispatchEvent(
+        new CustomEvent("toggle-header", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
+    }
+    else if (e.path && typeof e.path[0] !== "undefined") {
       if (typeof e.path[0].id !== "undefined" && e.path[0].id === "toggle") {
         this.dispatchEvent(
           new CustomEvent("toggle-header", {
