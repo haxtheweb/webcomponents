@@ -124,7 +124,7 @@ class WcRegistry extends HTMLElement {
   }
   connectedCallback() {
     setTimeout(() => {
-      if (this.children.length > 0 && this.children[0].tagName == 'TEMPLATE') {
+      if (this.children.length > 0 && this.children[0].tagName == "TEMPLATE") {
         // we don't trust no JS blobs :p
         try {
           let jsonList = JSON.parse(this.children[0].content.textContent);
@@ -135,8 +135,7 @@ class WcRegistry extends HTMLElement {
               path: jsonList[i]
             });
           }
-        }
-        catch(e) {
+        } catch (e) {
           console.warn(e);
         }
       }
