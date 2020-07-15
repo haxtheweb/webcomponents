@@ -3,6 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import { IconsetDemo } from "@lrnwebcomponents/iconset-demo/iconset-demo.js";
 import "@polymer/iron-icons/iron-icons.js";
+import '@polymer/iron-demo-helpers/demo-snippet.js';
 
 import {
   withKnobs,
@@ -632,57 +633,35 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElement(obj, knobs) {
-    console.log("makeElement", obj, knobs);
-    let el = new obj();
-    Object.keys(knobs.props || {}).forEach(prop => {
-      let knob = knobs.props[prop],
-        val =
-          knob.method === "haxupload" && Array.isArray(knob.knob)
-            ? knob.knob[0]
-            : knob.method === "boolean"
-            ? knob.knob === true
-            : knob.knob;
-      console.log("makeElement----", knob, knob.method, knob.knob, val);
-      el[prop] = val;
-    });
-    Object.keys(knobs.attr || {}).forEach(attr => {
-      let knob = knobs.props[attr],
-        val = knob.knob;
-      if (val === true) {
-        el.setAttribute(attr, val);
-      } else {
-        el.removeAttribute(val);
-      }
-    });
-    Object.keys(knobs.slots || {}).map(slot => {
-      if (knobs.slots[slot].knob)
-        el.innerHTML += knobs.slots[slot].knob
-          .replace(/&lt;/gi, "<")
-          .replace(/&gt;/gi, ">")
-          .replace(/&quot;/gi, '"')
-          .replace(/&amp;/gi, "&");
-    });
-    Object.keys(knobs.css || {}).forEach(prop => {
-      console.log("css", prop, knobs);
-      let knob = knobs.css[prop],
-        val = knob.knob;
-      if (prop.indexOf("--") === 0) {
-        el.style.setProperty(prop, val);
-      } else {
-        el.style[prop] = val;
-      }
-    });
+  makeElement(el, knobs) {
+    console.log("makeElement", el, knobs);
+    let tag = typeof el ===  "string" ? el: el.tag,
+    demo = document.createElement('demo-snippet'),
+    template = document.createElement('template'),
+    attrs = `${this._getDemoAttributes(knobs.props)}${this._getDemoAttributes(knobs.attr)}`,
+    styles = Object.keys(knobs.css || {}).length === 0 
+      ? `` 
+      : ` style="${this._getDemoCss(knobs.css)}"`;
+
+    if(!tag){
+      let t = new el();
+      tag = t.tagName ? t.tagName.toLowerCase() : 'div';
+      t.remove();
+    }
+
+    template.innerHTML = `<${tag}${attrs}${styles}>${this._getDemoSlots(knobs.slots)}\n</${tag}>`;
+    demo.appendChild(template);
     console.debug(
       "makeElement:",
-      el,
+      demo,
       "\nproperties",
       knobs.props,
       "\nslots",
       knobs.slots
     );
-    return el;
+    return demo;
   }
+
 
   /**
    * makes an element based on a random haxProperties demo
@@ -739,6 +718,39 @@ export class StorybookUtilities {
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
     console.log("makeElementFromHaxDemo", props, additions, exclusions);
     return this.makeElementFromClass(el, props, additions, exclusions);
+  }
+
+  _getDemoCss(obj){
+    return Object.keys(obj || {}).map(prop => {
+      return !obj[prop].knob ? ``: `${prop.indexOf("--") < 0 ? this.camelToKebab(prop) : prop}:${obj[prop].knob};`;
+    }).join('')
+  }
+
+  _getDemoSlots(obj){
+    console.log("_getDemoSlots",obj);
+    return Object.keys(obj || {}).map(slot=>{
+      return !obj[slot].knob 
+        ? `` 
+        : `\n\t`+ obj[slot].knob
+          .replace(/&lt;/gi, "<")
+          .replace(/&gt;/gi, ">")
+          .replace(/&quot;/gi, '"')
+          .replace(/&amp;/gi, "&")
+      }).join('');
+  }
+  _getDemoAttributes(obj){
+    return Object.keys(obj || {}).map(key=>{
+      let knob = obj[key];
+      return !knob.knob || (knob.method === "haxupload" && knob.knob.length < 1)
+        ? ``
+        : (knob.method === "object" &&  knob.knob !== {}) || (knob.method === "array" &&  knob.knob !== []) 
+        ? ` ${this.camelToKebab(key)}='${JSON.stringify(knob.knob)}'`
+        : knob.method === "boolean" 
+        ? ` ${this.camelToKebab(key)}`
+        : knob.method === "haxupload" && Array.isArray(knob.knob) 
+        ? ` ${this.camelToKebab(key)}="${knob.knob[0]}"`
+        : ` ${this.camelToKebab(key)}="${knob.knob}"`
+    }).join('');
   }
 
   /**
