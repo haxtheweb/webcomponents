@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>WcAutoload: wc-autoload Demo</title>
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="/node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="/node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>
+      // support for selecting an alternative target as root to monitor
+      // useful for more targetted loading
+      /*setTimeout(() => {
+        window.WCAutoloadTarget = document.getElementById('test');
+      }, 0);*/
+      /*window.WCAutoloadOptions = {
+        childList: true
+      };*/
+      // not needed in most production scenarios but definitely locally because of tooling
+      window.WCAutoloadBasePath = "/node_modules/";
+      //window.WCAutoloadRegistryFile = "https://cdn.webcomponents.psu.edu/cdn/wc-registry.json";
+    </script>
+    <script type="module" src="../wc-autoload.js" defer="defer" async="async"></script>
+  </head>
+  <body>
+    <p>stuff that maybe has a full new web componetn button in it<a href="https://google.com/" target="_blank"><paper-button raised>Stuff</paper-button></a></p>
+    <div>Cool</div>
+    <wc-registry>
+      <template>
+        {
+          "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js"
+        }
+      </template>
+    </wc-registry>
+    <meme-maker top-text="hello to all the haters" bottom-text="This is meme, dynamically imported" image-url="https://images-assets.nasa.gov/image/PIA12235/PIA12235~thumb.jpg">
+    </meme-maker>
+  </body>
+</html>

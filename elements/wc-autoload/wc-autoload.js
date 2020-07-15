@@ -106,6 +106,45 @@ window.addEventListener(
   window.WCAutoload.postLoaded
 );
 /**
+ * `wc-registry`
+ * `optionally build the registry from the innerHTML of an element`
+ * @demo demo/index.html
+ * @element wc-registry
+ */
+class WcRegistry extends HTMLElement {
+  /**
+   * This is a convention, not the standard
+   */
+  static get tag() {
+    return "wc-registry";
+  }
+  constructor() {
+    super();
+    this.loader = window.WCAutoload.requestAvailability();
+  }
+  connectedCallback() {
+    setTimeout(() => {
+      if (this.children.length > 0 && this.children[0].tagName == 'TEMPLATE') {
+        // we don't trust no JS blobs :p
+        try {
+          let jsonList = JSON.parse(this.children[0].content.textContent);
+          // register these items on the fly
+          for (var i in jsonList) {
+            this.loader.registry.register({
+              tag: i,
+              path: jsonList[i]
+            });
+          }
+        }
+        catch(e) {
+          console.warn(e);
+        }
+      }
+    }, 0);
+  }
+}
+customElements.define(WcRegistry.tag, WcRegistry);
+/**
  * `wc-autoload`
  * `automatically load new tags in the dom`
  * @demo demo/index.html

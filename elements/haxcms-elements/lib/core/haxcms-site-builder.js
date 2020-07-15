@@ -150,9 +150,7 @@ class HAXCMSSiteBuilder extends LitElement {
     let loadPage = false;
     changedProperties.forEach((oldValue, propName) => {
       if (
-        ["outlineLocation", "activeItemLocation"].includes(
-          propName
-        ) &&
+        ["outlineLocation", "activeItemLocation"].includes(propName) &&
         this[propName] != ""
       ) {
         loadPage = true;
@@ -162,6 +160,10 @@ class HAXCMSSiteBuilder extends LitElement {
         this[propName] != ""
       ) {
         loadOutline = true;
+      }
+      if (propName == "_timeStamp") {
+        loadOutline = true;
+        loadPage = true;
       }
       if (propName == "dashboardOpened") {
         this._dashboardOpenedChanged(this[propName], oldValue);
@@ -214,10 +216,10 @@ class HAXCMSSiteBuilder extends LitElement {
         this._activeItemContentChanged(this[propName], oldValue);
       }
     });
-    if (loadOutline && this.__ready && this._timeStamp) {
+    if (loadOutline && this.__ready) {
       this.loadJOSData();
     }
-    if (loadPage && this.__ready && this._timeStamp) {
+    if (loadPage && this.__ready) {
       this.loadPageData();
     }
   }
@@ -335,7 +337,12 @@ class HAXCMSSiteBuilder extends LitElement {
       // not every error has a value if it just failed
       if (e.detail.value) {
         // if we force reloads then let's do it now
-        if (window && window.location && window.appSettings && window.appSettings.reloadOnError) {
+        if (
+          window &&
+          window.location &&
+          window.appSettings &&
+          window.appSettings.reloadOnError
+        ) {
           window.location.reload();
         }
         const evt = new CustomEvent("simple-toast-show", {
@@ -347,11 +354,15 @@ class HAXCMSSiteBuilder extends LitElement {
           }
         });
         window.dispatchEvent(evt);
-      }
-      else {
+      } else {
         // no detail is bad, this implies a server level connection error
         // if we force reloads then let's do it now
-        if (window && window.location && window.appSettings && window.appSettings.reloadOnError) {
+        if (
+          window &&
+          window.location &&
+          window.appSettings &&
+          window.appSettings.reloadOnError
+        ) {
           window.location.reload();
         }
       }
