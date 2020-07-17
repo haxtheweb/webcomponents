@@ -13,6 +13,7 @@ export default {
   }
 };
 const utils = new StorybookUtilities();
+
 const NavItem = index => {
   let nav = utils.getRandomOption(["button", "a"]),
     tag = utils.getRandomOption(["span", "div", false]),
@@ -59,54 +60,6 @@ const MakeNavItem = index => {
       ${item.label}
       ${item.description}
     </nav-card-item>`;
-};
-export const NavCardItemStory = () => {
-  let defaults = NavItem("demo");
-  defaults.avatar = undefined;
-  return utils.makeElementFromClass(NavCardItem, defaults, [
-    { css: "--nav-card-item-label-color", title: "item's default text color" },
-    {
-      css: "--nav-card-item-label-background-color",
-      title: "item's default background-color"
-    },
-    {
-      css: "--nav-card-item-label-font-size",
-      title: "item's default font-size"
-    },
-    {
-      css: "--nav-card-item-label-font-weight",
-      title: "item's default font-weight"
-    },
-    {
-      css: "--nav-card-item-label-font-size",
-      title: "item description's default font-weight"
-    },
-    {
-      css: "--nav-card-item-label-font-weight",
-      title: "item description's default font-wight"
-    },
-    {
-      css: "--nav-card-item-avatar-size",
-      title: "default size for item's avatar"
-    },
-    {
-      css: "--nav-card-item-avatar-width",
-      title: "default width for item's avatar"
-    },
-    {
-      css: "--nav-card-item-avatar-height",
-      title: "efault height for item's avatar"
-    },
-    { css: "--nav-card-item-icon-size", title: "default size for item's icon" },
-    {
-      css: "--nav-card-item-icon-width",
-      title: "default width for item's icon"
-    },
-    {
-      css: "--nav-card-item-icon-height",
-      title: "default height for item's icon"
-    }
-  ]);
 };
 export const NavCardStory = () => {
   return utils.makeElementFromClass(
@@ -189,5 +142,77 @@ export const NavCardStory = () => {
       { css: "width" },
       { css: "maxWidth" }
     ]
+  );
+};
+
+export const NavCardItemStory = () => {
+  let card = `<nav-card 
+  color="${utils.getRandomColor()}" 
+  image-src="${utils.getRandomImage()}">
+  <div slot="heading">${utils.getRandomText()}</div>
+  <div slot="subheading">${utils.getRandomBool() ? utils.getRandomText() : ''}</div>
+  <div slot="content">${utils.getRandomTextarea()}</div>
+  <div slot="linklist">
+    <!-- nav-card-item code-->
+    ${utils.makeElementFromClass(
+      NavCardItem,
+      NavItem("demo"), 
+      [
+        { css: "--nav-card-item-label-color", title: "item's default text color" },
+        {
+          css: "--nav-card-item-label-background-color",
+          title: "item's default background-color"
+        },
+        {
+          css: "--nav-card-item-label-font-size",
+          title: "item's default font-size"
+        },
+        {
+          css: "--nav-card-item-label-font-weight",
+          title: "item's default font-weight"
+        },
+        {
+          css: "--nav-card-item-label-font-size",
+          title: "item description's default font-weight"
+        },
+        {
+          css: "--nav-card-item-label-font-weight",
+          title: "item description's default font-wight"
+        },
+        {
+          css: "--nav-card-item-avatar-size",
+          title: "default size for item's avatar"
+        },
+        {
+          css: "--nav-card-item-avatar-width",
+          title: "default width for item's avatar"
+        },
+        {
+          css: "--nav-card-item-avatar-height",
+          title: "efault height for item's avatar"
+        },
+        { css: "--nav-card-item-icon-size", title: "default size for item's icon" },
+        {
+          css: "--nav-card-item-icon-width",
+          title: "default width for item's icon"
+        },
+        {
+          css: "--nav-card-item-icon-height",
+          title: "default height for item's icon"
+        }
+      ],
+      [],
+      true
+    )}
+    <!-- nav-card-item code-->
+    ${MakeNavItem(1)}
+  </div>
+  <div slot="footer">${utils.getRandomBool()
+    ? `<p style="font-size:80%;padding-bottom: 10px;text-align:center;">${utils.getRandomText()}</p>`
+    : ''}</div>
+</nav-card>`;
+  return utils.getDemo(
+    card,
+    `<p>Use the knobs below to customize the first nav-card-item.</p>`
   );
 };
