@@ -855,7 +855,7 @@ class A11yMediaPlayer extends SimpleColors {
         this._setAttribute("full-flex", this.fullFlex);
       if (change(["sticky", "sticky-corner", "__playing"]))
         this._setAttribute("sticky-mode", this.stickyMode && this.__playing);
-      if (change(["height"])){
+      if (change(["height"])) {
         this.style.setProperty(
           "--a11y-media-player-height",
           this.height ? this.height : "unset"
@@ -1780,8 +1780,8 @@ class A11yMediaPlayer extends SimpleColors {
             element: this,
             attribute: "responsive-size",
             relativeToParent: true,
-            sm: 300,
-            md: 600,
+            sm: 400,
+            md: 700,
             lg: 1000,
             xl: 1500
           }

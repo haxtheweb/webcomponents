@@ -932,7 +932,7 @@ paper-toast:not(:defined) {
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
         ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions || this.standAlone || (this.height && this.responsiveSize.indexOf('s') > -1)}"
+        ?hidden="${!this.hasCaptions || this.standAlone || (this.height && this.responsiveSize.indexOf('s') > -1) || (this.linkable && this.responsiveSize === 'md')}"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -2307,7 +2307,7 @@ ${this.poster
         this._setAttribute("full-flex", this.fullFlex);
       if (change(["sticky", "sticky-corner", "__playing"]))
         this._setAttribute("sticky-mode", this.stickyMode && this.__playing);
-      if (change(["height"])){
+      if (change(["height"])) {
         this.style.setProperty(
           "--a11y-media-player-height",
           this.height ? this.height : "unset"
@@ -3232,8 +3232,8 @@ ${this.poster
             element: this,
             attribute: "responsive-size",
             relativeToParent: true,
-            sm: 300,
-            md: 600,
+            sm: 400,
+            md: 700,
             lg: 1000,
             xl: 1500
           }
