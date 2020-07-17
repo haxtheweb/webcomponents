@@ -302,7 +302,9 @@ class SimplePicker extends LitElement {
    */
   _setSelectedOption(newVal, oldVal) {
     let sel =
-      !this.allowNull && (this.options || []).length > 0 && this.options[0].length > 0
+      !this.allowNull &&
+      (this.options || []).length > 0 &&
+      this.options[0].length > 0
         ? this.options[0][0].value
         : null;
     if (this.options) {

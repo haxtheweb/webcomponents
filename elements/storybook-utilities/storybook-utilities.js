@@ -644,7 +644,7 @@ export class StorybookUtilities {
       styles =
         Object.keys(knobs.css || {}).length === 0
           ? ``
-          : ` style="${this._getDemoCss(knobs.css)}"`, 
+          : ` style="${this._getDemoCss(knobs.css)}"`,
       child;
 
     if (!tag) {
@@ -652,19 +652,19 @@ export class StorybookUtilities {
       tag = t.tagName ? t.tagName.toLowerCase() : "div";
       t.remove();
     }
-    
+
     child = `<${tag}${attrs}${styles}>${this._getDemoSlots(
       knobs.slots
     )}\n</${tag}>`;
-    console.log(child,typeof child,noDemo);
+    console.log(child, typeof child, noDemo);
 
-    if(noDemo) {
+    if (noDemo) {
       return child;
     } else {
       return this.getDemo(child);
     }
   }
-  getDemo(el,before = ''){
+  getDemo(el, before = "") {
     let demo = document.createElement("demo-snippet"),
       template = document.createElement("template");
     template.innerHTML += el;
@@ -687,7 +687,7 @@ export class StorybookUtilities {
     defaults = {},
     additions = [],
     exclusions = [],
-    index, 
+    index,
     container = false
   ) {
     let demoschema =
@@ -729,7 +729,13 @@ export class StorybookUtilities {
     });
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
     console.log("makeElementFromHaxDemo", props, additions, exclusions);
-    return this.makeElementFromClass(el, props, additions, exclusions, container);
+    return this.makeElementFromClass(
+      el,
+      props,
+      additions,
+      exclusions,
+      container
+    );
   }
 
   _getDemoCss(obj) {
@@ -787,7 +793,13 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromClass(el, defaults = {}, additions = [], exclusions = [], container = false) {
+  makeElementFromClass(
+    el,
+    defaults = {},
+    additions = [],
+    exclusions = [],
+    container = false
+  ) {
     let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
     console.log("makeElementFromClass", el, props, additions, knobs);

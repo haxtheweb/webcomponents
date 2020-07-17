@@ -95,18 +95,29 @@ export const A11yTabsStory = () => {
 
 export const A11yTabStory = () => {
   let tabs = `<a11y-tabs layout=breakpoint="-1">`;
-    tabs += ["Before", "During"].map(
+  tabs += ["Before", "During"]
+    .map(
       tab =>
-        (`<a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`)
-    ).join('');
+        `<a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`
+    )
+    .join("");
 
-  tabs += utils.makeElementFromClass(A11yTab, {
-    id: "after",
-    label: "After",
-    icon: utils.getRandomIcon(),
-    emptyslot: utils.getRandomTextarea()
-  },[],[],true);
+  tabs += utils.makeElementFromClass(
+    A11yTab,
+    {
+      id: "after",
+      label: "After",
+      icon: utils.getRandomIcon(),
+      emptyslot: utils.getRandomTextarea()
+    },
+    [],
+    [],
+    true
+  );
 
-  tabs+=`</a11y-tabs>`;
-  return utils.getDemo(tabs,`<p>Use the knobs below to customize the first tab.</p>`);
+  tabs += `</a11y-tabs>`;
+  return utils.getDemo(
+    tabs,
+    `<p>Use the knobs below to customize the first tab.</p>`
+  );
 };

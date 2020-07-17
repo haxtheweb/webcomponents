@@ -72,4 +72,5 @@ export const A11yFigureStory = () =>
     ["summary", "details", "figcaption", "imgSrc", "imgAlt"]
   );
 
-  export const A11yFigureHaxGizmo = () => utils.makeElementFromHaxDemo(A11yFigure);
+export const A11yFigureHaxGizmo = () =>
+  utils.makeElementFromHaxDemo(A11yFigure);

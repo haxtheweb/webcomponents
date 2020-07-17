@@ -164,7 +164,6 @@ let options = [
     ]
   ];
 
-
 export const LrndesignGalleryCarousel = () => {
   return utils.makeElementFromClass(
     LrndesignGallery,

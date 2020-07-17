@@ -64,4 +64,5 @@ export const A11yDetailsStory = () =>
     ["summary", "details"]
   );
 
-export const A11yDetailsHaxGizmo = () => utils.makeElementFromHaxDemo(A11yDetails);
+export const A11yDetailsHaxGizmo = () =>
+  utils.makeElementFromHaxDemo(A11yDetails);
