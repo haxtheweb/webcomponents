@@ -38,15 +38,12 @@ class CourseCard extends SimpleColors {
           filter: var(--course-card-filter);
           transition: 0.2s all ease-in-out;
           text-decoration: none;
-          color: var(--simple-colors-default-theme-accent-12, #363533);
-          background-color: var(
-            --simple-colors-default-theme-accent-1,
-            #ffffff
-          );
+          color: var(--simple-colors-default-theme-accent-12, #000);
+          background-color: var(--simple-colors-default-theme-grey-1, #ffffff);
           display: block;
           width: 100%;
           min-height: 300px;
-          border: solid 2px var(--simple-colors-default-theme-accent-2, #dcdcdc);
+          border: solid 2px var(--simple-colors-default-theme-grey-1, #ffffff);
         }
 
         a:active,
@@ -54,10 +51,10 @@ class CourseCard extends SimpleColors {
         a:focus {
           filter: var(--course-card-filter-hover);
           outline: 2px solid
-            var(--simple-colors-default-theme-accent-7, #e2801e);
+            var(--simple-colors-default-theme-accent-7, #666666);
           box-shadow: 2px 2px 10px
-            var(--simple-colors-default-theme-accent-2, #dcdcdc);
-          border: solid 2px var(--simple-colors-default-theme-accent-7, #dcdcdc);
+            var(--simple-colors-default-theme-accent-2, #eeeeee);
+          border: solid 2px var(--simple-colors-default-theme-accent-7, #666666);
         }
 
         #card_wrap {
@@ -92,12 +89,15 @@ class CourseCard extends SimpleColors {
           font-size: 12px;
         }
         #course_icon {
-          background-color: var(--simple-colors-default-theme-accent-1, #fff);
           border-radius: 50%;
           position: relative;
           bottom: 50px;
           border: solid;
-          border-color: var(--simple-colors-default-theme-accent-9, #363533);
+          background-color: var(
+            --simple-colors-default-theme-accent-7,
+            #666666
+          );
+          border-color: var(--simple-colors-default-theme-grey-1, #ffffff);
           border-width: 5px;
           margin: 0 0 -40px 0;
         }
@@ -105,7 +105,7 @@ class CourseCard extends SimpleColors {
         iron-icon {
           width: 70px;
           height: 70px;
-          fill: var(--simple-colors-default-theme-accent-9, #363533);
+          fill: var(--simple-colors-default-theme-grey-1, #ffffff);
         }
 
         #course_image {
