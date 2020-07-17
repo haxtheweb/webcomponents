@@ -48,7 +48,7 @@
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
-    "lodash": "4.17.13",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.4",
     "wct-browser-legacy": "1.0.2",
