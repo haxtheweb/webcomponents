@@ -62,9 +62,11 @@ class HAXCMSSiteListing extends PolymerElement {
           top: 0;
           left: 0;
           right: 0;
-          color: var(--haxcms-site-listing-color-light);
-          background-color: var(--haxcms-site-listing-color-dark);
+          color: var(--simple-colors-default-theme-accent-11, #111111);
+          background-color: var(--simple-colors-default-theme-accent-2, #eeeeee);
           z-index: 1;
+          line-height: 120%;
+          align-items: center;
         }
         a11y-collapse-group {
           margin-top: 64px;
@@ -203,15 +205,21 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         .small-location {
           font-size: 11px;
-          text-align: center;
           font-style: italic;
+        }
+        #grid {
+          font-size: 13px;
         }
         #loading {
           z-index: 1000;
           opacity: 1;
           padding: 24px;
-          top: 0;
+          top: calc(50vh - 0.5vw);
+          left: 0;
+          width: 100%;
+          height: 1vw;
           position: absolute;
+          position: sticky;
           background-color: rgba(250, 250, 250, 0.8);
           transition: all linear 1s;
           visibility: visible;
@@ -229,24 +237,20 @@ class HAXCMSSiteListing extends PolymerElement {
         .site-title {
           display: block;
           font-size: 20px;
-          color: black;
-          text-align: center;
           width: 100%;
-          text-transform: unset;
           min-width: unset;
-          background-color: var(--simple-colors-default-theme-blue-1);
-          border: 1px solid black;
+          text-decoration: underline;
         }
         .site-title:hover,
         .site-title:active,
         .site-title:focus {
-          background-color: var(--haxcms-site-listing-color-hover);
-          color: var(--haxcms-site-listing-color-light);
+          text-decoration: none;
         }
         .operations paper-button {
           font-weight: 500;
           font-size: 18px;
-          color: var(--haxcms-site-listing-color-light);
+          color: var(--haxcms-site-listing-color-hover);
+          background-color: var(--haxcms-site-listing-color-light);
           margin: 0;
           padding: 8px;
           width: auto;
@@ -634,18 +638,16 @@ class HAXCMSSiteListing extends PolymerElement {
               ></vaadin-grid-selection-column>
               <vaadin-grid-filter-column
                 header="Site name"
-                width="300px"
+                width="240px"
                 path="title"
               >
                 <template>
                   <portal-launcher>
-                    <a tabindex="-1" href$="[[item.slug]]">
-                      <paper-button raised class="site-title">
-                        <div>[[item.title]]</div>
-                        <div class="small-location">
-                          [[cleanLocation(item.slug)]]
-                        </div>
-                      </paper-button>
+                    <a class="site-title" href$="[[item.slug]]">
+                      <div>[[item.title]]</div>
+                      <div class="small-location">
+                        [[cleanLocation(item.slug)]]
+                      </div>
                     </a>
                   </portal-launcher>
                 </template>
@@ -653,6 +655,7 @@ class HAXCMSSiteListing extends PolymerElement {
               <vaadin-grid-filter-column
                 path="metadata.theme.name"
                 header="Theme"
+                width="80px"
               ></vaadin-grid-filter-column>
               <vaadin-grid-sort-column header="Updated" path="metadata.updated">
                 <template>
