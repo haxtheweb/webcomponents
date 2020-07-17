@@ -671,6 +671,8 @@ export class StorybookUtilities {
     demo.innerHTML += before;
     demo.appendChild(template);
     console.log(demo);
+    demo.style.margin = "-8px";
+    demo.style.padding = "0";
     return demo;
   }
 
