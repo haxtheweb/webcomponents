@@ -460,6 +460,7 @@ absolute-position-behavior simple-field-field {
 
 #transcript {
   flex: 1 0 150px;
+  max-height: var(--a11y-media-transcript-max-height,unset);
   overflow-y: scroll;
   color: var(--a11y-media-transcript-cue-color);
   background-color: var(--a11y-media-transcript-cue-bg-color);
