@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ServiceCard: service-card Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../service-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic service-card demo</h3>
+      <demo-snippet>
+        <template>
+          <service-card source="service.jpg" title="ELMS:LN" alt="A learning network diagram">
+            <p>
+              A living, growing architecture that can sustain innovation and scale to university wide setups while allowing fragmentation to grow and explore the future.
+            </p>
+          </service-card>
+          <service-card source="service.jpg" title="Some title">
+            <p>
+              A living, growing architecture that can sustain innovation and scale to university wide setups while allowing fragmentation to grow and explore the future.
+            </p>
+            <p>
+              A living, growing architecture that can sustain innovation and scale to university wide setups while allowing fragmentation to grow and explore the future.
+            </p>
+          </service-card>      
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

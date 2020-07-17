@@ -5,11 +5,11 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+
 /**
  * `site-active-title`
  * `Title of the active page in the site`
  *
-
  * @demo demo/index.html
  */
 class SiteActiveTitle extends LitElement {
@@ -27,11 +27,6 @@ class SiteActiveTitle extends LitElement {
       <style>
         :host {
           display: block;
-          transition: 0.2s opacity linear;
-          opacity: 1;
-        }
-        :host([edit-mode]) {
-          opacity: 0.2;
         }
         h1 {
           text-rendering: optimizelegibility;

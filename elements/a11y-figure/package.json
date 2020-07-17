@@ -11,7 +11,7 @@
       "js": "src/a11y-figure.js"
     }
   },
-  "version": "2.6.21",
+  "version": "2.6.23",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "polymer serve --npm --module-resolution=node --open",
+    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^2.6.21",
+    "@lrnwebcomponents/a11y-details": "^2.6.23",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

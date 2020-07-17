@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { html, css } from "lit-element/lit-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
 /**
@@ -52,12 +52,6 @@ Custom property | Description | Default
 --a11y-details-borderRadius | border-radius | 3px
 --a11y-details-padding | padding | 0.5em
 --a11y-details-maxHeight | max-height | 400px
-
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
  * @lit-html
  * @lit-element
  * @demo demo/index.html
@@ -161,7 +155,7 @@ class A11yFigure extends A11yDetails {
           {
             property: "imgAlt",
             title: "Alt Text",
-            inputMethod: "textfield",
+            inputMethod: "alt",
             required: true
           },
           {

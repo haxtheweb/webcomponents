@@ -705,6 +705,14 @@ class HaxTray extends winEventsElement(LitElement) {
    */
   _processTrayEvent(e) {
     let detail = e.detail;
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path[0];
+    } else if (e.originalTarget) {
+      target = e.originalTarget;
+    } else {
+      target = e.target;
+    }
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "search-selected":
@@ -723,17 +731,17 @@ class HaxTray extends winEventsElement(LitElement) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: e.path[0].stax
+            detail: target.stax
           })
         );
         break;
       case "insert-blox":
         let content = "";
-        for (var i = 0; i < e.path[0].blox.length; i++) {
+        for (var i = 0; i < target.blox.length; i++) {
           let node = haxElementToNode({
-            tag: e.path[0].blox[i].tag,
-            content: e.path[0].blox[i].content,
-            properties: e.path[0].blox[i].properties
+            tag: target.blox[i].tag,
+            content: target.blox[i].content,
+            properties: target.blox[i].properties
           });
           content += window.HaxStore.nodeToContent(node);
         }
@@ -741,7 +749,7 @@ class HaxTray extends winEventsElement(LitElement) {
         let blox = {
           tag: "grid-plate",
           properties: {
-            layout: e.path[0].layout
+            layout: target.layout
           },
           content: content
         };
@@ -758,8 +766,8 @@ class HaxTray extends winEventsElement(LitElement) {
         let gizmo = {
           tag: detail.value
         };
-        let properties = JSON.parse(e.path[0].getAttribute("event-properties"));
-        let innerContent = e.path[0].getAttribute("event-content");
+        let properties = JSON.parse(target.getAttribute("event-properties"));
+        let innerContent = target.getAttribute("event-content");
         if (properties == null) {
           properties = {};
         }

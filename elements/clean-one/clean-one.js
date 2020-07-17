@@ -693,10 +693,18 @@ class CleanOne extends HAXCMSThemeParts(
   }
 
   searchChanged(e) {
-    if (e.path[0].value) {
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path[0];
+    } else if (e.originalTarget) {
+      target = e.originalTarget;
+    } else {
+      target = e.target;
+    }
+    if (target.value) {
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
         () => {
-          this.searchTerm = e.path[0].value;
+          this.searchTerm = target.value;
         }
       );
     } else {

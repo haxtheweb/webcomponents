@@ -1646,7 +1646,15 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {event} e slider event
    */
   _handleSpeedChanged(e) {
-    this.setPlaybackRate(e.path[0].value);
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path[0];
+    } else if (e.originalTarget) {
+      target = e.originalTarget;
+    } else {
+      target = e.target;
+    }
+    this.setPlaybackRate(target.value);
   }
 
   /**
@@ -1711,7 +1719,15 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {event} e volume change event
    */
   _handleVolumeChanged(e) {
-    this.volume = e.path[0].value;
+    var target = null;
+    if (e.path && e.path[0]) {
+      target = e.path[0];
+    } else if (e.originalTarget) {
+      target = e.originalTarget;
+    } else {
+      target = e.target;
+    }
+    this.volume = target.value;
   }
 
   /**

@@ -1916,7 +1916,7 @@ class HAXCMSSiteListing extends PolymerElement {
         cancelable: true,
         detail: {
           text: toast,
-          duration: 5000
+          duration: 2000
         }
       })
     );
@@ -2012,6 +2012,14 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   lastErrorChanged(e) {
     if (e.detail.value) {
+      let target = null;
+      if (e.path && e.path[0]) {
+        target = e.path[0];
+      } else if (e.originalTarget) {
+        target = e.originalTarget;
+      } else {
+        target = e.target;
+      }
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
         // cookie data not found, need to go get it
@@ -2041,7 +2049,7 @@ class HAXCMSSiteListing extends PolymerElement {
                 element: {
                   obj: this,
                   callback: "refreshRequest",
-                  params: [e.path[0]]
+                  params: [target]
                 }
               }
             })

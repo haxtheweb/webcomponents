@@ -52,12 +52,6 @@ Custom property | Description | Default
 --a11y-details-borderRadius | border-radius | 3px
 --a11y-details-padding | padding | 0.5em
 --a11y-details-maxHeight | max-height | 400px
-
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
  * @lit-html
  * @lit-element
  * @demo demo/index.html
@@ -138,7 +132,11 @@ class A11yFigure extends A11yDetails {
         groups: ["11"],
         handles: [
           {
-            type: "image"
+            type: "image",
+            source: "imgSrc",
+            alt: "imgAlt",
+            caption: "figcaption",
+            ariaDescribedby: "describedBy"
           }
         ],
         meta: {
@@ -157,7 +155,7 @@ class A11yFigure extends A11yDetails {
           {
             property: "imgAlt",
             title: "Alt Text",
-            inputMethod: "textfield",
+            inputMethod: "alt",
             required: true
           },
           {

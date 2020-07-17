@@ -395,11 +395,26 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
       };
     }
     checkUserStylesMenuOpen(e) {
+      var target = null;
+      if (e.path && e.path[0]) {
+        target = e.path;
+      } else if (
+        e.originalTarget &&
+        e.originalTarget.tagName == "PAPER-ICON-BUTTON"
+      ) {
+        target = [e.originalTarget];
+      } else if (e.originalTarget && e.originalTarget.parentNode.host) {
+        target = [e.originalTarget.parentNode.host];
+      } else {
+        target = [e.target];
+      }
       if (
         !this.hideUserStylesMenu &&
-        e.path &&
-        !e.path.includes(this.toggleUserStylesMenuTarget) &&
-        !e.path.includes(this.shadowRoot.querySelector("#haxcmsuserstylesmenu"))
+        !target.includes(this.toggleUserStylesMenuTarget) &&
+        !target.includes(
+          this.shadowRoot.querySelector("#haxcmsuserstylesmenu")
+        ) &&
+        e.originalTarget.tagName !== "BUTTON"
       ) {
         this.hideUserStylesMenu = true;
       }
@@ -433,10 +448,26 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
       }
     }
     UserStylesFontFamilyChange(e) {
-      this.fontFamily = parseInt(e.path[0].getAttribute("data-font"));
+      var target = null;
+      if (e.path && e.path[0]) {
+        target = e.path[0];
+      } else if (e.originalTarget) {
+        target = e.originalTarget;
+      } else {
+        target = e.target;
+      }
+      this.fontFamily = parseInt(target.getAttribute("data-font"));
     }
     UserStylesColorThemeChange(e) {
-      this.colorTheme = parseInt(e.path[0].getAttribute("data-theme"));
+      var target = null;
+      if (e.path && e.path[0]) {
+        target = e.path[0];
+      } else if (e.originalTarget) {
+        target = e.originalTarget;
+      } else {
+        target = e.target;
+      }
+      this.colorTheme = parseInt(target.getAttribute("data-theme"));
     }
   };
 };

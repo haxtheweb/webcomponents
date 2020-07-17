@@ -365,6 +365,14 @@ class HAXCMSSiteEditor extends LitElement {
   lastErrorChanged(e) {
     if (e.detail.value) {
       console.error(e);
+      let target = null;
+      if (e.path && e.path[0]) {
+        target = e.path[0];
+      } else if (e.originalTarget) {
+        target = e.originalTarget;
+      } else {
+        target = e.target;
+      }
       // check for JWT needing refreshed vs busted but must be 403
       switch (parseInt(e.detail.value.status)) {
         // cookie data not found, need to go get it
@@ -396,7 +404,7 @@ class HAXCMSSiteEditor extends LitElement {
                 element: {
                   obj: this,
                   callback: "refreshRequest",
-                  params: [e.path[0]]
+                  params: [target]
                 }
               }
             })
@@ -517,14 +525,6 @@ class HAXCMSSiteEditor extends LitElement {
 
     window.dispatchEvent(
       new CustomEvent("haxcms-site-editor-loaded", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -862,7 +862,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: `Created ${this.__createNodeResponse.title}!`,
-        duration: 3000
+        duration: 2000
       }
     });
     window.dispatchEvent(evt);
@@ -909,7 +909,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: `Deleted ${this.__deleteNodeResponse.title}`,
-        duration: 3000
+        duration: 2000
       }
     });
     this.dispatchEvent(evt);
@@ -954,7 +954,7 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: true,
         detail: {
           text: "Publishing...",
-          duration: 3000
+          duration: 2000
         }
       });
       window.dispatchEvent(evt);
@@ -1029,7 +1029,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Page saved!",
-        duration: 4000
+        duration: 2000
       }
     });
     window.dispatchEvent(evt); // updates the manifest
@@ -1061,18 +1061,9 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Outline saved!",
-        duration: 3000
+        duration: 2000
       }
     });
-    window.dispatchEvent(evt);
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
     setTimeout(() => {
       window.dispatchEvent(evt);
       this.dispatchEvent(
@@ -1094,7 +1085,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Site details saved!",
-        duration: 3000
+        duration: 2000
       }
     });
     store.dashboardOpened = false;
@@ -1121,7 +1112,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Last save undone",
-        duration: 3000
+        duration: 2000
       }
     });
     this.dispatchEvent(evt);
@@ -1146,7 +1137,7 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Site synced",
-        duration: 3000
+        duration: 2000
       }
     });
     this.dispatchEvent(evt);

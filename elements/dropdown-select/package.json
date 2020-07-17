@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.21",
+  "version": "2.6.23",
   "description": "A dropdown element with better event and data binding",
   "repository": {
     "type": "git",
@@ -36,13 +36,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-fields": "^2.6.21",
+    "@lrnwebcomponents/simple-fields": "^2.6.23",
     "@lrnwebcomponents/simple-picker": "^2.6.17",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.21",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.23",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/neon-animation": "^3.0.0",

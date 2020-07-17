@@ -2224,6 +2224,8 @@ class HaxBody extends SimpleColors {
       var target = null;
       if (e.path && e.path[0]) {
         target = e.path[0];
+      } else if (e.originalTarget) {
+        target = e.originalTarget;
       } else {
         target = e.target;
       }
@@ -2302,8 +2304,8 @@ class HaxBody extends SimpleColors {
           // and place ourselves below it in the DOM
           if (
             (target &&
-              target.removeAttribute &&
               target != null &&
+              target.removeAttribute &&
               typeof local !== typeof undefined &&
               target !== local &&
               target !== local.parentNode &&

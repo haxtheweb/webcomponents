@@ -38,6 +38,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.9.0",
+        "@babel/plugin-proposal-class-properties": "7.10.4",
         "@emotion/core": "0.13.1",
         "@emotion/styled": "0.10.6",
         "@open-wc/building-utils": "2.14.3",

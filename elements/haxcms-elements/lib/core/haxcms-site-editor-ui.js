@@ -181,17 +181,6 @@ class HAXCMSSiteEditorUI extends LitElement {
     this.pageAllowed = false;
     this.editMode = false;
     this.manifestEditMode = false;
-    // this ensures that an initial paint won't get a cached copy of the site.json file
-    // this is more than possible given that it will register to most backends
-    // as a static file rather than dynamic end point as it is in this instance (sorta)
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
     setTimeout(() => {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
@@ -430,14 +419,6 @@ class HAXCMSSiteEditorUI extends LitElement {
         })
       );
     });
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

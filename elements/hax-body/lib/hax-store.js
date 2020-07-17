@@ -2730,7 +2730,7 @@ window.HaxStore.encapScript = html => {
  */
 window.HaxStore.toast = (
   message,
-  duration = 4000,
+  duration = 2000,
   classStyle = "capsule",
   closeText = null,
   eventCallback = null
