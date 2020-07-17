@@ -17,9 +17,7 @@ Custom property | Description | Default
  */
 class LoremData extends LitElement {
   static get styles() {
-    return [
-      css``
-    ];
+    return [css``];
   }
   get threads() {
     return html``;
@@ -38,9 +36,7 @@ class LoremData extends LitElement {
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      
-    });
+    changedProperties.forEach((oldValue, propName) => {});
   }
 }
 window.customElements.define(LoremData.tag, LoremData);

@@ -48,10 +48,7 @@ class LoremData extends LitElement {
           display: none;
         }
         #threads {
-          background-color: var(
-            --lorem-data-threads-BackgroundColor,
-            #eaeaea
-          );
+          background-color: var(--lorem-data-threads-BackgroundColor, #eaeaea);
           padding: 1px;
           width: calc(100% - 2px);
           margin: var(--lorem-data-threads-Margin, 0);
@@ -80,10 +77,7 @@ class LoremData extends LitElement {
         }
         .thread > *,
         #new-thread > * {
-          background-color: var(
-            --lorem-data-comment-BackgroundColor,
-            #fff
-          );
+          background-color: var(--lorem-data-comment-BackgroundColor, #fff);
         }
         .comment {
           margin: 1px 1px 0;
@@ -144,10 +138,7 @@ class LoremData extends LitElement {
           );
           font-weight: var(--lorem-data-date-FontWeight, normal);
           font-family: var(--lorem-data-date-FontFamily);
-          color: var(
-            --lorem-data-date-Color,
-            var(--lorem-data-Color, #95989a)
-          );
+          color: var(--lorem-data-date-Color, var(--lorem-data-Color, #95989a));
         }
         .comment-body {
           font-size: var(--lorem-data-FontSize, 14px);
