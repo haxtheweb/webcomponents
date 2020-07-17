@@ -98,11 +98,14 @@ export const A11yTabStory = () => {
   tabs += ["Before", "During"]
     .map(
       tab =>
-        `<a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`
+        `
+  <a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`
     )
     .join("");
 
-  tabs += utils.makeElementFromClass(
+  tabs += `
+  <!-- tab code-->
+  ${utils.makeElementFromClass(
     A11yTab,
     {
       id: "after",
@@ -113,9 +116,8 @@ export const A11yTabStory = () => {
     [],
     [],
     true
-  );
-
-  tabs += `</a11y-tabs>`;
+  )}
+  <!-- end tab code-->\n</a11y-tabs>`;
   return utils.getDemo(
     tabs,
     `<p>Use the knobs below to customize the first tab.</p>`

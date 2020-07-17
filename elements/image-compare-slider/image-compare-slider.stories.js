@@ -18,7 +18,7 @@ let images = [
   new URL(`./demo/images/Matterhorn02.png`, import.meta.url)
 ];
 export const ImageCompareSliderStory = () => {
-  return utils.makeElementFromHaxDemo(ImageCompareSlider,{
+  return utils.makeElementFromHaxDemo(ImageCompareSlider, {
     bottomSrc: images[0],
     topSrc: images[1]
   });
