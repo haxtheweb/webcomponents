@@ -11,12 +11,15 @@ export default {
     options: { selectedPanel: "storybookjs/knobs/panel" }
   }
 };
+
+const utils = new StorybookUtilities();
 let images = [
   new URL(`./demo/images/Matterhorn01.png`, import.meta.url),
   new URL(`./demo/images/Matterhorn02.png`, import.meta.url)
 ];
-
-const utils = new StorybookUtilities();
 export const ImageCompareSliderStory = () => {
-  return utils.makeElementFromHaxDemo(ImageCompareSlider);
+  return utils.makeElementFromHaxDemo(ImageCompareSlider,{
+    bottomSrc: images[0],
+    topSrc: images[1]
+  });
 };
