@@ -247,6 +247,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 :host(:not([icons-only])) #tabs #tabs simple-tooltip {
   display: none;
 }
+iron-icon:not([hidden]) {
+  display: inline-block;
+}
       `
     ];
   }

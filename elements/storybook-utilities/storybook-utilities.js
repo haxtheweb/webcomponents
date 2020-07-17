@@ -26,10 +26,10 @@ import {
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-let nodeModules = import.meta.url.match(/node_modules/)
+let containerdules = import.meta.url.match(/node_modules/)
   ? new URL("../../", import.meta.url)
   : new URL("../../node_modules/", import.meta.url);
-window.WCGlobalBasePath = nodeModules;
+window.WCGlobalBasePath = containerdules;
 
 window.getStorybookIconset = () => {
   let iconset = document.createElement("iconset-demo");
@@ -633,37 +633,44 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities
    */
-  makeElement(el, knobs) {
+  makeElement(el, knobs, noDemo = false) {
     console.log("makeElement", el, knobs);
-    let tag = typeof el === "string" ? el : el.tag,
-      demo = document.createElement("demo-snippet"),
+    let demo = document.createElement("demo-snippet"),
       template = document.createElement("template"),
+      tag = typeof el === "string" ? el : el.tag,
       attrs = `${this._getDemoAttributes(knobs.props)}${this._getDemoAttributes(
         knobs.attr
       )}`,
       styles =
         Object.keys(knobs.css || {}).length === 0
           ? ``
-          : ` style="${this._getDemoCss(knobs.css)}"`;
+          : ` style="${this._getDemoCss(knobs.css)}"`, 
+      child;
 
     if (!tag) {
       let t = new el();
       tag = t.tagName ? t.tagName.toLowerCase() : "div";
       t.remove();
     }
-
-    template.innerHTML = `<${tag}${attrs}${styles}>${this._getDemoSlots(
+    
+    child = `<${tag}${attrs}${styles}>${this._getDemoSlots(
       knobs.slots
     )}\n</${tag}>`;
+    console.log(child,typeof child,noDemo);
+
+    if(noDemo) {
+      return child;
+    } else {
+      return this.getDemo(child);
+    }
+  }
+  getDemo(el,before = ''){
+    let demo = document.createElement("demo-snippet"),
+      template = document.createElement("template");
+    template.innerHTML += el;
+    demo.innerHTML += before;
     demo.appendChild(template);
-    console.debug(
-      "makeElement:",
-      demo,
-      "\nproperties",
-      knobs.props,
-      "\nslots",
-      knobs.slots
-    );
+    console.log(demo);
     return demo;
   }
 
@@ -680,7 +687,8 @@ export class StorybookUtilities {
     defaults = {},
     additions = [],
     exclusions = [],
-    index
+    index, 
+    container = false
   ) {
     let demoschema =
         el.haxProperties && el.haxProperties.demoSchema
@@ -721,7 +729,7 @@ export class StorybookUtilities {
     });
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
     console.log("makeElementFromHaxDemo", props, additions, exclusions);
-    return this.makeElementFromClass(el, props, additions, exclusions);
+    return this.makeElementFromClass(el, props, additions, exclusions, container);
   }
 
   _getDemoCss(obj) {
@@ -779,11 +787,11 @@ export class StorybookUtilities {
    * @returns {object} element
    * @memberof StorybookUtilities camelToKebab(camel)
    */
-  makeElementFromClass(el, defaults = {}, additions = [], exclusions = []) {
+  makeElementFromClass(el, defaults = {}, additions = [], exclusions = [], container = false) {
     let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
     console.log("makeElementFromClass", el, props, additions, knobs);
-    return this.makeElement(el, knobs);
+    return this.makeElement(el, knobs, container);
   }
 }
 

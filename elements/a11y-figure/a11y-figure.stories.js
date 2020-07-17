@@ -12,9 +12,8 @@ export default {
   }
 };
 const utils = new StorybookUtilities();
-export const A11yFigureStory = () => utils.makeElementFromHaxDemo(A11yFigure);
 
-export const A11yFigureWithProgressiveEnhancement = () =>
+export const A11yFigureStory = () =>
   utils.makeElementFromClass(
     A11yFigure,
     {
@@ -72,3 +71,5 @@ export const A11yFigureWithProgressiveEnhancement = () =>
     ],
     ["summary", "details", "figcaption", "imgSrc", "imgAlt"]
   );
+
+  export const A11yFigureHaxGizmo = () => utils.makeElementFromHaxDemo(A11yFigure);

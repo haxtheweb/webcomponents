@@ -94,22 +94,19 @@ export const A11yTabsStory = () => {
 };
 
 export const A11yTabStory = () => {
-  let div = document.createElement("div"),
-    tabs = document.createElement("a11y-tabs");
-  tabs.layoutBreakpoint = "-1";
-  div.innerHTML = `<p>Use the knobs below to customize the first tab.</p>`;
-  ["Before", "During"].map(
-    tab =>
-      (tabs.innerHTML += `<a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`)
-  );
-  div.appendChild(tabs);
-  tabs.appendChild(
-    utils.makeElementFromClass(A11yTab, {
-      id: "after",
-      label: "After",
-      icon: utils.getRandomIcon(),
-      emptyslot: utils.getRandomTextarea()
-    })
-  );
-  return div;
+  let tabs = `<a11y-tabs layout=breakpoint="-1">`;
+    tabs += ["Before", "During"].map(
+      tab =>
+        (`<a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`)
+    ).join('');
+
+  tabs += utils.makeElementFromClass(A11yTab, {
+    id: "after",
+    label: "After",
+    icon: utils.getRandomIcon(),
+    emptyslot: utils.getRandomTextarea()
+  },[],[],true);
+
+  tabs+=`</a11y-tabs>`;
+  return utils.getDemo(tabs,`<p>Use the knobs below to customize the first tab.</p>`);
 };

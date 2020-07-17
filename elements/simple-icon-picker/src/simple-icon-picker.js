@@ -20,15 +20,6 @@ class SimpleIconPicker extends SimplePicker {
     return [
       ...super.styles,
       css`
-        :host(simple-icon-picker) #collapse {
-          width: 300px;
-        }
-        :host(simple-icon-picker) .row {
-          justify-content: flex-start;
-        }
-        :host(simple-icon-picker) simple-picker-option {
-          flex: 0 0 auto;
-        }
       `
     ];
   }

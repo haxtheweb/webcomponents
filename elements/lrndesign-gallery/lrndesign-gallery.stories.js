@@ -163,68 +163,13 @@ let options = [
       }
     ]
   ];
+
+
 export const LrndesignGalleryCarousel = () => {
   return utils.makeElementFromClass(
     LrndesignGallery,
     {
       accentColor: utils.getRandomColor(),
-      title: utils.getRandomText(),
-      description: utils.getRandomTextarea(),
-      sources: utils.getRandomOption(sources),
-      imagesrc: utils.getRandomImage(),
-      maxWidth: "800px"
-    },
-    options
-  );
-};
-
-export const LrndesignGalleryGrid = () => {
-  return utils.makeElementFromClass(
-    LrndesignGallery,
-    {
-      accentColor: utils.getRandomColor(),
-      layout: "grid",
-      sources: utils.getRandomOption(sources),
-      imagesrc: utils.getRandomImage(),
-      maxWidth: "800px"
-    },
-    options
-  );
-};
-
-export const LrndesignGalleryMasonry = () => {
-  return utils.makeElementFromClass(
-    LrndesignGallery,
-    {
-      accentColor: utils.getRandomColor(),
-      layout: "masonry",
-      sources: sources.flat(),
-      imagesrc: utils.getRandomImage(),
-      maxWidth: "800px"
-    },
-    options
-  );
-};
-
-export const LrndesignGalleryWithJustOneFigure = () => {
-  return utils.makeElementFromClass(
-    LrndesignGallery,
-    {
-      accentColor: utils.getRandomColor(),
-      sources: [utils.getRandomOption(utils.getRandomOption(sources))],
-      imagesrc: utils.getRandomImage(),
-      maxWidth: "800px"
-    },
-    options
-  );
-};
-
-export const LrndesignGalleryWithSlots = () => {
-  return utils.makeElementFromClass(
-    LrndesignGallery,
-    {
-      accentColor: utils.getRandomColor(),
-      imagesrc: utils.getRandomImage(),
       maxWidth: "800px",
       emptyslot: utils
         .getRandomOption(sources)
@@ -243,6 +188,98 @@ export const LrndesignGalleryWithSlots = () => {
       `
         )
         .join("")
+    },
+    options
+  );
+};
+export const LrndesignGalleryGrid = () => {
+  return utils.makeElementFromClass(
+    LrndesignGallery,
+    {
+      accentColor: utils.getRandomColor(),
+      layout: "grid",
+      maxWidth: "800px",
+      emptyslot: utils
+        .getRandomOption(sources)
+        .map(
+          source =>
+            `<figure>
+        <img srcset="${source.thumbnail || source.src} 480w, ${source.src} 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        src="${source.src || source.large}"
+        alt="${source.alt}">
+        <figcaption>
+          ${source.title ? `<h3>${source.title}</h3>` : ""}
+          ${source.details ? `<p>${source.details}</p>` : ""}
+        </figcaption>
+      </figure>
+      `
+        )
+        .join("")
+    },
+    options
+  );
+};
+export const LrndesignGalleryMasonry = () => {
+  return utils.makeElementFromClass(
+    LrndesignGallery,
+    {
+      accentColor: utils.getRandomColor(),
+      layout: "masonry",
+      maxWidth: "800px",
+      emptyslot: utils
+        .getRandomOption(sources)
+        .map(
+          source =>
+            `<figure>
+        <img srcset="${source.thumbnail || source.src} 480w, ${source.src} 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        src="${source.src || source.large}"
+        alt="${source.alt}">
+        <figcaption>
+          ${source.title ? `<h3>${source.title}</h3>` : ""}
+          ${source.details ? `<p>${source.details}</p>` : ""}
+        </figcaption>
+      </figure>
+      `
+        )
+        .join("")
+    },
+    options
+  );
+};
+export const LrndesignGalleryWithJustOneFigure = () => {
+  let source = utils.getRandomOption(utils.getRandomOption(sources));
+  return utils.makeElementFromClass(
+    LrndesignGallery,
+    {
+      accentColor: utils.getRandomColor(),
+      maxWidth: "800px",
+      emptyslot: `<figure>
+        <img srcset="${source.thumbnail || source.src} 480w, ${source.src} 800w"
+        sizes="(max-width: 600px) 480px, 800px"
+        src="${source.src || source.large}"
+        alt="${source.alt}">
+        <figcaption>
+          ${source.title ? `<h3>${source.title}</h3>` : ""}
+          ${source.details ? `<p>${source.details}</p>` : ""}
+        </figcaption>
+      </figure>
+      `
+    },
+    options
+  );
+};
+export const LrndesignGalleryHaxGizmo = () => {
+  return utils.makeElementFromClass(
+    LrndesignGallery,
+    {
+      accentColor: utils.getRandomColor(),
+      title: utils.getRandomText(),
+      description: utils.getRandomTextarea(),
+      sources: utils.getRandomOption(sources),
+      imagesrc: utils.getRandomImage(),
+      maxWidth: "800px"
     },
     options
   );

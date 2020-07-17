@@ -104,6 +104,8 @@ label:not([hidden]) {
 }
 
 #icon {
+  width: var(--simple-picker-option-size, 24px);
+  height: var(--simple-picker-option-size, 24px);
   transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }
@@ -117,7 +119,6 @@ label:not([hidden]) {
   display: none;
   width: 100%;
   position: absolute;  
-  padding: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
   z-index: 2;
 }
 
@@ -131,8 +132,7 @@ label:not([hidden]) {
   display: block;
   position: absolute;
   z-index: 1000;  
-  left: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)));  
-  top: calc(0px - var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)));
+  top: calc(var(--simple-picker-option-size, 24px) + 2 * var(--simple-picker-options-border-width));
   border-width: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
   border-style: var(--simple-picker-options-border-style, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-options-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));

@@ -189,28 +189,6 @@ export const A11yMediaPlayerAudio = () => {
     A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
-      tracks: [
-        {
-          label: "English",
-          kind: "subtitles",
-          srclang: "en",
-          src: new URL(`demo/samples/bueller.vtt`, import.meta.url)
-        }
-      ],
-      sources: [
-        {
-          type: "audio/mp3",
-          src: new URL(`demo/samples/bueller.mp3`, import.meta.url)
-        }
-      ]
-    })
-  );
-};
-export const A11yMediaPlayerAudioWithSlot = () => {
-  return utils.makeElement(
-    A11yMediaPlayer,
-    utils.getKnobs(fields, {
-      ...defaults,
       emptyslot: `
           <audio>
               <source src="${new URL(

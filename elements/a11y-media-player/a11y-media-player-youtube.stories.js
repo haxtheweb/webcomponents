@@ -174,15 +174,6 @@ export const A11yMediaPlayerYoutubeStory = () => {
     A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
-      youtubeId: "BKorP55Aqvg"
-    })
-  );
-};
-export const A11yMediaPlayerYoutubeWithSlot = () => {
-  return utils.makeElement(
-    A11yMediaPlayer,
-    utils.getKnobs(fields, {
-      ...defaults,
       tracks: [
         {
           label: "English",
