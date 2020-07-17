@@ -1263,6 +1263,7 @@ class A11yMediaPlayer extends SimpleColors {
           : false;
       if (yt && iframeSrc) {
         this.youtubeId = iframeSrc.replace(/.*\//g, "");
+        hasVideo = true;
         this.querySelector("iframe").remove();
       }
     }
