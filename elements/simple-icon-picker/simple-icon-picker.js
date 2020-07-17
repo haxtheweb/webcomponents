@@ -17,20 +17,7 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 class SimpleIconPicker extends SimplePicker {
   //styles function
   static get styles() {
-    return [
-      ...super.styles,
-      css`
-        :host(simple-icon-picker) #collapse {
-          width: 300px;
-        }
-        :host(simple-icon-picker) .row {
-          justify-content: flex-start;
-        }
-        :host(simple-icon-picker) simple-picker-option {
-          flex: 0 0 auto;
-        }
-      `
-    ];
+    return [...super.styles, css``];
   }
 
   // properties available to the custom element for data binding

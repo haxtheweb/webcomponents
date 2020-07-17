@@ -855,11 +855,16 @@ class A11yMediaPlayer extends SimpleColors {
         this._setAttribute("full-flex", this.fullFlex);
       if (change(["sticky", "sticky-corner", "__playing"]))
         this._setAttribute("sticky-mode", this.stickyMode && this.__playing);
-      if (change(["height"]))
+      if (change(["height"])) {
         this.style.setProperty(
           "--a11y-media-player-height",
           this.height ? this.height : "unset"
         );
+        this.style.setProperty(
+          "--a11y-media-transcript-max-height",
+          this.height ? "146px" : "unset"
+        );
+      }
 
       /* updates media */
       if (this.media !== null) {
@@ -1263,6 +1268,7 @@ class A11yMediaPlayer extends SimpleColors {
           : false;
       if (yt && iframeSrc) {
         this.youtubeId = iframeSrc.replace(/.*\//g, "");
+        hasVideo = true;
         this.querySelector("iframe").remove();
       }
     }
@@ -1773,6 +1779,10 @@ class A11yMediaPlayer extends SimpleColors {
     }
   }
   firstUpdated() {
+    this.style.setProperty(
+      "--a11y-media-transcript-max-height",
+      this.height ? "146px" : "unset"
+    );
     setTimeout(() => {
       window.ResponsiveUtility.requestAvailability();
 
@@ -1786,8 +1796,8 @@ class A11yMediaPlayer extends SimpleColors {
             element: this,
             attribute: "responsive-size",
             relativeToParent: true,
-            sm: 300,
-            md: 600,
+            sm: 400,
+            md: 700,
             lg: 1000,
             xl: 1500
           }

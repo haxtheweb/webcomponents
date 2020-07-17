@@ -184,35 +184,11 @@ export const A11yMediaPlayerStory = () => {
     A11yMediaPlayer,
     utils.getKnobs(fields, {
       ...defaults,
-      thumbnailSrc: `${new URL(`demo/samples/stclair.jpg`, import.meta.url)}`,
-      sources: [
-        {
-          src: "//www.personal.psu.edu/lnm105/stclair.mp4",
-          type: "video/mp4"
-        }
-      ],
-      tracks: [
-        {
-          label: "English",
-          kind: "subtitles",
-          srclang: "en",
-          src: `${new URL(`demo/samples/stclair.vtt`, import.meta.url)}`,
-          default: true
-        }
-      ]
-    })
-  );
-};
-export const A11yMediaPlayerWithSlots = () => {
-  return utils.makeElement(
-    A11yMediaPlayer,
-    utils.getKnobs(fields, {
-      ...defaults,
       emptyslot: `<video crossorigin="anonymous">
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
         <source src="//iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
         <track label="English" kind="subtitles" srclang="en" src="${new URL(
-          `demo/samples/sintel-de.vtt`,
+          `demo/samples/sintel-en.vtt`,
           import.meta.url
         )}" default>
         <track label="Deutsch" kind="subtitles" srclang="de" src="${new URL(
@@ -220,7 +196,7 @@ export const A11yMediaPlayerWithSlots = () => {
           import.meta.url
         )}">
         <track label="Español" kind="subtitles" srclang="es" src="${new URL(
-          `demo/samples/sintel-de.vtt`,
+          `demo/samples/sintel-es.vtt`,
           import.meta.url
         )}">
       </video>`

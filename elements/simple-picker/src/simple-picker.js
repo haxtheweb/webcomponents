@@ -217,7 +217,7 @@ class SimplePicker extends LitElement {
       e.preventDefault();
       if (e.keyCode === 35) {
         //end
-        let lastrow = this.options.length - 1,
+        let lastrow = (this.options || []).length - 1,
           lastcol = this.options[lastrow].length - 1;
         this._goToOption(lastrow, lastcol); //move to last option
       } else if (e.keyCode === 36) {
@@ -235,7 +235,7 @@ class SimplePicker extends LitElement {
         if (colnum < this.options[rownum].length - 1) {
           //move down to next column
           this._goToOption(rownum, colnum + 1);
-        } else if (rownum < this.options.length - 1) {
+        } else if (rownum < (this.options || []).length - 1) {
           //move down to beginning of next row
           this._goToOption(rownum + 1, [0]);
         }
@@ -302,7 +302,9 @@ class SimplePicker extends LitElement {
    */
   _setSelectedOption(newVal, oldVal) {
     let sel =
-      !this.allowNull && this.options.length > 0 && this.options[0].length > 0
+      !this.allowNull &&
+      (this.options || []).length > 0 &&
+      this.options[0].length > 0
         ? this.options[0][0].value
         : null;
     if (this.options) {

@@ -33,15 +33,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     return [
       ...super.styles,
       css`
+        :host {
+          flex-wrap: wrap;
+        }
+        .filters > *,
+        #layout > * {
+          flex: 0 1 auto;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        .filters {
+          flex: 1 0 100%;
+        }
         #layout {
           display: flex;
           align-items: flex-end;
           justify-content: space-between;
-        }
-        #primary .filters > *,
-        #layout > * {
-          flex: 0 1 auto;
-          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
         #layout > button {
           background-color: transparent;
@@ -242,41 +248,49 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   // render function
   render() {
     return html`
-      <div id="primary">
-        <div class="filters">
-          <simple-fields-field
-            inline
-            label="Assignment:"
-            .options="${this.assignmentOptions}"
-            value="${this.assignmentFilter || ""}"
-            @value-changed="${e => (this.assignmentFilter = e.detail.value)}"
+      <div class="filters">
+        <simple-fields-field
+          inline
+          label="Project:"
+          .options="${this.projectOptions}"
+          value="${this.projectFilter || ""}"
+          @value-changed="${e => (this.projectFilter = e.detail.value)}"
+        >
+        </simple-fields-field>
+        <simple-fields-field
+          inline
+          label="Assignment:"
+          .options="${this.assignmentOptions}"
+          value="${this.assignmentFilter || ""}"
+          @value-changed="${e => (this.assignmentFilter = e.detail.value)}"
+        >
+        </simple-fields-field>
+        <simple-fields-field
+          inline
+          label="Student:"
+          .options="${this.studentOptions}"
+          value="${this.studentFilter || ""}"
+          @value-changed="${e => (this.studentFilter = e.detail.value)}"
+        >
+        </simple-fields-field>
+        <div id="layout">
+          <button
+            aria-pressed="${this.grid ? "false" : "true"}"
+            @click="${e => (this.grid = false)}"
           >
-          </simple-fields-field>
-          <simple-fields-field
-            inline
-            label="Student:"
-            .options="${this.studentOptions}"
-            value="${this.studentFilter || ""}"
-            @value-changed="${e => (this.studentFilter = e.detail.value)}"
+            <iron-icon icon="icons:view-list"></iron-icon>
+            <span class="sr-only">display as list</span>
+          </button>
+          <button
+            aria-pressed="${this.grid ? "true" : "false"}"
+            @click="${e => (this.grid = true)}"
           >
-          </simple-fields-field>
-          <div id="layout">
-            <button
-              aria-pressed="${this.grid ? "false" : "true"}"
-              @click="${e => (this.grid = false)}"
-            >
-              <iron-icon icon="icons:view-list"></iron-icon>
-              <span class="sr-only">display as list</span>
-            </button>
-            <button
-              aria-pressed="${this.grid ? "true" : "false"}"
-              @click="${e => (this.grid = true)}"
-            >
-              <iron-icon icon="icons:view-module"></iron-icon>
-              <span class="sr-only">display as grid</span>
-            </button>
-          </div>
+            <iron-icon icon="icons:view-module"></iron-icon>
+            <span class="sr-only">display as grid</span>
+          </button>
         </div>
+      </div>
+      <div id="primary">
         <div id="cards" class="${this.grid ? "grid" : "list"}">
           <div
             class="no-submissions"
@@ -343,14 +357,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         </div>
       </div>
       <div id="secondary">
-        <div class="filters">
-          <span class="comments">Comments:&nbsp;</span>
-          <span class="comments-filter"
-            >${this.assignmentFilter !== "" || this.studentFilter !== ""
-              ? "Filtered"
-              : "All"}</span
-          >
-        </div>
         <nav-card flat no-border class="card" link-icon="chevron-right">
           <span slot="heading">Recent Comments</span>
           <div slot="body" ?hidden="${this.filteredComments.length > 0}">
@@ -400,6 +406,10 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         type: Boolean,
         attribute: "grid"
       },
+      projectFilter: {
+        type: String,
+        attribute: "project-filter"
+      },
       studentFilter: {
         type: String,
         attribute: "student-filter"
@@ -419,8 +429,11 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
     this.tag = ElmslnStudioSubmissions.tag;
   }
   get filteredComments() {
-    return (this.comments || []).filter(i =>
-      this._isFiltered(i.userId, i.assignmentId)
+    return (this.comments || []).filter(
+      i =>
+        this._isFilteredStudent(i.userId) &&
+        this._isFilteredAssignment(i.assignmentId) &&
+        this._isFilteredProject(i.projectId)
     );
   }
   get studentOptions() {
@@ -432,23 +445,30 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   }
   get assignmentOptions() {
     let options = { "": "All" };
-    (this.submissions || []).forEach(
-      i => (options[i.assignmentId] = i.assignment)
-    );
+    (this.submissions || [])
+      .filter(i => this._isFilteredProject(i.projectId))
+      .forEach(i => (options[i.assignmentId] = i.assignment));
+    return options;
+  }
+  get projectOptions() {
+    let options = { "": "All" };
+    (this.submissions || []).forEach(i => (options[i.projectId] = i.project));
     return options;
   }
   get filteredSubmissions() {
-    return (this.submissions || []).filter(i =>
-      this._isFiltered(i.userId, i.assignmentId)
-    );
-  }
-  _isFiltered(student = "", assignment = "") {
-    return (
-      this._isFilteredStudent(student) && this._isFilteredAssignment(assignment)
-    );
+    return (this.submissions || []).filter(i => {
+      return (
+        this._isFilteredStudent(i.userId) &&
+        this._isFilteredAssignment(i.assignmentId) &&
+        this._isFilteredProject(i.projectId)
+      );
+    });
   }
   _isFilteredAssignment(assignment = "") {
     return this.assignmentFilter === "" || assignment === this.assignmentFilter;
+  }
+  _isFilteredProject(project = "") {
+    return this.projectFilter === "" || project === this.projectFilter;
   }
   _isFilteredStudent(student = "") {
     return this.studentFilter === "" || student === this.studentFilter;

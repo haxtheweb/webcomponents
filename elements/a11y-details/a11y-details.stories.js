@@ -12,9 +12,8 @@ export default {
   }
 };
 const utils = new StorybookUtilities();
-export const A11yDetailsStory = () => utils.makeElementFromHaxDemo(A11yDetails);
 
-export const A11yDetailsWithProgressiveEnhancement = () =>
+export const A11yDetailsStory = () =>
   utils.makeElementFromClass(
     A11yDetails,
     {
@@ -64,3 +63,6 @@ export const A11yDetailsWithProgressiveEnhancement = () =>
     ],
     ["summary", "details"]
   );
+
+export const A11yDetailsHaxGizmo = () =>
+  utils.makeElementFromHaxDemo(A11yDetails);

@@ -1,43 +1,33 @@
 import { html } from "lit-element/lit-element.js";
-import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
+import { SimpleIconPicker } from "./simple-icon-picker.js";
 
 export default {
   title: "Forms|Picker",
   component: "simple-picker",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
   }
 };
-
 const utils = new StorybookUtilities();
-export const SimplePickerStory = () => {
+
+export const SimpleIconPickerStory = () => {
   return utils.makeElementFromClass(
-    SimplePicker,
+    SimpleIconPicker,
     {
-      label: "Pick a font-family",
-      options: [
-        [{ alt: "-- none --", value: null }],
-        [
-          {
-            alt: "sans-serif",
-            style: "font-family: sans-serif",
-            value: "sans-serif"
-          }
-        ],
-        [{ alt: "serif", style: "font-family: serif", value: "serif" }],
-        [
-          {
-            alt: "monospace",
-            selected: true,
-            style: "font-family: monospace",
-            value: "monospace"
-          }
-        ],
-        [{ alt: "cursive", style: "font-family: cursive", value: "cursive" }]
-      ]
+      icons: [
+        "check",
+        "clear",
+        "search",
+        "arrow-back",
+        "arrow-downward",
+        "arrow-forward",
+        "arrow-upward"
+      ],
+      label: "Pick an Icon"
     },
     [
       {
@@ -153,6 +143,6 @@ export const SimplePickerStory = () => {
         title: "Background color for listbox"
       }
     ],
-    []
+    ["hideOptionLabels", "options", "titleAsHtml"]
   );
 };

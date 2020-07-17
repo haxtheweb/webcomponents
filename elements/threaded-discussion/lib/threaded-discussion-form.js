@@ -40,7 +40,6 @@ Custom property | Description | Default
 `--threaded-discussion-textarea-FontFamily` | textarea font-family | var(--threaded-discussion-FontFamily));
  *
  *
- *
  * @element threaded-discussion-form
  */
 class ThreadedDiscussionForm extends LitElement {

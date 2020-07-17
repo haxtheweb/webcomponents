@@ -209,6 +209,8 @@ class SimplePicker extends LitElement {
         }
 
         #icon {
+          width: var(--simple-picker-option-size, 24px);
+          height: var(--simple-picker-option-size, 24px);
           transform: var(--simple-picker-icon-transform, rotate(0deg));
           transition: transform 0.25s;
         }
@@ -222,10 +224,6 @@ class SimplePicker extends LitElement {
           display: none;
           width: 100%;
           position: absolute;
-          padding: var(
-            --simple-picker-options-border-width,
-            var(--simple-picker-border-width, 1px)
-          );
           z-index: 2;
         }
 
@@ -239,18 +237,9 @@ class SimplePicker extends LitElement {
           display: block;
           position: absolute;
           z-index: 1000;
-          left: calc(
-            var(
-              --simple-picker-options-border-width,
-              var(--simple-picker-border-width, 1px)
-            )
-          );
           top: calc(
-            0px -
-              var(
-                --simple-picker-options-border-width,
-                var(--simple-picker-border-width, 1px)
-              )
+            var(--simple-picker-option-size, 24px) + 2 *
+              var(--simple-picker-options-border-width)
           );
           border-width: var(
             --simple-picker-options-border-width,
@@ -771,7 +760,7 @@ class SimplePicker extends LitElement {
       e.preventDefault();
       if (e.keyCode === 35) {
         //end
-        let lastrow = this.options.length - 1,
+        let lastrow = (this.options || []).length - 1,
           lastcol = this.options[lastrow].length - 1;
         this._goToOption(lastrow, lastcol); //move to last option
       } else if (e.keyCode === 36) {
@@ -789,7 +778,7 @@ class SimplePicker extends LitElement {
         if (colnum < this.options[rownum].length - 1) {
           //move down to next column
           this._goToOption(rownum, colnum + 1);
-        } else if (rownum < this.options.length - 1) {
+        } else if (rownum < (this.options || []).length - 1) {
           //move down to beginning of next row
           this._goToOption(rownum + 1, [0]);
         }
@@ -856,7 +845,9 @@ class SimplePicker extends LitElement {
    */
   _setSelectedOption(newVal, oldVal) {
     let sel =
-      !this.allowNull && this.options.length > 0 && this.options[0].length > 0
+      !this.allowNull &&
+      (this.options || []).length > 0 &&
+      this.options[0].length > 0
         ? this.options[0][0].value
         : null;
     if (this.options) {

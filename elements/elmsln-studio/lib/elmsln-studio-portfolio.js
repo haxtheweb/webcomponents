@@ -64,13 +64,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         .submission-header elmsln-studio-button:hover {
           color: #4b4b4b;
         }
-        .submission-header elmsln-studio-button.has-discussions {
-          color: var(--simple-colors-default-theme-light-blue-3);
-        }
-        .submission-header elmsln-studio-button.has-discussions:focus,
-        .submission-header elmsln-studio-button.has-discussions:hover {
-          color: var(--simple-colors-default-theme-light-blue-5);
-        }
         section {
           border-top: 2px solid #eaeaea;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
@@ -316,14 +309,14 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                         >
                       </h2>
                       <elmsln-studio-button
-                        class="view-discussion-button ${s.feedback.length < 1
-                          ? ""
-                          : "has-discussions"}"
+                        class="view-discussion-button"
                         aria-describedby="sub-${s.id}"
-                        icon="communication:comment"
+                        icon="${this._getFeedbackIcon(s.feedback.length)}"
                         path="${s.link}&comment=show"
                       >
-                        <span class="sr-only">View Comments</span>
+                        <span class="sr-only"
+                          >Give / View Feedback (${s.feedback.length})</span
+                        >
                       </elmsln-studio-button>
                     </div>
                     <div class="submission-body">
@@ -520,6 +513,14 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
    */
   connectedCallback() {
     super.connectedCallback();
+  }
+  _getFeedbackIcon(comments) {
+    if (comments === 0) {
+      return "communication:comment";
+    } else if (comments < 10) {
+      return `hax:messages-${comments}`;
+    }
+    return "hax:messages-9-plus";
   }
   _handleReply(replyform) {
     let form = this.shadowRoot.querySelector(`#${replyform}-div`),

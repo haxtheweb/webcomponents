@@ -4,7 +4,8 @@ import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import {
   withKnobs,
   withWebComponentsKnobs,
-  select
+  select,
+  text
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -18,22 +19,38 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const HaxIconsetStory = () => {
-  let iconset = document.createElement("iconset-demo");
-  iconset.includeSets = "hax";
-  return iconset;
+  return utils.getDemo(
+    `<iconset-demo include-sets="hax"></iconset-demo>`,
+    `<p>The following is a full list of hax-iconset's icons.</p>`
+  );
 };
+
 export const HaxIconsetDemo = () => {
   let iconset = document.createElement("iconset-demo");
   iconset.includeSets = "hax";
   iconset.hidden = "hidden";
   document.body.appendChild(iconset);
-  let list =
+
+  let icons =
       iconset && iconset.__iconList
         ? iconset.__iconList
         : [{ name: "icons", icons: ["star", "check", "history"] }],
-    icons = list[0].icons,
-    knob = select("icon", icons, utils.getRandomOption(icons), "Properties"),
-    icon = document.createElement("iron-icon");
-  icon.setAttribute("icon", knob);
-  return icon;
+    iconlist =
+      icons && icons[0] ? icons[0].icons : ["star", "check", "history"];
+  return utils.getDemo(
+    `<iron-icon 
+      icon="${select(
+        "icon",
+        iconlist,
+        utils.getRandomOption(iconlist),
+        "Properties"
+      )}"
+      style="display:inline-block;width:${text(
+        "width",
+        "",
+        "CSS"
+      )};height:${text("height", "", "CSS")};">
+    </iron-icon>`,
+    `<p>The following is a demo of how to use a hax-iconset icon.</p>`
+  );
 };

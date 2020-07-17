@@ -500,7 +500,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             imageSrc: "http://placekitten.com/200/600"
           },
           content:
-            '<h1 slot="heading">Card Heading</h1>\n<p slot="content">This is the body of the card.</p>'
+            '<span slot="heading">Card Heading</span>\n<p slot="content">This is the body of the card.</p>'
         }
       ],
       saveOptions: {

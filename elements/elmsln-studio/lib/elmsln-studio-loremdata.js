@@ -256,7 +256,7 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
   draw(arr = [], min = 0, max = min) {
     return this.shuffle(arr).slice(
       0,
-      min + Math.floor(Math.random() * (max - min))
+      Math.min(0, min + Math.floor(Math.random() * (max - min)))
     );
   }
   /**
@@ -373,7 +373,7 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
    */
   makeFeedback(submissionId, reviewerId, created) {
     let id = `feedback-${Object.keys(this.feedback).length}`,
-      replies = Math.floor(Math.random() * 4);
+      replies = Math.min(Math.floor(Math.random() * 6) - 2);
     this.feedback[id] = this.makeComment(id, submissionId, reviewerId, created);
     this.feedback[id].link = this.feedbackLink(this.feedback[id]);
     this.feedback[id].replies = [];
@@ -443,7 +443,7 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
     let id = `submission-${Object.keys(this.submissions).length}`,
       reviewers = [
         this.randomItem(Object.keys(this.instructors)),
-        ...this.draw(Object.keys(this.students), 1, 3)
+        ...this.draw(Object.keys(this.students), -5, 7)
       ],
       assignment = this.assignments[assignmentId];
     this.submissions[id] = {

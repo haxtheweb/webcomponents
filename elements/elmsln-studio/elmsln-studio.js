@@ -107,6 +107,7 @@ class ElmslnStudio extends router(
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
           assignment-filter="${this.query.assignment || ""}"
+          project-filter="${this.query.project || ""}"
         >
         </elmsln-studio-submissions>
         <elmsln-studio-portfolio
@@ -191,6 +192,10 @@ class ElmslnStudio extends router(
   }
 
   constructor() {
+    var dosomething = () => {};
+    var query = document
+      .getElementById("search")
+      .addEventListener("test", dosomething);
     super();
     this.activity = [];
     this.discussion = [];
