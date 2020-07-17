@@ -87,7 +87,7 @@
         "jest": "24.1.0",
         "lerna": "3.20.2",
         "lint-staged": "8.1.7",
-        "lodash": "4.17.13",
+        "lodash": "4.17.19",
         "lodash.clonedeep": "4.5.0",
         "lorem-ipsum": "^2.0.3",
         "node-sass": "4.13.1",
