@@ -162,6 +162,7 @@ class a11yCompareImage extends LitElement {
     });
   }
   firstUpdated() {
+    this._slide();
     this.shadowRoot
       .querySelector("#slider")
       .addEventListener("immediate-value-changed", e => {
