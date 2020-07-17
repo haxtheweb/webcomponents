@@ -39,10 +39,7 @@ class CourseCard extends SimpleColors {
           transition: 0.2s all ease-in-out;
           text-decoration: none;
           color: var(--simple-colors-default-theme-accent-12, #000);
-          background-color: var(
-            --simple-colors-default-theme-grey-1,
-            #ffffff
-          );
+          background-color: var(--simple-colors-default-theme-grey-1, #ffffff);
           display: block;
           width: 100%;
           min-height: 300px;
@@ -96,7 +93,10 @@ class CourseCard extends SimpleColors {
           position: relative;
           bottom: 50px;
           border: solid;
-          background-color: var(--simple-colors-default-theme-accent-7, #666666);
+          background-color: var(
+            --simple-colors-default-theme-accent-7,
+            #666666
+          );
           border-color: var(--simple-colors-default-theme-grey-1, #ffffff);
           border-width: 5px;
           margin: 0 0 -40px 0;
