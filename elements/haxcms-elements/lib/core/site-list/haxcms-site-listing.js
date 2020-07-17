@@ -63,7 +63,10 @@ class HAXCMSSiteListing extends PolymerElement {
           left: 0;
           right: 0;
           color: var(--simple-colors-default-theme-accent-11, #111111);
-          background-color: var(--simple-colors-default-theme-accent-2, #eeeeee);
+          background-color: var(
+            --simple-colors-default-theme-accent-2,
+            #eeeeee
+          );
           z-index: 1;
           line-height: 120%;
           align-items: center;
