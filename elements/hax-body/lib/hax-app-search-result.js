@@ -181,7 +181,8 @@ class HaxAppSearchResult extends LitElement {
     var map = this.map;
     var gizmoType = this.type;
     // sanity check as well as guessing based on type if we absolutely have to
-    if ((!gizmoType ||
+    if (
+      (!gizmoType ||
         gizmoType == null ||
         gizmoType == "" ||
         gizmoType == "undefined") &&
