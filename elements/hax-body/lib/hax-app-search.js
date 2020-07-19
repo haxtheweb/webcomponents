@@ -489,11 +489,11 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
               } else {
                 _id = this._resolveObjectPath(map.gizmo.id, data[i]);
               }
-              map.gizmo.source = map.gizmo._url_source.replace(
+              media[i].map.source = map.gizmo._url_source.replace(
                 "<%= id %>",
                 _id
               );
-              media[i].map.source = map.gizmo.source;
+              media[i].map.url = media[i].map.source;
             } else {
               if (map.gizmo[prop].constructor === Object) {
                 let tmp = this._resolveObjectPath(
