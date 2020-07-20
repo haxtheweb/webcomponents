@@ -16,6 +16,7 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "../haxcms-site-store.js";
 import {
   HaxSchematizer,
   HaxElementizer
@@ -252,7 +253,7 @@ class HAXCMSSiteListing extends PolymerElement {
         .operations paper-button {
           font-weight: 500;
           font-size: 18px;
-          color: var(--haxcms-site-listing-color-hover);
+          color: black;
           background-color: var(--haxcms-site-listing-color-light);
           margin: 0;
           padding: 8px;
