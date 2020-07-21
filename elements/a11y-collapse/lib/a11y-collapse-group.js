@@ -73,6 +73,13 @@ class A11yCollapseGroup extends LitElement {
       e.stopPropagation();
       e.stopImmediatePropagation();
     });
+    this.addEventListener("toggle", e => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.radioToggle(e.detail);
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    });
   }
   static get tag() {
     return "a11y-collapse-group";
