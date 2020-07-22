@@ -7,6 +7,7 @@ import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
+import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
 
@@ -28,9 +29,19 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       css`
         :host {
           display: block;
+          flex-wrap: wrap;
         }
         h1 {
           text-align: center;
+        }
+        #breadcrumb {
+          margin: 0 0 var(--elmsln-studio-margin, 20px);
+          flex: 1 0 100%;
+          --elmsln-studio-link-Color: var(--simple-colors-fixed-theme-light-blue-8);
+          --elmsln-studio-link-focus-Color: var(--simple-colors-fixed-theme-light-blue-9);
+        }
+        #breadcrumb > * {
+          display: inline;
         }
         lrndesign-avatar,
         .student-name,
@@ -49,9 +60,13 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
+        #project-buttons, 
         .submission-header {
           position: relative;
+          height: 40px;
+          margin-top: -40px;
         }
+        #sort,
         .submission-header elmsln-studio-button {
           color: #95989a;
           font-size: var(--elmsln-studio-FontSize, 16px);
@@ -60,14 +75,23 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           right: 0;
           top: 0;
         }
+        #sort:focus,
+        #sort:hover,
         .submission-header elmsln-studio-button:focus,
         .submission-header elmsln-studio-button:hover {
           color: #4b4b4b;
+        }
+        #sort.sort-latest {
+          transform: rotateX(180deg) rotateY(0deg);
         }
         section {
           border-top: 2px solid #eaeaea;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
             var(--elmsln-studio-margin, 20px);
+        }
+        .view-discussion {
+          border: 1px solid #eaeaea;
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
         .view-discussion section {
           opacity: 0.4;
@@ -158,91 +182,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         .callout .callout-label iron-icon {
           margin-right: 1em;
         }
-        .comment-textarea {
-          flex: 1 0 100%;
-          height: 100px;
-          overflow-x: auto;
-          border: none;
-          resize: none;
-          border-bottom: 1px solid #eaeaea;
-        }
-        .comment-form {
-          display: flex;
-          justify-content: flex-end;
-          flex-wrap: wrap;
-        }
-        .callout .comment-form {
-          width: calc(100% - var(--elmsln-studio-margin, 20px));
-        }
-        .comment-submit {
-          border: none;
-          text-align: center;
-          display: inline;
-          background-color: #4b4b4b;
-          color: #fff;
-          margin: calc(0.25 * var(--elmsln-studio-margin, 20px)) 0;
-        }
-        .comment-submit:focus,
-        .comment-submit:hover {
-          background-color: var(--simple-colors-default-theme-grey11, #222);
-        }
-        #threads {
+        threaded-discussion {
           background-color: #eaeaea;
           padding: 1px;
-        }
-        .thread {
-          width: 100%;
-          transition: all 0.5s ease-in-out;
-        }
-        .comment {
-          background-color: white;
-          margin: 1px;
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0;
-        }
-        .comment-reply {
-          margin-left: calc(1 * var(--elmsln-studio-margin, 20px));
-        }
-        .comment-header,
-        .comment-footer {
-          display: flex;
-          align-items: stretch;
-          justify-content: space-between;
-        }
-        .comment-header,
-        .comment-body {
-          padding: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
-        }
-        .comment-header > div {
-          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
-          flex: 1 1 auto;
-        }
-        .comment-name {
-          margin: 0 0 calc(0.25 * var(--elmsln-studio-margin, 20px));
-          font-size: var(--elmsln-studio-FontSize, 16px);
-          font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: bold;
-          color: #4b4b4b;
-        }
-        .comment-date {
-          margin: 0;
-          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: normal;
-          color: #95989a;
-        }
-        .comment-body {
-          line-height: 160%;
-          font-size: calc(0.8 * var(--elmsln-studio-FontSize, 16px));
-          color: #95989a;
-        }
-        .comment-header iron-icon {
-          color: var(--simple-colors-default-theme-grey-4);
-        }
-        .comment-read iron-icon {
-          color: var(--simple-colors-default-theme-light-blue-7);
-        }
-        .comment-footer {
-          justify-content: flex-end;
-          padding: 0;
+          --threaded-discussion-comment-button-BackgroundColor: var(--simple-colors-fixed-theme-light-blue-8);
+          --threaded-discussion-comment-button-focus-BackgroundColor: var(--simple-colors-fixed-theme-light-blue-9);
         }
         @media screen and (min-width: 600px) {
           :host {
@@ -266,18 +210,25 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   // render function
   render() {
     return html`
+      <div id="breadcrumb">
+        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
+        ${!this.portfolio || !this.portfolio.projectId ? `` :html` 
+          <span> > </span>
+          <elmsln-studio-link href="${`/submissions?project=${this.portfolio.projectId}`}">${this.portfolio.project}</elmsln-studio-link>
+          ${!this.assignment || !this.assignment.assignment ? `` :html` 
+            <span> > </span> 
+            <elmsln-studio-link href="${`/submissions?project=${this.portfolio.projectId}&assignment=${this.assignment.assignmentId}`}">${this.assignment.assignment}</elmsln-studio-link>
+          `}
+          <span> > </span>
+          <span>${this.fullName(this.portfolio)}</span>
+        `}
+      </div>
       <div
         id="primary"
         ?hidden="${!this.portfolio}"
         class="${this.comment && this.comment !== "" ? "view-discussion" : ""}"
       >
-        <article>
-          <!--div class="close-view" hidden>
-            <button class="close-view-button">
-              <iron-icon aria-hidden="true" icon="close"></iron-icon>
-              <span>Close</span>
-            </button>
-          </div-->
+        <article id="portfolio-project">
           <h1>
             <lrndesign-avatar
               accent-color="${this.accentColor(this.fullName(this.portfolio))}"
@@ -292,9 +243,21 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             <span class="student-name">${this.fullName(this.portfolio)}</span>
             <span class="project-name">${this.portfolio.project}</span>
           </h1>
+          <div id="project-buttons">
+            <button
+              id="sort"
+              aria-pressed="${this.sortLatest ? "false" : "true"}"
+              class="${!this.sortLatest ? '' : 'sort-latest'}"
+              @click="${e => (this.sortLatest = !this.sortLatest)}"
+              controls="portfolio-project"
+            >
+              <iron-icon icon="sort"></iron-icon>
+              <span class="sr-only">Sort Submissions ${!this.sortLatest ? 'Oldest First' : 'Newest First'}</span>
+            </button>
+          </div>
           ${!this.portfolio
             ? ``
-            : (this.portfolio.submissions || []).map(
+            : (this.sortedSubmissions).map(
                 s => html`
                   <section
                     class="${this.submissionFilter === s.id
@@ -368,104 +331,35 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           <div class="instructions callout">
             <h2 class="callout-label">
               <iron-icon icon="info" aria-hidden="true"></iron-icon>
-              Directions for Assignment
+              Giving Feedback
             </h2>
             <div>
               <ul>
-                <li>Step 1. Do something.</li>
-                <li>Step 2. Do another thing.</li>
-                <li>Step 3. Do something else.</li>
-                <li>Step 4. Do ALL THE THINGS!</li>
+                <li>Things to look for: blah, blah, blah</li>
+                <li>How to say it: blah, blah, blah</li>
+                <li>Other info.</li>
               </ul>
             </div>
           </div>
           <h2 class="discussion-label">
-            Discussion for Submission
+            Feedback
           </h2>
           <div class="discussion callout">
-            <label class="callout-label" for="feedback">
+            <p class="callout-label">
               <iron-icon
                 icon="communication:comment"
                 aria-hidden="true"
               ></iron-icon>
-              Feedback
-            </label>
-            ${this.makeWrite("feedback", `sub-${this.submission.id}`)}
-          </div>
-          <div id="threads">
-            ${(this.submission.feedback || []).map(
-              f => html`
-                <div class="thread">
-                  ${this.makeComment(f)}
-                  ${f.replies.map(r => this.makeComment(r))}
-                </div>
-              `
-            )}
+              Post New Feedback
+            </p>
+            <threaded-discussion 
+              comment-icon="send"
+              ?demo="${this.demoMode}"
+              .data="${this.submission.feedback || []}"
+              latest>
+            </threaded-discussion>
           </div>
         </aside>
-      </div>
-    `;
-  }
-
-  makeWrite(id, describedby = "", hidden = false, label) {
-    return html`
-      <div id="${id}-div" ?hidden=${hidden} class="comment-form">
-        ${label
-          ? html`
-              <label class="sr-only" for="${id}">${label}</label>
-            `
-          : ``}
-        <textarea
-          id="${id}"
-          aria-desccribedby="${describedby}"
-          class="comment-textarea"
-        ></textarea>
-        <button
-          controls="${id}"
-          @click="${e => this._handleComment(id, describedby)}"
-          class="comment-submit"
-        >
-          <iron-icon icon="send" aria-hidden="true"></iron-icon>
-          Submit
-        </button>
-      </div>
-    `;
-  }
-
-  makeComment(c) {
-    return html`
-      <div
-        id="${c.id}"
-        class="comment ${c.feedbackId ? "comment-reply" : ""}"
-        aria-describedby="${c.feedbackId || ""}"
-      >
-        <div class="comment-header ${c.feedbackId ? "comment-read" : ""}">
-          <lrndesign-avatar
-            accent-color="${this.accentColor(this.fullName(c))}"
-            initials="${this.fullName(c)}"
-            .src="${c.avatar}"
-            two-chars
-          >
-          </lrndesign-avatar>
-          <div>
-            <p class="comment-name">${this.fullName(c)}</p>
-            <p class="comment-date">${this.dateFormat(c.date)}</p>
-          </div>
-          <iron-icon icon="thumb-up"></iron-icon>
-        </div>
-        <div class="comment-body">
-          <p>${c.body}</p>
-        </div>
-        <div class="comment-footer" ?hidden="${c.feedbackId}">
-          <button
-            controls="reply-to-${c.id}-div"
-            @click="${e => this._handleReply(`reply-to-${c.id}`)}"
-          >
-            Reply
-            <iron-icon icon="arrow-forward"></iron-icon>
-          </button>
-          ${this.makeWrite(`reply-to-${c.id}`, c.id, true, "Write Reply")}
-        </div>
       </div>
     `;
   }
@@ -487,6 +381,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       submissionFilter: {
         type: String,
         attribute: "submission-filter"
+      },
+      sortLatest: {
+        type: String,
+        attribute: "sort-latest",
+        reflect: true
       }
     };
   }
@@ -514,6 +413,22 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   connectedCallback() {
     super.connectedCallback();
   }
+
+  get sortedSubmissions(){
+    return !this.portfolio.submissions 
+      ? [] 
+      : this.sortDates(this.portfolio.submissions,this.sortLatest);
+  }
+  get assignment(){
+    let filter = !this.submissionFilter 
+      || !this.portfolio 
+      || !this.portfolio.submissions 
+      ? [] 
+      : this.portfolio.submissions.filter(s=>s.id === this.submissionFilter);
+    return !filter 
+      ? false 
+      : filter[0];
+  }
   _getFeedbackIcon(comments) {
     if (comments === 0) {
       return "communication:comment";
@@ -522,21 +437,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     }
     return "hax:messages-9-plus";
   }
-  _handleReply(replyform) {
-    let form = this.shadowRoot.querySelector(`#${replyform}-div`),
-      button = this.shadowRoot.querySelector(`[controls=${replyform}]`);
-    console.log("_handleComment", replyform, form, button);
-  }
-  _handleComment(id, target) {
-    let form = this.shadowRoot.querySelector(`#${id}`),
-      parent = this.shadowRoot.querySelector(`#${target}`);
-    console.log("_handleComment", id, target, form, parent);
-  }
-
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
-    console.log("portfolio", this.portfolio, this.feedback);
+    console.log("portfolio", this.portfolio, this.feedback, !this.submission || !this.submission.feedback ? '' : this.submission.feedback);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);

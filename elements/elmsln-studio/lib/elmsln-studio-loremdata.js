@@ -213,6 +213,22 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       `Quisque pellentesque augue ac dignissim pretium. Curabitur ut vestibulum nisi. Aenean accumsan purus sed metus consectetur semper. Integer et elit sit amet nulla mollis luctus. Morbi ac tortor non leo hendrerit porta sed et magna. Cras euismod cursus lorem ac dictum. Nulla maximus libero turpis, quis scelerisque velit maximus ac. Vestibulum sit amet egestas odio. Nullam feugiat finibus augue vel ultricies. Nam urna elit, dignissim eget quam ut, eleifend placerat arcu. Suspendisse nec diam vestibulum, feugiat orci et, convallis nunc. Sed dapibus commodo nibh, ut tempor diam euismod in. Phasellus eget consectetur nibh. Sed ac consequat orci, vitae congue felis. Ut in purus diam. Nam rutrum, magna rutrum blandit luctus, turpis erat fermentum ipsum, sed pretium tellus nunc ac risus.`,
       `Quisque tincidunt imperdiet purus in congue. Sed id risus ipsum. Integer tincidunt lacinia neque sed vulputate. Donec eget consectetur nibh. In nec nulla quis augue molestie posuere a non sapien. Fusce ultricies efficitur urna sed porta. Maecenas vitae fringilla ipsum. Cras venenatis, mauris non dictum interdum, quam risus lacinia enim, sed scelerisque diam nunc in risus. Integer tempor vitae leo a cursus. Vivamus suscipit nisi eu risus accumsan, vel rhoncus nulla mattis. Integer vulputate felis vel nulla aliquet, ac placerat nunc varius. Nulla sodales accumsan nibh, id sollicitudin diam placerat at.`
     ];
+    /* lorem ipsum sentence list */
+    this.sentences = this.paragraphs
+      .map(p => p.split(/[\.\?\!]+\s+/))
+      .flat()
+      .map(
+        s => `${s}${this.randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
+      );
+    /* lorem ipsum word list */
+    this.words = [
+      ...new Set(
+        this.paragraphs
+          .map(p => p.split(/\W+/))
+          .flat()
+          .map(w => w.toLowerCase())
+      )
+    ];
     this.refreshData();
   }
   static get styles() {
@@ -232,6 +248,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
   render() {
     return html`
+      <label>projects</label>
+      <textarea>${JSON.stringify(this.projects)}</textarea><br />
+      <label>assignments</label>
+      <textarea>${JSON.stringify(this.assignments)}</textarea><br />
       <label>profile</label>
       <textarea>${JSON.stringify(this.profile)}</textarea><br />
       <label>activity</label>
@@ -254,10 +274,12 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
    * @returns {arr} shuffled array of x items
    */
   draw(arr = [], min = 0, max = min) {
-    return this.shuffle(arr).slice(
-      0,
-      Math.min(0, min + Math.floor(Math.random() * (max - min)))
-    );
+    let range = max-min,
+      rand = Math.random() * range,
+      offset = Math.floor(rand),
+      len = min + offset,
+      slice = Math.max(0,len);
+    return this.shuffle(arr).slice(0,slice);
   }
   /**
    * make submission assets based on topic and type
@@ -266,6 +288,7 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
    */
   makeAssets(topic = "any", type) {
     if (type === "body") {
+      console.log("body",`${this.draw(this.sentences, 4, 10).join(". ")}.`);
       return `${this.draw(this.sentences, 4, 10).join(". ")}.`;
     } else {
       let times = 1 + Math.floor(Math.random() * 7),
@@ -340,6 +363,7 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
    * @returns {object} comment data
    */
   makeComment(id, submissionId, userId, created) {
+    console.log('makeComment',this.draw(this.sentences, 1, 4),`${this.draw(this.sentences, 1, 4).join(" ")}`);
     let assignmentId = this.submissions[submissionId].assignmentId,
       comment = {
         id: id,
@@ -570,22 +594,6 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
    */
   refreshData() {
     this.resetData();
-    /* lorem ipsum sentence list */
-    this.sentences = this.paragraphs
-      .map(p => p.split(/[\.\?\!]+\s+/))
-      .flat()
-      .map(
-        s => `${s}${this.randomItem(".", ".", ".", ".", "?", "?", "?", "!")}`
-      );
-    /* lorem ipsum word list */
-    this.words = [
-      ...new Set(
-        this.paragraphs
-          .map(p => p.split(/\W+/))
-          .flat()
-          .map(w => w.toLowerCase())
-      )
-    ];
     /* total weeks to complete all assgnments */
     this.weeks = Object.keys(this.projects || {})
       .map(i => this.projects[i].assignments)
@@ -728,11 +736,9 @@ ${JSON.stringify(this.sortDates(this.toArray(this.submissions)))}</textarea
     this.instructors = {};
     this.portfolios = {};
     this.replies = {};
-    this.sentences = [];
     this.students = {};
     this.submissions = {};
     this.profile = {};
-    this.words = [];
   }
   /**
    * gets shuffled array

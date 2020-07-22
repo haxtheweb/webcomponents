@@ -12,6 +12,7 @@ import "./lib/elmsln-studio-link.js";
 import "./lib/elmsln-studio-button.js";
 import "./lib/elmsln-studio-dashboard.js";
 import "./lib/elmsln-studio-submissions.js";
+import "./lib/elmsln-studio-assignments.js";
 import "./lib/elmsln-studio-portfolio.js";
 /**
  * `elmsln-studio`
@@ -49,6 +50,12 @@ class ElmslnStudio extends router(
         url="${this.activitySource}"
         handle-as="json"
         @response="${this._activityLoaded}"
+      ></iron-ajax>
+      <iron-ajax
+        auto
+        url="${this.projectsSource}"
+        handle-as="json"
+        @response="${this._projectsLoaded}"
       ></iron-ajax>
       <iron-ajax
         auto
@@ -92,6 +99,7 @@ class ElmslnStudio extends router(
       <br />
       <elmsln-studio-main active-route="${this.route}">
         <elmsln-studio-dashboard
+          ?demo-mode="${this.demoMode}"
           route="dashboard"
           .profile="${this.profile || {}}"
           .activity="${this.activity || []}"
@@ -99,6 +107,7 @@ class ElmslnStudio extends router(
         >
         </elmsln-studio-dashboard>
         <elmsln-studio-submissions
+          ?demo-mode="${this.demoMode}"
           route="submissions"
           .submissions="${this.submissions}"
           .comments="${Object.keys(this.discussion || {})
@@ -111,6 +120,7 @@ class ElmslnStudio extends router(
         >
         </elmsln-studio-submissions>
         <elmsln-studio-portfolio
+          ?demo-mode="${this.demoMode}"
           route="portfolios"
           .portfolio="${this._filterBy(
             this.portfolios,
@@ -121,16 +131,25 @@ class ElmslnStudio extends router(
             this.discussion,
             this.query.submission
           )}"
+          ?sort-latest="${this.query.sort === 'latest'}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
         >
         </elmsln-studio-portfolio>
+        <elmsln-studio-assignments
+          ?demo-mode="${this.demoMode}"
+          route="assignments"
+          .projects="${this.projects || {} }"
+          .assignments="${this.assignments || {} }"
+        >
+        </elmsln-studio-assignments>
       </elmsln-studio-main>
     `;
   }
 
   static get properties() {
     return {
+      ...super.properties,
       activity: { type: Array },
       activitySource: {
         type: String,
@@ -154,6 +173,12 @@ class ElmslnStudio extends router(
         type: String,
         reflect: true,
         attribute: "profile-source"
+      },
+      projects: { type: Array },
+      projectsSource: {
+        type: String,
+        reflect: true,
+        attribute: "projects-source"
       },
       sourcePath: {
         type: String,
@@ -184,6 +209,10 @@ class ElmslnStudio extends router(
         pattern: "portfolios/:portfolio"
       },
       {
+        name: "assignments",
+        pattern: "assignments"
+      },
+      {
         name: "dashboard",
         pattern: "*",
         data: { title: "Home" }
@@ -200,12 +229,14 @@ class ElmslnStudio extends router(
     this.activity = [];
     this.discussion = [];
     this.portfolios = {};
+    this.projects = {};
     this.profile = {};
     this.submissions = [];
     this.route = "";
     this.params = {};
     this.query = {};
     this.data = {};
+    console.log(super.properties);
   }
 
   router(route, params, query, data) {
@@ -234,6 +265,10 @@ class ElmslnStudio extends router(
   _profileLoaded(e) {
     console.log("_profileLoaded", e.detail.__data.response);
     this.profile = e.detail.__data.response;
+  }
+  _projectsLoaded(e) {
+    console.log("_projectsLoaded", e.detail.__data.response);
+    this.projects = e.detail.__data.response;
   }
   _activityLoaded(e) {
     console.log("_activityLoaded", e.detail.__data.response);

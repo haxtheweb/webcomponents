@@ -12,14 +12,34 @@ import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
 const ElmslnStudioUtilities = function(SuperClass) {
   return class extends SuperClass {
+
+    // properties available to the custom element for data binding
+    static get properties() {
+      return {
+        ...super.properties,
+        demoMode: {
+          type: Boolean,
+          attribute: "demo-mode", 
+          reflect: true
+        }
+      };
+    }
+    constructor() {
+      super();
+      this.demoMode = false;
+    }
     /**
      * sorts array by most recent (or by oldest)
      * @param {array} arr array
      * @param {boolean} sort by most recent? (default is true)
      * @returns {arr} sorted array
      */
-    sortDates(arr, recent = true) {
-      return arr.sort((a, b) => (recent ? b.date - a.date : a.date - b.date));
+    sortDates(arr, oldest = false) {
+      return arr.sort((a, b) => {
+        let aa = typeof a.date === "string" ? Date.parse(a.date) : a.date,
+          bb = typeof b.date === "string" ? Date.parse(b.date) : b.date;
+        return !oldest ? bb - aa : aa - bb;
+      });
     }
     /**
      * gets date x days from start date

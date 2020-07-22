@@ -248,6 +248,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   // render function
   render() {
     return html`
+      <h1 class="sr-only">Submissions</h1>
       <div class="filters">
         <simple-fields-field
           inline
@@ -341,7 +342,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     href="${s.link}&comment=true"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
-                    Discussion
+                    Discussion${!s.feedback || s.feedback.length < 1 ? `` : `: ${s.feedback.length}`}
                   </elmsln-studio-link>
                   <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
