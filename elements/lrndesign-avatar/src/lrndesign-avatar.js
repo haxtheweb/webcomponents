@@ -31,6 +31,7 @@ class LrndesignAvatar extends SimpleColors {
   // life cycle
   constructor() {
     super();
+    this.allowGrey = false;
     this.dark = false;
     this.twoChars = false;
     this.jdenticon = false;
@@ -39,7 +40,7 @@ class LrndesignAvatar extends SimpleColors {
 
   _getAccentColor() {
     // legacy API bridge
-    if (this.colors && (!this.accentColor || this.accentColor === "grey")) {
+    if (this.colors && !this.allowGrey && (!this.accentColor || this.accentColor === "grey")) {
       let color = (this.color || "").replace("-text", "");
       if (color && this.colors[color]) {
         this.accentColor = color;

@@ -1,9 +1,24 @@
 {
+  /** 
+   * allow grey instead of accent color, default selects a color
+   */
+  "allowGrey": {
+    "type": "Boolean",
+    "attribute": "allow-grey"
+  },
   /**
    * optional iron-icon
    */
   "icon": {
     "type": "String"
+  },
+  /** 
+   * invert colors
+   */
+  "invert": {
+    "type": "Boolean",
+    "attribute": "invert",
+    "reflect": true
   },
   /**
    * text to use for avatar
