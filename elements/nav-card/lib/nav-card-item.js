@@ -55,7 +55,7 @@ class NavCardItem extends LitElement {
         type: String,
         attribute: "accent-color"
       },
-      /** 
+      /**
        * allow grey instead of accent color, default selects a color
        */
       allowGrey: {
@@ -177,7 +177,8 @@ class NavCardItem extends LitElement {
           {
             property: "allowGrey",
             title: "Allow Grey",
-            description: "Allows grey if set. Otherwise a color will be assigned.",
+            description:
+              "Allows grey if set. Otherwise a color will be assigned.",
             inputMethod: "boolean"
           },
           {
@@ -192,7 +193,7 @@ class NavCardItem extends LitElement {
             title: "Invert",
             description: "Inverts icon coloring.",
             inputMethod: "boolean"
-          },
+          }
         ]
       }
     };
@@ -284,7 +285,8 @@ class NavCardItem extends LitElement {
             var(--nav-card-item-avatar-size, 36px)
           );
           --lrndesign-avatar-border-radius: var(
-            --nav-card-item-avatar-border-radius, 50%
+            --nav-card-item-avatar-border-radius,
+            50%
           );
         }
         iron-icon {
@@ -397,13 +399,16 @@ class NavCardItem extends LitElement {
    */
   _validURL(str) {
     console.log();
-    let pattern = new RegExp('^((https?:)?\\/\\/)?'+ // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-      '(data:image)?'+ // base64 image
-      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    let pattern = new RegExp(
+      "^((https?:)?\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(data:image)?" + // base64 image
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
     return !!pattern.test(str);
   }
 }

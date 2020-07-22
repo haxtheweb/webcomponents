@@ -1,5 +1,5 @@
 {
-  /** 
+  /**
    * allow grey instead of accent color, default selects a color
    */
   "allowGrey": {
@@ -12,7 +12,7 @@
   "icon": {
     "type": "String"
   },
-  /** 
+  /**
    * invert colors
    */
   "invert": {
