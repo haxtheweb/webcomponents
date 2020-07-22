@@ -86,34 +86,37 @@ export const Hax = () => {
     </lrndesign-gallery>
 `,
     hax = utils.makeElementFromClass(
-    HAX,
-    {
-      elementAlign: "right",
-      offsetMargin: "45px 0px 0px 0px",
-      appStore: `{\"url\": \"${new URL(`./demo/appstore.json`,import.meta.url)}\"}`,
-      emptyslot: html,
-      "--hax-base-styles-h1-font-size": "160%",
-      "--hax-base-styles-h2-font-size": "150%",
-      "--hax-base-styles-h3-font-size": "140%",
-      "--hax-base-styles-h4-font-size": "130%",
-      "--hax-base-styles-h5-font-size": "120%",
-      "--hax-base-styles-h6-font-size": "110%"
-    },
-    [
-      {property: "elementAlign", title: "Alignment of Hax-Tray" },
-      {property: "offsetMargin", title: "Offset of Hax-Tray" },
-      {property: "appStore", title: "Path to app-store JSON" },
-      {slot: "", title: "Editable HTML Content" },
-      {css: "--hax-base-styles-h1-font-size" },
-      {css: "--hax-base-styles-h2-font-size" },
-      {css: "--hax-base-styles-h3-font-size" },
-      {css: "--hax-base-styles-h4-font-size" },
-      {css: "--hax-base-styles-h5-font-size" },
-      {css: "--hax-base-styles-h6-font-size" }
-    ],
-    [],
-    true
-  );
+      HAX,
+      {
+        elementAlign: "right",
+        offsetMargin: "45px 0px 0px 0px",
+        appStore: `{\"url\": \"${new URL(
+          `./demo/appstore.json`,
+          import.meta.url
+        )}\"}`,
+        emptyslot: html,
+        "--hax-base-styles-h1-font-size": "160%",
+        "--hax-base-styles-h2-font-size": "150%",
+        "--hax-base-styles-h3-font-size": "140%",
+        "--hax-base-styles-h4-font-size": "130%",
+        "--hax-base-styles-h5-font-size": "120%",
+        "--hax-base-styles-h6-font-size": "110%"
+      },
+      [
+        { property: "elementAlign", title: "Alignment of Hax-Tray" },
+        { property: "offsetMargin", title: "Offset of Hax-Tray" },
+        { property: "appStore", title: "Path to app-store JSON" },
+        { slot: "", title: "Editable HTML Content" },
+        { css: "--hax-base-styles-h1-font-size" },
+        { css: "--hax-base-styles-h2-font-size" },
+        { css: "--hax-base-styles-h3-font-size" },
+        { css: "--hax-base-styles-h4-font-size" },
+        { css: "--hax-base-styles-h5-font-size" },
+        { css: "--hax-base-styles-h6-font-size" }
+      ],
+      [],
+      true
+    );
   return utils.getDemo(`<div style="max-width:1000px;margin:0 auto;">
   ${hax}
 </div>`);

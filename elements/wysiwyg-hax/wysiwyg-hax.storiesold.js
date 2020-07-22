@@ -18,8 +18,7 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const HaxAsWysiwyg = () => {
-  let 
-    html = `
+  let html = `
     <h1>This is HAX</h1>
     <p>Click the <strong>Edit Content</strong> button to edit this page.</p>
     <h2>Accent Card</h2>
@@ -41,42 +40,45 @@ export const HaxAsWysiwyg = () => {
     </a11y-media-player>
 `,
     hax = utils.makeElementFromClass(
-    WysiwygHax,
-    {
-      fieldName: 'content',
-      fieldId: 'content',
-      openDefault: true,
-      elementAlign: "right",
-      syncBody: true,
-      fieldClass: 'coolClassName',
-      appStoreConnection: `{\"url\": \"${new URL(`./demo/sample-store.json`,import.meta.url)}\"}`,
-      emptyslot: `<template>${html}</template>`,
-      "--hax-base-styles-h1-font-size": "160%",
-      "--hax-base-styles-h2-font-size": "150%",
-      "--hax-base-styles-h3-font-size": "140%",
-      "--hax-base-styles-h4-font-size": "130%",
-      "--hax-base-styles-h5-font-size": "120%",
-      "--hax-base-styles-h6-font-size": "110%"
-    },
-    [
-      {property: "appStoreConnection", title: "Path to app-store JSON" },
-      {slot: "", title: "Editable HTML Content" },
-      {property: "fieldId", title: "textarea  Element's id" },
-      {property: "fieldName", title: "textarea  Element's name" },
-      {property: "elementAlign", title: "Alignment of Hax-Tray" },
-      {property: "offsetMargin", title: "Offset of Hax-Tray" },
-      {property: "openDefault" },
-      {property: "syncBody" },
-      {css: "--hax-base-styles-h1-font-size" },
-      {css: "--hax-base-styles-h2-font-size" },
-      {css: "--hax-base-styles-h3-font-size" },
-      {css: "--hax-base-styles-h4-font-size" },
-      {css: "--hax-base-styles-h5-font-size" },
-      {css: "--hax-base-styles-h6-font-size" }
-    ],
-    [],
-    true
-  );
+      WysiwygHax,
+      {
+        fieldName: "content",
+        fieldId: "content",
+        openDefault: true,
+        elementAlign: "right",
+        syncBody: true,
+        fieldClass: "coolClassName",
+        appStoreConnection: `{\"url\": \"${new URL(
+          `./demo/sample-store.json`,
+          import.meta.url
+        )}\"}`,
+        emptyslot: `<template>${html}</template>`,
+        "--hax-base-styles-h1-font-size": "160%",
+        "--hax-base-styles-h2-font-size": "150%",
+        "--hax-base-styles-h3-font-size": "140%",
+        "--hax-base-styles-h4-font-size": "130%",
+        "--hax-base-styles-h5-font-size": "120%",
+        "--hax-base-styles-h6-font-size": "110%"
+      },
+      [
+        { property: "appStoreConnection", title: "Path to app-store JSON" },
+        { slot: "", title: "Editable HTML Content" },
+        { property: "fieldId", title: "textarea  Element's id" },
+        { property: "fieldName", title: "textarea  Element's name" },
+        { property: "elementAlign", title: "Alignment of Hax-Tray" },
+        { property: "offsetMargin", title: "Offset of Hax-Tray" },
+        { property: "openDefault" },
+        { property: "syncBody" },
+        { css: "--hax-base-styles-h1-font-size" },
+        { css: "--hax-base-styles-h2-font-size" },
+        { css: "--hax-base-styles-h3-font-size" },
+        { css: "--hax-base-styles-h4-font-size" },
+        { css: "--hax-base-styles-h5-font-size" },
+        { css: "--hax-base-styles-h6-font-size" }
+      ],
+      [],
+      true
+    );
   return utils.getDemo(
     `${hax}
 <textarea id="content" name="content" hidden></textarea>`
