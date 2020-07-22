@@ -1079,15 +1079,17 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleManifestResponse(e) {
     // trigger a refresh of the data in node
-    this.dispatchEvent(new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "Site details saved, reloading to reflect changes!",
-        duration: 3000
-      }
-    }));
+    this.dispatchEvent(
+      new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: "Site details saved, reloading to reflect changes!",
+          duration: 3000
+        }
+      })
+    );
     store.dashboardOpened = false;
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
