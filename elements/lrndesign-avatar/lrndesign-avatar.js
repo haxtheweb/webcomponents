@@ -41,6 +41,7 @@ paper-avatar {
   --paper-avatar-text-color: var(--simple-colors-default-theme-grey-1, #fff);
   max-height: var(--lrndesign-avatar-width, 40px);
 }
+
 :host([invert]) paper-avatar{
   --paper-avatar-color: var(--simple-colors-default-theme-grey-1, #fff);
   --paper-avatar-text-color: var(--simple-colors-default-theme-accent-8, #444);
@@ -173,7 +174,7 @@ paper-avatar {
   
   ...super.properties,
   
-  /** 
+  /**
    * allow grey instead of accent color, default selects a color
    */
   "allowGrey": {
@@ -186,7 +187,7 @@ paper-avatar {
   "icon": {
     "type": String
   },
-  /** 
+  /**
    * invert colors
    */
   "invert": {
@@ -249,7 +250,11 @@ paper-avatar {
 
   _getAccentColor() {
     // legacy API bridge
-    if (this.colors && !this.allowGrey && (!this.accentColor || this.accentColor === "grey")) {
+    if (
+      this.colors &&
+      !this.allowGrey &&
+      (!this.accentColor || this.accentColor === "grey")
+    ) {
       let color = (this.color || "").replace("-text", "");
       if (color && this.colors[color]) {
         this.accentColor = color;
