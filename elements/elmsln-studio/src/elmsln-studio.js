@@ -140,7 +140,7 @@ class ElmslnStudio extends router(
           ?demo-mode="${this.demoMode}"
           route="assignments"
           .projects="${this.projects || {} }"
-          .assignments="${this.assignments || {} }"
+          .profile="${this.profile || {} }"
         >
         </elmsln-studio-assignments>
       </elmsln-studio-main>

@@ -41,6 +41,8 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
         :host > * {
           width: 300px;
           margin: 0 var(--elmsln-studio-margin, 20px);
+          --lrndesign-avatar-border-radius: 0%;
+          --nav-card-item-avatar-width: 20px;
         }
       `
     ];
@@ -54,7 +56,6 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           flat
           no-border
           class="card secondary"
-          link-icon="chevron-right"
         >
           <span slot="heading">${this.projects[p].project}</span>
           <div slot="linklist">
@@ -70,33 +71,48 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   renderAssignment(assignment){
     console.log(assignment);
     return !assignment ? `` : html`
-      <nav-card-item>
+      <nav-card-item 
+        accent-color="${this._incomplete(assignment.id) ? "grey" : "green"}"  
+        allow-grey
+        avatar="${this._incomplete(assignment.id) ? "assignment" : "assignment-turned-in"}"
+        invert>
         <elmsln-studio-link
-          id="act-${assignment.assignmentId}"
-          aria-describedby="act-${assignment.assignmentId}-desc"
+          id="act-${assignment.id}"
+          aria-describedby="act-${assignment.id}-desc"
           slot="label"
           href="${assignment.link}"
         >
           ${assignment.assignment}
         </elmsln-studio-link>
-        <div id="act-${assignment.assignmentId}-desc" slot="description">
+        <div id="act-${assignment.id}-desc" slot="description">
           Due: ${this.dateFormat(assignment.date)}
+        </div>
+      </nav-card-item>
     `;
+  }
+
+  _incomplete(id){
+    console.log(id,this.profile.workDue,this.profile.workDue.filter(s=>s.id === id));
+    return this.profile && this.profile.workDue && this.profile.workDue.filter(s=>s.id === id).length > 0;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
-      assignments: {
+      projects: {
         type: Object
       },
+      profile: {
+        type: Object
+      }
     };
   }
 
   // life cycle
   constructor() {
     super();
+    this.profile = {};
     this.projects = {};
     this.tag = ElmslnStudioAssignments.tag;
   }
@@ -104,7 +120,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
     });
-    console.log('updated',this.assignments,this.projects)
+    console.log('updated',this.projects,this.profile);
   }
   // static get observedAttributes() {
   //   return [];
