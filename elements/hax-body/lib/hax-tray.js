@@ -608,7 +608,7 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
           </div>
         </div>
-        <a11y-collapse-group accordion>
+        <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
           <a11y-collapse
             id="addcollapse"
@@ -726,6 +726,7 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         break;
       case "insert-stax":
+        this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content-array", {
             bubbles: true,
@@ -753,6 +754,7 @@ class HaxTray extends winEventsElement(LitElement) {
           },
           content: content
         };
+        this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,
@@ -780,6 +782,7 @@ class HaxTray extends winEventsElement(LitElement) {
           properties,
           innerContent
         );
+        this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,
