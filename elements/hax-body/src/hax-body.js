@@ -1598,7 +1598,7 @@ class HaxBody extends SimpleColors {
     } else {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
-      this.insertBefore(grid, node);
+      node.parentNode.insertBefore(grid, node);
       let col = "2";
       if (side == "right") {
         col = "1";
