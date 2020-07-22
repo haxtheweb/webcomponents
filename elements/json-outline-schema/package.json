@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.23",
+  "version": "2.6.24",
   "description": "JS based state management helper for the json outline schema spec",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.23",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.24",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

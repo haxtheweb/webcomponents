@@ -16,7 +16,7 @@
       "hax": "src/wc-autoload-hax.json"
     }
   },
-  "version": "2.6.16",
+  "version": "2.6.24",
   "description": "automatically load new tags in the dom",
   "repository": {
     "type": "git",
