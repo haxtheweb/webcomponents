@@ -180,7 +180,12 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
-    if (this.shadowRoot && e.detail && e.detail.value && e.detail.property === "gizmoList") {
+    if (
+      this.shadowRoot &&
+      e.detail &&
+      e.detail.value &&
+      e.detail.property === "gizmoList"
+    ) {
       this.resetBrowser();
     }
   }

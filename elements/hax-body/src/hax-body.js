@@ -2349,10 +2349,15 @@ class HaxBody extends SimpleColors {
               })
             );
             setTimeout(() => {
-              if (typeof this.activeNode.scrollIntoViewIfNeeded === "function") {
+              if (
+                typeof this.activeNode.scrollIntoViewIfNeeded === "function"
+              ) {
                 this.activeNode.scrollIntoViewIfNeeded(true);
               } else {
-                this.activeNode.scrollIntoView({ behavior: "smooth", inline: "center" });
+                this.activeNode.scrollIntoView({
+                  behavior: "smooth",
+                  inline: "center"
+                });
               }
               this.positionContextMenus();
             }, 250);

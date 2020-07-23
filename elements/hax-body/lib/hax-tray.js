@@ -614,10 +614,7 @@ class HaxTray extends winEventsElement(LitElement) {
         </div>
         <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse
-            id="addcollapse"
-            accordion
-          >
+          <a11y-collapse id="addcollapse" accordion>
             <div slot="heading">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
@@ -640,10 +637,7 @@ class HaxTray extends winEventsElement(LitElement) {
               </simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse
-            id="searchapps"
-            accordion
-          >
+          <a11y-collapse id="searchapps" accordion>
             <div slot="heading">
               <iron-icon icon="icons:search"></iron-icon> Search
             </div>

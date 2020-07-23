@@ -2756,7 +2756,10 @@ window.HaxStore.getSelection = () => {
   // try and obtain the selection from the nearest shadow
   // which would give us the selection object when running native ShadowDOM
   // with fallback support for the entire window which would imply Shady
-  if (window.HaxStore.instance.activeHaxBody && window.HaxStore.instance.activeHaxBody.parentNode) {
+  if (
+    window.HaxStore.instance.activeHaxBody &&
+    window.HaxStore.instance.activeHaxBody.parentNode
+  ) {
     // native API
     if (window.HaxStore.instance.activeHaxBody.parentNode.getSelection) {
       return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();

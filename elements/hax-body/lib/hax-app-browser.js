@@ -132,14 +132,22 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
       this.hasActive = false;
     }
   }
-    /**
+  /**
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
-    if (this.shadowRoot && e.detail && e.detail.value && e.detail.property === "appList") {
+    if (
+      this.shadowRoot &&
+      e.detail &&
+      e.detail.value &&
+      e.detail.property === "appList"
+    ) {
       this.resetBrowser();
-    }
-    else if (e.detail && e.detail.value && e.detail.property === "activeApp") {
+    } else if (
+      e.detail &&
+      e.detail.value &&
+      e.detail.property === "activeApp"
+    ) {
       this.activeApp = e.detail.value;
     }
   }
