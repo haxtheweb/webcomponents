@@ -406,15 +406,14 @@ class HaxBody extends SimpleColors {
    */
   __manageFakeEndCap(create = true) {
     if (create && !this.__fakeEndCap) {
-      let fake = document.createElement('fake-hax-body-end');
+      let fake = document.createElement("fake-hax-body-end");
       fake.style.width = "100%";
       fake.style.height = "20px";
       fake.style.display = "block";
-      fake.classList.add('hax-move');
+      fake.classList.add("hax-move");
       this.__fakeEndCap = fake;
       this.appendChild(this.__fakeEndCap);
-    }
-    else if (!create && this.__fakeEndCap) {
+    } else if (!create && this.__fakeEndCap) {
       this.__fakeEndCap.remove();
       this.__fakeEndCap = null;
     }
@@ -2364,8 +2363,7 @@ class HaxBody extends SimpleColors {
               this.activeNode.parentNode.tagName === "GRID-PLATE"
             ) {
               this.activeContainerNode = this.activeNode.parentNode;
-            }
-            else {
+            } else {
               this.activeContainerNode = this.activeNode;
             }
             window.HaxStore.write("activeNode", this.activeNode, this);
