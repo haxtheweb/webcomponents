@@ -214,6 +214,7 @@ class PlaceHolder extends SimpleColors {
       this.dragOver = false;
       e.preventDefault();
       e.stopPropagation();
+      e.stopImmediatePropagation();
       this.classList.remove("dragover");
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
@@ -234,52 +235,6 @@ class PlaceHolder extends SimpleColors {
       } catch (e) {}
     });
     this.addEventListener("dblclick", this.fireReplaceEvent.bind(this));
-  }
-  /**
-   * HTMLElement
-   */
-  disconnectedCallback() {
-    this.removeEventListener("dragover", function(e) {
-      this.dragOver = true;
-      e.preventDefault();
-      e.stopPropagation();
-      this.classList.add("dragover");
-    });
-
-    this.removeEventListener("dragleave", function(e) {
-      this.dragOver = false;
-      e.preventDefault();
-      e.stopPropagation();
-      this.classList.remove("dragover");
-    });
-    // self bind a drop event enough though something else
-    // will need to step in and do something with this.
-    // We are just making sure that this doesn't redirect the browser.
-    this.removeEventListener("drop", function(e) {
-      this.dragOver = false;
-      e.preventDefault();
-      e.stopPropagation();
-      this.classList.remove("dragover");
-      // this helps ensure that what gets drag and dropped is a file
-      // this prevents issues with selecting and dragging text (which triggers drag/drop)
-      // as well as compatibility with things that are legit in a draggable state
-      try {
-        if (e.dataTransfer.items[0].kind === "file") {
-          e.placeHolderElement = this;
-          // fire this specialized event up so things like HAX can intercept
-          this.dispatchEvent(
-            new CustomEvent("place-holder-file-drop", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: e
-            })
-          );
-        }
-      } catch (e) {}
-    });
-    this.removeEventListener("dblclick", this.fireReplaceEvent.bind(this));
-    super.disconnectedCallback();
   }
   /**
    * HAX

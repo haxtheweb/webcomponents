@@ -53,236 +53,221 @@ Custom property | Description | Default
  * @demo demo/index.html
  */
 class A11yDetails extends LitElement {
-  //styles function
-  static get styles() {
-    return [
-      css`
-        :host,
-        details {
-          display: inline-flex;
-          overflow: visible;
-        }
+  
+      //styles function
+      static get styles() {
+        return  [
+          
+          css`
+    :host,
+details {
+  display: inline-flex;
+  overflow: visible;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        summary {
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: var(--a11y-details-summary-fontSize, 0.8em);
-          color: var(--a11y-details-summary-color, #000);
-          background-color: var(--a11y-details-summary-backgroundColor, #fff);
-          border-color: var(--a11y-details-summary-borderColor, #000);
-          border-width: var(--a11y-details-summary-borderWidth, 1px);
-          border-style: var(--a11y-details-summary-borderStyle, solid);
-          border-radius: var(--a11y-details-summary-borderRadius, 3px);
-          padding: var(--a11y-details-summary-padding, 0.5em);
-        }
+summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--a11y-details-summary-fontSize, 0.8em);
+  color: var(--a11y-details-summary-color, #000);
+  background-color: var(--a11y-details-summary-backgroundColor, #fff);
+  border-color: var(--a11y-details-summary-borderColor, #000);
+  border-width: var(--a11y-details-summary-borderWidth, 1px);
+  border-style: var(--a11y-details-summary-borderStyle, solid);
+  border-radius: var(--a11y-details-summary-borderRadius, 3px);
+  padding: var(--a11y-details-summary-padding, 0.5em);
+}
 
-        summary:focus {
-          outline: var(--a11y-details-summary-focus-outline, 1px solid #006688);
-          color: var(
-            --a11y-details-summary-focus-color,
-            var(--a11y-details-summary-color, #000)
-          );
-          background-color: var(
-            --a11y-details-summary-focus-backgroundColor,
-            var(--a11y-details-summary-backgroundColor, #fff)
-          );
-          border-color: var(
-            --a11y-details-summary-focus-borderColor,
-            var(--a11y-details-borderColor, #000)
-          );
-          border-width: var(
-            --a11y-details-summary-focus-borderWidth,
-            var(--a11y-details-summary-borderWidth, 1px)
-          );
-          border-style: var(
-            --a11y-details-summary-focus-borderStyle,
-            var(--a11y-details-summary-borderStyle, dotted)
-          );
-          border-radius: var(
-            --a11y-details-summary-focus-borderRadius,
-            var(--a11y-details-summary-borderRadius, 3px)
-          );
-        }
+summary:focus {
+  outline: var(--a11y-details-summary-focus-outline,1px solid #006688);
+  color: var(--a11y-details-summary-focus-color, var(--a11y-details-summary-color,#000));
+  background-color: var(--a11y-details-summary-focus-backgroundColor, var(--a11y-details-summary-backgroundColor,#fff));
+  border-color: var(--a11y-details-summary-focus-borderColor, var(--a11y-details-borderColor,#000));
+  border-width: var(--a11y-details-summary-focus-borderWidth, var(--a11y-details-summary-borderWidth,1px));
+  border-style: var(--a11y-details-summary-focus-borderStyle, var(--a11y-details-summary-borderStyle, dotted));
+  border-radius: var(--a11y-details-summary-focus-borderRadius, var(--a11y-details-summary-borderRadius, 3px));
+}
 
-        #details-inner {
-          position: absolute;
-          display: none;
-          max-height: 0px;
-          transition: all 0.7s ease-in-out 0.2s;
-          overflow-y: auto;
-          padding: 0;
-          font-size: var(--a11y-details-fontSize, 0.8em);
-          color: var(--a11y-details-color, #000);
-          background-color: var(
-            --a11y-details-backgroundColor,
-            rgba(255, 255, 255, 0.8)
-          );
-          border-color: var(--a11y-details-borderColor, #000);
-          border-width: var(--a11y-details-borderWidth, 1px);
-          border-style: var(--a11y-details-borderStyle, solid);
-          border-radius: var(--a11y-details-borderRadius, 3px);
-        }
+#details-inner {
+  position: absolute;
+  display: none;
+  max-height: 0px;
+  transition: all 0.7s ease-in-out 0.2s;
+  overflow-y: auto;
+  padding: 0;
+  font-size: var(--a11y-details-fontSize, 0.8em);
+  color: var(--a11y-details-color,#000);
+  background-color: var(--a11y-details-backgroundColor, rgba(255,255,255,0.8));
+  border-color: var(--a11y-details-borderColor,#000);
+  border-width: var(--a11y-details-borderWidth,1px);
+  border-style: var(--a11y-details-borderStyle, solid);
+  border-radius: var(--a11y-details-borderRadius, 3px);
+}
 
-        ::slotted(*:not[slot="summary"]) {
-          display: none;
-        }
+::slotted(*:not[slot=summary]) {
+  display: none;
+}
 
-        .close-text,
-        details[open] .open-text,
-        details:not([open]) .has-open-text,
-        details[open] .has-close-text {
-          display: none;
-        }
+.close-text,
+details[open] .open-text,
+details:not([open]) .has-open-text,
+details[open] .has-close-text {
+  display: none;
+}
 
-        details[open] .close-text {
-          display: inline;
-        }
+details[open] .close-text {
+  display: inline;
+}
 
-        ::slotted([slot="details"]) {
-          display: block;
-          height: auto;
-          max-height: 0;
-          overflow: hidden;
-          transition: all 0.7s ease-in-out 0.2s;
-        }
+::slotted([slot="details"]) {
+  display: block;
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.7s ease-in-out 0.2s;
+}
 
-        details[open] ::slotted([slot="details"]) {
-          max-height: var(--a11y-details-maxHeight, 400px);
-          transition: all 0.7s ease-in-out 0.2s;
-        }
+details[open] ::slotted([slot="details"]) {
+  max-height: var(--a11y-details-maxHeight,400px);
+  transition: all 0.7s ease-in-out 0.2s;
+}
 
-        details[open] #details-inner {
-          z-index: 9999999999;
-          display: block;
-          left: 0;
-          padding: var(--a11y-details-padding, 0.5em);
-          max-height: var(--a11y-details-maxHeight, 400px);
-          padding: var(--a11y-details-padding, 0.5em);
-          transition: all 0.7s ease-in-out 0.2s;
-        }
-      `
-    ];
-  }
+details[open] #details-inner {
+  z-index: 9999999999;
+  display: block;
+  left: 0;
+  padding: var(--a11y-details-padding, 0.5em);
+  max-height: var(--a11y-details-maxHeight,400px);
+  padding: var(--a11y-details-padding, 0.5em);
+  transition: all 0.7s ease-in-out 0.2s;
+}
+          `
+        ];
+      }
+    
+    // render function
+      render() {
+        return html`
+    
+    <details id="details">
+  <summary 
+    @click="${this._handleClick}"  
+    @keyup="${this._handleKeyup}" 
+    tabindex="0"
+    role="button">
+    <span class="open-text">${this.openText}</span>
+    <span class="close-text">${this.closeText}</span>
+    <slot name="summary" class="${this.summaryClasses}"></slot>
+  </summary>
+  <div id="details-inner"><slot name="details"></slot></div>
+</details>
+<slot hidden></slot>`;
+      }
 
-  // render function
-  render() {
-    return html`
-      <details id="details">
-        <summary
-          @click="${this._handleClick}"
-          @keyup="${this._handleKeyup}"
-          tabindex="0"
-          role="button"
-        >
-          <span class="open-text">${this.openText}</span>
-          <span class="close-text">${this.closeText}</span>
-          <slot name="summary" class="${this.summaryClasses}"></slot>
-        </summary>
-        <div id="details-inner"><slot name="details"></slot></div>
-      </details>
-      <slot hidden></slot>
-    `;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Accessible Details Button",
-        description:
-          "Accessible progressive disclosure with detail and summary",
-        icon: "icons:android",
-        color: "green",
-        groups: ["11"],
-        handles: [
-          {
-            type: ""
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+        // haxProperty definition
+        static get haxProperties() {
+          return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Accessible Details Button",
+    "description": "Accessible progressive disclosure with detail and summary",
+    "icon": "icons:arrow-drop-down",
+    "color": "grey",
+    "groups": ["11"],
+    "handles": [
+      {
+        "type": ""
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "slot": "summary",
+        "title": "Button",
+        "description": "Summary of the content that if concealed, eg. \"info\", \"medatadata\", etc. ",
+        "inputMethod": "code-editor"
       },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            slot: "summary",
-            title: "Button",
-            description:
-              'Summary of the content that if concealed, eg. "info", "medatadata", etc. ',
-            inputMethod: "code-editor"
-          },
-          {
-            slot: "details",
-            title: "Content",
-            description: "Detailed content that can be hidden or shown",
-            inputMethod: "code-editor"
-          }
-        ],
-        advanced: [
-          {
-            property: "openText",
-            title: "Optional change button text when open",
-            inputMethod: "textfield",
-            required: false
-          },
-          {
-            property: "closeText",
-            title: "Optional change button text when closed",
-            inputMethod: "textfield",
-            required: false
-          }
-        ]
+      {
+        "slot": "details",
+        "title": "Decription",
+        "description": "Detailed description that can be hidden or shown",
+        "inputMethod": "code-editor"
       },
-      demoSchema: [
-        {
-          tag: "a11y-details",
-          properties: {
-            openText: "Show Aenean",
-            closeText: "Hide Aenean",
-            position: "bottom"
-          },
-          content:
-            '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>'
+      {
+        "slot": "",
+        "title": "Decription Button",
+        "description": "Default for button that shows/hides description text, eg. \"info\", \"medatadata\", etc. ",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "openText",
+        "title": "Optional summary text when details are open",
+        "inputMethod": "textfield",
+        "required": false
+      },
+      {
+        "property": "closeText",
+        "title": "Optional summary text when details are closed",
+        "inputMethod": "textfield",
+        "required": false
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "a11y-details",
+      "properties": {
+        "openText": "Show Aenean",
+        "closeText": "Hide Aenean"
+      },
+      "content": "<div slot=\"summary\">Show Aenean</div>\n<div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>"
+    }
+  ]
+}
+;
         }
-      ]
-    };
-  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * optional text for when summary button is open,
-       * eg. "Hide", "Less" or "Close"
-       */
-      closeText: {
-        type: String,
-        attribute: "close-text",
-        reflect: true
-      },
-      /**
-       * optional text for when summary button is closed,
-       * eg. "Show", "More" or "Open"
-       */
-      openText: {
-        type: String,
-        attribute: "open-text",
-        reflect: true
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * optional text for when summary button is open,
+   * eg. "Hide", "Less" or "Close"
+   */
+  "closeText": {
+    "type": String,
+    "attribute": "close-text",
+    "reflect": true
+  },
+  /**
+   * optional text for when summary button is closed,
+   * eg. "Show", "More" or "Open"
+   */
+  "openText": {
+    "type": String,
+    "attribute": "open-text",
+    "reflect": true
+  }
+}
+;
   }
 
   /**

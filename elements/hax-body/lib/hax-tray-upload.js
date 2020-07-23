@@ -1,85 +1,11 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 class HaxTrayUpload extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
-        :host {
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-          color: var(--simple-fields-color, black);
-          background-color: var(--simple-fields-background-color, #fff);
-        }
-        vaadin-upload {
-          --lumo-font-family: var(--simple-fields-font-family, sans-serif);
-          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
-          --lumo-primary-font-color: var(--simple-fields-color, black);
-          --lumo-base-color: var(--simple-fields-background-color, #fff);
-          --lumo-primary-contrast-color: var(
-            --simple-fields-background-color,
-            #fff
-          );
-          --lumo-primary-color: var(--simple-fields-color, black);
-          --lumo-dark-primary-color: ar(--simple-fields-color, black);
-          --lumo-light-primary-color: var(--simple-fields-color, black);
-          --lumo-primary-text-color: var(--simple-fields-color, black);
-          --lumo-body-text-color: var(--simple-fields-color, black);
-          --lumo-header-text-color: var(--simple-fields-color, black);
-          --lumo-secondary-text-color: var(--simple-fields-color, black);
-          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
-          color: var(--simple-fields-color, black);
-          background-color: var(--simple-fields-background-color, #fff);
-          padding: 16px !important;
-          text-align: center;
-        }
-        vaadin-upload[dragover] {
-          border-color: var(
-            --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color)
-          );
-        }
-        vaadin-upload-file {
-          --disabled-text-color: var(--simple-fields-border-color, #999);
-        }
-        paper-button {
-          text-transform: none;
-          margin: 8px 0;
-          color: var(--simple-colors-default-theme-grey-12, #000);
-          background-color: var(--simple-colors-default-theme-grey-2, #eee);
-          border: 1px solid var(--simple-colors-default-theme-grey-3, #dddddd);
-          display: block;
-          text-align: center;
-        }
-        paper-button:active,
-        paper-button:focus,
-        paper-button:hover {
-          color: var(
-            --hax-tray-panel-accent-text,
-            var(--simple-colors-default-theme-grey-1, #fff)
-          );
-          background-color: var(
-            --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color)
-          );
-          border-color: var(
-            --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color)
-          );
-          transition: all 0.5ms ease-in-out;
-        }
-        .add-area-content-wrapper {
-          padding: 0 4px;
-        }
-        .add-url-area,
-        .add-upload-area {
-          margin: 0;
-        }
-        .url-description {
-          letter-spacing: 1px;
+        *[hidden] {
+          display: none;
         }
       `
     ];
@@ -99,80 +25,20 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop"
     };
-    setTimeout(() => {
-      import("@polymer/paper-button/paper-button.js");
-      import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
-      import("@vaadin/vaadin-upload/vaadin-upload.js");
-    }, 0);
   }
   /**
    * LitElement render
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
-          vaadin-upload {
-              color: #ffffff;
-              display: block;
-            }
-            --vaadin-upload-buttons-primary: {
-              display: block;
-              width: 100%;
-              flex: unset;
-              -webkit-flex: unset;
-            }
-            --vaadin-upload-button-add: {
-              color: #000000;
-              display: block;
-              flex: unset;
-              -webkit-flex: unset;
-              text-align: center;
-            }
-            --vaadin-upload-drop-label: {
-              color: #ffffff;
-              display: block;
-              padding: 8px;
-            }
-            --vaadin-upload-drop-label-dragover: {
-              color: #ffffff;
-            }
-            --vaadin-upload-file-list: {
-              padding: 8px;
-              margin: 0;
-              color: #ffffff;
-            }
-            --vaadin-upload-file: {
-              color: #ffffff;
-            }
-          }
-        </style>
-      </custom-style>
-      <div class="add-area-content-wrapper">
-        <div class="add-url-area">
-          <simple-fields-field
-            id="url"
-            label="URL"
-            type="url"
-            auto-validate=""
-          ></simple-fields-field>
-          <div class="url-description">
-            Add an existing resource / link
-          </div>
-        </div>
-        <div class="add-upload-area">
-          <vaadin-upload
-            @upload-before="${this._fileAboutToUpload}"
-            @upload-response="${this._fileUploadResponse}"
-            form-data-name="file-upload"
-            id="fileupload"
-          ></vaadin-upload>
-        </div>
-        <paper-button @click="${this.newAssetConfigure}" id="newassetconfigure"
-          >Configure</paper-button
-        >
-      </div>
+      <input type="text" id="url" hidden />
+      <vaadin-upload
+        @upload-before="${this._fileAboutToUpload}"
+        @upload-response="${this._fileUploadResponse}"
+        form-data-name="file-upload"
+        id="fileupload"
+        hidden
+      ></vaadin-upload>
     `;
   }
   /**
@@ -213,6 +79,14 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
         "Sorry, HAX doesn't know how to handle that type of link yet."
       );
     }
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    setTimeout(() => {
+      import("@vaadin/vaadin-upload/vaadin-upload.js");
+    }, 0);
   }
   /**
    * A file event was detected from a drag and drop in the interface, most likely

@@ -166,9 +166,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
   }
-  firstUpdated(changedProperties) {
-    this.resetBrowser();
-  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "activeApp") {
@@ -183,13 +180,17 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
+    if (this.shadowRoot && e.detail && e.detail.value && e.detail.property === "gizmoList") {
+      this.resetBrowser();
     }
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // probably not required but just to be safe
+    this.resetBrowser();
   }
 
   /**

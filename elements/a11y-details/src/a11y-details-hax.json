@@ -34,7 +34,7 @@
         "inputMethod": "code-editor"
       },
       {
-        "slot": "summary",
+        "slot": "",
         "title": "Decription Button",
         "description": "Default for button that shows/hides description text, eg. \"info\", \"medatadata\", etc. ",
         "inputMethod": "code-editor"

@@ -1167,11 +1167,6 @@ class HaxBody extends SimpleColors {
             newNode,
             this.activeContainerNode.nextElementSibling
           );
-        } else if (this.activeContainerNode.parentNode) {
-          this.activeContainerNode.parentNode.insertBefore(
-            newNode,
-            this.activeContainerNode
-          );
         } else if (this.activeNode.parentNode) {
           this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
         } else {
@@ -1596,8 +1591,11 @@ class HaxBody extends SimpleColors {
         }
       }
     } else {
+      // make a new grid plate, default to 2 col and disable
+      // responsive by default as this is what many will expect
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
+      grid.disableResponsive = true;
       node.parentNode.insertBefore(grid, node);
       let col = "2";
       if (side == "right") {
@@ -2305,7 +2303,7 @@ class HaxBody extends SimpleColors {
           if (
             (target &&
               target != null &&
-              target.removeAttribute &&
+              typeof target.removeAttribute === "function" &&
               typeof local !== typeof undefined &&
               target !== local &&
               target !== local.parentNode &&
@@ -2339,9 +2337,25 @@ class HaxBody extends SimpleColors {
               this.activeContainerNode,
               this
             );
+            // fire event saying that we dropped an item and gained
+            // focus which should prioritize certain actions over a
+            // normal focus shift
+            this.dispatchEvent(
+              new CustomEvent("hax-drop-focus-event", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this.activeNode
+              })
+            );
             setTimeout(() => {
+              if (typeof this.activeNode.scrollIntoViewIfNeeded === "function") {
+                this.activeNode.scrollIntoViewIfNeeded(true);
+              } else {
+                this.activeNode.scrollIntoView({ behavior: "smooth", inline: "center" });
+              }
               this.positionContextMenus();
-            }, 100);
+            }, 250);
           }
         }
       } catch (e) {
