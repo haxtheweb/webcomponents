@@ -131,7 +131,7 @@ class ElmslnStudio extends router(
             this.discussion,
             this.query.submission
           )}"
-          ?sort-latest="${this.query.sort === 'latest'}"
+          ?sort-latest="${this.query.sort === "latest"}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
         >
@@ -139,8 +139,8 @@ class ElmslnStudio extends router(
         <elmsln-studio-assignments
           ?demo-mode="${this.demoMode}"
           route="assignments"
-          .projects="${this.projects || {} }"
-          .profile="${this.profile || {} }"
+          .projects="${this.projects || {}}"
+          .profile="${this.profile || {}}"
         >
         </elmsln-studio-assignments>
       </elmsln-studio-main>
