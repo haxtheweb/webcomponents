@@ -292,6 +292,7 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
         <paper-icon-button
           .part="${this.editMode ? `edit-mode-active` : ``}"
           class="btn"
+          aria-label="Text settings"
           icon="editor:format-size"
           @click="${this.toggleUserStylesMenu}"
           id="haxcmsuserstylesmenupopover"

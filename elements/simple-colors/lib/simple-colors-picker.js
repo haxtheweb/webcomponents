@@ -46,7 +46,7 @@ class SimpleColorsPicker extends SimpleColors {
         @collapse="${this._handleCollapse}"
         @expand="${this._handleExpand}"
         @option-focus="${this._handleOptionFocus}"
-        .aria-labelledby="${this.ariaLabelledby}"
+        aria-labelledby="${this.ariaLabelledby}"
         .label="${this.label}"
         .options="${this.options}"
         .value="${this.value}"

@@ -625,6 +625,7 @@ class CleanOne extends HAXCMSThemeParts(
           <div id="site-search-input" role="search">
             <input
               type="text"
+              aria-label="Search site content"
               placeholder="Type to search"
               .value="${this.searchTerm}"
               id="search"

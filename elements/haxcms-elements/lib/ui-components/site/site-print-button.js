@@ -63,7 +63,7 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
         .id="btn${this.type}"
         icon="${this.icon}"
         @click="${this.print}"
-        .aria-title="${this.label}"
+        aria-label="${this.label}"
         ?disabled="${this.disabled}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       ></paper-icon-button>

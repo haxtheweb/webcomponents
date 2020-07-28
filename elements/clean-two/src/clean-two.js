@@ -158,7 +158,10 @@ class CleanTwo extends HAXCMSThemeParts(
           font-family: Content-font, Roboto, sans-serif;
           font-weight: 400;
           line-height: 1.625;
-          color: #9DAAB6;
+          color: #444444;
+        }
+        simple-datetime {
+          color: #444444;
         }
         site-menu-button div .bottom {
           font-size: 16px;
@@ -426,7 +429,7 @@ class CleanTwo extends HAXCMSThemeParts(
           display: block;
           padding: 0;
           font-size: 12px;
-          color: #888888;
+          color: #444444;
         }
         .footer-right {
           display: flex;
