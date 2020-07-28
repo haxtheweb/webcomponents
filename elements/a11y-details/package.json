@@ -25,7 +25,6 @@
   "main": "a11y-details.js",
   "module": "a11y-details.js",
   "umd": "a11y-details.umd.js",
-  "amd": "a11y-details.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-details/test/",
     "start": "yarn run dev",

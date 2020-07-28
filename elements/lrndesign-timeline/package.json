@@ -31,7 +31,6 @@
   "main": "lrndesign-timeline.js",
   "module": "lrndesign-timeline.js",
   "umd": "lrndesign-timeline.umd.js",
-  "amd": "lrndesign-timeline.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-timeline/test/",
     "start": "yarn run dev",

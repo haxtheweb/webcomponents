@@ -20,7 +20,6 @@
   "main": "a11y-figure.js",
   "module": "a11y-figure.js",
   "umd": "a11y-figure.umd.js",
-  "amd": "a11y-figure.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-figure/test/",
     "start": "yarn run dev",

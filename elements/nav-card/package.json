@@ -28,7 +28,6 @@
   "main": "nav-card.js",
   "module": "nav-card.js",
   "umd": "nav-card.umd.js",
-  "amd": "nav-card.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/nav-card/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "extensible-toolbar.js",
   "module": "extensible-toolbar.js",
   "umd": "extensible-toolbar.umd.js",
-  "amd": "extensible-toolbar.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/extensible-toolbar/test/",
     "start": "yarn run dev",

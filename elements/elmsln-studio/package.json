@@ -20,7 +20,6 @@
   "main": "elmsln-studio.js",
   "module": "elmsln-studio.js",
   "umd": "elmsln-studio.umd.js",
-  "amd": "elmsln-studio.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/elmsln-studio/test/",
     "start": "yarn run dev",

@@ -27,7 +27,6 @@
   "main": "git-corner.js",
   "module": "git-corner.js",
   "umd": "git-corner.umd.js",
-  "amd": "git-corner.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/git-corner/test/",
     "start": "yarn run dev",

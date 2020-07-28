@@ -27,7 +27,6 @@
   "main": "figure-label.js",
   "module": "figure-label.js",
   "umd": "figure-label.umd.js",
-  "amd": "figure-label.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/figure-label/test/",
     "start": "yarn run dev",
