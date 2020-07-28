@@ -285,8 +285,7 @@ class JwtLogin extends LitElement {
           }
           break;
       }
-    }
-    else {
+    } else {
       this.lastErrorChanged(e);
     }
   }
