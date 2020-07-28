@@ -259,29 +259,35 @@ class JwtLogin extends LitElement {
    * Login bridge to get a JWT and hang onto it
    */
   loginResponse(e) {
-    switch (this.__context) {
-      case "login":
-        this.jwt = e.detail.response;
-        break;
-      case "refresh":
-        // jwt change events will propagate and do their thing
-        this.jwt = e.detail.response;
-        // if we had a requesting element, let's let it do its thing
-        if (this.__element) {
-          this.__element.obj[this.__element.callback](
-            this.jwt,
-            ...this.__element.params
-          );
-          this.__element = false;
-        }
-        break;
-      case "logout":
-        if (this.__redirect && this.redirectUrl) {
-          setTimeout(() => {
-            window.location.href = this.redirectUrl;
-          }, 100);
-        }
-        break;
+    // trap in case front end thinks this is a valid response..
+    if (e.detail.status == 200 && e.detail.response != "Access denied") {
+      switch (this.__context) {
+        case "login":
+          this.jwt = e.detail.response;
+          break;
+        case "refresh":
+          // jwt change events will propagate and do their thing
+          this.jwt = e.detail.response;
+          // if we had a requesting element, let's let it do its thing
+          if (this.__element) {
+            this.__element.obj[this.__element.callback](
+              this.jwt,
+              ...this.__element.params
+            );
+            this.__element = false;
+          }
+          break;
+        case "logout":
+          if (this.__redirect && this.redirectUrl) {
+            setTimeout(() => {
+              window.location.href = this.redirectUrl;
+            }, 100);
+          }
+          break;
+      }
+    }
+    else {
+      this.lastErrorChanged(e);
     }
   }
 }
