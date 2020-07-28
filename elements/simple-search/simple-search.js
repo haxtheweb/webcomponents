@@ -39,241 +39,237 @@ Custom property | Description | Default
  *
  */
 class SimpleSearch extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: 100%;
-}
-#input {
-  flex-grow: 2;
-  margin-right: 4px;
-  padding: var(--simple-search-padding, unset);
-  margin: var(--simple-search-margin, unset);
-  --paper-input-container-input-color: var(
-    --simple-search-input-text-color,
-    #000
-  );
-  --paper-input-container-shared-input-style_-_color: var(
-    --simple-search-input-text-color,
-    #000
-  );
-  --paper-input-container-focus-color: var(
-    --simple-search-input-line-color,
-    #000
-  );
-  --paper-input-container-color: var(
-    --simple-search-input-placeholder-color,
-    #222
-  );
-  color: var(--simple-search-input-placeholder-color, #222);
-}
-#xofy {
-  margin: 8px;
-}
-button {
-  margin: 8px 0 8px;
-  color: var(--simple-search-button-color, #111);
-  background-color: var(--simple-search-button-bg-color, #eee);
-  border-color: var(--simple-search-button-border-color, #ccc);
-}
-button:not([disabled]):focus,
-button:not([disabled]):hover {
-  cursor: pointer;
-  color: var(--simple-search-button-hover-color, #000);
-  background-color: var(--simple-search-button-hover-bg-color, #fff);
-  border-color: var(--simple-search-button-hover-border-color, #ddd);
-}
-button[disabled] {
-  cursor: not-allowed;
-  color: var(--simple-search-button-disabled-color, #999);
-  background-color: var(--simple-search-button-disabled-bg-color, #eee);
-  border-color: var(--simple-search-button-disabled-border-color, #ccc);
-}
-button:not([controls]) {
-  display: none;
-}
-*[shrink-hide] {
-  display: none;
-}
+        :host {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          width: 100%;
+        }
+        #input {
+          flex-grow: 2;
+          margin-right: 4px;
+          padding: var(--simple-search-padding, unset);
+          margin: var(--simple-search-margin, unset);
+          --paper-input-container-input-color: var(
+            --simple-search-input-text-color,
+            #000
+          );
+          --paper-input-container-shared-input-style_-_color: var(
+            --simple-search-input-text-color,
+            #000
+          );
+          --paper-input-container-focus-color: var(
+            --simple-search-input-line-color,
+            #000
+          );
+          --paper-input-container-color: var(
+            --simple-search-input-placeholder-color,
+            #222
+          );
+          color: var(--simple-search-input-placeholder-color, #222);
+        }
+        #xofy {
+          margin: 8px;
+        }
+        button {
+          margin: 8px 0 8px;
+          color: var(--simple-search-button-color, #111);
+          background-color: var(--simple-search-button-bg-color, #eee);
+          border-color: var(--simple-search-button-border-color, #ccc);
+        }
+        button:not([disabled]):focus,
+        button:not([disabled]):hover {
+          cursor: pointer;
+          color: var(--simple-search-button-hover-color, #000);
+          background-color: var(--simple-search-button-hover-bg-color, #fff);
+          border-color: var(--simple-search-button-hover-border-color, #ddd);
+        }
+        button[disabled] {
+          cursor: not-allowed;
+          color: var(--simple-search-button-disabled-color, #999);
+          background-color: var(--simple-search-button-disabled-bg-color, #eee);
+          border-color: var(--simple-search-button-disabled-border-color, #ccc);
+        }
+        button:not([controls]) {
+          display: none;
+        }
+        *[shrink-hide] {
+          display: none;
+        }
       `
     ];
   }
 
-// render function
+  // render function
   render() {
     return html`
-
-<paper-input
-    id="input"
-    label="${this.searchInputLabel}"
-    ?always-float-label="${this.alwaysFloatLabel}"
-    ?no-label-float="${this.noLabelFloat}"
-    @change="${this._handleChange}"
-  >
-    <iron-icon icon="${this.searchInputIcon}" slot="prefix"></iron-icon>
-  </paper-input>
-  <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
-    ${this._getResultsSpan(this.resultPointer, this.resultCount)}
-  </div>
-  <div  ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
-    <button
-      id="prev"
-      aria-label="${this.prevButtonLabel}"
-      role="button"
-      controls="${this.controls}"
-      tabindex="0"
-      ?disabled="${this.__hidePrev}"
-      @click="${this._navigateResults}"
-    >
-      <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
-    </button>
-    <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
-    <button
-      id="next"
-      aria-label="${this.nextButtonLabel}"
-      role="button"
-      controls="${this.controls}"
-      tabindex="0"
-      ?disabled="${this.__hideNext}"
-      @click="${this._navigateResults}"
-    >
-      <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
-    </button>
-    <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
-  </div>`;
+      <paper-input
+        id="input"
+        label="${this.searchInputLabel}"
+        ?always-float-label="${this.alwaysFloatLabel}"
+        ?no-label-float="${this.noLabelFloat}"
+        @change="${this._handleChange}"
+      >
+        <iron-icon icon="${this.searchInputIcon}" slot="prefix"></iron-icon>
+      </paper-input>
+      <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+        ${this._getResultsSpan(this.resultPointer, this.resultCount)}
+      </div>
+      <div ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+        <button
+          id="prev"
+          aria-label="${this.prevButtonLabel}"
+          role="button"
+          controls="${this.controls}"
+          tabindex="0"
+          ?disabled="${this.__hidePrev}"
+          @click="${this._navigateResults}"
+        >
+          <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
+        </button>
+        <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
+        <button
+          id="next"
+          aria-label="${this.nextButtonLabel}"
+          role="button"
+          controls="${this.controls}"
+          tabindex="0"
+          ?disabled="${this.__hideNext}"
+          @click="${this._navigateResults}"
+        >
+          <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
+        </button>
+        <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
+      </div>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * always float the label
-   */
-  "alwaysFloatLabel": {
-    "attribute": "always-float-label",
-    "type": Boolean
-  },
-  /**
-   * Is the search case-sensitive
-   */
-  "caseSensitive": {
-    "attribute": "case-sensitive",
-    "type": Boolean
-  },
-  /**
-   * The id of the container element that the navigation buttons control
-   */
-  "controls": {
-    "attribute": "controls",
-    "type": String
-  },
-  /**
-   * label for next result icon
-   */
-  "nextButtonIcon": {
-    "attribute": "next-button-icon",
-    "type": String
-  },
-  /**
-   * label for next result button
-   */
-  "nextButtonLabel": {
-    "attribute": "next-button-label",
-    "type": String
-  },
-  /**
-   * never float the label
-   */
-  "noLabelFloat": {
-    "attribute": "no-label-float",
-    "type": Boolean
-  },
-  /**
-   * label for previous result icon
-   */
-  "prevButtonIcon": {
-    "attribute": "prev-button-icon",
-    "type": String
-  },
-  /**
-   * label for previous result button
-   */
-  "prevButtonLabel": {
-    "attribute": "prev-button-label",
-    "type": String
-  },
-  /**
-   * Number of results.
-   */
-  "resultCount": {
-    "attribute": "result-count",
-    "type": Number
-  },
-  /**
-   * Which result are we currently on?
-   */
-  "resultPointer": {
-    "attribute": "result-pointer",
-    "type": Number
-  },
-  /**
-   * limits search to within target's elements that match a selectgor
-   */
-  "selector": {
-    "attribute": "selector",
-    "type": String
-  },
-  /**
-   * label for search icon
-   */
-  "searchInputIcon": {
-    "attribute": "search-input-icon",
-    "type": String
-  },
-  /**
-   * label for search input
-   */
-  "searchInputLabel": {
-    "attribute": "search-input-label",
-    "type": String
-  },
-  /**
-   * an array of search terms
-   */
-  "searchTerms": {
-    "attribute": "search-terms",
-    "type": Array
-  },
-  /**
-   * If set, search will be automated and restricted to this object.
-   */
-  "target": {
-    "type": Object
-  },
-  /**
-   * Hide next button
-   */
-  "__hideNext": {
-    "type": Boolean
-  },
-  /**
-   * Hide prev button
-   */
-  "__hidePrev": {
-    "type": Boolean
-  }
-}
-;
+      ...super.properties,
+
+      /**
+       * always float the label
+       */
+      alwaysFloatLabel: {
+        attribute: "always-float-label",
+        type: Boolean
+      },
+      /**
+       * Is the search case-sensitive
+       */
+      caseSensitive: {
+        attribute: "case-sensitive",
+        type: Boolean
+      },
+      /**
+       * The id of the container element that the navigation buttons control
+       */
+      controls: {
+        attribute: "controls",
+        type: String
+      },
+      /**
+       * label for next result icon
+       */
+      nextButtonIcon: {
+        attribute: "next-button-icon",
+        type: String
+      },
+      /**
+       * label for next result button
+       */
+      nextButtonLabel: {
+        attribute: "next-button-label",
+        type: String
+      },
+      /**
+       * never float the label
+       */
+      noLabelFloat: {
+        attribute: "no-label-float",
+        type: Boolean
+      },
+      /**
+       * label for previous result icon
+       */
+      prevButtonIcon: {
+        attribute: "prev-button-icon",
+        type: String
+      },
+      /**
+       * label for previous result button
+       */
+      prevButtonLabel: {
+        attribute: "prev-button-label",
+        type: String
+      },
+      /**
+       * Number of results.
+       */
+      resultCount: {
+        attribute: "result-count",
+        type: Number
+      },
+      /**
+       * Which result are we currently on?
+       */
+      resultPointer: {
+        attribute: "result-pointer",
+        type: Number
+      },
+      /**
+       * limits search to within target's elements that match a selectgor
+       */
+      selector: {
+        attribute: "selector",
+        type: String
+      },
+      /**
+       * label for search icon
+       */
+      searchInputIcon: {
+        attribute: "search-input-icon",
+        type: String
+      },
+      /**
+       * label for search input
+       */
+      searchInputLabel: {
+        attribute: "search-input-label",
+        type: String
+      },
+      /**
+       * an array of search terms
+       */
+      searchTerms: {
+        attribute: "search-terms",
+        type: Array
+      },
+      /**
+       * If set, search will be automated and restricted to this object.
+       */
+      target: {
+        type: Object
+      },
+      /**
+       * Hide next button
+       */
+      __hideNext: {
+        type: Boolean
+      },
+      /**
+       * Hide prev button
+       */
+      __hidePrev: {
+        type: Boolean
+      }
+    };
   }
 
   static get tag() {
