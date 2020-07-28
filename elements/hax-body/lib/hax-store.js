@@ -1003,7 +1003,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
-      console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
       // if interpretation as HTML fails then let's ignore this whole thing
@@ -2757,7 +2756,10 @@ window.HaxStore.getSelection = () => {
   // try and obtain the selection from the nearest shadow
   // which would give us the selection object when running native ShadowDOM
   // with fallback support for the entire window which would imply Shady
-  if (window.HaxStore.instance.activeHaxBody.parentNode) {
+  if (
+    window.HaxStore.instance.activeHaxBody &&
+    window.HaxStore.instance.activeHaxBody.parentNode
+  ) {
     // native API
     if (window.HaxStore.instance.activeHaxBody.parentNode.getSelection) {
       return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();

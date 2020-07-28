@@ -421,7 +421,19 @@ export class HAXWiring {
           }
         });
         context.dispatchEvent(evt);
+      } else if (typeof context.tagName !== typeof undefined) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            tag: context.tagName.toLowerCase(),
+            properties: props
+          }
+        });
+        context.dispatchEvent(evt);
       } else {
+        console.warn(context);
         console.warn(
           `${tag} missed our checks and has an issue in implementation with HAX`
         );

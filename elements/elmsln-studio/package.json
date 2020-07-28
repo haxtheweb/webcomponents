@@ -11,7 +11,7 @@
       "js": "src/elmsln-studio.js"
     }
   },
-  "version": "2.6.23",
+  "version": "2.6.24",
   "description": "Studio App for ELMS:LN",
   "repository": {
     "type": "git",
@@ -35,14 +35,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.6.23",
-    "@lrnwebcomponents/accent-card": "^2.6.23",
-    "@lrnwebcomponents/hax-iconset": "^2.6.23",
-    "@lrnwebcomponents/lrndesign-avatar": "^2.6.23",
-    "@lrnwebcomponents/lrndesign-gallery": "^2.6.23",
-    "@lrnwebcomponents/nav-card": "^2.6.23",
-    "@lrnwebcomponents/simple-colors": "^2.6.23",
-    "@lrnwebcomponents/simple-fields": "^2.6.23",
+    "@lrnwebcomponents/a11y-collapse": "^2.6.24",
+    "@lrnwebcomponents/accent-card": "^2.6.24",
+    "@lrnwebcomponents/hax-iconset": "^2.6.24",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.6.24",
+    "@lrnwebcomponents/lrndesign-gallery": "^2.6.24",
+    "@lrnwebcomponents/nav-card": "^2.6.24",
+    "@lrnwebcomponents/simple-colors": "^2.6.24",
+    "@lrnwebcomponents/simple-fields": "^2.6.24",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

@@ -363,7 +363,6 @@ function objectValFromStringPos(o, s, r = null) {
   }
   return o;
 }
-
 /**
  * Convert a node to a HAX element. Hax elements ensure
  * a certain level of sanitization by verifying tags and

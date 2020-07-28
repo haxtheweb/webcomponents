@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.23",
+  "version": "2.6.24",
   "description": "Visualize a user account either with an image, a label, or as abstract art.",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
-    "serve":"../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
+    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
@@ -43,13 +43,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/paper-avatar": "^2.6.23",
-    "@lrnwebcomponents/simple-colors": "^2.6.23",
+    "@lrnwebcomponents/paper-avatar": "^2.6.24",
+    "@lrnwebcomponents/simple-colors": "^2.6.24",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.23",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.24",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-import "./hax-tray-button";
+import "./hax-tray-button.js";
 
 /**
  * `hax-app-browser`
@@ -104,9 +104,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
       }
     };
   }
-  firstUpdated(changedProperties) {
-    this.resetBrowser();
-  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "activeApp") {
@@ -140,12 +137,27 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
    */
   _haxStorePropertyUpdated(e) {
     if (
+      this.shadowRoot &&
       e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
+      e.detail.value &&
+      e.detail.property === "appList"
     ) {
-      this[e.detail.property] = e.detail.value;
+      this.resetBrowser();
+    } else if (
+      e.detail &&
+      e.detail.value &&
+      e.detail.property === "activeApp"
+    ) {
+      this.activeApp = e.detail.value;
     }
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // app list registers early and has no imports so on
+    // fast environments it's alreayd loaded
+    this.resetBrowser();
   }
   /**
    * Reset this browser.

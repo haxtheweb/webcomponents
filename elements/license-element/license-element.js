@@ -204,6 +204,10 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
         type: String,
         attribute: "license-name"
       },
+      licenseImage: {
+        type: String,
+        attribute: "license-image"
+      },
       /**
        * License link for more details
        */

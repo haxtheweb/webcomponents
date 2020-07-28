@@ -702,6 +702,8 @@ class A11yMediaPlayer extends SimpleColors {
           padding: 0 15px 15px;
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
+          font-size: var(--a11y-media-transcript-cue-font-size, 14px);
+          line-height: var(--a11y-media-transcript-cue-line-height, 28px);
         }
 
         .transcript-from-track[hideTimestamps] {

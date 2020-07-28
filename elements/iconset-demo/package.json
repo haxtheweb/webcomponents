@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.21",
+  "version": "2.6.24",
   "description": "iterates through an iconset array to generate a demo of all of the icons",
   "repository": {
     "type": "git",

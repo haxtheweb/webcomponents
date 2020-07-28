@@ -379,10 +379,19 @@ class HaxBody extends SimpleColors {
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousedown", this._focusIn.bind(this));
+      this.addEventListener("mouseup", this._mouseUp.bind(this));
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
       this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
+  }
+  /**
+   * On mouse release, dump any scroller and the end cap element
+   */
+  _mouseUp(e) {
+    // failsafe to clear to the gravity scrolling
+    clearTimeout(gravityScrollTimer);
+    this.__manageFakeEndCap(false);
   }
   static get tag() {
     return "hax-body";
@@ -392,10 +401,30 @@ class HaxBody extends SimpleColors {
     clearTimeout(gravityScrollTimer);
   }
   /**
+   * Make a fake end cap element so we can drop in the last position
+   * @note This is much easier logic than the alternatives to account for.
+   */
+  __manageFakeEndCap(create = true) {
+    if (create && !this.__fakeEndCap) {
+      let fake = document.createElement("fake-hax-body-end");
+      fake.style.width = "100%";
+      fake.style.height = "20px";
+      fake.style.display = "block";
+      fake.classList.add("hax-move");
+      this.__fakeEndCap = fake;
+      this.appendChild(this.__fakeEndCap);
+    } else if (!create && this.__fakeEndCap) {
+      this.__fakeEndCap.remove();
+      this.__fakeEndCap = null;
+    }
+  }
+  /**
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
     const children = this.childNodes;
+    // insert a fake child at the end
+    this.__manageFakeEndCap(true);
     // walk the children and apply the draggable state needed
     for (var i in children) {
       if (children[i].classList && children[i] !== this.activeItem) {
@@ -1167,11 +1196,6 @@ class HaxBody extends SimpleColors {
             newNode,
             this.activeContainerNode.nextElementSibling
           );
-        } else if (this.activeContainerNode.parentNode) {
-          this.activeContainerNode.parentNode.insertBefore(
-            newNode,
-            this.activeContainerNode
-          );
         } else if (this.activeNode.parentNode) {
           this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
         } else {
@@ -1596,9 +1620,12 @@ class HaxBody extends SimpleColors {
         }
       }
     } else {
+      // make a new grid plate, default to 2 col and disable
+      // responsive by default as this is what many will expect
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
-      this.insertBefore(grid, node);
+      grid.disableResponsive = true;
+      node.parentNode.insertBefore(grid, node);
       let col = "2";
       if (side == "right") {
         col = "1";
@@ -2103,8 +2130,12 @@ class HaxBody extends SimpleColors {
   _validElementTest(node) {
     if (typeof node.tagName !== typeof undefined) {
       if (
+        // ignore hax internal tags
         node.tagName.substring(0, 4) !== "HAX-" ||
-        node.tagName === "HAX-LOGO"
+        // hax logo is special cause
+        node.tagName === "HAX-LOGO" ||
+        // special place holder in drag and drop
+        node.tagName !== "FAKE-HAX-BODY-END"
       ) {
         return true;
       }
@@ -2305,7 +2336,7 @@ class HaxBody extends SimpleColors {
           if (
             (target &&
               target != null &&
-              target.removeAttribute &&
+              typeof target.removeAttribute === "function" &&
               typeof local !== typeof undefined &&
               target !== local &&
               target !== local.parentNode &&
@@ -2313,8 +2344,8 @@ class HaxBody extends SimpleColors {
             local.parentNode === this
           ) {
             // incase this came from a grid plate, drop the slot so it works
-            target.removeAttribute("slot");
             try {
+              target.removeAttribute("slot");
               local.parentNode.insertBefore(target, local);
             } catch (e) {
               console.warn(e);
@@ -2332,6 +2363,8 @@ class HaxBody extends SimpleColors {
               this.activeNode.parentNode.tagName === "GRID-PLATE"
             ) {
               this.activeContainerNode = this.activeNode.parentNode;
+            } else {
+              this.activeContainerNode = this.activeNode;
             }
             window.HaxStore.write("activeNode", this.activeNode, this);
             window.HaxStore.write(
@@ -2339,17 +2372,39 @@ class HaxBody extends SimpleColors {
               this.activeContainerNode,
               this
             );
+            // fire event saying that we dropped an item and gained
+            // focus which should prioritize certain actions over a
+            // normal focus shift
+            this.dispatchEvent(
+              new CustomEvent("hax-drop-focus-event", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: this.activeNode
+              })
+            );
             setTimeout(() => {
+              if (
+                typeof this.activeNode.scrollIntoViewIfNeeded === "function"
+              ) {
+                this.activeNode.scrollIntoViewIfNeeded(true);
+              } else {
+                this.activeNode.scrollIntoView({
+                  behavior: "smooth",
+                  inline: "center"
+                });
+              }
               this.positionContextMenus();
-            }, 100);
+            }, 250);
           }
         }
       } catch (e) {
         console.warn(e);
       }
     }
-    // reset this after the drop goes through
+    // reset this after the drop happens
     window.HaxStore.instance.__dragTarget = null;
+    this.__manageFakeEndCap(false);
   }
   /**
    * Enter an element, meaning we've over it while dragging

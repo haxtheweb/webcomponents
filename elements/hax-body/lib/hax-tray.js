@@ -30,6 +30,7 @@ class HaxTray extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
+      "hax-drop-focus-event": "_expandSettingsPanel",
       "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
     this.activeValue = {
@@ -78,6 +79,9 @@ class HaxTray extends winEventsElement(LitElement) {
       import("./hax-blox-browser.js");
       import("./hax-stax-browser.js");
     }, 0);
+  }
+  _expandSettingsPanel(e) {
+    this.shadowRoot.querySelector("#settingscollapse").expand();
   }
   /**
    * Store updated, sync.
@@ -610,11 +614,7 @@ class HaxTray extends winEventsElement(LitElement) {
         </div>
         <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse
-            id="addcollapse"
-            accordion
-            @expand="${this._gizmoBrowserRefresh}"
-          >
+          <a11y-collapse id="addcollapse" accordion>
             <div slot="heading">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
@@ -637,11 +637,7 @@ class HaxTray extends winEventsElement(LitElement) {
               </simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse
-            id="searchapps"
-            accordion
-            @expand="${this._appBrowserRefresh}"
-          >
+          <a11y-collapse id="searchapps" accordion>
             <div slot="heading">
               <iron-icon icon="icons:search"></iron-icon> Search
             </div>
@@ -675,21 +671,6 @@ class HaxTray extends winEventsElement(LitElement) {
     } catch (e) {
       // in case it missed somehow like w/ an incredibly slow repaints
       this.activeTab = "item-0";
-    }
-  }
-  /**
-   * Handlers to refresh contents on click
-   */
-  _gizmoBrowserRefresh(e) {
-    setTimeout(() => {
-      if (this.shadowRoot.querySelector("#gizmobrowser")) {
-        this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
-      }
-    }, 0);
-  }
-  _appBrowserRefresh(e) {
-    if (this.shadowRoot.querySelector("#appbrowser")) {
-      this.shadowRoot.querySelector("#appbrowser").resetBrowser();
     }
   }
   _refreshLists(e) {

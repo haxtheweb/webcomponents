@@ -1079,17 +1079,18 @@ class HAXCMSSiteEditor extends LitElement {
 
   _handleManifestResponse(e) {
     // trigger a refresh of the data in node
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "Site details saved!",
-        duration: 2000
-      }
-    });
+    this.dispatchEvent(
+      new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: "Site details saved, reloading to reflect changes!",
+          duration: 3000
+        }
+      })
+    );
     store.dashboardOpened = false;
-    this.dispatchEvent(evt);
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -1098,6 +1099,9 @@ class HAXCMSSiteEditor extends LitElement {
         detail: true
       })
     );
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   }
   /**
    * Tell the user we undid their last state of the site and trigger

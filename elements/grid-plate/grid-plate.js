@@ -725,7 +725,9 @@ class GridPlate extends LitElement {
           "droppable",
           "ignorehax",
           "hideops",
-          "activeitem"
+          "activeitem",
+          "responsive-width",
+          "hide-ops"
         ]
       }
     };
