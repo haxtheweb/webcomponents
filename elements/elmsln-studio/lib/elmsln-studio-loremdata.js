@@ -127,26 +127,37 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         id: "lesson-1",
         lesson: "Lesson 1",
         assignments: [
-          { 
-            id: "assignment-1", assignment: "Lesson 1 Reading" },
+          {
+            id: "assignment-1",
+            assignment: "Lesson 1 Reading"
+          },
           {
             id: "project-1",
             project: "Hypertext Narrative Project",
             assignments: [
               { id: "assignment-2", assignment: "Discover: Word-Pairs" },
               { id: "assignment-3", assignment: "Define: Synopsis" },
-              { id: "assignment-4", assignment: "Develop: Story and Plot Elements" },
+              {
+                id: "assignment-4",
+                assignment: "Develop: Story and Plot Elements"
+              },
               { id: "assignment-5", assignment: "Develop: Characters" },
-              { id: "assignment-6", assignment: "Deliver: Hypertext Narrative Draft" },
+              {
+                id: "assignment-6",
+                assignment: "Deliver: Hypertext Narrative Draft"
+              },
               { id: "assignment-7", assignment: "Deliver: Feedback" },
               { id: "assignment-8", assignment: "Deliver: Iterate" },
               { id: "assignment-9", assignment: "Deliver: Iterate critique" },
               { id: "assignment-10", assignment: "Deliver: Iterate critique" },
-              { id: "assignment-11", assignment: "Deliver: Hypertext Narrative" }
+              {
+                id: "assignment-11",
+                assignment: "Deliver: Hypertext Narrative"
+              }
             ]
           },
           { id: "assignment-12", assignment: "Lesson 1 Wrap-Up" }
-        ] 
+        ]
       },
       {
         id: "lesson-2",
@@ -173,7 +184,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       },
       {
         id: "lesson-3",
-        lesson: "Lesson 3", 
+        lesson: "Lesson 3",
         assignments: [
           { id: "assignment-24", assignment: "Lesson 2 Reading" },
           {
@@ -206,25 +217,26 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     this.portfolios = {};
     this.submissions = {};
     this.discussions = {};
-
   }
   static get styles() {
-    return [
-      css``
-    ];
+    return [css``];
   }
   render() {
     return html`
       <lorem-data id="lorem" .schemas="${this.schemas || []}"></lorem-data>
     `;
   }
-  get students(){
-    return Object.keys(this.users || {}).filter(u=>!this.users[u].instructor).map(s=>this.users[s])
+  get students() {
+    return Object.keys(this.users || {})
+      .filter(u => !this.users[u].instructor)
+      .map(s => this.users[s]);
   }
-  get instructors(){
-    return Object.keys(this.users || {}).filter(u=>this.users[u].instructor).map(s=>this.users[s])
+  get instructors() {
+    return Object.keys(this.users || {})
+      .filter(u => this.users[u].instructor)
+      .map(s => this.users[s]);
   }
-  get schemas(){
+  get schemas() {
     return {
       "users.json": {
         type: "data",
@@ -264,94 +276,135 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         type: "data",
         data: this.discussions
       }
-    }
+    };
   }
-  firstUpdated(changedProperties){
-    if(super.firstUpdated) super.firstUpdated(changedProperties);
-    let lorem = this.shadowRoot.getElementById('lorem'),
-      startDate = lorem.addWeeks(undefined,-0.5 * this.lessonData.length), 
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    let lorem = this.shadowRoot.getElementById("lorem"),
+      startDate = lorem.addWeeks(undefined, -0.5 * this.lessonData.length),
       lessonDate = startDate;
-    this.lessonData.forEach((l,i)=>{
+    this.lessonData.forEach((l, i) => {
       let assignDate = lessonDate;
-      l.assignments.forEach((a,ai)=>{
-        if(a.project) {
-          let project = this._project(a,l.id,ai,assignDate,lorem);
+      l.assignments.forEach((a, ai) => {
+        if (a.project) {
+          let project = this._project(a, l.id, ai, assignDate, lorem);
           this.projects[a.id] = project;
-          assignDate = lorem.addDays(assignDate,a.assignments.length);
+          assignDate = lorem.addDays(assignDate, a.assignments.length);
         } else {
-          this._assignment(a,l.id,undefined,ai,assignDate,lorem);
-          assignDate = lorem.addDays(assignDate,1);
+          this._assignment(a, l.id, undefined, ai, assignDate, lorem);
+          assignDate = lorem.addDays(assignDate, 1);
         }
-      })
+      });
       this.lessons[l.id] = {
         id: l.id,
         order: i,
         lesson: l.lesson,
-        body: lorem.randomParagraph(2,6),
-        assignments: l.assignments.map(a=>a.id),
-      }
-      lessonDate = lorem.addWeeks(lessonDate,1);
+        body: lorem.randomParagraph(2, 6),
+        assignments: l.assignments.map(a => a.id)
+      };
+      lessonDate = lorem.addWeeks(lessonDate, 1);
     });
 
-    Object.keys(this.assignments||{}).forEach((a,i)=>{
+    Object.keys(this.assignments || {}).forEach((a, i) => {
       let some = arr => Math.round(arr.length * 0.333),
         most = arr => Math.round(arr.length * 0.667),
-        topic = lorem.randomOption(["animals","arch","nature","people","tech"]),
+        topic = lorem.randomOption([
+          "animals",
+          "arch",
+          "nature",
+          "people",
+          "tech"
+        ]),
         type = lorem.randomOption(["links", "body", "sources"]),
-        creators = i > most(Object.keys(this.assignments||{}))
-        ? [] 
-        : i > some(Object.keys(this.assignments||{}))
-        ? lorem.draw(this.students, some(this.students), most(this.students))
-        : this.students;
-      creators.forEach(creator=>this._submission(a,creator.id,topic,type,a.date,lorem));
-    });  
-    Object.keys(this.submissions).forEach(key=>{
+        creators =
+          i > most(Object.keys(this.assignments || {}))
+            ? []
+            : i > some(Object.keys(this.assignments || {}))
+            ? lorem.draw(
+                this.students,
+                some(this.students),
+                most(this.students)
+              )
+            : this.students;
+      creators.forEach(creator =>
+        this._submission(a, creator.id, topic, type, a.date, lorem)
+      );
+    });
+    Object.keys(this.submissions).forEach(key => {
       let s = this.submissions[key];
       s.activity = "submission";
       this.activity.push(s);
-    })
-    Object.keys(this.discussions).forEach(key=>{
+    });
+    Object.keys(this.discussions).forEach(key => {
       let d = this.discussions[key];
       d.activity = "discussion";
       this.activity.push(d);
-      d.replies.forEach(reply=>{
+      d.replies.forEach(reply => {
         let r = reply;
         r.activity = "reply";
         this.activity.push(r);
-      })
-    })
+      });
+    });
     this.activity = lorem.sortDates(this.activity);
-    this.profile = JSON.parse(JSON.stringify(lorem.randomOption(this.students)));
-    this.profile.submissions = lorem.sortDates(Object.keys(this.submissions).filter(key=>this.submissions[key].userId===this.profile.id).map(key=>this.submissions[key]));
-    this.profile.completed = this.profile.submissions.map(submission=>submission.assignmentId);
-    this.profile.due = Object.keys(this.assignments).filter(key=>!this.profile.completed.includes(key)).map(key=>this.assignments[key]);
-    this.profile.features = this.profile.submissions.filter(submission=>submission.feature).map(submission=>submission.id);
-    this.profile.feedback = lorem.sortDates(this.profile.submissions.map(submission=>submission.feedback).flat().map(key=>this.discussions[key]));
-    this.profile.given = Object.keys(this.discussions).filter(key=>this.discussions[key].userId===this.profile.id);
-    this.profile.replies = Object.keys(this.discussions).map(key=>this.discussions[key].replies.filter(reply=>reply.userId===this.profile.id)).flat().map(discussion=>discussion.id);
-    this.profile.discussions = [...this.profile.given,...this.profile.replies];
+    this.profile = JSON.parse(
+      JSON.stringify(lorem.randomOption(this.students))
+    );
+    this.profile.submissions = lorem.sortDates(
+      Object.keys(this.submissions)
+        .filter(key => this.submissions[key].userId === this.profile.id)
+        .map(key => this.submissions[key])
+    );
+    this.profile.completed = this.profile.submissions.map(
+      submission => submission.assignmentId
+    );
+    this.profile.due = Object.keys(this.assignments)
+      .filter(key => !this.profile.completed.includes(key))
+      .map(key => this.assignments[key]);
+    this.profile.features = this.profile.submissions
+      .filter(submission => submission.feature)
+      .map(submission => submission.id);
+    this.profile.feedback = lorem.sortDates(
+      this.profile.submissions
+        .map(submission => submission.feedback)
+        .flat()
+        .map(key => this.discussions[key])
+    );
+    this.profile.given = Object.keys(this.discussions).filter(
+      key => this.discussions[key].userId === this.profile.id
+    );
+    this.profile.replies = Object.keys(this.discussions)
+      .map(key =>
+        this.discussions[key].replies.filter(
+          reply => reply.userId === this.profile.id
+        )
+      )
+      .flat()
+      .map(discussion => discussion.id);
+    this.profile.discussions = [...this.profile.given, ...this.profile.replies];
   }
 
-  _assets(type,topic,lorem){
-    if(!lorem){
+  _assets(type, topic, lorem) {
+    if (!lorem) {
       return [];
-    } else if(type === "body") {
-      return lorem.randomParagraph(2,6)
+    } else if (type === "body") {
+      return lorem.randomParagraph(2, 6);
     } else {
-      let x = lorem.randomNumber(1,7), 
+      let x = lorem.randomNumber(1, 7),
         assets = [];
-      for(let i=0;i<x;i++){
+      for (let i = 0; i < x; i++) {
         if (type === "links") {
           assets.push(lorem.randomLink());
         } else {
-          assets.push(lorem.randomImageData(lorem.randomAspect(200,600,200,600),topic));
+          assets.push(
+            lorem.randomImageData(lorem.randomAspect(200, 600, 200, 600), topic)
+          );
         }
       }
       return assets;
     }
   }
-  _project(project,lessonId,order,date,lorem){
-    if(!lorem){
+  _project(project, lessonId, order, date, lorem) {
+    if (!lorem) {
       return undefined;
     } else {
       return {
@@ -359,25 +412,39 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         order: order,
         lessonId: lessonId,
         project: project.project,
-        body: lorem.randomParagraph(2,6),
-        assignments: project.assignments.map((a,i)=>this._assignment(a,lessonId,project.id,i,lorem.addDays(date,i),lorem))
+        body: lorem.randomParagraph(2, 6),
+        assignments: project.assignments.map((a, i) =>
+          this._assignment(
+            a,
+            lessonId,
+            project.id,
+            i,
+            lorem.addDays(date, i),
+            lorem
+          )
+        )
       };
     }
   }
-  _assignment(assignment,lessonId,projectId,order,date,lorem){
-    if(!lorem){
+  _assignment(assignment, lessonId, projectId, order, date, lorem) {
+    if (!lorem) {
       return undefined;
     } else {
-      let criteria = lorem.randomNumber(3,7),
+      let criteria = lorem.randomNumber(3, 7),
         rubric = {
-          key:["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"], 
+          key: [
+            "Distinguished (4)",
+            "Proficient (3)",
+            "Apprentice (2)",
+            "Novice (1)"
+          ],
           values: []
         };
-      for(let i=0;i<criteria;i++){
+      for (let i = 0; i < criteria; i++) {
         rubric.values.push([
           `${lorem.randomWord()} ${lorem.randomWord()}`,
-          lorem.randomSentence(3,6)
-        ])
+          lorem.randomSentence(3, 6)
+        ]);
       }
       this.assignments[assignment.id] = {
         id: assignment.id,
@@ -389,17 +456,17 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         hideDate: Math.random > 0.8 ? lorem.addWeeks(date, 2) : undefined,
         date: date,
         rubric: rubric,
-        body: lorem.randomParagraph(2,6)
+        body: lorem.randomParagraph(2, 6)
       };
       return assignment.id;
     }
   }
-  _feedback(submissionId,reviewerId,date,lorem){
-    if(!lorem){
+  _feedback(submissionId, reviewerId, date, lorem) {
+    if (!lorem) {
       return undefined;
     } else {
-      let id = `feedback-${Object.keys(this.discussions).length+1}`, 
-        repliers = lorem.draw([...this.students,...this.instructors], 0, 2),
+      let id = `feedback-${Object.keys(this.discussions).length + 1}`,
+        repliers = lorem.draw([...this.students, ...this.instructors], 0, 2),
         user = this.users[reviewerId],
         submission = this.submissions[submissionId],
         creator = this.users[submission.userId],
@@ -413,17 +480,21 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           portfolioId: submission.portfolioId,
           assignment: submission.assignment,
           creatorId: submission.userId,
-          creatorFirstName: creator && creator.firstName ? creator.firstName : "",
+          creatorFirstName:
+            creator && creator.firstName ? creator.firstName : "",
           creatorLastName: creator && creator.lastName ? creator.lastName : "",
           creatorAvatar: creator && creator.image ? creator.image : undefined,
           date: date,
-          body: lorem.randomParagraph(1,4),
+          body: lorem.randomParagraph(1, 4),
           read: Math.random() < 0.5,
           like: Math.random() < 0.5,
-          replies: repliers.map((replier,i)=>{
-            let rid = `${id}-reply-${i+1}`, 
+          replies: repliers.map((replier, i) => {
+            let rid = `${id}-reply-${i + 1}`,
               reply;
-            date = lorem.addMinutes(date,(i+1)*lorem.randomNumber(1,3000));
+            date = lorem.addMinutes(
+              date,
+              (i + 1) * lorem.randomNumber(1, 3000)
+            );
             reply = {
               id: rid,
               feedbackId: id,
@@ -439,29 +510,46 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
               submissionId: submissionId,
               portfolioId: submission.portfolioId,
               date: date,
-              body: lorem.randomParagraph(2,6),
+              body: lorem.randomParagraph(2, 6),
               read: Math.random() < 0.5,
               like: Math.random() < 0.5
             };
             return reply;
           })
-        }
+        };
       this.discussions[id] = feedback;
       return id;
     }
   }
-  _submission(assignmentId,creatorId,topic,type,date,lorem){
-    if(lorem){
+  _submission(assignmentId, creatorId, topic, type, date, lorem) {
+    if (lorem) {
       let id = `${assignmentId}-${creatorId}`,
-        image = lorem.randomImageData(lorem.randomAspect(400,1200,400,1200),topic),
-        reviewers = lorem.draw(this.students.filter(s=>s.id!==creatorId), 0, 5),
-        instructors = Math.round() > 0.75 ? lorem.draw(this.instructors, 1, 1) : [],
-        submitDate = lorem.addHours(date,lorem.randomNumber(-40,48)),
-        a = this.assignments && this.assignments[assignmentId] ? this.assignments[assignmentId] : undefined,
+        image = lorem.randomImageData(
+          lorem.randomAspect(400, 1200, 400, 1200),
+          topic
+        ),
+        reviewers = lorem.draw(
+          this.students.filter(s => s.id !== creatorId),
+          0,
+          5
+        ),
+        instructors =
+          Math.round() > 0.75 ? lorem.draw(this.instructors, 1, 1) : [],
+        submitDate = lorem.addHours(date, lorem.randomNumber(-40, 48)),
+        a =
+          this.assignments && this.assignments[assignmentId]
+            ? this.assignments[assignmentId]
+            : undefined,
         projectId = a && a.projectId ? a.projectId : undefined,
         lessonId = a && a.lessonId ? a.lessonId : undefined,
-        p = this.projects && this.projects[projectId] ? this.projects[projectId] : undefined,
-        l = this.lessons && this.lessons[lessonId] ? this.lessons[lessonId] : undefined,
+        p =
+          this.projects && this.projects[projectId]
+            ? this.projects[projectId]
+            : undefined,
+        l =
+          this.lessons && this.lessons[lessonId]
+            ? this.lessons[lessonId]
+            : undefined,
         creator = this.users[creatorId],
         submission = {
           id: id,
@@ -482,10 +570,12 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           thumbnail: image.src,
           full: image.src,
           imageAlt: image.alt,
-          imageLongdesc: image.longdesc,
+          imageLongdesc: image.longdesc
         };
-      if(Math.random() < 0.2) submission.feature = lorem.randomParagraph(2,6);
-      this.portfolios[submission.portfolioId] = this.portfolios[submission.portfolioId] || {
+      if (Math.random() < 0.2) submission.feature = lorem.randomParagraph(2, 6);
+      this.portfolios[submission.portfolioId] = this.portfolios[
+        submission.portfolioId
+      ] || {
         id: submission.portfolioId,
         projectId: projectId,
         project: p && p.project ? p.project : "",
@@ -494,12 +584,24 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         lastName: creator && creator.lastName ? creator.lastName : "",
         avatar: creator && creator.image ? creator.image : "",
         submissions: []
-      }
-      submission[type] = this._assets(type,topic,lorem);
-      this.activity.push({id: id, activity: "submission", date: submission.date});
+      };
+      submission[type] = this._assets(type, topic, lorem);
+      this.activity.push({
+        id: id,
+        activity: "submission",
+        date: submission.date
+      });
       this.submissions[id] = submission;
-      this.submissions[id].feedback = lorem.shuffle([...reviewers,...instructors]).map(
-        (reviewer,i)=>this._feedback(id,reviewer.id,lorem.addMinutes(submitDate,(i+1)*64),lorem));
+      this.submissions[id].feedback = lorem
+        .shuffle([...reviewers, ...instructors])
+        .map((reviewer, i) =>
+          this._feedback(
+            id,
+            reviewer.id,
+            lorem.addMinutes(submitDate, (i + 1) * 64),
+            lorem
+          )
+        );
       this.portfolios[submission.portfolioId].submissions.push(submission);
     }
   }

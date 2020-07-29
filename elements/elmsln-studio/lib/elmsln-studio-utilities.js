@@ -12,14 +12,13 @@ import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
 const ElmslnStudioUtilities = function(SuperClass) {
   return class extends SuperClass {
-
     // properties available to the custom element for data binding
     static get properties() {
       return {
         ...super.properties,
         demoMode: {
           type: Boolean,
-          attribute: "demo-mode", 
+          attribute: "demo-mode",
           reflect: true
         }
       };
@@ -148,23 +147,40 @@ const ElmslnStudioUtilities = function(SuperClass) {
         : colors[Math.floor(Math.random() * colors.length)];
     }
 
-    getActivityLink(activity, nocomment = false){
-      return activity.activity === "submission" 
-        ? `/portfolios/${activity.portfolioId || activity.id}${activity.portfolioId ? `?submission=${activity.id}` : ''}${nocomment ? '' : activity.portfolioId ? `&comment=true` : `?comment=true`}`
-        : activity.activity === "discussion" 
-        ? `/portfolios/${activity.portfolioId || activity.submissionId}${activity.portfolioId ? `?submission=${activity.submissionId}&` : '?'}comment=${activity.id}`
-        : `/portfolios/${activity.portfolioId || activity.submissionId}${activity.portfolioId ? `?submission=${activity.submissionId}&` : '?'}comment=${activity.feedbackId}`;
+    getActivityLink(activity, nocomment = false) {
+      return activity.activity === "submission"
+        ? `/portfolios/${activity.portfolioId || activity.id}${
+            activity.portfolioId ? `?submission=${activity.id}` : ""
+          }${
+            nocomment
+              ? ""
+              : activity.portfolioId
+              ? `&comment=true`
+              : `?comment=true`
+          }`
+        : activity.activity === "discussion"
+        ? `/portfolios/${activity.portfolioId || activity.submissionId}${
+            activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
+          }comment=${activity.id}`
+        : `/portfolios/${activity.portfolioId || activity.submissionId}${
+            activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
+          }comment=${activity.feedbackId}`;
     }
-  
-    getActivityTitle(activity){
+
+    getActivityTitle(activity) {
       return html`
-        ${[activity.firstName,activity.lastName].join(' ')} 
-        ${activity.activity === "submission" 
+        ${[activity.firstName, activity.lastName].join(" ")}
+        ${activity.activity === "submission"
           ? ` submitted ${activity.assignment}`
-          : activity.activity === "discussion" 
-          ? ` left feedback for ${[activity.creatorFirstName,activity.creatorLastName].join(' ')}`
-          : ` replied to ${[activity.reviewerFirstName,activity.reviewerLastName].join(' ')}`
-        }
+          : activity.activity === "discussion"
+          ? ` left feedback for ${[
+              activity.creatorFirstName,
+              activity.creatorLastName
+            ].join(" ")}`
+          : ` replied to ${[
+              activity.reviewerFirstName,
+              activity.reviewerLastName
+            ].join(" ")}`}
       `;
     }
     /**

@@ -192,10 +192,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                       !this.profile.completed ||
                       !this.profile.due
                         ? "unknown"
-                        : `${this.profile.completed.length} / ${
-                            this.profile.completed.length 
-                            + this.profile.due.length
-                          }`
+                        : `${this.profile.completed.length} / ${this.profile
+                            .completed.length + this.profile.due.length}`
                     }
                   </td>
                 </tr>
@@ -245,7 +243,8 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                       !this.profile.given ||
                       !this.profile.discussions
                         ? "unknown"
-                        : this.profile.given.length + this.profile.discussions.length
+                        : this.profile.given.length +
+                          this.profile.discussions.length
                     }
                   </td>
                 </tr>
@@ -328,17 +327,21 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   : (this.profile.feedback || []).slice(0, 5).map(
                       f => html`
                         <nav-card-item
-                          accent-color="${this.accentColor([f.firstName,f.lastName].join(' '))}" 
+                          accent-color="${this.accentColor(
+                            [f.firstName, f.lastName].join(" ")
+                          )}"
                           .avatar="${f.avatar}"
                           icon="chevron-right"
-                          .initials="${[f.firstName,f.lastName].join(' ')}">
+                          .initials="${[f.firstName, f.lastName].join(" ")}"
+                        >
                           <elmsln-studio-link
                             id="feed-${f.id}"
                             aria-describedby="feed-${f.id}-desc"
                             slot="label"
                             href="/portfolios/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
                           >
-                            ${[f.firstName,f.lastName].join(' ')}'s feedback on ${f.assignment}
+                            ${[f.firstName, f.lastName].join(" ")}'s feedback on
+                            ${f.assignment}
                           </elmsln-studio-link>
                           <span id="feed-${f.id}-desc" slot="description"
                             >${this.dateFormat(f.date)}</span
@@ -363,10 +366,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             ${(this.activity || []).slice(0, this.activityLoad).map(
               a => html`
                 <nav-card-item
-                  accent-color="${this.accentColor([a.firstName,a.lastName].join(' '))}" 
+                  accent-color="${this.accentColor(
+                    [a.firstName, a.lastName].join(" ")
+                  )}"
                   .avatar="${a.avatar}"
                   icon="chevron-right"
-                  .initials="${[a.firstName,a.lastName].join(' ')}">
+                  .initials="${[a.firstName, a.lastName].join(" ")}"
+                >
                   <elmsln-studio-link
                     id="act-${a.id}"
                     aria-describedby="act-${a.id}-desc"

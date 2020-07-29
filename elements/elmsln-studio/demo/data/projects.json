@@ -1,1 +1,57 @@
-{"project-1":{"id":"project-1","order":1,"lessonId":"lesson-1","project":"Hypertext Narrative Project","body":"Condimentum varius laoreet tempus orci libero? Felis sit pellentesque sed? Dolor ultricies neque phasellus lobortis est aenean erat eros fermentum. Facilisis est at. Ex lobortis per finibus semper ultrices mollis semper.","assignments":["assignment-2","assignment-3","assignment-4","assignment-5","assignment-6","assignment-7","assignment-8","assignment-9","assignment-10","assignment-11"]},"project-2":{"id":"project-2","order":1,"lessonId":"lesson-2","project":"Ritual Project","body":"Efficitur dolor ut velit sit ultricies. Viverra quis cursus. Condimentum tincidunt etiam dignissim ut amet ut quam sed aliquet metus tristique orci. Orci est volutpat condimentum. Convallis at placerat lobortis sit sed bibendum mi.","assignments":["assignment-14","assignment-15","assignment-16","assignment-17","assignment-18","assignment-19","assignment-20","assignment-21","assignment-22"]},"project-3":{"id":"project-3","order":1,"lessonId":"lesson-3","project":"Open Kit Project","body":"Nulla sollicitudin accumsan. Rutrum magnis sollicitudin diam metus libero pellentesque tempus vel vitae ut. Phasellus ullamcorper varius at eget feugiat consequat sit.","assignments":["assignment-25","assignment-26","assignment-27","assignment-28","assignment-29","assignment-30","assignment-31","assignment-32","assignment-33"]}}
+{
+  "project-1": {
+    "id": "project-1",
+    "order": 1,
+    "lessonId": "lesson-1",
+    "project": "Hypertext Narrative Project",
+    "body": "Condimentum varius laoreet tempus orci libero? Felis sit pellentesque sed? Dolor ultricies neque phasellus lobortis est aenean erat eros fermentum. Facilisis est at. Ex lobortis per finibus semper ultrices mollis semper.",
+    "assignments": [
+      "assignment-2",
+      "assignment-3",
+      "assignment-4",
+      "assignment-5",
+      "assignment-6",
+      "assignment-7",
+      "assignment-8",
+      "assignment-9",
+      "assignment-10",
+      "assignment-11"
+    ]
+  },
+  "project-2": {
+    "id": "project-2",
+    "order": 1,
+    "lessonId": "lesson-2",
+    "project": "Ritual Project",
+    "body": "Efficitur dolor ut velit sit ultricies. Viverra quis cursus. Condimentum tincidunt etiam dignissim ut amet ut quam sed aliquet metus tristique orci. Orci est volutpat condimentum. Convallis at placerat lobortis sit sed bibendum mi.",
+    "assignments": [
+      "assignment-14",
+      "assignment-15",
+      "assignment-16",
+      "assignment-17",
+      "assignment-18",
+      "assignment-19",
+      "assignment-20",
+      "assignment-21",
+      "assignment-22"
+    ]
+  },
+  "project-3": {
+    "id": "project-3",
+    "order": 1,
+    "lessonId": "lesson-3",
+    "project": "Open Kit Project",
+    "body": "Nulla sollicitudin accumsan. Rutrum magnis sollicitudin diam metus libero pellentesque tempus vel vitae ut. Phasellus ullamcorper varius at eget feugiat consequat sit.",
+    "assignments": [
+      "assignment-25",
+      "assignment-26",
+      "assignment-27",
+      "assignment-28",
+      "assignment-29",
+      "assignment-30",
+      "assignment-31",
+      "assignment-32",
+      "assignment-33"
+    ]
+  }
+}

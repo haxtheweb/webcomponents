@@ -73,8 +73,12 @@ class ElmslnStudio extends router(
         <elmsln-studio-submissions
           ?demo-mode="${this.demoMode}"
           route="submissions"
-          .submissions="${Object.keys(this.submissions || {} ).map(key=>this.submissions[key])}"
-          .comments="${Object.keys(this.discussion || {} ).map(key=>this.discussion[key])}"
+          .submissions="${Object.keys(this.submissions || {}).map(
+            key => this.submissions[key]
+          )}"
+          .comments="${Object.keys(this.discussion || {}).map(
+            key => this.discussion[key]
+          )}"
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
           assignment-filter="${this.query.assignment || ""}"
@@ -224,24 +228,36 @@ class ElmslnStudio extends router(
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "params") console.log("params", this.params);
       if (propName === "query") console.log("query", this.query);
-      if (propName === "usersSource") this.fetchData(this.usersSource,"users");
-      if (propName === "profileSource") this.fetchData(this.profileSource,"profile");
-      if (propName === "activitySource") this.fetchData(this.activitySource,"activity");
-      if (propName === "lessonsSource") this.fetchData(this.lessonsSource,"lessons");
-      if (propName === "projectsSource") this.fetchData(this.projectsSource,"projects");
-      if (propName === "assignmentsSource") this.fetchData(this.assignmentsSource,"assignments");
-      if (propName === "portfoliosSource") this.fetchData(this.portfoliosSource,"portfolios");
-      if (propName === "submissionsSource") this.fetchData(this.submissionsSource,"submissions");
-      if (propName === "discussionSource") this.fetchData(this.discussionSource,"discussion");
+      if (propName === "usersSource") this.fetchData(this.usersSource, "users");
+      if (propName === "profileSource")
+        this.fetchData(this.profileSource, "profile");
+      if (propName === "activitySource")
+        this.fetchData(this.activitySource, "activity");
+      if (propName === "lessonsSource")
+        this.fetchData(this.lessonsSource, "lessons");
+      if (propName === "projectsSource")
+        this.fetchData(this.projectsSource, "projects");
+      if (propName === "assignmentsSource")
+        this.fetchData(this.assignmentsSource, "assignments");
+      if (propName === "portfoliosSource")
+        this.fetchData(this.portfoliosSource, "portfolios");
+      if (propName === "submissionsSource")
+        this.fetchData(this.submissionsSource, "submissions");
+      if (propName === "discussionSource")
+        this.fetchData(this.discussionSource, "discussion");
     });
   }
-  get portfolio(){
+  get portfolio() {
     return this.params.portfolio ? this.portfolios[this.params.portfolio] : {};
   }
-  get submissionFeedback(){
-    return !this.query.submission 
-      ? [] 
-      : Object.keys(this.discussion || {}).filter(key=>this.discussion[key].submissionId == this.query.submission).map(key=>this.discussion[key]);
+  get submissionFeedback() {
+    return !this.query.submission
+      ? []
+      : Object.keys(this.discussion || {})
+          .filter(
+            key => this.discussion[key].submissionId == this.query.submission
+          )
+          .map(key => this.discussion[key]);
   }
 
   _filterBy(lookup, query, prefix = "") {
@@ -249,12 +265,12 @@ class ElmslnStudio extends router(
       ? lookup[`${prefix}${query}`]
       : {};
   }
-  fetchData(source,propName,params) {
+  fetchData(source, propName, params) {
     fetch(this._getPath(source, params))
       .then(response => response.json())
       .then(data => {
-        console.log(`${propName} Loaded`,data);
-        this[propName] = data
+        console.log(`${propName} Loaded`, data);
+        this[propName] = data;
       });
   }
   _getPath(path, params) {

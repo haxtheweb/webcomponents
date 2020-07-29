@@ -315,7 +315,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   <iron-icon icon="zoom-in"></iron-icon>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">
-                  ${[s.firstName,s.lastName].join(' ')}
+                  ${[s.firstName, s.lastName].join(" ")}
                 </div>
                 <div slot="corner" id="date-${s.id}">
                   ${this.list
@@ -337,11 +337,13 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     href="${this.getActivityLink(s)}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
-                    Discussion${!s.feedback || s.feedback.length < 1 ? `` : `: ${s.feedback.length}`}
+                    Discussion${!s.feedback || s.feedback.length < 1
+                      ? ``
+                      : `: ${s.feedback.length}`}
                   </elmsln-studio-link>
                   <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${this.getActivityLink(s,true)}"
+                    href="${this.getActivityLink(s, true)}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
@@ -448,8 +450,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   }
   get projectOptions() {
     let options = { "": "All" };
-    (this.submissions || []).filter(i => i.project)
-    .forEach(i => (options[i.projectId] = i.project));
+    (this.submissions || [])
+      .filter(i => i.project)
+      .forEach(i => (options[i.projectId] = i.project));
     return options;
   }
   get filteredSubmissions() {

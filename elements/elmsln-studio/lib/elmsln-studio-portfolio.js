@@ -37,8 +37,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         #breadcrumb {
           margin: 0 0 var(--elmsln-studio-margin, 20px);
           flex: 1 0 100%;
-          --elmsln-studio-link-Color: var(--simple-colors-fixed-theme-light-blue-8);
-          --elmsln-studio-link-focus-Color: var(--simple-colors-fixed-theme-light-blue-9);
+          --elmsln-studio-link-Color: var(
+            --simple-colors-fixed-theme-light-blue-8
+          );
+          --elmsln-studio-link-focus-Color: var(
+            --simple-colors-fixed-theme-light-blue-9
+          );
         }
         #breadcrumb > * {
           display: inline;
@@ -60,7 +64,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
-        #project-buttons, 
+        #project-buttons,
         .submission-header {
           position: relative;
           height: 40px;
@@ -183,8 +187,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         threaded-discussion {
           background-color: #eaeaea;
           padding: 1px;
-          --threaded-discussion-comment-button-BackgroundColor: var(--simple-colors-fixed-theme-light-blue-8);
-          --threaded-discussion-comment-button-focus-BackgroundColor: var(--simple-colors-fixed-theme-light-blue-9);
+          --threaded-discussion-comment-button-BackgroundColor: var(
+            --simple-colors-fixed-theme-light-blue-8
+          );
+          --threaded-discussion-comment-button-focus-BackgroundColor: var(
+            --simple-colors-fixed-theme-light-blue-9
+          );
         }
         @media screen and (min-width: 600px) {
           :host {
@@ -223,159 +231,187 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
   // render function
   render() {
-    return !this.portfolio ? '' : html`
-      <div id="breadcrumb">
-        <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
-        <span> > </span>
-        ${!this.portfolio.projectId || !this.portfolio.project ? `` :html` 
-          <elmsln-studio-link href="${`/submissions?project=${this.portfolio.projectId}`}">${this.portfolio.project}</elmsln-studio-link>
-          <span> > </span> 
-        `}
-        ${!this.assignment || !this.assignment.assignment ? `` :html` 
-          <elmsln-studio-link href="${`/submissions?${!this.portfolio.projectId || !this.portfolio.project ? `` : `project=${this.portfolio.projectId}&`}assignment=${this.assignment.assignmentId}`}">${this.assignment.assignment}</elmsln-studio-link>
-          <span> > </span>
-        `}
-        <span>${this.fullName(this.portfolio)}</span>
-      </div>
-      <div
-        id="primary"
-        ?hidden="${!this.portfolio}"
-        class="${this.comment && this.comment !== "" ? "view-discussion" : ""}"
-      >
-        <article id="portfolio-project">
-          <h1>
-            <lrndesign-avatar
-              accent-color="${this.accentColor(this.fullName(this.portfolio))}"
-              aria-hidden="true"
-              label="${this.fullName(this.portfolio)}"
-              .src="${this.portfolio && this.portfolio.avatar
-                ? this.portfolio.avatar
-                : undefined}"
-              two-chars
+    return !this.portfolio
+      ? ""
+      : html`
+          <div id="breadcrumb">
+            <elmsln-studio-link href="/submissions"
+              >Submissions</elmsln-studio-link
             >
-            </lrndesign-avatar>
-            <span class="student-name">${this.fullName(this.portfolio)}</span>
-            <span class="project-name">${this.portfolio.project}</span>
-          </h1>
-          <div id="project-buttons">
-            <button
-              id="sort"
-              aria-pressed="${this.sortLatest ? "false" : "true"}"
-              class="${!this.sortLatest ? '' : 'sort-latest'}"
-              @click="${e => (this.sortLatest = !this.sortLatest)}"
-              controls="portfolio-project"
-            >
-              <iron-icon icon="sort"></iron-icon>
-              <span class="sr-only">Sort Submissions ${!this.sortLatest ? 'Oldest First' : 'Newest First'}</span>
-            </button>
-          </div>
-          ${!this.portfolio
-            ? ``
-            : (this.sortedSubmissions).map(
-                s => html`
-                  <section
-                    class="${this.submissionFilter === s.id
-                      ? "section-discussion"
-                      : ""}"
+            <span> > </span>
+            ${!this.portfolio.projectId || !this.portfolio.project
+              ? ``
+              : html`
+                  <elmsln-studio-link
+                    href="${`/submissions?project=${this.portfolio.projectId}`}"
+                    >${this.portfolio.project}</elmsln-studio-link
                   >
-                    <div class="submission-header">
-                      <h2 id="sub-${s.id}">
-                        <span class="assignment-name">${s.assignment}</span>
-                        <span class="submission-date"
-                          >Submitted: ${this.dateFormat(s.date)}</span
-                        >
-                      </h2>
-                      <elmsln-studio-button
-                        class="view-discussion-button"
-                        aria-describedby="sub-${s.id}"
-                        icon="${this._getFeedbackIcon(s.feedback.length)}"
-                        path="${this.getActivityLink(s,this.comment)}"
+                  <span> > </span>
+                `}
+            ${!this.assignment || !this.assignment.assignment
+              ? ``
+              : html`
+                  <elmsln-studio-link
+                    href="${`/submissions?${
+                      !this.portfolio.projectId || !this.portfolio.project
+                        ? ``
+                        : `project=${this.portfolio.projectId}&`
+                    }assignment=${this.assignment.assignmentId}`}"
+                    >${this.assignment.assignment}</elmsln-studio-link
+                  >
+                  <span> > </span>
+                `}
+            <span>${this.fullName(this.portfolio)}</span>
+          </div>
+          <div
+            id="primary"
+            ?hidden="${!this.portfolio}"
+            class="${this.comment && this.comment !== ""
+              ? "view-discussion"
+              : ""}"
+          >
+            <article id="portfolio-project">
+              <h1>
+                <lrndesign-avatar
+                  accent-color="${this.accentColor(
+                    this.fullName(this.portfolio)
+                  )}"
+                  aria-hidden="true"
+                  label="${this.fullName(this.portfolio)}"
+                  .src="${this.portfolio && this.portfolio.avatar
+                    ? this.portfolio.avatar
+                    : undefined}"
+                  two-chars
+                >
+                </lrndesign-avatar>
+                <span class="student-name"
+                  >${this.fullName(this.portfolio)}</span
+                >
+                <span class="project-name">${this.portfolio.project}</span>
+              </h1>
+              <div id="project-buttons">
+                <button
+                  id="sort"
+                  aria-pressed="${this.sortLatest ? "false" : "true"}"
+                  class="${!this.sortLatest ? "" : "sort-latest"}"
+                  @click="${e => (this.sortLatest = !this.sortLatest)}"
+                  controls="portfolio-project"
+                >
+                  <iron-icon icon="sort"></iron-icon>
+                  <span class="sr-only"
+                    >Sort Submissions
+                    ${!this.sortLatest ? "Oldest First" : "Newest First"}</span
+                  >
+                </button>
+              </div>
+              ${!this.portfolio
+                ? ``
+                : this.sortedSubmissions.map(
+                    s => html`
+                      <section
+                        class="${this.submissionFilter === s.id
+                          ? "section-discussion"
+                          : ""}"
                       >
-                        <span class="sr-only"
-                          >Give / View Feedback (${s.feedback.length})</span
-                        >
-                      </elmsln-studio-button>
-                    </div>
-                    <div class="submission-body">
-                      ${s.links && s.links.length > 0
-                        ? html`
-                            <ul class="submission-links">
-                              ${s.links.map(
-                                link => html`
-                                  <li>
-                                    <elmsln-studio-link
-                                      href="${link.url}"
-                                      target="_blank"
-                                    >
-                                      <iron-icon
-                                        aria-hidden="true"
-                                        icon="${link.type === "pdf"
-                                          ? "hax:file-pdf"
-                                          : "link"}"
-                                      ></iron-icon>
-                                      ${link.text || link.url}
-                                    </elmsln-studio-link>
-                                  </li>
-                                `
-                              )}
-                            </ul>
-                          `
-                        : s.sources && s.sources.length > 0
-                        ? html`
-                            <lrndesign-gallery
-                              class="submission-image"
-                              layout="grid"
-                              .sources="${s.sources}"
-                            ></lrndesign-gallery>
-                          `
-                        : html`
-                            ${s.body}
-                          `}
-                    </div>
-                  </section>
-                `
-              )}
-        </article>
-      </div>
-      <div
-        id="secondary"
-        ?hidden=${!this.portfolio || !this.comment || this.comment === ""}
-      >
-        <aside>
-          <div class="instructions callout">
-            <h2 class="callout-label">
-              <iron-icon icon="info" aria-hidden="true"></iron-icon>
-              Giving Feedback
-            </h2>
-            <div>
-              <ul>
-                <li>Things to look for: blah, blah, blah</li>
-                <li>How to say it: blah, blah, blah</li>
-                <li>Other info.</li>
-              </ul>
-            </div>
+                        <div class="submission-header">
+                          <h2 id="sub-${s.id}">
+                            <span class="assignment-name">${s.assignment}</span>
+                            <span class="submission-date"
+                              >Submitted: ${this.dateFormat(s.date)}</span
+                            >
+                          </h2>
+                          <elmsln-studio-button
+                            class="view-discussion-button"
+                            aria-describedby="sub-${s.id}"
+                            icon="${this._getFeedbackIcon(s.feedback.length)}"
+                            path="${this.getActivityLink(s, this.comment)}"
+                          >
+                            <span class="sr-only"
+                              >Give / View Feedback (${s.feedback.length})</span
+                            >
+                          </elmsln-studio-button>
+                        </div>
+                        <div class="submission-body">
+                          ${s.links && s.links.length > 0
+                            ? html`
+                                <ul class="submission-links">
+                                  ${s.links.map(
+                                    link => html`
+                                      <li>
+                                        <elmsln-studio-link
+                                          href="${link.url}"
+                                          target="_blank"
+                                        >
+                                          <iron-icon
+                                            aria-hidden="true"
+                                            icon="${link.type === "pdf"
+                                              ? "hax:file-pdf"
+                                              : "link"}"
+                                          ></iron-icon>
+                                          ${link.text || link.url}
+                                        </elmsln-studio-link>
+                                      </li>
+                                    `
+                                  )}
+                                </ul>
+                              `
+                            : s.sources && s.sources.length > 0
+                            ? html`
+                                <lrndesign-gallery
+                                  class="submission-image"
+                                  layout="grid"
+                                  .sources="${s.sources}"
+                                ></lrndesign-gallery>
+                              `
+                            : html`
+                                ${s.body}
+                              `}
+                        </div>
+                      </section>
+                    `
+                  )}
+            </article>
           </div>
-          <h2 class="discussion-label">
-            Feedback
-          </h2>
-          <div class="discussion callout">
-            <p class="callout-label">
-              <iron-icon
-                icon="communication:comment"
-                aria-hidden="true"
-              ></iron-icon>
-              Post New Feedback
-            </p>
-            <threaded-discussion 
-              comment-icon="send"
-              ?demo="${this.demoMode}"
-              .data="${this.submission || []}"
-              latest>
-            </threaded-discussion>
+          <div
+            id="secondary"
+            ?hidden=${!this.portfolio || !this.comment || this.comment === ""}
+          >
+            <aside>
+              <div class="instructions callout">
+                <h2 class="callout-label">
+                  <iron-icon icon="info" aria-hidden="true"></iron-icon>
+                  Giving Feedback
+                </h2>
+                <div>
+                  <ul>
+                    <li>Things to look for: blah, blah, blah</li>
+                    <li>How to say it: blah, blah, blah</li>
+                    <li>Other info.</li>
+                  </ul>
+                </div>
+              </div>
+              <h2 class="discussion-label">
+                Feedback
+              </h2>
+              <div class="discussion callout">
+                <p class="callout-label">
+                  <iron-icon
+                    icon="communication:comment"
+                    aria-hidden="true"
+                  ></iron-icon>
+                  Post New Feedback
+                </p>
+                <threaded-discussion
+                  comment-icon="send"
+                  ?demo="${this.demoMode}"
+                  .data="${this.submission || []}"
+                  latest
+                >
+                </threaded-discussion>
+              </div>
+            </aside>
           </div>
-        </aside>
-      </div>
-    `;
+        `;
   }
 
   // properties available to the custom element for data binding
@@ -428,20 +464,19 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     super.connectedCallback();
   }
 
-  get sortedSubmissions(){
-    return !this.portfolio.submissions 
-      ? [] 
-      : this.sortDates(this.portfolio.submissions,this.sortLatest);
+  get sortedSubmissions() {
+    return !this.portfolio.submissions
+      ? []
+      : this.sortDates(this.portfolio.submissions, this.sortLatest);
   }
-  get assignment(){
-    let filter = !this.submissionFilter 
-      || !this.portfolio 
-      || !this.portfolio.submissions 
-      ? [] 
-      : this.portfolio.submissions.filter(s=>s.id === this.submissionFilter);
-    return !filter 
-      ? false 
-      : filter[0];
+  get assignment() {
+    let filter =
+      !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
+        ? []
+        : this.portfolio.submissions.filter(
+            s => s.id === this.submissionFilter
+          );
+    return !filter ? false : filter[0];
   }
   _getFeedbackIcon(comments) {
     if (comments === 0) {
