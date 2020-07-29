@@ -415,7 +415,7 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
         !target.includes(
           this.shadowRoot.querySelector("#haxcmsuserstylesmenu")
         ) &&
-        e.originalTarget.tagName !== "BUTTON"
+        target.tagName !== "BUTTON"
       ) {
         this.hideUserStylesMenu = true;
       }

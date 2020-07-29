@@ -836,7 +836,7 @@ export function getRange(root) {
 
   const initialText = window.getSelection().toString();
   const result = internalGetShadowSelection(root);
-  const rs = (result.range && result.range.toString()) || null;
+  const rs = (result && result.range && result.range.toString()) || null;
   if (rs !== null && rs !== initialText) {
     // TODO: sometimes triggers on single-char hack etc
 
@@ -861,7 +861,7 @@ export function internalGetShadowSelection(root) {
   const range = document.createRange();
 
   const s = window.getSelection();
-  if (!s.containsNode(root.host, true)) {
+  if (s && !s.containsNode(root.host, true)) {
     return { range: null, mode: "none" };
   }
 

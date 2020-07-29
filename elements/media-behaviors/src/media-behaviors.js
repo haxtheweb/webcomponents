@@ -107,7 +107,6 @@ window.MediaBehaviors.Video = {
       ],
       isLocal = false;
     // some common ones
-    console.log(source.indexOf("vimeo"));
     if (source.indexOf("vimeo") != -1) {
       return "vimeo";
     } else if (

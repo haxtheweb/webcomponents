@@ -144,12 +144,12 @@ class WikipediaQuery extends LitElement {
         groups: ["Content", "Creative Commons"],
         handles: [
           {
-            type: "content",
+            type: "wikipedia",
+            type_exclusive: true,
             title: "search"
           },
           {
-            type: "wikipedia",
-            type_exclusive: true,
+            type: "content",
             title: "search"
           }
         ],
