@@ -46,16 +46,18 @@ window.loremdata.words =
 
 class LoremData extends LitElement {
   static get styles() {
-    return [css`
-      label {
-        font-size: 80%;
-        font-family: sans-serif;
-      }
-      textarea {
-        width: 100%;
-        height: 200px;
-      }
-    `];
+    return [
+      css`
+        label {
+          font-size: 80%;
+          font-family: sans-serif;
+        }
+        textarea {
+          width: 100%;
+          height: 200px;
+        }
+      `
+    ];
   }
 
   static get tag() {
@@ -75,44 +77,51 @@ class LoremData extends LitElement {
     this.schemas = {};
   }
 
-  render(){
+  render() {
     console.log(this.data);
     return html`
       <button @click="${this.saveAll}">Save All</button>
-      ${Object.keys(this.schemas || []).map(key=>html`
-        <p>
-          <label>
-            <a 
-              href="${this.saveDataUrl(this.schemas[key])}" 
-              download="${key}">${key}:
-            </a>
-            <br>
-            <textarea>${this.getJson(this.schemas[key])}</textarea>
-          </label>
-        </p>
-      `)}
+      ${Object.keys(this.schemas || []).map(
+        key => html`
+          <p>
+            <label>
+              <a href="${this.saveDataUrl(this.schemas[key])}" download="${key}"
+                >${key}:
+              </a>
+              <br />
+              <textarea>${this.getJson(this.schemas[key])}</textarea>
+            </label>
+          </p>
+        `
+      )}
       <button @click="${this.saveAll}">Save All</button>
     `;
   }
-  
-  saveAll(){
-    if(this.shadowRoot && this.shadowRoot.querySelectorAll('a') && confirm(`Save the following: ${Object.keys(this.schemas).join(', ')}?`)) {
-      this.shadowRoot.querySelectorAll('a').forEach(a=>a.click());
+
+  saveAll() {
+    if (
+      this.shadowRoot &&
+      this.shadowRoot.querySelectorAll("a") &&
+      confirm(`Save the following: ${Object.keys(this.schemas).join(", ")}?`)
+    ) {
+      this.shadowRoot.querySelectorAll("a").forEach(a => a.click());
     }
   }
 
-  getJson(schema){
-    return JSON.stringify(this.randomType(schema))
+  getJson(schema) {
+    return JSON.stringify(this.randomType(schema));
   }
-  
-  saveDataUrl(schema){
+
+  saveDataUrl(schema) {
     let json = this.getJson(schema),
-      blob = new Blob([json], {type: "octet/stream"});
-    return window.URL.createObjectURL(blob); 
+      blob = new Blob([json], { type: "octet/stream" });
+    return window.URL.createObjectURL(blob);
   }
-  get data(){
+  get data() {
     let data = {};
-    Object.keys(this.schemas || []).forEach(key=>data[key] = this.randomType(this.schemas[key]));
+    Object.keys(this.schemas || []).forEach(
+      key => (data[key] = this.randomType(this.schemas[key]))
+    );
     return data;
   }
   /**
@@ -125,8 +134,8 @@ class LoremData extends LitElement {
     return simple && simple.colors ? Object.keys(simple.colors) : false;
   }
 
-  filterQuery(records,filter){
-    return records.filter(record,index=>filter(record,index));
+  filterQuery(records, filter) {
+    return records.filter(record, index => filter(record, index));
   }
   /**
    * gets date x days from start date
@@ -350,29 +359,35 @@ class LoremData extends LitElement {
   }
 
   randomImage(aspect, greyscale, topic, multiple) {
-    return topic && ["man","woman","person"].includes(topic)
-      ? this.randomProfileImage(aspect,topic)
+    return topic && ["man", "woman", "person"].includes(topic)
+      ? this.randomProfileImage(aspect, topic)
       : typeof multiple === typeof undefined
       ? this.randomPlaceImg(aspect, greyscale, topic)
       : typeof multiple === typeof undefined
       ? this.randomPicsum(aspect, greyscale, multiple)
-      : this.randomFlickr(aspect, [topic], false, multiple);}
+      : this.randomFlickr(aspect, [topic], false, multiple);
+  }
 
   randomImageData(aspect, greyscale, topic, multiple) {
     return {
       src: this.randomImage(aspect, greyscale, topic, multiple),
-      alt: `Random ${topic ? `${topic} ` : ''}image${!multiple ? `` :` #${multiple}`}`,
-      longdesc: `This is a long description for image${!multiple ? `` :` #${multiple}`}. ${this.randomParagraph(1,5)}`
+      alt: `Random ${topic ? `${topic} ` : ""}image${
+        !multiple ? `` : ` #${multiple}`
+      }`,
+      longdesc: `This is a long description for image${
+        !multiple ? `` : ` #${multiple}`
+      }. ${this.randomParagraph(1, 5)}`
     };
   }
 
-  randomProfileImage(aspect,topic,multiple){
-    let aspects =  aspect.split('/'), 
-      area = parseInt(aspects[0])*parseInt(aspects[1]),
+  randomProfileImage(aspect, topic, multiple) {
+    let aspects = aspect.split("/"),
+      area = parseInt(aspects[0]) * parseInt(aspects[1]),
       size = area < 250 ? "thumb/" : area < 640 ? "med/" : "",
       random = Math.random() < 0.5 ? "men" : "women",
       person = topic === "man" ? "men" : topic === "woman" ? "women" : random;
-    return `https://randomuser.me/api/portraits/${size}${person}/${multiple || this.randomNumber(1,90)}.jpg`;
+    return `https://randomuser.me/api/portraits/${size}${person}/${multiple ||
+      this.randomNumber(1, 90)}.jpg`;
   }
 
   /**
@@ -427,7 +442,9 @@ class LoremData extends LitElement {
   randomParagraph(min = 3, max = 7, wordMinPerSentencce, wordMaxPerSentencce) {
     let paragraph = [];
     for (let i = this.randomNumber(min, max); i > 0; i--) {
-      paragraph.push(this.randomSentence(wordMinPerSentencce, wordMaxPerSentencce));
+      paragraph.push(
+        this.randomSentence(wordMinPerSentencce, wordMaxPerSentencce)
+      );
     }
     return `${paragraph.join(" ")}`;
   }
@@ -459,7 +476,7 @@ class LoremData extends LitElement {
         case "color":
           val = this.randomColor();
           break;
-        case "data": 
+        case "data":
           return schema.data;
           break;
         case "date":

@@ -95,12 +95,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         }
         .view-discussion section {
           opacity: 0.4;
+          display: none;
         }
         .view-discussion section.section-discussion {
-          border: 4px solid #95989a;
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
-            calc(0.5 * var(--elmsln-studio-margin, 20px))
-            var(--elmsln-studio-margin, 20px);
+          display: block;
           opacity: 1;
         }
         h2 {
@@ -194,11 +192,27 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             align-items: flex-start;
             justify-content: space-between;
           }
+          #primary {
+            flex: 1 0 100%;
+          }
           #primary.view-discussion {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
-          #primary {
-            flex: 1 0 100%;
+          #primary:not(.view-discussion) {
+            max-width: calc(1000px - 2 * var(--elmsln-studio-margin, 20px));
+            margin: 0 auto;
+            border: 1px solid #eaeaea;
+            padding: var(--elmsln-studio-margin, 20px);
+          }
+          .view-discussion section {
+            display: block;
+          }
+          .view-discussion section.section-discussion {
+            border: 4px solid #95989a;
+            padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
+              calc(0.5 * var(--elmsln-studio-margin, 20px))
+              var(--elmsln-studio-margin, 20px);
+            opacity: 1;
           }
           #secondary {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
@@ -209,19 +223,19 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
   // render function
   render() {
-    return html`
+    return !this.portfolio ? '' : html`
       <div id="breadcrumb">
         <elmsln-studio-link href="/submissions">Submissions</elmsln-studio-link>
-        ${!this.portfolio || !this.portfolio.projectId ? `` :html` 
-          <span> > </span>
+        <span> > </span>
+        ${!this.portfolio.projectId || !this.portfolio.project ? `` :html` 
           <elmsln-studio-link href="${`/submissions?project=${this.portfolio.projectId}`}">${this.portfolio.project}</elmsln-studio-link>
-          ${!this.assignment || !this.assignment.assignment ? `` :html` 
-            <span> > </span> 
-            <elmsln-studio-link href="${`/submissions?project=${this.portfolio.projectId}&assignment=${this.assignment.assignmentId}`}">${this.assignment.assignment}</elmsln-studio-link>
-          `}
-          <span> > </span>
-          <span>${this.fullName(this.portfolio)}</span>
+          <span> > </span> 
         `}
+        ${!this.assignment || !this.assignment.assignment ? `` :html` 
+          <elmsln-studio-link href="${`/submissions?${!this.portfolio.projectId || !this.portfolio.project ? `` : `project=${this.portfolio.projectId}&`}assignment=${this.assignment.assignmentId}`}">${this.assignment.assignment}</elmsln-studio-link>
+          <span> > </span>
+        `}
+        <span>${this.fullName(this.portfolio)}</span>
       </div>
       <div
         id="primary"
@@ -275,7 +289,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                         class="view-discussion-button"
                         aria-describedby="sub-${s.id}"
                         icon="${this._getFeedbackIcon(s.feedback.length)}"
-                        path="${s.link}&comment=show"
+                        path="${this.getActivityLink(s,this.comment)}"
                       >
                         <span class="sr-only"
                           >Give / View Feedback (${s.feedback.length})</span
@@ -355,7 +369,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             <threaded-discussion 
               comment-icon="send"
               ?demo="${this.demoMode}"
-              .data="${this.submission.feedback || []}"
+              .data="${this.submission || []}"
               latest>
             </threaded-discussion>
           </div>
@@ -440,7 +454,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
-    console.log("portfolio", this.portfolio, this.feedback, !this.submission || !this.submission.feedback ? '' : this.submission.feedback);
+    console.log("portfolio", this.portfolio, this.feedback, this.submission);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);

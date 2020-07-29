@@ -276,15 +276,15 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         </simple-fields-field>
         <div id="layout">
           <button
-            aria-pressed="${this.grid ? "false" : "true"}"
-            @click="${e => (this.grid = false)}"
+            aria-pressed="${this.list ? "true" : "false"}"
+            @click="${e => (this.list = true)}"
           >
             <iron-icon icon="icons:view-list"></iron-icon>
             <span class="sr-only">display as list</span>
           </button>
           <button
-            aria-pressed="${this.grid ? "true" : "false"}"
-            @click="${e => (this.grid = true)}"
+            aria-pressed="${this.list ? "false" : "true"}"
+            @click="${e => (this.list = false)}"
           >
             <iron-icon icon="icons:view-module"></iron-icon>
             <span class="sr-only">display as grid</span>
@@ -292,7 +292,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         </div>
       </div>
       <div id="primary">
-        <div id="cards" class="${this.grid ? "grid" : "list"}">
+        <div id="cards" class="${this.list ? "list" : "grid"}">
           <div
             class="no-submissions"
             ?hidden="${this.filteredSubmissions.length > 0}"
@@ -304,28 +304,23 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
               <accent-card
                 no-border
                 class="card submission-card"
-                image-src="${s.image && s.image.src ? s.image.src : ""}"
-                ?horizontal="${s.feature || !this.grid ? true : false}"
-                image-align="${this._getAlign(
-                  s.image && s.image.gravity ? s.image.gravity : undefined
-                )}"
-                image-valign="${this._getValign(
-                  s.image && s.image.gravity ? s.image.gravity : undefined
-                )}"
-                .gravity="${s.image && s.image.gravity
-                  ? s.image.gravity
-                  : undefined}"
+                image-src="${s.image || ""}"
+                .image-alt="${s.imageAlt || undefined}"
+                ?horizontal="${s.feature || this.list ? true : false}"
+                .image-align="${this._getAlign(s.imageGravity || undefined)}"
+                .image-valign="${this._getValign(s.imageGravity || undefined)}"
+                .gravity="${s.imageGravity || undefined}"
               >
                 <div slot="image-corner" class="image-zoom">
                   <iron-icon icon="zoom-in"></iron-icon>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">
-                  ${s.firstName} ${s.lastName}
+                  ${[s.firstName,s.lastName].join(' ')}
                 </div>
                 <div slot="corner" id="date-${s.id}">
-                  ${this.grid
-                    ? this.dateFormat(s.date, "short")
-                    : this.dateFormat(s.date)}
+                  ${this.list
+                    ? this.dateFormat(s.date)
+                    : this.dateFormat(s.date, "short")}
                 </div>
                 <div slot="subheading" id="assignment-${s.id}">
                   ${s.assignment}
@@ -339,14 +334,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 <div slot="footer">
                   <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${s.link}&comment=true"
+                    href="${this.getActivityLink(s)}"
                   >
                     <iron-icon icon="communication:comment"></iron-icon>
                     Discussion${!s.feedback || s.feedback.length < 1 ? `` : `: ${s.feedback.length}`}
                   </elmsln-studio-link>
                   <elmsln-studio-link
                     aria-describedby="student-${s.id} date-${s.id} assignment-${s.id} project${s.id}"
-                    href="${s.link}"
+                    href="${this.getActivityLink(s,true)}"
                   >
                     <iron-icon icon="visibility"></iron-icon>
                     View
@@ -376,9 +371,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                     id="comment-${f.id}"
                     aria-describedby="comment-${f.id}-desc"
                     slot="label"
-                    href="${f.link}"
+                    href="${this.getActivityLink(f)}"
                   >
-                    ${f.title}
+                    ${this.getActivityTitle(f)}
                   </elmsln-studio-link>
                   <span id="comment-${f.id}" slot="description">
                     ${this.dateFormat(f.date)}
@@ -403,9 +398,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       comments: {
         type: Array
       },
-      grid: {
+      list: {
         type: Boolean,
-        attribute: "grid"
+        attribute: "list"
       },
       projectFilter: {
         type: String,
@@ -424,7 +419,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.grid = false;
+    this.list = false;
     this.submissions = [];
     this.comments = [];
     this.tag = ElmslnStudioSubmissions.tag;
@@ -453,7 +448,8 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   }
   get projectOptions() {
     let options = { "": "All" };
-    (this.submissions || []).forEach(i => (options[i.projectId] = i.project));
+    (this.submissions || []).filter(i => i.project)
+    .forEach(i => (options[i.projectId] = i.project));
     return options;
   }
   get filteredSubmissions() {

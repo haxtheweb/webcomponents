@@ -147,6 +147,26 @@ const ElmslnStudioUtilities = function(SuperClass) {
         ? colors[(i % 16) + 1]
         : colors[Math.floor(Math.random() * colors.length)];
     }
+
+    getActivityLink(activity, nocomment = false){
+      return activity.activity === "submission" 
+        ? `/portfolios/${activity.portfolioId || activity.id}${activity.portfolioId ? `?submission=${activity.id}` : ''}${nocomment ? '' : activity.portfolioId ? `&comment=true` : `?comment=true`}`
+        : activity.activity === "discussion" 
+        ? `/portfolios/${activity.portfolioId || activity.submissionId}${activity.portfolioId ? `?submission=${activity.submissionId}&` : '?'}comment=${activity.id}`
+        : `/portfolios/${activity.portfolioId || activity.submissionId}${activity.portfolioId ? `?submission=${activity.submissionId}&` : '?'}comment=${activity.feedbackId}`;
+    }
+  
+    getActivityTitle(activity){
+      return html`
+        ${[activity.firstName,activity.lastName].join(' ')} 
+        ${activity.activity === "submission" 
+          ? ` submitted ${activity.assignment}`
+          : activity.activity === "discussion" 
+          ? ` left feedback for ${[activity.creatorFirstName,activity.creatorLastName].join(' ')}`
+          : ` replied to ${[activity.reviewerFirstName,activity.reviewerLastName].join(' ')}`
+        }
+      `;
+    }
     /**
      * gets link of a given activity
      * @param {object} activity object
