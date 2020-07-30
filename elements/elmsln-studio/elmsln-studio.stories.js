@@ -26,7 +26,10 @@ export const Studio = () => {
     ElmslnStudio,
     {
       sourcePath: window.location,
-      assignmentsSource: new URL(`./demo/data/assignments.json`, import.meta.url),
+      assignmentsSource: new URL(
+        `./demo/data/assignments.json`,
+        import.meta.url
+      ),
       usersSource: new URL(`./demo/data/users.json`, import.meta.url),
       projectsSource: new URL(`./demo/data/projects.json`, import.meta.url),
       lessonsSource: new URL(`./demo/data/lessons.json`, import.meta.url),
