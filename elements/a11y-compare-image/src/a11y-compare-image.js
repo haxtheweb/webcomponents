@@ -114,7 +114,6 @@ class a11yCompareImage extends LitElement {
     `;
   }
 
-
   static get tag() {
     return "a11y-compare-image";
   }
