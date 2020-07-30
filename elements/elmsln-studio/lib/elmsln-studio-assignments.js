@@ -34,7 +34,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       css`
         :host {
           display: flex;
-          color: #2C2C2C;
+          color: #2c2c2c;
           margin: 0 auto;
           justify-content: center;
         }
@@ -42,27 +42,28 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
           color: #525252;
           margin-top: calc(0.5 * var(--elmsln-studio-margin, 20px));
         }
-        nav-card [slot=heading] {
-          color: #4D4D4D;
+        nav-card [slot="heading"] {
+          color: #4d4d4d;
         }
-        nav-card-item [slot=label] {
+        nav-card-item [slot="label"] {
           font-weight: normal;
         }
-        nav-card-item [slot=description] {
-          color: #95989A;
+        nav-card-item [slot="description"] {
+          color: #95989a;
         }
         .lesson {
           background-color: #eee;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           --lrndesign-avatar-border-radius: 0%;
           --nav-card-item-avatar-width: 20px;
-          border: 1px solid var(--accent-card-border-color, #ddd );
+          border: 1px solid var(--accent-card-border-color, #ddd);
           border-bottom: none;
         }
         .lesson > .assignment {
           background-color: #fff;
-          border: 1px solid var(--accent-card-border-color, #ddd );
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) var(--elmsln-studio-margin, 20px);
+          border: 1px solid var(--accent-card-border-color, #ddd);
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
+            var(--elmsln-studio-margin, 20px);
           margin-bottom: 15px;
         }
         @media screen and (min-width: 400px) {
@@ -78,10 +79,9 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
             width: 300px;
             flex: 0 0 300px;
             margin: 0 var(--elmsln-studio-margin, 20px);
-            border-bottom: 1px solid var(--accent-card-border-color, #ddd );
+            border-bottom: 1px solid var(--accent-card-border-color, #ddd);
           }
         }
-
       `
     ];
   }
@@ -93,23 +93,31 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     return html`
       <h1 class="sr-only">Assignments</h1>
       <div id="lessons">
-        ${Object.keys(this.lessons || {}).map(l => html`
-          <div class="lesson">
-            <h2>${this.lessons[l].lesson}</h2>
-            ${(this.lessons[l].assignments || []).map(p => !p.assignments 
-              ? html`<div class="assignment">${this.renderAssignment(p)}</div>`
-              : html`
-                <nav-card flat no-border class="card secondary">
-                  <span slot="heading" ?hidden="${!p.project}">
-                    ${p.project}
-                  </span>
-                  <div slot="linklist">
-                    ${this.sortDates(p.assignments || [],true).map(a =>this.renderAssignment(a))}
-                  </div>
-                </nav-card>
-            `)}
-          </div>
-        `)}
+        ${Object.keys(this.lessons || {}).map(
+          l => html`
+            <div class="lesson">
+              <h2>${this.lessons[l].lesson}</h2>
+              ${(this.lessons[l].assignments || []).map(p =>
+                !p.assignments
+                  ? html`
+                      <div class="assignment">${this.renderAssignment(p)}</div>
+                    `
+                  : html`
+                      <nav-card flat no-border class="card secondary">
+                        <span slot="heading" ?hidden="${!p.project}">
+                          ${p.project}
+                        </span>
+                        <div slot="linklist">
+                          ${this.sortDates(p.assignments || [], true).map(a =>
+                            this.renderAssignment(a)
+                          )}
+                        </div>
+                      </nav-card>
+                    `
+              )}
+            </div>
+          `
+        )}
       </div>
     `;
   }
@@ -119,11 +127,15 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       ? ``
       : html`
           <nav-card-item
-            accent-color="${!this._incomplete(assignment.id) ? "green" : this._late(assignment.date) ? "red" : "grey"}"
+            accent-color="${!this._incomplete(assignment.id)
+              ? "green"
+              : this._late(assignment.date)
+              ? "red"
+              : "grey"}"
             allow-grey
             avatar="${!this._incomplete(assignment.id)
               ? "assignment-turned-in"
-              : this._late(assignment.date) 
+              : this._late(assignment.date)
               ? "icons:assignment-late"
               : "assignment"}"
             invert

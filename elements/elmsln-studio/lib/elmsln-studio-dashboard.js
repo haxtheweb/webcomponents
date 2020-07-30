@@ -263,12 +263,15 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   ? "unknown"
                   : (this.profile.due || []).slice(0, 5).map(
                       a => html`
-                        <nav-card-item 
+                        <nav-card-item
                           accent-color="${this._late(a.date) ? "red" : "grey"}"
                           allow-grey
-                          avatar="${this._late(a.date) ? "icons:assignment-late" : "assignment"}"
+                          avatar="${this._late(a.date)
+                            ? "icons:assignment-late"
+                            : "assignment"}"
                           icon="chevron-right"
-                          invert>
+                          invert
+                        >
                           <elmsln-studio-link
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"

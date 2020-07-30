@@ -286,17 +286,24 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     this.lessonData.forEach((l, i) => {
       let assignDate = lessonDate,
         assignments = l.assignments.map((a, ai) => {
-        if (a.project) {
-          let project = this._project(a, l.id, ai, assignDate, lorem);
-          this.projects[a.id] = project;
-          assignDate = lorem.addDays(assignDate, a.assignments.length);
-          return project;
-        } else {
-          let assignment = this._assignment(a, l.id, undefined, ai, assignDate, lorem);
-          assignDate = lorem.addDays(assignDate, 1);
-          return assignment;
-        }
-      });
+          if (a.project) {
+            let project = this._project(a, l.id, ai, assignDate, lorem);
+            this.projects[a.id] = project;
+            assignDate = lorem.addDays(assignDate, a.assignments.length);
+            return project;
+          } else {
+            let assignment = this._assignment(
+              a,
+              l.id,
+              undefined,
+              ai,
+              assignDate,
+              lorem
+            );
+            assignDate = lorem.addDays(assignDate, 1);
+            return assignment;
+          }
+        });
       this.lessons[l.id] = {
         id: l.id,
         order: i,
