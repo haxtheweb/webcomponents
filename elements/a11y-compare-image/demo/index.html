@@ -48,6 +48,37 @@
         </a11y-compare-image>
       </template>
     </demo-snippet>
+
+    <demo-snippet>
+      <template>
+        <a11y-compare-image>
+          <h2 slot="heading">Default Compare Mode</h2>
+          <p slot="description">
+            The image on the top or when slider is moved all the way to the
+            right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>.
+            As you move the slider to the left, the image below it
+            reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.
+          </p>
+          <img slot="top"
+            aria-describedBy="cloudy"
+            src="./images/Beaver2.jpg"
+            alt="Matterhorn without snow">
+            <img slot="top"
+            aria-describedBy="cloudy"
+            src="./images/OldWoman.jpg"
+            alt="Matterhorn without snow">
+            <img slot="top"
+            aria-describedBy="cloudy"
+            src="./images/YoungWoman3.jpg"
+            alt="Matterhorn without snow">
+          <img slot="bottom"
+            aria-describedBy="snowy"
+            src="./images/Eagle500.jpg"
+            alt="Matterhorn with snow">
+        </a11y-compare-image>
+      </template>
+    </demo-snippet>
+
     <demo-snippet>
       <template>
         <a11y-compare-image opacity>
