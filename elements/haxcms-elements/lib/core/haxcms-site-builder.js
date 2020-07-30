@@ -384,6 +384,7 @@ class HAXCMSSiteBuilder extends LitElement {
     this.outlineLocation = "";
     this.activeItemLocation = "";
     import("./haxcms-site-router.js");
+    window.HAXCMS.requestAvailability().storePieces.siteBuilder = this;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
@@ -405,7 +406,7 @@ class HAXCMSSiteBuilder extends LitElement {
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);
         // get fresh data if not published / demo which is a form of published
-        if (this.editorBuilder.getContext() !== "published") {
+        if (window.HAXCMS.requestAvailability().getApplicationContext() !== "published") {
           this._timeStamp = Math.floor(Date.now() / 1000);
         } else {
           this._timeStamp = "";
@@ -680,7 +681,7 @@ window.HAXme = function(context = null) {
     };
   }
   if (context == "demo") {
-    window.__haxCMSContextDemo = true;
+    window.HAXCMSContext = true;
   }
   // apply context
   if (document.body) {

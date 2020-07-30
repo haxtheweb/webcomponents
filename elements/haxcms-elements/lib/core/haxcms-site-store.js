@@ -617,7 +617,12 @@ window.HAXCMS.requestAvailability();
 class HAXCMSSiteStore extends HTMLElement {
   constructor() {
     super();
+    // keep track of the HTML element pieces dedicated to different
+    // critical pieces of functionality like theme and editor builders.
+    this.storePieces = {};
+    // full on store that does the heavy lifting
     this.store = store;
+    // source for reading in the store if different than default site.json
     this.source = "";
     /**
      * When location changes update activeItem
@@ -687,6 +692,36 @@ class HAXCMSSiteStore extends HTMLElement {
         }
       }
     });
+  }
+  /**
+   * Try to get context of what backend is powering this
+   */
+  getApplicationContext() {
+    let context = "";
+    // @todo review if we even need this because newer contexts don't care
+    // figure out the context we need to apply for where the editing creds
+    // and API might come from
+    // beaker is a unique scenario
+    if (typeof DatArchive !== typeof undefined) {
+      context = "beaker";
+    } else {
+      switch(window.HAXCMSContext) {
+        case 'published':
+        case 'nodejs':
+        case 'php':
+        case '11ty':
+        case 'demo':
+        case 'desktop':
+          context = window.HAXCMSContext;
+        break;
+        default:
+          // we don't have one so assume it's php for now
+          // @notice change this in the future
+          context = "php";
+        break;
+      }
+    }
+    return context;
   }
   static get tag() {
     return "haxcms-site-store";

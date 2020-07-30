@@ -24,6 +24,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
    */
   constructor() {
     super();
+    window.HAXCMS.requestAvailability().storePieces.editorBuilder = this;
     this.applyContext();
     window.addEventListener(
       "haxcms-site-editor-loaded",
@@ -52,27 +53,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       super.disconnectedCallback();
     }
   }
-  /**
-   * Try to get context of what backend is powering this
-   */
-  getContext() {
-    let context = "";
-    // @todo review if we even need this because newer contexts don't care
-    // figure out the context we need to apply for where the editing creds
-    // and API might come from
-    if (typeof DatArchive !== typeof undefined) {
-      context = "beaker";
-    } else if (window.__haxCMSContextPublished === true) {
-      context = "published";
-    } else if (window.__haxCMSContextNode === true) {
-      context = "nodejs";
-    } else if (window.__haxCMSContextDemo === true) {
-      context = "demo";
-    } else {
-      context = "php";
-    }
-    return context;
-  }
+  
   editorLoaded(e) {
     if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
@@ -95,9 +76,9 @@ class HAXCMSEditorBuilder extends HTMLElement {
       this.__appliedContext = true;
       // this allows forced context
       if (context == null) {
-        context = this.getContext();
+        context = window.HAXCMS.requestAvailability().getApplicationContext();
       }
-      if (context === "php" || context === "nodejs") {
+      if (["php", "nodejs", "desktop"].includes(context)) {
         // append this script to global scope to show up via window
         // this is a unique case since it's server side generated in HAXCMS
         let script = document.createElement("script");
@@ -115,7 +96,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       }
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
-      if (context !== "published") {
+      if (!["published", "11ty"].includes(context)) {
         const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
         // import and set the tag based on the context
         store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
