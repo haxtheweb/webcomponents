@@ -34,52 +34,98 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       css`
         :host {
           display: flex;
-          align-items: stretch;
-          justify-content: flex-start;
-          overflow-x: auto;
+          color: #2C2C2C;
+          margin: 0 auto;
+          justify-content: center;
         }
-        :host > * {
-          width: 300px;
-          margin: 0 var(--elmsln-studio-margin, 20px);
+        h2 {
+          color: #525252;
+          margin-top: calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        nav-card [slot=heading] {
+          color: #4D4D4D;
+        }
+        nav-card-item [slot=label] {
+          font-weight: normal;
+        }
+        nav-card-item [slot=description] {
+          color: #95989A;
+        }
+        .lesson {
+          background-color: #eee;
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
           --lrndesign-avatar-border-radius: 0%;
           --nav-card-item-avatar-width: 20px;
+          border: 1px solid var(--accent-card-border-color, #ddd );
+          border-bottom: none;
         }
+        .lesson > .assignment {
+          background-color: #fff;
+          border: 1px solid var(--accent-card-border-color, #ddd );
+          padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) var(--elmsln-studio-margin, 20px);
+          margin-bottom: 15px;
+        }
+        @media screen and (min-width: 400px) {
+          #lessons {
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-start;
+            overflow-x: auto;
+            max-width: 100%;
+            padding: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          .lesson {
+            width: 300px;
+            flex: 0 0 300px;
+            margin: 0 var(--elmsln-studio-margin, 20px);
+            border-bottom: 1px solid var(--accent-card-border-color, #ddd );
+          }
+        }
+
       `
     ];
   }
   // render function
+  /*
+      
+   */
   render() {
     return html`
       <h1 class="sr-only">Assignments</h1>
-      ${Object.keys(this.projects || {}).map(
-        p => html`
-          <nav-card flat no-border class="card secondary">
-            <span slot="heading">${this.projects[p].project}</span>
-            <div slot="linklist">
-              ${this.sortDates(
-                Object.keys(this.projects[p].assignments || {}),
-                true
-              ).map(a =>
-                this.renderAssignment(this.projects[p].assignments[a])
-              )}
-            </div>
-          </nav-card>
-        `
-      )}
+      <div id="lessons">
+        ${Object.keys(this.lessons || {}).map(l => html`
+          <div class="lesson">
+            <h2>${this.lessons[l].lesson}</h2>
+            ${(this.lessons[l].assignments || []).map(p => !p.assignments 
+              ? html`<div class="assignment">${this.renderAssignment(p)}</div>`
+              : html`
+                <nav-card flat no-border class="card secondary">
+                  <span slot="heading" ?hidden="${!p.project}">
+                    ${p.project}
+                  </span>
+                  <div slot="linklist">
+                    ${this.sortDates(p.assignments || [],true).map(a =>this.renderAssignment(a))}
+                  </div>
+                </nav-card>
+            `)}
+          </div>
+        `)}
+      </div>
     `;
   }
 
   renderAssignment(assignment) {
-    console.log(assignment);
     return !assignment
       ? ``
       : html`
           <nav-card-item
-            accent-color="${this._incomplete(assignment.id) ? "grey" : "green"}"
+            accent-color="${!this._incomplete(assignment.id) ? "green" : this._late(assignment.date) ? "red" : "grey"}"
             allow-grey
-            avatar="${this._incomplete(assignment.id)
-              ? "assignment"
-              : "assignment-turned-in"}"
+            avatar="${!this._incomplete(assignment.id)
+              ? "assignment-turned-in"
+              : this._late(assignment.date) 
+              ? "icons:assignment-late"
+              : "assignment"}"
             invert
           >
             <elmsln-studio-link
@@ -98,15 +144,10 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   }
 
   _incomplete(id) {
-    console.log(
-      id,
-      this.profile.workDue,
-      this.profile.workDue.filter(s => s.id === id)
-    );
     return (
       this.profile &&
-      this.profile.workDue &&
-      this.profile.workDue.filter(s => s.id === id).length > 0
+      this.profile.due &&
+      this.profile.due.filter(s => s.id === id).length > 0
     );
   }
 
@@ -114,7 +155,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   static get properties() {
     return {
       ...super.properties,
-      projects: {
+      lessons: {
         type: Object
       },
       profile: {
@@ -127,13 +168,13 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
   constructor() {
     super();
     this.profile = {};
-    this.projects = {};
+    this.lessons = {};
     this.tag = ElmslnStudioAssignments.tag;
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
-    console.log("updated", this.projects, this.profile);
+    console.log("updated", this.lessons, this.profile);
   }
   // static get observedAttributes() {
   //   return [];

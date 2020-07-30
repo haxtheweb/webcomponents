@@ -32,10 +32,11 @@ const ElmslnStudioStyles = function(SuperClass) {
             align-items: stretch;
             justify-content: center;
             margin-bottom: var(--elmsln-studio-margin, 20px);
+            flex-wrap: wrap;
           }
           #studio-nav elmsln-studio-link {
             font-family: var(--elmsln-studio-FontFamily, "Roboto", sans-serif);
-            font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+            font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
             flex: 0 1 auto;
             color: #9d9d9d;
             padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
@@ -147,6 +148,7 @@ const ElmslnStudioStyles = function(SuperClass) {
             #studio-nav elmsln-studio-link {
               padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
                 calc(0.5 * var(--elmsln-studio-margin, 20px));
+              font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
             }
           }
           @media screen and (min-width: 900px) {

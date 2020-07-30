@@ -95,13 +95,13 @@ class ElmslnStudio extends router(
           comment="${this.query.comment || ""}"
         >
         </elmsln-studio-portfolio>
-        <!--<elmsln-studio-assignments
+        <elmsln-studio-assignments
           ?demo-mode="${this.demoMode}"
           route="assignments"
-          .projects="${this.projects || {}}"
+          .lessons="${this.lessons || {}}"
           .profile="${this.profile || {}}"
         >
-        </elmsln-studio-assignments>-->
+        </elmsln-studio-assignments>
       </elmsln-studio-main>
     `;
   }

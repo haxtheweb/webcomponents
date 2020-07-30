@@ -146,6 +146,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           .card.primary {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
+          .card.due {
+            --lrndesign-avatar-border-radius: 0%;
+            --nav-card-item-avatar-width: 20px;
+          }
         }
         @media screen and (min-width: 900px) {
           :host {
@@ -251,7 +255,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
               </tbody>
             </table>
           </accent-card>
-          <nav-card accent-color="green" class="card primary">
+          <nav-card accent-color="green" class="card primary due">
             <span slot="heading">Work Due</span>
             <div slot="linklist">
               ${
@@ -259,7 +263,12 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   ? "unknown"
                   : (this.profile.due || []).slice(0, 5).map(
                       a => html`
-                        <nav-card-item icon="chevron-right">
+                        <nav-card-item 
+                          accent-color="${this._late(a.date) ? "red" : "grey"}"
+                          allow-grey
+                          avatar="${this._late(a.date) ? "icons:assignment-late" : "assignment"}"
+                          icon="chevron-right"
+                          invert>
                           <elmsln-studio-link
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"

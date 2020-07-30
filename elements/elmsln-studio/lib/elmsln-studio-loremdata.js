@@ -281,18 +281,20 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     let lorem = this.shadowRoot.getElementById("lorem"),
-      startDate = lorem.addWeeks(undefined, -0.5 * this.lessonData.length),
+      startDate = lorem.addDays(undefined, -4 - 3 * this.lessonData.length),
       lessonDate = startDate;
     this.lessonData.forEach((l, i) => {
-      let assignDate = lessonDate;
-      l.assignments.forEach((a, ai) => {
+      let assignDate = lessonDate,
+        assignments = l.assignments.map((a, ai) => {
         if (a.project) {
           let project = this._project(a, l.id, ai, assignDate, lorem);
           this.projects[a.id] = project;
           assignDate = lorem.addDays(assignDate, a.assignments.length);
+          return project;
         } else {
-          this._assignment(a, l.id, undefined, ai, assignDate, lorem);
+          let assignment = this._assignment(a, l.id, undefined, ai, assignDate, lorem);
           assignDate = lorem.addDays(assignDate, 1);
+          return assignment;
         }
       });
       this.lessons[l.id] = {
@@ -300,7 +302,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         order: i,
         lesson: l.lesson,
         body: lorem.randomParagraph(2, 6),
-        assignments: l.assignments.map(a => a.id)
+        assignments: assignments
       };
       lessonDate = lorem.addWeeks(lessonDate, 1);
     });
@@ -458,7 +460,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         rubric: rubric,
         body: lorem.randomParagraph(2, 6)
       };
-      return assignment.id;
+      return this.assignments[assignment.id];
     }
   }
   _feedback(submissionId, reviewerId, date, lorem) {

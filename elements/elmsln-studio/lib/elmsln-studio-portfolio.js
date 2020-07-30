@@ -489,7 +489,6 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
-    console.log("portfolio", this.portfolio, this.feedback, this.submission);
   }
 }
 customElements.define("elmsln-studio-portfolio", ElmslnStudioPortfolio);

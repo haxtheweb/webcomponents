@@ -72,6 +72,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
         return item;
       });
     }
+    _late(date) {
+      return new Date(date) < new Date();
+    }
     /**
      * converts and sorts arrat
      * @param {object} obj object to convert
