@@ -16,7 +16,12 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
       autorun(reaction => {
         // if menu is open, and the active item changes AND we're on mobile...
         // close the menu
-        if (this.shadowRoot.querySelector("#haxcmsmobilemenunav") && this.menuOpen && toJS(store.activeId) && ['sm','xs'].includes(this.responsiveSize)) {
+        if (
+          this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
+          this.menuOpen &&
+          toJS(store.activeId) &&
+          ["sm", "xs"].includes(this.responsiveSize)
+        ) {
           this.__HAXCMSMobileMenuToggle({});
         }
         this.__disposer.push(reaction);
@@ -98,13 +103,13 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
           switch (this[propName]) {
             case "sm":
               // auto close for small layouts
-              if (this.menuOpen && oldValue != 'xs') {
+              if (this.menuOpen && oldValue != "xs") {
                 this.__HAXCMSMobileMenuToggle({});
               }
               break;
             case "xs":
               // auto close for small layouts
-              if (this.menuOpen && oldValue != 'sm') {
+              if (this.menuOpen && oldValue != "sm") {
                 this.__HAXCMSMobileMenuToggle({});
               }
               break;
