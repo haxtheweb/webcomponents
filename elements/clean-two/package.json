@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.6.24",
+  "version": "2.7.0",
   "description": "A 2nd clean theme",
   "repository": {
     "type": "git",
@@ -42,8 +42,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.6.24",
-    "@lrnwebcomponents/simple-colors": "^2.6.24",
+    "@lrnwebcomponents/haxcms-elements": "^2.7.0",
+    "@lrnwebcomponents/simple-colors": "^2.7.0",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
