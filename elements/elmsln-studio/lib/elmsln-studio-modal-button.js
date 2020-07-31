@@ -28,11 +28,11 @@ class ElmslnStudioModalButton extends LitElement {
       text: { type: String },
       icon: { type: String },
       callback: { type: String },
-      hideText: { type: Boolean, attribute: 'hide-text' },
-      flexible: { type: Boolean, attribute: 'flexible', reflect: true},
-      border: { type: Boolean, attribute: 'border' },
-      align: { type: String, attribute: 'border' },
-      big: { type: Boolean, attribute: 'big' },
+      hideText: { type: Boolean, attribute: "hide-text" },
+      flexible: { type: Boolean, attribute: "flexible", reflect: true },
+      border: { type: Boolean, attribute: "border" },
+      align: { type: String, attribute: "border" },
+      big: { type: Boolean, attribute: "big" }
     };
   }
 
@@ -42,11 +42,11 @@ class ElmslnStudioModalButton extends LitElement {
         :host {
           display: block;
         }
-        :host([hidden]), 
+        :host([hidden]),
         *[hidden] {
           display: none !important;
         }
-        :host([flexible]){
+        :host([flexible]) {
           flex: 1 1 auto;
         }
         button {
@@ -87,32 +87,35 @@ class ElmslnStudioModalButton extends LitElement {
       `
     ];
   }
-  constructor(){
+  constructor() {
     super();
     this.hideText = false;
     this.big = false;
     this.icon = false;
     this.flexible = false;
     this.border = false;
-    this.align = 'center';
+    this.align = "center";
   }
 
   render() {
     return html`
-      <button id="modal" 
-        @click="${this.callback}" 
-        alignment="${this.align}" 
-        ?big="${this.big}" 
+      <button
+        id="modal"
+        @click="${this.callback}"
+        alignment="${this.align}"
+        ?big="${this.big}"
         ?border="${this.border}"
-        ?flexible="${this.flexible}">
+        ?flexible="${this.flexible}"
+      >
         <p>
           <iron-icon aria-hidden="true" icon="${this.icon}"></iron-icon>
-          <span class="${this.hideText && this.icon ? 'sr-only' : ''}">${this.text}</span>
+          <span class="${this.hideText && this.icon ? "sr-only" : ""}"
+            >${this.text}</span
+          >
         </p>
       </button>
     `;
   }
-
 }
 customElements.define("elmsln-studio-modal-button", ElmslnStudioModalButton);
 export { ElmslnStudioModalButton };

@@ -301,7 +301,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             No submissions for applied filters.
           </div>
           ${this.filteredSubmissions.map(
-            (s,i) => html`
+            (s, i) => html`
               <accent-card
                 no-border
                 class="card submission-card"
@@ -313,11 +313,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .gravity="${s.imageGravity || undefined}"
               >
                 <div slot="image-corner" class="image-zoom">
-                  <elmsln-studio-zoom 
+                  <elmsln-studio-zoom
                     id="zoom-${i}"
                     src="${s.image}"
-                    next="${i + 1 < this.filteredSubmissions.length ? i + 1 : -1}"
-                    prev="${i > 0 ? i - 1 : -1}">
+                    next="${i + 1 < this.filteredSubmissions.length
+                      ? i + 1
+                      : -1}"
+                    prev="${i > 0 ? i - 1 : -1}"
+                  >
                   </elmsln-studio-zoom>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">

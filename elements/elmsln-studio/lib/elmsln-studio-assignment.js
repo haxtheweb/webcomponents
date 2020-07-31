@@ -243,7 +243,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               ? ``
               : html`
                   <elmsln-studio-link
-                    href="${`/assignments?project=${this.assignment.projectId}`}"
+                    href="${`/assignments?project=${
+                      this.assignment.projectId
+                    }`}"
                     >${this.assignment.project}</elmsln-studio-link
                   >
                   <span> > </span>
@@ -257,71 +259,83 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           >
             <article id="assignment">
               <h1>
-                <span class="lesson-name"
-                  >${this.assignment.lesson}</span
-                >
+                <span class="lesson-name">${this.assignment.lesson}</span>
                 <span class="project-name">${this.assignment.assignment}</span>
               </h1>
               <p>${this.assignment.body}</p>
-              ${!this.assignment.rubric 
-                ? '' 
+              ${!this.assignment.rubric
+                ? ""
                 : html`
                     <table>
-                      <caption>Rubric</caption>
-                      ${!this.assignment.rubric || !this.assignment.rubric[0] ?`` : html`
-                        <thead>
-                          ${this.assignment.rubric[0].map(col=>html`
-                            <th scope="row">${col}</th>
-                          `)}
-                        </thead>
-                      `}
+                      <caption>
+                        Rubric
+                      </caption>
+                      ${!this.assignment.rubric || !this.assignment.rubric[0]
+                        ? ``
+                        : html`
+                            <thead>
+                              ${this.assignment.rubric[0].map(
+                                col => html`
+                                  <th scope="row">${col}</th>
+                                `
+                              )}
+                            </thead>
+                          `}
                       <tbody>
-                        ${(this.assignment.rubric || []).map((row,i)=>i === 0 ? '' : html`
-                          <tr>
-                            ${this.assignment.rubric[0].map((col,ii)=>ii === 0 ? html`
-                              <th scope="col">${col}</th>
-                            `: html`
-                              <td>${col}</td>
-                            `)}
-
-                          </tr>
-                        `)}
+                        ${(this.assignment.rubric || []).map((row, i) =>
+                          i === 0
+                            ? ""
+                            : html`
+                                <tr>
+                                  ${this.assignment.rubric[0].map((col, ii) =>
+                                    ii === 0
+                                      ? html`
+                                          <th scope="col">${col}</th>
+                                        `
+                                      : html`
+                                          <td>${col}</td>
+                                        `
+                                  )}
+                                </tr>
+                              `
+                        )}
                       </tbody>
                     </table>
-                `}
-                ${!this.assignment.uploads ? '' : html`
-                  <section>
-                    <h2 class="sr-only">Manage Uploads</h2>
-                  </section>
-                `}
-                ${!this.assignment.links ? '' : html`
-                  <section>
-                    <h2 class="sr-only">Manage Links</h2>
-                    <input type="text">
-                  </section>
-                `}
-                ${!this.assignment.text ? '' : html`
-                  <section>
-                    <h2 class="sr-only">Edit Text</h2>
-                    <textarea></textarea>
-                  </section>
-                `}
+                  `}
+              ${!this.assignment.uploads
+                ? ""
+                : html`
+                    <section>
+                      <h2 class="sr-only">Manage Uploads</h2>
+                    </section>
+                  `}
+              ${!this.assignment.links
+                ? ""
+                : html`
+                    <section>
+                      <h2 class="sr-only">Manage Links</h2>
+                      <input type="text" />
+                    </section>
+                  `}
+              ${!this.assignment.text
+                ? ""
+                : html`
+                    <section>
+                      <h2 class="sr-only">Edit Text</h2>
+                      <textarea></textarea>
+                    </section>
+                  `}
               <section>
                 ${this.submission.draft}
-                <elmsln-studio-button
-                  class="delete"
-                  icon=""
-                  path=""
-                >Delete</elmsln-studio-button>
-                <elmsln-studio-button
-                  class="save"
-                  path=""
-                >Save Draft</elmsln-studio-button>
-                <elmsln-studio-button
-                  class="submit"
-                  icon="done"
-                  path=""
-                >Submit Assignment</elmsln-studio-button>
+                <elmsln-studio-button class="delete" icon="" path=""
+                  >Delete</elmsln-studio-button
+                >
+                <elmsln-studio-button class="save" path=""
+                  >Save Draft</elmsln-studio-button
+                >
+                <elmsln-studio-button class="submit" icon="done" path=""
+                  >Submit Assignment</elmsln-studio-button
+                >
               </section>
             </article>
           </div>

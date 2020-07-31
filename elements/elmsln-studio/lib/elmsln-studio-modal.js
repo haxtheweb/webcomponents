@@ -11,7 +11,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
  *
  * @customElement elmsln-studio-modal
  * @lit-html
- * @lit-element 
+ * @lit-element
  */
 class ElmslnStudioModal extends LitElement {
   /**
@@ -64,20 +64,21 @@ class ElmslnStudioModal extends LitElement {
   }
 
   modalOpen(event) {
-    let evt, button = this.shadowRoot.getElementById('modal'), 
+    let evt,
+      button = this.shadowRoot.getElementById("modal"),
       styles = {
-      '--simple-modal-width': '90%',
-      '--simple-modal-height': '90vh',
-      '--simple-modal-titlebar-height': "40px",
-      "--simple-modal-titlebar-line-height": "40px",
-      "--simple-modal-titlebar-height": "40px",
-      "--simple-modal-titlebar-padding": "0px 5px",
-      "--simple-modal-titlebar-background": "white",
-      "--simple-modal-header-background": "white",
-      "--simple-modal-content-padding": "0px 5px"
-    };
-    Object.keys(this.styles || {}).forEach(key=>
-      styles[key] = this.styles[key]
+        "--simple-modal-width": "90%",
+        "--simple-modal-height": "90vh",
+        "--simple-modal-titlebar-height": "40px",
+        "--simple-modal-titlebar-line-height": "40px",
+        "--simple-modal-titlebar-height": "40px",
+        "--simple-modal-titlebar-padding": "0px 5px",
+        "--simple-modal-titlebar-background": "white",
+        "--simple-modal-header-background": "white",
+        "--simple-modal-content-padding": "0px 5px"
+      };
+    Object.keys(this.styles || {}).forEach(
+      key => (styles[key] = this.styles[key])
     );
 
     this.dispatchEvent(
@@ -95,17 +96,17 @@ class ElmslnStudioModal extends LitElement {
       cancelable: false,
       detail: {
         title: false,
-        elements: { 
-          header: this.header, 
+        elements: {
+          header: this.header,
           content: this.content,
-          buttons: this.buttons 
+          buttons: this.buttons
         },
         styles: styles,
         invokedBy: button,
-        clone: false,
+        clone: false
       }
     });
-    console.log(this.modal,button,evt);
+    console.log(this.modal, button, evt);
     this.dispatchEvent(evt);
   }
 }

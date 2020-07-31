@@ -319,7 +319,7 @@ h2 {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
-       console.log('connectedCallback',this);
+      console.log("connectedCallback", this);
       window.addEventListener("simple-modal-hide", this.close.bind(this));
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
     }, 0);
@@ -344,7 +344,7 @@ h2 {
    *
    */
   showEvent(e) {
-    console.log('show',this,e);
+    console.log("show", this, e);
     // if we're already opened and we get told to open again....
     // swap out the contents
     if (this.opened) {
@@ -426,7 +426,7 @@ h2 {
         "--simple-modal-buttons-background",
         "--simple-modal-buttons-padding",
         "--simple-modal-button-color",
-        "--simple-modal-button-background",
+        "--simple-modal-button-background"
       ].forEach(prop => {
         this.style.setProperty(prop, styles[prop] || "unset");
       });

@@ -294,21 +294,22 @@ class ImgPanZoom extends LitElement {
           buildPyramid: false
         };
       }
-      if(!this.viewer) this.viewer = new OpenSeadragon({
-        element: this.shadowRoot.querySelector("#viewer"),
-        visibilityRatio: this.visibilityRatio,
-        constrainDuringPan: this.constrainDuringPan,
-        showNavigationControl: this.showNavigationControl,
-        showNavigator: this.showNavigator,
-        zoomPerClick: this.zoomPerClick,
-        zoomPerScroll: this.zoomPerScroll,
-        animationTime: this.animationTime,
-        navPrevNextWrap: this.navPrevNextWrap,
-        showRotationControl: this.showRotationControl,
-        minZoomImageRatio: this.minZoomImageRatio,
-        maxZoomPixelRatio: this.maxZoomPixelRatio,
-        tileSources: tileSources
-      });
+      if (!this.viewer)
+        this.viewer = new OpenSeadragon({
+          element: this.shadowRoot.querySelector("#viewer"),
+          visibilityRatio: this.visibilityRatio,
+          constrainDuringPan: this.constrainDuringPan,
+          showNavigationControl: this.showNavigationControl,
+          showNavigator: this.showNavigator,
+          zoomPerClick: this.zoomPerClick,
+          zoomPerScroll: this.zoomPerScroll,
+          animationTime: this.animationTime,
+          navPrevNextWrap: this.navPrevNextWrap,
+          showRotationControl: this.showRotationControl,
+          minZoomImageRatio: this.minZoomImageRatio,
+          maxZoomPixelRatio: this.maxZoomPixelRatio,
+          tileSources: tileSources
+        });
       this.init = true;
     }, 100);
   }
@@ -317,32 +318,32 @@ class ImgPanZoom extends LitElement {
   destroy() {
     this.viewer.destroy();
   }
-  rotateTo(deg=90){
+  rotateTo(deg = 90) {
     this.viewer.viewport.setRotation(deg);
   }
-  rotate(deg=90){
-    this.rotate(deg+this.viewer.viewport.getRotation());
+  rotate(deg = 90) {
+    this.rotate(deg + this.viewer.viewport.getRotation());
   }
 
-  pan(dx=0.2,dy=0.2){
+  pan(dx = 0.2, dy = 0.2) {
     var constraints = this.viewer.viewport.getContainerSize(),
       current = this.viewer.viewport.getConstrainedBounds(),
       bounds = this.viewer.viewport.getHomeBounds(),
       home = this.viewer.viewport.getBounds(),
       center = this.viewer.viewport.getCenter(),
       container = this.viewer.viewport.getContainerSize();
-    console.log('bounds',bounds.y,bounds.height);
-    console.log('current',current.y,current.height);
-    console.log('home',home.y,home.height);
-    console.log('center',center.y);
-    dy = Math.max(0-home.y,dy);
-    dx = Math.max(0-home.x,dx);
-    console.log('y',dy);
-    this.viewer.viewport.panBy(new OpenSeadragon.Point(dx,dy));
+    console.log("bounds", bounds.y, bounds.height);
+    console.log("current", current.y, current.height);
+    console.log("home", home.y, home.height);
+    console.log("center", center.y);
+    dy = Math.max(0 - home.y, dy);
+    dx = Math.max(0 - home.x, dx);
+    console.log("y", dy);
+    this.viewer.viewport.panBy(new OpenSeadragon.Point(dx, dy));
   }
 
   // Zoom in
-  zoomIn(z=0.7) {
+  zoomIn(z = 0.7) {
     // TODO: Replace with native openseadragon zoomIn
     var currentZoom = this.viewer.viewport.getZoom();
     var maxZoom = this.viewer.viewport.getMaxZoom();
@@ -353,7 +354,7 @@ class ImgPanZoom extends LitElement {
   }
 
   // Zoom out
-  zoomOut(z=0.7) {
+  zoomOut(z = 0.7) {
     // TODO: Replace with openseadragon native zoomOut
     var currentZoom = this.viewer.viewport.getZoom();
     var minZoom = this.viewer.viewport.getMinZoom();
