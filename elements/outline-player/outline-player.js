@@ -168,6 +168,9 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         site-active-title {
           --site-active-title-margin: 0px;
           --site-active-title-padding: 0px;
+          margin: 10px;
+          padding: 10px;
+          display: block;
         }
         @media screen and (max-width: 800px) {
           :host([edit-mode][is-logged-in]) app-drawer,
@@ -239,14 +242,17 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             --site-menu-item-active-item-color: #000000;
           }
           site-menu-button {
+            --site-menu-button-button-hover-background-color: rgba(
+              0,
+              0,
+              0,
+              0.2
+            );
             --site-menu-button-button: {
               border-radius: 50%;
               background-color: rgba(0, 0, 0, 0.1);
               height: 40px;
               width: 40px;
-            }
-            --site-menu-button-button-hover: {
-              background-color: rgba(0, 0, 0, 0.2);
             }
           }
         </style>
