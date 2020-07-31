@@ -325,7 +325,7 @@ class ImgPanZoom extends LitElement {
     this.rotate(deg + this.viewer.viewport.getRotation());
   }
 
-  getData(val=0){
+  getData(val = 0) {
     var current = this.viewer.viewport.getConstrainedBounds(),
       bounds = this.viewer.viewport.getHomeBounds(),
       boundsTrue = this.viewer.viewport.getBounds(true),
@@ -333,9 +333,24 @@ class ImgPanZoom extends LitElement {
       center = this.viewer.viewport.getCenter(),
       container = this.viewer.viewport.getContainerSize(),
       currentRect = this.viewer.viewport.viewportToImageRectangle(boundsTrue),
-      rect = this.viewer.viewport.imageToViewportRectangle(0, val, currentRect.width, currentRect.height);
-      console.log(val,current.height,center.y,[this.viewer,current,bounds,boundsTrue,home,center,container,currentRect,rect]);
-      
+      rect = this.viewer.viewport.imageToViewportRectangle(
+        0,
+        val,
+        currentRect.width,
+        currentRect.height
+      );
+    console.log(val, current.height, center.y, [
+      this.viewer,
+      current,
+      bounds,
+      boundsTrue,
+      home,
+      center,
+      container,
+      currentRect,
+      rect
+    ]);
+
     return [
       val,
       bounds.x,
@@ -357,7 +372,7 @@ class ImgPanZoom extends LitElement {
 
   pan(dx = 0, dy = 0.2) {
     var home = this.viewer.viewport.getBounds();
-    dy = Math.min(home.y,Math.max(0 - home.y, dy));
+    dy = Math.min(home.y, Math.max(0 - home.y, dy));
     this.viewer.viewport.panBy(new OpenSeadragon.Point(dx, dy));
   }
 
