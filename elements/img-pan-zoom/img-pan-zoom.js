@@ -325,20 +325,39 @@ class ImgPanZoom extends LitElement {
     this.rotate(deg + this.viewer.viewport.getRotation());
   }
 
-  pan(dx = 0.2, dy = 0.2) {
-    var constraints = this.viewer.viewport.getContainerSize(),
-      current = this.viewer.viewport.getConstrainedBounds(),
+  getData(val=0){
+    var current = this.viewer.viewport.getConstrainedBounds(),
       bounds = this.viewer.viewport.getHomeBounds(),
+      boundsTrue = this.viewer.viewport.getBounds(true),
       home = this.viewer.viewport.getBounds(),
       center = this.viewer.viewport.getCenter(),
-      container = this.viewer.viewport.getContainerSize();
-    console.log("bounds", bounds.y, bounds.height);
-    console.log("current", current.y, current.height);
-    console.log("home", home.y, home.height);
-    console.log("center", center.y);
-    dy = Math.max(0 - home.y, dy);
-    dx = Math.max(0 - home.x, dx);
-    console.log("y", dy);
+      container = this.viewer.viewport.getContainerSize(),
+      currentRect = this.viewer.viewport.viewportToImageRectangle(boundsTrue),
+      rect = this.viewer.viewport.imageToViewportRectangle(0, val, currentRect.width, currentRect.height);
+      console.log(val,current.height,center.y,[this.viewer,current,bounds,boundsTrue,home,center,container,currentRect,rect]);
+      
+    return [
+      val,
+      bounds.x,
+      boundsTrue.x,
+      boundsTrue.height,
+      rect.x,
+      rect.height,
+      current.x,
+      current.height,
+      currentRect.x,
+      currentRect.height,
+      home.x,
+      home.height,
+      container.x,
+      center.x,
+      this.viewer.viewport.getZoom()
+    ];
+  }
+
+  pan(dx = 0, dy = 0.2) {
+    var home = this.viewer.viewport.getBounds();
+    dy = Math.min(home.y,Math.max(0 - home.y, dy));
     this.viewer.viewport.panBy(new OpenSeadragon.Point(dx, dy));
   }
 
