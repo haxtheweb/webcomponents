@@ -97,79 +97,132 @@ class ImgPanZoom extends LitElement {
         type: String,
         attribute: "described-by"
       },
-      // Set to true if you are using a deep zoom image
+      /**
+       * Set to true if you are using a deep zoom image
+       */
       dzi: {
         type: Boolean
       },
-      // Fade in new items added to the viewer
+      /**
+       * Fade in new items added to the viewer
+       */
       fadeIn: {
         type: Boolean,
         attribute: "fade-in"
       },
-      // loading
+      /**
+       * loading
+       */
       loading: {
         type: Boolean
       },
-      // hides spinner
+      /**
+       * hides spinner
+       */
       hideSpinner: {
         type: Boolean,
         attribute: "hide-spinner"
       },
-      // loaded
+      /**
+       * loaded
+       */
       loaded: {
         type: Boolean
       },
-      // Set to false to prevent the appearance of the default navigation controls. Note that if set to false, the customs buttons set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
+      /**
+       * Set to false to prevent the appearance of the default 
+       * navigation controls. Note that if set to false, the customs buttons 
+       * set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
+       */
       showNavigationControl: {
         type: Boolean,
         attribute: "show-navigation-control"
       },
-      // Set to true to make the navigator minimap appear.
+      /**
+       * Set to true to make the navigator minimap appear.
+       */
       showNavigator: {
         type: Boolean,
         attribute: "show-navigator"
       },
-      // The "zoom distance" per mouse click or touch tap. Note: Setting this to 1.0 effectively disables the click-to-zoom feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).
+      /**
+       * The "zoom distance" per mouse click or touch tap. Note: 
+       * Setting this to 1.0 effectively disables the click-to-zoom 
+       * feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).
+       */
       zoomPerClick: {
         type: Number,
         attribute: "zoom-per-click"
       },
-      // The "zoom distance" per mouse scroll or touch pinch. Note: Setting this to 1.0 effectively disables the mouse-wheel zoom feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).
+      /**
+       * The "zoom distance" per mouse scroll or touch pinch. Note: 
+       * Setting this to 1.0 effectively disables the mouse-wheel zoom 
+       * feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).
+       */
       zoomPerScroll: {
         type: Number,
         attribute: "zoom-per-scroll"
       },
-      // Specifies the animation duration per each OpenSeadragon.Spring which occur when the image is dragged or zoomed.
+      /**
+       * Specifies the animation duration per each OpenSeadragon.Spring 
+       * which occur when the image is dragged or zoomed.
+       */
       animationTime: {
         type: Number,
         attribute: "animation-time"
       },
-      // If true then the 'previous' button will wrap to the last image when viewing the first image and the 'next' button will wrap to the first image when viewing the last image.
+      /**
+       * If true then the 'previous' button will wrap to the last image 
+       * when viewing the first image and the 'next' button will wrap to the 
+       * first image when viewing the last image.
+       */
       navPrevNextWrap: {
         type: Boolean,
         attribute: "nav-prev-next-wrap"
       },
-      // If true then the rotate left/right controls will be displayed as part of the standard controls. This is also subject to the browser support for rotate (e.g. viewer.drawer.canRotate()).
+      /**
+       * If true then the rotate left/right controls will be displayed as 
+       * part of the standard controls. This is also subject to the browser 
+       * support for rotate (e.g. viewer.drawer.canRotate()).
+       */
       showRotationControl: {
         type: Boolean,
         attribute: "show-rotation-control"
       },
-      // The minimum percentage ( expressed as a number between 0 and 1 ) of the viewport height or width at which the zoom out will be constrained. Setting it to 0, for example will allow you to zoom out infinity.
+      /**
+       * The minimum percentage ( expressed as a number between 0 and 1 ) of 
+       * the viewport height or width at which the zoom out will be constrained. 
+       * Setting it to 0, for example will allow you to zoom out infinity.
+       */
       minZoomImageRatio: {
         type: Number,
         attribute: "min-zoom-image-ratio"
       },
-      // The maximum ratio to allow a zoom-in to affect the highest level pixel ratio. This can be set to Infinity to allow 'infinite' zooming into the image though it is less effective visually if the HTML5 Canvas is not availble on the viewing device.
+      /**
+       * The maximum ratio to allow a zoom-in to affect the highest level 
+       * pixel ratio. This can be set to Infinity to allow 'infinite' zooming 
+       * into the image though it is less effective visually if the HTML5 
+       * Canvas is not availble on the viewing device.
+       */
       maxZoomPixelRatio: {
         type: Number,
         attribute: "max-zoom-pixel-ratio"
       },
-      // Constrain during pan
+      /**
+       * Constrain during pan
+       */
       constrainDuringPan: {
         type: Boolean,
         attribute: "constrain-during-pan"
       },
-      // The percentage ( as a number from 0 to 1 ) of the source image which must be kept within the viewport. If the image is dragged beyond that limit, it will 'bounce' back until the minimum visibility ratio is achieved. Setting this to 0 and wrapHorizontal ( or wrapVertical ) to true will provide the effect of an infinitely scrolling viewport.
+      /**
+       * The percentage ( as a number from 0 to 1 ) of the source image 
+       * which must be kept within the viewport. If the image is dragged 
+       * beyond that limit, it will 'bounce' back until the minimum 
+       * visibility ratio is achieved. Setting this to 0 and wrapHorizontal 
+       * ( or wrapVertical ) to true will provide the effect of an infinitely 
+       * scrolling viewport.
+       */
       visibilityRatio: {
         type: Number,
         attribute: "visibility-ratio"
@@ -310,6 +363,56 @@ class ImgPanZoom extends LitElement {
           maxZoomPixelRatio: this.maxZoomPixelRatio,
           tileSources: tileSources
         });
+        /**
+         * @event fires on zoom
+         */
+        this.viewer.addHandler("zoom",e=>this.dispatchEvent(
+          new CustomEvent("zoom", {
+            detail: {
+              value: e
+            }
+          })
+        ));
+        /**
+         * @event fires on pan
+         */
+        this.viewer.addHandler("pan",e=>this.dispatchEvent(
+          new CustomEvent("pan", {
+            detail: {
+              value: e
+            }
+          })
+        ));
+        /**
+         * @event fires on rotate
+         */
+        this.viewer.addHandler("rotate",e=>this.dispatchEvent(
+          new CustomEvent("pan", {
+            detail: {
+              value: e
+            }
+          })
+        ));
+        /**
+         * @event 
+         */
+        this.viewer.addHandler("update-viewport",e=>this.dispatchEvent(
+          new CustomEvent("update-viewport", {
+            detail: {
+              value: e
+            }
+          })
+        ));
+        /**
+         * @event fires before viewport changes
+         */
+        this.viewer.addHandler("viewport-changed",e=>this.dispatchEvent(
+          new CustomEvent("viewport-changed", {
+            detail: {
+              value: e
+            }
+          })
+        ));
       this.init = true;
     }, 100);
   }
@@ -318,65 +421,36 @@ class ImgPanZoom extends LitElement {
   destroy() {
     this.viewer.destroy();
   }
+  /**
+   * sets rotation x degrees
+   * @param {number} deg number of degrees
+   */
   rotateTo(deg = 90) {
     this.viewer.viewport.setRotation(deg);
   }
+  /**
+   * rotates x degrees from current rotation
+   * @param {number} deg number of degrees
+   */
   rotate(deg = 90) {
     this.rotate(deg + this.viewer.viewport.getRotation());
   }
 
-  getData(val = 0) {
-    var current = this.viewer.viewport.getConstrainedBounds(),
-      bounds = this.viewer.viewport.getHomeBounds(),
-      boundsTrue = this.viewer.viewport.getBounds(true),
-      home = this.viewer.viewport.getBounds(),
-      center = this.viewer.viewport.getCenter(),
-      container = this.viewer.viewport.getContainerSize(),
-      currentRect = this.viewer.viewport.viewportToImageRectangle(boundsTrue),
-      rect = this.viewer.viewport.imageToViewportRectangle(
-        0,
-        val,
-        currentRect.width,
-        currentRect.height
-      );
-    console.log(val, current.height, center.y, [
-      this.viewer,
-      current,
-      bounds,
-      boundsTrue,
-      home,
-      center,
-      container,
-      currentRect,
-      rect
-    ]);
-
-    return [
-      val,
-      bounds.x,
-      boundsTrue.x,
-      boundsTrue.height,
-      rect.x,
-      rect.height,
-      current.x,
-      current.height,
-      currentRect.x,
-      currentRect.height,
-      home.x,
-      home.height,
-      container.x,
-      center.x,
-      this.viewer.viewport.getZoom()
-    ];
-  }
-
+  /**
+   * pans x,y of viewport size from current position
+   * @param {number} fraction of viewport width to pan horizontally
+   * @param {number} fraction of viewport height to pan vertically
+   */
   pan(dx = 0, dy = 0.2) {
     var home = this.viewer.viewport.getBounds();
     dy = Math.min(home.y, Math.max(0 - home.y, dy));
     this.viewer.viewport.panBy(new OpenSeadragon.Point(dx, dy));
   }
 
-  // Zoom in
+  /**
+   * amount to zoom in from current position
+   * @param {number} 
+   */
   zoomIn(z = 0.7) {
     // TODO: Replace with native openseadragon zoomIn
     var currentZoom = this.viewer.viewport.getZoom();
@@ -387,7 +461,10 @@ class ImgPanZoom extends LitElement {
     }
   }
 
-  // Zoom out
+  /**
+   * amount to zoom out from current position
+   * @param {number} 
+   */
   zoomOut(z = 0.7) {
     // TODO: Replace with openseadragon native zoomOut
     var currentZoom = this.viewer.viewport.getZoom();
@@ -402,7 +479,9 @@ class ImgPanZoom extends LitElement {
     }
   }
 
-  // reset zoom
+  /**
+   * recenters image
+   */
   resetZoom() {
     this.viewer.viewport.goHome();
   }

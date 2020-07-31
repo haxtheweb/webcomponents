@@ -20,6 +20,14 @@
           <img-pan-zoom src="./HAXCmsworkflow.jpg" max-zoom-pixel-ratio="10">
             This is img-pan-zoom
           </img-pan-zoom>
+          <script>
+            window.onload = () => {
+              document.querySelector('img-pan-zoom').addEventListener('zoom',e=>alert('zoom'))
+            }
+            window.onload = () => {
+              document.querySelector('img-pan-zoom').addEventListener('pan',e=>alert('pan'))
+            }
+          </script>
         </template>
       </demo-snippet>
     </div>
