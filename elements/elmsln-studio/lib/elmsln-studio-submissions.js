@@ -8,6 +8,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
+import "./elmsln-studio-zoom.js";
 
 /**
  * `elmsln-studio-submissions`
@@ -300,7 +301,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             No submissions for applied filters.
           </div>
           ${this.filteredSubmissions.map(
-            s => html`
+            (s,i) => html`
               <accent-card
                 no-border
                 class="card submission-card"
@@ -312,7 +313,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .gravity="${s.imageGravity || undefined}"
               >
                 <div slot="image-corner" class="image-zoom">
-                  <iron-icon icon="zoom-in"></iron-icon>
+                  <elmsln-studio-zoom 
+                    id="zoom-${i}"
+                    src="${s.image}"
+                    next="${i + 1 < this.filteredSubmissions.length ? i + 1 : -1}"
+                    prev="${i > 0 ? i - 1 : -1}">
+                  </elmsln-studio-zoom>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">
                   ${[s.firstName, s.lastName].join(" ")}
