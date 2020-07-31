@@ -55,17 +55,18 @@ class a11yCompareImage extends LitElement {
         #slider {
           top: 0;
           left: 0;
+          padding-top: 10px;
           position: absolute;
           width: calc(100% + 32px);
           margin: -15px 0 0 -16px;
         }
         .marker {
-          top: -3px;
+          top: 6px;
           position: absolute;
           width: 1px;
-          height: 10px;
           outline: 2px solid #bbb;
           background-color: #bbb;
+          padding-top: 10px;
         }
         ::slotted([slot="bottom"]) {
           max-width: 100%;
