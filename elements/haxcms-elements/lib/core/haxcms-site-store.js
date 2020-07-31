@@ -705,20 +705,20 @@ class HAXCMSSiteStore extends HTMLElement {
     if (typeof DatArchive !== typeof undefined) {
       context = "beaker";
     } else {
-      switch(window.HAXCMSContext) {
-        case 'published':
-        case 'nodejs':
-        case 'php':
-        case '11ty':
-        case 'demo':
-        case 'desktop':
+      switch (window.HAXCMSContext) {
+        case "published":
+        case "nodejs":
+        case "php":
+        case "11ty":
+        case "demo":
+        case "desktop":
           context = window.HAXCMSContext;
-        break;
+          break;
         default:
           // we don't have one so assume it's php for now
           // @notice change this in the future
           context = "php";
-        break;
+          break;
       }
     }
     return context;

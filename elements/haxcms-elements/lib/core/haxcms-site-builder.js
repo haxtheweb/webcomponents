@@ -406,7 +406,10 @@ class HAXCMSSiteBuilder extends LitElement {
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);
         // get fresh data if not published / demo which is a form of published
-        if (window.HAXCMS.requestAvailability().getApplicationContext() !== "published") {
+        if (
+          window.HAXCMS.requestAvailability().getApplicationContext() !==
+          "published"
+        ) {
           this._timeStamp = Math.floor(Date.now() / 1000);
         } else {
           this._timeStamp = "";

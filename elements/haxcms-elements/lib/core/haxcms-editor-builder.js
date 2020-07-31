@@ -53,7 +53,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       super.disconnectedCallback();
     }
   }
-  
+
   editorLoaded(e) {
     if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
