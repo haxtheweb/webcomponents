@@ -130,8 +130,8 @@ class ImgPanZoom extends LitElement {
         type: Boolean
       },
       /**
-       * Set to false to prevent the appearance of the default 
-       * navigation controls. Note that if set to false, the customs buttons 
+       * Set to false to prevent the appearance of the default
+       * navigation controls. Note that if set to false, the customs buttons
        * set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
        */
       showNavigationControl: {
@@ -146,8 +146,8 @@ class ImgPanZoom extends LitElement {
         attribute: "show-navigator"
       },
       /**
-       * The "zoom distance" per mouse click or touch tap. Note: 
-       * Setting this to 1.0 effectively disables the click-to-zoom 
+       * The "zoom distance" per mouse click or touch tap. Note:
+       * Setting this to 1.0 effectively disables the click-to-zoom
        * feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).
        */
       zoomPerClick: {
@@ -155,8 +155,8 @@ class ImgPanZoom extends LitElement {
         attribute: "zoom-per-click"
       },
       /**
-       * The "zoom distance" per mouse scroll or touch pinch. Note: 
-       * Setting this to 1.0 effectively disables the mouse-wheel zoom 
+       * The "zoom distance" per mouse scroll or touch pinch. Note:
+       * Setting this to 1.0 effectively disables the mouse-wheel zoom
        * feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).
        */
       zoomPerScroll: {
@@ -164,7 +164,7 @@ class ImgPanZoom extends LitElement {
         attribute: "zoom-per-scroll"
       },
       /**
-       * Specifies the animation duration per each OpenSeadragon.Spring 
+       * Specifies the animation duration per each OpenSeadragon.Spring
        * which occur when the image is dragged or zoomed.
        */
       animationTime: {
@@ -172,8 +172,8 @@ class ImgPanZoom extends LitElement {
         attribute: "animation-time"
       },
       /**
-       * If true then the 'previous' button will wrap to the last image 
-       * when viewing the first image and the 'next' button will wrap to the 
+       * If true then the 'previous' button will wrap to the last image
+       * when viewing the first image and the 'next' button will wrap to the
        * first image when viewing the last image.
        */
       navPrevNextWrap: {
@@ -181,8 +181,8 @@ class ImgPanZoom extends LitElement {
         attribute: "nav-prev-next-wrap"
       },
       /**
-       * If true then the rotate left/right controls will be displayed as 
-       * part of the standard controls. This is also subject to the browser 
+       * If true then the rotate left/right controls will be displayed as
+       * part of the standard controls. This is also subject to the browser
        * support for rotate (e.g. viewer.drawer.canRotate()).
        */
       showRotationControl: {
@@ -190,8 +190,8 @@ class ImgPanZoom extends LitElement {
         attribute: "show-rotation-control"
       },
       /**
-       * The minimum percentage ( expressed as a number between 0 and 1 ) of 
-       * the viewport height or width at which the zoom out will be constrained. 
+       * The minimum percentage ( expressed as a number between 0 and 1 ) of
+       * the viewport height or width at which the zoom out will be constrained.
        * Setting it to 0, for example will allow you to zoom out infinity.
        */
       minZoomImageRatio: {
@@ -199,9 +199,9 @@ class ImgPanZoom extends LitElement {
         attribute: "min-zoom-image-ratio"
       },
       /**
-       * The maximum ratio to allow a zoom-in to affect the highest level 
-       * pixel ratio. This can be set to Infinity to allow 'infinite' zooming 
-       * into the image though it is less effective visually if the HTML5 
+       * The maximum ratio to allow a zoom-in to affect the highest level
+       * pixel ratio. This can be set to Infinity to allow 'infinite' zooming
+       * into the image though it is less effective visually if the HTML5
        * Canvas is not availble on the viewing device.
        */
       maxZoomPixelRatio: {
@@ -216,17 +216,77 @@ class ImgPanZoom extends LitElement {
         attribute: "constrain-during-pan"
       },
       /**
-       * The percentage ( as a number from 0 to 1 ) of the source image 
-       * which must be kept within the viewport. If the image is dragged 
-       * beyond that limit, it will 'bounce' back until the minimum 
-       * visibility ratio is achieved. Setting this to 0 and wrapHorizontal 
-       * ( or wrapVertical ) to true will provide the effect of an infinitely 
+       * The percentage ( as a number from 0 to 1 ) of the source image
+       * which must be kept within the viewport. If the image is dragged
+       * beyond that limit, it will 'bounce' back until the minimum
+       * visibility ratio is achieved. Setting this to 0 and wrapHorizontal
+       * ( or wrapVertical ) to true will provide the effect of an infinitely
        * scrolling viewport.
        */
       visibilityRatio: {
         type: Number,
         attribute: "visibility-ratio"
-      }
+      },
+      /**
+       * whether navigator fades when image is not longer being moved
+       */
+      navigatorAutoFade: { type: Boolean, attribute: "navigator-auto-fade", reflect: true },
+      /**
+       * where navigator is positioned: "TOP_LEFT", "BOTTOM_RIGHT", "ABSOLUTE", etc. Default is "TOP_RIGHT"
+       */
+      navigatorPosition: { type: String, attribute: "navigator-position", reflect: true },
+      /**
+       * if navigator position is "ABSOLUTE", top position for navigator
+       */
+      navigatorTop: { type: String, attribute: "navigator-top", reflect: true },
+      /**
+       * if navigator position is "ABSOLUTE", bottom position for navigator
+       */
+      navigatorBottom: { type: String, attribute: "navigator-bottom", reflect: true },
+      /**
+       * if navigator position is "ABSOLUTE", left position for navigator
+       */
+      navigatorLeft: { type: String, attribute: "navigator-left", reflect: true },
+      /**
+       * if navigator position is "ABSOLUTE", right position for navigator
+       */
+      navigatorRight: { type: String, attribute: "navigator-right", reflect: true },
+      /**
+       * height of navigator
+       */
+      navigatorHeight: { type: String, attribute: "navigator-height", reflect: true },
+      /**
+       * width of navigator
+       */
+      navigatorWidth: { type: String, attribute: "navigator-width", reflect: true },
+      /**
+       * whether navigator window mode is toggled
+       */
+      navigatorToggled: { type: Boolean, attribute: "navigator-toggled", reflect: true },
+      /**
+       * id of previous image button
+       */
+      previousButton: { type: "String" },
+      /**
+       * id of previous image button
+       */
+      nextButton: { type: "String" },
+      /**
+       * id of zoom out button
+       */
+      zoomOutButton: { type: "String" },
+      /**
+       * id of zoom in button
+       */
+      zoomInButton: { type: "String" },
+      /**
+       * id of reset / home button
+       */
+      homeButton: { type: "String" },
+      /**
+       * id of zoom to fullscreen button
+       */
+      fullPageButton: { type: "String" }
     };
   }
   // simple path from a url modifier
@@ -244,6 +304,9 @@ class ImgPanZoom extends LitElement {
     this.hideSpinner = false;
     this.showNavigationControl = false;
     this.showNavigator = false;
+    this.navigatorAutoFade = false;
+    this.navigatorPosition = false;
+    this.navigatorToggled = false;
     this.zoomPerClick = 2.0;
     this.zoomPerScroll = 1.2;
     this.animationTime = 1.2;
@@ -290,6 +353,10 @@ class ImgPanZoom extends LitElement {
           })
         );
       }
+      if (propName == "navigatorToggled" && this.viewer) 
+        this.viewer.navigator.element.style.display = this.navigatorToggled 
+          ? "inline-block"
+          : "none";
     });
   }
   _openseadragonLoaded() {
@@ -361,58 +428,90 @@ class ImgPanZoom extends LitElement {
           showRotationControl: this.showRotationControl,
           minZoomImageRatio: this.minZoomImageRatio,
           maxZoomPixelRatio: this.maxZoomPixelRatio,
+          showNavigationControl: this.showNavigationControl,
+          navigatorAutoFade: this.navigatorAutoFade,
+          navigatorPosition: this.navigatorPosition,
+          navigatorLeft: this.navigatorLeft,
+          navigatorTop: this.navigatorTop,
+          navigatorRight: this.navigatorRight,
+          navigatorBottom: this.navigatorBottom,
+          navigatorWidth: this.navigatorWidth,
+          navigatorHeight: this.navigatorHeight,
           tileSources: tileSources
         });
-        /**
-         * @event fires on zoom
-         */
-        this.viewer.addHandler("zoom",e=>this.dispatchEvent(
+        this.navigatorToggled = this.navigatorToggled || this.showNavigator;
+      /**
+       * @event fires on zoom
+       */
+      this.viewer.addHandler("zoom", e =>
+        this.dispatchEvent(
           new CustomEvent("zoom", {
             detail: {
               value: e
             }
           })
-        ));
-        /**
-         * @event fires on pan
-         */
-        this.viewer.addHandler("pan",e=>this.dispatchEvent(
+        )
+      );
+      /**
+       * @event fires on page
+       */
+      this.viewer.addHandler("page", e => 
+        this.dispatchEvent(
+          new CustomEvent("page", {
+            detail: {
+              value: e
+            }
+          })
+        )
+      );
+      /**
+       * @event fires on pan
+       */
+      this.viewer.addHandler("pan", e =>
+        this.dispatchEvent(
           new CustomEvent("pan", {
             detail: {
               value: e
             }
           })
-        ));
-        /**
-         * @event fires on rotate
-         */
-        this.viewer.addHandler("rotate",e=>this.dispatchEvent(
+        )
+      );
+      /**
+       * @event fires on rotate
+       */
+      this.viewer.addHandler("rotate", e =>
+        this.dispatchEvent(
           new CustomEvent("pan", {
             detail: {
               value: e
             }
           })
-        ));
-        /**
-         * @event 
-         */
-        this.viewer.addHandler("update-viewport",e=>this.dispatchEvent(
+        )
+      );
+      /**
+       * @event
+       */
+      this.viewer.addHandler("update-viewport", e =>
+        this.dispatchEvent(
           new CustomEvent("update-viewport", {
             detail: {
               value: e
             }
           })
-        ));
-        /**
-         * @event fires before viewport changes
-         */
-        this.viewer.addHandler("viewport-changed",e=>this.dispatchEvent(
+        )
+      );
+      /**
+       * @event fires before viewport changes
+       */
+      this.viewer.addHandler("viewport-changed", e =>
+        this.dispatchEvent(
           new CustomEvent("viewport-changed", {
             detail: {
               value: e
             }
           })
-        ));
+        )
+      );
       this.init = true;
     }, 100);
   }
@@ -433,7 +532,7 @@ class ImgPanZoom extends LitElement {
    * @param {number} deg number of degrees
    */
   rotate(deg = 90) {
-    this.rotate(deg + this.viewer.viewport.getRotation());
+    this.rotateTo(deg + this.viewer.viewport.getRotation());
   }
 
   /**
@@ -443,13 +542,13 @@ class ImgPanZoom extends LitElement {
    */
   pan(dx = 0, dy = 0.2) {
     var home = this.viewer.viewport.getBounds();
-    dy = Math.min(home.y, Math.max(0 - home.y, dy));
+    //TODO contranin pan dy = Math.min(home.y, Math.max(0 - home.y, dy));
     this.viewer.viewport.panBy(new OpenSeadragon.Point(dx, dy));
   }
 
   /**
    * amount to zoom in from current position
-   * @param {number} 
+   * @param {number}
    */
   zoomIn(z = 0.7) {
     // TODO: Replace with native openseadragon zoomIn
@@ -463,7 +562,7 @@ class ImgPanZoom extends LitElement {
 
   /**
    * amount to zoom out from current position
-   * @param {number} 
+   * @param {number}
    */
   zoomOut(z = 0.7) {
     // TODO: Replace with openseadragon native zoomOut

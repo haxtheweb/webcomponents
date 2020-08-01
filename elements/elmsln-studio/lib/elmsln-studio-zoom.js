@@ -161,12 +161,10 @@ class ElmslnStudioZoom extends navigator(LitElement) {
     zoom.header = this._buttonGroup([this.__img]);
   }
   swapImg(query, e) {
-    console.log("swapImg", query, e);
     let submissions = this.closest("#primary"),
       button = submissions
         ? submissions.querySelector(`#zoom-${query}`)
         : false;
-    console.log("button", button);
     if (button) {
       this.prev = button.prev;
       this.next = button.next;
@@ -174,35 +172,27 @@ class ElmslnStudioZoom extends navigator(LitElement) {
     }
   }
   rotateCCW(img, e) {
-    console.log("rotateCCW", img, e);
     img.rotate(-90);
   }
   rotateCW(img, e) {
-    console.log("rotateCW", img, e);
     img.rotate();
   }
   zoomIn(img, e) {
-    console.log("zoomIn", img, e);
     img.zoomIn(0.2);
   }
   zoomOut(img, e) {
-    console.log("zoomOut", img, e);
     img.zoomOut(0.2);
   }
   panUp(img, e) {
-    console.log("panUp", img, e);
     img.pan(0, 0.2);
   }
   panDown(img, e) {
-    console.log("panDown", img, e);
     img.pan(0, -0.2);
   }
   panLeft(img, e) {
-    console.log("panLeft", img, e);
     img.pan(0.2, 0);
   }
   panRight(img, e) {
-    console.log("panRight", img, e);
     img.pan(-0.2, 0);
   }
 
