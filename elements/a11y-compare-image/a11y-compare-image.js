@@ -51,7 +51,7 @@ class a11yCompareImage extends LitElement {
         #placeholder {
           opacity: 0;
         }
-        
+
         #bottom {
           width: 100%;
         }
@@ -74,7 +74,6 @@ class a11yCompareImage extends LitElement {
         ::slotted([slot="bottom"]) {
           max-width: 100%;
         }
-       
       `
     ];
   }
