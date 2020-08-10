@@ -350,27 +350,27 @@ class ImgPanZoom extends LitElement {
       /**
        * id of custom previousButton
        */
-      previousButton: {type: String },
+      previousButton: { type: String },
       /**
        * id of custom nextButton
        */
-      nextButton: {type: String },
+      nextButton: { type: String },
       /**
        * id of custom homeButton
        */
-      homeButton: {type: String },
+      homeButton: { type: String },
       /**
        * id of custom zoomInButton
        */
-      zoomInButton: {type: String },
+      zoomInButton: { type: String },
       /**
        * id of custom zoomInButton
        */
-      zoomOutButton: {type: String },
+      zoomOutButton: { type: String },
       /**
        * id of custom zoomInButton
        */
-      fullScreenButton: {type: String },
+      fullScreenButton: { type: String }
     };
   }
   // simple path from a url modifier
@@ -522,7 +522,9 @@ class ImgPanZoom extends LitElement {
       if (!this.viewer)
         this.viewer = new OpenSeadragon({
           element: this.shadowRoot.querySelector("#viewer"),
-          prefixUrl: `${this.pathFromUrl(decodeURIComponent(import.meta.url))}lib/openseadragon/images/`,
+          prefixUrl: `${this.pathFromUrl(
+            decodeURIComponent(import.meta.url)
+          )}lib/openseadragon/images/`,
           visibilityRatio: this.visibilityRatio,
           constrainDuringPan: this.constrainDuringPan,
           showNavigationControl: this.showNavigationControl,
@@ -557,7 +559,6 @@ class ImgPanZoom extends LitElement {
           tileSources: tileSources
         });
       if (this.viewer) {
-        console.log(this.viewer);
         this.viewer.goToPage(0);
         this._setFullscreen();
         if (this.viewer.navigator) {
