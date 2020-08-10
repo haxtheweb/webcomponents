@@ -99,9 +99,9 @@ class imgViewModal extends ImgPanZoom {
           overflow: visible;
         }
         #info {
-          position:absolute;
-          bottom:0;
-          right:0;
+          position: absolute;
+          bottom: 0;
+          right: 0;
           background-color: white;
           padding: 5px;
           border: 1px solid #ddd;
@@ -109,7 +109,8 @@ class imgViewModal extends ImgPanZoom {
         table {
           border-collapse: collapse;
         }
-        th,td {
+        th,
+        td {
           padding: 2px 5px;
           border-top: 1px solid #ddd;
           line-height: 140%;
@@ -284,9 +285,7 @@ class imgViewModal extends ImgPanZoom {
     let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
-    return (
-      typeof screenfull === "object" && !mobile
-    );
+    return typeof screenfull === "object" && !mobile;
   }
   /**
    * default toggle navigate window button configuration
@@ -331,7 +330,9 @@ class imgViewModal extends ImgPanZoom {
       text: "toggle keyboard shorcuts help",
       details: html`
         <table>
-          <caption>Keyboard Shortcuts</caption>
+          <caption>
+            Keyboard Shortcuts
+          </caption>
           <tbody>
             <tr>
               <th scope="row">pan up</th>
@@ -566,21 +567,24 @@ class imgViewModal extends ImgPanZoom {
       flexGrow: true
     };
   }
-  get tileSources(){
+  get tileSources() {
     return [this.src, ...this.sources];
   }
-  get prevDisabled(){
+  get prevDisabled() {
     return this.page <= 0;
   }
-  get nextDisabled(){
+  get nextDisabled() {
     return this.page + 1 >= this.tileSources.length;
   }
-  get info(){
+  get info() {
     return this.kbdToggled && this.kbdbutton.details
       ? this.kbdbutton.details
-      : this.infoToggled && this.figures && this.figures[this.page] && this.figures[this.page].info
+      : this.infoToggled &&
+        this.figures &&
+        this.figures[this.page] &&
+        this.figures[this.page].info
       ? this.figures[this.page].info
-      : undefined
+      : undefined;
   }
   /**
    * default x of y text for toolbar
@@ -589,23 +593,24 @@ class imgViewModal extends ImgPanZoom {
    * @memberof imgViewModal
    */
   get pageXofY() {
-    return `${(this.page|| 0)+1} of ${this.tileSources.length}`;
+    return `${(this.page || 0) + 1} of ${this.tileSources.length}`;
   }
-  get navXofY(){
+  get navXofY() {
     return {
       id: "navXofY",
       type: "misc-item",
       contents: html`
         <p>
-          <input 
-          type="number" 
-          min="1" 
-          max="${this.tileSources.length}"
-          value="${this.page+1}"
-          @change="${this.goToPageXofY}"> 
-          of 
-          ${this.tileSources.length}
-        </p>`
+          <input
+            type="number"
+            min="1"
+            max="${this.tileSources.length}"
+            value="${this.page + 1}"
+            @change="${this.goToPageXofY}"
+          />
+          of ${this.tileSources.length}
+        </p>
+      `
     };
   }
   /**
@@ -645,8 +650,10 @@ class imgViewModal extends ImgPanZoom {
    */
   _item(config = {}) {
     if (typeof config === "string" && this[config]) config = this[config];
-    if(typeof config !== 'object') {
-      return html`<div class="misc-item">${config}</div>`;
+    if (typeof config !== "object") {
+      return html`
+        <div class="misc-item">${config}</div>
+      `;
     } else if (config && typeof config.contents === typeof undefined) {
       return this._button(config);
     } else {
@@ -700,67 +707,72 @@ class imgViewModal extends ImgPanZoom {
     //if (config) this._bindButton(config.id, config.tooltip || config.text);
     return !config
       ? ""
-      : !config.toggleProp || !this[config.toggleProp] 
+      : !config.toggleProp || !this[config.toggleProp]
       ? html`
-        <button
-          .id="${config.id || undefined}"
-          class="${this._buttonClass(config)}"
-          controls="container"
-          @click="${e => this._toolbarButtonClick(config.id, e)}"
-          ?disabled="${(config.id === 'prevbutton' && this.prevDisabled) || (config.id === 'nextbutton' && this.nextDisabled)}"
-        >
-        ${this._buttonInner(config)}
-        </button>
-        ${this._tooltip(config)}
-      ` : html`
           <button
             .id="${config.id || undefined}"
-            ?hidden="${(config.id === "navigatorbutton" && !this.showNavigator) || (config.id === "infobutton" && this.figures.length === 0)}"
+            class="${this._buttonClass(config)}"
+            controls="container"
+            @click="${e => this._toolbarButtonClick(config.id, e)}"
+            ?disabled="${(config.id === "prevbutton" && this.prevDisabled) ||
+              (config.id === "nextbutton" && this.nextDisabled)}"
+          >
+            ${this._buttonInner(config)}
+          </button>
+          ${this._tooltip(config)}
+        `
+      : html`
+          <button
+            .id="${config.id || undefined}"
+            ?hidden="${(config.id === "navigatorbutton" &&
+              !this.showNavigator) ||
+              (config.id === "infobutton" && this.figures.length === 0)}"
             aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
             class="${this._buttonClass(config)}"
             controls="container"
             @click="${e => this._toolbarButtonClick(config.id, e)}"
           >
-          ${this._buttonInner(config)}
+            ${this._buttonInner(config)}
           </button>
           ${this._tooltip(config)}
         `;
   }
-  _buttonClass(config){
-    return `${config.iconRight ? "icon-right" : ""}${config.flexGrow
-      ? " flex-grow"
-      : ""}`
+  _buttonClass(config) {
+    return `${config.iconRight ? "icon-right" : ""}${
+      config.flexGrow ? " flex-grow" : ""
+    }`;
   }
-  _buttonInner(config){
+  _buttonInner(config) {
     return !config
       ? ""
       : html`
-        <p>
-          <iron-icon aria-hidden="true" icon="${config.icon}"></iron-icon>
-          <span class="${config.icon && !config.showText ? "sr-only" : ""}"
-            >${config.text}</span
-          >
-        </p>`;
+          <p>
+            <iron-icon aria-hidden="true" icon="${config.icon}"></iron-icon>
+            <span class="${config.icon && !config.showText ? "sr-only" : ""}"
+              >${config.text}</span
+            >
+          </p>
+        `;
   }
-  _tooltip(config){
+  _tooltip(config) {
     return !config || !config.id
-    ? ""
-    : html`<simple-tooltip for="${config.id}">${config.text}</simple-tooltip>`;
+      ? ""
+      : html`
+          <simple-tooltip for="${config.id}">${config.text}</simple-tooltip>
+        `;
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
   }
   firstUpdated() {
-    if(!this.src && this.sources.length === 0 && this.figures.length > 0) {
-      let figs = this.figures.map(fig=>fig.src);
+    if (!this.src && this.sources.length === 0 && this.figures.length > 0) {
+      let figs = this.figures.map(fig => fig.src);
       this.src = figs[0];
       this.sources = figs.slice(1);
     }
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      
-    });
+    changedProperties.forEach((oldValue, propName) => {});
   }
   /**
    * overrides fullscreen API
@@ -768,8 +780,8 @@ class imgViewModal extends ImgPanZoom {
    * @param {*} [mode=this.fullscreenToggled]
    * @memberof ImgPanZoom
    */
-  _setFullscreen(mode=this.fullscreenToggled){
-    console.log('fullscreen stuff',mode);
+  _setFullscreen(mode = this.fullscreenToggled) {
+    console.log("fullscreen stuff", mode);
     if (this.fullscreenEnabled) {
       if (screenfull) {
         if (mode) {
@@ -794,8 +806,7 @@ class imgViewModal extends ImgPanZoom {
    * toggles fullscreen
    * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
-  toggleFullscreen(mode) {
-  }
+  toggleFullscreen(mode) {}
   _toolbarButtonClick(buttonId, eventType) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
@@ -823,8 +834,10 @@ class imgViewModal extends ImgPanZoom {
     if (buttonId === "zoomoutbutton") this.zoomOut(0.2);
     if (buttonId === "rotateccwbutton") this.rotate(-90);
     if (buttonId === "rotatecwbutton") this.rotate(90);
-    if (buttonId === "navigatorbutton") this.navigatorToggled = !this.navigatorToggled;
-    if (buttonId === "fullscreenbutton") this.fullscreenToggled = !this.fullscreenToggled;
+    if (buttonId === "navigatorbutton")
+      this.navigatorToggled = !this.navigatorToggled;
+    if (buttonId === "fullscreenbutton")
+      this.fullscreenToggled = !this.fullscreenToggled;
     if (buttonId === "flipbutton") this.flipToggled = !this.flipToggled;
     if (buttonId === "infobutton") {
       this.kbdToggled = false;
@@ -835,15 +848,15 @@ class imgViewModal extends ImgPanZoom {
       this.kbdToggled = !this.kbdToggled;
     }
     if (buttonId === "nextbutton") {
-      this.page = Math.min(this.page + 1,this.viewer.tileSources.length - 1);
+      this.page = Math.min(this.page + 1, this.viewer.tileSources.length - 1);
     }
     if (buttonId === "prevbutton") {
-      this.page = Math.max(0,this.page - 1);
+      this.page = Math.max(0, this.page - 1);
     }
   }
-  goToPageXofY(e){
-    this._toolbarButtonClick('navXofY', e)
-    this.page = e.path[0].value -1;
+  goToPageXofY(e) {
+    this._toolbarButtonClick("navXofY", e);
+    this.page = e.path[0].value - 1;
   }
 }
 window.customElements.define(imgViewModal.tag, imgViewModal);

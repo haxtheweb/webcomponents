@@ -326,45 +326,51 @@ class ImgPanZoom extends LitElement {
         attribute: "navigator-toggled",
         reflect: true
       },
-      /** 
+      /**
        * displays multiple images as a sequence
        */
-      sequenceMode: { type: Boolean, attribute: 'sequence-mode' },
-      /** 
+      sequenceMode: { type: Boolean, attribute: "sequence-mode" },
+      /**
        * preserves viewport when navigating images in sequence mode
        * See https://openseadragon.github.io/examples/tilesource-sequence/
        */
-      preserveViewport: { type: Boolean, attribute: 'preserve-viewport' },
-      /** 
-       * show reference strip for images in sequence mode. 
+      preserveViewport: { type: Boolean, attribute: "preserve-viewport" },
+      /**
+       * show reference strip for images in sequence mode.
        * See https://openseadragon.github.io/examples/ui-reference-strip/
        */
-      showReferenceStrip: { type: Boolean, attribute: 'show-reference-strip' },
-      /** 
+      showReferenceStrip: { type: Boolean, attribute: "show-reference-strip" },
+      /**
        * orientation of images using reference strip; can be 'horizontal' or 'vertical' (default)
        */
-      referenceStripScroll: { type: String, attribute: 'reference-strip-scroll' },
-      /** 
-       * displays multiple images as a collection. 
+      referenceStripScroll: {
+        type: String,
+        attribute: "reference-strip-scroll"
+      },
+      /**
+       * displays multiple images as a collection.
        * See https://openseadragon.github.io/examples/tilesource-collection/
        */
-      collectionMode: { type: Boolean, attribute: 'collection-mode' },
-      /** 
+      collectionMode: { type: Boolean, attribute: "collection-mode" },
+      /**
        * number of rows for collection
        */
-      collectionRows: { type: Number, attribute: 'collection-rows' },
-      /** 
+      collectionRows: { type: Number, attribute: "collection-rows" },
+      /**
        * size of each image tile in collection
        */
-      collectionTileSize: { type: Number, attribute: 'collection-tile-size' },
-      /** 
+      collectionTileSize: { type: Number, attribute: "collection-tile-size" },
+      /**
        * margin around each image tile in collection
        */
-      collectionTileMargin: { type: Number, attribute: 'collection-tile-margin' },
-      /** 
+      collectionTileMargin: {
+        type: Number,
+        attribute: "collection-tile-margin"
+      },
+      /**
        * layout of collection; can be 'horizontal' or 'vertical' (default)
        */
-      collectionLayout: { type: String, attribute: 'collection-layout' },
+      collectionLayout: { type: String, attribute: "collection-layout" }
     };
   }
   // simple path from a url modifier
@@ -398,15 +404,15 @@ class ImgPanZoom extends LitElement {
     this.maxZoomPixelRatio = 1.1;
     this.constrainDuringPan = false;
     this.visibilityRatio = 1;
-    this.sequenceMode = false; 
+    this.sequenceMode = false;
     this.preserveViewport = false;
     this.showReferenceStrip = false;
-    this.referenceStripScroll = 'horizontal';
+    this.referenceStripScroll = "horizontal";
     this.collectionMode = false;
     this.collectionRows = 1;
     this.collectionTileSize = 1024;
     this.collectionTileMargin = 256;
-    this.collectionLayout = 'horizontal';
+    this.collectionLayout = "horizontal";
 
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
@@ -445,11 +451,20 @@ class ImgPanZoom extends LitElement {
           })
         );
       }
-      if (propName == "navigatorToggled" && this.viewer) 
-        this.viewer.navigator.element.style.display = this.navigatorToggled ? "inline-block" : "none";
-      if(propName == "fullscreenToggled") this._setFullscreen();
-      if(propName == "flipToggled" && this.viewer && this.viewer.viewport) this.viewer.viewport.setFlip(this.flipToggled);
-      if(propName == "page" && this.viewer) this.viewer.goToPage(Math.max(0,Math.min(this.page,(this.viewer.tileSources || []).length - 1)));
+      if (propName == "navigatorToggled" && this.viewer)
+        this.viewer.navigator.element.style.display = this.navigatorToggled
+          ? "inline-block"
+          : "none";
+      if (propName == "fullscreenToggled") this._setFullscreen();
+      if (propName == "flipToggled" && this.viewer && this.viewer.viewport)
+        this.viewer.viewport.setFlip(this.flipToggled);
+      if (propName == "page" && this.viewer)
+        this.viewer.goToPage(
+          Math.max(
+            0,
+            Math.min(this.page, (this.viewer.tileSources || []).length - 1)
+          )
+        );
     });
   }
   _openseadragonLoaded() {
@@ -501,12 +516,12 @@ class ImgPanZoom extends LitElement {
     setTimeout(() => {
       var tileSources = [this.src, ...this.sources];
       if (!this.dzi) {
-        tileSources = tileSources.map(src=>{
+        tileSources = tileSources.map(src => {
           return {
             type: "image",
             url: src,
             buildPyramid: false
-          }
+          };
         });
       }
       if (!this.viewer)
@@ -532,7 +547,7 @@ class ImgPanZoom extends LitElement {
           navigatorBottom: this.navigatorBottom,
           navigatorWidth: this.navigatorWidth,
           navigatorHeight: this.navigatorHeight,
-          sequenceMode: this.sequenceMode, 
+          sequenceMode: this.sequenceMode,
           preserveViewport: this.preserveViewport,
           showReferenceStrip: this.showReferenceStrip,
           referenceStripScroll: this.referenceStripScroll,
@@ -544,13 +559,16 @@ class ImgPanZoom extends LitElement {
           flipped: this.flipToggled,
           tileSources: tileSources
         });
-        if(this.viewer){
-          this.viewer.goToPage(0);
-          this._setFullscreen();
-          if(this.viewer.navigator) {
-            if(this.viewer.navigator.element) this.viewer.navigator.element.style.display = this.navigatorToggled ? "inline-block" : "none";
-          }
+      if (this.viewer) {
+        this.viewer.goToPage(0);
+        this._setFullscreen();
+        if (this.viewer.navigator) {
+          if (this.viewer.navigator.element)
+            this.viewer.navigator.element.style.display = this.navigatorToggled
+              ? "inline-block"
+              : "none";
         }
+      }
       /**
        * @event fires on zoom
        */
@@ -632,8 +650,8 @@ class ImgPanZoom extends LitElement {
    * @param {*} [mode=this.fullscreenToggled]
    * @memberof ImgPanZoom
    */
-  _setFullscreen(mode=this.fullscreenToggled){
-    if(this.viewer) this.viewer.setFullScreen(mode);
+  _setFullscreen(mode = this.fullscreenToggled) {
+    if (this.viewer) this.viewer.setFullScreen(mode);
   }
 
   //Function to destroy the viewer and clean up everything created by OpenSeadragon.
@@ -701,17 +719,17 @@ class ImgPanZoom extends LitElement {
    * toggles fullscreen mode
    * @param {boolean} mode fullscreen mode
    */
-  toggleFullscreen(mode = !this.fullscreenToggled){
+  toggleFullscreen(mode = !this.fullscreenToggled) {
     this.fullscreenToggled = mode;
   }
   /**
    * toggles flip mode
    * @param {boolean} mode fullscreen mode
    */
-  toggleFlip(mode = !this.flipToggled){
+  toggleFlip(mode = !this.flipToggled) {
     this.flipToggled = mode;
   }
-  
+
   /**
    * recenters image
    */
