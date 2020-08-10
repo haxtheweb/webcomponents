@@ -105,7 +105,6 @@
     "@vaadin/vaadin-upload": "^4.2.1",
     "app-datepicker": "^3.0.0",
     "lit-element": "^2.3.1",
-    "paper-collapse-item": "^4.0.4",
     "undoer": "^0.1.1",
     "web-animations-js": "2.3.2"
   },

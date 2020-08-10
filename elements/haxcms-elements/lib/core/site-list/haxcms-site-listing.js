@@ -1601,6 +1601,7 @@ class HAXCMSSiteListing extends PolymerElement {
                 .replace("/", "")
             : "";
         },
+        zoom: true,
         url: "location",
         image: function(item) {
           if (item.metadata.site && item.metadata.site.logo) {
