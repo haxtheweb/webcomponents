@@ -86,9 +86,24 @@ class ImgPanZoom extends LitElement {
 
   static get properties() {
     return {
-      // Image source
+      /**
+       * image source
+       */
       src: {
         type: String
+      },
+      /**
+       * array of image sources
+       */
+      sources: {
+        type: Array
+      },
+      /**
+       * if used with multiple images and paged navigation, index of current item
+       */
+      page: {
+        type: Number,
+        attribute: "page"
       },
       /**
        * aria-describedby attribute
@@ -109,6 +124,22 @@ class ImgPanZoom extends LitElement {
       fadeIn: {
         type: Boolean,
         attribute: "fade-in"
+      },
+      /**
+       * whether fullscreen mode is toggled
+       */
+      fullscreenToggled: {
+        type: Boolean,
+        attribute: "fullscreen-toggled",
+        reflect: true
+      },
+      /**
+       * whether images is flipped horizontally
+       */
+      flipToggled: {
+        type: Boolean,
+        attribute: "flip-toggled",
+        reflect: true
       },
       /**
        * loading
@@ -230,11 +261,19 @@ class ImgPanZoom extends LitElement {
       /**
        * whether navigator fades when image is not longer being moved
        */
-      navigatorAutoFade: { type: Boolean, attribute: "navigator-auto-fade", reflect: true },
+      navigatorAutoFade: {
+        type: Boolean,
+        attribute: "navigator-auto-fade",
+        reflect: true
+      },
       /**
        * where navigator is positioned: "TOP_LEFT", "BOTTOM_RIGHT", "ABSOLUTE", etc. Default is "TOP_RIGHT"
        */
-      navigatorPosition: { type: String, attribute: "navigator-position", reflect: true },
+      navigatorPosition: {
+        type: String,
+        attribute: "navigator-position",
+        reflect: true
+      },
       /**
        * if navigator position is "ABSOLUTE", top position for navigator
        */
@@ -242,51 +281,90 @@ class ImgPanZoom extends LitElement {
       /**
        * if navigator position is "ABSOLUTE", bottom position for navigator
        */
-      navigatorBottom: { type: String, attribute: "navigator-bottom", reflect: true },
+      navigatorBottom: {
+        type: String,
+        attribute: "navigator-bottom",
+        reflect: true
+      },
       /**
        * if navigator position is "ABSOLUTE", left position for navigator
        */
-      navigatorLeft: { type: String, attribute: "navigator-left", reflect: true },
+      navigatorLeft: {
+        type: String,
+        attribute: "navigator-left",
+        reflect: true
+      },
       /**
        * if navigator position is "ABSOLUTE", right position for navigator
        */
-      navigatorRight: { type: String, attribute: "navigator-right", reflect: true },
+      navigatorRight: {
+        type: String,
+        attribute: "navigator-right",
+        reflect: true
+      },
       /**
        * height of navigator
        */
-      navigatorHeight: { type: String, attribute: "navigator-height", reflect: true },
+      navigatorHeight: {
+        type: String,
+        attribute: "navigator-height",
+        reflect: true
+      },
       /**
        * width of navigator
        */
-      navigatorWidth: { type: String, attribute: "navigator-width", reflect: true },
+      navigatorWidth: {
+        type: String,
+        attribute: "navigator-width",
+        reflect: true
+      },
       /**
        * whether navigator window mode is toggled
        */
-      navigatorToggled: { type: Boolean, attribute: "navigator-toggled", reflect: true },
-      /**
-       * id of previous image button
+      navigatorToggled: {
+        type: Boolean,
+        attribute: "navigator-toggled",
+        reflect: true
+      },
+      /** 
+       * displays multiple images as a sequence
        */
-      previousButton: { type: "String" },
-      /**
-       * id of previous image button
+      sequenceMode: { type: Boolean, attribute: 'sequence-mode' },
+      /** 
+       * preserves viewport when navigating images in sequence mode
+       * See https://openseadragon.github.io/examples/tilesource-sequence/
        */
-      nextButton: { type: "String" },
-      /**
-       * id of zoom out button
+      preserveViewport: { type: Boolean, attribute: 'preserve-viewport' },
+      /** 
+       * show reference strip for images in sequence mode. 
+       * See https://openseadragon.github.io/examples/ui-reference-strip/
        */
-      zoomOutButton: { type: "String" },
-      /**
-       * id of zoom in button
+      showReferenceStrip: { type: Boolean, attribute: 'show-reference-strip' },
+      /** 
+       * orientation of images using reference strip; can be 'horizontal' or 'vertical' (default)
        */
-      zoomInButton: { type: "String" },
-      /**
-       * id of reset / home button
+      referenceStripScroll: { type: String, attribute: 'reference-strip-scroll' },
+      /** 
+       * displays multiple images as a collection. 
+       * See https://openseadragon.github.io/examples/tilesource-collection/
        */
-      homeButton: { type: "String" },
-      /**
-       * id of zoom to fullscreen button
+      collectionMode: { type: Boolean, attribute: 'collection-mode' },
+      /** 
+       * number of rows for collection
        */
-      fullPageButton: { type: "String" }
+      collectionRows: { type: Number, attribute: 'collection-rows' },
+      /** 
+       * size of each image tile in collection
+       */
+      collectionTileSize: { type: Number, attribute: 'collection-tile-size' },
+      /** 
+       * margin around each image tile in collection
+       */
+      collectionTileMargin: { type: Number, attribute: 'collection-tile-margin' },
+      /** 
+       * layout of collection; can be 'horizontal' or 'vertical' (default)
+       */
+      collectionLayout: { type: String, attribute: 'collection-layout' },
     };
   }
   // simple path from a url modifier
@@ -298,10 +376,14 @@ class ImgPanZoom extends LitElement {
    */
   constructor() {
     super();
+    this.page = 0;
+    this.sources = [];
     this.loading = false;
     this.dzi = false;
     this.fadeIn = true;
     this.hideSpinner = false;
+    this.fullscreenToggled = false;
+    this.flipToggled = false;
     this.showNavigationControl = false;
     this.showNavigator = false;
     this.navigatorAutoFade = false;
@@ -316,6 +398,16 @@ class ImgPanZoom extends LitElement {
     this.maxZoomPixelRatio = 1.1;
     this.constrainDuringPan = false;
     this.visibilityRatio = 1;
+    this.sequenceMode = false; 
+    this.preserveViewport = false;
+    this.showReferenceStrip = false;
+    this.referenceStripScroll = 'horizontal';
+    this.collectionMode = false;
+    this.collectionRows = 1;
+    this.collectionTileSize = 1024;
+    this.collectionTileMargin = 256;
+    this.collectionLayout = 'horizontal';
+
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
     window.addEventListener(
@@ -354,9 +446,10 @@ class ImgPanZoom extends LitElement {
         );
       }
       if (propName == "navigatorToggled" && this.viewer) 
-        this.viewer.navigator.element.style.display = this.navigatorToggled 
-          ? "inline-block"
-          : "none";
+        this.viewer.navigator.element.style.display = this.navigatorToggled ? "inline-block" : "none";
+      if(propName == "fullscreenToggled") this._setFullscreen();
+      if(propName == "flipToggled" && this.viewer && this.viewer.viewport) this.viewer.viewport.setFlip(this.flipToggled);
+      if(propName == "page" && this.viewer) this.viewer.goToPage(Math.max(0,Math.min(this.page,(this.viewer.tileSources || []).length - 1)));
     });
   }
   _openseadragonLoaded() {
@@ -406,13 +499,15 @@ class ImgPanZoom extends LitElement {
   // Init openseadragon
   _initOpenSeadragon() {
     setTimeout(() => {
-      var tileSources = this.src;
+      var tileSources = [this.src, ...this.sources];
       if (!this.dzi) {
-        tileSources = {
-          type: "image",
-          url: this.src,
-          buildPyramid: false
-        };
+        tileSources = tileSources.map(src=>{
+          return {
+            type: "image",
+            url: src,
+            buildPyramid: false
+          }
+        });
       }
       if (!this.viewer)
         this.viewer = new OpenSeadragon({
@@ -437,9 +532,25 @@ class ImgPanZoom extends LitElement {
           navigatorBottom: this.navigatorBottom,
           navigatorWidth: this.navigatorWidth,
           navigatorHeight: this.navigatorHeight,
+          sequenceMode: this.sequenceMode, 
+          preserveViewport: this.preserveViewport,
+          showReferenceStrip: this.showReferenceStrip,
+          referenceStripScroll: this.referenceStripScroll,
+          collectionMode: this.collectionMode,
+          collectionRows: this.collectionRows,
+          collectionTileSize: this.collectionTileSize,
+          collectionTileMargin: this.collectionTileMargin,
+          collectionLayout: this.collectionLayout,
+          flipped: this.flipToggled,
           tileSources: tileSources
         });
-        this.navigatorToggled = this.navigatorToggled || this.showNavigator;
+        if(this.viewer){
+          this.viewer.goToPage(0);
+          this._setFullscreen();
+          if(this.viewer.navigator) {
+            if(this.viewer.navigator.element) this.viewer.navigator.element.style.display = this.navigatorToggled ? "inline-block" : "none";
+          }
+        }
       /**
        * @event fires on zoom
        */
@@ -455,7 +566,7 @@ class ImgPanZoom extends LitElement {
       /**
        * @event fires on page
        */
-      this.viewer.addHandler("page", e => 
+      this.viewer.addHandler("page", e =>
         this.dispatchEvent(
           new CustomEvent("page", {
             detail: {
@@ -514,6 +625,15 @@ class ImgPanZoom extends LitElement {
       );
       this.init = true;
     }, 100);
+  }
+  /**
+   * actually sets the fullscreen using API; can be overridden
+   *
+   * @param {*} [mode=this.fullscreenToggled]
+   * @memberof ImgPanZoom
+   */
+  _setFullscreen(mode=this.fullscreenToggled){
+    if(this.viewer) this.viewer.setFullScreen(mode);
   }
 
   //Function to destroy the viewer and clean up everything created by OpenSeadragon.
@@ -577,7 +697,21 @@ class ImgPanZoom extends LitElement {
       }
     }
   }
-
+  /**
+   * toggles fullscreen mode
+   * @param {boolean} mode fullscreen mode
+   */
+  toggleFullscreen(mode = !this.fullscreenToggled){
+    this.fullscreenToggled = mode;
+  }
+  /**
+   * toggles flip mode
+   * @param {boolean} mode fullscreen mode
+   */
+  toggleFlip(mode = !this.flipToggled){
+    this.flipToggled = mode;
+  }
+  
   /**
    * recenters image
    */

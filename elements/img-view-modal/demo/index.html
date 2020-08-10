@@ -31,12 +31,48 @@
       <template>
         <img-view-modal
           id="demo" 
-          src="./images/Matterhorn02.png" 
-          max-zoom-pixel-ratio="10">
+          figures='[
+            {
+              "src": "./images/Matterhorn01.png",
+              "info": "This image has snow."
+            },
+            {
+              "src": "./images/Matterhorn02.png",
+              "info": "This image has  no snow."
+            }
+          ]'
+          max-zoom-pixel-ratio="10"
+          show-navigator>
         </img-view-modal>
         <script>
           window.onload = () => {
             let demo = document.getElementById('demo');
+            demo.toolbars = {
+              top: {
+                id: "top",
+                type: "toolbar-group",
+                contents: [
+                  "prevbutton",
+                  "navigatorbutton",
+                  "fullscreenbutton",
+                  "navXofY",
+                  "kbdbutton",
+                  "infobutton",
+                  "nextbutton"
+                ]
+              },
+              bottom: {
+                id: "bottom",
+                type: "toolbar-group",
+                contents: [
+                  "flipbutton",
+                  "rotategroup",
+                  "zoomgroup",
+                  "homebutton",
+                  "pangroup"
+                ]
+              }
+            };
           }
         </script>
       </template>

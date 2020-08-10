@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `img-view-modal`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -17,7 +17,7 @@ class imgViewModal extends ImgPanZoom {
       css`
         :host {
           display: block;
-        } 
+        }
         :host([hidden]),
         *[hidden] {
           display: none !important;
@@ -34,26 +34,33 @@ class imgViewModal extends ImgPanZoom {
           align-items: stretch;
           justify-content: space-between;
           height: 100%;
-        } 
+          background-color: white;
+          color: black;
+        }
         #container > * {
           flex: 1 1 auto;
           border: 1px solid #ddd;
-        }  
+        }
+        .misc-item,
         .button-group {
           display: flex;
           align-items: stretch;
           justify-content: center;
         }
-        #top, 
+        .misc-item {
+          align-items: center;
+          padding: 5px;
+        }
+        #top,
         #bottom {
           margin: 0;
           flex: 0 0 auto;
         }
-        #top > *, 
+        #top > *,
         #bottom > * {
           margin: 0;
         }
-        #top > *:not(:first-child), 
+        #top > *:not(:first-child),
         #bottom > *:not(:first-child) {
           border-left: 1px solid #ddd;
         }
@@ -74,11 +81,53 @@ class imgViewModal extends ImgPanZoom {
           flex-direction: row-reverse;
           justify-content: end;
         }
+        button[aria-pressed="true"] {
+          background: #eee;
+        }
         button:focus,
         button:hover,
         #viewer:focus-within {
           outline: 1px solid blue;
           z-index: 2;
+        }
+        simple-tooltip:not(:defined) {
+          display: none;
+        }
+        #placeholder {
+          position: relative;
+          max-height: 0;
+          overflow: visible;
+        }
+        #info {
+          position:absolute;
+          bottom:0;
+          right:0;
+          background-color: white;
+          padding: 5px;
+          border: 1px solid #ddd;
+        }
+        table {
+          border-collapse: collapse;
+        }
+        th,td {
+          padding: 2px 5px;
+          border-top: 1px solid #ddd;
+          line-height: 140%;
+        }
+        th {
+          font-weight: normal;
+          text-align: left;
+        }
+        kbd {
+          background: #eee;
+          border: 1px solid #ddd;
+          border-radius: 2px;
+          padding: 1px 3px;
+          font-family: sans-serif;
+          font-size: 80%;
+        }
+        input[type="number"] {
+          border: 1px solid #ddd;
         }
       `
     ];
@@ -88,9 +137,34 @@ class imgViewModal extends ImgPanZoom {
     this.src = "";
     this.minZoomImageRatio = 1;
     this.maxZoomPixelRatio = 3;
-    import ("@polymer/iron-icon/iron-icon.js");
-    import ("@polymer/iron-icons/iron-icons.js");
-    import ("@polymer/iron-icons/image-icons.js");
+    this.__screenfullLoaded = false;
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/image-icons.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    if (typeof screenfull === "object") {
+      this._onScreenfullLoaded();
+    } else {
+      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      const location = `${basePath}screenfull/dist/screenfull.js`;
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load("screenfullLib", location);
+      window.addEventListener(
+        "es-bridge-screenfullLib-loaded",
+        this._onScreenfullLoaded
+      );
+    }
+  }
+
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-screenfullLib-loaded",
+      this._onScreenfullLoaded
+    );
+    super.disconnectedCallback();
   }
   render() {
     return html`
@@ -111,7 +185,7 @@ class imgViewModal extends ImgPanZoom {
               @loaded-changed="${this.loadedChangedEvent}"
               ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
-              @page="${e=>this.currentImage = e.page}"
+              @page="${e => (this.page = e.page)}"
               src="${this.src}"
               described-by="${this.describedBy || ""}"
             ></img-loader>
@@ -120,9 +194,16 @@ class imgViewModal extends ImgPanZoom {
 
       <!-- Openseadragon -->
       <div id="container">
-        ${this.getToolbars(this.defaultToolbars,this.toolbars,"top")}
-        <div><div id="viewer"></div></div>
-        ${this.getToolbars(this.defaultToolbars,this.toolbars,"bottom")}
+        ${this.getToolbars(this.defaultToolbars, this.toolbars, "top")}
+        <div>
+          <div id="viewer"></div>
+        </div>
+        <div id="placeholder">
+          <div id="info" ?hidden="${!this.info}">
+            ${this.info}
+          </div>
+        </div>
+        ${this.getToolbars(this.defaultToolbars, this.toolbars, "bottom")}
       </div>
     `;
   }
@@ -130,114 +211,93 @@ class imgViewModal extends ImgPanZoom {
   static get tag() {
     return "img-view-modal";
   }
-static get properties() {
+  static get properties() {
     return {
       ...super.properties,
-      
-      /**
-       * whether fullscreen mode is toggled
-       */
-      fullscreenMode: { type: Boolean, attribute: "fullscreen-mode", reflect: true },
+
+      figures: {
+        type: Array
+      },
       /**
        * whether info mode is toggled
        */
-      infoMode: { type: Boolean, attribute: "info-mode", reflect: true },
+      infoToggled: { type: Boolean, attribute: "info-mode", reflect: true },
       /**
        * whether keyboard shortcuts help mode is toggled
        */
-      keyboardHelpMode: { type: Boolean, attribute: "keyboard-help-mode", reflect: true },
-      /**
-       * whether navigator window mode is toggled
-       */
-      navigatorToggled: { type: Boolean, attribute: "navigator-toggled", reflect: true },
-      /**
-       * if used with multiple images and paged navigation, index of current item
-       */
-      currentImage: { type: Number , attribute: "current-image", reflect: true},
+      kbdToggled: {
+        type: Boolean,
+        attribute: "keyboard-help-mode",
+        reflect: true
+      },
       /**
        * if used with multiple images and paged navigation, index of current item
        */
-      toolbars: { type: Number , attribute: "toolbars", reflect: true},
-
-      /* https://openseadragon.github.io/examples/ui-reference-strip/ */
-      referenceStripScroll: { type: String },
-      sequenceMode: { type: Boolean },
-      showReferenceStrip: { type: Boolean },
-
-      /* 
-      https://openseadragon.github.io/examples/tilesource-collection/
-      https://openseadragon.github.io/examples/multi-image/ 
-      */
-      collectionMode: { type: Boolean },
-      collectionRows: { type: Number },
-      collectionTileSize: { type: Number },
-      collectionTileMargin: { type: Number },
-      collectionLayout: { type: String },
-
-      /* https://openseadragon.github.io/examples/tilesource-sequence/ */
-      tileSources: { type: Array },
-      preserveViewport: { type: Array },    
-      defaultZoomLevel: { type: Number },
-
-      //TODO https://openseadragon.github.io/examples/ui-tiledimage-polygon-cropping/
-      previousTooltip: { type: String },
-      nextTooltip: { type: String },
-      zoomOutTooltip: { type: String },
-      zoomInTooltip: { type: String },
-      homeTooltip: { type: String },
-      fullPageTooltip: { type: String }
-      /* TODO 
-      https://openseadragon.github.io/examples/ui-overlays/ 
-      https://openseadragon.github.io/examples/ui-tiledimage-polygon-cropping/
-      */
+      toolbars: { type: Object, attribute: "toolbars", reflect: true },
+      __screenfullLoaded: { type: Boolean }
     };
   }
-  /* TODO https://openseadragon.github.io/examples/ui-keyboard-navigation/ */
-  getToolbars(defaultToolbars,customToolbars,topOrBottom = "bottom"){
+  getToolbars(defaultToolbars, customToolbars, topOrBottom = "bottom") {
     let toolbars = customToolbars || defaultToolbars,
-      toolbar = toolbars && toolbars[topOrBottom] 
-        ? toolbars[topOrBottom] 
-        : { id: topOrBottom, contents: '' },
+      toolbar =
+        toolbars && toolbars[topOrBottom]
+          ? toolbars[topOrBottom]
+          : { id: topOrBottom, contents: "" },
       div = this._item(toolbar);
     return div;
   }
   /**
    * default home button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get homebutton(){
+  get homebutton() {
     return {
-      id:"homebutton",
+      id: "homebutton",
       icon: "home",
       text: "return image to home position"
     };
   }
   /**
    * default toggle fullscreen button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get fullscreenbutton(){
+  get fullscreenbutton() {
     return {
-      id:"fullscreenbutton",
+      id: "fullscreenbutton",
       icon: "fullscreen",
-      toggleProp: "fullscreenMode",
-      text: html`toggle fullscreen (<kbd>ESC</kbd> to exit)`
+      toggleProp: "fullscreenToggled",
+      text: html`
+        toggle fullscreen
+      `
     };
+  }
+
+  /**
+   * whether or not the fullscreen mode is be disabled
+   * @returns {boolean}
+   */
+  get fullscreenEnabled() {
+    let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    return (
+      typeof screenfull === "object" && !mobile
+    );
   }
   /**
    * default toggle navigate window button configuration
    * Uses <a href="https://openseadragon.github.io/examples/ui-viewport-navigator/">Viewport Navigator</a>
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get navigatorbutton(){
+  get navigatorbutton() {
     return {
-      id:"navigatorbutton",
+      id: "navigatorbutton",
       icon: "picture-in-picture",
       toggleProp: "navigatorToggled",
       text: "toggle nav window"
@@ -245,84 +305,137 @@ static get properties() {
   }
   /**
    * default toggle info button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get infobutton(){
+  get infobutton() {
     return {
-      id:"infoMode",
-      icon: "info",
-      toggleProp: "infoMode",
+      id: "infobutton",
+      icon: "info-outline",
+      toggleProp: "infoToggled",
       text: "toggle information"
     };
   }
   /**
    * default toggle keyboard shorcuts help button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get kbdbutton(){
+  get kbdbutton() {
     return {
-      id:"kbdbutton",
-      icon: "info",
-      toggleProp: "keyboardHelpMode",
-      text: "toggle keyboard shorcuts help"
+      id: "kbdbutton",
+      icon: "help-outline",
+      toggleProp: "kbdToggled",
+      text: "toggle keyboard shorcuts help",
+      details: html`
+        <table>
+          <caption>Keyboard Shortcuts</caption>
+          <tbody>
+            <tr>
+              <th scope="row">pan up</th>
+              <td><kbd>w</kbd> or <kbd>&uarr;</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">pan down</th>
+              <td><kbd>s</kbd> or <kbd>&darr;</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">pan left</th>
+              <td><kbd>a</kbd> or <kbd>&larr;</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">pan right</th>
+              <td><kbd>d</kbd> or <kbd>&rarr;</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">home</th>
+              <td><kbd>0</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">zoom out</th>
+              <td><kbd>-</kbd> or <kbd>_</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">zoom in</th>
+              <td><kbd>+</kbd> or <kbd>=</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">rotate clockwise</th>
+              <td><kbd>r</kbd></td>
+            </tr>
+            <tr>
+              <th scope="row">rotate counterclockwise</th>
+              <td><kbd>shift+r</kbd></td>
+            </tr>
+          </tbody>
+        </table>
+      `
+    };
+  }
+  /**
+   * default flip horizontal button configuration
+   * @return {object}
+   * @readonly
+   * @memberof imgViewModal
+   */
+  get flipbutton() {
+    return {
+      id: "flipbutton",
+      icon: "image:flip",
+      text: "flip horizontal"
     };
   }
   /**
    * default rotate button group configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get rotategroup(){
+  get rotategroup() {
     return {
-      id: 'rotategroup',
-      type: 'toolbar-group',
-      contents: [
-        this.rotateccwbutton,
-        this.rotatecwbutton
-      ]
+      id: "rotategroup",
+      type: "toolbar-group",
+      contents: [this.rotateccwbutton, this.rotatecwbutton]
     };
   }
   /**
    * default rotate counterclockwise button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get rotateccwbutton(){
+  get rotateccwbutton() {
     return {
-      id:"rotateccwbutton",
+      id: "rotateccwbutton",
       icon: "image:rotate-left",
       text: "rotate counterclockwise"
     };
   }
   /**
    * default rotate counter button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get rotatecwbutton(){
+  get rotatecwbutton() {
     return {
-      id:"rotatecwbutton",
+      id: "rotatecwbutton",
       icon: "image:rotate-right",
       text: "rotate clockwise"
     };
   }
   /**
    * default pan button group configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get pangroup(){
+  get pangroup() {
     return {
-      id: 'pangroup',
-      type: 'toolbar-group',
+      id: "pangroup",
+      type: "toolbar-group",
       contents: [
         this.panleftbutton,
         this.panupbutton,
@@ -333,112 +446,109 @@ static get properties() {
   }
   /**
    * default pan left button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get panleftbutton(){
+  get panleftbutton() {
     return {
-      id:"panleftbutton",
+      id: "panleftbutton",
       icon: "arrow-back",
       text: "pan left"
     };
   }
   /**
    * default pan up button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get panupbutton(){
+  get panupbutton() {
     return {
-      id:"panupbutton",
+      id: "panupbutton",
       icon: "arrow-upward",
       text: "pan up"
     };
   }
   /**
    * default pan down button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get pandownbutton(){
+  get pandownbutton() {
     return {
-      id:"pandownbutton",
+      id: "pandownbutton",
       icon: "arrow-downward",
       text: "pan down"
     };
   }
   /**
    * default pan right button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get panrightbutton(){
+  get panrightbutton() {
     return {
-      id:"panrightbutton",
+      id: "panrightbutton",
       icon: "arrow-forward",
       text: "pan right"
     };
   }
   /**
    * default zoom button group configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get zoomgroup(){
+  get zoomgroup() {
     return {
-      id: 'zoomgroup',
-      type: 'toolbar-group',
-      contents: [
-        this.zoominbutton,
-        this.zoomoutbutton
-      ]
+      id: "zoomgroup",
+      type: "toolbar-group",
+      contents: [this.zoominbutton, this.zoomoutbutton]
     };
   }
   /**
    * default zoom in button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get zoominbutton(){
+  get zoominbutton() {
     return {
-      id:"zoominbutton",
+      id: "zoominbutton",
       icon: "zoom-in",
       text: "zoom in"
     };
   }
   /**
    * default zoom out button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get zoomoutbutton(){
+  get zoomoutbutton() {
     return {
-      id:"zoomoutbutton",
+      id: "zoomoutbutton",
       icon: "zoom-out",
       text: "zoom out"
     };
   }
   /**
    * default prev button configuration
-   * @return {object} 
+   * @return {object}
    * @readonly
    * @memberof imgViewModal
    */
-  get prevbutton(){
+  get prevbutton() {
     return {
       id: "prevbutton",
       showText: true,
       icon: "chevron-left",
       text: "prev",
       flexGrow: true
-    }
+    };
   }
   /**
    * default next button configuration
@@ -446,7 +556,7 @@ static get properties() {
    * @readonly
    * @memberof imgViewModal
    */
-  get nextbutton(){
+  get nextbutton() {
     return {
       id: "nextbutton",
       icon: "chevron-right",
@@ -454,7 +564,23 @@ static get properties() {
       text: "next",
       showText: true,
       flexGrow: true
-    }
+    };
+  }
+  get tileSources(){
+    return [this.src, ...this.sources];
+  }
+  get prevDisabled(){
+    return this.page <= 0;
+  }
+  get nextDisabled(){
+    return this.page + 1 >= this.tileSources.length;
+  }
+  get info(){
+    return this.kbdToggled && this.kbdbutton.details
+      ? this.kbdbutton.details
+      : this.infoToggled && this.figures && this.figures[this.page] && this.figures[this.page].info
+      ? this.figures[this.page].info
+      : undefined
   }
   /**
    * default x of y text for toolbar
@@ -462,11 +588,28 @@ static get properties() {
    * @readonly
    * @memberof imgViewModal
    */
-  get pageXofY(){
-    return !this.currentImage ? '' : `${this.currentImage} of ${this.totalImage}`;
+  get pageXofY() {
+    return `${(this.page|| 0)+1} of ${this.tileSources.length}`;
+  }
+  get navXofY(){
+    return {
+      id: "navXofY",
+      type: "misc-item",
+      contents: html`
+        <p>
+          <input 
+          type="number" 
+          min="1" 
+          max="${this.tileSources.length}"
+          value="${this.page+1}"
+          @change="${this.goToPageXofY}"> 
+          of 
+          ${this.tileSources.length}
+        </p>`
+    };
   }
   /**
-   * default toolbar config object, 
+   * default toolbar config object,
    * where "top" contains config for toolbar above image(s),
    * and "bottom" contains config for toolbar above image(s)
    * @return {object} as { top: { id="top", contents:[]},  id="bottom", contents:[]}, }
@@ -474,13 +617,13 @@ static get properties() {
    * @readonly
    * @memberof imgViewModal
    */
-  get defaultToolbars(){
+  get defaultToolbars() {
     return {
       bottom: {
         id: "bottom",
-        type: 'toolbar-group',
+        type: "toolbar-group",
         contents: [
-          "prevbutton", 
+          "prevbutton",
           "rotategroup",
           "zoomgroup",
           "homebutton",
@@ -488,31 +631,33 @@ static get properties() {
           "nextbutton"
         ]
       }
-    }
+    };
   }
   /**
    * makes a toolbar item from config
-   *  TOOLBAR CONFIG SCHEMA: { 
-   *    id : {{itemid / certain ids have default configs and bindings that can be used or overridden}}, 
-   *    config: {{if item is a button, button config}}, 
-   *    contents: {{if item is a group, string of text or array of items}}, 
+   *  TOOLBAR CONFIG SCHEMA: {
+   *    id : {{itemid / certain ids have default configs and bindings that can be used or overridden}},
+   *    config: {{if item is a button, button config}},
+   *    contents: {{if item is a group, string of text or array of items}},
    *  }
    * @param {*} [config={}]
    * @memberof imgViewModal
    */
-  _item(config = {}){
-    if(typeof config === "string" && this[config]) config = this[config];
-    if(config && typeof config.contents === typeof undefined){
+  _item(config = {}) {
+    if (typeof config === "string" && this[config]) config = this[config];
+    if(typeof config !== 'object') {
+      return html`<div class="misc-item">${config}</div>`;
+    } else if (config && typeof config.contents === typeof undefined) {
       return this._button(config);
     } else {
-      return this._group(config)
+      return this._group(config);
     }
   }
   /**
    * makes a toolbar group from config
-   *  GROUP CONFIG SCHEMA: { 
-   *    id : {{groupid / certain ids have default item groupings that can be used or overridden}}, 
-   *    type: {{group type to add to classlist}}, 
+   *  GROUP CONFIG SCHEMA: {
+   *    id : {{groupid / certain ids have default item groupings that can be used or overridden}},
+   *    type: {{group type to add to classlist}},
    *    contents: {{sting of text content or array of items in the group}}
    *  }
    * @param {object} [config={}]
@@ -520,23 +665,28 @@ static get properties() {
    * @returns toolbar group html template
    * @memberof imgViewModal
    */
-  _group(config = {}){
-    if(typeof config === "string" && this[config]) config = this[config];
-    return !config ? '' : html`
-    <div .id="${config.id || undefined}" class="button-group ${config.type || ''}">
-      ${typeof config.contents === "string" 
-        ? config.contents 
-        : (config.contents || []).map(item=>this._item(item))}
-    </div>
-    `;
+  _group(config = {}) {
+    if (typeof config === "string" && this[config]) config = this[config];
+    return !config
+      ? ""
+      : html`
+          <div
+            .id="${config.id || undefined}"
+            class="button-group ${config.type || ""}"
+          >
+            ${!Array.isArray(config.contents)
+              ? config.contents
+              : (config.contents || []).map(item => this._item(item))}
+          </div>
+        `;
   }
   /**
    * makes a toolbar button from config
-   *  BUTTON CONFIG SCHEMA: { 
-   *    toggleProp : {{if button toggles, property button toggles}}, 
-   *    icon: {{button icon}}, 
-   *    iconRight: {{show icon to the right of text intead of left}}, 
-   *    text: {{button text / default tooltip}}, 
+   *  BUTTON CONFIG SCHEMA: {
+   *    toggleProp : {{if button toggles, property button toggles}},
+   *    icon: {{button icon}},
+   *    iconRight: {{show icon to the right of text intead of left}},
+   *    text: {{button text / default tooltip}},
    *    showText: {{show button text even if button has an icon}},
    *    tooltip: {{override button text as tooltip}}
    *  }
@@ -545,73 +695,108 @@ static get properties() {
    * @returns button html template
    * @memberof imgViewModal
    */
-  _button(config = {}){
-    if(typeof config === "string" && this[config]) config = this[config];
-    if(config) this._bindButton(config.id,config.tooltip || config.text);
-    return !config ? '' : html`
-      <button 
-        .id="${config.id || undefined}" 
-        .aria-pressed="${!config.toggleProp || !this[config.toggleProp] ? undefined : this[config.toggleProp] ? "true" : "false"}"
-        class="${config.iconRight ? 'icon-right' : ''} ${config.flexGrow ? 'flex-grow' : ''}"
-        @click="${e=>this._toolbarButtonClick(config.id,e)}">
+  _button(config = {}) {
+    if (typeof config === "string" && this[config]) config = this[config];
+    //if (config) this._bindButton(config.id, config.tooltip || config.text);
+    return !config
+      ? ""
+      : !config.toggleProp || !this[config.toggleProp] 
+      ? html`
+        <button
+          .id="${config.id || undefined}"
+          class="${this._buttonClass(config)}"
+          controls="container"
+          @click="${e => this._toolbarButtonClick(config.id, e)}"
+          ?disabled="${(config.id === 'prevbutton' && this.prevDisabled) || (config.id === 'nextbutton' && this.nextDisabled)}"
+        >
+        ${this._buttonInner(config)}
+        </button>
+        ${this._tooltip(config)}
+      ` : html`
+          <button
+            .id="${config.id || undefined}"
+            ?hidden="${(config.id === "navigatorbutton" && !this.showNavigator) || (config.id === "infobutton" && this.figures.length === 0)}"
+            aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
+            class="${this._buttonClass(config)}"
+            controls="container"
+            @click="${e => this._toolbarButtonClick(config.id, e)}"
+          >
+          ${this._buttonInner(config)}
+          </button>
+          ${this._tooltip(config)}
+        `;
+  }
+  _buttonClass(config){
+    return `${config.iconRight ? "icon-right" : ""}${config.flexGrow
+      ? " flex-grow"
+      : ""}`
+  }
+  _buttonInner(config){
+    return !config
+      ? ""
+      : html`
         <p>
           <iron-icon aria-hidden="true" icon="${config.icon}"></iron-icon>
-          <span class="${config.icon && !config.showText ? 'sr-only' : ''}">${config.text}</span>
-        </p>
-      </button>
-    `;
+          <span class="${config.icon && !config.showText ? "sr-only" : ""}"
+            >${config.text}</span
+          >
+        </p>`;
+  }
+  _tooltip(config){
+    return !config || !config.id
+    ? ""
+    : html`<simple-tooltip for="${config.id}">${config.text}</simple-tooltip>`;
+  }
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {});
+  }
+  firstUpdated() {
+    if(!this.src && this.sources.length === 0 && this.figures.length > 0) {
+      let figs = this.figures.map(fig=>fig.src);
+      this.src = figs[0];
+      this.sources = figs.slice(1);
+    }
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      
+    });
   }
   /**
-   * binds a button to img viewer
-   * <a href="https://openseadragon.github.io/examples/ui-binding-custom-buttons/">Binding</a>
-   * @param {string} [id=""] button id
-   * @param {string} [text=""] tooltip text
-   * @memberof imgViewModal
+   * overrides fullscreen API
+   *
+   * @param {*} [mode=this.fullscreenToggled]
+   * @memberof ImgPanZoom
    */
-  _bindButton(id="",text=""){
-    let bindings = {
-      "prevbutton": {
-        prop: "previousButton",
-        tooltip: "PreviousPageTooltip"
-      },
-      "nextbutton": {
-        prop: "nextButton",
-        tooltip: "NextPageTooltip"
-      },
-      "zoomoutbutton": {
-        prop: "zoomOutButton",
-        tooltip: "ZoomOutTooltip"
-      },
-      "zoominbutton": {
-        prop: "zoomInButton",
-        tooltip: "ZoomInTooltip"
-      },
-      "homebutton": {
-        prop: "homeButton",
-        tooltip: "HomeTooltip"
-      },
-      "fullscreenbutton": {
-        prop: "fullPageButton",
-        tooltip: "FullPageTooltip"
+  _setFullscreen(mode=this.fullscreenToggled){
+    console.log('fullscreen stuff',mode);
+    if (this.fullscreenEnabled) {
+      if (screenfull) {
+        if (mode) {
+          screenfull.request(this.shadowRoot.querySelector("#container"));
+        } else {
+          screenfull.exit(this.shadowRoot.querySelector("#container"));
+        }
       }
-    }, binding = bindings[id];
-    if(binding){
-      this[binding.prop] = id;
-      this[binding.tooltip] = text;
     }
   }
 
-  updated(changedProperties) {
-    if(super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-    });
+  /**
+   * sets the element's __screenfullLoaded variable to true once screenfull is loaded
+   * and adds an event listener for screenfull
+   * @param {event} e screenfull load
+   */
+  _onScreenfullLoaded() {
+    this.__screenfullLoaded = true;
   }
-  firstUpdated() {
-    if(super.firstUpdated) super.firstUpdated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-    });
+
+  /**
+   * toggles fullscreen
+   * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleFullscreen(mode) {
   }
-  _toolbarButtonClick(buttonId,eventType) {
+  _toolbarButtonClick(buttonId, eventType) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
      *
@@ -629,14 +814,36 @@ static get properties() {
         }
       })
     );
-    if(buttonId === "panupbutton") this.pan(0,0.2);
-    if(buttonId === "pandownbutton") this.pan(0,-0.2);
-    if(buttonId === "panleftbutton") this.pan(0.2,0);
-    if(buttonId === "panrightbutton") this.pan(-0.2,0);
-    if(buttonId === "zoominbutton") this.zoomIn(0.2);
-    if(buttonId === "zoomoutbutton") this.zoomOut(0.2);
-    if(buttonId === "rotateccwbutton") this.rotate(-90);
-    if(buttonId === "rotatecwbutton") this.rotate(90);
+    if (buttonId === "homebutton") this.resetZoom();
+    if (buttonId === "panupbutton") this.pan(0, 0.2);
+    if (buttonId === "pandownbutton") this.pan(0, -0.2);
+    if (buttonId === "panleftbutton") this.pan(0.2, 0);
+    if (buttonId === "panrightbutton") this.pan(-0.2, 0);
+    if (buttonId === "zoominbutton") this.zoomIn(0.2);
+    if (buttonId === "zoomoutbutton") this.zoomOut(0.2);
+    if (buttonId === "rotateccwbutton") this.rotate(-90);
+    if (buttonId === "rotatecwbutton") this.rotate(90);
+    if (buttonId === "navigatorbutton") this.navigatorToggled = !this.navigatorToggled;
+    if (buttonId === "fullscreenbutton") this.fullscreenToggled = !this.fullscreenToggled;
+    if (buttonId === "flipbutton") this.flipToggled = !this.flipToggled;
+    if (buttonId === "infobutton") {
+      this.kbdToggled = false;
+      this.infoToggled = !this.infoToggled;
+    }
+    if (buttonId === "kbdbutton") {
+      this.infoToggled = false;
+      this.kbdToggled = !this.kbdToggled;
+    }
+    if (buttonId === "nextbutton") {
+      this.page = Math.min(this.page + 1,this.viewer.tileSources.length - 1);
+    }
+    if (buttonId === "prevbutton") {
+      this.page = Math.max(0,this.page - 1);
+    }
+  }
+  goToPageXofY(e){
+    this._toolbarButtonClick('navXofY', e)
+    this.page = e.path[0].value -1;
   }
 }
 window.customElements.define(imgViewModal.tag, imgViewModal);
