@@ -121,18 +121,26 @@ class CourseCard extends SimpleColors {
           width: 100%;
           height: 150px;
           animation-name: mymove2;
-          animation-duration: .6s;
+          animation-duration: 0.6s;
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
         }
 
         @keyframes mymove {
-          0%   {background-size: 100%;}
-          100% {background-size: 150%;}
+          0% {
+            background-size: 100%;
+          }
+          100% {
+            background-size: 150%;
+          }
         }
         @keyframes mymove2 {
-          0%   {background-size: 150%;}
-          100% {background-size: 100%;}
+          0% {
+            background-size: 150%;
+          }
+          100% {
+            background-size: 100%;
+          }
         }
         @media (prefers-reduced-motion: reduce) {
           :host([zoom]) #course_image {
@@ -144,11 +152,11 @@ class CourseCard extends SimpleColors {
         :host([zoom]) a:hover #course_image,
         :host([zoom]) a:focus #course_image {
           animation-name: mymove;
-          animation-duration: .6s;
+          animation-duration: 0.6s;
           animation-iteration-count: 1;
           animation-fill-mode: forwards;
         }
-        
+
         #course_author {
           font-size: 12px;
           margin-top: -10px;
