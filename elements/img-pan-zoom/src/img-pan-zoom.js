@@ -69,7 +69,7 @@ class ImgPanZoom extends LitElement {
               @loaded-changed="${this.loadedChangedEvent}"
               ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
-              src="${this.src}"
+              src="${this.src || this.sources[0]}"
               described-by="${this.describedBy || ""}"
             ></img-loader>
           `
@@ -348,29 +348,29 @@ class ImgPanZoom extends LitElement {
         attribute: "reference-strip-scroll"
       },
       /**
-       * displays multiple images as a collection.
-       * See https://openseadragon.github.io/examples/tilesource-collection/
+       * id of custom previousButton
        */
-      collectionMode: { type: Boolean, attribute: "collection-mode" },
+      previousButton: {type: String },
       /**
-       * number of rows for collection
+       * id of custom nextButton
        */
-      collectionRows: { type: Number, attribute: "collection-rows" },
+      nextButton: {type: String },
       /**
-       * size of each image tile in collection
+       * id of custom homeButton
        */
-      collectionTileSize: { type: Number, attribute: "collection-tile-size" },
+      homeButton: {type: String },
       /**
-       * margin around each image tile in collection
+       * id of custom zoomInButton
        */
-      collectionTileMargin: {
-        type: Number,
-        attribute: "collection-tile-margin"
-      },
+      zoomInButton: {type: String },
       /**
-       * layout of collection; can be 'horizontal' or 'vertical' (default)
+       * id of custom zoomInButton
        */
-      collectionLayout: { type: String, attribute: "collection-layout" }
+      zoomOutButton: {type: String },
+      /**
+       * id of custom zoomInButton
+       */
+      fullScreenButton: {type: String },
     };
   }
   // simple path from a url modifier
@@ -408,14 +408,9 @@ class ImgPanZoom extends LitElement {
     this.preserveViewport = false;
     this.showReferenceStrip = false;
     this.referenceStripScroll = "horizontal";
-    this.collectionMode = false;
-    this.collectionRows = 1;
-    this.collectionTileSize = 1024;
-    this.collectionTileMargin = 256;
-    this.collectionLayout = "horizontal";
 
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
+    let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",
       this._openseadragonLoaded.bind(this)
@@ -527,6 +522,7 @@ class ImgPanZoom extends LitElement {
       if (!this.viewer)
         this.viewer = new OpenSeadragon({
           element: this.shadowRoot.querySelector("#viewer"),
+          prefixUrl: `${this.pathFromUrl(decodeURIComponent(import.meta.url))}lib/openseadragon/images/`,
           visibilityRatio: this.visibilityRatio,
           constrainDuringPan: this.constrainDuringPan,
           showNavigationControl: this.showNavigationControl,
@@ -551,15 +547,17 @@ class ImgPanZoom extends LitElement {
           preserveViewport: this.preserveViewport,
           showReferenceStrip: this.showReferenceStrip,
           referenceStripScroll: this.referenceStripScroll,
-          collectionMode: this.collectionMode,
-          collectionRows: this.collectionRows,
-          collectionTileSize: this.collectionTileSize,
-          collectionTileMargin: this.collectionTileMargin,
-          collectionLayout: this.collectionLayout,
           flipped: this.flipToggled,
+          previousButton: this.previousButton,
+          nextButton: this.nextButton,
+          homeButton: this.homeButton,
+          fullScreenButton: this.fullScreenButton,
+          zoomInButton: this.zoomInButton,
+          zoomOutButton: this.zoomOutButton,
           tileSources: tileSources
         });
       if (this.viewer) {
+        console.log(this.viewer);
         this.viewer.goToPage(0);
         this._setFullscreen();
         if (this.viewer.navigator) {
@@ -644,6 +642,7 @@ class ImgPanZoom extends LitElement {
       this.init = true;
     }, 100);
   }
+
   /**
    * actually sets the fullscreen using API; can be overridden
    *
