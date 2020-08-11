@@ -62,11 +62,13 @@ class HAXCMSEditorBuilder extends HTMLElement {
       );
       for (var key in store.setupSlots) {
         switch (key) {
-          case 'haxcms-site-editor-ui-prefix-avatar':
-          case 'haxcms-site-editor-ui-prefix-buttons':
-          case 'haxcms-site-editor-ui-suffix-buttons':
-            store.cmsSiteEditor.haxCmsSiteEditorUIElement.appendChild(store.setupSlots[key]);
-          break;
+          case "haxcms-site-editor-ui-prefix-avatar":
+          case "haxcms-site-editor-ui-prefix-buttons":
+          case "haxcms-site-editor-ui-suffix-buttons":
+            store.cmsSiteEditor.haxCmsSiteEditorUIElement.appendChild(
+              store.setupSlots[key]
+            );
+            break;
         }
       }
       document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);

@@ -30,8 +30,8 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   constructor() {
     super();
-    this.backText = 'Back to site list';
-    this.backLink = '../../';
+    this.backText = "Back to site list";
+    this.backLink = "../../";
     this.manifest = {};
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
@@ -248,10 +248,10 @@ class HAXCMSSiteDashboard extends LitElement {
   static get properties() {
     return {
       backLink: {
-        type: String,
+        type: String
       },
       backText: {
-        type: String,
+        type: String
       },
       dashboardOpened: {
         type: Boolean,

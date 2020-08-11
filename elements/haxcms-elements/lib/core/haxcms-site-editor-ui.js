@@ -177,7 +177,7 @@ class HAXCMSSiteEditorUI extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
-    this.backText = 'Back to site list';
+    this.backText = "Back to site list";
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -298,8 +298,7 @@ class HAXCMSSiteEditorUI extends LitElement {
     let redirectUrl = "";
     if (window.appSettings && window.appSettings.backLink) {
       redirectUrl = window.appSettings.backLink;
-    }
-    else {
+    } else {
       let webTypeRegex = /^http/;
       let tmp = document.createElement("a");
       tmp.href = window.location.href;
@@ -469,10 +468,10 @@ class HAXCMSSiteEditorUI extends LitElement {
         attribute: "user-picture"
       },
       backLink: {
-        type: String,
+        type: String
       },
       backText: {
-        type: String,
+        type: String
       },
       __editIcon: {
         type: String

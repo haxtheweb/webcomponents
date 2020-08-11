@@ -404,15 +404,15 @@ class HAXCMSSiteBuilder extends LitElement {
     );
     // support initial setup stuff with slots
     for (var i in this.children) {
-      if (this.children[i].tagName && this.children[i].getAttribute('slot')) {
+      if (this.children[i].tagName && this.children[i].getAttribute("slot")) {
         const item = this.children[i].cloneNode(true);
-        let key = item.getAttribute('slot');
+        let key = item.getAttribute("slot");
         switch (key) {
-          case 'haxcms-site-editor-ui-prefix-avatar':
-          case 'haxcms-site-editor-ui-prefix-buttons':
-          case 'haxcms-site-editor-ui-suffix-buttons':
+          case "haxcms-site-editor-ui-prefix-avatar":
+          case "haxcms-site-editor-ui-prefix-buttons":
+          case "haxcms-site-editor-ui-suffix-buttons":
             store.setupSlots[key] = item;
-          break;
+            break;
         }
       }
     }
