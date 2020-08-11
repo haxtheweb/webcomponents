@@ -6,14 +6,12 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { LitElement } from "lit-element";
 /**
  * `fullscreen-behaviors`
- * 
+ *
  * @demo demo/viewer.html
  * @element fullscreen-behaviors
- * 
+ *
  */
 class FullscreenBehaviors extends LitElement {
-
-
   static get tag() {
     return "fullscreen-behaviors";
   }
@@ -71,7 +69,7 @@ class FullscreenBehaviors extends LitElement {
   _onFullscreenBehaviorsLoaded() {
     this.__fullscreenBehaviorsLoaded = true;
   }
-};
+}
 window.customElements.define(FullscreenBehaviors.tag, FullscreenBehaviors);
 export { FullscreenBehaviors };
 
@@ -82,7 +80,9 @@ window.FullscreenBehaviors = window.FullscreenBehaviors || {};
 // is rendered through the same modal
 window.FullscreenBehaviors.requestAvailability = () => {
   if (!window.FullscreenBehaviors.instance) {
-    window.FullscreenBehaviors.instance = document.createElement("fullscreen-behaviors");
+    window.FullscreenBehaviors.instance = document.createElement(
+      "fullscreen-behaviors"
+    );
     document.body.appendChild(window.FullscreenBehaviors.instance);
   }
   return window.FullscreenBehaviors.instance;
