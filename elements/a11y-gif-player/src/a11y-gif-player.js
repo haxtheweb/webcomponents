@@ -54,7 +54,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     return [
       css`
         :host {
-          display: inline-flex;
+          display: block;
         }
         :host([hidden]) {
           display: none;

@@ -1333,9 +1333,10 @@ class HaxBody extends SimpleColors {
   /**
    * Duplicate node into the local DOM below the current item if we can.
    */
-  haxDuplicateNode(node, parent = this) {
+  haxDuplicateNode(node) {
     // move the context menu before duplicating!!!!
     this.hideContextMenus(false);
+    let parent = node.parentNode;
     // convert the node to a hax element
     let haxElement = nodeToHaxElement(node, null);
     // support for deep API call to clean up special elements
@@ -1875,12 +1876,8 @@ class HaxBody extends SimpleColors {
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
-        if (this.activeNode === this.activeContainerNode) {
-          this.haxDuplicateNode(this.activeNode);
-        } else {
-          this.haxDuplicateNode(this.activeNode, this.activeContainerNode);
-        }
-        break;
+        this.haxDuplicateNode(this.activeNode);
+      break;
       case "hax-plate-delete":
         if (this.activeNode != null) {
           let options = [

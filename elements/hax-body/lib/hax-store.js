@@ -1084,6 +1084,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "a",
       "strong",
       "kbd",
+      "tt",
       "em",
       "i",
       "b",
