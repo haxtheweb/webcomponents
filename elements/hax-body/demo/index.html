@@ -6,9 +6,13 @@
     <title>HAX: h-a-x Demo</title>
   </head>
   <body>
-    <div style="padding:50px;">
+    <div style="padding:100px 300px 100px 100px;">
     <h-a-x app-store='{"url": "appstore.json"}' offset-margin="0px 0px 0px 48px" element-align="right">
-        <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
+      <p>stuff</p>
+      <p><img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/></p>
+      <p><img src="https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg" alt="dmd 100 course background art"/></p>
+  
+      <magazine-cover action="Touch to learn more" icon="icons:forward" image="https://cdn.pixabay.com/photo/2019/07/14/13/11/banner-4337089_960_720.jpg" header="" subheader="Use the platform!" event-data="{}"></magazine-cover>
         <h2 id="header-0a02ffc4-e336-e988-9ceb-3b2a4ac7ab32">Cool stuff</h2>
         <p>testxt</p>
         <image-compare-slider 
@@ -88,6 +92,11 @@
       }
       body, html, :root {
         --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
+        --hax-base-styles-p-min-height: 40px;
+        --hax-base-styles-p-line-height: 40px;
+      }
+      p {
+        padding: 8px;
       }
     </style>
   </body>

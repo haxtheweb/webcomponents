@@ -1950,6 +1950,7 @@ class HaxBody extends SimpleColors {
   _focusIn(e) {
     if (this.__focusLogic(e.target)) {
       e.stopPropagation();
+      e.stopImmediatePropagation();
     }
   }
   /**
@@ -1967,7 +1968,8 @@ class HaxBody extends SimpleColors {
       // HTML is stupid and allows this
       if (
         containerNode.tagName === "SPAN" &&
-        window.HaxStore.instance.isTextElement(target.parentNode)
+        window.HaxStore.instance.isTextElement(containerNode.parentNode) &&
+        containerNode.parentNode.getAttribute('slot') == ''
       ) {
         containerNode = target.parentNode;
       }
@@ -1980,32 +1982,38 @@ class HaxBody extends SimpleColors {
       ) {
         // keep looking til we are juuuust below the container
         // @notice this is where we force a selection on highest level
-        // of the document
-        while (
-          containerNode.parentNode.tagName &&
-          containerNode.parentNode.tagName != "HAX-BODY"
-        ) {
-          // make sure active is set after closest legit element
-          if (
-            activeNode === null &&
-            containerNode.tagName !== "LI" &&
-            containerNode.tagName !== "B" &&
-            containerNode.tagName !== "I" &&
-            containerNode.tagName !== "STRONG" &&
-            containerNode.tagName !== "EM"
+        // of the document unless we have a special common case
+        // where we have a valid element yet the parent is a paragraph
+        if (containerNode.parentNode.tagName !== 'P') {
+          activeNode = containerNode;
+        }
+        else {
+          while (
+            containerNode.parentNode.tagName &&
+            containerNode.parentNode.tagName != "HAX-BODY"
           ) {
+            // make sure active is set after closest legit element
+            if (
+              activeNode === null &&
+              containerNode.tagName !== "LI" &&
+              containerNode.tagName !== "B" &&
+              containerNode.tagName !== "I" &&
+              containerNode.tagName !== "STRONG" &&
+              containerNode.tagName !== "EM"
+            ) {
+              activeNode = containerNode;
+            }
+            containerNode = containerNode.parentNode;
+          }
+          // case with simple element
+          if (activeNode === null) {
             activeNode = containerNode;
           }
-          containerNode = containerNode.parentNode;
-        }
-        // case with simple element
-        if (activeNode === null) {
-          activeNode = containerNode;
-        }
-        // we only allow disconnected node from container when
-        // the container is a grid plate
-        else if (!window.HaxStore.instance.isGridPlateElement(containerNode)) {
-          activeNode = containerNode;
+          // we only allow disconnected node from container when
+          // the container is a grid plate
+          else if (!window.HaxStore.instance.isGridPlateElement(containerNode)) {
+            activeNode = containerNode;
+          }
         }
         // ensure this is a tag we care about / have support for and
         // that it is a new value
