@@ -23,7 +23,7 @@ const FullscreenBehaviors = function(SuperClass) {
       return "fullscreen-behaviors";
     }
 
-    toggleFullscreen(mode,target = this){
+    toggleFullscreen(mode, target = this) {
       if (this.fullscreenEnabled && screenfull) {
         if (mode) {
           screenfull.request(this);
@@ -38,8 +38,8 @@ const FullscreenBehaviors = function(SuperClass) {
      *
      * @param {function} callback
      */
-    _onFullscreenReady(callback){
-      if(this.manager) this.manager.onReady(callback);
+    _onFullscreenReady(callback) {
+      if (this.manager) this.manager.onReady(callback);
     }
     /**
      * gets the fullscreen manager singleton
@@ -47,7 +47,7 @@ const FullscreenBehaviors = function(SuperClass) {
      * @readonly
      * @returns {object}
      */
-    get manager(){
+    get manager() {
       return this.__fullscreenMgr;
     }
 
@@ -64,7 +64,7 @@ const FullscreenBehaviors = function(SuperClass) {
 };
 /**
  * `fullscreen-behaviors`
- * abstracted fullscreen behaviors 
+ * abstracted fullscreen behaviors
  *
  * @element fullscreen-behaviors
  */

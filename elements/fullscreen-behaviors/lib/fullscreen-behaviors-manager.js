@@ -64,12 +64,12 @@ class FullscreenBehaviorsManager extends LitElement {
   }
 
   /**
-   * once screenfull is loaded, sets the element's __loaded property to true and runs array callbacks 
+   * once screenfull is loaded, sets the element's __loaded property to true and runs array callbacks
    * @param {event} e screenfull load
    */
   _setLoaded() {
     this.__loaded = true;
-    this.__callbacks.forEach(callback=>callback());
+    this.__callbacks.forEach(callback => callback());
   }
   /**
    * runs callback if ready or adds it to array of callbacks to be executed
@@ -77,15 +77,18 @@ class FullscreenBehaviorsManager extends LitElement {
    * @param {function} callback
    * @memberof FullscreenBehaviorsManager
    */
-  onReady(callback){
-    if(!this.__loaded) {
+  onReady(callback) {
+    if (!this.__loaded) {
       this.__callbacks.push(callback);
     } else {
       callback();
     }
   }
 }
-window.customElements.define(FullscreenBehaviorsManager.tag, FullscreenBehaviorsManager);
+window.customElements.define(
+  FullscreenBehaviorsManager.tag,
+  FullscreenBehaviorsManager
+);
 export { FullscreenBehaviorsManager };
 
 // register globally so we can make sure there is only one
@@ -102,4 +105,3 @@ window.FullscreenBehaviorsManager.requestAvailability = () => {
   }
   return window.FullscreenBehaviorsManager.instance;
 };
-
