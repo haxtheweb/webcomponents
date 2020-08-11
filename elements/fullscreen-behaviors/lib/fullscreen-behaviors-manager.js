@@ -2,8 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { LitElement } from "lit-element";
 /**
  * `fullscreen-behaviors-manager`
  *
@@ -19,14 +19,16 @@ class FullscreenBehaviorsManager extends LitElement {
   static get properties() {
     return {
       __loaded: { type: Boolean },
-      __callbacks: { type: Array }
+      __callbacks: { type: Array },
+      __fullscreen: { type: Boolean }
     };
   }
 
   constructor() {
     super();
-    this.callbacks = [];
+    this.__callbacks = [];
     this.__loaded = false;
+    this.__fullscreen = false;
     if (typeof screenfull === "object") {
       this._setLoaded();
     } else {
@@ -36,9 +38,14 @@ class FullscreenBehaviorsManager extends LitElement {
       window.ESGlobalBridge.instance.load("screenfullLib", location);
       window.addEventListener(
         "es-bridge-screenfullLib-loaded",
-        this._setLoaded
+        this._setLoaded.bind(this)
       );
     }
+  }
+
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 
   /**
@@ -49,7 +56,11 @@ class FullscreenBehaviorsManager extends LitElement {
     let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
-    return typeof screenfull === "object" && !mobile;
+    return typeof screenfull === "object" && screenfull.isEnabled && !mobile;
+  }
+
+  get fullscreen(){
+    return this.__fullscreen;
   }
 
   /**
@@ -58,7 +69,7 @@ class FullscreenBehaviorsManager extends LitElement {
   disconnectedCallback() {
     window.removeEventListener(
       "es-bridge-screenfullLib-loaded",
-      this._onLoaded
+      this._setLoaded.bind(this)
     );
     super.disconnectedCallback();
   }
@@ -67,22 +78,9 @@ class FullscreenBehaviorsManager extends LitElement {
    * once screenfull is loaded, sets the element's __loaded property to true and runs array callbacks
    * @param {event} e screenfull load
    */
-  _setLoaded() {
+  _setLoaded(e) {
     this.__loaded = true;
-    this.__callbacks.forEach(callback => callback());
-  }
-  /**
-   * runs callback if ready or adds it to array of callbacks to be executed
-   *
-   * @param {function} callback
-   * @memberof FullscreenBehaviorsManager
-   */
-  onReady(callback) {
-    if (!this.__loaded) {
-      this.__callbacks.push(callback);
-    } else {
-      callback();
-    }
+    (this.__callbacks || []).forEach(callback => callback());
   }
 }
 window.customElements.define(

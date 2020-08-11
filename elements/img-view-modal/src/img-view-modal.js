@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import { ImgViewViewer } from "./lib/img-view-viewer.js";
+import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 /**
  * `img-view-modal`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -32,6 +33,7 @@ class ImgViewModal extends LitElement {
   static get properties() {
     return {
       ...ImgViewViewer.properties,
+      ...ImgPanZoom.properties,
       title: { type: String },
       modal: { type: Object }
     };
@@ -132,8 +134,12 @@ class ImgViewModal extends LitElement {
         "--img-view-viewer-toggled-backgroundColor":
           this._getCssVar("--img-view-viewer-toggled-backgroundColor") || "#eee"
       },
-      img = document.createElement("img-view-viewer");
-    Object.keys(ImgViewViewer.properties || {}).forEach(prop => {
+      img = document.createElement("img-view-viewer"),
+      props = [
+        ...Object.keys(ImgViewViewer.properties || {}),
+        ...Object.keys(ImgPanZoom.properties || {})
+      ];
+    props.forEach(prop => {
       if (this[prop]) img[prop] = this[prop];
     });
     Object.keys(imgStyles || {}).forEach(key =>

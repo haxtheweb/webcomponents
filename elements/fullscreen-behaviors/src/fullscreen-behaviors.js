@@ -10,19 +10,51 @@ const FullscreenBehaviors = function(SuperClass) {
     // properties available to the custom element for data binding
     static get properties() {
       return {
-        fullscreen: { type: Boolean, attribute: "fullscreen", reflect: true },
-        __fullscreenBehaviorsLoaded: { type: Boolean }
+        __fullscreen: { type: Boolean, attribute: "fullscreen" },
+        __fullscreenEnabled: { type: Boolean, attribute: "fullscreen-enabled" },
       };
+    }
+
+    render() {
+      return html`
+        <slot></slot>
+      `;
     }
 
     constructor() {
       super();
-      this.fullscreen = false;
-      this.__fullscreenMgr = window.FullscreenBehaviorsManager.requestAvailability();
+      this.__fullscreen = false;
+      this.__fullscreenEnabled = false;
+      if (!this.fullscreenManager.__loaded) {
+        let callback = ()=> {
+          this._updateEnabled();
+          window.removeEventListener("es-bridge-screenfullLib-loaded",callback.bind(this))
+        };
+        window.addEventListener("es-bridge-screenfullLib-loaded",callback.bind(this));
+      } else {
+        this._updateEnabled();
+      }
+    }
+
+    /**
+     * life cycle, element is removed from the DOM
+     */
+    disconnectedCallback() {
+      screenfull.off('change', this._updateFullscreen.bind(this));
+      super.disconnectedCallback();
     }
 
     static get tag() {
       return "fullscreen-behaviors";
+    }
+    /**
+     * gets the fullscreen fullscreenManager singleton
+     *
+     * @readonly
+     * @returns {object}
+     */
+    get fullscreenManager() {
+      return window.FullscreenBehaviorsManager.requestAvailability();
     }
     /**
      * element to make fullscreen, can be overidden
@@ -32,44 +64,31 @@ const FullscreenBehaviors = function(SuperClass) {
     get fullscreenTarget() {
       return this;
     }
+    /**
+     * whether device is ready and capable for fullscreen
+     *
+     * @readonly
+     */
+    get fullscreenEnabled(){
+      return this.__fullscreenEnabled;
+    }
+    _updateFullscreen(fullscreen = screenfull && screenfull.isFullscreen){
+      this.__fullscreen = fullscreen;
+    }
+    _updateEnabled(){
+      this.__fullscreenEnabled = this.fullscreenManager && this.fullscreenManager.enabled;
+      if(screenfull && screenfull.isEnabled) screenfull.on('change', ()=>{ this._updateFullscreen() });
+    }
 
-    toggleFullscreen(mode = !this.fullscreen) {
+    toggleFullscreen(mode = !screenfull.isFullscreen) {
       if (this.fullscreenEnabled && screenfull) {
         if (mode) {
           screenfull.request(this.fullscreenTarget);
         } else {
           screenfull.exit(this.fullscreenTarget);
         }
+        this._updateFullscreen(mode);
       }
-      if (this.fullscreen !== mode) this.fullscreen = mode;
-    }
-
-    /**
-     * callback for when fullscreen manager is ready
-     *
-     * @param {function} callback
-     */
-    _onFullscreenReady(callback) {
-      if (this.manager) this.manager.onReady(callback);
-    }
-    /**
-     * gets the fullscreen manager singleton
-     *
-     * @readonly
-     * @returns {object}
-     */
-    get manager() {
-      return this.__fullscreenMgr;
-    }
-
-    /**
-     * whether or not the fullscreen mode is be disabled
-     *
-     * @readonly
-     * @returns {boolean}
-     */
-    get fullscreenEnabled() {
-      return this.manager && this.manager.enabled;
     }
   };
 };

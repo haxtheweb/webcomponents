@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 /**
  * `img-view-viewer`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -19,7 +19,7 @@ Custom property | Description | Default
  * @element img-view-viewer
  * 
  */
-class ImgViewViewer extends ImgPanZoom {
+class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -157,30 +157,8 @@ class ImgViewViewer extends ImgPanZoom {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/image-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    if (typeof screenfull === "object") {
-      this._onScreenfullLoaded();
-    } else {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-      const location = `${basePath}screenfull/dist/screenfull.js`;
-      window.ESGlobalBridge.requestAvailability();
-      window.ESGlobalBridge.instance.load("screenfullLib", location);
-      window.addEventListener(
-        "es-bridge-screenfullLib-loaded",
-        this._onScreenfullLoaded
-      );
-    }
   }
 
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-screenfullLib-loaded",
-      this._onScreenfullLoaded
-    );
-    super.disconnectedCallback();
-  }
   render() {
     return html`
       <!-- Only preload regular images -->
@@ -284,22 +262,20 @@ class ImgViewViewer extends ImgPanZoom {
     return {
       id: "fullscreenbutton",
       icon: "fullscreen",
-      toggleProp: "fullscreenToggled",
+      toggleProp: "__fullscreen",
+      enabledProp: "fullscreenEnabled",
       text: html`
         toggle fullscreen
       `
     };
   }
-
   /**
-   * whether or not the fullscreen mode is be disabled
-   * @returns {boolean}
+   * element to make fullscreen, can be overidden
+   *
+   * @readonly
    */
-  get fullscreenEnabled() {
-    let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
-    return typeof screenfull === "object" && !mobile;
+  get fullscreenTarget() {
+    return this.shadowRoot && this.shadowRoot.querySelector('#container') ? this.shadowRoot.querySelector('#container') : this;
   }
   /**
    * default toggle navigate window button configuration
@@ -313,6 +289,8 @@ class ImgViewViewer extends ImgPanZoom {
       id: "navigatorbutton",
       icon: "picture-in-picture",
       toggleProp: "navigatorToggled",
+      shownProp: "showNavigator",
+      enabledProp: "showNavigator",
       text: "toggle nav window"
     };
   }
@@ -327,6 +305,7 @@ class ImgViewViewer extends ImgPanZoom {
       id: "infobutton",
       icon: "info-outline",
       toggleProp: "infoToggled",
+      hiddenProp: "noSources",
       text: "toggle information"
     };
   }
@@ -563,6 +542,7 @@ class ImgViewViewer extends ImgPanZoom {
       showText: true,
       icon: "chevron-left",
       text: "prev",
+      disabledProp: 'prevDisabled',
       flexGrow: true
     };
   }
@@ -577,6 +557,7 @@ class ImgViewViewer extends ImgPanZoom {
       id: "nextbutton",
       icon: "chevron-right",
       iconRight: true,
+      disabledProp: 'nextDisabled',
       text: "next",
       showText: true,
       flexGrow: true
@@ -584,6 +565,9 @@ class ImgViewViewer extends ImgPanZoom {
   }
   get tileSources() {
     return [this.src, ...this.sources];
+  }
+  get noSources(){
+    this.tileSources.length === 0;
   }
   get prevDisabled() {
     return this.page <= 0;
@@ -707,7 +691,11 @@ class ImgViewViewer extends ImgPanZoom {
   /**
    * makes a toolbar button from config
    *  BUTTON CONFIG SCHEMA: {
-   *    toggleProp : {{if button toggles, property button toggles}},
+   *    toggleProp : {{optional: if button toggles, property button toggles}},
+   *    enabledProp : {{optional: disable button if prop is false}},
+   *    disabledProp : {{optional: prop to make button disabled}},
+   *    shownProp : {{optional: hide button if prop is false}},
+   *    hiddenProp : {{optional: prop to make button hidden}},
    *    icon: {{button icon}},
    *    iconRight: {{show icon to the right of text intead of left}},
    *    text: {{button text / default tooltip}},
@@ -729,30 +717,37 @@ class ImgViewViewer extends ImgPanZoom {
           <button
             .id="${config.id || undefined}"
             class="${this._buttonClass(config)}"
-            controls="container"
             @click="${e => this._toolbarButtonClick(config.id, e)}"
-            ?disabled="${(config.id === "prevbutton" && this.prevDisabled) ||
-              (config.id === "nextbutton" && this.nextDisabled)}"
+            controls="container"
+            ?disabled="${this._buttonDisabled(config)}"
+            ?hidden="${this._buttonHidden(config)}"
           >
             ${this._buttonInner(config)}
           </button>
-          ${this._tooltip(config)}
+          ${this._buttonTooltip(config)}
         `
       : html`
           <button
             .id="${config.id || undefined}"
-            ?hidden="${(config.id === "navigatorbutton" &&
-              !this.showNavigator) ||
-              (config.id === "infobutton" && this.figures.length === 0)}"
             aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
             class="${this._buttonClass(config)}"
-            controls="container"
             @click="${e => this._toolbarButtonClick(config.id, e)}"
+            controls="container"
+            ?disabled="${this._buttonDisabled(config)}"
+            ?hidden="${this._buttonHidden(config)}"
           >
             ${this._buttonInner(config)}
           </button>
-          ${this._tooltip(config)}
+          ${this._buttonTooltip(config)}
         `;
+  }
+  _buttonDisabled(config){
+    return (config.disabledProp && this[config.disabledProp]) 
+    || (config.enabledProp && !this[config.enabledProp]);
+  }
+  _buttonHidden(config){
+    return (config.hiddenProp && this[config.hiddenProp]) 
+    || (config.shownProp && !this[config.shownProp]);
   }
   _buttonClass(config) {
     return `${config.iconRight ? "icon-right" : ""}${
@@ -771,7 +766,7 @@ class ImgViewViewer extends ImgPanZoom {
           </p>
         `;
   }
-  _tooltip(config) {
+  _buttonTooltip(config) {
     return !config || !config.id
       ? ""
       : html`
@@ -790,47 +785,21 @@ class ImgViewViewer extends ImgPanZoom {
     changedProperties.forEach((oldValue, propName) => {});
   }
   _updateSources() {
-    console.log("_updateSources");
     if (!this.src && this.sources.length === 0 && this.figures.length > 0) {
       let figs = this.figures.map(fig => fig.src);
       this.src = figs[0];
-      console.log("_updateSources", figs);
       this.sources = figs.slice(1);
     }
   }
   /**
    * overrides fullscreen API
    *
-   * @param {*} [mode=this.fullscreenToggled]
-   * @memberof ImgPanZoom
+   * @param {boolean} toggle on or off, default is opposite current state
    */
-  _setFullscreen(mode = this.fullscreenToggled) {
-    console.log("fullscreen stuff", mode);
-    if (this.fullscreenEnabled) {
-      if (screenfull) {
-        if (mode) {
-          screenfull.request(this.shadowRoot.querySelector("#container"));
-        } else {
-          screenfull.exit(this.shadowRoot.querySelector("#container"));
-        }
-      }
-    }
+  _setFullscreen(mode) {
+    return;
   }
-
-  /**
-   * sets the element's __screenfullLoaded variable to true once screenfull is loaded
-   * and adds an event listener for screenfull
-   * @param {event} e screenfull load
-   */
-  _onScreenfullLoaded() {
-    this.__screenfullLoaded = true;
-  }
-
-  /**
-   * toggles fullscreen
-   * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
-   */
-  toggleFullscreen(mode) {}
+  
   _toolbarButtonClick(buttonId, eventType) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
@@ -860,8 +829,7 @@ class ImgViewViewer extends ImgPanZoom {
     if (buttonId === "rotatecwbutton") this.rotate(90);
     if (buttonId === "navigatorbutton")
       this.navigatorToggled = !this.navigatorToggled;
-    if (buttonId === "fullscreenbutton")
-      this.fullscreenToggled = !this.fullscreenToggled;
+    if (buttonId === "fullscreenbutton") this.toggleFullscreen();
     if (buttonId === "flipbutton") this.flipToggled = !this.flipToggled;
     if (buttonId === "infobutton") {
       this.kbdToggled = false;
