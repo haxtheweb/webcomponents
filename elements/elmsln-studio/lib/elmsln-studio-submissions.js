@@ -8,7 +8,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
-import "./elmsln-studio-zoom.js";
+import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 
 /**
  * `elmsln-studio-submissions`
@@ -303,6 +303,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           ${this.filteredSubmissions.map(
             (s, i) => html`
               <accent-card
+                id="accent-${i}"
                 no-border
                 class="card submission-card"
                 image-src="${s.image || ""}"
@@ -313,15 +314,15 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .gravity="${s.imageGravity || undefined}"
               >
                 <div slot="image-corner" class="image-zoom">
-                  <elmsln-studio-zoom
-                    id="zoom-${i}"
-                    src="${s.image}"
-                    next="${i + 1 < this.filteredSubmissions.length
-                      ? i + 1
-                      : -1}"
-                    prev="${i > 0 ? i - 1 : -1}"
-                  >
-                  </elmsln-studio-zoom>
+                  <img-view-modal
+                    page="${i}"
+                    title="${this.modalTitle}"
+                    .figures="${this.submissionFigures}">
+                    <button aria-describedby="accent-${i}" ?disabled="${!s.image}">
+                      <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
+                      <span class="sr-only">View Image</span>
+                    </button>
+                  </img-view-modal>
                 </div>
                 <div slot="heading" id="student-${s.id}" class="card-student">
                   ${[s.firstName, s.lastName].join(" ")}
@@ -472,6 +473,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         this._isFilteredProject(i.projectId)
       );
     });
+  }
+  get submissionFigures(){
+    let demo = this.demoMode && this.demoImages.length > 0,
+    images = this.filteredSubmissions.map((s,i)=>{
+      return {
+        src: demo ? this.demoImages[i%this.demoImages.length] : s.image,
+        info: s.imageAlt
+      };
+    })
+    return images.filter(s=>!!s.src);
+  }
+  get modalTitle(){
+    let assign = [this.projectOptions[this.projectFilter],this.assignmentOptions[this.assignmentFilter]].filter(i=> !!i && i !=="All").join(':'),
+      title = [assign,this.studentOptions[this.studentFilter]].filter(i=> !!i && i !=="All" && i!== "").join(' by ');
+    return title && title != "" ? title : "All Submissions";
   }
   _isFilteredAssignment(assignment = "") {
     return this.assignmentFilter === "" || assignment === this.assignmentFilter;

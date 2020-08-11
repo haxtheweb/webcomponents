@@ -16,6 +16,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
     static get properties() {
       return {
         ...super.properties,
+        demoImages: {
+          type: Array
+        },
         demoMode: {
           type: Boolean,
           attribute: "demo-mode",
@@ -25,6 +28,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
     }
     constructor() {
       super();
+      this.demoImages = [];
       this.demoMode = false;
     }
     /**

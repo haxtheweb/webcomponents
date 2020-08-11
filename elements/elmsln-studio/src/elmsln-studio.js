@@ -122,6 +122,11 @@ class ElmslnStudio extends router(
         reflect: true,
         attribute: "assignments-source"
       },
+      demoImagesSource: {
+        type: String,
+        reflect: true,
+        attribute: "demo-images-source"
+      },
       discussion: { type: Object },
       discussionSource: {
         type: String,
@@ -214,7 +219,6 @@ class ElmslnStudio extends router(
     this.params = {};
     this.query = {};
     this.data = {};
-    console.log(super.properties);
   }
 
   router(route, params, query, data) {
@@ -245,6 +249,11 @@ class ElmslnStudio extends router(
         this.fetchData(this.submissionsSource, "submissions");
       if (propName === "discussionSource")
         this.fetchData(this.discussionSource, "discussion");
+      if (propName === "demoImagesSource")
+        this.fetchData(this.demoImagesSource, "demoImages");
+      if (propName === "demoImages" && this.shadowRoot && this.shadowRoot.querySelector('elmsln-studio-submissions')){
+        this.shadowRoot.querySelector('elmsln-studio-submissions').demoImages = this.demoImages.map(img=>`${this.sourcePath}${img.replace(/^\.\//,'')}`);
+      }
     });
   }
   get portfolio() {
@@ -269,8 +278,8 @@ class ElmslnStudio extends router(
     fetch(this._getPath(source, params))
       .then(response => response.json())
       .then(data => {
-        console.log(`${propName} Loaded`, data);
         this[propName] = data;
+        console.log(`${propName} Loaded`, data, this[propName]);
       });
   }
   _getPath(path, params) {
