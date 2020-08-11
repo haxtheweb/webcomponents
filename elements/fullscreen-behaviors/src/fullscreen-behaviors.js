@@ -10,27 +10,38 @@ const FullscreenBehaviors = function(SuperClass) {
     // properties available to the custom element for data binding
     static get properties() {
       return {
+        fullscreen: { type: Boolean, attribute: "fullscreen", reflect: true },
         __fullscreenBehaviorsLoaded: { type: Boolean }
       };
     }
 
     constructor() {
       super();
+      this.fullscreen = false;
       this.__fullscreenMgr = window.FullscreenBehaviorsManager.requestAvailability();
     }
 
     static get tag() {
       return "fullscreen-behaviors";
     }
+    /**
+     * element to make fullscreen, can be overidden
+     *
+     * @readonly
+     */
+    get fullscreenTarget(){
+      return this;
+    }
 
-    toggleFullscreen(mode, target = this) {
+    toggleFullscreen(mode = !this.fullscreen) {
       if (this.fullscreenEnabled && screenfull) {
         if (mode) {
-          screenfull.request(this);
+          screenfull.request(this.fullscreenTarget);
         } else {
-          screenfull.exit(this);
+          screenfull.exit(this.fullscreenTarget);
         }
       }
+      if(this.fullscreen !== mode) this.fullscreen = mode;
     }
 
     /**
