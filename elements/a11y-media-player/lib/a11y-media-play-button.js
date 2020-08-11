@@ -98,7 +98,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
       >
-        ${(this.youtubeId != "undefined" && this.youtubeId != undefined)
+        ${this.youtubeId != "undefined" && this.youtubeId != undefined
           ? html`
               <svg
                 id="svg"
