@@ -39,6 +39,10 @@ class HAX extends HTMLElement {
       letter-spacing: var(--haxcms-base-styles-body-letter-spacing);
     }
 
+    img {
+      max-width: 100%;
+    }
+
     h1 {
       font-size: var(--hax-base-styles-h1-font-size);
       line-height: var(--hax-base-styles-h1-line-height);
