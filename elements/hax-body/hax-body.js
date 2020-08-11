@@ -1877,7 +1877,7 @@ class HaxBody extends SimpleColors {
       // duplicate the active item or container
       case "hax-plate-duplicate":
         this.haxDuplicateNode(this.activeNode);
-      break;
+        break;
       case "hax-plate-delete":
         if (this.activeNode != null) {
           let options = [
