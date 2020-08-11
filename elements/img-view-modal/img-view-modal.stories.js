@@ -15,20 +15,20 @@ export default {
 };
 const utils = new StorybookUtilities();
 const figures = [
-  "Blue grey cat on red background.",
-  "Metal bowl filled with red apples.",
-  "Lighthouse in greyscale.",
-  "Blue grey tabby looking at camera.",
-  "Red cherries on a white dish.",
-  "Beach with sunbathers.",
-  "String lights on a tree against dark night sky.",
-  "Empty beach with a heart drawn in the sand."
-  ].map((item,i)=>{
+    "Blue grey cat on red background.",
+    "Metal bowl filled with red apples.",
+    "Lighthouse in greyscale.",
+    "Blue grey tabby looking at camera.",
+    "Red cherries on a white dish.",
+    "Beach with sunbathers.",
+    "String lights on a tree against dark night sky.",
+    "Empty beach with a heart drawn in the sand."
+  ].map((item, i) => {
     return {
-      src: new URL(`demo/images/image${i+1}.jpg`, import.meta.url),
+      src: new URL(`demo/images/image${i + 1}.jpg`, import.meta.url),
       info: item
     };
-  }), 
+  }),
   toolbars = {
     top: {
       id: "top",
@@ -60,31 +60,34 @@ const figures = [
     infoToggled: false,
     kbdToggled: false,
     toolbars: toolbars
-  }, 
-  exclusions = ["src","sources"];
+  },
+  exclusions = ["src", "sources"];
 export const ImgViewViewerStory = () => {
   return utils.makeElementFromClass(
-    ImgViewViewer, 
+    ImgViewViewer,
     {
       figures: figures,
       infoToggled: false,
       kbdToggled: false,
       toolbars: toolbars,
-      '--img-view-viewer-height': '90vh'
+      "--img-view-viewer-height": "90vh"
     },
-    [ 
+    [
       { title: "viewer height", css: "--img-view-viewer-height" },
       { title: "background color", css: "--img-view-viewer-backgroundColor" },
       { title: "text color", css: "--img-view-viewer-color" },
       { title: "border color", css: "--img-view-viewer-borderColor" },
-      { title: "background color (toggled buttons)", css: "--img-view-modal-viewer-backgroundColor" }
+      {
+        title: "background color (toggled buttons)",
+        css: "--img-view-modal-viewer-backgroundColor"
+      }
     ]
   );
 };
 export const ImgViewModalStory = () => {
   return utils.makeElementFromClass(
     ImgViewModal,
-    { 
+    {
       figures: figures,
       infoToggled: false,
       kbdToggled: false,
@@ -99,7 +102,11 @@ export const ImgViewModalStory = () => {
       { title: "background color", css: "--img-view-modal-backgroundColor" },
       { title: "text color", css: "--img-view-modal-color" },
       { title: "border color", css: "--img-view-modal-borderColor" },
-      { title: "background color (toggled buttons)", css: "--img-view-modal-toggled-backgroundColor" }
-    ], ["modal"]
+      {
+        title: "background color (toggled buttons)",
+        css: "--img-view-modal-toggled-backgroundColor"
+      }
+    ],
+    ["modal"]
   );
 };

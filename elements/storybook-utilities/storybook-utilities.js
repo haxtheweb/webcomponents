@@ -438,7 +438,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnobs(properties, defaults = {}, exclusions = []) {
-    console.debug('getKnobs',properties, defaults, exclusions);
+    console.debug("getKnobs", properties, defaults, exclusions);
     let knobs = { props: {}, slots: {}, css: {} };
     (properties || []).forEach(field => {
       field.name = field.property || field.attribute || field.slot || field.css;
@@ -590,7 +590,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   updateSlot(text, slot) {
-    console.debug('updateSlot',text,slot);
+    console.debug("updateSlot", text, slot);
     if (text) {
       let div = document.createElement("div"),
         inner = div.cloneNode(),
@@ -672,7 +672,7 @@ export class StorybookUtilities {
     demo.appendChild(template);
     demo.style.margin = "-8px";
     demo.style.padding = "0";
-    console.debug('demo',demo);
+    console.debug("demo", demo);
     return demo;
   }
 
@@ -716,7 +716,6 @@ export class StorybookUtilities {
       props[camel] = parts[1].trim();
       if (additions.filter(addition => addition.css === camel))
         additions.push({ css: camel });
-
     });
     content.innerHTML = demo.content || "";
     Object.keys(content.children || {}).forEach(child => {
@@ -800,7 +799,14 @@ export class StorybookUtilities {
   ) {
     let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
-    console.debug("makeElementFromClass", el, props, defaults, additions, knobs);
+    console.debug(
+      "makeElementFromClass",
+      el,
+      props,
+      defaults,
+      additions,
+      knobs
+    );
     return this.makeElement(el, knobs, container);
   }
 }

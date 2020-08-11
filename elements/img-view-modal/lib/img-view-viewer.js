@@ -781,7 +781,7 @@ class ImgViewViewer extends ImgPanZoom {
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "figures") this._updateSources();
+      if (propName === "figures") this._updateSources();
     });
   }
   firstUpdated(changedProperties) {
@@ -789,15 +789,12 @@ class ImgViewViewer extends ImgPanZoom {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
   }
-  _updateSources(){
-    console.log('_updateSources');
-    if(!this.src && 
-      this.sources.length === 0 && 
-      this.figures.length > 0
-    ){
+  _updateSources() {
+    console.log("_updateSources");
+    if (!this.src && this.sources.length === 0 && this.figures.length > 0) {
       let figs = this.figures.map(fig => fig.src);
       this.src = figs[0];
-      console.log('_updateSources',figs);
+      console.log("_updateSources", figs);
       this.sources = figs.slice(1);
     }
   }
