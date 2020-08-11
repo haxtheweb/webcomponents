@@ -1969,7 +1969,7 @@ class HaxBody extends SimpleColors {
       if (
         containerNode.tagName === "SPAN" &&
         window.HaxStore.instance.isTextElement(containerNode.parentNode) &&
-        containerNode.parentNode.getAttribute('slot') == ''
+        containerNode.parentNode.getAttribute("slot") == ""
       ) {
         containerNode = target.parentNode;
       }
@@ -1984,10 +1984,9 @@ class HaxBody extends SimpleColors {
         // @notice this is where we force a selection on highest level
         // of the document unless we have a special common case
         // where we have a valid element yet the parent is a paragraph
-        if (containerNode.parentNode.tagName !== 'P') {
+        if (containerNode.parentNode.tagName !== "P") {
           activeNode = containerNode;
-        }
-        else {
+        } else {
           while (
             containerNode.parentNode.tagName &&
             containerNode.parentNode.tagName != "HAX-BODY"
@@ -2011,7 +2010,9 @@ class HaxBody extends SimpleColors {
           }
           // we only allow disconnected node from container when
           // the container is a grid plate
-          else if (!window.HaxStore.instance.isGridPlateElement(containerNode)) {
+          else if (
+            !window.HaxStore.instance.isGridPlateElement(containerNode)
+          ) {
             activeNode = containerNode;
           }
         }
