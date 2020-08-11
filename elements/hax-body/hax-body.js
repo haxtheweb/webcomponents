@@ -378,17 +378,29 @@ class HaxBody extends SimpleColors {
         this.replacePlaceholder.bind(this)
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
-      this.addEventListener("mousedown", this._focusIn.bind(this));
+      this.addEventListener("mousedown", this._mouseDown.bind(this));
       this.addEventListener("mouseup", this._mouseUp.bind(this));
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
       this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
   }
+  _mouseDown(e) {
+    this.__mouseDown = true;
+    if (this.__focusLogic(e.target)) {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
   /**
    * On mouse release, dump any scroller and the end cap element
    */
   _mouseUp(e) {
+    // this helps w/ ensuring that the "focusin" event doesn't
+    // fire when a mousedown is executed
+    setTimeout(() => {
+      this.__mouseDown = false;      
+    }, 0);
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
     this.__manageFakeEndCap(false);
@@ -1945,9 +1957,11 @@ class HaxBody extends SimpleColors {
    * Item has gained focus, change active element to match
    */
   _focusIn(e) {
-    if (this.__focusLogic(e.target)) {
-      e.stopPropagation();
-      e.stopImmediatePropagation();
+    if (!this.__mouseDown) {
+      if (this.__focusLogic(e.target)) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
     }
   }
   /**
@@ -1981,8 +1995,9 @@ class HaxBody extends SimpleColors {
         // @notice this is where we force a selection on highest level
         // of the document unless we have a special common case
         // where we have a valid element yet the parent is a paragraph
-        if (containerNode.parentNode.tagName !== "P") {
+        if (containerNode.parentNode.tagName === "P" && containerNode.parentNode.getAttribute("slot") == "") {
           activeNode = containerNode;
+          stopProp = true;
         } else {
           while (
             containerNode.parentNode.tagName &&
