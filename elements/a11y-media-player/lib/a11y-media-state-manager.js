@@ -43,12 +43,6 @@ class A11yMediaStateManager extends LitElement {
         type: Array
       },
       /**
-       * Is the screenfull library loaded and screenfull constant set.
-       */
-      screenfullLoaded: {
-        type: Boolean
-      },
-      /**
        * Manages which player is currently active.
        */
       activePlayer: {
@@ -63,7 +57,6 @@ class A11yMediaStateManager extends LitElement {
   constructor() {
     super();
     this.players = [];
-    this.screenfullLoaded = false;
     this.__stickyManager = e => this.setStickyPlayer(e.detail);
     this.__activeManager = e => this.setActivePlayer(e.detail);
     this.__scrollChecker = e => this._checkScroll(e);

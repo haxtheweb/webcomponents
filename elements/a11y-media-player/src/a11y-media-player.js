@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
@@ -97,13 +97,8 @@ Custom property | Description | Default
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo
  */
-class A11yMediaPlayer extends SimpleColors {
+class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -126,7 +121,6 @@ class A11yMediaPlayer extends SimpleColors {
     this.disableSearch = false;
     this.disableScroll = false;
     this.disableSeek = false;
-    this.fullscreen = false;
     this.hideElapsedTime = false;
     this.hideTimestamps = false;
     this.hideTranscript = false;
@@ -158,7 +152,6 @@ class A11yMediaPlayer extends SimpleColors {
     this.__captionsOption = -1;
     this.__loadedTracks = null;
     this.__playing = false;
-    this.__screenfullLoaded = false;
     this.__settingsOpen = false;
     this.__transcriptOption = -1;
     this.querySelectorAll("video,audio").forEach(html5 => {
@@ -176,18 +169,6 @@ class A11yMediaPlayer extends SimpleColors {
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
-    if (typeof screenfull === "object") {
-      this._onScreenfullLoaded();
-    } else {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-      const location = `${basePath}lib/screenfull/dist/screenfull.js`;
-      window.ESGlobalBridge.requestAvailability();
-      window.ESGlobalBridge.instance.load("screenfullLib", location);
-      window.addEventListener(
-        "es-bridge-screenfullLib-loaded",
-        this._onScreenfullLoaded
-      );
-    }
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
@@ -336,6 +317,15 @@ class A11yMediaPlayer extends SimpleColors {
     );
   }
 
+  get fullscreen(){
+    if(this.__fullscreen) {
+      this.setAttribute('fullscreen',true);
+    } else {
+      this.removeAttribute('fullscreen');
+    }
+    return this.__fullscreen;
+  }
+
   /**
    * whether or not the fullscreen mode is be disabled
    * @returns {boolean}
@@ -345,7 +335,7 @@ class A11yMediaPlayer extends SimpleColors {
       navigator.userAgent
     );
     return (
-      typeof screenfull === "object" &&
+      this.fullscreenEnabled &&
       !mobile &&
       !this.disableFullscreen &&
       !this.audioNoThumb
@@ -800,17 +790,6 @@ class A11yMediaPlayer extends SimpleColors {
       this._handleTimeUpdate(e)
     );
     this.__playerReady = true;
-  }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-screenfullLib-loaded",
-      this._onScreenfullLoaded
-    );
-    super.disconnectedCallback();
   }
 
   _setAttribute(attr, val) {
@@ -1397,37 +1376,34 @@ class A11yMediaPlayer extends SimpleColors {
       })
     );
   }
+  /**
+   * element to make fullscreen, can be overidden
+   *
+   * @readonly
+   */
+  get fullscreenTarget() {
+    return this.shadowRoot && this.shadowRoot.querySelector("#player-section") ? this.shadowRoot.querySelector("#player-section") : this;
+  }
 
   /**
    * toggles fullscreen
    * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleFullscreen(mode) {
-    if (this.fullscreenButton) {
-      let fullscreen = mode === undefined ? !this.fullscreen : mode;
-      if (screenfull) {
-        if (fullscreen) {
-          screenfull.request(this.shadowRoot.querySelector("#player-section"));
-          this.fullscreen = true;
-        } else {
-          screenfull.exit(this.shadowRoot.querySelector("#player-section"));
-          this.fullscreen = false;
-        }
-      }
+    super.toggleFullscreen(mode);
 
-      /**
-       * Fires when fullscreen is toggled
-       * @event fullscreen-toggle
-       */
-      window.dispatchEvent(
-        new CustomEvent("fullscreen-toggle", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this
-        })
-      );
-    }
+    /**
+     * Fires when fullscreen is toggled
+     * @event fullscreen-toggle
+     */
+    window.dispatchEvent(
+      new CustomEvent("fullscreen-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
   }
 
   /**
@@ -1761,22 +1737,6 @@ class A11yMediaPlayer extends SimpleColors {
         textTrack => this.loadedTracks.textTracks[textTrack] !== track
       );
     this.__cues = this.cues ? this.cues.filter(cue => cue.track !== track) : [];
-  }
-
-  /**
-   * sets the element's __screenfullLoaded variable to true once screenfull is loaded
-   * and adds an event listener for screenfull
-   * @param {event} e screenfull load
-   */
-  _onScreenfullLoaded() {
-    this.__screenfullLoaded = true;
-
-    // handles fullscreen
-    if (screenfull) {
-      screenfull.on("change", e => {
-        if (screenfull.enabled) this.fullscreen = screenfull.isFullscreen;
-      });
-    }
   }
   firstUpdated() {
     this.style.setProperty(

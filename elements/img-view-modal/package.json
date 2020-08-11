@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.6.16",
+    "@lrnwebcomponents/fullscreen-behaviors":"^2.7.1",
     "@lrnwebcomponents/img-pan-zoom": "^2.7.1",
     "@lrnwebcomponents/schema-behaviors": "^2.7.1",
     "@lrnwebcomponents/simple-tooltip": "^2.7.1",

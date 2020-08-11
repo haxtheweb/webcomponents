@@ -59,7 +59,7 @@ class FullscreenBehaviorsManager extends LitElement {
     return typeof screenfull === "object" && screenfull.isEnabled && !mobile;
   }
 
-  get fullscreen(){
+  get fullscreen() {
     return this.__fullscreen;
   }
 

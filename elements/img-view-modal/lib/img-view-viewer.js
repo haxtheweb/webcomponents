@@ -275,7 +275,9 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    * @readonly
    */
   get fullscreenTarget() {
-    return this.shadowRoot && this.shadowRoot.querySelector('#container') ? this.shadowRoot.querySelector('#container') : this;
+    return this.shadowRoot && this.shadowRoot.querySelector("#container")
+      ? this.shadowRoot.querySelector("#container")
+      : this;
   }
   /**
    * default toggle navigate window button configuration
@@ -542,7 +544,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       showText: true,
       icon: "chevron-left",
       text: "prev",
-      disabledProp: 'prevDisabled',
+      disabledProp: "prevDisabled",
       flexGrow: true
     };
   }
@@ -557,7 +559,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       id: "nextbutton",
       icon: "chevron-right",
       iconRight: true,
-      disabledProp: 'nextDisabled',
+      disabledProp: "nextDisabled",
       text: "next",
       showText: true,
       flexGrow: true
@@ -566,7 +568,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   get tileSources() {
     return [this.src, ...this.sources];
   }
-  get noSources(){
+  get noSources() {
     this.tileSources.length === 0;
   }
   get prevDisabled() {
@@ -741,13 +743,17 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           ${this._buttonTooltip(config)}
         `;
   }
-  _buttonDisabled(config){
-    return (config.disabledProp && this[config.disabledProp]) 
-    || (config.enabledProp && !this[config.enabledProp]);
+  _buttonDisabled(config) {
+    return (
+      (config.disabledProp && this[config.disabledProp]) ||
+      (config.enabledProp && !this[config.enabledProp])
+    );
   }
-  _buttonHidden(config){
-    return (config.hiddenProp && this[config.hiddenProp]) 
-    || (config.shownProp && !this[config.shownProp]);
+  _buttonHidden(config) {
+    return (
+      (config.hiddenProp && this[config.hiddenProp]) ||
+      (config.shownProp && !this[config.shownProp])
+    );
   }
   _buttonClass(config) {
     return `${config.iconRight ? "icon-right" : ""}${
@@ -799,7 +805,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   _setFullscreen(mode) {
     return;
   }
-  
+
   _toolbarButtonClick(buttonId, eventType) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.

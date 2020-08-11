@@ -11,7 +11,7 @@ const FullscreenBehaviors = function(SuperClass) {
     static get properties() {
       return {
         __fullscreen: { type: Boolean, attribute: "fullscreen" },
-        __fullscreenEnabled: { type: Boolean, attribute: "fullscreen-enabled" },
+        __fullscreenEnabled: { type: Boolean, attribute: "fullscreen-enabled" }
       };
     }
 
@@ -26,11 +26,17 @@ const FullscreenBehaviors = function(SuperClass) {
       this.__fullscreen = false;
       this.__fullscreenEnabled = false;
       if (!this.fullscreenManager.__loaded) {
-        let callback = ()=> {
+        let callback = () => {
           this._updateEnabled();
-          window.removeEventListener("es-bridge-screenfullLib-loaded",callback.bind(this))
+          window.removeEventListener(
+            "es-bridge-screenfullLib-loaded",
+            callback.bind(this)
+          );
         };
-        window.addEventListener("es-bridge-screenfullLib-loaded",callback.bind(this));
+        window.addEventListener(
+          "es-bridge-screenfullLib-loaded",
+          callback.bind(this)
+        );
       } else {
         this._updateEnabled();
       }
@@ -40,7 +46,7 @@ const FullscreenBehaviors = function(SuperClass) {
      * life cycle, element is removed from the DOM
      */
     disconnectedCallback() {
-      screenfull.off('change', this._updateFullscreen.bind(this));
+      screenfull.off("change", this._updateFullscreen.bind(this));
       super.disconnectedCallback();
     }
 
@@ -69,15 +75,19 @@ const FullscreenBehaviors = function(SuperClass) {
      *
      * @readonly
      */
-    get fullscreenEnabled(){
+    get fullscreenEnabled() {
       return this.__fullscreenEnabled;
     }
-    _updateFullscreen(fullscreen = screenfull && screenfull.isFullscreen){
+    _updateFullscreen(fullscreen = screenfull && screenfull.isFullscreen) {
       this.__fullscreen = fullscreen;
     }
-    _updateEnabled(){
-      this.__fullscreenEnabled = this.fullscreenManager && this.fullscreenManager.enabled;
-      if(screenfull && screenfull.isEnabled) screenfull.on('change', ()=>{ this._updateFullscreen() });
+    _updateEnabled() {
+      this.__fullscreenEnabled =
+        this.fullscreenManager && this.fullscreenManager.enabled;
+      if (screenfull && screenfull.isEnabled)
+        screenfull.on("change", () => {
+          this._updateFullscreen();
+        });
     }
 
     toggleFullscreen(mode = !screenfull.isFullscreen) {

@@ -28,7 +28,7 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
           display: block;
           max-height: 90vh;
           overflow: scroll;
-          padding: 0; 
+          padding: 0;
           margin: 0 15px;
           background-color: white;
         }
@@ -42,20 +42,26 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
         button[aria-pressed="true"] {
           color: blue;
         }
-        ::slotted(*){
+        ::slotted(*) {
           display: block;
           margin: 0 auto;
           width: 100%;
           padding: 0;
         }
       `
-    ]
+    ];
   }
 
   render() {
     return html`
       <slot></slot>
-      <button aria-pressed="${this.__fullscreen ? "true" : "false"}" ?disabled="${!this.fullscreenEnabled}" @click="${e=>this.toggleFullscreen()}">Toggle Fullscreen</button>
+      <button
+        aria-pressed="${this.__fullscreen ? "true" : "false"}"
+        ?disabled="${!this.fullscreenEnabled}"
+        @click="${e => this.toggleFullscreen()}"
+      >
+        Toggle Fullscreen
+      </button>
     `;
   }
 
@@ -63,5 +69,8 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
     super();
   }
 }
-window.customElements.define(FullscreenBehaviorsDemo.tag, FullscreenBehaviorsDemo);
+window.customElements.define(
+  FullscreenBehaviorsDemo.tag,
+  FullscreenBehaviorsDemo
+);
 export { FullscreenBehaviorsDemo };
