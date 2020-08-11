@@ -82,7 +82,6 @@ class SimpleModal extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
-      console.log("connectedCallback", this);
       window.addEventListener("simple-modal-hide", this.close.bind(this));
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
     }, 0);

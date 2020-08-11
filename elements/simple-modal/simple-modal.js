@@ -30,256 +30,243 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * @element simple-modal
  */
 class SimpleModal extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        paper-dialog-scrollable:not(:defined) {
-          display: none;
-        }
+paper-dialog-scrollable:not(:defined) {
+  display: none;
+}
 
-        :host paper-dialog ::slotted(*) {
-          font-size: 14px;
-          width: 100%;
-        }
+:host paper-dialog ::slotted(*) {
+  font-size: 14px;
+  width: 100%;
+}
 
-        #dialog {
-          display: flex;
-          flex-direction: column;
-          margin: 15px auto;
-          z-index: 1000;
-          height: var(--simple-modal-height, auto);
-          width: var(--simple-modal-width, auto);
-          min-width: var(--simple-modal-min-width, unset);
-          max-width: var(--simple-modal-max-width, unset);
-          min-height: var(--simple-modal-min-height, unset);
-          max-height: var(--simple-modal-max-height, unset);
-          border-radius: 0;
-        }
+#dialog {
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+  z-index: 1000;
+  height: var(--simple-modal-height, auto);
+  width: var(--simple-modal-width, auto);
+  min-width: var(--simple-modal-min-width, unset);
+  max-width: var(--simple-modal-max-width, unset);
+  min-height: var(--simple-modal-min-height, unset);
+  max-height: var(--simple-modal-max-height, unset);
+  border-radius: 0;
+}
 
-        #titlebar {
-          margin-top: 0;
-          padding: var(--simple-modal-titlebar-padding, 0px 16px);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          color: var(--simple-modal-titlebar-color, #444);
-          background-color: var(--simple-modal-titlebar-background, #ddd);
-          border-radius: 0;
-          height: var(--simple-modal-titlebar-height, 64px);
-          line-height: var(--simple-modal-titlebar-line-height, 64px);
-        }
+#titlebar {
+  margin-top: 0;
+  padding: var(--simple-modal-titlebar-padding,0px 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--simple-modal-titlebar-color,#444);
+  background-color: var(--simple-modal-titlebar-background,#ddd);
+  border-radius: 0;
+  height: var(--simple-modal-titlebar-height,64px);
+  line-height: var(--simple-modal-titlebar-line-height,64px);
+}
 
-        #headerbar {
-          margin: 0;
-          padding: var(--simple-modal-header-padding, 0px 16px);
-          color: var(--simple-modal-header-color, #222);
-          background-color: var(--simple-modal-header-background, #ccc);
-        }
+#headerbar {
+  margin: 0;
+  padding: var(--simple-modal-header-padding, 0px 16px);
+  color: var(--simple-modal-header-color, #222);
+  background-color: var(--simple-modal-header-background, #ccc);
+}
 
-        h2 {
-          margin-right: 8px;
-          padding: 0;
-          flex: auto;
-          font-size: 18px;
-          line-height: 18px;
-        }
+h2 {
+  margin-right: 8px;
+  padding: 0;
+  flex: auto;
+  font-size: 18px;
+  line-height: 18px;
+}
 
-        #close {
-          top: 0;
-          border: var(--simple-modal-titlebar-button-border, none);
-          padding: var(--simple-modal-titlebar-button-padding, 10px 0);
-          min-width: unset;
-          text-transform: none;
-          color: var(--simple-modal-titlebar-color, #444);
-          background-color: transparent;
-        }
+#close {
+  top: 0;
+  border: var(--simple-modal-titlebar-button-border, none);
+  padding: var(--simple-modal-titlebar-button-padding, 10px 0);
+  min-width: unset;
+  text-transform: none;
+  color: var(--simple-modal-titlebar-color,#444);
+  background-color: transparent;
+}
 
-        #close:focus {
-          opacity: 0.7;
-          outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
-          outline-offset: var(
-            --simple-modal-titlebar-button-outline-offset,
-            2px
-          );
-        }
+#close:focus {
+  opacity: 0.7;
+  outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
+  outline-offset: var(--simple-modal-titlebar-button-outline-offset, 2px);
+}
 
-        #close iron-icon {
-          width: var(--simple-modal-titlebar-icon-width, 16px);
-          height: var(--simple-modal-titlebar-icon-height, 16px);
-          color: var(--simple-modal-titlebar-color, #444);
-        }
+#close iron-icon {
+  width: var(--simple-modal-titlebar-icon-width, 16px);
+  height: var(--simple-modal-titlebar-icon-height, 16px);
+  color: var(--simple-modal-titlebar-color,#444);
+}
 
-        #simple-modal-content {
-          flex-grow: 1;
-          padding: var(--simple-modal-content-padding, 8px 16px);
-          margin: 0;
-          color: var(--simple-modal-content-container-color, #222);
-          background-color: var(
-            --simple-modal-content-container-background,
-            #fff
-          );
-        }
+#simple-modal-content {
+  flex-grow: 1;
+  padding: var(--simple-modal-content-padding, 8px 16px);
+  margin: 0;
+  color: var(--simple-modal-content-container-color, #222);
+  background-color: var(--simple-modal-content-container-background, #fff);
+}
 
-        .buttons {
-          padding: 0;
-          padding: var(--simple-modal-buttons-padding, 0);
-          margin: 0;
-          color: var(--simple-modal-buttons-color, unset);
-          background-color: var(--simple-modal-buttons-background, unset);
-        }
+.buttons {
+  padding: 0;
+  padding: var(--simple-modal-buttons-padding, 0);
+  margin: 0;
+  color: var(--simple-modal-buttons-color, unset);
+  background-color: var(--simple-modal-buttons-background, unset);
+}
 
-        .buttons ::slotted(*) {
-          padding: 0;
-          margin: 0;
-          color: var(--simple-modal-button-color, --simple-modal-buttons-color);
-          background-color: var(
-            --simple-modal-button-background,
-            --simple-modal-buttons-background
-          );
-        }
+.buttons ::slotted(*) {
+  padding: 0;
+  margin: 0;
+  color: var(--simple-modal-button-color,--simple-modal-buttons-color);
+  background-color: var(--simple-modal-button-background,--simple-modal-buttons-background);
+}
       `
     ];
   }
 
-  // render function
+// render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          :host paper-dialog ::slotted(*) {
-            @apply --simple-modal-content;
-          }
 
-          #dialog {
-            @apply --simple-modal-dialog;
-          }
+<custom-style>
+  <style>
+  :host paper-dialog ::slotted(*) {
+    @apply --simple-modal-content;
+  }
 
-          #titlebar {
-            @apply --simple-modal-top;
-          }
+  #dialog {
+    @apply --simple-modal-dialog;
+  }
 
-          #headerbar {
-            @apply --simple-modal-headerbar;
-          }
+  #titlebar {
+    @apply --simple-modal-top;
+  }
 
-          h2 {
-            @apply --simple-modal-title;
-          }
+  #headerbar {
+    @apply --simple-modal-headerbar;
+  }
 
-          #close {
-            @apply --simple-modal-close;
-          }
+  h2 {
+    @apply --simple-modal-title;
+  }
 
-          #close iron-icon {
-            @apply --simple-modal-close-icon;
-          }
+  #close {
+    @apply --simple-modal-close;
+  }
 
-          #simple-modal-content {
-            --paper-dialog-scrollable: {
-              padding: 0;
-            }
-            @apply --simple-modal-content-container;
-          }
-          .buttons {
-            @apply --simple-modal-buttons;
-          }
-          .buttons ::slotted(*) {
-            @apply --simple-modal-button;
-          }
-        </style>
-      </custom-style>
-      <paper-dialog
-        id="dialog"
-        always-on-top
-        aria-describedby="simple-modal-content"
-        aria-label="${this._getAriaLabel(this.title)}"
-        aria-labelledby="${this._getAriaLabelledby(this.title)}"
-        aria-modal="true"
-        role="dialog"
-        ?opened="${this.opened}"
-        @opened-changed="${this.openedChangedEvent}"
-        ?modal="${this.modal}"
-        with-backdrop
-      >
-        <div id="titlebar">
-          <h2 id="simple-modal-title" ?hidden="${!this.title}">
-            ${this.title}
-          </h2>
-          <div></div>
-          <paper-button
-            id="close"
-            dialog-dismiss
-            ?hidden="${!this.opened}"
-            label="${this.closeLabel}"
-          >
-            <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
-          </paper-button>
-        </div>
-        <div id="headerbar"><slot name="header"></slot></div>
-        <paper-dialog-scrollable id="simple-modal-content">
-          <slot name="content"></slot>
-        </paper-dialog-scrollable>
-        <div class="buttons">
-          <slot name="buttons"></slot>
-        </div>
-      </paper-dialog>
-    `;
+  #close iron-icon {
+    @apply --simple-modal-close-icon;
+  }
+
+  #simple-modal-content {
+    --paper-dialog-scrollable: {
+      padding: 0;
+    }
+    @apply --simple-modal-content-container;
+  }
+  .buttons {
+    @apply --simple-modal-buttons;
+  }
+  .buttons ::slotted(*) {
+    @apply --simple-modal-button;
+  }
+  </style>
+</custom-style>
+<paper-dialog
+  id="dialog"
+  always-on-top
+  aria-describedby="simple-modal-content"
+  aria-label="${this._getAriaLabel(this.title)}"
+  aria-labelledby="${this._getAriaLabelledby(this.title)}"
+  aria-modal="true"
+  role="dialog"
+  ?opened="${this.opened}"
+  @opened-changed="${this.openedChangedEvent}"
+  ?modal="${this.modal}"
+  with-backdrop>
+  <div id="titlebar">
+    <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
+    <div></div>
+    <paper-button id="close" dialog-dismiss ?hidden="${!this.opened}" label="${this.closeLabel}">
+      <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
+    </paper-button>
+  </div>
+  <div id="headerbar"><slot name="header"></slot></div>
+  <paper-dialog-scrollable id="simple-modal-content">
+    <slot name="content"></slot>
+  </paper-dialog-scrollable>
+  <div class="buttons">
+    <slot name="buttons"></slot>
+  </div>
+</paper-dialog>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * heading / label of the modal
-       */
-      title: {
-        type: String
-      },
-      /**
-       * open state
-       */
-      opened: {
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * Close label
-       */
-      closeLabel: {
-        attribute: "close-label",
-        type: String
-      },
-      /**
-       * Close icon
-       */
-      closeIcon: {
-        type: String,
-        attribute: "close-icon"
-      },
-      /**
-       * The element that invoked this. This way we can track our way back accessibly
-       */
-      invokedBy: {
-        type: Object
-      },
-      /**
-       * support for modal flag
-       */
-      modal: {
-        type: Boolean
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * heading / label of the modal
+   */
+  "title": {
+    "type": String
+  },
+  /**
+   * open state
+   */
+  "opened": {
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * Close label
+   */
+  "closeLabel": {
+    "attribute": "close-label",
+    "type": String
+  },
+  /**
+   * Close icon
+   */
+  "closeIcon": {
+    "type": String,
+    "attribute": "close-icon"
+  },
+  /**
+   * The element that invoked this. This way we can track our way back accessibly
+   */
+  "invokedBy": {
+    "type": Object
+  },
+  /**
+   * support for modal flag
+   */
+  "modal": {
+    "type": Boolean
+  }
+}
+;
   }
 
   /**
@@ -332,7 +319,6 @@ class SimpleModal extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
-      console.log("connectedCallback", this);
       window.addEventListener("simple-modal-hide", this.close.bind(this));
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
     }, 0);
