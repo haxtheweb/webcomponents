@@ -399,7 +399,7 @@ class HaxBody extends SimpleColors {
     // this helps w/ ensuring that the "focusin" event doesn't
     // fire when a mousedown is executed
     setTimeout(() => {
-      this.__mouseDown = false;      
+      this.__mouseDown = false;
     }, 0);
     // failsafe to clear to the gravity scrolling
     clearTimeout(gravityScrollTimer);
@@ -1995,7 +1995,10 @@ class HaxBody extends SimpleColors {
         // @notice this is where we force a selection on highest level
         // of the document unless we have a special common case
         // where we have a valid element yet the parent is a paragraph
-        if (containerNode.parentNode.tagName === "P" && containerNode.parentNode.getAttribute("slot") == "") {
+        if (
+          containerNode.parentNode.tagName === "P" &&
+          containerNode.parentNode.getAttribute("slot") == ""
+        ) {
           activeNode = containerNode;
           stopProp = true;
         } else {
