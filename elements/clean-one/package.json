@@ -53,7 +53,7 @@
     "mobx": "5.15.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.4.0",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

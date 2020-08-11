@@ -36,12 +36,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.6.24",
+    "@lrnwebcomponents/es-global-bridge": "^2.6.16",
     "@polymer/polymer": "^3.3.1",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.12",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@lrnwebcomponents/simple-modal": "^2.6.24",
     "@lrnwebcomponents/storybook-utilities": "^2.6.24",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
