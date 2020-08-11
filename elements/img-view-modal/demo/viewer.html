@@ -8,7 +8,7 @@
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../img-view-modal.js';
+      import '../lib/img-view-viewer.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container.centered {
@@ -29,7 +29,7 @@
     <h3>Basic img-view-modal demo</h3>
     <demo-snippet>
       <template>
-        <img-view-modal
+        <img-view-viewer
           id="demo" 
           figures='[
             {
@@ -43,8 +43,7 @@
           ]'
           max-zoom-pixel-ratio="10"
           show-navigator>
-          <button>Open Viewer</button>
-        </img-view-modal>
+        </img-view-viewer>
         <script>
           window.onload = () => {
             let demo = document.getElementById('demo');

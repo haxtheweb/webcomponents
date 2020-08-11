@@ -2,12 +2,23 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
- * `img-view-modal`
+ * `img-view-viewer`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
- * @demo demo/index.html
- * @element img-view-modal
+ * 
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--img-view-viewer-backgroundColor` | background color | white
+`--img-view-viewer-color` | text color | black
+`--img-view-viewer-borderColor` | border color | #ddd
+`--img-view-viewer-toggled-backgroundColor` | background color of toggled buttons and kbd commands | #eee
+ *
+ * @demo demo/viewer.html
+ * @element img-view-viewer
+ * 
  */
-class imgViewModal extends ImgPanZoom {
+class ImgViewViewer extends ImgPanZoom {
   /**
    * LitElement constructable styles enhancement
    */
@@ -17,6 +28,7 @@ class imgViewModal extends ImgPanZoom {
       css`
         :host {
           display: block;
+          height: var(--img-view-viewer-height, 500px);
         }
         :host([hidden]),
         *[hidden] {
@@ -34,12 +46,12 @@ class imgViewModal extends ImgPanZoom {
           align-items: stretch;
           justify-content: space-between;
           height: 100%;
-          background-color: white;
-          color: black;
+          background-color: var(--img-view-viewer-backgroundColor, white);
+          color: var(--img-view-viewer-color, black);
         }
         #container > * {
           flex: 1 1 auto;
-          border: 1px solid #ddd;
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         .misc-item,
         .button-group {
@@ -62,9 +74,8 @@ class imgViewModal extends ImgPanZoom {
         }
         #top > *:not(:first-child),
         #bottom > *:not(:first-child) {
-          border-left: 1px solid #ddd;
+          border-left: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
-
         button {
           border: none;
           background-color: transparent;
@@ -82,7 +93,7 @@ class imgViewModal extends ImgPanZoom {
           justify-content: end;
         }
         button[aria-pressed="true"] {
-          background: #eee;
+          background-color: var(--img-view-viewer-toggled-backgroundColor, #eee);
         }
         button:focus,
         button:hover,
@@ -102,9 +113,9 @@ class imgViewModal extends ImgPanZoom {
           position: absolute;
           bottom: 0;
           right: 0;
-          background-color: white;
           padding: 5px;
-          border: 1px solid #ddd;
+          background-color: var(--img-view-viewer-backgroundColor, white);
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         table {
           border-collapse: collapse;
@@ -112,30 +123,29 @@ class imgViewModal extends ImgPanZoom {
         th,
         td {
           padding: 2px 5px;
-          border-top: 1px solid #ddd;
           line-height: 140%;
+          border-top: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         th {
           font-weight: normal;
           text-align: left;
         }
         kbd {
-          background: #eee;
-          border: 1px solid #ddd;
           border-radius: 2px;
           padding: 1px 3px;
           font-family: sans-serif;
           font-size: 80%;
+          background: var(--img-view-viewer-toggled-backgroundColor, #eee);
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         input[type="number"] {
-          border: 1px solid #ddd;
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
       `
     ];
   }
   constructor() {
     super();
-    this.src = "";
     this.minZoomImageRatio = 1;
     this.maxZoomPixelRatio = 3;
     this.__screenfullLoaded = false;
@@ -210,7 +220,7 @@ class imgViewModal extends ImgPanZoom {
   }
 
   static get tag() {
-    return "img-view-modal";
+    return "img-view-viewer";
   }
   static get properties() {
     return {
@@ -251,7 +261,7 @@ class imgViewModal extends ImgPanZoom {
    * default home button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get homebutton() {
     return {
@@ -264,7 +274,7 @@ class imgViewModal extends ImgPanZoom {
    * default toggle fullscreen button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get fullscreenbutton() {
     return {
@@ -292,7 +302,7 @@ class imgViewModal extends ImgPanZoom {
    * Uses <a href="https://openseadragon.github.io/examples/ui-viewport-navigator/">Viewport Navigator</a>
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get navigatorbutton() {
     return {
@@ -306,7 +316,7 @@ class imgViewModal extends ImgPanZoom {
    * default toggle info button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get infobutton() {
     return {
@@ -320,7 +330,7 @@ class imgViewModal extends ImgPanZoom {
    * default toggle keyboard shorcuts help button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get kbdbutton() {
     return {
@@ -379,20 +389,21 @@ class imgViewModal extends ImgPanZoom {
    * default flip horizontal button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get flipbutton() {
     return {
       id: "flipbutton",
       icon: "image:flip",
-      text: "flip horizontal"
+      text: "flip horizontal",
+      toggleProp: "flipToggled"
     };
   }
   /**
    * default rotate button group configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get rotategroup() {
     return {
@@ -405,7 +416,7 @@ class imgViewModal extends ImgPanZoom {
    * default rotate counterclockwise button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get rotateccwbutton() {
     return {
@@ -418,7 +429,7 @@ class imgViewModal extends ImgPanZoom {
    * default rotate counter button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get rotatecwbutton() {
     return {
@@ -431,7 +442,7 @@ class imgViewModal extends ImgPanZoom {
    * default pan button group configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get pangroup() {
     return {
@@ -449,7 +460,7 @@ class imgViewModal extends ImgPanZoom {
    * default pan left button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get panleftbutton() {
     return {
@@ -462,7 +473,7 @@ class imgViewModal extends ImgPanZoom {
    * default pan up button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get panupbutton() {
     return {
@@ -475,7 +486,7 @@ class imgViewModal extends ImgPanZoom {
    * default pan down button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get pandownbutton() {
     return {
@@ -488,7 +499,7 @@ class imgViewModal extends ImgPanZoom {
    * default pan right button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get panrightbutton() {
     return {
@@ -501,7 +512,7 @@ class imgViewModal extends ImgPanZoom {
    * default zoom button group configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get zoomgroup() {
     return {
@@ -514,7 +525,7 @@ class imgViewModal extends ImgPanZoom {
    * default zoom in button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get zoominbutton() {
     return {
@@ -527,7 +538,7 @@ class imgViewModal extends ImgPanZoom {
    * default zoom out button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get zoomoutbutton() {
     return {
@@ -540,7 +551,7 @@ class imgViewModal extends ImgPanZoom {
    * default prev button configuration
    * @return {object}
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get prevbutton() {
     return {
@@ -555,7 +566,7 @@ class imgViewModal extends ImgPanZoom {
    * default next button configuration
    * @return {object} as { id, icon, iconRight, text, and showText }
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get nextbutton() {
     return {
@@ -590,7 +601,7 @@ class imgViewModal extends ImgPanZoom {
    * default x of y text for toolbar
    * @returns {string} 'x of y'
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get pageXofY() {
     return `${(this.page || 0) + 1} of ${this.tileSources.length}`;
@@ -620,7 +631,7 @@ class imgViewModal extends ImgPanZoom {
    * @return {object} as { top: { id="top", contents:[]},  id="bottom", contents:[]}, }
    *
    * @readonly
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   get defaultToolbars() {
     return {
@@ -646,7 +657,7 @@ class imgViewModal extends ImgPanZoom {
    *    contents: {{if item is a group, string of text or array of items}},
    *  }
    * @param {*} [config={}]
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   _item(config = {}) {
     if (typeof config === "string" && this[config]) config = this[config];
@@ -670,7 +681,7 @@ class imgViewModal extends ImgPanZoom {
    * @param {object} [config={}]
    * @param {string} [id='']
    * @returns toolbar group html template
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   _group(config = {}) {
     if (typeof config === "string" && this[config]) config = this[config];
@@ -700,7 +711,7 @@ class imgViewModal extends ImgPanZoom {
    * @param {object} [config={}]
    * @param {string} id
    * @returns button html template
-   * @memberof imgViewModal
+   * @memberof imgViewViewer
    */
   _button(config = {}) {
     if (typeof config === "string" && this[config]) config = this[config];
@@ -859,5 +870,5 @@ class imgViewModal extends ImgPanZoom {
     this.page = e.path[0].value - 1;
   }
 }
-window.customElements.define(imgViewModal.tag, imgViewModal);
-export { imgViewModal };
+window.customElements.define(ImgViewViewer.tag, ImgViewViewer);
+export { ImgViewViewer };
