@@ -70,6 +70,9 @@ class HAXCMSSiteBuilder extends LitElement {
       <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
       <paper-progress .hidden="${!this.loading}" indeterminate></paper-progress>
       <div id="slot"><slot></slot></div>
+      <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
+      <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
+      <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       <simple-colors-polymer></simple-colors-polymer>
     `;
   }
@@ -399,6 +402,20 @@ class HAXCMSSiteBuilder extends LitElement {
         detail: this
       })
     );
+    // support initial setup stuff with slots
+    for (var i in this.children) {
+      if (this.children[i].tagName && this.children[i].getAttribute('slot')) {
+        const item = this.children[i].cloneNode(true);
+        let key = item.getAttribute('slot');
+        switch (key) {
+          case 'haxcms-site-editor-ui-prefix-avatar':
+          case 'haxcms-site-editor-ui-prefix-buttons':
+          case 'haxcms-site-editor-ui-suffix-buttons':
+            store.setupSlots[key] = item;
+          break;
+        }
+      }
+    }
     // dyanmcially import the editor builder which figures out if we should have one
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
       .then(response => {

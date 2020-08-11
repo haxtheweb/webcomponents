@@ -60,6 +60,15 @@ class HAXCMSEditorBuilder extends HTMLElement {
       store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
         "haxcms-site-editor-ui"
       );
+      for (var key in store.setupSlots) {
+        switch (key) {
+          case 'haxcms-site-editor-ui-prefix-avatar':
+          case 'haxcms-site-editor-ui-prefix-buttons':
+          case 'haxcms-site-editor-ui-suffix-buttons':
+            store.cmsSiteEditor.haxCmsSiteEditorUIElement.appendChild(store.setupSlots[key]);
+          break;
+        }
+      }
       document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
       // forces a nice fade in transition
       setTimeout(() => {
