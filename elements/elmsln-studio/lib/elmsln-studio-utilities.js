@@ -12,14 +12,33 @@ import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
 const ElmslnStudioUtilities = function(SuperClass) {
   return class extends SuperClass {
+    // properties available to the custom element for data binding
+    static get properties() {
+      return {
+        ...super.properties,
+        demoMode: {
+          type: Boolean,
+          attribute: "demo-mode",
+          reflect: true
+        }
+      };
+    }
+    constructor() {
+      super();
+      this.demoMode = false;
+    }
     /**
      * sorts array by most recent (or by oldest)
      * @param {array} arr array
      * @param {boolean} sort by most recent? (default is true)
      * @returns {arr} sorted array
      */
-    sortDates(arr, recent = true) {
-      return arr.sort((a, b) => (recent ? b.date - a.date : a.date - b.date));
+    sortDates(arr, oldest = false) {
+      return arr.sort((a, b) => {
+        let aa = typeof a.date === "string" ? Date.parse(a.date) : a.date,
+          bb = typeof b.date === "string" ? Date.parse(b.date) : b.date;
+        return !oldest ? bb - aa : aa - bb;
+      });
     }
     /**
      * gets date x days from start date
@@ -52,6 +71,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
         Object.keys(props || {}).forEach(j => (item[j] = props[j]));
         return item;
       });
+    }
+    _late(date) {
+      return new Date(date) < new Date();
     }
     /**
      * converts and sorts arrat
@@ -126,6 +148,43 @@ const ElmslnStudioUtilities = function(SuperClass) {
       return colors[(i % 16) + 1]
         ? colors[(i % 16) + 1]
         : colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    getActivityLink(activity, nocomment = false) {
+      return activity.activity === "submission"
+        ? `/portfolios/${activity.portfolioId || activity.id}${
+            activity.portfolioId ? `?submission=${activity.id}` : ""
+          }${
+            nocomment
+              ? ""
+              : activity.portfolioId
+              ? `&comment=true`
+              : `?comment=true`
+          }`
+        : activity.activity === "discussion"
+        ? `/portfolios/${activity.portfolioId || activity.submissionId}${
+            activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
+          }comment=${activity.id}`
+        : `/portfolios/${activity.portfolioId || activity.submissionId}${
+            activity.portfolioId ? `?submission=${activity.submissionId}&` : "?"
+          }comment=${activity.feedbackId}`;
+    }
+
+    getActivityTitle(activity) {
+      return html`
+        ${[activity.firstName, activity.lastName].join(" ")}
+        ${activity.activity === "submission"
+          ? ` submitted ${activity.assignment}`
+          : activity.activity === "discussion"
+          ? ` left feedback for ${[
+              activity.creatorFirstName,
+              activity.creatorLastName
+            ].join(" ")}`
+          : ` replied to ${[
+              activity.reviewerFirstName,
+              activity.reviewerLastName
+            ].join(" ")}`}
+      `;
     }
     /**
      * gets link of a given activity

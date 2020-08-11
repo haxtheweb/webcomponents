@@ -1,0 +1,23 @@
+{
+  "lesson-1": {
+    "id": "lesson-1",
+    "order": 0,
+    "lesson": "Lesson 1",
+    "body": "Dui vestibulum lectus nisi enim lacinia ex nibh porta gravida. Vel viverra nisl tincidunt nam pharetra eu urna! Integer ultricies pulvinar eros erat in vel sed sapien dictum accumsan ullamcorper in.",
+    "assignments": ["assignment-1", "project-1", "assignment-12"]
+  },
+  "lesson-2": {
+    "id": "lesson-2",
+    "order": 1,
+    "lesson": "Lesson 2",
+    "body": "Ultrices interdum eget cras metus eget scelerisque hendrerit suscipit? Semper in vestibulum amet tellus semper egestas tincidunt. Sem consectetur nulla. Varius vitae tortor metus turpis sem mattis sed purus iaculis. Lectus ex ante consectetur congue nec nec dui ante feugiat accumsan duis.",
+    "assignments": ["assignment-13", "project-2", "assignment-23"]
+  },
+  "lesson-3": {
+    "id": "lesson-3",
+    "order": 2,
+    "lesson": "Lesson 3",
+    "body": "Est elit lectus elementum dolor. Congue bibendum consectetur dignissim nibh lobortis ac porta eu iaculis scelerisque nisl magna? Mi porta sed magna turpis mauris odio est lacus semper! Adipiscing eget elit tellus libero a vivamus sagittis eu ipsum pharetra.",
+    "assignments": ["assignment-24", "project-3", "assignment-34"]
+  }
+}

@@ -82,6 +82,7 @@ class SimpleModal extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
+      console.log("connectedCallback", this);
       window.addEventListener("simple-modal-hide", this.close.bind(this));
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
     }, 0);
@@ -106,6 +107,7 @@ class SimpleModal extends LitElement {
    *
    */
   showEvent(e) {
+    console.log("show", this, e);
     // if we're already opened and we get told to open again....
     // swap out the contents
     if (this.opened) {
@@ -173,13 +175,19 @@ class SimpleModal extends LitElement {
         "--simple-modal-max-width",
         "--simple-modal-max-height",
         "--simple-modal-titlebar-color",
+        "--simple-modal-titlebar-height",
+        "--simple-modal-titlebar-line-height",
         "--simple-modal-titlebar-background",
+        "--simple-modal-titlebar-padding",
         "--simple-modal-header-color",
         "--simple-modal-header-background",
+        "--simple-modal-header-padding",
         "--simple-modal-content-container-color",
         "--simple-modal-content-container-background",
+        "--simple-modal-content-padding",
         "--simple-modal-buttons-color",
         "--simple-modal-buttons-background",
+        "--simple-modal-buttons-padding",
         "--simple-modal-button-color",
         "--simple-modal-button-background"
       ].forEach(prop => {

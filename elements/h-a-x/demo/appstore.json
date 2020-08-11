@@ -1534,6 +1534,7 @@
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
     "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
     "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
+    "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",

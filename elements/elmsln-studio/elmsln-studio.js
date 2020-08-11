@@ -12,6 +12,7 @@ import "./lib/elmsln-studio-link.js";
 import "./lib/elmsln-studio-button.js";
 import "./lib/elmsln-studio-dashboard.js";
 import "./lib/elmsln-studio-submissions.js";
+import "./lib/elmsln-studio-assignments.js";
 import "./lib/elmsln-studio-portfolio.js";
 /**
  * `elmsln-studio`
@@ -38,36 +39,6 @@ class ElmslnStudio extends router(
 
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="${this.profileSource}"
-        handle-as="json"
-        @response="${this._profileLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.activitySource}"
-        handle-as="json"
-        @response="${this._activityLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.submissionsSource}"
-        handle-as="json"
-        @response="${this._submissionsLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.discussionSource}"
-        handle-as="json"
-        @response="${this._discussionLoaded}"
-      ></iron-ajax>
-      <iron-ajax
-        auto
-        url="${this.portfoliosSource}"
-        handle-as="json"
-        @response="${this._portfoliosLoaded}"
-      ></iron-ajax>
       <div id="studio-nav">
         <elmsln-studio-link ?active="${this.route === "dashboard"}" href="/"
           >Dashboard</elmsln-studio-link
@@ -92,18 +63,22 @@ class ElmslnStudio extends router(
       <br />
       <elmsln-studio-main active-route="${this.route}">
         <elmsln-studio-dashboard
+          ?demo-mode="${this.demoMode}"
           route="dashboard"
-          .profile="${this.profile || {}}"
-          .activity="${this.activity || []}"
+          .profile="${this.profile}"
+          .activity="${this.activity}"
           route="dashboard"
         >
         </elmsln-studio-dashboard>
         <elmsln-studio-submissions
+          ?demo-mode="${this.demoMode}"
           route="submissions"
-          .submissions="${this.submissions}"
-          .comments="${Object.keys(this.discussion || {})
-            .map(i => this.discussion[i].feedback)
-            .flat()}"
+          .submissions="${Object.keys(this.submissions || {}).map(
+            key => this.submissions[key]
+          )}"
+          .comments="${Object.keys(this.discussion || {}).map(
+            key => this.discussion[key]
+          )}"
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
           assignment-filter="${this.query.assignment || ""}"
@@ -111,37 +86,53 @@ class ElmslnStudio extends router(
         >
         </elmsln-studio-submissions>
         <elmsln-studio-portfolio
+          ?demo-mode="${this.demoMode}"
           route="portfolios"
-          .portfolio="${this._filterBy(
-            this.portfolios,
-            this.params.portfolio,
-            "portfolio-"
-          )}"
-          .submission="${this._filterBy(
-            this.discussion,
-            this.query.submission
-          )}"
+          .portfolio="${this.portfolio}"
+          .submission="${this.submissionFeedback}"
+          ?sort-latest="${this.query.sort === "latest"}"
           submission-filter="${this.query.submission || ""}"
           comment="${this.query.comment || ""}"
         >
         </elmsln-studio-portfolio>
+        <elmsln-studio-assignments
+          ?demo-mode="${this.demoMode}"
+          route="assignments"
+          .lessons="${this.lessons || {}}"
+          .profile="${this.profile || {}}"
+        >
+        </elmsln-studio-assignments>
       </elmsln-studio-main>
     `;
   }
 
   static get properties() {
     return {
+      ...super.properties,
+
       activity: { type: Array },
       activitySource: {
         type: String,
         reflect: true,
         attribute: "activity-source"
       },
-      discussion: { type: Array },
+      assignments: { type: Object },
+      assignmentsSource: {
+        type: String,
+        reflect: true,
+        attribute: "assignments-source"
+      },
+      discussion: { type: Object },
       discussionSource: {
         type: String,
         reflect: true,
         attribute: "discussion-source"
+      },
+      lessons: { type: Object },
+      lessonsSource: {
+        type: String,
+        reflect: true,
+        attribute: "lessons-source"
       },
       portfolios: { type: Object },
       portfoliosSource: {
@@ -155,16 +146,28 @@ class ElmslnStudio extends router(
         reflect: true,
         attribute: "profile-source"
       },
+      projects: { type: Array },
+      projectsSource: {
+        type: String,
+        reflect: true,
+        attribute: "projects-source"
+      },
       sourcePath: {
         type: String,
         reflect: true,
         attribute: "source-path"
       },
-      submissions: { type: Array },
+      submissions: { type: Object },
       submissionsSource: {
         type: String,
         reflect: true,
         attribute: "submissions-source"
+      },
+      users: { type: Object },
+      usersSource: {
+        type: String,
+        reflect: true,
+        attribute: "users"
       },
       route: { type: String },
       params: { type: Object },
@@ -175,6 +178,10 @@ class ElmslnStudio extends router(
 
   static get routes() {
     return [
+      {
+        name: "assignments",
+        pattern: "assignments"
+      },
       {
         name: "submissions",
         pattern: "submissions"
@@ -192,20 +199,22 @@ class ElmslnStudio extends router(
   }
 
   constructor() {
-    var dosomething = () => {};
-    var query = document
-      .getElementById("search")
-      .addEventListener("test", dosomething);
     super();
     this.activity = [];
-    this.discussion = [];
+    this.assignments = {};
+    this.discussion = {};
+    this.lessons = {};
     this.portfolios = {};
+    this.projects = {};
     this.profile = {};
-    this.submissions = [];
+    this.submissions = {};
+    this.users = {};
+
     this.route = "";
     this.params = {};
     this.query = {};
     this.data = {};
+    console.log(super.properties);
   }
 
   router(route, params, query, data) {
@@ -219,7 +228,36 @@ class ElmslnStudio extends router(
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "params") console.log("params", this.params);
       if (propName === "query") console.log("query", this.query);
+      if (propName === "usersSource") this.fetchData(this.usersSource, "users");
+      if (propName === "profileSource")
+        this.fetchData(this.profileSource, "profile");
+      if (propName === "activitySource")
+        this.fetchData(this.activitySource, "activity");
+      if (propName === "lessonsSource")
+        this.fetchData(this.lessonsSource, "lessons");
+      if (propName === "projectsSource")
+        this.fetchData(this.projectsSource, "projects");
+      if (propName === "assignmentsSource")
+        this.fetchData(this.assignmentsSource, "assignments");
+      if (propName === "portfoliosSource")
+        this.fetchData(this.portfoliosSource, "portfolios");
+      if (propName === "submissionsSource")
+        this.fetchData(this.submissionsSource, "submissions");
+      if (propName === "discussionSource")
+        this.fetchData(this.discussionSource, "discussion");
     });
+  }
+  get portfolio() {
+    return this.params.portfolio ? this.portfolios[this.params.portfolio] : {};
+  }
+  get submissionFeedback() {
+    return !this.query.submission
+      ? []
+      : Object.keys(this.discussion || {})
+          .filter(
+            key => this.discussion[key].submissionId == this.query.submission
+          )
+          .map(key => this.discussion[key]);
   }
 
   _filterBy(lookup, query, prefix = "") {
@@ -227,29 +265,19 @@ class ElmslnStudio extends router(
       ? lookup[`${prefix}${query}`]
       : {};
   }
-
-  _loadDiscussion(e) {
-    this.query.discussion = e.detail || true;
+  fetchData(source, propName, params) {
+    fetch(this._getPath(source, params))
+      .then(response => response.json())
+      .then(data => {
+        console.log(`${propName} Loaded`, data);
+        this[propName] = data;
+      });
   }
-  _profileLoaded(e) {
-    console.log("_profileLoaded", e.detail.__data.response);
-    this.profile = e.detail.__data.response;
-  }
-  _activityLoaded(e) {
-    console.log("_activityLoaded", e.detail.__data.response);
-    this.activity = e.detail.__data.response;
-  }
-  _submissionsLoaded(e) {
-    console.log("_submissionsLoaded", e.detail.__data.response);
-    this.submissions = e.detail.__data.response;
-  }
-  _discussionLoaded(e) {
-    console.log("_discussionLoaded", e.detail.__data.response);
-    this.discussion = e.detail.__data.response;
-  }
-  _portfoliosLoaded(e) {
-    console.log("_portfoliosLoaded", e.detail.__data.response);
-    this.portfolios = e.detail.__data.response;
+  _getPath(path, params) {
+    let query = Object.keys(params || {})
+      .map(p => `${encodeURI(p)}=${encodeURI(params[p])}`)
+      .join("&");
+    return query ? `${path}?${query}` : path;
   }
 }
 customElements.define(ElmslnStudio.tag, ElmslnStudio);
