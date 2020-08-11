@@ -317,8 +317,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   <img-view-modal
                     page="${i}"
                     title="${this.modalTitle}"
-                    .figures="${this.submissionFigures}">
-                    <button aria-describedby="accent-${i}" ?disabled="${!s.image}">
+                    .figures="${this.submissionFigures}"
+                  >
+                    <button
+                      aria-describedby="accent-${i}"
+                      ?disabled="${!s.image}"
+                    >
                       <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
                       <span class="sr-only">View Image</span>
                     </button>
@@ -474,19 +478,26 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       );
     });
   }
-  get submissionFigures(){
+  get submissionFigures() {
     let demo = this.demoMode && this.demoImages.length > 0,
-    images = this.filteredSubmissions.map((s,i)=>{
-      return {
-        src: demo ? this.demoImages[i%this.demoImages.length] : s.image,
-        info: s.imageAlt
-      };
-    })
-    return images.filter(s=>!!s.src);
+      images = this.filteredSubmissions.map((s, i) => {
+        return {
+          src: demo ? this.demoImages[i % this.demoImages.length] : s.image,
+          info: s.imageAlt
+        };
+      });
+    return images.filter(s => !!s.src);
   }
-  get modalTitle(){
-    let assign = [this.projectOptions[this.projectFilter],this.assignmentOptions[this.assignmentFilter]].filter(i=> !!i && i !=="All").join(':'),
-      title = [assign,this.studentOptions[this.studentFilter]].filter(i=> !!i && i !=="All" && i!== "").join(' by ');
+  get modalTitle() {
+    let assign = [
+        this.projectOptions[this.projectFilter],
+        this.assignmentOptions[this.assignmentFilter]
+      ]
+        .filter(i => !!i && i !== "All")
+        .join(":"),
+      title = [assign, this.studentOptions[this.studentFilter]]
+        .filter(i => !!i && i !== "All" && i !== "")
+        .join(" by ");
     return title && title != "" ? title : "All Submissions";
   }
   _isFilteredAssignment(assignment = "") {
