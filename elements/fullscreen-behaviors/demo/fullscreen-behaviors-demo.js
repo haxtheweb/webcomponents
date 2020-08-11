@@ -21,12 +21,12 @@ class FullscreenBehaviorsDemo extends LitElement {
       ...super.properties
     };
   }
-  
-  render() {
-    return html`<slot></slot><button>Toggle Fullscreen</button>`;
-  }
 
-  
+  render() {
+    return html`
+      <slot></slot><button>Toggle Fullscreen</button>
+    `;
+  }
 
   constructor() {
     super();

@@ -29,7 +29,7 @@ const FullscreenBehaviors = function(SuperClass) {
      *
      * @readonly
      */
-    get fullscreenTarget(){
+    get fullscreenTarget() {
       return this;
     }
 
@@ -41,7 +41,7 @@ const FullscreenBehaviors = function(SuperClass) {
           screenfull.exit(this.fullscreenTarget);
         }
       }
-      if(this.fullscreen !== mode) this.fullscreen = mode;
+      if (this.fullscreen !== mode) this.fullscreen = mode;
     }
 
     /**

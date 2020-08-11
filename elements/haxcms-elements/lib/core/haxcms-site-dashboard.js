@@ -30,6 +30,8 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   constructor() {
     super();
+    this.backText = "Back to site list";
+    this.backLink = "../../";
     this.manifest = {};
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
@@ -186,15 +188,15 @@ class HAXCMSSiteDashboard extends LitElement {
     return html`
       <div class="title-wrapper">
         <portal-launcher>
-          <a href="../../" tabindex="-1" id="homebutton"
+          <a href="${this.backLink}" tabindex="-1" id="homebutton"
             ><paper-icon-button
               icon="icons:home"
-              title="Back to site list"
+              title="${this.backText}"
             ></paper-icon-button
           ></a>
         </portal-launcher>
         <simple-tooltip for="homebutton" offset="14" position="bottom">
-          Back to site list
+          ${this.backText}
         </simple-tooltip>
         <h2 class="title">${this.manifest.title} settings</h2>
         ${varExists(this.manifest, "metadata.site.static.publishedLocation")
@@ -245,6 +247,12 @@ class HAXCMSSiteDashboard extends LitElement {
   }
   static get properties() {
     return {
+      backLink: {
+        type: String
+      },
+      backText: {
+        type: String
+      },
       dashboardOpened: {
         type: Boolean,
         reflect: true,
@@ -286,6 +294,9 @@ class HAXCMSSiteDashboard extends LitElement {
     super.disconnectedCallback();
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "dashboardOpened" && this.dashboardOpened) {
         // API function so we refresh new data every time
@@ -297,6 +308,16 @@ class HAXCMSSiteDashboard extends LitElement {
         this.setAttribute("tabindex", "-1");
       }
     });
+  }
+  firstUpdated(changedProperties) {
+    setTimeout(() => {
+      if (window.appSettings && window.appSettings.backText) {
+        this.backText = window.appSettings.backText;
+      }
+      if (window.appSettings && window.appSettings.backLink) {
+        this.backLink = window.appSettings.backLink;
+      }
+    }, 0);
   }
   /**
    * Save the fields as we get tapped

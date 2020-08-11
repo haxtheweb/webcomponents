@@ -13,6 +13,7 @@ class Store {
   constructor() {
     this.location = null;
     this.jwt = null;
+    this.setupSlots = {};
     this.editMode = false;
     this.manifest = null;
     this.activeItemContent = "";

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "0.2.0",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "an accent card of link lists",
   "repository": {
     "type": "git",
@@ -42,12 +42,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/accent-card": "^2.7.0",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.7.0",
+    "@lrnwebcomponents/accent-card": "^2.7.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.7.1",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.0.5",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.7",
