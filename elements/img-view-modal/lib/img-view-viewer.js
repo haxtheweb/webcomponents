@@ -632,10 +632,12 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         type: "toolbar-group",
         contents: [
           "prevbutton",
+          "homebutton",
           "rotategroup",
           "zoomgroup",
-          "homebutton",
+          "pageXofY",
           "pangroup",
+          "fullscreenbutton",
           "nextbutton"
         ]
       }

@@ -47,7 +47,7 @@ class ImgViewModal extends LitElement {
         --simple-modal-titlebar-height: 40px;
         --simple-modal-titlebar-line-height: 40px;
         --simple-modal-titlebar-height: 40px;
-        --simple-modal-titlebar-padding: 0px 5px;
+        --simple-modal-titlebar-padding: 0px 5px 0px 15px;
         --simple-modal-titlebar-background: var(
           --img-view-modal-backgroundColor,
           white
@@ -108,7 +108,7 @@ class ImgViewModal extends LitElement {
         "--simple-modal-titlebar-height":
           this._getCssVar("--simple-modal-titlebar-height") || "40px",
         "--simple-modal-titlebar-padding":
-          this._getCssVar("--simple-modal-titlebar-padding") || "0px 5px",
+          this._getCssVar("--simple-modal-titlebar-padding") || "0px 5px 0px 15px",
         "--simple-modal-titlebar-background":
           this._getCssVar("--simple-modal-titlebar-background") || "white",
         "--simple-modal-header-background":
