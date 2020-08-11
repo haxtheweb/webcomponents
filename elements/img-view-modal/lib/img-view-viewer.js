@@ -93,7 +93,10 @@ class ImgViewViewer extends ImgPanZoom {
           justify-content: end;
         }
         button[aria-pressed="true"] {
-          background-color: var(--img-view-viewer-toggled-backgroundColor, #eee);
+          background-color: var(
+            --img-view-viewer-toggled-backgroundColor,
+            #eee
+          );
         }
         button:focus,
         button:hover,
