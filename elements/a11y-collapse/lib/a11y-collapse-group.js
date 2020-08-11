@@ -56,29 +56,21 @@ class A11yCollapseGroup extends LitElement {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this._attachItem(e.detail);
-      e.stopPropagation();
-      e.stopImmediatePropagation();
     });
     this.addEventListener("a11y-collapse-detached", e => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this._detachItem(e.detail);
-      e.stopPropagation();
-      e.stopImmediatePropagation();
     });
     this.addEventListener("a11y-collapse-click", e => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this.radioToggle(e.detail);
-      e.stopPropagation();
-      e.stopImmediatePropagation();
     });
     this.addEventListener("toggle", e => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this.radioToggle(e.detail);
-      e.stopPropagation();
-      e.stopImmediatePropagation();
     });
   }
   static get tag() {

@@ -34,7 +34,7 @@ class LrndesignAvatar extends SimpleColors {
         }
 
         paper-avatar {
-          border-radius: 50%;
+          border-radius: var(--lrndesign-avatar-border-radius, 50%);
           --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
           --paper-avatar-color: var(
             --simple-colors-default-theme-accent-8,
@@ -45,6 +45,14 @@ class LrndesignAvatar extends SimpleColors {
             #fff
           );
           max-height: var(--lrndesign-avatar-width, 40px);
+        }
+
+        :host([invert]) paper-avatar {
+          --paper-avatar-color: var(--simple-colors-default-theme-grey-1, #fff);
+          --paper-avatar-text-color: var(
+            --simple-colors-default-theme-accent-8,
+            #444
+          );
         }
       `
     ];
@@ -158,7 +166,15 @@ class LrndesignAvatar extends SimpleColors {
             inputMethod: "boolean"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "allowGrey",
+            title: "Allow Grey",
+            description:
+              "Allows grey if set. Otherwise a color will be assigned",
+            inputMethod: "boolean"
+          }
+        ]
       }
     };
   }
@@ -168,10 +184,25 @@ class LrndesignAvatar extends SimpleColors {
       ...super.properties,
 
       /**
+       * allow grey instead of accent color, default selects a color
+       */
+      allowGrey: {
+        type: Boolean,
+        attribute: "allow-grey"
+      },
+      /**
        * optional iron-icon
        */
       icon: {
         type: String
+      },
+      /**
+       * invert colors
+       */
+      invert: {
+        type: Boolean,
+        attribute: "invert",
+        reflect: true
       },
       /**
        * text to use for avatar
@@ -218,6 +249,7 @@ class LrndesignAvatar extends SimpleColors {
   // life cycle
   constructor() {
     super();
+    this.allowGrey = false;
     this.dark = false;
     this.twoChars = false;
     this.jdenticon = false;
@@ -226,7 +258,11 @@ class LrndesignAvatar extends SimpleColors {
 
   _getAccentColor() {
     // legacy API bridge
-    if (this.colors && (!this.accentColor || this.accentColor === "grey")) {
+    if (
+      this.colors &&
+      !this.allowGrey &&
+      (!this.accentColor || this.accentColor === "grey")
+    ) {
       let color = (this.color || "").replace("-text", "");
       if (color && this.colors[color]) {
         this.accentColor = color;

@@ -53,6 +53,29 @@ class ElmslnStudioLink extends navigator(LitElement) {
           --elmsln-studio-link-TextDecorationThickness
         );
       }
+      a:hover,
+      a:focus {
+        background: transparent;
+        color: var(--elmsln-studio-link-focus-Color, var(--elmsln-studio-link-Color));
+        text-decoration: var(--elmsln-studio-link-focus-TextDecoration, var(--elmsln-studio-link-TextDecoration));
+        text-decoration-style: var(--elmsln-studio-link-focus-TextDecorationStyle, var(--elmsln-studio-link-TextDecorationStyle));
+        text-decoration-skip: var(--elmsln-studio-link-focus-TextDecorationSkip, var(--elmsln-studio-link-TextDecorationSkip));
+        text-decoration-skip-ink: var(
+          --elmsln-studio-link-focus-TextDecorationSkipInk,
+          var(
+          --elmsln-studio-link-TextDecorationSkipInk
+        );
+        );
+        text-decoration-line: var(--elmsln-studio-link-focus-TextDecorationLine, var(--elmsln-studio-link-TextDecorationLine));
+        text-decoration-color: var(--elmsln-studio-link-focus-TextDecorationColor, ar(--elmsln-studio-link-TextDecorationColor));
+        text-decoration: var(--elmsln-studio-link-focus-TextDecoration, var(--elmsln-studio-link-TextDecoration););
+        text-decoration-thickness: var(
+          --elmsln-studio-link-focus-TextDecorationThickness,
+          var(
+            --elmsln-studio-link-TextDecorationThickness
+          )
+        );
+      }
     `;
   }
   constructor() {

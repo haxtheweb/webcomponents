@@ -275,7 +275,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           ?extra-wide="${this.extraWide}"
           responsive-size="${this.responsiveSize}"
         >
-          <p id="xystart" ?hidden="${this.hideNav}">
+          <p id="xystart" class="sr-only">
             Slide ${this.selected.xofy}.
           </p>
           <div id="carouselimage">

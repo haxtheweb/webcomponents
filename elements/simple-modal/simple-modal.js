@@ -67,20 +67,20 @@ class SimpleModal extends LitElement {
 
         #titlebar {
           margin-top: 0;
-          padding: 0px 16px;
+          padding: var(--simple-modal-titlebar-padding, 0px 16px);
           display: flex;
           align-items: center;
           justify-content: space-between;
           color: var(--simple-modal-titlebar-color, #444);
           background-color: var(--simple-modal-titlebar-background, #ddd);
           border-radius: 0;
-          height: 64px;
-          line-height: 64px;
+          height: var(--simple-modal-titlebar-height, 64px);
+          line-height: var(--simple-modal-titlebar-line-height, 64px);
         }
 
         #headerbar {
           margin: 0;
-          padding: 0 16px;
+          padding: var(--simple-modal-header-padding, 0px 16px);
           color: var(--simple-modal-header-color, #222);
           background-color: var(--simple-modal-header-background, #ccc);
         }
@@ -120,7 +120,7 @@ class SimpleModal extends LitElement {
 
         #simple-modal-content {
           flex-grow: 1;
-          padding: 8px 16px;
+          padding: var(--simple-modal-content-padding, 8px 16px);
           margin: 0;
           color: var(--simple-modal-content-container-color, #222);
           background-color: var(
@@ -131,6 +131,7 @@ class SimpleModal extends LitElement {
 
         .buttons {
           padding: 0;
+          padding: var(--simple-modal-buttons-padding, 0);
           margin: 0;
           color: var(--simple-modal-buttons-color, unset);
           background-color: var(--simple-modal-buttons-background, unset);
@@ -148,6 +149,7 @@ class SimpleModal extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`
@@ -330,6 +332,7 @@ class SimpleModal extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
+      console.log("connectedCallback", this);
       window.addEventListener("simple-modal-hide", this.close.bind(this));
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
     }, 0);
@@ -354,6 +357,7 @@ class SimpleModal extends LitElement {
    *
    */
   showEvent(e) {
+    console.log("show", this, e);
     // if we're already opened and we get told to open again....
     // swap out the contents
     if (this.opened) {
@@ -421,13 +425,19 @@ class SimpleModal extends LitElement {
         "--simple-modal-max-width",
         "--simple-modal-max-height",
         "--simple-modal-titlebar-color",
+        "--simple-modal-titlebar-height",
+        "--simple-modal-titlebar-line-height",
         "--simple-modal-titlebar-background",
+        "--simple-modal-titlebar-padding",
         "--simple-modal-header-color",
         "--simple-modal-header-background",
+        "--simple-modal-header-padding",
         "--simple-modal-content-container-color",
         "--simple-modal-content-container-background",
+        "--simple-modal-content-padding",
         "--simple-modal-buttons-color",
         "--simple-modal-buttons-background",
+        "--simple-modal-buttons-padding",
         "--simple-modal-button-color",
         "--simple-modal-button-background"
       ].forEach(prop => {

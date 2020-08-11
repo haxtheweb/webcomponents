@@ -1,0 +1,468 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-colors",
+      "description": "`simple-colors`",
+      "properties": [
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "simple-colors",
+      "description": "`simple-colors`",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "simple-colors-picker",
+      "description": "`simple-colors-picker`",
+      "attributes": [
+        {
+          "name": "aria-labelledby",
+          "description": "Optional. Sets the aria-labelledby attribute",
+          "type": "string"
+        },
+        {
+          "name": "block-label",
+          "description": "Display as a block",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "Is the picker disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "description": "Is it expanded?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "description": "Optional. The label for the picker input",
+          "type": "string"
+        },
+        {
+          "name": "shades",
+          "description": "Show all shades instead of just main accent-colors",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "description": "An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`",
+          "type": "array"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "ariaLabelledby",
+          "attribute": "aria-labelledby",
+          "description": "Optional. Sets the aria-labelledby attribute",
+          "type": "string"
+        },
+        {
+          "name": "blockLabel",
+          "attribute": "block-label",
+          "description": "Display as a block",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Is the picker disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "Is it expanded?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Optional. The label for the picker input",
+          "type": "string"
+        },
+        {
+          "name": "shades",
+          "attribute": "shades",
+          "description": "Show all shades instead of just main accent-colors",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "attribute": "options",
+          "description": "An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`",
+          "type": "array"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "change"
+        },
+        {
+          "name": "collapse"
+        },
+        {
+          "name": "expand"
+        },
+        {
+          "name": "option-focus"
+        }
+      ]
+    },
+    {
+      "name": "simple-colors-swatch-info",
+      "description": "`simple-colors-swatch-info`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.",
+      "attributes": [
+        {
+          "name": "swatch-id",
+          "description": "The id of the swatch (`color_index`)",
+          "type": "string",
+          "default": "\"grey_0\""
+        },
+        {
+          "name": "swatch-name",
+          "description": "The swatch name (`color-shade`)",
+          "type": "string",
+          "default": "\"grey-1\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "swatchId",
+          "attribute": "swatch-id",
+          "description": "The id of the swatch (`color_index`)",
+          "type": "string",
+          "default": "\"grey_0\""
+        },
+        {
+          "name": "swatchName",
+          "attribute": "swatch-name",
+          "description": "The swatch name (`color-shade`)",
+          "type": "string",
+          "default": "\"grey-1\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "simple-colors-swatches",
+      "description": "`simple-colors-swatches`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\n\n`<simple-colors-swatches>` provides the following custom properties and mixins\nfor styling. See demo of \"all of the colors\" (`demo/colors.html`) for color variable styling.\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-colors-swatch-contrast` | Modal title bar text color. | unset\n`--simple-colors-swatch-color` | Modal title bar background color. | unset",
+      "attributes": [
+        {
+          "name": "swatch-id",
+          "description": "The id of the swatch (`color_index`)",
+          "type": "string",
+          "default": "\"grey_0\""
+        },
+        {
+          "name": "swatch-name",
+          "description": "The swatch name (`color-shade`)",
+          "type": "string",
+          "default": "\"grey-1\""
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "swatchId",
+          "attribute": "swatch-id",
+          "description": "The id of the swatch (`color_index`)",
+          "type": "string",
+          "default": "\"grey_0\""
+        },
+        {
+          "name": "swatchName",
+          "attribute": "swatch-name",
+          "description": "The swatch name (`color-shade`)",
+          "type": "string",
+          "default": "\"grey-1\""
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "simple-colors-polymer",
+      "description": "`simple-colors-polymer`",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "simple-colors",
+      "description": "`simple-colors`",
+      "properties": [
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "default": "\"colors\""
+        }
+      ]
+    }
+  ]
+}

@@ -426,7 +426,9 @@ class ThreadedDiscussion extends LitElement {
    */
   sortData(data) {
     return data.sort((a, b) => {
-      return this.latest ? a.date - b.date : b.date - a.date;
+      let aa = typeof a.date === "string" ? Date.parse(a.date) : a.date,
+        bb = typeof b.date === "string" ? Date.parse(b.date) : b.date;
+      return this.latest ? bb - aa : aa - bb;
     });
   }
   /**
