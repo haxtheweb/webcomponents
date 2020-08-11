@@ -103,6 +103,7 @@ class SimpleSearch extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`
@@ -122,7 +123,7 @@ class SimpleSearch extends LitElement {
         <button
           id="prev"
           aria-label="${this.prevButtonLabel}"
-          aria-role="button"
+          role="button"
           controls="${this.controls}"
           tabindex="0"
           ?disabled="${this.__hidePrev}"
@@ -134,7 +135,7 @@ class SimpleSearch extends LitElement {
         <button
           id="next"
           aria-label="${this.nextButtonLabel}"
-          aria-role="button"
+          role="button"
           controls="${this.controls}"
           tabindex="0"
           ?disabled="${this.__hideNext}"

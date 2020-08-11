@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.7.0",
   "description": "Figure label element to mark media assets within content.",
   "repository": {
     "type": "git",
@@ -27,7 +27,6 @@
   "main": "figure-label.js",
   "module": "figure-label.js",
   "umd": "figure-label.umd.js",
-  "amd": "figure-label.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/figure-label/test/",
     "start": "yarn run dev",

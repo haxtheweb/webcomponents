@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.24",
+  "version": "2.7.0",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -36,10 +36,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.6.24",
-    "@lrnwebcomponents/a11y-tabs": "^2.6.24",
-    "@lrnwebcomponents/hax-body": "^2.6.24",
-    "@lrnwebcomponents/simple-tooltip": "^2.6.17",
+    "@lrnwebcomponents/a11y-collapse": "^2.7.0",
+    "@lrnwebcomponents/a11y-tabs": "^2.7.0",
+    "@lrnwebcomponents/hax-body": "^2.7.0",
+    "@lrnwebcomponents/simple-tooltip": "^2.7.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -61,12 +61,11 @@
     "@polymer/paper-styles": "^3.0.0",
     "@polymer/polymer": "^3.3.1",
     "ace-builds": "^1.4.1",
-    "jsoneditor": "^5.24.7",
-    "paper-collapse-item": "^4.0.4"
+    "jsoneditor": "^5.24.7"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.6.24",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/paper-material": "^3.0.1",

@@ -124,7 +124,7 @@ class MapMenuHeader extends LitElement {
           <iron-icon
             id="toggle"
             icon="${this.__collapseIcon}"
-            aria-role="button"
+            role="button"
             aria-label="${this.__collapseAria}"
             tabindex="0"
           ></iron-icon>

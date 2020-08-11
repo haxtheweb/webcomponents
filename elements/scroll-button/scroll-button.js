@@ -82,7 +82,7 @@ class ScrollButton extends LitElement {
         @click="${this.scrollEvent}"
         id="btn"
         icon="${this.icon}"
-        aria-title="${this.label}"
+        aria-label="${this.label}"
       ></paper-icon-button>
       <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}

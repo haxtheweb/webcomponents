@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.6.24",
+  "version": "2.7.0",
   "description": "an accent card of link lists",
   "repository": {
     "type": "git",
@@ -28,7 +28,6 @@
   "main": "nav-card.js",
   "module": "nav-card.js",
   "umd": "nav-card.umd.js",
-  "amd": "nav-card.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/nav-card/test/",
     "start": "yarn run dev",
@@ -43,8 +42,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/accent-card": "^2.6.24",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.6.24",
+    "@lrnwebcomponents/accent-card": "^2.7.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.7.0",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

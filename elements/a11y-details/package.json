@@ -16,7 +16,7 @@
       "hax": "src/a11y-details-hax.json"
     }
   },
-  "version": "2.6.24",
+  "version": "2.7.0",
   "description": "accessible progressive disclosure with detail and summary",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "a11y-details.js",
   "module": "a11y-details.js",
   "umd": "a11y-details.umd.js",
-  "amd": "a11y-details.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-details/test/",
     "start": "yarn run dev",
@@ -40,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^2.6.24",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.6.24",
+    "@lrnwebcomponents/absolute-position-behavior": "^2.7.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.7.0",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

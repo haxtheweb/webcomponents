@@ -11,7 +11,7 @@
       "js": "src/elmsln-studio.js"
     }
   },
-  "version": "2.6.24",
+  "version": "2.7.0",
   "description": "Studio App for ELMS:LN",
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   "main": "elmsln-studio.js",
   "module": "elmsln-studio.js",
   "umd": "elmsln-studio.umd.js",
-  "amd": "elmsln-studio.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/elmsln-studio/test/",
     "start": "yarn run dev",
@@ -35,15 +34,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.6.24",
-    "@lrnwebcomponents/accent-card": "^2.6.24",
-    "@lrnwebcomponents/hax-iconset": "^2.6.24",
-    "@lrnwebcomponents/lrndesign-avatar": "^2.6.24",
-    "@lrnwebcomponents/lrndesign-gallery": "^2.6.24",
-    "@lrnwebcomponents/nav-card": "^2.6.24",
-    "@lrnwebcomponents/simple-colors": "^2.6.24",
-    "@lrnwebcomponents/simple-fields": "^2.6.24",
-    "@lrnwebcomponents/simple-modal": "^2.6.24",
+    "@lrnwebcomponents/a11y-collapse": "^2.7.0",
+    "@lrnwebcomponents/accent-card": "^2.7.0",
+    "@lrnwebcomponents/hax-iconset": "^2.7.0",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.7.0",
+    "@lrnwebcomponents/lrndesign-gallery": "^2.7.0",
+    "@lrnwebcomponents/nav-card": "^2.7.0",
+    "@lrnwebcomponents/simple-colors": "^2.7.0",
+    "@lrnwebcomponents/simple-fields": "^2.7.0",
+    "@lrnwebcomponents/simple-modal": "^2.7.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

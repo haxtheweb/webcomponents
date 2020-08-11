@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.16",
+  "version": "2.7.0",
   "description": "logo element for hax, obviously as a hax capable element.",
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
   "main": "hax-logo.js",
   "module": "hax-logo.js",
   "umd": "hax-logo.umd.js",
-  "amd": "hax-logo.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-logo/test/",
     "start": "yarn run dev",

@@ -68,13 +68,13 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
         .id="btn${this.type}"
         target="_blank"
         rel="noopener noreferrer"
-        .aria-title="${this.label}"
+        aria-label="${this.label}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <paper-icon-button
           icon="${this.icon}"
           @click="${this.print}"
-          .aria-title="${this.label}"
+          aria-labelledby="btn${this.type}"
           ?disabled="${this.disabled}"
           .part="${this.editMode ? `edit-mode-active` : ``}"
         ></paper-icon-button>

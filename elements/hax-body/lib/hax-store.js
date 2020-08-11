@@ -2606,12 +2606,11 @@ window.HaxStore.guessGizmoType = guess => {
     // if it's external we can't assume what it actually is
     else if (window.MediaBehaviors.Video.getVideoType(source) != "external") {
       return "video";
-    } else {
-      // we don't know how to handle this so let's just
-      // try ANYTHING that matches
-      return "*";
     }
   }
+  // we don't know how to handle this so let's just
+  // try ANYTHING that matches
+  return "*";
 };
 /**
  * Try and guess the Gizmo based on what we were just handed

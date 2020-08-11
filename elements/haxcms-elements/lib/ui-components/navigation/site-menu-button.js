@@ -126,7 +126,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
       <a
         tabindex="-1"
         ?disabled="${this.disabled}"
-        .aria-label="${this.label}"
+        aria-label="${this.label}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
         <paper-button

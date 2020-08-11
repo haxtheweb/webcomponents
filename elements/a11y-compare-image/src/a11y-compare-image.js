@@ -27,30 +27,45 @@ class a11yCompareImage extends LitElement {
           margin: 0;
           padding: 0;
         }
-        #container > div {
+        #container,
+        #input {
           position: relative;
         }
-        #top {
+        #container {
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        #layer {
           top: 0;
           left: 0;
           position: absolute;
+          height: 100%;
           opacity: var(--a11y-compare-image-opacity, 1);
           width: var(--a11y-compare-image-width, 50%);
-          overflow: hidden;
+          background-size: cover;
+          background-position-x: 0%;
+          background-repeat: no-repeat;
         }
-        ::slotted([slot="top"]) {
-          width: var(--a11y-compare-image-image-width);
-        }
-        ::slotted([slot="top"]),
-        #bottom {
-          display: block;
+        #placeholder {
+          opacity: 0;
         }
         #bottom {
           width: 100%;
         }
         #slider {
+          top: 0;
+          left: 0;
+          position: absolute;
           width: calc(100% + 32px);
           margin: -15px 0 0 -16px;
+        }
+        .marker {
+          top: -3px;
+          position: absolute;
+          width: 1px;
+          height: 10px;
+          outline: 2px solid #bbb;
+          background-color: #bbb;
         }
         ::slotted([slot="bottom"]) {
           max-width: 100%;
@@ -61,6 +76,8 @@ class a11yCompareImage extends LitElement {
   constructor() {
     super();
     this.opacity = false;
+    this.position = 0;
+    this.__markers = [];
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-slider/paper-slider.js");
   }
@@ -71,15 +88,28 @@ class a11yCompareImage extends LitElement {
           <slot name="heading"></slot>
           <div id="description"><slot name="description"></slot></div>
         </figcaption>
-        <div id="container">
+        <div id="container" style="background-image: url(${this.__lower})">
           <div>
-            <slot id="bottom" name="bottom"></slot>
-            <div id="top">
-              <slot name="top"></slot>
+            <div id="placeholder">
+              <slot id="bottom" name="bottom"></slot>
             </div>
+            <slot name="top" hidden></slot>
+            <div
+              id="layer"
+              style="background-image: url(${this.__upper})"
+            ></div>
+            <slot></slot>
           </div>
         </div>
-        <paper-slider id="slider" value="50"></paper-slider>
+        <div id="input">
+          ${this.__markers.map(
+            marker =>
+              html`
+                <div class="marker" style="left: ${marker}%;"></div>
+              `
+          )}
+          <paper-slider id="slider" value="0"></paper-slider>
+        </div>
       </figure>
     `;
   }
@@ -87,37 +117,13 @@ class a11yCompareImage extends LitElement {
   static get tag() {
     return "a11y-compare-image";
   }
-
   static get properties() {
     return {
       ...super.properties,
-      /**
-       * src for top image
-       */
-      bottomAlt: {
-        type: String,
-        attribute: "bottom-alt"
-      },
-      /**
-       * aria-describedby for top image
-       */
-      bottomDescriptionId: {
-        type: String,
-        attribute: "bottom-description-id"
-      },
-      /**
-       * src for top image
-       */
-      bottomSrc: {
-        type: String,
-        attribute: "bottom-src"
-      },
-      /**
-       * text for button that displays longdesc
-       */
-      longdescText: {
-        type: String,
-        attribute: "summary-text"
+      activeLayer: {
+        type: Number,
+        attribute: "active-layer",
+        reflect: true
       },
       /**
        * mode for the slider: wipe
@@ -125,73 +131,79 @@ class a11yCompareImage extends LitElement {
       opacity: {
         type: Boolean
       },
-      /**
-       * @deprecated Use `slot=heading`
-       */
-      title: {
+      position: {
+        type: Number,
+        attribute: "position",
+        reflect: true
+      },
+      __lower: {
         type: String
       },
-      /**
-       * src for top image
-       */
-      topAlt: {
-        type: String,
-        attribute: "top-alt"
+      __upper: {
+        type: String
       },
-      /**
-       * aria-describedby for top image
-       */
-      topDescriptionId: {
-        type: String,
-        attribute: "top-description-id"
-      },
-      /**
-       * src for top image
-       */
-      topSrc: {
-        type: String,
-        attribute: "top-src"
+      __markers: {
+        type: Array
       }
     };
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (["topSrc"].includes(propName)) {
-        this._slide();
-      }
-    });
-  }
   firstUpdated() {
+    let slider = this.shadowRoot.querySelector("#slider");
+    slider.value = this.position || 0;
     this._slide();
-    this.shadowRoot
-      .querySelector("#slider")
-      .addEventListener("immediate-value-changed", e => {
-        this._slide();
-      });
+    slider.addEventListener("immediate-value-changed", e => {
+      this._slide();
+    });
   }
   /**
    * updates the slider
    */
   _slide() {
-    let top = this.shadowRoot.querySelector("#top"),
-      slider = this.shadowRoot.querySelector("#slider");
+    let container = this.shadowRoot.querySelector("#container");
+    let layers = this.querySelectorAll("[slot=top],[slot=bottom]");
+    // This is the total number of transitions between layers
+    let total = layers.length - 1;
+    //This is percent of the slider for each section
+    let section = 100 / total;
+    let slider = this.shadowRoot.querySelector("#slider");
+    // Index of the upper image
+    let active = Math.floor(slider.immediateValue / section) || 0;
+    // This is the layer number that is current on top.
+    this.activeLayer = active + 1;
+    // This is the slider percent when upper image is at 0.
+    let lastSection = section * active;
+    // How far we are into the current section.
+    let relativePosition = slider.immediateValue - lastSection;
+    // Percentage into the current section
+    this.position = (relativePosition * 100) / section || 0;
+    // Set background images
+    this.__upper = layers[active + 1].src || layers[active].src;
+    this.__lower = layers[active].src;
+    // Adding Fake markers behind the slider.
+    if (total - 1 != this.__markers.length) {
+      this._updateMarkers(total);
+    }
     if (this.opacity === false) {
-      top.style.setProperty(
+      container.style.setProperty(
         "--a11y-compare-image-width",
-        slider.immediateValue + "%"
+        this.position + "%"
       );
-      top.style.setProperty(
-        "--a11y-compare-image-image-width",
-        10000 / slider.immediateValue + "%"
-      );
-      top.style.setProperty("--a11y-compare-image-opacity", 1);
+      container.style.setProperty("--a11y-compare-image-opacity", 1);
     } else {
-      top.style.setProperty("--a11y-compare-image-width", "100%");
-      top.style.setProperty("--a11y-compare-image-image-width", "100%");
-      top.style.setProperty(
+      container.style.setProperty("--a11y-compare-image-width", "100%");
+      container.style.setProperty(
         "--a11y-compare-image-opacity",
-        slider.immediateValue / 100
+        this.position / 100
       );
+    }
+  }
+  _updateMarkers(total) {
+    this.__markers = [];
+    if (total != 0) {
+      let step = 100 / total;
+      for (let i = step; i < 100; i += step) {
+        this.__markers.push(i);
+      }
     }
   }
 }
