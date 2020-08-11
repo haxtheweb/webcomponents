@@ -241,7 +241,7 @@ export class StorybookUtilities {
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
       hax = quick.concat(configure, advanced);
-    console.log(
+    console.debug(
       "getElementProperties",
       props,
       haxProps,
@@ -438,10 +438,10 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnobs(properties, defaults = {}, exclusions = []) {
+    console.debug('getKnobs',properties, defaults, exclusions);
     let knobs = { props: {}, slots: {}, css: {} };
     (properties || []).forEach(field => {
       field.name = field.property || field.attribute || field.slot || field.css;
-      console.log(field);
       if (!field.name && field.hasOwnProperty("slot")) field.name = "emptyslot";
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
         let knob = this.getKnob(field, defaults[field.name]);
@@ -478,7 +478,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   getKnob(field, defaultValue) {
-    console.log("getKnob", field, defaultValue);
+    console.debug("getKnob", field, defaultValue);
     let title = field.title,
       name = field.name,
       editedName = name === "emptyslot" ? '""' : name,
@@ -590,6 +590,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   updateSlot(text, slot) {
+    console.debug('updateSlot',text,slot);
     if (text) {
       let div = document.createElement("div"),
         inner = div.cloneNode(),
@@ -634,7 +635,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   makeElement(el, knobs, noDemo = false) {
-    console.log("makeElement", el, knobs);
+    console.debug("makeElement", el, knobs, noDemo);
     let demo = document.createElement("demo-snippet"),
       template = document.createElement("template"),
       tag = typeof el === "string" ? el : el.tag,
@@ -656,7 +657,6 @@ export class StorybookUtilities {
     child = `<${tag}${attrs}${styles}>${this._getDemoSlots(
       knobs.slots
     )}\n</${tag}>`;
-    console.log(child, typeof child, noDemo);
 
     if (noDemo) {
       return child;
@@ -670,9 +670,9 @@ export class StorybookUtilities {
     template.innerHTML += el;
     demo.innerHTML += before;
     demo.appendChild(template);
-    console.log(demo);
     demo.style.margin = "-8px";
     demo.style.padding = "0";
+    console.debug('demo',demo);
     return demo;
   }
 
@@ -717,7 +717,6 @@ export class StorybookUtilities {
       if (additions.filter(addition => addition.css === camel))
         additions.push({ css: camel });
 
-      console.log("style", parts[0], camel, props, additions);
     });
     content.innerHTML = demo.content || "";
     Object.keys(content.children || {}).forEach(child => {
@@ -726,11 +725,9 @@ export class StorybookUtilities {
         props[node.slot] = node.outerHTML;
       } else {
         props["emptyslot"] = `${props["emptyslot"] || ""}${node.outerHTML}`;
-        console.log("content", content, node, props);
       }
     });
     Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
-    console.log("makeElementFromHaxDemo", props, additions, exclusions);
     return this.makeElementFromClass(
       el,
       props,
@@ -753,7 +750,6 @@ export class StorybookUtilities {
   }
 
   _getDemoSlots(obj) {
-    console.log("_getDemoSlots", obj);
     return Object.keys(obj || {})
       .map(slot => {
         return !obj[slot].knob
@@ -804,7 +800,7 @@ export class StorybookUtilities {
   ) {
     let props = this.getElementProperties(el.properties, el.haxProperties),
       knobs = this.getKnobs([...props, ...additions], defaults, exclusions);
-    console.log("makeElementFromClass", el, props, additions, knobs);
+    console.debug("makeElementFromClass", el, props, defaults, additions, knobs);
     return this.makeElement(el, knobs, container);
   }
 }

@@ -9,6 +9,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 Custom property | Description | Default
 ----------------|-------------|----------
+`--img-view-viewer-height` | viewer height | 500px
 `--img-view-viewer-backgroundColor` | background color | white
 `--img-view-viewer-color` | text color | black
 `--img-view-viewer-borderColor` | border color | #ddd
@@ -615,7 +616,9 @@ class ImgViewViewer extends ImgPanZoom {
       type: "misc-item",
       contents: html`
         <p>
+          <label for="pageX" class="sr-only">Page</label>
           <input
+            id="pageX"
             type="number"
             min="1"
             max="${this.tileSources.length}"
@@ -777,16 +780,26 @@ class ImgViewViewer extends ImgPanZoom {
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName === "figures") this._updateSources();
+    });
   }
-  firstUpdated() {
-    if (!this.src && this.sources.length === 0 && this.figures.length > 0) {
-      let figs = this.figures.map(fig => fig.src);
-      this.src = figs[0];
-      this.sources = figs.slice(1);
-    }
+  firstUpdated(changedProperties) {
+    this._updateSources();
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
+  }
+  _updateSources(){
+    console.log('_updateSources');
+    if(!this.src && 
+      this.sources.length === 0 && 
+      this.figures.length > 0
+    ){
+      let figs = this.figures.map(fig => fig.src);
+      this.src = figs[0];
+      console.log('_updateSources',figs);
+      this.sources = figs.slice(1);
+    }
   }
   /**
    * overrides fullscreen API

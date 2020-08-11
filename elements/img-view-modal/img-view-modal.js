@@ -9,6 +9,8 @@ import { ImgViewViewer } from "./lib/img-view-viewer.js";
 
 Custom property | Description | Default
 ----------------|-------------|----------
+`--img-view-modal-width` | sets width of modal | 90%
+`--img-view-modal-height` | sets height of modal | 90vh
 `--img-view-modal-backgroundColor` | background color | white
 `--img-view-modal-color` | text color | black
 `--img-view-modal-borderColor` | border color | #ddd
@@ -38,8 +40,8 @@ class ImgViewModal extends LitElement {
     return css`
       :host {
         display: block;
-        --simple-modal-width: 90%;
-        --simple-modal-height: 90vh;
+        --simple-modal-width: var(--img-view-modal-width, 90%);
+        --simple-modal-height: var(--img-view-modal-height, 90vh);
         --simple-modal-titlebar-height: 40px;
         --simple-modal-titlebar-line-height: 40px;
         --simple-modal-titlebar-height: 40px;
