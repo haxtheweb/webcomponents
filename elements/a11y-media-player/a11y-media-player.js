@@ -1757,11 +1757,11 @@ ${this.poster
     );
   }
 
-  get fullscreen(){
-    if(this.__fullscreen) {
-      this.setAttribute('fullscreen',true);
+  get fullscreen() {
+    if (this.__fullscreen) {
+      this.setAttribute("fullscreen", true);
     } else {
-      this.removeAttribute('fullscreen');
+      this.removeAttribute("fullscreen");
     }
     return this.__fullscreen;
   }
@@ -2822,7 +2822,9 @@ ${this.poster
    * @readonly
    */
   get fullscreenTarget() {
-    return this.shadowRoot && this.shadowRoot.querySelector("#player-section") ? this.shadowRoot.querySelector("#player-section") : this;
+    return this.shadowRoot && this.shadowRoot.querySelector("#player-section")
+      ? this.shadowRoot.querySelector("#player-section")
+      : this;
   }
 
   /**

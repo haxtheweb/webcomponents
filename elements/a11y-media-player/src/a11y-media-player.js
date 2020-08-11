@@ -317,11 +317,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     );
   }
 
-  get fullscreen(){
-    if(this.__fullscreen) {
-      this.setAttribute('fullscreen',true);
+  get fullscreen() {
+    if (this.__fullscreen) {
+      this.setAttribute("fullscreen", true);
     } else {
-      this.removeAttribute('fullscreen');
+      this.removeAttribute("fullscreen");
     }
     return this.__fullscreen;
   }
@@ -1382,7 +1382,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
    * @readonly
    */
   get fullscreenTarget() {
-    return this.shadowRoot && this.shadowRoot.querySelector("#player-section") ? this.shadowRoot.querySelector("#player-section") : this;
+    return this.shadowRoot && this.shadowRoot.querySelector("#player-section")
+      ? this.shadowRoot.querySelector("#player-section")
+      : this;
   }
 
   /**
