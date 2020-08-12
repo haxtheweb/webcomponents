@@ -127,26 +127,32 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {array} sources
      * @returns
      */
-    getFigures(sources,src="src",alt="alt",full="full",longdesc="longdesc") {
+    getFigures(
+      sources,
+      src = "src",
+      alt = "alt",
+      full = "full",
+      longdesc = "longdesc"
+    ) {
       //console.log('getFigures',sources);
       let images = (sources || []).map(source => {
-          return {
-            src: source[full] || source[src],
-            info:
-              source[alt] && source[longdesc]
-                ? html`
-                    <p>${source[alt]}:</p>
-                    <div>${source[longdesc]}</div>
-                  `
-                : source[alt]
-                ? html`
-                    ${source[alt]}
-                  `
-                : html`
-                    ${source[longdesc]}
-                  `
-          };
-        });
+        return {
+          src: source[full] || source[src],
+          info:
+            source[alt] && source[longdesc]
+              ? html`
+                  <p>${source[alt]}:</p>
+                  <div>${source[longdesc]}</div>
+                `
+              : source[alt]
+              ? html`
+                  ${source[alt]}
+                `
+              : html`
+                  ${source[longdesc]}
+                `
+        };
+      });
       return images.filter(s => !!s.src);
     }
     getThumnailGrid(s) {

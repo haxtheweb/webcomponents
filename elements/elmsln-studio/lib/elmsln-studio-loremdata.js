@@ -74,7 +74,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       },
       __demoImages: {
         type: Array
-      },
+      }
     };
   }
 
@@ -416,8 +416,13 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
 
   _assets(type, topic, lorem) {
-    console.log('_assets',this.sourcePath && this.__demoImages,this.sourcePath && this.__demoImages.length > 0 
-    ? this.__demoImages[this.__imgCtr%this.__demoImages.length]:false);
+    console.log(
+      "_assets",
+      this.sourcePath && this.__demoImages,
+      this.sourcePath && this.__demoImages.length > 0
+        ? this.__demoImages[this.__imgCtr % this.__demoImages.length]
+        : false
+    );
     if (!lorem) {
       return [];
     } else if (type === "body") {
@@ -432,12 +437,14 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           this.__imgCtr++;
           let img = lorem.randomImageData(
             lorem.randomAspect(200, 600, 200, 600),
-            lorem.randomOption([false,false,false,false,true]), 
+            lorem.randomOption([false, false, false, false, true]),
             topic,
             this.__imgCtr
           );
-          if(this.sourcePath && this.__demoImages.length > 0) 
-            img.src = this.__demoImages[this.__imgCtr%this.__demoImages.length]
+          if (this.sourcePath && this.__demoImages.length > 0)
+            img.src = this.__demoImages[
+              this.__imgCtr % this.__demoImages.length
+            ];
           assets.push(img);
         }
       }
@@ -565,26 +572,26 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   _submission(assignmentId, creatorId, topic, type, date, lorem) {
     if (lorem) {
       this.__imgCtr++;
-      console.log('_submission',
+      console.log(
+        "_submission",
         this.__imgCtr,
         this.sourcePath,
         this.__demoImages,
         this.__demoImages.length > 0,
-        this.sourcePath &&
-        this.__demoImages.length > 0 
-        ? this.__demoImages[this.__imgCtr%this.__demoImages.length] 
-        : false
+        this.sourcePath && this.__demoImages.length > 0
+          ? this.__demoImages[this.__imgCtr % this.__demoImages.length]
+          : false
       );
       let id = `${assignmentId}-${creatorId}`,
         image = lorem.randomImageData(
-            lorem.randomAspect(400, 1200, 400, 1200),
-            lorem.randomOption([false,false,false,false,true]), 
-            topic,
-            this.__imgCtr
-          );
-      if(this.sourcePath && this.__demoImages.length > 0) 
-        image.src = this.__demoImages[this.__imgCtr%this.__demoImages.length];
-        
+          lorem.randomAspect(400, 1200, 400, 1200),
+          lorem.randomOption([false, false, false, false, true]),
+          topic,
+          this.__imgCtr
+        );
+      if (this.sourcePath && this.__demoImages.length > 0)
+        image.src = this.__demoImages[this.__imgCtr % this.__demoImages.length];
+
       let reviewers = lorem.draw(
           this.students.filter(s => s.id !== creatorId),
           0,

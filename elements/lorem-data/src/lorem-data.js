@@ -325,15 +325,17 @@ class LoremData extends LitElement {
   }
 
   randomPicsum(aspect, greyscale, blur = 0, id) {
-    let params = greyscale || this.randomWeightedOption([
-      { value: false, weight: 3 },
-      { value: true, weight: 1 }
-    ])
-      ? ["greyscale"]
-      : [];
+    let params =
+      greyscale ||
+      this.randomWeightedOption([
+        { value: false, weight: 3 },
+        { value: true, weight: 1 }
+      ])
+        ? ["greyscale"]
+        : [];
     if (blur > 0) params.push(`blur=${blur}`);
     aspect = aspect || this.randomAspect();
-    return `https://picsum.photos/${id > -1 ? `id/${id}`:``}/${aspect}/${
+    return `https://picsum.photos/${id > -1 ? `id/${id}` : ``}/${aspect}/${
       params.length == 0 ? "" : `?${params.join("&")}`
     }`;
   }
