@@ -356,13 +356,19 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                 </ul>
                               `
                             : s.sources && s.sources.length > 0
-                            ? html`
-                                <lrndesign-gallery
-                                  class="submission-image"
-                                  layout="grid"
-                                  .sources="${s.sources}"
-                                ></lrndesign-gallery>
-                              `
+                            ? s.sources.map((source,i)=>html`
+                              <img-view-modal
+                                page="${i}"
+                                title="${s.assignment} by ${s.firstName} ${s.lastName}"
+                                .figures="${this.getFigures(s.sources)}"
+                              >
+                                <button>
+                                  <img 
+                                    src="${source.src}" 
+                                    alt="${source.alt}">
+                                </button>
+                              </img-view-modal>
+                            `)
                             : html`
                                 ${s.body}
                               `}
@@ -433,7 +439,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         attribute: "submission-filter"
       },
       sortLatest: {
-        type: String,
+        type: Boolean,
         attribute: "sort-latest",
         reflect: true
       }
@@ -465,6 +471,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
 
   get sortedSubmissions() {
+    console.log(
+      'sortedSubmissions',
+      !this.portfolio.submissions
+      ? []
+      : this.sortDates(this.portfolio.submissions, this.sortLatest)
+    );
     return !this.portfolio.submissions
       ? []
       : this.sortDates(this.portfolio.submissions, this.sortLatest);

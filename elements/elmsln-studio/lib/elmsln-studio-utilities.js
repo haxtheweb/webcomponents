@@ -99,6 +99,22 @@ const ElmslnStudioUtilities = function(SuperClass) {
       }
     }
     /**
+     * gets figures for img-view-modal
+     *
+     * @param {array} sources
+     * @returns
+     */
+    getFigures(sources){
+      let demo = this.demoMode && this.demoImages.length > 0,
+        images = (sources || []).map((source,i)=>{
+          return {
+            src: demo ? this.demoImages[i % this.demoImages.length] : source.src,
+            alt: [source.alt,source.longdesc].join(': ')
+          }
+        });
+      return images.filter(s => !!s.src);
+    }
+    /**
      * gets fullname from user data
      * @param {object} user data containing firstName and lastName
      * @param {boolean} sortable last name first

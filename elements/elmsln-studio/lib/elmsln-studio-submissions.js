@@ -317,7 +317,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   <img-view-modal
                     page="${i}"
                     title="${this.modalTitle}"
-                    .figures="${this.submissionFigures}"
+                    .figures="${this.getFigures(this.filteredSubmissions)}"
                   >
                     <button
                       aria-describedby="accent-${i}"
@@ -477,16 +477,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         this._isFilteredProject(i.projectId)
       );
     });
-  }
-  get submissionFigures() {
-    let demo = this.demoMode && this.demoImages.length > 0,
-      images = this.filteredSubmissions.map((s, i) => {
-        return {
-          src: demo ? this.demoImages[i % this.demoImages.length] : s.image,
-          info: s.imageAlt
-        };
-      });
-    return images.filter(s => !!s.src);
   }
   get modalTitle() {
     let assign = [
