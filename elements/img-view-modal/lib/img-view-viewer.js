@@ -174,7 +174,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
                   ></hexagon-loader>
                 `}
             <img-loader
-              loaded="${this.loaded}"
+              ?loaded="${this.loaded}"
               @loaded-changed="${this.loadedChangedEvent}"
               ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
