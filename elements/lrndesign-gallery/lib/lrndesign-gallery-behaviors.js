@@ -61,17 +61,11 @@ class LrndesignGalleryBehaviors extends SimpleColors {
           --lrndesign-gallery-dialog-background-color: var(
             --simple-colors-default-theme-grey-1
           );
-          --lrndesign-gallery-dialog-titlebar-color: var(
-            --simple-colors-default-theme-grey-1
-          );
-          --lrndesign-gallery-dialog-titlebar-background-color: var(
-            --simple-colors-default-theme-accent-9
-          );
-          --lrndesign-gallery-dialog-header-color: var(
-            --simple-colors-default-theme-grey-12
-          );
-          --lrndesign-gallery-dialog-header-background-color: var(
+          --lrndesign-gallery-dialog-toggled-background-color: var(
             --simple-colors-default-theme-grey-2
+          );
+          --lrndesign-gallery-dialog-border-color: var(
+            --simple-colors-default-theme-grey-4
           );
           --lrndesign-gallery-carousel-next-bg: linear-gradient(
             to right,

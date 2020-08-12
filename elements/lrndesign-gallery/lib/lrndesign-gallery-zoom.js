@@ -3,9 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import "./lrndesign-gallery-details.js";
 /**
  * `lrndesign-gallery-zoom`
@@ -60,25 +59,17 @@ class LrndesignGalleryZoom extends LitElement {
           background-color: transparent;
         }
         simple-modal-template[modal-id="zoomdialog"] {
-          --simple-modal-width: 75vw;
-          --simple-modal-height: 75vh;
-          --simple-modal-titlebar-color: var(
-            --lrndesign-gallery-dialog-titlebar-color
+          --img-view-modal-backgroundColor: var(
+            --lrndesign-gallery-dialog-background-color
           );
-          --simple-modal-titlebar-background: var(
-            --lrndesign-gallery-dialog-titlebar-background-color
-          );
-          --simple-modal-header-color: var(
-            --lrndesign-gallery-dialog-header-color
-          );
-          --simple-modal-header-background: var(
-            --lrndesign-gallery-dialog-header-background-color
-          );
-          --simple-modal-content-container-color: var(
+          --img-view-modal-color: var(
             --lrndesign-gallery-dialog-color
           );
-          --simple-modal-content-container-background: var(
-            --lrndesign-gallery-dialog-background-color
+          --img-view-modal-borderColor: var(
+            --lrndesign-gallery-dialog-border-color
+          );
+          --img-view-modal-toggled-backgroundColor: var(
+            --lrndesign-gallery-dialog-toggled-background-color
           );
         }
       `
@@ -86,37 +77,21 @@ class LrndesignGalleryZoom extends LitElement {
   }
   render() {
     return html`
-      <button id="zoombtn" @click="${this.zoom}" aria-label="${this.tooltip}">
-        <slot></slot>
-      </button>
+      <img-view-modal 
+        .figures="${this.figures}"
+        .toolbars="${this.toolbars}"
+        title="${this.heading || ""}"
+        max-zoom-pixel-ratio="1.5"
+        min-zoom-image-ratio="0.5"
+        zoom-per-click="1.2"
+        zoom-per-scroll="0.6">
+        <button id="zoombtn" aria-label="${this.tooltip}">
+          <slot></slot>
+        </button>
+      </img-view-modal>
       <simple-tooltip for="zoombtn" position="right" controls="zoomtpl"
         >${this.tooltip}</simple-tooltip
       >
-      <simple-modal-template id="zoomtpl" title="${this.heading}">
-        <lrndesign-gallery-details
-          id="details"
-          slot="header"
-          ?hidden="${!this.details || this.details === ""}"
-          details="${this.details || ""}"
-        >
-        </lrndesign-gallery-details>
-
-        <div slot="content" ?hidden="${!this.src || this.src === ""}">
-          <img-pan-zoom
-            alt="${this.zoomAlt}"
-            src="${this.src}"
-            max-zoom-pixel-ratio="1.5"
-            min-zoom-image-ratio="0.5"
-            zoom-per-click="1.2"
-            zoom-per-scroll="0.6"
-          >
-          </img-pan-zoom>
-          <div>
-            Swipe, use a mouse or use the +/- and arrow keys to zoom and pan the
-            image above.
-          </div>
-        </div>
-      </simple-modal-template>
     `;
   }
 
@@ -170,6 +145,50 @@ class LrndesignGalleryZoom extends LitElement {
     this.src = "";
     this.tooltip = "Zoom In";
     this.zoomAlt = "Full-sized Image";
+  }
+
+  get figures(){
+    return [{
+      src: this.src, 
+      info: html`
+      <lrndesign-gallery-details
+        id="details"
+        ?hidden="${!this.details || !this.zoomAlt}"
+        details="${this.details || this.zoomAlt}"
+      >
+      </lrndesign-gallery-details>`
+    }];
+  }
+
+  get toolbars(){
+    /* 
+      top: {
+        id: "top",
+        type: "toolbar-group",
+        contents: [
+        ]
+      },
+          "prevbutton",
+          "navXofY",
+          "pageXofY",
+          "nextbutton",
+          "rotategroup",
+          "flipbutton",
+    */
+    return {
+      bottom: {
+        id: "bottom",
+        type: "toolbar-group",
+        contents: [
+          "homebutton",
+          "zoomgroup",
+          "pangroup",
+          "fullscreenbutton",
+          "kbdbutton",
+          "infobutton"
+        ]
+      }
+    };
   }
 
   get button() {

@@ -251,16 +251,13 @@ class ElmslnStudio extends router(
         this.fetchData(this.discussionSource, "discussion");
       if (propName === "demoImagesSource")
         this.fetchData(this.demoImagesSource, "demoImages");
-      if (
-        propName === "demoImages" &&
-        this.shadowRoot
-      ) {
+      if (propName === "demoImages" && this.shadowRoot) {
         let images = this.demoImages.map(
           img => `${this.sourcePath}${img.replace(/^\.\//, "")}`
         );
-        this.shadowRoot.querySelectorAll(
-          "elmsln-studio-submissions,elmsln-studio-portfolio"
-        ).forEach(el=>el.demoImages = images);
+        this.shadowRoot
+          .querySelectorAll("elmsln-studio-submissions,elmsln-studio-portfolio")
+          .forEach(el => (el.demoImages = images));
       }
     });
   }

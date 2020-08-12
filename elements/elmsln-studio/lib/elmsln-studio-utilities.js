@@ -104,13 +104,15 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {array} sources
      * @returns
      */
-    getFigures(sources){
+    getFigures(sources) {
       let demo = this.demoMode && this.demoImages.length > 0,
-        images = (sources || []).map((source,i)=>{
+        images = (sources || []).map((source, i) => {
           return {
-            src: demo ? this.demoImages[i % this.demoImages.length] : source.src,
-            alt: [source.alt,source.longdesc].join(': ')
-          }
+            src: demo
+              ? this.demoImages[i % this.demoImages.length]
+              : source.src,
+            alt: [source.alt, source.longdesc].join(": ")
+          };
         });
       return images.filter(s => !!s.src);
     }

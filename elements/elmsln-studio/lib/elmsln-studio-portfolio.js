@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
+import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
 import "./elmsln-studio-link.js";
@@ -356,19 +356,22 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                 </ul>
                               `
                             : s.sources && s.sources.length > 0
-                            ? s.sources.map((source,i)=>html`
-                              <img-view-modal
-                                page="${i}"
-                                title="${s.assignment} by ${s.firstName} ${s.lastName}"
-                                .figures="${this.getFigures(s.sources)}"
-                              >
-                                <button>
-                                  <img 
-                                    src="${source.src}" 
-                                    alt="${source.alt}">
-                                </button>
-                              </img-view-modal>
-                            `)
+                            ? s.sources.map(
+                                (source, i) => html`
+                                  <img-view-modal
+                                    page="${i}"
+                                    title="${s.assignment} by ${s.firstName} ${s.lastName}"
+                                    .figures="${this.getFigures(s.sources)}"
+                                  >
+                                    <button>
+                                      <img
+                                        src="${source.src}"
+                                        alt="${source.alt}"
+                                      />
+                                    </button>
+                                  </img-view-modal>
+                                `
+                              )
                             : html`
                                 ${s.body}
                               `}
@@ -472,10 +475,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
 
   get sortedSubmissions() {
     console.log(
-      'sortedSubmissions',
+      "sortedSubmissions",
       !this.portfolio.submissions
-      ? []
-      : this.sortDates(this.portfolio.submissions, this.sortLatest)
+        ? []
+        : this.sortDates(this.portfolio.submissions, this.sortLatest)
     );
     return !this.portfolio.submissions
       ? []

@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/img-pan-zoom": "^2.7.1",
+    "@lrnwebcomponents/img-view-modal": "^2.7.1",
     "@lrnwebcomponents/responsive-utility": "^2.7.1",
     "@lrnwebcomponents/simple-colors": "^2.7.1",
     "@lrnwebcomponents/simple-tooltip": "^2.7.1",
