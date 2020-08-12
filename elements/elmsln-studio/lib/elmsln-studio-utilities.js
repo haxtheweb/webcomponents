@@ -153,7 +153,6 @@ const ElmslnStudioUtilities = function(SuperClass) {
                   `
           };
         });
-      console.log("figures", images);
       return images.filter(s => !!s.src);
     }
     getThumnailGrid(s) {

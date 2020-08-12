@@ -63,12 +63,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       },
       activity: {
         type: Array
+      },
+      __imgCtr: {
+        type: Number
       }
     };
   }
 
   constructor() {
     super();
+    this.__imgCtr = 0;
     this.users = {
       ixp23: {
         id: "ixp23",
@@ -405,7 +409,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
           assets.push(lorem.randomLink());
         } else {
           assets.push(
-            lorem.randomImageData(lorem.randomAspect(200, 600, 200, 600), topic)
+            lorem.randomImageData(lorem.randomAspect(200, 600, 200, 600), topic, this.__imgCtr++)
           );
         }
       }
@@ -535,7 +539,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       let id = `${assignmentId}-${creatorId}`,
         image = lorem.randomImageData(
           lorem.randomAspect(400, 1200, 400, 1200),
-          topic
+          topic,
+          this.__imgCtr++
         ),
         reviewers = lorem.draw(
           this.students.filter(s => s.id !== creatorId),
