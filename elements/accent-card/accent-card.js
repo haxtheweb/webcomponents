@@ -168,6 +168,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         :host(:not([horizontal])) .image-outer {
           height: auto;
           width: 100%;
+          min-height: var(--accent-card-heading-min-height);
         }
         .image {
           height: 100%;
@@ -313,12 +314,12 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   render() {
     return html`
       <article id="card">
-        <div class="image-outer" ?hidden="${!this.imageSrc}">
+        <div class="image-outer" ?hidden="${!this.elementVisible || !this.imageSrc}">
           <div
             class="image"
             .style="${this.elementVisible && this.imageSrc
               ? `background-image: url(${this.imageSrc});`
-              : `display: none;`}"
+              : ``}"
           ></div>
           <div id="imagecorner"><slot name="image-corner"></slot></div>
         </div>
