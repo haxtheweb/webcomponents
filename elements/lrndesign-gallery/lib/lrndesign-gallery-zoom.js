@@ -62,9 +62,7 @@ class LrndesignGalleryZoom extends LitElement {
           --img-view-modal-backgroundColor: var(
             --lrndesign-gallery-dialog-background-color
           );
-          --img-view-modal-color: var(
-            --lrndesign-gallery-dialog-color
-          );
+          --img-view-modal-color: var(--lrndesign-gallery-dialog-color);
           --img-view-modal-borderColor: var(
             --lrndesign-gallery-dialog-border-color
           );
@@ -77,14 +75,15 @@ class LrndesignGalleryZoom extends LitElement {
   }
   render() {
     return html`
-      <img-view-modal 
+      <img-view-modal
         .figures="${this.figures}"
         .toolbars="${this.toolbars}"
         title="${this.heading || ""}"
         max-zoom-pixel-ratio="1.5"
         min-zoom-image-ratio="0.5"
         zoom-per-click="1.2"
-        zoom-per-scroll="0.6">
+        zoom-per-scroll="0.6"
+      >
         <button id="zoombtn" aria-label="${this.tooltip}">
           <slot></slot>
         </button>
@@ -147,20 +146,23 @@ class LrndesignGalleryZoom extends LitElement {
     this.zoomAlt = "Full-sized Image";
   }
 
-  get figures(){
-    return [{
-      src: this.src, 
-      info: html`
-      <lrndesign-gallery-details
-        id="details"
-        ?hidden="${!this.details || !this.zoomAlt}"
-        details="${this.details || this.zoomAlt}"
-      >
-      </lrndesign-gallery-details>`
-    }];
+  get figures() {
+    return [
+      {
+        src: this.src,
+        info: html`
+          <lrndesign-gallery-details
+            id="details"
+            ?hidden="${!this.details || !this.zoomAlt}"
+            details="${this.details || this.zoomAlt}"
+          >
+          </lrndesign-gallery-details>
+        `
+      }
+    ];
   }
 
-  get toolbars(){
+  get toolbars() {
     /* 
       top: {
         id: "top",
