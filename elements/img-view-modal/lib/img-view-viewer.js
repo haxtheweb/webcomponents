@@ -94,7 +94,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           justify-content: end;
         }
         button[aria-pressed="true"] {
-          background-color: var(
+          --img-view-viewer-backgroundColor: var(
             --img-view-viewer-toggled-backgroundColor,
             #eee
           );
@@ -102,7 +102,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         button:focus,
         button:hover,
         #viewer:focus-within {
-          outline: 1px solid blue;
+          outline: 1px solid var(--img-view-viewer-focus-borderColor, blue);
           z-index: 2;
         }
         simple-tooltip:not(:defined) {
@@ -164,7 +164,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       <!-- Only preload regular images -->
       ${!this.dzi
         ? html`
-            ${this.hideSpinner || this.loaded
+            ${this.hideSpinner 
               ? ``
               : html`
                   <hexagon-loader
@@ -173,15 +173,6 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
                     size="small"
                   ></hexagon-loader>
                 `}
-            <img-loader
-              ?loaded="${this.loaded}"
-              @loaded-changed="${this.loadedChangedEvent}"
-              ?loading="${this.loading}"
-              @loading-changed="${this.loadingChangedEvent}"
-              @page="${e => (this.page = e.page)}"
-              src="${this.src}"
-              described-by="${this.describedBy || ""}"
-            ></img-loader>
           `
         : ""}
 
@@ -227,7 +218,9 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
        * if used with multiple images and paged navigation, index of current item
        */
       toolbars: { type: Object, attribute: "toolbars", reflect: true },
-      __screenfullLoaded: { type: Boolean }
+      __screenfullLoaded: { type: Boolean },
+      __src: {type: String },
+      __imageLoader: { type: Object }
     };
   }
   getToolbars(defaultToolbars, customToolbars, topOrBottom = "bottom") {
@@ -236,7 +229,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         toolbars && toolbars[topOrBottom]
           ? toolbars[topOrBottom]
           : { id: topOrBottom, contents: "" },
-      div = this._item(toolbar);
+      div = this._item(toolbar,topOrBottom==="top");
     return div;
   }
   /**
@@ -326,7 +319,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       details: html`
         <table>
           <caption>
-            Keyboard Shortcuts
+            Keyboard Shortcuts (when image has focus)
           </caption>
           <tbody>
             <tr>
@@ -565,17 +558,17 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       flexGrow: true
     };
   }
-  get tileSources() {
-    return [this.src, ...this.sources];
+  get pages() {
+    return this.figures || [];
   }
   get noSources() {
-    this.tileSources.length === 0;
+    this.pages.length === 0;
   }
   get prevDisabled() {
     return this.page <= 0;
   }
   get nextDisabled() {
-    return this.page + 1 >= this.tileSources.length;
+    return this.page + 1 >= this.pages.length;
   }
   get info() {
     return this.kbdToggled && this.kbdbutton.details
@@ -594,7 +587,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    * @memberof imgViewViewer
    */
   get pageXofY() {
-    return `${(this.page || 0) + 1} of ${this.tileSources.length}`;
+    return `${(this.page || 0) + 1} of ${this.pages.length}`;
   }
   get navXofY() {
     return {
@@ -607,11 +600,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             id="pageX"
             type="number"
             min="1"
-            max="${this.tileSources.length}"
+            max="${this.pages.length}"
             value="${this.page + 1}"
             @change="${this.goToPageXofY}"
           />
-          of ${this.tileSources.length}
+          of ${this.pages.length}
         </p>
       `
     };
@@ -651,18 +644,19 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    *    contents: {{if item is a group, string of text or array of items}},
    *  }
    * @param {*} [config={}]
+   * @param {boolean} [top=false] on top toolbar?
    * @memberof imgViewViewer
    */
-  _item(config = {}) {
+  _item(config = {}, top=false) {
     if (typeof config === "string" && this[config]) config = this[config];
     if (typeof config !== "object") {
       return html`
         <div class="misc-item">${config}</div>
       `;
     } else if (config && typeof config.contents === typeof undefined) {
-      return this._button(config);
+      return this._button(config,top);
     } else {
-      return this._group(config);
+      return this._group(config,top);
     }
   }
   /**
@@ -673,11 +667,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    *    contents: {{sting of text content or array of items in the group}}
    *  }
    * @param {object} [config={}]
-   * @param {string} [id='']
+   * @param {boolean} [top=false] on top toolbar?
    * @returns toolbar group html template
    * @memberof imgViewViewer
    */
-  _group(config = {}) {
+  _group(config = {}, top=false) {
     if (typeof config === "string" && this[config]) config = this[config];
     return !config
       ? ""
@@ -688,7 +682,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
             ${!Array.isArray(config.contents)
               ? config.contents
-              : (config.contents || []).map(item => this._item(item))}
+              : (config.contents || []).map(item => this._item(item,top))}
           </div>
         `;
   }
@@ -707,11 +701,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    *    tooltip: {{override button text as tooltip}}
    *  }
    * @param {object} [config={}]
-   * @param {string} id
+   * @param {boolean} [top=false] on top toolbar?
    * @returns button html template
    * @memberof imgViewViewer
    */
-  _button(config = {}) {
+  _button(config = {}, top=false) {
     if (typeof config === "string" && this[config]) config = this[config];
     //if (config) this._bindButton(config.id, config.tooltip || config.text);
     return !config
@@ -728,7 +722,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
             ${this._buttonInner(config)}
           </button>
-          ${this._buttonTooltip(config)}
+          ${this._buttonTooltip(config,top)}
         `
       : html`
           <button
@@ -741,8 +735,8 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             ?hidden="${this._buttonHidden(config)}"
           >
             ${this._buttonInner(config)}
+            ${this._buttonTooltip(config)}
           </button>
-          ${this._buttonTooltip(config)}
         `;
   }
   _buttonDisabled(config) {
@@ -774,11 +768,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           </p>
         `;
   }
-  _buttonTooltip(config) {
+  _buttonTooltip(config,top=false) {
     return !config || !config.id
       ? ""
       : html`
-          <simple-tooltip for="${config.id}">${config.text}</simple-tooltip>
+          <simple-tooltip for="${config.id}" position="${top ? "bottom" : "top"}">${config.text}</simple-tooltip>
         `;
   }
   updated(changedProperties) {
@@ -788,14 +782,36 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     });
   }
   firstUpdated(changedProperties) {
-    this._updateSources();
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
+    this._updateSources();
+    this._loadPageSrc();
   }
+  _loadPageSrc(){
+    let src = this.figures && this.figures[this.page] ? this.figures[this.page].src : false;
+    if(this.__imageLoader) this.__imageLoader.remove();
+    if(src) {
+      this.__imageLoader = new Image();
+      this.__imageLoader.onload = () => {
+        this.loading = false;
+        this.loaded = true;
+        if(this.__imageLoader) this.__imageLoader.remove();
+      };
+      this.__imageLoader.onerror = () => {
+        this.loading = false;
+        this.loaded = false;
+        if(this.__imageLoader) this.__imageLoader.remove();
+      };
+      this.__imageLoader.src = src;
+    }
+    this.loading = !!src;
+    this.loaded = false;
+  }
+
   _updateSources() {
-    if (!this.src && this.sources.length === 0 && this.figures.length > 0) {
-      let figs = this.figures.map(fig => fig.src);
-      this.src = figs[0];
+    if (this.figures.length > 0) {
+      let figs = (this.figures || []).map(fig => fig.src);
+      this.src = figs[this.page];
       this.sources = figs.slice(1);
     }
   }
@@ -848,7 +864,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       this.kbdToggled = !this.kbdToggled;
     }
     if (buttonId === "nextbutton") {
-      this.page = Math.min(this.page + 1, this.viewer.tileSources.length - 1);
+      this.page = Math.min(this.page + 1, this.pages.length - 1);
     }
     if (buttonId === "prevbutton") {
       this.page = Math.max(0, this.page - 1);
