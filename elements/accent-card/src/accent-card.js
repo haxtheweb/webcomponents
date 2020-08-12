@@ -314,7 +314,10 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
   render() {
     return html`
       <article id="card">
-        <div class="image-outer" ?hidden="${!this.elementVisible || !this.imageSrc}">
+        <div
+          class="image-outer"
+          ?hidden="${!this.elementVisible || !this.imageSrc}"
+        >
           <div
             class="image"
             .style="${this.elementVisible && this.imageSrc
