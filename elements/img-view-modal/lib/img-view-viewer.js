@@ -164,7 +164,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       <!-- Only preload regular images -->
       ${!this.dzi
         ? html`
-            ${this.hideSpinner 
+            ${this.hideSpinner
               ? ``
               : html`
                   <hexagon-loader
@@ -219,7 +219,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
        */
       toolbars: { type: Object, attribute: "toolbars", reflect: true },
       __screenfullLoaded: { type: Boolean },
-      __src: {type: String },
+      __src: { type: String },
       __imageLoader: { type: Object }
     };
   }
@@ -229,7 +229,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         toolbars && toolbars[topOrBottom]
           ? toolbars[topOrBottom]
           : { id: topOrBottom, contents: "" },
-      div = this._item(toolbar,topOrBottom==="top");
+      div = this._item(toolbar, topOrBottom === "top");
     return div;
   }
   /**
@@ -647,16 +647,16 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    * @param {boolean} [top=false] on top toolbar?
    * @memberof imgViewViewer
    */
-  _item(config = {}, top=false) {
+  _item(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     if (typeof config !== "object") {
       return html`
         <div class="misc-item">${config}</div>
       `;
     } else if (config && typeof config.contents === typeof undefined) {
-      return this._button(config,top);
+      return this._button(config, top);
     } else {
-      return this._group(config,top);
+      return this._group(config, top);
     }
   }
   /**
@@ -671,7 +671,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    * @returns toolbar group html template
    * @memberof imgViewViewer
    */
-  _group(config = {}, top=false) {
+  _group(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     return !config
       ? ""
@@ -682,7 +682,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
             ${!Array.isArray(config.contents)
               ? config.contents
-              : (config.contents || []).map(item => this._item(item,top))}
+              : (config.contents || []).map(item => this._item(item, top))}
           </div>
         `;
   }
@@ -705,7 +705,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    * @returns button html template
    * @memberof imgViewViewer
    */
-  _button(config = {}, top=false) {
+  _button(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     //if (config) this._bindButton(config.id, config.tooltip || config.text);
     return !config
@@ -722,7 +722,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
             ${this._buttonInner(config)}
           </button>
-          ${this._buttonTooltip(config,top)}
+          ${this._buttonTooltip(config, top)}
         `
       : html`
           <button
@@ -734,8 +734,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             ?disabled="${this._buttonDisabled(config)}"
             ?hidden="${this._buttonHidden(config)}"
           >
-            ${this._buttonInner(config)}
-            ${this._buttonTooltip(config)}
+            ${this._buttonInner(config)} ${this._buttonTooltip(config)}
           </button>
         `;
   }
@@ -768,11 +767,15 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           </p>
         `;
   }
-  _buttonTooltip(config,top=false) {
+  _buttonTooltip(config, top = false) {
     return !config || !config.id
       ? ""
       : html`
-          <simple-tooltip for="${config.id}" position="${top ? "bottom" : "top"}">${config.text}</simple-tooltip>
+          <simple-tooltip
+            for="${config.id}"
+            position="${top ? "bottom" : "top"}"
+            >${config.text}</simple-tooltip
+          >
         `;
   }
   updated(changedProperties) {
@@ -787,20 +790,23 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this._updateSources();
     this._loadPageSrc();
   }
-  _loadPageSrc(){
-    let src = this.figures && this.figures[this.page] ? this.figures[this.page].src : false;
-    if(this.__imageLoader) this.__imageLoader.remove();
-    if(src) {
+  _loadPageSrc() {
+    let src =
+      this.figures && this.figures[this.page]
+        ? this.figures[this.page].src
+        : false;
+    if (this.__imageLoader) this.__imageLoader.remove();
+    if (src) {
       this.__imageLoader = new Image();
       this.__imageLoader.onload = () => {
         this.loading = false;
         this.loaded = true;
-        if(this.__imageLoader) this.__imageLoader.remove();
+        if (this.__imageLoader) this.__imageLoader.remove();
       };
       this.__imageLoader.onerror = () => {
         this.loading = false;
         this.loaded = false;
-        if(this.__imageLoader) this.__imageLoader.remove();
+        if (this.__imageLoader) this.__imageLoader.remove();
       };
       this.__imageLoader.src = src;
     }

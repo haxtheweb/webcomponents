@@ -305,7 +305,13 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .gravity="${s.imageGravity || undefined}"
               >
                 <img-view-modal
-                  .figures="${this.getFigures(this.filteredSubmissions,'image','imageAlt','full','imageLongdesc')}"
+                  .figures="${this.getFigures(
+                    this.filteredSubmissions,
+                    "image",
+                    "imageAlt",
+                    "full",
+                    "imageLongdesc"
+                  )}"
                   page="${i}"
                   slot="image-corner"
                   title="${this.modalTitle}"
