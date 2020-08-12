@@ -144,11 +144,55 @@ const ElmslnStudioStyles = function(SuperClass) {
             color: var(--simple-colors-default-theme-grey12, #000);
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
           }
+          img-view-modal.thumbnail,
+          img-view-modal.thumbnail button,
+          img-view-modal.thumbnail button .imgbg {
+            border-radius: 3px;
+          }
+          img-view-modal.thumbnail button {
+            position: relative;
+            width: 150px;
+            padding: 0;
+            margin: 0;
+          }
+          img-view-modal.thumbnail button .imgbg {
+            width: 100%;
+            padding-top: 100%;
+            background-image: var(--elmsln-studio-image-button-backgroundImage, none);
+            background-position: center;
+            background-size: cover;
+            margin: 0;
+          }
+          img-view-modal.thumbnail button .zoombg,
+          img-view-modal.thumbnail button .zoomicon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            z-index: 2;
+            width: 24px;
+            height: 24px;
+            color: white;
+          }
+          .zoombg {
+            border-radius: 2px;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          .thumbnail-grid {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .thumbnail-grid > * {
+            flex: 0 0 50%;
+            margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
           @media screen and (min-width: 600px) {
             #studio-nav elmsln-studio-link {
               padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
                 calc(0.5 * var(--elmsln-studio-margin, 20px));
               font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+            }
+            .thumbnail-grid > * {
+              flex: 0 0 150px;
             }
           }
           @media screen and (min-width: 900px) {

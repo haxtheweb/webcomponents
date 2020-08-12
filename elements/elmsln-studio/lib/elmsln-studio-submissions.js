@@ -317,6 +317,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   <img-view-modal
                     page="${i}"
                     title="${this.modalTitle}"
+                    .toolbars="${this.defaultModalToolbars}"
                     .figures="${this.getFigures(this.filteredSubmissions)}"
                   >
                     <button

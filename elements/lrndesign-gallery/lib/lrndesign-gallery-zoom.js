@@ -163,20 +163,6 @@ class LrndesignGalleryZoom extends LitElement {
   }
 
   get toolbars() {
-    /* 
-      top: {
-        id: "top",
-        type: "toolbar-group",
-        contents: [
-        ]
-      },
-          "prevbutton",
-          "navXofY",
-          "pageXofY",
-          "nextbutton",
-          "rotategroup",
-          "flipbutton",
-    */
     return {
       bottom: {
         id: "bottom",
