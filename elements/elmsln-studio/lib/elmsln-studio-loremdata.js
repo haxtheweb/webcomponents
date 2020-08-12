@@ -25,6 +25,11 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
   static get properties() {
     return {
+      sourcePath: {
+        type: String,
+        reflect: true,
+        attribute: "source-path"
+      },
       endDate: {
         type: Object
       },
@@ -66,12 +71,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       },
       __imgCtr: {
         type: Number
-      }
+      },
+      __demoImages: {
+        type: Array
+      },
     };
   }
 
   constructor() {
     super();
+    this.__demoImages = [];
     this.__imgCtr = 0;
     this.users = {
       ixp23: {
@@ -283,6 +292,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
     };
   }
   firstUpdated(changedProperties) {
+    this.__demoImages = [
+      `${this.sourcePath}images/image1.jpg`,
+      `${this.sourcePath}images/image2.jpg`,
+      `${this.sourcePath}images/image3.jpg`,
+      `${this.sourcePath}images/image4.jpg`,
+      `${this.sourcePath}images/image5.jpg`,
+      `${this.sourcePath}images/image6.jpg`,
+      `${this.sourcePath}images/image7.jpg`,
+      `${this.sourcePath}images/image8.jpg`
+    ];
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     let lorem = this.shadowRoot.getElementById("lorem"),
       startDate = lorem.addDays(undefined, -4 - 3 * this.lessonData.length),
@@ -397,6 +416,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
 
   _assets(type, topic, lorem) {
+    console.log('_assets',this.sourcePath && this.__demoImages,this.sourcePath && this.__demoImages.length > 0 
+    ? this.__demoImages[this.__imgCtr%this.__demoImages.length]:false);
     if (!lorem) {
       return [];
     } else if (type === "body") {
@@ -408,9 +429,16 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         if (type === "links") {
           assets.push(lorem.randomLink());
         } else {
-          assets.push(
-            lorem.randomImageData(lorem.randomAspect(200, 600, 200, 600), topic, this.__imgCtr++)
+          this.__imgCtr++;
+          let img = lorem.randomImageData(
+            lorem.randomAspect(200, 600, 200, 600),
+            lorem.randomOption([false,false,false,false,true]), 
+            topic,
+            this.__imgCtr
           );
+          if(this.sourcePath && this.__demoImages.length > 0) 
+            img.src = this.__demoImages[this.__imgCtr%this.__demoImages.length]
+          assets.push(img);
         }
       }
       return assets;
@@ -536,13 +564,28 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
   }
   _submission(assignmentId, creatorId, topic, type, date, lorem) {
     if (lorem) {
+      this.__imgCtr++;
+      console.log('_submission',
+        this.__imgCtr,
+        this.sourcePath,
+        this.__demoImages,
+        this.__demoImages.length > 0,
+        this.sourcePath &&
+        this.__demoImages.length > 0 
+        ? this.__demoImages[this.__imgCtr%this.__demoImages.length] 
+        : false
+      );
       let id = `${assignmentId}-${creatorId}`,
         image = lorem.randomImageData(
-          lorem.randomAspect(400, 1200, 400, 1200),
-          topic,
-          this.__imgCtr++
-        ),
-        reviewers = lorem.draw(
+            lorem.randomAspect(400, 1200, 400, 1200),
+            lorem.randomOption([false,false,false,false,true]), 
+            topic,
+            this.__imgCtr
+          );
+      if(this.sourcePath && this.__demoImages.length > 0) 
+        image.src = this.__demoImages[this.__imgCtr%this.__demoImages.length];
+        
+      let reviewers = lorem.draw(
           this.students.filter(s => s.id !== creatorId),
           0,
           5

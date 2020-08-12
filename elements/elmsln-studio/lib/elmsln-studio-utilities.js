@@ -16,9 +16,6 @@ const ElmslnStudioUtilities = function(SuperClass) {
     static get properties() {
       return {
         ...super.properties,
-        demoImages: {
-          type: Array
-        },
         demoMode: {
           type: Boolean,
           attribute: "demo-mode",
@@ -28,7 +25,6 @@ const ElmslnStudioUtilities = function(SuperClass) {
     }
     constructor() {
       super();
-      this.demoImages = [];
       this.demoMode = false;
     }
     /**
@@ -131,25 +127,23 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @param {array} sources
      * @returns
      */
-    getFigures(sources) {
-      let demo = this.demoMode && this.demoImages.length > 0,
-        images = (sources || []).map((source, i) => {
+    getFigures(sources,src="src",alt="alt",full="full",longdesc="longdesc") {
+      //console.log('getFigures',sources);
+      let images = (sources || []).map(source => {
           return {
-            src: demo
-              ? this.demoImages[i % this.demoImages.length]
-              : source.src,
+            src: source[full] || source[src],
             info:
-              source.alt && source.longdesc
+              source[alt] && source[longdesc]
                 ? html`
-                    <p>${source.alt}:</p>
-                    <div>${source.longdesc}</div>
+                    <p>${source[alt]}:</p>
+                    <div>${source[longdesc]}</div>
                   `
-                : source.alt
+                : source[alt]
                 ? html`
-                    ${source.alt}
+                    ${source[alt]}
                   `
                 : html`
-                    ${source.alt}
+                    ${source[longdesc]}
                   `
           };
         });

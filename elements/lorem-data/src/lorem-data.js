@@ -324,17 +324,16 @@ class LoremData extends LitElement {
     }`;
   }
 
-  randomPicsum(aspect, greyscale, blur = 0, multiple = -1) {
-    let params = this.randomWeightedOption([
+  randomPicsum(aspect, greyscale, blur = 0, id) {
+    let params = greyscale || this.randomWeightedOption([
       { value: false, weight: 3 },
       { value: true, weight: 1 }
     ])
       ? ["greyscale"]
       : [];
     if (blur > 0) params.push(`blur=${blur}`);
-    if (multiple > -1) params.push(`random=${multiple}`);
     aspect = aspect || this.randomAspect();
-    return `https://picsum.photos/${aspect}/${
+    return `https://picsum.photos/${id > -1 ? `id/${id}`:``}/${aspect}/${
       params.length == 0 ? "" : `?${params.join("&")}`
     }`;
   }
@@ -363,8 +362,8 @@ class LoremData extends LitElement {
       ? this.randomProfileImage(aspect, topic)
       : typeof multiple === typeof undefined
       ? this.randomPlaceImg(aspect, greyscale, topic)
-      : typeof multiple === typeof undefined
-      ? this.randomPicsum(aspect, greyscale, multiple)
+      : topic === "any"
+      ? this.randomPicsum(aspect, greyscale, undefined, multiple)
       : this.randomFlickr(aspect, [topic], false, multiple);
   }
 
