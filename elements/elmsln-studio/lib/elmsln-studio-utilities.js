@@ -138,38 +138,47 @@ const ElmslnStudioUtilities = function(SuperClass) {
             src: demo
               ? this.demoImages[i % this.demoImages.length]
               : source.src,
-            info: source.alt && source.longdesc 
-              ? html`
-                <p>${source.alt}:</p>
-                <div>${source.longdesc}</div>
-              ` 
-              : source.alt 
-              ? html`${source.alt}` 
-              : html`${source.alt}`
+            info:
+              source.alt && source.longdesc
+                ? html`
+                    <p>${source.alt}:</p>
+                    <div>${source.longdesc}</div>
+                  `
+                : source.alt
+                ? html`
+                    ${source.alt}
+                  `
+                : html`
+                    ${source.alt}
+                  `
           };
         });
-      console.log('figures',images);
+      console.log("figures", images);
       return images.filter(s => !!s.src);
     }
-    getThumnailGrid(s){
+    getThumnailGrid(s) {
       return html`
-      <div class="thumbnail-grid">
-        ${(s.sources || []).map((source,i)=>html`
-          <img-view-modal class="thumbnail"
-            page="${i}"
-            title="${s.assignment} by ${s.firstName} ${s.lastName}"
-            .toolbars="${this.defaultModalToolbars}"
-            .figures="${this.getFigures(s.sources)}"
-          >
-            <button .style="${this.getThumbailStyle(source.src)}">
-              <span class="sr-only">${source.alt}</span>
-              <div class="zoombg"></div>
-              <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
-              <div class="imgbg"></div>
-            </button>
-          </img-view-modal>
-        `)}
-      </div>`;
+        <div class="thumbnail-grid">
+          ${(s.sources || []).map(
+            (source, i) => html`
+              <img-view-modal
+                class="thumbnail"
+                page="${i}"
+                title="${s.assignment} by ${s.firstName} ${s.lastName}"
+                .toolbars="${this.defaultModalToolbars}"
+                .figures="${this.getFigures(s.sources)}"
+              >
+                <button .style="${this.getThumbailStyle(source.src)}">
+                  <span class="sr-only">${source.alt}</span>
+                  <div class="zoombg"></div>
+                  <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                  <div class="imgbg"></div>
+                </button>
+              </img-view-modal>
+            `
+          )}
+        </div>
+      `;
     }
     getThumbailStyle(src) {
       return `--elmsln-studio-image-button-backgroundImage: url(${src});`;

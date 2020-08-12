@@ -356,9 +356,10 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                 </ul>
                               `
                             : !s.sources || s.sources.length === 0
-                            ? html`${s.body}`
-                            : this.getThumnailGrid(s)
-                          }
+                            ? html`
+                                ${s.body}
+                              `
+                            : this.getThumnailGrid(s)}
                         </div>
                       </section>
                     `

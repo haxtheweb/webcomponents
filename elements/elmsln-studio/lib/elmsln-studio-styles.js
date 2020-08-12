@@ -87,17 +87,13 @@ const ElmslnStudioStyles = function(SuperClass) {
               sans-serif
             );
           }
-          accent-card [slot="image-corner"] {
-            display: inline-flex;
-            right: 5px;
-            bottom: 10px;
-            position: absolute;
-            border-radius: 3px;
-            background-color: rgba(0, 0, 0, 0.25);
+          accent-card img-view-modal[slot="image-corner"] {
+            float: right;
           }
-          accent-card [slot="image-corner"]:focus-within,
-          accent-card [slot="image-corner"]:hover {
-            background-color: rgba(0, 0, 0, 0.5);
+          accent-card img-view-modal[slot="image-corner"],
+          accent-card img-view-modal[slot="image-corner"]:focus-within,
+          accent-card img-view-modal[slot="image-corner"]:hover {
+            background-color: transparent;
           }
           .card elmsln-studio-link {
             --elmsln-studio-link-Color: var(--accent-card-color);
@@ -144,6 +140,23 @@ const ElmslnStudioStyles = function(SuperClass) {
             color: var(--simple-colors-default-theme-grey12, #000);
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
           }
+          img-view-modal button {
+            padding: 0;
+            margin: 0;
+          }
+          img-view-modal iron-icon {
+            border-radius: 2px;
+            width: 24px;
+            height: 24px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          img-view-modal button:hover iron-icon,
+          img-view-modal button:focus iron-icon {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.25);
+          }
+
           img-view-modal.thumbnail,
           img-view-modal.thumbnail button,
           img-view-modal.thumbnail button .imgbg {
@@ -158,24 +171,19 @@ const ElmslnStudioStyles = function(SuperClass) {
           img-view-modal.thumbnail button .imgbg {
             width: 100%;
             padding-top: 100%;
-            background-image: var(--elmsln-studio-image-button-backgroundImage, none);
+            background-image: var(
+              --elmsln-studio-image-button-backgroundImage,
+              none
+            );
             background-position: center;
             background-size: cover;
             margin: 0;
           }
-          img-view-modal.thumbnail button .zoombg,
-          img-view-modal.thumbnail button .zoomicon {
+          img-view-modal.thumbnail button iron-icon {
             position: absolute;
             bottom: 5px;
             right: 5px;
             z-index: 2;
-            width: 24px;
-            height: 24px;
-            color: white;
-          }
-          .zoombg {
-            border-radius: 2px;
-            background-color: rgba(0, 0, 0, 0.5);
           }
           .thumbnail-grid {
             display: flex;

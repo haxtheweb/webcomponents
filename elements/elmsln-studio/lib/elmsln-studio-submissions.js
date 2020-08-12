@@ -139,18 +139,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           );
           overflow: auto;
         }
-        accent-card [slot="image-corner"] {
-          display: inline-flex;
-          right: 5px;
-          bottom: 10px;
-          position: absolute;
-          border-radius: 3px;
-          background-color: rgba(0, 0, 0, 0.25);
-        }
-        accent-card [slot="image-corner"]:focus-within,
-        accent-card [slot="image-corner"]:hover {
-          background-color: rgba(0, 0, 0, 0.5);
-        }
         accent-card [slot="heading"] {
           font-weight: var(--elmsln-studio-FontWeightLight, 300);
           font-size: 22px;
@@ -178,6 +166,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           align-items: stretch;
           justify-content: space-between;
           color: #95989a;
+        }
+        accent-card.card.submission-card {
+          --accent-card-heading-min-height: 30px;
         }
         accent-card.card.submission-card elmsln-studio-link {
           margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -313,22 +304,21 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .image-valign="${this._getValign(s.imageGravity || undefined)}"
                 .gravity="${s.imageGravity || undefined}"
               >
-                <div slot="image-corner" class="image-zoom">
-                  <img-view-modal
-                    page="${i}"
-                    title="${this.modalTitle}"
-                    .toolbars="${this.defaultModalToolbars}"
-                    .figures="${this.getFigures(this.filteredSubmissions)}"
+                <img-view-modal
+                  .figures="${this.getFigures(this.filteredSubmissions)}"
+                  page="${i}"
+                  slot="image-corner"
+                  title="${this.modalTitle}"
+                  .toolbars="${this.defaultModalToolbars}"
+                >
+                  <button
+                    aria-describedby="accent-${i}"
+                    ?disabled="${!s.image}"
                   >
-                    <button
-                      aria-describedby="accent-${i}"
-                      ?disabled="${!s.image}"
-                    >
-                      <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
-                      <span class="sr-only">View Image</span>
-                    </button>
-                  </img-view-modal>
-                </div>
+                    <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
+                    <span class="sr-only">View Image</span>
+                  </button>
+                </img-view-modal>
                 <div slot="heading" id="student-${s.id}" class="card-student">
                   ${[s.firstName, s.lastName].join(" ")}
                 </div>
