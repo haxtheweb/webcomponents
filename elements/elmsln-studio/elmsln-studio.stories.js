@@ -35,18 +35,40 @@ export const Studio = () => {
   return utils.makeElementFromClass(
     ElmslnStudio,
     {
-      sourcePath: "https://webcomponents.psu.edu/styleguide/iframe.html?id=apps-elms-ln-studio--studio",
+      sourcePath:
+        "https://webcomponents.psu.edu/styleguide/iframe.html?id=apps-elms-ln-studio--studio",
       assignmentsSource: new URL(
         `./demo/data/webcomponentspsu/assignments.json`,
         import.meta.url
       ),
-      usersSource: new URL(`./demo/data/webcomponentspsu/users.json`, import.meta.url),
-      projectsSource: new URL(`./demo/data/webcomponentspsu/projects.json`, import.meta.url),
-      lessonsSource: new URL(`./demo/data/webcomponentspsu/lessons.json`, import.meta.url),
-      activitySource: new URL(`./demo/data/webcomponentspsu/activity.json`, import.meta.url),
-      discussionSource: new URL(`./demo/data/webcomponentspsu/discussion.json`, import.meta.url),
-      portfoliosSource: new URL(`./demo/data/webcomponentspsu/portfolios.json`, import.meta.url),
-      profileSource: new URL(`./demo/data/webcomponentspsu/profile.json`, import.meta.url),
+      usersSource: new URL(
+        `./demo/data/webcomponentspsu/users.json`,
+        import.meta.url
+      ),
+      projectsSource: new URL(
+        `./demo/data/webcomponentspsu/projects.json`,
+        import.meta.url
+      ),
+      lessonsSource: new URL(
+        `./demo/data/webcomponentspsu/lessons.json`,
+        import.meta.url
+      ),
+      activitySource: new URL(
+        `./demo/data/webcomponentspsu/activity.json`,
+        import.meta.url
+      ),
+      discussionSource: new URL(
+        `./demo/data/webcomponentspsu/discussion.json`,
+        import.meta.url
+      ),
+      portfoliosSource: new URL(
+        `./demo/data/webcomponentspsu/portfolios.json`,
+        import.meta.url
+      ),
+      profileSource: new URL(
+        `./demo/data/webcomponentspsu/profile.json`,
+        import.meta.url
+      ),
       submissionsSource: new URL(
         `./demo/data/webcomponentspsu/submissions.json`,
         import.meta.url
