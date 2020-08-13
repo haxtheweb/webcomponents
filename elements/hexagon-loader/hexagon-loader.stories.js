@@ -14,7 +14,7 @@ export default {
 };
 const utils = new StorybookUtilities();
 
-export const Studio = () => {
+export const HexagonLoaderStory = () => {
   let options = {};
   for (let i = 1; i < 38; i++) {
     options[i] = i;
@@ -67,4 +67,8 @@ export const Studio = () => {
       ])
     });
   return utils.makeElement("hexagon-loader", knobs);
+};
+
+export const HexagonStory = () => {
+  return utils.makeElementFromClass(Hexagon);
 };
