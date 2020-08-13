@@ -20,148 +20,146 @@ window["hljs"] = hljs;
  * @element code-sample
  */
 class CodeSample extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+    display: block;
+}
 
-        :host([hidden]),
-        [hidden] {
-          display: none;
-        }
+:host([hidden]),
+[hidden] {
+    display: none;
+}
 
-        pre {
-          margin: 0;
-        }
+pre {
+    margin: 0;
+}
 
-        pre,
-        code {
-          font-family: var(
-            --code-sample-font-family,
-            Operator Mono,
-            Inconsolata,
-            Roboto Mono,
-            monaco,
-            consolas,
-            monospace
-          );
-          font-size: var(--code-sample-font-size, 0.875rem);
-        }
+pre, code {
+    font-family: var(--code-sample-font-family, Operator Mono, Inconsolata, Roboto Mono, monaco, consolas, monospace);
+    font-size: var(--code-sample-font-size, 0.875rem);
+}
 
-        .hljs {
-          padding: 0 1.25rem;
-          line-height: var(--code-sample-line-height, 1.3);
-        }
+.hljs {
+    padding: 0 1.25rem;
+    line-height: var(--code-sample-line-height, 1.3);
+}
 
-        .demo:not(:empty) {
-          padding: var(--code-sample-demo-padding, 0 0 1.25rem);
-        }
+.demo:not(:empty) {
+    padding: var(--code-sample-demo-padding, 0 0 1.25rem);
+}
 
-        #code-container {
-          position: relative;
-        }
+#code-container {
+    position: relative;
+}
 
-        button {
-          background: var(--code-sample-copy-button-bg-color, #e0e0e0);
-          border: none;
-          cursor: pointer;
-          display: block;
-          position: absolute;
-          right: 0;
-          top: 0;
-          text-transform: uppercase;
-        }
+button {
+    background: var(--code-sample-copy-button-bg-color, #e0e0e0);
+    border: none;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-transform: uppercase;
+}
       `
     ];
   }
-  // render function
+
+// render function
   render() {
     return html`
-      <div id="theme"></div>
-      <div id="demo" class="demo"></div>
-      <slot></slot>
-      <div id="code-container">
-        <button
-          type="button"
-          ?hidden="${!this.copyClipboardButton}"
-          id="copyButton"
-          title="Copy to clipboard"
-          @click="${this._copyToClipboard}"
-        >
-          Copy
-        </button>
-        <pre id="code"></pre>
-      </div>
-    `;
+
+<div id="theme"></div>
+<div id="demo" class="demo"></div>
+<slot></slot>
+<div id="code-container">
+  <button type="button" ?hidden="${!this.copyClipboardButton}" id="copyButton" title="Copy to clipboard" @click="${this._copyToClipboard}">Copy</button>
+  <pre id="code"></pre>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Code sample",
-        description: "A sample of code highlighted in the page",
-        icon: "icons:code",
-        color: "blue",
-        groups: ["Code", "Development"],
-        meta: {
-          author: "kuscamara"
-        }
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Code sample",
+    "description": "A sample of code highlighted in the page",
+    "icon": "icons:code",
+    "color": "blue",
+    "groups": ["Code", "Development"],
+    "meta": {
+      "author": "kuscamara"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "slot": "",
+        "slotWrapper": "template",
+        "slotAttributes": {
+          "preserve-content": "preserve-content"
+        },
+        "title": "Source",
+        "description": "The URL for this video.",
+        "inputMethod": "code-editor"
       },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            slot: "",
-            slotWrapper: "template",
-            slotAttributes: {
-              "preserve-content": "preserve-content"
-            },
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "code-editor"
-          },
-          {
-            property: "copyClipboardButton",
-            title: "Copy to clipboard button",
-            description: "button in top right that says copy to clipboard",
-            inputMethod: "boolean"
-          }
-        ],
-        advanced: []
-      },
-      saveOptions: {
-        unsetAttributes: ["theme"]
+      {
+        "property": "copyClipboardButton",
+        "title": "Copy to clipboard button",
+        "description": "button in top right that says copy to clipboard",
+        "inputMethod": "boolean"
       }
-    };
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["theme"]
+  },
+  "demoSchema": [
+    {
+      "tag": "code-sample",
+      "content": "<template preserve-content=\"preserve-content\">const great = \"example\";</template>",
+      "properties": {
+        "copy-clipboard-button": "copy-clipboard-button"
+      }
+    }
+  ]
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      // Set to true to show a copy to clipboard button.
-      copyClipboardButton: {
-        type: Boolean,
-        attribute: "copy-clipboard-button"
-      },
-      // Tagged template literal with custom styles.
-      // Only supported in Shadow DOM.
-      theme: {
-        type: String
-      },
-      // Code type (optional). (eg.: html, js, css)
-      // Options are the same as the available classes for `<code>` tag using highlight.js
-      type: {
-        type: String
-      }
-    };
+  
+  ...super.properties,
+  
+  // Set to true to show a copy to clipboard button.
+  "copyClipboardButton": {
+    "type": Boolean,
+    "attribute": "copy-clipboard-button"
+  },
+  // Tagged template literal with custom styles.
+  // Only supported in Shadow DOM.
+  "theme": {
+    "type": Object
+  },
+  // Code type (optional). (eg.: html, js, css)
+  // Options are the same as the available classes for `<code>` tag using highlight.js
+  "type": {
+    "type": String
+  }
+}
+;
   }
 
   /**
@@ -178,12 +176,20 @@ class CodeSample extends LitElement {
   }
   firstUpdated() {
     this._updateContent();
+    setTimeout(() => {
+      this._themeChanged(this.theme);
+    }, 0);
   }
   /**
    * HTMLElement
    */
   connectedCallback() {
     super.connectedCallback();
+    // can't allow this to be null for a number of reasons related
+    // to the tag's internals. This ensures it's not null on initial paint
+    if (this.innerHTML == '') {
+      this.innerHTML = '<template preserve-content="preserve-content">const great="example";</template>';
+    }
     if (this.querySelector("template")) {
       this._observer = new MutationObserver(mutations => {
         if (this.shadowRoot) {
@@ -237,12 +243,14 @@ class CodeSample extends LitElement {
   _themeCanBeChanged(theme) {
     if (theme.tagName !== "TEMPLATE") {
       console.error("<code-sample>:", "theme must be a template");
-      return;
+      return false;
     }
     return true;
   }
   _updateContent() {
-    if (this._code) this._code.parentNode.removeChild(this._code);
+    if (this._code && this._code.parentNode) {
+      this._code.parentNode.removeChild(this._code);
+    }
 
     let template = this._getCodeTemplate();
     if (!template) {
@@ -263,8 +271,10 @@ class CodeSample extends LitElement {
     this._code = document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
-    this.shadowRoot.querySelector("#code").appendChild(this._code);
-    hljs.highlightBlock(this._code);
+    if (this.shadowRoot && this.shadowRoot.querySelector("#code")) {
+      this.shadowRoot.querySelector("#code").appendChild(this._code);
+      hljs.highlightBlock(this._code);
+    }
   }
   _cleanIndentation(str) {
     const pattern = str.match(/\s*\n[\t\s]*/);
