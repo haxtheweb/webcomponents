@@ -126,7 +126,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             #eee
           );
         }
-      
+
         button:focus,
         button:hover,
         #viewer:focus-within {
@@ -195,9 +195,10 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
               ? ``
               : html`
                   <div id="loader" ?hidden="${this.loaded}">
-                    <hexagon-loader ?loading=${this.loading || !this.loaded}
-                    item-count="4"
-                  ></hexagon-loader>
+                    <hexagon-loader
+                      ?loading=${this.loading || !this.loaded}
+                      item-count="4"
+                    ></hexagon-loader>
                   </div>
                 `}
           `
