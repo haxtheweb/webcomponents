@@ -59,9 +59,7 @@ module.exports = {
             options: { parents: true }
           }),
           cpy({
-            files: [
-              "elements/fullscreen-behaviors/lib/screenfull/dist/*"
-            ],
+            files: ["elements/fullscreen-behaviors/lib/screenfull/dist/*"],
             dest: "../../storybooks/styleguide/",
             options: { parents: true }
           })
