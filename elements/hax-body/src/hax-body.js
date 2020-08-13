@@ -1351,7 +1351,8 @@ class HaxBody extends SimpleColors {
     let parent = node.parentNode;
     // convert the node to a hax element
     let haxElement = nodeToHaxElement(node, null);
-    var props = window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
+    var props =
+      window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
     // support for tag defining which properties NOT to save
     // for simplification, everything is an attribute during this
     // operation
