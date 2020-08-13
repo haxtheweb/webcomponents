@@ -25,11 +25,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
    */
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
           height: var(--img-view-viewer-height, 500px);
+          --hexagon-color: var(--img-view-viewer-focus-borderColor, blue);
         }
         :host([hidden]),
         *[hidden] {
@@ -40,6 +40,33 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           left: -9999999px;
           width: 0;
           overflow: hidden;
+        }
+        #viewer {
+          display: block;
+          position: relative;
+          height: 100%;
+          width: 100%;
+        }
+        #loader {
+          display: none;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          height: var(--img-view-viewer-height, 500px);
+          margin-bottom: calc(0px - var(--img-view-viewer-height, 500px));
+          z-index: 1;
+        }
+        hexagon-loader {
+          position: absolute;
+          opacity: 0;
+          transition: opacity 700ms;
+          margin: auto;
+        }
+        hexagon-loader[loading] {
+          opacity: 1;
         }
         #container {
           display: flex;
@@ -99,6 +126,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             #eee
           );
         }
+      
         button:focus,
         button:hover,
         #viewer:focus-within {
@@ -161,22 +189,19 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
 
   render() {
     return html`
-      <!-- Only preload regular images -->
       ${!this.dzi
         ? html`
             ${this.hideSpinner
               ? ``
               : html`
-                  <hexagon-loader
-                    ?loading=${this.loading || !this.loaded}
+                  <div id="loader" ?hidden="${this.loaded}">
+                    <hexagon-loader ?loading=${this.loading || !this.loaded}
                     item-count="4"
-                    size="small"
                   ></hexagon-loader>
+                  </div>
                 `}
           `
         : ""}
-
-      <!-- Openseadragon -->
       <div id="container">
         ${this.getToolbars(this.defaultToolbars, this.toolbars, "top")}
         <div>
