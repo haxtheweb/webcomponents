@@ -240,7 +240,7 @@ export class StorybookUtilities {
         haxProps && haxProps.settings ? haxProps.settings.configure : [],
       advanced =
         haxProps && haxProps.settings ? haxProps.settings.advanced : [],
-      hax = (quick || []).concat((configure||[]), (advanced||[]));
+      hax = (quick || []).concat(configure || [], advanced || []);
     console.debug(
       "getElementProperties",
       props,
