@@ -33,8 +33,8 @@ class Hexagon extends HTMLElement {
 }
 
 div {
-  width: 30px;
-  height: 18px;
+  width: var(--hexagon-width, 30px);
+  height: var(--hexagon-height, 18px);
   margin: 9px 3px;
   position: absolute;
   color: var(--hexagon-color, orange);
@@ -42,8 +42,8 @@ div {
 div:before, div:after {
   content: '';
   position: absolute;
-  width: 30px;
-  height: 18px;
+  width: var(--hexagon-width, 30px);
+  height: var(--hexagon-height, 18px);
 }
 div:before {
   -webkit-transform: rotate(60deg);
