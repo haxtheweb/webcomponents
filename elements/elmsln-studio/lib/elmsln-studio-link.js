@@ -89,7 +89,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
   }
   render() {
     return html`
-      <a href="${this.href}" @click="${this.linkClick}">
+      <a href="${this.sourcePath}${this.href}" @click="${this.linkClick}">
         <slot></slot>
       </a>
     `;

@@ -40,23 +40,23 @@ class ElmslnStudio extends router(
   render() {
     return html`
       <div id="studio-nav">
-        <elmsln-studio-link ?active="${this.route === "dashboard"}" href="/"
+        <elmsln-studio-link ?active="${this.route === "dashboard"}" href="${this.sourcePath}/"
           >Dashboard</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "submissions" ||
             this.route === "portfolios"}"
-          href="/submissions"
+          href="${this.sourcePath}/submissions"
           >Submissions</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "assignments"}"
-          href="/assignments"
+          href="${this.sourcePath}/assignments"
           >Assignments</elmsln-studio-link
         >
         <elmsln-studio-link
           ?active="${this.route === "activity"}"
-          href="/activity"
+          href="${this.sourcePath}/activity"
           >Activity Index</elmsln-studio-link
         >
       </div>

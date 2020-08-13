@@ -26,20 +26,23 @@ class ImgPanZoom extends LitElement {
           height: 100%;
           width: 100%;
         }
-
-        hexagon-loader {
-          opacity: 0;
-          display: block;
-          transition: opacity 700ms;
-          position: absolute;
-          margin: auto;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
+        #loader {
+          display: none;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          height: calc(500px - 100px);
+          margin-bottom: calc(100px - 500px);
           z-index: 1;
-          height: 70px;
-          width: 70px;
+        }
+        hexagon-loader {
+          position: absolute;
+          opacity: 0;
+          transition: opacity 700ms;
+          margin: auto;
         }
         hexagon-loader[hidden] {
           display: none;
@@ -58,12 +61,14 @@ class ImgPanZoom extends LitElement {
             ${this.hideSpinner || this.loaded
               ? ``
               : html`
+                <div id="loader">
                   <hexagon-loader
                     ?loading=${this.loading || !this.loaded}
                     item-count="4"
                     size="small"
                   ></hexagon-loader>
-                `}
+                </div>
+            `}
             <img-loader
               ?loaded="${this.loaded}"
               @loaded-changed="${this.loadedChangedEvent}"
