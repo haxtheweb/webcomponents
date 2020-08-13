@@ -50,6 +50,20 @@ module.exports = {
             ],
             dest: "../../storybooks/styleguide/",
             options: { parents: true }
+          }),
+          cpy({
+            files: [
+              "elements/img-pan-zoom/lib/openseadragon/build/openseadragon/*"
+            ],
+            dest: "../../storybooks/styleguide/",
+            options: { parents: true }
+          }),
+          cpy({
+            files: [
+              "elements/fullscreen-behaviors/lib/screenfull/dist/*"
+            ],
+            dest: "../../storybooks/styleguide/",
+            options: { parents: true }
           })
         ]
       }
