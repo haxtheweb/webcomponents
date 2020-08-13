@@ -57,7 +57,6 @@ class HexagonLoader extends LitElement {
             height = increment * (i + 1);
             order = this.itemCount - ctr;
             rownum = i + 1;
-            console.log(this.itemCount, rownum, ctr);
           }
         });
         offset = rownum > 3 ? 4 : rownum > 2 ? 3 : rownum > 1 ? 2 : 1;

@@ -12,6 +12,7 @@
   align-items: stretch;
   justify-content: center;
   margin: 0 auto;
+  padding: 0 0 0 0 !important;
   width: var(--hexagon-loader-width, 255px);
   height: var(--hexagon-loader-height, 232.5px);
 }
