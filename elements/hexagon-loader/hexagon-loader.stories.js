@@ -1,5 +1,8 @@
 import { html } from "lit-element/lit-element.js";
-import { HexagonLoader, Hexagon } from "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
+import {
+  HexagonLoader,
+  Hexagon
+} from "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -18,19 +21,24 @@ export const Studio = () => {
     HexagonLoader,
     {
       loading: true,
-      itemCount: utils.getRandomNumber(1,37),
-      size: utils.getRandomOption([undefined,undefined,undefined,"small","large","epic"]),
-      "border": "1px solid #eee",
+      itemCount: utils.getRandomNumber(1, 37),
+      size: utils.getRandomOption([
+        undefined,
+        undefined,
+        undefined,
+        "small",
+        "large",
+        "epic"
+      ]),
+      border: "1px solid #eee",
       "border-radius": "3px"
     },
     [
-      {"css": "--hexagon-color" },
-      {"css": "border" },
-      {"css": "background-color" },
-      {"css": "border-radius" },
+      { css: "--hexagon-color" },
+      { css: "border" },
+      { css: "background-color" },
+      { css: "border-radius" }
     ],
-    [
-      "items"
-    ]
+    ["items"]
   );
 };
