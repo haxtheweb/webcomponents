@@ -53,7 +53,7 @@ module.exports = {
           }),
           cpy({
             files: [
-              "elements/img-pan-zoom/lib/openseadragon/build/openseadragon/*"
+              "elements/img-pan-zoom/lib/openseadragon/*"
             ],
             dest: "../../storybooks/styleguide/",
             options: { parents: true }
