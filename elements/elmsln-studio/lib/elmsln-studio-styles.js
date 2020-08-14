@@ -56,11 +56,7 @@ const ElmslnStudioStyles = function(SuperClass) {
             padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
             margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
             border-bottom: 1px solid #ddd;
-            height: calc(2 * var(--elmsln-studio-FontSize, 16px));
             line-height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
           }
           simple-fields-field {
             color: #95989a;
@@ -213,6 +209,12 @@ const ElmslnStudioStyles = function(SuperClass) {
             }
             #secondary {
               flex: 0 0 calc(33.33333333% - var(--elmsln-studio-margin, 20px));
+            }
+            .filters {
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: nowrap;
+              height: calc(2 * var(--elmsln-studio-FontSize, 16px));
             }
           }
         `

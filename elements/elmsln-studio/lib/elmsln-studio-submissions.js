@@ -37,11 +37,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         :host {
           flex-wrap: wrap;
         }
-        .filters > *,
-        #layout > * {
-          flex: 0 1 auto;
-          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
-        }
         .filters {
           flex: 1 0 100%;
         }
@@ -52,12 +47,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         }
         #layout > button {
           background-color: transparent;
-          border: 0px solid rgba(0, 0, 0, 0);
           opacity: 0.25;
           transform: opacity 0.5s ease-in-out;
-          margin: 0 5px;
           height: calc(2 * var(--elmsln-studio-FontSize, 16px));
           width: calc(2 * var(--elmsln-studio-FontSize, 16px));
+          flex: 1 0 auto;
+          border: 1px solid #ddd;
+          margin: 0;
+          padding: 0;
         }
         #layout button:focus,
         #layout button:hover {
@@ -128,9 +125,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
         }
-        .grid accent-card {
-          --accent-card-image-width: 50%;
-        }
         .feature {
           margin-top: var(--elmsln-studio-margin, 20px);
           height: calc(
@@ -200,6 +194,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           margin: calc(1.5 * var(--elmsln-studio-margin, 20px)) 0 0;
         }
         @media screen and (min-width: 500px) {
+          .list accent-card {
+            --accent-card-image-width: 50%;
+          }
           .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
@@ -212,6 +209,16 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           }
           .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+          }
+          .filters > *,
+          #layout > * {
+            flex: 0 1 auto;
+            margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          #layout > button {
+            padding: 1px 6px;
+            margin: 0 5px;
+            border: 0px solid rgba(0, 0, 0, 0);
           }
         }
         @media screen and (min-width: 1200px) {
