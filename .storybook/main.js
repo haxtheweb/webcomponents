@@ -52,9 +52,7 @@ module.exports = {
             options: { parents: true }
           }),
           cpy({
-            files: [
-              "elements/img-pan-zoom/lib/openseadragon/*"
-            ],
+            files: ["elements/img-pan-zoom/lib/openseadragon/*"],
             dest: "../../storybooks/styleguide/",
             options: { parents: true }
           }),
