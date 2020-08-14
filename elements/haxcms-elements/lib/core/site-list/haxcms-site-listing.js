@@ -230,7 +230,10 @@ class HAXCMSSiteListing extends PolymerElement {
         #loading[data-loading] {
           opacity: 0;
           visibility: hidden;
-          --hexagon-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
+          --hexagon-color: var(
+            --simple-colors-default-theme-light-blue-7,
+            #007ffc
+          );
         }
         a {
           text-decoration: none;
@@ -492,11 +495,7 @@ class HAXCMSSiteListing extends PolymerElement {
         on-response="handleGetUserDataResponse"
       ></iron-ajax>
       <div id="loading" data-loading\$="[[!__loading]]">
-        <hexagon-loader
-          item-count="4"
-          loading
-          size="large"
-        ></hexagon-loader>
+        <hexagon-loader item-count="4" loading size="large"></hexagon-loader>
       </div>
       <div class="toolbar">
         <slot name="app-header-pre"></slot>
