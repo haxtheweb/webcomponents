@@ -541,6 +541,11 @@ class JsonOutlineSchema extends HTMLElement {
       if (tree[i].slug) {
         li.setAttribute("data-jos-slug", tree[i].slug);
       }
+      if (typeof tree[i].metadata !== "undefined") {
+        if (typeof tree[i].metadata.published !== "undefined") {
+          li.setAttribute("data-jos-published", tree[i].metadata.published);
+        }
+      }
       appendTarget.appendChild(li);
       if (tree[i].children && tree[i].children.length > 0) {
         appendTarget.appendChild(
