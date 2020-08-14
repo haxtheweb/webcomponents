@@ -17,6 +17,7 @@ class HaxExportDialog extends winEventsElement(
       css`
         :host {
           display: block;
+          --hexagon-color: var(--hax-color-bg-accent, #0085ba);
         }
         #dialog {
           z-index: 1000;
