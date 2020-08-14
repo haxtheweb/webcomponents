@@ -89,6 +89,7 @@ class CsvRender extends SimpleColors {
         }
         #loading {
           position: absolute;
+          left: calc(50% - 70px);
         }
         #download paper-button {
           color: var(--simple-colors-default-theme-accent-6);

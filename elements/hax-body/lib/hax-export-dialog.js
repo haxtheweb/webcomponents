@@ -76,8 +76,8 @@ class HaxExportDialog extends winEventsElement(
         }
         #loading {
           position: absolute;
-          margin: 0 auto;
-          width: 100%;
+          top: 50%;
+          left: calc(50% - 70px);
         }
       `
     ];
