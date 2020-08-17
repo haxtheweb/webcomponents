@@ -107,6 +107,7 @@ class MapMenuItem extends LitElement {
     this.title = "";
     this.url = "";
     this.active = false;
+    this.published = true;
   }
   /**
    * LitElement life cycle - properties definition
@@ -138,6 +139,9 @@ class MapMenuItem extends LitElement {
       },
       selected: {
         type: String
+      },
+      published: {
+        type: Boolean
       }
     };
   }
@@ -151,6 +155,11 @@ class MapMenuItem extends LitElement {
       }
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
+      }
+      if (propName == "published") {
+        if (this.published === false) {
+          this.icon = "visibility-off";
+        }
       }
     });
   }
