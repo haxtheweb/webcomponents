@@ -106,7 +106,6 @@ class SimpleModal extends LitElement {
    *
    */
   showEvent(e) {
-    console.log("show", this, e);
     // if we're already opened and we get told to open again....
     // swap out the contents
     if (this.opened) {

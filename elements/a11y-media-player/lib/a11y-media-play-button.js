@@ -87,7 +87,6 @@ class A11yMediaPlayButton extends A11yMediaButton {
 
   //render function
   render() {
-    console.log(this.youtubeId);
     return html`
       <button
         id="button"
