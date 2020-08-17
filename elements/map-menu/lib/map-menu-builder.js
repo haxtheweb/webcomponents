@@ -42,6 +42,7 @@ class MapMenuBuilder extends LitElement {
                         ? item.metadata.avatarLabel
                         : ""}"
                       selected="${this.selected}"
+                      .published="${item.metadata.published}"
                     >
                       <map-menu-builder
                         .items="${item.children}"
@@ -64,6 +65,7 @@ class MapMenuBuilder extends LitElement {
                         : ""}"
                       active-path="${this.activePath}"
                       selected="${this.selected}"
+                      .published="${item.metadata.published}"
                     ></map-menu-item>
                   `}
             `
