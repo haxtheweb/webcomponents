@@ -218,8 +218,7 @@ class Store {
        * item.
        */
       if (
-        varGet(manifest, "metadata.site.settings.publishPagesOn", false) ===
-        true
+        varGet(manifest, "metadata.site.settings.publishPagesOn", true) === true
       ) {
         const filterHiddenParentsRecursive = item => {
           // if the item is unpublished then remove it.
