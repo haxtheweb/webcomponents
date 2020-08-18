@@ -44,8 +44,9 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         #viewer {
           display: block;
           position: relative;
-          height: 100%;
-          width: 100%;
+          height: calc(var(--img-view-viewer-height, 500px) - 104px);
+          width: auto;
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         #loader {
           display: none;
@@ -56,7 +57,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           justify-content: space-around;
           width: 100%;
           height: var(--img-view-viewer-height, 500px);
-          margin-bottom: calc(0px - var(--img-view-viewer-height, 500px));
+          margin-bottom: calc(0px - var(--img-view-viewer-height, 104px));
           z-index: 1;
         }
         hexagon-loader {
@@ -79,7 +80,6 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         }
         #container > * {
           flex: 1 1 auto;
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         .misc-item,
         .button-group {
@@ -94,7 +94,8 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         #top,
         #bottom {
           margin: 0;
-          flex: 0 0 auto;
+          flex: 1 0 50px;
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         #top > *,
         #bottom > * {
@@ -171,6 +172,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         input[type="number"] {
+          max-width: 4em;
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
       `
@@ -200,6 +202,14 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
                       item-count="4"
                     ></hexagon-loader>
                   </div>
+                  <img-loader
+                    ?loaded="${this.loaded}"
+                    @loaded-changed="${this.loadedChangedEvent}"
+                    ?loading="${this.loading}"
+                    @loading-changed="${this.loadingChangedEvent}"
+                    src="${this.loadSrc}"
+                    described-by="${this.describedBy || ""}"
+                  ></img-loader>
                 `}
           `
         : ""}
@@ -222,9 +232,11 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return "img-view-viewer";
   }
   static get properties() {
+    let props = {...super.properties};
+    delete props.src;
+    delete props.sources;
     return {
-      ...super.properties,
-
+      ...props,
       figures: {
         type: Array
       },
@@ -244,9 +256,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
        * if used with multiple images and paged navigation, index of current item
        */
       toolbars: { type: Object, attribute: "toolbars", reflect: true },
-      __screenfullLoaded: { type: Boolean },
-      __src: { type: String },
-      __imageLoader: { type: Object }
+      __screenfullLoaded: { type: Boolean }
     };
   }
   getToolbars(defaultToolbars, customToolbars, topOrBottom = "bottom") {
@@ -804,48 +814,14 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
         `;
   }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "figures") this._updateSources();
-    });
+  get src(){
+    return this.figures && this.figures[0] ? this.figures[0].src : undefined;
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
-    this._updateSources();
-    this._loadPageSrc();
+  get loadSrc(){
+    return this.figures && this.figures[this.page] ? this.figures[this.page].src : undefined;
   }
-  _loadPageSrc() {
-    let src =
-      this.figures && this.figures[this.page]
-        ? this.figures[this.page].src
-        : false;
-    if (this.__imageLoader) this.__imageLoader.remove();
-    if (src) {
-      this.__imageLoader = new Image();
-      this.__imageLoader.onload = () => {
-        this.loading = false;
-        this.loaded = true;
-        if (this.__imageLoader) this.__imageLoader.remove();
-      };
-      this.__imageLoader.onerror = () => {
-        this.loading = false;
-        this.loaded = false;
-        if (this.__imageLoader) this.__imageLoader.remove();
-      };
-      this.__imageLoader.src = src;
-    }
-    this.loading = !!src;
-    this.loaded = false;
-  }
-
-  _updateSources() {
-    if (this.figures.length > 0) {
-      let figs = (this.figures || []).map(fig => fig.src);
-      this.src = figs[this.page];
-      this.sources = figs.slice(1);
-    }
+  get sources(){
+    return this.figures ? this.figures.map(fig=>fig.src).slice(1) : undefined;
   }
   /**
    * overrides fullscreen API
@@ -904,7 +880,32 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   }
   goToPageXofY(e) {
     this._toolbarButtonClick("navXofY", e);
-    this.page = e.path[0].value - 1;
+    this.page = e.path ? e.path[0].value - 1 : e.target.value;
+  }
+  loadedChangedEvent(e) {
+    console.log('loadedChangedEvent',e.detail.value,this.src,this.loadSrc);
+    this.loaded = e.detail.value;
+    if (this.loaded) {
+      this.loading = false;
+    }
+  }
+  loadingChangedEvent(e) {
+    console.log('loadingChangedEvent',e.detail.value,this.src,this.loadSrc);
+    this.loading = e.detail.value;
+  }
+
+  _addImage() {
+    console.log('_addImage',this.loadSrc);
+    this.viewer.addSimpleImage({ url: this.loadSrc, index: this.page, clone: true });
+  }
+
+  _addTiledImage() {
+    console.log('_addTiledImage',this.loadSrc);
+    this.viewer.addTiledImage({
+      tileSource: this.loadSrc,
+      index: this.page,
+      clone: true
+    });
   }
 }
 window.customElements.define(ImgViewViewer.tag, ImgViewViewer);

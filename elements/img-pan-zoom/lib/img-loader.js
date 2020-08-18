@@ -7,15 +7,7 @@ class ImgLoader extends LitElement {
    * LitElement render
    */
   render() {
-    return html`
-      <img
-        loading="lazy"
-        id="img"
-        hidden=""
-        src="${this.src}"
-        aria-describedby="${this.describedBy || ""}"
-      />
-    `;
+    return html``;
   }
   /**
    * convention
@@ -73,9 +65,7 @@ class ImgLoader extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "src") {
-        this._srcChanged(this[propName], oldValue);
-      }
+      if (propName == "src") this._loadPageSrc();
       if (["error", "loaded", "loading"].includes(propName)) {
         // notify
         this.dispatchEvent(
@@ -88,47 +78,24 @@ class ImgLoader extends LitElement {
       }
     });
   }
-  /**
-   * LitElement ready
-   */
-  firstUpdated() {
-    var img = this.shadowRoot.querySelector("#img");
-    img.onload = () => {
-      this.loading = false;
-      this.loaded = true;
-      this.error = false;
-    };
-    img.onerror = () => {
-      this._reset();
-      this.loading = false;
-      this.loaded = false;
-      this.error = true;
-    };
-    this._resolvedSrc = "";
-  }
-
-  _srcChanged(newSrc, oldSrc) {
-    this._resolvedSrc = newSrc;
-    this._reset();
-    this._load(newSrc);
-  }
-
-  _load(src) {
-    if (src) {
-      this.shadowRoot.querySelector("#img").src = src;
-    } else {
-      this.shadowRoot.querySelector("#img").removeAttribute("src");
+  _loadPageSrc() {
+    if (this.__imageLoader) this.__imageLoader.remove();
+    if (this.src) {
+      this.__imageLoader = new Image();
+      this.__imageLoader.onload = () => {
+        this.loading = false;
+        this.loaded = true;
+        if (this.__imageLoader) this.__imageLoader.remove();
+      };
+      this.__imageLoader.onerror = () => {
+        this.loading = false;
+        this.loaded = false;
+        if (this.__imageLoader) this.__imageLoader.remove();
+      };
+      this.__imageLoader.src = this.src;
     }
-    this.loading = !!src;
+    this.loading = !!this.src;
     this.loaded = false;
-    this.error = false;
-  }
-
-  _reset() {
-    this.shadowRoot.querySelector("#img").removeAttribute("src");
-    this.loading = false;
-    this.loaded = false;
-    this.error = false;
   }
 }
 window.customElements.define(ImgLoader.tag, ImgLoader);
