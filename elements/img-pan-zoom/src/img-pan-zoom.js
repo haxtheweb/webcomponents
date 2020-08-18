@@ -19,7 +19,7 @@ class ImgPanZoom extends LitElement {
         :host {
           display: block;
           position: relative;
-          height: var(--img-pan-zoom-height,500px);
+          height: var(--img-pan-zoom-height, 500px);
         }
         #viewer {
           position: relative;
@@ -34,8 +34,8 @@ class ImgPanZoom extends LitElement {
           align-items: center;
           justify-content: space-around;
           width: 100%;
-          height: calc(var(--img-pan-zoom-height,500px) - 100px);
-          margin-bottom: calc(100px - var(--img-pan-zoom-height,500px));
+          height: calc(var(--img-pan-zoom-height, 500px) - 100px);
+          margin-bottom: calc(100px - var(--img-pan-zoom-height, 500px));
           z-index: 1;
         }
         hexagon-loader {
@@ -513,7 +513,7 @@ class ImgPanZoom extends LitElement {
   // Init openseadragon
   _initOpenSeadragon() {
     setTimeout(() => {
-      var tileSources = [this.src].filter(src=>!!src);
+      var tileSources = [this.src].filter(src => !!src);
       if (!this.dzi) {
         tileSources = tileSources.map(src => {
           return {

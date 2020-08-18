@@ -232,7 +232,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return "img-view-viewer";
   }
   static get properties() {
-    let props = {...super.properties};
+    let props = { ...super.properties };
     delete props.src;
     delete props.sources;
     return {
@@ -814,14 +814,16 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
         `;
   }
-  get src(){
+  get src() {
     return this.figures && this.figures[0] ? this.figures[0].src : undefined;
   }
-  get loadSrc(){
-    return this.figures && this.figures[this.page] ? this.figures[this.page].src : undefined;
+  get loadSrc() {
+    return this.figures && this.figures[this.page]
+      ? this.figures[this.page].src
+      : undefined;
   }
-  get sources(){
-    return this.figures ? this.figures.map(fig=>fig.src).slice(1) : undefined;
+  get sources() {
+    return this.figures ? this.figures.map(fig => fig.src).slice(1) : undefined;
   }
   /**
    * overrides fullscreen API
@@ -883,24 +885,28 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.page = e.path ? e.path[0].value - 1 : e.target.value;
   }
   loadedChangedEvent(e) {
-    console.log('loadedChangedEvent',e.detail.value,this.src,this.loadSrc);
+    console.log("loadedChangedEvent", e.detail.value, this.src, this.loadSrc);
     this.loaded = e.detail.value;
     if (this.loaded) {
       this.loading = false;
     }
   }
   loadingChangedEvent(e) {
-    console.log('loadingChangedEvent',e.detail.value,this.src,this.loadSrc);
+    console.log("loadingChangedEvent", e.detail.value, this.src, this.loadSrc);
     this.loading = e.detail.value;
   }
 
   _addImage() {
-    console.log('_addImage',this.loadSrc);
-    this.viewer.addSimpleImage({ url: this.loadSrc, index: this.page, clone: true });
+    console.log("_addImage", this.loadSrc);
+    this.viewer.addSimpleImage({
+      url: this.loadSrc,
+      index: this.page,
+      clone: true
+    });
   }
 
   _addTiledImage() {
-    console.log('_addTiledImage',this.loadSrc);
+    console.log("_addTiledImage", this.loadSrc);
     this.viewer.addTiledImage({
       tileSource: this.loadSrc,
       index: this.page,
