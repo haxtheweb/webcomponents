@@ -82,9 +82,9 @@ class MapMenuItem extends LitElement {
     return html`
       <a tabindex="-1" href="${this.url}">
         <paper-button id="wrapper" role="link" noink>
-          ${this.icon
+          ${this.__icon
             ? html`
-                <iron-icon icon="${this.icon}"></iron-icon>
+                <iron-icon icon="${this.__icon}"></iron-icon>
               `
             : ``}
           <span class="title">${this.title}</span>
@@ -103,6 +103,7 @@ class MapMenuItem extends LitElement {
   constructor() {
     super();
     this.icon = "";
+    this.__icon = "";
     this.trackIcon = "";
     this.title = "";
     this.url = "";
@@ -117,6 +118,9 @@ class MapMenuItem extends LitElement {
       icon: {
         type: String
       },
+      __icon: {
+        type: String
+      },
       trackIcon: {
         type: String,
         attribute: "track-icon"
@@ -125,9 +129,6 @@ class MapMenuItem extends LitElement {
         type: String
       },
       url: {
-        type: String
-      },
-      icon: {
         type: String
       },
       id: {
@@ -158,7 +159,10 @@ class MapMenuItem extends LitElement {
       }
       if (propName == "published") {
         if (this.published === false) {
-          this.icon = "visibility-off";
+          this.__icon = "visibility-off";
+        } else {
+          this.__icon = null;
+          this.__icon = "";
         }
       }
     });
