@@ -498,7 +498,7 @@ class ImgPanZoom extends LitElement {
     };
     setTimeout(() => {
       // Init openseadragon if we are using a deep zoom image
-      if (this.dzi) this._initOpenSeadragon();
+      if (this.dzi) this._openseadragonLoaded();
     }, 0);
   }
   /**
