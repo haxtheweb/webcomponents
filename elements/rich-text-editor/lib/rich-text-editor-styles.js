@@ -2,15 +2,15 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 const RichTextEditorStyles = function(SuperClass) {
   return class extends SuperClass {
-    static get tag(){
+    static get tag() {
       return "rich-text-editor-styles";
     }
 
-    static get styles() {
+    static get styles() {
       return [
         css`
           :host {
@@ -36,7 +36,7 @@ const RichTextEditorStyles = function(SuperClass) {
       ];
     }
   };
-}
+};
 /**
  * `rich-text-editor-styles`
  * @element rich-text-editor-styles
@@ -49,9 +49,11 @@ const RichTextEditorStyles = function(SuperClass) {
  * @element fullscreen-behaviors
  */
 class RichTextEditorStyleManager extends RichTextEditorStyles(LitElement) {}
-window.customElements.define(RichTextEditorStyleManager.tag, RichTextEditorStyleManager);
+window.customElements.define(
+  RichTextEditorStyleManager.tag,
+  RichTextEditorStyleManager
+);
 export { RichTextEditorStyleManager, RichTextEditorStyles };
-
 
 window.RichTextEditorStyleManager = {};
 window.RichTextEditorStyleManager.instance = null;
@@ -65,4 +67,3 @@ window.RichTextEditorStyleManager.requestAvailability = function() {
   }
   return window.RichTextEditorStyleManager.instance;
 };
-

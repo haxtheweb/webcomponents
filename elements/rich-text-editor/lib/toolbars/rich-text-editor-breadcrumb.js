@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -10,11 +10,10 @@ import "../buttons/rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-breadcrumb`
  * `a button for rich text editor breadcrumbs`
- * 
+ *
  *  @element rich-text-editor-breadcrumb
  */
 class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,8 +21,8 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
     return "rich-text-editor-breadcrumb";
   }
 
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host #button {
@@ -36,10 +35,10 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
           padding: 2px 5px;
         }
       `
-    ];
-  }
-  render() {
-    return html`
+    ];
+  }
+  render() {
+    return html`
       <iron-a11y-keys
         id="a11y"
         .target="${this.__a11y}"
@@ -59,7 +58,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
       </paper-button>
     `;
   }
-  
+
   static get properties() {
     return {
       /**
@@ -82,7 +81,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
       }
     };
   }
-  
+
   constructor() {
     super();
     this.tag = "";

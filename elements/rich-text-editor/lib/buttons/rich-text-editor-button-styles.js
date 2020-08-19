@@ -2,15 +2,15 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 const RichTextEditorButtonStyles = function(SuperClass) {
   return class extends SuperClass {
-    static get tag(){
+    static get tag() {
       return "rich-text-editor-button-styles";
     }
-    
-    static get styles() {
+
+    static get styles() {
       return [
         css`
           :host {
@@ -64,12 +64,17 @@ const RichTextEditorButtonStyles = function(SuperClass) {
       ];
     }
   };
-}
+};
 /**
  * `rich-text-editor-button-styles`
  * @element rich-text-editor-button-styles
  * `a shared set of button styles for rich-text-editor`
  */
-class RichTextEditorButtonStylesEl extends RichTextEditorButtonStyles(LitElement) {}
-window.customElements.define(RichTextEditorButtonStylesEl.tag, RichTextEditorButtonStylesEl);
+class RichTextEditorButtonStylesEl extends RichTextEditorButtonStyles(
+  LitElement
+) {}
+window.customElements.define(
+  RichTextEditorButtonStylesEl.tag,
+  RichTextEditorButtonStylesEl
+);
 export { RichTextEditorButtonStylesEl, RichTextEditorButtonStyles };

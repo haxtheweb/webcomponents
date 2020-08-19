@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
@@ -14,7 +14,6 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @element rich-text-editor-picker
  */
 class RichTextEditorPicker extends RichTextEditorButton {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,8 +21,8 @@ class RichTextEditorPicker extends RichTextEditorButton {
     return "rich-text-editor-picker";
   }
 
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host {
@@ -47,12 +46,12 @@ class RichTextEditorPicker extends RichTextEditorButton {
       `
     ];
   }
-  render() {
-    return html`
+  render() {
+    return html`
       <simple-picker
         id="button"
         ?allow-null="${this.allowNull}"
-        class="rtebutton ${this.toggled ? 'toggled' : ''}"
+        class="rtebutton ${this.toggled ? "toggled" : ""}"
         ?disabled="${this.disabled}"
         controls="${super.controls}"
         @change="${this._pickerChange}"
@@ -63,10 +62,12 @@ class RichTextEditorPicker extends RichTextEditorButton {
       >
         <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
       </simple-picker>
-      <simple-tooltip id="tooltip" for="button">${this.currentLabel}</simple-tooltip>
+      <simple-tooltip id="tooltip" for="button"
+        >${this.currentLabel}</simple-tooltip
+      >
     `;
   }
-  
+
   static get properties() {
     return {
       ...super.properties,
@@ -120,10 +121,10 @@ class RichTextEditorPicker extends RichTextEditorButton {
     this.titleAsHtml = false;
   }
 
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "options") this._optionsChanged(); 
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "options") this._optionsChanged();
     });
   }
 
@@ -135,8 +136,11 @@ class RichTextEditorPicker extends RichTextEditorButton {
    *
    */
   get toggled() {
-    let selectors = this.options 
-        ? [...this.options].map(option => option.value).filter(option => !!option && option !== "").join(",") 
+    let selectors = this.options
+        ? [...this.options]
+            .map(option => option.value)
+            .filter(option => !!option && option !== "")
+            .join(",")
         : null,
       parent =
         this.range !== null && this.range.commonAncestorContainer
@@ -152,15 +156,15 @@ class RichTextEditorPicker extends RichTextEditorButton {
     return false;
   }
 
-  _optionsChanged(){
+  _optionsChanged() {
     this.dispatchEvent(
       new CustomEvent("options-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-    )
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 
   /**

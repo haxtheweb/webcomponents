@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
@@ -50,7 +50,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
     this.titleAsHtml = true;
   }
 
-  firstUpdated(changedProperties) {
+  firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
@@ -63,10 +63,11 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
     window.ESGlobalBridge.instance.load("emoji", location);
   }
 
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "titleAsHtml" && !this.titleAsHtml) this.titleAsHtml = true; 
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "titleAsHtml" && !this.titleAsHtml)
+        this.titleAsHtml = true;
     });
   }
 

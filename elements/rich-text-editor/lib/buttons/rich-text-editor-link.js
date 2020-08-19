@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import "../singletons/rich-text-editor-prompt.js";
@@ -15,7 +15,6 @@ import "@polymer/iron-icons/iron-icons.js";
  * @element rich-text-editor-link
  */
 class RichTextEditorLink extends RichTextEditorPromptButton {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */

@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 /**
  * `rich-text-editor-selection`
@@ -10,8 +10,7 @@ import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
  *
  * @element rich-text-editor-selection
  */
-class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
-
+class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -19,10 +18,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     return "rich-text-editor-selection";
   }
 
-  static get styles() {
-      return [
-        ...super.styles,
-        css`
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           background-color: var(--rich-text-editor-selection-bg);
         }
@@ -30,12 +29,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           display: none;
         }
       `
-    ];
-  }
-  render() {
-    return html` <slot></slot>`;
+    ];
   }
-  
+  render() {
+    return html`
+      <slot></slot>
+    `;
+  }
+
   static get properties() {
     return {
       editor: {
@@ -57,7 +58,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       }
     };
   }
-  constructor(){
+  constructor() {
     super();
     this.hidden = true;
     document.addEventListener("selectionchange", e => {
@@ -71,12 +72,12 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     });
     this.setAttribute("id", this._generateUUID());
   }
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "range") this._updateToolbar(); 
-    });
-  }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "range") this._updateToolbar();
+    });
+  }
 
   /**
    * life cycle, element is disconnected

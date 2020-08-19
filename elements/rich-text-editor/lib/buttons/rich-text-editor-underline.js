@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-underline`
@@ -11,7 +11,6 @@ import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js"
  * @rich-text-editor-underline
  */
 class RichTextEditorUnderline extends RichTextEditorPromptButton {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */

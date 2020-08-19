@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 /**
@@ -12,7 +12,6 @@ import { RichTextEditorButton } from "./rich-text-editor-button.js";
  * @element rich-text-editor-more-button
  */
 class RichTextEditorMoreButton extends RichTextEditorButton {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -51,12 +50,12 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
   }
 
   /**
-  * whether button is toggled
-  *
-  * @readonly
-  * @memberof RichTextEditorButton
-  */
-  get isToggled(){
+   * whether button is toggled
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
+  get isToggled() {
     return this.toggled;
   }
 

@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 import "../singletons/rich-text-editor-selection.js";
 import "../singletons/rich-text-editor-prompt.js";
@@ -17,7 +17,6 @@ import "../singletons/rich-text-editor-prompt.js";
  * @polymer
  */
 class RichTextEditorPromptButton extends RichTextEditorButton {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -248,26 +247,22 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.__fields = [];
     el.normalize();
     el.innerHTML.trim();
-    this.__fields = this.fields.map(field => this._createField(el,field));
+    this.__fields = this.fields.map(field => this._createField(el, field));
   }
 
-  _createField(el,field){
+  _createField(el, field) {
     if (field.property && field.property !== "") {
-      this.value[field.property] = el
-        ? el.getAttribute(field.property)
-        : null;
+      this.value[field.property] = el ? el.getAttribute(field.property) : null;
     } else if (field.slot && field.slot !== "") {
       this.value[field.slot] =
         el & el.querySelector(field.slot)
           ? el
-            .querySelector(field.slot)
-            .innerHTML.replace(/[\s\n\t]+/g, " ")
-            .trim()
+              .querySelector(field.slot)
+              .innerHTML.replace(/[\s\n\t]+/g, " ")
+              .trim()
           : null;
     } else {
-      this.value[""] = el
-        ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
-        : "";
+      this.value[""] = el ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim() : "";
       if (!this.__slotInputMethod) this.__slotInputMethod = field.inputMethod;
       if (
         (el.childNodes.length === 1 &&

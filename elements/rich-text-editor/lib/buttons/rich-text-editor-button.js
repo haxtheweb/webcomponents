@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -12,8 +12,7 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
  *
  * @element rich-text-editor-button
  */
-class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
-
+class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,8 +20,8 @@ class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
     return "rich-text-editor-button";
   }
 
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host .rtebutton {
@@ -32,10 +31,10 @@ class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
           padding: var(--rich-text-editor-button-padding);
         }
       `
-    ];
-  }
-  render() {
-    return html`
+    ];
+  }
+  render() {
+    return html`
       <iron-a11y-keys
         id="a11y"
         .target="${this.__a11y}"
@@ -52,18 +51,16 @@ class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
         tabindex="0"
         ?toggled="${this.isToggled}"
       >
-        <iron-icon
-          id="icon"
-          aria-hidden="true"
-          icon="${this.currentIcon}"
-        >
+        <iron-icon id="icon" aria-hidden="true" icon="${this.currentIcon}">
         </iron-icon>
         <span id="label" class="${this.labelStyle}">${this.currentLabel}</span>
       </paper-button>
-      <simple-tooltip id="tooltip" for="button">${this.currentLabel}</simple-tooltip>
+      <simple-tooltip id="tooltip" for="button"
+        >${this.currentLabel}</simple-tooltip
+      >
     `;
   }
-  
+
   static get properties() {
     return {
       /**
@@ -180,7 +177,7 @@ class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
     };
   }
 
-  constructor(){
+  constructor() {
     super();
     this.disabled = false;
     this.showTextLabel = false;
@@ -196,57 +193,56 @@ class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
   }
 
   /**
-  * current label based on toggled state
-  *
-  * @readonly
-  * @memberof RichTextEditorButton
-  */
+   * current label based on toggled state
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
   get currentLabel() {
     return this._regOrToggled(this.label, this.toggledLabel, this.isToggled);
   }
 
   /**
-  * current icon based on toggled state
-  *
-  * @readonly
-  * @memberof RichTextEditorButton
-  */
+   * current icon based on toggled state
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
   get currentIcon() {
     return this._regOrToggled(this.icon, this.toggledIcon, this.isToggled);
   }
 
   /**
-    * label is offscreen (screenreader-only)
-    *
-    * @readonly
-    * @memberof RichTextEditorButton
-    */
+   * label is offscreen (screenreader-only)
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
   get labelStyle() {
-    return !!this.icon && this.icon !== "" &&
-        this.showTextLabel === false
-        ? "offscreen"
-        : null;
+    return !!this.icon && this.icon !== "" && this.showTextLabel === false
+      ? "offscreen"
+      : null;
   }
 
   /**
-  * whether button is toggled
-  *
-  * @readonly
-  * @memberof RichTextEditorButton
-  */
-  get isToggled(){
+   * whether button is toggled
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
+  get isToggled() {
     return (this.range || !this.range) && this.command !== null && this.toggles
-        ? document.queryCommandState(this.command)
-        : false;
+      ? document.queryCommandState(this.command)
+      : false;
   }
 
   /**
-  * gets valid commands list
-  *
-  * @readonly
-  * @memberof RichTextEditorButton
-  */
-  get validCommands(){
+   * gets valid commands list
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
+  get validCommands() {
     return [
       "backColor",
       "bold",
@@ -285,47 +281,47 @@ class RichTextEditorButton extends RichTextEditorButtonStyles(LitElement) {
     ];
   }
 
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "controls") this._editorChanged(); 
-      if (propName === "range") this._rangeChanged(); 
-      if (propName === "commandVal") this._commandValChanged(); 
-      if (propName === "toggledCommandVal") this._toggledCommandValChanged(); 
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "controls") this._editorChanged();
+      if (propName === "range") this._rangeChanged();
+      if (propName === "commandVal") this._commandValChanged();
+      if (propName === "toggledCommandVal") this._toggledCommandValChanged();
     });
   }
 
-  _rangeChanged(){
+  _rangeChanged() {
     this.dispatchEvent(
       new CustomEvent("range-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-    )
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 
-  _commandValChanged(){
+  _commandValChanged() {
     this.dispatchEvent(
       new CustomEvent("command-val-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-    )
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 
-  _toggledCommandValChanged(){
+  _toggledCommandValChanged() {
     this.dispatchEvent(
       new CustomEvent("toggled-command-val-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-    )
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
   /**
    * life cycle, element is afixed to the DOM

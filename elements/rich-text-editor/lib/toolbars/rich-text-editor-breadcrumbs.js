@@ -2,18 +2,17 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import "./rich-text-editor-breadcrumb.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
- * 
+ *
  *  @element rich-text-editor-breadcrumbs
  */
 class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,8 +20,8 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
     return "rich-text-editor-breadcrumbs";
   }
 
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host([sticky]) {
@@ -40,22 +39,24 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
           background-color: var(--rich-text-editor-bg);
         }
       `
-    ];
-  }
-  render() {
-    return html`
+    ];
+  }
+  render() {
+    return html`
       ${this.label}
-      ${this.ancestorNodes.map(crumb=>html`
-        <rich-text-editor-breadcrumb
-          controls="${this.controls}"
-          tag="${crumb.tag}"
-          target="${crumb.target}"
-        >
-        </rich-text-editor-breadcrumb>
-      `)}
+      ${this.ancestorNodes.map(
+        crumb => html`
+          <rich-text-editor-breadcrumb
+            controls="${this.controls}"
+            tag="${crumb.tag}"
+            target="${crumb.target}"
+          >
+          </rich-text-editor-breadcrumb>
+        `
+      )}
     `;
   }
-  
+
   static get properties() {
     return {
       /**
@@ -94,7 +95,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
     };
   }
 
-  constructor(){
+  constructor() {
     super();
     this.hidden = false;
     this.sticky = false;

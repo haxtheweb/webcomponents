@@ -2,14 +2,14 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `rich-text-editor-toolbar-mini`
  * `a mini floating toolbar for the rich text editor`
- * 
+ *
  * @element rich-text-editor-toolbar-mini
  * @demo ./demo/mini.html mini floating toolbar
  */
@@ -23,21 +23,20 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
 
   // render function for styles
   static get miniStyles() {
-    return [css`
+    return [
+      css`
         :host #floating {
           display: flex;
         }
-    `];
+      `
+    ];
   }
 
-  static get styles(){
-    return [
-      ...this.baseStyles,
-      ...this.miniStyles
-    ]
+  static get styles() {
+    return [...this.baseStyles, ...this.miniStyles];
   }
 
-  static get miniTemplate(){
+  static get miniTemplate() {
     html`
       <absolute-position-behavior
         auto
@@ -53,7 +52,9 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
 
   // render function for template
   static get template() {
-    return html`${this.miniTemplate}`;
+    return html`
+      ${this.miniTemplate}
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -155,13 +156,13 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
       }
     ];
   }
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
+    changedProperties.forEach((oldValue, propName) => {
       //disable sticky for mini
-      if (propName === "sticky" && this.sticky) this.sticky = false; 
-    });
-  }
+      if (propName === "sticky" && this.sticky) this.sticky = false;
+    });
+  }
 }
 
 export { RichTextEditorToolbarMini };

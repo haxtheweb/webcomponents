@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "../../rich-text-editor.js";
@@ -37,12 +37,14 @@ class RichTextEditorToolbar extends RichTextEditorStyles(LitElement) {
 
   // render function for styles
   static get stickyStyles() {
-    return [css`
+    return [
+      css`
         :host([sticky]) {
           position: sticky;
           top: 0;
         }
-    `];
+      `
+    ];
   }
 
   // render function for styles
@@ -106,14 +108,12 @@ class RichTextEditorToolbar extends RichTextEditorStyles(LitElement) {
         :host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
           display: none;
         }
-    `];
+      `
+    ];
   }
 
-  static get styles(){
-    return [
-      ...this.baseStyles,
-      ...this.stickyStyles
-    ]
+  static get styles() {
+    return [...this.baseStyles, ...this.stickyStyles];
   }
 
   // render function for toolbar
@@ -276,7 +276,7 @@ class RichTextEditorToolbar extends RichTextEditorStyles(LitElement) {
       }
     };
   }
-  constructor(){
+  constructor() {
     super();
     this.canceled = true;
     this.collapsed = true;
@@ -476,21 +476,21 @@ class RichTextEditorToolbar extends RichTextEditorStyles(LitElement) {
       })
     );
   }
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "sticky") this._stickyChanged(this.sticky,oldValue); 
-      if (propName === "range") this._rangeChange(); 
-    });
-  }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "sticky") this._stickyChanged(this.sticky, oldValue);
+      if (propName === "range") this._rangeChange();
+    });
+  }
 
   /**
    * Gets editor buttons array, as determined by `config`.
    * @readonly
    */
   get buttons() {
-    console.log(this,this.shadowRoot);
-    if(this.shadowRoot){
+    console.log(this, this.shadowRoot);
+    if (this.shadowRoot) {
       let toolbar = this.shadowRoot.querySelector("#toolbar"),
         more = this.shadowRoot.querySelector("#morebutton"),
         max = 0,

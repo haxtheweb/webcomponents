@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -14,9 +14,11 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
  *
  * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorStyles(LitElement)) {
-  static get styles() {
-    return [
+class RichTextEditorPrompt extends RichTextEditorButtonStyles(
+  RichTextEditorStyles(LitElement)
+) {
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host {
@@ -35,7 +37,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorSty
           max-width: 300px;
           --simple-popover-padding: 0px;
         }
-        :host #prompt[for]{
+        :host #prompt[for] {
           display: block;
           z-index: 2;
         }
@@ -53,7 +55,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorSty
         :host #prompt paper-input {
           padding: 0;
         }
-        :host #confirm, 
+        :host #confirm,
         :host #cancel {
           min-width: unset;
         }
@@ -63,7 +65,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorSty
         :host #cancel {
           color: var(--rich-text-editor-button-color);
           background-color: var(--rich-text-editor-button-bg);
-
         }
         :host #cancel:focus,
         :host #cancel:hover {
@@ -73,7 +74,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorSty
         :host #confirm {
           color: var(--rich-text-editor-button-color);
           background-color: var(--rich-text-editor-button-bg);
-
         }
         :host #confirm:focus,
         :host #confirm:hover {
@@ -91,15 +91,11 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorSty
           min-width: 40px;
         }
       `
-    ];
-  }
-  render() {
-    return html`
-      <simple-popover
-        id="prompt"
-        auto
-        for="${this.for}"
-      >
+    ];
+  }
+  render() {
+    return html`
+      <simple-popover id="prompt" auto for="${this.for}">
         <form id="form">
           <simple-fields
             id="formfields"

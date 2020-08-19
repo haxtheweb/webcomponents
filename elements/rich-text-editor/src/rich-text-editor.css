@@ -1,22 +1,27 @@
 :host([hidden]) {
   display: none;
 }
+
 :host {
   display: block;
   min-height: 20px;
   cursor: pointer;
 }
+
 :host([contenteditable="true"]) {
   border: var(--rich-text-editor-border);
   overflow: auto;
 }
+
 :host(.heightmax[contenteditable="true"]) {
   max-height: calc(100vh - 200px);
   overflow-y: scroll;
 }
+
 :host(:empty) {
   border: 1px dashed var(--rich-text-editor-border-color);
 }
+
 :host(:not([contenteditable="true"]):empty):before {
   content: attr(placeholder);
   padding: 0 5px;

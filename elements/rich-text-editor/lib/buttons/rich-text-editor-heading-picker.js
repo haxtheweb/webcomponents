@@ -2,7 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
 /**
  * `rich-text-editor-heading-picker`
@@ -11,7 +11,6 @@ import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
  * @element rich-text-editor-heading-picker
  */
 class RichTextEditorHeadingPicker extends RichTextEditorPicker {
-
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -56,20 +55,20 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
     };
   }
 
-  get block(){
+  get block() {
     return true;
   }
-  _setOptions(){
+  _setOptions() {
     this.options = [
       [{ alt: this.label, value: null }],
-      ...this.blocks.map(block=>[{ alt: block.label, value: block.tag}])
-    ]; 
+      ...this.blocks.map(block => [{ alt: block.label, value: block.tag }])
+    ];
   }
 
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (["label","blocks"].includes(propName)) this._setOptions();
+    changedProperties.forEach((oldValue, propName) => {
+      if (["label", "blocks"].includes(propName)) this._setOptions();
     });
   }
 }

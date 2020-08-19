@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "./lib/rich-text-editor-styles.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
@@ -33,7 +33,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   static get tag() {
     return "rich-text-editor";
   }
-  constructor(){
+  constructor() {
     super();
     this.placeholder = "Click to edit";
     this.toolbar = "";
