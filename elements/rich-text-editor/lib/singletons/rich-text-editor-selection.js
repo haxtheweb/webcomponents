@@ -104,8 +104,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   expandSelection(searchTag, wrapTag) {
     console.log("expandSelection", searchTag, wrapTag);
     return (
-      this.selectAncestor(!!searchTag) ||
-      this.wrap(!!wrapTag ? document.createElement(wrapTag) : null)
+      this.selectAncestor(searchTag) ||
+      this.wrap(!!wrapTag ? document.createElement(wrapTag) : undefined)
     );
   }
 
@@ -152,7 +152,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} the selected node
    */
   selectAncestor(tagName) {
-    console.log("selectAncestor", tagName, wrapTag);
+    console.log("selectAncestor", tagName);
     let wrapper,
       getMatchingTag = ancestor => {
         if (
@@ -217,7 +217,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} the range which oncludes the wrapper and wrapped contents
    */
   wrap(wrapper) {
-    wrapper = wrapper || document.createElement("span");
+    console.log('wrap',wrapper);
+    wrapper = !!wrapper || document.createElement("span");
     this.range.surroundContents(wrapper);
     return wrapper;
   }

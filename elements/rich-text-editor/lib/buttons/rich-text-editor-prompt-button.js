@@ -35,7 +35,8 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
          * fields for the prompt popover.
          */
         fields: {
-          type: Array
+          type: Array,
+          reflect: true
         },
         /**
          * is the element a custom inline widget element?
@@ -60,7 +61,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
         /**
          * fields for the prompt popover.
          */
-        __fields: {
+        __promptFields: {
           type: Array
         },
         /**
@@ -110,7 +111,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
         "": null,
         id: null
       };
-      this.__fields = [];
       this.__prompt = window.RichTextEditorPrompt.requestAvailability();
       this.__selection = window.RichTextEditorSelection.requestAvailability();
     }
@@ -225,8 +225,9 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     }
 
     selectRange() {
+      console.log("selectRange", this.tag);
       this.__selectionContents = this.__selection.expandSelection(this.tag);
-      console.log("selectRange", this.__selectionContents);
+      console.log("selectRange 2", this.__selectionContents);
     }
 
     /**
@@ -245,25 +246,27 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     updatePrompt() {
       this.__oldValue = this.value;
       let el = this.__selectionContents;
-      this.__fields = [];
+      this.__promptFields = [];
       el.normalize();
       el.innerHTML.trim();
-      this.__fields = this.fields.map(field => this._createField(el, field));
+      console.log('updatePrompt',this.fields);
+      this.__promptFields = this.fields.map(field => this._getFieldVal(el, field));
     }
 
-    _createField(el, field) {
-      if (field.property && field.property !== "") {
+    _getFieldVal(el, field) {
+      console.log('_createField',el,field);
+      if (!!field.property && field.property !== "") {
         this.value[field.property] = el
           ? el.getAttribute(field.property)
-          : null;
-      } else if (field.slot && field.slot !== "") {
+          : undefined;
+      } else if (!!field.slot && field.slot !== "") {
         this.value[field.slot] =
           el & el.querySelector(field.slot)
             ? el
                 .querySelector(field.slot)
                 .innerHTML.replace(/[\s\n\t]+/g, " ")
                 .trim()
-            : null;
+            : undefined;
       } else {
         this.value[""] = el
           ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()

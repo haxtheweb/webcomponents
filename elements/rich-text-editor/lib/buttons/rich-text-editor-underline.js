@@ -36,16 +36,10 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     super();
     this.fields = [
       {
-        property: "",
-        title: "Text",
-        description: "The link text",
-        inputMethod: "textfield"
-      },
-      {
         property: "confirm",
-        title: "Underline despite usability issues",
+        title: "Underline (not recommended)",
         description:
-          "Underlines can be confused with links on the web. To prevent usability issues, we recommend using italics instead.",
+          "Underlines can be confused with links. Use italics instead.",
         inputMethod: "boolean"
       }
     ];
@@ -58,6 +52,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.value = {
       tag: false
     };
+    console.log(this.fields,this.value);
   }
 
   /**
@@ -74,6 +69,14 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
       this.getCleanValue("confirm") &&
       this.getCleanValue("confirm")
     );
+  }
+
+  /**
+   * updates prompt fields with selected range data
+   */
+  updatePrompt() {
+    console.log('updatePrompt',this.fields);
+    super.updatePrompt();
   }
 }
 window.customElements.define(

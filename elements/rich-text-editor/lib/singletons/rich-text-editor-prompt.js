@@ -224,8 +224,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   setTarget(button) {
     this.clearTarget();
-    this.set("fields", button.__fields);
-    this.set("value", button.value);
+    this.fields = button.__fields;
+    this.value = button.value;
     this.__button = button;
     if (button.__selection) this.for = button.__selection.getAttribute("id");
   }
@@ -236,10 +236,10 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   clearTarget() {
     if (!this.__button) return;
-    this.for = null;
-    this.set("fields", null);
-    this.set("value", null);
-    this.__button = null;
+    this.for = undefined;
+    this.fields = undefined;
+    this.value = undefined;
+    this.__button = undefined;
   }
   /**
    * Handles cancel button
