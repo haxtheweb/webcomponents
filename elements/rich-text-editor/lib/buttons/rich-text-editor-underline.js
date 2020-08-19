@@ -52,7 +52,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.value = {
       tag: false
     };
-    console.log(this.fields,this.value);
+    console.log(this.fields, this.value);
   }
 
   /**
@@ -75,7 +75,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    * updates prompt fields with selected range data
    */
   updatePrompt() {
-    console.log('updatePrompt',this.fields);
+    console.log("updatePrompt", this.fields);
     super.updatePrompt();
   }
 }

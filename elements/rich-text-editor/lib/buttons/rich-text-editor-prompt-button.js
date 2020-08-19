@@ -249,12 +249,14 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       this.__promptFields = [];
       el.normalize();
       el.innerHTML.trim();
-      console.log('updatePrompt',this.fields);
-      this.__promptFields = this.fields.map(field => this._getFieldVal(el, field));
+      console.log("updatePrompt", this.fields);
+      this.__promptFields = this.fields.map(field =>
+        this._getFieldVal(el, field)
+      );
     }
 
     _getFieldVal(el, field) {
-      console.log('_createField',el,field);
+      console.log("_createField", el, field);
       if (!!field.property && field.property !== "") {
         this.value[field.property] = el
           ? el.getAttribute(field.property)

@@ -217,7 +217,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} the range which oncludes the wrapper and wrapped contents
    */
   wrap(wrapper) {
-    console.log('wrap',wrapper);
+    console.log("wrap", wrapper);
     wrapper = !!wrapper || document.createElement("span");
     this.range.surroundContents(wrapper);
     return wrapper;
