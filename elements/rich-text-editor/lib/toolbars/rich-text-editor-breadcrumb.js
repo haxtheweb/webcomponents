@@ -25,7 +25,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
     return [
       ...super.styles,
       css`
-        :host #button {
+        #button {
           font-family: monospace;
           display: inline-block;
           text-align: center;
@@ -54,7 +54,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
         tabindex="0"
         part="button"
       >
-        [[tag]]
+        ${this.tag}
       </paper-button>
     `;
   }

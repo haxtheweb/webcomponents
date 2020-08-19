@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
+import { RichTextEditorToolbarBehaviors } from "./rich-text-editor-toolbar.js";
 import "./rich-text-editor-breadcrumbs.js";
 /**
  * `rich-text-editor-toolbar-full`
@@ -14,7 +13,7 @@ import "./rich-text-editor-breadcrumbs.js";
  * @demo ../demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb
  */
-class RichTextEditorToolbarFull extends RichTextEditorToolbar {
+class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -23,14 +22,15 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
   }
 
   static get styles() {
-    return [...this.baseStyles, ...this.stickyStyles];
+    return [
+      ...super.baseStyles, 
+      ...super.stickyStyles
+    ];
   }
 
   // render function for template
-  static get template() {
-    return html`
-      ${this.toolbarTemplate}
-    `;
+  render() {
+    return super.render();
   }
 
   // properties available to the custom element for data binding

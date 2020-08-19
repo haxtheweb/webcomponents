@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
-import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
+import { RichTextEditorToolbarBehaviors } from "./rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `rich-text-editor-toolbar-mini`
@@ -13,7 +12,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * @element rich-text-editor-toolbar-mini
  * @demo ./demo/mini.html mini floating toolbar
  */
-class RichTextEditorToolbarMini extends RichTextEditorToolbar {
+class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,23 +20,22 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
     return "rich-text-editor-toolbar-mini";
   }
 
-  // render function for styles
-  static get miniStyles() {
+  static get styles() {
+    console.log(this.baseStyles);
+    console.log(super.baseStyles);
     return [
+      ...super.baseStyles,
       css`
         :host #floating {
           display: flex;
         }
-      `
+      ` 
     ];
   }
 
-  static get styles() {
-    return [...this.baseStyles, ...this.miniStyles];
-  }
-
-  static get miniTemplate() {
-    html`
+  // properties available to the custom element for data binding
+  render() {
+    return html`
       <absolute-position-behavior
         auto
         id="floating"
@@ -45,23 +43,9 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
         for$="[[controls]]"
         position="top"
       >
-        ${this.toolbarTemplate}
+        ${super.render()}
       </absolute-position-behavior>
     `;
-  }
-
-  // render function for template
-  static get template() {
-    return html`
-      ${this.miniTemplate}
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      ...super.properties
-    };
   }
 
   constructor() {
@@ -164,7 +148,6 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
     });
   }
 }
-
 export { RichTextEditorToolbarMini };
 
 window.customElements.define(

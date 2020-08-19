@@ -3,20 +3,23 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
-import { RichTextEditorButton } from "./rich-text-editor-button.js";
+import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-more-button`
  * `a more button to toggle collapsed buttons in the rich text editor`
  *
  * @element rich-text-editor-more-button
  */
-class RichTextEditorMoreButton extends RichTextEditorButton {
+class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-more-button";
+  }
+
+  render(){
+    return super.render();
   }
 
   constructor() {
@@ -26,6 +29,7 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
     this.label = "More buttons";
     this.labelToggled = "Fewer buttons";
   }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {

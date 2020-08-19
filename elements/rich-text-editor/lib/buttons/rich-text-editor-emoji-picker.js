@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
+import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `rich-text-editor-emoji-picker`
@@ -11,13 +11,18 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  *
  * @element rich-text-editor-emoji-picker
  */
-class RichTextEditorEmojiPicker extends RichTextEditorPicker {
+class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    *
    */
   static get tag() {
     return "rich-text-editor-emoji-picker";
+  }
+
+  // render function for template
+  render() {
+    return super.render();
   }
 
   // properties available to the custom element for data binding

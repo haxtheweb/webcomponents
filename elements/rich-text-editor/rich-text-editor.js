@@ -28,7 +28,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   //styles function
   static get styles() {
     return  [
-      RichTextEditorStyles.styles,
+      ...super.styles,
       css`
 :host([hidden]) {
   display: none;

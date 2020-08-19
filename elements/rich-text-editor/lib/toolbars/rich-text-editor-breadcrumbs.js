@@ -24,10 +24,6 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
     return [
       ...super.styles,
       css`
-        :host([sticky]) {
-          position: sticky;
-          bottom: 0;
-        }
         :host {
           display: block;
           background-color: var(--rich-text-editor-bg);
@@ -35,7 +31,11 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
           border: var(--rich-text-editor-border);
           padding: 3px 10px;
         }
-        :host .selectednode {
+        :host([sticky]) {
+          position: sticky;
+          bottom: 0;
+        }
+        .selectednode {
           background-color: var(--rich-text-editor-bg);
         }
       `
@@ -44,14 +44,15 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
   render() {
     return html`
       ${this.label}
-      ${this.ancestorNodes.map(
-        crumb => html`
+      ${!this.ancestorNodes ? '' : (this.ancestorNodes || []).map(
+        (crumb,i) => html`
           <rich-text-editor-breadcrumb
             controls="${this.controls}"
             tag="${crumb.tag}"
-            target="${crumb.target}"
+            .target="${crumb.target}"
           >
           </rich-text-editor-breadcrumb>
+          ${i + 1 >= this.ancestorNodes.length ? '' : html`<span class="divider"> &gt; </span>`}
         `
       )}
     `;
@@ -112,10 +113,10 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
       ancestor = false,
       parent = false,
       controls = this.controls;
-    if (this.range) ancestor = this.range.commonAncestorContainer;
-    if (ancestor) parent = ancestor;
+    if (!!this.range) ancestor = this.range.commonAncestorContainer;
+    if (!!ancestor) parent = ancestor;
     this.hidden = !ancestor;
-    while (parent && parent.nodeName !== "RICH-TEXT-EDITOR") {
+    while (!!parent && parent.nodeName !== "RICH-TEXT-EDITOR") {
       nodes.unshift({
         tag: parent.nodeName.toLowerCase(),
         target: parent

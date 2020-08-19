@@ -3,19 +3,24 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
+import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
 /**
  * `rich-text-editor-heading-picker`
  * `a heading picker for the rich-text-editor`
  *
  * @element rich-text-editor-heading-picker
  */
-class RichTextEditorHeadingPicker extends RichTextEditorPicker {
+class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-heading-picker";
+  }
+
+  // render function for template
+  render() {
+    return super.render();
   }
 
   constructor() {

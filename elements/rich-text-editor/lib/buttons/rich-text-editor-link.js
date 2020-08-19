@@ -3,23 +3,24 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
-import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
-import "../singletons/rich-text-editor-prompt.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-link`
  * `a button for rich text editor (custom buttons can extend this)`
  *
  * @element rich-text-editor-link
  */
-class RichTextEditorLink extends RichTextEditorPromptButton {
+class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-link";
+  }
+
+  // render function for template
+  render() {
+    return super.render();
   }
 
   // properties available to the custom element for data binding
