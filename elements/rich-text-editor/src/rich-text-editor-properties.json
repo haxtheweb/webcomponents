@@ -4,8 +4,7 @@
    */
   "id": {
     "name": "id",
-    "type": String,
-    "value": ""
+    "type": "String"
   },
 
   /**
@@ -13,9 +12,8 @@
    */
   "placeholder": {
     "name": "placeholder",
-    "type": String,
-    "reflectToAttribute": true,
-    "value": "Click to edit"
+    "type": "String",
+    "reflect": true
   },
 
   /**
@@ -23,8 +21,7 @@
    */
   "toolbar": {
     "name": "toolbar",
-    "type": String,
-    "value": ""
+    "type": "String"
   },
 
   /**
@@ -35,7 +32,6 @@
    */
   "type": {
     "name": "type",
-    "type": String,
-    "value": "rich-text-editor-toolbar"
+    "type": "String"
   }
 }

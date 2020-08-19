@@ -2,22 +2,23 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-button-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
-import "../singletons/rich-text-editor-prompt.js";
+import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-image`
  * `an inline image button for rich text editor`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-image
  */
 class RichTextEditorImage extends RichTextEditorPromptButton {
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-image";
+  }
   constructor() {
     super();
     this.fields = [
@@ -43,14 +44,7 @@ class RichTextEditorImage extends RichTextEditorPromptButton {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-  static get tag() {
-    return "rich-text-editor-image";
+    return { ...super.properties };
   }
 
   /**

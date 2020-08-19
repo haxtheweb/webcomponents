@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "./lib/rich-text-editor-styles.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./lib/rich-text-editor-styles.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
@@ -23,7 +23,7 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration
  */
-class RichTextEditor extends PolymerElement {
+class RichTextEditor extends RichTextEditorStyles(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -33,6 +33,13 @@ class RichTextEditor extends PolymerElement {
   static get tag() {
     return "rich-text-editor";
   }
+  constructor(){
+    super();
+    this.placeholder = "Click to edit";
+    this.toolbar = "";
+    this.type = "rich-text-editor-toolbar";
+    this.id = "";
+  }
   /**
    * life cycle, element is afixed to the DOM
    * @returns {void}
@@ -40,15 +47,8 @@ class RichTextEditor extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     if (!this.id) this.id = this._generateUUID();
-    window.RichTextEditorStyleManager.requestAvailability();
-  }
-  /**
-   * ready
-   * @returns {void}
-   */
-  ready() {
-    super.ready();
     this.getEditor();
+    window.RichTextEditorStyleManager.requestAvailability();
   }
   /**
    * connects the mini-toolbar to a mini editor

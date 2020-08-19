@@ -2,62 +2,15 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "../rich-text-editor-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 /**
  * `rich-text-editor-selection`
  * `a button for rich text editor (custom buttons can extend this)`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-selection
  */
-class RichTextEditorSelection extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style include="rich-text-editor-styles">
-        :host {
-          background-color: var(--rich-text-editor-selection-bg);
-          @apply --rich-text-editor-content-selection;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <slot></slot>
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      editor: {
-        type: Object,
-        value: null
-      },
-      hidden: {
-        type: Boolean,
-        value: true,
-        reflectToAttribute: true
-      },
-      observer: {
-        type: Object,
-        value: null
-      },
-      range: {
-        type: Object,
-        value: null,
-        observer: "_updateToolbar"
-      },
-      toolbar: {
-        type: Object,
-        value: null
-      }
-    };
-  }
+class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -66,38 +19,78 @@ class RichTextEditorSelection extends PolymerElement {
     return "rich-text-editor-selection";
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
+  static get styles() {
+      return [
+        ...super.styles,
+        css`
+        :host {
+          background-color: var(--rich-text-editor-selection-bg);
+        }
+        :host([hidden]) {
+          display: none;
+        }
+      `
+    ];
+  }
+  render() {
+    return html` <slot></slot>`;
+  }
+  
+  static get properties() {
+    return {
+      editor: {
+        type: Object
+      },
+      hidden: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hidden"
+      },
+      observer: {
+        type: Object
+      },
+      range: {
+        type: Object
+      },
+      toolbar: {
+        type: Object
+      }
+    };
+  }
+  constructor(){
+    super();
+    this.hidden = true;
     document.addEventListener("selectionchange", e => {
-      root.range = root.getRange();
+      this.range = this.getRange();
     });
     document.addEventListener("select-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
     document.addEventListener("deselect-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
     this.setAttribute("id", this._generateUUID());
   }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "range") this._updateToolbar(); 
+    });
+  }
 
   /**
    * life cycle, element is disconnected
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    let root = this;
     document.removeEventListener("selectionchange", e => {
-      root.range = root.getRange();
+      this.range = root.getRange();
     });
     document.removeEventListener("select-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
     document.removeEventListener("deselect-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
   }
 
@@ -287,9 +280,7 @@ window.RichTextEditorSelection.instance = null;
  */
 window.RichTextEditorSelection.requestAvailability = function() {
   if (window.RichTextEditorSelection.instance == null) {
-    window.RichTextEditorSelection.instance = document.createElement(
-      "rich-text-editor-selection"
-    );
+    window.RichTextEditorSelection.instance = new RichTextEditorSelection();
     document.body.appendChild(window.RichTextEditorSelection.instance);
   }
   return window.RichTextEditorSelection.instance;

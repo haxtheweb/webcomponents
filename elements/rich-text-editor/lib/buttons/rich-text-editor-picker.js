@@ -2,7 +2,8 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
@@ -10,21 +11,21 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * `rich-text-editor-picker`
  * `a picker for rich text editor (custom buttons can extend this)`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-picker
  */
 class RichTextEditorPicker extends RichTextEditorButton {
-  constructor() {
-    super();
-    this.label = "Insert link";
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-picker";
   }
-  // render function
-  static get template() {
-    return html`
-      <style include="rich-text-editor-button-styles">
+
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           margin: 0 var(--rich-text-editor-button-margin);
         }
@@ -43,87 +44,87 @@ class RichTextEditorPicker extends RichTextEditorButton {
           --simple-picker-option-size: 18px;
           --simple-picker-options-border-width: 1px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <simple-picker
         id="button"
-        allow-null$="[[allowNull]]"
-        class="rtebutton"
-        disabled$="[[super.disabled]]"
-        controls$="[[super.controls]]"
-        on-change="_pickerChange"
+        ?allow-null="${this.allowNull}"
+        class="rtebutton ${this.toggled ? 'toggled' : ''}"
+        ?disabled="${this.disabled}"
+        controls="${super.controls}"
+        @change="${this._pickerChange}"
         tabindex="0"
-        title-as-html$="[[titleAsHtml]]"
-        options="[[options]]"
-        value="{{value}}"
+        ?title-as-html="${this.titleAsHtml}"
+        .options="${this.options}"
+        .value="${this.value}"
       >
-        <span id="label" class$="[[super.labelStyle]]">[[__label]]</span>
+        <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
       </simple-picker>
-      <simple-tooltip id="tooltip" for="button">[[__label]]</simple-tooltip>
+      <simple-tooltip id="tooltip" for="button">${this.currentLabel}</simple-tooltip>
     `;
   }
-
-  // properties available to the custom element for data binding
+  
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Allow a null option to be selected?
        */
       allowNull: {
-        name: "allowNull",
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * The command used for document.execCommand.
        */
       command: {
-        name: "command",
-        type: String,
-        value: "insertHTML"
+        type: String
       },
       /**
        * Optional icon for null value
        */
       icon: {
-        name: "icon",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The command used for document.execCommand.
        */
       options: {
-        name: "options",
-        type: Array,
-        value: [],
-        notify: true
+        type: Array
       },
 
       /**
        * Renders html as title. (Good for titles with HTML in them.)
        */
       titleAsHtml: {
-        name: "titleAsHtml",
-        type: Boolean,
-        value: false
+        type: Boolean
       },
 
       /**
        * The value
        */
       value: {
-        name: "value",
-        type: Object,
-        value: null
+        type: Object
       }
     };
   }
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-  static get tag() {
-    return "rich-text-editor-picker";
+  constructor() {
+    super();
+    this.allowNull = false;
+    this.command = "insertHTML";
+    this.label = "Insert link";
+    this.options = [];
+    this.titleAsHtml = false;
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "options") this._optionsChanged(); 
+    });
   }
 
   /**
@@ -133,25 +134,13 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * @returns {boolean} whether the button is toggled
    *
    */
-  _isToggled(range) {
-    //get all the possible block selectors from the options
-    let selectors = this.options
-        ? []
-            .concat(...this.options)
-            //flatten th eoptions array
-            .map(option => option.value)
-            //get all the values
-            .filter(
-              //remove the empty values
-              option => option !== null && option !== ""
-              //stringify the list
-            )
-            .join(",")
+  get toggled() {
+    let selectors = this.options 
+        ? [...this.options].map(option => option.value).filter(option => !!option && option !== "").join(",") 
         : null,
-      //get the selected range parent
       parent =
-        range !== null && range.commonAncestorContainer
-          ? range.commonAncestorContainer.parentNode
+        this.range !== null && this.range.commonAncestorContainer
+          ? this.range.commonAncestorContainer.parentNode
           : null;
     this.shadowRoot.querySelector("#button").value =
       this.command === "formatBlock" &&
@@ -161,6 +150,17 @@ class RichTextEditorPicker extends RichTextEditorButton {
         ? parent.closest(selectors).tagName.toLowerCase()
         : null;
     return false;
+  }
+
+  _optionsChanged(){
+    this.dispatchEvent(
+      new CustomEvent("options-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+    )
   }
 
   /**

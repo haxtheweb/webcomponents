@@ -2,22 +2,31 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
+import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
+import "../singletons/rich-text-editor-prompt.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-button-styles.js";
-import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
-import "../singletons/rich-text-editor-prompt.js";
 /**
  * `rich-text-editor-link`
  * `a button for rich text editor (custom buttons can extend this)`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-link
  */
 class RichTextEditorLink extends RichTextEditorPromptButton {
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-link";
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return { ...super.properties };
+  }
   constructor() {
     super();
     this.fields = [
@@ -39,18 +48,6 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
       link: null
     };
     this.shortcutKeys = "ctrl+k";
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-  static get tag() {
-    return "rich-text-editor-link";
   }
 
   /**

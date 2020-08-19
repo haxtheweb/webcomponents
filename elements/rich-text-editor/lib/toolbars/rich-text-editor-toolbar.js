@@ -2,10 +2,10 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "../../rich-text-editor.js";
-import "../rich-text-editor-styles.js";
 import "../singletons/rich-text-editor-selection.js";
 import "../buttons/rich-text-editor-button.js";
 import "../buttons/rich-text-editor-more-button.js";
@@ -23,27 +23,33 @@ import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
  * `rich-text-editor-toolbar`
  * `a basic toolbar for the rich text editor`
  *
- * @polymer
+ * @element rich-text-editor-toolbar
  * @demo ./demo/index.html demo
  * @demo ./demo/config.html custom configuration
  */
-class RichTextEditorToolbar extends PolymerElement {
+class RichTextEditorToolbar extends RichTextEditorStyles(LitElement) {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-toolbar";
+  }
+
   // render function for styles
-  static get stickyTemplate() {
-    return html`
-      <style>
+  static get stickyStyles() {
+    return [css`
         :host([sticky]) {
           position: sticky;
           top: 0;
         }
-      </style>
-    `;
+    `];
   }
 
   // render function for styles
-  static get styleTemplate() {
-    return html`
-      <style include="rich-text-editor-styles rich-text-editor-button-styles">
+  static get baseStyles() {
+    return [
+      ...super.styles,
+      css`
         :host([hidden]) {
           display: none;
         }
@@ -59,7 +65,6 @@ class RichTextEditorToolbar extends PolymerElement {
           border: var(--rich-text-editor-border);
           font-size: 12px;
           transition: all 0.5s;
-          /*@apply --rich-text-editor-toolbar;*/
         }
         :host #toolbar[aria-hidden] {
           visibility: hidden;
@@ -72,12 +77,10 @@ class RichTextEditorToolbar extends PolymerElement {
           justify-content: space-evenly;
           align-items: stretch;
           padding: 0 3px;
-          /*@apply --rich-text-editor-toolbar-group;*/
         }
         :host #toolbar .group:not(:last-of-type) {
           margin-right: 3px;
           border-right: var(--rich-text-editor-border);
-          /*@apply --rich-text-editor-toolbar-divider;*/
         }
         :host #toolbar .button {
           display: flex;
@@ -103,8 +106,14 @@ class RichTextEditorToolbar extends PolymerElement {
         :host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
           display: none;
         }
-      </style>
-    `;
+    `];
+  }
+
+  static get styles(){
+    return [
+      ...this.baseStyles,
+      ...this.stickyStyles
+    ]
   }
 
   // render function for toolbar
@@ -113,18 +122,18 @@ class RichTextEditorToolbar extends PolymerElement {
       <div
         id="toolbar"
         aria-live="polite"
-        aria-hidden$="[[!controls]]"
-        collapsed$="[[collapsed]]"
+        aria-hidden="${this.controls ? "false" : "true"}"
+        ?collapsed="${this.collapsed}"
       >
         <rich-text-editor-more-button
           id="morebutton"
           class="button"
           controls="toolbar"
-          icon$="[[moreIcon]]"
-          label$="[[moreLabel]]"
-          show-text-label$="[[moreShowTextLabel]]"
-          label-toggled$="[[moreLabelToggled]]"
-          toggled$="[[!collapsed]]"
+          icon="${this.moreIcon}"
+          label="${this.moreLabel}"
+          ?show-text-label="${this.moreShowTextLabel}"
+          ?label-toggled="${this.moreLabelToggled}"
+          ?toggled="${!this.collapsed}"
           on-click="_toggleMore"
         >
         </rich-text-editor-more-button>
@@ -135,7 +144,7 @@ class RichTextEditorToolbar extends PolymerElement {
   // render function for template
   static get template() {
     return html`
-      ${this.styleTemplate} ${this.stickyTemplate} ${this.toolbarTemplate}
+      ${this.toolbarTemplate}
     `;
   }
 
@@ -143,20 +152,11 @@ class RichTextEditorToolbar extends PolymerElement {
   static get properties() {
     return {
       /**
-       * The editor buttons, as determined by `config`.
-       */
-      buttons: {
-        name: "buttons",
-        type: Array,
-        computed: "_getButtons(config)"
-      },
-      /**
        * The editable content, if edits are canceled.
        */
       canceled: {
         name: "canceled",
-        type: Object,
-        value: true
+        type: Object
       },
       /**
        * Is the toolbar collapsed?
@@ -164,9 +164,8 @@ class RichTextEditorToolbar extends PolymerElement {
       collapsed: {
         name: "collapsed",
         type: Boolean,
-        value: true
+        attribute: "collapsed"
       },
-
       /**
        * Custom configuration of toolbar groups and buttons.
        * (See default value for example using default configuration.)
@@ -174,173 +173,7 @@ class RichTextEditorToolbar extends PolymerElement {
       config: {
         name: "config",
         type: Object,
-        value: [
-          {
-            label: "History",
-            type: "button-group",
-            buttons: [
-              {
-                command: "undo",
-                icon: "undo",
-                label: "Undo",
-                shortcutKeys: "ctrl+z",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "redo",
-                icon: "redo",
-                label: "Redo",
-                shortcutKeys: "ctrl+shift+z",
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            label: "Basic Inline Operations",
-            type: "button-group",
-            buttons: [
-              {
-                label: "Format",
-                type: "rich-text-editor-heading-picker"
-              },
-              {
-                command: "bold",
-                icon: "editor:format-bold",
-                label: "Bold",
-                shortcutKeys: "ctrl+b",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "italic",
-                icon: "editor:format-italic",
-                label: "Italics",
-                shortcutKeys: "ctrl+i",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "removeFormat",
-                icon: "editor:format-clear",
-                label: "Erase Format",
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            label: "Links",
-            type: "button-group",
-            buttons: [
-              {
-                icon: "link",
-                label: "Link",
-                shortcutKeys: "ctrl+k",
-                type: "rich-text-editor-link"
-              }
-            ]
-          },
-          {
-            label: "Clipboard Operations",
-            type: "button-group",
-            buttons: [
-              {
-                command: "cut",
-                icon: "content-cut",
-                label: "Cut",
-                shortcutKeys: "ctrl+x",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "copy",
-                icon: "content-copy",
-                label: "Copy",
-                shortcutKeys: "ctrl+c",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "paste",
-                icon: "content-paste",
-                label: "Paste",
-                shortcutKeys: "ctrl+v",
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            collapsedUntil: "md",
-            label: "Subscript and Superscript",
-            type: "button-group",
-            buttons: [
-              {
-                command: "subscript",
-                icon: "mdextra:subscript",
-                label: "Subscript",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "superscript",
-                icon: "mdextra:superscript",
-                label: "Superscript",
-                toggles: true,
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            collapsedUntil: "sm",
-            icon: "editor:functions",
-            label: "Insert Symbol",
-            symbolTypes: ["symbols"],
-            type: "rich-text-editor-symbol-picker"
-          },
-          {
-            collapsedUntil: "sm",
-            label: "Lists and Indents",
-            type: "button-group",
-            buttons: [
-              {
-                command: "insertOrderedList",
-                icon: "editor:format-list-numbered",
-                label: "Ordered List",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "insertUnorderedList",
-                icon: "editor:format-list-bulleted",
-                label: "Unordered List",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                collapsedUntil: "lg",
-                command: "formatBlock",
-                commandVal: "blockquote",
-                label: "Blockquote",
-                icon: "editor:format-quote",
-                shortcutKeys: "ctrl+'",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "indent",
-                icon: "editor:format-indent-increase",
-                event: "text-indent",
-                label: "Increase Indent",
-                shortcutKeys: "ctrl+]",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "outdent",
-                event: "text-outdent",
-                icon: "editor:format-indent-decrease",
-                label: "Decrease Indent",
-                shortcutKeys: "ctrl+[",
-                type: "rich-text-editor-button"
-              }
-            ]
-          }
-        ]
+        attribute: "config"
       },
       /**
        * The `id` of the `rich-text-editor` that the toolbar controls.
@@ -348,7 +181,7 @@ class RichTextEditorToolbar extends PolymerElement {
       controls: {
         name: "controls",
         type: String,
-        value: null
+        attribute: "controls"
       },
       /**
        * The `rich-text-editor` element that uis currently in `contenteditable` mode
@@ -356,7 +189,7 @@ class RichTextEditorToolbar extends PolymerElement {
       editor: {
         name: "editor",
         type: Object,
-        value: null
+        attribute: "editor"
       },
       /**
        * The icon for the more button.
@@ -364,6 +197,7 @@ class RichTextEditorToolbar extends PolymerElement {
       moreIcon: {
         name: "moreIcon",
         type: String,
+        attribute: "more-icon",
         value: "more-vert"
       },
       /**
@@ -372,6 +206,7 @@ class RichTextEditorToolbar extends PolymerElement {
       moreLabel: {
         name: "moreLabel",
         type: String,
+        attribute: "more-label",
         value: "More Buttons"
       },
       /**
@@ -380,6 +215,7 @@ class RichTextEditorToolbar extends PolymerElement {
       moreLabelToggled: {
         name: "moreLabelToggled",
         type: String,
+        attribute: "more-label-toggled",
         value: "Fewer Buttons"
       },
       /**
@@ -388,7 +224,7 @@ class RichTextEditorToolbar extends PolymerElement {
       moreShowTextLabel: {
         name: "moreShowTextLabel",
         type: Boolean,
-        value: false
+        attribute: "more-show-text-label"
       },
       /**
        * The the size of the editor.
@@ -396,16 +232,15 @@ class RichTextEditorToolbar extends PolymerElement {
       responsiveSize: {
         name: "responsiveSize",
         type: String,
-        value: "xs",
-        reflectToAttribute: true
+        attribute: "responsive-size",
+        reflect: true
       },
       /**
        * The current text selected range.
        */
       savedSelection: {
         name: "savedSelection",
-        type: Object,
-        value: null
+        type: Object
       },
 
       /**
@@ -413,9 +248,7 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       range: {
         name: "range",
-        type: Object,
-        value: null,
-        observer: "_rangeChange"
+        type: Object
       },
       /**
        * Should the toolbar stick to the top so that it is always visible?
@@ -423,63 +256,202 @@ class RichTextEditorToolbar extends PolymerElement {
       sticky: {
         name: "sticky",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: "_stickyChanged"
+        attribute: "sticky",
+        reflect: true
       },
       /**
        * Tracks the inline widgets that require selection data
        */
       __inlineWidgets: {
         name: "__inlineWidgets",
-        type: Array,
-        value: []
+        type: Array
       },
-
-      /**
-       * Optional space-sperated list of keyboard shortcuts for the editor
-       * to fire this button, see iron-a11y-keys for more info.
-       * /
-      __a11yKeys: {
-        name: "__a11yKeys",
-        type: Array,
-        computed: "_getA11yKeys(__shortcutKeys,editor)"
-      },
-    
-      /**
-       * Optional space-sperated list of keyboard shortcuts for the editor
-       * to fire this button, see iron-a11y-keys for more info.
-       * /
-      __osKeys: {
-        name: "__osKeys",
-        type: Array,
-        computed: "_getOsKeys(__shortcutKeys)"
-      },
-
       /**
        * Optional space-sperated list of keyboard shortcuts for the editor
        * to fire this button, see iron-a11y-keys for more info.
        */
       __shortcutKeys: {
         name: "__shortcutKeys",
-        type: Array,
-        value: []
+        type: Array
       }
     };
   }
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-  static get tag() {
-    return "rich-text-editor-toolbar";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   * @returns {void}
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
+  constructor(){
+    super();
+    this.canceled = true;
+    this.collapsed = true;
+    this.config = [
+      {
+        label: "History",
+        type: "button-group",
+        buttons: [
+          {
+            command: "undo",
+            icon: "undo",
+            label: "Undo",
+            shortcutKeys: "ctrl+z",
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "redo",
+            icon: "redo",
+            label: "Redo",
+            shortcutKeys: "ctrl+shift+z",
+            type: "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        label: "Basic Inline Operations",
+        type: "button-group",
+        buttons: [
+          {
+            label: "Format",
+            type: "rich-text-editor-heading-picker"
+          },
+          {
+            command: "bold",
+            icon: "editor:format-bold",
+            label: "Bold",
+            shortcutKeys: "ctrl+b",
+            toggles: true,
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "italic",
+            icon: "editor:format-italic",
+            label: "Italics",
+            shortcutKeys: "ctrl+i",
+            toggles: true,
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "removeFormat",
+            icon: "editor:format-clear",
+            label: "Erase Format",
+            type: "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        label: "Links",
+        type: "button-group",
+        buttons: [
+          {
+            icon: "link",
+            label: "Link",
+            shortcutKeys: "ctrl+k",
+            type: "rich-text-editor-link"
+          }
+        ]
+      },
+      {
+        label: "Clipboard Operations",
+        type: "button-group",
+        buttons: [
+          {
+            command: "cut",
+            icon: "content-cut",
+            label: "Cut",
+            shortcutKeys: "ctrl+x",
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "copy",
+            icon: "content-copy",
+            label: "Copy",
+            shortcutKeys: "ctrl+c",
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "paste",
+            icon: "content-paste",
+            label: "Paste",
+            shortcutKeys: "ctrl+v",
+            type: "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        collapsedUntil: "md",
+        label: "Subscript and Superscript",
+        type: "button-group",
+        buttons: [
+          {
+            command: "subscript",
+            icon: "mdextra:subscript",
+            label: "Subscript",
+            toggles: true,
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "superscript",
+            icon: "mdextra:superscript",
+            label: "Superscript",
+            toggles: true,
+            type: "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        collapsedUntil: "sm",
+        icon: "editor:functions",
+        label: "Insert Symbol",
+        symbolTypes: ["symbols"],
+        type: "rich-text-editor-symbol-picker"
+      },
+      {
+        collapsedUntil: "sm",
+        label: "Lists and Indents",
+        type: "button-group",
+        buttons: [
+          {
+            command: "insertOrderedList",
+            icon: "editor:format-list-numbered",
+            label: "Ordered List",
+            toggles: true,
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "insertUnorderedList",
+            icon: "editor:format-list-bulleted",
+            label: "Unordered List",
+            toggles: true,
+            type: "rich-text-editor-button"
+          },
+          {
+            collapsedUntil: "lg",
+            command: "formatBlock",
+            commandVal: "blockquote",
+            label: "Blockquote",
+            icon: "editor:format-quote",
+            shortcutKeys: "ctrl+'",
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "indent",
+            icon: "editor:format-indent-increase",
+            event: "text-indent",
+            label: "Increase Indent",
+            shortcutKeys: "ctrl+]",
+            type: "rich-text-editor-button"
+          },
+          {
+            command: "outdent",
+            event: "text-outdent",
+            icon: "editor:format-indent-decrease",
+            label: "Decrease Indent",
+            shortcutKeys: "ctrl+[",
+            type: "rich-text-editor-button"
+          }
+        ]
+      }
+    ];
+    this.moreShowTextLabel = false;
+    this.responsiveSize = "xs";
+    this.sticky = false;
+    this.__inlineWidgets = [];
+    this.__shortcutKeys = [];
     this.__clipboard = document.createElement("textarea");
     this.__clipboard.setAttribute("aria-hidden", true);
     this.__clipboard.style.position = "absolute";
@@ -488,22 +460,75 @@ class RichTextEditorToolbar extends PolymerElement {
     this.__clipboard.style.width = "0px";
     this.__clipboard.style.height = "0px";
     document.body.appendChild(this.__clipboard);
-    window.addEventListener("paste", root._handlePaste.bind(root));
+    window.addEventListener("paste", this._handlePaste.bind(this));
     if (navigator.clipboard) {
-      this.addEventListener("paste-button", root._handlePasteButton.bind(root));
+      this.addEventListener("paste-button", this._handlePasteButton);
     }
-    this.config = this.config;
     window.RichTextEditorSelection.requestAvailability();
     window.ResponsiveUtility.requestAvailability();
-    window.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
-          element: root,
+          element: this,
           attribute: "responsive-size",
           relativeToParent: true
         }
       })
     );
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "sticky") this._stickyChanged(this.sticky,oldValue); 
+      if (propName === "range") this._rangeChange(); 
+    });
+  }
+
+  /**
+   * Gets editor buttons array, as determined by `config`.
+   * @readonly
+   */
+  get buttons() {
+    console.log(this,this.shadowRoot);
+    if(this.shadowRoot){
+      let toolbar = this.shadowRoot.querySelector("#toolbar"),
+        more = this.shadowRoot.querySelector("#morebutton"),
+        max = 0,
+        sizes = ["xs", "sm", "md", "lg", "xl"],
+        temp = [];
+      toolbar.innerHTML = "";
+      this.set("__shortcutKeys", []);
+      this.config.forEach(item => {
+        if (item.type === "button-group") {
+          let group = document.createElement("div");
+          group.setAttribute("class", "group");
+          if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
+            group.setAttribute("collapsed-until", item.collapsedUntil);
+          max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+          item.buttons.forEach(button => {
+            max = Math.max(max, sizes.indexOf(button.collapsedUntil));
+            if (navigator.clipboard || button.command !== "paste")
+              temp.push(this._addButton(button, group)); //firefox doesn't allow for clipboard button
+          });
+          toolbar.appendChild(group);
+        } else {
+          max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+          if (navigator.clipboard || item.command !== "paste")
+            temp.push(this._addButton(item, toolbar)); //firefox doesn't allow for clipboard button
+        }
+        toolbar.appendChild(more);
+        more.collapseMax = sizes[max];
+      });
+      return temp;
+    }
+    return [];
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   * @returns {void}
+   */
+  connectedCallback() {
+    super.connectedCallback();
   }
 
   /**
@@ -512,16 +537,15 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    let root = this;
     //unbind the the toolbar to the rich-text-editor-selection
-    root.dispatchEvent(
+    this.dispatchEvent(
       new CustomEvent("deselect-rich-text-editor-editor", {
         bubbles: true,
         cancelable: true,
         composed: true,
         detail: {
-          toolbar: root,
-          editor: root.editor
+          toolbar: this,
+          editor: this.editor
         }
       })
     );
@@ -534,22 +558,21 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {void}
    */
   addEditableRegion(editor) {
-    let root = this;
     editor.addEventListener("mousedown", e => {
-      root.editTarget(editor);
+      this.editTarget(editor).bind(this);
     });
     editor.addEventListener("focus", e => {
-      root.editTarget(editor);
+      this.editTarget(editor).bind(this);
     });
     editor.addEventListener("keydown", e => {
-      root._handleShortcutKeys(editor, e);
+      this._handleShortcutKeys(editor, e).bind(this);
     });
     editor.addEventListener("blur", e => {
       if (
         e.relatedTarget === null ||
         !e.relatedTarget.startsWith === "rich-text-editor"
       )
-        root.editTarget(null);
+        this.editTarget(null).bind(this);
     });
   }
 
@@ -568,38 +591,36 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {void}
    */
   editTarget(editor) {
-    let root = this;
-
-    if (root.editor !== editor) {
+    if (this.editor !== editor) {
       //save changes to previous editor
-      if (root.editor !== null) {
-        root.editor.contentEditable = false;
-        root.editor = null;
+      if (this.editor !== null) {
+        this.editor.contentEditable = false;
+        this.editor = null;
       }
       //bind the the toolbar to the rich-text-editor-selection
-      root.dispatchEvent(
+      this.dispatchEvent(
         new CustomEvent("select-rich-text-editor-editor", {
           bubbles: true,
           cancelable: true,
           composed: true,
           detail: {
-            toolbar: root,
-            editor: root.editor
+            toolbar: this,
+            editor: this.editor
           }
         })
       );
-      root.editor = editor;
+      this.editor = editor;
       if (editor) {
-        editor.parentNode.insertBefore(root, editor);
-        root.canceled = editor.innerHTML;
-        root.editor.contentEditable = true;
-        root.controls = editor.getAttribute("id");
+        editor.parentNode.insertBefore(this, editor);
+        this.canceled = editor.innerHTML;
+        this.editor.contentEditable = true;
+        this.controls = editor.getAttribute("id");
       } else {
-        root.controls = null;
+        this.controls = null;
       }
-      root.buttons.forEach(button => {
+      this.buttons.forEach(button => {
         button.target = editor;
-        button.controls = root.controls;
+        button.controls = this.controls;
       });
     }
   }
@@ -638,11 +659,10 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {void}
    */
   makeEditableRegion(editor) {
-    let root = this,
-      content = document.createElement("rich-text-editor");
+    let content = document.createElement("rich-text-editor");
     editor.parentNode.insertBefore(content, editor);
     content.appendChild(editor);
-    root.addEditableRegion(content);
+    this.addEditableRegion(content);
   }
 
   /**
@@ -680,26 +700,25 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {void}
    */
   removeEditableRegion(editor) {
-    let root = this;
     editor.removeEventListener("mouseout", e => {
-      root.getUpdatedSelection();
+      this.getUpdatedSelection().bind(this);
     });
     editor.removeEventListener("focus", e => {
-      root.editTarget(editor);
+      this.editTarget(editor).bind(this);
     });
     editor.removeEventListener("mousedown", e => {
-      root.editTarget(editor);
+      this.editTarget(editor).bind(this);
     });
     editor.removeEventListener("keydown", e => {
-      root._handleShortcutKeys(editor, e);
+      this._handleShortcutKeys(editor, e).bind(this);
     });
     editor.removeEventListener("blur", e => {
       if (
         e.relatedTarget === null ||
         !e.relatedTarget.startsWith === "rich-text-editor"
       )
-        root.editTarget(null);
-      root.getUpdatedSelection();
+        this.editTarget(null).bind(this);
+      this.getUpdatedSelection().bind(this);
     });
   }
 
@@ -711,8 +730,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {object} the button
    */
   _addButton(child, parent) {
-    let root = this,
-      button = document.createElement(child.type),
+    let button = document.createElement(child.type),
       keys = button.shortcutKeys
         ? button.shortcutKeys.replace(/ctrl\+[xcv]/g, "")
         : "";
@@ -725,59 +743,16 @@ class RichTextEditorToolbar extends PolymerElement {
     }
     button.setAttribute("class", "button");
     button.addEventListener("deselect", e => {
-      if (root.range && root.range.collapse) root.range.collapse(false);
+      if (this.range && this.range.collapse) this.range.collapse(false);
     });
 
-    if (button.inlineWidget) root.push("__inlineWidgets", button.tag);
+    if (button.inlineWidget) this.push("__inlineWidgets", button.tag);
     parent.appendChild(button);
     return button;
   }
 
   _handleKeyboardShortcuts(e) {
     console.log("_handleKeyboardShortcuts", e);
-  }
-
-  /**
-   * Gets the groups array for the dom-repeat.
-   *
-   * @param {object} config the toolbar buttons config object
-   * @returns {array} the buttons array
-   */
-  _getButtons(config) {
-    console.log(this,this.shadowRoot);
-    if(this.shadowRoot){
-      let root = this,
-        toolbar = root.shadowRoot.querySelector("#toolbar"),
-        more = this.shadowRoot.querySelector("#morebutton"),
-        max = 0,
-        sizes = ["xs", "sm", "md", "lg", "xl"],
-        temp = [];
-      toolbar.innerHTML = "";
-      this.set("__shortcutKeys", []);
-      config.forEach(item => {
-        if (item.type === "button-group") {
-          let group = document.createElement("div");
-          group.setAttribute("class", "group");
-          if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
-            group.setAttribute("collapsed-until", item.collapsedUntil);
-          max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-          item.buttons.forEach(button => {
-            max = Math.max(max, sizes.indexOf(button.collapsedUntil));
-            if (navigator.clipboard || button.command !== "paste")
-              temp.push(root._addButton(button, group)); //firefox doesn't allow for clipboard button
-          });
-          toolbar.appendChild(group);
-        } else {
-          max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-          if (navigator.clipboard || item.command !== "paste")
-            temp.push(root._addButton(item, toolbar)); //firefox doesn't allow for clipboard button
-        }
-        toolbar.appendChild(more);
-        more.collapseMax = sizes[max];
-      });
-      return temp;
-    }
-    return [];
   }
 
   /**
@@ -855,11 +830,10 @@ class RichTextEditorToolbar extends PolymerElement {
    * Gets the updated selected range.
    * @returns {void}
    */
-  _rangeChange(e) {
-    let root = this;
-    root.buttons.forEach(button => {
+  _rangeChange() {
+    this.buttons.forEach(button => {
       button.range = null;
-      button.range = root.range;
+      button.range = this.range;
     });
   }
 

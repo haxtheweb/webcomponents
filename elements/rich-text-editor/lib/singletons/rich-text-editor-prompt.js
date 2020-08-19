@@ -2,26 +2,23 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "../buttons/rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-prompt`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
-  static get template() {
-    return html`
-      <style include="rich-text-editor-styles rich-text-editor-button-styles">
+class RichTextEditorPrompt extends RichTextEditorButtonStyles(RichTextEditorStyles(LitElement)) {
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           --paper-input-container-focus-color: var(
             --rich-text-editor-focus-color,
@@ -93,30 +90,33 @@ class RichTextEditorPrompt extends PolymerElement {
         :host .confirm-or-cancel {
           min-width: 40px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <simple-popover
         id="prompt"
         auto
-        for$="[[for]]"
+        for="${this.for}"
       >
         <form id="form">
           <simple-fields
             id="formfields"
             autofocus
             hide-line-numbers
-            fields="[[fields]]"
-            value="{{value}}"
+            .fields="${this.fields}"
+            .value="${this.value}"
           ></simple-fields>
           <div class="actions">
-            </iron-a11y-keys>
             <paper-button
               id="cancel"
               class="rtebutton"
-              controls$="[[for]]"
-              on-click="_cancel"
+              controls="${this.for}"
+              @click="${this._cancel}"
               tabindex="0"
             >
-              <iron-icon id="icon" aria-hidden icon="clear"> </iron-icon>
+              <iron-icon id="icon" aria-hidden="true" icon="clear"> </iron-icon>
               <span id="label" class="offscreen">Cancel</span>
             </paper-button>
             <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
@@ -127,22 +127,23 @@ class RichTextEditorPrompt extends PolymerElement {
               on-click="_confirm"
               tabindex="0"
             >
-              <iron-icon id="icon" aria-hidden icon="check"> </iron-icon>
+              <iron-icon id="icon" aria-hidden="true" icon="check"> </iron-icon>
               <span id="label" class="offscreen">OK</span>
             </paper-button>
             <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
           </div>
           <iron-a11y-keys
             id="a11ycancel"
-            target="[[__a11ycancel]]"
+            .target="${this.__a11ycancel}"
             keys="enter space"
-            on-keys-pressed="_cancel"
+            @keys-pressed="${this._cancel}"
           >
+          </iron-a11y-keys>
           <iron-a11y-keys
             id="a11yconfirm"
-            target="[[__a11yconfirm]]"
+            .target="${this.__a11yconfirm}"
             keys="enter space"
-            on-keys-pressed="_confirm"
+            @keys-pressed="${this._confirm}"
           >
           </iron-a11y-keys>
         </form>
@@ -170,29 +171,25 @@ class RichTextEditorPrompt extends PolymerElement {
        * The selected text.
        */
       range: {
-        type: Object,
-        value: null
+        type: Object
       },
       /**
        * fields for the prompt popover.
        */
       fields: {
-        type: Array,
-        value: null
+        type: Array
       },
       /**
        * The prefilled value of the prompt
        */
       value: {
-        type: Object,
-        value: null
+        type: Object
       },
       /**
        * The prefilled value of the prompt
        */
       __button: {
-        type: Object,
-        value: null
+        type: Object
       }
     };
   }
@@ -202,7 +199,6 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   constructor() {
     super();
-    let root = this;
 
     // sets the instance to the current instance
     if (!window.RichTextEditorPrompt.instance) {

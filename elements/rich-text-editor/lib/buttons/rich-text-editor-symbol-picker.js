@@ -2,57 +2,16 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `rich-text-editor-symbol-picker`
  * `a symbol picker for the rich-text-editor`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-symbol-picker
  */
 class RichTextEditorSymbolPicker extends RichTextEditorPicker {
-  constructor() {
-    super();
-    this.icon = "editor:functions";
-    this.label = "Insert symbol";
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * An optional JSON file with default options.
-       */
-      optionsSrc: {
-        name: "optionsSrc",
-        type: String,
-        value: "data/symbols.js"
-      },
-
-      /**
-       * Symbol types to include
-       */
-      symbolTypes: {
-        name: "symbolTypes",
-        type: Array,
-        value: ["symbols", "math", "characters", "greek", "misc"]
-      },
-
-      /**
-       * Renders html as title. (Good for titles with HTML in them.)
-       */
-      titleAsHtml: {
-        name: "titleAsHtml",
-        type: Boolean,
-        value: true,
-        readOnly: true
-      }
-    };
-  }
   /**
    * Store the tag name to make it easier to obtain directly.
    *
@@ -60,31 +19,68 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
   static get tag() {
     return "rich-text-editor-symbol-picker";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * An optional JSON file with default options.
+       */
+      optionsSrc: {
+        name: "optionsSrc",
+        type: String
+      },
+
+      /**
+       * Symbol types to include
+       */
+      symbolTypes: {
+        name: "symbolTypes",
+        type: Array
+      }
+    };
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.icon = "editor:functions";
+    this.label = "Insert symbol";
+    this.optionsSrc = "data/symbols.js";
+    this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
+    this.titleAsHtml = true;
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
     window.addEventListener(
-      "es-bridge-symbols-loaded",
+      "es-bridge-emoji-loaded",
       this._setOptions.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("symbols", location);
+    window.ESGlobalBridge.instance.load("emoji", location);
   }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "titleAsHtml" && !this.titleAsHtml) this.titleAsHtml = true; 
+    });
+  }
+
   disconnectedCallback() {
     window.removeEventListener(
       "es-bridge-symbols-loaded",
       this._setOptions.bind(this)
     );
     super.disconnectedCallback();
+  }
+
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 
   /**

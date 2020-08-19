@@ -2,13 +2,10 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "../singletons/rich-text-editor-selection.js";
 import "../singletons/rich-text-editor-prompt.js";
-import "./rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-prompt-button`
  * `a button that prompts for more information for rich text editor (custom buttons can extend this)`
@@ -20,101 +17,6 @@ import "./rich-text-editor-button-styles.js";
  * @polymer
  */
 class RichTextEditorPromptButton extends RichTextEditorButton {
-  constructor() {
-    super();
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * if the selection is more than just a single text node, allow edits via code-editor?
-       */
-      editableSelection: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * fields for the prompt popover.
-       */
-      fields: {
-        type: Array,
-        value: [
-          {
-            property: "",
-            title: "Text",
-            description: "The inner text",
-            inputMethod: "textfield"
-          }
-        ]
-      },
-      /**
-       * is the element a custom inline widget element?
-       */
-      inlineWidget: {
-        name: "inlineWidget",
-        type: Boolean,
-        value: false
-      },
-      /**
-       * the tag that will wrap the selected range
-       */
-      tag: {
-        name: "tag",
-        type: String,
-        value: "span"
-      },
-      /**
-       * The prefilled value of the prompt
-       */
-      value: {
-        type: Object,
-        value: {
-          "": null,
-          id: null
-        }
-      },
-      /**
-       * fields for the prompt popover.
-       */
-      __fields: {
-        type: Array,
-        value: []
-      },
-      /**
-       * the contents node inside the selected range
-       */
-      __oldValue: {
-        name: "__oldValue",
-        type: Object,
-        value: null
-      },
-      /**
-       * the prompt that pops up when button is pressed
-       */
-      __prompt: {
-        name: "__prompt",
-        type: Object,
-        value: null
-      },
-      /**
-       * the highlight surrounding the selected range
-       */
-      __selection: {
-        name: "__selection",
-        type: Object,
-        value: null
-      },
-      /**
-       * the contents node inside the selected range
-       */
-      __selectionContents: {
-        name: "__selectionContents",
-        type: Object,
-        value: null
-      }
-    };
-  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -122,13 +24,95 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   static get tag() {
     return "rich-text-editor-prompt-button";
   }
-
-  /**
-   * life cycle, element is ready
-   */
-  ready() {
-    super.ready();
-    let root = this;
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * if the selection is more than just a single text node, allow edits via code-editor?
+       */
+      editableSelection: {
+        type: Boolean
+      },
+      /**
+       * fields for the prompt popover.
+       */
+      fields: {
+        type: Array
+      },
+      /**
+       * is the element a custom inline widget element?
+       */
+      inlineWidget: {
+        name: "inlineWidget",
+        type: Boolean
+      },
+      /**
+       * the tag that will wrap the selected range
+       */
+      tag: {
+        name: "tag",
+        type: String
+      },
+      /**
+       * The prefilled value of the prompt
+       */
+      value: {
+        type: Object
+      },
+      /**
+       * fields for the prompt popover.
+       */
+      __fields: {
+        type: Array
+      },
+      /**
+       * the contents node inside the selected range
+       */
+      __oldValue: {
+        name: "__oldValue",
+        type: Object
+      },
+      /**
+       * the prompt that pops up when button is pressed
+       */
+      __prompt: {
+        name: "__prompt",
+        type: Object
+      },
+      /**
+       * the highlight surrounding the selected range
+       */
+      __selection: {
+        name: "__selection",
+        type: Object
+      },
+      /**
+       * the contents node inside the selected range
+       */
+      __selectionContents: {
+        name: "__selectionContents",
+        type: Object
+      }
+    };
+  }
+  constructor() {
+    super();
+    this.editableSelection = false;
+    this.inlineWidget = false;
+    this.fields = [
+      {
+        property: "",
+        title: "Text",
+        description: "The inner text",
+        inputMethod: "textfield"
+      }
+    ];
+    this.tag = "span";
+    this.value = {
+      "": null,
+      id: null
+    };
+    this.__fields = [];
     this.__prompt = window.RichTextEditorPrompt.requestAvailability();
     this.__selection = window.RichTextEditorSelection.requestAvailability();
   }
@@ -264,38 +248,40 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.__fields = [];
     el.normalize();
     el.innerHTML.trim();
-    this.fields.forEach(field => {
-      this.__fields.push(field);
-      if (field.property && field.property !== "") {
-        this.value[field.property] = el
-          ? el.getAttribute(field.property)
+    this.__fields = this.fields.map(field => this._createField(el,field));
+  }
+
+  _createField(el,field){
+    if (field.property && field.property !== "") {
+      this.value[field.property] = el
+        ? el.getAttribute(field.property)
+        : null;
+    } else if (field.slot && field.slot !== "") {
+      this.value[field.slot] =
+        el & el.querySelector(field.slot)
+          ? el
+            .querySelector(field.slot)
+            .innerHTML.replace(/[\s\n\t]+/g, " ")
+            .trim()
           : null;
-      } else if (field.slot && field.slot !== "") {
-        this.value[field.slot] =
-          el & el.querySelector(field.slot)
-            ? el
-                .querySelector(field.slot)
-                .innerHTML.replace(/[\s\n\t]+/g, " ")
-                .trim()
-            : null;
+    } else {
+      this.value[""] = el
+        ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
+        : "";
+      if (!this.__slotInputMethod) this.__slotInputMethod = field.inputMethod;
+      if (
+        (el.childNodes.length === 1 &&
+          el.childNodes[0].nodeType !== Node.TEXT_NODE) ||
+        el.childNodes.length > 1
+      ) {
+        field.hidden = !this.editableSelection;
+        field.inputMethod = "code-editor";
       } else {
-        this.value[""] = el
-          ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
-          : "";
-        if (!this.__slotInputMethod) this.__slotInputMethod = field.inputMethod;
-        if (
-          (el.childNodes.length === 1 &&
-            el.childNodes[0].nodeType !== Node.TEXT_NODE) ||
-          el.childNodes.length > 1
-        ) {
-          field.hidden = !this.editableSelection;
-          field.inputMethod = "code-editor";
-        } else {
-          field.inputMethod = this.__slotInputMethod;
-          field.hidden = false;
-        }
+        field.inputMethod = this.__slotInputMethod;
+        field.hidden = false;
       }
-    });
+    }
+    return field;
   }
 
   /**

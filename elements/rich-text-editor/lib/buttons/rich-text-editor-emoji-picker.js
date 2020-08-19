@@ -2,67 +2,16 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `rich-text-editor-emoji-picker`
  * `an emoji picker for the rich-text-editor`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-emoji-picker
  */
 class RichTextEditorEmojiPicker extends RichTextEditorPicker {
-  constructor() {
-    super();
-    this.label = "Insert emoji";
-    this.icon = "editor:insert-emoticon";
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * Emoji types types to include
-       */
-      emojiTypes: {
-        name: "emojiTypes",
-        type: Array,
-        value: [
-          "emotions",
-          "people",
-          "nature",
-          "food",
-          "travel",
-          "activities",
-          "objects",
-          "symbols",
-          "flags"
-        ]
-      },
-
-      /**
-       * An optional JSON file with default options.
-       */
-      optionsSrc: {
-        name: "optionsSrc",
-        type: String,
-        value: "data/emojis.js"
-      },
-
-      /**
-       * Renders html as title. (Good for titles with HTML in them.)
-       */
-      titleAsHtml: {
-        name: "titleAsHtml",
-        type: Boolean,
-        value: true,
-        readOnly: true
-      }
-    };
-  }
   /**
    * Store the tag name to make it easier to obtain directly.
    *
@@ -70,15 +19,50 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   static get tag() {
     return "rich-text-editor-emoji-picker";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * Emoji types types to include
+       */
+      emojiTypes: {
+        name: "emojiTypes",
+        type: Array
+      },
+
+      /**
+       * An optional JSON file with default options.
+       */
+      optionsSrc: {
+        name: "optionsSrc",
+        type: String
+      }
+    };
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+
+  constructor() {
+    super();
+    this.emojiTypes = [
+      "emotions",
+      "people",
+      "nature",
+      "food",
+      "travel",
+      "activities",
+      "objects",
+      "symbols",
+      "flags"
+    ];
+    this.icon = "editor:insert-emoticon";
+    this.label = "Insert emoji";
+    this.optionsSrc = "data/emojis.js";
+    this.titleAsHtml = true;
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
@@ -89,11 +73,24 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("emoji", location);
   }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "titleAsHtml" && !this.titleAsHtml) this.titleAsHtml = true; 
+    });
+  }
+
   disconnectedCallback() {
     window.removeEventListener(
       `es-bridge-emoji-loaded`,
       this._setOptions.bind(this)
     );
+  }
+
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
 
   /**
