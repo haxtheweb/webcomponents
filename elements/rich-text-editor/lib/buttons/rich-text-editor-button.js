@@ -20,7 +20,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       return [
         ...super.styles,
         css`
-          :host .rtebutton {
+          .rtebutton {
             min-width: var(--rich-text-editor-button-min-width);
             height: var(--rich-text-editor-button-height);
             margin: var(--rich-text-editor-button-margin);
@@ -181,13 +181,16 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       this.showTextLabel = false;
       this.toggles = false;
       import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/iron-icons/image-icons.js");
+      import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      this.addEventListener("mousedown", function(e) {
+      /*this.addEventListener("mousedown", function(e) {
         console.log("mousedown", e);
       });
       this.addEventListener("keypress", function(e) {
         e.preventDefault();
-      });
+      });*/
     }
 
     /**
@@ -416,15 +419,16 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * whether or not the button is toggled
      */
     _regOrToggled(toggledOff, toggledOn, toggled) {
-      return toggledOn !== null && toggled ? toggledOn : toggledOff;
+      return !!toggledOn && toggled ? toggledOn : toggledOff;
     }
   };
 };
 /**
  * `rich-text-editor-button`
- * `a button for rich text editor (custom buttons can extend this)`
+ * a button for rich text editor (custom buttons can extend this)
  *
  * @element rich-text-editor-button
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorButton extends RichTextEditorButtonBehaviors(LitElement) {}
 window.customElements.define(RichTextEditorButton.tag, RichTextEditorButton);
