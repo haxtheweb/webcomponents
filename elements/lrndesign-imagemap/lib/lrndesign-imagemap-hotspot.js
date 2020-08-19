@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 /**
  * `lrndesign-imagemap-hotspot`
  * creates an accessible image map
@@ -31,6 +32,7 @@ class LrndesignImagemapHotspot extends LitElement {
    */
   render() {
     return html`
+    <simple-popover for="${this.hotspotId}" auto>
       <relative-heading
         id="heading"
         ?hidden="${!this.label}"
@@ -38,6 +40,7 @@ class LrndesignImagemapHotspot extends LitElement {
       >
       </relative-heading>
       <div id="desc"><slot></slot></div>
+      </simple-popover>
     `;
   }
   /**
@@ -47,6 +50,7 @@ class LrndesignImagemapHotspot extends LitElement {
     super();
     this.label = null;
     this.hotspotId = null;
+    this.for=null;
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
   }
   static get tag() {
@@ -61,6 +65,8 @@ class LrndesignImagemapHotspot extends LitElement {
       label: {
         type: String
       },
+
+      
       /**
        * Id of hotspot element inside the SVG
        */
@@ -72,7 +78,8 @@ class LrndesignImagemapHotspot extends LitElement {
   }
 
   setParentHeading(parent) {
-    this.shadowRoot.querySelector("#heading")._setParent(parent);
+    
+    this.shadowRoot.querySelector("#heading").parent=parent;
   }
 }
 window.customElements.define(

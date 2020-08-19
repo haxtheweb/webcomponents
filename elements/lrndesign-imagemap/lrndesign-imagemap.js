@@ -1,8 +1,8 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+
 /**
  * `lrndesign-imagemap`
  * @element lrndesign-imagemap
@@ -12,15 +12,20 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
  * @polymer
  * @demo demo/index.html
  */
-class LrndesignImagemap extends PolymerElement {
+class LrndesignImagemap extends LitElement {
   constructor() {
     super();
+    this.label=null;
+    this.src=null;
+    this.hotspotDetails=[];
+    this.subtopicOf=null;
+    this.tag=null;
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
     import("@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js");
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -45,26 +50,32 @@ class LrndesignImagemap extends PolymerElement {
           display: block;
         }*/
         }
-      </style>
+        `
+    ];
+  }
+
+  render() {
+    return html`
       <relative-heading
-        hidden\$="[[!label]]"
+        ?hidden="${!this.label}"
         id="heading"
-        subtopic-of\$="[[subtopicOf]]"
-        tag\$="[[tag]]"
-        text\$="[[label]]"
+        subtopic-of="${this.subtopicOf}"
+        tag="${this.tag}"
+        text="${this.label}"
       >
       </relative-heading>
       <div id="desc"><slot name="desc"></slot></div>
       <div id="svg"></div>
       <div id="buttons"></div>
       <slot></slot>
+       
       <iron-ajax
         auto=""
         id="get_svg"
-        url="[[src]]"
+        url="${this.src}"
         handle-as="text"
-        on-response="_getSVGHandler"
-      ></iron-ajax>
+        @response="${this._getSVGHandler}"
+      ></iron-ajax> 
     `;
   }
   static get tag() {
@@ -76,38 +87,35 @@ class LrndesignImagemap extends PolymerElement {
        * Label for the imagemap
        */
       label: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The path of the SVG
        */
       src: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The path of the SVG
        */
       hotspotDetails: {
         type: Array,
-        value: []
+        attribute:"hotspot-details"
       },
       /*
        * optional: the id of the heading element that this imagemap is a subtopic of
        */
       subtopicOf: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "subtopic-of"
       },
       /*
        * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
        */
       tag: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
