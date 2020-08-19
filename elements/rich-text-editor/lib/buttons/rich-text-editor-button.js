@@ -346,13 +346,13 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      */
     doTextOperation() {
       let range = this.range;
-      if (this.isToggled && this.toggledCommand !== null) {
+      if (this.isToggled && !!this.toggledCommand) {
         document.execCommand(
           this.toggledCommand,
           false,
           this.toggledCommand || ""
         );
-      } else if (this.command !== null) {
+      } else if (!!this.command) {
         this.dispatchEvent(
           new CustomEvent(this.command + "-button", {
             bubbles: true,
