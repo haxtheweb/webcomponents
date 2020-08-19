@@ -59,6 +59,8 @@ class SimplePickerOption extends LitElement {
       }
 
       iron-icon {
+        --iron-icon-width: var(--simple-picker-option-size, 24px);
+        --iron-icon-height: var(--simple-picker-option-size, 24px);
         width: var(--simple-picker-option-size, 24px);
         min-height: var(--simple-picker-option-size, 24px);
         min-width: var(--simple-picker-option-size, 24px);
@@ -76,10 +78,9 @@ class SimplePickerOption extends LitElement {
         aria-hidden="true"
       ></iron-icon>
       <div id="label">
+        <slot ?hidden="${!this.titleAsHtml}"></slot>
         ${this.titleAsHtml
-          ? html`
-              ${this.label}
-            `
+          ? ``
           : this.label}
       </div>
     `;
@@ -194,6 +195,15 @@ class SimplePickerOption extends LitElement {
         reflect: true
       }
     };
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "label") {
+        this.innerHTML = this.label;
+      }
+    });
   }
 
   /**

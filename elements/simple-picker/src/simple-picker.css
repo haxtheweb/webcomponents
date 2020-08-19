@@ -71,6 +71,8 @@ label:not([hidden]) {
   flex: 1 0 auto;
   justify-content: space-between;
   align-items: center;
+  min-height: calc(var(--simple-picker-height - 2 * var(--simple-picker-sample-padding, 2px)) - 2 * var(--simple-picker-border-width, 1px));
+  max-height: calc(var(--simple-picker-height - 2 * var(--simple-picker-sample-padding, 2px)) - 2 * var(--simple-picker-border-width, 1px));
   padding: var(--simple-picker-sample-padding, 2px);
   border-radius: var(--simple-picker-border-radius, 2px);
   color: var(--simple-picker-sample-color, black);
@@ -104,8 +106,10 @@ label:not([hidden]) {
 }
 
 #icon {
-  width: var(--simple-picker-option-size, 24px);
-  height: var(--simple-picker-option-size, 24px);
+  width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
+  height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
+  --iron-icon-width: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
+  --iron-icon-height: var(--simple-picker-icon-size, var(--simple-picker-option-size, 24px));
   transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }
