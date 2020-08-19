@@ -10,7 +10,7 @@ import "./rich-text-editor-breadcrumbs.js";
  * `a full toolbar with breadcrumbs for the rich text editor`
  *
  * @element rich-text-editor-toolbar-full
- * @demo ../demo/index.html demo
+ * @demo ./demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb
  */
 class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
@@ -24,7 +24,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
   }
 
   static get styles() {
-    return [...super.baseStyles, ...super.stickyStyles];
+    return [...this.baseStyles, ...this.stickyStyles];
   }
 
   // render function for template
