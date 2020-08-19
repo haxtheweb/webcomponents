@@ -13,6 +13,12 @@
   overflow: auto;
 }
 
+:host([contenteditable="true"]):focus-within,
+:host([contenteditable="true"]):focus {
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
 :host(.heightmax[contenteditable="true"]) {
   max-height: calc(100vh - 200px);
   overflow-y: scroll;

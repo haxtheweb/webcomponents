@@ -22,7 +22,7 @@ const RichTextEditorButtonStyles = function(SuperClass) {
           :host([hidden]) {
             display: none;
           }
-          :host .offscreen {
+          .offscreen {
             position: absolute;
             left: -999999px;
             top: 0;
@@ -34,30 +34,30 @@ const RichTextEditorButtonStyles = function(SuperClass) {
           :host(rich-text-editor-symbol-picker) {
             --simple-picker-option-label-padding: 2px;
           }
-          :host simple-tooltip {
+          simple-tooltip {
             z-index: 2;
           }
-          :host .rtebutton {
+          .rtebutton {
             text-transform: unset;
             transition: all 0.5s;
             color: var(--rich-text-editor-button-color);
             border-color: var(--rich-text-editor-border-color);
+          }
+          .rtebutton[toggled] {
+            color: var(--rich-text-editor-button-toggled-color);
+            background-color: var(--rich-text-editor-button-toggled-bg);
+          }
+          .rtebutton:focus,
+          .rtebutton:hover {
+            color: var(--rich-text-editor-button-hover-color);
+            background-color: var(--rich-text-editor-button-hover-bg);
           }
           :host([disabled]) .rtebutton {
             cursor: not-allowed;
             color: var(--rich-text-editor-button-disabled-color);
             background-color: var(--rich-text-editor-button-disabled-bg);
           }
-          :host .rtebutton[toggled] {
-            color: var(--rich-text-editor-button-toggled-color);
-            background-color: var(--rich-text-editor-button-toggled-bg);
-          }
-          :host .rtebutton:focus,
-          :host .rtebutton:hover {
-            color: var(--rich-text-editor-button-hover-color);
-            background-color: var(--rich-text-editor-button-hover-bg);
-          }
-          :host .rtebutton #icon:not([icon]) {
+          .rtebutton #icon:not([icon]) {
             display: none;
           }
         `
