@@ -10,7 +10,9 @@ import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
  *
  * @element rich-text-editor-more-button
  */
-class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(LitElement) {
+class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -18,7 +20,7 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(LitElement)
     return "rich-text-editor-more-button";
   }
 
-  render(){
+  render() {
     return super.render();
   }
 

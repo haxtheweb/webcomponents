@@ -12,7 +12,9 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * @element rich-text-editor-toolbar-mini
  * @demo ./demo/mini.html mini floating toolbar
  */
-class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(LitElement) {
+class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -29,7 +31,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(LitElemen
         :host #floating {
           display: flex;
         }
-      ` 
+      `
     ];
   }
 

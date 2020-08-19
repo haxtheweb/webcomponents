@@ -29,7 +29,9 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
             --simple-picker-color-active: var(
               --rich-text-editor-button-hover-color
             );
-            --simple-picker-color-disabled: var(--rich-text-editor-border-color);
+            --simple-picker-color-disabled: var(
+              --rich-text-editor-border-color
+            );
             --simple-picker-background-color: var(--rich-text-editor-bg);
             --simple-picker-background-color-disabled: var(
               --rich-text-editor-border-color
@@ -55,7 +57,9 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           .options="${this.options}"
           .value="${this.value}"
         >
-          <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
+          <span id="label" class="${super.labelStyle}"
+            >${this.currentLabel}</span
+          >
         </simple-picker>
         <simple-tooltip id="tooltip" for="button"
           >${this.currentLabel}</simple-tooltip
@@ -233,18 +237,13 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
       return items;
     }
   };
-}
+};
 /**
  * `rich-text-editor-picker`
  * a picker for rich text editor (custom buttons can extend this)
  *
  * @element rich-text-editor-picker
  */
-class RichTextEditorPicker extends RichTextEditorPickerBehaviors(
-  LitElement
-) {}
-window.customElements.define(
-  RichTextEditorPicker.tag,
-  RichTextEditorPicker
-);
+class RichTextEditorPicker extends RichTextEditorPickerBehaviors(LitElement) {}
+window.customElements.define(RichTextEditorPicker.tag, RichTextEditorPicker);
 export { RichTextEditorPicker, RichTextEditorPickerBehaviors };

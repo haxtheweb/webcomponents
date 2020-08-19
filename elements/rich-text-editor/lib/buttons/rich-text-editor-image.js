@@ -10,7 +10,9 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  *
  * @element rich-text-editor-image
  */
-class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(LitElement) {
+class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */

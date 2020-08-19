@@ -126,26 +126,26 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     // render function for template
     render() {
       return html`
-      <div
-        id="toolbar"
-        aria-live="polite"
-        aria-hidden="${this.controls ? "false" : "true"}"
-        ?collapsed="${this.collapsed}"
-      >
-        <rich-text-editor-more-button
-          id="morebutton"
-          class="button"
-          controls="toolbar"
-          icon="${this.moreIcon}"
-          label="${this.moreLabel}"
-          ?show-text-label="${this.moreShowTextLabel}"
-          ?label-toggled="${this.moreLabelToggled}"
-          ?toggled="${!this.collapsed}"
-          on-click="_toggleMore"
+        <div
+          id="toolbar"
+          aria-live="polite"
+          aria-hidden="${this.controls ? "false" : "true"}"
+          ?collapsed="${this.collapsed}"
         >
-        </rich-text-editor-more-button>
-      </div>
-    `;
+          <rich-text-editor-more-button
+            id="morebutton"
+            class="button"
+            controls="toolbar"
+            icon="${this.moreIcon}"
+            label="${this.moreLabel}"
+            ?show-text-label="${this.moreShowTextLabel}"
+            ?label-toggled="${this.moreLabelToggled}"
+            ?toggled="${!this.collapsed}"
+            on-click="_toggleMore"
+          >
+          </rich-text-editor-more-button>
+        </div>
+      `;
     }
 
     // properties available to the custom element for data binding
@@ -504,7 +504,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       });
     }
 
-    connectedCallback(){
+    connectedCallback() {
       super.connectedCallback();
       this.__buttons = this._getButtons();
     }
@@ -515,12 +515,15 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     get buttons() {
       return this.__buttons;
     }
-    _getButtons(){
-      let toolbar = this.shadowRoot && this.shadowRoot.querySelector("#toolbar") ? this.shadowRoot.querySelector("#toolbar") : undefined;
-      console.log('after update',toolbar,this.shadowRoot); 
-      if (!!toolbar) {      
-        console.log('morebutton',toolbar.querySelector("#morebutton")); 
-          let more = toolbar.querySelector("#morebutton"),
+    _getButtons() {
+      let toolbar =
+        this.shadowRoot && this.shadowRoot.querySelector("#toolbar")
+          ? this.shadowRoot.querySelector("#toolbar")
+          : undefined;
+      console.log("after update", toolbar, this.shadowRoot);
+      if (!!toolbar) {
+        console.log("morebutton", toolbar.querySelector("#morebutton"));
+        let more = toolbar.querySelector("#morebutton"),
           max = 0,
           sizes = ["xs", "sm", "md", "lg", "xl"],
           temp = [];
@@ -530,7 +533,10 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           if (item.type === "button-group") {
             let group = document.createElement("div");
             group.setAttribute("class", "group");
-            if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
+            if (
+              item.collapsedUntil !== undefined &&
+              item.collapsedUntil !== null
+            )
               group.setAttribute("collapsed-until", item.collapsedUntil);
             max = Math.max(max, sizes.indexOf(item.collapsedUntil));
             item.buttons.forEach(button => {
@@ -570,7 +576,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           }
         })
       );
-      }
+    }
 
     /**
      * adds an editor
@@ -612,8 +618,8 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     editTarget(editor) {
-      if ('editTarget',this.editor !== editor) {
-        console.log(editor,this);
+      if (("editTarget", this.editor !== editor)) {
+        console.log(editor, this);
         //save changes to previous editor
         if (!!this.editor) {
           this.editor.contentEditable = false;
@@ -632,7 +638,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           })
         );
         this.editor = editor;
-        console.log(editor,this.editor);
+        console.log(editor, this.editor);
         if (!!editor) {
           editor.parentNode.insertBefore(this, editor);
           this.canceled = editor.innerHTML;
@@ -671,7 +677,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     getSanitizeClipboard(pasteContent) {
       let regex = "<body(.*\n)*>(.*\n)*</body>";
       if (pasteContent.match(regex) && pasteContent.match(regex).length > 0)
-        pasteContent = pasteContent.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
+        pasteContent = pasteContent
+          .match(regex)[0]
+          .replace(/<\?body(.*\n)*\>/i);
       return pasteContent;
     }
 
@@ -810,7 +818,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       let pasteContent = "";
       // intercept paste event
       if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
-        pasteContent = (e.originalEvent || e).clipboardData.getData("text/html");
+        pasteContent = (e.originalEvent || e).clipboardData.getData(
+          "text/html"
+        );
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
@@ -879,7 +889,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     _toggleMore(e) {
       this.collapsed = !this.collapsed;
     }
-  }
+  };
 };
 /**
  * `rich-text-editor-toolbar`
@@ -890,8 +900,5 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 class RichTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   LitElement
 ) {}
-window.customElements.define(
-  RichTextEditorToolbar.tag,
-  RichTextEditorToolbar
-);
+window.customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
 export { RichTextEditorToolbar, RichTextEditorToolbarBehaviors };

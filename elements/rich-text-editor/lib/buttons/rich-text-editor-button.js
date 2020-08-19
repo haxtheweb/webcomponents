@@ -49,7 +49,9 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
         >
           <iron-icon id="icon" aria-hidden="true" icon="${this.currentIcon}">
           </iron-icon>
-          <span id="label" class="${this.labelStyle}">${this.currentLabel}</span>
+          <span id="label" class="${this.labelStyle}"
+            >${this.currentLabel}</span
+          >
         </paper-button>
         <simple-tooltip id="tooltip" for="button"
           >${this.currentLabel}</simple-tooltip
@@ -60,113 +62,113 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     static get properties() {
       return {
         /**
-        * The `id` of the `rich-text-editor` that the toolbar controls.
-        */
+         * The `id` of the `rich-text-editor` that the toolbar controls.
+         */
         controls: {
           type: String
         },
 
         /**
-        * The command used for document.execCommand.
-        */
+         * The command used for document.execCommand.
+         */
         command: {
           type: String
         },
 
         /**
-        * Optional parameter for the command.
-        */
+         * Optional parameter for the command.
+         */
         commandVal: {
           attribute: "command-val",
           type: Object
         },
 
         /**
-        * Is the button disabled? Default is false.
-        */
+         * Is the button disabled? Default is false.
+         */
         disabled: {
           type: Boolean
         },
 
         /**
-        * Optional iron icon name for the button.
-        */
+         * Optional iron icon name for the button.
+         */
         icon: {
           type: String
         },
 
         /**
-        * Label for the icon.
-        */
+         * Label for the icon.
+         */
         label: {
           type: String
         },
 
         /**
-        * The active selected range, inherited from the toolbar
-        */
+         * The active selected range, inherited from the toolbar
+         */
         range: {
           type: Object
         },
 
         /**
-        * Optional space-sperated list of keyboard shortcuts for the editor
-        * to fire this button, see iron-a11y-keys for more info.
-        */
+         * Optional space-sperated list of keyboard shortcuts for the editor
+         * to fire this button, see iron-a11y-keys for more info.
+         */
         shortcutKeys: {
           attribute: "shortcut-keys",
           type: String
         },
 
         /**
-        * Show text label even if an icon is named?
-        */
+         * Show text label even if an icon is named?
+         */
         showTextLabel: {
           attribute: "show-text-label",
           type: Boolean
         },
 
         /**
-        * The active selected range, inherited from the toolbar
-        */
+         * The active selected range, inherited from the toolbar
+         */
         target: {
           type: Object
         },
 
         /**
-        * The command used for document.execCommand when toggled.
-        */
+         * The command used for document.execCommand when toggled.
+         */
         toggledCommand: {
           attribute: "toggled-command",
           type: String
         },
         /**
-        * Optional parameter for the command when toggled.
-        */
+         * Optional parameter for the command when toggled.
+         */
         toggledCommandVal: {
           attribute: "toggled-command-val",
           type: Object
         },
 
         /**
-        * Optional iron icon name for the button if it is toggled.
-        */
+         * Optional iron icon name for the button if it is toggled.
+         */
         toggledIcon: {
           attribute: "toggled-icon",
           type: String
         },
 
         /**
-        * Label for the icon, if button is toggled.
-        */
+         * Label for the icon, if button is toggled.
+         */
         toggledLabel: {
           attribute: "toggled-label",
           type: String
         },
 
         /**
-        * Can this button toggle?
-        */
+         * Can this button toggle?
+         */
         toggles: {
           type: Boolean
         }
@@ -189,31 +191,31 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-    * current label based on toggled state
-    *
-    * @readonly
-    * @memberof RichTextEditorButton
-    */
+     * current label based on toggled state
+     *
+     * @readonly
+     * @memberof RichTextEditorButton
+     */
     get currentLabel() {
       return this._regOrToggled(this.label, this.toggledLabel, this.isToggled);
     }
 
     /**
-    * current icon based on toggled state
-    *
-    * @readonly
-    * @memberof RichTextEditorButton
-    */
+     * current icon based on toggled state
+     *
+     * @readonly
+     * @memberof RichTextEditorButton
+     */
     get currentIcon() {
       return this._regOrToggled(this.icon, this.toggledIcon, this.isToggled);
     }
 
     /**
-    * label is offscreen (screenreader-only)
-    *
-    * @readonly
-    * @memberof RichTextEditorButton
-    */
+     * label is offscreen (screenreader-only)
+     *
+     * @readonly
+     * @memberof RichTextEditorButton
+     */
     get labelStyle() {
       return !!this.icon && this.icon !== "" && this.showTextLabel === false
         ? "offscreen"
@@ -221,23 +223,25 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-    * whether button is toggled
-    *
-    * @readonly
-    * @memberof RichTextEditorButton
-    */
+     * whether button is toggled
+     *
+     * @readonly
+     * @memberof RichTextEditorButton
+     */
     get isToggled() {
-      return (this.range || !this.range) && this.command !== null && this.toggles
+      return (this.range || !this.range) &&
+        this.command !== null &&
+        this.toggles
         ? document.queryCommandState(this.command)
         : false;
     }
 
     /**
-    * gets valid commands list
-    *
-    * @readonly
-    * @memberof RichTextEditorButton
-    */
+     * gets valid commands list
+     *
+     * @readonly
+     * @memberof RichTextEditorButton
+     */
     get validCommands() {
       return [
         "backColor",
@@ -320,23 +324,23 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       );
     }
     /**
-    * life cycle, element is afixed to the DOM
-    */
+     * life cycle, element is afixed to the DOM
+     */
     connectedCallback() {
       super.connectedCallback();
       this.__a11y = this.shadowRoot.querySelector("#button");
     }
 
     /**
-    * life cycle, element is detatched
-    */
+     * life cycle, element is detatched
+     */
     disconnectedCallback() {
       super.disconnectedCallback();
     }
 
     /**
-    * excutes the button's command
-    */
+     * excutes the button's command
+     */
     doTextOperation() {
       let range = this.range;
       if (this.isToggled && this.toggledCommand !== null) {
@@ -367,8 +371,8 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-    * Handles button tap
-    */
+     * Handles button tap
+     */
     _buttonTap(e) {
       e.preventDefault();
       console.log("_buttonTap", e);
@@ -376,11 +380,11 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-    * Handles editor change
-    * @param {string} newVal the new editor's id
-    * @param {string} oldVal the old editor's id
-    * @returns {void}
-    */
+     * Handles editor change
+     * @param {string} newVal the new editor's id
+     * @param {string} oldVal the old editor's id
+     * @returns {void}
+     */
     _editorChanged(newVal, oldVal) {
       this.dispatchEvent(
         new CustomEvent(this.command + "-button-editor-change", {
@@ -393,9 +397,9 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-    * Handles keys the same way a button is handled
-    * @param {event} e the  event
-    */
+     * Handles keys the same way a button is handled
+     * @param {event} e the  event
+     */
     _keysPressed(e) {
       console.log("_keysPressed", e);
       e.preventDefault();
@@ -403,30 +407,25 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-    * updates a button value based on whether or not button is toggled
-    *
-    * @param {string} the value when toggled off
-    * @param {string} the value when toggled on
-    * @param {boolean} whether the button is toggled
-    * @returns {string} the correct value based on
-    * whether or not the button is toggled
-    */
+     * updates a button value based on whether or not button is toggled
+     *
+     * @param {string} the value when toggled off
+     * @param {string} the value when toggled on
+     * @param {boolean} whether the button is toggled
+     * @returns {string} the correct value based on
+     * whether or not the button is toggled
+     */
     _regOrToggled(toggledOff, toggledOn, toggled) {
       return toggledOn !== null && toggled ? toggledOn : toggledOff;
     }
   };
-}
+};
 /**
  * `rich-text-editor-button`
  * `a button for rich text editor (custom buttons can extend this)`
  *
  * @element rich-text-editor-button
  */
-class RichTextEditorButton extends RichTextEditorButtonBehaviors(
-  LitElement
-) {}
-window.customElements.define(
-  RichTextEditorButton.tag,
-  RichTextEditorButton
-);
+class RichTextEditorButton extends RichTextEditorButtonBehaviors(LitElement) {}
+window.customElements.define(RichTextEditorButton.tag, RichTextEditorButton);
 export { RichTextEditorButton, RichTextEditorButtonBehaviors };

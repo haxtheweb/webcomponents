@@ -11,7 +11,9 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  *
  * @element rich-text-editor-symbol-picker
  */
-class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(LitElement) {
+class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    *

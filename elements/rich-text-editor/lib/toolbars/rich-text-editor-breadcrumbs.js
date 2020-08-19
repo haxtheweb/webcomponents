@@ -44,17 +44,23 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
   render() {
     return html`
       ${this.label}
-      ${!this.ancestorNodes ? '' : (this.ancestorNodes || []).map(
-        (crumb,i) => html`
-          <rich-text-editor-breadcrumb
-            controls="${this.controls}"
-            tag="${crumb.tag}"
-            .target="${crumb.target}"
-          >
-          </rich-text-editor-breadcrumb>
-          ${i + 1 >= this.ancestorNodes.length ? '' : html`<span class="divider"> &gt; </span>`}
-        `
-      )}
+      ${!this.ancestorNodes
+        ? ""
+        : (this.ancestorNodes || []).map(
+            (crumb, i) => html`
+              <rich-text-editor-breadcrumb
+                controls="${this.controls}"
+                tag="${crumb.tag}"
+                .target="${crumb.target}"
+              >
+              </rich-text-editor-breadcrumb>
+              ${i + 1 >= this.ancestorNodes.length
+                ? ""
+                : html`
+                    <span class="divider"> &gt; </span>
+                  `}
+            `
+          )}
     `;
   }
 

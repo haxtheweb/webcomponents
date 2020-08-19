@@ -10,7 +10,9 @@ import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-b
  *
  * @rich-text-editor-underline
  */
-class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(LitElement) {
+class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */

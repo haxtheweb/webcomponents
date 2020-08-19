@@ -10,7 +10,9 @@ import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
  *
  * @element rich-text-editor-heading-picker
  */
-class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(LitElement) {
+class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */

@@ -13,7 +13,9 @@ import "./rich-text-editor-breadcrumbs.js";
  * @demo ../demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb
  */
-class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(LitElement) {
+class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,10 +24,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(LitElemen
   }
 
   static get styles() {
-    return [
-      ...super.baseStyles, 
-      ...super.stickyStyles
-    ];
+    return [...super.baseStyles, ...super.stickyStyles];
   }
 
   // render function for template

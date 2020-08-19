@@ -9,9 +9,9 @@ import "../singletons/rich-text-editor-prompt.js";
 
 const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
+    /**
+     * Store the tag name to make it easier to obtain directly.
+     */
     static get tag() {
       return "rich-text-editor-prompt-button";
     }
@@ -251,7 +251,9 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
 
     _createField(el, field) {
       if (field.property && field.property !== "") {
-        this.value[field.property] = el ? el.getAttribute(field.property) : null;
+        this.value[field.property] = el
+          ? el.getAttribute(field.property)
+          : null;
       } else if (field.slot && field.slot !== "") {
         this.value[field.slot] =
           el & el.querySelector(field.slot)
@@ -261,7 +263,9 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
                 .trim()
             : null;
       } else {
-        this.value[""] = el ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim() : "";
+        this.value[""] = el
+          ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
+          : "";
         if (!this.__slotInputMethod) this.__slotInputMethod = field.inputMethod;
         if (
           (el.childNodes.length === 1 &&
@@ -315,7 +319,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       return value && this.getCleanValue("") && this.getCleanValue("") !== "";
     }
   };
-}
+};
 /**
  * `rich-text-editor-prompt-button`
  * a button that prompts for more information for rich text editor (custom buttons can extend this)
