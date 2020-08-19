@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RichTextEditor: rich-text-editor Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/buttons/rich-text-editor-button.js';
+      import '../lib/buttons/rich-text-editor-underline.js';
+      import '../lib/buttons/rich-text-editor-link.js';
+      import '../lib/buttons/rich-text-editor-heading-picker.js';
+      import '../lib/buttons/rich-text-editor-emoji-picker.js';
+      import '../lib/buttons/rich-text-editor-symbol-picker.js';
+      import '../lib/buttons/rich-text-editor-more-button.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      :host, html {
+        font-family: sans-serif;
+        --rich-text-editor-bg: #fafafa;
+        --rich-text-editor-button-color: #444;
+        --rich-text-editor-border-color: #ddd;
+        --rich-text-editor-border: 1px solid
+          var(--rich-text-editor-border-color, #ddd);
+        --rich-text-editor-button-border: transparent;
+        --rich-text-editor-button-disabled-color: #666;
+        --rich-text-editor-button-disabled-bg: transparent;
+        --rich-text-editor-button-toggled-color: #222;
+        --rich-text-editor-button-toggled-bg: #ddd;
+        --rich-text-editor-button-hover-color: #000;
+        --rich-text-editor-button-hover-bg: #f0f0f0;
+        --rich-text-editor-picker-border: #fafafa;
+        --rich-text-editor-selection-bg: #b3d9ff;
+      }
+      #toolbar {
+        display: flex;
+        opacity: 1;
+        z-index: 1;
+        margin: 0;
+        padding: 1px 0;
+        align-items: stretch;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        background-color: var(--rich-text-editor-bg);
+        border: var(--rich-text-editor-border);
+        font-size: 12px;
+        transition: all 0.5s;
+      }
+      #toolbar[aria-hidden="true"] {
+        visibility: hidden;
+        opacity: 0;
+        height: 0;
+      }
+      #toolbar .group {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: stretch;
+        padding: 0 3px;
+      }
+      #toolbar .group:not(:last-of-type) {
+        margin-right: 3px;
+        border-right: var(--rich-text-editor-border);
+      }
+      #toolbar .group > * {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: stretch;
+      }
+      #toolbar #more {
+        flex: 1 0 auto;
+        justify-content: flex-end;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered"> 
+      <h3>Basic rich-text-editor demo</h3>
+      <demo-snippet>
+        <template>
+          <div id="toolbar">
+            <div class="group">
+              <rich-text-editor-button 
+                id="bold"
+                command="bold" 
+                icon="editor:format-bold" 
+                label="Bold" 
+                toggles>
+              </rich-text-editor-button>
+              <!--rich-text-editor-link>
+              </rich-text-editor-link-->
+              <rich-text-editor-underline id="underline">
+              </rich-text-editor-underline>
+            </div>
+            <div class="group">
+              <rich-text-editor-heading-picker 
+                id="heading"
+                label="Heading"
+                blocks='[
+                  {"label": "Paragraph", "tag": "p"},
+                  {"label": "Page Title", "tag": "h1"},
+                  {"label": "Article Title", "tag": "h2"},
+                  {"label": "Article Heading", "tag": "h3"},
+                  {"label": "Section Heading", "tag": "h4"},
+                  {"label": "Section Subheading", "tag": "h5"}
+                ]'>
+              </rich-text-editor-heading-picker>
+              <rich-text-editor-symbol-picker 
+                id="symbol"
+                label="Insert Symbol"
+                icon="editor:functions">
+              </rich-text-editor-symbol-picker>
+              <rich-text-editor-emoji-picker 
+                id="emoji"
+                label="Insert Emoji"
+                icon="image:tag-faces">
+              </rich-text-editor-emoji-picker>
+            </div>
+            <rich-text-editor-more-button id="more"></rich-text-editor-more-button>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

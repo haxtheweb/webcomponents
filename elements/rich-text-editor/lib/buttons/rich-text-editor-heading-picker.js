@@ -22,9 +22,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
   }
 
   static get styles() {
-    return [
-      ...super.styles
-    ];
+    return [...super.styles];
   }
 
   // render function for template

@@ -21,7 +21,7 @@
       <h1>Configuring rich-text-editor toolbar</h1>
       <demo-snippet>
         <template>
-          <rich-text-editor-toolbar-full id="editor" sticky controls="content"></rich-text-editor-toolbar-full>
+          <rich-text-editor-toolbar-full id="editor" always-visible sticky controls="content"></rich-text-editor-toolbar-full>
           <rich-text-editor id="content" toolbar="editor">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -99,7 +99,7 @@
                     "type": "rich-text-editor-button"
                   }
                 ]
-              }/*,{
+              },{
                 "label": "Basic Inline Operations",
                 "type": "button-group",
                 "buttons": [
@@ -125,6 +125,12 @@
                     "command": "italic",
                     "icon": "editor:format-italic",
                     "label": "Italics",
+                    "toggles": true,
+                    "type": "rich-text-editor-button"
+                  },{
+                    "command": "underline",
+                    "icon": "editor:format-underlined",
+                    "label": "Underline",
                     "toggles": true,
                     "type": "rich-text-editor-button"
                   },{
@@ -178,12 +184,12 @@
                 "label": "Insertions",
                 "type": "button-group",
                 "buttons": [
-                  {
+                  /*{
                     "command": "insertImage",
                     "label": "Insert Inline Image",
                     "icon": "editor:insert-photo",
                     "type": "rich-text-editor-image"
-                  },{ 
+                  },*/{ 
                     "collapsedUntil": "xl",
                     "icon": "editor:functions",
                     "label": "Insert Symbol", 
@@ -233,7 +239,7 @@
                     "type": "rich-text-editor-button"
                   }
                 ]
-              }*/
+              }
             ]; 
           </script>
         </template>

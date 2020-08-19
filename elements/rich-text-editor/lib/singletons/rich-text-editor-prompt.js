@@ -31,63 +31,61 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
             #800
           );
         }
-        :host #prompt {
-          display: none;
+        #prompt {
+          display: block;
           width: 300px;
           max-width: 300px;
           --simple-popover-padding: 0px;
-        }
-        :host #prompt[for] {
-          display: block;
           z-index: 2;
         }
-        :host #prompt[for] #form {
+        #prompt[hidden] {
+          display: none;
+        }
+        #prompt #form {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
           z-index: 2;
         }
-        :host #formfields {
+        #formfields {
           width: calc(100% - 20px);
           padding: 10px 10px 0;
-        }
-        :host #prompt paper-input {
-          padding: 0;
-        }
-        :host #confirm,
-        :host #cancel {
-          min-width: unset;
-        }
-        :host #formfields {
           overflow: visible;
         }
-        :host #cancel {
+        #prompt paper-input {
+          padding: 0;
+        }
+        #confirm,
+        #cancel {
+          min-width: unset;
+        }
+        #cancel {
           color: var(--rich-text-editor-button-color);
           background-color: var(--rich-text-editor-button-bg);
         }
-        :host #cancel:focus,
-        :host #cancel:hover {
+        #cancel:focus,
+         #cancel:hover {
           color: var(--rich-text-editor-button-hover-color);
           background-color: var(--rich-text-editor-button-hover-bg);
         }
-        :host #confirm {
+        #confirm {
           color: var(--rich-text-editor-button-color);
           background-color: var(--rich-text-editor-button-bg);
         }
-        :host #confirm:focus,
-        :host #confirm:hover {
+        #confirm:focus,
+        #confirm:hover {
           color: var(--rich-text-editor-button-hover-color);
           background-color: var(--rich-text-editor-button-hover-bg);
         }
-        :host .actions {
+        .actions {
           width: 100%;
           padding-bottom: 3px;
           display: flex;
           align-items: center;
           justify-content: flex-end;
         }
-        :host .confirm-or-cancel {
+        .confirm-or-cancel {
           min-width: 40px;
         }
       `
@@ -95,7 +93,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   }
   render() {
     return html`
-      <simple-popover id="prompt" auto for="${this.for}">
+      <simple-popover id="prompt" auto for="${this.for}" ?hidden="${!this.for}">
         <form id="form">
           <simple-fields
             id="formfields"

@@ -6,9 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-image`
- * `an inline image button for rich text editor`
+ * an inline image button for rich text editor
  *
  * @element rich-text-editor-image
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
   LitElement

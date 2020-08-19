@@ -79,9 +79,7 @@ class SimplePickerOption extends LitElement {
       ></iron-icon>
       <div id="label">
         <slot ?hidden="${!this.titleAsHtml}"></slot>
-        ${this.titleAsHtml
-          ? ``
-          : this.label}
+        ${this.titleAsHtml ? `` : this.label}
       </div>
     `;
   }

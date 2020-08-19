@@ -120,6 +120,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * @param {event} e the button tap event
      */
     _buttonTap(e) {
+      console.log('_buttonTap',e);
       e.preventDefault();
       this.selectRange();
       this.open();
@@ -225,6 +226,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
 
     selectRange() {
       this.__selectionContents = this.__selection.expandSelection(this.tag);
+      console.log('selectRange',this.__selectionContents);
     }
 
     /**
@@ -325,6 +327,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
  * a button that prompts for more information for rich text editor (custom buttons can extend this)
  *
  * @element rich-text-editor-prompt-button
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorPromptButton extends RichTextEditorPromptButtonBehaviors(
   LitElement

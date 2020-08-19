@@ -101,10 +101,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {string} wrapTag the tagName to use if ancestor cannot be found
    * @returns {object} the selected node
    */
-  expandSelection(searchTag = null, wrapTag = null) {
+  expandSelection(searchTag, wrapTag) {
+    console.log('expandSelection',searchTag,wrapTag);
     return (
-      this.selectAncestor(searchTag) ||
-      this.wrap(wrapTag ? document.createElement(wrapTag) : null)
+      this.selectAncestor(!!searchTag) ||
+      this.wrap(!!wrapTag ? document.createElement(wrapTag) : null)
     );
   }
 
@@ -150,22 +151,23 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {string} tag the tag to expand the selection to
    * @returns {object} the selected node
    */
-  selectAncestor(tagName = null) {
-    let wrapper = null,
+  selectAncestor(tagName) {
+    console.log('selectAncestor',tagName,wrapTag);
+    let wrapper,
       getMatchingTag = ancestor => {
         if (
-          ancestor &&
-          ancestor.tagName &&
+          !!ancestor &&
+          !!ancestor.tagName &&
           (!tagName || ancestor.tagName.toLowerCase() === tagName.toLowerCase())
         ) {
           return ancestor;
         } else if (
-          ancestor.parentNode &&
+          !!ancestor.parentNode &&
           ancestor.parentNode.childNodes.length === 1
         ) {
           return getMatchingTag(ancestor.parentNode);
         } else {
-          return null;
+          return undefined;
         }
       };
     //try to find an ancestor that matches the tag

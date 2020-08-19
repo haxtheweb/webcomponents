@@ -11,7 +11,7 @@ import "../singletons/rich-text-editor-selection.js";
 const RichTextEditorToolbarBehaviors = function(SuperClass) {
   return class extends RichTextEditorStyles(SuperClass) {
     /**
-     * Store the tag name to make it easier to obtain directly.
+     * Store tag name to make it easier to obtain directly.
      */
     static get tag() {
       return "rich-text-editor-toolbar";
@@ -37,7 +37,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           :host([hidden]) {
             display: none;
           }
-          :host #toolbar {
+          #toolbar {
             display: flex;
             opacity: 1;
             z-index: 1;
@@ -50,38 +50,38 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
             font-size: 12px;
             transition: all 0.5s;
           }
-          :host #toolbar[aria-hidden="true"] {
+          #toolbar[aria-hidden="true"] {
             visibility: hidden;
             opacity: 0;
             height: 0;
           }
-          :host #toolbar .group {
+          #toolbar .group {
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-evenly;
             align-items: stretch;
             padding: 0 3px;
           }
-          :host #toolbar .group:not(:last-of-type) {
+          #toolbar .group:not(:last-of-type) {
             margin-right: 3px;
             border-right: var(--rich-text-editor-border);
           }
-          :host #toolbar .button {
+          #toolbar .button {
             display: flex;
             flex: 0 0 auto;
             align-items: stretch;
           }
-          :host #toolbar #morebutton {
+          #toolbar #morebutton {
             flex: 1 0 auto;
             justify-content: flex-end;
           }
-          /* hide the more button if all the buttons are displayed */
+          /* hide more button if all buttons are displayed */
           :host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
           :host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
           :host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
           :host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
           :host([responsive-size="xl"]) #morebutton,
-          /* hide the buttons if they should be collaped until */
+          /* hide buttons if they should be collaped until */
           :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="m"],
           :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="l"],
           :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until="md"],
@@ -99,12 +99,12 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     }
 
     // render function for toolbar
-    static get toolbarTemplate() {
+    get toolbarTemplate() {
       return html`
         <div
           id="toolbar"
           aria-live="polite"
-          aria-hidden="${this.controls ? "false" : "true"}"
+          aria-hidden="${this.controls || this.alwaysVisible ? "false" : "true"}"
           ?collapsed="${this.collapsed}"
         >
           <rich-text-editor-more-button
@@ -116,7 +116,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
             ?show-text-label="${this.moreShowTextLabel}"
             ?label-toggled="${this.moreLabelToggled}"
             ?toggled="${!this.collapsed}"
-            on-click="_toggleMore"
+            @click="${this._toggleMore}"
           >
           </rich-text-editor-more-button>
         </div>
@@ -125,41 +125,28 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     // render function for template
     render() {
-      return html`
-        <div
-          id="toolbar"
-          aria-live="polite"
-          aria-hidden="${this.controls ? "false" : "true"}"
-          ?collapsed="${this.collapsed}"
-        >
-          <rich-text-editor-more-button
-            id="morebutton"
-            class="button"
-            controls="toolbar"
-            icon="${this.moreIcon}"
-            label="${this.moreLabel}"
-            ?show-text-label="${this.moreShowTextLabel}"
-            ?label-toggled="${this.moreLabelToggled}"
-            ?toggled="${!this.collapsed}"
-            on-click="_toggleMore"
-          >
-          </rich-text-editor-more-button>
-        </div>
-      `;
+      return html`${this.toolbarTemplate}`;
     }
 
-    // properties available to the custom element for data binding
+    // properties available to custom element for data binding
     static get properties() {
       return {
         /**
-         * The editable content, if edits are canceled.
+         * keep toolbar visible even when not editor not focused
+         */
+        alwaysVisible: {
+          type: Boolean,
+          attribute: "always-visible",
+          reflect: true
+        },
+        /**
+         * editable content, if edits are canceled
          */
         canceled: {
-          name: "canceled",
           type: Object
         },
         /**
-         * Is the toolbar collapsed?
+         * is toolbar collapsed?
          */
         collapsed: {
           name: "collapsed",
@@ -176,7 +163,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           attribute: "config"
         },
         /**
-         * The `id` of the `rich-text-editor` that the toolbar controls.
+         * `id` of `rich-text-editor` that toolbar controls.
          */
         controls: {
           name: "controls",
@@ -184,7 +171,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           attribute: "controls"
         },
         /**
-         * The `rich-text-editor` element that uis currently in `contenteditable` mode
+         * `rich-text-editor` element that is currently in `contenteditable` mode
          */
         editor: {
           name: "editor",
@@ -192,25 +179,23 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           attribute: "editor"
         },
         /**
-         * The icon for the more button.
+         * icon for more button.
          */
         moreIcon: {
           name: "moreIcon",
           type: String,
-          attribute: "more-icon",
-          value: "more-vert"
+          attribute: "more-icon"
         },
         /**
-         * The label for the more button.
+         * label for more button.
          */
         moreLabel: {
           name: "moreLabel",
           type: String,
-          attribute: "more-label",
-          value: "More Buttons"
+          attribute: "more-label"
         },
         /**
-         * The label for the more button when toggled.
+         * label for more button when toggled.
          */
         moreLabelToggled: {
           name: "moreLabelToggled",
@@ -219,7 +204,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           value: "Fewer Buttons"
         },
         /**
-         * The show text label for more button.
+         * show text label for more button.
          */
         moreShowTextLabel: {
           name: "moreShowTextLabel",
@@ -227,7 +212,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           attribute: "more-show-text-label"
         },
         /**
-         * The the size of the editor.
+         * size of editor.
          */
         responsiveSize: {
           name: "responsiveSize",
@@ -236,7 +221,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           reflect: true
         },
         /**
-         * The current text selected range.
+         * current text selected range.
          */
         savedSelection: {
           name: "savedSelection",
@@ -244,14 +229,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         },
 
         /**
-         * The current text selected range, which is actually a range.
+         * current text selected range, which is actually a range.
          */
         range: {
           name: "range",
           type: Object
         },
         /**
-         * Should the toolbar stick to the top so that it is always visible?
+         * Should toolbar stick to top so that it is always visible?
          */
         sticky: {
           name: "sticky",
@@ -267,14 +252,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           type: Array
         },
         /**
-         * Tracks the inline widgets that require selection data
+         * Tracks inline widgets that require selection data
          */
         __inlineWidgets: {
           name: "__inlineWidgets",
           type: Array
         },
         /**
-         * Optional space-sperated list of keyboard shortcuts for the editor
+         * Optional space-sperated list of keyboard shortcuts for editor
          * to fire this button, see iron-a11y-keys for more info.
          */
         __shortcutKeys: {
@@ -298,6 +283,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
 
+      this.alwaysVisible = false;
       this.canceled = true;
       this.collapsed = true;
       this.config = [
@@ -467,6 +453,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           ]
         }
       ];
+      this.moreIcon = "more-vert";
+      this.moreLabel = "More Buttons";
+      this.moreLabelToggled = "Fewer Buttons";
       this.moreShowTextLabel = false;
       this.responsiveSize = "xs";
       this.sticky = false;
@@ -520,9 +509,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         this.shadowRoot && this.shadowRoot.querySelector("#toolbar")
           ? this.shadowRoot.querySelector("#toolbar")
           : undefined;
-      console.log("after update", toolbar, this.shadowRoot);
       if (!!toolbar) {
-        console.log("morebutton", toolbar.querySelector("#morebutton"));
         let more = toolbar.querySelector("#morebutton"),
           max = 0,
           sizes = ["xs", "sm", "md", "lg", "xl"],
@@ -564,7 +551,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      */
     disconnectedCallback() {
       super.disconnectedCallback();
-      //unbind the the toolbar to the rich-text-editor-selection
+      //unbind toolbar to rich-text-editor-selection
       this.dispatchEvent(
         new CustomEvent("deselect-rich-text-editor-editor", {
           bubbles: true,
@@ -604,7 +591,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     }
 
     /**
-     * cancels edits to the active editor
+     * cancels edits to active editor
      * @returns {void}
      */
     cancel() {
@@ -619,13 +606,12 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      */
     editTarget(editor) {
       if (("editTarget", this.editor !== editor)) {
-        console.log(editor, this);
         //save changes to previous editor
         if (!!this.editor) {
           this.editor.contentEditable = false;
           this.editor = null;
         }
-        //bind the the toolbar to the rich-text-editor-selection
+        //bind toolbar to rich-text-editor-selection
         this.dispatchEvent(
           new CustomEvent("select-rich-text-editor-editor", {
             bubbles: true,
@@ -638,7 +624,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           })
         );
         this.editor = editor;
-        console.log(editor, this.editor);
         if (!!editor) {
           editor.parentNode.insertBefore(this, editor);
           this.canceled = editor.innerHTML;
@@ -656,7 +641,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     /**
      * Normalizes selected range data.
-     * @returns {object} the selected range
+     * @returns {object} selected range
      */
     getRange() {
       let sel = window.getSelection();
@@ -671,8 +656,8 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * paste content into a range;
      * override this function to make your own filters
      *
-     * @param {string} pasteContent the html to be pasted
-     * @returns {string} the filtered html as string
+     * @param {string} pasteContent html to be pasted
+     * @returns {string} filtered html as string
      */
     getSanitizeClipboard(pasteContent) {
       let regex = "<body(.*\n)*>(.*\n)*</body>";
@@ -700,11 +685,10 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * paste content into a range
      *
      * @param {object} range where content will be pasted
-     * @param {string} pasteContent the html to be pasted
+     * @param {string} pasteContent html to be pasted
      * @returns {void}
      */
     pasteIntoRange(range, pasteContent) {
-      console.log("pasteIntoRange", range, pasteContent);
       let div = document.createElement("div"),
         sel = window.getSelection(),
         parent = range.commonAncestorContainer.parentNode,
@@ -754,11 +738,11 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     }
 
     /**
-     * Adds a button to the toolbar
+     * Adds a button to toolbar
      *
-     * @param {object} child the child object in the config object
-     * @param {object} parent the parent object in the config object
-     * @returns {object} the button
+     * @param {object} child child object in config object
+     * @param {object} parent parent object in config object
+     * @returns {object} button
      */
     _addButton(child, parent) {
       let button = document.createElement(child.type),
@@ -787,9 +771,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     }
 
     /**
-     * when a shortcut key is pressed, fire the keypressed event on the button associated with it
-     * @param {object} editor the editor that detects a shortcut key
-     * @param {event} e the key event
+     * when a shortcut key is pressed, fire keypressed event on button associated with it
+     * @param {object} editor editor that detects a shortcut key
+     * @param {event} e key event
      */
 
     _handleShortcutKeys(editor, e) {
@@ -810,7 +794,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     /**
      * Handles paste.
      *
-     * @param {event} e the paste event
+     * @param {event} e paste event
      * @returns {void}
      */
     _handlePaste(e) {
@@ -836,7 +820,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     /**
      * Handles paste button.
      *
-     * @param {event} e the paste button event
+     * @param {event} e paste button event
      * @returns {void}
      */
     _handlePasteButton(e) {
@@ -860,7 +844,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     }
 
     /**
-     * Gets the updated selected range.
+     * Gets updated selected range.
      * @returns {void}
      */
     _rangeChange() {
@@ -873,8 +857,8 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     /**
      * updates breadcrumb sticky when sticky property changes
      *
-     * @param {boolean} newVal the new value
-     * @param {boolean} oldVal the old value
+     * @param {boolean} newVal new value
+     * @param {boolean} oldVal old value
      * @returns {void}
      */
     _stickyChanged(newVal, oldVal) {
@@ -883,17 +867,18 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     /**
      * Toggles collapsed mode when `rich-text-editor-more-button` is tapped
-     * @param {event} e the `rich-text-editor-more-button` tap event
+     * @param {event} e `rich-text-editor-more-button` tap event
      * @returns {void}
      */
     _toggleMore(e) {
+      console.log('_toggleMore',e);
       this.collapsed = !this.collapsed;
     }
   };
 };
 /**
  * `rich-text-editor-toolbar`
- * `default toolbar for the rich text editor`
+ * `default toolbar for rich text editor`
  *
  * @element rich-text-editor-toolbar
  */

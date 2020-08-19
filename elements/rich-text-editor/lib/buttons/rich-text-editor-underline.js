@@ -6,9 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-underline`
- * `a button for rich text editor (custom buttons can extend this)`
+ * a button for rich text editor (custom buttons can extend this)
  *
- * @rich-text-editor-underline
+ * @element rich-text-editor-underline
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
   LitElement

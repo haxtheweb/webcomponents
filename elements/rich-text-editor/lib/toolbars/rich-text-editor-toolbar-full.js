@@ -24,7 +24,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
   }
 
   static get styles() {
-    return [...this.baseStyles, ...this.stickyStyles];
+    return [...super.baseStyles, ...super.stickyStyles];
   }
 
   // render function for template

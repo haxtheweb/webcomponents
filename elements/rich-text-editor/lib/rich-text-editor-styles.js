@@ -13,7 +13,8 @@ const RichTextEditorStyles = function(SuperClass) {
     static get styles() {
       return [
         css`
-          :host, html {
+          :host,
+          html {
             --rich-text-editor-bg: #fafafa;
             --rich-text-editor-button-color: #444;
             --rich-text-editor-border-color: #ddd;

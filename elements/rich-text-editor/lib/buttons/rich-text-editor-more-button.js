@@ -6,9 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-more-button`
- * `a more button to toggle collapsed buttons in the rich text editor`
+ * a more button to toggle collapsed buttons in the rich text editor
  *
  * @element rich-text-editor-more-button
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
   LitElement
@@ -20,12 +21,14 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
     return "rich-text-editor-more-button";
   }
 
+  // render function for template
   render() {
     return super.render();
   }
 
   constructor() {
     super();
+    this.icon = "more-vert";
     this.collapseMax = "xs";
     this.toggled = false;
     this.label = "More buttons";
@@ -69,9 +72,7 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
    * Fires a button tap event
    */
   _buttonTap() {
-    this.dispatchEvent(
-      new CustomEvent("rich-text-more-button-tap", { detail: this })
-    );
+    return true;
   }
 }
 window.customElements.define(

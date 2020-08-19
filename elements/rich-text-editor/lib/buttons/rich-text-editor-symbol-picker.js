@@ -23,9 +23,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
   }
 
   static get styles() {
-    return [
-      ...super.styles
-    ];
+    return [...super.styles];
   }
 
   // render function for template
@@ -111,7 +109,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
       style: null
     };
   }
-  get symbols(){
+  get symbols() {
     return {
       symbols: [
         "&iexcl;",
