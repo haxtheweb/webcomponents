@@ -6,9 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
 /**
  * `rich-text-editor-heading-picker`
- * `a heading picker for the rich-text-editor`
+ * a heading picker for the rich-text-editor
  *
  * @element rich-text-editor-heading-picker
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
   LitElement
@@ -18,6 +19,12 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
    */
   static get tag() {
     return "rich-text-editor-heading-picker";
+  }
+
+  static get styles() {
+    return [
+      ...super.styles
+    ];
   }
 
   // render function for template

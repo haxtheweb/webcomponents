@@ -23,7 +23,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           :host {
             margin: 0 var(--rich-text-editor-button-margin);
           }
-          :host simple-picker {
+          simple-picker {
             --simple-picker-border-radius: 0px;
             --simple-picker-color: var(--rich-text-editor-button-color);
             --simple-picker-color-active: var(
@@ -37,12 +37,14 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
               --rich-text-editor-border-color
             );
             --simple-picker-border-width: 0px;
-            --simple-picker-option-size: 18px;
+            --simple-picker-option-size: 24px;
+            --simple-picker-icon-size: 16px;
             --simple-picker-options-border-width: 1px;
           }
         `
       ];
     }
+
     render() {
       return html`
         <simple-picker
@@ -134,24 +136,24 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * @returns {boolean} whether the button is toggled
      *
      */
-    get toggled() {
+    get isToggled() {
       let selectors = this.options
           ? [...this.options]
               .map(option => option.value)
               .filter(option => !!option && option !== "")
               .join(",")
-          : null,
+          : undefined,
         parent =
-          this.range !== null && this.range.commonAncestorContainer
+          !!this.range && this.range.commonAncestorContainer
             ? this.range.commonAncestorContainer.parentNode
-            : null;
-      this.shadowRoot.querySelector("#button").value =
+            : undefined;
+      this.value =
         this.command === "formatBlock" &&
         selectors &&
         parent &&
-        parent.closest(selectors) !== null
+        !!parent.closest(selectors)
           ? parent.closest(selectors).tagName.toLowerCase()
-          : null;
+          : undefined;
       return false;
     }
 
@@ -181,14 +183,9 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      */
     _pickerChange(e) {
       let val = this.shadowRoot.querySelector("#button").value;
-      console.log(
-        "_pickerChange",
-        this.shadowRoot.querySelector("#button").value
-      );
       e.preventDefault();
-      if (val !== null && this.range !== undefined && this.range !== null) {
+      if (!!val && !!this.range && !!this.range) {
         this.commandVal = this.shadowRoot.querySelector("#button").value;
-        console.log("commandVal", this.commandVal);
         this.doTextOperation();
         if (this.block !== true) {
           this.shadowRoot.querySelector("#button").value = null;
@@ -221,7 +218,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * @param {array} default list of icons for the picker
      * @param {boolean} allow a null value for the picker
      */
-    _getPickerOptions(options = [], allowNull = false, icon = null) {
+    _getPickerOptions(options = [], allowNull = false, icon = undefined) {
       let items = [],
         cols =
           Math.sqrt(options.length) < 11
@@ -231,7 +228,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         let row = Math.floor(i / cols),
           col = i - row * cols,
           data = this._getOptionData(options[i]);
-        if (items[row] === undefined || items[row] === null) items[row] = [];
+        if (!items[row]) items[row] = [];
         items[row][col] = data;
       }
       return items;
@@ -243,6 +240,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
  * a picker for rich text editor (custom buttons can extend this)
  *
  * @element rich-text-editor-picker
+ * @demo ./demo/buttons.html
  */
 class RichTextEditorPicker extends RichTextEditorPickerBehaviors(LitElement) {}
 window.customElements.define(RichTextEditorPicker.tag, RichTextEditorPicker);
