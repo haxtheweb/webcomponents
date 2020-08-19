@@ -15,11 +15,11 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 class LrndesignImagemap extends LitElement {
   constructor() {
     super();
-    this.label=null;
-    this.src=null;
-    this.hotspotDetails=[];
-    this.subtopicOf=null;
-    this.tag=null;
+    this.label = null;
+    this.src = null;
+    this.hotspotDetails = [];
+    this.subtopicOf = null;
+    this.tag = null;
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
     import("@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js");
   }
@@ -50,7 +50,7 @@ class LrndesignImagemap extends LitElement {
           display: block;
         }*/
         }
-        `
+      `
     ];
   }
 
@@ -68,14 +68,14 @@ class LrndesignImagemap extends LitElement {
       <div id="svg"></div>
       <div id="buttons"></div>
       <slot></slot>
-       
+
       <iron-ajax
         auto=""
         id="get_svg"
         url="${this.src}"
         handle-as="text"
         @response="${this._getSVGHandler}"
-      ></iron-ajax> 
+      ></iron-ajax>
     `;
   }
   static get tag() {
@@ -100,7 +100,7 @@ class LrndesignImagemap extends LitElement {
        */
       hotspotDetails: {
         type: Array,
-        attribute:"hotspot-details"
+        attribute: "hotspot-details"
       },
       /*
        * optional: the id of the heading element that this imagemap is a subtopic of

@@ -32,14 +32,14 @@ class LrndesignImagemapHotspot extends LitElement {
    */
   render() {
     return html`
-    <simple-popover for="${this.hotspotId}" auto>
-      <relative-heading
-        id="heading"
-        ?hidden="${!this.label}"
-        text="${this.label}"
-      >
-      </relative-heading>
-      <div id="desc"><slot></slot></div>
+      <simple-popover for="${this.hotspotId}" auto>
+        <relative-heading
+          id="heading"
+          ?hidden="${!this.label}"
+          text="${this.label}"
+        >
+        </relative-heading>
+        <div id="desc"><slot></slot></div>
       </simple-popover>
     `;
   }
@@ -50,7 +50,7 @@ class LrndesignImagemapHotspot extends LitElement {
     super();
     this.label = null;
     this.hotspotId = null;
-    this.for=null;
+    this.for = null;
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
   }
   static get tag() {
@@ -66,7 +66,6 @@ class LrndesignImagemapHotspot extends LitElement {
         type: String
       },
 
-      
       /**
        * Id of hotspot element inside the SVG
        */
@@ -78,8 +77,7 @@ class LrndesignImagemapHotspot extends LitElement {
   }
 
   setParentHeading(parent) {
-    
-    this.shadowRoot.querySelector("#heading").parent=parent;
+    this.shadowRoot.querySelector("#heading").parent = parent;
   }
 }
 window.customElements.define(
