@@ -65,7 +65,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
           background-color: var(--rich-text-editor-button-bg);
         }
         #cancel:focus,
-         #cancel:hover {
+        #cancel:hover {
           color: var(--rich-text-editor-button-hover-color);
           background-color: var(--rich-text-editor-button-hover-bg);
         }

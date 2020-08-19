@@ -104,7 +104,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         <div
           id="toolbar"
           aria-live="polite"
-          aria-hidden="${this.controls || this.alwaysVisible ? "false" : "true"}"
+          aria-hidden="${this.controls || this.alwaysVisible
+            ? "false"
+            : "true"}"
           ?collapsed="${this.collapsed}"
         >
           <rich-text-editor-more-button
@@ -125,7 +127,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     // render function for template
     render() {
-      return html`${this.toolbarTemplate}`;
+      return html`
+        ${this.toolbarTemplate}
+      `;
     }
 
     // properties available to custom element for data binding
@@ -871,7 +875,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _toggleMore(e) {
-      console.log('_toggleMore',e);
+      console.log("_toggleMore", e);
       this.collapsed = !this.collapsed;
     }
   };

@@ -102,7 +102,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} the selected node
    */
   expandSelection(searchTag, wrapTag) {
-    console.log('expandSelection',searchTag,wrapTag);
+    console.log("expandSelection", searchTag, wrapTag);
     return (
       this.selectAncestor(!!searchTag) ||
       this.wrap(!!wrapTag ? document.createElement(wrapTag) : null)
@@ -152,7 +152,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} the selected node
    */
   selectAncestor(tagName) {
-    console.log('selectAncestor',tagName,wrapTag);
+    console.log("selectAncestor", tagName, wrapTag);
     let wrapper,
       getMatchingTag = ancestor => {
         if (
