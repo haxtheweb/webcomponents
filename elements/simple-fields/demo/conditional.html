@@ -19,73 +19,73 @@
       <h1>simple-fields with Conditional Field Behaviors</h1>
       <demo-snippet>
         <style>#submission {width: 100%;}</style>
-        <script>
-          window.onload = () => {
-            let simplefields = document.getElementById('simplefields'),
-              usa = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ],
-              can = ['AB', 'BC', 'MB', 'NB', 'NL', 'NT', 'NS', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT'];
-            simplefields.addEventListener("country-value-changed",(e) => {
-              console.log("country-value-changed",e,e.detail.value === "USA" ? usa : can);
-              simplefields.formElements["province"].element.itemsList = e.detail.value === "USA" ? usa : can;
-              simplefields.formElements["province"].element.value = simplefields.formElements["province"].element.itemsList[0];
-            });
-            simplefields.addEventListener("contact-value-changed",(e) => {
-              console.log("contact-value-changed",e);
-                simplefields.formElements["phoneNumbers"].element.value = undefined;
-                simplefields.formElements["phoneNumbers"].element.hidden = !e.detail.value;
-            });
-            simplefields.schema = {
-              $schema: "http://json-schema.org/schema#",
-              title: "Store",
-              type: "object",
-              properties: {
-                country: {
-                  title: "Country",
-                  type: "string",
-                  itemsList: ["USA", "Canada"]
-                },
-                province: {
-                  title: "State/Province",
-                  type: "string",
-                  itemsList: usa
-                },
-                contact: {
-                  title: "Contact me by phone.",
-                  type: "boolean"
-                },
-                phoneNumbers: {
-                  title: "Phone numbers",
-                  description: "List phone numbers and type of number.",
-                  type: "array",
-                  hidden: true,
-                  items: {
-                    type: "object",
-                    previewBy: ["phoneNumber"],
-                    properties: {
-                      type: {
-                        title: "Type",
-                        type: "string",
-                        options: {
-                          "cell": "Cell",
-                          "home": "Home",
-                          "work": "Work"
-                        }
-                      },
-                      phoneNumber: {
-                        title: "Phone Number",
-                        type: "string"
-                      }
-                    }
-                  }
-                }
-              }
-            };
-          };
-        </script>
         <template>
           <form id="form">
             <simple-fields id="simplefields"></simple-fields>
           </form>
+          <script>
+            window.onload = () => {
+              let simplefields = document.getElementById('simplefields'),
+                usa = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ],
+                can = ['AB', 'BC', 'MB', 'NB', 'NL', 'NT', 'NS', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT'];
+              simplefields.addEventListener("country-value-changed",(e) => {
+                console.log("country-value-changed",e,e.detail.value === "USA" ? usa : can);
+                simplefields.formElements["province"].element.itemsList = e.detail.value === "USA" ? usa : can;
+                simplefields.formElements["province"].element.value = simplefields.formElements["province"].element.itemsList[0];
+              });
+              simplefields.addEventListener("contact-value-changed",(e) => {
+                console.log("contact-value-changed",e);
+                  simplefields.formElements["phoneNumbers"].element.value = undefined;
+                  simplefields.formElements["phoneNumbers"].element.hidden = !e.detail.value;
+              });
+              simplefields.schema = {
+                $schema: "http://json-schema.org/schema#",
+                title: "Store",
+                type: "object",
+                properties: {
+                  country: {
+                    title: "Country",
+                    type: "string",
+                    itemsList: ["USA", "Canada"]
+                  },
+                  province: {
+                    title: "State/Province",
+                    type: "string",
+                    itemsList: usa
+                  },
+                  contact: {
+                    title: "Contact me by phone.",
+                    type: "boolean"
+                  },
+                  phoneNumbers: {
+                    title: "Phone numbers",
+                    description: "List phone numbers and type of number.",
+                    type: "array",
+                    hidden: true,
+                    items: {
+                      type: "object",
+                      previewBy: ["phoneNumber"],
+                      properties: {
+                        type: {
+                          title: "Type",
+                          type: "string",
+                          options: {
+                            "cell": "Cell",
+                            "home": "Home",
+                            "work": "Work"
+                          }
+                        },
+                        phoneNumber: {
+                          title: "Phone Number",
+                          type: "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              };
+            };
+          </script>
         </template>
       </demo-snippet>
     </div>

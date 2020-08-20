@@ -256,7 +256,11 @@ export class StorybookUtilities {
           let type = props[property].type;
           return {
             property: property,
-            inputMethod: type ? type.name.toLowerCase() : "textfield"
+            inputMethod: !type 
+              ? "textfield" 
+              : type.name 
+              ? type.name.toLowerCase() 
+              : type.toLowerCase()
           };
         });
   }
