@@ -26,12 +26,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       return {
         ...super.properties,
         /**
-         * if the selection is more than just a single text node, allow edits via code-editor?
-         */
-        editableSelection: {
-          type: Boolean
-        },
-        /**
          * fields for the prompt popover.
          */
         fields: {
@@ -100,7 +94,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       this.inlineWidget = false;
       this.fields = [
         {
-          property: "",
+          slot: "",
           title: "Text",
           description: "The inner text",
           inputMethod: "textfield"
@@ -125,24 +119,11 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       this.selectRange();
       this.open();
     }
-
     /**
-     * cleans a field value if needed
-     * @param {string} prop field property name
-     * @returns {object} val the cleaned property value
-     */
-    getCleanValue(prop) {
-      let val = this.value[prop];
-      if (val && typeof val === "string")
-        val = val.replace(/[\s\n\t]+/g, " ").trim();
-      return val;
-    }
-    /**
-     * updates the insertion based on fields
+     * cancels the changes
      */
     cancel() {
-      this.value = this.__oldValue;
-      this.confirm();
+      this.deselect();
     }
 
     /**
@@ -157,15 +138,19 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * deselects the text
      */
     deselect() {
+      console.log('deselect',this.__prompt,this.__selection,this.__selectionContents);
       this.__prompt.clearTarget("");
       this.__selection.normalize();
-      this.__selection.parentNode.insertBefore(
-        this.__selectionContents,
-        this.__selection
-      );
-      this.__selection.range.selectNode(this.__selectionContents);
+      this.__selection.childNodes.forEach(child=>{
+        this.__selection.parentNode.insertBefore(
+          child,
+          this.__selection
+        );
+        this.__selection.range.selectNode(child);
+      });
       this.__selection.range.collapse();
       this.__selection.hidden = true;
+      console.log('deselect 2',this.__prompt,this.__selection,this.__selectionContents);
     }
 
     /**
@@ -225,15 +210,16 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     }
 
     selectRange() {
-      console.log("selectRange", this.tag);
+      console.log('selectRange',this.tag);
       this.__selectionContents = this.__selection.expandSelection(this.tag);
-      console.log("selectRange 2", this.__selectionContents);
+      console.log('selectRange 2',this.__selectionContents);
     }
 
     /**
      * Handles selecting text and opening prompt
      */
     open() {
+      console.log("open", this.__selection);
       this.__selection.addHighlight();
       this.updatePrompt();
       this.__prompt.setTarget(this);
@@ -244,86 +230,15 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * updates prompt fields with selected range data
      */
     updatePrompt() {
-      this.__oldValue = this.value;
-      let el = this.__selectionContents;
-      this.__promptFields = [];
-      el.normalize();
-      el.innerHTML.trim();
-      console.log("updatePrompt", this.fields);
-      this.__promptFields = this.fields.map(field =>
-        this._getFieldVal(el, field)
-      );
-    }
-
-    _getFieldVal(el, field) {
-      console.log("_createField", el, field);
-      if (!!field.property && field.property !== "") {
-        this.value[field.property] = el
-          ? el.getAttribute(field.property)
-          : undefined;
-      } else if (!!field.slot && field.slot !== "") {
-        this.value[field.slot] =
-          el & el.querySelector(field.slot)
-            ? el
-                .querySelector(field.slot)
-                .innerHTML.replace(/[\s\n\t]+/g, " ")
-                .trim()
-            : undefined;
-      } else {
-        this.value[""] = el
-          ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
-          : "";
-        if (!this.__slotInputMethod) this.__slotInputMethod = field.inputMethod;
-        if (
-          (el.childNodes.length === 1 &&
-            el.childNodes[0].nodeType !== Node.TEXT_NODE) ||
-          el.childNodes.length > 1
-        ) {
-          field.hidden = !this.editableSelection;
-          field.inputMethod = "code-editor";
-        } else {
-          field.inputMethod = this.__slotInputMethod;
-          field.hidden = false;
-        }
-      }
-      return field;
+      console.log('updatePrompt',this.value);
+      this.__promptFields = JSON.parse(JSON.stringify(this.fields));
     }
 
     /**
      * updates the insertion based on fields
      */
     updateSelection() {
-      this.__selection.innerHTML = "";
-      let selection = document.createTextNode(this.getCleanValue(""));
-      if (this._getTagNeeded(this.value)) {
-        selection = document.createElement(this.tag);
-        this.fields.forEach(field => {
-          if (field.property) {
-            selection.setAttribute(
-              field.property,
-              this.getCleanValue(field.property)
-            );
-          } else if (field.slot && field.slot !== "") {
-            let slot = this.getCleanValue(field.slot);
-            selection.innerHTML += `<span slot="${field.slot}">${slot}</slot>`;
-          } else {
-            selection.innerHTML += `${this.getCleanValue("")}`;
-          }
-        });
-      } else {
-        selection.innerHTML += `${this.getCleanValue("")}`;
-      }
-      this.__selectionContents = selection;
-      if (selection) this.__selection.appendChild(selection);
-    }
-
-    /**
-     * determines if the tag is needed for the element
-     * @param {object} value the prompt values
-     * @returns {boolean} if the tag is needed for the element
-     */
-    _getTagNeeded(value) {
-      return value && this.getCleanValue("") && this.getCleanValue("") !== "";
+      console.log('updateSelection',this.__selection);
     }
   };
 };

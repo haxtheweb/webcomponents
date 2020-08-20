@@ -117,8 +117,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
             <paper-button
               id="confirm"
               class="rtebutton"
-              controls$="[[for]]"
-              on-click="_confirm"
+              controls="${this.for}"
+              @click="${this._confirm}"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden="true" icon="check"> </iron-icon>
@@ -126,20 +126,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
             </paper-button>
             <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
           </div>
-          <iron-a11y-keys
-            id="a11ycancel"
-            .target="${this.__a11ycancel}"
-            keys="enter space"
-            @keys-pressed="${this._cancel}"
-          >
-          </iron-a11y-keys>
-          <iron-a11y-keys
-            id="a11yconfirm"
-            .target="${this.__a11yconfirm}"
-            keys="enter space"
-            @keys-pressed="${this._confirm}"
-          >
-          </iron-a11y-keys>
         </form>
       </simple-popover>
     `;
@@ -207,9 +193,9 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__a11yconfirm = this.shadowRoot.querySelector("#confirm");
+    /*this.__a11yconfirm = this.shadowRoot.querySelector("#confirm");
     this.__a11ycancel = this.shadowRoot.querySelector("#cancel");
-    /*
+    
     TODO blur  doesnt work with select dropdowns
      this.addEventListener("blur", e => {
       console.log("blur", document.activeElement);
@@ -224,7 +210,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   setTarget(button) {
     this.clearTarget();
-    this.fields = button.__fields;
+    this.fields = button.__promptFields;
     this.value = button.value;
     this.__button = button;
     if (button.__selection) this.for = button.__selection.getAttribute("id");
@@ -235,6 +221,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   clearTarget() {
+    console.log('clearTarget',this.value,this.fields);
     if (!this.__button) return;
     this.for = undefined;
     this.fields = undefined;
@@ -247,6 +234,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   _cancel(e) {
+    console.log('_confirm',e,this.__button);
     e.preventDefault();
     if (!this.__button) return;
     this.__button.cancel();
@@ -258,6 +246,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   _confirm(e) {
+    console.log('_confirm',e,this.value,this.__button);
     e.preventDefault();
     this.__button.value = this.value;
     this.__button.confirm();

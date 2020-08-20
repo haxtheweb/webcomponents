@@ -50,33 +50,30 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.command = "underline";
     this.shortcutKeys = "ctrl+u";
     this.value = {
-      tag: false
+      confirm: false
     };
     console.log(this.fields, this.value);
-  }
-
-  /**
-   * a <u> tag is only needed if there is text content
-   * and the tag usability warning is confirmed
-   * @param {object} value the prompt values
-   * @returns {boolean} if the tag is needed for the element
-   */
-  _getTagNeeded(value) {
-    return (
-      value &&
-      this.getCleanValue("") &&
-      this.getCleanValue("") !== "" &&
-      this.getCleanValue("confirm") &&
-      this.getCleanValue("confirm")
-    );
   }
 
   /**
    * updates prompt fields with selected range data
    */
   updatePrompt() {
-    console.log("updatePrompt", this.fields);
+    console.log('updatePrompt',this.range,document.queryCommandState(this.command));
     super.updatePrompt();
+    this.value = { 
+      confirm: this.isToggled || 
+      (this.__selectionContents.tagName && this.__selectionContents.tagName.toLowerCase() === this.tag.toLowerCase()) 
+    };
+    console.log('updatePrompt 2',this.value,document.queryCommandState(this.command));
+  }
+
+  /**
+   * updates the insertion based on fields
+   */
+  updateSelection() {
+    this.doTextOperation(this.__prompt.value);
+    console.log('updateSelection 2',this.__prompt.value,this.__selection);
   }
 }
 window.customElements.define(

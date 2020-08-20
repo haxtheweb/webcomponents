@@ -60,10 +60,10 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    */
   _getTagNeeded(value) {
     return (
-      value &&
-      this.getCleanValue("") &&
+      !!value &&
+      !!this.getCleanValue("") &&
       this.getCleanValue("") !== "" &&
-      this.getCleanValue("href") &&
+      !!this.getCleanValue("href") &&
       this.getCleanValue("href") !== null
     );
   }

@@ -85,6 +85,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
    * @returns {void}
    */
   _rangeChange(e) {
+    console.log('_rangeChange',e);
     super._rangeChange(e);
     if (this.__breadcrumbs) this.__breadcrumbs.range = this.range;
   }
@@ -96,7 +97,11 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
    * @returns {void}
    */
   _handleBreadcrumb(e) {
-    if (e.detail.target) this.range.selectNode(e.detail.target);
+    console.log('_handleBreadcrumb',e.detail.target);
+    if (e.detail.target) {
+      this.range.selectNode(e.detail.target);
+      this._rangeChange(e);
+    }
   }
 
   /**
@@ -106,6 +111,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
    * @returns {void}
    */
   _preserveSelection() {
+    console.log('_preserveSelection',this.__breadcrumbs.range);
     super._preserveSelection();
     if (this.__breadcrumbs) this.__breadcrumbs.range = temp;
   }

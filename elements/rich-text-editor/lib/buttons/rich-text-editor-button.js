@@ -344,9 +344,9 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     /**
      * excutes the button's command
      */
-    doTextOperation() {
+    doTextOperation(toggle = !this.isToggled) {
       let range = this.range;
-      if (this.isToggled && !!this.toggledCommand) {
+      if (!toggle && !!this.toggledCommand) {
         document.execCommand(
           this.toggledCommand,
           false,
