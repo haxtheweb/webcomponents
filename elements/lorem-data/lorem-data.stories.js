@@ -87,7 +87,7 @@ export const LoremDataStory = () => {
       min: 3,
       max: 5
     }
-  }
+  };
   return utils.makeElementFromClass(LoremData, {
     schemas: schemas
   });

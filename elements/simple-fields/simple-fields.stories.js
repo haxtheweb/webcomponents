@@ -18,165 +18,186 @@ export default {
 };
 const utils = new StorybookUtilities();
 const css = [
-  {css: "--simple-fields-margin", title: "vertical margin around container" },
-  {css: "--simple-fields-margin-small", title: "smaller vertical margin above field itself" },
-  {css: "--simple-fields-border-radus", title: "default border-radius" },
-  {css: "--simple-fields-color", title: "text color	black" },
-  {css: "--simple-fields-error-color", title: "error text color" },
-  {css: "--simple-fields-accent-color", title: "accent text/underline color" },
-  {css: "--simple-fields-border-color", title: "border-/underline color"},
-  {css: "--simple-fields-border-color-light", title: "used for range tracks" },
-  {css: "--simple-fields-faded-error-color", title: "used for range tracks" },
-  {css: "--simple-fields-font-size", title: "font-size of field" },
-  {css: "--simple-fields-font-family", title: "font-size of field" },
-  {css: "--simple-fields-line-height", title: "line-height of field" },
-  {css: "--simple-fields-detail-font-size", title: "font-size of field details" },
-  {css: "--simple-fields-detail-font-family", title: "font-size of field details" },
-  {css: "--simple-fields-detail-line-height", title: "line-height of field details" },
-  {css: "--simple-fields-disabled-color", title: "disabled text color" },
-  {css: "--simple-fields-disabled-opacity", title: "opacity for disabled field" },
-  {css: "--simple-fields-radio-option-display", title: "display label with field (flex) or above (block)" },
-  {css: "--simple-fields-radio-option-flex-wrap", title: "allow radio options to wrap to next line" }
+  { css: "--simple-fields-margin", title: "vertical margin around container" },
+  {
+    css: "--simple-fields-margin-small",
+    title: "smaller vertical margin above field itself"
+  },
+  { css: "--simple-fields-border-radus", title: "default border-radius" },
+  { css: "--simple-fields-color", title: "text color	black" },
+  { css: "--simple-fields-error-color", title: "error text color" },
+  { css: "--simple-fields-accent-color", title: "accent text/underline color" },
+  { css: "--simple-fields-border-color", title: "border-/underline color" },
+  { css: "--simple-fields-border-color-light", title: "used for range tracks" },
+  { css: "--simple-fields-faded-error-color", title: "used for range tracks" },
+  { css: "--simple-fields-font-size", title: "font-size of field" },
+  { css: "--simple-fields-font-family", title: "font-size of field" },
+  { css: "--simple-fields-line-height", title: "line-height of field" },
+  {
+    css: "--simple-fields-detail-font-size",
+    title: "font-size of field details"
+  },
+  {
+    css: "--simple-fields-detail-font-family",
+    title: "font-size of field details"
+  },
+  {
+    css: "--simple-fields-detail-line-height",
+    title: "line-height of field details"
+  },
+  { css: "--simple-fields-disabled-color", title: "disabled text color" },
+  {
+    css: "--simple-fields-disabled-opacity",
+    title: "opacity for disabled field"
+  },
+  {
+    css: "--simple-fields-radio-option-display",
+    title: "display label with field (flex) or above (block)"
+  },
+  {
+    css: "--simple-fields-radio-option-flex-wrap",
+    title: "allow radio options to wrap to next line"
+  }
 ];
 export const SimpleFieldsStory = () => {
   let fields = [
       {
-        "property": "name",
-        "title": "What is your name?",
-        "description": "Enter your real name or an alias.",
-        "inputMethod": "textfield",
-        "required": true
+        property: "name",
+        title: "What is your name?",
+        description: "Enter your real name or an alias.",
+        inputMethod: "textfield",
+        required: true
       },
       {
-        "property": "alias",
-        "title": "This is an alias.",
-        "description": "",
-        "inputMethod": "boolean"
+        property: "alias",
+        title: "This is an alias.",
+        description: "",
+        inputMethod: "boolean"
       },
       {
-        "property": "profileImage",
-        "title": "Profile Image",
-        "description": "Maximum size 400px X 400px.",
-        "inputMethod": "haxupload",
-        "validationType": "url"
+        property: "profileImage",
+        title: "Profile Image",
+        description: "Maximum size 400px X 400px.",
+        inputMethod: "haxupload",
+        validationType: "url"
       },
       {
-        "property": "biographical",
-        "title": "Bigraphical Information",
-        "inputMethod": "fieldset",
-        "properties": [
+        property: "biographical",
+        title: "Bigraphical Information",
+        inputMethod: "fieldset",
+        properties: [
           {
-            "property": "icon",
-            "title": "Pick an icon.",
-            "inputMethod": "iconpicker"
+            property: "icon",
+            title: "Pick an icon.",
+            inputMethod: "iconpicker"
           },
           {
-            "property": "color",
-            "title": "Your favorite  color.",
-            "inputMethod": "colorpicker"
+            property: "color",
+            title: "Your favorite  color.",
+            inputMethod: "colorpicker"
           },
           {
-            "property": "sword",
-            "title": "Your sword's name.",
-            "inputMethod": "select",
-            "allowNull": false,
-            "options": {
-              "none": "None",
-              "blackfyre": "Blackfyre",
-              "brightroar": "Brightroar",
-              "darksister": "Dark Sister",
-              "dawn": "Dawn",
-              "hearteater": "Heart Eater",
-              "heartsbane": "Heartsbane",
-              "ice": "Ice",
-              "ladyforlorn": "Lady Horlorn",
-              "lightbringer": "Lightbringer",
-              "lionstooth": "Lion's Tooth",
-              "longclaw": "Longclaw",
-              "needle": "Needle",
-              "oathkeeper": "Oathkeeper",
-              "widowswail": "Widow's Wail"
+            property: "sword",
+            title: "Your sword's name.",
+            inputMethod: "select",
+            allowNull: false,
+            options: {
+              none: "None",
+              blackfyre: "Blackfyre",
+              brightroar: "Brightroar",
+              darksister: "Dark Sister",
+              dawn: "Dawn",
+              hearteater: "Heart Eater",
+              heartsbane: "Heartsbane",
+              ice: "Ice",
+              ladyforlorn: "Lady Horlorn",
+              lightbringer: "Lightbringer",
+              lionstooth: "Lion's Tooth",
+              longclaw: "Longclaw",
+              needle: "Needle",
+              oathkeeper: "Oathkeeper",
+              widowswail: "Widow's Wail"
             }
           },
           {
-            "property": "bio",
-            "title": "Bio",
-            "description": "Write a short bio.",
-            "inputMethod": "textarea"
+            property: "bio",
+            title: "Bio",
+            description: "Write a short bio.",
+            inputMethod: "textarea"
           }
         ]
       },
       {
-        "property": "relationships",
-        "inputMethod": "tabs",
-        "properties": [
-          { 
-            "property": "siblings",
-            "title": "Siblings",
-            "properties": [
+        property: "relationships",
+        inputMethod: "tabs",
+        properties: [
+          {
+            property: "siblings",
+            title: "Siblings",
+            properties: [
               {
-                "property": "siblingsList",
-                "title": "Enter the names of your siblings.",
-                "inputMethod": "array",
-                "itemLabel": "name",
-                "properties": [
+                property: "siblingsList",
+                title: "Enter the names of your siblings.",
+                inputMethod: "array",
+                itemLabel: "name",
+                properties: [
                   {
-                    "property": "name",
-                    "title": "Sibling Name",
-                    "inputMethod": "textfield"
+                    property: "name",
+                    title: "Sibling Name",
+                    inputMethod: "textfield"
                   },
                   {
-                    "property": "dead",
-                    "title": "Is sibling dead?",
-                    "inputMethod": "boolean"
-                  }
-                ]
-              }
-            ]
-          },
-          { 
-            "property": "allies",
-            "title": "Allies",
-            "properties": [
-              {
-                "property": "alliesList",
-                "title": "List your allies.",
-                "inputMethod": "array",
-                "itemLabel": "name",
-                "properties": [
-                  {
-                    "property": "name",
-                    "title": "Ally Name",
-                    "inputMethod": "textfield"
-                  },
-                  {
-                    "property": "dead",
-                    "title": "Is ally dead?",
-                    "inputMethod": "boolean"
+                    property: "dead",
+                    title: "Is sibling dead?",
+                    inputMethod: "boolean"
                   }
                 ]
               }
             ]
           },
           {
-            "property": "enemies",
-            "title": "Enemies",
-            "properties": [
+            property: "allies",
+            title: "Allies",
+            properties: [
               {
-                "property": "enemiesList",
-                "title": "List your enemies.",
-                "inputMethod": "array",
-                "itemLabel": "name",
-                "properties": [
+                property: "alliesList",
+                title: "List your allies.",
+                inputMethod: "array",
+                itemLabel: "name",
+                properties: [
                   {
-                    "property": "name",
-                    "title": "Enemy Name",
-                    "inputMethod": "textfield"
+                    property: "name",
+                    title: "Ally Name",
+                    inputMethod: "textfield"
                   },
                   {
-                    "property": "dead",
-                    "title": "Is enemy dead?",
-                    "inputMethod": "boolean"
+                    property: "dead",
+                    title: "Is ally dead?",
+                    inputMethod: "boolean"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            property: "enemies",
+            title: "Enemies",
+            properties: [
+              {
+                property: "enemiesList",
+                title: "List your enemies.",
+                inputMethod: "array",
+                itemLabel: "name",
+                properties: [
+                  {
+                    property: "name",
+                    title: "Enemy Name",
+                    inputMethod: "textfield"
+                  },
+                  {
+                    property: "dead",
+                    title: "Is enemy dead?",
+                    inputMethod: "boolean"
                   }
                 ]
               }
@@ -185,70 +206,70 @@ export const SimpleFieldsStory = () => {
         ]
       },
       {
-        "property": "hiddenField",
-        "title": "Hidden",
-        "description": "I'm a hidden field. You can't see me.",
-        "inputMethod": "boolean",
-        "hidden": true
+        property: "hiddenField",
+        title: "Hidden",
+        description: "I'm a hidden field. You can't see me.",
+        inputMethod: "boolean",
+        hidden: true
       },
       {
-        "property": "winter",
-        "title": "When is winter coming?",
-        "inputMethod": "datepicker"
+        property: "winter",
+        title: "When is winter coming?",
+        inputMethod: "datepicker"
       },
       {
-        "property": "code",
-        "title": "This is your favorite code snippet.",
-        "inputMethod": "code-editor"
+        property: "code",
+        title: "This is your favorite code snippet.",
+        inputMethod: "code-editor"
       },
       {
-        "property": "markup",
-        "title": "This is your favorite markup snippet.",
-        "inputMethod": "markup"
+        property: "markup",
+        title: "This is your favorite markup snippet.",
+        inputMethod: "markup"
       }
     ],
     value = {
-      "name": "No One",
-      "alias": true,
-      "biographical": {
-        "bio": "Once upon a time...",
-        "sword": "needle",
-        "color": "red",
-        "icon": "icons:visibility-off"
+      name: "No One",
+      alias: true,
+      biographical: {
+        bio: "Once upon a time...",
+        sword: "needle",
+        color: "red",
+        icon: "icons:visibility-off"
       },
-      "relationships": {
-        "siblings": {
-          "siblingsList": [
-            { "name": "Rob Stark", "dead": true  },
-            { "name": "Jon Snow", "dead": false  },
-            { "name": "Sansa Stark", "dead": false  },
-            { "name": "Bran Stark", "dead": false  },
-            { "name": "Rickon Stark", "dead": true  }
+      relationships: {
+        siblings: {
+          siblingsList: [
+            { name: "Rob Stark", dead: true },
+            { name: "Jon Snow", dead: false },
+            { name: "Sansa Stark", dead: false },
+            { name: "Bran Stark", dead: false },
+            { name: "Rickon Stark", dead: true }
           ]
         },
-        "allies": {
-          "alliesList": [
-            { "name": "Syrio Forel", "dead": true },
-            { "name": "Gendry", "dead": false },
-            { "name": "Jaquen Hagar", "dead": false },
-            { "name": "Sandor Clegane", "dead": true },
-            { "name": "Brienne of Tarth", "dead": false } 
+        allies: {
+          alliesList: [
+            { name: "Syrio Forel", dead: true },
+            { name: "Gendry", dead: false },
+            { name: "Jaquen Hagar", dead: false },
+            { name: "Sandor Clegane", dead: true },
+            { name: "Brienne of Tarth", dead: false }
           ]
         },
-        "enemies": {
-          "enemiesList": [
-            { "name": "Joffrey Baratheon", "dead": true },
-            { "name": "Cersei Lannister", "dead": true },
-            { "name": "Gregor Clegane", "dead": true },
-            { "name": "Meryn Trant", "dead": true },
-            { "name": "Ilyn Payne", "dead": true },
-            { "name": "Sandor Clegane", "dead": true }
+        enemies: {
+          enemiesList: [
+            { name: "Joffrey Baratheon", dead: true },
+            { name: "Cersei Lannister", dead: true },
+            { name: "Gregor Clegane", dead: true },
+            { name: "Meryn Trant", dead: true },
+            { name: "Ilyn Payne", dead: true },
+            { name: "Sandor Clegane", dead: true }
           ]
         }
       },
-      "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
-      "markup": "_What do we say to Death?_ *Not today.*",
-      "winter": "12/21/2019"
+      code: "<p>What do we say to Death?</p>\n<p>Not today.</p>",
+      markup: "_What do we say to Death?_ *Not today.*",
+      winter: "12/21/2019"
     };
   return utils.makeElementFromClass(
     SimpleFields,
@@ -276,7 +297,7 @@ export const SimpleFieldsLiteStory = () => {
       title: "Store",
       type: "object",
       format: "tabs",
-      required: [ "name", "email" ],
+      required: ["name", "email"],
       properties: {
         settings: {
           title: "Settings",
@@ -362,7 +383,7 @@ export const SimpleFieldsLiteStory = () => {
                 },
                 closed: {
                   title: "Closed",
-                  type: "boolean",
+                  type: "boolean"
                 },
                 closedDate: {
                   title: "Closed Date",
@@ -372,94 +393,94 @@ export const SimpleFieldsLiteStory = () => {
               }
             },
             arrays: {
-            title: "Basic arrays page",
-            description: "Demonstrates arrays",
-            type: "object",
-            properties: {
-              phoneNumbers: {
-                title: "Phone numbers",
-                description: "List phone numbers and type of number.",
-                type: "array",
-                items: {
-                  type: "object",
-                  previewBy: ["phoneNumber"],
-                  properties: {
-                    type: {
-                      title: "Type",
-                      type: "string",
-                      format: "radio",
-                      options: {
-                        home: "Home Phone",
-                        cell: "Mobile Phone",
-                        work: "Work Phone"
+              title: "Basic arrays page",
+              description: "Demonstrates arrays",
+              type: "object",
+              properties: {
+                phoneNumbers: {
+                  title: "Phone numbers",
+                  description: "List phone numbers and type of number.",
+                  type: "array",
+                  items: {
+                    type: "object",
+                    previewBy: ["phoneNumber"],
+                    properties: {
+                      type: {
+                        title: "Type",
+                        type: "string",
+                        format: "radio",
+                        options: {
+                          home: "Home Phone",
+                          cell: "Mobile Phone",
+                          work: "Work Phone"
+                        }
+                      },
+                      phoneNumber: {
+                        title: "Phone Number",
+                        type: "string"
                       }
-                    },
-                    phoneNumber: {
-                      title: "Phone Number",
-                      type: "string"
                     }
                   }
-                }
-              },
-              positions: {
-                type: "array",
-                title: "Positions",
-                description: "List positions and salary.",
-                items: {
-                  type: "object",
+                },
+                positions: {
+                  type: "array",
                   title: "Positions",
-                  previewBy: ["title"],
-                  properties: {
-                    title: {
-                      title: "Title",
-                      type: "string"
-                    },
-                    salary: {
-                      title: "Salary",
-                      type: "number",
-                      multipleOf: 1000,
-                      minimum: 20000,
-                      maximum: 50000
+                  description: "List positions and salary.",
+                  items: {
+                    type: "object",
+                    title: "Positions",
+                    previewBy: ["title"],
+                    properties: {
+                      title: {
+                        title: "Title",
+                        type: "string"
+                      },
+                      salary: {
+                        title: "Salary",
+                        type: "number",
+                        multipleOf: 1000,
+                        minimum: 20000,
+                        maximum: 50000
+                      }
                     }
                   }
                 }
               }
             }
           }
-          }
         }
       }
     },
     value = {
-      "settings": {
-      "basic-input": {
-        "name":"NikkiMK",
-        "besttime": "evening",
-        "contact": "email",
-        "closed": true
-      },
-      "arrays": {
-        "phoneNumbers": [
-          {
-            "type": "home",
-            "phoneNumber": "1-555-867-5309"
-          },
-          {
-            "type": "cell",
-            "phoneNumber": "1-555-555-5555"
-          },
-          {
-            "type": "work",
-            "phoneNumber": "1-800-888-8888"
-          }
-        ],
-        "positions": [
-          {
-            "title": "cashier",
-            "salary": "20000"
-          }
-        ]
-      }
+      settings: {
+        "basic-input": {
+          name: "NikkiMK",
+          besttime: "evening",
+          contact: "email",
+          closed: true
+        },
+        arrays: {
+          phoneNumbers: [
+            {
+              type: "home",
+              phoneNumber: "1-555-867-5309"
+            },
+            {
+              type: "cell",
+              phoneNumber: "1-555-555-5555"
+            },
+            {
+              type: "work",
+              phoneNumber: "1-800-888-8888"
+            }
+          ],
+          positions: [
+            {
+              title: "cashier",
+              salary: "20000"
+            }
+          ]
+        }
       }
     };
   return utils.makeElementFromClass(
@@ -484,22 +505,22 @@ export const SimpleFieldsFormLiteStory = () => {
 };
 export const SimpleFieldsFieldStory = () => {
   let itemsList = [
-      {value: "breakfast", "text": "Breakfast"},
-      {value: "brunch", "text": "Brunch"},
-      {value: "lunch", "text": "Lunch"},
-      {value: "snack", "text": "Snack"},
-      {value: "dinner", "text": "Dinner"}
+      { value: "breakfast", text: "Breakfast" },
+      { value: "brunch", text: "Brunch" },
+      { value: "lunch", text: "Lunch" },
+      { value: "snack", text: "Snack" },
+      { value: "dinner", text: "Dinner" }
     ],
     options = {
-      "red": "Red",
-      "orange": "Orange",
-      "yellow": "Yellow",
-      "green": "Green",
-      "cyan": "Cyan",
-      "blue": "Blue",
-      "indigo": "Indigo",
-      "purple": "Purple",
-      "magenta": "Magenta"
+      red: "Red",
+      orange: "Orange",
+      yellow: "Yellow",
+      green: "Green",
+      cyan: "Cyan",
+      blue: "Blue",
+      indigo: "Indigo",
+      purple: "Purple",
+      magenta: "Magenta"
     },
     types = [
       {
@@ -571,82 +592,78 @@ export const SimpleFieldsFieldStory = () => {
       {
         label: "Radio Options",
         description: "Check one",
-        type:"radio",
+        type: "radio",
         itemsList: itemsList
       },
       {
         label: "Checkbox Options",
         description: "Check all",
-        type:"checkbox",
+        type: "checkbox",
         itemsList: itemsList
       },
       {
         label: "Select Options",
         description: "Check one",
-        type:"select",
+        type: "select",
         itemsList: itemsList
       },
       {
         label: "Select Options",
         description: "Check all",
-        type:"select",
+        type: "select",
         multiple: true,
         itemsList: itemsList
       },
       {
-        counter:"character", 
+        counter: "character",
         maxlength: 10,
         type: "text",
         label: "Nickname",
         value: "Rumplestiltskin"
       },
       {
-        counter:"word", 
+        counter: "word",
         maxlength: 6,
         type: "textarea",
         label: "Six word bio.",
         value: "Once upon a time..."
       },
       {
-        label:"Name",
-        autovalidate: true, 
+        label: "Name",
+        autovalidate: true,
         required: true,
-        requiredMessage: "A name is required." 
+        requiredMessage: "A name is required."
       },
       {
-        label:"Email",
-        autovalidate: true, 
-        patternMessage:"Invalid format.",
-        pattern: "^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$",
+        label: "Email",
+        autovalidate: true,
+        patternMessage: "Invalid format.",
+        pattern: "^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$",
         placeholder: "username@domain.com",
         type: "email"
       },
       {
-        label:"I agree to the terms",
-        autovalidate: true, 
+        label: "I agree to the terms",
+        autovalidate: true,
         requiredMessage: "You must agree to the terms.",
         type: "checkbox"
       },
       {
-        label:"Checkbox Options",
+        label: "Checkbox Options",
         description: "Pick 2-4",
         options: options,
-        autovalidate: true, 
+        autovalidate: true,
         min: 2,
         max: 4,
         type: "checkbox"
       }
-    ], 
+    ],
     type = utils.getRandomOption(types);
   type.disabled = false;
   type.hidden = false;
   type.required = type.required || utils.getRandomBool();
   type.inline = utils.getRandomBool();
-  return utils.makeElementFromClass(
-    SimpleFieldsField, 
-    type,
-    css
-  );
+  return utils.makeElementFromClass(SimpleFieldsField, type, css);
 };
 export const SimpleFieldsContainerStory = () => {
   let types = [
@@ -719,8 +736,8 @@ export const SimpleFieldsContainerStory = () => {
         label: "Email",
         autovalidate: true,
         field: `<input type="email" placeholder="username@domain.com">`,
-        patternMessage: "Invalid format." ,
-        pattern: "^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        patternMessage: "Invalid format.",
+        pattern: "^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$"
       },
       {
         autovalidate: true,
@@ -735,18 +752,14 @@ export const SimpleFieldsContainerStory = () => {
         requiredMessage: "You must agree to the terms.",
         field: `<input type="checkbox" required>`
       }
-    ], 
+    ],
     type = utils.getRandomOption(types);
   type.inline = utils.getRandomBool();
-  return utils.makeElementFromClass(
-    SimpleFieldsContainer, 
-    type,
-    [ 
-      { slot: "field", title: "Field" },
-      { slot: "fieldMeta", title: "Meta Information for Field" },
-      { slot: "prefix", title: "Field Prefix" },
-      { slot: "suffix", title: "Field Suffix" },
-      ...css,
-    ]
-  );
+  return utils.makeElementFromClass(SimpleFieldsContainer, type, [
+    { slot: "field", title: "Field" },
+    { slot: "fieldMeta", title: "Meta Information for Field" },
+    { slot: "prefix", title: "Field Prefix" },
+    { slot: "suffix", title: "Field Suffix" },
+    ...css
+  ]);
 };
