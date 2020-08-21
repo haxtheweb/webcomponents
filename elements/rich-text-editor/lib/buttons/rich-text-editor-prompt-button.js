@@ -138,19 +138,26 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * deselects the text
      */
     deselect() {
-      console.log('deselect',this.__prompt,this.__selection,this.__selectionContents);
+      console.log(
+        "deselect",
+        this.__prompt,
+        this.__selection,
+        this.__selectionContents
+      );
       this.__prompt.clearTarget("");
       this.__selection.normalize();
-      this.__selection.childNodes.forEach(child=>{
-        this.__selection.parentNode.insertBefore(
-          child,
-          this.__selection
-        );
+      this.__selection.childNodes.forEach(child => {
+        this.__selection.parentNode.insertBefore(child, this.__selection);
         this.__selection.range.selectNode(child);
       });
       this.__selection.range.collapse();
       this.__selection.hidden = true;
-      console.log('deselect 2',this.__prompt,this.__selection,this.__selectionContents);
+      console.log(
+        "deselect 2",
+        this.__prompt,
+        this.__selection,
+        this.__selectionContents
+      );
     }
 
     /**
@@ -210,9 +217,9 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     }
 
     selectRange() {
-      console.log('selectRange',this.tag);
+      console.log("selectRange", this.tag);
       this.__selectionContents = this.__selection.expandSelection(this.tag);
-      console.log('selectRange 2',this.__selectionContents);
+      console.log("selectRange 2", this.__selectionContents);
     }
 
     /**
@@ -230,7 +237,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * updates prompt fields with selected range data
      */
     updatePrompt() {
-      console.log('updatePrompt',this.value);
+      console.log("updatePrompt", this.value);
       this.__promptFields = JSON.parse(JSON.stringify(this.fields));
     }
 
@@ -238,7 +245,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * updates the insertion based on fields
      */
     updateSelection() {
-      console.log('updateSelection',this.__selection);
+      console.log("updateSelection", this.__selection);
     }
   };
 };

@@ -170,7 +170,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           return undefined;
         }
       };
-    console.log('range',this.range);
+    console.log("range", this.range);
     //try to find an ancestor that matches the tag
     if (this.range) {
       let ancestor = this.range.commonAncestorContainer;
