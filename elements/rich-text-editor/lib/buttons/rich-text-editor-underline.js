@@ -52,7 +52,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.value = {
       confirm: false
     };
-    console.log(this.fields, this.value);
   }
 
   /**

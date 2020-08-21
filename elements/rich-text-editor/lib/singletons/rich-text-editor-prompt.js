@@ -252,6 +252,20 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
     this.__button.confirm();
     this.clearTarget();
   }
+
+  /**
+   * gets a field value (and trims it if it's a string)
+   *
+   * @param {string} prop field name
+   * @returns {*}
+   * @memberof RichTextEditorPrompt
+   */
+  getPromptValue(prop){
+    let val = !!this.value ? this.value : false,
+      rawVal = !val || !val[prop] ? false : val[prop].trim ? val[prop].trim() : val[prop];
+    console.log(val,rawVal);
+    return rawVal && rawVal !== "" ? rawVal : false;
+  }
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
 export { RichTextEditorPrompt };

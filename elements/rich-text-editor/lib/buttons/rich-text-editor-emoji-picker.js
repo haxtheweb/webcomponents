@@ -61,6 +61,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
     this.icon = "editor:insert-emoticon";
     this.label = "Insert emoji";
     this.titleAsHtml = true;
+    this.command = "insertHTML";
   }
 
   firstUpdated(changedProperties) {

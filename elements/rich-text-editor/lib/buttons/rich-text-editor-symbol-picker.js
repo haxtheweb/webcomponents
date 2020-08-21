@@ -52,6 +52,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
     this.label = "Insert symbol";
     this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
     this.titleAsHtml = true;
+    this.command = "insertHTML";
   }
 
   firstUpdated(changedProperties) {

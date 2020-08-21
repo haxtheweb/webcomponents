@@ -30,39 +30,71 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     super();
     this.fields = [
       {
-        property: "alt",
-        title: "Alt Text",
-        description: "The alt text",
-        inputMethod: "textfield"
-      },
-      {
         property: "src",
         title: "Image URL",
         description: "The image URL. (Leave blank to remove.)",
         inputMethod: "textfield"
+      },
+      {
+        property: "alt",
+        title: "Alt Text",
+        inputMethod: "textfield"
+      },
+      {
+        property: "width",
+        title: "Width",
+        inputMethod: "textfield",
+        inline: true
+      },
+      {
+        property: "height",
+        title: "Width",
+        inputMethod: "textfield",
+        inline: true
       }
     ];
+    this.command = "insertHTML";
+    this.label = "Insert Inline Image";
+    this.icon = "editor:insert-photo";
     this.tag = "img";
+    this.value = {};
+  }
+
+  /**
+   * updates prompt fields with selected range data
+   */
+  updatePrompt() {
+    super.updatePrompt();
     this.value = {
-      src: null,
-      alt: null
+      alt: this.__selectionContents.getAttribute("alt"),
+      src: this.__selectionContents.getAttribute("src"),
+      width: this.__selectionContents.getAttribute("width"),
+      height: this.__selectionContents.getAttribute("height")
     };
+  }
+
+
+  /**
+   * updates the insertion based on fields
+   */
+  updateSelection() {
+    let alt = this.__prompt.getPromptValue('alt'),
+      src = this.__prompt.getPromptValue('src'),
+      width = this.__prompt.getPromptValue('width'),
+      height = this.__prompt.getPromptValue('height');
+    this.__selection.range.selectNode(this.__selectionContents);
+    document.execCommand(
+      "insertHTML", 
+      false, 
+      !src 
+        ? '' 
+        : `<img src="${src}"${!alt ? '' : ` alt="${alt}"`}${!width ? '' : ` width="${width}"`}${!height ? '' : ` width="${height}"`}>`
+    );
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return { ...super.properties };
-  }
-
-  /**
-   * an <a> tag is only needed if there is link text and an href
-   * @param {object} value the prompt values
-   * @returns {boolean} if the tag is needed for the element
-   */
-  _getTagNeeded(value) {
-    return (
-      value && this.getCleanValue("src") && this.getCleanValue("src") !== null
-    );
   }
 }
 window.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);

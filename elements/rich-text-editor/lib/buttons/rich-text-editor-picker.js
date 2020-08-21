@@ -53,7 +53,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           class="rtebutton ${this.toggled ? "toggled" : ""}"
           ?disabled="${this.disabled}"
           controls="${super.controls}"
-          @change="${this._pickerChange}"
+          @valueChanged="${this._pickerChange}"
           tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
           .options="${this.options}"
@@ -182,9 +182,11 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * Picker change
      */
     _pickerChange(e) {
-      let val = this.shadowRoot.querySelector("#button").value;
+      this.commandVal = this.shadowRoot.querySelector("#button") ? this.shadowRoot.querySelector("#button").value : false;
       e.preventDefault();
-      if (!!val && !!this.range && !!this.range) {
+      
+      console.log('_pickerChange',e,this.commandVal ,this.range);
+      if (!!this.commandVal) {
         this.commandVal = this.shadowRoot.querySelector("#button").value;
         this.doTextOperation();
         if (this.block !== true) {

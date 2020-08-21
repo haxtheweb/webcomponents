@@ -53,13 +53,11 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.toggledCommand = "unlink";
     this.toggledIcon = "mdextra:unlink";
     this.toggledLabel = "Unlink";
-    this.toggles = "true",
-    this.tag = "a";
+    (this.toggles = "true"), (this.tag = "a");
     this.value = {
       link: null
     };
     this.shortcutKeys = "ctrl+k";
-    console.log(this.fields, this.value);
   }
 
   /**
@@ -77,12 +75,13 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    * updates the insertion based on fields
    */
   updateSelection() {
-    let val = !!this.__prompt && !!this.__prompt.value ? this.__prompt.value : false,
-      link = val && !!val.href &&  val.href.trim() !== "" ? val.href.trim() : false,
-      text = val && !!val.linktext &&  val.linktext.trim() !== "" ? val.linktext.trim() : false;
+    let link = this.__prompt.getPromptValue('href'),
+      text = this.__prompt.getPromptValue('linktext');
     this.__selection.range.selectNode(this.__selectionContents);
     this.__selectionContents.innerHTML = text ? text : "";
-    link && text ? document.execCommand("CreateLink",false,link) : document.execCommand("unlink",false);
+    link && text
+      ? document.execCommand("CreateLink", false, link)
+      : document.execCommand("unlink", false);
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
