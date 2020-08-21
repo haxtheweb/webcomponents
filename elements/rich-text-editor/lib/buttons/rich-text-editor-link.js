@@ -34,7 +34,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     super();
     this.fields = [
       {
-        property: "",
+        property: "linktext",
         title: "Text",
         description: "The link text",
         inputMethod: "textfield"
@@ -43,29 +43,46 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
         property: "href",
         title: "Link",
         description: "The link URL. (Leave blank to remove.)",
-        inputMethod: "textfield"
+        inputMethod: "url",
+        autoValidate: true
       }
     ];
+    this.command = "createLink";
+    this.icon = "link";
+    this.label = "Link";
+    this.toggledCommand = "unlink";
+    this.toggledIcon = "mdextra:unlink";
+    this.toggledLabel = "Unlink";
+    this.toggles = "true",
     this.tag = "a";
     this.value = {
       link: null
     };
     this.shortcutKeys = "ctrl+k";
+    console.log(this.fields, this.value);
   }
 
   /**
-   * an <a> tag is only needed if there is link text and an href
-   * @param {object} value the prompt values
-   * @returns {boolean} if the tag is needed for the element
+   * updates prompt fields with selected range data
    */
-  _getTagNeeded(value) {
-    return (
-      !!value &&
-      !!this.getCleanValue("") &&
-      this.getCleanValue("") !== "" &&
-      !!this.getCleanValue("href") &&
-      this.getCleanValue("href") !== null
-    );
+  updatePrompt() {
+    super.updatePrompt();
+    this.value = {
+      linktext: this.__selectionContents.innerHTML,
+      href: this.__selectionContents.getAttribute("href")
+    };
+  }
+
+  /**
+   * updates the insertion based on fields
+   */
+  updateSelection() {
+    let val = !!this.__prompt && !!this.__prompt.value ? this.__prompt.value : false,
+      link = val && !!val.href &&  val.href.trim() !== "" ? val.href.trim() : false,
+      text = val && !!val.linktext &&  val.linktext.trim() !== "" ? val.linktext.trim() : false;
+    this.__selection.range.selectNode(this.__selectionContents);
+    this.__selectionContents.innerHTML = text ? text : "";
+    link && text ? document.execCommand("CreateLink",false,link) : document.execCommand("unlink",false);
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

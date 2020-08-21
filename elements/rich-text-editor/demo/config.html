@@ -128,8 +128,6 @@
                     "toggles": true,
                     "type": "rich-text-editor-button"
                   },{
-                    "type": "rich-text-editor-underline"
-                  },{
                     "command": "removeFormat",
                     "icon": "editor:format-clear",
                     "label": "Erase Format",
@@ -139,17 +137,7 @@
               },{
                 "label": "Links",
                 "type": "button-group",
-                "buttons": [
-                  {
-                    "command": "link",
-                    "icon": "link",
-                    "label": "Link",
-                    "toggledCommand": "unlink",
-                    "toggledIcon": "mdextra:unlink",
-                    "toggledLabel": "Unink",
-                    "toggles": true,
-                    "type": "rich-text-editor-button"
-                  }
+                "buttons": [{ "type": "rich-text-editor-link" }
                 ]
               },{
                 "label": "Clipboard Operations",

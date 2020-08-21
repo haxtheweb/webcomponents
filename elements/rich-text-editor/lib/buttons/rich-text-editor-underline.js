@@ -59,11 +59,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    * updates prompt fields with selected range data
    */
   updatePrompt() {
-    console.log(
-      "updatePrompt",
-      this.range,
-      document.queryCommandState(this.command)
-    );
     super.updatePrompt();
     this.value = {
       confirm:
@@ -72,11 +67,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
           this.__selectionContents.tagName.toLowerCase() ===
             this.tag.toLowerCase())
     };
-    console.log(
-      "updatePrompt 2",
-      this.value,
-      document.queryCommandState(this.command)
-    );
   }
 
   /**
@@ -84,7 +74,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    */
   updateSelection() {
     this.doTextOperation(this.__prompt.value);
-    console.log("updateSelection 2", this.__prompt.value, this.__selection);
   }
 }
 window.customElements.define(
