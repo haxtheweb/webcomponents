@@ -263,6 +263,13 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           type: Array
         },
         /**
+         * highlight surrounding selected range
+         */
+        __selection: {
+          name: "__selection",
+          type: Object
+        },
+        /**
          * Optional space-sperated list of keyboard shortcuts for editor
          * to fire this button, see iron-a11y-keys for more info.
          */
@@ -286,6 +293,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
+      this.__selection = window.RichTextEditorSelection.requestAvailability();
 
       this.alwaysVisible = false;
       this.canceled = true;
@@ -636,9 +644,12 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         } else {
           this.controls = null;
         }
+        console.log('editor change');
         this.buttons.forEach(button => {
           button.target = editor;
           button.controls = this.controls;
+          button.range = null;
+          button.range = this.range;
         });
       }
     }
@@ -762,7 +773,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       }
       button.setAttribute("class", "button");
       button.addEventListener("deselect", e => {
+        console.log("button deselect",this.range,this.range.isCollapsed);
         if (this.range && this.range.collapse) this.range.collapse(false);
+        console.log("button deselect 2",this.range,this.range.isCollapsed);
       });
 
       if (button.inlineWidget) this.push("__inlineWidgets", button.tag);
@@ -852,10 +865,13 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      this.buttons.forEach(button => {
-        button.range = null;
-        button.range = this.range;
-      });
+      if(document.activeElement === this.editor) {
+        console.log('toolbar _rangeChange',this.range);
+          this.buttons.forEach(button => {
+          button.range = null;
+          button.range = this.range;
+        });
+      }
     }
 
     /**

@@ -5,12 +5,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "../singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 const RichTextEditorPickerBehaviors = function(SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
-     * Store the tag name to make it easier to obtain directly.
+     * Store tag name to make it easier to obtain directly.
      */
     static get tag() {
       return "rich-text-editor-picker";
@@ -53,11 +54,12 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           class="rtebutton ${this.toggled ? "toggled" : ""}"
           ?disabled="${this.disabled}"
           controls="${super.controls}"
-          @valueChanged="${this._pickerChange}"
+          .options="${this.options}"
+          @mouseover="${this._pickerFocus}"
+          @keydown="${this._pickerFocus}"
+          @value-changed="${this._pickerChange}"
           tabindex="0"
           ?title-as-html="${this.titleAsHtml}"
-          .options="${this.options}"
-          .value="${this.value}"
         >
           <span id="label" class="${super.labelStyle}"
             >${this.currentLabel}</span
@@ -79,7 +81,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           type: Boolean
         },
         /**
-         * The command used for document.execCommand.
+         * command used for document.execCommand.
          */
         command: {
           type: String
@@ -90,12 +92,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         icon: {
           type: String
         },
-        /**
-         * The command used for document.execCommand.
-         */
-        options: {
-          type: Array
-        },
 
         /**
          * Renders html as title. (Good for titles with HTML in them.)
@@ -103,11 +99,25 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         titleAsHtml: {
           type: Boolean
         },
-
+        
         /**
-         * The value
+         * value of elected options
          */
         value: {
+          type: Object
+        },
+        /**
+         * highlight surrounding selected range
+         */
+        __selection: {
+          name: "__selection",
+          type: Object
+        },
+        /**
+         * contents node inside selected range
+         */
+        __selectionContents: {
+          name: "__selectionContents",
           type: Object
         }
       };
@@ -118,46 +128,60 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
       this.allowNull = false;
       this.command = "insertHTML";
       this.label = "Insert link";
-      this.options = [];
       this.titleAsHtml = false;
+      this.__selection = window.RichTextEditorSelection.requestAvailability();
+    }
+
+    firstUpdated(changedProperties) {
+      super.firstUpdated(changedProperties);
+      this._setOptions();
     }
 
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "options") this._optionsChanged();
+        if (propName === "options" && this.options !== oldValue) this._optionsChanged(oldValue,this.options);
+        if (propName === "range" && this.range !== oldValue) this._rangeChanged(oldValue,this.range);
+
       });
     }
 
     /**
-     * determines the value of the picker based on the selected range
+     * Handles button tap
+     * @param {event} e the button tap event
+     */
+    _pickerFocus(e) {
+      e.preventDefault();
+      this.range = this.__selection.range;
+      console.log('_pickerFocus',this.range);
+    }
+
+    /**
+     * determines value of picker based on selected range
      *
-     * @param {object} the text selected range
-     * @returns {boolean} whether the button is toggled
+     * @param {object} text selected range
+     * @returns {boolean} whether button is toggled
      *
      */
     get isToggled() {
-      let selectors = this.options
-          ? [...this.options]
-              .map(option => option.value)
-              .filter(option => !!option && option !== "")
-              .join(",")
-          : undefined,
-        parent =
-          !!this.range && this.range.commonAncestorContainer
-            ? this.range.commonAncestorContainer.parentNode
-            : undefined;
-      this.value =
-        this.command === "formatBlock" &&
-        selectors &&
-        parent &&
-        !!parent.closest(selectors)
-          ? parent.closest(selectors).tagName.toLowerCase()
-          : undefined;
       return false;
     }
 
-    _optionsChanged() {
+    _rangeChanged() {
+      super._rangeChanged();
+      console.log('_rangeChanged',this.range,this.__selection.range);
+      let temp = this.__selection.getAncestor(this.tag, this.range),
+        tag = !!temp && !!temp.tagName ? temp.tagName.toLowerCase() : false,
+        tags = this.tag.split(',');
+      console.log('_rangeChanged 2',this.range,this.__selection.range,tag,tags);
+      this.__selectionContents = temp;
+      if(this.shadowRoot && tags.includes(tag)){
+        this.shadowRoot.querySelector('#button').value = tag;
+      }
+      console.log('_rangeChanged 3',this.range,this.__selection.range,tag,tags);
+    }
+
+    _optionsChanged(oldVal,newVal) {
       this.dispatchEvent(
         new CustomEvent("options-changed", {
           bubbles: true,
@@ -172,53 +196,64 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * Handles default options loaded from an external js file
      */
     _setOptions() {
-      this.set(
-        "options",
-        this._getPickerOptions(data, this.allowNull, this.icon)
-      );
+      this.tag = this.blocks.map(block=>block.tag).join(',');
+      //this.options = this._getPickerOptions(data, this.allowNull, this.icon);
+      this.options = [
+        [{ alt: this.label, value: null }],
+        ...this.blocks.map(block => [{ alt: block.label, value: block.tag }])
+      ];
     }
 
     /**
      * Picker change
      */
     _pickerChange(e) {
-      this.commandVal = this.shadowRoot.querySelector("#button") ? this.shadowRoot.querySelector("#button").value : false;
-      e.preventDefault();
-      
-      console.log('_pickerChange',e,this.commandVal ,this.range);
-      if (!!this.commandVal) {
-        this.commandVal = this.shadowRoot.querySelector("#button").value;
-        this.doTextOperation();
-        if (this.block !== true) {
-          this.shadowRoot.querySelector("#button").value = null;
-          this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
-        }
+      this.commandVal = e.detail.value;
+      let tag = !!this.__selectionContents && !!this.__selectionContents.tagName ? this.__selectionContents.tagName.toLowerCase() : false;
+      console.log('_pickerChange',tag,this.__selectionContents,this.range,this.__selection.range);
+      if(tag && tag  !==  this.commandVal){
+        if(this.__selectionContents) this.__selection.selectNode(this.__selectionContents);
+        console.log('_pickerChange 2',tag,this.__selectionContents,this.range,this.__selection.range);
+        document.execCommand(this.command,false,this.commandVal);
+        console.log('_pickerChange 3',tag,this.range,this.__selection.range);
+        this.__selection.deselectRange();
+        console.log('_pickerChange 3',tag,this.range,this.__selection.range);
       }
+    }
+
+    /**
+     * Picker change
+     * /
+    _pickerChange(e) {
+      /*this.doTextOperation();
+      if (this.block !== true) {
+        this.shadowRoot.querySelector("#button").value = null;
+      }*
     }
     /**
      * Converts option data to picker option data;
      * can be overridden in extended elements
      *
-     * @param {object} data about the option
-     * @returns {object} picker dato for the option
+     * @param {object} data about option
+     * @returns {object} picker dato for option
      */
     _getOptionData(option) {
       return {
-        alt: option.alt,
-        icon: option.icon,
-        style: option.style,
-        value: option.value
+        alt: !!option.alt ? undefined : option.alt,
+        icon: !!option.icon ? undefined : option.icon,
+        style: !!option.style ? undefined : option.style,
+        value: !!option.value ? undefined : option.value
       };
     }
 
     /**
      * gets a list of icons and load them in a format
-     * that the simple-picker can take;
+     * that simple-picker can take;
      * if no icons are provided, loads a list from iron-meta
      *
-     * @param {array} a list of custom icons for the picker
-     * @param {array} default list of icons for the picker
-     * @param {boolean} allow a null value for the picker
+     * @param {array} a list of custom icons for picker
+     * @param {array} default list of icons for picker
+     * @param {boolean} allow a null value for picker
      */
     _getPickerOptions(options = [], allowNull = false, icon = undefined) {
       let items = [],
