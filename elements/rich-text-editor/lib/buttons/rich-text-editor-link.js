@@ -75,8 +75,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    * updates the insertion based on fields
    */
   updateSelection() {
-    let link = this.__prompt.getPromptValue('href'),
-      text = this.__prompt.getPromptValue('linktext');
+    let link = this.__prompt.getPromptValue("href"),
+      text = this.__prompt.getPromptValue("linktext");
     this.__selection.range.selectNode(this.__selectionContents);
     this.__selectionContents.innerHTML = text ? text : "";
     link && text

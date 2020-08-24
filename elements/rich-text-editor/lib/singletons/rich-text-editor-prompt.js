@@ -260,10 +260,15 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {*}
    * @memberof RichTextEditorPrompt
    */
-  getPromptValue(prop){
+  getPromptValue(prop) {
     let val = !!this.value ? this.value : false,
-      rawVal = !val || !val[prop] ? false : val[prop].trim ? val[prop].trim() : val[prop];
-    console.log(val,rawVal);
+      rawVal =
+        !val || !val[prop]
+          ? false
+          : val[prop].trim
+          ? val[prop].trim()
+          : val[prop];
+    console.log(val, rawVal);
     return rawVal && rawVal !== "" ? rawVal : false;
   }
 }
