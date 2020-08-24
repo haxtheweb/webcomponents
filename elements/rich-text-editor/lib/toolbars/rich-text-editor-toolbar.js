@@ -644,7 +644,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         } else {
           this.controls = null;
         }
-        console.log('editor change');
+        console.log("editor change");
         this.buttons.forEach(button => {
           button.target = editor;
           button.controls = this.controls;
@@ -773,9 +773,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       }
       button.setAttribute("class", "button");
       button.addEventListener("deselect", e => {
-        console.log("button deselect",this.range,this.range.isCollapsed);
+        console.log("button deselect", this.range, this.range.isCollapsed);
         if (this.range && this.range.collapse) this.range.collapse(false);
-        console.log("button deselect 2",this.range,this.range.isCollapsed);
+        console.log("button deselect 2", this.range, this.range.isCollapsed);
       });
 
       if (button.inlineWidget) this.push("__inlineWidgets", button.tag);
@@ -865,9 +865,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      if(document.activeElement === this.editor) {
-        console.log('toolbar _rangeChange',this.range);
-          this.buttons.forEach(button => {
+      if (document.activeElement === this.editor) {
+        console.log("toolbar _rangeChange", this.range);
+        this.buttons.forEach(button => {
           button.range = null;
           button.range = this.range;
         });

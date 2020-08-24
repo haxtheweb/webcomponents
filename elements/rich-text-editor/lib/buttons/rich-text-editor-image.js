@@ -73,22 +73,23 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     };
   }
 
-
   /**
    * updates the insertion based on fields
    */
   updateSelection() {
-    let alt = this.__prompt.getPromptValue('alt'),
-      src = this.__prompt.getPromptValue('src'),
-      width = this.__prompt.getPromptValue('width'),
-      height = this.__prompt.getPromptValue('height');
+    let alt = this.__prompt.getPromptValue("alt"),
+      src = this.__prompt.getPromptValue("src"),
+      width = this.__prompt.getPromptValue("width"),
+      height = this.__prompt.getPromptValue("height");
     this.__selection.range.selectNode(this.__selectionContents);
     document.execCommand(
-      "insertHTML", 
-      false, 
-      !src 
-        ? '' 
-        : `<img src="${src}"${!alt ? '' : ` alt="${alt}"`}${!width ? '' : ` width="${width}"`}${!height ? '' : ` width="${height}"`}>`
+      "insertHTML",
+      false,
+      !src
+        ? ""
+        : `<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${
+            !width ? "" : ` width="${width}"`
+          }${!height ? "" : ` width="${height}"`}>`
     );
   }
 

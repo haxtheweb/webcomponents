@@ -46,8 +46,6 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     this.command = "formatBlock";
     this.icon = null;
     this.label = "Block format";
-    this._setOptions();
-    import("@polymer/iron-icons/editor-icons.js");
   }
 
   // properties available to the custom element for data binding
@@ -57,31 +55,26 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     return {
       ...props,
       /**
-       * The block options that can be applied
+       * block element options as array of objects, 
+       * eg. [ { label: "Paragraph", tag: "p" }, { label: "Heading 1", tag: "h1" }, ...]
+       * 
        */
       blocks: {
         name: "blocks",
-        type: Array,
-        notify: true
+        type: Array
       }
     };
   }
 
-  get block() {
-    return true;
-  }
+  /**
+   * populates the picker
+   */
   _setOptions() {
+    this.tag = this.blocks.map(block => block.tag).join(",");
     this.options = [
       [{ alt: this.label, value: null }],
       ...this.blocks.map(block => [{ alt: block.label, value: block.tag }])
     ];
-  }
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (["label", "blocks"].includes(propName)) this._setOptions();
-    });
   }
 }
 window.customElements.define(

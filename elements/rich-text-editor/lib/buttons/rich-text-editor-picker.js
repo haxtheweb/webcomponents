@@ -99,7 +99,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         titleAsHtml: {
           type: Boolean
         },
-        
+
         /**
          * value of elected options
          */
@@ -129,20 +129,23 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
       this.command = "insertHTML";
       this.label = "Insert link";
       this.titleAsHtml = false;
+      this.value = null;
       this.__selection = window.RichTextEditorSelection.requestAvailability();
     }
 
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this._setOptions();
+      console.log('firstUpdated',this.options);
     }
 
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "options" && this.options !== oldValue) this._optionsChanged(oldValue,this.options);
-        if (propName === "range" && this.range !== oldValue) this._rangeChanged(oldValue,this.range);
-
+        if (propName === "options" && this.options !== oldValue)
+          this._optionsChanged(oldValue, this.options);
+        if (propName === "range" && this.range !== oldValue)
+          this._rangeChanged(oldValue, this.range);
       });
     }
 
@@ -153,7 +156,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     _pickerFocus(e) {
       e.preventDefault();
       this.range = this.__selection.range;
-      console.log('_pickerFocus',this.range);
+      console.log("_pickerFocus", this.range);
     }
 
     /**
@@ -166,22 +169,75 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     get isToggled() {
       return false;
     }
-
-    _rangeChanged() {
-      super._rangeChanged();
-      console.log('_rangeChanged',this.range,this.__selection.range);
-      let temp = this.__selection.getAncestor(this.tag, this.range),
-        tag = !!temp && !!temp.tagName ? temp.tagName.toLowerCase() : false,
-        tags = this.tag.split(',');
-      console.log('_rangeChanged 2',this.range,this.__selection.range,tag,tags);
-      this.__selectionContents = temp;
-      if(this.shadowRoot && tags.includes(tag)){
-        this.shadowRoot.querySelector('#button').value = tag;
-      }
-      console.log('_rangeChanged 3',this.range,this.__selection.range,tag,tags);
+    get valueList(){
+      return (this.options || []).flat().map(option=>option.value);
+    }
+    _getSelectedBlock(){
+      let temp = this.__selection.getAncestor(this.valueList.join(','), this.range),
+        val = !!temp && !!temp.tagName ? temp.tagName.toLowerCase() : false;
+        this.__selectionContents = temp;
+      console.log(
+        "_getSelectedBlock",
+        this.range,
+        this.__selection.range,
+        this.__selectionContents,
+        val
+      );
+      return val;
     }
 
-    _optionsChanged(oldVal,newVal) {
+    _getSelection(){
+      this.__selection.selectRange(this.range);
+      let div = document.createElement('div'), 
+        contents = this.__selection.getRangeContents(), val;
+      div.appendChild(contents);
+      val = div.innerHTML;
+      console.log(
+        "_getSelection",
+        this.range,
+        this.__selection.range,
+        this.__selectionContents,
+        val
+      );
+      return val ? val.trim() : undefined;
+    }
+
+    /**
+     * handles range changes by getting 
+     */
+    _rangeChanged() {
+      super._rangeChanged();
+      console.log("_rangeChanged", this.range, this.__selection.range);
+      let val = this.command === "insertHTML" 
+        ? this._getSelection() 
+        : this._getSelectedBlock();
+
+      console.log(
+        "_rangeChanged 2",
+        this.range,
+        this.__selection.range,
+        this.valueList,
+        val
+      );
+      if (this.shadowRoot){
+        console.log(this.shadowRoot.querySelector("#button").shadowRoot.querySelectorAll('simple-picker-option'));
+        if (this.valueList.includes(val)) {
+          this.shadowRoot.querySelector("#button").value = val;
+        } else if(!this.__selection.range || this.__selection.range.collapsed) {
+            this.shadowRoot.querySelector("#button").value = undefined;
+        }
+        
+      } 
+      console.log(
+        "_rangeChanged 3",
+        this.range,
+        this.__selection.range,
+        this.valueList,
+        val
+      );
+    }
+
+    _optionsChanged(oldVal, newVal) {
       this.dispatchEvent(
         new CustomEvent("options-changed", {
           bubbles: true,
@@ -193,57 +249,10 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     }
 
     /**
-     * Handles default options loaded from an external js file
+     * override to handle custom options
      */
     _setOptions() {
-      this.tag = this.blocks.map(block=>block.tag).join(',');
-      //this.options = this._getPickerOptions(data, this.allowNull, this.icon);
-      this.options = [
-        [{ alt: this.label, value: null }],
-        ...this.blocks.map(block => [{ alt: block.label, value: block.tag }])
-      ];
-    }
-
-    /**
-     * Picker change
-     */
-    _pickerChange(e) {
-      this.commandVal = e.detail.value;
-      let tag = !!this.__selectionContents && !!this.__selectionContents.tagName ? this.__selectionContents.tagName.toLowerCase() : false;
-      console.log('_pickerChange',tag,this.__selectionContents,this.range,this.__selection.range);
-      if(tag && tag  !==  this.commandVal){
-        if(this.__selectionContents) this.__selection.selectNode(this.__selectionContents);
-        console.log('_pickerChange 2',tag,this.__selectionContents,this.range,this.__selection.range);
-        document.execCommand(this.command,false,this.commandVal);
-        console.log('_pickerChange 3',tag,this.range,this.__selection.range);
-        this.__selection.deselectRange();
-        console.log('_pickerChange 3',tag,this.range,this.__selection.range);
-      }
-    }
-
-    /**
-     * Picker change
-     * /
-    _pickerChange(e) {
-      /*this.doTextOperation();
-      if (this.block !== true) {
-        this.shadowRoot.querySelector("#button").value = null;
-      }*
-    }
-    /**
-     * Converts option data to picker option data;
-     * can be overridden in extended elements
-     *
-     * @param {object} data about option
-     * @returns {object} picker dato for option
-     */
-    _getOptionData(option) {
-      return {
-        alt: !!option.alt ? undefined : option.alt,
-        icon: !!option.icon ? undefined : option.icon,
-        style: !!option.style ? undefined : option.style,
-        value: !!option.value ? undefined : option.value
-      };
+      return this.options = this._setPickerOptions();
     }
 
     /**
@@ -252,23 +261,95 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * if no icons are provided, loads a list from iron-meta
      *
      * @param {array} a list of custom icons for picker
-     * @param {array} default list of icons for picker
-     * @param {boolean} allow a null value for picker
+     * @returns {array}
      */
-    _getPickerOptions(options = [], allowNull = false, icon = undefined) {
+    _setPickerOptions(options = this.options || []) {
       let items = [],
         cols =
           Math.sqrt(options.length) < 11
             ? Math.ceil(Math.sqrt(options.length))
             : 10;
-      for (let i = 0; i < options.length; i++) {
+      options.forEach((option,i)=>{
         let row = Math.floor(i / cols),
-          col = i - row * cols,
-          data = this._getOptionData(options[i]);
+          col = i - row * cols;
         if (!items[row]) items[row] = [];
-        items[row][col] = data;
-      }
+        items[row][col] = option;
+      });
       return items;
+    }
+
+    /**
+     * Picker change
+     */
+    _pickerChange(e) {
+      let val = this.command === "insertHTML" 
+        ? this.__selectionContents 
+        : !!this.__selectionContents && !!this.__selectionContents.tagName
+        ? this.__selectionContents.tagName.toLowerCase()
+        : false;
+      
+      this.commandVal = !!e.detail.value ? e.detail.value : "";
+
+      console.log(
+        "_pickerChange",
+        val,
+        this.commandVal,
+        this.__selectionContents,
+        this.range,
+        this.__selection.range
+      );
+      
+      
+      if (val !== this.commandVal) {
+        if (this.command !== "insertHTML" && this.__selectionContents){
+          this.__selection.selectNode(this.__selectionContents);
+        } else {
+          this.__selection.selectRange(this.range);
+        }
+      
+        console.log(
+          "_pickerChange 2",
+          val,
+          this.commandVal,
+          this.__selectionContents,
+          this.range,
+          this.__selection.range
+        );
+        if(this.__selection.range){
+
+          console.log(
+            "_pickerChange 2a",
+            this.__selection.range,
+            this.__selection.range.collapsed,
+            this.__selectionContents,
+            this.__selection.getRangeContents()
+          );
+          if(this.commandVal !== "" || !this.__selection.range.collapsed) {
+            document.execCommand(this.command, false, this.commandVal);
+          }
+
+          console.log(
+            "_pickerChange 3",
+            val,
+            this.commandVal,
+            this.__selectionContents,
+            this.range,
+            this.__selection.range
+          );
+
+        }
+      
+        this.__selection.deselectRange();
+
+        console.log(
+          "_pickerChange 4",
+          val,
+          this.commandVal,
+          this.__selectionContents,
+          this.range,
+          this.__selection.range
+        );
+      }
     }
   };
 };

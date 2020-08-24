@@ -85,7 +85,6 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
    * @returns {void}
    */
   _rangeChange(e) {
-    console.log("_rangeChange", e);
     super._rangeChange(e);
     if (this.__breadcrumbs) this.__breadcrumbs.range = this.range;
   }
