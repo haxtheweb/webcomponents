@@ -235,7 +235,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   selectRange(range) {
-    if(range){
+    if (range) {
       let sel = window.getSelection();
       sel.removeAllRanges();
       sel.addRange(range);

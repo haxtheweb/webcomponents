@@ -55,9 +55,9 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     return {
       ...props,
       /**
-       * block element options as array of objects, 
+       * block element options as array of objects,
        * eg. [ { label: "Paragraph", tag: "p" }, { label: "Heading 1", tag: "h1" }, ...]
-       * 
+       *
        */
       blocks: {
         name: "blocks",

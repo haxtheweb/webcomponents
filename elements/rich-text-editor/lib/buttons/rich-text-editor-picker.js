@@ -136,7 +136,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this._setOptions();
-      console.log('firstUpdated',this.options);
+      console.log("firstUpdated", this.options);
     }
 
     updated(changedProperties) {
@@ -169,13 +169,16 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     get isToggled() {
       return false;
     }
-    get valueList(){
-      return (this.options || []).flat().map(option=>option.value);
+    get valueList() {
+      return (this.options || []).flat().map(option => option.value);
     }
-    _getSelectedBlock(){
-      let temp = this.__selection.getAncestor(this.valueList.join(','), this.range),
+    _getSelectedBlock() {
+      let temp = this.__selection.getAncestor(
+          this.valueList.join(","),
+          this.range
+        ),
         val = !!temp && !!temp.tagName ? temp.tagName.toLowerCase() : false;
-        this.__selectionContents = temp;
+      this.__selectionContents = temp;
       console.log(
         "_getSelectedBlock",
         this.range,
@@ -186,10 +189,11 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
       return val;
     }
 
-    _getSelection(){
+    _getSelection() {
       this.__selection.selectRange(this.range);
-      let div = document.createElement('div'), 
-        contents = this.__selection.getRangeContents(), val;
+      let div = document.createElement("div"),
+        contents = this.__selection.getRangeContents(),
+        val;
       div.appendChild(contents);
       val = div.innerHTML;
       console.log(
@@ -203,14 +207,15 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     }
 
     /**
-     * handles range changes by getting 
+     * handles range changes by getting
      */
     _rangeChanged() {
       super._rangeChanged();
       console.log("_rangeChanged", this.range, this.__selection.range);
-      let val = this.command === "insertHTML" 
-        ? this._getSelection() 
-        : this._getSelectedBlock();
+      let val =
+        this.command === "insertHTML"
+          ? this._getSelection()
+          : this._getSelectedBlock();
 
       console.log(
         "_rangeChanged 2",
@@ -219,15 +224,21 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         this.valueList,
         val
       );
-      if (this.shadowRoot){
-        console.log(this.shadowRoot.querySelector("#button").shadowRoot.querySelectorAll('simple-picker-option'));
+      if (this.shadowRoot) {
+        console.log(
+          this.shadowRoot
+            .querySelector("#button")
+            .shadowRoot.querySelectorAll("simple-picker-option")
+        );
         if (this.valueList.includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
-        } else if(!this.__selection.range || this.__selection.range.collapsed) {
-            this.shadowRoot.querySelector("#button").value = undefined;
+        } else if (
+          !this.__selection.range ||
+          this.__selection.range.collapsed
+        ) {
+          this.shadowRoot.querySelector("#button").value = undefined;
         }
-        
-      } 
+      }
       console.log(
         "_rangeChanged 3",
         this.range,
@@ -252,7 +263,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * override to handle custom options
      */
     _setOptions() {
-      return this.options = this._setPickerOptions();
+      return (this.options = this._setPickerOptions());
     }
 
     /**
@@ -269,7 +280,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           Math.sqrt(options.length) < 11
             ? Math.ceil(Math.sqrt(options.length))
             : 10;
-      options.forEach((option,i)=>{
+      options.forEach((option, i) => {
         let row = Math.floor(i / cols),
           col = i - row * cols;
         if (!items[row]) items[row] = [];
@@ -282,12 +293,13 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * Picker change
      */
     _pickerChange(e) {
-      let val = this.command === "insertHTML" 
-        ? this.__selectionContents 
-        : !!this.__selectionContents && !!this.__selectionContents.tagName
-        ? this.__selectionContents.tagName.toLowerCase()
-        : false;
-      
+      let val =
+        this.command === "insertHTML"
+          ? this.__selectionContents
+          : !!this.__selectionContents && !!this.__selectionContents.tagName
+          ? this.__selectionContents.tagName.toLowerCase()
+          : false;
+
       this.commandVal = !!e.detail.value ? e.detail.value : "";
 
       console.log(
@@ -298,15 +310,14 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         this.range,
         this.__selection.range
       );
-      
-      
+
       if (val !== this.commandVal) {
-        if (this.command !== "insertHTML" && this.__selectionContents){
+        if (this.command !== "insertHTML" && this.__selectionContents) {
           this.__selection.selectNode(this.__selectionContents);
         } else {
           this.__selection.selectRange(this.range);
         }
-      
+
         console.log(
           "_pickerChange 2",
           val,
@@ -315,8 +326,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           this.range,
           this.__selection.range
         );
-        if(this.__selection.range){
-
+        if (this.__selection.range) {
           console.log(
             "_pickerChange 2a",
             this.__selection.range,
@@ -324,7 +334,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
             this.__selectionContents,
             this.__selection.getRangeContents()
           );
-          if(this.commandVal !== "" || !this.__selection.range.collapsed) {
+          if (this.commandVal !== "" || !this.__selection.range.collapsed) {
             document.execCommand(this.command, false, this.commandVal);
           }
 
@@ -336,9 +346,8 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
             this.range,
             this.__selection.range
           );
-
         }
-      
+
         this.__selection.deselectRange();
 
         console.log(
