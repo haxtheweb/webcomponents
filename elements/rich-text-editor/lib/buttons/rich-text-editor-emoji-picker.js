@@ -28,7 +28,6 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
   }
 
   // render function for template
-  
 
   // render function for template
   render() {
@@ -45,9 +44,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
         tabindex="0"
         ?title-as-html="${this.titleAsHtml}"
       >
-        <span id="label" class="${super.labelStyle}"
-          >${this.currentLabel}</span
-        >
+        <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
       </simple-emoji-picker>
       <simple-tooltip id="tooltip" for="button"
         >${this.currentLabel}</simple-tooltip

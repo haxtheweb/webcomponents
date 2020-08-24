@@ -16,7 +16,8 @@ import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 class SimpleSymbolPicker extends SimplePicker {
   //styles function
   static get styles() {
-    return [...super.styles, 
+    return [
+      ...super.styles,
       css`
         simple-picker-option {
           justify-content: space-around;

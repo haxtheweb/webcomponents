@@ -42,9 +42,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
         tabindex="0"
         ?title-as-html="${this.titleAsHtml}"
       >
-        <span id="label" class="${super.labelStyle}"
-          >${this.currentLabel}</span
-        >
+        <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
       </simple-symbol-picker>
       <simple-tooltip id="tooltip" for="button"
         >${this.currentLabel}</simple-tooltip
