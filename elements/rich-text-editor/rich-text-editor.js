@@ -196,23 +196,23 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   getEditor() {
-    console.log('getEditor');
+    console.log("getEditor");
     let id = this.toolbar ? "#" + this.toolbar : "",
       both = document.querySelector(this.type + id),
       idOnly = id ? document.querySelector(id) : null,
       typeOnly = document.querySelector(this.type),
       //try to match both id and type, if no match try id only, and then type only
       toolbar = both || idOnly || typeOnly;
-    console.log('getEditor',id,both,idOnly,typeOnly,toolbar);
+    console.log("getEditor", id, both, idOnly, typeOnly, toolbar);
     //if still no match, create a region of type
     if (!this.toolbar) this.toolbar = this._generateUUID();
-    console.log('getEditor',id,this.toolbar);
+    console.log("getEditor", id, this.toolbar);
     if (!toolbar || !toolbar.addEditableRegion) {
       toolbar = document.createElement(this.type);
       toolbar.id = this.toolbar;
-      console.log('getEditor',toolbar,this.toolbar,this);
+      console.log("getEditor", toolbar, this.toolbar, this);
       this.parentNode.appendChild(toolbar);
-      console.log('getEditor',this.parentNode);
+      console.log("getEditor", this.parentNode);
     }
     toolbar.addEditableRegion(this);
   }

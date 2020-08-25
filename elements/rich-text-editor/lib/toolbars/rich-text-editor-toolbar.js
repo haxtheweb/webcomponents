@@ -587,7 +587,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     addEditableRegion(editor) {
-      console.log('addEditableRegion',editor);
+      console.log("addEditableRegion", editor);
       editor.addEventListener("mousedown", e => {
         this.editTarget(editor);
       });
@@ -694,7 +694,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     makeEditableRegion(editor) {
-      console.log('makeEditableRegion',editor);
+      console.log("makeEditableRegion", editor);
       let content = document.createElement("rich-text-editor");
       editor.parentNode.insertBefore(content, editor);
       content.appendChild(editor);
