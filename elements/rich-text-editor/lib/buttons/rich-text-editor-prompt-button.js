@@ -73,13 +73,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
           type: Object
         },
         /**
-         * the highlight surrounding the selected range
-         */
-        __selection: {
-          name: "__selection",
-          type: Object
-        },
-        /**
          * the contents node inside the selected range
          */
         __selectionContents: {
@@ -106,7 +99,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
         id: null
       };
       this.__prompt = window.RichTextEditorPrompt.requestAvailability();
-      this.__selection = window.RichTextEditorSelection.requestAvailability();
     }
 
     /**
@@ -116,7 +108,8 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     _buttonTap(e) {
       console.log("_buttonTap", e);
       e.preventDefault();
-      this.selectRange();
+      console.log(this.__selection,this.__selection.innerHTML,this.range,this.range.cloneContents);
+      this.__selection.addHighlight();
       this.open();
     }
     /**
@@ -138,14 +131,14 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * deselects the text
      */
     deselect() {
-      this.__prompt.clearTarget("");
+      /*this.__prompt.clearTarget("");
       this.__selection.normalize();
       this.__selection.childNodes.forEach(child => {
         this.__selection.parentNode.insertBefore(child, this.__selection);
         this.__selection.range.selectNode(child);
       });
       this.__selection.range.collapse();
-      this.__selection.hidden = true;
+      this.__selection.hidden = true;*/
     }
 
     /**
@@ -155,23 +148,18 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _editorChanged(newVal, oldVal) {
-      let root = this,
-        newEditor = newVal ? document.getElementById(newVal) : null,
+      let newEditor = newVal ? document.getElementById(newVal) : null,
         oldEditor = oldVal ? document.getElementById(oldVal) : null;
       if (newEditor)
         newEditor.addEventListener(
           "click",
-          e => {
-            root._editInlineWidget(newEditor, e);
-          },
+          e => this._editInlineWidget(newEditor, e),
           true
         );
       if (oldEditor)
         oldEditor.removeEventListener(
           "click",
-          e => {
-            root._editInlineWidget(oldEditor, e);
-          },
+          e => this._editInlineWidget(oldEditor, e),
           true
         );
       super._editorChanged(newVal, oldVal);
@@ -204,31 +192,36 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       this.__selectionContents = widget;
     }
 
-    selectRange() {
-      this.__selectionContents = this.__selection.expandSelection(this.tag);
-    }
-
     /**
      * Handles selecting text and opening prompt
      */
     open() {
-      this.__selection.addHighlight();
       this.updatePrompt();
       this.__prompt.setTarget(this);
-      this.dispatchEvent(new CustomEvent("select", { detail: this }));
     }
 
     /**
      * updates prompt fields with selected range data
      */
     updatePrompt() {
+      this.range = this.__selection.range;
+      this.__selectionContents = this._getSelectedBlock();
       this.__promptFields = JSON.parse(JSON.stringify(this.fields));
     }
 
     /**
      * updates the insertion based on fields
      */
-    updateSelection() {}
+    updateSelection() {
+      this.__selectionContents = this._getSelectedBlock() || this.__selection;
+      this.setRange();
+      this.toggled = !this.__prompt.value;
+      this.commandVal = this.__prompt.value;
+      this.execCommand();
+    }
+    setRange(){
+      this.__selection.selectRange(this.range);
+    }
   };
 };
 /**

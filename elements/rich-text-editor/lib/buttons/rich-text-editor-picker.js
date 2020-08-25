@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "../singletons/rich-text-editor-selection.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 const RichTextEditorPickerBehaviors = function(SuperClass) {
@@ -105,20 +104,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
          */
         value: {
           type: Object
-        },
-        /**
-         * highlight surrounding selected range
-         */
-        __selection: {
-          name: "__selection",
-          type: Object
-        },
-        /**
-         * contents node inside selected range
-         */
-        __selectionContents: {
-          name: "__selectionContents",
-          type: Object
         }
       };
     }
@@ -130,22 +115,11 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
       this.label = "Insert link";
       this.titleAsHtml = false;
       this.value = null;
-      this.__selection = window.RichTextEditorSelection.requestAvailability();
     }
 
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this._setOptions();
-    }
-
-    updated(changedProperties) {
-      super.updated(changedProperties);
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName === "options" && this.options !== oldValue)
-          this._optionsChanged(oldValue, this.options);
-        if (propName === "range" && this.range !== oldValue)
-          this._rangeChanged(oldValue, this.range);
-      });
     }
 
     /**
@@ -154,7 +128,8 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      */
     _pickerFocus(e) {
       e.preventDefault();
-      this.range = this.__selection.range;
+      ////console.log('_pickerFocus');
+      //this.range = this.__selection.range;
     }
 
     /**
@@ -167,59 +142,26 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     get isToggled() {
       return false;
     }
-    get valueList() {
-      return (this.options || []).flat().map(option => option.value);
-    }
-    _getSelectedBlock() {
-      let temp = this.__selection.getAncestor(
-          this.valueList.join(","),
-          this.range
-        ),
-        val = !!temp && !!temp.tagName ? temp.tagName.toLowerCase() : false;
-      this.__selectionContents = temp;
-      return val;
-    }
-
-    _getSelection() {
-      this.__selection.selectRange(this.range);
-      let div = document.createElement("div"),
-        contents = this.__selection.getRangeContents(),
-        val;
-      div.appendChild(contents);
-      val = div.innerHTML;
-      return val ? val.trim() : undefined;
-    }
 
     /**
      * handles range changes by getting
      */
     _rangeChanged() {
-      super._rangeChanged();
-      let val =
-        this.command === "insertHTML"
-          ? this._getSelection()
-          : this._getSelectedBlock();
+      let val = this._getSelection();
+      //console.log('_rangeChanged',val);
       if (this.shadowRoot) {
-        if (this.valueList.includes(val)) {
+        if (this.blockSelectors.split(',').includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
+          //console.log('_rangeChanged block',this.blockSelectors,this.shadowRoot.querySelector("#button").value);
         } else if (
-          !this.__selection.range ||
-          this.__selection.range.collapsed
-        ) {
-          this.shadowRoot.querySelector("#button").value = undefined;
+          !this.range ||
+          this.range.collapsed
+        ) {          
+          this.shadowRoot.querySelector("#button").value = null;
+          //console.log('_rangeChanged inline',this.shadowRoot.querySelector("#button").value);
         }
       }
-    }
-
-    _optionsChanged(oldVal, newVal) {
-      this.dispatchEvent(
-        new CustomEvent("options-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
+      super._rangeChanged();
     }
 
     /**
@@ -256,29 +198,17 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      * Picker change
      */
     _pickerChange(e) {
-      let val =
-        this.command === "insertHTML"
-          ? this.__selectionContents
-          : !!this.__selectionContents && !!this.__selectionContents.tagName
-          ? this.__selectionContents.tagName.toLowerCase()
-          : false;
-
-      this.commandVal = !!e.detail.value ? e.detail.value : "";
-
-      if (val !== this.commandVal) {
-        if (this.command !== "insertHTML" && this.__selectionContents) {
-          this.__selection.selectNode(this.__selectionContents);
-        } else {
-          this.__selection.selectRange(this.range);
-        }
-        if (this.__selection.range) {
-          if (this.commandVal !== "" || !this.__selection.range.collapsed) {
-            document.execCommand(this.command, false, this.commandVal);
-          }
-        }
-
-        this.__selection.deselectRange();
+      let val = this._getSelectionType() || "";
+      this.commandVal = e.detail.value || "";
+      console.log(`_pickerChange -${(val || "")}-${(this.commandVal || "")}-`,this.range);
+      
+      /* only update when there is an actual change */
+      if (this.range && val !== this.commandVal) {
+        this.setRange();
+        console.log(`_pickerChange 2 -${(val || "")}-${(this.commandVal || "")}-`,this.range);
+        this.execCommand();
       }
+      console.log(`_pickerChange 2 -${(val || "")}-${(this.commandVal || "")}-`,this.range);
     }
   };
 };

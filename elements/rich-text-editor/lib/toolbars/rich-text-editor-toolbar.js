@@ -108,6 +108,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
             ? "false"
             : "true"}"
           ?collapsed="${this.collapsed}"
+          @focus="${this._addHighlight}"
         >
           <rich-text-editor-more-button
             id="morebutton"
@@ -266,7 +267,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
          * highlight surrounding selected range
          */
         __selection: {
-          name: "__selection",
           type: Object
         },
         /**
@@ -485,7 +485,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       if (navigator.clipboard) {
         this.addEventListener("paste-button", this._handlePasteButton);
       }
-      window.RichTextEditorSelection.requestAvailability();
       window.ResponsiveUtility.requestAvailability();
       this.dispatchEvent(
         new CustomEvent("responsive-element", {
@@ -587,7 +586,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     addEditableRegion(editor) {
-      console.log("addEditableRegion", editor);
       editor.addEventListener("mousedown", e => {
         this.editTarget(editor);
       });
@@ -645,6 +643,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           this.canceled = editor.innerHTML;
           this.editor.contentEditable = true;
           this.controls = editor.getAttribute("id");
+          this._removeHighlight();
         } else {
           this.controls = null;
         }
@@ -694,7 +693,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     makeEditableRegion(editor) {
-      console.log("makeEditableRegion", editor);
       let content = document.createElement("rich-text-editor");
       editor.parentNode.insertBefore(content, editor);
       content.appendChild(editor);
@@ -779,13 +777,21 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       button.setAttribute("class", "button");
       button.addEventListener("deselect", e => {
         console.log("button deselect", this.range, this.range.isCollapsed);
-        if (this.range && this.range.collapse) this.range.collapse(false);
+        this._removeHighlight();
         console.log("button deselect 2", this.range, this.range.isCollapsed);
       });
 
       if (button.inlineWidget) this.push("__inlineWidgets", button.tag);
       parent.appendChild(button);
       return button;
+    }
+    _addHighlight(){
+      console.log('_addHighlight',this.range);
+      if(this.__selection) this.__selection.addHighlight();
+    }
+    _removeHighlight(){
+      console.log('_removeHighlight',this.range);
+      if(this.__selection) this.__selection.collapseSelection();
     }
 
     _handleKeyboardShortcuts(e) {
@@ -820,7 +826,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _handlePaste(e) {
-      console.log("_handlePaste", e);
       let pasteContent = "";
       // intercept paste event
       if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
@@ -830,12 +835,10 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
-      console.log("clipboardData");
       this.pasteIntoRange(
         this.getRange(),
         this.getSanitizeClipboard(pasteContent)
       );
-      console.log("pasteIntoRange");
       e.preventDefault();
     }
 
@@ -846,7 +849,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _handlePasteButton(e) {
-      console.log("_handlePasteButton", e);
       setTimeout(async () => {
         let range = e.detail.range,
           sel = window.getSelection(),
@@ -896,7 +898,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _toggleMore(e) {
-      console.log("_toggleMore", e);
       this.collapsed = !this.collapsed;
     }
   };

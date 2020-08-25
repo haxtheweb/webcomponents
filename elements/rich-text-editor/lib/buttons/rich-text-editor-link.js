@@ -47,7 +47,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
         autoValidate: true
       }
     ];
-    this.command = "createLink";
+    this.command = "CreateLink";
     this.icon = "link";
     this.label = "Link";
     this.toggledCommand = "unlink";
@@ -59,15 +59,19 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     };
     this.shortcutKeys = "ctrl+k";
   }
+  get blockSelectors(){
+    return 'a';
+  }
 
   /**
    * updates prompt fields with selected range data
    */
   updatePrompt() {
     super.updatePrompt();
+    console.log('updatePrompt',this.__selectionContents,this.__selection);
     this.value = {
-      linktext: this.__selectionContents.innerHTML,
-      href: this.__selectionContents.getAttribute("href")
+      linktext: this.__selectionContents ? this.__selectionContents.innerHTML : this.__selection.innerHTML,
+      href: this.__selectionContents && this.__selectionContents.getAttribute ? this.__selectionContents.getAttribute("href") : undefined
     };
   }
 
@@ -77,11 +81,10 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   updateSelection() {
     let link = this.__prompt.getPromptValue("href"),
       text = this.__prompt.getPromptValue("linktext");
-    this.__selection.range.selectNode(this.__selectionContents);
-    this.__selectionContents.innerHTML = text ? text : "";
-    link && text
-      ? document.execCommand("CreateLink", false, link)
-      : document.execCommand("unlink", false);
+    this.setRange();
+    this.toggled = !link || !text;
+    this.commandVal = link;
+    this.execCommand();
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonStyles } from "./rich-text-editor-button-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "../singletons/rich-text-editor-selection.js";
 
 const RichTextEditorButtonBehaviors = function(SuperClass) {
   return class extends RichTextEditorButtonStyles(SuperClass) {
@@ -171,12 +172,19 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         toggles: {
           type: Boolean
+        },
+        /**
+         * highlight surrounding selected range
+         */
+        __selection: {
+          type: Object
         }
       };
     }
 
     constructor() {
       super();
+      this.__selection = window.RichTextEditorSelection.requestAvailability();
       this.disabled = false;
       this.showTextLabel = false;
       this.toggles = false;
@@ -191,6 +199,9 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       this.addEventListener("keypress", function(e) {
         e.preventDefault();
       });*/
+    }
+    get blockSelectors(){
+      return 'p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre';
     }
 
     /**
@@ -293,39 +304,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
         if (propName === "toggledCommandVal") this._toggledCommandValChanged();
       });
     }
-
-    _rangeChanged() {
-      this.dispatchEvent(
-        new CustomEvent("range-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    }
-
-    _commandValChanged() {
-      this.dispatchEvent(
-        new CustomEvent("command-val-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    }
-
-    _toggledCommandValChanged() {
-      this.dispatchEvent(
-        new CustomEvent("toggled-command-val-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    }
     /**
      * life cycle, element is afixed to the DOM
      */
@@ -342,36 +320,150 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
-     * excutes the button's command
+     * gets command param for document.execCommand
+     *
+     * @readonly
      */
-    doTextOperation(toggle = !this.isToggled) {
-      let range = this.range;
-      if (!toggle && !!this.toggledCommand) {
-        document.execCommand(
-          this.toggledCommand,
-          false,
-          this.toggledCommand || ""
-        );
-      } else if (!!this.command) {
+    get operationCommand(){
+      return this.isToggled 
+      && !!this.toggledCommand 
+      ? this.toggledCommand 
+      : this.command
+    }
+    /**
+     * gets value param for document.execCommand
+     *
+     * @readonly
+     */
+    get operationCommandVal(){
+      return this.isToggled 
+      && !!this.toggledCommand 
+      ? this.toggledCommandVal || ""
+      : this.commandVal
+    }
+    /**
+     * executes button command on current range
+     *
+     */
+    execCommand(){
+      console.log('execCommand',this.isToggled,this.range,this.range.cloneContents());
+      if (this.range) {
+        console.log('execCommand 2',this.operationCommand, this.operationCommandVal);
+        document.execCommand(this.operationCommand, false, this.operationCommandVal);
+
+        console.log('execCommand 2 dispatchEvent',this.operationCommand + "-button");
         this.dispatchEvent(
-          new CustomEvent(this.command + "-button", {
+          new CustomEvent(this.operationCommand + "-button", {
             bubbles: true,
             cancelable: true,
             composed: true,
             detail: this
           })
         );
-        document.execCommand(this.command, false, this.commandVal || "");
-        this.range = range;
       }
+      console.log('execCommand 3',this.range,this.range.cloneContents());
+    }
+    /**
+     * expands range to selection's parent block
+     */
+    setRange(){
+      /* if command is formatBlock expand selection to entire block */
+      let block = this._getSelectedBlock();
+      if(block) this.__selection.selectNode(block);
+      console.log('setRange',block,this.__selection.range,this.__selection.range.cloneContents(),this);
     }
 
     /**
      * Handles button tap
      */
     _buttonTap(e) {
+      console.log('_buttonTap',this);
       e.preventDefault();
-      this.doTextOperation();
+      if(this.command === "formatBlock") this.setRange();
+      this.execCommand();
+    }
+    /**
+     * fires when command value changes
+     * @event command-val-changed
+     */
+    _commandValChanged() {
+      this.dispatchEvent(
+        new CustomEvent("command-val-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
+    /**
+     * gets appplicable selection
+     * @returns {*}
+     */
+    _getSelection(){
+      return this.command === "formatBlock"
+      ? this._getSelectedBlock()
+      : this._getSelectedHtml();
+    }
+    /**
+     * gets appplicable selection
+     * @returns {*}
+     */
+    _getSelectionType(){
+      return this.command === "formatBlock"
+      ? this._getSelectedTag()
+      : this._getSelectedHtml();
+    }
+    /**
+    * get selection's parent block
+    * @returns {object}
+    */
+    _getSelectedBlock() {
+      //console.log('_getSelectedBlock',this.range);
+      if(this.range){
+        let node = this.range.commonAncestorContainer, 
+          selector = this.blockSelectors,
+          closest = node.nodeType === 1 
+            ? node.closest(selector) 
+            : node.parentNode.nodeType === 1 
+            ? node.parentNode.closest(selector) 
+            : undefined;
+        //console.log('_getSelectedBlock 2',this.range, node, closest, tag);
+        return closest;
+      }
+      return undefined;
+    }
+    /**
+     * gets selected html
+     * @returns {string}
+     */
+    _getSelectedHtml() {
+      //console.log('_getSelectedHtml',this.range);
+      if(this.range){
+        let div = document.createElement("div"),
+          contents = this.range.cloneContents(),
+          val;
+        //console.log(contents)
+        div.appendChild(contents);
+        val = div.innerHTML;
+        div.remove();
+        //console.log('_getSelectedHtml 2',this.range);
+        return val ? val.trim() : undefined; 
+      }
+      //console.log('_getSelectedHtml 2b',this.range);
+      return undefined;
+    }
+    /**
+     * get selection's parent block
+     *
+     * @returns
+     */
+    _getSelectedTag() {
+      //console.log('_getSelectedTag',this.range);
+      let block = this._getSelectedBlock(),
+        tag = !!block && !!block.tagName ? block.tagName.toLowerCase() : false;
+      //console.log('_getSelectedTag 2',this.range, node, closest, tag);
+      return tag;
     }
 
     /**
@@ -401,6 +493,21 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
 
     /**
+     * handles range changes by getting
+     * @event range-changed
+     */
+    _rangeChanged() {
+      this.dispatchEvent(
+        new CustomEvent("range-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
+
+    /**
      * updates a button value based on whether or not button is toggled
      *
      * @param {string} the value when toggled off
@@ -411,6 +518,20 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      */
     _regOrToggled(toggledOff, toggledOn, toggled) {
       return !!toggledOn && toggled ? toggledOn : toggledOff;
+    }
+    /**
+     * fires when toggled command value changes
+     * @event toggled-command-val-changed
+     */
+    _toggledCommandValChanged() {
+      this.dispatchEvent(
+        new CustomEvent("toggled-command-val-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
   };
 };

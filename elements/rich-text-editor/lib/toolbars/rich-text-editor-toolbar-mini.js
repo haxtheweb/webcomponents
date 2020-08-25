@@ -23,8 +23,6 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
   }
 
   static get styles() {
-    console.log(this.baseStyles);
-    console.log(super.baseStyles);
     return [
       ...super.baseStyles,
       css`

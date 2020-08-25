@@ -9,6 +9,7 @@ import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
  * `a button for rich text editor (custom buttons can extend this)`
  *
  * @element rich-text-editor-selection
+ * @demo ./demo/selection.html
  */
 class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   /**
@@ -24,9 +25,17 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       css`
         :host {
           background-color: var(--rich-text-editor-selection-bg);
+          margin: 0;
+          padding: 0;
+          display: inline;
         }
         :host([hidden]) {
           display: none;
+        }
+        :host([collapsed]):after {
+          content: '|';
+          color: var(--rich-text-editor-selection-bg);
+          background-color: transparent;
         }
       `
     ];
@@ -41,6 +50,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     return {
       editor: {
         type: Object
+      },
+      collapsed: {
+        type: Boolean,
+        reflect: true,
+        attribute: "collapsed"
       },
       hidden: {
         type: Boolean,
@@ -128,10 +142,19 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   addHighlight() {
-    this.range.surroundContents(this);
-    this.range.selectNode(this.firstChild);
-    this.dispatchEvent(new CustomEvent("highlight", { detail: this }));
-    this.hidden = false;
+    console.log('addHighlight',this.range,this);
+    if(!this.hidden) return;
+    this.hidden = !this.range || this.range.collapsed;
+    if(!this.hidden){
+      this.range.surroundContents(this);
+      this.normalize();
+      console.log('addHighlight 2',`-${this.innerHTML}-${this.innerHTML.trim()}-`);
+      this.innerHTML = this.innerHTML.trim();
+      this.range.selectNodeContents(this);
+      this.dispatchEvent(new CustomEvent("highlight", { detail: this }));
+      this.hidden = false;
+    }
+    console.log('addHighlight 3',this.range.cloneContents(),this,`-${this.innerHTML}-${this.innerHTML.trim()}-`);
   }
 
   /**
@@ -150,7 +173,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} selected node
    */
   getAncestor(selector, range = this.range) {
-    //console.log("getAncestor", selector, (range = this.range));
+    console.log("getAncestor", selector, (range = this.range));
     let wrapper,
       tags = selector.toLowerCase().split(","),
       getMatchingTag = ancestor => {
@@ -175,8 +198,9 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     if (range) {
       let ancestor = range.commonAncestorContainer;
       wrapper = getMatchingTag(ancestor);
+      console.log("getAncestor 2", range, wrapper,ancestor.closest(selector));
     }
-    //console.log("getAncestor 2", (range = this.range));
+      console.log("getAncestor 3", range);
     return wrapper;
   }
 
@@ -260,14 +284,24 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   collapseSelection() {
-    //console.log("collapseSelection", this.range);
+    if(this.hidden) return;
+    console.log("collapseSelection", this.range, this);
     this.normalize();
-    //console.log("collapseSelection 2", this.range);
-    this.childNodes.forEach(child => {
-      this.parentNode.insertBefore(child, this);
-      this.range.selectNode(child);
-    });
+    console.log("collapseSelection 2", this.range, this);
+    let children = this.childNodes;
+    console.log(children,children.length);
+    if(children.length > 0){
+      children.forEach((child,i) => {
+        this.parentNode.insertBefore(child, this);
+        console.log(child,i);
+        if(i === 0) this.range.setStart(child,0);
+        this.range.setEnd(child,0);
+      });
+    } else {
+
+    }
     this.hidden = true;
+    console.log("collapseSelection 3", this.range, this);
   }
 
   /**

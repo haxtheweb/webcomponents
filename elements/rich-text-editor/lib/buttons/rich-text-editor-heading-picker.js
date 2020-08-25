@@ -65,6 +65,13 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
       }
     };
   }
+  get blockSelectors() {
+    let arr = [
+      ...super.blockSelectors.split(','), 
+      ...(this.blocks || []).map(blocks => blocks.tag)
+    ].filter((v,i,s)=>s.indexOf(v) === i);
+    return arr.join(',');
+  }
 
   /**
    * populates the picker

@@ -53,12 +53,17 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
       confirm: false
     };
   }
+  get blockSelectors(){
+    return 'u';
+  }
 
   /**
    * updates prompt fields with selected range data
    */
   updatePrompt() {
     super.updatePrompt();
+
+    console.log('updatePrompt',this.__selectionContents,this._getSelectedTag(),this.tag,this.isToggled);
     this.value = {
       confirm:
         this.isToggled ||
@@ -72,7 +77,9 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    * updates the insertion based on fields
    */
   updateSelection() {
-    this.doTextOperation(this.__prompt.value);
+    this.toggled = !this.__prompt.getPromptValue("confirm");
+    this.setRange();
+    this.execCommand();
   }
 }
 window.customElements.define(
