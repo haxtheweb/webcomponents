@@ -42,7 +42,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
         auto
         id="floating"
         fit-to-visible-bounds
-        for$="[[controls]]"
+        for="${this.controls}"
         position="top"
       >
         ${super.render()}

@@ -4,16 +4,19 @@
    */
   "id": {
     "name": "id",
-    "type": "String"
+    "type": "String",
+    "reflect": true,
+    "attribute": "id"
   },
 
   /**
    * Placeholder text for empty editable regions
    */
   "placeholder": {
-    "name": "placeholder",
+    "name": "c",
     "type": "String",
-    "reflect": true
+    "reflect": true,
+    "attribute": "placeholder"
   },
 
   /**
@@ -21,7 +24,9 @@
    */
   "toolbar": {
     "name": "toolbar",
-    "type": "String"
+    "type": "String",
+    "reflect": true,
+    "attribute": "toolbar"
   },
 
   /**
@@ -32,6 +37,8 @@
    */
   "type": {
     "name": "type",
-    "type": "String"
+    "type": "String",
+    "reflect": true,
+    "attribute": "type"
   }
 }

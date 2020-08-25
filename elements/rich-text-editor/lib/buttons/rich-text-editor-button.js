@@ -361,13 +361,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
             detail: this
           })
         );
-        console.log(
-          "doTextOperation",
-          range,
-          this.command,
-          false,
-          this.commandVal || ""
-        );
         document.execCommand(this.command, false, this.commandVal || "");
         this.range = range;
       }
@@ -378,7 +371,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      */
     _buttonTap(e) {
       e.preventDefault();
-      console.log("_buttonTap", e);
       this.doTextOperation();
     }
 
@@ -404,7 +396,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @param {event} e the  event
      */
     _keysPressed(e) {
-      console.log("_keysPressed", e);
       e.preventDefault();
       this._buttonTap(e);
     }

@@ -497,6 +497,10 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         })
       );
     }
+    firstUpdated(changedProperties) {
+      super.firstUpdated(changedProperties);
+      this.__buttons = this._getButtons();
+    }
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
@@ -507,7 +511,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     connectedCallback() {
       super.connectedCallback();
-      this.__buttons = this._getButtons();
     }
     /**
      * Gets editor buttons array, as determined by `config`.
@@ -584,6 +587,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     addEditableRegion(editor) {
+      console.log('addEditableRegion',editor);
       editor.addEventListener("mousedown", e => {
         this.editTarget(editor);
       });
@@ -690,6 +694,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     makeEditableRegion(editor) {
+      console.log('makeEditableRegion',editor);
       let content = document.createElement("rich-text-editor");
       editor.parentNode.insertBefore(content, editor);
       content.appendChild(editor);

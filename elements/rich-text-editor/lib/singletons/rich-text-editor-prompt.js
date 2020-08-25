@@ -221,7 +221,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   clearTarget() {
-    console.log("clearTarget", this.value, this.fields);
     if (!this.__button) return;
     this.for = undefined;
     this.fields = undefined;
@@ -234,7 +233,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   _cancel(e) {
-    console.log("_confirm", e, this.__button);
     e.preventDefault();
     if (!this.__button) return;
     this.__button.cancel();
@@ -246,7 +244,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @returns {void}
    */
   _confirm(e) {
-    console.log("_confirm", e, this.value, this.__button);
     e.preventDefault();
     this.__button.value = this.value;
     this.__button.confirm();
@@ -268,7 +265,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
           : val[prop].trim
           ? val[prop].trim()
           : val[prop];
-    console.log(val, rawVal);
     return rawVal && rawVal !== "" ? rawVal : false;
   }
 }

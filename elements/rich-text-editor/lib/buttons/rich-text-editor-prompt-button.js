@@ -138,12 +138,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * deselects the text
      */
     deselect() {
-      console.log(
-        "deselect",
-        this.__prompt,
-        this.__selection,
-        this.__selectionContents
-      );
       this.__prompt.clearTarget("");
       this.__selection.normalize();
       this.__selection.childNodes.forEach(child => {
@@ -152,12 +146,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       });
       this.__selection.range.collapse();
       this.__selection.hidden = true;
-      console.log(
-        "deselect 2",
-        this.__prompt,
-        this.__selection,
-        this.__selectionContents
-      );
     }
 
     /**
@@ -217,16 +205,13 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     }
 
     selectRange() {
-      console.log("selectRange", this.tag);
       this.__selectionContents = this.__selection.expandSelection(this.tag);
-      console.log("selectRange 2", this.__selectionContents);
     }
 
     /**
      * Handles selecting text and opening prompt
      */
     open() {
-      console.log("open", this.__selection);
       this.__selection.addHighlight();
       this.updatePrompt();
       this.__prompt.setTarget(this);
@@ -237,16 +222,13 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * updates prompt fields with selected range data
      */
     updatePrompt() {
-      console.log("updatePrompt", this.value);
       this.__promptFields = JSON.parse(JSON.stringify(this.fields));
     }
 
     /**
      * updates the insertion based on fields
      */
-    updateSelection() {
-      console.log("updateSelection", this.__selection);
-    }
+    updateSelection() {}
   };
 };
 /**

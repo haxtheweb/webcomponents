@@ -136,7 +136,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this._setOptions();
-      console.log("firstUpdated", this.options);
     }
 
     updated(changedProperties) {
@@ -156,7 +155,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     _pickerFocus(e) {
       e.preventDefault();
       this.range = this.__selection.range;
-      console.log("_pickerFocus", this.range);
     }
 
     /**
@@ -179,13 +177,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         ),
         val = !!temp && !!temp.tagName ? temp.tagName.toLowerCase() : false;
       this.__selectionContents = temp;
-      console.log(
-        "_getSelectedBlock",
-        this.range,
-        this.__selection.range,
-        this.__selectionContents,
-        val
-      );
       return val;
     }
 
@@ -196,13 +187,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
         val;
       div.appendChild(contents);
       val = div.innerHTML;
-      console.log(
-        "_getSelection",
-        this.range,
-        this.__selection.range,
-        this.__selectionContents,
-        val
-      );
       return val ? val.trim() : undefined;
     }
 
@@ -211,25 +195,11 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      */
     _rangeChanged() {
       super._rangeChanged();
-      console.log("_rangeChanged", this.range, this.__selection.range);
       let val =
         this.command === "insertHTML"
           ? this._getSelection()
           : this._getSelectedBlock();
-
-      console.log(
-        "_rangeChanged 2",
-        this.range,
-        this.__selection.range,
-        this.valueList,
-        val
-      );
       if (this.shadowRoot) {
-        console.log(
-          this.shadowRoot
-            .querySelector("#button")
-            .shadowRoot.querySelectorAll("simple-picker-option")
-        );
         if (this.valueList.includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
         } else if (
@@ -239,13 +209,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           this.shadowRoot.querySelector("#button").value = undefined;
         }
       }
-      console.log(
-        "_rangeChanged 3",
-        this.range,
-        this.__selection.range,
-        this.valueList,
-        val
-      );
     }
 
     _optionsChanged(oldVal, newVal) {
@@ -302,62 +265,19 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
 
       this.commandVal = !!e.detail.value ? e.detail.value : "";
 
-      console.log(
-        "_pickerChange",
-        val,
-        this.commandVal,
-        this.__selectionContents,
-        this.range,
-        this.__selection.range
-      );
-
       if (val !== this.commandVal) {
         if (this.command !== "insertHTML" && this.__selectionContents) {
           this.__selection.selectNode(this.__selectionContents);
         } else {
           this.__selection.selectRange(this.range);
         }
-
-        console.log(
-          "_pickerChange 2",
-          val,
-          this.commandVal,
-          this.__selectionContents,
-          this.range,
-          this.__selection.range
-        );
         if (this.__selection.range) {
-          console.log(
-            "_pickerChange 2a",
-            this.__selection.range,
-            this.__selection.range.collapsed,
-            this.__selectionContents,
-            this.__selection.getRangeContents()
-          );
           if (this.commandVal !== "" || !this.__selection.range.collapsed) {
             document.execCommand(this.command, false, this.commandVal);
           }
-
-          console.log(
-            "_pickerChange 3",
-            val,
-            this.commandVal,
-            this.__selectionContents,
-            this.range,
-            this.__selection.range
-          );
         }
 
         this.__selection.deselectRange();
-
-        console.log(
-          "_pickerChange 4",
-          val,
-          this.commandVal,
-          this.__selectionContents,
-          this.range,
-          this.__selection.range
-        );
       }
     }
   };

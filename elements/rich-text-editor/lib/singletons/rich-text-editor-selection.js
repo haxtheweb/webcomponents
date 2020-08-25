@@ -150,11 +150,11 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} selected node
    */
   getAncestor(selector, range = this.range) {
-    console.log("getAncestor", selector, (range = this.range));
+    //console.log("getAncestor", selector, (range = this.range));
     let wrapper,
       tags = selector.toLowerCase().split(","),
       getMatchingTag = ancestor => {
-        console.log("getMatchingTag", ancestor, tags);
+        //console.log("getMatchingTag", ancestor, tags);
         if (
           !!ancestor &&
           !!ancestor.tagName &&
@@ -176,7 +176,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       let ancestor = range.commonAncestorContainer;
       wrapper = getMatchingTag(ancestor);
     }
-    console.log("getAncestor 2", (range = this.range));
+    //console.log("getAncestor 2", (range = this.range));
     return wrapper;
   }
 
@@ -188,10 +188,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} selected node
    */
   selectAncestor(selector, range = this.range) {
-    console.log("selectAncestor", selector, range);
+    //console.log("selectAncestor", selector, range);
     let wrapper = this.getAncestor(selector, range);
     if (wrapper) range.selectNode(wrapper);
-    console.log("wrapper", wrapper);
+    //console.log("wrapper", wrapper);
     return wrapper;
   }
 
@@ -249,9 +249,9 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   deselectRange() {
     let sel = this.getRange();
-    console.log("deselectRange", sel, sel.isCollapsed);
+    //console.log("deselectRange", sel, sel.isCollapsed);
     if (!sel.isCollapsed) sel.collapse();
-    console.log("deselectRange 2", sel, sel.isCollapsed);
+    //console.log("deselectRange 2", sel, sel.isCollapsed);
   }
 
   /**
@@ -260,9 +260,9 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   collapseSelection() {
-    console.log("collapseSelection", this.range);
+    //console.log("collapseSelection", this.range);
     this.normalize();
-    console.log("collapseSelection 2", this.range);
+    //console.log("collapseSelection 2", this.range);
     this.childNodes.forEach(child => {
       this.parentNode.insertBefore(child, this);
       this.range.selectNode(child);

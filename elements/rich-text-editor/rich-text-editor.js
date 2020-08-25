@@ -126,16 +126,19 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   "id": {
     "name": "id",
-    "type": String
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
   },
 
   /**
    * Placeholder text for empty editable regions
    */
   "placeholder": {
-    "name": "placeholder",
+    "name": "c",
     "type": String,
-    "reflect": true
+    "reflect": true,
+    "attribute": "placeholder"
   },
 
   /**
@@ -143,7 +146,9 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   "toolbar": {
     "name": "toolbar",
-    "type": String
+    "type": String,
+    "reflect": true,
+    "attribute": "toolbar"
   },
 
   /**
@@ -154,7 +159,9 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   "type": {
     "name": "type",
-    "type": String
+    "type": String,
+    "reflect": true,
+    "attribute": "type"
   }
 }
 ;
@@ -189,21 +196,25 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   getEditor() {
-    let root = this,
-      id = this.toolbar ? "#" + this.toolbar : "",
+    console.log('getEditor');
+    let id = this.toolbar ? "#" + this.toolbar : "",
       both = document.querySelector(this.type + id),
       idOnly = id ? document.querySelector(id) : null,
       typeOnly = document.querySelector(this.type),
       //try to match both id and type, if no match try id only, and then type only
       toolbar = both || idOnly || typeOnly;
+    console.log('getEditor',id,both,idOnly,typeOnly,toolbar);
     //if still no match, create a region of type
     if (!this.toolbar) this.toolbar = this._generateUUID();
+    console.log('getEditor',id,this.toolbar);
     if (!toolbar || !toolbar.addEditableRegion) {
       toolbar = document.createElement(this.type);
       toolbar.id = this.toolbar;
-      root.parentNode.appendChild(toolbar);
+      console.log('getEditor',toolbar,this.toolbar,this);
+      this.parentNode.appendChild(toolbar);
+      console.log('getEditor',this.parentNode);
     }
-    toolbar.addEditableRegion(root);
+    toolbar.addEditableRegion(this);
   }
 
   /**
