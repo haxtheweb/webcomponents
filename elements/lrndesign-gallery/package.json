@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "displays images as a carousel or grid with the ability to zoom",
   "repository": {
     "type": "git",
@@ -42,10 +42,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/img-pan-zoom": "^2.7.1",
-    "@lrnwebcomponents/responsive-utility": "^2.7.1",
-    "@lrnwebcomponents/simple-colors": "^2.7.1",
-    "@lrnwebcomponents/simple-tooltip": "^2.7.1",
+    "@lrnwebcomponents/img-pan-zoom": "^2.7.3",
+    "@lrnwebcomponents/responsive-utility": "^2.7.3",
+    "@lrnwebcomponents/simple-colors": "^2.7.3",
+    "@lrnwebcomponents/simple-tooltip": "^2.7.3",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",
