@@ -197,10 +197,10 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
 
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {
-        if(this.command === 'formatBlock') {
+        if (this.command === "formatBlock") {
           this.setRange();
         } else {
-          this.__selection.selectRange(this.range)
+          this.__selection.selectRange(this.range);
         }
         this.execCommand();
       }

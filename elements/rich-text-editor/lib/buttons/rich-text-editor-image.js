@@ -89,6 +89,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
    */
   updatePrompt() {
     super.updatePrompt();
+    this.__selectionContents = this.__selectionContents.firstChild;
     this.value = {
       alt: this.__selectionContents.getAttribute("alt"),
       src: this.__selectionContents.getAttribute("src"),
@@ -105,16 +106,14 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       src = this.__prompt.getPromptValue("src"),
       width = this.__prompt.getPromptValue("width"),
       height = this.__prompt.getPromptValue("height");
-    this.setRange();
-    console.log("updateSelection", alt, src, width, height, this.__selection.range);
     this.__selection.range.selectNode(this.__selectionContents);
     this.toggled = !src;
-    this.commandVal = !src 
-      ? "" 
-      :`<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${!width ? "" : ` width="${width}"`}${!height ? "" : ` width="${height}"`}>`;
-    console.log("updateSelection 2", alt, src, width, height, this.toggled, this.commandVal);
+    this.commandVal = !src
+      ? ""
+      : `<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${
+          !width ? "" : ` width="${width}"`
+        }${!height ? "" : ` width="${height}"`}>`;
     this.execCommand();
-    console.log("updateSelection 3", alt, src, width, height, this.toggled, this.commandVal);
   }
 }
 window.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);

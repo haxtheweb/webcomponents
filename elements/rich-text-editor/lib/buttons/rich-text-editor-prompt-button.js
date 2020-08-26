@@ -29,8 +29,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
          * fields for the prompt popover.
          */
         fields: {
-          type: Array,
-          reflect: true
+          type: Array
         },
         /**
          * is the element a custom inline widget element?
@@ -109,41 +108,14 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       e.preventDefault();
       let block = this._getSelectedBlock();
       this.__selection.selectRange(this.range);
-      console.log(
-        "_buttonTap",
-        block,
-        this.range,
-        this.__selection,
-        this.__selection.innerHTML
-      );
       if (block) {
         this.range.selectNode(block);
-        console.log(
-          "_buttonTap 2a",
-          block,
-          this.range,
-          this.__selection,
-          this.__selection.innerHTML
-        );
       } else {
         //document.execCommand('insertHTML',false,`<${this.tag}></${this.tag}>`);
         this.__selection.wrap();
-        console.log(
-          "_buttonTap 2b",
-          this.range,
-          this.__selection,
-          this.__selection.innerHTML
-        );
       }
       this.__selection.addHighlight();
       this.range = this.__selection.range;
-      console.log(
-        "_buttonTap",
-        block,
-        this.range,
-        this.__selection,
-        this.__selection.innerHTML
-      );
       this.open();
     }
     /**
@@ -226,13 +198,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     updatePrompt() {
       this.__selectionContents = this.__selection.firstChild;
       this.__promptFields = JSON.parse(JSON.stringify(this.fields));
-      console.log(
-        `updatePrompt`,
-        this.range,
-        this.__selection,
-        this.__selection.range,
-        this.__selectionContents
-      );
     }
 
     /**

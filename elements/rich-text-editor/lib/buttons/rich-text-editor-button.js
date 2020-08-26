@@ -128,6 +128,12 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           attribute: "show-text-label",
           type: Boolean
         },
+        /**
+         * The active selected range, inherited from the toolbar
+         */
+        tag: {
+          type: String
+        },
 
         /**
          * The active selected range, inherited from the toolbar
@@ -330,7 +336,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @readonly
      */
     get operationCommand() {
-      console.log("operationCommand", this.isToggled);
       return this.isToggled && !!this.toggledCommand
         ? this.toggledCommand
         : this.command;
@@ -341,7 +346,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @readonly
      */
     get operationCommandVal() {
-      console.log("operationCommandVal", this.isToggled);
       return this.isToggled && !!this.toggledCommand
         ? this.toggledCommandVal || ""
         : this.commandVal;
@@ -351,27 +355,11 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      *
      */
     execCommand() {
-      console.log(
-        "execCommand",
-        this.isToggled,
-        this.range,
-        this.range.cloneContents()
-      );
       if (this.range) {
-        console.log(
-          "execCommand 2",
-          this.operationCommand,
-          this.operationCommandVal
-        );
         document.execCommand(
           this.operationCommand,
           false,
           this.operationCommandVal
-        );
-
-        console.log(
-          "execCommand 2 dispatchEvent",
-          this.operationCommand + "-button"
         );
         this.dispatchEvent(
           new CustomEvent(this.operationCommand + "-button", {
@@ -382,7 +370,6 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           })
         );
       }
-      console.log("execCommand 3", this.range, this.range.cloneContents());
     }
     /**
      * expands range to selection's parent block
@@ -391,20 +378,12 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       /* if command is formatBlock expand selection to entire block */
       let block = this._getSelectedBlock();
       if (block) this.__selection.selectNode(block);
-      console.log(
-        "setRange",
-        block,
-        this.__selection.range,
-        this.__selection.range.cloneContents(),
-        this
-      );
     }
 
     /**
      * Handles button tap
      */
     _buttonTap(e) {
-      console.log("_buttonTap", this);
       e.preventDefault();
       if (this.command === "formatBlock") this.setRange();
       this.execCommand();
@@ -446,20 +425,27 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @returns {object}
      */
     _getSelectedBlock(selector = this.blockSelectors) {
-      console.log(
+      /*console.log(
         "_getSelectedBlock",
         this.range,
-        !this.range || this.range.cloneContents(),
-        selector
+        !this.range || !this.range.cloneContents() || this.range.cloneContents().childNodes,
+        !this.range || this.range.commonAncestorContainer.childNodes
       );
-      if (this.range) {
+      let children = this.range && this.range.cloneContents() ? this.range.cloneContents().childNodes : false,
+        tagNames = selector && selector !== "" ? selector.split(',') : false;
+      console.log("_getSelectedBlock 1",children,tagNames);
+      if(tagNames && children && children.length === 1 && tagNames.includes(children[0].tagName.toLowerCase())){
+        let start = this.range.startContainer;
+      console.log("_getSelectedBlock 1a",start,start.childNodes[this.range.startOffset]);
+        return start.childNodes[this.range.startOffset];
+      } else */if (this.range) {
         let node = this.range.commonAncestorContainer,
           closest =
             node.nodeType === 1
-              ? node.closest(selector)
-              : node.parentNode.nodeType === 1
-              ? node.parentNode.closest(selector)
-              : undefined;
+            ? node.closest(selector)
+            : node.parentNode.nodeType === 1
+            ? node.parentNode.closest(selector)
+            : undefined;
         console.log("_getSelectedBlock 2", this.range, node, closest);
         return closest;
       }
@@ -470,19 +456,15 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @returns {string}
      */
     _getSelectedHtml() {
-      //console.log('_getSelectedHtml',this.range);
       if (this.range) {
         let div = document.createElement("div"),
           contents = this.range.cloneContents(),
           val;
-        //console.log(contents)
         div.appendChild(contents);
         val = div.innerHTML;
         div.remove();
-        //console.log('_getSelectedHtml 2',this.range);
         return val ? val.trim() : undefined;
       }
-      //console.log('_getSelectedHtml 2b',this.range);
       return undefined;
     }
     /**
@@ -491,10 +473,8 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @returns
      */
     _getSelectedTag() {
-      //console.log('_getSelectedTag',this.range);
       let block = this._getSelectedBlock(),
         tag = !!block && !!block.tagName ? block.tagName.toLowerCase() : false;
-      //console.log('_getSelectedTag 2',this.range, node, closest, tag);
       return tag;
     }
 
