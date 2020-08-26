@@ -76,18 +76,18 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
             justify-content: flex-end;
           }
           /* hide more button if all buttons are displayed */
-          :host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
-          :host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
-          :host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
-          :host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
-          :host([responsive-size="xl"]) #morebutton,
+          #toolbar[responsive-size="xs"] #morebutton[collapse-max="xs"],
+          #toolbar[responsive-size="sm"] #morebutton[collapse-max*="s"],
+          #toolbar[responsive-size="md"] #morebutton:not([collapse-max*="l"]),
+          #toolbar[responsive-size="lg"] #morebutton:not([collapse-max="xl"]),
+          #toolbar[responsive-size="xl"] #morebutton,
           /* hide buttons if they should be collaped until */
-          :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="m"],
-          :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="l"],
-          :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until="md"],
-          :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until*="l"],
-          :host([responsive-size="md"]) #toolbar[collapsed] *[collapsed-until*="l"],
-          :host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
+          #toolbar[responsive-size="xs"][collapsed] *[collapsed-until*="m"],
+          #toolbar[responsive-size="xs"][collapsed] *[collapsed-until*="l"],
+          #toolbar[responsive-size="sm"][collapsed] *[collapsed-until="md"],
+          #toolbar[responsive-size="sm"][collapsed] *[collapsed-until*="l"],
+          #toolbar[responsive-size="md"][collapsed] *[collapsed-until*="l"],
+          #toolbar[responsive-size="lg"][collapsed] *[collapsed-until="xl"] {
             display: none;
           }
         `
@@ -485,20 +485,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       if (navigator.clipboard) {
         this.addEventListener("paste-button", this._handlePasteButton);
       }
-      window.ResponsiveUtility.requestAvailability();
-      this.dispatchEvent(
-        new CustomEvent("responsive-element", {
-          detail: {
-            element: this,
-            attribute: "responsive-size",
-            relativeToParent: true
-          }
-        })
-      );
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this.__buttons = this._getButtons();
+      window.ResponsiveUtility.requestAvailability();
+      window.dispatchEvent(
+        new CustomEvent("responsive-element", { detail: { element: this.shadowRoot.querySelector('#toolbar') } })
+      );
     }
     updated(changedProperties) {
       super.updated(changedProperties);
@@ -774,7 +768,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       for (var key in child) {
         button[key] = child[key];
       }
-      button.setAttribute("class", "button");
+      button.setAttribute("class", "rtebutton");
       button.addEventListener("deselect", e => {
         console.log("button deselect", this.range, this.range.isCollapsed);
         this._removeHighlight();
@@ -836,7 +830,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         pasteContent = window.clipboardData.getData("Text");
       }
       this.pasteIntoRange(
-        this.getRange(),
+        this.__selection.getRange(),
         this.getSanitizeClipboard(pasteContent)
       );
       e.preventDefault();
