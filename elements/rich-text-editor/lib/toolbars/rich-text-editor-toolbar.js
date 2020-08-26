@@ -785,13 +785,13 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       parent.appendChild(button);
       return button;
     }
-    _addHighlight(){
-      console.log('_addHighlight',this.range);
-      if(this.__selection) this.__selection.addHighlight();
+    _addHighlight() {
+      console.log("_addHighlight", this.range);
+      if (this.__selection) this.__selection.addHighlight();
     }
-    _removeHighlight(){
-      console.log('_removeHighlight',this.range);
-      if(this.__selection) this.__selection.collapseSelection();
+    _removeHighlight() {
+      console.log("_removeHighlight", this.range);
+      if (this.__selection) this.__selection.removeHighlight();
     }
 
     _handleKeyboardShortcuts(e) {

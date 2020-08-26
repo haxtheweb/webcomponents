@@ -106,39 +106,56 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * @param {event} e the button tap event
      */
     _buttonTap(e) {
-      console.log("_buttonTap", e);
       e.preventDefault();
-      console.log(this.__selection,this.__selection.innerHTML,this.range,this.range.cloneContents);
+      let block = this._getSelectedBlock();
+      this.__selection.selectRange(this.range);
+      console.log("_buttonTap",
+        block,
+        this.range,
+        this.__selection,
+        this.__selection.innerHTML
+      );
+      if(block){
+        this.range.selectNode(block);
+        console.log("_buttonTap 2a",
+          block,
+          this.range,
+          this.__selection,
+          this.__selection.innerHTML
+        );
+      } else {
+        //document.execCommand('insertHTML',false,`<${this.tag}></${this.tag}>`);
+        this.__selection.wrap();
+        console.log("_buttonTap 2b",
+          this.range,
+          this.__selection,
+          this.__selection.innerHTML
+        );
+      }
       this.__selection.addHighlight();
+      this.range = this.__selection.range;
+      console.log("_buttonTap",
+        block,
+        this.range,
+        this.__selection,
+        this.__selection.innerHTML
+      );
       this.open();
     }
     /**
      * cancels the changes
      */
     cancel() {
-      this.deselect();
+      this.__selection.removeHighlight();
     }
+
 
     /**
      * updates the insertion based on fields
      */
     confirm() {
       this.updateSelection();
-      this.deselect();
-    }
-
-    /**
-     * deselects the text
-     */
-    deselect() {
-      /*this.__prompt.clearTarget("");
-      this.__selection.normalize();
-      this.__selection.childNodes.forEach(child => {
-        this.__selection.parentNode.insertBefore(child, this.__selection);
-        this.__selection.range.selectNode(child);
-      });
-      this.__selection.range.collapse();
-      this.__selection.hidden = true;*/
+      this.__selection.removeHighlight();
     }
 
     /**
@@ -204,9 +221,15 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * updates prompt fields with selected range data
      */
     updatePrompt() {
-      this.range = this.__selection.range;
-      this.__selectionContents = this._getSelectedBlock();
+      this.__selectionContents = this.__selection.firstChild;
       this.__promptFields = JSON.parse(JSON.stringify(this.fields));
+      console.log(
+        `updatePrompt`,
+        this.range,
+        this.__selection,
+        this.__selection.range,
+        this.__selectionContents
+      );
     }
 
     /**
@@ -219,7 +242,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       this.commandVal = this.__prompt.value;
       this.execCommand();
     }
-    setRange(){
+    setRange() {
       this.__selection.selectRange(this.range);
     }
   };

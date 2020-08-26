@@ -53,8 +53,8 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
       confirm: false
     };
   }
-  get blockSelectors(){
-    return 'u';
+  get blockSelectors() {
+    return "u";
   }
 
   /**
@@ -63,7 +63,13 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
   updatePrompt() {
     super.updatePrompt();
 
-    console.log('updatePrompt',this.__selectionContents,this._getSelectedTag(),this.tag,this.isToggled);
+    console.log(
+      "updatePrompt",
+      this.__selectionContents,
+      this._getSelectedTag(),
+      this.tag,
+      this.isToggled
+    );
     this.value = {
       confirm:
         this.isToggled ||

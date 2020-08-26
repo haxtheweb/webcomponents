@@ -150,13 +150,10 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
       let val = this._getSelection();
       //console.log('_rangeChanged',val);
       if (this.shadowRoot) {
-        if (this.blockSelectors.split(',').includes(val)) {
+        if (this.blockSelectors.split(",").includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
           //console.log('_rangeChanged block',this.blockSelectors,this.shadowRoot.querySelector("#button").value);
-        } else if (
-          !this.range ||
-          this.range.collapsed
-        ) {          
+        } else if (!this.range || this.range.collapsed) {
           this.shadowRoot.querySelector("#button").value = null;
           //console.log('_rangeChanged inline',this.shadowRoot.querySelector("#button").value);
         }
@@ -200,15 +197,24 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     _pickerChange(e) {
       let val = this._getSelectionType() || "";
       this.commandVal = e.detail.value || "";
-      console.log(`_pickerChange -${(val || "")}-${(this.commandVal || "")}-`,this.range);
-      
+      console.log(
+        `_pickerChange -${val || ""}-${this.commandVal || ""}-`,
+        this.range
+      );
+
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {
         this.setRange();
-        console.log(`_pickerChange 2 -${(val || "")}-${(this.commandVal || "")}-`,this.range);
+        console.log(
+          `_pickerChange 2 -${val || ""}-${this.commandVal || ""}-`,
+          this.range
+        );
         this.execCommand();
       }
-      console.log(`_pickerChange 2 -${(val || "")}-${(this.commandVal || "")}-`,this.range);
+      console.log(
+        `_pickerChange 2 -${val || ""}-${this.commandVal || ""}-`,
+        this.range
+      );
     }
   };
 };

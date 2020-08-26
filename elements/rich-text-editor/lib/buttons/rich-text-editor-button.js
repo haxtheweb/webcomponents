@@ -194,14 +194,14 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       /*this.addEventListener("mousedown", function(e) {
-        console.log("mousedown", e);
+        //console.log("mousedown", e);
       });
       this.addEventListener("keypress", function(e) {
         e.preventDefault();
       });*/
     }
-    get blockSelectors(){
-      return 'p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre';
+    get blockSelectors() {
+      return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
     }
 
     /**
@@ -243,11 +243,12 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @memberof RichTextEditorButton
      */
     get isToggled() {
-      return (this.range || !this.range) &&
-        this.command !== null &&
-        this.toggles
-        ? document.queryCommandState(this.command)
-        : false;
+      let command = !!this.range && !!this.command 
+          ? document.queryCommandState(this.command)
+          : false,
+        /* workaround because queryCommandState("underline") returns true on links */
+        block = this.command === "underline" ? this._getSelectedBlock('u') !== null: command;
+      return !!this.range && this.toggles && !!block ? true : false;
     }
 
     /**
@@ -324,34 +325,50 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      *
      * @readonly
      */
-    get operationCommand(){
-      return this.isToggled 
-      && !!this.toggledCommand 
-      ? this.toggledCommand 
-      : this.command
+    get operationCommand() {
+      console.log('operationCommand',this.isToggled);
+      return this.isToggled && !!this.toggledCommand
+        ? this.toggledCommand
+        : this.command;
     }
     /**
      * gets value param for document.execCommand
      *
      * @readonly
      */
-    get operationCommandVal(){
-      return this.isToggled 
-      && !!this.toggledCommand 
-      ? this.toggledCommandVal || ""
-      : this.commandVal
+    get operationCommandVal() {
+      console.log('operationCommandVal',this.isToggled);
+      return this.isToggled && !!this.toggledCommand
+        ? this.toggledCommandVal || ""
+        : this.commandVal;
     }
     /**
      * executes button command on current range
      *
      */
-    execCommand(){
-      console.log('execCommand',this.isToggled,this.range,this.range.cloneContents());
+    execCommand() {
+      console.log(
+        "execCommand",
+        this.isToggled,
+        this.range,
+        this.range.cloneContents()
+      );
       if (this.range) {
-        console.log('execCommand 2',this.operationCommand, this.operationCommandVal);
-        document.execCommand(this.operationCommand, false, this.operationCommandVal);
+        console.log(
+          "execCommand 2",
+          this.operationCommand,
+          this.operationCommandVal
+        );
+        document.execCommand(
+          this.operationCommand,
+          false,
+          this.operationCommandVal
+        );
 
-        console.log('execCommand 2 dispatchEvent',this.operationCommand + "-button");
+        console.log(
+          "execCommand 2 dispatchEvent",
+          this.operationCommand + "-button"
+        );
         this.dispatchEvent(
           new CustomEvent(this.operationCommand + "-button", {
             bubbles: true,
@@ -361,25 +378,31 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           })
         );
       }
-      console.log('execCommand 3',this.range,this.range.cloneContents());
+      console.log("execCommand 3", this.range, this.range.cloneContents());
     }
     /**
      * expands range to selection's parent block
      */
-    setRange(){
+    setRange() {
       /* if command is formatBlock expand selection to entire block */
       let block = this._getSelectedBlock();
-      if(block) this.__selection.selectNode(block);
-      console.log('setRange',block,this.__selection.range,this.__selection.range.cloneContents(),this);
+      if (block) this.__selection.selectNode(block);
+      console.log(
+        "setRange",
+        block,
+        this.__selection.range,
+        this.__selection.range.cloneContents(),
+        this
+      );
     }
 
     /**
      * Handles button tap
      */
     _buttonTap(e) {
-      console.log('_buttonTap',this);
+      console.log("_buttonTap", this);
       e.preventDefault();
-      if(this.command === "formatBlock") this.setRange();
+      if (this.command === "formatBlock") this.setRange();
       this.execCommand();
     }
     /**
@@ -400,35 +423,35 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * gets appplicable selection
      * @returns {*}
      */
-    _getSelection(){
+    _getSelection() {
       return this.command === "formatBlock"
-      ? this._getSelectedBlock()
-      : this._getSelectedHtml();
+        ? this._getSelectedBlock()
+        : this._getSelectedHtml();
     }
     /**
      * gets appplicable selection
      * @returns {*}
      */
-    _getSelectionType(){
+    _getSelectionType() {
       return this.command === "formatBlock"
-      ? this._getSelectedTag()
-      : this._getSelectedHtml();
+        ? this._getSelectedTag()
+        : this._getSelectedHtml();
     }
     /**
-    * get selection's parent block
-    * @returns {object}
-    */
-    _getSelectedBlock() {
-      //console.log('_getSelectedBlock',this.range);
-      if(this.range){
-        let node = this.range.commonAncestorContainer, 
-          selector = this.blockSelectors,
-          closest = node.nodeType === 1 
-            ? node.closest(selector) 
-            : node.parentNode.nodeType === 1 
-            ? node.parentNode.closest(selector) 
-            : undefined;
-        //console.log('_getSelectedBlock 2',this.range, node, closest, tag);
+     * get selection's parent block
+     * @returns {object}
+     */
+    _getSelectedBlock(selector = this.blockSelectors) {
+      console.log('_getSelectedBlock',this.range,!this.range || this.range.cloneContents(),selector);
+      if (this.range) {
+        let node = this.range.commonAncestorContainer,
+          closest =
+            node.nodeType === 1
+              ? node.closest(selector)
+              : node.parentNode.nodeType === 1
+              ? node.parentNode.closest(selector)
+              : undefined;
+        console.log('_getSelectedBlock 2',this.range, node, closest);
         return closest;
       }
       return undefined;
@@ -439,7 +462,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      */
     _getSelectedHtml() {
       //console.log('_getSelectedHtml',this.range);
-      if(this.range){
+      if (this.range) {
         let div = document.createElement("div"),
           contents = this.range.cloneContents(),
           val;
@@ -448,7 +471,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
         val = div.innerHTML;
         div.remove();
         //console.log('_getSelectedHtml 2',this.range);
-        return val ? val.trim() : undefined; 
+        return val ? val.trim() : undefined;
       }
       //console.log('_getSelectedHtml 2b',this.range);
       return undefined;
