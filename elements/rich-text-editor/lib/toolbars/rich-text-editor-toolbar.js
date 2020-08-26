@@ -598,23 +598,28 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         )
           this.editTarget(null);
       });
-      editor.addEventListener('click',e => this._handleEditorClick(editor,e));
+      editor.addEventListener("click", e => this._handleEditorClick(editor, e));
     }
-    _handleEditorClick(editor,e){
-      if(editor.contentEditable && e.path[0] !== editor){
-        let button = this.buttons.filter(button=>button.tag === e.path[0].tagName.toLowerCase()),
-          range = this.__selection 
-            && this.__selection.range
-            ? this.__selection.range : false,
-          start = range && range.startContainer 
-            ? range.startContainer.childNodes[range.startOffset] 
-            : false, 
-          end = range && range.endContainer 
-            ? range.endContainer.childNodes[range.endOffset - 1] 
-            : false;
-        if(button && button[0] && start === end && start === e.path[0]) {
+    _handleEditorClick(editor, e) {
+      if (editor.contentEditable && e.path[0] !== editor) {
+        let button = this.buttons.filter(
+            button => button.tag === e.path[0].tagName.toLowerCase()
+          ),
+          range =
+            this.__selection && this.__selection.range
+              ? this.__selection.range
+              : false,
+          start =
+            range && range.startContainer
+              ? range.startContainer.childNodes[range.startOffset]
+              : false,
+          end =
+            range && range.endContainer
+              ? range.endContainer.childNodes[range.endOffset - 1]
+              : false;
+        if (button && button[0] && start === end && start === e.path[0]) {
           button[0]._buttonTap(e);
-        } else if(button && button[0]) {
+        } else if (button && button[0]) {
           this.__selection.selectNode(e.path[0]);
         }
       }

@@ -438,14 +438,16 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
         let start = this.range.startContainer;
       console.log("_getSelectedBlock 1a",start,start.childNodes[this.range.startOffset]);
         return start.childNodes[this.range.startOffset];
-      } else */if (this.range) {
+      } else */ if (
+        this.range
+      ) {
         let node = this.range.commonAncestorContainer,
           closest =
             node.nodeType === 1
-            ? node.closest(selector)
-            : node.parentNode.nodeType === 1
-            ? node.parentNode.closest(selector)
-            : undefined;
+              ? node.closest(selector)
+              : node.parentNode.nodeType === 1
+              ? node.parentNode.closest(selector)
+              : undefined;
         console.log("_getSelectedBlock 2", this.range, node, closest);
         return closest;
       }
