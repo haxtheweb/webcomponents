@@ -301,22 +301,22 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     if (children.length > 0) {
       children.forEach((child, i) => {
         this.parentNode.insertBefore(child, this);
-        console.log('children',child, i);
+        console.log("children", child, i);
         if (i === 0) this.range.setStart(child, 0);
         this.range.setEnd(child, 0);
       });
-    } else if(this.previousSibling){
+    } else if (this.previousSibling) {
       this.range.selectNode(this.previousSibling);
       this.range.collapse();
-        console.log('previousSibling',this.previousSibling);
-    } else if(this.nextSibling){
+      console.log("previousSibling", this.previousSibling);
+    } else if (this.nextSibling) {
       this.range.selectNode(this.nextSibling);
       this.range.collapse(true);
-        console.log('nextSibling',this.nextSibling);
-    } else if(this.parentNode){
+      console.log("nextSibling", this.nextSibling);
+    } else if (this.parentNode) {
       this.range.selectNode(this.c);
       this.range.collapse(true);
-      console.log('parentNode',this.parentNode);
+      console.log("parentNode", this.parentNode);
     }
     this.hidden = true;
     console.log("removeHighlight 3", this.range, this);

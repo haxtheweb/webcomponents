@@ -109,15 +109,17 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       e.preventDefault();
       let block = this._getSelectedBlock();
       this.__selection.selectRange(this.range);
-      console.log("_buttonTap",
+      console.log(
+        "_buttonTap",
         block,
         this.range,
         this.__selection,
         this.__selection.innerHTML
       );
-      if(block){
+      if (block) {
         this.range.selectNode(block);
-        console.log("_buttonTap 2a",
+        console.log(
+          "_buttonTap 2a",
           block,
           this.range,
           this.__selection,
@@ -126,7 +128,8 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       } else {
         //document.execCommand('insertHTML',false,`<${this.tag}></${this.tag}>`);
         this.__selection.wrap();
-        console.log("_buttonTap 2b",
+        console.log(
+          "_buttonTap 2b",
           this.range,
           this.__selection,
           this.__selection.innerHTML
@@ -134,7 +137,8 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       }
       this.__selection.addHighlight();
       this.range = this.__selection.range;
-      console.log("_buttonTap",
+      console.log(
+        "_buttonTap",
         block,
         this.range,
         this.__selection,
@@ -148,7 +152,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     cancel() {
       this.__selection.removeHighlight();
     }
-
 
     /**
      * updates the insertion based on fields

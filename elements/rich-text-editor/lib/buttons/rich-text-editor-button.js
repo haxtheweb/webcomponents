@@ -243,11 +243,15 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @memberof RichTextEditorButton
      */
     get isToggled() {
-      let command = !!this.range && !!this.command 
-          ? document.queryCommandState(this.command)
-          : false,
+      let command =
+          !!this.range && !!this.command
+            ? document.queryCommandState(this.command)
+            : false,
         /* workaround because queryCommandState("underline") returns true on links */
-        block = this.command === "underline" ? this._getSelectedBlock('u') !== null: command;
+        block =
+          this.command === "underline"
+            ? this._getSelectedBlock("u") !== null
+            : command;
       return !!this.range && this.toggles && !!block ? true : false;
     }
 
@@ -326,7 +330,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @readonly
      */
     get operationCommand() {
-      console.log('operationCommand',this.isToggled);
+      console.log("operationCommand", this.isToggled);
       return this.isToggled && !!this.toggledCommand
         ? this.toggledCommand
         : this.command;
@@ -337,7 +341,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @readonly
      */
     get operationCommandVal() {
-      console.log('operationCommandVal',this.isToggled);
+      console.log("operationCommandVal", this.isToggled);
       return this.isToggled && !!this.toggledCommand
         ? this.toggledCommandVal || ""
         : this.commandVal;
@@ -442,7 +446,12 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @returns {object}
      */
     _getSelectedBlock(selector = this.blockSelectors) {
-      console.log('_getSelectedBlock',this.range,!this.range || this.range.cloneContents(),selector);
+      console.log(
+        "_getSelectedBlock",
+        this.range,
+        !this.range || this.range.cloneContents(),
+        selector
+      );
       if (this.range) {
         let node = this.range.commonAncestorContainer,
           closest =
@@ -451,7 +460,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
               : node.parentNode.nodeType === 1
               ? node.parentNode.closest(selector)
               : undefined;
-        console.log('_getSelectedBlock 2',this.range, node, closest);
+        console.log("_getSelectedBlock 2", this.range, node, closest);
         return closest;
       }
       return undefined;
