@@ -193,14 +193,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   connectedCallback() {
     super.connectedCallback();
-    /*this.__a11yconfirm = this.shadowRoot.querySelector("#confirm");
-    this.__a11ycancel = this.shadowRoot.querySelector("#cancel");
-    
-    TODO blur  doesnt work with select dropdowns
-     this.addEventListener("blur", e => {
-      console.log("blur", document.activeElement);
-      this._cancel(e);
-    });*/
   }
 
   /**

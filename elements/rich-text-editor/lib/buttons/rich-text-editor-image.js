@@ -26,6 +26,11 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     return super.render();
   }
 
+  // properties available to the custom element for data binding
+  static get properties() {
+    return { ...super.properties };
+  }
+
   constructor() {
     super();
     this.fields = [
@@ -48,7 +53,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       },
       {
         property: "height",
-        title: "Width",
+        title: "Height",
         inputMethod: "textfield",
         inline: true
       }
@@ -58,6 +63,25 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     this.icon = "editor:insert-photo";
     this.tag = "img";
     this.value = {};
+  }
+  /**
+   * overrides default block selectors
+   *
+   * @readonly
+   * @memberof RichTextEditorLink
+   */
+  get blockSelectors() {
+    return "img";
+  }
+
+  /**
+   * whether button is toggled
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
+   */
+  get isToggled() {
+    return this.toggled;
   }
 
   /**
@@ -81,21 +105,16 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       src = this.__prompt.getPromptValue("src"),
       width = this.__prompt.getPromptValue("width"),
       height = this.__prompt.getPromptValue("height");
+    this.setRange();
+    console.log("updateSelection", alt, src, width, height, this.__selection.range);
     this.__selection.range.selectNode(this.__selectionContents);
-    document.execCommand(
-      "insertHTML",
-      false,
-      !src
-        ? ""
-        : `<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${
-            !width ? "" : ` width="${width}"`
-          }${!height ? "" : ` width="${height}"`}>`
-    );
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
+    this.toggled = !src;
+    this.commandVal = !src 
+      ? "" 
+      :`<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${!width ? "" : ` width="${width}"`}${!height ? "" : ` width="${height}"`}>`;
+    console.log("updateSelection 2", alt, src, width, height, this.toggled, this.commandVal);
+    this.execCommand();
+    console.log("updateSelection 3", alt, src, width, height, this.toggled, this.commandVal);
   }
 }
 window.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);

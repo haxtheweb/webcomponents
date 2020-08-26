@@ -23,7 +23,9 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
           :host {
             margin: 0 var(--rich-text-editor-button-margin);
           }
-          simple-picker {
+          .rtebutton {
+            margin-top: 0;
+            margin-bottom: 0;
             --simple-picker-border-radius: 0px;
             --simple-picker-color: var(--rich-text-editor-button-color);
             --simple-picker-color-active: var(
@@ -128,8 +130,6 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      */
     _pickerFocus(e) {
       e.preventDefault();
-      ////console.log('_pickerFocus');
-      //this.range = this.__selection.range;
     }
 
     /**
@@ -148,14 +148,11 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
      */
     _rangeChanged() {
       let val = this._getSelection();
-      //console.log('_rangeChanged',val);
       if (this.shadowRoot) {
         if (this.blockSelectors.split(",").includes(val)) {
           this.shadowRoot.querySelector("#button").value = val;
-          //console.log('_rangeChanged block',this.blockSelectors,this.shadowRoot.querySelector("#button").value);
         } else if (!this.range || this.range.collapsed) {
           this.shadowRoot.querySelector("#button").value = null;
-          //console.log('_rangeChanged inline',this.shadowRoot.querySelector("#button").value);
         }
       }
       super._rangeChanged();
@@ -197,24 +194,16 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
     _pickerChange(e) {
       let val = this._getSelectionType() || "";
       this.commandVal = e.detail.value || "";
-      console.log(
-        `_pickerChange -${val || ""}-${this.commandVal || ""}-`,
-        this.range
-      );
 
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {
-        this.setRange();
-        console.log(
-          `_pickerChange 2 -${val || ""}-${this.commandVal || ""}-`,
-          this.range
-        );
+        if(this.command === 'formatBlock') {
+          this.setRange();
+        } else {
+          this.__selection.selectRange(this.range)
+        }
         this.execCommand();
       }
-      console.log(
-        `_pickerChange 2 -${val || ""}-${this.commandVal || ""}-`,
-        this.range
-      );
     }
   };
 };

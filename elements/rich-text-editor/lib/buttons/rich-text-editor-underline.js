@@ -62,14 +62,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
    */
   updatePrompt() {
     super.updatePrompt();
-
-    console.log(
-      "updatePrompt",
-      this.__selectionContents,
-      this._getSelectedTag(),
-      this.tag,
-      this.isToggled
-    );
     this.value = {
       confirm:
         this.isToggled ||

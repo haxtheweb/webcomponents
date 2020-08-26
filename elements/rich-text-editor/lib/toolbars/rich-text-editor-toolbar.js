@@ -491,7 +491,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       this.__buttons = this._getButtons();
       window.ResponsiveUtility.requestAvailability();
       window.dispatchEvent(
-        new CustomEvent("responsive-element", { detail: { element: this.shadowRoot.querySelector('#toolbar') } })
+        new CustomEvent("responsive-element", {
+          detail: { element: this.shadowRoot.querySelector("#toolbar") }
+        })
       );
     }
     updated(changedProperties) {
@@ -768,7 +770,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       for (var key in child) {
         button[key] = child[key];
       }
-      button.setAttribute("class", "rtebutton");
+      button.setAttribute("class", "button");
       button.addEventListener("deselect", e => {
         console.log("button deselect", this.range, this.range.isCollapsed);
         this._removeHighlight();

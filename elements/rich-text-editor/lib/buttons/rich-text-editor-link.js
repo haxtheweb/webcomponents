@@ -84,7 +84,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    */
   updatePrompt() {
     super.updatePrompt();
-    console.log("updatePrompt", this.__selectionContents, this.__selection);
     this.value = {
       linktext: this.__selectionContents
         ? this.__selectionContents.innerHTML
@@ -102,14 +101,11 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   updateSelection() {
     let link = this.__prompt.getPromptValue("href"),
       text = this.__prompt.getPromptValue("linktext");
-    console.log("updateSelection", link, text, this.__selection.range);
     this.setRange();
     this.__selectionContents.innerHTML = text;
     this.toggled = !link || !text;
     this.commandVal = link || undefined;
-    console.log("updateSelection 2", link, text, this.toggled, this.commandVal);
     this.execCommand();
-    console.log("updateSelection 2", link, text, this.toggled, this.commandVal);
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
