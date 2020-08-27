@@ -30,7 +30,7 @@ class LrndesignImagemapHotspot extends LitElement {
     return html`
       <figure class="hotspot-print">
         <figcaption>
-          <relative-heading id="sub-heading" parent="heading">
+          <relative-heading disable-link id="sub-heading" parent="heading">
             <h2>${this.label}</h2>
           </relative-heading>
           <div id="desc"><slot></slot></div>

@@ -70,13 +70,15 @@ class LrndesignImagemap extends LitElement {
           <slot name="source" hidden></slot>
           <div id="buttons"></div>
         </figcaption>
-        <slot id="svg"></slot>
-        <simple-popover
+        <slot id="svg" name="svg"></slot>
+        <simple-popover 
           auto
           ?hidden="${!this.__activeHotspot}"
+          position="${!this.__activeHotspot ? "bottom" : this.__activeHotspot.position}"
           .for="${!this.__activeHotspot ? undefined : this.__activeHotspot.id}"
         >
           <relative-heading
+            disable-link
             class="sub-heading"
             parent="heading"
             id="subheading-${!this.__activeHotspot
@@ -138,6 +140,10 @@ class LrndesignImagemap extends LitElement {
 
   firstUpdated(changeProperties) {
     if (super.firstUpdated) super.firstUpdated(changeProperties);
+    console.log(this.querySelector("[slot=src]")
+    ? this.querySelector("[slot=src]")
+    : this.src);
+
     this._fetchSvg(
       this.querySelector("[slot=src]")
         ? this.querySelector("[slot=src]")
@@ -159,8 +165,10 @@ class LrndesignImagemap extends LitElement {
     let hotspots = [];
     loader.innerHTML = data;
     let svg = loader.querySelector("svg");
+    
     svg.slot = "svg";
-    this.prepend("svg");
+    this.prepend(svg);
+    console.log(this.childNodes);
     svg.setAttribute("aria-labelledBy", this._getInfoNode(svg, "title"));
     svg.setAttribute("aria-describedBy", this._getInfoNode(svg));
     this.hotspotDetails = [];
