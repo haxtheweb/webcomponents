@@ -2568,7 +2568,9 @@ window.HaxStore.mimeTypeToGizmoType = mime => {
 window.HaxStore.guessGizmoType = guess => {
   if (typeof guess.source !== typeof undefined) {
     const source = guess.source.toLowerCase();
-    if (source.indexOf(".mp3") != -1) {
+    if (source.indexOf(".mp3") != -1 ||
+    source.indexOf(".midi") != -1 ||
+    source.indexOf(".mid") != -1) {
       return "audio";
     } else if (
       source.indexOf(".png") != -1 ||

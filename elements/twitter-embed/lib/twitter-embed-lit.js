@@ -50,6 +50,65 @@ class TwitterEmbedLit extends LitElement {
       }
     };
   }
+    /**
+   * Attached to the DOM, now fire.
+   */
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Twitter embed",
+        description: "Embed a tweet from twitter in context",
+        icon: "hax:meme",
+        color: "blue",
+        groups: ["Social Media"],
+        handles: [],
+        meta: {
+          author: "ELMS:LN"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            attribute: "tweet",
+            title: "Tweet URL",
+            description: "URL of the tweet in question to be embedded",
+            inputMethod: "textfield"
+          },
+          {
+            attribute: "data-theme",
+            title: "Theme",
+            description: "Light or dark version of twitter tweets",
+            inputMethod: "select",
+            options: {
+              light: "Light",
+              dark: "Dark"
+            }
+          },
+          {
+            attribute: "no-popups",
+            title: "Prevent popup on click",
+            description:
+              "This blocks the user from clicking the tweet and going to twitter.com",
+            inputMethod: "boolean"
+          }
+        ],
+        advanced: []
+      },
+      demoSchema: [
+        {
+          tag: "twitter-embed-lit",
+          content: "",
+          properties: {
+            tweet: "https://twitter.com/btopro/status/1298632260707639298"
+          }
+        }
+      ]
+    };
+  }
   /**
    * LitElement equivalent of attributeChangedCallback
    */

@@ -1527,6 +1527,7 @@
   "autoloader": {
     "a11y-figure": "@lrnwebcomponents/a11y-figure/a11y-figure.js",
     "twitter-embed": "@lrnwebcomponents/twitter-embed/twitter-embed.js",
+    "music-player": "@lrnwebcomponents/music-player/music-player.js",
     "lrndesign-chart": "@lrnwebcomponents/lrndesign-chart/lrndesign-chart.js",
     "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
     "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",

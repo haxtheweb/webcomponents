@@ -116,7 +116,7 @@ class TwitterEmbed extends HTMLElement {
         title="Twitter Tweet"
         src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${
           this.tweetId
-        }&amp;lang=en&amp;origin=http%3A%2F%2Flocalhost%3A8000%2Felements%2Ftwitter-embed%2Fdemo%2Findex.html&amp;theme=${
+        }&amp;lang=en&amp;theme=${
       this.dataTheme
     }&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
         data-tweet-id="${this.tweetId}">
