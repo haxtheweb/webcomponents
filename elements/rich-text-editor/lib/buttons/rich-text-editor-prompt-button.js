@@ -111,7 +111,6 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       if (block) {
         this.range.selectNode(block);
       } else {
-        //document.execCommand('insertHTML',false,`<${this.tag}></${this.tag}>`);
         this.__selection.wrap();
       }
       this.__selection.addHighlight();

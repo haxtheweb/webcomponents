@@ -425,7 +425,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @returns {object}
      */
     _getSelectedBlock(selector = this.blockSelectors) {
-      /*console.log(
+      console.log(
         "_getSelectedBlock",
         this.range,
         !this.range || !this.range.cloneContents() || this.range.cloneContents().childNodes,
@@ -434,11 +434,11 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       let children = this.range && this.range.cloneContents() ? this.range.cloneContents().childNodes : false,
         tagNames = selector && selector !== "" ? selector.split(',') : false;
       console.log("_getSelectedBlock 1",children,tagNames);
-      if(tagNames && children && children.length === 1 && tagNames.includes(children[0].tagName.toLowerCase())){
+      if(tagNames && children && children.length === 1 && children[0].tagName && tagNames.includes(children[0].tagName.toLowerCase())){
         let start = this.range.startContainer;
       console.log("_getSelectedBlock 1a",start,start.childNodes[this.range.startOffset]);
         return start.childNodes[this.range.startOffset];
-      } else */ if (
+      } else if (
         this.range
       ) {
         let node = this.range.commonAncestorContainer,

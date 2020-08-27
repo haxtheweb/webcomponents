@@ -24,143 +24,147 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends RichTextEditorStyles(LitElement) {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        :host {
-          display: block;
-          min-height: 20px;
-          cursor: pointer;
-        }
+:host {
+  display: block;
+  min-height: 20px;
+  cursor: pointer;
+}
 
-        :host([contenteditable="true"]) {
-          border: var(--rich-text-editor-border);
-          overflow: auto;
-        }
+:host([contenteditable="true"]) {
+  border: var(--rich-text-editor-border);
+  overflow: auto;
+}
 
-        :host([contenteditable="true"]):focus-within,
-        :host([contenteditable="true"]):focus {
-          padding: 2px;
-          margin-bottom: 2px;
-        }
+:host([contenteditable="true"]):focus-within,
+:host([contenteditable="true"]):focus {
+  padding: 2px;
+  margin-bottom: 2px;
+}
 
-        :host(.heightmax[contenteditable="true"]) {
-          max-height: calc(100vh - 200px);
-          overflow-y: scroll;
-        }
+:host(.heightmax[contenteditable="true"]) {
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
+}
 
-        :host(:empty) {
-          border: 1px dashed var(--rich-text-editor-border-color);
-        }
+:host(:empty) {
+  border: 1px dashed var(--rich-text-editor-border-color);
+}
 
-        :host(:not([contenteditable="true"]):empty):before {
-          content: attr(placeholder);
-          padding: 0 5px;
-          display: block;
-          color: var(--rich-text-editor-button-disabled-color);
-        }
+:host(:not([contenteditable="true"]):empty):before {
+  content: attr(placeholder);
+  padding: 0 5px;
+  display: block;
+  color: var(--rich-text-editor-button-disabled-color);
+}
       `
     ];
   }
 
-  // render function
+// render function
   render() {
     return html`
-      <slot></slot>
-    `;
+
+<slot></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+  
+  ...super.properties,
+  
+  /**
+   * The editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  },
 
-      /**
-       * The editor's unique id
-       */
-      id: {
-        name: "id",
-        type: String,
-        reflect: true,
-        attribute: "id"
-      },
+  /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": String,
+    "reflect": true,
+    "attribute": "placeholder"
+  },
 
-      /**
-       * Placeholder text for empty editable regions
-       */
-      placeholder: {
-        name: "placeholder",
-        type: String,
-        reflect: true,
-        attribute: "placeholder"
-      },
+  /**
+   * The id for the toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "reflect": true,
+    "attribute": "toolbar"
+  },
 
-      /**
-       * The id for the toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        reflect: true,
-        attribute: "toolbar"
-      },
-
-      /**
-       * The type of editor toolbar, i.e.
-       * full - full for full toolbar with breadcrumb,
-       * mini - mini for mini floating toolbar, or
-       * the default toolbar if neither.
-       */
-      type: {
-        name: "type",
-        type: String,
-        reflect: true,
-        attribute: "type"
-      }
-    };
+  /**
+   * The type of editor toolbar, i.e.
+   * full - full for full toolbar with breadcrumb,
+   * mini - mini for mini floating toolbar, or
+   * the default toolbar if neither.
+   */
+  "type": {
+    "name": "type",
+    "type": String,
+    "reflect": true,
+    "attribute": "type"
+  }
+}
+;
   }
 
   /**

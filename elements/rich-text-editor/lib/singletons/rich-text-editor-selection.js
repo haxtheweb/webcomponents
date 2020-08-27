@@ -142,27 +142,16 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   addHighlight() {
-    console.log("addHighlight", this.range, this);
     if (!this.hidden) return;
     this.hidden = !this.range || this.range.collapsed;
     if (!this.hidden) {
       this.range.surroundContents(this);
       this.normalize();
-      console.log(
-        "addHighlight 2",
-        `-${this.innerHTML}-${this.innerHTML.trim()}-`
-      );
       this.innerHTML = this.innerHTML.trim();
       this.range.selectNodeContents(this);
       this.dispatchEvent(new CustomEvent("highlight", { detail: this }));
       this.hidden = false;
     }
-    console.log(
-      "addHighlight 3",
-      this.range,
-      this,
-      `-${this.innerHTML}-${this.innerHTML.trim()}-`
-    );
   }
 
   /**
@@ -181,11 +170,9 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} selected node
    */
   getAncestor(selector, range = this.range) {
-    console.log("getAncestor", selector, (range = this.range));
     let wrapper,
       tags = selector.toLowerCase().split(","),
       getMatchingTag = ancestor => {
-        //console.log("getMatchingTag", ancestor, tags);
         if (
           !!ancestor &&
           !!ancestor.tagName &&
@@ -206,9 +193,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     if (range) {
       let ancestor = range.commonAncestorContainer;
       wrapper = getMatchingTag(ancestor);
-      console.log("getAncestor 2", range, wrapper, ancestor.closest(selector));
     }
-    console.log("getAncestor 3", range);
     return wrapper;
   }
 
@@ -220,10 +205,8 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} selected node
    */
   selectAncestor(selector, range = this.range) {
-    //console.log("selectAncestor", selector, range);
     let wrapper = this.getAncestor(selector, range);
     if (wrapper) range.selectNode(wrapper);
-    //console.log("wrapper", wrapper);
     return wrapper;
   }
 
@@ -281,9 +264,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   deselectRange() {
     let sel = this.getRange();
-    //console.log("deselectRange", sel, sel.isCollapsed);
     if (!sel.isCollapsed) sel.collapse();
-    //console.log("deselectRange 2", sel, sel.isCollapsed);
   }
 
   /**
@@ -293,33 +274,25 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   removeHighlight() {
     if (this.hidden) return;
-    console.log("removeHighlight", this.range, this);
     this.normalize();
-    console.log("removeHighlight 2", this.range, this);
     let children = this.childNodes;
-    console.log(children, children.length);
     if (children.length > 0) {
       children.forEach((child, i) => {
         this.parentNode.insertBefore(child, this);
-        console.log("children", child, i);
         if (i === 0) this.range.setStart(child, 0);
         this.range.setEnd(child, 0);
       });
     } else if (this.previousSibling) {
       this.range.selectNode(this.previousSibling);
       this.range.collapse();
-      console.log("previousSibling", this.previousSibling);
     } else if (this.nextSibling) {
       this.range.selectNode(this.nextSibling);
       this.range.collapse(true);
-      console.log("nextSibling", this.nextSibling);
     } else if (this.parentNode) {
       this.range.selectNode(this.c);
       this.range.collapse(true);
-      console.log("parentNode", this.parentNode);
     }
     this.hidden = true;
-    console.log("removeHighlight 3", this.range, this);
   }
 
   /**

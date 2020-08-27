@@ -89,7 +89,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
    */
   updatePrompt() {
     super.updatePrompt();
-    this.__selectionContents = this.__selectionContents.firstChild;
+    this.__selectionContents = this.__selectionContents;
     this.value = {
       alt: this.__selectionContents.getAttribute("alt"),
       src: this.__selectionContents.getAttribute("src"),
