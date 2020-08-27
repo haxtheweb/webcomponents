@@ -3,62 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 /**
  * `music-player`
  * `Visualize different types of music and simple format player`
+ * 
  * @demo demo/index.html
  * @element music-player
  */
 class MusicPlayer extends LitElement {
-  //styles function
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-
-        :host([hidden]) {
-          display: none;
-        }
-      `
-    ];
-  }
-
-  // render function
-  render() {
-    return html`
-      <midi-player src="${this.source}" sound-font> </midi-player>
-      <midi-visualizer type="${this.visualizer}" src="${this.source}">
-      </midi-visualizer>
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      source: {
-        type: String
-      },
-      visualizer: {
-        type: String
-      },
-      noteHeight: {
-        type: Number,
-        attribute: "note-height"
-      },
-      pixelsPerTimeStep: {
-        type: Number,
-        attribute: "pixels-per-time-step"
-      },
-      minPitch: {
-        type: Number,
-        attribute: "min-pitch"
-      }
-    };
-  }
-
   /**
    * Convention we use
    */
@@ -71,11 +23,70 @@ class MusicPlayer extends LitElement {
    */
   constructor() {
     super();
-    this.visualizer = "piano-roll";
-    this.noteHeight = 4;
-    this.pixelsPerTimeStep = 60;
-    this.minPitch = 30;
+    this.noWaterfall = false;
+    this.noVisual = false;
+    this.visualizer = "staff";
   }
+  //styles function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+
+        :host([hidden]) {
+          display: none;
+        }
+        midi-player {
+          display: block;
+          width: var(--music-player-midi-player-width, unset);
+          margin: var(--music-player-midi-player-margin, 4px);
+        }
+        :host([no-visual]) midi-visualizer {
+          display: none;
+        }
+
+        :host([no-waterfall]) midi-visualizer .waterfall-notes-container {
+          display: none;
+        }
+        midi-visualizer .waterfall-visualizer {
+          overflow: auto;
+        }
+      `
+    ];
+  }
+
+  // render function
+  render() {
+    return html`
+      <midi-visualizer type="${this.visualizer}" src="${this.source}"></midi-visualizer>
+      <midi-player src="${this.source}" sound-font></midi-player>
+    `;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      source: {
+        type: String
+      },
+      visualizer: {
+        type: String
+      },
+      noWaterfall: {
+        type: Boolean,
+        attribute: "no-waterfall",
+        reflect: true
+      },
+      noVisual: {
+        type: Boolean,
+        attribute: "no-visual",
+        reflect: true
+      }
+    };
+  }
+
   /**
    * LitElement life cycle - 1st updated
    */
@@ -83,28 +94,12 @@ class MusicPlayer extends LitElement {
     this.visualizerElement = this.shadowRoot.querySelector("midi-visualizer");
     setTimeout(() => {
       import("./lib/html-midi-player.js").then(module => {
+        // associate the visualizer to the player
         this.shadowRoot
           .querySelector("midi-player")
           .addVisualizer(this.visualizerElement);
       });
     }, 0);
-  }
-  /**
-   * LitElement life cycle - property changed
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (
-        ["noteHeight", "pixelsPerTimeStep", "minPitch"].includes(propName) &&
-        this.visualizerElement
-      ) {
-        this.visualizerElement.config = {
-          noteHeight: this.noteHeight,
-          pixelsPerTimeStep: this.pixelsPerTimeStep,
-          minPitch: this.minPitch
-        };
-      }
-    });
   }
   /**
    * Attached to the DOM, now fire.
@@ -145,10 +140,16 @@ class MusicPlayer extends LitElement {
             description: "How to visualize the music file",
             inputMethod: "select",
             options: {
-              staff: "Staff",
+              "staff": "Staff",
               "piano-roll": "Piano roll",
-              waterfall: "Piano + waterfall"
+              "waterfall": "Piano + waterfall"
             }
+          },
+          {
+            property: "noWaterfall",
+            title: "Hide waterfall",
+            description: "Disable the waterfall of notes when visualized as a piano",
+            inputMethod: "boolean",
           }
         ],
         advanced: []

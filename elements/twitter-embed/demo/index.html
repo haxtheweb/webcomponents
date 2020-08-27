@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
@@ -11,7 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../twitter-embed.js';
-      import '../lib/twitter-embed-lit.js';
+      import '../lib/twitter-embed-vanilla.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -82,9 +82,9 @@
       <demo-snippet>
         <template>
           <twitter-embed data-theme="dark" tweet="https://twitter.com/jimgroom/status/1298328603038449664"></twitter-embed>
-          <twitter-embed-lit data-theme="dark" tweet="https://twitter.com/jimgroom/status/1298328603038449664"></twitter-embed-lit>
+          <twitter-embed-vanilla data-theme="dark" tweet="https://twitter.com/jimgroom/status/1298328603038449664"></twitter-embed-vanilla>
           <twitter-embed no-popups tweet-id="1298632260707639298"></twitter-embed>
-          <twitter-embed-lit no-popups tweet-id="1298632260707639298"></twitter-embed-lit>
+          <twitter-embed-vanilla no-popups tweet-id="1298632260707639298"></twitter-embed-vanilla>
         </template>
       </demo-snippet>
     </div>

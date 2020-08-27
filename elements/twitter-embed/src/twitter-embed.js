@@ -1,127 +1,58 @@
+import { LitElement, html } from "lit-element/lit-element.js";
 /**
  * `twitter-embed`
- * `A simple way to embed tweets from twitter without their whole API.
+ * `A simple way to embed tweets from twitter without their whole API, with LitElement
  *
  * @demo demo/index.html
  * @element twitter-embed
  */
-class TwitterEmbed extends HTMLElement {
+class TwitterEmbed extends LitElement {
   static get tag() {
     return "twitter-embed";
   }
   /**
-   * HTMLElement spec / class based architecture in general
+   * HTMLElement spec
    */
   constructor() {
     super();
-    this.dataWidth = this.getAttribute("data-width")
-      ? this.getAttribute("data-width")
-      : "550px";
-    this.dataTheme = this.getAttribute("data-theme")
-      ? this.getAttribute("data-theme")
-      : "light";
-    this.tweet = this.getAttribute("tweet") ? this.getAttribute("tweet") : null;
-    this.tweetId = this.getAttribute("tweet-id")
-      ? this.getAttribute("tweet-id")
-      : null;
-    this.allowPopups = this.getAttribute("no-popups") ? "" : "allow-popups";
+    this.lang = (document && document.documentElement && document.documentElement.lang) ? document.documentElement.lang : "en";
+    this.dataWidth = "550px";
+    this.dataTheme = "light";
+    this.tweet = null;
+    this.tweetId = null;
+    this.allowPopups = "allow-popups";
   }
   /**
-   * HTMLElement spec
+   * LitElement properties definition
    */
-  static get observedAttributes() {
-    return ["tweet", "data-width", "data-theme", "tweet-id", "no-popups"];
-  }
-  /**
-   * HTMLElement spec
-   */
-  attributeChangedCallback(attr, oldValue, newValue) {
-    if (attr == "tweet" && newValue && newValue.includes("twitter.com")) {
-      this.tweetId = newValue.split("/").pop();
-    }
-    if (attr == "no-popups") {
-      this.allowPopups =
-        newValue == "no-popups" ||
-        newValue == "" ||
-        !newValue ||
-        newValue == null ||
-        newValue == "null"
-          ? ""
-          : "allow-popups";
-    }
-    if (["no-popups", "tweet-id", "data-width", "data-theme"].includes(attr)) {
-      this.innerHTML = this.html;
-    }
-  }
-  get dataWidth() {
-    return this.getAttribute("data-width");
-  }
-  set dataWidth(value) {
-    if (value == null || !value) {
-      this.removeAttribute("data-width");
-    } else {
-      this.setAttribute("data-width", value);
-    }
-  }
-  get dataTheme() {
-    return this.getAttribute("data-theme");
-  }
-  set dataTheme(value) {
-    if (!value || !["dark", "light"].includes(value)) {
-      this.dataTheme = "light";
-    } else {
-      this.setAttribute("data-theme", value);
-    }
-  }
-  get tweetId() {
-    return this.getAttribute("tweet-id");
-  }
-  set tweetId(value) {
-    if (value == null) {
-      this.removeAttribute("tweet-id");
-    } else {
-      this.setAttribute("tweet-id", value);
-    }
-  }
-  get tweet() {
-    return this.getAttribute("tweet");
-  }
-  set tweet(value) {
-    if (value == null) {
-      this.removeAttribute("tweet");
-    } else {
-      this.setAttribute("tweet", value);
-    }
-  }
-  /**
-   * my own convention, easy to remember
-   */
-  get html() {
-    return `
-    <div
-      class="twitter-tweet twitter-tweet-rendered"
-      style="display: flex; max-width: ${
-        this.dataWidth
-      }; width: 100%; margin-top: 10px; margin-bottom: 10px;">
-      <iframe
-        sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
-        scrolling="no"
-        frameborder="0"
-        loading="lazy"
-        allowtransparency="true"
-        allowfullscreen="true"
-        style="position: static; visibility: visible; width: ${
-          this.dataWidth
-        }; height: 498px; display: block; flex-grow: 1;"
-        title="Twitter Tweet"
-        src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${
-          this.tweetId
-        }&amp;lang=en&amp;theme=${
-      this.dataTheme
-    }&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
-        data-tweet-id="${this.tweetId}">
-      </iframe>
-    </div>`;
+  static get properties() {
+    return {
+      tweet: {
+        type: String
+      },
+      lang: {
+        type: String,
+      },
+      dataWidth: {
+        type: String,
+        attribute: "data-width"
+      },
+      dataTheme: {
+        type: String,
+        attribute: "data-theme"
+      },
+      tweetId: {
+        type: String,
+        attribute: "tweet-id"
+      },
+      noPopups: {
+        type: Boolean,
+        attribute: "no-popups"
+      },
+      allowPopups: {
+        type: String
+      }
+    };
   }
   /**
    * Attached to the DOM, now fire.
@@ -171,9 +102,6 @@ class TwitterEmbed extends HTMLElement {
         ],
         advanced: []
       },
-      saveOptions: {
-        wipeSlot: true
-      },
       demoSchema: [
         {
           tag: "twitter-embed",
@@ -185,6 +113,56 @@ class TwitterEmbed extends HTMLElement {
       ]
     };
   }
+  /**
+   * LitElement equivalent of attributeChangedCallback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "noPopups") {
+        if (this[propName]) {
+          this.allowPopups = "";
+        } else {
+          this.allowPopups = "allow-popups";
+        }
+      }
+      if (
+        propName === "tweet" &&
+        this[propName] &&
+        this[propName].includes("twitter.com")
+      ) {
+        this.tweetId = this[propName].split("/").pop();
+      }
+    });
+  }
+  /**
+   * Popular convention / LitElement
+   */
+  render() {
+    return html`
+      <div
+        class="twitter-tweet twitter-tweet-rendered"
+        style="display: flex; max-width: ${this
+          .dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px;"
+      >
+        <iframe
+          sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
+          scrolling="no"
+          frameborder="0"
+          loading="lazy"
+          allowtransparency="true"
+          allowfullscreen
+          style="position: static; visibility: visible; width: ${this
+            .dataWidth}; height: 498px; display: block; flex-grow: 1;"
+          title="Twitter Tweet"
+          src="https://platform.twitter.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this
+            .tweetId}&amp;lang=${this.lang}&amp;theme=${this.dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
+          data-tweet-id="${this.tweetId}"
+        >
+        </iframe>
+      </div>
+    `;
+  }
 }
+
 customElements.define(TwitterEmbed.tag, TwitterEmbed);
 export { TwitterEmbed };
