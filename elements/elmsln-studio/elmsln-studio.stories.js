@@ -26,6 +26,13 @@ export const Studio = () => {
     ElmslnStudio,
     {
       sourcePath: window.location,
+      assignmentsSource: new URL(
+        `./demo/data/assignments.json`,
+        import.meta.url
+      ),
+      usersSource: new URL(`./demo/data/users.json`, import.meta.url),
+      projectsSource: new URL(`./demo/data/projects.json`, import.meta.url),
+      lessonsSource: new URL(`./demo/data/lessons.json`, import.meta.url),
       activitySource: new URL(`./demo/data/activity.json`, import.meta.url),
       discussionSource: new URL(`./demo/data/discussion.json`, import.meta.url),
       portfoliosSource: new URL(`./demo/data/portfolios.json`, import.meta.url),
@@ -37,11 +44,15 @@ export const Studio = () => {
     },
     [],
     [
-      "activity",
       "discussion",
-      "portfolios",
-      "profile",
       "submissions",
+      "portfolios",
+      "lessons",
+      "projects",
+      "assignments",
+      "profile",
+      "activity",
+      "users",
       "sourcePath",
       "route",
       "params",

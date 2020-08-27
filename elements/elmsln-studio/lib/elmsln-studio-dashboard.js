@@ -77,13 +77,15 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           color: #818181;
           font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
         }
+        .card.feed {
+          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+          --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
+          --nav-card-linklist-left-size: 36px;
+        }
         .card.secondary {
           margin-top: 0;
-          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
           --accent-card-heading-padding-top: 0;
           --nav-card-linklist-margin-top: 0;
-          --nav-card-linklist-left-size: 36px;
-          --paper-avatar-width: var(--nav-card-linklist-left-size, 36px);
         }
         #profile {
           --lrndesign-avatar-width: 100px;
@@ -144,6 +146,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           .card.primary {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
+          .card.due {
+            --lrndesign-avatar-border-radius: 0%;
+            --nav-card-item-avatar-width: 20px;
+          }
         }
         @media screen and (min-width: 900px) {
           :host {
@@ -181,24 +187,29 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             <table slot="content">
               <tbody>
                 <tr>
-                  <th scope="row">Feedback Given</th>
+                  <th scope="row">
+                    <elmsln-studio-link href="/assignments">Assignments Completed</elmsln-studio-link>
+                  </th>
                   <td>
                     ${
-                      !this.profile || !this.profile.feedbackBy
+                      !this.profile ||
+                      !this.profile.completed ||
+                      !this.profile.due
                         ? "unknown"
-                        : this.profile.feedbackBy
+                        : `${this.profile.completed.length} / ${this.profile
+                            .completed.length + this.profile.due.length}`
                     }
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">Conversations</th>
+                  <th scope="row">
+                      Featured Submissions
+                  </th>
                   <td>
                     ${
-                      !this.profile ||
-                      !this.profile.feedbackBy ||
-                      !this.profile.repliesBy
+                      !this.profile || !this.profile.features
                         ? "unknown"
-                        : this.profile.repliesBy + this.profile.feedbackBy
+                        : this.profile.features.length
                     }
                   </td>
                 </tr>
@@ -219,38 +230,55 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">Assignments Completed</th>
+                  <th scope="row">Feedback Given</th>
+                  <td>
+                    ${
+                      !this.profile || !this.profile.given
+                        ? "unknown"
+                        : this.profile.given.length
+                    }
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Conversations</th>
                   <td>
                     ${
                       !this.profile ||
-                      !this.profile.assignmentsCompleted ||
-                      !this.profile.workDue ||
-                      !this.profile.assignmentsTotal
+                      !this.profile.given ||
+                      !this.profile.discussions
                         ? "unknown"
-                        : `${this.profile.assignmentsCompleted} / ${
-                            this.profile.assignmentsTotal
-                          }`
+                        : this.profile.given.length +
+                          this.profile.discussions.length
                     }
                   </td>
                 </tr>
               </tbody>
             </table>
           </accent-card>
-          <nav-card accent-color="green" class="card primary">
+          <nav-card accent-color="green" class="card primary due">
             <span slot="heading">Work Due</span>
             <div slot="linklist">
               ${
                 !this.profile
                   ? "unknown"
-                  : (this.profile.workDue || []).slice(0, 5).map(
+                  : (this.profile.due || []).slice(0, 5).map(
                       a => html`
-                        <nav-card-item icon="chevron-right">
+                        <nav-card-item
+                          accent-color="${this._late(a.date) ? "red" : "grey"}"
+                          allow-grey
+                          avatar="${this._late(a.date)
+                            ? "icons:assignment-late"
+                            : "assignment"}"
+                          icon="chevron-right"
+                          invert
+                        >
                           <elmsln-studio-link
                             id="due-${a.id}"
                             aria-describedby="due-${a.id}-desc"
                             slot="label"
+                            href="/assignments?assignments=${a.id}"
                           >
-                            ${a.title}
+                            ${a.assignment}
                           </elmsln-studio-link>
                           <span id="due-${a.id}-desc" slot="description"
                             >${this.dateFormat(a.date, "long")}</span
@@ -284,9 +312,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             id="sub-${s.id}"
                             aria-describedby="sub-${s.id}-desc"
                             slot="label"
-                            href="${s.link}"
+                            href="/portfolios/${s.portfolioId}?submission=${s.id}"
                           >
-                            ${s.title}
+                            ${s.assignment}
                           </elmsln-studio-link>
                           <span id="sub-${s.id}-desc" slot="description"
                             >${this.dateFormat(s.date)}</span
@@ -299,7 +327,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           </nav-card>
           <nav-card
             accent-color="cyan"
-            class="card primary"
+            class="card feed primary"
             link-icon="chevron-right"
           >
             <span slot="heading">Feedback</span>
@@ -308,16 +336,24 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
               ${
                 !this.profile
                   ? "unknown"
-                  : (this.profile.feedbackFor || []).slice(0, 5).map(
+                  : (this.profile.feedback || []).slice(0, 5).map(
                       f => html`
-                        <nav-card-item icon="chevron-right">
+                        <nav-card-item
+                          accent-color="${this.accentColor(
+                            [f.firstName, f.lastName].join(" ")
+                          )}"
+                          .avatar="${f.avatar}"
+                          icon="chevron-right"
+                          .initials="${[f.firstName, f.lastName].join(" ")}"
+                        >
                           <elmsln-studio-link
                             id="feed-${f.id}"
                             aria-describedby="feed-${f.id}-desc"
                             slot="label"
-                            href="${f.link}"
+                            href="/portfolios/${f.portfolioId}?submission${f.submissionId}&comment=${f.id}"
                           >
-                            ${f.title}
+                            ${[f.firstName, f.lastName].join(" ")}'s feedback on
+                            ${f.assignment}
                           </elmsln-studio-link>
                           <span id="feed-${f.id}-desc" slot="description"
                             >${this.dateFormat(f.date)}</span
@@ -334,7 +370,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
         <nav-card
           flat
           no-border
-          class="card secondary"
+          class="card feed secondary"
           link-icon="chevron-right"
         >
           <span slot="heading">Recent Activity</span>
@@ -342,18 +378,20 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             ${(this.activity || []).slice(0, this.activityLoad).map(
               a => html`
                 <nav-card-item
-                  accent-color="${this.accentColor(a.name)}"
+                  accent-color="${this.accentColor(
+                    [a.firstName, a.lastName].join(" ")
+                  )}"
                   .avatar="${a.avatar}"
                   icon="chevron-right"
-                  .initials="${a.name}"
+                  .initials="${[a.firstName, a.lastName].join(" ")}"
                 >
                   <elmsln-studio-link
                     id="act-${a.id}"
                     aria-describedby="act-${a.id}-desc"
                     slot="label"
-                    href="${a.link}"
+                    href="${this.getActivityLink(a)}"
                   >
-                    ${a.title}
+                    ${this.getActivityTitle(a)}
                   </elmsln-studio-link>
                   <div id="act-${a.id}-desc" slot="description">
                     ${this.dateFormat(a.date)}

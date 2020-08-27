@@ -29,6 +29,9 @@ class MapMenuSubmenu extends LitElement {
     this.expandChildren = false;
     this.avatarLabel = "";
     this.label = "";
+    this.published = true;
+    this.icon = "";
+    this.__icon = "";
     import("@lrnwebcomponents/map-menu/lib/map-menu-header.js");
     import("@polymer/iron-collapse/iron-collapse.js");
     setTimeout(() => {
@@ -56,8 +59,8 @@ class MapMenuSubmenu extends LitElement {
         label="${this.label}"
         ?opened="${this.opened}"
         url="${this.url}"
-        icon="${this.icon}"
         selected="${this.selected}"
+        icon="${this.__icon}"
       ></map-menu-header>
       <iron-collapse id="container"> <slot></slot> </iron-collapse>
     `;
@@ -87,6 +90,9 @@ class MapMenuSubmenu extends LitElement {
       icon: {
         type: String
       },
+      __icon: {
+        type: String
+      },
       url: {
         type: String
       },
@@ -102,6 +108,9 @@ class MapMenuSubmenu extends LitElement {
       },
       selected: {
         type: String
+      },
+      published: {
+        type: Boolean
       }
     };
   }
@@ -112,6 +121,14 @@ class MapMenuSubmenu extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "opened") {
         this._openedChanged(this[propName], oldValue);
+      }
+      if (propName == "published") {
+        if (this.published === false) {
+          this.__icon = "visibility-off";
+        } else {
+          this.__icon = null;
+          this.__icon = "";
+        }
       }
     });
   }

@@ -1,9 +1,31 @@
 import { css, html } from "lit-element/lit-element.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
+
 const HAXCMSMobileMenuMixin = function(SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
       this.menuOpen = true;
+    }
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
+      this.__disposer = this.__disposer ? this.__disposer : [];
+      autorun(reaction => {
+        // if menu is open, and the active item changes AND we're on mobile...
+        // close the menu
+        if (
+          this.shadowRoot.querySelector("#haxcmsmobilemenunav") &&
+          this.menuOpen &&
+          toJS(store.activeId) &&
+          ["sm", "xs"].includes(this.responsiveSize)
+        ) {
+          this.__HAXCMSMobileMenuToggle({});
+        }
+        this.__disposer.push(reaction);
+      });
     }
     static get styles() {
       let styles = [];
@@ -17,7 +39,11 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
             display: none;
           }
           site-menu {
-            height: auto;
+            height: 100vh;
+          }
+          :host([responsive-size="xs"][menu-open]),
+          :host([responsive-size="sm"][menu-open]) {
+            overflow: hidden;
           }
         `
       ];
@@ -76,14 +102,19 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
         if (propName == "responsiveSize") {
           switch (this[propName]) {
             case "sm":
+              // auto close for small layouts
+              if (this.menuOpen && oldValue != "xs") {
+                this.__HAXCMSMobileMenuToggle({});
+              }
+              break;
             case "xs":
               // auto close for small layouts
-              if (this.menuOpen) {
+              if (this.menuOpen && oldValue != "sm") {
                 this.__HAXCMSMobileMenuToggle({});
               }
               break;
             default: {
-              // auto open for large layouts
+              // auto open for larger layouts
               if (!this.menuOpen) {
                 this.__HAXCMSMobileMenuToggle({});
               }

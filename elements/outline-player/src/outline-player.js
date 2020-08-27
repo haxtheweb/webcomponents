@@ -168,6 +168,9 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         site-active-title {
           --site-active-title-margin: 0px;
           --site-active-title-padding: 0px;
+          margin: 10px;
+          padding: 10px;
+          display: block;
         }
         @media screen and (max-width: 800px) {
           :host([edit-mode][is-logged-in]) app-drawer,

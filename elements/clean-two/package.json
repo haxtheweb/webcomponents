@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.6.24",
+  "version": "2.7.4",
   "description": "A 2nd clean theme",
   "repository": {
     "type": "git",
@@ -42,19 +42,19 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.6.24",
-    "@lrnwebcomponents/simple-colors": "^2.6.24",
+    "@lrnwebcomponents/haxcms-elements": "^2.7.4",
+    "@lrnwebcomponents/simple-colors": "^2.7.3",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.4.0",
+    "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.0.2",
     "es-dev-server": "1.36.2",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

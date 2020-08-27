@@ -82,9 +82,9 @@ class MapMenuItem extends LitElement {
     return html`
       <a tabindex="-1" href="${this.url}">
         <paper-button id="wrapper" role="link" noink>
-          ${this.icon
+          ${this.__icon
             ? html`
-                <iron-icon icon="${this.icon}"></iron-icon>
+                <iron-icon icon="${this.__icon}"></iron-icon>
               `
             : ``}
           <span class="title">${this.title}</span>
@@ -103,10 +103,12 @@ class MapMenuItem extends LitElement {
   constructor() {
     super();
     this.icon = "";
+    this.__icon = "";
     this.trackIcon = "";
     this.title = "";
     this.url = "";
     this.active = false;
+    this.published = true;
   }
   /**
    * LitElement life cycle - properties definition
@@ -114,6 +116,9 @@ class MapMenuItem extends LitElement {
   static get properties() {
     return {
       icon: {
+        type: String
+      },
+      __icon: {
         type: String
       },
       trackIcon: {
@@ -126,9 +131,6 @@ class MapMenuItem extends LitElement {
       url: {
         type: String
       },
-      icon: {
-        type: String
-      },
       id: {
         type: String,
         reflect: true
@@ -138,6 +140,9 @@ class MapMenuItem extends LitElement {
       },
       selected: {
         type: String
+      },
+      published: {
+        type: Boolean
       }
     };
   }
@@ -151,6 +156,14 @@ class MapMenuItem extends LitElement {
       }
       if (["id", "selected"].includes(propName)) {
         this.__selectedChanged(this.selected, this.id);
+      }
+      if (propName == "published") {
+        if (this.published === false) {
+          this.__icon = "visibility-off";
+        } else {
+          this.__icon = null;
+          this.__icon = "";
+        }
       }
     });
   }

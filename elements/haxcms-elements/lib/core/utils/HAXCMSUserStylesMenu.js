@@ -1,4 +1,7 @@
 import { css, html } from "lit-element/lit-element.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
+
 const HAXCMSUserStylesMenuMixin = function(SuperClass) {
   return class extends SuperClass {
     constructor() {
@@ -419,6 +422,17 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
       ) {
         this.hideUserStylesMenu = true;
       }
+    }
+    updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName == "editMode" && this[propName]) {
+          // edit mode has been activated
+          this.hideUserStylesMenu = true;
+        }
+      });
     }
     /**
      * life cycle, element is afixed to the DOM

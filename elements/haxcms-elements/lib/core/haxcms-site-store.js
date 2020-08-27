@@ -13,6 +13,7 @@ class Store {
   constructor() {
     this.location = null;
     this.jwt = null;
+    this.setupSlots = {};
     this.editMode = false;
     this.manifest = null;
     this.activeItemContent = "";
@@ -182,31 +183,6 @@ class Store {
       })
     );
     if (manifest && typeof manifest.items !== "undefined") {
-      let userData = JSON.parse(
-        window.localStorage.getItem("HAXCMSSystemData")
-      );
-      var accessData = {};
-      // establish on first pass if needed
-      if (userData == null) {
-        userData = {
-          manifests: {}
-        };
-        userData.manifests[manifest.id] = {
-          accessData: {}
-        };
-        window.localStorage.setItem(
-          "HAXCMSSystemData",
-          JSON.stringify(userData)
-        );
-      }
-      if (
-        userData &&
-        typeof userData.manifests !== typeof undefined &&
-        typeof userData.manifests[manifest.id] !== typeof undefined &&
-        userData.manifests[manifest.id].accessData !== typeof undefined
-      ) {
-        accessData = userData.manifests[manifest.id].accessData;
-      }
       let manifestItems = manifest.items.map(i => {
         let parentLocation = null;
         let parentSlug = null;
@@ -215,11 +191,7 @@ class Store {
           parentLocation = parent.location;
           parentSlug = parent.slug;
         }
-        // get local storage and look for data from this to mesh up
         let metadata = i.metadata;
-        if (typeof accessData[i.id] !== typeof undefined) {
-          metadata.accessData = accessData[i.id];
-        }
         let location = i.location;
         let slug = i.slug;
         return Object.assign({}, i, {
@@ -246,8 +218,7 @@ class Store {
        * item.
        */
       if (
-        varGet(manifest, "metadata.site.settings.publishPagesOn", false) ===
-        true
+        varGet(manifest, "metadata.site.settings.publishPagesOn", true) === true
       ) {
         const filterHiddenParentsRecursive = item => {
           // if the item is unpublished then remove it.
@@ -262,14 +233,16 @@ class Store {
           // if it got this far then it should be good.
           return true;
         };
-        manifestItems = manifestItems.filter(i =>
-          filterHiddenParentsRecursive(i)
-        );
+        // If the user is not logged in then we need to hide unpublished nodes items
+        if (!this.isLoggedIn) {
+          manifestItems = manifestItems.filter(i =>
+            filterHiddenParentsRecursive(i)
+          );
+        }
       }
 
       return Object.assign({}, manifest, {
-        items: manifestItems,
-        accessData: accessData
+        items: manifestItems
       });
     }
   }
@@ -705,20 +678,20 @@ class HAXCMSSiteStore extends HTMLElement {
     if (typeof DatArchive !== typeof undefined) {
       context = "beaker";
     } else {
-      switch(window.HAXCMSContext) {
-        case 'published':
-        case 'nodejs':
-        case 'php':
-        case '11ty':
-        case 'demo':
-        case 'desktop':
+      switch (window.HAXCMSContext) {
+        case "published":
+        case "nodejs":
+        case "php":
+        case "11ty":
+        case "demo":
+        case "desktop":
           context = window.HAXCMSContext;
-        break;
+          break;
         default:
           // we don't have one so assume it's php for now
           // @notice change this in the future
           context = "php";
-        break;
+          break;
       }
     }
     return context;

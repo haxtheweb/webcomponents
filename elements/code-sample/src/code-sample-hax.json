@@ -36,5 +36,14 @@
   },
   "saveOptions": {
     "unsetAttributes": ["theme"]
-  }
+  },
+  "demoSchema": [
+    {
+      "tag": "code-sample",
+      "content": "<template preserve-content=\"preserve-content\">const great = \"example\";</template>",
+      "properties": {
+        "copy-clipboard-button": "copy-clipboard-button"
+      }
+    }
+  ]
 }

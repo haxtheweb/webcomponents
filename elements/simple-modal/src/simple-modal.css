@@ -31,20 +31,20 @@ paper-dialog-scrollable:not(:defined) {
 
 #titlebar {
   margin-top: 0;
-  padding: 0px 16px;
+  padding: var(--simple-modal-titlebar-padding,0px 16px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: var(--simple-modal-titlebar-color,#444);
   background-color: var(--simple-modal-titlebar-background,#ddd);
   border-radius: 0;
-  height: 64px;
-  line-height: 64px;
+  height: var(--simple-modal-titlebar-height,64px);
+  line-height: var(--simple-modal-titlebar-line-height,64px);
 }
 
 #headerbar {
   margin: 0;
-  padding: 0 16px;
+  padding: var(--simple-modal-header-padding, 0px 16px);
   color: var(--simple-modal-header-color, #222);
   background-color: var(--simple-modal-header-background, #ccc);
 }
@@ -81,7 +81,7 @@ h2 {
 
 #simple-modal-content {
   flex-grow: 1;
-  padding: 8px 16px;
+  padding: var(--simple-modal-content-padding, 8px 16px);
   margin: 0;
   color: var(--simple-modal-content-container-color, #222);
   background-color: var(--simple-modal-content-container-background, #fff);
@@ -89,6 +89,7 @@ h2 {
 
 .buttons {
   padding: 0;
+  padding: var(--simple-modal-buttons-padding, 0);
   margin: 0;
   color: var(--simple-modal-buttons-color, unset);
   background-color: var(--simple-modal-buttons-background, unset);

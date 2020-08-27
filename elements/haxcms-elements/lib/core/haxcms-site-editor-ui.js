@@ -177,6 +177,7 @@ class HAXCMSSiteEditorUI extends LitElement {
   constructor() {
     super();
     this.__disposer = [];
+    this.backText = "Back to site list";
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -263,7 +264,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         voice-command="edit site settings"
       ></paper-icon-button>
       <simple-tooltip for="username" position="right" offset="14"
-        >Back to site list</simple-tooltip
+        >${this.backText}</simple-tooltip
       >
       <simple-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel editing</simple-tooltip
@@ -295,19 +296,27 @@ class HAXCMSSiteEditorUI extends LitElement {
    */
   redirectToSites() {
     let redirectUrl = "";
-    let webTypeRegex = /^http/;
-    let tmp = document.createElement("a");
-    tmp.href = window.location.href;
-    if (webTypeRegex.test(tmp.href)) {
-      redirectUrl = `http://${tmp.host}`;
+    if (window.appSettings && window.appSettings.backLink) {
+      redirectUrl = window.appSettings.backLink;
     } else {
-      redirectUrl = `https://${tmp.host}`;
+      let webTypeRegex = /^http/;
+      let tmp = document.createElement("a");
+      tmp.href = window.location.href;
+      if (webTypeRegex.test(tmp.href)) {
+        redirectUrl = `http://${tmp.host}`;
+      } else {
+        redirectUrl = `https://${tmp.host}`;
+      }
     }
     window.location.replace(redirectUrl);
   }
 
   firstUpdated(changedProperties) {
     setTimeout(() => {
+      // backText
+      if (window.appSettings && window.appSettings.backText) {
+        this.backText = window.appSettings.backText;
+      }
       let ary = [
         {
           varPath: "getNodeFieldsPath",
@@ -457,6 +466,12 @@ class HAXCMSSiteEditorUI extends LitElement {
       userPicture: {
         type: String,
         attribute: "user-picture"
+      },
+      backLink: {
+        type: String
+      },
+      backText: {
+        type: String
       },
       __editIcon: {
         type: String

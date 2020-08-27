@@ -15,6 +15,21 @@ window.WCAutoload.requestAvailability = () => {
   }
   return window.WCAutoload.instance;
 };
+
+/**
+ * wrapper on fetch that allows for retrying
+ */
+const fetch_retry = async (url, options, n) => {
+  for (let i = 0; i < n; i++) {
+    try {
+      return await fetch(url, options);
+    } catch (err) {
+      const isLastAttempt = i + 1 === n;
+      if (isLastAttempt) throw err;
+    }
+  }
+};
+
 /**
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
@@ -50,7 +65,7 @@ window.WCAutoload.process = e => {
         window.WCAutoloadRegistryFile &&
         !window.WCAutoloadRegistryFileProcessed
       ) {
-        await fetch(window.WCAutoloadRegistryFile)
+        await fetch_retry(window.WCAutoloadRegistryFile, {}, 3)
           .then(function(response) {
             return response.json();
           })

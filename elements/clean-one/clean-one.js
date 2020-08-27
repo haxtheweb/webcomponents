@@ -232,6 +232,15 @@ class CleanOne extends HAXCMSThemeParts(
           overflow-y: auto;
           transition: left 250ms ease;
         }
+        :host([responsive-size="xs"]) .site-body,
+        :host([responsive-size="sm"]) .site-body {
+          overflow-x: hidden;
+          position: fixed;
+        }
+        :host([responsive-size="xs"]) .main-content,
+        :host([responsive-size="sm"]) .main-content {
+          overflow-x: hidden;
+        }
         h1 {
           font-size: 2em;
           margin: .67em 0;
@@ -363,7 +372,7 @@ class CleanOne extends HAXCMSThemeParts(
         .main-section {
           display: block;
           word-wrap: break-word;
-          color: #333;
+          color: var(--haxcms-user-styles-color-theme-color-color);
           line-height: 1.7;
           text-size-adjust: 100%;
           -ms-text-size-adjust: 100%;

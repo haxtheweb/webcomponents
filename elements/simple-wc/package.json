@@ -16,7 +16,7 @@
       "hax": "src/simple-wc-hax.json"
     }
   },
-  "version": "2.6.17",
+  "version": "2.7.3",
   "description": "A simple web component wrapper to simplify consistent patterns of element creation",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>imgViewModal: img-view-modal Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../img-view-modal.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered {
+        max-width: 80%;
+      }
+      img-view-modal {
+        max-height: 400px;
+      }  
+    </style>
+    <script>
+      window.addEventListener('user-engagement', (e) => {
+        console.log(e.detail);
+      });
+    </script>
+  </head>
+  <body>
+  <div class="vertical-section-container centered">
+    <h3>Basic img-view-modal demo</h3>
+    <demo-snippet>
+      <template>
+        <img-view-modal
+          id="demo" 
+          figures='[
+            {
+              "src": "./images/Matterhorn01.png",
+              "info": "This image has snow."
+            },
+            {
+              "src": "./images/Matterhorn02.png",
+              "info": "This image has  no snow."
+            }
+          ]'
+          max-zoom-pixel-ratio="10"
+          show-navigator>
+          <button>Open Viewer</button>
+        </img-view-modal>
+        <script>
+          window.onload = () => {
+            let demo = document.getElementById('demo');
+            demo.toolbars = {
+              top: {
+                id: "top",
+                type: "toolbar-group",
+                contents: [
+                  "prevbutton",
+                  "navigatorbutton",
+                  "fullscreenbutton",
+                  "navXofY",
+                  "kbdbutton",
+                  "infobutton",
+                  "nextbutton"
+                ]
+              },
+              bottom: {
+                id: "bottom",
+                type: "toolbar-group",
+                contents: [
+                  "flipbutton",
+                  "rotategroup",
+                  "zoomgroup",
+                  "homebutton",
+                  "pangroup"
+                ]
+              }
+            };
+          }
+        </script>
+      </template>
+    </demo-snippet>
+  </div>
+  </body>
+</html>

@@ -160,6 +160,9 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["element-visible"]
       }
     };
   }

@@ -49,25 +49,25 @@ class NavCardItem extends LitElement {
   static get properties() {
     return {
       /**
-       * optional iron-icon or image URI as avatar on left of link
-       */
-      avatar: {
-        type: String,
-        attribute: "avatar"
-      },
-      /**
-       * iron-icon on right of link
-       */
-      icon: {
-        type: String,
-        attribute: "icon"
-      },
-      /**
        * optional accent-color for avatar
        */
       accentColor: {
         type: String,
         attribute: "accent-color"
+      },
+      /**
+       * allow grey instead of accent color, default selects a color
+       */
+      allowGrey: {
+        type: Boolean,
+        attribute: "allow-grey"
+      },
+      /**
+       * optional iron-icon or image URI as avatar on left of link
+       */
+      avatar: {
+        type: String,
+        attribute: "avatar"
       },
       /**
        * optional dark text for avatar icon
@@ -77,11 +77,25 @@ class NavCardItem extends LitElement {
         attribute: "dark"
       },
       /**
+       * iron-icon on right of link
+       */
+      icon: {
+        type: String,
+        attribute: "icon"
+      },
+      /**
        * optional use up to two initials if no avatar
        */
       initials: {
         type: String,
         attribute: "initials"
+      },
+      /**
+       * invert icon coloring
+       */
+      invert: {
+        type: Boolean,
+        attribute: "invert"
       }
     };
   }
@@ -161,11 +175,24 @@ class NavCardItem extends LitElement {
         ],
         advanced: [
           {
+            property: "allowGrey",
+            title: "Allow Grey",
+            description:
+              "Allows grey if set. Otherwise a color will be assigned.",
+            inputMethod: "boolean"
+          },
+          {
             property: "avatar",
             title: "Avatar Icon",
             description: "Select an icon.",
             inputMethod: "iconpicker",
             required: false
+          },
+          {
+            property: "invert",
+            title: "Invert",
+            description: "Inverts icon coloring.",
+            inputMethod: "boolean"
           }
         ]
       }
@@ -257,6 +284,10 @@ class NavCardItem extends LitElement {
             --nav-card-item-avatar-height,
             var(--nav-card-item-avatar-size, 36px)
           );
+          --lrndesign-avatar-border-radius: var(
+            --nav-card-item-avatar-border-radius,
+            50%
+          );
         }
         iron-icon {
           margin-left: 10px;
@@ -288,9 +319,11 @@ class NavCardItem extends LitElement {
         : html`
             <lrndesign-avatar
               .accentColor="${this.accentColor || ""}"
+              ?allow-grey="${this.allowGrey}"
               ?dark="${this.dark}"
-              .icon="${this.ico || ""}"
-              .src="${this.src || ""}"
+              .icon="${this.ico}"
+              ?invert="${this.invert}"
+              .src="${this.src}"
               .label="${this.label}"
               ?two-chars="${this.twoChars}"
             >
@@ -313,7 +346,9 @@ class NavCardItem extends LitElement {
     super();
     this.tag = NavCardItem.tag;
     this.accentColor = "grey";
+    this.allowGrey = false;
     this.dark = false;
+    this.invert = false;
   }
   /**
    * gets the avatar icon
@@ -343,7 +378,7 @@ class NavCardItem extends LitElement {
    * @memberof NavCardItem
    */
   get ico() {
-    return this.avatar && this.avatar.indexOf(".") < 0 ? this.avatar : "";
+    return this.avatar && !this._validURL(this.avatar) ? this.avatar : "";
   }
   /**
    * gets the avatar src
@@ -352,7 +387,29 @@ class NavCardItem extends LitElement {
    * @memberof NavCardItem
    */
   get src() {
-    return this.avatar && this.avatar.indexOf(".") > -1 ? this.avatar : "";
+    return this.avatar && this._validURL(this.avatar) ? this.avatar : "";
+  }
+  /**
+   * determines if avatar is an image or an icon
+   * See https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+   *
+   * @param {string} str
+   * @returns {boolean}
+   * @memberof NavCardItem
+   */
+  _validURL(str) {
+    console.log();
+    let pattern = new RegExp(
+      "^((https?:)?\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(data:image)?" + // base64 image
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
   }
 }
 customElements.define("nav-card-item", NavCardItem);

@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.17",
+  "version": "2.7.3",
   "description": "Figure label element to mark media assets within content.",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.8.1",
     "wct-browser-legacy": "1.0.2"

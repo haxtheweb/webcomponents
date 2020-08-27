@@ -89,6 +89,13 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "allowGrey",
+        "title": "Allow Grey",
+        "description": "Allows grey if set. Otherwise a color will be assigned",
+        "inputMethod": "boolean"
+      }
+    ]
   }
 }

@@ -504,7 +504,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         }
       ],
       saveOptions: {
-        unsetAttributes: ["colors"]
+        unsetAttributes: ["colors", "element-visible"]
       }
     };
   }

@@ -85,11 +85,6 @@ class A11yMediaPlayButton extends A11yMediaButton {
     };
   }
 
-  constructor() {
-    super();
-    this.youtubeId = "null";
-  }
-
   //render function
   render() {
     return html`
@@ -102,7 +97,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
       >
-        ${this.youtubeId != "null"
+        ${this.youtubeId != "undefined" && this.youtubeId != undefined
           ? html`
               <svg
                 id="svg"

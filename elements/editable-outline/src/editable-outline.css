@@ -24,6 +24,7 @@
     left: -9999px;
   }
 }
+
 button {
   height: 32px;
   font-size: 10px;
@@ -39,6 +40,7 @@ button span {
 #outline {
   margin: 0;
 }
+
 ul {
   font-size: 16px;
   line-height: 32px;
@@ -49,37 +51,45 @@ ul {
   height: auto;
   transition: .2s ease-in-out all;
 }
+
 li {
   font-size: 16px;
   line-height: 32px;
   padding: 4px;
   transition: .2s linear all;
 }
+
 ul:hover {
   outline: 1px solid #EEEEEE;
 }
+
 li.collapsed-title {
   background-color: #dddddd;
 }
+
 li.collapsed-title:after {
-  content:"    ( Double-click to expand )";
+  content: "    ( Double-click to expand )";
 }
+
 li:after {
   transition: .4s ease-in-out all;
   opacity: 0;
   font-size: 11px;
   visibility: hidden;
 }
+
 li.collapsed-title:hover:after {
   font-style: italic;
   opacity: 1;
   visibility: visible;
 }
+
 ul.collapsed-content {
   visibility: hidden;
   opacity: 0;
   height: 0;
 }
+
 li:focus,
 li:active,
 li:hover {
@@ -89,4 +99,8 @@ li:hover {
 
 iron-icon {
   pointer-events: none;
+}
+
+li[data-jos-published="false"] {
+  text-decoration: line-through;
 }
