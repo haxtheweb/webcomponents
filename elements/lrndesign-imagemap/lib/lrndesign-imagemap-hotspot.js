@@ -30,17 +30,13 @@ class LrndesignImagemapHotspot extends LitElement {
     return html`
       <figure class="hotspot-print">
         <figcaption>
-        <relative-heading
-          id="sub-heading"
-          parent="heading"
-        >
-        <h2>${this.label}</h2>
-        </relative-heading>
-        <div id="desc"><slot></slot></div>
+          <relative-heading id="sub-heading" parent="heading">
+            <h2>${this.label}</h2>
+          </relative-heading>
+          <div id="desc"><slot></slot></div>
         </figcaption>
-        <slot id ="svg" name="svg"></slot>
+        <slot id="svg" name="svg"></slot>
       </figure>
-
     `;
   }
   /**
@@ -79,22 +75,20 @@ class LrndesignImagemapHotspot extends LitElement {
       __hotspots: {
         type: Array
       }
-
-
     };
   }
 
-  loadSvg(svg, hotspots){
-    let div=document.createElement("div");
-    div.innerHTML=svg;
-    let slot=div.children[0];
-    slot.slot=svg;
-    slot.setAttribute("aria-labelledBy","sub-heading");
-    slot.setAttribute("aria-describedBy","sub-heading desc");
-    (hotspots||[]).forEach(hotspot => {
-      let svgHotspot=slot.querySelector(`#${hotspot}`);
+  loadSvg(svg, hotspots) {
+    let div = document.createElement("div");
+    div.innerHTML = svg;
+    let slot = div.children[0];
+    slot.slot = svg;
+    slot.setAttribute("aria-labelledBy", "sub-heading");
+    slot.setAttribute("aria-describedBy", "sub-heading desc");
+    (hotspots || []).forEach(hotspot => {
+      let svgHotspot = slot.querySelector(`#${hotspot}`);
       svgHotspot.classList.add("hotspot");
-      if (hotspot===this.hotspotId){
+      if (hotspot === this.hotspotId) {
         svgHotspot.classList.add("selected");
       }
     });
