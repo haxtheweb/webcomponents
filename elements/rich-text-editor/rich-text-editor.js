@@ -135,7 +135,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * Placeholder text for empty editable regions
    */
   "placeholder": {
-    "name": "c",
+    "name": "placeholder",
     "type": String,
     "reflect": true,
     "attribute": "placeholder"

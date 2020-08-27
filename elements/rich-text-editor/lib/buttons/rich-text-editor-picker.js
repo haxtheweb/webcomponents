@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 const RichTextEditorPickerBehaviors = function(SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
