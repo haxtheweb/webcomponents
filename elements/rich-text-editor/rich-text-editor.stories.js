@@ -17,19 +17,21 @@ export default {
 
 const utils = new StorybookUtilities();
 let props = utils.getElementProperties(RichTextEditor.properties);
-props.forEach(prop=>{
+props.forEach(prop => {
   if (prop.property === "type") {
     prop.inputMethod = "select";
-    prop.itemsList = ['rich-text-editor-toolbar','rich-text-editor-toolbar-full','rich-text-editor-toolbar-mini'];
+    prop.itemsList = [
+      "rich-text-editor-toolbar",
+      "rich-text-editor-toolbar-full",
+      "rich-text-editor-toolbar-mini"
+    ];
   }
 });
 export const RichTextEditorStory = () => {
   return utils.makeElement(
     RichTextEditor,
-    utils.getKnobs(
-      [...props, {slot: "", title: "Content"}],
-      {
-        emptyslot: `
+    utils.getKnobs([...props, { slot: "", title: "Content" }], {
+      emptyslot: `
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 In nec tincidunt tortor, at varius leo. Mauris varius 
@@ -46,9 +48,12 @@ porta tellus at diam bibendum congue. Nam dignissim leo nec
 consectetur consequat.
 </p>
         `,
-        type: utils.getRandomOption(['rich-text-editor-toolbar','rich-text-editor-toolbar-full','rich-text-editor-toolbar-mini'])
-      }
-    )
+      type: utils.getRandomOption([
+        "rich-text-editor-toolbar",
+        "rich-text-editor-toolbar-full",
+        "rich-text-editor-toolbar-mini"
+      ])
+    })
   );
 };
 /*
