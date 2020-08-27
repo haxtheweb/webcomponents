@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `music-player`
  * `Visualize different types of music and simple format player`
- * 
+ *
  * @demo demo/index.html
  * @element music-player
  */
@@ -60,7 +60,10 @@ class MusicPlayer extends LitElement {
   // render function
   render() {
     return html`
-      <midi-visualizer type="${this.visualizer}" src="${this.source}"></midi-visualizer>
+      <midi-visualizer
+        type="${this.visualizer}"
+        src="${this.source}"
+      ></midi-visualizer>
       <midi-player src="${this.source}" sound-font></midi-player>
     `;
   }
@@ -140,16 +143,17 @@ class MusicPlayer extends LitElement {
             description: "How to visualize the music file",
             inputMethod: "select",
             options: {
-              "staff": "Staff",
+              staff: "Staff",
               "piano-roll": "Piano roll",
-              "waterfall": "Piano + waterfall"
+              waterfall: "Piano + waterfall"
             }
           },
           {
             property: "noWaterfall",
             title: "Hide waterfall",
-            description: "Disable the waterfall of notes when visualized as a piano",
-            inputMethod: "boolean",
+            description:
+              "Disable the waterfall of notes when visualized as a piano",
+            inputMethod: "boolean"
           }
         ],
         advanced: []

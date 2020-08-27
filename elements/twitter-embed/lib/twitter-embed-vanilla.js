@@ -14,7 +14,10 @@ class TwitterEmbedVanilla extends HTMLElement {
    */
   constructor() {
     super();
-    this.lang = (document && document.documentElement && document.documentElement.lang) ? document.documentElement.lang : "en";
+    this.lang =
+      document && document.documentElement && document.documentElement.lang
+        ? document.documentElement.lang
+        : "en";
     this.dataWidth = this.getAttribute("data-width")
       ? this.getAttribute("data-width")
       : "550px";
@@ -31,7 +34,14 @@ class TwitterEmbedVanilla extends HTMLElement {
    * HTMLElement spec
    */
   static get observedAttributes() {
-    return ["lang", "tweet", "data-width", "data-theme", "tweet-id", "no-popups"];
+    return [
+      "lang",
+      "tweet",
+      "data-width",
+      "data-theme",
+      "tweet-id",
+      "no-popups"
+    ];
   }
   /**
    * HTMLElement spec
@@ -50,7 +60,11 @@ class TwitterEmbedVanilla extends HTMLElement {
           ? ""
           : "allow-popups";
     }
-    if (["lang", "no-popups", "tweet-id", "data-width", "data-theme"].includes(attr)) {
+    if (
+      ["lang", "no-popups", "tweet-id", "data-width", "data-theme"].includes(
+        attr
+      )
+    ) {
       this.innerHTML = this.html;
     }
   }
@@ -78,7 +92,7 @@ class TwitterEmbedVanilla extends HTMLElement {
     return this.getAttribute("lang");
   }
   set lang(value) {
-    if (value == '' || value == null) {
+    if (value == "" || value == null) {
       this.removeAttribute("lang");
     } else {
       this.setAttribute("lang", value);

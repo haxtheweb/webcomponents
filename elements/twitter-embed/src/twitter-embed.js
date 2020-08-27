@@ -15,7 +15,10 @@ class TwitterEmbed extends LitElement {
    */
   constructor() {
     super();
-    this.lang = (document && document.documentElement && document.documentElement.lang) ? document.documentElement.lang : "en";
+    this.lang =
+      document && document.documentElement && document.documentElement.lang
+        ? document.documentElement.lang
+        : "en";
     this.dataWidth = "550px";
     this.dataTheme = "light";
     this.tweet = null;
@@ -31,7 +34,7 @@ class TwitterEmbed extends LitElement {
         type: String
       },
       lang: {
-        type: String,
+        type: String
       },
       dataWidth: {
         type: String,
@@ -155,7 +158,9 @@ class TwitterEmbed extends LitElement {
             .dataWidth}; height: 498px; display: block; flex-grow: 1;"
           title="Twitter Tweet"
           src="https://platform.twitter.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this
-            .tweetId}&amp;lang=${this.lang}&amp;theme=${this.dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
+            .tweetId}&amp;lang=${this.lang}&amp;theme=${this
+            .dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this
+            .dataWidth}"
           data-tweet-id="${this.tweetId}"
         >
         </iframe>
