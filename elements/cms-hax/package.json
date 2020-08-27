@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/h-a-x": "^2.7.3",
-    "@lrnwebcomponents/hax-body": "^2.7.3",
+    "@lrnwebcomponents/h-a-x": "^2.7.4",
+    "@lrnwebcomponents/hax-body": "^2.7.4",
     "@lrnwebcomponents/hax-body-behaviors": "^2.7.3",
     "@lrnwebcomponents/simple-toast": "^2.7.3",
     "@polymer/iron-ajax": "^3.0.0",
