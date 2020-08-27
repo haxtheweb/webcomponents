@@ -50,7 +50,7 @@ class TwitterEmbedLit extends LitElement {
       }
     };
   }
-    /**
+  /**
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {

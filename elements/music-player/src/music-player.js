@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element/lit-element.js';
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `music-player`
@@ -11,10 +11,9 @@ import { LitElement, html, css } from 'lit-element/lit-element.js';
  * @element music-player
  */
 class MusicPlayer extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       css`
         :host {
           display: block;
@@ -22,21 +21,18 @@ class MusicPlayer extends LitElement {
 
         :host([hidden]) {
           display: none;
-        }`
+        }
+      `
     ];
   }
 
-// render function
+  // render function
   render() {
     return html`
-  <midi-player
-    src="${this.source}"
-    sound-font>
-  </midi-player>
-  <midi-visualizer
-    type="${this.visualizer}"
-    src="${this.source}">
-  </midi-visualizer>`;
+      <midi-player src="${this.source}" sound-font> </midi-player>
+      <midi-visualizer type="${this.visualizer}" src="${this.source}">
+      </midi-visualizer>
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -50,15 +46,15 @@ class MusicPlayer extends LitElement {
       },
       noteHeight: {
         type: Number,
-        attribute: 'note-height'
+        attribute: "note-height"
       },
       pixelsPerTimeStep: {
         type: Number,
-        attribute: 'pixels-per-time-step'
+        attribute: "pixels-per-time-step"
       },
       minPitch: {
         type: Number,
-        attribute: 'min-pitch'
+        attribute: "min-pitch"
       }
     };
   }
@@ -75,7 +71,7 @@ class MusicPlayer extends LitElement {
    */
   constructor() {
     super();
-    this.visualizer = 'piano-roll';
+    this.visualizer = "piano-roll";
     this.noteHeight = 4;
     this.pixelsPerTimeStep = 60;
     this.minPitch = 30;
@@ -84,10 +80,12 @@ class MusicPlayer extends LitElement {
    * LitElement life cycle - 1st updated
    */
   firstUpdated() {
-    this.visualizerElement = this.shadowRoot.querySelector('midi-visualizer');
+    this.visualizerElement = this.shadowRoot.querySelector("midi-visualizer");
     setTimeout(() => {
-      import("./lib/html-midi-player.js").then((module) => {
-        this.shadowRoot.querySelector('midi-player').addVisualizer(this.visualizerElement);
+      import("./lib/html-midi-player.js").then(module => {
+        this.shadowRoot
+          .querySelector("midi-player")
+          .addVisualizer(this.visualizerElement);
       });
     }, 0);
   }
@@ -96,7 +94,10 @@ class MusicPlayer extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (['noteHeight', 'pixelsPerTimeStep', 'minPitch'].includes(propName) && this.visualizerElement) {
+      if (
+        ["noteHeight", "pixelsPerTimeStep", "minPitch"].includes(propName) &&
+        this.visualizerElement
+      ) {
         this.visualizerElement.config = {
           noteHeight: this.noteHeight,
           pixelsPerTimeStep: this.pixelsPerTimeStep,
@@ -105,7 +106,7 @@ class MusicPlayer extends LitElement {
       }
     });
   }
-    /**
+  /**
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {
@@ -144,11 +145,11 @@ class MusicPlayer extends LitElement {
             description: "How to visualize the music file",
             inputMethod: "select",
             options: {
-              "staff": "Staff",
+              staff: "Staff",
               "piano-roll": "Piano roll",
-              "waterfall": "Piano + waterfall"
+              waterfall: "Piano + waterfall"
             }
-          },
+          }
         ],
         advanced: []
       },
@@ -157,7 +158,8 @@ class MusicPlayer extends LitElement {
           tag: "music-player",
           content: "",
           properties: {
-            source: "https://magenta.github.io/magenta-js/music/demos/melody.mid"
+            source:
+              "https://magenta.github.io/magenta-js/music/demos/melody.mid"
           }
         }
       ]
