@@ -225,154 +225,176 @@ const configs = [
   ],
   [
     {
-      "label": "History",
-      "type": "button-group",
-      "buttons": [
+      label: "History",
+      type: "button-group",
+      buttons: [
         {
-          "command": "undo",
-          "icon": "undo",
-          "label": "Undo",
-          "type": "rich-text-editor-button"
-        },{
-          "command": "redo",
-          "icon": "redo",
-          "label": "Redo",
-          "type": "rich-text-editor-button"
+          command: "undo",
+          icon: "undo",
+          label: "Undo",
+          type: "rich-text-editor-button"
+        },
+        {
+          command: "redo",
+          icon: "redo",
+          label: "Redo",
+          type: "rich-text-editor-button"
         }
       ]
-    },{
-      "label": "Basic Inline Operations",
-      "type": "button-group",
-      "buttons": [
+    },
+    {
+      label: "Basic Inline Operations",
+      type: "button-group",
+      buttons: [
         {
-          "label": "Heading",
-          "blocks": [
-            {"label": "Paragraph", "tag": "p"},
-            {"label": "Page Title", "tag": "h1"},
-            {"label": "Article Title", "tag": "h2"},
-            {"label": "Article Heading", "tag": "h3"},
-            {"label": "Section Heading", "tag": "h4"},
-            {"label": "Section Subheading", "tag": "h5"}
+          label: "Heading",
+          blocks: [
+            { label: "Paragraph", tag: "p" },
+            { label: "Page Title", tag: "h1" },
+            { label: "Article Title", tag: "h2" },
+            { label: "Article Heading", tag: "h3" },
+            { label: "Section Heading", tag: "h4" },
+            { label: "Section Subheading", tag: "h5" }
           ],
-          "type": "rich-text-editor-heading-picker" 
+          type: "rich-text-editor-heading-picker"
         },
         {
-          "command": "bold",
-          "icon": "editor:format-bold",
-          "label": "Bold",
-          "toggles": true,
-          "type": "rich-text-editor-button"
-        },{
-          "command": "italic",
-          "icon": "editor:format-italic",
-          "label": "Italics",
-          "toggles": true,
-          "type": "rich-text-editor-button"
-        },{
-          "command": "removeFormat",
-          "icon": "editor:format-clear",
-          "label": "Erase Format",
-          "type": "rich-text-editor-button"
-        }
-      ]
-    },{
-      "label": "Links",
-      "type": "button-group",
-      "buttons": [{ "type": "rich-text-editor-link" }
-      ]
-    },{
-      "label": "Clipboard Operations",
-      "collapsedUntil": "md",
-      "type": "button-group",
-      "buttons": [
-        {
-          "command": "cut",
-          "icon": "content-cut",
-          "label": "Cut",
-          "type": "rich-text-editor-button"
+          command: "bold",
+          icon: "editor:format-bold",
+          label: "Bold",
+          toggles: true,
+          type: "rich-text-editor-button"
         },
         {
-          "command": "copy",
-          "icon": "content-copy",
-          "label": "Copy",
-          "type": "rich-text-editor-button"
+          command: "italic",
+          icon: "editor:format-italic",
+          label: "Italics",
+          toggles: true,
+          type: "rich-text-editor-button"
         },
         {
-          "command": "paste",
-          "icon": "content-paste",
-          "label": "Paste",
-          "type": "rich-text-editor-button"
+          command: "removeFormat",
+          icon: "editor:format-clear",
+          label: "Erase Format",
+          type: "rich-text-editor-button"
         }
       ]
-    },{
-      "collapsedUntil": "sm",
-      "label": "Insertions",
-      "type": "button-group",
-      "buttons": [
+    },
+    {
+      label: "Links",
+      type: "button-group",
+      buttons: [{ type: "rich-text-editor-link" }]
+    },
+    {
+      label: "Clipboard Operations",
+      collapsedUntil: "md",
+      type: "button-group",
+      buttons: [
         {
-          "type": "rich-text-editor-image"
-        },{ 
-          "collapsedUntil": "xl",
-          "icon": "editor:functions",
-          "label": "Insert Symbol", 
-          "type": "rich-text-editor-symbol-picker" 
-        },{ 
-          "collapsedUntil": "xl",
-          "icon": "image:tag-faces",
-          "label": "Insert Emoji", 
-          "type": "rich-text-editor-emoji-picker" 
+          command: "cut",
+          icon: "content-cut",
+          label: "Cut",
+          type: "rich-text-editor-button"
+        },
+        {
+          command: "copy",
+          icon: "content-copy",
+          label: "Copy",
+          type: "rich-text-editor-button"
+        },
+        {
+          command: "paste",
+          icon: "content-paste",
+          label: "Paste",
+          type: "rich-text-editor-button"
         }
       ]
-    },{
-      "collapsedUntil": "lg",
-      "label": "Lists and Indents",
-      "type": "button-group",
-      "buttons": [
+    },
+    {
+      collapsedUntil: "sm",
+      label: "Insertions",
+      type: "button-group",
+      buttons: [
         {
-          "command": "insertOrderedList",
-          "icon": "editor:format-list-numbered",
-          "label": "Ordered List",
-          "toggles": true,
-          "type": "rich-text-editor-button"
-        },{
-          "command": "insertUnorderedList",
-          "icon": "editor:format-list-bulleted",
-          "label": "Unordered List",
-          "toggles": true,
-          "type": "rich-text-editor-button"
-        },{ 
-          "collapsedUntil": "lg",
-          "command": "formatBlock",
-          "commandVal": "<blockquote>",
-          "label": "Blockquote", 
-          "icon": "editor:format-quote",
-          "type": "rich-text-editor-button" 
-        },{
-          "label": "Increase Indent",
-          "icon": "editor:format-indent-increase",
-          "event": "text-indent",
-          "command": "indent",
-          "type": "rich-text-editor-button"
-        },{
-          "label": "Decrease Indent",
-          "icon": "editor:format-indent-decrease",
-          "event": "text-outdent",
-          "command": "outdent",
-          "type": "rich-text-editor-button"
+          type: "rich-text-editor-image"
+        },
+        {
+          collapsedUntil: "xl",
+          icon: "editor:functions",
+          label: "Insert Symbol",
+          type: "rich-text-editor-symbol-picker"
+        },
+        {
+          collapsedUntil: "xl",
+          icon: "image:tag-faces",
+          label: "Insert Emoji",
+          type: "rich-text-editor-emoji-picker"
+        }
+      ]
+    },
+    {
+      collapsedUntil: "lg",
+      label: "Lists and Indents",
+      type: "button-group",
+      buttons: [
+        {
+          command: "insertOrderedList",
+          icon: "editor:format-list-numbered",
+          label: "Ordered List",
+          toggles: true,
+          type: "rich-text-editor-button"
+        },
+        {
+          command: "insertUnorderedList",
+          icon: "editor:format-list-bulleted",
+          label: "Unordered List",
+          toggles: true,
+          type: "rich-text-editor-button"
+        },
+        {
+          collapsedUntil: "lg",
+          command: "formatBlock",
+          commandVal: "<blockquote>",
+          label: "Blockquote",
+          icon: "editor:format-quote",
+          type: "rich-text-editor-button"
+        },
+        {
+          label: "Increase Indent",
+          icon: "editor:format-indent-increase",
+          event: "text-indent",
+          command: "indent",
+          type: "rich-text-editor-button"
+        },
+        {
+          label: "Decrease Indent",
+          icon: "editor:format-indent-decrease",
+          event: "text-outdent",
+          command: "outdent",
+          type: "rich-text-editor-button"
         }
       ]
     }
   ]
 ];
-const hasImage = (config) => {
-  return (config || []).filter(group=>{
-    return (group.buttons|| []).filter(button=>{
-      return button.type="rich-text-editor-image";
-    }).length > 0;
-  }).length > 0;
+const hasImage = config => {
+  return (
+    (config || []).filter(group => {
+      return (
+        (group.buttons || []).filter(button => {
+          return (button.type = "rich-text-editor-image");
+        }).length > 0
+      );
+    }).length > 0
+  );
 };
-const editor = (id,config) => `<rich-text-editor toolbar="${id}">${emptyslot}${!hasImage(config) ? ``: `<p><img src="//placekitten.com/200/200" width="50px"></p>\n`}</rich-text-editor>`;
-const rawProps = (toolbarProps) => {
+const editor = (id, config) =>
+  `<rich-text-editor toolbar="${id}">${emptyslot}${
+    !hasImage(config)
+      ? ``
+      : `<p><img src="//placekitten.com/200/200" width="50px"></p>\n`
+  }</rich-text-editor>`;
+const rawProps = toolbarProps => {
   delete toolbarProps.canceled;
   delete toolbarProps.controls;
   delete toolbarProps.editor;
@@ -380,18 +402,36 @@ const rawProps = (toolbarProps) => {
   delete toolbarProps.savedSelection;
   delete toolbarProps.range;
   let props = utils.getElementProperties(toolbarProps);
-  props.forEach(prop => {if (prop.property === "moreIcon") prop.inputMethod = "iconpicker"});
+  props.forEach(prop => {
+    if (prop.property === "moreIcon") prop.inputMethod = "iconpicker";
+  });
   return props;
-}
+};
 export const RichTextEditorToolbarStory = () => {
   let props = rawProps(RichTextEditorToolbar.properties);
-  let knobs = utils.getKnobs(props, { config: utils.getRandomOption(configs), id: 'my-toolbar'});
-  return utils.getDemo(`${utils.makeElement(RichTextEditorToolbar,knobs,true)}${editor(knobs.props.id.knob,knobs.props.config.knob)}`);
+  let knobs = utils.getKnobs(props, {
+    config: utils.getRandomOption(configs),
+    id: "my-toolbar"
+  });
+  return utils.getDemo(
+    `${utils.makeElement(RichTextEditorToolbar, knobs, true)}${editor(
+      knobs.props.id.knob,
+      knobs.props.config.knob
+    )}`
+  );
 };
 export const RichTextEditorToolbarFullStory = () => {
   let props = rawProps(RichTextEditorToolbarFull.properties);
-  let knobs = utils.getKnobs(props, { config: utils.getRandomOption(configs), id: 'my-full-toolbar'});
-  return utils.getDemo(`${utils.makeElement(RichTextEditorToolbarFull,knobs,true)}${editor(knobs.props.id.knob,knobs.props.config.knob)}`);
+  let knobs = utils.getKnobs(props, {
+    config: utils.getRandomOption(configs),
+    id: "my-full-toolbar"
+  });
+  return utils.getDemo(
+    `${utils.makeElement(RichTextEditorToolbarFull, knobs, true)}${editor(
+      knobs.props.id.knob,
+      knobs.props.config.knob
+    )}`
+  );
 };
 export const RichTextEditorToolbarMiniStory = () => {
   let props = rawProps(RichTextEditorToolbarMini.properties);
@@ -483,13 +523,15 @@ export const RichTextEditorToolbarMiniStory = () => {
       ]
     }
   ];
-  let knobs = utils.getKnobs(props, 
-    { 
-      config: config, 
-      id: 'my-mini-toolbar'
-    }
-  );
-  return utils.getDemo(`${utils.makeElement(RichTextEditorToolbarMini,knobs,true)}
+  let knobs = utils.getKnobs(props, {
+    config: config,
+    id: "my-mini-toolbar"
+  });
+  return utils.getDemo(`${utils.makeElement(
+    RichTextEditorToolbarMini,
+    knobs,
+    true
+  )}
 <figure style="max-width: 300px; border: 1px solid black;">
   <img src="//placekitten.com/300/300">
   <figcaption style="padding: 10px;">

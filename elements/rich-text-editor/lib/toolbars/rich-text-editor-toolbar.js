@@ -189,7 +189,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         id: {
           name: "id",
           type: String,
-          attribute: "id", 
+          attribute: "id",
           reflect: true
         },
         /**
