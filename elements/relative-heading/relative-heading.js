@@ -81,6 +81,7 @@ class RelativeHeading extends RelativeHeadingLite {
       `
     ];
   }
+
   // render function
   render() {
     return html`

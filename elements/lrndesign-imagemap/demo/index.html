@@ -13,27 +13,7 @@
       import '../lib/lrndesign-imagemap-hotspot.js';
     </script>
       <style is="custom-style" include="demo-pages-shared-styles">
-        #demo1 .hotspot{
-          fill: rgba(0,0,0,0.5);
-        }
-        #demo1 .hotspot.focus,
-        #demo1 .hotspot:hover {
-          fill: rgba(0,0,0,0.25);
-          outline: none;
-        }
-        #demo1 .hotspot.selected {
-          fill:transparent;
-        }
-        #demo2 .hotspot {
-          opacity: 0.7;
-        }
-        #demo2 .hotspot.focus,
-        #demo2 .hotspot:hover {
-          opacity: 0.9;
-        }
-        #demo2 .hotspot.selected {
-          opacity: 1;
-        }
+       
         @media print {
           :host .screen-only {
             display: none;
@@ -46,13 +26,26 @@
       <h3>Basic lrndesign-imagemap demo</h3>
       <demo-snippet>
         <template>
+          <style>
+             #demo1 .hotspot{
+                 fill: rgba(0,0,0,0.5);
+              }
+            #demo1 .hotspot.focus,
+            #demo1 .hotspot:hover {
+               fill: rgba(0,255,255,0.25);
+              outline: none;
+            }
+          #demo1 .hotspot.selected {
+            fill:transparent;
+          }
+          </style>
           <lrndesign-imagemap id="demo1" src="images/fastfood.svg" label="Junk Food Calories">
             <div slot="desc">
               <p>A fast food meal with a double cheeseburger, large fries, and a 12-ounce cola.
                 <span class="screen-only">Click on the hotspots to learn more.</span>
               </p>
             </div>
-            <lrndesign-imagemap-hotspot hotspot-id="burger" label="Double Cheeseburger">
+            <lrndesign-imagemap-hotspot hotspot-id="burger" position="left" label="Double Cheeseburger">
               The double cheeseburger is 459 calories.
             </lrndesign-imagemap-hotspot>
             <lrndesign-imagemap-hotspot hotspot-id="fries" label="Large French Fries">
@@ -68,6 +61,18 @@
       <h3>Basic lrndesign-imagemap demo aith svg</h3>
       <demo-snippet>
         <template>
+          <style>
+          #demo2 .hotspot {
+            opacity: 0.5;
+          }
+          #demo2 .hotspot.focus,
+          #demo2 .hotspot:hover {
+            opacity: 0.7;
+          }
+          #demo2 .hotspot.selected {
+            opacity: 1;
+          }
+        </style>
           <lrndesign-imagemap id="demo2" src="images/designprocess.svg" label="Course Design Process">
             <div slot="desc">
               <p>

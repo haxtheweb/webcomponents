@@ -1,26 +1,23 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 /**
  * `lrndesign-imagemap`
  * @element lrndesign-imagemap
  * creates an accessible image map
  *
-
- * @polymer
+ *
  * @demo demo/index.html
  */
-class LrndesignImagemap extends PolymerElement {
+class LrndesignImagemap extends LitElement {
   constructor() {
     super();
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
     import("@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js");
+    import("@lrnwebcomponents/simple-popover/simple-popover.js");
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -31,40 +28,71 @@ class LrndesignImagemap extends PolymerElement {
           overflow: hidden;
           opacity: 0;
         }
-        /*::slotted([hotspot]) {
-        display: none;
-      }*/
-        @media print {
-          :host > #svg {
-            display: none;
-          }
-          /*::slotted(#screen-only) {
+
+        simple-popover {
+          max-width: 300px;
+          max-height: 200px;
+        }
+        simple-popover[for=""] {
           display: none;
         }
-        ::slotted([hotspot]) {
-          display: block;
-        }*/
+        simple-popover .sub-heading > *:first-child {
+          margin: 0 0 10px;
         }
-      </style>
-      <relative-heading
-        hidden\$="[[!label]]"
-        id="heading"
-        subtopic-of\$="[[subtopicOf]]"
-        tag\$="[[tag]]"
-        text\$="[[label]]"
-      >
-      </relative-heading>
-      <div id="desc"><slot name="desc"></slot></div>
-      <div id="svg"></div>
-      <div id="buttons"></div>
+
+        @media print {
+          #svg,
+          simple-popover {
+            display: none;
+          }
+        }
+      `
+    ];
+  }
+
+  render() {
+    return html`
+      <figure id="figure">
+        <figcaption>
+          <relative-heading
+            id="heading"
+            parent="${this.parent || this.subtopicOf}"
+          >
+            ${this.label
+              ? html`
+                  <h1>${this.label}</h1>
+                `
+              : html`
+                  <slot name="heading"></slot>
+                `}
+          </relative-heading>
+          <div id="desc"><slot name="desc"></slot></div>
+          <slot name="source" hidden></slot>
+          <div id="buttons"></div>
+        </figcaption>
+        <slot id="svg" name="svg"></slot>
+        <simple-popover
+          auto
+          ?hidden="${!this.__activeHotspot}"
+          position="${!this.__activeHotspot
+            ? "bottom"
+            : this.__activeHotspot.position}"
+          .for="${!this.__activeHotspot ? undefined : this.__activeHotspot.id}"
+        >
+          <relative-heading
+            disable-link
+            class="sub-heading"
+            parent="heading"
+            id="subheading-${!this.__activeHotspot
+              ? undefined
+              : this.__activeHotspot.id}"
+          >
+            <h2>${!this.__activeHotspot ? "" : this.__activeHotspot.label}</h2>
+          </relative-heading>
+          <slot id="details" name="details"></slot>
+        </simple-popover>
+      </figure>
       <slot></slot>
-      <iron-ajax
-        auto=""
-        id="get_svg"
-        url="[[src]]"
-        handle-as="text"
-        on-response="_getSVGHandler"
-      ></iron-ajax>
     `;
   }
   static get tag() {
@@ -76,181 +104,159 @@ class LrndesignImagemap extends PolymerElement {
        * Label for the imagemap
        */
       label: {
-        type: String,
-        value: null
+        type: String
       },
       /**
-       * The path of the SVG
+       * @deprecated: (8/27/2020, after v.2.6.24) Using slot instead of the path of the SVG
        */
       src: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The path of the SVG
        */
       hotspotDetails: {
         type: Array,
-        value: []
+        attribute: "hotspot-details"
       },
-      /*
-       * optional: the id of the heading element that this imagemap is a subtopic of
+      /**
+       * @deprecated: (8/27/2020, after v.2.6.24) the id of the heading element that this imagemap is a subtopic of
        */
       subtopicOf: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "subtopic-of"
       },
-      /*
-       * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
-       */
-      tag: {
+
+      parent: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "parent"
+      },
+
+      __activeHotspot: {
+        type: Object
       }
     };
   }
-  /**
-   * attached life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    window.SimpleModal.requestAvailability();
-    window.addEventListener("simple-modal-closed", e => {
-      if (e.detail.invokedBy === this) {
-        this.closeHotspot();
-      }
-    });
+
+  firstUpdated(changeProperties) {
+    if (super.firstUpdated) super.firstUpdated(changeProperties);
+    console.log(
+      this.querySelector("[slot=src]")
+        ? this.querySelector("[slot=src]")
+        : this.src
+    );
+
+    this._fetchSvg(
+      this.querySelector("[slot=src]")
+        ? this.querySelector("[slot=src]")
+        : this.src
+    );
   }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    window.removeEventListener("simple-modal-closed", e => {
-      if (e.detail.invokedBy === this) {
-        this.closeHotspot();
-      }
-    });
-    super.disconnectedCallback();
+
+  _fetchSvg(src) {
+    fetch(src)
+      .then(response => response.text())
+      .then(data => this._getSVGHandler(data));
   }
+
   /**
    * Convert from svg text to an array in the table function
    */
-  _getSVGHandler(e) {
-    let root = this,
-      temp = document.createElement("div"),
-      getID = function(element, alt) {
-        if (element.getAttribute("id") === null)
-          element.setAttribute("id", alt);
-        return element.getAttribute("id");
-      };
-    let setAriaLabelledBy = function(source, target, prefix) {
-      // adds title and desc elements to target and sets the aria-labelledby attribute
-      let svgElem = function(nodename) {
-        source = source !== null ? source : root;
-        //adds title or desc element to target
-        let attr = nodename === "title" ? "label" : nodename,
-          query = source.querySelector("#" + attr);
-        var label = target.querySelector(nodename);
-        //if the target doesn't have the element, add it
-        if (label === null) {
-          label = document.createElement(nodename);
-          target.prepend(label);
-        }
-        //populates the element with data from the source element
-        if (source.getAttribute(attr) !== null) {
-          label.innerHTML = source.getAttribute(attr);
-        } else if (query !== null && query.innerHTML !== "") {
-          label.innerHTML = query.innerHTML;
-        }
-        //returns the new element's id
-        return getID(label, prefix + "-" + attr);
-      };
-      //set aria-labelledby to the id's for title and descriptions
-      target.setAttribute(
-        "aria-labelledby",
-        svgElem("desc") + " " + svgElem("label")
-      );
-    };
-    //set up main svg and append to document
-    temp.innerHTML = e.detail.response;
-    let svg = temp.querySelector("svg"),
-      svgid = getID(svg, "svg-" + Date.now()),
-      hdata = root.querySelectorAll("lrndesign-imagemap-hotspot");
-    setAriaLabelledBy(root, svg, svgid);
-    this.shadowRoot.querySelector("#svg").appendChild(svg);
+  _getSVGHandler(data) {
+    let loader = document.createElement("div");
+    let hotspots = [];
+    loader.innerHTML = data;
+    let svg = loader.querySelector("svg");
 
-    for (let i = 0; i < hdata.length; i++) {
-      let hid = hdata[i].getAttribute("hotspot-id"),
-        hotspot = svg.querySelector("#" + hid),
-        clone = svg.cloneNode(true);
+    svg.slot = "svg";
+    this.prepend(svg);
+    console.log(this.childNodes);
+    svg.setAttribute("aria-labelledBy", this._getInfoNode(svg, "title"));
+    svg.setAttribute("aria-describedBy", this._getInfoNode(svg));
+    this.hotspotDetails = [];
+    // this is scrape the printable hotspots for info
+    this.querySelectorAll("lrndesign-imagemap-hotspot").forEach(hotspot => {
+      let obj = {
+        id: hotspot.hotspotId,
+        print: hotspot,
+        hotspot: svg.querySelector(`#${hotspot.hotspotId}`),
+        label: hotspot.label,
+        position: hotspot.position || "bottom",
+        details: document.createElement("div")
+      };
+      // Turning main svg interactive hotspots into buttons
+      obj.hotspot.classList.add("hotspot");
+      obj.hotspot.setAttribute("role", "button");
+      obj.hotspot.setAttribute("controls", "figure");
+      obj.hotspot.addEventListener("click", e => this.openHotspot(obj));
 
-      //clone svg for print versions and show hotspot as selected
-      setAriaLabelledBy(hdata[i], clone, hid);
-      hdata[i].appendChild(clone);
-      hdata[i].querySelector("#" + hid).classList.add("selected");
-      hdata[i].setParentHeading(root.shadowRoot.querySelector("#heading"));
-      for (let j = 0; j < hdata.length; j++) {
-        hdata[i]
-          .querySelector("#" + hdata[j].getAttribute("hotspot-id"))
-          .classList.add("hotspot");
+      //Copy hotspot details from printable hotspots
+
+      hotspot.childNodes.forEach(node => {
+        obj.details.appendChild(node.cloneNode(true));
+      });
+      obj.details.slot = "details";
+      this.append(obj.details);
+
+      // Get array data for hotspot
+      this.hotspotDetails.push(obj);
+      hotspots.push(hotspot.hotspotId);
+    });
+
+    this.hotspotDetails.forEach(obj => {
+      obj.print.loadSvg(data, hotspots);
+    });
+  }
+  /**
+   * Gets / Sets description and label
+   * @param {object} svg an svg element
+   * @param {string} nodeName  the name of the info element (title or desc)
+   * @returns {string}
+   */
+  _getInfoNode(svg, nodeName = "desc") {
+    let nodeId = nodeName === "title" ? "heading" : nodeName;
+    let node = svg.querySelector(nodeName);
+    let query = this.shadowRoot.querySelector(`#${nodeId}`);
+    if (!node) {
+      node = document.createElement(nodeName);
+      svg.prepend(node);
+      if (query && query.innerHTML != "") {
+        node.innerHTML == query.html;
       }
-
-      //configure hotspot on main (interactive) svg
-      let hbutton = document.createElement("button");
-      hbutton.setAttribute("tabindex", 0);
-      hbutton.setAttribute("aria-label", hdata[i].label);
-      root.shadowRoot.querySelector("#buttons").appendChild(hbutton);
-      hbutton.addEventListener("focus", function() {
-        hotspot.classList.add("focus");
-      });
-      hbutton.addEventListener("blur", function() {
-        hotspot.classList.remove("focus");
-      });
-      hotspot.classList.add("hotspot");
-      hotspot.addEventListener("click", e => {
-        this.openHotspot(hotspot, hdata[i]);
-      });
-      hbutton.addEventListener("keyup", e => {
-        if (e.keyCode === 13 || e.keyCode === 32) {
-          if (!hotspot.classList.contains("selected")) {
-            this.openHotspot(hotspot, hdata[i]);
-          }
-        }
-      });
     }
+    return this._getId(node);
+  }
+
+  _getId(el) {
+    let id = el ? el.getAttribute("id") : undefined;
+    if (!id) {
+      id = "ss-s-s-s-sss".replace(
+        /s/g,
+        Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1)
+      );
+      el.setAttribute("id", id);
+    }
+    return id;
   }
   /**
    * Selects a hotspot and opens dialog with details about it.
    */
-  openHotspot(hotspot, details) {
-    // get everything flat
-    var children = details.shadowRoot
-      .querySelector("#desc")
-      .querySelector("slot")
-      .assignedNodes({ flatten: true });
-    let c = document.createElement("div");
-    // append clones of the children we found
-    for (var child in children) {
-      c.appendChild(children[child].cloneNode(true));
-    }
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      cancelable: true,
-      detail: {
-        title: details.getAttribute("label"),
-        elements: {
-          content: c
-        },
-        invokedBy: this,
-        clone: false
+  openHotspot(hotspot) {
+    this.__activeHotspot = undefined;
+    this.hotspotDetails.forEach(obj => {
+      if (obj.id === hotspot.id) {
+        obj.hotspot.classList.add("selected");
+        obj.details.style.display = "block";
+        this.__activeHotspot = obj;
+      } else {
+        obj.hotspot.classList.remove("selected");
+        obj.details.style.display = "none";
       }
     });
-    this.dispatchEvent(evt);
-    this.__activeHotspot = hotspot;
-    this.resetHotspots();
-    hotspot.classList.add("selected");
   }
   /**
    * Closes a hotspot.
