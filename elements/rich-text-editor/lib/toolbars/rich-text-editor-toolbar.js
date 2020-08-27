@@ -104,7 +104,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         <div
           id="toolbar"
           aria-live="polite"
-          aria-hidden="${this.controls || this.alwaysVisible
+          aria-hidden="${this.controls //|| this.alwaysVisible
             ? "false"
             : "true"}"
           ?collapsed="${this.collapsed}"
@@ -138,7 +138,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       return {
         /**
          * keep toolbar visible even when not editor not focused
-         */
+         * /
         alwaysVisible: {
           type: Boolean,
           attribute: "always-visible",
@@ -182,6 +182,15 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           name: "editor",
           type: Object,
           attribute: "editor"
+        },
+        /**
+         * `rich-text-editor` unique id
+         */
+        id: {
+          name: "id",
+          type: String,
+          attribute: "id", 
+          reflect: true
         },
         /**
          * icon for more button.
@@ -295,7 +304,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       this.__selection = window.RichTextEditorSelection.requestAvailability();
 
-      this.alwaysVisible = false;
+      //this.alwaysVisible = false;
       this.canceled = true;
       this.collapsed = true;
       this.config = [
