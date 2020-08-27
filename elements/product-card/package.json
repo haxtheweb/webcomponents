@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "2.7.3",
+  "version": "2.7.5",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -59,7 +59,7 @@
     "@lrnwebcomponents/hax-iconset": "^2.7.1",
     "@lrnwebcomponents/hero-banner": "^2.7.3",
     "@lrnwebcomponents/html-block": "^2.7.0",
-    "@lrnwebcomponents/image-compare-slider": "^2.7.3",
+    "@lrnwebcomponents/image-compare-slider": "^2.7.5",
     "@lrnwebcomponents/json-editor": "^2.7.3",
     "@lrnwebcomponents/license-element": "^2.7.3",
     "@lrnwebcomponents/lrn-aside": "^2.7.3",

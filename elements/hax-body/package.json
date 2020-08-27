@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.4",
+  "version": "2.7.5",
   "description": "A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future.",
   "repository": {
     "type": "git",
@@ -114,7 +114,7 @@
     "@lrnwebcomponents/citation-element": "^2.7.3",
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
     "@lrnwebcomponents/hero-banner": "^2.7.3",
-    "@lrnwebcomponents/image-compare-slider": "^2.7.3",
+    "@lrnwebcomponents/image-compare-slider": "^2.7.5",
     "@lrnwebcomponents/license-element": "^2.7.3",
     "@lrnwebcomponents/lrn-aside": "^2.7.3",
     "@lrnwebcomponents/lrn-calendar": "^2.3.1",
