@@ -81,15 +81,17 @@ export const RelativeHeadingStory = () => {
   <h3>Suspendisse</h3>
 </relative-heading-lite>
 
-<relative-heading-lite id="changeme" parent="${knobs(props).props.parent.knob}"${
-      knobs(props).props.disableLink.knob ? " disable-link" : ""
-    }${knobs(props).props.linkAlignRight.knob ? " link-align-right" : ""}>
+<relative-heading-lite id="changeme" parent="${
+      knobs(props).props.parent.knob
+    }"${knobs(props).props.disableLink.knob ? " disable-link" : ""}${
+      knobs(props).props.linkAlignRight.knob ? " link-align-right" : ""
+    }>
   <h2>Change me!!!!</h2>
 </relative-heading-lite>
 
 <relative-heading-lite id="sollicitudin" parent="changeme">
   <h3>Sollicitudin</h3>
-</relative-heading>          
+</relative-heading-lite>          
 
 <relative-heading-lite id="volutpat" parent="sollicitudin">
   <h4>In et volutpat</h4>
