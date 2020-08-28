@@ -69,31 +69,31 @@ export const RelativeHeadingLiteStory = () => {
 
 export const RelativeHeadingStory = () => {
   return utils.getDemo(
-    `<relative-heading id="lorem">
+    `<relative-heading-lite id="lorem">
   <h1>Lorem ipsum dolor</h1>
-</relative-heading>
+</relative-heading-lite>
 
-<relative-heading id="praesent" parent="lorem">
+<relative-heading-lite id="praesent" parent="lorem">
   <h2>Praesent ultrices</h2>
-</relative-heading>
+</relative-heading-lite>
 
-<relative-heading id="suspendisse" parent="praesent">
+<relative-heading-lite id="suspendisse" parent="praesent">
   <h3>Suspendisse</h3>
-</relative-heading>
+</relative-heading-lite>
 
-<relative-heading id="changeme" parent="${knobs(props).props.parent.knob}"${
+<relative-heading-lite id="changeme" parent="${knobs(props).props.parent.knob}"${
       knobs(props).props.disableLink.knob ? " disable-link" : ""
     }${knobs(props).props.linkAlignRight.knob ? " link-align-right" : ""}>
   <h2>Change me!!!!</h2>
-</relative-heading>
+</relative-heading-lite>
 
-<relative-heading id="sollicitudin" parent="changeme">
+<relative-heading-lite id="sollicitudin" parent="changeme">
   <h3>Sollicitudin</h3>
 </relative-heading>          
 
-<relative-heading id="volutpat" parent="sollicitudin">
+<relative-heading-lite id="volutpat" parent="sollicitudin">
   <h4>In et volutpat</h4>
-</relative-heading>
+</relative-heading-lite>
 <style>h1,h2,h3,h4,h5,h6 { margin: 0.3rem 0 }</style>     
     `,
     `<p>Use the knobs to alter the fourth heading (Change me!!!!):</p>`

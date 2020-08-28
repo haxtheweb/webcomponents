@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "../../rich-text-editor.js";
 import "../singletons/rich-text-editor-selection.js";
 
 const RichTextEditorToolbarBehaviors = function(SuperClass) {
