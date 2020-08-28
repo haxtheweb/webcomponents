@@ -972,11 +972,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _onPaste(e) {
     // only perform this on a text element that is active
-    if (
-      window.HaxStore.instance.isTextElement(
-        window.HaxStore.instance.activeNode
-      )
-    ) {
+    if (window.HaxStore.instance.isTextElement(window.HaxStore.instance.activeNode)) {
       let pasteContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
@@ -1019,6 +1015,24 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // account for incredibly basic pastes of single groups of characters
       else if (haxElements.length === 1 && haxElements[0].tag === "p") {
+        return false;
+      }
+      // account for incredibly basic pastes of single groups of characters
+      else if (haxElements.length === 1 && haxElements[0].tag === "a" && haxElements[0].properties.href) {
+        // test for a URL since we didn't have HTML / elements of some kind
+        // if it's a URL we might be able to automatically convert it into it's own element
+        let values = {
+          source: haxElements[0].properties.href,
+          title: haxElements[0].content,
+        };
+        // if we DID get a match, block default values
+        if (window.HaxStore.insertLogicFromValues(values, window.HaxStore.instance)) {
+          // prevents the text being inserted previously so that the insertLogic does it
+          // for us
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }
         return false;
       }
       // account for broken pastes in resolution, just let browser handle it
@@ -1139,8 +1153,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
       "hax-context-item-selected": "_haxContextOperation",
-      onbeforeunload: "_onBeforeUnload",
-      paste: "_onPaste",
+      "onbeforeunload": "_onBeforeUnload",
+      "paste": "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
       "hax-register-blox": "_haxStoreRegisterBlox",
@@ -2751,6 +2765,45 @@ window.HaxStore.toast = (
     }
   });
   window.dispatchEvent(evt);
+};
+
+/**
+ * Simple workflow for logic from inserting based on
+ * a series of criteria.
+ */
+window.HaxStore.insertLogicFromValues = (values, context) => {
+  // we have no clue what this is.. let's try and guess..
+  let type = window.HaxStore.guessGizmoType(values);
+  let haxElements = window.HaxStore.guessGizmo(type, values, false, true);
+  // see if we got anything
+  if (haxElements.length > 0) {
+    if (haxElements.length === 1) {
+      if (typeof haxElements[0].tag !== typeof undefined) {
+        context.dispatchEvent(
+          new CustomEvent("hax-insert-content", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: haxElements[0]
+          })
+        );
+      }
+    } else {
+      // hand off to hax-app-picker to deal with the rest of this
+      window.HaxStore.instance.haxAppPicker.presentOptions(
+        haxElements,
+        type,
+        "Pick how to present the " + type,
+        "gizmo"
+      );
+    }
+    return true;
+  } else {
+    window.HaxStore.toast(
+      "Sorry, HAX doesn't know how to handle that type of link yet."
+    );
+    return false;
+  }
 };
 
 /**
