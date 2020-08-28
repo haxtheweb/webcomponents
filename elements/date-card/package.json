@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "A simple presentation of a date",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.7.1",
+    "@lrnwebcomponents/simple-colors": "^2.7.3",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
@@ -53,7 +53,7 @@
     "concurrently": "5.0.2",
     "es-dev-server": "1.36.2",
     "gulp-babel": "8.0.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

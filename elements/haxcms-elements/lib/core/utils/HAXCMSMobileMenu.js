@@ -39,7 +39,7 @@ const HAXCMSMobileMenuMixin = function(SuperClass) {
             display: none;
           }
           site-menu {
-            height: auto;
+            height: 100vh;
           }
           :host([responsive-size="xs"][menu-open]),
           :host([responsive-size="sm"][menu-open]) {

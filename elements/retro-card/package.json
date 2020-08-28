@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.7.1",
+    "@lrnwebcomponents/simple-colors": "^2.7.3",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
@@ -54,7 +54,7 @@
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

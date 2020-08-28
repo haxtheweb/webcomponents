@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "Uses JSON Schema or an array of fields to display a series of fields",
   "repository": {
     "type": "git",
@@ -43,13 +43,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-tabs": "^2.7.1",
-    "@lrnwebcomponents/code-editor": "^2.7.1",
-    "@lrnwebcomponents/simple-colors": "^2.7.1",
-    "@lrnwebcomponents/simple-icon-picker": "^2.7.1",
-    "@lrnwebcomponents/simple-picker": "^2.7.1",
-    "@lrnwebcomponents/simple-tooltip": "^2.7.1",
-    "@lrnwebcomponents/voice-recorder": "^2.7.0",
+    "@lrnwebcomponents/a11y-tabs": "^2.7.3",
+    "@lrnwebcomponents/code-editor": "^2.7.3",
+    "@lrnwebcomponents/simple-colors": "^2.7.3",
+    "@lrnwebcomponents/simple-icon-picker": "^2.7.3",
+    "@lrnwebcomponents/simple-picker": "^2.7.3",
+    "@lrnwebcomponents/simple-tooltip": "^2.7.3",
+    "@lrnwebcomponents/voice-recorder": "^2.7.3",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",

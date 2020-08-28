@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.1",
+  "version": "2.7.5",
   "description": "HAX but for mobile / desktop application development",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/h-a-x": "^2.7.1",
+    "@lrnwebcomponents/h-a-x": "^2.7.5",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

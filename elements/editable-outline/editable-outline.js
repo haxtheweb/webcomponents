@@ -43,6 +43,7 @@ class EditableOutline extends LitElement {
             left: -9999px;
           }
         }
+
         button {
           height: 32px;
           font-size: 10px;
@@ -58,6 +59,7 @@ class EditableOutline extends LitElement {
         #outline {
           margin: 0;
         }
+
         ul {
           font-size: 16px;
           line-height: 32px;
@@ -68,37 +70,45 @@ class EditableOutline extends LitElement {
           height: auto;
           transition: 0.2s ease-in-out all;
         }
+
         li {
           font-size: 16px;
           line-height: 32px;
           padding: 4px;
           transition: 0.2s linear all;
         }
+
         ul:hover {
           outline: 1px solid #eeeeee;
         }
+
         li.collapsed-title {
           background-color: #dddddd;
         }
+
         li.collapsed-title:after {
           content: "    ( Double-click to expand )";
         }
+
         li:after {
           transition: 0.4s ease-in-out all;
           opacity: 0;
           font-size: 11px;
           visibility: hidden;
         }
+
         li.collapsed-title:hover:after {
           font-style: italic;
           opacity: 1;
           visibility: visible;
         }
+
         ul.collapsed-content {
           visibility: hidden;
           opacity: 0;
           height: 0;
         }
+
         li:focus,
         li:active,
         li:hover {
@@ -109,9 +119,14 @@ class EditableOutline extends LitElement {
         iron-icon {
           pointer-events: none;
         }
+
+        li[data-jos-published="false"] {
+          text-decoration: line-through;
+        }
       `
     ];
   }
+
   // render function
   render() {
     return html`

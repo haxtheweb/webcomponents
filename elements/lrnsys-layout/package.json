@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
@@ -42,11 +42,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrn-icons": "^2.7.0",
-    "@lrnwebcomponents/paper-avatar": "^2.7.1",
-    "@lrnwebcomponents/simple-colors": "^2.7.1",
-    "@lrnwebcomponents/simple-drawer": "^2.7.1",
-    "@lrnwebcomponents/simple-modal": "^2.7.1",
-    "@lrnwebcomponents/simple-tooltip": "^2.7.1",
+    "@lrnwebcomponents/paper-avatar": "^2.7.3",
+    "@lrnwebcomponents/simple-colors": "^2.7.3",
+    "@lrnwebcomponents/simple-drawer": "^2.7.3",
+    "@lrnwebcomponents/simple-modal": "^2.7.3",
+    "@lrnwebcomponents/simple-tooltip": "^2.7.3",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-collapse": "^3.0.0",
     "@polymer/iron-image": "^3.0.0",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

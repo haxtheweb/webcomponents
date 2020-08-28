@@ -861,7 +861,7 @@ export function internalGetShadowSelection(root) {
   const range = document.createRange();
 
   const s = window.getSelection();
-  if (s && !s.containsNode(root.host, true)) {
+  if (s && root.host && !s.containsNode(root.host, true)) {
     return { range: null, mode: "none" };
   }
 

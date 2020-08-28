@@ -16,7 +16,7 @@
       "hax": "src/type-writer-hax.json"
     }
   },
-  "version": "2.7.0",
+  "version": "2.7.3",
   "description": "typewritter effect",
   "repository": {
     "type": "git",
@@ -51,7 +51,7 @@
     "es-dev-server": "1.40.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

@@ -16,7 +16,7 @@
       "hax": "src/a11y-details-hax.json"
     }
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "accessible progressive disclosure with detail and summary",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/absolute-position-behavior": "^2.7.0",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.7.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.7.3",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.11",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.2",
     "polymer-cli": "1.9.7",
     "wct-browser-legacy": "1.0.2",

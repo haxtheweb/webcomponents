@@ -16,7 +16,7 @@
       "hax": "src/wc-autoload-hax.json"
     }
   },
-  "version": "2.7.1",
+  "version": "2.7.3",
   "description": "automatically load new tags in the dom",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dynamic-import-registry": "^2.7.0"
+    "@lrnwebcomponents/dynamic-import-registry": "^2.7.3"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
@@ -50,7 +50,7 @@
     "es-dev-server": "1.36.2",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

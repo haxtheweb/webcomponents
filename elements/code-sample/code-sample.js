@@ -77,6 +77,7 @@ class CodeSample extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`
@@ -138,7 +139,17 @@ class CodeSample extends LitElement {
       },
       saveOptions: {
         unsetAttributes: ["theme"]
-      }
+      },
+      demoSchema: [
+        {
+          tag: "code-sample",
+          content:
+            '<template preserve-content="preserve-content">const great = "example";</template>',
+          properties: {
+            "copy-clipboard-button": "copy-clipboard-button"
+          }
+        }
+      ]
     };
   }
   // properties available to the custom element for data binding
@@ -154,7 +165,7 @@ class CodeSample extends LitElement {
       // Tagged template literal with custom styles.
       // Only supported in Shadow DOM.
       theme: {
-        type: String
+        type: Object
       },
       // Code type (optional). (eg.: html, js, css)
       // Options are the same as the available classes for `<code>` tag using highlight.js
@@ -178,12 +189,21 @@ class CodeSample extends LitElement {
   }
   firstUpdated() {
     this._updateContent();
+    setTimeout(() => {
+      this._themeChanged(this.theme);
+    }, 0);
   }
   /**
    * HTMLElement
    */
   connectedCallback() {
     super.connectedCallback();
+    // can't allow this to be null for a number of reasons related
+    // to the tag's internals. This ensures it's not null on initial paint
+    if (this.innerHTML == "") {
+      this.innerHTML =
+        '<template preserve-content="preserve-content">const great="example";</template>';
+    }
     if (this.querySelector("template")) {
       this._observer = new MutationObserver(mutations => {
         if (this.shadowRoot) {
@@ -237,12 +257,14 @@ class CodeSample extends LitElement {
   _themeCanBeChanged(theme) {
     if (theme.tagName !== "TEMPLATE") {
       console.error("<code-sample>:", "theme must be a template");
-      return;
+      return false;
     }
     return true;
   }
   _updateContent() {
-    if (this._code) this._code.parentNode.removeChild(this._code);
+    if (this._code && this._code.parentNode) {
+      this._code.parentNode.removeChild(this._code);
+    }
 
     let template = this._getCodeTemplate();
     if (!template) {
@@ -263,8 +285,10 @@ class CodeSample extends LitElement {
     this._code = document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
-    this.shadowRoot.querySelector("#code").appendChild(this._code);
-    hljs.highlightBlock(this._code);
+    if (this.shadowRoot && this.shadowRoot.querySelector("#code")) {
+      this.shadowRoot.querySelector("#code").appendChild(this._code);
+      hljs.highlightBlock(this._code);
+    }
   }
   _cleanIndentation(str) {
     const pattern = str.match(/\s*\n[\t\s]*/);

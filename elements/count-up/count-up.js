@@ -126,6 +126,9 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["element-visible"]
       }
     };
   }
@@ -198,11 +201,6 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
       ratio: {
         type: Number,
         reflect: true
-      },
-      visibleLimit: {
-        type: Number,
-        reflect: true,
-        attribute: "visible-limit"
       },
       elementVisible: {
         type: Boolean

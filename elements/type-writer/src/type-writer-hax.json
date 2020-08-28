@@ -58,5 +58,8 @@
       }
     ],
     "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["element-visible"]
   }
 }

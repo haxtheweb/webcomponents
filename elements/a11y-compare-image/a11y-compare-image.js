@@ -31,10 +31,12 @@ class a11yCompareImage extends LitElement {
         #input {
           position: relative;
         }
+        /* Added background-size: cover to adjust the bottom layer to match top in first example */
         #container {
-          background-size: contain;
+          background-size: cover;
           background-repeat: no-repeat;
         }
+
         #layer {
           top: 0;
           left: 0;
@@ -49,23 +51,25 @@ class a11yCompareImage extends LitElement {
         #placeholder {
           opacity: 0;
         }
+
         #bottom {
           width: 100%;
         }
         #slider {
           top: 0;
           left: 0;
+          padding-top: 10px;
           position: absolute;
           width: calc(100% + 32px);
           margin: -15px 0 0 -16px;
         }
         .marker {
-          top: -3px;
+          top: 6px;
           position: absolute;
           width: 1px;
-          height: 10px;
           outline: 2px solid #bbb;
           background-color: #bbb;
+          padding-top: 10px;
         }
         ::slotted([slot="bottom"]) {
           max-width: 100%;
