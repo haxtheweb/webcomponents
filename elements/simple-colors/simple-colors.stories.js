@@ -16,9 +16,14 @@ export default {
 const utils = new StorybookUtilities();
 export const SimpleColorsStory = () => {
   let props = [
-    { property: "accentColor", title: "Accent Color", inputMethod: "colorpicker" },
-    { property: "dark", title: "Invert Colors", inputMethod: "boolean" }
-  ], knobs = utils.getKnobs(props,{accentColor: utils.getRandomColor()});
+      {
+        property: "accentColor",
+        title: "Accent Color",
+        inputMethod: "colorpicker"
+      },
+      { property: "dark", title: "Invert Colors", inputMethod: "boolean" }
+    ],
+    knobs = utils.getKnobs(props, { accentColor: utils.getRandomColor() });
   return utils.getDemo(
     `<style>
       div {
@@ -70,7 +75,9 @@ export const SimpleColorsStory = () => {
         background-color: var(--simple-colors-default-theme-red-8);
       }
     </style>
-    <simple-colors id="simplecolors" accent-color="${knobs.props.accentColor.knob}"${knobs.props.dark.knob ? 'dark ':''}>
+    <simple-colors id="simplecolors" accent-color="${
+      knobs.props.accentColor.knob
+    }"${knobs.props.dark.knob ? "dark " : ""}>
       <div id="box">
         <p>Use the knobs to change my colors!</p>
         <button class="button">Button</button>
@@ -90,19 +97,15 @@ export const SimpleColorsStory = () => {
 };
 
 export const AllTheSimpleColors = () => {
-  return document.createElement('simple-colors-swatches');
+  return document.createElement("simple-colors-swatches");
 };
 
 export const SimpleColorsPickerStory = () => {
   let rawProps = SimpleColorsPicker.properties;
   delete rawProps.accentColor;
   delete rawProps.dark;
-  let knobs = utils.getKnobs(
-    utils.getElementProperties(rawProps),
-    { label: 'Select a color from "simple-colors"'}
-  );
-  return utils.makeElement(
-    SimpleColorsPicker,
-    knobs
-  );
+  let knobs = utils.getKnobs(utils.getElementProperties(rawProps), {
+    label: 'Select a color from "simple-colors"'
+  });
+  return utils.makeElement(SimpleColorsPicker, knobs);
 };

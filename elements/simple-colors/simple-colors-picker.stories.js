@@ -17,12 +17,8 @@ export const SimpleColorsPickerStory = () => {
   let rawProps = SimpleColorsPicker.properties;
   delete rawProps.accentColor;
   delete rawProps.dark;
-  let knobs = utils.getKnobs(
-    utils.getElementProperties(rawProps),
-    { label: 'Select a color from "simple-colors"'}
-  );
-  return utils.makeElement(
-    SimpleColorsPicker,
-    knobs
-  );
+  let knobs = utils.getKnobs(utils.getElementProperties(rawProps), {
+    label: 'Select a color from "simple-colors"'
+  });
+  return utils.makeElement(SimpleColorsPicker, knobs);
 };
