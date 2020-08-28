@@ -14,7 +14,7 @@ export default {
 };
 
 const utils = new StorybookUtilities();
-const parents = ["","lorem","praesent","suspendisse"];
+const parents = ["", "lorem", "praesent", "suspendisse"];
 const parent = {
   property: "parent",
   title: "parent relative-heading's id",
@@ -23,10 +23,19 @@ const parent = {
 };
 const props = [
   parent,
-  { property: "disableLink", title: "Disable Link to Heading", inputMethod: "boolean" },
-  { property: "linkAlignRight", title: "Align Link to Right", inputMethod: "boolean" }
+  {
+    property: "disableLink",
+    title: "Disable Link to Heading",
+    inputMethod: "boolean"
+  },
+  {
+    property: "linkAlignRight",
+    title: "Align Link to Right",
+    inputMethod: "boolean"
+  }
 ];
-const knobs = (propData) => utils.getKnobs(propData, { parent: utils.getRandomOption(parents) });
+const knobs = propData =>
+  utils.getKnobs(propData, { parent: utils.getRandomOption(parents) });
 export const RelativeHeadingLiteStory = () => {
   return utils.getDemo(
     `<relative-heading id="lorem">
@@ -72,7 +81,9 @@ export const RelativeHeadingStory = () => {
   <h3>Suspendisse</h3>
 </relative-heading>
 
-<relative-heading id="changeme" parent="${knobs(props).props.parent.knob}"${knobs(props).props.disableLink.knob  ? " disable-link": ""}${knobs(props).props.linkAlignRight.knob  ? " link-align-right": ""}>
+<relative-heading id="changeme" parent="${knobs(props).props.parent.knob}"${
+      knobs(props).props.disableLink.knob ? " disable-link" : ""
+    }${knobs(props).props.linkAlignRight.knob ? " link-align-right" : ""}>
   <h2>Change me!!!!</h2>
 </relative-heading>
 
