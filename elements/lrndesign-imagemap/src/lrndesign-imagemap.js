@@ -29,9 +29,10 @@ class LrndesignImagemap extends LitElement {
           opacity: 0;
         }
 
+        
         simple-popover {
-          max-width: 300px;
-          max-height: 200px;
+          max-width: var(--lrndesign-imagemap-popover-maxWidth, 625px);
+          max-height: var(--lrndesign-imagemap-popover-maxHeight, 200px);
         }
         simple-popover[for=""] {
           display: none;
