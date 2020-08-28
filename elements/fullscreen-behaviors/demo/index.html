@@ -9,29 +9,24 @@
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import "./figure-carousel.js";
+      import "../fullscreen-behaviors.js";
+      import "./fullscreen-behaviors-demo.js";
     </script>
-    <style></style>
+    <style>
+      #container {
+        width: 500px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>fullscreen-behaviors</h1>
-      <demo-snippet>
-        <figure-carousel id="demo">
-          <figure id="figure-1">
-            <img src="//placekitten.com/400/200"/>
-            <figcaption>Item 1</figcaption>
-          </figure>
-          <figure id="figure-2">
-            <img src="//placekitten.com/300/100"/>
-            <figcaption>Item 2</figcaption>
-          </figure>
-          <figure id="figure-3">
-            <img src="//placekitten.com/400/300"/>
-            <figcaption>Item 3</figcaption>
-          </figure>
-        </figure-carousel>
-      </demo-snippet>
+    <h1>fullscreen-behaviors</h1>
+      <div id="container">
+        <p>See fullscreen-behaviors-demo.js for how to use fullscreen-behaviors</p>
+        <fullscreen-behaviors-demo>
+          <img src="//placekitten.com/1000/800" width="100%">
+        </fullscreen-behaviors-demo> 
+      </div>
     </div>
   </body>
 </html>

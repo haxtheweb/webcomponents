@@ -1,6 +1,33 @@
 OPENSEADRAGON CHANGELOG
 =======================
 
+2.4.2:
+
+* Add support for IIIF Image API 3.0 beta (#1764)
+* You can now crop an image with arbitrary polygons (#1772)
+* Improved support for using the Reference Strip in an OpenSeadragon Viewer inside a Web Component (#1676)
+* Added setWidth and setHeight methods to Navigator (#1686)
+* Improvements to docs (#1696, #1698, #1716, #1719)
+* Now passing Viewer AJAX configs down to ReferenceStrip thumbnails (#1701)
+* The ReferenceStrip now honors the useCanvas option from the Viewer (#1742)
+* Fixed: Navigator was still resizing after you explicitly set its width and height with navigatorWidth and navigatorHeight (#1686)
+* Fixed issues with touches on iOS 13 and iPad (#1754, #1756)
+* No longer throwing an exception on pages that have malformed URL parameters (#1758)
+* Fixed an issue with flipping the viewport on high pixel density screens (#1779)
+* Removed use of deprecated imageSmoothingEnabled prefixes (#1740)
+
+2.4.1:
+
+* You can now turn off the default canvas image smoothing, if you want sharp pixels when zoomed in past 100% (#1507, #1593, #1595, #1647, #1648)
+* Fixed problem with navigator highlight rectangle when returning from full screen with a custom navigator location (#1515)
+* Added option to set rotation increment for nav buttons and keyboard (#1524)
+* Fixed issue with flipping and opacity with multi-image (#1549)
+* Removed vestigial button group label element that was causing issues for accessibility tools (#1560)
+* Fixed a bug causing Viewer.areControlsEnabled to throw an exception (#1562)
+* Added tileFormat option to IIIFTileSource so you can specify the tile format (#1625)
+* Now using canonical URIs more consistently in IIIF to make caching and processing time easier on the server side (#1625)
+* Added support for IIIF's new preferredFormats property (#1656)
+
 2.4.0:
 
 * BREAKING CHANGE: Viewer's canvas-double-click event is now fired before it initiates the zoom (#1288)

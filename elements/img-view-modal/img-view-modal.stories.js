@@ -1,10 +1,12 @@
 import { html } from "lit-element/lit-element.js";
-import { imgViewModal } from "@lrnwebcomponents/img-view-modal/img-view-modal.js";
+import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import { ImgViewModal } from "@lrnwebcomponents/img-view-modal/img-view-modal.js";
+import { ImgViewViewer } from "@lrnwebcomponents/img-view-modal/lib/img-view-viewer.js";
 import { withKnobs, withWebComponentsKnobs } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 export default {
-  title: "Media|Image Compare",
+  title: "Media|Image View Modal",
   component: "img-view-modal",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
@@ -12,36 +14,99 @@ export default {
   }
 };
 const utils = new StorybookUtilities();
-export const imgViewModalStory = () => {
+const figures = [
+    "Blue grey cat on red background.",
+    "Metal bowl filled with red apples.",
+    "Lighthouse in greyscale.",
+    "Blue grey tabby looking at camera.",
+    "Red cherries on a white dish.",
+    "Beach with sunbathers.",
+    "String lights on a tree against dark night sky.",
+    "Empty beach with a heart drawn in the sand."
+  ].map((item, i) => {
+    return {
+      src: new URL(`demo/images/image${i + 1}.jpg`, import.meta.url),
+      info: item
+    };
+  }),
+  toolbars = {
+    top: {
+      id: "top",
+      type: "toolbar-group",
+      contents: [
+        "prevbutton",
+        "navigatorbutton",
+        "fullscreenbutton",
+        "navXofY",
+        "kbdbutton",
+        "infobutton",
+        "nextbutton"
+      ]
+    },
+    bottom: {
+      id: "bottom",
+      type: "toolbar-group",
+      contents: [
+        "flipbutton",
+        "rotategroup",
+        "zoomgroup",
+        "homebutton",
+        "pangroup"
+      ]
+    }
+  },
+  settings = {
+    figures: figures,
+    infoToggled: false,
+    kbdToggled: false,
+    toolbars: toolbars
+  },
+  exclusions = ["src", "sources"];
+export const ImgViewViewerStory = () => {
   return utils.makeElementFromClass(
-    imgViewModal,
+    ImgViewViewer,
     {
-      opacity: utils.getRandomBool(),
-      top: `<img aria-describedBy="cloudy" src="${new URL(
-        `./demo/images/Matterhorn01.png`,
-        import.meta.url
-      )}" alt="Matterhorn without snow">`,
-      bottom: `<img aria-describedBy="snowy" src="${new URL(
-        `./demo/images/Matterhorn02.png`,
-        import.meta.url
-      )}" alt="Matterhorn with snow">`,
-      heading: `<h2>A11y Compare Image</h2>`,
-      description: `<p>
-      The image on the top or when slider is moved all the way to the 
-      right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>.
-      As you move the slider to the left, the image below it 
-      reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.
-      </p>`,
-      width: "100%",
-      maxWidth: "400px"
+      figures: figures,
+      infoToggled: false,
+      kbdToggled: false,
+      toolbars: toolbars,
+      "--img-view-viewer-height": "90vh"
     },
     [
-      { title: "Heading", slot: "heading" },
-      { title: "Description", slot: "description" },
-      { title: "Top Image", slot: "top" },
-      { title: "Bottom Image", slot: "bottom" },
-      { css: "width" },
-      { css: "maxWidth" }
+      { title: "viewer height", css: "--img-view-viewer-height" },
+      { title: "background color", css: "--img-view-viewer-backgroundColor" },
+      { title: "text color", css: "--img-view-viewer-color" },
+      { title: "border color", css: "--img-view-viewer-borderColor" },
+      {
+        title: "background color (toggled buttons)",
+        css: "--img-view-modal-viewer-backgroundColor"
+      }
     ]
+  );
+};
+export const ImgViewModalStory = () => {
+  return utils.makeElementFromClass(
+    ImgViewModal,
+    {
+      figures: figures,
+      infoToggled: false,
+      kbdToggled: false,
+      toolbars: toolbars,
+      title: utils.getRandomText(),
+      emptyslot: `<button>Open Viewer</button>`
+    },
+    [
+      { title: "Modal button", slot: "" },
+      { title: "modal width", css: "--img-view-modal-width" },
+      { title: "modal height", css: "--img-view-modal-height" },
+      { title: "background color", css: "--img-view-modal-backgroundColor" },
+      { title: "text color", css: "--img-view-modal-color" },
+      { title: "border color", css: "--img-view-modal-borderColor" },
+      {
+        title: "background color (toggled buttons)",
+        css: "--img-view-modal-toggled-backgroundColor"
+      }
+    ],
+    ["modal"]
   );
 };

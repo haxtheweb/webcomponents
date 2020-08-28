@@ -2,57 +2,19 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorPickerBehaviors } from "./rich-text-editor-picker.js";
+import "@lrnwebcomponents/simple-picker/lib/simple-symbol-picker.js";
 /**
  * `rich-text-editor-symbol-picker`
- * `a symbol picker for the rich-text-editor`
+ * a symbol picker for the rich-text-editor
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-symbol-picker
+ * @demo ./demo/buttons.html
  */
-class RichTextEditorSymbolPicker extends RichTextEditorPicker {
-  constructor() {
-    super();
-    this.icon = "editor:functions";
-    this.label = "Insert symbol";
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * An optional JSON file with default options.
-       */
-      optionsSrc: {
-        name: "optionsSrc",
-        type: String,
-        value: "data/symbols.js"
-      },
-
-      /**
-       * Symbol types to include
-       */
-      symbolTypes: {
-        name: "symbolTypes",
-        type: Array,
-        value: ["symbols", "math", "characters", "greek", "misc"]
-      },
-
-      /**
-       * Renders html as title. (Good for titles with HTML in them.)
-       */
-      titleAsHtml: {
-        name: "titleAsHtml",
-        type: Boolean,
-        value: true,
-        readOnly: true
-      }
-    };
-  }
+class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    *
@@ -60,77 +22,70 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
   static get tag() {
     return "rich-text-editor-symbol-picker";
   }
-  // simple path from a url modifier
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const src = this.optionsSrc;
-    const location = `${basePath}${src}`;
-    window.addEventListener(
-      "es-bridge-symbols-loaded",
-      this._setOptions.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("symbols", location);
-  }
-  disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-symbols-loaded",
-      this._setOptions.bind(this)
-    );
-    super.disconnectedCallback();
+
+  static get styles() {
+    return [...super.styles];
   }
 
-  /**
-   * gets a list of icons and load them in a format
-   * that the simple-picker can take;
-   * if no icons are provided, loads a list from iron-meta
-   *
-   * @param {array} a list of custom icons for the picker
-   * @param {array} default list of icons for the picker
-   * @param {boolean} allow a null value for the picker
-   */
-  _getPickerOptions(options = [], allowNull = false, icon = null) {
-    let temp = super._getPickerOptions(options, allowNull, icon);
-    temp[0].unshift({ alt: null, icon: this.icon, value: null });
-    return temp;
+  // render function for template
+  render() {
+    return html`
+      <simple-symbol-picker
+        id="button"
+        ?allow-null="${this.allowNull}"
+        class="rtebutton ${this.toggled ? "toggled" : ""}"
+        ?disabled="${this.disabled}"
+        controls="${super.controls}"
+        @mouseover="${this._pickerFocus}"
+        @keydown="${this._pickerFocus}"
+        @value-changed="${this._pickerChange}"
+        tabindex="0"
+        ?title-as-html="${this.titleAsHtml}"
+      >
+        <span id="label" class="${super.labelStyle}">${this.currentLabel}</span>
+      </simple-symbol-picker>
+      <simple-tooltip id="tooltip" for="button"
+        >${this.currentLabel}</simple-tooltip
+      >
+    `;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+
+      /**
+       * Symbol types to include
+       */
+      symbolTypes: {
+        name: "symbolTypes",
+        type: Array
+      }
+    };
+  }
+
+  constructor() {
+    super();
+    this.icon = "editor:functions";
+    this.label = "Insert symbol";
+    this.symbolTypes = ["symbols", "math", "characters", "greek", "misc"];
+    this.titleAsHtml = true;
+    this.command = "insertHTML";
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "titleAsHtml" && !this.titleAsHtml)
+        this.titleAsHtml = true;
+    });
   }
 
   /**
    * Handles default options loaded from an external js file
    */
-  _setOptions() {
-    let optData = [];
-    this.symbolTypes.forEach(function(type) {
-      optData = optData.concat(symbols[type]);
-    });
-    this.set(
-      "options",
-      this._getPickerOptions(optData, this.allowNull, this.icon)
-    );
-  }
-
-  /**
-   * Converts option data to picker option data;
-   * can be overridden in extended elements
-   *
-   * @param {object} data about the option
-   * @returns {object} picker dato for the option
-   */
-  _getOptionData(option) {
-    return {
-      value: option,
-      alt: option,
-      icon: null,
-      style: null
-    };
-  }
+  _setOptions() {}
 }
 window.customElements.define(
   RichTextEditorSymbolPicker.tag,

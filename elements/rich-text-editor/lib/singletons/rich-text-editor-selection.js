@@ -2,86 +2,95 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "../rich-text-editor-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
 /**
  * `rich-text-editor-selection`
  * `a button for rich text editor (custom buttons can extend this)`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-selection
+ * @demo ./demo/selection.html
  */
-class RichTextEditorSelection extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style include="rich-text-editor-styles">
-        :host {
-          background-color: var(--rich-text-editor-selection-bg);
-          @apply --rich-text-editor-content-selection;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <slot></slot>
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      editor: {
-        type: Object,
-        value: null
-      },
-      hidden: {
-        type: Boolean,
-        value: true,
-        reflectToAttribute: true
-      },
-      observer: {
-        type: Object,
-        value: null
-      },
-      range: {
-        type: Object,
-        value: null,
-        observer: "_updateToolbar"
-      },
-      toolbar: {
-        type: Object,
-        value: null
-      }
-    };
-  }
-
+class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * Store tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-selection";
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          background-color: var(--rich-text-editor-selection-bg);
+          margin: 0;
+          padding: 0;
+          display: inline;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        :host([collapsed]):after {
+          content: '|';
+          color: var(--rich-text-editor-selection-bg);
+          background-color: transparent;
+        }
+      `
+    ];
+  }
+  render() {
+    return html`
+      <slot></slot>
+    `;
+  }
+
+  static get properties() {
+    return {
+      editor: {
+        type: Object
+      },
+      collapsed: {
+        type: Boolean,
+        reflect: true,
+        attribute: "collapsed"
+      },
+      hidden: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hidden"
+      },
+      observer: {
+        type: Object
+      },
+      range: {
+        type: Object
+      },
+      toolbar: {
+        type: Object
+      }
+    };
+  }
+  constructor() {
+    super();
+    this.hidden = true;
     document.addEventListener("selectionchange", e => {
-      root.range = root.getRange();
+      this.range = this.getRange();
     });
     document.addEventListener("select-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
     document.addEventListener("deselect-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
     this.setAttribute("id", this._generateUUID());
+  }
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "range") this._updateToolbar();
+    });
   }
 
   /**
@@ -89,35 +98,34 @@ class RichTextEditorSelection extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    let root = this;
     document.removeEventListener("selectionchange", e => {
-      root.range = root.getRange();
+      this.range = root.getRange();
     });
     document.removeEventListener("select-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
     document.removeEventListener("deselect-rich-text-editor-editor", e => {
-      root._editorChange(e);
+      this._editorChange(e);
     });
   }
 
   /**
-   * expands the selection to a specific ancestor or wraps the selection in a default tag
-   * @param {string} searchTag the ancestor tagName to find
-   * @param {string} wrapTag the tagName to use if ancestor cannot be found
-   * @returns {object} the selected node
+   * expands selection to a specific ancestor or wraps selection in a default tag
+   * @param {string} selector ancestor selector to find
+   * @param {string} wrapTag tagName to use if ancestor cannot be found
+   * @returns {object} selected node
    */
-  expandSelection(searchTag = null, wrapTag = null) {
+  expandSelection(selector, range = this.range, wrapTag) {
     return (
-      this.selectAncestor(searchTag) ||
-      this.wrap(wrapTag ? document.createElement(wrapTag) : null)
+      this.selectAncestor(selector, range) ||
+      this.wrap(!!wrapTag ? document.createElement(wrapTag) : undefined)
     );
   }
 
   /**
    * Normalizes selected range data.
    *
-   * @returns {object} the selected range
+   * @returns {object} selected range
    */
   getRange() {
     let sel = window.getSelection();
@@ -129,21 +137,26 @@ class RichTextEditorSelection extends PolymerElement {
   }
 
   /**
-   * adds or removes the hightlight
-   * @param {object} contents the contents to be highlighted
+   * adds or removes hightlight
+   * @param {object} contents contents to be highlighted
    * @returns {void}
    */
   addHighlight() {
-    let root = this;
-    root.range.surroundContents(root);
-    root.range.selectNode(root.firstChild);
-    root.dispatchEvent(new CustomEvent("highlight", { detail: root }));
-    root.hidden = false;
+    if (!this.hidden) return;
+    this.hidden = !this.range || this.range.collapsed;
+    if (!this.hidden) {
+      this.range.surroundContents(this);
+      this.normalize();
+      this.innerHTML = this.innerHTML.trim();
+      this.range.selectNodeContents(this);
+      this.dispatchEvent(new CustomEvent("highlight", { detail: this }));
+      this.hidden = false;
+    }
   }
 
   /**
-   * gets the contents of the selected range
-   * @returns {object} the range contents
+   * gets contents of selected range
+   * @returns {object} range contents
    */
   getRangeContents() {
     return this.range ? this.range.cloneContents() : null;
@@ -151,40 +164,55 @@ class RichTextEditorSelection extends PolymerElement {
 
   /**
    * searches for a closest ancestor by tagname,
-   * expands the selection to the matching ancestor,
-   * and returns the ancestor, or returns null if not found
-   * @param {string} tag the tag to expand the selection to
-   * @returns {object} the selected node
+   * expands selection to matching ancestor,
+   * and returns ancestor, or returns null if not found
+   * @param {string} tag tag to expand selection to
+   * @returns {object} selected node
    */
-  selectAncestor(tagName = null) {
-    let wrapper = null,
+  getAncestor(selector, range = this.range) {
+    let wrapper,
+      tags = selector.toLowerCase().split(","),
       getMatchingTag = ancestor => {
         if (
-          ancestor &&
-          ancestor.tagName &&
-          (!tagName || ancestor.tagName.toLowerCase() === tagName.toLowerCase())
+          !!ancestor &&
+          !!ancestor.tagName &&
+          (!selector || tags.includes(ancestor.tagName.toLowerCase()))
         ) {
           return ancestor;
         } else if (
-          ancestor.parentNode &&
+          !!ancestor &&
+          !!ancestor.parentNode &&
           ancestor.parentNode.childNodes.length === 1
         ) {
           return getMatchingTag(ancestor.parentNode);
         } else {
-          return null;
+          return undefined;
         }
       };
-    //try to find an ancestor that matches the tag
-    if (this.range) {
-      let ancestor = this.range.commonAncestorContainer;
+    //try to find an ancestor that matches tag
+    if (range) {
+      let ancestor = range.commonAncestorContainer;
       wrapper = getMatchingTag(ancestor);
-      if (wrapper) this.range.selectNode(wrapper);
     }
     return wrapper;
   }
+
   /**
-   * sets the selection range to the specified node
-   * @param {object} node the node to select
+   * searches for a closest ancestor by tagname,
+   * expands selection to matching ancestor,
+   * and returns ancestor, or returns null if not found
+   * @param {string} tag tag to expand selection to
+   * @returns {object} selected node
+   */
+  selectAncestor(selector, range = this.range) {
+    let wrapper = this.getAncestor(selector, range);
+    if (wrapper) range.selectNode(wrapper);
+    return wrapper;
+  }
+
+  /**
+   * sets selection range to specified node
+   * @param {object} node node to select
    * @returns {void}
    */
   selectNode(node = null) {
@@ -197,10 +225,11 @@ class RichTextEditorSelection extends PolymerElement {
       }
       this.range.selectNode(node);
     }
+    return this.range;
   }
   /**
-   * sets the selection range to the specified node's contents
-   * @param {object} node the node to select
+   * sets selection range to specified node's contents
+   * @param {object} node node to select
    * @returns {void}
    */
   selectNodeContents(node = null) {
@@ -214,11 +243,62 @@ class RichTextEditorSelection extends PolymerElement {
       this.range.selectNodeContents(node);
     }
   }
+  /**
+   * selects a range
+   *
+   * @param {object} range
+   * @memberof RichTextEditorSelection
+   */
+  selectRange(range) {
+    if (range) {
+      let sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
 
   /**
-   * gets the range contents in specified wrapper
-   * @param {object} wrapper a node to wrap the range contents in
-   * @returns {object} the range which oncludes the wrapper and wrapped contents
+   * collapses range
+   *
+   * @memberof RichTextEditorSelection
+   */
+  deselectRange() {
+    let sel = this.getRange();
+    if (!sel.isCollapsed) sel.collapse();
+  }
+
+  /**
+   * removes highlight from range
+   *
+   * @memberof RichTextEditorSelection
+   */
+  removeHighlight() {
+    if (this.hidden) return;
+    this.normalize();
+    let children = this.childNodes;
+    if (children.length > 0) {
+      children.forEach((child, i) => {
+        this.parentNode.insertBefore(child, this);
+        if (i === 0) this.range.setStart(child, 0);
+        this.range.setEnd(child, 0);
+      });
+    } else if (this.previousSibling) {
+      this.range.selectNode(this.previousSibling);
+      this.range.collapse();
+    } else if (this.nextSibling) {
+      this.range.selectNode(this.nextSibling);
+      this.range.collapse(true);
+    } else if (this.parentNode) {
+      this.range.selectNode(this.c);
+      this.range.collapse(true);
+    }
+    this.hidden = true;
+  }
+
+  /**
+   * gets range contents in specified wrapper
+   * @param {object} wrapper a node to wrap range contents in
+   * @returns {object} range which oncludes wrapper and wrapped contents
    */
   wrap(wrapper) {
     wrapper = wrapper || document.createElement("span");
@@ -227,9 +307,9 @@ class RichTextEditorSelection extends PolymerElement {
   }
 
   /**
-   * Updates the selected range based on toolbar and editor
-   * @param {event} e the editor change event
-   * @param {deselect} if the editor is being deselected
+   * Updates selected range based on toolbar and editor
+   * @param {event} e editor change event
+   * @param {deselect} if editor is being deselected
    * @returns {void}
    */
   _editorChange(e, deselect = false) {
@@ -258,7 +338,7 @@ class RichTextEditorSelection extends PolymerElement {
 
   /**
    * Generate a UUID
-   * @returns {string} the unique id
+   * @returns {string} unique id
    */
   _generateUUID() {
     let hex = Math.floor((1 + Math.random()) * 0x10000)
@@ -268,7 +348,7 @@ class RichTextEditorSelection extends PolymerElement {
   }
 
   /**
-   * Updates the toolbar
+   * Updates toolbar
    */
   _updateToolbar() {
     if (this.toolbar) this.toolbar.range = this.range;
@@ -287,9 +367,7 @@ window.RichTextEditorSelection.instance = null;
  */
 window.RichTextEditorSelection.requestAvailability = function() {
   if (window.RichTextEditorSelection.instance == null) {
-    window.RichTextEditorSelection.instance = document.createElement(
-      "rich-text-editor-selection"
-    );
+    window.RichTextEditorSelection.instance = new RichTextEditorSelection();
     document.body.appendChild(window.RichTextEditorSelection.instance);
   }
   return window.RichTextEditorSelection.instance;

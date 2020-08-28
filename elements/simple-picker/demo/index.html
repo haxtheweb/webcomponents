@@ -8,6 +8,8 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-picker.js';
+      import '../lib/simple-symbol-picker.js';
+      import '../lib/simple-emoji-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       #icondemo {
@@ -90,6 +92,13 @@
               [ { alt: "Quilt", icon: "icons:view-quilt", value: "quilt" }  ]
             ];
           </script>
+        </template>
+      </demo-snippet>
+      <h3>other simple-picker types</h3>
+      <demo-snippet>
+        <template>
+          <p><simple-symbol-picker></simple-symbol-picker></p>
+          <p><simple-emoji-picker></simple-emoji-picker></p>
         </template>
       </demo-snippet>
     </div>

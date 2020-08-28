@@ -21,241 +21,6 @@
       <h1>Basic simple-fields demo</h1>
       <demo-snippet>
         <style>#submission {width: 100%;}</style>
-        <script>
-          window.onload = () => {
-            let schema = document.getElementById('schema'),
-              schemaError = {
-                "settings.basic-input.name": "That's not your real name.",
-                "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
-              };
-            schema.fields = [
-              {
-                "property": "name",
-                "title": "What is your name?",
-                "description": "Enter your real name or an alias.",
-                "inputMethod": "textfield",
-                "required": true
-              },
-              {
-                "property": "alias",
-                "title": "This is an alias.",
-                "description": "",
-                "inputMethod": "boolean"
-              },
-              {
-                "property": "profileImage",
-                "title": "Profile Image",
-                "description": "Maximum size 400px X 400px.",
-                "inputMethod": "haxupload",
-                "validationType": "url"
-              },
-              {
-                "property": "biographical",
-                "title": "Bigraphical Information",
-                "inputMethod": "fieldset",
-                "properties": [
-                  {
-                    "property": "icon",
-                    "title": "Pick an icon.",
-                    "inputMethod": "iconpicker"
-                  },
-                  {
-                    "property": "color",
-                    "title": "Your favorite  color.",
-                    "inputMethod": "colorpicker"
-                  },
-                  {
-                    "property": "sword",
-                    "title": "Your sword's name.",
-                    "inputMethod": "select",
-                    "allowNull": false,
-                    "options": {
-                      "none": "None",
-                      "blackfyre": "Blackfyre",
-                      "brightroar": "Brightroar",
-                      "darksister": "Dark Sister",
-                      "dawn": "Dawn",
-                      "hearteater": "Heart Eater",
-                      "heartsbane": "Heartsbane",
-                      "ice": "Ice",
-                      "ladyforlorn": "Lady Horlorn",
-                      "lightbringer": "Lightbringer",
-                      "lionstooth": "Lion's Tooth",
-                      "longclaw": "Longclaw",
-                      "needle": "Needle",
-                      "oathkeeper": "Oathkeeper",
-                      "widowswail": "Widow's Wail"
-                    }
-                  },
-                  {
-                    "property": "bio",
-                    "title": "Bio",
-                    "description": "Write a short bio.",
-                    "inputMethod": "textarea"
-                  }
-                ]
-              },
-              {
-                "property": "relationships",
-                "inputMethod": "tabs",
-                "properties": [
-                  { 
-                    "property": "siblings",
-                    "title": "Siblings",
-                    "properties": [
-                      {
-                        "property": "siblingsList",
-                        "title": "Enter the names of your siblings.",
-                        "inputMethod": "array",
-                        "itemLabel": "name",
-                        "properties": [
-                          {
-                            "property": "name",
-                            "title": "Sibling Name",
-                            "inputMethod": "textfield"
-                          },
-                          {
-                            "property": "dead",
-                            "title": "Is sibling dead?",
-                            "inputMethod": "boolean"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  { 
-                    "property": "allies",
-                    "title": "Allies",
-                    "properties": [
-                      {
-                        "property": "alliesList",
-                        "title": "List your allies.",
-                        "inputMethod": "array",
-                        "itemLabel": "name",
-                        "properties": [
-                          {
-                            "property": "name",
-                            "title": "Ally Name",
-                            "inputMethod": "textfield"
-                          },
-                          {
-                            "property": "dead",
-                            "title": "Is ally dead?",
-                            "inputMethod": "boolean"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "property": "enemies",
-                    "title": "Enemies",
-                    "properties": [
-                      {
-                        "property": "enemiesList",
-                        "title": "List your enemies.",
-                        "inputMethod": "array",
-                        "itemLabel": "name",
-                        "properties": [
-                          {
-                            "property": "name",
-                            "title": "Enemy Name",
-                            "inputMethod": "textfield"
-                          },
-                          {
-                            "property": "dead",
-                            "title": "Is enemy dead?",
-                            "inputMethod": "boolean"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "property": "hiddenField",
-                "title": "Hidden",
-                "description": "I'm a hidden field. You can't see me.",
-                "inputMethod": "boolean",
-                "hidden": true
-              },
-              {
-                "property": "winter",
-                "title": "When is winter coming?",
-                "inputMethod": "datepicker"
-              },
-              {
-                "property": "code",
-                "title": "This is your favorite code snippet.",
-                "inputMethod": "code-editor"
-              },
-              {
-                "property": "markup",
-                "title": "This is your favorite markup snippet.",
-                "inputMethod": "markup"
-              }
-            ];
-            schema.value = {
-              "name": "No One",
-              "alias": true,
-              "biographical": {
-                "bio": "Once upon a time...",
-                "sword": "needle",
-                "color": "red",
-                "icon": "icons:visibility-off"
-              },
-              "relationships": {
-                "siblings": {
-                  "siblingsList": [
-                    { "name": "Rob Stark", "dead": true  },
-                    { "name": "Jon Snow", "dead": false  },
-                    { "name": "Sansa Stark", "dead": false  },
-                    { "name": "Bran Stark", "dead": false  },
-                    { "name": "Rickon Stark", "dead": true  }
-                  ]
-                },
-                "allies": {
-                  "alliesList": [
-                    { "name": "Syrio Forel", "dead": true },
-                    { "name": "Gendry", "dead": false },
-                    { "name": "Jaquen Hagar", "dead": false },
-                    { "name": "Sandor Clegane", "dead": true },
-                    { "name": "Brienne of Tarth", "dead": false } 
-                  ]
-                },
-                "enemies": {
-                  "enemiesList": [
-                    { "name": "Joffrey Baratheon", "dead": true },
-                    { "name": "Cersei Lannister", "dead": true },
-                    { "name": "Gregor Clegane", "dead": true },
-                    { "name": "Meryn Trant", "dead": true },
-                    { "name": "Ilyn Payne", "dead": true },
-                    { "name": "Sandor Clegane", "dead": true }
-                  ]
-                }
-              },
-              "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
-              "markup": "_What do we say to Death?_ *Not today.*",
-              "winter": "12/21/2019"
-            };
-            
-            setErrors = () => {
-              schema.error = schemaError;
-              console.log('error',schema.error,schemaError);
-              document.getElementById('getvals').disabled = true;
-            }
-            getValues =() => {
-              let val = schema.value;
-              console.log(`value`,val);
-              if(schema.valid) {
-                document.getElementById('submission').innerHTML = JSON.stringify(schema.value);
-                console.log('Value Submitted:',val);
-              };
-              document.getElementById('getvals').disabled = !schema.valid;
-            }
-          };
-        </script>
         <template>
           <form id="form"><simple-fields id="schema"></simple-fields></form>
             <p>
@@ -265,6 +30,241 @@
           </form>
           <p><label for="submission">Values</label></p>
           <textarea id="submission" rows="15"></textarea>
+          <script>
+            window.onload = () => {
+              let schema = document.getElementById('schema'),
+                schemaError = {
+                  "settings.basic-input.name": "That's not your real name.",
+                  "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
+                };
+              schema.fields = [
+                {
+                  "property": "name",
+                  "title": "What is your name?",
+                  "description": "Enter your real name or an alias.",
+                  "inputMethod": "textfield",
+                  "required": true
+                },
+                {
+                  "property": "alias",
+                  "title": "This is an alias.",
+                  "description": "",
+                  "inputMethod": "boolean"
+                },
+                {
+                  "property": "profileImage",
+                  "title": "Profile Image",
+                  "description": "Maximum size 400px X 400px.",
+                  "inputMethod": "haxupload",
+                  "validationType": "url"
+                },
+                {
+                  "property": "biographical",
+                  "title": "Bigraphical Information",
+                  "inputMethod": "fieldset",
+                  "properties": [
+                    {
+                      "property": "icon",
+                      "title": "Pick an icon.",
+                      "inputMethod": "iconpicker"
+                    },
+                    {
+                      "property": "color",
+                      "title": "Your favorite  color.",
+                      "inputMethod": "colorpicker"
+                    },
+                    {
+                      "property": "sword",
+                      "title": "Your sword's name.",
+                      "inputMethod": "select",
+                      "allowNull": false,
+                      "options": {
+                        "none": "None",
+                        "blackfyre": "Blackfyre",
+                        "brightroar": "Brightroar",
+                        "darksister": "Dark Sister",
+                        "dawn": "Dawn",
+                        "hearteater": "Heart Eater",
+                        "heartsbane": "Heartsbane",
+                        "ice": "Ice",
+                        "ladyforlorn": "Lady Horlorn",
+                        "lightbringer": "Lightbringer",
+                        "lionstooth": "Lion's Tooth",
+                        "longclaw": "Longclaw",
+                        "needle": "Needle",
+                        "oathkeeper": "Oathkeeper",
+                        "widowswail": "Widow's Wail"
+                      }
+                    },
+                    {
+                      "property": "bio",
+                      "title": "Bio",
+                      "description": "Write a short bio.",
+                      "inputMethod": "textarea"
+                    }
+                  ]
+                },
+                {
+                  "property": "relationships",
+                  "inputMethod": "tabs",
+                  "properties": [
+                    { 
+                      "property": "siblings",
+                      "title": "Siblings",
+                      "properties": [
+                        {
+                          "property": "siblingsList",
+                          "title": "Enter the names of your siblings.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Sibling Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is sibling dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    { 
+                      "property": "allies",
+                      "title": "Allies",
+                      "properties": [
+                        {
+                          "property": "alliesList",
+                          "title": "List your allies.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Ally Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is ally dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "property": "enemies",
+                      "title": "Enemies",
+                      "properties": [
+                        {
+                          "property": "enemiesList",
+                          "title": "List your enemies.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Enemy Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is enemy dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "property": "hiddenField",
+                  "title": "Hidden",
+                  "description": "I'm a hidden field. You can't see me.",
+                  "inputMethod": "boolean",
+                  "hidden": true
+                },
+                {
+                  "property": "winter",
+                  "title": "When is winter coming?",
+                  "inputMethod": "datepicker"
+                },
+                {
+                  "property": "code",
+                  "title": "This is your favorite code snippet.",
+                  "inputMethod": "code-editor"
+                },
+                {
+                  "property": "markup",
+                  "title": "This is your favorite markup snippet.",
+                  "inputMethod": "markup"
+                }
+              ];
+              schema.value = {
+                "name": "No One",
+                "alias": true,
+                "biographical": {
+                  "bio": "Once upon a time...",
+                  "sword": "needle",
+                  "color": "red",
+                  "icon": "icons:visibility-off"
+                },
+                "relationships": {
+                  "siblings": {
+                    "siblingsList": [
+                      { "name": "Rob Stark", "dead": true  },
+                      { "name": "Jon Snow", "dead": false  },
+                      { "name": "Sansa Stark", "dead": false  },
+                      { "name": "Bran Stark", "dead": false  },
+                      { "name": "Rickon Stark", "dead": true  }
+                    ]
+                  },
+                  "allies": {
+                    "alliesList": [
+                      { "name": "Syrio Forel", "dead": true },
+                      { "name": "Gendry", "dead": false },
+                      { "name": "Jaquen Hagar", "dead": false },
+                      { "name": "Sandor Clegane", "dead": true },
+                      { "name": "Brienne of Tarth", "dead": false } 
+                    ]
+                  },
+                  "enemies": {
+                    "enemiesList": [
+                      { "name": "Joffrey Baratheon", "dead": true },
+                      { "name": "Cersei Lannister", "dead": true },
+                      { "name": "Gregor Clegane", "dead": true },
+                      { "name": "Meryn Trant", "dead": true },
+                      { "name": "Ilyn Payne", "dead": true },
+                      { "name": "Sandor Clegane", "dead": true }
+                    ]
+                  }
+                },
+                "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
+                "markup": "_What do we say to Death?_ *Not today.*",
+                "winter": "12/21/2019"
+              };
+              
+              setErrors = () => {
+                schema.error = schemaError;
+                console.log('error',schema.error,schemaError);
+                document.getElementById('getvals').disabled = true;
+              }
+              getValues =() => {
+                let val = schema.value;
+                console.log(`value`,val);
+                if(schema.valid) {
+                  document.getElementById('submission').innerHTML = JSON.stringify(schema.value);
+                  console.log('Value Submitted:',val);
+                };
+                document.getElementById('getvals').disabled = !schema.valid;
+              }
+            };
+          </script>
         </template>
       </demo-snippet>
     </div>

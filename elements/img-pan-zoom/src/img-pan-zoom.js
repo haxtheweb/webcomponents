@@ -19,27 +19,30 @@ class ImgPanZoom extends LitElement {
         :host {
           display: block;
           position: relative;
-          height: 500px;
+          height: var(--img-pan-zoom-height, 500px);
         }
         #viewer {
           position: relative;
           height: 100%;
           width: 100%;
         }
-
-        hexagon-loader {
-          opacity: 0;
-          display: block;
-          transition: opacity 700ms;
-          position: absolute;
-          margin: auto;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
+        #loader {
+          display: none;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          height: calc(var(--img-pan-zoom-height, 500px) - 100px);
+          margin-bottom: calc(100px - var(--img-pan-zoom-height, 500px));
           z-index: 1;
-          height: 70px;
-          width: 70px;
+        }
+        hexagon-loader {
+          position: absolute;
+          opacity: 0;
+          transition: opacity 700ms;
+          margin: auto;
         }
         hexagon-loader[hidden] {
           display: none;
@@ -58,18 +61,20 @@ class ImgPanZoom extends LitElement {
             ${this.hideSpinner || this.loaded
               ? ``
               : html`
-                  <hexagon-loader
-                    ?loading=${this.loading || !this.loaded}
-                    item-count="4"
-                    size="small"
-                  ></hexagon-loader>
+                  <div id="loader">
+                    <hexagon-loader
+                      ?loading=${this.loading || !this.loaded}
+                      item-count="4"
+                      size="small"
+                    ></hexagon-loader>
+                  </div>
                 `}
             <img-loader
-              loaded="${this.loaded}"
+              ?loaded="${this.loaded}"
               @loaded-changed="${this.loadedChangedEvent}"
               ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
-              src="${this.src || this.sources[0]}"
+              src="${this.src || (this.sources || [])[0]}"
               described-by="${this.describedBy || ""}"
             ></img-loader>
           `
@@ -383,7 +388,6 @@ class ImgPanZoom extends LitElement {
   constructor() {
     super();
     this.page = 0;
-    this.sources = [];
     this.loading = false;
     this.dzi = false;
     this.fadeIn = true;
@@ -410,7 +414,7 @@ class ImgPanZoom extends LitElement {
     this.referenceStripScroll = "horizontal";
 
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
+    let location = `${basePath}lib/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",
       this._openseadragonLoaded.bind(this)
@@ -493,7 +497,7 @@ class ImgPanZoom extends LitElement {
     };
     setTimeout(() => {
       // Init openseadragon if we are using a deep zoom image
-      if (this.dzi) this._initOpenSeadragon();
+      if (this.dzi) this._openseadragonLoaded();
     }, 0);
   }
   /**
@@ -509,7 +513,7 @@ class ImgPanZoom extends LitElement {
   // Init openseadragon
   _initOpenSeadragon() {
     setTimeout(() => {
-      var tileSources = [this.src, ...this.sources];
+      var tileSources = [this.src].filter(src => !!src);
       if (!this.dzi) {
         tileSources = tileSources.map(src => {
           return {
@@ -524,7 +528,7 @@ class ImgPanZoom extends LitElement {
           element: this.shadowRoot.querySelector("#viewer"),
           prefixUrl: `${this.pathFromUrl(
             decodeURIComponent(import.meta.url)
-          )}lib/openseadragon/build/openseadragon/images/`,
+          )}lib/openseadragon/images/`,
           visibilityRatio: this.visibilityRatio,
           constrainDuringPan: this.constrainDuringPan,
           showNavigationControl: this.showNavigationControl,

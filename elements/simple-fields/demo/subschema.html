@@ -19,90 +19,89 @@
       <h1>simple-fields with Sub-schemas</h1>
       <demo-snippet>
         <style>#submission {width: 100%;}</style>
-        <script>
-          window.onload = () => {
-
-            let simplefields = document.getElementById('simplefields'),
-              contactChanged = (e) => {
-              }, 
-              phoneFields = {
-                $schema: "http://json-schema.org/schema#",
-                title: "Phone Number(s)",
-                type: "object",
-                properties: {
-                  phoneNumbers: {
-                    title: "Phone numbers",
-                    description: "List phone numbers and type of number.",
-                    type: "array",
-                    items: {
-                      type: "object",
-                      previewBy: ["phoneNumber"],
-                      properties: {
-                        type: {
-                          title: "Type",
-                          type: "string",
-                          options: {
-                            "cell": "Cell",
-                            "home": "Home",
-                            "work": "Work"
-                          }
-                        },
-                        phoneNumber: {
-                          title: "Phone Number",
-                          type: "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }, 
-              emailFields = {
-                $schema: "http://json-schema.org/schema#",
-                title: "Email",
-                type: "object",
-                properties: {
-                  email: {
-                    title: "Email",
-                    type: "string",
-                    pattern:
-                      "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
-                  }
-                }
-              };
-            simplefields.addEventListener("contact-value-changed",(e) => {
-                let contactinfo = simplefields.formElements["contactInfo"].element,
-                  schema = e.detail.value === "none" 
-                  ? {} 
-                  : e.detail.value === "email" 
-                    ? emailFields 
-                    : phoneFields;
-                //contactinfo.hidden = e.value === "none" || !e.value;
-                contactinfo.schema = schema;
-                console.log('contactChanged',e.detail.value,contactinfo.hidden,schema,contactinfo.schema);
-            });
-            simplefields.schema = {
-              $schema: "http://json-schema.org/schema#",
-              title: "Store",
-              type: "object",
-              properties: {
-                contact: {
-                  title: "Contact Method",
-                  type: "text",
-                  itemsList: ["none","email","phone"],
-                  onValueChanged: contactChanged
-                },
-                contactInfo: {
-                  type: "object",
-                  format: "fields"
-                }
-              }
-            };
-          };
-        </script>
         <template>
           <form id="form">
             <simple-fields id="simplefields"></simple-fields>
           </form>
+          <script>
+            window.onload = () => {
+              let simplefields = document.getElementById('simplefields'),
+                contactChanged = (e) => {
+                }, 
+                phoneFields = {
+                  $schema: "http://json-schema.org/schema#",
+                  title: "Phone Number(s)",
+                  type: "object",
+                  properties: {
+                    phoneNumbers: {
+                      title: "Phone numbers",
+                      description: "List phone numbers and type of number.",
+                      type: "array",
+                      items: {
+                        type: "object",
+                        previewBy: ["phoneNumber"],
+                        properties: {
+                          type: {
+                            title: "Type",
+                            type: "string",
+                            options: {
+                              "cell": "Cell",
+                              "home": "Home",
+                              "work": "Work"
+                            }
+                          },
+                          phoneNumber: {
+                            title: "Phone Number",
+                            type: "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }, 
+                emailFields = {
+                  $schema: "http://json-schema.org/schema#",
+                  title: "Email",
+                  type: "object",
+                  properties: {
+                    email: {
+                      title: "Email",
+                      type: "string",
+                      pattern:
+                        "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
+                    }
+                  }
+                };
+              simplefields.addEventListener("contact-value-changed",(e) => {
+                  let contactinfo = simplefields.formElements["contactInfo"].element,
+                    schema = e.detail.value === "none" 
+                    ? {} 
+                    : e.detail.value === "email" 
+                      ? emailFields 
+                      : phoneFields;
+                  //contactinfo.hidden = e.value === "none" || !e.value;
+                  contactinfo.schema = schema;
+                  console.log('contactChanged',e.detail.value,contactinfo.hidden,schema,contactinfo.schema);
+              });
+              simplefields.schema = {
+                $schema: "http://json-schema.org/schema#",
+                title: "Store",
+                type: "object",
+                properties: {
+                  contact: {
+                    title: "Contact Method",
+                    type: "text",
+                    itemsList: ["none","email","phone"],
+                    onValueChanged: contactChanged
+                  },
+                  contactInfo: {
+                    type: "object",
+                    format: "fields"
+                  }
+                }
+              };
+            };
+          </script>
         </template>
       </demo-snippet>
     </div>

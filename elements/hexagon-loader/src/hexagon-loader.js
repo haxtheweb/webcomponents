@@ -45,9 +45,26 @@ class HexagonLoader extends LitElement {
         for (let i = 0; i < this[propName]; i++) {
           this.items.push("");
         }
+        let ctr = -4,
+          increment = 255 / 7,
+          height = 0,
+          order = 0,
+          rownum = 0,
+          offset = 0;
+        [4, 5, 6, 7, 6, 5, 4].forEach((row, i) => {
+          ctr += row;
+          if (this.itemCount >= ctr) {
+            height = increment * (i + 1);
+            order = this.itemCount - ctr;
+            rownum = i + 1;
+          }
+        });
+        offset = rownum > 3 ? 4 : rownum > 2 ? 3 : rownum > 1 ? 2 : 1;
+        this.style.setProperty("--hexagon-loader-height", `${height}px`);
       }
     });
   }
+
   /**
    * Color changed
    */

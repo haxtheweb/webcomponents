@@ -2,23 +2,55 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorToolbarBehaviors } from "./rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `rich-text-editor-toolbar-mini`
  * `a mini floating toolbar for the rich text editor`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-toolbar-mini
  * @demo ./demo/mini.html mini floating toolbar
  */
-class RichTextEditorToolbarMini extends RichTextEditorToolbar {
+class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
+  LitElement
+) {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-toolbar-mini";
+  }
+
+  static get styles() {
+    return [
+      ...super.baseStyles,
+      css`
+        :host #floating {
+          display: flex;
+        }
+      `
+    ];
+  }
+
+  // properties available to the custom element for data binding
+  render() {
+    return html`
+      <absolute-position-behavior
+        auto
+        id="floating"
+        fit-to-visible-bounds
+        for="${this.controls}"
+        position="top"
+      >
+        ${super.render()}
+      </absolute-position-behavior>
+    `;
+  }
+
   constructor() {
     super();
+    this.sticky = false;
     this.config = [
       {
         label: "Basic Inline Operations",
@@ -108,50 +140,14 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbar {
       }
     ];
   }
-
-  // render function
-  static get template() {
-    return html`
-      ${this.styleTemplate}
-      <style>
-        :host #floating {
-          display: flex;
-        }
-      </style>
-      <absolute-position-behavior
-        auto
-        id="floating"
-        fit-to-visible-bounds
-        for$="[[controls]]"
-        position="top"
-      >
-        ${this.toolbarTemplate}
-      </absolute-position-behavior>
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * Sticky is not available on the mini toolbar
-       */
-      sticky: {
-        name: "sticky",
-        type: Boolean,
-        value: false,
-        readOnly: true
-      }
-    };
-  }
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-  static get tag() {
-    return "rich-text-editor-toolbar-mini";
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      //disable sticky for mini
+      if (propName === "sticky" && this.sticky) this.sticky = false;
+    });
   }
 }
-
 export { RichTextEditorToolbarMini };
 
 window.customElements.define(

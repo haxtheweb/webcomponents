@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
+import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
 import "./elmsln-studio-link.js";
@@ -355,17 +355,11 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                   )}
                                 </ul>
                               `
-                            : s.sources && s.sources.length > 0
+                            : !s.sources || s.sources.length === 0
                             ? html`
-                                <lrndesign-gallery
-                                  class="submission-image"
-                                  layout="grid"
-                                  .sources="${s.sources}"
-                                ></lrndesign-gallery>
-                              `
-                            : html`
                                 ${s.body}
-                              `}
+                              `
+                            : this.getThumnailGrid(s)}
                         </div>
                       </section>
                     `
@@ -433,7 +427,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
         attribute: "submission-filter"
       },
       sortLatest: {
-        type: String,
+        type: Boolean,
         attribute: "sort-latest",
         reflect: true
       }
@@ -465,6 +459,12 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
   }
 
   get sortedSubmissions() {
+    console.log(
+      "sortedSubmissions",
+      !this.portfolio.submissions
+        ? []
+        : this.sortDates(this.portfolio.submissions, this.sortLatest)
+    );
     return !this.portfolio.submissions
       ? []
       : this.sortDates(this.portfolio.submissions, this.sortLatest);

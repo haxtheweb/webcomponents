@@ -2,26 +2,25 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextEditorButtonStyles } from "../buttons/rich-text-editor-button-styles.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "../buttons/rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-prompt`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-prompt
  */
-class RichTextEditorPrompt extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
-  static get template() {
-    return html`
-      <style include="rich-text-editor-styles rich-text-editor-button-styles">
+class RichTextEditorPrompt extends RichTextEditorButtonStyles(
+  RichTextEditorStyles(LitElement)
+) {
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           --paper-input-container-focus-color: var(
             --rich-text-editor-focus-color,
@@ -32,119 +31,101 @@ class RichTextEditorPrompt extends PolymerElement {
             #800
           );
         }
-        :host #prompt {
-          display: none;
+        #prompt {
+          display: block;
           width: 300px;
           max-width: 300px;
           --simple-popover-padding: 0px;
-        }
-        :host #prompt[for]{
-          display: block;
           z-index: 2;
         }
-        :host #prompt[for] #form {
+        #prompt[hidden] {
+          display: none;
+        }
+        #prompt #form {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
           z-index: 2;
         }
-        :host #formfields {
+        #formfields {
           width: calc(100% - 20px);
           padding: 10px 10px 0;
-        }
-        :host #prompt paper-input {
-          padding: 0;
-        }
-        :host #confirm, 
-        :host #cancel {
-          min-width: unset;
-        }
-        :host #formfields {
           overflow: visible;
         }
-        :host #cancel {
+        #prompt paper-input {
+          padding: 0;
+        }
+        #confirm,
+        #cancel {
+          min-width: unset;
+        }
+        #cancel {
           color: var(--rich-text-editor-button-color);
           background-color: var(--rich-text-editor-button-bg);
-
         }
-        :host #cancel:focus,
-        :host #cancel:hover {
+        #cancel:focus,
+        #cancel:hover {
           color: var(--rich-text-editor-button-hover-color);
           background-color: var(--rich-text-editor-button-hover-bg);
         }
-        :host #confirm {
+        #confirm {
           color: var(--rich-text-editor-button-color);
           background-color: var(--rich-text-editor-button-bg);
-
         }
-        :host #confirm:focus,
-        :host #confirm:hover {
+        #confirm:focus,
+        #confirm:hover {
           color: var(--rich-text-editor-button-hover-color);
           background-color: var(--rich-text-editor-button-hover-bg);
         }
-        :host .actions {
+        .actions {
           width: 100%;
           padding-bottom: 3px;
           display: flex;
           align-items: center;
           justify-content: flex-end;
         }
-        :host .confirm-or-cancel {
+        .confirm-or-cancel {
           min-width: 40px;
         }
-      </style>
-      <simple-popover
-        id="prompt"
-        auto
-        for$="[[for]]"
-      >
+      `
+    ];
+  }
+  render() {
+    return html`
+      <simple-popover id="prompt" auto for="${this.for}" ?hidden="${!this.for}">
         <form id="form">
           <simple-fields
             id="formfields"
             autofocus
             hide-line-numbers
-            fields="[[fields]]"
-            value="{{value}}"
+            .fields="${this.fields}"
+            .value="${this.value}"
           ></simple-fields>
           <div class="actions">
-            </iron-a11y-keys>
             <paper-button
               id="cancel"
               class="rtebutton"
-              controls$="[[for]]"
-              on-click="_cancel"
+              controls="${this.for}"
+              @click="${this._cancel}"
               tabindex="0"
             >
-              <iron-icon id="icon" aria-hidden icon="clear"> </iron-icon>
+              <iron-icon id="icon" aria-hidden="true" icon="clear"> </iron-icon>
               <span id="label" class="offscreen">Cancel</span>
             </paper-button>
             <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
             <paper-button
               id="confirm"
               class="rtebutton"
-              controls$="[[for]]"
-              on-click="_confirm"
+              controls="${this.for}"
+              @click="${this._confirm}"
               tabindex="0"
             >
-              <iron-icon id="icon" aria-hidden icon="check"> </iron-icon>
+              <iron-icon id="icon" aria-hidden="true" icon="check"> </iron-icon>
               <span id="label" class="offscreen">OK</span>
             </paper-button>
             <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
           </div>
-          <iron-a11y-keys
-            id="a11ycancel"
-            target="[[__a11ycancel]]"
-            keys="enter space"
-            on-keys-pressed="_cancel"
-          >
-          <iron-a11y-keys
-            id="a11yconfirm"
-            target="[[__a11yconfirm]]"
-            keys="enter space"
-            on-keys-pressed="_confirm"
-          >
-          </iron-a11y-keys>
         </form>
       </simple-popover>
     `;
@@ -170,29 +151,25 @@ class RichTextEditorPrompt extends PolymerElement {
        * The selected text.
        */
       range: {
-        type: Object,
-        value: null
+        type: Object
       },
       /**
        * fields for the prompt popover.
        */
       fields: {
-        type: Array,
-        value: null
+        type: Array
       },
       /**
        * The prefilled value of the prompt
        */
       value: {
-        type: Object,
-        value: null
+        type: Object
       },
       /**
        * The prefilled value of the prompt
        */
       __button: {
-        type: Object,
-        value: null
+        type: Object
       }
     };
   }
@@ -202,7 +179,6 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   constructor() {
     super();
-    let root = this;
 
     // sets the instance to the current instance
     if (!window.RichTextEditorPrompt.instance) {
@@ -217,14 +193,6 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__a11yconfirm = this.shadowRoot.querySelector("#confirm");
-    this.__a11ycancel = this.shadowRoot.querySelector("#cancel");
-    /*
-    TODO blur  doesnt work with select dropdowns
-     this.addEventListener("blur", e => {
-      console.log("blur", document.activeElement);
-      this._cancel(e);
-    });*/
   }
 
   /**
@@ -234,8 +202,8 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   setTarget(button) {
     this.clearTarget();
-    this.set("fields", button.__fields);
-    this.set("value", button.value);
+    this.fields = button.__promptFields;
+    this.value = button.value;
     this.__button = button;
     if (button.__selection) this.for = button.__selection.getAttribute("id");
   }
@@ -246,10 +214,10 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   clearTarget() {
     if (!this.__button) return;
-    this.for = null;
-    this.set("fields", null);
-    this.set("value", null);
-    this.__button = null;
+    this.for = undefined;
+    this.fields = undefined;
+    this.value = undefined;
+    this.__button = undefined;
   }
   /**
    * Handles cancel button
@@ -272,6 +240,24 @@ class RichTextEditorPrompt extends PolymerElement {
     this.__button.value = this.value;
     this.__button.confirm();
     this.clearTarget();
+  }
+
+  /**
+   * gets a field value (and trims it if it's a string)
+   *
+   * @param {string} prop field name
+   * @returns {*}
+   * @memberof RichTextEditorPrompt
+   */
+  getPromptValue(prop) {
+    let val = !!this.value ? this.value : false,
+      rawVal =
+        !val || !val[prop]
+          ? false
+          : val[prop].trim
+          ? val[prop].trim()
+          : val[prop];
+    return rawVal && rawVal !== "" ? rawVal : false;
   }
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);

@@ -214,7 +214,6 @@ class ElmslnStudio extends router(
     this.params = {};
     this.query = {};
     this.data = {};
-    console.log(super.properties);
   }
 
   router(route, params, query, data) {
@@ -269,8 +268,8 @@ class ElmslnStudio extends router(
     fetch(this._getPath(source, params))
       .then(response => response.json())
       .then(data => {
-        console.log(`${propName} Loaded`, data);
         this[propName] = data;
+        console.log(`${propName} Loaded`, data, this[propName]);
       });
   }
   _getPath(path, params) {

@@ -8,7 +8,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
-import "./elmsln-studio-zoom.js";
+import "@lrnwebcomponents/img-view-modal/img-view-modal.js";
 
 /**
  * `elmsln-studio-submissions`
@@ -37,11 +37,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         :host {
           flex-wrap: wrap;
         }
-        .filters > *,
-        #layout > * {
-          flex: 0 1 auto;
-          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
-        }
         .filters {
           flex: 1 0 100%;
         }
@@ -52,12 +47,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         }
         #layout > button {
           background-color: transparent;
-          border: 0px solid rgba(0, 0, 0, 0);
           opacity: 0.25;
           transform: opacity 0.5s ease-in-out;
-          margin: 0 5px;
           height: calc(2 * var(--elmsln-studio-FontSize, 16px));
           width: calc(2 * var(--elmsln-studio-FontSize, 16px));
+          flex: 1 0 auto;
+          border: 1px solid #ddd;
+          margin: 0;
+          padding: 0;
         }
         #layout button:focus,
         #layout button:hover {
@@ -128,9 +125,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             calc(0.5 * var(--elmsln-studio-margin, 20px));
           flex: 0 0 calc(100% - var(--elmsln-studio-margin, 20px));
         }
-        .grid accent-card {
-          --accent-card-image-width: 50%;
-        }
         .feature {
           margin-top: var(--elmsln-studio-margin, 20px);
           height: calc(
@@ -138,18 +132,6 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
               var(--elmsln-studio-margin, 20px)
           );
           overflow: auto;
-        }
-        accent-card [slot="image-corner"] {
-          display: inline-flex;
-          right: 5px;
-          bottom: 10px;
-          position: absolute;
-          border-radius: 3px;
-          background-color: rgba(0, 0, 0, 0.25);
-        }
-        accent-card [slot="image-corner"]:focus-within,
-        accent-card [slot="image-corner"]:hover {
-          background-color: rgba(0, 0, 0, 0.5);
         }
         accent-card [slot="heading"] {
           font-weight: var(--elmsln-studio-FontWeightLight, 300);
@@ -178,6 +160,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           align-items: stretch;
           justify-content: space-between;
           color: #95989a;
+        }
+        accent-card.card.submission-card {
+          --accent-card-heading-min-height: 30px;
         }
         accent-card.card.submission-card elmsln-studio-link {
           margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
@@ -209,6 +194,9 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           margin: calc(1.5 * var(--elmsln-studio-margin, 20px)) 0 0;
         }
         @media screen and (min-width: 500px) {
+          .list accent-card {
+            --accent-card-image-width: 50%;
+          }
           .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
@@ -221,6 +209,16 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           }
           .grid accent-card:not([horizontal]) {
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
+          }
+          .filters > *,
+          #layout > * {
+            flex: 0 1 auto;
+            margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
+          #layout > button {
+            padding: 1px 6px;
+            margin: 0 5px;
+            border: 0px solid rgba(0, 0, 0, 0);
           }
         }
         @media screen and (min-width: 1200px) {
@@ -303,6 +301,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           ${this.filteredSubmissions.map(
             (s, i) => html`
               <accent-card
+                id="accent-${i}"
                 no-border
                 class="card submission-card"
                 image-src="${s.image || ""}"
@@ -312,17 +311,27 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 .image-valign="${this._getValign(s.imageGravity || undefined)}"
                 .gravity="${s.imageGravity || undefined}"
               >
-                <div slot="image-corner" class="image-zoom">
-                  <elmsln-studio-zoom
-                    id="zoom-${i}"
-                    src="${s.image}"
-                    next="${i + 1 < this.filteredSubmissions.length
-                      ? i + 1
-                      : -1}"
-                    prev="${i > 0 ? i - 1 : -1}"
+                <img-view-modal
+                  .figures="${this.getFigures(
+                    this.filteredSubmissions,
+                    "image",
+                    "imageAlt",
+                    "full",
+                    "imageLongdesc"
+                  )}"
+                  page="${i}"
+                  slot="image-corner"
+                  title="${this.modalTitle}"
+                  .toolbars="${this.defaultModalToolbars}"
+                >
+                  <button
+                    aria-describedby="accent-${i}"
+                    ?disabled="${!s.image}"
                   >
-                  </elmsln-studio-zoom>
-                </div>
+                    <iron-icon aria-hidden="true" icon="zoom-in"></iron-icon>
+                    <span class="sr-only">View Image</span>
+                  </button>
+                </img-view-modal>
                 <div slot="heading" id="student-${s.id}" class="card-student">
                   ${[s.firstName, s.lastName].join(" ")}
                 </div>
@@ -472,6 +481,18 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
         this._isFilteredProject(i.projectId)
       );
     });
+  }
+  get modalTitle() {
+    let assign = [
+        this.projectOptions[this.projectFilter],
+        this.assignmentOptions[this.assignmentFilter]
+      ]
+        .filter(i => !!i && i !== "All")
+        .join(":"),
+      title = [assign, this.studentOptions[this.studentFilter]]
+        .filter(i => !!i && i !== "All" && i !== "")
+        .join(" by ");
+    return title && title != "" ? title : "All Submissions";
   }
   _isFilteredAssignment(assignment = "") {
     return this.assignmentFilter === "" || assignment === this.assignmentFilter;

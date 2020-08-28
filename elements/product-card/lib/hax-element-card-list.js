@@ -24,6 +24,7 @@ class HAXElementCardList extends LitElement {
         :host {
           display: block;
           min-height: 100px;
+          --hexagon-color: var(--simple-colors-default-theme-light-blue-8);
         }
         :host([loading]) {
           border: 1px solid var(--simple-colors-default-theme-grey-6);
@@ -65,13 +66,12 @@ class HAXElementCardList extends LitElement {
           padding: 2px;
         }
         hexagon-loader {
-          float: right;
-          margin: -60px 0 0 0;
+          margin: 0 auto;
+          display: block;
         }
-        .loaderText {
-          position: absolute;
-          top: 0;
-          right: 0;
+        .loaderText > strong {
+          text-align: center;
+          display: block;
         }
         .checkbox {
           height: 36px;
@@ -121,7 +121,6 @@ class HAXElementCardList extends LitElement {
               >Scanning Web Component Registry for more HAX elements..</strong
             ><hexagon-loader
               item-count="4"
-              color="orange"
               ?loading="${this.loading}"
               size="small"
             ></hexagon-loader>

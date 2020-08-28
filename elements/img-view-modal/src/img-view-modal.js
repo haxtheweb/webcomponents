@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import { ImgViewViewer } from "./lib/img-view-viewer.js";
+import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 /**
  * `img-view-modal`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -9,6 +10,8 @@ import { ImgViewViewer } from "./lib/img-view-viewer.js";
 
 Custom property | Description | Default
 ----------------|-------------|----------
+`--img-view-modal-width` | sets width of modal | 90%
+`--img-view-modal-height` | sets height of modal | 90vh
 `--img-view-modal-backgroundColor` | background color | white
 `--img-view-modal-color` | text color | black
 `--img-view-modal-borderColor` | border color | #ddd
@@ -30,6 +33,7 @@ class ImgViewModal extends LitElement {
   static get properties() {
     return {
       ...ImgViewViewer.properties,
+      ...ImgPanZoom.properties,
       title: { type: String },
       modal: { type: Object }
     };
@@ -38,12 +42,12 @@ class ImgViewModal extends LitElement {
     return css`
       :host {
         display: block;
-        --simple-modal-width: 90%;
-        --simple-modal-height: 90vh;
+        --simple-modal-width: var(--img-view-modal-width, 90%);
+        --simple-modal-height: var(--img-view-modal-height, 90vh);
         --simple-modal-titlebar-height: 40px;
         --simple-modal-titlebar-line-height: 40px;
         --simple-modal-titlebar-height: 40px;
-        --simple-modal-titlebar-padding: 0px 5px;
+        --simple-modal-titlebar-padding: 0px 5px 0px 15px;
         --simple-modal-titlebar-background: var(
           --img-view-modal-backgroundColor,
           white
@@ -104,7 +108,8 @@ class ImgViewModal extends LitElement {
         "--simple-modal-titlebar-height":
           this._getCssVar("--simple-modal-titlebar-height") || "40px",
         "--simple-modal-titlebar-padding":
-          this._getCssVar("--simple-modal-titlebar-padding") || "0px 5px",
+          this._getCssVar("--simple-modal-titlebar-padding") ||
+          "0px 5px 0px 15px",
         "--simple-modal-titlebar-background":
           this._getCssVar("--simple-modal-titlebar-background") || "white",
         "--simple-modal-header-background":
@@ -130,13 +135,18 @@ class ImgViewModal extends LitElement {
         "--img-view-viewer-toggled-backgroundColor":
           this._getCssVar("--img-view-viewer-toggled-backgroundColor") || "#eee"
       },
-      img = document.createElement("img-view-viewer");
-    Object.keys(ImgViewViewer.properties || {}).forEach(prop => {
+      img = document.createElement("img-view-viewer"),
+      props = [
+        ...Object.keys(ImgViewViewer.properties || {}),
+        ...Object.keys(ImgPanZoom.properties || {})
+      ];
+    props.forEach(prop => {
       if (this[prop]) img[prop] = this[prop];
     });
     Object.keys(imgStyles || {}).forEach(key =>
       img.style.setProperty(key, imgStyles[key])
     );
+    console.log("modalOpen", this.figures, this.page);
 
     this.dispatchEvent(
       new CustomEvent("modal-button-click", {

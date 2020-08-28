@@ -2,64 +2,59 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorToolbarBehaviors } from "./rich-text-editor-toolbar.js";
 import "./rich-text-editor-breadcrumbs.js";
 /**
  * `rich-text-editor-toolbar-full`
  * `a full toolbar with breadcrumbs for the rich text editor`
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
- * @demo ../demo/index.html demo
+ * @element rich-text-editor-toolbar-full
+ * @demo ./demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb
  */
-class RichTextEditorToolbarFull extends RichTextEditorToolbar {
-  constructor() {
-    super();
-  }
-
-  // render function for template
-  static get template() {
-    return html`
-      ${this.styleTemplate} ${this.stickyTemplate} ${this.toolbarTemplate}
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * The label for the breadcrums area.
-       */
-      breadcrumbsLabel: {
-        name: "breadcrumbsLabel",
-        type: String,
-        value: "Expand selection: "
-      }
-    };
-  }
+class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
+  LitElement
+) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-toolbar-full";
   }
-  /**
-   * life cycle, element is ready
-   * @returns {void}
-   */
-  ready() {
-    super.ready();
-    let root = this;
-    root.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
-    document.body.appendChild(root.__breadcrumbs);
-    root.__breadcrumbs.addEventListener(
+
+  static get styles() {
+    return [...super.baseStyles, ...super.stickyStyles];
+  }
+
+  // render function for template
+  render() {
+    return super.render();
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * The label for the breadcrums area.
+       */
+      breadcrumbsLabel: {
+        name: "breadcrumbsLabel",
+        type: String,
+        attribute: "breadcrumbs-label"
+      }
+    };
+  }
+
+  constructor() {
+    super();
+    this.breadcrumbsLabel = "Expand selection: ";
+    this.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
+    document.body.appendChild(this.__breadcrumbs);
+    this.__breadcrumbs.addEventListener(
       "breadcrumb-tap",
-      root._handleBreadcrumb.bind(root)
+      this._handleBreadcrumb.bind(this)
     );
     this._stickyChanged();
   }
@@ -72,11 +67,10 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
    */
   editTarget(editableElement) {
     super.editTarget(editableElement);
-    let root = this;
     if (editableElement) {
-      root.__breadcrumbs.controls = editableElement.getAttribute("id");
+      this.__breadcrumbs.controls = editableElement.getAttribute("id");
       editableElement.parentNode.insertBefore(
-        root.__breadcrumbs,
+        this.__breadcrumbs,
         editableElement.nextSibling
       );
       if (!this.sticky) {
@@ -102,7 +96,11 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
    * @returns {void}
    */
   _handleBreadcrumb(e) {
-    if (e.detail.target) this.range.selectNode(e.detail.target);
+    console.log("_handleBreadcrumb", e.detail.target);
+    if (e.detail.target) {
+      this.range.selectNode(e.detail.target);
+      this._rangeChange(e);
+    }
   }
 
   /**
@@ -112,6 +110,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
    * @returns {void}
    */
   _preserveSelection() {
+    console.log("_preserveSelection", this.__breadcrumbs.range);
     super._preserveSelection();
     if (this.__breadcrumbs) this.__breadcrumbs.range = temp;
   }

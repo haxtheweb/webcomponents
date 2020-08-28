@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/rich-text-editor",
   "wcfactory": {
     "className": "RichTextEditor",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "rich-text-editor",
     "generator-wcfactory-version": "0.6.5",
     "useHAX": true,
@@ -15,7 +15,7 @@
       "properties": "src/rich-text-editor-properties.json",
       "hax": "src/rich-text-editor-hax.json"
     },
-    "sharedStyles": []
+    "sharedStyles": ["...super.styles"]
   },
   "version": "2.7.3",
   "description": "a standalone rich text editor",
@@ -55,7 +55,7 @@
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
-    "@polymer/polymer": "^3.3.1"
+    "lit-element": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",

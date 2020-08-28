@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorStyles } from "./lib/rich-text-editor-styles.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./lib/rich-text-editor-styles.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
@@ -23,136 +23,144 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/full.html toolbar with breadcrumb
  * @demo ./demo/config.html custom configuration
  */
-class RichTextEditor extends PolymerElement {
-  
+class RichTextEditor extends RichTextEditorStyles(LitElement) {
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host([hidden]) {
+          display: none;
+        }
 
-// render function
+        :host {
+          display: block;
+          min-height: 20px;
+          cursor: pointer;
+        }
+
+        :host([contenteditable="true"]) {
+          border: var(--rich-text-editor-border);
+          overflow: auto;
+        }
+
+        :host([contenteditable="true"]):focus-within,
+        :host([contenteditable="true"]):focus {
+          padding: 2px;
+          margin-bottom: 2px;
+        }
+
+        :host(.heightmax[contenteditable="true"]) {
+          max-height: calc(100vh - 200px);
+          overflow-y: scroll;
+        }
+
+        :host(:empty) {
+          border: 1px dashed var(--rich-text-editor-border-color);
+        }
+
+        :host(:not([contenteditable="true"]):empty):before {
+          content: attr(placeholder);
+          padding: 0 5px;
+          display: block;
+          color: var(--rich-text-editor-button-disabled-color);
+        }
+      `
+    ];
+  }
+
+  // render function
   render() {
     return html`
-<style>
-:host([hidden]) {
-  display: none;
-}
-:host {
-  display: block;
-  min-height: 20px;
-  cursor: pointer;
-  @apply --rich-text-editor-content;
-}
-:host([contenteditable="true"]) {
-  border: var(--rich-text-editor-border);
-  overflow: auto;
-  @apply --rich-text-editor-content-edit;
-}
-:host(.heightmax[contenteditable="true"]) {
-  max-height: calc(100vh - 200px);
-  overflow-y: scroll;
-  @apply --rich-text-editor-heightmax;
-}
-:host(:empty) {
-  border: 1px dashed var(--rich-text-editor-border-color);
-  @apply --rich-text-editor-empty;
-}
-:host(:not([contenteditable="true"]):empty):before {
-  content: attr(placeholder);
-  padding: 0 5px;
-  display: block;
-  color: var(--rich-text-editor-button-disabled-color);
-  @apply --rich-text-editor-empty-placeholder;
-}
-:host([contenteditable="true"]:empty):before {
-  @apply --rich-text-editor-empty-editable;
-}
-        </style>
-<style include="rich-text-editor-styles"></style>
-<slot></slot>`;
+      <slot></slot>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Rich text-editor",
-    "description": "a standalone rich text editor",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Text"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Rich text-editor",
+        description: "a standalone rich text editor",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Text"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "Penn State University"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          }
+        ],
+        advanced: []
       }
-    ],
-    "meta": {
-      "author": "nikkimk",
-      "owner": "Penn State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "title",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * The editor's unique id
-   */
-  "id": {
-    "name": "id",
-    "type": String,
-    "value": ""
-  },
+      ...super.properties,
 
-  /**
-   * Placeholder text for empty editable regions
-   */
-  "placeholder": {
-    "name": "placeholder",
-    "type": String,
-    "reflectToAttribute": true,
-    "value": "Click to edit"
-  },
+      /**
+       * The editor's unique id
+       */
+      id: {
+        name: "id",
+        type: String,
+        reflect: true,
+        attribute: "id"
+      },
 
-  /**
-   * The id for the toolbar
-   */
-  "toolbar": {
-    "name": "toolbar",
-    "type": String,
-    "value": ""
-  },
+      /**
+       * Placeholder text for empty editable regions
+       */
+      placeholder: {
+        name: "placeholder",
+        type: String,
+        reflect: true,
+        attribute: "placeholder"
+      },
 
-  /**
-   * The type of editor toolbar, i.e.
-   * full - full for full toolbar with breadcrumb,
-   * mini - mini for mini floating toolbar, or
-   * the default toolbar if neither.
-   */
-  "type": {
-    "name": "type",
-    "type": String,
-    "value": "rich-text-editor-toolbar"
-  }
-}
-;
+      /**
+       * The id for the toolbar
+       */
+      toolbar: {
+        name: "toolbar",
+        type: String,
+        reflect: true,
+        attribute: "toolbar"
+      },
+
+      /**
+       * The type of editor toolbar, i.e.
+       * full - full for full toolbar with breadcrumb,
+       * mini - mini for mini floating toolbar, or
+       * the default toolbar if neither.
+       */
+      type: {
+        name: "type",
+        type: String,
+        reflect: true,
+        attribute: "type"
+      }
+    };
   }
 
   /**
@@ -162,6 +170,13 @@ class RichTextEditor extends PolymerElement {
   static get tag() {
     return "rich-text-editor";
   }
+  constructor() {
+    super();
+    this.placeholder = "Click to edit";
+    this.toolbar = "";
+    this.type = "rich-text-editor-toolbar";
+    this.id = "";
+  }
   /**
    * life cycle, element is afixed to the DOM
    * @returns {void}
@@ -169,23 +184,15 @@ class RichTextEditor extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     if (!this.id) this.id = this._generateUUID();
-    window.RichTextEditorStyleManager.requestAvailability();
-  }
-  /**
-   * ready
-   * @returns {void}
-   */
-  ready() {
-    super.ready();
     this.getEditor();
+    window.RichTextEditorStyleManager.requestAvailability();
   }
   /**
    * connects the mini-toolbar to a mini editor
    * @returns {void}
    */
   getEditor() {
-    let root = this,
-      id = this.toolbar ? "#" + this.toolbar : "",
+    let id = this.toolbar ? "#" + this.toolbar : "",
       both = document.querySelector(this.type + id),
       idOnly = id ? document.querySelector(id) : null,
       typeOnly = document.querySelector(this.type),
@@ -196,9 +203,9 @@ class RichTextEditor extends PolymerElement {
     if (!toolbar || !toolbar.addEditableRegion) {
       toolbar = document.createElement(this.type);
       toolbar.id = this.toolbar;
-      root.parentNode.appendChild(toolbar);
+      this.parentNode.appendChild(toolbar);
     }
-    toolbar.addEditableRegion(root);
+    toolbar.addEditableRegion(this);
   }
 
   /**

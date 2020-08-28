@@ -37,20 +37,12 @@ let options = [
       title: "zoom dialog background-color"
     },
     {
-      css: "--lrndesign-gallery-dialog-titlebar-color",
-      title: "zoom dialog title bar text color"
+      css: "--lrndesign-gallery-dialog-border-color",
+      title: "zoom dialog border-color"
     },
     {
-      css: "--lrndesign-gallery-dialog-titlebar-background-color",
-      title: "zoom dialog title bar background-color"
-    },
-    {
-      css: "--lrndesign-gallery-dialog-header-color",
-      title: "zoom dialog header bar text color"
-    },
-    {
-      css: "--lrndesign-gallery-dialog-header-background-color",
-      title: "zoom dialog header bar background-color"
+      css: "--lrndesign-gallery-dialog-toggled-background-color",
+      title: "zoom dialog background-color for toggled items"
     },
     {
       css: "--lrndesign-gallery-carousel-next-bg",

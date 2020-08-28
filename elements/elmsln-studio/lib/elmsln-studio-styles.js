@@ -56,11 +56,7 @@ const ElmslnStudioStyles = function(SuperClass) {
             padding-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
             margin-bottom: calc(0.5 * var(--elmsln-studio-margin, 20px));
             border-bottom: 1px solid #ddd;
-            height: calc(2 * var(--elmsln-studio-FontSize, 16px));
             line-height: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
           }
           simple-fields-field {
             color: #95989a;
@@ -87,17 +83,13 @@ const ElmslnStudioStyles = function(SuperClass) {
               sans-serif
             );
           }
-          accent-card [slot="image-corner"] {
-            display: inline-flex;
-            right: 5px;
-            bottom: 10px;
-            position: absolute;
-            border-radius: 3px;
-            background-color: rgba(0, 0, 0, 0.25);
+          accent-card img-view-modal[slot="image-corner"] {
+            float: right;
           }
-          accent-card [slot="image-corner"]:focus-within,
-          accent-card [slot="image-corner"]:hover {
-            background-color: rgba(0, 0, 0, 0.5);
+          accent-card img-view-modal[slot="image-corner"],
+          accent-card img-view-modal[slot="image-corner"]:focus-within,
+          accent-card img-view-modal[slot="image-corner"]:hover {
+            background-color: transparent;
           }
           .card elmsln-studio-link {
             --elmsln-studio-link-Color: var(--accent-card-color);
@@ -144,11 +136,67 @@ const ElmslnStudioStyles = function(SuperClass) {
             color: var(--simple-colors-default-theme-grey12, #000);
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
           }
+          img-view-modal button {
+            padding: 0;
+            margin: 0;
+          }
+          img-view-modal iron-icon {
+            border-radius: 2px;
+            width: 24px;
+            height: 24px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          img-view-modal button:hover iron-icon,
+          img-view-modal button:focus iron-icon {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.25);
+          }
+
+          img-view-modal.thumbnail,
+          img-view-modal.thumbnail button,
+          img-view-modal.thumbnail button .imgbg {
+            border-radius: 3px;
+          }
+          img-view-modal.thumbnail button {
+            position: relative;
+            width: 150px;
+            padding: 0;
+            margin: 0;
+          }
+          img-view-modal.thumbnail button .imgbg {
+            width: 100%;
+            padding-top: 100%;
+            background-image: var(
+              --elmsln-studio-image-button-backgroundImage,
+              none
+            );
+            background-position: center;
+            background-size: cover;
+            margin: 0;
+          }
+          img-view-modal.thumbnail button iron-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            z-index: 2;
+          }
+          .thumbnail-grid {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .thumbnail-grid > * {
+            flex: 0 0 50%;
+            margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
+          }
           @media screen and (min-width: 600px) {
             #studio-nav elmsln-studio-link {
               padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
                 calc(0.5 * var(--elmsln-studio-margin, 20px));
               font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
+            }
+            .thumbnail-grid > * {
+              flex: 0 0 150px;
             }
           }
           @media screen and (min-width: 900px) {
@@ -161,6 +209,12 @@ const ElmslnStudioStyles = function(SuperClass) {
             }
             #secondary {
               flex: 0 0 calc(33.33333333% - var(--elmsln-studio-margin, 20px));
+            }
+            .filters {
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: nowrap;
+              height: calc(2 * var(--elmsln-studio-FontSize, 16px));
             }
           }
         `

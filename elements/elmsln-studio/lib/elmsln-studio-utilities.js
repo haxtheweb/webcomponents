@@ -28,6 +28,33 @@ const ElmslnStudioUtilities = function(SuperClass) {
       this.demoMode = false;
     }
     /**
+     * default toolbar config object,
+     * where "top" contains config for toolbar above image(s),
+     * and "bottom" contains config for toolbar above image(s)
+     * @return {object} as { top: { id="top", contents:[]},  id="bottom", contents:[]}, }
+     *
+     * @readonly
+     * @memberof imgViewViewer
+     */
+    get defaultModalToolbars() {
+      return {
+        bottom: {
+          id: "bottom",
+          type: "toolbar-group",
+          contents: [
+            "prevbutton",
+            "homebutton",
+            "rotategroup",
+            "zoomgroup",
+            "pageXofY",
+            "pangroup",
+            "fullscreenbutton",
+            "nextbutton"
+          ]
+        }
+      };
+    }
+    /**
      * sorts array by most recent (or by oldest)
      * @param {array} arr array
      * @param {boolean} sort by most recent? (default is true)
@@ -93,6 +120,67 @@ const ElmslnStudioUtilities = function(SuperClass) {
       } else {
         return child;
       }
+    }
+    /**
+     * gets figures for img-view-modal
+     *
+     * @param {array} sources
+     * @returns
+     */
+    getFigures(
+      sources,
+      src = "src",
+      alt = "alt",
+      full = "full",
+      longdesc = "longdesc"
+    ) {
+      //console.log('getFigures',sources);
+      let images = (sources || []).map(source => {
+        return {
+          src: source[full] || source[src],
+          info:
+            source[alt] && source[longdesc]
+              ? html`
+                  <p>${source[alt]}:</p>
+                  <div>${source[longdesc]}</div>
+                `
+              : source[alt]
+              ? html`
+                  ${source[alt]}
+                `
+              : html`
+                  ${source[longdesc]}
+                `
+        };
+      });
+      return images.filter(s => !!s.src);
+    }
+    getThumnailGrid(s) {
+      return html`
+        <div class="thumbnail-grid">
+          ${(s.sources || []).map(
+            (source, i) => html`
+              <img-view-modal
+                class="thumbnail"
+                page="${i}"
+                title="${s.assignment} by ${s.firstName} ${s.lastName}"
+                .toolbars="${this.defaultModalToolbars}"
+                .figures="${this.getFigures(s.sources)}"
+              >
+                <button .style="${this.getThumbailStyle(source.src)}">
+                  <span class="sr-only">${source.alt}</span>
+                  <div class="zoombg"></div>
+                  <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
+                  <div class="imgbg"></div>
+                </button>
+              </img-view-modal>
+            `
+          )}
+        </div>
+      `;
+    }
+    getThumbailStyle(src) {
+      return `--elmsln-studio-image-button-backgroundImage: url(${src});`;
     }
     /**
      * gets fullname from user data

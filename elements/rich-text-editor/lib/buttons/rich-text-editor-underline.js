@@ -2,33 +2,44 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-underline`
- * `a button for rich text editor (custom buttons can extend this)`
+ * a button for rich text editor (custom buttons can extend this)
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-underline
+ * @demo ./demo/buttons.html
  */
-class RichTextEditorUnderline extends RichTextEditorPromptButton {
+class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
+  LitElement
+) {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-underline";
+  }
+
+  // render function for template
+  render() {
+    return super.render();
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties
+    };
+  }
   constructor() {
     super();
     this.fields = [
       {
-        property: "",
-        title: "Text",
-        description: "The link text",
-        inputMethod: "textfield"
-      },
-      {
         property: "confirm",
-        title: "Underline despite usability issues",
+        title: "Underline (not recommended)",
         description:
-          "Underlines can be confused with links on the web. To prevent usability issues, we recommend using italics instead.",
+          "Underlines can be confused with links. Use italics instead.",
         inputMethod: "boolean"
       }
     ];
@@ -39,36 +50,34 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
     this.command = "underline";
     this.shortcutKeys = "ctrl+u";
     this.value = {
-      tag: false
+      confirm: false
+    };
+  }
+  get blockSelectors() {
+    return "u";
+  }
+
+  /**
+   * updates prompt fields with selected range data
+   */
+  updatePrompt() {
+    super.updatePrompt();
+    this.value = {
+      confirm:
+        this.isToggled ||
+        (this.__selectionContents.tagName &&
+          this.__selectionContents.tagName.toLowerCase() ===
+            this.tag.toLowerCase())
     };
   }
 
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * updates the insertion based on fields
    */
-  static get tag() {
-    return "rich-text-editor-underline";
-  }
-
-  /**
-   * a <u> tag is only needed if there is text content
-   * and the tag usability warning is confirmed
-   * @param {object} value the prompt values
-   * @returns {boolean} if the tag is needed for the element
-   */
-  _getTagNeeded(value) {
-    return (
-      value &&
-      this.getCleanValue("") &&
-      this.getCleanValue("") !== "" &&
-      this.getCleanValue("confirm") &&
-      this.getCleanValue("confirm")
-    );
+  updateSelection() {
+    this.toggled = !this.__prompt.getPromptValue("confirm");
+    this.setRange();
+    this.execCommand();
   }
 }
 window.customElements.define(

@@ -4,8 +4,9 @@
    */
   "id": {
     "name": "id",
-    "type": String,
-    "value": ""
+    "type": "String",
+    "reflect": true,
+    "attribute": "id"
   },
 
   /**
@@ -13,9 +14,9 @@
    */
   "placeholder": {
     "name": "placeholder",
-    "type": String,
-    "reflectToAttribute": true,
-    "value": "Click to edit"
+    "type": "String",
+    "reflect": true,
+    "attribute": "placeholder"
   },
 
   /**
@@ -23,8 +24,9 @@
    */
   "toolbar": {
     "name": "toolbar",
-    "type": String,
-    "value": ""
+    "type": "String",
+    "reflect": true,
+    "attribute": "toolbar"
   },
 
   /**
@@ -35,7 +37,8 @@
    */
   "type": {
     "name": "type",
-    "type": String,
-    "value": "rich-text-editor-toolbar"
+    "type": "String",
+    "reflect": true,
+    "attribute": "type"
   }
 }

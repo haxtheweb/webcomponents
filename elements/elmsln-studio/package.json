@@ -39,6 +39,7 @@
     "@lrnwebcomponents/hax-iconset": "^2.7.1",
     "@lrnwebcomponents/lrndesign-avatar": "^2.7.3",
     "@lrnwebcomponents/lrndesign-gallery": "^2.7.3",
+    "@lrnwebcomponents/img-view-modal": "^2.7.3",
     "@lrnwebcomponents/nav-card": "^2.7.3",
     "@lrnwebcomponents/simple-colors": "^2.7.3",
     "@lrnwebcomponents/simple-fields": "^2.7.3",

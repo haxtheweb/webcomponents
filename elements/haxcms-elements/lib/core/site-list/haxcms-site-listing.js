@@ -217,22 +217,23 @@ class HAXCMSSiteListing extends PolymerElement {
         #loading {
           z-index: 1000;
           opacity: 1;
-          padding: 24px;
-          top: calc(50vh - 0.5vw);
-          left: 0;
-          width: 100%;
-          height: 1vw;
           position: absolute;
-          position: sticky;
-          background-color: rgba(250, 250, 250, 0.8);
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0%;
+          padding: 50vh calc(50% - 127.5px);
           transition: all linear 1s;
           visibility: visible;
-          color: white;
+          background-color: rgba(250, 250, 250, 0.8);
         }
         #loading[data-loading] {
-          background-color: rgba(0, 0, 0, 0);
           opacity: 0;
           visibility: hidden;
+          --hexagon-color: var(
+            --simple-colors-default-theme-light-blue-7,
+            #007ffc
+          );
         }
         a {
           text-decoration: none;
@@ -274,7 +275,7 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         #add {
           background-color: var(--haxcms-site-listing-color-hover);
-          color: (--haxcms-site-listing-color-light);
+          color: var(--haxcms-site-listing-color-light);
           transition: 0.2s all linear;
         }
         #add:hover,
@@ -494,12 +495,7 @@ class HAXCMSSiteListing extends PolymerElement {
         on-response="handleGetUserDataResponse"
       ></iron-ajax>
       <div id="loading" data-loading\$="[[!__loading]]">
-        <hexagon-loader
-          item-count="4"
-          color="white"
-          loading
-          size="large"
-        ></hexagon-loader>
+        <hexagon-loader item-count="4" loading size="large"></hexagon-loader>
       </div>
       <div class="toolbar">
         <slot name="app-header-pre"></slot>

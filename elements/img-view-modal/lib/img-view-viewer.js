@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ImgPanZoom } from "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { FullscreenBehaviors } from "@lrnwebcomponents/fullscreen-behaviors/fullscreen-behaviors.js";
 /**
  * `img-view-viewer`
  * Combines img-pan-zoom and simple-modal for an easy image zoom solution
@@ -9,6 +9,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 Custom property | Description | Default
 ----------------|-------------|----------
+`--img-view-viewer-height` | viewer height | 500px
 `--img-view-viewer-backgroundColor` | background color | white
 `--img-view-viewer-color` | text color | black
 `--img-view-viewer-borderColor` | border color | #ddd
@@ -18,17 +19,17 @@ Custom property | Description | Default
  * @element img-view-viewer
  * 
  */
-class ImgViewViewer extends ImgPanZoom {
+class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
           height: var(--img-view-viewer-height, 500px);
+          --hexagon-color: var(--img-view-viewer-focus-borderColor, blue);
         }
         :host([hidden]),
         *[hidden] {
@@ -39,6 +40,34 @@ class ImgViewViewer extends ImgPanZoom {
           left: -9999999px;
           width: 0;
           overflow: hidden;
+        }
+        #viewer {
+          display: block;
+          position: relative;
+          height: calc(var(--img-view-viewer-height, 500px) - 104px);
+          width: auto;
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
+        }
+        #loader {
+          display: none;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          height: var(--img-view-viewer-height, 500px);
+          margin-bottom: calc(0px - var(--img-view-viewer-height, 104px));
+          z-index: 1;
+        }
+        hexagon-loader {
+          position: absolute;
+          opacity: 0;
+          transition: opacity 700ms;
+          margin: auto;
+        }
+        hexagon-loader[loading] {
+          opacity: 1;
         }
         #container {
           display: flex;
@@ -51,7 +80,6 @@ class ImgViewViewer extends ImgPanZoom {
         }
         #container > * {
           flex: 1 1 auto;
-          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         .misc-item,
         .button-group {
@@ -66,7 +94,8 @@ class ImgViewViewer extends ImgPanZoom {
         #top,
         #bottom {
           margin: 0;
-          flex: 0 0 auto;
+          flex: 1 0 50px;
+          border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         #top > *,
         #bottom > * {
@@ -93,15 +122,16 @@ class ImgViewViewer extends ImgPanZoom {
           justify-content: end;
         }
         button[aria-pressed="true"] {
-          background-color: var(
+          --img-view-viewer-backgroundColor: var(
             --img-view-viewer-toggled-backgroundColor,
             #eee
           );
         }
+
         button:focus,
         button:hover,
         #viewer:focus-within {
-          outline: 1px solid blue;
+          outline: 1px solid var(--img-view-viewer-focus-borderColor, blue);
           z-index: 2;
         }
         simple-tooltip:not(:defined) {
@@ -142,6 +172,7 @@ class ImgViewViewer extends ImgPanZoom {
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
         input[type="number"] {
+          max-width: 4em;
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
       `
@@ -156,57 +187,32 @@ class ImgViewViewer extends ImgPanZoom {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/image-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    if (typeof screenfull === "object") {
-      this._onScreenfullLoaded();
-    } else {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-      const location = `${basePath}screenfull/dist/screenfull.js`;
-      window.ESGlobalBridge.requestAvailability();
-      window.ESGlobalBridge.instance.load("screenfullLib", location);
-      window.addEventListener(
-        "es-bridge-screenfullLib-loaded",
-        this._onScreenfullLoaded
-      );
-    }
   }
 
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    window.removeEventListener(
-      "es-bridge-screenfullLib-loaded",
-      this._onScreenfullLoaded
-    );
-    super.disconnectedCallback();
-  }
   render() {
     return html`
-      <!-- Only preload regular images -->
       ${!this.dzi
         ? html`
-            ${this.hideSpinner || this.loaded
+            ${this.hideSpinner
               ? ``
               : html`
-                  <hexagon-loader
-                    ?loading=${this.loading || !this.loaded}
-                    item-count="4"
-                    size="small"
-                  ></hexagon-loader>
+                  <div id="loader" ?hidden="${this.loaded}">
+                    <hexagon-loader
+                      ?loading=${this.loading || !this.loaded}
+                      item-count="4"
+                    ></hexagon-loader>
+                  </div>
+                  <img-loader
+                    ?loaded="${this.loaded}"
+                    @loaded-changed="${this.loadedChangedEvent}"
+                    ?loading="${this.loading}"
+                    @loading-changed="${this.loadingChangedEvent}"
+                    src="${this.loadSrc}"
+                    described-by="${this.describedBy || ""}"
+                  ></img-loader>
                 `}
-            <img-loader
-              loaded="${this.loaded}"
-              @loaded-changed="${this.loadedChangedEvent}"
-              ?loading="${this.loading}"
-              @loading-changed="${this.loadingChangedEvent}"
-              @page="${e => (this.page = e.page)}"
-              src="${this.src}"
-              described-by="${this.describedBy || ""}"
-            ></img-loader>
           `
         : ""}
-
-      <!-- Openseadragon -->
       <div id="container">
         ${this.getToolbars(this.defaultToolbars, this.toolbars, "top")}
         <div>
@@ -226,9 +232,11 @@ class ImgViewViewer extends ImgPanZoom {
     return "img-view-viewer";
   }
   static get properties() {
+    let props = { ...super.properties };
+    delete props.src;
+    delete props.sources;
     return {
-      ...super.properties,
-
+      ...props,
       figures: {
         type: Array
       },
@@ -257,7 +265,7 @@ class ImgViewViewer extends ImgPanZoom {
         toolbars && toolbars[topOrBottom]
           ? toolbars[topOrBottom]
           : { id: topOrBottom, contents: "" },
-      div = this._item(toolbar);
+      div = this._item(toolbar, topOrBottom === "top");
     return div;
   }
   /**
@@ -283,22 +291,22 @@ class ImgViewViewer extends ImgPanZoom {
     return {
       id: "fullscreenbutton",
       icon: "fullscreen",
-      toggleProp: "fullscreenToggled",
+      toggleProp: "__fullscreen",
+      enabledProp: "fullscreenEnabled",
       text: html`
         toggle fullscreen
       `
     };
   }
-
   /**
-   * whether or not the fullscreen mode is be disabled
-   * @returns {boolean}
+   * element to make fullscreen, can be overidden
+   *
+   * @readonly
    */
-  get fullscreenEnabled() {
-    let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
-    return typeof screenfull === "object" && !mobile;
+  get fullscreenTarget() {
+    return this.shadowRoot && this.shadowRoot.querySelector("#container")
+      ? this.shadowRoot.querySelector("#container")
+      : this;
   }
   /**
    * default toggle navigate window button configuration
@@ -312,6 +320,8 @@ class ImgViewViewer extends ImgPanZoom {
       id: "navigatorbutton",
       icon: "picture-in-picture",
       toggleProp: "navigatorToggled",
+      shownProp: "showNavigator",
+      enabledProp: "showNavigator",
       text: "toggle nav window"
     };
   }
@@ -326,6 +336,7 @@ class ImgViewViewer extends ImgPanZoom {
       id: "infobutton",
       icon: "info-outline",
       toggleProp: "infoToggled",
+      hiddenProp: "noSources",
       text: "toggle information"
     };
   }
@@ -344,7 +355,7 @@ class ImgViewViewer extends ImgPanZoom {
       details: html`
         <table>
           <caption>
-            Keyboard Shortcuts
+            Keyboard Shortcuts (when image has focus)
           </caption>
           <tbody>
             <tr>
@@ -562,6 +573,7 @@ class ImgViewViewer extends ImgPanZoom {
       showText: true,
       icon: "chevron-left",
       text: "prev",
+      disabledProp: "prevDisabled",
       flexGrow: true
     };
   }
@@ -576,19 +588,23 @@ class ImgViewViewer extends ImgPanZoom {
       id: "nextbutton",
       icon: "chevron-right",
       iconRight: true,
+      disabledProp: "nextDisabled",
       text: "next",
       showText: true,
       flexGrow: true
     };
   }
-  get tileSources() {
-    return [this.src, ...this.sources];
+  get pages() {
+    return this.figures || [];
+  }
+  get noSources() {
+    this.pages.length === 0;
   }
   get prevDisabled() {
     return this.page <= 0;
   }
   get nextDisabled() {
-    return this.page + 1 >= this.tileSources.length;
+    return this.page + 1 >= this.pages.length;
   }
   get info() {
     return this.kbdToggled && this.kbdbutton.details
@@ -607,7 +623,7 @@ class ImgViewViewer extends ImgPanZoom {
    * @memberof imgViewViewer
    */
   get pageXofY() {
-    return `${(this.page || 0) + 1} of ${this.tileSources.length}`;
+    return `${(this.page || 0) + 1} of ${this.pages.length}`;
   }
   get navXofY() {
     return {
@@ -615,14 +631,16 @@ class ImgViewViewer extends ImgPanZoom {
       type: "misc-item",
       contents: html`
         <p>
+          <label for="pageX" class="sr-only">Page</label>
           <input
+            id="pageX"
             type="number"
             min="1"
-            max="${this.tileSources.length}"
+            max="${this.pages.length}"
             value="${this.page + 1}"
             @change="${this.goToPageXofY}"
           />
-          of ${this.tileSources.length}
+          of ${this.pages.length}
         </p>
       `
     };
@@ -643,10 +661,12 @@ class ImgViewViewer extends ImgPanZoom {
         type: "toolbar-group",
         contents: [
           "prevbutton",
+          "homebutton",
           "rotategroup",
           "zoomgroup",
-          "homebutton",
+          "pageXofY",
           "pangroup",
+          "fullscreenbutton",
           "nextbutton"
         ]
       }
@@ -660,18 +680,19 @@ class ImgViewViewer extends ImgPanZoom {
    *    contents: {{if item is a group, string of text or array of items}},
    *  }
    * @param {*} [config={}]
+   * @param {boolean} [top=false] on top toolbar?
    * @memberof imgViewViewer
    */
-  _item(config = {}) {
+  _item(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     if (typeof config !== "object") {
       return html`
         <div class="misc-item">${config}</div>
       `;
     } else if (config && typeof config.contents === typeof undefined) {
-      return this._button(config);
+      return this._button(config, top);
     } else {
-      return this._group(config);
+      return this._group(config, top);
     }
   }
   /**
@@ -682,11 +703,11 @@ class ImgViewViewer extends ImgPanZoom {
    *    contents: {{sting of text content or array of items in the group}}
    *  }
    * @param {object} [config={}]
-   * @param {string} [id='']
+   * @param {boolean} [top=false] on top toolbar?
    * @returns toolbar group html template
    * @memberof imgViewViewer
    */
-  _group(config = {}) {
+  _group(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     return !config
       ? ""
@@ -697,14 +718,18 @@ class ImgViewViewer extends ImgPanZoom {
           >
             ${!Array.isArray(config.contents)
               ? config.contents
-              : (config.contents || []).map(item => this._item(item))}
+              : (config.contents || []).map(item => this._item(item, top))}
           </div>
         `;
   }
   /**
    * makes a toolbar button from config
    *  BUTTON CONFIG SCHEMA: {
-   *    toggleProp : {{if button toggles, property button toggles}},
+   *    toggleProp : {{optional: if button toggles, property button toggles}},
+   *    enabledProp : {{optional: disable button if prop is false}},
+   *    disabledProp : {{optional: prop to make button disabled}},
+   *    shownProp : {{optional: hide button if prop is false}},
+   *    hiddenProp : {{optional: prop to make button hidden}},
    *    icon: {{button icon}},
    *    iconRight: {{show icon to the right of text intead of left}},
    *    text: {{button text / default tooltip}},
@@ -712,11 +737,11 @@ class ImgViewViewer extends ImgPanZoom {
    *    tooltip: {{override button text as tooltip}}
    *  }
    * @param {object} [config={}]
-   * @param {string} id
+   * @param {boolean} [top=false] on top toolbar?
    * @returns button html template
    * @memberof imgViewViewer
    */
-  _button(config = {}) {
+  _button(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     //if (config) this._bindButton(config.id, config.tooltip || config.text);
     return !config
@@ -726,30 +751,40 @@ class ImgViewViewer extends ImgPanZoom {
           <button
             .id="${config.id || undefined}"
             class="${this._buttonClass(config)}"
-            controls="container"
             @click="${e => this._toolbarButtonClick(config.id, e)}"
-            ?disabled="${(config.id === "prevbutton" && this.prevDisabled) ||
-              (config.id === "nextbutton" && this.nextDisabled)}"
+            controls="container"
+            ?disabled="${this._buttonDisabled(config)}"
+            ?hidden="${this._buttonHidden(config)}"
           >
             ${this._buttonInner(config)}
           </button>
-          ${this._tooltip(config)}
+          ${this._buttonTooltip(config, top)}
         `
       : html`
           <button
             .id="${config.id || undefined}"
-            ?hidden="${(config.id === "navigatorbutton" &&
-              !this.showNavigator) ||
-              (config.id === "infobutton" && this.figures.length === 0)}"
             aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
             class="${this._buttonClass(config)}"
-            controls="container"
             @click="${e => this._toolbarButtonClick(config.id, e)}"
+            controls="container"
+            ?disabled="${this._buttonDisabled(config)}"
+            ?hidden="${this._buttonHidden(config)}"
           >
-            ${this._buttonInner(config)}
+            ${this._buttonInner(config)} ${this._buttonTooltip(config)}
           </button>
-          ${this._tooltip(config)}
         `;
+  }
+  _buttonDisabled(config) {
+    return (
+      (config.disabledProp && this[config.disabledProp]) ||
+      (config.enabledProp && !this[config.enabledProp])
+    );
+  }
+  _buttonHidden(config) {
+    return (
+      (config.hiddenProp && this[config.hiddenProp]) ||
+      (config.shownProp && !this[config.shownProp])
+    );
   }
   _buttonClass(config) {
     return `${config.iconRight ? "icon-right" : ""}${
@@ -768,59 +803,37 @@ class ImgViewViewer extends ImgPanZoom {
           </p>
         `;
   }
-  _tooltip(config) {
+  _buttonTooltip(config, top = false) {
     return !config || !config.id
       ? ""
       : html`
-          <simple-tooltip for="${config.id}">${config.text}</simple-tooltip>
+          <simple-tooltip
+            for="${config.id}"
+            position="${top ? "bottom" : "top"}"
+            >${config.text}</simple-tooltip
+          >
         `;
   }
-  updated(changedProperties) {
-    if (super.updated) super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
+  get src() {
+    return this.figures && this.figures[0] ? this.figures[0].src : undefined;
   }
-  firstUpdated() {
-    if (!this.src && this.sources.length === 0 && this.figures.length > 0) {
-      let figs = this.figures.map(fig => fig.src);
-      this.src = figs[0];
-      this.sources = figs.slice(1);
-    }
-    if (super.firstUpdated) super.firstUpdated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {});
+  get loadSrc() {
+    return this.figures && this.figures[this.page]
+      ? this.figures[this.page].src
+      : undefined;
+  }
+  get sources() {
+    return this.figures ? this.figures.map(fig => fig.src).slice(1) : undefined;
   }
   /**
    * overrides fullscreen API
    *
-   * @param {*} [mode=this.fullscreenToggled]
-   * @memberof ImgPanZoom
+   * @param {boolean} toggle on or off, default is opposite current state
    */
-  _setFullscreen(mode = this.fullscreenToggled) {
-    console.log("fullscreen stuff", mode);
-    if (this.fullscreenEnabled) {
-      if (screenfull) {
-        if (mode) {
-          screenfull.request(this.shadowRoot.querySelector("#container"));
-        } else {
-          screenfull.exit(this.shadowRoot.querySelector("#container"));
-        }
-      }
-    }
+  _setFullscreen(mode) {
+    return;
   }
 
-  /**
-   * sets the element's __screenfullLoaded variable to true once screenfull is loaded
-   * and adds an event listener for screenfull
-   * @param {event} e screenfull load
-   */
-  _onScreenfullLoaded() {
-    this.__screenfullLoaded = true;
-  }
-
-  /**
-   * toggles fullscreen
-   * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
-   */
-  toggleFullscreen(mode) {}
   _toolbarButtonClick(buttonId, eventType) {
     /**
      * Fires when constructed, so that parent radio group can listen for it.
@@ -850,8 +863,7 @@ class ImgViewViewer extends ImgPanZoom {
     if (buttonId === "rotatecwbutton") this.rotate(90);
     if (buttonId === "navigatorbutton")
       this.navigatorToggled = !this.navigatorToggled;
-    if (buttonId === "fullscreenbutton")
-      this.fullscreenToggled = !this.fullscreenToggled;
+    if (buttonId === "fullscreenbutton") this.toggleFullscreen();
     if (buttonId === "flipbutton") this.flipToggled = !this.flipToggled;
     if (buttonId === "infobutton") {
       this.kbdToggled = false;
@@ -862,7 +874,7 @@ class ImgViewViewer extends ImgPanZoom {
       this.kbdToggled = !this.kbdToggled;
     }
     if (buttonId === "nextbutton") {
-      this.page = Math.min(this.page + 1, this.viewer.tileSources.length - 1);
+      this.page = Math.min(this.page + 1, this.pages.length - 1);
     }
     if (buttonId === "prevbutton") {
       this.page = Math.max(0, this.page - 1);
@@ -870,7 +882,36 @@ class ImgViewViewer extends ImgPanZoom {
   }
   goToPageXofY(e) {
     this._toolbarButtonClick("navXofY", e);
-    this.page = e.path[0].value - 1;
+    this.page = e.path ? e.path[0].value - 1 : e.target.value;
+  }
+  loadedChangedEvent(e) {
+    console.log("loadedChangedEvent", e.detail.value, this.src, this.loadSrc);
+    this.loaded = e.detail.value;
+    if (this.loaded) {
+      this.loading = false;
+    }
+  }
+  loadingChangedEvent(e) {
+    console.log("loadingChangedEvent", e.detail.value, this.src, this.loadSrc);
+    this.loading = e.detail.value;
+  }
+
+  _addImage() {
+    console.log("_addImage", this.loadSrc);
+    this.viewer.addSimpleImage({
+      url: this.loadSrc,
+      index: this.page,
+      clone: true
+    });
+  }
+
+  _addTiledImage() {
+    console.log("_addTiledImage", this.loadSrc);
+    this.viewer.addTiledImage({
+      tileSource: this.loadSrc,
+      index: this.page,
+      clone: true
+    });
   }
 }
 window.customElements.define(ImgViewViewer.tag, ImgViewViewer);

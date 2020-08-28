@@ -2,27 +2,39 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-button-styles.js";
-import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
-import "../singletons/rich-text-editor-prompt.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { RichTextEditorPromptButtonBehaviors } from "./rich-text-editor-prompt-button.js";
 /**
  * `rich-text-editor-link`
- * `a button for rich text editor (custom buttons can extend this)`
+ * a button for rich text editor (custom buttons can extend this)
  *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * @element rich-text-editor-link
+ * @demo ./demo/buttons.html
  */
-class RichTextEditorLink extends RichTextEditorPromptButton {
+class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
+  LitElement
+) {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "rich-text-editor-link";
+  }
+
+  // render function for template
+  render() {
+    return super.render();
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return { ...super.properties };
+  }
   constructor() {
     super();
     this.fields = [
       {
-        property: "",
+        property: "linktext",
         title: "Text",
         description: "The link text",
         inputMethod: "textfield"
@@ -31,41 +43,69 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
         property: "href",
         title: "Link",
         description: "The link URL. (Leave blank to remove.)",
-        inputMethod: "textfield"
+        inputMethod: "url",
+        autoValidate: true
       }
     ];
-    this.tag = "a";
+    this.command = "CreateLink";
+    this.icon = "link";
+    this.label = "Link";
+    this.toggledCommand = "unlink";
+    this.toggledIcon = "mdextra:unlink";
+    this.toggledLabel = "Unlink";
+    (this.toggles = "true"), (this.tag = "a");
     this.value = {
       link: null
     };
     this.shortcutKeys = "ctrl+k";
   }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
+  /**
+   * overrides default block selectors
+   *
+   * @readonly
+   * @memberof RichTextEditorLink
+   */
+  get blockSelectors() {
+    return "a";
   }
 
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * whether button is toggled
+   *
+   * @readonly
+   * @memberof RichTextEditorButton
    */
-  static get tag() {
-    return "rich-text-editor-link";
+  get isToggled() {
+    return this.toggled;
   }
 
   /**
-   * an <a> tag is only needed if there is link text and an href
-   * @param {object} value the prompt values
-   * @returns {boolean} if the tag is needed for the element
+   * updates prompt fields with selected range data
    */
-  _getTagNeeded(value) {
-    return (
-      value &&
-      this.getCleanValue("") &&
-      this.getCleanValue("") !== "" &&
-      this.getCleanValue("href") &&
-      this.getCleanValue("href") !== null
-    );
+  updatePrompt() {
+    super.updatePrompt();
+    this.value = {
+      linktext: this.__selectionContents
+        ? this.__selectionContents.innerHTML
+        : this.__selection.innerHTML,
+      href:
+        this.__selectionContents && this.__selectionContents.getAttribute
+          ? this.__selectionContents.getAttribute("href")
+          : undefined
+    };
+  }
+
+  /**
+   * updates the insertion based on fields
+   */
+  updateSelection() {
+    let link = this.__prompt.getPromptValue("href"),
+      text = this.__prompt.getPromptValue("linktext");
+    this.setRange();
+    this.__selectionContents.innerHTML = text;
+    this.toggled = !link || !text;
+    this.commandVal = link || undefined;
+    this.execCommand();
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
