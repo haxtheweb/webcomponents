@@ -972,7 +972,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _onPaste(e) {
     // only perform this on a text element that is active
-    if (window.HaxStore.instance.isTextElement(window.HaxStore.instance.activeNode)) {
+    if (
+      window.HaxStore.instance.isTextElement(
+        window.HaxStore.instance.activeNode
+      )
+    ) {
       let pasteContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
@@ -1018,15 +1022,24 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         return false;
       }
       // account for incredibly basic pastes of single groups of characters
-      else if (haxElements.length === 1 && haxElements[0].tag === "a" && haxElements[0].properties.href) {
+      else if (
+        haxElements.length === 1 &&
+        haxElements[0].tag === "a" &&
+        haxElements[0].properties.href
+      ) {
         // test for a URL since we didn't have HTML / elements of some kind
         // if it's a URL we might be able to automatically convert it into it's own element
         let values = {
           source: haxElements[0].properties.href,
-          title: haxElements[0].content,
+          title: haxElements[0].content
         };
         // if we DID get a match, block default values
-        if (window.HaxStore.insertLogicFromValues(values, window.HaxStore.instance)) {
+        if (
+          window.HaxStore.insertLogicFromValues(
+            values,
+            window.HaxStore.instance
+          )
+        ) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us
           e.preventDefault();
@@ -1153,8 +1166,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
       "hax-context-item-selected": "_haxContextOperation",
-      "onbeforeunload": "_onBeforeUnload",
-      "paste": "_onPaste",
+      onbeforeunload: "_onBeforeUnload",
+      paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
       "hax-register-blox": "_haxStoreRegisterBlox",

@@ -486,8 +486,7 @@ class A11yMediaYoutube extends LitElement {
       this.__yt.remove;
       try {
         this.__yt.destroy();
-      }
-      catch(e) {
+      } catch (e) {
         console.warn(e);
       }
     }
