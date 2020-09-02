@@ -105,10 +105,10 @@
         <div class="demo-sample">
           <p>Set the <code>type</code> attribute to <b>js</b>, <b>jsx</b> or <b>javascript</b> when using tagged template literals.</p>
 
-          <code-sample type="js" id="demo-3">
+          <code-sample type="javascript" id="demo-3">
             <template>
-              class MyElement extends PolymerElement {
-                static get template() {
+              class MyElement extends LitElement {
+                render() {
                   return html`
                     <style>
                       :host {
@@ -143,7 +143,7 @@
         </div>
 
         <div class="demo-sample">
-          <code-sample id="demo-4">
+          <code-sample type="css" id="demo-4">
             <template>
               .my-style { display: block; }
 
@@ -201,6 +201,35 @@
               </style>
 
               <button class="btn">Hi unicorn!</button>
+            </template>
+          </code-sample>
+        </div>
+      </div>
+
+      <div class="demo">
+        <div class="demo-text">
+          <h1>php</h1>
+          <label class="select">
+            <span>Theme</span>
+            <select name="theme" data-target="#demo-php">
+              <option value="oneDark" selected>One Dark</option>
+              <option value="oneLight">One Light</option>
+              <option value="defaultTheme">Default</option>
+              <option value="github">Github</option>
+              <option value="solarizedLight">Solarized Light</option>
+              <option value="solarizedDark">Solarized Dark</option>
+              <option value="kustomLight">Kustom Light</option>
+              <option value="kustomDark">Kustom Dark</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="demo-sample">
+          <code-sample type="php" id="demo-php">
+            <template>
+                if ($stuff != "things") {
+                  print_r($stuff);
+                }
             </template>
           </code-sample>
         </div>
