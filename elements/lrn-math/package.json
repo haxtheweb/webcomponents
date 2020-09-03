@@ -8,12 +8,7 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/lrn-math.css",
-      "scss": "src/lrn-math.scss",
-      "html": "src/lrn-math.html",
-      "js": "src/lrn-math.js",
-      "properties": "src/lrn-math-properties.json",
-      "hax": "src/lrn-math-hax.json"
+      "js": "src/lrn-math.js"
     },
     "sharedStyles": []
   },

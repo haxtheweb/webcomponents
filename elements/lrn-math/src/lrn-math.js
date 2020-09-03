@@ -188,6 +188,30 @@ class LrnMath extends HTMLElement {
     });
   }
 
+  /**
+   * Use Math-Text as a method for transfering values
+   * from hax inline text to the slot.
+   */
+  static get observedAttributes() {
+    return ["math-text"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case "math-text":
+        if (newValue !== "" && newValue !== null) {
+          // If a value has been set then wrap it in a
+          // span tag and inject it into the lightdom
+          const container = document.createElement("span");
+          container.innerText = newValue;
+          this.innerHTML = "";
+          this.appendChild(container);
+          this.removeAttribute("math-text");
+        }
+        break;
+    }
+  }
+
   static get haxProperties() {
     return {
       canScale: true,
