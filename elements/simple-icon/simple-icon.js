@@ -2,7 +2,9 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./lib/simple-iconset.js";
 /**
  * `simple-icon`
  * `Render an SVG based icon`
@@ -13,99 +15,98 @@
  * @demo demo/index.html
  * @element simple-icon
  */
-class SimpleIcon extends HTMLElement {
-  
-
-// render function
-  render() {
-    return html`
-<style>
-:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-        </style>
-<slot></slot>`;
+class SimpleIcon extends SimpleColors {
+  constructor() {
+    super();
+    window.SimpleIconset.requestAvailability();
   }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {...super.properties};
-  }
-
   /**
    * This is a convention, not the standard
    */
   static get tag() {
     return "simple-icon";
   }
-  /**
-   * object life cycle
-   */
-  constructor(delayRender = false) {
-    super();
-    
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/simple-icon-properties.json
-    let obj = SimpleIcon.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          vertical-align: middle;
+          height: var(--simple-icon-height, 24px);
+          width: var(--simple-icon-width, 24px);
+        }
+        feFlood {
+          flood-color: var(--simple-colors-default-theme-accent-8, #000000);
+        }
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+<svg xmlns="http://www.w3.org/2000/svg">
+  <filter
+    color-interpolation-filters="sRGB"
+    x="0"
+    y="0"
+    height="100%"
+    width="100%"
+  >
+    <feFlood result="COLOR" />
+    <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
+  </filter>
+  <image xlink:href="" width="100%" height="100%" focusable="false" preserveAspectRatio="xMidYMid meet"></image>
+</svg>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+      src: {
+        type: String
+      },
+      icon: {
+        type: String
+      }
+    };
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    const randomId = "f-" + Math.random().toString().slice(2, 10);
+    this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
+    this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "icon") {
+        if (this[propName]) {
+          this.src = window.SimpleIconset.requestAvailability().getIcon(this[propName]);
         }
         else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
+          this.src = null;
         }
       }
-    }
-    // create a template element for processing shadowRoot
-    this.template = document.createElement("template");
-    // create a shadowRoot
-    this.attachShadow({ mode: "open" });
-    // optional delay in rendering, otherwise it always happens
-    if (!delayRender) {
-      this.render();
-    }
+      if (propName == 'src') {
+        // look this up in the registry
+        if (this[propName]) {
+          this.shadowRoot.querySelector('image').setAttribute('xlink:href', this[propName]);
+        }
+        else {
+          this.shadowRoot.querySelector('image').removeAttribute('xlink:href');
+        }
+      }
+    });
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
-    }
-    
-  }
-  /**
-   * Render / rerender the shadowRoot
-   */
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
-    }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-  }
-  /**
-   * attributes to notice changes to
-   */
-  static get observedAttributes() {
-    return [];
-  }
-  /**
-   * callback when any observed attribute changes
-   */
-  attributeChangedCallback(attr, oldValue, newValue) {
-
-  }
-  
 }
-window.customElements.define(SimpleIcon.tag, SimpleIcon);
+customElements.define(SimpleIcon.tag, SimpleIcon);
 export { SimpleIcon };

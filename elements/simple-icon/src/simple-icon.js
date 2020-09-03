@@ -32,47 +32,81 @@ class SimpleIcon extends SimpleColors {
       css`
         :host {
           display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          vertical-align: middle;
+          height: var(--simple-icon-height, 24px);
+          width: var(--simple-icon-width, 24px);
         }
-        svg {
-          color: var(--simple-colors-default-theme-accent-1, #000000);
+        feFlood {
+          flood-color: var(--simple-colors-default-theme-accent-8, #000000);
         }
-      `]
+      `
+    ];
   }
   // render function
   render() {
-      return html`
-      <svg xmlns="http://www.w3.org/2000/svg">
-        <filter color-interpolation-filters="sRGB" x="0" y="0" height="100%" width="100%">
-          <feFlood result="COLOR" />
-          <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
-        </filter>
-        <image xlink:href="${this.src}" width="100%" height="100%"></image>
-      </svg>`;
-    }
-  
-    // properties available to the custom element for data binding
-    static get properties() {
-      return {
-        ...super.properties,
-        src: {
-          type: String
-        },
-        icon: {
-          type: String
-        }
-      };
-    }
-    updated(changedProperties) {
-      if (super.updated) {
-        super.updated(changedProperties);
-      }
-      changedProperties.forEach((oldValue, propName) => {
-        if (propName == 'icon') {
-          // look this up in the registry
-        }
-      });
-    }
+    return html`
+<svg xmlns="http://www.w3.org/2000/svg">
+  <filter
+    color-interpolation-filters="sRGB"
+    x="0"
+    y="0"
+    height="100%"
+    width="100%"
+  >
+    <feFlood result="COLOR" />
+    <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
+  </filter>
+  <image xlink:href="" width="100%" height="100%" focusable="false" preserveAspectRatio="xMidYMid meet"></image>
+</svg>`;
   }
-  customElements.define(SimpleIcon.tag, SimpleIcon);
-  export { SimpleIcon };
-  
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties,
+      src: {
+        type: String
+      },
+      icon: {
+        type: String
+      }
+    };
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    const randomId = "f-" + Math.random().toString().slice(2, 10);
+    this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
+    this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "icon") {
+        if (this[propName]) {
+          this.src = window.SimpleIconset.requestAvailability().getIcon(this[propName]);
+        }
+        else {
+          this.src = null;
+        }
+      }
+      if (propName == 'src') {
+        // look this up in the registry
+        if (this[propName]) {
+          this.shadowRoot.querySelector('image').setAttribute('xlink:href', this[propName]);
+        }
+        else {
+          this.shadowRoot.querySelector('image').removeAttribute('xlink:href');
+        }
+      }
+    });
+  }
+}
+customElements.define(SimpleIcon.tag, SimpleIcon);
+export { SimpleIcon };

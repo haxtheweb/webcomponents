@@ -1,11 +1,12 @@
-import "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
-
-const iconset = window.SimpleIconset.requestAvailability();
-iconset.registerIconset('hax', {
-    "code-json": pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/svgs/code-json.svg"
+import { pathResolver } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+const basePath = pathResolver(import.meta.url);
+var iconSet = {};
+const iconNames = [
+  "code-json",
+  "remix",
+  "arrow-expand-left"
+];
+iconNames.forEach(name => {
+  iconSet[name] = `${basePath}svgs/${name}.svg`;
 });
-
-function pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
-  
+window.SimpleIconset.requestAvailability().registerIconset("hax", iconSet);
