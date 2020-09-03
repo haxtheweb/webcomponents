@@ -158,6 +158,24 @@ function update(elem) {
   }
 }
 
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// `wait` milliseconds.
+// https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
+const debounce = (func, wait) => {
+  let timeout;
+
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
 /**
  * lrn-math
  * A mathjax wrapper tag in vanillaJS
@@ -179,9 +197,11 @@ class LrnMath extends HTMLElement {
     window.requestAnimationFrame(function() {
       elem._private = {
         check: "",
-        observer: new MutationObserver(function() {
-          update(elem);
-        })
+        observer: new MutationObserver(
+          debounce(function() {
+            update(elem);
+          }, 300)
+        )
       };
       update(elem);
       elem._private.observer.observe(elem, mutation_config);
