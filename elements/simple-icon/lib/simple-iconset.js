@@ -3,7 +3,7 @@
  */
 class SimpleIconset extends HTMLElement {
   static get tag() {
-    return 'simple-iconset';
+    return "simple-iconset";
   }
   constructor() {
     super();
@@ -17,13 +17,13 @@ class SimpleIconset extends HTMLElement {
    * }
    */
   registerIconset(name, icons = {}) {
-    this.iconsets[name] = {...icons};
+    this.iconsets[name] = { ...icons };
   }
   /**
    * return the icon based on splitting the string on : for position in the object
    */
   getIcon(val) {
-    let ary = val.split(':');
+    let ary = val.split(":");
     if (ary.length == 2 && this.iconsets[ary[0]]) {
       return this.iconsets[ary[0]][ary[1]];
     }
@@ -33,7 +33,7 @@ class SimpleIconset extends HTMLElement {
 /**
  * helper function for iconset developers to resolve relative paths
  */
-function pathResolver(base, path = '') {
+function pathResolver(base, path = "") {
   return pathFromUrl(decodeURIComponent(base)) + path;
 }
 // simple path from url
@@ -50,9 +50,7 @@ window.SimpleIconset = window.SimpleIconset || {};
  */
 window.SimpleIconset.requestAvailability = () => {
   if (window.SimpleIconset.instance == null) {
-    window.SimpleIconset.instance = document.createElement(
-      "simple-iconset"
-    );
+    window.SimpleIconset.instance = document.createElement("simple-iconset");
   }
   document.body.appendChild(window.SimpleIconset.instance);
   return window.SimpleIconset.instance;

@@ -48,19 +48,26 @@ class SimpleIcon extends SimpleColors {
   // render function
   render() {
     return html`
-<svg xmlns="http://www.w3.org/2000/svg">
-  <filter
-    color-interpolation-filters="sRGB"
-    x="0"
-    y="0"
-    height="100%"
-    width="100%"
-  >
-    <feFlood result="COLOR" />
-    <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
-  </filter>
-  <image xlink:href="" width="100%" height="100%" focusable="false" preserveAspectRatio="xMidYMid meet"></image>
-</svg>`;
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <filter
+          color-interpolation-filters="sRGB"
+          x="0"
+          y="0"
+          height="100%"
+          width="100%"
+        >
+          <feFlood result="COLOR" />
+          <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
+        </filter>
+        <image
+          xlink:href=""
+          width="100%"
+          height="100%"
+          focusable="false"
+          preserveAspectRatio="xMidYMid meet"
+        ></image>
+      </svg>
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -79,7 +86,11 @@ class SimpleIcon extends SimpleColors {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    const randomId = "f-" + Math.random().toString().slice(2, 10);
+    const randomId =
+      "f-" +
+      Math.random()
+        .toString()
+        .slice(2, 10);
     this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
     this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
   }
@@ -90,19 +101,21 @@ class SimpleIcon extends SimpleColors {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "icon") {
         if (this[propName]) {
-          this.src = window.SimpleIconset.requestAvailability().getIcon(this[propName]);
-        }
-        else {
+          this.src = window.SimpleIconset.requestAvailability().getIcon(
+            this[propName]
+          );
+        } else {
           this.src = null;
         }
       }
-      if (propName == 'src') {
+      if (propName == "src") {
         // look this up in the registry
         if (this[propName]) {
-          this.shadowRoot.querySelector('image').setAttribute('xlink:href', this[propName]);
-        }
-        else {
-          this.shadowRoot.querySelector('image').removeAttribute('xlink:href');
+          this.shadowRoot
+            .querySelector("image")
+            .setAttribute("xlink:href", this[propName]);
+        } else {
+          this.shadowRoot.querySelector("image").removeAttribute("xlink:href");
         }
       }
     });
