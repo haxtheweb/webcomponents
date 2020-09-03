@@ -31,8 +31,8 @@ class LrndesignImagemap extends LitElement {
 
         
         simple-popover {
-          max-width: var(--lrndesign-imagemap-popover-maxWidth, 625px);
-          max-height: var(--lrndesign-imagemap-popover-maxHeight, 200px);
+          max-width: var(--lrndesign-imagemap-popover-maxWidth, 525px);
+          max-height: var(--lrndesign-imagemap-popover-maxHeight, 300px);
         }
         simple-popover[for=""] {
           display: none;
@@ -56,6 +56,7 @@ class LrndesignImagemap extends LitElement {
       <figure id="figure">
         <figcaption>
           <relative-heading
+            disable-link
             id="heading"
             parent="${this.parent || this.subtopicOf}"
           >
