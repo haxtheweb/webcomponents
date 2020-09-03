@@ -14,90 +14,87 @@
  * @demo demo/index.html
  */
 class ExampleHaxElement extends HTMLElement {
-  
-
-// render function
+  // render function
   render() {
     return html`
-<style>
-:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-        </style>
-<slot></slot>`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Example hax-element",
-    "description": "Provide an example to pick apart of a working HAX element",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Hax"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
-      }
-    ],
-    "meta": {
-      "author": "You",
-      "owner": "Your Company"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "title",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Example hax-element",
+        description:
+          "Provide an example to pick apart of a working HAX element",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Hax"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "You",
+          owner: "Your Company"
+        }
       },
-      {
-        "property": "available",
-        "description": "",
-        "inputMethod": "boolean",
-        "required": false,
-        "icon": "icons:android"
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          },
+          {
+            property: "available",
+            description: "",
+            inputMethod: "boolean",
+            required: false,
+            icon: "icons:android"
+          }
+        ],
+        advanced: []
       }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "title": {
-    "name": "title",
-    "type": String,
-    "value": "My Example",
-    "reflectToAttribute": false,
-    "observer": false
-  },
-  "available": {
-    "name": "available",
-    "type": Boolean,
-    "value": "",
-    "reflectToAttribute": false,
-    "observer": false
-  }
-}
-;
+      ...super.properties,
+
+      title: {
+        name: "title",
+        type: String,
+        value: "My Example",
+        reflectToAttribute: false,
+        observer: false
+      },
+      available: {
+        name: "available",
+        type: Boolean,
+        value: "",
+        reflectToAttribute: false,
+        observer: false
+      }
+    };
   }
 
   /**

@@ -17,49 +17,45 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @element beaker-broker
  */
 class BeakerBroker extends LitElement {
-  
-
-// render function
+  // render function
   render() {
     return html`
-<style>
-:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-        </style>
-<slot></slot>`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {}
-;
+    return {};
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * Archive
-   */
-  "archive": {
-    "type": Object
-  },
-  /**
-   * datUrl
-   */
-  "datUrl": {
-    "type": String,
-    "attribute": "dat-url"
-  }
-}
-;
+      ...super.properties,
+
+      /**
+       * Archive
+       */
+      archive: {
+        type: Object
+      },
+      /**
+       * datUrl
+       */
+      datUrl: {
+        type: String,
+        attribute: "dat-url"
+      }
+    };
   }
 
   /**
