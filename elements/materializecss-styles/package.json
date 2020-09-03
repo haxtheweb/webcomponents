@@ -6,7 +6,7 @@
     "elementName": "materializecss-styles",
     "generator-wcfactory-version": ""
   },
-  "version": "2.7.3",
+  "version": "2.7.6",
   "description": "Materialize CSS style class names",
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.6",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

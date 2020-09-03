@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.5",
+  "version": "2.7.6",
   "description": "Automated conversion of lrndesign-imagemap/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/relative-heading": "^2.7.5",
+    "@lrnwebcomponents/relative-heading": "^2.7.6",
     "@lrnwebcomponents/simple-popover": "^2.7.0",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.6",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

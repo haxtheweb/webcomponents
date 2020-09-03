@@ -16,7 +16,7 @@
       "hax": "src/exif-data-hax.json"
     }
   },
-  "version": "2.7.3",
+  "version": "2.7.6",
   "description": "obtain exif data from slotted elements",
   "repository": {
     "type": "git",
