@@ -74,7 +74,8 @@ class SimpleIcon extends SimpleColors {
         type: String
       },
       icon: {
-        type: String
+        type: String,
+        reflect: true
       }
     };
   }
