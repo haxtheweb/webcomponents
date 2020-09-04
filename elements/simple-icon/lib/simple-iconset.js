@@ -23,8 +23,7 @@ class SimpleIconset extends HTMLElement {
   registerIconset(name, icons = {}) {
     if (typeof icons === "object") {
       this.iconsets[name] = { ...icons };
-    }
-    else if (typeof icons === "string") {
+    } else if (typeof icons === "string") {
       this.iconsets[name] = icons;
     }
     // try processing anything that might have missed previously
@@ -38,9 +37,9 @@ class SimpleIconset extends HTMLElement {
         }
       });
       // process in reverse order to avoid key splicing issues
-      list.reverse().forEach((val) => {
+      list.reverse().forEach(val => {
         this.needsHydrated.splice(val, 1);
-      })
+      });
     }
   }
   /**
@@ -53,8 +52,7 @@ class SimpleIconset extends HTMLElement {
     if (ary.length == 2 && this.iconsets[ary[0]]) {
       if (this.iconsets[ary[0]][ary[1]]) {
         return this.iconsets[ary[0]][ary[1]];
-      }
-      else {
+      } else {
         return `${this.iconsets[ary[0]]}${ary[1]}.svg`;
       }
     }

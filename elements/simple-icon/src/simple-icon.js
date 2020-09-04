@@ -95,7 +95,8 @@ class SimpleIcon extends SimpleColors {
    */
   setSrcByIcon(context) {
     this.src = window.SimpleIconset.requestAvailability().getIcon(
-      this.icon, context
+      this.icon,
+      context
     );
     return this.src;
   }
