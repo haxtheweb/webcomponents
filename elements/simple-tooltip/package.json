@@ -16,7 +16,7 @@
       "hax": "src/simple-tooltip-hax.json"
     }
   },
-  "version": "2.7.3",
+  "version": "2.7.7",
   "description": "a simple tooltip forked from paper-tooltip with the same api",
   "repository": {
     "type": "git",
@@ -42,13 +42,12 @@
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",

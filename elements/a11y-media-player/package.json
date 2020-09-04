@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -43,14 +43,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^2.7.0",
-    "@lrnwebcomponents/anchor-behaviors": "^2.7.6",
-    "@lrnwebcomponents/fullscreen-behaviors": "^2.7.6",
-    "@lrnwebcomponents/responsive-utility": "^2.7.6",
-    "@lrnwebcomponents/simple-colors": "^2.7.6",
-    "@lrnwebcomponents/simple-fields": "^2.7.6",
-    "@lrnwebcomponents/simple-search": "^2.7.6",
-    "@lrnwebcomponents/simple-tooltip": "^2.7.3",
+    "@lrnwebcomponents/absolute-position-behavior": "^2.7.7",
+    "@lrnwebcomponents/anchor-behaviors": "^2.7.7",
+    "@lrnwebcomponents/fullscreen-behaviors": "^2.7.7",
+    "@lrnwebcomponents/responsive-utility": "^2.7.7",
+    "@lrnwebcomponents/simple-colors": "^2.7.7",
+    "@lrnwebcomponents/simple-fields": "^2.7.7",
+    "@lrnwebcomponents/simple-search": "^2.7.7",
+    "@lrnwebcomponents/simple-tooltip": "^2.7.7",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
@@ -64,13 +64,12 @@
     "screenfull": "^4.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^2.7.6",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

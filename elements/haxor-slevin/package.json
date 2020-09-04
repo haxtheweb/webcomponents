@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.7.6",
-    "@lrnwebcomponents/simple-blog-card": "^2.7.6",
-    "@lrnwebcomponents/simple-colors": "^2.7.6",
-    "@lrnwebcomponents/social-share-link": "^2.7.6",
+    "@lrnwebcomponents/haxcms-elements": "^2.7.7",
+    "@lrnwebcomponents/simple-blog-card": "^2.7.7",
+    "@lrnwebcomponents/simple-colors": "^2.7.7",
+    "@lrnwebcomponents/social-share-link": "^2.7.7",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-image": "^3.0.1",
@@ -54,13 +54,12 @@
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",

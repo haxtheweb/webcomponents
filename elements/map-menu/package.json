@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "Automated conversion of map-menu/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.7.6",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.7.7",
     "@polymer/iron-behaviors": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",
@@ -52,14 +52,13 @@
     "query-selector-shadow-dom": "^0.3.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.6",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

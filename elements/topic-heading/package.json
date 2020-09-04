@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "Semantic and visual meaning behind a heading break",
   "repository": {
     "type": "git",
@@ -41,19 +41,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/relative-heading": "^2.7.6",
+    "@lrnwebcomponents/relative-heading": "^2.7.7",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2",

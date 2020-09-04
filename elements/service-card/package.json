@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "simple showcase of services provided",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

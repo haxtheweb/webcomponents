@@ -11,7 +11,7 @@
       "js": "src/a11y-figure.js"
     }
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "accessible figure with image description in details",
   "repository": {
     "type": "git",
@@ -34,17 +34,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-details": "^2.7.6",
+    "@lrnwebcomponents/a11y-details": "^2.7.7",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.7",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-build": "3.1.2",
     "polymer-cli": "1.9.7",

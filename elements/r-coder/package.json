@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "R coder interface for the r-service backend.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.7.6",
+    "@lrnwebcomponents/code-editor": "^2.7.7",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/polymer": "^3.3.1"
   },
@@ -51,7 +51,6 @@
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    
     "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.8.1",
