@@ -158,6 +158,24 @@ function update(elem) {
   }
 }
 
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// `wait` milliseconds.
+// https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
+const debounce = (func, wait) => {
+  let timeout;
+
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
 /**
  * lrn-math
  * A mathjax wrapper tag in vanillaJS
@@ -179,13 +197,39 @@ class LrnMath extends HTMLElement {
     window.requestAnimationFrame(function() {
       elem._private = {
         check: "",
-        observer: new MutationObserver(function() {
-          update(elem);
-        })
+        observer: new MutationObserver(
+          debounce(function() {
+            update(elem);
+          }, 300)
+        )
       };
       update(elem);
       elem._private.observer.observe(elem, mutation_config);
     });
+  }
+
+  /**
+   * Use Math-Text as a method for transfering values
+   * from hax inline text to the slot.
+   */
+  static get observedAttributes() {
+    return ["math-text"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case "math-text":
+        if (newValue !== "" && newValue !== null) {
+          // If a value has been set then wrap it in a
+          // span tag and inject it into the lightdom
+          const container = document.createElement("span");
+          container.innerText = newValue;
+          this.innerHTML = "";
+          this.appendChild(container);
+          this.removeAttribute("math-text");
+        }
+        break;
+    }
   }
 
   static get haxProperties() {
