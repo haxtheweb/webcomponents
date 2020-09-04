@@ -20,6 +20,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "twitter-embed.js",
   "module": "twitter-embed.js",
   "umd": "twitter-embed.umd.js",

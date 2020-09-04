@@ -6,7 +6,6 @@ const rename = require("gulp-rename");
 const replace = require("gulp-replace");
 const stripCssComments = require("strip-css-comments");
 const decomment = require("decomment");
-const sourcemaps = require("gulp-sourcemaps");
 const packageJson = require("./package.json");
 // merge all the src files together
 gulp.task("merge", () => {
@@ -121,4 +120,4 @@ gulp.task("watch", () => {
 // simple developer flow
 gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "analyze", "compile", "sourcemaps"));
+gulp.task("default", gulp.series("merge", "analyze", "compile"));

@@ -2,14 +2,16 @@
   "name": "@lrnwebcomponents/lrn-math",
   "wcfactory": {
     "className": "LrnMath",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "HTMLElement",
     "elementName": "lrn-math",
-    "generator-wcfactory-version": "0.3.1",
+    "generator-wcfactory-version": "0.8.6",
     "useHAX": true,
     "useSass": false,
     "files": {
       "js": "src/lrn-math.js"
     },
+    "sharedHaxProps": [],
+    "sharedProps": [],
     "sharedStyles": []
   },
   "version": "2.7.6",
@@ -36,8 +38,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.6.16",
-    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.6.16",
