@@ -2,15 +2,6 @@
   "version": 1,
   "tags": [
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
-      "name": "git-corner",
-      "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\n",
-      "attributes": []
-    },
-    {
       "name": "git-corner",
       "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `source` {`string`} - source to point to\n\n  * `alt` {`string`} - alt text\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\nProperties:\n\n  * `source` {`string`} - source to point to\n\n  * `alt` {`string`} - alt text\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment",
       "attributes": [

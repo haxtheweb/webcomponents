@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "full-width-image",
       "description": "`full-width-image`\n`full width image that flows beyond boundaries`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - ",
       "attributes": [
         {

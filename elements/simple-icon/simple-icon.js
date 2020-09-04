@@ -16,10 +16,6 @@ import "./lib/simple-iconset.js";
  * @element simple-icon
  */
 class SimpleIcon extends SimpleColors {
-  constructor() {
-    super();
-    window.SimpleIconset.requestAvailability();
-  }
   /**
    * This is a convention, not the standard
    */
@@ -94,6 +90,15 @@ class SimpleIcon extends SimpleColors {
     this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
     this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
   }
+  /**
+   * Set the src by the icon property
+   */
+  setSrcByIcon(context) {
+    this.src = window.SimpleIconset.requestAvailability().getIcon(
+      this.icon, context
+    );
+    return this.src;
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -101,9 +106,7 @@ class SimpleIcon extends SimpleColors {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "icon") {
         if (this[propName]) {
-          this.src = window.SimpleIconset.requestAvailability().getIcon(
-            this[propName]
-          );
+          this.setSrcByIcon(this);
         } else {
           this.src = null;
         }
@@ -114,8 +117,6 @@ class SimpleIcon extends SimpleColors {
           this.shadowRoot
             .querySelector("image")
             .setAttribute("xlink:href", this[propName]);
-        } else {
-          this.shadowRoot.querySelector("image").removeAttribute("xlink:href");
         }
       }
     });

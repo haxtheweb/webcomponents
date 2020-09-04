@@ -7,7 +7,6 @@ module.exports = function factory(packageJson) {
   import replace from "gulp-replace";
   import stripCssComments from "strip-css-comments";
   import decomment from "decomment";
-  import sourcemaps from "gulp-sourcemaps";
   // merge all the src files together
   gulp.task("merge", () => {
     return gulp
@@ -119,16 +118,6 @@ module.exports = function factory(packageJson) {
   });
   // copy from the built locations pulling them together
   gulp.task("compile", () => {
-    // copy outputs
-    gulp
-      .src("./" + packageJson.wcfactory.elementName + ".js")
-      .pipe(
-        rename({
-          suffix: ".es6"
-        })
-      )
-      .pipe(gulp.dest("./"));
-
     return gulp
       .src("./" + packageJson.wcfactory.elementName + ".js")
       .pipe(
@@ -149,18 +138,10 @@ module.exports = function factory(packageJson) {
     return gulp.watch("./src/*", gulp.series("merge", "analyze"));
   });
 
-  // shift build files around a bit and build source maps
-  gulp.task("sourcemaps", () => {
-    return gulp
-      .src("./" + packageJson.wcfactory.elementName + ".es6.js")
-      .pipe(sourcemaps.init())
-      .pipe(sourcemaps.write("./"));
-  });
-
   gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
   gulp.task(
     "default",
-    gulp.series("merge", "analyze", "compile", "sourcemaps")
+    gulp.series("merge", "analyze", "compile")
   );
 };

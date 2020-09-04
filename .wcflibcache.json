@@ -29,7 +29,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",
@@ -61,7 +61,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",
@@ -98,7 +98,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",
@@ -132,7 +132,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",
@@ -171,7 +171,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",
@@ -208,7 +208,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",
@@ -245,7 +245,7 @@
       "@webcomponents/webcomponentsjs": "2.2.1",
       "concurrently": "4.0.1",
       "gulp-babel": "8.0.0",
-      "gulp-sourcemaps": "2.6.4",
+      
       "lodash": "4.17.11",
       "polymer-cli": "1.8.0",
       "polymer-build": "3.0.4",

@@ -10,7 +10,6 @@ function umdConfig({ elementName, className } = {}) {
     output: {
       file: umdFilename,
       format: "umd",
-      sourcemap: true,
       name: className
     },
     plugins: [

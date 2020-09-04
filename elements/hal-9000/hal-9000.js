@@ -23,6 +23,7 @@ class Hal9000 extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

@@ -3,35 +3,39 @@
   "tags": [
     {
       "name": "dynamic-import-registry",
-      "path": "./dynamic-import-registry.es6.js",
-      "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
-      "properties": [
-        {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "template"
-        }
-      ]
-    },
-    {
-      "name": "dynamic-import-registry",
       "path": "./dynamic-import-registry.js",
       "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
       "properties": [
         {
-          "name": "html",
-          "type": "string"
+          "name": "list",
+          "type": "object",
+          "default": "{}"
         },
         {
-          "name": "template"
+          "name": "basePath",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "dynamic-import-registry-loaded"
+        },
+        {
+          "name": "dynamic-import-registry-failure"
         }
       ]
     },
     {
       "name": "tag",
-      "path": "./dynamic-import-registry.umd.js"
+      "path": "./dynamic-import-registry.umd.js",
+      "events": [
+        {
+          "name": "dynamic-import-registry-loaded"
+        },
+        {
+          "name": "dynamic-import-registry-failure"
+        }
+      ]
     },
     {
       "name": "dynamic-import-registry",
@@ -39,7 +43,21 @@
       "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
       "properties": [
         {
-          "name": "template"
+          "name": "list",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "basePath",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "dynamic-import-registry-loaded"
+        },
+        {
+          "name": "dynamic-import-registry-failure"
         }
       ]
     }
