@@ -19,9 +19,9 @@ class LrndesignSidenote extends SimpleColors {
 
   static get haxProperties() {
     return {
-      canScale: !1,
-      canPosition: !0,
-      canEditSource: !1,
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
       gizmo: {
         title: "Side-Note",
         description: "A .",

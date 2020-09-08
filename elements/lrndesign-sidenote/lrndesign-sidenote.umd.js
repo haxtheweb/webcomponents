@@ -13,22 +13,22 @@ class LrndesignSidenote extends SimpleColors {
     return {
       ...super.properties,
       label: { type: String },
-      icon: { type: String },
+      icon: { type: String }
     };
   }
 
   static get haxProperties() {
     return {
-      canScale: !1,
-      canPosition: !0,
-      canEditSource: !1,
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
       gizmo: {
         title: "Side-Note",
         description: "A .",
         icon: "icons:bookmark",
         color: "blue",
         groups: [""],
-        meta: { author: "ELMS:LN" },
+        meta: { author: "ELMS:LN" }
       },
       settings: {
         configure: [
@@ -37,7 +37,7 @@ class LrndesignSidenote extends SimpleColors {
             title: "Label",
             description: "The label of the sidenote.",
             inputMethod: "textfield",
-            icon: "editor:title",
+            icon: "editor:title"
           },
           {
             property: "dark",
@@ -57,33 +57,32 @@ class LrndesignSidenote extends SimpleColors {
               "icons:feedback",
               "icons:thumb-down",
               "icons:thumb-up",
-              "icons:warning",
-            ],
+              "icons:warning"
+            ]
           },
           {
             property: "accentColor",
             title: "Color",
             description: "The background color of the sidenote.",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
+            icon: "editor:format-color-fill"
           },
           {
             slot: "",
             title: "Content",
             description: "Content of the side note.",
-            inputMethod: "code-editor",
-          },
+            inputMethod: "code-editor"
+          }
         ],
-        advanced: [],
+        advanced: []
       },
       demoSchema: [
         {
           tag: "lrndesign-sidenote",
-          content:
-            '<p>Content goes here...</p>',
-          properties: { "label": "Label", "icon": "bookmark" },
-        },
-      ],
+          content: "<p>Content goes here...</p>",
+          properties: { label: "Label", icon: "bookmark" }
+        }
+      ]
     };
   }
 
@@ -103,7 +102,10 @@ class LrndesignSidenote extends SimpleColors {
 
         #container {
           display: block;
-          background-color: var(--simple-colors-default-theme-accent-1, #ffffff);
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            #ffffff
+          );
           padding: var(--lrndesign-sidenote-container-padding, 16px);
           margin-left: var(--lrndesign-sidenote-container-margin-left, 0px);
           color: var(--simple-colors-default-theme-accent-12, #000);
@@ -124,7 +126,7 @@ class LrndesignSidenote extends SimpleColors {
           flex: 1 1 auto;
         }
       `
-    ]
+    ];
   }
 
   render() {
