@@ -1,2 +1,146 @@
-!function(n,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("lit-element/lit-element.js"),require("@polymer/iron-icons/iron-icons.js"),require("@polymer/iron-icon/iron-icon.js")):"function"==typeof define&&define.amd?define(["exports","lit-element/lit-element.js","@polymer/iron-icons/iron-icons.js","@polymer/iron-icon/iron-icon.js"],e):e((n=n||self).LrndesignSidenote={},n.litElement_js)}(this,function(n,e){"use strict";function t(n,e){for(var t=0;t<e.length;t++){var o=e[t];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(n,o.key,o)}}function o(n,e,o){return e&&t(n.prototype,e),o&&t(n,o),n}function i(n){return(i=Object.setPrototypeOf?Object.getPrototypeOf:function(n){return n.__proto__||Object.getPrototypeOf(n)})(n)}function r(n,e){return(r=Object.setPrototypeOf||function(n,e){return n.__proto__=e,n})(n,e)}function c(n,e){return!e||"object"!=typeof e&&"function"!=typeof e?function(n){if(void 0===n)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return n}(n):e}function l(){var n,e,t=(n=['\n      <style>\n        :host {\n          display: block;\n          --container-bg-color: lightgray;\n          --container-text-color: black;\n          --container-padding: 16px;\n          --container-outset: 0;\n          @apply --host-styles;\n        }\n\n        #container {\n          display: block;\n          background: var(--container-bg-color);\n          color: var(--container-text-color);\n          padding: var(--container-padding);\n          margin-left: -var(--container-outset);\n          @apply --container-styles;\n        }\n\n        #header {\n          display: flex;\n          align-items: center;\n          @apply --container-header;\n        }\n\n        #icon {\n          margin-right: 8px;\n          @apply --icon-styles;\n        }\n\n        #label {\n          font-size: 20.8px;\n          margin: 12.8px 0;\n          flex: 1 1 auto;\n          @apply --label-styles;\n        }\n      </style>\n      <div id="container" style="','">\n        <div id="header">\n          <iron-icon id="icon" icon=','></iron-icon>\n          <div id="label">',"</div>\n        </div>\n        <slot></slot>\n      </div>\n    "],e||(e=n.slice(0)),Object.freeze(Object.defineProperties(n,{raw:{value:Object.freeze(e)}})));return l=function(){return t},t}var a=function(n){function t(){var n;return function(n,e){if(!(n instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),(n=c(this,i(t).call(this))).label="",n.icon="",n.bgColor="",n}return function(n,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");n.prototype=Object.create(e&&e.prototype,{constructor:{value:n,writable:!0,configurable:!0}}),e&&r(n,e)}(t,e.LitElement),o(t,null,[{key:"properties",get:function(){return{label:{type:String},icon:{type:String},bgColor:{type:String}}}},{key:"haxProperties",get:function(){return{canScale:!1,canPosition:!0,canEditSource:!1,gizmo:{title:"Side-Note",description:"A .",icon:"icons:bookmark",color:"blue",groups:[""],meta:{author:"ELMS:LN"}},settings:{quick:[{property:"label",title:"Label",description:"The label of the sidenote.",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"icon",title:"Icon",description:"The icon of the sidenote.",inputMethod:"iconpicker",options:["icons:announcement","icons:book","icons:bookmark","icons:check-circle","icons:feedback","icons:thumb-down","icons:thumb-up","icons:warning"]},{property:"bgColor",title:"Color",description:"The background color of the sidenote.",inputMethod:"colorpicker",icon:"editor:format-color-fill"}],advanced:[]}}}}]),o(t,[{key:"render",value:function(){var n=this.bgColor?"background-color:".concat(this.bgColor,";"):"";return e.html(l(),n,this.icon,this.label)}}],[{key:"tag",get:function(){return"lrndesign-sidenote"}}]),t}();customElements.define("lrndesign-sidenote",a),n.LrndesignSidenote=a,Object.defineProperty(n,"__esModule",{value:!0})});
-//# sourceMappingURL=lrndesign-sidenote.umd.js.map
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
+/**
+`lrndesign-sidenote`
+A basic side note
+
+* @demo demo/index.html
+*/
+class LrndesignSidenote extends SimpleColors {
+  static get properties() {
+    return {
+      ...super.properties,
+      label: { type: String },
+      icon: { type: String },
+    };
+  }
+
+  static get haxProperties() {
+    return {
+      canScale: !1,
+      canPosition: !0,
+      canEditSource: !1,
+      gizmo: {
+        title: "Side-Note",
+        description: "A .",
+        icon: "icons:bookmark",
+        color: "blue",
+        groups: [""],
+        meta: { author: "ELMS:LN" },
+      },
+      settings: {
+        configure: [
+          {
+            property: "label",
+            title: "Label",
+            description: "The label of the sidenote.",
+            inputMethod: "textfield",
+            icon: "editor:title",
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            inputMethod: "boolean"
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "The icon of the sidenote.",
+            inputMethod: "iconpicker",
+            options: [
+              "icons:announcement",
+              "icons:book",
+              "icons:bookmark",
+              "icons:check-circle",
+              "icons:feedback",
+              "icons:thumb-down",
+              "icons:thumb-up",
+              "icons:warning",
+            ],
+          },
+          {
+            property: "accentColor",
+            title: "Color",
+            description: "The background color of the sidenote.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill",
+          },
+          {
+            slot: "",
+            title: "Content",
+            description: "Content of the side note.",
+            inputMethod: "code-editor",
+          },
+        ],
+        advanced: [],
+      },
+      demoSchema: [
+        {
+          tag: "lrndesign-sidenote",
+          content:
+            '<p>Content goes here...</p>',
+          properties: { "label": "Label", "icon": "bookmark" },
+        },
+      ],
+    };
+  }
+
+  constructor() {
+    super();
+    this.label = "";
+    this.icon = "";
+  }
+
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: block;
+        }
+
+        #container {
+          display: block;
+          background-color: var(--simple-colors-default-theme-accent-1, #ffffff);
+          padding: var(--lrndesign-sidenote-container-padding, 16px);
+          margin-left: var(--lrndesign-sidenote-container-margin-left, 0px);
+          color: var(--simple-colors-default-theme-accent-12, #000);
+        }
+
+        #header {
+          display: flex;
+          align-items: center;
+        }
+
+        #icon {
+          margin-right: 8px;
+        }
+
+        #label {
+          font-size: 20.8px;
+          margin: 12.8px 0;
+          flex: 1 1 auto;
+        }
+      `
+    ]
+  }
+
+  render() {
+    return html`
+      <div id="container">
+        <div id="header">
+          <iron-icon id="icon" icon=${this.icon}></iron-icon>
+          <div id="label">${this.label}</div>
+        </div>
+        <slot></slot>
+      </div>
+    `;
+  }
+  static get tag() {
+    return "lrndesign-sidenote";
+  }
+}
+customElements.define("lrndesign-sidenote", LrndesignSidenote);
+export { LrndesignSidenote };
