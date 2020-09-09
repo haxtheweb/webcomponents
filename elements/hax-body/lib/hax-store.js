@@ -978,23 +978,22 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       )
     ) {
       let pasteContent = "";
+      let originalContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
+        console.log((e.originalEvent || e));
+        console.log((e.originalEvent || e).clipboardData);
         pasteContent = (e.originalEvent || e).clipboardData.getData(
           "text/html"
         );
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
+      originalContent = pasteContent;
       // detect word garbage
-      var mswTest = pasteContent.replace(/(class=(")?Mso[a-zA-Z]+(")?)/g, "");
-      let wordPaste = false;
+      let inlinePaste = false;
       // the string to import as sanitized by hax
       let newContent = "";
-      mswTest = mswTest.replace("mso-style-", "");
-      if (pasteContent != mswTest) {
-        wordPaste = true;
-      }
       // clear empty span tags that can pop up
       pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
       // clean up div tags that can come in from contenteditable pastes
@@ -1003,15 +1002,22 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
+      console.log(originalContent);
+      console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
+      console.log(haxElements);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
       if (haxElements.length === 0) {
+        console.log(0);
+        console.log(originalContent);
+        console.log(pasteContent);
+        inlinePaste = true;
         // wrap in a paragraph tag if there is any this ensures it correctly imports
         // as it might not have evaluated above as having elements bc of the scrubber
-        if (wordPaste) {
+        if (originalContent != pasteContent) {
           newContent = pasteContent;
         } else {
           return false;
@@ -1019,7 +1025,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // account for incredibly basic pastes of single groups of characters
       else if (haxElements.length === 1 && haxElements[0].tag === "p") {
-        return false;
+        console.log(1);
+        newContent = pasteContent;
+        inlinePaste = true;
       }
       // account for incredibly basic pastes of single groups of characters
       else if (
@@ -1027,6 +1035,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         haxElements[0].tag === "a" &&
         haxElements[0].properties.href
       ) {
+        console.log('url');
         // test for a URL since we didn't have HTML / elements of some kind
         // if it's a URL we might be able to automatically convert it into it's own element
         let values = {
@@ -1050,8 +1059,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // account for broken pastes in resolution, just let browser handle it
       else if (!this.isGridPlateElement(haxElements[0])) {
+        console.log('grid');
+
         return false;
       } else {
+        console.log('else');
         for (var i in haxElements) {
           // special traps for word / other styles bleeding through
           delete haxElements[i].properties.style;
@@ -1079,11 +1091,55 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         let sel = window.HaxStore.getSelection();
         // tee up a wrapper so we can walk and put every element in
         let newNodes = document.createElement("div");
+        // defined so that we can 
+        let siblingEl;
         newNodes.innerHTML = newContent;
+        console.log(newNodes);
         if (range && sel && typeof range.deleteContents === "function") {
           range.deleteContents();
-          while (newNodes.lastChild) {
-            range.insertNode(newNodes.lastChild);
+          console.log(newNodes.firstElementChild);
+          if (inlinePaste) {
+            let txt = document.createTextNode(newNodes.innerHTML);
+            range.insertNode(txt);
+            setTimeout(() => {
+              this._positionCursorInNode(txt, txt.length);              
+            }, 0);
+          }
+          else {
+            console.log(newNodes);
+            console.log(newNodes.lastElementChild);
+            let activeEl;
+            while (newNodes.lastElementChild) {
+              // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
+              // this hopefully captures complex HTML pastes and inserts them in a logical way
+              if (range.commonAncestorContainer && range.commonAncestorContainer.parentNode) {
+                if (!siblingEl) {
+                  siblingEl = range.commonAncestorContainer.parentNode.nextElementSibling;
+                  if (!siblingEl) {
+                    siblingEl = range.commonAncestorContainer;
+                  }
+                }
+                console.log(range.commonAncestorContainer);
+                console.log(activeEl);
+                console.log(siblingEl);
+                console.log('paste AFTER target');
+                activeEl = newNodes.lastElementChild;
+                // should always be there but just in case there was no range
+                // so we avoid an infinite loop
+                if (siblingEl) {
+                  siblingEl.parentNode.insertBefore(activeEl, siblingEl);
+                }
+                // attempt insert after active
+                else if (this.activeNode) {
+                  this.activeNode.parentNode.insertBefore(activeEl, this.activeNode);                  
+                }
+                // shouldn't be possible but just to be safe
+                else {
+                  this.activeHaxBody.appendChild(activeEl);
+                }
+                siblingEl = activeEl;
+              }
+            }
           }
         }
       } catch (e) {
