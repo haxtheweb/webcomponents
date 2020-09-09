@@ -1233,6 +1233,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
     if (media) {
       if (!crossorigin) media.setAttribute("crossorigin", this.crossorigin);
       media.removeAttribute("autoplay");
+      media.removeAttribute("controls");
       media.setAttribute("preload", "metadata");
     }
 

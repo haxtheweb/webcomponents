@@ -190,7 +190,7 @@ export const A11yMediaPlayerAudio = () => {
     utils.getKnobs(fields, {
       ...defaults,
       emptyslot: `
-          <audio>
+          <audio controls>
               <source src="${new URL(
                 `demo/samples/bueller.mp3`,
                 import.meta.url
