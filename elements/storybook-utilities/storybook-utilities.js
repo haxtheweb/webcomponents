@@ -674,7 +674,9 @@ export class StorybookUtilities {
     template.innerHTML += el;
     demo.innerHTML += before;
     demo.appendChild(template);
-    demo.style.margin = "-8px";
+    demo.style.margin = "0 -8px 40px";
+    demo.style.boxShadow = "none";
+    demo.style.borderBottom = "1px solid #e0e0e0";
     demo.style.padding = "0";
     console.debug("demo", demo);
     return demo;
