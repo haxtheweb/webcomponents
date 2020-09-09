@@ -1,9 +1,13 @@
 const path = require("path");
+const fs = require('fs');
 const cpy = require("rollup-plugin-cpy");
 
 module.exports = {
   // Globs of all the stories in your project
-  stories: ["../elements/*/**.stories.{js,mdx}"],
+  stories: [
+    "./**.stories.{js,mdx}",
+    "../elements/*/**.stories.{js,mdx}"
+  ],
 
   // Addons to be loaded, note that you need to import
   // them from storybook-prebuilt
