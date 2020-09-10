@@ -1087,10 +1087,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             // delete nodes that are empty paragraphs
             if (
               newNodes.children[i].tagName &&
-              newNodes.children[i].tagName === 'P' &&
-              newNodes.children[i].innerHTML === '') {
-                newNodes.children[i].remove();
-              }
+              newNodes.children[i].tagName === "P" &&
+              newNodes.children[i].innerHTML === ""
+            ) {
+              newNodes.children[i].remove();
+            }
           }
           if (inlinePaste) {
             let txt = document.createTextNode(newNodes.innerHTML);
