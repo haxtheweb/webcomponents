@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.7",
+  "version": "2.7.8",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.7.7",
     "@lrnwebcomponents/a11y-tabs": "^2.7.7",
-    "@lrnwebcomponents/hax-body": "^2.7.7",
+    "@lrnwebcomponents/hax-body": "^2.7.8",
     "@lrnwebcomponents/simple-tooltip": "^2.7.7",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
