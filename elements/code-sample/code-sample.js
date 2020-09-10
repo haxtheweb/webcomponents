@@ -7,9 +7,13 @@ import { hljs } from "./lib/highlightjs/highlight.js";
 import { javascript } from "./lib/highlightjs/languages/javascript.js";
 import { yaml } from "./lib/highlightjs/languages/yaml.js";
 import { jsonLang } from "./lib/highlightjs/languages/json.js";
+import { cssLang } from "./lib/highlightjs/languages/css.js";
+import { phpLang } from "./lib/highlightjs/languages/php.js";
 import { xml } from "./lib/highlightjs/languages/xml.js";
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("json", jsonLang);
+hljs.registerLanguage("css", cssLang);
+hljs.registerLanguage("php", phpLang);
 hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
 window["hljs"] = hljs;
@@ -170,7 +174,8 @@ class CodeSample extends LitElement {
       // Code type (optional). (eg.: html, js, css)
       // Options are the same as the available classes for `<code>` tag using highlight.js
       type: {
-        type: String
+        type: String,
+        reflect: true
       }
     };
   }

@@ -236,7 +236,7 @@ function generateResourceID(base = "#") {
   );
 }
 /**
- * Strip word BS
+ * Strip word BS as well as GDocs, box notes, Medium and some others as best we can
  */
 function stripMSWord(input) {
   // 1. remove line breaks / Mso classes right off the bat
@@ -277,30 +277,46 @@ function stripMSWord(input) {
   output = output.replace(/ face="(\s|.)*?"/gim, "");
   output = output.replace(/ align=.*? /g, "");
   output = output.replace(/ start='.*?'/g, "");
+  // ID's wont apply meaningfully on a paste
+  output = output.replace(/ id="(\s|.)*?"/gim, "");
   // Google Docs ones
   output = output.replace(/ dir="(\s|.)*?"/gim, "");
   output = output.replace(/ role="(\s|.)*?"/gim, "");
-  output = output.replace(/ id="(\s|.)*?"/gim, "");
 
   // 6. some HAX specific things in case this was moving content around
   // these are universally true tho so fine to have here
   output = output.replace(/ style="(\s|.)*?"/gim, "");
-  output = output.replace(/ data-editable="(\s|.)*?"/gim, "");
-  output = output.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
-  output = output.replace(/ class=""/gim, "");
-  output = output.replace(/ class="hax-active"/gim, "");
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
+  // some medium, box, github and other paste stuff as well as general paste clean up for classes
+  // in multiple html primatives
+  output = output.replace(/ data-(\s|.)*?"(\s|.)*?"/gim, "");
+  output = output.replace(/ class="(\s|.)*?"/gim, "");
   // 7. clean out empty paragraphs and endlines that cause weird spacing
   output = output.replace(/&nbsp;/gm, " ");
   // start of double, do it twice for nesting
+  output = output.replace(/<section>/gm, "<p>");
+  output = output.replace(/<\/section>/gm, "</p>");
   output = output.replace(/<p><p>/gm, "<p>");
   output = output.replace(/<p><p>/gm, "<p>");
   // double, do it twice for nesting
   output = output.replace(/<\/p><\/p>/gm, "</p>");
   output = output.replace(/<\/p><\/p>/gm, "</p>");
+  // normalize BR's; common from GoogleDocs
+  output = output.replace(/<br \/>/gm, "<br/>");
+  output = output.replace(/<p><br \/><b>/gm, "<p><b>");
+  output = output.replace(/<\/p><br \/><\/b>/gm, "</p></b>");
   // some other things we know not to allow to wrap
   output = output.replace(/<b><p>/gm, "<p>");
   output = output.replace(/<\/p><\/b>/gm, "</p>");
+  // drop list wrappers
+  output = output.replace(/<li><p>/gm, "<li>");
+  output = output.replace(/<\/p><\/li>/gm, "</li>");
+  // bold wraps as an outer tag like p can, and on lists
+  output = output.replace(/<b><ul>/gm, "<ul>");
+  output = output.replace(/<\/ul><\/b>/gm, "</ul>");
+  output = output.replace(/<b><ol>/gm, "<ol>");
+  output = output.replace(/<\/ol><\/b>/gm, "</ol>");
+  // try ax'ing extra spans
   output = output.replace(/<span><p>/gm, "<p>");
   output = output.replace(/<\/p><\/span>/gm, "</p>");
   // empty with lots of space
@@ -311,6 +327,7 @@ function stripMSWord(input) {
   // br somehow getting through here
   output = output.replace(/<p><br\/><\/p>/gm, "");
   output = output.replace(/<p><br><\/p>/gm, "");
+
   // whitespace in reverse of the top case now that we've cleaned it up
   output = output.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
   // wow do I hate contenteditable and the dom....

@@ -98,6 +98,7 @@ class FullScreenImage extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

@@ -32,6 +32,7 @@ class H5PElement extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

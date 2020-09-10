@@ -32,10 +32,10 @@ Custom property | Description | Default
  * @demo demo/index.html
  */
 class ExtensibleToolbar extends LitElement {
-  // render function
-  render() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
           opacity: 1;
@@ -82,7 +82,13 @@ class ExtensibleToolbar extends LitElement {
           --extensible-toolbar-visible-until-xl: none;
           --extensible-toolbar-hidden-until-xl: none;
         }
-      </style>
+      `
+    ];
+  }
+
+  // render function
+  render() {
+    return html`
       <slot></slot>
     `;
   }
@@ -90,13 +96,15 @@ class ExtensibleToolbar extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
+
       /**
        * Is the toolbar collapsed?
        */
       collapsed: {
         attribute: "collapsed",
         reflect: true,
-        type: "Boolean"
+        type: Boolean
       },
 
       /**
@@ -104,7 +112,7 @@ class ExtensibleToolbar extends LitElement {
        */
       responsiveSize: {
         attribute: "responsive-size",
-        type: "String"
+        type: String
       },
 
       /**
@@ -112,7 +120,7 @@ class ExtensibleToolbar extends LitElement {
        */
       sticky: {
         attribute: "sticky",
-        type: "Boolean",
+        type: Boolean,
         reflectToAttribute: true
       }
     };

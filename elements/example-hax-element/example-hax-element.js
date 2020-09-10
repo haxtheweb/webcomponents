@@ -15,18 +15,19 @@
  */
 class ExampleHaxElement extends HTMLElement {
   // render function
-  get html() {
-    return `
-<style>
-:host {
-  display: block;
-}
+  render() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-        </style>
-<slot></slot>`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>
+    `;
   }
 
   // haxProperty definition

@@ -14,12 +14,13 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.7.5",
+  "version": "2.7.7",
   "description": "A simple twitter embed w/ singleton for performance / multiple embed",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "twitter-embed.js",
   "module": "twitter-embed.js",
   "umd": "twitter-embed.umd.js",
@@ -40,7 +41,7 @@
     "lit-element": "2.4.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

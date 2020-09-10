@@ -216,21 +216,19 @@ class CleanTwo extends HAXCMSThemeParts(
           display: flex;
         }
 
-          :host([is-logged-in][menu-open]) .body-wrapper nav {
-            margin-left: 48px;
-          }
-          :host([is-logged-in][menu-open]) .body-wrapper .content-wrapper {
-            margin-left: 0;
-          }
-          :host([is-logged-in]) .body-wrapper .content-wrapper {
-            margin-left: 48px;
-            width: auto;
-          }
-          .body-wrapper .content-wrapper .content {
-            width: auto;
-            margin: 0;
-            padding: 32px 64px;
-          }
+        :host([is-logged-in][menu-open]) .body-wrapper nav {
+          margin-left: 48px;
+        }
+        :host([is-logged-in][menu-open]) .body-wrapper .content-wrapper {
+          margin-left: 0;
+        }
+        :host([is-logged-in]) .body-wrapper .content-wrapper {
+          margin-left: 48px;
+        }
+        .body-wrapper .content-wrapper .content {
+          margin: 0;
+          padding: 32px 64px;
+        }
         
         nav {
           display: -webkit-box;
@@ -262,7 +260,7 @@ class CleanTwo extends HAXCMSThemeParts(
             flex: 0 0 auto;
             width: auto;
             z-index: 15;
-            min-width: 300px;
+            width: 300px;
             align-items: stretch;
             border-right: 1px solid #E6ECF1;
             flex-direction: column;
@@ -278,6 +276,7 @@ class CleanTwo extends HAXCMSThemeParts(
           overflow-y: auto;
           flex: 1 1 auto;
           width: 300px;
+          left: 0;
           margin: 32px 0 32px 0;
           display: block;
           padding: 0;
@@ -285,6 +284,10 @@ class CleanTwo extends HAXCMSThemeParts(
           font-size: 15px;
           overflow-x: hidden;
           -webkit-overflow-scrolling: touch;
+        }
+
+        :host([is-logged-in][menu-open]) site-menu {
+          left: 48px;
         }
 
         .content-wrapper {
@@ -331,10 +334,16 @@ class CleanTwo extends HAXCMSThemeParts(
           #slot ::slotted(iframe) {
             width: auto;
           }
+          .content {
+            width: 400px;
+          }
         }
         @media screen and (min-width: 1024px) {
           .content-wrapper {
             margin: 0px 88px;
+          }
+          .content {
+            width: 750px;
           }
         }
         @media screen and (min-width: 1514px) {
@@ -347,7 +356,7 @@ class CleanTwo extends HAXCMSThemeParts(
           margin: 0px 16px;
           display: block;
           padding: 0;
-          width: 750px;
+          width: 600px;
         }
         .right-col {
           margin: 0;

@@ -3,12 +3,7 @@
   "tags": [
     {
       "name": "code-sample",
-      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nProperties:\n\n  * `_observer` - \n\n  * `theme` - \n\n  * `copyClipboardButton` {`boolean`} - ",
-      "attributes": []
-    },
-    {
-      "name": "code-sample",
-      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `copy-clipboard-button` {`boolean`} - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `_observer` - \n\n  * `theme` {`string`} - \n\n  * `copyClipboardButton` {`boolean`} - ",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nAttributes:\n\n  * `type` {`string`} - \n\n  * `theme` - \n\n  * `copy-clipboard-button` {`boolean`} - \n\nProperties:\n\n  * `type` {`string`} - \n\n  * `_observer` - \n\n  * `theme` - \n\n  * `copyClipboardButton` {`boolean`} - ",
       "attributes": [
         {
           "name": "type",
@@ -16,7 +11,7 @@
         },
         {
           "name": "theme",
-          "description": "`theme` {`string`} - \n\nProperty: theme\n\nDefault: oneDark"
+          "description": "`theme` - \n\nProperty: theme\n\nDefault: oneDark"
         },
         {
           "name": "copy-clipboard-button",

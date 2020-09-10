@@ -3,12 +3,7 @@
   "tags": [
     {
       "name": "example-hax-element",
-      "description": "`example-hax-element`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
-      "attributes": []
-    },
-    {
-      "name": "example-hax-element",
-      "description": "`example-hax-element`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `available` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `title` {`string`} - \n\n  * `available` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
+      "description": "`example-hax-element`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `available` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `available` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
       "attributes": [
         {
           "name": "title",

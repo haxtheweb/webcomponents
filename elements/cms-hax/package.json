@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.5",
+  "version": "2.7.8",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",
@@ -36,10 +36,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/h-a-x": "^2.7.5",
-    "@lrnwebcomponents/hax-body": "^2.7.5",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.7.3",
-    "@lrnwebcomponents/simple-toast": "^2.7.3",
+    "@lrnwebcomponents/h-a-x": "^2.7.8",
+    "@lrnwebcomponents/hax-body": "^2.7.8",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.7.7",
+    "@lrnwebcomponents/simple-toast": "^2.7.7",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
@@ -48,14 +48,13 @@
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

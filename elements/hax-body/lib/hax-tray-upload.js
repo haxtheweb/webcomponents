@@ -49,36 +49,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       source: this.shadowRoot.querySelector("#url").value,
       title: this.shadowRoot.querySelector("#url").value
     };
-    // we have no clue what this is.. let's try and guess..
-    let type = window.HaxStore.guessGizmoType(values);
-    let haxElements = window.HaxStore.guessGizmo(type, values, false, true);
-    // see if we got anything
-    if (haxElements.length > 0) {
-      if (haxElements.length === 1) {
-        if (typeof haxElements[0].tag !== typeof undefined) {
-          this.dispatchEvent(
-            new CustomEvent("hax-insert-content", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: haxElements[0]
-            })
-          );
-        }
-      } else {
-        // hand off to hax-app-picker to deal with the rest of this
-        window.HaxStore.instance.haxAppPicker.presentOptions(
-          haxElements,
-          type,
-          "Pick how to present the " + type,
-          "gizmo"
-        );
-      }
-    } else {
-      window.HaxStore.toast(
-        "Sorry, HAX doesn't know how to handle that type of link yet."
-      );
-    }
+    window.HaxStore.insertLogicFromValues(values, this);
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {

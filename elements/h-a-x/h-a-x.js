@@ -41,6 +41,9 @@ class HAX extends HTMLElement {
 
     img {
       max-width: 100%;
+      max-width: -moz-available;
+      max-width: -webkit-fill-available;
+      max-width: fill-available;
     }
 
     h1 {

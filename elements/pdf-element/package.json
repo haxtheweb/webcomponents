@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.3",
+  "version": "2.7.7",
   "description": "Automated conversion of pdf-element/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^2.7.3",
+    "@lrnwebcomponents/schema-behaviors": "^2.7.7",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/iron-input": "^3.0.0",
@@ -53,14 +53,13 @@
     "pdfjs-dist": "^2.0.489"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

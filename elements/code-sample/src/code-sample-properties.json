@@ -12,6 +12,7 @@
   // Code type (optional). (eg.: html, js, css)
   // Options are the same as the available classes for `<code>` tag using highlight.js
   "type": {
-    "type": String
+    "type": String,
+    "reflect": true
   }
 }

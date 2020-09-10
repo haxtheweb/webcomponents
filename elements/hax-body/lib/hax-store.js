@@ -978,6 +978,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       )
     ) {
       let pasteContent = "";
+      let originalContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
         pasteContent = (e.originalEvent || e).clipboardData.getData(
@@ -986,15 +987,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
+      originalContent = pasteContent;
       // detect word garbage
-      var mswTest = pasteContent.replace(/(class=(")?Mso[a-zA-Z]+(")?)/g, "");
-      let wordPaste = false;
+      let inlinePaste = false;
       // the string to import as sanitized by hax
       let newContent = "";
-      mswTest = mswTest.replace("mso-style-", "");
-      if (pasteContent != mswTest) {
-        wordPaste = true;
-      }
       // clear empty span tags that can pop up
       pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
       // clean up div tags that can come in from contenteditable pastes
@@ -1009,9 +1006,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
       if (haxElements.length === 0) {
+        inlinePaste = true;
         // wrap in a paragraph tag if there is any this ensures it correctly imports
         // as it might not have evaluated above as having elements bc of the scrubber
-        if (wordPaste) {
+        if (originalContent != pasteContent) {
           newContent = pasteContent;
         } else {
           return false;
@@ -1019,6 +1017,34 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // account for incredibly basic pastes of single groups of characters
       else if (haxElements.length === 1 && haxElements[0].tag === "p") {
+        newContent = pasteContent;
+        inlinePaste = true;
+      }
+      // account for incredibly basic pastes of single groups of characters
+      else if (
+        haxElements.length === 1 &&
+        haxElements[0].tag === "a" &&
+        haxElements[0].properties.href
+      ) {
+        // test for a URL since we didn't have HTML / elements of some kind
+        // if it's a URL we might be able to automatically convert it into it's own element
+        let values = {
+          source: haxElements[0].properties.href,
+          title: haxElements[0].content
+        };
+        // if we DID get a match, block default values
+        if (
+          window.HaxStore.insertLogicFromValues(
+            values,
+            window.HaxStore.instance
+          )
+        ) {
+          // prevents the text being inserted previously so that the insertLogic does it
+          // for us
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }
         return false;
       }
       // account for broken pastes in resolution, just let browser handle it
@@ -1052,11 +1078,63 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         let sel = window.HaxStore.getSelection();
         // tee up a wrapper so we can walk and put every element in
         let newNodes = document.createElement("div");
+        // defined so that we can
+        let siblingEl;
         newNodes.innerHTML = newContent;
         if (range && sel && typeof range.deleteContents === "function") {
           range.deleteContents();
-          while (newNodes.lastChild) {
-            range.insertNode(newNodes.lastChild);
+          for (var i in newNodes.children) {
+            // delete nodes that are empty paragraphs
+            if (
+              newNodes.children[i].tagName &&
+              newNodes.children[i].tagName === "P" &&
+              newNodes.children[i].innerHTML === ""
+            ) {
+              newNodes.children[i].remove();
+            }
+          }
+          if (inlinePaste) {
+            let txt = document.createTextNode(newNodes.innerHTML);
+            range.insertNode(txt);
+            setTimeout(() => {
+              this._positionCursorInNode(txt, txt.length);
+            }, 0);
+          } else {
+            let activeEl;
+            while (newNodes.lastElementChild) {
+              // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
+              // this hopefully captures complex HTML pastes and inserts them in a logical way
+              if (
+                range.commonAncestorContainer &&
+                range.commonAncestorContainer.parentNode
+              ) {
+                if (!siblingEl) {
+                  siblingEl =
+                    range.commonAncestorContainer.parentNode.nextElementSibling;
+                  if (!siblingEl) {
+                    siblingEl = range.commonAncestorContainer;
+                  }
+                }
+                activeEl = newNodes.lastElementChild;
+                // should always be there but just in case there was no range
+                // so we avoid an infinite loop
+                if (siblingEl) {
+                  siblingEl.parentNode.insertBefore(activeEl, siblingEl);
+                }
+                // attempt insert after active
+                else if (this.activeNode) {
+                  this.activeNode.parentNode.insertBefore(
+                    activeEl,
+                    this.activeNode
+                  );
+                }
+                // shouldn't be possible but just to be safe
+                else {
+                  this.activeHaxBody.appendChild(activeEl);
+                }
+                siblingEl = activeEl;
+              }
+            }
           }
         }
       } catch (e) {
@@ -2751,6 +2829,45 @@ window.HaxStore.toast = (
     }
   });
   window.dispatchEvent(evt);
+};
+
+/**
+ * Simple workflow for logic from inserting based on
+ * a series of criteria.
+ */
+window.HaxStore.insertLogicFromValues = (values, context) => {
+  // we have no clue what this is.. let's try and guess..
+  let type = window.HaxStore.guessGizmoType(values);
+  let haxElements = window.HaxStore.guessGizmo(type, values, false, true);
+  // see if we got anything
+  if (haxElements.length > 0) {
+    if (haxElements.length === 1) {
+      if (typeof haxElements[0].tag !== typeof undefined) {
+        context.dispatchEvent(
+          new CustomEvent("hax-insert-content", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: haxElements[0]
+          })
+        );
+      }
+    } else {
+      // hand off to hax-app-picker to deal with the rest of this
+      window.HaxStore.instance.haxAppPicker.presentOptions(
+        haxElements,
+        type,
+        "Pick how to present the " + type,
+        "gizmo"
+      );
+    }
+    return true;
+  } else {
+    window.HaxStore.toast(
+      "Sorry, HAX doesn't know how to handle that type of link yet."
+    );
+    return false;
+  }
 };
 
 /**

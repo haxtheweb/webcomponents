@@ -1,4 +1,5 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
@@ -7,12 +8,12 @@ A basic side note
 
 * @demo demo/index.html
 */
-class LrndesignSidenote extends LitElement {
+class LrndesignSidenote extends SimpleColors {
   static get properties() {
     return {
+      ...super.properties,
       label: { type: String },
-      icon: { type: String },
-      bgColor: { type: String }
+      icon: { type: String }
     };
   }
 
@@ -27,21 +28,22 @@ class LrndesignSidenote extends LitElement {
         icon: "icons:bookmark",
         color: "blue",
         groups: [""],
-        meta: {
-          author: "ELMS:LN"
-        }
+        meta: { author: "ELMS:LN" }
       },
       settings: {
-        quick: [
+        configure: [
           {
             property: "label",
             title: "Label",
             description: "The label of the sidenote.",
             inputMethod: "textfield",
             icon: "editor:title"
-          }
-        ],
-        configure: [
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            inputMethod: "boolean"
+          },
           {
             property: "icon",
             title: "Icon",
@@ -59,15 +61,28 @@ class LrndesignSidenote extends LitElement {
             ]
           },
           {
-            property: "bgColor",
+            property: "accentColor",
             title: "Color",
             description: "The background color of the sidenote.",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            slot: "",
+            title: "Content",
+            description: "Content of the side note.",
+            inputMethod: "code-editor"
           }
         ],
         advanced: []
-      }
+      },
+      demoSchema: [
+        {
+          tag: "lrndesign-sidenote",
+          content: "<p>Content goes here...</p>",
+          properties: { label: "Label", icon: "bookmark" }
+        }
+      ]
     };
   }
 
@@ -75,50 +90,48 @@ class LrndesignSidenote extends LitElement {
     super();
     this.label = "";
     this.icon = "";
-    this.bgColor = "";
   }
 
-  render() {
-    const inlineStyle = this.bgColor ? `background-color:${this.bgColor};` : "";
-    return html`
-      <style>
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
-          --container-bg-color: lightgray;
-          --container-text-color: black;
-          --container-padding: 16px;
-          --container-outset: 0;
-          @apply --host-styles;
         }
 
         #container {
           display: block;
-          background: var(--container-bg-color);
-          color: var(--container-text-color);
-          padding: var(--container-padding);
-          margin-left: -var(--container-outset);
-          @apply --container-styles;
+          background-color: var(
+            --simple-colors-default-theme-accent-1,
+            #ffffff
+          );
+          padding: var(--lrndesign-sidenote-container-padding, 16px);
+          margin-left: var(--lrndesign-sidenote-container-margin-left, 0px);
+          color: var(--simple-colors-default-theme-accent-12, #000);
         }
 
         #header {
           display: flex;
           align-items: center;
-          @apply --container-header;
         }
 
         #icon {
           margin-right: 8px;
-          @apply --icon-styles;
         }
 
         #label {
           font-size: 20.8px;
           margin: 12.8px 0;
           flex: 1 1 auto;
-          @apply --label-styles;
         }
-      </style>
-      <div id="container" style="${inlineStyle}">
+      `
+    ];
+  }
+
+  render() {
+    return html`
+      <div id="container">
         <div id="header">
           <iron-icon id="icon" icon=${this.icon}></iron-icon>
           <div id="label">${this.label}</div>

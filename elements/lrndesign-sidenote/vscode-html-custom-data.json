@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrndesign-sidenote",
-      "description": "`lrndesign-sidenote`\nA basic side note\n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `bgColor` {`string`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `bgColor` {`string`} - ",
+      "description": "`lrndesign-sidenote`\nA basic side note\n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - ",
       "attributes": [
         {
           "name": "label",
@@ -12,28 +12,6 @@
         {
           "name": "icon",
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "bgColor",
-          "description": "`bgColor` {`string`} - \n\nProperty: bgColor\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "lrndesign-sidenote",
-      "description": "`lrndesign-sidenote`\nA basic side note\n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `bgColor` {`string`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `bgColor` {`string`} - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "bgColor",
-          "description": "`bgColor` {`string`} - \n\nProperty: bgColor\n\nDefault: "
         }
       ]
     },
@@ -43,7 +21,7 @@
     },
     {
       "name": "lrndesign-sidenote",
-      "description": "`lrndesign-sidenote`\nA basic side note\n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `bgColor` {`string`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `bgColor` {`string`} - ",
+      "description": "`lrndesign-sidenote`\nA basic side note\n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `icon` {`string`} - ",
       "attributes": [
         {
           "name": "label",
@@ -52,10 +30,6 @@
         {
           "name": "icon",
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "bgColor",
-          "description": "`bgColor` {`string`} - \n\nProperty: bgColor\n\nDefault: "
         }
       ]
     }

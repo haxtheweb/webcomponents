@@ -484,7 +484,11 @@ class A11yMediaYoutube extends LitElement {
   _removeIframe() {
     if (this.__yt) {
       this.__yt.remove;
-      this.__yt.destroy();
+      try {
+        this.__yt.destroy();
+      } catch (e) {
+        console.warn(e);
+      }
     }
     this.innerHTML = "";
   }

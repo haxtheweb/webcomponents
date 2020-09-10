@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.0",
+  "version": "2.7.7",
   "description": "iterates through an iconset array to generate a demo of all of the icons",
   "repository": {
     "type": "git",
@@ -53,7 +53,6 @@
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "full-screen-image",
-      "description": "`full-screen-image`\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` - ",
-      "attributes": []
-    },
-    {
-      "name": "full-screen-image",
       "description": "`full-screen-image`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - ",
       "attributes": [
         {

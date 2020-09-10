@@ -2,22 +2,19 @@
   "name": "@lrnwebcomponents/lrn-math",
   "wcfactory": {
     "className": "LrnMath",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "HTMLElement",
     "elementName": "lrn-math",
-    "generator-wcfactory-version": "0.3.1",
+    "generator-wcfactory-version": "0.8.6",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/lrn-math.css",
-      "scss": "src/lrn-math.scss",
-      "html": "src/lrn-math.html",
-      "js": "src/lrn-math.js",
-      "properties": "src/lrn-math-properties.json",
-      "hax": "src/lrn-math-hax.json"
+      "js": "src/lrn-math.js"
     },
+    "sharedHaxProps": [],
+    "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "2.7.3",
+  "version": "2.7.8",
   "description": "MathJAX element with HAX capabilities baked in",
   "repository": {
     "type": "git",
@@ -40,19 +37,14 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.6.16",
-    "@polymer/polymer": "^3.3.1"
-  },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

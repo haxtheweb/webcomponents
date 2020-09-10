@@ -3,12 +3,7 @@
   "tags": [
     {
       "name": "count-up",
-      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nProperties:\n\n  * `start` {`number`} - \n\n  * `end` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `noeasing` {`boolean`} - \n\n  * `decimalplaces` {`number`} - \n\n  * `separator` {`string`} - \n\n  * `decimal` {`string`} - \n\n  * `prefixtext` {`string`} - \n\n  * `suffixtext` {`string`} - ",
-      "attributes": []
-    },
-    {
-      "name": "count-up",
-      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nAttributes:\n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `visible-limit` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\nProperties:\n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `visibleLimit` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting",
+      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nAttributes:\n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\nProperties:\n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting",
       "attributes": [
         {
           "name": "thresholds",
@@ -21,10 +16,6 @@
         {
           "name": "ratio",
           "description": "`ratio` {`number`} - \n\nProperty: ratio"
-        },
-        {
-          "name": "visible-limit",
-          "description": "`visible-limit` {`number`} - \n\nProperty: visibleLimit"
         },
         {
           "name": "elementVisible",

@@ -91,6 +91,7 @@ class GitCorner extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

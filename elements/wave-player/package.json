@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.3",
+  "version": "2.7.7",
   "description": "Automated conversion of wave-player/",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.6.16",
-    "@lrnwebcomponents/schema-behaviors": "^2.7.3",
+    "@lrnwebcomponents/es-global-bridge": "^2.7.7",
+    "@lrnwebcomponents/schema-behaviors": "^2.7.7",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
@@ -51,14 +51,13 @@
     "load-script": "^1.0.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.3",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"

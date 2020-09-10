@@ -47,6 +47,7 @@ class FigureLabel extends LitElement {
       `
     ];
   }
+
   // render function
   render() {
     return html`

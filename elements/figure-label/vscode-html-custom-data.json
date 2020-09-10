@@ -3,15 +3,6 @@
   "tags": [
     {
       "name": "figure-label",
-      "attributes": []
-    },
-    {
-      "name": "figure-label",
-      "description": "`figure-label`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "figure-label",
       "description": "`figure-label`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - ",
       "attributes": [
         {

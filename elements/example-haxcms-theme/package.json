@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.5",
+  "version": "2.7.8",
   "description": "A basic, well documented example theme for HAXcms",
   "repository": {
     "type": "git",
@@ -41,18 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.7.5",
-    "@lrnwebcomponents/simple-colors": "^2.7.3",
+    "@lrnwebcomponents/haxcms-elements": "^2.7.8",
+    "@lrnwebcomponents/simple-colors": "^2.7.7",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.6.16",
+    "@lrnwebcomponents/deduping-fix": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.19",
     "polymer-build": "3.1.4",
     "polymer-cli": "1.9.11",
