@@ -2325,6 +2325,16 @@ class HaxBody extends SimpleColors {
             // special support for grid plates as they manage internal drag/drop
             if (children[i].tagName === "GRID-PLATE") {
               children[i].dropEvent(e);
+              for (var j in children[i].children) {
+                if (typeof children[i].children[j].classList !== typeof undefined) {
+                  children[i].children[j].classList.remove(
+                    "hax-mover",
+                    "hax-hovered",
+                    "hax-moving",
+                    "grid-plate-active-item"
+                  );
+                }
+              }
               for (var j = 1; j <= children[i].columns; j++) {
                 if (
                   children[i].shadowRoot.querySelector("#col" + j) !== undefined
