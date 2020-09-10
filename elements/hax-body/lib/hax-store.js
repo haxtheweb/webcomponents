@@ -981,8 +981,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       let originalContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
-        console.log(e.originalEvent || e);
-        console.log((e.originalEvent || e).clipboardData);
         pasteContent = (e.originalEvent || e).clipboardData.getData(
           "text/html"
         );
@@ -1002,18 +1000,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
-      console.log(originalContent);
-      console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
-      console.log(haxElements);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
       if (haxElements.length === 0) {
-        console.log(0);
-        console.log(originalContent);
-        console.log(pasteContent);
         inlinePaste = true;
         // wrap in a paragraph tag if there is any this ensures it correctly imports
         // as it might not have evaluated above as having elements bc of the scrubber
@@ -1025,7 +1017,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // account for incredibly basic pastes of single groups of characters
       else if (haxElements.length === 1 && haxElements[0].tag === "p") {
-        console.log(1);
         newContent = pasteContent;
         inlinePaste = true;
       }
@@ -1035,7 +1026,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         haxElements[0].tag === "a" &&
         haxElements[0].properties.href
       ) {
-        console.log("url");
         // test for a URL since we didn't have HTML / elements of some kind
         // if it's a URL we might be able to automatically convert it into it's own element
         let values = {
@@ -1059,11 +1049,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // account for broken pastes in resolution, just let browser handle it
       else if (!this.isGridPlateElement(haxElements[0])) {
-        console.log("grid");
-
         return false;
       } else {
-        console.log("else");
         for (var i in haxElements) {
           // special traps for word / other styles bleeding through
           delete haxElements[i].properties.style;
@@ -1094,10 +1081,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         // defined so that we can
         let siblingEl;
         newNodes.innerHTML = newContent;
-        console.log(newNodes);
         if (range && sel && typeof range.deleteContents === "function") {
           range.deleteContents();
-          console.log(newNodes.firstElementChild);
+          for (var i in newNodes.children) {
+            // delete nodes that are empty paragraphs
+            if (
+              newNodes.children[i].tagName &&
+              newNodes.children[i].tagName === 'P' &&
+              newNodes.children[i].innerHTML === '') {
+                newNodes.children[i].remove();
+              }
+          }
           if (inlinePaste) {
             let txt = document.createTextNode(newNodes.innerHTML);
             range.insertNode(txt);
@@ -1105,8 +1099,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               this._positionCursorInNode(txt, txt.length);
             }, 0);
           } else {
-            console.log(newNodes);
-            console.log(newNodes.lastElementChild);
             let activeEl;
             while (newNodes.lastElementChild) {
               // sanity check and then insert our new paste node right AFTER the thing we are pasting in the middle of
@@ -1122,10 +1114,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                     siblingEl = range.commonAncestorContainer;
                   }
                 }
-                console.log(range.commonAncestorContainer);
-                console.log(activeEl);
-                console.log(siblingEl);
-                console.log("paste AFTER target");
                 activeEl = newNodes.lastElementChild;
                 // should always be there but just in case there was no range
                 // so we avoid an infinite loop

@@ -510,8 +510,7 @@ class GridPlate extends LitElement {
                 if (this.__slot) {
                   node.setAttribute("slot", this.__slot);
                   this.__slot = null;
-                }
-                else {
+                } else {
                   node.setAttribute("slot", "col-1");
                 }
               }
@@ -584,7 +583,7 @@ class GridPlate extends LitElement {
             window.HaxStore.instance &&
             window.HaxStore.instance.isTextElement(this.activeItem)
           ) {
-            this.__slot = this.activeItem.getAttribute('slot');
+            this.__slot = this.activeItem.getAttribute("slot");
             return true;
           }
           if (!this.hideOps) {

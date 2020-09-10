@@ -286,25 +286,11 @@ function stripMSWord(input) {
   // 6. some HAX specific things in case this was moving content around
   // these are universally true tho so fine to have here
   output = output.replace(/ style="(\s|.)*?"/gim, "");
-  output = output.replace(/ data-editable="(\s|.)*?"/gim, "");
-  output = output.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
-  output = output.replace(/ class=""/gim, "");
-  output = output.replace(/ class="hax-active"/gim, "");
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
-  // some Box paste attributes
-  output = output.replace(/ class="ace-line"/gim, "");
-  output = output.replace(/ data-node-type="(\s|.)*?"/gim, "");
-  // some medium paste stuff as well as general paste clean up for classes
+  // some medium, box, github and other paste stuff as well as general paste clean up for classes
   // in multiple html primatives
-  output = output.replace(/ data-selectable-paragraph="(\s|.)*?"/gim, "");
-  output = output.replace(/section class="(\s|.)*?"/gim, "section");
-  output = output.replace(/p class="(\s|.)*?"/gim, "p");
-  output = output.replace(/hr class="(\s|.)*?"/gim, "hr");
-  output = output.replace(/em class="(\s|.)*?"/gim, "em");
-  output = output.replace(/b class="(\s|.)*?"/gim, "b");
-  output = output.replace(/strong class="(\s|.)*?"/gim, "strong");
-  output = output.replace(/span class="(\s|.)*?"/gim, "span");
-  output = output.replace(/div class="(\s|.)*?"/gim, "span");
+  output = output.replace(/ data-(\s|.)*?"(\s|.)*?"/gim, "");
+  output = output.replace(/ class="(\s|.)*?"/gim, "");
   // 7. clean out empty paragraphs and endlines that cause weird spacing
   output = output.replace(/&nbsp;/gm, " ");
   // start of double, do it twice for nesting

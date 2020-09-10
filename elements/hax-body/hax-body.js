@@ -2326,7 +2326,9 @@ class HaxBody extends SimpleColors {
             if (children[i].tagName === "GRID-PLATE") {
               children[i].dropEvent(e);
               for (var j in children[i].children) {
-                if (typeof children[i].children[j].classList !== typeof undefined) {
+                if (
+                  typeof children[i].children[j].classList !== typeof undefined
+                ) {
                   children[i].children[j].classList.remove(
                     "hax-mover",
                     "hax-hovered",
