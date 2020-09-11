@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
+import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
@@ -239,17 +240,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               >Assignments</elmsln-studio-link
             >
             <span> > </span>
-            ${!this.assignment.projectId || !this.assignment.project
-              ? ``
-              : html`
-                  <elmsln-studio-link
-                    href="${`/assignments?project=${
-                      this.assignment.projectId
-                    }`}"
-                    >${this.assignment.project}</elmsln-studio-link
-                  >
-                  <span> > </span>
-                `}
             <span>${this.assignment.assignment}</span>
           </div>
           <div
@@ -270,11 +260,11 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                       <caption>
                         Rubric
                       </caption>
-                      ${!this.assignment.rubric || !this.assignment.rubric[0]
+                      ${!this.assignment.rubric.key || !this.assignment.rubric.key
                         ? ``
                         : html`
                             <thead>
-                              ${this.assignment.rubric[0].map(
+                              ${this.assignment.rubric.key.map(
                                 col => html`
                                   <th scope="row">${col}</th>
                                 `
@@ -282,22 +272,13 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                             </thead>
                           `}
                       <tbody>
-                        ${(this.assignment.rubric || []).map((row, i) =>
-                          i === 0
-                            ? ""
-                            : html`
-                                <tr>
-                                  ${this.assignment.rubric[0].map((col, ii) =>
-                                    ii === 0
-                                      ? html`
-                                          <th scope="col">${col}</th>
-                                        `
-                                      : html`
-                                          <td>${col}</td>
-                                        `
-                                  )}
-                                </tr>
-                              `
+                        ${(this.assignment.rubric.values || []).map((row) =>
+                          html`
+                            <tr>
+                              ${row.map((col) =>html`<td>${col}</td>`
+                              )}
+                            </tr>
+                          `
                         )}
                       </tbody>
                     </table>
@@ -307,6 +288,8 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                 : html`
                     <section>
                       <h2 class="sr-only">Manage Uploads</h2>
+                      
+
                     </section>
                   `}
               ${!this.assignment.links
@@ -314,7 +297,23 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                 : html`
                     <section>
                       <h2 class="sr-only">Manage Links</h2>
-                      <input type="text" />
+                      <ul>
+                        ${!this.submission ? '' : (this.submission.links || []).map((link,i)=>html`
+                          <li>
+                            <a id="link-${i}" href="link.url" class="${link.type}">link.text</a>
+                            <button label="delete link" aria-controls="link-${i}">
+                              <iron-icon icon="delete"></iron-icon>
+                            </button>
+                          </li>
+                        `)}
+                        <li>
+                          <label for="newlink" class="sr-only">URL</label>
+                          <input id="newlink" type="text" placeholder="url"/>
+                          <button label="add link" aria-controls="newlink">
+                            <iron-icon icon="add"></iron-icon>
+                          </button>
+                        </li>
+                      </ul>
                     </section>
                   `}
               ${!this.assignment.text
@@ -322,11 +321,16 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                 : html`
                     <section>
                       <h2 class="sr-only">Edit Text</h2>
-                      <textarea></textarea>
+                      <rich-text-editor-toolbar-full 
+                        id="editor" 
+                        controls="text" 
+                        config="${this.__editorConfig}" 
+                        sticky>
+                      </rich-text-editor-toolbar-full>
+                      <rich-text-editor id="text">${this.submission && this.submission.body ? this.submission.body : ''}</rich-text-editor>
                     </section>
                   `}
               <section>
-                ${this.submission.draft}
                 <elmsln-studio-button class="delete" icon="" path=""
                   >Delete</elmsln-studio-button
                 >
@@ -351,6 +355,9 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
       },
       submission: {
         type: Object
+      },
+      __editorConfig: {
+        type: Array
       }
     };
   }
@@ -366,10 +373,53 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
   // life cycle
   constructor() {
     super();
-    this.portfolio = {};
+    this.assignment = {};
     this.submission = {};
-    this.submissionFilter = "";
-    this.comment = "";
+    this.__editorConfig = [
+      {
+        "label": "Basic Inline Operations",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "bold",
+            "icon": "editor:format-bold",
+            "label": "Bold",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },{
+            "command": "italic",
+            "icon": "editor:format-italic",
+            "label": "Italics",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },{
+            "command": "removeFormat",
+            "icon": "editor:format-clear",
+            "label": "Erase Format",
+            "type": "rich-text-editor-button"
+          }
+        ]
+      },{
+        "collapsedUntil": "lg",
+        "label": "Lists and Indents",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "insertOrderedList",
+            "icon": "editor:format-list-numbered",
+            "label": "Ordered List",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },{
+            "command": "insertUnorderedList",
+            "icon": "editor:format-list-bulleted",
+            "label": "Unordered List",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          }
+        ]
+      }
+    ];
     this.tag = ElmslnStudioAssignment.tag;
   }
   /**
@@ -377,29 +427,6 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
    */
   connectedCallback() {
     super.connectedCallback();
-  }
-
-  get sortedSubmissions() {
-    return !this.portfolio.submissions
-      ? []
-      : this.sortDates(this.portfolio.submissions, this.sortLatest);
-  }
-  get assignment() {
-    let filter =
-      !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
-        ? []
-        : this.portfolio.submissions.filter(
-            s => s.id === this.submissionFilter
-          );
-    return !filter ? false : filter[0];
-  }
-  _getFeedbackIcon(comments) {
-    if (comments === 0) {
-      return "communication:comment";
-    } else if (comments < 10) {
-      return `hax:messages-${comments}`;
-    }
-    return "hax:messages-9-plus";
   }
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);

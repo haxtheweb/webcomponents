@@ -13,6 +13,7 @@ import "./lib/elmsln-studio-button.js";
 import "./lib/elmsln-studio-dashboard.js";
 import "./lib/elmsln-studio-submissions.js";
 import "./lib/elmsln-studio-assignments.js";
+import "./lib/elmsln-studio-assignment.js";
 import "./lib/elmsln-studio-portfolio.js";
 /**
  * `elmsln-studio`
@@ -102,6 +103,13 @@ class ElmslnStudio extends router(
           .profile="${this.profile || {}}"
         >
         </elmsln-studio-assignments>
+        <elmsln-studio-assignment
+          ?demo-mode="${this.demoMode}"
+          route="assignment"
+          .assignment="${this.assignment}"
+          .submission="${this.submission}"
+        >
+        </elmsln-studio-assignment>
       </elmsln-studio-main>
     `;
   }
@@ -183,6 +191,10 @@ class ElmslnStudio extends router(
         pattern: "assignments"
       },
       {
+        name: "assignment",
+        pattern: "assignments/:assignment"
+      },
+      {
         name: "submissions",
         pattern: "submissions"
       },
@@ -245,6 +257,16 @@ class ElmslnStudio extends router(
       if (propName === "discussionSource")
         this.fetchData(this.discussionSource, "discussion");
     });
+  }
+  get assignment(){
+    return this.params.assignment ? this.assignments[this.params.assignment] : {};
+  }
+
+  get submission() {
+    let submissions = this.profile.submissions && this.params.assignment 
+      ? this.profile.submissions.filter(s=>s.assignmentId === this.params.assignment) 
+      : undefined;
+    return submissions && submissions[0] ? submissions[0] : undefined;
   }
   get portfolio() {
     return this.params.portfolio ? this.portfolios[this.params.portfolio] : {};
