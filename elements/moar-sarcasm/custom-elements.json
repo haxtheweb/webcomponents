@@ -1,0 +1,29 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "moar-sarcasm",
+      "path": "./moar-sarcasm.js",
+      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./moar-sarcasm.umd.js"
+    },
+    {
+      "name": "moar-sarcasm",
+      "path": "./src/moar-sarcasm.js",
+      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

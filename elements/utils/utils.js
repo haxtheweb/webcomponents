@@ -272,7 +272,7 @@ function stripMSWord(input) {
     );
     output = output.replace(tagStripper, "");
   }
-  // 5. remove attributes ' style="..."', align, start
+  // 5. remove attributes ' style="..."', align, start and others that we know we dont need
   output = output.replace(/ style='(\s|.)*?'/gim, "");
   output = output.replace(/ face="(\s|.)*?"/gim, "");
   output = output.replace(/ align=.*? /g, "");
@@ -282,10 +282,7 @@ function stripMSWord(input) {
   // Google Docs ones
   output = output.replace(/ dir="(\s|.)*?"/gim, "");
   output = output.replace(/ role="(\s|.)*?"/gim, "");
-
-  // 6. some HAX specific things in case this was moving content around
   // these are universally true tho so fine to have here
-  output = output.replace(/ style="(\s|.)*?"/gim, "");
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
   // some medium, box, github and other paste stuff as well as general paste clean up for classes
   // in multiple html primatives
