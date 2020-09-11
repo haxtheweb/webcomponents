@@ -1044,7 +1044,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         ) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us
-
         }
       }
       // account for broken pastes in resolution, just let browser handle it
