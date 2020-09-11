@@ -16,7 +16,7 @@
       "hax": "src/product-card-hax.json"
     }
   },
-  "version": "2.7.8",
+  "version": "2.7.9",
   "description": "basic display of a product with advanced data driven helpers",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "@lrnwebcomponents/code-sample": "^2.7.7",
     "@lrnwebcomponents/grid-plate": "^2.7.8",
     "@lrnwebcomponents/simple-colors": "^2.7.7",
-    "@lrnwebcomponents/utils": "^2.7.8",
+    "@lrnwebcomponents/utils": "^2.7.9",
     "@material/mwc-button": "0.14.1",
     "@material/mwc-formfield": "0.14.1",
     "@material/mwc-switch": "0.14.1",
@@ -66,7 +66,7 @@
     "@lrnwebcomponents/lrn-icons": "^2.7.7",
     "@lrnwebcomponents/lrn-math": "^2.7.8",
     "@lrnwebcomponents/lrn-table": "^2.7.7",
-    "@lrnwebcomponents/lrn-vocab": "^2.7.8",
+    "@lrnwebcomponents/lrn-vocab": "^2.7.9",
     "@lrnwebcomponents/lrndesign-blockquote": "^2.7.7",
     "@lrnwebcomponents/lrndesign-gallery": "^2.7.7",
     "@lrnwebcomponents/lrndesign-timeline": "^2.7.7",
@@ -89,7 +89,7 @@
     "@lrnwebcomponents/tab-list": "^2.7.7",
     "@lrnwebcomponents/task-list": "^2.7.7",
     "@lrnwebcomponents/user-action": "^2.7.7",
-    "@lrnwebcomponents/video-player": "^2.7.8",
+    "@lrnwebcomponents/video-player": "^2.7.9",
     "@lrnwebcomponents/wikipedia-query": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
