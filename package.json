@@ -50,6 +50,7 @@
         "babel-loader": "^7.0.0",
         "babel-plugin-external-helpers": "6.22.0",
         "babel-plugin-transform-custom-element-classes": "0.1.0",
+        "babel-plugin-transform-dynamic-imports-to-static-imports": "^0.1.0",
         "babel-plugin-transform-es2015-modules-umd": "6.24.1",
         "babel-preset-env": "1.7.0",
         "body-parser": "1.19.0",
