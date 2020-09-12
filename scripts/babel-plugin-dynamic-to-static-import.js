@@ -9,7 +9,8 @@ export default function(babel) {
         // handle `import("module-name")`
         if (
           t.isCallExpression(path.node.expression) &&
-          t.isImport(path.node.expression.callee)
+          t.isImport(path.node.expression.callee) &&
+          t.isStringLiteral(path.node.expression.arguments[0])
         ) {
           // create static import
           const staticImport = t.importDeclaration(
@@ -29,7 +30,8 @@ export default function(babel) {
         if (
           t.isAwaitExpression(path.node.expression) &&
           t.isCallExpression(path.node.expression.argument) &&
-          t.isImport(path.node.expression.argument.callee)
+          t.isImport(path.node.expression.argument.callee) &&
+          t.isStringLiteral(path.node.expression.argument.arguments[0])
         ) {
           // create static import
           const staticImport = t.importDeclaration(
@@ -48,7 +50,8 @@ export default function(babel) {
         // handle `import("module-name").then()`
         if (
           t.isCallExpression(path.node.object) &&
-          t.isImport(path.node.object.callee)
+          t.isImport(path.node.object.callee) &&
+          t.isStringLiteral(path.node.object.arguments[0])
         ) {
           const importIdentifier = `\$\$${counter}`;
 
@@ -62,7 +65,7 @@ export default function(babel) {
             .findParent(path => path.isProgram())
             .node.body.unshift(staticImport);
           // replace `import("module-name").then`
-          // with `Promise.resolve($$moduleId).then
+          // with `Promise.resolve($$moduleId).then`
           path.replaceWith(
             t.memberExpression(
               t.callExpression(
