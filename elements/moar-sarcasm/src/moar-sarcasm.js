@@ -48,7 +48,6 @@ class MoarSarcasm extends HTMLElement {
         }
         span {
           font-style: italic;
-          font-weight: bold;
         }
         .letter:nth-child(odd) {
           text-transform: uppercase;
