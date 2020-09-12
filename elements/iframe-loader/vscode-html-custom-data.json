@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "iframe-loader",
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "__iframeHeight",
+          "description": "`__iframeHeight` {`number`} - \n\nProperty: __iframeHeight\n\nDefault: 100"
+        }
+      ]
+    },
+    {
+      "name": "iframe-loader",
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "__iframeHeight",
+          "description": "`__iframeHeight` {`number`} - \n\nProperty: __iframeHeight\n\nDefault: 100"
+        }
+      ]
+    },
+    {
+      "name": "iframe-loader",
+      "attributes": []
+    },
+    {
+      "name": "iframe-loader",
+      "description": "Attributes:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `__iframeHeight` {`number`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - ",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "__iframeHeight",
+          "description": "`__iframeHeight` {`number`} - \n\nProperty: __iframeHeight\n\nDefault: 100"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

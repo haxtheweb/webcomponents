@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "./loading-indicator.js";
 
 class IframeLoader extends LitElement {
   static get properties() {
@@ -111,7 +110,7 @@ class IframeLoader extends LitElement {
         style="height: ${this.__iframeHeight}px;"
       >
         <div id="loading-screen">
-          <loading-indictor></loading-indictor>
+          <loading-indicator></loading-indicator>
         </div>
         <div
           id="slot"
