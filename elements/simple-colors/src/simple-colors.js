@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
-const SimpleColorsSuper = function(SuperClass) {
+const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     /* REQUIRED FOR TOOLING DO NOT TOUCH */
 

@@ -114,7 +114,7 @@ class A11yDetails extends LitElement {
         : "",
       this.closeText && this.closeText.trim && this.closeText.trim() !== ""
         ? "has-close-text"
-        : ""
+        : "",
     ].join(" ");
   }
 
@@ -124,7 +124,7 @@ class A11yDetails extends LitElement {
    * @returns {object}
    */
   get observer() {
-    let callback = mutationsList => this._watchChildren(mutationsList);
+    let callback = (mutationsList) => this._watchChildren(mutationsList);
     return new MutationObserver(callback);
   }
 
@@ -192,7 +192,7 @@ class A11yDetails extends LitElement {
     if (details) {
       let clone = details.cloneNode(true),
         filtered = clone.querySelectorAll("* > summary");
-      Object.keys(filtered || {}).forEach(i => filtered[i].remove());
+      Object.keys(filtered || {}).forEach((i) => filtered[i].remove());
       this._copyToSlot("details", clone, "div");
     }
   }
@@ -208,7 +208,7 @@ class A11yDetails extends LitElement {
       this.detailsObserver.observe(this.querySelector("* > details"), {
         childList: true,
         subtree: true,
-        characterData: true
+        characterData: true,
       });
     } else if (
       this._hasMutations(mutationsList, "removedNodes") &&
@@ -228,10 +228,10 @@ class A11yDetails extends LitElement {
    */
   _hasMutations(mutationsList, nodeListType = "addedNodes") {
     return (
-      Object.keys(mutationsList || {}).filter(i => {
+      Object.keys(mutationsList || {}).filter((i) => {
         let nodes = mutationsList[i][nodeListType];
         return (
-          Object.keys(nodes || {}).filter(j => {
+          Object.keys(nodes || {}).filter((j) => {
             let nodeName = nodes[j].tagName;
             return nodeName === "DETAILS";
           }).length > 0
@@ -249,11 +249,11 @@ class A11yDetails extends LitElement {
    */
   _copyToSlot(slotName, clone, tagName = "span") {
     let filteredNodes = Object.keys(clone.childNodes || {})
-      .filter(i => {
+      .filter((i) => {
         let node = clone.childNodes[i];
         return !!node.tagName || node.textContent.trim().length > 0;
       })
-      .map(i => clone.childNodes[parseInt(i)]);
+      .map((i) => clone.childNodes[parseInt(i)]);
     if (filteredNodes.length === 1 && filteredNodes[0].tagName) {
       clone = filteredNodes[0];
       tagName = clone.tagName;

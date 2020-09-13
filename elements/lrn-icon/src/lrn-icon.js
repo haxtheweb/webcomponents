@@ -116,7 +116,7 @@ class LrnIcon extends PolymerElement {
        * `iconset_name:icon_name`.
        */
       icon: {
-        type: String
+        type: String,
       },
 
       /**
@@ -124,7 +124,7 @@ class LrnIcon extends PolymerElement {
        * iconset.
        */
       theme: {
-        type: String
+        type: String,
       },
 
       /**
@@ -133,12 +133,12 @@ class LrnIcon extends PolymerElement {
        * precedence over a given icon attribute.
        */
       src: {
-        type: String
+        type: String,
       },
 
       _meta: {
-        value: document.createElement("iron-meta", { type: "iconset" })
-      }
+        value: document.createElement("iron-meta", { type: "iconset" }),
+      },
     };
   }
 
@@ -147,7 +147,7 @@ class LrnIcon extends PolymerElement {
       "_updateIcon(_meta, isAttached)",
       "_updateIcon(theme, isAttached)",
       "_srcChanged(src, isAttached)",
-      "_iconChanged(icon, isAttached)"
+      "_iconChanged(icon, isAttached)",
     ];
   }
   _iconChanged(icon) {

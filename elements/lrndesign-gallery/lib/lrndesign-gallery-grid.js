@@ -81,13 +81,13 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           bottom: 5px;
           left: 5px;
         }
-      `
+      `,
     ];
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
     };
   }
 
@@ -110,7 +110,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         <p class="sr-only">A list of columns buttons items:</p>
         <div id="galleryscreen">
           ${this.sources.map(
-            item => html`
+            (item) => html`
               <lrndesign-gallery-zoom
                 .id="${item.id}"
                 .details="${item.details}"
@@ -134,11 +134,12 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
     return [
       `--lrndesign-gallery-grid-paddingTop: ${100 / this.aspectRatio}%;`,
       `--lrndesign-gallery-grid-backgroundImage: url(${item.src});`,
-      `--lrndesign-gallery-grid-backgroundPosition: ${item.gravity ||
-        "center"};`,
-      `--lrndesign-gallery-grid-backgroundSize: ${item.sizing ||
-        this.sizing === "cover" ||
-        "contain"}`
+      `--lrndesign-gallery-grid-backgroundPosition: ${
+        item.gravity || "center"
+      };`,
+      `--lrndesign-gallery-grid-backgroundSize: ${
+        item.sizing || this.sizing === "cover" || "contain"
+      }`,
     ].join("");
   }
   /**

@@ -17,9 +17,7 @@ Examples:
 */
 class MomentElement extends LitElement {
   render() {
-    return html`
-      ${this.output}
-    `;
+    return html` ${this.output} `;
   }
   static get tag() {
     return "moment-element";
@@ -27,28 +25,28 @@ class MomentElement extends LitElement {
   static get properties() {
     return {
       datetime: {
-        type: String
+        type: String,
       },
       inputFormat: {
         type: String,
-        attribute: "input-format"
+        attribute: "input-format",
       },
       outputFormat: {
         type: String,
-        attribute: "output-format"
+        attribute: "output-format",
       },
       from: {
-        type: String
+        type: String,
       },
       to: {
-        type: String
+        type: String,
       },
       output: {
-        type: String
+        type: String,
       },
       libraryLoaded: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   // simple path from a url modifier
@@ -82,8 +80,8 @@ class MomentElement extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -94,7 +92,7 @@ class MomentElement extends LitElement {
           "outputFormat",
           "from",
           "to",
-          "libraryLoaded"
+          "libraryLoaded",
         ].includes(propName)
       ) {
         this.output = this._computeOutput(

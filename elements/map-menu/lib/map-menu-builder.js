@@ -9,7 +9,7 @@ class MapMenuBuilder extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -25,7 +25,7 @@ class MapMenuBuilder extends LitElement {
     return html`
       ${this.items
         ? this.items.map(
-            item => html`
+            (item) => html`
               ${item.children.length > 0
                 ? html`
                     <map-menu-submenu
@@ -81,11 +81,11 @@ class MapMenuBuilder extends LitElement {
   static get properties() {
     return {
       items: {
-        type: Array
+        type: Array,
       },
       selected: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   createRenderRoot() {

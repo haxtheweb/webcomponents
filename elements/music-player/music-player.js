@@ -53,7 +53,7 @@ class MusicPlayer extends LitElement {
         midi-visualizer .waterfall-visualizer {
           overflow: auto;
         }
-      `
+      `,
     ];
   }
 
@@ -72,21 +72,21 @@ class MusicPlayer extends LitElement {
   static get properties() {
     return {
       source: {
-        type: String
+        type: String,
       },
       visualizer: {
-        type: String
+        type: String,
       },
       noWaterfall: {
         type: Boolean,
         attribute: "no-waterfall",
-        reflect: true
+        reflect: true,
       },
       noVisual: {
         type: Boolean,
         attribute: "no-visual",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -96,7 +96,7 @@ class MusicPlayer extends LitElement {
   firstUpdated() {
     this.visualizerElement = this.shadowRoot.querySelector("midi-visualizer");
     setTimeout(() => {
-      import("./lib/html-midi-player.js").then(module => {
+      import("./lib/html-midi-player.js").then((module) => {
         // associate the visualizer to the player
         this.shadowRoot
           .querySelector("midi-player")
@@ -121,12 +121,12 @@ class MusicPlayer extends LitElement {
         handles: [
           {
             type: "audio",
-            source: "source"
-          }
+            source: "source",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -135,7 +135,7 @@ class MusicPlayer extends LitElement {
             property: "source",
             title: "Source",
             description: "Source of the file to play",
-            inputMethod: "haxupload"
+            inputMethod: "haxupload",
           },
           {
             property: "visualizer",
@@ -145,18 +145,18 @@ class MusicPlayer extends LitElement {
             options: {
               staff: "Staff",
               "piano-roll": "Piano roll",
-              waterfall: "Piano + waterfall"
-            }
+              waterfall: "Piano + waterfall",
+            },
           },
           {
             property: "noWaterfall",
             title: "Hide waterfall",
             description:
               "Disable the waterfall of notes when visualized as a piano",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
@@ -164,10 +164,10 @@ class MusicPlayer extends LitElement {
           content: "",
           properties: {
             source:
-              "https://magenta.github.io/magenta-js/music/demos/melody.mid"
-          }
-        }
-      ]
+              "https://magenta.github.io/magenta-js/music/demos/melody.mid",
+          },
+        },
+      ],
     };
   }
 }

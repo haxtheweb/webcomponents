@@ -62,46 +62,46 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
       <div class="team-member">
         <iron-image src="[[image]]" sizing="cover" alt=""></iron-image>
         <div class="name">[[fullName]]</div>
-        <div hidden\$="[[!firstLine]]" class="line1">[[firstLine]]</div>
-        <div hidden\$="[[!secondLine]]" class="line2">[[secondLine]]</div>
+        <div hidden$="[[!firstLine]]" class="line1">[[firstLine]]</div>
+        <div hidden$="[[!secondLine]]" class="line2">[[secondLine]]</div>
         <div class="social">
-          <a tabindex="-1" href\$="[[dribble]]" hidden\$="[[!dribble]]"
+          <a tabindex="-1" href$="[[dribble]]" hidden$="[[!dribble]]"
             ><paper-icon-button icon="mdi-social:dribble"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[facebook]]" hidden\$="[[!facebook]]"
+          <a tabindex="-1" href$="[[facebook]]" hidden$="[[!facebook]]"
             ><paper-icon-button
               icon="mdi-social:facebook-box"
             ></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[github]]" hidden\$="[[!github]]"
+          <a tabindex="-1" href$="[[github]]" hidden$="[[!github]]"
             ><paper-icon-button
               icon="mdi-social:github-circle"
             ></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[google]]" hidden\$="[[!google]]"
+          <a tabindex="-1" href$="[[google]]" hidden$="[[!google]]"
             ><paper-icon-button
               icon="mdi-social:google-plus"
             ></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[instagram]]" hidden\$="[[!instagram]]"
+          <a tabindex="-1" href$="[[instagram]]" hidden$="[[!instagram]]"
             ><paper-icon-button icon="mdi-social:instagram"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[linkedin]]" hidden\$="[[!linkedin]]"
+          <a tabindex="-1" href$="[[linkedin]]" hidden$="[[!linkedin]]"
             ><paper-icon-button icon="mdi-social:linkedin"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[pinterest]]" hidden\$="[[!pinterest]]"
+          <a tabindex="-1" href$="[[pinterest]]" hidden$="[[!pinterest]]"
             ><paper-icon-button icon="mdi-social:pinterest"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[tumblr]]" hidden\$="[[!tumblr]]"
+          <a tabindex="-1" href$="[[tumblr]]" hidden$="[[!tumblr]]"
             ><paper-icon-button icon="mdi-social:tumblr"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[twitch]]" hidden\$="[[!twitch]]"
+          <a tabindex="-1" href$="[[twitch]]" hidden$="[[!twitch]]"
             ><paper-icon-button icon="mdi-social:twitch"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[twitter]]" hidden\$="[[!twitter]]"
+          <a tabindex="-1" href$="[[twitter]]" hidden$="[[!twitter]]"
             ><paper-icon-button icon="mdi-social:twitter"></paper-icon-button
           ></a>
-          <a tabindex="-1" href\$="[[whatsapp]]" hidden\$="[[!whatsapp]]"
+          <a tabindex="-1" href$="[[whatsapp]]" hidden$="[[!whatsapp]]"
             ><paper-icon-button icon="mdi-social:whatsapp"></paper-icon-button
           ></a>
         </div>
@@ -125,8 +125,8 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         groups: ["Content", "Presentation"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -135,8 +135,8 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -144,11 +144,11 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   static get properties() {
@@ -159,105 +159,105 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
        * Image
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Full name of the team member
        */
       fullName: {
-        type: String
+        type: String,
       },
       /**
        * first line
        */
       firstLine: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * second line
        */
       secondLine: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * dribble
        */
       dribble: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * facebook
        */
       facebook: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * github
        */
       github: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * google
        */
       google: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * instagram
        */
       instagram: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * linkedin
        */
       linkedin: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * pinterest
        */
       pinterest: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * tumblr
        */
       tumblr: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * twitch
        */
       twitch: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * twitter
        */
       twitter: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * whatsapp
        */
       whatsapp: {
         type: String,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 }

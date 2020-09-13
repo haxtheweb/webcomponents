@@ -83,7 +83,7 @@ class IconsetDemo extends PolymerElement {
             <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
               <li>
                 <div id="icon">
-                  <iron-icon icon\$="[[icon]]"></iron-icon>
+                  <iron-icon icon$="[[icon]]"></iron-icon>
                   <div id="icon-text">[[icon]]</div>
                 </div>
               </li>
@@ -105,7 +105,7 @@ class IconsetDemo extends PolymerElement {
       __iconList: {
         name: "__iconList",
         type: Array,
-        value: []
+        value: [],
       },
       /**
        * a space-separated whitelist of iconsets by name
@@ -113,7 +113,7 @@ class IconsetDemo extends PolymerElement {
       includeSets: {
         name: "includeSets",
         type: String,
-        value: null
+        value: null,
       },
       /**
        * a space-separated blacklist of iconsets by name
@@ -121,8 +121,8 @@ class IconsetDemo extends PolymerElement {
       excludeSets: {
         name: "excludeSets",
         type: String,
-        value: null
-      }
+        value: null,
+      },
     };
   }
 
@@ -149,14 +149,14 @@ class IconsetDemo extends PolymerElement {
       iconSets.list.length
     ) {
       var index = 0;
-      iconSets.list.forEach(function(item) {
+      iconSets.list.forEach(function (item) {
         let name = item.name;
         if (!root._hideIconset(name)) {
           temp.push({
             name: name,
-            icons: []
+            icons: [],
           });
-          item.getIconNames().forEach(icon => {
+          item.getIconNames().forEach((icon) => {
             temp[index].icons.push(icon);
           });
           index++;

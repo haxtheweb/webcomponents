@@ -9,8 +9,8 @@ export default {
   component: "hexagon-loader",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities();
 
@@ -27,13 +27,13 @@ export const HexagonLoaderStory = () => {
             {
               property: "loading",
               title: "Display Loader",
-              inputMethod: "boolean"
+              inputMethod: "boolean",
             },
             {
               property: "itemCount",
               title: "Number of Hexagons",
               inputMethod: "select",
-              options: options
+              options: options,
             },
             {
               property: "size",
@@ -43,15 +43,15 @@ export const HexagonLoaderStory = () => {
                 "": "",
                 small: "small",
                 large: "large",
-                epic: "epic"
-              }
+                epic: "epic",
+              },
             },
             {
               property: "color",
-              title: "Hexagon Color"
-            }
-          ]
-        }
+              title: "Hexagon Color",
+            },
+          ],
+        },
       }
     ),
     knobs = utils.getKnobs(props, {
@@ -63,8 +63,8 @@ export const HexagonLoaderStory = () => {
         undefined,
         "small",
         "large",
-        "epic"
-      ])
+        "epic",
+      ]),
     });
   return utils.makeElement("hexagon-loader", knobs);
 };

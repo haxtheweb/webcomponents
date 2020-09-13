@@ -35,7 +35,7 @@ class ImgViewModal extends LitElement {
       ...ImgViewViewer.properties,
       ...ImgPanZoom.properties,
       title: { type: String },
-      modal: { type: Object }
+      modal: { type: Object },
     };
   }
   static get styles() {
@@ -86,9 +86,7 @@ class ImgViewModal extends LitElement {
   }
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   _getCssVar(propName) {
     return getComputedStyle(this).getPropertyValue(propName);
@@ -121,7 +119,7 @@ class ImgViewModal extends LitElement {
         "--simple-modal-content-padding":
           this._getCssVar("--simple-modal-content-padding") || "0px",
         "--simple-modal-buttons-padding":
-          this._getCssVar("--simple-modal-buttons-padding") || "0px"
+          this._getCssVar("--simple-modal-buttons-padding") || "0px",
       },
       imgStyles = {
         "--img-view-viewer-backgroundColor":
@@ -133,17 +131,18 @@ class ImgViewModal extends LitElement {
         "--img-view-viewer-borderColor":
           this._getCssVar("--img-view-viewer-borderColor") || "#ddd",
         "--img-view-viewer-toggled-backgroundColor":
-          this._getCssVar("--img-view-viewer-toggled-backgroundColor") || "#eee"
+          this._getCssVar("--img-view-viewer-toggled-backgroundColor") ||
+          "#eee",
       },
       img = document.createElement("img-view-viewer"),
       props = [
         ...Object.keys(ImgViewViewer.properties || {}),
-        ...Object.keys(ImgPanZoom.properties || {})
+        ...Object.keys(ImgPanZoom.properties || {}),
       ];
-    props.forEach(prop => {
+    props.forEach((prop) => {
       if (this[prop]) img[prop] = this[prop];
     });
-    Object.keys(imgStyles || {}).forEach(key =>
+    Object.keys(imgStyles || {}).forEach((key) =>
       img.style.setProperty(key, imgStyles[key])
     );
     console.log("modalOpen", this.figures, this.page);
@@ -153,7 +152,7 @@ class ImgViewModal extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
 
@@ -164,12 +163,12 @@ class ImgViewModal extends LitElement {
       detail: {
         title: this.title || false,
         elements: {
-          content: img
+          content: img,
         },
         styles: modalStyles,
         invokedBy: this,
-        clone: false
-      }
+        clone: false,
+      },
     });
     this.dispatchEvent(evt);
   }

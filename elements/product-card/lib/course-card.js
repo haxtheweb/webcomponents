@@ -14,7 +14,7 @@ class CourseCard extends SimpleColors {
       name: { type: String },
       icon: { type: String },
       author: { type: String },
-      zoom: { type: Boolean, reflect: true }
+      zoom: { type: Boolean, reflect: true },
     };
   }
   constructor() {
@@ -161,7 +161,7 @@ class CourseCard extends SimpleColors {
           font-size: 12px;
           margin-top: -10px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -178,9 +178,7 @@ class CourseCard extends SimpleColors {
           <div id="course_number">${this.number}</div>
           <div id="course_name">${this.name}</div>
           ${this.author
-            ? html`
-                <div id="course_author">By: ${this.author}</div>
-              `
+            ? html` <div id="course_author">By: ${this.author}</div> `
             : ``}
         </div>
       </a>

@@ -9,7 +9,7 @@ window.StorybookUtilities.requestAvailability();
 const Pattern = {
   of: "Pattern Library/Molecules/Forms",
   name: "VoiceRecorder",
-  file: require("raw-loader!./demo/index.html")
+  file: require("raw-loader!./demo/index.html"),
 };
 window.StorybookUtilities.instance.addPattern(Pattern);
 

@@ -20,7 +20,7 @@ class LrndesignImagemapHotspot extends LitElement {
             display: block;
           }
         }
-      `
+      `,
     ];
   }
   /**
@@ -56,7 +56,7 @@ class LrndesignImagemapHotspot extends LitElement {
        * Label for the hotspot
        */
       label: {
-        type: String
+        type: String,
       },
 
       /**
@@ -65,16 +65,16 @@ class LrndesignImagemapHotspot extends LitElement {
       hotspotId: {
         type: String,
         attribute: "hotspot-id",
-        reflect: true
+        reflect: true,
       },
 
       position: {
-        type: String
+        type: String,
       },
 
       __hotspots: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -85,7 +85,7 @@ class LrndesignImagemapHotspot extends LitElement {
     slot.slot = svg;
     slot.setAttribute("aria-labelledBy", "sub-heading");
     slot.setAttribute("aria-describedBy", "sub-heading desc");
-    (hotspots || []).forEach(hotspot => {
+    (hotspots || []).forEach((hotspot) => {
       let svgHotspot = slot.querySelector(`#${hotspot}`);
       svgHotspot.classList.add("hotspot");
       if (hotspot === this.hotspotId) {

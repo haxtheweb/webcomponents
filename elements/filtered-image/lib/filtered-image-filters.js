@@ -108,32 +108,32 @@ class FilteredImageFilters extends PolymerElement {
       src: {
         name: "src",
         type: String,
-        value: ""
+        value: "",
       },
       alt: {
         name: "alt",
         type: String,
-        value: ""
+        value: "",
       },
       height: {
         name: "width",
         type: String,
-        value: ""
+        value: "",
       },
       width: {
         name: "unset",
         type: String,
-        value: ""
+        value: "",
       },
       filter1: {
         name: "filter1",
         type: String,
-        value: ""
+        value: "",
       },
       filter1: {
         name: "filter2",
         type: String,
-        value: ""
+        value: "",
       },
       filters: {
         name: "filters",
@@ -143,108 +143,124 @@ class FilteredImageFilters extends PolymerElement {
             name: "Split Saturation",
             columns: {
               levels: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
-              coords: [[0, 1], [0, 1]]
+              coords: [
+                [0, 1],
+                [0, 1],
+              ],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "Split Desaturation",
             columns: {
               levels: [0, 0.1, 0.2, 0.3, 0.4, 0.5],
-              coords: [[1, 0], [2, 0]]
+              coords: [
+                [1, 0],
+                [2, 0],
+              ],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "Filter",
             columns: {
               levels: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
-              coords: [[0, 3]]
+              coords: [[0, 3]],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "Inverse Filter",
             columns: {
               levels: [0, -0.2, -0.4, -0.6, -0.8, -1.0],
-              coords: [[1, 3], [2, 3]]
+              coords: [
+                [1, 3],
+                [2, 3],
+              ],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "Wash",
             columns: {
               levels: [0, -0.2, -0.4, -0.6, -0.8, -1.0],
-              coords: [[3, 0]]
+              coords: [[3, 0]],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "Inverse Wash",
             columns: {
               levels: [0, -0.2, -0.4, -0.6, -0.8, -1.0],
-              coords: [[3, 1], [3, 2]]
+              coords: [
+                [3, 1],
+                [3, 2],
+              ],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "RGB",
             columns: {
               levels: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
-              coords: [[0, 0], [1, 1], [2, 2]]
+              coords: [
+                [0, 0],
+                [1, 1],
+                [2, 2],
+              ],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "Opacity",
             columns: {
               levels: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
-              coords: [[3, 3]]
+              coords: [[3, 3]],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
+              coords: [],
+            },
           },
           {
             name: "M",
             columns: {
               levels: [0, 0.2, 0.4, 0.6, 0.8, 1.0],
-              coords: [[3, 4]]
+              coords: [[3, 4]],
             },
             rows: {
               levels: ["Example"],
-              coords: []
-            }
-          }
-        ]
+              coords: [],
+            },
+          },
+        ],
       },
       __selectedFilters: {
         name: "__selectedFilters",
         type: Array,
-        computed: "_getSelectedFilters(filter1,filter2)"
-      }
+        computed: "_getSelectedFilters(filter1,filter2)",
+      },
     };
   }
 
@@ -274,8 +290,8 @@ class FilteredImageFilters extends PolymerElement {
         {
           name: f1.name,
           columns: f1.columns,
-          rows: f1.rows
-        }
+          rows: f1.rows,
+        },
       ];
       if (filter2) {
         f[0].name += " and " + this.filters[parseInt(filter2)].name;
@@ -289,12 +305,12 @@ class FilteredImageFilters extends PolymerElement {
       [1, 0, 0, 0, 0],
       [0, 1, 0, 0, 0],
       [0, 0, 1, 0, 0],
-      [0, 0, 0, 1, 0]
+      [0, 0, 0, 1, 0],
     ];
-    filter.columns.coords.forEach(coords => {
+    filter.columns.coords.forEach((coords) => {
       matrix[coords[0]][coords[1]] = filter.columns.levels[col];
     });
-    filter.rows.coords.forEach(coords => {
+    filter.rows.coords.forEach((coords) => {
       matrix[coords[0]][coords[1]] = filter.rows.levels[row];
     });
     return JSON.stringify(matrix)

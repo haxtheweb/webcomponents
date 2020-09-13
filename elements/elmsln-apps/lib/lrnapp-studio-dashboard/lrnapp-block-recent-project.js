@@ -98,10 +98,10 @@ class LrnappBlockRecentProject extends PolymerElement {
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
       <template is="dom-if" if="[[hasProject]]">
-        <a tabindex="-1" href\$="[[basePath]]lrnapp-studio-kanban">
+        <a tabindex="-1" href$="[[basePath]]lrnapp-studio-kanban">
           <paper-button class="whole-project ferpa-protect">
             <paper-card
-              id\$="project-[[project.id]]"
+              id$="project-[[project.id]]"
               class="project-card grey lighten-3"
               heading="{{project.attributes.title}}"
               elevation="2"
@@ -118,13 +118,13 @@ class LrnappBlockRecentProject extends PolymerElement {
                         inner-class="no-left-padding"
                         class="assignment-row-button"
                         button-class="assignment-row-button"
-                        id\$="assignment-[[project.id]]-[[assignment.id]]"
+                        id$="assignment-[[project.id]]-[[assignment.id]]"
                         hover-class="amber lighten-5"
-                        href\$="[[basePath]]lrnapp-studio-kanban"
+                        href$="[[basePath]]lrnapp-studio-kanban"
                       >
                         <span class="button-contents">
                           <div
-                            class\$="status-indicator [[assignment.metadata.relatedSubmissions.complete.color]]"
+                            class$="status-indicator [[assignment.metadata.relatedSubmissions.complete.color]]"
                           >
                             <iron-icon
                               icon="[[assignment.metadata.relatedSubmissions.complete.icon]]"
@@ -148,7 +148,7 @@ class LrnappBlockRecentProject extends PolymerElement {
           inner-class="no-left-padding"
           button-class="assignment-row-button"
           class="assignment-row-button"
-          href\$="[[basePath]]lrnapp-studio-kanban"
+          href$="[[basePath]]lrnapp-studio-kanban"
           hover-class="amber lighten-5"
         >
           <span class="button-contents">
@@ -168,38 +168,38 @@ class LrnappBlockRecentProject extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       response: {
         type: Object,
-        notify: true
+        notify: true,
       },
       project: {
         type: Object,
-        notify: true
+        notify: true,
       },
       hasProject: {
         type: Boolean,
         notify: true,
         reflectToAttribute: true,
-        computed: "_getHasProject(project)"
-      }
+        computed: "_getHasProject(project)",
+      },
     };
   }
 
@@ -228,7 +228,7 @@ class LrnappBlockRecentProject extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

@@ -207,7 +207,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       image: {
         type: String,
         value: "",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Alt text for image
@@ -215,7 +215,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       alt: {
         type: String,
         value: "",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Label for button
@@ -223,7 +223,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       label: {
         type: String,
         value: "",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Title of tile
@@ -231,7 +231,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       title: {
         type: String,
         value: "",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Url for tile
@@ -239,7 +239,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       url: {
         type: String,
         value: "",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Hover state
@@ -247,8 +247,8 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
       hover: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   /**
@@ -256,7 +256,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("mouseover", this.__hoverIn.bind(this));
       this.addEventListener("mouseout", this.__hoverOut.bind(this));
       this.addEventListener("focusin", this.__hoverIn.bind(this));
@@ -286,12 +286,12 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
             type: "content",
             source: "image",
             title: "citation",
-            url: "source"
-          }
+            url: "source",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -300,22 +300,22 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
             title: "Title",
             description: "The title of the tile",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "image",
             title: "Image",
             description: "The image of the tile",
             inputMethod: "textfield",
-            icon: "editor:insert-photo"
+            icon: "editor:insert-photo",
           },
           {
             property: "url",
             title: "Link",
             description: "The link of the tile",
             inputMethod: "textfield",
-            icon: "editor:insert-link"
-          }
+            icon: "editor:insert-link",
+          },
         ],
         configure: [
           {
@@ -323,39 +323,39 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
             title: "Title",
             description: "The title of the tile",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "image",
             title: "Image",
             description: "The image of the tile",
             inputMethod: "textfield",
-            icon: "editor:insert-photo"
+            icon: "editor:insert-photo",
           },
           {
             property: "alt",
             title: "Alt",
             description: "The alt text for the image",
             inputMethod: "textfield",
-            icon: "editor:mode-edit"
+            icon: "editor:mode-edit",
           },
           {
             property: "url",
             title: "Link",
             description: "The link of the tile",
             inputMethod: "textfield",
-            icon: "editor:insert-link"
+            icon: "editor:insert-link",
           },
           {
             property: "label",
             title: "Label",
             description: "The label for the button",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 

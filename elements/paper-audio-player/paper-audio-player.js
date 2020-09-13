@@ -276,7 +276,7 @@ class PaperAudioPlayer extends mixinBehaviors(
         </div>
         <div id="right" class="self-end" on-click="restart">
           <!-- Duration -->
-          <div id="duration" class="fit" hidden\$="[[ended]]">
+          <div id="duration" class="fit" hidden$="[[ended]]">
             <span class="fit" role="timer" aria-label="Audio Track Length"
               >[[ _convertSecToMin(timeLeft) ]]</span
             >
@@ -305,44 +305,44 @@ class PaperAudioPlayer extends mixinBehaviors(
 
       src: {
         type: String,
-        observer: "_srcChanged"
+        observer: "_srcChanged",
       },
       title: {
         type: String,
-        value: "Click to play this audio file"
+        value: "Click to play this audio file",
       },
       autoPlay: {
         type: Boolean,
-        value: false
+        value: false,
       },
       preload: {
         type: String,
-        value: "auto"
+        value: "auto",
       },
       currentTime: {
         type: Number,
         value: 0,
-        notify: true
+        notify: true,
       },
       timeLeft: {
         type: Number,
-        value: 0
+        value: 0,
       },
       smallSkip: {
         type: Number,
-        value: 15
+        value: 15,
       },
       largeSkip: {
         type: Number,
-        value: 60
+        value: 60,
       },
       error: {
-        type: Boolean
+        type: Boolean,
       },
       timeOffset: {
         type: Number,
-        value: 0
-      }
+        value: 0,
+      },
     };
   }
 
@@ -353,7 +353,7 @@ class PaperAudioPlayer extends mixinBehaviors(
       left: "_skipReverseByInterval",
       right: "_skipReverseByInterval",
       down: "_skipReverseByInterval",
-      up: "_skipReverseByInterval"
+      up: "_skipReverseByInterval",
     };
   }
   static get haxProperties() {
@@ -372,12 +372,12 @@ class PaperAudioPlayer extends mixinBehaviors(
             type: "audio",
             source: "src",
             title: "title",
-            color: "color"
-          }
+            color: "color",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -388,7 +388,7 @@ class PaperAudioPlayer extends mixinBehaviors(
             inputMethod: "textfield",
             icon: "link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "title",
@@ -397,22 +397,22 @@ class PaperAudioPlayer extends mixinBehaviors(
             inputMethod: "textfield",
             icon: "av:video-label",
             required: false,
-            validationType: "text"
+            validationType: "text",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
-          }
+            icon: "invert-colors",
+          },
         ],
         configure: [
           {
@@ -422,7 +422,7 @@ class PaperAudioPlayer extends mixinBehaviors(
             inputMethod: "haxupload",
             icon: "link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "title",
@@ -431,25 +431,25 @@ class PaperAudioPlayer extends mixinBehaviors(
             inputMethod: "textfield",
             icon: "av:video-label",
             required: false,
-            validationType: "text"
+            validationType: "text",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
-          }
+            icon: "invert-colors",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   /**
@@ -457,7 +457,7 @@ class PaperAudioPlayer extends mixinBehaviors(
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.shadowRoot
         .querySelector("#audio")
         .addEventListener("loadedmetadata", this._onCanPlay.bind(this));
@@ -616,7 +616,7 @@ class PaperAudioPlayer extends mixinBehaviors(
       clearInterval(player.timer.sliderUpdateInterval);
     }
 
-    player.timer.sliderUpdateInterval = setInterval(function() {
+    player.timer.sliderUpdateInterval = setInterval(function () {
       if (player.isPlaying) {
         player.currentTime = player.shadowRoot.querySelector(
           "#audio"
@@ -694,7 +694,7 @@ class PaperAudioPlayer extends mixinBehaviors(
       player.shadowRoot.querySelector("#audio").load();
       player.shadowRoot.querySelector("#audio").addEventListener(
         "loadedmetadata",
-        function() {
+        function () {
           player._updateProgressBar(e);
           if (!player.isPlaying) {
             player._play();

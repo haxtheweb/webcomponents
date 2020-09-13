@@ -15,7 +15,7 @@ import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 
 /**
@@ -35,15 +35,15 @@ class HAXCMSSiteDashboard extends LitElement {
     this.manifest = {};
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun(reaction => {
+    autorun((reaction) => {
       this.jwt = toJS(store.jwt);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.dashboardOpened = toJS(store.dashboardOpened);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
@@ -180,7 +180,7 @@ class HAXCMSSiteDashboard extends LitElement {
           --a11y-tabs-color: var(--haxcms-color, #000000);
           --a11y-tabs-focus-color: var(--haxcms-color, #000000);
         }
-      `
+      `,
     ];
   }
   // render function
@@ -248,40 +248,40 @@ class HAXCMSSiteDashboard extends LitElement {
   static get properties() {
     return {
       backLink: {
-        type: String
+        type: String,
       },
       backText: {
-        type: String
+        type: String,
       },
       dashboardOpened: {
         type: Boolean,
         reflect: true,
-        attribute: "dashboard-opened"
+        attribute: "dashboard-opened",
       },
       /**
        * Allow method to be overridden, useful in local testing
        */
       method: {
-        type: String
+        type: String,
       },
       /**
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String
+        type: String,
       },
       /**
        * Publishing end point, this has CDN implications so show message
        */
       publishing: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Outline of items in json outline schema format
        */
       manifest: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -329,7 +329,7 @@ class HAXCMSSiteDashboard extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: this.shadowRoot.querySelector("#siteform").submit()
+        detail: this.shadowRoot.querySelector("#siteform").submit(),
       })
     );
   }
@@ -342,7 +342,7 @@ class HAXCMSSiteDashboard extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: e.target
+        detail: e.target,
       })
     );
   }

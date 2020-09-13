@@ -28,8 +28,8 @@ class LrndesignContentblock extends PolymerElement {
        * Heading for this block
        */
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

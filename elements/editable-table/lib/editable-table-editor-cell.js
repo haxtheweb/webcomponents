@@ -87,29 +87,29 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
        */
       row: {
         type: Number,
-        value: null
+        value: null,
       },
       /**
        * Cell column
        */
       column: {
         type: Number,
-        value: null
+        value: null,
       },
       /**
        * Cell label
        */
       label: {
         type: String,
-        computed: "_getCellLabel(column,row)"
+        computed: "_getCellLabel(column,row)",
       },
       /**
        * Cell contents
        */
       value: {
         type: String,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 
@@ -156,8 +156,8 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         detail: {
           row: this.row,
           column: this.column,
-          value: e.detail.value
-        }
+          value: e.detail.value,
+        },
       })
     );
   }
@@ -251,7 +251,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { cell: this.parentNode, direction: "left" }
+        detail: { cell: this.parentNode, direction: "left" },
       })
     );
   }
@@ -266,7 +266,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { cell: this.parentNode, direction: "right" }
+        detail: { cell: this.parentNode, direction: "right" },
       })
     );
   }
@@ -281,7 +281,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { cell: this.parentNode, direction: "up" }
+        detail: { cell: this.parentNode, direction: "up" },
       })
     );
   }
@@ -296,7 +296,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { cell: this.parentNode, direction: "down" }
+        detail: { cell: this.parentNode, direction: "down" },
       })
     );
   }

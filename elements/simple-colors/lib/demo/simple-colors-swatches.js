@@ -70,7 +70,7 @@ class simpleColorsSwatches extends SimpleColors {
           opacity: 0.7;
           cursor: pointer;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -79,7 +79,7 @@ class simpleColorsSwatches extends SimpleColors {
       <div>
         <p>Click on the swatches above to learn more.</p>
         <div class="rows">
-          ${Object.keys(this.colors).map(color => {
+          ${Object.keys(this.colors).map((color) => {
             return html`
               <div class="row">
                 ${this.colors.grey.map((shade, index) => {
@@ -89,7 +89,7 @@ class simpleColorsSwatches extends SimpleColors {
                       controls="swatchinfo"
                       style="background-color: ${this.colors[color][index]};"
                       title="${this._getTitle(color, index)}"
-                      @click="${e => this._handleClick(color, index)}"
+                      @click="${(e) => this._handleClick(color, index)}"
                     >
                       <div>${this._getTitle(color, index)}</div>
                     </button>
@@ -123,15 +123,15 @@ class simpleColorsSwatches extends SimpleColors {
        */
       swatchId: {
         attribute: "swatch-id",
-        type: String
+        type: String,
       },
       /**
        * The swatch name (`color-shade`)
        */
       swatchName: {
         attribute: "swatch-name",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

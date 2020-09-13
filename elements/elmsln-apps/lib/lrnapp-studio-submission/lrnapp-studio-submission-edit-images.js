@@ -47,7 +47,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
           <lrnapp-studio-submission-edit-image
             image="[[image]]"
             on-deleted="_deleteImage"
-            data-index\$="[[index]]"
+            data-index$="[[index]]"
           ></lrnapp-studio-submission-edit-image>
         </template>
         <lrnapp-studio-submission-edit-add-asset
@@ -89,16 +89,16 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
       images: {
         type: Array,
         notify: true,
-        value: []
+        value: [],
       },
       selectedPage: {
         type: String,
-        value: 0
+        value: 0,
       },
       uploadUrl: {
         type: String,
-        value: null
-      }
+        value: null,
+      },
     };
   }
 
@@ -127,7 +127,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
       // images array and if it is replace it.
       var replacement = false;
       if (this.images) {
-        images = this.images.map(function(image) {
+        images = this.images.map(function (image) {
           if (image.fid === file.fid) {
             replacement = true;
             return file;

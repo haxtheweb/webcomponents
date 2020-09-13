@@ -56,8 +56,8 @@ class DragNDrop extends HTMLElement {
 
       editing: {
         name: "editing",
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 

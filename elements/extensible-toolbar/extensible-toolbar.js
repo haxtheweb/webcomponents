@@ -82,15 +82,13 @@ class ExtensibleToolbar extends LitElement {
           --extensible-toolbar-visible-until-xl: none;
           --extensible-toolbar-hidden-until-xl: none;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   // properties available to the custom element for data binding
@@ -104,7 +102,7 @@ class ExtensibleToolbar extends LitElement {
       collapsed: {
         attribute: "collapsed",
         reflect: true,
-        type: Boolean
+        type: Boolean,
       },
 
       /**
@@ -112,7 +110,7 @@ class ExtensibleToolbar extends LitElement {
        */
       responsiveSize: {
         attribute: "responsive-size",
-        type: String
+        type: String,
       },
 
       /**
@@ -121,8 +119,8 @@ class ExtensibleToolbar extends LitElement {
       sticky: {
         attribute: "sticky",
         type: Boolean,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 
@@ -157,8 +155,8 @@ class ExtensibleToolbar extends LitElement {
         detail: {
           element: root,
           attribute: "responsive-size",
-          relativeToParent: true
-        }
+          relativeToParent: true,
+        },
       })
     );
   }
@@ -194,7 +192,7 @@ class ExtensibleToolbar extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           }
         )
       )

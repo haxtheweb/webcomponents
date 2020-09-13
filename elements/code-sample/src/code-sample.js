@@ -56,7 +56,7 @@ class CodeSample extends LitElement {
         '<template preserve-content="preserve-content">const great="example";</template>';
     }
     if (this.querySelector("template")) {
-      this._observer = new MutationObserver(mutations => {
+      this._observer = new MutationObserver((mutations) => {
         if (this.shadowRoot) {
           this._updateContent();
         }
@@ -64,7 +64,7 @@ class CodeSample extends LitElement {
       this._observer.observe(this, {
         attributes: true,
         childList: true,
-        subtree: true
+        subtree: true,
       });
     } else if (this.childNodes.length) {
       console.error(
@@ -129,7 +129,7 @@ class CodeSample extends LitElement {
     const nodes = this.children;
     return [].filter.call(
       nodes,
-      node => node.nodeType === Node.ELEMENT_NODE
+      (node) => node.nodeType === Node.ELEMENT_NODE
     )[0];
   }
   _highlight(str) {

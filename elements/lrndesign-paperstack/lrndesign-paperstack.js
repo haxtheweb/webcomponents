@@ -152,15 +152,15 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
        */
       title: {
         type: String,
-        value: ""
+        value: "",
       },
       /**
        * icon
        */
       icon: {
         type: String,
-        value: "lrn:assignment"
-      }
+        value: "lrn:assignment",
+      },
     };
   }
   static get haxProperties() {
@@ -176,8 +176,8 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
         groups: ["Content", "Layout"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -186,59 +186,59 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
             title: "Title",
             description: "Title of the cards",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
-          }
+            icon: "invert-colors",
+          },
         ],
         configure: [
           {
             property: "title",
             title: "Title",
             description: "Title of the cards",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             property: "icon",
             title: "Icon",
             description: "Icon for the card",
-            inputMethod: "iconpicker"
+            inputMethod: "iconpicker",
           },
           {
             slot: "",
             title: "Contents",
             description: "card contents",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

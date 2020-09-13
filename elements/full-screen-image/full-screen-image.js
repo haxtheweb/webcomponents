@@ -95,7 +95,7 @@ class FullScreenImage extends LitElement {
           right: 0px;
           background-color: rgba(191, 147, 45, 0.7);
         }
-      `
+      `,
     ];
   }
 
@@ -132,13 +132,13 @@ class FullScreenImage extends LitElement {
         groups: ["Screen"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -148,8 +148,8 @@ class FullScreenImage extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         configure: [
           {
@@ -157,14 +157,14 @@ class FullScreenImage extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "subtitle",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "source",
@@ -172,11 +172,11 @@ class FullScreenImage extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -185,14 +185,14 @@ class FullScreenImage extends LitElement {
       ...super.properties,
 
       title: {
-        type: String
+        type: String,
       },
       subtitle: {
-        type: String
+        type: String,
       },
       source: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -217,11 +217,11 @@ class FullScreenImage extends LitElement {
    * LitElement ready
    */
   firstUpdated() {
-    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").addEventListener("click", (e) => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   }

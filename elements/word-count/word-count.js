@@ -42,7 +42,7 @@ class WordCount extends LitElement {
           position: absolute !important;
           word-wrap: normal !important;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -65,7 +65,7 @@ class WordCount extends LitElement {
       attributes: true,
       characterData: true,
       childList: true,
-      subtree: true
+      subtree: true,
     });
   }
   disconnectedCallback() {
@@ -84,7 +84,7 @@ class WordCount extends LitElement {
   static get properties() {
     return {
       words: { type: Number },
-      wordsPrefix: { type: String }
+      wordsPrefix: { type: String },
     };
   }
   /**

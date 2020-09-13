@@ -83,7 +83,7 @@ class ToElement extends HTMLElement {
   }
 
   _processQueue() {
-    this._queue.forEach(action => {
+    this._queue.forEach((action) => {
       this[`_${action.type}`](action.data);
     });
 
@@ -113,7 +113,7 @@ class ToElement extends HTMLElement {
     let html = this._tmp.outerHTML;
     return {
       html: html,
-      css: css
+      css: css,
     };
   }
   /**
@@ -215,8 +215,8 @@ class ToElement extends HTMLElement {
     return [
       {
         id: id,
-        style: css
-      }
+        style: css,
+      },
     ].concat(children.map(this.recursiveExtract.bind(this)));
   }
 
@@ -230,17 +230,17 @@ class ToElement extends HTMLElement {
 
     return {
       elements: flat,
-      stylesheet: flat.reduce(function(acc, cur) {
+      stylesheet: flat.reduce(function (acc, cur) {
         var style = "    #" + cur.id + " {\n" + cur.style + "    }\n";
         return acc + style;
-      }, "")
+      }, ""),
     };
   }
   /**
    * convert dashed case to camel case
    */
   dashToCamel(str) {
-    return str.replace(/-([a-z])/g, function(g) {
+    return str.replace(/-([a-z])/g, function (g) {
       return g[1].toUpperCase();
     });
   }
@@ -337,7 +337,7 @@ ${tmp.css}</style>
   downloadFromData(data, type, name = "download", newTab = true) {
     const mimeType = this.fileTypes[type.toUpperCase()];
     const blob = new Blob([decodeURIComponent(encodeURI(data))], {
-      type: mimeType
+      type: mimeType,
     });
     const filename = name + "." + type.toLowerCase();
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {

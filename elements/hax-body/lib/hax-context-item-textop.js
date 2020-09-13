@@ -24,7 +24,7 @@ class HaxContextItemTextop extends LitElement {
           display: flex;
           width: 100%;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -77,58 +77,58 @@ class HaxContextItemTextop extends LitElement {
        */
       light: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * disabled state
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * an optional value to send along in the press. Allows for
        * reusing events more easily
        */
       value: {
-        type: String
+        type: String,
       },
       /**
        * Mini theme for making things small and round.
        */
       mini: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Style to be presented in a menu
        */
       menu: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Direction for the tooltip
        */
       direction: {
-        type: String
+        type: String,
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       action: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -138,7 +138,7 @@ class HaxContextItemTextop extends LitElement {
       eventName: {
         type: String,
         reflect: true,
-        attribute: "event-name"
+        attribute: "event-name",
       },
       /**
        * Method of input to display when activated. This is
@@ -147,7 +147,7 @@ class HaxContextItemTextop extends LitElement {
       inputMethod: {
         type: String,
         reflect: true,
-        attribute: "input-method"
+        attribute: "input-method",
       },
       /**
        * Optional slot to bind this value to.
@@ -155,7 +155,7 @@ class HaxContextItemTextop extends LitElement {
       propertyToBind: {
         type: String,
         reflect: true,
-        attribute: "property-to-bind"
+        attribute: "property-to-bind",
       },
       /**
        * Optional slot to bind this value to.
@@ -163,15 +163,15 @@ class HaxContextItemTextop extends LitElement {
       slotToBind: {
         type: String,
         reflect: true,
-        attribute: "slot-to-bind"
+        attribute: "slot-to-bind",
       },
       /**
        * Optional description for this item.
        */
       description: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -197,8 +197,8 @@ class HaxContextItemTextop extends LitElement {
           detail: {
             target: this,
             eventName: this.eventName,
-            value: this.value
-          }
+            value: this.value,
+          },
         })
       );
     }

@@ -48,7 +48,7 @@ class SimplePages extends LitElement {
       if (!window.customElements.get(el.tagName.toLowerCase())) {
         const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
         import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
-          response => {
+          (response) => {
             setTimeout(() => {
               window.dispatchEvent(new Event("resize"));
             }, 0);

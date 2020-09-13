@@ -6,7 +6,7 @@ import {
   wipeSlot,
   stripMSWord,
   nodeToHaxElement,
-  haxElementToNode
+  haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -22,7 +22,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         :host {
           display: none;
         }
-      `
+      `,
     ];
   }
   /**
@@ -64,18 +64,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     return {
       ...super.properties,
       openDrawer: {
-        type: Object
+        type: Object,
       },
       voiceDebug: {
         type: Boolean,
-        attribute: "voice-debug"
+        attribute: "voice-debug",
       },
       activeGizmo: {
-        type: Object
+        type: Object,
       },
       voiceRespondsTo: {
         type: String,
-        attribute: "voice-responses-to"
+        attribute: "voice-responses-to",
       },
       /**
        * skipHAXConfirmation
@@ -83,49 +83,49 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       skipHAXConfirmation: {
         type: Boolean,
         reflect: true,
-        attribute: "skip-hax-confirmation"
+        attribute: "skip-hax-confirmation",
       },
       /**
        * Local storage bridge
        */
       storageData: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax tray
        */
       haxTray: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax app picker element.
        */
       haxAppPicker: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax stax picker element.
        */
       haxStaxPicker: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax stax picker element.
        */
       haxBloxPicker: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax autoloader element.
        */
       haxAutoloader: {
-        type: Object
+        type: Object,
       },
       /**
        * A list of all haxBodies that exist
        */
       haxBodies: {
-        type: Array
+        type: Array,
       },
       /**
        * An active place holder item reference. This is used
@@ -133,151 +133,151 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * know what element replace in context.
        */
       activePlaceHolder: {
-        type: Object
+        type: Object,
       },
       /**
        * The hax-body that is currently active.
        */
       activeHaxBody: {
-        type: Object
+        type: Object,
       },
       /**
        * Possible appStore endpoint for loading in things dynamically.
        */
       appStore: {
-        type: Object
+        type: Object,
       },
       /**
        * HAX Toast message.
        */
       haxToast: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax export dialog element.
        */
       haxExport: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax export dialog element.
        */
       haxMap: {
-        type: Object
+        type: Object,
       },
       /**
        * Hax preferences dialog element.
        */
       haxPreferences: {
-        type: Object
+        type: Object,
       },
       /**
        * Active Node.
        */
       activeNode: {
-        type: Object
+        type: Object,
       },
       /**
        * Active container Node, 2nd highest parent of activeNode.
        */
       activeContainerNode: {
-        type: Object
+        type: Object,
       },
       /**
        * Session object bridged in from a session method of some kind
        */
       sessionObject: {
-        type: Object
+        type: Object,
       },
       /**
        * editMode
        */
       editMode: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * skip the exit trap to prevent losing data
        */
       skipExitTrap: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Available gizmos.
        */
       gizmoList: {
-        type: Array
+        type: Array,
       },
       /**
        * Available elements keyed by tagName and with
        * their haxProperties centrally registered.
        */
       elementList: {
-        type: Object
+        type: Object,
       },
       /**
        * Available apps of things supplying media / content.
        */
       appList: {
-        type: Array
+        type: Array,
       },
       /**
        * Available hax stax which are just re-usable templates
        */
       staxList: {
-        type: Array
+        type: Array,
       },
       /**
        * Available hax blox which are grid plate / layout elements
        */
       bloxList: {
-        type: Array
+        type: Array,
       },
       /**
        * Global preferences that HAX can write to and
        * other elements can use to go off of.
        */
       globalPreferences: {
-        type: Object
+        type: Object,
       },
       /**
        * Globally active app, used for brokering communications
        */
       activeApp: {
-        type: Object
+        type: Object,
       },
       /**
        * Valid tag list, tag only and including primatives for a baseline.
        */
       validTagList: {
-        type: Array
+        type: Array,
       },
       /**
        * Gizmo types which can be used to bridge apps to gizmos.
        */
       validGizmoTypes: {
-        type: Array
+        type: Array,
       },
       /**
        * Sandboxed environment test
        */
       _isSandboxed: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Internal app store data property after request
        */
       __appStoreData: {
-        type: Object
+        type: Object,
       },
       __ready: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Support for deploy specific rewriting for things like JWTs
        */
       connectionRewrites: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -330,7 +330,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "strong",
           "blockquote",
           "code",
-          "figure"
+          "figure",
         ].includes(tag)
       ) {
         return true;
@@ -368,7 +368,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "blockquote",
           "code",
           "figure",
-          "grid-plate"
+          "grid-plate",
         ].includes(tag)
       ) {
         return true;
@@ -469,7 +469,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
       // now process the dynamic imports
@@ -493,7 +493,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // seems redundant but this can help polyfill'ed browsers
       if (!window.customElements.get(i)) {
         await import(`${basePath}../../../${items[i]}`)
-          .then(response => {
+          .then((response) => {
             let hasClass = false;
             for (var cVal in response) {
               // get the custom element definition we used to add that file
@@ -521,7 +521,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               );
             }
           })
-          .catch(error => {
+          .catch((error) => {
             /* Error handling */
             console.warn(error);
           });
@@ -658,7 +658,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "haxMap",
           "haxPreferences",
           "haxAppPicker",
-          "haxTray"
+          "haxTray",
         ].includes(propName)
       ) {
         // allow this to verify if everything is here or not
@@ -697,14 +697,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
-    import("@polymer/iron-ajax/iron-ajax.js").then(esModule => {
+    import("@polymer/iron-ajax/iron-ajax.js").then((esModule) => {
       if (this.shadowRoot.querySelector("#appstore")) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
       }
     });
     // import voice command stuff in the background
     // @todo only activate if the setting to use it is in place
-    import("@lrnwebcomponents/hal-9000/hal-9000.js").then(esModule => {
+    import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
       this.__hal = this.shadowRoot.querySelector("#hal");
     });
     // set this global flag so we know it's safe to start trusting data
@@ -801,7 +801,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           bubbles: true,
           cancelable: false,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
       window.HaxStore.ready = true;
@@ -822,14 +822,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       window.scrollBy({
         top: -(window.innerHeight * 0.5),
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     };
     this.voiceCommands[`scroll (down) ${this.voiceRespondsTo}`] = () => {
       window.scrollBy({
         top: window.innerHeight * 0.5,
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     };
     this.voiceCommands[`scroll to bottom ${this.voiceRespondsTo}`] = () => {
@@ -874,7 +874,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.speak("You are at the bottom of the document");
       }
     };
-    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = e => {
+    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = (e) => {
       if (window.HaxStore.instance.isTextElement(this.activeNode)) {
         try {
           let range = this._positionCursorInNode(this.activeNode);
@@ -896,9 +896,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       this.speak("Yeah what do you want");
     };
     // trolling
-    this.voiceCommands[
-      `${this.voiceRespondsTo} now your name is *splat`
-    ] = text => {
+    this.voiceCommands[`${this.voiceRespondsTo} now your name is *splat`] = (
+      text
+    ) => {
       const past = this.voiceRespondsTo;
       this.speak(`I used to be named ${past} but you can call me ${text} now.`);
       this.voiceRespondsTo = `(${text})`;
@@ -1033,7 +1033,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         // if it's a URL we might be able to automatically convert it into it's own element
         let values = {
           source: haxElements[0].properties.href,
-          title: haxElements[0].content
+          title: haxElements[0].content,
         };
         // if we DID get a match, block default values
         if (
@@ -1061,7 +1061,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             content: haxElements[i].content
               .replace(/<span>&nbsp;<\/span>/g, " ")
               .trim(),
-            properties: haxElements[i].properties
+            properties: haxElements[i].properties,
           });
           newContent += window.HaxStore.nodeToContent(node);
         }
@@ -1182,7 +1182,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "section",
       "grid-plate",
       "template",
-      "webview"
+      "webview",
     ];
   }
   __validGizmoTypes() {
@@ -1204,7 +1204,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "content",
       "text",
       "inline",
-      "*"
+      "*",
     ];
   }
   /**
@@ -1226,7 +1226,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-register-body": "_haxStoreRegisterBody",
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
-      "hax-add-voice-command": "_addVoiceCommand"
+      "hax-add-voice-command": "_addVoiceCommand",
     };
     this.voiceRespondsTo = "(worker)";
     this.voiceCommands = {};
@@ -1234,7 +1234,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.storageData = {};
     this.appStore = {
       url: "",
-      params: {}
+      params: {},
     };
     this.activeContainerNode = null;
     this.activeNode = null;
@@ -1265,7 +1265,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
     // imports app, blox, stax definitions
     import("./hax-app.js");
-    import("@polymer/polymer/lib/utils/settings.js").then(esModule => {
+    import("@polymer/polymer/lib/utils/settings.js").then((esModule) => {
       esModule.setPassiveTouchGestures(true);
     });
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
@@ -1297,8 +1297,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               inputMethod: "textfield",
               icon: "link",
               required: true,
-              validationType: "url"
-            }
+              validationType: "url",
+            },
           ],
           configure: [
             {
@@ -1308,11 +1308,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               inputMethod: "textfield",
               icon: "link",
               required: true,
-              validationType: "url"
-            }
+              validationType: "url",
+            },
           ],
-          advanced: []
-        }
+          advanced: [],
+        },
       };
       this.setHaxProperties(webview, "webview");
     }
@@ -1331,30 +1331,30 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             type: "link",
             source: "src",
             height: "height",
-            width: "width"
+            width: "width",
           },
           {
             type: "pdf",
             source: "src",
             height: "height",
-            width: "width"
+            width: "width",
           },
           {
             type: "document",
             source: "src",
             height: "height",
-            width: "width"
+            width: "width",
           },
           {
             type: "html",
             source: "src",
             height: "height",
-            width: "width"
-          }
+            width: "width",
+          },
         ],
         meta: {
-          author: "W3C"
-        }
+          author: "W3C",
+        },
       },
       settings: {
         quick: [
@@ -1365,8 +1365,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "textfield",
             icon: "link",
             required: true,
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         configure: [
           {
@@ -1376,8 +1376,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "textfield",
             icon: "link",
             required: true,
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         advanced: [
           {
@@ -1387,17 +1387,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "select",
             options: {
               lazy: "Load when visible",
-              auto: "Automatic"
-            }
-          }
-        ]
-      }
+              auto: "Automatic",
+            },
+          },
+        ],
+      },
     };
     this.setHaxProperties(iframe, "iframe");
     let img = {
       canScale: {
         min: 10,
-        step: 5
+        step: 5,
       },
       canPosition: true,
       canEditSource: true,
@@ -1410,19 +1410,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         handles: [
           {
             type: "link",
-            source: "src"
+            source: "src",
           },
           {
             type: "image",
             type_exclusive: true,
             source: "src",
             height: "height",
-            width: "width"
-          }
+            width: "width",
+          },
         ],
         meta: {
-          author: "W3C"
-        }
+          author: "W3C",
+        },
       },
       settings: {
         quick: [
@@ -1431,7 +1431,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: "Alt text",
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "alt",
-            icon: "accessibility"
+            icon: "accessibility",
           },
           {
             attribute: "height",
@@ -1439,8 +1439,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             description:
               "height in pixels of the item. Leave blank to respond to the natural resolution",
             inputMethod: "textfield",
-            icon: "icons:swap-vert"
-          }
+            icon: "icons:swap-vert",
+          },
         ],
         configure: [
           {
@@ -1450,14 +1450,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "haxupload",
             icon: "link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             attribute: "alt",
             title: "Alt text",
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "alt",
-            icon: "accessibility"
+            icon: "accessibility",
           },
           {
             attribute: "height",
@@ -1465,8 +1465,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             description:
               "height in pixels of the item. Leave blank to respond to the natural resolution",
             inputMethod: "textfield",
-            icon: "icons:swap-vert"
-          }
+            icon: "icons:swap-vert",
+          },
         ],
         advanced: [
           {
@@ -1475,7 +1475,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             description:
               "Space-separated list of IDs for elements that describe the image.",
             inputMethod: "textfield",
-            icon: "accessibility"
+            icon: "accessibility",
           },
           {
             attribute: "loading",
@@ -1484,11 +1484,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "select",
             options: {
               lazy: "Load when visible",
-              auto: "Automatic"
-            }
-          }
-        ]
-      }
+              auto: "Automatic",
+            },
+          },
+        ],
+      },
     };
     this.setHaxProperties(img, "img");
     let ahref = {
@@ -1503,8 +1503,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         groups: ["Link"],
         handles: [],
         meta: {
-          author: "W3C"
-        }
+          author: "W3C",
+        },
       },
       settings: {
         quick: [
@@ -1515,15 +1515,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "textfield",
             icon: "icons:link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             attribute: "title",
             title: "Title text",
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "textfield",
-            icon: "icons:accessibility"
-          }
+            icon: "icons:accessibility",
+          },
         ],
         configure: [
           {
@@ -1531,7 +1531,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: "Text",
             description: "Text of the link",
             inputMethod: "textfield",
-            required: true
+            required: true,
           },
           {
             attribute: "href",
@@ -1540,14 +1540,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             inputMethod: "haxupload",
             icon: "icons:link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             attribute: "title",
             title: "Title text",
             description: "Useful for screen readers and improved SEO.",
             inputMethod: "textfield",
-            icon: "icons:accessibility"
+            icon: "icons:accessibility",
           },
           {
             attribute: "target",
@@ -1559,20 +1559,20 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
               "": "Same window",
               _blank: "New window",
               _top: "Top window",
-              _parent: "Parent window"
-            }
-          }
+              _parent: "Parent window",
+            },
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
     // anything can be presented as a link
-    this.validGizmoTypes.forEach(val => {
+    this.validGizmoTypes.forEach((val) => {
       ahref.gizmo.handles.push({
         type: val,
         source: "href",
         title: "innerText",
-        alt: "title"
+        alt: "title",
       });
     });
     this.setHaxProperties(ahref, "a");
@@ -1589,25 +1589,25 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         handles: [
           {
             type: "content",
-            content: ""
-          }
+            content: "",
+          },
         ],
         meta: {
-          author: "W3C"
-        }
+          author: "W3C",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: "p",
           content: "Text",
-          properties: {}
-        }
-      ]
+          properties: {},
+        },
+      ],
     };
     this.setHaxProperties(p, "p");
     let table = {
@@ -1621,8 +1621,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         color: "blue-grey",
         groups: ["Content", "Table", "Data"],
         meta: {
-          author: "W3C"
-        }
+          author: "W3C",
+        },
       },
       settings: {
         quick: [],
@@ -1632,122 +1632,122 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: "Body",
             description: "Tags that make up the table",
             inputMethod: "code-editor",
-            slotWrapper: ""
-          }
+            slotWrapper: "",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
     this.setHaxProperties(table, "table");
     let prims = {
       caption: {
         title: "Caption",
-        icon: "av:call-to-action"
+        icon: "av:call-to-action",
       },
       video: {
         title: "Video",
-        icon: "av:play-circle-filled"
+        icon: "av:play-circle-filled",
       },
       audio: {
         title: "Audio",
-        icon: "image:music-note"
+        icon: "image:music-note",
       },
       section: {
         title: "Section",
-        icon: "image:crop-landscape"
+        icon: "image:crop-landscape",
       },
       ol: {
         title: "Numbered list",
-        icon: "editor:format-list-numbered"
+        icon: "editor:format-list-numbered",
       },
       ul: {
         title: "Bulleted list",
-        icon: "editor:format-list-bulleted"
+        icon: "editor:format-list-bulleted",
       },
       li: {
         title: "List item",
-        icon: "editor:format-list-bulleted"
+        icon: "editor:format-list-bulleted",
       },
       h1: {
         title: "Heading",
-        icon: "hax:h1"
+        icon: "hax:h1",
       },
       h2: {
         title: "Heading",
-        icon: "hax:h2"
+        icon: "hax:h2",
       },
       h3: {
         title: "Heading",
-        icon: "hax:h3"
+        icon: "hax:h3",
       },
       h4: {
         title: "Heading",
-        icon: "hax:h4"
+        icon: "hax:h4",
       },
       h5: {
         title: "Heading",
-        icon: "hax:h5"
+        icon: "hax:h5",
       },
       h6: {
         title: "Heading",
-        icon: "hax:h6"
+        icon: "hax:h6",
       },
       strike: {
         title: "Cross out",
-        icon: "editor:format-strikethrough"
+        icon: "editor:format-strikethrough",
       },
       u: {
         title: "Underline",
-        icon: "editor:format-underlined"
+        icon: "editor:format-underlined",
       },
       sub: {
         title: "Subscript",
-        icon: "mdextra:subscript"
+        icon: "mdextra:subscript",
       },
       sup: {
         title: "Superscript",
-        icon: "mdextra:superscript"
+        icon: "mdextra:superscript",
       },
       div: {
         title: "DIV",
-        icon: "image:crop-landscape"
+        icon: "image:crop-landscape",
       },
       span: {
         title: "SPAN",
-        icon: "editor:short-text"
+        icon: "editor:short-text",
       },
       i: {
         title: "Italic",
-        icon: "editor:format-italic"
+        icon: "editor:format-italic",
       },
       em: {
         title: "Emphasis",
-        icon: "editor:format-italic"
+        icon: "editor:format-italic",
       },
       strong: {
         title: "Bold",
-        icon: "editor:format-bold"
+        icon: "editor:format-bold",
       },
       b: {
         title: "Bold",
-        icon: "editor:format-bold"
+        icon: "editor:format-bold",
       },
       blockquote: {
         title: "Block quote",
-        icon: "editor:format-quote"
+        icon: "editor:format-quote",
       },
       code: {
         title: "Code",
-        icon: "icons:code"
+        icon: "icons:code",
       },
       figure: {
         title: "Figure",
-        icon: "icons:label-outline"
+        icon: "icons:label-outline",
       },
       embed: {
         title: "Embedded object",
-        icon: "icons:fullscreen"
-      }
+        icon: "icons:fullscreen",
+      },
     };
     for (var tag in prims) {
       this.setHaxProperties(
@@ -1759,21 +1759,21 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: prims[tag].title,
             icon: prims[tag].icon,
             meta: {
-              hidden: tag == "h2" ? false : true
-            }
+              hidden: tag == "h2" ? false : true,
+            },
           },
           settings: {
             quick: [],
             configure: [],
-            advanced: []
+            advanced: [],
           },
           demoSchema: [
             {
               tag: tag,
               content: tag == "h2" ? "Heading" : "",
-              properties: {}
-            }
-          ]
+              properties: {},
+            },
+          ],
         },
         tag
       );
@@ -1781,31 +1781,31 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     let hr = {
       canScale: {
         min: 25,
-        step: 25
+        step: 25,
       },
       gizmo: {
         title: "Horizontal line",
         icon: "hax:hr",
         meta: {
-          author: "W3C"
-        }
+          author: "W3C",
+        },
       },
       canPosition: false,
       canEditSource: false,
       settings: {
         quick: [],
         configure: [],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: "hr",
           content: "",
           properties: {
-            style: "width:50%;"
-          }
-        }
-      ]
+            style: "width:50%;",
+          },
+        },
+      ],
     };
     this.setHaxProperties(hr, "hr");
   }
@@ -1896,7 +1896,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
-          properties: properties
+          properties: properties,
         });
         if (this.activePlaceHolder) {
           this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
@@ -1911,7 +1911,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
-          properties: properties
+          properties: properties,
         });
         // replace what WAS the active selection w/ this new node
         if (this.activePlaceHolder !== null) {
@@ -1924,7 +1924,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
-          properties: properties
+          properties: properties,
         });
         // allow for inserting things into things but not grid plate
         if (
@@ -2070,8 +2070,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           detail: {
             property: e.detail.property,
             value: e.detail.value,
-            owner: e.detail.owner
-          }
+            owner: e.detail.owner,
+          },
         })
       );
     }
@@ -2161,7 +2161,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.elementList[e.detail.tag] = e.detail.properties;
         // only push new values on if we got something new
         if (
-          !this.validTagList.find(element => {
+          !this.validTagList.find((element) => {
             return element === e.detail.tag;
           })
         ) {
@@ -2187,7 +2187,7 @@ window.customElements.define(HaxStore.tag, HaxStore);
  */
 window.HaxStore = window.HaxStore || {};
 window.HaxStore.instance = null;
-window.HaxStore.requestAvailability = function() {
+window.HaxStore.requestAvailability = function () {
   if (!window.HaxStore.instance) {
     window.HaxStore.instance = document.createElement("hax-store");
     document.body.appendChild(window.HaxStore.instance);
@@ -2197,15 +2197,15 @@ window.HaxStore.requestAvailability = function() {
 /**
  * Simple Array smashing function to ensure Object is array.
  */
-window.HaxStore.toArray = obj => {
-  return Object.keys(obj).map(function(key) {
+window.HaxStore.toArray = (obj) => {
+  return Object.keys(obj).map(function (key) {
     return obj[key];
   });
 };
 /**
  * Helper to convert camel case to dash; important when setting attributes.
  */
-window.HaxStore.camelToDash = str => {
+window.HaxStore.camelToDash = (str) => {
   return str
     .replace(/\W+/g, "-")
     .replace(/([a-z\d])([A-Z])/g, "$1-$2")
@@ -2214,15 +2214,15 @@ window.HaxStore.camelToDash = str => {
 /**
  * Helper to convert dash to camel; important when reading attributes.
  */
-window.HaxStore.dashToCamel = str => {
-  return str.replace(/-([a-z])/g, function(g) {
+window.HaxStore.dashToCamel = (str) => {
+  return str.replace(/-([a-z])/g, function (g) {
     return g[1].toUpperCase();
   });
 };
 /**
  * Convert HTML into HAX Elements
  */
-window.HaxStore.htmlToHaxElements = html => {
+window.HaxStore.htmlToHaxElements = (html) => {
   let elements = [];
   const validTags = window.HaxStore.instance.validTagList;
   let fragment = document.createElement("div");
@@ -2244,7 +2244,7 @@ window.HaxStore.htmlToHaxElements = html => {
  * Convert a node to the correct content object for saving.
  * This DOES NOT acccept a HAXElement which is similar
  */
-window.HaxStore.nodeToContent = node => {
+window.HaxStore.nodeToContent = (node) => {
   // ensure we have access to all the member functions of the custom element
   let prototype = Object.getPrototypeOf(node);
   // support for deep API call
@@ -2426,7 +2426,7 @@ window.HaxStore.nodeToContent = node => {
     "param",
     "source",
     "track",
-    "wbr"
+    "wbr",
   ];
   if (voidTags.includes(tag)) {
     content += "/>";
@@ -2539,7 +2539,7 @@ window.HaxStore.nodeToContent = node => {
 /**
  * Basic HTML Primitives test
  */
-window.HaxStore.HTMLPrimativeTest = node => {
+window.HaxStore.HTMLPrimativeTest = (node) => {
   if (
     typeof node.tagName !== typeof undefined &&
     node.tagName.indexOf("-") == -1
@@ -2551,7 +2551,7 @@ window.HaxStore.HTMLPrimativeTest = node => {
 /**
  * Slot content w/ support for custom elements in slot.
  */
-window.HaxStore.getHAXSlot = node => {
+window.HaxStore.getHAXSlot = (node) => {
   // we can skip all of this if we have a text element / HTML prim!
   if (window.HaxStore.instance.isTextElement(node)) {
     return node.innerHTML;
@@ -2598,7 +2598,7 @@ window.HaxStore.write = (prop, value, obj) => {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: { property: prop, value: value, owner: obj }
+        detail: { property: prop, value: value, owner: obj },
       })
     );
   }
@@ -2607,7 +2607,7 @@ window.HaxStore.write = (prop, value, obj) => {
 /**
  * Convert a data mime type to gizmo type for rendering
  */
-window.HaxStore.mimeTypeToGizmoType = mime => {
+window.HaxStore.mimeTypeToGizmoType = (mime) => {
   let parts = mime.split("/");
   switch (parts[0]) {
     case "audio":
@@ -2642,7 +2642,7 @@ window.HaxStore.mimeTypeToGizmoType = mime => {
 /**
  * Guess the type of Gizmo when given some information about what we have.
  */
-window.HaxStore.guessGizmoType = guess => {
+window.HaxStore.guessGizmoType = (guess) => {
   if (typeof guess.source !== typeof undefined) {
     const source = guess.source.toLowerCase();
     if (
@@ -2745,7 +2745,7 @@ window.HaxStore.guessGizmo = (
               if (match || skipPropMatch) {
                 if (preferExclusive && gizmo.handles[i].type_exclusive) {
                   return [
-                    window.HaxStore.haxElementPrototype(gizmo, props, "")
+                    window.HaxStore.haxElementPrototype(gizmo, props, ""),
                   ];
                 } else {
                   matches.push(
@@ -2765,8 +2765,8 @@ window.HaxStore.guessGizmo = (
 /**
  * Filter app store apps to those that accept this file source.
  */
-window.HaxStore.getHaxAppStoreTargets = type => {
-  let targets = window.HaxStore.instance.appList.filter(app => {
+window.HaxStore.getHaxAppStoreTargets = (type) => {
+  let targets = window.HaxStore.instance.appList.filter((app) => {
     if (typeof app.connection.operations.add !== typeof undefined) {
       let add = app.connection.operations.add;
       if (
@@ -2789,7 +2789,7 @@ window.HaxStore.haxElementPrototype = (gizmo, properties, content = "") => {
     tag: gizmo.tag,
     properties: properties,
     content: content,
-    gizmo: gizmo
+    gizmo: gizmo,
   };
 };
 
@@ -2802,7 +2802,7 @@ window.HaxStore.wipeSlot = (element, slot = "") => {
 /**
  * HTML encapsulation of a string on script and style tags
  */
-window.HaxStore.encapScript = html => {
+window.HaxStore.encapScript = (html) => {
   return encapScript(html);
 };
 /**
@@ -2824,8 +2824,8 @@ window.HaxStore.toast = (
       duration: duration,
       classStyle: classStyle,
       closeText: closeText,
-      eventCallback: eventCallback
-    }
+      eventCallback: eventCallback,
+    },
   });
   window.dispatchEvent(evt);
 };
@@ -2847,7 +2847,7 @@ window.HaxStore.insertLogicFromValues = (values, context) => {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: haxElements[0]
+            detail: haxElements[0],
           })
         );
       }
@@ -2920,7 +2920,7 @@ class UndoerElement extends HTMLElement {
       this._selfAttributeChange = false;
     });
 
-    const callback = data => {
+    const callback = (data) => {
       const { value, attr } = data;
       this._updateAttribute(attr ? value : null);
 

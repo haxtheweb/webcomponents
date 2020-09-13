@@ -7,7 +7,7 @@ import {
   encapScript,
   findTagsInHTML,
   wipeSlot,
-  varExists
+  varExists,
 } from "@lrnwebcomponents/utils/utils.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -54,15 +54,15 @@ class SiteRenderItem extends PolymerElement {
     return {
       render: {
         type: Boolean,
-        value: false
+        value: false,
       },
       itemId: {
-        type: String
+        type: String,
       },
       location: {
         type: String,
         computed: "_computeLocation(itemId, render)",
-        observer: "locationChanged"
+        observer: "locationChanged",
       },
       /**
        * item content
@@ -70,8 +70,8 @@ class SiteRenderItem extends PolymerElement {
       itemContent: {
         type: String,
         notify: true,
-        observer: "_itemContentChanged"
-      }
+        observer: "_itemContentChanged",
+      },
     };
   }
   _computeLocation(itemId, render) {
@@ -122,13 +122,13 @@ class SiteRenderItem extends PolymerElement {
               this.manifest.metadata.node.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
-              import(`${basePath}../../../../../${
-                this.manifest.metadata.node.dynamicElementLoader[tagName]
-              }`)
-                .then(response => {
+              import(
+                `${basePath}../../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
+              )
+                .then((response) => {
                   //console.log(tagName + ' dynamic import');
                 })
-                .catch(error => {
+                .catch((error) => {
                   /* Error handling */
                   console.log(error);
                 });
@@ -141,7 +141,7 @@ class SiteRenderItem extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });

@@ -155,27 +155,27 @@ class SiteChildrenBlock extends PolymerElement {
        */
       dynamicMethodology: {
         type: String,
-        value: "direct"
+        value: "direct",
       },
       /**
        * starting level for the menu items
        */
       start: {
         type: Number,
-        value: 1
+        value: 1,
       },
       /**
        * ending level for the menu items
        */
       end: {
         type: Number,
-        value: 1000
+        value: 1000,
       },
       /**
        * parent for the menu id
        */
       parent: {
-        type: String
+        type: String,
       },
       /**
        * Use this boolean to force this to fix to 1 parent
@@ -183,33 +183,33 @@ class SiteChildrenBlock extends PolymerElement {
        */
       fixedId: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * to control ink on the buttons
        */
       noink: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * just to bind data between things
        */
       __items: {
         type: Array,
-        notify: true
+        notify: true,
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged"
+        observer: "_activeIdChanged",
       },
       editMode: {
         type: Boolean,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   /**
@@ -222,11 +222,11 @@ class SiteChildrenBlock extends PolymerElement {
       if (this.shadowRoot.querySelector('[data-id="' + newValue + '"]')) {
         el = this.shadowRoot.querySelector('[data-id="' + newValue + '"]');
       } else {
-        let tmpItem = this.manifest.items.find(i => i.id == newValue);
+        let tmpItem = this.manifest.items.find((i) => i.id == newValue);
         // fallback, maybe there's a child of this currently active
         while (el === null && tmpItem && tmpItem.parent != null) {
           // take the parent object of this current item
-          tmpItem = this.manifest.items.find(i => i.id == tmpItem.parent);
+          tmpItem = this.manifest.items.find((i) => i.id == tmpItem.parent);
           // see if IT lives in the dom, if not, keep going until we run out
           if (
             tmpItem &&
@@ -254,19 +254,19 @@ class SiteChildrenBlock extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       // minor timing thing to ensure store has picked active
       // needed if routes set on first paint or lifecycles miss
       setTimeout(() => {
-        autorun(reaction => {
+        autorun((reaction) => {
           this.activeId = toJS(store.activeId);
           this.__disposer.push(reaction);
         });

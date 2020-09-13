@@ -29,19 +29,33 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
     this.HAXCMSThemeSettings.autoScroll = true;
     setTimeout(() => {
       import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+      );
     }, 0);
   }
   /**
    * Delay importing site-search until we click to open it directly
    */
   siteModalClick(e) {
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+    );
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -58,8 +72,8 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
       ...super.properties,
       opened: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   __openedChanged(e) {

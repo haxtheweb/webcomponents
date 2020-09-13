@@ -69,7 +69,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         :host([focused]) #codeeditor {
           border: var(--code-editor-focus-code-border);
         }
-      `
+      `,
     ];
   }
   /**
@@ -94,7 +94,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
     }
     this.libPath += "monaco-editor/min/vs";
-    import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
+    import(
+      "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js"
+    );
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {
       this.addEventListener(
@@ -143,13 +145,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return {
       ...super.properties,
       libPath: {
-        type: String
+        type: String,
       },
       /**
        * Title
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Show codePen button to fork it to there to run
@@ -157,7 +159,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       showCodePen: {
         type: Boolean,
         reflect: true,
-        attribute: "show-code-pen"
+        attribute: "show-code-pen",
       },
       /**
        * Readonly setting for the editor
@@ -165,81 +167,81 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       readOnly: {
         type: Boolean,
         reflect: true,
-        attribute: "read-only"
+        attribute: "read-only",
       },
       /**
        * Code pen data, computed based on the HTML editor
        */
       codePenData: {
         type: Object,
-        attribute: "code-pen-data"
+        attribute: "code-pen-data",
       },
       /**
        * contents of the editor
        */
       editorValue: {
         type: String,
-        attribute: "editor-value"
+        attribute: "editor-value",
       },
       /**
        * value of the editor after the fact
        */
       value: {
-        type: String
+        type: String,
       },
       /**
        * Theme for the Ace editor.
        */
       theme: {
-        type: String
+        type: String,
       },
       /**
        * Mode / language for editor
        */
       mode: {
-        type: String
+        type: String,
       },
       /**
        * Language to present color coding for
        */
       language: {
-        type: String
+        type: String,
       },
       /**
        * font size for the editor
        */
       fontSize: {
         type: Number,
-        attribute: "font-size"
+        attribute: "font-size",
       },
       /**
        * automatically set focus on the editor
        */
       autofocus: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * hide the line numbers
        */
       hideLineNumbers: {
         type: Boolean,
-        attribute: "hide-line-numbers"
+        attribute: "hide-line-numbers",
       },
       /**
        * does the monaco-editor have focus
        */
       focused: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * number of characters for tabs
        */
       tabSize: {
         type: Number,
-        attribute: "tab-size"
-      }
+        attribute: "tab-size",
+      },
     };
   }
   static get haxProperties() {
@@ -252,7 +254,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         description: "A code editor.",
         icon: "polymer",
         color: "cyan",
-        groups: ["Code"]
+        groups: ["Code"],
       },
       settings: {
         quick: [],
@@ -261,41 +263,41 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             property: "title",
             title: "Title",
             description: "Optional title for editor",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "",
             title: "Content",
             description: "Code inside editor",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "readOnly",
             title: "Read-only",
             description: "Prevent the code from being edited?",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "hideLineNumbers",
             title: "Hide Line Numbers",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "showCodePen",
             title: "CodePen",
             description: "Include a link to CodePen?",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "tabSize",
             title: "Tab Size",
-            inputMethod: "number"
+            inputMethod: "number",
           },
           {
             property: "theme",
             title: "Theme",
             inputMethod: "select",
-            itemsList: ["hc-black", "vs-light", "vs-dark"]
+            itemsList: ["hc-black", "vs-light", "vs-dark"],
           },
           {
             property: "language",
@@ -353,29 +355,29 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
               "typescript",
               "vb",
               "xml",
-              "yaml"
-            ]
-          }
+              "yaml",
+            ],
+          },
         ],
         advanced: [
           {
             property: "autofocus",
             title: "Autofocus",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "fontSize",
             title: "Font Size",
-            inputMethod: "number"
+            inputMethod: "number",
           },
           {
             property: "editorValue",
             title: "Editor Value",
             description: "Initial contents of the editor",
-            inputMethod: "textfield"
-          }
-        ]
-      }
+            inputMethod: "textfield",
+          },
+        ],
+      },
     };
   }
 
@@ -392,8 +394,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.dispatchEvent(
           new CustomEvent("show-code-pen-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -402,8 +404,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.dispatchEvent(
           new CustomEvent("value-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -418,7 +420,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   _computeCodePenData(title, editorValue) {
     return {
       title: title,
-      html: editorValue
+      html: editorValue,
     };
   }
   /**
@@ -502,10 +504,10 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
+    this._observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
         if (mutation.addedNodes.length > 0) {
-          mutation.addedNodes.forEach(node => {
+          mutation.addedNodes.forEach((node) => {
             if (node.tagName) {
               this.updateEditorValue(node);
             }
@@ -514,7 +516,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         // if we dropped nodes via the UI (delete event basically)
         if (mutation.removedNodes.length > 0) {
           // handle removing items... not sure we need to do anything here
-          mutation.removedNodes.forEach(node => {
+          mutation.removedNodes.forEach((node) => {
             if (node.tagName) {
               this.updateEditorValue(node);
             }
@@ -534,11 +536,11 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     if (this.editorValue) {
       this.shadowRoot.querySelector("#codeeditor").value = this.editorValue;
     } else {
-      this.childNodes.forEach(node => this.updateEditorValue(node));
+      this.childNodes.forEach((node) => this.updateEditorValue(node));
     }
     if (this._observer) {
       this._observer.observe(this, {
-        childList: true
+        childList: true,
       });
     }
   }

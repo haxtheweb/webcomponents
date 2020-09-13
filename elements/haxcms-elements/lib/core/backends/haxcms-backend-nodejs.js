@@ -66,7 +66,7 @@ class HAXCMSBackendNodeJS extends LitElement {
     super();
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun(reaction => {
+    autorun((reaction) => {
       this.jwt = toJS(store.jwt);
       this.__disposer.push(reaction);
     });
@@ -105,7 +105,7 @@ class HAXCMSBackendNodeJS extends LitElement {
             bubbles: true,
             composed: true,
             cancelable: false,
-            detail: this
+            detail: this,
           })
         );
       }
@@ -120,8 +120,8 @@ class HAXCMSBackendNodeJS extends LitElement {
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -132,8 +132,10 @@ class HAXCMSBackendNodeJS extends LitElement {
     // which will appear to be injecting into the page
     // but because of this approach it should be non-blocking
     try {
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
-        e => {
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
+      ).then(
+        (e) => {
           // if we don't have appSettings by this point
           // it means we don't actually have a backend / directions
           // this would be a published state or a state where
@@ -173,7 +175,7 @@ class HAXCMSBackendNodeJS extends LitElement {
             store.cmsSiteEditor.instance.appStore = window.appSettings.appStore;
           }
         },
-        e => {
+        (e) => {
           //import failed
         }
       );

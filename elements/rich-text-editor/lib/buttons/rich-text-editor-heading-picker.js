@@ -41,7 +41,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
       { label: "Heading 4", tag: "h4" },
       { label: "Heading 5", tag: "h5" },
       { label: "Heading 6", tag: "h6" },
-      { label: "Preformatted", tag: "pre" }
+      { label: "Preformatted", tag: "pre" },
     ];
     this.command = "formatBlock";
     this.icon = null;
@@ -61,14 +61,14 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
        */
       blocks: {
         name: "blocks",
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   get blockSelectors() {
     let arr = [
       ...super.blockSelectors.split(","),
-      ...(this.blocks || []).map(blocks => blocks.tag)
+      ...(this.blocks || []).map((blocks) => blocks.tag),
     ].filter((v, i, s) => s.indexOf(v) === i);
     return arr.join(",");
   }
@@ -77,10 +77,10 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
    * populates the picker
    */
   _setOptions() {
-    this.tag = this.blocks.map(block => block.tag).join(",");
+    this.tag = this.blocks.map((block) => block.tag).join(",");
     this.options = [
       [{ alt: this.label, value: null }],
-      ...this.blocks.map(block => [{ alt: block.label, value: block.tag }])
+      ...this.blocks.map((block) => [{ alt: block.label, value: block.tag }]),
     ];
   }
 }

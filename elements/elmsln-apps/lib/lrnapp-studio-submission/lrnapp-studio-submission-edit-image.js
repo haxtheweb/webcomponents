@@ -20,7 +20,7 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
         </style>
       </custom-style>
       <lrnapp-studio-submission-media-editoverlay
-        data-index\$="[[index]]"
+        data-index$="[[index]]"
         embedcode="{{embedcode}}"
       >
         <iron-image
@@ -42,17 +42,17 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
     return {
       image: {
         type: Object,
-        notify: true
+        notify: true,
       },
       thumbnail: {
         type: String,
         notify: true,
-        computed: "_getThumbnail(image)"
+        computed: "_getThumbnail(image)",
       },
       embedcode: {
         type: String,
-        computed: "_computeEmbedCode(image)"
-      }
+        computed: "_computeEmbedCode(image)",
+      },
     };
   }
 

@@ -56,7 +56,7 @@ class ScrollButton extends LitElement {
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
-      `
+      `,
     ];
   }
 
@@ -104,13 +104,13 @@ class ScrollButton extends LitElement {
         groups: ["Button"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -120,25 +120,25 @@ class ScrollButton extends LitElement {
             description: "",
             inputMethod: "array",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "icon",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "label",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -147,17 +147,17 @@ class ScrollButton extends LitElement {
       ...super.properties,
 
       target: {
-        type: Object
+        type: Object,
       },
       icon: {
-        type: String
+        type: String,
       },
       label: {
-        type: String
+        type: String,
       },
       position: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   constructor() {
@@ -184,13 +184,13 @@ class ScrollButton extends LitElement {
       this.target.scrollIntoView({
         behavior: "smooth",
         block: "end",
-        inline: "nearest"
+        inline: "nearest",
       });
     } else {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   }

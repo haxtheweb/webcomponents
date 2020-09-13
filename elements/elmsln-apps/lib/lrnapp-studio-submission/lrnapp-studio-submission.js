@@ -55,44 +55,44 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       activePage: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
   static get observers() {
     return [
       "_routeChanged(route, endPoint)",
-      "_updateCookies(endPoint, csrfToken)"
+      "_updateCookies(endPoint, csrfToken)",
     ];
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener(
         "submissionDeleted",
         this._handleSubmissionDeletion.bind(this)
@@ -165,7 +165,7 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

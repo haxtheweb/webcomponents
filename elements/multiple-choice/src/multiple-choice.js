@@ -106,7 +106,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         iron-icon {
           display: inline-flex;
         }
-      `
+      `,
     ];
   }
   static get tag() {
@@ -149,14 +149,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
       if (["answers", "randomize"].includes(propName)) {
         this.displayedAnswers = [
-          ...this._computeDisplayedAnswers(this.answers, this.randomize)
+          ...this._computeDisplayedAnswers(this.answers, this.randomize),
         ];
       }
       // single option implies it's a radio group or if multiple, do check boxes
@@ -177,9 +177,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
       ${!this.hideTitle
-        ? html`
-            <h3><span property="oer:name">${this.title}</span></h3>
-          `
+        ? html` <h3><span property="oer:name">${this.title}</span></h3> `
         : ``}
       <div>${this.question}</div>
       ${this.singleOption
@@ -264,128 +262,128 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
        * Title
        */
       title: {
-        type: String
+        type: String,
       },
       positionTarget: {
-        type: Object
+        type: Object,
       },
       /**
        * Support disabling interaction with the entire board
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Simple option, otherwise allow multiple via checkbox
        */
       singleOption: {
         type: Boolean,
-        attribute: "single-option"
+        attribute: "single-option",
       },
       /**
        * Text of the label to check your answer
        */
       checkLabel: {
         type: String,
-        attribute: "check-label"
+        attribute: "check-label",
       },
       /**
        * Text of the reset button
        */
       resetLabel: {
         type: String,
-        attribute: "reset-label"
+        attribute: "reset-label",
       },
       /**
        * Related Resource ID
        */
       relatedResource: {
         type: String,
-        attribute: "related-resource"
+        attribute: "related-resource",
       },
       /**
        * Flag to hide the title
        */
       hideTitle: {
         type: Boolean,
-        attribute: "hide-title"
+        attribute: "hide-title",
       },
       /**
        * Question to ask
        */
       question: {
-        type: String
+        type: String,
       },
       /**
        * Array of possible answers
        */
       answers: {
-        type: Array
+        type: Array,
       },
       /**
        * Displayed Answer set.
        */
       displayedAnswers: {
-        type: Array
+        type: Array,
       },
       /**
        * Correct answer text to display
        */
       correctText: {
         type: String,
-        attribute: "correct-text"
+        attribute: "correct-text",
       },
       /**
        * Incorrect answer text to display
        */
       incorrectText: {
         type: String,
-        attribute: "incorrect-text"
+        attribute: "incorrect-text",
       },
       /**
        * Correct answer text to display
        */
       correctIcon: {
         type: String,
-        attribute: "correct-icon"
+        attribute: "correct-icon",
       },
       /**
        * Incorrect answer text to display
        */
       incorrectIcon: {
         type: String,
-        attribute: "incorrect-icon"
+        attribute: "incorrect-icon",
       },
       /**
        * Name of the quiz - hardcoded for now from HTML
        */
       quizName: {
         type: String,
-        attribute: "quiz-name"
+        attribute: "quiz-name",
       },
       /**
        * Randomize the display of the answers
        */
       randomize: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * flag to hide buttons
        */
       hideButtons: {
         type: Boolean,
-        attribute: "hide-buttons"
+        attribute: "hide-buttons",
       },
       __toastText: {
-        type: String
+        type: String,
       },
       __toastColor: {
-        type: String
+        type: String,
       },
       __toastIcon: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -396,7 +394,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.shadowRoot.querySelector("#toast").hide();
     this.displayedAnswers = [];
     const answers = this.answers;
-    this.answers.forEach(el => {
+    this.answers.forEach((el) => {
       el.userGuess = false;
     });
     this.answers = [...answers];
@@ -451,14 +449,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     let eventData = {
       activityDisplay: "answered",
       objectName: this.quizName,
-      resultSuccess: gotRight
+      resultSuccess: gotRight,
     };
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: eventData
+        detail: eventData,
       })
     );
   }
@@ -506,8 +504,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         groups: ["Instructional"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -516,40 +514,40 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "question",
             title: "Question",
             description: "Question for users to respond to.",
             inputMethod: "textfield",
-            icon: "icons:help"
-          }
+            icon: "icons:help",
+          },
         ],
         configure: [
           {
             property: "title",
             title: "Title",
             description: "The title of the element",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "hideTitle",
             title: "Hide title",
             description: "Whether or not to display the title",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "question",
             title: "Question",
             description: "Question for users to respond to.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "randomize",
             title: "Randomize",
             description: "Randomize the answers dynamically",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "answers",
@@ -562,22 +560,22 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
                 property: "correct",
                 title: "Correct",
                 description: "If this is correct or not",
-                inputMethod: "boolean"
+                inputMethod: "boolean",
               },
               {
                 property: "label",
                 title: "Answer",
                 description: "Possible answer to the question",
                 inputMethod: "textfield",
-                required: true
-              }
-            ]
+                required: true,
+              },
+            ],
           },
           {
             property: "correctText",
             title: "Correct feedback",
             description: "Feedback when they get it right",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "correctIcon",
@@ -593,14 +591,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
               "icons:favorite",
               "icons:thumb-up",
               "icons:thumb-down",
-              "icons:send"
-            ]
+              "icons:send",
+            ],
           },
           {
             property: "incorrectText",
             title: "Incorrect feedback",
             description: "Feedback when they get it wrong",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "incorrectIcon",
@@ -616,39 +614,39 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
               "icons:favorite",
               "icons:thumb-up",
               "icons:thumb-down",
-              "icons:send"
-            ]
+              "icons:send",
+            ],
           },
           {
             property: "quizName",
             title: "Name of the quiz",
             description: "Quiz name passed in",
-            inputMethod: "textfield"
-          }
+            inputMethod: "textfield",
+          },
         ],
         advanced: [
           {
             property: "checkLabel",
             title: "Check answers label",
             description: "Label for getting solution feedback",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "resetLabel",
             title: "Reset label",
             description: "label for the reset button",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       saveOptions: {
         unsetAttributes: [
           "__utils",
           "displayed-answers",
           "displayedAnswers",
-          "colors"
-        ]
-      }
+          "colors",
+        ],
+      },
     };
   }
   /**
@@ -676,7 +674,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   preProcessHaxInsertContent(detail) {
     // ensure we dont accidently have the answer displayed!
     if (detail.properties.answers) {
-      detail.properties.answers = detail.properties.answers.map(function(val) {
+      detail.properties.answers = detail.properties.answers.map(function (val) {
         if (val.userGuess) {
           delete val.userGuess;
         }

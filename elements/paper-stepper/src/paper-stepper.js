@@ -18,7 +18,7 @@ class PaperStepper extends PolymerElement {
       selected: {
         type: Number,
         notify: true,
-        value: 0
+        value: 0,
       },
 
       /**
@@ -30,7 +30,7 @@ class PaperStepper extends PolymerElement {
        */
       progressBar: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -38,7 +38,7 @@ class PaperStepper extends PolymerElement {
        */
       backLabel: {
         type: String,
-        value: "Back"
+        value: "Back",
       },
 
       /**
@@ -46,21 +46,21 @@ class PaperStepper extends PolymerElement {
        */
       nextLabel: {
         type: String,
-        value: "Next"
+        value: "Next",
       },
       /**
        * Boolean for disabling the previous button.
        */
       disablePrevious: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Boolean for disabling the next button.
        */
       disableNext: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -68,8 +68,8 @@ class PaperStepper extends PolymerElement {
        */
       noButtons: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 

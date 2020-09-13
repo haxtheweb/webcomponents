@@ -1,5 +1,5 @@
 "use strict";
-module.exports = grunt => {
+module.exports = (grunt) => {
 	require("load-grunt-tasks")(grunt);
 
 	grunt.initConfig({
@@ -13,36 +13,36 @@ module.exports = grunt => {
 				'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 				"* (c) <%= pkg.author.name %>;" +
 				" <%= pkg.license %> License\n" +
-				"*/\n"
+				"*/\n",
 		},
 		concat: {
 			options: {
-				banner: "<%= meta.banner %>"
+				banner: "<%= meta.banner %>",
 			},
 			dist: {
 				files: {
-					"dist/screenfull.js": "src/screenfull.js"
-				}
-			}
+					"dist/screenfull.js": "src/screenfull.js",
+				},
+			},
 		},
 		uglify: {
 			options: {
-				banner: "<%= meta.banner %>"
+				banner: "<%= meta.banner %>",
 			},
 			dist: {
 				files: {
-					"dist/screenfull.min.js": "src/screenfull.js"
-				}
-			}
+					"dist/screenfull.min.js": "src/screenfull.js",
+				},
+			},
 		},
 		copy: {
 			dist: {
 				files: {
 					"dist/screenfull.d.ts": "src/screenfull.d.ts",
-					"dist/screenfull.test-d.ts": "src/screenfull.test-d.ts"
-				}
-			}
-		}
+					"dist/screenfull.test-d.ts": "src/screenfull.test-d.ts",
+				},
+			},
+		},
 	});
 
 	grunt.registerTask("default", ["concat", "uglify", "copy"]);

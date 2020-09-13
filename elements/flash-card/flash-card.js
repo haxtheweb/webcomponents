@@ -76,8 +76,8 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
        * Title
        */
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   constructor() {
@@ -102,8 +102,8 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
         groups: ["Education", "Interactive"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -112,8 +112,8 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -121,11 +121,11 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 

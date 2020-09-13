@@ -30,21 +30,21 @@ class HAXPanelItem extends LitElement {
        */
       light: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Voice command to append for things that support data-voicecommand.
        */
       voiceCommand: {
         type: String,
-        attribute: "voice-command"
+        attribute: "voice-command",
       },
       /**
        * Support for disabled state buttons
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * If we should apply a rounded edge to the button, opposite
@@ -52,21 +52,21 @@ class HAXPanelItem extends LitElement {
        */
       edged: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -76,7 +76,7 @@ class HAXPanelItem extends LitElement {
       eventName: {
         type: String,
         reflect: true,
-        attribute: "event-name"
+        attribute: "event-name",
       },
       /**
        * Possible value to send along as well with the event.
@@ -85,8 +85,8 @@ class HAXPanelItem extends LitElement {
        */
       value: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   static get tag() {
@@ -158,7 +158,7 @@ class HAXPanelItem extends LitElement {
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -190,8 +190,8 @@ class HAXPanelItem extends LitElement {
             detail: {
               command: ":name: " + this[propName],
               context: this,
-              callback: "click"
-            }
+              callback: "click",
+            },
           })
         );
       }
@@ -210,8 +210,8 @@ class HAXPanelItem extends LitElement {
           detail: {
             target: this,
             value: this.value,
-            eventName: this.eventName
-          }
+            eventName: this.eventName,
+          },
         })
       );
     }

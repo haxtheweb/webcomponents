@@ -78,7 +78,7 @@ class HaxAppPicker extends LitElement {
           background-color: var(--hax-color-menu-heading-bg, #eeeeee);
           color: var(--hax-color-menu-heading-color, black);
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -134,33 +134,33 @@ class HaxAppPicker extends LitElement {
        * raw element set
        */
       _elements: {
-        type: Array
+        type: Array,
       },
       /**
        * Refactored list for selection purposes
        */
       selectionList: {
-        type: Array
+        type: Array,
       },
       /**
        * Title for the dialog
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Allow multiple uses
        */
       pickerType: {
         type: String,
-        attribute: "picker-type"
+        attribute: "picker-type",
       },
       /**
        * Opened status to bind to the dialog box being open
        */
       opened: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   firstUpdated(changedProperties) {
@@ -171,8 +171,8 @@ class HaxAppPicker extends LitElement {
         composed: true,
         detail: {
           piece: "haxAppPicker",
-          object: this
-        }
+          object: this,
+        },
       })
     );
   }
@@ -228,7 +228,7 @@ class HaxAppPicker extends LitElement {
           tmp.push({
             icon: elements[i].gizmo.icon,
             title: elements[i].gizmo.title,
-            color: elements[i].gizmo.color
+            color: elements[i].gizmo.color,
           });
         }
         break;
@@ -238,7 +238,7 @@ class HaxAppPicker extends LitElement {
           tmp.push({
             icon: elements[i].details.icon,
             title: elements[i].details.title,
-            color: elements[i].details.color
+            color: elements[i].details.color,
           });
         }
         break;
@@ -271,7 +271,7 @@ class HaxAppPicker extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this._elements[key]
+            detail: this._elements[key],
           })
         );
       } else if (this.pickerType == "delete") {
@@ -298,7 +298,7 @@ class HaxAppPicker extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this._elements[key]
+            detail: this._elements[key],
           })
         );
       }

@@ -9,60 +9,60 @@ var demoSchema = {
       properties: {
         branch: {
           title: "Branch",
-          type: "string"
+          type: "string",
         },
         name: {
           title: "Name",
-          type: "string"
+          type: "string",
         },
         address: {
           title: "Address",
           type: "string",
-          minLength: 3
+          minLength: 3,
         },
         city: {
           title: "City",
           type: "string",
-          minLength: 3
+          minLength: 3,
         },
         province: {
           title: "Province",
           type: "string",
-          minLength: 2
+          minLength: 2,
         },
         country: {
           title: "Country",
           type: "string",
-          minLength: 2
+          minLength: 2,
         },
         postalCode: {
           title: "Postal/Zip Code",
           type: "string",
           pattern:
-            "[a-zA-Z][0-9][a-zA-Z]\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?"
+            "[a-zA-Z][0-9][a-zA-Z]\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?",
         },
         email: {
           title: "Email",
           type: "string",
           pattern:
-            "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
+            "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)",
         },
         website: {
           title: "Website",
           type: "string",
-          format: "uri"
+          format: "uri",
         },
         establishedDate: {
           title: "Established Date",
           type: "string",
-          format: "date-time"
+          format: "date-time",
         },
         closedDate: {
           title: "Closed Date",
           type: ["string", "null"],
-          format: "date-time"
-        }
-      }
+          format: "date-time",
+        },
+      },
     },
     arrays: {
       title: "Basic arrays page",
@@ -76,14 +76,14 @@ var demoSchema = {
             properties: {
               type: {
                 title: "Type",
-                type: "string"
+                type: "string",
               },
               phoneNumber: {
                 title: "Phone Number",
-                type: "string"
-              }
-            }
-          }
+                type: "string",
+              },
+            },
+          },
         },
         positions: {
           type: "array",
@@ -94,17 +94,17 @@ var demoSchema = {
             properties: {
               title: {
                 title: "Title",
-                type: "string"
+                type: "string",
               },
               salary: {
                 title: "Salary",
                 type: "number",
                 multipleOf: 1000,
                 minimum: 20000,
-                maximum: 50000
-              }
-            }
-          }
+                maximum: 50000,
+              },
+            },
+          },
         },
         geo: {
           title: "Geo coordinates",
@@ -112,18 +112,18 @@ var demoSchema = {
           description:
             "The geo coordinates of this location, first item being the longitude, second the latitude",
           items: {
-            type: "number"
-          }
+            type: "number",
+          },
         },
         services: {
           title: "Services",
           type: "array",
           description: "Services this business offers (ex. walk-in)",
           items: {
-            type: "string"
-          }
-        }
-      }
+            type: "string",
+          },
+        },
+      },
     },
     object: {
       title: "Basic object page",
@@ -142,9 +142,9 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
             Mon: {
               type: "array",
@@ -153,9 +153,9 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
             Tue: {
               type: "array",
@@ -164,9 +164,9 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
             Wed: {
               type: "array",
@@ -175,9 +175,9 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
             Thu: {
               type: "array",
@@ -186,9 +186,9 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
             Fri: {
               type: "array",
@@ -197,9 +197,9 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
+                  type: "string",
+                },
+              },
             },
             Sat: {
               type: "array",
@@ -208,13 +208,13 @@ var demoSchema = {
                 minItems: 2,
                 maxItems: 2,
                 items: {
-                  type: "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                  type: "string",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 };

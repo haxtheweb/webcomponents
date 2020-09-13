@@ -12,7 +12,7 @@ const SimplePopoverPattern = {
   of: "Pattern Library/Atoms/Layout",
   name: "Popover",
   file: require("raw-loader!./demo/index.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(SimplePopoverPattern);
 
@@ -63,10 +63,10 @@ const SimplePopoverStory = {
     slot: {
       name: "slot",
       type: "String",
-      value: `I'm a popover!`
-    }
+      value: `I'm a popover!`,
+    },
   },
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(SimplePopoverStory);

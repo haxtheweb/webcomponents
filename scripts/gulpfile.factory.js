@@ -52,7 +52,7 @@ module.exports = function factory(packageJson) {
             ) {
               import sass from "node-sass";
               cssResult += sass.renderSync({
-                file: path.join("./", packageJson.wcfactory.files.scss)
+                file: path.join("./", packageJson.wcfactory.files.scss),
               }).css;
             } else if (packageJson.wcfactory.files.css) {
               cssResult += fs.readFileSync(
@@ -109,7 +109,7 @@ module.exports = function factory(packageJson) {
     var exec = require("child_process").exec;
     return exec(
       "polymer analyze --input demo/index.html > analysis.json",
-      function(error, stdout, stderr) {
+      function (error, stdout, stderr) {
         if (error !== null) {
           console.log("exec error: " + error);
         }
@@ -128,7 +128,7 @@ module.exports = function factory(packageJson) {
       )
       .pipe(
         rename({
-          suffix: ".umd"
+          suffix: ".umd",
         })
       )
       .pipe(gulp.dest("./"));

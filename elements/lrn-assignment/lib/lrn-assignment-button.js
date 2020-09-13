@@ -26,7 +26,7 @@ class LrnAssignmentButton extends LitElement {
           margin-left: 8px;
           opacity: 0.8;
         }
-      `
+      `,
     ];
   }
   /**
@@ -65,11 +65,11 @@ class LrnAssignmentButton extends LitElement {
       title: { type: String },
       url: { type: String },
       open: {
-        type: Boolean
+        type: Boolean,
       },
       complete: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 }

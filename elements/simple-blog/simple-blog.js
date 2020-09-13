@@ -87,7 +87,7 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         a:focus {
           color: inherit;
         }
-      `
+      `,
     ];
   }
   /**
@@ -135,8 +135,8 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
       selectedPage: {
         type: Number,
         reflect: true,
-        attribute: "selected-page"
-      }
+        attribute: "selected-page",
+      },
     };
   }
   constructor() {
@@ -170,11 +170,11 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
    */
   connectedCallback() {
     super.connectedCallback();
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       let location = toJS(store.location);
       this._locationChanged(location);
       this.__disposer.push(reaction);
@@ -201,7 +201,7 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     } else {
       window.scrollTo({
         top: 0,
-        left: 0
+        left: 0,
       });
       this.selectedPage = 1;
       // @todo hacky timing thing
@@ -240,14 +240,14 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     } else {
       window.scrollTo({
         top: 0,
-        left: 0
+        left: 0,
       });
     }
     const evt = new CustomEvent("json-outline-schema-active-item-changed", {
       bubbles: true,
       cancelable: true,
       composed: true,
-      detail: {}
+      detail: {},
     });
     this.dispatchEvent(evt);
     this.selectedPage = 0;

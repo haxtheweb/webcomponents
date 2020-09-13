@@ -213,7 +213,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         on-response="_handleDeleteResponse"
       ></iron-ajax>
 
-      <app-toolbar class="amber lighten-3" hidden\$="[[hideMenuBar]]">
+      <app-toolbar class="amber lighten-3" hidden$="[[hideMenuBar]]">
         <template is="dom-if" if="[[showComments]]">
           <lrnsys-button
             on-click="_backToStudio"
@@ -257,27 +257,27 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             [[submission.meta.comment_count]] Comments
           </paper-button>
           <paper-badge
-            hidden\$="[[displayNewBadge(submission.meta.comment_new)]]"
+            hidden$="[[displayNewBadge(submission.meta.comment_new)]]"
             for="comment-count"
-            label\$="[[submission.meta.comment_new]]"
+            label$="[[submission.meta.comment_new]]"
           ></paper-badge>
         </div>
-        <div hidden\$="[[editPage]]">
+        <div hidden$="[[editPage]]">
           <lrnsys-button
             on-click="_setEditRoute"
             icon="create"
             label="Edit"
             hover-class="amber darken-4 white-text"
-            hidden\$="[[!submission.meta.canUpdate]]"
+            hidden$="[[!submission.meta.canUpdate]]"
           ></lrnsys-button>
         </div>
-        <div hidden\$="[[!editPage]]">
+        <div hidden$="[[!editPage]]">
           <lrnsys-button
             on-click="_resetRoute"
             icon="cancel"
             label="Cancel"
             hover-class="amber darken-4 white-text"
-            hidden\$="[[!submission.meta.canUpdate]]"
+            hidden$="[[!submission.meta.canUpdate]]"
           ></lrnsys-button>
         </div>
       </app-toolbar>
@@ -343,78 +343,78 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   static get properties() {
     return {
       id: {
-        type: String
+        type: String,
       },
       hideMenuBar: {
         type: Boolean,
-        value: false
+        value: false,
       },
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       reqUrl: {
-        type: String
+        type: String,
       },
       reqParams: {
-        type: Object
+        type: Object,
       },
       submission: {
         type: Object,
         notify: true,
-        value: null
+        value: null,
       },
       commentsUrl: {
         type: String,
-        computed: "_computeCommentsUrl(id, endPoint, csrfToken)"
+        computed: "_computeCommentsUrl(id, endPoint, csrfToken)",
       },
       createStubUrl: {
         type: String,
-        computed: "_computeCommentsStubUrl(id, endPoint, csrfToken)"
+        computed: "_computeCommentsStubUrl(id, endPoint, csrfToken)",
       },
       commentOpsBase: {
         type: String,
-        computed: "_computeCommentsOpsUrl(id, endPoint, csrfToken)"
+        computed: "_computeCommentsOpsUrl(id, endPoint, csrfToken)",
       },
       editPage: {
         type: Boolean,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       saving: {
         type: Boolean,
         value: false,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       showComments: {
         type: Boolean,
-        computed: "_computeShowComments(submission)"
-      }
+        computed: "_computeShowComments(submission)",
+      },
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener(
         "submissionDeleteClicked",
         this._submissionDeleteClicked.bind(this)
@@ -449,7 +449,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
     return [
       "_urlVarsChanged(id, endPoint)",
       "_paramsChanged(csrfToken)",
-      "_bodyChanged(title)"
+      "_bodyChanged(title)",
     ];
   }
 
@@ -604,7 +604,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
    */
   _toArray(obj) {
     if (typeof obj === "object" && obj !== null) {
-      return Object.keys(obj).map(function(key) {
+      return Object.keys(obj).map(function (key) {
         return obj[key];
       });
     }

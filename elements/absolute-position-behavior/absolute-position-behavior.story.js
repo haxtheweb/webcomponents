@@ -55,10 +55,10 @@ const AbsolutePositionBehaviorStory = {
     slot: {
       name: "slot",
       type: "String",
-      value: `I'm absolutely positioned!`
-    }
+      value: `I'm absolutely positioned!`,
+    },
   },
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(AbsolutePositionBehaviorStory);

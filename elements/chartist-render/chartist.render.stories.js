@@ -5,7 +5,7 @@ import {
   withWebComponentsKnobs,
   text,
   select,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors";
@@ -15,8 +15,8 @@ export default {
   component: "chartist-render",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities();
 let scale = {
@@ -36,7 +36,7 @@ let scale = {
     "ct-major-tenth": "ct-major-tenth  (2:5)",
     "ct-major-eleventh": "ct-major-eleventh  (3:8)",
     "ct-major-twelfth": "ct-major-twelfth  (1:3)",
-    "ct-double-octave": "ct-double-octave  (1:4`)"
+    "ct-double-octave": "ct-double-octave  (1:4`)",
   },
   styles = [
     { css: "maxWidth" },
@@ -74,7 +74,7 @@ let scale = {
     { css: "--chartist-color-n", title: "background color for 14th series" },
     { css: "--chartist-color-label-n", title: "color for 15th series label" },
     { css: "--chartist-color-0", title: "background color for 15th series" },
-    { css: "--chartist-color-label-o", title: "color for 15th series label" }
+    { css: "--chartist-color-label-o", title: "color for 15th series label" },
   ],
   barData = new URL(`demo/bar.csv`, import.meta.url),
   donutData = new URL(`demo/donut.csv`, import.meta.url),
@@ -82,9 +82,9 @@ let scale = {
   pieData = new URL(`demo/pie.csv`, import.meta.url),
   props = utils
     .getElementProperties(ChartistRender.properties)
-    .filter(prop => prop.property !== "chartData");
+    .filter((prop) => prop.property !== "chartData");
 
-props.forEach(prop => {
+props.forEach((prop) => {
   if (prop.property === "dataSource") prop.inputMethod = "haxupload";
   if (prop.property === "scale") {
     prop.inputMethod = "select";
@@ -106,7 +106,7 @@ export const ChartistRenderBarStory = () => {
         "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
       type: "bar",
-      maxWidth: "600px"
+      maxWidth: "600px",
     })
   );
 };
@@ -120,7 +120,7 @@ export const ChartistRenderLineStory = () => {
         "Sales for Northeast, Midatlantic, Southeast, Midwest, and West by Quarter.",
       scale: "ct-double-octave",
       type: "line",
-      maxWidth: "600px"
+      maxWidth: "600px",
     })
   );
 };
@@ -133,7 +133,7 @@ export const ChartistRenderPieStory = () => {
       chartDesc: "A pie chart of favorite pies.",
       scale: "ct-square",
       type: "pie",
-      maxWidth: "300px"
+      maxWidth: "300px",
     })
   );
 };
@@ -147,7 +147,7 @@ export const ChartistRenderDonutStory = () => {
       scale: "ct-square",
       type: "pie",
       options: { donut: true },
-      maxWidth: "300px"
+      maxWidth: "300px",
     })
   );
 };
@@ -160,8 +160,8 @@ export const ChartistWithSlots = () => {
         { slot: "desc", inputMethod: "textarea", name: "desc" },
         { slot: "", inputMethod: "textarea", name: "" },
         ...props.filter(
-          prop => !["chartTitle", "chartDesc", "data"].includes(prop.name)
-        )
+          (prop) => !["chartTitle", "chartDesc", "data"].includes(prop.name)
+        ),
       ],
       {
         dataSource: pieData,
@@ -171,7 +171,7 @@ export const ChartistWithSlots = () => {
         type: "pie",
         emptyslot:
           '<table><thead><tr><th scope="col">Banana</th><th scope="col">Apple</th><th scope="col">Pumpkin</th></tr></thead><tbody><tr><td>20</td><td>15</td><td>40</td></tr></tbody></table>',
-        maxWidth: "300px"
+        maxWidth: "300px",
       }
     )
   );

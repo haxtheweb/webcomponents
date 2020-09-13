@@ -84,7 +84,7 @@ class HaxMap extends SimpleColors {
           cursor: pointer;
           font-weight: bold;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -109,7 +109,7 @@ class HaxMap extends SimpleColors {
           let def = window.HaxStore.instance.haxSchemaFromTag(list[i].tag);
           elements.push({
             icon: def.gizmo.icon,
-            name: def.gizmo.title
+            name: def.gizmo.title,
           });
         }
         this.elementList = [...elements];
@@ -166,7 +166,7 @@ class HaxMap extends SimpleColors {
       activeChild.scrollIntoView({
         behavior: "smooth",
         block: "start",
-        inline: "center"
+        inline: "center",
       });
       activeChild.classList.add("blinkfocus");
       setTimeout(() => {
@@ -192,14 +192,14 @@ class HaxMap extends SimpleColors {
        * Title when open.
        */
       title: {
-        type: String
+        type: String,
       },
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       elementList: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -212,8 +212,8 @@ class HaxMap extends SimpleColors {
         composed: true,
         detail: {
           piece: "haxMap",
-          object: this
-        }
+          object: this,
+        },
       })
     );
   }

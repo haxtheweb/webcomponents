@@ -66,27 +66,27 @@ class CMSViews extends PolymerElement {
       loading: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Name of the views to render
        */
       viewsName: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Display from the views
        */
       viewsDisplay: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * views end point updated, change the way we do processing.
        */
       viewsEndPoint: {
-        type: String
+        type: String,
       },
       /**
        * Body data which is just views with some encapsulation.
@@ -94,29 +94,29 @@ class CMSViews extends PolymerElement {
       bodyData: {
         type: Object,
         computed: "_generateBodyData(viewsName, viewsDisplay)",
-        observer: "_viewsChanged"
+        observer: "_viewsChanged",
       },
       /**
        * views data from the end point.
        */
       viewsData: {
         type: String,
-        observer: "_handleviewsResponse"
+        observer: "_handleviewsResponse",
       },
       /**
        * Prefix for the views to be processed
        */
       viewsPrefix: {
         type: String,
-        observer: "["
+        observer: "[",
       },
       /**
        * Suffix for the views to be processed
        */
       viewsSuffix: {
         type: String,
-        observer: "]"
-      }
+        observer: "]",
+      },
     };
   }
   /**
@@ -126,7 +126,7 @@ class CMSViews extends PolymerElement {
     if (name !== null && name !== "") {
       return {
         name: `${name}`,
-        display: `${display}`
+        display: `${display}`,
       };
     }
   }
@@ -230,12 +230,12 @@ class CMSViews extends PolymerElement {
         handles: [
           {
             type: "cmsviews",
-            views: "views"
-          }
+            views: "views",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -245,17 +245,17 @@ class CMSViews extends PolymerElement {
             title: "Name",
             description: "Name of the view from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "viewsDisplay",
             title: "Display",
             description: "Display within that view from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: true,
@@ -263,9 +263,9 @@ class CMSViews extends PolymerElement {
           "loading",
           "views-data",
           "body-data",
-          "views-end-point"
-        ]
-      }
+          "views-end-point",
+        ],
+      },
     };
   }
   /**
@@ -279,10 +279,10 @@ class CMSViews extends PolymerElement {
         properties: {
           id: "cmstokenidtolockonto",
           href: "",
-          target: "_blank"
+          target: "_blank",
         },
-        slot: "Edit this view"
-      }
+        slot: "Edit this view",
+      },
     };
     return schema;
   }

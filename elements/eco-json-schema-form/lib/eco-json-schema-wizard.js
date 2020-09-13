@@ -349,7 +349,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           <paper-icon-button
             id="prevButton"
             icon="arrow-back"
-            hidden\$="{{!hasPrev}}"
+            hidden$="{{!hasPrev}}"
             on-click="prev"
             raised=""
             >{{localize('prev')}}</paper-icon-button
@@ -361,7 +361,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           <paper-icon-button
             id="nextButton"
             icon="arrow-forward"
-            hidden\$="{{!hasNext}}"
+            hidden$="{{!hasNext}}"
             on-click="next"
             raised=""
             >{{localize('next')}}</paper-icon-button
@@ -382,7 +382,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           attr-for-selected="name"
         ></iron-pages>
         <app-toolbar class="bottom">
-          <div hidden\$="{{!hasPrev}}" on-click="prev">
+          <div hidden$="{{!hasPrev}}" on-click="prev">
             <paper-icon-button id="prevButton" icon="arrow-back" raised=""
               >{{localize('prev')}}</paper-icon-button
             >
@@ -394,7 +394,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
             class="title layout horizontal flex"
             style="white-space: normal"
           ></span>
-          <div hidden\$="{{!hasNext}}" on-click="next">
+          <div hidden$="{{!hasNext}}" on-click="next">
             <span class="title layout" style="white-space: normal"
               >{{localize('next')}}</span
             >
@@ -411,68 +411,68 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
     return {
       language: {
         type: String,
-        notify: true
+        notify: true,
       },
       resources: {
         type: Object,
-        notify: true
+        notify: true,
       },
       schema: {
         type: Object,
         notify: true,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       label: {
-        type: String
+        type: String,
       },
       value: {
         type: Object,
         notify: true,
         value() {
           return {};
-        }
+        },
       },
       page: {
         type: String,
         notify: true,
-        observer: "_pageChanged"
+        observer: "_pageChanged",
       },
       pages: {
         type: Array,
         notify: true,
-        value: []
+        value: [],
       },
       error: {
         type: Object,
-        observer: "_errorChanged"
+        observer: "_errorChanged",
       },
       isReview: {
         type: Boolean,
         value: false,
-        notify: true
+        notify: true,
       },
       canSubmit: {
         type: Boolean,
-        notify: true
+        notify: true,
       },
       hasNext: {
         type: Boolean,
-        notify: true
+        notify: true,
       },
       hasPrev: {
         type: Boolean,
-        notify: true
+        notify: true,
       },
       titles: {
         type: Array,
         notify: true,
-        value: []
+        value: [],
       },
       title: {
         type: String,
         value: "",
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   disconnectedCallback() {
@@ -483,13 +483,13 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
     var ctx = this;
 
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
-      function(key) {
+      function (key) {
         var schema = ctx.schema.properties[key];
         var property = {
           property: key,
           label: schema.title || key,
           schema: schema,
-          component: schema.component || {}
+          component: schema.component || {},
         };
 
         if (!property.component.valueProperty) {
@@ -551,15 +551,15 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
 
       if (detail.value.keySplices) {
         if (property.keyMap) {
-          detail.value.keySplices.forEach(function(splice) {
-            splice.removed.forEach(function(k) {
+          detail.value.keySplices.forEach(function (splice) {
+            splice.removed.forEach(function (k) {
               delete property.keyMap[path.concat([k]).join(".")];
             });
           });
         }
       }
 
-      detail.value.indexSplices.forEach(function(splice) {
+      detail.value.indexSplices.forEach(function (splice) {
         var args = [path.join("."), splice.index, splice.removed.length];
         if (splice.addedCount) {
           for (var i = 0, ii = splice.addedCount; i < ii; i++) {
@@ -595,20 +595,20 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
   _setValue() {
     var ctx = this;
     var value = {};
-    this._schemaProperties.forEach(function(property) {
+    this._schemaProperties.forEach(function (property) {
       value[property.property] = ctx._deepClone(property.value);
     });
     this.value = value;
   }
   _buildForm() {
     var ctx = this;
-    this._schemaProperties.forEach(property => {
+    this._schemaProperties.forEach((property) => {
       var el = ctx.create(property.component.name, {
         label: property.label,
         schema: property.schema,
         schemaProperty: property,
         language: this.language,
-        resources: this.resources
+        resources: this.resources,
       });
 
       el.setAttribute("name", property.property);
@@ -686,7 +686,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -705,7 +705,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
   }
   _errorChanged() {
     var ctx = this;
-    this.shadowRoot.querySelector("#form").childNodes.forEach(function(el) {
+    this.shadowRoot.querySelector("#form").childNodes.forEach(function (el) {
       var name = el.getAttribute("name");
       if (ctx.error && ctx.error[name]) {
         el.error = ctx.error[name];

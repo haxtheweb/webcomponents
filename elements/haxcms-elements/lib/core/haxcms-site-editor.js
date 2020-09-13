@@ -203,21 +203,21 @@ class HAXCMSSiteEditor extends LitElement {
     return {
       getUserDataPath: {
         type: String,
-        attribute: "get-user-data-path"
+        attribute: "get-user-data-path",
       },
 
       /**
        * Allow method to be overridden, useful in local testing
        */
       method: {
-        type: String
+        type: String,
       },
 
       /**
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String
+        type: String,
       },
 
       /**
@@ -225,7 +225,7 @@ class HAXCMSSiteEditor extends LitElement {
        */
       saveNodePath: {
         type: String,
-        attribute: "save-node-path"
+        attribute: "save-node-path",
       },
 
       /**
@@ -233,7 +233,7 @@ class HAXCMSSiteEditor extends LitElement {
        */
       createNodePath: {
         type: String,
-        attribute: "create-node-path"
+        attribute: "create-node-path",
       },
 
       /**
@@ -241,7 +241,7 @@ class HAXCMSSiteEditor extends LitElement {
        */
       deleteNodePath: {
         type: String,
-        attribute: "delete-node-path"
+        attribute: "delete-node-path",
       },
 
       /**
@@ -249,27 +249,27 @@ class HAXCMSSiteEditor extends LitElement {
        */
       saveManifestPath: {
         type: String,
-        attribute: "save-manifest-path"
+        attribute: "save-manifest-path",
       },
       /**
        * end point for publishing
        */
       publishSitePath: {
         type: String,
-        attribute: "publish-site-path"
+        attribute: "publish-site-path",
       },
       /**
        * end point for revert
        */
       revertSitePath: {
         type: String,
-        attribute: "revert-site-path"
+        attribute: "revert-site-path",
       },
       appendTarget: {
-        type: Object
+        type: Object,
       },
       appElement: {
-        type: Object
+        type: Object,
       },
 
       /**
@@ -277,14 +277,14 @@ class HAXCMSSiteEditor extends LitElement {
        */
       syncSitePath: {
         type: String,
-        attribute: "sync-site-path"
+        attribute: "sync-site-path",
       },
 
       /**
        * Publishing end point, this has CDN implications so show message
        */
       publishing: {
-        type: Boolean
+        type: Boolean,
       },
 
       /**
@@ -292,14 +292,14 @@ class HAXCMSSiteEditor extends LitElement {
        */
       saveOutlinePath: {
         type: String,
-        attribute: "save-outline-path"
+        attribute: "save-outline-path",
       },
 
       /**
        * appStore object from backend
        */
       appStore: {
-        type: Object
+        type: Object,
       },
 
       /**
@@ -308,40 +308,40 @@ class HAXCMSSiteEditor extends LitElement {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * Active item of the node being worked on, JSON outline schema item format
        */
       activeItem: {
-        type: Object
+        type: Object,
       },
 
       /**
        * Outline of items in json outline schema format
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       getNodeFieldsPath: {
         type: String,
-        attribute: "get-node-fields-path"
+        attribute: "get-node-fields-path",
       },
       getSiteFieldsPath: {
         type: String,
-        attribute: "save-site-fields-path"
+        attribute: "save-site-fields-path",
       },
       getFormToken: {
         type: String,
-        attribute: "get-form-token"
+        attribute: "get-form-token",
       },
 
       /**
        * Site dashboard element reference
        */
       siteDashboard: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -386,8 +386,8 @@ class HAXCMSSiteEditor extends LitElement {
               bubbles: true,
               cancelable: false,
               detail: {
-                redirect: true
-              }
+                redirect: true,
+              },
             })
           );
           break;
@@ -404,9 +404,9 @@ class HAXCMSSiteEditor extends LitElement {
                 element: {
                   obj: this,
                   callback: "refreshRequest",
-                  params: [target]
-                }
-              }
+                  params: [target],
+                },
+              },
             })
           );
           break;
@@ -416,8 +416,8 @@ class HAXCMSSiteEditor extends LitElement {
             composed: true,
             cancelable: true,
             detail: {
-              text: e.detail.value.status + " " + e.detail.value.statusText
-            }
+              text: e.detail.value.status + " " + e.detail.value.statusText,
+            },
           });
           window.dispatchEvent(evt);
           break;
@@ -434,7 +434,7 @@ class HAXCMSSiteEditor extends LitElement {
     this.jwt = jwt;
     element.body.jwt = jwt;
     element.headers = {
-      Authorization: `Bearer ${this.jwt}`
+      Authorization: `Bearer ${this.jwt}`,
     };
     // again, sanity check on delay
     setTimeout(() => {
@@ -454,15 +454,15 @@ class HAXCMSSiteEditor extends LitElement {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
       this.__disposer.push(reaction);
     });
@@ -514,7 +514,7 @@ class HAXCMSSiteEditor extends LitElement {
 
     if (window.HaxStore.ready) {
       let detail = {
-        detail: true
+        detail: true,
       };
 
       this._storeReadyToGo(detail);
@@ -528,7 +528,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -546,7 +546,7 @@ class HAXCMSSiteEditor extends LitElement {
       } else if (propName == "activeItem") {
         this.dispatchEvent(
           new CustomEvent("manifest-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
 
@@ -554,7 +554,7 @@ class HAXCMSSiteEditor extends LitElement {
       } else if (propName == "manifest") {
         this.dispatchEvent(
           new CustomEvent("manifest-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
 
@@ -573,8 +573,8 @@ class HAXCMSSiteEditor extends LitElement {
           bubbles: true,
           cancelable: false,
           detail: {
-            redirect: true
-          }
+            redirect: true,
+          },
         })
       );
   }
@@ -657,7 +657,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   loadUserData(e) {
     this.querySelector("#getuserdata").body = {
-      jwt: this.jwt
+      jwt: this.jwt,
     };
     this.querySelector("#getuserdata").generateRequest();
   }
@@ -674,17 +674,17 @@ class HAXCMSSiteEditor extends LitElement {
     form.headers = {
       Authorization: `Bearer ${this.jwt}`,
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
     form.body = {
       jwt: this.jwt,
       token: this.getFormToken,
       site: {
-        name: this.manifest.metadata.site.name
+        name: this.manifest.metadata.site.name,
       },
       node: {
-        id: this.activeItem.id
-      }
+        id: this.activeItem.id,
+      },
     };
     form.loadEndpoint = this.getNodeFieldsPath;
     this.__fieldsForm = form;
@@ -716,16 +716,16 @@ class HAXCMSSiteEditor extends LitElement {
         title: "Edit " + store.activeTitle + " fields",
         styles: {
           "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw"
+          "--simple-modal-max-width": "70vw",
         },
         elements: {
           content: form,
-          buttons: b
+          buttons: b,
         },
         invokedBy: this.__nodeFieldsInvoked,
         clone: false,
-        modal: true
-      }
+        modal: true,
+      },
     });
     window.dispatchEvent(evt);
   }
@@ -740,7 +740,7 @@ class HAXCMSSiteEditor extends LitElement {
       let builder = document.getElementsByTagName("haxcms-site-builder")[0];
       this.siteDashboard = document.createElement("haxcms-site-dashboard");
       this.siteDashboard.headers = {
-        Authorization: `Bearer ${this.jwt}`
+        Authorization: `Bearer ${this.jwt}`,
       };
       this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
       this.siteDashboard.method = this.method; // insert right before the builder, you sneaky thing you
@@ -752,11 +752,11 @@ class HAXCMSSiteEditor extends LitElement {
       jwt: this.jwt,
       token: this.getFormToken,
       site: {
-        name: this.manifest.metadata.site.name
-      }
+        name: this.manifest.metadata.site.name,
+      },
     };
     this.siteDashboard.headers = {
-      Authorization: `Bearer ${this.jwt}`
+      Authorization: `Bearer ${this.jwt}`,
     };
     setTimeout(() => {
       store.dashboardOpened = !store.dashboardOpened;
@@ -770,7 +770,7 @@ class HAXCMSSiteEditor extends LitElement {
       description: "Tag that supplies the custom theme",
       inputMethod: "textfield",
       required: true,
-      validationType: "text"
+      validationType: "text",
     }; // @todo figure out why this isn't adding a field in on the fly
 
     /*if (e.target.value.theme === "haxcms-custom-theme") {
@@ -794,7 +794,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: values
+        detail: values,
       })
     ); // fire event to close the modal
 
@@ -803,7 +803,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -818,7 +818,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: this.querySelector("#siteform").submit()
+        detail: this.querySelector("#siteform").submit(),
       })
     ); // fire event to close the modal
 
@@ -827,7 +827,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -840,16 +840,16 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#createajax").body = {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name
+          name: this.manifest.metadata.site.name,
         },
-        node: e.detail.values
+        node: e.detail.values,
       };
       this.querySelector("#createajax").generateRequest();
       const evt = new CustomEvent("simple-modal-hide", {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       });
       window.dispatchEvent(evt);
     }
@@ -862,8 +862,8 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: `Created ${this.__createNodeResponse.title}!`,
-        duration: 2000
-      }
+        duration: 2000,
+      },
     });
     window.dispatchEvent(evt);
     this.dispatchEvent(
@@ -871,7 +871,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -883,18 +883,18 @@ class HAXCMSSiteEditor extends LitElement {
     this.querySelector("#deleteajax").body = {
       jwt: this.jwt,
       site: {
-        name: this.manifest.metadata.site.name
+        name: this.manifest.metadata.site.name,
       },
       node: {
-        id: e.detail.item.id
-      }
+        id: e.detail.item.id,
+      },
     };
     this.querySelector("#deleteajax").generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       composed: true,
       cancelable: true,
-      detail: {}
+      detail: {},
     });
     window.dispatchEvent(evt);
   }
@@ -909,8 +909,8 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: `Deleted ${this.__deleteNodeResponse.title}`,
-        duration: 2000
-      }
+        duration: 2000,
+      },
     });
     this.dispatchEvent(evt);
     this.dispatchEvent(
@@ -918,7 +918,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -943,8 +943,8 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: true,
         detail: {
           text: "Publishing...",
-          duration: 0
-        }
+          duration: 0,
+        },
       });
       window.dispatchEvent(evt);
     } else if (!newValue && oldValue) {
@@ -954,8 +954,8 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: true,
         detail: {
           text: "Publishing...",
-          duration: 2000
-        }
+          duration: 2000,
+        },
       });
       window.dispatchEvent(evt);
     }
@@ -1009,7 +1009,7 @@ class HAXCMSSiteEditor extends LitElement {
       window.location(e.detail.slug);
       window.history.pushState({}, null, e.detail.slug);
       window.dispatchEvent(new PopStateEvent("popstate"));
-      const active = this.manifest.items.find(i => {
+      const active = this.manifest.items.find((i) => {
         return i.id === e.detail.id;
       });
       this.activeItem = active;
@@ -1018,7 +1018,7 @@ class HAXCMSSiteEditor extends LitElement {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: active
+          detail: active,
         })
       );
     }
@@ -1029,8 +1029,8 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Page saved!",
-        duration: 2000
-      }
+        duration: 2000,
+      },
     });
     window.dispatchEvent(evt); // updates the manifest
 
@@ -1039,7 +1039,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     ); // updates the node contents itself
 
@@ -1048,7 +1048,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -1061,8 +1061,8 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Outline saved!",
-        duration: 2000
-      }
+        duration: 2000,
+      },
     });
     setTimeout(() => {
       window.dispatchEvent(evt);
@@ -1071,7 +1071,7 @@ class HAXCMSSiteEditor extends LitElement {
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: true
+          detail: true,
         })
       );
     }, 100);
@@ -1086,8 +1086,8 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: true,
         detail: {
           text: "Site details saved, reloading to reflect changes!",
-          duration: 3000
-        }
+          duration: 3000,
+        },
       })
     );
     store.dashboardOpened = false;
@@ -1096,7 +1096,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
     setTimeout(() => {
@@ -1116,8 +1116,8 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Last save undone",
-        duration: 2000
-      }
+        duration: 2000,
+      },
     });
     this.dispatchEvent(evt);
     this.dispatchEvent(
@@ -1125,7 +1125,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -1141,8 +1141,8 @@ class HAXCMSSiteEditor extends LitElement {
       cancelable: true,
       detail: {
         text: "Site synced",
-        duration: 2000
-      }
+        duration: 2000,
+      },
     });
     this.dispatchEvent(evt);
     this.dispatchEvent(
@@ -1150,7 +1150,7 @@ class HAXCMSSiteEditor extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
     store.dashboardOpened = false;
@@ -1176,8 +1176,8 @@ class HAXCMSSiteEditor extends LitElement {
       detail: {
         text: data.response,
         duration: 10000,
-        slot: content.cloneNode(true)
-      }
+        slot: content.cloneNode(true),
+      },
     });
     window.dispatchEvent(evt);
     store.dashboardOpened = false;
@@ -1193,13 +1193,13 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name
+          name: this.manifest.metadata.site.name,
         },
         node: {
           id: this.activeItem.id,
           body: body,
-          schema: window.HaxStore.htmlToHaxElements(body)
-        }
+          schema: window.HaxStore.htmlToHaxElements(body),
+        },
       };
       this.querySelector("#nodeupdateajax").generateRequest();
     }
@@ -1214,12 +1214,12 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name
+          name: this.manifest.metadata.site.name,
         },
         node: {
           id: e.detail.id,
-          details: e.detail
-        }
+          details: e.detail,
+        },
       };
       this.querySelector("#nodeupdateajax").generateRequest();
     }
@@ -1233,9 +1233,9 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#outlineupdateajax").body = {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name
+          name: this.manifest.metadata.site.name,
         },
-        items: e.detail
+        items: e.detail,
       };
       this.querySelector("#outlineupdateajax").generateRequest();
     }
@@ -1263,7 +1263,7 @@ class HAXCMSSiteEditor extends LitElement {
       values.site.name = this.manifest.metadata.site.name;
     } else {
       values.site = {
-        name: this.manifest.metadata.site.name
+        name: this.manifest.metadata.site.name,
       };
     }
     if (this.saveManifestPath) {
@@ -1289,8 +1289,8 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#publishajax").body = {
         jwt: this.jwt,
         site: {
-          name: this.manifest.metadata.site.name
-        }
+          name: this.manifest.metadata.site.name,
+        },
       };
       this.querySelector("#publishajax").generateRequest();
     }
@@ -1304,8 +1304,8 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#syncajax").body = {
         jwt: this.jwt,
         site: {
-          name: store.manifest.metadata.site.name
-        }
+          name: store.manifest.metadata.site.name,
+        },
       };
       this.querySelector("#syncajax").generateRequest();
     }
@@ -1319,8 +1319,8 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#revertajax").body = {
         jwt: this.jwt,
         site: {
-          name: store.manifest.metadata.site.name
-        }
+          name: store.manifest.metadata.site.name,
+        },
       };
       this.querySelector("#revertajax").generateRequest();
     }

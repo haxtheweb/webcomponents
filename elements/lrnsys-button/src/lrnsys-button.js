@@ -76,7 +76,7 @@ class LrnsysButton extends LitElement {
         .no-left-padding {
           padding-left: 0 !important;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -158,94 +158,94 @@ class LrnsysButton extends LitElement {
        */
       href: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * If the button should be visually lifted off the UI.
        */
       raised: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Label to place in the text area
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Support for target to open in new windows.
        */
       target: {
-        type: String
+        type: String,
       },
       /**
        * iron-icon to use (with iconset if needed)
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Classes to add / subtract based on the item being hovered.
        */
       hoverClass: {
         type: String,
-        attribute: "hover-class"
+        attribute: "hover-class",
       },
       /**
        * Button class.
        */
       buttonClass: {
         type: String,
-        attribute: "button-class"
+        attribute: "button-class",
       },
       /**
        * Icon class in the event you want it to look different from the text.
        */
       iconClass: {
         type: String,
-        attribute: "icon-class"
+        attribute: "icon-class",
       },
       /**
        * Inner container classes.
        */
       innerClass: {
         type: String,
-        attribute: "inner-class"
+        attribute: "inner-class",
       },
       /**
        * Color class work to apply
        */
       color: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * materializeCSS color class for text
        */
       textColor: {
         type: String,
-        attribute: "text-color"
+        attribute: "text-color",
       },
       /**
        * Alt via tooltip.
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * Disabled state.
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Tracks if focus state is applied
        */
       focusState: {
         type: Boolean,
-        attribute: "focus-state"
-      }
+        attribute: "focus-state",
+      },
     };
   }
   /**

@@ -31,30 +31,30 @@ class TwitterEmbed extends LitElement {
   static get properties() {
     return {
       tweet: {
-        type: String
+        type: String,
       },
       lang: {
-        type: String
+        type: String,
       },
       dataWidth: {
         type: String,
-        attribute: "data-width"
+        attribute: "data-width",
       },
       dataTheme: {
         type: String,
-        attribute: "data-theme"
+        attribute: "data-theme",
       },
       tweetId: {
         type: String,
-        attribute: "tweet-id"
+        attribute: "tweet-id",
       },
       noPopups: {
         type: Boolean,
-        attribute: "no-popups"
+        attribute: "no-popups",
       },
       allowPopups: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -73,8 +73,8 @@ class TwitterEmbed extends LitElement {
         groups: ["Social Media"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -83,7 +83,7 @@ class TwitterEmbed extends LitElement {
             attribute: "tweet",
             title: "Tweet URL",
             description: "URL of the tweet in question to be embedded",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             attribute: "data-theme",
@@ -92,28 +92,28 @@ class TwitterEmbed extends LitElement {
             inputMethod: "select",
             options: {
               light: "Light",
-              dark: "Dark"
-            }
+              dark: "Dark",
+            },
           },
           {
             attribute: "no-popups",
             title: "Prevent popup on click",
             description:
               "This blocks the user from clicking the tweet and going to twitter.com",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: "twitter-embed",
           content: "",
           properties: {
-            tweet: "https://twitter.com/btopro/status/1298632260707639298"
-          }
-        }
-      ]
+            tweet: "https://twitter.com/btopro/status/1298632260707639298",
+          },
+        },
+      ],
     };
   }
   /**

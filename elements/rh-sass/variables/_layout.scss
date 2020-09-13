@@ -6,65 +6,12 @@
 // Use #{rh-var($cssvar)}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ========================================================================
 // Spacers / Gutters
 // ========================================================================
 
 $rh-global--containter-spacer:              rh-size-prem(16px) !default;
 $rh-global--content-spacer:                 rh-size-prem(4px) !default;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // ========================================================================
@@ -85,11 +32,11 @@ $rh-global--grid-breakpoint--lg: 992px !default;
 $rh-global--grid-breakpoint--xl: 1200px !default;
 
 $rh-global--grid-breakpoints: (
-  xs: $rh-global--grid-breakpoint--xs,
-  sm: $rh-global--grid-breakpoint--sm,
-  md: $rh-global--grid-breakpoint--md,
-  lg: $rh-global--grid-breakpoint--lg,
-  xl: $rh-global--grid-breakpoint--xl
+xs: $rh-global--grid-breakpoint--xs,
+sm: $rh-global--grid-breakpoint--sm,
+md: $rh-global--grid-breakpoint--md,
+lg: $rh-global--grid-breakpoint--lg,
+xl: $rh-global--grid-breakpoint--xl
 ) !default;
 
 $rh-global--grid-breakpoint--xs--max: $rh-global--grid-breakpoint--sm - 1 !default;

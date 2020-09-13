@@ -2,9 +2,11 @@
   display: block;
   z-index: 1000;
 }
+
 :host([hidden]) {
   display: none;
 }
+
 :host div::slotted(*) {
   font-size: 14px;
 }

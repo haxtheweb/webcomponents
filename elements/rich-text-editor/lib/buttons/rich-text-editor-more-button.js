@@ -45,7 +45,7 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
       toggled: {
         attribute: "toggled",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * The maximum size where all of the buttons display
@@ -53,8 +53,8 @@ class RichTextEditorMoreButton extends RichTextEditorButtonBehaviors(
       collapseMax: {
         attribute: "collapse-max",
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

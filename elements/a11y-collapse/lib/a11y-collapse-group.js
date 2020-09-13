@@ -39,35 +39,33 @@ class A11yCollapseGroup extends LitElement {
           --a11y-collapse-margin: 0 0;
           --a11y-collapse-border-between: none;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <div class="wrapper"><slot></slot></div>
-    `;
+    return html` <div class="wrapper"><slot></slot></div> `;
   }
   constructor() {
     super();
     this.globalOptions = {};
     this.radio = false;
     this.__items = [];
-    this.addEventListener("a11y-collapse-attached", e => {
+    this.addEventListener("a11y-collapse-attached", (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this._attachItem(e.detail);
     });
-    this.addEventListener("a11y-collapse-detached", e => {
+    this.addEventListener("a11y-collapse-detached", (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this._detachItem(e.detail);
     });
-    this.addEventListener("a11y-collapse-click", e => {
+    this.addEventListener("a11y-collapse-click", (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this.radioToggle(e.detail);
     });
-    this.addEventListener("toggle", e => {
+    this.addEventListener("toggle", (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
       this.radioToggle(e.detail);
@@ -88,21 +86,21 @@ class A11yCollapseGroup extends LitElement {
       globalOptions: {
         type: Object,
         attribute: "global-options",
-        reflect: true
+        reflect: true,
       },
       /**
        * Acts like a radio button. (Items can only be expanded one at a time.)
        */
       radio: {
         type: Boolean,
-        attribute: "radio"
+        attribute: "radio",
       },
       /**
        * is radio button
        */
       __items: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   static get haxProperties() {
@@ -115,7 +113,7 @@ class A11yCollapseGroup extends LitElement {
         description: "A group of expand collapse elements.",
         icon: "view-day",
         color: "grey",
-        groups: ["Content", "Presentation", "Collapse"]
+        groups: ["Content", "Presentation", "Collapse"],
       },
       settings: {
         quick: [
@@ -123,43 +121,43 @@ class A11yCollapseGroup extends LitElement {
             property: "radio",
             title: "Expand only one",
             description: "Only one item can be expanded.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "disabled",
             title: "Disabled",
             description: "Disable items.",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         configure: [
           {
             property: "radio",
             title: "Expand only one",
             description: "Only one item can be expanded.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "disabled",
             title: "Disabled",
             description: "Disable items.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             slot: "",
             title: "Collapse Items",
             description: "The collapse items.",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
         advanced: [
           {
             property: "hidden",
             title: "Hidden",
-            inputMethod: "boolean"
-          }
-        ]
-      }
+            inputMethod: "boolean",
+          },
+        ],
+      },
     };
   }
 
@@ -173,7 +171,7 @@ class A11yCollapseGroup extends LitElement {
    */
   _attachItem(item) {
     this.__items.push(item);
-    Object.keys(A11yCollapseGroup.properties || {}).forEach(propName =>
+    Object.keys(A11yCollapseGroup.properties || {}).forEach((propName) =>
       this._updateItem(item, propName)
     );
   }
@@ -182,7 +180,9 @@ class A11yCollapseGroup extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      this.__items.forEach(item => this._updateItem(item, propName, oldValue));
+      this.__items.forEach((item) =>
+        this._updateItem(item, propName, oldValue)
+      );
     });
   }
   _updateItem(item, propName, oldValue = undefined) {
@@ -226,15 +226,15 @@ class A11yCollapseGroup extends LitElement {
   }
 
   disconnectedCallback() {
-    this.removeEventListener("a11y-collapse-click", e => {
+    this.removeEventListener("a11y-collapse-click", (e) => {
       e.stopPropagation();
       this.radioToggle(e.detail);
     });
-    this.removeEventListener("a11y-collapse-attached", e => {
+    this.removeEventListener("a11y-collapse-attached", (e) => {
       e.stopPropagation();
       this.push("__items", e.detail);
     });
-    this.removeEventListener("a11y-collapse-detached", e => {
+    this.removeEventListener("a11y-collapse-detached", (e) => {
       e.stopPropagation();
       this._detachItem(e.detail);
     });

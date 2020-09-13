@@ -54,29 +54,29 @@ class LrndesignDrawer extends PolymerElement {
        */
       opened: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Icon to present for clicking.
        */
       icon: {
         type: String,
-        value: "icon"
+        value: "icon",
       },
       /**
        * Side of the screen to align the flyout (right or left)
        */
       align: {
         type: String,
-        value: "left"
+        value: "left",
       },
       /**
        * Alt / hover text for this link
        */
       alt: {
         type: String,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
   /**
@@ -87,7 +87,7 @@ class LrndesignDrawer extends PolymerElement {
     super.ready();
     this.shadowRoot
       .querySelector("paper-icon-button")
-      .addEventListener("click", e => {
+      .addEventListener("click", (e) => {
         this.opened = !this.opened;
       });
   }

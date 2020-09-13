@@ -42,8 +42,8 @@ class EcoJsonSchemaMarkup extends mixinBehaviors(
       value: {
         type: String,
         notify: true,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
   /**

@@ -30,8 +30,8 @@ class LrnappStudioSubmissionComments extends PolymerElement {
   static get properties() {
     return {
       submission: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -41,7 +41,7 @@ class LrnappStudioSubmissionComments extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

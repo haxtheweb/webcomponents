@@ -52,8 +52,8 @@ class PouchDb extends PolymerElement {
         type: String,
         value: "pouch-db-default-value",
         reflectToAttribute: false,
-        observer: false
-      }
+        observer: false,
+      },
     };
   }
 
@@ -115,44 +115,44 @@ class PouchDb extends PolymerElement {
       actor: {
         mbox: userEmail,
         name: userName,
-        objectType: "Agent"
+        objectType: "Agent",
       },
       verb: {
         id: activityId,
         display: {
-          "en-US": activityDisplay
-        }
+          "en-US": activityDisplay,
+        },
       },
       object: {
         id: objectId,
         definition: {
           name: {
-            "en-US": objectName
+            "en-US": objectName,
           },
           description: {
-            "en-US": objectDescription
-          }
+            "en-US": objectDescription,
+          },
         },
-        objectType: "Activity"
+        objectType: "Activity",
       },
       result: {
         score: {
           scaled: resultScoreScaled,
           min: resultScoreMin,
           max: resultScoreMax,
-          raw: resultScoreRaw
+          raw: resultScoreRaw,
         },
         success: resultSuccess,
         completion: resultCompletion,
         response: resultResponse,
-        duration: resultDuration
-      }
+        duration: resultDuration,
+      },
     };
 
     var xapistatement = {
       _id: new Date().toISOString(),
       title: JSON.stringify(objectStatement),
-      completed: false
+      completed: false,
     };
 
     db.put(xapistatement, function callback(err, result) {
@@ -168,7 +168,7 @@ class PouchDb extends PolymerElement {
     }
 
     //display for testing only - move to own elements
-    db.allDocs({ include_docs: true, descending: true }, function(err, doc) {
+    db.allDocs({ include_docs: true, descending: true }, function (err, doc) {
       console.log(doc.rows);
     });
     //display for testing only - move to own elements
@@ -206,7 +206,7 @@ class PouchDb extends PolymerElement {
 
     function processxAPI(statements, callback) {
       var arrayxAPI = [];
-      statements.forEach(function(statement) {
+      statements.forEach(function (statement) {
         var out = JSON.parse(statement.doc.title);
         //var jsonStatement = out.verb.display['en-US'];  //verb
         var jsonStatement = out.object.definition.name["en-US"]; //all quizzes; quiz name
@@ -217,13 +217,13 @@ class PouchDb extends PolymerElement {
 
     function processItems(statements, callback) {
       var map = {};
-      statements.forEach(function(statement) {
+      statements.forEach(function (statement) {
         map[statement] = (map[statement] || 0) + 1;
       });
       callback(map);
     }
 
-    db.allDocs({ include_docs: true, descending: true }, function(err, doc) {
+    db.allDocs({ include_docs: true, descending: true }, function (err, doc) {
       processxAPI(
         doc.rows,
         function displayxAPI(mapxAPI) {
@@ -244,7 +244,7 @@ class PouchDb extends PolymerElement {
               let queryData = [""];
               queryData = {
                 labels: labelsArray,
-                series: [resultsArray]
+                series: [resultsArray],
                 //activityDisplay: eventData.resultCompletion,    //FUTURE
                 //objectName: eventData.objectName,               //FUTURE
                 //resultSuccess: eventData.resultSuccess          //FUTURE
@@ -256,7 +256,7 @@ class PouchDb extends PolymerElement {
                   bubbles: true,
                   composed: true,
                   cancelable: false,
-                  detail: queryData
+                  detail: queryData,
                 })
               );
             }

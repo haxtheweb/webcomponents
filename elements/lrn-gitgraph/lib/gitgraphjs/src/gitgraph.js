@@ -1,4 +1,4 @@
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -138,13 +138,13 @@
     // Bindings
     this.mouseMoveOptions = {
       handleEvent: this.hover,
-      gitgraph: this
+      gitgraph: this,
     };
     this.canvas.addEventListener("mousemove", this.mouseMoveOptions, false);
 
     this.mouseDownOptions = {
       handleEvent: this.click,
-      gitgraph: this
+      gitgraph: this,
     };
     this.canvas.addEventListener("mousedown", this.mouseDownOptions, false);
 
@@ -157,7 +157,7 @@
    *
    * @this GitGraph
    **/
-  GitGraph.prototype.dispose = function() {
+  GitGraph.prototype.dispose = function () {
     this.canvas.removeEventListener("mousemove", this.mouseMoveOptions, false);
     this.canvas.removeEventListener("mousedown", this.mouseDownOptions, false);
   };
@@ -172,7 +172,7 @@
    *
    * @return {Branch} New branch
    **/
-  GitGraph.prototype.branch = function(options) {
+  GitGraph.prototype.branch = function (options) {
     // Options
     if (typeof options === "string") {
       var name = options;
@@ -202,7 +202,7 @@
    *
    * @return {Branch} New branch
    **/
-  GitGraph.prototype.orphanBranch = function(options) {
+  GitGraph.prototype.orphanBranch = function (options) {
     // Options
     if (typeof options === "string") {
       var name = options;
@@ -231,7 +231,7 @@
    *
    * @return {GitGraph} this - Return the main object so we can chain
    **/
-  GitGraph.prototype.commit = function(options) {
+  GitGraph.prototype.commit = function (options) {
     this.HEAD.commit(options);
 
     // Return the main object so we can chain
@@ -248,7 +248,7 @@
    *
    * @return {GitGraph} this - Return the main object so we can chain
    **/
-  GitGraph.prototype.tag = function(options) {
+  GitGraph.prototype.tag = function (options) {
     this.HEAD.tag(options);
 
     // Return the main object so we can chain
@@ -265,7 +265,7 @@
    *
    * @return {Template}
    **/
-  GitGraph.prototype.newTemplate = function(options) {
+  GitGraph.prototype.newTemplate = function (options) {
     if (typeof options === "string") {
       return new Template().get(options);
     }
@@ -277,7 +277,7 @@
    *
    * @this GitGraph
    **/
-  GitGraph.prototype.render = function() {
+  GitGraph.prototype.render = function () {
     this.scalingFactor = _getScale(this.context);
 
     // Resize canvas
@@ -289,7 +289,7 @@
       y:
         Math.abs((this.columnMax + 1) * this.template.branch.spacingY) +
         Math.abs(this.commitOffsetY) +
-        this.marginY * 2
+        this.marginY * 2,
     };
 
     if (this.template.commit.message.display) {
@@ -338,7 +338,7 @@
     }
 
     _emitEvent(this.canvas, "graph:render", {
-      id: this.elementId
+      id: this.elementId,
     });
   };
 
@@ -366,7 +366,7 @@
    *
    * @this GitGraph
    **/
-  GitGraph.prototype.applyCommits = function(event, callbackFn) {
+  GitGraph.prototype.applyCommits = function (event, callbackFn) {
     // Fallback onto layerX/layerY for older versions of Firefox.
     function getOffsetById(id) {
       var el = document.getElementById(id);
@@ -374,7 +374,7 @@
 
       return {
         top: rect.top + document.body.scrollTop,
-        left: rect.left + document.body.scrollLeft
+        left: rect.left + document.body.scrollLeft,
       };
     }
 
@@ -405,7 +405,7 @@
    *
    * @this GitGraph
    **/
-  GitGraph.prototype.hover = function(event) {
+  GitGraph.prototype.hover = function (event) {
     var self = this.gitgraph;
     var isOut = true;
 
@@ -431,13 +431,13 @@
         author: commit.author,
         message: commit.message,
         date: commit.date,
-        sha1: commit.sha1
+        sha1: commit.sha1,
       };
 
       _emitEvent(self.canvas, "commit:" + event, mouseEventOptions);
     }
 
-    self.applyCommits(event, function(commit, isOverCommit, event) {
+    self.applyCommits(event, function (commit, isOverCommit, event) {
       if (isOverCommit) {
         if (
           !self.template.commit.message.display &&
@@ -474,8 +474,8 @@
    *
    * @this GitGraph
    **/
-  GitGraph.prototype.click = function(event) {
-    this.gitgraph.applyCommits(event, function(commit, isOverCommit, event) {
+  GitGraph.prototype.click = function (event) {
+    this.gitgraph.applyCommits(event, function (commit, isOverCommit, event) {
       if (!isOverCommit) {
         return;
       }
@@ -580,13 +580,13 @@
             this.parentBranch.offsetY -
             this.parent.commitOffsetY +
             this.template.commit.spacingY,
-          type: "start"
+          type: "start",
         };
       } else {
         this.startPoint = {
           x: this.parentCommit.x,
           y: this.parentCommit.y,
-          type: "start"
+          type: "start",
         };
       }
     } else {
@@ -613,7 +613,7 @@
    *
    * @return {Branch} New Branch
    **/
-  Branch.prototype.branch = function(options) {
+  Branch.prototype.branch = function (options) {
     // Options
     if (typeof options === "string") {
       var name = options;
@@ -638,7 +638,7 @@
    *
    * @this Branch
    **/
-  Branch.prototype.render = function() {
+  Branch.prototype.render = function () {
     this.context.beginPath();
 
     for (var i = 0, point; !!(point = this.path[i]); i++) {
@@ -721,10 +721,10 @@
    *
    * @this Branch
    **/
-  Branch.prototype.commit = function(options) {
+  Branch.prototype.commit = function (options) {
     if (typeof options === "string") {
       options = {
-        message: options
+        message: options,
       };
     } else if (typeof options !== "object") {
       options = {};
@@ -828,7 +828,7 @@
     var point = {
       x: commit.x,
       y: commit.y,
-      type: "joint"
+      type: "joint",
     };
 
     if (!isFirstBranch && isPathBeginning) {
@@ -839,13 +839,13 @@
         this.pushPath({
           x: commit.x,
           y: this.startPoint.y - this.template.commit.spacingY,
-          type: "joint"
+          type: "joint",
         });
       } else {
         this.pushPath({
           x: this.startPoint.x - this.template.commit.spacingX,
           y: commit.y,
-          type: "joint"
+          type: "joint",
         });
       }
     } else if (isPathBeginning) {
@@ -891,10 +891,10 @@
    *
    * @this Branch
    * */
-  Branch.prototype.tag = function(options) {
+  Branch.prototype.tag = function (options) {
     if (typeof options === "string") {
       options = {
-        tag: options
+        tag: options,
       };
     }
 
@@ -915,7 +915,7 @@
    *
    * @this Branch
    **/
-  Branch.prototype.checkout = function() {
+  Branch.prototype.checkout = function () {
     this.parent.HEAD = this;
   };
 
@@ -924,7 +924,7 @@
    *
    * @this Branch
    **/
-  Branch.prototype.delete = function() {
+  Branch.prototype.delete = function () {
     this.isDeleted = true;
   };
 
@@ -940,7 +940,7 @@
    *
    * @return {Branch} this
    **/
-  Branch.prototype.merge = function(target, commitOptions) {
+  Branch.prototype.merge = function (target, commitOptions) {
     // Merge target
     var targetBranch = target || this.parent.HEAD;
 
@@ -983,17 +983,17 @@
       // Make branch path follow target branch ones
       if (isGraphHorizontal) {
         var targetBranchY = targetBranch.path[1].y;
-        this.path.forEach(function(point) {
+        this.path.forEach(function (point) {
           point.y = targetBranchY;
         });
       } else {
         var targetBranchX = targetBranch.path[1].x;
-        this.path.forEach(function(point) {
+        this.path.forEach(function (point) {
           point.x = targetBranchX;
         });
       }
 
-      this.commits.forEach(function(commit) {
+      this.commits.forEach(function (commit) {
         if (isGraphHorizontal) {
           commit.y = branchParentCommit.y;
         } else {
@@ -1019,14 +1019,14 @@
           this.offsetY +
           this.template.commit.spacingY * (targetCommit.showLabel ? 3 : 2) -
           this.parent.commitOffsetY,
-        type: "joint"
+        type: "joint",
       };
       this.pushPath(_clone(endOfBranch));
 
       var mergeCommit = {
         x: targetCommit.x,
         y: targetCommit.y,
-        type: "end"
+        type: "end",
       };
       this.pushPath(mergeCommit);
 
@@ -1049,7 +1049,7 @@
    *
    * @this Branch
    **/
-  Branch.prototype.calculColumn = function() {
+  Branch.prototype.calculColumn = function () {
     var candidates = [];
     for (var i = 0, branch; !!(branch = this.parent.branches[i]); i++) {
       if (!branch.isDeleted) {
@@ -1074,7 +1074,7 @@
    *
    * @this Branch
    */
-  Branch.prototype.pushPath = function(point) {
+  Branch.prototype.pushPath = function (point) {
     var lastPoint = _getLast(this.path);
     if (!lastPoint) {
       this.path.push(point);
@@ -1166,11 +1166,7 @@
     this.author = options.author || this.parent.author;
     this.date = options.date || new Date().toUTCString();
     this.detail = options.detail || null;
-    this.sha1 =
-      options.sha1 ||
-      Math.random(100)
-        .toString(16)
-        .substring(3, 10);
+    this.sha1 = options.sha1 || Math.random(100).toString(16).substring(3, 10);
     this.message = options.message || "He doesn't like George Michael! Boooo!";
     this.arrowDisplay = options.arrowDisplay;
     this.messageDisplay = _booleanOptionOr(
@@ -1220,7 +1216,7 @@
    *
    * @this Commit
    **/
-  Commit.prototype.render = function() {
+  Commit.prototype.render = function () {
     var commitOffsetForTags = this.template.commit.tag.spacingX;
     var commitOffsetLeft =
       (this.parent.columnMax + 1) * this.template.branch.spacingX +
@@ -1293,7 +1289,7 @@
     if (this.tag !== null) {
       var tag = new Tag(this, {
         color: this.tagColor,
-        font: this.tagFont
+        font: this.tagFont,
       });
 
       commitOffsetLeft += tag.width - commitOffsetForTags;
@@ -1555,7 +1551,7 @@
       "#47E8D4",
       "#6BDB52",
       "#E84BA5",
-      "#FFA657"
+      "#FFA657",
     ];
 
     // Branch style
@@ -1665,7 +1661,7 @@
    *
    * @return {Template} [template] - Template if exist
    **/
-  Template.prototype.get = function(name) {
+  Template.prototype.get = function (name) {
     var template = {};
 
     switch (name) {
@@ -1676,23 +1672,23 @@
             lineWidth: 4,
             spacingX: 50,
             mergeStyle: "straight",
-            labelRotation: 0
+            labelRotation: 0,
           },
           commit: {
             spacingY: -60,
             dot: {
               size: 12,
               strokeColor: "#000000",
-              strokeWidth: 7
+              strokeWidth: 7,
             },
             message: {
-              color: "black"
-            }
+              color: "black",
+            },
           },
           arrow: {
             size: 16,
-            offset: 2.5
-          }
+            offset: 2.5,
+          },
         };
         break;
 
@@ -1704,17 +1700,17 @@
           branch: {
             lineWidth: 10,
             spacingX: 50,
-            labelRotation: 0
+            labelRotation: 0,
           },
           commit: {
             spacingY: -80,
             dot: {
-              size: 14
+              size: 14,
             },
             message: {
-              font: "normal 14pt Arial"
-            }
-          }
+              font: "normal 14pt Arial",
+            },
+          },
         };
         break;
     }
@@ -1969,7 +1965,7 @@
      *
      * See: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/every for more information.
      */
-    return !key.split(".").every(function(x) {
+    return !key.split(".").every(function (x) {
       if (typeof obj !== "object" || obj === null || !(x in obj)) {
         return false;
       }
@@ -1983,7 +1979,7 @@
    * for more information.
    * */
   if (!Array.prototype.every) {
-    Array.prototype.every = function(callbackFn, thisArg) {
+    Array.prototype.every = function (callbackFn, thisArg) {
       var T, k;
 
       if (this === null) {

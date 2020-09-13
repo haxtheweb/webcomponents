@@ -189,7 +189,7 @@ class LrndesignStepperButton extends PolymerElement {
       title: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
 
       /**
@@ -198,7 +198,7 @@ class LrndesignStepperButton extends PolymerElement {
       icon: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
 
       /**
@@ -207,7 +207,7 @@ class LrndesignStepperButton extends PolymerElement {
       url: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * The tab location position (start / middle / end).
@@ -215,7 +215,7 @@ class LrndesignStepperButton extends PolymerElement {
       location: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * Allow for collapsible content with the items inside
@@ -224,12 +224,12 @@ class LrndesignStepperButton extends PolymerElement {
         type: Boolean,
         reflectToAttribute: true,
         notify: true,
-        value: false
+        value: false,
       },
       opened: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 

@@ -4,13 +4,13 @@ import {
   camelCaseToDash,
   wipeSlot,
   nodeToHaxElement,
-  haxElementToNode
+  haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-tray`
@@ -31,17 +31,17 @@ class HaxTray extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-drop-focus-event": "_expandSettingsPanel",
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.activeValue = {
       settings: {
         layout: {
           __position: "hax-align-left",
-          __scale: 100
+          __scale: 100,
         },
         configure: {},
-        advanced: {}
-      }
+        advanced: {},
+      },
     };
     this.collapsed = false;
     this.activeTab = "item-0";
@@ -503,7 +503,7 @@ class HaxTray extends winEventsElement(LitElement) {
             display: none;
           }
         }
-      `
+      `,
     ];
   }
   /**
@@ -675,10 +675,10 @@ class HaxTray extends winEventsElement(LitElement) {
   }
   _refreshLists(e) {
     this.shadowRoot.querySelector("#bloxbrowser").bloxList = [
-      ...window.HaxStore.instance.bloxList
+      ...window.HaxStore.instance.bloxList,
     ];
     this.shadowRoot.querySelector("#staxbrowser").staxList = [
-      ...window.HaxStore.instance.staxList
+      ...window.HaxStore.instance.staxList,
     ];
   }
   /**
@@ -702,7 +702,7 @@ class HaxTray extends winEventsElement(LitElement) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: detail.index
+            detail: detail.index,
           })
         );
         break;
@@ -713,7 +713,7 @@ class HaxTray extends winEventsElement(LitElement) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: target.stax
+            detail: target.stax,
           })
         );
         break;
@@ -723,7 +723,7 @@ class HaxTray extends winEventsElement(LitElement) {
           let node = haxElementToNode({
             tag: target.blox[i].tag,
             content: target.blox[i].content,
-            properties: target.blox[i].properties
+            properties: target.blox[i].properties,
           });
           content += window.HaxStore.nodeToContent(node);
         }
@@ -731,9 +731,9 @@ class HaxTray extends winEventsElement(LitElement) {
         let blox = {
           tag: "grid-plate",
           properties: {
-            layout: target.layout
+            layout: target.layout,
           },
-          content: content
+          content: content,
         };
         this.shadowRoot.querySelector("#settingscollapse").expand();
         this.dispatchEvent(
@@ -741,13 +741,13 @@ class HaxTray extends winEventsElement(LitElement) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: blox
+            detail: blox,
           })
         );
         break;
       case "insert-tag":
         let gizmo = {
-          tag: detail.value
+          tag: detail.value,
         };
         let properties = JSON.parse(target.getAttribute("event-properties"));
         let innerContent = target.getAttribute("event-content");
@@ -769,7 +769,7 @@ class HaxTray extends winEventsElement(LitElement) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: element
+            detail: element,
           })
         );
         break;
@@ -813,7 +813,7 @@ class HaxTray extends winEventsElement(LitElement) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: detail
+            detail: detail,
           })
         );
         break;
@@ -826,35 +826,35 @@ class HaxTray extends winEventsElement(LitElement) {
     return {
       ...super.properties,
       __tipText: {
-        type: String
+        type: String,
       },
       menuAlignName: {
-        type: String
+        type: String,
       },
       offsetMargin: {
-        type: String
+        type: String,
       },
       collapsed: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       traySizeIcon: {
-        type: String
+        type: String,
       },
       traySizeText: {
-        type: String
+        type: String,
       },
       /**
        * Form values for active node
        */
       activeValue: {
-        type: Object
+        type: Object,
       },
       /**
        * Form schema for active node
        */
       activeSchema: {
-        type: Object
+        type: Object,
       },
       /**
        * Alignment of the initial edit button
@@ -862,35 +862,35 @@ class HaxTray extends winEventsElement(LitElement) {
       elementAlign: {
         type: String,
         reflect: true,
-        attribute: "element-align"
+        attribute: "element-align",
       },
       /**
        * Light variant for save button
        */
       light: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * If we can currently undo based on stack position
        */
       canUndo: {
         type: Boolean,
-        attribute: "can-undo"
+        attribute: "can-undo",
       },
       /**
        * If we can currently redo based on stack position
        */
       canRedo: {
         type: Boolean,
-        attribute: "can-redo"
+        attribute: "can-redo",
       },
       /**
        * If we're "dirty" meaning stackPosition and savePosition out of sync
        */
       isDirty: {
         type: Boolean,
-        attribute: "is-dirty"
+        attribute: "is-dirty",
       },
       /**
        * Showing preferences area.
@@ -898,7 +898,7 @@ class HaxTray extends winEventsElement(LitElement) {
       hidePreferencesButton: {
         type: Boolean,
         reflect: true,
-        attribute: "hide-preferences-button"
+        attribute: "hide-preferences-button",
       },
       /**
        * Showing button area at all a well as internal
@@ -907,31 +907,31 @@ class HaxTray extends winEventsElement(LitElement) {
       hidePanelOps: {
         type: Boolean,
         reflect: true,
-        attribute: "hide-panel-ops"
+        attribute: "hide-panel-ops",
       },
       /**
        * Global preferences for HAX overall
        */
       globalPreferences: {
-        type: Object
+        type: Object,
       },
       /**
        * Global active node so we know if we need to disable contextual settings
        */
       activeNode: {
-        type: Object
+        type: Object,
       },
       /**
        * Tag name / what to display based on active element
        */
       activeTagIcon: {
-        type: String
+        type: String,
       },
       activeTagName: {
-        type: String
+        type: String,
       },
       activeGizmo: {
-        type: Object
+        type: Object,
       },
       /**
        * State of the panel
@@ -939,8 +939,8 @@ class HaxTray extends winEventsElement(LitElement) {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
-      }
+        attribute: "edit-mode",
+      },
     };
   }
   /**
@@ -971,8 +971,8 @@ class HaxTray extends winEventsElement(LitElement) {
           composed: true,
           detail: {
             piece: "haxTray",
-            object: this
-          }
+            object: this,
+          },
         })
       );
       this.dispatchEvent(
@@ -986,8 +986,8 @@ class HaxTray extends winEventsElement(LitElement) {
             context: this.shadowRoot.querySelector(
               '#addcollapse div[slot="heading"]'
             ),
-            callback: "click"
-          }
+            callback: "click",
+          },
         })
       );
       this.dispatchEvent(
@@ -1001,8 +1001,8 @@ class HaxTray extends winEventsElement(LitElement) {
             context: this.shadowRoot.querySelector(
               '#settingscollapse div[slot="heading"]'
             ),
-            callback: "click"
-          }
+            callback: "click",
+          },
         })
       );
       this.dispatchEvent(
@@ -1015,8 +1015,8 @@ class HaxTray extends winEventsElement(LitElement) {
             context: this.shadowRoot.querySelector(
               '#searchapps div[slot="heading"]'
             ),
-            callback: "click"
-          }
+            callback: "click",
+          },
         })
       );
       this.dispatchEvent(
@@ -1029,8 +1029,8 @@ class HaxTray extends winEventsElement(LitElement) {
             context: this.shadowRoot.querySelector(
               '#templateslayouts div[slot="heading"]'
             ),
-            callback: "click"
-          }
+            callback: "click",
+          },
         })
       );
     }
@@ -1130,11 +1130,11 @@ class HaxTray extends winEventsElement(LitElement) {
       settings: {
         layout: {
           __position: "hax-align-left",
-          __scale: 100
+          __scale: 100,
         },
         configure: {},
-        advanced: {}
-      }
+        advanced: {},
+      },
     };
     this.shadowRoot.querySelector("#settingsform").fields = [];
     this.shadowRoot.querySelector("#settingsform").value = {};
@@ -1153,7 +1153,7 @@ class HaxTray extends winEventsElement(LitElement) {
       }
       // first, allow element properties to dictate defaults
       for (var property in this.activeHaxElement.properties) {
-        props.settings.configure.forEach(el => {
+        props.settings.configure.forEach((el) => {
           if (el.property === property) {
             this.activeValue.settings.configure[
               property
@@ -1170,7 +1170,7 @@ class HaxTray extends winEventsElement(LitElement) {
             ] = this.activeHaxElement.properties[property];
           }
         });
-        props.settings.advanced.forEach(el => {
+        props.settings.advanced.forEach((el) => {
           if (el.property === property) {
             this.activeValue.settings.advanced[
               property
@@ -1194,11 +1194,11 @@ class HaxTray extends winEventsElement(LitElement) {
       let tmp = document.createElement("div");
       tmp.innerHTML = this.activeHaxElement.content;
       // step through each key
-      tmp.childNodes.forEach(el => {
+      tmp.childNodes.forEach((el) => {
         // ensure we have a dom node and it isnt empty
         if (el.nodeType === 1 && el.innerHTML !== typeof undefined) {
           // walk props looking for a match
-          props.settings.configure.forEach(prop => {
+          props.settings.configure.forEach((prop) => {
             // if we have a slot to match in the property AND it matches the attr
             if (prop.slot === el.getAttribute("slot")) {
               this.activeValue.settings.configure[prop.slot] = el.innerHTML;
@@ -1213,7 +1213,7 @@ class HaxTray extends winEventsElement(LitElement) {
             }
           });
           // now advanced
-          props.settings.advanced.forEach(prop => {
+          props.settings.advanced.forEach((prop) => {
             if (prop.slot === el.getAttribute("slot")) {
               this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
             }
@@ -1286,8 +1286,8 @@ class HaxTray extends winEventsElement(LitElement) {
           options: {
             "hax-align-left": "Left",
             "hax-align-center": "Center",
-            "hax-align-right": "Right"
-          }
+            "hax-align-right": "Right",
+          },
         });
       }
       // test if this element can be scaled
@@ -1300,7 +1300,7 @@ class HaxTray extends winEventsElement(LitElement) {
           value: this.activeValue.settings.layout.__scale,
           min: props.canScale.min ? props.canScale.min : 12.5,
           max: props.canScale.max ? props.canScale.max : 100,
-          step: props.canScale.step ? props.canScale.step : 12.5
+          step: props.canScale.step ? props.canScale.step : 12.5,
         });
       }
 
@@ -1309,8 +1309,8 @@ class HaxTray extends winEventsElement(LitElement) {
         {
           property: "settings",
           inputMethod: "tabs",
-          properties: []
-        }
+          properties: [],
+        },
       ];
       // array of things to forcibly disable
       let disable = [];
@@ -1320,14 +1320,14 @@ class HaxTray extends winEventsElement(LitElement) {
           property: "configure",
           title: "Configure",
           description: "Configure the element",
-          properties: props.settings.configure
+          properties: props.settings.configure,
         });
       } else {
         this.activeSchema[0].properties.push({
           property: "configure",
           title: "Configure",
           description: "Configure the element",
-          disabled: true
+          disabled: true,
         });
       }
       // see if we have any layout settings or disable
@@ -1336,14 +1336,14 @@ class HaxTray extends winEventsElement(LitElement) {
           property: "layout",
           title: "Layout",
           description: "Position the element relative to other items",
-          properties: props.settings.layout
+          properties: props.settings.layout,
         });
       } else {
         this.activeSchema[0].properties.push({
           property: "layout",
           title: "Layout",
           description: "Position the element relative to other items",
-          disabled: true
+          disabled: true,
         });
       }
       // see if we have any configure settings or disable
@@ -1352,22 +1352,22 @@ class HaxTray extends winEventsElement(LitElement) {
           property: "advanced",
           title: "Advanced",
           description: "Advanced element settings",
-          properties: props.settings.advanced
+          properties: props.settings.advanced,
         });
       } else {
         this.activeSchema[0].properties.push({
           property: "advanced",
           title: "Advanced",
           description: "Advanced element settings",
-          disabled: true
+          disabled: true,
         });
       }
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
-        ...this.activeSchema
+        ...this.activeSchema,
       ];
       this.shadowRoot.querySelector("#settingsform").value = {
-        ...this.activeValue
+        ...this.activeValue,
       };
     }
   }
@@ -1378,7 +1378,7 @@ class HaxTray extends winEventsElement(LitElement) {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }
@@ -1391,7 +1391,7 @@ class HaxTray extends winEventsElement(LitElement) {
       let settingsKeys = {
         advanced: "advanced",
         configure: "configure",
-        layout: "layout"
+        layout: "layout",
       };
       var setAhead;
       for (let key in settingsKeys) {
@@ -1412,8 +1412,8 @@ class HaxTray extends winEventsElement(LitElement) {
                   composed: true,
                   detail: {
                     eventName: settings[key][prop],
-                    value: settings[key][prop]
-                  }
+                    value: settings[key][prop],
+                  },
                 })
               );
             }
@@ -1426,8 +1426,8 @@ class HaxTray extends winEventsElement(LitElement) {
                   composed: true,
                   detail: {
                     eventName: "hax-size-change",
-                    value: settings[key][prop]
-                  }
+                    value: settings[key][prop],
+                  },
                 })
               );
             }
@@ -1569,7 +1569,7 @@ class HaxTray extends winEventsElement(LitElement) {
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -1585,14 +1585,14 @@ class HaxTray extends winEventsElement(LitElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e.detail
+        detail: e.detail,
       })
     );
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }

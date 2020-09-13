@@ -9,7 +9,7 @@ import { ResponsiveUtility } from "../responsive-utility.js";
  * @demo ../demo/index.html
  */
 
-export const ResponsiveUtilityBehaviors = SuperClass => {
+export const ResponsiveUtilityBehaviors = (SuperClass) => {
   return class extends SuperClass {
     static get properties() {
       let props = {};
@@ -24,7 +24,7 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
         responsiveSize: {
           type: String,
           attribute: "responsive-size",
-          reflect: true
+          reflect: true,
         },
         /*
          * width in pixels
@@ -32,43 +32,41 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
         responsiveWidth: {
           type: Number,
           attribute: "responsive-width",
-          reflect: true
+          reflect: true,
         },
         /*
          * Miniumum value for small breakpoint
          */
         sm: {
           type: Number,
-          attribute: "sm"
+          attribute: "sm",
         },
         /*
          * Miniumum value for medium breakpoint
          */
         md: {
           type: Number,
-          attribute: "md"
+          attribute: "md",
         },
         /*
          * Miniumum value for large breakpoint
          */
         lg: {
           type: Number,
-          attribute: "lg"
+          attribute: "lg",
         },
         /**
          * Miniumum value for extra-large breakpoint
          */
         xl: {
           type: Number,
-          attribute: "xl"
-        }
+          attribute: "xl",
+        },
       };
     }
 
     render() {
-      return html`
-        <slot></slot>
-      `;
+      return html` <slot></slot> `;
     }
 
     constructor() {
@@ -97,8 +95,8 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
             sm: this.sm,
             md: this.md,
             lg: this.lg,
-            xl: this.xl
-          }
+            xl: this.xl,
+          },
         })
       );
     }
@@ -111,7 +109,7 @@ export const ResponsiveUtilityBehaviors = SuperClass => {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
       super.disconnectedCallback();

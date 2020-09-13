@@ -9,7 +9,7 @@ const CircleProgressPattern = {
   of: "Pattern Library/Atoms/Media",
   name: "Progress Circle",
   file: require("raw-loader!./demo/index.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(CircleProgressPattern);
 
@@ -26,10 +26,10 @@ const CircleProgressStory = {
     slot: {
       name: "slot",
       type: "String",
-      value: ``
-    }
+      value: ``,
+    },
   },
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(CircleProgressStory);

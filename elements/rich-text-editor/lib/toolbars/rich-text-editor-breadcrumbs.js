@@ -38,7 +38,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
         .selectednode {
           background-color: var(--rich-text-editor-bg);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -56,9 +56,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
               </rich-text-editor-breadcrumb>
               ${i + 1 >= this.ancestorNodes.length
                 ? ""
-                : html`
-                    <span class="divider"> &gt; </span>
-                  `}
+                : html` <span class="divider"> &gt; </span> `}
             `
           )}
     `;
@@ -70,7 +68,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
        * The active rict-text-editor.
        */
       controls: {
-        type: String
+        type: String,
       },
       /**
        * Hide breadcrumbs
@@ -78,27 +76,27 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
       hidden: {
         type: Boolean,
         attribute: "hidden",
-        reflect: true
+        reflect: true,
       },
       /**
        * The breadcrumb labels.
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * The selected text.
        */
       range: {
-        type: Object
+        type: Object,
       },
       /**
        * Should the breadcrumbs stick to the top so that it is always visible?
        */
       sticky: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -125,7 +123,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
     while (!!parent && parent.nodeName !== "RICH-TEXT-EDITOR") {
       nodes.unshift({
         tag: parent.nodeName.toLowerCase(),
-        target: parent
+        target: parent,
       });
       parent = parent.parentNode;
     }

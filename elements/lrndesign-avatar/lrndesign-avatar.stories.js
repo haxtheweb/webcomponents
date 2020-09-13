@@ -6,7 +6,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -15,22 +15,22 @@ export default {
   component: "lrndesign-avatar",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities();
 export const LrndesignAvatarStory = () => {
   return utils.makeElementFromClass(
     LrndesignAvatar,
     {
-      label: "Your Name Here"
+      label: "Your Name Here",
     },
     [
       {
         css: "--lrndesign-avatar-width",
         title: "Size",
-        inputMethod: "textfield"
-      }
+        inputMethod: "textfield",
+      },
     ]
   );
 };

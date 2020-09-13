@@ -1,11 +1,11 @@
-export const mtzMarkedControlBehavior = function(SuperClass) {
+export const mtzMarkedControlBehavior = function (SuperClass) {
   return class extends SuperClass {
     static get properties() {
       return {
         ...super.properties,
 
         /* Reference to the editor. Set programatically */
-        __editor: Object
+        __editor: Object,
       };
     }
     /**
@@ -19,7 +19,7 @@ export const mtzMarkedControlBehavior = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
     }

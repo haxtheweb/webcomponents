@@ -25,8 +25,8 @@ class PaperIconStepper extends LitElement {
         this.dispatchEvent(
           new CustomEvent("selected-values-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -39,14 +39,14 @@ class PaperIconStepper extends LitElement {
        */
       selectedValues: {
         type: Array,
-        attribute: "selected-values"
+        attribute: "selected-values",
       },
       /**
        * Currently selected step
        */
       _selected: {
-        type: Number
-      }
+        type: Number,
+      },
     };
   }
 

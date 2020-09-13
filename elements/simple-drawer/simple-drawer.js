@@ -104,7 +104,7 @@ class SimpleDrawer extends SimpleColors {
           line-height: 32px;
           margin: 8px;
         }
-      `
+      `,
     ];
   }
   // LitElement
@@ -147,11 +147,7 @@ class SimpleDrawer extends SimpleColors {
       >
         <div class="wrapper">
           <div class="top">
-            ${this.title
-              ? html`
-                  <h2>${this.title}</h2>
-                `
-              : ""}
+            ${this.title ? html` <h2>${this.title}</h2> ` : ""}
             <slot name="header"></slot>
           </div>
           <div class="content">
@@ -175,14 +171,14 @@ class SimpleDrawer extends SimpleColors {
        */
       title: {
         name: "title",
-        type: String
+        type: String,
       },
       /**
        * alignment of the drawer
        */
       align: {
         name: "align",
-        type: String
+        type: String,
       },
       /**
        * open state
@@ -190,29 +186,29 @@ class SimpleDrawer extends SimpleColors {
       opened: {
         name: "opened",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Close label
        */
       closeLabel: {
         name: "closeLabel",
-        type: String
+        type: String,
       },
       /**
        * Close icon
        */
       closeIcon: {
         name: "closeIcon",
-        type: String
+        type: String,
       },
       /**
        * The element that invoked this. This way we can track our way back accessibly
        */
       invokedBy: {
         name: "invokedBy",
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -359,8 +355,8 @@ class SimpleDrawer extends SimpleColors {
         cancelable: true,
         detail: {
           opened: false,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
@@ -369,8 +365,8 @@ class SimpleDrawer extends SimpleColors {
         cancelable: true,
         detail: {
           opened: true,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     }

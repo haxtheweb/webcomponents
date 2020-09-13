@@ -94,7 +94,7 @@ class SimpleLogin extends SimpleColors {
           margin-top: 16px;
           color: var(--login-error-label-color, var(--error-color));
         }
-      `
+      `,
     ];
   }
 
@@ -165,53 +165,53 @@ class SimpleLogin extends SimpleColors {
        * Content of the username field
        */
       username: {
-        type: String
+        type: String,
       },
       /**
        * Content of the password field
        */
       password: {
-        type: String
+        type: String,
       },
       /**
        * When true, all fields are disabled and the progress bar is visible
        */
       loading: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Placeholder of the username field
        */
       userInputLabel: {
         type: String,
-        attribute: "user-input-label"
+        attribute: "user-input-label",
       },
       /**
        * Error message of the username field
        */
       userInputErrMsg: {
-        type: String
+        type: String,
       },
       /**
        * Placeholder of the password field
        */
       passwordInputLabel: {
         type: String,
-        attribute: "password-input-label"
+        attribute: "password-input-label",
       },
       /**
        * Error message of the password field
        */
       passwordInputErrMsg: {
-        type: String
+        type: String,
       },
       /**
        * Login button label
        */
       loginBtnText: {
         type: String,
-        attribute: "login-btn-text"
-      }
+        attribute: "login-btn-text",
+      },
     };
   }
 
@@ -245,8 +245,8 @@ class SimpleLogin extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -291,8 +291,8 @@ class SimpleLogin extends SimpleColors {
           composed: true,
           detail: {
             u: this.shadowRoot.querySelector("#userinput").value,
-            p: this.shadowRoot.querySelector("#passinput").value
-          }
+            p: this.shadowRoot.querySelector("#passinput").value,
+          },
         })
       );
     }

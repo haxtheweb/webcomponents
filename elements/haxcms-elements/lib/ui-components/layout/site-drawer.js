@@ -29,7 +29,7 @@ class SiteDrawer extends LitElement {
         paper-icon-button {
           color: var(--site-drawer-button-color, #ffffff);
         }
-      `
+      `,
     ];
   }
   /**
@@ -82,11 +82,11 @@ class SiteDrawer extends LitElement {
   static get properties() {
     return {
       align: {
-        type: String
+        type: String,
       },
       icon: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

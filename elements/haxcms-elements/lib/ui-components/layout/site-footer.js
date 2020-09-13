@@ -26,7 +26,7 @@ class SiteFooter extends LitElement {
           opacity: 0.2;
           pointer-events: none;
         }
-      `
+      `,
     ];
   }
   /**
@@ -58,29 +58,29 @@ class SiteFooter extends LitElement {
     return {
       siteTitle: {
         type: String,
-        attribute: "site-title"
+        attribute: "site-title",
       },
       manifest: {
-        type: Object
+        type: Object,
       },
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
-      }
+        attribute: "edit-mode",
+      },
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });

@@ -35,52 +35,52 @@ class HAXTrayButton extends SimpleColors {
        */
       voiceCommand: {
         type: String,
-        attribute: "voice-command"
+        attribute: "voice-command",
       },
       mini: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       colorMeaning: {
         type: Boolean,
-        attribute: "color-meaning"
+        attribute: "color-meaning",
       },
       wide: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Index position in the original list of imports
        */
       index: {
-        type: Number
+        type: Number,
       },
       eventName: {
         type: String,
-        attribute: "event-name"
+        attribute: "event-name",
       },
       eventData: {
         type: String,
-        attribute: "event-data"
+        attribute: "event-data",
       },
       /**
        * label
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Icon for the button, optional.
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * color name of the item
        */
       color: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   static get styles() {
@@ -215,7 +215,7 @@ class HAXTrayButton extends SimpleColors {
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -230,15 +230,9 @@ class HAXTrayButton extends SimpleColors {
           : html``}
         ${this.mini
           ? html``
-          : html`
-              <div class="item-label">${this.label}</div>
-            `}
+          : html` <div class="item-label">${this.label}</div> `}
       </paper-button>
-      ${this.mini
-        ? html`
-            <simple-tooltip>${this.label}</simple-tooltip>
-          `
-        : ``}
+      ${this.mini ? html` <simple-tooltip>${this.label}</simple-tooltip> ` : ``}
     `;
   }
   _focusIn(e) {
@@ -270,8 +264,8 @@ class HAXTrayButton extends SimpleColors {
         detail: {
           eventName: this.eventName,
           index: this.index,
-          value: this.eventData
-        }
+          value: this.eventData,
+        },
       })
     );
   }
@@ -292,8 +286,8 @@ class HAXTrayButton extends SimpleColors {
             detail: {
               command: ":name: " + this[propName],
               context: this,
-              callback: "_voiceEvent"
-            }
+              callback: "_voiceEvent",
+            },
           })
         );
       }

@@ -38,7 +38,7 @@ class SimpleIcon extends SimpleColors {
         feFlood {
           flood-color: var(--simple-colors-default-theme-accent-8, #000000);
         }
-      `
+      `,
     ];
   }
   // render function
@@ -71,23 +71,19 @@ class SimpleIcon extends SimpleColors {
     return {
       ...super.properties,
       src: {
-        type: String
+        type: String,
       },
       icon: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    const randomId =
-      "f-" +
-      Math.random()
-        .toString()
-        .slice(2, 10);
+    const randomId = "f-" + Math.random().toString().slice(2, 10);
     this.shadowRoot.querySelector("image").style.filter = `url(#${randomId})`;
     this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
   }

@@ -19,7 +19,7 @@ function testPathAbs(element) {
 }
 
 function testPathRel(prefix) {
-  return function(element) {
+  return function (element) {
     return path.join(
       prefix,
       "node_modules",
@@ -32,7 +32,7 @@ function testPathRel(prefix) {
 }
 
 function formatPaths(paths) {
-  return paths.map(path => `        "${path}"`).join(",\n");
+  return paths.map((path) => `        "${path}"`).join(",\n");
 }
 
 const withTests = _(elementNames).filter(hasTests);
@@ -43,7 +43,7 @@ console.log(`Injecting the following elements into the test suite:`);
 console.log(
   elementNames
     .filter(hasTests)
-    .map(e => ` - ${chalk.blue(e)}`)
+    .map((e) => ` - ${chalk.blue(e)}`)
     .join("\n")
 );
 console.log();

@@ -64,7 +64,7 @@ class HaxAppSearchResult extends LitElement {
             font-size: 12px;
           }
         }
-      `
+      `,
     ];
   }
 
@@ -98,20 +98,20 @@ class HaxAppSearchResult extends LitElement {
   static get properties() {
     return {
       image: {
-        type: String
+        type: String,
       },
       title: {
-        type: String
+        type: String,
       },
       details: {
-        type: String
+        type: String,
       },
       map: {
-        type: Object
+        type: Object,
       },
       type: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -200,7 +200,7 @@ class HaxAppSearchResult extends LitElement {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: haxElements[0]
+              detail: haxElements[0],
             })
           );
         }

@@ -72,7 +72,7 @@ class A11yMediaPlayButton extends A11yMediaButton {
             display: none;
           }
         }
-      `
+      `,
     ];
   }
   static get properties() {
@@ -80,8 +80,8 @@ class A11yMediaPlayButton extends A11yMediaButton {
       ...super.properties,
       youtubeId: {
         attribute: "youtube-id",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

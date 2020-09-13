@@ -3,7 +3,7 @@
  * v5.0.2 - 2020-02-13
  * (c) Sindre Sorhus; MIT License
  */
-(function() {
+(function () {
 	"use strict";
 
 	var document =
@@ -12,7 +12,7 @@
 			: {};
 	var isCommonjs = typeof module !== "undefined" && module.exports;
 
-	var fn = (function() {
+	var fn = (function () {
 		var val;
 
 		var fnMap = [
@@ -22,7 +22,7 @@
 				"fullscreenElement",
 				"fullscreenEnabled",
 				"fullscreenchange",
-				"fullscreenerror"
+				"fullscreenerror",
 			],
 			// New WebKit
 			[
@@ -31,7 +31,7 @@
 				"webkitFullscreenElement",
 				"webkitFullscreenEnabled",
 				"webkitfullscreenchange",
-				"webkitfullscreenerror"
+				"webkitfullscreenerror",
 			],
 			// Old WebKit
 			[
@@ -40,7 +40,7 @@
 				"webkitCurrentFullScreenElement",
 				"webkitCancelFullScreen",
 				"webkitfullscreenchange",
-				"webkitfullscreenerror"
+				"webkitfullscreenerror",
 			],
 			[
 				"mozRequestFullScreen",
@@ -48,7 +48,7 @@
 				"mozFullScreenElement",
 				"mozFullScreenEnabled",
 				"mozfullscreenchange",
-				"mozfullscreenerror"
+				"mozfullscreenerror",
 			],
 			[
 				"msRequestFullscreen",
@@ -56,8 +56,8 @@
 				"msFullscreenElement",
 				"msFullscreenEnabled",
 				"MSFullscreenChange",
-				"MSFullscreenError"
-			]
+				"MSFullscreenError",
+			],
 		];
 
 		var i = 0;
@@ -79,14 +79,14 @@
 
 	var eventNameMap = {
 		change: fn.fullscreenchange,
-		error: fn.fullscreenerror
+		error: fn.fullscreenerror,
 	};
 
 	var screenfull = {
-		request: function(element) {
+		request: function (element) {
 			return new Promise(
-				function(resolve, reject) {
-					var onFullScreenEntered = function() {
+				function (resolve, reject) {
+					var onFullScreenEntered = function () {
 						this.off("change", onFullScreenEntered);
 						resolve();
 					}.bind(this);
@@ -103,15 +103,15 @@
 				}.bind(this)
 			);
 		},
-		exit: function() {
+		exit: function () {
 			return new Promise(
-				function(resolve, reject) {
+				function (resolve, reject) {
 					if (!this.isFullscreen) {
 						resolve();
 						return;
 					}
 
-					var onFullScreenExit = function() {
+					var onFullScreenExit = function () {
 						this.off("change", onFullScreenExit);
 						resolve();
 					}.bind(this);
@@ -126,28 +126,28 @@
 				}.bind(this)
 			);
 		},
-		toggle: function(element) {
+		toggle: function (element) {
 			return this.isFullscreen ? this.exit() : this.request(element);
 		},
-		onchange: function(callback) {
+		onchange: function (callback) {
 			this.on("change", callback);
 		},
-		onerror: function(callback) {
+		onerror: function (callback) {
 			this.on("error", callback);
 		},
-		on: function(event, callback) {
+		on: function (event, callback) {
 			var eventName = eventNameMap[event];
 			if (eventName) {
 				document.addEventListener(eventName, callback, false);
 			}
 		},
-		off: function(event, callback) {
+		off: function (event, callback) {
 			var eventName = eventNameMap[event];
 			if (eventName) {
 				document.removeEventListener(eventName, callback, false);
 			}
 		},
-		raw: fn
+		raw: fn,
 	};
 
 	if (!fn) {
@@ -162,23 +162,23 @@
 
 	Object.defineProperties(screenfull, {
 		isFullscreen: {
-			get: function() {
+			get: function () {
 				return Boolean(document[fn.fullscreenElement]);
-			}
+			},
 		},
 		element: {
 			enumerable: true,
-			get: function() {
+			get: function () {
 				return document[fn.fullscreenElement];
-			}
+			},
 		},
 		isEnabled: {
 			enumerable: true,
-			get: function() {
+			get: function () {
 				// Coerce to boolean in case of old WebKit
 				return Boolean(document[fn.fullscreenEnabled]);
-			}
-		}
+			},
+		},
 	});
 
 	if (isCommonjs) {

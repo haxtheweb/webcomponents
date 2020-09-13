@@ -72,7 +72,7 @@ class SortableList extends GestureEventListeners(PolymerElement) {
       items: {
         type: Array,
         notify: true,
-        readOnly: true
+        readOnly: true,
       },
       /**
        * Returns true when an item is being drag.
@@ -82,7 +82,7 @@ class SortableList extends GestureEventListeners(PolymerElement) {
         notify: true,
         readOnly: true,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Disables the draggable if set to true.
@@ -90,8 +90,8 @@ class SortableList extends GestureEventListeners(PolymerElement) {
       disabled: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
-      }
+        value: false,
+      },
     };
   }
   constructor() {
@@ -175,7 +175,7 @@ class SortableList extends GestureEventListeners(PolymerElement) {
       item.style.width = rect.width + "px";
       item.style.height = rect.height + "px";
       this._translate3d(rect.left, rect.top, 1, item);
-      setTimeout(_ => {
+      setTimeout((_) => {
         item.style.transition = null;
       }, 20);
     });
@@ -196,7 +196,7 @@ class SortableList extends GestureEventListeners(PolymerElement) {
       for (let i = 0; i < this.items.length; i++) {
         if (this.items[i] !== this._target) {
           const rect = this._rects[i];
-          requestAnimationFrame(_ => {
+          requestAnimationFrame((_) => {
             this._translate3d(rect.left, rect.top, 1, this.items[i]);
           });
         }
@@ -218,7 +218,7 @@ class SortableList extends GestureEventListeners(PolymerElement) {
       return;
     }
     const fragment = document.createDocumentFragment();
-    this.items.forEach(item => {
+    this.items.forEach((item) => {
       item.style.transform = "";
       item.style.width = item.__originalWidth;
       item.style.height = item.__originalHeight;
@@ -239,8 +239,8 @@ class SortableList extends GestureEventListeners(PolymerElement) {
       new CustomEvent("sort-finish", {
         composed: true,
         detail: {
-          target: this._target
-        }
+          target: this._target,
+        },
       })
     );
     this._target = null;
@@ -264,7 +264,7 @@ class SortableList extends GestureEventListeners(PolymerElement) {
     const items = this.shadowRoot
       .querySelector("#slot")
       .assignedNodes()
-      .filter(node => {
+      .filter((node) => {
         if (
           node.nodeType === Node.ELEMENT_NODE &&
           (!this.sortable || node.matches(this.sortable))
@@ -300,13 +300,13 @@ class SortableList extends GestureEventListeners(PolymerElement) {
     }
   }
   _getItemsRects() {
-    return this.items.map(item => {
+    return this.items.map((item) => {
       return item.getBoundingClientRect();
     });
   }
   _observeItems() {
     if (!this._observer) {
-      this._observer = new MutationObserver(_ => {
+      this._observer = new MutationObserver((_) => {
         this._updateItems();
       });
       this._observer.observe(this, { childList: true });

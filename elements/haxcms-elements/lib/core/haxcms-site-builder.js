@@ -4,7 +4,7 @@ import {
   encapScript,
   findTagsInHTML,
   wipeSlot,
-  varExists
+  varExists,
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
@@ -55,7 +55,7 @@ class HAXCMSSiteBuilder extends LitElement {
           );
           --paper-progress-container-color: transparent;
         }
-      `
+      `,
     ];
   }
   /**
@@ -104,14 +104,14 @@ class HAXCMSSiteBuilder extends LitElement {
         }
       }
       await fetch(url)
-        .then(response => {
+        .then((response) => {
           return response.text();
         })
-        .then(data => {
+        .then((data) => {
           this._updateActiveItemContent(data);
           this.loading = false;
         })
-        .catch(err => {
+        .catch((err) => {
           this.lastErrorChanged(err);
         });
     }
@@ -132,14 +132,14 @@ class HAXCMSSiteBuilder extends LitElement {
         }
       }
       await fetch(url)
-        .then(response => {
+        .then((response) => {
           return response.json();
         })
-        .then(data => {
+        .then((data) => {
           this._updateManifest(data);
           this.loading = false;
         })
-        .catch(err => {
+        .catch((err) => {
           this.lastErrorChanged(err);
         });
     }
@@ -181,7 +181,7 @@ class HAXCMSSiteBuilder extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       } else if (propName == "manifest") {
@@ -191,7 +191,7 @@ class HAXCMSSiteBuilder extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
         this._manifestChanged(this[propName], oldValue);
@@ -202,7 +202,7 @@ class HAXCMSSiteBuilder extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
         this._activeItemChanged(this[propName], oldValue);
@@ -213,7 +213,7 @@ class HAXCMSSiteBuilder extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
         this._activeItemContentChanged(this[propName], oldValue);
@@ -230,59 +230,59 @@ class HAXCMSSiteBuilder extends LitElement {
     return {
       activeItemLocation: {
         type: String,
-        attribute: "active-item-location"
+        attribute: "active-item-location",
       },
       _timeStamp: {
-        type: String
+        type: String,
       },
       dashboardOpened: {
         type: Boolean,
         reflect: true,
-        attribute: "dashboard-opened"
+        attribute: "dashboard-opened",
       },
       /**
        * queryParams
        */
       queryParams: {
-        type: Object
+        type: Object,
       },
       /**
        * Loading status of the page to render.
        */
       loading: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * support for alternate locations.
        */
       outlineLocation: {
         type: String,
-        attribute: "outline-location"
+        attribute: "outline-location",
       },
       /**
        * Manifest from file
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       /**
        * Theme, used to boot a design element
        */
       themeData: {
-        type: Object
+        type: Object,
       },
       /**
        * Theme name, which we then use to setup the theme
        */
       themeName: {
-        type: String
+        type: String,
       },
       /**
        * Imported items so we can allow theme flipping dynamically
        */
       __imported: {
-        type: Object
+        type: Object,
       },
       /**
        * theme loaded to indicate to the theme we have a theme ready to go
@@ -290,33 +290,33 @@ class HAXCMSSiteBuilder extends LitElement {
       themeLoaded: {
         type: Boolean,
         reflect: true,
-        attribute: "theme-loaded"
+        attribute: "theme-loaded",
       },
       /**
        * Active item which is in JSON Outline Schema
        */
       activeItem: {
-        type: Object
+        type: Object,
       },
       /**
        * Active item content
        */
       activeItemContent: {
-        type: String
+        type: String,
       },
       /**
        * Location of the site.json file
        */
       file: {
-        type: String
+        type: String,
       },
       /**
        * Injected by HAXcms
        */
       baseURI: {
         type: String,
-        attribute: "base-uri"
-      }
+        attribute: "base-uri",
+      },
     };
   }
   _themeNameChanged(newValue) {
@@ -353,8 +353,8 @@ class HAXCMSSiteBuilder extends LitElement {
           composed: true,
           cancelable: false,
           detail: {
-            text: e.detail.value.status + " " + e.detail.value.statusText
-          }
+            text: e.detail.value.status + " " + e.detail.value.statusText,
+          },
         });
         window.dispatchEvent(evt);
       } else {
@@ -399,7 +399,7 @@ class HAXCMSSiteBuilder extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
     // support initial setup stuff with slots
@@ -417,8 +417,10 @@ class HAXCMSSiteBuilder extends LitElement {
       }
     }
     // dyanmcially import the editor builder which figures out if we should have one
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
-      .then(response => {
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js"
+    )
+      .then((response) => {
         this.editorBuilder = document.createElement("haxcms-editor-builder");
         // attach editor builder after we've appended to the screen
         document.body.appendChild(this.editorBuilder);
@@ -432,7 +434,7 @@ class HAXCMSSiteBuilder extends LitElement {
           this._timeStamp = "";
         }
       })
-      .catch(error => {
+      .catch((error) => {
         /* Error handling */
         console.log(error);
       });
@@ -452,18 +454,18 @@ class HAXCMSSiteBuilder extends LitElement {
         "haxcms-trigger-update-node",
         this._triggerUpdatedNode.bind(this)
       );
-      autorun(reaction => {
+      autorun((reaction) => {
         this.dashboardOpened = toJS(store.dashboardOpened);
         this.__disposer.push(reaction);
       });
-      autorun(reaction => {
+      autorun((reaction) => {
         this.themeData = toJS(store.themeData);
         if (this.themeData && this.themeData.element !== this.themeName) {
           this.themeName = this.themeData.element;
         }
         this.__disposer.push(reaction);
       });
-      autorun(reaction => {
+      autorun((reaction) => {
         this.activeItem = toJS(store.activeItem);
         if (this.activeItem && this.activeItem.location) {
           this.activeItemLocation = this.activeItem.location;
@@ -525,7 +527,7 @@ class HAXCMSSiteBuilder extends LitElement {
                 bubbles: true,
                 composed: true,
                 cancelable: false,
-                detail: html
+                detail: html,
               })
             );
           }
@@ -544,13 +546,13 @@ class HAXCMSSiteBuilder extends LitElement {
                 this.manifest.metadata.node.dynamicElementLoader[tagName] &&
                 !window.customElements.get(tagName)
               ) {
-                import(`${basePath}../../../../${
-                  this.manifest.metadata.node.dynamicElementLoader[tagName]
-                }`)
-                  .then(response => {
+                import(
+                  `${basePath}../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
+                )
+                  .then((response) => {
                     //console.log(tagName + ' dynamic import');
                   })
-                  .catch(error => {
+                  .catch((error) => {
                     /* Error handling */
                     console.log(error);
                   });
@@ -584,7 +586,7 @@ class HAXCMSSiteBuilder extends LitElement {
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: null
+          detail: null,
         })
       );
     }
@@ -646,9 +648,11 @@ class HAXCMSSiteBuilder extends LitElement {
         } else {
           // import the reference to the item dynamically, if we can
           try {
-            import(this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-              "../../../../" +
-              newValue.path).then(e => {
+            import(
+              this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+                "../../../../" +
+                newValue.path
+            ).then((e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
               this.themeLoaded = true;
@@ -667,7 +671,7 @@ class HAXCMSSiteBuilder extends LitElement {
 // this is only going to be visually enabled but it won't actually
 // be able to talk to the backend correctly bc the JWT won't exist
 // the endpoints are also fictional. also useful for testing purposes
-window.HAXme = function(context = null) {
+window.HAXme = function (context = null) {
   if (context == null) {
     // fake a demo
     context = "demo";
@@ -687,7 +691,7 @@ window.HAXme = function(context = null) {
       revertSitePath: "dist/dev/saveNode.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",
       appStore: {
-        url: "dist/dev/appstore.json"
+        url: "dist/dev/appstore.json",
       },
       // add your custom theme here if testing locally and wanting to emulate the theme selector
       // this isn't really nessecary though
@@ -695,9 +699,9 @@ window.HAXme = function(context = null) {
         "haxcms-dev-theme": {
           element: "haxcms-dev-theme",
           path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
-          name: "Developer theme"
-        }
-      }
+          name: "Developer theme",
+        },
+      },
     };
   }
   if (context == "demo") {

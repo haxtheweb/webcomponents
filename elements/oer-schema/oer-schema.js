@@ -17,7 +17,7 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
         :host {
           display: inline-block;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -55,28 +55,28 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
        * this supports both methods.
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * Property value for this oer resource
        */
       oerProperty: {
         type: String,
-        attribute: "oer-property"
+        attribute: "oer-property",
       },
       /**
        * Property value for this oer resource
        */
       typeof: {
-        type: String
+        type: String,
       },
       /**
        * Related Resource ID
        */
       relatedResource: {
         type: String,
-        attribute: "related-resource"
-      }
+        attribute: "related-resource",
+      },
     };
   }
   static get haxProperties() {
@@ -95,13 +95,13 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "inline",
-            text: "text"
-          }
+            text: "text",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          inlineOnly: true
-        }
+          inlineOnly: true,
+        },
       },
       settings: {
         quick: [
@@ -109,22 +109,22 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
             slot: "",
             title: "Text",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
             slot: "",
             title: "Text",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "typeof",
             title: "Schema typeof",
             inputMethod: "select",
             allowNull: true,
-            options: oerSchema.types
+            options: oerSchema.types,
           },
           {
             property: "oerProperty",
@@ -139,22 +139,22 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
               image: "image",
               mainEntityOfPage: "mainEntityOfPage",
               sameAs: "sameAs",
-              uri: "uri"
-            }
+              uri: "uri",
+            },
           },
           {
             property: "relatedResource",
             title: "Related resource",
             description: "A reference to the related Schema resource",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["_oerlink"]
-      }
+        unsetAttributes: ["_oerlink"],
+      },
     };
   }
   _generateforComponentLink(source) {

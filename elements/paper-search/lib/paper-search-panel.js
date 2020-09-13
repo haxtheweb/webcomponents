@@ -26,7 +26,7 @@ class PaperSearchPanel extends PolymerElement {
       search: {
         type: String,
         observer: "_onChangeRequest",
-        notify: true
+        notify: true,
       },
       /**
        * All filters from which the user can choose
@@ -39,7 +39,7 @@ class PaperSearchPanel extends PolymerElement {
         type: Object,
         observer: "_onChangeRequest",
         notify: true,
-        value: {}
+        value: {},
       },
       /**
        * Items that are currently shown in the lister
@@ -50,7 +50,7 @@ class PaperSearchPanel extends PolymerElement {
        */
       hasMore: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -58,7 +58,7 @@ class PaperSearchPanel extends PolymerElement {
        */
       loading: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -66,7 +66,7 @@ class PaperSearchPanel extends PolymerElement {
        */
       hideFilterButton: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -75,21 +75,21 @@ class PaperSearchPanel extends PolymerElement {
       count: {
         type: Number,
         notify: true,
-        value: 20
+        value: 20,
       },
       /**
        * Icon shown in the search background
        */
       icon: {
         type: String,
-        value: "search"
+        value: "search",
       },
       /**
        * Text shown in the search box if the user didn't enter any query
        */
       placeholder: {
         type: String,
-        value: "Search"
+        value: "Search",
       },
 
       /**
@@ -97,7 +97,7 @@ class PaperSearchPanel extends PolymerElement {
        */
       noResultsText: {
         type: String,
-        value: "No matching results found."
+        value: "No matching results found.",
       },
 
       /**
@@ -105,7 +105,7 @@ class PaperSearchPanel extends PolymerElement {
        */
       moreButton: {
         type: String,
-        value: "More"
+        value: "More",
       },
 
       /**
@@ -126,8 +126,8 @@ class PaperSearchPanel extends PolymerElement {
       _hasItems: {
         type: Boolean,
         computed: "_computeHasItems(items)",
-        value: false
-      }
+        value: false,
+      },
     };
   }
 
@@ -160,7 +160,7 @@ class PaperSearchPanel extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -173,7 +173,7 @@ class PaperSearchPanel extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -184,11 +184,11 @@ class PaperSearchPanel extends PolymerElement {
     }
 
     var nrSelectedFilters = Object.keys(selectedFilters)
-      .map(function(key) {
+      .map(function (key) {
         // Returns number of selected value for a filter
         return selectedFilters[key].length;
       })
-      .reduce(function(sum, value) {
+      .reduce(function (sum, value) {
         // Sum up the selected values across filters
         return sum + value;
       });

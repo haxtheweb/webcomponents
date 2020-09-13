@@ -9,7 +9,7 @@ let mathjaxHub,
 
 function getStyleNode() {
   const styleNodes = document.querySelectorAll("style");
-  const sn = Array.prototype.filter.call(styleNodes, function(n) {
+  const sn = Array.prototype.filter.call(styleNodes, function (n) {
     return (
       n.sheet &&
       n.sheet.cssRules.length > 100 &&
@@ -24,7 +24,7 @@ function flush_typesets() {
   if (!typesets.length) return;
   const jaxs = [],
     items = [];
-  typesets.forEach(function(item) {
+  typesets.forEach(function (item) {
     const script = document.createElement("script"),
       div = document.createElement("div");
     script.type = item[1] ? "math/tex; mode=display" : "math/tex";
@@ -40,9 +40,9 @@ function flush_typesets() {
   typesets = [];
   state = states.typesetting;
   mathjaxHub.Queue(["Typeset", mathjaxHub, jaxs]);
-  mathjaxHub.Queue(function() {
+  mathjaxHub.Queue(function () {
     if (!styleNode) getStyleNode();
-    items.forEach(function(item) {
+    items.forEach(function (item) {
       const div = item[0];
       const result =
         div.firstElementChild.tagName === "SPAN" ? div.firstElementChild : null;
@@ -65,22 +65,22 @@ function load_library() {
         "AMSmath.js",
         "AMSsymbols.js",
         "noErrors.js",
-        "noUndefined.js"
-      ]
+        "noUndefined.js",
+      ],
     },
     AuthorInit() {
       mathjaxHub = window.MathJax.Hub;
-      mathjaxHub.Register.StartupHook("End", function() {
+      mathjaxHub.Register.StartupHook("End", function () {
         state = states.ready;
         flush_typesets();
       });
-    }
+    },
   };
   var script = document.createElement("script");
   script.type = "text/javascript";
   script.src = src;
   script.async = true;
-  script.onerror = function() {
+  script.onerror = function () {
     console.warn("Error loading MathJax library " + src);
     state = states.error;
     typesets = [];
@@ -121,7 +121,7 @@ const TAG_NAME = "lrn-math",
     childList: true,
     characterData: true,
     attributes: true,
-    subtree: true
+    subtree: true,
   };
 let handler;
 
@@ -150,7 +150,7 @@ function update(elem) {
     while (sdom.firstChild) sdom.removeChild(sdom.firstChild);
     elem._private.check = check;
     if (math.length) {
-      handler.typeset(math, isBlock, function(melem, styleNode) {
+      handler.typeset(math, isBlock, function (melem, styleNode) {
         sdom.appendChild(styleNode.cloneNode(true));
         sdom.appendChild(melem);
       });
@@ -194,14 +194,14 @@ class LrnMath extends HTMLElement {
   connectedCallback() {
     const elem = this;
     check_handler();
-    window.requestAnimationFrame(function() {
+    window.requestAnimationFrame(function () {
       elem._private = {
         check: "",
         observer: new MutationObserver(
-          debounce(function() {
+          debounce(function () {
             update(elem);
           }, 300)
-        )
+        ),
       };
       update(elem);
       elem._private.observer.observe(elem, mutation_config);
@@ -247,17 +247,17 @@ class LrnMath extends HTMLElement {
         handles: [
           {
             type: "math",
-            math: "mathText"
+            math: "mathText",
           },
           {
             type: "inline",
-            text: "mathText"
-          }
+            text: "mathText",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          inlineOnly: true
-        }
+          inlineOnly: true,
+        },
       },
       settings: {
         quick: [],
@@ -267,11 +267,11 @@ class LrnMath extends HTMLElement {
             title: "Math",
             description: "Enter equation as MathML",
             inputMethod: "code-editor",
-            icon: "editor:format-quote"
-          }
+            icon: "editor:format-quote",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   /**

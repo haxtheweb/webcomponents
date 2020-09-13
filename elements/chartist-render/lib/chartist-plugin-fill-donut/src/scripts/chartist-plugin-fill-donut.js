@@ -4,20 +4,20 @@
  * author-url: https://github.com/moxx/chartist-plugin-fill-donut
  *
  */
-(function(document, Chartist) {
+(function (document, Chartist) {
   "use strict";
 
   var defaultOptions = {
     fillClass: "ct-fill-donut",
     label: {
       html: "div",
-      class: "ct-fill-donut-label"
+      class: "ct-fill-donut-label",
     },
-    items: [{}]
+    items: [{}],
   };
 
   Chartist.plugins = Chartist.plugins || {};
-  Chartist.plugins.fillDonut = function(options) {
+  Chartist.plugins.fillDonut = function (options) {
     options = Chartist.extend({}, defaultOptions, options);
     return function fillDonut(chart) {
       if (chart instanceof Chartist.Pie) {
@@ -25,22 +25,22 @@
         $chart.style.position = "relative";
         var $svg;
 
-        var drawDonut = function(data) {
+        var drawDonut = function (data) {
           if (data.type === "slice") {
             if (data.index === 0) {
               $svg = $chart.querySelector("svg");
             }
 
             var $clone = data.group._node.cloneNode(true);
-            options.fillClass.split(" ").forEach(function(className) {
+            options.fillClass.split(" ").forEach(function (className) {
               $clone.setAttribute(
                 "class",
                 $clone.getAttribute("class") + " " + className
               );
             });
 
-            [].forEach.call($clone.querySelectorAll("path"), function(el) {
-              [].forEach.call(el.querySelectorAll("animate"), function(node) {
+            [].forEach.call($clone.querySelectorAll("path"), function (el) {
+              [].forEach.call(el.querySelectorAll("animate"), function (node) {
                 node.parentNode.removeChild(node);
               });
 
@@ -51,11 +51,11 @@
           }
         };
 
-        chart.on("draw", function(data) {
+        chart.on("draw", function (data) {
           drawDonut(data);
         });
 
-        chart.on("created", function(data) {
+        chart.on("created", function (data) {
           var itemIndex = 0;
 
           if (chart.options.fillDonutOptions) {
@@ -67,9 +67,9 @@
             drawDonut(data);
           }
 
-          [].forEach.call(options.items, function(thisItem) {
+          [].forEach.call(options.items, function (thisItem) {
             var $wrapper = document.createElement(options.label.html);
-            options.label.class.split(" ").forEach(function(className) {
+            options.label.class.split(" ").forEach(function (className) {
               if ($wrapper.classList) {
                 $wrapper.classList.add(className);
               } else {
@@ -84,7 +84,7 @@
                 content: "fillText",
                 position: "center", //bottom, top, left, right
                 offsetY: 0, //top, bottom in px
-                offsetX: 0 //left, right in px
+                offsetX: 0, //left, right in px
               },
               thisItem
             );
@@ -100,7 +100,7 @@
               $chart.querySelectorAll(
                 '*[data-fill-index$="fdid-' + itemIndex + '"]'
               ),
-              function(node) {
+              function (node) {
                 node.parentNode.removeChild(node);
               }
             );
@@ -119,24 +119,24 @@
             var style = {
               bottom: {
                 bottom: 0 + item.offsetY + "px",
-                left: cWidth - wWidth + item.offsetX + "px"
+                left: cWidth - wWidth + item.offsetX + "px",
               },
               top: {
                 top: 0 + item.offsetY + "px",
-                left: cWidth - wWidth + item.offsetX + "px"
+                left: cWidth - wWidth + item.offsetX + "px",
               },
               left: {
                 top: cHeight - wHeight + item.offsetY + "px",
-                left: 0 + item.offsetX + "px"
+                left: 0 + item.offsetX + "px",
               },
               right: {
                 top: cHeight - wHeight + item.offsetY + "px",
-                right: 0 + item.offsetX + "px"
+                right: 0 + item.offsetX + "px",
               },
               center: {
                 top: cHeight - wHeight + item.offsetY + "px",
-                left: cWidth - wWidth + item.offsetX + "px"
-              }
+                left: cWidth - wWidth + item.offsetX + "px",
+              },
             };
 
             Chartist.extend($wrapper.style, style[item.position]);

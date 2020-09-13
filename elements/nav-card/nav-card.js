@@ -36,7 +36,7 @@ class NavCard extends AccentCard {
           margin-top: var(--nav-card-linklist-margin-top, 20px);
           margin-bottom: var(--nav-card-linklist-margin-bottom, 20px);
         }
-      `
+      `,
     ];
   }
 
@@ -81,13 +81,13 @@ class NavCard extends AccentCard {
         groups: ["Card", "Nav", "List"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -97,61 +97,61 @@ class NavCard extends AccentCard {
             title: "Accent Color",
             description: "Select an accent color.",
             inputMethod: "colorpicker",
-            required: false
+            required: false,
           },
           {
             property: "dark",
             title: "Dark",
             description: "Display the card as dark theme?",
             inputMethod: "boolean",
-            required: false
+            required: false,
           },
           {
             property: "imageSrc",
             title: "Image",
             description: "Optional image",
-            inputMethod: "haxupload"
+            inputMethod: "haxupload",
           },
           {
             slot: "heading",
             title: "Heading",
             inputMethod: "code-editor",
-            required: false
+            required: false,
           },
           {
             slot: "subheading",
             title: "Subheading",
             inputMethod: "code-editor",
-            required: false
+            required: false,
           },
           {
             slot: "body",
             title: "Body",
             inputMethod: "code-editor",
-            required: false
+            required: false,
           },
           {
             property: "linkIcon",
             title: "Link Icon",
             description: "Select an icon.",
             inputMethod: "iconpicker",
-            required: false
+            required: false,
           },
           {
             slot: "linklist",
             title: "Link List",
             inputMethod: "code-editor",
-            required: false
+            required: false,
           },
           {
             slot: "footer",
             title: "Footer",
             inputMethod: "code-editor",
-            required: false
-          }
+            required: false,
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 
-const RichTextEditorButtonStyles = function(SuperClass) {
+const RichTextEditorButtonStyles = function (SuperClass) {
   return class extends SuperClass {
     static get tag() {
       return "rich-text-editor-button-styles";
@@ -60,7 +60,7 @@ const RichTextEditorButtonStyles = function(SuperClass) {
           .rtebutton #icon:not([icon]) {
             display: none;
           }
-        `
+        `,
       ];
     }
   };

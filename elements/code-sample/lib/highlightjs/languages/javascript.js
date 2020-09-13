@@ -21,40 +21,40 @@ function javascript(hljs) {
       "Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array " +
       "Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require " +
       "module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect " +
-      "Promise"
+      "Promise",
   };
   var NUMBER = {
     className: "number",
     variants: [
       { begin: "\\b(0[bB][01]+)" },
       { begin: "\\b(0[oO][0-7]+)" },
-      { begin: hljs.C_NUMBER_RE }
+      { begin: hljs.C_NUMBER_RE },
     ],
-    relevance: 0
+    relevance: 0,
   };
   var SUBST = {
     className: "subst",
     begin: "\\$\\{",
     end: "\\}",
     keywords: KEYWORDS,
-    contains: [] // defined later
+    contains: [], // defined later
   };
   var TEMPLATE_STRING = {
     className: "string",
     begin: "`",
     end: "`",
-    contains: [hljs.BACKSLASH_ESCAPE, SUBST]
+    contains: [hljs.BACKSLASH_ESCAPE, SUBST],
   };
   SUBST.contains = [
     hljs.APOS_STRING_MODE,
     hljs.QUOTE_STRING_MODE,
     TEMPLATE_STRING,
     NUMBER,
-    hljs.REGEXP_MODE
+    hljs.REGEXP_MODE,
   ];
   var PARAMS_CONTAINS = SUBST.contains.concat([
     hljs.C_BLOCK_COMMENT_MODE,
-    hljs.C_LINE_COMMENT_MODE
+    hljs.C_LINE_COMMENT_MODE,
   ]);
 
   return {
@@ -64,12 +64,12 @@ function javascript(hljs) {
       {
         className: "meta",
         relevance: 10,
-        begin: /^\s*['"]use (strict|asm)['"]/
+        begin: /^\s*['"]use (strict|asm)['"]/,
       },
       {
         className: "meta",
         begin: /^#!/,
-        end: /$/
+        end: /$/,
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
@@ -86,9 +86,9 @@ function javascript(hljs) {
             begin: IDENT_RE + "\\s*:",
             returnBegin: true,
             relevance: 0,
-            contains: [{ className: "attr", begin: IDENT_RE, relevance: 0 }]
-          }
-        ]
+            contains: [{ className: "attr", begin: IDENT_RE, relevance: 0 }],
+          },
+        ],
       },
       {
         // "value" container
@@ -108,10 +108,10 @@ function javascript(hljs) {
                 className: "params",
                 variants: [
                   {
-                    begin: IDENT_RE
+                    begin: IDENT_RE,
                   },
                   {
-                    begin: /\(\s*\)/
+                    begin: /\(\s*\)/,
                   },
                   {
                     begin: /\(/,
@@ -119,11 +119,11 @@ function javascript(hljs) {
                     excludeBegin: true,
                     excludeEnd: true,
                     keywords: KEYWORDS,
-                    contains: PARAMS_CONTAINS
-                  }
-                ]
-              }
-            ]
+                    contains: PARAMS_CONTAINS,
+                  },
+                ],
+              },
+            ],
           },
           {
             // E4X / JSX
@@ -136,12 +136,12 @@ function javascript(hljs) {
                 begin: /<\w+/,
                 end: /(\/\w+|\w+\/)>/,
                 skip: true,
-                contains: [{ begin: /<\w+\s*\/>/, skip: true }, "self"]
-              }
-            ]
-          }
+                contains: [{ begin: /<\w+\s*\/>/, skip: true }, "self"],
+              },
+            ],
+          },
         ],
-        relevance: 0
+        relevance: 0,
       },
       {
         className: "function",
@@ -156,13 +156,13 @@ function javascript(hljs) {
             end: /\)/,
             excludeBegin: true,
             excludeEnd: true,
-            contains: PARAMS_CONTAINS
-          }
+            contains: PARAMS_CONTAINS,
+          },
         ],
-        illegal: /\[|%/
+        illegal: /\[|%/,
       },
       {
-        begin: /\$[(.]/ // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
+        begin: /\$[(.]/, // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
       },
       hljs.METHOD_GUARD,
       {
@@ -172,15 +172,15 @@ function javascript(hljs) {
         end: /[{;=]/,
         excludeEnd: true,
         illegal: /[:"\[\]]/,
-        contains: [{ beginKeywords: "extends" }, hljs.UNDERSCORE_TITLE_MODE]
+        contains: [{ beginKeywords: "extends" }, hljs.UNDERSCORE_TITLE_MODE],
       },
       {
         beginKeywords: "constructor get set",
         end: /\{/,
-        excludeEnd: true
-      }
+        excludeEnd: true,
+      },
     ],
-    illegal: /#(?!!)/
+    illegal: /#(?!!)/,
   };
 }
 export { javascript };

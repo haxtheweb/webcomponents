@@ -109,7 +109,7 @@ class LrnappCisCourseCard extends PolymerElement {
             <iron-icon
               class="course-icon"
               icon="[[icon]]"
-              hidden\$="[[!icon]]"
+              hidden$="[[!icon]]"
             ></iron-icon>
             <iron-image
               style="width:100%; height:100%; background-color: lightgray;"
@@ -117,7 +117,7 @@ class LrnappCisCourseCard extends PolymerElement {
               preload=""
               fade=""
               src="[[image]]"
-              hidden\$="[[!image]]"
+              hidden$="[[!image]]"
             ></iron-image>
           </div>
           <div class="course-info">
@@ -137,7 +137,7 @@ class LrnappCisCourseCard extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("mouseenter", this._mouseEnter.bind(this));
       this.addEventListener("mouseleave", this._mouseLeave.bind(this));
     });
@@ -151,41 +151,41 @@ class LrnappCisCourseCard extends PolymerElement {
   static get properties() {
     return {
       size: {
-        type: String
+        type: String,
       },
       /**
        * Cover image src.
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Icon to use if image isn't there.
        */
       icon: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * name of the course like sing100
        */
       name: {
         type: String,
-        value: ""
+        value: "",
       },
       /**
        * title of the course like Intro to studies
        */
       title: {
         type: String,
-        value: ""
+        value: "",
       },
       /**
        * color of the course item
        */
       color: {
         type: String,
-        value: "grey"
+        value: "grey",
       },
       /**
        * Visual elevation of the item off the UI via paper element height
@@ -193,8 +193,8 @@ class LrnappCisCourseCard extends PolymerElement {
       elevation: {
         type: Number,
         value: 1,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   /**

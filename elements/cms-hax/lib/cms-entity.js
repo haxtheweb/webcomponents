@@ -66,34 +66,34 @@ class CMSEntity extends PolymerElement {
       loading: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Type of entity to load
        */
       entityType: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * ID of the item to load
        */
       entityId: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Display mode of the entity
        */
       entityDisplayMode: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * entity end point updated, change the way we do processing.
        */
       entityEndPoint: {
-        type: String
+        type: String,
       },
       /**
        * Body data which is just entity with some encapsulation.
@@ -101,29 +101,29 @@ class CMSEntity extends PolymerElement {
       bodyData: {
         type: Object,
         computed: "_generateBodyData(entityType, entityId, entityDisplayMode)",
-        observer: "_entityChanged"
+        observer: "_entityChanged",
       },
       /**
        * entity data from the end point.
        */
       entityData: {
         type: String,
-        observer: "_handleEntityResponse"
+        observer: "_handleEntityResponse",
       },
       /**
        * Prefix for the entity to be processed
        */
       entityPrefix: {
         type: String,
-        observer: "["
+        observer: "[",
       },
       /**
        * Suffix for the entity to be processed
        */
       entitySuffix: {
         type: String,
-        observer: "]"
-      }
+        observer: "]",
+      },
     };
   }
   /**
@@ -139,7 +139,7 @@ class CMSEntity extends PolymerElement {
       return {
         type: `${entityType}`,
         id: `${entityId}`,
-        display_mode: `${entityDisplayMode}`
+        display_mode: `${entityDisplayMode}`,
       };
     }
   }
@@ -243,12 +243,12 @@ class CMSEntity extends PolymerElement {
         handles: [
           {
             type: "cmsentity",
-            entity: "entity"
-          }
+            entity: "entity",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -261,26 +261,26 @@ class CMSEntity extends PolymerElement {
             options: {
               node: "Node",
               user: "User",
-              file: "File"
+              file: "File",
             },
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "entityID",
             title: "ID",
             description: "id from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "entityDisplayMode",
             title: "Display mode",
             description: "display mode from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: true,
@@ -288,9 +288,9 @@ class CMSEntity extends PolymerElement {
           "loading",
           "entity-data",
           "body-data",
-          "entity-end-point"
-        ]
-      }
+          "entity-end-point",
+        ],
+      },
     };
   }
   /**
@@ -304,10 +304,10 @@ class CMSEntity extends PolymerElement {
         properties: {
           id: "cmstokenidtolockonto",
           href: "",
-          target: "_blank"
+          target: "_blank",
         },
-        slot: "Edit this content"
-      }
+        slot: "Edit this content",
+      },
     };
     return schema;
   }

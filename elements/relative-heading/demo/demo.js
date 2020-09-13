@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
   let changer = document.getElementById("changer"),
     changer2 = document.getElementById("changer2"),
     changer3 = document.getElementById("changer3"),
@@ -16,21 +16,21 @@ window.onload = function() {
           "nec",
           "iaculis",
           "viverra",
-          "dignissim"
+          "dignissim",
         ],
         text = options[Math.floor(Math.random() * Math.floor(5))],
         tag = h > 0 ? `h${h}` : "p";
       return `<${tag}>Praesent ${text}</${tag}>`;
     };
 
-  changer.onchange = e => {
+  changer.onchange = (e) => {
     console.log("change", sapien, sapien.parent, changer.value);
     sapien.parent = changer.value;
     console.log("change 2", sapien, sapien.parent, changer.value);
   };
-  changer2.onchange = e => (volutpat.parent = changer2.value);
-  changer3.onclick = e => (praesent.innerHTML = randomHeading());
-  remover.onclick = e => {
+  changer2.onchange = (e) => (volutpat.parent = changer2.value);
+  changer3.onclick = (e) => (praesent.innerHTML = randomHeading());
+  remover.onclick = (e) => {
     if (remover.innerHTML === "Remove lorem") {
       lorem.remove();
       p.remove();

@@ -22,7 +22,7 @@ class RelativeHeadingLite extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -41,7 +41,7 @@ class RelativeHeadingLite extends LitElement {
       defaultLevel: {
         type: Number,
         attribute: "default-level",
-        reflect: true
+        reflect: true,
       },
       /**
        * The relative-heading's UUID.
@@ -49,7 +49,7 @@ class RelativeHeadingLite extends LitElement {
       id: {
         type: String,
         attribute: "id",
-        reflect: true
+        reflect: true,
       },
       /**
        * The parent relative-heading's UUID.
@@ -57,7 +57,7 @@ class RelativeHeadingLite extends LitElement {
       parent: {
         type: String,
         attribute: "parent",
-        reflect: true
+        reflect: true,
       },
       /**
        * The parent relative-heading's UUID.
@@ -65,8 +65,8 @@ class RelativeHeadingLite extends LitElement {
       __level: {
         type: Number,
         attribute: "level",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -79,9 +79,7 @@ class RelativeHeadingLite extends LitElement {
   }
 
   get template() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   /**

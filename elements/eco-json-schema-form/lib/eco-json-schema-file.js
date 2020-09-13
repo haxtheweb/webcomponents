@@ -138,7 +138,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
             >{{paperButtonTitle}}</paper-button
           >
           <div id="UploadBorder">
-            <div id="dropArea" hidden\$="{{!_shownDropText}}">{{dropText}}</div>
+            <div id="dropArea" hidden$="{{!_shownDropText}}">{{dropText}}</div>
             <template is="dom-repeat" items="{{files}}">
               <div class="file">
                 <div class="name">
@@ -148,24 +148,22 @@ class EcoJsonSchemaFile extends mixinBehaviors(
                       icon="autorenew"
                       title="{{retryText}}"
                       on-click="_retryUpload"
-                      hidden\$="{{!item.error}}"
+                      hidden$="{{!item.error}}"
                     ></iron-icon>
                     <iron-icon
                       icon="cancel"
                       title="{{removeText}}"
                       on-click="_cancelUpload"
-                      hidden\$="{{item.complete}}"
+                      hidden$="{{item.complete}}"
                     ></iron-icon>
                     <iron-icon
                       icon="check-circle"
                       title="{{successText}}"
-                      hidden\$="{{!item.complete}}"
+                      hidden$="{{!item.complete}}"
                     ></iron-icon>
                   </div>
                 </div>
-                <div class="error" hidden\$="{{!item.error}}">
-                  {{errorText}}
-                </div>
+                <div class="error" hidden$="{{!item.error}}">{{errorText}}</div>
               </div>
             </template>
           </div>
@@ -185,17 +183,17 @@ class EcoJsonSchemaFile extends mixinBehaviors(
     return {
       language: {
         value: "en",
-        notify: true
+        notify: true,
       },
       resources: {
         value() {
           return {};
         },
-        notify: true
+        notify: true,
       },
       schema: {
         type: Object,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       value: {
         type: Object,
@@ -203,7 +201,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
         value() {
           return {};
         },
-        observer: "_valueChanged"
+        observer: "_valueChanged",
       },
       /**
       error: {
@@ -221,7 +219,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       target: {
         type: String,
-        value: ""
+        value: "",
       },
 
       /**
@@ -231,7 +229,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       accept: {
         type: String,
-        value: ""
+        value: "",
       },
 
       /**
@@ -240,7 +238,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       droppable: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -249,7 +247,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       dropText: {
         type: String,
-        value: "Drop Files Here"
+        value: "Drop Files Here",
       },
 
       /**
@@ -258,7 +256,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       multi: {
         type: Boolean,
-        value: true
+        value: true,
       },
 
       /**
@@ -270,7 +268,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
         notify: true,
         value() {
           return [];
-        }
+        },
       },
 
       /**
@@ -279,7 +277,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       raised: {
         type: Boolean,
-        value: true
+        value: true,
       },
 
       /**
@@ -288,7 +286,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       noink: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -297,7 +295,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       headers: {
         type: Object,
-        value: {}
+        value: {},
       },
 
       /**
@@ -306,7 +304,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       retryText: {
         type: String,
-        value: "Retry Upload"
+        value: "Retry Upload",
       },
 
       /**
@@ -315,7 +313,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       removeText: {
         type: String,
-        value: "Remove"
+        value: "Remove",
       },
 
       /**
@@ -324,7 +322,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       successText: {
         type: String,
-        value: "Success"
+        value: "Success",
       },
 
       /**
@@ -333,7 +331,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       errorText: {
         type: String,
-        value: "Error uploading file..."
+        value: "Error uploading file...",
       },
 
       /**
@@ -342,7 +340,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       _shownDropText: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -351,7 +349,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       additional: {
         type: Object,
-        value: {}
+        value: {},
       },
 
       /**
@@ -360,7 +358,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       fileDataName: {
         type: String,
-        value: "file"
+        value: "file",
       },
 
       /**
@@ -369,7 +367,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       paperButtonAlt: {
         type: String,
-        value: ""
+        value: "",
       },
 
       /**
@@ -378,8 +376,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
        */
       paperButtonTitle: {
         type: String,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
   /**
@@ -421,7 +419,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
     var uploadBorder = this.shadowRoot.querySelector("#UploadBorder");
     this.toggleClass("enabled", true, uploadBorder);
 
-    this.ondragover = function(e) {
+    this.ondragover = function (e) {
       e.stopPropagation();
       this.toggleClass("hover", true, uploadBorder);
 
@@ -437,12 +435,12 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       return false;
     };
 
-    this.ondragleave = function() {
+    this.ondragleave = function () {
       this.toggleClass("hover", false, uploadBorder);
       return false;
     };
 
-    this.ondrop = function(event) {
+    this.ondrop = function (event) {
       this.toggleClass("hover", false, uploadBorder);
       event.preventDefault();
 
@@ -574,7 +572,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
     this._showDropText();
@@ -585,7 +583,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
 
     reader.addEventListener(
       "load",
-      function() {
+      function () {
         var r = reader.result;
         //self.push('value', {"name": unescape(encodeURIComponent( file.name )),"content":r});
         //self.value.push({"name": unescape(encodeURIComponent( file.name )),"content":r});

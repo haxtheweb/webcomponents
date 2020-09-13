@@ -73,14 +73,14 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         .tos-text a:active {
           outline: 2px solid blue;
         }
-      `
+      `,
     ];
   }
   constructor() {
     super();
     // window based events managed in winEventsElement
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.auto = false;
     this.headers = {};
@@ -112,7 +112,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         ? html`
             <div class="tos-text">Terms of service:</div>
             <ul class="tos-text">
-              ${this.tos.map(item => {
+              ${this.tos.map((item) => {
                 return html`
                   <li>
                     <a
@@ -146,7 +146,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       ></hexagon-loader>
       <div id="itemlist">
         ${this.media.map(
-          resultData => html`
+          (resultData) => html`
             <hax-app-search-result
               image="${resultData.image}"
               title="${resultData.title}"
@@ -249,65 +249,65 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
        * Active app globally bound based on previous selection.
        */
       activeApp: {
-        type: Object
+        type: Object,
       },
       /**
        * Terms of service object
        */
       tos: {
-        type: Array
+        type: Array,
       },
       /**
        * Immediatley perform a request.
        */
       auto: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Search schema for presenting a form of input.
        */
       searchSchema: {
-        type: Object
+        type: Object,
       },
       /**
        * Custom headers for data binding from the App feed.
        */
       headers: {
-        type: Object
+        type: Object,
       },
       /**
        * Custom method for requesting data (almost always will be GET)
        */
       method: {
-        type: String
+        type: String,
       },
       /**
        * loading
        */
       loading: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Media request data updated
        */
       requestData: {
-        type: Object
+        type: Object,
       },
       /**
        * Media object, normalized.
        */
       media: {
-        type: Array
+        type: Array,
       },
       requestEndPoint: {
-        type: String
+        type: String,
       },
       requestParams: {
-        type: Object
+        type: Object,
       },
       resultMap: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -378,7 +378,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
       // ensure correct wipe of the search area assuming it has a search
       this.searchSchema = {};
       var searchSchema = {
-        properties: {}
+        properties: {},
       };
       if (typeof app.connection.operations.browse.search !== typeof undefined) {
         searchSchema.properties = app.connection.operations.browse.search;
@@ -450,7 +450,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
             title: this._resolveObjectPath(map.preview.title, data[i]),
             details: this._resolveObjectPath(map.preview.details, data[i]),
             type: map.defaultGizmoType,
-            map: {}
+            map: {},
           };
           // strip HTML from details since it might contain complex content
           if (
@@ -558,7 +558,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
    * in a string to actually hit the deeper part of an object structure.
    */
   _resolveObjectPath(path, obj) {
-    return path.split(".").reduce(function(prev, curr) {
+    return path.split(".").reduce(function (prev, curr) {
       return prev ? prev[curr] : null;
     }, obj || self);
   }

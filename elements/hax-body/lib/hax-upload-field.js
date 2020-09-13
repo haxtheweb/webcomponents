@@ -9,7 +9,7 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-app-picker-selection": "_haxAppPickerSelection"
+      "hax-app-picker-selection": "_haxAppPickerSelection",
     };
   }
   /**
@@ -23,7 +23,7 @@ class HaxUploadField extends winEventsElement(SimpleFieldsUpload) {
       // look for a match as to what gizmo types it supports
       let values = {
         source: e.detail.file.name,
-        type: e.detail.file.type
+        type: e.detail.file.type,
       };
       // we have no clue what this is.. let's try and guess..
       var type = window.HaxStore.guessGizmoType(values);

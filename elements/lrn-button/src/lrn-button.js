@@ -94,7 +94,7 @@ class LrnButton extends LitElement {
       new CustomEvent("focus-changed", {
         bubbles: true,
         composed: true,
-        detail: { focus: this.focusState }
+        detail: { focus: this.focusState },
       })
     );
     // see if it has hover classes

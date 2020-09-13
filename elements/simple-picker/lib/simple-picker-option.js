@@ -110,14 +110,14 @@ class SimplePickerOption extends LitElement {
        */
       active: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
        * The style of the option. (Required for accessibility.)
        */
       data: {
-        type: Object
+        type: Object,
       },
 
       /**
@@ -125,7 +125,7 @@ class SimplePickerOption extends LitElement {
        */
       hidden: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -135,14 +135,14 @@ class SimplePickerOption extends LitElement {
       hideOptionLabels: {
         type: Boolean,
         reflect: true,
-        attribute: "hide-option-labels"
+        attribute: "hide-option-labels",
       },
 
       /**
        * Optional. If option is an iron icon, the iconset:name of the icon
        */
       icon: {
-        type: String
+        type: String,
       },
 
       /**
@@ -150,7 +150,7 @@ class SimplePickerOption extends LitElement {
        */
       id: {
         type: String,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -158,7 +158,7 @@ class SimplePickerOption extends LitElement {
        */
       label: {
         type: String,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -166,14 +166,14 @@ class SimplePickerOption extends LitElement {
        */
       selected: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
        * styles object to allow for piercing of shadow DOM
        */
       styles: {
-        type: Object
+        type: Object,
       },
 
       /**
@@ -182,7 +182,7 @@ class SimplePickerOption extends LitElement {
       titleAsHtml: {
         type: Boolean,
         reflect: true,
-        attribute: "title-as-html"
+        attribute: "title-as-html",
       },
 
       /**
@@ -190,8 +190,8 @@ class SimplePickerOption extends LitElement {
        */
       value: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

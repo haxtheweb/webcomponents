@@ -627,21 +627,21 @@ class OutlineDesigner extends PolymerElement {
         name: "viewMode",
         type: String,
         value: "cards",
-        observer: "_viewModeChanged"
+        observer: "_viewModeChanged",
       },
       /**
        * Icon for the selected view mode
        */
       viewModeIcon: {
         name: "viewModeIcon",
-        type: String
+        type: String,
       },
       /**
        * Label for the selected view mode
        */
       viewModeLabel: {
         name: "viewModeLabel",
-        type: String
+        type: String,
       },
       /**
        * Which layout to the outline to display
@@ -651,28 +651,28 @@ class OutlineDesigner extends PolymerElement {
         type: String,
         value: "mid",
         reflectToAttribute: true,
-        observer: "_detailsModeChanged"
+        observer: "_detailsModeChanged",
       },
       /**
        * Icon for the selected view mode
        */
       detailsModeIcon: {
         name: "detailsModeIcon",
-        type: String
+        type: String,
       },
       /**
        * Label for the selected view mode
        */
       detailsModeLabel: {
         name: "detailsModeLabel",
-        type: String
+        type: String,
       },
       /**
        * Data binding to show the selected view
        */
       selectedView: {
         name: "selectedView",
-        type: Number
+        type: Number,
       },
       /**
        * Whether or not we are in an editing state
@@ -682,7 +682,7 @@ class OutlineDesigner extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        observer: "_editModeChanged"
+        observer: "_editModeChanged",
       },
       /**
        * Whether or to show the mini map
@@ -692,7 +692,7 @@ class OutlineDesigner extends PolymerElement {
         type: Boolean,
         value: true,
         reflectToAttribute: true,
-        observer: "_miniMapChanged"
+        observer: "_miniMapChanged",
       },
       /**
        * end point / JSON to load
@@ -700,7 +700,7 @@ class OutlineDesigner extends PolymerElement {
       outlineSchemaUrl: {
         name: "outlineSchemaUrl",
         type: String,
-        value: false
+        value: false,
       },
       /**
        * JSON outline schema manifest
@@ -708,7 +708,7 @@ class OutlineDesigner extends PolymerElement {
       manifest: {
         name: "manifest",
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * Data in outline format
@@ -716,8 +716,8 @@ class OutlineDesigner extends PolymerElement {
       outlineData: {
         name: "outlineData",
         type: Object,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -750,12 +750,12 @@ class OutlineDesigner extends PolymerElement {
         "ul,ol,li": "rgba(0, 0, 0, 0.08)",
         "h1,h2,h3,h4,h5,h6,a": "rgba(0, 0, 0, 0.10)",
         "lrnsys-outline-item": "rgba(0, 0, 0, 0.08)",
-        "p,section": "rgba(0, 0, 0, 0.02)"
+        "p,section": "rgba(0, 0, 0, 0.02)",
       },
       back: "rgba(0, 0, 0, 0.02)",
       view: "rgba(0, 0, 0, 0.05)",
       drag: "rgba(0, 0, 0, 0.10)",
-      interval: null
+      interval: null,
     });
   }
   /**
@@ -857,7 +857,7 @@ class OutlineDesigner extends PolymerElement {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: true
+                detail: true,
               })
             );
             window.dispatchEvent(new Event("resize"));
@@ -939,7 +939,7 @@ class OutlineDesigner extends PolymerElement {
                   bubbles: true,
                   cancelable: true,
                   composed: true,
-                  detail: true
+                  detail: true,
                 })
               );
               window.dispatchEvent(new Event("resize"));

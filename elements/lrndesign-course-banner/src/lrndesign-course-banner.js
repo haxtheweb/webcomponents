@@ -65,7 +65,7 @@ class LrndesignCourseBanner extends PolymerElement {
         sizing="cover"
         preload=""
         fade=""
-        src\$="[[image]]"
+        src$="[[image]]"
       ></iron-image>
       <div class="course-heading">
         <lrndesign-avatar
@@ -93,26 +93,26 @@ class LrndesignCourseBanner extends PolymerElement {
        * Text representation of the color like red or blue
        */
       color: {
-        type: String
+        type: String,
       },
       /**
        * Banner image
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Name of the course
        */
       name: {
-        type: String
+        type: String,
       },
       /**
        * Title of the course, longer description.
        */
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

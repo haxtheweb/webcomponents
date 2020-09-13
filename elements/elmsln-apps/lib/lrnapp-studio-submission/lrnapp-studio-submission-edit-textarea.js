@@ -18,8 +18,8 @@ class LrnappStudioSubmissionEditTextArea extends PolymerElement {
     return {
       content: {
         type: String,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 }

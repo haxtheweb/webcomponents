@@ -88,7 +88,7 @@ class FilteredImage extends SimpleColors {
         [1, 0, 0, 0, 0],
         [0, 1, 0, 0, 0],
         [0, 0, 1, 0, 0],
-        [0, 0, 0, 1, 0]
+        [0, 0, 0, 1, 0],
       ],
       svg = this.shadowRoot.querySelector("#svg"),
       matrix = svg.querySelector("#matrix"),

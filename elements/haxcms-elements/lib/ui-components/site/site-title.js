@@ -28,7 +28,7 @@ class SiteTitle extends LitElement {
           text-rendering: optimizelegibility;
           position: relative;
         }
-      `
+      `,
     ];
   }
   /**
@@ -43,11 +43,11 @@ class SiteTitle extends LitElement {
     this.label = "Home";
     this.notitle = false;
     import("@polymer/iron-icon/iron-icon.js");
-    autorun(reaction => {
+    autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
@@ -85,11 +85,7 @@ class SiteTitle extends LitElement {
           ?hidden="${this.icon ? false : true}"
           icon="${this.icon}"
         ></iron-icon>
-        ${this.notitle
-          ? html``
-          : html`
-              <h1>${this.siteTitle}</h1>
-            `}
+        ${this.notitle ? html`` : html` <h1>${this.siteTitle}</h1> `}
       </a>
     `;
   }
@@ -100,41 +96,41 @@ class SiteTitle extends LitElement {
     return {
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Site title
        */
       siteTitle: {
         type: String,
-        attribute: "site-title"
+        attribute: "site-title",
       },
       /**
        * HREF to the home page
        */
       homeLink: {
         type: String,
-        attribute: "home-link"
+        attribute: "home-link",
       },
       /**
        * Label
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * optional icon
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * If the title should be displayed or not
        */
       notitle: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   disconnectedCallback() {

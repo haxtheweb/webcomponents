@@ -27,15 +27,13 @@ class A11yMediaYoutube extends LitElement {
         iframe .ytp-pause-overlay {
           display: none !important;
         }
-      `
+      `,
     ];
   }
 
   //render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   // properties available to the custom element for data binding
@@ -46,31 +44,31 @@ class A11yMediaYoutube extends LitElement {
        * a11y-media-youtube unique id
        */
       id: {
-        type: String
+        type: String,
       },
       /**
        * video loops back to start
        */
       autoplay: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * height of the embedded video
        */
       height: {
-        type: String
+        type: String,
       },
       /**
        * video loops back to start
        */
       loop: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * video muted
        */
       muted: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * preload settings
@@ -78,13 +76,13 @@ class A11yMediaYoutube extends LitElement {
       preload: {
         type: String,
         attribute: "preload",
-        reflect: true
+        reflect: true,
       },
       /**
        * video playback rate
        */
       playbackRate: {
-        type: Number
+        type: Number,
       },
       /**
        * youTube's unique identifier for the video
@@ -92,7 +90,7 @@ class A11yMediaYoutube extends LitElement {
       t: {
         type: Number,
         attribute: "t",
-        reflect: true
+        reflect: true,
       },
       /**
        * youTube's unique identifier for the video
@@ -100,32 +98,32 @@ class A11yMediaYoutube extends LitElement {
       videoId: {
         type: String,
         attribute: "video-id",
-        reflect: true
+        reflect: true,
       },
       /**
        * volume between 0 and 100
        */
       volume: {
-        type: Number
+        type: Number,
       },
       /**
        * width of the embedded video
        */
       width: {
-        type: String
+        type: String,
       },
       /**
        * video object
        */
       __video: {
-        type: Object
+        type: Object,
       },
       /**
        * youtube object
        */
       __yt: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -217,8 +215,8 @@ class A11yMediaYoutube extends LitElement {
     let seekable = { length: 0 };
     if (this.duration > 0) {
       seekable.length = 1;
-      seekable.start = index => 0;
-      seekable.end = index => this.duration;
+      seekable.start = (index) => 0;
+      seekable.end = (index) => this.duration;
     }
     return seekable;
   }
@@ -232,18 +230,18 @@ class A11yMediaYoutube extends LitElement {
       /* gets iframes for all  */
       getIframes: () => {
         window.A11yMediaYoutubeManager.queue.forEach(
-          instance => (instance.__yt = instance._preloadVideo(true))
+          (instance) => (instance.__yt = instance._preloadVideo(true))
         );
         window.A11yMediaYoutubeManager.queue = [];
       },
-      queue: [] //array of instances waiting for iframes
+      queue: [], //array of instances waiting for iframes
     };
     window.A11yMediaYoutubeManager.queue.push(this);
     /* checks for api and either uses it to get iframes or gets it */
     if (window.A11yMediaYoutubeManager.api) {
       if (window.YT) window.A11yMediaYoutubeManager.getIframes();
     } else {
-      (window.onYouTubeIframeAPIReady = e =>
+      (window.onYouTubeIframeAPIReady = (e) =>
         window.A11yMediaYoutubeManager.getIframes()),
         (window.A11yMediaYoutubeManager.api = this.api);
     }
@@ -375,7 +373,7 @@ class A11yMediaYoutube extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -390,7 +388,7 @@ class A11yMediaYoutube extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -443,7 +441,7 @@ class A11yMediaYoutube extends LitElement {
     div.setAttribute("id", divid);
 
     if (load) {
-      let setYT = e => (this.__video = e.target),
+      let setYT = (e) => (this.__video = e.target),
         port = window.location.port ? `:${window.location.port}` : ``,
         origin = `//${window.location.hostname}${port}`;
       youtube = new YT.Player(divid, {
@@ -461,8 +459,8 @@ class A11yMediaYoutube extends LitElement {
           modestbranding: 1,
           //todo research playsinline
           rel: 0,
-          widget_referrer: window.location.href
-        }
+          widget_referrer: window.location.href,
+        },
       });
       youtube.timeupdate;
       youtube.addEventListener("onStateChange", () => {

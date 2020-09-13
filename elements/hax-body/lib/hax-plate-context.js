@@ -10,7 +10,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   constructor(delayRender = false) {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     // set tag for later use
     this.tag = HaxPlateContext.tag;

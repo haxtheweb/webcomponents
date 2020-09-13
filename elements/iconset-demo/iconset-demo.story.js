@@ -10,7 +10,7 @@ const DemoPattern = {
   of: "Pattern Library/Atoms",
   name: "Icons",
   file: require("raw-loader!./demo/index.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(DemoPattern);
 
@@ -23,6 +23,6 @@ const Story = {
   props: IconsetDemo.properties,
   slots: {},
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(Story);

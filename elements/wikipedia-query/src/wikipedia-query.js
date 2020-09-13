@@ -31,7 +31,7 @@ class WikipediaQuery extends LitElement {
           padding: 16px 8px;
           font-size: 12px;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -104,27 +104,27 @@ class WikipediaQuery extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String
+        type: String,
       },
       __now: {
-        type: String
+        type: String,
       },
       _title: {
-        type: String
+        type: String,
       },
       /**
        * hideTitle
        */
       hideTitle: {
         type: Boolean,
-        attribute: "hide-title"
+        attribute: "hide-title",
       },
       /**
        * Search string.
        */
       search: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -146,16 +146,16 @@ class WikipediaQuery extends LitElement {
           {
             type: "wikipedia",
             type_exclusive: true,
-            title: "search"
+            title: "search",
           },
           {
             type: "content",
-            title: "search"
-          }
+            title: "search",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -165,15 +165,15 @@ class WikipediaQuery extends LitElement {
             description: "Word to search wikipedia for.",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
+            required: true,
           },
           {
             property: "hideTitle",
             title: "Hide title",
             description: "Whether or not to render the title of the article.",
             inputMethod: "boolean",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -182,31 +182,31 @@ class WikipediaQuery extends LitElement {
             description: "Word to search wikipedia for.",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
+            required: true,
           },
           {
             property: "hideTitle",
             title: "Hide title",
             description: "Whether or not to render the title of the article.",
             inputMethod: "boolean",
-            icon: "editor:title"
-          }
-        ]
+            icon: "editor:title",
+          },
+        ],
       },
       saveOptions: {
         wipeSlot: true,
-        unsetAttributes: ["_title"]
+        unsetAttributes: ["_title"],
       },
       demoSchema: [
         {
           tag: "wikipedia-query",
           properties: {
             hideTitle: false,
-            search: "Internet"
+            search: "Internet",
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
   /**

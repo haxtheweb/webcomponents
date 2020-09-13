@@ -1,10 +1,10 @@
-export const mtzMarkedControlLineBehaviorImpl = function(SuperClass) {
+export const mtzMarkedControlLineBehaviorImpl = function (SuperClass) {
   return class extends SuperClass {
     static get properties() {
       return {
         ...super.properties,
 
-        syntaxPrefix: String // Must implement
+        syntaxPrefix: String, // Must implement
       };
     }
     /**
@@ -27,7 +27,7 @@ export const mtzMarkedControlLineBehaviorImpl = function(SuperClass) {
       // Grab lines within the selection
       const selectedLines = [];
       let accumulator = 0;
-      lines.every(line => {
+      lines.every((line) => {
         // Accumulate line
         accumulator += line.length;
         // Check if selection start is not within the line, skip to next line
@@ -39,7 +39,7 @@ export const mtzMarkedControlLineBehaviorImpl = function(SuperClass) {
           start: accumulator - line.length,
           end: accumulator,
           length: line.length,
-          text: line.trimLeft()
+          text: line.trimLeft(),
         });
         // Stop grabbing lines if we reach the end of the selection
         return accumulator < selection.end;
@@ -51,7 +51,7 @@ export const mtzMarkedControlLineBehaviorImpl = function(SuperClass) {
 
       let offset = 0;
       // Toggle syntax on each line
-      selectedLines.forEach(line => {
+      selectedLines.forEach((line) => {
         // if the syntax exists remove it from any lines containing it
         if (removeSyntax && line.text.startsWith(this.syntaxPrefix)) {
           line.text = line.text.slice(this.syntaxPrefix.length, line.end);
@@ -74,7 +74,7 @@ export const mtzMarkedControlLineBehaviorImpl = function(SuperClass) {
 
       // Replace all selected lines with modified content
       editor.replaceSelection(
-        selectedLines.map(line => line.text).join(newlineChar)
+        selectedLines.map((line) => line.text).join(newlineChar)
       );
       // Re-select the new content on the lines
       editor.setSelection(

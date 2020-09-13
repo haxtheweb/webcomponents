@@ -62,17 +62,17 @@ class HAXCMSSiteRouter extends HTMLElement {
    */
   _updateRouter(routerManifest) {
     if (!routerManifest || typeof routerManifest.items === "undefined") return;
-    const routerItems = routerManifest.items.map(i => {
+    const routerItems = routerManifest.items.map((i) => {
       return {
         path: i.slug,
         name: i.id,
-        component: `fake-${i.id}-e`
+        component: `fake-${i.id}-e`,
       };
     });
     this.router.setRoutes([
       ...routerItems,
       { path: "/", component: "fake-home-e", name: "home" },
-      { path: "/(.*)", component: "fake-404-e", name: "404" }
+      { path: "/(.*)", component: "fake-404-e", name: "404" },
     ]);
   }
 

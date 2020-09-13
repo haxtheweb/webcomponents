@@ -24,7 +24,7 @@ class ElmslnStudioLink extends navigator(LitElement) {
 
   static get properties() {
     return {
-      href: { type: String }
+      href: { type: String },
     };
   }
   static get styles() {

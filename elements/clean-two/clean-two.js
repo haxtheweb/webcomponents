@@ -457,7 +457,7 @@ class CleanTwo extends HAXCMSThemeParts(
           --haxcms-tooltip-color: #F5F5F5;
           --haxcms-tooltip-background-color: #252737;
         }
-      `
+      `,
     ];
   }
   searchItemSelected(e) {
@@ -474,11 +474,11 @@ class CleanTwo extends HAXCMSThemeParts(
       target = e.target;
     }
     if (target.value) {
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
-        () => {
-          this.searchTerm = target.value;
-        }
-      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      ).then(() => {
+        this.searchTerm = target.value;
+      });
     } else {
       this.searchTerm = "";
     }
@@ -487,9 +487,7 @@ class CleanTwo extends HAXCMSThemeParts(
   render() {
     return html`
       <div class="body-wrapper">
-        <div class="left-col">
-          ${this.HAXCMSMobileMenu()}
-        </div>
+        <div class="left-col">${this.HAXCMSMobileMenu()}</div>
         <div class="content-wrapper">
           <div class="content">
             <div class="header">
@@ -590,17 +588,17 @@ class CleanTwo extends HAXCMSThemeParts(
     return {
       ...super.properties,
       searchTerm: {
-        type: String
+        type: String,
       },
       prevPage: {
-        type: String
+        type: String,
       },
       nextPage: {
-        type: String
+        type: String,
       },
       pageTimestamp: {
-        type: Number
-      }
+        type: Number,
+      },
     };
   }
 
@@ -619,12 +617,12 @@ class CleanTwo extends HAXCMSThemeParts(
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
 
-    autorun(reaction => {
+    autorun((reaction) => {
       if (
         store.activeItem &&
         store.activeItem.metadata &&
@@ -636,13 +634,27 @@ class CleanTwo extends HAXCMSThemeParts(
     });
 
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-content.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+    );
   }
   /**
    * life cycle, element is removed from the DOM

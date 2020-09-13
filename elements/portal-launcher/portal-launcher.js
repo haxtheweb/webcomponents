@@ -31,7 +31,7 @@ class PortalLauncher extends HTMLElement {
     this.tag = PortalLauncher.tag;
     // ensure there's at least 1 link in here somewhere...
     if (this.querySelectorAll("a")) {
-      this.querySelectorAll("a").forEach(a => {
+      this.querySelectorAll("a").forEach((a) => {
         a.addEventListener("click", this.click.bind(this));
       });
     }
@@ -43,7 +43,7 @@ class PortalLauncher extends HTMLElement {
     let target = e.target;
     // support walking the path in order to find the link clicked
     if (target.tagName !== "A") {
-      e.path.forEach(item => {
+      e.path.forEach((item) => {
         if (item.tagName === "A") {
           target = item;
         }
@@ -99,7 +99,7 @@ class PortalLauncher extends HTMLElement {
         // `prefers-reduced-motion` media query to control the animation.
         // https://developers.google.com/web/updates/2019/03/prefers-reduced-motion
         portal.classList.add("portal-transition");
-        portal.addEventListener("transitionend", evt => {
+        portal.addEventListener("transitionend", (evt) => {
           if (evt.propertyName == "bottom") {
             // Activate the portal once the transition has completed
             portal.activate();
@@ -109,8 +109,8 @@ class PortalLauncher extends HTMLElement {
         // Waiting for the page to load.
         // using setTimeout is a suboptimal way and it's best to fade-in
         // when receiving a load complete message from the portal via postMessage
-        setTimeout(_ => portal.classList.add("fade-in"), 250);
-        setTimeout(_ => portal.classList.add("portal-reveal"), 500);
+        setTimeout((_) => portal.classList.add("fade-in"), 250);
+        setTimeout((_) => portal.classList.add("portal-reveal"), 500);
       }
     }
   }

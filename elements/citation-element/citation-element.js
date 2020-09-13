@@ -40,7 +40,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
         .license-link img {
           margin-right: 8px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -132,13 +132,13 @@ class CitationElement extends SchemaBehaviors(LitElement) {
        * Title of the work.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * License scope
        */
       scope: {
-        type: String
+        type: String,
       },
       /**
        * How to present the citation on the interface.
@@ -147,46 +147,46 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       displayMethod: {
         type: String,
         reflect: true,
-        attribute: "display-method"
+        attribute: "display-method",
       },
       /**
        * Person or group that owns / created the work.
        */
       creator: {
-        type: String
+        type: String,
       },
       /**
        * Original Source of the work in question
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * Date the work was accessed.
        */
       date: {
-        type: String
+        type: String,
       },
       /**
        * License name, calculated or supplied by the end user if we don't have them.
        */
       licenseName: {
         type: String,
-        attribute: "license-name"
+        attribute: "license-name",
       },
       /**
        * License link for more details
        */
       licenseLink: {
         type: String,
-        attribute: "license-link"
+        attribute: "license-link",
       },
       /**
        * License short hand. Options cc0,
        */
       license: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -281,12 +281,12 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             title: "title",
             author: "creator",
             license: "license",
-            accessDate: "date"
-          }
+            accessDate: "date",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -295,8 +295,8 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "The title of the work being cited.",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -304,7 +304,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "The title of the work being cited.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "source",
@@ -312,14 +312,14 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             description: "The source url for the element this is citing.",
             inputMethod: "textfield",
             icon: "link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "date",
             title: "Date accessed",
             description: "The date this was accessed.",
             inputMethod: "textfield",
-            icon: "link"
+            icon: "link",
           },
           {
             property: "scope",
@@ -328,9 +328,9 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             inputMethod: "select",
             options: {
               sibling: "Sibling element",
-              parent: "Parent element"
+              parent: "Parent element",
             },
-            icon: "code"
+            icon: "code",
           },
           {
             property: "license",
@@ -338,18 +338,18 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             description: "The source url for the element this is citing.",
             inputMethod: "select",
             options: new licenseList("select"),
-            icon: "link"
+            icon: "link",
           },
           {
             property: "creator",
             title: "Creator",
             description: "Who made or owns this.",
             inputMethod: "textfield",
-            icon: "link"
-          }
+            icon: "link",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 

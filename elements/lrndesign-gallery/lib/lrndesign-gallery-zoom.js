@@ -70,7 +70,7 @@ class LrndesignGalleryZoom extends LitElement {
             --lrndesign-gallery-dialog-toggled-background-color
           );
         }
-      `
+      `,
     ];
   }
   render() {
@@ -101,14 +101,14 @@ class LrndesignGalleryZoom extends LitElement {
        * heading for zoom modal
        */
       heading: {
-        type: String
+        type: String,
       },
 
       /**
        * details for zoom modal
        */
       details: {
-        type: String
+        type: String,
       },
       /**
        * Image source.
@@ -116,21 +116,21 @@ class LrndesignGalleryZoom extends LitElement {
       src: {
         type: String,
         reflect: true,
-        attribute: "src"
+        attribute: "src",
       },
       /**
        * tooltip for the zoom button
        */
       tooltip: {
-        type: String
+        type: String,
       },
       /**
        * gallery item's alt text
        */
       zoomAlt: {
         type: String,
-        attribute: "zoom-alt"
-      }
+        attribute: "zoom-alt",
+      },
     };
   }
 
@@ -157,8 +157,8 @@ class LrndesignGalleryZoom extends LitElement {
             details="${this.details || this.zoomAlt}"
           >
           </lrndesign-gallery-details>
-        `
-      }
+        `,
+      },
     ];
   }
 
@@ -173,9 +173,9 @@ class LrndesignGalleryZoom extends LitElement {
           "pangroup",
           "fullscreenbutton",
           "kbdbutton",
-          "infobutton"
-        ]
-      }
+          "infobutton",
+        ],
+      },
     };
   }
 

@@ -13,9 +13,9 @@ const RelativeHeadingPattern = {
   replacements: [
     {
       find: "<select[\n.]*</select>",
-      replace: ""
-    }
-  ]
+      replace: "",
+    },
+  ],
 };
 window.StorybookUtilities.instance.addPattern(RelativeHeadingPattern);
 
@@ -60,6 +60,6 @@ const RelativeHeadingStory = {
     <relative-heading id="rh5" text="Sollicitudin" parent-id="rh4"></relative-heading>          
     <p>Nullam at velit sollicitudin, porta mi quis, lacinia velit. Praesent quis mauris sem.</p> 
     <relative-heading id="rh6" text="In et volutpat" parent-id="rh5"></relative-heading>          
-    <p>In et volutpat nisi. Suspendisse vel nibh eu magna posuere sollicitudin. Praesent ac ex varius, facilisis urna et, cursus tellus.</p> `
+    <p>In et volutpat nisi. Suspendisse vel nibh eu magna posuere sollicitudin. Praesent ac ex varius, facilisis urna et, cursus tellus.</p> `,
 };
 window.StorybookUtilities.instance.addLiveDemo(RelativeHeadingStory);

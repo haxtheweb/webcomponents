@@ -25,7 +25,7 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
       </style>
 
       <lrnapp-studio-submission-media-editoverlay
-        data-index\$="[[index]]"
+        data-index$="[[index]]"
         embedcode="{{embedcode}}"
       >
         <div class="file_url">[[file.filename]]</div>
@@ -40,12 +40,12 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
   static get properties() {
     return {
       file: {
-        type: Object
+        type: Object,
       },
       embedcode: {
         type: String,
-        computed: "_computeEmbedCode(file)"
-      }
+        computed: "_computeEmbedCode(file)",
+      },
     };
   }
   _computeEmbedCode(file) {

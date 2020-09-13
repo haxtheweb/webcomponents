@@ -4,7 +4,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -13,8 +13,8 @@ export default {
   component: "wysiwyg-hax",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const HaxAsWysiwyg = () => {
@@ -58,7 +58,7 @@ export const HaxAsWysiwyg = () => {
         "--hax-base-styles-h3-font-size": "140%",
         "--hax-base-styles-h4-font-size": "130%",
         "--hax-base-styles-h5-font-size": "120%",
-        "--hax-base-styles-h6-font-size": "110%"
+        "--hax-base-styles-h6-font-size": "110%",
       },
       [
         { property: "appStoreConnection", title: "Path to app-store JSON" },
@@ -74,7 +74,7 @@ export const HaxAsWysiwyg = () => {
         { css: "--hax-base-styles-h3-font-size" },
         { css: "--hax-base-styles-h4-font-size" },
         { css: "--hax-base-styles-h5-font-size" },
-        { css: "--hax-base-styles-h6-font-size" }
+        { css: "--hax-base-styles-h6-font-size" },
       ],
       [],
       true

@@ -60,16 +60,16 @@ class SiteActiveTitle extends LitElement {
   static get properties() {
     return {
       __title: {
-        type: String
+        type: String,
       },
       dynamicMethodology: {
-        type: String
+        type: String,
       },
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
-      }
+        attribute: "edit-mode",
+      },
     };
   }
   /**
@@ -103,11 +103,11 @@ class SiteActiveTitle extends LitElement {
     this.dynamicMethodology = "active";
     this.__title = "";
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeTitle = toJS(store.activeTitle);
       this.__title = this._makeTitle(
         this.dynamicMethodology,
@@ -117,7 +117,7 @@ class SiteActiveTitle extends LitElement {
       );
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.ancestorTitle = toJS(store.ancestorTitle);
       this.__title = this._makeTitle(
         this.dynamicMethodology,
@@ -127,7 +127,7 @@ class SiteActiveTitle extends LitElement {
       );
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.parentTitle = toJS(store.parentTitle);
       this.__title = this._makeTitle(
         this.dynamicMethodology,

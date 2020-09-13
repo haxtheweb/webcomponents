@@ -4,8 +4,8 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-window.__H5PBridgeTimeOut = function() {
-  setTimeout(function() {
+window.__H5PBridgeTimeOut = function () {
+  setTimeout(function () {
     window.H5P.init();
   }, 500);
 };
@@ -29,7 +29,7 @@ class H5PElement extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
 
@@ -57,8 +57,8 @@ class H5PElement extends LitElement {
         groups: ["Interactive"],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -68,15 +68,15 @@ class H5PElement extends LitElement {
             description: "Location the H5P file was unpacked to",
             inputMethod: "textfield",
             required: true,
-            icon: "icons:link"
-          }
+            icon: "icons:link",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: true,
-        unsetAttributes: ["content-id"]
-      }
+        unsetAttributes: ["content-id"],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -89,8 +89,8 @@ class H5PElement extends LitElement {
        */
       source: {
         name: "source",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -135,7 +135,7 @@ class H5PElement extends LitElement {
       basePath + "js/h5p-action-bar.js",
       basePath + "js/h5p-confirmation-dialog.js",
       basePath + "js/h5p-x-api-event.js",
-      basePath + "js/h5p-x-api.js"
+      basePath + "js/h5p-x-api.js",
     ];
     this.__h5pDepsLength = this.h5pJSDeps.length - 1;
     await window.ESGlobalBridge.instance.load(
@@ -190,7 +190,7 @@ class H5PElement extends LitElement {
       embed: (displayOptions.embed = false),
       download: (displayOptions.download = false),
       icon: (displayOptions.icon = false),
-      export: (displayOptions.export = false)
+      export: (displayOptions.export = false),
     });
     const basePath =
       this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
@@ -199,9 +199,9 @@ class H5PElement extends LitElement {
       styles: [
         basePath + "styles/h5p.css",
         basePath + "styles/h5p-confirmation-dialog.css",
-        basePath + "styles/h5p-core-button.css"
+        basePath + "styles/h5p-core-button.css",
       ],
-      scripts: this.h5pJSDeps
+      scripts: this.h5pJSDeps,
     };
     let frag = document.createRange().createContextualFragment(`
     <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
@@ -278,8 +278,8 @@ H5PIntegration.l10n = {
     subLevel: "Sublevel",
     thumbnail: "Thumbnail",
     title: "Title",
-    year: "Year"
-  }
+    year: "Year",
+  },
 };
 
 class H5PStandalone {
@@ -290,7 +290,7 @@ class H5PStandalone {
     return true;
   }
   getJSONPromise(url) {
-    return fetch(url).then(function(response) {
+    return fetch(url).then(function (response) {
       return response.json();
     });
   }
@@ -315,13 +315,11 @@ class H5PStandalone {
       ? H5PIntegration.contents
       : {};
     H5PIntegration.contents["cid-" + this.id] = {
-      library: `${this.mainLibrary.machineName} ${
-        this.mainLibrary.majorVersion
-      }.${this.mainLibrary.minorVersion}`,
+      library: `${this.mainLibrary.machineName} ${this.mainLibrary.majorVersion}.${this.mainLibrary.minorVersion}`,
       jsonContent: this.content,
       styles: styles,
       scripts: scripts,
-      displayOptions: this.displayOptions
+      displayOptions: this.displayOptions,
     };
     return true;
   }
@@ -372,7 +370,7 @@ class H5PStandalone {
    */
   findMainLibrary() {
     const mainLibraryInfo = this.h5p.preloadedDependencies.find(
-      dep => dep.machineName === this.h5p.mainLibrary
+      (dep) => dep.machineName === this.h5p.mainLibrary
     );
 
     this.mainLibraryPath =
@@ -394,7 +392,7 @@ class H5PStandalone {
    */
   findAllDependencies() {
     const directDependencyNames = this.h5p.preloadedDependencies.map(
-      dependency => this.libraryPath(dependency)
+      (dependency) => this.libraryPath(dependency)
     );
 
     return this.loadDependencies(directDependencyNames, []);
@@ -410,20 +408,20 @@ class H5PStandalone {
     let dependencies = alreadyFound;
     let findNext = [];
     let newDependencies = await Promise.all(
-      toFind.map(libraryName => this.findLibraryDependencies(libraryName))
+      toFind.map((libraryName) => this.findLibraryDependencies(libraryName))
     );
     // loop over newly found libraries
-    newDependencies.forEach(library => {
+    newDependencies.forEach((library) => {
       // push into found list
       dependencies.push(library);
       // check if any dependencies haven't been found yet
-      library.dependencies.forEach(dependency => {
+      library.dependencies.forEach((dependency) => {
         if (
           !dependencies.find(
-            foundLibrary => foundLibrary.libraryPath === dependency
+            (foundLibrary) => foundLibrary.libraryPath === dependency
           ) &&
           !newDependencies.find(
-            foundLibrary => foundLibrary.libraryPath === dependency
+            (foundLibrary) => foundLibrary.libraryPath === dependency
           )
         ) {
           findNext.push(dependency);
@@ -449,7 +447,7 @@ class H5PStandalone {
 
     let dependencies = [];
     if (library.preloadedDependencies) {
-      dependencies = library.preloadedDependencies.map(dependency =>
+      dependencies = library.preloadedDependencies.map((dependency) =>
         this.libraryPath(dependency)
       );
     }
@@ -458,7 +456,7 @@ class H5PStandalone {
       libraryPath,
       dependencies,
       preloadedCss: library.preloadedCss,
-      preloadedJs: library.preloadedJs
+      preloadedJs: library.preloadedJs,
     };
   }
 
@@ -472,7 +470,7 @@ class H5PStandalone {
     let CSSDependencies = {};
     let JSDependencies = {};
 
-    dependencies.forEach(dependency => {
+    dependencies.forEach((dependency) => {
       dependencySorter.add(dependency.libraryPath, dependency.dependencies);
 
       if (dependency.preloadedCss) {
@@ -481,7 +479,7 @@ class H5PStandalone {
         ]
           ? CSSDependencies[dependency.libraryPath]
           : [];
-        dependency.preloadedCss.forEach(style => {
+        dependency.preloadedCss.forEach((style) => {
           CSSDependencies[dependency.libraryPath].push(
             `${this.path}/${dependency.libraryPath}/${style.path}`
           );
@@ -494,7 +492,7 @@ class H5PStandalone {
         ]
           ? JSDependencies[dependency.libraryPath]
           : [];
-        dependency.preloadedJs.forEach(script => {
+        dependency.preloadedJs.forEach((script) => {
           JSDependencies[dependency.libraryPath].push(
             `${this.path}/${dependency.libraryPath}/${script.path}`
           );
@@ -508,7 +506,7 @@ class H5PStandalone {
     dependencySorter
       .sort()
       .reverse()
-      .forEach(function(dependencyName) {
+      .forEach(function (dependencyName) {
         Array.prototype.push.apply(styles, CSSDependencies[dependencyName]);
         Array.prototype.push.apply(scripts, JSDependencies[dependencyName]);
       });
@@ -516,13 +514,13 @@ class H5PStandalone {
     Array.prototype.push.apply(
       styles,
       this.mainLibrary.preloadedCss.map(
-        style => `${this.path}/${this.mainLibraryPath}/${style.path}`
+        (style) => `${this.path}/${this.mainLibraryPath}/${style.path}`
       )
     );
     Array.prototype.push.apply(
       scripts,
       this.mainLibrary.preloadedJs.map(
-        script => `${this.path}/${this.mainLibraryPath}/${script.path}`
+        (script) => `${this.path}/${this.mainLibraryPath}/${script.path}`
       )
     );
 

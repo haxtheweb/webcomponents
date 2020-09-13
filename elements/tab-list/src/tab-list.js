@@ -43,7 +43,7 @@ class TabList extends LitElement {
             display: block;
           }
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -56,7 +56,7 @@ class TabList extends LitElement {
     return html`
       <paper-tabs>
         ${this.tabs.map(
-          tab => html`
+          (tab) => html`
             <paper-tab>
               <a
                 target="_blank"
@@ -84,7 +84,7 @@ class TabList extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -96,8 +96,8 @@ class TabList extends LitElement {
        * List of tabs
        */
       tabs: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   static get haxProperties() {
@@ -113,8 +113,8 @@ class TabList extends LitElement {
         groups: ["Presentation", "Links"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -131,20 +131,20 @@ class TabList extends LitElement {
                 title: "Link",
                 description: "link to go to",
                 inputMethod: "textfield",
-                required: true
+                required: true,
               },
               {
                 property: "label",
                 title: "Label",
                 description: "text to place on the tab",
                 inputMethod: "textfield",
-                required: true
-              }
-            ]
-          }
+                required: true,
+              },
+            ],
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

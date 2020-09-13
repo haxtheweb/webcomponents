@@ -54,7 +54,7 @@ class MapMenu extends LitElement {
         :host([active-indicator]) map-menu-builder {
           --map-menu-active-color: transparent;
         }
-      `
+      `,
     ];
   }
   /**
@@ -107,38 +107,38 @@ class MapMenu extends LitElement {
     return {
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       title: {
-        type: String
+        type: String,
       },
       data: {
-        type: Array
+        type: Array,
       },
       /**
        * Support for JSON Outline Schema manifest format
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       items: {
-        type: Array
+        type: Array,
       },
       /**
        * Current selected item.
        */
       selected: {
-        type: String
+        type: String,
       },
       activeItem: {
-        type: Object
+        type: Object,
       },
       /**
        * Auto scroll an active element if not in view
        */
       autoScroll: {
         type: Boolean,
-        attribute: "auto-scroll"
+        attribute: "auto-scroll",
       },
       /**
        * Show active indicator animation
@@ -146,8 +146,8 @@ class MapMenu extends LitElement {
       activeIndicator: {
         type: Boolean,
         reflect: true,
-        attribute: "active-indicator"
-      }
+        attribute: "active-indicator",
+      },
     };
   }
   /**
@@ -169,8 +169,8 @@ class MapMenu extends LitElement {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -207,7 +207,7 @@ class MapMenu extends LitElement {
         // kick off smooth scroll
         this.__scrollHandler(newValue, {
           duration: 100,
-          scrollElement: this
+          scrollElement: this,
         });
       }
     }
@@ -223,7 +223,7 @@ class MapMenu extends LitElement {
       align: "top",
       delay: 0,
       duration: 300,
-      scrollElement: window
+      scrollElement: window,
     };
     // combine default and user defined options
     const _options = Object.assign({}, defaultOptions, options);
@@ -291,7 +291,7 @@ class MapMenu extends LitElement {
     const items = [];
     if (!data) return;
     // find parents
-    data.forEach(element => {
+    data.forEach((element) => {
       // find top level parents
       if (!element.parent) {
         items.push(element);
@@ -314,10 +314,10 @@ class MapMenu extends LitElement {
    */
   _setChildren(item, data) {
     // find all children
-    const children = data.filter(d => item.id === d.parent);
+    const children = data.filter((d) => item.id === d.parent);
     item.children = children;
     if (item.children.length > 0) {
-      item.children.forEach(child => {
+      item.children.forEach((child) => {
         // recursively call itself
         this._setChildren(child, data);
       });
@@ -341,7 +341,7 @@ class MapMenu extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e.detail.id
+        detail: e.detail.id,
       })
     );
   }
@@ -365,9 +365,9 @@ class MapMenu extends LitElement {
             {},
             {
               action: action,
-              target: target
+              target: target,
             }
-          )
+          ),
         })
       );
     }

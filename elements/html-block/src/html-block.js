@@ -38,13 +38,13 @@ class HtmlBlock extends HTMLElement {
         handles: [
           {
             type: "html",
-            content: "slot"
-          }
+            content: "slot",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -53,11 +53,11 @@ class HtmlBlock extends HTMLElement {
             slot: "",
             title: "HTML",
             description: "HTML code you want to present in content",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 
@@ -92,7 +92,7 @@ class HtmlBlock extends HTMLElement {
       attributes: true,
       characterData: true,
       childList: true,
-      subtree: true
+      subtree: true,
     });
   }
   render() {

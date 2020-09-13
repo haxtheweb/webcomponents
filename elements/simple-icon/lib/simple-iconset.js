@@ -37,7 +37,7 @@ class SimpleIconset extends HTMLElement {
         }
       });
       // process in reverse order to avoid key splicing issues
-      list.reverse().forEach(val => {
+      list.reverse().forEach((val) => {
         this.needsHydrated.splice(val, 1);
       });
     }

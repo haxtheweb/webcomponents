@@ -38,25 +38,25 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
         property: "src",
         title: "Image URL",
         description: "The image URL. (Leave blank to remove.)",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       },
       {
         property: "alt",
         title: "Alt Text",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       },
       {
         property: "width",
         title: "Width",
         inputMethod: "textfield",
-        inline: true
+        inline: true,
       },
       {
         property: "height",
         title: "Height",
         inputMethod: "textfield",
-        inline: true
-      }
+        inline: true,
+      },
     ];
     this.command = "insertHTML";
     this.label = "Insert Inline Image";
@@ -94,7 +94,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       alt: this.__selectionContents.getAttribute("alt"),
       src: this.__selectionContents.getAttribute("src"),
       width: this.__selectionContents.getAttribute("width"),
-      height: this.__selectionContents.getAttribute("height")
+      height: this.__selectionContents.getAttribute("height"),
     };
   }
 

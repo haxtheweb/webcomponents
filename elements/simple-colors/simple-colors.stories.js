@@ -9,8 +9,8 @@ export default {
   component: "simple-colors",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 
 const utils = new StorybookUtilities();
@@ -19,9 +19,9 @@ export const SimpleColorsStory = () => {
       {
         property: "accentColor",
         title: "Accent Color",
-        inputMethod: "colorpicker"
+        inputMethod: "colorpicker",
       },
-      { property: "dark", title: "Invert Colors", inputMethod: "boolean" }
+      { property: "dark", title: "Invert Colors", inputMethod: "boolean" },
     ],
     knobs = utils.getKnobs(props, { accentColor: utils.getRandomColor() });
   return utils.getDemo(
@@ -105,7 +105,7 @@ export const SimpleColorsPickerStory = () => {
   delete rawProps.accentColor;
   delete rawProps.dark;
   let knobs = utils.getKnobs(utils.getElementProperties(rawProps), {
-    label: 'Select a color from "simple-colors"'
+    label: 'Select a color from "simple-colors"',
   });
   return utils.makeElement(SimpleColorsPicker, knobs);
 };

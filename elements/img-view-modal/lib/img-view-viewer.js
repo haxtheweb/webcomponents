@@ -175,7 +175,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           max-width: 4em;
           border: 1px solid var(--img-view-viewer-borderColor, #ddd);
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -219,9 +219,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           <div id="viewer"></div>
         </div>
         <div id="placeholder">
-          <div id="info" ?hidden="${!this.info}">
-            ${this.info}
-          </div>
+          <div id="info" ?hidden="${!this.info}">${this.info}</div>
         </div>
         ${this.getToolbars(this.defaultToolbars, this.toolbars, "bottom")}
       </div>
@@ -238,7 +236,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       ...props,
       figures: {
-        type: Array
+        type: Array,
       },
       /**
        * whether info mode is toggled
@@ -250,13 +248,13 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       kbdToggled: {
         type: Boolean,
         attribute: "keyboard-help-mode",
-        reflect: true
+        reflect: true,
       },
       /**
        * if used with multiple images and paged navigation, index of current item
        */
       toolbars: { type: Object, attribute: "toolbars", reflect: true },
-      __screenfullLoaded: { type: Boolean }
+      __screenfullLoaded: { type: Boolean },
     };
   }
   getToolbars(defaultToolbars, customToolbars, topOrBottom = "bottom") {
@@ -278,7 +276,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "homebutton",
       icon: "home",
-      text: "return image to home position"
+      text: "return image to home position",
     };
   }
   /**
@@ -293,9 +291,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       icon: "fullscreen",
       toggleProp: "__fullscreen",
       enabledProp: "fullscreenEnabled",
-      text: html`
-        toggle fullscreen
-      `
+      text: html` toggle fullscreen `,
     };
   }
   /**
@@ -322,7 +318,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       toggleProp: "navigatorToggled",
       shownProp: "showNavigator",
       enabledProp: "showNavigator",
-      text: "toggle nav window"
+      text: "toggle nav window",
     };
   }
   /**
@@ -337,7 +333,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       icon: "info-outline",
       toggleProp: "infoToggled",
       hiddenProp: "noSources",
-      text: "toggle information"
+      text: "toggle information",
     };
   }
   /**
@@ -396,7 +392,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             </tr>
           </tbody>
         </table>
-      `
+      `,
     };
   }
   /**
@@ -410,7 +406,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       id: "flipbutton",
       icon: "image:flip",
       text: "flip horizontal",
-      toggleProp: "flipToggled"
+      toggleProp: "flipToggled",
     };
   }
   /**
@@ -423,7 +419,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "rotategroup",
       type: "toolbar-group",
-      contents: [this.rotateccwbutton, this.rotatecwbutton]
+      contents: [this.rotateccwbutton, this.rotatecwbutton],
     };
   }
   /**
@@ -436,7 +432,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "rotateccwbutton",
       icon: "image:rotate-left",
-      text: "rotate counterclockwise"
+      text: "rotate counterclockwise",
     };
   }
   /**
@@ -449,7 +445,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "rotatecwbutton",
       icon: "image:rotate-right",
-      text: "rotate clockwise"
+      text: "rotate clockwise",
     };
   }
   /**
@@ -466,8 +462,8 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         this.panleftbutton,
         this.panupbutton,
         this.pandownbutton,
-        this.panrightbutton
-      ]
+        this.panrightbutton,
+      ],
     };
   }
   /**
@@ -480,7 +476,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "panleftbutton",
       icon: "arrow-back",
-      text: "pan left"
+      text: "pan left",
     };
   }
   /**
@@ -493,7 +489,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "panupbutton",
       icon: "arrow-upward",
-      text: "pan up"
+      text: "pan up",
     };
   }
   /**
@@ -506,7 +502,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "pandownbutton",
       icon: "arrow-downward",
-      text: "pan down"
+      text: "pan down",
     };
   }
   /**
@@ -519,7 +515,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "panrightbutton",
       icon: "arrow-forward",
-      text: "pan right"
+      text: "pan right",
     };
   }
   /**
@@ -532,7 +528,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "zoomgroup",
       type: "toolbar-group",
-      contents: [this.zoominbutton, this.zoomoutbutton]
+      contents: [this.zoominbutton, this.zoomoutbutton],
     };
   }
   /**
@@ -545,7 +541,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "zoominbutton",
       icon: "zoom-in",
-      text: "zoom in"
+      text: "zoom in",
     };
   }
   /**
@@ -558,7 +554,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     return {
       id: "zoomoutbutton",
       icon: "zoom-out",
-      text: "zoom out"
+      text: "zoom out",
     };
   }
   /**
@@ -574,7 +570,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       icon: "chevron-left",
       text: "prev",
       disabledProp: "prevDisabled",
-      flexGrow: true
+      flexGrow: true,
     };
   }
   /**
@@ -591,7 +587,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       disabledProp: "nextDisabled",
       text: "next",
       showText: true,
-      flexGrow: true
+      flexGrow: true,
     };
   }
   get pages() {
@@ -642,7 +638,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           />
           of ${this.pages.length}
         </p>
-      `
+      `,
     };
   }
   /**
@@ -667,9 +663,9 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           "pageXofY",
           "pangroup",
           "fullscreenbutton",
-          "nextbutton"
-        ]
-      }
+          "nextbutton",
+        ],
+      },
     };
   }
   /**
@@ -686,9 +682,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   _item(config = {}, top = false) {
     if (typeof config === "string" && this[config]) config = this[config];
     if (typeof config !== "object") {
-      return html`
-        <div class="misc-item">${config}</div>
-      `;
+      return html` <div class="misc-item">${config}</div> `;
     } else if (config && typeof config.contents === typeof undefined) {
       return this._button(config, top);
     } else {
@@ -718,7 +712,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           >
             ${!Array.isArray(config.contents)
               ? config.contents
-              : (config.contents || []).map(item => this._item(item, top))}
+              : (config.contents || []).map((item) => this._item(item, top))}
           </div>
         `;
   }
@@ -751,7 +745,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
           <button
             .id="${config.id || undefined}"
             class="${this._buttonClass(config)}"
-            @click="${e => this._toolbarButtonClick(config.id, e)}"
+            @click="${(e) => this._toolbarButtonClick(config.id, e)}"
             controls="container"
             ?disabled="${this._buttonDisabled(config)}"
             ?hidden="${this._buttonHidden(config)}"
@@ -765,7 +759,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
             .id="${config.id || undefined}"
             aria-pressed="${this[config.toggleProp] ? "true" : "false"}"
             class="${this._buttonClass(config)}"
-            @click="${e => this._toolbarButtonClick(config.id, e)}"
+            @click="${(e) => this._toolbarButtonClick(config.id, e)}"
             controls="container"
             ?disabled="${this._buttonDisabled(config)}"
             ?hidden="${this._buttonHidden(config)}"
@@ -823,7 +817,9 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
       : undefined;
   }
   get sources() {
-    return this.figures ? this.figures.map(fig => fig.src).slice(1) : undefined;
+    return this.figures
+      ? this.figures.map((fig) => fig.src).slice(1)
+      : undefined;
   }
   /**
    * overrides fullscreen API
@@ -848,8 +844,8 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
         detail: {
           buttonId: buttonId,
           eventType: eventType,
-          viewer: this
-        }
+          viewer: this,
+        },
       })
     );
     if (buttonId === "homebutton") this.resetZoom();
@@ -901,7 +897,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.viewer.addSimpleImage({
       url: this.loadSrc,
       index: this.page,
-      clone: true
+      clone: true,
     });
   }
 
@@ -910,7 +906,7 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.viewer.addTiledImage({
       tileSource: this.loadSrc,
       index: this.page,
-      clone: true
+      clone: true,
     });
   }
 }

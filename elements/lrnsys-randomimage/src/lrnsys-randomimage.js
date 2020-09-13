@@ -38,8 +38,8 @@ class LrnsysRandomimage extends PolymerElement {
         notify: true,
         value() {
           return [];
-        }
-      }
+        },
+      },
     };
   }
   /**

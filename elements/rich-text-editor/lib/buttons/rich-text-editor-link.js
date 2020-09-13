@@ -37,15 +37,15 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
         property: "linktext",
         title: "Text",
         description: "The link text",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       },
       {
         property: "href",
         title: "Link",
         description: "The link URL. (Leave blank to remove.)",
         inputMethod: "url",
-        autoValidate: true
-      }
+        autoValidate: true,
+      },
     ];
     this.command = "CreateLink";
     this.icon = "link";
@@ -55,7 +55,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.toggledLabel = "Unlink";
     (this.toggles = "true"), (this.tag = "a");
     this.value = {
-      link: null
+      link: null,
     };
     this.shortcutKeys = "ctrl+k";
   }
@@ -91,7 +91,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
       href:
         this.__selectionContents && this.__selectionContents.getAttribute
           ? this.__selectionContents.getAttribute("href")
-          : undefined
+          : undefined,
     };
   }
 

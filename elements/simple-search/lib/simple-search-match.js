@@ -40,8 +40,8 @@ class SimpleSearchMatch extends LitElement {
       matchNumber: {
         type: Number,
         reflect: true,
-        attribute: "match-number"
-      }
+        attribute: "match-number",
+      },
     };
   }
 
@@ -60,14 +60,12 @@ class SimpleSearchMatch extends LitElement {
           border-radius: var(--simple-search-match-border-radius, 0.16px);
           font-weight: var(--simple-search-match-font-weight, bold);
         }
-      `
+      `,
     ];
   }
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 customElements.define(SimpleSearchMatch.tag, SimpleSearchMatch);

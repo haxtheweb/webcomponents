@@ -51,7 +51,7 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
     return {
       icon: {
         type: String,
-        value: "add"
+        value: "add",
       },
       /**
        * Change the display of the add asset element
@@ -61,8 +61,8 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
       display: {
         type: String,
         value: "box",
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 }

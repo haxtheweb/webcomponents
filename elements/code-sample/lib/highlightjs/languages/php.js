@@ -1,10 +1,10 @@
 function phpLang(hljs) {
   var VARIABLE = {
-    begin: "\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*"
+    begin: "\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*",
   };
   var PREPROCESSOR = {
     className: "meta",
-    begin: /<\?(php)?|\?>/
+    begin: /<\?(php)?|\?>/,
   };
   var STRING = {
     className: "string",
@@ -12,15 +12,15 @@ function phpLang(hljs) {
     variants: [
       {
         begin: 'b"',
-        end: '"'
+        end: '"',
       },
       {
         begin: "b'",
-        end: "'"
+        end: "'",
       },
       hljs.inherit(hljs.APOS_STRING_MODE, { illegal: null }),
-      hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null })
-    ]
+      hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null }),
+    ],
   };
   var NUMBER = { variants: [hljs.BINARY_NUMBER_MODE, hljs.C_NUMBER_MODE] };
   return {
@@ -42,14 +42,14 @@ function phpLang(hljs) {
         contains: [
           {
             className: "doctag",
-            begin: "@[A-Za-z]+"
-          }
-        ]
+            begin: "@[A-Za-z]+",
+          },
+        ],
       }),
       hljs.COMMENT("__halt_compiler.+?;", false, {
         endsWithParent: true,
         keywords: "__halt_compiler",
-        lexemes: hljs.UNDERSCORE_IDENT_RE
+        lexemes: hljs.UNDERSCORE_IDENT_RE,
       }),
       {
         className: "string",
@@ -59,19 +59,19 @@ function phpLang(hljs) {
           hljs.BACKSLASH_ESCAPE,
           {
             className: "subst",
-            variants: [{ begin: /\$\w+/ }, { begin: /\{\$/, end: /\}/ }]
-          }
-        ]
+            variants: [{ begin: /\$\w+/ }, { begin: /\{\$/, end: /\}/ }],
+          },
+        ],
       },
       PREPROCESSOR,
       {
         className: "keyword",
-        begin: /\$this\b/
+        begin: /\$this\b/,
       },
       VARIABLE,
       {
         // swallow composed identifiers to avoid parsing them as keywords
-        begin: /(::|->)+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/
+        begin: /(::|->)+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
       },
       {
         className: "function",
@@ -90,10 +90,10 @@ function phpLang(hljs) {
               VARIABLE,
               hljs.C_BLOCK_COMMENT_MODE,
               STRING,
-              NUMBER
-            ]
-          }
-        ]
+              NUMBER,
+            ],
+          },
+        ],
       },
       {
         className: "class",
@@ -103,26 +103,26 @@ function phpLang(hljs) {
         illegal: /[:\(\$"]/,
         contains: [
           { beginKeywords: "extends implements" },
-          hljs.UNDERSCORE_TITLE_MODE
-        ]
+          hljs.UNDERSCORE_TITLE_MODE,
+        ],
       },
       {
         beginKeywords: "namespace",
         end: ";",
         illegal: /[\.']/,
-        contains: [hljs.UNDERSCORE_TITLE_MODE]
+        contains: [hljs.UNDERSCORE_TITLE_MODE],
       },
       {
         beginKeywords: "use",
         end: ";",
-        contains: [hljs.UNDERSCORE_TITLE_MODE]
+        contains: [hljs.UNDERSCORE_TITLE_MODE],
       },
       {
-        begin: "=>" // No markup, just a relevance booster
+        begin: "=>", // No markup, just a relevance booster
       },
       STRING,
-      NUMBER
-    ]
+      NUMBER,
+    ],
   };
 }
 

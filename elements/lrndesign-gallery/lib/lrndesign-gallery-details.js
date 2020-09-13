@@ -28,7 +28,7 @@ class LrndesignGalleryDetails extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   /**
@@ -39,9 +39,7 @@ class LrndesignGalleryDetails extends LitElement {
   }
   // render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   constructor() {
     super();
@@ -60,8 +58,8 @@ class LrndesignGalleryDetails extends LitElement {
        * image's details in as a string of HTML
        */
       details: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**

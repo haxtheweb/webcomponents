@@ -2,12 +2,12 @@ import { css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 
-const HAXCMSThemeParts = function(SuperClass) {
+const HAXCMSThemeParts = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
       this.__disposer = this.__disposer ? this.__disposer : [];
-      autorun(reaction => {
+      autorun((reaction) => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);
       });
@@ -31,7 +31,7 @@ const HAXCMSThemeParts = function(SuperClass) {
               blur(1px)
             );
           }
-        `
+        `,
       ];
     }
     static get properties() {
@@ -44,8 +44,8 @@ const HAXCMSThemeParts = function(SuperClass) {
         editMode: {
           type: Boolean,
           attribute: "edit-mode",
-          reflect: true
-        }
+          reflect: true,
+        },
       };
     }
   };

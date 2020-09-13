@@ -12,7 +12,9 @@ a central concept, much like the ELMS:LN snowflake icon.
 class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-concept-network/lib/simple-concept-network-node.js");
+    import(
+      "@lrnwebcomponents/simple-concept-network/lib/simple-concept-network-node.js"
+    );
   }
   static get template() {
     return html`
@@ -94,13 +96,13 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
       visualization: {
         type: String,
         reflectToAttribute: true,
-        value: "3d"
+        value: "3d",
       },
       /**
        * disabled status
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Apply color to text / icon instead of background.
@@ -108,7 +110,7 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
       coloredText: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * List of nodes to template stamp out
@@ -116,8 +118,8 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
       nodes: {
         type: Array,
         value: [],
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   static get haxProperties() {
@@ -138,12 +140,12 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
             source: "nodes.source",
             title: "nodes.label",
             link: "nodes.src",
-            description: "nodes.description"
-          }
+            description: "nodes.description",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -156,22 +158,22 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
             options: {
               "3d": "3d plain",
               network: "network",
-              flat: "flat"
-            }
+              flat: "flat",
+            },
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             property: "coloredText",
             title: "Colored Text / Icon",
             description: "Apply color to text / icon instead of background.",
             inputMethod: "boolean",
-            icon: "editor:format-color-text"
+            icon: "editor:format-color-text",
           },
           {
             property: "nodes",
@@ -185,47 +187,47 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
                 title: "Node color",
                 description: "Select the accent color for this node",
                 inputMethod: "colorpicker",
-                icon: "editor:format-color-fill"
+                icon: "editor:format-color-fill",
               },
               {
                 property: "icon",
                 title: "Icon",
                 description: "icon to display in the middle",
                 inputMethod: "iconpicker",
-                options: []
+                options: [],
               },
               {
                 property: "label",
                 title: "Label",
                 description: "Label",
-                inputMethod: "textfield"
+                inputMethod: "textfield",
               },
               {
                 property: "image",
                 title: "Image",
                 description: "Image for the background",
                 inputMethod: "textfield",
-                validationType: "url"
+                validationType: "url",
               },
               {
                 property: "description",
                 title: "Description",
                 description:
                   "A longer description that can be used as part of a modal presentation",
-                inputMethod: "textfield"
+                inputMethod: "textfield",
               },
               {
                 property: "src",
                 title: "Link",
                 description: "Label",
                 inputMethod: "textfield",
-                validationType: "url"
-              }
-            ]
-          }
+                validationType: "url",
+              },
+            ],
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   /**

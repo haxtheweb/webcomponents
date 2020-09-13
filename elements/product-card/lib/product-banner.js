@@ -8,7 +8,7 @@ class ProductBanner extends SimpleColors {
       secondaryText: { type: String, attribute: "secondary-text" },
       logo: { type: String },
       image: { type: String },
-      alt: { type: String }
+      alt: { type: String },
     };
   }
   /**
@@ -128,7 +128,7 @@ class ProductBanner extends SimpleColors {
           );
           margin: 5px 0 5px 0;
         }
-      `
+      `,
     ];
   }
 

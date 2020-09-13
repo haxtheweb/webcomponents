@@ -33,7 +33,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#333333",
         "#222222",
         "#111111",
-        "#000000"
+        "#000000",
       ],
       red: [
         "#ffdddd",
@@ -47,7 +47,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#850000",
         "#670000",
         "#520000",
-        "#3f0000"
+        "#3f0000",
       ],
       pink: [
         "#ffe6f1",
@@ -61,7 +61,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#980036",
         "#78002b",
         "#5a0020",
-        "#440019"
+        "#440019",
       ],
       purple: [
         "#fce6ff",
@@ -75,7 +75,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#6c0079",
         "#490052",
         "#33003a",
-        "#200025"
+        "#200025",
       ],
       "deep-purple": [
         "#f3e4ff",
@@ -89,7 +89,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#4c0081",
         "#3a0063",
         "#2a0049",
-        "#1d0033"
+        "#1d0033",
       ],
       indigo: [
         "#e5ddff",
@@ -103,7 +103,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#20008c",
         "#160063",
         "#100049",
-        "#0a0030"
+        "#0a0030",
       ],
       blue: [
         "#e2ecff",
@@ -117,7 +117,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#003494",
         "#002569",
         "#001947",
-        "#001333"
+        "#001333",
       ],
       "light-blue": [
         "#ddefff",
@@ -131,7 +131,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#0055a8",
         "#003f7d",
         "#002850",
-        "#001b36"
+        "#001b36",
       ],
       cyan: [
         "#ddf8ff",
@@ -145,7 +145,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#005970",
         "#003f50",
         "#002c38",
-        "#001a20"
+        "#001a20",
       ],
       teal: [
         "#d9fff0",
@@ -159,7 +159,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#004e3a",
         "#003829",
         "#002a20",
-        "#001b14"
+        "#001b14",
       ],
       green: [
         "#e1ffeb",
@@ -173,7 +173,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#005a23",
         "#003d18",
         "#002a11",
-        "#001d0c"
+        "#001d0c",
       ],
       "light-green": [
         "#ebffdb",
@@ -187,7 +187,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#296100",
         "#1b3f00",
         "#143000",
-        "#0d2000"
+        "#0d2000",
       ],
       lime: [
         "#f1ffd2",
@@ -201,7 +201,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#3b5a00",
         "#293f00",
         "#223400",
-        "#182400"
+        "#182400",
       ],
       yellow: [
         "#ffffd5",
@@ -215,7 +215,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#585700",
         "#454400",
         "#303000",
-        "#242400"
+        "#242400",
       ],
       amber: [
         "#fff2d4",
@@ -229,7 +229,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#614b00",
         "#413200",
         "#302500",
-        "#221a00"
+        "#221a00",
       ],
       orange: [
         "#ffebd7",
@@ -243,7 +243,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#833d00",
         "#612d00",
         "#3d1c00",
-        "#2c1400"
+        "#2c1400",
       ],
       "deep-orange": [
         "#ffe7e0",
@@ -257,7 +257,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#8a1c00",
         "#561100",
         "#3a0c00",
-        "#240700"
+        "#240700",
       ],
       brown: [
         "#f0e2de",
@@ -271,7 +271,7 @@ class SimpleColorsSharedStyles extends LitElement {
         "#5b3328",
         "#3b1e15",
         "#2c140e",
-        "#200e09"
+        "#200e09",
       ],
       "blue-grey": [
         "#e7eff1",
@@ -285,8 +285,8 @@ class SimpleColorsSharedStyles extends LitElement {
         "#2f3e45",
         "#1e282c",
         "#182023",
-        "#0f1518"
-      ]
+        "#0f1518",
+      ],
     };
     this.contrasts = {
       greyColor: {
@@ -302,7 +302,7 @@ class SimpleColorsSharedStyles extends LitElement {
           { min: 1, max: 6 },
           { min: 1, max: 6 },
           { min: 1, max: 6 },
-          { min: 1, max: 6 }
+          { min: 1, max: 6 },
         ],
         aa: [
           //if bold text < 14pt, or text < 18pt
@@ -317,8 +317,8 @@ class SimpleColorsSharedStyles extends LitElement {
           { min: 1, max: 7 },
           { min: 1, max: 6 },
           { min: 1, max: 6 },
-          { min: 1, max: 6 }
-        ]
+          { min: 1, max: 6 },
+        ],
       },
       colorColor: {
         //if neither the color nor its contrast are grey
@@ -334,7 +334,7 @@ class SimpleColorsSharedStyles extends LitElement {
           { min: 1, max: 4 },
           { min: 1, max: 5 },
           { min: 1, max: 6 },
-          { min: 1, max: 6 }
+          { min: 1, max: 6 },
         ],
         aa: [
           { min: 8, max: 12 },
@@ -348,9 +348,9 @@ class SimpleColorsSharedStyles extends LitElement {
           { min: 1, max: 4 },
           { min: 1, max: 4 },
           { min: 1, max: 5 },
-          { min: 1, max: 5 }
-        ]
-      }
+          { min: 1, max: 5 },
+        ],
+      },
     };
   }
 
@@ -379,7 +379,7 @@ class SimpleColorsSharedStyles extends LitElement {
     return {
       theme: theme,
       color: color,
-      shade: shade
+      shade: shade,
     };
   }
   /**
@@ -429,7 +429,7 @@ class SimpleColorsSharedStyles extends LitElement {
    */
   getContrastingColors(colorName, colorShade, isLarge) {
     let result = {};
-    Object.keys(this.colors).forEach(color => {
+    Object.keys(this.colors).forEach((color) => {
       result[color] = this.getContrastingShades(
         isLarge,
         colorName,
@@ -507,9 +507,7 @@ window.SimpleColorsSharedStyles.requestAvailability = () => {
     window.SimpleColorsSharedStyles.stylesheet = document.createElement(
       "style"
     );
-    window.SimpleColorsSharedStyles.stylesheet.innerHTML = `${
-      SimpleColorsSharedStyles.styles[0].cssText
-    }`;
+    window.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
     document.head.append(window.SimpleColorsSharedStyles.stylesheet);
   }
   return window.SimpleColorsSharedStyles.instance;

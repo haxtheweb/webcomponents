@@ -25,7 +25,7 @@ class figureCarousel extends RadioBehaviors(LitElement) {
         ::slotted(figure:not([active])) {
           display: none !important;
         }
-      `
+      `,
     ];
   }
   // properties available to the custom element for data binding
@@ -33,8 +33,8 @@ class figureCarousel extends RadioBehaviors(LitElement) {
     return {
       ...super.properties,
       figures: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -52,11 +52,11 @@ class figureCarousel extends RadioBehaviors(LitElement) {
     console.log("this.itemData", this.itemData);
     return html`
       ${(this.itemData || []).map(
-        item =>
+        (item) =>
           html`
             <button
               id="select-${item.id}"
-              @click="${e => this.selectItem(`${item.id}`)}"
+              @click="${(e) => this.selectItem(`${item.id}`)}"
             >
               ${item.id}
             </button>

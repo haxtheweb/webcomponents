@@ -5,7 +5,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   select,
-  text
+  text,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -14,8 +14,8 @@ export default {
   component: "hax-iconset",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const HaxIconsetStory = () => {

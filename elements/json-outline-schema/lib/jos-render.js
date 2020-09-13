@@ -30,20 +30,20 @@ class JosRender extends LitElement {
           margin: var(--jos-render-margin, 8px);
           padding: var(--jos-render-padding, 8px);
         }
-      `
+      `,
     ];
   }
   static get properties() {
     return {
       source: {
-        type: String
+        type: String,
       },
       map: {
-        type: Object
+        type: Object,
       },
       items: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   render() {
@@ -66,7 +66,7 @@ class JosRender extends LitElement {
         // register
         this.registry.register({
           tag: this.map.tag,
-          path: this.map.path
+          path: this.map.path,
         });
         // load the definition
         this.registry.loadDefinition(this.map.tag);
@@ -89,7 +89,7 @@ class JosRender extends LitElement {
       // wipe slot
       wipeSlot(this);
       let values = valueMapTransform(items, this.map.properties);
-      values.forEach(item => {
+      values.forEach((item) => {
         let n = document.createElement(this.map.tag);
         Object.assign(n, item);
         this.appendChild(n);

@@ -40,7 +40,7 @@ class MtzMarkedControlGenericWrap extends mtzMarkedControlBehavior(
       title: String,
       icon: String,
       keys: String,
-      noink: Boolean // Pass-through
+      noink: Boolean, // Pass-through
     };
   }
 }

@@ -112,7 +112,7 @@ class SimpleFieldsUpload extends SimpleColors {
           --simple-camera-snap-button-border-radius: 100%;
           --simple-camera-snap-button-opacity: 0.7;
         }
-      `
+      `,
     ];
   }
   /**
@@ -200,8 +200,8 @@ class SimpleFieldsUpload extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent("value-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -213,34 +213,34 @@ class SimpleFieldsUpload extends SimpleColors {
   static get properties() {
     return {
       label: {
-        type: String
+        type: String,
       },
       description: {
-        type: String
+        type: String,
       },
       value: {
-        type: String
+        type: String,
       },
       option: {
-        type: String
+        type: String,
       },
       options: {
-        type: Array
+        type: Array,
       },
       /**
        * Used when we want to ensure there is not a web cam option like video upload.
        */
       noCamera: {
         type: Boolean,
-        attribute: "no-camera"
+        attribute: "no-camera",
       },
       /**
        * No Voice Recording
        */
       noVoiceRecord: {
         type: Boolean,
-        attribute: "no-voice-record"
-      }
+        attribute: "no-voice-record",
+      },
     };
   }
   /**
@@ -252,7 +252,7 @@ class SimpleFieldsUpload extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: false,
-        detail: e.detail
+        detail: e.detail,
       })
     );
   }
@@ -268,7 +268,7 @@ class SimpleFieldsUpload extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: false,
-        detail: e.detail
+        detail: e.detail,
       })
     );
   }
@@ -282,16 +282,16 @@ class SimpleFieldsUpload extends SimpleColors {
         {
           alt: "URL",
           icon: "icons:link",
-          value: "url"
-        }
+          value: "url",
+        },
       ],
       [
         {
           alt: "Upload",
           icon: "icons:file-upload",
-          value: "fileupload"
-        }
-      ]
+          value: "fileupload",
+        },
+      ],
     ];
     if (!navigator.mediaDevices || this.noCamera) {
       this.shadowRoot.querySelector("#camerahole").style.display = "none";
@@ -300,8 +300,8 @@ class SimpleFieldsUpload extends SimpleColors {
         {
           alt: "Camera",
           icon: "image:photo-camera",
-          value: "selfie"
-        }
+          value: "selfie",
+        },
       ]);
     }
     if (!navigator.mediaDevices || this.noVoiceRecord) {
@@ -332,7 +332,7 @@ class SimpleFieldsUpload extends SimpleColors {
     } else {
       this.option = "fileupload";
     }
-    this.shadowRoot.querySelector("#picker").addEventListener("change", e => {
+    this.shadowRoot.querySelector("#picker").addEventListener("change", (e) => {
       if (e && e.detail && e.detail.value === "selfie") this._takeSelfie(e);
       if (e && e.detail && e.detail.value === "audio") this._voiceRecorder(e);
     });
@@ -383,7 +383,7 @@ class SimpleFieldsUpload extends SimpleColors {
    * in a string to actually hit the deeper part of an object structure.
    */
   _resolveObjectPath(path, obj) {
-    return path.split(".").reduce(function(prev, curr) {
+    return path.split(".").reduce(function (prev, curr) {
       return prev ? prev[curr] : null;
     }, obj || self);
   }

@@ -38,6 +38,7 @@
   -ms-transition: 0.5s all ease-in-out;
   -o-transition: 0.5s all ease-in-out;
 }
+
 .wrapper:hover {
   opacity: 0;
   background-color: transparent;

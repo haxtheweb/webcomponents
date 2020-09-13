@@ -209,7 +209,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           <strong>[[remainingAttempts]]</strong>
         </div>
         <template is="dom-repeat" items="[[gameBoard]]" as="row" mutable-data>
-          <responsive-grid-row gutter="0" class\$="row row-[[index]]">
+          <responsive-grid-row gutter="0" class$="row row-[[index]]">
             <template
               is="dom-repeat"
               items="[[row.cols]]"
@@ -220,12 +220,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
                 <paper-button
                   class="grid-button"
                   raised="[[!col.notRaised]]"
-                  data-question-uuid\$="[[col.uuid]]"
-                  data-value\$="[[col.points]]"
-                  data-display-points\$="[[col.displayPoints]]"
-                  data-is-bonus\$="[[col.isBonus]]"
-                  data-type\$="[[col.type]]"
-                  disabled\$="[[col.disabled]]"
+                  data-question-uuid$="[[col.uuid]]"
+                  data-value$="[[col.points]]"
+                  data-display-points$="[[col.displayPoints]]"
+                  data-is-bonus$="[[col.isBonus]]"
+                  data-type$="[[col.type]]"
+                  disabled$="[[col.disabled]]"
                   >[[col.title]]<br />[[col.displayPoints]]</paper-button
                 >
               </responsive-grid-col>
@@ -364,7 +364,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               style="min-width:100px; width:100%; min-height:50vh; height:75vh;"
               sizing="contain"
               preload=""
-              src\$="[[activeQuestion.image]]"
+              src$="[[activeQuestion.image]]"
             ></iron-image>
           </div>
           <div id="col2" style="width:30%;min-width: 30%;">
@@ -376,7 +376,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               title="[[activeQuestion.title]]"
               answers="[[activeQuestion.data]]"
             ></multiple-choice>
-            <div hidden\$="[[!activeQuestion.wrong]]" aria-hidden="true">
+            <div hidden$="[[!activeQuestion.wrong]]" aria-hidden="true">
               <h3>Feedback</h3>
               <p>[[activeQuestion.feedback]]</p>
             </div>
@@ -384,10 +384,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         </vaadin-split-layout>
         <paper-button
           slot="buttons"
-          hidden\$="[[activeQuestion.submitted]]"
+          hidden$="[[activeQuestion.submitted]]"
           id="submit"
           raised=""
-          disabled\$="[[__submitDisabled]]"
+          disabled$="[[__submitDisabled]]"
           >Submit answer
           <iron-icon
             hidden$="[[__submitDisabled]]"
@@ -397,10 +397,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         <paper-button
           slot="buttons"
           id="continue"
-          hidden\$="[[!activeQuestion.submitted]]"
+          hidden$="[[!activeQuestion.submitted]]"
           dialog-confirm
           raised
-          aria-disabled\$="[[activeQuestion.submitted]]"
+          aria-disabled$="[[activeQuestion.submitted]]"
           aria-label="Return to game board"
           >Continue <iron-icon icon="icons:arrow-forward"></iron-icon
         ></paper-button>
@@ -440,50 +440,50 @@ class GameShowQuiz extends MutableData(PolymerElement) {
        * Title
        */
       title: {
-        type: String
+        type: String,
       },
       gameDirectionsData: {
-        type: String
+        type: String,
       },
       gameDirections: {
         type: String,
-        observer: "_gameDirectionsChanged"
+        observer: "_gameDirectionsChanged",
       },
       token: {
-        type: String
+        type: String,
       },
       attemptsData: {
         type: Object,
         value: {
           overall: {
             labels: ["Slide ID", "Terminology", "Reading", "Lecture"],
-            series: [0, 0, 0, 0]
+            series: [0, 0, 0, 0],
           },
           slideid: {
             labels: ["Correct", "Incorrect"],
-            series: [0, 0]
+            series: [0, 0],
           },
           terminology: {
             labels: ["Correct", "Incorrect"],
-            series: [0, 0]
+            series: [0, 0],
           },
           reading: {
             labels: ["Correct", "Incorrect"],
-            series: [0, 0]
+            series: [0, 0],
           },
           lecture: {
             labels: ["Correct", "Incorrect"],
-            series: [0, 0]
+            series: [0, 0],
           },
           bonus: {
             labels: ["Correct", "Incorrect"],
-            series: [0, 0]
+            series: [0, 0],
           },
           total: {
             labels: ["Correct", "Incorrect"],
-            series: [0, 0]
-          }
-        }
+            series: [0, 0],
+          },
+        },
       },
       /**
        * Points object
@@ -494,81 +494,81 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           slideid: {
             attempted: 0,
             earned: 0,
-            percent: 0
+            percent: 0,
           },
           terminology: {
             attempted: 0,
             earned: 0,
-            percent: 0
+            percent: 0,
           },
           reading: {
             attempted: 0,
             earned: 0,
-            percent: 0
+            percent: 0,
           },
           lecture: {
             attempted: 0,
             earned: 0,
-            percent: 0
+            percent: 0,
           },
           bonus: {
             attempted: 0,
             earned: 0,
-            percent: 0
+            percent: 0,
           },
           total: {
             attempted: 0,
             earned: 0,
-            percent: 0
-          }
-        }
+            percent: 0,
+          },
+        },
       },
       /**
        * Remaining attempts for the user
        */
       remainingAttempts: {
         type: Number,
-        value: 30
+        value: 30,
       },
       /**
        * Title to use on the directions dialog.
        */
       directionsTitle: {
         type: String,
-        value: "Directions"
+        value: "Directions",
       },
       /**
        * Title to use on the question dialog.
        */
       questionTitle: {
         type: String,
-        value: "Answer the following"
+        value: "Answer the following",
       },
       /**
        * Rows on the gameshow board
        */
       gameBoard: {
-        type: Array
+        type: Array,
       },
       gameBoardData: {
         type: Object,
-        observer: "_gameBoardDataChanged"
+        observer: "_gameBoardDataChanged",
       },
       /**
        * URL to load data for the game.
        */
       gameData: {
-        type: String
+        type: String,
       },
       gameScoreBoardBackend: {
-        type: String
+        type: String,
       },
       /**
        * Active item that is in the modal.
        */
       activeQuestion: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -680,12 +680,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               this.__activeQuestionDetails.points +
               '"]'
           )
-          .forEach(item => {
+          .forEach((item) => {
             item.removeAttribute("disabled");
             let uuid = item.getAttribute("data-question-uuid");
             // bonus always last row, make data match the operation
             this.gameBoard[boardCol].cols.find(
-              i => i.uuid == uuid
+              (i) => i.uuid == uuid
             ).disabled = false;
             // keep flat in sync
             this._gameBoardFlat[uuid].disabled = false;
@@ -704,12 +704,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             this.__activeType +
             '"]'
         )
-        .forEach(item => {
+        .forEach((item) => {
           item.removeAttribute("disabled");
           let uuid = item.getAttribute("data-question-uuid");
           // bonus always last row, make data match the operation
           this.gameBoard[this.gameBoard.length - 1].cols.find(
-            i => i.uuid == uuid
+            (i) => i.uuid == uuid
           ).disabled = false;
           // keep flat in sync
           this._gameBoardFlat[uuid].disabled = false;
@@ -724,8 +724,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         composed: true,
         detail: {
           text: "Correct!",
-          duration: 4000
-        }
+          duration: 4000,
+        },
       });
       this.dispatchEvent(evt);
       // @todo need an area for placing feedback
@@ -751,8 +751,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         composed: true,
         detail: {
           text: ":( You got it wrong",
-          duration: 4000
-        }
+          duration: 4000,
+        },
       });
       this.dispatchEvent(evt);
       // @todo show feedback for wrong answer as to why
@@ -779,7 +779,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     attemptsData[this.__activeType].series = [
       this.points[this.__activeType].earned,
       this.points[this.__activeType].attempted -
-        this.points[this.__activeType].earned
+        this.points[this.__activeType].earned,
     ];
     // beyond edge case as bonus can make this negative
     if (
@@ -788,12 +788,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     ) {
       attemptsData[this.__activeType].series = [
         this.points[this.__activeType].earned,
-        0
+        0,
       ];
     }
     attemptsData.total.series = [
       this.points.total.earned,
-      this.points.total.attempted - this.points.total.earned
+      this.points.total.attempted - this.points.total.earned,
     ];
     // beyond edge case as bonus can make this negative
     if (this.points.total.attempted < this.points.total.earned) {
@@ -804,7 +804,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       this.points.slideid.attempted,
       this.points.terminology.attempted,
       this.points.reading.attempted,
-      this.points.lecture.attempted
+      this.points.lecture.attempted,
     ];
     this.set("attemptsData", {});
     this.set("attemptsData", attemptsData);
@@ -816,7 +816,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         .querySelectorAll(
           "responsive-grid-col paper-button[data-value='3']:not([disabled]):not([data-is-bonus])"
         )
-        .forEach(item => {
+        .forEach((item) => {
           item.setAttribute("disabled", "disabled");
         });
     }
@@ -825,14 +825,14 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         .querySelectorAll(
           "responsive-grid-col paper-button[data-value='2']:not([disabled]):not([data-is-bonus])"
         )
-        .forEach(item => {
+        .forEach((item) => {
           item.setAttribute("disabled", "disabled");
         });
       this.shadowRoot
         .querySelectorAll(
           'responsive-grid-col paper-button[data-value="3"]:not([disabled]):not([data-is-bonus])'
         )
-        .forEach(item => {
+        .forEach((item) => {
           item.setAttribute("disabled", "disabled");
         });
     }
@@ -842,7 +842,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         .querySelectorAll(
           "responsive-grid-col paper-button:not([disabled]):not([data-is-bonus])"
         )
-        .forEach(item => {
+        .forEach((item) => {
           item.setAttribute("disabled", "disabled");
         });
       this.remainingAttempts = 0;
@@ -863,8 +863,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           composed: true,
           detail: {
             text: "Game over!",
-            duration: 5000
-          }
+            duration: 5000,
+          },
         });
         this.dispatchEvent(evt);
         // fire in case anyone else cares
@@ -875,15 +875,15 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             composed: true,
             detail: {
               game: this.title,
-              score: this.points.total.earned
-            }
+              score: this.points.total.earned,
+            },
           })
         );
         // ship to backend if we have one
         if (this.gameScoreBoardBackend) {
-          this.shadowRoot.querySelector("#gamebackend").url = `${
-            this.gameScoreBoardBackend
-          }/${this.title}/${this.points.total.earned}?token=${this.token}`;
+          this.shadowRoot.querySelector(
+            "#gamebackend"
+          ).url = `${this.gameScoreBoardBackend}/${this.title}/${this.points.total.earned}?token=${this.token}`;
           this.shadowRoot.querySelector("#gamebackend").generateRequest();
         }
       }
@@ -930,34 +930,34 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               title: "Slide id",
               points: "",
               notRaised: true,
-              disabled: true
+              disabled: true,
             },
             {
               title: "Terms",
               points: "",
               notRaised: true,
-              disabled: true
+              disabled: true,
             },
             {
               title: "Reading",
               points: "",
               notRaised: true,
-              disabled: true
+              disabled: true,
             },
             {
               title: "Lecture",
               points: "",
               notRaised: true,
-              disabled: true
+              disabled: true,
             },
             {
               title: "Bonus",
               points: "",
               notRaised: true,
-              disabled: true
-            }
-          ]
-        }
+              disabled: true,
+            },
+          ],
+        },
       ];
       // row prototype
       var row = {};
@@ -969,7 +969,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         1: 4,
         2: 2,
         3: 1,
-        bonus: 1
+        bonus: 1,
       };
       // 4 iterations for 1 points
       for (var pointLevel in pointMap) {
@@ -978,7 +978,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           count++;
           // reset the row
           row = {
-            cols: []
+            cols: [],
           };
           // loop over the keys coming in so we can build each row across
           for (var type in keys) {
@@ -993,7 +993,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
                 points: level.points,
                 displayPoints: level.points,
                 isBonus: false,
-                question: Object.assign({}, level.questions[qKey])
+                question: Object.assign({}, level.questions[qKey]),
               };
               // remove this record
               gameData[keys[type]][pointLevel].questions.splice(qKey, 1);
@@ -1052,8 +1052,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         groups: ["Education", "Interactive"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -1062,8 +1062,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             title: "Title",
             description: "The title of the game",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -1071,17 +1071,17 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             title: "Title",
             description: "The title of the game",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "gameData",
             title: "Source of the game data data",
             description: "The title of the game",
             inputMethod: "textfield",
-            icon: "icons:link"
-          }
+            icon: "icons:link",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         unsetAttributes: [
@@ -1089,9 +1089,9 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           "points",
           "game-board",
           "question-title",
-          "remaining-attempts"
-        ]
-      }
+          "remaining-attempts",
+        ],
+      },
     };
   }
   /**

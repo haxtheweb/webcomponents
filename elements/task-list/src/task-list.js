@@ -22,7 +22,7 @@ class TaskList extends SchemaBehaviors(LitElement) {
           font-size: var(--task-list-font-size, 18px);
           padding: var(--task-list-padding, 16px);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -30,15 +30,13 @@ class TaskList extends SchemaBehaviors(LitElement) {
       <h3><span property="oer:name">${this.name}</span></h3>
       <ol>
         ${this.tasks.map(
-          task => html`
+          (task) => html`
             <li>
               ${task.link
                 ? html`
                     <a href="${task.link}" property="oer:task">${task.name}</a>
                   `
-                : html`
-                    <span property="oer:task">${task.name}</span>
-                  `}
+                : html` <span property="oer:task">${task.name}</span> `}
             </li>
           `
         )}
@@ -56,24 +54,24 @@ class TaskList extends SchemaBehaviors(LitElement) {
        * Name of this task list
        */
       name: {
-        type: String
+        type: String,
       },
       /**
        * Related Resource ID
        */
       relatedResource: {
         type: String,
-        attribute: "related-resource"
+        attribute: "related-resource",
       },
       /**
        * Task list
        */
       tasks: {
-        type: Array
+        type: Array,
       },
       _resourceLink: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   constructor() {
@@ -92,8 +90,8 @@ class TaskList extends SchemaBehaviors(LitElement) {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -130,8 +128,8 @@ class TaskList extends SchemaBehaviors(LitElement) {
         groups: ["Content", "Instructional"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -140,15 +138,15 @@ class TaskList extends SchemaBehaviors(LitElement) {
             title: "Name",
             description: "Name of the list",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "relatedResource",
             title: "Related resource",
             description: "A reference to the related Schema resource",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -156,14 +154,14 @@ class TaskList extends SchemaBehaviors(LitElement) {
             title: "Name",
             description: "Name of the list",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "relatedResource",
             title: "Related resource",
             description: "A reference to the related Schema resource",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "tasks",
@@ -177,22 +175,22 @@ class TaskList extends SchemaBehaviors(LitElement) {
                 title: "Name",
                 description: "Name of the task",
                 inputMethod: "textfield",
-                required: true
+                required: true,
               },
               {
                 property: "link",
                 title: "Link",
                 description: "Optional link",
-                inputMethod: "textfield"
-              }
-            ]
-          }
+                inputMethod: "textfield",
+              },
+            ],
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["_resource-link"]
-      }
+        unsetAttributes: ["_resource-link"],
+      },
     };
   }
 }

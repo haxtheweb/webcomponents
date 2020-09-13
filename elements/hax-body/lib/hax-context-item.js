@@ -39,7 +39,7 @@ class HaxContextItem extends LitElement {
           display: flex;
           width: 100%;
         }
-      `
+      `,
     ];
   }
 
@@ -64,9 +64,7 @@ class HaxContextItem extends LitElement {
         ?menu="${this.menu}"
       >
         ${this.more
-          ? html`
-              <iron-icon icon="icons:expand-more"></iron-icon>
-            `
+          ? html` <iron-icon icon="icons:expand-more"></iron-icon> `
           : ``}
         <slot></slot>
       </hax-toolbar-item>
@@ -82,52 +80,52 @@ class HaxContextItem extends LitElement {
        * Light theme for toolbar item.
        */
       light: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * more implies there's an action after pressing the button
        * so it'll put a visual indicator as such
        */
       more: {
-        type: Boolean
+        type: Boolean,
       },
       action: {
-        type: Boolean
+        type: Boolean,
       },
       height: {
-        type: String
+        type: String,
       },
       /**
        * disabled state
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Mini theme for making things small and round.
        */
       mini: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Style to be presented in a menu
        */
       menu: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Direction for the tooltip
        */
       direction: {
-        type: String
+        type: String,
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Icon for the button.
@@ -135,14 +133,14 @@ class HaxContextItem extends LitElement {
       iconClass: {
         type: String,
         reflect: true,
-        attribute: "icon-class"
+        attribute: "icon-class",
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -152,7 +150,7 @@ class HaxContextItem extends LitElement {
       eventName: {
         type: String,
         reflect: true,
-        attribute: "event-name"
+        attribute: "event-name",
       },
       /**
        * Method of input to display when activated. This is
@@ -161,7 +159,7 @@ class HaxContextItem extends LitElement {
       inputMethod: {
         type: String,
         reflect: true,
-        attribute: "input-method"
+        attribute: "input-method",
       },
       /**
        * Optional slot to bind this value to.
@@ -169,7 +167,7 @@ class HaxContextItem extends LitElement {
       propertyToBind: {
         type: String,
         reflect: true,
-        attribute: "property-to-bind"
+        attribute: "property-to-bind",
       },
       /**
        * Optional slot to bind this value to.
@@ -177,32 +175,32 @@ class HaxContextItem extends LitElement {
       slotToBind: {
         type: String,
         reflect: true,
-        attribute: "slot-to-bind"
+        attribute: "slot-to-bind",
       },
       /**
        * Optional description for this item.
        */
       description: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       large: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Is this button concidered a primary interaction
        */
       default: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * an optional value to send along in the press. Allows for
        * reusing events more easily
        */
       value: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -229,8 +227,8 @@ class HaxContextItem extends LitElement {
           detail: {
             target: this,
             eventName: this.eventName,
-            value: this.value
-          }
+            value: this.value,
+          },
         })
       );
     }

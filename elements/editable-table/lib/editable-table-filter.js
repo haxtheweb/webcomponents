@@ -58,7 +58,7 @@ class EditableTableFilter extends LitElement {
         :host([filtered]:hover) #filter {
           display: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -97,21 +97,21 @@ class EditableTableFilter extends LitElement {
        */
       columnIndex: {
         type: Number,
-        attribute: "column-index"
+        attribute: "column-index",
       },
       /**
        * Whether the column is filtered
        */
       filtered: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Column header text
        */
       text: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -132,7 +132,7 @@ class EditableTableFilter extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }

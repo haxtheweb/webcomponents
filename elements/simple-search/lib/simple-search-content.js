@@ -23,10 +23,10 @@ class SimpleSearchContent extends LitElement {
    * @param {object} the simple-search element
    */
   enableSearch(searchObject) {
-    searchObject.addEventListener("simple-search", e =>
+    searchObject.addEventListener("simple-search", (e) =>
       this._searchContent(searchObject)
     );
-    searchObject.addEventListener("goto-result", e => this.focus(e.detail));
+    searchObject.addEventListener("goto-result", (e) => this.focus(e.detail));
   }
 
   /**
@@ -48,9 +48,7 @@ class SimpleSearchContent extends LitElement {
   }
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 customElements.define(SimpleSearchContent.tag, SimpleSearchContent);

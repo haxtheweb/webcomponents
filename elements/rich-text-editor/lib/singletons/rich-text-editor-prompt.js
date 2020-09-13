@@ -88,7 +88,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
         .confirm-or-cancel {
           min-width: 40px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -145,32 +145,32 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
        * Is the  target id.
        */
       for: {
-        type: String
+        type: String,
       },
       /**
        * The selected text.
        */
       range: {
-        type: Object
+        type: Object,
       },
       /**
        * fields for the prompt popover.
        */
       fields: {
-        type: Array
+        type: Array,
       },
       /**
        * The prefilled value of the prompt
        */
       value: {
-        type: Object
+        type: Object,
       },
       /**
        * The prefilled value of the prompt
        */
       __button: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 

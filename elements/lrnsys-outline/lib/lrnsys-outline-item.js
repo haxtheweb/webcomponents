@@ -215,21 +215,21 @@ class LrnsysOutlineItem extends PolymerElement {
     return {
       indentLevel: {
         type: Number,
-        value: 0
+        value: 0,
       },
       index: {
         type: Number,
-        value: 0
+        value: 0,
       },
       parent: {
         type: String,
-        value: null
+        value: null,
       },
       title: {
         type: String,
         value: null,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Tracks if focus state is applied
@@ -237,8 +237,8 @@ class LrnsysOutlineItem extends PolymerElement {
       focusState: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   _focusin(e) {
@@ -257,7 +257,7 @@ class LrnsysOutlineItem extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { item: this }
+        detail: { item: this },
       })
     );
   }
@@ -275,7 +275,7 @@ class LrnsysOutlineItem extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -296,7 +296,7 @@ class LrnsysOutlineItem extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { item: this }
+        detail: { item: this },
       })
     );
   }
@@ -307,7 +307,7 @@ class LrnsysOutlineItem extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { item: this, increase: amount > 0 }
+        detail: { item: this, increase: amount > 0 },
       })
     );
   }
@@ -327,8 +327,8 @@ class LrnsysOutlineItem extends PolymerElement {
         detail: {
           item: this,
           value: j.slice(0, i),
-          new: j.slice(i, j.length)
-        }
+          new: j.slice(i, j.length),
+        },
       })
     );
     this.title = j.slice(0, i);
@@ -340,7 +340,7 @@ class LrnsysOutlineItem extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { item: this, moveUp: amount < 0 }
+        detail: { item: this, moveUp: amount < 0 },
       })
     );
   }
@@ -373,43 +373,43 @@ class LrnsysOutlineItem extends PolymerElement {
     super();
     setTimeout(() => {
       this.addEventListener("change", this._onChange.bind(this));
-      this.addEventListener("focus", e => {
+      this.addEventListener("focus", (e) => {
         this.dispatchEvent(
           new CustomEvent("focus-item", {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           })
         );
       });
-      this.addEventListener("mouseover", e => {
+      this.addEventListener("mouseover", (e) => {
         this.dispatchEvent(
           new CustomEvent("focus-item", {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           })
         );
       });
-      this.addEventListener("blur", e => {
+      this.addEventListener("blur", (e) => {
         this.dispatchEvent(
           new CustomEvent("blur-item", {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           })
         );
       });
-      this.addEventListener("mouseout", e => {
+      this.addEventListener("mouseout", (e) => {
         this.dispatchEvent(
           new CustomEvent("blur-item", {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           })
         );
       });
@@ -424,7 +424,7 @@ class LrnsysOutlineItem extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { item: this, value: this.title }
+        detail: { item: this, value: this.title },
       })
     );
   }
@@ -447,8 +447,8 @@ class LrnsysOutlineItem extends PolymerElement {
         detail: {
           item: this,
           value: j.slice(0, i),
-          new: j.slice(i, j.length)
-        }
+          new: j.slice(i, j.length),
+        },
       })
     );
     this.title = j.slice(0, i);
@@ -463,7 +463,7 @@ class LrnsysOutlineItem extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { item: this }
+          detail: { item: this },
         })
       );
     } else if (
@@ -478,7 +478,7 @@ class LrnsysOutlineItem extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { item: this, increase: false }
+          detail: { item: this, increase: false },
         })
       );
     }
@@ -514,7 +514,7 @@ class LrnsysOutlineItem extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { item: this, moveUp: true }
+          detail: { item: this, moveUp: true },
         })
       );
     }
@@ -533,7 +533,7 @@ class LrnsysOutlineItem extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { item: this, moveUp: false }
+          detail: { item: this, moveUp: false },
         })
       );
     }

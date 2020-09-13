@@ -8,8 +8,8 @@ export default {
   component: "a11y-compare-image",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const a11yCompareImageStory = () => {
@@ -33,7 +33,7 @@ export const a11yCompareImageStory = () => {
       reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.
       </p>`,
       width: "100%",
-      maxWidth: "400px"
+      maxWidth: "400px",
     },
     [
       { title: "Heading", slot: "heading" },
@@ -41,7 +41,7 @@ export const a11yCompareImageStory = () => {
       { title: "Top Image", slot: "top" },
       { title: "Bottom Image", slot: "bottom" },
       { css: "width" },
-      { css: "maxWidth" }
+      { css: "maxWidth" },
     ]
   );
 };

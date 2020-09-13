@@ -65,15 +65,13 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
           display: block;
           color: var(--rich-text-editor-button-disabled-color);
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   // haxProperty definition
@@ -90,13 +88,13 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         groups: ["Text"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "Penn State University"
-        }
+          owner: "Penn State University",
+        },
       },
       settings: {
         quick: [],
@@ -106,11 +104,11 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -125,7 +123,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         name: "id",
         type: String,
         reflect: true,
-        attribute: "id"
+        attribute: "id",
       },
 
       /**
@@ -135,7 +133,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         name: "placeholder",
         type: String,
         reflect: true,
-        attribute: "placeholder"
+        attribute: "placeholder",
       },
 
       /**
@@ -145,7 +143,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         name: "toolbar",
         type: String,
         reflect: true,
-        attribute: "toolbar"
+        attribute: "toolbar",
       },
 
       /**
@@ -158,8 +156,8 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         name: "type",
         type: String,
         reflect: true,
-        attribute: "type"
-      }
+        attribute: "type",
+      },
     };
   }
 

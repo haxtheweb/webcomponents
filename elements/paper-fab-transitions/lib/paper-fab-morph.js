@@ -98,14 +98,14 @@ class PaperFabMorph extends PolymerElement {
        */
       isOverlayContent: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * The transition duration in milliseconds.
        */
       duration: {
         type: Number,
-        value: 200
+        value: 200,
       },
       /**
        * The orientation against which to align the dropdown
@@ -114,7 +114,7 @@ class PaperFabMorph extends PolymerElement {
       horizontalAlign: {
         type: String,
         value: "left",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
 
       /**
@@ -124,7 +124,7 @@ class PaperFabMorph extends PolymerElement {
       verticalAlign: {
         type: String,
         value: "top",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
 
       /**
@@ -135,7 +135,7 @@ class PaperFabMorph extends PolymerElement {
       horizontalOffset: {
         type: Number,
         value: 0,
-        notify: true
+        notify: true,
       },
 
       /**
@@ -146,14 +146,14 @@ class PaperFabMorph extends PolymerElement {
       verticalOffset: {
         type: Number,
         value: 0,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
   static get observers() {
     return [
-      "_updateOverlayPosition(verticalAlign, horizontalAlign, verticalOffset, horizontalOffset)"
+      "_updateOverlayPosition(verticalAlign, horizontalAlign, verticalOffset, horizontalOffset)",
     ];
   }
 
@@ -165,7 +165,7 @@ class PaperFabMorph extends PolymerElement {
     if (this.isOverlayContent) {
       this._fab.addEventListener(
         "click",
-        function() {
+        function () {
           this._content.open();
         }.bind(this)
       );
@@ -182,7 +182,7 @@ class PaperFabMorph extends PolymerElement {
 
       this._fab.addEventListener(
         "click",
-        function() {
+        function () {
           this._dropdown.open();
         }.bind(this)
       );
@@ -197,14 +197,14 @@ class PaperFabMorph extends PolymerElement {
 
     this._overlay.addEventListener(
       "iron-overlay-opened",
-      function() {
+      function () {
         this._morphOpen();
       }.bind(this)
     );
 
     this._overlay.addEventListener(
       "iron-overlay-closed",
-      function() {
+      function () {
         this._morphClose();
       }.bind(this)
     );

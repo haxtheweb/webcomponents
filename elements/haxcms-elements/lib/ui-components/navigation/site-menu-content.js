@@ -12,14 +12,14 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     super();
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.contentContainer = toJS(store.themeElement);
       setTimeout(() => {
         this.updateMenu();
       }, 10);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       let content = toJS(store.activeItemContent);
       setTimeout(() => {
         this.updateMenu();
@@ -65,7 +65,7 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
         .item {
           max-width: 175px;
         }
-      `
+      `,
     ];
   }
 }

@@ -186,7 +186,7 @@ class SimpleTooltip extends LitElement {
         .hidden {
           display: none !important;
         }
-      `
+      `,
     ];
   }
 
@@ -222,7 +222,7 @@ class SimpleTooltip extends LitElement {
        */
       fitToVisibleBounds: {
         type: Boolean,
-        attribute: "fit-to-visible-bounds"
+        attribute: "fit-to-visible-bounds",
       },
       /**
        * The spacing between the top of the tooltip and the element it is
@@ -255,7 +255,7 @@ class SimpleTooltip extends LitElement {
        * by setting it to the css class name.
        */
       animationExit: { type: String, attribute: "animation-exit" },
-      _showing: { type: Boolean }
+      _showing: { type: Boolean },
     };
   }
 
@@ -280,7 +280,7 @@ class SimpleTooltip extends LitElement {
     this.animationExit = "";
     this.animationConfig = {
       entry: [{ name: "fade-in-animation", node: this, timing: { delay: 0 } }],
-      exit: [{ name: "fade-out-animation", node: this }]
+      exit: [{ name: "fade-out-animation", node: this }],
     };
     setTimeout(() => {
       this.addEventListener(

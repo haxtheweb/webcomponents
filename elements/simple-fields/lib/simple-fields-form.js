@@ -62,7 +62,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
        * Fields to convert to JSON Schema.
        */
       fields: {
-        type: "Array"
+        type: "Array",
       },
       /**
        * Conversion from inputMethods to JSON schema types and formats.
@@ -70,8 +70,8 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
        */
       fieldsConversion: {
         type: "Object",
-        attribute: "fields-conversion"
-      }
+        attribute: "fields-conversion",
+      },
     };
   }
 

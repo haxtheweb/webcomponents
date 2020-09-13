@@ -29,7 +29,7 @@ class TheyLive extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -48,8 +48,8 @@ class TheyLive extends LitElement {
       ...super.properties,
 
       truth: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -96,7 +96,7 @@ class TheyLive extends LitElement {
           visibility: visible;
           opacity: 1;
         }
-      `
+      `,
     ];
   }
 

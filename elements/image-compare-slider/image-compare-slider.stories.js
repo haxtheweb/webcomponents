@@ -8,18 +8,18 @@ export default {
   component: "image-compare-slider",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 
 const utils = new StorybookUtilities();
 let images = [
   new URL(`./demo/images/Matterhorn01.png`, import.meta.url),
-  new URL(`./demo/images/Matterhorn02.png`, import.meta.url)
+  new URL(`./demo/images/Matterhorn02.png`, import.meta.url),
 ];
 export const ImageCompareSliderStory = () => {
   return utils.makeElementFromHaxDemo(ImageCompareSlider, {
     bottomSrc: images[0],
-    topSrc: images[1]
+    topSrc: images[1],
   });
 };

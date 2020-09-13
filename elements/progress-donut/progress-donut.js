@@ -34,15 +34,13 @@ class ProgressDonut extends LrndesignPie {
         .ct-center-ellipse {
           fill: var(--chartist-bg-color, #fff);
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      ${super.render()}
-    `;
+    return html` ${super.render()} `;
   }
 
   // haxProperty definition
@@ -59,8 +57,8 @@ class ProgressDonut extends LrndesignPie {
         groups: ["Presentation", "Data"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -68,7 +66,7 @@ class ProgressDonut extends LrndesignPie {
             property: "animated",
             title: "Animated",
             description: "Whether progress animates on first load",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "complete",
@@ -79,22 +77,22 @@ class ProgressDonut extends LrndesignPie {
               {
                 title: "Number",
                 description: "Completed number.",
-                inputMethod: "number"
-              }
-            ]
+                inputMethod: "number",
+              },
+            ],
           },
           {
             property: "total",
             title: "Total",
             description: "Total when all items are complete.",
-            inputMethod: "number"
+            inputMethod: "number",
           },
           {
             property: "startAngle",
             title: "Start Angle",
             description: "Donut angle where progress starts",
-            inputMethod: "number"
-          }
+            inputMethod: "number",
+          },
         ],
         configure: [
           {
@@ -102,13 +100,13 @@ class ProgressDonut extends LrndesignPie {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "desc",
             title: "Description",
             description: "Accessible long description",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "imageSrc",
@@ -116,41 +114,41 @@ class ProgressDonut extends LrndesignPie {
             description: "Source of image inside donut.",
             inputMethod: "haxupload",
             icon: "link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "imageAlt",
             title: "Image Alt Text",
             description: "Alt text for image.",
-            inputMethod: "alt"
+            inputMethod: "alt",
           },
           {
             property: "animated",
             title: "Animated",
             description: "Whether progress animates on first load",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "complete",
             title: "Complete",
             description: "An array of completed values.",
-            inputMethod: "array"
+            inputMethod: "array",
           },
           {
             property: "total",
             title: "Total",
             description: "Total when all items are complete.",
-            inputMethod: "arrnumberay"
+            inputMethod: "arrnumberay",
           },
           {
             property: "startAngle",
             title: "Start Angle",
             description: "Donut angle where progress starts",
-            inputMethod: "number"
-          }
+            inputMethod: "number",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -163,26 +161,26 @@ class ProgressDonut extends LrndesignPie {
        */
       animation: {
         type: Number,
-        attribute: "animation"
+        attribute: "animation",
       },
       /**
        * Timing for animation or 0 none
        */
       animationDelay: {
         type: Number,
-        attribute: "animation-delay"
+        attribute: "animation-delay",
       },
       /**
        * An array of completed values
        */
       complete: {
-        type: Array
+        type: Array,
       },
       /**
        * Accessible long description
        */
       desc: {
-        type: String
+        type: String,
       },
       /**
        * Source of image in the center of the object.
@@ -190,7 +188,7 @@ class ProgressDonut extends LrndesignPie {
       imageSrc: {
         attribute: "image-src",
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Alt text for image.
@@ -198,8 +196,8 @@ class ProgressDonut extends LrndesignPie {
       imageAlt: {
         attribute: "image-alt",
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -241,7 +239,7 @@ class ProgressDonut extends LrndesignPie {
         val = data.value || this.donutTotal / this.donutData.length,
         dur = (this.animation * val) / this.donutTotal;
       data.element.attr({
-        c: opacity
+        c: opacity,
       });
       var animationDefinition = {
         opacity: {
@@ -249,8 +247,8 @@ class ProgressDonut extends LrndesignPie {
           dur: dur,
           from: -opacity,
           to: 1,
-          fill: "freeze"
-        }
+          fill: "freeze",
+        },
       };
       if (data.index !== 0) {
         animationDefinition["opacity"].begin =
@@ -273,7 +271,7 @@ class ProgressDonut extends LrndesignPie {
             cx: "50%",
             cy: "50%",
             rx: "32%",
-            ry: "32%"
+            ry: "32%",
           },
           "ct-center-ellipse"
         )
@@ -283,7 +281,7 @@ class ProgressDonut extends LrndesignPie {
           "image",
           {
             href: this.imageSrc,
-            alt: this.imageAlt
+            alt: this.imageAlt,
           },
           "ct-center-image"
         )
@@ -299,7 +297,10 @@ class ProgressDonut extends LrndesignPie {
     return this.donutData.map((h, i) => `Item ${i + 1}`);
   }
   get donutTotal() {
-    return Math.max(this.donutData.reduce((sum, val) => sum + val), this.total);
+    return Math.max(
+      this.donutData.reduce((sum, val) => sum + val),
+      this.total
+    );
   }
   get options() {
     return super.options;

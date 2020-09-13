@@ -8,8 +8,8 @@ export default {
   component: "progress-donut",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 
 const utils = new StorybookUtilities();
@@ -25,7 +25,7 @@ export const ProgressDonutStory = () => {
       complete: [5, 4, 8, 12, 6, 3, 4, 3],
       imageSrc: new URL(`./demo/images/profile1.jpg`, import.meta.url),
       width: "300px",
-      total: 50
+      total: 50,
     },
     [{ css: "width" }, { css: "maxWidth" }]
   );

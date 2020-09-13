@@ -1,4 +1,4 @@
-export const MtzFileDownloadBehaviors = function(SuperClass) {
+export const MtzFileDownloadBehaviors = function (SuperClass) {
   return class extends SuperClass {
     static get properties() {
       if (super.properties) {
@@ -12,10 +12,10 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
                   JSON: "text/json",
                   PDF: "application/pdf",
                   TXT: "text/plain",
-                  HTML: "text/html"
+                  HTML: "text/html",
                 };
-              }
-            }
+              },
+            },
           },
           super.properties
         );
@@ -29,10 +29,10 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
                 JSON: "text/json",
                 PDF: "application/pdf",
                 TXT: "text/plain",
-                HTML: "text/html"
+                HTML: "text/html",
               };
-            }
-          }
+            },
+          },
         };
       }
     }
@@ -48,7 +48,7 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
     downloadFromData(data, type, name = "download", newTab = true) {
       const mimeType = this.fileTypes[type.toUpperCase()];
       const blob = new Blob([decodeURIComponent(encodeURI(data))], {
-        type: mimeType
+        type: mimeType,
       });
       const filename = name + "." + type.toLowerCase();
       if (window.navigator && window.navigator.msSaveOrOpenBlob) {

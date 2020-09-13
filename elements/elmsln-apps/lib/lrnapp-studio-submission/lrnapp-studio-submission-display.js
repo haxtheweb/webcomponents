@@ -253,23 +253,23 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       submission: {
         type: Object,
         notify: true,
-        observer: "_submissionLoaded"
+        observer: "_submissionLoaded",
       },
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   _submissionLoaded(newValue) {
@@ -301,7 +301,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
    */
   _toArray(obj) {
     if (typeof obj === "object" && obj !== null) {
-      return Object.keys(obj).map(function(key) {
+      return Object.keys(obj).map(function (key) {
         return obj[key];
       });
     }

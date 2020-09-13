@@ -113,29 +113,29 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
       controls: {
         type: String,
         computed: "_getMenuControls(index,row)",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Index of the row or column
        */
       index: {
         type: Number,
-        value: null
+        value: null,
       },
       /**
        * Label of the row or column
        */
       label: {
         type: String,
-        computed: "_getLabel(index,row)"
+        computed: "_getLabel(index,row)",
       },
       /**
        * Whether the menu button controls a row
        */
       row: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
   /**
@@ -161,8 +161,8 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
         detail: {
           insert: insert,
           row: this.row,
-          index: index
-        }
+          index: index,
+        },
       })
     );
   }

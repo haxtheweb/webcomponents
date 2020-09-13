@@ -160,23 +160,15 @@ class LrnappCanvasListing extends PolymerElement {
         items="[[_toArray(canvasCourses)]]"
       >
         <vaadin-grid-column width="50px" flex-grow="0">
-          <template class="header"
-            >#</template
-          >
-          <template
-            >[[index]]</template
-          >
-          <template class="footer"
-            >#</template
-          >
+          <template class="header">#</template>
+          <template>[[index]]</template>
+          <template class="footer">#</template>
         </vaadin-grid-column>
         <vaadin-grid-column width="200px" flex-grow="0" resizable>
           <template class="header">
             <vaadin-grid-sorter path="term">Semester</vaadin-grid-sorter>
           </template>
-          <template>
-            [[item.term]]
-          </template>
+          <template> [[item.term]] </template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Semester"
@@ -196,9 +188,7 @@ class LrnappCanvasListing extends PolymerElement {
           <template class="header">
             <vaadin-grid-sorter path="name">Name</vaadin-grid-sorter>
           </template>
-          <template
-            >[[item.name]]</template
-          >
+          <template>[[item.name]]</template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Course"
@@ -218,9 +208,7 @@ class LrnappCanvasListing extends PolymerElement {
           <template class="header">
             <vaadin-grid-sorter path="sis_course_id">SIS</vaadin-grid-sorter>
           </template>
-          <template>
-            [[item.sis_course_id]]
-          </template>
+          <template> [[item.sis_course_id]] </template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Student information system ID"
@@ -242,17 +230,13 @@ class LrnappCanvasListing extends PolymerElement {
               >Students</vaadin-grid-sorter
             >
           </template>
-          <template
-            >[[item.student_count]]</template
-          >
+          <template>[[item.student_count]]</template>
         </vaadin-grid-column>
         <vaadin-grid-column width="100px" flex-grow="0" resizable>
           <template class="header">
             <vaadin-grid-sorter path="workflow_state">State</vaadin-grid-sorter>
           </template>
-          <template
-            >[[item.workflow_state]]</template
-          >
+          <template>[[item.workflow_state]]</template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Workflow state"
@@ -269,9 +253,7 @@ class LrnappCanvasListing extends PolymerElement {
           </template>
         </vaadin-grid-column>
         <vaadin-grid-column>
-          <template class="header"
-            >ELMSLN Course</template
-          >
+          <template class="header">ELMSLN Course</template>
           <template>
             <select
               name$="elmsln--map--:key:[[item.sis_course_id]]:key:[[item.term]]:key:[[item.start]]:key:[[item.end]]"
@@ -283,9 +265,9 @@ class LrnappCanvasListing extends PolymerElement {
                 items="[[elmslnCourses]]"
                 as="elmsCourse"
               >
-                <option value="[[elmsCourse.machineName]]"
-                  >[[elmsCourse.name]] ([[elmsCourse.machineName]])</option
-                >
+                <option value="[[elmsCourse.machineName]]">
+                  [[elmsCourse.name]] ([[elmsCourse.machineName]])
+                </option>
               </template>
             </select>
           </template>
@@ -387,46 +369,46 @@ class LrnappCanvasListing extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       elmslnCourses: {
         type: Array,
-        notify: true
+        notify: true,
       },
       canvasCourses: {
         type: Array,
-        notify: true
+        notify: true,
       },
       roster: {
         type: Array,
         notify: true,
-        value: false
+        value: false,
       },
       queryResponse: {
         type: Array,
-        notify: true
+        notify: true,
       },
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       activeCourse: {
         type: String,
         notify: true,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   /**
@@ -436,7 +418,7 @@ class LrnappCanvasListing extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

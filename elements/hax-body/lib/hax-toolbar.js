@@ -61,7 +61,7 @@ class HaxToolbar extends LitElement {
         .convert-button {
           border-top: 1px solid var(--hax-color-bg-accent);
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -112,22 +112,22 @@ class HaxToolbar extends LitElement {
        */
       selected: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Hide the more menu.
        */
       hideMore: {
         type: Boolean,
-        attribute: "hide-more"
+        attribute: "hide-more",
       },
       /**
        * This is an inline context menu
        */
       inline: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

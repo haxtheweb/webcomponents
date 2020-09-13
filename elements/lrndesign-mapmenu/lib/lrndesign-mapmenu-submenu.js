@@ -23,7 +23,7 @@ class LrndesignMapmenuSubmenu extends LitElement {
         #container ::slotted(lrndesign-mapmenu-item) {
           margin-top: 6.4px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -46,26 +46,26 @@ class LrndesignMapmenuSubmenu extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String
+        type: String,
       },
       avatarLabel: {
         type: String,
-        attribute: "avatar-label"
+        attribute: "avatar-label",
       },
       label: {
-        type: String
+        type: String,
       },
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       collapsable: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       expandChildren: {
         type: Boolean,
-        attribute: "expand-children"
-      }
+        attribute: "expand-children",
+      },
     };
   }
 
@@ -89,9 +89,9 @@ class LrndesignMapmenuSubmenu extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this._observer = new FlattenedNodesObserver(this, info => {
+    this._observer = new FlattenedNodesObserver(this, (info) => {
       var submenus = info.addedNodes.filter(
-        item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
+        (item) => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
       );
       if (this.expandChildren) {
         for (let menu of submenus) {

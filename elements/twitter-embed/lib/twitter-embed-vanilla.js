@@ -40,7 +40,7 @@ class TwitterEmbedVanilla extends HTMLElement {
       "data-width",
       "data-theme",
       "tweet-id",
-      "no-popups"
+      "no-popups",
     ];
   }
   /**
@@ -125,9 +125,7 @@ class TwitterEmbedVanilla extends HTMLElement {
     return `
     <div
       class="twitter-tweet twitter-tweet-rendered"
-      style="display: flex; max-width: ${
-        this.dataWidth
-      }; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+      style="display: flex; max-width: ${this.dataWidth}; width: 100%; margin-top: 10px; margin-bottom: 10px;">
       <iframe
         sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
         scrolling="no"
@@ -135,15 +133,9 @@ class TwitterEmbedVanilla extends HTMLElement {
         loading="lazy"
         allowtransparency="true"
         allowfullscreen="true"
-        style="position: static; visibility: visible; width: ${
-          this.dataWidth
-        }; height: 498px; display: block; flex-grow: 1;"
+        style="position: static; visibility: visible; width: ${this.dataWidth}; height: 498px; display: block; flex-grow: 1;"
         title="Twitter Tweet"
-        src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${
-          this.tweetId
-        }&amp;lang=${this.lang}&amp;theme=${
-      this.dataTheme
-    }&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
+        src="https://platform.twitter.com/embed/index.html?dnt=true&amp&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${this.tweetId}&amp;lang=${this.lang}&amp;theme=${this.dataTheme}&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${this.dataWidth}"
         data-tweet-id="${this.tweetId}">
       </iframe>
     </div>`;
@@ -164,8 +156,8 @@ class TwitterEmbedVanilla extends HTMLElement {
         groups: ["Social Media"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -174,7 +166,7 @@ class TwitterEmbedVanilla extends HTMLElement {
             attribute: "tweet",
             title: "Tweet URL",
             description: "URL of the tweet in question to be embedded",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             attribute: "data-theme",
@@ -183,31 +175,31 @@ class TwitterEmbedVanilla extends HTMLElement {
             inputMethod: "select",
             options: {
               light: "Light",
-              dark: "Dark"
-            }
+              dark: "Dark",
+            },
           },
           {
             attribute: "no-popups",
             title: "Prevent popup on click",
             description:
               "This blocks the user from clicking the tweet and going to twitter.com",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        wipeSlot: true
+        wipeSlot: true,
       },
       demoSchema: [
         {
           tag: "twitter-embed-vanilla",
           content: "",
           properties: {
-            tweet: "https://twitter.com/btopro/status/1298632260707639298"
-          }
-        }
-      ]
+            tweet: "https://twitter.com/btopro/status/1298632260707639298",
+          },
+        },
+      ],
     };
   }
 }

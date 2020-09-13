@@ -22,7 +22,7 @@ class LrnsysButtonInner extends LitElement {
         .text-label-only {
           margin-left: 0;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -38,14 +38,10 @@ class LrnsysButtonInner extends LitElement {
     return html`
       <div>
         ${this.avatar != ""
-          ? html`
-              <paper-avatar src="${this.avatar}"></paper-avatar>
-            `
+          ? html` <paper-avatar src="${this.avatar}"></paper-avatar> `
           : ""}
         ${this.icon != ""
-          ? html`
-              <lrn-icon icon="${this.icon}"></lrn-icon>
-            `
+          ? html` <lrn-icon icon="${this.icon}"></lrn-icon> `
           : ""}
         ${this.text != ""
           ? html`
@@ -84,20 +80,20 @@ class LrnsysButtonInner extends LitElement {
        * Icon to present for clicking.
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Icon to present for clicking.
        */
       avatar: {
-        type: String
+        type: String,
       },
       /**
        * Text to present for clicking.
        */
       text: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**

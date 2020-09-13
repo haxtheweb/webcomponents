@@ -14,7 +14,7 @@ function inlineWorker() {
     if (!WebAssembly.instantiateStreaming)
       return fetchAndInstantiateFallback(url, imports);
     const req = fetch(url, { credentials: "same-origin" });
-    return WebAssembly.instantiateStreaming(req, imports).catch(err => {
+    return WebAssembly.instantiateStreaming(req, imports).catch((err) => {
       // https://github.com/Kagami/vmsg/issues/11
       if (
         err.message &&
@@ -142,7 +142,7 @@ function inlineWorker() {
       40,
       2,
       0,
-      11
+      11,
     ]);
     const mod = new WebAssembly.Module(bin);
     const inst = new WebAssembly.Instance(mod, {});
@@ -151,7 +151,7 @@ function inlineWorker() {
     return inst.exports.test(4) !== 0;
   }
 
-  onmessage = e => {
+  onmessage = (e) => {
     const msg = e.data;
     switch (msg.type) {
       case "init":
@@ -166,7 +166,7 @@ function inlineWorker() {
             }
             memory = new WebAssembly.Memory({
               initial: TOTAL_MEMORY / WASM_PAGE_SIZE,
-              maximum: TOTAL_MEMORY / WASM_PAGE_SIZE
+              maximum: TOTAL_MEMORY / WASM_PAGE_SIZE,
             });
             return {
               memory: memory,
@@ -178,17 +178,17 @@ function inlineWorker() {
               cos: Math.cos,
               log: Math.log,
               sin: Math.sin,
-              sbrk: sbrk
+              sbrk: sbrk,
             };
           })
-          .then(Runtime => {
+          .then((Runtime) => {
             return fetchAndInstantiate(wasmURL, { env: Runtime });
           })
-          .then(wasm => {
+          .then((wasm) => {
             FFI = wasm.instance.exports;
             postMessage({ type: "init", data: null });
           })
-          .catch(err => {
+          .catch((err) => {
             postMessage({ type: "init-error", data: err.toString() });
           });
         break;
@@ -258,10 +258,10 @@ export class Recorder {
   initAudio() {
     const getUserMedia =
       navigator.mediaDevices && navigator.mediaDevices.getUserMedia
-        ? function(constraints) {
+        ? function (constraints) {
             return navigator.mediaDevices.getUserMedia(constraints);
           }
-        : function(constraints) {
+        : function (constraints) {
             const oldGetUserMedia =
               navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
             if (!oldGetUserMedia) {
@@ -269,12 +269,12 @@ export class Recorder {
                 new Error("getUserMedia is not implemented in this browser")
               );
             }
-            return new Promise(function(resolve, reject) {
+            return new Promise(function (resolve, reject) {
               oldGetUserMedia.call(navigator, constraints, resolve, reject);
             });
           };
 
-    return getUserMedia({ audio: true }).then(stream => {
+    return getUserMedia({ audio: true }).then((stream) => {
       this.stream = stream;
       const audioCtx = (this.audioCtx = new (window.AudioContext ||
         window.webkitAudioContext)());
@@ -302,14 +302,14 @@ export class Recorder {
     if (!this.stream) throw new Error("missing audio initialization");
     // https://stackoverflow.com/a/19201292
     const blob = new Blob(["(", inlineWorker.toString(), ")()"], {
-      type: "application/javascript"
+      type: "application/javascript",
     });
     const workerURL = (this.workerURL = URL.createObjectURL(blob));
     const worker = (this.worker = new Worker(workerURL));
     const { wasmURL, shimURL } = this;
     worker.postMessage({ type: "init", data: { wasmURL, shimURL } });
     return new Promise((resolve, reject) => {
-      worker.onmessage = e => {
+      worker.onmessage = (e) => {
         const msg = e.data;
         switch (msg.type) {
           case "init":
@@ -348,7 +348,7 @@ export class Recorder {
     this.resolve = null;
     this.reject = null;
     this.worker.postMessage({ type: "start", data: this.audioCtx.sampleRate });
-    this.encNode.onaudioprocess = e => {
+    this.encNode.onaudioprocess = (e) => {
       const samples = e.inputBuffer.getChannelData(0);
       this.worker.postMessage({ type: "data", data: samples });
     };
@@ -372,7 +372,7 @@ export class Recorder {
     // Might be missed in Safari and old FF/Chrome per MDN.
     if (this.stream.getTracks) {
       // Hide browser's recording indicator.
-      this.stream.getTracks().forEach(track => track.stop());
+      this.stream.getTracks().forEach((track) => track.stop());
     }
   }
 }
@@ -398,13 +398,13 @@ export class Form {
       .then(() => this.drawInit())
       .then(() => this.recorder.initWorker())
       .then(() => this.drawAll())
-      .catch(err => this.drawError(err));
+      .catch((err) => this.drawError(err));
   }
 
   drawInit() {
     const renderArea = (this.renderArea = document.createElement("div"));
     renderArea.className = "vmsg-popup";
-    renderArea.addEventListener("click", e => e.stopPropagation());
+    renderArea.addEventListener("click", (e) => e.stopPropagation());
 
     const progress = document.createElement("div");
     progress.className = "vmsg-progress";
@@ -507,8 +507,8 @@ export class Form {
     this.target.dispatchEvent(
       new CustomEvent("vmsg-ready", {
         detail: {
-          value: true
-        }
+          value: true,
+        },
       })
     );
   }
@@ -591,11 +591,11 @@ export function record(opts, target) {
     new Form(opts, target, resolve, reject);
     // Use `.finally` once it's available in Safari and Edge.
   }).then(
-    result => {
+    (result) => {
       shown = false;
       return result;
     },
-    err => {
+    (err) => {
       shown = false;
       throw err;
     }
@@ -815,12 +815,12 @@ function Jungle(context) {
   this.setDelay(delayTime);
 }
 
-Jungle.prototype.setDelay = function(delayTime) {
+Jungle.prototype.setDelay = function (delayTime) {
   this.modGain1.gain.setTargetAtTime(0.5 * delayTime, 0, 0.01);
   this.modGain2.gain.setTargetAtTime(0.5 * delayTime, 0, 0.01);
 };
 
-Jungle.prototype.setPitchOffset = function(mult) {
+Jungle.prototype.setPitchOffset = function (mult) {
   if (mult > 0) {
     // pitch up
     this.mod1Gain.gain.value = 0;

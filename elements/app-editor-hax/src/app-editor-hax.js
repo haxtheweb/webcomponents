@@ -27,13 +27,11 @@ class AppEditorHax extends LitElement {
           font-size: 16px;
           box-sizing: content-box;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <h-a-x .app-store="${this.appStoreConnection}"></h-a-x>
-    `;
+    return html` <h-a-x .app-store="${this.appStoreConnection}"></h-a-x> `;
   }
 
   static get tag() {
@@ -45,8 +43,8 @@ class AppEditorHax extends LitElement {
        * Establish the app store connection to pull in our JSON
        */
       appStoreConnection: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -62,7 +60,7 @@ class AppEditorHax extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: content
+        detail: content,
       })
     );
   }
@@ -79,7 +77,7 @@ class AppEditorHax extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }

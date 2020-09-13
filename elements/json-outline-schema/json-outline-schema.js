@@ -94,7 +94,7 @@ class JsonOutlineSchema extends HTMLElement {
       bubbles: true,
       cancelable: false,
       composed: true,
-      detail: true
+      detail: true,
     });
     this.dispatchEvent(evt);
     this.__ready = true;
@@ -133,7 +133,7 @@ class JsonOutlineSchema extends HTMLElement {
     const evt = new CustomEvent("json-outline-schema-unready", {
       bubbles: true,
       cancelable: false,
-      detail: true
+      detail: true,
     });
     this.dispatchEvent(evt);
   }
@@ -149,7 +149,7 @@ class JsonOutlineSchema extends HTMLElement {
       description: this.description,
       license: this.license,
       metadata: this.metadata,
-      items: this.items
+      items: this.items,
     };
     const obj = JSON.parse(JSON.stringify(schema));
     return obj;
@@ -232,7 +232,7 @@ class JsonOutlineSchema extends HTMLElement {
   async load(location) {
     if (location) {
       this.file = location;
-      let data = await fetch(location).then(function(response) {
+      let data = await fetch(location).then(function (response) {
         return response.text();
       });
       let fileData = JSON.parse(data);
@@ -275,7 +275,7 @@ class JsonOutlineSchema extends HTMLElement {
       description: this.description,
       license: this.license,
       metadata: this.metadata,
-      items: this.items
+      items: this.items,
     };
     // @todo write contents
     //return @file_put_contents(this.file, JSON.stringify(schema, null, 2));
@@ -312,7 +312,7 @@ class JsonOutlineSchema extends HTMLElement {
         description: this.description,
         license: this.license,
         metadata: this.metadata,
-        items: this.items
+        items: this.items,
       };
       let span = document.createElement("span");
       span.innerHTML = JSON.stringify(obj, null, 2);
@@ -424,7 +424,7 @@ class JsonOutlineSchema extends HTMLElement {
       $schema: "http://json-schema.org/schema#",
       title: this.title,
       type: "object",
-      properties: {}
+      properties: {},
     };
     var obj;
     if (requested == "item") {
@@ -438,7 +438,7 @@ class JsonOutlineSchema extends HTMLElement {
         author: this.author,
         description: this.description,
         license: this.license,
-        metadata: this.metadata
+        metadata: this.metadata,
       };
       // support this as fallback
       if (requested == "outline") {
@@ -449,7 +449,7 @@ class JsonOutlineSchema extends HTMLElement {
       let props = {
         title: key,
         type: "string",
-        value: obj[key]
+        value: obj[key],
       };
       switch (key) {
         case "file":
@@ -465,8 +465,8 @@ class JsonOutlineSchema extends HTMLElement {
             name: "paper-input",
             valueProperty: "value",
             properties: {
-              required: true
-            }
+              required: true,
+            },
           };
           break;
         case "indent":
@@ -475,11 +475,11 @@ class JsonOutlineSchema extends HTMLElement {
             name: "paper-input",
             valueProperty: "value",
             properties: {
-              required: true
+              required: true,
             },
             attributes: {
-              type: "number"
-            }
+              type: "number",
+            },
           };
         case "metadata":
         case "items":
@@ -494,9 +494,9 @@ class JsonOutlineSchema extends HTMLElement {
                   name: "paper-input",
                   valueProperty: "value",
                   properties: {
-                    required: true
-                  }
-                }
+                    required: true,
+                  },
+                },
               },
               value: {
                 title: "value",
@@ -505,11 +505,11 @@ class JsonOutlineSchema extends HTMLElement {
                   name: "paper-input",
                   valueProperty: "value",
                   properties: {
-                    required: true
-                  }
-                }
-              }
-            }
+                    required: true,
+                  },
+                },
+              },
+            },
           };
           break;
         default:
@@ -561,7 +561,7 @@ class JsonOutlineSchema extends HTMLElement {
   unflattenItems(items, parent, tree) {
     tree = typeof tree !== "undefined" ? tree : [];
     parent = typeof parent !== "undefined" ? parent : { id: null };
-    let children = items.filter(child => {
+    let children = items.filter((child) => {
       return child.parent === parent.id;
     });
     if (children.length) {
@@ -570,7 +570,7 @@ class JsonOutlineSchema extends HTMLElement {
       } else {
         parent.children = children;
       }
-      children.forEach(child => {
+      children.forEach((child) => {
         this.unflattenItems(items, child);
       });
     }

@@ -43,7 +43,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     this.setSourceData();
     this.observer.observe(this, {
       childList: true,
-      subtree: false
+      subtree: false,
     });
   }
   /**
@@ -61,8 +61,8 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   get html5() {
     return html`
       ${this.sourceData
-        .filter(item => item.type !== "youtube")
-        .map(sd => {
+        .filter((item) => item.type !== "youtube")
+        .map((sd) => {
           html`
             <source
               .src="${sd.src || undefined}"
@@ -70,7 +70,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             />
           `;
         })}
-      ${this.trackData.map(track => {
+      ${this.trackData.map((track) => {
         `<track
           .src="${track.src || undefined}"
           .kind="${track.kind || undefined}"
@@ -169,7 +169,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
         : this.sources.slice();
     if (this.source) temp.unshift({ src: this.source });
     if (temp && temp.length > 0)
-      temp.forEach(item => {
+      temp.forEach((item) => {
         item.type = item.type || this._computeMediaType(item.src);
         item.src = this._computeSRC(item.src, item.type);
       });
@@ -188,7 +188,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
         : this.tracks.slice();
     if (this.track) temp.unshift({ src: this.track });
     if (temp && temp.length > 0)
-      temp.forEach(item => {
+      temp.forEach((item) => {
         item.srclang = item.srclang || this.lang;
         item.kind = item.kind || "subtitles";
         item.label = item.label || item.kind || item.lang;
@@ -204,10 +204,10 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   get sourceData() {
     let temp = this.sourceProperties.slice(),
       slotted = this.querySelectorAll("video source, audio source, iframe");
-    slotted.forEach(slot => {
+    slotted.forEach((slot) => {
       this.sources.unshift({
         src: slot.src,
-        type: slot.type || this._computeMediaType(slot.src)
+        type: slot.type || this._computeMediaType(slot.src),
       });
     });
     return temp;
@@ -215,7 +215,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
 
   get audioOnly() {
     let videos = this.sourceData.filter(
-      item => item.type.indexOf("audio") > -1
+      (item) => item.type.indexOf("audio") > -1
     );
     return videos.length > 1;
   }
@@ -256,7 +256,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
           ? JSON.parse(this.tracks).slice()
           : this.tracks.slice(),
       slotted = this.querySelectorAll("video track, audio track");
-    slotted.forEach(slot => {
+    slotted.forEach((slot) => {
       let track = { src: slot.src };
       if (slot.lang) track.lang = slot.lang;
       if (slot.srclang) track.srclang = slot.srclang;
@@ -270,7 +270,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
         src: this.track,
         srclang: this.lang,
         label: this.lang === "en" ? "English" : this.lang,
-        kind: "subtitles"
+        kind: "subtitles",
       });
     return temp;
   }
@@ -311,7 +311,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
       video = ["mov", "mp4", "ogv", "webm"],
       type = "",
       findType = (text, data) => {
-        data.forEach(item => {
+        data.forEach((item) => {
           if (
             type === "" &&
             typeof source !== undefined &&

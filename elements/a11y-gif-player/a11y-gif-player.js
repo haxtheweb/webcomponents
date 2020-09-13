@@ -132,7 +132,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -206,60 +206,60 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
        * Alt text of gif
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * Whether button is disabled
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /*
        * other id's to add to aria-describedby
        */
       describedBy: {
         attribute: "described-by",
-        type: String
+        type: String,
       },
       /**
        * longer image description for accesibility
        */
       longdesc: {
         type: String,
-        attribute: "longdesc"
+        attribute: "longdesc",
       },
       /**
        * Source of animated gif
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        * Source of static version of image
        */
       srcWithoutAnimation: {
         type: String,
-        attribute: "src-without-animation"
+        attribute: "src-without-animation",
       },
       /**
        * default tooltip
        */
       tooltip: {
-        type: String
+        type: String,
       },
       /**
        * tooltip when playing
        */
       tooltipPlaying: {
         type: String,
-        attribute: "tooltip-playing"
+        attribute: "tooltip-playing",
       },
       /**
        * whether GIF is playing
        */
       __playing: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -314,12 +314,12 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             source: "src",
             source2: "srcWithoutAnimation",
             alt: "alt",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -330,7 +330,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "link",
             validationType: "url",
-            required: true
+            required: true,
           },
           {
             property: "srcWithoutAnimation",
@@ -339,7 +339,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "link",
             validationType: "url",
-            required: true
+            required: true,
           },
           {
             property: "alt",
@@ -347,8 +347,8 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             description: "Alternative text for the image.",
             inputMethod: "textfield",
             icon: "accessibility",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -358,7 +358,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "haxupload",
             icon: "link",
             validationType: "url",
-            required: true
+            required: true,
           },
           {
             property: "srcWithoutAnimation",
@@ -367,7 +367,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "haxupload",
             icon: "link",
             validationType: "url",
-            required: true
+            required: true,
           },
           {
             property: "alt",
@@ -375,14 +375,14 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             description: "Alternative text for the image.",
             inputMethod: "alt",
             icon: "accessibility",
-            required: true
+            required: true,
           },
           {
             property: "longdesc",
             title: "Long Description",
             description: "Long descriptions of the GOF for accessibiility",
-            inputMethod: "textarea"
-          }
+            inputMethod: "textarea",
+          },
         ],
         advanced: [
           {
@@ -390,9 +390,9 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
             title: "aria-decsribedby",
             description:
               "Space-separated id list for long descriptions that appear elsewhere",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       demoSchema: [
         {
@@ -404,10 +404,10 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
               "https://media0.giphy.com/media/zHaPZZvl6cVHi/480w_s.jpg",
             longdesc:
               "Pepe Silvia scene from It's Always Sunny in Philadelphia. Jesus, dude, you're still making GIFs. The GIF's don't stop.",
-            style: "max-width:400px"
-          }
-        }
-      ]
+            style: "max-width:400px",
+          },
+        },
+      ],
     };
   }
 }

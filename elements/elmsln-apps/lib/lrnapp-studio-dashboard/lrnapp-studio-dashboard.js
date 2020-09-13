@@ -92,39 +92,39 @@ class LrnappStudioDashboard extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       username: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       basePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       sourcePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   connectedCallback() {
@@ -152,7 +152,7 @@ class LrnappStudioDashboard extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

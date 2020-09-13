@@ -18,60 +18,60 @@ export default {
   component: "a11y-media-player",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities(),
   fields = [
     {
       property: "accentColor",
       title: "Accent color",
-      inputMethod: "colorpicker"
+      inputMethod: "colorpicker",
     },
     {
       property: "dark",
       title: "Dark theme",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "mediaTitle",
       title: "Title",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "youtubeId",
       title: "YoutubeId",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "track",
       title: "Closed captions",
-      inputMethod: "haxupload"
+      inputMethod: "haxupload",
     },
     {
       property: "thumbnailSrc",
       title: "Thumbnail image",
-      inputMethod: "haxupload"
+      inputMethod: "haxupload",
     },
     {
       property: "linkable",
       title: "Share Link",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "disableSearch",
       title: "Disable Transcript Search",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "disableInteractive",
       title: "Disable Interactive Transcript",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "hideTimestamps",
       title: "Remove Transcript Timestamps",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "crossorigin",
@@ -80,38 +80,38 @@ const utils = new StorybookUtilities(),
       options: {
         "": "",
         anonymous: "anonymous",
-        "use-credentials": "use-credentials"
-      }
+        "use-credentials": "use-credentials",
+      },
     },
     {
       property: "darkTranscript",
       title: "Dark theme for transcript",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "disableInteractive",
       title: "Disable Interactive",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "hideTimestamps",
       title: "Hide timestamps",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "hideTranscript",
       title: "Hide Transcript",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "lang",
       title: "Language",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "linkable",
       title: "Include a share link?",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "stickyCorner",
@@ -122,8 +122,8 @@ const utils = new StorybookUtilities(),
         "top-left": "top-left",
         "top-right": "top-right",
         "bottom-left": "bottom-left",
-        "bottom-right": "bottom-right"
-      }
+        "bottom-right": "bottom-right",
+      },
     },
     {
       property: "preload",
@@ -132,29 +132,29 @@ const utils = new StorybookUtilities(),
       options: {
         preload: "Preload all media",
         metadata: "Preload media metadata only",
-        none: "Don't preload anything"
-      }
+        none: "Don't preload anything",
+      },
     },
     {
       property: "tracks",
       title: "Track list",
-      inputMethod: "array"
+      inputMethod: "array",
     },
     {
       property: "height",
       title: "Height",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "width",
       title: "width",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       slot: "",
       title: "<iframe>",
-      inputMethod: "code-editor"
-    }
+      inputMethod: "code-editor",
+    },
   ],
   defaults = {
     accentColor: utils.getRandomColor(),
@@ -165,8 +165,8 @@ const utils = new StorybookUtilities(),
       "top-left",
       "top-right",
       "bottom-left",
-      "bottom-right"
-    ])
+      "bottom-right",
+    ]),
   };
 
 export const A11yMediaPlayerYoutubeStory = () => {
@@ -179,8 +179,8 @@ export const A11yMediaPlayerYoutubeStory = () => {
           label: "English",
           kind: "subtitles",
           srclang: "en",
-          src: new URL(`demo/samples/bueller.vtt`, import.meta.url)
-        }
+          src: new URL(`demo/samples/bueller.vtt`, import.meta.url),
+        },
       ],
       poster: new URL(`demo/samples/bueller.jpg`, import.meta.url),
       standalone: utils.getRandomBool(),
@@ -188,7 +188,7 @@ export const A11yMediaPlayerYoutubeStory = () => {
       disableSearch: utils.getRandomBool(),
       hideTimestamps: utils.getRandomBool(),
       youtubeId: "NP0mQeLWCCo",
-      emptyslot: `<iframe width="560" height="315" src="https://www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>`
+      emptyslot: `<iframe width="560" height="315" src="https://www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>`,
     })
   );
 };

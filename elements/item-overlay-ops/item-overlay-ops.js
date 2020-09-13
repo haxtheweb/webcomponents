@@ -142,47 +142,47 @@ class ItemOverlayOps extends PolymerElement {
             on-click="_opTap"
             icon="icons:add"
             id="add"
-            hidden\$="[[!add]]"
+            hidden$="[[!add]]"
             title="Add to this"
           ></paper-icon-button>
           <paper-icon-button
             on-click="_opTap"
             icon="icons:create"
             id="edit"
-            hidden\$="[[!edit]]"
+            hidden$="[[!edit]]"
             title="Edit this"
           ></paper-icon-button>
           <paper-icon-button
             on-click="_opTap"
             icon="icons:swap-horiz"
             id="move"
-            hidden\$="[[!move]]"
+            hidden$="[[!move]]"
             title="Move this"
           ></paper-icon-button>
           <paper-icon-button
             on-click="_opTap"
             icon="icons:delete"
             id="remove"
-            hidden\$="[[!remove]]"
+            hidden$="[[!remove]]"
             title="Delete this"
           ></paper-icon-button>
           <paper-icon-button
             on-click="_opTap"
             icon="icons:content-copy"
             id="duplicate"
-            hidden\$="[[!duplicate]]"
+            hidden$="[[!duplicate]]"
             title="Duplicate this"
           ></paper-icon-button>
           <paper-icon-button
             on-click="_opTap"
             icon="icons:cancel"
             id="cancel"
-            hidden\$="[[!__anyOp]]"
+            hidden$="[[!__anyOp]]"
             title="Cancel"
           ></paper-icon-button>
         </div>
         <div class="active-op">[[activeTitle]]</div>
-        <div id="workingarea" class\$="[[activeOp]]">
+        <div id="workingarea" class$="[[activeOp]]">
           <paper-icon-button
             on-click="_optionSelected"
             id="option1"
@@ -213,7 +213,7 @@ class ItemOverlayOps extends PolymerElement {
       editMode: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Edit mode whether it is shown or not
@@ -221,73 +221,73 @@ class ItemOverlayOps extends PolymerElement {
       focused: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Title to present of active option
        */
       activeTitle: {
-        type: String
+        type: String,
       },
       /**
        * Active operation
        */
       activeOp: {
-        type: String
+        type: String,
       },
       /**
        * Add opertaions
        */
       add: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Edit opertaions
        */
       edit: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Move opertaions
        */
       move: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Allow height to be defined rather than calculated
        */
       fixedHeight: {
         type: Number,
-        observer: "fixedHeightChanged"
+        observer: "fixedHeightChanged",
       },
       /**
        * Ability to disable height setting. Useful if using CSS vars.
        */
       disableAutoHeight: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Remove opertaions
        */
       remove: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Duplicate opertaions
        */
       duplicate: {
         type: Boolean,
-        value: false
+        value: false,
       },
       __anyOp: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 
@@ -302,7 +302,7 @@ class ItemOverlayOps extends PolymerElement {
     }, 5);
     this.setAttribute("tabindex", "0");
     window.addEventListener("resize", this._windowResize.bind(this));
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("focusin", this._inFocus.bind(this));
       this.addEventListener("focusout", this._outFocus.bind(this));
     });
@@ -394,14 +394,14 @@ class ItemOverlayOps extends PolymerElement {
     // let others know there's an event here
     let op = {
       element: this,
-      operation: this.activeOp
+      operation: this.activeOp,
     };
     this.dispatchEvent(
       new CustomEvent("item-overlay-op-changed", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: op
+        detail: op,
       })
     );
   }
@@ -433,14 +433,14 @@ class ItemOverlayOps extends PolymerElement {
     let ops = {
       element: this,
       operation: this.activeOp,
-      option: local.getAttribute("id")
+      option: local.getAttribute("id"),
     };
     this.dispatchEvent(
       new CustomEvent("item-overlay-option-selected", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: ops
+        detail: ops,
       })
     );
     // don't reset for movement, just confirm / reject actions

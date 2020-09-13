@@ -74,7 +74,7 @@ class LrnButton extends LitElement {
           text-align: center;
           margin: 0 auto;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -104,11 +104,7 @@ class LrnButton extends LitElement {
                 `
               : ``}
             ${this.label
-              ? html`
-                  <span class="label">
-                    ${this.label}
-                  </span>
-                `
+              ? html` <span class="label"> ${this.label} </span> `
               : ``}
             <slot></slot>
           </div>
@@ -129,95 +125,95 @@ class LrnButton extends LitElement {
        * Standard href pass down
        */
       href: {
-        type: String
+        type: String,
       },
       /**
        * What to display for the resource
        */
       showHref: {
         type: String,
-        attribute: "show-href"
+        attribute: "show-href",
       },
       /**
        * If the button should be visually lifted off the UI.
        */
       raised: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Label to place in the text area
        */
       label: {
-        type: String
+        type: String,
       },
       target: {
-        type: String
+        type: String,
       },
       /**
        * iron-icon to use (with iconset if needed)
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Classes to add / subtract based on the item being hovered.
        */
       hoverClass: {
         type: String,
-        attribute: "hover-class"
+        attribute: "hover-class",
       },
       /**
        * Icon class in the event you want it to look different from the text.
        */
       iconClass: {
         type: String,
-        attribute: "icon-class"
+        attribute: "icon-class",
       },
       /**
        * Inner container classes.
        */
       innerClass: {
         type: String,
-        attribute: "inner-class"
+        attribute: "inner-class",
       },
       /**
        * materializeCSS color class
        */
       color: {
-        type: String
+        type: String,
       },
       /**
        * materializeCSS color class for text
        */
       textColor: {
         type: String,
-        attribute: "text-color"
+        attribute: "text-color",
       },
       /**
        * Allow for prefetch data on hover
        */
       prefetch: {
-        type: String
+        type: String,
       },
       /**
        * Alt via tooltip.
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * Disabled state.
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Tracks if focus state is applied
        */
       focusState: {
         type: Boolean,
-        attribute: "focus-state"
-      }
+        attribute: "focus-state",
+      },
     };
   }
   /**
@@ -301,7 +297,7 @@ class LrnButton extends LitElement {
       new CustomEvent("focus-changed", {
         bubbles: true,
         composed: true,
-        detail: { focus: this.focusState }
+        detail: { focus: this.focusState },
       })
     );
     // see if it has hover classes

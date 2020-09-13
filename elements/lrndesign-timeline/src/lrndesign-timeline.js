@@ -42,15 +42,15 @@ class LrndesignTimeline extends SimpleColors {
           sm: 600,
           md: 900,
           lg: 1200,
-          xl: 1600
-        }
+          xl: 1600,
+        },
       })
     );
 
     this.updateTimeline();
     this.observer.observe(this, {
       childList: true,
-      subtree: false
+      subtree: false,
     });
   }
   disconnectedCallback() {
@@ -108,7 +108,7 @@ class LrndesignTimeline extends SimpleColors {
     parent.scroll({
       top: el.offsetTop,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 
@@ -118,7 +118,7 @@ class LrndesignTimeline extends SimpleColors {
   _checkScroll(e) {
     if (this.shadowRoot) {
       let events = this.shadowRoot.querySelectorAll(".event") || [];
-      events.forEach(event => {
+      events.forEach((event) => {
         let top = event.offsetTop,
           target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
           bottom = event.offsetTop + event.offsetHeight;
@@ -138,7 +138,7 @@ class LrndesignTimeline extends SimpleColors {
       this.eventsElement
     ) {
       this.eventsElement.innerHTML = "";
-      sections.forEach(section => {
+      sections.forEach((section) => {
         let clone = section.cloneNode(true),
           div = document.createElement("div"),
           overview = div.cloneNode(),
@@ -176,7 +176,7 @@ class LrndesignTimeline extends SimpleColors {
         overview.appendChild(div);
 
         //get details
-        Object.keys(clone.children || []).forEach(child =>
+        Object.keys(clone.children || []).forEach((child) =>
           details.append(clone.children[child])
         );
         details.classList.add("details");

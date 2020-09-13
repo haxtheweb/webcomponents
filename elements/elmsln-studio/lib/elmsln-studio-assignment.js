@@ -226,7 +226,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -243,9 +243,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               ? ``
               : html`
                   <elmsln-studio-link
-                    href="${`/assignments?project=${
-                      this.assignment.projectId
-                    }`}"
+                    href="${`/assignments?project=${this.assignment.projectId}`}"
                     >${this.assignment.project}</elmsln-studio-link
                   >
                   <span> > </span>
@@ -275,9 +273,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                         : html`
                             <thead>
                               ${this.assignment.rubric[0].map(
-                                col => html`
-                                  <th scope="row">${col}</th>
-                                `
+                                (col) => html` <th scope="row">${col}</th> `
                               )}
                             </thead>
                           `}
@@ -289,12 +285,8 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                                 <tr>
                                   ${this.assignment.rubric[0].map((col, ii) =>
                                     ii === 0
-                                      ? html`
-                                          <th scope="col">${col}</th>
-                                        `
-                                      : html`
-                                          <td>${col}</td>
-                                        `
+                                      ? html` <th scope="col">${col}</th> `
+                                      : html` <td>${col}</td> `
                                   )}
                                 </tr>
                               `
@@ -347,11 +339,11 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
     return {
       ...super.properties,
       assignment: {
-        type: Object
+        type: Object,
       },
       submission: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -389,7 +381,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
       !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
         ? []
         : this.portfolio.submissions.filter(
-            s => s.id === this.submissionFilter
+            (s) => s.id === this.submissionFilter
           );
     return !filter ? false : filter[0];
   }

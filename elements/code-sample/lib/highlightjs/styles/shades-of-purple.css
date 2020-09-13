@@ -9,6 +9,7 @@
 .hljs {
   display: block;
   overflow-x: auto;
+
   /* Custom font is optional */
   /* font-family: 'Operator Mono', 'Fira Code', 'Menlo', 'Monaco', 'Courier New', 'monospace';  */
   line-height: 1.45;

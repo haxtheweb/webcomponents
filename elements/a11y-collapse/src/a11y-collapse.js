@@ -144,7 +144,7 @@ class A11yCollapse extends LitElement {
           max-height: var(--a11y-collapse-max-height, 200000000000vh);
           transition: max-height 0.75s ease;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -178,7 +178,7 @@ class A11yCollapse extends LitElement {
       headingButton: {
         type: Boolean,
         reflect: true,
-        attribute: "heading-button"
+        attribute: "heading-button",
       },
       /**
        * disbled
@@ -186,7 +186,7 @@ class A11yCollapse extends LitElement {
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled"
+        attribute: "disabled",
       },
       /**
        * hidden
@@ -194,53 +194,53 @@ class A11yCollapse extends LitElement {
       hidden: {
         type: Boolean,
         reflect: true,
-        attribute: "hidden"
+        attribute: "hidden",
       },
       /**
        * icon when expanded
        */
       expanded: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * icon for the button
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * icon when expanded
        */
       iconExpanded: {
         type: String,
-        attribute: "icon-expanded"
+        attribute: "icon-expanded",
       },
       /**
        * label for the button
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * optional label for the button when expanded
        */
       labelExpanded: {
         type: String,
-        attribute: "label-expanded"
+        attribute: "label-expanded",
       },
       /**
        * tooltip for the button
        */
       tooltip: {
-        type: String
+        type: String,
       },
       /**
        * optional tooltip for the button when expanded
        */
       tooltipExpanded: {
         type: String,
-        attribute: "tooltip-expanded"
+        attribute: "tooltip-expanded",
       },
       /**
        * @deprecated Use {@link headingButton} instead
@@ -248,8 +248,8 @@ class A11yCollapse extends LitElement {
       accordion: {
         type: Boolean,
         reflect: true,
-        attribute: "accordion"
-      }
+        attribute: "accordion",
+      },
     };
   }
 
@@ -274,7 +274,7 @@ class A11yCollapse extends LitElement {
         description: "A single instance of an expand collapse.",
         icon: "view-day",
         color: "grey",
-        groups: ["Content", "Presentation", "Collapse"]
+        groups: ["Content", "Presentation", "Collapse"],
       },
       settings: {
         quick: [
@@ -282,58 +282,58 @@ class A11yCollapse extends LitElement {
             property: "expanded",
             title: "Expanded",
             description: "Expand by default",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "headingButton",
             title: "Heading Button",
             description:
               "Make entire heading clickble instead of just the icon.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "disabled",
             title: "Disabled",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         configure: [
           {
             slot: "heading",
             title: "Heading",
             description: "The heading for the collapse.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "content",
             title: "Content",
             description: "The content for the collapse.",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "headingButton",
             title: "Heading Button",
             description:
               "Make entire heading clickble instead of just the icon.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "expanded",
             title: "Expanded",
             description: "Expand by default",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "disabled",
             title: "Disabled",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "icon",
             title: "Icon",
             description: "The icon for the toggle expand/collapse button.",
             inputMethod: "iconpicker",
-            options: []
+            options: [],
           },
           {
             property: "iconExpanded",
@@ -341,43 +341,43 @@ class A11yCollapse extends LitElement {
             description:
               "Optional: The icon for the toggle expand/collapse button when expanded",
             inputMethod: "iconpicker",
-            options: []
+            options: [],
           },
           {
             property: "label",
             title: "Label",
             description: "The label of the toggle expand/collapse button",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "labelExpanded",
             title: "Label (when expanded)",
             description:
               "The label of the toggle expand/collapse button when expanded.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "tooltip",
             title: "Tooltip",
             description: "The tooltip for the toggle expand/collapse button",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "tooltipExpanded",
             title: "Tooltip (when expanded)",
             description:
               "The tooltip for the toggle expand/collapse button when expanded",
-            inputMethod: "textfield"
-          }
+            inputMethod: "textfield",
+          },
         ],
         advanced: [
           {
             property: "hidden",
             title: "Hidden",
-            inputMethod: "boolean"
-          }
-        ]
-      }
+            inputMethod: "boolean",
+          },
+        ],
+      },
     };
   }
   connectedCallback() {
@@ -393,7 +393,7 @@ class A11yCollapse extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }, 0);
@@ -413,7 +413,7 @@ class A11yCollapse extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     super.disconnectedCallback();
@@ -460,7 +460,7 @@ class A11yCollapse extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     /**
@@ -473,7 +473,7 @@ class A11yCollapse extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     if (this.expanded) {
@@ -487,7 +487,7 @@ class A11yCollapse extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     } else {
@@ -501,7 +501,7 @@ class A11yCollapse extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -611,7 +611,7 @@ class A11yCollapse extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

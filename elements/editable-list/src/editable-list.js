@@ -51,8 +51,8 @@ class EditableList extends LitElement {
         this.dispatchEvent(
           new CustomEvent("edit-mode-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -61,9 +61,7 @@ class EditableList extends LitElement {
   triggerDeleteModal(e) {
     this.activeElement = e.detail.element;
     let c = document.createElement("div");
-    c.innerHTML = `<div>Are you sure you want to delete <strong>${
-      e.detail.element.value
-    }</strong>?</div>`;
+    c.innerHTML = `<div>Are you sure you want to delete <strong>${e.detail.element.value}</strong>?</div>`;
     let button1 = document.createElement("paper-button");
     button1.raised = true;
     button1.addEventListener("click", this._deleteItemConfirm.bind(this));
@@ -83,11 +81,11 @@ class EditableList extends LitElement {
         title: `Delete ${e.detail.element.value}`,
         elements: {
           content: c,
-          buttons: b
+          buttons: b,
         },
         invokedBy: e.detail.element.shadowRoot.querySelector("#delete"),
-        clone: false
-      }
+        clone: false,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -100,7 +98,7 @@ class EditableList extends LitElement {
       bubbles: true,
       cancelable: true,
       composed: true,
-      detail: {}
+      detail: {},
     });
     this.dispatchEvent(evt);
   }

@@ -7,3 +7,6 @@ package.json
 package-lock.json
 analysis-error.json
 code-sample/lib/highlightjs/languages/*.js
+elements/h5p-element/lib
+elements/wave-player/lib
+elements/moment-element/lib

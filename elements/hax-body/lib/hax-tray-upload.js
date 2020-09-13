@@ -7,7 +7,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
         *[hidden] {
           display: none;
         }
-      `
+      `,
     ];
   }
   /**
@@ -23,7 +23,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection",
-      "place-holder-file-drop": "_placeHolderFileDrop"
+      "place-holder-file-drop": "_placeHolderFileDrop",
     };
   }
   /**
@@ -47,7 +47,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   newAssetConfigure() {
     let values = {
       source: this.shadowRoot.querySelector("#url").value,
-      title: this.shadowRoot.querySelector("#url").value
+      title: this.shadowRoot.querySelector("#url").value,
     };
     window.HaxStore.insertLogicFromValues(values, this);
   }
@@ -135,7 +135,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       // look for a match as to what gizmo types it supports
       let values = {
         source: e.detail.file.name,
-        type: e.detail.file.type
+        type: e.detail.file.type,
       };
       // we have no clue what this is.. let's try and guess..
       var type = window.HaxStore.guessGizmoType(values);
@@ -211,7 +211,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
    * in a string to actually hit the deeper part of an object structure.
    */
   _resolveObjectPath(path, obj) {
-    return path.split(".").reduce(function(prev, curr) {
+    return path.split(".").reduce(function (prev, curr) {
       return prev ? prev[curr] : null;
     }, obj || self);
   }

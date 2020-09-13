@@ -33,18 +33,18 @@ createSWC({
   // dynamically imported dependencies
   deps: [
     "@polymer/iron-icon/iron-icon.js",
-    "@polymer/iron-icons/iron-icons.js"
+    "@polymer/iron-icons/iron-icons.js",
   ],
   // data handling and properties
   data: {
     // default values
     values: {
       colorValue: "blue",
-      title: "Button"
+      title: "Button",
     },
     // reflect to css attribute
-    reflect: ["colorValue"]
-  }
+    reflect: ["colorValue"],
+  },
 });
 
 // create a slightly more complex "simple" web component
@@ -78,14 +78,14 @@ createSWC({
     // window events are added on connection and disconnection
     window: {
       "hax-app-selected": "_appSelected",
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     },
     // after shadowRoot is available, querySelect the key, then apply the event and callback
     shadow: {
       "#stuff": {
-        click: "_clickedStuff"
-      }
-    }
+        click: "_clickedStuff",
+      },
+    },
   },
   // data handling and properties
   data: {
@@ -95,7 +95,7 @@ createSWC({
       border: true,
       color: "blue",
       title: "My Title",
-      anotherValue: 1
+      anotherValue: 1,
     },
     // reflect to css attribute
     reflect: ["color"],
@@ -105,13 +105,13 @@ createSWC({
     // 3rd optional parameter is what value to compute based on the others
     observe: [
       [["border", "color"], "computeShadow", "shadow"],
-      [["color"], "colorChanged"]
+      [["color"], "colorChanged"],
     ],
     // HAX data wiring
     hax: {
       color: "colorpicker",
-      border: "number"
-    }
+      border: "number",
+    },
   },
   // callbacks available to the above code
   // this is where all the logic is put into action
@@ -126,6 +126,6 @@ createSWC({
     _haxStorePropertyUpdated(e) {},
     _clickedStuff(e) {
       console.log("click");
-    }
-  }
+    },
+  },
 });

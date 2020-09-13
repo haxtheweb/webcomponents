@@ -102,7 +102,7 @@ class SiteRecentContentBlock extends PolymerElement {
                 ></iron-image>
               </div>
               <div class="item-heading">
-                <a href\$="[[item.slug]]">[[item.title]]</a>
+                <a href$="[[item.slug]]">[[item.title]]</a>
               </div>
             </div>
           </template>
@@ -120,14 +120,14 @@ class SiteRecentContentBlock extends PolymerElement {
        */
       limit: {
         type: Number,
-        value: 10
+        value: 10,
       },
       /**
        * ending level for the menu items
        */
       startIndex: {
         type: Number,
-        value: 0
+        value: 0,
       },
       /**
        * optional sort
@@ -135,30 +135,30 @@ class SiteRecentContentBlock extends PolymerElement {
       sort: {
         type: Object,
         value: {
-          "metadata.created": "ASC"
-        }
+          "metadata.created": "ASC",
+        },
       },
       /**
        * conditions to query on
        */
       conditions: {
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * title for the block;
        */
       title: {
         type: String,
-        value: "Recent content"
+        value: "Recent content",
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged"
-      }
+        observer: "_activeIdChanged",
+      },
     };
   }
 
@@ -169,11 +169,11 @@ class SiteRecentContentBlock extends PolymerElement {
       if (this.shadowRoot.querySelector('[data-id="' + newValue + '"]')) {
         el = this.shadowRoot.querySelector('[data-id="' + newValue + '"]');
       } else {
-        let tmpItem = store.manifest.items.find(i => i.id == newValue);
+        let tmpItem = store.manifest.items.find((i) => i.id == newValue);
         // fallback, maybe there's a child of this currently active
         while (el === null && tmpItem && tmpItem.parent != null) {
           // take the parent object of this current item
-          tmpItem = store.manifest.items.find(i => i.id == tmpItem.parent);
+          tmpItem = store.manifest.items.find((i) => i.id == tmpItem.parent);
           // see if IT lives in the dom, if not, keep going until we run out
           if (
             tmpItem &&

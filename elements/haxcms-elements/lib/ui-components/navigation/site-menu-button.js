@@ -83,7 +83,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
-      `
+      `,
     ];
   }
   /**
@@ -96,15 +96,15 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
     super();
     this.hideLabel = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeRouterManifestIndex = toJS(store.activeRouterManifestIndex);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.routerManifest = toJS(store.routerManifest);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
@@ -163,46 +163,46 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
       ...super.properties,
       type: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * acitvely selected item
        */
       activeRouterManifestIndex: {
-        type: String
+        type: String,
       },
       routerManifest: {
-        type: Object
+        type: Object,
       },
       link: {
-        type: String
+        type: String,
       },
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled"
+        attribute: "disabled",
       },
       label: {
-        type: String
+        type: String,
       },
       hideLabel: {
         type: Boolean,
-        attribute: "hide-label"
+        attribute: "hide-label",
       },
       icon: {
-        type: String
+        type: String,
       },
       position: {
-        type: String
+        type: String,
       },
       raised: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   updated(changedProperties) {
@@ -220,8 +220,8 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -248,7 +248,7 @@ class SiteMenuButton extends HAXCMSThemeParts(LitElement) {
           "activeRouterManifestIndex",
           "routerManifest",
           "editMode",
-          "link"
+          "link",
         ].includes(propName) &&
         this.routerManifest
       ) {

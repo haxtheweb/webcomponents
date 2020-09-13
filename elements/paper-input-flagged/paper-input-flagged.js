@@ -54,7 +54,7 @@ class PaperInputFlagged extends LitElement {
           overflow: hidden;
           height: 1px;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -64,45 +64,45 @@ class PaperInputFlagged extends LitElement {
     this.value = "";
     this.inputSuccess = {
       message: "You passed our simple accessibility checks.",
-      status: "info"
+      status: "info",
     };
     this.flaggedInput = [
       {
         match: null,
         message:
           "Alt data is required for everything except decoration images.",
-        status: "notice"
+        status: "notice",
       },
       {
         match: "image",
         message:
           "Screenreaders will say the word image, don't put it in the descriptive text",
-        status: "error"
+        status: "error",
       },
       {
         match: "photo",
         message:
           "Screenreaders will say the word image, don't put photo in the descriptive text",
-        status: "error"
+        status: "error",
       },
       {
         match: "picture",
         message:
           "Screenreaders will say the word image, don't put picture in the descriptive text",
-        status: "error"
+        status: "error",
       },
       {
         match: 3,
         message:
           "Description not effective enough. This should be at least a sentance about what the image is.",
-        status: "error"
+        status: "error",
       },
       {
         match: 10,
         message:
           "Make sure your alt text is descriptive enough for those that can't see the media.",
-        status: "warning"
-      }
+        status: "warning",
+      },
     ];
     import("@polymer/paper-input/paper-input.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
@@ -120,8 +120,8 @@ class PaperInputFlagged extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -166,53 +166,53 @@ class PaperInputFlagged extends LitElement {
   static get properties() {
     return {
       label: {
-        type: String
+        type: String,
       },
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Icon based on status
        */
       icon: {
-        type: String
+        type: String,
       },
       maxlength: {
-        type: Number
+        type: Number,
       },
       minlength: {
-        type: Number
+        type: Number,
       },
       /**
        * Status based on test for flagged words
        */
       status: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * value
        */
       value: {
-        type: String
+        type: String,
       },
       /**
        * Input to trap and offer feedback about.
        */
       flaggedInput: {
         type: Array,
-        attribute: "flagged-input"
+        attribute: "flagged-input",
       },
       /**
        * Passed tests / success data.
        */
       inputSuccess: {
         type: Object,
-        attribute: "input-success"
+        attribute: "input-success",
       },
       __activeMessage: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**

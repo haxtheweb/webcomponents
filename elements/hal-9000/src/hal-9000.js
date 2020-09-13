@@ -111,7 +111,7 @@ class Hal9000 extends LitElement {
       if (this.auto) {
         this.annyang.start({
           autoRestart: true,
-          continuous: true
+          continuous: true,
         });
       } else if (this.enabled) {
         this.annyang.start();
@@ -120,7 +120,7 @@ class Hal9000 extends LitElement {
       const evt = new CustomEvent("hal-9000-online", {
         bubbles: true,
         cancelable: false,
-        detail: true
+        detail: true,
       });
       this.dispatchEvent(evt);
     }
@@ -160,7 +160,7 @@ class Hal9000 extends LitElement {
         if (this.auto) {
           this.annyang.start({
             autoRestart: true,
-            continuous: true
+            continuous: true,
           });
         } else {
           this.annyang.start();

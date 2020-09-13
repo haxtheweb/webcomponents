@@ -26,7 +26,7 @@ class HaxContextItemMenu extends LitElement {
           height: unset;
           width: unset;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -68,7 +68,7 @@ class HaxContextItemMenu extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("selected-value-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -78,16 +78,16 @@ class HaxContextItemMenu extends LitElement {
     return {
       mini: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       action: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Internal flag to allow blocking the event firing if machine selects tag.
        */
       _blockEvent: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Value.
@@ -95,27 +95,27 @@ class HaxContextItemMenu extends LitElement {
       selectedValue: {
         type: Number,
         reflect: true,
-        attribute: "selected-value"
+        attribute: "selected-value",
       },
       /**
        * Direction for the tooltip
        */
       direction: {
-        type: String
+        type: String,
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -124,8 +124,8 @@ class HaxContextItemMenu extends LitElement {
        */
       eventName: {
         type: String,
-        attribute: "event-name"
-      }
+        attribute: "event-name",
+      },
     };
   }
 
@@ -176,8 +176,8 @@ class HaxContextItemMenu extends LitElement {
               detail: {
                 target: item,
                 eventName: this.eventName,
-                value: item.attributes.value.value
-              }
+                value: item.attributes.value.value,
+              },
             })
           );
         }

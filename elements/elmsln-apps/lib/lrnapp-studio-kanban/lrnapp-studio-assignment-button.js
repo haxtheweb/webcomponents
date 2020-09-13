@@ -23,8 +23,8 @@ class LrnappStudioAssignmentButton extends PolymerElement {
         on-click="_createAssignment"
         icon-class="[[iconClass]]"
         alt="[[alt]]"
-        class\$="[[classes]]"
-        button-class\$="[[classes]]"
+        class$="[[classes]]"
+        button-class$="[[classes]]"
         hover-class="[[hoverClass]]"
         icon="[[icon]]"
       ></lrnsys-button>
@@ -48,58 +48,58 @@ class LrnappStudioAssignmentButton extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       endPoint: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       auto: {
         type: Boolean,
         reflectToAttribute: true,
         value: false,
-        notify: true
+        notify: true,
       },
       displayErrors: {
         type: Boolean,
-        value: true
+        value: true,
       },
       projectId: {
-        type: String
+        type: String,
       },
       iconClass: {
         type: String,
-        value: null
+        value: null,
       },
       alt: {
         type: String,
-        value: null
+        value: null,
       },
       classes: {
         type: String,
-        value: null
+        value: null,
       },
       hoverClass: {
         type: String,
-        value: null
+        value: null,
       },
       icon: {
         type: String,
-        value: null
-      }
+        value: null,
+      },
     };
   }
   _createAssignment() {
@@ -116,7 +116,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: { assignment: assignment }
+            detail: { assignment: assignment },
           })
         );
       }
@@ -125,7 +125,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
     if (typeof response.errors !== "undefined") {
       var ul = document.createElement("ul");
       var text = "";
-      response.errors.forEach(function(error) {
+      response.errors.forEach(function (error) {
         text = text + " " + error;
       });
       this.shadowRoot.querySelector("#toast").show(text);
