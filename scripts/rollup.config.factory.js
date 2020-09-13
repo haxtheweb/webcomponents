@@ -1,5 +1,5 @@
 import babel from "rollup-plugin-babel";
-import babelPluginDynamicToStaticImport from "./babel-plugin-dynamic-to-static-import";
+import babelPluginDynamicToStaticImport from "babel-plugin-transform-dynamic-imports-to-static-imports";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import del from "rollup-plugin-delete";
