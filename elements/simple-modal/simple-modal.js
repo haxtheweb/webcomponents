@@ -152,8 +152,7 @@ class SimpleModal extends LitElement {
 
   // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           :host paper-dialog ::slotted(*) {
             @apply --simple-modal-content;
@@ -231,8 +230,7 @@ class SimpleModal extends LitElement {
         <div class="buttons">
           <slot name="buttons"></slot>
         </div>
-      </paper-dialog>
-    `;
+      </paper-dialog>`;
   }
 
   // properties available to the custom element for data binding

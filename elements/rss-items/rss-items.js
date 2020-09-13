@@ -31,6 +31,7 @@ class RssItems extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         :host {
           display: flex;
           flex-wrap: wrap;
@@ -120,10 +121,10 @@ class RssItems extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <iron-ajax
+    return html` <iron-ajax
         id="rssajax"
         url="${this.url}"
         handle-as="xml"
@@ -174,8 +175,7 @@ class RssItems extends LitElement {
               : ``}
           </article>
         `
-      )}
-    `;
+      )}`;
   }
 
   // haxProperty definition

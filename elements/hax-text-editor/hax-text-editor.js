@@ -20,11 +20,9 @@ import "./lib/hax-text-editor-toolbar.js";
  */
 class HaxTextEditor extends RichTextEditor {
   // render function
-  static get template() {
-    return html`
-      <style></style>
-      ${super.template}
-    `;
+  render() {
+    return html` <style></style>
+      ${super.template}`;
   }
 
   // properties available to the custom element for data binding

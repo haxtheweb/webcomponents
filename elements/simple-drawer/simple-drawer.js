@@ -42,9 +42,11 @@ class SimpleDrawer extends SimpleColors {
           display: block;
           z-index: 1000;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         :host div::slotted(*) {
           font-size: 14px;
         }
@@ -107,10 +109,10 @@ class SimpleDrawer extends SimpleColors {
       `,
     ];
   }
-  // LitElement
+
+  // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           app-drawer {
             --app-drawer-content-container: {
@@ -147,7 +149,7 @@ class SimpleDrawer extends SimpleColors {
       >
         <div class="wrapper">
           <div class="top">
-            ${this.title ? html` <h2>${this.title}</h2> ` : ""}
+            ${this.title ? html`<h2>${this.title}</h2>` : ""}
             <slot name="header"></slot>
           </div>
           <div class="content">
@@ -157,8 +159,7 @@ class SimpleDrawer extends SimpleColors {
             <iron-icon icon="${this.closeIcon}"></iron-icon> ${this.closeLabel}
           </paper-button>
         </div>
-      </app-drawer>
-    `;
+      </app-drawer>`;
   }
 
   // properties available to the custom element for data binding

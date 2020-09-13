@@ -43,11 +43,6 @@
       "attributes": []
     },
     {
-      "name": "hax-text-editor",
-      "description": "`hax-text-editor`\n\nProperties:\n\n  * `type` {`string`} - ",
-      "attributes": []
-    },
-    {
       "name": "tag",
       "attributes": []
     },

@@ -100,48 +100,46 @@ class SimpleLogin extends SimpleColors {
 
   // render function
   render() {
-    return html`
-      <div id="loginform">
-        <paper-progress
-          ?disabled="${!this.loading}"
-          indeterminate
-        ></paper-progress>
-        <div id="loginformcontent">
-          <h1>${this.title}</h1>
-          <h2>${this.subtitle}</h2>
-          <div id="errormsg">${this.errorMsg}</div>
-          <slot></slot>
-          <simple-fields-field
-            id="userinput"
-            value="${this.username}"
-            @value-changed="${this._usernameChanged}"
-            type="text"
-            ?disabled="${this.loading}"
-            label="${this.userInputLabel}"
-            required
-            error-message="${this.userInputErrMsg}"
-          ></simple-fields-field>
-          <simple-fields-field
-            id="passinput"
-            required
-            value="${this.password}"
-            @value-changed="${this._passwordChanged}"
-            ?disabled="${this.loading}"
-            type="password"
-            label="${this.passwordInputLabel}"
-            error-message="${this.passwordInputErrMsg}"
-          ></simple-fields-field>
-          <mwc-button
-            @click="${this._login}"
-            ?disabled="${this.loading}"
-            id="loginbtn"
-            raised
-            >${this.loginBtnText}
-          </mwc-button>
-          <span id="buttons"><slot name="buttons"></slot></span>
-        </div>
+    return html` <div id="loginform">
+      <paper-progress
+        ?disabled="${!this.loading}"
+        indeterminate
+      ></paper-progress>
+      <div id="loginformcontent">
+        <h1>${this.title}</h1>
+        <h2>${this.subtitle}</h2>
+        <div id="errormsg">${this.errorMsg}</div>
+        <slot></slot>
+        <simple-fields-field
+          id="userinput"
+          value="${this.username}"
+          @value-changed="${this._usernameChanged}"
+          type="text"
+          ?disabled="${this.loading}"
+          label="${this.userInputLabel}"
+          required
+          error-message="${this.userInputErrMsg}"
+        ></simple-fields-field>
+        <simple-fields-field
+          id="passinput"
+          required
+          value="${this.password}"
+          @value-changed="${this._passwordChanged}"
+          ?disabled="${this.loading}"
+          type="password"
+          label="${this.passwordInputLabel}"
+          error-message="${this.passwordInputErrMsg}"
+        ></simple-fields-field>
+        <mwc-button
+          @click="${this._login}"
+          ?disabled="${this.loading}"
+          id="loginbtn"
+          raised
+          >${this.loginBtnText}
+        </mwc-button>
+        <span id="buttons"><slot name="buttons"></slot></span>
       </div>
-    `;
+    </div>`;
   }
 
   // properties available to the custom element for data binding

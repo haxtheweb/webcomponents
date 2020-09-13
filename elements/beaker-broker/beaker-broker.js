@@ -19,8 +19,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 class BeakerBroker extends LitElement {
   // render function
   render() {
-    return html`
-      <style>
+    return html` <style>
         :host {
           display: block;
         }
@@ -29,8 +28,7 @@ class BeakerBroker extends LitElement {
           display: none;
         }
       </style>
-      <slot></slot>
-    `;
+      <slot></slot>`;
   }
 
   // haxProperty definition

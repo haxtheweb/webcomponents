@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lerndesign-gallery-behaviors",
+      "description": "`lerndesign-gallery-behaviors`\nA set of properties for lerndesign-gallery components.\n\nEvents:\n\n  * `item-changed` - Handles changes in selected item by firing an event to the gallery\n\nAttributes:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `gallery-title` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extra-wide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsive-size` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items\n\nProperties:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `galleryTitle` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extraWide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsiveSize` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items",
+      "attributes": [
+        {
+          "name": "anchorData",
+          "description": "`anchorData` - a named anchor for the gallery\n\nProperty: anchorData"
+        },
+        {
+          "name": "galleryId",
+          "description": "`galleryId` {`string`} - gallery's unique id\n\nProperty: galleryId"
+        },
+        {
+          "name": "gallery-title",
+          "description": "`gallery-title` {`string`} - gallery's title\n\nProperty: galleryTitle"
+        },
+        {
+          "name": "layout",
+          "description": "`layout` {`string`} - layout type: currently masonry, carousel, and grid\n\nProperty: layout"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - DEPRECATED gallery's title\n\nProperty: title"
+        },
+        {
+          "name": "aspectRatio",
+          "description": "`aspectRatio` {`number`} - aspect ratio of media\n\nProperty: aspectRatio\n\nDefault: 1.33333333"
+        },
+        {
+          "name": "extra-wide",
+          "description": "`extra-wide` {`boolean`} - size for responsive CSS\n\nProperty: extraWide\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - \n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - parent size for responsive styling\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` - id of item\n\nProperty: selected\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sizing",
+          "description": "`sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\nProperty: sizing\n\nDefault: cover"
+        },
+        {
+          "name": "sources",
+          "description": "`sources` {`any[]`} - array of gallery items\n\nProperty: sources\n\nDefault: "
+        },
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - Handles changes in selected item by firing an event to the gallery"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-behaviors",
+      "description": "`lerndesign-gallery-behaviors`\nA set of properties for lerndesign-gallery components.\n\nEvents:\n\n  * `item-changed` - Handles changes in selected item by firing an event to the gallery\n\nAttributes:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `gallery-title` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extra-wide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsive-size` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items\n\nProperties:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `galleryTitle` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extraWide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsiveSize` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items",
+      "attributes": [
+        {
+          "name": "anchorData",
+          "description": "`anchorData` - a named anchor for the gallery\n\nProperty: anchorData"
+        },
+        {
+          "name": "galleryId",
+          "description": "`galleryId` {`string`} - gallery's unique id\n\nProperty: galleryId"
+        },
+        {
+          "name": "gallery-title",
+          "description": "`gallery-title` {`string`} - gallery's title\n\nProperty: galleryTitle"
+        },
+        {
+          "name": "layout",
+          "description": "`layout` {`string`} - layout type: currently masonry, carousel, and grid\n\nProperty: layout"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - DEPRECATED gallery's title\n\nProperty: title"
+        },
+        {
+          "name": "aspectRatio",
+          "description": "`aspectRatio` {`number`} - aspect ratio of media\n\nProperty: aspectRatio\n\nDefault: 1.33333333"
+        },
+        {
+          "name": "extra-wide",
+          "description": "`extra-wide` {`boolean`} - size for responsive CSS\n\nProperty: extraWide\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - \n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - parent size for responsive styling\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` - id of item\n\nProperty: selected\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sizing",
+          "description": "`sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\nProperty: sizing\n\nDefault: cover"
+        },
+        {
+          "name": "sources",
+          "description": "`sources` {`any[]`} - array of gallery items\n\nProperty: sources\n\nDefault: "
+        },
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - Handles changes in selected item by firing an event to the gallery"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-details",
+      "description": "`lrndesign-gallery-details`\nAn element that renders the print view of a gallery item.\n\nAttributes:\n\n  * `details` {`string`} - image's details in as a string of HTML\n\nProperties:\n\n  * `details` {`string`} - image's details in as a string of HTML",
+      "attributes": [
+        {
+          "name": "details",
+          "description": "`details` {`string`} - image's details in as a string of HTML\n\nProperty: details"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-zoom",
+      "description": "`lrndesign-gallery-zoom`\nAn element that renders the zoom feature for the gallery.\n\nEvents:\n\n  * `gallery-zoom` - \n\nAttributes:\n\n  * `heading` {`string`} - heading for zoom modal\n\n  * `details` {`string`} - details for zoom modal\n\n  * `src` {`string`} - Image source.\n\n  * `tooltip` {`string`} - tooltip for the zoom button\n\n  * `zoom-alt` {`string`} - gallery item's alt text\n\nProperties:\n\n  * `figures` {`{ src: string; info: TemplateResult; }[]`} - \n\n  * `toolbars` {`{ bottom: { id: string; type: string; contents: string[]; }; }`} - \n\n  * `button` {`false | Element | null`} - \n\n  * `modal` {`false | Element | null`} - \n\n  * `heading` {`string`} - heading for zoom modal\n\n  * `details` {`string`} - details for zoom modal\n\n  * `src` {`string`} - Image source.\n\n  * `tooltip` {`string`} - tooltip for the zoom button\n\n  * `zoomAlt` {`string`} - gallery item's alt text",
+      "attributes": [
+        {
+          "name": "heading",
+          "description": "`heading` {`string`} - heading for zoom modal\n\nProperty: heading\n\nDefault: Image Zoom"
+        },
+        {
+          "name": "details",
+          "description": "`details` {`string`} - details for zoom modal\n\nProperty: details\n\nDefault: "
+        },
+        {
+          "name": "src",
+          "description": "`src` {`string`} - Image source.\n\nProperty: src\n\nDefault: "
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the zoom button\n\nProperty: tooltip\n\nDefault: Zoom In"
+        },
+        {
+          "name": "zoom-alt",
+          "description": "`zoom-alt` {`string`} - gallery item's alt text\n\nProperty: zoomAlt\n\nDefault: Full-sized Image"
+        },
+        {
+          "name": "ongallery-zoom",
+          "description": "`gallery-zoom` - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-carousel",
+      "description": "`lrndesign-gallery-carousel`\nAn element that renders a collection of gallery items into a carousel or a single media item into a layout.\n\n### Styling\n\n`<lrndesign-gallery-carousel>` provides following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lrndesign-gallery-color` | text color | --simple-colors-default-theme-grey-12\n`--lrndesign-gallery-background-color` | background color | --simple-colors-default-theme-grey-2\n`--lrndesign-gallery-border-color` | subtle border color | --simple-colors-default-theme-grey-4\n`--lrndesign-gallery-focus-color` | accent color | --simple-colors-default-theme-accent-9\n`--lrndesign-gallery-thumbnail-outline` | thumbnail outline color | 1px solid var(--simple-colors-default-theme-grey-12);\n`--lrndesign-gallery-dialog-color` | zoom dialog text color | --simple-colors-default-theme-grey-12\n`--lrndesign-gallery-dialog-background-color` | zoom dialog background-color | --simple-colors-default-theme-grey-1\n`--lrndesign-gallery-dialog-titlebar-color` | zoom dialog title bar text color | --simple-colors-default-theme-grey-1\n`--lrndesign-gallery-dialog-titlebar-background-color` | zoom dialog title bar background-color | --simple-colors-default-theme-accent-9\n`--lrndesign-gallery-dialog-header-color` | zoom dialog header bar text color | --simple-colors-default-theme-grey-12\n`--lrndesign-gallery-dialog-header-background-color` | zoom dialog header bar background-color | --simple-colors-default-theme-grey-2\n`--lrndesign-gallery-carousel-next-bg` | gradient on carousel next button | linear-gradient(to right,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.5) 50%,rgba(255, 255, 255, 0.7) 70%,rgba(255, 255, 255, 0.9) 90%);\n`--lrndesign-gallery-carousel-prev-bg` | gradient on carousel prev button | linear-gradient(to right,rgba(255, 255, 255, 0.9) 10%,rgba(255, 255, 255, 0.7) 30%,rgba(255, 255, 255, 0.5) 50%,rgba(255, 255, 255, 0) 100%);\n\nEvents:\n\n  * `item-changed` - Handles changes in selected item by firing an event to the gallery\n\nAttributes:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `gallery-title` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extra-wide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsive-size` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items\n\nProperties:\n\n  * `hideNav` {`boolean`} - gets whether navigation should be hidden\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `galleryTitle` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extraWide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsiveSize` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items",
+      "attributes": [
+        {
+          "name": "anchorData",
+          "description": "`anchorData` - a named anchor for the gallery\n\nProperty: anchorData"
+        },
+        {
+          "name": "galleryId",
+          "description": "`galleryId` {`string`} - gallery's unique id\n\nProperty: galleryId"
+        },
+        {
+          "name": "gallery-title",
+          "description": "`gallery-title` {`string`} - gallery's title\n\nProperty: galleryTitle"
+        },
+        {
+          "name": "layout",
+          "description": "`layout` {`string`} - layout type: currently masonry, carousel, and grid\n\nProperty: layout"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - DEPRECATED gallery's title\n\nProperty: title"
+        },
+        {
+          "name": "aspectRatio",
+          "description": "`aspectRatio` {`number`} - aspect ratio of media\n\nProperty: aspectRatio\n\nDefault: 1.33333333"
+        },
+        {
+          "name": "extra-wide",
+          "description": "`extra-wide` {`boolean`} - size for responsive CSS\n\nProperty: extraWide\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - \n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - parent size for responsive styling\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` - id of item\n\nProperty: selected\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sizing",
+          "description": "`sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\nProperty: sizing\n\nDefault: cover"
+        },
+        {
+          "name": "sources",
+          "description": "`sources` {`any[]`} - array of gallery items\n\nProperty: sources\n\nDefault: "
+        },
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - Handles changes in selected item by firing an event to the gallery"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-grid",
+      "description": "`lrndesign-gallery-grid`\nAn element that renders a collection of gallery items into a grid or a single media item into a layout.\n\nEvents:\n\n  * `item-changed` - Handles changes in selected item by firing an event to the gallery\n\nAttributes:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `gallery-title` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extra-wide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsive-size` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items\n\nProperties:\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `galleryTitle` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extraWide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsiveSize` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items",
+      "attributes": [
+        {
+          "name": "anchorData",
+          "description": "`anchorData` - a named anchor for the gallery\n\nProperty: anchorData"
+        },
+        {
+          "name": "galleryId",
+          "description": "`galleryId` {`string`} - gallery's unique id\n\nProperty: galleryId"
+        },
+        {
+          "name": "gallery-title",
+          "description": "`gallery-title` {`string`} - gallery's title\n\nProperty: galleryTitle"
+        },
+        {
+          "name": "layout",
+          "description": "`layout` {`string`} - layout type: currently masonry, carousel, and grid\n\nProperty: layout"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - DEPRECATED gallery's title\n\nProperty: title"
+        },
+        {
+          "name": "aspectRatio",
+          "description": "`aspectRatio` {`number`} - aspect ratio of media\n\nProperty: aspectRatio\n\nDefault: 1.33333333"
+        },
+        {
+          "name": "extra-wide",
+          "description": "`extra-wide` {`boolean`} - size for responsive CSS\n\nProperty: extraWide\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - \n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - parent size for responsive styling\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` - id of item\n\nProperty: selected\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sizing",
+          "description": "`sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\nProperty: sizing\n\nDefault: cover"
+        },
+        {
+          "name": "sources",
+          "description": "`sources` {`any[]`} - array of gallery items\n\nProperty: sources\n\nDefault: "
+        },
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - Handles changes in selected item by firing an event to the gallery"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-masonry",
+      "description": "`lrndesign-gallery-masonry`\nAn element that renders a collection of gallery items into a grid or a single media item into a layout.\n\nEvents:\n\n  * `item-changed` - Handles changes in selected item by firing an event to the gallery\n\nAttributes:\n\n  * `__columns` {`any[]`} - \n\n  * `__aspects` - \n\n  * `__items` {`any[]`} - \n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `gallery-title` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extra-wide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsive-size` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items\n\nProperties:\n\n  * `__columns` {`any[]`} - \n\n  * `__aspects` - \n\n  * `__items` {`any[]`} - \n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `galleryTitle` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extraWide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsiveSize` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`any[]`} - array of gallery items",
+      "attributes": [
+        {
+          "name": "__columns",
+          "description": "`__columns` {`any[]`} - \n\nProperty: __columns"
+        },
+        {
+          "name": "__aspects",
+          "description": "`__aspects` - \n\nProperty: __aspects\n\nDefault: [object Object]"
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
+        },
+        {
+          "name": "anchorData",
+          "description": "`anchorData` - a named anchor for the gallery\n\nProperty: anchorData"
+        },
+        {
+          "name": "galleryId",
+          "description": "`galleryId` {`string`} - gallery's unique id\n\nProperty: galleryId"
+        },
+        {
+          "name": "gallery-title",
+          "description": "`gallery-title` {`string`} - gallery's title\n\nProperty: galleryTitle"
+        },
+        {
+          "name": "layout",
+          "description": "`layout` {`string`} - layout type: currently masonry, carousel, and grid\n\nProperty: layout"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - DEPRECATED gallery's title\n\nProperty: title"
+        },
+        {
+          "name": "aspectRatio",
+          "description": "`aspectRatio` {`number`} - aspect ratio of media\n\nProperty: aspectRatio\n\nDefault: 1.33333333"
+        },
+        {
+          "name": "extra-wide",
+          "description": "`extra-wide` {`boolean`} - size for responsive CSS\n\nProperty: extraWide\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - \n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - parent size for responsive styling\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` - id of item\n\nProperty: selected\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sizing",
+          "description": "`sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\nProperty: sizing\n\nDefault: cover"
+        },
+        {
+          "name": "sources",
+          "description": "`sources` {`any[]`} - array of gallery items\n\nProperty: sources\n\nDefault: "
+        },
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - Handles changes in selected item by firing an event to the gallery"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery",
+      "description": "`lrndesign-gallery`\ndisplays images as a carousel or grid with the ability to zoom\n\nEvents:\n\n  * `responsive-element` - \n\n  * `item-changed` - Handles changes in selected item by firing an event to the gallery\n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `gallery-title` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extra-wide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsive-size` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`never[]`} - array of gallery items\n\nProperties:\n\n  * `id` {`string`} - \n\n  * `aspect` {`number`} - gets aspect ratio of images\n\n  * `extra` {`boolean`} - gets aspect ratio of an image and\ndetermine if aspect ratio is extra wide\n\n  * `items` - gets items array\n\n  * `observer` - mutation observer for tabs\n\n  * `anchorData` - a named anchor for the gallery\n\n  * `galleryId` {`string`} - gallery's unique id\n\n  * `galleryTitle` {`string`} - gallery's title\n\n  * `layout` {`string`} - layout type: currently masonry, carousel, and grid\n\n  * `title` {`string`} - DEPRECATED gallery's title\n\n  * `aspectRatio` {`number`} - aspect ratio of media\n\n  * `extraWide` {`boolean`} - size for responsive CSS\n\n  * `grid` {`boolean`} - \n\n  * `responsiveSize` {`string`} - parent size for responsive styling\n\n  * `selected` - id of item\n\n  * `sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\n  * `sources` {`never[]`} - array of gallery items",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "`id` {`string`} - \n\nProperty: id"
+        },
+        {
+          "name": "anchorData",
+          "description": "`anchorData` - a named anchor for the gallery\n\nProperty: anchorData"
+        },
+        {
+          "name": "galleryId",
+          "description": "`galleryId` {`string`} - gallery's unique id\n\nProperty: galleryId"
+        },
+        {
+          "name": "gallery-title",
+          "description": "`gallery-title` {`string`} - gallery's title\n\nProperty: galleryTitle"
+        },
+        {
+          "name": "layout",
+          "description": "`layout` {`string`} - layout type: currently masonry, carousel, and grid\n\nProperty: layout"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - DEPRECATED gallery's title\n\nProperty: title"
+        },
+        {
+          "name": "aspectRatio",
+          "description": "`aspectRatio` {`number`} - aspect ratio of media\n\nProperty: aspectRatio\n\nDefault: 1.33333333"
+        },
+        {
+          "name": "extra-wide",
+          "description": "`extra-wide` {`boolean`} - size for responsive CSS\n\nProperty: extraWide\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - \n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - parent size for responsive styling\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "selected",
+          "description": "`selected` - id of item\n\nProperty: selected\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sizing",
+          "description": "`sizing` {`string`} - default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)\n\nProperty: sizing\n\nDefault: cover"
+        },
+        {
+          "name": "sources",
+          "description": "`sources` {`never[]`} - array of gallery items\n\nProperty: sources\n\nDefault: "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        },
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - Handles changes in selected item by firing an event to the gallery"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `item-changed` - \n\n  * `gallery-zoom` - ",
+      "attributes": [
+        {
+          "name": "onitem-changed",
+          "description": "`item-changed` - "
+        },
+        {
+          "name": "ongallery-zoom",
+          "description": "`gallery-zoom` - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery",
+      "description": "Events:\n\n  * `responsive-element` - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery",
+      "description": "`lrndesign-gallery`\ndisplays images as a carousel or grid with the ability to zoom\n\nEvents:\n\n  * `responsive-element` - \n\nProperties:\n\n  * `aspect` {`number`} - gets aspect ratio of images\n\n  * `extra` {`boolean`} - gets aspect ratio of an image and\ndetermine if aspect ratio is extra wide\n\n  * `items` - gets items array\n\n  * `observer` - mutation observer for tabs\n\n  * `sources` {`never[]`} - \n\n  * `sizing` {`string`} - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

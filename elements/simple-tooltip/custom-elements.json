@@ -3,63 +3,12 @@
   "tags": [
     {
       "name": "simple-tooltip",
-      "path": "./simple-tooltip.es6.js",
-      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`",
-      "properties": [
-        {
-          "name": "target",
-          "description": "Returns the target element that this tooltip is anchored to. It is\neither the element given by the `for` attribute, or the immediate parent\nof the tooltip.",
-          "type": "Node"
-        },
-        {
-          "name": "manualMode",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "position",
-          "type": "string",
-          "default": "\"bottom\""
-        },
-        {
-          "name": "fitToVisibleBounds",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "offset",
-          "type": "number",
-          "default": "14"
-        },
-        {
-          "name": "marginTop",
-          "type": "number",
-          "default": "14"
-        },
-        {
-          "name": "animationEntry",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "animationExit",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "animationConfig",
-          "type": "object",
-          "default": "{\"entry\":[{\"name\":\"fade-in-animation\",\"timing\":{\"delay\":0}}],\"exit\":[{\"name\":\"fade-out-animation\"}]}"
-        }
-      ]
-    },
-    {
-      "name": "simple-tooltip",
       "path": "./simple-tooltip.js",
       "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`",
       "attributes": [
         {
           "name": "for",
+          "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
           "type": "string"
         },
         {
@@ -115,6 +64,7 @@
         {
           "name": "for",
           "attribute": "for",
+          "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
           "type": "string"
         },
         {

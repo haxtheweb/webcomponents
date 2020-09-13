@@ -493,7 +493,7 @@ const LrndesignChart = function (SuperClass) {
 
     // render function
     render() {
-      return html` ${super.render()} `;
+      return html` ${super.render()}`;
     }
 
     // haxProperty definition

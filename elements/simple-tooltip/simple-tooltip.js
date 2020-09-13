@@ -55,6 +55,7 @@ class SimpleTooltip extends LitElement {
           0% {
             transform: scale(0);
           }
+
           100% {
             transform: scale(1);
           }
@@ -64,6 +65,7 @@ class SimpleTooltip extends LitElement {
           0% {
             transform: scale(1);
           }
+
           100% {
             transform: scale(0);
           }
@@ -73,6 +75,7 @@ class SimpleTooltip extends LitElement {
           0% {
             opacity: 0;
           }
+
           100% {
             opacity: var(--simple-tooltip-opacity, 0.9);
           }
@@ -82,6 +85,7 @@ class SimpleTooltip extends LitElement {
           0% {
             opacity: var(--simple-tooltip-opacity, 0.9);
           }
+
           100% {
             opacity: 0;
           }
@@ -92,9 +96,11 @@ class SimpleTooltip extends LitElement {
             transform: translateY(-2000px);
             opacity: 0;
           }
+
           10% {
             opacity: 0.2;
           }
+
           100% {
             transform: translateY(0);
             opacity: var(--simple-tooltip-opacity, 0.9);
@@ -106,9 +112,11 @@ class SimpleTooltip extends LitElement {
             transform: translateY(0);
             opacity: var(--simple-tooltip-opacity, 0.9);
           }
+
           10% {
             opacity: 0.2;
           }
+
           100% {
             transform: translateY(-2000px);
             opacity: 0;
@@ -192,22 +200,26 @@ class SimpleTooltip extends LitElement {
 
   // render function
   render() {
-    return html`
-      <div id="tooltip" class="hidden" @animationend="${this._onAnimationEnd}">
-        <slot></slot>
-      </div>
-    `;
+    return html` <div
+      id="tooltip"
+      class="hidden"
+      @animationend="${this._onAnimationEnd}"
+    >
+      <slot></slot>
+    </div>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
       ...super.properties,
+
       /**
        * The id of the element that the tooltip is anchored to. This element
        * must be a sibling of the tooltip. If this property is not set,
        * then the tooltip will be centered to the parent node containing it.
-       */ for: { type: String },
+       */
+      for: { type: String },
       /**
        * Set this to true if you want to manually control when the tooltip
        * is shown or hidden.

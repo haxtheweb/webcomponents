@@ -25,9 +25,8 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  */
 class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
   // render function
-  static get template() {
-    return html`
-      <style>
+  render() {
+    return html` <style>
         :host {
           display: block;
 
@@ -64,8 +63,7 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
         </div>
       </div>
       <site-menu-button type="prev" position="top"></site-menu-button>
-      <site-menu-button type="next" position="top"></site-menu-button>
-    `;
+      <site-menu-button type="next" position="top"></site-menu-button>`;
   }
 
   // properties available to the custom element for data binding

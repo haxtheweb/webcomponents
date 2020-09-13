@@ -3,22 +3,587 @@
   "tags": [
     {
       "name": "product-card",
-      "path": "./product-card.es6.js",
-      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`"
-    },
-    {
-      "name": "product-card",
       "path": "./product-card.js",
-      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`"
+      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`",
+      "attributes": [
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "subheading",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "has-demo",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "heading",
+          "attribute": "heading",
+          "type": "string"
+        },
+        {
+          "name": "subheading",
+          "attribute": "subheading",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "hasDemo",
+          "attribute": "has-demo",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "product-card-demo-show"
+        }
+      ]
     },
     {
       "name": "tag",
-      "path": "./product-card.umd.js"
+      "path": "./product-card.umd.js",
+      "events": [
+        {
+          "name": "product-card-demo-show"
+        }
+      ]
+    },
+    {
+      "name": "course-card",
+      "path": "./lib/course-card.js",
+      "attributes": [
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "zoom",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "number",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "author",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "type": "string"
+        },
+        {
+          "name": "zoom",
+          "attribute": "zoom",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "number",
+          "attribute": "number",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "hax-element-card-list",
+      "path": "./lib/hax-element-card-list.js",
+      "attributes": [
+        {
+          "name": "enabled",
+          "type": "object"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "showCardList",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "filteredTags",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "cols",
+          "type": "number",
+          "default": "2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "enabled",
+          "attribute": "enabled",
+          "type": "object"
+        },
+        {
+          "name": "hidden",
+          "attribute": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean"
+        },
+        {
+          "name": "productList",
+          "description": "updated list with status based on current value",
+          "type": "{ tag: any; file: any; schema: any; showDemo: any; status: boolean; }[]"
+        },
+        {
+          "name": "showCardList",
+          "attribute": "showCardList",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "list",
+          "attribute": "list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "filteredTags",
+          "attribute": "filteredTags",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "cols",
+          "attribute": "cols",
+          "type": "number",
+          "default": "2"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "hax-element-card-list-changed"
+        }
+      ]
+    },
+    {
+      "name": "hax-element-list-selector",
+      "path": "./lib/hax-element-list-selector.js",
+      "description": "`hax-element-list-selector`\nselects a hax element",
+      "attributes": [
+        {
+          "name": "filteredHaxData",
+          "description": "Data filtered by form changes",
+          "type": "array"
+        },
+        {
+          "name": "wc-registry-endpoint",
+          "description": "End point to load up a list of imports",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "cols",
+          "description": "Columns to render",
+          "type": "number",
+          "default": "3"
+        },
+        {
+          "name": "showCardList",
+          "description": "Show card list so that it SEEMS like its happenign when we click HAX elements",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "imports",
+          "description": "JS imports",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "haxData",
+          "description": "HAXSchema array",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "noSchema",
+          "description": "Valid tags on the CDN but that don't have haxSchema.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "HaxSchematizer",
+          "type": "object",
+          "default": "\"HaxSchematizer\""
+        },
+        {
+          "name": "HaxElementizer",
+          "type": "object",
+          "default": "\"HaxElementizer\""
+        },
+        {
+          "name": "fields-endpoint",
+          "description": "End point to load this data",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "filteredHaxData",
+          "attribute": "filteredHaxData",
+          "description": "Data filtered by form changes",
+          "type": "array"
+        },
+        {
+          "name": "wcRegistryEndpoint",
+          "attribute": "wc-registry-endpoint",
+          "description": "End point to load up a list of imports",
+          "type": "string"
+        },
+        {
+          "name": "form",
+          "type": "Element | null | undefined"
+        },
+        {
+          "name": "cardList"
+        },
+        {
+          "name": "searchColumns",
+          "type": "void"
+        },
+        {
+          "name": "haxTags",
+          "type": "void"
+        },
+        {
+          "name": "otherTags",
+          "type": "void"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "cols",
+          "attribute": "cols",
+          "description": "Columns to render",
+          "type": "number",
+          "default": "3"
+        },
+        {
+          "name": "showCardList",
+          "attribute": "showCardList",
+          "description": "Show card list so that it SEEMS like its happenign when we click HAX elements",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "imports",
+          "attribute": "imports",
+          "description": "JS imports",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "haxData",
+          "attribute": "haxData",
+          "description": "HAXSchema array",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "noSchema",
+          "attribute": "noSchema",
+          "description": "Valid tags on the CDN but that don't have haxSchema.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "autoload",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "HaxSchematizer",
+          "attribute": "HaxSchematizer",
+          "type": "object",
+          "default": "\"HaxSchematizer\""
+        },
+        {
+          "name": "HaxElementizer",
+          "attribute": "HaxElementizer",
+          "type": "object",
+          "default": "\"HaxElementizer\""
+        },
+        {
+          "name": "fieldsEndpoint",
+          "attribute": "fields-endpoint",
+          "description": "End point to load this data",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "appstore-changed"
+        }
+      ]
+    },
+    {
+      "name": "product-banner",
+      "path": "./lib/product-banner.js",
+      "attributes": [
+        {
+          "name": "primary-text",
+          "type": "string"
+        },
+        {
+          "name": "secondary-text",
+          "type": "string"
+        },
+        {
+          "name": "logo",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "primaryText",
+          "attribute": "primary-text",
+          "type": "string"
+        },
+        {
+          "name": "secondaryText",
+          "attribute": "secondary-text",
+          "type": "string"
+        },
+        {
+          "name": "logo",
+          "attribute": "logo",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"orange\""
+        }
+      ]
     },
     {
       "name": "product-card",
       "path": "./src/product-card.js",
-      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`"
+      "description": "`product-card`\n`basic display of a product with advanced data driven helpers`",
+      "attributes": [
+        {
+          "name": "heading",
+          "type": "string"
+        },
+        {
+          "name": "subheading",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "has-demo",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "heading",
+          "attribute": "heading",
+          "type": "string"
+        },
+        {
+          "name": "subheading",
+          "attribute": "subheading",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "hasDemo",
+          "attribute": "has-demo",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "product-card-demo-show"
+        }
+      ]
     }
   ]
 }

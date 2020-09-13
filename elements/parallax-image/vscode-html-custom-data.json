@@ -3,18 +3,12 @@
   "tags": [
     {
       "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `imageBg` {`string`} - Image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image",
       "attributes": [
         {
-          "name": "image-bg",
-          "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `imageBg` {`string`} - Image",
-      "attributes": [
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+        },
         {
           "name": "image-bg",
           "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
@@ -27,8 +21,12 @@
     },
     {
       "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `imageBg` {`string`} - Image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image",
       "attributes": [
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+        },
         {
           "name": "image-bg",
           "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "

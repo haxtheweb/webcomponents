@@ -31,7 +31,7 @@ class AbsolutePositionBehavior extends LitElement {
 
   // render function
   render() {
-    return html` <slot></slot> `;
+    return html` <slot></slot>`;
   }
 
   // properties available to the custom element for data binding

@@ -49,6 +49,7 @@ class SimpleSearch extends LitElement {
           justify-content: space-between;
           width: 100%;
         }
+
         #input {
           flex-grow: 2;
           margin-right: 4px;
@@ -72,15 +73,18 @@ class SimpleSearch extends LitElement {
           );
           color: var(--simple-search-input-placeholder-color, #222);
         }
+
         #xofy {
           margin: 8px;
         }
+
         button {
           margin: 8px 0 8px;
           color: var(--simple-search-button-color, #111);
           background-color: var(--simple-search-button-bg-color, #eee);
           border-color: var(--simple-search-button-border-color, #ccc);
         }
+
         button:not([disabled]):focus,
         button:not([disabled]):hover {
           cursor: pointer;
@@ -88,15 +92,18 @@ class SimpleSearch extends LitElement {
           background-color: var(--simple-search-button-hover-bg-color, #fff);
           border-color: var(--simple-search-button-hover-border-color, #ddd);
         }
+
         button[disabled] {
           cursor: not-allowed;
           color: var(--simple-search-button-disabled-color, #999);
           background-color: var(--simple-search-button-disabled-bg-color, #eee);
           border-color: var(--simple-search-button-disabled-border-color, #ccc);
         }
+
         button:not([controls]) {
           display: none;
         }
+
         *[shrink-hide] {
           display: none;
         }
@@ -106,8 +113,7 @@ class SimpleSearch extends LitElement {
 
   // render function
   render() {
-    return html`
-      <paper-input
+    return html` <paper-input
         id="input"
         label="${this.searchInputLabel}"
         ?always-float-label="${this.alwaysFloatLabel}"
@@ -144,8 +150,7 @@ class SimpleSearch extends LitElement {
           <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
         </button>
         <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
-      </div>
-    `;
+      </div>`;
   }
 
   // properties available to the custom element for data binding

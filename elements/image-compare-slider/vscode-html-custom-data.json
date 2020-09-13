@@ -3,42 +3,35 @@
   "tags": [
     {
       "name": "image-compare-slider",
-      "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "description": "`image-compare-slider`\nhax-wired a11y-compare-image\n\nAttributes:\n\n  * `bottom-alt` {`string`} - src for top image\n\n  * `bottom-description-id` {`string`} - aria-describedby for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `top-alt` {`string`} - src for top image\n\n  * `top-description-id` {`string`} - aria-describedby for top image\n\n  * `top-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `bottomAlt` {`string`} - src for top image\n\n  * `bottomDescriptionId` {`string`} - aria-describedby for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `topAlt` {`string`} - src for top image\n\n  * `topDescriptionId` {`string`} - aria-describedby for top image\n\n  * `topSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "name": "bottom-alt",
+          "description": "`bottom-alt` {`string`} - src for top image\n\nProperty: bottomAlt"
         },
         {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+          "name": "bottom-description-id",
+          "description": "`bottom-description-id` {`string`} - aria-describedby for top image\n\nProperty: bottomDescriptionId"
         },
         {
           "name": "bottom-src",
           "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
         },
         {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "image-compare-slider",
-      "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
-      "attributes": [
-        {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "top-alt",
+          "description": "`top-alt` {`string`} - src for top image\n\nProperty: topAlt"
+        },
+        {
+          "name": "top-description-id",
+          "description": "`top-description-id` {`string`} - aria-describedby for top image\n\nProperty: topDescriptionId"
         },
         {
           "name": "top-src",
           "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
-        },
-        {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
         },
         {
           "name": "opacity",
@@ -53,19 +46,35 @@
     },
     {
       "name": "image-compare-slider",
-      "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "description": "`image-compare-slider`\nhax-wired a11y-compare-image\n\nAttributes:\n\n  * `bottom-alt` {`string`} - src for top image\n\n  * `bottom-description-id` {`string`} - aria-describedby for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `top-alt` {`string`} - src for top image\n\n  * `top-description-id` {`string`} - aria-describedby for top image\n\n  * `top-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `bottomAlt` {`string`} - src for top image\n\n  * `bottomDescriptionId` {`string`} - aria-describedby for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `title` {`string`} - \n\n  * `topAlt` {`string`} - src for top image\n\n  * `topDescriptionId` {`string`} - aria-describedby for top image\n\n  * `topSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "name": "bottom-alt",
+          "description": "`bottom-alt` {`string`} - src for top image\n\nProperty: bottomAlt"
         },
         {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+          "name": "bottom-description-id",
+          "description": "`bottom-description-id` {`string`} - aria-describedby for top image\n\nProperty: bottomDescriptionId"
         },
         {
           "name": "bottom-src",
           "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "top-alt",
+          "description": "`top-alt` {`string`} - src for top image\n\nProperty: topAlt"
+        },
+        {
+          "name": "top-description-id",
+          "description": "`top-description-id` {`string`} - aria-describedby for top image\n\nProperty: topDescriptionId"
+        },
+        {
+          "name": "top-src",
+          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
         },
         {
           "name": "opacity",

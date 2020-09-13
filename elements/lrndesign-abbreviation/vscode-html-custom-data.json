@@ -16,20 +16,6 @@
       ]
     },
     {
-      "name": "lrndesign-abbreviation",
-      "description": "`lrndesign-abbreviation`\n`A wrapper to make a cleaner abbreviation deign element`\n\nAttributes:\n\n  * `abbr` {`string`} - Abbreviation text.\n\n  * `phrase` {`string`} - The thing the abbreviation represents.\n\nProperties:\n\n  * `abbr` {`string`} - Abbreviation text.\n\n  * `phrase` {`string`} - The thing the abbreviation represents.",
-      "attributes": [
-        {
-          "name": "abbr",
-          "description": "`abbr` {`string`} - Abbreviation text.\n\nProperty: abbr"
-        },
-        {
-          "name": "phrase",
-          "description": "`phrase` {`string`} - The thing the abbreviation represents.\n\nProperty: phrase"
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },

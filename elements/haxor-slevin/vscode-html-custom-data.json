@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "haxor-slevin",
-      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selectedPage` {`number`} - ",
+      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `selected-page` {`number`} - \n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `selectedPage` {`number`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - ",
       "attributes": [
         {
           "name": "manifest",
@@ -12,6 +12,10 @@
         {
           "name": "color",
           "description": "`color` {`string`} - \n\nProperty: color"
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage"
         },
         {
           "name": "stateClass",
@@ -28,48 +32,6 @@
         {
           "name": "__followUpPosts",
           "description": "`__followUpPosts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
-        },
-        {
-          "name": "selected-page",
-          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
-        },
-        {
-          "name": "onjson-outline-schema-active-item-changed",
-          "description": "`json-outline-schema-active-item-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "haxor-slevin",
-      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selectedPage` {`number`} - ",
-      "attributes": [
-        {
-          "name": "manifest",
-          "description": "`manifest` - \n\nProperty: manifest"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - \n\nProperty: color"
-        },
-        {
-          "name": "stateClass",
-          "description": "`stateClass` {`string`} - \n\nProperty: stateClass"
-        },
-        {
-          "name": "__mainPosts",
-          "description": "`__mainPosts` {`any[]`} - \n\nProperty: __mainPosts\n\nDefault: "
-        },
-        {
-          "name": "__extraPosts",
-          "description": "`__extraPosts` {`any[]`} - \n\nProperty: __extraPosts\n\nDefault: "
-        },
-        {
-          "name": "__followUpPosts",
-          "description": "`__followUpPosts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
-        },
-        {
-          "name": "selected-page",
-          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
         },
         {
           "name": "onjson-outline-schema-active-item-changed",
@@ -89,7 +51,7 @@
     },
     {
       "name": "haxor-slevin",
-      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selectedPage` {`number`} - ",
+      "description": "`haxor-slevin`\n`Tech blogger theme`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `selected-page` {`number`} - \n\n  * `stateClass` {`string`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `selectedPage` {`number`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - ",
       "attributes": [
         {
           "name": "manifest",
@@ -98,6 +60,10 @@
         {
           "name": "color",
           "description": "`color` {`string`} - \n\nProperty: color"
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage"
         },
         {
           "name": "stateClass",
@@ -114,10 +80,6 @@
         {
           "name": "__followUpPosts",
           "description": "`__followUpPosts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
-        },
-        {
-          "name": "selected-page",
-          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
         },
         {
           "name": "onjson-outline-schema-active-item-changed",

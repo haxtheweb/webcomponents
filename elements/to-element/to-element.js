@@ -16,12 +16,9 @@
  */
 class ToElement extends HTMLElement {
   // render function
-  get html() {
-    return `
-<style>
-
-        </style>
-<slot></slot>`;
+  render() {
+    return html` <style></style>
+      <slot></slot>`;
   }
 
   // properties available to the custom element for data binding

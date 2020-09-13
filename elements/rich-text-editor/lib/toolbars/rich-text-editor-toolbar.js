@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "../../rich-text-editor.js";
-import "../singletons/rich-text-editor-selection.js";
+import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
+import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
 
 const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends RichTextEditorStyles(SuperClass) {

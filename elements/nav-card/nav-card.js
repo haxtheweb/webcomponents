@@ -42,29 +42,27 @@ class NavCard extends AccentCard {
 
   // render function
   render() {
-    return html`
-      <article id="card">
-        <div class="image-outer" ?hidden="${!this.imageSrc}">
-          <div
-            class="image"
-            .style="${this.imageSrc
-              ? `background-image: url(${this.imageSrc});`
-              : `display: none;`}"
-          ></div>
-        </div>
-        <div class="body">
-          <h1 id="heading"><slot name="heading"></slot></h1>
-          <div id="subheading"><slot name="subheading"></slot></div>
-          <div id="content">
-            <slot name="body"></slot>
-            <div id="linklist">
-              <slot name="linklist"></slot>
-            </div>
+    return html` <article id="card">
+      <div class="image-outer" ?hidden="${!this.imageSrc}">
+        <div
+          class="image"
+          .style="${this.imageSrc
+            ? `background-image: url(${this.imageSrc});`
+            : `display: none;`}"
+        ></div>
+      </div>
+      <div class="body">
+        <h1 id="heading"><slot name="heading"></slot></h1>
+        <div id="subheading"><slot name="subheading"></slot></div>
+        <div id="content">
+          <slot name="body"></slot>
+          <div id="linklist">
+            <slot name="linklist"></slot>
           </div>
-          <div id="footer"><slot name="footer"></slot></div>
         </div>
-      </article>
-    `;
+        <div id="footer"><slot name="footer"></slot></div>
+      </div>
+    </article>`;
   }
 
   // haxProperty definition

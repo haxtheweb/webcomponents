@@ -1,0 +1,185 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "date-card",
+      "path": "./date-card.js",
+      "description": "`date-card`\n`simple presentation of a date`",
+      "attributes": [
+        {
+          "name": "month",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "day",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "start-time",
+          "type": "string"
+        },
+        {
+          "name": "end-time",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "border-spacing",
+          "type": "number",
+          "default": "5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "month",
+          "attribute": "month",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "type": "string"
+        },
+        {
+          "name": "day",
+          "attribute": "day",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "startTime",
+          "attribute": "start-time",
+          "type": "string"
+        },
+        {
+          "name": "endTime",
+          "attribute": "end-time",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "attribute": "location",
+          "type": "string"
+        },
+        {
+          "name": "borderSpacing",
+          "attribute": "border-spacing",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"light-blue\""
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./date-card.umd.js"
+    },
+    {
+      "name": "date-card",
+      "path": "./src/date-card.js",
+      "description": "`date-card`\n`simple presentation of a date`",
+      "attributes": [
+        {
+          "name": "month",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "day",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "start-time",
+          "type": "string"
+        },
+        {
+          "name": "end-time",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "border-spacing",
+          "type": "number",
+          "default": "5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "month",
+          "attribute": "month",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "type": "string"
+        },
+        {
+          "name": "day",
+          "attribute": "day",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "startTime",
+          "attribute": "start-time",
+          "type": "string"
+        },
+        {
+          "name": "endTime",
+          "attribute": "end-time",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "attribute": "location",
+          "type": "string"
+        },
+        {
+          "name": "borderSpacing",
+          "attribute": "border-spacing",
+          "type": "number",
+          "default": "5"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"light-blue\""
+        }
+      ]
+    }
+  ]
+}

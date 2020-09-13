@@ -33,37 +33,6 @@
       ]
     },
     {
-      "name": "simple-icon-picker",
-      "description": "`simple-icon-picker`\n\nEvents:\n\n  * `value-changed` - fires when value changes\n\nAttributes:\n\n  * `__iconList` {`any[]`} - An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```\n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `icons` {`any[]`} - An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```\n\n  * `value` {`string`} - The value of the option.\n\n  * `optionsPerRow` {`number`} - the maximum number of options per row\n\nProperties:\n\n  * `__iconList` {`any[]`} - An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```\n\n  * `hideOptionLabels` {`boolean`} - \n\n  * `allowNull` {`boolean`} - Allow a null option to be selected?\n\n  * `icons` {`any[]`} - An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```\n\n  * `value` {`string`} - The value of the option.\n\n  * `options` {`never[]`} - \n\n  * `optionsPerRow` {`number`} - the maximum number of options per row",
-      "attributes": [
-        {
-          "name": "__iconList",
-          "description": "`__iconList` {`any[]`} - An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```\n\nProperty: __iconList"
-        },
-        {
-          "name": "allowNull",
-          "description": "`allowNull` {`boolean`} - Allow a null option to be selected?\n\nProperty: allowNull\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icons",
-          "description": "`icons` {`any[]`} - An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```\n\nProperty: icons\n\nDefault: "
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - The value of the option.\n\nProperty: value\n\nDefault: null"
-        },
-        {
-          "name": "optionsPerRow",
-          "description": "`optionsPerRow` {`number`} - the maximum number of options per row\n\nProperty: optionsPerRow\n\nDefault: 10"
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` - fires when value changes"
-        }
-      ]
-    },
-    {
       "name": "tag",
       "description": "Events:\n\n  * `value-changed` - ",
       "attributes": [

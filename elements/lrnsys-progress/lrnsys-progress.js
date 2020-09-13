@@ -134,7 +134,7 @@ class LrnsysProgress extends PolymerElement {
               icon="[[item.metadata.icon]]"
               icon-complete="[[item.metadata.iconComplete]]"
               data-url="[[item.metadata.dataUrl]]"
-              url="[[item.location]]"
+              url="[[item.slug]]"
               status="[[item.metadata.status]]"
               value="[[item.metadata.value]]"
               max="[[item.metadata.max]]"

@@ -15,10 +15,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @element simple-pages
  */
 class SimplePages extends LitElement {
-  // render function
-  render() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -30,20 +30,26 @@ class SimplePages extends LitElement {
         iron-pages:not(:defined) {
           display: none;
         }
-      </style>
-      <iron-pages
-        selected="${this.selected}"
-        selected-attribute="${this.selectedAttribute}"
-        @selected-changed="${this._selectedChanged}"
-      >
-        <slot></slot>
-      </iron-pages>
-    `;
+      `,
+    ];
+  }
+
+  // render function
+  render() {
+    return html` <iron-pages
+      selected="${this.selected}"
+      selected-attribute="${this.selectedAttribute}"
+      @selected-changed="${this._selectedChanged}"
+    >
+      <slot></slot>
+    </iron-pages>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       selected: {
         type: Number,
       },
@@ -52,10 +58,6 @@ class SimplePages extends LitElement {
         attribute: "selected-attribute",
       },
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

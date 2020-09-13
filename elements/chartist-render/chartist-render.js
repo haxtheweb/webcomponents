@@ -1061,8 +1061,7 @@ const ChartistRenderSuper = function (SuperClass) {
 
     // render function
     render() {
-      return html`
-        <div id="${this.__chartId}-title" class="title">
+      return html` <div id="${this.__chartId}-title" class="title">
           ${this.chartTitle}
           <slot name="heading"></slot>
         </div>
@@ -1093,8 +1092,7 @@ const ChartistRenderSuper = function (SuperClass) {
                 @response="${this._handleResponse}"
               ></iron-ajax>
             `
-          : ``}
-      `;
+          : ``}`;
     }
 
     // properties available to the custom element for data binding

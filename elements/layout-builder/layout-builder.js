@@ -18,9 +18,8 @@ import "@polymer/paper-button/paper-button.js";
  */
 class LayoutBuilder extends PolymerElement {
   // render function
-  static get template() {
-    return html`
-      <style>
+  render() {
+    return html` <style>
         :host {
           display: block;
         }
@@ -29,6 +28,7 @@ class LayoutBuilder extends PolymerElement {
           display: block;
           margin: 0;
         }
+
         :host paper-button,
         :host #content-wrapper {
           border: 1px solid #ddd;
@@ -52,8 +52,7 @@ class LayoutBuilder extends PolymerElement {
       </div>
       <div id="insert-sibling-after">
         <paper-button on-tap="_handleAddSibling">Add new [[type]]</paper-button>
-      </div>
-    `;
+      </div>`;
   }
 
   // haxProperty definition

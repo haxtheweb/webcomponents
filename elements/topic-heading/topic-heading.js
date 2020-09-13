@@ -26,6 +26,7 @@ class TopicHeading extends LitElement {
           color: var(--topic-heading-text-color);
           display: inline-flex;
         }
+
         iron-icon {
           color: var(--topic-heading-icon-color);
           display: inline-flex;
@@ -39,18 +40,19 @@ class TopicHeading extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      ${this.icon ? html` <iron-icon icon="${this.icon}"></iron-icon> ` : ``}
-      ${this.title
-        ? html`
-            <relative-heading text="${this.title}"
-              >${this.title}</relative-heading
-            >
-          `
-        : ``}
-    `;
+    return html` ${this.icon
+      ? html` <iron-icon icon="${this.icon}"></iron-icon> `
+      : ``}
+    ${this.title
+      ? html`
+          <relative-heading text="${this.title}"
+            >${this.title}</relative-heading
+          >
+        `
+      : ``}`;
   }
 
   // haxProperty definition

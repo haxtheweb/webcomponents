@@ -16,8 +16,7 @@
 class RandomItem extends HTMLElement {
   // render function
   render() {
-    return html`
-      <style>
+    return html` <style>
         :host {
           display: block;
         }
@@ -26,8 +25,7 @@ class RandomItem extends HTMLElement {
           display: none;
         }
       </style>
-      ${this.dataPoint}
-    `;
+      ${this.dataPoint}`;
   }
 
   // haxProperty definition

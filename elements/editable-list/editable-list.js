@@ -29,22 +29,21 @@ class EditableList extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <div id="list">
-        ${this.items.map(
-          (item) => html`
-            <editable-list-item
-              ?edit-mode="${item.metadata.canEdit}"
-              ?can-edit="${item.metadata.canEdit}"
-              ?can-delete="${item.metadata.canDelete}"
-              value="${item.title}"
-            ></editable-list-item>
-          `
-        )}
-      </div>
-    `;
+    return html` <div id="list">
+      ${this.items.map(
+        (item) => html`
+          <editable-list-item
+            ?edit-mode="${item.metadata.canEdit}"
+            ?can-edit="${item.metadata.canEdit}"
+            ?can-delete="${item.metadata.canDelete}"
+            value="${item.title}"
+          ></editable-list-item>
+        `
+      )}
+    </div>`;
   }
 
   // properties available to the custom element for data binding

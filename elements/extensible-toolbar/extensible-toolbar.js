@@ -54,30 +54,37 @@ class ExtensibleToolbar extends LitElement {
           --extensible-toolbar-hidden-until-lg: none;
           --extensible-toolbar-hidden-until-xl: none;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         :host([aria-hidden]) {
           visibility: hidden;
           opacity: 0;
           height: 0;
         }
+
         :host([sticky]) {
           position: sticky;
           top: 0;
         }
+
         :host([collapsed]:not([responsive-size="xs"])) {
           --extensible-toolbar-visible-until-sm: none;
           --extensible-toolbar-hidden-until-sm: unset;
         }
+
         :host([collapsed]:not([responsive-size*="s"])) {
           --extensible-toolbar-visible-until-md: none;
           --extensible-toolbar-hidden-until-md: none;
         }
+
         :host([collapsed][responsive-size*="l"]) {
           --extensible-toolbar-visible-until-lg: none;
           --extensible-toolbar-hidden-until-lg: none;
         }
+
         :host([collapsed][responsive-size="xl"]) {
           --extensible-toolbar-visible-until-xl: none;
           --extensible-toolbar-hidden-until-xl: none;
@@ -88,7 +95,7 @@ class ExtensibleToolbar extends LitElement {
 
   // render function
   render() {
-    return html` <slot></slot> `;
+    return html` <slot></slot>`;
   }
 
   // properties available to the custom element for data binding

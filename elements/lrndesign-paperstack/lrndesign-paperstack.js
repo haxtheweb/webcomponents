@@ -146,7 +146,6 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Title
        */

@@ -34,9 +34,11 @@ class MicroCopyHeading extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         span {
           margin-left: 8px;
         }
+
         h2 {
           display: inline-flex;
           margin: unset;
@@ -54,11 +56,12 @@ class MicroCopyHeading extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <h2>${this.heading}<span aria-hidden="true">${this.endcap}</span></h2>
-    `;
+    return html` <h2>
+      ${this.heading}<span aria-hidden="true">${this.endcap}</span>
+    </h2>`;
   }
 
   // haxProperty definition

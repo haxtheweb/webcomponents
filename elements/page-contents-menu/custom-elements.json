@@ -1,0 +1,205 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "page-contents-menu",
+      "path": "./page-contents-menu.js",
+      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`",
+      "attributes": [
+        {
+          "name": "relationship",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "is-empty",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hide-if-empty",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "type": "object"
+        },
+        {
+          "name": "mobile",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideSettings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Contents\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relationship",
+          "attribute": "relationship",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "isEmpty",
+          "attribute": "is-empty",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideIfEmpty",
+          "attribute": "hide-if-empty",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "type": "object"
+        },
+        {
+          "name": "mobile",
+          "attribute": "mobile",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideSettings",
+          "attribute": "hideSettings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Contents\""
+        },
+        {
+          "name": "hierarchyTags",
+          "type": "string[]",
+          "default": "[\"h1\",\"h2\",\"h3\",\"h4\",\"h5\",\"h6\"]"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./page-contents-menu.umd.js"
+    },
+    {
+      "name": "page-contents-menu",
+      "path": "./src/page-contents-menu.js",
+      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`",
+      "attributes": [
+        {
+          "name": "relationship",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "is-empty",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hide-if-empty",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "type": "object"
+        },
+        {
+          "name": "mobile",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideSettings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Contents\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relationship",
+          "attribute": "relationship",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "isEmpty",
+          "attribute": "is-empty",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hideIfEmpty",
+          "attribute": "hide-if-empty",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "type": "object"
+        },
+        {
+          "name": "mobile",
+          "attribute": "mobile",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideSettings",
+          "attribute": "hideSettings",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Contents\""
+        },
+        {
+          "name": "hierarchyTags",
+          "type": "string[]",
+          "default": "[\"h1\",\"h2\",\"h3\",\"h4\",\"h5\",\"h6\"]"
+        }
+      ]
+    }
+  ]
+}

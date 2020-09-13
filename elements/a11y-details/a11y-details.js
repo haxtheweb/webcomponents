@@ -172,8 +172,7 @@ class A11yDetails extends LitElement {
 
   // render function
   render() {
-    return html`
-      <details id="details">
+    return html` <details id="details">
         <summary
           @click="${this._handleClick}"
           @keyup="${this._handleKeyup}"
@@ -186,8 +185,7 @@ class A11yDetails extends LitElement {
         </summary>
         <div id="details-inner"><slot name="details"></slot></div>
       </details>
-      <slot hidden></slot>
-    `;
+      <slot hidden></slot>`;
   }
 
   // haxProperty definition

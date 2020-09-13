@@ -3,115 +3,87 @@
   "tags": [
     {
       "name": "lrndesign-imagemap",
-      "description": "`lrndesign-imagemap`\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - The path of the SVG\n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\n  * `tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - The path of the SVG\n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\n  * `tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrndesign-imagemap`\n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - \n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - ",
       "attributes": [
         {
           "name": "label",
-          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label\n\nDefault: null"
+          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label"
         },
         {
           "name": "src",
-          "description": "`src` {`string`} - The path of the SVG\n\nProperty: src\n\nDefault: null"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "hotspot-details",
-          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails\n\nDefault: "
+          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails"
         },
         {
           "name": "subtopic-of",
-          "description": "`subtopic-of` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\nProperty: subtopicOf\n\nDefault: null"
+          "description": "`subtopic-of` {`string`} - \n\nProperty: subtopicOf"
         },
         {
-          "name": "tag",
-          "description": "`tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\nProperty: tag\n\nDefault: null"
+          "name": "parent",
+          "description": "`parent` {`string`} - \n\nProperty: parent"
         },
         {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
-        }
-      ]
-    },
-    {
-      "name": "lrndesign-imagemap",
-      "description": "`lrndesign-imagemap`\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - The path of the SVG\n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\n  * `tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - The path of the SVG\n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\n  * `tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label\n\nDefault: null"
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string`} - The path of the SVG\n\nProperty: src\n\nDefault: null"
-        },
-        {
-          "name": "hotspot-details",
-          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails\n\nDefault: "
-        },
-        {
-          "name": "subtopic-of",
-          "description": "`subtopic-of` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\nProperty: subtopicOf\n\nDefault: null"
-        },
-        {
-          "name": "tag",
-          "description": "`tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\nProperty: tag\n\nDefault: null"
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "name": "__activeHotspot",
+          "description": "`__activeHotspot` - \n\nProperty: __activeHotspot"
         }
       ]
     },
     {
       "name": "tag",
-      "description": "Events:\n\n  * `simple-modal-show` - ",
-      "attributes": [
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
-        }
-      ]
+      "attributes": []
     },
     {
       "name": "lrndesign-imagemap-hotspot",
-      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map\n\nAttributes:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\nProperties:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspotId` {`string`} - Id of hotspot element inside the SVG",
+      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map\n\nAttributes:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - \n\nProperties:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspotId` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - ",
       "attributes": [
         {
           "name": "label",
-          "description": "`label` {`string`} - Label for the hotspot\n\nProperty: label\n\nDefault: null"
+          "description": "`label` {`string`} - Label for the hotspot\n\nProperty: label"
         },
         {
           "name": "hotspot-id",
-          "description": "`hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\nProperty: hotspotId\n\nDefault: null"
+          "description": "`hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\nProperty: hotspotId"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position"
+        },
+        {
+          "name": "__hotspots",
+          "description": "`__hotspots` {`any[]`} - \n\nProperty: __hotspots"
         }
       ]
     },
     {
       "name": "lrndesign-imagemap",
-      "description": "`lrndesign-imagemap`\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - The path of the SVG\n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\n  * `tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - The path of the SVG\n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\n  * `tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrndesign-imagemap`\n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - \n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - ",
       "attributes": [
         {
           "name": "label",
-          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label\n\nDefault: null"
+          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label"
         },
         {
           "name": "src",
-          "description": "`src` {`string`} - The path of the SVG\n\nProperty: src\n\nDefault: null"
+          "description": "`src` {`string`} - \n\nProperty: src"
         },
         {
           "name": "hotspot-details",
-          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails\n\nDefault: "
+          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails"
         },
         {
           "name": "subtopic-of",
-          "description": "`subtopic-of` {`string`} - optional: the id of the heading element that this imagemap is a subtopic of\n\nProperty: subtopicOf\n\nDefault: null"
+          "description": "`subtopic-of` {`string`} - \n\nProperty: subtopicOf"
         },
         {
-          "name": "tag",
-          "description": "`tag` {`string`} - optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...\n\nProperty: tag\n\nDefault: null"
+          "name": "parent",
+          "description": "`parent` {`string`} - \n\nProperty: parent"
         },
         {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "name": "__activeHotspot",
+          "description": "`__activeHotspot` - \n\nProperty: __activeHotspot"
         }
       ]
     }

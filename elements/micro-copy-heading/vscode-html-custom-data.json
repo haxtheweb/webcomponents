@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "micro-copy-heading",
-      "description": "`micro-copy-heading`\n\nProperties:\n\n  * `tag` {`string`} - ",
-      "attributes": []
-    },
-    {
-      "name": "micro-copy-heading",
       "description": "`micro-copy-heading`\n\nAttributes:\n\n  * `heading` {`string`} - Heading / call to action to display\n\n  * `endcap` {`string`} - ending cap to the statement, possibly a character, icon, etc\n\nProperties:\n\n  * `heading` {`string`} - Heading / call to action to display\n\n  * `endcap` {`string`} - ending cap to the statement, possibly a character, icon, etc\n\n  * `tag` {`string`} - ",
       "attributes": [
         {

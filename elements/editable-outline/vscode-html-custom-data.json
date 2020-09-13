@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "editable-outline",
-      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`\n\nProperties:\n\n  * `items` {`never[]`} - \n\n  * `editMode` {`boolean`} - \n\n  * `jos` - ",
-      "attributes": []
-    },
-    {
-      "name": "editable-outline",
       "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`\n\nAttributes:\n\n  * `__outlineNode` - Outline node for keyboard key binding\n\n  * `items` {`any[]`} - A items list of JSON Outline Schema Items\n\n  * `edit-mode` {`boolean`} - Edit mode\n\nProperties:\n\n  * `__outlineNode` - Outline node for keyboard key binding\n\n  * `items` {`any[]`} - A items list of JSON Outline Schema Items\n\n  * `editMode` {`boolean`} - Edit mode\n\n  * `jos` - ",
       "attributes": [
         {

@@ -50,12 +50,10 @@ class FigureLabel extends LitElement {
 
   // render function
   render() {
-    return html`
-      <div id="wrap">
-        <div id="title">${this.title}</div>
-        <div id="description">${this.description}</div>
-      </div>
-    `;
+    return html` <div id="wrap">
+      <div id="title">${this.title}</div>
+      <div id="description">${this.description}</div>
+    </div>`;
   }
 
   // haxProperty definition

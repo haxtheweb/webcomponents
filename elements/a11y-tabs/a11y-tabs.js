@@ -264,6 +264,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         :host(:not([icons-only])) #tabs #tabs simple-tooltip {
           display: none;
         }
+
         iron-icon:not([hidden]) {
           display: inline-block;
         }
@@ -273,14 +274,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
   // render function
   render() {
-    return html`
-      <ul id="tabs">
+    return html` <ul id="tabs">
         ${this.tabs.map((tab, i) => html` <li>${this._tabButton(tab)}</li> `)}
       </ul>
       <div id="content">
         <slot></slot>
-      </div>
-    `;
+      </div>`;
   }
 
   // haxProperty definition

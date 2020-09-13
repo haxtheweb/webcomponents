@@ -13,17 +13,6 @@
       ]
     },
     {
-      "name": "learn-two-theme",
-      "description": "`learn-two-theme`\n\nAttributes:\n\n  * `opened` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },

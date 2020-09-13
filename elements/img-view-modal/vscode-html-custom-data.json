@@ -25,52 +25,97 @@
       ]
     },
     {
+      "name": "img-view-viewer",
+      "description": "`img-view-viewer`\nCombines img-pan-zoom and simple-modal for an easy image zoom solution\n\n### Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--img-view-viewer-height` | viewer height | 500px\n`--img-view-viewer-backgroundColor` | background color | white\n`--img-view-viewer-color` | text color | black\n`--img-view-viewer-borderColor` | border color | #ddd\n`--img-view-viewer-toggled-backgroundColor` | background color of toggled buttons and kbd commands | #eee\n\nEvents:\n\n  * `toolbar-button-click` - Fires when constructed, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `figures` {`any[]`} - \n\n  * `info-mode` {`boolean`} - whether info mode is toggled\n\n  * `keyboard-help-mode` {`boolean`} - whether keyboard shortcuts help mode is toggled\n\n  * `toolbars` - if used with multiple images and paged navigation, index of current item\n\n  * `__screenfullLoaded` {`boolean`} - \n\nProperties:\n\n  * `figures` {`any[]`} - \n\n  * `infoToggled` {`boolean`} - whether info mode is toggled\n\n  * `kbdToggled` {`boolean`} - whether keyboard shortcuts help mode is toggled\n\n  * `toolbars` - if used with multiple images and paged navigation, index of current item\n\n  * `homebutton` - default home button configuration\n\n  * `fullscreenbutton` - default toggle fullscreen button configuration\n\n  * `fullscreenTarget` - element to make fullscreen, can be overidden\n\n  * `navigatorbutton` - default toggle navigate window button configuration\nUses <a href=\"https://openseadragon.github.io/examples/ui-viewport-navigator/\">Viewport Navigator</a>\n\n  * `infobutton` - default toggle info button configuration\n\n  * `kbdbutton` - default toggle keyboard shorcuts help button configuration\n\n  * `flipbutton` - default flip horizontal button configuration\n\n  * `rotategroup` - default rotate button group configuration\n\n  * `rotateccwbutton` - default rotate counterclockwise button configuration\n\n  * `rotatecwbutton` - default rotate counter button configuration\n\n  * `pangroup` - default pan button group configuration\n\n  * `panleftbutton` - default pan left button configuration\n\n  * `panupbutton` - default pan up button configuration\n\n  * `pandownbutton` - default pan down button configuration\n\n  * `panrightbutton` - default pan right button configuration\n\n  * `zoomgroup` - default zoom button group configuration\n\n  * `zoominbutton` - default zoom in button configuration\n\n  * `zoomoutbutton` - default zoom out button configuration\n\n  * `prevbutton` - default prev button configuration\n\n  * `nextbutton` - default next button configuration\n\n  * `pages` - \n\n  * `noSources` {`void`} - \n\n  * `prevDisabled` {`boolean`} - \n\n  * `nextDisabled` {`boolean`} - \n\n  * `info` - \n\n  * `pageXofY` {`string`} - default x of y text for toolbar\n\n  * `navXofY` {`{ id: string; type: string; contents: TemplateResult; }`} - \n\n  * `defaultToolbars` - default toolbar config object,\nwhere \"top\" contains config for toolbar above image(s),\nand \"bottom\" contains config for toolbar above image(s)\n\n  * `src` - \n\n  * `loadSrc` - \n\n  * `sources` - \n\n  * `minZoomImageRatio` {`number`} - \n\n  * `maxZoomPixelRatio` {`number`} - \n\n  * `__screenfullLoaded` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "figures",
+          "description": "`figures` {`any[]`} - \n\nProperty: figures"
+        },
+        {
+          "name": "info-mode",
+          "description": "`info-mode` {`boolean`} - whether info mode is toggled\n\nProperty: infoToggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "keyboard-help-mode",
+          "description": "`keyboard-help-mode` {`boolean`} - whether keyboard shortcuts help mode is toggled\n\nProperty: kbdToggled",
+          "valueSet": "v"
+        },
+        {
+          "name": "toolbars",
+          "description": "`toolbars` - if used with multiple images and paged navigation, index of current item\n\nProperty: toolbars"
+        },
+        {
+          "name": "__screenfullLoaded",
+          "description": "`__screenfullLoaded` {`boolean`} - \n\nProperty: __screenfullLoaded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "ontoolbar-button-click",
+          "description": "`toolbar-button-click` - Fires when constructed, so that parent radio group can listen for it."
+        }
+      ]
+    },
+    {
       "name": "img-view-modal",
-      "description": "`img-view-modal`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "description": "`img-view-modal`\nCombines img-pan-zoom and simple-modal for an easy image zoom solution\n\n### Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--img-view-modal-width` | sets width of modal | 90%\n`--img-view-modal-height` | sets height of modal | 90vh\n`--img-view-modal-backgroundColor` | background color | white\n`--img-view-modal-color` | text color | black\n`--img-view-modal-borderColor` | border color | #ddd\n`--img-view-modal-toggled-backgroundColor` | background color of toggled buttons and kbd commands | #eee\n\nEvents:\n\n  * `modal-button-click` - \n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `modal` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `modal` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+          "name": "modal",
+          "description": "`modal` - \n\nProperty: modal"
         },
         {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
+          "name": "onmodal-button-click",
+          "description": "`modal-button-click` - "
         },
         {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
-          "valueSet": "v"
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
         }
       ]
     },
     {
       "name": "tag",
-      "attributes": []
+      "description": "Events:\n\n  * `toolbar-button-click` - \n\n  * `modal-button-click` - \n\n  * `simple-modal-show` - ",
+      "attributes": [
+        {
+          "name": "ontoolbar-button-click",
+          "description": "`toolbar-button-click` - "
+        },
+        {
+          "name": "onmodal-button-click",
+          "description": "`modal-button-click` - "
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        }
+      ]
     },
     {
       "name": "img-view-modal",
-      "description": "`img-view-modal`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "description": "`img-view-modal`\nCombines img-pan-zoom and simple-modal for an easy image zoom solution\n\n### Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--img-view-modal-width` | sets width of modal | 90%\n`--img-view-modal-height` | sets height of modal | 90vh\n`--img-view-modal-backgroundColor` | background color | white\n`--img-view-modal-color` | text color | black\n`--img-view-modal-borderColor` | border color | #ddd\n`--img-view-modal-toggled-backgroundColor` | background color of toggled buttons and kbd commands | #eee\n\nEvents:\n\n  * `modal-button-click` - \n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `modal` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `modal` - ",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "description": "`title` {`string`} - \n\nProperty: title"
         },
         {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+          "name": "modal",
+          "description": "`modal` - \n\nProperty: modal"
         },
         {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
+          "name": "onmodal-button-click",
+          "description": "`modal-button-click` - "
         },
         {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
-          "valueSet": "v"
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
         }
       ]
     }

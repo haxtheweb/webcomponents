@@ -35,12 +35,10 @@ class H5PElement extends LitElement {
 
   // render function
   render() {
-    return html`
-      <div
-        class="h5p-container"
-        data-content-id="wrapper-${this.contentId}"
-      ></div>
-    `;
+    return html` <div
+      class="h5p-container"
+      data-content-id="wrapper-${this.contentId}"
+    ></div>`;
   }
 
   // haxProperty definition

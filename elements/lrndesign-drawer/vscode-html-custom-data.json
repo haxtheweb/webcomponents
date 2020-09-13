@@ -3,30 +3,7 @@
   "tags": [
     {
       "name": "lrndesign-drawer",
-      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - State for if it is currently open.\n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - Icon to present for clicking.\n\nProperty: icon\n\nDefault: icon"
-        },
-        {
-          "name": "align",
-          "description": "`align` {`string`} - Side of the screen to align the flyout (right or left)\n\nProperty: align\n\nDefault: left"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt / hover text for this link\n\nProperty: alt\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "lrndesign-drawer",
-      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "opened",
@@ -53,7 +30,7 @@
     },
     {
       "name": "lrndesign-drawer",
-      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrndesign-drawer`\n\nAttributes:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\nProperties:\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "opened",

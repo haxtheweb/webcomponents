@@ -194,6 +194,7 @@ class SimpleBlogCard extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
     return html`

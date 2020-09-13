@@ -8,12 +8,10 @@
     "useHAX": false,
     "useSass": true,
     "files": {
-      "css": "src/simple-colors.css",
       "scss": "src/simple-colors.scss",
       "html": "src/simple-colors.html",
       "js": "src/simple-colors.js",
-      "properties": "src/simple-colors-properties.json",
-      "hax": "src/simple-colors-hax.json"
+      "properties": "src/simple-colors-properties.json"
     },
     "sharedStyles": []
   },

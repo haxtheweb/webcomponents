@@ -3,16 +3,6 @@
   "tags": [
     {
       "name": "haxschema-builder",
-      "description": "`haxschema-builder`\n`dynamically build and visualize HAXschema`\n\nEvents:\n\n  * `hax-schema-changed` - \n\nProperties:\n\n  * `HAXWiring` - \n\n  * `haxSchema` {`string`} - ",
-      "attributes": [
-        {
-          "name": "onhax-schema-changed",
-          "description": "`hax-schema-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "haxschema-builder",
       "description": "`haxschema-builder`\n`dynamically build and visualize HAXschema`\n\nEvents:\n\n  * `hax-schema-changed` - \n\nAttributes:\n\n  * `source` {`string`} - Optional remote source to pull in\n\n  * `value` {`string`} - String based value passed between the elements to stitch together\n\n  * `hax-schema` {`string`} - schema to extract for whatever you wanted it for\n\nProperties:\n\n  * `source` {`string`} - Optional remote source to pull in\n\n  * `value` {`string`} - String based value passed between the elements to stitch together\n\n  * `HAXWiring` - \n\n  * `haxSchema` {`string`} - schema to extract for whatever you wanted it for",
       "attributes": [
         {

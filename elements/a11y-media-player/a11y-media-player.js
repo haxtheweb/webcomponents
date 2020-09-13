@@ -915,8 +915,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
 
   // render function
   render() {
-    return html`
-      <div class="sr-only" ?hidden="${!this.mediaCaption}">
+    return html` <div class="sr-only" ?hidden="${!this.mediaCaption}">
         ${this.mediaCaption}
       </div>
       <div id="player-section">
@@ -970,11 +969,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                         ? ``
                         : Object.keys(this.captionCues).map(
                             (key) =>
-                              html`
-                                ${this.captionCues[key].text
-                                  ? this.captionCues[key].text
-                                  : ""}
-                              `
+                              html`${this.captionCues[key].text
+                                ? this.captionCues[key].text
+                                : ""}`
                           )}
                     </div>
                   </div>
@@ -1251,13 +1248,11 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
         <div class="print-only media-caption">${this.printCaption}</div>
       </div>
       ${this.poster
-        ? html`
-            <img
-              id="print-thumbnail"
-              aria-hidden="true"
-              .src="${this.poster}"
-            />
-          `
+        ? html`<img
+            id="print-thumbnail"
+            aria-hidden="true"
+            .src="${this.poster}"
+          />`
         : ``}
       <div
         id="transcript-section"
@@ -1389,11 +1384,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
                     })}
                   </div>
                 `
-              : html`
-                  <div id="loading" class="transcript-from-track">
-                    ${this.status}
-                  </div>
-                `}
+              : html` <div id="loading" class="transcript-from-track">
+                  ${this.status}
+                </div>`}
           </div>
         </div>
       </div>
@@ -1412,8 +1405,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(SimpleColors) {
           @click="${this._handleCloseLink}"
         ></a11y-media-button>
       </paper-toast>
-      <div id="bottom" class="sr-only"></div>
-    `;
+      <div id="bottom" class="sr-only"></div>`;
   }
 
   // properties available to the custom element for data binding

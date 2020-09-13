@@ -1,0 +1,45 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "clean-one",
+      "path": "./clean-one.js",
+      "description": "`clean-one`\n`Clean HAXcms theme, one.`",
+      "attributes": [
+        {
+          "name": "searchTerm",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./clean-one.umd.js"
+    },
+    {
+      "name": "clean-one",
+      "path": "./src/clean-one.js",
+      "description": "`clean-one`\n`Clean HAXcms theme, one.`",
+      "attributes": [
+        {
+          "name": "searchTerm",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

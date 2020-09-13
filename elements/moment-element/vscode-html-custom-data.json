@@ -37,41 +37,6 @@
       ]
     },
     {
-      "name": "moment-element",
-      "description": "Polymer element wrapper for the [moment](https://github.com/moment/moment) library.\n\nExamples:\n\n<moment-element></moment-element>\n<moment-element datetime=\"1991-12-31\" output-format=\"MMM DD[,] YYYY\"></moment-element>\n\nAttributes:\n\n  * `output` {`string`} - \n\n  * `libraryLoaded` {`boolean`} - \n\n  * `datetime` {`string`} - \n\n  * `input-format` {`string`} - \n\n  * `output-format` {`string`} - \n\n  * `from` {`string`} - \n\n  * `to` {`string`} - \n\nProperties:\n\n  * `output` {`string`} - \n\n  * `libraryLoaded` {`boolean`} - \n\n  * `datetime` {`string`} - \n\n  * `inputFormat` {`string`} - \n\n  * `outputFormat` {`string`} - \n\n  * `from` {`string`} - \n\n  * `to` {`string`} - ",
-      "attributes": [
-        {
-          "name": "output",
-          "description": "`output` {`string`} - \n\nProperty: output"
-        },
-        {
-          "name": "libraryLoaded",
-          "description": "`libraryLoaded` {`boolean`} - \n\nProperty: libraryLoaded",
-          "valueSet": "v"
-        },
-        {
-          "name": "datetime",
-          "description": "`datetime` {`string`} - \n\nProperty: datetime"
-        },
-        {
-          "name": "input-format",
-          "description": "`input-format` {`string`} - \n\nProperty: inputFormat\n\nDefault: "
-        },
-        {
-          "name": "output-format",
-          "description": "`output-format` {`string`} - \n\nProperty: outputFormat\n\nDefault: "
-        },
-        {
-          "name": "from",
-          "description": "`from` {`string`} - \n\nProperty: from\n\nDefault: "
-        },
-        {
-          "name": "to",
-          "description": "`to` {`string`} - \n\nProperty: to\n\nDefault: "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },

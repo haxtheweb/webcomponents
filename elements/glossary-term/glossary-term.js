@@ -28,17 +28,16 @@ class GlossaryTerm extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      ${this._fallback
-        ? html` <slot></slot> `
-        : `
+    return html` ${this._fallback
+      ? html`<slot></slot>`
+      : `
 <lrn-vocab term="${this.display}">
   <div>${this.definition}</div>
 </lrn-vocab>
-`}
-    `;
+`}`;
   }
 
   // haxProperty definition

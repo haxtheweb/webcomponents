@@ -3,30 +3,12 @@
   "tags": [
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
-          "name": "image-url",
-          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
-        {
-          "name": "top-text",
-          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
-        },
-        {
-          "name": "bottom-text",
-          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "meme-maker",
-      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
-      "attributes": [
         {
           "name": "image-url",
           "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
@@ -51,8 +33,12 @@
     },
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+        },
         {
           "name": "image-url",
           "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"

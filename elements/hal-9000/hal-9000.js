@@ -26,7 +26,7 @@ class Hal9000 extends LitElement {
 
   // render function
   render() {
-    return html` <slot></slot> `;
+    return html` <slot></slot>`;
   }
 
   // properties available to the custom element for data binding

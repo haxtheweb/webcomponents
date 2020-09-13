@@ -60,23 +60,22 @@ class SimpleToast extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <paper-toast
-        id="toast"
-        text="${this.text}"
-        duration="${this.duration}"
-        ?opened="${this.opened}"
-        @opened-changed="${this.openedChanged}"
-        .class="${this.classStyle}"
+    return html` <paper-toast
+      id="toast"
+      text="${this.text}"
+      duration="${this.duration}"
+      ?opened="${this.opened}"
+      @opened-changed="${this.openedChanged}"
+      .class="${this.classStyle}"
+    >
+      <slot></slot>
+      <paper-button .hidden="${!this.closeButton}" @click="${this.hide}"
+        >${this.closeText}</paper-button
       >
-        <slot></slot>
-        <paper-button .hidden="${!this.closeButton}" @click="${this.hide}"
-          >${this.closeText}</paper-button
-        >
-      </paper-toast>
-    `;
+    </paper-toast>`;
   }
 
   // properties available to the custom element for data binding

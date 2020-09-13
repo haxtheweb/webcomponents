@@ -27,9 +27,8 @@ window.PouchDb.requestAvailability = () => {
  */
 class PouchDb extends PolymerElement {
   // render function
-  static get template() {
-    return html`
-      <style>
+  render() {
+    return html` <style>
         :host {
           display: block;
         }
@@ -38,8 +37,7 @@ class PouchDb extends PolymerElement {
           display: none;
         }
       </style>
-      <slot></slot>
-    `;
+      <slot></slot>`;
   }
 
   // properties available to the custom element for data binding

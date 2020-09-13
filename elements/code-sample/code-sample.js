@@ -84,8 +84,7 @@ class CodeSample extends LitElement {
 
   // render function
   render() {
-    return html`
-      <div id="theme"></div>
+    return html` <div id="theme"></div>
       <div id="demo" class="demo"></div>
       <slot></slot>
       <div id="code-container">
@@ -99,8 +98,7 @@ class CodeSample extends LitElement {
           Copy
         </button>
         <pre id="code"></pre>
-      </div>
-    `;
+      </div>`;
   }
 
   // haxProperty definition

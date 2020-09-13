@@ -231,8 +231,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           padding: 0;
           --site-rss-color: #000000;
           --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-          --site-rss-paper-button-padding: 0 4px;
-          --site-rss-paper-button-margin: 0;
+          --site-rss-paper-icon-button-padding: 0 4px;
+          --site-rss-paper-icon-button-margin: 0;
         }
 
         @media screen and (max-width: 800px) {

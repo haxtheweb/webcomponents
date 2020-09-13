@@ -16,12 +16,9 @@ import { UserActionBroker } from "./lib/UserActionBroker.js";
  */
 class UserAction extends HTMLElement {
   // render function
-  get html() {
-    return `
-<style>
-
-        </style>
-<slot></slot>`;
+  render() {
+    return html` <style></style>
+      <slot></slot>`;
   }
 
   // haxProperty definition

@@ -52,38 +52,6 @@
       ]
     },
     {
-      "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected\n\nDefault: 0"
-        },
-        {
-          "name": "layout",
-          "description": "`layout` {`string`} - \n\nProperty: layout\n\nDefault: 0"
-        },
-        {
-          "name": "content",
-          "description": "`content` {`string`} - \n\nProperty: content\n\nDefault: "
-        },
-        {
-          "name": "cookies",
-          "description": "`cookies` {`boolean`} - \n\nProperty: cookies\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "el-ready",
-          "description": "`el-ready` {`boolean`} - \n\nProperty: elReady\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "oncontent-changed",
-          "description": "`content-changed` - "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "description": "Events:\n\n  * `content-changed` - \n\n  * `content-updated` - ",
       "attributes": [

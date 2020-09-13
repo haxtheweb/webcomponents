@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "fullscreen-behaviors-manager",
+      "description": "`fullscreen-behaviors-manager`\n\nAttributes:\n\n  * `__callbacks` {`any[]`} - \n\n  * `__loaded` {`boolean`} - \n\n  * `__fullscreen` {`boolean`} - \n\nProperties:\n\n  * `enabled` {`boolean`} - whether or not the fullscreen mode is be disabled\n\n  * `fullscreen` {`boolean`} - \n\n  * `__callbacks` {`any[]`} - \n\n  * `__loaded` {`boolean`} - \n\n  * `__fullscreen` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "__callbacks",
+          "description": "`__callbacks` {`any[]`} - \n\nProperty: __callbacks\n\nDefault: "
+        },
+        {
+          "name": "__loaded",
+          "description": "`__loaded` {`boolean`} - \n\nProperty: __loaded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__fullscreen",
+          "description": "`__fullscreen` {`boolean`} - \n\nProperty: __fullscreen\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "fullscreen-behaviors",
+      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` {`boolean`} - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "fullscreen",
+          "description": "`fullscreen` {`boolean`} - \n\nProperty: __fullscreen\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "fullscreen-enabled",
+          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "fullscreen-behaviors-demo",
+      "description": "`fullscreen-behaviors-demo`\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` {`boolean`} - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "fullscreen",
+          "description": "`fullscreen` {`boolean`} - \n\nProperty: __fullscreen\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "fullscreen-enabled",
+          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "fullscreen-behaviors",
+      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenManager` - gets the fullscreen fullscreenManager singleton\n\n  * `fullscreenTarget` - element to make fullscreen, can be overidden\n\n  * `fullscreenEnabled` {`boolean`} - whether device is ready and capable for fullscreen\n\n  * `__fullscreen` {`boolean`} - \n\n  * `__fullscreenEnabled` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "fullscreen",
+          "description": "`fullscreen` {`boolean`} - \n\nProperty: __fullscreen\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "fullscreen-enabled",
+          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: __fullscreenEnabled\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

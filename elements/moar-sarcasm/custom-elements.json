@@ -5,9 +5,38 @@
       "name": "moar-sarcasm",
       "path": "./moar-sarcasm.js",
       "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+      "attributes": [
+        {
+          "name": "say",
+          "type": "string | null"
+        },
+        {
+          "name": "a11y",
+          "type": "string | null",
+          "default": "\"the following is sarcastic \""
+        }
+      ],
       "properties": [
         {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "say",
+          "attribute": "say",
+          "type": "string | null"
+        },
+        {
+          "name": "a11y",
+          "attribute": "a11y",
+          "type": "string | null",
+          "default": "\"the following is sarcastic \""
+        },
+        {
           "name": "template"
+        },
+        {
+          "name": "observer"
         }
       ]
     },
@@ -19,9 +48,38 @@
       "name": "moar-sarcasm",
       "path": "./src/moar-sarcasm.js",
       "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+      "attributes": [
+        {
+          "name": "say",
+          "type": "string | null"
+        },
+        {
+          "name": "a11y",
+          "type": "string | null",
+          "default": "\"the following is sarcastic \""
+        }
+      ],
       "properties": [
         {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "say",
+          "attribute": "say",
+          "type": "string | null"
+        },
+        {
+          "name": "a11y",
+          "attribute": "a11y",
+          "type": "string | null",
+          "default": "\"the following is sarcastic \""
+        },
+        {
           "name": "template"
+        },
+        {
+          "name": "observer"
         }
       ]
     }

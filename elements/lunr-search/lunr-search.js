@@ -30,15 +30,13 @@ class LunrSearch extends LitElement {
 
   // render function
   render() {
-    return html`
-      <iron-ajax
-        ?auto="${this.__auto}"
-        url="${this.dataSource}"
-        method="${this.method}"
-        handle-as="json"
-        @response="${this._dataResponse}"
-      ></iron-ajax>
-    `;
+    return html` <iron-ajax
+      ?auto="${this.__auto}"
+      url="${this.dataSource}"
+      method="${this.method}"
+      handle-as="json"
+      @response="${this._dataResponse}"
+    ></iron-ajax>`;
   }
 
   // properties available to the custom element for data binding

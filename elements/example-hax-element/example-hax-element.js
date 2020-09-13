@@ -16,8 +16,7 @@
 class ExampleHaxElement extends HTMLElement {
   // render function
   render() {
-    return html`
-      <style>
+    return html` <style>
         :host {
           display: block;
         }
@@ -26,8 +25,7 @@ class ExampleHaxElement extends HTMLElement {
           display: none;
         }
       </style>
-      <slot></slot>
-    `;
+      <slot></slot>`;
   }
 
   // haxProperty definition

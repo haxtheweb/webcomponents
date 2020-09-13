@@ -13,23 +13,12 @@
       ]
     },
     {
-      "name": "html-block",
-      "description": "`html-block`\n\nAttributes:\n\n  * `allowscript` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `allowscript` {`string | null`} - \n\n  * `tag` {`string`} - ",
-      "attributes": [
-        {
-          "name": "allowscript",
-          "description": "`allowscript` {`string | null`} - \n\nProperty: allowscript",
-          "values": []
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },
     {
       "name": "html-block",
-      "description": "`html-block`\n\nAttributes:\n\n  * `allowscript` {`string | null`} - \n\nProperties:\n\n  * `allowscript` {`string | null`} - \n\n  * `tag` {`string`} - ",
+      "description": "`html-block`\n\nAttributes:\n\n  * `allowscript` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `allowscript` {`string | null`} - \n\n  * `tag` {`string`} - ",
       "attributes": [
         {
           "name": "allowscript",

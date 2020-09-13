@@ -32,14 +32,13 @@ class TheyLive extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <div class="content">
-        <div class="truth">${this.truth}</div>
-        <slot></slot>
-      </div>
-    `;
+    return html` <div class="content">
+      <div class="truth">${this.truth}</div>
+      <slot></slot>
+    </div>`;
   }
 
   // properties available to the custom element for data binding

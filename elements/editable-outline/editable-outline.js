@@ -129,8 +129,7 @@ class EditableOutline extends LitElement {
 
   // render function
   render() {
-    return html`
-      <iron-a11y-keys
+    return html` <iron-a11y-keys
         keys="enter"
         @keys-pressed="${this._enterPressed}"
         stop-keyboard-event-propagation
@@ -212,8 +211,7 @@ class EditableOutline extends LitElement {
           ><span>Duplicate</span>
         </button>
       </div>
-      <ul id="outline"></ul>
-    `;
+      <ul id="outline"></ul>`;
   }
 
   // properties available to the custom element for data binding

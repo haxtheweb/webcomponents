@@ -62,8 +62,7 @@ class ScrollButton extends LitElement {
 
   // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           paper-icon-button {
             @apply --scroll-button-button;
@@ -86,8 +85,7 @@ class ScrollButton extends LitElement {
       ></paper-icon-button>
       <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}
-      </simple-tooltip>
-    `;
+      </simple-tooltip>`;
   }
 
   // haxProperty definition

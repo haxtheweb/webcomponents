@@ -2,279 +2,235 @@
   "version": 1,
   "tags": [
     {
-      "name": "threaded-discussion",
-      "description": "`threaded-discussion`\nan accessible expand collapse\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-margin` | margin around threaded-discussion | 15px 0\n`--threaded-discussion-border` | border around threaded-discussion | 1px solid\n`--threaded-discussion-horizontal-padding` | horizontal padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-left` | left padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-horizontal-padding-right` | right padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-vertical-padding` | vertical padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-top` | top padding inside threaded-discussion | `--threaded-discussion-vertical-padding`\n`--threaded-discussion-horizontal-padding-bottom` | bottom padding inside threaded-discussion | --threaded-discussion-vertical-padding\n`--threaded-discussion-border-between` | border between threaded-discussion heading and content | --threaded-discussion-border\n`--threaded-discussion-heading-font-weight` | font-weight for threaded-discussion heading | bold\n`--threaded-discussion-heading-color` | text color for threaded-discussion heading | unset\n`--threaded-discussion-heading-background-color` | background-color for threaded-discussion heading | unset\n`--threaded-discussion-overflow-y` | override default overflow behavior | hidden\n`--threaded-discussion-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `threaded-discussion-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `threaded-discussion-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
+      "name": "threaded-discussion-form",
+      "description": "`threaded-discussion-form`\na threaded discussions component for elms-ln\n\n### Styling\n\n`<threaded-discussion-form>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-button-BorderRadius` | border-radius for all buttons | 3px\n`--threaded-discussion-button-FontWeight` | default button font-weight | \n`--threaded-discussion-button-FontSize` | default button line-height | var(--threaded-discussion-FontSize, 14px));\n`--threaded-discussion-button-FontFamily` | default button font-family |\n`--threaded-discussion-reply-button-Color` | text color for reply button | #4b4b4b\n`--threaded-discussion-reply-button-BackgroundColor` | background color for reply button | #fff\n`--threaded-discussion-reply-button-BorderColor` | border color for reply button | #4b4b4b\n`--threaded-discussion-reply-button-focus-Color` | text color for reply button when focused | #222\n`--threaded-discussion-reply-button-focus-BackgroundColor` | background color for reply button when focused | #fff\n`--threaded-discussion-reply-button-focus-BorderColor` | border color for reply button when focused | #222\n`--threaded-discussion-comment-button-Color` | text color for reply button | #fff\n`--threaded-discussion-comment-button-BackgroundColor` | background color for reply button | #4b4b4b\n`--threaded-discussion-comment-button-BorderColor` | border color for reply button | #4b4b4b\n`--threaded-discussion-comment-button-focus-Color` | text color for reply button when focused | #fff\n`--threaded-discussion-comment-button-focus-BackgroundColor` | background color for reply button when focused | #222\n`--threaded-discussion-comment-button-focus-BorderColor` | border color for reply button when focused | #222\n`--threaded-discussion-comment-button-FontWeight` | overrides default button font-weight for comment button | \n`--threaded-discussion-comment-button-FontSize` | overrides default default button line-height for comment button |\n`--threaded-discussion-comment-button-FontFamily` | overrides default default button font-family for comment button |\n`--threaded-discussion-textarea-Height` | height of textarea when form is NOT focused | 16px\n`--threaded-discussion-textarea-Opacity` | opacity of textarea when form is NT focused | 0\n`--threaded-discussion-textarea-focus-Height` | height of textarea when form is focused | 100px\n`--threaded-discussion-textarea-focus-Opacity` | opacity of textarea when form is focused | 1\n`--threaded-discussion-textarea-Color` | textarea text color | var(--threaded-discussion-Color, #4b4b4b));\n`--threaded-discussion-textarea-LineHeight` | textarea line-height | var(--threaded-discussion-LineHeight, 160%));\n`--threaded-discussion-textarea-FontWeight` | textarea font-weight | \n`--threaded-discussion-textarea-FontSize` | textarea line-height | var(--threaded-discussion-FontSize, 14px));\n`--threaded-discussion-textarea-FontFamily` | textarea font-family | var(--threaded-discussion-FontFamily));\n\nEvents:\n\n  * `comment-demo` - \n\n  * `comment-submitted` - \n\nAttributes:\n\n  * `button` {`string`} - reply button id\n\n  * `button-label` {`string`} - label for button\n\n  * `demo` {`boolean`} - whetherin demo mode\n\n  * `field` {`string`} - field name for comment body\n\n  * `icon` {`string`} - button icon\n\n  * `submit` {`string`} - form action on submit\n\n  * `textarea-label` {`string`} - label for textarea\n\n  * `thread` {`string`} - thread id if this form is replying to a thread\n\n  * `disabled` {`boolean`} - whether form is disabled\n\n  * `hidden` {`boolean`} - whether form is hidden\n\nProperties:\n\n  * `button` {`string`} - reply button id\n\n  * `buttonLabel` {`string`} - label for button\n\n  * `demo` {`boolean`} - whetherin demo mode\n\n  * `field` {`string`} - field name for comment body\n\n  * `icon` {`string`} - button icon\n\n  * `submit` {`string`} - form action on submit\n\n  * `textareaLabel` {`string`} - label for textarea\n\n  * `thread` {`string`} - thread id if this form is replying to a thread\n\n  * `disabled` {`boolean`} - whether form is disabled\n\n  * `hidden` {`boolean`} - whether form is hidden",
       "attributes": [
         {
-          "name": "icon-expanded",
-          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+          "name": "button",
+          "description": "`button` {`string`} - reply button id\n\nProperty: button"
         },
         {
-          "name": "label-expanded",
-          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+          "name": "button-label",
+          "description": "`button-label` {`string`} - label for button\n\nProperty: buttonLabel"
         },
         {
-          "name": "tooltip-expanded",
-          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
-        },
-        {
-          "name": "accordion",
-          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "name": "demo",
+          "description": "`demo` {`boolean`} - whetherin demo mode\n\nProperty: demo",
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "expanded",
-          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
-          "valueSet": "v"
+          "name": "field",
+          "description": "`field` {`string`} - field name for comment body\n\nProperty: field"
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
+          "description": "`icon` {`string`} - button icon\n\nProperty: icon"
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
+          "name": "submit",
+          "description": "`submit` {`string`} - form action on submit\n\nProperty: submit"
         },
         {
-          "name": "tooltip",
-          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
+          "name": "textarea-label",
+          "description": "`textarea-label` {`string`} - label for textarea\n\nProperty: textareaLabel"
         },
         {
-          "name": "onthreaded-discussion-attached",
-          "description": "`threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it."
+          "name": "thread",
+          "description": "`thread` {`string`} - thread id if this form is replying to a thread\n\nProperty: thread"
         },
         {
-          "name": "onthreaded-discussion-detached",
-          "description": "`threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - whether form is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "ontoggle",
-          "description": "`toggle` - Fires when toggled."
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - whether form is hidden\n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "onthreaded-discussion-toggle",
-          "description": "`threaded-discussion-toggle` - Deprecated. Fires when toggled."
+          "name": "oncomment-demo",
+          "description": "`comment-demo` - "
         },
         {
-          "name": "onexpand",
-          "description": "`expand` - Fires when expanded."
-        },
-        {
-          "name": "oncollapse",
-          "description": "`collapse` - Fires when collapsed."
-        },
-        {
-          "name": "onthreaded-discussion-click",
-          "description": "`threaded-discussion-click` - Fires when clicked."
+          "name": "oncomment-submitted",
+          "description": "`comment-submitted` - "
         }
       ]
     },
     {
       "name": "threaded-discussion",
-      "description": "`threaded-discussion`\nan accessible expand collapse\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-margin` | margin around threaded-discussion | 15px 0\n`--threaded-discussion-border` | border around threaded-discussion | 1px solid\n`--threaded-discussion-horizontal-padding` | horizontal padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-left` | left padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-horizontal-padding-right` | right padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-vertical-padding` | vertical padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-top` | top padding inside threaded-discussion | `--threaded-discussion-vertical-padding`\n`--threaded-discussion-horizontal-padding-bottom` | bottom padding inside threaded-discussion | --threaded-discussion-vertical-padding\n`--threaded-discussion-border-between` | border between threaded-discussion heading and content | --threaded-discussion-border\n`--threaded-discussion-heading-font-weight` | font-weight for threaded-discussion heading | bold\n`--threaded-discussion-heading-color` | text color for threaded-discussion heading | unset\n`--threaded-discussion-heading-background-color` | background-color for threaded-discussion heading | unset\n`--threaded-discussion-overflow-y` | override default overflow behavior | hidden\n`--threaded-discussion-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `threaded-discussion-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `threaded-discussion-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
+      "description": "`threaded-discussion`\na threaded discussions component\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-FontSize` | default font-size | 14px\n`--threaded-discussion-LineHeight` | default line-height | 160%\n`--threaded-discussion-Color` | default text color | #95989a\n`--threaded-discussion-threads-BackgroundColor` | default thread backbround-color | #eaeaea\n`--threaded-discussion-threads-Margin` | default thread margin | 0\n`--threaded-discussion-thread-focus-BorderLeft` | default thread border left color when commenting | 4px solid blue\n`--threaded-discussion-new-thread-BackgroundColor` | overrides default thread backbround-color for new thread | var(--threaded-discussion-threads-BackgroundColor, #eaeaea)\n`--threaded-discussion-new-thread-Margin` | overrides default thread margin for new thread | var(--threaded-discussion-threads-Margin, 0))\n`--threaded-discussion-new-thread-focus-BorderLeft` | overrides default border left color when posting a new thread | \n`--threaded-discussion-comment-BackgroundColor` | comment bacground color | #fff\n`--threaded-discussion-comment-Padding` | comment padding | 10px\n`--threaded-discussion-reply-indent` | left-indent for thread replies | calc(2 * var(--threaded-discussion-comment-Padding,10px))));\n`--threaded-discussion-name-FontSize` | comment author name font-size | calc(1.1 * var(--threaded-discussion-FontSize, 14px)));\n`--threaded-discussion-name-FontWeight` | comment author name font-weight | bold;\n`--threaded-discussion-name-FontFamily` | overrides default font-family for comment author name | \n`--threaded-discussion-name-Color` | comment author name text color | #4b4b4b);\n`--threaded-discussion-date-FontSize` | comment author name font-size | calc(0.8 * var(--threaded-discussion-FontSize, 14px)));\n`--threaded-discussion-date-FontWeight` | comment author name font-weight | normal\n`--threaded-discussion-date-FontFamily` | overrides default font-family for comment date | \n`--threaded-discussion-date-Color` | comment date text color | #95989a));\n\nAttributes:\n\n  * `comment-button-label` {`string`} - label for comment submit button\n\n  * `comment-textarea-label` {`string`} - label for comment textarea\n\n  * `comment-icon` {`string`} - optional icon for comment button\n\n  * `loading-text` {`string`} - text that displays while discussion data loads\n\n  * `reply-button-label` {`string`} - label for reply submit button\n\n  * `reply-textarea-label` {`string`} - label for reply textarea\n\n  * `reply-icon` {`string`} - icon for reply submit button\n\n  * `source` {`string`} - path (without parameters) for fetching data\n\n  * `latest` {`boolean`} - sort comments latest-first\n\n  * `data` - raw data, can be Object or Array\n\n  * `dateLocale` {`string`} - locale for date formatting\n\n  * `dateFormat` - JS format object for dates\n\n  * `demo` {`boolean`} - discussion in demo mode?\nInstead of submitting,\nsubmission is temporarily inserted into data.\n\n  * `map` - object that will reformat data,\nwhere key is final formatted property,\nand value is raw data property to map.\nExample: {avatar: \"image\"}\nwould use raw data's image property as a avatar\n\n  * `params` - query paramerters for getting and sending data\n\n  * `submit` {`string`} - path (without parameters) for sending data\n\n  * `__data` {`any[]`} - formatted data\n\n  * `__loading` {`boolean`} - whether data is still loading\n\nProperties:\n\n  * `threads` {`TemplateResult`} - \n\n  * `commentButtonLabel` {`string`} - label for comment submit button\n\n  * `commentTextareaLabel` {`string`} - label for comment textarea\n\n  * `commentIcon` {`string`} - optional icon for comment button\n\n  * `loadingText` {`string`} - text that displays while discussion data loads\n\n  * `replyButtonLabel` {`string`} - label for reply submit button\n\n  * `replyTextareaLabel` {`string`} - label for reply textarea\n\n  * `replyIcon` {`string`} - icon for reply submit button\n\n  * `source` {`string`} - path (without parameters) for fetching data\n\n  * `latest` {`boolean`} - sort comments latest-first\n\n  * `data` - raw data, can be Object or Array\n\n  * `dateLocale` {`string`} - locale for date formatting\n\n  * `dateFormat` - JS format object for dates\n\n  * `demo` {`boolean`} - discussion in demo mode?\nInstead of submitting,\nsubmission is temporarily inserted into data.\n\n  * `map` - object that will reformat data,\nwhere key is final formatted property,\nand value is raw data property to map.\nExample: {avatar: \"image\"}\nwould use raw data's image property as a avatar\n\n  * `params` - query paramerters for getting and sending data\n\n  * `submit` {`string`} - path (without parameters) for sending data\n\n  * `__data` {`any[]`} - formatted data\n\n  * `__loading` {`boolean`} - whether data is still loading",
       "attributes": [
         {
-          "name": "icon-expanded",
-          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+          "name": "comment-button-label",
+          "description": "`comment-button-label` {`string`} - label for comment submit button\n\nProperty: commentButtonLabel"
         },
         {
-          "name": "label-expanded",
-          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+          "name": "comment-textarea-label",
+          "description": "`comment-textarea-label` {`string`} - label for comment textarea\n\nProperty: commentTextareaLabel"
         },
         {
-          "name": "tooltip-expanded",
-          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+          "name": "comment-icon",
+          "description": "`comment-icon` {`string`} - optional icon for comment button\n\nProperty: commentIcon"
         },
         {
-          "name": "accordion",
-          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "name": "loading-text",
+          "description": "`loading-text` {`string`} - text that displays while discussion data loads\n\nProperty: loadingText"
+        },
+        {
+          "name": "reply-button-label",
+          "description": "`reply-button-label` {`string`} - label for reply submit button\n\nProperty: replyButtonLabel"
+        },
+        {
+          "name": "reply-textarea-label",
+          "description": "`reply-textarea-label` {`string`} - label for reply textarea\n\nProperty: replyTextareaLabel"
+        },
+        {
+          "name": "reply-icon",
+          "description": "`reply-icon` {`string`} - icon for reply submit button\n\nProperty: replyIcon"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - path (without parameters) for fetching data\n\nProperty: source"
+        },
+        {
+          "name": "latest",
+          "description": "`latest` {`boolean`} - sort comments latest-first\n\nProperty: latest\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "name": "data",
+          "description": "`data` - raw data, can be Object or Array\n\nProperty: data\n\nDefault: "
+        },
+        {
+          "name": "dateLocale",
+          "description": "`dateLocale` {`string`} - locale for date formatting\n\nProperty: dateLocale\n\nDefault: en-US"
+        },
+        {
+          "name": "dateFormat",
+          "description": "`dateFormat` - JS format object for dates\n\nProperty: dateFormat\n\nDefault: [object Object]"
+        },
+        {
+          "name": "demo",
+          "description": "`demo` {`boolean`} - discussion in demo mode?\nInstead of submitting,\nsubmission is temporarily inserted into data.\n\nProperty: demo\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "expanded",
-          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "name": "map",
+          "description": "`map` - object that will reformat data,\nwhere key is final formatted property,\nand value is raw data property to map.\nExample: {avatar: \"image\"}\nwould use raw data's image property as a avatar\n\nProperty: map\n\nDefault: [object Object]"
+        },
+        {
+          "name": "params",
+          "description": "`params` - query paramerters for getting and sending data\n\nProperty: params\n\nDefault: [object Object]"
+        },
+        {
+          "name": "submit",
+          "description": "`submit` {`string`} - path (without parameters) for sending data\n\nProperty: submit\n\nDefault: href"
+        },
+        {
+          "name": "__data",
+          "description": "`__data` {`any[]`} - formatted data\n\nProperty: __data\n\nDefault: "
+        },
+        {
+          "name": "__loading",
+          "description": "`__loading` {`boolean`} - whether data is still loading\n\nProperty: __loading\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
-        },
-        {
-          "name": "tooltip",
-          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
-        },
-        {
-          "name": "onthreaded-discussion-attached",
-          "description": "`threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it."
-        },
-        {
-          "name": "onthreaded-discussion-detached",
-          "description": "`threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
-        },
-        {
-          "name": "ontoggle",
-          "description": "`toggle` - Fires when toggled."
-        },
-        {
-          "name": "onthreaded-discussion-toggle",
-          "description": "`threaded-discussion-toggle` - Deprecated. Fires when toggled."
-        },
-        {
-          "name": "onexpand",
-          "description": "`expand` - Fires when expanded."
-        },
-        {
-          "name": "oncollapse",
-          "description": "`collapse` - Fires when collapsed."
-        },
-        {
-          "name": "onthreaded-discussion-click",
-          "description": "`threaded-discussion-click` - Fires when clicked."
-        }
-      ]
-    },
-    {
-      "name": "threaded-discussion-group",
-      "description": "`threaded-discussion-group`\na group of `threaded-discussion` elements\n\n### Styling\n\n`<threaded-discussion-group>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-group-margin` | margin around the threaded-discussion-group | 15px 0\n\nAttributes:\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `global-options` - an array of globalProperties to override every threaded-discussion item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\n  * `radio` {`boolean`} - is every threaded-discussion item radio button?\n\n  * `__items` {`any[]`} - is radio button\n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `accordion` - \n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` - \n\n  * `icon` - \n\n  * `iconExpanded` - \n\n  * `label` - \n\n  * `labelExpanded` - \n\n  * `tooltip` - \n\n  * `tooltipExpanded` - \n\n  * `globalOptions` - an array of globalProperties to override every threaded-discussion item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\n  * `radio` {`boolean`} - is every threaded-discussion item radio button?\n\n  * `__items` {`any[]`} - is radio button",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: null",
-          "valueSet": "v"
-        },
-        {
-          "name": "global-options",
-          "description": "`global-options` - an array of globalProperties to override every threaded-discussion item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\nProperty: globalOptions\n\nDefault: [object Object]"
-        },
-        {
-          "name": "radio",
-          "description": "`radio` {`boolean`} - is every threaded-discussion item radio button?\n\nProperty: radio\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__items",
-          "description": "`__items` {`any[]`} - is radio button\n\nProperty: __items\n\nDefault: "
         }
       ]
     },
     {
       "name": "tag",
-      "description": "Events:\n\n  * `threaded-discussion-attached` - \n\n  * `threaded-discussion-detached` - \n\n  * `toggle` - \n\n  * `threaded-discussion-toggle` - \n\n  * `expand` - \n\n  * `collapse` - \n\n  * `threaded-discussion-click` - ",
+      "description": "Events:\n\n  * `comment-demo` - \n\n  * `comment-submitted` - ",
       "attributes": [
         {
-          "name": "onthreaded-discussion-attached",
-          "description": "`threaded-discussion-attached` - "
+          "name": "oncomment-demo",
+          "description": "`comment-demo` - "
         },
         {
-          "name": "onthreaded-discussion-detached",
-          "description": "`threaded-discussion-detached` - "
-        },
-        {
-          "name": "ontoggle",
-          "description": "`toggle` - "
-        },
-        {
-          "name": "onthreaded-discussion-toggle",
-          "description": "`threaded-discussion-toggle` - "
-        },
-        {
-          "name": "onexpand",
-          "description": "`expand` - "
-        },
-        {
-          "name": "oncollapse",
-          "description": "`collapse` - "
-        },
-        {
-          "name": "onthreaded-discussion-click",
-          "description": "`threaded-discussion-click` - "
+          "name": "oncomment-submitted",
+          "description": "`comment-submitted` - "
         }
       ]
     },
     {
       "name": "threaded-discussion",
-      "description": "`threaded-discussion`\nan accessible expand collapse\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-margin` | margin around threaded-discussion | 15px 0\n`--threaded-discussion-border` | border around threaded-discussion | 1px solid\n`--threaded-discussion-horizontal-padding` | horizontal padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-left` | left padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-horizontal-padding-right` | right padding inside threaded-discussion | `--threaded-discussion-horizontal-padding`\n`--threaded-discussion-vertical-padding` | vertical padding inside threaded-discussion | 16px\n`--threaded-discussion-horizontal-padding-top` | top padding inside threaded-discussion | `--threaded-discussion-vertical-padding`\n`--threaded-discussion-horizontal-padding-bottom` | bottom padding inside threaded-discussion | --threaded-discussion-vertical-padding\n`--threaded-discussion-border-between` | border between threaded-discussion heading and content | --threaded-discussion-border\n`--threaded-discussion-heading-font-weight` | font-weight for threaded-discussion heading | bold\n`--threaded-discussion-heading-color` | text color for threaded-discussion heading | unset\n`--threaded-discussion-heading-background-color` | background-color for threaded-discussion heading | unset\n`--threaded-discussion-overflow-y` | override default overflow behavior | hidden\n`--threaded-discussion-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works\n\nEvents:\n\n  * `threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it.\n\n  * `threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `threaded-discussion-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `threaded-discussion-click` - Fires when clicked.\n\nAttributes:\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button\n\nProperties:\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `label` {`string`} - label for the button\n\n  * `tooltip` {`string`} - tooltip for the button",
+      "description": "`threaded-discussion`\na threaded discussions component\n\n### Styling\n\n`<threaded-discussion>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--threaded-discussion-FontSize` | default font-size | 14px\n`--threaded-discussion-LineHeight` | default line-height | 160%\n`--threaded-discussion-Color` | default text color | #95989a\n`--threaded-discussion-threads-BackgroundColor` | default thread backbround-color | #eaeaea\n`--threaded-discussion-threads-Margin` | default thread margin | 0\n`--threaded-discussion-thread-focus-BorderLeft` | default thread border left color when commenting | 4px solid blue\n`--threaded-discussion-new-thread-BackgroundColor` | overrides default thread backbround-color for new thread | var(--threaded-discussion-threads-BackgroundColor, #eaeaea)\n`--threaded-discussion-new-thread-Margin` | overrides default thread margin for new thread | var(--threaded-discussion-threads-Margin, 0))\n`--threaded-discussion-new-thread-focus-BorderLeft` | overrides default border left color when posting a new thread | \n`--threaded-discussion-comment-BackgroundColor` | comment bacground color | #fff\n`--threaded-discussion-comment-Padding` | comment padding | 10px\n`--threaded-discussion-reply-indent` | left-indent for thread replies | calc(2 * var(--threaded-discussion-comment-Padding,10px))));\n`--threaded-discussion-name-FontSize` | comment author name font-size | calc(1.1 * var(--threaded-discussion-FontSize, 14px)));\n`--threaded-discussion-name-FontWeight` | comment author name font-weight | bold;\n`--threaded-discussion-name-FontFamily` | overrides default font-family for comment author name | \n`--threaded-discussion-name-Color` | comment author name text color | #4b4b4b);\n`--threaded-discussion-date-FontSize` | comment author name font-size | calc(0.8 * var(--threaded-discussion-FontSize, 14px)));\n`--threaded-discussion-date-FontWeight` | comment author name font-weight | normal\n`--threaded-discussion-date-FontFamily` | overrides default font-family for comment date | \n`--threaded-discussion-date-Color` | comment date text color | #95989a));\n\nAttributes:\n\n  * `comment-button-label` {`string`} - label for comment submit button\n\n  * `comment-textarea-label` {`string`} - label for comment textarea\n\n  * `comment-icon` {`string`} - optional icon for comment button\n\n  * `loading-text` {`string`} - text that displays while discussion data loads\n\n  * `reply-button-label` {`string`} - label for reply submit button\n\n  * `reply-textarea-label` {`string`} - label for reply textarea\n\n  * `reply-icon` {`string`} - icon for reply submit button\n\n  * `source` {`string`} - path (without parameters) for fetching data\n\n  * `latest` {`boolean`} - sort comments latest-first\n\n  * `data` - raw data, can be Object or Array\n\n  * `dateLocale` {`string`} - locale for date formatting\n\n  * `dateFormat` - JS format object for dates\n\n  * `demo` {`boolean`} - discussion in demo mode?\nInstead of submitting,\nsubmission is temporarily inserted into data.\n\n  * `map` - object that will reformat data,\nwhere key is final formatted property,\nand value is raw data property to map.\nExample: {avatar: \"image\"}\nwould use raw data's image property as a avatar\n\n  * `params` - query paramerters for getting and sending data\n\n  * `submit` {`string`} - path (without parameters) for sending data\n\n  * `__data` {`any[]`} - formatted data\n\n  * `__loading` {`boolean`} - whether data is still loading\n\nProperties:\n\n  * `threads` {`TemplateResult`} - \n\n  * `commentButtonLabel` {`string`} - label for comment submit button\n\n  * `commentTextareaLabel` {`string`} - label for comment textarea\n\n  * `commentIcon` {`string`} - optional icon for comment button\n\n  * `loadingText` {`string`} - text that displays while discussion data loads\n\n  * `replyButtonLabel` {`string`} - label for reply submit button\n\n  * `replyTextareaLabel` {`string`} - label for reply textarea\n\n  * `replyIcon` {`string`} - icon for reply submit button\n\n  * `source` {`string`} - path (without parameters) for fetching data\n\n  * `latest` {`boolean`} - sort comments latest-first\n\n  * `data` - raw data, can be Object or Array\n\n  * `dateLocale` {`string`} - locale for date formatting\n\n  * `dateFormat` - JS format object for dates\n\n  * `demo` {`boolean`} - discussion in demo mode?\nInstead of submitting,\nsubmission is temporarily inserted into data.\n\n  * `map` - object that will reformat data,\nwhere key is final formatted property,\nand value is raw data property to map.\nExample: {avatar: \"image\"}\nwould use raw data's image property as a avatar\n\n  * `params` - query paramerters for getting and sending data\n\n  * `submit` {`string`} - path (without parameters) for sending data\n\n  * `__data` {`any[]`} - formatted data\n\n  * `__loading` {`boolean`} - whether data is still loading",
       "attributes": [
         {
-          "name": "icon-expanded",
-          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded"
+          "name": "comment-button-label",
+          "description": "`comment-button-label` {`string`} - label for comment submit button\n\nProperty: commentButtonLabel"
         },
         {
-          "name": "label-expanded",
-          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded"
+          "name": "comment-textarea-label",
+          "description": "`comment-textarea-label` {`string`} - label for comment textarea\n\nProperty: commentTextareaLabel"
         },
         {
-          "name": "tooltip-expanded",
-          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded"
+          "name": "comment-icon",
+          "description": "`comment-icon` {`string`} - optional icon for comment button\n\nProperty: commentIcon"
         },
         {
-          "name": "accordion",
-          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "name": "loading-text",
+          "description": "`loading-text` {`string`} - text that displays while discussion data loads\n\nProperty: loadingText"
+        },
+        {
+          "name": "reply-button-label",
+          "description": "`reply-button-label` {`string`} - label for reply submit button\n\nProperty: replyButtonLabel"
+        },
+        {
+          "name": "reply-textarea-label",
+          "description": "`reply-textarea-label` {`string`} - label for reply textarea\n\nProperty: replyTextareaLabel"
+        },
+        {
+          "name": "reply-icon",
+          "description": "`reply-icon` {`string`} - icon for reply submit button\n\nProperty: replyIcon"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - path (without parameters) for fetching data\n\nProperty: source"
+        },
+        {
+          "name": "latest",
+          "description": "`latest` {`boolean`} - sort comments latest-first\n\nProperty: latest\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "name": "data",
+          "description": "`data` - raw data, can be Object or Array\n\nProperty: data\n\nDefault: "
+        },
+        {
+          "name": "dateLocale",
+          "description": "`dateLocale` {`string`} - locale for date formatting\n\nProperty: dateLocale\n\nDefault: en-US"
+        },
+        {
+          "name": "dateFormat",
+          "description": "`dateFormat` - JS format object for dates\n\nProperty: dateFormat\n\nDefault: [object Object]"
+        },
+        {
+          "name": "demo",
+          "description": "`demo` {`boolean`} - discussion in demo mode?\nInstead of submitting,\nsubmission is temporarily inserted into data.\n\nProperty: demo\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "expanded",
-          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "name": "map",
+          "description": "`map` - object that will reformat data,\nwhere key is final formatted property,\nand value is raw data property to map.\nExample: {avatar: \"image\"}\nwould use raw data's image property as a avatar\n\nProperty: map\n\nDefault: [object Object]"
+        },
+        {
+          "name": "params",
+          "description": "`params` - query paramerters for getting and sending data\n\nProperty: params\n\nDefault: [object Object]"
+        },
+        {
+          "name": "submit",
+          "description": "`submit` {`string`} - path (without parameters) for sending data\n\nProperty: submit\n\nDefault: href"
+        },
+        {
+          "name": "__data",
+          "description": "`__data` {`any[]`} - formatted data\n\nProperty: __data\n\nDefault: "
+        },
+        {
+          "name": "__loading",
+          "description": "`__loading` {`boolean`} - whether data is still loading\n\nProperty: __loading\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: icons:expand-more"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand / collapse"
-        },
-        {
-          "name": "tooltip",
-          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand / collapse"
-        },
-        {
-          "name": "onthreaded-discussion-attached",
-          "description": "`threaded-discussion-attached` - Fires when constructed, so that parent radio group can listen for it."
-        },
-        {
-          "name": "onthreaded-discussion-detached",
-          "description": "`threaded-discussion-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
-        },
-        {
-          "name": "ontoggle",
-          "description": "`toggle` - Fires when toggled."
-        },
-        {
-          "name": "onthreaded-discussion-toggle",
-          "description": "`threaded-discussion-toggle` - Deprecated. Fires when toggled."
-        },
-        {
-          "name": "onexpand",
-          "description": "`expand` - Fires when expanded."
-        },
-        {
-          "name": "oncollapse",
-          "description": "`collapse` - Fires when collapsed."
-        },
-        {
-          "name": "onthreaded-discussion-click",
-          "description": "`threaded-discussion-click` - Fires when clicked."
         }
       ]
     }

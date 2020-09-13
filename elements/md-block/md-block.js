@@ -24,19 +24,18 @@ class MdBlock extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <div>
-        <marked-element markdown="${this.markdown}">
-          <div slot="markdown-html"></div>
-          <script
-            type="text/markdown"
-            .src="${this.source ? this.source : undefined}"
-          ></script>
-        </marked-element>
-      </div>
-    `;
+    return html` <div>
+      <marked-element markdown="${this.markdown}">
+        <div slot="markdown-html"></div>
+        <script
+          type="text/markdown"
+          .src="${this.source ? this.source : undefined}"
+        ></script>
+      </marked-element>
+    </div>`;
   }
 
   // haxProperty definition

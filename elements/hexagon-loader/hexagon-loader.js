@@ -516,9 +516,9 @@ class HexagonLoader extends LitElement {
 
   // render function
   render() {
-    return html`
-      <div>${this.items.map((item) => html` <hex-a-gon></hex-a-gon> `)}</div>
-    `;
+    return html` <div>
+      ${this.items.map((item) => html`<hex-a-gon></hex-a-gon>`)}
+    </div>`;
   }
 
   // properties available to the custom element for data binding

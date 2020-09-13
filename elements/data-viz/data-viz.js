@@ -39,18 +39,17 @@ class DataViz extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <chartist-render
-        id="barChart"
-        type="bar"
-        scale="ct-major-twelfth"
-        chart-title="Quiz Distribution"
-        chart-desc="A bar graph of quizzes completed by student"
-      >
-      </chartist-render>
-    `;
+    return html` <chartist-render
+      id="barChart"
+      type="bar"
+      scale="ct-major-twelfth"
+      chart-title="Quiz Distribution"
+      chart-desc="A bar graph of quizzes completed by student"
+    >
+    </chartist-render>`;
   }
 
   // properties available to the custom element for data binding

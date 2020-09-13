@@ -302,45 +302,43 @@ class LrndesignTimeline extends SimpleColors {
 
   // render function
   render() {
-    return html`
-      <article>
-        <h1 id="title">${this.timelineTitle}</h1>
-        <slot></slot>
-        <div id="timeline">
-          <div id="events" @scroll="${this._checkScroll}">
-            ${this.eventsList.map(
-              (event, index) => html`
-                <section
-                  class="event"
-                  ?has-media="${event.imagesrc && event.imagesrc !== ""}"
-                  tabindex="0"
-                  @focus="${this._setScroll}"
-                >
-                  <div class="event-overview">
-                    <div class="heading"><h2>${event.heading}</h2></div>
-                    <div class="media-outer">
-                      ${!event.imagesrc || event.imagesrc === ""
-                        ? ``
-                        : html`
+    return html` <article>
+      <h1 id="title">${this.timelineTitle}</h1>
+      <slot></slot>
+      <div id="timeline">
+        <div id="events" @scroll="${this._checkScroll}">
+          ${this.eventsList.map(
+            (event, index) => html`
+              <section
+                class="event"
+                ?has-media="${event.imagesrc && event.imagesrc !== ""}"
+                tabindex="0"
+                @focus="${this._setScroll}"
+              >
+                <div class="event-overview">
+                  <div class="heading"><h2>${event.heading}</h2></div>
+                  <div class="media-outer">
+                    ${!event.imagesrc || event.imagesrc === ""
+                      ? ``
+                      : html`
+                          <div>
                             <div>
-                              <div>
-                                <img
-                                  alt="${event.imagealt}"
-                                  src="${event.imagesrc}"
-                                />
-                              </div>
+                              <img
+                                alt="${event.imagealt}"
+                                src="${event.imagesrc}"
+                              />
                             </div>
-                          `}
-                    </div>
+                          </div>
+                        `}
                   </div>
-                  <div class="details">${event.details}</div>
-                </section>
-              `
-            )}
-          </div>
+                </div>
+                <div class="details">${event.details}</div>
+              </section>
+            `
+          )}
         </div>
-      </article>
-    `;
+      </div>
+    </article>`;
   }
 
   // haxProperty definition

@@ -27,6 +27,7 @@ class HaxschemaBuilder extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         code-editor {
           height: 500px;
         }
@@ -36,37 +37,35 @@ class HaxschemaBuilder extends LitElement {
 
   // render function
   render() {
-    return html`
-      <vaadin-split-layout>
-        <div>
-          <paper-button raised noink @click="${this.addConfigure}"
-            >Add to configure</paper-button
-          >
-          <paper-button raised noink @click="${this.addAdvanced}"
-            >Add to advanced</paper-button
-          >
-          <code-editor
-            id="code"
-            @value-changed="${this._editorDataChanged}"
-            .value="{}"
-            language="json"
-          ></code-editor>
-          <json-editor
-            id="json"
-            label="JSON"
-            @value-changed="${this.__haxSchemaChanged}"
-            value="${this.haxSchema}"
-          ></json-editor>
-        </div>
-        <div>
-          <hax-schema-form
-            id="form"
-            value="${this.value}"
-            @value-changed="${this.__valueChanged}"
-          ></hax-schema-form>
-        </div>
-      </vaadin-split-layout>
-    `;
+    return html` <vaadin-split-layout>
+      <div>
+        <paper-button raised noink @click="${this.addConfigure}"
+          >Add to configure</paper-button
+        >
+        <paper-button raised noink @click="${this.addAdvanced}"
+          >Add to advanced</paper-button
+        >
+        <code-editor
+          id="code"
+          @value-changed="${this._editorDataChanged}"
+          .value="{}"
+          language="json"
+        ></code-editor>
+        <json-editor
+          id="json"
+          label="JSON"
+          @value-changed="${this.__haxSchemaChanged}"
+          value="${this.haxSchema}"
+        ></json-editor>
+      </div>
+      <div>
+        <hax-schema-form
+          id="form"
+          value="${this.value}"
+          @value-changed="${this.__valueChanged}"
+        ></hax-schema-form>
+      </div>
+    </vaadin-split-layout>`;
   }
 
   // haxProperty definition

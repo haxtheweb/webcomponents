@@ -21,30 +21,30 @@ class FilteredImage extends SimpleColors {
         :host {
           display: block;
         }
+
         :host([hidden]) {
           display: none;
         }
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <svg id="svg" viewBox="0 0 ${this.width} ${this.height}">
-        <rect id="rect" x="0" y="0"></rect>
-        <filter id="${this.__id}">
-          <feColorMatrix
-            id="matrix"
-            type="matrix"
-            values=" 1   0   0   0   0
+    return html` <svg id="svg" viewBox="0 0 ${this.width} ${this.height}">
+      <rect id="rect" x="0" y="0"></rect>
+      <filter id="${this.__id}">
+        <feColorMatrix
+          id="matrix"
+          type="matrix"
+          values=" 1   0   0   0   0
                0   1   0   0   0
                0   0   1   0   0
                0   0   0   1   0 "
-          />
-        </filter>
-        <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>
-      </svg>
-    `;
+        />
+      </filter>
+      <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>
+    </svg>`;
   }
 
   // haxProperty definition

@@ -3,33 +3,15 @@
   "tags": [
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.",
       "attributes": [
         {
           "name": "elevation",
           "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
         },
         {
-          "name": "image",
-          "description": "`image` {`string`} - The profile image to display to the left of the quote.\n\nProperty: image"
-        },
-        {
-          "name": "name",
-          "description": "`name` {`string`} - Name of the person making the quote.\n\nProperty: name"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
-        }
-      ]
-    },
-    {
-      "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.",
-      "attributes": [
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "image",
@@ -51,11 +33,15 @@
     },
     {
       "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.",
+      "description": "`person-testimonial`\n\nAttributes:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\nProperties:\n\n  * `elevation` {`number`} - Visual height of the card.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.",
       "attributes": [
         {
           "name": "elevation",
           "description": "`elevation` {`number`} - Visual height of the card.\n\nProperty: elevation\n\nDefault: 1"
+        },
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "image",

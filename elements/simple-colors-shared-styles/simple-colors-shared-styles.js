@@ -543,6 +543,7 @@ class SimpleColorsSharedStyles extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
     return html``;

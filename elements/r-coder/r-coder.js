@@ -34,10 +34,10 @@ class RCoder extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <code-editor id="editor" language="r"></code-editor>
+    return html` <code-editor id="editor" language="r"></code-editor>
       <paper-button
         id="button"
         ?disabled="${!this.__connected}"
@@ -45,8 +45,7 @@ class RCoder extends LitElement {
         raised
         >Process</paper-button
       >
-      <div id="output"></div>
-    `;
+      <div id="output"></div>`;
   }
 
   // haxProperty definition

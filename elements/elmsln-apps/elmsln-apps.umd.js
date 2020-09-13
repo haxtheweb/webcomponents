@@ -17,3 +17,5 @@ import "./lib/lrnapp-studio-instructor/lrnapp-studio-instructor.js";
 import "./lib/lrnapp-studio-kanban/lrnapp-studio-kanban.js";
 import "./lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
 import "./lib/mooc-content/mooc-content.js";
+import "./lib/elmsln-base.js";
+import "./lib/elmsln-base-deps.js";

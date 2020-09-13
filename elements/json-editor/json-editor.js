@@ -17,16 +17,17 @@ class JsonEditor extends LitElement {
         :host {
           display: block;
         }
+
         :host([hidden]) {
           display: none;
         }
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           :host([error]) paper-textarea {
             --iron-autogrow-textarea: {
@@ -61,8 +62,7 @@ class JsonEditor extends LitElement {
         ?readonly="${this.disabled}"
         ?invalid="${this.error}"
         max-rows="${this.maxRows}"
-      ></paper-textarea>
-    `;
+      ></paper-textarea>`;
   }
 
   // properties available to the custom element for data binding

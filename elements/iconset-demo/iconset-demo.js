@@ -23,8 +23,7 @@ import "@polymer/marked-element/marked-element.js";
 class IconsetDemo extends PolymerElement {
   // render function
   static get template() {
-    return html`
-      <style>
+    return html` <style>
         :host {
           display: block;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -32,13 +31,16 @@ class IconsetDemo extends PolymerElement {
           margin-bottom: 40px;
           padding: 20px 40px;
         }
+
         :host .iconset:not(:first-of-type) {
           border-top: 1px solid #ddd;
         }
+
         :host ul {
           list-style-type: none;
           padding: 0;
         }
+
         :host li {
           display: inline-block;
           width: 160px;
@@ -46,32 +48,41 @@ class IconsetDemo extends PolymerElement {
           text-align: center;
           font-size: 10px;
         }
+
         :host iron-icon {
           font-size: 14px;
           color: rgb(97, 97, 97);
           display: inline-block;
         }
+
         :host .iconset:nth-of-type(9n + 2) iron-icon {
           color: #be3300;
         }
+
         :host .iconset:nth-of-type(9n + 3) iron-icon {
           color: #0000b5;
         }
+
         :host .iconset:nth-of-type(9n + 4) iron-icon {
           color: #750075;
         }
+
         :host .iconset:nth-of-type(9n + 5) iron-icon {
           color: #aa5d00;
         }
+
         :host .iconset:nth-of-type(9n + 6) iron-icon {
           color: #db0a5b;
         }
+
         :host .iconset:nth-of-type(9n + 7) iron-icon {
           color: #005500;
         }
+
         :host .iconset:nth-of-type(9n + 8) iron-icon {
           color: #cf000f;
         }
+
         :host .iconset:nth-of-type(9n) iron-icon {
           color: #005f8b;
         }
@@ -90,8 +101,7 @@ class IconsetDemo extends PolymerElement {
             </template>
           </ul>
         </div>
-      </template>
-    `;
+      </template>`;
   }
 
   // properties available to the custom element for data binding

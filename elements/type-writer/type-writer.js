@@ -93,7 +93,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
 
   // render function
   render() {
-    return html` <span id="text"></span><span id="cursor">|</span> `;
+    return html` <span id="text"></span><span id="cursor">|</span>`;
   }
 
   // haxProperty definition

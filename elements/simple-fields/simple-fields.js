@@ -151,11 +151,9 @@ class SimpleFields extends SimpleFieldsLite {
 
   // render function
   render() {
-    return html`
-      <div id="schema-fields" aria-live="polite">
-        <slot></slot>
-      </div>
-    `;
+    return html` <div id="schema-fields" aria-live="polite">
+      <slot></slot>
+    </div>`;
   }
 
   // haxProperty definition

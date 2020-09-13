@@ -45,13 +45,11 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
 
   // render function
   render() {
-    return html`
-      <div class="wrapper">
-        <slot name="prefix"></slot>
-        <div id="counter"></div>
-        <slot name="suffix"></slot>
-      </div>
-    `;
+    return html` <div class="wrapper">
+      <slot name="prefix"></slot>
+      <div id="counter"></div>
+      <slot name="suffix"></slot>
+    </div>`;
   }
 
   // haxProperty definition

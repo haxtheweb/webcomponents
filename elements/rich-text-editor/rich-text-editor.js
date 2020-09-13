@@ -71,7 +71,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
 
   // render function
   render() {
-    return html` <slot></slot> `;
+    return html` <slot></slot>`;
   }
 
   // haxProperty definition

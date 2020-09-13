@@ -3,16 +3,6 @@
   "tags": [
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "onfocus-changed",
-          "description": "`focus-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "lrn-button",
       "description": "Events:\n\n  * `focus-changed` - \n\nAttributes:\n\n  * `href` {`string`} - \n\n  * `show-href` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `inner-class` {`string`} - \n\n  * `color` {`string`} - \n\n  * `text-color` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focus-state` {`boolean`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `showHref` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `innerClass` {`string`} - \n\n  * `color` {`string`} - \n\n  * `textColor` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `templateUrl` {`string`} - \n\n  * `propertiesUrl` {`string`} - \n\n  * `HAXPropertiesUrl` {`string`} - \n\n  * `styleUrl` {`string`} - ",
       "attributes": [
         {

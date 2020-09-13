@@ -101,24 +101,23 @@ class SocialShareLink extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <a
-        href="${this.__href}"
-        ?disabled="${!this.__href}"
-        class="${this.mode}"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <iron-icon
-          aria-hidden="true"
-          icon="${this.__icon}"
-          ?hidden="${!this.__showIcon}"
-        ></iron-icon>
-        <span class="linktext">${this.__linkText}</span>
-      </a>
-    `;
+    return html` <a
+      href="${this.__href}"
+      ?disabled="${!this.__href}"
+      class="${this.mode}"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <iron-icon
+        aria-hidden="true"
+        icon="${this.__icon}"
+        ?hidden="${!this.__showIcon}"
+      ></iron-icon>
+      <span class="linktext">${this.__linkText}</span>
+    </a>`;
   }
 
   // properties available to the custom element for data binding

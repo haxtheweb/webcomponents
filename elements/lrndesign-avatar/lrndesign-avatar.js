@@ -60,15 +60,13 @@ class LrndesignAvatar extends SimpleColors {
 
   // render function
   render() {
-    return html`
-      <paper-avatar
-        .label="${this.label || ""}"
-        .icon="${this.icon || ""}"
-        .src="${this.src || ""}"
-        ?two-chars="${this.twoChars}"
-        ?jdenticon="${this.jdenticon}"
-      ></paper-avatar>
-    `;
+    return html` <paper-avatar
+      .label="${this.label || ""}"
+      .icon="${this.icon || ""}"
+      .src="${this.src || ""}"
+      ?two-chars="${this.twoChars}"
+      ?jdenticon="${this.jdenticon}"
+    ></paper-avatar>`;
   }
 
   // haxProperty definition

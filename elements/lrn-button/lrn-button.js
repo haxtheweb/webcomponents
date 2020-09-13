@@ -77,10 +77,10 @@ class LrnButton extends LitElement {
       `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <a
+    return html` <a
         tabindex="-1"
         id="lrnsys-button-link"
         href="${this.showHref}"
@@ -104,7 +104,7 @@ class LrnButton extends LitElement {
                 `
               : ``}
             ${this.label
-              ? html` <span class="label"> ${this.label} </span> `
+              ? html` <span class="label"> ${this.label} </span>`
               : ``}
             <slot></slot>
           </div>
@@ -112,8 +112,7 @@ class LrnButton extends LitElement {
       </a>
       <simple-tooltip for="lrnsys-button-link" animation-delay="0"
         >${this.alt}</simple-tooltip
-      >
-    `;
+      >`;
   }
 
   // properties available to the custom element for data binding

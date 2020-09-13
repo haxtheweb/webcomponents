@@ -16,20 +16,6 @@
       ]
     },
     {
-      "name": "tab-list",
-      "description": "`tab-list`\n\nEvents:\n\n  * `tabs-changed` - \n\nAttributes:\n\n  * `tabs` {`any[]`} - List of tabs\n\nProperties:\n\n  * `tabs` {`any[]`} - List of tabs",
-      "attributes": [
-        {
-          "name": "tabs",
-          "description": "`tabs` {`any[]`} - List of tabs\n\nProperty: tabs\n\nDefault: "
-        },
-        {
-          "name": "ontabs-changed",
-          "description": "`tabs-changed` - "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "description": "Events:\n\n  * `tabs-changed` - ",
       "attributes": [

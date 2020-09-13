@@ -41,10 +41,12 @@ class RetroCard extends SimpleColors {
           --retro-card-light-color: #f4f1d0;
           --retro-card-dark-color: #212121;
         }
+
         :host([dark]) {
           --retro-card-dark-color: #f4f1d0;
           --retro-card-light-color: #212121;
         }
+
         :host([hidden]) {
           display: none;
         }
@@ -65,11 +67,13 @@ class RetroCard extends SimpleColors {
             padding 0.4s ease-in-out 0s, border 0.4s ease-in-out 0s,
             box-shadow 0.2s ease-in-out 0s;
         }
+
         .link:nth-child(1n + 0) {
           background-color: var(--retro-card-level-3);
           box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
           border: 4px var(--retro-card-level-1) solid;
         }
+
         .link {
           display: block;
           background-color: var(--retro-card-level-3);
@@ -107,6 +111,7 @@ class RetroCard extends SimpleColors {
           font-size: 0.9rem;
           padding: 0.75rem 1rem 0;
         }
+
         .card-tags {
           line-height: 1.6;
           text-align: center;
@@ -114,6 +119,7 @@ class RetroCard extends SimpleColors {
           text-rendering: optimizeLegibility;
           font-weight: 300;
         }
+
         .project-tag {
           font-size: 0.7rem;
           padding: 0.25rem 0.5rem;
@@ -153,25 +159,23 @@ class RetroCard extends SimpleColors {
 
   // render function
   render() {
-    return html`
-      <a
-        tabindex="-1"
-        class="link ${this.color}"
-        href="${this.url}"
-        @click="${this._clickCard}"
-      >
-        <img class="img" loading="lazy" src="${this.__source}" alt="" />
-        <span class="title">${this.title}</span>
-        <span class="name">${this.subtitle}</span>
-        <span class="description"><slot></slot></span>
-        <hr />
-        <div class="card-tags">
-          ${this.__cardTags.map(
-            (tag) => html` <span class="project-tag">${tag.trim()}</span> `
-          )}
-        </div>
-      </a>
-    `;
+    return html` <a
+      tabindex="-1"
+      class="link ${this.color}"
+      href="${this.url}"
+      @click="${this._clickCard}"
+    >
+      <img class="img" loading="lazy" src="${this.__source}" alt="" />
+      <span class="title">${this.title}</span>
+      <span class="name">${this.subtitle}</span>
+      <span class="description"><slot></slot></span>
+      <hr />
+      <div class="card-tags">
+        ${this.__cardTags.map(
+          (tag) => html`<span class="project-tag">${tag.trim()}</span>`
+        )}
+      </div>
+    </a>`;
   }
 
   // haxProperty definition

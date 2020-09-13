@@ -84,7 +84,7 @@ class RelativeHeading extends RelativeHeadingLite {
 
   // render function
   render() {
-    return html` ${this.template} ${this.button} `;
+    return html` ${this.template} ${this.button}`;
   }
 
   // haxProperty definition

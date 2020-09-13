@@ -3,15 +3,6 @@
   "tags": [
     {
       "name": "h5p-element",
-      "attributes": []
-    },
-    {
-      "name": "h5p-element",
-      "description": "`h5p-element`\n\nProperties:\n\n  * `contentId` {`string`} - ",
-      "attributes": []
-    },
-    {
-      "name": "h5p-element",
       "description": "`h5p-element`\n\nAttributes:\n\n  * `source` {`string`} - Source of the .h5p file\n\nProperties:\n\n  * `source` {`string`} - Source of the .h5p file\n\n  * `contentId` {`string`} - ",
       "attributes": [
         {

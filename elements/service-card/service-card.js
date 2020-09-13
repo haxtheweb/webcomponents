@@ -31,7 +31,7 @@ class ServiceCard extends LitElement {
       gizmo: {
         title: "Service card",
         description: "Simple presentation of services or info",
-        icon: "hax:calendar",
+        icon: "icons:credit-card",
         color: "orange",
         groups: ["Card"],
         handles: [],

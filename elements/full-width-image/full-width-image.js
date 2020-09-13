@@ -58,6 +58,7 @@ class FullWidthImage extends LitElement {
           -ms-transition: 0.5s all ease-in-out;
           -o-transition: 0.5s all ease-in-out;
         }
+
         .wrapper:hover {
           opacity: 0;
           background-color: transparent;
@@ -76,16 +77,14 @@ class FullWidthImage extends LitElement {
 
   // render function
   render() {
-    return html`
-      <div id="image">
-        <div class="wrapper">
-          <div class="caption">
-            ${this.caption}
-            <slot></slot>
-          </div>
+    return html` <div id="image">
+      <div class="wrapper">
+        <div class="caption">
+          ${this.caption}
+          <slot></slot>
         </div>
       </div>
-    `;
+    </div>`;
   }
 
   // haxProperty definition

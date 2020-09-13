@@ -144,6 +144,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         site-print-button {
           color: var(--site-print-button-color, white);
         }
+
         paper-icon-button,
         site-rss-button,
         site-print-button {
@@ -159,6 +160,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
         :host([edit-mode]) {
           opacity: 1;
         }
+
         :host([edit-mode]) app-drawer {
           opacity: 0.2;
           pointer-events: none;
@@ -300,8 +302,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
 
   // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           site-active-title {
             font-family: var(--__learn-two-theme-default-font-family);
@@ -432,8 +433,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           </div>
           <site-menu-button type="next"></site-menu-button>
         </div>
-      </app-drawer-layout>
-    `;
+      </app-drawer-layout>`;
   }
 
   // properties available to the custom element for data binding

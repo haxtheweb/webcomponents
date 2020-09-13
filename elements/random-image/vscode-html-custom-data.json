@@ -24,28 +24,6 @@
       ]
     },
     {
-      "name": "random-image",
-      "description": "`random-image`\nElement to show random image from a given group.\n\nAttributes:\n\n  * `_imgSrc` {`string`} - \n\n  * `_imgTitle` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `images-list` {`any[]`} - \n\nProperties:\n\n  * `_imgSrc` {`string`} - \n\n  * `_imgTitle` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `imagesList` {`any[]`} - ",
-      "attributes": [
-        {
-          "name": "_imgSrc",
-          "description": "`_imgSrc` {`string`} - \n\nProperty: _imgSrc"
-        },
-        {
-          "name": "_imgTitle",
-          "description": "`_imgTitle` {`string`} - \n\nProperty: _imgTitle"
-        },
-        {
-          "name": "mode",
-          "description": "`mode` {`string`} - \n\nProperty: mode\n\nDefault: "
-        },
-        {
-          "name": "images-list",
-          "description": "`images-list` {`any[]`} - \n\nProperty: imagesList\n\nDefault: "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },
