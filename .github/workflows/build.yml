@@ -29,10 +29,10 @@ jobs:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}"-yarn-
+            ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
       - name: Install
         run: yarn install
       - name: Build
         run: yarn lerna run build
       - name: Test
-        run: yarn test -- --verbose
+        run: yarn test --verbose
