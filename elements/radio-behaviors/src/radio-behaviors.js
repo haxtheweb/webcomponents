@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-const RadioBehaviors = function(SuperClass) {
+const RadioBehaviors = function (SuperClass) {
   return class extends SuperClass {
     render() {
       return ``;
@@ -13,12 +13,12 @@ const RadioBehaviors = function(SuperClass) {
       return {
         ...super.properties,
         itemData: {
-          type: Array
+          type: Array,
         },
         selection: {
           type: String,
-          attribute: "selection"
-        }
+          attribute: "selection",
+        },
       };
     }
 
@@ -32,7 +32,7 @@ const RadioBehaviors = function(SuperClass) {
       this.__observer.observe(this, {
         attributes: true,
         childList: true,
-        subtree: true
+        subtree: true,
       });
     }
 
@@ -69,7 +69,7 @@ const RadioBehaviors = function(SuperClass) {
      * @readonly
      */
     get selectedIndex() {
-      let item = this.itemData.filter(i => i.id === this.selection);
+      let item = this.itemData.filter((i) => i.id === this.selection);
       return item && item[0] ? item[0].index : 0;
     }
 
@@ -154,7 +154,7 @@ const RadioBehaviors = function(SuperClass) {
      */
     _getDataFromItems() {
       let slotted = this.querySelectorAll(`${this.__query}`);
-      return Object.keys(slotted || {}).map(key =>
+      return Object.keys(slotted || {}).map((key) =>
         this._getDataFromItem(slotted[key], key, this.__selected)
       );
     }
@@ -169,7 +169,7 @@ const RadioBehaviors = function(SuperClass) {
         index: parseInt(index),
         node: item,
         innerHTML: item.innerHTML,
-        selected: item.getAttribute(selected)
+        selected: item.getAttribute(selected),
       };
       return data;
     }
@@ -227,19 +227,19 @@ const RadioBehaviors = function(SuperClass) {
     _handleItemChange(mutationsList, observer) {
       let changed = false;
       //see if any mutations are relevant enough
-      mutationsList.forEach(m => {
+      mutationsList.forEach((m) => {
         let added = m.type === "childList" ? m.addedNodes.length > 0 : false,
           removed =
             m.type === "childList" && m.removedNodes.length > 0
               ? Object.keys(m.removedNodes || {}).filter(
-                  n => m.removedNodes[n].id === this.selection
+                  (n) => m.removedNodes[n].id === this.selection
                 ).length > 0
               : false,
           id = m.type === "attributes" && m.attributeName === "id";
         changed = changed || added || removed || id;
       });
       if (changed) {
-        this.querySelectorAll(`${this.__query}`).forEach(i => {
+        this.querySelectorAll(`${this.__query}`).forEach((i) => {
           if (!i.id) i.id = this._generateUUID();
         });
         this.selectItem(this.selection);
@@ -258,7 +258,7 @@ const RadioBehaviors = function(SuperClass) {
      * shows or hides items based on selection
      */
     _handleSelectionChange() {
-      this.querySelectorAll(`${this.__query}`).forEach(i =>
+      this.querySelectorAll(`${this.__query}`).forEach((i) =>
         this._setItemSelected(i)
       );
       /**
@@ -270,7 +270,7 @@ const RadioBehaviors = function(SuperClass) {
           bubbles: false,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

@@ -46,29 +46,29 @@ class EcoJsonSchemaInput extends mixinBehaviors(
   static get properties() {
     return {
       language: {
-        value: "en"
+        value: "en",
       },
       resources: {
         value() {
           return {};
-        }
+        },
       },
       schema: {
         type: Object,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       value: {
         type: String,
         notify: true,
         value() {
           return "";
-        }
+        },
       },
       error: {
         type: String,
         observer: "_errorChanged",
-        value: null
-      }
+        value: null,
+      },
     };
   }
   _schemaChanged() {
@@ -141,7 +141,7 @@ class EcoJsonSchemaInput extends mixinBehaviors(
     }
 
     if (schema.component && schema.component.properties) {
-      Object.keys(schema.component.properties).forEach(function(prop) {
+      Object.keys(schema.component.properties).forEach(function (prop) {
         inputEl[prop] = schema.component.properties[prop];
       });
     }

@@ -14,7 +14,7 @@ class LrnsysDialogToolbarButton extends LitElement {
           height: 16px;
           width: 16px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -57,20 +57,20 @@ class LrnsysDialogToolbarButton extends LitElement {
        * The title of the button.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * The button icon.
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * The button ID.
        */
       id: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -80,7 +80,7 @@ class LrnsysDialogToolbarButton extends LitElement {
   firstUpdated(changedProperties) {
     this.dispatchEvent(
       new CustomEvent("button-initialized", {
-        detail: { id: this.id }
+        detail: { id: this.id },
       })
     );
   }
@@ -91,7 +91,7 @@ class LrnsysDialogToolbarButton extends LitElement {
   _onTap(e) {
     this.dispatchEvent(
       new CustomEvent("dialog-toolbar-button-tapped", {
-        detail: { id: e.target.getAttribute("id") }
+        detail: { id: e.target.getAttribute("id") },
       })
     );
   }

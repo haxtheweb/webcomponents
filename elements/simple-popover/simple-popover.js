@@ -104,7 +104,7 @@ class SimplePopover extends AbsolutePositionBehavior {
           top: 5px;
           left: -5px;
         }
-      `
+      `,
     ];
   }
 
@@ -137,13 +137,13 @@ class SimplePopover extends AbsolutePositionBehavior {
         groups: ["Popover"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -153,11 +153,11 @@ class SimplePopover extends AbsolutePositionBehavior {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding

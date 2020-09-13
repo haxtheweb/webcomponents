@@ -47,7 +47,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
       separator: this.separator,
       decimal: this.decimal,
       prefix: this.prefixtext,
-      suffix: this.suffixtext
+      suffix: this.suffixtext,
     };
     this._countUp = new CountUp(
       this.shadowRoot.querySelector("#counter"),

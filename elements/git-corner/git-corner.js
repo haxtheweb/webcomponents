@@ -88,7 +88,7 @@ class GitCorner extends LitElement {
             animation: octocat-wave 560ms ease-in-out;
           }
         }
-      `
+      `,
     ];
   }
 
@@ -129,28 +129,28 @@ class GitCorner extends LitElement {
        * source to point to
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * alt text
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * Whether or not to be rendered in the top corner, common on tech sites
        */
       corner: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * basic size adjustment
        */
       size: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

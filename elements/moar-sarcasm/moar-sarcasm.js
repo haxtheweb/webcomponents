@@ -27,8 +27,8 @@ class MoarSarcasm extends HTMLElement {
     // create a shadowRoot
     this.attachShadow({ mode: "open" });
     this.render();
-    this.observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
         this.say = this.innerText;
       });
     });
@@ -36,7 +36,7 @@ class MoarSarcasm extends HTMLElement {
       characterData: true,
       attributes: false,
       childList: false,
-      subtree: true
+      subtree: true,
     });
   }
   // render HTML

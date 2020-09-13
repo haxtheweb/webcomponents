@@ -47,7 +47,7 @@ class LrnsysCollapselistItem extends LitElement {
         .collapse-content {
           padding: 16px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -94,8 +94,8 @@ class LrnsysCollapselistItem extends LitElement {
        */
       opened: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   updated(changedProperties) {
@@ -105,8 +105,8 @@ class LrnsysCollapselistItem extends LitElement {
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

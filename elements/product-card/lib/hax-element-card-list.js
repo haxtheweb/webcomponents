@@ -77,39 +77,39 @@ class HAXElementCardList extends LitElement {
           height: 36px;
           width: 36px;
         }
-      `
+      `,
     ];
   }
   static get properties() {
     return {
       list: {
-        type: Array
+        type: Array,
       },
       enabled: {
-        type: Object
+        type: Object,
       },
       filteredTags: {
-        type: Object
+        type: Object,
       },
       cols: {
-        type: Number
+        type: Number,
       },
       value: {
-        type: Object
+        type: Object,
       },
       hidden: {
-        type: Boolean
+        type: Boolean,
       },
       loading: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       showCardList: {
-        type: Boolean
+        type: Boolean,
       },
       _layout: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   render() {
@@ -142,8 +142,8 @@ class HAXElementCardList extends LitElement {
                   icon="${el.schema.gizmo.icon}"
                   subheading="${el.schema.gizmo.description}"
                   accent-color="${el.schema.gizmo.color}"
-                  @product-card-demo-show="${e => this.toggleShowDemo(e, i)}"
-                  @product-card-demo-hide="${e => this.toggleShowDemo(e, i)}"
+                  @product-card-demo-show="${(e) => this.toggleShowDemo(e, i)}"
+                  @product-card-demo-hide="${(e) => this.toggleShowDemo(e, i)}"
                 >
                   <label slot="card-header">
                     <span class="sr-only"
@@ -153,7 +153,7 @@ class HAXElementCardList extends LitElement {
                       class="checkbox"
                       type="checkbox"
                       ?checked="${el.status}"
-                      @change="${e => this.elementStatusChange(el)}"
+                      @change="${(e) => this.elementStatusChange(el)}"
                     />
                   </label>
                   <div slot="details-collapse-header">Details</div>
@@ -161,10 +161,7 @@ class HAXElementCardList extends LitElement {
                     <ul>
                       <li>
                         <strong>Tags:</strong> ${el.schema.gizmo.groups.map(
-                          group =>
-                            html`
-                              ${group},
-                            `
+                          (group) => html` ${group}, `
                         )}
                       </li>
                       <li><strong>Tag name:</strong> <code>${el.tag}</code></li>
@@ -175,7 +172,7 @@ class HAXElementCardList extends LitElement {
                       ${el.schema.gizmo.meta
                         ? html`
                             ${Object.keys(el.schema.gizmo.meta).map(
-                              mel => html`
+                              (mel) => html`
                                 <li>
                                   <strong>${this.capFirst(mel)}:</strong>
                                   <span>${el.schema.gizmo.meta[mel]}</span>
@@ -191,7 +188,7 @@ class HAXElementCardList extends LitElement {
                     ${el.schema.demoSchema && el.showDemo
                       ? html`
                           ${el.schema.demoSchema.map(
-                            demoItem => html`
+                            (demoItem) => html`
                               <mwc-button
                                 data-tag="${demoItem.tag}"
                                 outlined
@@ -224,13 +221,13 @@ class HAXElementCardList extends LitElement {
    * @memberof HAXElementCardList
    */
   get productList() {
-    return this.list.map(item => {
+    return this.list.map((item) => {
       return {
         tag: item.tag,
         file: item.file,
         schema: item.schema,
         showDemo: item.showDemo,
-        status: this.value[item.tag] ? true : false
+        status: this.value[item.tag] ? true : false,
       };
     });
   }
@@ -245,15 +242,15 @@ class HAXElementCardList extends LitElement {
             title: "Demo of " + e.target.getAttribute("data-tag"),
             styles: {
               "--simple-modal-width": "75vw",
-              "--simple-modal-max-width": "75vw"
+              "--simple-modal-max-width": "75vw",
             },
             elements: {
-              content: e.target.nextElementSibling
+              content: e.target.nextElementSibling,
             },
             invokedBy: e.target,
             clone: true,
-            modal: true
-          }
+            modal: true,
+          },
         })
       );
     }
@@ -285,7 +282,7 @@ class HAXElementCardList extends LitElement {
     // send up so list can update
     this.dispatchEvent(
       new CustomEvent("value-changed", {
-        detail: this
+        detail: this,
       })
     );
     this.requestUpdate();
@@ -314,8 +311,8 @@ class HAXElementCardList extends LitElement {
           new CustomEvent("hax-element-card-list-changed", {
             detail: {
               bubbles: true,
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       if (propName == "cols") {

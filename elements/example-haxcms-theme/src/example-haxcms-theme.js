@@ -43,11 +43,21 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
     // at the top of the document have been resolved. Dynamic imports ike these
     // can be used to ensure that they still load but that the user starts to see
     // content prior to all assets loading.
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+    );
     // create a blank array to store mobx reactions
     // this allows us to nicely clean up state after the theme
     // has been disconnected from the DOM
@@ -64,12 +74,12 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
     // meaning the array position of the currently active page. This is
     // useful when creating in theme pagination or reacting to specific
     // indexes like 1st and last.
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
     // editMode is the global state of the HAXeditor as reflected in HAXcms
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });

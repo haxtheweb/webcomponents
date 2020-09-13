@@ -118,7 +118,7 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             width: 300px;
           }
         }
-      `
+      `,
     ];
   }
   render() {
@@ -157,41 +157,41 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
        * Title
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Image
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Details / teaser text
        */
       details: {
-        type: String
+        type: String,
       },
       /**
        * button label
        */
       buttonText: {
         type: String,
-        attribute: "button-text"
+        attribute: "button-text",
       },
       /**
        * url for the button
        */
       buttonLink: {
         type: String,
-        attribute: "button-link"
+        attribute: "button-link",
       },
       /*
        * accessible long description
        */
       ariaDescribedby: {
         attribute: "aria-decsribedby",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -213,12 +213,12 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             source: "image",
             title: "title",
             description: "details",
-            link: "buttonLink"
-          }
+            link: "buttonLink",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -227,42 +227,42 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "image",
             title: "Image",
             description: "URL of the image",
             inputMethod: "textfield",
-            icon: "image:panorama"
+            icon: "image:panorama",
           },
           {
             property: "details",
             title: "Details",
             description: "Additional text detail / teaser data",
             inputMethod: "textfield",
-            icon: "editor:text-fields"
+            icon: "editor:text-fields",
           },
           {
             property: "buttonText",
             title: "Button",
             description: "Label of the button",
             inputMethod: "textfield",
-            icon: "icons:radio-button-unchecked"
+            icon: "icons:radio-button-unchecked",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             property: "buttonLink",
@@ -270,8 +270,8 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             description: "Label of the button",
             inputMethod: "textfield",
             validationType: "url",
-            icon: "icons:link"
-          }
+            icon: "icons:link",
+          },
         ],
         configure: [
           {
@@ -279,42 +279,42 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "image",
             title: "Image",
             description: "URL of the image",
             inputMethod: "haxupload",
-            icon: "image:panorama"
+            icon: "image:panorama",
           },
           {
             property: "details",
             title: "Details",
             description: "Additional text detail / teaser data",
             inputMethod: "textfield",
-            icon: "editor:text-fields"
+            icon: "editor:text-fields",
           },
           {
             property: "buttonText",
             title: "Button",
             description: "Label of the button",
             inputMethod: "textfield",
-            icon: "icons:radio-button-unchecked"
+            icon: "icons:radio-button-unchecked",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             property: "buttonLink",
@@ -322,8 +322,8 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             description: "Label of the button",
             inputMethod: "haxupload",
             validationType: "url",
-            icon: "icons:link"
-          }
+            icon: "icons:link",
+          },
         ],
         advanced: [
           {
@@ -331,10 +331,10 @@ class HeroBanner extends SimpleColorsSuper(LitElement) {
             title: "aria-decsribedby",
             description:
               "Space-separated id list for long descriptions that appear elsewhere",
-            inputMethod: "textfield"
-          }
-        ]
-      }
+            inputMethod: "textfield",
+          },
+        ],
+      },
     };
   }
 }

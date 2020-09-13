@@ -5,20 +5,18 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/fullscreen-behaviors-manager.js";
 
-const FullscreenBehaviors = function(SuperClass) {
+const FullscreenBehaviors = function (SuperClass) {
   return class extends SuperClass {
     // properties available to the custom element for data binding
     static get properties() {
       return {
         __fullscreen: { type: Boolean, attribute: "fullscreen" },
-        __fullscreenEnabled: { type: Boolean, attribute: "fullscreen-enabled" }
+        __fullscreenEnabled: { type: Boolean, attribute: "fullscreen-enabled" },
       };
     }
 
     render() {
-      return html`
-        <slot></slot>
-      `;
+      return html` <slot></slot> `;
     }
 
     constructor() {

@@ -31,33 +31,33 @@ class LrnappStudioSubmissionObject extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       submission: {
         type: Object,
         value: null,
-        notify: true
+        notify: true,
       },
       edit: {
         type: Boolean,
-        value: false
+        value: false,
       },
       selectedPage: {
         type: Number,
-        value: 0
-      }
+        value: 0,
+      },
     };
   }
 

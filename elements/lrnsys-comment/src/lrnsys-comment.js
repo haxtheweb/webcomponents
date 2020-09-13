@@ -189,10 +189,10 @@ class LrnsysComment extends PolymerElement {
           overflow: hidden;
         }
       </style>
-      <div class\$="comment-outer [[commentNew]]">
+      <div class$="comment-outer [[commentNew]]">
         <div class="comment-inner">
           <div
-            class\$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"
+            class$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"
           ></div>
           <div class="comment-avatar">
             <lrndesign-avatar
@@ -225,7 +225,7 @@ class LrnsysComment extends PolymerElement {
                 <h4 class="ferpa-protect comment-heading">
                   <span class="element-invisible">At </span
                   ><moment-element
-                    datetime\$="[[comment.attributes.created]]"
+                    datetime$="[[comment.attributes.created]]"
                     output-format="MMM DD[,] YYYY"
                   ></moment-element>
                   [[comment.relationships.author.data.display_name]]
@@ -301,7 +301,7 @@ class LrnsysComment extends PolymerElement {
                   icon="reply"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
-                  hidden\$="[[!comment.actions.reply]]"
+                  hidden$="[[!comment.actions.reply]]"
                 ></lrnsys-button>
                 <lrnsys-button
                   on-click="actionHandler"
@@ -311,7 +311,7 @@ class LrnsysComment extends PolymerElement {
                   icon="thumb-up"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
-                  hidden\$="[[!comment.actions.like]]"
+                  hidden$="[[!comment.actions.like]]"
                 ></lrnsys-button>
               </div>
               <div class="comment-actions-group right-actions">
@@ -323,7 +323,7 @@ class LrnsysComment extends PolymerElement {
                   alt="Edit"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
-                  hidden\$="[[!comment.actions.edit]]"
+                  hidden$="[[!comment.actions.edit]]"
                 ></lrnsys-button>
                 <lrnsys-button
                   on-click="actionHandler"
@@ -333,7 +333,7 @@ class LrnsysComment extends PolymerElement {
                   alt="Delete"
                   hover-class="[[hoverClass]]"
                   icon-class="grey-text no-margin"
-                  hidden\$="[[!comment.actions.delete]]"
+                  hidden$="[[!comment.actions.delete]]"
                 ></lrnsys-button>
               </div>
             </div>
@@ -352,34 +352,34 @@ class LrnsysComment extends PolymerElement {
       comment: {
         type: Object,
         notify: true,
-        observer: "_commentLoaded"
+        observer: "_commentLoaded",
       },
       displayName: {
         type: String,
         notify: true,
         computed:
-          "_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"
+          "_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)",
       },
       commentNew: {
         type: String,
         notify: true,
-        computed: "_isCommentNew(comment.relationships.author.data.visual)"
+        computed: "_isCommentNew(comment.relationships.author.data.visual)",
       },
       hoverClass: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       editform: {
         type: Boolean,
         notify: true,
         observer: "_editTrigger",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       disabled: {
         type: Boolean,
         notify: true,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 
@@ -445,7 +445,7 @@ class LrnsysComment extends PolymerElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: { comment: this.comment, target: target }
+            detail: { comment: this.comment, target: target },
           })
         );
       } else if (target.id == "like") {
@@ -457,7 +457,7 @@ class LrnsysComment extends PolymerElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: { comment: this.comment, target: target }
+            detail: { comment: this.comment, target: target },
           })
         );
       } else if (target.id == "edit") {
@@ -471,8 +471,8 @@ class LrnsysComment extends PolymerElement {
             composed: true,
             detail: {
               comment: this.comment,
-              target: target
-            }
+              target: target,
+            },
           })
         );
       }
@@ -502,7 +502,7 @@ class LrnsysComment extends PolymerElement {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: { comment: this.comment }
+              detail: { comment: this.comment },
             })
           );
           this.blockFirstState = false;
@@ -513,7 +513,7 @@ class LrnsysComment extends PolymerElement {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: { comment: this.comment }
+                detail: { comment: this.comment },
               })
             );
           } else {

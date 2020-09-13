@@ -16,7 +16,7 @@ class LrnPage extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -24,9 +24,7 @@ class LrnPage extends LitElement {
     import("@lrnwebcomponents/oer-schema/oer-schema.js");
   }
   render() {
-    return html`
-      <oer-schema><slot></slot></oer-schema>
-    `;
+    return html` <oer-schema><slot></slot></oer-schema> `;
   }
 
   static get tag() {

@@ -76,12 +76,12 @@ class OutlineDesigner extends PolymerElement {
         "ul,ol,li": "rgba(0, 0, 0, 0.08)",
         "h1,h2,h3,h4,h5,h6,a": "rgba(0, 0, 0, 0.10)",
         "lrnsys-outline-item": "rgba(0, 0, 0, 0.08)",
-        "p,section": "rgba(0, 0, 0, 0.02)"
+        "p,section": "rgba(0, 0, 0, 0.02)",
       },
       back: "rgba(0, 0, 0, 0.02)",
       view: "rgba(0, 0, 0, 0.05)",
       drag: "rgba(0, 0, 0, 0.10)",
-      interval: null
+      interval: null,
     });
   }
   /**
@@ -183,7 +183,7 @@ class OutlineDesigner extends PolymerElement {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: true
+                detail: true,
               })
             );
             window.dispatchEvent(new Event("resize"));
@@ -265,7 +265,7 @@ class OutlineDesigner extends PolymerElement {
                   bubbles: true,
                   cancelable: true,
                   composed: true,
-                  detail: true
+                  detail: true,
                 })
               );
               window.dispatchEvent(new Event("resize"));

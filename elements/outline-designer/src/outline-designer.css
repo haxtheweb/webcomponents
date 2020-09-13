@@ -19,6 +19,7 @@ app-toolbar {
   -ms-transition: .3s all ease;
   -o-transition: .3s all ease;
 }
+
 .rotate-90 {
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
@@ -28,12 +29,14 @@ app-toolbar {
 }
 
 .breadcrumb-arrow:first-child {
-    display: none;
+  display: none;
 }
+
 .breadcrumb-arrow {
   color: var(--breadcrumb-color1, var(--simple-colors-default-theme-light-blue-9, rgb(67, 110, 144)));
   margin: -2px 6px 0 6px;
 }
+
 .breadcrumb {
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -50,6 +53,7 @@ paper-progress {
   --paper-progress-active-color: rgba(255, 255, 255, 0.5);
   --paper-progress-container-color: transparent;
 }
+
 .card-wrapper {
   padding: 16px;
 }
@@ -74,6 +78,7 @@ paper-card {
   opacity: .6;
   background-color: var(--simple-colors-default-theme-grey-3, #ddd);
 }
+
 .add-button {
   width: 200px;
   height: 200px;
@@ -111,6 +116,7 @@ iron-list {
   visibility: hidden;
   opacity: 0;
 }
+
 :host([details-mode="mid"]) .mid-detail {
   visibility: visible;
   opacity: 1;
@@ -120,10 +126,12 @@ paper-card.card-low-detail {
   width: 150px;
   height: 150px;
 }
+
 paper-card.card-mid-detail {
   width: 250px;
   height: 250px;
 }
+
 paper-card.card-high-detail {
   width: 250px;
   height: 300px;
@@ -145,25 +153,94 @@ paper-card.card-high-detail {
   -ms-transition: .3s all linear;
   -o-transition: .3s all linear;
 }
+
 #minimaparea.show-minimap {
   background-color: white;
   opacity: .5;
   visibility: visible;
 }
+
 #minimaparea.show-minimap:hover {
   opacity: .9;
 }
 
-.tf-tree{transition: .3s all ease;font-size:16px;overflow:auto}.tf-tree *{transition: .3s all ease;box-sizing:border-box;margin:0;padding:0}.tf-tree ul{display:inline-flex}.tf-tree li{align-items:center;display:flex;flex-direction:column;flex-wrap:wrap;padding:0 1em;position:relative}.tf-tree li ul{margin:2em 0}.tf-tree li li:before{border-top:.0625em solid #000;content:"";display:block;height:.0625em;left:-.03125em;position:absolute;top:-1.03125em;width:100%}.tf-tree li li:first-child:before{left:calc(50% - .03125em);max-width:calc(50% + .0625em)}.tf-tree li li:last-child:before{left:auto;max-width:calc(50% + .0625em);right:calc(50% - .03125em)}.tf-tree li li:only-child:before{display:none}.tf-tree li li:only-child>.tf-nc:before,.tf-tree li li:only-child>.tf-node-content:before{height:1.0625em;top:-1.0625em}.tf-tree .tf-nc,.tf-tree .tf-node-content{border:.0625em solid #000;display:inline-block;padding:.5em 1em;position:relative}.tf-tree .tf-nc:before,.tf-tree .tf-node-content:before{top:-1.03125em}.tf-tree .tf-nc:after,.tf-tree .tf-nc:before,.tf-tree .tf-node-content:after,.tf-tree .tf-node-content:before{border-left:.0625em solid #000;content:"";display:block;height:1em;left:calc(50% - .03125em);position:absolute;width:.0625em}.tf-tree .tf-nc:after,.tf-tree .tf-node-content:after{top:calc(100% + .03125em)}.tf-tree .tf-nc:only-child:after,.tf-tree .tf-node-content:only-child:after,.tf-tree>ul>li>.tf-nc:before,.tf-tree>ul>li>.tf-node-content:before{display:none}.tf-tree.tf-gap-sm li{padding:0 .6em}.tf-tree.tf-gap-sm li>.tf-nc:before,.tf-tree.tf-gap-sm li>.tf-node-content:before{height:.6em;top:-.6em}.tf-tree.tf-gap-sm li>.tf-nc:after,.tf-tree.tf-gap-sm li>.tf-node-content:after{height:.6em}.tf-tree.tf-gap-sm li ul{margin:1.2em 0}.tf-tree.tf-gap-sm li li:before{top:-.63125em}.tf-tree.tf-gap-sm li li:only-child>.tf-nc:before,.tf-tree.tf-gap-sm li li:only-child>.tf-node-content:before{height:.6625em;top:-.6625em}.tf-tree.tf-gap-lg li{padding:0 1.5em}.tf-tree.tf-gap-lg li>.tf-nc:before,.tf-tree.tf-gap-lg li>.tf-node-content:before{height:1.5em;top:-1.5em}.tf-tree.tf-gap-lg li>.tf-nc:after,.tf-tree.tf-gap-lg li>.tf-node-content:after{height:1.5em}.tf-tree.tf-gap-lg li ul{margin:3em 0}.tf-tree.tf-gap-lg li li:before{top:-1.53125em}.tf-tree.tf-gap-lg li li:only-child>.tf-nc:before,.tf-tree.tf-gap-lg li li:only-child>.tf-node-content:before{height:1.5625em;top:-1.5625em}.tf-tree li.tf-dotted-children .tf-nc:after,.tf-tree li.tf-dotted-children .tf-nc:before,.tf-tree li.tf-dotted-children .tf-node-content:after,.tf-tree li.tf-dotted-children .tf-node-content:before{border-left-style:dotted}.tf-tree li.tf-dotted-children li:before{border-top-style:dotted}.tf-tree li.tf-dotted-children>.tf-nc:before,.tf-tree li.tf-dotted-children>.tf-node-content:before{border-left-style:solid}.tf-tree li.tf-dashed-children .tf-nc:after,.tf-tree li.tf-dashed-children .tf-nc:before,.tf-tree li.tf-dashed-children .tf-node-content:after,.tf-tree li.tf-dashed-children .tf-node-content:before{border-left-style:dashed}.tf-tree li.tf-dashed-children li:before{border-top-style:dashed}.tf-tree li.tf-dashed-children>.tf-nc:before,.tf-tree li.tf-dashed-children>.tf-node-content:before{border-left-style:solid}
+.tf-tree{transition: .3s all ease;font-size: 16px;overflow: auto}
+
+.tf-tree *{transition: .3s all ease;box-sizing: border-box;margin: 0;padding: 0}
+
+.tf-tree ul{display: inline-flex}
+
+.tf-tree li{align-items: center;display: flex;flex-direction: column;flex-wrap: wrap;padding: 0 1em;position: relative}
+
+.tf-tree li ul{margin: 2em 0}
+
+.tf-tree li li:before{border-top: .0625em solid #000;content: "";display: block;height: .0625em;left: -.03125em;position: absolute;top: -1.03125em;width: 100%}
+
+.tf-tree li li:first-child:before{left: calc(50% - .03125em);max-width: calc(50% + .0625em)}
+
+.tf-tree li li:last-child:before{left: auto;max-width: calc(50% + .0625em);right: calc(50% - .03125em)}
+
+.tf-tree li li:only-child:before{display: none}
+
+.tf-tree li li:only-child>.tf-nc:before,.tf-tree li li:only-child>.tf-node-content:before{height: 1.0625em;top: -1.0625em}
+
+.tf-tree .tf-nc,.tf-tree .tf-node-content{border: .0625em solid #000;display: inline-block;padding: .5em 1em;position: relative}
+
+.tf-tree .tf-nc:before,.tf-tree .tf-node-content:before{top: -1.03125em}
+
+.tf-tree .tf-nc:after,.tf-tree .tf-nc:before,.tf-tree .tf-node-content:after,.tf-tree .tf-node-content:before{border-left: .0625em solid #000;content: "";display: block;height: 1em;left: calc(50% - .03125em);position: absolute;width: .0625em}
+
+.tf-tree .tf-nc:after,.tf-tree .tf-node-content:after{top: calc(100% + .03125em)}
+
+.tf-tree .tf-nc:only-child:after,.tf-tree .tf-node-content:only-child:after,.tf-tree>ul>li>.tf-nc:before,.tf-tree>ul>li>.tf-node-content:before{display: none}
+
+.tf-tree.tf-gap-sm li{padding: 0 .6em}
+
+.tf-tree.tf-gap-sm li>.tf-nc:before,.tf-tree.tf-gap-sm li>.tf-node-content:before{height: .6em;top: -.6em}
+
+.tf-tree.tf-gap-sm li>.tf-nc:after,.tf-tree.tf-gap-sm li>.tf-node-content:after{height: .6em}
+
+.tf-tree.tf-gap-sm li ul{margin: 1.2em 0}
+
+.tf-tree.tf-gap-sm li li:before{top: -.63125em}
+
+.tf-tree.tf-gap-sm li li:only-child>.tf-nc:before,.tf-tree.tf-gap-sm li li:only-child>.tf-node-content:before{height: .6625em;top: -.6625em}
+
+.tf-tree.tf-gap-lg li{padding: 0 1.5em}
+
+.tf-tree.tf-gap-lg li>.tf-nc:before,.tf-tree.tf-gap-lg li>.tf-node-content:before{height: 1.5em;top: -1.5em}
+
+.tf-tree.tf-gap-lg li>.tf-nc:after,.tf-tree.tf-gap-lg li>.tf-node-content:after{height: 1.5em}
+
+.tf-tree.tf-gap-lg li ul{margin: 3em 0}
+
+.tf-tree.tf-gap-lg li li:before{top: -1.53125em}
+
+.tf-tree.tf-gap-lg li li:only-child>.tf-nc:before,.tf-tree.tf-gap-lg li li:only-child>.tf-node-content:before{height: 1.5625em;top: -1.5625em}
+
+.tf-tree li.tf-dotted-children .tf-nc:after,.tf-tree li.tf-dotted-children .tf-nc:before,.tf-tree li.tf-dotted-children .tf-node-content:after,.tf-tree li.tf-dotted-children .tf-node-content:before{border-left-style: dotted}
+
+.tf-tree li.tf-dotted-children li:before{border-top-style: dotted}
+
+.tf-tree li.tf-dotted-children>.tf-nc:before,.tf-tree li.tf-dotted-children>.tf-node-content:before{border-left-style: solid}
+
+.tf-tree li.tf-dashed-children .tf-nc:after,.tf-tree li.tf-dashed-children .tf-nc:before,.tf-tree li.tf-dashed-children .tf-node-content:after,.tf-tree li.tf-dashed-children .tf-node-content:before{border-left-style: dashed}
+
+.tf-tree li.tf-dashed-children li:before{border-top-style: dashed}
+
+.tf-tree li.tf-dashed-children>.tf-nc:before,.tf-tree li.tf-dashed-children>.tf-node-content:before{border-left-style: solid}
+
 .tf-label {
   transition: .3s all ease;
   cursor: pointer;
 }
+
 /* High detail */
 .node-high-detail li iron-image {
   height: 50px;
   position: static;
 }
+
 .node-high-detail li .tf-label {
   z-index: 1;
   position: relative;
@@ -171,28 +248,30 @@ paper-card.card-high-detail {
   padding: 8px;
   background-color: rgba(250,250,250,.8);
 }
-/* make the nodes round and change their background-color */
-  .node-low-detail .tf-nc {
-    height: 32px;
-    width: 32px;
-    background-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);
-    border-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);
-    padding: 0;
-    border-radius: 50%;
-    overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
 
-  /* make the horizontal and vertical connectors thick and change their color */
-  .node-low-detail .tf-nc:before,
-  .node-low-detail .tf-nc:after {
-    border-left-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);;
-    border-left-width: 2px;
-  }
-  .node-low-detail li li:before {
-    border-top-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);;
-    border-top-width: 2px;
-  }
+/* make the nodes round and change their background-color */
+.node-low-detail .tf-nc {
+  height: 32px;
+  width: 32px;
+  background-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);
+  border-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+/* make the horizontal and vertical connectors thick and change their color */
+.node-low-detail .tf-nc:before,
+.node-low-detail .tf-nc:after {
+  border-left-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);;
+  border-left-width: 2px;
+}
+
+.node-low-detail li li:before {
+  border-top-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);;
+  border-top-width: 2px;
+}

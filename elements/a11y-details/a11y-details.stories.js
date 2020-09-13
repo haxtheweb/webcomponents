@@ -8,8 +8,8 @@ export default {
   component: "a11y-details",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 
@@ -28,14 +28,14 @@ export const A11yDetailsStory = () =>
         Praesent non congue tellus. Suspendisse ac tincidunt purus. 
         Donec eu dui a metus vehicula bibendum sed nec tortor. 
         Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.
-      </details>`
+      </details>`,
     },
     [
       {
         slot: "",
         title: "Unnamed Slot",
         description: "<details> element",
-        inputMethod: "code-editor"
+        inputMethod: "code-editor",
       },
       { css: "--a11y-details-summary-fontSize" },
       { css: "--a11y-details-summary-color" },
@@ -59,7 +59,7 @@ export const A11yDetailsStory = () =>
       { css: "--a11y-details-borderStyle" },
       { css: "--a11y-details-borderRadius" },
       { css: "--a11y-details-padding" },
-      { css: "--a11y-details-maxHeight" }
+      { css: "--a11y-details-maxHeight" },
     ],
     ["summary", "details"]
   );

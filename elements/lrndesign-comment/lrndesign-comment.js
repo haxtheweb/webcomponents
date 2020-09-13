@@ -28,7 +28,7 @@ class LrndesignComment extends PolymerElement {
         <div class="comment-right">
           <div class="row-1">
             <span>{{name}}</span>
-            <relative-time datetime\$="{{date}}"> </relative-time>
+            <relative-time datetime$="{{date}}"> </relative-time>
           </div>
           <div class="row-2"><slot></slot></div>
           <div class="row-3">{{links}}</div>
@@ -44,23 +44,23 @@ class LrndesignComment extends PolymerElement {
       avatar: {
         type: Object,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       name: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       date: {
         type: String,
         value: "2014-04-01T00:00:00.000Z",
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       links: {
         type: Object,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 }

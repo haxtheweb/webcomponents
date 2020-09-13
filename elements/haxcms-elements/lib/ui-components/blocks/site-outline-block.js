@@ -145,14 +145,14 @@ class SiteOutlineBlock extends PolymerElement {
        * manifest of everything, in case we need to check on children of parents
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged"
+        observer: "_activeIdChanged",
       },
       /**
        * visually stick to top of interface at all times
@@ -160,7 +160,7 @@ class SiteOutlineBlock extends PolymerElement {
       sticky: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * visualize the indicator as a a line, arrow, or not at all
@@ -168,7 +168,7 @@ class SiteOutlineBlock extends PolymerElement {
       indicator: {
         type: String,
         reflectToAttribute: true,
-        value: "line"
+        value: "line",
       },
       /**
        * ink on the buttons
@@ -176,7 +176,7 @@ class SiteOutlineBlock extends PolymerElement {
       noink: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * hide title on the buttons
@@ -184,7 +184,7 @@ class SiteOutlineBlock extends PolymerElement {
       notitle: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * ink on the buttons
@@ -192,15 +192,15 @@ class SiteOutlineBlock extends PolymerElement {
       showindex: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Stupid but faster then calculating on the fly for sure
        */
       arrowSize: {
         type: Number,
-        value: 6
-      }
+        value: 6,
+      },
     };
   }
   humanIndex(index) {
@@ -219,11 +219,11 @@ class SiteOutlineBlock extends PolymerElement {
         if (this.shadowRoot.querySelector('[data-id="' + newValue + '"]')) {
           el = this.shadowRoot.querySelector('[data-id="' + newValue + '"]');
         } else {
-          let tmpItem = this.manifest.items.find(i => i.id == newValue);
+          let tmpItem = this.manifest.items.find((i) => i.id == newValue);
           // fallback, maybe there's a child of this currently active
           while (el === null && tmpItem && tmpItem.parent != null) {
             // take the parent object of this current item
-            tmpItem = this.manifest.items.find(i => i.id == tmpItem.parent);
+            tmpItem = this.manifest.items.find((i) => i.id == tmpItem.parent);
             // see if IT lives in the dom, if not, keep going until we run out
             if (
               tmpItem &&

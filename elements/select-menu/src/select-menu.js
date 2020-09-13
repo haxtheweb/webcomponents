@@ -31,7 +31,7 @@ class SelectMenu extends PolymerElement {
       </style>
       <paper-dropdown-menu
         id="menu"
-        label\$="[[label]]"
+        label$="[[label]]"
         on-click="_menubuttonTap"
         on-selected-item-changed="_setSelectedValue"
       >
@@ -56,14 +56,14 @@ class SelectMenu extends PolymerElement {
        */
       label: {
         type: String,
-        value: "Select an option."
+        value: "Select an option.",
       },
       /**
        * The default value
        */
       value: {
         type: String,
-        value: null
+        value: null,
       },
       /**
        * The index of the selected item
@@ -72,8 +72,8 @@ class SelectMenu extends PolymerElement {
         type: Number,
         reflectToAttribute: true,
         notify: true,
-        computed: "_getSelectedIndex()"
-      }
+        computed: "_getSelectedIndex()",
+      },
     };
   }
   /**
@@ -88,7 +88,7 @@ class SelectMenu extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { value: val }
+          detail: { value: val },
         })
       );
     }

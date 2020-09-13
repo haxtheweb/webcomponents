@@ -50,7 +50,7 @@ class LrnsysDialogToolbar extends LitElement {
         .secondary-buttons ::slotted(*) {
           display: inline-flex;
         }
-      `
+      `,
     ];
   }
   /**
@@ -87,8 +87,8 @@ class LrnsysDialogToolbar extends LitElement {
        * Internal state of secondary toolbar
        */
       _secondaryHasChildren: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -113,7 +113,7 @@ class LrnsysDialogToolbar extends LitElement {
     // listen to see if buttons have been initialized in the secondary toolbar
     this.shadowRoot
       .querySelector("#secondary")
-      .addEventListener("button-initialized", e => {
+      .addEventListener("button-initialized", (e) => {
         this._secondaryHasChildren = true;
       });
   }

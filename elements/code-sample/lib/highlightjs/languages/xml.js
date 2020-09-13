@@ -3,7 +3,7 @@ Language: HTML, XML
 Category: common
 */
 
-const xml = function(hljs) {
+const xml = function (hljs) {
   var XML_IDENT_RE = "[A-Za-z0-9\\._:-]+";
   var TAG_INTERNALS = {
     endsWithParent: true,
@@ -13,7 +13,7 @@ const xml = function(hljs) {
       {
         className: "attr",
         begin: XML_IDENT_RE,
-        relevance: 0
+        relevance: 0,
       },
       {
         begin: /=\s*/,
@@ -25,12 +25,12 @@ const xml = function(hljs) {
             variants: [
               { begin: /"/, end: /"/ },
               { begin: /'/, end: /'/ },
-              { begin: /[^\s"'=<>`]+/ }
-            ]
-          }
-        ]
-      }
-    ]
+              { begin: /[^\s"'=<>`]+/ },
+            ],
+          },
+        ],
+      },
+    ],
   };
   return {
     aliases: ["html", "xhtml", "rss", "atom", "xjb", "xsd", "xsl", "plist"],
@@ -41,21 +41,21 @@ const xml = function(hljs) {
         begin: "<!DOCTYPE",
         end: ">",
         relevance: 10,
-        contains: [{ begin: "\\[", end: "\\]" }]
+        contains: [{ begin: "\\[", end: "\\]" }],
       },
       hljs.COMMENT("<!--", "-->", {
-        relevance: 10
+        relevance: 10,
       }),
       {
         begin: "<\\!\\[CDATA\\[",
         end: "\\]\\]>",
-        relevance: 10
+        relevance: 10,
       },
       {
         className: "meta",
         begin: /<\?xml/,
         end: /\?>/,
-        relevance: 10
+        relevance: 10,
       },
       {
         begin: /<\?(php)?/,
@@ -71,15 +71,15 @@ const xml = function(hljs) {
             illegal: null,
             className: null,
             contains: null,
-            skip: true
+            skip: true,
           }),
           hljs.inherit(hljs.QUOTE_STRING_MODE, {
             illegal: null,
             className: null,
             contains: null,
-            skip: true
-          })
-        ]
+            skip: true,
+          }),
+        ],
       },
       {
         className: "tag",
@@ -96,8 +96,8 @@ const xml = function(hljs) {
         starts: {
           end: "</style>",
           returnEnd: true,
-          subLanguage: ["css", "xml"]
-        }
+          subLanguage: ["css", "xml"],
+        },
       },
       {
         className: "tag",
@@ -109,8 +109,8 @@ const xml = function(hljs) {
         starts: {
           end: "</script>",
           returnEnd: true,
-          subLanguage: ["actionscript", "javascript", "handlebars", "xml"]
-        }
+          subLanguage: ["actionscript", "javascript", "handlebars", "xml"],
+        },
       },
       {
         className: "tag",
@@ -120,12 +120,12 @@ const xml = function(hljs) {
           {
             className: "name",
             begin: /[^\/><\s]+/,
-            relevance: 0
+            relevance: 0,
           },
-          TAG_INTERNALS
-        ]
-      }
-    ]
+          TAG_INTERNALS,
+        ],
+      },
+    ],
   };
 };
 export { xml };

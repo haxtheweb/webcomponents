@@ -5,7 +5,7 @@
  * recognize the public domain the terms of Creative Commons CC0 license
  * apply. In the other words, you can always do what you want.
  */
-(function(root, name, definition) {
+(function (root, name, definition) {
   if (typeof define === "function" && define.amd) {
     define([], definition);
   } else if (typeof module === "object" && module.exports) {
@@ -13,7 +13,7 @@
   } else {
     root[name] = definition();
   }
-})(this, "QRCode", function() {
+})(this, "QRCode", function () {
   /* Quick overview: QR code composed of 2D array of modules (a rectangular
    * area that conveys one bit of information); some modules are fixed to help
    * the recognition of the code, and remaining data modules are further divided
@@ -38,45 +38,201 @@
   var VERSIONS = [
     null,
     [[10, 7, 17, 13], [1, 1, 1, 1], []],
-    [[16, 10, 28, 22], [1, 1, 1, 1], [4, 16]],
-    [[26, 15, 22, 18], [1, 1, 2, 2], [4, 20]],
-    [[18, 20, 16, 26], [2, 1, 4, 2], [4, 24]],
-    [[24, 26, 22, 18], [2, 1, 4, 4], [4, 28]],
-    [[16, 18, 28, 24], [4, 2, 4, 4], [4, 32]],
-    [[18, 20, 26, 18], [4, 2, 5, 6], [4, 20, 36]],
-    [[22, 24, 26, 22], [4, 2, 6, 6], [4, 22, 40]],
-    [[22, 30, 24, 20], [5, 2, 8, 8], [4, 24, 44]],
-    [[26, 18, 28, 24], [5, 4, 8, 8], [4, 26, 48]],
-    [[30, 20, 24, 28], [5, 4, 11, 8], [4, 28, 52]],
-    [[22, 24, 28, 26], [8, 4, 11, 10], [4, 30, 56]],
-    [[22, 26, 22, 24], [9, 4, 16, 12], [4, 32, 60]],
-    [[24, 30, 24, 20], [9, 4, 16, 16], [4, 24, 44, 64]],
-    [[24, 22, 24, 30], [10, 6, 18, 12], [4, 24, 46, 68]],
-    [[28, 24, 30, 24], [10, 6, 16, 17], [4, 24, 48, 72]],
-    [[28, 28, 28, 28], [11, 6, 19, 16], [4, 28, 52, 76]],
-    [[26, 30, 28, 28], [13, 6, 21, 18], [4, 28, 54, 80]],
-    [[26, 28, 26, 26], [14, 7, 25, 21], [4, 28, 56, 84]],
-    [[26, 28, 28, 30], [16, 8, 25, 20], [4, 32, 60, 88]],
-    [[26, 28, 30, 28], [17, 8, 25, 23], [4, 26, 48, 70, 92]],
-    [[28, 28, 24, 30], [17, 9, 34, 23], [4, 24, 48, 72, 96]],
-    [[28, 30, 30, 30], [18, 9, 30, 25], [4, 28, 52, 76, 100]],
-    [[28, 30, 30, 30], [20, 10, 32, 27], [4, 26, 52, 78, 104]],
-    [[28, 26, 30, 30], [21, 12, 35, 29], [4, 30, 56, 82, 108]],
-    [[28, 28, 30, 28], [23, 12, 37, 34], [4, 28, 56, 84, 112]],
-    [[28, 30, 30, 30], [25, 12, 40, 34], [4, 32, 60, 88, 116]],
-    [[28, 30, 30, 30], [26, 13, 42, 35], [4, 24, 48, 72, 96, 120]],
-    [[28, 30, 30, 30], [28, 14, 45, 38], [4, 28, 52, 76, 100, 124]],
-    [[28, 30, 30, 30], [29, 15, 48, 40], [4, 24, 50, 76, 102, 128]],
-    [[28, 30, 30, 30], [31, 16, 51, 43], [4, 28, 54, 80, 106, 132]],
-    [[28, 30, 30, 30], [33, 17, 54, 45], [4, 32, 58, 84, 110, 136]],
-    [[28, 30, 30, 30], [35, 18, 57, 48], [4, 28, 56, 84, 112, 140]],
-    [[28, 30, 30, 30], [37, 19, 60, 51], [4, 32, 60, 88, 116, 144]],
-    [[28, 30, 30, 30], [38, 19, 63, 53], [4, 28, 52, 76, 100, 124, 148]],
-    [[28, 30, 30, 30], [40, 20, 66, 56], [4, 22, 48, 74, 100, 126, 152]],
-    [[28, 30, 30, 30], [43, 21, 70, 59], [4, 26, 52, 78, 104, 130, 156]],
-    [[28, 30, 30, 30], [45, 22, 74, 62], [4, 30, 56, 82, 108, 134, 160]],
-    [[28, 30, 30, 30], [47, 24, 77, 65], [4, 24, 52, 80, 108, 136, 164]],
-    [[28, 30, 30, 30], [49, 25, 81, 68], [4, 28, 56, 84, 112, 140, 168]]
+    [
+      [16, 10, 28, 22],
+      [1, 1, 1, 1],
+      [4, 16],
+    ],
+    [
+      [26, 15, 22, 18],
+      [1, 1, 2, 2],
+      [4, 20],
+    ],
+    [
+      [18, 20, 16, 26],
+      [2, 1, 4, 2],
+      [4, 24],
+    ],
+    [
+      [24, 26, 22, 18],
+      [2, 1, 4, 4],
+      [4, 28],
+    ],
+    [
+      [16, 18, 28, 24],
+      [4, 2, 4, 4],
+      [4, 32],
+    ],
+    [
+      [18, 20, 26, 18],
+      [4, 2, 5, 6],
+      [4, 20, 36],
+    ],
+    [
+      [22, 24, 26, 22],
+      [4, 2, 6, 6],
+      [4, 22, 40],
+    ],
+    [
+      [22, 30, 24, 20],
+      [5, 2, 8, 8],
+      [4, 24, 44],
+    ],
+    [
+      [26, 18, 28, 24],
+      [5, 4, 8, 8],
+      [4, 26, 48],
+    ],
+    [
+      [30, 20, 24, 28],
+      [5, 4, 11, 8],
+      [4, 28, 52],
+    ],
+    [
+      [22, 24, 28, 26],
+      [8, 4, 11, 10],
+      [4, 30, 56],
+    ],
+    [
+      [22, 26, 22, 24],
+      [9, 4, 16, 12],
+      [4, 32, 60],
+    ],
+    [
+      [24, 30, 24, 20],
+      [9, 4, 16, 16],
+      [4, 24, 44, 64],
+    ],
+    [
+      [24, 22, 24, 30],
+      [10, 6, 18, 12],
+      [4, 24, 46, 68],
+    ],
+    [
+      [28, 24, 30, 24],
+      [10, 6, 16, 17],
+      [4, 24, 48, 72],
+    ],
+    [
+      [28, 28, 28, 28],
+      [11, 6, 19, 16],
+      [4, 28, 52, 76],
+    ],
+    [
+      [26, 30, 28, 28],
+      [13, 6, 21, 18],
+      [4, 28, 54, 80],
+    ],
+    [
+      [26, 28, 26, 26],
+      [14, 7, 25, 21],
+      [4, 28, 56, 84],
+    ],
+    [
+      [26, 28, 28, 30],
+      [16, 8, 25, 20],
+      [4, 32, 60, 88],
+    ],
+    [
+      [26, 28, 30, 28],
+      [17, 8, 25, 23],
+      [4, 26, 48, 70, 92],
+    ],
+    [
+      [28, 28, 24, 30],
+      [17, 9, 34, 23],
+      [4, 24, 48, 72, 96],
+    ],
+    [
+      [28, 30, 30, 30],
+      [18, 9, 30, 25],
+      [4, 28, 52, 76, 100],
+    ],
+    [
+      [28, 30, 30, 30],
+      [20, 10, 32, 27],
+      [4, 26, 52, 78, 104],
+    ],
+    [
+      [28, 26, 30, 30],
+      [21, 12, 35, 29],
+      [4, 30, 56, 82, 108],
+    ],
+    [
+      [28, 28, 30, 28],
+      [23, 12, 37, 34],
+      [4, 28, 56, 84, 112],
+    ],
+    [
+      [28, 30, 30, 30],
+      [25, 12, 40, 34],
+      [4, 32, 60, 88, 116],
+    ],
+    [
+      [28, 30, 30, 30],
+      [26, 13, 42, 35],
+      [4, 24, 48, 72, 96, 120],
+    ],
+    [
+      [28, 30, 30, 30],
+      [28, 14, 45, 38],
+      [4, 28, 52, 76, 100, 124],
+    ],
+    [
+      [28, 30, 30, 30],
+      [29, 15, 48, 40],
+      [4, 24, 50, 76, 102, 128],
+    ],
+    [
+      [28, 30, 30, 30],
+      [31, 16, 51, 43],
+      [4, 28, 54, 80, 106, 132],
+    ],
+    [
+      [28, 30, 30, 30],
+      [33, 17, 54, 45],
+      [4, 32, 58, 84, 110, 136],
+    ],
+    [
+      [28, 30, 30, 30],
+      [35, 18, 57, 48],
+      [4, 28, 56, 84, 112, 140],
+    ],
+    [
+      [28, 30, 30, 30],
+      [37, 19, 60, 51],
+      [4, 32, 60, 88, 116, 144],
+    ],
+    [
+      [28, 30, 30, 30],
+      [38, 19, 63, 53],
+      [4, 28, 52, 76, 100, 124, 148],
+    ],
+    [
+      [28, 30, 30, 30],
+      [40, 20, 66, 56],
+      [4, 22, 48, 74, 100, 126, 152],
+    ],
+    [
+      [28, 30, 30, 30],
+      [43, 21, 70, 59],
+      [4, 26, 52, 78, 104, 130, 156],
+    ],
+    [
+      [28, 30, 30, 30],
+      [45, 22, 74, 62],
+      [4, 30, 56, 82, 108, 134, 160],
+    ],
+    [
+      [28, 30, 30, 30],
+      [47, 24, 77, 65],
+      [4, 24, 52, 80, 108, 136, 164],
+    ],
+    [
+      [28, 30, 30, 30],
+      [49, 25, 81, 68],
+      [4, 28, 56, 84, 112, 140, 168],
+    ],
   ];
 
   // mode constants (cf. Table 2 in JIS X 0510:2004 p. 16)
@@ -137,44 +293,44 @@
   // mask functions in terms of row # and column #
   // (cf. Table 20 in JIS X 0510:2004 p. 42)
   var MASKFUNCS = [
-    function(i, j) {
+    function (i, j) {
       return (i + j) % 2 == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return i % 2 == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return j % 3 == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return (i + j) % 3 == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return (((i / 2) | 0) + ((j / 3) | 0)) % 2 == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return ((i * j) % 2) + ((i * j) % 3) == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return (((i * j) % 2) + ((i * j) % 3)) % 2 == 0;
     },
-    function(i, j) {
+    function (i, j) {
       return (((i + j) % 2) + ((i * j) % 3)) % 2 == 0;
-    }
+    },
   ];
 
   // returns true when the version information has to be embeded.
-  var needsverinfo = function(ver) {
+  var needsverinfo = function (ver) {
     return ver > 6;
   };
 
   // returns the size of entire QR code for given version.
-  var getsizebyver = function(ver) {
+  var getsizebyver = function (ver) {
     return 4 * ver + 17;
   };
 
   // returns the number of bits available for code words in this version.
-  var nfullbits = function(ver) {
+  var nfullbits = function (ver) {
     /*
      * |<--------------- n --------------->|
      * |        |<----- n-17 ---->|        |
@@ -220,7 +376,7 @@
 
   // returns the number of bits available for data portions (i.e. excludes ECC
   // bits but includes mode and length bits) in this version and ECC level.
-  var ndatabits = function(ver, ecclevel) {
+  var ndatabits = function (ver, ecclevel) {
     var nbits = nfullbits(ver) & ~7; // no sub-octet code words
     var v = VERSIONS[ver];
     nbits -= 8 * v[0][ecclevel] * v[1][ecclevel]; // ecc bits
@@ -229,7 +385,7 @@
 
   // returns the number of bits required for the length of data.
   // (cf. Table 3 in JIS X 0510:2004 p. 16)
-  var ndatalenbits = function(ver, mode) {
+  var ndatalenbits = function (ver, mode) {
     switch (mode) {
       case MODE_NUMERIC:
         return ver < 10 ? 10 : ver < 27 ? 12 : 14;
@@ -243,7 +399,7 @@
   };
 
   // returns the maximum length of data possible in given configuration.
-  var getmaxdatalen = function(ver, mode, ecclevel) {
+  var getmaxdatalen = function (ver, mode, ecclevel) {
     var nbits = ndatabits(ver, ecclevel) - 4 - ndatalenbits(ver, mode); // 4 for mode bits
     switch (mode) {
       case MODE_NUMERIC:
@@ -265,7 +421,7 @@
   //
   // this function does not check the length of data; it is a duty of
   // encode function below (as it depends on the version and ECC level too).
-  var validatedata = function(mode, data) {
+  var validatedata = function (mode, data) {
     switch (mode) {
       case MODE_NUMERIC:
         if (!data.match(NUMERIC_REGEXP)) return null;
@@ -310,14 +466,14 @@
   // returns the code words (sans ECC bits) for given data and configurations.
   // requires data to be preprocessed by validatedata. no length check is
   // performed, and everything has to be checked before calling this function.
-  var encode = function(ver, mode, data, maxbuflen) {
+  var encode = function (ver, mode, data, maxbuflen) {
     var buf = [];
     var bits = 0,
       remaining = 8;
     var datalen = data.length;
 
     // this function is intentionally no-op when n=0.
-    var pack = function(x, n) {
+    var pack = function (x, n) {
       if (n >= remaining) {
         buf.push(bits | (x >> (n -= remaining)));
         while (n >= 8) buf.push((x >> (n -= 8)) & 255);
@@ -380,7 +536,7 @@
   // zero-augumented polynomial by the generator polynomial. the only difference
   // is that Reed-Solomon uses GF(2^8), instead of CRC's GF(2), and Reed-Solomon
   // uses the different generator polynomial than CRC's.
-  var calculateecc = function(poly, genpoly) {
+  var calculateecc = function (poly, genpoly) {
     var modulus = poly.slice(0);
     var polylen = poly.length,
       genpolylen = genpoly.length;
@@ -403,7 +559,7 @@
   // the code is simplified using the fact that the size of each code & ECC
   // blocks is almost same; for example, when we have 4 blocks and 46 data words
   // the number of code words in those blocks are 11, 11, 12, 12 respectively.
-  var augumenteccs = function(poly, nblocks, genpoly) {
+  var augumenteccs = function (poly, nblocks, genpoly) {
     var subsizes = [];
     var subsize = (poly.length / nblocks) | 0,
       subsize0 = 0;
@@ -450,7 +606,7 @@
   // actual polynomials used for this procedure are as follows:
   // - p=10, q=5, genpoly=x^10+x^8+x^5+x^4+x^2+x+1 (JIS X 0510:2004 Appendix C)
   // - p=18, q=6, genpoly=x^12+x^11+x^10+x^9+x^8+x^5+x^2+1 (ibid. Appendix D)
-  var augumentbch = function(poly, p, genpoly, q) {
+  var augumentbch = function (poly, p, genpoly, q) {
     var modulus = poly << q;
     for (var i = p - 1; i >= 0; --i) {
       if ((modulus >> (q + i)) & 1) modulus ^= genpoly << i;
@@ -465,7 +621,7 @@
   // some entries in the matrix may be undefined, rather than 0 or 1. this is
   // intentional (no initialization needed!), and putdata below will fill
   // the remaining ones.
-  var makebasematrix = function(ver) {
+  var makebasematrix = function (ver) {
     var v = VERSIONS[ver],
       n = getsizebyver(ver);
     var matrix = [],
@@ -475,7 +631,7 @@
       reserved.push([]);
     }
 
-    var blit = function(y, x, h, w, bits) {
+    var blit = function (y, x, h, w, bits) {
       for (var i = 0; i < h; ++i) {
         for (var j = 0; j < w; ++j) {
           matrix[y + i][x + j] = (bits[i] >> j) & 1;
@@ -497,7 +653,7 @@
       0x82,
       0xfe,
       0x00,
-      0x00
+      0x00,
     ]);
 
     // the rest of timing patterns
@@ -535,7 +691,7 @@
   // fills the data portion (i.e. unmarked in reserved) of the matrix with given
   // code words. the size of code words should be no more than available bits,
   // and remaining bits are padded to 0 (cf. JIS X 0510:2004 sec 8.7.3).
-  var putdata = function(matrix, reserved, buf) {
+  var putdata = function (matrix, reserved, buf) {
     var n = matrix.length;
     var k = 0,
       dir = -1;
@@ -560,7 +716,7 @@
 
   // XOR-masks the data portion of the matrix. repeating the call with the same
   // arguments will revert the prior call (convenient in the matrix evaluation).
-  var maskdata = function(matrix, reserved, mask) {
+  var maskdata = function (matrix, reserved, mask) {
     var maskf = MASKFUNCS[mask];
     var n = matrix.length;
     for (var i = 0; i < n; ++i) {
@@ -572,7 +728,7 @@
   };
 
   // puts the format information.
-  var putformatinfo = function(matrix, reserved, ecclevel, mask) {
+  var putformatinfo = function (matrix, reserved, ecclevel, mask) {
     var n = matrix.length;
     var code = augumentbch((ecclevel << 3) | mask, 5, 0x537, 10) ^ 0x5412;
     for (var i = 0; i < 15; ++i) {
@@ -591,7 +747,7 @@
         n - 4,
         n - 3,
         n - 2,
-        n - 1
+        n - 1,
       ][i];
       var c = [
         n - 1,
@@ -608,7 +764,7 @@
         3,
         2,
         1,
-        0
+        0,
       ][i];
       matrix[r][8] = matrix[8][c] = (code >> i) & 1;
       // we don't have to mark those bits reserved; always done
@@ -627,7 +783,7 @@
   //
   // note: zxing seems to use the same procedure and in many cases its choice
   // agrees to ours, but sometimes it does not. practically it doesn't matter.
-  var evaluatematrix = function(matrix) {
+  var evaluatematrix = function (matrix) {
     // N1+(k-5) points for each consecutive row of k same-colored modules,
     // where k >= 5. no overlapping row counts.
     var PENALTY_CONSECUTIVE = 3;
@@ -642,7 +798,7 @@
     // i.e. k=1 for 55~60% and 40~45%, k=2 for 60~65% and 35~40%, etc.
     var PENALTY_DENSITY = 10;
 
-    var evaluategroup = function(groups) {
+    var evaluategroup = function (groups) {
       // assumes [W,B,W,B,W,...,B,W]
       var score = 0;
       for (var i = 0; i < groups.length; ++i) {
@@ -712,7 +868,7 @@
 
   // returns the fully encoded QR code matrix which contains given data.
   // it also chooses the best mask automatically when mask is -1.
-  var generate = function(data, ver, mode, ecclevel, mask) {
+  var generate = function (data, ver, mode, ecclevel, mask) {
     var v = VERSIONS[ver];
     var buf = encode(ver, mode, data, ndatabits(ver, ecclevel) >> 3);
     buf = augumenteccs(buf, v[1][ecclevel], GF256_GENPOLY[v[0][ecclevel]]);
@@ -765,17 +921,17 @@
   //   modules, so it is better not to alter this value unless you know what
   //   you're doing.
   var QRCode = {
-    generate: function(data, options) {
+    generate: function (data, options) {
       var MODES = {
         numeric: MODE_NUMERIC,
         alphanumeric: MODE_ALPHANUMERIC,
-        octet: MODE_OCTET
+        octet: MODE_OCTET,
       };
       var ECCLEVELS = {
         L: ECCLEVEL_L,
         M: ECCLEVEL_M,
         Q: ECCLEVEL_Q,
-        H: ECCLEVEL_H
+        H: ECCLEVEL_H,
       };
 
       options = options || {};
@@ -828,7 +984,7 @@
       return generate(data, ver, mode, ecclevel, mask);
     },
 
-    generateHTML: function(data, options) {
+    generateHTML: function (data, options) {
       options = options || {};
       var matrix = QRCode["generate"](data, options);
       var modsize = Math.max(options.modulesize || 5, 0.5);
@@ -839,7 +995,7 @@
       var html = [
         '<table border="0" cellspacing="0" cellpadding="0" style="border:' +
           modsize * margin +
-          'px solid #fff;background:#fff">'
+          'px solid #fff;background:#fff">',
       ];
       for (var i = 0; i < n; ++i) {
         html.push("<tr>");
@@ -861,7 +1017,7 @@
       return e;
     },
 
-    generateSVG: function(data, options) {
+    generateSVG: function (data, options) {
       options = options || {};
       var matrix = QRCode["generate"](data, options);
       var n = matrix.length;
@@ -883,7 +1039,7 @@
       var svg = [
         "<style scoped>.bg{fill:#FFF}.fg{fill:#000}</style>",
         '<rect class="bg" x="0" y="0"',
-        'width="' + size + '" height="' + size + '"/>'
+        'width="' + size + '" height="' + size + '"/>',
       ];
 
       var yo = margin * modsize;
@@ -900,7 +1056,7 @@
       return e;
     },
 
-    generatePNG: function(data, options) {
+    generatePNG: function (data, options) {
       options = options || {};
       var matrix = QRCode["generate"](data, options);
       var modsize = Math.max(options.modulesize || 5, 0.5);
@@ -931,7 +1087,7 @@
       }
       //context.fillText('evaluation: ' + evaluatematrix(matrix), 10, 10);
       return canvas.toDataURL();
-    }
+    },
   };
 
   return QRCode;

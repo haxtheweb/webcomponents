@@ -11,7 +11,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 class LrnappGalleryGrid extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("click", this._triggerDialog.bind(this));
     });
   }
@@ -110,53 +110,53 @@ class LrnappGalleryGrid extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       submissions: {
         type: Array,
-        notify: true
+        notify: true,
       },
       activeImage: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       activeTitle: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       activeAuthor: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       activeComments: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       activeUrl: {
         type: String,
         reflectToAttribute: true,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   /**
@@ -185,7 +185,7 @@ class LrnappGalleryGrid extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

@@ -7,10 +7,12 @@
   --retro-card-light-color: #F4F1D0;
   --retro-card-dark-color: #212121;
 }
+
 :host([dark]) {
   --retro-card-dark-color: #F4F1D0;
   --retro-card-light-color: #212121;
 }
+
 :host([hidden]) {
   display: none;
 }
@@ -30,11 +32,13 @@
   box-shadow: 16px 16px 0px 0px var(--retro-card-shadow);
   transition: background-color 0.2s ease-in-out 0s,padding 0.4s ease-in-out 0s,border 0.4s ease-in-out 0s,box-shadow 0.2s ease-in-out 0s;
 }
+
 .link:nth-child(1n+0) {
   background-color: var(--retro-card-level-3);
   box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
   border: 4px var(--retro-card-level-1) solid;
 }
+
 .link {
   display: block;
   background-color: var(--retro-card-level-3);
@@ -71,6 +75,7 @@
   font-size: 0.9rem;
   padding: 0.75rem 1rem 0;
 }
+
 .card-tags {
   line-height: 1.6;
   text-align: center;
@@ -78,6 +83,7 @@
   text-rendering: optimizeLegibility;
   font-weight: 300;
 }
+
 .project-tag {
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;

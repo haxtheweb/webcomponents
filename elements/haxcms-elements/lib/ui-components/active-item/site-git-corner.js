@@ -26,7 +26,7 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
           --github-corner-color: var(--site-git-corner-color);
           --github-corner-background: var(--site-git-corner-background);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -47,7 +47,7 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
     this.direction = "right";
     this.activeGitFileLink = "";
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       if (
         varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
         !window.customElements.get("git-corner")
@@ -56,7 +56,7 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
       }
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       if (store.activeItem) {
         let filePath =
           varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
@@ -83,7 +83,7 @@ class SiteGitCorner extends HAXCMSThemeParts(LitElement) {
       size: { type: String },
       activeGitFileLink: { type: String, attribute: "active-git-file-link" },
       direction: { type: String, reflect: true },
-      alt: { type: String }
+      alt: { type: String },
     };
   }
 }

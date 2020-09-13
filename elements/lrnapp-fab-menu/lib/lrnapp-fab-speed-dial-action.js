@@ -57,7 +57,7 @@ class LrnappFabSpeedDialAction extends LitElement {
         .fab {
           display: flex;
         }
-      `
+      `,
     ];
   }
   static get tag() {
@@ -88,14 +88,14 @@ class LrnappFabSpeedDialAction extends LitElement {
        * Icon that is shown next to the content
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Color class work to apply
        */
       color: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

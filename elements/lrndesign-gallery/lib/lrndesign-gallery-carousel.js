@@ -260,7 +260,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           top: 10px;
           font-size: 80%;
         }
-      `
+      `,
     ];
   }
 
@@ -275,9 +275,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           ?extra-wide="${this.extraWide}"
           responsive-size="${this.responsiveSize}"
         >
-          <p id="xystart" class="sr-only">
-            Slide ${this.selected.xofy}.
-          </p>
+          <p id="xystart" class="sr-only">Slide ${this.selected.xofy}.</p>
           <div id="carouselimage">
             <iron-image
               .alt="${this.selected.alt}"
@@ -285,8 +283,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               aria-describedby="carouseltitle details"
               .placeholder="${this.selected.thumbnail}"
               sizing="${this.selected.sizing ||
-                this.sizing === "contain" ||
-                "cover"}"
+              this.sizing === "contain" ||
+              "cover"}"
               .src="${this.selected.src}"
             >
             </iron-image>
@@ -308,7 +306,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               aria-label="prev"
               ?hidden="${this.hideNav}"
               ?disabled="${!this.selected || this.selected.prev < 0}"
-              @click="${e =>
+              @click="${(e) =>
                 this._itemChanged(this.selected ? this.selected.prev : 0)}"
               tabindex="-1"
             >
@@ -325,7 +323,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               aria-label="next"
               ?hidden="${this.hideNav}"
               ?disabled="${!this.selected || this.selected.next < 0}"
-              @click="${e =>
+              @click="${(e) =>
                 this._itemChanged(this.selected ? this.selected.next : 0)}"
               tabindex="-1"
             >
@@ -356,21 +354,19 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               </p>
             </div>
             <div id="thumbnails" class="item-info" ?hidden="${this.hideNav}">
-              <p class="sr-only" ?hidden="${this.hideNav}">
-                Slides list:
-              </p>
+              <p class="sr-only" ?hidden="${this.hideNav}">Slides list:</p>
               ${this.sources.map(
-                item => html`
+                (item) => html`
                   <button
                     id="${item.id}"
                     aria-controls="carousel"
                     class="gallerythumb"
                     .index="${item.index}"
-                    @click="${e => this._itemChanged(item.id)}"
+                    @click="${(e) => this._itemChanged(item.id)}"
                     ?disabled="${this.selected.id === item.id}"
                     .style="--lrndesign-gallery-thumb-url:url(${item.thumbnail});background-size:${item.sizing ||
-                      this.sizing ||
-                      "cover"};background-position:${item.gravity
+                    this.sizing ||
+                    "cover"};background-position:${item.gravity
                       ? item.gravity.replace("-", " ")
                       : "center"}"
                   >
@@ -396,7 +392,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
     };
   }
 

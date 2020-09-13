@@ -9,12 +9,12 @@ export default {
   component: "nav-card",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities();
 
-const NavItem = index => {
+const NavItem = (index) => {
   let nav = utils.getRandomOption(["button", "a"]),
     tag = utils.getRandomOption(["span", "div", false]),
     type = utils.getRandomOption(["label", "img", "icon"]),
@@ -44,11 +44,11 @@ const NavItem = index => {
       : undefined,
     label: `<${nav} id ="${id}" slot="label" ${
       tag ? `aria-describedby="${descBy}"` : ""
-    } ${href}>${labelHTML}</${nav}>`
+    } ${href}>${labelHTML}</${nav}>`,
   };
 };
 
-const MakeNavItem = index => {
+const MakeNavItem = (index) => {
   let item = NavItem(index);
   return `
     <nav-card-item 
@@ -74,9 +74,9 @@ export const NavCardStory = () => {
       color: utils.getRandomColor(),
       imageSrc: utils.getRandomImage(),
       linklist: `<div>${[1, 2, 3, 4, 5]
-        .map(i => MakeNavItem(i))
+        .map((i) => MakeNavItem(i))
         .join("")}</div>`,
-      maxWidth: "600px"
+      maxWidth: "600px",
     },
     [
       { css: "--nav-card-image-width", title: "Width of horizontal image" },
@@ -92,55 +92,55 @@ export const NavCardStory = () => {
       { css: "--nav-card-heading-padding-left", title: "Heading padding-left" },
       {
         css: "--nav-card-heading-padding-right",
-        title: "Heading padding-right"
+        title: "Heading padding-right",
       },
       {
         css: "--nav-card-heading-padding-bottom",
-        title: "Heading padding-bottom"
+        title: "Heading padding-bottom",
       },
       {
         css: "--nav-card-subheading-padding-top",
-        title: "Subeading padding-top"
+        title: "Subeading padding-top",
       },
       {
         css: "--nav-card-subheading-padding-left",
-        title: "Subeading padding-left"
+        title: "Subeading padding-left",
       },
       {
         css: "--nav-card-subheading-padding-right",
-        title: "Subeading padding-right"
+        title: "Subeading padding-right",
       },
       {
         css: "--nav-card-subheading-padding-bottom",
-        title: "Subeading padding-bottom"
+        title: "Subeading padding-bottom",
       },
       { css: "--nav-card-content-padding-top", title: "Content padding-top" },
       { css: "--nav-card-content-padding-left", title: "Content padding-left" },
       {
         css: "--nav-card-content-padding-right",
-        title: "Content padding-right"
+        title: "Content padding-right",
       },
       {
         css: "--nav-card-content-padding-bottom",
-        title: "Content padding-bottom"
+        title: "Content padding-bottom",
       },
       {
         css: "--nav-card-linklist-border-bottom",
-        title: "item's border-bottom"
+        title: "item's border-bottom",
       },
       { css: "--nav-card-footer-padding-top", title: "Footer padding-top" },
       { css: "--nav-card-footer-padding-left", title: "Footer padding-left" },
       { css: "--nav-card-footer-padding-right", title: "Footer padding-right" },
       {
         css: "--nav-card-footer-padding-bottom",
-        title: "Footer padding-bottom"
+        title: "Footer padding-bottom",
       },
       { css: "--nav-card-color", title: "Card text color" },
       { css: "--nav-card-background-color", title: "Card background color" },
       { css: "--nav-card-border-color", title: "Card background color" },
       { css: "--nav-card-border-color", title: "Card heading text color" },
       { css: "width" },
-      { css: "maxWidth" }
+      { css: "maxWidth" },
     ]
   );
 };
@@ -162,52 +162,52 @@ export const NavCardItemStory = () => {
       [
         {
           css: "--nav-card-item-label-color",
-          title: "item's default text color"
+          title: "item's default text color",
         },
         {
           css: "--nav-card-item-label-background-color",
-          title: "item's default background-color"
+          title: "item's default background-color",
         },
         {
           css: "--nav-card-item-label-font-size",
-          title: "item's default font-size"
+          title: "item's default font-size",
         },
         {
           css: "--nav-card-item-label-font-weight",
-          title: "item's default font-weight"
+          title: "item's default font-weight",
         },
         {
           css: "--nav-card-item-label-font-size",
-          title: "item description's default font-weight"
+          title: "item description's default font-weight",
         },
         {
           css: "--nav-card-item-label-font-weight",
-          title: "item description's default font-wight"
+          title: "item description's default font-wight",
         },
         {
           css: "--nav-card-item-avatar-size",
-          title: "default size for item's avatar"
+          title: "default size for item's avatar",
         },
         {
           css: "--nav-card-item-avatar-width",
-          title: "default width for item's avatar"
+          title: "default width for item's avatar",
         },
         {
           css: "--nav-card-item-avatar-height",
-          title: "efault height for item's avatar"
+          title: "efault height for item's avatar",
         },
         {
           css: "--nav-card-item-icon-size",
-          title: "default size for item's icon"
+          title: "default size for item's icon",
         },
         {
           css: "--nav-card-item-icon-width",
-          title: "default width for item's icon"
+          title: "default width for item's icon",
         },
         {
           css: "--nav-card-item-icon-height",
-          title: "default height for item's icon"
-        }
+          title: "default height for item's icon",
+        },
       ],
       [],
       true

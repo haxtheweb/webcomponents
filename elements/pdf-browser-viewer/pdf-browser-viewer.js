@@ -116,7 +116,7 @@ class PdfBrowserViewer extends PolymerElement {
       file: {
         type: String,
         value: undefined,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * The message when browser doesn't support pdf object
@@ -126,7 +126,7 @@ class PdfBrowserViewer extends PolymerElement {
       notSupportedMessage: {
         type: String,
         value:
-          "It appears your Web browser is not configured to display PDF files. No worries, just"
+          "It appears your Web browser is not configured to display PDF files. No worries, just",
       },
       /**
        * The PDF link message when browser doesn't support pdf object
@@ -135,7 +135,7 @@ class PdfBrowserViewer extends PolymerElement {
        */
       notSupportedLinkMessage: {
         type: String,
-        value: "click here to download the PDF file."
+        value: "click here to download the PDF file.",
       },
       /**
        * The height of the PDF viewer.
@@ -144,7 +144,7 @@ class PdfBrowserViewer extends PolymerElement {
        */
       height: {
         type: String,
-        value: "400px"
+        value: "400px",
       },
       /**
        * The width of the PDF viewer.
@@ -153,7 +153,7 @@ class PdfBrowserViewer extends PolymerElement {
        */
       width: {
         type: String,
-        value: "100%"
+        value: "100%",
       },
       /**
        * PDF viewer as a card with download button.
@@ -162,7 +162,7 @@ class PdfBrowserViewer extends PolymerElement {
        */
       card: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Download button label.
@@ -171,7 +171,7 @@ class PdfBrowserViewer extends PolymerElement {
        */
       downloadLabel: {
         type: String,
-        value: "Download"
+        value: "Download",
       },
       /**
        * The z-depth of the card, from 0-5.
@@ -180,8 +180,8 @@ class PdfBrowserViewer extends PolymerElement {
        */
       elevation: {
         type: String,
-        value: "1"
-      }
+        value: "1",
+      },
     };
   }
   /**

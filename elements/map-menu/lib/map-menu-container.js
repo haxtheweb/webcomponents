@@ -23,16 +23,14 @@ class MapMenuContainer extends LitElement {
         :host > ::slotted(map-menu-submenu + map-menu-submenu) {
           margin-top: 16px;
         }
-      `
+      `,
     ];
   }
   /**
    * LitElement life cycle - render
    */
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   static get tag() {
     return "map-menu-container";

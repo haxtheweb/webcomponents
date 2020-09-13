@@ -38,7 +38,7 @@ stories.add("music-player", () => {
         MusicPlayer.properties[key].value
       );
       // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
+      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function (
         match
       ) {
         return "-" + match.toLowerCase();

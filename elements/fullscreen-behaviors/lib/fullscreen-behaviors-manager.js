@@ -20,7 +20,7 @@ class FullscreenBehaviorsManager extends LitElement {
     return {
       __loaded: { type: Boolean },
       __callbacks: { type: Array },
-      __fullscreen: { type: Boolean }
+      __fullscreen: { type: Boolean },
     };
   }
 
@@ -80,7 +80,7 @@ class FullscreenBehaviorsManager extends LitElement {
    */
   _setLoaded(e) {
     this.__loaded = true;
-    (this.__callbacks || []).forEach(callback => callback());
+    (this.__callbacks || []).forEach((callback) => callback());
   }
 }
 window.customElements.define(

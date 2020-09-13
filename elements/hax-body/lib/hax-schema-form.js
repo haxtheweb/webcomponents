@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-schema-form`
@@ -127,19 +127,19 @@ class HaxSchemaForm extends PolymerElement {
         type: Object,
         notify: true,
         value: {},
-        observer: "_valueChanged"
+        observer: "_valueChanged",
       },
       value: {
         type: Object,
         notify: true,
-        value: {}
+        value: {},
       },
       /**
        * State of mode tabs.
        */
       modeTab: {
         type: String,
-        observer: "_editorModeChanged"
+        observer: "_editorModeChanged",
       },
       /**
        * If this is the advancedForm or not. Default to not but slider allows
@@ -147,13 +147,13 @@ class HaxSchemaForm extends PolymerElement {
        */
       advancedForm: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * If we should show source view or not.
        */
       canEditSource: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Form key from hax to target.
@@ -161,14 +161,14 @@ class HaxSchemaForm extends PolymerElement {
       formKey: {
         type: String,
         computed: "_computedFormKey(advancedForm)",
-        observer: "_formKeyChanged"
+        observer: "_formKeyChanged",
       },
       /**
        * JSON Schema.
        */
       schema: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * JSON Schema.
@@ -176,8 +176,8 @@ class HaxSchemaForm extends PolymerElement {
       configureSchema: {
         type: Object,
         value: {
-          schema: {}
-        }
+          schema: {},
+        },
       },
       /**
        * JSON Schema.
@@ -185,9 +185,9 @@ class HaxSchemaForm extends PolymerElement {
       advancedSchema: {
         type: Object,
         value: {
-          schema: {}
-        }
-      }
+          schema: {},
+        },
+      },
     };
   }
   /**

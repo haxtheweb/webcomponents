@@ -25,13 +25,11 @@ class LrnsysRenderHtml extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <div id="container"></div>
-    `;
+    return html` <div id="container"></div> `;
   }
 
   static get tag() {
@@ -44,8 +42,8 @@ class LrnsysRenderHtml extends LitElement {
        * String to render as HTML directly
        */
       html: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   firstUpdated() {

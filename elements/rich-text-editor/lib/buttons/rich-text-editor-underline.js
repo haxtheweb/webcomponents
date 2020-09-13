@@ -29,7 +29,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
     };
   }
   constructor() {
@@ -40,8 +40,8 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
         title: "Underline (not recommended)",
         description:
           "Underlines can be confused with links. Use italics instead.",
-        inputMethod: "boolean"
-      }
+        inputMethod: "boolean",
+      },
     ];
     this.tag = "u";
     this.icon = "editor:format-underlined";
@@ -50,7 +50,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.command = "underline";
     this.shortcutKeys = "ctrl+u";
     this.value = {
-      confirm: false
+      confirm: false,
     };
   }
   get blockSelectors() {
@@ -67,7 +67,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
         this.isToggled ||
         (this.__selectionContents.tagName &&
           this.__selectionContents.tagName.toLowerCase() ===
-            this.tag.toLowerCase())
+            this.tag.toLowerCase()),
     };
   }
 

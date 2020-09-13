@@ -35,17 +35,15 @@ class ElmslnStudioMain extends ElmslnStudioUtilities(outlet(LitElement)) {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
     };
   }
 }

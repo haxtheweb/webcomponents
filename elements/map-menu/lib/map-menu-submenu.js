@@ -19,7 +19,7 @@ class MapMenuSubmenu extends LitElement {
         #container ::slotted(map-menu-item) {
           margin-top: 0.4em;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -75,43 +75,43 @@ class MapMenuSubmenu extends LitElement {
   static get properties() {
     return {
       id: {
-        type: String
+        type: String,
       },
       title: {
-        type: String
+        type: String,
       },
       avatarLabel: {
         type: String,
-        attribute: "avatar-label"
+        attribute: "avatar-label",
       },
       label: {
-        type: String
+        type: String,
       },
       icon: {
-        type: String
+        type: String,
       },
       __icon: {
-        type: String
+        type: String,
       },
       url: {
-        type: String
+        type: String,
       },
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       collapsable: {
-        type: Boolean
+        type: Boolean,
       },
       expandChildren: {
         type: Boolean,
-        attribute: "expand-children"
+        attribute: "expand-children",
       },
       selected: {
-        type: String
+        type: String,
       },
       published: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -163,7 +163,7 @@ class MapMenuSubmenu extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: detail
+        detail: detail,
       })
     );
   }
@@ -176,7 +176,7 @@ class MapMenuSubmenu extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { opened: this.opened }
+        detail: { opened: this.opened },
       })
     );
   }

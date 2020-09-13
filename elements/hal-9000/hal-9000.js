@@ -20,15 +20,13 @@ class Hal9000 extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   // properties available to the custom element for data binding
@@ -41,7 +39,7 @@ class Hal9000 extends LitElement {
        */
       commands: {
         name: "commands",
-        type: Object
+        type: Object,
       },
       /**
        * The name that HAL 9000 should respond to.
@@ -49,14 +47,14 @@ class Hal9000 extends LitElement {
       respondsTo: {
         name: "respondsTo",
         type: String,
-        attribute: "responds-to"
+        attribute: "responds-to",
       },
       /**
        * Debug mode for annyang
        */
       debug: {
         name: "debug",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Start automatically
@@ -64,7 +62,7 @@ class Hal9000 extends LitElement {
       auto: {
         name: "auto",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Status of listening
@@ -72,7 +70,7 @@ class Hal9000 extends LitElement {
       enabled: {
         name: "enabled",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Pitch of speech
@@ -80,7 +78,7 @@ class Hal9000 extends LitElement {
       pitch: {
         name: "pitch",
         type: Number,
-        reflect: true
+        reflect: true,
       },
       /**
        * Rate of speech
@@ -88,7 +86,7 @@ class Hal9000 extends LitElement {
       rate: {
         name: "rate",
         type: Number,
-        reflect: true
+        reflect: true,
       },
       /**
        * Language of the speaker
@@ -96,8 +94,8 @@ class Hal9000 extends LitElement {
       language: {
         name: "language",
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -197,7 +195,7 @@ class Hal9000 extends LitElement {
       if (this.auto) {
         this.annyang.start({
           autoRestart: true,
-          continuous: true
+          continuous: true,
         });
       } else if (this.enabled) {
         this.annyang.start();
@@ -206,7 +204,7 @@ class Hal9000 extends LitElement {
       const evt = new CustomEvent("hal-9000-online", {
         bubbles: true,
         cancelable: false,
-        detail: true
+        detail: true,
       });
       this.dispatchEvent(evt);
     }
@@ -246,7 +244,7 @@ class Hal9000 extends LitElement {
         if (this.auto) {
           this.annyang.start({
             autoRestart: true,
-            continuous: true
+            continuous: true,
           });
         } else {
           this.annyang.start();

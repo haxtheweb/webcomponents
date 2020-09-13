@@ -100,7 +100,7 @@ class SimpleSearch extends LitElement {
         *[shrink-hide] {
           display: none;
         }
-      `
+      `,
     ];
   }
 
@@ -158,117 +158,117 @@ class SimpleSearch extends LitElement {
        */
       alwaysFloatLabel: {
         attribute: "always-float-label",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Is the search case-sensitive
        */
       caseSensitive: {
         attribute: "case-sensitive",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * The id of the container element that the navigation buttons control
        */
       controls: {
         attribute: "controls",
-        type: String
+        type: String,
       },
       /**
        * label for next result icon
        */
       nextButtonIcon: {
         attribute: "next-button-icon",
-        type: String
+        type: String,
       },
       /**
        * label for next result button
        */
       nextButtonLabel: {
         attribute: "next-button-label",
-        type: String
+        type: String,
       },
       /**
        * never float the label
        */
       noLabelFloat: {
         attribute: "no-label-float",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * label for previous result icon
        */
       prevButtonIcon: {
         attribute: "prev-button-icon",
-        type: String
+        type: String,
       },
       /**
        * label for previous result button
        */
       prevButtonLabel: {
         attribute: "prev-button-label",
-        type: String
+        type: String,
       },
       /**
        * Number of results.
        */
       resultCount: {
         attribute: "result-count",
-        type: Number
+        type: Number,
       },
       /**
        * Which result are we currently on?
        */
       resultPointer: {
         attribute: "result-pointer",
-        type: Number
+        type: Number,
       },
       /**
        * limits search to within target's elements that match a selectgor
        */
       selector: {
         attribute: "selector",
-        type: String
+        type: String,
       },
       /**
        * label for search icon
        */
       searchInputIcon: {
         attribute: "search-input-icon",
-        type: String
+        type: String,
       },
       /**
        * label for search input
        */
       searchInputLabel: {
         attribute: "search-input-label",
-        type: String
+        type: String,
       },
       /**
        * an array of search terms
        */
       searchTerms: {
         attribute: "search-terms",
-        type: Array
+        type: Array,
       },
       /**
        * If set, search will be automated and restricted to this object.
        */
       target: {
-        type: Object
+        type: Object,
       },
       /**
        * Hide next button
        */
       __hideNext: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Hide prev button
        */
       __hidePrev: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -315,7 +315,7 @@ class SimpleSearch extends LitElement {
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
-    selections.forEach(selection => {
+    selections.forEach((selection) => {
       this._searchSelection(selection);
     });
     /**
@@ -457,14 +457,12 @@ class SimpleSearch extends LitElement {
   findMatches(results) {
     this.resultPointer = 0;
     results = results.replace(/<\/?simple-search-match[^>]*>/g, "");
-    this.searchTerms.forEach(term => {
+    this.searchTerms.forEach((term) => {
       let modifier = this.caseSensitive ? "gm" : "gim",
         regex = new RegExp("\\b(" + term + ")\\b", modifier),
-        replacer = match => {
+        replacer = (match) => {
           this.resultCount++;
-          return `<simple-search-match tabindex="0" match-number="${
-            this.resultCount
-          }">${match}</simple-search-match>`;
+          return `<simple-search-match tabindex="0" match-number="${this.resultCount}">${match}</simple-search-match>`;
         };
       results = results.replace(regex, replacer);
     });

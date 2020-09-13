@@ -7,7 +7,7 @@ import {
   html,
   css,
   customElement,
-  property
+  property,
 } from "lit-element/lit-element.js";
 /**
  * `micro-copy-heading`
@@ -51,7 +51,7 @@ class MicroCopyHeading extends LitElement {
           letter-spacing: 0.09em;
           padding: 6px 16px;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -76,13 +76,13 @@ class MicroCopyHeading extends LitElement {
         groups: ["Copy"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -91,15 +91,15 @@ class MicroCopyHeading extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "endCap",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
         configure: [
           {
@@ -107,18 +107,18 @@ class MicroCopyHeading extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "endCap",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -132,7 +132,7 @@ class MicroCopyHeading extends LitElement {
       heading: {
         name: "heading",
         type: String,
-        value: "Telling our story"
+        value: "Telling our story",
       },
       /**
        * ending cap to the statement, possibly a character, icon, etc
@@ -140,8 +140,8 @@ class MicroCopyHeading extends LitElement {
       endcap: {
         name: "endcap",
         type: String,
-        value: "//"
-      }
+        value: "//",
+      },
     };
   }
 

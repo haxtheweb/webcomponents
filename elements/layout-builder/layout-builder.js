@@ -70,19 +70,19 @@ class LayoutBuilder extends PolymerElement {
         groups: ["Builder"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -93,13 +93,13 @@ class LayoutBuilder extends PolymerElement {
       type: {
         name: "type",
         type: Boolean,
-        value: "layout"
+        value: "layout",
       },
       id: {
         name: "id",
         type: String,
-        reflecttoAttribute: true
-      }
+        reflecttoAttribute: true,
+      },
     };
   }
 

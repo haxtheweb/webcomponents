@@ -225,7 +225,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         input[type="range"]:focus::-ms-fill-upper {
           background: var(--simple-fields-border-color-light, #ccc);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -239,37 +239,37 @@ class SimpleFieldsField extends SimpleFieldsContainer {
        * Hint for expected file type in file upload controls
        */
       accept: {
-        type: String
+        type: String,
       },
       /**
        * Hint for form autofill feature
        */
       autocomplete: {
-        type: String
+        type: String,
       },
       /**
        * Automatically focus on field when the page is loaded
        */
       autofocus: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Media capture input method in file upload controls
        */
       capture: {
-        type: String
+        type: String,
       },
       /**
        * a counter text and textareas: "character", "word" or unset for none
        */
       counter: {
-        type: String
+        type: String,
       },
       /**
        * Name of form field to use for sending the element's directionality in form submission
        */
       dirname: {
-        type: String
+        type: String,
       },
       /**
        * array of options [{value: "key", text: "Text"}] for select, radio options, and checkboxes,
@@ -278,43 +278,43 @@ class SimpleFieldsField extends SimpleFieldsContainer {
        */
       itemsList: {
         type: Array,
-        attribute: "items-list"
+        attribute: "items-list",
       },
       /**
        * Value of the id attribute of the `<datalist>` of autocomplete options
        */
       list: {
-        type: String
+        type: String,
       },
       /**
        * Maximum value for numeric field types
        */
       max: {
-        type: Number
+        type: Number,
       },
       /**
        * Maximum length (number of characters) of `value`
        */
       maxlength: {
-        type: Number
+        type: Number,
       },
       /**
        * Minimum value for numeric field types
        */
       min: {
-        type: Number
+        type: Number,
       },
       /**
        * Minimum length (number of characters) of `value`
        */
       minlength: {
-        type: Number
+        type: Number,
       },
       /**
        * Whether to allow multiple values
        */
       multiple: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * options {value: "Text"}  for select, radio options, and checkboxes,
@@ -322,37 +322,37 @@ class SimpleFieldsField extends SimpleFieldsContainer {
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
        */
       options: {
-        type: Object
+        type: Object,
       },
       /**
        * Content to be appear in the form control when the form control is empty
        */
       placeholder: {
-        type: String
+        type: String,
       },
       /**
        * Size of the control
        */
       size: {
-        type: Number
+        type: Number,
       },
       /*
        * Whether input subject to spell checking by browser/OS as "true", "default", or "false"
        */
       spellcheck: {
-        type: String
+        type: String,
       },
       /**
        * Incremental values that are valid
        */
       step: {
-        type: Number
+        type: Number,
       },
       /**
        * Current value of the form control. Submitted with the form as part of a name/value pair.
        */
       value: {
-        reflect: true
+        reflect: true,
       },
       /*
        * text wrapping for textarea,
@@ -361,8 +361,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
        * "off" : no wrapping / <textarea> becomes horizontally scrollable
        */
       wrap: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   constructor() {
@@ -460,9 +460,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get fieldMeta() {
-    return html`
-      <div id="fieldmeta" aria-live="polite"></div>
-    `;
+    return html` <div id="fieldmeta" aria-live="polite"></div> `;
   }
 
   /**
@@ -480,7 +478,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         </legend>
         <div id="options">
           ${(this.sortedOptions || []).map(
-            option => html`
+            (option) => html`
               <div class="option inline">
                 <label for="${this.id}.${option.value}" class="radio-label"
                   >${option.text}</label
@@ -495,7 +493,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
                     ? this.value === option.value
                     : (this.value || []).includes(option.value)}"
                   class="field"
-                  @click="${e => this._handleFieldChange()}"
+                  @click="${(e) => this._handleFieldChange()}"
                   ?disabled="${this.disabled}"
                   ?hidden="${this.hidden}"
                   ?readonly="${this.readonly}"
@@ -525,7 +523,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         aria-descrbedby="${this.describedBy || ""}"
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
-        @change="${e => this._handleFieldChange()}"
+        @change="${(e) => this._handleFieldChange()}"
         ?checked="${!!this.value}"
         class="field ${["checkbox", "color", "file", "radio", "range"].includes(
           this.type
@@ -534,7 +532,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           : "box-input"}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
-        @input="${e => this._handleFieldChange()}"
+        @input="${(e) => this._handleFieldChange()}"
         .name="${this.id}"
         .placeholder="${this.placeholder || ""}"
         ?readonly="${this.readonly}"
@@ -566,7 +564,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     );
     Object.keys(this.options || {})
       .sort((a, b) => (a > b ? 1 : -1))
-      .forEach(key => sorted.push({ value: key, text: this.options[key] }));
+      .forEach((key) => sorted.push({ value: key, text: this.options[key] }));
     return sorted;
   }
   /**
@@ -582,7 +580,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         aria-descrbedby="${this.describedBy}"
         aria-invalid="${this.error ? "true" : "false"}"
-        @change="${e => this._handleFieldChange()}"
+        @change="${(e) => this._handleFieldChange()}"
         class="field"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
@@ -592,7 +590,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?required="${this.required}"
       >
         ${(this.sortedOptions || []).map(
-          option => html`
+          (option) => html`
             <option
               .id="${this.id}.${option.value}"
               ?selected="${this.multiple
@@ -629,11 +627,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         class="field box-input"
-        @change="${e => this._handleFieldChange()}"
-        @keydown="${e => e.stopPropagation()}"
+        @change="${(e) => this._handleFieldChange()}"
+        @keydown="${(e) => e.stopPropagation()}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
-        @input="${e => this._handleFieldChange()}"
+        @input="${(e) => this._handleFieldChange()}"
         .name="${this.id}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
@@ -653,7 +651,7 @@ ${this.value || ""}</textarea
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -690,7 +688,7 @@ ${this.value || ""}</textarea
         "maxlength",
         "maxlength",
         "pattern",
-        "placeholder"
+        "placeholder",
       ],
       radio: ["autocomplete", "form", "list"],
       range: ["autocomplete", "form", "list", "max", "min", "step"],
@@ -701,7 +699,7 @@ ${this.value || ""}</textarea
         "list",
         "maxlength",
         "maxlength",
-        "placeholder"
+        "placeholder",
       ],
       select: ["autocomplete", "form", "list", "size"],
       tel: [
@@ -711,7 +709,7 @@ ${this.value || ""}</textarea
         "maxlength",
         "maxlength",
         "pattern",
-        "placeholder"
+        "placeholder",
       ],
       text: [
         "autocomplete",
@@ -721,7 +719,7 @@ ${this.value || ""}</textarea
         "maxlength",
         "maxlength",
         "pattern",
-        "placeholder"
+        "placeholder",
       ],
       textarea: [
         "autocomplete",
@@ -731,7 +729,7 @@ ${this.value || ""}</textarea
         "maxlength",
         "placeholder",
         "spellcheck",
-        "wrap"
+        "wrap",
       ],
       time: ["autocomplete", "form", "list", "max", "min", "step"],
       url: [
@@ -740,9 +738,9 @@ ${this.value || ""}</textarea
         "list",
         "maxlength",
         "maxlength",
-        "placeholder"
+        "placeholder",
       ],
-      week: ["autocomplete", "form", "list", "max", "min", "step"]
+      week: ["autocomplete", "form", "list", "max", "min", "step"],
     };
     return attributes[type];
   }
@@ -791,7 +789,9 @@ ${this.value || ""}</textarea
       this.shadowRoot && this.shadowRoot.querySelector(this.fieldElementTag)
         ? this.shadowRoot.querySelector(this.fieldElementTag)
         : undefined;
-    this._getAttributes(this.type).forEach(attr => this._updateAttribute(attr));
+    this._getAttributes(this.type).forEach((attr) =>
+      this._updateAttribute(attr)
+    );
     if (this.type !== "select" && this.field) this._updateAttribute("value");
   }
 }

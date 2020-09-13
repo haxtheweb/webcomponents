@@ -33,7 +33,7 @@ window.loremdata.getIcons = () => {
   let iconset = window.loremdata.iconset,
     list = iconset && iconset.__iconList ? iconset.__iconList : [[]],
     icons = list
-      .map(group => group.icons.map(icon => icon.replace(/^icons\:/, "")))
+      .map((group) => group.icons.map((icon) => icon.replace(/^icons\:/, "")))
       .flat();
   return icons;
 };
@@ -56,7 +56,7 @@ class LoremData extends LitElement {
           width: 100%;
           height: 200px;
         }
-      `
+      `,
     ];
   }
 
@@ -67,8 +67,8 @@ class LoremData extends LitElement {
   static get properties() {
     return {
       schemas: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -82,7 +82,7 @@ class LoremData extends LitElement {
     return html`
       <button @click="${this.saveAll}">Save All</button>
       ${Object.keys(this.schemas || []).map(
-        key => html`
+        (key) => html`
           <p>
             <label>
               <a href="${this.saveDataUrl(this.schemas[key])}" download="${key}"
@@ -104,7 +104,7 @@ class LoremData extends LitElement {
       this.shadowRoot.querySelectorAll("a") &&
       confirm(`Save the following: ${Object.keys(this.schemas).join(", ")}?`)
     ) {
-      this.shadowRoot.querySelectorAll("a").forEach(a => a.click());
+      this.shadowRoot.querySelectorAll("a").forEach((a) => a.click());
     }
   }
 
@@ -120,7 +120,7 @@ class LoremData extends LitElement {
   get data() {
     let data = {};
     Object.keys(this.schemas || []).forEach(
-      key => (data[key] = this.randomType(this.schemas[key]))
+      (key) => (data[key] = this.randomType(this.schemas[key]))
     );
     return data;
   }
@@ -135,7 +135,7 @@ class LoremData extends LitElement {
   }
 
   filterQuery(records, filter) {
-    return records.filter(record, index => filter(record, index));
+    return records.filter(record, (index) => filter(record, index));
   }
   /**
    * gets date x days from start date
@@ -206,14 +206,14 @@ class LoremData extends LitElement {
           weekday: "long",
           year: "numeric",
           month: "long",
-          day: "numeric"
+          day: "numeric",
         })
       : format === "short"
       ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
       : d.toLocaleDateString(undefined, {
           year: "numeric",
           month: "long",
-          day: "numeric"
+          day: "numeric",
         });
   }
 
@@ -295,8 +295,8 @@ class LoremData extends LitElement {
    */
   randomHex() {
     return `#${[0, 0, 0]
-      .map(i => this.randomNumber(i, 255).toString(16))
-      .map(i => (i.length < 2 ? `0${i}` : `${i}`))
+      .map((i) => this.randomNumber(i, 255).toString(16))
+      .map((i) => (i.length < 2 ? `0${i}` : `${i}`))
       .join("")}`;
   }
   /**
@@ -316,7 +316,7 @@ class LoremData extends LitElement {
       this.randomWeightedOption([
         { value: "", weight: 12 },
         { value: "greyscale", weight: 4 },
-        { value: "sepia", weight: 1 }
+        { value: "sepia", weight: 1 },
       ]);
     aspect = aspect || this.randomAspect();
     return `//placeimg.com/${aspect}/${topic}${
@@ -329,7 +329,7 @@ class LoremData extends LitElement {
       greyscale ||
       this.randomWeightedOption([
         { value: false, weight: 3 },
-        { value: true, weight: 1 }
+        { value: true, weight: 1 },
       ])
         ? ["greyscale"]
         : [];
@@ -344,7 +344,7 @@ class LoremData extends LitElement {
     if (typeof greyscale === typeof undefined)
       greyscale = this.randomWeightedOption([
         { value: false, weight: 3 },
-        { value: true, weight: 1 }
+        { value: true, weight: 1 },
       ]);
     aspect = aspect || this.randomAspect();
     return `//placekitten.com${greyscale ? "/g" : ""}/${aspect}`;
@@ -377,7 +377,7 @@ class LoremData extends LitElement {
       }`,
       longdesc: `This is a long description for image${
         !multiple ? `` : ` #${multiple}`
-      }. ${this.randomParagraph(1, 5)}`
+      }. ${this.randomParagraph(1, 5)}`,
     };
   }
 
@@ -387,8 +387,9 @@ class LoremData extends LitElement {
       size = area < 250 ? "thumb/" : area < 640 ? "med/" : "",
       random = Math.random() < 0.5 ? "men" : "women",
       person = topic === "man" ? "men" : topic === "woman" ? "women" : random;
-    return `https://randomuser.me/api/portraits/${size}${person}/${multiple ||
-      this.randomNumber(1, 90)}.jpg`;
+    return `https://randomuser.me/api/portraits/${size}${person}/${
+      multiple || this.randomNumber(1, 90)
+    }.jpg`;
   }
 
   /**
@@ -405,7 +406,7 @@ class LoremData extends LitElement {
     return {
       url: url,
       text: text,
-      type: file
+      type: file,
     };
   }
 
@@ -425,7 +426,7 @@ class LoremData extends LitElement {
   randomObject(schema = {}) {
     let obj = {};
     Object.keys(schema).forEach(
-      key => (obj[key] = this.randomType(schema[key]))
+      (key) => (obj[key] = this.randomType(schema[key]))
     );
     return obj;
   }
@@ -455,7 +456,7 @@ class LoremData extends LitElement {
       punctuation = this.randomWeightedOption([
         { value: ".", weight: 10 },
         { value: "?", weight: 3 },
-        { value: "!", weight: 1 }
+        { value: "!", weight: 1 },
       ]);
     for (let i = this.randomNumber(min, max); i > 0; i--) {
       sentence.push(this.randomWord());
@@ -556,7 +557,7 @@ class LoremData extends LitElement {
   randomWeightedOption(arr = []) {
     return this.randomOption(
       arr
-        .map(item => {
+        .map((item) => {
           let arr2 = [];
           for (let i = 0; i < item.weight; i++) {
             arr2.push(item.value);
@@ -598,7 +599,7 @@ class LoremData extends LitElement {
     return str
       .toLowerCase()
       .split(" ")
-      .map(word => word.replace(word[0], word[0].toUpperCase()))
+      .map((word) => word.replace(word[0], word[0].toUpperCase()))
       .join(" ");
   }
 

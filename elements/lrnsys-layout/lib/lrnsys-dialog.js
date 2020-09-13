@@ -36,7 +36,7 @@ class LrnsysDialog extends SimpleColors {
           margin: var(--lrnsys-dialog-button-margin);
           padding: var(--lrnsys-dialog-button-padding);
         }
-      `
+      `,
     ];
   }
   /**
@@ -106,73 +106,73 @@ class LrnsysDialog extends SimpleColors {
        * Icon to present for clicking.
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * If the button should be visually lifted off the UI.
        */
       raised: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Icon to present for clicking.
        */
       avatar: {
-        type: String
+        type: String,
       },
       /**
        * Text to present for clicking.
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * Alt / hover text for this link
        */
       alt: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Header for the dialog
        */
       header: {
-        type: String
+        type: String,
       },
       /**
        * Disabled state.
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Classes to add / subtract based on the item being hovered
        */
       hoverClass: {
         type: String,
-        attribute: "hover-class"
+        attribute: "hover-class",
       },
       /**
        * Default heading classes.
        */
       headingClass: {
         type: String,
-        attribute: "heading-class"
+        attribute: "heading-class",
       },
       /**
        * Support for dynamic loading of iron-image elements that are in the content slot.
        */
       dynamicImages: {
         type: Boolean,
-        attribute: "dynamic-images"
+        attribute: "dynamic-images",
       },
       /**
        * Tracks if focus state is applied
        */
       focusState: {
         type: Boolean,
-        attribute: "focus-state"
-      }
+        attribute: "focus-state",
+      },
     };
   }
 
@@ -253,11 +253,11 @@ class LrnsysDialog extends SimpleColors {
         title: this.header,
         elements: {
           header: h,
-          content: c
+          content: c,
         },
         invokedBy: this.shadowRoot.querySelector("#dialogtrigger"),
-        clone: true
-      }
+        clone: true,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -271,7 +271,7 @@ class LrnsysDialog extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { focus: this.focusState }
+        detail: { focus: this.focusState },
       })
     );
     // see if it has hover classes

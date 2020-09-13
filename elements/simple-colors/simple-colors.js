@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
-const SimpleColorsSuper = function(SuperClass) {
+const SimpleColorsSuper = function (SuperClass) {
   return class extends SuperClass {
     //styles function
     static get styles() {
@@ -1069,15 +1069,13 @@ const SimpleColorsSuper = function(SuperClass) {
             --simple-colors-default-theme-accent-11: #b1c5ce;
             --simple-colors-default-theme-accent-12: #e7eff1;
           }
-        `
+        `,
       ];
     }
 
     // render function
     render() {
-      return html`
-        <slot></slot>
-      `;
+      return html` <slot></slot> `;
     }
 
     // properties available to the custom element for data binding
@@ -1091,7 +1089,7 @@ const SimpleColorsSuper = function(SuperClass) {
         accentColor: {
           attribute: "accent-color",
           type: String,
-          reflect: true
+          reflect: true,
         },
         /**
          * make the default theme dark?
@@ -1099,15 +1097,15 @@ const SimpleColorsSuper = function(SuperClass) {
         dark: {
           name: "dark",
           type: Boolean,
-          reflect: true
+          reflect: true,
         },
         /**
          * make the default theme dark?
          */
         colors: {
           name: "colors",
-          type: Object
-        }
+          type: Object,
+        },
       };
     }
 

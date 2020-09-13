@@ -14,7 +14,7 @@ window.MaterialProgressBehaviorImpl = {
     barHeight: {
       type: Number,
       value: 22,
-      observer: "_refresh"
+      observer: "_refresh",
     },
     /**
      * Animate when the size of a bar changes.
@@ -22,7 +22,7 @@ window.MaterialProgressBehaviorImpl = {
     animated: {
       type: Boolean,
       value: false,
-      reflectToAttribute: true
+      reflectToAttribute: true,
     },
     /**
      * Label to display before the legend.
@@ -30,7 +30,7 @@ window.MaterialProgressBehaviorImpl = {
     legendLabel: {
       type: String,
       value: "",
-      observer: "_refresh"
+      observer: "_refresh",
     },
     /**
      * The displayed bar nodes (ie direct children with
@@ -42,7 +42,7 @@ window.MaterialProgressBehaviorImpl = {
         return [];
       },
       notify: true,
-      readOnly: true
+      readOnly: true,
     },
     /**
      * Sum of all the bars' values.
@@ -52,7 +52,7 @@ window.MaterialProgressBehaviorImpl = {
       value: 0,
       notify: true,
       readOnly: true,
-      reflectToAttribute: true
+      reflectToAttribute: true,
     },
     /**
      * The legend items to be displayed: Each is composed of the following
@@ -65,7 +65,7 @@ window.MaterialProgressBehaviorImpl = {
       value() {
         return [];
       },
-      readOnly: true
+      readOnly: true,
     },
     /**
      * Indicates if the legend needs to be displayed.
@@ -74,12 +74,12 @@ window.MaterialProgressBehaviorImpl = {
       type: Boolean,
       value: false,
       compute: "_computeLegendNeeded(_legendItems)",
-      readOnly: true
-    }
+      readOnly: true,
+    },
   },
 
   listeners: {
-    "dom-mutation": "refresh"
+    "dom-mutation": "refresh",
   },
 
   /**
@@ -139,7 +139,7 @@ window.MaterialProgressBehaviorImpl = {
           ) {
             this.splice("_legendItems", 1, 0, {
               label: barMeta.legend,
-              color: window.getComputedStyle(bar).backgroundColor
+              color: window.getComputedStyle(bar).backgroundColor,
             });
           }
         }
@@ -166,10 +166,10 @@ window.MaterialProgressBehaviorImpl = {
       attributeFilter: [
         "data-value",
         "data-legend",
-        "data-legend-always-visible"
-      ]
+        "data-legend-always-visible",
+      ],
     };
-    this._mutationFilter = function(mutation) {
+    this._mutationFilter = function (mutation) {
       // We only want to listen to mutations (addition, removal, attribute change)
       // of the direct children of the bar's container
       return (
@@ -207,7 +207,7 @@ window.MaterialProgressBehaviorImpl = {
         this.shadowRoot.querySelector("#content")
       );
     if (allChildren) {
-      allChildren.forEach(function(child) {
+      allChildren.forEach(function (child) {
         if (
           child.classList &&
           child.classList.contains("bar") &&
@@ -252,7 +252,7 @@ window.MaterialProgressBehaviorImpl = {
   },
   _computeLegendNeeded(legendItems) {
     return legendItems && legendItems.length > 0;
-  }
+  },
 };
 
 /** @polymerBehavior */

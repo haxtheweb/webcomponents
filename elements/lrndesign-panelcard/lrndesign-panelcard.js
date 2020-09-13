@@ -80,7 +80,7 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
       title: {
         type: String,
         value: "Block heading",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Height of the paper.
@@ -88,7 +88,7 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
       elevation: {
         type: Number,
         value: 2,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Applies the color to the text instead of the background
@@ -96,8 +96,8 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
       coloredText: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   static get haxProperties() {
@@ -114,12 +114,12 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
         handles: [
           {
             type: "text",
-            text: "title"
-          }
+            text: "title",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -128,29 +128,29 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
             title: "Title",
             description: "The heading for this sticky note",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             property: "elevation",
             title: "Elevation",
             description: "Visually how high this is off the page",
             inputMethod: "textfield",
-            icon: "icons:content-copy"
-          }
+            icon: "icons:content-copy",
+          },
         ],
         configure: [
           {
@@ -158,7 +158,7 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
             title: "Title",
             description: "The heading for this sticky note",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             slot: "",
@@ -167,28 +167,28 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
             inputMethod: "textarea",
             icon: "editor:title",
             required: false,
-            validationType: "text"
+            validationType: "text",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             property: "coloredText",
             title: "Colored Text",
             description: "Apply color to text instead of background.",
             inputMethod: "boolean",
-            icon: "editor:format-color-text"
+            icon: "editor:format-color-text",
           },
           {
             property: "elevation",
@@ -201,12 +201,12 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
               2: "2",
               3: "3",
               4: "4",
-              5: "5"
-            }
-          }
+              5: "5",
+            },
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

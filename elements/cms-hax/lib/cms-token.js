@@ -95,20 +95,20 @@ class CMSToken extends PolymerElement {
       loading: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Token changed (somehow) do the token processing.
        */
       token: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Token end point updated, change the way we do processing.
        */
       tokenEndPoint: {
-        type: String
+        type: String,
       },
       /**
        * Body data which is just token with some encapsulation.
@@ -116,35 +116,35 @@ class CMSToken extends PolymerElement {
       bodyData: {
         type: Object,
         computed: "_generateBodyData(token, _clickInvoked)",
-        observer: "_tokenChanged"
+        observer: "_tokenChanged",
       },
       /**
        * internal tracking for edit button being clicked in HAX presentation
        */
       _clickInvoked: {
         type: String,
-        value: false
+        value: false,
       },
       /**
        * Token data from the end point.
        */
       tokenData: {
         type: String,
-        observer: "_handleTokenResponse"
+        observer: "_handleTokenResponse",
       },
       /**
        * Prefix for the token to be processed
        */
       tokenPrefix: {
         type: String,
-        value: "["
+        value: "[",
       },
       /**
        * Suffix for the token to be processed
        */
       tokenSuffix: {
         type: String,
-        value: "]"
+        value: "]",
       },
       /**
        *
@@ -152,8 +152,8 @@ class CMSToken extends PolymerElement {
       _displayMode: {
         type: String,
         value: "full",
-        observer: "_displayModeChanged"
-      }
+        observer: "_displayModeChanged",
+      },
     };
   }
   /**
@@ -178,7 +178,7 @@ class CMSToken extends PolymerElement {
       let tokenSuffix = this.tokenSuffix;
       return {
         token: `${tokenPrefix}${token}${tokenSuffix}`,
-        cachedResponse: $editingState
+        cachedResponse: $editingState,
       };
     }
   }
@@ -289,7 +289,7 @@ class CMSToken extends PolymerElement {
         }
       }
     }
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       document.addEventListener(
         "visibilitychange",
         this._windowVisibilityChanged.bind(this)
@@ -320,12 +320,12 @@ class CMSToken extends PolymerElement {
         handles: [
           {
             type: "cmstoken",
-            token: "token"
-          }
+            token: "token",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -335,10 +335,10 @@ class CMSToken extends PolymerElement {
             title: "Token",
             description: "Token from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: true,
@@ -346,9 +346,9 @@ class CMSToken extends PolymerElement {
           "loading",
           "token-data",
           "body-data",
-          "token-end-point"
-        ]
-      }
+          "token-end-point",
+        ],
+      },
     };
   }
   /**
@@ -372,10 +372,10 @@ class CMSToken extends PolymerElement {
         properties: {
           id: "cmstokenidtolockonto",
           href: href,
-          target: "_blank"
+          target: "_blank",
         },
-        slot: slot
-      }
+        slot: slot,
+      },
     };
     return schema;
   }

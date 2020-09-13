@@ -805,9 +805,9 @@ class MaterialWord extends PolymerElement {
               <template is="dom-repeat" items="[[letters]]">
                 <div class="card">
                   <div class="alphabets">
-                    <div class\$="[[item]]"></div>
+                    <div class$="[[item]]"></div>
                     <template is="dom-if" if="[[showHalf(item)]]">
-                      <div class\$="[[item]]-half"></div>
+                      <div class$="[[item]]-half"></div>
                     </template>
                   </div>
                 </div>
@@ -825,27 +825,24 @@ class MaterialWord extends PolymerElement {
     return {
       word: {
         type: String,
-        notify: true
+        notify: true,
       },
       letters: {
         type: Array,
         value: [],
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       halfLetters: {
         type: Array,
-        value: ["e", "f", "h", "i"]
-      }
+        value: ["e", "f", "h", "i"],
+      },
     };
   }
   ready() {
     super.ready();
     var word = this.getAttribute("word");
-    var letters = word
-      .toLowerCase()
-      .trim()
-      .split("");
+    var letters = word.toLowerCase().trim().split("");
     if (letters.length) {
       this.letters = letters;
     }

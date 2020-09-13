@@ -46,38 +46,38 @@ class RelativeHeadingStateManager extends LitElement {
        * icon for copy link's toast's close button
        */
       closeIcon: {
-        type: String
+        type: String,
       },
       /**
        * label for copy link's toast's close button
        */
       closeLabel: {
-        type: String
+        type: String,
       },
       /**
        * active heading for copying link
        */
       copyHeading: {
-        type: Object
+        type: Object,
       },
       /**
        * message for copy link's toast
        */
       copyMessage: {
-        type: String
+        type: String,
       },
       /**
        * Stores an array of all the players on the page.
        */
       headings: {
-        type: Object
+        type: Object,
       },
       /**
        * indicates is toast is already imported for copy link feature
        */
       usesCopyLink: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -102,7 +102,7 @@ class RelativeHeadingStateManager extends LitElement {
         simple-toast:not(:defined) {
           display: none;
         }
-      `
+      `,
     ];
   }
 
@@ -199,7 +199,7 @@ class RelativeHeadingStateManager extends LitElement {
     if (heading) {
       if (heading.id && this.headings[heading.id]) {
         this.headings[heading.id].heading = null;
-        this.headings[heading.id].subheads.forEach(subhead =>
+        this.headings[heading.id].subheads.forEach((subhead) =>
           this.updateLevel(subhead)
         );
       }
@@ -249,7 +249,7 @@ class RelativeHeadingStateManager extends LitElement {
         if (!this.headings[heading.parent])
           this.headings[heading.parent] = {
             heading: null,
-            subheads: []
+            subheads: [],
           };
         if (!this.headings[heading.parent].subheads.includes(heading))
           this.headings[heading.parent].subheads.push(heading);
@@ -266,7 +266,7 @@ class RelativeHeadingStateManager extends LitElement {
   removeSubhead(id, heading) {
     if (id && this.headings[id] && this.headings[id].subheads) {
       this.headings[id].subheads = this.headings[id].subheads.filter(
-        subhead => subhead != heading
+        (subhead) => subhead != heading
       );
     }
   }
@@ -281,7 +281,7 @@ class RelativeHeadingStateManager extends LitElement {
       if (!this.headings[id])
         this.headings[id] = {
           heading: null,
-          subheads: []
+          subheads: [],
         };
       this.headings[id].heading = heading;
     }
@@ -301,7 +301,7 @@ class RelativeHeadingStateManager extends LitElement {
         level = plevel ? plevel : heading.defaultLevel;
       heading._setLevel(level);
       if (this.headings[heading.id])
-        this.headings[heading.id].subheads.forEach(subhead =>
+        this.headings[heading.id].subheads.forEach((subhead) =>
           this.updateLevel(subhead)
         );
     }

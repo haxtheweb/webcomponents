@@ -290,7 +290,7 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
       "#546e7a": "blue-grey" + parta + " " + partb + "darken-1",
       "#455a64": "blue-grey" + parta + " " + partb + "darken-2",
       "#37474f": "blue-grey" + parta + " " + partb + "darken-3",
-      "#263238": "blue-grey" + parta + " " + partb + "darken-4"
+      "#263238": "blue-grey" + parta + " " + partb + "darken-4",
     };
     return colorClasses;
   },
@@ -314,11 +314,11 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
   _colorTransformFromClass(color) {
     const colorClasses = this.getColorClasses();
     let hexColor = null;
-    Object.keys(colorClasses).forEach(function(key) {
+    Object.keys(colorClasses).forEach(function (key) {
       if (colorClasses[key] === color) {
         hexColor = key;
       }
     });
     return hexColor;
-  }
+  },
 };

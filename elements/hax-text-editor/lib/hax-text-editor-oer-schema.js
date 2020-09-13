@@ -26,7 +26,7 @@ class HaxTextEditorOerSchema extends RichTextEditorPromptButton {
     this.label = element.haxProperties.gizmo.title;
     this.toggles = true;
     this.value = {
-      "": null
+      "": null,
     };
   }
 

@@ -44,13 +44,11 @@ class ResponsiveGridCol extends LitElement {
             display: none;
           }
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <div id="col-inner"><slot></slot></div>
-    `;
+    return html` <div id="col-inner"><slot></slot></div> `;
   }
 
   static get tag() {
@@ -70,32 +68,32 @@ class ResponsiveGridCol extends LitElement {
        * the width when viewed on an extra large screen
        */
       xl: {
-        type: Number
+        type: Number,
       },
       /**
        * the width when viewed on a large screen
        */
       lg: {
-        type: Number
+        type: Number,
       },
       /**
        * the width when viewed on a medium screen
        */
       md: {
-        type: Number
+        type: Number,
       },
       /**
        * the width when viewed on a small screen
        */
       sm: {
-        type: Number
+        type: Number,
       },
       /**
        * the width when viewed on an extra-small screen
        */
       xs: {
-        type: Number
-      }
+        type: Number,
+      },
     };
   }
 }

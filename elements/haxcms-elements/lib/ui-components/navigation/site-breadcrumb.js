@@ -61,7 +61,7 @@ class SiteBreadcrumb extends LitElement {
           padding: 0 8px 0 0;
           color: var(--site-breadcrumb-color, #383f45);
         }
-      `
+      `,
     ];
   }
   /**
@@ -76,15 +76,15 @@ class SiteBreadcrumb extends LitElement {
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
     // keep editMode in sync globally
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this._activeItemChanged(toJS(store.activeItem));
       this.__disposer.push(reaction);
     });
@@ -114,18 +114,20 @@ class SiteBreadcrumb extends LitElement {
       var items = [
         {
           title: activeItem.title,
-          slug: null
-        }
+          slug: null,
+        },
       ];
       let itemBuilder = activeItem;
       // walk back through parent tree
       while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = this.manifest.items.find(i => i.id == itemBuilder.parent);
+        itemBuilder = this.manifest.items.find(
+          (i) => i.id == itemBuilder.parent
+        );
         // double check structure is sound
         if (itemBuilder) {
           items.unshift({
             title: itemBuilder.title,
-            slug: itemBuilder.slug
+            slug: itemBuilder.slug,
           });
         }
       }

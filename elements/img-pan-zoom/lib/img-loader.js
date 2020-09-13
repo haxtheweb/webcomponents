@@ -21,34 +21,34 @@ class ImgLoader extends LitElement {
   static get properties() {
     return {
       src: {
-        type: String
+        type: String,
       },
       /**
        * Read-only value that is true when the image is loaded.
        */
       loaded: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Read-only value that tracks the loading state of the image when the `preload`
        * option is used.
        */
       loading: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * aria-describedby attribute
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * Read-only value that indicates that the last set `src` failed to load.
        */
       error: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -71,8 +71,8 @@ class ImgLoader extends LitElement {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

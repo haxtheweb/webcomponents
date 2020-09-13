@@ -30,7 +30,7 @@ class SimpleIconPicker extends SimplePicker {
        */
       allowNull: {
         name: "allowNull",
-        type: Boolean
+        type: Boolean,
       },
       /**
         * An array of icons by name: ```
@@ -43,7 +43,7 @@ class SimpleIconPicker extends SimplePicker {
       */
       icons: {
         name: "icons",
-        type: Array
+        type: Array,
       },
 
       /**
@@ -52,7 +52,7 @@ class SimpleIconPicker extends SimplePicker {
       value: {
         name: "value",
         type: String,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -60,7 +60,7 @@ class SimpleIconPicker extends SimplePicker {
        */
       optionsPerRow: {
         name: "optionsPerRow",
-        type: Number
+        type: Number,
       },
 
       /**
@@ -75,8 +75,8 @@ class SimpleIconPicker extends SimplePicker {
 
       __iconList: {
         name: "__iconList",
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -117,8 +117,8 @@ class SimpleIconPicker extends SimplePicker {
         this.dispatchEvent(
           new CustomEvent("value-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -139,8 +139,8 @@ class SimpleIconPicker extends SimplePicker {
       iconSets.list.length
     ) {
       var iconList = [];
-      iconSets.list.forEach(function(item) {
-        item.getIconNames().forEach(icon => {
+      iconSets.list.forEach(function (item) {
+        item.getIconNames().forEach((icon) => {
           iconList.push(icon);
         });
       });
@@ -182,7 +182,7 @@ class SimpleIconPicker extends SimplePicker {
       options[row][col] = {
         alt: icons[i],
         icon: icons[i],
-        value: icons[i]
+        value: icons[i],
       };
     }
     this.options = options;

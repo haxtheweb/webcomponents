@@ -92,7 +92,7 @@ class EditableListItem extends SimpleColors {
           color: white;
           background-color: var(--simple-colors-default-theme-red-6, #ff5555);
         }
-      `
+      `,
     ];
   }
   // render function
@@ -151,8 +151,8 @@ class EditableListItem extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent("edit-mode-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -175,7 +175,7 @@ class EditableListItem extends SimpleColors {
        * The value that gets bound into the text field
        */
       value: {
-        type: String
+        type: String,
       },
       /**
        * ability to edit the items in the list
@@ -183,13 +183,13 @@ class EditableListItem extends SimpleColors {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * Editing state of the item
        */
       editing: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Permission to edit this
@@ -197,7 +197,7 @@ class EditableListItem extends SimpleColors {
       canEdit: {
         type: Boolean,
         reflect: true,
-        attribute: "can-edit"
+        attribute: "can-edit",
       },
       /**
        * Permission to delete this
@@ -205,8 +205,8 @@ class EditableListItem extends SimpleColors {
       canDelete: {
         type: Boolean,
         reflect: true,
-        attribute: "can-delete"
-      }
+        attribute: "can-delete",
+      },
     };
   }
 
@@ -234,8 +234,8 @@ class EditableListItem extends SimpleColors {
       bubbles: true,
       cancelable: true,
       detail: {
-        element: this
-      }
+        element: this,
+      },
     });
     this.dispatchEvent(evt);
   }

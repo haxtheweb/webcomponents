@@ -38,7 +38,7 @@ class SimpleBlogListing extends SimpleColors {
           width: 100%;
           border: 1px solid #f2f2f0;
         }
-      `
+      `,
     ];
   }
   /**
@@ -65,7 +65,7 @@ class SimpleBlogListing extends SimpleColors {
       ></site-query>
       <div class="listing">
         ${this.__items.map(
-          item => html`
+          (item) => html`
             <simple-blog-overview
               item-id="${item.id}"
               title="${item.title}"
@@ -91,8 +91,8 @@ class SimpleBlogListing extends SimpleColors {
     return {
       ...super.properties,
       __items: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 }

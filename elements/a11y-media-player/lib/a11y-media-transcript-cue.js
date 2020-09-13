@@ -36,7 +36,7 @@ class A11yMediaTranscriptCue extends LitElement {
       active: {
         attribute: "active",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * whether to hide the timestamps
@@ -44,13 +44,13 @@ class A11yMediaTranscriptCue extends LitElement {
       disabled: {
         attribute: "disabled",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * cue end time
        */
       end: {
-        type: String
+        type: String,
       },
       /**
        * whether to hide the timestamps
@@ -58,14 +58,14 @@ class A11yMediaTranscriptCue extends LitElement {
       hideTimestamps: {
         attribute: "hide-timestamps",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * cue start time
        */
       start: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -154,14 +154,12 @@ class A11yMediaTranscriptCue extends LitElement {
             background-color: #ffffff;
           }
         }
-      `
+      `,
     ];
   }
   render() {
     return html`
-      <span id="time">
-        ${this.start} - ${this.end}
-      </span>
+      <span id="time"> ${this.start} - ${this.end} </span>
       <span id="text">
         <slot></slot>
       </span>
@@ -175,8 +173,8 @@ class A11yMediaTranscriptCue extends LitElement {
             detail: {
               element: this,
               oldValue: oldValue,
-              value: this.active
-            }
+              value: this.active,
+            },
           })
         );
     });

@@ -5,7 +5,7 @@ class PaperIconStep extends LitElement {
   }
   static get properties() {
     return {
-      icon: String
+      icon: String,
     };
   }
 }

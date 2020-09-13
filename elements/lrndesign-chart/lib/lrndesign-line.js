@@ -33,7 +33,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
        */
       areaBase: {
         attribute: "area-base",
-        type: Number
+        type: Number,
       },
       /**
        * When set to true, the last grid line on the x-axis
@@ -45,7 +45,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
        */
       fullWidth: {
         attribute: "full-width",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Specify if the lines should be smoothed.
@@ -62,61 +62,61 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
        */
       lineSmooth: {
         attribute: "line-smooth",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * If the line chart should draw an area.
        */
       showArea: {
         attribute: "show-area",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * If the line should be drawn or not.
        */
       showLine: {
         attribute: "show-line",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * If the line should be drawn or not.
        */
       showPoint: {
         attribute: "show-point",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Optional point labels
        */
       showPointLabels: {
         attribute: "show-point-labels",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Optional anchor for point labels
        */
       pointLabelsAnchor: {
         attribute: "point-labels-anchor",
-        type: String
+        type: String,
       },
       /**
        * Optional x-offset for point labels
        */
       pointLabelsOffsetX: {
         attribute: "point-labels-offset-x",
-        type: Number
+        type: Number,
       },
       /**
        * Optional y-offset for point labels
        */
       pointLabelsOffsetY: {
         attribute: "point-labels-offset-y",
-        type: Number
+        type: Number,
       },
       /**
        * Optional interpolation function for point labels
        */
-      pointLabelFunction: {}
+      pointLabelFunction: {},
     };
   }
 
@@ -135,28 +135,28 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
         {
           property: "showArea",
           title: "Show Area",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "showLine",
           title: "Show Link",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "showPoint",
           title: "Show Point",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "fullWidth",
           title: "Full Width",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "showPointLabels",
           title: "Show Point Labels",
-          inputMethod: "boolean"
-        }
+          inputMethod: "boolean",
+        },
       ],
       lineAdvanced = [
         {
@@ -166,23 +166,23 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
           options: {
             middle: "Middle",
             start: "Start",
-            end: "End"
-          }
+            end: "End",
+          },
         },
         {
           property: "pointLabelsOffsetX",
           title: "Point Labels X-Offset",
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "pointLabelsOffsetY",
           title: "Point Labels Y-Offset",
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "lineSmooth",
           title: "Line Smooth",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "areaBase",
@@ -191,8 +191,8 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
             The base for the area chart that will be used
             to close the area shape (is normally 0).
           `,
-          inputMethod: "number"
-        }
+          inputMethod: "number",
+        },
       ];
     haxProps.gizmo.title = "Link Chart";
     haxProps.gizmo.icon = "editor:show-chart";
@@ -229,7 +229,7 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
       lineSmooth: this.lineSmooth,
       showArea: this.showArea,
       showLine: this.showLine,
-      showPoint: this.showPoint
+      showPoint: this.showPoint,
     };
   }
 
@@ -242,14 +242,14 @@ class LrndesignLine extends LrndesignChart(SimpleColors) {
       ? {
           labelOffset: {
             x: this.pointLabelsOffsetX,
-            y: this.pointLabelsOffsetY
+            y: this.pointLabelsOffsetY,
           },
           textAnchor: ["start", "end", "middle"].includes(
             this.pointLabelsAnchor
           )
             ? this.pointLabelsAnchor
             : "middle",
-          labelInterpolationFnc: this.pointLabelFunction || undefined
+          labelInterpolationFnc: this.pointLabelFunction || undefined,
         }
       : undefined;
   }

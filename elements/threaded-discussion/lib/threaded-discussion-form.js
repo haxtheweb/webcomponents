@@ -167,7 +167,7 @@ class ThreadedDiscussionForm extends LitElement {
         button iron-icon {
           margin-left: 5px;
         }
-      `
+      `,
     ];
   }
 
@@ -205,7 +205,7 @@ class ThreadedDiscussionForm extends LitElement {
        * reply button id
        */
       button: {
-        type: String
+        type: String,
       },
       /**
        * label for button
@@ -213,13 +213,13 @@ class ThreadedDiscussionForm extends LitElement {
       buttonLabel: {
         type: String,
         attribute: "button-label",
-        reflect: true
+        reflect: true,
       },
       /**
        * whetherin demo mode
        */
       demo: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * whether form is disabled
@@ -227,13 +227,13 @@ class ThreadedDiscussionForm extends LitElement {
       disabled: {
         type: Boolean,
         attribute: "disabled",
-        reflect: true
+        reflect: true,
       },
       /**
        * field name for comment body
        */
       field: {
-        type: String
+        type: String,
       },
       /**
        * whether form is hidden
@@ -241,7 +241,7 @@ class ThreadedDiscussionForm extends LitElement {
       hidden: {
         type: Boolean,
         attribute: "hidden",
-        reflect: true
+        reflect: true,
       },
       /**
        * button icon
@@ -249,13 +249,13 @@ class ThreadedDiscussionForm extends LitElement {
       icon: {
         type: String,
         attribute: "icon",
-        reflect: true
+        reflect: true,
       },
       /**
        * form action on submit
        */
       submit: {
-        type: String
+        type: String,
       },
       /**
        * label for textarea
@@ -263,14 +263,14 @@ class ThreadedDiscussionForm extends LitElement {
       textareaLabel: {
         type: String,
         attribute: "textarea-label",
-        reflect: true
+        reflect: true,
       },
       /**
        * thread id if this form is replying to a thread
        */
       thread: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -292,8 +292,8 @@ class ThreadedDiscussionForm extends LitElement {
           composed: true,
           detail: {
             textarea: this.shadowRoot.querySelector("textarea"),
-            thread: this.thread
-          }
+            thread: this.thread,
+          },
         })
       );
       return false;
@@ -303,7 +303,7 @@ class ThreadedDiscussionForm extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

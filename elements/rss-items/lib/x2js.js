@@ -11,7 +11,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-(function(a, b) {
+(function (a, b) {
   if (typeof define === "function" && define.amd) {
     define([], b);
   } else {
@@ -21,8 +21,8 @@ limitations under the License.
       a.X2JS = b();
     }
   }
-})(this, function() {
-  return function(z) {
+})(this, function () {
+  return function (z) {
     var t = "1.2.0";
     z = z || {};
     i();
@@ -59,7 +59,7 @@ limitations under the License.
       TEXT_NODE: 3,
       CDATA_SECTION_NODE: 4,
       COMMENT_NODE: 8,
-      DOCUMENT_NODE: 9
+      DOCUMENT_NODE: 9,
     };
     function u() {}
     function x(B) {
@@ -278,7 +278,7 @@ limitations under the License.
           }
           delete K.__cnt;
           if (z.enableToStringFunc && (K.__text != null || K.__cdata != null)) {
-            K.toString = function() {
+            K.toString = function () {
               return (
                 (this.__text != null ? this.__text : "") +
                 (this.__cdata != null ? this.__cdata : "")
@@ -461,7 +461,7 @@ limitations under the License.
       B += d(I);
       return B;
     }
-    this.parseXmlString = function(D) {
+    this.parseXmlString = function (D) {
       var F = window.ActiveXObject || "ActiveXObject" in window;
       if (D === undefined) {
         return null;
@@ -500,7 +500,7 @@ limitations under the License.
       }
       return E;
     };
-    this.asArray = function(B) {
+    this.asArray = function (B) {
       if (B === undefined || B == null) {
         return [];
       } else {
@@ -511,7 +511,7 @@ limitations under the License.
         }
       }
     };
-    this.toXmlDateTime = function(B) {
+    this.toXmlDateTime = function (B) {
       if (B instanceof Date) {
         return B.toISOString();
       } else {
@@ -522,17 +522,17 @@ limitations under the License.
         }
       }
     };
-    this.asDateTime = function(B) {
+    this.asDateTime = function (B) {
       if (typeof B == "string") {
         return a(B);
       } else {
         return B;
       }
     };
-    this.xml2json = function(B) {
+    this.xml2json = function (B) {
       return A(B);
     };
-    this.xml_str2json = function(B) {
+    this.xml_str2json = function (B) {
       var C = this.parseXmlString(B);
       if (C != null) {
         return this.xml2json(C);
@@ -540,14 +540,14 @@ limitations under the License.
         return null;
       }
     };
-    this.json2xml_str = function(B) {
+    this.json2xml_str = function (B) {
       return e(B, "");
     };
-    this.json2xml = function(C) {
+    this.json2xml = function (C) {
       var B = this.json2xml_str(C);
       return this.parseXmlString(B);
     };
-    this.getVersion = function() {
+    this.getVersion = function () {
       return t;
     };
   };

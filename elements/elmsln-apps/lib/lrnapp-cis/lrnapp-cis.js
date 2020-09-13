@@ -171,7 +171,7 @@ class LrnappCis extends PolymerElement {
           style="text-align:right;font-size:.5em;padding-right:1em;"
           >Displaying [[courses.length]] of [[originalCourses.length]]</span
         >
-        <paper-dropdown-menu label="Course" hidden\$="[[!courses]]">
+        <paper-dropdown-menu label="Course" hidden$="[[!courses]]">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
@@ -190,7 +190,7 @@ class LrnappCis extends PolymerElement {
             </template>
           </paper-listbox>
         </paper-dropdown-menu>
-        <paper-dropdown-menu label="Program" hidden\$="[[!programs]]">
+        <paper-dropdown-menu label="Program" hidden$="[[!programs]]">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
@@ -209,7 +209,7 @@ class LrnappCis extends PolymerElement {
             </template>
           </paper-listbox>
         </paper-dropdown-menu>
-        <paper-dropdown-menu label="Academic home" hidden\$="[[!academics]]">
+        <paper-dropdown-menu label="Academic home" hidden$="[[!academics]]">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
@@ -240,13 +240,13 @@ class LrnappCis extends PolymerElement {
             <iron-list id="ironlist" items="[[courses]]" as="course" grid="">
               <template>
                 <paper-button
-                  data-course-id\$="[[course.id]]"
+                  data-course-id$="[[course.id]]"
                   class="coursecard-wrapper"
                   on-click="_loadCourseUrl"
                 >
                   <lrnapp-cis-course-card
                     elevation="2"
-                    data-course-id\$="[[course.id]]"
+                    data-course-id$="[[course.id]]"
                     name="[[course.attributes.name]]"
                     image="[[course.attributes.image]]"
                     title="[[course.attributes.title]]"
@@ -296,13 +296,13 @@ class LrnappCis extends PolymerElement {
                   <h4>Details</h4>
                   <ul>
                     <li
-                      hidden\$="[[!activeCourse.relationships.academic.attributes.name]]"
+                      hidden$="[[!activeCourse.relationships.academic.attributes.name]]"
                     >
                       Academic unit:
                       [[activeCourse.relationships.academic.attributes.name]]
                     </li>
                     <li
-                      hidden\$="[[!activeCourse.relationships.program.attributes.name]]"
+                      hidden$="[[!activeCourse.relationships.program.attributes.name]]"
                     >
                       Program:
                       [[activeCourse.relationships.program.attributes.name]]
@@ -320,14 +320,14 @@ class LrnappCis extends PolymerElement {
                         on-click="_makeService"
                         color="grey lighten-4"
                         icon-class="grey lighten-5"
-                        data-machine-name\$="[[service.machine_name]]"
+                        data-machine-name$="[[service.machine_name]]"
                       >
                         <lrn-icon
-                          data-machine-name\$="[[service.machine_name]]"
+                          data-machine-name$="[[service.machine_name]]"
                           icon="[[service.icon]]"
                           class="elmsln-hover-icon"
                         ></lrn-icon>
-                        <span data-machine-name\$="[[service.machine_name]]"
+                        <span data-machine-name$="[[service.machine_name]]"
                           >Make the [[service.title]] service</span
                         >
                       </lrnsys-button>
@@ -430,7 +430,7 @@ class LrnappCis extends PolymerElement {
             <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
               ><lrn-icon
                 icon="[[_activeService.icon]]"
-                class\$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
+                class$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
               ></lrn-icon
             ></responsive-grid-col>
             <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
@@ -504,40 +504,40 @@ class LrnappCis extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
 
       /**
        * The load initial data
        */
       _cisResponse: {
-        type: Object
+        type: Object,
       },
 
       /**
        * Load individual course data
        */
       _courseResponse: {
-        type: Object
+        type: Object,
       },
 
       /**
        * Load service creation response
        */
       _makeServiceResponse: {
-        type: Object
+        type: Object,
       },
 
       /**
@@ -546,7 +546,7 @@ class LrnappCis extends PolymerElement {
       courses: {
         type: Array,
         value: [],
-        computed: "_coursesCompute(originalCourses, queryParams)"
+        computed: "_coursesCompute(originalCourses, queryParams)",
       },
 
       /**
@@ -555,7 +555,7 @@ class LrnappCis extends PolymerElement {
       originalCourses: {
         type: Array,
         value: [],
-        notify: true
+        notify: true,
       },
 
       /**
@@ -563,7 +563,7 @@ class LrnappCis extends PolymerElement {
        */
       programs: {
         type: Array,
-        value: []
+        value: [],
       },
 
       /**
@@ -571,28 +571,28 @@ class LrnappCis extends PolymerElement {
        */
       academics: {
         type: Array,
-        value: []
+        value: [],
       },
 
       /**
        * sourcePath for data.
        */
       sourcePath: {
-        type: String
+        type: String,
       },
 
       /**
        * pathway to access info about a single course.
        */
       courseDataPath: {
-        type: String
+        type: String,
       },
 
       /**
        * pathway to creating new service instances
        */
       makeServicePath: {
-        type: String
+        type: String,
       },
 
       /**
@@ -600,7 +600,7 @@ class LrnappCis extends PolymerElement {
        */
       endPoint: {
         type: String,
-        value: "/"
+        value: "/",
       },
 
       /**
@@ -608,7 +608,7 @@ class LrnappCis extends PolymerElement {
        */
       basePath: {
         type: String,
-        value: "/"
+        value: "/",
       },
 
       /**
@@ -616,12 +616,12 @@ class LrnappCis extends PolymerElement {
        */
       activeCourse: {
         type: Array,
-        value: null
+        value: null,
       },
       queryParams: {
         type: Object,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -677,7 +677,7 @@ class LrnappCis extends PolymerElement {
       return [];
     }
 
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }
@@ -737,7 +737,7 @@ class LrnappCis extends PolymerElement {
           title: this.services[key].attributes.title,
           url: this.services[key].attributes.url,
           weight: this.services[key].attributes.weight,
-          _exists: false
+          _exists: false,
         };
       }
     } // convert to array after keys in place for the object
@@ -747,7 +747,7 @@ class LrnappCis extends PolymerElement {
     ); // sort items based on weight of the things in the network
     // so we have a consistent order to things
 
-    courseObject.topology.Network.sort(function(a, b) {
+    courseObject.topology.Network.sort(function (a, b) {
       return a.weight - b.weight;
     });
     return courseObject;
@@ -763,7 +763,7 @@ class LrnappCis extends PolymerElement {
     var tmp = {
       courses: [],
       programs: [],
-      academics: []
+      academics: [],
     };
     var programs = [];
     var academics = []; // get the CIS response's data and convert to array ahead of time
@@ -783,11 +783,11 @@ class LrnappCis extends PolymerElement {
       tmp.courses[course.id] = course;
     } // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
 
-    tmp.programs.forEach(function(element) {
+    tmp.programs.forEach(function (element) {
       programs.push(element);
     }); // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
 
-    tmp.academics.forEach(function(element) {
+    tmp.academics.forEach(function (element) {
       academics.push(element);
     });
     this.$.loading.hidden = true;
@@ -802,7 +802,7 @@ class LrnappCis extends PolymerElement {
     var normalizedEvent = dom(e);
     let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
     const network = this.activeCourse.topology.Network;
-    let service = network.filter(service => {
+    let service = network.filter((service) => {
       if (service.machine_name !== active) {
         return false;
       }
@@ -814,7 +814,7 @@ class LrnappCis extends PolymerElement {
       service = service.pop();
       this.$.makeservice.params = {
         course: this.activeCourse.attributes.machine_name,
-        service: service.machine_name
+        service: service.machine_name,
       };
       this._activeService = service; // confirm via paper prompt
 
@@ -836,7 +836,7 @@ class LrnappCis extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("route-change", this._routeChange.bind(this));
     });
   }
@@ -861,7 +861,7 @@ class LrnappCis extends PolymerElement {
 
     var active = local.getAttribute("data-course-id"); // find the course by it's unique id and filter just to it
 
-    let findCourse = this.originalCourses.filter(course => {
+    let findCourse = this.originalCourses.filter((course) => {
       if (course.id !== active) {
         return false;
       }
@@ -876,7 +876,7 @@ class LrnappCis extends PolymerElement {
     this.activeCourse = findCourse; // formulate the post data
 
     this._courseDataParams = {
-      id: this.activeCourse.id
+      id: this.activeCourse.id,
     }; // @todo look at query cache mechanism to skip calls
     // if they've already happened. lrnapp-book has some stuff to do this
 
@@ -896,7 +896,7 @@ class LrnappCis extends PolymerElement {
     const root = this;
     let filteredCourses = []; // filter the courses by the query params
 
-    filteredCourses = originalCourses.filter(course => {
+    filteredCourses = originalCourses.filter((course) => {
       if (typeof root.queryParams.course !== "undefined") {
         if (course.id !== root.queryParams.course) {
           return false;

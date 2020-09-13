@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import {
   winEventsElement,
-  haxElementToNode
+  haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
 
 /**
@@ -29,13 +29,13 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         .item-wrapper {
           text-align: center;
         }
-      `
+      `,
     ];
   }
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.__gizmoList = [];
     this.filtered = [];
@@ -64,7 +64,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
       ></grafitto-filter>
       <div class="item-wrapper">
         ${this.filtered.map(
-          gizmo => html`
+          (gizmo) => html`
             <hax-tray-button
               voice-command="insert ${gizmo.title}"
               draggable="true"
@@ -89,11 +89,11 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   static get properties() {
     return {
       filtered: {
-        type: Array
+        type: Array,
       },
       __gizmoList: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   /**

@@ -8,8 +8,8 @@ export default {
   component: "elmsln-studio",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities();
 
@@ -22,7 +22,7 @@ export const Studio = () => {
     new URL("./demo/images/image5.jpg", import.meta.url),
     new URL("./demo/images/image6.jpg", import.meta.url),
     new URL("./demo/images/image7.jpg", import.meta.url),
-    new URL("./demo/images/image8.jpg", import.meta.url)
+    new URL("./demo/images/image8.jpg", import.meta.url),
   ];
 
   console.log(
@@ -72,7 +72,7 @@ export const Studio = () => {
       submissionsSource: new URL(
         `./demo/data/webcomponentspsu/submissions.json`,
         import.meta.url
-      )
+      ),
     },
     [],
     [
@@ -89,7 +89,7 @@ export const Studio = () => {
       "route",
       "params",
       "query",
-      "data"
+      "data",
     ]
   );
 };

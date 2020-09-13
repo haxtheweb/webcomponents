@@ -61,24 +61,24 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
     return {
       schema: {
         type: Object,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       value: {
         type: String,
         notify: true,
-        value: null
+        value: null,
       },
       error: {
         type: String,
         observer: "_errorChanged",
-        value: null
+        value: null,
       },
       _items: {
         type: Object,
         value() {
           return {};
-        }
-      }
+        },
+      },
     };
   }
   _schemaChanged() {
@@ -86,12 +86,12 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
     var inputEl = this.shadowRoot.querySelector("#dropdown");
 
     if (schema.component && schema.component.properties) {
-      Object.keys(schema.component.properties).forEach(function(prop) {
+      Object.keys(schema.component.properties).forEach(function (prop) {
         inputEl[prop] = schema.component.properties[prop];
       });
     }
 
-    this._items = schema.enum.filter(function(item) {
+    this._items = schema.enum.filter(function (item) {
       return item !== null;
     });
 

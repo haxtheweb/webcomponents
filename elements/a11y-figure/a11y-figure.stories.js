@@ -8,8 +8,8 @@ export default {
   component: "a11y-figure",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 
@@ -35,14 +35,14 @@ export const A11yFigureStory = () =>
             accumsan.
           </details>
         </figcaption>
-      </figure>`
+      </figure>`,
     },
     [
       {
         slot: "",
         title: "Unnamed Slot",
         description: "<figure> element",
-        inputMethod: "code-editor"
+        inputMethod: "code-editor",
       },
       { css: "--a11y-figure-summary-fontSize" },
       { css: "--a11y-figure-summary-color" },
@@ -67,7 +67,7 @@ export const A11yFigureStory = () =>
       { css: "--a11y-figure-borderRadius" },
       { css: "--a11y-figure-padding" },
       { css: "--a11y-figure-maxHeight" },
-      { css: "maxWidth" }
+      { css: "maxWidth" },
     ],
     ["summary", "details", "figcaption", "imgSrc", "imgAlt"]
   );

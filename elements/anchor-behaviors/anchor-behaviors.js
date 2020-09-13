@@ -21,7 +21,7 @@ window.AnchorBehaviors.getTarget = (element = null) => {
               .replace(/&/g, '","')
               .replace(/=/g, '":"')}"}`
           : "{}",
-        isJSON = json => {
+        isJSON = (json) => {
           try {
             JSON.parse(json);
           } catch (e) {
@@ -61,12 +61,16 @@ window.AnchorBehaviors.getTarget = (element = null) => {
       document.getElementById(window.AnchorBehaviors.params.id) ||
       document.getElementById(`#${window.AnchorBehaviors.params.id}`) ||
       document.querySelector(
-        `[resource="#${window.AnchorBehaviors.params.id ||
-          window.AnchorBehaviors.params.resource}"]`
+        `[resource="#${
+          window.AnchorBehaviors.params.id ||
+          window.AnchorBehaviors.params.resource
+        }"]`
       ) ||
       document.querySelector(
-        `[resource="${window.AnchorBehaviors.params.id ||
-          window.AnchorBehaviors.params.resource}"]`
+        `[resource="${
+          window.AnchorBehaviors.params.id ||
+          window.AnchorBehaviors.params.resource
+        }"]`
       ) ||
       testElement(element, window.AnchorBehaviors.params) ||
       null;

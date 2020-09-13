@@ -6,5 +6,5 @@ module.exports = {
   open: true,
   dedupe: true,
   rootDir: "../../",
-  appIndex: path.join(process.cwd(), "index.html")
+  appIndex: path.join(process.cwd(), "index.html"),
 };

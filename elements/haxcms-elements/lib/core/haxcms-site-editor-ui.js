@@ -165,7 +165,7 @@ class HAXCMSSiteEditorUI extends LitElement {
           --simple-tooltip-font-size: 14px;
           --simple-tooltip-width: 145px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -183,8 +183,12 @@ class HAXCMSSiteEditorUI extends LitElement {
     this.editMode = false;
     this.manifestEditMode = false;
     setTimeout(() => {
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js"
+      );
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@polymer/paper-icon-button/paper-icon-button.js");
@@ -320,37 +324,37 @@ class HAXCMSSiteEditorUI extends LitElement {
       let ary = [
         {
           varPath: "getNodeFieldsPath",
-          selector: "#editdetails"
+          selector: "#editdetails",
         },
         {
           varPath: "deleteNodePath",
-          selector: "#deletebutton"
+          selector: "#deletebutton",
         },
         {
           varPath: "saveNodePath",
-          selector: "#editbutton"
+          selector: "#editbutton",
         },
         {
           varPath: "createNodePath",
-          selector: "#addbutton"
+          selector: "#addbutton",
         },
         {
           varPath: "saveOutlinePath",
-          selector: "#outlinebutton"
+          selector: "#outlinebutton",
         },
         {
           varPath: "saveManifestPath",
           selector: "#manifestbutton",
-          dep: "getSiteFieldsPath"
+          dep: "getSiteFieldsPath",
         },
         {
           varPath: "getSiteFieldsPath",
           selector: "#manifestbutton",
-          dep: "saveManifestPath"
-        }
+          dep: "saveManifestPath",
+        },
       ];
       // see which features should be enabled
-      ary.forEach(pair => {
+      ary.forEach((pair) => {
         if (
           window.appSettings &&
           window.appSettings[pair.varPath] &&
@@ -384,10 +388,10 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
-    this.shadowRoot.querySelectorAll("[voice-command]").forEach(el => {
+    this.shadowRoot.querySelectorAll("[voice-command]").forEach((el) => {
       if (el.getAttribute("id") == "editbutton") {
         this.dispatchEvent(
           new CustomEvent("hax-add-voice-command", {
@@ -397,8 +401,8 @@ class HAXCMSSiteEditorUI extends LitElement {
             detail: {
               command: ":name: save (this) page",
               context: el,
-              callback: "click"
-            }
+              callback: "click",
+            },
           })
         );
       } else if (el.getAttribute("id") == "manifestbutton") {
@@ -410,8 +414,8 @@ class HAXCMSSiteEditorUI extends LitElement {
             detail: {
               command: ":name: cancel site settings",
               context: el,
-              callback: "click"
-            }
+              callback: "click",
+            },
           })
         );
       }
@@ -423,8 +427,8 @@ class HAXCMSSiteEditorUI extends LitElement {
           detail: {
             command: ":name: " + el.getAttribute("voice-command"),
             context: el,
-            callback: "click"
-          }
+            callback: "click",
+          },
         })
       );
     });
@@ -437,7 +441,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("edit-mode-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -447,7 +451,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("manifest-edit-mode-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -461,33 +465,33 @@ class HAXCMSSiteEditorUI extends LitElement {
     return {
       userName: {
         type: String,
-        attribute: "user-name"
+        attribute: "user-name",
       },
       userPicture: {
         type: String,
-        attribute: "user-picture"
+        attribute: "user-picture",
       },
       backLink: {
-        type: String
+        type: String,
       },
       backText: {
-        type: String
+        type: String,
       },
       __editIcon: {
-        type: String
+        type: String,
       },
       __editText: {
-        type: String
+        type: String,
       },
       __settingsText: {
-        type: String
+        type: String,
       },
       /**
        * small visual lock that events break on initial paint
        */
       painting: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * page allowed
@@ -495,7 +499,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       pageAllowed: {
         type: Boolean,
         attribute: "page-allowed",
-        reflect: true
+        reflect: true,
       },
       /**
        * if the page is in an edit state or not
@@ -503,7 +507,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * Manifest editing state
@@ -511,48 +515,48 @@ class HAXCMSSiteEditorUI extends LitElement {
       manifestEditMode: {
         type: Boolean,
         attribute: "manifest-edit-mode",
-        reflect: true
+        reflect: true,
       },
       activeTitle: {
         type: String,
-        attribute: "active-title"
+        attribute: "active-title",
       },
       manifest: {
-        type: Object
+        type: Object,
       },
       icon: {
-        type: String
+        type: String,
       },
       dashboardOpened: {
         type: Boolean,
         reflect: true,
-        attribute: "dashboard-opened"
-      }
+        attribute: "dashboard-opened",
+      },
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    autorun(reaction => {
+    autorun((reaction) => {
       if (store.userData) {
         this.userName = toJS(store.userData.userName);
         this.userPicture = toJS(store.userData.userPicture);
       }
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.icon = "hax:site-settings";
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.dashboardOpened = toJS(store.dashboardOpened);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
       if (activeItem && activeItem.id) {
         this.activeTitle = activeItem.title;
@@ -590,7 +594,7 @@ class HAXCMSSiteEditorUI extends LitElement {
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: store.activeItem
+          detail: store.activeItem,
         })
       );
     }
@@ -598,7 +602,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -607,7 +611,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       bubbles: true,
       composed: true,
       cancelable: false,
-      detail: e.target
+      detail: e.target,
     });
     window.dispatchEvent(evt);
   }
@@ -618,14 +622,14 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: e.detail
+        detail: e.detail,
       })
     );
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -642,7 +646,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         title: "Title",
         description: "Main title for this page in menus",
         inputMethod: "textfield",
-        required: true
+        required: true,
       },
       {
         property: "location",
@@ -650,7 +654,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         description:
           "What is displayed in the bnowser bar after your site name / URL",
         inputMethod: "textfield",
-        required: true
+        required: true,
       },
       {
         property: "parentId",
@@ -658,8 +662,8 @@ class HAXCMSSiteEditorUI extends LitElement {
         description: "Parent id",
         inputMethod: "textfield",
         hidden: true,
-        required: true
-      }
+        required: true,
+      },
     ];
     // default values
     this.__newForm.value = {
@@ -669,7 +673,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       parentId:
         store.activeItem && store.activeItem.id
           ? store.activeItem.id
-          : store.manifest.id
+          : store.manifest.id,
     };
     let b1 = document.createElement("paper-button");
     let icon = document.createElement("iron-icon");
@@ -693,13 +697,13 @@ class HAXCMSSiteEditorUI extends LitElement {
         title: "Add a new page",
         styles: {
           "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw"
+          "--simple-modal-max-width": "70vw",
         },
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#addbutton"),
         clone: false,
-        modal: true
-      }
+        modal: true,
+      },
     });
     window.dispatchEvent(evt);
   }
@@ -712,8 +716,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       composed: true,
       cancelable: false,
       detail: {
-        values: this.__newForm.value
-      }
+        values: this.__newForm.value,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -734,7 +738,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: values
+        detail: values,
       })
     );
     // fire event to close the modal
@@ -743,7 +747,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -752,9 +756,7 @@ class HAXCMSSiteEditorUI extends LitElement {
    */
   _deleteButtonTap(e) {
     let c = document.createElement("span");
-    c.innerHTML = `"${
-      store.activeItem.title
-    }" will be removed from the outline but its content stays on the file system.`;
+    c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
     let b1 = document.createElement("paper-button");
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:delete";
@@ -777,13 +779,13 @@ class HAXCMSSiteEditorUI extends LitElement {
         title: "Are you sure you want to delete this page?",
         styles: {
           "--simple-modal-width": "70vw",
-          "--simple-modal-max-width": "70vw"
+          "--simple-modal-max-width": "70vw",
         },
         elements: { content: c, buttons: b },
         invokedBy: this.shadowRoot.querySelector("#deletebutton"),
         clone: false,
-        modal: true
-      }
+        modal: true,
+      },
     });
     window.dispatchEvent(evt);
   }
@@ -796,8 +798,8 @@ class HAXCMSSiteEditorUI extends LitElement {
       composed: true,
       cancelable: false,
       detail: {
-        item: store.activeItem
-      }
+        item: store.activeItem,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -815,15 +817,15 @@ class HAXCMSSiteEditorUI extends LitElement {
           "--simple-modal-width": "70vw",
           "--simple-modal-height": "70vh",
           "--simple-modal-max-width": "70vw",
-          "--simple-modal-max-height": "70vh"
+          "--simple-modal-max-height": "70vh",
         },
         elements: {
-          content: document.createElement("haxcms-outline-editor-dialog")
+          content: document.createElement("haxcms-outline-editor-dialog"),
         },
         invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,
-        modal: true
-      }
+        modal: true,
+      },
     });
     window.dispatchEvent(evt);
   }
@@ -835,7 +837,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
     window.dispatchEvent(
@@ -843,7 +845,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: e.target
+        detail: e.target,
       })
     );
   }
@@ -873,7 +875,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: newValue
+        detail: newValue,
       })
     );
   }
@@ -886,7 +888,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: newValue
+        detail: newValue,
       })
     );
   }

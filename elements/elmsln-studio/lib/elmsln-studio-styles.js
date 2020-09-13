@@ -4,7 +4,7 @@
  */
 import { css } from "lit-element";
 
-const ElmslnStudioStyles = function(SuperClass) {
+const ElmslnStudioStyles = function (SuperClass) {
   return class extends SuperClass {
     static get styles() {
       return [
@@ -217,7 +217,7 @@ const ElmslnStudioStyles = function(SuperClass) {
               height: calc(2 * var(--elmsln-studio-FontSize, 16px));
             }
           }
-        `
+        `,
       ];
     }
   };

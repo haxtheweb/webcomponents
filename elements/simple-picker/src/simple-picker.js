@@ -89,16 +89,16 @@ class SimplePicker extends LitElement {
           icon: null,
           style: null,
           alt: null,
-          value: null
-        }
-      ]
+          value: null,
+        },
+      ],
     ];
     this.titleAsHtml = false;
     this.value = null;
     this.__activeDesc = "option-0-0";
     this.__hasLabel = true;
     this.__selectedOption = {};
-    this.addEventListener("blur", function(e) {
+    this.addEventListener("blur", function (e) {
       this.expanded = false;
     });
     // map our imported properties json to real props on the element
@@ -128,7 +128,7 @@ class SimplePicker extends LitElement {
      */
     this.dispatchEvent(
       new CustomEvent("changed", {
-        detail: this
+        detail: this,
       })
     );
   }
@@ -156,9 +156,7 @@ class SimplePicker extends LitElement {
    * @returns {void}
    */
   _goToOption(rownum, colnum) {
-    let targetId = html`
-        option-${rownum}-${colnum}
-      `,
+    let targetId = html` option-${rownum}-${colnum} `,
       target = this.shadowRoot.querySelector("#" + targetId),
       active = this.shadowRoot.querySelector("#" + this.__activeDesc);
     if (target !== null) {
@@ -281,7 +279,7 @@ class SimplePicker extends LitElement {
      */
     this.dispatchEvent(
       new CustomEvent("value-changed", {
-        detail: this
+        detail: this,
       })
     );
   }
@@ -379,7 +377,7 @@ class SimplePicker extends LitElement {
    * life cycle, element is removed from DOM
    */
   disconnectedCallback() {
-    this.removeEventListener("blur", function(e) {
+    this.removeEventListener("blur", function (e) {
       this.expanded = false;
     });
     super.disconnectedCallback();

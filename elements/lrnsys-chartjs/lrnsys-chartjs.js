@@ -33,12 +33,12 @@ class LrnsysChartjs extends PolymerElement {
     return {
       labels: {
         type: Array,
-        value: ["January", "February", "March", "April", "May", "June", "July"]
+        value: ["January", "February", "March", "April", "May", "June", "July"],
       },
       data: {
         type: Object,
-        value: {}
-      }
+        value: {},
+      },
     };
   }
   ready() {
@@ -55,7 +55,7 @@ class LrnsysChartjs extends PolymerElement {
           pointBorderColor: "#fff",
           pointHoverBackgroundColor: "#fff",
           pointHoverBorderColor: "rgba(220,220,220,1)",
-          data: [65, 59, 80, 81, 56, 55, 40]
+          data: [65, 59, 80, 81, 56, 55, 40],
         },
         {
           label: "My Second dataset",
@@ -66,9 +66,9 @@ class LrnsysChartjs extends PolymerElement {
           pointBorderColor: "#fff",
           pointHighlightFill: "#fff",
           pointHoverBorderColor: "rgba(151,187,205,1)",
-          data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
+          data: [28, 48, 40, 19, 86, 27, 90],
+        },
+      ],
     };
   }
 }

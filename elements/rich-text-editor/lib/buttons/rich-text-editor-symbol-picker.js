@@ -60,8 +60,8 @@ class RichTextEditorSymbolPicker extends RichTextEditorPickerBehaviors(
        */
       symbolTypes: {
         name: "symbolTypes",
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 

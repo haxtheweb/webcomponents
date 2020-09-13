@@ -4,7 +4,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -13,8 +13,8 @@ export default {
   component: "lorem-data",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const LoremDataStory = () => {
@@ -36,19 +36,19 @@ export const LoremDataStory = () => {
           undergrad: { type: "boolean" },
           campus: {
             type: "option",
-            options: ["WC", "Altoona", "Bubois"]
+            options: ["WC", "Altoona", "Bubois"],
           },
           instructor: {
             type: "option",
             weightedOptions: [
               { value: true, weight: 1 },
-              { value: false, weight: 15 }
-            ]
-          }
-        }
+              { value: false, weight: 15 },
+            ],
+          },
+        },
       },
       min: 15,
-      max: 30
+      max: 30,
     },
     "projects.json": {
       type: "array",
@@ -73,22 +73,22 @@ export const LoremDataStory = () => {
                     schema: {
                       date: { type: "date" },
                       title: { type: "sentence" },
-                      body: { type: "paragraph" }
-                    }
-                  }
-                }
-              }
+                      body: { type: "paragraph" },
+                    },
+                  },
+                },
+              },
             },
             min: 4,
-            max: 8
-          }
-        }
+            max: 8,
+          },
+        },
       },
       min: 3,
-      max: 5
-    }
+      max: 5,
+    },
   };
   return utils.makeElementFromClass(LoremData, {
-    schemas: schemas
+    schemas: schemas,
   });
 };

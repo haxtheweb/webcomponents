@@ -40,7 +40,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -56,7 +56,9 @@ class HAXCMSEditorBuilder extends HTMLElement {
 
   editorLoaded(e) {
     if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js"
+      );
       store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
         "haxcms-site-editor-ui"
       );
@@ -99,7 +101,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         } else {
           script.src = `../../system/api/connectionSettings`;
         }
-        fetch(script.src).then(response => {
+        fetch(script.src).then((response) => {
           if (response.status != 404) {
             document.documentElement.appendChild(script);
           }
@@ -113,7 +115,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
         // delay import slightly to ensure global scope is there
         import(`${basePath}backends/${store.cmsSiteEditorBackend.tag}.js`).then(
-          e => {
+          (e) => {
             if (!store.cmsSiteEditorBackend.instance) {
               store.cmsSiteEditorBackend.instance = document.createElement(
                 store.cmsSiteEditorBackend.tag

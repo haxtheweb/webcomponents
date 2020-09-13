@@ -35,7 +35,7 @@ class PunnettSquare extends LitElement {
        * Editable - allow users to change the varient values
        */
       editable: { type: Boolean },
-      __results: { type: Array }
+      __results: { type: Array },
     };
   }
 
@@ -53,7 +53,7 @@ class PunnettSquare extends LitElement {
       variant = this.__sortVariant(variant);
       let item = {
         variant,
-        ref: result
+        ref: result,
       };
       _renderedResults = [..._renderedResults, item];
     }
@@ -61,10 +61,7 @@ class PunnettSquare extends LitElement {
   }
 
   __sortVariant(variant) {
-    return variant
-      .split("")
-      .sort()
-      .join("");
+    return variant.split("").sort().join("");
   }
 
   /**
@@ -72,9 +69,9 @@ class PunnettSquare extends LitElement {
    */
   __ensureArray(value) {
     let toplevel =
-      typeof value === "string" ? value.split(",").map(i => i.trim()) : [];
-    return toplevel.map(i =>
-      typeof i === "string" ? i.split("").map(i => i.trim()) : []
+      typeof value === "string" ? value.split(",").map((i) => i.trim()) : [];
+    return toplevel.map((i) =>
+      typeof i === "string" ? i.split("").map((i) => i.trim()) : []
     );
   }
 
@@ -135,24 +132,20 @@ class PunnettSquare extends LitElement {
             ? html`
                 <paper-input
                   value="${this.variant1}"
-                  @value-changed=${e => (this.variant1 = e.detail.value)}
+                  @value-changed=${(e) => (this.variant1 = e.detail.value)}
                 ></paper-input>
               `
-            : html`
-                ${this.variant1}
-              `
+            : html` ${this.variant1} `
         }</div>
         Variant2: <div class="input">${
           this.editable
             ? html`
                 <paper-input
                   value="${this.variant2}"
-                  @value-changed=${e => (this.variant2 = e.detail.value)}
+                  @value-changed=${(e) => (this.variant2 = e.detail.value)}
                 ></paper-input>
               `
-            : html`
-                ${this.variant2}
-              `
+            : html` ${this.variant2} `
         }</div>
       </div>
 
@@ -161,27 +154,19 @@ class PunnettSquare extends LitElement {
           <tr>
             <th></th>
             ${value1.map(
-              allele1 =>
-                html`
-                  ${allele1.map(
-                    i =>
-                      html`
-                        <th>${i}</th>
-                      `
-                  )}
-                `
+              (allele1) => html` ${allele1.map((i) => html` <th>${i}</th> `)} `
             )}
           </tr>
         <tbody>
           ${value2.map((allele2, index) =>
             allele2.map(
-              allele =>
+              (allele) =>
                 html`
                   <tr>
                     <th>${allele}</th>
-                    ${value1.map(v1 =>
+                    ${value1.map((v1) =>
                       v1.map(
-                        allele1 =>
+                        (allele1) =>
                           html`
                             <td>
                               ${this.renderVariant(`${allele1}${allele}`)}
@@ -201,15 +186,11 @@ class PunnettSquare extends LitElement {
 
   renderVariant(variant) {
     const _variant = this.__sortVariant(variant);
-    const result = this.__results.find(i => i.variant === _variant);
+    const result = this.__results.find((i) => i.variant === _variant);
     if (result) {
-      return html`
-        ${unsafeHTML(result.ref.outerHTML)}
-      `;
+      return html` ${unsafeHTML(result.ref.outerHTML)} `;
     } else {
-      return html`
-        ${_variant}
-      `;
+      return html` ${_variant} `;
     }
   }
 }

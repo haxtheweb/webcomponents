@@ -21,7 +21,7 @@ class MdBlock extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -55,13 +55,13 @@ class MdBlock extends LitElement {
           {
             type: "markdown",
             source: "source",
-            src: "source"
-          }
+            src: "source",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -70,35 +70,35 @@ class MdBlock extends LitElement {
             title: "Source",
             description: "Source file for markdown",
             inputMethod: "textfield",
-            icon: "icons:link"
-          }
+            icon: "icons:link",
+          },
         ],
         configure: [
           {
             property: "markdown",
             title: "Markdown",
             description: "Raw markdown",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "source",
             title: "Source",
             description: "Source file for markdown",
-            inputMethod: "haxupload"
-          }
+            inputMethod: "haxupload",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: "md-block",
           properties: {
             source:
-              "https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md"
+              "https://raw.githubusercontent.com/elmsln/HAXcms/master/HAXDocs.md",
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding
@@ -107,11 +107,11 @@ class MdBlock extends LitElement {
       ...super.properties,
 
       source: {
-        type: String
+        type: String,
       },
       markdown: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   constructor() {

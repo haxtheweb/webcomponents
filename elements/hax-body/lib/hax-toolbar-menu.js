@@ -42,7 +42,7 @@ class HaxToolbarMenu extends LitElement {
         paper-listbox {
           padding: 0;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -95,28 +95,28 @@ class HaxToolbarMenu extends LitElement {
        */
       corner: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       mini: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       action: {
-        type: Boolean
+        type: Boolean,
       },
       icon: {
-        type: String
+        type: String,
       },
       tooltip: {
-        type: String
+        type: String,
       },
       tooltipDirection: {
         type: String,
-        attribute: "tooltip-direction"
+        attribute: "tooltip-direction",
       },
       selected: {
-        type: Number
-      }
+        type: Number,
+      },
     };
   }
   /**
@@ -129,7 +129,7 @@ class HaxToolbarMenu extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("selected-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }

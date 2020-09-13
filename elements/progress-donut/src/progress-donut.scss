@@ -4,6 +4,7 @@
   transform: translateX(25%) translateY(25%) scale(0.50);
   clip-path: circle(50% at 50% 50%);
 }
+
 .ct-center-ellipse {
   fill: #{var(--chartist-bg-color, #fff)};
 }

@@ -33,7 +33,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         code-editor:focus {
           outline: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -47,59 +47,59 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
        * Automatically focus on field when the page is loaded
        */
       autofocus: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * changes the value of the editor
        */
       editorValue: {
         type: String,
-        attribute: "editor-value"
+        attribute: "editor-value",
       },
       /**
        * Font-size of editor
        */
       fontSize: {
         type: Number,
-        attribute: "font-size"
+        attribute: "font-size",
       },
       /**
        * language of code-editor
        */
       language: {
-        type: String
+        type: String,
       },
       /**
        * mode of code-editor
        */
       mode: {
-        type: Number
+        type: Number,
       },
       /**
        * Value is not editable
        */
       readonly: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * error message when field is required and has no value
        */
       requiredMessage: {
-        type: String
+        type: String,
       },
       /**
        * theme of code-editor
        */
       theme: {
-        type: Number
+        type: Number,
       },
       /**
        * Current value of the form control. Submitted with the form as part of a name/value pair.
        */
       value: {
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   constructor() {
@@ -113,7 +113,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
     this.theme = "vs";
   }
   disconnectedCallback() {
-    this.removeEventListener("click", e => this.focus());
+    this.removeEventListener("click", (e) => this.focus());
     super.disconnectedCallback();
   }
 
@@ -194,7 +194,7 @@ class SimpleFieldsCode extends SimpleFieldsContainer {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }

@@ -67,7 +67,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
           bottom: 5px;
           left: 5px;
         }
-      `
+      `,
     ];
   }
   // properties available to the custom element for data binding
@@ -75,14 +75,14 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
     return {
       ...super.properties,
       __aspects: {
-        type: Object
+        type: Object,
       },
       __columns: {
-        type: Array
+        type: Array,
       },
       __items: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -124,7 +124,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
                         .alt="${col.alt}"
                         fade
                         .src="${col.src}"
-                        @load="${e => this._handleImgLoad(e)}"
+                        @load="${(e) => this._handleImgLoad(e)}"
                       />
                       <div class="zoombg"></div>
                       <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
@@ -175,7 +175,7 @@ class LrndesignGalleryMasonry extends LrndesignGalleryBehaviors {
         sm: 3,
         md: 4,
         lg: 5,
-        xl: 6
+        xl: 6,
       },
       cols = settings[this.responsiveSize || "xs"],
       rows = Math.ceil(this.sources.length / cols);

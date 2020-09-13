@@ -6,7 +6,7 @@
  * Skipped minification because the original files appears to be already minified.
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
-!(function(t, e) {
+!(function (t, e) {
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = e())
     : "function" == typeof define && define.amd
@@ -14,8 +14,8 @@
     : "object" == typeof exports
     ? (exports.Tone = e())
     : (t.Tone = e());
-})("undefined" != typeof self ? self : this, function() {
-  return (function(t) {
+})("undefined" != typeof self ? self : this, function () {
+  return (function (t) {
     var e = {};
     function i(s) {
       if (e[s]) return e[s].exports;
@@ -25,41 +25,41 @@
     return (
       (i.m = t),
       (i.c = e),
-      (i.d = function(t, e, s) {
+      (i.d = function (t, e, s) {
         i.o(t, e) ||
           Object.defineProperty(t, e, {
             configurable: !1,
             enumerable: !0,
-            get: s
+            get: s,
           });
       }),
-      (i.r = function(t) {
+      (i.r = function (t) {
         Object.defineProperty(t, "__esModule", { value: !0 });
       }),
-      (i.n = function(t) {
+      (i.n = function (t) {
         var e =
           t && t.__esModule
-            ? function() {
+            ? function () {
                 return t.default;
               }
-            : function() {
+            : function () {
                 return t;
               };
         return i.d(e, "a", e), e;
       }),
-      (i.o = function(t, e) {
+      (i.o = function (t, e) {
         return Object.prototype.hasOwnProperty.call(t, e);
       }),
       (i.p = ""),
       i((i.s = 148))
     );
   })([
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e),
-        function(t) {
+        function (t) {
           var s = i(93),
-            n = function() {
+            n = function () {
               if (!(this instanceof n))
                 throw new Error(
                   "constructor needs to be called with the 'new' keyword"
@@ -70,7 +70,7 @@
            *  @author Yotam Mann
            *  @license http://opensource.org/licenses/MIT MIT License
            *  @copyright 2014-2019 Yotam Mann
-           */ (n.prototype.toString = function() {
+           */ (n.prototype.toString = function () {
             for (var t in n) {
               var e = t[0].match(/^[A-Z]$/),
                 i = n[t] === this.constructor;
@@ -78,10 +78,10 @@
             }
             return "Tone";
           }),
-            (n.prototype.dispose = function() {
+            (n.prototype.dispose = function () {
               return this;
             }),
-            (n.prototype.set = function(t, e) {
+            (n.prototype.set = function (t, e) {
               if (n.isString(t)) {
                 var i = {};
                 (i[t] = e), (t = i);
@@ -114,7 +114,7 @@
               }
               return this;
             }),
-            (n.prototype.get = function(t) {
+            (n.prototype.get = function (t) {
               n.isUndef(t)
                 ? (t = this._collectDefaults(this.constructor))
                 : n.isString(t) && (t = [t]);
@@ -144,7 +144,7 @@
               }
               return e;
             }),
-            (n.prototype._collectDefaults = function(t) {
+            (n.prototype._collectDefaults = function (t) {
               var e = [];
               if (
                 (n.isDefined(t.defaults) && (e = Object.keys(t.defaults)),
@@ -158,7 +158,7 @@
                   -1 === e.indexOf(i[s]) && e.push(i[s]);
               return e;
             }),
-            (n.defaults = function(t, e, i) {
+            (n.defaults = function (t, e, i) {
               var s = {};
               if (1 === t.length && n.isObject(t[0])) s = t[0];
               else for (var o = 0; o < e.length; o++) s[e[o]] = t[o];
@@ -168,7 +168,7 @@
                 ? n.defaultArg(s, i)
                 : s;
             }),
-            (n.defaultArg = function(t, e) {
+            (n.defaultArg = function (t, e) {
               if (n.isObject(t) && n.isObject(e)) {
                 var i = {};
                 for (var s in t) i[s] = n.defaultArg(e[s], t[s]);
@@ -177,23 +177,23 @@
               }
               return n.isUndef(t) ? e : t;
             }),
-            (n.prototype.log = function() {
+            (n.prototype.log = function () {
               if (this.debug || this.toString() === n.global.TONE_DEBUG_CLASS) {
                 var t = Array.from(arguments);
                 t.unshift(this.toString() + ":"), console.log.apply(void 0, t);
               }
             }),
-            (n.prototype.assert = function(t, e) {
+            (n.prototype.assert = function (t, e) {
               if (!t) throw new Error(e);
             }),
-            (n.connectSeries = function() {
+            (n.connectSeries = function () {
               for (var t = arguments[0], e = 1; e < arguments.length; e++) {
                 var i = arguments[e];
                 n.connect(t, i), (t = i);
               }
               return n;
             }),
-            (n.connect = function(t, e, i, s) {
+            (n.connect = function (t, e, i, s) {
               for (; n.isDefined(e.input); )
                 n.isArray(e.input)
                   ? ((s = n.defaultArg(s, 0)), (e = e.input[s]), (s = 0))
@@ -205,13 +205,13 @@
                 n
               );
             }),
-            (n.disconnect = function(t, e, i, s) {
+            (n.disconnect = function (t, e, i, s) {
               if (e) {
                 for (var o = !1; !o; )
                   n.isArray(e.input)
                     ? (n.isDefined(s)
                         ? n.disconnect(t, e.input[s], i)
-                        : e.input.forEach(function(e) {
+                        : e.input.forEach(function (e) {
                             try {
                               n.disconnect(t, e, i);
                             } catch (t) {}
@@ -226,49 +226,49 @@
               } else t.disconnect();
               return n;
             }),
-            (n.isUndef = function(t) {
+            (n.isUndef = function (t) {
               return void 0 === t;
             }),
-            (n.isDefined = function(t) {
+            (n.isDefined = function (t) {
               return !n.isUndef(t);
             }),
-            (n.isFunction = function(t) {
+            (n.isFunction = function (t) {
               return "function" == typeof t;
             }),
-            (n.isNumber = function(t) {
+            (n.isNumber = function (t) {
               return "number" == typeof t;
             }),
-            (n.isObject = function(t) {
+            (n.isObject = function (t) {
               return (
                 "[object Object]" === Object.prototype.toString.call(t) &&
                 t.constructor === Object
               );
             }),
-            (n.isBoolean = function(t) {
+            (n.isBoolean = function (t) {
               return "boolean" == typeof t;
             }),
-            (n.isArray = function(t) {
+            (n.isArray = function (t) {
               return Array.isArray(t);
             }),
-            (n.isString = function(t) {
+            (n.isString = function (t) {
               return "string" == typeof t;
             }),
-            (n.isNote = function(t) {
+            (n.isNote = function (t) {
               return (
                 n.isString(t) && /^([a-g]{1}(?:b|#|x|bb)?)(-?[0-9]+)/i.test(t)
               );
             }),
-            (n.noOp = function() {}),
-            (n.prototype._readOnly = function(t) {
+            (n.noOp = function () {}),
+            (n.prototype._readOnly = function (t) {
               if (Array.isArray(t))
                 for (var e = 0; e < t.length; e++) this._readOnly(t[e]);
               else
                 Object.defineProperty(this, t, {
                   writable: !1,
-                  enumerable: !0
+                  enumerable: !0,
                 });
             }),
-            (n.prototype._writable = function(t) {
+            (n.prototype._writable = function (t) {
               if (Array.isArray(t))
                 for (var e = 0; e < t.length; e++) this._writable(t[e]);
               else Object.defineProperty(this, t, { writable: !0 });
@@ -276,35 +276,35 @@
             (n.State = {
               Started: "started",
               Stopped: "stopped",
-              Paused: "paused"
+              Paused: "paused",
             }),
             (n.global = n.isUndef(t) ? window : t),
-            (n.equalPowerScale = function(t) {
+            (n.equalPowerScale = function (t) {
               var e = 0.5 * Math.PI;
               return Math.sin(t * e);
             }),
-            (n.dbToGain = function(t) {
+            (n.dbToGain = function (t) {
               return Math.pow(10, t / 20);
             }),
-            (n.gainToDb = function(t) {
+            (n.gainToDb = function (t) {
               return (Math.log(t) / Math.LN10) * 20;
             }),
-            (n.intervalToFrequencyRatio = function(t) {
+            (n.intervalToFrequencyRatio = function (t) {
               return Math.pow(2, t / 12);
             }),
-            (n.prototype.now = function() {
+            (n.prototype.now = function () {
               return n.context.now();
             }),
-            (n.now = function() {
+            (n.now = function () {
               return n.context.now();
             }),
-            (n.prototype.immediate = function() {
+            (n.prototype.immediate = function () {
               return n.context.currentTime;
             }),
-            (n.immediate = function() {
+            (n.immediate = function () {
               return n.context.currentTime;
             }),
-            (n.extend = function(t, e) {
+            (n.extend = function (t, e) {
               function i() {}
               n.isUndef(e) && (e = n),
                 (i.prototype = e.prototype),
@@ -313,56 +313,56 @@
                 (t._super = e);
             }),
             (n._audioContext = null),
-            (n.start = function() {
+            (n.start = function () {
               return n.context.resume();
             }),
             Object.defineProperty(n, "context", {
-              get: function() {
+              get: function () {
                 return n._audioContext;
               },
-              set: function(t) {
+              set: function (t) {
                 t.isContext
                   ? (n._audioContext = t)
                   : (n._audioContext = new n.Context(t)),
                   n.Context.emit("init", n._audioContext);
-              }
+              },
             }),
             Object.defineProperty(n.prototype, "context", {
-              get: function() {
+              get: function () {
                 return n.context;
-              }
+              },
             }),
-            (n.setContext = function(t) {
+            (n.setContext = function (t) {
               n.context = t;
             }),
             Object.defineProperty(n.prototype, "blockTime", {
-              get: function() {
+              get: function () {
                 return 128 / this.context.sampleRate;
-              }
+              },
             }),
             Object.defineProperty(n.prototype, "sampleTime", {
-              get: function() {
+              get: function () {
                 return 1 / this.context.sampleRate;
-              }
+              },
             }),
             Object.defineProperty(n, "supported", {
-              get: function() {
+              get: function () {
                 var t =
                     n.global.hasOwnProperty("AudioContext") ||
                     n.global.hasOwnProperty("webkitAudioContext"),
                   e = n.global.hasOwnProperty("Promise");
                 return t && e;
-              }
+              },
             }),
             Object.defineProperty(n, "initialized", {
-              get: function() {
+              get: function () {
                 return Boolean(n.context);
-              }
+              },
             }),
-            (n.getContext = function(t) {
+            (n.getContext = function (t) {
               if (n.initialized) t(n.context);
               else {
-                var e = function() {
+                var e = function () {
                   t(n.context), n.Context.off("init", e);
                 };
                 n.Context.on("init", e);
@@ -373,7 +373,7 @@
             (e.default = n);
         }.call(this, i(147));
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
@@ -384,25 +384,25 @@
           a = n.createGain();
         if (o.connect(a) !== a) {
           var r = AudioNode.prototype.connect;
-          AudioNode.prototype.connect = function() {
+          AudioNode.prototype.connect = function () {
             return r.apply(this, arguments), arguments[0];
           };
         }
       }
-      (s.default.AudioNode = function() {
+      (s.default.AudioNode = function () {
         s.default.call(this);
         var t = s.default.defaults(arguments, ["context"], {
-          context: s.default.context
+          context: s.default.context,
         });
         this._context = t.context;
       }),
         s.default.extend(s.default.AudioNode),
         Object.defineProperty(s.default.AudioNode.prototype, "context", {
-          get: function() {
+          get: function () {
             return this._context;
-          }
+          },
         }),
-        (s.default.AudioNode.prototype.createInsOuts = function(t, e) {
+        (s.default.AudioNode.prototype.createInsOuts = function (t, e) {
           1 === t
             ? (this.input = this.context.createGain())
             : t > 1 && (this.input = new Array(t)),
@@ -411,60 +411,60 @@
               : e > 1 && (this.output = new Array(e));
         }),
         Object.defineProperty(s.default.AudioNode.prototype, "channelCount", {
-          get: function() {
+          get: function () {
             return this.output.channelCount;
           },
-          set: function(t) {
+          set: function (t) {
             return (this.output.channelCount = t);
-          }
+          },
         }),
         Object.defineProperty(
           s.default.AudioNode.prototype,
           "channelCountMode",
           {
-            get: function() {
+            get: function () {
               return this.output.channelCountMode;
             },
-            set: function(t) {
+            set: function (t) {
               return (this.output.channelCountMode = t);
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.AudioNode.prototype,
           "channelInterpretation",
           {
-            get: function() {
+            get: function () {
               return this.output.channelInterpretation;
             },
-            set: function(t) {
+            set: function (t) {
               return (this.output.channelInterpretation = t);
-            }
+            },
           }
         ),
         Object.defineProperty(s.default.AudioNode.prototype, "numberOfInputs", {
-          get: function() {
+          get: function () {
             return this.input
               ? s.default.isArray(this.input)
                 ? this.input.length
                 : 1
               : 0;
-          }
+          },
         }),
         Object.defineProperty(
           s.default.AudioNode.prototype,
           "numberOfOutputs",
           {
-            get: function() {
+            get: function () {
               return this.output
                 ? s.default.isArray(this.output)
                   ? this.output.length
                   : 1
                 : 0;
-            }
+            },
           }
         ),
-        (s.default.AudioNode.prototype.connect = function(t, e, i) {
+        (s.default.AudioNode.prototype.connect = function (t, e, i) {
           return (
             s.default.isArray(this.output)
               ? ((e = s.default.defaultArg(e, 0)),
@@ -473,7 +473,7 @@
             this
           );
         }),
-        (s.default.AudioNode.prototype.disconnect = function(t, e, i) {
+        (s.default.AudioNode.prototype.disconnect = function (t, e, i) {
           return (
             s.default.isArray(this.output)
               ? ((e = s.default.defaultArg(e, 0)),
@@ -482,17 +482,17 @@
             this
           );
         }),
-        (s.default.AudioNode.prototype.chain = function() {
+        (s.default.AudioNode.prototype.chain = function () {
           var t = Array.from(arguments);
           return (
             t.unshift(this), s.default.connectSeries.apply(void 0, t), this
           );
         }),
-        (s.default.AudioNode.prototype.fan = function() {
+        (s.default.AudioNode.prototype.fan = function () {
           for (var t = 0; t < arguments.length; t++) this.connect(arguments[t]);
           return this;
         }),
-        (s.default.AudioNode.prototype.dispose = function() {
+        (s.default.AudioNode.prototype.dispose = function () {
           return (
             s.default.isDefined(this.input) &&
               (this.input instanceof AudioNode && this.input.disconnect(),
@@ -506,7 +506,7 @@
         });
       e.default = s.default.AudioNode;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
@@ -515,7 +515,7 @@
         s.default.supported &&
         !s.default.global.AudioContext.prototype.createConstantSource
       ) {
-        var n = function(t) {
+        var n = function (t) {
           this.context = t;
           for (
             var e = t.createBuffer(1, 128, t.sampleRate),
@@ -533,26 +533,26 @@
           var n = (this._output = t.createGain());
           (this.offset = n.gain), this._bufferSource.connect(n);
         };
-        (n.prototype.start = function(t) {
+        (n.prototype.start = function (t) {
           return this._bufferSource.start(t), this;
         }),
-          (n.prototype.stop = function(t) {
+          (n.prototype.stop = function (t) {
             return this._bufferSource.stop(t), this;
           }),
-          (n.prototype.connect = function() {
+          (n.prototype.connect = function () {
             return this._output.connect.apply(this._output, arguments), this;
           }),
-          (n.prototype.disconnect = function() {
+          (n.prototype.disconnect = function () {
             return this._output.disconnect.apply(this._output, arguments), this;
           }),
-          (AudioContext.prototype.createConstantSource = function() {
+          (AudioContext.prototype.createConstantSource = function () {
             return new n(this);
           }),
-          (s.default.Context.prototype.createConstantSource = function() {
+          (s.default.Context.prototype.createConstantSource = function () {
             return new n(this);
           });
       }
-      (s.default.Signal = function() {
+      (s.default.Signal = function () {
         var t = s.default.defaults(
           arguments,
           ["value", "units"],
@@ -570,18 +570,18 @@
         (s.default.Signal.defaults = {
           value: 0,
           units: s.default.Type.Default,
-          convert: !0
+          convert: !0,
         }),
         (s.default.Signal.prototype.connect =
           s.default.SignalBase.prototype.connect),
         (s.default.Signal.prototype.disconnect =
           s.default.SignalBase.prototype.disconnect),
-        (s.default.Signal.prototype.getValueAtTime = function(t) {
+        (s.default.Signal.prototype.getValueAtTime = function (t) {
           return this._param.getValueAtTime
             ? this._param.getValueAtTime(t)
             : s.default.Param.prototype.getValueAtTime.call(this, t);
         }),
-        (s.default.Signal.prototype.dispose = function() {
+        (s.default.Signal.prototype.dispose = function () {
           return (
             s.default.Param.prototype.dispose.call(this),
             this._constantSource.stop(),
@@ -592,12 +592,12 @@
         });
       e.default = s.default.Signal;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(14), i(4), i(1);
-      (s.default.Gain = function() {
+      (s.default.Gain = function () {
         var t = s.default.defaults(
           arguments,
           ["gain", "units"],
@@ -609,13 +609,13 @@
             param: this._gainNode.gain,
             units: t.units,
             value: t.gain,
-            convert: t.convert
+            convert: t.convert,
           })),
           this._readOnly("gain");
       }),
         s.default.extend(s.default.Gain, s.default.AudioNode),
         (s.default.Gain.defaults = { gain: 1, convert: !0 }),
-        (s.default.Gain.prototype.dispose = function() {
+        (s.default.Gain.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this),
             this._gainNode.disconnect(),
             (this._gainNode = null),
@@ -625,7 +625,7 @@
         }),
         (e.default = s.default.Gain);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
@@ -652,9 +652,9 @@
         Note: "note",
         Milliseconds: "milliseconds",
         Seconds: "seconds",
-        Notation: "notation"
+        Notation: "notation",
       }),
-        (s.default.prototype.toSeconds = function(t) {
+        (s.default.prototype.toSeconds = function (t) {
           return s.default.isNumber(t)
             ? t
             : s.default.isUndef(t)
@@ -665,7 +665,7 @@
             ? t.toSeconds()
             : void 0;
         }),
-        (s.default.prototype.toFrequency = function(t) {
+        (s.default.prototype.toFrequency = function (t) {
           return s.default.isNumber(t)
             ? t
             : s.default.isString(t) ||
@@ -676,7 +676,7 @@
             ? t.toFrequency()
             : void 0;
         }),
-        (s.default.prototype.toTicks = function(t) {
+        (s.default.prototype.toTicks = function (t) {
           return s.default.isNumber(t) ||
             s.default.isString(t) ||
             s.default.isObject(t)
@@ -689,12 +689,12 @@
         }),
         (e.default = s.default);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(14), i(3), i(30);
-      (s.default.Multiply = function(t) {
+      (s.default.Multiply = function (t) {
         s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._mult = this.input[0] = this.output = new s.default.Gain()),
@@ -702,7 +702,7 @@
           (this.value = s.default.defaultArg(t, 0));
       }),
         s.default.extend(s.default.Multiply, s.default.Signal),
-        (s.default.Multiply.prototype.dispose = function() {
+        (s.default.Multiply.prototype.dispose = function () {
           return (
             s.default.Signal.prototype.dispose.call(this),
             this._mult.dispose(),
@@ -713,12 +713,12 @@
         }),
         (e.default = s.default.Multiply);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(16), i(27), i(40), i(4), i(34), i(2), i(1);
-      (s.default.Source = function(t) {
+      (s.default.Source = function (t) {
         (t = s.default.defaultArg(t, s.default.Source.defaults)),
           s.default.AudioNode.call(this),
           (this._volume = this.output = new s.default.Volume(t.volume)),
@@ -735,26 +735,26 @@
         s.default.extend(s.default.Source, s.default.AudioNode),
         (s.default.Source.defaults = { volume: 0, mute: !1 }),
         Object.defineProperty(s.default.Source.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._synced
               ? s.default.Transport.state === s.default.State.Started
                 ? this._state.getValueAtTime(s.default.Transport.seconds)
                 : s.default.State.Stopped
               : this._state.getValueAtTime(this.now());
-          }
+          },
         }),
         Object.defineProperty(s.default.Source.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._volume.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._volume.mute = t;
-          }
+          },
         }),
         (s.default.Source.prototype._start = s.default.noOp),
         (s.default.Source.prototype.restart = s.default.noOp),
         (s.default.Source.prototype._stop = s.default.noOp),
-        (s.default.Source.prototype.start = function(t, e, i) {
+        (s.default.Source.prototype.start = function (t, e, i) {
           if (
             (s.default.isUndef(t) && this._synced
               ? (t = s.default.Transport.seconds)
@@ -772,7 +772,7 @@
             var n = this._state.get(t);
             (n.offset = s.default.defaultArg(e, 0)), (n.duration = i);
             var o = s.default.Transport.schedule(
-              function(t) {
+              function (t) {
                 this._start(t, e, i);
               }.bind(this),
               t
@@ -783,7 +783,7 @@
           } else this._start.apply(this, arguments);
           return this;
         }),
-        (s.default.Source.prototype.stop = function(t) {
+        (s.default.Source.prototype.stop = function (t) {
           if (
             (s.default.isUndef(t) && this._synced
               ? (t = s.default.Transport.seconds)
@@ -800,10 +800,10 @@
             this
           );
         }),
-        (s.default.Source.prototype.sync = function() {
+        (s.default.Source.prototype.sync = function () {
           return (
             (this._synced = !0),
-            (this._syncedStart = function(t, e) {
+            (this._syncedStart = function (t, e) {
               if (e > 0) {
                 var i = this._state.get(e);
                 if (i && i.state === s.default.State.Started && i.time !== e) {
@@ -814,7 +814,7 @@
                 }
               }
             }.bind(this)),
-            (this._syncedStop = function(t) {
+            (this._syncedStop = function (t) {
               var e = s.default.Transport.getSecondsAtTime(
                 Math.max(t - this.sampleTime, 0)
               );
@@ -826,7 +826,7 @@
             this
           );
         }),
-        (s.default.Source.prototype.unsync = function() {
+        (s.default.Source.prototype.unsync = function () {
           this._synced &&
             (s.default.Transport.off("stop pause loopEnd", this._syncedStop),
             s.default.Transport.off("start loopStart", this._syncedStart)),
@@ -837,7 +837,7 @@
           }
           return (this._scheduled = []), this._state.cancel(0), this;
         }),
-        (s.default.Source.prototype.dispose = function() {
+        (s.default.Source.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this),
             this.unsync(),
             (this._scheduled = null),
@@ -850,7 +850,7 @@
         }),
         (e.default = s.default.Source);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
@@ -861,41 +861,41 @@
       ) {
         var n = navigator.userAgent.toLowerCase();
         if (n.includes("safari") && !n.includes("chrome")) {
-          var o = function(t) {
+          var o = function (t) {
             for (var e in ((this._internalNode = this.input = this.output = t._native_createWaveShaper()),
             (this._curve = null),
             this._internalNode))
               this._defineProperty(this._internalNode, e);
           };
           Object.defineProperty(o.prototype, "curve", {
-            get: function() {
+            get: function () {
               return this._curve;
             },
-            set: function(t) {
+            set: function (t) {
               this._curve = t;
               var e = new Float32Array(t.length + 1);
               e.set(t, 1), (e[0] = t[0]), (this._internalNode.curve = e);
-            }
+            },
           }),
-            (o.prototype._defineProperty = function(t, e) {
+            (o.prototype._defineProperty = function (t, e) {
               s.default.isUndef(this[e]) &&
                 Object.defineProperty(this, e, {
-                  get: function() {
+                  get: function () {
                     return "function" == typeof t[e] ? t[e].bind(t) : t[e];
                   },
-                  set: function(i) {
+                  set: function (i) {
                     t[e] = i;
-                  }
+                  },
                 });
             }),
             (s.default.global.AudioContext.prototype._native_createWaveShaper =
               s.default.global.AudioContext.prototype.createWaveShaper),
-            (s.default.global.AudioContext.prototype.createWaveShaper = function() {
+            (s.default.global.AudioContext.prototype.createWaveShaper = function () {
               return new o(this);
             });
         }
       }
-      (s.default.WaveShaper = function(t, e) {
+      (s.default.WaveShaper = function (t, e) {
         s.default.SignalBase.call(this),
           (this._shaper = this.input = this.output = this.context.createWaveShaper()),
           (this._curve = null),
@@ -908,7 +908,7 @@
               this.setMap(t));
       }),
         s.default.extend(s.default.WaveShaper, s.default.SignalBase),
-        (s.default.WaveShaper.prototype.setMap = function(t) {
+        (s.default.WaveShaper.prototype.setMap = function (t) {
           for (
             var e = new Array(this._curve.length),
               i = 0,
@@ -922,27 +922,27 @@
           return (this.curve = e), this;
         }),
         Object.defineProperty(s.default.WaveShaper.prototype, "curve", {
-          get: function() {
+          get: function () {
             return this._shaper.curve;
           },
-          set: function(t) {
+          set: function (t) {
             (this._curve = new Float32Array(t)),
               (this._shaper.curve = this._curve);
-          }
+          },
         }),
         Object.defineProperty(s.default.WaveShaper.prototype, "oversample", {
-          get: function() {
+          get: function () {
             return this._shaper.oversample;
           },
-          set: function(t) {
+          set: function (t) {
             if (!["none", "2x", "4x"].includes(t))
               throw new RangeError(
                 "Tone.WaveShaper: oversampling must be either 'none', '2x', or '4x'"
               );
             this._shaper.oversample = t;
-          }
+          },
         }),
-        (s.default.WaveShaper.prototype.dispose = function() {
+        (s.default.WaveShaper.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._shaper.disconnect(),
@@ -953,12 +953,12 @@
         });
       e.default = s.default.WaveShaper;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(23), i(1);
-      (s.default.Effect = function() {
+      (s.default.Effect = function () {
         var t = s.default.defaults(arguments, ["wet"], s.default.Effect);
         s.default.AudioNode.call(this),
           this.createInsOuts(1, 1),
@@ -974,10 +974,10 @@
       }),
         s.default.extend(s.default.Effect, s.default.AudioNode),
         (s.default.Effect.defaults = { wet: 1 }),
-        (s.default.Effect.prototype.connectEffect = function(t) {
+        (s.default.Effect.prototype.connectEffect = function (t) {
           return this.effectSend.chain(t, this.effectReturn), this;
         }),
-        (s.default.Effect.prototype.dispose = function() {
+        (s.default.Effect.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._dryWet.dispose(),
@@ -993,12 +993,12 @@
         }),
         (e.default = s.default.Effect);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(1);
-      (s.default.Filter = function() {
+      (s.default.Filter = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "rolloff"],
@@ -1015,7 +1015,7 @@
           (this.gain = new s.default.Signal({
             value: t.gain,
             convert: !0,
-            type: s.default.Type.Decibels
+            type: s.default.Type.Decibels,
           })),
           (this.Q = new s.default.Signal(t.Q)),
           (this._type = t.type),
@@ -1029,13 +1029,13 @@
           frequency: 350,
           rolloff: -12,
           Q: 1,
-          gain: 0
+          gain: 0,
         }),
         Object.defineProperty(s.default.Filter.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             if (
               -1 ===
               [
@@ -1046,20 +1046,20 @@
                 "highshelf",
                 "notch",
                 "allpass",
-                "peaking"
+                "peaking",
               ].indexOf(t)
             )
               throw new TypeError("Tone.Filter: invalid type " + t);
             this._type = t;
             for (var e = 0; e < this._filters.length; e++)
               this._filters[e].type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Filter.prototype, "rolloff", {
-          get: function() {
+          get: function () {
             return this._rolloff;
           },
-          set: function(t) {
+          set: function (t) {
             t = parseInt(t, 10);
             var e = [-12, -24, -48, -96].indexOf(t);
             if (-1 === e)
@@ -1081,12 +1081,12 @@
             }
             var a = [this.input].concat(this._filters).concat([this.output]);
             s.default.connectSeries.apply(s.default, a);
-          }
+          },
         }),
-        (s.default.Filter.prototype.getFrequencyResponse = function(t) {
+        (s.default.Filter.prototype.getFrequencyResponse = function (t) {
           t = s.default.defaultArg(t, 128);
           for (
-            var e = new Float32Array(t).map(function() {
+            var e = new Float32Array(t).map(function () {
                 return 1;
               }),
               i = new Float32Array(t),
@@ -1101,14 +1101,14 @@
             r = new Float32Array(t);
           return (
             this._filters.forEach(
-              function() {
+              function () {
                 var t = this.context.createBiquadFilter();
                 (t.type = this._type),
                   (t.Q.value = this.Q.value),
                   (t.frequency.value = this.frequency.value),
                   (t.gain.value = this.gain.value),
                   t.getFrequencyResponse(i, a, r),
-                  a.forEach(function(t, i) {
+                  a.forEach(function (t, i) {
                     e[i] *= t;
                   });
               }.bind(this)
@@ -1116,7 +1116,7 @@
             e
           );
         }),
-        (s.default.Filter.prototype.dispose = function() {
+        (s.default.Filter.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this);
           for (var t = 0; t < this._filters.length; t++)
             this._filters[t].disconnect(), (this._filters[t] = null);
@@ -1136,12 +1136,12 @@
         }),
         (e.default = s.default.Filter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(1);
-      (s.default.Merge = function(t) {
+      (s.default.Merge = function (t) {
         (t = s.default.defaultArg(t, 2)),
           s.default.AudioNode.call(this),
           this.createInsOuts(t, 0),
@@ -1154,9 +1154,9 @@
         (this.left = this.input[0]), (this.right = this.input[1]);
       }),
         s.default.extend(s.default.Merge, s.default.AudioNode),
-        (s.default.Merge.prototype.dispose = function() {
+        (s.default.Merge.prototype.dispose = function () {
           return (
-            this.input.forEach(function(t) {
+            this.input.forEach(function (t) {
               t.dispose();
             }),
             s.default.AudioNode.prototype.dispose.call(this),
@@ -1169,24 +1169,24 @@
         }),
         (e.default = s.default.Merge);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(35), i(4);
       s.default.supported &&
         (AudioBuffer.prototype.copyToChannel ||
-          ((AudioBuffer.prototype.copyToChannel = function(t, e, i) {
+          ((AudioBuffer.prototype.copyToChannel = function (t, e, i) {
             var s = this.getChannelData(e);
             i = i || 0;
             for (var n = 0; n < s.length; n++) s[n + i] = t[n];
           }),
-          (AudioBuffer.prototype.copyFromChannel = function(t, e, i) {
+          (AudioBuffer.prototype.copyFromChannel = function (t, e, i) {
             var s = this.getChannelData(e);
             i = i || 0;
             for (var n = 0; n < t.length; n++) t[n] = s[n + i];
           }))),
-        (s.default.Buffer = function() {
+        (s.default.Buffer = function () {
           var t = s.default.defaults(
             arguments,
             ["url", "onload", "onerror"],
@@ -1200,23 +1200,21 @@
             t.url instanceof AudioBuffer || t.url instanceof s.default.Buffer
               ? (this.set(t.url), this.loaded || (this.onload = t.onload))
               : s.default.isString(t.url) &&
-                this.load(t.url)
-                  .then(t.onload)
-                  .catch(t.onerror);
+                this.load(t.url).then(t.onload).catch(t.onerror);
         }),
         s.default.extend(s.default.Buffer),
         (s.default.Buffer.defaults = {
           url: void 0,
           reverse: !1,
           onload: s.default.noOp,
-          onerror: s.default.noOp
+          onerror: s.default.noOp,
         }),
-        (s.default.Buffer.prototype.set = function(t) {
+        (s.default.Buffer.prototype.set = function (t) {
           return (
             t instanceof s.default.Buffer
               ? t.loaded
                 ? (this._buffer = t.get())
-                : (t.onload = function() {
+                : (t.onload = function () {
                     this.set(t), this.onload(this);
                   }.bind(this))
               : (this._buffer = t),
@@ -1224,29 +1222,29 @@
             this
           );
         }),
-        (s.default.Buffer.prototype.get = function() {
+        (s.default.Buffer.prototype.get = function () {
           return this._buffer;
         }),
-        (s.default.Buffer.prototype.load = function(t, e, i) {
+        (s.default.Buffer.prototype.load = function (t, e, i) {
           return new Promise(
-            function(n, o) {
+            function (n, o) {
               this._xhr = s.default.Buffer.load(
                 t,
-                function(t) {
+                function (t) {
                   (this._xhr = null),
                     this.set(t),
                     n(this),
                     this.onload(this),
                     e && e(this);
                 }.bind(this),
-                function(t) {
+                function (t) {
                   (this._xhr = null), o(t), i && i(t);
                 }.bind(this)
               );
             }.bind(this)
           );
         }),
-        (s.default.Buffer.prototype.dispose = function() {
+        (s.default.Buffer.prototype.dispose = function () {
           return (
             s.default.prototype.dispose.call(this),
             (this._buffer = null),
@@ -1258,26 +1256,26 @@
           );
         }),
         Object.defineProperty(s.default.Buffer.prototype, "loaded", {
-          get: function() {
+          get: function () {
             return this.length > 0;
-          }
+          },
         }),
         Object.defineProperty(s.default.Buffer.prototype, "duration", {
-          get: function() {
+          get: function () {
             return this._buffer ? this._buffer.duration : 0;
-          }
+          },
         }),
         Object.defineProperty(s.default.Buffer.prototype, "length", {
-          get: function() {
+          get: function () {
             return this._buffer ? this._buffer.length : 0;
-          }
+          },
         }),
         Object.defineProperty(s.default.Buffer.prototype, "numberOfChannels", {
-          get: function() {
+          get: function () {
             return this._buffer ? this._buffer.numberOfChannels : 0;
-          }
+          },
         }),
-        (s.default.Buffer.prototype.fromArray = function(t) {
+        (s.default.Buffer.prototype.fromArray = function (t) {
           var e = t[0].length > 0,
             i = e ? t.length : 1,
             s = e ? t[0].length : t.length,
@@ -1286,7 +1284,7 @@
           for (var o = 0; o < i; o++) n.copyToChannel(t[o], o);
           return (this._buffer = n), this;
         }),
-        (s.default.Buffer.prototype.toMono = function(t) {
+        (s.default.Buffer.prototype.toMono = function (t) {
           if (s.default.isNumber(t)) this.fromArray(this.toArray(t));
           else {
             for (
@@ -1298,24 +1296,24 @@
             )
               for (var o = this.toArray(n), a = 0; a < o.length; a++)
                 e[a] += o[a];
-            (e = e.map(function(t) {
+            (e = e.map(function (t) {
               return t / i;
             })),
               this.fromArray(e);
           }
           return this;
         }),
-        (s.default.Buffer.prototype.toArray = function(t) {
+        (s.default.Buffer.prototype.toArray = function (t) {
           if (s.default.isNumber(t)) return this.getChannelData(t);
           if (1 === this.numberOfChannels) return this.toArray(0);
           for (var e = [], i = 0; i < this.numberOfChannels; i++)
             e[i] = this.getChannelData(i);
           return e;
         }),
-        (s.default.Buffer.prototype.getChannelData = function(t) {
+        (s.default.Buffer.prototype.getChannelData = function (t) {
           return this._buffer.getChannelData(t);
         }),
-        (s.default.Buffer.prototype.slice = function(t, e) {
+        (s.default.Buffer.prototype.slice = function (t, e) {
           e = s.default.defaultArg(e, this.duration);
           for (
             var i = Math.floor(this.context.sampleRate * this.toSeconds(t)),
@@ -1328,37 +1326,37 @@
             o[a] = this.toArray(a).slice(i, n);
           return new s.default.Buffer().fromArray(o);
         }),
-        (s.default.Buffer.prototype._reverse = function() {
+        (s.default.Buffer.prototype._reverse = function () {
           if (this.loaded)
             for (var t = 0; t < this.numberOfChannels; t++)
               Array.prototype.reverse.call(this.getChannelData(t));
           return this;
         }),
         Object.defineProperty(s.default.Buffer.prototype, "reverse", {
-          get: function() {
+          get: function () {
             return this._reversed;
           },
-          set: function(t) {
+          set: function (t) {
             this._reversed !== t && ((this._reversed = t), this._reverse());
-          }
+          },
         }),
         s.default.Emitter.mixin(s.default.Buffer),
         (s.default.Buffer._downloadQueue = []),
         (s.default.Buffer.baseUrl = ""),
-        (s.default.Buffer.fromArray = function(t) {
+        (s.default.Buffer.fromArray = function (t) {
           return new s.default.Buffer().fromArray(t);
         }),
-        (s.default.Buffer.fromUrl = function(t) {
+        (s.default.Buffer.fromUrl = function (t) {
           var e = new s.default.Buffer();
-          return e.load(t).then(function() {
+          return e.load(t).then(function () {
             return e;
           });
         }),
-        (s.default.Buffer._removeFromDownloadQueue = function(t) {
+        (s.default.Buffer._removeFromDownloadQueue = function (t) {
           var e = s.default.Buffer._downloadQueue.indexOf(t);
           -1 !== e && s.default.Buffer._downloadQueue.splice(e, 1);
         }),
-        (s.default.Buffer.load = function(t, e, i) {
+        (s.default.Buffer.load = function (t, e, i) {
           e = s.default.defaultArg(e, s.default.noOp);
           var n = t.match(/\[(.+\|?)+\]$/);
           if (n) {
@@ -1396,11 +1394,11 @@
             (d.responseType = "arraybuffer"),
             (d.progress = 0),
             s.default.Buffer._downloadQueue.push(d),
-            d.addEventListener("load", function() {
+            d.addEventListener("load", function () {
               200 === d.status
                 ? s.default.context
                     .decodeAudioData(d.response)
-                    .then(function(t) {
+                    .then(function (t) {
                       (d.progress = 1),
                         u(),
                         e(t),
@@ -1408,14 +1406,14 @@
                         0 === s.default.Buffer._downloadQueue.length &&
                           s.default.Buffer.emit("load");
                     })
-                    .catch(function() {
+                    .catch(function () {
                       s.default.Buffer._removeFromDownloadQueue(d),
                         l("Tone.Buffer: could not decode audio data: " + t);
                     })
                 : l("Tone.Buffer: could not locate file: " + t);
             }),
             d.addEventListener("error", l),
-            d.addEventListener("progress", function(t) {
+            d.addEventListener("progress", function (t) {
               t.lengthComputable &&
                 ((d.progress = (t.loaded / t.total) * 0.95), u());
             }),
@@ -1423,49 +1421,49 @@
             d
           );
         }),
-        (s.default.Buffer.cancelDownloads = function() {
+        (s.default.Buffer.cancelDownloads = function () {
           return (
-            s.default.Buffer._downloadQueue.slice().forEach(function(t) {
+            s.default.Buffer._downloadQueue.slice().forEach(function (t) {
               s.default.Buffer._removeFromDownloadQueue(t), t.abort();
             }),
             s.default.Buffer
           );
         }),
-        (s.default.Buffer.supportsType = function(t) {
+        (s.default.Buffer.supportsType = function (t) {
           var e = t.split(".");
           return (
             (e = e[e.length - 1]),
             "" !== document.createElement("audio").canPlayType("audio/" + e)
           );
         }),
-        (s.default.loaded = function() {
+        (s.default.loaded = function () {
           var t, e;
           function i() {
             s.default.Buffer.off("load", t), s.default.Buffer.off("error", e);
           }
-          return new Promise(function(i, n) {
-            (t = function() {
+          return new Promise(function (i, n) {
+            (t = function () {
               i();
             }),
-              (e = function() {
+              (e = function () {
                 n();
               }),
               s.default.Buffer.on("load", t),
               s.default.Buffer.on("error", e);
           })
             .then(i)
-            .catch(function(t) {
+            .catch(function (t) {
               throw (i(), new Error(t));
             });
         });
       e.default = s.default.Buffer;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(17), i(26), i(1), i(2), i(22), i(4), i(28);
-      (s.default.LFO = function() {
+      (s.default.LFO = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "min", "max"],
@@ -1474,7 +1472,7 @@
         s.default.AudioNode.call(this),
           (this._oscillator = new s.default.Oscillator({
             frequency: t.frequency,
-            type: t.type
+            type: t.type,
           })),
           (this.frequency = this._oscillator.frequency),
           (this.amplitude = this._oscillator.volume),
@@ -1504,9 +1502,9 @@
           phase: 0,
           frequency: "4n",
           amplitude: 1,
-          units: s.default.Type.Default
+          units: s.default.Type.Default,
         }),
-        (s.default.LFO.prototype.start = function(t) {
+        (s.default.LFO.prototype.start = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._stoppedSignal.setValueAtTime(0, t),
@@ -1514,7 +1512,7 @@
             this
           );
         }),
-        (s.default.LFO.prototype.stop = function(t) {
+        (s.default.LFO.prototype.stop = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._stoppedSignal.setValueAtTime(this._stoppedValue, t),
@@ -1522,68 +1520,68 @@
             this
           );
         }),
-        (s.default.LFO.prototype.sync = function() {
+        (s.default.LFO.prototype.sync = function () {
           return (
             this._oscillator.sync(), this._oscillator.syncFrequency(), this
           );
         }),
-        (s.default.LFO.prototype.unsync = function() {
+        (s.default.LFO.prototype.unsync = function () {
           return (
             this._oscillator.unsync(), this._oscillator.unsyncFrequency(), this
           );
         }),
         Object.defineProperty(s.default.LFO.prototype, "min", {
-          get: function() {
+          get: function () {
             return this._toUnits(this._scaler.min);
           },
-          set: function(t) {
+          set: function (t) {
             (t = this._fromUnits(t)), (this._scaler.min = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.LFO.prototype, "max", {
-          get: function() {
+          get: function () {
             return this._toUnits(this._scaler.max);
           },
-          set: function(t) {
+          set: function (t) {
             (t = this._fromUnits(t)), (this._scaler.max = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.LFO.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._oscillator.type;
           },
-          set: function(t) {
+          set: function (t) {
             (this._oscillator.type = t),
               (this._stoppedValue = this._oscillator._getInitialValue()),
               (this._stoppedSignal.value = this._stoppedValue);
-          }
+          },
         }),
         Object.defineProperty(s.default.LFO.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._oscillator.phase;
           },
-          set: function(t) {
+          set: function (t) {
             (this._oscillator.phase = t),
               (this._stoppedValue = this._oscillator._getInitialValue()),
               (this._stoppedSignal.value = this._stoppedValue);
-          }
+          },
         }),
         Object.defineProperty(s.default.LFO.prototype, "units", {
-          get: function() {
+          get: function () {
             return this._units;
           },
-          set: function(t) {
+          set: function (t) {
             var e = this.min,
               i = this.max;
             (this._units = t), (this.min = e), (this.max = i);
-          }
+          },
         }),
         Object.defineProperty(s.default.LFO.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._oscillator.state;
-          }
+          },
         }),
-        (s.default.LFO.prototype.connect = function(t) {
+        (s.default.LFO.prototype.connect = function (t) {
           return (
             (t.constructor !== s.default.Signal &&
               t.constructor !== s.default.Param) ||
@@ -1595,7 +1593,7 @@
         (s.default.LFO.prototype._fromUnits =
           s.default.Param.prototype._fromUnits),
         (s.default.LFO.prototype._toUnits = s.default.Param.prototype._toUnits),
-        (s.default.LFO.prototype.dispose = function() {
+        (s.default.LFO.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["amplitude", "frequency"]),
@@ -1616,12 +1614,12 @@
         }),
         (e.default = s.default.LFO);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(29), i(90), i(2), i(3);
-      (s.default.Subtract = function(t) {
+      (s.default.Subtract = function (t) {
         s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._sum = this.input[0] = this.output = new s.default.Gain()),
@@ -1630,7 +1628,7 @@
           this._param.chain(this._neg, this._sum);
       }),
         s.default.extend(s.default.Subtract, s.default.Signal),
-        (s.default.Subtract.prototype.dispose = function() {
+        (s.default.Subtract.prototype.dispose = function () {
           return (
             s.default.Signal.prototype.dispose.call(this),
             this._neg.dispose(),
@@ -1642,12 +1640,12 @@
         }),
         (e.default = s.default.Subtract);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4), i(1), i(24);
-      (s.default.Param = function() {
+      (s.default.Param = function () {
         var t = s.default.defaults(
           arguments,
           ["param", "units", "convert"],
@@ -1667,21 +1665,21 @@
         (s.default.Param.defaults = {
           units: s.default.Type.Default,
           convert: !0,
-          param: void 0
+          param: void 0,
         }),
         Object.defineProperty(s.default.Param.prototype, "value", {
-          get: function() {
+          get: function () {
             var t = this.now();
             return this._toUnits(this.getValueAtTime(t));
           },
-          set: function(t) {
+          set: function (t) {
             (this._initialValue = this._fromUnits(t)),
               this.cancelScheduledValues(this.now()),
               this.setValueAtTime(t, this.now());
-          }
+          },
         }),
         Object.defineProperty(s.default.Param.prototype, "minValue", {
-          get: function() {
+          get: function () {
             return this.units === s.default.Type.Time ||
               this.units === s.default.Type.Frequency ||
               this.units === s.default.Type.NormalRange ||
@@ -1693,17 +1691,17 @@
               : this.units === s.default.Type.Decibels
               ? -1 / 0
               : this._param.minValue;
-          }
+          },
         }),
         Object.defineProperty(s.default.Param.prototype, "maxValue", {
-          get: function() {
+          get: function () {
             return this.units === s.default.Type.NormalRange ||
               this.units === s.default.Type.AudioRange
               ? 1
               : this._param.maxValue;
-          }
+          },
         }),
-        (s.default.Param.prototype._fromUnits = function(t) {
+        (s.default.Param.prototype._fromUnits = function (t) {
           if (
             (!this.convert && !s.default.isUndef(this.convert)) ||
             this.overridden
@@ -1726,7 +1724,7 @@
               return t;
           }
         }),
-        (s.default.Param.prototype._toUnits = function(t) {
+        (s.default.Param.prototype._toUnits = function (t) {
           if (!this.convert && !s.default.isUndef(this.convert)) return t;
           switch (this.units) {
             case s.default.Type.Decibels:
@@ -1741,23 +1739,23 @@
           Exponential: "exponentialRampToValueAtTime",
           Target: "setTargetAtTime",
           SetValue: "setValueAtTime",
-          Cancel: "cancelScheduledValues"
+          Cancel: "cancelScheduledValues",
         }),
-        (s.default.Param.prototype.setValueAtTime = function(t, e) {
+        (s.default.Param.prototype.setValueAtTime = function (t, e) {
           return (
             (e = this.toSeconds(e)),
             (t = this._fromUnits(t)),
             this._events.add({
               type: s.default.Param.AutomationType.SetValue,
               value: t,
-              time: e
+              time: e,
             }),
             this.log(s.default.Param.AutomationType.SetValue, t, e),
             this._param.setValueAtTime(t, e),
             this
           );
         }),
-        (s.default.Param.prototype.getValueAtTime = function(t) {
+        (s.default.Param.prototype.getValueAtTime = function (t) {
           t = this.toSeconds(t);
           var e = this._events.getAfter(t),
             i = this._events.get(t),
@@ -1795,7 +1793,7 @@
                 : i.value;
           return o;
         }),
-        (s.default.Param.prototype.setRampPoint = function(t) {
+        (s.default.Param.prototype.setRampPoint = function (t) {
           t = this.toSeconds(t);
           var e = this.getValueAtTime(t);
           return (
@@ -1805,21 +1803,21 @@
             this
           );
         }),
-        (s.default.Param.prototype.linearRampToValueAtTime = function(t, e) {
+        (s.default.Param.prototype.linearRampToValueAtTime = function (t, e) {
           return (
             (t = this._fromUnits(t)),
             (e = this.toSeconds(e)),
             this._events.add({
               type: s.default.Param.AutomationType.Linear,
               value: t,
-              time: e
+              time: e,
             }),
             this.log(s.default.Param.AutomationType.Linear, t, e),
             this._param.linearRampToValueAtTime(t, e),
             this
           );
         }),
-        (s.default.Param.prototype.exponentialRampToValueAtTime = function(
+        (s.default.Param.prototype.exponentialRampToValueAtTime = function (
           t,
           e
         ) {
@@ -1830,14 +1828,14 @@
             this._events.add({
               type: s.default.Param.AutomationType.Exponential,
               time: e,
-              value: t
+              value: t,
             }),
             this.log(s.default.Param.AutomationType.Exponential, t, e),
             this._param.exponentialRampToValueAtTime(t, e),
             this
           );
         }),
-        (s.default.Param.prototype.exponentialRampTo = function(t, e, i) {
+        (s.default.Param.prototype.exponentialRampTo = function (t, e, i) {
           return (
             (i = this.toSeconds(i)),
             this.setRampPoint(i),
@@ -1845,7 +1843,7 @@
             this
           );
         }),
-        (s.default.Param.prototype.linearRampTo = function(t, e, i) {
+        (s.default.Param.prototype.linearRampTo = function (t, e, i) {
           return (
             (i = this.toSeconds(i)),
             this.setRampPoint(i),
@@ -1853,7 +1851,7 @@
             this
           );
         }),
-        (s.default.Param.prototype.targetRampTo = function(t, e, i) {
+        (s.default.Param.prototype.targetRampTo = function (t, e, i) {
           return (
             (i = this.toSeconds(i)),
             this.setRampPoint(i),
@@ -1861,7 +1859,7 @@
             this
           );
         }),
-        (s.default.Param.prototype.exponentialApproachValueAtTime = function(
+        (s.default.Param.prototype.exponentialApproachValueAtTime = function (
           t,
           e,
           i
@@ -1875,7 +1873,7 @@
             this
           );
         }),
-        (s.default.Param.prototype.setTargetAtTime = function(t, e, i) {
+        (s.default.Param.prototype.setTargetAtTime = function (t, e, i) {
           if (((t = this._fromUnits(t)), i <= 0))
             throw new Error("timeConstant must be greater than 0");
           return (
@@ -1884,14 +1882,14 @@
               type: s.default.Param.AutomationType.Target,
               value: t,
               time: e,
-              constant: i
+              constant: i,
             }),
             this.log(s.default.Param.AutomationType.Target, t, e, i),
             this._param.setTargetAtTime(t, e, i),
             this
           );
         }),
-        (s.default.Param.prototype.setValueCurveAtTime = function(t, e, i, n) {
+        (s.default.Param.prototype.setValueCurveAtTime = function (t, e, i, n) {
           (n = s.default.defaultArg(n, 1)),
             (i = this.toSeconds(i)),
             (e = this.toSeconds(e)),
@@ -1900,7 +1898,7 @@
             this.linearRampToValueAtTime(t[a] * n, e + a * o);
           return this;
         }),
-        (s.default.Param.prototype.cancelScheduledValues = function(t) {
+        (s.default.Param.prototype.cancelScheduledValues = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._events.cancel(t),
@@ -1909,7 +1907,7 @@
             this
           );
         }),
-        (s.default.Param.prototype.cancelAndHoldAtTime = function(t) {
+        (s.default.Param.prototype.cancelAndHoldAtTime = function (t) {
           t = this.toSeconds(t);
           var e = this.getValueAtTime(t);
           this.log("cancelAndHoldAtTime", t, "value=" + e),
@@ -1930,13 +1928,13 @@
             this._events.add({
               type: s.default.Param.AutomationType.SetValue,
               value: e,
-              time: t
+              time: t,
             }),
             this._param.setValueAtTime(e, t),
             this
           );
         }),
-        (s.default.Param.prototype.rampTo = function(t, e, i) {
+        (s.default.Param.prototype.rampTo = function (t, e, i) {
           return (
             (e = s.default.defaultArg(e, 0.1)),
             this.units === s.default.Type.Frequency ||
@@ -1947,7 +1945,7 @@
             this
           );
         }),
-        (s.default.Param.prototype._exponentialApproach = function(
+        (s.default.Param.prototype._exponentialApproach = function (
           t,
           e,
           i,
@@ -1956,7 +1954,7 @@
         ) {
           return i + (e - i) * Math.exp(-(n - t) / s);
         }),
-        (s.default.Param.prototype._linearInterpolate = function(
+        (s.default.Param.prototype._linearInterpolate = function (
           t,
           e,
           i,
@@ -1965,7 +1963,7 @@
         ) {
           return e + ((n - t) / (i - t)) * (s - e);
         }),
-        (s.default.Param.prototype._exponentialInterpolate = function(
+        (s.default.Param.prototype._exponentialInterpolate = function (
           t,
           e,
           i,
@@ -1974,7 +1972,7 @@
         ) {
           return e * Math.pow(s / e, (n - t) / (i - t));
         }),
-        (s.default.Param.prototype.dispose = function() {
+        (s.default.Param.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             (this._param = null),
@@ -1984,12 +1982,12 @@
         }),
         (e.default = s.default.Param);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(19), i(10), i(23);
-      (s.default.StereoEffect = function() {
+      (s.default.StereoEffect = function () {
         s.default.AudioNode.call(this);
         var t = s.default.defaults(arguments, ["wet"], s.default.Effect);
         this.createInsOuts(1, 1),
@@ -2008,7 +2006,7 @@
           this._readOnly(["wet"]);
       }),
         s.default.extend(s.default.StereoEffect, s.default.Effect),
-        (s.default.StereoEffect.prototype.dispose = function() {
+        (s.default.StereoEffect.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._dryWet.dispose(),
@@ -2028,22 +2026,22 @@
         }),
         (e.default = s.default.StereoEffect);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(83), i(4), i(24), i(35), i(3), i(81), i(80), i(56);
-      (s.default.Transport = function() {
+      (s.default.Transport = function () {
         s.default.Emitter.call(this),
           s.default.getContext(
-            function() {
+            function () {
               (this.loop = !1),
                 (this._loopStart = 0),
                 (this._loopEnd = 0),
                 (this._ppq = n.defaults.PPQ),
                 (this._clock = new s.default.Clock({
                   callback: this._processTick.bind(this),
-                  frequency: 0
+                  frequency: 0,
                 })),
                 this._bindClockEvents(),
                 (this.bpm = this._clock.frequency),
@@ -2071,10 +2069,10 @@
           timeSignature: 4,
           loopStart: 0,
           loopEnd: "4m",
-          PPQ: 192
+          PPQ: 192,
         }),
         (s.default.Transport.prototype.isTransport = !0),
-        (s.default.Transport.prototype._processTick = function(t, e) {
+        (s.default.Transport.prototype._processTick = function (t, e) {
           if (
             this._swingAmount > 0 &&
             e % this._ppq != 0 &&
@@ -2091,35 +2089,35 @@
             (e = this._loopStart),
             this.emit("loopStart", t, this._clock.getSecondsAtTime(t)),
             this.emit("loop", t)),
-            this._timeline.forEachAtTime(e, function(e) {
+            this._timeline.forEachAtTime(e, function (e) {
               e.invoke(t);
             });
         }),
-        (s.default.Transport.prototype.schedule = function(t, e) {
+        (s.default.Transport.prototype.schedule = function (t, e) {
           var i = new s.default.TransportEvent(this, {
             time: s.default.TransportTime(e),
-            callback: t
+            callback: t,
           });
           return this._addEvent(i, this._timeline);
         }),
-        (s.default.Transport.prototype.scheduleRepeat = function(t, e, i, n) {
+        (s.default.Transport.prototype.scheduleRepeat = function (t, e, i, n) {
           var o = new s.default.TransportRepeatEvent(this, {
             callback: t,
             interval: s.default.Time(e),
             time: s.default.TransportTime(i),
-            duration: s.default.Time(s.default.defaultArg(n, 1 / 0))
+            duration: s.default.Time(s.default.defaultArg(n, 1 / 0)),
           });
           return this._addEvent(o, this._repeatedEvents);
         }),
-        (s.default.Transport.prototype.scheduleOnce = function(t, e) {
+        (s.default.Transport.prototype.scheduleOnce = function (t, e) {
           var i = new s.default.TransportEvent(this, {
             time: s.default.TransportTime(e),
             callback: t,
-            once: !0
+            once: !0,
           });
           return this._addEvent(i, this._timeline);
         }),
-        (s.default.Transport.prototype.clear = function(t) {
+        (s.default.Transport.prototype.clear = function (t) {
           if (this._scheduledEvents.hasOwnProperty(t)) {
             var e = this._scheduledEvents[t.toString()];
             e.timeline.remove(e.event),
@@ -2128,74 +2126,74 @@
           }
           return this;
         }),
-        (s.default.Transport.prototype._addEvent = function(t, e) {
+        (s.default.Transport.prototype._addEvent = function (t, e) {
           return (
             (this._scheduledEvents[t.id.toString()] = {
               event: t,
-              timeline: e
+              timeline: e,
             }),
             e.add(t),
             t.id
           );
         }),
-        (s.default.Transport.prototype.cancel = function(t) {
+        (s.default.Transport.prototype.cancel = function (t) {
           return (
             (t = s.default.defaultArg(t, 0)),
             (t = this.toTicks(t)),
             this._timeline.forEachFrom(
               t,
-              function(t) {
+              function (t) {
                 this.clear(t.id);
               }.bind(this)
             ),
             this._repeatedEvents.forEachFrom(
               t,
-              function(t) {
+              function (t) {
                 this.clear(t.id);
               }.bind(this)
             ),
             this
           );
         }),
-        (s.default.Transport.prototype._bindClockEvents = function() {
+        (s.default.Transport.prototype._bindClockEvents = function () {
           this._clock.on(
             "start",
-            function(t, e) {
+            function (t, e) {
               (e = s.default.Ticks(e).toSeconds()), this.emit("start", t, e);
             }.bind(this)
           ),
             this._clock.on(
               "stop",
-              function(t) {
+              function (t) {
                 this.emit("stop", t);
               }.bind(this)
             ),
             this._clock.on(
               "pause",
-              function(t) {
+              function (t) {
                 this.emit("pause", t);
               }.bind(this)
             );
         }),
         Object.defineProperty(s.default.Transport.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._clock.getStateAtTime(this.now());
-          }
+          },
         }),
-        (s.default.Transport.prototype.start = function(t, e) {
+        (s.default.Transport.prototype.start = function (t, e) {
           return (
             s.default.isDefined(e) && (e = this.toTicks(e)),
             this._clock.start(t, e),
             this
           );
         }),
-        (s.default.Transport.prototype.stop = function(t) {
+        (s.default.Transport.prototype.stop = function (t) {
           return this._clock.stop(t), this;
         }),
-        (s.default.Transport.prototype.pause = function(t) {
+        (s.default.Transport.prototype.pause = function (t) {
           return this._clock.pause(t), this;
         }),
-        (s.default.Transport.prototype.toggle = function(t) {
+        (s.default.Transport.prototype.toggle = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._clock.getStateAtTime(t) !== s.default.State.Started
@@ -2205,76 +2203,76 @@
           );
         }),
         Object.defineProperty(s.default.Transport.prototype, "timeSignature", {
-          get: function() {
+          get: function () {
             return this._timeSignature;
           },
-          set: function(t) {
+          set: function (t) {
             s.default.isArray(t) && (t = (t[0] / t[1]) * 4),
               (this._timeSignature = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Transport.prototype, "loopStart", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._loopStart).toSeconds();
           },
-          set: function(t) {
+          set: function (t) {
             this._loopStart = this.toTicks(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Transport.prototype, "loopEnd", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._loopEnd).toSeconds();
           },
-          set: function(t) {
+          set: function (t) {
             this._loopEnd = this.toTicks(t);
-          }
+          },
         }),
-        (s.default.Transport.prototype.setLoopPoints = function(t, e) {
+        (s.default.Transport.prototype.setLoopPoints = function (t, e) {
           return (this.loopStart = t), (this.loopEnd = e), this;
         }),
         Object.defineProperty(s.default.Transport.prototype, "swing", {
-          get: function() {
+          get: function () {
             return this._swingAmount;
           },
-          set: function(t) {
+          set: function (t) {
             this._swingAmount = t;
-          }
+          },
         }),
         Object.defineProperty(
           s.default.Transport.prototype,
           "swingSubdivision",
           {
-            get: function() {
+            get: function () {
               return s.default.Ticks(this._swingTicks).toNotation();
             },
-            set: function(t) {
+            set: function (t) {
               this._swingTicks = this.toTicks(t);
-            }
+            },
           }
         ),
         Object.defineProperty(s.default.Transport.prototype, "position", {
-          get: function() {
+          get: function () {
             var t = this.now(),
               e = this._clock.getTicksAtTime(t);
             return s.default.Ticks(e).toBarsBeatsSixteenths();
           },
-          set: function(t) {
+          set: function (t) {
             var e = this.toTicks(t);
             this.ticks = e;
-          }
+          },
         }),
         Object.defineProperty(s.default.Transport.prototype, "seconds", {
-          get: function() {
+          get: function () {
             return this._clock.seconds;
           },
-          set: function(t) {
+          set: function (t) {
             var e = this.now(),
               i = this.bpm.timeToTicks(t, e);
             this.ticks = i;
-          }
+          },
         }),
         Object.defineProperty(s.default.Transport.prototype, "progress", {
-          get: function() {
+          get: function () {
             if (this.loop) {
               var t = this.now();
               return (
@@ -2283,13 +2281,13 @@
               );
             }
             return 0;
-          }
+          },
         }),
         Object.defineProperty(s.default.Transport.prototype, "ticks", {
-          get: function() {
+          get: function () {
             return this._clock.ticks;
           },
-          set: function(t) {
+          set: function (t) {
             if (this._clock.ticks !== t) {
               var e = this.now();
               this.state === s.default.State.Started
@@ -2298,37 +2296,37 @@
                   this.emit("start", e, this.seconds))
                 : this._clock.setTicksAtTime(t, e);
             }
-          }
+          },
         }),
-        (s.default.Transport.prototype.getTicksAtTime = function(t) {
+        (s.default.Transport.prototype.getTicksAtTime = function (t) {
           return Math.round(this._clock.getTicksAtTime(t));
         }),
-        (s.default.Transport.prototype.getSecondsAtTime = function(t) {
+        (s.default.Transport.prototype.getSecondsAtTime = function (t) {
           return this._clock.getSecondsAtTime(t);
         }),
         Object.defineProperty(s.default.Transport.prototype, "PPQ", {
-          get: function() {
+          get: function () {
             return this._ppq;
           },
-          set: function(t) {
+          set: function (t) {
             var e = this.bpm.value;
             (this._ppq = t), (this.bpm.value = e);
-          }
+          },
         }),
-        (s.default.Transport.prototype._fromUnits = function(t) {
+        (s.default.Transport.prototype._fromUnits = function (t) {
           return 1 / (60 / t / this.PPQ);
         }),
-        (s.default.Transport.prototype._toUnits = function(t) {
+        (s.default.Transport.prototype._toUnits = function (t) {
           return (t / this.PPQ) * 60;
         }),
-        (s.default.Transport.prototype.nextSubdivision = function(t) {
+        (s.default.Transport.prototype.nextSubdivision = function (t) {
           if (((t = this.toTicks(t)), this.state !== s.default.State.Started))
             return 0;
           var e = this.now(),
             i = t - (this.getTicksAtTime(e) % t);
           return this._clock.nextTickTime(i, e);
         }),
-        (s.default.Transport.prototype.syncSignal = function(t, e) {
+        (s.default.Transport.prototype.syncSignal = function (t, e) {
           if (!e) {
             var i = this.now();
             e =
@@ -2344,7 +2342,7 @@
             this
           );
         }),
-        (s.default.Transport.prototype.unsyncSignal = function(t) {
+        (s.default.Transport.prototype.unsyncSignal = function (t) {
           for (var e = this._syncedSignals.length - 1; e >= 0; e--) {
             var i = this._syncedSignals[e];
             i.signal === t &&
@@ -2354,7 +2352,7 @@
           }
           return this;
         }),
-        (s.default.Transport.prototype.dispose = function() {
+        (s.default.Transport.prototype.dispose = function () {
           return (
             s.default.Emitter.prototype.dispose.call(this),
             this._clock.dispose(),
@@ -2370,22 +2368,22 @@
         });
       var n = s.default.Transport;
       (s.default.Transport = new n()),
-        s.default.Context.on("init", function(t) {
+        s.default.Context.on("init", function (t) {
           t.transport && t.transport.isTransport
             ? (s.default.Transport = t.transport)
             : (s.default.Transport = new n());
         }),
-        s.default.Context.on("close", function(t) {
+        s.default.Context.on("close", function (t) {
           t.transport && t.transport.isTransport && t.transport.dispose();
         }),
         (e.default = s.default.Transport);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(6), i(16), i(64);
-      (s.default.Oscillator = function() {
+      (s.default.Oscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type"],
@@ -2416,16 +2414,16 @@
           detune: 0,
           phase: 0,
           partials: [],
-          partialCount: 0
+          partialCount: 0,
         }),
         (s.default.Oscillator.Type = {
           Sine: "sine",
           Triangle: "triangle",
           Sawtooth: "sawtooth",
           Square: "square",
-          Custom: "custom"
+          Custom: "custom",
         }),
-        (s.default.Oscillator.prototype._start = function(t) {
+        (s.default.Oscillator.prototype._start = function (t) {
           this.log("start", t);
           var e = new s.default.OscillatorNode();
           (this._oscillator = e),
@@ -2438,7 +2436,7 @@
             (t = this.toSeconds(t)),
             this._oscillator.start(t);
         }),
-        (s.default.Oscillator.prototype._stop = function(t) {
+        (s.default.Oscillator.prototype._stop = function (t) {
           return (
             this.log("stop", t),
             this._oscillator &&
@@ -2446,29 +2444,29 @@
             this
           );
         }),
-        (s.default.Oscillator.prototype.restart = function(t) {
+        (s.default.Oscillator.prototype.restart = function (t) {
           return (
             this._oscillator && this._oscillator.cancelStop(),
             this._state.cancel(this.toSeconds(t)),
             this
           );
         }),
-        (s.default.Oscillator.prototype.syncFrequency = function() {
+        (s.default.Oscillator.prototype.syncFrequency = function () {
           return s.default.Transport.syncSignal(this.frequency), this;
         }),
-        (s.default.Oscillator.prototype.unsyncFrequency = function() {
+        (s.default.Oscillator.prototype.unsyncFrequency = function () {
           return s.default.Transport.unsyncSignal(this.frequency), this;
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             var e = [
               s.default.Oscillator.Type.Sine,
               s.default.Oscillator.Type.Square,
               s.default.Oscillator.Type.Triangle,
-              s.default.Oscillator.Type.Sawtooth
+              s.default.Oscillator.Type.Sawtooth,
             ].includes(t);
             if (0 === this._phase && e)
               (this._wave = null),
@@ -2482,39 +2480,39 @@
                   this._oscillator.setPeriodicWave(this._wave);
             }
             this._type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return this._type.replace(this.partialCount, "");
           },
-          set: function(t) {
+          set: function (t) {
             this.partialCount &&
             this._type !== s.default.Oscillator.Type.Custom &&
             t !== s.default.Oscillator.Type.Custom
               ? (this.type = t + this.partialCount)
               : (this.type = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "partialCount", {
-          get: function() {
+          get: function () {
             return this._partialCount;
           },
-          set: function(t) {
+          set: function (t) {
             var e = this._type,
               i = /^(sine|triangle|square|sawtooth)(\d+)$/.exec(this._type);
             i && (e = i[1]),
               this._type !== s.default.Oscillator.Type.Custom &&
                 (this.type = 0 === t ? e : e + t.toString());
-          }
+          },
         }),
-        (s.default.Oscillator.prototype.get = function() {
+        (s.default.Oscillator.prototype.get = function () {
           var t = s.default.prototype.get.apply(this, arguments);
           return (
             t.type !== s.default.Oscillator.Type.Custom && delete t.partials, t
           );
         }),
-        (s.default.Oscillator.prototype._getRealImaginary = function(t, e) {
+        (s.default.Oscillator.prototype._getRealImaginary = function (t, e) {
           var i = 2048,
             n = new Float32Array(i),
             o = new Float32Array(i),
@@ -2562,12 +2560,12 @@
           }
           return [n, o];
         }),
-        (s.default.Oscillator.prototype._inverseFFT = function(t, e, i) {
+        (s.default.Oscillator.prototype._inverseFFT = function (t, e, i) {
           for (var s = 0, n = t.length, o = 0; o < n; o++)
             s += t[o] * Math.cos(o * i) + e[o] * Math.sin(o * i);
           return s;
         }),
-        (s.default.Oscillator.prototype._getInitialValue = function() {
+        (s.default.Oscillator.prototype._getInitialValue = function () {
           for (
             var t = this._getRealImaginary(this._type, 0),
               e = t[0],
@@ -2582,23 +2580,23 @@
           return -this._inverseFFT(e, i, this._phase) / s;
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return this._partials;
           },
-          set: function(t) {
+          set: function (t) {
             (this._partials = t),
               (this.type = s.default.Oscillator.Type.Custom);
-          }
+          },
         }),
         Object.defineProperty(s.default.Oscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._phase * (180 / Math.PI);
           },
-          set: function(t) {
+          set: function (t) {
             (this._phase = (t * Math.PI) / 180), (this.type = this._type);
-          }
+          },
         }),
-        (s.default.Oscillator.prototype.dispose = function() {
+        (s.default.Oscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             null !== this._oscillator &&
@@ -2615,12 +2613,12 @@
         }),
         (e.default = s.default.Oscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(14), i(1);
-      (s.default.Delay = function() {
+      (s.default.Delay = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "maxDelay"],
@@ -2637,18 +2635,18 @@
           (this.delayTime = new s.default.Param({
             param: this._delayNode.delayTime,
             units: s.default.Type.Time,
-            value: t.delayTime
+            value: t.delayTime,
           })),
           this._readOnly("delayTime");
       }),
         s.default.extend(s.default.Delay, s.default.AudioNode),
         (s.default.Delay.defaults = { maxDelay: 1, delayTime: 0 }),
         Object.defineProperty(s.default.Delay.prototype, "maxDelay", {
-          get: function() {
+          get: function () {
             return this._maxDelay;
-          }
+          },
         }),
-        (s.default.Delay.prototype.dispose = function() {
+        (s.default.Delay.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._delayNode.disconnect(),
@@ -2660,12 +2658,12 @@
         }),
         (e.default = s.default.Delay);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(3), i(1);
-      (s.default.Split = function(t) {
+      (s.default.Split = function (t) {
         (t = s.default.defaultArg(t, 2)),
           s.default.AudioNode.call(this),
           this.createInsOuts(0, t),
@@ -2678,9 +2676,9 @@
         (this.left = this.output[0]), (this.right = this.output[1]);
       }),
         s.default.extend(s.default.Split, s.default.AudioNode),
-        (s.default.Split.prototype.dispose = function() {
+        (s.default.Split.prototype.dispose = function () {
           return (
-            this.output.forEach(function(t) {
+            this.output.forEach(function (t) {
               t.dispose();
             }),
             s.default.AudioNode.prototype.dispose.call(this),
@@ -2693,21 +2691,22 @@
         }),
         (e.default = s.default.Split);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0),
-        n = (i(35),
-        i(24),
-        i(44),
-        [
-          "baseLatency",
-          "destination",
-          "currentTime",
-          "sampleRate",
-          "listener",
-          "state"
-        ]),
+        n =
+          (i(35),
+          i(24),
+          i(44),
+          [
+            "baseLatency",
+            "destination",
+            "currentTime",
+            "sampleRate",
+            "listener",
+            "state",
+          ]),
         o = [
           "suspend",
           "close",
@@ -2735,9 +2734,9 @@
           "createPeriodicWave",
           "createChannelSplitter",
           "createChannelMerger",
-          "audioWorklet"
+          "audioWorklet",
         ];
-      (s.default.Context = function() {
+      (s.default.Context = function () {
         s.default.Emitter.call(this);
         var t = s.default.defaults(arguments, ["context"], s.default.Context);
         if (
@@ -2750,12 +2749,12 @@
         for (this._context = t.context; this._context.rawContext; )
           this._context = this._context.rawContext;
         n.forEach(
-          function(t) {
+          function (t) {
             this._defineProperty(this._context, t);
           }.bind(this)
         ),
           o.forEach(
-            function(t) {
+            function (t) {
               this._defineMethod(this._context, t);
             }.bind(this)
           ),
@@ -2771,7 +2770,7 @@
           (this._timeouts = new s.default.Timeline()),
           (this._timeoutIds = 0),
           this.on("tick", this._timeoutLoop.bind(this)),
-          (this._context.onstatechange = function(t) {
+          (this._context.onstatechange = function (t) {
             this.emit("statechange", t);
           }.bind(this));
       }),
@@ -2781,55 +2780,55 @@
           clockSource: "worker",
           latencyHint: "interactive",
           lookAhead: 0.1,
-          updateInterval: 0.03
+          updateInterval: 0.03,
         }),
         (s.default.Context.prototype.isContext = !0),
-        (s.default.Context.prototype._defineProperty = function(t, e) {
+        (s.default.Context.prototype._defineProperty = function (t, e) {
           s.default.isUndef(this[e]) &&
             Object.defineProperty(this, e, {
-              get: function() {
+              get: function () {
                 return t[e];
               },
-              set: function(i) {
+              set: function (i) {
                 t[e] = i;
-              }
+              },
             });
         }),
-        (s.default.Context.prototype._defineMethod = function(t, e) {
+        (s.default.Context.prototype._defineMethod = function (t, e) {
           s.default.isUndef(this[e]) &&
             Object.defineProperty(this, e, {
-              get: function() {
+              get: function () {
                 return t[e].bind(t);
-              }
+              },
             });
         }),
-        (s.default.Context.prototype.now = function() {
+        (s.default.Context.prototype.now = function () {
           return this._context.currentTime + this.lookAhead;
         }),
         Object.defineProperty(s.default.Context.prototype, "destination", {
-          get: function() {
+          get: function () {
             return this.master ? this.master : this._context.destination;
-          }
+          },
         }),
-        (s.default.Context.prototype.resume = function() {
+        (s.default.Context.prototype.resume = function () {
           return "suspended" === this._context.state &&
             this._context instanceof AudioContext
             ? this._context.resume()
             : Promise.resolve();
         }),
-        (s.default.Context.prototype.close = function() {
+        (s.default.Context.prototype.close = function () {
           var t = Promise.resolve();
           return (
             this !== s.default.global.TONE_AUDIO_CONTEXT &&
               (t = this.rawContext.close()),
             t.then(
-              function() {
+              function () {
                 s.default.Context.emit("close", this);
               }.bind(this)
             )
           );
         }),
-        (s.default.Context.prototype.getConstant = function(t) {
+        (s.default.Context.prototype.getConstant = function (t) {
           if (this._constants[t]) return this._constants[t];
           for (
             var e = this._context.createBuffer(
@@ -2854,7 +2853,7 @@
             n
           );
         }),
-        (s.default.Context.prototype._timeoutLoop = function() {
+        (s.default.Context.prototype._timeoutLoop = function () {
           for (
             var t = this.now();
             this._timeouts &&
@@ -2864,52 +2863,52 @@
           )
             this._timeouts.shift().callback();
         }),
-        (s.default.Context.prototype.setTimeout = function(t, e) {
+        (s.default.Context.prototype.setTimeout = function (t, e) {
           this._timeoutIds++;
           var i = this.now();
           return (
             this._timeouts.add({
               callback: t,
               time: i + e,
-              id: this._timeoutIds
+              id: this._timeoutIds,
             }),
             this._timeoutIds
           );
         }),
-        (s.default.Context.prototype.clearTimeout = function(t) {
+        (s.default.Context.prototype.clearTimeout = function (t) {
           return (
-            this._timeouts.forEach(function(e) {
+            this._timeouts.forEach(function (e) {
               e.id === t && this.remove(e);
             }),
             this
           );
         }),
         Object.defineProperty(s.default.Context.prototype, "updateInterval", {
-          get: function() {
+          get: function () {
             return this._ticker.updateInterval;
           },
-          set: function(t) {
+          set: function (t) {
             this._ticker.updateInterval = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Context.prototype, "rawContext", {
-          get: function() {
+          get: function () {
             return this._context;
-          }
+          },
         }),
         Object.defineProperty(s.default.Context.prototype, "clockSource", {
-          get: function() {
+          get: function () {
             return this._ticker.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._ticker.type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Context.prototype, "latencyHint", {
-          get: function() {
+          get: function () {
             return this._latencyHint;
           },
-          set: function(t) {
+          set: function (t) {
             var e = t;
             if (((this._latencyHint = t), s.default.isString(t)))
               switch (t) {
@@ -2926,11 +2925,11 @@
                   (this._context.latencyHint = "interactive"), (e = 0.01);
               }
             (this.lookAhead = e), (this.updateInterval = e / 3);
-          }
+          },
         }),
-        (s.default.Context.prototype.dispose = function() {
+        (s.default.Context.prototype.dispose = function () {
           return this.close().then(
-            function() {
+            function () {
               for (var t in (s.default.Emitter.prototype.dispose.call(this),
               this._ticker.dispose(),
               (this._ticker = null),
@@ -2942,7 +2941,7 @@
             }.bind(this)
           );
         });
-      var a = function(t, e, i) {
+      var a = function (t, e, i) {
         (this._type = e),
           (this._updateInterval = i),
           (this._callback = s.default.defaultArg(t, s.default.noOp)),
@@ -2952,29 +2951,29 @@
         ((a.Type = {
           Worker: "worker",
           Timeout: "timeout",
-          Offline: "offline"
+          Offline: "offline",
         }),
-        (a.prototype._createWorker = function() {
+        (a.prototype._createWorker = function () {
           s.default.global.URL =
             s.default.global.URL || s.default.global.webkitURL;
           var t = new Blob([
               "var timeoutTime = " +
                 (1e3 * this._updateInterval).toFixed(1) +
-                ";self.onmessage = function(msg){\ttimeoutTime = parseInt(msg.data);};function tick(){\tsetTimeout(tick, timeoutTime);\tself.postMessage('tick');}tick();"
+                ";self.onmessage = function(msg){\ttimeoutTime = parseInt(msg.data);};function tick(){\tsetTimeout(tick, timeoutTime);\tself.postMessage('tick');}tick();",
             ]),
             e = URL.createObjectURL(t),
             i = new Worker(e);
           (i.onmessage = this._callback.bind(this)), (this._worker = i);
         }),
-        (a.prototype._createTimeout = function() {
+        (a.prototype._createTimeout = function () {
           this._timeout = setTimeout(
-            function() {
+            function () {
               this._createTimeout(), this._callback();
             }.bind(this),
             1e3 * this._updateInterval
           );
         }),
-        (a.prototype._createClock = function() {
+        (a.prototype._createClock = function () {
           if (this._type === a.Type.Worker)
             try {
               this._createWorker();
@@ -2984,24 +2983,24 @@
           else this._type === a.Type.Timeout && this._createTimeout();
         }),
         Object.defineProperty(a.prototype, "updateInterval", {
-          get: function() {
+          get: function () {
             return this._updateInterval;
           },
-          set: function(t) {
+          set: function (t) {
             (this._updateInterval = Math.max(t, 128 / 44100)),
               this._type === a.Type.Worker &&
                 this._worker.postMessage(Math.max(1e3 * t, 1));
-          }
+          },
         }),
         Object.defineProperty(a.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             this._disposeClock(), (this._type = t), this._createClock();
-          }
+          },
         }),
-        (a.prototype._disposeClock = function() {
+        (a.prototype._disposeClock = function () {
           this._timeout &&
             (clearTimeout(this._timeout), (this._timeout = null)),
             this._worker &&
@@ -3009,7 +3008,7 @@
               (this._worker.onmessage = null),
               (this._worker = null));
         }),
-        (a.prototype.dispose = function() {
+        (a.prototype.dispose = function () {
           this._disposeClock(), (this._callback = null);
         }),
         s.default.supported && !s.default.initialized)
@@ -3031,12 +3030,12 @@
           console.warn("This browser does not support Tone.js");
       e.default = s.default.Context;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4), i(40);
-      (s.default.Instrument = function(t) {
+      (s.default.Instrument = function (t) {
         (t = s.default.defaultArg(t, s.default.Instrument.defaults)),
           s.default.AudioNode.call(this),
           (this._volume = this.output = new s.default.Volume(t.volume)),
@@ -3048,20 +3047,20 @@
         (s.default.Instrument.defaults = { volume: 0 }),
         (s.default.Instrument.prototype.triggerAttack = s.default.noOp),
         (s.default.Instrument.prototype.triggerRelease = s.default.noOp),
-        (s.default.Instrument.prototype.sync = function() {
+        (s.default.Instrument.prototype.sync = function () {
           return (
             this._syncMethod("triggerAttack", 1),
             this._syncMethod("triggerRelease", 0),
             this
           );
         }),
-        (s.default.Instrument.prototype._syncMethod = function(t, e) {
+        (s.default.Instrument.prototype._syncMethod = function (t, e) {
           var i = (this["_original_" + t] = this[t]);
-          this[t] = function() {
+          this[t] = function () {
             var t = Array.prototype.slice.call(arguments),
               n = t[e],
               o = s.default.Transport.schedule(
-                function(s) {
+                function (s) {
                   (t[e] = s), i.apply(this, t);
                 }.bind(this),
                 n
@@ -3069,9 +3068,9 @@
             this._scheduledEvents.push(o);
           }.bind(this);
         }),
-        (s.default.Instrument.prototype.unsync = function() {
+        (s.default.Instrument.prototype.unsync = function () {
           return (
-            this._scheduledEvents.forEach(function(t) {
+            this._scheduledEvents.forEach(function (t) {
               s.default.Transport.clear(t);
             }),
             (this._scheduledEvents = []),
@@ -3081,7 +3080,7 @@
             this
           );
         }),
-        (s.default.Instrument.prototype.triggerAttackRelease = function(
+        (s.default.Instrument.prototype.triggerAttackRelease = function (
           t,
           e,
           i,
@@ -3095,7 +3094,7 @@
             this
           );
         }),
-        (s.default.Instrument.prototype.dispose = function() {
+        (s.default.Instrument.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._volume.dispose(),
@@ -3109,21 +3108,21 @@
         }),
         (e.default = s.default.Instrument);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7), i(2);
-      (s.default.AudioToGain = function() {
+      (s.default.AudioToGain = function () {
         s.default.SignalBase.call(this),
           (this._norm = this.input = this.output = new s.default.WaveShaper(
-            function(t) {
+            function (t) {
               return (t + 1) / 2;
             }
           ));
       }),
         s.default.extend(s.default.AudioToGain, s.default.SignalBase),
-        (s.default.AudioToGain.prototype.dispose = function() {
+        (s.default.AudioToGain.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._norm.dispose(),
@@ -3133,12 +3132,12 @@
         }),
         (e.default = s.default.AudioToGain);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(13), i(89), i(3), i(1);
-      (s.default.CrossFade = function(t) {
+      (s.default.CrossFade = function (t) {
         s.default.AudioNode.call(this),
           this.createInsOuts(2, 1),
           (this.a = this.input[0] = new s.default.Gain()),
@@ -3160,7 +3159,7 @@
           this._readOnly("fade");
       }),
         s.default.extend(s.default.CrossFade, s.default.AudioNode),
-        (s.default.CrossFade.prototype.dispose = function() {
+        (s.default.CrossFade.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable("fade"),
@@ -3182,22 +3181,22 @@
         }),
         (e.default = s.default.CrossFade);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.Timeline = function() {
+      (s.default.Timeline = function () {
         var t = s.default.defaults(arguments, ["memory"], s.default.Timeline);
         s.default.call(this), (this._timeline = []), (this.memory = t.memory);
       }),
         s.default.extend(s.default.Timeline),
         (s.default.Timeline.defaults = { memory: 1 / 0 }),
         Object.defineProperty(s.default.Timeline.prototype, "length", {
-          get: function() {
+          get: function () {
             return this._timeline.length;
-          }
+          },
         }),
-        (s.default.Timeline.prototype.add = function(t) {
+        (s.default.Timeline.prototype.add = function (t) {
           if (s.default.isUndef(t.time))
             throw new Error("Tone.Timeline: events must have a time attribute");
           t.time = t.time.valueOf();
@@ -3208,27 +3207,27 @@
           }
           return this;
         }),
-        (s.default.Timeline.prototype.remove = function(t) {
+        (s.default.Timeline.prototype.remove = function (t) {
           var e = this._timeline.indexOf(t);
           return -1 !== e && this._timeline.splice(e, 1), this;
         }),
-        (s.default.Timeline.prototype.get = function(t, e) {
+        (s.default.Timeline.prototype.get = function (t, e) {
           e = s.default.defaultArg(e, "time");
           var i = this._search(t, e);
           return -1 !== i ? this._timeline[i] : null;
         }),
-        (s.default.Timeline.prototype.peek = function() {
+        (s.default.Timeline.prototype.peek = function () {
           return this._timeline[0];
         }),
-        (s.default.Timeline.prototype.shift = function() {
+        (s.default.Timeline.prototype.shift = function () {
           return this._timeline.shift();
         }),
-        (s.default.Timeline.prototype.getAfter = function(t, e) {
+        (s.default.Timeline.prototype.getAfter = function (t, e) {
           e = s.default.defaultArg(e, "time");
           var i = this._search(t, e);
           return i + 1 < this._timeline.length ? this._timeline[i + 1] : null;
         }),
-        (s.default.Timeline.prototype.getBefore = function(t, e) {
+        (s.default.Timeline.prototype.getBefore = function (t, e) {
           e = s.default.defaultArg(e, "time");
           var i = this._timeline.length;
           if (i > 0 && this._timeline[i - 1][e] < t)
@@ -3236,7 +3235,7 @@
           var n = this._search(t, e);
           return n - 1 >= 0 ? this._timeline[n - 1] : null;
         }),
-        (s.default.Timeline.prototype.cancel = function(t) {
+        (s.default.Timeline.prototype.cancel = function (t) {
           if (this._timeline.length > 1) {
             var e = this._search(t);
             if (e >= 0)
@@ -3252,15 +3251,15 @@
               (this._timeline = []);
           return this;
         }),
-        (s.default.Timeline.prototype.cancelBefore = function(t) {
+        (s.default.Timeline.prototype.cancelBefore = function (t) {
           var e = this._search(t);
           return e >= 0 && (this._timeline = this._timeline.slice(e + 1)), this;
         }),
-        (s.default.Timeline.prototype.previousEvent = function(t) {
+        (s.default.Timeline.prototype.previousEvent = function (t) {
           var e = this._timeline.indexOf(t);
           return e > 0 ? this._timeline[e - 1] : null;
         }),
-        (s.default.Timeline.prototype._search = function(t, e) {
+        (s.default.Timeline.prototype._search = function (t, e) {
           if (0 === this._timeline.length) return -1;
           e = s.default.defaultArg(e, "time");
           var i = 0,
@@ -3282,27 +3281,27 @@
           }
           return -1;
         }),
-        (s.default.Timeline.prototype._iterate = function(t, e, i) {
+        (s.default.Timeline.prototype._iterate = function (t, e, i) {
           (e = s.default.defaultArg(e, 0)),
             (i = s.default.defaultArg(i, this._timeline.length - 1)),
             this._timeline.slice(e, i + 1).forEach(
-              function(e) {
+              function (e) {
                 t.call(this, e);
               }.bind(this)
             );
         }),
-        (s.default.Timeline.prototype.forEach = function(t) {
+        (s.default.Timeline.prototype.forEach = function (t) {
           return this._iterate(t), this;
         }),
-        (s.default.Timeline.prototype.forEachBefore = function(t, e) {
+        (s.default.Timeline.prototype.forEachBefore = function (t, e) {
           var i = this._search(t);
           return -1 !== i && this._iterate(e, 0, i), this;
         }),
-        (s.default.Timeline.prototype.forEachAfter = function(t, e) {
+        (s.default.Timeline.prototype.forEachAfter = function (t, e) {
           var i = this._search(t);
           return this._iterate(e, i + 1), this;
         }),
-        (s.default.Timeline.prototype.forEachBetween = function(t, e, i) {
+        (s.default.Timeline.prototype.forEachBetween = function (t, e, i) {
           var s = this._search(t),
             n = this._search(e);
           return (
@@ -3314,17 +3313,17 @@
             this
           );
         }),
-        (s.default.Timeline.prototype.forEachFrom = function(t, e) {
+        (s.default.Timeline.prototype.forEachFrom = function (t, e) {
           for (var i = this._search(t); i >= 0 && this._timeline[i].time >= t; )
             i--;
           return this._iterate(e, i + 1), this;
         }),
-        (s.default.Timeline.prototype.forEachAtTime = function(t, e) {
+        (s.default.Timeline.prototype.forEachAtTime = function (t, e) {
           var i = this._search(t);
           return (
             -1 !== i &&
               this._iterate(
-                function(i) {
+                function (i) {
                   i.time === t && e.call(this, i);
                 },
                 0,
@@ -3333,7 +3332,7 @@
             this
           );
         }),
-        (s.default.Timeline.prototype.dispose = function() {
+        (s.default.Timeline.prototype.dispose = function () {
           return (
             s.default.prototype.dispose.call(this),
             (this._timeline = null),
@@ -3342,19 +3341,19 @@
         }),
         (e.default = s.default.Timeline);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(21), i(2);
-      (s.default.Monophonic = function(t) {
+      (s.default.Monophonic = function (t) {
         (t = s.default.defaultArg(t, s.default.Monophonic.defaults)),
           s.default.Instrument.call(this, t),
           (this.portamento = t.portamento);
       }),
         s.default.extend(s.default.Monophonic, s.default.Instrument),
         (s.default.Monophonic.defaults = { portamento: 0 }),
-        (s.default.Monophonic.prototype.triggerAttack = function(t, e, i) {
+        (s.default.Monophonic.prototype.triggerAttack = function (t, e, i) {
           return (
             this.log("triggerAttack", t, e, i),
             (e = this.toSeconds(e)),
@@ -3363,7 +3362,7 @@
             this
           );
         }),
-        (s.default.Monophonic.prototype.triggerRelease = function(t) {
+        (s.default.Monophonic.prototype.triggerRelease = function (t) {
           return (
             this.log("triggerRelease", t),
             (t = this.toSeconds(t)),
@@ -3371,12 +3370,12 @@
             this
           );
         }),
-        (s.default.Monophonic.prototype._triggerEnvelopeAttack = function() {}),
-        (s.default.Monophonic.prototype._triggerEnvelopeRelease = function() {}),
-        (s.default.Monophonic.prototype.getLevelAtTime = function(t) {
+        (s.default.Monophonic.prototype._triggerEnvelopeAttack = function () {}),
+        (s.default.Monophonic.prototype._triggerEnvelopeRelease = function () {}),
+        (s.default.Monophonic.prototype.getLevelAtTime = function (t) {
           return (t = this.toSeconds(t)), this.envelope.getValueAtTime(t);
         }),
-        (s.default.Monophonic.prototype.setNote = function(t, e) {
+        (s.default.Monophonic.prototype.setNote = function (t, e) {
           if (
             ((e = this.toSeconds(e)),
             this.portamento > 0 && this.getLevelAtTime(e) > 0.05)
@@ -3388,12 +3387,12 @@
         }),
         (e.default = s.default.Monophonic);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(29), i(5), i(2);
-      (s.default.Scale = function(t, e) {
+      (s.default.Scale = function (t, e) {
         s.default.SignalBase.call(this),
           (this._outputMin = s.default.defaultArg(t, 0)),
           (this._outputMax = s.default.defaultArg(e, 1)),
@@ -3404,26 +3403,26 @@
       }),
         s.default.extend(s.default.Scale, s.default.SignalBase),
         Object.defineProperty(s.default.Scale.prototype, "min", {
-          get: function() {
+          get: function () {
             return this._outputMin;
           },
-          set: function(t) {
+          set: function (t) {
             (this._outputMin = t), this._setRange();
-          }
+          },
         }),
         Object.defineProperty(s.default.Scale.prototype, "max", {
-          get: function() {
+          get: function () {
             return this._outputMax;
           },
-          set: function(t) {
+          set: function (t) {
             (this._outputMax = t), this._setRange();
-          }
+          },
         }),
-        (s.default.Scale.prototype._setRange = function() {
+        (s.default.Scale.prototype._setRange = function () {
           (this._add.value = this._outputMin),
             (this._scale.value = this._outputMax - this._outputMin);
         }),
-        (s.default.Scale.prototype.dispose = function() {
+        (s.default.Scale.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._add.dispose(),
@@ -3435,12 +3434,12 @@
         }),
         (e.default = s.default.Scale);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(3), i(1);
-      (s.default.Volume = function() {
+      (s.default.Volume = function () {
         var t = s.default.defaults(arguments, ["volume"], s.default.Volume);
         s.default.AudioNode.call(this, t),
           (this.output = this.input = new s.default.Gain(
@@ -3455,17 +3454,17 @@
         s.default.extend(s.default.Volume, s.default.AudioNode),
         (s.default.Volume.defaults = { volume: 0, mute: !1 }),
         Object.defineProperty(s.default.Volume.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this.volume.value === -1 / 0;
           },
-          set: function(t) {
+          set: function (t) {
             !this.mute && t
               ? ((this._unmutedVolume = this.volume.value),
                 (this.volume.value = -1 / 0))
               : this.mute && !t && (this.volume.value = this._unmutedVolume);
-          }
+          },
         }),
-        (s.default.Volume.prototype.dispose = function() {
+        (s.default.Volume.prototype.dispose = function () {
           return (
             this.input.dispose(),
             s.default.AudioNode.prototype.dispose.call(this),
@@ -3477,18 +3476,18 @@
         }),
         (e.default = s.default.Volume);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(3), i(30);
-      (s.default.Zero = function() {
+      (s.default.Zero = function () {
         s.default.SignalBase.call(this),
           (this._gain = this.input = this.output = new s.default.Gain()),
           s.default.connect(this.context.getConstant(0), this._gain);
       }),
         s.default.extend(s.default.Zero, s.default.SignalBase),
-        (s.default.Zero.prototype.dispose = function() {
+        (s.default.Zero.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._gain.dispose(),
@@ -3498,12 +3497,12 @@
         }),
         (e.default = s.default.Zero);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(3);
-      (s.default.Add = function(t) {
+      (s.default.Add = function (t) {
         s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._sum = this.input[0] = this.input[1] = this.output = new s.default.Gain()),
@@ -3511,7 +3510,7 @@
           this._param.connect(this._sum);
       }),
         s.default.extend(s.default.Add, s.default.Signal),
-        (s.default.Add.prototype.dispose = function() {
+        (s.default.Add.prototype.dispose = function () {
           return (
             s.default.Signal.prototype.dispose.call(this),
             this._sum.dispose(),
@@ -3521,16 +3520,16 @@
         }),
         (e.default = s.default.Add);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(1);
-      (s.default.SignalBase = function() {
+      (s.default.SignalBase = function () {
         s.default.AudioNode.call(this);
       }),
         s.default.extend(s.default.SignalBase, s.default.AudioNode),
-        (s.default.SignalBase.prototype.connect = function(t, e, i) {
+        (s.default.SignalBase.prototype.connect = function (t, e, i) {
           return (
             (s.default.Signal && s.default.Signal === t.constructor) ||
             (s.default.Param && s.default.Param === t.constructor)
@@ -3545,28 +3544,28 @@
         }),
         (e.default = s.default.SignalBase);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(47), i(3);
-      (s.default.AmplitudeEnvelope = function() {
+      (s.default.AmplitudeEnvelope = function () {
         s.default.Envelope.apply(this, arguments),
           (this.input = this.output = new s.default.Gain()),
           this._sig.connect(this.output.gain);
       }),
         s.default.extend(s.default.AmplitudeEnvelope, s.default.Envelope),
-        (s.default.AmplitudeEnvelope.prototype.dispose = function() {
+        (s.default.AmplitudeEnvelope.prototype.dispose = function () {
           return s.default.Envelope.prototype.dispose.call(this), this;
         }),
         (e.default = s.default.AmplitudeEnvelope);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(11), i(6), i(3), i(1);
-      (s.default.BufferSource = function() {
+      (s.default.BufferSource = function () {
         var t = s.default.defaults(
           arguments,
           ["buffer", "onload"],
@@ -3586,7 +3585,7 @@
           (this.playbackRate = new s.default.Param({
             param: this._source.playbackRate,
             units: s.default.Type.Positive,
-            value: t.playbackRate
+            value: t.playbackRate,
           })),
           (this.fadeIn = t.fadeIn),
           (this.fadeOut = t.fadeOut),
@@ -3606,14 +3605,14 @@
           fadeIn: 0,
           fadeOut: 0,
           curve: "linear",
-          playbackRate: 1
+          playbackRate: 1,
         }),
         Object.defineProperty(s.default.BufferSource.prototype, "state", {
-          get: function() {
+          get: function () {
             return this.getStateAtTime(this.now());
-          }
+          },
         }),
-        (s.default.BufferSource.prototype.getStateAtTime = function(t) {
+        (s.default.BufferSource.prototype.getStateAtTime = function (t) {
           return (
             (t = this.toSeconds(t)),
             -1 !== this._startTime &&
@@ -3624,7 +3623,7 @@
               : s.default.State.Stopped
           );
         }),
-        (s.default.BufferSource.prototype.start = function(t, e, i, n) {
+        (s.default.BufferSource.prototype.start = function (t, e, i, n) {
           this.log("start", t, e, i, n),
             this.assert(-1 === this._startTime, "can only be started once"),
             this.assert(
@@ -3666,7 +3665,7 @@
             this
           );
         }),
-        (s.default.BufferSource.prototype.stop = function(t) {
+        (s.default.BufferSource.prototype.stop = function (t) {
           this.log("stop", t),
             this.assert(
               this.buffer.loaded,
@@ -3692,7 +3691,7 @@
             this
           );
         }),
-        (s.default.BufferSource.prototype.cancelStop = function() {
+        (s.default.BufferSource.prototype.cancelStop = function () {
           if (-1 !== this._startTime && !this._sourceStopped) {
             var t = this.toSeconds(this.fadeIn);
             this._gainNode.gain.cancelScheduledValues(
@@ -3703,7 +3702,7 @@
           }
           return this;
         }),
-        (s.default.BufferSource.prototype._onended = function() {
+        (s.default.BufferSource.prototype._onended = function () {
           if (!this._sourceStopped) {
             this._sourceStopped = !0;
             var t = "exponential" === this.curve ? 2 * this.fadeOut : 0;
@@ -3712,7 +3711,7 @@
               this._source.stop(this._stopTime + t),
               this.onended(this),
               setTimeout(
-                function() {
+                function () {
                   this._source &&
                     (this._source.disconnect(), this._gainNode.disconnect());
                 }.bind(this),
@@ -3721,38 +3720,38 @@
           }
         }),
         Object.defineProperty(s.default.BufferSource.prototype, "loopStart", {
-          get: function() {
+          get: function () {
             return this._source.loopStart;
           },
-          set: function(t) {
+          set: function (t) {
             this._source.loopStart = this.toSeconds(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.BufferSource.prototype, "loopEnd", {
-          get: function() {
+          get: function () {
             return this._source.loopEnd;
           },
-          set: function(t) {
+          set: function (t) {
             this._source.loopEnd = this.toSeconds(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.BufferSource.prototype, "buffer", {
-          get: function() {
+          get: function () {
             return this._buffer;
           },
-          set: function(t) {
+          set: function (t) {
             this._buffer.set(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.BufferSource.prototype, "loop", {
-          get: function() {
+          get: function () {
             return this._source.loop;
           },
-          set: function(t) {
+          set: function (t) {
             (this._source.loop = t), this.cancelStop();
-          }
+          },
         }),
-        (s.default.BufferSource.prototype.dispose = function() {
+        (s.default.BufferSource.prototype.dispose = function () {
           return (
             this._wasDisposed ||
               ((this._wasDisposed = !0),
@@ -3773,12 +3772,12 @@
         }),
         (e.default = s.default.BufferSource);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(2), i(5), i(3);
-      (s.default.FeedbackEffect = function() {
+      (s.default.FeedbackEffect = function () {
         var t = s.default.defaults(
           arguments,
           ["feedback"],
@@ -3795,7 +3794,7 @@
       }),
         s.default.extend(s.default.FeedbackEffect, s.default.Effect),
         (s.default.FeedbackEffect.defaults = { feedback: 0.125 }),
-        (s.default.FeedbackEffect.prototype.dispose = function() {
+        (s.default.FeedbackEffect.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._writable(["feedback"]),
@@ -3807,30 +3806,30 @@
         }),
         (e.default = s.default.FeedbackEffect);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(24), i(4);
-      (s.default.TimelineState = function(t) {
+      (s.default.TimelineState = function (t) {
         s.default.Timeline.call(this), (this._initial = t);
       }),
         s.default.extend(s.default.TimelineState, s.default.Timeline),
-        (s.default.TimelineState.prototype.getValueAtTime = function(t) {
+        (s.default.TimelineState.prototype.getValueAtTime = function (t) {
           var e = this.get(t);
           return null !== e ? e.state : this._initial;
         }),
-        (s.default.TimelineState.prototype.setStateAtTime = function(t, e) {
+        (s.default.TimelineState.prototype.setStateAtTime = function (t, e) {
           return this.add({ state: t, time: e }), this;
         }),
-        (s.default.TimelineState.prototype.getLastState = function(t, e) {
+        (s.default.TimelineState.prototype.getLastState = function (t, e) {
           e = this.toSeconds(e);
           for (var i = this._search(e); i >= 0; i--) {
             var s = this._timeline[i];
             if (s.state === t) return s;
           }
         }),
-        (s.default.TimelineState.prototype.getNextState = function(t, e) {
+        (s.default.TimelineState.prototype.getNextState = function (t, e) {
           e = this.toSeconds(e);
           var i = this._search(e);
           if (-1 !== i)
@@ -3841,15 +3840,15 @@
         }),
         (e.default = s.default.TimelineState);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.Emitter = function() {
+      (s.default.Emitter = function () {
         s.default.call(this), (this._events = {});
       }),
         s.default.extend(s.default.Emitter),
-        (s.default.Emitter.prototype.on = function(t, e) {
+        (s.default.Emitter.prototype.on = function (t, e) {
           for (var i = t.split(/\W+/), s = 0; s < i.length; s++) {
             var n = i[s];
             this._events.hasOwnProperty(n) || (this._events[n] = []),
@@ -3857,13 +3856,13 @@
           }
           return this;
         }),
-        (s.default.Emitter.prototype.once = function(t, e) {
-          var i = function() {
+        (s.default.Emitter.prototype.once = function (t, e) {
+          var i = function () {
             e.apply(this, arguments), this.off(t, i);
           }.bind(this);
           return this.on(t, i), this;
         }),
-        (s.default.Emitter.prototype.off = function(t, e) {
+        (s.default.Emitter.prototype.off = function (t, e) {
           for (var i = t.split(/\W+/), n = 0; n < i.length; n++)
             if (((t = i[n]), this._events.hasOwnProperty(t)))
               if (s.default.isUndef(e)) this._events[t] = [];
@@ -3872,7 +3871,7 @@
                   o[a] === e && o.splice(a, 1);
           return this;
         }),
-        (s.default.Emitter.prototype.emit = function(t) {
+        (s.default.Emitter.prototype.emit = function (t) {
           if (this._events) {
             var e = Array.apply(null, arguments).slice(1);
             if (this._events.hasOwnProperty(t))
@@ -3885,7 +3884,7 @@
           }
           return this;
         }),
-        (s.default.Emitter.mixin = function(t) {
+        (s.default.Emitter.mixin = function (t) {
           var e = ["on", "once", "off", "emit"];
           t._events = {};
           for (var i = 0; i < e.length; i++) {
@@ -3895,26 +3894,26 @@
           }
           return s.default.Emitter;
         }),
-        (s.default.Emitter.prototype.dispose = function() {
+        (s.default.Emitter.prototype.dispose = function () {
           return (
             s.default.prototype.dispose.call(this), (this._events = null), this
           );
         }),
         (e.default = s.default.Emitter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(1), i(44);
       s.default.supported &&
         (AnalyserNode.prototype.getFloatTimeDomainData ||
-          (AnalyserNode.prototype.getFloatTimeDomainData = function(t) {
+          (AnalyserNode.prototype.getFloatTimeDomainData = function (t) {
             var e = new Uint8Array(t.length);
             this.getByteTimeDomainData(e);
             for (var i = 0; i < e.length; i++) t[i] = (e[i] - 128) / 128;
           })),
-        (s.default.Analyser = function() {
+        (s.default.Analyser = function () {
           var t = s.default.defaults(
             arguments,
             ["type", "size"],
@@ -3931,10 +3930,10 @@
         (s.default.Analyser.defaults = {
           size: 1024,
           type: "fft",
-          smoothing: 0.8
+          smoothing: 0.8,
         }),
         (s.default.Analyser.Type = { Waveform: "waveform", FFT: "fft" }),
-        (s.default.Analyser.prototype.getValue = function() {
+        (s.default.Analyser.prototype.getValue = function () {
           return (
             this._type === s.default.Analyser.Type.FFT
               ? this._analyser.getFloatFrequencyData(this._buffer)
@@ -3944,36 +3943,36 @@
           );
         }),
         Object.defineProperty(s.default.Analyser.prototype, "size", {
-          get: function() {
+          get: function () {
             return this._analyser.frequencyBinCount;
           },
-          set: function(t) {
+          set: function (t) {
             (this._analyser.fftSize = 2 * t),
               (this._buffer = new Float32Array(t));
-          }
+          },
         }),
         Object.defineProperty(s.default.Analyser.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             if (
               t !== s.default.Analyser.Type.Waveform &&
               t !== s.default.Analyser.Type.FFT
             )
               throw new TypeError("Tone.Analyser: invalid type: " + t);
             this._type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Analyser.prototype, "smoothing", {
-          get: function() {
+          get: function () {
             return this._analyser.smoothingTimeConstant;
           },
-          set: function(t) {
+          set: function (t) {
             this._analyser.smoothingTimeConstant = t;
-          }
+          },
         }),
-        (s.default.Analyser.prototype.dispose = function() {
+        (s.default.Analyser.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.disconnect(),
             (this._analyser = null),
@@ -3981,12 +3980,12 @@
         });
       e.default = s.default.Analyser;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(17), i(50), i(69), i(49), i(68), i(67);
-      (s.default.OmniOscillator = function() {
+      (s.default.OmniOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type"],
@@ -4009,7 +4008,7 @@
           frequency: 440,
           detune: 0,
           type: "sine",
-          phase: 0
+          phase: 0,
         });
       var n = "PulseOscillator",
         o = "PWMOscillator",
@@ -4017,17 +4016,17 @@
         r = "FMOscillator",
         l = "AMOscillator",
         u = "FatOscillator";
-      (s.default.OmniOscillator.prototype._start = function(t) {
+      (s.default.OmniOscillator.prototype._start = function (t) {
         this._oscillator.start(t);
       }),
-        (s.default.OmniOscillator.prototype._stop = function(t) {
+        (s.default.OmniOscillator.prototype._stop = function (t) {
           this._oscillator.stop(t);
         }),
-        (s.default.OmniOscillator.prototype.restart = function(t) {
+        (s.default.OmniOscillator.prototype.restart = function (t) {
           this._oscillator.restart(t);
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             var t = "";
             return (
               this._sourceType === r
@@ -4038,7 +4037,7 @@
               t + this._oscillator.type
             );
           },
-          set: function(t) {
+          set: function (t) {
             "fm" === t.substr(0, 2)
               ? (this._createNewOscillator(r),
                 (this._oscillator.type = t.substr(2)))
@@ -4053,29 +4052,29 @@
               : "pulse" === t
               ? this._createNewOscillator(n)
               : (this._createNewOscillator(a), (this._oscillator.type = t));
-          }
+          },
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return this._oscillator.partials;
           },
-          set: function(t) {
+          set: function (t) {
             this._oscillator.partials = t;
-          }
+          },
         }),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
           "partialCount",
           {
-            get: function() {
+            get: function () {
               return this._oscillator.partialCount;
             },
-            set: function(t) {
+            set: function (t) {
               this._oscillator.partialCount = t;
-            }
+            },
           }
         ),
-        (s.default.OmniOscillator.prototype.set = function(t, e) {
+        (s.default.OmniOscillator.prototype.set = function (t, e) {
           return (
             "type" === t
               ? (this.type = e)
@@ -4086,11 +4085,13 @@
             this
           );
         }),
-        (s.default.OmniOscillator.prototype.get = function(t) {
+        (s.default.OmniOscillator.prototype.get = function (t) {
           var e = this._oscillator.get(t);
           return (e.type = this.type), e;
         }),
-        (s.default.OmniOscillator.prototype._createNewOscillator = function(t) {
+        (s.default.OmniOscillator.prototype._createNewOscillator = function (
+          t
+        ) {
           if (t !== this._sourceType) {
             this._sourceType = t;
             var e = s.default[t],
@@ -4098,7 +4099,7 @@
             if (null !== this._oscillator) {
               var n = this._oscillator;
               n.stop(i),
-                this.context.setTimeout(function() {
+                this.context.setTimeout(function () {
                   n.dispose(), (n = null);
                 }, this.blockTime);
             }
@@ -4111,12 +4112,12 @@
           }
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._oscillator.phase;
           },
-          set: function(t) {
+          set: function (t) {
             this._oscillator.phase = t;
-          }
+          },
         });
       var d = {
         PulseOscillator: "pulse",
@@ -4124,13 +4125,13 @@
         Oscillator: "oscillator",
         FMOscillator: "fm",
         AMOscillator: "am",
-        FatOscillator: "fat"
+        FatOscillator: "fat",
       };
       Object.defineProperty(s.default.OmniOscillator.prototype, "sourceType", {
-        get: function() {
+        get: function () {
           return d[this._sourceType];
         },
-        set: function(t) {
+        set: function (t) {
           var e = "sine";
           "pwm" !== this._oscillator.type &&
             "pulse" !== this._oscillator.type &&
@@ -4146,88 +4147,88 @@
               : t === d.PulseOscillator
               ? (this.type = "pulse")
               : t === d.PWMOscillator && (this.type = "pwm");
-        }
+        },
       }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return this._oscillator.baseType;
           },
-          set: function(t) {
+          set: function (t) {
             this.sourceType !== d.PulseOscillator &&
               this.sourceType !== d.PWMOscillator &&
               (this._oscillator.baseType = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "width", {
-          get: function() {
+          get: function () {
             return this._sourceType === n ? this._oscillator.width : void 0;
-          }
+          },
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "count", {
-          get: function() {
+          get: function () {
             return this._sourceType === u ? this._oscillator.count : void 0;
           },
-          set: function(t) {
+          set: function (t) {
             this._sourceType === u && (this._oscillator.count = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.OmniOscillator.prototype, "spread", {
-          get: function() {
+          get: function () {
             return this._sourceType === u ? this._oscillator.spread : void 0;
           },
-          set: function(t) {
+          set: function (t) {
             this._sourceType === u && (this._oscillator.spread = t);
-          }
+          },
         }),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
           "modulationType",
           {
-            get: function() {
+            get: function () {
               return this._sourceType === r || this._sourceType === l
                 ? this._oscillator.modulationType
                 : void 0;
             },
-            set: function(t) {
+            set: function (t) {
               (this._sourceType !== r && this._sourceType !== l) ||
                 (this._oscillator.modulationType = t);
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
           "modulationIndex",
           {
-            get: function() {
+            get: function () {
               return this._sourceType === r
                 ? this._oscillator.modulationIndex
                 : void 0;
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
           "harmonicity",
           {
-            get: function() {
+            get: function () {
               return this._sourceType === r || this._sourceType === l
                 ? this._oscillator.harmonicity
                 : void 0;
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.OmniOscillator.prototype,
           "modulationFrequency",
           {
-            get: function() {
+            get: function () {
               return this._sourceType === o
                 ? this._oscillator.modulationFrequency
                 : void 0;
-            }
+            },
           }
         ),
-        (s.default.OmniOscillator.prototype.dispose = function() {
+        (s.default.OmniOscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this._writable(["frequency", "detune"]),
@@ -4243,12 +4244,12 @@
         }),
         (e.default = s.default.OmniOscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(31), i(37), i(25);
-      (s.default.Synth = function(t) {
+      (s.default.Synth = function (t) {
         (t = s.default.defaultArg(t, s.default.Synth.defaults)),
           s.default.Monophonic.call(this, t),
           (this.oscillator = new s.default.OmniOscillator(t.oscillator)),
@@ -4261,9 +4262,9 @@
         s.default.extend(s.default.Synth, s.default.Monophonic),
         (s.default.Synth.defaults = {
           oscillator: { type: "triangle" },
-          envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 1 }
+          envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 1 },
         }),
-        (s.default.Synth.prototype._triggerEnvelopeAttack = function(t, e) {
+        (s.default.Synth.prototype._triggerEnvelopeAttack = function (t, e) {
           return (
             this.envelope.triggerAttack(t, e),
             this.oscillator.start(t),
@@ -4276,7 +4277,7 @@
             this
           );
         }),
-        (s.default.Synth.prototype._triggerEnvelopeRelease = function(t) {
+        (s.default.Synth.prototype._triggerEnvelopeRelease = function (t) {
           return (
             (t = this.toSeconds(t)),
             this.envelope.triggerRelease(t),
@@ -4284,7 +4285,7 @@
             this
           );
         }),
-        (s.default.Synth.prototype.dispose = function() {
+        (s.default.Synth.prototype.dispose = function () {
           return (
             s.default.Monophonic.prototype.dispose.call(this),
             this._writable(["oscillator", "frequency", "detune", "envelope"]),
@@ -4299,12 +4300,12 @@
         }),
         (e.default = s.default.Synth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(11), i(32);
-      (s.default.Noise = function() {
+      (s.default.Noise = function () {
         var t = s.default.defaults(arguments, ["type"], s.default.Noise);
         s.default.Source.call(this, t),
           (this._source = null),
@@ -4314,10 +4315,10 @@
         s.default.extend(s.default.Noise, s.default.Source),
         (s.default.Noise.defaults = { type: "white", playbackRate: 1 }),
         Object.defineProperty(s.default.Noise.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             if (this._type !== t) {
               if (!(t in n))
                 throw new TypeError("Tone.Noise: invalid type: " + t);
@@ -4326,18 +4327,18 @@
                 this._stop(e), this._start(e);
               }
             }
-          }
+          },
         }),
         Object.defineProperty(s.default.Noise.prototype, "playbackRate", {
-          get: function() {
+          get: function () {
             return this._playbackRate;
           },
-          set: function(t) {
+          set: function (t) {
             (this._playbackRate = t),
               this._source && (this._source.playbackRate.value = t);
-          }
+          },
         }),
-        (s.default.Noise.prototype._start = function(t) {
+        (s.default.Noise.prototype._start = function (t) {
           var e = n[this._type];
           (this._source = new s.default.BufferSource(e).connect(this.output)),
             (this._source.loop = !0),
@@ -4347,14 +4348,14 @@
               Math.random() * (e.duration - 0.001)
             );
         }),
-        (s.default.Noise.prototype._stop = function(t) {
+        (s.default.Noise.prototype._stop = function (t) {
           this._source &&
             (this._source.stop(this.toSeconds(t)), (this._source = null));
         }),
-        (s.default.Noise.prototype.restart = function(t) {
+        (s.default.Noise.prototype.restart = function (t) {
           return this._stop(t), this._start(t), this;
         }),
-        (s.default.Noise.prototype.dispose = function() {
+        (s.default.Noise.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             null !== this._source &&
@@ -4366,7 +4367,7 @@
       var n = {},
         o = {};
       Object.defineProperty(n, "pink", {
-        get: function() {
+        get: function () {
           if (!o.pink) {
             for (var t = [], e = 0; e < 2; e++) {
               var i,
@@ -4394,10 +4395,10 @@
             o.pink = new s.default.Buffer().fromArray(t);
           }
           return o.pink;
-        }
+        },
       }),
         Object.defineProperty(n, "brown", {
-          get: function() {
+          get: function () {
             if (!o.brown) {
               for (var t = [], e = 0; e < 2; e++) {
                 var i = new Float32Array(220500);
@@ -4410,10 +4411,10 @@
               o.brown = new s.default.Buffer().fromArray(t);
             }
             return o.brown;
-          }
+          },
         }),
         Object.defineProperty(n, "white", {
-          get: function() {
+          get: function () {
             if (!o.white) {
               for (var t = [], e = 0; e < 2; e++) {
                 var i = new Float32Array(220500);
@@ -4423,19 +4424,19 @@
               o.white = new s.default.Buffer().fromArray(t);
             }
             return o.white;
-          }
+          },
         }),
         (e.default = s.default.Noise);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(27), i(20), i(1);
-      (s.default.Master = function() {
+      (s.default.Master = function () {
         s.default.AudioNode.call(this),
           s.default.getContext(
-            function() {
+            function () {
               this.createInsOuts(1, 0),
                 (this._volume = this.output = new s.default.Volume()),
                 (this.volume = this._volume.volume),
@@ -4453,48 +4454,48 @@
         (s.default.Master.defaults = { volume: 0, mute: !1 }),
         (s.default.Master.prototype.isMaster = !0),
         Object.defineProperty(s.default.Master.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._volume.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._volume.mute = t;
-          }
+          },
         }),
-        (s.default.Master.prototype.chain = function() {
+        (s.default.Master.prototype.chain = function () {
           this.input.disconnect();
           var t = Array.from(arguments);
           t.unshift(this.input),
             t.push(this.output),
             s.default.connectSeries.apply(void 0, t);
         }),
-        (s.default.Master.prototype.dispose = function() {
+        (s.default.Master.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this),
             this._writable("volume"),
             this._volume.dispose(),
             (this._volume = null),
             (this.volume = null);
         }),
-        (s.default.AudioNode.prototype.toMaster = function() {
+        (s.default.AudioNode.prototype.toMaster = function () {
           return this.connect(this.context.master), this;
         });
       var n = s.default.Master;
       (s.default.Master = new n()),
-        s.default.Context.on("init", function(t) {
+        s.default.Context.on("init", function (t) {
           t.master && t.master.isMaster
             ? (s.default.Master = t.master)
             : (s.default.Master = new n());
         }),
-        s.default.Context.on("close", function(t) {
+        s.default.Context.on("close", function (t) {
           t.master && t.master.isMaster && t.master.dispose();
         }),
         (e.default = s.default.Master);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(86), i(47);
-      (s.default.FrequencyEnvelope = function() {
+      (s.default.FrequencyEnvelope = function () {
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
@@ -4511,57 +4512,57 @@
         (s.default.FrequencyEnvelope.defaults = {
           baseFrequency: 200,
           octaves: 4,
-          exponent: 1
+          exponent: 1,
         }),
         Object.defineProperty(
           s.default.FrequencyEnvelope.prototype,
           "baseFrequency",
           {
-            get: function() {
+            get: function () {
               return this._scale.min;
             },
-            set: function(t) {
+            set: function (t) {
               (this._scale.min = this.toFrequency(t)),
                 (this.octaves = this._octaves);
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.FrequencyEnvelope.prototype,
           "octaves",
           {
-            get: function() {
+            get: function () {
               return this._octaves;
             },
-            set: function(t) {
+            set: function (t) {
               (this._octaves = t),
                 (this._scale.max = this.baseFrequency * Math.pow(2, t));
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.FrequencyEnvelope.prototype,
           "exponent",
           {
-            get: function() {
+            get: function () {
               return this._exp.value;
             },
-            set: function(t) {
+            set: function (t) {
               this._exp.value = t;
-            }
+            },
           }
         ),
-        (s.default.FrequencyEnvelope.prototype.dispose = function() {
+        (s.default.FrequencyEnvelope.prototype.dispose = function () {
           return s.default.ScaledEnvelope.prototype.dispose.call(this), this;
         }),
         (e.default = s.default.FrequencyEnvelope);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(26), i(61);
-      (s.default.ScaleExp = function(t, e, i) {
+      (s.default.ScaleExp = function (t, e, i) {
         s.default.SignalBase.call(this),
           (this._scale = this.output = new s.default.Scale(t, e)),
           (this._exp = this.input = new s.default.Pow(
@@ -4571,30 +4572,30 @@
       }),
         s.default.extend(s.default.ScaleExp, s.default.SignalBase),
         Object.defineProperty(s.default.ScaleExp.prototype, "exponent", {
-          get: function() {
+          get: function () {
             return this._exp.value;
           },
-          set: function(t) {
+          set: function (t) {
             this._exp.value = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.ScaleExp.prototype, "min", {
-          get: function() {
+          get: function () {
             return this._scale.min;
           },
-          set: function(t) {
+          set: function (t) {
             this._scale.min = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.ScaleExp.prototype, "max", {
-          get: function() {
+          get: function () {
             return this._scale.max;
           },
-          set: function(t) {
+          set: function (t) {
             this._scale.max = t;
-          }
+          },
         }),
-        (s.default.ScaleExp.prototype.dispose = function() {
+        (s.default.ScaleExp.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._scale.dispose(),
@@ -4606,12 +4607,12 @@
         }),
         (e.default = s.default.ScaleExp);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(14), i(1);
-      (s.default.Compressor = function() {
+      (s.default.Compressor = function () {
         var t = s.default.defaults(
           arguments,
           ["threshold", "ratio"],
@@ -4622,7 +4623,7 @@
           (this.threshold = new s.default.Param({
             param: this._compressor.threshold,
             units: s.default.Type.Decibels,
-            convert: !1
+            convert: !1,
           })),
           (this.attack = new s.default.Param(
             this._compressor.attack,
@@ -4635,11 +4636,11 @@
           (this.knee = new s.default.Param({
             param: this._compressor.knee,
             units: s.default.Type.Decibels,
-            convert: !1
+            convert: !1,
           })),
           (this.ratio = new s.default.Param({
             param: this._compressor.ratio,
-            convert: !1
+            convert: !1,
           })),
           this._readOnly(["knee", "release", "attack", "ratio", "threshold"]),
           this.set(t);
@@ -4650,9 +4651,9 @@
           threshold: -24,
           release: 0.25,
           attack: 0.003,
-          knee: 30
+          knee: 30,
         }),
-        (s.default.Compressor.prototype.dispose = function() {
+        (s.default.Compressor.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["knee", "release", "attack", "ratio", "threshold"]),
@@ -4673,7 +4674,7 @@
         }),
         (e.default = s.default.Compressor);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       var s = i(0);
       i(92);
@@ -4682,14 +4683,14 @@
           s.default.global.hasOwnProperty("webkitAudioContext") &&
           (s.default.global.AudioContext = s.default.global.webkitAudioContext),
           AudioContext.prototype.close ||
-            (AudioContext.prototype.close = function() {
+            (AudioContext.prototype.close = function () {
               return (
                 s.default.isFunction(this.suspend) && this.suspend(),
                 Promise.resolve()
               );
             }),
           AudioContext.prototype.resume ||
-            (AudioContext.prototype.resume = function() {
+            (AudioContext.prototype.resume = function () {
               var t = this.createBuffer(1, 1, this.sampleRate),
                 e = this.createBufferSource();
               return (
@@ -4724,7 +4725,7 @@
             0,
             0,
             0,
-            0
+            0,
           ]).buffer;
         try {
           var r = o.decodeAudioData(a);
@@ -4735,37 +4736,37 @@
         n ||
           ((AudioContext.prototype._native_decodeAudioData =
             AudioContext.prototype.decodeAudioData),
-          (AudioContext.prototype.decodeAudioData = function(t) {
+          (AudioContext.prototype.decodeAudioData = function (t) {
             return new Promise(
-              function(e, i) {
+              function (e, i) {
                 this._native_decodeAudioData(t, e, i);
               }.bind(this)
             );
           }));
       }
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(63);
-      (s.default.TransportTime = function(t, e) {
+      (s.default.TransportTime = function (t, e) {
         if (!(this instanceof s.default.TransportTime))
           return new s.default.TransportTime(t, e);
         s.default.Time.call(this, t, e);
       }),
         s.default.extend(s.default.TransportTime, s.default.Time),
-        (s.default.TransportTime.prototype._now = function() {
+        (s.default.TransportTime.prototype._now = function () {
           return s.default.Transport.seconds;
         }),
         (e.default = s.default.TransportTime);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(62);
-      (s.default.Frequency = function(t, e) {
+      (s.default.Frequency = function (t, e) {
         if (!(this instanceof s.default.Frequency))
           return new s.default.Frequency(t, e);
         s.default.TimeBase.call(this, t, e);
@@ -4777,24 +4778,24 @@
           {
             midi: {
               regexp: /^(\d+(?:\.\d+)?midi)/,
-              method: function(t) {
+              method: function (t) {
                 return "midi" === this._defaultUnits
                   ? t
                   : s.default.Frequency.mtof(t);
-              }
+              },
             },
             note: {
               regexp: /^([a-g]{1}(?:b|#|x|bb)?)(-?[0-9]+)/i,
-              method: function(t, e) {
+              method: function (t, e) {
                 var i = n[t.toLowerCase()] + 12 * (parseInt(e) + 1);
                 return "midi" === this._defaultUnits
                   ? i
                   : s.default.Frequency.mtof(i);
-              }
+              },
             },
             tr: {
               regexp: /^(\d+(?:\.\d+)?):(\d+(?:\.\d+)?):?(\d+(?:\.\d+)?)?/,
-              method: function(t, e, i) {
+              method: function (t, e, i) {
                 var s = 1;
                 return (
                   t &&
@@ -4808,60 +4809,60 @@
                     (s *= this._beatsToUnits(parseFloat(i) / 4)),
                   s
                 );
-              }
-            }
+              },
+            },
           }
         )),
-        (s.default.Frequency.prototype.transpose = function(t) {
+        (s.default.Frequency.prototype.transpose = function (t) {
           return new this.constructor(
             this.valueOf() * s.default.intervalToFrequencyRatio(t)
           );
         }),
-        (s.default.Frequency.prototype.harmonize = function(t) {
+        (s.default.Frequency.prototype.harmonize = function (t) {
           return t.map(
-            function(t) {
+            function (t) {
               return this.transpose(t);
             }.bind(this)
           );
         }),
-        (s.default.Frequency.prototype.toMidi = function() {
+        (s.default.Frequency.prototype.toMidi = function () {
           return s.default.Frequency.ftom(this.valueOf());
         }),
-        (s.default.Frequency.prototype.toNote = function() {
+        (s.default.Frequency.prototype.toNote = function () {
           var t = this.toFrequency(),
             e = Math.log2(t / s.default.Frequency.A4),
             i = Math.round(12 * e) + 57,
             n = Math.floor(i / 12);
           return n < 0 && (i += -12 * n), o[i % 12] + n.toString();
         }),
-        (s.default.Frequency.prototype.toSeconds = function() {
+        (s.default.Frequency.prototype.toSeconds = function () {
           return 1 / s.default.TimeBase.prototype.toSeconds.call(this);
         }),
-        (s.default.Frequency.prototype.toFrequency = function() {
+        (s.default.Frequency.prototype.toFrequency = function () {
           return s.default.TimeBase.prototype.toFrequency.call(this);
         }),
-        (s.default.Frequency.prototype.toTicks = function() {
+        (s.default.Frequency.prototype.toTicks = function () {
           var t = this._beatsToUnits(1),
             e = this.valueOf() / t;
           return Math.floor(e * s.default.Transport.PPQ);
         }),
-        (s.default.Frequency.prototype._noArg = function() {
+        (s.default.Frequency.prototype._noArg = function () {
           return 0;
         }),
-        (s.default.Frequency.prototype._frequencyToUnits = function(t) {
+        (s.default.Frequency.prototype._frequencyToUnits = function (t) {
           return t;
         }),
-        (s.default.Frequency.prototype._ticksToUnits = function(t) {
+        (s.default.Frequency.prototype._ticksToUnits = function (t) {
           return (
             1 /
             ((60 * t) /
               (s.default.Transport.bpm.value * s.default.Transport.PPQ))
           );
         }),
-        (s.default.Frequency.prototype._beatsToUnits = function(t) {
+        (s.default.Frequency.prototype._beatsToUnits = function (t) {
           return 1 / s.default.TimeBase.prototype._beatsToUnits.call(this, t);
         }),
-        (s.default.Frequency.prototype._secondsToUnits = function(t) {
+        (s.default.Frequency.prototype._secondsToUnits = function (t) {
           return 1 / t;
         }),
         (s.default.Frequency.prototype._defaultUnits = "hz");
@@ -4900,24 +4901,24 @@
           bb: 10,
           b: 11,
           "b#": 12,
-          bx: 13
+          bx: 13,
         },
         o = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
       (s.default.Frequency.A4 = 440),
-        (s.default.Frequency.mtof = function(t) {
+        (s.default.Frequency.mtof = function (t) {
           return s.default.Frequency.A4 * Math.pow(2, (t - 69) / 12);
         }),
-        (s.default.Frequency.ftom = function(t) {
+        (s.default.Frequency.ftom = function (t) {
           return 69 + Math.round(12 * Math.log2(t / s.default.Frequency.A4));
         }),
         (e.default = s.default.Frequency);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(61), i(4), i(1);
-      (s.default.Envelope = function() {
+      (s.default.Envelope = function () {
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
@@ -4943,20 +4944,20 @@
           release: 1,
           attackCurve: "linear",
           decayCurve: "exponential",
-          releaseCurve: "exponential"
+          releaseCurve: "exponential",
         }),
         Object.defineProperty(s.default.Envelope.prototype, "value", {
-          get: function() {
+          get: function () {
             return this.getValueAtTime(this.now());
-          }
+          },
         }),
-        (s.default.Envelope.prototype._getCurve = function(t, e) {
+        (s.default.Envelope.prototype._getCurve = function (t, e) {
           if (s.default.isString(t)) return t;
           if (s.default.isArray(t))
             for (var i in s.default.Envelope.Type)
               if (s.default.Envelope.Type[i][e] === t) return i;
         }),
-        (s.default.Envelope.prototype._setCurve = function(t, e, i) {
+        (s.default.Envelope.prototype._setCurve = function (t, e, i) {
           if (s.default.Envelope.Type.hasOwnProperty(i)) {
             var n = s.default.Envelope.Type[i];
             s.default.isObject(n) ? (this[t] = n[e]) : (this[t] = n);
@@ -4967,32 +4968,32 @@
           }
         }),
         Object.defineProperty(s.default.Envelope.prototype, "attackCurve", {
-          get: function() {
+          get: function () {
             return this._getCurve(this._attackCurve, "In");
           },
-          set: function(t) {
+          set: function (t) {
             this._setCurve("_attackCurve", "In", t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Envelope.prototype, "releaseCurve", {
-          get: function() {
+          get: function () {
             return this._getCurve(this._releaseCurve, "Out");
           },
-          set: function(t) {
+          set: function (t) {
             this._setCurve("_releaseCurve", "Out", t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Envelope.prototype, "decayCurve", {
-          get: function() {
+          get: function () {
             return this._decayCurve;
           },
-          set: function(t) {
+          set: function (t) {
             if (!["linear", "exponential"].includes(t))
               throw new Error("Tone.Envelope: invalid curve: " + t);
             this._decayCurve = t;
-          }
+          },
         }),
-        (s.default.Envelope.prototype.triggerAttack = function(t, e) {
+        (s.default.Envelope.prototype.triggerAttack = function (t, e) {
           this.log("triggerAttack", t, e), (t = this.toSeconds(t));
           var i = this.toSeconds(this.attack),
             n = this.toSeconds(this.decay);
@@ -5024,7 +5025,7 @@
           }
           return this;
         }),
-        (s.default.Envelope.prototype.triggerRelease = function(t) {
+        (s.default.Envelope.prototype.triggerRelease = function (t) {
           this.log("triggerRelease", t), (t = this.toSeconds(t));
           var e = this.getValueAtTime(t);
           if (e > 0) {
@@ -5042,10 +5043,14 @@
           }
           return this;
         }),
-        (s.default.Envelope.prototype.getValueAtTime = function(t) {
+        (s.default.Envelope.prototype.getValueAtTime = function (t) {
           return this._sig.getValueAtTime(t);
         }),
-        (s.default.Envelope.prototype.triggerAttackRelease = function(t, e, i) {
+        (s.default.Envelope.prototype.triggerAttackRelease = function (
+          t,
+          e,
+          i
+        ) {
           return (
             (e = this.toSeconds(e)),
             this.triggerAttack(e, i),
@@ -5053,12 +5058,12 @@
             this
           );
         }),
-        (s.default.Envelope.prototype.cancel = function(t) {
+        (s.default.Envelope.prototype.cancel = function (t) {
           return this._sig.cancelScheduledValues(t), this;
         }),
         (s.default.Envelope.prototype.connect =
           s.default.SignalBase.prototype.connect),
-        (function() {
+        (function () {
           var t,
             e,
             i = [];
@@ -5095,10 +5100,10 @@
             cosine: { In: i, Out: ((l = i), l.slice(0).reverse()) },
             step: { In: a, Out: h(a) },
             ripple: { In: n, Out: h(n) },
-            sine: { In: r, Out: h(r) }
+            sine: { In: r, Out: h(r) },
           };
         })(),
-        (s.default.Envelope.prototype.dispose = function() {
+        (s.default.Envelope.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._sig.dispose(),
@@ -5110,7 +5115,7 @@
         }),
         (e.default = s.default.Envelope);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
@@ -5119,13 +5124,13 @@
         s.default.supported &&
         !s.default.global.AudioContext.prototype.createStereoPanner
       ) {
-        var n = function(t) {
+        var n = function (t) {
           (this.context = t),
             (this.pan = new s.default.Signal(0, s.default.Type.AudioRange));
-          var e = new s.default.WaveShaper(function(t) {
+          var e = new s.default.WaveShaper(function (t) {
               return s.default.equalPowerScale((t + 1) / 2);
             }, 4096),
-            i = new s.default.WaveShaper(function(t) {
+            i = new s.default.WaveShaper(function (t) {
               return s.default.equalPowerScale(1 - (t + 1) / 2);
             }, 4096),
             n = new s.default.Gain(),
@@ -5139,21 +5144,21 @@
             this.pan.chain(i, n.gain),
             this.pan.chain(e, o.gain);
         };
-        (n.prototype.disconnect = function() {
+        (n.prototype.disconnect = function () {
           this.output.disconnect.apply(this.output, arguments);
         }),
-          (n.prototype.connect = function() {
+          (n.prototype.connect = function () {
             this.output.connect.apply(this.output, arguments);
           }),
-          (AudioContext.prototype.createStereoPanner = function() {
+          (AudioContext.prototype.createStereoPanner = function () {
             return new n(this);
           }),
-          (s.default.Context.prototype.createStereoPanner = function() {
+          (s.default.Context.prototype.createStereoPanner = function () {
             return new n(this);
           });
       }
       i(22), i(1);
-      (s.default.Panner = function() {
+      (s.default.Panner = function () {
         var t = s.default.defaults(arguments, ["pan"], s.default.Panner);
         s.default.AudioNode.call(this),
           (this._panner = this.input = this.output = this.context.createStereoPanner()),
@@ -5163,7 +5168,7 @@
       }),
         s.default.extend(s.default.Panner, s.default.AudioNode),
         (s.default.Panner.defaults = { pan: 0 }),
-        (s.default.Panner.prototype.dispose = function() {
+        (s.default.Panner.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable("pan"),
@@ -5175,12 +5180,12 @@
         });
       e.default = s.default.Panner;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(17), i(5), i(3);
-      (s.default.FMOscillator = function() {
+      (s.default.FMOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "modulationType"],
@@ -5215,7 +5220,7 @@
             "modulationIndex",
             "frequency",
             "detune",
-            "harmonicity"
+            "harmonicity",
           ]);
       }),
         s.default.extend(s.default.FMOscillator, s.default.Source),
@@ -5226,81 +5231,81 @@
           type: "sine",
           modulationIndex: 2,
           modulationType: "square",
-          harmonicity: 1
+          harmonicity: 1,
         }),
-        (s.default.FMOscillator.prototype._start = function(t) {
+        (s.default.FMOscillator.prototype._start = function (t) {
           this._modulator.start(t), this._carrier.start(t);
         }),
-        (s.default.FMOscillator.prototype._stop = function(t) {
+        (s.default.FMOscillator.prototype._stop = function (t) {
           this._modulator.stop(t), this._carrier.stop(t);
         }),
-        (s.default.FMOscillator.prototype.restart = function(t) {
+        (s.default.FMOscillator.prototype.restart = function (t) {
           this._modulator.restart(t), this._carrier.restart(t);
         }),
         Object.defineProperty(s.default.FMOscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._carrier.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._carrier.type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.FMOscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return this._carrier.baseType;
           },
-          set: function(t) {
+          set: function (t) {
             this._carrier.baseType = t;
-          }
+          },
         }),
         Object.defineProperty(
           s.default.FMOscillator.prototype,
           "partialCount",
           {
-            get: function() {
+            get: function () {
               return this._carrier.partialCount;
             },
-            set: function(t) {
+            set: function (t) {
               this._carrier.partialCount = t;
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.FMOscillator.prototype,
           "modulationType",
           {
-            get: function() {
+            get: function () {
               return this._modulator.type;
             },
-            set: function(t) {
+            set: function (t) {
               this._modulator.type = t;
-            }
+            },
           }
         ),
         Object.defineProperty(s.default.FMOscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._carrier.phase;
           },
-          set: function(t) {
+          set: function (t) {
             (this._carrier.phase = t), (this._modulator.phase = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.FMOscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return this._carrier.partials;
           },
-          set: function(t) {
+          set: function (t) {
             this._carrier.partials = t;
-          }
+          },
         }),
-        (s.default.FMOscillator.prototype.dispose = function() {
+        (s.default.FMOscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this._writable([
               "modulationIndex",
               "frequency",
               "detune",
-              "harmonicity"
+              "harmonicity",
             ]),
             this.frequency.dispose(),
             (this.frequency = null),
@@ -5320,12 +5325,12 @@
         }),
         (e.default = s.default.FMOscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(17), i(2), i(7), i(3);
-      (s.default.PulseOscillator = function() {
+      (s.default.PulseOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "width"],
@@ -5341,11 +5346,11 @@
             frequency: t.frequency,
             detune: t.detune,
             type: "sawtooth",
-            phase: t.phase
+            phase: t.phase,
           })),
           (this.frequency = this._sawtooth.frequency),
           (this.detune = this._sawtooth.detune),
-          (this._thresh = new s.default.WaveShaper(function(t) {
+          (this._thresh = new s.default.WaveShaper(function (t) {
             return t < 0 ? -1 : 1;
           })),
           this._sawtooth.chain(this._thresh, this.output),
@@ -5357,47 +5362,47 @@
           frequency: 440,
           detune: 0,
           phase: 0,
-          width: 0.2
+          width: 0.2,
         }),
-        (s.default.PulseOscillator.prototype._start = function(t) {
+        (s.default.PulseOscillator.prototype._start = function (t) {
           (t = this.toSeconds(t)),
             this._sawtooth.start(t),
             this._widthGate.gain.setValueAtTime(1, t);
         }),
-        (s.default.PulseOscillator.prototype._stop = function(t) {
+        (s.default.PulseOscillator.prototype._stop = function (t) {
           (t = this.toSeconds(t)),
             this._sawtooth.stop(t),
             this._widthGate.gain.setValueAtTime(0, t);
         }),
-        (s.default.PulseOscillator.prototype.restart = function(t) {
+        (s.default.PulseOscillator.prototype.restart = function (t) {
           this._sawtooth.restart(t),
             this._widthGate.gain.cancelScheduledValues(t),
             this._widthGate.gain.setValueAtTime(1, t);
         }),
         Object.defineProperty(s.default.PulseOscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._sawtooth.phase;
           },
-          set: function(t) {
+          set: function (t) {
             this._sawtooth.phase = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.PulseOscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             return "pulse";
-          }
+          },
         }),
         Object.defineProperty(s.default.PulseOscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return "pulse";
-          }
+          },
         }),
         Object.defineProperty(s.default.PulseOscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return [];
-          }
+          },
         }),
-        (s.default.PulseOscillator.prototype.dispose = function() {
+        (s.default.PulseOscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this._sawtooth.dispose(),
@@ -5416,12 +5421,12 @@
         }),
         (e.default = s.default.PulseOscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(16), i(4), i(34);
-      (s.default.Event = function() {
+      (s.default.Event = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "value"],
@@ -5451,14 +5456,14 @@
           value: null,
           probability: 1,
           mute: !1,
-          humanize: !1
+          humanize: !1,
         }),
-        (s.default.Event.prototype._rescheduleEvents = function(t) {
+        (s.default.Event.prototype._rescheduleEvents = function (t) {
           return (
             (t = s.default.defaultArg(t, -1)),
             this._state.forEachFrom(
               t,
-              function(t) {
+              function (t) {
                 var e;
                 if (t.state === s.default.State.Started) {
                   s.default.isDefined(t.id) && s.default.Transport.clear(t.id);
@@ -5498,48 +5503,48 @@
           );
         }),
         Object.defineProperty(s.default.Event.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._state.getValueAtTime(s.default.Transport.ticks);
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "startOffset", {
-          get: function() {
+          get: function () {
             return this._startOffset;
           },
-          set: function(t) {
+          set: function (t) {
             this._startOffset = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "probability", {
-          get: function() {
+          get: function () {
             return this._probability;
           },
-          set: function(t) {
+          set: function (t) {
             this._probability = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "humanize", {
-          get: function() {
+          get: function () {
             return this._humanize;
           },
-          set: function(t) {
+          set: function (t) {
             this._humanize = t;
-          }
+          },
         }),
-        (s.default.Event.prototype.start = function(t) {
+        (s.default.Event.prototype.start = function (t) {
           return (
             (t = this.toTicks(t)),
             this._state.getValueAtTime(t) === s.default.State.Stopped &&
               (this._state.add({
                 state: s.default.State.Started,
                 time: t,
-                id: void 0
+                id: void 0,
               }),
               this._rescheduleEvents(t)),
             this
           );
         }),
-        (s.default.Event.prototype.stop = function(t) {
+        (s.default.Event.prototype.stop = function (t) {
           if (
             (this.cancel(t),
             (t = this.toTicks(t)),
@@ -5552,18 +5557,18 @@
           }
           return this;
         }),
-        (s.default.Event.prototype.cancel = function(t) {
+        (s.default.Event.prototype.cancel = function (t) {
           return (
             (t = s.default.defaultArg(t, -1 / 0)),
             (t = this.toTicks(t)),
-            this._state.forEachFrom(t, function(t) {
+            this._state.forEachFrom(t, function (t) {
               s.default.Transport.clear(t.id);
             }),
             this._state.cancel(t),
             this
           );
         }),
-        (s.default.Event.prototype._tick = function(t) {
+        (s.default.Event.prototype._tick = function (t) {
           var e = s.default.Transport.getTicksAtTime(t);
           if (
             !this.mute &&
@@ -5580,47 +5585,47 @@
             this.callback(t, this.value);
           }
         }),
-        (s.default.Event.prototype._getLoopDuration = function() {
+        (s.default.Event.prototype._getLoopDuration = function () {
           return Math.round(
             (this._loopEnd - this._loopStart) / this._playbackRate
           );
         }),
         Object.defineProperty(s.default.Event.prototype, "loop", {
-          get: function() {
+          get: function () {
             return this._loop;
           },
-          set: function(t) {
+          set: function (t) {
             (this._loop = t), this._rescheduleEvents();
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "playbackRate", {
-          get: function() {
+          get: function () {
             return this._playbackRate;
           },
-          set: function(t) {
+          set: function (t) {
             (this._playbackRate = t), this._rescheduleEvents();
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "loopEnd", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._loopEnd).toSeconds();
           },
-          set: function(t) {
+          set: function (t) {
             (this._loopEnd = this.toTicks(t)),
               this._loop && this._rescheduleEvents();
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "loopStart", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._loopStart).toSeconds();
           },
-          set: function(t) {
+          set: function (t) {
             (this._loopStart = this.toTicks(t)),
               this._loop && this._rescheduleEvents();
-          }
+          },
         }),
         Object.defineProperty(s.default.Event.prototype, "progress", {
-          get: function() {
+          get: function () {
             if (this._loop) {
               var t = s.default.Transport.ticks,
                 e = this._state.get(t);
@@ -5631,9 +5636,9 @@
               return 0;
             }
             return 0;
-          }
+          },
         }),
-        (s.default.Event.prototype.dispose = function() {
+        (s.default.Event.prototype.dispose = function () {
           this.cancel(),
             this._state.dispose(),
             (this._state = null),
@@ -5642,12 +5647,12 @@
         }),
         (e.default = s.default.Event);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(13), i(29), i(10), i(3), i(1);
-      (s.default.MidSideMerge = function() {
+      (s.default.MidSideMerge = function () {
         s.default.AudioNode.call(this),
           this.createInsOuts(2, 0),
           (this.mid = this.input[0] = new s.default.Gain()),
@@ -5667,7 +5672,7 @@
           this._timesTwoRight.connect(this._merge, 0, 1);
       }),
         s.default.extend(s.default.MidSideMerge, s.default.AudioNode),
-        (s.default.MidSideMerge.prototype.dispose = function() {
+        (s.default.MidSideMerge.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this.mid.dispose(),
@@ -5689,12 +5694,12 @@
         }),
         (e.default = s.default.MidSideMerge);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(29), i(13), i(2), i(19), i(1);
-      (s.default.MidSideSplit = function() {
+      (s.default.MidSideSplit = function () {
         s.default.AudioNode.call(this),
           this.createInsOuts(0, 2),
           (this._split = this.input = new s.default.Split()),
@@ -5710,7 +5715,7 @@
           this._sideSubtract.connect(this.side);
       }),
         s.default.extend(s.default.MidSideSplit, s.default.AudioNode),
-        (s.default.MidSideSplit.prototype.dispose = function() {
+        (s.default.MidSideSplit.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this.mid.dispose(),
@@ -5728,12 +5733,12 @@
         }),
         (e.default = s.default.MidSideSplit);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(9), i(1), i(59);
-      (s.default.LowpassCombFilter = function() {
+      (s.default.LowpassCombFilter = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "resonance", "dampening"],
@@ -5749,7 +5754,7 @@
             frequency: t.dampening,
             type: "lowpass",
             Q: 0,
-            rolloff: -12
+            rolloff: -12,
           })),
           (this.dampening = this._lowpass.frequency),
           (this.resonance = this._combFilter.resonance),
@@ -5760,9 +5765,9 @@
         (s.default.LowpassCombFilter.defaults = {
           delayTime: 0.1,
           resonance: 0.5,
-          dampening: 3e3
+          dampening: 3e3,
         }),
-        (s.default.LowpassCombFilter.prototype.dispose = function() {
+        (s.default.LowpassCombFilter.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["dampening", "resonance", "delayTime"]),
@@ -5778,44 +5783,44 @@
         }),
         (e.default = s.default.LowpassCombFilter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(45);
-      (s.default.Ticks = function(t, e) {
+      (s.default.Ticks = function (t, e) {
         if (!(this instanceof s.default.Ticks))
           return new s.default.Ticks(t, e);
         s.default.TransportTime.call(this, t, e);
       }),
         s.default.extend(s.default.Ticks, s.default.TransportTime),
         (s.default.Ticks.prototype._defaultUnits = "i"),
-        (s.default.Ticks.prototype._now = function() {
+        (s.default.Ticks.prototype._now = function () {
           return s.default.Transport.ticks;
         }),
-        (s.default.Ticks.prototype._beatsToUnits = function(t) {
+        (s.default.Ticks.prototype._beatsToUnits = function (t) {
           return this._getPPQ() * t;
         }),
-        (s.default.Ticks.prototype._secondsToUnits = function(t) {
+        (s.default.Ticks.prototype._secondsToUnits = function (t) {
           return Math.floor((t / (60 / this._getBpm())) * this._getPPQ());
         }),
-        (s.default.Ticks.prototype._ticksToUnits = function(t) {
+        (s.default.Ticks.prototype._ticksToUnits = function (t) {
           return t;
         }),
-        (s.default.Ticks.prototype.toTicks = function() {
+        (s.default.Ticks.prototype.toTicks = function () {
           return this.valueOf();
         }),
-        (s.default.Ticks.prototype.toSeconds = function() {
+        (s.default.Ticks.prototype.toSeconds = function () {
           return (this.valueOf() / this._getPPQ()) * (60 / this._getBpm());
         }),
         (e.default = s.default.Ticks);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(55);
-      (s.default.TransportEvent = function(t, e) {
+      (s.default.TransportEvent = function (t, e) {
         (e = s.default.defaultArg(e, s.default.TransportEvent.defaults)),
           s.default.call(this),
           (this.Transport = t),
@@ -5827,15 +5832,15 @@
         s.default.extend(s.default.TransportEvent),
         (s.default.TransportEvent.defaults = {
           once: !1,
-          callback: s.default.noOp
+          callback: s.default.noOp,
         }),
         (s.default.TransportEvent._eventId = 0),
-        (s.default.TransportEvent.prototype.invoke = function(t) {
+        (s.default.TransportEvent.prototype.invoke = function (t) {
           this.callback &&
             (this.callback(t),
             this._once && this.Transport && this.Transport.clear(this.id));
         }),
-        (s.default.TransportEvent.prototype.dispose = function() {
+        (s.default.TransportEvent.prototype.dispose = function () {
           return (
             s.default.prototype.dispose.call(this),
             (this.Transport = null),
@@ -5846,12 +5851,12 @@
         }),
         (e.default = s.default.TransportEvent);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(82), i(34), i(24), i(14);
-      (s.default.TickSource = function() {
+      (s.default.TickSource = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency"],
@@ -5867,11 +5872,11 @@
         s.default.extend(s.default.TickSource),
         (s.default.TickSource.defaults = { frequency: 1 }),
         Object.defineProperty(s.default.TickSource.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._state.getValueAtTime(this.now());
-          }
+          },
         }),
-        (s.default.TickSource.prototype.start = function(t, e) {
+        (s.default.TickSource.prototype.start = function (t, e) {
           return (
             (t = this.toSeconds(t)),
             this._state.getValueAtTime(t) !== s.default.State.Started &&
@@ -5880,7 +5885,7 @@
             this
           );
         }),
-        (s.default.TickSource.prototype.stop = function(t) {
+        (s.default.TickSource.prototype.stop = function (t) {
           if (
             ((t = this.toSeconds(t)),
             this._state.getValueAtTime(t) === s.default.State.Stopped)
@@ -5896,7 +5901,7 @@
             this
           );
         }),
-        (s.default.TickSource.prototype.pause = function(t) {
+        (s.default.TickSource.prototype.pause = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._state.getValueAtTime(t) === s.default.State.Started &&
@@ -5904,7 +5909,7 @@
             this
           );
         }),
-        (s.default.TickSource.prototype.cancel = function(t) {
+        (s.default.TickSource.prototype.cancel = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._state.cancel(t),
@@ -5912,7 +5917,7 @@
             this
           );
         }),
-        (s.default.TickSource.prototype.getTicksAtTime = function(t) {
+        (s.default.TickSource.prototype.getTicksAtTime = function (t) {
           t = this.toSeconds(t);
           var e = this._state.getLastState(s.default.State.Stopped, t),
             i = { state: s.default.State.Paused, time: t };
@@ -5923,7 +5928,7 @@
             this._state.forEachBetween(
               e.time,
               t + this.sampleTime,
-              function(t) {
+              function (t) {
                 var e = n.time,
                   i = this._tickOffset.get(t.time);
                 i.time >= n.time && ((o = i.ticks), (e = i.time)),
@@ -5940,24 +5945,24 @@
           );
         }),
         Object.defineProperty(s.default.TickSource.prototype, "ticks", {
-          get: function() {
+          get: function () {
             return this.getTicksAtTime(this.now());
           },
-          set: function(t) {
+          set: function (t) {
             this.setTicksAtTime(t, this.now());
-          }
+          },
         }),
         Object.defineProperty(s.default.TickSource.prototype, "seconds", {
-          get: function() {
+          get: function () {
             return this.getSecondsAtTime(this.now());
           },
-          set: function(t) {
+          set: function (t) {
             var e = this.now(),
               i = this.frequency.timeToTicks(t, e);
             this.setTicksAtTime(i, e);
-          }
+          },
         }),
-        (s.default.TickSource.prototype.getSecondsAtTime = function(t) {
+        (s.default.TickSource.prototype.getSecondsAtTime = function (t) {
           t = this.toSeconds(t);
           var e = this._state.getLastState(s.default.State.Stopped, t),
             i = { state: s.default.State.Paused, time: t };
@@ -5968,7 +5973,7 @@
             this._state.forEachBetween(
               e.time,
               t + this.sampleTime,
-              function(t) {
+              function (t) {
                 var e = n.time,
                   i = this._tickOffset.get(t.time);
                 i.time >= n.time && ((o = i.seconds), (e = i.time)),
@@ -5982,22 +5987,22 @@
             o
           );
         }),
-        (s.default.TickSource.prototype.setTicksAtTime = function(t, e) {
+        (s.default.TickSource.prototype.setTicksAtTime = function (t, e) {
           return (
             (e = this.toSeconds(e)),
             this._tickOffset.cancel(e),
             this._tickOffset.add({
               time: e,
               ticks: t,
-              seconds: this.frequency.getDurationOfTicks(t, e)
+              seconds: this.frequency.getDurationOfTicks(t, e),
             }),
             this
           );
         }),
-        (s.default.TickSource.prototype.getStateAtTime = function(t) {
+        (s.default.TickSource.prototype.getStateAtTime = function (t) {
           return (t = this.toSeconds(t)), this._state.getValueAtTime(t);
         }),
-        (s.default.TickSource.prototype.getTimeOfTick = function(t, e) {
+        (s.default.TickSource.prototype.getTimeOfTick = function (t, e) {
           e = s.default.defaultArg(e, this.now());
           var i = this._tickOffset.get(e),
             n = this._state.get(e),
@@ -6005,13 +6010,17 @@
             a = this.frequency.getTicksAtTime(o) + t - i.ticks;
           return this.frequency.getTimeOfTick(a);
         }),
-        (s.default.TickSource.prototype.forEachTickBetween = function(t, e, i) {
+        (s.default.TickSource.prototype.forEachTickBetween = function (
+          t,
+          e,
+          i
+        ) {
           var n = this._state.get(t);
           if (
             (this._state.forEachBetween(
               t,
               e,
-              function(e) {
+              function (e) {
                 n.state === s.default.State.Started &&
                   e.state !== s.default.State.Started &&
                   this.forEachTickBetween(
@@ -6045,7 +6054,7 @@
           if (l) throw l;
           return this;
         }),
-        (s.default.TickSource.prototype.dispose = function() {
+        (s.default.TickSource.prototype.dispose = function () {
           return (
             s.default.Param.prototype.dispose.call(this),
             this._state.dispose(),
@@ -6060,12 +6069,12 @@
         }),
         (e.default = s.default.TickSource);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(87), i(13), i(2), i(4), i(18), i(1);
-      (s.default.Follower = function() {
+      (s.default.Follower = function () {
         var t = s.default.defaults(
           arguments,
           ["smoothing"],
@@ -6089,18 +6098,18 @@
         s.default.extend(s.default.Follower, s.default.AudioNode),
         (s.default.Follower.defaults = { smoothing: 0.05 }),
         Object.defineProperty(s.default.Follower.prototype, "smoothing", {
-          get: function() {
+          get: function () {
             return this._smoothing;
           },
-          set: function(t) {
+          set: function (t) {
             (this._smoothing = t),
               (this._filter.frequency.value =
                 0.5 * s.default.Time(t).toFrequency());
-          }
+          },
         }),
         (s.default.Follower.prototype.connect =
           s.default.SignalBase.prototype.connect),
-        (s.default.Follower.prototype.dispose = function() {
+        (s.default.Follower.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._filter.disconnect(),
@@ -6116,12 +6125,12 @@
         }),
         (e.default = s.default.Follower);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(42), i(2), i(14), i(18), i(3), i(1);
-      (s.default.FeedbackCombFilter = function() {
+      (s.default.FeedbackCombFilter = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "resonance"],
@@ -6143,9 +6152,9 @@
         s.default.extend(s.default.FeedbackCombFilter, s.default.AudioNode),
         (s.default.FeedbackCombFilter.defaults = {
           delayTime: 0.1,
-          resonance: 0.5
+          resonance: 0.5,
         }),
-        (s.default.FeedbackCombFilter.prototype.dispose = function() {
+        (s.default.FeedbackCombFilter.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["resonance", "delayTime"]),
@@ -6160,12 +6169,12 @@
         }),
         (e.default = s.default.FeedbackCombFilter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(9), i(2), i(3), i(1);
-      (s.default.MultibandSplit = function() {
+      (s.default.MultibandSplit = function () {
         var t = s.default.defaults(
           arguments,
           ["lowFrequency", "highFrequency"],
@@ -6202,16 +6211,16 @@
             "mid",
             "low",
             "highFrequency",
-            "lowFrequency"
+            "lowFrequency",
           ]);
       }),
         s.default.extend(s.default.MultibandSplit, s.default.AudioNode),
         (s.default.MultibandSplit.defaults = {
           lowFrequency: 400,
           highFrequency: 2500,
-          Q: 1
+          Q: 1,
         }),
-        (s.default.MultibandSplit.prototype.dispose = function() {
+        (s.default.MultibandSplit.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable([
@@ -6219,7 +6228,7 @@
               "mid",
               "low",
               "highFrequency",
-              "lowFrequency"
+              "lowFrequency",
             ]),
             this.low.dispose(),
             (this.low = null),
@@ -6240,12 +6249,12 @@
         }),
         (e.default = s.default.MultibandSplit);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7);
-      (s.default.Pow = function(t) {
+      (s.default.Pow = function (t) {
         s.default.SignalBase.call(this),
           (this._exp = s.default.defaultArg(t, 1)),
           (this._expScaler = this.input = this.output = new s.default.WaveShaper(
@@ -6255,19 +6264,19 @@
       }),
         s.default.extend(s.default.Pow, s.default.SignalBase),
         Object.defineProperty(s.default.Pow.prototype, "value", {
-          get: function() {
+          get: function () {
             return this._exp;
           },
-          set: function(t) {
+          set: function (t) {
             (this._exp = t), this._expScaler.setMap(this._expFunc(this._exp));
-          }
+          },
         }),
-        (s.default.Pow.prototype._expFunc = function(t) {
-          return function(e) {
+        (s.default.Pow.prototype._expFunc = function (t) {
+          return function (e) {
             return Math.pow(Math.abs(e), t);
           };
         }),
-        (s.default.Pow.prototype.dispose = function() {
+        (s.default.Pow.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._expScaler.dispose(),
@@ -6277,11 +6286,11 @@
         }),
         (e.default = s.default.Pow);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.TimeBase = function(t, e) {
+      (s.default.TimeBase = function (t, e) {
         if (!(this instanceof s.default.TimeBase))
           return new s.default.TimeBase(t, e);
         if (
@@ -6320,43 +6329,43 @@
         (s.default.TimeBase.prototype._expressions = {
           n: {
             regexp: /^(\d+)n(\.?)$/i,
-            method: function(t, e) {
+            method: function (t, e) {
               t = parseInt(t);
               var i = "." === e ? 1.5 : 1;
               return 1 === t
                 ? this._beatsToUnits(this._getTimeSignature()) * i
                 : this._beatsToUnits(4 / t) * i;
-            }
+            },
           },
           t: {
             regexp: /^(\d+)t$/i,
-            method: function(t) {
+            method: function (t) {
               return (
                 (t = parseInt(t)), this._beatsToUnits(8 / (3 * parseInt(t)))
               );
-            }
+            },
           },
           m: {
             regexp: /^(\d+)m$/i,
-            method: function(t) {
+            method: function (t) {
               return this._beatsToUnits(parseInt(t) * this._getTimeSignature());
-            }
+            },
           },
           i: {
             regexp: /^(\d+)i$/i,
-            method: function(t) {
+            method: function (t) {
               return this._ticksToUnits(parseInt(t));
-            }
+            },
           },
           hz: {
             regexp: /^(\d+(?:\.\d+)?)hz$/i,
-            method: function(t) {
+            method: function (t) {
               return this._frequencyToUnits(parseFloat(t));
-            }
+            },
           },
           tr: {
             regexp: /^(\d+(?:\.\d+)?):(\d+(?:\.\d+)?):?(\d+(?:\.\d+)?)?$/,
-            method: function(t, e, i) {
+            method: function (t, e, i) {
               var s = 0;
               return (
                 t &&
@@ -6368,56 +6377,56 @@
                 i && "0" !== i && (s += this._beatsToUnits(parseFloat(i) / 4)),
                 s
               );
-            }
+            },
           },
           s: {
             regexp: /^(\d+(?:\.\d+)?)s$/,
-            method: function(t) {
+            method: function (t) {
               return this._secondsToUnits(parseFloat(t));
-            }
+            },
           },
           samples: {
             regexp: /^(\d+)samples$/,
-            method: function(t) {
+            method: function (t) {
               return parseInt(t) / this.context.sampleRate;
-            }
+            },
           },
           default: {
             regexp: /^(\d+(?:\.\d+)?)$/,
-            method: function(t) {
+            method: function (t) {
               return this._expressions[this._defaultUnits].method.call(this, t);
-            }
-          }
+            },
+          },
         }),
         (s.default.TimeBase.prototype._defaultUnits = "s"),
-        (s.default.TimeBase.prototype._getBpm = function() {
+        (s.default.TimeBase.prototype._getBpm = function () {
           return s.default.Transport ? s.default.Transport.bpm.value : 120;
         }),
-        (s.default.TimeBase.prototype._getTimeSignature = function() {
+        (s.default.TimeBase.prototype._getTimeSignature = function () {
           return s.default.Transport ? s.default.Transport.timeSignature : 4;
         }),
-        (s.default.TimeBase.prototype._getPPQ = function() {
+        (s.default.TimeBase.prototype._getPPQ = function () {
           return s.default.Transport ? s.default.Transport.PPQ : 192;
         }),
-        (s.default.TimeBase.prototype._now = function() {
+        (s.default.TimeBase.prototype._now = function () {
           return this.now();
         }),
-        (s.default.TimeBase.prototype._frequencyToUnits = function(t) {
+        (s.default.TimeBase.prototype._frequencyToUnits = function (t) {
           return 1 / t;
         }),
-        (s.default.TimeBase.prototype._beatsToUnits = function(t) {
+        (s.default.TimeBase.prototype._beatsToUnits = function (t) {
           return (60 / this._getBpm()) * t;
         }),
-        (s.default.TimeBase.prototype._secondsToUnits = function(t) {
+        (s.default.TimeBase.prototype._secondsToUnits = function (t) {
           return t;
         }),
-        (s.default.TimeBase.prototype._ticksToUnits = function(t) {
+        (s.default.TimeBase.prototype._ticksToUnits = function (t) {
           return t * (this._beatsToUnits(1) / this._getPPQ());
         }),
-        (s.default.TimeBase.prototype._noArg = function() {
+        (s.default.TimeBase.prototype._noArg = function () {
           return this._now();
         }),
-        (s.default.TimeBase.prototype.valueOf = function() {
+        (s.default.TimeBase.prototype.valueOf = function () {
           if (s.default.isUndef(this._val)) return this._noArg();
           if (s.default.isString(this._val) && s.default.isUndef(this._units)) {
             for (var t in this._expressions)
@@ -6435,39 +6444,36 @@
           }
           if (s.default.isDefined(this._units)) {
             var o = this._expressions[this._units],
-              a = this._val
-                .toString()
-                .trim()
-                .match(o.regexp);
+              a = this._val.toString().trim().match(o.regexp);
             return a
               ? o.method.apply(this, a.slice(1))
               : o.method.call(this, parseFloat(this._val));
           }
           return this._val;
         }),
-        (s.default.TimeBase.prototype.toSeconds = function() {
+        (s.default.TimeBase.prototype.toSeconds = function () {
           return this.valueOf();
         }),
-        (s.default.TimeBase.prototype.toFrequency = function() {
+        (s.default.TimeBase.prototype.toFrequency = function () {
           return 1 / this.toSeconds();
         }),
-        (s.default.TimeBase.prototype.toSamples = function() {
+        (s.default.TimeBase.prototype.toSamples = function () {
           return this.toSeconds() * this.context.sampleRate;
         }),
-        (s.default.TimeBase.prototype.toMilliseconds = function() {
+        (s.default.TimeBase.prototype.toMilliseconds = function () {
           return 1e3 * this.toSeconds();
         }),
-        (s.default.TimeBase.prototype.dispose = function() {
+        (s.default.TimeBase.prototype.dispose = function () {
           (this._val = null), (this._units = null);
         }),
         (e.default = s.default.TimeBase);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(62), i(46);
-      (s.default.Time = function(t, e) {
+      (s.default.Time = function (t, e) {
         if (!(this instanceof s.default.Time)) return new s.default.Time(t, e);
         s.default.TimeBase.call(this, t, e);
       }),
@@ -6478,7 +6484,7 @@
           {
             quantize: {
               regexp: /^@(.+)/,
-              method: function(t) {
+              method: function (t) {
                 if (s.default.Transport) {
                   var e = new this.constructor(t);
                   return this._secondsToUnits(
@@ -6486,23 +6492,23 @@
                   );
                 }
                 return 0;
-              }
+              },
             },
             now: {
               regexp: /^\+(.+)/,
-              method: function(t) {
+              method: function (t) {
                 return this._now() + new this.constructor(t);
-              }
-            }
+              },
+            },
           }
         )),
-        (s.default.Time.prototype.quantize = function(t, e) {
+        (s.default.Time.prototype.quantize = function (t, e) {
           e = s.default.defaultArg(e, 1);
           var i = new this.constructor(t),
             n = this.valueOf();
           return n + (Math.round(n / i) * i - n) * e;
         }),
-        (s.default.Time.prototype.toNotation = function() {
+        (s.default.Time.prototype.toNotation = function () {
           for (var t = this.toSeconds(), e = ["1m"], i = 1; i < 8; i++) {
             var n = Math.pow(2, i);
             e.push(n + "n."), e.push(n + "n"), e.push(n + "t");
@@ -6511,14 +6517,14 @@
           var o = e[0],
             a = s.default.Time(e[0]).toSeconds();
           return (
-            e.forEach(function(e) {
+            e.forEach(function (e) {
               var i = s.default.Time(e).toSeconds();
               Math.abs(i - t) < Math.abs(a - t) && ((o = e), (a = i));
             }),
             o
           );
         }),
-        (s.default.Time.prototype.toBarsBeatsSixteenths = function() {
+        (s.default.Time.prototype.toBarsBeatsSixteenths = function () {
           var t = this._beatsToUnits(1),
             e = this.valueOf() / t;
           e = parseFloat(e.toFixed(4));
@@ -6531,20 +6537,20 @@
             [i, e, s].join(":")
           );
         }),
-        (s.default.Time.prototype.toTicks = function() {
+        (s.default.Time.prototype.toTicks = function () {
           var t = this._beatsToUnits(1),
             e = this.valueOf() / t;
           return Math.round(e * this._getPPQ());
         }),
-        (s.default.Time.prototype.toSeconds = function() {
+        (s.default.Time.prototype.toSeconds = function () {
           return this.valueOf();
         }),
-        (s.default.Time.prototype.toMidi = function() {
+        (s.default.Time.prototype.toMidi = function () {
           return s.default.Frequency.ftom(this.toFrequency());
         }),
         (e.default = s.default.Time);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
@@ -6556,7 +6562,7 @@
         AudioContext.prototype.createPeriodicWave ||
           (AudioContext.prototype.createPeriodicWave =
             AudioContext.prototype.createWaveTable)),
-        (s.default.OscillatorNode = function() {
+        (s.default.OscillatorNode = function () {
           var t = s.default.defaults(
             arguments,
             ["frequency", "type"],
@@ -6573,12 +6579,12 @@
             (this.frequency = new s.default.Param({
               param: this._oscillator.frequency,
               units: s.default.Type.Frequency,
-              value: t.frequency
+              value: t.frequency,
             })),
             (this.detune = new s.default.Param({
               param: this._oscillator.detune,
               units: s.default.Type.Cents,
-              value: t.detune
+              value: t.detune,
             })),
             (this._gain = 1);
         }),
@@ -6587,14 +6593,14 @@
           frequency: 440,
           detune: 0,
           type: "sine",
-          onended: s.default.noOp
+          onended: s.default.noOp,
         }),
         Object.defineProperty(s.default.OscillatorNode.prototype, "state", {
-          get: function() {
+          get: function () {
             return this.getStateAtTime(this.now());
-          }
+          },
         }),
-        (s.default.OscillatorNode.prototype.getStateAtTime = function(t) {
+        (s.default.OscillatorNode.prototype.getStateAtTime = function (t) {
           return (
             (t = this.toSeconds(t)),
             -1 !== this._startTime &&
@@ -6604,7 +6610,7 @@
               : s.default.State.Stopped
           );
         }),
-        (s.default.OscillatorNode.prototype.start = function(t) {
+        (s.default.OscillatorNode.prototype.start = function (t) {
           if ((this.log("start", t), -1 !== this._startTime))
             throw new Error("cannot call OscillatorNode.start more than once");
           return (
@@ -6618,10 +6624,10 @@
             this
           );
         }),
-        (s.default.OscillatorNode.prototype.setPeriodicWave = function(t) {
+        (s.default.OscillatorNode.prototype.setPeriodicWave = function (t) {
           return this._oscillator.setPeriodicWave(t), this;
         }),
-        (s.default.OscillatorNode.prototype.stop = function(t) {
+        (s.default.OscillatorNode.prototype.stop = function (t) {
           return (
             this.log("stop", t),
             this.assert(
@@ -6638,11 +6644,11 @@
               ? (this._gainNode.gain.setValueAtTime(0, this._stopTime),
                 this.context.clearTimeout(this._timeout),
                 (this._timeout = this.context.setTimeout(
-                  function() {
+                  function () {
                     this._oscillator.stop(this.now()),
                       this.onended(),
                       setTimeout(
-                        function() {
+                        function () {
                           this._oscillator &&
                             (this._oscillator.disconnect(),
                             this._gainNode.disconnect());
@@ -6656,7 +6662,7 @@
             this
           );
         }),
-        (s.default.OscillatorNode.prototype.cancelStop = function() {
+        (s.default.OscillatorNode.prototype.cancelStop = function () {
           return (
             -1 !== this._startTime &&
               (this._gainNode.gain.cancelScheduledValues(
@@ -6668,14 +6674,14 @@
           );
         }),
         Object.defineProperty(s.default.OscillatorNode.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._oscillator.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._oscillator.type = t;
-          }
+          },
         }),
-        (s.default.OscillatorNode.prototype.dispose = function() {
+        (s.default.OscillatorNode.prototype.dispose = function () {
           return (
             this._wasDisposed ||
               ((this._wasDisposed = !0),
@@ -6695,12 +6701,12 @@
         });
       e.default = s.default.OscillatorNode;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(11), i(6), i(57), i(32);
-      (s.default.Player = function(t) {
+      (s.default.Player = function (t) {
         var e;
         t instanceof s.default.Buffer && t.loaded
           ? ((t = t.get()), (e = s.default.Player.defaults))
@@ -6714,7 +6720,7 @@
           (this._buffer = new s.default.Buffer({
             url: e.url,
             onload: this._onload.bind(this, e.onload),
-            reverse: e.reverse
+            reverse: e.reverse,
           })),
           t instanceof AudioBuffer && this._buffer.set(t),
           (this._loop = e.loop),
@@ -6735,16 +6741,16 @@
           loopEnd: 0,
           reverse: !1,
           fadeIn: 0,
-          fadeOut: 0
+          fadeOut: 0,
         }),
-        (s.default.Player.prototype.load = function(t, e) {
+        (s.default.Player.prototype.load = function (t, e) {
           return this._buffer.load(t, this._onload.bind(this, e));
         }),
-        (s.default.Player.prototype._onload = function(t) {
+        (s.default.Player.prototype._onload = function (t) {
           (t = s.default.defaultArg(t, s.default.noOp))(this),
             this.autostart && this.start();
         }),
-        (s.default.Player.prototype._onSourceEnd = function(t) {
+        (s.default.Player.prototype._onSourceEnd = function (t) {
           var e = this._activeSources.indexOf(t);
           this._activeSources.splice(e, 1),
             0 !== this._activeSources.length ||
@@ -6754,7 +6760,7 @@
                 s.default.now()
               );
         }),
-        (s.default.Player.prototype._start = function(t, e, i) {
+        (s.default.Player.prototype._start = function (t, e, i) {
           (e = this._loop
             ? s.default.defaultArg(e, this._loopStart)
             : s.default.defaultArg(e, 0)),
@@ -6775,7 +6781,7 @@
             onended: this._onSourceEnd.bind(this),
             playbackRate: this._playbackRate,
             fadeIn: this.fadeIn,
-            fadeOut: this.fadeOut
+            fadeOut: this.fadeOut,
           }).connect(this.output);
           return (
             this._loop ||
@@ -6788,19 +6794,19 @@
             this
           );
         }),
-        (s.default.Player.prototype._stop = function(t) {
+        (s.default.Player.prototype._stop = function (t) {
           return (
             (t = this.toSeconds(t)),
-            this._activeSources.forEach(function(e) {
+            this._activeSources.forEach(function (e) {
               e.stop(t);
             }),
             this
           );
         }),
-        (s.default.Player.prototype.restart = function(t, e, i) {
+        (s.default.Player.prototype.restart = function (t, e, i) {
           return this._stop(t), this._start(t, e, i), this;
         }),
-        (s.default.Player.prototype.seek = function(t, e) {
+        (s.default.Player.prototype.seek = function (t, e) {
           return (
             (e = this.toSeconds(e)),
             this._state.getValueAtTime(e) === s.default.State.Started &&
@@ -6808,48 +6814,48 @@
             this
           );
         }),
-        (s.default.Player.prototype.setLoopPoints = function(t, e) {
+        (s.default.Player.prototype.setLoopPoints = function (t, e) {
           return (this.loopStart = t), (this.loopEnd = e), this;
         }),
         Object.defineProperty(s.default.Player.prototype, "loopStart", {
-          get: function() {
+          get: function () {
             return this._loopStart;
           },
-          set: function(t) {
+          set: function (t) {
             (this._loopStart = t),
-              this._activeSources.forEach(function(e) {
+              this._activeSources.forEach(function (e) {
                 e.loopStart = t;
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.Player.prototype, "loopEnd", {
-          get: function() {
+          get: function () {
             return this._loopEnd;
           },
-          set: function(t) {
+          set: function (t) {
             (this._loopEnd = t),
-              this._activeSources.forEach(function(e) {
+              this._activeSources.forEach(function (e) {
                 e.loopEnd = t;
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.Player.prototype, "buffer", {
-          get: function() {
+          get: function () {
             return this._buffer;
           },
-          set: function(t) {
+          set: function (t) {
             this._buffer.set(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Player.prototype, "loop", {
-          get: function() {
+          get: function () {
             return this._loop;
           },
-          set: function(t) {
+          set: function (t) {
             if (
               this._loop !== t &&
               ((this._loop = t),
-              this._activeSources.forEach(function(e) {
+              this._activeSources.forEach(function (e) {
                 e.loop = t;
               }),
               t)
@@ -6860,38 +6866,38 @@
               );
               e && this._state.cancel(e.time);
             }
-          }
+          },
         }),
         Object.defineProperty(s.default.Player.prototype, "playbackRate", {
-          get: function() {
+          get: function () {
             return this._playbackRate;
           },
-          set: function(t) {
+          set: function (t) {
             this._playbackRate = t;
             var e = this.now(),
               i = this._state.getNextState(s.default.State.Stopped, e);
             i && this._state.cancel(i.time),
-              this._activeSources.forEach(function(i) {
+              this._activeSources.forEach(function (i) {
                 i.cancelStop(), i.playbackRate.setValueAtTime(t, e);
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.Player.prototype, "reverse", {
-          get: function() {
+          get: function () {
             return this._buffer.reverse;
           },
-          set: function(t) {
+          set: function (t) {
             this._buffer.reverse = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Player.prototype, "loaded", {
-          get: function() {
+          get: function () {
             return this._buffer.loaded;
-          }
+          },
         }),
-        (s.default.Player.prototype.dispose = function() {
+        (s.default.Player.prototype.dispose = function () {
           return (
-            this._activeSources.forEach(function(t) {
+            this._activeSources.forEach(function (t) {
               t.dispose();
             }),
             (this._activeSources = null),
@@ -6903,12 +6909,12 @@
         }),
         (e.default = s.default.Player);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(31), i(41), i(37), i(2), i(9), i(25);
-      (s.default.MonoSynth = function(t) {
+      (s.default.MonoSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.MonoSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this.oscillator = new s.default.OmniOscillator(t.oscillator)),
@@ -6928,7 +6934,7 @@
             "detune",
             "filter",
             "filterEnvelope",
-            "envelope"
+            "envelope",
           ]);
       }),
         s.default.extend(s.default.MonoSynth, s.default.Monophonic),
@@ -6945,10 +6951,13 @@
             release: 2,
             baseFrequency: 200,
             octaves: 7,
-            exponent: 2
-          }
+            exponent: 2,
+          },
         }),
-        (s.default.MonoSynth.prototype._triggerEnvelopeAttack = function(t, e) {
+        (s.default.MonoSynth.prototype._triggerEnvelopeAttack = function (
+          t,
+          e
+        ) {
           return (
             (t = this.toSeconds(t)),
             this.envelope.triggerAttack(t, e),
@@ -6961,7 +6970,7 @@
             this
           );
         }),
-        (s.default.MonoSynth.prototype._triggerEnvelopeRelease = function(t) {
+        (s.default.MonoSynth.prototype._triggerEnvelopeRelease = function (t) {
           return (
             this.envelope.triggerRelease(t),
             this.filterEnvelope.triggerRelease(t),
@@ -6969,7 +6978,7 @@
             this
           );
         }),
-        (s.default.MonoSynth.prototype.dispose = function() {
+        (s.default.MonoSynth.prototype.dispose = function () {
           return (
             s.default.Monophonic.prototype.dispose.call(this),
             this._writable([
@@ -6978,7 +6987,7 @@
               "detune",
               "filter",
               "filterEnvelope",
-              "envelope"
+              "envelope",
             ]),
             this.oscillator.dispose(),
             (this.oscillator = null),
@@ -6995,12 +7004,12 @@
         }),
         (e.default = s.default.MonoSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(17), i(5), i(3);
-      (s.default.FatOscillator = function() {
+      (s.default.FatOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "spread"],
@@ -7030,62 +7039,62 @@
           count: 3,
           type: "sawtooth",
           partials: [],
-          partialCount: 0
+          partialCount: 0,
         }),
-        (s.default.FatOscillator.prototype._start = function(t) {
+        (s.default.FatOscillator.prototype._start = function (t) {
           (t = this.toSeconds(t)),
-            this._forEach(function(e) {
+            this._forEach(function (e) {
               e.start(t);
             });
         }),
-        (s.default.FatOscillator.prototype._stop = function(t) {
+        (s.default.FatOscillator.prototype._stop = function (t) {
           (t = this.toSeconds(t)),
-            this._forEach(function(e) {
+            this._forEach(function (e) {
               e.stop(t);
             });
         }),
-        (s.default.FatOscillator.prototype.restart = function(t) {
+        (s.default.FatOscillator.prototype.restart = function (t) {
           (t = this.toSeconds(t)),
-            this._forEach(function(e) {
+            this._forEach(function (e) {
               e.restart(t);
             });
         }),
-        (s.default.FatOscillator.prototype._forEach = function(t) {
+        (s.default.FatOscillator.prototype._forEach = function (t) {
           for (var e = 0; e < this._oscillators.length; e++)
             t.call(this, this._oscillators[e], e);
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             (this._type = t),
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 e.type = t;
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "spread", {
-          get: function() {
+          get: function () {
             return this._spread;
           },
-          set: function(t) {
+          set: function (t) {
             if (((this._spread = t), this._oscillators.length > 1)) {
               var e = -t / 2,
                 i = t / (this._oscillators.length - 1);
-              this._forEach(function(t, s) {
+              this._forEach(function (t, s) {
                 t.detune.value = e + i * s;
               });
             }
-          }
+          },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "count", {
-          get: function() {
+          get: function () {
             return this._oscillators.length;
           },
-          set: function(t) {
+          set: function (t) {
             if (((t = Math.max(t, 1)), this._oscillators.length !== t)) {
-              this._forEach(function(t) {
+              this._forEach(function (t) {
                 t.dispose();
               }),
                 (this._oscillators = []);
@@ -7104,63 +7113,63 @@
               }
               (this.spread = this._spread),
                 this.state === s.default.State.Started &&
-                  this._forEach(function(t) {
+                  this._forEach(function (t) {
                     t.start();
                   });
             }
-          }
+          },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._phase;
           },
-          set: function(t) {
+          set: function (t) {
             (this._phase = t),
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 e.phase = t;
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return this._oscillators[0].baseType;
           },
-          set: function(t) {
-            this._forEach(function(e) {
+          set: function (t) {
+            this._forEach(function (e) {
               e.baseType = t;
             }),
               (this._type = this._oscillators[0].type);
-          }
+          },
         }),
         Object.defineProperty(s.default.FatOscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return this._oscillators[0].partials;
           },
-          set: function(t) {
+          set: function (t) {
             (this._partials = t),
               (this._type = s.default.Oscillator.Type.Custom),
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 e.partials = t;
               });
-          }
+          },
         }),
         Object.defineProperty(
           s.default.FatOscillator.prototype,
           "partialCount",
           {
-            get: function() {
+            get: function () {
               return this._oscillators[0].partialCount;
             },
-            set: function(t) {
+            set: function (t) {
               (this._partialCount = t),
-                this._forEach(function(e) {
+                this._forEach(function (e) {
                   e.partialCount = t;
                 }),
                 (this._type = this._oscillators[0].type);
-            }
+            },
           }
         ),
-        (s.default.FatOscillator.prototype.dispose = function() {
+        (s.default.FatOscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this._writable(["frequency", "detune"]),
@@ -7168,7 +7177,7 @@
             (this.frequency = null),
             this.detune.dispose(),
             (this.detune = null),
-            this._forEach(function(t) {
+            this._forEach(function (t) {
               t.dispose();
             }),
             (this._oscillators = null),
@@ -7178,12 +7187,12 @@
         }),
         (e.default = s.default.FatOscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(17), i(5), i(3), i(22);
-      (s.default.AMOscillator = function() {
+      (s.default.AMOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "type", "modulationType"],
@@ -7219,74 +7228,74 @@
           phase: 0,
           type: "sine",
           modulationType: "square",
-          harmonicity: 1
+          harmonicity: 1,
         }),
-        (s.default.AMOscillator.prototype._start = function(t) {
+        (s.default.AMOscillator.prototype._start = function (t) {
           this._modulator.start(t), this._carrier.start(t);
         }),
-        (s.default.AMOscillator.prototype._stop = function(t) {
+        (s.default.AMOscillator.prototype._stop = function (t) {
           this._modulator.stop(t), this._carrier.stop(t);
         }),
-        (s.default.AMOscillator.prototype.restart = function(t) {
+        (s.default.AMOscillator.prototype.restart = function (t) {
           this._modulator.restart(t), this._carrier.restart(t);
         }),
         Object.defineProperty(s.default.AMOscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._carrier.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._carrier.type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.AMOscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return this._carrier.baseType;
           },
-          set: function(t) {
+          set: function (t) {
             this._carrier.baseType = t;
-          }
+          },
         }),
         Object.defineProperty(
           s.default.AMOscillator.prototype,
           "partialCount",
           {
-            get: function() {
+            get: function () {
               return this._carrier.partialCount;
             },
-            set: function(t) {
+            set: function (t) {
               this._carrier.partialCount = t;
-            }
+            },
           }
         ),
         Object.defineProperty(
           s.default.AMOscillator.prototype,
           "modulationType",
           {
-            get: function() {
+            get: function () {
               return this._modulator.type;
             },
-            set: function(t) {
+            set: function (t) {
               this._modulator.type = t;
-            }
+            },
           }
         ),
         Object.defineProperty(s.default.AMOscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._carrier.phase;
           },
-          set: function(t) {
+          set: function (t) {
             (this._carrier.phase = t), (this._modulator.phase = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.AMOscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return this._carrier.partials;
           },
-          set: function(t) {
+          set: function (t) {
             this._carrier.partials = t;
-          }
+          },
         }),
-        (s.default.AMOscillator.prototype.dispose = function() {
+        (s.default.AMOscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this._writable(["frequency", "detune", "harmonicity"]),
@@ -7307,12 +7316,12 @@
         }),
         (e.default = s.default.AMOscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(50), i(17), i(5);
-      (s.default.PWMOscillator = function() {
+      (s.default.PWMOscillator = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "modulationFrequency"],
@@ -7324,7 +7333,7 @@
           (this._modulator = new s.default.Oscillator({
             frequency: t.frequency,
             detune: t.detune,
-            phase: t.phase
+            phase: t.phase,
           })),
           (this._scale = new s.default.Multiply(2)),
           (this.frequency = this._modulator.frequency),
@@ -7339,43 +7348,43 @@
           frequency: 440,
           detune: 0,
           phase: 0,
-          modulationFrequency: 0.4
+          modulationFrequency: 0.4,
         }),
-        (s.default.PWMOscillator.prototype._start = function(t) {
+        (s.default.PWMOscillator.prototype._start = function (t) {
           (t = this.toSeconds(t)),
             this._modulator.start(t),
             this._pulse.start(t);
         }),
-        (s.default.PWMOscillator.prototype._stop = function(t) {
+        (s.default.PWMOscillator.prototype._stop = function (t) {
           (t = this.toSeconds(t)), this._modulator.stop(t), this._pulse.stop(t);
         }),
-        (s.default.PWMOscillator.prototype.restart = function(t) {
+        (s.default.PWMOscillator.prototype.restart = function (t) {
           this._modulator.restart(t), this._pulse.restart(t);
         }),
         Object.defineProperty(s.default.PWMOscillator.prototype, "type", {
-          get: function() {
+          get: function () {
             return "pwm";
-          }
+          },
         }),
         Object.defineProperty(s.default.PWMOscillator.prototype, "baseType", {
-          get: function() {
+          get: function () {
             return "pwm";
-          }
+          },
         }),
         Object.defineProperty(s.default.PWMOscillator.prototype, "partials", {
-          get: function() {
+          get: function () {
             return [];
-          }
+          },
         }),
         Object.defineProperty(s.default.PWMOscillator.prototype, "phase", {
-          get: function() {
+          get: function () {
             return this._modulator.phase;
           },
-          set: function(t) {
+          set: function (t) {
             this._modulator.phase = t;
-          }
+          },
         }),
-        (s.default.PWMOscillator.prototype.dispose = function() {
+        (s.default.PWMOscillator.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this._pulse.dispose(),
@@ -7393,12 +7402,12 @@
         }),
         (e.default = s.default.PWMOscillator);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(51), i(4), i(16);
-      (s.default.Part = function() {
+      (s.default.Part = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "events"],
@@ -7420,9 +7429,9 @@
           probability: 1,
           humanize: !1,
           mute: !1,
-          events: []
+          events: [],
         }),
-        (s.default.Part.prototype.start = function(t, e) {
+        (s.default.Part.prototype.start = function (t, e) {
           var i = this.toTicks(t);
           return (
             this._state.getValueAtTime(i) !== s.default.State.Started &&
@@ -7433,15 +7442,15 @@
               this._state.add({
                 state: s.default.State.Started,
                 time: i,
-                offset: e
+                offset: e,
               }),
-              this._forEach(function(t) {
+              this._forEach(function (t) {
                 this._startNote(t, i, e);
               })),
             this
           );
         }),
-        (s.default.Part.prototype._startNote = function(t, e, i) {
+        (s.default.Part.prototype._startNote = function (t, e, i) {
           (e -= i),
             this._loop
               ? t.startOffset >= this._loopStart &&
@@ -7454,28 +7463,28 @@
               : t.startOffset >= i && t.start(s.default.Ticks(e));
         }),
         Object.defineProperty(s.default.Part.prototype, "startOffset", {
-          get: function() {
+          get: function () {
             return this._startOffset;
           },
-          set: function(t) {
+          set: function (t) {
             (this._startOffset = t),
-              this._forEach(function(t) {
+              this._forEach(function (t) {
                 t.startOffset += this._startOffset;
               });
-          }
+          },
         }),
-        (s.default.Part.prototype.stop = function(t) {
+        (s.default.Part.prototype.stop = function (t) {
           var e = this.toTicks(t);
           return (
             this._state.cancel(e),
             this._state.setStateAtTime(s.default.State.Stopped, e),
-            this._forEach(function(e) {
+            this._forEach(function (e) {
               e.stop(t);
             }),
             this
           );
         }),
-        (s.default.Part.prototype.at = function(t, e) {
+        (s.default.Part.prototype.at = function (t, e) {
           t = s.default.TransportTime(t);
           for (
             var i = s.default.Ticks(1).toSeconds(), n = 0;
@@ -7490,7 +7499,7 @@
             ? (this.add(t, e), this._events[this._events.length - 1])
             : null;
         }),
-        (s.default.Part.prototype.add = function(t, e) {
+        (s.default.Part.prototype.add = function (t, e) {
           var i;
           return (
             t.hasOwnProperty("time") && (t = (e = t).time),
@@ -7499,7 +7508,7 @@
               ? ((i = e).callback = this._tick.bind(this))
               : (i = new s.default.Event({
                   callback: this._tick.bind(this),
-                  value: e
+                  value: e,
                 })),
             (i.startOffset = t),
             i.set({
@@ -7508,23 +7517,23 @@
               loop: this.loop,
               humanize: this.humanize,
               playbackRate: this.playbackRate,
-              probability: this.probability
+              probability: this.probability,
             }),
             this._events.push(i),
             this._restartEvent(i),
             this
           );
         }),
-        (s.default.Part.prototype._restartEvent = function(t) {
+        (s.default.Part.prototype._restartEvent = function (t) {
           this._state.forEach(
-            function(e) {
+            function (e) {
               e.state === s.default.State.Started
                 ? this._startNote(t, e.time, e.offset)
                 : t.stop(s.default.Ticks(e.time));
             }.bind(this)
           );
         }),
-        (s.default.Part.prototype.remove = function(t, e) {
+        (s.default.Part.prototype.remove = function (t, e) {
           t.hasOwnProperty("time") && (t = (e = t).time), (t = this.toTicks(t));
           for (var i = this._events.length - 1; i >= 0; i--) {
             var n = this._events[i];
@@ -7535,25 +7544,25 @@
           }
           return this;
         }),
-        (s.default.Part.prototype.removeAll = function() {
+        (s.default.Part.prototype.removeAll = function () {
           return (
-            this._forEach(function(t) {
+            this._forEach(function (t) {
               t.dispose();
             }),
             (this._events = []),
             this
           );
         }),
-        (s.default.Part.prototype.cancel = function(t) {
+        (s.default.Part.prototype.cancel = function (t) {
           return (
-            this._forEach(function(e) {
+            this._forEach(function (e) {
               e.cancel(t);
             }),
             this._state.cancel(this.toTicks(t)),
             this
           );
         }),
-        (s.default.Part.prototype._forEach = function(t, e) {
+        (s.default.Part.prototype._forEach = function (t, e) {
           if (this._events) {
             e = s.default.defaultArg(e, this);
             for (var i = this._events.length - 1; i >= 0; i--) {
@@ -7563,88 +7572,88 @@
           }
           return this;
         }),
-        (s.default.Part.prototype._setAll = function(t, e) {
-          this._forEach(function(i) {
+        (s.default.Part.prototype._setAll = function (t, e) {
+          this._forEach(function (i) {
             i[t] = e;
           });
         }),
-        (s.default.Part.prototype._tick = function(t, e) {
+        (s.default.Part.prototype._tick = function (t, e) {
           this.mute || this.callback(t, e);
         }),
-        (s.default.Part.prototype._testLoopBoundries = function(t) {
+        (s.default.Part.prototype._testLoopBoundries = function (t) {
           this._loop &&
           (t.startOffset < this._loopStart || t.startOffset >= this._loopEnd)
             ? t.cancel(0)
             : t.state === s.default.State.Stopped && this._restartEvent(t);
         }),
         Object.defineProperty(s.default.Part.prototype, "probability", {
-          get: function() {
+          get: function () {
             return this._probability;
           },
-          set: function(t) {
+          set: function (t) {
             (this._probability = t), this._setAll("probability", t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Part.prototype, "humanize", {
-          get: function() {
+          get: function () {
             return this._humanize;
           },
-          set: function(t) {
+          set: function (t) {
             (this._humanize = t), this._setAll("humanize", t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Part.prototype, "loop", {
-          get: function() {
+          get: function () {
             return this._loop;
           },
-          set: function(t) {
+          set: function (t) {
             (this._loop = t),
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 (e._loopStart = this._loopStart),
                   (e._loopEnd = this._loopEnd),
                   (e.loop = t),
                   this._testLoopBoundries(e);
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.Part.prototype, "loopEnd", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._loopEnd).toSeconds();
           },
-          set: function(t) {
+          set: function (t) {
             (this._loopEnd = this.toTicks(t)),
               this._loop &&
-                this._forEach(function(e) {
+                this._forEach(function (e) {
                   (e.loopEnd = t), this._testLoopBoundries(e);
                 });
-          }
+          },
         }),
         Object.defineProperty(s.default.Part.prototype, "loopStart", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._loopStart).toSeconds();
           },
-          set: function(t) {
+          set: function (t) {
             (this._loopStart = this.toTicks(t)),
               this._loop &&
-                this._forEach(function(t) {
+                this._forEach(function (t) {
                   (t.loopStart = this.loopStart), this._testLoopBoundries(t);
                 });
-          }
+          },
         }),
         Object.defineProperty(s.default.Part.prototype, "playbackRate", {
-          get: function() {
+          get: function () {
             return this._playbackRate;
           },
-          set: function(t) {
+          set: function (t) {
             (this._playbackRate = t), this._setAll("playbackRate", t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Part.prototype, "length", {
-          get: function() {
+          get: function () {
             return this._events.length;
-          }
+          },
         }),
-        (s.default.Part.prototype.dispose = function() {
+        (s.default.Part.prototype.dispose = function () {
           return (
             s.default.Event.prototype.dispose.call(this),
             this.removeAll(),
@@ -7655,12 +7664,12 @@
         }),
         (e.default = s.default.Part);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(51);
-      (s.default.Loop = function() {
+      (s.default.Loop = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "interval"],
@@ -7672,7 +7681,7 @@
             loop: !0,
             loopEnd: t.interval,
             playbackRate: t.playbackRate,
-            probability: t.probability
+            probability: t.probability,
           })),
           (this.callback = t.callback),
           (this.iterations = t.iterations);
@@ -7684,89 +7693,89 @@
           playbackRate: 1,
           iterations: 1 / 0,
           probability: !0,
-          mute: !1
+          mute: !1,
         }),
-        (s.default.Loop.prototype.start = function(t) {
+        (s.default.Loop.prototype.start = function (t) {
           return this._event.start(t), this;
         }),
-        (s.default.Loop.prototype.stop = function(t) {
+        (s.default.Loop.prototype.stop = function (t) {
           return this._event.stop(t), this;
         }),
-        (s.default.Loop.prototype.cancel = function(t) {
+        (s.default.Loop.prototype.cancel = function (t) {
           return this._event.cancel(t), this;
         }),
-        (s.default.Loop.prototype._tick = function(t) {
+        (s.default.Loop.prototype._tick = function (t) {
           this.callback(t);
         }),
         Object.defineProperty(s.default.Loop.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._event.state;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "progress", {
-          get: function() {
+          get: function () {
             return this._event.progress;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "interval", {
-          get: function() {
+          get: function () {
             return this._event.loopEnd;
           },
-          set: function(t) {
+          set: function (t) {
             this._event.loopEnd = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "playbackRate", {
-          get: function() {
+          get: function () {
             return this._event.playbackRate;
           },
-          set: function(t) {
+          set: function (t) {
             this._event.playbackRate = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "humanize", {
-          get: function() {
+          get: function () {
             return this._event.humanize;
           },
-          set: function(t) {
+          set: function (t) {
             this._event.humanize = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "probability", {
-          get: function() {
+          get: function () {
             return this._event.probability;
           },
-          set: function(t) {
+          set: function (t) {
             this._event.probability = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._event.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._event.mute = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Loop.prototype, "iterations", {
-          get: function() {
+          get: function () {
             return !0 === this._event.loop ? 1 / 0 : this._event.loop;
           },
-          set: function(t) {
+          set: function (t) {
             this._event.loop = t === 1 / 0 || t;
-          }
+          },
         }),
-        (s.default.Loop.prototype.dispose = function() {
+        (s.default.Loop.prototype.dispose = function () {
           this._event.dispose(), (this._event = null), (this.callback = null);
         }),
         (e.default = s.default.Loop);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(15), i(33);
-      (s.default.StereoXFeedbackEffect = function() {
+      (s.default.StereoXFeedbackEffect = function () {
         var t = s.default.defaults(
           arguments,
           ["feedback"],
@@ -7788,7 +7797,7 @@
           s.default.StereoXFeedbackEffect,
           s.default.StereoEffect
         ),
-        (s.default.StereoXFeedbackEffect.prototype.dispose = function() {
+        (s.default.StereoXFeedbackEffect.prototype.dispose = function () {
           return (
             s.default.StereoEffect.prototype.dispose.call(this),
             this._writable(["feedback"]),
@@ -7803,12 +7812,12 @@
         }),
         (e.default = s.default.StereoXFeedbackEffect);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(53), i(52);
-      (s.default.MidSideEffect = function() {
+      (s.default.MidSideEffect = function () {
         s.default.Effect.apply(this, arguments),
           (this._midSideSplit = new s.default.MidSideSplit()),
           (this._midSideMerge = new s.default.MidSideMerge()),
@@ -7820,7 +7829,7 @@
           this._midSideMerge.connect(this.effectReturn);
       }),
         s.default.extend(s.default.MidSideEffect, s.default.Effect),
-        (s.default.MidSideEffect.prototype.dispose = function() {
+        (s.default.MidSideEffect.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._midSideSplit.dispose(),
@@ -7836,12 +7845,12 @@
         }),
         (e.default = s.default.MidSideEffect);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(11), i(8);
-      (s.default.Convolver = function() {
+      (s.default.Convolver = function () {
         var t = s.default.defaults(
           arguments,
           ["url", "onload"],
@@ -7851,7 +7860,7 @@
           (this._convolver = this.context.createConvolver()),
           (this._buffer = new s.default.Buffer(
             t.url,
-            function(e) {
+            function (e) {
               (this.buffer = e.get()), t.onload();
             }.bind(this)
           )),
@@ -7862,13 +7871,13 @@
         s.default.extend(s.default.Convolver, s.default.Effect),
         (s.default.Convolver.defaults = {
           onload: s.default.noOp,
-          normalize: !0
+          normalize: !0,
         }),
         Object.defineProperty(s.default.Convolver.prototype, "buffer", {
-          get: function() {
+          get: function () {
             return this._buffer.length ? this._buffer : null;
           },
-          set: function(t) {
+          set: function (t) {
             this._buffer.set(t),
               this._convolver.buffer &&
                 (this.effectSend.disconnect(),
@@ -7876,25 +7885,25 @@
                 (this._convolver = this.context.createConvolver()),
                 this.connectEffect(this._convolver)),
               (this._convolver.buffer = this._buffer.get());
-          }
+          },
         }),
         Object.defineProperty(s.default.Convolver.prototype, "normalize", {
-          get: function() {
+          get: function () {
             return this._convolver.normalize;
           },
-          set: function(t) {
+          set: function (t) {
             this._convolver.normalize = t;
-          }
+          },
         }),
-        (s.default.Convolver.prototype.load = function(t, e) {
+        (s.default.Convolver.prototype.load = function (t, e) {
           return this._buffer.load(
             t,
-            function(t) {
+            function (t) {
               (this.buffer = t), e && e();
             }.bind(this)
           );
         }),
-        (s.default.Convolver.prototype.dispose = function() {
+        (s.default.Convolver.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._buffer.dispose(),
@@ -7906,12 +7915,12 @@
         }),
         (e.default = s.default.Convolver);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7), i(5), i(13);
-      (s.default.Modulo = function(t) {
+      (s.default.Modulo = function (t) {
         s.default.SignalBase.call(this),
           this.createInsOuts(1, 0),
           (this._shaper = new s.default.WaveShaper(Math.pow(2, 16))),
@@ -7926,20 +7935,20 @@
           this._setWaveShaper(t);
       }),
         s.default.extend(s.default.Modulo, s.default.SignalBase),
-        (s.default.Modulo.prototype._setWaveShaper = function(t) {
-          this._shaper.setMap(function(e) {
+        (s.default.Modulo.prototype._setWaveShaper = function (t) {
+          this._shaper.setMap(function (e) {
             return Math.floor((e + 1e-4) / t);
           });
         }),
         Object.defineProperty(s.default.Modulo.prototype, "value", {
-          get: function() {
+          get: function () {
             return this._modSignal.value;
           },
-          set: function(t) {
+          set: function (t) {
             (this._modSignal.value = t), this._setWaveShaper(t);
-          }
+          },
         }),
-        (s.default.Modulo.prototype.dispose = function() {
+        (s.default.Modulo.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._shaper.dispose(),
@@ -7955,45 +7964,45 @@
         }),
         (e.default = s.default.Modulo);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(20), i(92);
-      (s.default.OfflineContext = function(t, e, i) {
+      (s.default.OfflineContext = function (t, e, i) {
         var n = new OfflineAudioContext(t, e * i, i);
         s.default.Context.call(this, {
           context: n,
           clockSource: "offline",
           lookAhead: 0,
-          updateInterval: 128 / i
+          updateInterval: 128 / i,
         }),
           (this._duration = e),
           (this._currentTime = 0);
       }),
         s.default.extend(s.default.OfflineContext, s.default.Context),
-        (s.default.OfflineContext.prototype.now = function() {
+        (s.default.OfflineContext.prototype.now = function () {
           return this._currentTime;
         }),
-        (s.default.OfflineContext.prototype.resume = function() {
+        (s.default.OfflineContext.prototype.resume = function () {
           return Promise.resolve();
         }),
-        (s.default.OfflineContext.prototype.render = function() {
+        (s.default.OfflineContext.prototype.render = function () {
           for (; this._duration - this._currentTime >= 0; )
             this.emit("tick"), (this._currentTime += 0.005);
           return this._context.startRendering();
         }),
-        (s.default.OfflineContext.prototype.close = function() {
+        (s.default.OfflineContext.prototype.close = function () {
           return (this._context = null), Promise.resolve();
         }),
         (e.default = s.default.OfflineContext);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(16), i(11), i(76), i(40);
-      (s.default.Offline = function(t, e) {
+      (s.default.Offline = function (t, e) {
         var i = s.default.context.sampleRate,
           n = s.default.context,
           o = new s.default.OfflineContext(2, e, i);
@@ -8003,24 +8012,24 @@
         return (
           (r =
             a && s.default.isFunction(a.then)
-              ? a.then(function() {
+              ? a.then(function () {
                   return o.render();
                 })
               : o.render()),
           (s.default.context = n),
-          r.then(function(t) {
+          r.then(function (t) {
             return new s.default.Buffer(t);
           })
         );
       }),
         (e.default = s.default.Offline);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(11);
-      (s.default.Buffers = function(t) {
+      (s.default.Buffers = function (t) {
         var e = Array.prototype.slice.call(arguments);
         e.shift();
         var i = s.default.defaults(e, ["onload", "baseUrl"], s.default.Buffers);
@@ -8034,27 +8043,27 @@
       }),
         s.default.extend(s.default.Buffers),
         (s.default.Buffers.defaults = { onload: s.default.noOp, baseUrl: "" }),
-        (s.default.Buffers.prototype.has = function(t) {
+        (s.default.Buffers.prototype.has = function (t) {
           return this._buffers.hasOwnProperty(t);
         }),
-        (s.default.Buffers.prototype.get = function(t) {
+        (s.default.Buffers.prototype.get = function (t) {
           if (this.has(t)) return this._buffers[t];
           throw new Error("Tone.Buffers: no buffer named " + t);
         }),
-        (s.default.Buffers.prototype._bufferLoaded = function(t) {
+        (s.default.Buffers.prototype._bufferLoaded = function (t) {
           this._loadingCount--, 0 === this._loadingCount && t && t(this);
         }),
         Object.defineProperty(s.default.Buffers.prototype, "loaded", {
-          get: function() {
+          get: function () {
             var t = !0;
             for (var e in this._buffers) {
               var i = this.get(e);
               t = t && i.loaded;
             }
             return t;
-          }
+          },
         }),
-        (s.default.Buffers.prototype.add = function(t, e, i) {
+        (s.default.Buffers.prototype.add = function (t, e, i) {
           return (
             (i = s.default.defaultArg(i, s.default.noOp)),
             e instanceof s.default.Buffer
@@ -8066,18 +8075,18 @@
             this
           );
         }),
-        (s.default.Buffers.prototype.dispose = function() {
+        (s.default.Buffers.prototype.dispose = function () {
           for (var t in (s.default.prototype.dispose.call(this), this._buffers))
             this._buffers[t].dispose();
           return (this._buffers = null), this;
         }),
         (e.default = s.default.Buffers);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.CtrlPattern = function() {
+      (s.default.CtrlPattern = function () {
         var t = s.default.defaults(
           arguments,
           ["values", "type"],
@@ -8101,14 +8110,14 @@
           AlternateDown: "alternateDown",
           Random: "random",
           RandomWalk: "randomWalk",
-          RandomOnce: "randomOnce"
+          RandomOnce: "randomOnce",
         }),
         (s.default.CtrlPattern.defaults = {
           type: s.default.CtrlPattern.Type.Up,
-          values: []
+          values: [],
         }),
         Object.defineProperty(s.default.CtrlPattern.prototype, "value", {
-          get: function() {
+          get: function () {
             if (0 !== this.values.length) {
               if (1 === this.values.length) return this.values[0];
               this.index = Math.min(this.index, this.values.length - 1);
@@ -8121,13 +8130,13 @@
                 t
               );
             }
-          }
+          },
         }),
         Object.defineProperty(s.default.CtrlPattern.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._type;
           },
-          set: function(t) {
+          set: function (t) {
             (this._type = t),
               (this._shuffled = null),
               this._type === s.default.CtrlPattern.Type.Up ||
@@ -8149,9 +8158,9 @@
                 ? this._shuffleValues()
                 : this._type === s.default.CtrlPattern.Type.Random &&
                   (this.index = Math.floor(Math.random() * this.values.length));
-          }
+          },
         }),
-        (s.default.CtrlPattern.prototype.next = function() {
+        (s.default.CtrlPattern.prototype.next = function () {
           var t = this.type;
           return (
             t === s.default.CtrlPattern.Type.Up
@@ -8203,7 +8212,7 @@
             this.value
           );
         }),
-        (s.default.CtrlPattern.prototype._shuffleValues = function() {
+        (s.default.CtrlPattern.prototype._shuffleValues = function () {
           var t = [];
           this._shuffled = [];
           for (var e = 0; e < this.values.length; e++) t[e] = e;
@@ -8212,17 +8221,17 @@
             this._shuffled.push(i[0]);
           }
         }),
-        (s.default.CtrlPattern.prototype.dispose = function() {
+        (s.default.CtrlPattern.prototype.dispose = function () {
           (this._shuffled = null), (this.values = null);
         }),
         (e.default = s.default.CtrlPattern);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(56), i(55);
-      (s.default.TransportRepeatEvent = function(t, e) {
+      (s.default.TransportRepeatEvent = function (t, e) {
         s.default.TransportEvent.call(this, t, e),
           (e = s.default.defaultArg(
             e,
@@ -8243,13 +8252,13 @@
         ),
         (s.default.TransportRepeatEvent.defaults = {
           duration: 1 / 0,
-          interval: 1
+          interval: 1,
         }),
-        (s.default.TransportRepeatEvent.prototype.invoke = function(t) {
+        (s.default.TransportRepeatEvent.prototype.invoke = function (t) {
           this._createEvents(t),
             s.default.TransportEvent.prototype.invoke.call(this, t);
         }),
-        (s.default.TransportRepeatEvent.prototype._createEvents = function(t) {
+        (s.default.TransportRepeatEvent.prototype._createEvents = function (t) {
           var e = this.Transport.getTicksAtTime(t);
           e >= this.time &&
             e >= this._nextTick &&
@@ -8261,7 +8270,7 @@
               s.default.Ticks(this._nextTick)
             )));
         }),
-        (s.default.TransportRepeatEvent.prototype._restart = function(t) {
+        (s.default.TransportRepeatEvent.prototype._restart = function (t) {
           this.Transport.clear(this._currentId),
             this.Transport.clear(this._nextId),
             (this._nextTick = this.time);
@@ -8280,7 +8289,7 @@
               s.default.Ticks(this._nextTick)
             ));
         }),
-        (s.default.TransportRepeatEvent.prototype.dispose = function() {
+        (s.default.TransportRepeatEvent.prototype.dispose = function () {
           return (
             this.Transport.clear(this._currentId),
             this.Transport.clear(this._nextId),
@@ -8294,16 +8303,16 @@
         }),
         (e.default = s.default.TransportRepeatEvent);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4);
-      (s.default.IntervalTimeline = function() {
+      (s.default.IntervalTimeline = function () {
         s.default.call(this), (this._root = null), (this._length = 0);
       }),
         s.default.extend(s.default.IntervalTimeline),
-        (s.default.IntervalTimeline.prototype.add = function(t) {
+        (s.default.IntervalTimeline.prototype.add = function (t) {
           if (s.default.isUndef(t.time) || s.default.isUndef(t.duration))
             throw new Error(
               "Tone.IntervalTimeline: events must have time and duration parameters"
@@ -8319,7 +8328,7 @@
             e.updateHeight(), e.updateMax(), this._rebalance(e), (e = e.parent);
           return this;
         }),
-        (s.default.IntervalTimeline.prototype.remove = function(t) {
+        (s.default.IntervalTimeline.prototype.remove = function (t) {
           if (null !== this._root) {
             var e = [];
             this._root.search(t.time, e);
@@ -8334,25 +8343,25 @@
           return this;
         }),
         Object.defineProperty(s.default.IntervalTimeline.prototype, "length", {
-          get: function() {
+          get: function () {
             return this._length;
-          }
+          },
         }),
-        (s.default.IntervalTimeline.prototype.cancel = function(t) {
+        (s.default.IntervalTimeline.prototype.cancel = function (t) {
           return (
             this.forEachFrom(
               t,
-              function(t) {
+              function (t) {
                 this.remove(t);
               }.bind(this)
             ),
             this
           );
         }),
-        (s.default.IntervalTimeline.prototype._setRoot = function(t) {
+        (s.default.IntervalTimeline.prototype._setRoot = function (t) {
           (this._root = t), null !== this._root && (this._root.parent = null);
         }),
-        (s.default.IntervalTimeline.prototype._replaceNodeInParent = function(
+        (s.default.IntervalTimeline.prototype._replaceNodeInParent = function (
           t,
           e
         ) {
@@ -8361,7 +8370,7 @@
               this._rebalance(t.parent))
             : this._setRoot(e);
         }),
-        (s.default.IntervalTimeline.prototype._removeNode = function(t) {
+        (s.default.IntervalTimeline.prototype._removeNode = function (t) {
           if (null === t.left && null === t.right)
             this._replaceNodeInParent(t, null);
           else if (null === t.right) this._replaceNodeInParent(t, t.left);
@@ -8396,7 +8405,7 @@
           }
           t.dispose();
         }),
-        (s.default.IntervalTimeline.prototype._rotateLeft = function(t) {
+        (s.default.IntervalTimeline.prototype._rotateLeft = function (t) {
           var e = t.parent,
             i = t.isLeftChild(),
             s = t.right;
@@ -8404,7 +8413,7 @@
             (s.left = t),
             null !== e ? (i ? (e.left = s) : (e.right = s)) : this._setRoot(s);
         }),
-        (s.default.IntervalTimeline.prototype._rotateRight = function(t) {
+        (s.default.IntervalTimeline.prototype._rotateRight = function (t) {
           var e = t.parent,
             i = t.isLeftChild(),
             s = t.left;
@@ -8412,7 +8421,7 @@
             (s.right = t),
             null !== e ? (i ? (e.left = s) : (e.right = s)) : this._setRoot(s);
         }),
-        (s.default.IntervalTimeline.prototype._rebalance = function(t) {
+        (s.default.IntervalTimeline.prototype._rebalance = function (t) {
           var e = t.getBalance();
           e > 1
             ? t.left.getBalance() < 0
@@ -8423,7 +8432,7 @@
                 ? this._rotateRight(t.right)
                 : this._rotateLeft(t));
         }),
-        (s.default.IntervalTimeline.prototype.get = function(t) {
+        (s.default.IntervalTimeline.prototype.get = function (t) {
           if (null !== this._root) {
             var e = [];
             if ((this._root.search(t, e), e.length > 0)) {
@@ -8434,10 +8443,10 @@
           }
           return null;
         }),
-        (s.default.IntervalTimeline.prototype.forEach = function(t) {
+        (s.default.IntervalTimeline.prototype.forEach = function (t) {
           if (null !== this._root) {
             var e = [];
-            this._root.traverse(function(t) {
+            this._root.traverse(function (t) {
               e.push(t);
             });
             for (var i = 0; i < e.length; i++) {
@@ -8447,7 +8456,7 @@
           }
           return this;
         }),
-        (s.default.IntervalTimeline.prototype.forEachAtTime = function(t, e) {
+        (s.default.IntervalTimeline.prototype.forEachAtTime = function (t, e) {
           if (null !== this._root) {
             var i = [];
             this._root.search(t, i);
@@ -8458,7 +8467,7 @@
           }
           return this;
         }),
-        (s.default.IntervalTimeline.prototype.forEachFrom = function(t, e) {
+        (s.default.IntervalTimeline.prototype.forEachFrom = function (t, e) {
           if (null !== this._root) {
             var i = [];
             this._root.searchAfter(t, i);
@@ -8468,16 +8477,16 @@
           }
           return this;
         }),
-        (s.default.IntervalTimeline.prototype.dispose = function() {
+        (s.default.IntervalTimeline.prototype.dispose = function () {
           var t = [];
           null !== this._root &&
-            this._root.traverse(function(e) {
+            this._root.traverse(function (e) {
               t.push(e);
             });
           for (var e = 0; e < t.length; e++) t[e].dispose();
           return (t = null), (this._root = null), this;
         });
-      var n = function(t, e, i) {
+      var n = function (t, e, i) {
         (this.event = i),
           (this.low = t),
           (this.high = e),
@@ -8487,7 +8496,7 @@
           (this.parent = null),
           (this.height = 0);
       };
-      (n.prototype.insert = function(t) {
+      (n.prototype.insert = function (t) {
         t.low <= this.low
           ? null === this.left
             ? (this.left = t)
@@ -8496,23 +8505,23 @@
           ? (this.right = t)
           : this.right.insert(t);
       }),
-        (n.prototype.search = function(t, e) {
+        (n.prototype.search = function (t, e) {
           t > this.max ||
             (null !== this.left && this.left.search(t, e),
             this.low <= t && this.high > t && e.push(this),
             this.low > t || (null !== this.right && this.right.search(t, e)));
         }),
-        (n.prototype.searchAfter = function(t, e) {
+        (n.prototype.searchAfter = function (t, e) {
           this.low >= t &&
             (e.push(this), null !== this.left && this.left.searchAfter(t, e)),
             null !== this.right && this.right.searchAfter(t, e);
         }),
-        (n.prototype.traverse = function(t) {
+        (n.prototype.traverse = function (t) {
           t(this),
             null !== this.left && this.left.traverse(t),
             null !== this.right && this.right.traverse(t);
         }),
-        (n.prototype.updateHeight = function() {
+        (n.prototype.updateHeight = function () {
           null !== this.left && null !== this.right
             ? (this.height = Math.max(this.left.height, this.right.height) + 1)
             : null !== this.right
@@ -8521,14 +8530,14 @@
             ? (this.height = this.left.height + 1)
             : (this.height = 0);
         }),
-        (n.prototype.updateMax = function() {
+        (n.prototype.updateMax = function () {
           (this.max = this.high),
             null !== this.left &&
               (this.max = Math.max(this.max, this.left.max)),
             null !== this.right &&
               (this.max = Math.max(this.max, this.right.max));
         }),
-        (n.prototype.getBalance = function() {
+        (n.prototype.getBalance = function () {
           var t = 0;
           return (
             null !== this.left && null !== this.right
@@ -8539,32 +8548,32 @@
             t
           );
         }),
-        (n.prototype.isLeftChild = function() {
+        (n.prototype.isLeftChild = function () {
           return null !== this.parent && this.parent.left === this;
         }),
         Object.defineProperty(n.prototype, "left", {
-          get: function() {
+          get: function () {
             return this._left;
           },
-          set: function(t) {
+          set: function (t) {
             (this._left = t),
               null !== t && (t.parent = this),
               this.updateHeight(),
               this.updateMax();
-          }
+          },
         }),
         Object.defineProperty(n.prototype, "right", {
-          get: function() {
+          get: function () {
             return this._right;
           },
-          set: function(t) {
+          set: function (t) {
             (this._right = t),
               null !== t && (t.parent = this),
               this.updateHeight(),
               this.updateMax();
-          }
+          },
         }),
-        (n.prototype.dispose = function() {
+        (n.prototype.dispose = function () {
           (this.parent = null),
             (this._left = null),
             (this._right = null),
@@ -8572,13 +8581,13 @@
         }),
         (e.default = s.default.IntervalTimeline);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2);
       function n(t) {
-        return function(e, i) {
+        return function (e, i) {
           (i = this.toSeconds(i)), t.apply(this, arguments);
           var s = this._events.get(i),
             n = this._events.previousEvent(s),
@@ -8586,18 +8595,18 @@
           return (s.ticks = Math.max(o, 0)), this;
         };
       }
-      (s.default.TickSignal = function(t) {
+      (s.default.TickSignal = function (t) {
         (t = s.default.defaultArg(t, 1)),
           s.default.Signal.call(this, {
             units: s.default.Type.Ticks,
-            value: t
+            value: t,
           }),
           (this._events.memory = 1 / 0),
           this.cancelScheduledValues(0),
           this._events.add({
             type: s.default.Param.AutomationType.SetValue,
             time: 0,
-            value: t
+            value: t,
           });
       }),
         s.default.extend(s.default.TickSignal, s.default.Signal),
@@ -8607,7 +8616,7 @@
         (s.default.TickSignal.prototype.linearRampToValueAtTime = n(
           s.default.Signal.prototype.linearRampToValueAtTime
         )),
-        (s.default.TickSignal.prototype.setTargetAtTime = function(t, e, i) {
+        (s.default.TickSignal.prototype.setTargetAtTime = function (t, e, i) {
           (e = this.toSeconds(e)),
             this.setRampPoint(e),
             (t = this._fromUnits(t));
@@ -8624,7 +8633,7 @@
           }
           return this;
         }),
-        (s.default.TickSignal.prototype.exponentialRampToValueAtTime = function(
+        (s.default.TickSignal.prototype.exponentialRampToValueAtTime = function (
           t,
           e
         ) {
@@ -8643,7 +8652,7 @@
           }
           return this;
         }),
-        (s.default.TickSignal.prototype._getTicksUntilEvent = function(t, e) {
+        (s.default.TickSignal.prototype._getTicksUntilEvent = function (t, e) {
           if (null === t) t = { ticks: 0, time: 0 };
           else if (s.default.isUndef(t.ticks)) {
             var i = this._events.previousEvent(t);
@@ -8659,17 +8668,17 @@
             0.5 * (e - t.time) * (n + o) + t.ticks
           );
         }),
-        (s.default.TickSignal.prototype.getTicksAtTime = function(t) {
+        (s.default.TickSignal.prototype.getTicksAtTime = function (t) {
           t = this.toSeconds(t);
           var e = this._events.get(t);
           return Math.max(this._getTicksUntilEvent(e, t), 0);
         }),
-        (s.default.TickSignal.prototype.getDurationOfTicks = function(t, e) {
+        (s.default.TickSignal.prototype.getDurationOfTicks = function (t, e) {
           e = this.toSeconds(e);
           var i = this.getTicksAtTime(e);
           return this.getTimeOfTick(i + t) - e;
         }),
-        (s.default.TickSignal.prototype.getTimeOfTick = function(t) {
+        (s.default.TickSignal.prototype.getTimeOfTick = function (t) {
           var e = this._events.get(t, "ticks"),
             i = this._events.getAfter(t, "ticks");
           if (e && e.ticks === t) return e.time;
@@ -8691,13 +8700,13 @@
               : e.time + (t - e.ticks) / e.value
             : t / this._initialValue;
         }),
-        (s.default.TickSignal.prototype.ticksToTime = function(t, e) {
+        (s.default.TickSignal.prototype.ticksToTime = function (t, e) {
           return (
             (e = this.toSeconds(e)),
             new s.default.Time(this.getDurationOfTicks(t, e))
           );
         }),
-        (s.default.TickSignal.prototype.timeToTicks = function(t, e) {
+        (s.default.TickSignal.prototype.timeToTicks = function (t, e) {
           (e = this.toSeconds(e)), (t = this.toSeconds(t));
           var i = this.getTicksAtTime(e),
             n = this.getTicksAtTime(e + t);
@@ -8705,12 +8714,12 @@
         }),
         (e.default = s.default.TickSignal);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(57), i(34), i(35), i(20);
-      (s.default.Clock = function() {
+      (s.default.Clock = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "frequency"],
@@ -8731,11 +8740,11 @@
         s.default.extend(s.default.Clock, s.default.Emitter),
         (s.default.Clock.defaults = { callback: s.default.noOp, frequency: 1 }),
         Object.defineProperty(s.default.Clock.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._state.getValueAtTime(this.now());
-          }
+          },
         }),
-        (s.default.Clock.prototype.start = function(t, e) {
+        (s.default.Clock.prototype.start = function (t, e) {
           return (
             this.context.resume(),
             (t = this.toSeconds(t)),
@@ -8746,7 +8755,7 @@
             this
           );
         }),
-        (s.default.Clock.prototype.stop = function(t) {
+        (s.default.Clock.prototype.stop = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._state.cancel(t),
@@ -8756,7 +8765,7 @@
             this
           );
         }),
-        (s.default.Clock.prototype.pause = function(t) {
+        (s.default.Clock.prototype.pause = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._state.getValueAtTime(t) === s.default.State.Started &&
@@ -8767,36 +8776,36 @@
           );
         }),
         Object.defineProperty(s.default.Clock.prototype, "ticks", {
-          get: function() {
+          get: function () {
             return Math.ceil(this.getTicksAtTime(this.now()));
           },
-          set: function(t) {
+          set: function (t) {
             this._tickSource.ticks = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Clock.prototype, "seconds", {
-          get: function() {
+          get: function () {
             return this._tickSource.seconds;
           },
-          set: function(t) {
+          set: function (t) {
             this._tickSource.seconds = t;
-          }
+          },
         }),
-        (s.default.Clock.prototype.getSecondsAtTime = function(t) {
+        (s.default.Clock.prototype.getSecondsAtTime = function (t) {
           return this._tickSource.getSecondsAtTime(t);
         }),
-        (s.default.Clock.prototype.setTicksAtTime = function(t, e) {
+        (s.default.Clock.prototype.setTicksAtTime = function (t, e) {
           return this._tickSource.setTicksAtTime(t, e), this;
         }),
-        (s.default.Clock.prototype.getTicksAtTime = function(t) {
+        (s.default.Clock.prototype.getTicksAtTime = function (t) {
           return this._tickSource.getTicksAtTime(t);
         }),
-        (s.default.Clock.prototype.nextTickTime = function(t, e) {
+        (s.default.Clock.prototype.nextTickTime = function (t, e) {
           e = this.toSeconds(e);
           var i = this.getTicksAtTime(e);
           return this._tickSource.getTimeOfTick(i + t, e);
         }),
-        (s.default.Clock.prototype._loop = function() {
+        (s.default.Clock.prototype._loop = function () {
           var t = this._lastUpdate,
             e = this.now();
           (this._lastUpdate = e),
@@ -8804,7 +8813,7 @@
               (this._state.forEachBetween(
                 t,
                 e,
-                function(t) {
+                function (t) {
                   switch (t.state) {
                     case s.default.State.Started:
                       var e = this._tickSource.getTicksAtTime(t.time);
@@ -8821,15 +8830,15 @@
               this._tickSource.forEachTickBetween(
                 t,
                 e,
-                function(t, e) {
+                function (t, e) {
                   this.callback(t, e);
                 }.bind(this)
               ));
         }),
-        (s.default.Clock.prototype.getStateAtTime = function(t) {
+        (s.default.Clock.prototype.getStateAtTime = function (t) {
           return (t = this.toSeconds(t)), this._state.getValueAtTime(t);
         }),
-        (s.default.Clock.prototype.dispose = function() {
+        (s.default.Clock.prototype.dispose = function () {
           s.default.Emitter.prototype.dispose.call(this),
             this.context.off("tick", this._boundLoop),
             this._writable("frequency"),
@@ -8844,21 +8853,21 @@
         }),
         (e.default = s.default.Clock);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(2), i(5), i(7);
-      (s.default.GreaterThanZero = function() {
+      (s.default.GreaterThanZero = function () {
         s.default.SignalBase.call(this),
-          (this._thresh = this.output = new s.default.WaveShaper(function(t) {
+          (this._thresh = this.output = new s.default.WaveShaper(function (t) {
             return t <= 0 ? 0 : 1;
           }, 127)),
           (this._scale = this.input = new s.default.Multiply(1e4)),
           this._scale.connect(this._thresh);
       }),
         s.default.extend(s.default.GreaterThanZero, s.default.SignalBase),
-        (s.default.GreaterThanZero.prototype.dispose = function() {
+        (s.default.GreaterThanZero.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._scale.dispose(),
@@ -8870,12 +8879,12 @@
         }),
         (e.default = s.default.GreaterThanZero);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(84), i(13), i(2);
-      (s.default.GreaterThan = function(t) {
+      (s.default.GreaterThan = function (t) {
         s.default.Signal.call(this),
           this.createInsOuts(2, 0),
           (this._param = this.input[0] = new s.default.Subtract(t)),
@@ -8884,7 +8893,7 @@
           this._param.connect(this._gtz);
       }),
         s.default.extend(s.default.GreaterThan, s.default.Signal),
-        (s.default.GreaterThan.prototype.dispose = function() {
+        (s.default.GreaterThan.prototype.dispose = function () {
           return (
             s.default.Signal.prototype.dispose.call(this),
             this._gtz.dispose(),
@@ -8894,12 +8903,12 @@
         }),
         (e.default = s.default.GreaterThan);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(47), i(26);
-      (s.default.ScaledEnvelope = function() {
+      (s.default.ScaledEnvelope = function () {
         var t = s.default.defaults(
           arguments,
           ["attack", "decay", "sustain", "release"],
@@ -8914,30 +8923,30 @@
         s.default.extend(s.default.ScaledEnvelope, s.default.Envelope),
         (s.default.ScaledEnvelope.defaults = { min: 0, max: 1, exponent: 1 }),
         Object.defineProperty(s.default.ScaledEnvelope.prototype, "min", {
-          get: function() {
+          get: function () {
             return this._scale.min;
           },
-          set: function(t) {
+          set: function (t) {
             this._scale.min = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.ScaledEnvelope.prototype, "max", {
-          get: function() {
+          get: function () {
             return this._scale.max;
           },
-          set: function(t) {
+          set: function (t) {
             this._scale.max = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.ScaledEnvelope.prototype, "exponent", {
-          get: function() {
+          get: function () {
             return this._exp.value;
           },
-          set: function(t) {
+          set: function (t) {
             this._exp.value = t;
-          }
+          },
         }),
-        (s.default.ScaledEnvelope.prototype.dispose = function() {
+        (s.default.ScaledEnvelope.prototype.dispose = function () {
           return (
             s.default.Envelope.prototype.dispose.call(this),
             this._scale.dispose(),
@@ -8949,22 +8958,22 @@
         }),
         (e.default = s.default.ScaledEnvelope);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7), i(30);
-      (s.default.Abs = function() {
+      (s.default.Abs = function () {
         s.default.SignalBase.call(this),
           (this._abs = this.input = this.output = new s.default.WaveShaper(
-            function(t) {
+            function (t) {
               return Math.abs(t) < 0.001 ? 0 : Math.abs(t);
             },
             1024
           ));
       }),
         s.default.extend(s.default.Abs, s.default.SignalBase),
-        (s.default.Abs.prototype.dispose = function() {
+        (s.default.Abs.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._abs.dispose(),
@@ -8974,12 +8983,12 @@
         }),
         (e.default = s.default.Abs);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(3), i(1);
-      (s.default.Solo = function() {
+      (s.default.Solo = function () {
         var t = s.default.defaults(arguments, ["solo"], s.default.Solo);
         s.default.AudioNode.call(this),
           (this.input = this.output = new s.default.Gain()),
@@ -8990,51 +8999,51 @@
         s.default.extend(s.default.Solo, s.default.AudioNode),
         (s.default.Solo.defaults = { solo: !1 }),
         Object.defineProperty(s.default.Solo.prototype, "solo", {
-          get: function() {
+          get: function () {
             return this._isSoloed();
           },
-          set: function(t) {
+          set: function (t) {
             t ? this._addSolo() : this._removeSolo(),
               this.context.emit("solo", this);
-          }
+          },
         }),
         Object.defineProperty(s.default.Solo.prototype, "muted", {
-          get: function() {
+          get: function () {
             return 0 === this.input.gain.value;
-          }
+          },
         }),
-        (s.default.Solo.prototype._addSolo = function() {
+        (s.default.Solo.prototype._addSolo = function () {
           s.default.isArray(this.context._currentSolo) ||
             (this.context._currentSolo = []),
             this._isSoloed() || this.context._currentSolo.push(this);
         }),
-        (s.default.Solo.prototype._removeSolo = function() {
+        (s.default.Solo.prototype._removeSolo = function () {
           if (this._isSoloed()) {
             var t = this.context._currentSolo.indexOf(this);
             this.context._currentSolo.splice(t, 1);
           }
         }),
-        (s.default.Solo.prototype._isSoloed = function() {
+        (s.default.Solo.prototype._isSoloed = function () {
           return (
             !!s.default.isArray(this.context._currentSolo) &&
-            (0 !== this.context._currentSolo.length &&
-              -1 !== this.context._currentSolo.indexOf(this))
+            0 !== this.context._currentSolo.length &&
+            -1 !== this.context._currentSolo.indexOf(this)
           );
         }),
-        (s.default.Solo.prototype._noSolos = function() {
+        (s.default.Solo.prototype._noSolos = function () {
           return (
             !s.default.isArray(this.context._currentSolo) ||
             0 === this.context._currentSolo.length
           );
         }),
-        (s.default.Solo.prototype._soloed = function() {
+        (s.default.Solo.prototype._soloed = function () {
           this._isSoloed()
             ? (this.input.gain.value = 1)
             : this._noSolos()
             ? (this.input.gain.value = 1)
             : (this.input.gain.value = 0);
         }),
-        (s.default.Solo.prototype.dispose = function() {
+        (s.default.Solo.prototype.dispose = function () {
           return (
             this.context.off("solo", this._soloBind),
             this._removeSolo(),
@@ -9045,22 +9054,22 @@
         }),
         (e.default = s.default.Solo);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7);
-      (s.default.EqualPowerGain = function() {
+      (s.default.EqualPowerGain = function () {
         s.default.SignalBase.call(this),
           (this._eqPower = this.input = this.output = new s.default.WaveShaper(
-            function(t) {
+            function (t) {
               return Math.abs(t) < 0.001 ? 0 : s.default.equalPowerScale(t);
             }.bind(this),
             4096
           ));
       }),
         s.default.extend(s.default.EqualPowerGain, s.default.SignalBase),
-        (s.default.EqualPowerGain.prototype.dispose = function() {
+        (s.default.EqualPowerGain.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._eqPower.dispose(),
@@ -9070,19 +9079,19 @@
         }),
         (e.default = s.default.EqualPowerGain);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(5), i(2);
-      (s.default.Negate = function() {
+      (s.default.Negate = function () {
         s.default.SignalBase.call(this),
           (this._multiply = this.input = this.output = new s.default.Multiply(
             -1
           ));
       }),
         s.default.extend(s.default.Negate, s.default.SignalBase),
-        (s.default.Negate.prototype.dispose = function() {
+        (s.default.Negate.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._multiply.dispose(),
@@ -9092,12 +9101,12 @@
         }),
         (e.default = s.default.Negate);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(48), i(27), i(1);
-      (s.default.PanVol = function() {
+      (s.default.PanVol = function () {
         var t = s.default.defaults(
           arguments,
           ["pan", "volume"],
@@ -9115,14 +9124,14 @@
         s.default.extend(s.default.PanVol, s.default.AudioNode),
         (s.default.PanVol.defaults = { pan: 0, volume: 0, mute: !1 }),
         Object.defineProperty(s.default.PanVol.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._volume.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._volume.mute = t;
-          }
+          },
         }),
-        (s.default.PanVol.prototype.dispose = function() {
+        (s.default.PanVol.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["pan", "volume"]),
@@ -9137,7 +9146,7 @@
         }),
         (e.default = s.default.PanVol);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       var s = i(0);
       if (s.default.supported) {
@@ -9149,10 +9158,10 @@
         (n && s.default.isFunction(n.then)) ||
           ((OfflineAudioContext.prototype._native_startRendering =
             OfflineAudioContext.prototype.startRendering),
-          (OfflineAudioContext.prototype.startRendering = function() {
+          (OfflineAudioContext.prototype.startRendering = function () {
             return new Promise(
-              function(t) {
-                (this.oncomplete = function(e) {
+              function (t) {
+                (this.oncomplete = function (e) {
                   t(e.renderedBuffer);
                 }),
                   this._native_startRendering();
@@ -9161,58 +9170,58 @@
           }));
       }
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       e.a = "13.8.34";
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(46);
-      (s.default.Midi = function(t, e) {
+      (s.default.Midi = function (t, e) {
         if (!(this instanceof s.default.Midi)) return new s.default.Midi(t, e);
         s.default.Frequency.call(this, t, e);
       }),
         s.default.extend(s.default.Midi, s.default.Frequency),
         (s.default.Midi.prototype._defaultUnits = "midi"),
-        (s.default.Midi.prototype._frequencyToUnits = function(t) {
+        (s.default.Midi.prototype._frequencyToUnits = function (t) {
           return s.default.Frequency.ftom(
             s.default.Frequency.prototype._frequencyToUnits.call(this, t)
           );
         }),
-        (s.default.Midi.prototype._ticksToUnits = function(t) {
+        (s.default.Midi.prototype._ticksToUnits = function (t) {
           return s.default.Frequency.ftom(
             s.default.Frequency.prototype._ticksToUnits.call(this, t)
           );
         }),
-        (s.default.Midi.prototype._beatsToUnits = function(t) {
+        (s.default.Midi.prototype._beatsToUnits = function (t) {
           return s.default.Frequency.ftom(
             s.default.Frequency.prototype._beatsToUnits.call(this, t)
           );
         }),
-        (s.default.Midi.prototype._secondsToUnits = function(t) {
+        (s.default.Midi.prototype._secondsToUnits = function (t) {
           return s.default.Frequency.ftom(
             s.default.Frequency.prototype._secondsToUnits.call(this, t)
           );
         }),
-        (s.default.Midi.prototype.toMidi = function() {
+        (s.default.Midi.prototype.toMidi = function () {
           return this.valueOf();
         }),
-        (s.default.Midi.prototype.toFrequency = function() {
+        (s.default.Midi.prototype.toFrequency = function () {
           return s.default.Frequency.mtof(this.toMidi());
         }),
-        (s.default.Midi.prototype.transpose = function(t) {
+        (s.default.Midi.prototype.transpose = function (t) {
           return new this.constructor(this.toMidi() + t);
         }),
         (e.default = s.default.Midi);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(27), i(1);
-      (s.default.UserMedia = function() {
+      (s.default.UserMedia = function () {
         var t = s.default.defaults(arguments, ["volume"], s.default.UserMedia);
         s.default.AudioNode.call(this),
           (this._mediaStream = null),
@@ -9225,15 +9234,15 @@
       }),
         s.default.extend(s.default.UserMedia, s.default.AudioNode),
         (s.default.UserMedia.defaults = { volume: 0, mute: !1 }),
-        (s.default.UserMedia.prototype.open = function(t) {
+        (s.default.UserMedia.prototype.open = function (t) {
           return (
             this.state === s.default.State.Started && this.close(),
             s.default.UserMedia.enumerateDevices().then(
-              function(e) {
+              function (e) {
                 var i;
                 if (s.default.isNumber(t)) i = e[t];
                 else if (
-                  !(i = e.find(function(e) {
+                  !(i = e.find(function (e) {
                     return e.label === t || e.deviceId === t;
                   })) &&
                   e.length > 0
@@ -9247,13 +9256,13 @@
                     echoCancellation: !1,
                     sampleRate: this.context.sampleRate,
                     noiseSuppression: !1,
-                    mozNoiseSuppression: !1
-                  }
+                    mozNoiseSuppression: !1,
+                  },
                 };
                 return (
                   i && (n.audio.deviceId = i.deviceId),
                   navigator.mediaDevices.getUserMedia(n).then(
-                    function(t) {
+                    function (t) {
                       return (
                         this._stream ||
                           ((this._stream = t),
@@ -9270,10 +9279,10 @@
             )
           );
         }),
-        (s.default.UserMedia.prototype.close = function() {
+        (s.default.UserMedia.prototype.close = function () {
           return (
             this._stream &&
-              (this._stream.getAudioTracks().forEach(function(t) {
+              (this._stream.getAudioTracks().forEach(function (t) {
                 t.stop();
               }),
               (this._stream = null),
@@ -9283,44 +9292,44 @@
             this
           );
         }),
-        (s.default.UserMedia.enumerateDevices = function() {
-          return navigator.mediaDevices.enumerateDevices().then(function(t) {
-            return t.filter(function(t) {
+        (s.default.UserMedia.enumerateDevices = function () {
+          return navigator.mediaDevices.enumerateDevices().then(function (t) {
+            return t.filter(function (t) {
               return "audioinput" === t.kind;
             });
           });
         }),
         Object.defineProperty(s.default.UserMedia.prototype, "state", {
-          get: function() {
+          get: function () {
             return this._stream && this._stream.active
               ? s.default.State.Started
               : s.default.State.Stopped;
-          }
+          },
         }),
         Object.defineProperty(s.default.UserMedia.prototype, "deviceId", {
-          get: function() {
+          get: function () {
             return this._device ? this._device.deviceId : null;
-          }
+          },
         }),
         Object.defineProperty(s.default.UserMedia.prototype, "groupId", {
-          get: function() {
+          get: function () {
             return this._device ? this._device.groupId : null;
-          }
+          },
         }),
         Object.defineProperty(s.default.UserMedia.prototype, "label", {
-          get: function() {
+          get: function () {
             return this._device ? this._device.label : null;
-          }
+          },
         }),
         Object.defineProperty(s.default.UserMedia.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._volume.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._volume.mute = t;
-          }
+          },
         }),
-        (s.default.UserMedia.prototype.dispose = function() {
+        (s.default.UserMedia.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this.close(),
@@ -9332,21 +9341,21 @@
           );
         }),
         Object.defineProperty(s.default.UserMedia, "supported", {
-          get: function() {
+          get: function () {
             return (
               s.default.isDefined(navigator.mediaDevices) &&
               s.default.isFunction(navigator.mediaDevices.getUserMedia)
             );
-          }
+          },
         }),
         (e.default = s.default.UserMedia);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(65), i(27), i(1);
-      (s.default.Players = function(t) {
+      (s.default.Players = function (t) {
         var e = Array.prototype.slice.call(arguments);
         e.shift();
         var i = s.default.defaults(e, ["onload"], s.default.Players);
@@ -9371,75 +9380,75 @@
           mute: !1,
           onload: s.default.noOp,
           fadeIn: 0,
-          fadeOut: 0
+          fadeOut: 0,
         }),
-        (s.default.Players.prototype._bufferLoaded = function(t) {
+        (s.default.Players.prototype._bufferLoaded = function (t) {
           this._loadingCount--, 0 === this._loadingCount && t && t(this);
         }),
         Object.defineProperty(s.default.Players.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._volume.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._volume.mute = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Players.prototype, "fadeIn", {
-          get: function() {
+          get: function () {
             return this._fadeIn;
           },
-          set: function(t) {
+          set: function (t) {
             (this._fadeIn = t),
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 e.fadeIn = t;
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.Players.prototype, "fadeOut", {
-          get: function() {
+          get: function () {
             return this._fadeOut;
           },
-          set: function(t) {
+          set: function (t) {
             (this._fadeOut = t),
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 e.fadeOut = t;
               });
-          }
+          },
         }),
         Object.defineProperty(s.default.Players.prototype, "state", {
-          get: function() {
+          get: function () {
             var t = !1;
             return (
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 t = t || e.state === s.default.State.Started;
               }),
               t ? s.default.State.Started : s.default.State.Stopped
             );
-          }
+          },
         }),
-        (s.default.Players.prototype.has = function(t) {
+        (s.default.Players.prototype.has = function (t) {
           return this._players.hasOwnProperty(t);
         }),
-        (s.default.Players.prototype.get = function(t) {
+        (s.default.Players.prototype.get = function (t) {
           if (this.has(t)) return this._players[t];
           throw new Error("Tone.Players: no player named " + t);
         }),
-        (s.default.Players.prototype._forEach = function(t) {
+        (s.default.Players.prototype._forEach = function (t) {
           for (var e in this._players) t(this._players[e], e);
           return this;
         }),
         Object.defineProperty(s.default.Players.prototype, "loaded", {
-          get: function() {
+          get: function () {
             var t = !0;
             return (
-              this._forEach(function(e) {
+              this._forEach(function (e) {
                 t = t && e.loaded;
               }),
               t
             );
-          }
+          },
         }),
-        (s.default.Players.prototype.add = function(t, e, i) {
+        (s.default.Players.prototype.add = function (t, e, i) {
           return (
             (this._players[t] = new s.default.Player(e, i).connect(
               this.output
@@ -9449,12 +9458,12 @@
             this
           );
         }),
-        (s.default.Players.prototype.stopAll = function(t) {
-          this._forEach(function(e) {
+        (s.default.Players.prototype.stopAll = function (t) {
+          this._forEach(function (e) {
             e.stop(t);
           });
         }),
-        (s.default.Players.prototype.dispose = function() {
+        (s.default.Players.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._volume.dispose(),
@@ -9462,7 +9471,7 @@
             this._writable("volume"),
             (this.volume = null),
             (this.output = null),
-            this._forEach(function(t) {
+            this._forEach(function (t) {
               t.dispose();
             }),
             (this._players = null),
@@ -9471,12 +9480,12 @@
         }),
         (e.default = s.default.Players);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(6), i(11), i(32);
-      (s.default.GrainPlayer = function() {
+      (s.default.GrainPlayer = function () {
         var t = s.default.defaults(
           arguments,
           ["url", "onload"],
@@ -9517,9 +9526,9 @@
           loop: !1,
           loopStart: 0,
           loopEnd: 0,
-          reverse: !1
+          reverse: !1,
         }),
-        (s.default.GrainPlayer.prototype._start = function(t, e, i) {
+        (s.default.GrainPlayer.prototype._start = function (t, e, i) {
           (e = s.default.defaultArg(e, 0)),
             (e = this.toSeconds(e)),
             (t = this.toSeconds(t)),
@@ -9527,15 +9536,15 @@
             this._clock.start(t),
             i && this.stop(t + this.toSeconds(i));
         }),
-        (s.default.GrainPlayer.prototype._stop = function(t) {
+        (s.default.GrainPlayer.prototype._stop = function (t) {
           this._clock.stop(t);
         }),
-        (s.default.GrainPlayer.prototype._onstop = function(t) {
-          this._activeSources.forEach(function(e) {
+        (s.default.GrainPlayer.prototype._onstop = function (t) {
+          this._activeSources.forEach(function (e) {
             (e.fadeOut = 0), e.stop(t);
           });
         }),
-        (s.default.GrainPlayer.prototype._tick = function(t) {
+        (s.default.GrainPlayer.prototype._tick = function (t) {
           if (!this.loop && this._offset > this.buffer.duration) this.stop(t);
           else {
             var e = this._offset < this._overlap ? 0 : this._overlap,
@@ -9548,81 +9557,81 @@
                 loopEnd: this._loopEnd,
                 playbackRate: s.default.intervalToFrequencyRatio(
                   this.detune / 100
-                )
+                ),
               }).connect(this.output);
             i.start(t, this._offset),
               (this._offset += this.grainSize),
               i.stop(t + this.grainSize / this.playbackRate),
               this._activeSources.push(i),
-              (i.onended = function() {
+              (i.onended = function () {
                 var t = this._activeSources.indexOf(i);
                 -1 !== t && this._activeSources.splice(t, 1);
               }.bind(this));
           }
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "playbackRate", {
-          get: function() {
+          get: function () {
             return this._playbackRate;
           },
-          set: function(t) {
+          set: function (t) {
             (this._playbackRate = t), (this.grainSize = this._grainSize);
-          }
+          },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "loopStart", {
-          get: function() {
+          get: function () {
             return this._loopStart;
           },
-          set: function(t) {
+          set: function (t) {
             this._loopStart = this.toSeconds(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "loopEnd", {
-          get: function() {
+          get: function () {
             return this._loopEnd;
           },
-          set: function(t) {
+          set: function (t) {
             this._loopEnd = this.toSeconds(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "reverse", {
-          get: function() {
+          get: function () {
             return this.buffer.reverse;
           },
-          set: function(t) {
+          set: function (t) {
             this.buffer.reverse = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "grainSize", {
-          get: function() {
+          get: function () {
             return this._grainSize;
           },
-          set: function(t) {
+          set: function (t) {
             (this._grainSize = this.toSeconds(t)),
               (this._clock.frequency.value =
                 this._playbackRate / this._grainSize);
-          }
+          },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "overlap", {
-          get: function() {
+          get: function () {
             return this._overlap;
           },
-          set: function(t) {
+          set: function (t) {
             this._overlap = this.toSeconds(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.GrainPlayer.prototype, "loaded", {
-          get: function() {
+          get: function () {
             return this.buffer.loaded;
-          }
+          },
         }),
-        (s.default.GrainPlayer.prototype.dispose = function() {
+        (s.default.GrainPlayer.prototype.dispose = function () {
           return (
             s.default.Source.prototype.dispose.call(this),
             this.buffer.dispose(),
             (this.buffer = null),
             this._clock.dispose(),
             (this._clock = null),
-            this._activeSources.forEach(function(t) {
+            this._activeSources.forEach(function (t) {
               t.dispose();
             }),
             (this._activeSources = null),
@@ -9631,12 +9640,12 @@
         }),
         (e.default = s.default.GrainPlayer);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(16), i(2), i(45);
-      (s.default.TransportTimelineSignal = function() {
+      (s.default.TransportTimelineSignal = function () {
         s.default.Signal.apply(this, arguments),
           (this.output = this._outputSig = new s.default.Signal(
             this._initialValue
@@ -9651,13 +9660,13 @@
           (this._events.memory = 1 / 0);
       }),
         s.default.extend(s.default.TransportTimelineSignal, s.default.Signal),
-        (s.default.TransportTimelineSignal.prototype._onTick = function(t) {
+        (s.default.TransportTimelineSignal.prototype._onTick = function (t) {
           var e = this.getValueAtTime(s.default.Transport.seconds);
           this._lastVal !== e &&
             ((this._lastVal = e),
             this._outputSig.linearRampToValueAtTime(e, t));
         }),
-        (s.default.TransportTimelineSignal.prototype._anchorValue = function(
+        (s.default.TransportTimelineSignal.prototype._anchorValue = function (
           t
         ) {
           var e = this.getValueAtTime(s.default.Transport.seconds);
@@ -9668,7 +9677,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.getValueAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.getValueAtTime = function (
           t
         ) {
           return (
@@ -9676,7 +9685,7 @@
             s.default.Signal.prototype.getValueAtTime.call(this, t)
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.setValueAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.setValueAtTime = function (
           t,
           e
         ) {
@@ -9686,7 +9695,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.linearRampToValueAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.linearRampToValueAtTime = function (
           t,
           e
         ) {
@@ -9696,7 +9705,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.exponentialRampToValueAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.exponentialRampToValueAtTime = function (
           t,
           e
         ) {
@@ -9710,7 +9719,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.setTargetAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.setTargetAtTime = function (
           t,
           e,
           i
@@ -9721,7 +9730,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.cancelScheduledValues = function(
+        (s.default.TransportTimelineSignal.prototype.cancelScheduledValues = function (
           t
         ) {
           return (
@@ -9730,7 +9739,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.setValueCurveAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.setValueCurveAtTime = function (
           t,
           e,
           i,
@@ -9749,7 +9758,7 @@
             this
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.cancelAndHoldAtTime = function(
+        (s.default.TransportTimelineSignal.prototype.cancelAndHoldAtTime = function (
           t
         ) {
           return s.default.Signal.prototype.cancelAndHoldAtTime.call(
@@ -9757,7 +9766,7 @@
             s.default.TransportTime(t)
           );
         }),
-        (s.default.TransportTimelineSignal.prototype.dispose = function() {
+        (s.default.TransportTimelineSignal.prototype.dispose = function () {
           s.default.Transport.clear(this._synced),
             s.default.Transport.off("start stop pause", this._syncedCallback),
             this._events.cancel(0),
@@ -9767,12 +9776,12 @@
         }),
         (e.default = s.default.TransportTimelineSignal);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(29), i(5);
-      (s.default.Normalize = function(t, e) {
+      (s.default.Normalize = function (t, e) {
         s.default.SignalBase.call(this),
           (this._inputMin = s.default.defaultArg(t, 0)),
           (this._inputMax = s.default.defaultArg(e, 1)),
@@ -9783,26 +9792,26 @@
       }),
         s.default.extend(s.default.Normalize, s.default.SignalBase),
         Object.defineProperty(s.default.Normalize.prototype, "min", {
-          get: function() {
+          get: function () {
             return this._inputMin;
           },
-          set: function(t) {
+          set: function (t) {
             (this._inputMin = t), this._setRange();
-          }
+          },
         }),
         Object.defineProperty(s.default.Normalize.prototype, "max", {
-          get: function() {
+          get: function () {
             return this._inputMax;
           },
-          set: function(t) {
+          set: function (t) {
             (this._inputMax = t), this._setRange();
-          }
+          },
         }),
-        (s.default.Normalize.prototype._setRange = function() {
+        (s.default.Normalize.prototype._setRange = function () {
           (this._sub.value = -this._inputMin),
             (this._div.value = 1 / (this._inputMax - this._inputMin));
         }),
-        (s.default.Normalize.prototype.dispose = function() {
+        (s.default.Normalize.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._sub.dispose(),
@@ -9814,21 +9823,21 @@
         }),
         (e.default = s.default.Normalize);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(7), i(2);
-      (s.default.GainToAudio = function() {
+      (s.default.GainToAudio = function () {
         s.default.SignalBase.call(this),
           (this._norm = this.input = this.output = new s.default.WaveShaper(
-            function(t) {
+            function (t) {
               return 2 * Math.abs(t) - 1;
             }
           ));
       }),
         s.default.extend(s.default.GainToAudio, s.default.SignalBase),
-        (s.default.GainToAudio.prototype.dispose = function() {
+        (s.default.GainToAudio.prototype.dispose = function () {
           return (
             s.default.SignalBase.prototype.dispose.call(this),
             this._norm.dispose(),
@@ -9838,12 +9847,12 @@
         }),
         (e.default = s.default.GainToAudio);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(21), i(78), i(32);
-      (s.default.Sampler = function(t) {
+      (s.default.Sampler = function (t) {
         var e = Array.prototype.slice.call(arguments);
         e.shift();
         var i = s.default.defaults(e, ["onload", "baseUrl"], s.default.Sampler);
@@ -9871,9 +9880,9 @@
           release: 0.1,
           onload: s.default.noOp,
           baseUrl: "",
-          curve: "exponential"
+          curve: "exponential",
         }),
-        (s.default.Sampler.prototype._findClosest = function(t) {
+        (s.default.Sampler.prototype._findClosest = function (t) {
           for (var e = 0; e < 96; ) {
             if (this._buffers.has(t + e)) return -e;
             if (this._buffers.has(t - e)) return e;
@@ -9881,7 +9890,7 @@
           }
           throw new Error("No available buffers for note: " + t);
         }),
-        (s.default.Sampler.prototype.triggerAttack = function(t, e, i) {
+        (s.default.Sampler.prototype.triggerAttack = function (t, e, i) {
           this.log("triggerAttack", t, e, i), Array.isArray(t) || (t = [t]);
           for (var n = 0; n < t.length; n++) {
             var o = s.default.Frequency(t[n]).toMidi(),
@@ -9894,13 +9903,13 @@
                 playbackRate: u,
                 fadeIn: this.attack,
                 fadeOut: this.release,
-                curve: this.curve
+                curve: this.curve,
               }).connect(this.output);
             d.start(e, 0, l.duration / u, i),
               s.default.isArray(this._activeSources[o]) ||
                 (this._activeSources[o] = []),
               this._activeSources[o].push(d),
-              (d.onended = function() {
+              (d.onended = function () {
                 if (this._activeSources && this._activeSources[o]) {
                   var t = this._activeSources[o].indexOf(d);
                   -1 !== t && this._activeSources[o].splice(t, 1);
@@ -9909,35 +9918,35 @@
           }
           return this;
         }),
-        (s.default.Sampler.prototype.triggerRelease = function(t, e) {
+        (s.default.Sampler.prototype.triggerRelease = function (t, e) {
           this.log("triggerRelease", t, e), Array.isArray(t) || (t = [t]);
           for (var i = 0; i < t.length; i++) {
             var n = s.default.Frequency(t[i]).toMidi();
             this._activeSources[n] &&
               this._activeSources[n].length &&
               ((e = this.toSeconds(e)),
-              this._activeSources[n].forEach(function(t) {
+              this._activeSources[n].forEach(function (t) {
                 t.stop(e);
               }),
               (this._activeSources[n] = []));
           }
           return this;
         }),
-        (s.default.Sampler.prototype.releaseAll = function(t) {
+        (s.default.Sampler.prototype.releaseAll = function (t) {
           for (var e in ((t = this.toSeconds(t)), this._activeSources))
             for (var i = this._activeSources[e]; i.length; ) {
               i.shift().stop(t);
             }
           return this;
         }),
-        (s.default.Sampler.prototype.sync = function() {
+        (s.default.Sampler.prototype.sync = function () {
           return (
             this._syncMethod("triggerAttack", 1),
             this._syncMethod("triggerRelease", 1),
             this
           );
         }),
-        (s.default.Sampler.prototype.triggerAttackRelease = function(
+        (s.default.Sampler.prototype.triggerAttackRelease = function (
           t,
           e,
           i,
@@ -9955,7 +9964,7 @@
           else this.triggerRelease(t, i + this.toSeconds(e));
           return this;
         }),
-        (s.default.Sampler.prototype.add = function(t, e, i) {
+        (s.default.Sampler.prototype.add = function (t, e, i) {
           if (s.default.isNote(t)) {
             var n = s.default.Frequency(t).toMidi();
             this._buffers.add(n, e, i);
@@ -9968,28 +9977,28 @@
           }
         }),
         Object.defineProperty(s.default.Sampler.prototype, "loaded", {
-          get: function() {
+          get: function () {
             return this._buffers.loaded;
-          }
+          },
         }),
-        (s.default.Sampler.prototype.dispose = function() {
+        (s.default.Sampler.prototype.dispose = function () {
           for (var t in (s.default.Instrument.prototype.dispose.call(this),
           this._buffers.dispose(),
           (this._buffers = null),
           this._activeSources))
-            this._activeSources[t].forEach(function(t) {
+            this._activeSources[t].forEach(function (t) {
               t.dispose();
             });
           return (this._activeSources = null), this;
         }),
         (e.default = s.default.Sampler);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(38), i(6);
-      (s.default.PolySynth = function() {
+      (s.default.PolySynth = function () {
         var t = s.default.defaults(
           arguments,
           ["polyphony", "voice"],
@@ -10024,10 +10033,10 @@
           polyphony: 4,
           volume: 0,
           detune: 0,
-          voice: s.default.Synth
+          voice: s.default.Synth,
         }),
-        (s.default.PolySynth.prototype._getClosestVoice = function(t, e) {
-          var i = this.voices.find(function(i) {
+        (s.default.PolySynth.prototype._getClosestVoice = function (t, e) {
+          var i = this.voices.find(function (i) {
             if (
               Math.abs(i.frequency.getValueAtTime(t) - s.default.Frequency(e)) <
                 1e-4 &&
@@ -10038,7 +10047,7 @@
           return (
             i ||
             this.voices.slice().sort(
-              function(e, i) {
+              function (e, i) {
                 var s = e.getLevelAtTime(t + this.blockTime),
                   n = i.getLevelAtTime(t + this.blockTime);
                 return s < 1e-5 && (s = 0), n < 1e-5 && (n = 0), s - n;
@@ -10046,12 +10055,12 @@
             )[0]
           );
         }),
-        (s.default.PolySynth.prototype.triggerAttack = function(t, e, i) {
+        (s.default.PolySynth.prototype.triggerAttack = function (t, e, i) {
           return (
             Array.isArray(t) || (t = [t]),
             (e = this.toSeconds(e)),
             t.forEach(
-              function(t) {
+              function (t) {
                 var s = this._getClosestVoice(e, t);
                 s.triggerAttack(t, e, i), this.log("triggerAttack", s.index, t);
               }.bind(this)
@@ -10059,12 +10068,12 @@
             this
           );
         }),
-        (s.default.PolySynth.prototype.triggerRelease = function(t, e) {
+        (s.default.PolySynth.prototype.triggerRelease = function (t, e) {
           return (
             Array.isArray(t) || (t = [t]),
             (e = this.toSeconds(e)),
             t.forEach(
-              function(t) {
+              function (t) {
                 var i = this._getClosestVoice(e, t);
                 this.log("triggerRelease", i.index, t), i.triggerRelease(e);
               }.bind(this)
@@ -10072,7 +10081,7 @@
             this
           );
         }),
-        (s.default.PolySynth.prototype.triggerAttackRelease = function(
+        (s.default.PolySynth.prototype.triggerAttackRelease = function (
           t,
           e,
           i,
@@ -10090,34 +10099,34 @@
           else this.triggerRelease(t, i + this.toSeconds(e));
           return this;
         }),
-        (s.default.PolySynth.prototype.sync = function() {
+        (s.default.PolySynth.prototype.sync = function () {
           return (
             this._syncMethod("triggerAttack", 1),
             this._syncMethod("triggerRelease", 1),
             this
           );
         }),
-        (s.default.PolySynth.prototype.set = function(t, e, i) {
+        (s.default.PolySynth.prototype.set = function (t, e, i) {
           for (var s = 0; s < this.voices.length; s++)
             this.voices[s].set(t, e, i);
           return this;
         }),
-        (s.default.PolySynth.prototype.get = function(t) {
+        (s.default.PolySynth.prototype.get = function (t) {
           return this.voices[0].get(t);
         }),
-        (s.default.PolySynth.prototype.releaseAll = function(t) {
+        (s.default.PolySynth.prototype.releaseAll = function (t) {
           return (
             (t = this.toSeconds(t)),
-            this.voices.forEach(function(e) {
+            this.voices.forEach(function (e) {
               e.triggerRelease(t);
             }),
             this
           );
         }),
-        (s.default.PolySynth.prototype.dispose = function() {
+        (s.default.PolySynth.prototype.dispose = function () {
           return (
             s.default.Instrument.prototype.dispose.call(this),
-            this.voices.forEach(function(t) {
+            this.voices.forEach(function (t) {
               t.dispose();
             }),
             this._writable("detune"),
@@ -10130,19 +10139,19 @@
         (s.default.PolySynth.MAX_POLYPHONY = 20),
         (e.default = s.default.PolySynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(21), i(39), i(54);
-      (s.default.PluckSynth = function(t) {
+      (s.default.PluckSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.PluckSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this._noise = new s.default.Noise("pink")),
           (this.attackNoise = t.attackNoise),
           (this._lfcf = new s.default.LowpassCombFilter({
             resonance: t.resonance,
-            dampening: t.dampening
+            dampening: t.dampening,
           })),
           (this.resonance = this._lfcf.resonance),
           (this.dampening = this._lfcf.dampening),
@@ -10154,9 +10163,9 @@
         (s.default.PluckSynth.defaults = {
           attackNoise: 1,
           dampening: 4e3,
-          resonance: 0.7
+          resonance: 0.7,
         }),
-        (s.default.PluckSynth.prototype.triggerAttack = function(t, e) {
+        (s.default.PluckSynth.prototype.triggerAttack = function (t, e) {
           (t = this.toFrequency(t)), (e = this.toSeconds(e));
           var i = 1 / t;
           return (
@@ -10166,7 +10175,7 @@
             this
           );
         }),
-        (s.default.PluckSynth.prototype.dispose = function() {
+        (s.default.PluckSynth.prototype.dispose = function () {
           return (
             s.default.Instrument.prototype.dispose.call(this),
             this._noise.dispose(),
@@ -10181,12 +10190,12 @@
         }),
         (e.default = s.default.PluckSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(31), i(41), i(39), i(2), i(9), i(21);
-      (s.default.NoiseSynth = function(t) {
+      (s.default.NoiseSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.NoiseSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this.noise = new s.default.Noise(t.noise)),
@@ -10197,9 +10206,9 @@
         s.default.extend(s.default.NoiseSynth, s.default.Instrument),
         (s.default.NoiseSynth.defaults = {
           noise: { type: "white" },
-          envelope: { attack: 0.005, decay: 0.1, sustain: 0 }
+          envelope: { attack: 0.005, decay: 0.1, sustain: 0 },
         }),
-        (s.default.NoiseSynth.prototype.triggerAttack = function(t, e) {
+        (s.default.NoiseSynth.prototype.triggerAttack = function (t, e) {
           return (
             (t = this.toSeconds(t)),
             this.envelope.triggerAttack(t, e),
@@ -10209,7 +10218,7 @@
             this
           );
         }),
-        (s.default.NoiseSynth.prototype.triggerRelease = function(t) {
+        (s.default.NoiseSynth.prototype.triggerRelease = function (t) {
           return (
             (t = this.toSeconds(t)),
             this.envelope.triggerRelease(t),
@@ -10217,14 +10226,14 @@
             this
           );
         }),
-        (s.default.NoiseSynth.prototype.sync = function() {
+        (s.default.NoiseSynth.prototype.sync = function () {
           return (
             this._syncMethod("triggerAttack", 0),
             this._syncMethod("triggerRelease", 0),
             this
           );
         }),
-        (s.default.NoiseSynth.prototype.triggerAttackRelease = function(
+        (s.default.NoiseSynth.prototype.triggerAttackRelease = function (
           t,
           e,
           i
@@ -10237,7 +10246,7 @@
             this
           );
         }),
-        (s.default.NoiseSynth.prototype.dispose = function() {
+        (s.default.NoiseSynth.prototype.dispose = function () {
           return (
             s.default.Instrument.prototype.dispose.call(this),
             this._writable(["noise", "envelope"]),
@@ -10250,20 +10259,21 @@
         }),
         (e.default = s.default.NoiseSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0),
-        n = (i(21),
-        i(49),
-        i(9),
-        i(41),
-        i(31),
-        i(3),
-        i(26),
-        i(5),
-        [1, 1.483, 1.932, 2.546, 2.63, 3.897]);
-      (s.default.MetalSynth = function(t) {
+        n =
+          (i(21),
+          i(49),
+          i(9),
+          i(41),
+          i(31),
+          i(3),
+          i(26),
+          i(5),
+          [1, 1.483, 1.932, 2.546, 2.63, 3.897]);
+      (s.default.MetalSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.MetalSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this.frequency = new s.default.Signal(
@@ -10275,7 +10285,7 @@
           (this._amplitue = new s.default.Gain(0).connect(this.output)),
           (this._highpass = new s.default.Filter({
             type: "highpass",
-            Q: -3.0102999566398125
+            Q: -3.0102999566398125,
           }).connect(this._amplitue)),
           (this._octaves = t.octaves),
           (this._filterFreqScaler = new s.default.Scale(t.resonance, 7e3)),
@@ -10284,7 +10294,7 @@
             attackCurve: "linear",
             decay: t.envelope.decay,
             sustain: 0,
-            release: t.envelope.release
+            release: t.envelope.release,
           }).chain(this._filterFreqScaler, this._highpass.frequency)),
           this.envelope.connect(this._amplitue.gain);
         for (var e = 0; e < n.length; e++) {
@@ -10292,7 +10302,7 @@
             type: "square",
             modulationType: "square",
             harmonicity: t.harmonicity,
-            modulationIndex: t.modulationIndex
+            modulationIndex: t.modulationIndex,
           });
           i.connect(this._highpass), (this._oscillators[e] = i);
           var o = new s.default.Multiply(n[e]);
@@ -10307,45 +10317,45 @@
           harmonicity: 5.1,
           modulationIndex: 32,
           resonance: 4e3,
-          octaves: 1.5
+          octaves: 1.5,
         }),
-        (s.default.MetalSynth.prototype.triggerAttack = function(t, e) {
+        (s.default.MetalSynth.prototype.triggerAttack = function (t, e) {
           return (
             (t = this.toSeconds(t)),
             (e = s.default.defaultArg(e, 1)),
             this.envelope.triggerAttack(t, e),
-            this._oscillators.forEach(function(e) {
+            this._oscillators.forEach(function (e) {
               e.start(t);
             }),
             0 === this.envelope.sustain &&
               this._oscillators.forEach(
-                function(e) {
+                function (e) {
                   e.stop(t + this.envelope.attack + this.envelope.decay);
                 }.bind(this)
               ),
             this
           );
         }),
-        (s.default.MetalSynth.prototype.triggerRelease = function(t) {
+        (s.default.MetalSynth.prototype.triggerRelease = function (t) {
           return (
             (t = this.toSeconds(t)),
             this.envelope.triggerRelease(t),
             this._oscillators.forEach(
-              function(e) {
+              function (e) {
                 e.stop(t + this.envelope.release);
               }.bind(this)
             ),
             this
           );
         }),
-        (s.default.MetalSynth.prototype.sync = function() {
+        (s.default.MetalSynth.prototype.sync = function () {
           return (
             this._syncMethod("triggerAttack", 0),
             this._syncMethod("triggerRelease", 0),
             this
           );
         }),
-        (s.default.MetalSynth.prototype.triggerAttackRelease = function(
+        (s.default.MetalSynth.prototype.triggerAttackRelease = function (
           t,
           e,
           i
@@ -10362,43 +10372,43 @@
           s.default.MetalSynth.prototype,
           "modulationIndex",
           {
-            get: function() {
+            get: function () {
               return this._oscillators[0].modulationIndex.value;
             },
-            set: function(t) {
+            set: function (t) {
               for (var e = 0; e < this._oscillators.length; e++)
                 this._oscillators[e].modulationIndex.value = t;
-            }
+            },
           }
         ),
         Object.defineProperty(s.default.MetalSynth.prototype, "harmonicity", {
-          get: function() {
+          get: function () {
             return this._oscillators[0].harmonicity.value;
           },
-          set: function(t) {
+          set: function (t) {
             for (var e = 0; e < this._oscillators.length; e++)
               this._oscillators[e].harmonicity.value = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.MetalSynth.prototype, "resonance", {
-          get: function() {
+          get: function () {
             return this._filterFreqScaler.min;
           },
-          set: function(t) {
+          set: function (t) {
             (this._filterFreqScaler.min = t), (this.octaves = this._octaves);
-          }
+          },
         }),
         Object.defineProperty(s.default.MetalSynth.prototype, "octaves", {
-          get: function() {
+          get: function () {
             return this._octaves;
           },
-          set: function(t) {
+          set: function (t) {
             (this._octaves = t),
               (this._filterFreqScaler.max =
                 this._filterFreqScaler.min * Math.pow(2, t));
-          }
+          },
         }),
-        (s.default.MetalSynth.prototype.dispose = function() {
+        (s.default.MetalSynth.prototype.dispose = function () {
           s.default.Instrument.prototype.dispose.call(this);
           for (var t = 0; t < this._oscillators.length; t++)
             this._oscillators[t].dispose(), this._freqMultipliers[t].dispose();
@@ -10417,12 +10427,12 @@
         }),
         (e.default = s.default.MetalSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(37), i(21), i(31);
-      (s.default.MembraneSynth = function(t) {
+      (s.default.MembraneSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.MembraneSynth.defaults)),
           s.default.Instrument.call(this, t),
           (this.oscillator = new s.default.OmniOscillator(t.oscillator)),
@@ -10442,10 +10452,10 @@
             decay: 0.4,
             sustain: 0.01,
             release: 1.4,
-            attackCurve: "exponential"
-          }
+            attackCurve: "exponential",
+          },
         }),
-        (s.default.MembraneSynth.prototype.triggerAttack = function(t, e, i) {
+        (s.default.MembraneSynth.prototype.triggerAttack = function (t, e, i) {
           e = this.toSeconds(e);
           var s = (t = this.toFrequency(t)) * this.octaves;
           return (
@@ -10463,7 +10473,7 @@
             this
           );
         }),
-        (s.default.MembraneSynth.prototype.triggerRelease = function(t) {
+        (s.default.MembraneSynth.prototype.triggerRelease = function (t) {
           return (
             (t = this.toSeconds(t)),
             this.envelope.triggerRelease(t),
@@ -10471,7 +10481,7 @@
             this
           );
         }),
-        (s.default.MembraneSynth.prototype.dispose = function() {
+        (s.default.MembraneSynth.prototype.dispose = function () {
           return (
             s.default.Instrument.prototype.dispose.call(this),
             this._writable(["oscillator", "envelope"]),
@@ -10484,12 +10494,12 @@
         }),
         (e.default = s.default.MembraneSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(38), i(2), i(5), i(25);
-      (s.default.FMSynth = function(t) {
+      (s.default.FMSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.FMSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this._carrier = new s.default.Synth(t.carrier)),
@@ -10527,7 +10537,7 @@
             "envelope",
             "modulation",
             "modulationEnvelope",
-            "detune"
+            "detune",
           ]);
       }),
         s.default.extend(s.default.FMSynth, s.default.Monophonic),
@@ -10542,10 +10552,10 @@
             attack: 0.5,
             decay: 0,
             sustain: 1,
-            release: 0.5
-          }
+            release: 0.5,
+          },
         }),
-        (s.default.FMSynth.prototype._triggerEnvelopeAttack = function(t, e) {
+        (s.default.FMSynth.prototype._triggerEnvelopeAttack = function (t, e) {
           return (
             (t = this.toSeconds(t)),
             this._carrier._triggerEnvelopeAttack(t, e),
@@ -10553,7 +10563,7 @@
             this
           );
         }),
-        (s.default.FMSynth.prototype._triggerEnvelopeRelease = function(t) {
+        (s.default.FMSynth.prototype._triggerEnvelopeRelease = function (t) {
           return (
             (t = this.toSeconds(t)),
             this._carrier._triggerEnvelopeRelease(t),
@@ -10561,7 +10571,7 @@
             this
           );
         }),
-        (s.default.FMSynth.prototype.dispose = function() {
+        (s.default.FMSynth.prototype.dispose = function () {
           return (
             s.default.Monophonic.prototype.dispose.call(this),
             this._writable([
@@ -10572,7 +10582,7 @@
               "envelope",
               "modulation",
               "modulationEnvelope",
-              "detune"
+              "detune",
             ]),
             this._carrier.dispose(),
             (this._carrier = null),
@@ -10597,12 +10607,12 @@
         }),
         (e.default = s.default.FMSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(66), i(12), i(2), i(5), i(25), i(14);
-      (s.default.DuoSynth = function(t) {
+      (s.default.DuoSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.DuoSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this.voice0 = new s.default.MonoSynth(t.voice0)),
@@ -10634,7 +10644,7 @@
             "voice1",
             "frequency",
             "vibratoAmount",
-            "vibratoRate"
+            "vibratoRate",
           ]);
       }),
         s.default.extend(s.default.DuoSynth, s.default.Monophonic),
@@ -10650,9 +10660,9 @@
               attack: 0.01,
               decay: 0,
               sustain: 1,
-              release: 0.5
+              release: 0.5,
             },
-            envelope: { attack: 0.01, decay: 0, sustain: 1, release: 0.5 }
+            envelope: { attack: 0.01, decay: 0, sustain: 1, release: 0.5 },
           },
           voice1: {
             volume: -10,
@@ -10662,12 +10672,12 @@
               attack: 0.01,
               decay: 0,
               sustain: 1,
-              release: 0.5
+              release: 0.5,
             },
-            envelope: { attack: 0.01, decay: 0, sustain: 1, release: 0.5 }
-          }
+            envelope: { attack: 0.01, decay: 0, sustain: 1, release: 0.5 },
+          },
         }),
-        (s.default.DuoSynth.prototype._triggerEnvelopeAttack = function(t, e) {
+        (s.default.DuoSynth.prototype._triggerEnvelopeAttack = function (t, e) {
           return (
             (t = this.toSeconds(t)),
             this.voice0._triggerEnvelopeAttack(t, e),
@@ -10675,19 +10685,19 @@
             this
           );
         }),
-        (s.default.DuoSynth.prototype._triggerEnvelopeRelease = function(t) {
+        (s.default.DuoSynth.prototype._triggerEnvelopeRelease = function (t) {
           return (
             this.voice0._triggerEnvelopeRelease(t),
             this.voice1._triggerEnvelopeRelease(t),
             this
           );
         }),
-        (s.default.DuoSynth.prototype.getLevelAtTime = function(t) {
+        (s.default.DuoSynth.prototype.getLevelAtTime = function (t) {
           return (
             (this.voice0.getLevelAtTime(t) + this.voice1.getLevelAtTime(t)) / 2
           );
         }),
-        (s.default.DuoSynth.prototype.dispose = function() {
+        (s.default.DuoSynth.prototype.dispose = function () {
           return (
             s.default.Monophonic.prototype.dispose.call(this),
             this._writable([
@@ -10695,7 +10705,7 @@
               "voice1",
               "frequency",
               "vibratoAmount",
-              "vibratoRate"
+              "vibratoRate",
             ]),
             this.voice0.dispose(),
             (this.voice0 = null),
@@ -10716,12 +10726,12 @@
         }),
         (e.default = s.default.DuoSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(38), i(2), i(5), i(25), i(22), i(3);
-      (s.default.AMSynth = function(t) {
+      (s.default.AMSynth = function (t) {
         (t = s.default.defaultArg(t, s.default.AMSynth.defaults)),
           s.default.Monophonic.call(this, t),
           (this._carrier = new s.default.Synth()),
@@ -10758,7 +10768,7 @@
             "envelope",
             "modulation",
             "modulationEnvelope",
-            "detune"
+            "detune",
           ]);
       }),
         s.default.extend(s.default.AMSynth, s.default.Monophonic),
@@ -10772,10 +10782,10 @@
             attack: 0.5,
             decay: 0,
             sustain: 1,
-            release: 0.5
-          }
+            release: 0.5,
+          },
         }),
-        (s.default.AMSynth.prototype._triggerEnvelopeAttack = function(t, e) {
+        (s.default.AMSynth.prototype._triggerEnvelopeAttack = function (t, e) {
           return (
             (t = this.toSeconds(t)),
             this._carrier._triggerEnvelopeAttack(t, e),
@@ -10783,14 +10793,14 @@
             this
           );
         }),
-        (s.default.AMSynth.prototype._triggerEnvelopeRelease = function(t) {
+        (s.default.AMSynth.prototype._triggerEnvelopeRelease = function (t) {
           return (
             this._carrier._triggerEnvelopeRelease(t),
             this._modulator._triggerEnvelopeRelease(t),
             this
           );
         }),
-        (s.default.AMSynth.prototype.dispose = function() {
+        (s.default.AMSynth.prototype.dispose = function () {
           return (
             s.default.Monophonic.prototype.dispose.call(this),
             this._writable([
@@ -10800,7 +10810,7 @@
               "envelope",
               "modulation",
               "modulationEnvelope",
-              "detune"
+              "detune",
             ]),
             this._carrier.dispose(),
             (this._carrier = null),
@@ -10825,12 +10835,12 @@
         }),
         (e.default = s.default.AMSynth);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(70), i(16);
-      (s.default.Sequence = function() {
+      (s.default.Sequence = function () {
         var t = s.default.defaults(
             arguments,
             ["callback", "events", "subdivision"],
@@ -10852,17 +10862,17 @@
         s.default.extend(s.default.Sequence, s.default.Part),
         (s.default.Sequence.defaults = { subdivision: "4n" }),
         Object.defineProperty(s.default.Sequence.prototype, "subdivision", {
-          get: function() {
+          get: function () {
             return s.default.Ticks(this._subdivision).toSeconds();
-          }
+          },
         }),
-        (s.default.Sequence.prototype.at = function(t, e) {
+        (s.default.Sequence.prototype.at = function (t, e) {
           return (
             s.default.isArray(e) && this.remove(t),
             s.default.Part.prototype.at.call(this, this._indexTime(t), e)
           );
         }),
-        (s.default.Sequence.prototype.add = function(t, e) {
+        (s.default.Sequence.prototype.add = function (t, e) {
           if (null === e) return this;
           if (s.default.isArray(e)) {
             var i = Math.round(this._subdivision / e.length);
@@ -10876,30 +10886,30 @@
             s.default.Part.prototype.add.call(this, this._indexTime(t), e), this
           );
         }),
-        (s.default.Sequence.prototype.remove = function(t, e) {
+        (s.default.Sequence.prototype.remove = function (t, e) {
           return (
             s.default.Part.prototype.remove.call(this, this._indexTime(t), e),
             this
           );
         }),
-        (s.default.Sequence.prototype._indexTime = function(t) {
+        (s.default.Sequence.prototype._indexTime = function (t) {
           return t instanceof s.default.TransportTime
             ? t
             : s.default
                 .Ticks(t * this._subdivision + this.startOffset)
                 .toSeconds();
         }),
-        (s.default.Sequence.prototype.dispose = function() {
+        (s.default.Sequence.prototype.dispose = function () {
           return s.default.Part.prototype.dispose.call(this), this;
         }),
         (e.default = s.default.Sequence);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(71), i(79);
-      (s.default.Pattern = function() {
+      (s.default.Pattern = function () {
         var t = s.default.defaults(
           arguments,
           ["callback", "values", "pattern"],
@@ -10909,60 +10919,60 @@
           (this._pattern = new s.default.CtrlPattern({
             values: t.values,
             type: t.pattern,
-            index: t.index
+            index: t.index,
           }));
       }),
         s.default.extend(s.default.Pattern, s.default.Loop),
         (s.default.Pattern.defaults = {
           pattern: s.default.CtrlPattern.Type.Up,
           callback: s.default.noOp,
-          values: []
+          values: [],
         }),
-        (s.default.Pattern.prototype._tick = function(t) {
+        (s.default.Pattern.prototype._tick = function (t) {
           this.callback(t, this._pattern.value), this._pattern.next();
         }),
         Object.defineProperty(s.default.Pattern.prototype, "index", {
-          get: function() {
+          get: function () {
             return this._pattern.index;
           },
-          set: function(t) {
+          set: function (t) {
             this._pattern.index = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Pattern.prototype, "values", {
-          get: function() {
+          get: function () {
             return this._pattern.values;
           },
-          set: function(t) {
+          set: function (t) {
             this._pattern.values = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Pattern.prototype, "value", {
-          get: function() {
+          get: function () {
             return this._pattern.value;
-          }
+          },
         }),
         Object.defineProperty(s.default.Pattern.prototype, "pattern", {
-          get: function() {
+          get: function () {
             return this._pattern.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._pattern.type = t;
-          }
+          },
         }),
-        (s.default.Pattern.prototype.dispose = function() {
+        (s.default.Pattern.prototype.dispose = function () {
           s.default.Loop.prototype.dispose.call(this),
             this._pattern.dispose(),
             (this._pattern = null);
         }),
         (e.default = s.default.Pattern);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(18), i(12);
-      (s.default.Vibrato = function() {
+      (s.default.Vibrato = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "depth"],
@@ -10975,7 +10985,7 @@
             min: 0,
             max: t.maxDelay,
             frequency: t.frequency,
-            phase: -90
+            phase: -90,
           })
             .start()
             .connect(this._delayNode.delayTime)),
@@ -10990,17 +11000,17 @@
           maxDelay: 0.005,
           frequency: 5,
           depth: 0.1,
-          type: "sine"
+          type: "sine",
         }),
         Object.defineProperty(s.default.Vibrato.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._lfo.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._lfo.type = t;
-          }
+          },
         }),
-        (s.default.Vibrato.prototype.dispose = function() {
+        (s.default.Vibrato.prototype.dispose = function () {
           s.default.Effect.prototype.dispose.call(this),
             this._delayNode.dispose(),
             (this._delayNode = null),
@@ -11012,12 +11022,12 @@
         }),
         (e.default = s.default.Vibrato);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(12), i(15);
-      (s.default.Tremolo = function() {
+      (s.default.Tremolo = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "depth"],
@@ -11051,15 +11061,15 @@
           frequency: 10,
           type: "sine",
           depth: 0.5,
-          spread: 180
+          spread: 180,
         }),
-        (s.default.Tremolo.prototype.start = function(t) {
+        (s.default.Tremolo.prototype.start = function (t) {
           return this._lfoL.start(t), this._lfoR.start(t), this;
         }),
-        (s.default.Tremolo.prototype.stop = function(t) {
+        (s.default.Tremolo.prototype.stop = function (t) {
           return this._lfoL.stop(t), this._lfoR.stop(t), this;
         }),
-        (s.default.Tremolo.prototype.sync = function(t) {
+        (s.default.Tremolo.prototype.sync = function (t) {
           return (
             this._lfoL.sync(t),
             this._lfoR.sync(t),
@@ -11067,7 +11077,7 @@
             this
           );
         }),
-        (s.default.Tremolo.prototype.unsync = function() {
+        (s.default.Tremolo.prototype.unsync = function () {
           return (
             this._lfoL.unsync(),
             this._lfoR.unsync(),
@@ -11076,22 +11086,22 @@
           );
         }),
         Object.defineProperty(s.default.Tremolo.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._lfoL.type;
           },
-          set: function(t) {
+          set: function (t) {
             (this._lfoL.type = t), (this._lfoR.type = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Tremolo.prototype, "spread", {
-          get: function() {
+          get: function () {
             return this._lfoR.phase - this._lfoL.phase;
           },
-          set: function(t) {
+          set: function (t) {
             (this._lfoL.phase = 90 - t / 2), (this._lfoR.phase = t / 2 + 90);
-          }
+          },
         }),
-        (s.default.Tremolo.prototype.dispose = function() {
+        (s.default.Tremolo.prototype.dispose = function () {
           return (
             s.default.StereoEffect.prototype.dispose.call(this),
             this._writable(["frequency", "depth"]),
@@ -11110,12 +11120,12 @@
         }),
         (e.default = s.default.Tremolo);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(73), i(2), i(5), i(13);
-      (s.default.StereoWidener = function() {
+      (s.default.StereoWidener = function () {
         var t = s.default.defaults(
           arguments,
           ["width"],
@@ -11148,7 +11158,7 @@
       }),
         s.default.extend(s.default.StereoWidener, s.default.MidSideEffect),
         (s.default.StereoWidener.defaults = { width: 0.5 }),
-        (s.default.StereoWidener.prototype.dispose = function() {
+        (s.default.StereoWidener.prototype.dispose = function () {
           return (
             s.default.MidSideEffect.prototype.dispose.call(this),
             this._writable(["width"]),
@@ -11169,12 +11179,12 @@
         }),
         (e.default = s.default.StereoWidener);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(15), i(33), i(3);
-      (s.default.StereoFeedbackEffect = function() {
+      (s.default.StereoFeedbackEffect = function () {
         var t = s.default.defaults(
           arguments,
           ["feedback"],
@@ -11196,7 +11206,7 @@
           s.default.StereoFeedbackEffect,
           s.default.StereoEffect
         ),
-        (s.default.StereoFeedbackEffect.prototype.dispose = function() {
+        (s.default.StereoFeedbackEffect.prototype.dispose = function () {
           return (
             s.default.StereoEffect.prototype.dispose.call(this),
             this._writable(["feedback"]),
@@ -11211,12 +11221,12 @@
         }),
         (e.default = s.default.StereoFeedbackEffect);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(77), i(9), i(10), i(39), i(3), i(74);
-      (s.default.Reverb = function() {
+      (s.default.Reverb = function () {
         var t = s.default.defaults(arguments, ["decay"], s.default.Reverb);
         s.default.Effect.call(this, t),
           (this._convolver = this.context.createConvolver()),
@@ -11226,10 +11236,10 @@
       }),
         s.default.extend(s.default.Reverb, s.default.Effect),
         (s.default.Reverb.defaults = { decay: 1.5, preDelay: 0.01 }),
-        (s.default.Reverb.prototype.generate = function() {
+        (s.default.Reverb.prototype.generate = function () {
           return s.default
             .Offline(
-              function() {
+              function () {
                 var t = new s.default.Noise(),
                   e = new s.default.Noise(),
                   i = new s.default.Merge();
@@ -11249,12 +11259,12 @@
               this.decay + this.preDelay
             )
             .then(
-              function(t) {
+              function (t) {
                 return (this._convolver.buffer = t.get()), this;
               }.bind(this)
             );
         }),
-        (s.default.Reverb.prototype.dispose = function() {
+        (s.default.Reverb.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._convolver.disconnect(),
@@ -11264,12 +11274,12 @@
         }),
         (e.default = s.default.Reverb);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(12), i(23), i(2), i(33), i(18);
-      (s.default.PitchShift = function() {
+      (s.default.PitchShift = function () {
         var t = s.default.defaults(arguments, ["pitch"], s.default.PitchShift);
         s.default.FeedbackEffect.call(this, t),
           (this._frequency = new s.default.Signal(0)),
@@ -11277,21 +11287,21 @@
           (this._lfoA = new s.default.LFO({
             min: 0,
             max: 0.1,
-            type: "sawtooth"
+            type: "sawtooth",
           }).connect(this._delayA.delayTime)),
           (this._delayB = new s.default.Delay(0, 1)),
           (this._lfoB = new s.default.LFO({
             min: 0,
             max: 0.1,
             type: "sawtooth",
-            phase: 180
+            phase: 180,
           }).connect(this._delayB.delayTime)),
           (this._crossFade = new s.default.CrossFade()),
           (this._crossFadeLFO = new s.default.LFO({
             min: 0,
             max: 1,
             type: "triangle",
-            phase: 90
+            phase: 90,
           }).connect(this._crossFade.fade)),
           (this._feedbackDelay = new s.default.Delay(t.delayTime)),
           (this.delayTime = this._feedbackDelay.delayTime),
@@ -11318,13 +11328,13 @@
           pitch: 0,
           windowSize: 0.1,
           delayTime: 0,
-          feedback: 0
+          feedback: 0,
         }),
         Object.defineProperty(s.default.PitchShift.prototype, "pitch", {
-          get: function() {
+          get: function () {
             return this._pitch;
           },
-          set: function(t) {
+          set: function (t) {
             this._pitch = t;
             var e = 0;
             t < 0
@@ -11339,17 +11349,17 @@
                 (this._lfoB.max = 0),
                 (e = s.default.intervalToFrequencyRatio(t) - 1)),
               (this._frequency.value = e * (1.2 / this._windowSize));
-          }
+          },
         }),
         Object.defineProperty(s.default.PitchShift.prototype, "windowSize", {
-          get: function() {
+          get: function () {
             return this._windowSize;
           },
-          set: function(t) {
+          set: function (t) {
             (this._windowSize = this.toSeconds(t)), (this.pitch = this._pitch);
-          }
+          },
         }),
-        (s.default.PitchShift.prototype.dispose = function() {
+        (s.default.PitchShift.prototype.dispose = function () {
           return (
             s.default.FeedbackEffect.prototype.dispose.call(this),
             this._frequency.dispose(),
@@ -11375,12 +11385,12 @@
         }),
         (e.default = s.default.PitchShift);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(72), i(2), i(18);
-      (s.default.PingPongDelay = function() {
+      (s.default.PingPongDelay = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "feedback"],
@@ -11415,9 +11425,9 @@
         ),
         (s.default.PingPongDelay.defaults = {
           delayTime: 0.25,
-          maxDelayTime: 1
+          maxDelayTime: 1,
         }),
-        (s.default.PingPongDelay.prototype.dispose = function() {
+        (s.default.PingPongDelay.prototype.dispose = function () {
           return (
             s.default.StereoXFeedbackEffect.prototype.dispose.call(this),
             this._leftDelay.dispose(),
@@ -11434,12 +11444,12 @@
         }),
         (e.default = s.default.PingPongDelay);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(12), i(9), i(15);
-      (s.default.Phaser = function() {
+      (s.default.Phaser = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "octaves", "baseFrequency"],
@@ -11473,9 +11483,9 @@
           octaves: 3,
           stages: 10,
           Q: 10,
-          baseFrequency: 350
+          baseFrequency: 350,
         }),
-        (s.default.Phaser.prototype._makeFilters = function(t, e, i) {
+        (s.default.Phaser.prototype._makeFilters = function (t, e, i) {
           for (var n = new Array(t), o = 0; o < t; o++) {
             var a = this.context.createBiquadFilter();
             (a.type = "allpass"),
@@ -11486,27 +11496,27 @@
           return s.default.connectSeries.apply(s.default, n), n;
         }),
         Object.defineProperty(s.default.Phaser.prototype, "octaves", {
-          get: function() {
+          get: function () {
             return this._octaves;
           },
-          set: function(t) {
+          set: function (t) {
             this._octaves = t;
             var e = this._baseFrequency * Math.pow(2, t);
             (this._lfoL.max = e), (this._lfoR.max = e);
-          }
+          },
         }),
         Object.defineProperty(s.default.Phaser.prototype, "baseFrequency", {
-          get: function() {
+          get: function () {
             return this._baseFrequency;
           },
-          set: function(t) {
+          set: function (t) {
             (this._baseFrequency = t),
               (this._lfoL.min = t),
               (this._lfoR.min = t),
               (this.octaves = this._octaves);
-          }
+          },
         }),
-        (s.default.Phaser.prototype.dispose = function() {
+        (s.default.Phaser.prototype.dispose = function () {
           s.default.StereoEffect.prototype.dispose.call(this),
             this._writable(["frequency", "Q"]),
             this.Q.dispose(),
@@ -11524,14 +11534,14 @@
         }),
         (e.default = s.default.Phaser);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0),
         n = (i(59), i(15), i(26), [0.06748, 0.06404, 0.08212, 0.09004]),
         o = [0.773, 0.802, 0.753, 0.733],
         a = [347, 113, 37];
-      (s.default.JCReverb = function() {
+      (s.default.JCReverb = function () {
         var t = s.default.defaults(arguments, ["roomSize"], s.default.JCReverb);
         s.default.StereoEffect.call(this, t),
           (this.roomSize = new s.default.Signal(
@@ -11568,7 +11578,7 @@
       }),
         s.default.extend(s.default.JCReverb, s.default.StereoEffect),
         (s.default.JCReverb.defaults = { roomSize: 0.5 }),
-        (s.default.JCReverb.prototype.dispose = function() {
+        (s.default.JCReverb.prototype.dispose = function () {
           s.default.StereoEffect.prototype.dispose.call(this);
           for (var t = 0; t < this._allpassFilters.length; t++)
             this._allpassFilters[t].disconnect(),
@@ -11589,28 +11599,29 @@
         }),
         (e.default = s.default.JCReverb);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0),
-        n = (i(54),
-        i(15),
-        i(2),
-        i(19),
-        i(10),
-        i(42),
-        [
-          1557 / 44100,
-          1617 / 44100,
-          1491 / 44100,
-          1422 / 44100,
-          1277 / 44100,
-          1356 / 44100,
-          1188 / 44100,
-          1116 / 44100
-        ]),
+        n =
+          (i(54),
+          i(15),
+          i(2),
+          i(19),
+          i(10),
+          i(42),
+          [
+            1557 / 44100,
+            1617 / 44100,
+            1491 / 44100,
+            1422 / 44100,
+            1277 / 44100,
+            1356 / 44100,
+            1188 / 44100,
+            1116 / 44100,
+          ]),
         o = [225, 556, 441, 341];
-      (s.default.Freeverb = function() {
+      (s.default.Freeverb = function () {
         var t = s.default.defaults(
           arguments,
           ["roomSize", "dampening"],
@@ -11663,7 +11674,7 @@
       }),
         s.default.extend(s.default.Freeverb, s.default.StereoEffect),
         (s.default.Freeverb.defaults = { roomSize: 0.7, dampening: 3e3 }),
-        (s.default.Freeverb.prototype.dispose = function() {
+        (s.default.Freeverb.prototype.dispose = function () {
           s.default.StereoEffect.prototype.dispose.call(this);
           for (var t = 0; t < this._allpassFiltersL.length; t++)
             this._allpassFiltersL[t].disconnect(),
@@ -11687,12 +11698,12 @@
         }),
         (e.default = s.default.Freeverb);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(33), i(2), i(18);
-      (s.default.FeedbackDelay = function() {
+      (s.default.FeedbackDelay = function () {
         var t = s.default.defaults(
           arguments,
           ["delayTime", "feedback"],
@@ -11706,7 +11717,7 @@
       }),
         s.default.extend(s.default.FeedbackDelay, s.default.FeedbackEffect),
         (s.default.FeedbackDelay.defaults = { delayTime: 0.25, maxDelay: 1 }),
-        (s.default.FeedbackDelay.prototype.dispose = function() {
+        (s.default.FeedbackDelay.prototype.dispose = function () {
           return (
             s.default.FeedbackEffect.prototype.dispose.call(this),
             this._delayNode.dispose(),
@@ -11718,12 +11729,12 @@
         }),
         (e.default = s.default.FeedbackDelay);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(7);
-      (s.default.Distortion = function() {
+      (s.default.Distortion = function () {
         var t = s.default.defaults(
           arguments,
           ["distortion"],
@@ -11739,32 +11750,32 @@
         s.default.extend(s.default.Distortion, s.default.Effect),
         (s.default.Distortion.defaults = {
           distortion: 0.4,
-          oversample: "none"
+          oversample: "none",
         }),
         Object.defineProperty(s.default.Distortion.prototype, "distortion", {
-          get: function() {
+          get: function () {
             return this._distortion;
           },
-          set: function(t) {
+          set: function (t) {
             this._distortion = t;
             var e = 100 * t,
               i = Math.PI / 180;
-            this._shaper.setMap(function(t) {
+            this._shaper.setMap(function (t) {
               return Math.abs(t) < 0.001
                 ? 0
                 : ((3 + e) * t * 20 * i) / (Math.PI + e * Math.abs(t));
             });
-          }
+          },
         }),
         Object.defineProperty(s.default.Distortion.prototype, "oversample", {
-          get: function() {
+          get: function () {
             return this._shaper.oversample;
           },
-          set: function(t) {
+          set: function (t) {
             this._shaper.oversample = t;
-          }
+          },
         }),
-        (s.default.Distortion.prototype.dispose = function() {
+        (s.default.Distortion.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._shaper.dispose(),
@@ -11774,12 +11785,12 @@
         }),
         (e.default = s.default.Distortion);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(12), i(15), i(18);
-      (s.default.Chorus = function() {
+      (s.default.Chorus = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "delayTime", "depth"],
@@ -11791,13 +11802,13 @@
           (this._lfoL = new s.default.LFO({
             frequency: t.frequency,
             min: 0,
-            max: 1
+            max: 1,
           })),
           (this._lfoR = new s.default.LFO({
             frequency: t.frequency,
             min: 0,
             max: 1,
-            phase: 180
+            phase: 180,
           })),
           (this._delayNodeL = new s.default.Delay()),
           (this._delayNodeR = new s.default.Delay()),
@@ -11823,46 +11834,46 @@
           delayTime: 3.5,
           depth: 0.7,
           type: "sine",
-          spread: 180
+          spread: 180,
         }),
         Object.defineProperty(s.default.Chorus.prototype, "depth", {
-          get: function() {
+          get: function () {
             return this._depth;
           },
-          set: function(t) {
+          set: function (t) {
             this._depth = t;
             var e = this._delayTime * t;
             (this._lfoL.min = Math.max(this._delayTime - e, 0)),
               (this._lfoL.max = this._delayTime + e),
               (this._lfoR.min = Math.max(this._delayTime - e, 0)),
               (this._lfoR.max = this._delayTime + e);
-          }
+          },
         }),
         Object.defineProperty(s.default.Chorus.prototype, "delayTime", {
-          get: function() {
+          get: function () {
             return 1e3 * this._delayTime;
           },
-          set: function(t) {
+          set: function (t) {
             (this._delayTime = t / 1e3), (this.depth = this._depth);
-          }
+          },
         }),
         Object.defineProperty(s.default.Chorus.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._lfoL.type;
           },
-          set: function(t) {
+          set: function (t) {
             (this._lfoL.type = t), (this._lfoR.type = t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Chorus.prototype, "spread", {
-          get: function() {
+          get: function () {
             return this._lfoR.phase - this._lfoL.phase;
           },
-          set: function(t) {
+          set: function (t) {
             (this._lfoL.phase = 90 - t / 2), (this._lfoR.phase = t / 2 + 90);
-          }
+          },
         }),
-        (s.default.Chorus.prototype.dispose = function() {
+        (s.default.Chorus.prototype.dispose = function () {
           return (
             s.default.StereoEffect.prototype.dispose.call(this),
             this._lfoL.dispose(),
@@ -11880,12 +11891,12 @@
         }),
         (e.default = s.default.Chorus);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(7);
-      (s.default.Chebyshev = function() {
+      (s.default.Chebyshev = function () {
         var t = s.default.defaults(arguments, ["order"], s.default.Chebyshev);
         s.default.Effect.call(this, t),
           (this._shaper = new s.default.WaveShaper(4096)),
@@ -11896,7 +11907,7 @@
       }),
         s.default.extend(s.default.Chebyshev, s.default.Effect),
         (s.default.Chebyshev.defaults = { order: 1, oversample: "none" }),
-        (s.default.Chebyshev.prototype._getCoefficient = function(t, e, i) {
+        (s.default.Chebyshev.prototype._getCoefficient = function (t, e, i) {
           return i.hasOwnProperty(e)
             ? i[e]
             : ((i[e] =
@@ -11909,27 +11920,27 @@
               i[e]);
         }),
         Object.defineProperty(s.default.Chebyshev.prototype, "order", {
-          get: function() {
+          get: function () {
             return this._order;
           },
-          set: function(t) {
+          set: function (t) {
             this._order = t;
             for (var e = new Array(4096), i = e.length, s = 0; s < i; ++s) {
               var n = (2 * s) / i - 1;
               e[s] = 0 === n ? 0 : this._getCoefficient(n, t, {});
             }
             this._shaper.curve = e;
-          }
+          },
         }),
         Object.defineProperty(s.default.Chebyshev.prototype, "oversample", {
-          get: function() {
+          get: function () {
             return this._shaper.oversample;
           },
-          set: function(t) {
+          set: function (t) {
             this._shaper.oversample = t;
-          }
+          },
         }),
-        (s.default.Chebyshev.prototype.dispose = function() {
+        (s.default.Chebyshev.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._shaper.dispose(),
@@ -11939,12 +11950,12 @@
         }),
         (e.default = s.default.Chebyshev);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(13), i(75);
-      (s.default.BitCrusher = function() {
+      (s.default.BitCrusher = function () {
         var t = s.default.defaults(arguments, ["bits"], s.default.BitCrusher);
         s.default.Effect.call(this, t);
         var e = 1 / Math.pow(2, t.bits - 1);
@@ -11958,16 +11969,16 @@
         s.default.extend(s.default.BitCrusher, s.default.Effect),
         (s.default.BitCrusher.defaults = { bits: 4 }),
         Object.defineProperty(s.default.BitCrusher.prototype, "bits", {
-          get: function() {
+          get: function () {
             return this._bits;
           },
-          set: function(t) {
+          set: function (t) {
             this._bits = t;
             var e = 1 / Math.pow(2, t - 1);
             this._modulo.value = e;
-          }
+          },
         }),
-        (s.default.BitCrusher.prototype.dispose = function() {
+        (s.default.BitCrusher.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._subtract.dispose(),
@@ -11979,12 +11990,12 @@
         }),
         (e.default = s.default.BitCrusher);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(58), i(42), i(8), i(9);
-      (s.default.AutoWah = function() {
+      (s.default.AutoWah = function () {
         var t = s.default.defaults(
           arguments,
           ["baseFrequency", "octaves", "sensitivity"],
@@ -11999,7 +12010,7 @@
           (this._bandpass = new s.default.Filter({
             rolloff: -48,
             frequency: 0,
-            Q: t.Q
+            Q: t.Q,
           })),
           (this._peaking = new s.default.Filter(0, "peaking")),
           (this._peaking.gain.value = t.gain),
@@ -12028,40 +12039,40 @@
           sensitivity: 0,
           Q: 2,
           gain: 2,
-          follower: { attack: 0.3, release: 0.5 }
+          follower: { attack: 0.3, release: 0.5 },
         }),
         Object.defineProperty(s.default.AutoWah.prototype, "octaves", {
-          get: function() {
+          get: function () {
             return this._octaves;
           },
-          set: function(t) {
+          set: function (t) {
             (this._octaves = t), this._setSweepRange();
-          }
+          },
         }),
         Object.defineProperty(s.default.AutoWah.prototype, "baseFrequency", {
-          get: function() {
+          get: function () {
             return this._baseFrequency;
           },
-          set: function(t) {
+          set: function (t) {
             (this._baseFrequency = t), this._setSweepRange();
-          }
+          },
         }),
         Object.defineProperty(s.default.AutoWah.prototype, "sensitivity", {
-          get: function() {
+          get: function () {
             return s.default.gainToDb(1 / this._inputBoost.gain.value);
           },
-          set: function(t) {
+          set: function (t) {
             this._inputBoost.gain.value = 1 / s.default.dbToGain(t);
-          }
+          },
         }),
-        (s.default.AutoWah.prototype._setSweepRange = function() {
+        (s.default.AutoWah.prototype._setSweepRange = function () {
           (this._sweepRange.min = this._baseFrequency),
             (this._sweepRange.max = Math.min(
               this._baseFrequency * Math.pow(2, this._octaves),
               this.context.sampleRate / 2
             ));
         }),
-        (s.default.AutoWah.prototype.dispose = function() {
+        (s.default.AutoWah.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this.follower.dispose(),
@@ -12082,12 +12093,12 @@
         }),
         (e.default = s.default.AutoWah);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(12), i(48);
-      (s.default.AutoPanner = function() {
+      (s.default.AutoPanner = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency"],
@@ -12098,7 +12109,7 @@
             frequency: t.frequency,
             amplitude: t.depth,
             min: -1,
-            max: 1
+            max: 1,
           })),
           (this.depth = this._lfo.amplitude),
           (this._panner = new s.default.Panner()),
@@ -12112,29 +12123,29 @@
         (s.default.AutoPanner.defaults = {
           frequency: 1,
           type: "sine",
-          depth: 1
+          depth: 1,
         }),
-        (s.default.AutoPanner.prototype.start = function(t) {
+        (s.default.AutoPanner.prototype.start = function (t) {
           return this._lfo.start(t), this;
         }),
-        (s.default.AutoPanner.prototype.stop = function(t) {
+        (s.default.AutoPanner.prototype.stop = function (t) {
           return this._lfo.stop(t), this;
         }),
-        (s.default.AutoPanner.prototype.sync = function(t) {
+        (s.default.AutoPanner.prototype.sync = function (t) {
           return this._lfo.sync(t), this;
         }),
-        (s.default.AutoPanner.prototype.unsync = function() {
+        (s.default.AutoPanner.prototype.unsync = function () {
           return this._lfo.unsync(), this;
         }),
         Object.defineProperty(s.default.AutoPanner.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._lfo.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._lfo.type = t;
-          }
+          },
         }),
-        (s.default.AutoPanner.prototype.dispose = function() {
+        (s.default.AutoPanner.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._lfo.dispose(),
@@ -12149,12 +12160,12 @@
         }),
         (e.default = s.default.AutoPanner);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(8), i(12), i(9);
-      (s.default.AutoFilter = function() {
+      (s.default.AutoFilter = function () {
         var t = s.default.defaults(
           arguments,
           ["frequency", "baseFrequency", "octaves"],
@@ -12163,7 +12174,7 @@
         s.default.Effect.call(this, t),
           (this._lfo = new s.default.LFO({
             frequency: t.frequency,
-            amplitude: t.depth
+            amplitude: t.depth,
           })),
           (this.depth = this._lfo.amplitude),
           (this.frequency = this._lfo.frequency),
@@ -12183,47 +12194,47 @@
           depth: 1,
           baseFrequency: 200,
           octaves: 2.6,
-          filter: { type: "lowpass", rolloff: -12, Q: 1 }
+          filter: { type: "lowpass", rolloff: -12, Q: 1 },
         }),
-        (s.default.AutoFilter.prototype.start = function(t) {
+        (s.default.AutoFilter.prototype.start = function (t) {
           return this._lfo.start(t), this;
         }),
-        (s.default.AutoFilter.prototype.stop = function(t) {
+        (s.default.AutoFilter.prototype.stop = function (t) {
           return this._lfo.stop(t), this;
         }),
-        (s.default.AutoFilter.prototype.sync = function(t) {
+        (s.default.AutoFilter.prototype.sync = function (t) {
           return this._lfo.sync(t), this;
         }),
-        (s.default.AutoFilter.prototype.unsync = function() {
+        (s.default.AutoFilter.prototype.unsync = function () {
           return this._lfo.unsync(), this;
         }),
         Object.defineProperty(s.default.AutoFilter.prototype, "type", {
-          get: function() {
+          get: function () {
             return this._lfo.type;
           },
-          set: function(t) {
+          set: function (t) {
             this._lfo.type = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.AutoFilter.prototype, "baseFrequency", {
-          get: function() {
+          get: function () {
             return this._lfo.min;
           },
-          set: function(t) {
+          set: function (t) {
             (this._lfo.min = this.toFrequency(t)),
               (this.octaves = this._octaves);
-          }
+          },
         }),
         Object.defineProperty(s.default.AutoFilter.prototype, "octaves", {
-          get: function() {
+          get: function () {
             return this._octaves;
           },
-          set: function(t) {
+          set: function (t) {
             (this._octaves = t),
               (this._lfo.max = this.baseFrequency * Math.pow(2, t));
-          }
+          },
         }),
-        (s.default.AutoFilter.prototype.dispose = function() {
+        (s.default.AutoFilter.prototype.dispose = function () {
           return (
             s.default.Effect.prototype.dispose.call(this),
             this._lfo.dispose(),
@@ -12238,17 +12249,17 @@
         }),
         (e.default = s.default.AutoFilter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(23), i(10), i(19), i(2), i(22), i(28);
-      (s.default.Listener = function() {
+      (s.default.Listener = function () {
         s.default.call(this),
           (this._orientation = [0, 0, 0, 0, 0, 0]),
           (this._position = [0, 0, 0]),
           s.default.getContext(
-            function() {
+            function () {
               this.set(n.defaults);
             }.bind(this)
           );
@@ -12263,11 +12274,11 @@
           forwardZ: 1,
           upX: 0,
           upY: 1,
-          upZ: 0
+          upZ: 0,
         }),
         (s.default.Listener.prototype.isListener = !0),
         (s.default.Listener.prototype._rampTimeConstant = 0.01),
-        (s.default.Listener.prototype.setPosition = function(t, e, i) {
+        (s.default.Listener.prototype.setPosition = function (t, e, i) {
           if (this.context.rawContext.listener.positionX) {
             var s = this.now();
             this.context.rawContext.listener.positionX.setTargetAtTime(
@@ -12288,7 +12299,7 @@
           } else this.context.rawContext.listener.setPosition(t, e, i);
           return (this._position = Array.prototype.slice.call(arguments)), this;
         }),
-        (s.default.Listener.prototype.setOrientation = function(
+        (s.default.Listener.prototype.setOrientation = function (
           t,
           e,
           i,
@@ -12335,104 +12346,104 @@
           );
         }),
         Object.defineProperty(s.default.Listener.prototype, "positionX", {
-          set: function(t) {
+          set: function (t) {
             (this._position[0] = t),
               this.setPosition.apply(this, this._position);
           },
-          get: function() {
+          get: function () {
             return this._position[0];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "positionY", {
-          set: function(t) {
+          set: function (t) {
             (this._position[1] = t),
               this.setPosition.apply(this, this._position);
           },
-          get: function() {
+          get: function () {
             return this._position[1];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "positionZ", {
-          set: function(t) {
+          set: function (t) {
             (this._position[2] = t),
               this.setPosition.apply(this, this._position);
           },
-          get: function() {
+          get: function () {
             return this._position[2];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "forwardX", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[0] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[0];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "forwardY", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[1] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[1];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "forwardZ", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[2] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[2];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "upX", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[3] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[3];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "upY", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[4] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[4];
-          }
+          },
         }),
         Object.defineProperty(s.default.Listener.prototype, "upZ", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[5] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[5];
-          }
+          },
         }),
-        (s.default.Listener.prototype.dispose = function() {
+        (s.default.Listener.prototype.dispose = function () {
           return (this._orientation = null), (this._position = null), this;
         });
       var n = s.default.Listener;
       (s.default.Listener = new n()),
-        s.default.Context.on("init", function(t) {
+        s.default.Context.on("init", function (t) {
           t.listener && t.listener.isListener
             ? (s.default.Listener = t.listener)
             : (s.default.Listener = new n());
         }),
         (e.default = s.default.Listener);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(24);
-      (s.default.Draw = function() {
+      (s.default.Draw = function () {
         s.default.call(this),
           (this._events = new s.default.Timeline()),
           (this.expiration = 0.25),
@@ -12440,7 +12451,7 @@
           (this._boundDrawLoop = this._drawLoop.bind(this));
       }),
         s.default.extend(s.default.Draw),
-        (s.default.Draw.prototype.schedule = function(t, e) {
+        (s.default.Draw.prototype.schedule = function (t, e) {
           return (
             this._events.add({ callback: t, time: this.toSeconds(e) }),
             1 === this._events.length &&
@@ -12448,10 +12459,10 @@
             this
           );
         }),
-        (s.default.Draw.prototype.cancel = function(t) {
+        (s.default.Draw.prototype.cancel = function (t) {
           return this._events.cancel(this.toSeconds(t)), this;
         }),
-        (s.default.Draw.prototype._drawLoop = function() {
+        (s.default.Draw.prototype._drawLoop = function () {
           for (
             var t = s.default.context.currentTime;
             this._events.length &&
@@ -12466,35 +12477,35 @@
         (s.default.Draw = new s.default.Draw()),
         (e.default = s.default.Draw);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0),
         n = (i(3), {});
-      (s.default.prototype.send = function(t, e) {
+      (s.default.prototype.send = function (t, e) {
         n.hasOwnProperty(t) || (n[t] = this.context.createGain()),
           (e = s.default.defaultArg(e, 0));
         var i = new s.default.Gain(e, s.default.Type.Decibels);
         return this.connect(i), i.connect(n[t]), i;
       }),
-        (s.default.prototype.receive = function(t, e) {
+        (s.default.prototype.receive = function (t, e) {
           return (
             n.hasOwnProperty(t) || (n[t] = this.context.createGain()),
             s.default.connect(n[t], this, 0, e),
             this
           );
         }),
-        s.default.Context.on("init", function(t) {
+        s.default.Context.on("init", function (t) {
           t.buses ? (n = t.buses) : ((n = {}), (t.buses = n));
         }),
         (e.default = s.default);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4);
-      (s.default.CtrlRandom = function() {
+      (s.default.CtrlRandom = function () {
         var t = s.default.defaults(
           arguments,
           ["min", "max"],
@@ -12508,27 +12519,27 @@
         s.default.extend(s.default.CtrlRandom),
         (s.default.CtrlRandom.defaults = { min: 0, max: 1, integer: !1 }),
         Object.defineProperty(s.default.CtrlRandom.prototype, "value", {
-          get: function() {
+          get: function () {
             var t = this.toSeconds(this.min),
               e = this.toSeconds(this.max),
               i = Math.random(),
               s = i * t + (1 - i) * e;
             return this.integer && (s = Math.floor(s)), s;
-          }
+          },
         }),
         (e.default = s.default.CtrlRandom);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
-      (s.default.CtrlMarkov = function(t, e) {
+      (s.default.CtrlMarkov = function (t, e) {
         s.default.call(this),
           (this.values = s.default.defaultArg(t, {})),
           (this.value = s.default.defaultArg(e, Object.keys(this.values)[0]));
       }),
         s.default.extend(s.default.CtrlMarkov),
-        (s.default.CtrlMarkov.prototype.next = function() {
+        (s.default.CtrlMarkov.prototype.next = function () {
           if (this.values.hasOwnProperty(this.value)) {
             var t = this.values[this.value];
             if (s.default.isArray(t))
@@ -12553,7 +12564,7 @@
           }
           return this.value;
         }),
-        (s.default.CtrlMarkov.prototype._getProbDistribution = function(t) {
+        (s.default.CtrlMarkov.prototype._getProbDistribution = function (t) {
           for (var e = [], i = 0, n = !1, o = 0; o < t.length; o++) {
             var a = t[o];
             s.default.isObject(a)
@@ -12564,17 +12575,17 @@
           if (n) for (var r = 0; r < e.length; r++) e[r] = e[r] / i;
           return e;
         }),
-        (s.default.CtrlMarkov.prototype.dispose = function() {
+        (s.default.CtrlMarkov.prototype.dispose = function () {
           this.values = null;
         }),
         (e.default = s.default.CtrlMarkov);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(4);
-      (s.default.CtrlInterpolate = function() {
+      (s.default.CtrlInterpolate = function () {
         var t = s.default.defaults(
           arguments,
           ["values", "index"],
@@ -12585,16 +12596,16 @@
         s.default.extend(s.default.CtrlInterpolate),
         (s.default.CtrlInterpolate.defaults = { index: 0, values: [] }),
         Object.defineProperty(s.default.CtrlInterpolate.prototype, "value", {
-          get: function() {
+          get: function () {
             var t = this.index;
             t = Math.min(t, this.values.length - 1);
             var e = Math.floor(t),
               i = this.values[e],
               s = this.values[Math.ceil(t)];
             return this._interpolate(t - e, i, s);
-          }
+          },
         }),
-        (s.default.CtrlInterpolate.prototype._interpolate = function(t, e, i) {
+        (s.default.CtrlInterpolate.prototype._interpolate = function (t, e, i) {
           if (s.default.isArray(e)) {
             for (var n = [], o = 0; o < e.length; o++)
               n[o] = this._interpolate(t, e[o], i[o]);
@@ -12609,20 +12620,20 @@
             (1 - t) * (e = this._toNumber(e)) + t * (i = this._toNumber(i))
           );
         }),
-        (s.default.CtrlInterpolate.prototype._toNumber = function(t) {
+        (s.default.CtrlInterpolate.prototype._toNumber = function (t) {
           return s.default.isNumber(t) ? t : this.toSeconds(t);
         }),
-        (s.default.CtrlInterpolate.prototype.dispose = function() {
+        (s.default.CtrlInterpolate.prototype.dispose = function () {
           this.values = null;
         }),
         (e.default = s.default.CtrlInterpolate);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(36), i(1);
-      (s.default.Waveform = function() {
+      (s.default.Waveform = function () {
         var t = s.default.defaults(arguments, ["size"], s.default.Waveform);
         (t.type = s.default.Analyser.Type.Waveform),
           s.default.AudioNode.call(this),
@@ -12632,30 +12643,30 @@
       }),
         s.default.extend(s.default.Waveform, s.default.AudioNode),
         (s.default.Waveform.defaults = { size: 1024 }),
-        (s.default.Waveform.prototype.getValue = function() {
+        (s.default.Waveform.prototype.getValue = function () {
           return this._analyser.getValue();
         }),
         Object.defineProperty(s.default.Waveform.prototype, "size", {
-          get: function() {
+          get: function () {
             return this._analyser.size;
           },
-          set: function(t) {
+          set: function (t) {
             this._analyser.size = t;
-          }
+          },
         }),
-        (s.default.Waveform.prototype.dispose = function() {
+        (s.default.Waveform.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.dispose(),
             (this._analyser = null);
         }),
         (e.default = s.default.Waveform);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(23), i(10), i(19), i(2), i(22), i(28), i(1);
-      (s.default.Panner3D = function() {
+      (s.default.Panner3D = function () {
         var t = s.default.defaults(
           arguments,
           ["positionX", "positionY", "positionZ"],
@@ -12674,7 +12685,7 @@
           (this._orientation = [
             t.orientationX,
             t.orientationY,
-            t.orientationZ
+            t.orientationZ,
           ]),
           (this._position = [t.positionX, t.positionY, t.positionZ]),
           (this.orientationX = t.orientationX),
@@ -12699,10 +12710,10 @@
           coneOuterAngle: 360,
           coneInnerAngle: 360,
           refDistance: 1,
-          rolloffFactor: 1
+          rolloffFactor: 1,
         }),
         (s.default.Panner3D.prototype._rampTimeConstant = 0.01),
-        (s.default.Panner3D.prototype.setPosition = function(t, e, i) {
+        (s.default.Panner3D.prototype.setPosition = function (t, e, i) {
           if (this._panner.positionX) {
             var s = this.now();
             this._panner.positionX.setTargetAtTime(
@@ -12723,7 +12734,7 @@
           } else this._panner.setPosition(t, e, i);
           return (this._position = Array.prototype.slice.call(arguments)), this;
         }),
-        (s.default.Panner3D.prototype.setOrientation = function(t, e, i) {
+        (s.default.Panner3D.prototype.setOrientation = function (t, e, i) {
           if (this._panner.orientationX) {
             var s = this.now();
             this._panner.orientationX.setTargetAtTime(
@@ -12747,67 +12758,67 @@
           );
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "positionX", {
-          set: function(t) {
+          set: function (t) {
             (this._position[0] = t),
               this.setPosition.apply(this, this._position);
           },
-          get: function() {
+          get: function () {
             return this._position[0];
-          }
+          },
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "positionY", {
-          set: function(t) {
+          set: function (t) {
             (this._position[1] = t),
               this.setPosition.apply(this, this._position);
           },
-          get: function() {
+          get: function () {
             return this._position[1];
-          }
+          },
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "positionZ", {
-          set: function(t) {
+          set: function (t) {
             (this._position[2] = t),
               this.setPosition.apply(this, this._position);
           },
-          get: function() {
+          get: function () {
             return this._position[2];
-          }
+          },
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "orientationX", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[0] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[0];
-          }
+          },
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "orientationY", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[1] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[1];
-          }
+          },
         }),
         Object.defineProperty(s.default.Panner3D.prototype, "orientationZ", {
-          set: function(t) {
+          set: function (t) {
             (this._orientation[2] = t),
               this.setOrientation.apply(this, this._orientation);
           },
-          get: function() {
+          get: function () {
             return this._orientation[2];
-          }
+          },
         }),
-        (s.default.Panner3D._aliasProperty = function(t) {
+        (s.default.Panner3D._aliasProperty = function (t) {
           Object.defineProperty(s.default.Panner3D.prototype, t, {
-            set: function(e) {
+            set: function (e) {
               this._panner[t] = e;
             },
-            get: function() {
+            get: function () {
               return this._panner[t];
-            }
+            },
           });
         }),
         s.default.Panner3D._aliasProperty("panningModel"),
@@ -12818,7 +12829,7 @@
         s.default.Panner3D._aliasProperty("coneOuterAngle"),
         s.default.Panner3D._aliasProperty("coneOuterGain"),
         s.default.Panner3D._aliasProperty("maxDistance"),
-        (s.default.Panner3D.prototype.dispose = function() {
+        (s.default.Panner3D.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._panner.disconnect(),
@@ -12830,12 +12841,12 @@
         }),
         (e.default = s.default.Panner3D);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(60), i(43), i(1);
-      (s.default.MultibandCompressor = function(t) {
+      (s.default.MultibandCompressor = function (t) {
         s.default.AudioNode.call(this),
           (t = s.default.defaultArg(
             arguments,
@@ -12843,7 +12854,7 @@
           )),
           (this._splitter = this.input = new s.default.MultibandSplit({
             lowFrequency: t.lowFrequency,
-            highFrequency: t.highFrequency
+            highFrequency: t.highFrequency,
           })),
           (this.lowFrequency = this._splitter.lowFrequency),
           (this.highFrequency = this._splitter.highFrequency),
@@ -12859,7 +12870,7 @@
             "mid",
             "low",
             "highFrequency",
-            "lowFrequency"
+            "lowFrequency",
           ]);
       }),
         s.default.extend(s.default.MultibandCompressor, s.default.AudioNode),
@@ -12868,9 +12879,9 @@
           mid: s.default.Compressor.defaults,
           high: s.default.Compressor.defaults,
           lowFrequency: 250,
-          highFrequency: 2e3
+          highFrequency: 2e3,
         }),
-        (s.default.MultibandCompressor.prototype.dispose = function() {
+        (s.default.MultibandCompressor.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._splitter.dispose(),
@@ -12879,7 +12890,7 @@
               "mid",
               "low",
               "highFrequency",
-              "lowFrequency"
+              "lowFrequency",
             ]),
             this.low.dispose(),
             this.mid.dispose(),
@@ -12895,12 +12906,12 @@
         }),
         (e.default = s.default.MultibandCompressor);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(10), i(1);
-      (s.default.Mono = function() {
+      (s.default.Mono = function () {
         s.default.AudioNode.call(this),
           this.createInsOuts(1, 0),
           (this._merge = this.output = new s.default.Merge()),
@@ -12908,7 +12919,7 @@
           s.default.connect(this.input, this._merge, 0, 1);
       }),
         s.default.extend(s.default.Mono, s.default.AudioNode),
-        (s.default.Mono.prototype.dispose = function() {
+        (s.default.Mono.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._merge.dispose(),
@@ -12918,12 +12929,12 @@
         }),
         (e.default = s.default.Mono);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(53), i(52), i(43), i(1);
-      (s.default.MidSideCompressor = function(t) {
+      (s.default.MidSideCompressor = function (t) {
         s.default.AudioNode.call(this),
           (t = s.default.defaultArg(t, s.default.MidSideCompressor.defaults)),
           (this._midSideSplit = this.input = new s.default.MidSideSplit()),
@@ -12941,17 +12952,17 @@
             threshold: -24,
             release: 0.03,
             attack: 0.02,
-            knee: 16
+            knee: 16,
           },
           side: {
             ratio: 6,
             threshold: -30,
             release: 0.25,
             attack: 0.03,
-            knee: 10
-          }
+            knee: 10,
+          },
         }),
-        (s.default.MidSideCompressor.prototype.dispose = function() {
+        (s.default.MidSideCompressor.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["mid", "side"]),
@@ -12968,12 +12979,12 @@
         }),
         (e.default = s.default.MidSideCompressor);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(36), i(1);
-      (s.default.Meter = function() {
+      (s.default.Meter = function () {
         var t = s.default.defaults(arguments, ["smoothing"], s.default.Meter);
         s.default.AudioNode.call(this),
           (this.smoothing = t.smoothing),
@@ -12985,7 +12996,7 @@
       }),
         s.default.extend(s.default.Meter, s.default.AudioNode),
         (s.default.Meter.defaults = { smoothing: 0.8 }),
-        (s.default.Meter.prototype.getLevel = function() {
+        (s.default.Meter.prototype.getLevel = function () {
           for (
             var t = this._analyser.getValue(), e = 0, i = 0;
             i < t.length;
@@ -13000,10 +13011,10 @@
             s.default.gainToDb(this._rms)
           );
         }),
-        (s.default.Meter.prototype.getValue = function() {
+        (s.default.Meter.prototype.getValue = function () {
           return this._analyser.getValue()[0];
         }),
-        (s.default.Meter.prototype.dispose = function() {
+        (s.default.Meter.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.dispose(),
@@ -13013,12 +13024,12 @@
         }),
         (e.default = s.default.Meter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(43), i(1);
-      (s.default.Limiter = function() {
+      (s.default.Limiter = function () {
         var t = s.default.defaults(arguments, ["threshold"], s.default.Limiter);
         s.default.AudioNode.call(this),
           (this._compressor = this.input = this.output = new s.default.Compressor(
@@ -13029,7 +13040,7 @@
       }),
         s.default.extend(s.default.Limiter, s.default.AudioNode),
         (s.default.Limiter.defaults = { threshold: -12 }),
-        (s.default.Limiter.prototype.dispose = function() {
+        (s.default.Limiter.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._compressor.dispose(),
@@ -13041,12 +13052,12 @@
         }),
         (e.default = s.default.Limiter);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(58), i(85), i(1);
-      (s.default.Gate = function() {
+      (s.default.Gate = function () {
         var t = s.default.defaults(
           arguments,
           ["threshold", "smoothing"],
@@ -13069,22 +13080,22 @@
         s.default.extend(s.default.Gate, s.default.AudioNode),
         (s.default.Gate.defaults = { smoothing: 0.1, threshold: -40 }),
         Object.defineProperty(s.default.Gate.prototype, "threshold", {
-          get: function() {
+          get: function () {
             return s.default.gainToDb(this._gt.value);
           },
-          set: function(t) {
+          set: function (t) {
             this._gt.value = s.default.dbToGain(t);
-          }
+          },
         }),
         Object.defineProperty(s.default.Gate.prototype, "smoothing", {
-          get: function() {
+          get: function () {
             return this._follower.smoothing;
           },
-          set: function(t) {
+          set: function (t) {
             this._follower.smoothing = t;
-          }
+          },
         }),
-        (s.default.Gate.prototype.dispose = function() {
+        (s.default.Gate.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._follower.dispose(),
@@ -13096,12 +13107,12 @@
         }),
         (e.default = s.default.Gate);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(36), i(1);
-      (s.default.FFT = function() {
+      (s.default.FFT = function () {
         var t = s.default.defaults(arguments, ["size"], s.default.FFT);
         (t.type = s.default.Analyser.Type.FFT),
           s.default.AudioNode.call(this),
@@ -13111,30 +13122,30 @@
       }),
         s.default.extend(s.default.FFT, s.default.AudioNode),
         (s.default.FFT.defaults = { size: 1024 }),
-        (s.default.FFT.prototype.getValue = function() {
+        (s.default.FFT.prototype.getValue = function () {
           return this._analyser.getValue();
         }),
         Object.defineProperty(s.default.FFT.prototype, "size", {
-          get: function() {
+          get: function () {
             return this._analyser.size;
           },
-          set: function(t) {
+          set: function (t) {
             this._analyser.size = t;
-          }
+          },
         }),
-        (s.default.FFT.prototype.dispose = function() {
+        (s.default.FFT.prototype.dispose = function () {
           s.default.AudioNode.prototype.dispose.call(this),
             this._analyser.dispose(),
             (this._analyser = null);
         }),
         (e.default = s.default.FFT);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(60), i(3), i(1);
-      (s.default.EQ3 = function() {
+      (s.default.EQ3 = function () {
         var t = s.default.defaults(
           arguments,
           ["low", "mid", "high"],
@@ -13144,7 +13155,7 @@
           (this.output = new s.default.Gain()),
           (this._multibandSplit = this.input = new s.default.MultibandSplit({
             lowFrequency: t.lowFrequency,
-            highFrequency: t.highFrequency
+            highFrequency: t.highFrequency,
           })),
           (this._lowGain = new s.default.Gain(t.low, s.default.Type.Decibels)),
           (this._midGain = new s.default.Gain(t.mid, s.default.Type.Decibels)),
@@ -13166,7 +13177,7 @@
             "mid",
             "high",
             "lowFrequency",
-            "highFrequency"
+            "highFrequency",
           ]);
       }),
         s.default.extend(s.default.EQ3, s.default.AudioNode),
@@ -13175,9 +13186,9 @@
           mid: 0,
           high: 0,
           lowFrequency: 400,
-          highFrequency: 2500
+          highFrequency: 2500,
         }),
-        (s.default.EQ3.prototype.dispose = function() {
+        (s.default.EQ3.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable([
@@ -13185,7 +13196,7 @@
               "mid",
               "high",
               "lowFrequency",
-              "highFrequency"
+              "highFrequency",
             ]),
             this._multibandSplit.dispose(),
             (this._multibandSplit = null),
@@ -13206,12 +13217,12 @@
         }),
         (e.default = s.default.EQ3);
     },
-    function(t, e, i) {
+    function (t, e, i) {
       "use strict";
       i.r(e);
       var s = i(0);
       i(91), i(88), i(1);
-      (s.default.Channel = function() {
+      (s.default.Channel = function () {
         var t = s.default.defaults(
           arguments,
           ["volume", "pan"],
@@ -13222,7 +13233,7 @@
           (this._panVol = this.output = new s.default.PanVol({
             pan: t.pan,
             volume: t.volume,
-            mute: t.mute
+            mute: t.mute,
           })),
           (this.pan = this._panVol.pan),
           (this.volume = this._panVol.volume),
@@ -13234,30 +13245,30 @@
           pan: 0,
           volume: 0,
           mute: !1,
-          solo: !1
+          solo: !1,
         }),
         Object.defineProperty(s.default.Channel.prototype, "solo", {
-          get: function() {
+          get: function () {
             return this._solo.solo;
           },
-          set: function(t) {
+          set: function (t) {
             this._solo.solo = t;
-          }
+          },
         }),
         Object.defineProperty(s.default.Channel.prototype, "muted", {
-          get: function() {
+          get: function () {
             return this._solo.muted || this.mute;
-          }
+          },
         }),
         Object.defineProperty(s.default.Channel.prototype, "mute", {
-          get: function() {
+          get: function () {
             return this._panVol.mute;
           },
-          set: function(t) {
+          set: function (t) {
             this._panVol.mute = t;
-          }
+          },
         }),
-        (s.default.Channel.prototype.dispose = function() {
+        (s.default.Channel.prototype.dispose = function () {
           return (
             s.default.AudioNode.prototype.dispose.call(this),
             this._writable(["pan", "volume"]),
@@ -13272,9 +13283,9 @@
         }),
         (e.default = s.default.Channel);
     },
-    function(t, e) {
+    function (t, e) {
       var i;
-      i = (function() {
+      i = (function () {
         return this;
       })();
       try {
@@ -13284,7 +13295,7 @@
       }
       t.exports = i;
     },
-    function(t, e, i) {
+    function (t, e, i) {
       i(31),
         i(36),
         i(146),
@@ -13429,10 +13440,10 @@
         i(45),
         i(4),
         (t.exports = i(0).default);
-    }
+    },
   ]);
 });
-!(function(t, e) {
+!(function (t, e) {
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = e(require("@tensorflow/tfjs"), require("tone")))
     : "function" == typeof define && define.amd
@@ -13440,11 +13451,11 @@
     : "object" == typeof exports
     ? (exports.core = e(require("@tensorflow/tfjs"), require("tone")))
     : (t.core = e(t.tf, t.Tone));
-})(self, function(
+})(self, function (
   __WEBPACK_EXTERNAL_MODULE__0__,
   __WEBPACK_EXTERNAL_MODULE__3__
 ) {
-  return (function(t) {
+  return (function (t) {
     var e = {};
     function n(r) {
       if (e[r]) return e[r].exports;
@@ -13454,16 +13465,16 @@
     return (
       (n.m = t),
       (n.c = e),
-      (n.d = function(t, e, r) {
+      (n.d = function (t, e, r) {
         n.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: r });
       }),
-      (n.r = function(t) {
+      (n.r = function (t) {
         "undefined" != typeof Symbol &&
           Symbol.toStringTag &&
           Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }),
           Object.defineProperty(t, "__esModule", { value: !0 });
       }),
-      (n.t = function(t, e) {
+      (n.t = function (t, e) {
         if ((1 & e && (t = n(t)), 8 & e)) return t;
         if (4 & e && "object" == typeof t && t && t.__esModule) return t;
         var r = Object.create(null);
@@ -13476,118 +13487,118 @@
             n.d(
               r,
               i,
-              function(e) {
+              function (e) {
                 return t[e];
               }.bind(null, i)
             );
         return r;
       }),
-      (n.n = function(t) {
+      (n.n = function (t) {
         var e =
           t && t.__esModule
-            ? function() {
+            ? function () {
                 return t.default;
               }
-            : function() {
+            : function () {
                 return t;
               };
         return n.d(e, "a", e), e;
       }),
-      (n.o = function(t, e) {
+      (n.o = function (t, e) {
         return Object.prototype.hasOwnProperty.call(t, e);
       }),
       (n.p = ""),
       n((n.s = 68))
     );
   })([
-    function(t, e) {
+    function (t, e) {
       t.exports = __WEBPACK_EXTERNAL_MODULE__0__;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "DEFAULT_QUARTERS_PER_MINUTE", function() {
+        n.d(e, "DEFAULT_QUARTERS_PER_MINUTE", function () {
           return r;
         }),
-        n.d(e, "DEFAULT_STEPS_PER_BAR", function() {
+        n.d(e, "DEFAULT_STEPS_PER_BAR", function () {
           return i;
         }),
-        n.d(e, "DEFAULT_STEPS_PER_QUARTER", function() {
+        n.d(e, "DEFAULT_STEPS_PER_QUARTER", function () {
           return o;
         }),
-        n.d(e, "DEFAULT_STEPS_PER_SECOND", function() {
+        n.d(e, "DEFAULT_STEPS_PER_SECOND", function () {
           return s;
         }),
-        n.d(e, "DEFAULT_VELOCITY", function() {
+        n.d(e, "DEFAULT_VELOCITY", function () {
           return a;
         }),
-        n.d(e, "DEFAULT_PROGRAM", function() {
+        n.d(e, "DEFAULT_PROGRAM", function () {
           return u;
         }),
-        n.d(e, "DEFAULT_TICKS_PER_QUARTER", function() {
+        n.d(e, "DEFAULT_TICKS_PER_QUARTER", function () {
           return c;
         }),
-        n.d(e, "DEFAULT_CHANNEL", function() {
+        n.d(e, "DEFAULT_CHANNEL", function () {
           return l;
         }),
-        n.d(e, "DRUM_CHANNEL", function() {
+        n.d(e, "DRUM_CHANNEL", function () {
           return h;
         }),
-        n.d(e, "NON_DRUM_CHANNELS", function() {
+        n.d(e, "NON_DRUM_CHANNELS", function () {
           return p;
         }),
-        n.d(e, "MIN_MIDI_VELOCITY", function() {
+        n.d(e, "MIN_MIDI_VELOCITY", function () {
           return f;
         }),
-        n.d(e, "MAX_MIDI_VELOCITY", function() {
+        n.d(e, "MAX_MIDI_VELOCITY", function () {
           return m;
         }),
-        n.d(e, "MIDI_VELOCITIES", function() {
+        n.d(e, "MIDI_VELOCITIES", function () {
           return d;
         }),
-        n.d(e, "NO_CHORD", function() {
+        n.d(e, "NO_CHORD", function () {
           return g;
         }),
-        n.d(e, "NUM_PITCH_CLASSES", function() {
+        n.d(e, "NUM_PITCH_CLASSES", function () {
           return S;
         }),
-        n.d(e, "MIN_MIDI_PITCH", function() {
+        n.d(e, "MIN_MIDI_PITCH", function () {
           return y;
         }),
-        n.d(e, "MAX_MIDI_PITCH", function() {
+        n.d(e, "MAX_MIDI_PITCH", function () {
           return b;
         }),
-        n.d(e, "MIDI_PITCHES", function() {
+        n.d(e, "MIDI_PITCHES", function () {
           return w;
         }),
-        n.d(e, "MIN_PIANO_PITCH", function() {
+        n.d(e, "MIN_PIANO_PITCH", function () {
           return P;
         }),
-        n.d(e, "MAX_PIANO_PITCH", function() {
+        n.d(e, "MAX_PIANO_PITCH", function () {
           return v;
         }),
-        n.d(e, "MIN_DRUM_PITCH", function() {
+        n.d(e, "MIN_DRUM_PITCH", function () {
           return N;
         }),
-        n.d(e, "MAX_DRUM_PITCH", function() {
+        n.d(e, "MAX_DRUM_PITCH", function () {
           return T;
         }),
-        n.d(e, "MIN_MIDI_PROGRAM", function() {
+        n.d(e, "MIN_MIDI_PROGRAM", function () {
           return O;
         }),
-        n.d(e, "MAX_MIDI_PROGRAM", function() {
+        n.d(e, "MAX_MIDI_PROGRAM", function () {
           return I;
         }),
-        n.d(e, "LO_CLICK_PITCH", function() {
+        n.d(e, "LO_CLICK_PITCH", function () {
           return M;
         }),
-        n.d(e, "HI_CLICK_PITCH", function() {
+        n.d(e, "HI_CLICK_PITCH", function () {
           return A;
         }),
-        n.d(e, "LO_CLICK_CLASS", function() {
+        n.d(e, "LO_CLICK_CLASS", function () {
           return k;
         }),
-        n.d(e, "HI_CLICK_CLASS", function() {
+        n.d(e, "HI_CLICK_CLASS", function () {
           return q;
         });
       const r = 120,
@@ -13619,35 +13630,35 @@
         k = 9,
         q = 10;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
-      n.d(e, "a", function() {
+      n.d(e, "a", function () {
         return i;
       });
       var r = n(16),
         i = r.tensorflow.magenta.NoteSequence;
     },
-    function(t, e) {
+    function (t, e) {
       t.exports = __WEBPACK_EXTERNAL_MODULE__3__;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "Level", function() {
+        n.d(e, "Level", function () {
           return r;
         }),
-        n.d(e, "verbosity", function() {
+        n.d(e, "verbosity", function () {
           return o;
         }),
-        n.d(e, "log", function() {
+        n.d(e, "log", function () {
           return s;
         }),
-        n.d(e, "logWithDuration", function() {
+        n.d(e, "logWithDuration", function () {
           return a;
         });
       var r,
         i = n(6);
-      !(function(t) {
+      !(function (t) {
         (t[(t.NONE = 0)] = "NONE"),
           (t[(t.WARN = 5)] = "WARN"),
           (t[(t.INFO = 10)] = "INFO"),
@@ -13669,22 +13680,22 @@
       }
     },
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
-      (function(t) {
-        n.d(e, "a", function() {
+      (function (t) {
+        n.d(e, "a", function () {
           return i;
         }),
-          n.d(e, "d", function() {
+          n.d(e, "d", function () {
             return o;
           }),
-          n.d(e, "c", function() {
+          n.d(e, "c", function () {
             return s;
           }),
-          n.d(e, "b", function() {
+          n.d(e, "b", function () {
             return u;
           });
-        const r = (function() {
+        const r = (function () {
             if ("undefined" != typeof globalThis) return globalThis;
             if ("undefined" != typeof self) return self;
             if ("undefined" != typeof window) return window;
@@ -13705,76 +13716,76 @@
         }
       }.call(this, n(9)));
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "MultipleTimeSignatureException", function() {
+        n.d(e, "MultipleTimeSignatureException", function () {
           return o;
         }),
-        n.d(e, "BadTimeSignatureException", function() {
+        n.d(e, "BadTimeSignatureException", function () {
           return s;
         }),
-        n.d(e, "NegativeTimeException", function() {
+        n.d(e, "NegativeTimeException", function () {
           return a;
         }),
-        n.d(e, "MultipleTempoException", function() {
+        n.d(e, "MultipleTempoException", function () {
           return u;
         }),
-        n.d(e, "QuantizationStatusException", function() {
+        n.d(e, "QuantizationStatusException", function () {
           return c;
         }),
-        n.d(e, "clone", function() {
+        n.d(e, "clone", function () {
           return l;
         }),
-        n.d(e, "stepsPerQuarterToStepsPerSecond", function() {
+        n.d(e, "stepsPerQuarterToStepsPerSecond", function () {
           return h;
         }),
-        n.d(e, "quantizeToStep", function() {
+        n.d(e, "quantizeToStep", function () {
           return p;
         }),
-        n.d(e, "quantizeNoteSequence", function() {
+        n.d(e, "quantizeNoteSequence", function () {
           return d;
         }),
-        n.d(e, "isQuantizedSequence", function() {
+        n.d(e, "isQuantizedSequence", function () {
           return g;
         }),
-        n.d(e, "assertIsQuantizedSequence", function() {
+        n.d(e, "assertIsQuantizedSequence", function () {
           return S;
         }),
-        n.d(e, "isRelativeQuantizedSequence", function() {
+        n.d(e, "isRelativeQuantizedSequence", function () {
           return y;
         }),
-        n.d(e, "assertIsRelativeQuantizedSequence", function() {
+        n.d(e, "assertIsRelativeQuantizedSequence", function () {
           return b;
         }),
-        n.d(e, "isAbsoluteQuantizedSequence", function() {
+        n.d(e, "isAbsoluteQuantizedSequence", function () {
           return w;
         }),
-        n.d(e, "assertIsAbsoluteQuantizedSequence", function() {
+        n.d(e, "assertIsAbsoluteQuantizedSequence", function () {
           return P;
         }),
-        n.d(e, "unquantizeSequence", function() {
+        n.d(e, "unquantizeSequence", function () {
           return v;
         }),
-        n.d(e, "createQuantizedNoteSequence", function() {
+        n.d(e, "createQuantizedNoteSequence", function () {
           return N;
         }),
-        n.d(e, "mergeInstruments", function() {
+        n.d(e, "mergeInstruments", function () {
           return T;
         }),
-        n.d(e, "replaceInstruments", function() {
+        n.d(e, "replaceInstruments", function () {
           return O;
         }),
-        n.d(e, "mergeConsecutiveNotes", function() {
+        n.d(e, "mergeConsecutiveNotes", function () {
           return I;
         }),
-        n.d(e, "concatenate", function() {
+        n.d(e, "concatenate", function () {
           return M;
         }),
-        n.d(e, "trim", function() {
+        n.d(e, "trim", function () {
           return A;
         }),
-        n.d(e, "split", function() {
+        n.d(e, "split", function () {
           return E;
         });
       var r = n(2),
@@ -13833,9 +13844,7 @@
           for (let e = 1; e < t.tempos.length; e++)
             if (t.tempos[e].qpm !== t.tempos[0].qpm)
               throw new u(
-                `NoteSequence has at least one tempo change from ${
-                  t.tempos[0].qpm
-                } qpm to ${t.tempos[e].qpm}qpm at ${t.tempos[e].time} seconds.`
+                `NoteSequence has at least one tempo change from ${t.tempos[0].qpm} qpm to ${t.tempos[e].qpm}qpm at ${t.tempos[e].time} seconds.`
               );
         }
       }
@@ -13843,7 +13852,7 @@
         const n = l(t);
         if (
           ((n.quantizationInfo = r.a.QuantizationInfo.create({
-            stepsPerQuarter: e
+            stepsPerQuarter: e,
           })),
           n.timeSignatures.length > 0)
         ) {
@@ -13854,9 +13863,7 @@
                 4 !== n.timeSignatures[0].denominator))
           )
             throw new o(
-              `NoteSequence has an implicit change from initial 4/4 time signature to ${
-                n.timeSignatures[0].numerator
-              }/` +
+              `NoteSequence has an implicit change from initial 4/4 time signature to ${n.timeSignatures[0].numerator}/` +
                 n.timeSignatures[0].denominator +
                 " at " +
                 n.timeSignatures[0].time +
@@ -13884,16 +13891,14 @@
           const t = r.a.TimeSignature.create({
             numerator: 4,
             denominator: 4,
-            time: 0
+            time: 0,
           });
           n.timeSignatures.push(t);
         }
         const u = n.timeSignatures[0];
         if (!(c = u.denominator) || 0 != (c & (c - 1)))
           throw new s(
-            `Denominator is not a power of 2. Time signature: ${u.numerator}/${
-              u.denominator
-            }`
+            `Denominator is not a power of 2. Time signature: ${u.numerator}/${u.denominator}`
           );
         var c;
         if (0 === u.numerator)
@@ -13905,14 +13910,14 @@
         else {
           const t = r.a.Tempo.create({
             qpm: i.DEFAULT_QUARTERS_PER_MINUTE,
-            time: 0
+            time: 0,
           });
           n.tempos.push(t);
         }
         const d = h(e, n.tempos[0].qpm);
         return (
           (n.totalQuantizedSteps = p(t.totalTime, d)),
-          (function(t, e) {
+          (function (t, e) {
             for (const n of t.notes) {
               if (
                 ((n.quantizedStartStep = p(n.startTime, e)),
@@ -13930,7 +13935,7 @@
               n.quantizedEndStep > t.totalQuantizedSteps &&
                 (t.totalQuantizedSteps = n.quantizedEndStep);
             }
-            f(t).forEach(t => {
+            f(t).forEach((t) => {
               if (((t.quantizedStep = p(t.time, e)), t.quantizedStep < 0))
                 throw new a(
                   "Got negative event time: step = " + t.quantizedStep
@@ -13959,9 +13964,7 @@
       function b(t) {
         if (!y(t))
           throw new c(
-            `NoteSequence ${
-              t.id
-            } is not quantized or is quantized based on absolute timing`
+            `NoteSequence ${t.id} is not quantized or is quantized based on absolute timing`
           );
       }
       function w(t) {
@@ -13970,9 +13973,7 @@
       function P(t) {
         if (!w(t))
           throw new c(
-            `NoteSequence ${
-              t.id
-            } is not quantized or is quantized based on relative timing`
+            `NoteSequence ${t.id} is not quantized or is quantized based on relative timing`
           );
       }
       function v(t, e) {
@@ -13986,17 +13987,17 @@
               t.tempos && t.tempos.length > 0
                 ? n.tempos[0].qpm
                 : i.DEFAULT_QUARTERS_PER_MINUTE);
-        const o = t => (t / n.quantizationInfo.stepsPerQuarter) * (60 / e);
+        const o = (t) => (t / n.quantizationInfo.stepsPerQuarter) * (60 / e);
         return (
           (n.totalTime = o(n.totalQuantizedSteps)),
-          n.notes.forEach(t => {
+          n.notes.forEach((t) => {
             (t.startTime = o(t.quantizedStartStep)),
               (t.endTime = o(t.quantizedEndStep)),
               (n.totalTime = Math.max(n.totalTime, t.endTime)),
               delete t.quantizedStartStep,
               delete t.quantizedEndStep;
           }),
-          f(n).forEach(t => {
+          f(n).forEach((t) => {
             t.time = o(t.time);
           }),
           delete n.totalQuantizedSteps,
@@ -14010,15 +14011,17 @@
       ) {
         return r.a.create({
           quantizationInfo: { stepsPerQuarter: t },
-          tempos: [{ qpm: e }]
+          tempos: [{ qpm: e }],
         });
       }
       function T(t) {
         const e = l(t),
           n = e.notes.concat(e.pitchBends).concat(e.controlChanges),
-          r = Array.from(new Set(n.filter(t => !t.isDrum).map(t => t.program)));
+          r = Array.from(
+            new Set(n.filter((t) => !t.isDrum).map((t) => t.program))
+          );
         return (
-          n.forEach(t => {
+          n.forEach((t) => {
             t.isDrum
               ? ((t.program = 0), (t.instrument = r.length))
               : (t.instrument = r.indexOf(t.program));
@@ -14027,13 +14030,13 @@
         );
       }
       function O(t, e) {
-        const n = new Set(t.notes.map(t => t.instrument)),
-          i = new Set(e.notes.map(t => t.instrument)),
+        const n = new Set(t.notes.map((t) => t.instrument)),
+          i = new Set(e.notes.map((t) => t.instrument)),
           o = [];
-        t.notes.forEach(t => {
+        t.notes.forEach((t) => {
           i.has(t.instrument) || o.push(r.a.Note.create(t));
         }),
-          e.notes.forEach(t => {
+          e.notes.forEach((t) => {
             n.has(t.instrument) && o.push(r.a.Note.create(t));
           });
         const s = l(t);
@@ -14128,15 +14131,13 @@
           const c = o ? o[u] : t[u][e];
           if (0 === c)
             throw Error(
-              `Sequence ${
-                t[u].id
-              } has no ${e}, and no individual duration was provided.`
+              `Sequence ${t[u].id} has no ${e}, and no individual duration was provided.`
             );
           0 === u
             ? (s = l(t[0]))
             : Array.prototype.push.apply(
                 s.notes,
-                t[u].notes.map(t => {
+                t[u].notes.map((t) => {
                   const e = r.a.Note.create(t);
                   return (e[n] += a), (e[i] += a), e;
                 })
@@ -14149,7 +14150,7 @@
         const a = l(t);
         (a[r] = n),
           (a.notes = a.notes.filter(
-            t => t[i] >= e && t[i] <= n && (s || t[o] <= n)
+            (t) => t[i] >= e && t[i] <= n && (s || t[o] <= n)
           )),
           (a[r] -= e);
         for (let t = 0; t < a.notes.length; t++)
@@ -14204,9 +14205,9 @@
         return o;
       }
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
-      (function(t) {
+      (function (t) {
         var r = e;
         function i(t, e, n) {
           for (var r = Object.keys(e), i = 0; i < r.length; ++i)
@@ -14217,25 +14218,25 @@
           function e(t, n) {
             if (!(this instanceof e)) return new e(t, n);
             Object.defineProperty(this, "message", {
-              get: function() {
+              get: function () {
                 return t;
-              }
+              },
             }),
               Error.captureStackTrace
                 ? Error.captureStackTrace(this, e)
                 : Object.defineProperty(this, "stack", {
-                    value: new Error().stack || ""
+                    value: new Error().stack || "",
                   }),
               n && i(this, n);
           }
           return (
             ((e.prototype = Object.create(Error.prototype)).constructor = e),
             Object.defineProperty(e.prototype, "name", {
-              get: function() {
+              get: function () {
                 return t;
-              }
+              },
             }),
-            (e.prototype.toString = function() {
+            (e.prototype.toString = function () {
               return this.name + ": " + this.message;
             }),
             e
@@ -14265,16 +14266,16 @@
           (r.emptyObject = Object.freeze ? Object.freeze({}) : {}),
           (r.isInteger =
             Number.isInteger ||
-            function(t) {
+            function (t) {
               return "number" == typeof t && isFinite(t) && Math.floor(t) === t;
             }),
-          (r.isString = function(t) {
+          (r.isString = function (t) {
             return "string" == typeof t || t instanceof String;
           }),
-          (r.isObject = function(t) {
+          (r.isObject = function (t) {
             return t && "object" == typeof t;
           }),
-          (r.isset = r.isSet = function(t, e) {
+          (r.isset = r.isSet = function (t, e) {
             var n = t[e];
             return (
               !(null == n || !t.hasOwnProperty(e)) &&
@@ -14282,7 +14283,7 @@
                 (Array.isArray(n) ? n.length : Object.keys(n).length) > 0)
             );
           }),
-          (r.Buffer = (function() {
+          (r.Buffer = (function () {
             try {
               var t = r.inquire("buffer").Buffer;
               return t.prototype.utf8Write ? t : null;
@@ -14292,7 +14293,7 @@
           })()),
           (r._Buffer_from = null),
           (r._Buffer_allocUnsafe = null),
-          (r.newBuffer = function(t) {
+          (r.newBuffer = function (t) {
             return "number" == typeof t
               ? r.Buffer
                 ? r._Buffer_allocUnsafe(t)
@@ -14311,24 +14312,24 @@
           (r.key2Re = /^true|false|0|1$/),
           (r.key32Re = /^-?(?:0|[1-9][0-9]*)$/),
           (r.key64Re = /^(?:[\\x00-\\xff]{8}|-?(?:0|[1-9][0-9]*))$/),
-          (r.longToHash = function(t) {
+          (r.longToHash = function (t) {
             return t ? r.LongBits.from(t).toHash() : r.LongBits.zeroHash;
           }),
-          (r.longFromHash = function(t, e) {
+          (r.longFromHash = function (t, e) {
             var n = r.LongBits.fromHash(t);
             return r.Long
               ? r.Long.fromBits(n.lo, n.hi, e)
               : n.toNumber(Boolean(e));
           }),
           (r.merge = i),
-          (r.lcFirst = function(t) {
+          (r.lcFirst = function (t) {
             return t.charAt(0).toLowerCase() + t.substring(1);
           }),
           (r.newError = o),
           (r.ProtocolError = o("ProtocolError")),
-          (r.oneOfGetter = function(t) {
+          (r.oneOfGetter = function (t) {
             for (var e = {}, n = 0; n < t.length; ++n) e[t[n]] = 1;
-            return function() {
+            return function () {
               for (var t = Object.keys(this), n = t.length - 1; n > -1; --n)
                 if (
                   1 === e[t[n]] &&
@@ -14338,8 +14339,8 @@
                   return t[n];
             };
           }),
-          (r.oneOfSetter = function(t) {
-            return function(e) {
+          (r.oneOfSetter = function (t) {
+            return function (e) {
               for (var n = 0; n < t.length; ++n)
                 t[n] !== e && delete this[t[n]];
             };
@@ -14348,28 +14349,28 @@
             longs: String,
             enums: String,
             bytes: String,
-            json: !0
+            json: !0,
           }),
-          (r._configure = function() {
+          (r._configure = function () {
             var t = r.Buffer;
             t
               ? ((r._Buffer_from =
                   (t.from !== Uint8Array.from && t.from) ||
-                  function(e, n) {
+                  function (e, n) {
                     return new t(e, n);
                   }),
                 (r._Buffer_allocUnsafe =
                   t.allocUnsafe ||
-                  function(e) {
+                  function (e) {
                     return new t(e);
                   }))
               : (r._Buffer_from = r._Buffer_allocUnsafe = null);
           });
       }.call(this, n(9)));
     },
-    function(t, e) {
+    function (t, e) {
       var n;
-      n = (function() {
+      n = (function () {
         return this;
       })();
       try {
@@ -14379,25 +14380,25 @@
       }
       t.exports = n;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "NO_EVENT", function() {
+        n.d(e, "NO_EVENT", function () {
           return s;
         }),
-        n.d(e, "NOTE_OFF", function() {
+        n.d(e, "NOTE_OFF", function () {
           return a;
         }),
-        n.d(e, "Melody", function() {
+        n.d(e, "Melody", function () {
           return u;
         }),
-        n.d(e, "MelodyRhythm", function() {
+        n.d(e, "MelodyRhythm", function () {
           return c;
         }),
-        n.d(e, "MelodyShape", function() {
+        n.d(e, "MelodyShape", function () {
           return l;
         }),
-        n.d(e, "MelodyRegister", function() {
+        n.d(e, "MelodyRegister", function () {
           return h;
         });
       var r = n(0),
@@ -14419,7 +14420,7 @@
             c = new Int32Array(i || t.totalQuantizedSteps);
           let l = -1;
           return (
-            s.forEach(t => {
+            s.forEach((t) => {
               if (t.quantizedStartStep === l) {
                 if (r) return;
                 throw new Error("`NoteSequence` is not monophonic.");
@@ -14451,7 +14452,7 @@
                 r && ((r.quantizedEndStep = t), n.notes.push(r)),
                   (r = i.a.Note.create({
                     pitch: e - 2 + this.minPitch,
-                    quantizedStartStep: t
+                    quantizedStartStep: t,
                   }));
             }
           }
@@ -14540,43 +14541,43 @@
       }
     },
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "DEFAULT_DRUM_PITCH_CLASSES", function() {
+        n.d(e, "DEFAULT_DRUM_PITCH_CLASSES", function () {
           return l;
         }),
-        n.d(e, "converterFromSpec", function() {
+        n.d(e, "converterFromSpec", function () {
           return h;
         }),
-        n.d(e, "DataConverter", function() {
+        n.d(e, "DataConverter", function () {
           return p;
         }),
-        n.d(e, "DrumsConverter", function() {
+        n.d(e, "DrumsConverter", function () {
           return f;
         }),
-        n.d(e, "DrumRollConverter", function() {
+        n.d(e, "DrumRollConverter", function () {
           return m;
         }),
-        n.d(e, "DrumsOneHotConverter", function() {
+        n.d(e, "DrumsOneHotConverter", function () {
           return d;
         }),
-        n.d(e, "MelodyConverter", function() {
+        n.d(e, "MelodyConverter", function () {
           return g;
         }),
-        n.d(e, "MelodyRhythmConverter", function() {
+        n.d(e, "MelodyRhythmConverter", function () {
           return y;
         }),
-        n.d(e, "MelodyShapeConverter", function() {
+        n.d(e, "MelodyShapeConverter", function () {
           return b;
         }),
-        n.d(e, "TrioConverter", function() {
+        n.d(e, "TrioConverter", function () {
           return w;
         }),
-        n.d(e, "MultitrackConverter", function() {
+        n.d(e, "MultitrackConverter", function () {
           return P;
         }),
-        n.d(e, "GrooveConverter", function() {
+        n.d(e, "GrooveConverter", function () {
           return v;
         });
       var r = n(0),
@@ -14595,7 +14596,7 @@
         [48, 47, 60, 63, 77, 86, 87],
         [50, 30, 43, 62, 76, 83],
         [49, 55, 57, 58],
-        [51, 52, 53, 59, 82]
+        [51, 52, 53, 59, 82],
       ];
       function h(t) {
         switch (t.type) {
@@ -14638,7 +14639,7 @@
             (this.pitchClasses = t.pitchClasses || l),
             (this.pitchToClass = new Map());
           for (let t = 0; t < this.pitchClasses.length; ++t)
-            this.pitchClasses[t].forEach(e => {
+            this.pitchClasses[t].forEach((e) => {
               this.pitchToClass.set(e, t);
             });
           this.depth = this.pitchClasses.length + 1;
@@ -14649,7 +14650,7 @@
             n = r.buffer([e, this.pitchClasses.length + 1], "int32");
           for (let t = 0; t < e; ++t) n.set(1, t, -1);
           return (
-            t.notes.forEach(t => {
+            t.notes.forEach((t) => {
               n.set(1, t.quantizedStartStep, this.pitchToClass.get(t.pitch)),
                 n.set(0, t.quantizedStartStep, -1);
             }),
@@ -14669,7 +14670,7 @@
                     pitch: this.pitchClasses[e][0],
                     quantizedStartStep: t,
                     quantizedEndStep: t + 1,
-                    isDrum: !0
+                    isDrum: !0,
                   })
                 );
           return (r.totalQuantizedSteps = s.length), r;
@@ -14691,7 +14692,7 @@
                     pitch: this.pitchClasses[n][0],
                     quantizedStartStep: e,
                     quantizedEndStep: e + 1,
-                    isDrum: !0
+                    isDrum: !0,
                   })
                 );
           }
@@ -14777,7 +14778,7 @@
                   pitch: l[1][0],
                   quantizedStartStep: t,
                   quantizedEndStep: t + 1,
-                  isDrum: !0
+                  isDrum: !0,
                 })
               );
           return (r.totalQuantizedSteps = o.length), r;
@@ -14817,7 +14818,7 @@
               i.a.Note.create({
                 pitch: u,
                 quantizedStartStep: t,
-                quantizedEndStep: t + 1
+                quantizedEndStep: t + 1,
               })
             );
           }
@@ -14848,24 +14849,24 @@
             i = c.clone(t);
           return (
             (e.notes = t.notes.filter(
-              t =>
+              (t) =>
                 !t.isDrum &&
                 t.program >= this.MEL_PROG_RANGE[0] &&
                 t.program <= this.MEL_PROG_RANGE[1]
             )),
             (n.notes = t.notes.filter(
-              t =>
+              (t) =>
                 !t.isDrum &&
                 t.program >= this.BASS_PROG_RANGE[0] &&
                 t.program <= this.BASS_PROG_RANGE[1]
             )),
-            (i.notes = t.notes.filter(t => t.isDrum)),
+            (i.notes = t.notes.filter((t) => t.isDrum)),
             r.tidy(() =>
               r.concat(
                 [
                   this.melConverter.toTensor(e),
                   this.bassConverter.toTensor(n),
-                  this.drumsConverter.toTensor(i)
+                  this.drumsConverter.toTensor(i),
                 ],
                 -1
               )
@@ -14878,26 +14879,26 @@
               [
                 this.melConverter.depth,
                 this.bassConverter.depth,
-                this.drumsConverter.depth
+                this.drumsConverter.depth,
               ],
               -1
             ),
             o = await this.melConverter.toNoteSequence(i[0], e, n);
-          o.notes.forEach(t => {
+          o.notes.forEach((t) => {
             (t.instrument = 0), (t.program = 0);
           });
           const s = await this.bassConverter.toNoteSequence(i[1], e, n);
           o.notes.push(
             ...s.notes.map(
-              t => (
+              (t) => (
                 (t.instrument = 1), (t.program = this.BASS_PROG_RANGE[0]), t
               )
             )
           );
           const a = await this.drumsConverter.toNoteSequence(i[2], e, n);
           return (
-            o.notes.push(...a.notes.map(t => ((t.instrument = 2), t))),
-            i.forEach(t => t.dispose()),
+            o.notes.push(...a.notes.map((t) => ((t.instrument = 2), t))),
+            i.forEach((t) => t.dispose()),
             o
           );
         }
@@ -14957,7 +14958,10 @@
           } else n = r.buffer([1], "int32", new Int32Array([this.endToken]));
           return r.tidy(() => {
             const t = r.oneHot(n.toTensor(), this.depth);
-            return t.pad([[0, e - t.shape[0]], [0, 0]]);
+            return t.pad([
+              [0, e - t.shape[0]],
+              [0, 0],
+            ]);
           });
         }
         toTensor(t) {
@@ -14966,17 +14970,15 @@
             t.quantizationInfo.stepsPerQuarter !== this.stepsPerQuarter)
           )
             throw new Error(
-              `Steps per quarter note mismatch: ${
-                t.quantizationInfo.stepsPerQuarter
-              } != ${this.stepsPerQuarter}`
+              `Steps per quarter note mismatch: ${t.quantizationInfo.stepsPerQuarter} != ${this.stepsPerQuarter}`
             );
           const e = c.clone(t);
           e.notes = t.notes.filter(
-            t => t.pitch >= this.minPitch && t.pitch <= this.maxPitch
+            (t) => t.pitch >= this.minPitch && t.pitch <= this.maxPitch
           );
-          const n = new Set(e.notes.map(t => t.instrument)),
+          const n = new Set(e.notes.map((t) => t.instrument)),
             i = Array.from(n)
-              .map(t =>
+              .map((t) =>
                 u.Performance.fromNoteSequence(
                   e,
                   this.totalSteps,
@@ -14989,36 +14991,41 @@
               );
           for (; i.length > this.numSegments; ) i.pop();
           for (
-            i.forEach(t => t.setNumSteps(this.totalSteps));
+            i.forEach((t) => t.setNumSteps(this.totalSteps));
             i.length < this.numSegments;
 
           )
             i.push(void 0);
-          return r.tidy(() => r.concat(i.map(t => this.trackToTensor(t)), 0));
+          return r.tidy(() =>
+            r.concat(
+              i.map((t) => this.trackToTensor(t)),
+              0
+            )
+          );
         }
         tokensToTrack(t) {
           const e = t.indexOf(this.endToken),
             n = e >= 0 ? e : t.length,
             r = t.slice(0, n),
-            i = r.filter(t => t < this.performanceEventDepth),
-            o = r.filter(t => t >= this.performanceEventDepth),
+            i = r.filter((t) => t < this.performanceEventDepth),
+            o = r.filter((t) => t >= this.performanceEventDepth),
             [s, a] = o.length
               ? o[0] - this.performanceEventDepth < this.numPrograms - 1
                 ? [o[0] - this.performanceEventDepth, !1]
                 : [0, !0]
               : [0, !1],
-            c = Array.from(i).map(t => {
+            c = Array.from(i).map((t) => {
               if (t < this.numPitches)
                 return { type: "note-on", pitch: this.minPitch + t };
               if (t < 2 * this.numPitches)
                 return {
                   type: "note-off",
-                  pitch: this.minPitch + t - this.numPitches
+                  pitch: this.minPitch + t - this.numPitches,
                 };
               if (t < 2 * this.numPitches + this.totalSteps)
                 return {
                   type: "time-shift",
-                  steps: t - 2 * this.numPitches + 1
+                  steps: t - 2 * this.numPitches + 1,
                 };
               if (
                 t <
@@ -15026,7 +15033,7 @@
               )
                 return {
                   type: "velocity-change",
-                  velocityBin: t - 2 * this.numPitches - this.totalSteps + 1
+                  velocityBin: t - 2 * this.numPitches - this.totalSteps + 1,
                 };
               throw new Error("Invalid performance event token: " + t);
             });
@@ -15043,13 +15050,15 @@
           i.totalQuantizedSteps = this.totalSteps;
           const o = r.tidy(() => r.split(t.argMax(1), this.numSegments));
           return (
-            (await Promise.all(
-              o.map(async t => {
-                const e = await t.data(),
-                  n = this.tokensToTrack(e);
-                return t.dispose(), n;
-              })
-            )).forEach((t, e) => {
+            (
+              await Promise.all(
+                o.map(async (t) => {
+                  const e = await t.data(),
+                    n = this.tokensToTrack(e);
+                  return t.dispose(), n;
+                })
+              )
+            ).forEach((t, e) => {
               t.setNumSteps(this.totalSteps),
                 i.notes.push(...t.toNoteSequence(e).notes);
             }),
@@ -15066,7 +15075,7 @@
             (this.pitchClasses = t.pitchClasses || l),
             (this.pitchToClass = new Map());
           for (let t = 0; t < this.pitchClasses.length; ++t)
-            this.pitchClasses[t].forEach(e => {
+            this.pitchClasses[t].forEach((e) => {
               this.pitchToClass.set(e, t);
             });
           (this.humanize = t.humanize || !1),
@@ -15086,13 +15095,14 @@
             s = 60 / i / this.stepsPerQuarter,
             a = [];
           for (let t = 0; t < n; ++t) a.push(new Map());
-          e.notes.forEach(t => {
+          e.notes.forEach((t) => {
             if (!this.tapify && !this.pitchToClass.has(t.pitch)) return;
             const e = t.quantizedStartStep;
             if (e >= a.length)
               throw Error(
-                `Model does not support sequences with more than ${n} steps (${n *
-                  s} seconds at qpm ${i}).`
+                `Model does not support sequences with more than ${n} steps (${
+                  n * s
+                } seconds at qpm ${i}).`
               );
             const r = this.tapify
               ? this.TAPIFY_CHANNEL
@@ -15159,7 +15169,7 @@
                     startTime: (t - r) * s,
                     endTime: (t - r + 1) * s,
                     velocity: e,
-                    isDrum: !0
+                    isDrum: !0,
                   })
                 );
               }
@@ -15169,10 +15179,10 @@
         }
       }
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "Performance", function() {
+        n.d(e, "Performance", function () {
           return a;
         });
       var r = n(2),
@@ -15200,12 +15210,12 @@
             c = u.map((t, e) => ({
               step: t.quantizedStartStep,
               index: e,
-              isOffset: 0
+              isOffset: 0,
             })),
             l = u.map((t, e) => ({
               step: t.quantizedEndStep,
               index: e,
-              isOffset: 1
+              isOffset: 1,
             })),
             h = c
               .concat(l)
@@ -15242,16 +15252,17 @@
             }
           }
           const g =
-              !!s.some(t => t.isDrum) && (!s.some(t => !t.isDrum) || void 0),
-            S = Array.from(new Set(s.map(t => t.program))),
+              !!s.some((t) => t.isDrum) &&
+              (!s.some((t) => !t.isDrum) || void 0),
+            S = Array.from(new Set(s.map((t) => t.program))),
             y = g || 1 !== S.length ? void 0 : S[0],
             b = new a(f, e, n, y, g);
           return b.setNumSteps(t.totalQuantizedSteps), b;
         }
         getNumSteps() {
           return this.events
-            .filter(t => "time-shift" === t.type)
-            .map(t => t.steps)
+            .filter((t) => "time-shift" === t.type)
+            .map((t) => t.steps)
             .reduce((t, e) => t + e, 0);
         }
         setNumSteps(t) {
@@ -15270,7 +15281,7 @@
                   (e = t))
                 : (this.events.push({
                     type: "time-shift",
-                    steps: this.maxShiftSteps
+                    steps: this.maxShiftSteps,
                   }),
                   (e += this.maxShiftSteps));
           } else if (e > t)
@@ -15311,20 +15322,16 @@
                           quantizedStartStep: e,
                           quantizedEndStep: o,
                           program: this.program,
-                          isDrum: this.isDrum
+                          isDrum: this.isDrum,
                         })
                       )
                     : s.log(
-                        `Ignoring zero-length note: (pitch = ${
-                          c.pitch
-                        }, step = ${o})`,
+                        `Ignoring zero-length note: (pitch = ${c.pitch}, step = ${o})`,
                         "Performance"
                       );
                 } else
                   s.log(
-                    `Ignoring note-off with no previous note-on:(pitch = ${
-                      c.pitch
-                    }, step = ${o})`,
+                    `Ignoring note-off with no previous note-on:(pitch = ${c.pitch}, step = ${o})`,
                     "Performance"
                   );
                 break;
@@ -15351,7 +15358,7 @@
                         quantizedStartStep: a,
                         quantizedEndStep: o,
                         program: this.program,
-                        isDrum: this.isDrum
+                        isDrum: this.isDrum,
                       })
                     )
                   : s.log(
@@ -15365,7 +15372,7 @@
         }
       }
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = h;
       var r,
@@ -15389,14 +15396,14 @@
           (this.tail = this.head),
           (this.states = null);
       }
-      var p = function() {
+      var p = function () {
         return i.Buffer
-          ? function() {
-              return (h.create = function() {
+          ? function () {
+              return (h.create = function () {
                 return new r();
               })();
             }
-          : function() {
+          : function () {
               return new h();
             };
       };
@@ -15421,22 +15428,22 @@
           (e[n + 3] = t >>> 24);
       }
       (h.create = p()),
-        (h.alloc = function(t) {
+        (h.alloc = function (t) {
           return new i.Array(t);
         }),
         i.Array !== Array &&
           (h.alloc = i.pool(h.alloc, i.Array.prototype.subarray)),
-        (h.prototype._push = function(t, e, n) {
+        (h.prototype._push = function (t, e, n) {
           return (
             (this.tail = this.tail.next = new u(t, e, n)), (this.len += e), this
           );
         }),
         (m.prototype = Object.create(u.prototype)),
-        (m.prototype.fn = function(t, e, n) {
+        (m.prototype.fn = function (t, e, n) {
           for (; t > 127; ) (e[n++] = (127 & t) | 128), (t >>>= 7);
           e[n] = t;
         }),
-        (h.prototype.uint32 = function(t) {
+        (h.prototype.uint32 = function (t) {
           return (
             (this.len += (this.tail = this.tail.next = new m(
               (t >>>= 0) < 128
@@ -15453,47 +15460,47 @@
             this
           );
         }),
-        (h.prototype.int32 = function(t) {
+        (h.prototype.int32 = function (t) {
           return t < 0 ? this._push(d, 10, o.fromNumber(t)) : this.uint32(t);
         }),
-        (h.prototype.sint32 = function(t) {
+        (h.prototype.sint32 = function (t) {
           return this.uint32(((t << 1) ^ (t >> 31)) >>> 0);
         }),
-        (h.prototype.uint64 = function(t) {
+        (h.prototype.uint64 = function (t) {
           var e = o.from(t);
           return this._push(d, e.length(), e);
         }),
         (h.prototype.int64 = h.prototype.uint64),
-        (h.prototype.sint64 = function(t) {
+        (h.prototype.sint64 = function (t) {
           var e = o.from(t).zzEncode();
           return this._push(d, e.length(), e);
         }),
-        (h.prototype.bool = function(t) {
+        (h.prototype.bool = function (t) {
           return this._push(f, 1, t ? 1 : 0);
         }),
-        (h.prototype.fixed32 = function(t) {
+        (h.prototype.fixed32 = function (t) {
           return this._push(g, 4, t >>> 0);
         }),
         (h.prototype.sfixed32 = h.prototype.fixed32),
-        (h.prototype.fixed64 = function(t) {
+        (h.prototype.fixed64 = function (t) {
           var e = o.from(t);
           return this._push(g, 4, e.lo)._push(g, 4, e.hi);
         }),
         (h.prototype.sfixed64 = h.prototype.fixed64),
-        (h.prototype.float = function(t) {
+        (h.prototype.float = function (t) {
           return this._push(i.float.writeFloatLE, 4, t);
         }),
-        (h.prototype.double = function(t) {
+        (h.prototype.double = function (t) {
           return this._push(i.float.writeDoubleLE, 8, t);
         });
       var S = i.Array.prototype.set
-        ? function(t, e, n) {
+        ? function (t, e, n) {
             e.set(t, n);
           }
-        : function(t, e, n) {
+        : function (t, e, n) {
             for (var r = 0; r < t.length; ++r) e[n + r] = t[r];
           };
-      (h.prototype.bytes = function(t) {
+      (h.prototype.bytes = function (t) {
         var e = t.length >>> 0;
         if (!e) return this._push(f, 1, 0);
         if (i.isString(t)) {
@@ -15502,11 +15509,11 @@
         }
         return this.uint32(e)._push(S, e, t);
       }),
-        (h.prototype.string = function(t) {
+        (h.prototype.string = function (t) {
           var e = a.length(t);
           return e ? this.uint32(e)._push(a.write, e, t) : this._push(f, 1, 0);
         }),
-        (h.prototype.fork = function() {
+        (h.prototype.fork = function () {
           return (
             (this.states = new l(this)),
             (this.head = this.tail = new u(c, 0, 0)),
@@ -15514,7 +15521,7 @@
             this
           );
         }),
-        (h.prototype.reset = function() {
+        (h.prototype.reset = function () {
           return (
             this.states
               ? ((this.head = this.states.head),
@@ -15525,7 +15532,7 @@
             this
           );
         }),
-        (h.prototype.ldelim = function() {
+        (h.prototype.ldelim = function () {
           var t = this.head,
             e = this.tail,
             n = this.len;
@@ -15535,7 +15542,7 @@
             this
           );
         }),
-        (h.prototype.finish = function() {
+        (h.prototype.finish = function () {
           for (
             var t = this.head.next, e = this.constructor.alloc(this.len), n = 0;
             t;
@@ -15544,11 +15551,11 @@
             t.fn(t.val, e, n), (n += t.len), (t = t.next);
           return e;
         }),
-        (h._configure = function(t) {
+        (h._configure = function (t) {
           (r = t), (h.create = p()), r._configure();
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = u;
       var r,
@@ -15566,19 +15573,19 @@
       var c,
         l =
           "undefined" != typeof Uint8Array
-            ? function(t) {
+            ? function (t) {
                 if (t instanceof Uint8Array || Array.isArray(t))
                   return new u(t);
                 throw Error("illegal buffer");
               }
-            : function(t) {
+            : function (t) {
                 if (Array.isArray(t)) return new u(t);
                 throw Error("illegal buffer");
               },
-        h = function() {
+        h = function () {
           return i.Buffer
-            ? function(t) {
-                return (u.create = function(t) {
+            ? function (t) {
+                return (u.create = function (t) {
                   return i.Buffer.isBuffer(t) ? new r(t) : l(t);
                 })(t);
               }
@@ -15648,65 +15655,67 @@
       (u.create = h()),
         (u.prototype._slice =
           i.Array.prototype.subarray || i.Array.prototype.slice),
-        (u.prototype.uint32 = ((c = 4294967295),
-        function() {
-          if (
-            ((c = (127 & this.buf[this.pos]) >>> 0), this.buf[this.pos++] < 128)
-          )
+        (u.prototype.uint32 =
+          ((c = 4294967295),
+          function () {
+            if (
+              ((c = (127 & this.buf[this.pos]) >>> 0),
+              this.buf[this.pos++] < 128)
+            )
+              return c;
+            if (
+              ((c = (c | ((127 & this.buf[this.pos]) << 7)) >>> 0),
+              this.buf[this.pos++] < 128)
+            )
+              return c;
+            if (
+              ((c = (c | ((127 & this.buf[this.pos]) << 14)) >>> 0),
+              this.buf[this.pos++] < 128)
+            )
+              return c;
+            if (
+              ((c = (c | ((127 & this.buf[this.pos]) << 21)) >>> 0),
+              this.buf[this.pos++] < 128)
+            )
+              return c;
+            if (
+              ((c = (c | ((15 & this.buf[this.pos]) << 28)) >>> 0),
+              this.buf[this.pos++] < 128)
+            )
+              return c;
+            if ((this.pos += 5) > this.len)
+              throw ((this.pos = this.len), a(this, 10));
             return c;
-          if (
-            ((c = (c | ((127 & this.buf[this.pos]) << 7)) >>> 0),
-            this.buf[this.pos++] < 128)
-          )
-            return c;
-          if (
-            ((c = (c | ((127 & this.buf[this.pos]) << 14)) >>> 0),
-            this.buf[this.pos++] < 128)
-          )
-            return c;
-          if (
-            ((c = (c | ((127 & this.buf[this.pos]) << 21)) >>> 0),
-            this.buf[this.pos++] < 128)
-          )
-            return c;
-          if (
-            ((c = (c | ((15 & this.buf[this.pos]) << 28)) >>> 0),
-            this.buf[this.pos++] < 128)
-          )
-            return c;
-          if ((this.pos += 5) > this.len)
-            throw ((this.pos = this.len), a(this, 10));
-          return c;
-        })),
-        (u.prototype.int32 = function() {
+          })),
+        (u.prototype.int32 = function () {
           return 0 | this.uint32();
         }),
-        (u.prototype.sint32 = function() {
+        (u.prototype.sint32 = function () {
           var t = this.uint32();
           return ((t >>> 1) ^ -(1 & t)) | 0;
         }),
-        (u.prototype.bool = function() {
+        (u.prototype.bool = function () {
           return 0 !== this.uint32();
         }),
-        (u.prototype.fixed32 = function() {
+        (u.prototype.fixed32 = function () {
           if (this.pos + 4 > this.len) throw a(this, 4);
           return f(this.buf, (this.pos += 4));
         }),
-        (u.prototype.sfixed32 = function() {
+        (u.prototype.sfixed32 = function () {
           if (this.pos + 4 > this.len) throw a(this, 4);
           return 0 | f(this.buf, (this.pos += 4));
         }),
-        (u.prototype.float = function() {
+        (u.prototype.float = function () {
           if (this.pos + 4 > this.len) throw a(this, 4);
           var t = i.float.readFloatLE(this.buf, this.pos);
           return (this.pos += 4), t;
         }),
-        (u.prototype.double = function() {
+        (u.prototype.double = function () {
           if (this.pos + 8 > this.len) throw a(this, 4);
           var t = i.float.readDoubleLE(this.buf, this.pos);
           return (this.pos += 8), t;
         }),
-        (u.prototype.bytes = function() {
+        (u.prototype.bytes = function () {
           var t = this.uint32(),
             e = this.pos,
             n = this.pos + t;
@@ -15720,11 +15729,11 @@
               : this._slice.call(this.buf, e, n)
           );
         }),
-        (u.prototype.string = function() {
+        (u.prototype.string = function () {
           var t = this.bytes();
           return s.read(t, 0, t.length);
         }),
-        (u.prototype.skip = function(t) {
+        (u.prototype.skip = function (t) {
           if ("number" == typeof t) {
             if (this.pos + t > this.len) throw a(this, t);
             this.pos += t;
@@ -15734,7 +15743,7 @@
             } while (128 & this.buf[this.pos++]);
           return this;
         }),
-        (u.prototype.skipType = function(t) {
+        (u.prototype.skipType = function (t) {
           switch (t) {
             case 0:
               this.skip();
@@ -15756,32 +15765,29 @@
           }
           return this;
         }),
-        (u._configure = function(t) {
+        (u._configure = function (t) {
           (r = t), (u.create = h()), r._configure();
           var e = i.Long ? "toLong" : "toNumber";
           i.merge(u.prototype, {
-            int64: function() {
+            int64: function () {
               return p.call(this)[e](!1);
             },
-            uint64: function() {
+            uint64: function () {
               return p.call(this)[e](!0);
             },
-            sint64: function() {
-              return p
-                .call(this)
-                .zzDecode()
-                [e](!1);
+            sint64: function () {
+              return p.call(this).zzDecode()[e](!1);
             },
-            fixed64: function() {
+            fixed64: function () {
               return m.call(this)[e](!0);
             },
-            sfixed64: function() {
+            sfixed64: function () {
               return m.call(this)[e](!1);
-            }
+            },
           });
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       var r,
         i,
@@ -15790,3669 +15796,331 @@
         a = o.Writer,
         u = o.util,
         c = o.roots.default || (o.roots.default = {});
-      (c.tensorflow = (((i = {}).magenta = (((r = {}).NoteSequence = (function() {
-        function t(t) {
-          if (
-            ((this.timeSignatures = []),
-            (this.keySignatures = []),
-            (this.tempos = []),
-            (this.notes = []),
-            (this.pitchBends = []),
-            (this.controlChanges = []),
-            (this.partInfos = []),
-            (this.textAnnotations = []),
-            (this.sectionAnnotations = []),
-            (this.sectionGroups = []),
-            t)
-          )
-            for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-              null != t[e[n]] && (this[e[n]] = t[e[n]]);
-        }
-        var e, n;
-        return (
-          (t.prototype.id = ""),
-          (t.prototype.filename = ""),
-          (t.prototype.referenceNumber = u.Long
-            ? u.Long.fromBits(0, 0, !1)
-            : 0),
-          (t.prototype.collectionName = ""),
-          (t.prototype.ticksPerQuarter = 0),
-          (t.prototype.timeSignatures = u.emptyArray),
-          (t.prototype.keySignatures = u.emptyArray),
-          (t.prototype.tempos = u.emptyArray),
-          (t.prototype.notes = u.emptyArray),
-          (t.prototype.totalTime = 0),
-          (t.prototype.totalQuantizedSteps = u.Long
-            ? u.Long.fromBits(0, 0, !1)
-            : 0),
-          (t.prototype.pitchBends = u.emptyArray),
-          (t.prototype.controlChanges = u.emptyArray),
-          (t.prototype.partInfos = u.emptyArray),
-          (t.prototype.sourceInfo = null),
-          (t.prototype.textAnnotations = u.emptyArray),
-          (t.prototype.sectionAnnotations = u.emptyArray),
-          (t.prototype.sectionGroups = u.emptyArray),
-          (t.prototype.quantizationInfo = null),
-          (t.prototype.subsequenceInfo = null),
-          (t.prototype.sequenceMetadata = null),
-          (t.create = function(e) {
-            return new t(e);
-          }),
-          (t.encode = function(t, e) {
-            if (
-              (e || (e = a.create()),
-              null != t.id &&
-                t.hasOwnProperty("id") &&
-                e.uint32(10).string(t.id),
-              null != t.filename &&
-                t.hasOwnProperty("filename") &&
-                e.uint32(18).string(t.filename),
-              null != t.collectionName &&
-                t.hasOwnProperty("collectionName") &&
-                e.uint32(26).string(t.collectionName),
-              null != t.ticksPerQuarter &&
-                t.hasOwnProperty("ticksPerQuarter") &&
-                e.uint32(32).int32(t.ticksPerQuarter),
-              null != t.timeSignatures && t.timeSignatures.length)
-            )
-              for (var n = 0; n < t.timeSignatures.length; ++n)
-                c.tensorflow.magenta.NoteSequence.TimeSignature.encode(
-                  t.timeSignatures[n],
-                  e.uint32(42).fork()
-                ).ldelim();
-            if (null != t.keySignatures && t.keySignatures.length)
-              for (n = 0; n < t.keySignatures.length; ++n)
-                c.tensorflow.magenta.NoteSequence.KeySignature.encode(
-                  t.keySignatures[n],
-                  e.uint32(50).fork()
-                ).ldelim();
-            if (null != t.tempos && t.tempos.length)
-              for (n = 0; n < t.tempos.length; ++n)
-                c.tensorflow.magenta.NoteSequence.Tempo.encode(
-                  t.tempos[n],
-                  e.uint32(58).fork()
-                ).ldelim();
-            if (null != t.notes && t.notes.length)
-              for (n = 0; n < t.notes.length; ++n)
-                c.tensorflow.magenta.NoteSequence.Note.encode(
-                  t.notes[n],
-                  e.uint32(66).fork()
-                ).ldelim();
-            if (
-              (null != t.totalTime &&
-                t.hasOwnProperty("totalTime") &&
-                e.uint32(73).double(t.totalTime),
-              null != t.pitchBends && t.pitchBends.length)
-            )
-              for (n = 0; n < t.pitchBends.length; ++n)
-                c.tensorflow.magenta.NoteSequence.PitchBend.encode(
-                  t.pitchBends[n],
-                  e.uint32(82).fork()
-                ).ldelim();
-            if (null != t.controlChanges && t.controlChanges.length)
-              for (n = 0; n < t.controlChanges.length; ++n)
-                c.tensorflow.magenta.NoteSequence.ControlChange.encode(
-                  t.controlChanges[n],
-                  e.uint32(90).fork()
-                ).ldelim();
-            if (null != t.partInfos && t.partInfos.length)
-              for (n = 0; n < t.partInfos.length; ++n)
-                c.tensorflow.magenta.NoteSequence.PartInfo.encode(
-                  t.partInfos[n],
-                  e.uint32(98).fork()
-                ).ldelim();
-            if (
-              (null != t.sourceInfo &&
-                t.hasOwnProperty("sourceInfo") &&
-                c.tensorflow.magenta.NoteSequence.SourceInfo.encode(
-                  t.sourceInfo,
-                  e.uint32(106).fork()
-                ).ldelim(),
-              null != t.textAnnotations && t.textAnnotations.length)
-            )
-              for (n = 0; n < t.textAnnotations.length; ++n)
-                c.tensorflow.magenta.NoteSequence.TextAnnotation.encode(
-                  t.textAnnotations[n],
-                  e.uint32(114).fork()
-                ).ldelim();
-            if (
-              (null != t.quantizationInfo &&
-                t.hasOwnProperty("quantizationInfo") &&
-                c.tensorflow.magenta.NoteSequence.QuantizationInfo.encode(
-                  t.quantizationInfo,
-                  e.uint32(122).fork()
-                ).ldelim(),
-              null != t.totalQuantizedSteps &&
-                t.hasOwnProperty("totalQuantizedSteps") &&
-                e.uint32(128).int64(t.totalQuantizedSteps),
-              null != t.subsequenceInfo &&
-                t.hasOwnProperty("subsequenceInfo") &&
-                c.tensorflow.magenta.NoteSequence.SubsequenceInfo.encode(
-                  t.subsequenceInfo,
-                  e.uint32(138).fork()
-                ).ldelim(),
-              null != t.referenceNumber &&
-                t.hasOwnProperty("referenceNumber") &&
-                e.uint32(144).int64(t.referenceNumber),
-              null != t.sequenceMetadata &&
-                t.hasOwnProperty("sequenceMetadata") &&
-                c.tensorflow.magenta.SequenceMetadata.encode(
-                  t.sequenceMetadata,
-                  e.uint32(154).fork()
-                ).ldelim(),
-              null != t.sectionAnnotations && t.sectionAnnotations.length)
-            )
-              for (n = 0; n < t.sectionAnnotations.length; ++n)
-                c.tensorflow.magenta.NoteSequence.SectionAnnotation.encode(
-                  t.sectionAnnotations[n],
-                  e.uint32(162).fork()
-                ).ldelim();
-            if (null != t.sectionGroups && t.sectionGroups.length)
-              for (n = 0; n < t.sectionGroups.length; ++n)
-                c.tensorflow.magenta.NoteSequence.SectionGroup.encode(
-                  t.sectionGroups[n],
-                  e.uint32(170).fork()
-                ).ldelim();
-            return e;
-          }),
-          (t.encodeDelimited = function(t, e) {
-            return this.encode(t, e).ldelim();
-          }),
-          (t.decode = function(t, e) {
-            t instanceof s || (t = s.create(t));
-            for (
-              var n = void 0 === e ? t.len : t.pos + e,
-                r = new c.tensorflow.magenta.NoteSequence();
-              t.pos < n;
-
-            ) {
-              var i = t.uint32();
-              switch (i >>> 3) {
-                case 1:
-                  r.id = t.string();
-                  break;
-                case 2:
-                  r.filename = t.string();
-                  break;
-                case 18:
-                  r.referenceNumber = u.Long ? t.int64().toNumber() : t.int64();
-                  break;
-                case 3:
-                  r.collectionName = t.string();
-                  break;
-                case 4:
-                  r.ticksPerQuarter = t.int32();
-                  break;
-                case 5:
-                  (r.timeSignatures && r.timeSignatures.length) ||
-                    (r.timeSignatures = []),
-                    r.timeSignatures.push(
-                      c.tensorflow.magenta.NoteSequence.TimeSignature.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 6:
-                  (r.keySignatures && r.keySignatures.length) ||
-                    (r.keySignatures = []),
-                    r.keySignatures.push(
-                      c.tensorflow.magenta.NoteSequence.KeySignature.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 7:
-                  (r.tempos && r.tempos.length) || (r.tempos = []),
-                    r.tempos.push(
-                      c.tensorflow.magenta.NoteSequence.Tempo.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 8:
-                  (r.notes && r.notes.length) || (r.notes = []),
-                    r.notes.push(
-                      c.tensorflow.magenta.NoteSequence.Note.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 9:
-                  r.totalTime = t.double();
-                  break;
-                case 16:
-                  r.totalQuantizedSteps = u.Long
-                    ? t.int64().toNumber()
-                    : t.int64();
-                  break;
-                case 10:
-                  (r.pitchBends && r.pitchBends.length) || (r.pitchBends = []),
-                    r.pitchBends.push(
-                      c.tensorflow.magenta.NoteSequence.PitchBend.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 11:
-                  (r.controlChanges && r.controlChanges.length) ||
-                    (r.controlChanges = []),
-                    r.controlChanges.push(
-                      c.tensorflow.magenta.NoteSequence.ControlChange.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 12:
-                  (r.partInfos && r.partInfos.length) || (r.partInfos = []),
-                    r.partInfos.push(
-                      c.tensorflow.magenta.NoteSequence.PartInfo.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 13:
-                  r.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.decode(
-                    t,
-                    t.uint32()
-                  );
-                  break;
-                case 14:
-                  (r.textAnnotations && r.textAnnotations.length) ||
-                    (r.textAnnotations = []),
-                    r.textAnnotations.push(
-                      c.tensorflow.magenta.NoteSequence.TextAnnotation.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 20:
-                  (r.sectionAnnotations && r.sectionAnnotations.length) ||
-                    (r.sectionAnnotations = []),
-                    r.sectionAnnotations.push(
-                      c.tensorflow.magenta.NoteSequence.SectionAnnotation.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 21:
-                  (r.sectionGroups && r.sectionGroups.length) ||
-                    (r.sectionGroups = []),
-                    r.sectionGroups.push(
-                      c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
-                        t,
-                        t.uint32()
-                      )
-                    );
-                  break;
-                case 15:
-                  r.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.decode(
-                    t,
-                    t.uint32()
-                  );
-                  break;
-                case 17:
-                  r.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.decode(
-                    t,
-                    t.uint32()
-                  );
-                  break;
-                case 19:
-                  r.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.decode(
-                    t,
-                    t.uint32()
-                  );
-                  break;
-                default:
-                  t.skipType(7 & i);
-              }
-            }
-            return r;
-          }),
-          (t.decodeDelimited = function(t) {
-            return t instanceof s || (t = new s(t)), this.decode(t, t.uint32());
-          }),
-          (t.verify = function(t) {
-            if ("object" != typeof t || null === t) return "object expected";
-            if (null != t.id && t.hasOwnProperty("id") && !u.isString(t.id))
-              return "id: string expected";
-            if (
-              null != t.filename &&
-              t.hasOwnProperty("filename") &&
-              !u.isString(t.filename)
-            )
-              return "filename: string expected";
-            if (
-              null != t.referenceNumber &&
-              t.hasOwnProperty("referenceNumber") &&
-              !(
-                u.isInteger(t.referenceNumber) ||
-                (t.referenceNumber &&
-                  u.isInteger(t.referenceNumber.low) &&
-                  u.isInteger(t.referenceNumber.high))
-              )
-            )
-              return "referenceNumber: integer|Long expected";
-            if (
-              null != t.collectionName &&
-              t.hasOwnProperty("collectionName") &&
-              !u.isString(t.collectionName)
-            )
-              return "collectionName: string expected";
-            if (
-              null != t.ticksPerQuarter &&
-              t.hasOwnProperty("ticksPerQuarter") &&
-              !u.isInteger(t.ticksPerQuarter)
-            )
-              return "ticksPerQuarter: integer expected";
-            if (
-              null != t.timeSignatures &&
-              t.hasOwnProperty("timeSignatures")
-            ) {
-              if (!Array.isArray(t.timeSignatures))
-                return "timeSignatures: array expected";
-              for (var e = 0; e < t.timeSignatures.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.TimeSignature.verify(
-                    t.timeSignatures[e]
-                  ))
-                )
-                  return "timeSignatures." + n;
-            }
-            if (null != t.keySignatures && t.hasOwnProperty("keySignatures")) {
-              if (!Array.isArray(t.keySignatures))
-                return "keySignatures: array expected";
-              for (e = 0; e < t.keySignatures.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.KeySignature.verify(
-                    t.keySignatures[e]
-                  ))
-                )
-                  return "keySignatures." + n;
-            }
-            if (null != t.tempos && t.hasOwnProperty("tempos")) {
-              if (!Array.isArray(t.tempos)) return "tempos: array expected";
-              for (e = 0; e < t.tempos.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.Tempo.verify(
-                    t.tempos[e]
-                  ))
-                )
-                  return "tempos." + n;
-            }
-            if (null != t.notes && t.hasOwnProperty("notes")) {
-              if (!Array.isArray(t.notes)) return "notes: array expected";
-              for (e = 0; e < t.notes.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.Note.verify(
-                    t.notes[e]
-                  ))
-                )
-                  return "notes." + n;
-            }
-            if (
-              null != t.totalTime &&
-              t.hasOwnProperty("totalTime") &&
-              "number" != typeof t.totalTime
-            )
-              return "totalTime: number expected";
-            if (
-              null != t.totalQuantizedSteps &&
-              t.hasOwnProperty("totalQuantizedSteps") &&
-              !(
-                u.isInteger(t.totalQuantizedSteps) ||
-                (t.totalQuantizedSteps &&
-                  u.isInteger(t.totalQuantizedSteps.low) &&
-                  u.isInteger(t.totalQuantizedSteps.high))
-              )
-            )
-              return "totalQuantizedSteps: integer|Long expected";
-            if (null != t.pitchBends && t.hasOwnProperty("pitchBends")) {
-              if (!Array.isArray(t.pitchBends))
-                return "pitchBends: array expected";
-              for (e = 0; e < t.pitchBends.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.PitchBend.verify(
-                    t.pitchBends[e]
-                  ))
-                )
-                  return "pitchBends." + n;
-            }
-            if (
-              null != t.controlChanges &&
-              t.hasOwnProperty("controlChanges")
-            ) {
-              if (!Array.isArray(t.controlChanges))
-                return "controlChanges: array expected";
-              for (e = 0; e < t.controlChanges.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.ControlChange.verify(
-                    t.controlChanges[e]
-                  ))
-                )
-                  return "controlChanges." + n;
-            }
-            if (null != t.partInfos && t.hasOwnProperty("partInfos")) {
-              if (!Array.isArray(t.partInfos))
-                return "partInfos: array expected";
-              for (e = 0; e < t.partInfos.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.PartInfo.verify(
-                    t.partInfos[e]
-                  ))
-                )
-                  return "partInfos." + n;
-            }
-            if (
-              null != t.sourceInfo &&
-              t.hasOwnProperty("sourceInfo") &&
-              (n = c.tensorflow.magenta.NoteSequence.SourceInfo.verify(
-                t.sourceInfo
-              ))
-            )
-              return "sourceInfo." + n;
-            if (
-              null != t.textAnnotations &&
-              t.hasOwnProperty("textAnnotations")
-            ) {
-              if (!Array.isArray(t.textAnnotations))
-                return "textAnnotations: array expected";
-              for (e = 0; e < t.textAnnotations.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.TextAnnotation.verify(
-                    t.textAnnotations[e]
-                  ))
-                )
-                  return "textAnnotations." + n;
-            }
-            if (
-              null != t.sectionAnnotations &&
-              t.hasOwnProperty("sectionAnnotations")
-            ) {
-              if (!Array.isArray(t.sectionAnnotations))
-                return "sectionAnnotations: array expected";
-              for (e = 0; e < t.sectionAnnotations.length; ++e)
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.SectionAnnotation.verify(
-                    t.sectionAnnotations[e]
-                  ))
-                )
-                  return "sectionAnnotations." + n;
-            }
-            if (null != t.sectionGroups && t.hasOwnProperty("sectionGroups")) {
-              if (!Array.isArray(t.sectionGroups))
-                return "sectionGroups: array expected";
-              for (e = 0; e < t.sectionGroups.length; ++e) {
-                var n;
-                if (
-                  (n = c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
-                    t.sectionGroups[e]
-                  ))
-                )
-                  return "sectionGroups." + n;
-              }
-            }
-            return null != t.quantizationInfo &&
-              t.hasOwnProperty("quantizationInfo") &&
-              (n = c.tensorflow.magenta.NoteSequence.QuantizationInfo.verify(
-                t.quantizationInfo
-              ))
-              ? "quantizationInfo." + n
-              : null != t.subsequenceInfo &&
-                t.hasOwnProperty("subsequenceInfo") &&
-                (n = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.verify(
-                  t.subsequenceInfo
-                ))
-              ? "subsequenceInfo." + n
-              : null != t.sequenceMetadata &&
-                t.hasOwnProperty("sequenceMetadata") &&
-                (n = c.tensorflow.magenta.SequenceMetadata.verify(
-                  t.sequenceMetadata
-                ))
-              ? "sequenceMetadata." + n
-              : null;
-          }),
-          (t.fromObject = function(t) {
-            if (t instanceof c.tensorflow.magenta.NoteSequence) return t;
-            var e = new c.tensorflow.magenta.NoteSequence();
-            if (
-              (null != t.id && (e.id = String(t.id)),
-              null != t.filename && (e.filename = String(t.filename)),
-              null != t.referenceNumber &&
-                (u.Long
-                  ? ((e.referenceNumber = u.Long.fromValue(
-                      t.referenceNumber
-                    )).unsigned = !1)
-                  : "string" == typeof t.referenceNumber
-                  ? (e.referenceNumber = parseInt(t.referenceNumber, 10))
-                  : "number" == typeof t.referenceNumber
-                  ? (e.referenceNumber = t.referenceNumber)
-                  : "object" == typeof t.referenceNumber &&
-                    (e.referenceNumber = new u.LongBits(
-                      t.referenceNumber.low >>> 0,
-                      t.referenceNumber.high >>> 0
-                    ).toNumber())),
-              null != t.collectionName &&
-                (e.collectionName = String(t.collectionName)),
-              null != t.ticksPerQuarter &&
-                (e.ticksPerQuarter = 0 | t.ticksPerQuarter),
-              t.timeSignatures)
-            ) {
-              if (!Array.isArray(t.timeSignatures))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.timeSignatures: array expected"
-                );
-              e.timeSignatures = [];
-              for (var n = 0; n < t.timeSignatures.length; ++n) {
-                if ("object" != typeof t.timeSignatures[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.timeSignatures: object expected"
-                  );
-                e.timeSignatures[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.TimeSignature.fromObject(
-                  t.timeSignatures[n]
-                );
-              }
-            }
-            if (t.keySignatures) {
-              if (!Array.isArray(t.keySignatures))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.keySignatures: array expected"
-                );
-              for (
-                e.keySignatures = [], n = 0;
-                n < t.keySignatures.length;
-                ++n
-              ) {
-                if ("object" != typeof t.keySignatures[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.keySignatures: object expected"
-                  );
-                e.keySignatures[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.KeySignature.fromObject(
-                  t.keySignatures[n]
-                );
-              }
-            }
-            if (t.tempos) {
-              if (!Array.isArray(t.tempos))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.tempos: array expected"
-                );
-              for (e.tempos = [], n = 0; n < t.tempos.length; ++n) {
-                if ("object" != typeof t.tempos[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.tempos: object expected"
-                  );
-                e.tempos[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.Tempo.fromObject(
-                  t.tempos[n]
-                );
-              }
-            }
-            if (t.notes) {
-              if (!Array.isArray(t.notes))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.notes: array expected"
-                );
-              for (e.notes = [], n = 0; n < t.notes.length; ++n) {
-                if ("object" != typeof t.notes[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.notes: object expected"
-                  );
-                e.notes[n] = c.tensorflow.magenta.NoteSequence.Note.fromObject(
-                  t.notes[n]
-                );
-              }
-            }
-            if (
-              (null != t.totalTime && (e.totalTime = Number(t.totalTime)),
-              null != t.totalQuantizedSteps &&
-                (u.Long
-                  ? ((e.totalQuantizedSteps = u.Long.fromValue(
-                      t.totalQuantizedSteps
-                    )).unsigned = !1)
-                  : "string" == typeof t.totalQuantizedSteps
-                  ? (e.totalQuantizedSteps = parseInt(
-                      t.totalQuantizedSteps,
-                      10
-                    ))
-                  : "number" == typeof t.totalQuantizedSteps
-                  ? (e.totalQuantizedSteps = t.totalQuantizedSteps)
-                  : "object" == typeof t.totalQuantizedSteps &&
-                    (e.totalQuantizedSteps = new u.LongBits(
-                      t.totalQuantizedSteps.low >>> 0,
-                      t.totalQuantizedSteps.high >>> 0
-                    ).toNumber())),
-              t.pitchBends)
-            ) {
-              if (!Array.isArray(t.pitchBends))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.pitchBends: array expected"
-                );
-              for (e.pitchBends = [], n = 0; n < t.pitchBends.length; ++n) {
-                if ("object" != typeof t.pitchBends[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.pitchBends: object expected"
-                  );
-                e.pitchBends[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.PitchBend.fromObject(
-                  t.pitchBends[n]
-                );
-              }
-            }
-            if (t.controlChanges) {
-              if (!Array.isArray(t.controlChanges))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.controlChanges: array expected"
-                );
-              for (
-                e.controlChanges = [], n = 0;
-                n < t.controlChanges.length;
-                ++n
-              ) {
-                if ("object" != typeof t.controlChanges[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.controlChanges: object expected"
-                  );
-                e.controlChanges[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.ControlChange.fromObject(
-                  t.controlChanges[n]
-                );
-              }
-            }
-            if (t.partInfos) {
-              if (!Array.isArray(t.partInfos))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.partInfos: array expected"
-                );
-              for (e.partInfos = [], n = 0; n < t.partInfos.length; ++n) {
-                if ("object" != typeof t.partInfos[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.partInfos: object expected"
-                  );
-                e.partInfos[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.PartInfo.fromObject(
-                  t.partInfos[n]
-                );
-              }
-            }
-            if (null != t.sourceInfo) {
-              if ("object" != typeof t.sourceInfo)
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.sourceInfo: object expected"
-                );
-              e.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.fromObject(
-                t.sourceInfo
-              );
-            }
-            if (t.textAnnotations) {
-              if (!Array.isArray(t.textAnnotations))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.textAnnotations: array expected"
-                );
-              for (
-                e.textAnnotations = [], n = 0;
-                n < t.textAnnotations.length;
-                ++n
-              ) {
-                if ("object" != typeof t.textAnnotations[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.textAnnotations: object expected"
-                  );
-                e.textAnnotations[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.TextAnnotation.fromObject(
-                  t.textAnnotations[n]
-                );
-              }
-            }
-            if (t.sectionAnnotations) {
-              if (!Array.isArray(t.sectionAnnotations))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.sectionAnnotations: array expected"
-                );
-              for (
-                e.sectionAnnotations = [], n = 0;
-                n < t.sectionAnnotations.length;
-                ++n
-              ) {
-                if ("object" != typeof t.sectionAnnotations[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.sectionAnnotations: object expected"
-                  );
-                e.sectionAnnotations[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.SectionAnnotation.fromObject(
-                  t.sectionAnnotations[n]
-                );
-              }
-            }
-            if (t.sectionGroups) {
-              if (!Array.isArray(t.sectionGroups))
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.sectionGroups: array expected"
-                );
-              for (
-                e.sectionGroups = [], n = 0;
-                n < t.sectionGroups.length;
-                ++n
-              ) {
-                if ("object" != typeof t.sectionGroups[n])
-                  throw TypeError(
-                    ".tensorflow.magenta.NoteSequence.sectionGroups: object expected"
-                  );
-                e.sectionGroups[
-                  n
-                ] = c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
-                  t.sectionGroups[n]
-                );
-              }
-            }
-            if (null != t.quantizationInfo) {
-              if ("object" != typeof t.quantizationInfo)
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.quantizationInfo: object expected"
-                );
-              e.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.fromObject(
-                t.quantizationInfo
-              );
-            }
-            if (null != t.subsequenceInfo) {
-              if ("object" != typeof t.subsequenceInfo)
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.subsequenceInfo: object expected"
-                );
-              e.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.fromObject(
-                t.subsequenceInfo
-              );
-            }
-            if (null != t.sequenceMetadata) {
-              if ("object" != typeof t.sequenceMetadata)
-                throw TypeError(
-                  ".tensorflow.magenta.NoteSequence.sequenceMetadata: object expected"
-                );
-              e.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.fromObject(
-                t.sequenceMetadata
-              );
-            }
-            return e;
-          }),
-          (t.toObject = function(t, e) {
-            e || (e = {});
-            var n = {};
-            if (
-              ((e.arrays || e.defaults) &&
-                ((n.timeSignatures = []),
-                (n.keySignatures = []),
-                (n.tempos = []),
-                (n.notes = []),
-                (n.pitchBends = []),
-                (n.controlChanges = []),
-                (n.partInfos = []),
-                (n.textAnnotations = []),
-                (n.sectionAnnotations = []),
-                (n.sectionGroups = [])),
-              e.defaults)
-            ) {
+      (c.tensorflow =
+        (((i = {}).magenta =
+          (((r = {}).NoteSequence = (function () {
+            function t(t) {
               if (
-                ((n.id = ""),
-                (n.filename = ""),
-                (n.collectionName = ""),
-                (n.ticksPerQuarter = 0),
-                (n.totalTime = 0),
-                (n.sourceInfo = null),
-                (n.quantizationInfo = null),
-                u.Long)
-              ) {
-                var r = new u.Long(0, 0, !1);
-                n.totalQuantizedSteps =
-                  e.longs === String
-                    ? r.toString()
-                    : e.longs === Number
-                    ? r.toNumber()
-                    : r;
-              } else n.totalQuantizedSteps = e.longs === String ? "0" : 0;
-              (n.subsequenceInfo = null),
-                u.Long
-                  ? ((r = new u.Long(0, 0, !1)),
-                    (n.referenceNumber =
-                      e.longs === String
-                        ? r.toString()
-                        : e.longs === Number
-                        ? r.toNumber()
-                        : r))
-                  : (n.referenceNumber = e.longs === String ? "0" : 0),
-                (n.sequenceMetadata = null);
-            }
-            if (
-              (null != t.id && t.hasOwnProperty("id") && (n.id = t.id),
-              null != t.filename &&
-                t.hasOwnProperty("filename") &&
-                (n.filename = t.filename),
-              null != t.collectionName &&
-                t.hasOwnProperty("collectionName") &&
-                (n.collectionName = t.collectionName),
-              null != t.ticksPerQuarter &&
-                t.hasOwnProperty("ticksPerQuarter") &&
-                (n.ticksPerQuarter = t.ticksPerQuarter),
-              t.timeSignatures && t.timeSignatures.length)
-            ) {
-              n.timeSignatures = [];
-              for (var i = 0; i < t.timeSignatures.length; ++i)
-                n.timeSignatures[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.TimeSignature.toObject(
-                  t.timeSignatures[i],
-                  e
-                );
-            }
-            if (t.keySignatures && t.keySignatures.length)
-              for (n.keySignatures = [], i = 0; i < t.keySignatures.length; ++i)
-                n.keySignatures[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.KeySignature.toObject(
-                  t.keySignatures[i],
-                  e
-                );
-            if (t.tempos && t.tempos.length)
-              for (n.tempos = [], i = 0; i < t.tempos.length; ++i)
-                n.tempos[i] = c.tensorflow.magenta.NoteSequence.Tempo.toObject(
-                  t.tempos[i],
-                  e
-                );
-            if (t.notes && t.notes.length)
-              for (n.notes = [], i = 0; i < t.notes.length; ++i)
-                n.notes[i] = c.tensorflow.magenta.NoteSequence.Note.toObject(
-                  t.notes[i],
-                  e
-                );
-            if (
-              (null != t.totalTime &&
-                t.hasOwnProperty("totalTime") &&
-                (n.totalTime =
-                  e.json && !isFinite(t.totalTime)
-                    ? String(t.totalTime)
-                    : t.totalTime),
-              t.pitchBends && t.pitchBends.length)
-            )
-              for (n.pitchBends = [], i = 0; i < t.pitchBends.length; ++i)
-                n.pitchBends[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.PitchBend.toObject(
-                  t.pitchBends[i],
-                  e
-                );
-            if (t.controlChanges && t.controlChanges.length)
-              for (
-                n.controlChanges = [], i = 0;
-                i < t.controlChanges.length;
-                ++i
+                ((this.timeSignatures = []),
+                (this.keySignatures = []),
+                (this.tempos = []),
+                (this.notes = []),
+                (this.pitchBends = []),
+                (this.controlChanges = []),
+                (this.partInfos = []),
+                (this.textAnnotations = []),
+                (this.sectionAnnotations = []),
+                (this.sectionGroups = []),
+                t)
               )
-                n.controlChanges[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.ControlChange.toObject(
-                  t.controlChanges[i],
-                  e
-                );
-            if (t.partInfos && t.partInfos.length)
-              for (n.partInfos = [], i = 0; i < t.partInfos.length; ++i)
-                n.partInfos[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.PartInfo.toObject(
-                  t.partInfos[i],
-                  e
-                );
-            if (
-              (null != t.sourceInfo &&
-                t.hasOwnProperty("sourceInfo") &&
-                (n.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.toObject(
-                  t.sourceInfo,
-                  e
-                )),
-              t.textAnnotations && t.textAnnotations.length)
-            )
-              for (
-                n.textAnnotations = [], i = 0;
-                i < t.textAnnotations.length;
-                ++i
-              )
-                n.textAnnotations[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.TextAnnotation.toObject(
-                  t.textAnnotations[i],
-                  e
-                );
-            if (
-              (null != t.quantizationInfo &&
-                t.hasOwnProperty("quantizationInfo") &&
-                (n.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.toObject(
-                  t.quantizationInfo,
-                  e
-                )),
-              null != t.totalQuantizedSteps &&
-                t.hasOwnProperty("totalQuantizedSteps") &&
-                ("number" == typeof t.totalQuantizedSteps
-                  ? (n.totalQuantizedSteps =
-                      e.longs === String
-                        ? String(t.totalQuantizedSteps)
-                        : t.totalQuantizedSteps)
-                  : (n.totalQuantizedSteps =
-                      e.longs === String
-                        ? u.Long.prototype.toString.call(t.totalQuantizedSteps)
-                        : e.longs === Number
-                        ? new u.LongBits(
-                            t.totalQuantizedSteps.low >>> 0,
-                            t.totalQuantizedSteps.high >>> 0
-                          ).toNumber()
-                        : t.totalQuantizedSteps)),
-              null != t.subsequenceInfo &&
-                t.hasOwnProperty("subsequenceInfo") &&
-                (n.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.toObject(
-                  t.subsequenceInfo,
-                  e
-                )),
-              null != t.referenceNumber &&
-                t.hasOwnProperty("referenceNumber") &&
-                ("number" == typeof t.referenceNumber
-                  ? (n.referenceNumber =
-                      e.longs === String
-                        ? String(t.referenceNumber)
-                        : t.referenceNumber)
-                  : (n.referenceNumber =
-                      e.longs === String
-                        ? u.Long.prototype.toString.call(t.referenceNumber)
-                        : e.longs === Number
-                        ? new u.LongBits(
-                            t.referenceNumber.low >>> 0,
-                            t.referenceNumber.high >>> 0
-                          ).toNumber()
-                        : t.referenceNumber)),
-              null != t.sequenceMetadata &&
-                t.hasOwnProperty("sequenceMetadata") &&
-                (n.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.toObject(
-                  t.sequenceMetadata,
-                  e
-                )),
-              t.sectionAnnotations && t.sectionAnnotations.length)
-            )
-              for (
-                n.sectionAnnotations = [], i = 0;
-                i < t.sectionAnnotations.length;
-                ++i
-              )
-                n.sectionAnnotations[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.SectionAnnotation.toObject(
-                  t.sectionAnnotations[i],
-                  e
-                );
-            if (t.sectionGroups && t.sectionGroups.length)
-              for (n.sectionGroups = [], i = 0; i < t.sectionGroups.length; ++i)
-                n.sectionGroups[
-                  i
-                ] = c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
-                  t.sectionGroups[i],
-                  e
-                );
-            return n;
-          }),
-          (t.prototype.toJSON = function() {
-            return this.constructor.toObject(this, o.util.toJSONOptions);
-          }),
-          (t.Note = (function() {
-            function t(t) {
-              if (t)
                 for (var e = Object.keys(t), n = 0; n < e.length; ++n)
                   null != t[e[n]] && (this[e[n]] = t[e[n]]);
             }
+            var e, n;
             return (
-              (t.prototype.pitch = 0),
-              (t.prototype.pitchName = 0),
-              (t.prototype.velocity = 0),
-              (t.prototype.startTime = 0),
-              (t.prototype.quantizedStartStep = u.Long
+              (t.prototype.id = ""),
+              (t.prototype.filename = ""),
+              (t.prototype.referenceNumber = u.Long
                 ? u.Long.fromBits(0, 0, !1)
                 : 0),
-              (t.prototype.endTime = 0),
-              (t.prototype.quantizedEndStep = u.Long
+              (t.prototype.collectionName = ""),
+              (t.prototype.ticksPerQuarter = 0),
+              (t.prototype.timeSignatures = u.emptyArray),
+              (t.prototype.keySignatures = u.emptyArray),
+              (t.prototype.tempos = u.emptyArray),
+              (t.prototype.notes = u.emptyArray),
+              (t.prototype.totalTime = 0),
+              (t.prototype.totalQuantizedSteps = u.Long
                 ? u.Long.fromBits(0, 0, !1)
                 : 0),
-              (t.prototype.numerator = 0),
-              (t.prototype.denominator = 0),
-              (t.prototype.instrument = 0),
-              (t.prototype.program = 0),
-              (t.prototype.isDrum = !1),
-              (t.prototype.part = 0),
-              (t.prototype.voice = 0),
-              (t.create = function(e) {
+              (t.prototype.pitchBends = u.emptyArray),
+              (t.prototype.controlChanges = u.emptyArray),
+              (t.prototype.partInfos = u.emptyArray),
+              (t.prototype.sourceInfo = null),
+              (t.prototype.textAnnotations = u.emptyArray),
+              (t.prototype.sectionAnnotations = u.emptyArray),
+              (t.prototype.sectionGroups = u.emptyArray),
+              (t.prototype.quantizationInfo = null),
+              (t.prototype.subsequenceInfo = null),
+              (t.prototype.sequenceMetadata = null),
+              (t.create = function (e) {
                 return new t(e);
               }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.pitch &&
-                    t.hasOwnProperty("pitch") &&
-                    e.uint32(8).int32(t.pitch),
-                  null != t.velocity &&
-                    t.hasOwnProperty("velocity") &&
-                    e.uint32(16).int32(t.velocity),
-                  null != t.startTime &&
-                    t.hasOwnProperty("startTime") &&
-                    e.uint32(25).double(t.startTime),
-                  null != t.endTime &&
-                    t.hasOwnProperty("endTime") &&
-                    e.uint32(33).double(t.endTime),
-                  null != t.numerator &&
-                    t.hasOwnProperty("numerator") &&
-                    e.uint32(40).int32(t.numerator),
-                  null != t.denominator &&
-                    t.hasOwnProperty("denominator") &&
-                    e.uint32(48).int32(t.denominator),
-                  null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    e.uint32(56).int32(t.instrument),
-                  null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    e.uint32(64).int32(t.program),
-                  null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    e.uint32(72).bool(t.isDrum),
-                  null != t.part &&
-                    t.hasOwnProperty("part") &&
-                    e.uint32(80).int32(t.part),
-                  null != t.pitchName &&
-                    t.hasOwnProperty("pitchName") &&
-                    e.uint32(88).int32(t.pitchName),
-                  null != t.voice &&
-                    t.hasOwnProperty("voice") &&
-                    e.uint32(96).int32(t.voice),
-                  null != t.quantizedStartStep &&
-                    t.hasOwnProperty("quantizedStartStep") &&
-                    e.uint32(104).int64(t.quantizedStartStep),
-                  null != t.quantizedEndStep &&
-                    t.hasOwnProperty("quantizedEndStep") &&
-                    e.uint32(112).int64(t.quantizedEndStep),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.Note();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.pitch = t.int32();
-                      break;
-                    case 11:
-                      r.pitchName = t.int32();
-                      break;
-                    case 2:
-                      r.velocity = t.int32();
-                      break;
-                    case 3:
-                      r.startTime = t.double();
-                      break;
-                    case 13:
-                      r.quantizedStartStep = u.Long
-                        ? t.int64().toNumber()
-                        : t.int64();
-                      break;
-                    case 4:
-                      r.endTime = t.double();
-                      break;
-                    case 14:
-                      r.quantizedEndStep = u.Long
-                        ? t.int64().toNumber()
-                        : t.int64();
-                      break;
-                    case 5:
-                      r.numerator = t.int32();
-                      break;
-                    case 6:
-                      r.denominator = t.int32();
-                      break;
-                    case 7:
-                      r.instrument = t.int32();
-                      break;
-                    case 8:
-                      r.program = t.int32();
-                      break;
-                    case 9:
-                      r.isDrum = t.bool();
-                      break;
-                    case 10:
-                      r.part = t.int32();
-                      break;
-                    case 12:
-                      r.voice = t.int32();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                if ("object" != typeof t || null === t)
-                  return "object expected";
-                if (
-                  null != t.pitch &&
-                  t.hasOwnProperty("pitch") &&
-                  !u.isInteger(t.pitch)
-                )
-                  return "pitch: integer expected";
-                if (null != t.pitchName && t.hasOwnProperty("pitchName"))
-                  switch (t.pitchName) {
-                    default:
-                      return "pitchName: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 11:
-                    case 12:
-                    case 13:
-                    case 14:
-                    case 15:
-                    case 16:
-                    case 17:
-                    case 18:
-                    case 19:
-                    case 20:
-                    case 21:
-                    case 22:
-                    case 23:
-                    case 24:
-                    case 25:
-                    case 26:
-                    case 27:
-                    case 28:
-                    case 29:
-                    case 30:
-                    case 31:
-                    case 32:
-                    case 33:
-                    case 34:
-                    case 35:
-                  }
-                return null != t.velocity &&
-                  t.hasOwnProperty("velocity") &&
-                  !u.isInteger(t.velocity)
-                  ? "velocity: integer expected"
-                  : null != t.startTime &&
-                    t.hasOwnProperty("startTime") &&
-                    "number" != typeof t.startTime
-                  ? "startTime: number expected"
-                  : null != t.quantizedStartStep &&
-                    t.hasOwnProperty("quantizedStartStep") &&
-                    !(
-                      u.isInteger(t.quantizedStartStep) ||
-                      (t.quantizedStartStep &&
-                        u.isInteger(t.quantizedStartStep.low) &&
-                        u.isInteger(t.quantizedStartStep.high))
-                    )
-                  ? "quantizedStartStep: integer|Long expected"
-                  : null != t.endTime &&
-                    t.hasOwnProperty("endTime") &&
-                    "number" != typeof t.endTime
-                  ? "endTime: number expected"
-                  : null != t.quantizedEndStep &&
-                    t.hasOwnProperty("quantizedEndStep") &&
-                    !(
-                      u.isInteger(t.quantizedEndStep) ||
-                      (t.quantizedEndStep &&
-                        u.isInteger(t.quantizedEndStep.low) &&
-                        u.isInteger(t.quantizedEndStep.high))
-                    )
-                  ? "quantizedEndStep: integer|Long expected"
-                  : null != t.numerator &&
-                    t.hasOwnProperty("numerator") &&
-                    !u.isInteger(t.numerator)
-                  ? "numerator: integer expected"
-                  : null != t.denominator &&
-                    t.hasOwnProperty("denominator") &&
-                    !u.isInteger(t.denominator)
-                  ? "denominator: integer expected"
-                  : null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    !u.isInteger(t.instrument)
-                  ? "instrument: integer expected"
-                  : null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    !u.isInteger(t.program)
-                  ? "program: integer expected"
-                  : null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    "boolean" != typeof t.isDrum
-                  ? "isDrum: boolean expected"
-                  : null != t.part &&
-                    t.hasOwnProperty("part") &&
-                    !u.isInteger(t.part)
-                  ? "part: integer expected"
-                  : null != t.voice &&
-                    t.hasOwnProperty("voice") &&
-                    !u.isInteger(t.voice)
-                  ? "voice: integer expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.Note)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.Note();
-                switch (
-                  (null != t.pitch && (e.pitch = 0 | t.pitch), t.pitchName)
-                ) {
-                  case "UNKNOWN_PITCH_NAME":
-                  case 0:
-                    e.pitchName = 0;
-                    break;
-                  case "F_FLAT_FLAT":
-                  case 1:
-                    e.pitchName = 1;
-                    break;
-                  case "C_FLAT_FLAT":
-                  case 2:
-                    e.pitchName = 2;
-                    break;
-                  case "G_FLAT_FLAT":
-                  case 3:
-                    e.pitchName = 3;
-                    break;
-                  case "D_FLAT_FLAT":
-                  case 4:
-                    e.pitchName = 4;
-                    break;
-                  case "A_FLAT_FLAT":
-                  case 5:
-                    e.pitchName = 5;
-                    break;
-                  case "E_FLAT_FLAT":
-                  case 6:
-                    e.pitchName = 6;
-                    break;
-                  case "B_FLAT_FLAT":
-                  case 7:
-                    e.pitchName = 7;
-                    break;
-                  case "F_FLAT":
-                  case 8:
-                    e.pitchName = 8;
-                    break;
-                  case "C_FLAT":
-                  case 9:
-                    e.pitchName = 9;
-                    break;
-                  case "G_FLAT":
-                  case 10:
-                    e.pitchName = 10;
-                    break;
-                  case "D_FLAT":
-                  case 11:
-                    e.pitchName = 11;
-                    break;
-                  case "A_FLAT":
-                  case 12:
-                    e.pitchName = 12;
-                    break;
-                  case "E_FLAT":
-                  case 13:
-                    e.pitchName = 13;
-                    break;
-                  case "B_FLAT":
-                  case 14:
-                    e.pitchName = 14;
-                    break;
-                  case "F":
-                  case 15:
-                    e.pitchName = 15;
-                    break;
-                  case "C":
-                  case 16:
-                    e.pitchName = 16;
-                    break;
-                  case "G":
-                  case 17:
-                    e.pitchName = 17;
-                    break;
-                  case "D":
-                  case 18:
-                    e.pitchName = 18;
-                    break;
-                  case "A":
-                  case 19:
-                    e.pitchName = 19;
-                    break;
-                  case "E":
-                  case 20:
-                    e.pitchName = 20;
-                    break;
-                  case "B":
-                  case 21:
-                    e.pitchName = 21;
-                    break;
-                  case "F_SHARP":
-                  case 22:
-                    e.pitchName = 22;
-                    break;
-                  case "C_SHARP":
-                  case 23:
-                    e.pitchName = 23;
-                    break;
-                  case "G_SHARP":
-                  case 24:
-                    e.pitchName = 24;
-                    break;
-                  case "D_SHARP":
-                  case 25:
-                    e.pitchName = 25;
-                    break;
-                  case "A_SHARP":
-                  case 26:
-                    e.pitchName = 26;
-                    break;
-                  case "E_SHARP":
-                  case 27:
-                    e.pitchName = 27;
-                    break;
-                  case "B_SHARP":
-                  case 28:
-                    e.pitchName = 28;
-                    break;
-                  case "F_SHARP_SHARP":
-                  case 29:
-                    e.pitchName = 29;
-                    break;
-                  case "C_SHARP_SHARP":
-                  case 30:
-                    e.pitchName = 30;
-                    break;
-                  case "G_SHARP_SHARP":
-                  case 31:
-                    e.pitchName = 31;
-                    break;
-                  case "D_SHARP_SHARP":
-                  case 32:
-                    e.pitchName = 32;
-                    break;
-                  case "A_SHARP_SHARP":
-                  case 33:
-                    e.pitchName = 33;
-                    break;
-                  case "E_SHARP_SHARP":
-                  case 34:
-                    e.pitchName = 34;
-                    break;
-                  case "B_SHARP_SHARP":
-                  case 35:
-                    e.pitchName = 35;
-                }
-                return (
-                  null != t.velocity && (e.velocity = 0 | t.velocity),
-                  null != t.startTime && (e.startTime = Number(t.startTime)),
-                  null != t.quantizedStartStep &&
-                    (u.Long
-                      ? ((e.quantizedStartStep = u.Long.fromValue(
-                          t.quantizedStartStep
-                        )).unsigned = !1)
-                      : "string" == typeof t.quantizedStartStep
-                      ? (e.quantizedStartStep = parseInt(
-                          t.quantizedStartStep,
-                          10
-                        ))
-                      : "number" == typeof t.quantizedStartStep
-                      ? (e.quantizedStartStep = t.quantizedStartStep)
-                      : "object" == typeof t.quantizedStartStep &&
-                        (e.quantizedStartStep = new u.LongBits(
-                          t.quantizedStartStep.low >>> 0,
-                          t.quantizedStartStep.high >>> 0
-                        ).toNumber())),
-                  null != t.endTime && (e.endTime = Number(t.endTime)),
-                  null != t.quantizedEndStep &&
-                    (u.Long
-                      ? ((e.quantizedEndStep = u.Long.fromValue(
-                          t.quantizedEndStep
-                        )).unsigned = !1)
-                      : "string" == typeof t.quantizedEndStep
-                      ? (e.quantizedEndStep = parseInt(t.quantizedEndStep, 10))
-                      : "number" == typeof t.quantizedEndStep
-                      ? (e.quantizedEndStep = t.quantizedEndStep)
-                      : "object" == typeof t.quantizedEndStep &&
-                        (e.quantizedEndStep = new u.LongBits(
-                          t.quantizedEndStep.low >>> 0,
-                          t.quantizedEndStep.high >>> 0
-                        ).toNumber())),
-                  null != t.numerator && (e.numerator = 0 | t.numerator),
-                  null != t.denominator && (e.denominator = 0 | t.denominator),
-                  null != t.instrument && (e.instrument = 0 | t.instrument),
-                  null != t.program && (e.program = 0 | t.program),
-                  null != t.isDrum && (e.isDrum = Boolean(t.isDrum)),
-                  null != t.part && (e.part = 0 | t.part),
-                  null != t.voice && (e.voice = 0 | t.voice),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                if (e.defaults) {
-                  if (
-                    ((n.pitch = 0),
-                    (n.velocity = 0),
-                    (n.startTime = 0),
-                    (n.endTime = 0),
-                    (n.numerator = 0),
-                    (n.denominator = 0),
-                    (n.instrument = 0),
-                    (n.program = 0),
-                    (n.isDrum = !1),
-                    (n.part = 0),
-                    (n.pitchName =
-                      e.enums === String ? "UNKNOWN_PITCH_NAME" : 0),
-                    (n.voice = 0),
-                    u.Long)
-                  ) {
-                    var r = new u.Long(0, 0, !1);
-                    n.quantizedStartStep =
-                      e.longs === String
-                        ? r.toString()
-                        : e.longs === Number
-                        ? r.toNumber()
-                        : r;
-                  } else n.quantizedStartStep = e.longs === String ? "0" : 0;
-                  u.Long
-                    ? ((r = new u.Long(0, 0, !1)),
-                      (n.quantizedEndStep =
-                        e.longs === String
-                          ? r.toString()
-                          : e.longs === Number
-                          ? r.toNumber()
-                          : r))
-                    : (n.quantizedEndStep = e.longs === String ? "0" : 0);
-                }
-                return (
-                  null != t.pitch &&
-                    t.hasOwnProperty("pitch") &&
-                    (n.pitch = t.pitch),
-                  null != t.velocity &&
-                    t.hasOwnProperty("velocity") &&
-                    (n.velocity = t.velocity),
-                  null != t.startTime &&
-                    t.hasOwnProperty("startTime") &&
-                    (n.startTime =
-                      e.json && !isFinite(t.startTime)
-                        ? String(t.startTime)
-                        : t.startTime),
-                  null != t.endTime &&
-                    t.hasOwnProperty("endTime") &&
-                    (n.endTime =
-                      e.json && !isFinite(t.endTime)
-                        ? String(t.endTime)
-                        : t.endTime),
-                  null != t.numerator &&
-                    t.hasOwnProperty("numerator") &&
-                    (n.numerator = t.numerator),
-                  null != t.denominator &&
-                    t.hasOwnProperty("denominator") &&
-                    (n.denominator = t.denominator),
-                  null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    (n.instrument = t.instrument),
-                  null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    (n.program = t.program),
-                  null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    (n.isDrum = t.isDrum),
-                  null != t.part &&
-                    t.hasOwnProperty("part") &&
-                    (n.part = t.part),
-                  null != t.pitchName &&
-                    t.hasOwnProperty("pitchName") &&
-                    (n.pitchName =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.PitchName[
-                            t.pitchName
-                          ]
-                        : t.pitchName),
-                  null != t.voice &&
-                    t.hasOwnProperty("voice") &&
-                    (n.voice = t.voice),
-                  null != t.quantizedStartStep &&
-                    t.hasOwnProperty("quantizedStartStep") &&
-                    ("number" == typeof t.quantizedStartStep
-                      ? (n.quantizedStartStep =
-                          e.longs === String
-                            ? String(t.quantizedStartStep)
-                            : t.quantizedStartStep)
-                      : (n.quantizedStartStep =
-                          e.longs === String
-                            ? u.Long.prototype.toString.call(
-                                t.quantizedStartStep
-                              )
-                            : e.longs === Number
-                            ? new u.LongBits(
-                                t.quantizedStartStep.low >>> 0,
-                                t.quantizedStartStep.high >>> 0
-                              ).toNumber()
-                            : t.quantizedStartStep)),
-                  null != t.quantizedEndStep &&
-                    t.hasOwnProperty("quantizedEndStep") &&
-                    ("number" == typeof t.quantizedEndStep
-                      ? (n.quantizedEndStep =
-                          e.longs === String
-                            ? String(t.quantizedEndStep)
-                            : t.quantizedEndStep)
-                      : (n.quantizedEndStep =
-                          e.longs === String
-                            ? u.Long.prototype.toString.call(t.quantizedEndStep)
-                            : e.longs === Number
-                            ? new u.LongBits(
-                                t.quantizedEndStep.low >>> 0,
-                                t.quantizedEndStep.high >>> 0
-                              ).toNumber()
-                            : t.quantizedEndStep)),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.PitchName = ((e = {}),
-          ((n = Object.create(e))[(e[0] = "UNKNOWN_PITCH_NAME")] = 0),
-          (n[(e[1] = "F_FLAT_FLAT")] = 1),
-          (n[(e[2] = "C_FLAT_FLAT")] = 2),
-          (n[(e[3] = "G_FLAT_FLAT")] = 3),
-          (n[(e[4] = "D_FLAT_FLAT")] = 4),
-          (n[(e[5] = "A_FLAT_FLAT")] = 5),
-          (n[(e[6] = "E_FLAT_FLAT")] = 6),
-          (n[(e[7] = "B_FLAT_FLAT")] = 7),
-          (n[(e[8] = "F_FLAT")] = 8),
-          (n[(e[9] = "C_FLAT")] = 9),
-          (n[(e[10] = "G_FLAT")] = 10),
-          (n[(e[11] = "D_FLAT")] = 11),
-          (n[(e[12] = "A_FLAT")] = 12),
-          (n[(e[13] = "E_FLAT")] = 13),
-          (n[(e[14] = "B_FLAT")] = 14),
-          (n[(e[15] = "F")] = 15),
-          (n[(e[16] = "C")] = 16),
-          (n[(e[17] = "G")] = 17),
-          (n[(e[18] = "D")] = 18),
-          (n[(e[19] = "A")] = 19),
-          (n[(e[20] = "E")] = 20),
-          (n[(e[21] = "B")] = 21),
-          (n[(e[22] = "F_SHARP")] = 22),
-          (n[(e[23] = "C_SHARP")] = 23),
-          (n[(e[24] = "G_SHARP")] = 24),
-          (n[(e[25] = "D_SHARP")] = 25),
-          (n[(e[26] = "A_SHARP")] = 26),
-          (n[(e[27] = "E_SHARP")] = 27),
-          (n[(e[28] = "B_SHARP")] = 28),
-          (n[(e[29] = "F_SHARP_SHARP")] = 29),
-          (n[(e[30] = "C_SHARP_SHARP")] = 30),
-          (n[(e[31] = "G_SHARP_SHARP")] = 31),
-          (n[(e[32] = "D_SHARP_SHARP")] = 32),
-          (n[(e[33] = "A_SHARP_SHARP")] = 33),
-          (n[(e[34] = "E_SHARP_SHARP")] = 34),
-          (n[(e[35] = "B_SHARP_SHARP")] = 35),
-          n)),
-          (t.TimeSignature = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.numerator = 0),
-              (t.prototype.denominator = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.numerator &&
-                    t.hasOwnProperty("numerator") &&
-                    e.uint32(16).int32(t.numerator),
-                  null != t.denominator &&
-                    t.hasOwnProperty("denominator") &&
-                    e.uint32(24).int32(t.denominator),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.TimeSignature();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 2:
-                      r.numerator = t.int32();
-                      break;
-                    case 3:
-                      r.denominator = t.int32();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    "number" != typeof t.time
-                  ? "time: number expected"
-                  : null != t.numerator &&
-                    t.hasOwnProperty("numerator") &&
-                    !u.isInteger(t.numerator)
-                  ? "numerator: integer expected"
-                  : null != t.denominator &&
-                    t.hasOwnProperty("denominator") &&
-                    !u.isInteger(t.denominator)
-                  ? "denominator: integer expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (
-                  t instanceof c.tensorflow.magenta.NoteSequence.TimeSignature
-                )
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.TimeSignature();
-                return (
-                  null != t.time && (e.time = Number(t.time)),
-                  null != t.numerator && (e.numerator = 0 | t.numerator),
-                  null != t.denominator && (e.denominator = 0 | t.denominator),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults &&
-                    ((n.time = 0), (n.numerator = 0), (n.denominator = 0)),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.numerator &&
-                    t.hasOwnProperty("numerator") &&
-                    (n.numerator = t.numerator),
-                  null != t.denominator &&
-                    t.hasOwnProperty("denominator") &&
-                    (n.denominator = t.denominator),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.KeySignature = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.key = 0),
-              (t.prototype.mode = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.key &&
-                    t.hasOwnProperty("key") &&
-                    e.uint32(16).int32(t.key),
-                  null != t.mode &&
-                    t.hasOwnProperty("mode") &&
-                    e.uint32(24).int32(t.mode),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.KeySignature();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 2:
-                      r.key = t.int32();
-                      break;
-                    case 3:
-                      r.mode = t.int32();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                if ("object" != typeof t || null === t)
-                  return "object expected";
-                if (
-                  null != t.time &&
-                  t.hasOwnProperty("time") &&
-                  "number" != typeof t.time
-                )
-                  return "time: number expected";
-                if (null != t.key && t.hasOwnProperty("key"))
-                  switch (t.key) {
-                    default:
-                      return "key: enum value expected";
-                    case 0:
-                    case 1:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 8:
-                    case 9:
-                    case 10:
-                    case 10:
-                    case 11:
-                  }
-                if (null != t.mode && t.hasOwnProperty("mode"))
-                  switch (t.mode) {
-                    default:
-                      return "mode: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                  }
-                return null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.KeySignature)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.KeySignature();
-                switch ((null != t.time && (e.time = Number(t.time)), t.key)) {
-                  case "C":
-                  case 0:
-                    e.key = 0;
-                    break;
-                  case "C_SHARP":
-                  case 1:
-                    e.key = 1;
-                    break;
-                  case "D_FLAT":
-                  case 1:
-                    e.key = 1;
-                    break;
-                  case "D":
-                  case 2:
-                    e.key = 2;
-                    break;
-                  case "D_SHARP":
-                  case 3:
-                    e.key = 3;
-                    break;
-                  case "E_FLAT":
-                  case 3:
-                    e.key = 3;
-                    break;
-                  case "E":
-                  case 4:
-                    e.key = 4;
-                    break;
-                  case "F":
-                  case 5:
-                    e.key = 5;
-                    break;
-                  case "F_SHARP":
-                  case 6:
-                    e.key = 6;
-                    break;
-                  case "G_FLAT":
-                  case 6:
-                    e.key = 6;
-                    break;
-                  case "G":
-                  case 7:
-                    e.key = 7;
-                    break;
-                  case "G_SHARP":
-                  case 8:
-                    e.key = 8;
-                    break;
-                  case "A_FLAT":
-                  case 8:
-                    e.key = 8;
-                    break;
-                  case "A":
-                  case 9:
-                    e.key = 9;
-                    break;
-                  case "A_SHARP":
-                  case 10:
-                    e.key = 10;
-                    break;
-                  case "B_FLAT":
-                  case 10:
-                    e.key = 10;
-                    break;
-                  case "B":
-                  case 11:
-                    e.key = 11;
-                }
-                switch (t.mode) {
-                  case "MAJOR":
-                  case 0:
-                    e.mode = 0;
-                    break;
-                  case "MINOR":
-                  case 1:
-                    e.mode = 1;
-                    break;
-                  case "NOT_SPECIFIED":
-                  case 2:
-                    e.mode = 2;
-                    break;
-                  case "MIXOLYDIAN":
-                  case 3:
-                    e.mode = 3;
-                    break;
-                  case "DORIAN":
-                  case 4:
-                    e.mode = 4;
-                    break;
-                  case "PHRYGIAN":
-                  case 5:
-                    e.mode = 5;
-                    break;
-                  case "LYDIAN":
-                  case 6:
-                    e.mode = 6;
-                    break;
-                  case "LOCRIAN":
-                  case 7:
-                    e.mode = 7;
-                }
-                return e;
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults &&
-                    ((n.time = 0),
-                    (n.key = e.enums === String ? "C" : 0),
-                    (n.mode = e.enums === String ? "MAJOR" : 0)),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.key &&
-                    t.hasOwnProperty("key") &&
-                    (n.key =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.KeySignature.Key[
-                            t.key
-                          ]
-                        : t.key),
-                  null != t.mode &&
-                    t.hasOwnProperty("mode") &&
-                    (n.mode =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.KeySignature.Mode[
-                            t.mode
-                          ]
-                        : t.mode),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              (t.Key = (function() {
-                var t = {},
-                  e = Object.create(t);
-                return (
-                  (e[(t[0] = "C")] = 0),
-                  (e[(t[1] = "C_SHARP")] = 1),
-                  (e.D_FLAT = 1),
-                  (e[(t[2] = "D")] = 2),
-                  (e[(t[3] = "D_SHARP")] = 3),
-                  (e.E_FLAT = 3),
-                  (e[(t[4] = "E")] = 4),
-                  (e[(t[5] = "F")] = 5),
-                  (e[(t[6] = "F_SHARP")] = 6),
-                  (e.G_FLAT = 6),
-                  (e[(t[7] = "G")] = 7),
-                  (e[(t[8] = "G_SHARP")] = 8),
-                  (e.A_FLAT = 8),
-                  (e[(t[9] = "A")] = 9),
-                  (e[(t[10] = "A_SHARP")] = 10),
-                  (e.B_FLAT = 10),
-                  (e[(t[11] = "B")] = 11),
-                  e
-                );
-              })()),
-              (t.Mode = (function() {
-                var t = {},
-                  e = Object.create(t);
-                return (
-                  (e[(t[0] = "MAJOR")] = 0),
-                  (e[(t[1] = "MINOR")] = 1),
-                  (e[(t[2] = "NOT_SPECIFIED")] = 2),
-                  (e[(t[3] = "MIXOLYDIAN")] = 3),
-                  (e[(t[4] = "DORIAN")] = 4),
-                  (e[(t[5] = "PHRYGIAN")] = 5),
-                  (e[(t[6] = "LYDIAN")] = 6),
-                  (e[(t[7] = "LOCRIAN")] = 7),
-                  e
-                );
-              })()),
-              t
-            );
-          })()),
-          (t.Tempo = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.qpm = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.qpm &&
-                    t.hasOwnProperty("qpm") &&
-                    e.uint32(17).double(t.qpm),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.Tempo();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 2:
-                      r.qpm = t.double();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    "number" != typeof t.time
-                  ? "time: number expected"
-                  : null != t.qpm &&
-                    t.hasOwnProperty("qpm") &&
-                    "number" != typeof t.qpm
-                  ? "qpm: number expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.Tempo)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.Tempo();
-                return (
-                  null != t.time && (e.time = Number(t.time)),
-                  null != t.qpm && (e.qpm = Number(t.qpm)),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults && ((n.time = 0), (n.qpm = 0)),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.qpm &&
-                    t.hasOwnProperty("qpm") &&
-                    (n.qpm =
-                      e.json && !isFinite(t.qpm) ? String(t.qpm) : t.qpm),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.PitchBend = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.bend = 0),
-              (t.prototype.instrument = 0),
-              (t.prototype.program = 0),
-              (t.prototype.isDrum = !1),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.bend &&
-                    t.hasOwnProperty("bend") &&
-                    e.uint32(16).int32(t.bend),
-                  null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    e.uint32(24).int32(t.instrument),
-                  null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    e.uint32(32).int32(t.program),
-                  null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    e.uint32(40).bool(t.isDrum),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.PitchBend();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 2:
-                      r.bend = t.int32();
-                      break;
-                    case 3:
-                      r.instrument = t.int32();
-                      break;
-                    case 4:
-                      r.program = t.int32();
-                      break;
-                    case 5:
-                      r.isDrum = t.bool();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    "number" != typeof t.time
-                  ? "time: number expected"
-                  : null != t.bend &&
-                    t.hasOwnProperty("bend") &&
-                    !u.isInteger(t.bend)
-                  ? "bend: integer expected"
-                  : null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    !u.isInteger(t.instrument)
-                  ? "instrument: integer expected"
-                  : null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    !u.isInteger(t.program)
-                  ? "program: integer expected"
-                  : null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    "boolean" != typeof t.isDrum
-                  ? "isDrum: boolean expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.PitchBend)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.PitchBend();
-                return (
-                  null != t.time && (e.time = Number(t.time)),
-                  null != t.bend && (e.bend = 0 | t.bend),
-                  null != t.instrument && (e.instrument = 0 | t.instrument),
-                  null != t.program && (e.program = 0 | t.program),
-                  null != t.isDrum && (e.isDrum = Boolean(t.isDrum)),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults &&
-                    ((n.time = 0),
-                    (n.bend = 0),
-                    (n.instrument = 0),
-                    (n.program = 0),
-                    (n.isDrum = !1)),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.bend &&
-                    t.hasOwnProperty("bend") &&
-                    (n.bend = t.bend),
-                  null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    (n.instrument = t.instrument),
-                  null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    (n.program = t.program),
-                  null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    (n.isDrum = t.isDrum),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.ControlChange = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.quantizedStep = u.Long
-                ? u.Long.fromBits(0, 0, !1)
-                : 0),
-              (t.prototype.controlNumber = 0),
-              (t.prototype.controlValue = 0),
-              (t.prototype.instrument = 0),
-              (t.prototype.program = 0),
-              (t.prototype.isDrum = !1),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.controlNumber &&
-                    t.hasOwnProperty("controlNumber") &&
-                    e.uint32(16).int32(t.controlNumber),
-                  null != t.controlValue &&
-                    t.hasOwnProperty("controlValue") &&
-                    e.uint32(24).int32(t.controlValue),
-                  null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    e.uint32(32).int32(t.instrument),
-                  null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    e.uint32(40).int32(t.program),
-                  null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    e.uint32(48).bool(t.isDrum),
-                  null != t.quantizedStep &&
-                    t.hasOwnProperty("quantizedStep") &&
-                    e.uint32(56).int64(t.quantizedStep),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.ControlChange();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 7:
-                      r.quantizedStep = u.Long
-                        ? t.int64().toNumber()
-                        : t.int64();
-                      break;
-                    case 2:
-                      r.controlNumber = t.int32();
-                      break;
-                    case 3:
-                      r.controlValue = t.int32();
-                      break;
-                    case 4:
-                      r.instrument = t.int32();
-                      break;
-                    case 5:
-                      r.program = t.int32();
-                      break;
-                    case 6:
-                      r.isDrum = t.bool();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    "number" != typeof t.time
-                  ? "time: number expected"
-                  : null != t.quantizedStep &&
-                    t.hasOwnProperty("quantizedStep") &&
-                    !(
-                      u.isInteger(t.quantizedStep) ||
-                      (t.quantizedStep &&
-                        u.isInteger(t.quantizedStep.low) &&
-                        u.isInteger(t.quantizedStep.high))
-                    )
-                  ? "quantizedStep: integer|Long expected"
-                  : null != t.controlNumber &&
-                    t.hasOwnProperty("controlNumber") &&
-                    !u.isInteger(t.controlNumber)
-                  ? "controlNumber: integer expected"
-                  : null != t.controlValue &&
-                    t.hasOwnProperty("controlValue") &&
-                    !u.isInteger(t.controlValue)
-                  ? "controlValue: integer expected"
-                  : null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    !u.isInteger(t.instrument)
-                  ? "instrument: integer expected"
-                  : null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    !u.isInteger(t.program)
-                  ? "program: integer expected"
-                  : null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    "boolean" != typeof t.isDrum
-                  ? "isDrum: boolean expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (
-                  t instanceof c.tensorflow.magenta.NoteSequence.ControlChange
-                )
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.ControlChange();
-                return (
-                  null != t.time && (e.time = Number(t.time)),
-                  null != t.quantizedStep &&
-                    (u.Long
-                      ? ((e.quantizedStep = u.Long.fromValue(
-                          t.quantizedStep
-                        )).unsigned = !1)
-                      : "string" == typeof t.quantizedStep
-                      ? (e.quantizedStep = parseInt(t.quantizedStep, 10))
-                      : "number" == typeof t.quantizedStep
-                      ? (e.quantizedStep = t.quantizedStep)
-                      : "object" == typeof t.quantizedStep &&
-                        (e.quantizedStep = new u.LongBits(
-                          t.quantizedStep.low >>> 0,
-                          t.quantizedStep.high >>> 0
-                        ).toNumber())),
-                  null != t.controlNumber &&
-                    (e.controlNumber = 0 | t.controlNumber),
-                  null != t.controlValue &&
-                    (e.controlValue = 0 | t.controlValue),
-                  null != t.instrument && (e.instrument = 0 | t.instrument),
-                  null != t.program && (e.program = 0 | t.program),
-                  null != t.isDrum && (e.isDrum = Boolean(t.isDrum)),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                if (e.defaults)
-                  if (
-                    ((n.time = 0),
-                    (n.controlNumber = 0),
-                    (n.controlValue = 0),
-                    (n.instrument = 0),
-                    (n.program = 0),
-                    (n.isDrum = !1),
-                    u.Long)
-                  ) {
-                    var r = new u.Long(0, 0, !1);
-                    n.quantizedStep =
-                      e.longs === String
-                        ? r.toString()
-                        : e.longs === Number
-                        ? r.toNumber()
-                        : r;
-                  } else n.quantizedStep = e.longs === String ? "0" : 0;
-                return (
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.controlNumber &&
-                    t.hasOwnProperty("controlNumber") &&
-                    (n.controlNumber = t.controlNumber),
-                  null != t.controlValue &&
-                    t.hasOwnProperty("controlValue") &&
-                    (n.controlValue = t.controlValue),
-                  null != t.instrument &&
-                    t.hasOwnProperty("instrument") &&
-                    (n.instrument = t.instrument),
-                  null != t.program &&
-                    t.hasOwnProperty("program") &&
-                    (n.program = t.program),
-                  null != t.isDrum &&
-                    t.hasOwnProperty("isDrum") &&
-                    (n.isDrum = t.isDrum),
-                  null != t.quantizedStep &&
-                    t.hasOwnProperty("quantizedStep") &&
-                    ("number" == typeof t.quantizedStep
-                      ? (n.quantizedStep =
-                          e.longs === String
-                            ? String(t.quantizedStep)
-                            : t.quantizedStep)
-                      : (n.quantizedStep =
-                          e.longs === String
-                            ? u.Long.prototype.toString.call(t.quantizedStep)
-                            : e.longs === Number
-                            ? new u.LongBits(
-                                t.quantizedStep.low >>> 0,
-                                t.quantizedStep.high >>> 0
-                              ).toNumber()
-                            : t.quantizedStep)),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.PartInfo = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.part = 0),
-              (t.prototype.name = ""),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.part &&
-                    t.hasOwnProperty("part") &&
-                    e.uint32(8).int32(t.part),
-                  null != t.name &&
-                    t.hasOwnProperty("name") &&
-                    e.uint32(18).string(t.name),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.PartInfo();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.part = t.int32();
-                      break;
-                    case 2:
-                      r.name = t.string();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.part &&
-                    t.hasOwnProperty("part") &&
-                    !u.isInteger(t.part)
-                  ? "part: integer expected"
-                  : null != t.name &&
-                    t.hasOwnProperty("name") &&
-                    !u.isString(t.name)
-                  ? "name: string expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.PartInfo)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.PartInfo();
-                return (
-                  null != t.part && (e.part = 0 | t.part),
-                  null != t.name && (e.name = String(t.name)),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults && ((n.part = 0), (n.name = "")),
-                  null != t.part &&
-                    t.hasOwnProperty("part") &&
-                    (n.part = t.part),
-                  null != t.name &&
-                    t.hasOwnProperty("name") &&
-                    (n.name = t.name),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.SourceInfo = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.sourceType = 0),
-              (t.prototype.encodingType = 0),
-              (t.prototype.parser = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.sourceType &&
-                    t.hasOwnProperty("sourceType") &&
-                    e.uint32(8).int32(t.sourceType),
-                  null != t.encodingType &&
-                    t.hasOwnProperty("encodingType") &&
-                    e.uint32(16).int32(t.encodingType),
-                  null != t.parser &&
-                    t.hasOwnProperty("parser") &&
-                    e.uint32(24).int32(t.parser),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.SourceInfo();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.sourceType = t.int32();
-                      break;
-                    case 2:
-                      r.encodingType = t.int32();
-                      break;
-                    case 3:
-                      r.parser = t.int32();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                if ("object" != typeof t || null === t)
-                  return "object expected";
-                if (null != t.sourceType && t.hasOwnProperty("sourceType"))
-                  switch (t.sourceType) {
-                    default:
-                      return "sourceType: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                  }
-                if (null != t.encodingType && t.hasOwnProperty("encodingType"))
-                  switch (t.encodingType) {
-                    default:
-                      return "encodingType: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                  }
-                if (null != t.parser && t.hasOwnProperty("parser"))
-                  switch (t.parser) {
-                    default:
-                      return "parser: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                  }
-                return null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.SourceInfo)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.SourceInfo();
-                switch (t.sourceType) {
-                  case "UNKNOWN_SOURCE_TYPE":
-                  case 0:
-                    e.sourceType = 0;
-                    break;
-                  case "SCORE_BASED":
-                  case 1:
-                    e.sourceType = 1;
-                    break;
-                  case "PERFORMANCE_BASED":
-                  case 2:
-                    e.sourceType = 2;
-                }
-                switch (t.encodingType) {
-                  case "UNKNOWN_ENCODING_TYPE":
-                  case 0:
-                    e.encodingType = 0;
-                    break;
-                  case "MUSIC_XML":
-                  case 1:
-                    e.encodingType = 1;
-                    break;
-                  case "ABC":
-                  case 2:
-                    e.encodingType = 2;
-                    break;
-                  case "MIDI":
-                  case 3:
-                    e.encodingType = 3;
-                    break;
-                  case "MUSICNET":
-                  case 4:
-                    e.encodingType = 4;
-                }
-                switch (t.parser) {
-                  case "UNKNOWN_PARSER":
-                  case 0:
-                    e.parser = 0;
-                    break;
-                  case "MUSIC21":
-                  case 1:
-                    e.parser = 1;
-                    break;
-                  case "PRETTY_MIDI":
-                  case 2:
-                    e.parser = 2;
-                    break;
-                  case "MAGENTA_MUSIC_XML":
-                  case 3:
-                    e.parser = 3;
-                    break;
-                  case "MAGENTA_MUSICNET":
-                  case 4:
-                    e.parser = 4;
-                    break;
-                  case "MAGENTA_ABC":
-                  case 5:
-                    e.parser = 5;
-                    break;
-                  case "TONEJS_MIDI_CONVERT":
-                  case 6:
-                    e.parser = 6;
-                }
-                return e;
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults &&
-                    ((n.sourceType =
-                      e.enums === String ? "UNKNOWN_SOURCE_TYPE" : 0),
-                    (n.encodingType =
-                      e.enums === String ? "UNKNOWN_ENCODING_TYPE" : 0),
-                    (n.parser = e.enums === String ? "UNKNOWN_PARSER" : 0)),
-                  null != t.sourceType &&
-                    t.hasOwnProperty("sourceType") &&
-                    (n.sourceType =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.SourceInfo
-                            .SourceType[t.sourceType]
-                        : t.sourceType),
-                  null != t.encodingType &&
-                    t.hasOwnProperty("encodingType") &&
-                    (n.encodingType =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.SourceInfo
-                            .EncodingType[t.encodingType]
-                        : t.encodingType),
-                  null != t.parser &&
-                    t.hasOwnProperty("parser") &&
-                    (n.parser =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.SourceInfo.Parser[
-                            t.parser
-                          ]
-                        : t.parser),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              (t.SourceType = (function() {
-                var t = {},
-                  e = Object.create(t);
-                return (
-                  (e[(t[0] = "UNKNOWN_SOURCE_TYPE")] = 0),
-                  (e[(t[1] = "SCORE_BASED")] = 1),
-                  (e[(t[2] = "PERFORMANCE_BASED")] = 2),
-                  e
-                );
-              })()),
-              (t.EncodingType = (function() {
-                var t = {},
-                  e = Object.create(t);
-                return (
-                  (e[(t[0] = "UNKNOWN_ENCODING_TYPE")] = 0),
-                  (e[(t[1] = "MUSIC_XML")] = 1),
-                  (e[(t[2] = "ABC")] = 2),
-                  (e[(t[3] = "MIDI")] = 3),
-                  (e[(t[4] = "MUSICNET")] = 4),
-                  e
-                );
-              })()),
-              (t.Parser = (function() {
-                var t = {},
-                  e = Object.create(t);
-                return (
-                  (e[(t[0] = "UNKNOWN_PARSER")] = 0),
-                  (e[(t[1] = "MUSIC21")] = 1),
-                  (e[(t[2] = "PRETTY_MIDI")] = 2),
-                  (e[(t[3] = "MAGENTA_MUSIC_XML")] = 3),
-                  (e[(t[4] = "MAGENTA_MUSICNET")] = 4),
-                  (e[(t[5] = "MAGENTA_ABC")] = 5),
-                  (e[(t[6] = "TONEJS_MIDI_CONVERT")] = 6),
-                  e
-                );
-              })()),
-              t
-            );
-          })()),
-          (t.TextAnnotation = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.quantizedStep = u.Long
-                ? u.Long.fromBits(0, 0, !1)
-                : 0),
-              (t.prototype.text = ""),
-              (t.prototype.annotationType = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.text &&
-                    t.hasOwnProperty("text") &&
-                    e.uint32(18).string(t.text),
-                  null != t.annotationType &&
-                    t.hasOwnProperty("annotationType") &&
-                    e.uint32(24).int32(t.annotationType),
-                  null != t.quantizedStep &&
-                    t.hasOwnProperty("quantizedStep") &&
-                    e.uint32(32).int64(t.quantizedStep),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.TextAnnotation();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 4:
-                      r.quantizedStep = u.Long
-                        ? t.int64().toNumber()
-                        : t.int64();
-                      break;
-                    case 2:
-                      r.text = t.string();
-                      break;
-                    case 3:
-                      r.annotationType = t.int32();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                if ("object" != typeof t || null === t)
-                  return "object expected";
-                if (
-                  null != t.time &&
-                  t.hasOwnProperty("time") &&
-                  "number" != typeof t.time
-                )
-                  return "time: number expected";
-                if (
-                  null != t.quantizedStep &&
-                  t.hasOwnProperty("quantizedStep") &&
-                  !(
-                    u.isInteger(t.quantizedStep) ||
-                    (t.quantizedStep &&
-                      u.isInteger(t.quantizedStep.low) &&
-                      u.isInteger(t.quantizedStep.high))
-                  )
-                )
-                  return "quantizedStep: integer|Long expected";
-                if (
-                  null != t.text &&
-                  t.hasOwnProperty("text") &&
-                  !u.isString(t.text)
-                )
-                  return "text: string expected";
-                if (
-                  null != t.annotationType &&
-                  t.hasOwnProperty("annotationType")
-                )
-                  switch (t.annotationType) {
-                    default:
-                      return "annotationType: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                  }
-                return null;
-              }),
-              (t.fromObject = function(t) {
-                if (
-                  t instanceof c.tensorflow.magenta.NoteSequence.TextAnnotation
-                )
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.TextAnnotation();
-                switch (
-                  (null != t.time && (e.time = Number(t.time)),
-                  null != t.quantizedStep &&
-                    (u.Long
-                      ? ((e.quantizedStep = u.Long.fromValue(
-                          t.quantizedStep
-                        )).unsigned = !1)
-                      : "string" == typeof t.quantizedStep
-                      ? (e.quantizedStep = parseInt(t.quantizedStep, 10))
-                      : "number" == typeof t.quantizedStep
-                      ? (e.quantizedStep = t.quantizedStep)
-                      : "object" == typeof t.quantizedStep &&
-                        (e.quantizedStep = new u.LongBits(
-                          t.quantizedStep.low >>> 0,
-                          t.quantizedStep.high >>> 0
-                        ).toNumber())),
-                  null != t.text && (e.text = String(t.text)),
-                  t.annotationType)
-                ) {
-                  case "UNKNOWN":
-                  case 0:
-                    e.annotationType = 0;
-                    break;
-                  case "CHORD_SYMBOL":
-                  case 1:
-                    e.annotationType = 1;
-                    break;
-                  case "BEAT":
-                  case 2:
-                    e.annotationType = 2;
-                }
-                return e;
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                if (e.defaults)
-                  if (
-                    ((n.time = 0),
-                    (n.text = ""),
-                    (n.annotationType = e.enums === String ? "UNKNOWN" : 0),
-                    u.Long)
-                  ) {
-                    var r = new u.Long(0, 0, !1);
-                    n.quantizedStep =
-                      e.longs === String
-                        ? r.toString()
-                        : e.longs === Number
-                        ? r.toNumber()
-                        : r;
-                  } else n.quantizedStep = e.longs === String ? "0" : 0;
-                return (
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.text &&
-                    t.hasOwnProperty("text") &&
-                    (n.text = t.text),
-                  null != t.annotationType &&
-                    t.hasOwnProperty("annotationType") &&
-                    (n.annotationType =
-                      e.enums === String
-                        ? c.tensorflow.magenta.NoteSequence.TextAnnotation
-                            .TextAnnotationType[t.annotationType]
-                        : t.annotationType),
-                  null != t.quantizedStep &&
-                    t.hasOwnProperty("quantizedStep") &&
-                    ("number" == typeof t.quantizedStep
-                      ? (n.quantizedStep =
-                          e.longs === String
-                            ? String(t.quantizedStep)
-                            : t.quantizedStep)
-                      : (n.quantizedStep =
-                          e.longs === String
-                            ? u.Long.prototype.toString.call(t.quantizedStep)
-                            : e.longs === Number
-                            ? new u.LongBits(
-                                t.quantizedStep.low >>> 0,
-                                t.quantizedStep.high >>> 0
-                              ).toNumber()
-                            : t.quantizedStep)),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              (t.TextAnnotationType = (function() {
-                var t = {},
-                  e = Object.create(t);
-                return (
-                  (e[(t[0] = "UNKNOWN")] = 0),
-                  (e[(t[1] = "CHORD_SYMBOL")] = 1),
-                  (e[(t[2] = "BEAT")] = 2),
-                  e
-                );
-              })()),
-              t
-            );
-          })()),
-          (t.QuantizationInfo = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            var e;
-            return (
-              (t.prototype.stepsPerQuarter = 0),
-              (t.prototype.stepsPerSecond = 0),
-              Object.defineProperty(t.prototype, "resolution", {
-                get: u.oneOfGetter((e = ["stepsPerQuarter", "stepsPerSecond"])),
-                set: u.oneOfSetter(e)
-              }),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.stepsPerQuarter &&
-                    t.hasOwnProperty("stepsPerQuarter") &&
-                    e.uint32(8).int32(t.stepsPerQuarter),
-                  null != t.stepsPerSecond &&
-                    t.hasOwnProperty("stepsPerSecond") &&
-                    e.uint32(16).int32(t.stepsPerSecond),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.stepsPerQuarter = t.int32();
-                      break;
-                    case 2:
-                      r.stepsPerSecond = t.int32();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                if ("object" != typeof t || null === t)
-                  return "object expected";
-                var e = {};
-                if (
-                  null != t.stepsPerQuarter &&
-                  t.hasOwnProperty("stepsPerQuarter") &&
-                  ((e.resolution = 1), !u.isInteger(t.stepsPerQuarter))
-                )
-                  return "stepsPerQuarter: integer expected";
-                if (
-                  null != t.stepsPerSecond &&
-                  t.hasOwnProperty("stepsPerSecond")
-                ) {
-                  if (1 === e.resolution) return "resolution: multiple values";
-                  if (((e.resolution = 1), !u.isInteger(t.stepsPerSecond)))
-                    return "stepsPerSecond: integer expected";
-                }
-                return null;
-              }),
-              (t.fromObject = function(t) {
-                if (
-                  t instanceof
-                  c.tensorflow.magenta.NoteSequence.QuantizationInfo
-                )
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
-                return (
-                  null != t.stepsPerQuarter &&
-                    (e.stepsPerQuarter = 0 | t.stepsPerQuarter),
-                  null != t.stepsPerSecond &&
-                    (e.stepsPerSecond = 0 | t.stepsPerSecond),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  null != t.stepsPerQuarter &&
-                    t.hasOwnProperty("stepsPerQuarter") &&
-                    ((n.stepsPerQuarter = t.stepsPerQuarter),
-                    e.oneofs && (n.resolution = "stepsPerQuarter")),
-                  null != t.stepsPerSecond &&
-                    t.hasOwnProperty("stepsPerSecond") &&
-                    ((n.stepsPerSecond = t.stepsPerSecond),
-                    e.oneofs && (n.resolution = "stepsPerSecond")),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.SubsequenceInfo = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.startTimeOffset = 0),
-              (t.prototype.endTimeOffset = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.startTimeOffset &&
-                    t.hasOwnProperty("startTimeOffset") &&
-                    e.uint32(9).double(t.startTimeOffset),
-                  null != t.endTimeOffset &&
-                    t.hasOwnProperty("endTimeOffset") &&
-                    e.uint32(17).double(t.endTimeOffset),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.startTimeOffset = t.double();
-                      break;
-                    case 2:
-                      r.endTimeOffset = t.double();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.startTimeOffset &&
-                    t.hasOwnProperty("startTimeOffset") &&
-                    "number" != typeof t.startTimeOffset
-                  ? "startTimeOffset: number expected"
-                  : null != t.endTimeOffset &&
-                    t.hasOwnProperty("endTimeOffset") &&
-                    "number" != typeof t.endTimeOffset
-                  ? "endTimeOffset: number expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (
-                  t instanceof c.tensorflow.magenta.NoteSequence.SubsequenceInfo
-                )
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
-                return (
-                  null != t.startTimeOffset &&
-                    (e.startTimeOffset = Number(t.startTimeOffset)),
-                  null != t.endTimeOffset &&
-                    (e.endTimeOffset = Number(t.endTimeOffset)),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  e.defaults &&
-                    ((n.startTimeOffset = 0), (n.endTimeOffset = 0)),
-                  null != t.startTimeOffset &&
-                    t.hasOwnProperty("startTimeOffset") &&
-                    (n.startTimeOffset =
-                      e.json && !isFinite(t.startTimeOffset)
-                        ? String(t.startTimeOffset)
-                        : t.startTimeOffset),
-                  null != t.endTimeOffset &&
-                    t.hasOwnProperty("endTimeOffset") &&
-                    (n.endTimeOffset =
-                      e.json && !isFinite(t.endTimeOffset)
-                        ? String(t.endTimeOffset)
-                        : t.endTimeOffset),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.SectionAnnotation = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.time = 0),
-              (t.prototype.sectionId = u.Long ? u.Long.fromBits(0, 0, !1) : 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    e.uint32(9).double(t.time),
-                  null != t.sectionId &&
-                    t.hasOwnProperty("sectionId") &&
-                    e.uint32(32).int64(t.sectionId),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.time = t.double();
-                      break;
-                    case 4:
-                      r.sectionId = u.Long ? t.int64().toNumber() : t.int64();
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                return "object" != typeof t || null === t
-                  ? "object expected"
-                  : null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    "number" != typeof t.time
-                  ? "time: number expected"
-                  : null != t.sectionId &&
-                    t.hasOwnProperty("sectionId") &&
-                    !(
-                      u.isInteger(t.sectionId) ||
-                      (t.sectionId &&
-                        u.isInteger(t.sectionId.low) &&
-                        u.isInteger(t.sectionId.high))
-                    )
-                  ? "sectionId: integer|Long expected"
-                  : null;
-              }),
-              (t.fromObject = function(t) {
-                if (
-                  t instanceof
-                  c.tensorflow.magenta.NoteSequence.SectionAnnotation
-                )
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
-                return (
-                  null != t.time && (e.time = Number(t.time)),
-                  null != t.sectionId &&
-                    (u.Long
-                      ? ((e.sectionId = u.Long.fromValue(
-                          t.sectionId
-                        )).unsigned = !1)
-                      : "string" == typeof t.sectionId
-                      ? (e.sectionId = parseInt(t.sectionId, 10))
-                      : "number" == typeof t.sectionId
-                      ? (e.sectionId = t.sectionId)
-                      : "object" == typeof t.sectionId &&
-                        (e.sectionId = new u.LongBits(
-                          t.sectionId.low >>> 0,
-                          t.sectionId.high >>> 0
-                        ).toNumber())),
-                  e
-                );
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                if (e.defaults)
-                  if (((n.time = 0), u.Long)) {
-                    var r = new u.Long(0, 0, !1);
-                    n.sectionId =
-                      e.longs === String
-                        ? r.toString()
-                        : e.longs === Number
-                        ? r.toNumber()
-                        : r;
-                  } else n.sectionId = e.longs === String ? "0" : 0;
-                return (
-                  null != t.time &&
-                    t.hasOwnProperty("time") &&
-                    (n.time =
-                      e.json && !isFinite(t.time) ? String(t.time) : t.time),
-                  null != t.sectionId &&
-                    t.hasOwnProperty("sectionId") &&
-                    ("number" == typeof t.sectionId
-                      ? (n.sectionId =
-                          e.longs === String
-                            ? String(t.sectionId)
-                            : t.sectionId)
-                      : (n.sectionId =
-                          e.longs === String
-                            ? u.Long.prototype.toString.call(t.sectionId)
-                            : e.longs === Number
-                            ? new u.LongBits(
-                                t.sectionId.low >>> 0,
-                                t.sectionId.high >>> 0
-                              ).toNumber()
-                            : t.sectionId)),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.Section = (function() {
-            function t(t) {
-              if (t)
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            var e;
-            return (
-              (t.prototype.sectionId = u.Long ? u.Long.fromBits(0, 0, !1) : 0),
-              (t.prototype.sectionGroup = null),
-              Object.defineProperty(t.prototype, "sectionType", {
-                get: u.oneOfGetter((e = ["sectionId", "sectionGroup"])),
-                set: u.oneOfSetter(e)
-              }),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
-                return (
-                  e || (e = a.create()),
-                  null != t.sectionId &&
-                    t.hasOwnProperty("sectionId") &&
-                    e.uint32(8).int64(t.sectionId),
-                  null != t.sectionGroup &&
-                    t.hasOwnProperty("sectionGroup") &&
-                    c.tensorflow.magenta.NoteSequence.SectionGroup.encode(
-                      t.sectionGroup,
-                      e.uint32(18).fork()
-                    ).ldelim(),
-                  e
-                );
-              }),
-              (t.encodeDelimited = function(t, e) {
-                return this.encode(t, e).ldelim();
-              }),
-              (t.decode = function(t, e) {
-                t instanceof s || (t = s.create(t));
-                for (
-                  var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.Section();
-                  t.pos < n;
-
-                ) {
-                  var i = t.uint32();
-                  switch (i >>> 3) {
-                    case 1:
-                      r.sectionId = u.Long ? t.int64().toNumber() : t.int64();
-                      break;
-                    case 2:
-                      r.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
-                        t,
-                        t.uint32()
-                      );
-                      break;
-                    default:
-                      t.skipType(7 & i);
-                  }
-                }
-                return r;
-              }),
-              (t.decodeDelimited = function(t) {
-                return (
-                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
-                );
-              }),
-              (t.verify = function(t) {
-                if ("object" != typeof t || null === t)
-                  return "object expected";
-                var e = {};
-                if (
-                  null != t.sectionId &&
-                  t.hasOwnProperty("sectionId") &&
-                  ((e.sectionType = 1),
-                  !(
-                    u.isInteger(t.sectionId) ||
-                    (t.sectionId &&
-                      u.isInteger(t.sectionId.low) &&
-                      u.isInteger(t.sectionId.high))
-                  ))
-                )
-                  return "sectionId: integer|Long expected";
-                if (
-                  null != t.sectionGroup &&
-                  t.hasOwnProperty("sectionGroup")
-                ) {
-                  if (1 === e.sectionType)
-                    return "sectionType: multiple values";
-                  e.sectionType = 1;
-                  var n = c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
-                    t.sectionGroup
-                  );
-                  if (n) return "sectionGroup." + n;
-                }
-                return null;
-              }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.Section)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.Section();
-                if (
-                  (null != t.sectionId &&
-                    (u.Long
-                      ? ((e.sectionId = u.Long.fromValue(
-                          t.sectionId
-                        )).unsigned = !1)
-                      : "string" == typeof t.sectionId
-                      ? (e.sectionId = parseInt(t.sectionId, 10))
-                      : "number" == typeof t.sectionId
-                      ? (e.sectionId = t.sectionId)
-                      : "object" == typeof t.sectionId &&
-                        (e.sectionId = new u.LongBits(
-                          t.sectionId.low >>> 0,
-                          t.sectionId.high >>> 0
-                        ).toNumber())),
-                  null != t.sectionGroup)
-                ) {
-                  if ("object" != typeof t.sectionGroup)
-                    throw TypeError(
-                      ".tensorflow.magenta.NoteSequence.Section.sectionGroup: object expected"
-                    );
-                  e.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
-                    t.sectionGroup
-                  );
-                }
-                return e;
-              }),
-              (t.toObject = function(t, e) {
-                e || (e = {});
-                var n = {};
-                return (
-                  null != t.sectionId &&
-                    t.hasOwnProperty("sectionId") &&
-                    ("number" == typeof t.sectionId
-                      ? (n.sectionId =
-                          e.longs === String
-                            ? String(t.sectionId)
-                            : t.sectionId)
-                      : (n.sectionId =
-                          e.longs === String
-                            ? u.Long.prototype.toString.call(t.sectionId)
-                            : e.longs === Number
-                            ? new u.LongBits(
-                                t.sectionId.low >>> 0,
-                                t.sectionId.high >>> 0
-                              ).toNumber()
-                            : t.sectionId),
-                    e.oneofs && (n.sectionType = "sectionId")),
-                  null != t.sectionGroup &&
-                    t.hasOwnProperty("sectionGroup") &&
-                    ((n.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
-                      t.sectionGroup,
-                      e
-                    )),
-                    e.oneofs && (n.sectionType = "sectionGroup")),
-                  n
-                );
-              }),
-              (t.prototype.toJSON = function() {
-                return this.constructor.toObject(this, o.util.toJSONOptions);
-              }),
-              t
-            );
-          })()),
-          (t.SectionGroup = (function() {
-            function t(t) {
-              if (((this.sections = []), t))
-                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
-            }
-            return (
-              (t.prototype.sections = u.emptyArray),
-              (t.prototype.numTimes = 0),
-              (t.create = function(e) {
-                return new t(e);
-              }),
-              (t.encode = function(t, e) {
+              (t.encode = function (t, e) {
                 if (
                   (e || (e = a.create()),
-                  null != t.sections && t.sections.length)
+                  null != t.id &&
+                    t.hasOwnProperty("id") &&
+                    e.uint32(10).string(t.id),
+                  null != t.filename &&
+                    t.hasOwnProperty("filename") &&
+                    e.uint32(18).string(t.filename),
+                  null != t.collectionName &&
+                    t.hasOwnProperty("collectionName") &&
+                    e.uint32(26).string(t.collectionName),
+                  null != t.ticksPerQuarter &&
+                    t.hasOwnProperty("ticksPerQuarter") &&
+                    e.uint32(32).int32(t.ticksPerQuarter),
+                  null != t.timeSignatures && t.timeSignatures.length)
                 )
-                  for (var n = 0; n < t.sections.length; ++n)
-                    c.tensorflow.magenta.NoteSequence.Section.encode(
-                      t.sections[n],
-                      e.uint32(10).fork()
+                  for (var n = 0; n < t.timeSignatures.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.TimeSignature.encode(
+                      t.timeSignatures[n],
+                      e.uint32(42).fork()
                     ).ldelim();
-                return (
-                  null != t.numTimes &&
-                    t.hasOwnProperty("numTimes") &&
-                    e.uint32(16).int32(t.numTimes),
-                  e
-                );
+                if (null != t.keySignatures && t.keySignatures.length)
+                  for (n = 0; n < t.keySignatures.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.KeySignature.encode(
+                      t.keySignatures[n],
+                      e.uint32(50).fork()
+                    ).ldelim();
+                if (null != t.tempos && t.tempos.length)
+                  for (n = 0; n < t.tempos.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.Tempo.encode(
+                      t.tempos[n],
+                      e.uint32(58).fork()
+                    ).ldelim();
+                if (null != t.notes && t.notes.length)
+                  for (n = 0; n < t.notes.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.Note.encode(
+                      t.notes[n],
+                      e.uint32(66).fork()
+                    ).ldelim();
+                if (
+                  (null != t.totalTime &&
+                    t.hasOwnProperty("totalTime") &&
+                    e.uint32(73).double(t.totalTime),
+                  null != t.pitchBends && t.pitchBends.length)
+                )
+                  for (n = 0; n < t.pitchBends.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.PitchBend.encode(
+                      t.pitchBends[n],
+                      e.uint32(82).fork()
+                    ).ldelim();
+                if (null != t.controlChanges && t.controlChanges.length)
+                  for (n = 0; n < t.controlChanges.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.ControlChange.encode(
+                      t.controlChanges[n],
+                      e.uint32(90).fork()
+                    ).ldelim();
+                if (null != t.partInfos && t.partInfos.length)
+                  for (n = 0; n < t.partInfos.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.PartInfo.encode(
+                      t.partInfos[n],
+                      e.uint32(98).fork()
+                    ).ldelim();
+                if (
+                  (null != t.sourceInfo &&
+                    t.hasOwnProperty("sourceInfo") &&
+                    c.tensorflow.magenta.NoteSequence.SourceInfo.encode(
+                      t.sourceInfo,
+                      e.uint32(106).fork()
+                    ).ldelim(),
+                  null != t.textAnnotations && t.textAnnotations.length)
+                )
+                  for (n = 0; n < t.textAnnotations.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.TextAnnotation.encode(
+                      t.textAnnotations[n],
+                      e.uint32(114).fork()
+                    ).ldelim();
+                if (
+                  (null != t.quantizationInfo &&
+                    t.hasOwnProperty("quantizationInfo") &&
+                    c.tensorflow.magenta.NoteSequence.QuantizationInfo.encode(
+                      t.quantizationInfo,
+                      e.uint32(122).fork()
+                    ).ldelim(),
+                  null != t.totalQuantizedSteps &&
+                    t.hasOwnProperty("totalQuantizedSteps") &&
+                    e.uint32(128).int64(t.totalQuantizedSteps),
+                  null != t.subsequenceInfo &&
+                    t.hasOwnProperty("subsequenceInfo") &&
+                    c.tensorflow.magenta.NoteSequence.SubsequenceInfo.encode(
+                      t.subsequenceInfo,
+                      e.uint32(138).fork()
+                    ).ldelim(),
+                  null != t.referenceNumber &&
+                    t.hasOwnProperty("referenceNumber") &&
+                    e.uint32(144).int64(t.referenceNumber),
+                  null != t.sequenceMetadata &&
+                    t.hasOwnProperty("sequenceMetadata") &&
+                    c.tensorflow.magenta.SequenceMetadata.encode(
+                      t.sequenceMetadata,
+                      e.uint32(154).fork()
+                    ).ldelim(),
+                  null != t.sectionAnnotations && t.sectionAnnotations.length)
+                )
+                  for (n = 0; n < t.sectionAnnotations.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.SectionAnnotation.encode(
+                      t.sectionAnnotations[n],
+                      e.uint32(162).fork()
+                    ).ldelim();
+                if (null != t.sectionGroups && t.sectionGroups.length)
+                  for (n = 0; n < t.sectionGroups.length; ++n)
+                    c.tensorflow.magenta.NoteSequence.SectionGroup.encode(
+                      t.sectionGroups[n],
+                      e.uint32(170).fork()
+                    ).ldelim();
+                return e;
               }),
-              (t.encodeDelimited = function(t, e) {
+              (t.encodeDelimited = function (t, e) {
                 return this.encode(t, e).ldelim();
               }),
-              (t.decode = function(t, e) {
+              (t.decode = function (t, e) {
                 t instanceof s || (t = s.create(t));
                 for (
                   var n = void 0 === e ? t.len : t.pos + e,
-                    r = new c.tensorflow.magenta.NoteSequence.SectionGroup();
+                    r = new c.tensorflow.magenta.NoteSequence();
                   t.pos < n;
 
                 ) {
                   var i = t.uint32();
                   switch (i >>> 3) {
                     case 1:
-                      (r.sections && r.sections.length) || (r.sections = []),
-                        r.sections.push(
-                          c.tensorflow.magenta.NoteSequence.Section.decode(
+                      r.id = t.string();
+                      break;
+                    case 2:
+                      r.filename = t.string();
+                      break;
+                    case 18:
+                      r.referenceNumber = u.Long
+                        ? t.int64().toNumber()
+                        : t.int64();
+                      break;
+                    case 3:
+                      r.collectionName = t.string();
+                      break;
+                    case 4:
+                      r.ticksPerQuarter = t.int32();
+                      break;
+                    case 5:
+                      (r.timeSignatures && r.timeSignatures.length) ||
+                        (r.timeSignatures = []),
+                        r.timeSignatures.push(
+                          c.tensorflow.magenta.NoteSequence.TimeSignature.decode(
                             t,
                             t.uint32()
                           )
                         );
                       break;
-                    case 2:
-                      r.numTimes = t.int32();
+                    case 6:
+                      (r.keySignatures && r.keySignatures.length) ||
+                        (r.keySignatures = []),
+                        r.keySignatures.push(
+                          c.tensorflow.magenta.NoteSequence.KeySignature.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 7:
+                      (r.tempos && r.tempos.length) || (r.tempos = []),
+                        r.tempos.push(
+                          c.tensorflow.magenta.NoteSequence.Tempo.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 8:
+                      (r.notes && r.notes.length) || (r.notes = []),
+                        r.notes.push(
+                          c.tensorflow.magenta.NoteSequence.Note.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 9:
+                      r.totalTime = t.double();
+                      break;
+                    case 16:
+                      r.totalQuantizedSteps = u.Long
+                        ? t.int64().toNumber()
+                        : t.int64();
+                      break;
+                    case 10:
+                      (r.pitchBends && r.pitchBends.length) ||
+                        (r.pitchBends = []),
+                        r.pitchBends.push(
+                          c.tensorflow.magenta.NoteSequence.PitchBend.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 11:
+                      (r.controlChanges && r.controlChanges.length) ||
+                        (r.controlChanges = []),
+                        r.controlChanges.push(
+                          c.tensorflow.magenta.NoteSequence.ControlChange.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 12:
+                      (r.partInfos && r.partInfos.length) || (r.partInfos = []),
+                        r.partInfos.push(
+                          c.tensorflow.magenta.NoteSequence.PartInfo.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 13:
+                      r.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.decode(
+                        t,
+                        t.uint32()
+                      );
+                      break;
+                    case 14:
+                      (r.textAnnotations && r.textAnnotations.length) ||
+                        (r.textAnnotations = []),
+                        r.textAnnotations.push(
+                          c.tensorflow.magenta.NoteSequence.TextAnnotation.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 20:
+                      (r.sectionAnnotations && r.sectionAnnotations.length) ||
+                        (r.sectionAnnotations = []),
+                        r.sectionAnnotations.push(
+                          c.tensorflow.magenta.NoteSequence.SectionAnnotation.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 21:
+                      (r.sectionGroups && r.sectionGroups.length) ||
+                        (r.sectionGroups = []),
+                        r.sectionGroups.push(
+                          c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
+                            t,
+                            t.uint32()
+                          )
+                        );
+                      break;
+                    case 15:
+                      r.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.decode(
+                        t,
+                        t.uint32()
+                      );
+                      break;
+                    case 17:
+                      r.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.decode(
+                        t,
+                        t.uint32()
+                      );
+                      break;
+                    case 19:
+                      r.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.decode(
+                        t,
+                        t.uint32()
+                      );
                       break;
                     default:
                       t.skipType(7 & i);
@@ -19460,446 +16128,3941 @@
                 }
                 return r;
               }),
-              (t.decodeDelimited = function(t) {
+              (t.decodeDelimited = function (t) {
                 return (
                   t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
                 );
               }),
-              (t.verify = function(t) {
+              (t.verify = function (t) {
                 if ("object" != typeof t || null === t)
                   return "object expected";
-                if (null != t.sections && t.hasOwnProperty("sections")) {
-                  if (!Array.isArray(t.sections))
-                    return "sections: array expected";
-                  for (var e = 0; e < t.sections.length; ++e) {
-                    var n = c.tensorflow.magenta.NoteSequence.Section.verify(
-                      t.sections[e]
-                    );
-                    if (n) return "sections." + n;
+                if (null != t.id && t.hasOwnProperty("id") && !u.isString(t.id))
+                  return "id: string expected";
+                if (
+                  null != t.filename &&
+                  t.hasOwnProperty("filename") &&
+                  !u.isString(t.filename)
+                )
+                  return "filename: string expected";
+                if (
+                  null != t.referenceNumber &&
+                  t.hasOwnProperty("referenceNumber") &&
+                  !(
+                    u.isInteger(t.referenceNumber) ||
+                    (t.referenceNumber &&
+                      u.isInteger(t.referenceNumber.low) &&
+                      u.isInteger(t.referenceNumber.high))
+                  )
+                )
+                  return "referenceNumber: integer|Long expected";
+                if (
+                  null != t.collectionName &&
+                  t.hasOwnProperty("collectionName") &&
+                  !u.isString(t.collectionName)
+                )
+                  return "collectionName: string expected";
+                if (
+                  null != t.ticksPerQuarter &&
+                  t.hasOwnProperty("ticksPerQuarter") &&
+                  !u.isInteger(t.ticksPerQuarter)
+                )
+                  return "ticksPerQuarter: integer expected";
+                if (
+                  null != t.timeSignatures &&
+                  t.hasOwnProperty("timeSignatures")
+                ) {
+                  if (!Array.isArray(t.timeSignatures))
+                    return "timeSignatures: array expected";
+                  for (var e = 0; e < t.timeSignatures.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.TimeSignature.verify(
+                        t.timeSignatures[e]
+                      ))
+                    )
+                      return "timeSignatures." + n;
+                }
+                if (
+                  null != t.keySignatures &&
+                  t.hasOwnProperty("keySignatures")
+                ) {
+                  if (!Array.isArray(t.keySignatures))
+                    return "keySignatures: array expected";
+                  for (e = 0; e < t.keySignatures.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.KeySignature.verify(
+                        t.keySignatures[e]
+                      ))
+                    )
+                      return "keySignatures." + n;
+                }
+                if (null != t.tempos && t.hasOwnProperty("tempos")) {
+                  if (!Array.isArray(t.tempos)) return "tempos: array expected";
+                  for (e = 0; e < t.tempos.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.Tempo.verify(
+                        t.tempos[e]
+                      ))
+                    )
+                      return "tempos." + n;
+                }
+                if (null != t.notes && t.hasOwnProperty("notes")) {
+                  if (!Array.isArray(t.notes)) return "notes: array expected";
+                  for (e = 0; e < t.notes.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.Note.verify(
+                        t.notes[e]
+                      ))
+                    )
+                      return "notes." + n;
+                }
+                if (
+                  null != t.totalTime &&
+                  t.hasOwnProperty("totalTime") &&
+                  "number" != typeof t.totalTime
+                )
+                  return "totalTime: number expected";
+                if (
+                  null != t.totalQuantizedSteps &&
+                  t.hasOwnProperty("totalQuantizedSteps") &&
+                  !(
+                    u.isInteger(t.totalQuantizedSteps) ||
+                    (t.totalQuantizedSteps &&
+                      u.isInteger(t.totalQuantizedSteps.low) &&
+                      u.isInteger(t.totalQuantizedSteps.high))
+                  )
+                )
+                  return "totalQuantizedSteps: integer|Long expected";
+                if (null != t.pitchBends && t.hasOwnProperty("pitchBends")) {
+                  if (!Array.isArray(t.pitchBends))
+                    return "pitchBends: array expected";
+                  for (e = 0; e < t.pitchBends.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.PitchBend.verify(
+                        t.pitchBends[e]
+                      ))
+                    )
+                      return "pitchBends." + n;
+                }
+                if (
+                  null != t.controlChanges &&
+                  t.hasOwnProperty("controlChanges")
+                ) {
+                  if (!Array.isArray(t.controlChanges))
+                    return "controlChanges: array expected";
+                  for (e = 0; e < t.controlChanges.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.ControlChange.verify(
+                        t.controlChanges[e]
+                      ))
+                    )
+                      return "controlChanges." + n;
+                }
+                if (null != t.partInfos && t.hasOwnProperty("partInfos")) {
+                  if (!Array.isArray(t.partInfos))
+                    return "partInfos: array expected";
+                  for (e = 0; e < t.partInfos.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.PartInfo.verify(
+                        t.partInfos[e]
+                      ))
+                    )
+                      return "partInfos." + n;
+                }
+                if (
+                  null != t.sourceInfo &&
+                  t.hasOwnProperty("sourceInfo") &&
+                  (n = c.tensorflow.magenta.NoteSequence.SourceInfo.verify(
+                    t.sourceInfo
+                  ))
+                )
+                  return "sourceInfo." + n;
+                if (
+                  null != t.textAnnotations &&
+                  t.hasOwnProperty("textAnnotations")
+                ) {
+                  if (!Array.isArray(t.textAnnotations))
+                    return "textAnnotations: array expected";
+                  for (e = 0; e < t.textAnnotations.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.TextAnnotation.verify(
+                        t.textAnnotations[e]
+                      ))
+                    )
+                      return "textAnnotations." + n;
+                }
+                if (
+                  null != t.sectionAnnotations &&
+                  t.hasOwnProperty("sectionAnnotations")
+                ) {
+                  if (!Array.isArray(t.sectionAnnotations))
+                    return "sectionAnnotations: array expected";
+                  for (e = 0; e < t.sectionAnnotations.length; ++e)
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.SectionAnnotation.verify(
+                        t.sectionAnnotations[e]
+                      ))
+                    )
+                      return "sectionAnnotations." + n;
+                }
+                if (
+                  null != t.sectionGroups &&
+                  t.hasOwnProperty("sectionGroups")
+                ) {
+                  if (!Array.isArray(t.sectionGroups))
+                    return "sectionGroups: array expected";
+                  for (e = 0; e < t.sectionGroups.length; ++e) {
+                    var n;
+                    if (
+                      (n = c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
+                        t.sectionGroups[e]
+                      ))
+                    )
+                      return "sectionGroups." + n;
                   }
                 }
-                return null != t.numTimes &&
-                  t.hasOwnProperty("numTimes") &&
-                  !u.isInteger(t.numTimes)
-                  ? "numTimes: integer expected"
+                return null != t.quantizationInfo &&
+                  t.hasOwnProperty("quantizationInfo") &&
+                  (n = c.tensorflow.magenta.NoteSequence.QuantizationInfo.verify(
+                    t.quantizationInfo
+                  ))
+                  ? "quantizationInfo." + n
+                  : null != t.subsequenceInfo &&
+                    t.hasOwnProperty("subsequenceInfo") &&
+                    (n = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.verify(
+                      t.subsequenceInfo
+                    ))
+                  ? "subsequenceInfo." + n
+                  : null != t.sequenceMetadata &&
+                    t.hasOwnProperty("sequenceMetadata") &&
+                    (n = c.tensorflow.magenta.SequenceMetadata.verify(
+                      t.sequenceMetadata
+                    ))
+                  ? "sequenceMetadata." + n
                   : null;
               }),
-              (t.fromObject = function(t) {
-                if (t instanceof c.tensorflow.magenta.NoteSequence.SectionGroup)
-                  return t;
-                var e = new c.tensorflow.magenta.NoteSequence.SectionGroup();
-                if (t.sections) {
-                  if (!Array.isArray(t.sections))
+              (t.fromObject = function (t) {
+                if (t instanceof c.tensorflow.magenta.NoteSequence) return t;
+                var e = new c.tensorflow.magenta.NoteSequence();
+                if (
+                  (null != t.id && (e.id = String(t.id)),
+                  null != t.filename && (e.filename = String(t.filename)),
+                  null != t.referenceNumber &&
+                    (u.Long
+                      ? ((e.referenceNumber = u.Long.fromValue(
+                          t.referenceNumber
+                        )).unsigned = !1)
+                      : "string" == typeof t.referenceNumber
+                      ? (e.referenceNumber = parseInt(t.referenceNumber, 10))
+                      : "number" == typeof t.referenceNumber
+                      ? (e.referenceNumber = t.referenceNumber)
+                      : "object" == typeof t.referenceNumber &&
+                        (e.referenceNumber = new u.LongBits(
+                          t.referenceNumber.low >>> 0,
+                          t.referenceNumber.high >>> 0
+                        ).toNumber())),
+                  null != t.collectionName &&
+                    (e.collectionName = String(t.collectionName)),
+                  null != t.ticksPerQuarter &&
+                    (e.ticksPerQuarter = 0 | t.ticksPerQuarter),
+                  t.timeSignatures)
+                ) {
+                  if (!Array.isArray(t.timeSignatures))
                     throw TypeError(
-                      ".tensorflow.magenta.NoteSequence.SectionGroup.sections: array expected"
+                      ".tensorflow.magenta.NoteSequence.timeSignatures: array expected"
                     );
-                  e.sections = [];
-                  for (var n = 0; n < t.sections.length; ++n) {
-                    if ("object" != typeof t.sections[n])
+                  e.timeSignatures = [];
+                  for (var n = 0; n < t.timeSignatures.length; ++n) {
+                    if ("object" != typeof t.timeSignatures[n])
                       throw TypeError(
-                        ".tensorflow.magenta.NoteSequence.SectionGroup.sections: object expected"
+                        ".tensorflow.magenta.NoteSequence.timeSignatures: object expected"
                       );
-                    e.sections[
+                    e.timeSignatures[
                       n
-                    ] = c.tensorflow.magenta.NoteSequence.Section.fromObject(
-                      t.sections[n]
+                    ] = c.tensorflow.magenta.NoteSequence.TimeSignature.fromObject(
+                      t.timeSignatures[n]
                     );
                   }
                 }
-                return null != t.numTimes && (e.numTimes = 0 | t.numTimes), e;
+                if (t.keySignatures) {
+                  if (!Array.isArray(t.keySignatures))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.keySignatures: array expected"
+                    );
+                  for (
+                    e.keySignatures = [], n = 0;
+                    n < t.keySignatures.length;
+                    ++n
+                  ) {
+                    if ("object" != typeof t.keySignatures[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.keySignatures: object expected"
+                      );
+                    e.keySignatures[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.KeySignature.fromObject(
+                      t.keySignatures[n]
+                    );
+                  }
+                }
+                if (t.tempos) {
+                  if (!Array.isArray(t.tempos))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.tempos: array expected"
+                    );
+                  for (e.tempos = [], n = 0; n < t.tempos.length; ++n) {
+                    if ("object" != typeof t.tempos[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.tempos: object expected"
+                      );
+                    e.tempos[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.Tempo.fromObject(
+                      t.tempos[n]
+                    );
+                  }
+                }
+                if (t.notes) {
+                  if (!Array.isArray(t.notes))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.notes: array expected"
+                    );
+                  for (e.notes = [], n = 0; n < t.notes.length; ++n) {
+                    if ("object" != typeof t.notes[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.notes: object expected"
+                      );
+                    e.notes[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.Note.fromObject(
+                      t.notes[n]
+                    );
+                  }
+                }
+                if (
+                  (null != t.totalTime && (e.totalTime = Number(t.totalTime)),
+                  null != t.totalQuantizedSteps &&
+                    (u.Long
+                      ? ((e.totalQuantizedSteps = u.Long.fromValue(
+                          t.totalQuantizedSteps
+                        )).unsigned = !1)
+                      : "string" == typeof t.totalQuantizedSteps
+                      ? (e.totalQuantizedSteps = parseInt(
+                          t.totalQuantizedSteps,
+                          10
+                        ))
+                      : "number" == typeof t.totalQuantizedSteps
+                      ? (e.totalQuantizedSteps = t.totalQuantizedSteps)
+                      : "object" == typeof t.totalQuantizedSteps &&
+                        (e.totalQuantizedSteps = new u.LongBits(
+                          t.totalQuantizedSteps.low >>> 0,
+                          t.totalQuantizedSteps.high >>> 0
+                        ).toNumber())),
+                  t.pitchBends)
+                ) {
+                  if (!Array.isArray(t.pitchBends))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.pitchBends: array expected"
+                    );
+                  for (e.pitchBends = [], n = 0; n < t.pitchBends.length; ++n) {
+                    if ("object" != typeof t.pitchBends[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.pitchBends: object expected"
+                      );
+                    e.pitchBends[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.PitchBend.fromObject(
+                      t.pitchBends[n]
+                    );
+                  }
+                }
+                if (t.controlChanges) {
+                  if (!Array.isArray(t.controlChanges))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.controlChanges: array expected"
+                    );
+                  for (
+                    e.controlChanges = [], n = 0;
+                    n < t.controlChanges.length;
+                    ++n
+                  ) {
+                    if ("object" != typeof t.controlChanges[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.controlChanges: object expected"
+                      );
+                    e.controlChanges[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.ControlChange.fromObject(
+                      t.controlChanges[n]
+                    );
+                  }
+                }
+                if (t.partInfos) {
+                  if (!Array.isArray(t.partInfos))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.partInfos: array expected"
+                    );
+                  for (e.partInfos = [], n = 0; n < t.partInfos.length; ++n) {
+                    if ("object" != typeof t.partInfos[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.partInfos: object expected"
+                      );
+                    e.partInfos[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.PartInfo.fromObject(
+                      t.partInfos[n]
+                    );
+                  }
+                }
+                if (null != t.sourceInfo) {
+                  if ("object" != typeof t.sourceInfo)
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.sourceInfo: object expected"
+                    );
+                  e.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.fromObject(
+                    t.sourceInfo
+                  );
+                }
+                if (t.textAnnotations) {
+                  if (!Array.isArray(t.textAnnotations))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.textAnnotations: array expected"
+                    );
+                  for (
+                    e.textAnnotations = [], n = 0;
+                    n < t.textAnnotations.length;
+                    ++n
+                  ) {
+                    if ("object" != typeof t.textAnnotations[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.textAnnotations: object expected"
+                      );
+                    e.textAnnotations[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.TextAnnotation.fromObject(
+                      t.textAnnotations[n]
+                    );
+                  }
+                }
+                if (t.sectionAnnotations) {
+                  if (!Array.isArray(t.sectionAnnotations))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.sectionAnnotations: array expected"
+                    );
+                  for (
+                    e.sectionAnnotations = [], n = 0;
+                    n < t.sectionAnnotations.length;
+                    ++n
+                  ) {
+                    if ("object" != typeof t.sectionAnnotations[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.sectionAnnotations: object expected"
+                      );
+                    e.sectionAnnotations[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.SectionAnnotation.fromObject(
+                      t.sectionAnnotations[n]
+                    );
+                  }
+                }
+                if (t.sectionGroups) {
+                  if (!Array.isArray(t.sectionGroups))
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.sectionGroups: array expected"
+                    );
+                  for (
+                    e.sectionGroups = [], n = 0;
+                    n < t.sectionGroups.length;
+                    ++n
+                  ) {
+                    if ("object" != typeof t.sectionGroups[n])
+                      throw TypeError(
+                        ".tensorflow.magenta.NoteSequence.sectionGroups: object expected"
+                      );
+                    e.sectionGroups[
+                      n
+                    ] = c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
+                      t.sectionGroups[n]
+                    );
+                  }
+                }
+                if (null != t.quantizationInfo) {
+                  if ("object" != typeof t.quantizationInfo)
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.quantizationInfo: object expected"
+                    );
+                  e.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.fromObject(
+                    t.quantizationInfo
+                  );
+                }
+                if (null != t.subsequenceInfo) {
+                  if ("object" != typeof t.subsequenceInfo)
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.subsequenceInfo: object expected"
+                    );
+                  e.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.fromObject(
+                    t.subsequenceInfo
+                  );
+                }
+                if (null != t.sequenceMetadata) {
+                  if ("object" != typeof t.sequenceMetadata)
+                    throw TypeError(
+                      ".tensorflow.magenta.NoteSequence.sequenceMetadata: object expected"
+                    );
+                  e.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.fromObject(
+                    t.sequenceMetadata
+                  );
+                }
+                return e;
               }),
-              (t.toObject = function(t, e) {
+              (t.toObject = function (t, e) {
                 e || (e = {});
                 var n = {};
                 if (
-                  ((e.arrays || e.defaults) && (n.sections = []),
-                  e.defaults && (n.numTimes = 0),
-                  t.sections && t.sections.length)
+                  ((e.arrays || e.defaults) &&
+                    ((n.timeSignatures = []),
+                    (n.keySignatures = []),
+                    (n.tempos = []),
+                    (n.notes = []),
+                    (n.pitchBends = []),
+                    (n.controlChanges = []),
+                    (n.partInfos = []),
+                    (n.textAnnotations = []),
+                    (n.sectionAnnotations = []),
+                    (n.sectionGroups = [])),
+                  e.defaults)
                 ) {
-                  n.sections = [];
-                  for (var r = 0; r < t.sections.length; ++r)
-                    n.sections[
-                      r
-                    ] = c.tensorflow.magenta.NoteSequence.Section.toObject(
-                      t.sections[r],
+                  if (
+                    ((n.id = ""),
+                    (n.filename = ""),
+                    (n.collectionName = ""),
+                    (n.ticksPerQuarter = 0),
+                    (n.totalTime = 0),
+                    (n.sourceInfo = null),
+                    (n.quantizationInfo = null),
+                    u.Long)
+                  ) {
+                    var r = new u.Long(0, 0, !1);
+                    n.totalQuantizedSteps =
+                      e.longs === String
+                        ? r.toString()
+                        : e.longs === Number
+                        ? r.toNumber()
+                        : r;
+                  } else n.totalQuantizedSteps = e.longs === String ? "0" : 0;
+                  (n.subsequenceInfo = null),
+                    u.Long
+                      ? ((r = new u.Long(0, 0, !1)),
+                        (n.referenceNumber =
+                          e.longs === String
+                            ? r.toString()
+                            : e.longs === Number
+                            ? r.toNumber()
+                            : r))
+                      : (n.referenceNumber = e.longs === String ? "0" : 0),
+                    (n.sequenceMetadata = null);
+                }
+                if (
+                  (null != t.id && t.hasOwnProperty("id") && (n.id = t.id),
+                  null != t.filename &&
+                    t.hasOwnProperty("filename") &&
+                    (n.filename = t.filename),
+                  null != t.collectionName &&
+                    t.hasOwnProperty("collectionName") &&
+                    (n.collectionName = t.collectionName),
+                  null != t.ticksPerQuarter &&
+                    t.hasOwnProperty("ticksPerQuarter") &&
+                    (n.ticksPerQuarter = t.ticksPerQuarter),
+                  t.timeSignatures && t.timeSignatures.length)
+                ) {
+                  n.timeSignatures = [];
+                  for (var i = 0; i < t.timeSignatures.length; ++i)
+                    n.timeSignatures[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.TimeSignature.toObject(
+                      t.timeSignatures[i],
                       e
                     );
                 }
+                if (t.keySignatures && t.keySignatures.length)
+                  for (
+                    n.keySignatures = [], i = 0;
+                    i < t.keySignatures.length;
+                    ++i
+                  )
+                    n.keySignatures[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.KeySignature.toObject(
+                      t.keySignatures[i],
+                      e
+                    );
+                if (t.tempos && t.tempos.length)
+                  for (n.tempos = [], i = 0; i < t.tempos.length; ++i)
+                    n.tempos[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.Tempo.toObject(
+                      t.tempos[i],
+                      e
+                    );
+                if (t.notes && t.notes.length)
+                  for (n.notes = [], i = 0; i < t.notes.length; ++i)
+                    n.notes[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.Note.toObject(
+                      t.notes[i],
+                      e
+                    );
+                if (
+                  (null != t.totalTime &&
+                    t.hasOwnProperty("totalTime") &&
+                    (n.totalTime =
+                      e.json && !isFinite(t.totalTime)
+                        ? String(t.totalTime)
+                        : t.totalTime),
+                  t.pitchBends && t.pitchBends.length)
+                )
+                  for (n.pitchBends = [], i = 0; i < t.pitchBends.length; ++i)
+                    n.pitchBends[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.PitchBend.toObject(
+                      t.pitchBends[i],
+                      e
+                    );
+                if (t.controlChanges && t.controlChanges.length)
+                  for (
+                    n.controlChanges = [], i = 0;
+                    i < t.controlChanges.length;
+                    ++i
+                  )
+                    n.controlChanges[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.ControlChange.toObject(
+                      t.controlChanges[i],
+                      e
+                    );
+                if (t.partInfos && t.partInfos.length)
+                  for (n.partInfos = [], i = 0; i < t.partInfos.length; ++i)
+                    n.partInfos[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.PartInfo.toObject(
+                      t.partInfos[i],
+                      e
+                    );
+                if (
+                  (null != t.sourceInfo &&
+                    t.hasOwnProperty("sourceInfo") &&
+                    (n.sourceInfo = c.tensorflow.magenta.NoteSequence.SourceInfo.toObject(
+                      t.sourceInfo,
+                      e
+                    )),
+                  t.textAnnotations && t.textAnnotations.length)
+                )
+                  for (
+                    n.textAnnotations = [], i = 0;
+                    i < t.textAnnotations.length;
+                    ++i
+                  )
+                    n.textAnnotations[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.TextAnnotation.toObject(
+                      t.textAnnotations[i],
+                      e
+                    );
+                if (
+                  (null != t.quantizationInfo &&
+                    t.hasOwnProperty("quantizationInfo") &&
+                    (n.quantizationInfo = c.tensorflow.magenta.NoteSequence.QuantizationInfo.toObject(
+                      t.quantizationInfo,
+                      e
+                    )),
+                  null != t.totalQuantizedSteps &&
+                    t.hasOwnProperty("totalQuantizedSteps") &&
+                    ("number" == typeof t.totalQuantizedSteps
+                      ? (n.totalQuantizedSteps =
+                          e.longs === String
+                            ? String(t.totalQuantizedSteps)
+                            : t.totalQuantizedSteps)
+                      : (n.totalQuantizedSteps =
+                          e.longs === String
+                            ? u.Long.prototype.toString.call(
+                                t.totalQuantizedSteps
+                              )
+                            : e.longs === Number
+                            ? new u.LongBits(
+                                t.totalQuantizedSteps.low >>> 0,
+                                t.totalQuantizedSteps.high >>> 0
+                              ).toNumber()
+                            : t.totalQuantizedSteps)),
+                  null != t.subsequenceInfo &&
+                    t.hasOwnProperty("subsequenceInfo") &&
+                    (n.subsequenceInfo = c.tensorflow.magenta.NoteSequence.SubsequenceInfo.toObject(
+                      t.subsequenceInfo,
+                      e
+                    )),
+                  null != t.referenceNumber &&
+                    t.hasOwnProperty("referenceNumber") &&
+                    ("number" == typeof t.referenceNumber
+                      ? (n.referenceNumber =
+                          e.longs === String
+                            ? String(t.referenceNumber)
+                            : t.referenceNumber)
+                      : (n.referenceNumber =
+                          e.longs === String
+                            ? u.Long.prototype.toString.call(t.referenceNumber)
+                            : e.longs === Number
+                            ? new u.LongBits(
+                                t.referenceNumber.low >>> 0,
+                                t.referenceNumber.high >>> 0
+                              ).toNumber()
+                            : t.referenceNumber)),
+                  null != t.sequenceMetadata &&
+                    t.hasOwnProperty("sequenceMetadata") &&
+                    (n.sequenceMetadata = c.tensorflow.magenta.SequenceMetadata.toObject(
+                      t.sequenceMetadata,
+                      e
+                    )),
+                  t.sectionAnnotations && t.sectionAnnotations.length)
+                )
+                  for (
+                    n.sectionAnnotations = [], i = 0;
+                    i < t.sectionAnnotations.length;
+                    ++i
+                  )
+                    n.sectionAnnotations[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.SectionAnnotation.toObject(
+                      t.sectionAnnotations[i],
+                      e
+                    );
+                if (t.sectionGroups && t.sectionGroups.length)
+                  for (
+                    n.sectionGroups = [], i = 0;
+                    i < t.sectionGroups.length;
+                    ++i
+                  )
+                    n.sectionGroups[
+                      i
+                    ] = c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
+                      t.sectionGroups[i],
+                      e
+                    );
+                return n;
+              }),
+              (t.prototype.toJSON = function () {
+                return this.constructor.toObject(this, o.util.toJSONOptions);
+              }),
+              (t.Note = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
                 return (
-                  null != t.numTimes &&
-                    t.hasOwnProperty("numTimes") &&
-                    (n.numTimes = t.numTimes),
-                  n
+                  (t.prototype.pitch = 0),
+                  (t.prototype.pitchName = 0),
+                  (t.prototype.velocity = 0),
+                  (t.prototype.startTime = 0),
+                  (t.prototype.quantizedStartStep = u.Long
+                    ? u.Long.fromBits(0, 0, !1)
+                    : 0),
+                  (t.prototype.endTime = 0),
+                  (t.prototype.quantizedEndStep = u.Long
+                    ? u.Long.fromBits(0, 0, !1)
+                    : 0),
+                  (t.prototype.numerator = 0),
+                  (t.prototype.denominator = 0),
+                  (t.prototype.instrument = 0),
+                  (t.prototype.program = 0),
+                  (t.prototype.isDrum = !1),
+                  (t.prototype.part = 0),
+                  (t.prototype.voice = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.pitch &&
+                        t.hasOwnProperty("pitch") &&
+                        e.uint32(8).int32(t.pitch),
+                      null != t.velocity &&
+                        t.hasOwnProperty("velocity") &&
+                        e.uint32(16).int32(t.velocity),
+                      null != t.startTime &&
+                        t.hasOwnProperty("startTime") &&
+                        e.uint32(25).double(t.startTime),
+                      null != t.endTime &&
+                        t.hasOwnProperty("endTime") &&
+                        e.uint32(33).double(t.endTime),
+                      null != t.numerator &&
+                        t.hasOwnProperty("numerator") &&
+                        e.uint32(40).int32(t.numerator),
+                      null != t.denominator &&
+                        t.hasOwnProperty("denominator") &&
+                        e.uint32(48).int32(t.denominator),
+                      null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        e.uint32(56).int32(t.instrument),
+                      null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        e.uint32(64).int32(t.program),
+                      null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        e.uint32(72).bool(t.isDrum),
+                      null != t.part &&
+                        t.hasOwnProperty("part") &&
+                        e.uint32(80).int32(t.part),
+                      null != t.pitchName &&
+                        t.hasOwnProperty("pitchName") &&
+                        e.uint32(88).int32(t.pitchName),
+                      null != t.voice &&
+                        t.hasOwnProperty("voice") &&
+                        e.uint32(96).int32(t.voice),
+                      null != t.quantizedStartStep &&
+                        t.hasOwnProperty("quantizedStartStep") &&
+                        e.uint32(104).int64(t.quantizedStartStep),
+                      null != t.quantizedEndStep &&
+                        t.hasOwnProperty("quantizedEndStep") &&
+                        e.uint32(112).int64(t.quantizedEndStep),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.Note();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.pitch = t.int32();
+                          break;
+                        case 11:
+                          r.pitchName = t.int32();
+                          break;
+                        case 2:
+                          r.velocity = t.int32();
+                          break;
+                        case 3:
+                          r.startTime = t.double();
+                          break;
+                        case 13:
+                          r.quantizedStartStep = u.Long
+                            ? t.int64().toNumber()
+                            : t.int64();
+                          break;
+                        case 4:
+                          r.endTime = t.double();
+                          break;
+                        case 14:
+                          r.quantizedEndStep = u.Long
+                            ? t.int64().toNumber()
+                            : t.int64();
+                          break;
+                        case 5:
+                          r.numerator = t.int32();
+                          break;
+                        case 6:
+                          r.denominator = t.int32();
+                          break;
+                        case 7:
+                          r.instrument = t.int32();
+                          break;
+                        case 8:
+                          r.program = t.int32();
+                          break;
+                        case 9:
+                          r.isDrum = t.bool();
+                          break;
+                        case 10:
+                          r.part = t.int32();
+                          break;
+                        case 12:
+                          r.voice = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    if (
+                      null != t.pitch &&
+                      t.hasOwnProperty("pitch") &&
+                      !u.isInteger(t.pitch)
+                    )
+                      return "pitch: integer expected";
+                    if (null != t.pitchName && t.hasOwnProperty("pitchName"))
+                      switch (t.pitchName) {
+                        default:
+                          return "pitchName: enum value expected";
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 7:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
+                        case 13:
+                        case 14:
+                        case 15:
+                        case 16:
+                        case 17:
+                        case 18:
+                        case 19:
+                        case 20:
+                        case 21:
+                        case 22:
+                        case 23:
+                        case 24:
+                        case 25:
+                        case 26:
+                        case 27:
+                        case 28:
+                        case 29:
+                        case 30:
+                        case 31:
+                        case 32:
+                        case 33:
+                        case 34:
+                        case 35:
+                      }
+                    return null != t.velocity &&
+                      t.hasOwnProperty("velocity") &&
+                      !u.isInteger(t.velocity)
+                      ? "velocity: integer expected"
+                      : null != t.startTime &&
+                        t.hasOwnProperty("startTime") &&
+                        "number" != typeof t.startTime
+                      ? "startTime: number expected"
+                      : null != t.quantizedStartStep &&
+                        t.hasOwnProperty("quantizedStartStep") &&
+                        !(
+                          u.isInteger(t.quantizedStartStep) ||
+                          (t.quantizedStartStep &&
+                            u.isInteger(t.quantizedStartStep.low) &&
+                            u.isInteger(t.quantizedStartStep.high))
+                        )
+                      ? "quantizedStartStep: integer|Long expected"
+                      : null != t.endTime &&
+                        t.hasOwnProperty("endTime") &&
+                        "number" != typeof t.endTime
+                      ? "endTime: number expected"
+                      : null != t.quantizedEndStep &&
+                        t.hasOwnProperty("quantizedEndStep") &&
+                        !(
+                          u.isInteger(t.quantizedEndStep) ||
+                          (t.quantizedEndStep &&
+                            u.isInteger(t.quantizedEndStep.low) &&
+                            u.isInteger(t.quantizedEndStep.high))
+                        )
+                      ? "quantizedEndStep: integer|Long expected"
+                      : null != t.numerator &&
+                        t.hasOwnProperty("numerator") &&
+                        !u.isInteger(t.numerator)
+                      ? "numerator: integer expected"
+                      : null != t.denominator &&
+                        t.hasOwnProperty("denominator") &&
+                        !u.isInteger(t.denominator)
+                      ? "denominator: integer expected"
+                      : null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        !u.isInteger(t.instrument)
+                      ? "instrument: integer expected"
+                      : null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        !u.isInteger(t.program)
+                      ? "program: integer expected"
+                      : null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        "boolean" != typeof t.isDrum
+                      ? "isDrum: boolean expected"
+                      : null != t.part &&
+                        t.hasOwnProperty("part") &&
+                        !u.isInteger(t.part)
+                      ? "part: integer expected"
+                      : null != t.voice &&
+                        t.hasOwnProperty("voice") &&
+                        !u.isInteger(t.voice)
+                      ? "voice: integer expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (t instanceof c.tensorflow.magenta.NoteSequence.Note)
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.Note();
+                    switch (
+                      (null != t.pitch && (e.pitch = 0 | t.pitch), t.pitchName)
+                    ) {
+                      case "UNKNOWN_PITCH_NAME":
+                      case 0:
+                        e.pitchName = 0;
+                        break;
+                      case "F_FLAT_FLAT":
+                      case 1:
+                        e.pitchName = 1;
+                        break;
+                      case "C_FLAT_FLAT":
+                      case 2:
+                        e.pitchName = 2;
+                        break;
+                      case "G_FLAT_FLAT":
+                      case 3:
+                        e.pitchName = 3;
+                        break;
+                      case "D_FLAT_FLAT":
+                      case 4:
+                        e.pitchName = 4;
+                        break;
+                      case "A_FLAT_FLAT":
+                      case 5:
+                        e.pitchName = 5;
+                        break;
+                      case "E_FLAT_FLAT":
+                      case 6:
+                        e.pitchName = 6;
+                        break;
+                      case "B_FLAT_FLAT":
+                      case 7:
+                        e.pitchName = 7;
+                        break;
+                      case "F_FLAT":
+                      case 8:
+                        e.pitchName = 8;
+                        break;
+                      case "C_FLAT":
+                      case 9:
+                        e.pitchName = 9;
+                        break;
+                      case "G_FLAT":
+                      case 10:
+                        e.pitchName = 10;
+                        break;
+                      case "D_FLAT":
+                      case 11:
+                        e.pitchName = 11;
+                        break;
+                      case "A_FLAT":
+                      case 12:
+                        e.pitchName = 12;
+                        break;
+                      case "E_FLAT":
+                      case 13:
+                        e.pitchName = 13;
+                        break;
+                      case "B_FLAT":
+                      case 14:
+                        e.pitchName = 14;
+                        break;
+                      case "F":
+                      case 15:
+                        e.pitchName = 15;
+                        break;
+                      case "C":
+                      case 16:
+                        e.pitchName = 16;
+                        break;
+                      case "G":
+                      case 17:
+                        e.pitchName = 17;
+                        break;
+                      case "D":
+                      case 18:
+                        e.pitchName = 18;
+                        break;
+                      case "A":
+                      case 19:
+                        e.pitchName = 19;
+                        break;
+                      case "E":
+                      case 20:
+                        e.pitchName = 20;
+                        break;
+                      case "B":
+                      case 21:
+                        e.pitchName = 21;
+                        break;
+                      case "F_SHARP":
+                      case 22:
+                        e.pitchName = 22;
+                        break;
+                      case "C_SHARP":
+                      case 23:
+                        e.pitchName = 23;
+                        break;
+                      case "G_SHARP":
+                      case 24:
+                        e.pitchName = 24;
+                        break;
+                      case "D_SHARP":
+                      case 25:
+                        e.pitchName = 25;
+                        break;
+                      case "A_SHARP":
+                      case 26:
+                        e.pitchName = 26;
+                        break;
+                      case "E_SHARP":
+                      case 27:
+                        e.pitchName = 27;
+                        break;
+                      case "B_SHARP":
+                      case 28:
+                        e.pitchName = 28;
+                        break;
+                      case "F_SHARP_SHARP":
+                      case 29:
+                        e.pitchName = 29;
+                        break;
+                      case "C_SHARP_SHARP":
+                      case 30:
+                        e.pitchName = 30;
+                        break;
+                      case "G_SHARP_SHARP":
+                      case 31:
+                        e.pitchName = 31;
+                        break;
+                      case "D_SHARP_SHARP":
+                      case 32:
+                        e.pitchName = 32;
+                        break;
+                      case "A_SHARP_SHARP":
+                      case 33:
+                        e.pitchName = 33;
+                        break;
+                      case "E_SHARP_SHARP":
+                      case 34:
+                        e.pitchName = 34;
+                        break;
+                      case "B_SHARP_SHARP":
+                      case 35:
+                        e.pitchName = 35;
+                    }
+                    return (
+                      null != t.velocity && (e.velocity = 0 | t.velocity),
+                      null != t.startTime &&
+                        (e.startTime = Number(t.startTime)),
+                      null != t.quantizedStartStep &&
+                        (u.Long
+                          ? ((e.quantizedStartStep = u.Long.fromValue(
+                              t.quantizedStartStep
+                            )).unsigned = !1)
+                          : "string" == typeof t.quantizedStartStep
+                          ? (e.quantizedStartStep = parseInt(
+                              t.quantizedStartStep,
+                              10
+                            ))
+                          : "number" == typeof t.quantizedStartStep
+                          ? (e.quantizedStartStep = t.quantizedStartStep)
+                          : "object" == typeof t.quantizedStartStep &&
+                            (e.quantizedStartStep = new u.LongBits(
+                              t.quantizedStartStep.low >>> 0,
+                              t.quantizedStartStep.high >>> 0
+                            ).toNumber())),
+                      null != t.endTime && (e.endTime = Number(t.endTime)),
+                      null != t.quantizedEndStep &&
+                        (u.Long
+                          ? ((e.quantizedEndStep = u.Long.fromValue(
+                              t.quantizedEndStep
+                            )).unsigned = !1)
+                          : "string" == typeof t.quantizedEndStep
+                          ? (e.quantizedEndStep = parseInt(
+                              t.quantizedEndStep,
+                              10
+                            ))
+                          : "number" == typeof t.quantizedEndStep
+                          ? (e.quantizedEndStep = t.quantizedEndStep)
+                          : "object" == typeof t.quantizedEndStep &&
+                            (e.quantizedEndStep = new u.LongBits(
+                              t.quantizedEndStep.low >>> 0,
+                              t.quantizedEndStep.high >>> 0
+                            ).toNumber())),
+                      null != t.numerator && (e.numerator = 0 | t.numerator),
+                      null != t.denominator &&
+                        (e.denominator = 0 | t.denominator),
+                      null != t.instrument && (e.instrument = 0 | t.instrument),
+                      null != t.program && (e.program = 0 | t.program),
+                      null != t.isDrum && (e.isDrum = Boolean(t.isDrum)),
+                      null != t.part && (e.part = 0 | t.part),
+                      null != t.voice && (e.voice = 0 | t.voice),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    if (e.defaults) {
+                      if (
+                        ((n.pitch = 0),
+                        (n.velocity = 0),
+                        (n.startTime = 0),
+                        (n.endTime = 0),
+                        (n.numerator = 0),
+                        (n.denominator = 0),
+                        (n.instrument = 0),
+                        (n.program = 0),
+                        (n.isDrum = !1),
+                        (n.part = 0),
+                        (n.pitchName =
+                          e.enums === String ? "UNKNOWN_PITCH_NAME" : 0),
+                        (n.voice = 0),
+                        u.Long)
+                      ) {
+                        var r = new u.Long(0, 0, !1);
+                        n.quantizedStartStep =
+                          e.longs === String
+                            ? r.toString()
+                            : e.longs === Number
+                            ? r.toNumber()
+                            : r;
+                      } else
+                        n.quantizedStartStep = e.longs === String ? "0" : 0;
+                      u.Long
+                        ? ((r = new u.Long(0, 0, !1)),
+                          (n.quantizedEndStep =
+                            e.longs === String
+                              ? r.toString()
+                              : e.longs === Number
+                              ? r.toNumber()
+                              : r))
+                        : (n.quantizedEndStep = e.longs === String ? "0" : 0);
+                    }
+                    return (
+                      null != t.pitch &&
+                        t.hasOwnProperty("pitch") &&
+                        (n.pitch = t.pitch),
+                      null != t.velocity &&
+                        t.hasOwnProperty("velocity") &&
+                        (n.velocity = t.velocity),
+                      null != t.startTime &&
+                        t.hasOwnProperty("startTime") &&
+                        (n.startTime =
+                          e.json && !isFinite(t.startTime)
+                            ? String(t.startTime)
+                            : t.startTime),
+                      null != t.endTime &&
+                        t.hasOwnProperty("endTime") &&
+                        (n.endTime =
+                          e.json && !isFinite(t.endTime)
+                            ? String(t.endTime)
+                            : t.endTime),
+                      null != t.numerator &&
+                        t.hasOwnProperty("numerator") &&
+                        (n.numerator = t.numerator),
+                      null != t.denominator &&
+                        t.hasOwnProperty("denominator") &&
+                        (n.denominator = t.denominator),
+                      null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        (n.instrument = t.instrument),
+                      null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        (n.program = t.program),
+                      null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        (n.isDrum = t.isDrum),
+                      null != t.part &&
+                        t.hasOwnProperty("part") &&
+                        (n.part = t.part),
+                      null != t.pitchName &&
+                        t.hasOwnProperty("pitchName") &&
+                        (n.pitchName =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.PitchName[
+                                t.pitchName
+                              ]
+                            : t.pitchName),
+                      null != t.voice &&
+                        t.hasOwnProperty("voice") &&
+                        (n.voice = t.voice),
+                      null != t.quantizedStartStep &&
+                        t.hasOwnProperty("quantizedStartStep") &&
+                        ("number" == typeof t.quantizedStartStep
+                          ? (n.quantizedStartStep =
+                              e.longs === String
+                                ? String(t.quantizedStartStep)
+                                : t.quantizedStartStep)
+                          : (n.quantizedStartStep =
+                              e.longs === String
+                                ? u.Long.prototype.toString.call(
+                                    t.quantizedStartStep
+                                  )
+                                : e.longs === Number
+                                ? new u.LongBits(
+                                    t.quantizedStartStep.low >>> 0,
+                                    t.quantizedStartStep.high >>> 0
+                                  ).toNumber()
+                                : t.quantizedStartStep)),
+                      null != t.quantizedEndStep &&
+                        t.hasOwnProperty("quantizedEndStep") &&
+                        ("number" == typeof t.quantizedEndStep
+                          ? (n.quantizedEndStep =
+                              e.longs === String
+                                ? String(t.quantizedEndStep)
+                                : t.quantizedEndStep)
+                          : (n.quantizedEndStep =
+                              e.longs === String
+                                ? u.Long.prototype.toString.call(
+                                    t.quantizedEndStep
+                                  )
+                                : e.longs === Number
+                                ? new u.LongBits(
+                                    t.quantizedEndStep.low >>> 0,
+                                    t.quantizedEndStep.high >>> 0
+                                  ).toNumber()
+                                : t.quantizedEndStep)),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.PitchName =
+                ((e = {}),
+                ((n = Object.create(e))[(e[0] = "UNKNOWN_PITCH_NAME")] = 0),
+                (n[(e[1] = "F_FLAT_FLAT")] = 1),
+                (n[(e[2] = "C_FLAT_FLAT")] = 2),
+                (n[(e[3] = "G_FLAT_FLAT")] = 3),
+                (n[(e[4] = "D_FLAT_FLAT")] = 4),
+                (n[(e[5] = "A_FLAT_FLAT")] = 5),
+                (n[(e[6] = "E_FLAT_FLAT")] = 6),
+                (n[(e[7] = "B_FLAT_FLAT")] = 7),
+                (n[(e[8] = "F_FLAT")] = 8),
+                (n[(e[9] = "C_FLAT")] = 9),
+                (n[(e[10] = "G_FLAT")] = 10),
+                (n[(e[11] = "D_FLAT")] = 11),
+                (n[(e[12] = "A_FLAT")] = 12),
+                (n[(e[13] = "E_FLAT")] = 13),
+                (n[(e[14] = "B_FLAT")] = 14),
+                (n[(e[15] = "F")] = 15),
+                (n[(e[16] = "C")] = 16),
+                (n[(e[17] = "G")] = 17),
+                (n[(e[18] = "D")] = 18),
+                (n[(e[19] = "A")] = 19),
+                (n[(e[20] = "E")] = 20),
+                (n[(e[21] = "B")] = 21),
+                (n[(e[22] = "F_SHARP")] = 22),
+                (n[(e[23] = "C_SHARP")] = 23),
+                (n[(e[24] = "G_SHARP")] = 24),
+                (n[(e[25] = "D_SHARP")] = 25),
+                (n[(e[26] = "A_SHARP")] = 26),
+                (n[(e[27] = "E_SHARP")] = 27),
+                (n[(e[28] = "B_SHARP")] = 28),
+                (n[(e[29] = "F_SHARP_SHARP")] = 29),
+                (n[(e[30] = "C_SHARP_SHARP")] = 30),
+                (n[(e[31] = "G_SHARP_SHARP")] = 31),
+                (n[(e[32] = "D_SHARP_SHARP")] = 32),
+                (n[(e[33] = "A_SHARP_SHARP")] = 33),
+                (n[(e[34] = "E_SHARP_SHARP")] = 34),
+                (n[(e[35] = "B_SHARP_SHARP")] = 35),
+                n)),
+              (t.TimeSignature = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.numerator = 0),
+                  (t.prototype.denominator = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.numerator &&
+                        t.hasOwnProperty("numerator") &&
+                        e.uint32(16).int32(t.numerator),
+                      null != t.denominator &&
+                        t.hasOwnProperty("denominator") &&
+                        e.uint32(24).int32(t.denominator),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.TimeSignature();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 2:
+                          r.numerator = t.int32();
+                          break;
+                        case 3:
+                          r.denominator = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        "number" != typeof t.time
+                      ? "time: number expected"
+                      : null != t.numerator &&
+                        t.hasOwnProperty("numerator") &&
+                        !u.isInteger(t.numerator)
+                      ? "numerator: integer expected"
+                      : null != t.denominator &&
+                        t.hasOwnProperty("denominator") &&
+                        !u.isInteger(t.denominator)
+                      ? "denominator: integer expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.TimeSignature
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.TimeSignature();
+                    return (
+                      null != t.time && (e.time = Number(t.time)),
+                      null != t.numerator && (e.numerator = 0 | t.numerator),
+                      null != t.denominator &&
+                        (e.denominator = 0 | t.denominator),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults &&
+                        ((n.time = 0), (n.numerator = 0), (n.denominator = 0)),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.numerator &&
+                        t.hasOwnProperty("numerator") &&
+                        (n.numerator = t.numerator),
+                      null != t.denominator &&
+                        t.hasOwnProperty("denominator") &&
+                        (n.denominator = t.denominator),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.KeySignature = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.key = 0),
+                  (t.prototype.mode = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.key &&
+                        t.hasOwnProperty("key") &&
+                        e.uint32(16).int32(t.key),
+                      null != t.mode &&
+                        t.hasOwnProperty("mode") &&
+                        e.uint32(24).int32(t.mode),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.KeySignature();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 2:
+                          r.key = t.int32();
+                          break;
+                        case 3:
+                          r.mode = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    if (
+                      null != t.time &&
+                      t.hasOwnProperty("time") &&
+                      "number" != typeof t.time
+                    )
+                      return "time: number expected";
+                    if (null != t.key && t.hasOwnProperty("key"))
+                      switch (t.key) {
+                        default:
+                          return "key: enum value expected";
+                        case 0:
+                        case 1:
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 6:
+                        case 7:
+                        case 8:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 10:
+                        case 11:
+                      }
+                    if (null != t.mode && t.hasOwnProperty("mode"))
+                      switch (t.mode) {
+                        default:
+                          return "mode: enum value expected";
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 7:
+                      }
+                    return null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.KeySignature
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.KeySignature();
+                    switch (
+                      (null != t.time && (e.time = Number(t.time)), t.key)
+                    ) {
+                      case "C":
+                      case 0:
+                        e.key = 0;
+                        break;
+                      case "C_SHARP":
+                      case 1:
+                        e.key = 1;
+                        break;
+                      case "D_FLAT":
+                      case 1:
+                        e.key = 1;
+                        break;
+                      case "D":
+                      case 2:
+                        e.key = 2;
+                        break;
+                      case "D_SHARP":
+                      case 3:
+                        e.key = 3;
+                        break;
+                      case "E_FLAT":
+                      case 3:
+                        e.key = 3;
+                        break;
+                      case "E":
+                      case 4:
+                        e.key = 4;
+                        break;
+                      case "F":
+                      case 5:
+                        e.key = 5;
+                        break;
+                      case "F_SHARP":
+                      case 6:
+                        e.key = 6;
+                        break;
+                      case "G_FLAT":
+                      case 6:
+                        e.key = 6;
+                        break;
+                      case "G":
+                      case 7:
+                        e.key = 7;
+                        break;
+                      case "G_SHARP":
+                      case 8:
+                        e.key = 8;
+                        break;
+                      case "A_FLAT":
+                      case 8:
+                        e.key = 8;
+                        break;
+                      case "A":
+                      case 9:
+                        e.key = 9;
+                        break;
+                      case "A_SHARP":
+                      case 10:
+                        e.key = 10;
+                        break;
+                      case "B_FLAT":
+                      case 10:
+                        e.key = 10;
+                        break;
+                      case "B":
+                      case 11:
+                        e.key = 11;
+                    }
+                    switch (t.mode) {
+                      case "MAJOR":
+                      case 0:
+                        e.mode = 0;
+                        break;
+                      case "MINOR":
+                      case 1:
+                        e.mode = 1;
+                        break;
+                      case "NOT_SPECIFIED":
+                      case 2:
+                        e.mode = 2;
+                        break;
+                      case "MIXOLYDIAN":
+                      case 3:
+                        e.mode = 3;
+                        break;
+                      case "DORIAN":
+                      case 4:
+                        e.mode = 4;
+                        break;
+                      case "PHRYGIAN":
+                      case 5:
+                        e.mode = 5;
+                        break;
+                      case "LYDIAN":
+                      case 6:
+                        e.mode = 6;
+                        break;
+                      case "LOCRIAN":
+                      case 7:
+                        e.mode = 7;
+                    }
+                    return e;
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults &&
+                        ((n.time = 0),
+                        (n.key = e.enums === String ? "C" : 0),
+                        (n.mode = e.enums === String ? "MAJOR" : 0)),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.key &&
+                        t.hasOwnProperty("key") &&
+                        (n.key =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.KeySignature
+                                .Key[t.key]
+                            : t.key),
+                      null != t.mode &&
+                        t.hasOwnProperty("mode") &&
+                        (n.mode =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.KeySignature
+                                .Mode[t.mode]
+                            : t.mode),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  (t.Key = (function () {
+                    var t = {},
+                      e = Object.create(t);
+                    return (
+                      (e[(t[0] = "C")] = 0),
+                      (e[(t[1] = "C_SHARP")] = 1),
+                      (e.D_FLAT = 1),
+                      (e[(t[2] = "D")] = 2),
+                      (e[(t[3] = "D_SHARP")] = 3),
+                      (e.E_FLAT = 3),
+                      (e[(t[4] = "E")] = 4),
+                      (e[(t[5] = "F")] = 5),
+                      (e[(t[6] = "F_SHARP")] = 6),
+                      (e.G_FLAT = 6),
+                      (e[(t[7] = "G")] = 7),
+                      (e[(t[8] = "G_SHARP")] = 8),
+                      (e.A_FLAT = 8),
+                      (e[(t[9] = "A")] = 9),
+                      (e[(t[10] = "A_SHARP")] = 10),
+                      (e.B_FLAT = 10),
+                      (e[(t[11] = "B")] = 11),
+                      e
+                    );
+                  })()),
+                  (t.Mode = (function () {
+                    var t = {},
+                      e = Object.create(t);
+                    return (
+                      (e[(t[0] = "MAJOR")] = 0),
+                      (e[(t[1] = "MINOR")] = 1),
+                      (e[(t[2] = "NOT_SPECIFIED")] = 2),
+                      (e[(t[3] = "MIXOLYDIAN")] = 3),
+                      (e[(t[4] = "DORIAN")] = 4),
+                      (e[(t[5] = "PHRYGIAN")] = 5),
+                      (e[(t[6] = "LYDIAN")] = 6),
+                      (e[(t[7] = "LOCRIAN")] = 7),
+                      e
+                    );
+                  })()),
+                  t
+                );
+              })()),
+              (t.Tempo = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.qpm = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.qpm &&
+                        t.hasOwnProperty("qpm") &&
+                        e.uint32(17).double(t.qpm),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.Tempo();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 2:
+                          r.qpm = t.double();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        "number" != typeof t.time
+                      ? "time: number expected"
+                      : null != t.qpm &&
+                        t.hasOwnProperty("qpm") &&
+                        "number" != typeof t.qpm
+                      ? "qpm: number expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (t instanceof c.tensorflow.magenta.NoteSequence.Tempo)
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.Tempo();
+                    return (
+                      null != t.time && (e.time = Number(t.time)),
+                      null != t.qpm && (e.qpm = Number(t.qpm)),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults && ((n.time = 0), (n.qpm = 0)),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.qpm &&
+                        t.hasOwnProperty("qpm") &&
+                        (n.qpm =
+                          e.json && !isFinite(t.qpm) ? String(t.qpm) : t.qpm),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.PitchBend = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.bend = 0),
+                  (t.prototype.instrument = 0),
+                  (t.prototype.program = 0),
+                  (t.prototype.isDrum = !1),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.bend &&
+                        t.hasOwnProperty("bend") &&
+                        e.uint32(16).int32(t.bend),
+                      null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        e.uint32(24).int32(t.instrument),
+                      null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        e.uint32(32).int32(t.program),
+                      null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        e.uint32(40).bool(t.isDrum),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.PitchBend();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 2:
+                          r.bend = t.int32();
+                          break;
+                        case 3:
+                          r.instrument = t.int32();
+                          break;
+                        case 4:
+                          r.program = t.int32();
+                          break;
+                        case 5:
+                          r.isDrum = t.bool();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        "number" != typeof t.time
+                      ? "time: number expected"
+                      : null != t.bend &&
+                        t.hasOwnProperty("bend") &&
+                        !u.isInteger(t.bend)
+                      ? "bend: integer expected"
+                      : null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        !u.isInteger(t.instrument)
+                      ? "instrument: integer expected"
+                      : null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        !u.isInteger(t.program)
+                      ? "program: integer expected"
+                      : null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        "boolean" != typeof t.isDrum
+                      ? "isDrum: boolean expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof c.tensorflow.magenta.NoteSequence.PitchBend
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.PitchBend();
+                    return (
+                      null != t.time && (e.time = Number(t.time)),
+                      null != t.bend && (e.bend = 0 | t.bend),
+                      null != t.instrument && (e.instrument = 0 | t.instrument),
+                      null != t.program && (e.program = 0 | t.program),
+                      null != t.isDrum && (e.isDrum = Boolean(t.isDrum)),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults &&
+                        ((n.time = 0),
+                        (n.bend = 0),
+                        (n.instrument = 0),
+                        (n.program = 0),
+                        (n.isDrum = !1)),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.bend &&
+                        t.hasOwnProperty("bend") &&
+                        (n.bend = t.bend),
+                      null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        (n.instrument = t.instrument),
+                      null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        (n.program = t.program),
+                      null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        (n.isDrum = t.isDrum),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.ControlChange = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.quantizedStep = u.Long
+                    ? u.Long.fromBits(0, 0, !1)
+                    : 0),
+                  (t.prototype.controlNumber = 0),
+                  (t.prototype.controlValue = 0),
+                  (t.prototype.instrument = 0),
+                  (t.prototype.program = 0),
+                  (t.prototype.isDrum = !1),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.controlNumber &&
+                        t.hasOwnProperty("controlNumber") &&
+                        e.uint32(16).int32(t.controlNumber),
+                      null != t.controlValue &&
+                        t.hasOwnProperty("controlValue") &&
+                        e.uint32(24).int32(t.controlValue),
+                      null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        e.uint32(32).int32(t.instrument),
+                      null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        e.uint32(40).int32(t.program),
+                      null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        e.uint32(48).bool(t.isDrum),
+                      null != t.quantizedStep &&
+                        t.hasOwnProperty("quantizedStep") &&
+                        e.uint32(56).int64(t.quantizedStep),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.ControlChange();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 7:
+                          r.quantizedStep = u.Long
+                            ? t.int64().toNumber()
+                            : t.int64();
+                          break;
+                        case 2:
+                          r.controlNumber = t.int32();
+                          break;
+                        case 3:
+                          r.controlValue = t.int32();
+                          break;
+                        case 4:
+                          r.instrument = t.int32();
+                          break;
+                        case 5:
+                          r.program = t.int32();
+                          break;
+                        case 6:
+                          r.isDrum = t.bool();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        "number" != typeof t.time
+                      ? "time: number expected"
+                      : null != t.quantizedStep &&
+                        t.hasOwnProperty("quantizedStep") &&
+                        !(
+                          u.isInteger(t.quantizedStep) ||
+                          (t.quantizedStep &&
+                            u.isInteger(t.quantizedStep.low) &&
+                            u.isInteger(t.quantizedStep.high))
+                        )
+                      ? "quantizedStep: integer|Long expected"
+                      : null != t.controlNumber &&
+                        t.hasOwnProperty("controlNumber") &&
+                        !u.isInteger(t.controlNumber)
+                      ? "controlNumber: integer expected"
+                      : null != t.controlValue &&
+                        t.hasOwnProperty("controlValue") &&
+                        !u.isInteger(t.controlValue)
+                      ? "controlValue: integer expected"
+                      : null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        !u.isInteger(t.instrument)
+                      ? "instrument: integer expected"
+                      : null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        !u.isInteger(t.program)
+                      ? "program: integer expected"
+                      : null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        "boolean" != typeof t.isDrum
+                      ? "isDrum: boolean expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.ControlChange
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.ControlChange();
+                    return (
+                      null != t.time && (e.time = Number(t.time)),
+                      null != t.quantizedStep &&
+                        (u.Long
+                          ? ((e.quantizedStep = u.Long.fromValue(
+                              t.quantizedStep
+                            )).unsigned = !1)
+                          : "string" == typeof t.quantizedStep
+                          ? (e.quantizedStep = parseInt(t.quantizedStep, 10))
+                          : "number" == typeof t.quantizedStep
+                          ? (e.quantizedStep = t.quantizedStep)
+                          : "object" == typeof t.quantizedStep &&
+                            (e.quantizedStep = new u.LongBits(
+                              t.quantizedStep.low >>> 0,
+                              t.quantizedStep.high >>> 0
+                            ).toNumber())),
+                      null != t.controlNumber &&
+                        (e.controlNumber = 0 | t.controlNumber),
+                      null != t.controlValue &&
+                        (e.controlValue = 0 | t.controlValue),
+                      null != t.instrument && (e.instrument = 0 | t.instrument),
+                      null != t.program && (e.program = 0 | t.program),
+                      null != t.isDrum && (e.isDrum = Boolean(t.isDrum)),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    if (e.defaults)
+                      if (
+                        ((n.time = 0),
+                        (n.controlNumber = 0),
+                        (n.controlValue = 0),
+                        (n.instrument = 0),
+                        (n.program = 0),
+                        (n.isDrum = !1),
+                        u.Long)
+                      ) {
+                        var r = new u.Long(0, 0, !1);
+                        n.quantizedStep =
+                          e.longs === String
+                            ? r.toString()
+                            : e.longs === Number
+                            ? r.toNumber()
+                            : r;
+                      } else n.quantizedStep = e.longs === String ? "0" : 0;
+                    return (
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.controlNumber &&
+                        t.hasOwnProperty("controlNumber") &&
+                        (n.controlNumber = t.controlNumber),
+                      null != t.controlValue &&
+                        t.hasOwnProperty("controlValue") &&
+                        (n.controlValue = t.controlValue),
+                      null != t.instrument &&
+                        t.hasOwnProperty("instrument") &&
+                        (n.instrument = t.instrument),
+                      null != t.program &&
+                        t.hasOwnProperty("program") &&
+                        (n.program = t.program),
+                      null != t.isDrum &&
+                        t.hasOwnProperty("isDrum") &&
+                        (n.isDrum = t.isDrum),
+                      null != t.quantizedStep &&
+                        t.hasOwnProperty("quantizedStep") &&
+                        ("number" == typeof t.quantizedStep
+                          ? (n.quantizedStep =
+                              e.longs === String
+                                ? String(t.quantizedStep)
+                                : t.quantizedStep)
+                          : (n.quantizedStep =
+                              e.longs === String
+                                ? u.Long.prototype.toString.call(
+                                    t.quantizedStep
+                                  )
+                                : e.longs === Number
+                                ? new u.LongBits(
+                                    t.quantizedStep.low >>> 0,
+                                    t.quantizedStep.high >>> 0
+                                  ).toNumber()
+                                : t.quantizedStep)),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.PartInfo = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.part = 0),
+                  (t.prototype.name = ""),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.part &&
+                        t.hasOwnProperty("part") &&
+                        e.uint32(8).int32(t.part),
+                      null != t.name &&
+                        t.hasOwnProperty("name") &&
+                        e.uint32(18).string(t.name),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.PartInfo();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.part = t.int32();
+                          break;
+                        case 2:
+                          r.name = t.string();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.part &&
+                        t.hasOwnProperty("part") &&
+                        !u.isInteger(t.part)
+                      ? "part: integer expected"
+                      : null != t.name &&
+                        t.hasOwnProperty("name") &&
+                        !u.isString(t.name)
+                      ? "name: string expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (t instanceof c.tensorflow.magenta.NoteSequence.PartInfo)
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.PartInfo();
+                    return (
+                      null != t.part && (e.part = 0 | t.part),
+                      null != t.name && (e.name = String(t.name)),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults && ((n.part = 0), (n.name = "")),
+                      null != t.part &&
+                        t.hasOwnProperty("part") &&
+                        (n.part = t.part),
+                      null != t.name &&
+                        t.hasOwnProperty("name") &&
+                        (n.name = t.name),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.SourceInfo = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.sourceType = 0),
+                  (t.prototype.encodingType = 0),
+                  (t.prototype.parser = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.sourceType &&
+                        t.hasOwnProperty("sourceType") &&
+                        e.uint32(8).int32(t.sourceType),
+                      null != t.encodingType &&
+                        t.hasOwnProperty("encodingType") &&
+                        e.uint32(16).int32(t.encodingType),
+                      null != t.parser &&
+                        t.hasOwnProperty("parser") &&
+                        e.uint32(24).int32(t.parser),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.SourceInfo();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.sourceType = t.int32();
+                          break;
+                        case 2:
+                          r.encodingType = t.int32();
+                          break;
+                        case 3:
+                          r.parser = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    if (null != t.sourceType && t.hasOwnProperty("sourceType"))
+                      switch (t.sourceType) {
+                        default:
+                          return "sourceType: enum value expected";
+                        case 0:
+                        case 1:
+                        case 2:
+                      }
+                    if (
+                      null != t.encodingType &&
+                      t.hasOwnProperty("encodingType")
+                    )
+                      switch (t.encodingType) {
+                        default:
+                          return "encodingType: enum value expected";
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                      }
+                    if (null != t.parser && t.hasOwnProperty("parser"))
+                      switch (t.parser) {
+                        default:
+                          return "parser: enum value expected";
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                      }
+                    return null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof c.tensorflow.magenta.NoteSequence.SourceInfo
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.SourceInfo();
+                    switch (t.sourceType) {
+                      case "UNKNOWN_SOURCE_TYPE":
+                      case 0:
+                        e.sourceType = 0;
+                        break;
+                      case "SCORE_BASED":
+                      case 1:
+                        e.sourceType = 1;
+                        break;
+                      case "PERFORMANCE_BASED":
+                      case 2:
+                        e.sourceType = 2;
+                    }
+                    switch (t.encodingType) {
+                      case "UNKNOWN_ENCODING_TYPE":
+                      case 0:
+                        e.encodingType = 0;
+                        break;
+                      case "MUSIC_XML":
+                      case 1:
+                        e.encodingType = 1;
+                        break;
+                      case "ABC":
+                      case 2:
+                        e.encodingType = 2;
+                        break;
+                      case "MIDI":
+                      case 3:
+                        e.encodingType = 3;
+                        break;
+                      case "MUSICNET":
+                      case 4:
+                        e.encodingType = 4;
+                    }
+                    switch (t.parser) {
+                      case "UNKNOWN_PARSER":
+                      case 0:
+                        e.parser = 0;
+                        break;
+                      case "MUSIC21":
+                      case 1:
+                        e.parser = 1;
+                        break;
+                      case "PRETTY_MIDI":
+                      case 2:
+                        e.parser = 2;
+                        break;
+                      case "MAGENTA_MUSIC_XML":
+                      case 3:
+                        e.parser = 3;
+                        break;
+                      case "MAGENTA_MUSICNET":
+                      case 4:
+                        e.parser = 4;
+                        break;
+                      case "MAGENTA_ABC":
+                      case 5:
+                        e.parser = 5;
+                        break;
+                      case "TONEJS_MIDI_CONVERT":
+                      case 6:
+                        e.parser = 6;
+                    }
+                    return e;
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults &&
+                        ((n.sourceType =
+                          e.enums === String ? "UNKNOWN_SOURCE_TYPE" : 0),
+                        (n.encodingType =
+                          e.enums === String ? "UNKNOWN_ENCODING_TYPE" : 0),
+                        (n.parser = e.enums === String ? "UNKNOWN_PARSER" : 0)),
+                      null != t.sourceType &&
+                        t.hasOwnProperty("sourceType") &&
+                        (n.sourceType =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.SourceInfo
+                                .SourceType[t.sourceType]
+                            : t.sourceType),
+                      null != t.encodingType &&
+                        t.hasOwnProperty("encodingType") &&
+                        (n.encodingType =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.SourceInfo
+                                .EncodingType[t.encodingType]
+                            : t.encodingType),
+                      null != t.parser &&
+                        t.hasOwnProperty("parser") &&
+                        (n.parser =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.SourceInfo
+                                .Parser[t.parser]
+                            : t.parser),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  (t.SourceType = (function () {
+                    var t = {},
+                      e = Object.create(t);
+                    return (
+                      (e[(t[0] = "UNKNOWN_SOURCE_TYPE")] = 0),
+                      (e[(t[1] = "SCORE_BASED")] = 1),
+                      (e[(t[2] = "PERFORMANCE_BASED")] = 2),
+                      e
+                    );
+                  })()),
+                  (t.EncodingType = (function () {
+                    var t = {},
+                      e = Object.create(t);
+                    return (
+                      (e[(t[0] = "UNKNOWN_ENCODING_TYPE")] = 0),
+                      (e[(t[1] = "MUSIC_XML")] = 1),
+                      (e[(t[2] = "ABC")] = 2),
+                      (e[(t[3] = "MIDI")] = 3),
+                      (e[(t[4] = "MUSICNET")] = 4),
+                      e
+                    );
+                  })()),
+                  (t.Parser = (function () {
+                    var t = {},
+                      e = Object.create(t);
+                    return (
+                      (e[(t[0] = "UNKNOWN_PARSER")] = 0),
+                      (e[(t[1] = "MUSIC21")] = 1),
+                      (e[(t[2] = "PRETTY_MIDI")] = 2),
+                      (e[(t[3] = "MAGENTA_MUSIC_XML")] = 3),
+                      (e[(t[4] = "MAGENTA_MUSICNET")] = 4),
+                      (e[(t[5] = "MAGENTA_ABC")] = 5),
+                      (e[(t[6] = "TONEJS_MIDI_CONVERT")] = 6),
+                      e
+                    );
+                  })()),
+                  t
+                );
+              })()),
+              (t.TextAnnotation = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.quantizedStep = u.Long
+                    ? u.Long.fromBits(0, 0, !1)
+                    : 0),
+                  (t.prototype.text = ""),
+                  (t.prototype.annotationType = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.text &&
+                        t.hasOwnProperty("text") &&
+                        e.uint32(18).string(t.text),
+                      null != t.annotationType &&
+                        t.hasOwnProperty("annotationType") &&
+                        e.uint32(24).int32(t.annotationType),
+                      null != t.quantizedStep &&
+                        t.hasOwnProperty("quantizedStep") &&
+                        e.uint32(32).int64(t.quantizedStep),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.TextAnnotation();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 4:
+                          r.quantizedStep = u.Long
+                            ? t.int64().toNumber()
+                            : t.int64();
+                          break;
+                        case 2:
+                          r.text = t.string();
+                          break;
+                        case 3:
+                          r.annotationType = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    if (
+                      null != t.time &&
+                      t.hasOwnProperty("time") &&
+                      "number" != typeof t.time
+                    )
+                      return "time: number expected";
+                    if (
+                      null != t.quantizedStep &&
+                      t.hasOwnProperty("quantizedStep") &&
+                      !(
+                        u.isInteger(t.quantizedStep) ||
+                        (t.quantizedStep &&
+                          u.isInteger(t.quantizedStep.low) &&
+                          u.isInteger(t.quantizedStep.high))
+                      )
+                    )
+                      return "quantizedStep: integer|Long expected";
+                    if (
+                      null != t.text &&
+                      t.hasOwnProperty("text") &&
+                      !u.isString(t.text)
+                    )
+                      return "text: string expected";
+                    if (
+                      null != t.annotationType &&
+                      t.hasOwnProperty("annotationType")
+                    )
+                      switch (t.annotationType) {
+                        default:
+                          return "annotationType: enum value expected";
+                        case 0:
+                        case 1:
+                        case 2:
+                      }
+                    return null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.TextAnnotation
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.TextAnnotation();
+                    switch (
+                      (null != t.time && (e.time = Number(t.time)),
+                      null != t.quantizedStep &&
+                        (u.Long
+                          ? ((e.quantizedStep = u.Long.fromValue(
+                              t.quantizedStep
+                            )).unsigned = !1)
+                          : "string" == typeof t.quantizedStep
+                          ? (e.quantizedStep = parseInt(t.quantizedStep, 10))
+                          : "number" == typeof t.quantizedStep
+                          ? (e.quantizedStep = t.quantizedStep)
+                          : "object" == typeof t.quantizedStep &&
+                            (e.quantizedStep = new u.LongBits(
+                              t.quantizedStep.low >>> 0,
+                              t.quantizedStep.high >>> 0
+                            ).toNumber())),
+                      null != t.text && (e.text = String(t.text)),
+                      t.annotationType)
+                    ) {
+                      case "UNKNOWN":
+                      case 0:
+                        e.annotationType = 0;
+                        break;
+                      case "CHORD_SYMBOL":
+                      case 1:
+                        e.annotationType = 1;
+                        break;
+                      case "BEAT":
+                      case 2:
+                        e.annotationType = 2;
+                    }
+                    return e;
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    if (e.defaults)
+                      if (
+                        ((n.time = 0),
+                        (n.text = ""),
+                        (n.annotationType = e.enums === String ? "UNKNOWN" : 0),
+                        u.Long)
+                      ) {
+                        var r = new u.Long(0, 0, !1);
+                        n.quantizedStep =
+                          e.longs === String
+                            ? r.toString()
+                            : e.longs === Number
+                            ? r.toNumber()
+                            : r;
+                      } else n.quantizedStep = e.longs === String ? "0" : 0;
+                    return (
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.text &&
+                        t.hasOwnProperty("text") &&
+                        (n.text = t.text),
+                      null != t.annotationType &&
+                        t.hasOwnProperty("annotationType") &&
+                        (n.annotationType =
+                          e.enums === String
+                            ? c.tensorflow.magenta.NoteSequence.TextAnnotation
+                                .TextAnnotationType[t.annotationType]
+                            : t.annotationType),
+                      null != t.quantizedStep &&
+                        t.hasOwnProperty("quantizedStep") &&
+                        ("number" == typeof t.quantizedStep
+                          ? (n.quantizedStep =
+                              e.longs === String
+                                ? String(t.quantizedStep)
+                                : t.quantizedStep)
+                          : (n.quantizedStep =
+                              e.longs === String
+                                ? u.Long.prototype.toString.call(
+                                    t.quantizedStep
+                                  )
+                                : e.longs === Number
+                                ? new u.LongBits(
+                                    t.quantizedStep.low >>> 0,
+                                    t.quantizedStep.high >>> 0
+                                  ).toNumber()
+                                : t.quantizedStep)),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  (t.TextAnnotationType = (function () {
+                    var t = {},
+                      e = Object.create(t);
+                    return (
+                      (e[(t[0] = "UNKNOWN")] = 0),
+                      (e[(t[1] = "CHORD_SYMBOL")] = 1),
+                      (e[(t[2] = "BEAT")] = 2),
+                      e
+                    );
+                  })()),
+                  t
+                );
+              })()),
+              (t.QuantizationInfo = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                var e;
+                return (
+                  (t.prototype.stepsPerQuarter = 0),
+                  (t.prototype.stepsPerSecond = 0),
+                  Object.defineProperty(t.prototype, "resolution", {
+                    get: u.oneOfGetter(
+                      (e = ["stepsPerQuarter", "stepsPerSecond"])
+                    ),
+                    set: u.oneOfSetter(e),
+                  }),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.stepsPerQuarter &&
+                        t.hasOwnProperty("stepsPerQuarter") &&
+                        e.uint32(8).int32(t.stepsPerQuarter),
+                      null != t.stepsPerSecond &&
+                        t.hasOwnProperty("stepsPerSecond") &&
+                        e.uint32(16).int32(t.stepsPerSecond),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.stepsPerQuarter = t.int32();
+                          break;
+                        case 2:
+                          r.stepsPerSecond = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    var e = {};
+                    if (
+                      null != t.stepsPerQuarter &&
+                      t.hasOwnProperty("stepsPerQuarter") &&
+                      ((e.resolution = 1), !u.isInteger(t.stepsPerQuarter))
+                    )
+                      return "stepsPerQuarter: integer expected";
+                    if (
+                      null != t.stepsPerSecond &&
+                      t.hasOwnProperty("stepsPerSecond")
+                    ) {
+                      if (1 === e.resolution)
+                        return "resolution: multiple values";
+                      if (((e.resolution = 1), !u.isInteger(t.stepsPerSecond)))
+                        return "stepsPerSecond: integer expected";
+                    }
+                    return null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.QuantizationInfo
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.QuantizationInfo();
+                    return (
+                      null != t.stepsPerQuarter &&
+                        (e.stepsPerQuarter = 0 | t.stepsPerQuarter),
+                      null != t.stepsPerSecond &&
+                        (e.stepsPerSecond = 0 | t.stepsPerSecond),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      null != t.stepsPerQuarter &&
+                        t.hasOwnProperty("stepsPerQuarter") &&
+                        ((n.stepsPerQuarter = t.stepsPerQuarter),
+                        e.oneofs && (n.resolution = "stepsPerQuarter")),
+                      null != t.stepsPerSecond &&
+                        t.hasOwnProperty("stepsPerSecond") &&
+                        ((n.stepsPerSecond = t.stepsPerSecond),
+                        e.oneofs && (n.resolution = "stepsPerSecond")),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.SubsequenceInfo = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.startTimeOffset = 0),
+                  (t.prototype.endTimeOffset = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.startTimeOffset &&
+                        t.hasOwnProperty("startTimeOffset") &&
+                        e.uint32(9).double(t.startTimeOffset),
+                      null != t.endTimeOffset &&
+                        t.hasOwnProperty("endTimeOffset") &&
+                        e.uint32(17).double(t.endTimeOffset),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.startTimeOffset = t.double();
+                          break;
+                        case 2:
+                          r.endTimeOffset = t.double();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.startTimeOffset &&
+                        t.hasOwnProperty("startTimeOffset") &&
+                        "number" != typeof t.startTimeOffset
+                      ? "startTimeOffset: number expected"
+                      : null != t.endTimeOffset &&
+                        t.hasOwnProperty("endTimeOffset") &&
+                        "number" != typeof t.endTimeOffset
+                      ? "endTimeOffset: number expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.SubsequenceInfo
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.SubsequenceInfo();
+                    return (
+                      null != t.startTimeOffset &&
+                        (e.startTimeOffset = Number(t.startTimeOffset)),
+                      null != t.endTimeOffset &&
+                        (e.endTimeOffset = Number(t.endTimeOffset)),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      e.defaults &&
+                        ((n.startTimeOffset = 0), (n.endTimeOffset = 0)),
+                      null != t.startTimeOffset &&
+                        t.hasOwnProperty("startTimeOffset") &&
+                        (n.startTimeOffset =
+                          e.json && !isFinite(t.startTimeOffset)
+                            ? String(t.startTimeOffset)
+                            : t.startTimeOffset),
+                      null != t.endTimeOffset &&
+                        t.hasOwnProperty("endTimeOffset") &&
+                        (n.endTimeOffset =
+                          e.json && !isFinite(t.endTimeOffset)
+                            ? String(t.endTimeOffset)
+                            : t.endTimeOffset),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.SectionAnnotation = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.time = 0),
+                  (t.prototype.sectionId = u.Long
+                    ? u.Long.fromBits(0, 0, !1)
+                    : 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        e.uint32(9).double(t.time),
+                      null != t.sectionId &&
+                        t.hasOwnProperty("sectionId") &&
+                        e.uint32(32).int64(t.sectionId),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.time = t.double();
+                          break;
+                        case 4:
+                          r.sectionId = u.Long
+                            ? t.int64().toNumber()
+                            : t.int64();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    return "object" != typeof t || null === t
+                      ? "object expected"
+                      : null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        "number" != typeof t.time
+                      ? "time: number expected"
+                      : null != t.sectionId &&
+                        t.hasOwnProperty("sectionId") &&
+                        !(
+                          u.isInteger(t.sectionId) ||
+                          (t.sectionId &&
+                            u.isInteger(t.sectionId.low) &&
+                            u.isInteger(t.sectionId.high))
+                        )
+                      ? "sectionId: integer|Long expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.SectionAnnotation
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.SectionAnnotation();
+                    return (
+                      null != t.time && (e.time = Number(t.time)),
+                      null != t.sectionId &&
+                        (u.Long
+                          ? ((e.sectionId = u.Long.fromValue(
+                              t.sectionId
+                            )).unsigned = !1)
+                          : "string" == typeof t.sectionId
+                          ? (e.sectionId = parseInt(t.sectionId, 10))
+                          : "number" == typeof t.sectionId
+                          ? (e.sectionId = t.sectionId)
+                          : "object" == typeof t.sectionId &&
+                            (e.sectionId = new u.LongBits(
+                              t.sectionId.low >>> 0,
+                              t.sectionId.high >>> 0
+                            ).toNumber())),
+                      e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    if (e.defaults)
+                      if (((n.time = 0), u.Long)) {
+                        var r = new u.Long(0, 0, !1);
+                        n.sectionId =
+                          e.longs === String
+                            ? r.toString()
+                            : e.longs === Number
+                            ? r.toNumber()
+                            : r;
+                      } else n.sectionId = e.longs === String ? "0" : 0;
+                    return (
+                      null != t.time &&
+                        t.hasOwnProperty("time") &&
+                        (n.time =
+                          e.json && !isFinite(t.time)
+                            ? String(t.time)
+                            : t.time),
+                      null != t.sectionId &&
+                        t.hasOwnProperty("sectionId") &&
+                        ("number" == typeof t.sectionId
+                          ? (n.sectionId =
+                              e.longs === String
+                                ? String(t.sectionId)
+                                : t.sectionId)
+                          : (n.sectionId =
+                              e.longs === String
+                                ? u.Long.prototype.toString.call(t.sectionId)
+                                : e.longs === Number
+                                ? new u.LongBits(
+                                    t.sectionId.low >>> 0,
+                                    t.sectionId.high >>> 0
+                                  ).toNumber()
+                                : t.sectionId)),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.Section = (function () {
+                function t(t) {
+                  if (t)
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                var e;
+                return (
+                  (t.prototype.sectionId = u.Long
+                    ? u.Long.fromBits(0, 0, !1)
+                    : 0),
+                  (t.prototype.sectionGroup = null),
+                  Object.defineProperty(t.prototype, "sectionType", {
+                    get: u.oneOfGetter((e = ["sectionId", "sectionGroup"])),
+                    set: u.oneOfSetter(e),
+                  }),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    return (
+                      e || (e = a.create()),
+                      null != t.sectionId &&
+                        t.hasOwnProperty("sectionId") &&
+                        e.uint32(8).int64(t.sectionId),
+                      null != t.sectionGroup &&
+                        t.hasOwnProperty("sectionGroup") &&
+                        c.tensorflow.magenta.NoteSequence.SectionGroup.encode(
+                          t.sectionGroup,
+                          e.uint32(18).fork()
+                        ).ldelim(),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.Section();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          r.sectionId = u.Long
+                            ? t.int64().toNumber()
+                            : t.int64();
+                          break;
+                        case 2:
+                          r.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.decode(
+                            t,
+                            t.uint32()
+                          );
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    var e = {};
+                    if (
+                      null != t.sectionId &&
+                      t.hasOwnProperty("sectionId") &&
+                      ((e.sectionType = 1),
+                      !(
+                        u.isInteger(t.sectionId) ||
+                        (t.sectionId &&
+                          u.isInteger(t.sectionId.low) &&
+                          u.isInteger(t.sectionId.high))
+                      ))
+                    )
+                      return "sectionId: integer|Long expected";
+                    if (
+                      null != t.sectionGroup &&
+                      t.hasOwnProperty("sectionGroup")
+                    ) {
+                      if (1 === e.sectionType)
+                        return "sectionType: multiple values";
+                      e.sectionType = 1;
+                      var n = c.tensorflow.magenta.NoteSequence.SectionGroup.verify(
+                        t.sectionGroup
+                      );
+                      if (n) return "sectionGroup." + n;
+                    }
+                    return null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (t instanceof c.tensorflow.magenta.NoteSequence.Section)
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.Section();
+                    if (
+                      (null != t.sectionId &&
+                        (u.Long
+                          ? ((e.sectionId = u.Long.fromValue(
+                              t.sectionId
+                            )).unsigned = !1)
+                          : "string" == typeof t.sectionId
+                          ? (e.sectionId = parseInt(t.sectionId, 10))
+                          : "number" == typeof t.sectionId
+                          ? (e.sectionId = t.sectionId)
+                          : "object" == typeof t.sectionId &&
+                            (e.sectionId = new u.LongBits(
+                              t.sectionId.low >>> 0,
+                              t.sectionId.high >>> 0
+                            ).toNumber())),
+                      null != t.sectionGroup)
+                    ) {
+                      if ("object" != typeof t.sectionGroup)
+                        throw TypeError(
+                          ".tensorflow.magenta.NoteSequence.Section.sectionGroup: object expected"
+                        );
+                      e.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.fromObject(
+                        t.sectionGroup
+                      );
+                    }
+                    return e;
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    return (
+                      null != t.sectionId &&
+                        t.hasOwnProperty("sectionId") &&
+                        ("number" == typeof t.sectionId
+                          ? (n.sectionId =
+                              e.longs === String
+                                ? String(t.sectionId)
+                                : t.sectionId)
+                          : (n.sectionId =
+                              e.longs === String
+                                ? u.Long.prototype.toString.call(t.sectionId)
+                                : e.longs === Number
+                                ? new u.LongBits(
+                                    t.sectionId.low >>> 0,
+                                    t.sectionId.high >>> 0
+                                  ).toNumber()
+                                : t.sectionId),
+                        e.oneofs && (n.sectionType = "sectionId")),
+                      null != t.sectionGroup &&
+                        t.hasOwnProperty("sectionGroup") &&
+                        ((n.sectionGroup = c.tensorflow.magenta.NoteSequence.SectionGroup.toObject(
+                          t.sectionGroup,
+                          e
+                        )),
+                        e.oneofs && (n.sectionType = "sectionGroup")),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              (t.SectionGroup = (function () {
+                function t(t) {
+                  if (((this.sections = []), t))
+                    for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                      null != t[e[n]] && (this[e[n]] = t[e[n]]);
+                }
+                return (
+                  (t.prototype.sections = u.emptyArray),
+                  (t.prototype.numTimes = 0),
+                  (t.create = function (e) {
+                    return new t(e);
+                  }),
+                  (t.encode = function (t, e) {
+                    if (
+                      (e || (e = a.create()),
+                      null != t.sections && t.sections.length)
+                    )
+                      for (var n = 0; n < t.sections.length; ++n)
+                        c.tensorflow.magenta.NoteSequence.Section.encode(
+                          t.sections[n],
+                          e.uint32(10).fork()
+                        ).ldelim();
+                    return (
+                      null != t.numTimes &&
+                        t.hasOwnProperty("numTimes") &&
+                        e.uint32(16).int32(t.numTimes),
+                      e
+                    );
+                  }),
+                  (t.encodeDelimited = function (t, e) {
+                    return this.encode(t, e).ldelim();
+                  }),
+                  (t.decode = function (t, e) {
+                    t instanceof s || (t = s.create(t));
+                    for (
+                      var n = void 0 === e ? t.len : t.pos + e,
+                        r = new c.tensorflow.magenta.NoteSequence.SectionGroup();
+                      t.pos < n;
+
+                    ) {
+                      var i = t.uint32();
+                      switch (i >>> 3) {
+                        case 1:
+                          (r.sections && r.sections.length) ||
+                            (r.sections = []),
+                            r.sections.push(
+                              c.tensorflow.magenta.NoteSequence.Section.decode(
+                                t,
+                                t.uint32()
+                              )
+                            );
+                          break;
+                        case 2:
+                          r.numTimes = t.int32();
+                          break;
+                        default:
+                          t.skipType(7 & i);
+                      }
+                    }
+                    return r;
+                  }),
+                  (t.decodeDelimited = function (t) {
+                    return (
+                      t instanceof s || (t = new s(t)),
+                      this.decode(t, t.uint32())
+                    );
+                  }),
+                  (t.verify = function (t) {
+                    if ("object" != typeof t || null === t)
+                      return "object expected";
+                    if (null != t.sections && t.hasOwnProperty("sections")) {
+                      if (!Array.isArray(t.sections))
+                        return "sections: array expected";
+                      for (var e = 0; e < t.sections.length; ++e) {
+                        var n = c.tensorflow.magenta.NoteSequence.Section.verify(
+                          t.sections[e]
+                        );
+                        if (n) return "sections." + n;
+                      }
+                    }
+                    return null != t.numTimes &&
+                      t.hasOwnProperty("numTimes") &&
+                      !u.isInteger(t.numTimes)
+                      ? "numTimes: integer expected"
+                      : null;
+                  }),
+                  (t.fromObject = function (t) {
+                    if (
+                      t instanceof
+                      c.tensorflow.magenta.NoteSequence.SectionGroup
+                    )
+                      return t;
+                    var e = new c.tensorflow.magenta.NoteSequence.SectionGroup();
+                    if (t.sections) {
+                      if (!Array.isArray(t.sections))
+                        throw TypeError(
+                          ".tensorflow.magenta.NoteSequence.SectionGroup.sections: array expected"
+                        );
+                      e.sections = [];
+                      for (var n = 0; n < t.sections.length; ++n) {
+                        if ("object" != typeof t.sections[n])
+                          throw TypeError(
+                            ".tensorflow.magenta.NoteSequence.SectionGroup.sections: object expected"
+                          );
+                        e.sections[
+                          n
+                        ] = c.tensorflow.magenta.NoteSequence.Section.fromObject(
+                          t.sections[n]
+                        );
+                      }
+                    }
+                    return (
+                      null != t.numTimes && (e.numTimes = 0 | t.numTimes), e
+                    );
+                  }),
+                  (t.toObject = function (t, e) {
+                    e || (e = {});
+                    var n = {};
+                    if (
+                      ((e.arrays || e.defaults) && (n.sections = []),
+                      e.defaults && (n.numTimes = 0),
+                      t.sections && t.sections.length)
+                    ) {
+                      n.sections = [];
+                      for (var r = 0; r < t.sections.length; ++r)
+                        n.sections[
+                          r
+                        ] = c.tensorflow.magenta.NoteSequence.Section.toObject(
+                          t.sections[r],
+                          e
+                        );
+                    }
+                    return (
+                      null != t.numTimes &&
+                        t.hasOwnProperty("numTimes") &&
+                        (n.numTimes = t.numTimes),
+                      n
+                    );
+                  }),
+                  (t.prototype.toJSON = function () {
+                    return this.constructor.toObject(
+                      this,
+                      o.util.toJSONOptions
+                    );
+                  }),
+                  t
+                );
+              })()),
+              t
+            );
+          })()),
+          (r.SequenceMetadata = (function () {
+            function t(t) {
+              if (((this.genre = []), (this.composers = []), t))
+                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
+            }
+            return (
+              (t.prototype.title = ""),
+              (t.prototype.artist = ""),
+              (t.prototype.genre = u.emptyArray),
+              (t.prototype.composers = u.emptyArray),
+              (t.create = function (e) {
+                return new t(e);
+              }),
+              (t.encode = function (t, e) {
+                if (
+                  (e || (e = a.create()),
+                  null != t.title &&
+                    t.hasOwnProperty("title") &&
+                    e.uint32(10).string(t.title),
+                  null != t.artist &&
+                    t.hasOwnProperty("artist") &&
+                    e.uint32(18).string(t.artist),
+                  null != t.genre && t.genre.length)
+                )
+                  for (var n = 0; n < t.genre.length; ++n)
+                    e.uint32(26).string(t.genre[n]);
+                if (null != t.composers && t.composers.length)
+                  for (n = 0; n < t.composers.length; ++n)
+                    e.uint32(34).string(t.composers[n]);
+                return e;
+              }),
+              (t.encodeDelimited = function (t, e) {
+                return this.encode(t, e).ldelim();
+              }),
+              (t.decode = function (t, e) {
+                t instanceof s || (t = s.create(t));
+                for (
+                  var n = void 0 === e ? t.len : t.pos + e,
+                    r = new c.tensorflow.magenta.SequenceMetadata();
+                  t.pos < n;
+
+                ) {
+                  var i = t.uint32();
+                  switch (i >>> 3) {
+                    case 1:
+                      r.title = t.string();
+                      break;
+                    case 2:
+                      r.artist = t.string();
+                      break;
+                    case 3:
+                      (r.genre && r.genre.length) || (r.genre = []),
+                        r.genre.push(t.string());
+                      break;
+                    case 4:
+                      (r.composers && r.composers.length) || (r.composers = []),
+                        r.composers.push(t.string());
+                      break;
+                    default:
+                      t.skipType(7 & i);
+                  }
+                }
+                return r;
+              }),
+              (t.decodeDelimited = function (t) {
+                return (
+                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
                 );
               }),
-              (t.prototype.toJSON = function() {
+              (t.verify = function (t) {
+                if ("object" != typeof t || null === t)
+                  return "object expected";
+                if (
+                  null != t.title &&
+                  t.hasOwnProperty("title") &&
+                  !u.isString(t.title)
+                )
+                  return "title: string expected";
+                if (
+                  null != t.artist &&
+                  t.hasOwnProperty("artist") &&
+                  !u.isString(t.artist)
+                )
+                  return "artist: string expected";
+                if (null != t.genre && t.hasOwnProperty("genre")) {
+                  if (!Array.isArray(t.genre)) return "genre: array expected";
+                  for (var e = 0; e < t.genre.length; ++e)
+                    if (!u.isString(t.genre[e]))
+                      return "genre: string[] expected";
+                }
+                if (null != t.composers && t.hasOwnProperty("composers")) {
+                  if (!Array.isArray(t.composers))
+                    return "composers: array expected";
+                  for (e = 0; e < t.composers.length; ++e)
+                    if (!u.isString(t.composers[e]))
+                      return "composers: string[] expected";
+                }
+                return null;
+              }),
+              (t.fromObject = function (t) {
+                if (t instanceof c.tensorflow.magenta.SequenceMetadata)
+                  return t;
+                var e = new c.tensorflow.magenta.SequenceMetadata();
+                if (
+                  (null != t.title && (e.title = String(t.title)),
+                  null != t.artist && (e.artist = String(t.artist)),
+                  t.genre)
+                ) {
+                  if (!Array.isArray(t.genre))
+                    throw TypeError(
+                      ".tensorflow.magenta.SequenceMetadata.genre: array expected"
+                    );
+                  e.genre = [];
+                  for (var n = 0; n < t.genre.length; ++n)
+                    e.genre[n] = String(t.genre[n]);
+                }
+                if (t.composers) {
+                  if (!Array.isArray(t.composers))
+                    throw TypeError(
+                      ".tensorflow.magenta.SequenceMetadata.composers: array expected"
+                    );
+                  for (e.composers = [], n = 0; n < t.composers.length; ++n)
+                    e.composers[n] = String(t.composers[n]);
+                }
+                return e;
+              }),
+              (t.toObject = function (t, e) {
+                e || (e = {});
+                var n = {};
+                if (
+                  ((e.arrays || e.defaults) &&
+                    ((n.genre = []), (n.composers = [])),
+                  e.defaults && ((n.title = ""), (n.artist = "")),
+                  null != t.title &&
+                    t.hasOwnProperty("title") &&
+                    (n.title = t.title),
+                  null != t.artist &&
+                    t.hasOwnProperty("artist") &&
+                    (n.artist = t.artist),
+                  t.genre && t.genre.length)
+                ) {
+                  n.genre = [];
+                  for (var r = 0; r < t.genre.length; ++r)
+                    n.genre[r] = t.genre[r];
+                }
+                if (t.composers && t.composers.length)
+                  for (n.composers = [], r = 0; r < t.composers.length; ++r)
+                    n.composers[r] = t.composers[r];
+                return n;
+              }),
+              (t.prototype.toJSON = function () {
                 return this.constructor.toObject(this, o.util.toJSONOptions);
               }),
               t
             );
           })()),
-          t
-        );
-      })()),
-      (r.SequenceMetadata = (function() {
-        function t(t) {
-          if (((this.genre = []), (this.composers = []), t))
-            for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-              null != t[e[n]] && (this[e[n]] = t[e[n]]);
-        }
-        return (
-          (t.prototype.title = ""),
-          (t.prototype.artist = ""),
-          (t.prototype.genre = u.emptyArray),
-          (t.prototype.composers = u.emptyArray),
-          (t.create = function(e) {
-            return new t(e);
-          }),
-          (t.encode = function(t, e) {
-            if (
-              (e || (e = a.create()),
-              null != t.title &&
-                t.hasOwnProperty("title") &&
-                e.uint32(10).string(t.title),
-              null != t.artist &&
-                t.hasOwnProperty("artist") &&
-                e.uint32(18).string(t.artist),
-              null != t.genre && t.genre.length)
-            )
-              for (var n = 0; n < t.genre.length; ++n)
-                e.uint32(26).string(t.genre[n]);
-            if (null != t.composers && t.composers.length)
-              for (n = 0; n < t.composers.length; ++n)
-                e.uint32(34).string(t.composers[n]);
-            return e;
-          }),
-          (t.encodeDelimited = function(t, e) {
-            return this.encode(t, e).ldelim();
-          }),
-          (t.decode = function(t, e) {
-            t instanceof s || (t = s.create(t));
-            for (
-              var n = void 0 === e ? t.len : t.pos + e,
-                r = new c.tensorflow.magenta.SequenceMetadata();
-              t.pos < n;
-
-            ) {
-              var i = t.uint32();
-              switch (i >>> 3) {
-                case 1:
-                  r.title = t.string();
-                  break;
-                case 2:
-                  r.artist = t.string();
-                  break;
-                case 3:
-                  (r.genre && r.genre.length) || (r.genre = []),
-                    r.genre.push(t.string());
-                  break;
-                case 4:
-                  (r.composers && r.composers.length) || (r.composers = []),
-                    r.composers.push(t.string());
-                  break;
-                default:
-                  t.skipType(7 & i);
-              }
+          (r.VelocityRange = (function () {
+            function t(t) {
+              if (t)
+                for (var e = Object.keys(t), n = 0; n < e.length; ++n)
+                  null != t[e[n]] && (this[e[n]] = t[e[n]]);
             }
-            return r;
-          }),
-          (t.decodeDelimited = function(t) {
-            return t instanceof s || (t = new s(t)), this.decode(t, t.uint32());
-          }),
-          (t.verify = function(t) {
-            if ("object" != typeof t || null === t) return "object expected";
-            if (
-              null != t.title &&
-              t.hasOwnProperty("title") &&
-              !u.isString(t.title)
-            )
-              return "title: string expected";
-            if (
-              null != t.artist &&
-              t.hasOwnProperty("artist") &&
-              !u.isString(t.artist)
-            )
-              return "artist: string expected";
-            if (null != t.genre && t.hasOwnProperty("genre")) {
-              if (!Array.isArray(t.genre)) return "genre: array expected";
-              for (var e = 0; e < t.genre.length; ++e)
-                if (!u.isString(t.genre[e])) return "genre: string[] expected";
-            }
-            if (null != t.composers && t.hasOwnProperty("composers")) {
-              if (!Array.isArray(t.composers))
-                return "composers: array expected";
-              for (e = 0; e < t.composers.length; ++e)
-                if (!u.isString(t.composers[e]))
-                  return "composers: string[] expected";
-            }
-            return null;
-          }),
-          (t.fromObject = function(t) {
-            if (t instanceof c.tensorflow.magenta.SequenceMetadata) return t;
-            var e = new c.tensorflow.magenta.SequenceMetadata();
-            if (
-              (null != t.title && (e.title = String(t.title)),
-              null != t.artist && (e.artist = String(t.artist)),
-              t.genre)
-            ) {
-              if (!Array.isArray(t.genre))
-                throw TypeError(
-                  ".tensorflow.magenta.SequenceMetadata.genre: array expected"
+            return (
+              (t.prototype.min = 0),
+              (t.prototype.max = 0),
+              (t.create = function (e) {
+                return new t(e);
+              }),
+              (t.encode = function (t, e) {
+                return (
+                  e || (e = a.create()),
+                  null != t.min &&
+                    t.hasOwnProperty("min") &&
+                    e.uint32(8).int32(t.min),
+                  null != t.max &&
+                    t.hasOwnProperty("max") &&
+                    e.uint32(16).int32(t.max),
+                  e
                 );
-              e.genre = [];
-              for (var n = 0; n < t.genre.length; ++n)
-                e.genre[n] = String(t.genre[n]);
-            }
-            if (t.composers) {
-              if (!Array.isArray(t.composers))
-                throw TypeError(
-                  ".tensorflow.magenta.SequenceMetadata.composers: array expected"
-                );
-              for (e.composers = [], n = 0; n < t.composers.length; ++n)
-                e.composers[n] = String(t.composers[n]);
-            }
-            return e;
-          }),
-          (t.toObject = function(t, e) {
-            e || (e = {});
-            var n = {};
-            if (
-              ((e.arrays || e.defaults) && ((n.genre = []), (n.composers = [])),
-              e.defaults && ((n.title = ""), (n.artist = "")),
-              null != t.title &&
-                t.hasOwnProperty("title") &&
-                (n.title = t.title),
-              null != t.artist &&
-                t.hasOwnProperty("artist") &&
-                (n.artist = t.artist),
-              t.genre && t.genre.length)
-            ) {
-              n.genre = [];
-              for (var r = 0; r < t.genre.length; ++r) n.genre[r] = t.genre[r];
-            }
-            if (t.composers && t.composers.length)
-              for (n.composers = [], r = 0; r < t.composers.length; ++r)
-                n.composers[r] = t.composers[r];
-            return n;
-          }),
-          (t.prototype.toJSON = function() {
-            return this.constructor.toObject(this, o.util.toJSONOptions);
-          }),
-          t
-        );
-      })()),
-      (r.VelocityRange = (function() {
-        function t(t) {
-          if (t)
-            for (var e = Object.keys(t), n = 0; n < e.length; ++n)
-              null != t[e[n]] && (this[e[n]] = t[e[n]]);
-        }
-        return (
-          (t.prototype.min = 0),
-          (t.prototype.max = 0),
-          (t.create = function(e) {
-            return new t(e);
-          }),
-          (t.encode = function(t, e) {
-            return (
-              e || (e = a.create()),
-              null != t.min &&
-                t.hasOwnProperty("min") &&
-                e.uint32(8).int32(t.min),
-              null != t.max &&
-                t.hasOwnProperty("max") &&
-                e.uint32(16).int32(t.max),
-              e
-            );
-          }),
-          (t.encodeDelimited = function(t, e) {
-            return this.encode(t, e).ldelim();
-          }),
-          (t.decode = function(t, e) {
-            t instanceof s || (t = s.create(t));
-            for (
-              var n = void 0 === e ? t.len : t.pos + e,
-                r = new c.tensorflow.magenta.VelocityRange();
-              t.pos < n;
+              }),
+              (t.encodeDelimited = function (t, e) {
+                return this.encode(t, e).ldelim();
+              }),
+              (t.decode = function (t, e) {
+                t instanceof s || (t = s.create(t));
+                for (
+                  var n = void 0 === e ? t.len : t.pos + e,
+                    r = new c.tensorflow.magenta.VelocityRange();
+                  t.pos < n;
 
-            ) {
-              var i = t.uint32();
-              switch (i >>> 3) {
-                case 1:
-                  r.min = t.int32();
-                  break;
-                case 2:
-                  r.max = t.int32();
-                  break;
-                default:
-                  t.skipType(7 & i);
-              }
-            }
-            return r;
-          }),
-          (t.decodeDelimited = function(t) {
-            return t instanceof s || (t = new s(t)), this.decode(t, t.uint32());
-          }),
-          (t.verify = function(t) {
-            return "object" != typeof t || null === t
-              ? "object expected"
-              : null != t.min && t.hasOwnProperty("min") && !u.isInteger(t.min)
-              ? "min: integer expected"
-              : null != t.max && t.hasOwnProperty("max") && !u.isInteger(t.max)
-              ? "max: integer expected"
-              : null;
-          }),
-          (t.fromObject = function(t) {
-            if (t instanceof c.tensorflow.magenta.VelocityRange) return t;
-            var e = new c.tensorflow.magenta.VelocityRange();
-            return (
-              null != t.min && (e.min = 0 | t.min),
-              null != t.max && (e.max = 0 | t.max),
-              e
+                ) {
+                  var i = t.uint32();
+                  switch (i >>> 3) {
+                    case 1:
+                      r.min = t.int32();
+                      break;
+                    case 2:
+                      r.max = t.int32();
+                      break;
+                    default:
+                      t.skipType(7 & i);
+                  }
+                }
+                return r;
+              }),
+              (t.decodeDelimited = function (t) {
+                return (
+                  t instanceof s || (t = new s(t)), this.decode(t, t.uint32())
+                );
+              }),
+              (t.verify = function (t) {
+                return "object" != typeof t || null === t
+                  ? "object expected"
+                  : null != t.min &&
+                    t.hasOwnProperty("min") &&
+                    !u.isInteger(t.min)
+                  ? "min: integer expected"
+                  : null != t.max &&
+                    t.hasOwnProperty("max") &&
+                    !u.isInteger(t.max)
+                  ? "max: integer expected"
+                  : null;
+              }),
+              (t.fromObject = function (t) {
+                if (t instanceof c.tensorflow.magenta.VelocityRange) return t;
+                var e = new c.tensorflow.magenta.VelocityRange();
+                return (
+                  null != t.min && (e.min = 0 | t.min),
+                  null != t.max && (e.max = 0 | t.max),
+                  e
+                );
+              }),
+              (t.toObject = function (t, e) {
+                e || (e = {});
+                var n = {};
+                return (
+                  e.defaults && ((n.min = 0), (n.max = 0)),
+                  null != t.min && t.hasOwnProperty("min") && (n.min = t.min),
+                  null != t.max && t.hasOwnProperty("max") && (n.max = t.max),
+                  n
+                );
+              }),
+              (t.prototype.toJSON = function () {
+                return this.constructor.toObject(this, o.util.toJSONOptions);
+              }),
+              t
             );
-          }),
-          (t.toObject = function(t, e) {
-            e || (e = {});
-            var n = {};
-            return (
-              e.defaults && ((n.min = 0), (n.max = 0)),
-              null != t.min && t.hasOwnProperty("min") && (n.min = t.min),
-              null != t.max && t.hasOwnProperty("max") && (n.max = t.max),
-              n
-            );
-          }),
-          (t.prototype.toJSON = function() {
-            return this.constructor.toObject(this, o.util.toJSONOptions);
-          }),
-          t
-        );
-      })()),
-      r)),
-      i)),
+          })()),
+          r)),
+        i)),
         (t.exports = c);
     },
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "ChordQuality", function() {
+        n.d(e, "ChordQuality", function () {
           return vt;
         }),
-        n.d(e, "ChordSymbolException", function() {
+        n.d(e, "ChordSymbolException", function () {
           return Nt;
         }),
-        n.d(e, "ChordEncodingException", function() {
+        n.d(e, "ChordEncodingException", function () {
           return Tt;
         }),
-        n.d(e, "ChordSymbols", function() {
+        n.d(e, "ChordSymbols", function () {
           return Ot;
         }),
-        n.d(e, "ChordEncoder", function() {
+        n.d(e, "ChordEncoder", function () {
           return It;
         }),
-        n.d(e, "chordEncoderFromType", function() {
+        n.d(e, "chordEncoderFromType", function () {
           return Mt;
         }),
-        n.d(e, "MajorMinorChordEncoder", function() {
+        n.d(e, "MajorMinorChordEncoder", function () {
           return At;
         }),
-        n.d(e, "TriadChordEncoder", function() {
+        n.d(e, "TriadChordEncoder", function () {
           return kt;
         }),
-        n.d(e, "PitchChordEncoder", function() {
+        n.d(e, "PitchChordEncoder", function () {
           return qt;
         });
       var r = {};
       n.r(r),
-        n.d(r, "names", function() {
+        n.d(r, "names", function () {
           return a;
         }),
-        n.d(r, "tokenize", function() {
+        n.d(r, "tokenize", function () {
           return h;
         }),
-        n.d(r, "props", function() {
+        n.d(r, "props", function () {
           return m;
         }),
-        n.d(r, "name", function() {
+        n.d(r, "name", function () {
           return d;
         }),
-        n.d(r, "pc", function() {
+        n.d(r, "pc", function () {
           return g;
         }),
-        n.d(r, "midi", function() {
+        n.d(r, "midi", function () {
           return S;
         }),
-        n.d(r, "midiToFreq", function() {
+        n.d(r, "midiToFreq", function () {
           return y;
         }),
-        n.d(r, "freq", function() {
+        n.d(r, "freq", function () {
           return b;
         }),
-        n.d(r, "freqToMidi", function() {
+        n.d(r, "freqToMidi", function () {
           return v;
         }),
-        n.d(r, "chroma", function() {
+        n.d(r, "chroma", function () {
           return N;
         }),
-        n.d(r, "oct", function() {
+        n.d(r, "oct", function () {
           return T;
         }),
-        n.d(r, "stepToLetter", function() {
+        n.d(r, "stepToLetter", function () {
           return O;
         }),
-        n.d(r, "altToAcc", function() {
+        n.d(r, "altToAcc", function () {
           return M;
         }),
-        n.d(r, "from", function() {
+        n.d(r, "from", function () {
           return A;
         }),
-        n.d(r, "build", function() {
+        n.d(r, "build", function () {
           return k;
         }),
-        n.d(r, "fromMidi", function() {
+        n.d(r, "fromMidi", function () {
           return q;
         }),
-        n.d(r, "simplify", function() {
+        n.d(r, "simplify", function () {
           return E;
         }),
-        n.d(r, "enharmonic", function() {
+        n.d(r, "enharmonic", function () {
           return _;
         });
       var i = {};
       n.r(i),
-        n.d(i, "names", function() {
+        n.d(i, "names", function () {
           return lt;
         }),
-        n.d(i, "props", function() {
+        n.d(i, "props", function () {
           return pt;
         }),
-        n.d(i, "intervals", function() {
+        n.d(i, "intervals", function () {
           return ft;
         }),
-        n.d(i, "notes", function() {
+        n.d(i, "notes", function () {
           return mt;
         }),
-        n.d(i, "exists", function() {
+        n.d(i, "exists", function () {
           return dt;
         }),
-        n.d(i, "supersets", function() {
+        n.d(i, "supersets", function () {
           return gt;
         }),
-        n.d(i, "subsets", function() {
+        n.d(i, "subsets", function () {
           return St;
         }),
-        n.d(i, "tokenize", function() {
+        n.d(i, "tokenize", function () {
           return bt;
         });
       var o = n(0),
         s = "C C# Db D D# Eb E F F# Gb G G# Ab A A# Bb B".split(" "),
-        a = function(t) {
+        a = function (t) {
           return "string" != typeof t
             ? s.slice()
-            : s.filter(function(e) {
+            : s.filter(function (e) {
                 var n = e[1] || " ";
                 return -1 !== t.indexOf(n);
               });
@@ -19921,17 +20084,17 @@
           octStr: null,
           chroma: null,
           midi: null,
-          freq: null
+          freq: null,
         }),
         f = [0, 2, 4, 5, 7, 9, 11],
-        m = (function(t, e) {
+        m = (function (t, e) {
           return (
             void 0 === e && (e = {}),
-            function(n) {
+            function (n) {
               return e[n] || (e[n] = t(n));
             }
           );
-        })(function(t) {
+        })(function (t) {
           var e = h(t);
           if ("" === e[0] || "" !== e[3]) return p;
           var n = e[0],
@@ -19948,7 +20111,7 @@
               oct: i.length ? +i : null,
               chroma: 0,
               midi: null,
-              freq: null
+              freq: null,
             };
           return (
             (o.chroma = (f[o.step] + o.alt + 120) % 12),
@@ -19958,54 +20121,54 @@
             Object.freeze(o)
           );
         }),
-        d = function(t) {
+        d = function (t) {
           return m(t).name;
         },
-        g = function(t) {
+        g = function (t) {
           return m(t).pc;
         },
-        S = function(t) {
+        S = function (t) {
           if ("number" != typeof t && "string" != typeof t) return null;
           var e,
             n = m(t).midi,
             r = n || 0 === n ? n : +t;
           return (e = r) >= 0 && e <= 127 ? r : null;
         },
-        y = function(t, e) {
+        y = function (t, e) {
           return (
             void 0 === e && (e = 440),
             "number" == typeof t ? Math.pow(2, (t - 69) / 12) * e : null
           );
         },
-        b = function(t) {
+        b = function (t) {
           return m(t).freq || y(t);
         },
         w = Math.log(2),
         P = Math.log(440),
-        v = function(t) {
+        v = function (t) {
           var e = (12 * (Math.log(t) - P)) / w + 69;
           return Math.round(100 * e) / 100;
         },
-        N = function(t) {
+        N = function (t) {
           return m(t).chroma;
         },
-        T = function(t) {
+        T = function (t) {
           return m(t).oct;
         },
-        O = function(t) {
+        O = function (t) {
           return "CDEFGAB"[t];
         },
-        I = function(t, e) {
+        I = function (t, e) {
           return Array(e + 1).join(t);
         },
-        M = function(t) {
-          return (function(t, e) {
+        M = function (t) {
+          return (function (t, e) {
             return "number" != typeof t ? "" : e(t);
-          })(t, function(t) {
+          })(t, function (t) {
             return t < 0 ? I("b", -t) : I("#", t);
           });
         },
-        A = function(t, e) {
+        A = function (t, e) {
           void 0 === t && (t = {}), void 0 === e && (e = null);
           var n = e ? Object.assign({}, m(e), t) : t,
             r = n.step,
@@ -20025,7 +20188,7 @@
           (!0 === e ? u : c)[t % 12] + (Math.floor(t / 12) - 1)
         );
       }
-      var E = function(t, e) {
+      var E = function (t, e) {
           void 0 === e && (e = !0);
           var n = m(t),
             r = n.alt,
@@ -20035,32 +20198,33 @@
           var s = !1 === e ? r < 0 : r > 0;
           return null === o ? g(q(i, s)) : q(o, s);
         },
-        _ = function(t) {
+        _ = function (t) {
           return E(t, !1);
         };
       var x = new RegExp(
           "^([-+]?\\d+)(d{1,4}|m|M|P|A{1,4})|(AA|A|P|M|m|d|dd)([-+]?\\d+)$"
         ),
         C = [0, 2, 4, 5, 7, 9, 11],
-        z = ("1P 2m 2M 3m 3M 4P 5P 6m 6M 7m 7M 8P".split(" "),
-        Object.freeze({
-          name: null,
-          num: null,
-          q: null,
-          step: null,
-          alt: null,
-          dir: null,
-          type: null,
-          simple: null,
-          semitones: null,
-          chroma: null,
-          oct: null
-        })),
-        D = function(t) {
+        z =
+          ("1P 2m 2M 3m 3M 4P 5P 6m 6M 7m 7M 8P".split(" "),
+          Object.freeze({
+            name: null,
+            num: null,
+            q: null,
+            step: null,
+            alt: null,
+            dir: null,
+            type: null,
+            simple: null,
+            semitones: null,
+            chroma: null,
+            oct: null,
+          })),
+        D = function (t) {
           return (Math.abs(t) - 1) % 7;
         },
-        j = function(t) {
-          var e = (function(t) {
+        j = function (t) {
+          var e = (function (t) {
             var e = x.exec("" + t);
             return null === e ? null : e[1] ? [e[1], e[2]] : [e[4], e[3]];
           })(t);
@@ -20079,7 +20243,7 @@
               oct: 0,
               semitones: 0,
               chroma: 0,
-              ic: 0
+              ic: 0,
             };
           return (
             (i.num = +e[0]),
@@ -20092,18 +20256,19 @@
                 (i.dir = i.num < 0 ? -1 : 1),
                 (i.simple =
                   8 === i.num || -8 === i.num ? i.num : i.dir * (i.step + 1)),
-                (i.alt = ((n = i.type),
-                ("M" === (r = i.q) && "M" === n) || ("P" === r && "P" === n)
-                  ? 0
-                  : "m" === r && "M" === n
-                  ? -1
-                  : /^A+$/.test(r)
-                  ? r.length
-                  : /^d+$/.test(r)
-                  ? "P" === n
-                    ? -r.length
-                    : -r.length - 1
-                  : null)),
+                (i.alt =
+                  ((n = i.type),
+                  ("M" === (r = i.q) && "M" === n) || ("P" === r && "P" === n)
+                    ? 0
+                    : "m" === r && "M" === n
+                    ? -1
+                    : /^A+$/.test(r)
+                    ? r.length
+                    : /^d+$/.test(r)
+                    ? "P" === n
+                      ? -r.length
+                      : -r.length - 1
+                    : null)),
                 (i.oct = Math.floor((Math.abs(i.num) - 1) / 7)),
                 (i.semitones = i.dir * (C[i.step] + i.alt + 12 * i.oct)),
                 (i.chroma = (((i.dir * (C[i.step] + i.alt)) % 12) + 12) % 12),
@@ -20116,14 +20281,14 @@
       }
       "P m M m M P d P m M m M".split(" ");
       var B = [0, 2, 4, -1, 1, 3, 5],
-        U = B.map(function(t) {
+        U = B.map(function (t) {
           return Math.floor((7 * t) / 12);
         }),
         G = [3, 0, 4, 1, 5, 2, 6];
-      var F = function(t, e, n) {
+      var F = function (t, e, n) {
           var r =
               G[
-                (function(t) {
+                (function (t) {
                   var e = (t + 1) % 7;
                   return e < 0 ? 7 + e : e;
                 })(t)
@@ -20133,19 +20298,19 @@
             ? { step: r, alt: i, dir: n }
             : { step: r, alt: i, oct: e + 4 * i + U[r], dir: n };
         },
-        Q = function(t) {
-          return (function(t, e) {
+        Q = function (t) {
+          return (function (t, e) {
             return (
               void 0 === e && (e = {}),
-              function(n) {
+              function (n) {
                 return e[n] || (e[n] = t(n));
               }
             );
-          })(function(e) {
+          })(function (e) {
             var n = t(e);
             return null === n.name
               ? null
-              : (function(t) {
+              : (function (t) {
                   var e = t.step,
                     n = t.alt,
                     r = t.oct,
@@ -20160,7 +20325,7 @@
         H = Q(R);
       function $(t, e) {
         if (1 === arguments.length)
-          return function(e) {
+          return function (e) {
             return $(t, e);
           };
         var n = V(t),
@@ -20171,16 +20336,16 @@
       }
       var K = n(37),
         W = n(38),
-        J = function(t) {
+        J = function (t) {
           return (
             N(t) ||
-            (function(t) {
+            (function (t) {
               return R(t).chroma;
             })(t) ||
             0
           );
         },
-        Y = function(t) {
+        Y = function (t) {
           return parseInt(X(t), 2);
         };
       function X(t) {
@@ -20188,7 +20353,7 @@
         if (!Array.isArray(t)) return "";
         var e = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         return (
-          t.map(J).forEach(function(t) {
+          t.map(J).forEach(function (t) {
             e[t] = 1;
           }),
           e.join("")
@@ -20203,7 +20368,7 @@
         return arguments.length > 1
           ? et(t)(e)
           : ((t = Y(t)),
-            function(e) {
+            function (e) {
               return (e = Y(e)) !== t && (e & t) === e;
             });
       }
@@ -20211,36 +20376,36 @@
         return arguments.length > 1
           ? nt(t)(e)
           : ((t = Y(t)),
-            function(e) {
+            function (e) {
               return (e = Y(e)) !== t && (e | t) === e;
             });
       }
       var rt,
         it,
         ot,
-        st = function(t) {
+        st = function (t) {
           var e = Object.keys(t).sort(),
             n = [],
             r = [],
-            i = function(t, e, i) {
+            i = function (t, e, i) {
               (n[t] = e), (r[i] = r[i] || []), r[i].push(t);
             };
-          e.forEach(function(e) {
+          e.forEach(function (e) {
             var n = t[e][0].split(" "),
               r = t[e][1],
               o = X(n);
             i(e, n, o),
               r &&
-                r.forEach(function(t) {
+                r.forEach(function (t) {
                   return i(t, n, o);
                 });
           });
           var o = Object.keys(n).sort(),
-            s = function(t) {
+            s = function (t) {
               return n[t];
             };
           return (
-            (s.names = function(t) {
+            (s.names = function (t) {
               return "string" == typeof t
                 ? (r[t] || []).slice()
                 : (!0 === t ? o : e).slice();
@@ -20250,20 +20415,21 @@
         },
         at = st(K),
         ut = st(W),
-        ct = ((rt = at),
-        (it = ut),
-        ((ot = function(t) {
-          return rt(t) || it(t);
-        }).names = function(t) {
-          return rt.names(t).concat(it.names(t));
-        }),
-        Object.freeze({
-          name: null,
-          intervals: [],
-          names: [],
-          chroma: null,
-          setnum: null
-        }));
+        ct =
+          ((rt = at),
+          (it = ut),
+          ((ot = function (t) {
+            return rt(t) || it(t);
+          }).names = function (t) {
+            return rt.names(t).concat(it.names(t));
+          }),
+          Object.freeze({
+            name: null,
+            intervals: [],
+            names: [],
+            chroma: null,
+            setnum: null,
+          }));
       at.names;
       var lt = ut.names,
         ht = Object.freeze({
@@ -20271,16 +20437,16 @@
           names: [],
           intervals: [],
           chroma: null,
-          setnum: null
+          setnum: null,
         }),
-        pt = (function(t, e) {
+        pt = (function (t, e) {
           return (
             void 0 === e && (e = {}),
-            function(n) {
+            function (n) {
               return e[n] || (e[n] = t(n));
             }
           );
-        })(function(t) {
+        })(function (t) {
           var e = ut(t);
           if (!e) return ht;
           var n = { intervals: e, name: t };
@@ -20291,7 +20457,7 @@
             n
           );
         }),
-        ft = function(t) {
+        ft = function (t) {
           return pt(bt(t)[1]).intervals;
         };
       function mt(t, e) {
@@ -20301,19 +20467,19 @@
           i = n[1];
         return pt(i).intervals.map($(r));
       }
-      var dt = function(t) {
+      var dt = function (t) {
           return void 0 !== ut(bt(t)[1]);
         },
-        gt = function(t) {
+        gt = function (t) {
           if (!ft(t).length) return [];
           var e = nt(ft(t));
-          return ut.names().filter(function(t) {
+          return ut.names().filter(function (t) {
             return e(ut(t));
           });
         },
-        St = function(t) {
+        St = function (t) {
           var e = et(ft(t));
-          return ut.names().filter(function(t) {
+          return ut.names().filter(function (t) {
             return e(ut(t));
           });
         },
@@ -20333,10 +20499,10 @@
         ["1P", "3M", "5P"],
         ["1P", "3m", "5P"],
         ["1P", "3M", "5A"],
-        ["1P", "3m", "5d"]
+        ["1P", "3m", "5d"],
       ];
       var vt;
-      !(function(t) {
+      !(function (t) {
         (t[(t.Major = 0)] = "Major"),
           (t[(t.Minor = 1)] = "Minor"),
           (t[(t.Augmented = 2)] = "Augmented"),
@@ -20367,7 +20533,7 @@
         static quality(t) {
           if (!i.exists(t)) throw new Nt("Unrecognized chord symbol: " + t);
           const e = i.intervals(t),
-            n = Pt.map(t => t.every(t => e.includes(t))),
+            n = Pt.map((t) => t.every((t) => e.includes(t))),
             r = n.indexOf(!0),
             o = n.lastIndexOf(!0);
           return r >= 0 && r === o ? r : vt.Other;
@@ -20375,11 +20541,11 @@
       }
       class It {
         encodeProgression(t, e) {
-          const n = t.map(t => this.encode(t)),
-            r = Array.from(Array(e).keys()).map(t =>
+          const n = t.map((t) => this.encode(t)),
+            r = Array.from(Array(e).keys()).map((t) =>
               Math.floor((t * n.length) / e)
             );
-          return o.stack(r.map(t => n[t]));
+          return o.stack(r.map((t) => n[t]));
         }
       }
       function Mt(t) {
@@ -20443,7 +20609,7 @@
                 .oneHot(o.tensor1d([e], "int32"), wt.NUM_PITCH_CLASSES)
                 .as1D(),
               r = o.buffer([wt.NUM_PITCH_CLASSES]);
-            Ot.pitches(t).forEach(t => r.set(1, t));
+            Ot.pitches(t).forEach((t) => r.set(1, t));
             const i = r.toTensor().as1D(),
               s = n;
             return o.concat1d([o.tensor1d([0]), n, i, s]);
@@ -20452,11 +20618,11 @@
       }
     },
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = n(21);
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       var r = e;
       function i() {
@@ -20475,16 +20641,16 @@
         (r.configure = i),
         i();
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
-      t.exports = function(t, e) {
+      t.exports = function (t, e) {
         var n = new Array(arguments.length - 1),
           r = 0,
           i = 2,
           o = !0;
         for (; i < arguments.length; ) n[r++] = arguments[i++];
-        return new Promise(function(i, s) {
-          n[r] = function(t) {
+        return new Promise(function (i, s) {
+          n[r] = function (t) {
             if (o)
               if (((o = !1), t)) s(t);
               else {
@@ -20505,10 +20671,10 @@
         });
       };
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       var r = e;
-      r.length = function(t) {
+      r.length = function (t) {
         var e = t.length;
         if (!e) return 0;
         for (var n = 0; --e % 4 > 1 && "=" === t.charAt(e); ) ++n;
@@ -20519,7 +20685,7 @@
           (i[s] =
             s < 26 ? s + 65 : s < 52 ? s + 71 : s < 62 ? s - 4 : (s - 59) | 43)
         ] = s++;
-      r.encode = function(t, e, n) {
+      r.encode = function (t, e, n) {
         for (var r, o = null, s = [], a = 0, u = 0; e < n; ) {
           var c = t[e++];
           switch (u) {
@@ -20544,7 +20710,7 @@
             : String.fromCharCode.apply(String, s.slice(0, a))
         );
       };
-      (r.decode = function(t, e, n) {
+      (r.decode = function (t, e, n) {
         for (var r, i = n, s = 0, a = 0; a < t.length; ) {
           var u = t.charCodeAt(a++);
           if (61 === u && s > 1) break;
@@ -20566,28 +20732,28 @@
         if (1 === s) throw Error("invalid encoding");
         return n - i;
       }),
-        (r.test = function(t) {
+        (r.test = function (t) {
           return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(
             t
           );
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       function r() {
         this._listeners = {};
       }
       (t.exports = r),
-        (r.prototype.on = function(t, e, n) {
+        (r.prototype.on = function (t, e, n) {
           return (
             (this._listeners[t] || (this._listeners[t] = [])).push({
               fn: e,
-              ctx: n || this
+              ctx: n || this,
             }),
             this
           );
         }),
-        (r.prototype.off = function(t, e) {
+        (r.prototype.off = function (t, e) {
           if (void 0 === t) this._listeners = {};
           else if (void 0 === e) this._listeners[t] = [];
           else
@@ -20595,7 +20761,7 @@
               n[r].fn === e ? n.splice(r, 1) : ++r;
           return this;
         }),
-        (r.prototype.emit = function(t) {
+        (r.prototype.emit = function (t) {
           var e = this._listeners[t];
           if (e) {
             for (var n = [], r = 1; r < arguments.length; )
@@ -20605,12 +20771,12 @@
           return this;
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       function r(t) {
         return (
           "undefined" != typeof Float32Array
-            ? (function() {
+            ? (function () {
                 var e = new Float32Array([-0]),
                   n = new Uint8Array(e.buffer),
                   r = 128 === n[3];
@@ -20651,7 +20817,7 @@
                   (t.readFloatLE = r ? s : a),
                   (t.readFloatBE = r ? a : s);
               })()
-            : (function() {
+            : (function () {
                 function e(t, e, n, r) {
                   var i = e < 0 ? 1 : 0;
                   if ((i && (e = -e), 0 === e))
@@ -20697,7 +20863,7 @@
                   (t.readFloatBE = n.bind(null, a));
               })(),
           "undefined" != typeof Float64Array
-            ? (function() {
+            ? (function () {
                 var e = new Float64Array([-0]),
                   n = new Uint8Array(e.buffer),
                   r = 128 === n[7];
@@ -20754,7 +20920,7 @@
                   (t.readDoubleLE = r ? s : a),
                   (t.readDoubleBE = r ? a : s);
               })()
-            : (function() {
+            : (function () {
                 function e(t, e, n, r, i, o) {
                   var s = r < 0 ? 1 : 0;
                   if ((s && (r = -r), 0 === r))
@@ -20832,7 +20998,7 @@
       }
       t.exports = r(r);
     },
-    function(module, exports, __webpack_require__) {
+    function (module, exports, __webpack_require__) {
       "use strict";
       function inquire(moduleName) {
         try {
@@ -20843,10 +21009,10 @@
       }
       module.exports = inquire;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       var r = e;
-      (r.length = function(t) {
+      (r.length = function (t) {
         for (var e = 0, n = 0, r = 0; r < t.length; ++r)
           (n = t.charCodeAt(r)) < 128
             ? (e += 1)
@@ -20857,7 +21023,7 @@
             : (e += 3);
         return e;
       }),
-        (r.read = function(t, e, n) {
+        (r.read = function (t, e, n) {
           if (n - e < 1) return "";
           for (var r, i = null, o = [], s = 0; e < n; )
             (r = t[e++]) < 128
@@ -20883,7 +21049,7 @@
               i.join(""))
             : String.fromCharCode.apply(String, o.slice(0, s));
         }),
-        (r.write = function(t, e, n) {
+        (r.write = function (t, e, n) {
           for (var r, i, o = n, s = 0; s < t.length; ++s)
             (r = t.charCodeAt(s)) < 128
               ? (e[n++] = r)
@@ -20903,14 +21069,14 @@
           return n - o;
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
-      t.exports = function(t, e, n) {
+      t.exports = function (t, e, n) {
         var r = n || 8192,
           i = r >>> 1,
           o = null,
           s = r;
-        return function(n) {
+        return function (n) {
           if (n < 1 || n > i) return t(n);
           s + n > r && ((o = t(r)), (s = 0));
           var a = e.call(o, s, (s += n));
@@ -20918,7 +21084,7 @@
         };
       };
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = i;
       var r = n(8);
@@ -20926,17 +21092,17 @@
         (this.lo = t >>> 0), (this.hi = e >>> 0);
       }
       var o = (i.zero = new i(0, 0));
-      (o.toNumber = function() {
+      (o.toNumber = function () {
         return 0;
       }),
-        (o.zzEncode = o.zzDecode = function() {
+        (o.zzEncode = o.zzDecode = function () {
           return this;
         }),
-        (o.length = function() {
+        (o.length = function () {
           return 1;
         });
       var s = (i.zeroHash = "\0\0\0\0\0\0\0\0");
-      (i.fromNumber = function(t) {
+      (i.fromNumber = function (t) {
         if (0 === t) return o;
         var e = t < 0;
         e && (t = -t);
@@ -20950,7 +21116,7 @@
           new i(n, r)
         );
       }),
-        (i.from = function(t) {
+        (i.from = function (t) {
           if ("number" == typeof t) return i.fromNumber(t);
           if (r.isString(t)) {
             if (!r.Long) return i.fromNumber(parseInt(t, 10));
@@ -20958,7 +21124,7 @@
           }
           return t.low || t.high ? new i(t.low >>> 0, t.high >>> 0) : o;
         }),
-        (i.prototype.toNumber = function(t) {
+        (i.prototype.toNumber = function (t) {
           if (!t && this.hi >>> 31) {
             var e = (1 + ~this.lo) >>> 0,
               n = ~this.hi >>> 0;
@@ -20966,13 +21132,13 @@
           }
           return this.lo + 4294967296 * this.hi;
         }),
-        (i.prototype.toLong = function(t) {
+        (i.prototype.toLong = function (t) {
           return r.Long
             ? new r.Long(0 | this.lo, 0 | this.hi, Boolean(t))
             : { low: 0 | this.lo, high: 0 | this.hi, unsigned: Boolean(t) };
         });
       var a = String.prototype.charCodeAt;
-      (i.fromHash = function(t) {
+      (i.fromHash = function (t) {
         return t === s
           ? o
           : new i(
@@ -20988,7 +21154,7 @@
                 0
             );
       }),
-        (i.prototype.toHash = function() {
+        (i.prototype.toHash = function () {
           return String.fromCharCode(
             255 & this.lo,
             (this.lo >>> 8) & 255,
@@ -21000,7 +21166,7 @@
             this.hi >>> 24
           );
         }),
-        (i.prototype.zzEncode = function() {
+        (i.prototype.zzEncode = function () {
           var t = this.hi >> 31;
           return (
             (this.hi = (((this.hi << 1) | (this.lo >>> 31)) ^ t) >>> 0),
@@ -21008,7 +21174,7 @@
             this
           );
         }),
-        (i.prototype.zzDecode = function() {
+        (i.prototype.zzDecode = function () {
           var t = -(1 & this.lo);
           return (
             (this.lo = (((this.lo >>> 1) | (this.hi << 31)) ^ t) >>> 0),
@@ -21016,7 +21182,7 @@
             this
           );
         }),
-        (i.prototype.length = function() {
+        (i.prototype.length = function () {
           var t = this.lo,
             e = ((this.lo >>> 28) | (this.hi << 4)) >>> 0,
             n = this.hi >>> 24;
@@ -21041,7 +21207,7 @@
             : 10;
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = o;
       var r = n(14);
@@ -21057,34 +21223,34 @@
           ? e.utf8Write(t, n)
           : e.write(t, n);
       }
-      (o._configure = function() {
+      (o._configure = function () {
         (o.alloc = i._Buffer_allocUnsafe),
           (o.writeBytesBuffer =
             i.Buffer &&
             i.Buffer.prototype instanceof Uint8Array &&
             "set" === i.Buffer.prototype.set.name
-              ? function(t, e, n) {
+              ? function (t, e, n) {
                   e.set(t, n);
                 }
-              : function(t, e, n) {
+              : function (t, e, n) {
                   if (t.copy) t.copy(e, n, 0, t.length);
                   else for (var r = 0; r < t.length; ) e[n++] = t[r++];
                 });
       }),
-        (o.prototype.bytes = function(t) {
+        (o.prototype.bytes = function (t) {
           i.isString(t) && (t = i._Buffer_from(t, "base64"));
           var e = t.length >>> 0;
           return (
             this.uint32(e), e && this._push(o.writeBytesBuffer, e, t), this
           );
         }),
-        (o.prototype.string = function(t) {
+        (o.prototype.string = function (t) {
           var e = i.Buffer.byteLength(t);
           return this.uint32(e), e && this._push(s, e, t), this;
         }),
         o._configure();
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = o;
       var r = n(15);
@@ -21093,10 +21259,10 @@
       function o(t) {
         r.call(this, t);
       }
-      (o._configure = function() {
+      (o._configure = function () {
         i.Buffer && (o.prototype._slice = i.Buffer.prototype.slice);
       }),
-        (o.prototype.string = function() {
+        (o.prototype.string = function () {
           var t = this.uint32();
           return this.buf.utf8Slice
             ? this.buf.utf8Slice(
@@ -21111,11 +21277,11 @@
         }),
         o._configure();
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       e.Service = n(33);
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = i;
       var r = n(8);
@@ -21139,7 +21305,7 @@
                 n[a.requestDelimited ? "encodeDelimited" : "encode"](
                   o
                 ).finish(),
-                function(t, n) {
+                function (t, n) {
                   if (t) return a.emit("error", t, e), s(t);
                   if (null !== n) {
                     if (!(n instanceof i))
@@ -21158,17 +21324,17 @@
             } catch (t) {
               return (
                 a.emit("error", t, e),
-                void setTimeout(function() {
+                void setTimeout(function () {
                   s(t);
                 }, 0)
               );
             }
           else
-            setTimeout(function() {
+            setTimeout(function () {
               s(Error("already ended"));
             }, 0);
         }),
-        (i.prototype.end = function(t) {
+        (i.prototype.end = function (t) {
           return (
             this.rpcImpl &&
               (t || this.rpcImpl(null, null, null),
@@ -21178,21 +21344,21 @@
           );
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       t.exports = {};
     },
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "auxiliaryInputFromSpec", function() {
+        n.d(e, "auxiliaryInputFromSpec", function () {
           return i;
         }),
-        n.d(e, "AuxiliaryInput", function() {
+        n.d(e, "AuxiliaryInput", function () {
           return o;
         }),
-        n.d(e, "BinaryCounter", function() {
+        n.d(e, "BinaryCounter", function () {
           return s;
         });
       var r = n(0);
@@ -21222,18 +21388,18 @@
         }
       }
     },
-    function(t) {
+    function (t) {
       t.exports = JSON.parse(
         '{"chromatic":["1P 2m 2M 3m 3M 4P 4A 5P 6m 6M 7m 7M"],"lydian":["1P 2M 3M 4A 5P 6M 7M"],"major":["1P 2M 3M 4P 5P 6M 7M",["ionian"]],"mixolydian":["1P 2M 3M 4P 5P 6M 7m",["dominant"]],"dorian":["1P 2M 3m 4P 5P 6M 7m"],"aeolian":["1P 2M 3m 4P 5P 6m 7m",["minor"]],"phrygian":["1P 2m 3m 4P 5P 6m 7m"],"locrian":["1P 2m 3m 4P 5d 6m 7m"],"melodic minor":["1P 2M 3m 4P 5P 6M 7M"],"melodic minor second mode":["1P 2m 3m 4P 5P 6M 7m"],"lydian augmented":["1P 2M 3M 4A 5A 6M 7M"],"lydian dominant":["1P 2M 3M 4A 5P 6M 7m",["lydian b7"]],"melodic minor fifth mode":["1P 2M 3M 4P 5P 6m 7m",["hindu","mixolydian b6M"]],"locrian #2":["1P 2M 3m 4P 5d 6m 7m",["half-diminished"]],"altered":["1P 2m 3m 3M 5d 6m 7m",["super locrian","diminished whole tone","pomeroy"]],"harmonic minor":["1P 2M 3m 4P 5P 6m 7M"],"phrygian dominant":["1P 2m 3M 4P 5P 6m 7m",["spanish","phrygian major"]],"half-whole diminished":["1P 2m 3m 3M 4A 5P 6M 7m",["dominant diminished"]],"diminished":["1P 2M 3m 4P 5d 6m 6M 7M",["whole-half diminished"]],"major pentatonic":["1P 2M 3M 5P 6M",["pentatonic"]],"lydian pentatonic":["1P 3M 4A 5P 7M",["chinese"]],"mixolydian pentatonic":["1P 3M 4P 5P 7m",["indian"]],"locrian pentatonic":["1P 3m 4P 5d 7m",["minor seven flat five pentatonic"]],"minor pentatonic":["1P 3m 4P 5P 7m"],"minor six pentatonic":["1P 3m 4P 5P 6M"],"minor hexatonic":["1P 2M 3m 4P 5P 7M"],"flat three pentatonic":["1P 2M 3m 5P 6M",["kumoi"]],"flat six pentatonic":["1P 2M 3M 5P 6m"],"major flat two pentatonic":["1P 2m 3M 5P 6M"],"whole tone pentatonic":["1P 3M 5d 6m 7m"],"ionian pentatonic":["1P 3M 4P 5P 7M"],"lydian #5P pentatonic":["1P 3M 4A 5A 7M"],"lydian dominant pentatonic":["1P 3M 4A 5P 7m"],"minor #7M pentatonic":["1P 3m 4P 5P 7M"],"super locrian pentatonic":["1P 3m 4d 5d 7m"],"in-sen":["1P 2m 4P 5P 7m"],"iwato":["1P 2m 4P 5d 7m"],"hirajoshi":["1P 2M 3m 5P 6m"],"kumoijoshi":["1P 2m 4P 5P 6m"],"pelog":["1P 2m 3m 5P 6m"],"vietnamese 1":["1P 3m 4P 5P 6m"],"vietnamese 2":["1P 3m 4P 5P 7m"],"prometheus":["1P 2M 3M 4A 6M 7m"],"prometheus neopolitan":["1P 2m 3M 4A 6M 7m"],"ritusen":["1P 2M 4P 5P 6M"],"scriabin":["1P 2m 3M 5P 6M"],"piongio":["1P 2M 4P 5P 6M 7m"],"major blues":["1P 2M 3m 3M 5P 6M"],"minor blues":["1P 3m 4P 5d 5P 7m",["blues"]],"composite blues":["1P 2M 3m 3M 4P 5d 5P 6M 7m"],"augmented":["1P 2A 3M 5P 5A 7M"],"augmented heptatonic":["1P 2A 3M 4P 5P 5A 7M"],"dorian #4":["1P 2M 3m 4A 5P 6M 7m"],"lydian diminished":["1P 2M 3m 4A 5P 6M 7M"],"whole tone":["1P 2M 3M 4A 5A 7m"],"leading whole tone":["1P 2M 3M 4A 5A 7m 7M"],"lydian minor":["1P 2M 3M 4A 5P 6m 7m"],"locrian major":["1P 2M 3M 4P 5d 6m 7m",["arabian"]],"neopolitan":["1P 2m 3m 4P 5P 6m 7M"],"neopolitan minor":["1P 2m 3m 4P 5P 6m 7M"],"neopolitan major":["1P 2m 3m 4P 5P 6M 7M",["dorian b2"]],"neopolitan major pentatonic":["1P 3M 4P 5d 7m"],"romanian minor":["1P 2M 3m 5d 5P 6M 7m"],"double harmonic lydian":["1P 2m 3M 4A 5P 6m 7M"],"harmonic major":["1P 2M 3M 4P 5P 6m 7M"],"double harmonic major":["1P 2m 3M 4P 5P 6m 7M",["gypsy"]],"egyptian":["1P 2M 4P 5P 7m"],"hungarian minor":["1P 2M 3m 4A 5P 6m 7M"],"hungarian major":["1P 2A 3M 4A 5P 6M 7m"],"oriental":["1P 2m 3M 4P 5d 6M 7m"],"spanish heptatonic":["1P 2m 3m 3M 4P 5P 6m 7m"],"flamenco":["1P 2m 3m 3M 4A 5P 7m"],"balinese":["1P 2m 3m 4P 5P 6m 7M"],"todi raga":["1P 2m 3m 4A 5P 6m 7M"],"malkos raga":["1P 3m 4P 6m 7m"],"kafi raga":["1P 3m 3M 4P 5P 6M 7m 7M"],"purvi raga":["1P 2m 3M 4P 4A 5P 6m 7M"],"persian":["1P 2m 3M 4P 5d 6m 7M"],"bebop":["1P 2M 3M 4P 5P 6M 7m 7M"],"bebop dominant":["1P 2M 3M 4P 5P 6M 7m 7M"],"bebop minor":["1P 2M 3m 3M 4P 5P 6M 7m"],"bebop major":["1P 2M 3M 4P 5P 5A 6M 7M"],"bebop locrian":["1P 2m 3m 4P 5d 5P 6m 7m"],"minor bebop":["1P 2M 3m 4P 5P 6m 7m 7M"],"mystery #1":["1P 2m 3M 5d 6m 7m"],"enigmatic":["1P 2m 3M 5d 6m 7m 7M"],"minor six diminished":["1P 2M 3m 4P 5P 6m 6M 7M"],"ionian augmented":["1P 2M 3M 4P 5A 6M 7M"],"lydian #9":["1P 2m 3M 4A 5P 6M 7M"],"ichikosucho":["1P 2M 3M 4P 5d 5P 6M 7M"],"six tone symmetric":["1P 2m 3M 4P 5A 6M"]}'
       );
     },
-    function(t) {
+    function (t) {
       t.exports = JSON.parse(
         '{"4":["1P 4P 7m 10m",["quartal"]],"5":["1P 5P"],"7":["1P 3M 5P 7m",["Dominant","Dom"]],"9":["1P 3M 5P 7m 9M",["79"]],"11":["1P 5P 7m 9M 11P"],"13":["1P 3M 5P 7m 9M 13M",["13_"]],"64":["5P 8P 10M"],"M":["1P 3M 5P",["Major",""]],"M#5":["1P 3M 5A",["augmented","maj#5","Maj#5","+","aug"]],"M#5add9":["1P 3M 5A 9M",["+add9"]],"M13":["1P 3M 5P 7M 9M 13M",["maj13","Maj13"]],"M13#11":["1P 3M 5P 7M 9M 11A 13M",["maj13#11","Maj13#11","M13+4","M13#4"]],"M6":["1P 3M 5P 13M",["6"]],"M6#11":["1P 3M 5P 6M 11A",["M6b5","6#11","6b5"]],"M69":["1P 3M 5P 6M 9M",["69"]],"M69#11":["1P 3M 5P 6M 9M 11A"],"M7#11":["1P 3M 5P 7M 11A",["maj7#11","Maj7#11","M7+4","M7#4"]],"M7#5":["1P 3M 5A 7M",["maj7#5","Maj7#5","maj9#5","M7+"]],"M7#5sus4":["1P 4P 5A 7M"],"M7#9#11":["1P 3M 5P 7M 9A 11A"],"M7add13":["1P 3M 5P 6M 7M 9M"],"M7b5":["1P 3M 5d 7M"],"M7b6":["1P 3M 6m 7M"],"M7b9":["1P 3M 5P 7M 9m"],"M7sus4":["1P 4P 5P 7M"],"M9":["1P 3M 5P 7M 9M",["maj9","Maj9"]],"M9#11":["1P 3M 5P 7M 9M 11A",["maj9#11","Maj9#11","M9+4","M9#4"]],"M9#5":["1P 3M 5A 7M 9M",["Maj9#5"]],"M9#5sus4":["1P 4P 5A 7M 9M"],"M9b5":["1P 3M 5d 7M 9M"],"M9sus4":["1P 4P 5P 7M 9M"],"Madd9":["1P 3M 5P 9M",["2","add9","add2"]],"Maj7":["1P 3M 5P 7M",["maj7","M7"]],"Mb5":["1P 3M 5d"],"Mb6":["1P 3M 13m"],"Msus2":["1P 2M 5P",["add9no3","sus2"]],"Msus4":["1P 4P 5P",["sus","sus4"]],"Maddb9":["1P 3M 5P 9m"],"11b9":["1P 5P 7m 9m 11P"],"13#11":["1P 3M 5P 7m 9M 11A 13M",["13+4","13#4"]],"13#9":["1P 3M 5P 7m 9A 13M",["13#9_"]],"13#9#11":["1P 3M 5P 7m 9A 11A 13M"],"13b5":["1P 3M 5d 6M 7m 9M"],"13b9":["1P 3M 5P 7m 9m 13M"],"13b9#11":["1P 3M 5P 7m 9m 11A 13M"],"13no5":["1P 3M 7m 9M 13M"],"13sus4":["1P 4P 5P 7m 9M 13M",["13sus"]],"69#11":["1P 3M 5P 6M 9M 11A"],"7#11":["1P 3M 5P 7m 11A",["7+4","7#4","7#11_","7#4_"]],"7#11b13":["1P 3M 5P 7m 11A 13m",["7b5b13"]],"7#5":["1P 3M 5A 7m",["+7","7aug","aug7"]],"7#5#9":["1P 3M 5A 7m 9A",["7alt","7#5#9_","7#9b13_"]],"7#5b9":["1P 3M 5A 7m 9m"],"7#5b9#11":["1P 3M 5A 7m 9m 11A"],"7#5sus4":["1P 4P 5A 7m"],"7#9":["1P 3M 5P 7m 9A",["7#9_"]],"7#9#11":["1P 3M 5P 7m 9A 11A",["7b5#9"]],"7#9#11b13":["1P 3M 5P 7m 9A 11A 13m"],"7#9b13":["1P 3M 5P 7m 9A 13m"],"7add6":["1P 3M 5P 7m 13M",["67","7add13"]],"7b13":["1P 3M 7m 13m"],"7b5":["1P 3M 5d 7m"],"7b6":["1P 3M 5P 6m 7m"],"7b9":["1P 3M 5P 7m 9m"],"7b9#11":["1P 3M 5P 7m 9m 11A",["7b5b9"]],"7b9#9":["1P 3M 5P 7m 9m 9A"],"7b9b13":["1P 3M 5P 7m 9m 13m"],"7b9b13#11":["1P 3M 5P 7m 9m 11A 13m",["7b9#11b13","7b5b9b13"]],"7no5":["1P 3M 7m"],"7sus4":["1P 4P 5P 7m",["7sus"]],"7sus4b9":["1P 4P 5P 7m 9m",["susb9","7susb9","7b9sus","7b9sus4","phryg"]],"7sus4b9b13":["1P 4P 5P 7m 9m 13m",["7b9b13sus4"]],"9#11":["1P 3M 5P 7m 9M 11A",["9+4","9#4","9#11_","9#4_"]],"9#11b13":["1P 3M 5P 7m 9M 11A 13m",["9b5b13"]],"9#5":["1P 3M 5A 7m 9M",["9+"]],"9#5#11":["1P 3M 5A 7m 9M 11A"],"9b13":["1P 3M 7m 9M 13m"],"9b5":["1P 3M 5d 7m 9M"],"9no5":["1P 3M 7m 9M"],"9sus4":["1P 4P 5P 7m 9M",["9sus"]],"m":["1P 3m 5P"],"m#5":["1P 3m 5A",["m+","mb6"]],"m11":["1P 3m 5P 7m 9M 11P",["_11"]],"m11A 5":["1P 3m 6m 7m 9M 11P"],"m11b5":["1P 3m 7m 12d 2M 4P",["h11","_11b5"]],"m13":["1P 3m 5P 7m 9M 11P 13M",["_13"]],"m6":["1P 3m 4P 5P 13M",["_6"]],"m69":["1P 3m 5P 6M 9M",["_69"]],"m7":["1P 3m 5P 7m",["minor7","_","_7"]],"m7#5":["1P 3m 6m 7m"],"m7add11":["1P 3m 5P 7m 11P",["m7add4"]],"m7b5":["1P 3m 5d 7m",["half-diminished","h7","_7b5"]],"m9":["1P 3m 5P 7m 9M",["_9"]],"m9#5":["1P 3m 6m 7m 9M"],"m9b5":["1P 3m 7m 12d 2M",["h9","-9b5"]],"mMaj7":["1P 3m 5P 7M",["mM7","_M7"]],"mMaj7b6":["1P 3m 5P 6m 7M",["mM7b6"]],"mM9":["1P 3m 5P 7M 9M",["mMaj9","-M9"]],"mM9b6":["1P 3m 5P 6m 7M 9M",["mMaj9b6"]],"mb6M7":["1P 3m 6m 7M"],"mb6b9":["1P 3m 6m 9m"],"o":["1P 3m 5d",["mb5","dim"]],"o7":["1P 3m 5d 13M",["diminished","m6b5","dim7"]],"o7M7":["1P 3m 5d 6M 7M"],"oM7":["1P 3m 5d 7M"],"sus24":["1P 2M 4P 5P",["sus4add9"]],"+add#9":["1P 3M 5A 9A"],"madd4":["1P 3m 4P 5P"],"madd9":["1P 3m 5P 9M"]}'
       );
     },
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 });
       var r = n(52),
@@ -21253,9 +21419,9 @@
         "E",
         "B",
         "F#",
-        "C#"
+        "C#",
       ];
-      var o = (function() {
+      var o = (function () {
         function t(t) {
           var n = this;
           (this.tempos = []),
@@ -21266,23 +21432,23 @@
             i.set(this, 480),
             t &&
               (i.set(this, t.header.ticksPerBeat),
-              t.tracks[0].forEach(function(t) {
+              t.tracks[0].forEach(function (t) {
                 t.meta &&
                   ("timeSignature" === t.type
                     ? n.timeSignatures.push({
                         ticks: t.absoluteTime,
-                        timeSignature: [t.numerator, t.denominator]
+                        timeSignature: [t.numerator, t.denominator],
                       })
                     : "setTempo" === t.type
                     ? n.tempos.push({
                         bpm: 6e7 / t.microsecondsPerBeat,
-                        ticks: t.absoluteTime
+                        ticks: t.absoluteTime,
                       })
                     : "keySignature" === t.type
                     ? n.keySignatures.push({
                         key: e.keySignatureKeys[t.key + 7],
                         scale: 0 === t.scale ? "major" : "minor",
-                        ticks: t.absoluteTime
+                        ticks: t.absoluteTime,
                       })
                     : "trackName" === t.type
                     ? (n.name = t.text)
@@ -21290,29 +21456,29 @@
                       n.meta.push({
                         text: t.text,
                         ticks: t.absoluteTime,
-                        type: t.type
+                        type: t.type,
                       }));
               }),
               this.update());
         }
         return (
-          (t.prototype.update = function() {
+          (t.prototype.update = function () {
             var t = this,
               e = 0,
               n = 0;
-            this.tempos.sort(function(t, e) {
+            this.tempos.sort(function (t, e) {
               return t.ticks - e.ticks;
             }),
-              this.tempos.forEach(function(r, i) {
+              this.tempos.forEach(function (r, i) {
                 var o = i > 0 ? t.tempos[i - 1].bpm : t.tempos[0].bpm,
                   s = r.ticks / t.ppq - n,
                   a = (60 / o) * s;
                 (r.time = a + e), (e = r.time), (n += s);
               }),
-              this.timeSignatures.sort(function(t, e) {
+              this.timeSignatures.sort(function (t, e) {
                 return t.ticks - e.ticks;
               }),
-              this.timeSignatures.forEach(function(e, n) {
+              this.timeSignatures.forEach(function (e, n) {
                 var r = n > 0 ? t.timeSignatures[n - 1] : t.timeSignatures[0],
                   i =
                     (e.ticks - r.ticks) /
@@ -21322,7 +21488,7 @@
                 (r.measures = r.measures || 0), (e.measures = i + r.measures);
               });
           }),
-          (t.prototype.ticksToSeconds = function(t) {
+          (t.prototype.ticksToSeconds = function (t) {
             var e = r.search(this.tempos, t);
             if (-1 !== e) {
               var n = this.tempos[e],
@@ -21332,7 +21498,7 @@
             }
             return 0.5 * (t / this.ppq);
           }),
-          (t.prototype.ticksToMeasures = function(t) {
+          (t.prototype.ticksToMeasures = function (t) {
             var e = r.search(this.timeSignatures, t);
             if (-1 !== e) {
               var n = this.timeSignatures[e],
@@ -21344,13 +21510,13 @@
             return t / this.ppq / 4;
           }),
           Object.defineProperty(t.prototype, "ppq", {
-            get: function() {
+            get: function () {
               return i.get(this);
             },
             enumerable: !0,
-            configurable: !0
+            configurable: !0,
           }),
-          (t.prototype.secondsToTicks = function(t) {
+          (t.prototype.secondsToTicks = function (t) {
             var e = r.search(this.tempos, t, "time");
             if (-1 !== e) {
               var n = this.tempos[e],
@@ -21360,36 +21526,36 @@
             var o = t / 0.5;
             return Math.round(o * this.ppq);
           }),
-          (t.prototype.toJSON = function() {
+          (t.prototype.toJSON = function () {
             return {
               keySignatures: this.keySignatures,
               meta: this.meta,
               name: this.name,
               ppq: this.ppq,
-              tempos: this.tempos.map(function(t) {
+              tempos: this.tempos.map(function (t) {
                 return { bpm: t.bpm, ticks: t.ticks };
               }),
-              timeSignatures: this.timeSignatures
+              timeSignatures: this.timeSignatures,
             };
           }),
-          (t.prototype.fromJSON = function(t) {
+          (t.prototype.fromJSON = function (t) {
             (this.name = t.name),
-              (this.tempos = t.tempos.map(function(t) {
+              (this.tempos = t.tempos.map(function (t) {
                 return Object.assign({}, t);
               })),
-              (this.timeSignatures = t.timeSignatures.map(function(t) {
+              (this.timeSignatures = t.timeSignatures.map(function (t) {
                 return Object.assign({}, t);
               })),
-              (this.keySignatures = t.keySignatures.map(function(t) {
+              (this.keySignatures = t.keySignatures.map(function (t) {
                 return Object.assign({}, t);
               })),
-              (this.meta = t.meta.map(function(t) {
+              (this.meta = t.meta.map(function (t) {
                 return Object.assign({}, t);
               })),
               i.set(this, t.ppq),
               this.update();
           }),
-          (t.prototype.setTempo = function(t) {
+          (t.prototype.setTempo = function (t) {
             (this.tempos = [{ bpm: t, ticks: 0 }]), this.update();
           }),
           t
@@ -21402,12 +21568,12 @@
     ,
     ,
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       var r =
           (this && this.__awaiter) ||
-          function(t, e, n, r) {
-            return new (n || (n = Promise))(function(i, o) {
+          function (t, e, n, r) {
+            return new (n || (n = Promise))(function (i, o) {
               function s(t) {
                 try {
                   u(r.next(t));
@@ -21429,7 +21595,7 @@
                   : ((e = t.value),
                     e instanceof n
                       ? e
-                      : new n(function(t) {
+                      : new n(function (t) {
                           t(e);
                         })).then(s, a);
               }
@@ -21438,31 +21604,31 @@
           },
         i =
           (this && this.__generator) ||
-          function(t, e) {
+          function (t, e) {
             var n,
               r,
               i,
               o,
               s = {
                 label: 0,
-                sent: function() {
+                sent: function () {
                   if (1 & i[0]) throw i[1];
                   return i[1];
                 },
                 trys: [],
-                ops: []
+                ops: [],
               };
             return (
               (o = { next: a(0), throw: a(1), return: a(2) }),
               "function" == typeof Symbol &&
-                (o[Symbol.iterator] = function() {
+                (o[Symbol.iterator] = function () {
                   return this;
                 }),
               o
             );
             function a(o) {
-              return function(a) {
-                return (function(o) {
+              return function (a) {
+                return (function (o) {
                   if (n) throw new TypeError("Generator is already executing.");
                   for (; s; )
                     try {
@@ -21535,19 +21701,19 @@
         s = n(82),
         a = n(40),
         u = n(53),
-        c = (function() {
+        c = (function () {
           function t(t) {
             var e = this,
               n = null;
             t &&
               (t instanceof ArrayBuffer && (t = new Uint8Array(t)),
-              (n = o.parseMidi(t)).tracks.forEach(function(t) {
+              (n = o.parseMidi(t)).tracks.forEach(function (t) {
                 var e = 0;
-                t.forEach(function(t) {
+                t.forEach(function (t) {
                   (e += t.deltaTime), (t.absoluteTime = e);
                 });
               }),
-              (n.tracks = (function(t) {
+              (n.tracks = (function (t) {
                 for (var e = [], n = 0; n < t.length; n++)
                   for (
                     var r = e.length,
@@ -21575,7 +21741,7 @@
               (this.header = new a.Header(n)),
               (this.tracks = []),
               t &&
-                ((this.tracks = n.tracks.map(function(t) {
+                ((this.tracks = n.tracks.map(function (t) {
                   return new u.Track(t, e.header);
                 })),
                 1 === n.header.format &&
@@ -21583,10 +21749,10 @@
                   this.tracks.shift());
           }
           return (
-            (t.fromUrl = function(e) {
-              return r(this, void 0, void 0, function() {
+            (t.fromUrl = function (e) {
+              return r(this, void 0, void 0, function () {
                 var n;
-                return i(this, function(r) {
+                return i(this, function (r) {
                   switch (r.label) {
                     case 0:
                       return [4, fetch(e)];
@@ -21601,60 +21767,60 @@
               });
             }),
             Object.defineProperty(t.prototype, "name", {
-              get: function() {
+              get: function () {
                 return this.header.name;
               },
-              set: function(t) {
+              set: function (t) {
                 this.header.name = t;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "duration", {
-              get: function() {
-                var t = this.tracks.map(function(t) {
+              get: function () {
+                var t = this.tracks.map(function (t) {
                   return t.duration;
                 });
                 return Math.max.apply(Math, t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "durationTicks", {
-              get: function() {
-                var t = this.tracks.map(function(t) {
+              get: function () {
+                var t = this.tracks.map(function (t) {
                   return t.durationTicks;
                 });
                 return Math.max.apply(Math, t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
-            (t.prototype.addTrack = function() {
+            (t.prototype.addTrack = function () {
               var t = new u.Track(void 0, this.header);
               return this.tracks.push(t), t;
             }),
-            (t.prototype.toArray = function() {
+            (t.prototype.toArray = function () {
               return s.encode(this);
             }),
-            (t.prototype.toJSON = function() {
+            (t.prototype.toJSON = function () {
               return {
                 header: this.header.toJSON(),
-                tracks: this.tracks.map(function(t) {
+                tracks: this.tracks.map(function (t) {
                   return t.toJSON();
-                })
+                }),
               };
             }),
-            (t.prototype.fromJSON = function(t) {
+            (t.prototype.fromJSON = function (t) {
               var e = this;
               (this.header = new a.Header()),
                 this.header.fromJSON(t.header),
-                (this.tracks = t.tracks.map(function(t) {
+                (this.tracks = t.tracks.map(function (t) {
                   var n = new u.Track(void 0, e.header);
                   return n.fromJSON(t), n;
                 }));
             }),
-            (t.prototype.clone = function() {
+            (t.prototype.clone = function () {
               var e = new t();
               return e.fromJSON(this.toJSON()), e;
             }),
@@ -21671,10 +21837,10 @@
     ,
     ,
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       (e.parseMidi = n(80)), (e.writeMidi = n(81));
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       function r(t, e, n) {
         void 0 === n && (n = "ticks");
@@ -21699,14 +21865,14 @@
       }
       Object.defineProperty(e, "__esModule", { value: !0 }),
         (e.search = r),
-        (e.insert = function(t, e, n) {
+        (e.insert = function (t, e, n) {
           if ((void 0 === n && (n = "ticks"), t.length)) {
             var i = r(t, e[n], n);
             t.splice(i + 1, 0, e);
           } else t.push(e);
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 });
       var r = n(52),
@@ -21716,7 +21882,7 @@
         a = n(86),
         u = n(88),
         c = new WeakMap(),
-        l = (function() {
+        l = (function () {
           function t(t, e) {
             var n = this;
             if (
@@ -21727,7 +21893,7 @@
               c.set(this, e),
               t)
             ) {
-              var r = t.find(function(t) {
+              var r = t.find(function (t) {
                 return "trackName" === t.type;
               });
               this.name = r ? r.text : "";
@@ -21738,16 +21904,16 @@
               t)
             ) {
               for (
-                var i = t.filter(function(t) {
+                var i = t.filter(function (t) {
                     return "noteOn" === t.type;
                   }),
-                  s = t.filter(function(t) {
+                  s = t.filter(function (t) {
                     return "noteOff" === t.type;
                   }),
-                  u = function() {
+                  u = function () {
                     var t = i.shift();
                     l.channel = t.channel;
-                    var e = s.findIndex(function(e) {
+                    var e = s.findIndex(function (e) {
                       return (
                         e.noteNumber === t.noteNumber &&
                         e.absoluteTime >= t.absoluteTime
@@ -21760,7 +21926,7 @@
                         midi: t.noteNumber,
                         noteOffVelocity: n.velocity / 127,
                         ticks: t.absoluteTime,
-                        velocity: t.velocity / 127
+                        velocity: t.velocity / 127,
                       });
                     }
                   },
@@ -21770,30 +21936,30 @@
               )
                 u();
               t
-                .filter(function(t) {
+                .filter(function (t) {
                   return "controller" === t.type;
                 })
-                .forEach(function(t) {
+                .forEach(function (t) {
                   n.addCC({
                     number: t.controllerType,
                     ticks: t.absoluteTime,
-                    value: t.value / 127
+                    value: t.value / 127,
                   });
                 }),
                 t
-                  .filter(function(t) {
+                  .filter(function (t) {
                     return "pitchBend" === t.type;
                   })
-                  .forEach(function(t) {
+                  .forEach(function (t) {
                     n.addPitchBend({
                       ticks: t.absoluteTime,
-                      value: t.value / Math.pow(2, 13)
+                      value: t.value / Math.pow(2, 13),
                     });
                   });
             }
           }
           return (
-            (t.prototype.addNote = function(t) {
+            (t.prototype.addNote = function (t) {
               var e = c.get(this),
                 n = new u.Note(
                   { midi: 0, ticks: 0, velocity: 1 },
@@ -21804,7 +21970,7 @@
                 Object.assign(n, t), r.insert(this.notes, n, "ticks"), this
               );
             }),
-            (t.prototype.addCC = function(t) {
+            (t.prototype.addCC = function (t) {
               var e = c.get(this),
                 n = new i.ControlChange({ controllerType: t.number }, e);
               return (
@@ -21816,7 +21982,7 @@
                 this
               );
             }),
-            (t.prototype.addPitchBend = function(t) {
+            (t.prototype.addPitchBend = function (t) {
               var e = c.get(this),
                 n = new s.PitchBend({}, e);
               return (
@@ -21824,7 +21990,7 @@
               );
             }),
             Object.defineProperty(t.prototype, "duration", {
-              get: function() {
+              get: function () {
                 if (!this.notes.length) return 0;
                 for (
                   var t =
@@ -21840,10 +22006,10 @@
                 return t;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "durationTicks", {
-              get: function() {
+              get: function () {
                 if (!this.notes.length) return 0;
                 for (
                   var t =
@@ -21859,9 +22025,9 @@
                 return t;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
-            (t.prototype.fromJSON = function(t) {
+            (t.prototype.fromJSON = function (t) {
               var e = this;
               for (var n in ((this.name = t.name),
               (this.channel = t.channel),
@@ -21869,39 +22035,39 @@
               this.instrument.fromJSON(t.instrument),
               t.controlChanges))
                 t.controlChanges[n] &&
-                  t.controlChanges[n].forEach(function(t) {
+                  t.controlChanges[n].forEach(function (t) {
                     e.addCC({
                       number: t.number,
                       ticks: t.ticks,
-                      value: t.value
+                      value: t.value,
                     });
                   });
-              t.notes.forEach(function(t) {
+              t.notes.forEach(function (t) {
                 e.addNote({
                   durationTicks: t.durationTicks,
                   midi: t.midi,
                   ticks: t.ticks,
-                  velocity: t.velocity
+                  velocity: t.velocity,
                 });
               });
             }),
-            (t.prototype.toJSON = function() {
+            (t.prototype.toJSON = function () {
               for (var t = {}, e = 0; e < 127; e++)
                 this.controlChanges.hasOwnProperty(e) &&
-                  (t[e] = this.controlChanges[e].map(function(t) {
+                  (t[e] = this.controlChanges[e].map(function (t) {
                     return t.toJSON();
                   }));
               return {
                 channel: this.channel,
                 controlChanges: t,
-                pitchBends: this.pitchBends.map(function(t) {
+                pitchBends: this.pitchBends.map(function (t) {
                   return t.toJSON();
                 }),
                 instrument: this.instrument.toJSON(),
                 name: this.name,
-                notes: this.notes.map(function(t) {
+                notes: this.notes.map(function (t) {
                   return t.toJSON();
-                })
+                }),
               };
             }),
             t
@@ -21909,7 +22075,7 @@
         })();
       e.Track = l;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 }),
         (e.controlChangeNames = {
@@ -21925,18 +22091,17 @@
           66: "sostenuto",
           67: "softPedal",
           68: "legatoFootswitch",
-          84: "portamentoControl"
+          84: "portamentoControl",
         }),
-        (e.controlChangeIds = Object.keys(e.controlChangeNames).reduce(function(
-          t,
-          n
-        ) {
-          return (t[e.controlChangeNames[n]] = n), t;
-        },
-        {}));
+        (e.controlChangeIds = Object.keys(e.controlChangeNames).reduce(
+          function (t, n) {
+            return (t[e.controlChangeNames[n]] = n), t;
+          },
+          {}
+        ));
       var r = new WeakMap(),
         i = new WeakMap(),
-        o = (function() {
+        o = (function () {
           function t(t, e) {
             r.set(this, e),
               i.set(this, t.controllerType),
@@ -21945,38 +22110,38 @@
           }
           return (
             Object.defineProperty(t.prototype, "number", {
-              get: function() {
+              get: function () {
                 return i.get(this);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "name", {
-              get: function() {
+              get: function () {
                 return e.controlChangeNames[this.number]
                   ? e.controlChangeNames[this.number]
                   : null;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "time", {
-              get: function() {
+              get: function () {
                 return r.get(this).ticksToSeconds(this.ticks);
               },
-              set: function(t) {
+              set: function (t) {
                 var e = r.get(this);
                 this.ticks = e.secondsToTicks(t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
-            (t.prototype.toJSON = function() {
+            (t.prototype.toJSON = function () {
               return {
                 number: this.number,
                 ticks: this.ticks,
                 time: this.time,
-                value: this.value
+                value: this.value,
               };
             }),
             t
@@ -21984,9 +22149,9 @@
         })();
       e.ControlChange = o;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       self,
-        (t.exports = (function(t) {
+        (t.exports = (function (t) {
           var e = {};
           function n(r) {
             if (e[r]) return e[r].exports;
@@ -21996,19 +22161,19 @@
           return (
             (n.m = t),
             (n.c = e),
-            (n.d = function(t, e, r) {
+            (n.d = function (t, e, r) {
               n.o(t, e) ||
                 Object.defineProperty(t, e, { enumerable: !0, get: r });
             }),
-            (n.r = function(t) {
+            (n.r = function (t) {
               "undefined" != typeof Symbol &&
                 Symbol.toStringTag &&
                 Object.defineProperty(t, Symbol.toStringTag, {
-                  value: "Module"
+                  value: "Module",
                 }),
                 Object.defineProperty(t, "__esModule", { value: !0 });
             }),
-            (n.t = function(t, e) {
+            (n.t = function (t, e) {
               if ((1 & e && (t = n(t)), 8 & e)) return t;
               if (4 & e && "object" == typeof t && t && t.__esModule) return t;
               var r = Object.create(null);
@@ -22016,7 +22181,7 @@
                 (n.r(r),
                 Object.defineProperty(r, "default", {
                   enumerable: !0,
-                  value: t
+                  value: t,
                 }),
                 2 & e && "string" != typeof t)
               )
@@ -22024,46 +22189,46 @@
                   n.d(
                     r,
                     i,
-                    function(e) {
+                    function (e) {
                       return t[e];
                     }.bind(null, i)
                   );
               return r;
             }),
-            (n.n = function(t) {
+            (n.n = function (t) {
               var e =
                 t && t.__esModule
-                  ? function() {
+                  ? function () {
                       return t.default;
                     }
-                  : function() {
+                  : function () {
                       return t;
                     };
               return n.d(e, "a", e), e;
             }),
-            (n.o = function(t, e) {
+            (n.o = function (t, e) {
               return Object.prototype.hasOwnProperty.call(t, e);
             }),
             (n.p = ""),
             n((n.s = 4))
           );
         })([
-          function(t, e, n) {
+          function (t, e, n) {
             "use strict";
             n.r(e),
-              n.d(e, "SVGNS", function() {
+              n.d(e, "SVGNS", function () {
                 return r;
               }),
-              n.d(e, "drawSVGPath", function() {
+              n.d(e, "drawSVGPath", function () {
                 return i;
               }),
-              n.d(e, "drawSVGText", function() {
+              n.d(e, "drawSVGText", function () {
                 return o;
               }),
-              n.d(e, "createSVGGroupChild", function() {
+              n.d(e, "createSVGGroupChild", function () {
                 return s;
               }),
-              n.d(e, "setFade", function() {
+              n.d(e, "setFade", function () {
                 return a;
               });
             const r = "http://www.w3.org/2000/svg";
@@ -22125,46 +22290,46 @@
               );
             }
           },
-          function(t, e, n) {
+          function (t, e, n) {
             "use strict";
             n.r(e),
-              n.d(e, "PATH_SCALE", function() {
+              n.d(e, "PATH_SCALE", function () {
                 return r;
               }),
-              n.d(e, "staffLinePath", function() {
+              n.d(e, "staffLinePath", function () {
                 return o;
               }),
-              n.d(e, "extraLinePath", function() {
+              n.d(e, "extraLinePath", function () {
                 return s;
               }),
-              n.d(e, "barPath", function() {
+              n.d(e, "barPath", function () {
                 return a;
               }),
-              n.d(e, "stemPath", function() {
+              n.d(e, "stemPath", function () {
                 return u;
               }),
-              n.d(e, "singleFlagPath", function() {
+              n.d(e, "singleFlagPath", function () {
                 return c;
               }),
-              n.d(e, "multiFlagPath", function() {
+              n.d(e, "multiFlagPath", function () {
                 return l;
               }),
-              n.d(e, "tiePath", function() {
+              n.d(e, "tiePath", function () {
                 return h;
               }),
-              n.d(e, "dotPath", function() {
+              n.d(e, "dotPath", function () {
                 return p;
               }),
-              n.d(e, "NOTE_PATHS", function() {
+              n.d(e, "NOTE_PATHS", function () {
                 return f;
               }),
-              n.d(e, "REST_PATHS", function() {
+              n.d(e, "REST_PATHS", function () {
                 return m;
               }),
-              n.d(e, "CLEF_PATHS", function() {
+              n.d(e, "CLEF_PATHS", function () {
                 return d;
               }),
-              n.d(e, "ACCIDENTAL_PATHS", function() {
+              n.d(e, "ACCIDENTAL_PATHS", function () {
                 return g;
               });
             const r = 100,
@@ -22188,7 +22353,7 @@
                   width: 150,
                   stemVSteps: 0,
                   stemAnchor: 0,
-                  flags: 0
+                  flags: 0,
                 },
                 2: {
                   path:
@@ -22196,43 +22361,43 @@
                   width: 125,
                   stemVSteps: 7,
                   stemAnchor: -10,
-                  flags: 0
+                  flags: 0,
                 },
                 1: {
                   path: i,
                   width: 125,
                   stemVSteps: 7,
                   stemAnchor: -10,
-                  flags: 0
+                  flags: 0,
                 },
                 0.5: {
                   path: i,
                   width: 125,
                   stemVSteps: 7,
                   stemAnchor: -10,
-                  flags: 1
+                  flags: 1,
                 },
                 0.25: {
                   path: i,
                   width: 125,
                   stemVSteps: 9,
                   stemAnchor: -10,
-                  flags: 2
+                  flags: 2,
                 },
                 0.125: {
                   path: i,
                   width: 125,
                   stemVSteps: 11,
                   stemAnchor: -10,
-                  flags: 3
+                  flags: 3,
                 },
                 0.0625: {
                   path: i,
                   width: 125,
                   stemVSteps: 13,
                   stemAnchor: -10,
-                  flags: 4
-                }
+                  flags: 4,
+                },
               },
               m = {
                 4: "m 0,-50 h 125 v -50 H 0 Z",
@@ -22241,42 +22406,42 @@
                 0.5: "m 52,-47 c 26,-2 42,-21 48,-42 l 12,4 L 64,83 52,79 \n88,-49 c 0,0 -17,22 -57,22 -16,0 -31,-13 -31,-27 0,-18 10,-31 27,-31 17,0 \n33,15 25,38 z",
                 0.25: "m 129,-191 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -20,69 \nc -7,18 -22,33 -45,35 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 15,27 \n31,27 40,0 57,-22 57,-22 l -36,128 12,4 77,-270 z",
                 0.125: "m 129,-191 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -20,69 \nc -7,18 -22,33 -45,35 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 15,27 \n31,27 40,0 57,-22 57,-22 L 68,20 C 61,37 46,51 24,52 32,29 16,14 -1,14 c \n-17,0 -27,13 -27,31 0,14 15,27 31,27 38,0 55,-20 57,-22 l -36,128 12,4 \n105,-369 z",
-                0.0625: "m 158,-292 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -17,61 \nv 0 c -6,21 -22,40 -48,42 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 \n15,27 31,27 40,0 57,-22 57,-22 l -20,69 c -7,18 -22,33 -45,35 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 L 68,20 C \n61,37 46,51 24,52 32,29 16,14 -1,14 c -17,0 -27,13 -27,31 0,14 15,27 31,27 \n38,0 55,-20 57,-22 l -36,128 12,4 134,-469 z"
+                0.0625: "m 158,-292 c -6,21 -22,40 -48,42 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 l -17,61 \nv 0 c -6,21 -22,40 -48,42 8,-23 -8,-38 -25,-38 -17,0 -27,13 -27,31 0,14 \n15,27 31,27 40,0 57,-22 57,-22 l -20,69 c -7,18 -22,33 -45,35 8,-23 -8,-38 \n-25,-38 -17,0 -27,13 -27,31 0,14 15,27 31,27 40,0 57,-22 57,-22 L 68,20 C \n61,37 46,51 24,52 32,29 16,14 -1,14 c -17,0 -27,13 -27,31 0,14 15,27 31,27 \n38,0 55,-20 57,-22 l -36,128 12,4 134,-469 z",
               },
               d = {
                 50: {
                   path:
                     "m 101,-199 c -49,0 -100,28 -100,83 0,39 58,57 82,26 15,-20 \n-4,-47 -32,-47 -23,1 -25,0 -25,-8 0,-22 40,-46 71,-41 91,16 67,208 -105,302 \n75,-27 198,-94 211,-201 6,-66 -42,-114 -102,-114 z m 143,33 c -13,0 -23,11 \n-23,24 0,14 10,24 23,24 13,0 23,-11 23,-24 0,-13 -10,-24 -23,-24 z m 2,83 c \n-13,0 -23,11 -23,24 0,14 10,24 23,24 13,0 23,-11 23,-24 0,-13 -10,-24 -23,-24 \nz",
                   upper: -4,
-                  lower: 3
+                  lower: 3,
                 },
                 71: {
                   path:
                     "M 139,48 C 102,57 76,120 131,151 41,128 64,24 129,2 L \n117,-57 C -32,47 26,217 166,182 Z m 12,-1 27,131 C 242,153 216,46 151,47 \nZ m -35,-177 c 34,-23 82,-117 50,-140 -23,-17 -71,33 -50,140 z m -10,10 c \n-23,-77 -20,-200 48,-213 19,-4 89,171 -26,266 l 13,66 c 120,-6 137,155 \n39,191 l 12,58 c 30,131 -137,145 -138,47 0,-29 37,-59 63,-37 21,18 25,71 \n-25,70 32,42 103,0 91,-65 L 167,193 C 56,232 -112,63 106,-120 Z",
                   upper: -7,
-                  lower: 8
-                }
+                  lower: 8,
+                },
               },
               g = [
                 null,
                 "m -49,-121 v 52 l -29,9 v -48 h -8 v 51 l -20,6 v 29 l \n20,-6 v 70 l -20,6 v 30 l 20,-6 v 51 h 8 V 69 l 30,-8 v 50 h 8 V 58 l 20,-6 \nV 23 l -20,6 v -71 l 20,-6 v -29 l -20,6 v -50 z m 1,82 v 71 l -29,9 v -71 z",
                 "M -106,-166 V 67 c 52,-42 85,-56 85,-94 0,-47 -46,-51 \n-73,-22 v -117 z m 31,120 c 20,0 42,46 -20,91 V -7 c 0,-28 10,-39 20,-39 z",
-                "m -81,-58 v -48 H -92 V 73 l 60,-13 v 50 h 11 V -72 Z m \n50,24 v 58 l -50,11 v -58 z"
+                "m -81,-58 v -48 H -92 V 73 l 60,-13 v 50 h 11 V -72 Z m \n50,24 v 58 l -50,11 v -58 z",
               ];
           },
-          function(t, e, n) {
+          function (t, e, n) {
             "use strict";
             n.r(e),
-              n.d(e, "MIN_RESOLUTION", function() {
+              n.d(e, "MIN_RESOLUTION", function () {
                 return r;
               }),
-              n.d(e, "STEM_WIDTH", function() {
+              n.d(e, "STEM_WIDTH", function () {
                 return i;
               }),
-              n.d(e, "LINE_STROKE", function() {
+              n.d(e, "LINE_STROKE", function () {
                 return o;
               }),
-              n.d(e, "COMPACT_SPACING", function() {
+              n.d(e, "COMPACT_SPACING", function () {
                 return s;
               });
             const r = 0.0625,
@@ -22284,16 +22449,16 @@
               o = 1,
               s = 150;
           },
-          function(t, e, n) {
+          function (t, e, n) {
             "use strict";
             n.r(e),
-              n.d(e, "MAX_QUARTER_DIVISION", function() {
+              n.d(e, "MAX_QUARTER_DIVISION", function () {
                 return u;
               }),
-              n.d(e, "ScrollType", function() {
+              n.d(e, "ScrollType", function () {
                 return c;
               }),
-              n.d(e, "StaffSVGRender", function() {
+              n.d(e, "StaffSVGRender", function () {
                 return l;
               });
             var r = n(2),
@@ -22302,52 +22467,52 @@
             const s = [
                 {
                   steps: [0, 0, -1, -1, -2, -3, -3, -4, -4, -5, -5, -6],
-                  accidental: [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0]
+                  accidental: [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0],
                 },
                 {
                   steps: [0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -6, -6],
-                  accidental: [0, 0, 3, 0, 3, 0, 0, 3, 0, 3, 0, 3]
+                  accidental: [0, 0, 3, 0, 3, 0, 0, 3, 0, 3, 0, 3],
                 },
                 {
                   steps: [0, 0, -1, -1, -2, -3, -3, -4, -4, -5, -5, -6],
-                  accidental: [3, 0, 0, 1, 0, 3, 0, 0, 1, 0, 1, 0]
+                  accidental: [3, 0, 0, 1, 0, 3, 0, 0, 1, 0, 1, 0],
                 },
                 {
                   steps: [0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -6, -6],
-                  accidental: [0, 2, 0, 0, 3, 0, 2, 0, 0, 3, 0, 3]
+                  accidental: [0, 2, 0, 0, 3, 0, 2, 0, 0, 3, 0, 3],
                 },
                 {
                   steps: [0, 0, -1, -1, -2, -3, -3, -4, -4, -5, -5, -6],
-                  accidental: [3, 0, 3, 0, 0, 3, 0, 3, 0, 0, 1, 0]
+                  accidental: [3, 0, 3, 0, 0, 3, 0, 3, 0, 0, 1, 0],
                 },
                 {
                   steps: [0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -6, -6],
-                  accidental: [0, 2, 0, 2, 0, 0, 2, 0, 2, 0, 0, 3]
+                  accidental: [0, 2, 0, 2, 0, 0, 2, 0, 2, 0, 0, 3],
                 },
                 {
                   steps: [0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -6, -7],
-                  accidental: [3, 0, 3, 0, 3, 0, 0, 3, 0, 3, 0, 0]
+                  accidental: [3, 0, 3, 0, 3, 0, 0, 3, 0, 3, 0, 0],
                 },
                 {
                   steps: [0, 0, -1, -1, -2, -3, -3, -4, -4, -5, -5, -6],
-                  accidental: [0, 1, 0, 1, 0, 3, 0, 0, 1, 0, 1, 0]
+                  accidental: [0, 1, 0, 1, 0, 3, 0, 0, 1, 0, 1, 0],
                 },
                 {
                   steps: [0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -6, -6],
-                  accidental: [0, 0, 3, 0, 3, 0, 2, 0, 0, 3, 0, 3]
+                  accidental: [0, 0, 3, 0, 3, 0, 2, 0, 0, 3, 0, 3],
                 },
                 {
                   steps: [0, 0, -1, -1, -2, -3, -3, -4, -4, -5, -5, -6],
-                  accidental: [3, 0, 0, 1, 0, 3, 0, 3, 0, 0, 1, 0]
+                  accidental: [3, 0, 0, 1, 0, 3, 0, 3, 0, 0, 1, 0],
                 },
                 {
                   steps: [0, -1, -1, -2, -2, -3, -4, -4, -5, -5, -6, -6],
-                  accidental: [0, 2, 0, 0, 3, 0, 2, 0, 2, 0, 0, 3]
+                  accidental: [0, 2, 0, 0, 3, 0, 2, 0, 2, 0, 0, 3],
                 },
                 {
                   steps: [0, 0, -1, -1, -2, -3, -3, -4, -4, -5, -5, -6],
-                  accidental: [3, 0, 3, 0, 0, 3, 0, 3, 0, 3, 0, 0]
-                }
+                  accidental: [3, 0, 3, 0, 0, 3, 0, 3, 0, 3, 0, 0],
+                },
               ],
               a = [
                 { accidental: 1, pitches: [] },
@@ -22361,18 +22526,18 @@
                 { accidental: 2, pitches: [70, 75, 68, 73] },
                 { accidental: 1, pitches: [78, 73, 80] },
                 { accidental: 2, pitches: [70, 75] },
-                { accidental: 1, pitches: [78, 73, 80, 75, 70] }
+                { accidental: 1, pitches: [78, 73, 80, 75, 70] },
               ],
               u = 16;
             var c;
-            !(function(t) {
+            !(function (t) {
               (t[(t.PAGE = 0)] = "PAGE"),
                 (t[(t.NOTE = 1)] = "NOTE"),
                 (t[(t.BAR = 2)] = "BAR");
             })(c || (c = {}));
             class l {
               constructor(t, e, n) {
-                (this.handleScrollEvent = t => {
+                (this.handleScrollEvent = (t) => {
                   (this.lastKnownScrollLeft = this.parentElement.scrollLeft),
                     this.ticking ||
                       window.requestAnimationFrame(() => {
@@ -22389,7 +22554,7 @@
                     noteSpacing: e.noteSpacing || 1,
                     pixelsPerTimeStep: e.pixelsPerTimeStep || 30,
                     noteRGB: e.noteRGB || "8, 41, 64",
-                    activeNoteRGB: e.activeNoteRGB || "240, 84, 119"
+                    activeNoteRGB: e.activeNoteRGB || "240, 84, 119",
                   }),
                   (this.div = n),
                   (this.timeSignatureNumerator = 4),
@@ -22453,7 +22618,7 @@
                   this.staffG.appendChild(this.signaturesG);
                 let t = 0,
                   e = 0;
-                this.scoreInfo.notes.forEach(n => {
+                this.scoreInfo.notes.forEach((n) => {
                   (t += n.pitch), ++e;
                 });
                 const n = t / e;
@@ -22486,7 +22651,7 @@
                 const r = 0 === this.config.pixelsPerTimeStep;
                 if (t) {
                   const o = [];
-                  this.playingNotes.forEach(e => {
+                  this.playingNotes.forEach((e) => {
                     this.isPaintingActiveNote(e, t)
                       ? o.push(e)
                       : this.highlightElement(this.getGroup(e), !1);
@@ -22564,8 +22729,9 @@
                   console.warn(
                     " StaffRender ",
                     "background:orange; color:white",
-                    `StaffRender does not handle notes shorther than 1/${4 /
-                      r.MIN_RESOLUTION}th, and this score tries to draw a 1/${e}th. Shortest possible note will be drawn instead.`
+                    `StaffRender does not handle notes shorther than 1/${
+                      4 / r.MIN_RESOLUTION
+                    }th, and this score tries to draw a 1/${e}th. Shortest possible note will be drawn instead.`
                   ),
                     (a = r.MIN_RESOLUTION);
                 }
@@ -22574,7 +22740,7 @@
                 if (
                   (u.stemAnchor &&
                     (c = Object(i.createSVGGroupChild)(this.musicG, "stem")),
-                  t.notes.forEach(n => {
+                  t.notes.forEach((n) => {
                     const r = n.vSteps * this.vStepSize,
                       c =
                         2 *
@@ -22858,7 +23024,7 @@
                 if (s) {
                   const n = a[this.key].accidental,
                     r = 71 === this.clef ? 0 : 14;
-                  a[this.key].pitches.forEach(s => {
+                  a[this.key].pitches.forEach((s) => {
                     const a = this.getPitchDetails(s).vSteps,
                       u = Object(i.drawSVGPath)(
                         t,
@@ -23084,7 +23250,7 @@
               getBarBeginnings() {
                 const t = new Set();
                 let e = 0;
-                this.scoreInfo.notes.forEach(t => {
+                this.scoreInfo.notes.forEach((t) => {
                   t.start + t.length > e && (e = t.start + t.length);
                 });
                 const n = this.scoreInfo.timeSignatures
@@ -23112,7 +23278,7 @@
                 this.scoreInfo.notes
                   .slice()
                   .sort((t, e) => t.start - e.start)
-                  .forEach(e => {
+                  .forEach((e) => {
                     const r = this.getQNote(e);
                     n.add(r.start),
                       n.add(r.start + r.length),
@@ -23122,15 +23288,15 @@
                   }),
                   Array.from(n)
                     .sort((t, e) => t - e)
-                    .forEach(e => {
+                    .forEach((e) => {
                       const n = [];
-                      t.forEach(t => {
-                        t.forEach(t => {
+                      t.forEach((t) => {
+                        t.forEach((t) => {
                           const r = this.splitQNote(t, e);
                           r && n.push(r);
                         });
                       }),
-                        n.forEach(e => {
+                        n.forEach((e) => {
                           t.has(e.start)
                             ? t.get(e.start).push(e)
                             : t.set(e.start, [e]);
@@ -23148,7 +23314,7 @@
                     minVStep: Number.MIN_SAFE_INTEGER,
                     restToNextLength: 0,
                     isBarBeginning: !1,
-                    notes: []
+                    notes: [],
                   };
                   this.changeKeySignatureIfNeeded(e);
                   const r = a.value + this.getBarLength();
@@ -23157,7 +23323,7 @@
                     ((a = s.next()),
                     (this.barAccidentals = {}),
                     (n.isBarBeginning = !0)),
-                    t.forEach(t => {
+                    t.forEach((t) => {
                       this.analyzePitch(t, e),
                         (n.minVStep = Math.max(t.vSteps, n.minVStep)),
                         (n.maxVStep = Math.min(t.vSteps, n.maxVStep)),
@@ -23182,9 +23348,9 @@
                         accidental: 0,
                         opacity: 0,
                         pitch: 0,
-                        xHeadRight: 0
-                      }
-                    ]
+                        xHeadRight: 0,
+                      },
+                    ],
                   }),
                   (this.key = r);
               }
@@ -23196,7 +23362,7 @@
                   accidental: 0,
                   opacity: this.getOpacity(t.intensity),
                   pitch: t.pitch,
-                  xHeadRight: 0
+                  xHeadRight: 0,
                 };
               }
               splitQNote(t, e) {
@@ -23211,7 +23377,7 @@
                       opacity: t.opacity,
                       pitch: t.pitch,
                       xHeadRight: 0,
-                      tiedFrom: t
+                      tiedFrom: t,
                     })
                   : null;
               }
@@ -23245,25 +23411,25 @@
                   keyAccidental:
                     a[this.key].pitches.indexOf(u) > -1
                       ? a[this.key].accidental
-                      : 0
+                      : 0,
                 };
               }
             }
           },
-          function(t, e, n) {
+          function (t, e, n) {
             "use strict";
             n.r(e);
             var r = n(3);
-            n.d(e, "MAX_QUARTER_DIVISION", function() {
+            n.d(e, "MAX_QUARTER_DIVISION", function () {
               return r.MAX_QUARTER_DIVISION;
             }),
-              n.d(e, "ScrollType", function() {
+              n.d(e, "ScrollType", function () {
                 return r.ScrollType;
               }),
-              n.d(e, "StaffSVGRender", function() {
+              n.d(e, "StaffSVGRender", function () {
                 return r.StaffSVGRender;
               });
-          }
+          },
         ]));
     },
     ,
@@ -23278,103 +23444,103 @@
     ,
     ,
     ,
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       n.r(e),
-        n.d(e, "aux_inputs", function() {
+        n.d(e, "aux_inputs", function () {
           return r;
         }),
-        n.d(e, "chords", function() {
+        n.d(e, "chords", function () {
           return i;
         }),
-        n.d(e, "constants", function() {
+        n.d(e, "constants", function () {
           return o;
         }),
-        n.d(e, "data", function() {
+        n.d(e, "data", function () {
           return s;
         }),
-        n.d(e, "logging", function() {
+        n.d(e, "logging", function () {
           return a;
         }),
-        n.d(e, "melodies", function() {
+        n.d(e, "melodies", function () {
           return u;
         }),
-        n.d(e, "performance", function() {
+        n.d(e, "performance", function () {
           return c;
         }),
-        n.d(e, "sequences", function() {
+        n.d(e, "sequences", function () {
           return l;
         }),
-        n.d(e, "MetronomeCallbackObject", function() {
+        n.d(e, "MetronomeCallbackObject", function () {
           return p;
         }),
-        n.d(e, "Metronome", function() {
+        n.d(e, "Metronome", function () {
           return f;
         }),
-        n.d(e, "MidiConversionError", function() {
+        n.d(e, "MidiConversionError", function () {
           return S;
         }),
-        n.d(e, "midiToSequenceProto", function() {
+        n.d(e, "midiToSequenceProto", function () {
           return y;
         }),
-        n.d(e, "sequenceProtoToMidi", function() {
+        n.d(e, "sequenceProtoToMidi", function () {
           return b;
         }),
-        n.d(e, "urlToBlob", function() {
+        n.d(e, "urlToBlob", function () {
           return w;
         }),
-        n.d(e, "blobToNoteSequence", function() {
+        n.d(e, "blobToNoteSequence", function () {
           return P;
         }),
-        n.d(e, "urlToNoteSequence", function() {
+        n.d(e, "urlToNoteSequence", function () {
           return v;
         }),
-        n.d(e, "BasePlayerCallback", function() {
+        n.d(e, "BasePlayerCallback", function () {
           return I;
         }),
-        n.d(e, "BasePlayer", function() {
+        n.d(e, "BasePlayer", function () {
           return M;
         }),
-        n.d(e, "Player", function() {
+        n.d(e, "Player", function () {
           return k;
         }),
-        n.d(e, "SoundFontPlayer", function() {
+        n.d(e, "SoundFontPlayer", function () {
           return q;
         }),
-        n.d(e, "PlayerWithClick", function() {
+        n.d(e, "PlayerWithClick", function () {
           return E;
         }),
-        n.d(e, "MIDIPlayer", function() {
+        n.d(e, "MIDIPlayer", function () {
           return _;
         }),
-        n.d(e, "BaseRecorderCallback", function() {
+        n.d(e, "BaseRecorderCallback", function () {
           return x;
         }),
-        n.d(e, "Recorder", function() {
+        n.d(e, "Recorder", function () {
           return C;
         }),
-        n.d(e, "BaseVisualizer", function() {
+        n.d(e, "BaseVisualizer", function () {
           return D;
         }),
-        n.d(e, "PianoRollCanvasVisualizer", function() {
+        n.d(e, "PianoRollCanvasVisualizer", function () {
           return j;
         }),
-        n.d(e, "Visualizer", function() {
+        n.d(e, "Visualizer", function () {
           return L;
         }),
-        n.d(e, "BaseSVGVisualizer", function() {
+        n.d(e, "BaseSVGVisualizer", function () {
           return R;
         }),
-        n.d(e, "PianoRollSVGVisualizer", function() {
+        n.d(e, "PianoRollSVGVisualizer", function () {
           return B;
         }),
-        n.d(e, "WaterfallSVGVisualizer", function() {
+        n.d(e, "WaterfallSVGVisualizer", function () {
           return U;
         }),
-        n.d(e, "ScrollType", function() {
+        n.d(e, "ScrollType", function () {
           return G;
         }),
-        n.d(e, "StaffSVGVisualizer", function() {
+        n.d(e, "StaffSVGVisualizer", function () {
           return F;
         });
       var r = n(36),
@@ -23393,11 +23559,11 @@
             (this.muted = !1),
             (this.loClick = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+              envelope: { attack: 0.001, decay: 0.3, sustain: 0 },
             }).toMaster()),
             (this.hiClick = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+              envelope: { attack: 0.001, decay: 0.3, sustain: 0 },
             }).toMaster()),
             (this.loClickNote = "c5"),
             (this.hiClickNote = "g5"),
@@ -23426,7 +23592,7 @@
             this.callbackObject.bar || (this.callbackObject.bar = () => {});
           let e = 0;
           const n = 4 * this.clicksPerQuarter;
-          h.Transport.scheduleRepeat(t => {
+          h.Transport.scheduleRepeat((t) => {
             this.startedAt || (this.startedAt = t);
             const r = t - this.startedAt;
             this.step++;
@@ -23468,14 +23634,14 @@
         (n.ticksPerQuarter = e.header.ppq),
           (n.sourceInfo = g.a.SourceInfo.create({
             parser: g.a.SourceInfo.Parser.TONEJS_MIDI_CONVERT,
-            encodingType: g.a.SourceInfo.EncodingType.MIDI
+            encodingType: g.a.SourceInfo.EncodingType.MIDI,
           }));
         for (const t of e.header.timeSignatures)
           n.timeSignatures.push(
             g.a.TimeSignature.create({
               time: e.header.ticksToSeconds(t.ticks),
               numerator: t.timeSignature[0],
-              denominator: t.timeSignature[1]
+              denominator: t.timeSignature[1],
             })
           );
         n.timeSignatures.length ||
@@ -23498,7 +23664,7 @@
                 endTime: s,
                 pitch: e.midi,
                 velocity: Math.floor(e.velocity * o.MIDI_VELOCITIES),
-                isDrum: t.instrument.percussion
+                isDrum: t.instrument.percussion,
               })
             ),
               s > n.totalTime && (n.totalTime = s);
@@ -23516,9 +23682,9 @@
             tempos: [],
             timeSignatures: [],
             keySignatures: [],
-            meta: []
+            meta: [],
           },
-          tracks: []
+          tracks: [],
         });
         const n = Array.from(t.tempos || []);
         0 === n.length &&
@@ -23527,14 +23693,14 @@
         for (const t of n)
           e.header.tempos.push({
             ticks: e.header.secondsToTicks(t.time),
-            bpm: t.qpm
+            bpm: t.qpm,
           }),
             e.header.update();
         if (t.timeSignatures && 0 !== t.timeSignatures.length)
           for (const n of t.timeSignatures)
             e.header.timeSignatures.push({
               ticks: e.header.secondsToTicks(n.time),
-              timeSignature: [n.numerator, n.denominator]
+              timeSignature: [n.numerator, n.denominator],
             });
         else e.header.timeSignatures.push({ ticks: 0, timeSignature: [4, 4] });
         e.header.update();
@@ -23562,7 +23728,7 @@
                 midi: e.pitch,
                 time: e.startTime,
                 duration: e.endTime - e.startTime,
-                velocity: (t + 1) / o.MIDI_VELOCITIES
+                velocity: (t + 1) / o.MIDI_VELOCITIES,
               });
             }
           }),
@@ -23572,17 +23738,17 @@
       function w(t) {
         return new Promise((e, n) => {
           Object(d.a)(t)
-            .then(t => t.blob())
-            .then(t => {
+            .then((t) => t.blob())
+            .then((t) => {
               e(t);
             })
-            .catch(t => n(t));
+            .catch((t) => n(t));
         });
       }
       function P(t) {
         return new Promise((e, n) => {
           const r = new FileReader();
-          (r.onload = t => {
+          (r.onload = (t) => {
             try {
               const t = y(r.result);
               e(t);
@@ -23590,7 +23756,7 @@
               n(t);
             }
           }),
-            (r.onerror = t => n(t)),
+            (r.onerror = (t) => n(t)),
             r.readAsArrayBuffer(t);
         });
       }
@@ -23607,8 +23773,8 @@
         }
         async initialize() {
           await Object(d.a)(this.baseURL + "/instrument.json")
-            .then(t => t.json())
-            .then(t => {
+            .then((t) => t.json())
+            .then((t) => {
               (this.name = t.name),
                 (this.minPitch = t.minPitch),
                 (this.maxPitch = t.maxPitch),
@@ -23631,7 +23797,7 @@
           let e = void 0,
             n = o.MIDI_VELOCITIES;
           return (
-            this.velocities.forEach(r => {
+            this.velocities.forEach((r) => {
               const i = Math.abs(r - t);
               i < n && ((e = r), (n = i));
             }),
@@ -23642,42 +23808,38 @@
           this.initialized || (await this.initialize());
           const e = t
               .filter(
-                t =>
+                (t) =>
                   !(t.pitch < this.minPitch || t.pitch > this.maxPitch) ||
                   (a.log(
-                    `Pitch ${t.pitch} is outside the valid range for ${
-                      this.name
-                    }, ignoring.`,
+                    `Pitch ${t.pitch} is outside the valid range for ${this.name}, ignoring.`,
                     "SoundFont"
                   ),
                   !1)
               )
-              .map(t =>
+              .map((t) =>
                 this.sampleInfoToName({
                   pitch: t.pitch,
-                  velocity: this.nearestVelocity(t.velocity)
+                  velocity: this.nearestVelocity(t.velocity),
                 })
               ),
             n = Array.from(new Set(e))
-              .filter(t => !this.buffers.has(t))
-              .map(t => ({ name: t, url: this.sampleNameToURL(t) }));
+              .filter((t) => !this.buffers.has(t))
+              .map((t) => ({ name: t, url: this.sampleNameToURL(t) }));
           n.length > 0 &&
-            (n.forEach(t => this.buffers.add(t.name, t.url)),
-            await new Promise(t => h.Buffer.on("load", t)),
+            (n.forEach((t) => this.buffers.add(t.name, t.url)),
+            await new Promise((t) => h.Buffer.on("load", t)),
             a.log(`Loaded samples for ${this.name}.`, "SoundFont"));
         }
         playNote(t, e, n, r, i) {
           const o = this.getBuffer(t, e);
           r > this.durationSeconds &&
             a.log(
-              `Requested note duration longer than sample duration: ${r} > ${
-                this.durationSeconds
-              }`,
+              `Requested note duration longer than sample duration: ${r} > ${this.durationSeconds}`,
               "SoundFont"
             );
           const s = new h.BufferSource({
             buffer: o,
-            fadeOut: this.FADE_SECONDS
+            fadeOut: this.FADE_SECONDS,
           }).connect(i);
           if (
             (s.start(n, 0, void 0, 1, 0),
@@ -23720,14 +23882,12 @@
             throw new Error("Instrument is not initialized.");
           if (t < this.minPitch || t > this.maxPitch)
             return void a.log(
-              `Pitch ${t} is outside the valid range for ${this.name} (${
-                this.minPitch
-              }-${this.maxPitch})`,
+              `Pitch ${t} is outside the valid range for ${this.name} (${this.minPitch}-${this.maxPitch})`,
               "SoundFont"
             );
           const n = this.sampleInfoToName({
             pitch: t,
-            velocity: this.nearestVelocity(e)
+            velocity: this.nearestVelocity(e),
           });
           if (!this.buffers.has(n))
             throw new Error(`Buffer not found for ${this.name}: ${n}`);
@@ -23745,8 +23905,8 @@
         }
         async initialize() {
           await Object(d.a)(this.baseURL + "/soundfont.json")
-            .then(t => t.json())
-            .then(t => {
+            .then((t) => t.json())
+            .then((t) => {
               this.name = t.name;
               for (const e in t.instruments) {
                 const n = `${this.baseURL}/${t.instruments[e]}`;
@@ -23758,7 +23918,7 @@
         async loadSamples(t) {
           this.initialized || (await this.initialize());
           const e = new Map();
-          t.forEach(t => {
+          t.forEach((t) => {
             (t.isDrum = t.isDrum || !1), (t.program = t.program || 0);
             const n = t.isDrum ? "drums" : t.program,
               r = { pitch: t.pitch, velocity: t.velocity };
@@ -23767,14 +23927,12 @@
               : this.instruments.has(n)
               ? e.set(n, [r])
               : a.log(
-                  `No instrument in ${this.name} for: program=${
-                    t.program
-                  }, isDrum=${t.isDrum}`,
+                  `No instrument in ${this.name} for: program=${t.program}, isDrum=${t.isDrum}`,
                   "SoundFont"
                 );
           }),
             await Promise.all(
-              Array.from(e.keys()).map(t =>
+              Array.from(e.keys()).map((t) =>
                 this.instruments.get(t).loadSamples(e.get(t))
               )
             );
@@ -23835,14 +23993,14 @@
         }
         makeClickSequence(t) {
           const e = l.clone(t),
-            n = e.notes.map(t => t.quantizedEndStep),
+            n = e.notes.map((t) => t.quantizedEndStep),
             r = Math.max(...n);
           for (let t = 0; t < r; t += 4) {
             const n = {
               pitch: t % 16 == 0 ? o.LO_CLICK_PITCH : o.HI_CLICK_PITCH,
               quantizedStartStep: t,
               isDrum: !0,
-              quantizedEndStep: t + 1
+              quantizedEndStep: t + 1,
             };
             e.notes.push(n);
           }
@@ -23880,23 +24038,26 @@
             throw new Error(
               "Cannot specify a `qpm` for a non-quantized sequence."
             );
-          const r = new h.Part((t, e) => {
-            this.currentPart === r &&
-              ((this.playClick ||
-                (e.pitch !== o.LO_CLICK_PITCH &&
-                  e.pitch !== o.HI_CLICK_PITCH)) &&
-                this.playNote(t, e),
-              this.callbackObject &&
-                h.Draw.schedule(() => {
-                  this.callbackObject.run(e, t);
-                }, t));
-          }, t.notes.map(t => [t.startTime, t]));
+          const r = new h.Part(
+            (t, e) => {
+              this.currentPart === r &&
+                ((this.playClick ||
+                  (e.pitch !== o.LO_CLICK_PITCH &&
+                    e.pitch !== o.HI_CLICK_PITCH)) &&
+                  this.playNote(t, e),
+                this.callbackObject &&
+                  h.Draw.schedule(() => {
+                    this.callbackObject.run(e, t);
+                  }, t));
+            },
+            t.notes.map((t) => [t.startTime, t])
+          );
           return (
             (this.currentPart = r),
             this.desiredQPM && (h.Transport.bpm.value = this.desiredQPM),
             this.currentPart.start(),
             "started" !== h.Transport.state && h.Transport.start(),
-            new Promise(e => {
+            new Promise((e) => {
               this.scheduledStop = h.Transport.schedule(() => {
                 this.stop(),
                   e(),
@@ -23946,15 +24107,15 @@
             (this.kick = new h.MembraneSynth().toMaster()),
             (this.tomLow = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.01, decay: 0.5, sustain: 0 }
+              envelope: { attack: 0.01, decay: 0.5, sustain: 0 },
             }).toMaster()),
             (this.tomMid = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.01, decay: 0.5, sustain: 0 }
+              envelope: { attack: 0.01, decay: 0.5, sustain: 0 },
             }).toMaster()),
             (this.tomHigh = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.01, decay: 0.5, sustain: 0 }
+              envelope: { attack: 0.01, decay: 0.5, sustain: 0 },
             }).toMaster()),
             (this.closedHihat = new h.MetalSynth({
               frequency: 400,
@@ -23962,7 +24123,7 @@
               harmonicity: 5.1,
               modulationIndex: 32,
               resonance: 4e3,
-              octaves: 1
+              octaves: 1,
             }).toMaster()),
             (this.openHihat = new h.MetalSynth({
               frequency: 400,
@@ -23970,7 +24131,7 @@
               harmonicity: 5.1,
               modulationIndex: 32,
               resonance: 4e3,
-              octaves: 1
+              octaves: 1,
             }).toMaster()),
             (this.ride = new h.MetalSynth().toMaster()),
             (this.crash = new h.MetalSynth({
@@ -23979,7 +24140,7 @@
               harmonicity: 5.1,
               modulationIndex: 64,
               resonance: 4e3,
-              octaves: 1.5
+              octaves: 1.5,
             }).toMaster()),
             (this.snare = new h.NoiseSynth({
               noise: { type: "white" },
@@ -23987,16 +24148,16 @@
                 attack: 0.005,
                 decay: 0.05,
                 sustain: 0.1,
-                release: 0.4
-              }
+                release: 0.4,
+              },
             }).toMaster()),
             (this.loClick = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+              envelope: { attack: 0.001, decay: 0.3, sustain: 0 },
             }).toMaster()),
             (this.hiClick = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+              envelope: { attack: 0.001, decay: 0.3, sustain: 0 },
             }).toMaster()),
             (this.pitchPlayers = [
               (t, e = 1) => this.kick.triggerAttackRelease("C2", "8n", t, e),
@@ -24009,10 +24170,10 @@
               (t, e = 1) => this.crash.triggerAttack(t, 1, e),
               (t, e = 1) => this.ride.triggerAttack(t, 0.5, e),
               (t, e = 0.5) => this.loClick.triggerAttack("G5", t, e),
-              (t, e = 0.5) => this.hiClick.triggerAttack("C6", t, e)
+              (t, e = 0.5) => this.hiClick.triggerAttack("C6", t, e),
             ]);
           for (let t = 0; t < s.DEFAULT_DRUM_PITCH_CLASSES.length; ++t)
-            s.DEFAULT_DRUM_PITCH_CLASSES[t].forEach(e => {
+            s.DEFAULT_DRUM_PITCH_CLASSES[t].forEach((e) => {
               this.DRUM_PITCH_TO_CLASS.set(e, t);
             });
           this.DRUM_PITCH_TO_CLASS.set(o.LO_CLICK_PITCH, o.LO_CLICK_CLASS),
@@ -24031,7 +24192,7 @@
             (this.drumKit = A.getInstance()),
             (this.bassSynth = new h.Synth({
               volume: 5,
-              oscillator: { type: "triangle" }
+              oscillator: { type: "triangle" },
             }).toMaster()),
             (this.polySynth = new h.PolySynth(10).toMaster());
         }
@@ -24068,11 +24229,11 @@
         }
         async loadSamples(t) {
           await this.soundFont.loadSamples(
-            t.notes.map(t => ({
+            t.notes.map((t) => ({
               pitch: t.pitch,
               velocity: t.velocity,
               program: t.program || 0,
-              isDrum: t.isDrum || !1
+              isDrum: t.isDrum || !1,
             }))
           );
         }
@@ -24155,11 +24316,13 @@
           return navigator.requestMIDIAccess
             ? new Promise((t, e) => {
                 navigator.requestMIDIAccess().then(
-                  e => {
-                    e.addEventListener("statechange", t => this.initOutputs(e)),
+                  (e) => {
+                    e.addEventListener("statechange", (t) =>
+                      this.initOutputs(e)
+                    ),
                       t(this.initOutputs(e));
                   },
-                  t => console.log("Something went wrong", e(t))
+                  (t) => console.log("Something went wrong", e(t))
                 );
               })
             : null;
@@ -24202,29 +24365,27 @@
             (this.midiInputs = []),
             (this.loClick = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+              envelope: { attack: 0.001, decay: 0.3, sustain: 0 },
             }).toMaster()),
             (this.hiClick = new h.MembraneSynth({
               pitchDecay: 0.008,
-              envelope: { attack: 0.001, decay: 0.3, sustain: 0 }
+              envelope: { attack: 0.001, decay: 0.3, sustain: 0 },
             }).toMaster()),
             (this.config = {
               playClick: t.playClick,
               qpm: t.qpm || o.DEFAULT_QUARTERS_PER_MINUTE,
               playCountIn: t.playCountIn,
-              startRecordingAtFirstNote: t.startRecordingAtFirstNote || !1
+              startRecordingAtFirstNote: t.startRecordingAtFirstNote || !1,
             }),
             (this.callbackObject = e),
             (this.recording = !1),
             (this.onNotes = new Map());
         }
         async initialize() {
-          await navigator
-            .requestMIDIAccess()
-            .then(
-              t => this.midiReady(t),
-              t => console.log("Something went wrong", t)
-            );
+          await navigator.requestMIDIAccess().then(
+            (t) => this.midiReady(t),
+            (t) => console.log("Something went wrong", t)
+          );
         }
         midiReady(t) {
           a.log("Initialized Recorder", "Recorder");
@@ -24247,7 +24408,7 @@
         }
         initClickLoop() {
           let t = 0;
-          this.clickLoop = new h.Loop(e => {
+          this.clickLoop = new h.Loop((e) => {
             t % 4 == 0
               ? this.loClick.triggerAttack("G5", e)
               : this.hiClick.triggerAttack("C6", e),
@@ -24263,7 +24424,7 @@
         start(t) {
           const e = t || this.midiInputs;
           for (const t of e)
-            t.onmidimessage = t => {
+            t.onmidimessage = (t) => {
               this.midiMessageReceived(t);
             };
           if (
@@ -24300,7 +24461,7 @@
             ? null
             : g.a.create({
                 notes: this.notes,
-                totalTime: this.notes[this.notes.length - 1].endTime
+                totalTime: this.notes[this.notes.length - 1].endTime,
               });
         }
         reset() {
@@ -24369,7 +24530,7 @@
               noteRGB: e.noteRGB || "8, 41, 64",
               activeNoteRGB: e.activeNoteRGB || "240, 84, 119",
               minPitch: e.minPitch,
-              maxPitch: e.maxPitch
+              maxPitch: e.maxPitch,
             }),
             this.sequenceIsQuantized)
           ) {
@@ -24427,7 +24588,7 @@
               this.height -
               (t.pitch - this.config.minPitch) * this.config.noteHeight,
             w: i,
-            h: this.config.noteHeight
+            h: this.config.noteHeight,
           };
         }
         scrollIntoViewIfNeeded(t, e) {
@@ -24560,13 +24721,13 @@
                 ["instrument", e.instrument],
                 ["program", e.program],
                 ["isDrum", !0 === e.isDrum],
-                ["pitch", e.pitch]
+                ["pitch", e.pitch],
               ],
               o = [
                 [
                   "--midi-velocity",
-                  String(void 0 !== e.velocity ? e.velocity : 127)
-                ]
+                  String(void 0 !== e.velocity ? e.velocity : 127),
+                ],
               ];
             this.drawNote(n.x, n.y, n.w, n.h, r, i, o);
           }
@@ -24739,7 +24900,7 @@
             );
           return {
             width: e,
-            height: Math.max(n * this.config.pixelsPerTimeStep, 1)
+            height: Math.max(n * this.config.pixelsPerTimeStep, 1),
           };
         }
         getNotePosition(t, e) {
@@ -24761,7 +24922,7 @@
               this.getNoteStartTime(t) * this.config.pixelsPerTimeStep -
               s,
             w: o,
-            h: s
+            h: s,
           };
         }
         drawPiano() {
@@ -24848,7 +25009,7 @@
         }
       }
       var G;
-      !(function(t) {
+      !(function (t) {
         (t[(t.PAGE = 0)] = "PAGE"),
           (t[(t.NOTE = 1)] = "NOTE"),
           (t[(t.BAR = 2)] = "BAR");
@@ -24868,7 +25029,7 @@
                 noteRGB: this.config.noteRGB,
                 activeNoteRGB: this.config.activeNoteRGB,
                 defaultKey: n.defaultKey || 0,
-                scrollType: n.scrollType || G.PAGE
+                scrollType: n.scrollType || G.PAGE,
               },
               e
             )),
@@ -24911,36 +25072,36 @@
                 ? this.quantizedStepsToQuarters(t.quantizedEndStep)
                 : this.timeToQuarters(t.endTime)) - e,
             pitch: t.pitch,
-            intensity: t.velocity
+            intensity: t.velocity,
           };
         }
         getScoreInfo(t) {
           const e = [];
           return (
-            t.notes.forEach(t => {
+            t.notes.forEach((t) => {
               this.isNoteInInstruments(t) && e.push(this.getNoteInfo(t));
             }),
             {
               notes: e,
               tempos: t.tempos
-                ? t.tempos.map(t => ({
+                ? t.tempos.map((t) => ({
                     start: this.timeToQuarters(t.time),
-                    qpm: t.qpm
+                    qpm: t.qpm,
                   }))
                 : [],
               keySignatures: t.keySignatures
-                ? t.keySignatures.map(t => ({
+                ? t.keySignatures.map((t) => ({
                     start: this.timeToQuarters(t.time),
-                    key: t.key
+                    key: t.key,
                   }))
                 : [],
               timeSignatures: t.timeSignatures
-                ? t.timeSignatures.map(t => ({
+                ? t.timeSignatures.map((t) => ({
                     start: this.timeToQuarters(t.time),
                     numerator: t.numerator,
-                    denominator: t.denominator
+                    denominator: t.denominator,
                   }))
-                : []
+                : [],
             }
           );
         }
@@ -24960,7 +25121,7 @@
     ,
     ,
     ,
-    function(t, e) {
+    function (t, e) {
       function n(t) {
         for (var e, n = new r(t), i = []; !n.eof(); ) {
           var o = s();
@@ -24991,8 +25152,9 @@
             switch (i) {
               case 0:
                 if (((t.type = "sequenceNumber"), 2 !== o))
-                  throw "Expected length for sequenceNumber event is 2, got " +
-                    o;
+                  throw (
+                    "Expected length for sequenceNumber event is 2, got " + o
+                  );
                 return (t.number = n.readUInt16()), t;
               case 1:
                 return (t.type = "text"), (t.text = n.readString(o)), t;
@@ -25014,8 +25176,9 @@
                 return (t.type = "cuePoint"), (t.text = n.readString(o)), t;
               case 32:
                 if (((t.type = "channelPrefix"), 1 != o))
-                  throw "Expected length for channelPrefix event is 1, got " +
-                    o;
+                  throw (
+                    "Expected length for channelPrefix event is 1, got " + o
+                  );
                 return (t.channel = n.readUInt8()), t;
               case 33:
                 if (((t.type = "portPrefix"), 1 != o))
@@ -25044,8 +25207,9 @@
                 );
               case 88:
                 if (((t.type = "timeSignature"), 4 != o))
-                  throw "Expected length for timeSignature event is 4, got " +
-                    o;
+                  throw (
+                    "Expected length for timeSignature event is 4, got " + o
+                  );
                 return (
                   (t.numerator = n.readUInt8()),
                   (t.denominator = 1 << n.readUInt8()),
@@ -25129,36 +25293,36 @@
           (this.bufferLen = this.buffer.length),
           (this.pos = 0);
       }
-      (r.prototype.eof = function() {
+      (r.prototype.eof = function () {
         return this.pos >= this.bufferLen;
       }),
-        (r.prototype.readUInt8 = function() {
+        (r.prototype.readUInt8 = function () {
           var t = this.buffer[this.pos];
           return (this.pos += 1), t;
         }),
-        (r.prototype.readInt8 = function() {
+        (r.prototype.readInt8 = function () {
           var t = this.readUInt8();
           return 128 & t ? t - 256 : t;
         }),
-        (r.prototype.readUInt16 = function() {
+        (r.prototype.readUInt16 = function () {
           return (this.readUInt8() << 8) + this.readUInt8();
         }),
-        (r.prototype.readInt16 = function() {
+        (r.prototype.readInt16 = function () {
           var t = this.readUInt16();
           return 32768 & t ? t - 65536 : t;
         }),
-        (r.prototype.readUInt24 = function() {
+        (r.prototype.readUInt24 = function () {
           return (
             (this.readUInt8() << 16) +
             (this.readUInt8() << 8) +
             this.readUInt8()
           );
         }),
-        (r.prototype.readInt24 = function() {
+        (r.prototype.readInt24 = function () {
           var t = this.readUInt24();
           return 8388608 & t ? t - 16777216 : t;
         }),
-        (r.prototype.readUInt32 = function() {
+        (r.prototype.readUInt32 = function () {
           return (
             (this.readUInt8() << 24) +
             (this.readUInt8() << 16) +
@@ -25166,15 +25330,15 @@
             this.readUInt8()
           );
         }),
-        (r.prototype.readBytes = function(t) {
+        (r.prototype.readBytes = function (t) {
           var e = this.buffer.slice(this.pos, this.pos + t);
           return (this.pos += t), e;
         }),
-        (r.prototype.readString = function(t) {
+        (r.prototype.readString = function (t) {
           var e = this.readBytes(t);
           return String.fromCharCode.apply(null, e);
         }),
-        (r.prototype.readVarInt = function() {
+        (r.prototype.readVarInt = function () {
           for (var t = 0; !this.eof(); ) {
             var e = this.readUInt8();
             if (!(128 & e)) return t + e;
@@ -25182,18 +25346,18 @@
           }
           return t;
         }),
-        (r.prototype.readChunk = function() {
+        (r.prototype.readChunk = function () {
           var t = this.readString(4),
             e = this.readUInt32();
           return { id: t, length: e, data: this.readBytes(e) };
         }),
-        (t.exports = function(t) {
+        (t.exports = function (t) {
           var e = new r(t),
             i = e.readChunk();
           if ("MThd" != i.id)
             throw "Bad MIDI file.  Expected 'MHdr', got: '" + i.id + "'";
           for (
-            var o = (function(t) {
+            var o = (function (t) {
                 var e = new r(t),
                   n = e.readUInt16(),
                   i = e.readUInt16(),
@@ -25219,7 +25383,7 @@
           return { header: o, tracks: s };
         });
     },
-    function(t, e) {
+    function (t, e) {
       function n(t, e, n) {
         var o,
           s = new i(),
@@ -25397,24 +25561,24 @@
       function i() {
         this.buffer = [];
       }
-      (i.prototype.writeUInt8 = function(t) {
+      (i.prototype.writeUInt8 = function (t) {
         this.buffer.push(255 & t);
       }),
         (i.prototype.writeInt8 = i.prototype.writeUInt8),
-        (i.prototype.writeUInt16 = function(t) {
+        (i.prototype.writeUInt16 = function (t) {
           var e = (t >> 8) & 255,
             n = 255 & t;
           this.writeUInt8(e), this.writeUInt8(n);
         }),
         (i.prototype.writeInt16 = i.prototype.writeUInt16),
-        (i.prototype.writeUInt24 = function(t) {
+        (i.prototype.writeUInt24 = function (t) {
           var e = (t >> 16) & 255,
             n = (t >> 8) & 255,
             r = 255 & t;
           this.writeUInt8(e), this.writeUInt8(n), this.writeUInt8(r);
         }),
         (i.prototype.writeInt24 = i.prototype.writeUInt24),
-        (i.prototype.writeUInt32 = function(t) {
+        (i.prototype.writeUInt32 = function (t) {
           var e = (t >> 24) & 255,
             n = (t >> 16) & 255,
             r = (t >> 8) & 255,
@@ -25425,17 +25589,17 @@
             this.writeUInt8(i);
         }),
         (i.prototype.writeInt32 = i.prototype.writeUInt32),
-        (i.prototype.writeBytes = function(t) {
+        (i.prototype.writeBytes = function (t) {
           this.buffer = this.buffer.concat(Array.prototype.slice.call(t, 0));
         }),
-        (i.prototype.writeString = function(t) {
+        (i.prototype.writeString = function (t) {
           var e,
             n = t.length,
             r = [];
           for (e = 0; e < n; e++) r.push(t.codePointAt(e));
           this.writeBytes(r);
         }),
-        (i.prototype.writeVarInt = function(t) {
+        (i.prototype.writeVarInt = function (t) {
           if (t < 0) throw "Cannot write negative variable-length integer";
           if (t <= 127) this.writeUInt8(t);
           else {
@@ -25448,10 +25612,10 @@
             this.writeBytes(n.reverse());
           }
         }),
-        (i.prototype.writeChunk = function(t, e) {
+        (i.prototype.writeChunk = function (t, e) {
           this.writeString(t), this.writeUInt32(e.length), this.writeBytes(e);
         }),
-        (t.exports = function(t, e) {
+        (t.exports = function (t, e) {
           if ("object" != typeof t) throw "Invalid MIDI data";
           e = e || {};
           var r,
@@ -25460,7 +25624,7 @@
             a = s.length,
             u = new i();
           for (
-            (function(t, e, n) {
+            (function (t, e, n) {
               var r = null == e.format ? 1 : e.format,
                 o = 128;
               e.timeDivision
@@ -25483,11 +25647,11 @@
           return u.buffer;
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       var r =
           (this && this.__spreadArrays) ||
-          function() {
+          function () {
             for (var t = 0, e = 0, n = arguments.length; e < n; e++)
               t += arguments[e].length;
             var r = Array(t),
@@ -25499,7 +25663,7 @@
           },
         i =
           (this && this.__importDefault) ||
-          function(t) {
+          function (t) {
             return t && t.__esModule ? t : { default: t };
           };
       Object.defineProperty(e, "__esModule", { value: !0 });
@@ -25508,8 +25672,8 @@
         a = i(n(83));
       function u(t) {
         return a.default(
-          t.notes.map(function(e) {
-            return (function(t, e) {
+          t.notes.map(function (e) {
+            return (function (t, e) {
               return [
                 {
                   absoluteTime: t.ticks,
@@ -25517,7 +25681,7 @@
                   deltaTime: 0,
                   noteNumber: t.midi,
                   type: "noteOn",
-                  velocity: Math.floor(127 * t.velocity)
+                  velocity: Math.floor(127 * t.velocity),
                 },
                 {
                   absoluteTime: t.ticks + t.durationTicks,
@@ -25525,8 +25689,8 @@
                   deltaTime: 0,
                   noteNumber: t.midi,
                   type: "noteOff",
-                  velocity: Math.floor(127 * t.noteOffVelocity)
-                }
+                  velocity: Math.floor(127 * t.noteOffVelocity),
+                },
               ];
             })(e, t.channel);
           })
@@ -25539,7 +25703,7 @@
           controllerType: t.number,
           deltaTime: 0,
           type: "controller",
-          value: t.value
+          value: t.value,
         };
       }
       function l(t) {
@@ -25548,15 +25712,15 @@
           channel: t.channel,
           deltaTime: 0,
           programNumber: t.instrument.number,
-          type: "programChange"
+          type: "programChange",
         };
       }
-      e.encode = function(t) {
+      e.encode = function (t) {
         var e = {
           header: {
             format: 1,
             numTracks: t.tracks.length + 1,
-            ticksPerBeat: t.header.ppq
+            ticksPerBeat: t.header.ppq,
           },
           tracks: r(
             [
@@ -25567,11 +25731,11 @@
                     deltaTime: 0,
                     meta: !0,
                     text: t.header.name,
-                    type: "trackName"
-                  }
+                    type: "trackName",
+                  },
                 ],
-                t.header.keySignatures.map(function(t) {
-                  return (function(t) {
+                t.header.keySignatures.map(function (t) {
+                  return (function (t) {
                     var e = s.keySignatureKeys.indexOf(t.key);
                     return {
                       absoluteTime: t.ticks,
@@ -25579,33 +25743,33 @@
                       key: e + 7,
                       meta: !0,
                       scale: "major" === t.scale ? 0 : 1,
-                      type: "keySignature"
+                      type: "keySignature",
                     };
                   })(t);
                 }),
-                t.header.meta.map(function(t) {
+                t.header.meta.map(function (t) {
                   return {
                     absoluteTime: (e = t).ticks,
                     deltaTime: 0,
                     meta: !0,
                     text: e.text,
-                    type: e.type
+                    type: e.type,
                   };
                   var e;
                 }),
-                t.header.tempos.map(function(t) {
-                  return (function(t) {
+                t.header.tempos.map(function (t) {
+                  return (function (t) {
                     return {
                       absoluteTime: t.ticks,
                       deltaTime: 0,
                       meta: !0,
                       microsecondsPerBeat: Math.floor(6e7 / t.bpm),
-                      type: "setTempo"
+                      type: "setTempo",
                     };
                   })(t);
                 }),
-                t.header.timeSignatures.map(function(t) {
-                  return (function(t) {
+                t.header.timeSignatures.map(function (t) {
+                  return (function (t) {
                     return {
                       absoluteTime: t.ticks,
                       deltaTime: 0,
@@ -25614,13 +25778,13 @@
                       metronome: 24,
                       numerator: t.timeSignature[0],
                       thirtyseconds: 8,
-                      type: "timeSignature"
+                      type: "timeSignature",
                     };
                   })(t);
                 })
-              )
+              ),
             ],
-            t.tracks.map(function(t) {
+            t.tracks.map(function (t) {
               return r(
                 [
                   ((e = t.name),
@@ -25629,31 +25793,31 @@
                     deltaTime: 0,
                     meta: !0,
                     text: e,
-                    type: "trackName"
+                    type: "trackName",
                   }),
-                  l(t)
+                  l(t),
                 ],
                 u(t),
-                (function(t) {
+                (function (t) {
                   for (var e = [], n = 0; n < 127; n++)
                     t.controlChanges.hasOwnProperty(n) &&
-                      t.controlChanges[n].forEach(function(n) {
+                      t.controlChanges[n].forEach(function (n) {
                         e.push(c(n, t.channel));
                       });
                   return e;
                 })(t),
-                (function(t) {
+                (function (t) {
                   var e = [];
                   return (
-                    t.pitchBends.forEach(function(n) {
+                    t.pitchBends.forEach(function (n) {
                       e.push(
-                        (function(t, e) {
+                        (function (t, e) {
                           return {
                             absoluteTime: t.ticks,
                             channel: e,
                             deltaTime: 0,
                             type: "pitchBend",
-                            value: t.value
+                            value: t.value,
                           };
                         })(n, t.channel)
                       );
@@ -25664,16 +25828,16 @@
               );
               var e;
             })
-          )
+          ),
         };
         return (
-          (e.tracks = e.tracks.map(function(t) {
-            t = t.sort(function(t, e) {
+          (e.tracks = e.tracks.map(function (t) {
+            t = t.sort(function (t, e) {
               return t.absoluteTime - e.absoluteTime;
             });
             var e = 0;
             return (
-              t.forEach(function(t) {
+              t.forEach(function (t) {
                 (t.deltaTime = t.absoluteTime - e),
                   (e = t.absoluteTime),
                   delete t.absoluteTime;
@@ -25686,7 +25850,7 @@
         );
       };
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       function r(t) {
         return (function t(e, n) {
@@ -25709,51 +25873,51 @@
           return n;
         })(t, [], e);
       }
-      (t.exports = function(t) {
+      (t.exports = function (t) {
         if (!Array.isArray(t))
           throw new TypeError("Expected value to be an array");
         return r(t);
       }),
         (t.exports.from = r),
-        (t.exports.depth = function(t, e) {
+        (t.exports.depth = function (t, e) {
           if (!Array.isArray(t))
             throw new TypeError("Expected value to be an array");
           return i(t, e);
         }),
         (t.exports.fromDepth = i);
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 });
       var r = n(54);
-      e.createControlChanges = function() {
+      e.createControlChanges = function () {
         return new Proxy(
           {},
           {
-            get: function(t, e) {
+            get: function (t, e) {
               return t[e]
                 ? t[e]
                 : r.controlChangeIds.hasOwnProperty(e)
                 ? t[r.controlChangeIds[e]]
                 : void 0;
             },
-            set: function(t, e, n) {
+            set: function (t, e, n) {
               return (
                 r.controlChangeIds.hasOwnProperty(e)
                   ? (t[r.controlChangeIds[e]] = n)
                   : (t[e] = n),
                 !0
               );
-            }
+            },
           }
         );
       };
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 });
       var r = new WeakMap(),
-        i = (function() {
+        i = (function () {
           function t(t, e) {
             r.set(this, e),
               (this.ticks = t.absoluteTime),
@@ -25761,17 +25925,17 @@
           }
           return (
             Object.defineProperty(t.prototype, "time", {
-              get: function() {
+              get: function () {
                 return r.get(this).ticksToSeconds(this.ticks);
               },
-              set: function(t) {
+              set: function (t) {
                 var e = r.get(this);
                 this.ticks = e.secondsToTicks(t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
-            (t.prototype.toJSON = function() {
+            (t.prototype.toJSON = function () {
               return { ticks: this.ticks, time: this.time, value: this.value };
             }),
             t
@@ -25779,15 +25943,15 @@
         })();
       e.PitchBend = i;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 });
       var r = n(87),
         i = new WeakMap(),
-        o = (function() {
+        o = (function () {
           function t(t, e) {
             if (((this.number = 0), i.set(this, e), (this.number = 0), t)) {
-              var n = t.find(function(t) {
+              var n = t.find(function (t) {
                 return "programChange" === t.type;
               });
               n && (this.number = n.programNumber);
@@ -25795,42 +25959,42 @@
           }
           return (
             Object.defineProperty(t.prototype, "name", {
-              get: function() {
+              get: function () {
                 return this.percussion
                   ? r.DrumKitByPatchID[this.number]
                   : r.instrumentByPatchID[this.number];
               },
-              set: function(t) {
+              set: function (t) {
                 var e = r.instrumentByPatchID.indexOf(t);
                 -1 !== e && (this.number = e);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "family", {
-              get: function() {
+              get: function () {
                 return this.percussion
                   ? "drums"
                   : r.InstrumentFamilyByID[Math.floor(this.number / 8)];
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "percussion", {
-              get: function() {
+              get: function () {
                 return 9 === i.get(this).channel;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
-            (t.prototype.toJSON = function() {
+            (t.prototype.toJSON = function () {
               return {
                 family: this.family,
                 name: this.name,
-                number: this.number
+                number: this.number,
               };
             }),
-            (t.prototype.fromJSON = function(t) {
+            (t.prototype.fromJSON = function (t) {
               this.number = t.number;
             }),
             t
@@ -25838,7 +26002,7 @@
         })();
       e.Instrument = o;
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       Object.defineProperty(e, "__esModule", { value: !0 }),
         (e.instrumentByPatchID = [
@@ -25969,7 +26133,7 @@
           "telephone ring",
           "helicopter",
           "applause",
-          "gunshot"
+          "gunshot",
         ]),
         (e.InstrumentFamilyByID = [
           "piano",
@@ -25987,7 +26151,7 @@
           "synth effects",
           "world",
           "percussive",
-          "sound effects"
+          "sound effects",
         ]),
         (e.DrumKitByPatchID = {
           0: "standard kit",
@@ -25998,10 +26162,10 @@
           32: "jazz kit",
           40: "brush kit",
           48: "orchestra kit",
-          56: "sound fx kit"
+          56: "sound fx kit",
         });
     },
-    function(t, e, n) {
+    function (t, e, n) {
       "use strict";
       function r(t) {
         return [
@@ -26016,58 +26180,59 @@
           "G#",
           "A",
           "A#",
-          "B"
+          "B",
         ][t % 12];
       }
       Object.defineProperty(e, "__esModule", { value: !0 });
       var i,
         o,
-        s = ((i = /^([a-g]{1}(?:b|#|x|bb)?)(-?[0-9]+)/i),
-        (o = {
-          cbb: -2,
-          cb: -1,
-          c: 0,
-          "c#": 1,
-          cx: 2,
-          dbb: 0,
-          db: 1,
-          d: 2,
-          "d#": 3,
-          dx: 4,
-          ebb: 2,
-          eb: 3,
-          e: 4,
-          "e#": 5,
-          ex: 6,
-          fbb: 3,
-          fb: 4,
-          f: 5,
-          "f#": 6,
-          fx: 7,
-          gbb: 5,
-          gb: 6,
-          g: 7,
-          "g#": 8,
-          gx: 9,
-          abb: 7,
-          ab: 8,
-          a: 9,
-          "a#": 10,
-          ax: 11,
-          bbb: 9,
-          bb: 10,
-          b: 11,
-          "b#": 12,
-          bx: 13
-        }),
-        function(t) {
-          var e = i.exec(t),
-            n = e[1],
-            r = e[2];
-          return o[n.toLowerCase()] + 12 * (parseInt(r, 10) + 1);
-        }),
+        s =
+          ((i = /^([a-g]{1}(?:b|#|x|bb)?)(-?[0-9]+)/i),
+          (o = {
+            cbb: -2,
+            cb: -1,
+            c: 0,
+            "c#": 1,
+            cx: 2,
+            dbb: 0,
+            db: 1,
+            d: 2,
+            "d#": 3,
+            dx: 4,
+            ebb: 2,
+            eb: 3,
+            e: 4,
+            "e#": 5,
+            ex: 6,
+            fbb: 3,
+            fb: 4,
+            f: 5,
+            "f#": 6,
+            fx: 7,
+            gbb: 5,
+            gb: 6,
+            g: 7,
+            "g#": 8,
+            gx: 9,
+            abb: 7,
+            ab: 8,
+            a: 9,
+            "a#": 10,
+            ax: 11,
+            bbb: 9,
+            bb: 10,
+            b: 11,
+            "b#": 12,
+            bx: 13,
+          }),
+          function (t) {
+            var e = i.exec(t),
+              n = e[1],
+              r = e[2];
+            return o[n.toLowerCase()] + 12 * (parseInt(r, 10) + 1);
+          }),
         a = new WeakMap(),
-        u = (function() {
+        u = (function () {
           function t(t, e, n) {
             a.set(this, n),
               (this.midi = t.midi),
@@ -26078,7 +26243,7 @@
           }
           return (
             Object.defineProperty(t.prototype, "name", {
-              get: function() {
+              get: function () {
                 return (
                   (t = this.midi),
                   (e = Math.floor(t / 12) - 1),
@@ -26086,28 +26251,28 @@
                 );
                 var t, e;
               },
-              set: function(t) {
+              set: function (t) {
                 this.midi = s(t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "octave", {
-              get: function() {
+              get: function () {
                 return Math.floor(this.midi / 12) - 1;
               },
-              set: function(t) {
+              set: function (t) {
                 var e = t - this.octave;
                 this.midi += 12 * e;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "pitch", {
-              get: function() {
+              get: function () {
                 return r(this.midi);
               },
-              set: function(t) {
+              set: function (t) {
                 this.midi =
                   12 * (this.octave + 1) +
                   [
@@ -26122,46 +26287,46 @@
                     "G#",
                     "A",
                     "A#",
-                    "B"
+                    "B",
                   ].indexOf(t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "duration", {
-              get: function() {
+              get: function () {
                 var t = a.get(this);
                 return (
                   t.ticksToSeconds(this.ticks + this.durationTicks) -
                   t.ticksToSeconds(this.ticks)
                 );
               },
-              set: function(t) {
+              set: function (t) {
                 var e = a.get(this).secondsToTicks(this.time + t);
                 this.durationTicks = e - this.ticks;
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "time", {
-              get: function() {
+              get: function () {
                 return a.get(this).ticksToSeconds(this.ticks);
               },
-              set: function(t) {
+              set: function (t) {
                 var e = a.get(this);
                 this.ticks = e.secondsToTicks(t);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
             Object.defineProperty(t.prototype, "bars", {
-              get: function() {
+              get: function () {
                 return a.get(this).ticksToMeasures(this.ticks);
               },
               enumerable: !0,
-              configurable: !0
+              configurable: !0,
             }),
-            (t.prototype.toJSON = function() {
+            (t.prototype.toJSON = function () {
               return {
                 duration: this.duration,
                 durationTicks: this.durationTicks,
@@ -26169,24 +26334,24 @@
                 name: this.name,
                 ticks: this.ticks,
                 time: this.time,
-                velocity: this.velocity
+                velocity: this.velocity,
               };
             }),
             t
           );
         })();
       e.Note = u;
-    }
+    },
   ]);
 });
 
-!(function(e, t) {
+!(function (e, t) {
   "object" == typeof exports && "undefined" != typeof module
     ? t()
     : "function" == typeof define && define.amd
     ? define(t)
     : t();
-})(0, function() {
+})(0, function () {
   "use strict";
   function e(e) {
     var t = !0,
@@ -26205,7 +26370,7 @@
         week: !0,
         time: !0,
         datetime: !0,
-        "datetime-local": !0
+        "datetime-local": !0,
       };
     function i(e) {
       return !!(
@@ -26251,7 +26416,7 @@
     }
     document.addEventListener(
       "keydown",
-      function(n) {
+      function (n) {
         n.metaKey ||
           n.altKey ||
           n.ctrlKey ||
@@ -26264,7 +26429,7 @@
       document.addEventListener("touchstart", u, !0),
       document.addEventListener(
         "visibilitychange",
-        function(e) {
+        function (e) {
           "hidden" === document.visibilityState && (n && (t = !0), a());
         },
         !0
@@ -26272,7 +26437,7 @@
       a(),
       e.addEventListener(
         "focus",
-        function(e) {
+        function (e) {
           var n, o, u;
           i(e.target) &&
             (t ||
@@ -26287,14 +26452,14 @@
       ),
       e.addEventListener(
         "blur",
-        function(e) {
+        function (e) {
           var t;
           i(e.target) &&
             (e.target.classList.contains("focus-visible") ||
               e.target.hasAttribute("data-focus-visible-added")) &&
             ((n = !0),
             window.clearTimeout(o),
-            (o = window.setTimeout(function() {
+            (o = window.setTimeout(function () {
               n = !1;
             }, 100)),
             (t = e.target).hasAttribute("data-focus-visible-added") &&
@@ -26333,7 +26498,7 @@
  * @author Ondřej Cífka (@cifkao)
  * @license BSD-2-Clause
  */
-!(function(t, e) {
+!(function (t, e) {
   "object" == typeof exports && "undefined" != typeof module
     ? e(exports, require("@magenta/music/es6/core"))
     : "function" == typeof define && define.amd
@@ -26345,7 +26510,7 @@
             : t || self).midiPlayer = {}),
         t.core
       );
-})(this, function(t, e) {
+})(this, function (t, e) {
   "use strict";
   function i(t, e, i, n, s, r, a) {
     try {
@@ -26357,10 +26522,10 @@
     o.done ? e(l) : Promise.resolve(l).then(n, s);
   }
   function n(t) {
-    return function() {
+    return function () {
       var e = this,
         n = arguments;
-      return new Promise(function(s, r) {
+      return new Promise(function (s, r) {
         var a = t.apply(e, n);
         function o(t) {
           i(a, s, r, o, l, "next", t);
@@ -26422,7 +26587,7 @@
     }
     initVisualizerNow() {
       var t = this;
-      return n(function*() {
+      return n(function* () {
         if (
           ((t.initTimeout = null),
           t.domInitialized &&
@@ -26570,7 +26735,7 @@
     }
     initPlayerNow(t = !0) {
       var i = this;
-      return n(function*() {
+      return n(function* () {
         if (((i.initTimeout = null), (i.needInitNs = !1), i.domInitialized)) {
           var n;
           if (
@@ -26586,7 +26751,7 @@
           (i.seekBar.max = String(n.totalTime)),
             (i.totalTimeLabel.textContent = r(n.totalTime));
           var s = i.soundFont,
-            a = { run: t => i.ns === n && i.noteCallback(t), stop: () => {} };
+            a = { run: (t) => i.ns === n && i.noteCallback(t), stop: () => {} };
           null === s
             ? (i.player = new e.Player(!1, a))
             : ("" === s &&
@@ -26601,7 +26766,7 @@
     }
     start() {
       var t = this;
-      n(function*() {
+      n(function* () {
         if (t.player)
           if ("stopped" == t.player.getPlayState()) {
             u && u.playing && u.stop(),
@@ -26632,9 +26797,9 @@
         stop: () => {
           t.clearActiveNotes();
         },
-        note: e => {
+        note: (e) => {
           t.redraw(e.detail.note);
-        }
+        },
       };
       for (var i of l) this.addEventListener(i, e[i]);
       this.visualizerListeners.set(t, e);

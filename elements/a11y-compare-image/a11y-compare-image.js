@@ -74,7 +74,7 @@ class a11yCompareImage extends LitElement {
         ::slotted([slot="bottom"]) {
           max-width: 100%;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -107,10 +107,8 @@ class a11yCompareImage extends LitElement {
         </div>
         <div id="input">
           ${this.__markers.map(
-            marker =>
-              html`
-                <div class="marker" style="left: ${marker}%;"></div>
-              `
+            (marker) =>
+              html` <div class="marker" style="left: ${marker}%;"></div> `
           )}
           <paper-slider id="slider" value="0"></paper-slider>
         </div>
@@ -127,35 +125,35 @@ class a11yCompareImage extends LitElement {
       activeLayer: {
         type: Number,
         attribute: "active-layer",
-        reflect: true
+        reflect: true,
       },
       /**
        * mode for the slider: wipe
        */
       opacity: {
-        type: Boolean
+        type: Boolean,
       },
       position: {
         type: Number,
         attribute: "position",
-        reflect: true
+        reflect: true,
       },
       __lower: {
-        type: String
+        type: String,
       },
       __upper: {
-        type: String
+        type: String,
       },
       __markers: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   firstUpdated() {
     let slider = this.shadowRoot.querySelector("#slider");
     slider.value = this.position || 0;
     this._slide();
-    slider.addEventListener("immediate-value-changed", e => {
+    slider.addEventListener("immediate-value-changed", (e) => {
       this._slide();
     });
   }

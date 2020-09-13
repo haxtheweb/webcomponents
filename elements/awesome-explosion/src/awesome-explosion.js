@@ -61,7 +61,7 @@ class AwesomeExplosion extends LitElement {
           width: 240px;
           height: 240px;
         }
-      `
+      `,
     ];
   }
   pathFromUrl(url) {
@@ -114,37 +114,37 @@ class AwesomeExplosion extends LitElement {
        */
       state: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Allow for stopping the sound effect.
        */
       stopped: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Allow for playing the sound effect.
        */
       playing: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Allow for pausing the sound effect.
        */
       paused: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * This allows you to swap out the image
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * This allows you to swap out the sound.
        */
       sound: {
-        type: String
+        type: String,
       },
       /**
        * This is the size of the element. Possible values are:
@@ -152,7 +152,7 @@ class AwesomeExplosion extends LitElement {
        */
       size: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * This is to change the color of the element. Possible values are:
@@ -160,7 +160,7 @@ class AwesomeExplosion extends LitElement {
        */
       color: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Allow for resetting the sound effect.
@@ -168,8 +168,8 @@ class AwesomeExplosion extends LitElement {
       resetSound: {
         type: Boolean,
         reflect: true,
-        attribute: "reset-sound"
-      }
+        attribute: "reset-sound",
+      },
     };
   }
 
@@ -188,7 +188,7 @@ class AwesomeExplosion extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { message: "Sound stopped" }
+          detail: { message: "Sound stopped" },
         })
       );
     } else {
@@ -208,7 +208,7 @@ class AwesomeExplosion extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { message: "Sound played" }
+          detail: { message: "Sound played" },
         })
       );
     } else {
@@ -228,7 +228,7 @@ class AwesomeExplosion extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { message: "Sound paused" }
+          detail: { message: "Sound paused" },
         })
       );
     } else {

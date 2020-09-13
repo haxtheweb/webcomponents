@@ -8,8 +8,8 @@ export default {
   component: "a11y-gif-player",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 
 export const A11yGifPlayerStory = () => {

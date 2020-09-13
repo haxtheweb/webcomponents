@@ -40,9 +40,9 @@ class MaterialProgressBars extends mixinBehaviors(
       <div id="barsContainer">
         <slot id="content" name=".bar[data-value]"></slot>
       </div>
-      <div class="legend" hidden\$="[[_legendNeeded]]">
+      <div class="legend" hidden$="[[_legendNeeded]]">
         <template is="dom-repeat" items="[[_legendItems]]" as="l">
-          <span style\$="color: [[l.color]];">[[l.label]]</span>
+          <span style$="color: [[l.color]];">[[l.label]]</span>
         </template>
       </div>
     `;
@@ -63,8 +63,8 @@ class MaterialProgressBars extends mixinBehaviors(
       max: {
         type: Number,
         value: 100,
-        observer: "_refresh"
-      }
+        observer: "_refresh",
+      },
     };
   }
   _getWidthForBar(barValue, barValuesSum, maxBarValue, barHeight) {

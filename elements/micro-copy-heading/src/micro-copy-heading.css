@@ -6,9 +6,11 @@
 :host([hidden]) {
   display: none;
 }
+
 span {
-  margin-left:8px;
+  margin-left: 8px;
 }
+
 h2 {
   display: inline-flex;
   margin: unset;

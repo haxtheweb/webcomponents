@@ -39,11 +39,11 @@ class FullScreenImage extends LitElement {
    * LitElement ready
    */
   firstUpdated() {
-    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").addEventListener("click", (e) => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   }

@@ -22,7 +22,7 @@ class A11yMediaButton extends LitElement {
       action: {
         attribute: "action",
         reflect: true,
-        type: String
+        type: String,
       },
       /*
        * id of element button controls
@@ -30,21 +30,21 @@ class A11yMediaButton extends LitElement {
       controls: {
         attribute: "controls",
         reflect: true,
-        type: String
+        type: String,
       },
       /*
        * iron-icon type
        */
       icon: {
         attribute: "icon",
-        type: String
+        type: String,
       },
       /*
        * button label
        */
       label: {
         attribute: "label",
-        type: String
+        type: String,
       },
       /*
        * Is it toggled on?
@@ -52,22 +52,22 @@ class A11yMediaButton extends LitElement {
       toggle: {
         attribute: "toggle",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /*
        * Is it disabled?
        */
       disabled: {
         attribute: "disabled",
-        type: Boolean
+        type: Boolean,
       },
       /*
        * Is it disabled?
        */
       tooltipPosition: {
         attribute: "tooltip-position",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -140,7 +140,7 @@ class A11yMediaButton extends LitElement {
         iron-icon {
           display: inline-block;
         }
-      `
+      `,
     ];
   }
   static get buttonStyles() {
@@ -164,7 +164,7 @@ class A11yMediaButton extends LitElement {
         simple-tooltip:not(:defined) {
           display: none;
         }
-      `
+      `,
     ];
   }
 

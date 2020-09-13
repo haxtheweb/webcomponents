@@ -137,7 +137,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         }
       </style>
       <fieldset>
-        <legend id="legend" class="flex" hidden\$="[[!schema.title]]">
+        <legend id="legend" class="flex" hidden$="[[!schema.title]]">
           [[schema.title]]
         </legend>
         <a11y-collapse-group
@@ -197,7 +197,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }
@@ -208,25 +208,25 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         type: Object,
         value: {
           icon: "settings",
-          tooltip: "configure item"
+          tooltip: "configure item",
         },
-        notify: true
+        notify: true,
       },
       propertyName: {
         type: String,
-        value: null
+        value: null,
       },
       schema: {
         type: Object,
         value: {},
         notify: true,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       __headings: {
         type: Array,
         value: [],
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   ready() {
@@ -235,12 +235,12 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     this._schemaChanged();
 
     //update the headings if the data changes
-    this.addEventListener("form-field-changed", e => {
+    this.addEventListener("form-field-changed", (e) => {
       this._updateHeadings(e);
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("form-field-changed", e => {
+    this.removeEventListener("form-field-changed", (e) => {
       this._updateHeadings(e);
     });
     super.disconnectedCallback();
@@ -253,11 +253,11 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     setTimeout(() => {
       let itemLabel = this.schema.items.itemLabel;
       if (this.schema && Array.isArray(this.schema.value)) {
-        this.schema.value.forEach(val => {
+        this.schema.value.forEach((val) => {
           this.push("__headings", val[itemLabel]);
         });
       }
-      this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
+      this.shadowRoot.querySelectorAll(".item-fields").forEach((item) => {
         let index = item.getAttribute("data-index"),
           propertyName = `${this.propertyPrefix}${this.propertyName}`,
           prefix = `${propertyName}.${index}`,
@@ -273,14 +273,14 @@ class EcoJsonSchemaArray extends mixinBehaviors(
               container: item,
               path: propertyName,
               prefix: prefix,
-              properties: this.schema.properties.map(prop => {
+              properties: this.schema.properties.map((prop) => {
                 let newprop = JSON.parse(JSON.stringify(prop));
                 newprop.value = val[prop.name];
                 return newprop;
               }),
               type: EcoJsonSchemaArray.tag,
-              value: this.schema.value || []
-            }
+              value: this.schema.value || [],
+            },
           })
         );
       });
@@ -293,7 +293,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
   _onAddItem(e) {
     let val = {};
     //add default values to the new item
-    this.schema.properties.forEach(prop => {
+    this.schema.properties.forEach((prop) => {
       val[prop.name] = prop.value;
     });
     this.push("schema.value", val);

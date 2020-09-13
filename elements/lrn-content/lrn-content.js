@@ -16,17 +16,13 @@ class LrnContent extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   render() {
     return html`
       <div typeof="oer:SupportingMaterial">
-        ${this.title
-          ? html`
-              <h2 property="oer:name">${this.title}</h2>
-            `
-          : ``}
+        ${this.title ? html` <h2 property="oer:name">${this.title}</h2> ` : ``}
         <div property="oer:description"><slot></slot></div>
       </div>
     `;
@@ -37,8 +33,8 @@ class LrnContent extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

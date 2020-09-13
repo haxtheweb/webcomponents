@@ -46,7 +46,7 @@ class SimpleTooltip extends LitElement {
     this.animationExit = "";
     this.animationConfig = {
       entry: [{ name: "fade-in-animation", node: this, timing: { delay: 0 } }],
-      exit: [{ name: "fade-out-animation", node: this }]
+      exit: [{ name: "fade-out-animation", node: this }],
     };
     setTimeout(() => {
       this.addEventListener(

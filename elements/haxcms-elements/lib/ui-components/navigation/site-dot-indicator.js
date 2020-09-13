@@ -66,7 +66,7 @@ class SiteDotIndicator extends LitElement {
           margin: 1px;
           background-color: var(--site-dot-indicator-color);
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -82,9 +82,7 @@ class SiteDotIndicator extends LitElement {
   }
   // render function
   render() {
-    return html`
-      <ol id="list"></ol>
-    `;
+    return html` <ol id="list"></ol> `;
   }
   /**
    * Props
@@ -93,19 +91,19 @@ class SiteDotIndicator extends LitElement {
     return {
       activeId: {
         type: String,
-        attribute: "active-id"
+        attribute: "active-id",
       },
       routerManifest: {
-        type: Object
+        type: Object,
       },
       sticky: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       scrollOnActive: {
         type: Boolean,
-        attribute: "scroll-on-active"
-      }
+        attribute: "scroll-on-active",
+      },
     };
   }
   updated(changedProperties) {
@@ -155,11 +153,11 @@ class SiteDotIndicator extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    autorun(reaction => {
+    autorun((reaction) => {
       this.routerManifest = toJS(store.routerManifest);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
     });
@@ -168,7 +166,7 @@ class SiteDotIndicator extends LitElement {
         this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
           behavior: "smooth",
           block: "end",
-          inline: "nearest"
+          inline: "nearest",
         });
       });
     }
@@ -184,7 +182,7 @@ class SiteDotIndicator extends LitElement {
           this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
             behavior: "smooth",
             block: "end",
-            inline: "nearest"
+            inline: "nearest",
           });
         });
     }

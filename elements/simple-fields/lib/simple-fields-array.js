@@ -60,29 +60,25 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           transform: rotate(0deg);
           transition: transform 0.5s ease;
         }
-      `
+      `,
     ];
   }
   static get properties() {
     return {
       ...super.properties,
       count: {
-        type: Number
+        type: Number,
       },
       /*
        * icon when expanded
        */
       expanded: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   render() {
-    return html`
-      <fieldset>
-        ${this.legend}${this.fields}
-      </fieldset>
-    `;
+    return html` <fieldset>${this.legend}${this.fields}</fieldset> `;
   }
   get fields() {
     return html`
@@ -91,7 +87,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         <paper-button
           id="expand"
           controls="item-fields"
-          @click="${e => this.toggle()}"
+          @click="${(e) => this.toggle()}"
         >
           ${this.expanded ? "Collapse All" : "Expand All"}
           <iron-icon
@@ -106,7 +102,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         <paper-button
           id="add"
           controls="item-fields"
-          @click="${e => this._handleAdd()}"
+          @click="${(e) => this._handleAdd()}"
         >
           Add Item
           <iron-icon aria-hidden="true" icon="add"></iron-icon>
@@ -123,7 +119,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "expanded")
-        this.querySelectorAll("simple-fields-array-item").forEach(item =>
+        this.querySelectorAll("simple-fields-array-item").forEach((item) =>
           item.setAttribute("aria-expanded", this.expanded)
         );
     });
@@ -137,7 +133,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       <slot name="preview"></slot>
       <slot></slot>`;
     this.appendChild(item);
-    item.addEventListener("remove", e => this._handleRemove(e));
+    item.addEventListener("remove", (e) => this._handleRemove(e));
     return item;
   }
 
@@ -151,7 +147,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -168,7 +164,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e.detail
+        detail: e.detail,
       })
     );
   }
@@ -223,7 +219,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     if (this.expanded) {
@@ -237,7 +233,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     } else {
@@ -251,7 +247,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

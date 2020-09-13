@@ -3,7 +3,7 @@
  * MIT License
  */
 
-var freezeframe = (function($) {
+var freezeframe = (function ($) {
   var images, options, is_touch_device, default_state;
 
   //////////////////////////////////////////////////////////////////////////////
@@ -13,17 +13,17 @@ var freezeframe = (function($) {
   //////////////////////////////////////////////////////////////////////////////
 
   // decorated console.warn message
-  var warn = function(_message) {
+  var warn = function (_message) {
     console.warn("✨ freezeframe.js ✨ : " + _message);
   };
 
   // does freezeframe instance have any captured images?
-  var has_images = function() {
+  var has_images = function () {
     return this.images.length == 0 ? false : true;
   };
 
   // filter captured images by selector and warn if none found
-  var filter = function(_selector, _images) {
+  var filter = function (_selector, _images) {
     var filtered_images;
 
     if (_selector != undefined && _images.length > 1) {
@@ -40,7 +40,7 @@ var freezeframe = (function($) {
   };
 
   // reset .gif to first frame and write to canvas
-  var process = function($_image) {
+  var process = function ($_image) {
     var ff = this,
       $canvas = $_image.siblings("canvas"),
       transitionEnd =
@@ -50,21 +50,21 @@ var freezeframe = (function($) {
 
     $canvas.attr({
       width: image_width,
-      height: image_height
+      height: image_height,
     });
 
     context = $canvas[0].getContext("2d");
     context.drawImage($_image[0], 0, 0, image_width, image_height);
 
-    $canvas.addClass("ff-canvas-ready").on(transitionEnd, function() {
+    $canvas.addClass("ff-canvas-ready").on(transitionEnd, function () {
       $(this).off(transitionEnd);
       $_image.addClass("ff-image-ready");
     });
   };
 
-  var trigger = function() {};
+  var trigger = function () {};
 
-  var release = function() {};
+  var release = function () {};
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
@@ -78,7 +78,7 @@ var freezeframe = (function($) {
     this.options = {
       selector: ".freezeframe",
       animation_play_duration: 5000,
-      non_touch_device_trigger_event: "hover"
+      non_touch_device_trigger_event: "hover",
     };
 
     // new selector as string
@@ -105,7 +105,7 @@ var freezeframe = (function($) {
   //  Capture Images                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.capture = function(_selector) {
+  freezeframe.prototype.capture = function (_selector) {
     var selector;
 
     // Passed in string or default string
@@ -129,11 +129,8 @@ var freezeframe = (function($) {
     // Get non gifs outta there
     for (i = 0; i < this.images.length; i++) {
       if (
-        this.images[i].src
-          .split(".")
-          .pop()
-          .toLowerCase()
-          .substring(0, 3) !== "gif"
+        this.images[i].src.split(".").pop().toLowerCase().substring(0, 3) !==
+        "gif"
       ) {
         this.images.splice(i, 1);
       }
@@ -155,7 +152,7 @@ var freezeframe = (function($) {
   //  Setup Elements                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.setup = function(_selector) {
+  freezeframe.prototype.setup = function (_selector) {
     var ff = this,
       setup_required = this.images.not(".ff-setup"),
       container_classnames = ["ff-container"];
@@ -168,7 +165,7 @@ var freezeframe = (function($) {
       return false;
     }
 
-    filter.call(ff, _selector, setup_required).each(function(e) {
+    filter.call(ff, _selector, setup_required).each(function (e) {
       var $image = $(this);
 
       $image.addClass("ff-setup ff-image");
@@ -178,22 +175,22 @@ var freezeframe = (function($) {
       }
 
       $canvas = $("<canvas />", {
-        class: "ff-canvas"
+        class: "ff-canvas",
       })
         .attr({
           width: 0,
-          height: 0
+          height: 0,
         })
         .insertBefore($image);
 
       $image.add($canvas).wrapAll(
         $("<div />", {
-          class: container_classnames.join(" ")
+          class: container_classnames.join(" "),
         })
       );
     });
 
-    imagesLoaded(setup_required).on("progress", function(instance, image) {
+    imagesLoaded(setup_required).on("progress", function (instance, image) {
       process.call(ff, $(image.img));
     });
 
@@ -205,7 +202,7 @@ var freezeframe = (function($) {
   //  Attach Hover / Click Events                                             //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.attach = function(_selector) {
+  freezeframe.prototype.attach = function (_selector) {
     var ff = this,
       click_timeout,
       images;
@@ -215,7 +212,7 @@ var freezeframe = (function($) {
       return false;
     }
 
-    filter.call(ff, _selector, ff.images).each(function(e) {
+    filter.call(ff, _selector, ff.images).each(function (e) {
       var $image = $(this);
       var $canvas = $(this).siblings("canvas");
 
@@ -225,8 +222,8 @@ var freezeframe = (function($) {
           ff.options.non_touch_device_trigger_event == "hover") ||
         ff.is_touch_device
       ) {
-        $image.mouseenter(function() {
-          (function() {
+        $image.mouseenter(function () {
+          (function () {
             if ($image.hasClass("ff-image-ready")) {
               $image.attr("src", $image[0].src);
               $canvas
@@ -236,8 +233,8 @@ var freezeframe = (function($) {
           })();
         });
 
-        $image.mouseleave(function() {
-          (function() {
+        $image.mouseleave(function () {
+          (function () {
             if ($image.hasClass("ff-image-ready")) {
               $canvas
                 .removeClass("ff-canvas-active")
@@ -255,8 +252,8 @@ var freezeframe = (function($) {
       ) {
         var click_timeout;
 
-        $image.click(function() {
-          (function() {
+        $image.click(function () {
+          (function () {
             var clicked = $canvas.hasClass("ff-canvas-active");
 
             if ($image.hasClass("ff-image-ready")) {
@@ -275,7 +272,7 @@ var freezeframe = (function($) {
                   .addClass("ff-canvas-active");
 
                 if (ff.options.animation_play_duration != Infinity) {
-                  click_timeout = setTimeout(function() {
+                  click_timeout = setTimeout(function () {
                     $canvas
                       .removeClass("ff-canvas-active")
                       .addClass("ff-canvas-ready");
@@ -296,11 +293,11 @@ var freezeframe = (function($) {
   //  Trigger Animation                                                       //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.trigger = function(_selector) {
+  freezeframe.prototype.trigger = function (_selector) {
     var ff = this,
       errors = 0;
 
-    filter.call(ff, _selector, ff.images).each(function(e) {
+    filter.call(ff, _selector, ff.images).each(function (e) {
       if ($(this).hasClass("ff-image-ready")) {
         $(this).attr("src", $(this)[0].src);
         $(this)
@@ -321,11 +318,11 @@ var freezeframe = (function($) {
   //  Release Animation                                                       //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.release = function(_selector) {
+  freezeframe.prototype.release = function (_selector) {
     var ff = this,
       errors = 0;
 
-    filter.call(ff, _selector, ff.images).each(function(e) {
+    filter.call(ff, _selector, ff.images).each(function (e) {
       if ($(this).hasClass("ff-image-ready")) {
         $(this)
           .siblings("canvas")
@@ -345,10 +342,8 @@ var freezeframe = (function($) {
   //  Freeze Images                                                           //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.freeze = function() {
-    this.capture()
-      .setup()
-      .attach(); // ✨ tada ✨
+  freezeframe.prototype.freeze = function () {
+    this.capture().setup().attach(); // ✨ tada ✨
     return this;
   };
 
@@ -356,7 +351,7 @@ var freezeframe = (function($) {
 })(jQuery);
 
 // jQuery plugin
-$.fn.freezeframe = function(_options) {
+$.fn.freezeframe = function (_options) {
   if (this.length == 0) {
     console.warn(
       "✨ freezeframe.js ✨ : no images found for selector " + this.selector
@@ -372,8 +367,8 @@ $.fn.freezeframe = function(_options) {
 
   var self = this;
   var methods = ["trigger", "release"];
-  methods.forEach(function(method) {
-    self[method] = function() {
+  methods.forEach(function (method) {
+    self[method] = function () {
       ff[method](self.selector);
       return self;
     };

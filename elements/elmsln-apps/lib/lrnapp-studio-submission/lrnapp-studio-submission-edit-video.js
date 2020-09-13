@@ -50,7 +50,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
         <template>
           <lrnapp-studio-submission-media-editoverlay
             on-deleted="_videoDelete"
-            data-index\$="[[index]]"
+            data-index$="[[index]]"
           >
             <iframe
               class="videosfield__iframe"
@@ -100,20 +100,20 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
     return {
       videos: {
         type: Array,
-        notify: true
+        notify: true,
       },
       selectedPage: {
         type: String,
-        value: "0"
+        value: "0",
       },
       newvideo: {
         type: String,
-        value: ""
+        value: "",
       },
       videoGenerateSourceUrl: {
         type: String,
-        value: null
-      }
+        value: null,
+      },
     };
   }
   _openDialog(e) {

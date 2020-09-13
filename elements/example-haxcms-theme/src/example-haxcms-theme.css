@@ -4,6 +4,7 @@
  */
 :host {
   display: block;
+
   /**
    * CSS variables pair VERY well with web components to ensure
    * that things are scoped and yet flexible.
@@ -12,6 +13,7 @@
    */
   --example-haxcms-theme-color: #222222;
 }
+
 /**
  * This may seem odd but is required to ensure that other things
  * defining display don't have greater priority than those in the
@@ -21,12 +23,14 @@
 :host([hidden]) {
   display: none;
 }
+
 /**
  * Hide the slotted content when HAXeditor sets edit-mode.
  */
 :host([edit-mode]) #slot {
   display: none;
 }
+
 /**
  * ::slotted allows you to apply some baseline styles to the 1 level
  * children inside of the slotted area of this tag. This won't allow

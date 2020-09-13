@@ -253,57 +253,57 @@ class EditableTableDisplay extends displayBehaviors(
        */
       filterColumn: {
         type: Number,
-        value: null
+        value: null,
       },
       /**
        * Whether table is filtered
        */
       filtered: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Text for Filtering
        */
       filterText: {
         type: String,
-        value: null
+        value: null,
       },
       /**
        * options for the column selector
        */
       options: {
         type: Array,
-        computed: "_getTheadOptions(thead)"
+        computed: "_getTheadOptions(thead)",
       },
       /**
        * Selected column to display when in responsive mode
        */
       selected: {
         type: Number,
-        value: 1
+        value: 1,
       },
       /**
        * Sort mode: ascending, descending or none
        */
       sortMode: {
         type: String,
-        value: "none"
+        value: "none",
       },
       /**
        * Index of the current sort column
        */
       sortColumn: {
         type: Number,
-        value: -1
+        value: -1,
       },
       /**
        * Whether the table is hidden
        */
       hidden: {
         type: Boolean,
-        computed: "_hasNoData(data)"
-      }
+        computed: "_hasNoData(data)",
+      },
     };
   }
 
@@ -329,7 +329,7 @@ class EditableTableDisplay extends displayBehaviors(
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: newValue
+        detail: newValue,
       })
     );
   }
@@ -473,7 +473,7 @@ class EditableTableDisplay extends displayBehaviors(
    */
   filterRows(filterColumn, filterText) {
     if (filterText !== undefined && filterText !== null) {
-      return function(tr) {
+      return function (tr) {
         return (
           tr[filterColumn].toLowerCase().trim() ===
           filterText.toLowerCase().trim()
@@ -532,7 +532,7 @@ class EditableTableDisplay extends displayBehaviors(
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener(
         "change-sort-mode",
         this._changeSortMode.bind(this)

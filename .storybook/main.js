@@ -11,7 +11,7 @@ module.exports = {
     "storybook-prebuilt/addon-actions/register.js",
     "storybook-prebuilt/addon-knobs/register.js",
     "storybook-prebuilt/addon-a11y/register.js",
-    "storybook-prebuilt/addon-docs/register.js"
+    "storybook-prebuilt/addon-docs/register.js",
   ],
 
   // Configuration for es-dev-server (start-storybook only)
@@ -21,13 +21,13 @@ module.exports = {
     watch: true,
     https: true,
     dedupe: true,
-    preserveSymlinks: true
+    preserveSymlinks: true,
   },
 
   // Rollup build output directory (build-storybook only)
   outputDir: "../../../storybooks/styleguide",
   // Configuration for rollup (build-storybook only)
-  rollup: config => {
+  rollup: (config) => {
     return [
       config[0],
       {
@@ -37,32 +37,32 @@ module.exports = {
           cpy({
             files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
             dest: "../../storybooks/styleguide",
-            options: { parents: true }
+            options: { parents: true },
           }),
           cpy({
             files: ["node_modules/monaco-editor/min/**/*"],
             dest: "../../storybooks/styleguide/",
-            options: { parents: true }
+            options: { parents: true },
           }),
           cpy({
             files: [
-              "elements/chartist-render/lib/chartist/dist/chartist.min.*"
+              "elements/chartist-render/lib/chartist/dist/chartist.min.*",
             ],
             dest: "../../storybooks/styleguide/",
-            options: { parents: true }
+            options: { parents: true },
           }),
           cpy({
             files: ["elements/img-pan-zoom/lib/openseadragon/*"],
             dest: "../../storybooks/styleguide/",
-            options: { parents: true }
+            options: { parents: true },
           }),
           cpy({
             files: ["elements/fullscreen-behaviors/lib/screenfull/dist/*"],
             dest: "../../storybooks/styleguide/",
-            options: { parents: true }
-          })
-        ]
-      }
+            options: { parents: true },
+          }),
+        ],
+      },
     ];
-  }
+  },
 };

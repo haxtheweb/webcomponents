@@ -22,7 +22,7 @@ class SimpleEmojiPicker extends SimplePicker {
         simple-picker-option {
           justify-content: space-around;
         }
-      `
+      `,
     ];
   }
 
@@ -36,8 +36,8 @@ class SimpleEmojiPicker extends SimplePicker {
        */
       emojiTypes: {
         name: "emojiTypes",
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -60,7 +60,7 @@ class SimpleEmojiPicker extends SimplePicker {
       "activities",
       "objects",
       "symbols",
-      "flags"
+      "flags",
     ];
     this.icon = "editor:insert-emoticon";
     this.label = "Emoji";
@@ -75,8 +75,8 @@ class SimpleEmojiPicker extends SimplePicker {
       super.firstUpdated(changedProperties);
     }
     let optData = [{ alt: null, icon: this.icon, value: null }];
-    this.emojiTypes.forEach(type =>
-      window.SimplePickerEmojis[type].forEach(emoji => optData.push(emoji))
+    this.emojiTypes.forEach((type) =>
+      window.SimplePickerEmojis[type].forEach((emoji) => optData.push(emoji))
     );
     optData = this._setPickerOptions(optData);
     this.options = optData;
@@ -117,148 +117,148 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F603;",
       alt: "&#x1F603;",
-      descripton: "grinning face with big eyes"
+      descripton: "grinning face with big eyes",
     },
     {
       value: "&#x1F604;",
       alt: "&#x1F604;",
-      descripton: "grinning face with smiling eyes"
+      descripton: "grinning face with smiling eyes",
     },
     {
       value: "&#x1F601;",
       alt: "&#x1F601;",
-      descripton: "beaming face with smiling eyes"
+      descripton: "beaming face with smiling eyes",
     },
     {
       value: "&#x1F606;",
       alt: "&#x1F606;",
-      descripton: "grinning squinting face"
+      descripton: "grinning squinting face",
     },
     {
       value: "&#x1F605;",
       alt: "&#x1F605;",
-      descripton: "grinning face with sweat"
+      descripton: "grinning face with sweat",
     },
     {
       value: "&#x1F923;",
       alt: "&#x1F923;",
-      descripton: "rolling on the floor laughing"
+      descripton: "rolling on the floor laughing",
     },
     {
       value: "&#x1F602;",
       alt: "&#x1F602;",
-      descripton: "face with tears of joy"
+      descripton: "face with tears of joy",
     },
     {
       value: "&#x1F642;",
       alt: "&#x1F642;",
-      descripton: "slightly smiling face"
+      descripton: "slightly smiling face",
     },
     {
       value: "&#x1F643;",
       alt: "&#x1F643;",
-      descripton: "upside-down face"
+      descripton: "upside-down face",
     },
     { value: "&#x1F609;", alt: "&#x1F609;", descripton: "winking face" },
     {
       value: "&#x1F60A;",
       alt: "&#x1F60A;",
-      descripton: "smiling face with smiling eyes"
+      descripton: "smiling face with smiling eyes",
     },
     {
       value: "&#x1F607;",
       alt: "&#x1F607;",
-      descripton: "smiling face with halo"
+      descripton: "smiling face with halo",
     },
     {
       value: "&#x1F970;",
       alt: "&#x1F970;",
-      descripton: "smiling face with hearts"
+      descripton: "smiling face with hearts",
     },
     {
       value: "&#x1F60D;",
       alt: "&#x1F60D;",
-      descripton: "smiling face with heart-eyes"
+      descripton: "smiling face with heart-eyes",
     },
     { value: "&#x1F929;", alt: "&#x1F929;", descripton: "star-struck" },
     {
       value: "&#x1F618;",
       alt: "&#x1F618;",
-      descripton: "face blowing a kiss"
+      descripton: "face blowing a kiss",
     },
     { value: "&#x1F617;", alt: "&#x1F617;", descripton: "kissing face" },
     { value: "&#x263A;", alt: "&#x263A;", descripton: "smiling face" },
     {
       value: "&#x1F61A;",
       alt: "&#x1F61A;",
-      descripton: "kissing face with closed eyes"
+      descripton: "kissing face with closed eyes",
     },
     {
       value: "&#x1F619;",
       alt: "&#x1F619;",
-      descripton: "kissing face with smiling eyes"
+      descripton: "kissing face with smiling eyes",
     },
     {
       value: "&#x1F60B;",
       alt: "&#x1F60B;",
-      descripton: "face savoring food"
+      descripton: "face savoring food",
     },
     {
       value: "&#x1F61B;",
       alt: "&#x1F61B;",
-      descripton: "face with tongue"
+      descripton: "face with tongue",
     },
     {
       value: "&#x1F61C;",
       alt: "&#x1F61C;",
-      descripton: "winking face with tongue"
+      descripton: "winking face with tongue",
     },
     { value: "&#x1F92A;", alt: "&#x1F92A;", descripton: "zany face" },
     {
       value: "&#x1F61D;",
       alt: "&#x1F61D;",
-      descripton: "squinting face with tongue"
+      descripton: "squinting face with tongue",
     },
     {
       value: "&#x1F911;",
       alt: "&#x1F911;",
-      descripton: "money-mouth face"
+      descripton: "money-mouth face",
     },
     { value: "&#x1F917;", alt: "&#x1F917;", descripton: "hugging face" },
     {
       value: "&#x1F92D;",
       alt: "&#x1F92D;",
-      descripton: "face with hand over mouth"
+      descripton: "face with hand over mouth",
     },
     { value: "&#x1F92B;", alt: "&#x1F92B;", descripton: "shushing face" },
     { value: "&#x1F914;", alt: "&#x1F914;", descripton: "thinking face" },
     {
       value: "&#x1F910;",
       alt: "&#x1F910;",
-      descripton: "zipper-mouth face"
+      descripton: "zipper-mouth face",
     },
     {
       value: "&#x1F928;",
       alt: "&#x1F928;",
-      descripton: "face with raised eyebrow"
+      descripton: "face with raised eyebrow",
     },
     { value: "&#x1F610;", alt: "&#x1F610;", descripton: "neutral face" },
     {
       value: "&#x1F611;",
       alt: "&#x1F611;",
-      descripton: "expressionless face"
+      descripton: "expressionless face",
     },
     {
       value: "&#x1F636;",
       alt: "&#x1F636;",
-      descripton: "face without mouth"
+      descripton: "face without mouth",
     },
     { value: "&#x1F60F;", alt: "&#x1F60F;", descripton: "smirking face" },
     { value: "&#x1F612;", alt: "&#x1F612;", descripton: "unamused face" },
     {
       value: "&#x1F644;",
       alt: "&#x1F644;",
-      descripton: "face with rolling eyes"
+      descripton: "face with rolling eyes",
     },
     { value: "&#x1F62C;", alt: "&#x1F62C;", descripton: "grimacing face" },
     { value: "&#x1F925;", alt: "&#x1F925;", descripton: "lying face" },
@@ -270,17 +270,17 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F637;",
       alt: "&#x1F637;",
-      descripton: "face with medical mask"
+      descripton: "face with medical mask",
     },
     {
       value: "&#x1F912;",
       alt: "&#x1F912;",
-      descripton: "face with thermometer"
+      descripton: "face with thermometer",
     },
     {
       value: "&#x1F915;",
       alt: "&#x1F915;",
-      descripton: "face with head-bandage"
+      descripton: "face with head-bandage",
     },
     { value: "&#x1F922;", alt: "&#x1F922;", descripton: "nauseated face" },
     { value: "&#x1F92E;", alt: "&#x1F92E;", descripton: "face vomiting" },
@@ -295,26 +295,26 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F60E;",
       alt: "&#x1F60E;",
-      descripton: "smiling face with sunglasses"
+      descripton: "smiling face with sunglasses",
     },
     { value: "&#x1F913;", alt: "&#x1F913;", descripton: "nerd face" },
     {
       value: "&#x1F9D0;",
       alt: "&#x1F9D0;",
-      descripton: "face with monocle"
+      descripton: "face with monocle",
     },
     { value: "&#x1F615;", alt: "&#x1F615;", descripton: "confused face" },
     { value: "&#x1F61F;", alt: "&#x1F61F;", descripton: "worried face" },
     {
       value: "&#x1F641;",
       alt: "&#x1F641;",
-      descripton: "slightly frowning face"
+      descripton: "slightly frowning face",
     },
     { value: "&#x2639;", alt: "&#x2639;", descripton: "frowning face" },
     {
       value: "&#x1F62E;",
       alt: "&#x1F62E;",
-      descripton: "face with open mouth"
+      descripton: "face with open mouth",
     },
     { value: "&#x1F62F;", alt: "&#x1F62F;", descripton: "hushed face" },
     { value: "&#x1F632;", alt: "&#x1F632;", descripton: "astonished face" },
@@ -323,46 +323,46 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F626;",
       alt: "&#x1F626;",
-      descripton: "frowning face with open mouth"
+      descripton: "frowning face with open mouth",
     },
     { value: "&#x1F627;", alt: "&#x1F627;", descripton: "anguished face" },
     { value: "&#x1F628;", alt: "&#x1F628;", descripton: "fearful face" },
     {
       value: "&#x1F630;",
       alt: "&#x1F630;",
-      descripton: "anxious face with sweat"
+      descripton: "anxious face with sweat",
     },
     {
       value: "&#x1F625;",
       alt: "&#x1F625;",
-      descripton: "sad but relieved face"
+      descripton: "sad but relieved face",
     },
     { value: "&#x1F622;", alt: "&#x1F622;", descripton: "crying face" },
     {
       value: "&#x1F62D;",
       alt: "&#x1F62D;",
-      descripton: "loudly crying face"
+      descripton: "loudly crying face",
     },
     {
       value: "&#x1F631;",
       alt: "&#x1F631;",
-      descripton: "face screaming in fear"
+      descripton: "face screaming in fear",
     },
     { value: "&#x1F616;", alt: "&#x1F616;", descripton: "confounded face" },
     {
       value: "&#x1F623;",
       alt: "&#x1F623;",
-      descripton: "persevering face"
+      descripton: "persevering face",
     },
     {
       value: "&#x1F61E;",
       alt: "&#x1F61E;",
-      descripton: "disappointed face"
+      descripton: "disappointed face",
     },
     {
       value: "&#x1F613;",
       alt: "&#x1F613;",
-      descripton: "downcast face with sweat"
+      descripton: "downcast face with sweat",
     },
     { value: "&#x1F629;", alt: "&#x1F629;", descripton: "weary face" },
     { value: "&#x1F62B;", alt: "&#x1F62B;", descripton: "tired face" },
@@ -370,30 +370,30 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F624;",
       alt: "&#x1F624;",
-      descripton: "face with steam from nose"
+      descripton: "face with steam from nose",
     },
     { value: "&#x1F621;", alt: "&#x1F621;", descripton: "pouting face" },
     { value: "&#x1F620;", alt: "&#x1F620;", descripton: "angry face" },
     {
       value: "&#x1F92C;",
       alt: "&#x1F92C;",
-      descripton: "face with symbols on mouth"
+      descripton: "face with symbols on mouth",
     },
     {
       value: "&#x1F608;",
       alt: "&#x1F608;",
-      descripton: "smiling face with horns"
+      descripton: "smiling face with horns",
     },
     {
       value: "&#x1F47F;",
       alt: "&#x1F47F;",
-      descripton: "angry face with horns"
+      descripton: "angry face with horns",
     },
     { value: "&#x1F480;", alt: "&#x1F480;", descripton: "skull" },
     {
       value: "&#x2620;",
       alt: "&#x2620;",
-      descripton: "skull and crossbones"
+      descripton: "skull and crossbones",
     },
     { value: "&#x1F4A9;", alt: "&#x1F4A9;", descripton: "pile of poo" },
     { value: "&#x1F921;", alt: "&#x1F921;", descripton: "clown face" },
@@ -407,22 +407,22 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F638;",
       alt: "&#x1F638;",
-      descripton: "grinning cat with smiling eyes"
+      descripton: "grinning cat with smiling eyes",
     },
     {
       value: "&#x1F639;",
       alt: "&#x1F639;",
-      descripton: "cat with tears of joy"
+      descripton: "cat with tears of joy",
     },
     {
       value: "&#x1F63B;",
       alt: "&#x1F63B;",
-      descripton: "smiling cat with heart-eyes"
+      descripton: "smiling cat with heart-eyes",
     },
     {
       value: "&#x1F63C;",
       alt: "&#x1F63C;",
-      descripton: "cat with wry smile"
+      descripton: "cat with wry smile",
     },
     { value: "&#x1F63D;", alt: "&#x1F63D;", descripton: "kissing cat" },
     { value: "&#x1F640;", alt: "&#x1F640;", descripton: "weary cat" },
@@ -431,29 +431,29 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F648;",
       alt: "&#x1F648;",
-      descripton: "see-no-evil monkey"
+      descripton: "see-no-evil monkey",
     },
     {
       value: "&#x1F649;",
       alt: "&#x1F649;",
-      descripton: "hear-no-evil monkey"
+      descripton: "hear-no-evil monkey",
     },
     {
       value: "&#x1F64A;",
       alt: "&#x1F64A;",
-      descripton: "speak-no-evil monkey"
+      descripton: "speak-no-evil monkey",
     },
     { value: "&#x1F48B;", alt: "&#x1F48B;", descripton: "kiss mark" },
     { value: "&#x1F48C;", alt: "&#x1F48C;", descripton: "love letter" },
     {
       value: "&#x1F498;",
       alt: "&#x1F498;",
-      descripton: "heart with arrow"
+      descripton: "heart with arrow",
     },
     {
       value: "&#x1F49D;",
       alt: "&#x1F49D;",
-      descripton: "heart with ribbon"
+      descripton: "heart with ribbon",
     },
     { value: "&#x1F496;", alt: "&#x1F496;", descripton: "sparkling heart" },
     { value: "&#x1F497;", alt: "&#x1F497;", descripton: "growing heart" },
@@ -461,13 +461,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F49E;",
       alt: "&#x1F49E;",
-      descripton: "revolving hearts"
+      descripton: "revolving hearts",
     },
     { value: "&#x1F495;", alt: "&#x1F495;", descripton: "two hearts" },
     {
       value: "&#x1F49F;",
       alt: "&#x1F49F;",
-      descripton: "heart decoration"
+      descripton: "heart decoration",
     },
     { value: "&#x2763;", alt: "&#x2763;", descripton: "heart exclamation" },
     { value: "&#x1F494;", alt: "&#x1F494;", descripton: "broken heart" },
@@ -492,27 +492,27 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F5E8;",
       alt: "&#x1F5E8;",
-      descripton: "left speech bubble"
+      descripton: "left speech bubble",
     },
     {
       value: "&#x1F5EF;",
       alt: "&#x1F5EF;",
-      descripton: "right anger bubble"
+      descripton: "right anger bubble",
     },
     { value: "&#x1F4AD;", alt: "&#x1F4AD;", descripton: "thought balloon" },
-    { value: "&#x1F4A4;", alt: "&#x1F4A4;", descripton: "zzz" }
+    { value: "&#x1F4A4;", alt: "&#x1F4A4;", descripton: "zzz" },
   ],
   people: [
     { value: "&#x1F44B;", alt: "&#x1F44B;", descripton: "waving hand" },
     {
       value: "&#x1F91A;",
       alt: "&#x1F91A;",
-      descripton: "raised back of hand"
+      descripton: "raised back of hand",
     },
     {
       value: "&#x1F590;",
       alt: "&#x1F590;",
-      descripton: "hand with fingers splayed"
+      descripton: "hand with fingers splayed",
     },
     { value: "&#x270B;", alt: "&#x270B;", descripton: "raised hand" },
     { value: "&#x1F596;", alt: "&#x1F596;", descripton: "vulcan salute" },
@@ -523,34 +523,34 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F91F;",
       alt: "&#x1F91F;",
-      descripton: "love-you gesture"
+      descripton: "love-you gesture",
     },
     {
       value: "&#x1F918;",
       alt: "&#x1F918;",
-      descripton: "sign of the horns"
+      descripton: "sign of the horns",
     },
     { value: "&#x1F919;", alt: "&#x1F919;", descripton: "call me hand" },
     {
       value: "&#x1F448;",
       alt: "&#x1F448;",
-      descripton: "backhand index pointing left"
+      descripton: "backhand index pointing left",
     },
     {
       value: "&#x1F449;",
       alt: "&#x1F449;",
-      descripton: "backhand index pointing right"
+      descripton: "backhand index pointing right",
     },
     {
       value: "&#x1F446;",
       alt: "&#x1F446;",
-      descripton: "backhand index pointing up"
+      descripton: "backhand index pointing up",
     },
     { value: "&#x1F595;", alt: "&#x1F595;", descripton: "middle finger" },
     {
       value: "&#x1F447;",
       alt: "&#x1F447;",
-      descripton: "backhand index pointing down"
+      descripton: "backhand index pointing down",
     },
     { value: "&#x261D;", alt: "&#x261D;", descripton: "index pointing up" },
     { value: "&#x1F44D;", alt: "&#x1F44D;", descripton: "thumbs up" },
@@ -560,12 +560,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F91B;",
       alt: "&#x1F91B;",
-      descripton: "left-facing fist"
+      descripton: "left-facing fist",
     },
     {
       value: "&#x1F91C;",
       alt: "&#x1F91C;",
-      descripton: "right-facing fist"
+      descripton: "right-facing fist",
     },
     { value: "&#x1F44F;", alt: "&#x1F44F;", descripton: "clapping hands" },
     { value: "&#x1F64C;", alt: "&#x1F64C;", descripton: "raising hands" },
@@ -573,7 +573,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F932;",
       alt: "&#x1F932;",
-      descripton: "palms up together"
+      descripton: "palms up together",
     },
     { value: "&#x1F91D;", alt: "&#x1F91D;", descripton: "handshake" },
     { value: "&#x1F64F;", alt: "&#x1F64F;", descripton: "folded hands" },
@@ -589,7 +589,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F9BB;",
       alt: "&#x1F9BB;",
-      descripton: "ear with hearing aid"
+      descripton: "ear with hearing aid",
     },
     { value: "&#x1F443;", alt: "&#x1F443;", descripton: "nose" },
     { value: "&#x1F9E0;", alt: "&#x1F9E0;", descripton: "brain" },
@@ -607,7 +607,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F471;",
       alt: "&#x1F471;",
-      descripton: "person: blond hair"
+      descripton: "person: blond hair",
     },
     { value: "&#x1F468;", alt: "&#x1F468;", descripton: "man" },
     { value: "&#x1F9D4;", alt: "&#x1F9D4;", descripton: "man: beard" },
@@ -620,34 +620,34 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F645;",
       alt: "&#x1F645;",
-      descripton: "person gesturing NO"
+      descripton: "person gesturing NO",
     },
     {
       value: "&#x1F646;",
       alt: "&#x1F646;",
-      descripton: "person gesturing OK"
+      descripton: "person gesturing OK",
     },
     {
       value: "&#x1F481;",
       alt: "&#x1F481;",
-      descripton: "person tipping hand"
+      descripton: "person tipping hand",
     },
     {
       value: "&#x1F64B;",
       alt: "&#x1F64B;",
-      descripton: "person raising hand"
+      descripton: "person raising hand",
     },
     { value: "&#x1F9CF;", alt: "&#x1F9CF;", descripton: "deaf person" },
     { value: "&#x1F647;", alt: "&#x1F647;", descripton: "person bowing" },
     {
       value: "&#x1F926;",
       alt: "&#x1F926;",
-      descripton: "person facepalming"
+      descripton: "person facepalming",
     },
     {
       value: "&#x1F937;",
       alt: "&#x1F937;",
-      descripton: "person shrugging"
+      descripton: "person shrugging",
     },
     { value: "&#x1F46E;", alt: "&#x1F46E;", descripton: "police officer" },
     { value: "&#x1F575;", alt: "&#x1F575;", descripton: "detective" },
@@ -655,24 +655,24 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F477;",
       alt: "&#x1F477;",
-      descripton: "construction worker"
+      descripton: "construction worker",
     },
     { value: "&#x1F934;", alt: "&#x1F934;", descripton: "prince" },
     { value: "&#x1F478;", alt: "&#x1F478;", descripton: "princess" },
     {
       value: "&#x1F473;",
       alt: "&#x1F473;",
-      descripton: "person wearing turban"
+      descripton: "person wearing turban",
     },
     {
       value: "&#x1F472;",
       alt: "&#x1F472;",
-      descripton: "man with Chinese cap"
+      descripton: "man with Chinese cap",
     },
     {
       value: "&#x1F9D5;",
       alt: "&#x1F9D5;",
-      descripton: "woman with headscarf"
+      descripton: "woman with headscarf",
     },
     { value: "&#x1F935;", alt: "&#x1F935;", descripton: "man in tuxedo" },
     { value: "&#x1F470;", alt: "&#x1F470;", descripton: "bride with veil" },
@@ -693,12 +693,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F486;",
       alt: "&#x1F486;",
-      descripton: "person getting massage"
+      descripton: "person getting massage",
     },
     {
       value: "&#x1F487;",
       alt: "&#x1F487;",
-      descripton: "person getting haircut"
+      descripton: "person getting haircut",
     },
     { value: "&#x1F6B6;", alt: "&#x1F6B6;", descripton: "person walking" },
     { value: "&#x1F9CD;", alt: "&#x1F9CD;", descripton: "person standing" },
@@ -709,17 +709,17 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F574;",
       alt: "&#x1F574;",
-      descripton: "man in suit levitating"
+      descripton: "man in suit levitating",
     },
     {
       value: "&#x1F46F;",
       alt: "&#x1F46F;",
-      descripton: "people with bunny ears"
+      descripton: "people with bunny ears",
     },
     {
       value: "&#x1F9D6;",
       alt: "&#x1F9D6;",
-      descripton: "person in steamy room"
+      descripton: "person in steamy room",
     },
     { value: "&#x1F9D7;", alt: "&#x1F9D7;", descripton: "person climbing" },
     { value: "&#x1F93A;", alt: "&#x1F93A;", descripton: "person fencing" },
@@ -731,95 +731,95 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6A3;",
       alt: "&#x1F6A3;",
-      descripton: "person rowing boat"
+      descripton: "person rowing boat",
     },
     { value: "&#x1F3CA;", alt: "&#x1F3CA;", descripton: "person swimming" },
     {
       value: "&#x26F9;",
       alt: "&#x26F9;",
-      descripton: "person bouncing ball"
+      descripton: "person bouncing ball",
     },
     {
       value: "&#x1F3CB;",
       alt: "&#x1F3CB;",
-      descripton: "person lifting weights"
+      descripton: "person lifting weights",
     },
     { value: "&#x1F6B4;", alt: "&#x1F6B4;", descripton: "person biking" },
     {
       value: "&#x1F6B5;",
       alt: "&#x1F6B5;",
-      descripton: "person mountain biking"
+      descripton: "person mountain biking",
     },
     {
       value: "&#x1F938;",
       alt: "&#x1F938;",
-      descripton: "person cartwheeling"
+      descripton: "person cartwheeling",
     },
     {
       value: "&#x1F93C;",
       alt: "&#x1F93C;",
-      descripton: "people wrestling"
+      descripton: "people wrestling",
     },
     {
       value: "&#x1F93D;",
       alt: "&#x1F93D;",
-      descripton: "person playing water polo"
+      descripton: "person playing water polo",
     },
     {
       value: "&#x1F93E;",
       alt: "&#x1F93E;",
-      descripton: "person playing handball"
+      descripton: "person playing handball",
     },
     { value: "&#x1F939;", alt: "&#x1F939;", descripton: "person juggling" },
     {
       value: "&#x1F9D8;",
       alt: "&#x1F9D8;",
-      descripton: "person in lotus position"
+      descripton: "person in lotus position",
     },
     {
       value: "&#x1F6C0;",
       alt: "&#x1F6C0;",
-      descripton: "person taking bath"
+      descripton: "person taking bath",
     },
     { value: "&#x1F6CC;", alt: "&#x1F6CC;", descripton: "person in bed" },
     {
       value: "&#x1F46D;",
       alt: "&#x1F46D;",
-      descripton: "women holding hands"
+      descripton: "women holding hands",
     },
     {
       value: "&#x1F46B;",
       alt: "&#x1F46B;",
-      descripton: "woman and man holding hands"
+      descripton: "woman and man holding hands",
     },
     {
       value: "&#x1F46C;",
       alt: "&#x1F46C;",
-      descripton: "men holding hands"
+      descripton: "men holding hands",
     },
     { value: "&#x1F48F;", alt: "&#x1F48F;", descripton: "kiss" },
     {
       value: "&#x1F491;",
       alt: "&#x1F491;",
-      descripton: "couple with heart"
+      descripton: "couple with heart",
     },
     { value: "&#x1F46A;", alt: "&#x1F46A;", descripton: "family" },
     { value: "&#x1F5E3;", alt: "&#x1F5E3;", descripton: "speaking head" },
     {
       value: "&#x1F464;",
       alt: "&#x1F464;",
-      descripton: "bust in silhouette"
+      descripton: "bust in silhouette",
     },
     {
       value: "&#x1F465;",
       alt: "&#x1F465;",
-      descripton: "busts in silhouette"
+      descripton: "busts in silhouette",
     },
     { value: "&#x1F463;", alt: "&#x1F463;", descripton: "footprints" },
     { value: "&#x1F9B0;", alt: "&#x1F9B0;", descripton: "red hair" },
     { value: "&#x1F9B1;", alt: "&#x1F9B1;", descripton: "curly hair" },
     { value: "&#x1F9B3;", alt: "&#x1F9B3;", descripton: "white hair" },
-    { value: "&#x1F9B2;", alt: "&#x1F9B2;", descripton: "bald" }
+    { value: "&#x1F9B2;", alt: "&#x1F9B2;", descripton: "bald" },
   ],
   nature: [
     { value: "&#x1F435;", alt: "&#x1F435;", descripton: "monkey face" },
@@ -888,7 +888,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F425;",
       alt: "&#x1F425;",
-      descripton: "front-facing baby chick"
+      descripton: "front-facing baby chick",
     },
     { value: "&#x1F426;", alt: "&#x1F426;", descripton: "bird" },
     { value: "&#x1F427;", alt: "&#x1F427;", descripton: "penguin" },
@@ -951,15 +951,15 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F340;",
       alt: "&#x1F340;",
-      descripton: "four leaf clover"
+      descripton: "four leaf clover",
     },
     { value: "&#x1F341;", alt: "&#x1F341;", descripton: "maple leaf" },
     { value: "&#x1F342;", alt: "&#x1F342;", descripton: "fallen leaf" },
     {
       value: "&#x1F343;",
       alt: "&#x1F343;",
-      descripton: "leaf fluttering in wind"
-    }
+      descripton: "leaf fluttering in wind",
+    },
   ],
   food: [
     { value: "&#x1F347;", alt: "&#x1F347;", descripton: "grapes" },
@@ -1015,7 +1015,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F959;",
       alt: "&#x1F959;",
-      descripton: "stuffed flatbread"
+      descripton: "stuffed flatbread",
     },
     { value: "&#x1F9C6;", alt: "&#x1F9C6;", descripton: "falafel" },
     { value: "&#x1F95A;", alt: "&#x1F95A;", descripton: "egg" },
@@ -1023,7 +1023,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F958;",
       alt: "&#x1F958;",
-      descripton: "shallow pan of food"
+      descripton: "shallow pan of food",
     },
     { value: "&#x1F372;", alt: "&#x1F372;", descripton: "pot of food" },
     { value: "&#x1F963;", alt: "&#x1F963;", descripton: "bowl with spoon" },
@@ -1042,7 +1042,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F360;",
       alt: "&#x1F360;",
-      descripton: "roasted sweet potato"
+      descripton: "roasted sweet potato",
     },
     { value: "&#x1F362;", alt: "&#x1F362;", descripton: "oden" },
     { value: "&#x1F363;", alt: "&#x1F363;", descripton: "sushi" },
@@ -1050,7 +1050,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F365;",
       alt: "&#x1F365;",
-      descripton: "fish cake with swirl"
+      descripton: "fish cake with swirl",
     },
     { value: "&#x1F96E;", alt: "&#x1F96E;", descripton: "moon cake" },
     { value: "&#x1F361;", alt: "&#x1F361;", descripton: "dango" },
@@ -1082,13 +1082,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F375;",
       alt: "&#x1F375;",
-      descripton: "teacup without handle"
+      descripton: "teacup without handle",
     },
     { value: "&#x1F376;", alt: "&#x1F376;", descripton: "sake" },
     {
       value: "&#x1F37E;",
       alt: "&#x1F37E;",
-      descripton: "bottle with popping cork"
+      descripton: "bottle with popping cork",
     },
     { value: "&#x1F377;", alt: "&#x1F377;", descripton: "wine glass" },
     { value: "&#x1F378;", alt: "&#x1F378;", descripton: "cocktail glass" },
@@ -1097,12 +1097,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F37B;",
       alt: "&#x1F37B;",
-      descripton: "clinking beer mugs"
+      descripton: "clinking beer mugs",
     },
     {
       value: "&#x1F942;",
       alt: "&#x1F942;",
-      descripton: "clinking glasses"
+      descripton: "clinking glasses",
     },
     { value: "&#x1F943;", alt: "&#x1F943;", descripton: "tumbler glass" },
     { value: "&#x1F964;", alt: "&#x1F964;", descripton: "cup with straw" },
@@ -1113,33 +1113,33 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F37D;",
       alt: "&#x1F37D;",
-      descripton: "fork and knife with plate"
+      descripton: "fork and knife with plate",
     },
     { value: "&#x1F374;", alt: "&#x1F374;", descripton: "fork and knife" },
     { value: "&#x1F944;", alt: "&#x1F944;", descripton: "spoon" },
     { value: "&#x1F52A;", alt: "&#x1F52A;", descripton: "kitchen knife" },
-    { value: "&#x1F3FA;", alt: "&#x1F3FA;", descripton: "amphora" }
+    { value: "&#x1F3FA;", alt: "&#x1F3FA;", descripton: "amphora" },
   ],
   travel: [
     {
       value: "&#x1F30D;",
       alt: "&#x1F30D;",
-      descripton: "globe showing Europe-Africa"
+      descripton: "globe showing Europe-Africa",
     },
     {
       value: "&#x1F30E;",
       alt: "&#x1F30E;",
-      descripton: "globe showing Americas"
+      descripton: "globe showing Americas",
     },
     {
       value: "&#x1F30F;",
       alt: "&#x1F30F;",
-      descripton: "globe showing Asia-Australia"
+      descripton: "globe showing Asia-Australia",
     },
     {
       value: "&#x1F310;",
       alt: "&#x1F310;",
-      descripton: "globe with meridians"
+      descripton: "globe with meridians",
     },
     { value: "&#x1F5FA;", alt: "&#x1F5FA;", descripton: "world map" },
     { value: "&#x1F5FE;", alt: "&#x1F5FE;", descripton: "map of Japan" },
@@ -1147,7 +1147,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3D4;",
       alt: "&#x1F3D4;",
-      descripton: "snow-capped mountain"
+      descripton: "snow-capped mountain",
     },
     { value: "&#x26F0;", alt: "&#x26F0;", descripton: "mountain" },
     { value: "&#x1F30B;", alt: "&#x1F30B;", descripton: "volcano" },
@@ -1156,7 +1156,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3D6;",
       alt: "&#x1F3D6;",
-      descripton: "beach with umbrella"
+      descripton: "beach with umbrella",
     },
     { value: "&#x1F3DC;", alt: "&#x1F3DC;", descripton: "desert" },
     { value: "&#x1F3DD;", alt: "&#x1F3DD;", descripton: "desert island" },
@@ -1165,12 +1165,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3DB;",
       alt: "&#x1F3DB;",
-      descripton: "classical building"
+      descripton: "classical building",
     },
     {
       value: "&#x1F3D7;",
       alt: "&#x1F3D7;",
-      descripton: "building construction"
+      descripton: "building construction",
     },
     { value: "&#x1F9F1;", alt: "&#x1F9F1;", descripton: "brick" },
     { value: "&#x1F3D8;", alt: "&#x1F3D8;", descripton: "houses" },
@@ -1179,13 +1179,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3E1;",
       alt: "&#x1F3E1;",
-      descripton: "house with garden"
+      descripton: "house with garden",
     },
     { value: "&#x1F3E2;", alt: "&#x1F3E2;", descripton: "office building" },
     {
       value: "&#x1F3E3;",
       alt: "&#x1F3E3;",
-      descripton: "Japanese post office"
+      descripton: "Japanese post office",
     },
     { value: "&#x1F3E4;", alt: "&#x1F3E4;", descripton: "post office" },
     { value: "&#x1F3E5;", alt: "&#x1F3E5;", descripton: "hospital" },
@@ -1195,13 +1195,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3EA;",
       alt: "&#x1F3EA;",
-      descripton: "convenience store"
+      descripton: "convenience store",
     },
     { value: "&#x1F3EB;", alt: "&#x1F3EB;", descripton: "school" },
     {
       value: "&#x1F3EC;",
       alt: "&#x1F3EC;",
-      descripton: "department store"
+      descripton: "department store",
     },
     { value: "&#x1F3ED;", alt: "&#x1F3ED;", descripton: "factory" },
     { value: "&#x1F3EF;", alt: "&#x1F3EF;", descripton: "Japanese castle" },
@@ -1211,7 +1211,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F5FD;",
       alt: "&#x1F5FD;",
-      descripton: "Statue of Liberty"
+      descripton: "Statue of Liberty",
     },
     { value: "&#x26EA;", alt: "&#x26EA;", descripton: "church" },
     { value: "&#x1F54C;", alt: "&#x1F54C;", descripton: "mosque" },
@@ -1225,19 +1225,19 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F303;",
       alt: "&#x1F303;",
-      descripton: "night with stars"
+      descripton: "night with stars",
     },
     { value: "&#x1F3D9;", alt: "&#x1F3D9;", descripton: "cityscape" },
     {
       value: "&#x1F304;",
       alt: "&#x1F304;",
-      descripton: "sunrise over mountains"
+      descripton: "sunrise over mountains",
     },
     { value: "&#x1F305;", alt: "&#x1F305;", descripton: "sunrise" },
     {
       value: "&#x1F306;",
       alt: "&#x1F306;",
-      descripton: "cityscape at dusk"
+      descripton: "cityscape at dusk",
     },
     { value: "&#x1F307;", alt: "&#x1F307;", descripton: "sunset" },
     { value: "&#x1F309;", alt: "&#x1F309;", descripton: "bridge at night" },
@@ -1252,7 +1252,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F684;",
       alt: "&#x1F684;",
-      descripton: "high-speed train"
+      descripton: "high-speed train",
     },
     { value: "&#x1F685;", alt: "&#x1F685;", descripton: "bullet train" },
     { value: "&#x1F686;", alt: "&#x1F686;", descripton: "train" },
@@ -1264,7 +1264,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F69E;",
       alt: "&#x1F69E;",
-      descripton: "mountain railway"
+      descripton: "mountain railway",
     },
     { value: "&#x1F68B;", alt: "&#x1F68B;", descripton: "tram car" },
     { value: "&#x1F68C;", alt: "&#x1F68C;", descripton: "bus" },
@@ -1277,7 +1277,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F694;",
       alt: "&#x1F694;",
-      descripton: "oncoming police car"
+      descripton: "oncoming police car",
     },
     { value: "&#x1F695;", alt: "&#x1F695;", descripton: "taxi" },
     { value: "&#x1F696;", alt: "&#x1F696;", descripton: "oncoming taxi" },
@@ -1285,18 +1285,18 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F698;",
       alt: "&#x1F698;",
-      descripton: "oncoming automobile"
+      descripton: "oncoming automobile",
     },
     {
       value: "&#x1F699;",
       alt: "&#x1F699;",
-      descripton: "sport utility vehicle"
+      descripton: "sport utility vehicle",
     },
     { value: "&#x1F69A;", alt: "&#x1F69A;", descripton: "delivery truck" },
     {
       value: "&#x1F69B;",
       alt: "&#x1F69B;",
-      descripton: "articulated lorry"
+      descripton: "articulated lorry",
     },
     { value: "&#x1F69C;", alt: "&#x1F69C;", descripton: "tractor" },
     { value: "&#x1F3CE;", alt: "&#x1F3CE;", descripton: "racing car" },
@@ -1305,12 +1305,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F9BD;",
       alt: "&#x1F9BD;",
-      descripton: "manual wheelchair"
+      descripton: "manual wheelchair",
     },
     {
       value: "&#x1F9BC;",
       alt: "&#x1F9BC;",
-      descripton: "motorized wheelchair"
+      descripton: "motorized wheelchair",
     },
     { value: "&#x1F6FA;", alt: "&#x1F6FA;", descripton: "auto rickshaw" },
     { value: "&#x1F6B2;", alt: "&#x1F6B2;", descripton: "bicycle" },
@@ -1324,17 +1324,17 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6A8;",
       alt: "&#x1F6A8;",
-      descripton: "police car light"
+      descripton: "police car light",
     },
     {
       value: "&#x1F6A5;",
       alt: "&#x1F6A5;",
-      descripton: "horizontal traffic light"
+      descripton: "horizontal traffic light",
     },
     {
       value: "&#x1F6A6;",
       alt: "&#x1F6A6;",
-      descripton: "vertical traffic light"
+      descripton: "vertical traffic light",
     },
     { value: "&#x1F6D1;", alt: "&#x1F6D1;", descripton: "stop sign" },
     { value: "&#x1F6A7;", alt: "&#x1F6A7;", descripton: "construction" },
@@ -1351,12 +1351,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6EB;",
       alt: "&#x1F6EB;",
-      descripton: "airplane departure"
+      descripton: "airplane departure",
     },
     {
       value: "&#x1F6EC;",
       alt: "&#x1F6EC;",
-      descripton: "airplane arrival"
+      descripton: "airplane arrival",
     },
     { value: "&#x1FA82;", alt: "&#x1FA82;", descripton: "parachute" },
     { value: "&#x1F4BA;", alt: "&#x1F4BA;", descripton: "seat" },
@@ -1364,12 +1364,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F69F;",
       alt: "&#x1F69F;",
-      descripton: "suspension railway"
+      descripton: "suspension railway",
     },
     {
       value: "&#x1F6A0;",
       alt: "&#x1F6A0;",
-      descripton: "mountain cableway"
+      descripton: "mountain cableway",
     },
     { value: "&#x1F6A1;", alt: "&#x1F6A1;", descripton: "aerial tramway" },
     { value: "&#x1F6F0;", alt: "&#x1F6F0;", descripton: "satellite" },
@@ -1381,7 +1381,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x23F3;",
       alt: "&#x23F3;",
-      descripton: "hourglass not done"
+      descripton: "hourglass not done",
     },
     { value: "&#x231A;", alt: "&#x231A;", descripton: "watch" },
     { value: "&#x23F0;", alt: "&#x23F0;", descripton: "alarm clock" },
@@ -1390,7 +1390,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F570;",
       alt: "&#x1F570;",
-      descripton: "mantelpiece clock"
+      descripton: "mantelpiece clock",
     },
     { value: "&#x1F55B;", alt: "&#x1F55B;", descripton: "twelve o’clock" },
     { value: "&#x1F567;", alt: "&#x1F567;", descripton: "twelve-thirty" },
@@ -1420,45 +1420,45 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F312;",
       alt: "&#x1F312;",
-      descripton: "waxing crescent moon"
+      descripton: "waxing crescent moon",
     },
     {
       value: "&#x1F313;",
       alt: "&#x1F313;",
-      descripton: "first quarter moon"
+      descripton: "first quarter moon",
     },
     {
       value: "&#x1F314;",
       alt: "&#x1F314;",
-      descripton: "waxing gibbous moon"
+      descripton: "waxing gibbous moon",
     },
     { value: "&#x1F315;", alt: "&#x1F315;", descripton: "full moon" },
     {
       value: "&#x1F316;",
       alt: "&#x1F316;",
-      descripton: "waning gibbous moon"
+      descripton: "waning gibbous moon",
     },
     {
       value: "&#x1F317;",
       alt: "&#x1F317;",
-      descripton: "last quarter moon"
+      descripton: "last quarter moon",
     },
     {
       value: "&#x1F318;",
       alt: "&#x1F318;",
-      descripton: "waning crescent moon"
+      descripton: "waning crescent moon",
     },
     { value: "&#x1F319;", alt: "&#x1F319;", descripton: "crescent moon" },
     { value: "&#x1F31A;", alt: "&#x1F31A;", descripton: "new moon face" },
     {
       value: "&#x1F31B;",
       alt: "&#x1F31B;",
-      descripton: "first quarter moon face"
+      descripton: "first quarter moon face",
     },
     {
       value: "&#x1F31C;",
       alt: "&#x1F31C;",
-      descripton: "last quarter moon face"
+      descripton: "last quarter moon face",
     },
     { value: "&#x1F321;", alt: "&#x1F321;", descripton: "thermometer" },
     { value: "&#x2600;", alt: "&#x2600;", descripton: "sun" },
@@ -1474,29 +1474,29 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x26C8;",
       alt: "&#x26C8;",
-      descripton: "cloud with lightning and rain"
+      descripton: "cloud with lightning and rain",
     },
     {
       value: "&#x1F324;",
       alt: "&#x1F324;",
-      descripton: "sun behind small cloud"
+      descripton: "sun behind small cloud",
     },
     {
       value: "&#x1F325;",
       alt: "&#x1F325;",
-      descripton: "sun behind large cloud"
+      descripton: "sun behind large cloud",
     },
     {
       value: "&#x1F326;",
       alt: "&#x1F326;",
-      descripton: "sun behind rain cloud"
+      descripton: "sun behind rain cloud",
     },
     { value: "&#x1F327;", alt: "&#x1F327;", descripton: "cloud with rain" },
     { value: "&#x1F328;", alt: "&#x1F328;", descripton: "cloud with snow" },
     {
       value: "&#x1F329;",
       alt: "&#x1F329;",
-      descripton: "cloud with lightning"
+      descripton: "cloud with lightning",
     },
     { value: "&#x1F32A;", alt: "&#x1F32A;", descripton: "tornado" },
     { value: "&#x1F32B;", alt: "&#x1F32B;", descripton: "fog" },
@@ -1508,12 +1508,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x2614;",
       alt: "&#x2614;",
-      descripton: "umbrella with rain drops"
+      descripton: "umbrella with rain drops",
     },
     {
       value: "&#x26F1;",
       alt: "&#x26F1;",
-      descripton: "umbrella on ground"
+      descripton: "umbrella on ground",
     },
     { value: "&#x26A1;", alt: "&#x26A1;", descripton: "high voltage" },
     { value: "&#x2744;", alt: "&#x2744;", descripton: "snowflake" },
@@ -1521,12 +1521,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x26C4;",
       alt: "&#x26C4;",
-      descripton: "snowman without snow"
+      descripton: "snowman without snow",
     },
     { value: "&#x2604;", alt: "&#x2604;", descripton: "comet" },
     { value: "&#x1F525;", alt: "&#x1F525;", descripton: "fire" },
     { value: "&#x1F4A7;", alt: "&#x1F4A7;", descripton: "droplet" },
-    { value: "&#x1F30A;", alt: "&#x1F30A;", descripton: "water wave" }
+    { value: "&#x1F30A;", alt: "&#x1F30A;", descripton: "water wave" },
   ],
   activities: [
     { value: "&#x1F383;", alt: "&#x1F383;", descripton: "jack-o-lantern" },
@@ -1546,7 +1546,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F391;",
       alt: "&#x1F391;",
-      descripton: "moon viewing ceremony"
+      descripton: "moon viewing ceremony",
     },
     { value: "&#x1F9E7;", alt: "&#x1F9E7;", descripton: "red envelope" },
     { value: "&#x1F380;", alt: "&#x1F380;", descripton: "ribbon" },
@@ -1555,7 +1555,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F39F;",
       alt: "&#x1F39F;",
-      descripton: "admission tickets"
+      descripton: "admission tickets",
     },
     { value: "&#x1F3AB;", alt: "&#x1F3AB;", descripton: "ticket" },
     { value: "&#x1F396;", alt: "&#x1F396;", descripton: "military medal" },
@@ -1572,7 +1572,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3C8;",
       alt: "&#x1F3C8;",
-      descripton: "american football"
+      descripton: "american football",
     },
     { value: "&#x1F3C9;", alt: "&#x1F3C9;", descripton: "rugby football" },
     { value: "&#x1F3BE;", alt: "&#x1F3BE;", descripton: "tennis" },
@@ -1588,7 +1588,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F94B;",
       alt: "&#x1F94B;",
-      descripton: "martial arts uniform"
+      descripton: "martial arts uniform",
     },
     { value: "&#x1F945;", alt: "&#x1F945;", descripton: "goal net" },
     { value: "&#x26F3;", alt: "&#x26F3;", descripton: "flag in hole" },
@@ -1620,18 +1620,18 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F004;",
       alt: "&#x1F004;",
-      descripton: "mahjong red dragon"
+      descripton: "mahjong red dragon",
     },
     {
       value: "&#x1F3B4;",
       alt: "&#x1F3B4;",
-      descripton: "flower playing cards"
+      descripton: "flower playing cards",
     },
     { value: "&#x1F3AD;", alt: "&#x1F3AD;", descripton: "performing arts" },
     { value: "&#x1F5BC;", alt: "&#x1F5BC;", descripton: "framed picture" },
     { value: "&#x1F3A8;", alt: "&#x1F3A8;", descripton: "artist palette" },
     { value: "&#x1F9F5;", alt: "&#x1F9F5;", descripton: "thread" },
-    { value: "&#x1F9F6;", alt: "&#x1F9F6;", descripton: "yarn" }
+    { value: "&#x1F9F6;", alt: "&#x1F9F6;", descripton: "yarn" },
   ],
   objects: [
     { value: "&#x1F453;", alt: "&#x1F453;", descripton: "glasses" },
@@ -1652,7 +1652,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1FA71;",
       alt: "&#x1FA71;",
-      descripton: "one-piece swimsuit"
+      descripton: "one-piece swimsuit",
     },
     { value: "&#x1FA72;", alt: "&#x1FA72;", descripton: "briefs" },
     { value: "&#x1FA73;", alt: "&#x1FA73;", descripton: "shorts" },
@@ -1670,7 +1670,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F460;",
       alt: "&#x1F460;",
-      descripton: "high-heeled shoe"
+      descripton: "high-heeled shoe",
     },
     { value: "&#x1F461;", alt: "&#x1F461;", descripton: "woman’s sandal" },
     { value: "&#x1FA70;", alt: "&#x1FA70;", descripton: "ballet shoes" },
@@ -1683,7 +1683,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x26D1;",
       alt: "&#x26D1;",
-      descripton: "rescue worker’s helmet"
+      descripton: "rescue worker’s helmet",
     },
     { value: "&#x1F4FF;", alt: "&#x1F4FF;", descripton: "prayer beads" },
     { value: "&#x1F484;", alt: "&#x1F484;", descripton: "lipstick" },
@@ -1693,17 +1693,17 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F508;",
       alt: "&#x1F508;",
-      descripton: "speaker low volume"
+      descripton: "speaker low volume",
     },
     {
       value: "&#x1F509;",
       alt: "&#x1F509;",
-      descripton: "speaker medium volume"
+      descripton: "speaker medium volume",
     },
     {
       value: "&#x1F50A;",
       alt: "&#x1F50A;",
-      descripton: "speaker high volume"
+      descripton: "speaker high volume",
     },
     { value: "&#x1F4E2;", alt: "&#x1F4E2;", descripton: "loudspeaker" },
     { value: "&#x1F4E3;", alt: "&#x1F4E3;", descripton: "megaphone" },
@@ -1716,7 +1716,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F399;",
       alt: "&#x1F399;",
-      descripton: "studio microphone"
+      descripton: "studio microphone",
     },
     { value: "&#x1F39A;", alt: "&#x1F39A;", descripton: "level slider" },
     { value: "&#x1F39B;", alt: "&#x1F39B;", descripton: "control knobs" },
@@ -1728,7 +1728,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3B9;",
       alt: "&#x1F3B9;",
-      descripton: "musical keyboard"
+      descripton: "musical keyboard",
     },
     { value: "&#x1F3BA;", alt: "&#x1F3BA;", descripton: "trumpet" },
     { value: "&#x1F3BB;", alt: "&#x1F3BB;", descripton: "violin" },
@@ -1738,13 +1738,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4F2;",
       alt: "&#x1F4F2;",
-      descripton: "mobile phone with arrow"
+      descripton: "mobile phone with arrow",
     },
     { value: "&#x260E;", alt: "&#x260E;", descripton: "telephone" },
     {
       value: "&#x1F4DE;",
       alt: "&#x1F4DE;",
-      descripton: "telephone receiver"
+      descripton: "telephone receiver",
     },
     { value: "&#x1F4DF;", alt: "&#x1F4DF;", descripton: "pager" },
     { value: "&#x1F4E0;", alt: "&#x1F4E0;", descripton: "fax machine" },
@@ -1754,7 +1754,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F5A5;",
       alt: "&#x1F5A5;",
-      descripton: "desktop computer"
+      descripton: "desktop computer",
     },
     { value: "&#x1F5A8;", alt: "&#x1F5A8;", descripton: "printer" },
     { value: "&#x2328;", alt: "&#x2328;", descripton: "keyboard" },
@@ -1774,19 +1774,19 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4F8;",
       alt: "&#x1F4F8;",
-      descripton: "camera with flash"
+      descripton: "camera with flash",
     },
     { value: "&#x1F4F9;", alt: "&#x1F4F9;", descripton: "video camera" },
     { value: "&#x1F4FC;", alt: "&#x1F4FC;", descripton: "videocassette" },
     {
       value: "&#x1F50D;",
       alt: "&#x1F50D;",
-      descripton: "magnifying glass tilted left"
+      descripton: "magnifying glass tilted left",
     },
     {
       value: "&#x1F50E;",
       alt: "&#x1F50E;",
-      descripton: "magnifying glass tilted right"
+      descripton: "magnifying glass tilted right",
     },
     { value: "&#x1F56F;", alt: "&#x1F56F;", descripton: "candle" },
     { value: "&#x1F4A1;", alt: "&#x1F4A1;", descripton: "light bulb" },
@@ -1794,13 +1794,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F3EE;",
       alt: "&#x1F3EE;",
-      descripton: "red paper lantern"
+      descripton: "red paper lantern",
     },
     { value: "&#x1FA94;", alt: "&#x1FA94;", descripton: "diya lamp" },
     {
       value: "&#x1F4D4;",
       alt: "&#x1F4D4;",
-      descripton: "notebook with decorative cover"
+      descripton: "notebook with decorative cover",
     },
     { value: "&#x1F4D5;", alt: "&#x1F4D5;", descripton: "closed book" },
     { value: "&#x1F4D6;", alt: "&#x1F4D6;", descripton: "open book" },
@@ -1817,7 +1817,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F5DE;",
       alt: "&#x1F5DE;",
-      descripton: "rolled-up newspaper"
+      descripton: "rolled-up newspaper",
     },
     { value: "&#x1F4D1;", alt: "&#x1F4D1;", descripton: "bookmark tabs" },
     { value: "&#x1F516;", alt: "&#x1F516;", descripton: "bookmark" },
@@ -1830,36 +1830,36 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4B8;",
       alt: "&#x1F4B8;",
-      descripton: "money with wings"
+      descripton: "money with wings",
     },
     { value: "&#x1F4B3;", alt: "&#x1F4B3;", descripton: "credit card" },
     { value: "&#x1F9FE;", alt: "&#x1F9FE;", descripton: "receipt" },
     {
       value: "&#x1F4B9;",
       alt: "&#x1F4B9;",
-      descripton: "chart increasing with yen"
+      descripton: "chart increasing with yen",
     },
     {
       value: "&#x1F4B1;",
       alt: "&#x1F4B1;",
-      descripton: "currency exchange"
+      descripton: "currency exchange",
     },
     {
       value: "&#x1F4B2;",
       alt: "&#x1F4B2;",
-      descripton: "heavy dollar sign"
+      descripton: "heavy dollar sign",
     },
     { value: "&#x2709;", alt: "&#x2709;", descripton: "envelope" },
     { value: "&#x1F4E7;", alt: "&#x1F4E7;", descripton: "e-mail" },
     {
       value: "&#x1F4E8;",
       alt: "&#x1F4E8;",
-      descripton: "incoming envelope"
+      descripton: "incoming envelope",
     },
     {
       value: "&#x1F4E9;",
       alt: "&#x1F4E9;",
-      descripton: "envelope with arrow"
+      descripton: "envelope with arrow",
     },
     { value: "&#x1F4E4;", alt: "&#x1F4E4;", descripton: "outbox tray" },
     { value: "&#x1F4E5;", alt: "&#x1F4E5;", descripton: "inbox tray" },
@@ -1867,28 +1867,28 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4EB;",
       alt: "&#x1F4EB;",
-      descripton: "closed mailbox with raised flag"
+      descripton: "closed mailbox with raised flag",
     },
     {
       value: "&#x1F4EA;",
       alt: "&#x1F4EA;",
-      descripton: "closed mailbox with lowered flag"
+      descripton: "closed mailbox with lowered flag",
     },
     {
       value: "&#x1F4EC;",
       alt: "&#x1F4EC;",
-      descripton: "open mailbox with raised flag"
+      descripton: "open mailbox with raised flag",
     },
     {
       value: "&#x1F4ED;",
       alt: "&#x1F4ED;",
-      descripton: "open mailbox with lowered flag"
+      descripton: "open mailbox with lowered flag",
     },
     { value: "&#x1F4EE;", alt: "&#x1F4EE;", descripton: "postbox" },
     {
       value: "&#x1F5F3;",
       alt: "&#x1F5F3;",
-      descripton: "ballot box with ballot"
+      descripton: "ballot box with ballot",
     },
     { value: "&#x270F;", alt: "&#x270F;", descripton: "pencil" },
     { value: "&#x2712;", alt: "&#x2712;", descripton: "black nib" },
@@ -1902,18 +1902,18 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4C2;",
       alt: "&#x1F4C2;",
-      descripton: "open file folder"
+      descripton: "open file folder",
     },
     {
       value: "&#x1F5C2;",
       alt: "&#x1F5C2;",
-      descripton: "card index dividers"
+      descripton: "card index dividers",
     },
     { value: "&#x1F4C5;", alt: "&#x1F4C5;", descripton: "calendar" },
     {
       value: "&#x1F4C6;",
       alt: "&#x1F4C6;",
-      descripton: "tear-off calendar"
+      descripton: "tear-off calendar",
     },
     { value: "&#x1F5D2;", alt: "&#x1F5D2;", descripton: "spiral notepad" },
     { value: "&#x1F5D3;", alt: "&#x1F5D3;", descripton: "spiral calendar" },
@@ -1921,12 +1921,12 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4C8;",
       alt: "&#x1F4C8;",
-      descripton: "chart increasing"
+      descripton: "chart increasing",
     },
     {
       value: "&#x1F4C9;",
       alt: "&#x1F4C9;",
-      descripton: "chart decreasing"
+      descripton: "chart decreasing",
     },
     { value: "&#x1F4CA;", alt: "&#x1F4CA;", descripton: "bar chart" },
     { value: "&#x1F4CB;", alt: "&#x1F4CB;", descripton: "clipboard" },
@@ -1936,13 +1936,13 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F587;",
       alt: "&#x1F587;",
-      descripton: "linked paperclips"
+      descripton: "linked paperclips",
     },
     { value: "&#x1F4CF;", alt: "&#x1F4CF;", descripton: "straight ruler" },
     {
       value: "&#x1F4D0;",
       alt: "&#x1F4D0;",
-      descripton: "triangular ruler"
+      descripton: "triangular ruler",
     },
     { value: "&#x2702;", alt: "&#x2702;", descripton: "scissors" },
     { value: "&#x1F5C3;", alt: "&#x1F5C3;", descripton: "card file box" },
@@ -1961,7 +1961,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6E0;",
       alt: "&#x1F6E0;",
-      descripton: "hammer and wrench"
+      descripton: "hammer and wrench",
     },
     { value: "&#x1F5E1;", alt: "&#x1F5E1;", descripton: "dagger" },
     { value: "&#x2694;", alt: "&#x2694;", descripton: "crossed swords" },
@@ -1987,7 +1987,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4E1;",
       alt: "&#x1F4E1;",
-      descripton: "satellite antenna"
+      descripton: "satellite antenna",
     },
     { value: "&#x1F489;", alt: "&#x1F489;", descripton: "syringe" },
     { value: "&#x1FA78;", alt: "&#x1FA78;", descripton: "drop of blood" },
@@ -1995,7 +1995,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1FA79;",
       alt: "&#x1FA79;",
-      descripton: "adhesive bandage"
+      descripton: "adhesive bandage",
     },
     { value: "&#x1FA7A;", alt: "&#x1FA7A;", descripton: "stethoscope" },
     { value: "&#x1F6AA;", alt: "&#x1F6AA;", descripton: "door" },
@@ -2016,20 +2016,20 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F9EF;",
       alt: "&#x1F9EF;",
-      descripton: "fire extinguisher"
+      descripton: "fire extinguisher",
     },
     { value: "&#x1F6D2;", alt: "&#x1F6D2;", descripton: "shopping cart" },
     { value: "&#x1F6AC;", alt: "&#x1F6AC;", descripton: "cigarette" },
     { value: "&#x26B0;", alt: "&#x26B0;", descripton: "coffin" },
     { value: "&#x26B1;", alt: "&#x26B1;", descripton: "funeral urn" },
-    { value: "&#x1F5FF;", alt: "&#x1F5FF;", descripton: "moai" }
+    { value: "&#x1F5FF;", alt: "&#x1F5FF;", descripton: "moai" },
   ],
   symbols: [
     { value: "&#x1F3E7;", alt: "&#x1F3E7;", descripton: "ATM sign" },
     {
       value: "&#x1F6AE;",
       alt: "&#x1F6AE;",
-      descripton: "litter in bin sign"
+      descripton: "litter in bin sign",
     },
     { value: "&#x1F6B0;", alt: "&#x1F6B0;", descripton: "potable water" },
     { value: "&#x267F;", alt: "&#x267F;", descripton: "wheelchair symbol" },
@@ -2041,7 +2041,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6C2;",
       alt: "&#x1F6C2;",
-      descripton: "passport control"
+      descripton: "passport control",
     },
     { value: "&#x1F6C3;", alt: "&#x1F6C3;", descripton: "customs" },
     { value: "&#x1F6C4;", alt: "&#x1F6C4;", descripton: "baggage claim" },
@@ -2050,7 +2050,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6B8;",
       alt: "&#x1F6B8;",
-      descripton: "children crossing"
+      descripton: "children crossing",
     },
     { value: "&#x26D4;", alt: "&#x26D4;", descripton: "no entry" },
     { value: "&#x1F6AB;", alt: "&#x1F6AB;", descripton: "prohibited" },
@@ -2060,18 +2060,18 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6B1;",
       alt: "&#x1F6B1;",
-      descripton: "non-potable water"
+      descripton: "non-potable water",
     },
     { value: "&#x1F6B7;", alt: "&#x1F6B7;", descripton: "no pedestrians" },
     {
       value: "&#x1F4F5;",
       alt: "&#x1F4F5;",
-      descripton: "no mobile phones"
+      descripton: "no mobile phones",
     },
     {
       value: "&#x1F51E;",
       alt: "&#x1F51E;",
-      descripton: "no one under eighteen"
+      descripton: "no one under eighteen",
     },
     { value: "&#x2622;", alt: "&#x2622;", descripton: "radioactive" },
     { value: "&#x2623;", alt: "&#x2623;", descripton: "biohazard" },
@@ -2088,32 +2088,32 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x21A9;",
       alt: "&#x21A9;",
-      descripton: "right arrow curving left"
+      descripton: "right arrow curving left",
     },
     {
       value: "&#x21AA;",
       alt: "&#x21AA;",
-      descripton: "left arrow curving right"
+      descripton: "left arrow curving right",
     },
     {
       value: "&#x2934;",
       alt: "&#x2934;",
-      descripton: "right arrow curving up"
+      descripton: "right arrow curving up",
     },
     {
       value: "&#x2935;",
       alt: "&#x2935;",
-      descripton: "right arrow curving down"
+      descripton: "right arrow curving down",
     },
     {
       value: "&#x1F503;",
       alt: "&#x1F503;",
-      descripton: "clockwise vertical arrows"
+      descripton: "clockwise vertical arrows",
     },
     {
       value: "&#x1F504;",
       alt: "&#x1F504;",
-      descripton: "counterclockwise arrows button"
+      descripton: "counterclockwise arrows button",
     },
     { value: "&#x1F519;", alt: "&#x1F519;", descripton: "BACK arrow" },
     { value: "&#x1F51A;", alt: "&#x1F51A;", descripton: "END arrow" },
@@ -2123,7 +2123,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F6D0;",
       alt: "&#x1F6D0;",
-      descripton: "place of worship"
+      descripton: "place of worship",
     },
     { value: "&#x269B;", alt: "&#x269B;", descripton: "atom symbol" },
     { value: "&#x1F549;", alt: "&#x1F549;", descripton: "om" },
@@ -2138,7 +2138,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F52F;",
       alt: "&#x1F52F;",
-      descripton: "dotted six-pointed star"
+      descripton: "dotted six-pointed star",
     },
     { value: "&#x2648;", alt: "&#x2648;", descripton: "Aries" },
     { value: "&#x2649;", alt: "&#x2649;", descripton: "Taurus" },
@@ -2156,31 +2156,31 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F500;",
       alt: "&#x1F500;",
-      descripton: "shuffle tracks button"
+      descripton: "shuffle tracks button",
     },
     { value: "&#x1F501;", alt: "&#x1F501;", descripton: "repeat button" },
     {
       value: "&#x1F502;",
       alt: "&#x1F502;",
-      descripton: "repeat single button"
+      descripton: "repeat single button",
     },
     { value: "&#x25B6;", alt: "&#x25B6;", descripton: "play button" },
     {
       value: "&#x23E9;",
       alt: "&#x23E9;",
-      descripton: "fast-forward button"
+      descripton: "fast-forward button",
     },
     { value: "&#x23ED;", alt: "&#x23ED;", descripton: "next track button" },
     {
       value: "&#x23EF;",
       alt: "&#x23EF;",
-      descripton: "play or pause button"
+      descripton: "play or pause button",
     },
     { value: "&#x25C0;", alt: "&#x25C0;", descripton: "reverse button" },
     {
       value: "&#x23EA;",
       alt: "&#x23EA;",
-      descripton: "fast reverse button"
+      descripton: "fast reverse button",
     },
     { value: "&#x23EE;", alt: "&#x23EE;", descripton: "last track button" },
     { value: "&#x1F53C;", alt: "&#x1F53C;", descripton: "upwards button" },
@@ -2188,7 +2188,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F53D;",
       alt: "&#x1F53D;",
-      descripton: "downwards button"
+      descripton: "downwards button",
     },
     { value: "&#x23EC;", alt: "&#x23EC;", descripton: "fast down button" },
     { value: "&#x23F8;", alt: "&#x23F8;", descripton: "pause button" },
@@ -2203,7 +2203,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F4F4;",
       alt: "&#x1F4F4;",
-      descripton: "mobile phone off"
+      descripton: "mobile phone off",
     },
     { value: "&#x2640;", alt: "&#x2640;", descripton: "female sign" },
     { value: "&#x2642;", alt: "&#x2642;", descripton: "male sign" },
@@ -2216,20 +2216,20 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F530;",
       alt: "&#x1F530;",
-      descripton: "Japanese symbol for beginner"
+      descripton: "Japanese symbol for beginner",
     },
     { value: "&#x2B55;", alt: "&#x2B55;", descripton: "hollow red circle" },
     { value: "&#x2705;", alt: "&#x2705;", descripton: "check mark button" },
     {
       value: "&#x2611;",
       alt: "&#x2611;",
-      descripton: "check box with check"
+      descripton: "check box with check",
     },
     { value: "&#x2714;", alt: "&#x2714;", descripton: "check mark" },
     {
       value: "&#x2716;",
       alt: "&#x2716;",
-      descripton: "multiplication sign"
+      descripton: "multiplication sign",
     },
     { value: "&#x274C;", alt: "&#x274C;", descripton: "cross mark" },
     { value: "&#x274E;", alt: "&#x274E;", descripton: "cross mark button" },
@@ -2241,39 +2241,39 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x303D;",
       alt: "&#x303D;",
-      descripton: "part alternation mark"
+      descripton: "part alternation mark",
     },
     {
       value: "&#x2733;",
       alt: "&#x2733;",
-      descripton: "eight-spoked asterisk"
+      descripton: "eight-spoked asterisk",
     },
     {
       value: "&#x2734;",
       alt: "&#x2734;",
-      descripton: "eight-pointed star"
+      descripton: "eight-pointed star",
     },
     { value: "&#x2747;", alt: "&#x2747;", descripton: "sparkle" },
     {
       value: "&#x203C;",
       alt: "&#x203C;",
-      descripton: "double exclamation mark"
+      descripton: "double exclamation mark",
     },
     {
       value: "&#x2049;",
       alt: "&#x2049;",
-      descripton: "exclamation question mark"
+      descripton: "exclamation question mark",
     },
     { value: "&#x2753;", alt: "&#x2753;", descripton: "question mark" },
     {
       value: "&#x2754;",
       alt: "&#x2754;",
-      descripton: "white question mark"
+      descripton: "white question mark",
     },
     {
       value: "&#x2755;",
       alt: "&#x2755;",
-      descripton: "white exclamation mark"
+      descripton: "white exclamation mark",
     },
     { value: "&#x2757;", alt: "&#x2757;", descripton: "exclamation mark" },
     { value: "&#x3030;", alt: "&#x3030;", descripton: "wavy dash" },
@@ -2284,34 +2284,34 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F520;",
       alt: "&#x1F520;",
-      descripton: "input latin uppercase"
+      descripton: "input latin uppercase",
     },
     {
       value: "&#x1F521;",
       alt: "&#x1F521;",
-      descripton: "input latin lowercase"
+      descripton: "input latin lowercase",
     },
     { value: "&#x1F522;", alt: "&#x1F522;", descripton: "input numbers" },
     { value: "&#x1F523;", alt: "&#x1F523;", descripton: "input symbols" },
     {
       value: "&#x1F524;",
       alt: "&#x1F524;",
-      descripton: "input latin letters"
+      descripton: "input latin letters",
     },
     {
       value: "&#x1F170;",
       alt: "&#x1F170;",
-      descripton: "A button (blood type)"
+      descripton: "A button (blood type)",
     },
     {
       value: "&#x1F18E;",
       alt: "&#x1F18E;",
-      descripton: "AB button (blood type)"
+      descripton: "AB button (blood type)",
     },
     {
       value: "&#x1F171;",
       alt: "&#x1F171;",
-      descripton: "B button (blood type)"
+      descripton: "B button (blood type)",
     },
     { value: "&#x1F191;", alt: "&#x1F191;", descripton: "CL button" },
     { value: "&#x1F192;", alt: "&#x1F192;", descripton: "COOL button" },
@@ -2324,7 +2324,7 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F17E;",
       alt: "&#x1F17E;",
-      descripton: "O button (blood type)"
+      descripton: "O button (blood type)",
     },
     { value: "&#x1F197;", alt: "&#x1F197;", descripton: "OK button" },
     { value: "&#x1F17F;", alt: "&#x1F17F;", descripton: "P button" },
@@ -2334,87 +2334,87 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x1F201;",
       alt: "&#x1F201;",
-      descripton: "Japanese “here” button"
+      descripton: "Japanese “here” button",
     },
     {
       value: "&#x1F202;",
       alt: "&#x1F202;",
-      descripton: "Japanese “service charge” button"
+      descripton: "Japanese “service charge” button",
     },
     {
       value: "&#x1F237;",
       alt: "&#x1F237;",
-      descripton: "Japanese “monthly amount” button"
+      descripton: "Japanese “monthly amount” button",
     },
     {
       value: "&#x1F236;",
       alt: "&#x1F236;",
-      descripton: "Japanese “not free of charge” button"
+      descripton: "Japanese “not free of charge” button",
     },
     {
       value: "&#x1F22F;",
       alt: "&#x1F22F;",
-      descripton: "Japanese “reserved” button"
+      descripton: "Japanese “reserved” button",
     },
     {
       value: "&#x1F250;",
       alt: "&#x1F250;",
-      descripton: "Japanese “bargain” button"
+      descripton: "Japanese “bargain” button",
     },
     {
       value: "&#x1F239;",
       alt: "&#x1F239;",
-      descripton: "Japanese “discount” button"
+      descripton: "Japanese “discount” button",
     },
     {
       value: "&#x1F21A;",
       alt: "&#x1F21A;",
-      descripton: "Japanese “free of charge” button"
+      descripton: "Japanese “free of charge” button",
     },
     {
       value: "&#x1F232;",
       alt: "&#x1F232;",
-      descripton: "Japanese “prohibited” button"
+      descripton: "Japanese “prohibited” button",
     },
     {
       value: "&#x1F251;",
       alt: "&#x1F251;",
-      descripton: "Japanese “acceptable” button"
+      descripton: "Japanese “acceptable” button",
     },
     {
       value: "&#x1F238;",
       alt: "&#x1F238;",
-      descripton: "Japanese “application” button"
+      descripton: "Japanese “application” button",
     },
     {
       value: "&#x1F234;",
       alt: "&#x1F234;",
-      descripton: "Japanese “passing grade” button"
+      descripton: "Japanese “passing grade” button",
     },
     {
       value: "&#x1F233;",
       alt: "&#x1F233;",
-      descripton: "Japanese “vacancy” button"
+      descripton: "Japanese “vacancy” button",
     },
     {
       value: "&#x3297;",
       alt: "&#x3297;",
-      descripton: "Japanese “congratulations” button"
+      descripton: "Japanese “congratulations” button",
     },
     {
       value: "&#x3299;",
       alt: "&#x3299;",
-      descripton: "Japanese “secret” button"
+      descripton: "Japanese “secret” button",
     },
     {
       value: "&#x1F23A;",
       alt: "&#x1F23A;",
-      descripton: "Japanese “open for business” button"
+      descripton: "Japanese “open for business” button",
     },
     {
       value: "&#x1F235;",
       alt: "&#x1F235;",
-      descripton: "Japanese “no vacancy” button"
+      descripton: "Japanese “no vacancy” button",
     },
     { value: "&#x1F534;", alt: "&#x1F534;", descripton: "red circle" },
     { value: "&#x1F7E0;", alt: "&#x1F7E0;", descripton: "orange circle" },
@@ -2435,97 +2435,97 @@ window.SimplePickerEmojis = window.SimplePickerEmojis || {
     {
       value: "&#x2B1B;",
       alt: "&#x2B1B;",
-      descripton: "black large square"
+      descripton: "black large square",
     },
     {
       value: "&#x2B1C;",
       alt: "&#x2B1C;",
-      descripton: "white large square"
+      descripton: "white large square",
     },
     {
       value: "&#x25FC;",
       alt: "&#x25FC;",
-      descripton: "black medium square"
+      descripton: "black medium square",
     },
     {
       value: "&#x25FB;",
       alt: "&#x25FB;",
-      descripton: "white medium square"
+      descripton: "white medium square",
     },
     {
       value: "&#x25FE;",
       alt: "&#x25FE;",
-      descripton: "black medium-small square"
+      descripton: "black medium-small square",
     },
     {
       value: "&#x25FD;",
       alt: "&#x25FD;",
-      descripton: "white medium-small square"
+      descripton: "white medium-small square",
     },
     {
       value: "&#x25AA;",
       alt: "&#x25AA;",
-      descripton: "black small square"
+      descripton: "black small square",
     },
     {
       value: "&#x25AB;",
       alt: "&#x25AB;",
-      descripton: "white small square"
+      descripton: "white small square",
     },
     {
       value: "&#x1F536;",
       alt: "&#x1F536;",
-      descripton: "large orange diamond"
+      descripton: "large orange diamond",
     },
     {
       value: "&#x1F537;",
       alt: "&#x1F537;",
-      descripton: "large blue diamond"
+      descripton: "large blue diamond",
     },
     {
       value: "&#x1F538;",
       alt: "&#x1F538;",
-      descripton: "small orange diamond"
+      descripton: "small orange diamond",
     },
     {
       value: "&#x1F539;",
       alt: "&#x1F539;",
-      descripton: "small blue diamond"
+      descripton: "small blue diamond",
     },
     {
       value: "&#x1F53A;",
       alt: "&#x1F53A;",
-      descripton: "red triangle pointed up"
+      descripton: "red triangle pointed up",
     },
     {
       value: "&#x1F53B;",
       alt: "&#x1F53B;",
-      descripton: "red triangle pointed down"
+      descripton: "red triangle pointed down",
     },
     {
       value: "&#x1F4A0;",
       alt: "&#x1F4A0;",
-      descripton: "diamond with a dot"
+      descripton: "diamond with a dot",
     },
     { value: "&#x1F518;", alt: "&#x1F518;", descripton: "radio button" },
     {
       value: "&#x1F533;",
       alt: "&#x1F533;",
-      descripton: "white square button"
+      descripton: "white square button",
     },
     {
       value: "&#x1F532;",
       alt: "&#x1F532;",
-      descripton: "black square button"
-    }
+      descripton: "black square button",
+    },
   ],
   flags: [
     { value: "&#x1F3C1;", alt: "&#x1F3C1;", descripton: "chequered flag" },
     { value: "&#x1F6A9;", alt: "&#x1F6A9;", descripton: "triangular flag" },
     { value: "&#x1F38C;", alt: "&#x1F38C;", descripton: "crossed flags" },
     { value: "&#x1F3F4;", alt: "&#x1F3F4;", descripton: "black flag" },
-    { value: "&#x1F3F3;", alt: "&#x1F3F3;", descripton: "white flag" }
-  ]
+    { value: "&#x1F3F3;", alt: "&#x1F3F3;", descripton: "white flag" },
+  ],
 };
 
 window.customElements.define(SimpleEmojiPicker.tag, SimpleEmojiPicker);

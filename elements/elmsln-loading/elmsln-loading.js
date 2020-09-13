@@ -83,7 +83,7 @@ class ElmslnLoading extends SimpleColors {
           -moz-animation: spin 2s ease-out infinite;
           animation: spin 2s ease-out infinite;
         }
-      `
+      `,
     ];
   }
   static get tag() {
@@ -118,24 +118,22 @@ class ElmslnLoading extends SimpleColors {
        * color
        */
       color: {
-        type: String
+        type: String,
       },
       /**
        * tiny, small, medium, large, epic sizing.
        */
       size: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   /**
    * LitElement render
    */
   render() {
-    return html`
-      <iron-icon icon="lrn:network"></iron-icon>
-    `;
+    return html` <iron-icon icon="lrn:network"></iron-icon> `;
   }
 
   _getAccentColor(color) {

@@ -11,7 +11,7 @@ Polymer({
     <ul>
       <template is="dom-repeat" items="[[iconList]]">
         <li>
-          <iron-icon icon\$="lrn:[[item.icon]]"></iron-icon>
+          <iron-icon icon$="lrn:[[item.icon]]"></iron-icon>
           <strong>&lt;iron-icon icon="lrn:[[item.icon]]"&gt;</strong>
         </li>
       </template>
@@ -20,7 +20,7 @@ Polymer({
 
   is: "lrn-icons-demo",
 
-  ready: function() {
+  ready: function () {
     this.iconList = [
       { icon: "done" },
       { icon: "input" },
@@ -94,7 +94,7 @@ Polymer({
       { icon: "quiz" },
       { icon: "support" },
       { icon: "teacher" },
-      { icon: "instructor" }
+      { icon: "instructor" },
     ];
-  }
+  },
 });

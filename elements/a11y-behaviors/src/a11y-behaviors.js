@@ -1,4 +1,4 @@
-export const A11yBehaviors = function(SuperClass) {
+export const A11yBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
      * Get a a11y safe text color based on background color

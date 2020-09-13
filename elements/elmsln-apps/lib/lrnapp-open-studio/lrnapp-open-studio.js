@@ -279,26 +279,26 @@ class LrnappOpenStudio extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       /**
        * The studioResponse from server
        */
       studioResponse: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * The submissions to render; potentially filtered
@@ -306,14 +306,14 @@ class LrnappOpenStudio extends PolymerElement {
       submissions: {
         type: Array,
         notify: true,
-        computed: "_submissionsCompute(originalSubmissions, queryParams)"
+        computed: "_submissionsCompute(originalSubmissions, queryParams)",
       },
       /**
        * The original submissions array; used to filter against
        */
       originalSubmissions: {
         type: Array,
-        notify: true
+        notify: true,
       },
       /**
        * The submissions to render
@@ -321,7 +321,7 @@ class LrnappOpenStudio extends PolymerElement {
       projects: {
         type: Array,
         notify: true,
-        value: []
+        value: [],
       },
       /**
        * The assignments to render
@@ -329,7 +329,7 @@ class LrnappOpenStudio extends PolymerElement {
       assignments: {
         type: Array,
         notify: true,
-        value: []
+        value: [],
       },
       /**
        * The authors to render
@@ -337,28 +337,28 @@ class LrnappOpenStudio extends PolymerElement {
       authors: {
         type: Array,
         notify: true,
-        value: []
+        value: [],
       },
       /**
        * sourcePath for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * Endpoint for submission data.
        */
       endPoint: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * base path for the app
        */
       basePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * Active / clicked submission.
@@ -366,21 +366,21 @@ class LrnappOpenStudio extends PolymerElement {
       activeSubmission: {
         type: String,
         value: null,
-        notify: true
+        notify: true,
       },
       queryParams: {
         type: Object,
-        notify: true
+        notify: true,
       },
       _blockcycle: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("route-change", this._routeChange.bind(this));
     });
   }
@@ -393,7 +393,7 @@ class LrnappOpenStudio extends PolymerElement {
       "_routeChanged(route, endPoint)",
       "_deleteToast(queryParams.deletetoast)",
       "_assignmentFilterChanged(queryParams.assignment)",
-      "_projectFilterChanged(queryParams.project)"
+      "_projectFilterChanged(queryParams.project)",
     ];
   }
   // If the current route is outside the scope of our app
@@ -437,7 +437,7 @@ class LrnappOpenStudio extends PolymerElement {
     const root = this;
     let filteredSubmissions = [];
     // filter the submissions by the query params
-    filteredSubmissions = originalSubmissions.filter(submission => {
+    filteredSubmissions = originalSubmissions.filter((submission) => {
       if (typeof root.queryParams.author !== "undefined") {
         if (
           submission.relationships.author.data.id !== root.queryParams.author
@@ -518,7 +518,7 @@ class LrnappOpenStudio extends PolymerElement {
     var project = {};
     var tmp = {
       authors: [],
-      assignments: []
+      assignments: [],
     };
     var assignment = {};
     var assignments = [];
@@ -545,11 +545,11 @@ class LrnappOpenStudio extends PolymerElement {
       tmp.assignments[assignment.id].project = project.id;
     }
     // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
-    tmp.authors.forEach(function(element) {
+    tmp.authors.forEach(function (element) {
       authors.push(element);
     });
     // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
-    tmp.assignments.forEach(function(element) {
+    tmp.assignments.forEach(function (element) {
       assignments.push(element);
     });
     root.$.loading.hidden = true;
@@ -575,7 +575,7 @@ class LrnappOpenStudio extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

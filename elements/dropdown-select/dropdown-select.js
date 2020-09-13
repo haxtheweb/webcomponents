@@ -23,7 +23,7 @@ class DropdownSelect extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -59,7 +59,7 @@ class DropdownSelect extends LitElement {
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false
+      subtree: false,
     });
 
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-container.js");
@@ -77,26 +77,26 @@ class DropdownSelect extends LitElement {
        */
       errorMessage: {
         attribute: "error-message",
-        type: String
+        type: String,
       },
 
       /**
        * The label of the select menu
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * True if the dropdown is open. Otherwise, false.
        */
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Optional options array
        */
       options: {
-        type: Array
+        type: Array,
       },
 
       /**
@@ -104,7 +104,7 @@ class DropdownSelect extends LitElement {
        */
       selectedItem: {
         attribute: "selected-item",
-        type: Object
+        type: Object,
       },
 
       /**
@@ -112,7 +112,7 @@ class DropdownSelect extends LitElement {
        */
       selectedItemIndex: {
         attribute: "selected-item-index",
-        type: Number
+        type: Number,
       },
 
       /**
@@ -120,7 +120,7 @@ class DropdownSelect extends LitElement {
        */
       selectedItemLabel: {
         attribute: "selected-item-label",
-        type: String
+        type: String,
       },
 
       /**
@@ -128,8 +128,8 @@ class DropdownSelect extends LitElement {
        */
       value: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   /**
@@ -152,8 +152,8 @@ class DropdownSelect extends LitElement {
             ? option.querySelector("[icon]").getAttribute("icon")
             : undefined,
           value:
-            option.getAttribute("value") || option.getAttribute("id") || index
-        }
+            option.getAttribute("value") || option.getAttribute("id") || index,
+        },
       ]);
     });
     if (options === []) options = [[]];
@@ -175,7 +175,7 @@ class DropdownSelect extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -190,7 +190,7 @@ class DropdownSelect extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -205,7 +205,7 @@ class DropdownSelect extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -232,8 +232,8 @@ class DropdownSelect extends LitElement {
       index = null,
       ctr = -1;
     this.selectedItem = this.value;
-    this.options.forEach(row =>
-      row.forEach(item => {
+    this.options.forEach((row) =>
+      row.forEach((item) => {
         if (this.value === item.value) {
           label = item.alt || item.value;
           index = ctr++;
@@ -251,8 +251,8 @@ class DropdownSelect extends LitElement {
           target: this,
           detail: {
             value: newValue,
-            oldValue: oldValue
-          }
+            oldValue: oldValue,
+          },
         })
       );
       this.dispatchEvent(
@@ -260,7 +260,7 @@ class DropdownSelect extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

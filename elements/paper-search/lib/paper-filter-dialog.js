@@ -22,7 +22,7 @@ class PaperFilterDialog extends PolymerElement {
       selectedFilters: {
         type: Object,
         notify: true,
-        value: {}
+        value: {},
       },
 
       /**
@@ -30,7 +30,7 @@ class PaperFilterDialog extends PolymerElement {
        */
       resetButton: {
         type: String,
-        value: "Reset"
+        value: "Reset",
       },
 
       /**
@@ -38,7 +38,7 @@ class PaperFilterDialog extends PolymerElement {
        */
       saveButton: {
         type: String,
-        value: "Save filters"
+        value: "Save filters",
       },
 
       /**
@@ -46,7 +46,7 @@ class PaperFilterDialog extends PolymerElement {
        */
       noValuesLabel: {
         type: String,
-        value: "No filters yet"
+        value: "No filters yet",
       },
 
       /**
@@ -54,13 +54,13 @@ class PaperFilterDialog extends PolymerElement {
        */
       _selectedFilters: {
         type: Object,
-        value: {}
+        value: {},
       },
       _selectedFilter: Object,
       _selectedFilterValues: {
         type: Array,
-        value: []
-      }
+        value: [],
+      },
     };
   }
 
@@ -75,7 +75,7 @@ class PaperFilterDialog extends PolymerElement {
 
     // Wait until dialog is added to the DOM (required for Safari)
     setTimeout(
-      function() {
+      function () {
         this.shadowRoot.querySelector("#dialog").open();
 
         // Clone selected filters, so it can be changed without touching the external property
@@ -104,16 +104,16 @@ class PaperFilterDialog extends PolymerElement {
   _preselectFilterValues() {
     // Check all values that are selected
     var selectedValueIds = this._selectedFilters[this._selectedFilter.id];
-    var isSelected = function(value) {
+    var isSelected = function (value) {
       return (
         Boolean(selectedValueIds) && selectedValueIds.indexOf(value.id) >= 0
       );
     };
-    this._selectedFilterValues = this._selectedFilter.values.map(function(
+    this._selectedFilterValues = this._selectedFilter.values.map(function (
       value
     ) {
       return Object.assign({}, value, {
-        selected: isSelected(value)
+        selected: isSelected(value),
       });
     });
   }
@@ -128,21 +128,21 @@ class PaperFilterDialog extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
   _tapSelectValues(e) {
     // Captured IDs of the selected items
     const selectedValues = this._selectedFilterValues
-      .filter(function(value) {
+      .filter(function (value) {
         return value.selected;
       })
-      .map(function(value) {
+      .map(function (value) {
         return value.id;
       });
     this._selectedFilters = Object.assign({}, this._selectedFilters, {
-      [this._selectedFilter.id]: selectedValues
+      [this._selectedFilter.id]: selectedValues,
     });
 
     this.shadowRoot.querySelector("#selector").deselect(this._selectedFilter);
@@ -172,11 +172,11 @@ class PaperFilterDialog extends PolymerElement {
 
     // Capture names of all selected values
     var names = filter.values
-      .filter(function(value) {
+      .filter(function (value) {
         // Only consider values that are selected
         return selectedValueIds.indexOf(value.id) >= 0;
       })
-      .map(function(value) {
+      .map(function (value) {
         // Capture name of the selected value
         return value.name;
       });

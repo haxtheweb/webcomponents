@@ -48,8 +48,8 @@ class SimpleLogin extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -94,8 +94,8 @@ class SimpleLogin extends SimpleColors {
           composed: true,
           detail: {
             u: this.shadowRoot.querySelector("#userinput").value,
-            p: this.shadowRoot.querySelector("#passinput").value
-          }
+            p: this.shadowRoot.querySelector("#passinput").value,
+          },
         })
       );
     }

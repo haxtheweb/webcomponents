@@ -49,37 +49,37 @@ class LrnAssignment extends PolymerElement {
        * Title
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Image url
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Details of the assignment
        */
       details: {
-        type: String
+        type: String,
       },
       /**
        * url
        */
       url: {
-        type: String
+        type: String,
       },
       open: {
         type: Boolean,
-        value: false
+        value: false,
       },
       complete: {
         type: Boolean,
-        value: false
+        value: false,
       },
       actions: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 }
@@ -133,15 +133,15 @@ class LrnAssignments extends PolymerElement {
       assignments: {
         type: Object,
         reflectToAttribute: true,
-        observer: "assignmentsChanged"
+        observer: "assignmentsChanged",
       },
       layout: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       url: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

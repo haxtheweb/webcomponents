@@ -3,7 +3,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import {
   addDebouncer,
   dom,
-  flush
+  flush,
 } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js";
 import { OptionalMutableDataBehavior } from "@polymer/polymer/lib/legacy/mutable-data-behavior.js";
@@ -189,9 +189,7 @@ class GrafittoFilter extends mixinBehaviors(
   PolymerElement
 ) {
   static get template() {
-    return html`
-      <div id="dom"><slot></slot></div>
-    `;
+    return html` <div id="dom"><slot></slot></div> `;
   }
 
   static get tag() {
@@ -206,21 +204,21 @@ class GrafittoFilter extends mixinBehaviors(
        */
       items: {
         type: Array,
-        value: []
+        value: [],
       },
       /**
        * Filter regular expression string
        */
       like: {
         type: String,
-        value: ""
+        value: "",
       },
       /**
        * The filter-by field of your items array of objects
        */
       where: {
         type: String,
-        value: "name"
+        value: "name",
       },
       /**
        * Enable case sensitivity when filtering
@@ -228,14 +226,14 @@ class GrafittoFilter extends mixinBehaviors(
       caseSensitive: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * How the filtered items will be passed to the light-DOM. Default `items`
        */
       as: {
         type: String,
-        value: "items"
+        value: "items",
       },
       /**
        * Filtered items
@@ -244,15 +242,15 @@ class GrafittoFilter extends mixinBehaviors(
         type: Array,
         computed: "_computeFiltered(items, where, like, caseSensitive)",
         observer: "_onFilter",
-        notify: true
+        notify: true,
       },
       /**
        * Custom filter function, if this is provided then 'where' and 'like' are ignored
        */
       f: {
         type: Function,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -293,7 +291,7 @@ class GrafittoFilter extends mixinBehaviors(
       //Save a reference to this object
       var decompose = this._decomposeWhere.bind(this);
       //Filter by `like`
-      filtered = items.filter(function(item) {
+      filtered = items.filter(function (item) {
         //This is when a complex object is provided
         if (typeof item == "object") {
           //Decompose where incase it is represented in . notation for complex objects
@@ -355,7 +353,7 @@ class GrafittoFilter extends mixinBehaviors(
    * This decomposes `where` property to object attributes using . notation
    */
   _decomposeWhere(where, item) {
-    return where.split(".").reduce(function(a, b) {
+    return where.split(".").reduce(function (a, b) {
       return a && a[b];
     }, item);
   }
@@ -371,7 +369,7 @@ class GrafittoFilter extends mixinBehaviors(
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }

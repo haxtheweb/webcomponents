@@ -341,31 +341,31 @@ class LrnappStudioInstructor extends PolymerElement {
   static get observers() {
     return [
       "_routeChanged(route, endPoint)",
-      "_activeDataChanged(activeData.student, activeData.assignment)"
+      "_activeDataChanged(activeData.student, activeData.assignment)",
     ];
   }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       sourceProjectPath: {
-        type: String
+        type: String,
       },
       sourceStudentPath: {
-        type: String
+        type: String,
       },
       simplePickerOptions: {
         type: Array,
@@ -373,17 +373,17 @@ class LrnappStudioInstructor extends PolymerElement {
           [
             {
               alt: "Submissions by Assignment",
-              value: "byassignment-submissions"
-            }
+              value: "byassignment-submissions",
+            },
           ],
           [{ alt: "Comments by Assignment", value: "byassignment-comments" }],
           [
             {
               alt: "Commenters by Assignment",
-              value: "byassignment-commenters"
-            }
-          ]
-        ]
+              value: "byassignment-commenters",
+            },
+          ],
+        ],
       },
       /**
        * Type of data to display, either submission centric or comment centric.
@@ -392,25 +392,25 @@ class LrnappStudioInstructor extends PolymerElement {
       dataType: {
         type: Boolean,
         value: false,
-        observer: "_dataTypeChanged"
+        observer: "_dataTypeChanged",
       },
       dataTypeText: {
         type: String,
-        value: "Submissions"
+        value: "Submissions",
       },
       /**
        * The projects to render
        */
       projects: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * The assignments to render
        */
       assignments: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * The submissions to render
@@ -418,14 +418,14 @@ class LrnappStudioInstructor extends PolymerElement {
       students: {
         type: Object,
         notify: true,
-        value: false
+        value: false,
       },
       /**
        * Internal value for mapping the raw response data.
        */
       _projectData: {
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * studentParams for the request
@@ -434,72 +434,72 @@ class LrnappStudioInstructor extends PolymerElement {
         type: Object,
         value: {
           projectId: null,
-          type: "submission"
-        }
+          type: "submission",
+        },
       },
       /**
        * Internal value for mapping the raw response data.
        */
       _studentData: {
-        type: Object
+        type: Object,
       },
       /**
        * Internal width so they are all unified from editing this
        */
       _numWidth: {
         type: String,
-        value: "2.25em"
+        value: "2.25em",
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * base path for the app
        */
       basePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * routing variable for url
        */
       route: {
-        type: String
+        type: String,
       },
       /**
        * Security token
        */
       csrfToken: {
-        type: String
+        type: String,
       },
       /**
        * course
        */
       elmslnCourse: {
-        type: String
+        type: String,
       },
       /**
        * section
        */
       elmslnSection: {
-        type: String
+        type: String,
       },
       /**
        * Data binding object for the submission render
        */
       data: {
-        type: Object
+        type: Object,
       },
       /**
        * Internal ID for active project
        */
       activeProject: {
         type: Number,
-        value: false
+        value: false,
       },
       /**
        * Active Data based on selection
@@ -509,23 +509,23 @@ class LrnappStudioInstructor extends PolymerElement {
         value: {
           student: false,
           assignment: false,
-          submission: false
-        }
+          submission: false,
+        },
       },
       /**
        * raw Stats data from backend.
        */
       stats: {
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * Selected chart with data cleaned up to match formatting.
        */
       activeChart: {
         type: Object,
-        value: {}
-      }
+        value: {},
+      },
     };
   }
   /**
@@ -578,7 +578,7 @@ class LrnappStudioInstructor extends PolymerElement {
     }
     return {
       labels: labels,
-      series: series
+      series: series,
     };
   }
   /**
@@ -882,7 +882,7 @@ class LrnappStudioInstructor extends PolymerElement {
    * Helper to move back and forth in an object like you can an array
    */
   _getObjectByPosition(items, key, i) {
-    var keys = Object.keys(items).sort(function(a, b) {
+    var keys = Object.keys(items).sort(function (a, b) {
       if (typeof items[a].sis !== typeof undefined) {
         if (items[a].sis.sortable_name > items[b].sis.sortable_name) {
           return 1;
@@ -1045,7 +1045,7 @@ class LrnappStudioInstructor extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

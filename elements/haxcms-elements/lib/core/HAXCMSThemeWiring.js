@@ -16,7 +16,7 @@ import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
  *
  * This will then need a rendering helper library to make work
  */
-const HAXCMSTheme = function(SuperClass) {
+const HAXCMSTheme = function (SuperClass) {
   return class extends SuperClass {
     // leverage the wiring class element; this helps us clean things up smoothly later
     // while still keeping it abstract enough for direct usage in PolymerLegacy elements
@@ -30,7 +30,7 @@ const HAXCMSTheme = function(SuperClass) {
         // should we scroll to the top when a new page
         // is selected
         autoScroll: false,
-        scrollTarget: window
+        scrollTarget: window,
       };
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
@@ -113,7 +113,7 @@ const HAXCMSTheme = function(SuperClass) {
         // if we are on the homepage then load the first item in the manifest
         // and set it active
         const firstItem = store.routerManifest.items.find(
-          i => typeof i.id !== "undefined"
+          (i) => typeof i.id !== "undefined"
         );
         if (firstItem) {
           store.activeId = firstItem.id;
@@ -122,7 +122,7 @@ const HAXCMSTheme = function(SuperClass) {
       if (this.HAXCMSThemeSettings.autoScroll) {
         this.HAXCMSThemeSettings.scrollTarget.scrollTo({
           top: 0,
-          left: 0
+          left: 0,
         });
         // @todo hacky timing thing
         setTimeout(() => {
@@ -147,13 +147,13 @@ const HAXCMSTheme = function(SuperClass) {
         this.__styleReapply();
       }, 50);
       // keep editMode in sync globally
-      autorun(reaction => {
+      autorun((reaction) => {
         this.activeItemContent = toJS(store.activeItemContent);
         setTimeout(() => {
           if (this.HAXCMSThemeSettings.autoScroll) {
             this.HAXCMSThemeSettings.scrollTarget.scrollTo({
               top: 0,
-              left: 0
+              left: 0,
             });
             setTimeout(() => {
               // try scrolling to the target ID after content gets imported
@@ -164,17 +164,17 @@ const HAXCMSTheme = function(SuperClass) {
         this.__disposer.push(reaction);
       });
       // keep editMode in sync globally
-      autorun(reaction => {
+      autorun((reaction) => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);
       });
       // logged in so we can visualize things differently as needed
-      autorun(reaction => {
+      autorun((reaction) => {
         this.isLoggedIn = toJS(store.isLoggedIn);
         this.__disposer.push(reaction);
       });
       // store disposer so we can clean up later
-      autorun(reaction => {
+      autorun((reaction) => {
         const __manifest = toJS(store.manifest);
         if (__manifest && varExists(__manifest, "title")) {
           document.title = __manifest.title;
@@ -211,7 +211,7 @@ const HAXCMSTheme = function(SuperClass) {
         }
         this.__disposer.push(reaction);
       });
-      autorun(reaction => {
+      autorun((reaction) => {
         this._location = toJS(store.location);
         this.__disposer.push(reaction);
       });
@@ -243,7 +243,7 @@ const HAXCMSTheme = function(SuperClass) {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: {}
+          detail: {},
         })
       );
     }
@@ -327,7 +327,7 @@ class HAXCMSThemeWiring {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: newValue
+        detail: newValue,
       });
       this.dispatchEvent(evt);
       // update title as a simple nicity
@@ -349,7 +349,7 @@ class HAXCMSThemeWiring {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: {}
+        detail: {},
       })
     );
   }

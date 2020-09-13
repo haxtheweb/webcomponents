@@ -6,7 +6,7 @@
  * `IntersectionObserverMixin`
  * `Wiring to provide basic IntersectionObserver support to any web component`
  */
-const IntersectionObserverMixin = function(SuperClass) {
+const IntersectionObserverMixin = function (SuperClass) {
   // SuperClass so we can write any web component library / base class
   return class extends SuperClass {
     /**
@@ -40,8 +40,8 @@ const IntersectionObserverMixin = function(SuperClass) {
         elementVisible: {
           type: Boolean,
           attribute: "element-visible",
-          reflect: true
-        }
+          reflect: true,
+        },
       };
     }
     /**
@@ -59,7 +59,7 @@ const IntersectionObserverMixin = function(SuperClass) {
             root: document.rootElement,
             rootMargin: this.IORootMargin,
             threshold: this.IOThresholds,
-            delay: this.IODelay
+            delay: this.IODelay,
           }
         );
         this.intersectionObserver.observe(this);

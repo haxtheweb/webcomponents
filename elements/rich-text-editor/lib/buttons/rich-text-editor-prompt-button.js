@@ -7,7 +7,7 @@ import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "../singletons/rich-text-editor-selection.js";
 import "../singletons/rich-text-editor-prompt.js";
 
-const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
+const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
      * Store the tag name to make it easier to obtain directly.
@@ -29,55 +29,55 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
          * fields for the prompt popover.
          */
         fields: {
-          type: Array
+          type: Array,
         },
         /**
          * is the element a custom inline widget element?
          */
         inlineWidget: {
           name: "inlineWidget",
-          type: Boolean
+          type: Boolean,
         },
         /**
          * the tag that will wrap the selected range
          */
         tag: {
           name: "tag",
-          type: String
+          type: String,
         },
         /**
          * The prefilled value of the prompt
          */
         value: {
-          type: Object
+          type: Object,
         },
         /**
          * fields for the prompt popover.
          */
         __promptFields: {
-          type: Array
+          type: Array,
         },
         /**
          * the contents node inside the selected range
          */
         __oldValue: {
           name: "__oldValue",
-          type: Object
+          type: Object,
         },
         /**
          * the prompt that pops up when button is pressed
          */
         __prompt: {
           name: "__prompt",
-          type: Object
+          type: Object,
         },
         /**
          * the contents node inside the selected range
          */
         __selectionContents: {
           name: "__selectionContents",
-          type: Object
-        }
+          type: Object,
+        },
       };
     }
     constructor() {
@@ -89,13 +89,13 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
           slot: "",
           title: "Text",
           description: "The inner text",
-          inputMethod: "textfield"
-        }
+          inputMethod: "textfield",
+        },
       ];
       this.tag = "span";
       this.value = {
         "": null,
-        id: null
+        id: null,
       };
       this.__prompt = window.RichTextEditorPrompt.requestAvailability();
     }
@@ -144,13 +144,13 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       if (newEditor)
         newEditor.addEventListener(
           "click",
-          e => this._editInlineWidget(newEditor, e),
+          (e) => this._editInlineWidget(newEditor, e),
           true
         );
       if (oldEditor)
         oldEditor.removeEventListener(
           "click",
-          e => this._editInlineWidget(oldEditor, e),
+          (e) => this._editInlineWidget(oldEditor, e),
           true
         );
       super._editorChanged(newVal, oldVal);

@@ -111,7 +111,7 @@ class EditableTableEditorToggle extends PolymerElement {
       disabled: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Table id for accessibility
@@ -120,28 +120,28 @@ class EditableTableEditorToggle extends PolymerElement {
         type: String,
         value: "table",
         readOnly: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Button id that matches the table property to toggle
        */
       id: {
         type: String,
-        value: null
+        value: null,
       },
       /**
        * Button icon
        */
       icon: {
         type: String,
-        value: null
+        value: null,
       },
       /**
        * Button label
        */
       label: {
         type: String,
-        value: null
+        value: null,
       },
       /**
        * Whether the button is toggled
@@ -149,8 +149,8 @@ class EditableTableEditorToggle extends PolymerElement {
       toggled: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 
@@ -165,7 +165,7 @@ class EditableTableEditorToggle extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }

@@ -4,38 +4,42 @@
   justify-content: space-between;
   width: 100%;
 }
+
 #input {
   flex-grow: 2;
   margin-right: 4px;
   padding: var(--simple-search-padding, unset);
   margin: var(--simple-search-margin, unset);
   --paper-input-container-input-color: var(
-    --simple-search-input-text-color,
-    #000
-  );
+  --simple-search-input-text-color,
+  #000
+);
   --paper-input-container-shared-input-style_-_color: var(
-    --simple-search-input-text-color,
-    #000
-  );
+  --simple-search-input-text-color,
+  #000
+);
   --paper-input-container-focus-color: var(
-    --simple-search-input-line-color,
-    #000
-  );
+  --simple-search-input-line-color,
+  #000
+);
   --paper-input-container-color: var(
-    --simple-search-input-placeholder-color,
-    #222
-  );
+  --simple-search-input-placeholder-color,
+  #222
+);
   color: var(--simple-search-input-placeholder-color, #222);
 }
+
 #xofy {
   margin: 8px;
 }
+
 button {
   margin: 8px 0 8px;
   color: var(--simple-search-button-color, #111);
   background-color: var(--simple-search-button-bg-color, #eee);
   border-color: var(--simple-search-button-border-color, #ccc);
 }
+
 button:not([disabled]):focus,
 button:not([disabled]):hover {
   cursor: pointer;
@@ -43,15 +47,18 @@ button:not([disabled]):hover {
   background-color: var(--simple-search-button-hover-bg-color, #fff);
   border-color: var(--simple-search-button-hover-border-color, #ddd);
 }
+
 button[disabled] {
   cursor: not-allowed;
   color: var(--simple-search-button-disabled-color, #999);
   background-color: var(--simple-search-button-disabled-bg-color, #eee);
   border-color: var(--simple-search-button-disabled-border-color, #ccc);
 }
+
 button:not([controls]) {
   display: none;
 }
+
 *[shrink-hide] {
   display: none;
 }

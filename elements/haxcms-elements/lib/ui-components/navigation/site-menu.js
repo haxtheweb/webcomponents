@@ -51,7 +51,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         map-menu::-webkit-scrollbar-thumb {
           border-radius: 1px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -69,7 +69,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     this.preventAutoScroll = false;
     this.trackIcon = "";
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.routerManifest = Object.assign({}, toJS(store.routerManifest));
       this.__disposer.push(reaction);
     });
@@ -93,7 +93,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       super.firstUpdated(changedProperties);
     }
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
       setTimeout(() => {
@@ -111,36 +111,36 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
        * Manifest with router / location enhancements
        */
       routerManifest: {
-        type: Object
+        type: Object,
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        attribute: "active-id"
+        attribute: "active-id",
       },
       /**
        * Binding for active indicator and auto scrolling
        */
       hideActiveIndicator: {
         type: Boolean,
-        attribute: "hide-active-indicator"
+        attribute: "hide-active-indicator",
       },
       /**
        * prevent the automatic scrolling when items become active
        */
       preventAutoScroll: {
         type: Boolean,
-        attribute: "prevent-auto-scroll"
+        attribute: "prevent-auto-scroll",
       },
       /**
        * allow for visualizing the tracking of page requests
        */
       trackIcon: {
         type: String,
-        attribute: "track-icon"
-      }
+        attribute: "track-icon",
+      },
     };
   }
 
@@ -163,7 +163,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       typeof userData.manifests[this.routerManifest.id] === typeof undefined
     ) {
       userData.manifests[this.routerManifest.id] = {
-        accessData: {}
+        accessData: {},
       };
     }
     // edge case when switching rapidly
@@ -172,7 +172,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     }
     userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
       timestamp: Math.floor(Date.now() / 1000),
-      trackIcon: this.trackIcon
+      trackIcon: this.trackIcon,
     };
     for (var i in this.routerManifest.items) {
       if (this.routerManifest.items[i].id === e.detail.id) {

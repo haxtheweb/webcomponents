@@ -51,7 +51,7 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
         }
-      `
+      `,
     ];
   }
   /**
@@ -77,14 +77,14 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
        * Abbreviation text.
        */
       abbr: {
-        type: String
+        type: String,
       },
       /**
        * The thing the abbreviation represents.
        */
       phrase: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -104,12 +104,12 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "inline",
-            text: "text"
-          }
+            text: "text",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -118,15 +118,15 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
             title: "Abbreviation",
             description: "Abbreviation word",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "phrase",
             title: "Phrase",
             description: "The phrase / original words",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -134,18 +134,18 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
             title: "Abbreviation",
             description: "Abbreviation word",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "phrase",
             title: "Phrase",
             description: "The phrase / original words",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

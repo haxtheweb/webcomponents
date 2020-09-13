@@ -8,7 +8,7 @@ class LrndesignGallerycard extends LitElement {
     super();
     this.author = {
       name: "author",
-      display_name: "Author"
+      display_name: "Author",
     };
     this.title = "Project";
     this.elevation = 1;
@@ -30,12 +30,12 @@ class LrndesignGallerycard extends LitElement {
           "title",
           "author",
           "elevation",
-          "comments"
+          "comments",
         ].includes(propName)
       ) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
-            value: this[propName]
+            value: this[propName],
           })
         );
       }
@@ -160,7 +160,7 @@ class LrndesignGallerycard extends LitElement {
         .inline {
           display: inline;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -215,48 +215,48 @@ class LrndesignGallerycard extends LitElement {
     return {
       size: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Cover image src.
        */
       image: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Icon to use if image isn't there.
        */
       icon: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Title of the gallery item
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Gallery creator
        */
       author: {
-        type: Object
+        type: Object,
       },
       /**
        * Visual elevation of the item off the UI via paper element height
        */
       elevation: {
         type: Number,
-        reflect: true
+        reflect: true,
       },
       /**
        * Number of comments this has
        */
       comments: {
         type: Number,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

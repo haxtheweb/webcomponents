@@ -79,7 +79,7 @@ class EditableTableSort extends PolymerElement {
       columnIndex: {
         type: Number,
         value: null,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Sort mode: ascending, descending or none
@@ -87,7 +87,7 @@ class EditableTableSort extends PolymerElement {
       sortMode: {
         type: String,
         value: "none",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Index of the current sort column
@@ -95,7 +95,7 @@ class EditableTableSort extends PolymerElement {
       sortColumn: {
         type: Number,
         value: -1,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Whether the column is being sorted
@@ -103,15 +103,15 @@ class EditableTableSort extends PolymerElement {
       sorting: {
         type: Boolean,
         computed: "_isSorting(columnIndex,sortColumn)",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Column header text
        */
       text: {
         type: String,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
 
@@ -125,7 +125,7 @@ class EditableTableSort extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }

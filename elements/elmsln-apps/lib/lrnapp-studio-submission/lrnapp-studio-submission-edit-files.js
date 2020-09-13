@@ -42,7 +42,7 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
           <lrnapp-studio-submission-edit-file
             file="[[file]]"
             on-deleted="_deleteImage"
-            data-index\$="[[index]]"
+            data-index$="[[index]]"
           ></lrnapp-studio-submission-edit-file>
         </template>
         <lrnapp-studio-submission-edit-add-asset
@@ -82,21 +82,21 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
       files: {
         type: Array,
         notify: true,
-        value: null
+        value: null,
       },
       selectedPage: {
         type: String,
-        value: 0
+        value: 0,
       },
       uploadUrl: {
         type: String,
         value: null,
-        observer: "log"
+        observer: "log",
       },
       fileTypes: {
         type: String,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
 

@@ -65,17 +65,17 @@ class LrnsysOutline extends PolymerElement {
     return {
       data: {
         type: Array,
-        value: null
+        value: null,
       },
       items: {
         type: Array,
         value: null,
-        notify: true
+        notify: true,
       },
       activeItem: {
         type: Object,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   /**
@@ -85,7 +85,7 @@ class LrnsysOutline extends PolymerElement {
     super.connectedCallback();
     window.SimpleModal.requestAvailability();
     // fix stack order
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener("delete-item", this._handleRemoveItem.bind(this));
       this.addEventListener("indent-item", this._handleIndentItem.bind(this));
       this.addEventListener("add-item", this._handleAddItem.bind(this));
@@ -114,8 +114,8 @@ class LrnsysOutline extends PolymerElement {
           id: "outline-item-" + this.__tempid,
           title: "",
           order: 0,
-          parent: null
-        }
+          parent: null,
+        },
       ];
     }
     this.setData(this.data);
@@ -163,13 +163,13 @@ class LrnsysOutline extends PolymerElement {
   addItem(detail) {
     let item = detail.item;
     let title = detail.new;
-    let spliceIndex = this.items.findIndex(j => j.id === item.id) + 1;
+    let spliceIndex = this.items.findIndex((j) => j.id === item.id) + 1;
     this.__tempid = this.__tempid + 1;
     this.splice("items", spliceIndex, 0, {
       id: "outline-item-" + this.__tempid,
       title: title,
       indent: item.indent,
-      parent: item.parent
+      parent: item.parent,
     });
     this.items[spliceIndex].indentLevel = item.indent;
     this.notifyPath(`items.${spliceIndex}.indentLevel`);
@@ -187,7 +187,7 @@ class LrnsysOutline extends PolymerElement {
    * removes an item
    */
   removeItem(item) {
-    let i = this.items.findIndex(j => j.id === item.id);
+    let i = this.items.findIndex((j) => j.id === item.id);
     let b = document.createElement("paper-button");
     b.raised = true;
     b.addEventListener("click", this._deleteItemConfirm.bind(this));
@@ -198,11 +198,11 @@ class LrnsysOutline extends PolymerElement {
       detail: {
         title: `Do you really want to delete ${this.items[i].title}?`,
         elements: {
-          buttons: b
+          buttons: b,
         },
         invokedBy: item.shadowRoot.querySelector("#delete"),
-        clone: false
-      }
+        clone: false,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -210,12 +210,12 @@ class LrnsysOutline extends PolymerElement {
    * Delete item confirmation
    */
   _deleteItemConfirm(e) {
-    let i = this.items.findIndex(j => j.id === this.activeItem.id);
+    let i = this.items.findIndex((j) => j.id === this.activeItem.id);
     this.activeItem.classList.add("collapse-to-remove");
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       cancelable: true,
-      detail: {}
+      detail: {},
     });
     this.dispatchEvent(evt);
     setTimeout(() => {
@@ -337,7 +337,7 @@ class LrnsysOutline extends PolymerElement {
    */
   _getIndent(data, i) {
     if (typeof data[i].parent !== typeof undefined) {
-      let k = data.findIndex(j => j.id === data[i].parent);
+      let k = data.findIndex((j) => j.id === data[i].parent);
       if (
         k !== -1 &&
         typeof data[k] !== typeof undefined &&
@@ -389,7 +389,7 @@ class LrnsysOutline extends PolymerElement {
    * get an item by item id
    */
   _getItemById(id, offset) {
-    let i = this.items.findIndex(j => j.id === id);
+    let i = this.items.findIndex((j) => j.id === id);
     offset = offset === undefined ? 0 : offset;
     if (this.items[i + offset] !== undefined) {
       return this.items[i + offset];
@@ -439,7 +439,7 @@ class LrnsysOutline extends PolymerElement {
    */
   _handleChangeItem(e) {
     if (this._getItemById(e.detail.item.id) != null) {
-      let i = this.items.findIndex(j => j.id === e.detail.item.id);
+      let i = this.items.findIndex((j) => j.id === e.detail.item.id);
       if (typeof this.items[i] !== typeof undefined) {
         this.items[i].title = e.detail.value;
         this.notifyPath(`items.${i}.title`);

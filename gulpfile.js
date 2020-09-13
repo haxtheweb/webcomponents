@@ -6,9 +6,9 @@ gulp.task("default", () => {
     .src("../../templates/libraries/**/package.json")
     .pipe(
       concat(".wcflibcache.json", {
-        process: function(src, filePath) {
+        process: function (src, filePath) {
           return src + ",";
-        }
+        },
       })
     )
     .pipe(concat.header("["))

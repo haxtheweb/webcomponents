@@ -117,7 +117,7 @@ class ExifData extends HTMLElement {
   }
   clickImage(e) {
     if (e.target.tagName === "IMG") {
-      this.nodeData.forEach(item => {
+      this.nodeData.forEach((item) => {
         if (item.node === e.target) {
           this.showDetails(item);
         }
@@ -135,14 +135,14 @@ class ExifData extends HTMLElement {
       delete data.thumbnail;
       this.nodeData.push({
         node: node,
-        data: data
+        data: data,
       });
     });
   }
   updateExif(show = false) {
     this.nodeData = [];
     this.dataElement.innerHTML = "";
-    this.childNodes.forEach(node => {
+    this.childNodes.forEach((node) => {
       if (this.__ready && node.tagName && node.tagName === "IMG") {
         this.getExifData(node);
       }
@@ -174,11 +174,11 @@ class ExifData extends HTMLElement {
       this.noLeft = true;
     }
     // any change, update things
-    this.observer = new MutationObserver(mutations => {
+    this.observer = new MutationObserver((mutations) => {
       this.updateExif();
     });
     this.observer.observe(this, {
-      childList: true
+      childList: true,
     });
   }
 

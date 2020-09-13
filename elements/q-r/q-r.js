@@ -20,7 +20,7 @@ class QR extends LitElement {
           visibility: hidden;
           opacity: 0;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -51,32 +51,32 @@ class QR extends LitElement {
        * Data to code via QR code
        */
       data: {
-        type: String
+        type: String,
       },
       /**
        * Alternate title for the data
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * module size of the square
        */
       modulesize: {
-        type: Number
+        type: Number,
       },
       /**
        * Margin on the square
        */
       margin: {
-        type: Number
+        type: Number,
       },
       /**
        * format to output
        */
       format: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -98,22 +98,22 @@ class QR extends LitElement {
           {
             type: "video",
             source: "data",
-            title: "title"
+            title: "title",
           },
           {
             type: "image",
             source: "data",
-            title: "title"
+            title: "title",
           },
           {
             type: "link",
             source: "data",
-            title: "title"
-          }
+            title: "title",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -122,7 +122,7 @@ class QR extends LitElement {
             title: "QR data",
             description: "Source of the data for the QR code.",
             inputMethod: "textfield",
-            icon: "hardware:developer-board"
+            icon: "hardware:developer-board",
           },
           {
             property: "title",
@@ -130,21 +130,21 @@ class QR extends LitElement {
             description:
               "An alternate title to go to the source of the QR code.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "modulesize",
             title: "Size",
             description: "Size of the QR code",
             inputMethod: "textfield",
-            icon: "image:photo-size-select-small"
+            icon: "image:photo-size-select-small",
           },
           {
             property: "margin",
             title: "Margin",
             description: "Wrapper to the code.",
             inputMethod: "textfield",
-            icon: "icons:settings-overscan"
+            icon: "icons:settings-overscan",
           },
           {
             property: "format",
@@ -154,10 +154,10 @@ class QR extends LitElement {
             options: {
               png: "PNG",
               html: "HTML",
-              svg: "SVG"
+              svg: "SVG",
             },
-            icon: "editor:bubble-chart"
-          }
+            icon: "editor:bubble-chart",
+          },
         ],
         configure: [
           {
@@ -165,7 +165,7 @@ class QR extends LitElement {
             title: "QR data",
             description: "Source of the data for the QR code.",
             inputMethod: "haxupload",
-            icon: "hardware:developer-board"
+            icon: "hardware:developer-board",
           },
           {
             property: "title",
@@ -173,21 +173,21 @@ class QR extends LitElement {
             description:
               "An alternate title to go to the source of the QR code.",
             inputMethod: "alt",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "modulesize",
             title: "Size",
             description: "Size of the QR code",
             inputMethod: "number",
-            icon: "image:photo-size-select-small"
+            icon: "image:photo-size-select-small",
           },
           {
             property: "margin",
             title: "Margin",
             description: "Wrapper to the code.",
             inputMethod: "number",
-            icon: "icons:settings-overscan"
+            icon: "icons:settings-overscan",
           },
           {
             property: "format",
@@ -197,13 +197,13 @@ class QR extends LitElement {
             options: {
               png: "PNG",
               html: "HTML",
-              svg: "SVG"
+              svg: "SVG",
             },
-            icon: "editor:bubble-chart"
-          }
+            icon: "editor:bubble-chart",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

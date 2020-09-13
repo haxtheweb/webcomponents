@@ -28,13 +28,13 @@ class HaxCeContext extends winEventsElement(LitElement) {
           top: 40px;
           flex-direction: column;
         }
-      `
+      `,
     ];
   }
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.haxProperties = {};
     setTimeout(() => {
@@ -84,14 +84,14 @@ class HaxCeContext extends winEventsElement(LitElement) {
   static get properties() {
     return {
       disableTransform: {
-        type: Boolean
+        type: Boolean,
       },
       activeTagIcon: {
-        type: String
+        type: String,
       },
       activeTagName: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**

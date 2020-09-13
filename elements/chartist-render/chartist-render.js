@@ -7,7 +7,7 @@ import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 
-const ChartistRenderSuper = function(SuperClass) {
+const ChartistRenderSuper = function (SuperClass) {
   return class extends SuperClass {
     //styles function
     static get styles() {
@@ -1055,7 +1055,7 @@ const ChartistRenderSuper = function(SuperClass) {
           .ct-series-o .ct-area {
             fill: var(--chartist-color-15, #a748ca);
           }
-        `
+        `,
       ];
     }
 
@@ -1107,21 +1107,21 @@ const ChartistRenderSuper = function(SuperClass) {
          */
         chartTitle: {
           type: String,
-          attribute: "chart-title"
+          attribute: "chart-title",
         },
         /**
          * Raw data pulled in from the csv file and converted to an array.
          */
         chartData: {
           type: Array,
-          attribute: "chart-data"
+          attribute: "chart-data",
         },
         /**
          * DEPRECATED: Use desc slot instead for progressive enhancement.
          */
         chartDesc: {
           type: String,
-          attribute: "chart-desc"
+          attribute: "chart-desc",
         },
         /**
          * Use an accessible table in unnamed slot for maxium accessibility and SEO.
@@ -1142,7 +1142,7 @@ const ChartistRenderSuper = function(SuperClass) {
          */
         data: {
           type: Object,
-          attribute: "data"
+          attribute: "data",
         },
         /**
          * Location of the CSV file.
@@ -1150,19 +1150,19 @@ const ChartistRenderSuper = function(SuperClass) {
         dataSource: {
           type: String,
           attribute: "data-source",
-          reflect: true
+          reflect: true,
         },
         /**
          * The unique identifier of the chart.
          */
         id: {
-          type: String
+          type: String,
         },
         /**
          * The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.
          */
         options: {
-          type: Object
+          type: Object,
         },
         /**
          * Optional data for chartist-plugin-axistitle,
@@ -1170,7 +1170,7 @@ const ChartistRenderSuper = function(SuperClass) {
          * See https://github.com/alexstanbury/chartist-plugin-axistitle
          */
         pluginAxisTitle: {
-          type: Object
+          type: Object,
         },
         /**
          * Optional data for chartist-plugin-pointlabels,
@@ -1178,7 +1178,7 @@ const ChartistRenderSuper = function(SuperClass) {
          * See https://github.com/gionkunz/chartist-plugin-pointlabels
          */
         pluginPointLabels: {
-          type: Object
+          type: Object,
         },
         /**
          * Optional array of items for chartist-plugin-filldonut,
@@ -1186,7 +1186,7 @@ const ChartistRenderSuper = function(SuperClass) {
          * See https://github.com/moxx/chartist-plugin-fill-donut
          */
         pluginFillDonutItems: {
-          type: Array
+          type: Array,
         },
         /**
    * The responsive options.
@@ -1220,7 +1220,7 @@ const ChartistRenderSuper = function(SuperClass) {
    */
         responsiveOptions: {
           type: Array,
-          attribute: "responsive-options"
+          attribute: "responsive-options",
         },
         /**
    * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
@@ -1244,21 +1244,21 @@ Container class	Ratio
 .ct-double-octave	  1:4```
    */
         scale: {
-          type: String
+          type: String,
         },
         /**
          * The show data in table form as well? Default is false.
          */
         showTable: {
           type: Boolean,
-          attribute: "show-table"
+          attribute: "show-table",
         },
         /**
          * The type of chart:bar, line, or pie
          */
         type: {
-          type: String
-        }
+          type: String,
+        },
       };
     }
 
@@ -1282,7 +1282,7 @@ Container class	Ratio
       this.observer.observe(this, {
         attributes: false,
         childList: true,
-        subtree: true
+        subtree: true,
       });
       /**
        * Fired once once chart is ready.
@@ -1295,7 +1295,7 @@ Container class	Ratio
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
       if (typeof Chartist === "object") this._chartistLoaded.bind(this);
@@ -1317,16 +1317,16 @@ Container class	Ratio
       return [
         [
           "Chartist.plugins.ctAxisTitle",
-          "lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js"
+          "lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js",
         ],
         [
           "Chartist.plugins.CtPointLabels",
-          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"
+          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js",
         ],
         [
           "Chartist.plugins.fillDonut",
-          "lib/chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js"
-        ]
+          "lib/chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js",
+        ],
       ];
     }
     /**
@@ -1351,7 +1351,7 @@ Container class	Ratio
            */
           this.dispatchEvent(
             new CustomEvent("chart-data-changed", {
-              detail: this
+              detail: this,
             })
           );
           this._getChart();
@@ -1362,7 +1362,7 @@ Container class	Ratio
            */
           this.dispatchEvent(
             new CustomEvent("data-source-changed", {
-              detail: this
+              detail: this,
             })
           );
         } else if (
@@ -1375,7 +1375,7 @@ Container class	Ratio
            */
           this.dispatchEvent(
             new CustomEvent("data-changed", {
-              detail: this
+              detail: this,
             })
           );
           this._renderTable();
@@ -1405,7 +1405,7 @@ Container class	Ratio
         "es-bridge-chartistLib-loaded",
         this._chartistLoaded.bind(this)
       );
-      this.plugins.forEach(plugin =>
+      this.plugins.forEach((plugin) =>
         window.removeEventListener(
           `es-bridge-${plugin[0]}-loaded`,
           this._getChart.bind(this)
@@ -1421,7 +1421,7 @@ Container class	Ratio
     _chartistLoaded() {
       this.__chartistLoaded = true;
       this._getChart();
-      this.plugins.forEach(plugin => this._loadScripts(plugin[0], plugin[1]));
+      this.plugins.forEach((plugin) => this._loadScripts(plugin[0], plugin[1]));
     }
 
     /**
@@ -1524,7 +1524,7 @@ Container class	Ratio
             this.responsiveOptions !== undefined &&
             this.responsiveOptions.length > 0
           ) {
-            this.responsiveOptions.forEach(option => {
+            this.responsiveOptions.forEach((option) => {
               if (option[1] !== undefined) {
                 if (
                   option[1].axisX &&
@@ -1557,7 +1557,7 @@ Container class	Ratio
             target,
             {
               labels: this.chartData.labels || [],
-              series: this.chartData.series || []
+              series: this.chartData.series || [],
             },
             this.fullOptions,
             this.responsiveOptions
@@ -1574,11 +1574,11 @@ Container class	Ratio
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: chart
+            detail: chart,
           })
         );
         if (chart) {
-          chart.on("created", e => {
+          chart.on("created", (e) => {
             /**
              * Fired once chart is created features are added.
              *
@@ -1590,11 +1590,11 @@ Container class	Ratio
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: e
+                detail: e,
               })
             );
           });
-          chart.on("draw", e => {
+          chart.on("draw", (e) => {
             /**
              * Fired as shapes are being drawn.
              *
@@ -1606,7 +1606,7 @@ Container class	Ratio
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: e
+                detail: e,
               })
             );
           });
@@ -1656,11 +1656,11 @@ Container class	Ratio
             ? undefined
             : {
                 row: rowHeads ? data[0][0] : undefined,
-                col: rowHeads ? data[0].slice(1, data[0].length) : data[0]
+                col: rowHeads ? data[0].slice(1, data[0].length) : data[0],
               },
           tbody = data
             .slice(thead ? 1 : 0, data.length)
-            .map(row =>
+            .map((row) =>
               rowHeads
                 ? { th: row[0], td: row.slice(1, row.length) }
                 : { td: row }
@@ -1672,7 +1672,7 @@ Container class	Ratio
             ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
             ${
               thead.col
-                ? thead.col.map(th => `<th scope="col">${th}</th>`).join("")
+                ? thead.col.map((th) => `<th scope="col">${th}</th>`).join("")
                 : ``
             }
           </tr></thead>`;
@@ -1681,10 +1681,10 @@ Container class	Ratio
           <tbody>
             ${tbody
               .map(
-                tr => `
+                (tr) => `
               <tr>
                 ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
-                ${tr.td ? tr.td.map(td => `<td>${td}</td>`).join("") : ``}
+                ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
               </tr>
             `
               )
@@ -1713,12 +1713,12 @@ Container class	Ratio
         body = colHeads && data[1] ? data.slice(1, data.length) : data;
       if (rowHeads) {
         labels = labels.slice(1, labels.length);
-        body = body.map(row => row.slice(1, row.length));
+        body = body.map((row) => row.slice(1, row.length));
       }
       this.__dataReady = true;
       this.chartData = {
         labels: labels,
-        series: this.type === "pie" ? body[0] : body
+        series: this.type === "pie" ? body[0] : body,
       };
     }
 
@@ -1729,9 +1729,9 @@ Container class	Ratio
       let table = this.querySelector("table"),
         data = [];
       if (table)
-        table.querySelectorAll("tr").forEach(tr => {
+        table.querySelectorAll("tr").forEach((tr) => {
           let temp = [];
-          tr.querySelectorAll("th,td").forEach(td => {
+          tr.querySelectorAll("th,td").forEach((td) => {
             let html = td.innerHTML.trim();
             temp.push(isNaN(html) ? html : parseInt(html));
           });

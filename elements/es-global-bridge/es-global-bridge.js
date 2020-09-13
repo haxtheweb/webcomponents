@@ -35,8 +35,8 @@ export class ESGlobalBridge {
                 cancelable: true,
                 detail: {
                   name: name,
-                  location: location
-                }
+                  location: location,
+                },
               });
               document.dispatchEvent(evt);
             }, 100);

@@ -99,7 +99,7 @@ class SimpleBlogPost extends SimpleColors {
         :host([edit-mode]) #slot {
           display: none;
         }
-      `
+      `,
     ];
   }
   /**
@@ -173,7 +173,7 @@ class SimpleBlogPost extends SimpleColors {
       hasImage: {
         type: Boolean,
         reflect: true,
-        attribute: "has-image"
+        attribute: "has-image",
       },
       /**
        * editting state for the page
@@ -181,11 +181,11 @@ class SimpleBlogPost extends SimpleColors {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       image: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -195,14 +195,16 @@ class SimpleBlogPost extends SimpleColors {
   constructor() {
     super();
     this.editMode = false;
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
   }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = [];
     setTimeout(() => {
       window.addEventListener("scroll", this._scrollListener.bind(this));
-      autorun(reaction => {
+      autorun((reaction) => {
         const fields = toJS(store.activeItemFields);
         this.hasImage = this._computeHasImage(fields);
         if (this.hasImage) {

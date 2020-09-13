@@ -21,7 +21,7 @@ class HaxTextEditorInline extends RichTextEditorPromptButton {
     this.inlineWidget = true;
     this.toggles = true;
     this.value = {
-      "": null
+      "": null,
     };
   }
 
@@ -30,24 +30,24 @@ class HaxTextEditorInline extends RichTextEditorPromptButton {
     return {
       element: {
         type: Object,
-        value: null
+        value: null,
       },
       tag: {
         type: String,
-        computed: "_getTag(element)"
+        computed: "_getTag(element)",
       },
       icon: {
         type: String,
-        computed: "_getIcon(element)"
+        computed: "_getIcon(element)",
       },
       label: {
         type: String,
-        computed: "_getLabel(element)"
+        computed: "_getLabel(element)",
       },
       fields: {
         type: String,
-        computed: "_getFields(element)"
-      }
+        computed: "_getFields(element)",
+      },
     };
   }
 

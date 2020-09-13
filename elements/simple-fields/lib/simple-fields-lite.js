@@ -226,7 +226,7 @@ class SimpleFieldsLite extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -246,14 +246,14 @@ class SimpleFieldsLite extends LitElement {
        * Disables autofocus on fields.
        */
       disableAutofocus: {
-        type: Boolean
+        type: Boolean,
       },
       /*
        * Error messages by field name,
        * eg. `{ contactinfo.email: "A valid email is required." }`
        */
       error: {
-        type: Object
+        type: Object,
       },
       /*
        * Language of the fields.
@@ -261,20 +261,20 @@ class SimpleFieldsLite extends LitElement {
       language: {
         type: String,
         attribute: "lang",
-        reflect: true
+        reflect: true,
       },
       /*
        * resource link
        */
       resources: {
-        type: Object
+        type: Object,
       },
       /*
        * Fields schema.
        * _See [Fields Schema Format](fields-schema-format) above._
        */
       schema: {
-        type: Object
+        type: Object,
       },
       /**
        * Conversion from JSON Schema to HTML form elements.
@@ -283,26 +283,26 @@ class SimpleFieldsLite extends LitElement {
       elementizer: {
         type: Object,
         attribute: "elementizer",
-        reflect: true
+        reflect: true,
       },
       /*
        * value of fields
        */
       value: {
-        type: Object
+        type: Object,
       },
       /*
        * form elements by id and config data in schema
        */
       __formElements: {
-        type: Object
+        type: Object,
       },
       /*
        * list form elements in order and config data in schema
        */
       __formElementsArray: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -372,12 +372,12 @@ class SimpleFieldsLite extends LitElement {
         defaultSettings: {
           element: "input",
           attributes: {
-            type: "text"
+            type: "text",
           },
           properties: {
             minLength: "minlength",
-            maxLength: "maxlength"
-          }
+            maxLength: "maxlength",
+          },
         },
         type: {
           array: {
@@ -391,10 +391,10 @@ class SimpleFieldsLite extends LitElement {
                 noWrap: true,
                 descriptionProperty: "description",
                 properties: {
-                  previewBy: "previewBy"
-                }
-              }
-            }
+                  previewBy: "previewBy",
+                },
+              },
+            },
           },
           boolean: {
             defaultSettings: {
@@ -403,17 +403,17 @@ class SimpleFieldsLite extends LitElement {
               valueChangedProperty: "click",
               attributes: {
                 type: "checkbox",
-                value: false
-              }
-            }
+                value: false,
+              },
+            },
           },
           file: {
             defaultSettings: {
               element: "input",
               attributes: {
-                type: "url"
-              }
-            }
+                type: "url",
+              },
+            },
           },
           integer: {
             defaultSettings: {
@@ -421,40 +421,40 @@ class SimpleFieldsLite extends LitElement {
               attributes: {
                 autofocus: true,
                 step: 1,
-                type: "number"
+                type: "number",
               },
               properties: {
                 minimum: "min",
                 maximum: "max",
-                multipleOf: "step"
-              }
-            }
+                multipleOf: "step",
+              },
+            },
           },
           markup: {
             defaultSettings: {
-              element: "textarea"
-            }
+              element: "textarea",
+            },
           },
           number: {
             defaultSettings: {
               element: "input",
               attributes: {
                 autofocus: true,
-                type: "number"
+                type: "number",
               },
               properties: {
                 minimum: "min",
                 maximum: "max",
-                multipleOf: "step"
-              }
-            }
+                multipleOf: "step",
+              },
+            },
           },
           object: {
             defaultSettings: {
               element: "simple-fields-fieldset",
               noWrap: true,
-              descriptionProperty: "description"
-            }
+              descriptionProperty: "description",
+            },
           },
           string: {
             format: {
@@ -463,49 +463,49 @@ class SimpleFieldsLite extends LitElement {
                   element: "input",
                   attributes: {
                     autofocus: true,
-                    type: "datetime-local"
-                  }
-                }
+                    type: "datetime-local",
+                  },
+                },
               },
               time: {
                 defaultSettings: {
                   element: "input",
                   attributes: {
                     autofocus: true,
-                    type: "time"
-                  }
-                }
+                    type: "time",
+                  },
+                },
               },
               date: {
                 defaultSettings: {
                   element: "input",
                   attributes: {
                     autofocus: true,
-                    type: "date"
-                  }
-                }
+                    type: "date",
+                  },
+                },
               },
               email: {
                 defaultSettings: {
                   element: "input",
                   attributes: {
                     autofocus: true,
-                    type: "email"
-                  }
-                }
+                    type: "email",
+                  },
+                },
               },
               uri: {
                 defaultSettings: {
                   element: "input",
                   attributes: {
                     autofocus: true,
-                    type: "url"
-                  }
-                }
-              }
-            }
-          }
-        }
+                    type: "url",
+                  },
+                },
+              },
+            },
+          },
+        },
       }
     );
   }
@@ -552,7 +552,7 @@ class SimpleFieldsLite extends LitElement {
     let schemaProps = schema.properties,
       required = schema.required,
       schemaKeys = Object.keys(schemaProps || {});
-    schemaKeys.forEach(key => {
+    schemaKeys.forEach((key) => {
       let schemaProp = schemaProps[key],
         data = config || this._convertSchema(schemaProp);
       if (data && data.element) {
@@ -639,7 +639,7 @@ class SimpleFieldsLite extends LitElement {
         );
 
         //handle data type attributes
-        Object.keys(data.attributes || {}).forEach(attr => {
+        Object.keys(data.attributes || {}).forEach((attr) => {
           if (
             typeof data.attributes[attr] !== undefined &&
             data.attributes[attr] !== null
@@ -649,16 +649,16 @@ class SimpleFieldsLite extends LitElement {
         });
 
         //handle schema properties
-        Object.keys(data.properties || {}).forEach(prop => {
+        Object.keys(data.properties || {}).forEach((prop) => {
           if (data.properties[prop] && schemaProp[prop]) {
             element[data.properties[prop]] = schemaProp[prop];
           }
         });
 
         //handle data type slots
-        Object.keys(data.slots || {}).forEach(slot => {
+        Object.keys(data.slots || {}).forEach((slot) => {
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
-            data.slots[slot].split(/[\s,]/).forEach(field => {
+            data.slots[slot].split(/[\s,]/).forEach((field) => {
               let span = document.createElement("span");
               span.slot = slot;
               span.innerHTML = schemaProp[field];
@@ -693,10 +693,10 @@ class SimpleFieldsLite extends LitElement {
               data.setValueProperty,
               data.valueSlot
             );
-          element.addEventListener(data.valueChangedProperty, e =>
+          element.addEventListener(data.valueChangedProperty, (e) =>
             this._handleChange(element, data.valueProperty, e)
           );
-          wrapper.addEventListener(data.errorChangedProperty, e => {
+          wrapper.addEventListener(data.errorChangedProperty, (e) => {
             let error = this._deepClone(this.error || {});
             if (wrapper[data.errorProperty]) {
               error[id] = wrapper[data.errorMessageProperty] || "";
@@ -729,7 +729,7 @@ class SimpleFieldsLite extends LitElement {
       if (target)
         target
           .querySelectorAll(`[slot=${slotName}]`)
-          .forEach(el => el.remove());
+          .forEach((el) => el.remove());
       target.appendChild(span);
     } else {
       target[propName] = value;
@@ -773,18 +773,18 @@ class SimpleFieldsLite extends LitElement {
       this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });
 
-    parent.addEventListener("add", e => {
+    parent.addEventListener("add", (e) => {
       this._insertArrayItem(schema, previewBy, element, parent, {});
     });
 
-    parent.addEventListener("remove", e => {
+    parent.addEventListener("remove", (e) => {
       let id = e.detail.id,
         //temp = [],
         vals = this._getValue(parent.name) || [],
         index = id.replace(`${parent.name}.`, "");
       vals.splice(parseInt(index), 1);
       this.__formElementsArray = this.__formElementsArray.filter(
-        field => field.id.indexOf(parent.name) === 0
+        (field) => field.id.indexOf(parent.name) === 0
       );
       parent.innerHTML = "";
       vals.forEach((item, i) =>
@@ -812,7 +812,7 @@ class SimpleFieldsLite extends LitElement {
    * clears form
    */
   _clearForm() {
-    this.querySelectorAll("*").forEach(child => child.remove());
+    this.querySelectorAll("*").forEach((child) => child.remove());
     this.__formElementsArray = [];
   }
 
@@ -825,10 +825,12 @@ class SimpleFieldsLite extends LitElement {
    */
   _convertSchema(property, conversion = this.schemaConversion, settings) {
     let propKeys = Object.keys(property || {}),
-      convKeys = Object.keys(conversion).filter(key => propKeys.includes(key));
+      convKeys = Object.keys(conversion).filter((key) =>
+        propKeys.includes(key)
+      );
     if (conversion.defaultSettings)
       settings = this._deepClone(conversion.defaultSettings);
-    convKeys.forEach(key => {
+    convKeys.forEach((key) => {
       let val = property[key],
         convData = conversion ? conversion[key] : undefined,
         convVal = !convData
@@ -854,7 +856,7 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
-    this.formElementsArray.forEach(field => {
+    this.formElementsArray.forEach((field) => {
       let data = field.data || {},
         el = field.field,
         id = field.id;
@@ -862,7 +864,7 @@ class SimpleFieldsLite extends LitElement {
         let message = this.error[field.id] || false,
           error = this.error[field.id] ? true : false;
         if (!error)
-          Object.keys(this.error || {}).forEach(key => {
+          Object.keys(this.error || {}).forEach((key) => {
             if (key.match(field.id)) {
               error = true;
               return;
@@ -890,7 +892,7 @@ class SimpleFieldsLite extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -905,7 +907,7 @@ class SimpleFieldsLite extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -918,7 +920,7 @@ class SimpleFieldsLite extends LitElement {
   _getValue(propName) {
     let path = propName.split("."),
       pointer = this.value;
-    path.forEach(prop => {
+    path.forEach((prop) => {
       if (pointer && pointer[prop]) {
         pointer = pointer[prop];
       } else {
@@ -947,8 +949,8 @@ class SimpleFieldsLite extends LitElement {
         detail: {
           id: id,
           element: element,
-          value: val
-        }
+          value: val,
+        },
       })
     );
     this._fireValueChanged();
@@ -969,7 +971,7 @@ class SimpleFieldsLite extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

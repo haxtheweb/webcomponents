@@ -24,7 +24,7 @@ var options = {
   classPrefix: "hljs-",
   tabReplace: null,
   useBR: false,
-  languages: undefined
+  languages: undefined,
 };
 
 /* Utility functions */
@@ -79,7 +79,7 @@ function inherit(parent) {
   var objects = Array.prototype.slice.call(arguments, 1);
 
   for (key in parent) result[key] = parent[key];
-  objects.forEach(function(obj) {
+  objects.forEach(function (obj) {
     for (key in obj) result[key] = obj[key];
   });
   return result;
@@ -96,7 +96,7 @@ function nodeStream(node) {
         result.push({
           event: "start",
           offset: offset,
-          node: child
+          node: child,
         });
         offset = _nodeStream(child, offset);
         // Prevent void elements from having an end tag that would actually
@@ -106,7 +106,7 @@ function nodeStream(node) {
           result.push({
             event: "stop",
             offset: offset,
-            node: child
+            node: child,
           });
         }
       }
@@ -207,7 +207,7 @@ function mergeStreams(original, highlighted, value) {
 
 function expand_mode(mode) {
   if (mode.variants && !mode.cached_variants) {
-    mode.cached_variants = mode.variants.map(function(variant) {
+    mode.cached_variants = mode.variants.map(function (variant) {
       return inherit(mode, { variants: null }, variant);
     });
   }
@@ -277,15 +277,15 @@ function compileLanguage(language) {
     if (mode.keywords) {
       var compiled_keywords = {};
 
-      var flatten = function(className, str) {
+      var flatten = function (className, str) {
         if (language.case_insensitive) {
           str = str.toLowerCase();
         }
-        str.split(" ").forEach(function(kw) {
+        str.split(" ").forEach(function (kw) {
           var pair = kw.split("|");
           compiled_keywords[pair[0]] = [
             className,
-            pair[1] ? Number(pair[1]) : 1
+            pair[1] ? Number(pair[1]) : 1,
           ];
         });
       };
@@ -294,7 +294,7 @@ function compileLanguage(language) {
         // string
         flatten("keyword", mode.keywords);
       } else {
-        objectKeys(mode.keywords).forEach(function(className) {
+        objectKeys(mode.keywords).forEach(function (className) {
           flatten(className, mode.keywords[className]);
         });
       }
@@ -322,11 +322,11 @@ function compileLanguage(language) {
     }
     mode.contains = Array.prototype.concat.apply(
       [],
-      mode.contains.map(function(c) {
+      mode.contains.map(function (c) {
         return expand_mode(c === "self" ? mode : c);
       })
     );
-    mode.contains.forEach(function(c) {
+    mode.contains.forEach(function (c) {
       compileMode(c, mode);
     });
 
@@ -335,7 +335,7 @@ function compileLanguage(language) {
     }
 
     var terminators = mode.contains
-      .map(function(c) {
+      .map(function (c) {
         return c.beginKeywords ? "\\.?(?:" + c.begin + ")\\.?" : c.begin;
       })
       .concat([mode.terminator_end, mode.illegal])
@@ -344,9 +344,9 @@ function compileLanguage(language) {
     mode.terminators = terminators.length
       ? langRe(joinRe(terminators, "|"), true)
       : {
-          exec: function(/*s*/) {
+          exec: function (/*s*/) {
             return null;
-          }
+          },
         };
   }
 
@@ -596,13 +596,13 @@ function highlight(name, value, ignore_illegals, continuation) {
       relevance: relevance,
       value: result,
       language: name,
-      top: top
+      top: top,
     };
   } catch (e) {
     if (e.message && e.message.indexOf("Illegal") !== -1) {
       return {
         relevance: 0,
-        value: escape(value)
+        value: escape(value),
       };
     } else {
       throw e;
@@ -625,13 +625,13 @@ function highlightAuto(text, languageSubset) {
   languageSubset = languageSubset || options.languages || objectKeys(languages);
   var result = {
     relevance: 0,
-    value: escape(text)
+    value: escape(text),
   };
   var second_best = result;
   languageSubset
     .filter(getLanguage)
     .filter(autoDetection)
-    .forEach(function(name) {
+    .forEach(function (name) {
       var current = highlight(name, text, false);
       current.language = name;
       if (current.relevance > second_best.relevance) {
@@ -658,7 +658,7 @@ Post-processing of the highlighted markup:
 function fixMarkup(value) {
   return !(options.tabReplace || options.useBR)
     ? value
-    : value.replace(fixMarkupRe, function(match, p1) {
+    : value.replace(fixMarkupRe, function (match, p1) {
         if (options.useBR && match === "\n") {
           return "<br>";
         } else if (options.tabReplace) {
@@ -719,12 +719,12 @@ function highlightBlock(block) {
   block.className = buildClassName(block.className, language, result.language);
   block.result = {
     language: result.language,
-    re: result.relevance
+    re: result.relevance,
   };
   if (result.second_best) {
     block.second_best = {
       language: result.second_best.language,
-      re: result.second_best.relevance
+      re: result.second_best.relevance,
     };
   }
 }
@@ -758,7 +758,7 @@ function initHighlightingOnLoad() {
 function registerLanguage(name, language) {
   var lang = (languages[name] = language(hljs));
   if (lang.aliases) {
-    lang.aliases.forEach(function(alias) {
+    lang.aliases.forEach(function (alias) {
       aliases[alias] = name;
     });
   }
@@ -806,32 +806,32 @@ hljs.RE_STARTERS_RE =
 // Common modes
 hljs.BACKSLASH_ESCAPE = {
   begin: "\\\\[\\s\\S]",
-  relevance: 0
+  relevance: 0,
 };
 hljs.APOS_STRING_MODE = {
   className: "string",
   begin: "'",
   end: "'",
   illegal: "\\n",
-  contains: [hljs.BACKSLASH_ESCAPE]
+  contains: [hljs.BACKSLASH_ESCAPE],
 };
 hljs.QUOTE_STRING_MODE = {
   className: "string",
   begin: '"',
   end: '"',
   illegal: "\\n",
-  contains: [hljs.BACKSLASH_ESCAPE]
+  contains: [hljs.BACKSLASH_ESCAPE],
 };
 hljs.PHRASAL_WORDS_MODE = {
-  begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/
+  begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/,
 };
-hljs.COMMENT = function(begin, end, inherits) {
+hljs.COMMENT = function (begin, end, inherits) {
   var mode = hljs.inherit(
     {
       className: "comment",
       begin: begin,
       end: end,
-      contains: []
+      contains: [],
     },
     inherits || {}
   );
@@ -839,7 +839,7 @@ hljs.COMMENT = function(begin, end, inherits) {
   mode.contains.push({
     className: "doctag",
     begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
-    relevance: 0
+    relevance: 0,
   });
   return mode;
 };
@@ -849,17 +849,17 @@ hljs.HASH_COMMENT_MODE = hljs.COMMENT("#", "$");
 hljs.NUMBER_MODE = {
   className: "number",
   begin: hljs.NUMBER_RE,
-  relevance: 0
+  relevance: 0,
 };
 hljs.C_NUMBER_MODE = {
   className: "number",
   begin: hljs.C_NUMBER_RE,
-  relevance: 0
+  relevance: 0,
 };
 hljs.BINARY_NUMBER_MODE = {
   className: "number",
   begin: hljs.BINARY_NUMBER_RE,
-  relevance: 0
+  relevance: 0,
 };
 hljs.CSS_NUMBER_MODE = {
   className: "number",
@@ -874,7 +874,7 @@ hljs.CSS_NUMBER_MODE = {
     "|Hz|kHz" +
     "|dpi|dpcm|dppx" +
     ")?",
-  relevance: 0
+  relevance: 0,
 };
 hljs.REGEXP_MODE = {
   className: "regexp",
@@ -887,23 +887,23 @@ hljs.REGEXP_MODE = {
       begin: /\[/,
       end: /\]/,
       relevance: 0,
-      contains: [hljs.BACKSLASH_ESCAPE]
-    }
-  ]
+      contains: [hljs.BACKSLASH_ESCAPE],
+    },
+  ],
 };
 hljs.TITLE_MODE = {
   className: "title",
   begin: hljs.IDENT_RE,
-  relevance: 0
+  relevance: 0,
 };
 hljs.UNDERSCORE_TITLE_MODE = {
   className: "title",
   begin: hljs.UNDERSCORE_IDENT_RE,
-  relevance: 0
+  relevance: 0,
 };
 hljs.METHOD_GUARD = {
   // excludes method names from keyword processing
   begin: "\\.\\s*" + hljs.UNDERSCORE_IDENT_RE,
-  relevance: 0
+  relevance: 0,
 };
 export { hljs };

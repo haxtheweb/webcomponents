@@ -79,7 +79,7 @@ class PaperFabSpeedDial extends PolymerElement {
        */
       direction: {
         type: String,
-        value: "bottom"
+        value: "bottom",
       },
       /**
        * A pixel value for the distance of the first option fron the trigger
@@ -87,7 +87,7 @@ class PaperFabSpeedDial extends PolymerElement {
        */
       offset: {
         type: Number,
-        value: 66
+        value: 66,
       },
       /**
        * An animation config. If provided, this will be used to animate the
@@ -101,19 +101,19 @@ class PaperFabSpeedDial extends PolymerElement {
               name: "fade-in-animation",
               timing: {
                 delay: 150,
-                duration: 50
-              }
+                duration: 50,
+              },
             },
             {
               name: "paper-square-grow-animation",
               startSize: 56,
               timing: {
                 delay: 150,
-                duration: 200
-              }
-            }
+                duration: 200,
+              },
+            },
           ];
-        }
+        },
       },
       /**
        * An animation config. If provided, this will be used to animate the
@@ -126,12 +126,12 @@ class PaperFabSpeedDial extends PolymerElement {
             {
               name: "fade-out-animation",
               timing: {
-                duration: 200
-              }
-            }
+                duration: 200,
+              },
+            },
           ];
-        }
-      }
+        },
+      },
     };
   }
 
@@ -150,7 +150,7 @@ class PaperFabSpeedDial extends PolymerElement {
     )[0];
     fab.addEventListener(
       "click",
-      function() {
+      function () {
         this.shadowRoot.querySelector("#dropdown").open();
       }.bind(this)
     );
@@ -159,7 +159,7 @@ class PaperFabSpeedDial extends PolymerElement {
     )[0];
     content.addEventListener(
       "click",
-      function() {
+      function () {
         this.shadowRoot.querySelector("#dropdown").close();
       }.bind(this)
     );

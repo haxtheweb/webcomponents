@@ -70,7 +70,7 @@ class FullWidthImage extends LitElement {
           color: #fff;
           font-style: italic;
         }
-      `
+      `,
     ];
   }
 
@@ -105,13 +105,13 @@ class FullWidthImage extends LitElement {
             type: "image",
             source: "source",
             caption: "caption",
-            title: "caption"
-          }
+            title: "caption",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -121,8 +121,8 @@ class FullWidthImage extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "image:image",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         configure: [
           {
@@ -131,16 +131,16 @@ class FullWidthImage extends LitElement {
             inputMethod: "haxupload",
             required: true,
             icon: "icons:link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "caption",
             description: "",
-            inputMethod: "textfield"
-          }
+            inputMethod: "textfield",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -150,12 +150,12 @@ class FullWidthImage extends LitElement {
 
       source: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       caption: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

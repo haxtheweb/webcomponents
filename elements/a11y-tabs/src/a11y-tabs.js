@@ -90,7 +90,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   get iconsOnly() {
     return (
       this.iconBreakpoint &&
-      (this.tabs || []).filter(tab => !tab.icon).length < 1 &&
+      (this.tabs || []).filter((tab) => !tab.icon).length < 1 &&
       this.responsiveWidth < this.iconBreakpoint
     );
   }
@@ -122,7 +122,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @returns {object}
    */
   get tabs() {
-    return Object.keys(this.__tabs || {}).map(i => {
+    return Object.keys(this.__tabs || {}).map((i) => {
       this.__tabs[i].order = i + 1;
       this.__tabs[i].total = this.__tabs.length;
       return this.__tabs[i];
@@ -149,16 +149,16 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false
+      subtree: false,
     });
-    this.addEventListener("a11y-tab-changed", e => this.updateTabs());
+    this.addEventListener("a11y-tab-changed", (e) => this.updateTabs());
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
-    this.removeEventListener("a11y-tab-changed", e => this.updateTabs());
+    this.removeEventListener("a11y-tab-changed", (e) => this.updateTabs());
     super.disconnectedCallback();
   }
 
@@ -202,11 +202,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     let tabs = this.querySelectorAll(this.tabQuery);
     if (tabs && tabs.length > 0) {
       let enabled = Object.keys(tabs || [])
-          .filter(key => !tabs[key].disabled)
-          .map(key => tabs[key].id),
-        filtered = enabled.filter(tabid => tabid === id),
+          .filter((key) => !tabs[key].disabled)
+          .map((key) => tabs[key].id),
+        filtered = enabled.filter((tabid) => tabid === id),
         selected = filtered[0] || enabled[0];
-      tabs.forEach(tab => {
+      tabs.forEach((tab) => {
         tab.hidden = tab.id !== selected;
       });
       this.activeTab = selected;
@@ -230,7 +230,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -275,10 +275,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         id="${tab.id}-button"
         controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
-        @click="${e => this._handleTab(tab)}"
+        @click="${(e) => this._handleTab(tab)}"
         ?disabled="${tab.id === this.activeTab ||
-          tab.disabled ||
-          this.disabled}"
+        tab.disabled ||
+        this.disabled}"
         .flag="${tab.flag}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
@@ -297,9 +297,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabFlag(tab) {
     return html`
-      <span class="flag-type" ?hidden="${!tab.flag}">
-        ${tab.flag}
-      </span>
+      <span class="flag-type" ?hidden="${!tab.flag}"> ${tab.flag} </span>
     `;
   }
 
@@ -330,9 +328,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabLabel(tab) {
-    return html`
-      <span class="label">${tab.label}</span>
-    `;
+    return html` <span class="label">${tab.label}</span> `;
   }
 
   /**
@@ -345,9 +341,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabTooltip(tab) {
     return html`
-      <simple-tooltip for="${tab.id}-button">
-        ${tab.label}
-      </simple-tooltip>
+      <simple-tooltip for="${tab.id}-button"> ${tab.label} </simple-tooltip>
     `;
   }
 }

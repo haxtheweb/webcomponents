@@ -25,23 +25,23 @@ class LrnappStudioAssignmentDisplay extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       assignment: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 }

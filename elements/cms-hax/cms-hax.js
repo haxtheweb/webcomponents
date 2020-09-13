@@ -18,7 +18,7 @@ class CmsHax extends LitElement {
           font-size: 16px;
           box-sizing: content-box;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -50,7 +50,7 @@ class CmsHax extends LitElement {
       ["lt", "<"],
       ["gt", ">"],
       ["nbsp", " "],
-      ["quot", '"']
+      ["quot", '"'],
     ];
 
     for (var i = 0, max = entities.length; i < max; ++i)
@@ -64,7 +64,7 @@ class CmsHax extends LitElement {
   static get properties() {
     return {
       __ready: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Default the panel to open
@@ -72,33 +72,33 @@ class CmsHax extends LitElement {
       openDefault: {
         type: Boolean,
         reflect: true,
-        attribute: "open-default"
+        attribute: "open-default",
       },
       /**
        * Hide the panel operations (save and cancel),
        */
       hidePanelOps: {
         type: Boolean,
-        attribute: "hide-panel-ops"
+        attribute: "hide-panel-ops",
       },
       offsetMargin: {
         type: String,
         reflect: true,
-        attribute: "offset-margin"
+        attribute: "offset-margin",
       },
       /**
        * Hide preferences button
        */
       hidePreferencesButton: {
         type: Boolean,
-        attribute: "hide-preferences-button"
+        attribute: "hide-preferences-button",
       },
       /**
        * Direction to elementAlign the hax edit panel
        */
       elementAlign: {
         type: String,
-        attribute: "element-align"
+        attribute: "element-align",
       },
       /**
        * allowed Tags, usually as dictated by the input filtering
@@ -109,30 +109,30 @@ class CmsHax extends LitElement {
        */
       allowedTags: {
         type: Array,
-        attribute: "allowed-tags"
+        attribute: "allowed-tags",
       },
       /**
        * Location to save content to.
        */
       endPoint: {
         type: String,
-        attribute: "end-point"
+        attribute: "end-point",
       },
       /**
        * Method to save content.
        */
       method: {
-        type: String
+        type: String,
       },
       /**
        * Connection object for talking to an app store.
        */
       appStoreConnection: {
         type: String,
-        attribute: "app-store-connection"
+        attribute: "app-store-connection",
       },
       __appStore: {
-        type: String
+        type: String,
       },
       /**
        * State of the panel
@@ -140,52 +140,52 @@ class CmsHax extends LitElement {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * syncBody
        */
       syncBody: {
         type: Boolean,
-        attribute: "sync-body"
+        attribute: "sync-body",
       },
       /**
        * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag
        */
       bodyValue: {
         type: String,
-        attribute: "body-value"
+        attribute: "body-value",
       },
       /**
        * Flag to hide the toast.
        */
       hideMessage: {
         type: Boolean,
-        attribute: "hide-message"
+        attribute: "hide-message",
       },
       /**
        * Optional URL to redirect to once we save.
        */
       redirectLocation: {
         type: String,
-        attribute: "redirect-location"
+        attribute: "redirect-location",
       },
       /**
        * Option to redirect once we save successfully
        */
       redirectOnSave: {
         type: Boolean,
-        attribute: "redirect-on-save"
+        attribute: "redirect-on-save",
       },
       /**
        * Reference to activeBody.
        */
       activeHaxBody: {
-        type: Object
+        type: Object,
       },
       __imported: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -232,7 +232,7 @@ class CmsHax extends LitElement {
         const defaultTags = window.HaxStore.instance.validTagList;
         window.HaxStore.instance.validTagList = [
           ...defaultTags,
-          ...allowedTags
+          ...allowedTags,
         ];
       }
       setTimeout(() => {
@@ -322,7 +322,7 @@ class CmsHax extends LitElement {
           "hidePanelOps",
           "offsetMargin",
           "hidePreferencesButton",
-          "elementAlign"
+          "elementAlign",
         ].includes(propName)
       ) {
         this._noticeTagChanges(
@@ -363,7 +363,7 @@ class CmsHax extends LitElement {
       window.HaxStore.instance &&
       window.HaxStore.instance.activeHaxBody
     ) {
-      this._observer = new MutationObserver(mutations => {
+      this._observer = new MutationObserver((mutations) => {
         if (!this.__lock) {
           this.__lock = true;
           this.dispatchEvent(
@@ -371,7 +371,7 @@ class CmsHax extends LitElement {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: window.HaxStore.instance.activeHaxBody.haxToContent()
+              detail: window.HaxStore.instance.activeHaxBody.haxToContent(),
             })
           );
           setTimeout(() => {
@@ -381,7 +381,7 @@ class CmsHax extends LitElement {
       });
       this._observer.observe(window.HaxStore.instance.activeHaxBody, {
         childList: true,
-        subtree: true
+        subtree: true,
       });
     }
   }
@@ -426,8 +426,8 @@ class CmsHax extends LitElement {
         composed: true,
         detail: {
           text: "Saved!",
-          duration: 3000
-        }
+          duration: 3000,
+        },
       });
       window.dispatchEvent(evt);
       // custom event for things that want to know we just saved
@@ -436,7 +436,7 @@ class CmsHax extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
       // support auto redirecting on save if that's been requested

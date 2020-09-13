@@ -34,43 +34,43 @@ class PaperSearchBar extends mixinBehaviors(
       query: {
         type: String,
         notify: true,
-        value: ""
+        value: "",
       },
       /**
        * Whether to hide the Filter button. Set attribute "hide-filter-button" to do so.
        */
       hideFilterButton: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Whether to disable the Filter button. Set attribute "disable-filter-button" to do so.
        */
       disableFilterButton: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Number of filters the user has been selected (shown in the badge) (optional)
        */
       nrSelectedFilters: {
         type: Number,
-        value: 0
+        value: 0,
       },
       /**
        * Icon shown in the search background
        */
       icon: {
         type: String,
-        value: "search"
+        value: "search",
       },
       /**
        * Text shown in the search box if the user didn't enter any query
        */
       placeholder: {
         type: String,
-        value: "Search"
-      }
+        value: "Search",
+      },
     };
   }
 
@@ -84,7 +84,7 @@ class PaperSearchBar extends mixinBehaviors(
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -102,7 +102,7 @@ class PaperSearchBar extends mixinBehaviors(
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -114,7 +114,7 @@ class PaperSearchBar extends mixinBehaviors(
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
       return false;

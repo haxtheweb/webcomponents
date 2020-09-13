@@ -11,7 +11,7 @@ import { LitElement, css, html } from "lit-element/lit-element.js";
  * @element simple-wc
  */
 function camelCaseToDash(key) {
-  return key.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`);
+  return key.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
 }
 export function createSWC(swc) {
   let MyComponent = class SWC extends LitElement {
@@ -30,7 +30,7 @@ export function createSWC(swc) {
       }
       // dynamically import depedencies
       setTimeout(() => {
-        swc.deps.map(i => {
+        swc.deps.map((i) => {
           import(`../../${i}`);
         });
       }, 0);
@@ -55,7 +55,7 @@ export function createSWC(swc) {
             display: none;
           }
         `,
-        swc.css(this, css)
+        swc.css(this, css),
       ];
     }
     /**
@@ -66,7 +66,7 @@ export function createSWC(swc) {
       for (let key in swc.data.values) {
         // set type
         props[key] = {
-          type: typeof swc.data.values[key]
+          type: typeof swc.data.values[key],
         };
         props[key].type =
           props[key].type.charAt(0).toUpperCase() + props[key].type.slice(1);
@@ -101,7 +101,7 @@ export function createSWC(swc) {
               } else {
                 // pass in all the current values looking off of this
                 let valueMap = [];
-                value[0].map(val => {
+                value[0].map((val) => {
                   valueMap.push(this[val]);
                 });
                 // spread the value map so we get the values populated as args correctly
@@ -123,8 +123,8 @@ export function createSWC(swc) {
           this.dispatchEvent(
             new CustomEvent(`${camelCaseToDash(name)}-changed`, {
               detail: {
-                value: this[name]
-              }
+                value: this[name],
+              },
             })
           );
         }

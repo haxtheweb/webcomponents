@@ -54,7 +54,7 @@ class LrndesignAvatar extends SimpleColors {
             #444
           );
         }
-      `
+      `,
     ];
   }
 
@@ -87,12 +87,12 @@ class LrndesignAvatar extends SimpleColors {
         handles: [
           {
             type: "image",
-            source: "image"
-          }
+            source: "image",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -100,71 +100,71 @@ class LrndesignAvatar extends SimpleColors {
             property: "accentColor",
             title: "Accent Color",
             description: "Pick an accent color.",
-            inputMethod: "colorpicker"
+            inputMethod: "colorpicker",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark text (and light background) for avatar.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "icon",
             title: "Icon",
             description: "Optional: Pick an icon for avatar.",
-            inputMethod: "iconpicker"
+            inputMethod: "iconpicker",
           },
           {
             property: "src",
             title: "Image Source",
             description: "Optional: Upload an image for avatar.",
-            inputMethod: "haxupload"
-          }
+            inputMethod: "haxupload",
+          },
         ],
         configure: [
           {
             property: "accentColor",
             title: "Accent Color",
             description: "Pick an accent color.",
-            inputMethod: "colorpicker"
+            inputMethod: "colorpicker",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark text (and light background) for avatar.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "icon",
             title: "Icon",
             description: "Optional: Pick an icon for avatar.",
-            inputMethod: "iconpicker"
+            inputMethod: "iconpicker",
           },
           {
             property: "src",
             title: "Image Source",
             description: "Optional: Upload an image for avatar.",
-            inputMethod: "haxupload"
+            inputMethod: "haxupload",
           },
           {
             property: "label",
             title: "Two-character initials",
             description: "Label used to create initials or unique Jdenticon.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "twoChars",
             title: "Two-character initials",
             description:
               "When no Jdenticon, image, or icon, use two-character for initials.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "jdenticon",
             title: "Jdenticon",
             description: "Optional: Unique icon design based on label.",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         advanced: [
           {
@@ -172,10 +172,10 @@ class LrndesignAvatar extends SimpleColors {
             title: "Allow Grey",
             description:
               "Allows grey if set. Otherwise a color will be assigned",
-            inputMethod: "boolean"
-          }
-        ]
-      }
+            inputMethod: "boolean",
+          },
+        ],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -188,13 +188,13 @@ class LrndesignAvatar extends SimpleColors {
        */
       allowGrey: {
         type: Boolean,
-        attribute: "allow-grey"
+        attribute: "allow-grey",
       },
       /**
        * optional iron-icon
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * invert colors
@@ -202,39 +202,39 @@ class LrndesignAvatar extends SimpleColors {
       invert: {
         type: Boolean,
         attribute: "invert",
-        reflect: true
+        reflect: true,
       },
       /**
        * text to use for avatar
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * link to an image, optional
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        * Mode for presenting 1st two letters
        */
       twoChars: {
         type: Boolean,
-        attribute: "two-chars"
+        attribute: "two-chars",
       },
       /**
        * "Deprecated": Color class work to apply
        */
       color: {
-        type: String
+        type: String,
       },
       /**
        * Form abstract art from hash of label
        */
       jdenticon: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 

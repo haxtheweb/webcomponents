@@ -22,7 +22,7 @@ class ProductCard extends SimpleColors {
         :host {
           display: flex;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -74,9 +74,7 @@ class ProductCard extends SimpleColors {
       >
         <div slot="heading">
           ${this.icon
-            ? html`
-                <iron-icon icon="${this.icon}"></iron-icon>
-              `
+            ? html` <iron-icon icon="${this.icon}"></iron-icon> `
             : ``}
           ${this.heading}
           <slot name="card-header"></slot>
@@ -117,7 +115,7 @@ class ProductCard extends SimpleColors {
   __demoCollapseStatusChange(e) {
     this.dispatchEvent(
       new CustomEvent("product-card-demo-show", {
-        detail: e.detail
+        detail: e.detail,
       })
     );
   }
@@ -127,21 +125,21 @@ class ProductCard extends SimpleColors {
       ...super.properties,
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       heading: {
-        type: String
+        type: String,
       },
       subheading: {
-        type: String
+        type: String,
       },
       icon: {
-        type: String
+        type: String,
       },
       hasDemo: {
         type: Boolean,
-        attribute: "has-demo"
-      }
+        attribute: "has-demo",
+      },
     };
   }
 

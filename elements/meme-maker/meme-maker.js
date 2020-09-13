@@ -67,7 +67,7 @@ class MemeMaker extends LitElement {
             font-size: var(--meme-maker-font-size-small, 20px);
           }
         }
-      `
+      `,
     ];
   }
   render() {
@@ -97,14 +97,14 @@ class MemeMaker extends LitElement {
        * Alt data passed down to appropriate tag
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * url to the meme image
@@ -112,7 +112,7 @@ class MemeMaker extends LitElement {
       imageUrl: {
         type: String,
         attribute: "image-url",
-        reflect: true
+        reflect: true,
       },
       /**
        * Text on top of the image.
@@ -120,7 +120,7 @@ class MemeMaker extends LitElement {
       topText: {
         type: String,
         attribute: "top-text",
-        reflect: true
+        reflect: true,
       },
       /**
        * Bottom text for the image.
@@ -128,8 +128,8 @@ class MemeMaker extends LitElement {
       bottomText: {
         type: String,
         attribute: "bottom-text",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   /**
@@ -165,12 +165,12 @@ class MemeMaker extends LitElement {
             title: "topText",
             author: "bottomText",
             alt: "alt",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -179,15 +179,15 @@ class MemeMaker extends LitElement {
             title: "Top text",
             description: "Top text of the meme.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "bottomText",
             title: "Bottom text",
             description: "The date this was accessed.",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -195,22 +195,22 @@ class MemeMaker extends LitElement {
             title: "Source",
             description: "The source url for the element this is citing.",
             inputMethod: "haxupload",
-            icon: "link"
+            icon: "link",
           },
           {
             property: "topText",
             title: "Top text",
             description: "Top text of the meme.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "bottomText",
             title: "Bottom text",
             description: "The date this was accessed.",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         advanced: [
           {
@@ -218,12 +218,12 @@ class MemeMaker extends LitElement {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       saveOptions: {
-        wipeSlot: true
+        wipeSlot: true,
       },
       demoSchema: [
         {
@@ -233,10 +233,10 @@ class MemeMaker extends LitElement {
             alt: "Cat stalking a small toy",
             imageUrl: "https://cdn2.thecatapi.com/images/9j5.jpg",
             topText: "I bring you",
-            bottomText: "the death"
-          }
-        }
-      ]
+            bottomText: "the death",
+          },
+        },
+      ],
     };
   }
 }

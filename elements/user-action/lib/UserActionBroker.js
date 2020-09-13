@@ -15,7 +15,7 @@ export class UserActionBroker {
       visibility: "visibility",
       keypress: "keypress",
       keydown: "keydown",
-      keyup: "keyup"
+      keyup: "keyup",
     };
     this.eventname = "user-engagement";
   }
@@ -38,7 +38,7 @@ export class UserActionBroker {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: details
+        detail: details,
       })
     );
   }

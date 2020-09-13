@@ -16,7 +16,7 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
        * Class for the color
        */
       hexColor: {
-        type: String
+        type: String,
       },
       /**
        * Color class work to apply
@@ -24,7 +24,7 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
       color: {
         type: String,
         reflectToAttribute: true,
-        observer: "_colorChanged"
+        observer: "_colorChanged",
       },
       /**
        * editting state for the page
@@ -34,7 +34,7 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
         reflectToAttribute: true,
         notify: true,
         value: false,
-        observer: "_editModeChanged"
+        observer: "_editModeChanged",
       },
       /**
        * editting state for the page
@@ -43,7 +43,7 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
         type: Boolean,
         reflectToAttribute: true,
         notify: true,
-        value: false
+        value: false,
       },
       /**
        * DOM node that wraps the slot
@@ -51,15 +51,15 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
       contentContainer: {
         type: Object,
         notify: true,
-        observer: "_contentContainerChanged"
+        observer: "_contentContainerChanged",
       },
       /**
        * location as object
        */
       _location: {
         type: Object,
-        observer: "_locationChanged"
-      }
+        observer: "_locationChanged",
+      },
     };
   }
   connectedCallback() {

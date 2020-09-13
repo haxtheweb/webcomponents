@@ -162,7 +162,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
             width: 100%;
           }
         }
-      `
+      `,
     ];
   }
   render() {
@@ -216,7 +216,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
         "coverart",
         "lean",
         "wavecolor",
-        "progresscolor"
+        "progresscolor",
       ];
       if (notifiedProps.includes(propName)) {
         // notify
@@ -226,8 +226,8 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -240,29 +240,29 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     return {
       ...super.properties,
       src: {
-        type: String
+        type: String,
       },
       title: {
-        type: String
+        type: String,
       },
       subtitle: {
-        type: String
+        type: String,
       },
       coverart: {
-        type: String
+        type: String,
       },
       wavesurfer: {
-        type: Object
+        type: Object,
       },
       lean: {
-        type: String
+        type: String,
       },
       wavecolor: {
-        type: String
+        type: String,
       },
       progresscolor: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -370,11 +370,11 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       this.shadowRoot.querySelector("#playbutton").style.left = "0";
     }
     waveStyle.classList.add("waveActive");
-    setTimeout(function() {
+    setTimeout(function () {
       controlsStyle.classList.remove("hidden");
       buttonStyle.classList.add("hidden");
     }, 500);
-    setTimeout(function() {
+    setTimeout(function () {
       muteStyle.classList.add("right");
       replayStyle.classList.add("left");
     }, 600);
@@ -395,11 +395,11 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
     var titleStyle = albumStyle.querySelector(".subtitle");
     muteStyle.classList.remove("right");
     replayStyle.classList.remove("left");
-    setTimeout(function() {
+    setTimeout(function () {
       controlsStyle.classList.add("hidden");
       buttonStyle.classList.remove("hidden");
     }, 100);
-    setTimeout(function() {
+    setTimeout(function () {
       buttonStyle.setAttribute("icon", "av:play-arrow");
       buttonStyle.classList.add("circleAnimation");
       buttonStyle.classList.remove("playActive");
@@ -424,7 +424,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       waveColor: this.wavecolor,
       progressColor: this.progresscolor, // --primary-background-color
       fillParent: true,
-      height: 100
+      height: 100,
     });
     window.wavesurferobject.init();
     if (typeof this.src !== typeof undefined) {
@@ -487,12 +487,12 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
             type: "audio",
             source: "src",
             title: "title",
-            caption: "subtitle"
-          }
+            caption: "subtitle",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -503,8 +503,8 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "link",
             required: true,
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         configure: [
           {
@@ -514,7 +514,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "title",
@@ -523,11 +523,11 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "av:video-label",
             required: false,
-            validationType: "text"
-          }
+            validationType: "text",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

@@ -20,11 +20,21 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     super();
     this.__disposer = [];
     setTimeout(() => {
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+      );
       import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
@@ -160,7 +170,7 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             display: inline-block;
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -240,7 +250,7 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     return {
       ...super.properties,
       manifestLength: { type: Number },
-      activeManifestIndexCounter: { type: Number }
+      activeManifestIndexCounter: { type: Number },
     };
   }
   /**
@@ -249,11 +259,11 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   connectedCallback() {
     super.connectedCallback();
     // store disposer so we can clean up later
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifestLength = toJS(store.routerManifest.items.length);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
       this.__disposer.push(reaction);
     });

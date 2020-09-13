@@ -98,7 +98,7 @@ class SocialShareLink extends LitElement {
         :host a.icon-only iron-icon {
           margin-right: 0;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -132,69 +132,69 @@ class SocialShareLink extends LitElement {
       buttonStyle: {
         type: Boolean,
         reflect: true,
-        attribute: "button-style"
+        attribute: "button-style",
       },
       /**
        * optional image to attach to the share
        * (Pinterest only)
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * the message to attach to the social share
        * (not used in Facebook)
        */
       message: {
-        type: String
+        type: String,
       },
       /**
        * optional display mode for the link,"text-only" or "icon-only";
        * default is to dislay both an icon and text
        */
       mode: {
-        type: String
+        type: String,
       },
       /**
        * the link text; if null, the text will be "Share on (type of social)"
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * the type of social; currently supports
        * Facebook, LinkedIn, Pinterest, and Twitter (default)
        */
       type: {
-        type: String
+        type: String,
       },
       /**
        * the url to share
        */
       url: {
-        type: String
+        type: String,
       },
       /**
        * the href for the link
        */
       __href: {
-        type: String
+        type: String,
       },
       /**
        * the icon name for the link
        */
       __icon: {
-        type: String
+        type: String,
       },
       /**
        * the link text specified, or the default link text
        */
       __linkText: {
-        type: String
+        type: String,
       },
       __showIcon: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 

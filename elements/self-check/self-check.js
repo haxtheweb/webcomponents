@@ -223,7 +223,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
         .more_info a:hover {
           text-decoration: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -310,49 +310,49 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
        * Title.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Question.
        */
       question: {
-        type: String
+        type: String,
       },
       /**
        * Image.
        */
       image: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Alt text for image.
        */
       alt: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * Link for more information.
        */
       link: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Property for toggling "checkbtn".
        */
       correct: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -380,12 +380,12 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             source: "image",
             title: "question",
             description: "answer",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -394,14 +394,14 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "image",
             title: "Image",
             description: "The image of the element",
             inputMethod: "textfield",
-            icon: "editor:insert-photo"
+            icon: "editor:insert-photo",
           },
           {
             property: "link",
@@ -409,49 +409,49 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             description: "Link to additional information",
             inputMethod: "textfield",
             validationType: "url",
-            icon: "icons:link"
-          }
+            icon: "icons:link",
+          },
         ],
         configure: [
           {
             property: "title",
             title: "Title",
             description: "The title of the element",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "The accent color of the self-check",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean",
-            icon: "icons:invert-colors"
+            icon: "icons:invert-colors",
           },
           {
             property: "image",
             title: "Image",
             description: "The image of the element",
             inputMethod: "haxupload",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "link",
             title: "More link",
             description: "Link to additional information",
             inputMethod: "haxupload",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "alt",
             title: "Alt Text",
             description: "Add alt text to the image",
-            inputMethod: "alt"
+            inputMethod: "alt",
           },
           {
             slot: "question",
@@ -459,7 +459,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             description:
               "This is where you enter a question for the self-check.",
             inputMethod: "code-editor",
-            required: true
+            required: true,
           },
           {
             slot: "",
@@ -467,8 +467,8 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             description:
               "This is where you enter a question for the self-check.",
             inputMethod: "code-editor",
-            required: true
-          }
+            required: true,
+          },
         ],
         advanced: [
           {
@@ -476,13 +476,13 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       saveOptions: {
-        unsetAttributes: ["colors"]
-      }
+        unsetAttributes: ["colors"],
+      },
     };
   }
 }

@@ -9,8 +9,8 @@ export default {
   component: "a11y-carousel",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const a11yCarouselStory = () => {
@@ -34,14 +34,14 @@ export const a11yCarouselStory = () => {
           <figcaption>Item 3</figcaption>
         </figure>`,
       width: "100%",
-      maxWidth: "400px"
+      maxWidth: "400px",
     },
     [
       { title: "Content", slot: "" },
       { title: "Above Carousel", slot: "above" },
       { title: "Below Carousel", slot: "below" },
       { css: "width" },
-      { css: "maxWidth" }
+      { css: "maxWidth" },
     ]
   );
 };
@@ -56,7 +56,7 @@ export const a11yCarouselButtonStory = () => {
         {
           buttonType: utils.getRandomOption(),
           controls: utils.getRandomOption(["figure-1", "figure-2", "figure-3"]),
-          emptyslot: "Custom Button"
+          emptyslot: "Custom Button",
         },
         [{ title: "Content", slot: "" }],
         ["active", "disabled"],

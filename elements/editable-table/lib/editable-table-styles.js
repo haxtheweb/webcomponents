@@ -192,7 +192,7 @@ window.EditableTableStyleManager.instance = null;
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.EditableTableStyleManager.requestAvailability = function() {
+window.EditableTableStyleManager.requestAvailability = function () {
   if (window.EditableTableStyleManager.instance == null) {
     window.EditableTableStyleManager.instance = document.createElement("style");
     window.EditableTableStyleManager.instance.setAttribute(

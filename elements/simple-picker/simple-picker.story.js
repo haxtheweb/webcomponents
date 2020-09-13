@@ -10,7 +10,7 @@ const SimplePickerPattern = {
   of: "Pattern Library/Atoms/Forms",
   name: "Picker",
   file: require("raw-loader!./demo/index.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(SimplePickerPattern);
 
@@ -25,31 +25,31 @@ props.options.value = [
     {
       alt: "sans-serif",
       style: "font-family: sans-serif",
-      value: "sans-serif"
-    }
+      value: "sans-serif",
+    },
   ],
   [
     {
       alt: "serif",
       style: "font-family: serif",
-      value: "serif"
-    }
+      value: "serif",
+    },
   ],
   [
     {
       alt: "monospace",
       selected: true,
       style: "font-family: monospace",
-      value: "monospace"
-    }
+      value: "monospace",
+    },
   ],
   [
     {
       alt: "cursive",
       style: "font-family: cursive",
-      value: "cursive"
-    }
-  ]
+      value: "cursive",
+    },
+  ],
 ];
 const SimplePickerStory = {
   of: "Web Components",
@@ -57,6 +57,6 @@ const SimplePickerStory = {
   props: props,
   slots: {},
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(SimplePickerStory);

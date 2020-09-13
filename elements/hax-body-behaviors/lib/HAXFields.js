@@ -5,157 +5,157 @@ import "@lrnwebcomponents/hax-body/lib/hax-upload-field.js";
  */
 export const HaxSchematizer = {
   defaultSettings: {
-    type: "string"
+    type: "string",
   },
   format: {
     "simple-fields": {
       defaultSettings: {
         type: "object",
-        format: "simple-fields"
-      }
-    }
+        format: "simple-fields",
+      },
+    },
   },
   inputMethod: {
     alt: {
       defaultSettings: {
         type: "string",
-        format: "alt"
-      }
+        format: "alt",
+      },
     },
     array: {
       defaultSettings: {
-        type: "array"
+        type: "array",
       },
       properties: {
-        label: "itemLabel"
-      }
+        label: "itemLabel",
+      },
     },
     boolean: {
       defaultSettings: {
-        type: "boolean"
-      }
+        type: "boolean",
+      },
     },
     code: {
       defaultSettings: {
-        type: "markup"
-      }
+        type: "markup",
+      },
     },
     "code-editor": {
       defaultSettings: {
-        type: "markup"
-      }
+        type: "markup",
+      },
     },
     color: {
       defaultSettings: {
         type: "string",
-        format: "color"
-      }
+        format: "color",
+      },
     },
     colorpicker: {
       defaultSettings: {
         type: "string",
-        format: "colorpicker"
-      }
+        format: "colorpicker",
+      },
     },
     "date-time": {
       defaultSettings: {
         type: "string",
-        format: "date-time"
-      }
+        format: "date-time",
+      },
     },
     datepicker: {
       defaultSettings: {
         type: "string",
-        format: "date"
-      }
+        format: "date",
+      },
     },
     fieldset: {
       defaultSettings: {
-        type: "object"
-      }
+        type: "object",
+      },
     },
     fileupload: {
       defaultSettings: {
         type: "string",
-        format: "fileupload"
-      }
+        format: "fileupload",
+      },
     },
     haxupload: {
       defaultSettings: {
         type: "string",
-        format: "fileupload"
-      }
+        format: "fileupload",
+      },
     },
     iconpicker: {
       defaultSettings: {
         type: "string",
-        format: "iconpicker"
-      }
+        format: "iconpicker",
+      },
     },
     markup: {
       defaultSettings: {
-        type: "markup"
-      }
+        type: "markup",
+      },
     },
     "md-block": {
       defaultSettings: {
         type: "markup",
-        format: "md-block"
-      }
+        format: "md-block",
+      },
     },
     monthpicker: {
       defaultSettings: {
         type: "string",
-        format: "month"
-      }
+        format: "month",
+      },
     },
     number: {
       defaultSettings: {
-        type: "number"
-      }
+        type: "number",
+      },
     },
     object: {
       defaultSettings: {
-        type: "object"
-      }
+        type: "object",
+      },
     },
     select: {
       defaultSettings: {
         type: "string",
-        format: "select"
-      }
+        format: "select",
+      },
     },
     slider: {
       defaultSettings: {
         type: "number",
-        format: "slider"
-      }
+        format: "slider",
+      },
     },
     tabs: {
       defaultSettings: {
         type: "object",
-        format: "tabs"
-      }
+        format: "tabs",
+      },
     },
     textarea: {
       defaultSettings: {
         type: "string",
-        format: "textarea"
-      }
+        format: "textarea",
+      },
     },
     timepicker: {
       defaultSettings: {
         type: "string",
-        format: "time"
-      }
+        format: "time",
+      },
     },
     weekpicker: {
       defaultSettings: {
         type: "string",
-        format: "week"
-      }
-    }
-  }
+        format: "week",
+      },
+    },
+  },
 };
 
 /**
@@ -169,12 +169,12 @@ export const HaxElementizer = {
     invalidProperty: "invalid",
     noWrap: true,
     attributes: {
-      type: "text"
+      type: "text",
     },
     properties: {
       minLength: "minlength",
-      maxLength: "maxlength"
-    }
+      maxLength: "maxlength",
+    },
   },
   format: {
     radio: {
@@ -183,20 +183,20 @@ export const HaxElementizer = {
         noWrap: true,
         attributes: {
           autofocus: true,
-          type: "radio"
+          type: "radio",
         },
         properties: {
-          options: "options"
+          options: "options",
         },
         child: {
           element: "simple-fields-array-item",
           noWrap: true,
           descriptionProperty: "description",
           properties: {
-            previewBy: "previewBy"
-          }
-        }
-      }
+            previewBy: "previewBy",
+          },
+        },
+      },
     },
     select: {
       defaultSettings: {
@@ -204,25 +204,25 @@ export const HaxElementizer = {
         noWrap: true,
         attributes: {
           autofocus: true,
-          type: "select"
+          type: "select",
         },
         properties: {
           options: "options",
-          items: "itemsList"
-        }
-      }
+          items: "itemsList",
+        },
+      },
     },
     "simple-picker": {
       defaultSettings: {
         element: "simple-picker",
         attributes: {
-          autofocus: true
+          autofocus: true,
         },
         properties: {
-          options: "options"
-        }
-      }
-    }
+          options: "options",
+        },
+      },
+    },
   },
   type: {
     array: {
@@ -235,10 +235,10 @@ export const HaxElementizer = {
           noWrap: true,
           descriptionProperty: "description",
           properties: {
-            previewBy: "previewBy"
-          }
-        }
-      }
+            previewBy: "previewBy",
+          },
+        },
+      },
     },
     boolean: {
       defaultSettings: {
@@ -247,9 +247,9 @@ export const HaxElementizer = {
         attributes: {
           autofocus: true,
           type: "checkbox",
-          value: false
-        }
-      }
+          value: false,
+        },
+      },
     },
     file: {
       defaultSettings: {
@@ -257,12 +257,12 @@ export const HaxElementizer = {
         noWrap: true,
         attributes: {
           autofocus: true,
-          type: "file"
+          type: "file",
         },
         properties: {
-          accepts: "accepts"
-        }
-      }
+          accepts: "accepts",
+        },
+      },
     },
     integer: {
       defaultSettings: {
@@ -271,30 +271,30 @@ export const HaxElementizer = {
         attributes: {
           autofocus: true,
           step: 1,
-          type: "number"
+          type: "number",
         },
         properties: {
           minimum: "min",
           maximum: "max",
-          multipleOf: "step"
-        }
-      }
+          multipleOf: "step",
+        },
+      },
     },
     markup: {
       defaultSettings: {
         element: "simple-fields-code",
         setValueProperty: "editorValue",
-        noWrap: true
+        noWrap: true,
       },
       format: {
         "md-block": {
           defaultSettings: {
             element: "md-block",
             setValueProperty: "source",
-            noWrap: true
-          }
-        }
-      }
+            noWrap: true,
+          },
+        },
+      },
     },
     number: {
       defaultSettings: {
@@ -303,26 +303,26 @@ export const HaxElementizer = {
         type: "number",
         attributes: {
           autofocus: true,
-          type: "number"
+          type: "number",
         },
         properties: {
           minimum: "min",
           maximum: "max",
-          multipleOf: "step"
-        }
-      }
+          multipleOf: "step",
+        },
+      },
     },
     object: {
       defaultSettings: {
         element: "simple-fields-fieldset",
-        noWrap: true
+        noWrap: true,
       },
       format: {
         cardlist: {
           defaultSettings: {
             element: "hax-element-card-list",
-            noWrap: true
-          }
+            noWrap: true,
+          },
         },
         tabs: {
           defaultSettings: {
@@ -332,14 +332,14 @@ export const HaxElementizer = {
               element: "simple-fields-tab",
               noWrap: true,
               labelSlot: "label",
-              descriptionSlot: ""
+              descriptionSlot: "",
             },
             properties: {
               layoutBreakpoint: "layoutBreakpoint",
               iconBreakpoint: "iconBreakpoint",
-              sticky: "sticky"
-            }
-          }
+              sticky: "sticky",
+            },
+          },
         },
         fields: {
           defaultSettings: {
@@ -347,11 +347,11 @@ export const HaxElementizer = {
             noWrap: true,
             descriptionProperty: "description",
             properties: {
-              schema: "schema"
-            }
-          }
-        }
-      }
+              schema: "schema",
+            },
+          },
+        },
+      },
     },
     string: {
       format: {
@@ -361,9 +361,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              required: true
-            }
-          }
+              required: true,
+            },
+          },
         },
         color: {
           defaultSettings: {
@@ -371,17 +371,17 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "color"
-            }
-          }
+              type: "color",
+            },
+          },
         },
         colorpicker: {
           defaultSettings: {
             element: "simple-colors-picker",
             attributes: {
-              autofocus: true
-            }
-          }
+              autofocus: true,
+            },
+          },
         },
         date: {
           defaultSettings: {
@@ -389,9 +389,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "date"
-            }
-          }
+              type: "date",
+            },
+          },
         },
         "date-time": {
           defaultSettings: {
@@ -399,9 +399,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "datetime-local"
-            }
-          }
+              type: "datetime-local",
+            },
+          },
         },
         date: {
           defaultSettings: {
@@ -409,9 +409,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "date"
-            }
-          }
+              type: "date",
+            },
+          },
         },
         email: {
           defaultSettings: {
@@ -419,29 +419,29 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "email"
-            }
-          }
+              type: "email",
+            },
+          },
         },
         fileupload: {
           defaultSettings: {
             element: "hax-upload-field",
             noWrap: true,
             attributes: {
-              autofocus: true
+              autofocus: true,
             },
             properties: {
-              accepts: "accepts"
-            }
-          }
+              accepts: "accepts",
+            },
+          },
         },
         iconpicker: {
           defaultSettings: {
             element: "simple-icon-picker",
             attributes: {
-              autofocus: true
-            }
-          }
+              autofocus: true,
+            },
+          },
         },
         month: {
           defaultSettings: {
@@ -449,9 +449,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "month"
-            }
-          }
+              type: "month",
+            },
+          },
         },
         textarea: {
           defaultSettings: {
@@ -459,9 +459,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "textarea"
-            }
-          }
+              type: "textarea",
+            },
+          },
         },
         time: {
           defaultSettings: {
@@ -469,9 +469,9 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "time"
-            }
-          }
+              type: "time",
+            },
+          },
         },
         uri: {
           defaultSettings: {
@@ -479,14 +479,14 @@ export const HaxElementizer = {
             noWrap: true,
             attributes: {
               autofocus: true,
-              type: "file"
+              type: "file",
             },
             properties: {
-              accepts: "accepts"
-            }
-          }
-        }
-      }
-    }
-  }
+              accepts: "accepts",
+            },
+          },
+        },
+      },
+    },
+  },
 };

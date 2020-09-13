@@ -34,7 +34,7 @@ class SimpleColorsPolymer extends PolymerElement {
         type: String,
         value: "grey",
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * make the default theme dark?
@@ -44,7 +44,7 @@ class SimpleColorsPolymer extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * make the default theme dark?
@@ -53,8 +53,8 @@ class SimpleColorsPolymer extends PolymerElement {
         name: "colors",
         type: Object,
         value: window.SimpleColorsSharedStyles.colors,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 

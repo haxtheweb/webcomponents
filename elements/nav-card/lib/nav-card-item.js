@@ -53,50 +53,50 @@ class NavCardItem extends LitElement {
        */
       accentColor: {
         type: String,
-        attribute: "accent-color"
+        attribute: "accent-color",
       },
       /**
        * allow grey instead of accent color, default selects a color
        */
       allowGrey: {
         type: Boolean,
-        attribute: "allow-grey"
+        attribute: "allow-grey",
       },
       /**
        * optional iron-icon or image URI as avatar on left of link
        */
       avatar: {
         type: String,
-        attribute: "avatar"
+        attribute: "avatar",
       },
       /**
        * optional dark text for avatar icon
        */
       dark: {
         type: Boolean,
-        attribute: "dark"
+        attribute: "dark",
       },
       /**
        * iron-icon on right of link
        */
       icon: {
         type: String,
-        attribute: "icon"
+        attribute: "icon",
       },
       /**
        * optional use up to two initials if no avatar
        */
       initials: {
         type: String,
-        attribute: "initials"
+        attribute: "initials",
       },
       /**
        * invert icon coloring
        */
       invert: {
         type: Boolean,
-        attribute: "invert"
-      }
+        attribute: "invert",
+      },
     };
   }
 
@@ -114,13 +114,13 @@ class NavCardItem extends LitElement {
         groups: ["Card", "Nav", "List"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -130,48 +130,48 @@ class NavCardItem extends LitElement {
             title: "Accent Color",
             description: "Select an accent color.",
             inputMethod: "colorpicker",
-            required: false
+            required: false,
           },
           {
             property: "dark",
             title: "Dark",
             description: "Display the card as dark theme?",
             inputMethod: "boolean",
-            required: false
+            required: false,
           },
           {
             property: "icon",
             title: "Icon",
             description: "Select an icon.",
             inputMethod: "iconpicker",
-            required: false
+            required: false,
           },
           {
             property: "initials",
             title: "Initials",
             description: "Initials to display if there is no icon.",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "avatar",
             title: "Avatar Image",
             description: "Select an image",
             inputMethod: "haxupload",
-            required: false
+            required: false,
           },
           {
             slot: "label",
             title: "Button or Link",
             inputMethod: "code-editor",
-            required: false
+            required: false,
           },
           {
             slot: "description",
             title: "Additional description",
             inputMethod: "code-editor",
-            required: false
-          }
+            required: false,
+          },
         ],
         advanced: [
           {
@@ -179,23 +179,23 @@ class NavCardItem extends LitElement {
             title: "Allow Grey",
             description:
               "Allows grey if set. Otherwise a color will be assigned.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "avatar",
             title: "Avatar Icon",
             description: "Select an icon.",
             inputMethod: "iconpicker",
-            required: false
+            required: false,
           },
           {
             property: "invert",
             title: "Invert",
             description: "Inverts icon coloring.",
-            inputMethod: "boolean"
-          }
-        ]
-      }
+            inputMethod: "boolean",
+          },
+        ],
+      },
     };
   }
 
@@ -308,7 +308,7 @@ class NavCardItem extends LitElement {
             var(--nav-card-item-icon-size 24px)
           );
         }
-      `
+      `,
     ];
   }
 
@@ -333,11 +333,7 @@ class NavCardItem extends LitElement {
         <slot name="label"></slot>
         <slot name="description"></slot>
       </div>
-      ${!this.icon
-        ? ``
-        : html`
-            <iron-icon icon="${this.icon}"></iron-icon>
-          `}
+      ${!this.icon ? `` : html` <iron-icon icon="${this.icon}"></iron-icon> `}
     `;
   }
 
@@ -401,11 +397,11 @@ class NavCardItem extends LitElement {
     console.log();
     let pattern = new RegExp(
       "^((https?:)?\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(data:image)?" + // base64 image
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(data:image)?" + // base64 image
         "(\\#[-a-z\\d_]*)?$",
       "i"
     ); // fragment locator

@@ -5,7 +5,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -14,8 +14,8 @@ export default {
   component: "a11y-tabs",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const A11yTabsStory = () => {
@@ -30,10 +30,10 @@ export const A11yTabsStory = () => {
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday"
+        "Sunday",
       ]
         .map(
-          day =>
+          (day) =>
             `<a11y-tab id="${day.toLowerCase()}" 
           label="${day}" 
           icon="${utils.getRandomIcon()}">
@@ -44,7 +44,7 @@ export const A11yTabsStory = () => {
           <p>${utils.getRandomTextarea()}</p>
         </a11y-tab>`
         )
-        .join("")
+        .join(""),
     },
     [
       { css: "--a11y-tabs-font-family" },
@@ -66,17 +66,17 @@ export const A11yTabsStory = () => {
       { css: "--a11y-tabs-tab-height" },
       {
         css: "--a11y-tabs-button-padding",
-        title: "default tab button padding for horizontal and vertical"
+        title: "default tab button padding for horizontal and vertical",
       },
       { css: "--a11y-tabs-button-horizontal-padding" },
       { css: "--a11y-tabs-button-vertical-padding" },
       {
         css: "--a11y-tabs-content-background",
-        title: "tab content background-color"
+        title: "tab content background-color",
       },
       {
         css: "--a11y-tabs-content-padding",
-        title: "tab content padding for horizontal and vertical"
+        title: "tab content padding for horizontal and vertical",
       },
       { css: "--a11y-tabs-width" },
       { css: "--a11y-tabs-height" },
@@ -84,11 +84,11 @@ export const A11yTabsStory = () => {
       { css: "--a11y-tabs-overflow-y" },
       {
         css: "--a11y-tabs-justify-tabs",
-        title: "default justification for horizontal and vertical"
+        title: "default justification for horizontal and vertical",
       },
       { css: "--a11y-tabs-horizontal-justify-tabs" },
       { css: "--a11y-tabs-vertical-justify-tabs" },
-      { css: "--a11y-tabs-wrap" }
+      { css: "--a11y-tabs-wrap" },
     ]
   );
 };
@@ -97,7 +97,7 @@ export const A11yTabStory = () => {
   let tabs = `<a11y-tabs layout=breakpoint="-1">`;
   tabs += ["Before", "During"]
     .map(
-      tab =>
+      (tab) =>
         `
   <a11y-tab id="${tab.toLowerCase()}" label="${tab}" disabled icon="${utils.getRandomIcon()}">${utils.getRandomTextarea()}</a11y-tab>`
     )
@@ -111,7 +111,7 @@ export const A11yTabStory = () => {
       id: "after",
       label: "After",
       icon: utils.getRandomIcon(),
-      emptyslot: utils.getRandomTextarea()
+      emptyslot: utils.getRandomTextarea(),
     },
     [],
     [],

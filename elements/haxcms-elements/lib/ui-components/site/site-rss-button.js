@@ -39,7 +39,7 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
-      `
+      `,
     ];
   }
   /**
@@ -96,23 +96,23 @@ class SiteRSSButton extends HAXCMSThemeParts(LitElement) {
       ...super.properties,
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       label: {
-        type: String
+        type: String,
       },
       href: {
-        type: String
+        type: String,
       },
       icon: {
-        type: String
+        type: String,
       },
       type: {
-        type: String
+        type: String,
       },
       position: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   updated(changedProperties) {

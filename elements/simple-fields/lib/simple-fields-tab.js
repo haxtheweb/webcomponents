@@ -20,7 +20,7 @@ class SimpleFieldsTab extends A11yTab {
   static get properties() {
     return {
       ...super.properties,
-      ...SimpleFieldsFieldset.properties
+      ...SimpleFieldsFieldset.properties,
     };
   }
 }

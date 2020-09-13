@@ -141,7 +141,7 @@ class LrnsysProgress extends PolymerElement {
               stroke-width="[[strokeWidth]]"
               tool-tip="[[!vertical]]"
               list-view="[[vertical]]"
-              class\$="[[size]]"
+              class$="[[size]]"
             >
               <span slot="description">[[item.description]]</span>
             </lrnsys-progress-circle>
@@ -155,7 +155,7 @@ class LrnsysProgress extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       this.addEventListener(
         "node-is-active",
         this._bubbleUpChangeActive.bind(this)
@@ -189,7 +189,7 @@ class LrnsysProgress extends PolymerElement {
       disableAjaxCalls: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Items to display to visualize the progression.
@@ -198,7 +198,7 @@ class LrnsysProgress extends PolymerElement {
         type: Array,
         value: [],
         notify: true,
-        observer: "_itemsChanged"
+        observer: "_itemsChanged",
       },
       /**
        * Play sounds whenever an item is complete.
@@ -208,7 +208,7 @@ class LrnsysProgress extends PolymerElement {
       sound: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Play sound when the user finishes the progression. This
@@ -217,21 +217,21 @@ class LrnsysProgress extends PolymerElement {
       soundFinish: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Play sound on complete.
        */
       completeSound: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Play sound on complete.
        */
       finishedSound: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Title of this progression, primarily for accessibility.
@@ -239,7 +239,7 @@ class LrnsysProgress extends PolymerElement {
       title: {
         type: String,
         value: "Steps to completion",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Items displayed at specific points on the progression.
@@ -250,7 +250,7 @@ class LrnsysProgress extends PolymerElement {
       keyItems: {
         type: Array,
         value: [],
-        notify: true
+        notify: true,
       },
       /**
        * ID of the active item.
@@ -260,7 +260,7 @@ class LrnsysProgress extends PolymerElement {
         value: 0,
         notify: true,
         reflectToAttribute: true,
-        observer: "_activeChanged"
+        observer: "_activeChanged",
       },
       /**
        * Whether to automatically make disabled items available
@@ -270,7 +270,7 @@ class LrnsysProgress extends PolymerElement {
         type: Boolean,
         value: true,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * State of progress in the current progression
@@ -279,7 +279,7 @@ class LrnsysProgress extends PolymerElement {
         type: String,
         value: null,
         reflectToAttribute: true,
-        observer: "_reportState"
+        observer: "_reportState",
       },
       /**
        * How far is the user through this series of items.
@@ -287,14 +287,14 @@ class LrnsysProgress extends PolymerElement {
       overallPercentage: {
         type: Number,
         computed: "_overallPercentageCompute(items, active)",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Responses for each item.
        */
       _responseList: {
         type: Array,
-        value: []
+        value: [],
       },
       /**
        * Active response from the node selected.
@@ -302,7 +302,7 @@ class LrnsysProgress extends PolymerElement {
       activeNodeResponse: {
         type: String,
         value: "",
-        observer: "_activeResponseChanged"
+        observer: "_activeResponseChanged",
       },
       /**
        * Active response from the node selected.
@@ -311,7 +311,7 @@ class LrnsysProgress extends PolymerElement {
         type: Object,
         value: {},
         notify: true,
-        observer: "_manifestChanged"
+        observer: "_manifestChanged",
       },
       /**
        * Error.
@@ -319,14 +319,14 @@ class LrnsysProgress extends PolymerElement {
       nodeDataError: {
         type: Object,
         value: [],
-        observer: "_handleNodeError"
+        observer: "_handleNodeError",
       },
       /**
        * Flag to be vertical instead of horizontal.
        */
       vertical: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Size to make everything, small, medium, large, and epic
@@ -336,15 +336,15 @@ class LrnsysProgress extends PolymerElement {
         type: String,
         value: "medium",
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Calculate width based on the size since we have to convert em to px.
        */
       strokeWidth: {
         type: Number,
-        computed: "_getStrokeWidth(size)"
-      }
+        computed: "_getStrokeWidth(size)",
+      },
     };
   }
   /**
@@ -386,8 +386,8 @@ class LrnsysProgress extends PolymerElement {
           composed: true,
           detail: {
             state: this.state,
-            active: this.items[this.active]
-          }
+            active: this.items[this.active],
+          },
         })
       );
     }
@@ -447,7 +447,7 @@ class LrnsysProgress extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { response: value }
+        detail: { response: value },
       })
     );
   }
@@ -465,7 +465,7 @@ class LrnsysProgress extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this.items[this.active]
+        detail: this.items[this.active],
       })
     );
   }
@@ -623,7 +623,7 @@ class LrnsysProgress extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this.items[this.active]
+          detail: this.items[this.active],
         })
       );
     }

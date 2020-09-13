@@ -32,9 +32,9 @@ class LrnappStudioBlock extends PolymerElement {
       </style>
       <div class="studio-block__header">
         <div class="studio-block__icon-wrapper">
-          <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
+          <iron-icon icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>
         </div>
-        <h3 hidden\$="[[!title]]">[[title]]</h3>
+        <h3 hidden$="[[!title]]">[[title]]</h3>
       </div>
       <div class="studio-block__content"><slot></slot></div>
     `;
@@ -47,12 +47,12 @@ class LrnappStudioBlock extends PolymerElement {
     return {
       title: {
         type: String,
-        value: null
+        value: null,
       },
       icons: {
         type: String,
-        value: null
-      }
+        value: null,
+      },
     };
   }
 }

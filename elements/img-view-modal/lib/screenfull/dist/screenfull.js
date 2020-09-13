@@ -3,7 +3,7 @@
  * v4.2.0 - 2019-04-01
  * (c) Sindre Sorhus; MIT License
  */
-(function() {
+(function () {
   "use strict";
 
   var document =
@@ -14,7 +14,7 @@
   var keyboardAllowed =
     typeof Element !== "undefined" && "ALLOW_KEYBOARD_INPUT" in Element;
 
-  var fn = (function() {
+  var fn = (function () {
     var val;
 
     var fnMap = [
@@ -24,7 +24,7 @@
         "fullscreenElement",
         "fullscreenEnabled",
         "fullscreenchange",
-        "fullscreenerror"
+        "fullscreenerror",
       ],
       // New WebKit
       [
@@ -33,7 +33,7 @@
         "webkitFullscreenElement",
         "webkitFullscreenEnabled",
         "webkitfullscreenchange",
-        "webkitfullscreenerror"
+        "webkitfullscreenerror",
       ],
       // Old WebKit (Safari 5.1)
       [
@@ -42,7 +42,7 @@
         "webkitCurrentFullScreenElement",
         "webkitCancelFullScreen",
         "webkitfullscreenchange",
-        "webkitfullscreenerror"
+        "webkitfullscreenerror",
       ],
       [
         "mozRequestFullScreen",
@@ -50,7 +50,7 @@
         "mozFullScreenElement",
         "mozFullScreenEnabled",
         "mozfullscreenchange",
-        "mozfullscreenerror"
+        "mozfullscreenerror",
       ],
       [
         "msRequestFullscreen",
@@ -58,8 +58,8 @@
         "msFullscreenElement",
         "msFullscreenEnabled",
         "MSFullscreenChange",
-        "MSFullscreenError"
-      ]
+        "MSFullscreenError",
+      ],
     ];
 
     var i = 0;
@@ -81,16 +81,16 @@
 
   var eventNameMap = {
     change: fn.fullscreenchange,
-    error: fn.fullscreenerror
+    error: fn.fullscreenerror,
   };
 
   var screenfull = {
-    request: function(elem) {
+    request: function (elem) {
       return new Promise(
-        function(resolve) {
+        function (resolve) {
           var request = fn.requestFullscreen;
 
-          var onFullScreenEntered = function() {
+          var onFullScreenEntered = function () {
             this.off("change", onFullScreenEntered);
             resolve();
           }.bind(this);
@@ -111,15 +111,15 @@
         }.bind(this)
       );
     },
-    exit: function() {
+    exit: function () {
       return new Promise(
-        function(resolve) {
+        function (resolve) {
           if (!this.isFullscreen) {
             resolve();
             return;
           }
 
-          var onFullScreenExit = function() {
+          var onFullScreenExit = function () {
             this.off("change", onFullScreenExit);
             resolve();
           }.bind(this);
@@ -130,28 +130,28 @@
         }.bind(this)
       );
     },
-    toggle: function(elem) {
+    toggle: function (elem) {
       return this.isFullscreen ? this.exit() : this.request(elem);
     },
-    onchange: function(callback) {
+    onchange: function (callback) {
       this.on("change", callback);
     },
-    onerror: function(callback) {
+    onerror: function (callback) {
       this.on("error", callback);
     },
-    on: function(event, callback) {
+    on: function (event, callback) {
       var eventName = eventNameMap[event];
       if (eventName) {
         window.addEventListener(eventName, callback, false);
       }
     },
-    off: function(event, callback) {
+    off: function (event, callback) {
       var eventName = eventNameMap[event];
       if (eventName) {
         window.removeEventListener(eventName, callback, false);
       }
     },
-    raw: fn
+    raw: fn,
   };
 
   if (!fn) {
@@ -166,23 +166,23 @@
 
   Object.defineProperties(screenfull, {
     isFullscreen: {
-      get: function() {
+      get: function () {
         return Boolean(document[fn.fullscreenElement]);
-      }
+      },
     },
     element: {
       enumerable: true,
-      get: function() {
+      get: function () {
         return document[fn.fullscreenElement];
-      }
+      },
     },
     enabled: {
       enumerable: true,
-      get: function() {
+      get: function () {
         // Coerce to boolean in case of old WebKit
         return Boolean(document[fn.fullscreenEnabled]);
-      }
-    }
+      },
+    },
   });
 
   if (isCommonjs) {

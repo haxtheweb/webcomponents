@@ -11,7 +11,7 @@ function umdConfig({ elementName, className } = {}) {
     output: {
       file: umdFilename,
       format: "umd",
-      name: className
+      name: className,
     },
     plugins: [
       commonjs(),
@@ -20,13 +20,13 @@ function umdConfig({ elementName, className } = {}) {
         plugins: [
           "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-syntax-import-meta",
-          babelPluginDynamicToStaticImport
-        ]
+          babelPluginDynamicToStaticImport,
+        ],
       }),
       terser(),
-      del({ targets: "build" })
+      del({ targets: "build" }),
     ],
-    external: id => id.startsWith("..")
+    external: (id) => id.startsWith(".."),
   };
 }
 

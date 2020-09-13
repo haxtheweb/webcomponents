@@ -19,7 +19,7 @@ import "@lrnwebcomponents/mdi-iconset-svg/mdi-iconset-svg.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { SimpleFieldsForm } from "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -40,7 +40,7 @@ class HaxElementListSelector extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -84,71 +84,71 @@ class HaxElementListSelector extends LitElement {
     return {
       ...SimpleFieldsForm.properties,
       HaxSchematizer: {
-        type: Object
+        type: Object,
       },
       HaxElementizer: {
-        type: Object
+        type: Object,
       },
       /**
        * Show card list so that it SEEMS like its happenign when we click HAX elements
        */
       showCardList: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * JS imports
        */
       imports: {
-        type: Object
+        type: Object,
       },
       /**
        * HAXSchema array
        */
       haxData: {
-        type: Array
+        type: Array,
       },
       /**
        * Valid tags on the CDN but that don't have haxSchema.
        */
       noSchema: {
-        type: Object
+        type: Object,
       },
       /**
        * Data filtered by form changes
        */
       filteredHaxData: {
-        type: Array
+        type: Array,
       },
       /**
        * Columns to render
        */
       cols: {
-        type: Number
+        type: Number,
       },
       /**
        * End point to load this data
        */
       fieldsEndpoint: {
         type: String,
-        attribute: "fields-endpoint"
+        attribute: "fields-endpoint",
       },
       /**
        * End point to load up a list of imports
        */
       wcRegistryEndpoint: {
         type: String,
-        attribute: "wc-registry-endpoint"
+        attribute: "wc-registry-endpoint",
       },
       /**
        * Request method
        */
       method: {
-        type: String
+        type: String,
       },
       loading: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   // simple path from a url modifier
@@ -165,7 +165,7 @@ class HaxElementListSelector extends LitElement {
         .schematizer="${this.HaxSchematizer}"
         .elementizer="${this.HaxElementizer}"
         @response="${this._response}"
-        @haxcore.search.haxcore-search-columns-value-changed="${e =>
+        @haxcore.search.haxcore-search-columns-value-changed="${(e) =>
           (this.cols = e.detail.value)}"
         @value-changed="${this._valueChanged}"
       >
@@ -217,11 +217,11 @@ class HaxElementListSelector extends LitElement {
         this.haxData = [];
         this.imports = [];
         fetch(this.wcRegistryEndpoint)
-          .then(response => {
+          .then((response) => {
             this.loading = true;
             return response.json();
           })
-          .then(data => {
+          .then((data) => {
             this.imports = data;
           });
       }
@@ -232,7 +232,7 @@ class HaxElementListSelector extends LitElement {
         for (var tag in this[propName]) {
           let file = this[propName][tag];
           try {
-            await import(`${this.basePath}${file}`).then(module => {
+            await import(`${this.basePath}${file}`).then((module) => {
               if (
                 module &&
                 Object.keys(module) &&
@@ -246,7 +246,7 @@ class HaxElementListSelector extends LitElement {
                   tag: tag,
                   file: file,
                   showDemo: false,
-                  schema: module[Object.keys(module)[0]].haxProperties
+                  schema: module[Object.keys(module)[0]].haxProperties,
                 };
                 list.push(detail);
                 this.haxData = [...list];
@@ -298,11 +298,11 @@ class HaxElementListSelector extends LitElement {
   applyFilters(filters) {
     if (this.cardList) {
       let data = [...this.haxData];
-      Object.keys(filters || {}).forEach(key => {
+      Object.keys(filters || {}).forEach((key) => {
         if (filters[key] != "") {
           switch (key) {
             case "haxcore-search-search":
-              data = data.filter(item => {
+              data = data.filter((item) => {
                 if (
                   item.schema.gizmo.title
                     .toLowerCase()
@@ -314,7 +314,7 @@ class HaxElementListSelector extends LitElement {
               });
               break;
             case "haxcore-search-tags":
-              data = data.filter(item => {
+              data = data.filter((item) => {
                 if (item.schema.gizmo.groups.includes(filters[key])) {
                   return true;
                 }
@@ -324,7 +324,7 @@ class HaxElementListSelector extends LitElement {
             case "haxcore-search-hasdemo":
               // only filter if box checked otherwise show all
               if (filters[key]) {
-                data = data.filter(item => {
+                data = data.filter((item) => {
                   if (item.schema.demoSchema) {
                     return true;
                   }
@@ -335,7 +335,7 @@ class HaxElementListSelector extends LitElement {
           }
         }
       });
-      this.cardList.filteredTags = [...data].map(item => item.tag);
+      this.cardList.filteredTags = [...data].map((item) => item.tag);
       this.cardList.requestUpdate();
     }
   }
@@ -378,8 +378,8 @@ class HaxElementListSelector extends LitElement {
           this.dispatchEvent(
             new CustomEvent("appstore-changed", {
               detail: {
-                value: this.getAppstoreValues()
-              }
+                value: this.getAppstoreValues(),
+              },
             })
           );
         }
@@ -394,18 +394,18 @@ class HaxElementListSelector extends LitElement {
     let value = this.shadowRoot.querySelector("#form").submit();
     value.haxcore = value.haxcore || {
       templates: {},
-      providers: {}
+      providers: {},
     };
     let appstore = {
       providers: {
         cdn: value.haxcore.providers["haxcore-providers-cdn"],
         other: value.haxcore.providers["haxcore-providers-other"],
-        pk: value.haxcore.providers["haxcore-providers-pk"]
+        pk: value.haxcore.providers["haxcore-providers-pk"],
       },
       apps: {},
       blox: value.haxcore.templates["haxcore-templates-templates"],
       stax: value.haxcore.templates["haxcore-templates-layouts"],
-      autoloader: value.haxcore.search["haxcore-search-autoloader"]
+      autoloader: value.haxcore.search["haxcore-search-autoloader"],
     };
     // find the API keys
     for (var key in value.haxcore.integrations) {

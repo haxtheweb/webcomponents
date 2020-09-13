@@ -45,8 +45,8 @@ class RandomItem extends HTMLElement {
         handles: [],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -56,18 +56,18 @@ class RandomItem extends HTMLElement {
             title: "Field",
             description: "Field in the file to show",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "source",
             title: "Source",
             description: "URL pointing to a CSV file",
             inputMethod: "haxupload",
-            required: true
-          }
+            required: true,
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -77,12 +77,12 @@ class RandomItem extends HTMLElement {
 
       source: {
         name: "source",
-        type: String
+        type: String,
       },
       field: {
         name: "field",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -147,7 +147,7 @@ class RandomItem extends HTMLElement {
    * source changed
    */
   async sourceChanged(value) {
-    let data = await fetch(value).then(function(response) {
+    let data = await fetch(value).then(function (response) {
       return response.text();
     });
     this.items = this.CSVtoArray(data);

@@ -1,7 +1,7 @@
-(function(root, factory) {
+(function (root, factory) {
   if (typeof define === "function" && define.amd) {
     // AMD. Register as an anonymous module.
-    define(["chartist"], function(Chartist) {
+    define(["chartist"], function (Chartist) {
       return (root.returnExportsGlobal = factory(Chartist));
     });
   } else if (typeof exports === "object") {
@@ -12,14 +12,14 @@
   } else {
     root["Chartist.plugins.ctAxisTitle"] = factory(Chartist);
   }
-})(this, function(Chartist) {
+})(this, function (Chartist) {
   /**
    * Chartist.js plugin to display a title for 1 or 2 axes.
    * version 0.0.7
    * author: alex stanbury
    */
   /* global Chartist */
-  (function(Chartist) {
+  (function (Chartist) {
     "use strict";
 
     var axisDefaults = {
@@ -27,25 +27,25 @@
       axisClass: "ct-axis-title",
       offset: {
         x: 0,
-        y: 0
+        y: 0,
       },
       textAnchor: "middle",
-      flipTitle: false
+      flipTitle: false,
     };
 
     var defaultOptions = {
       axisX: axisDefaults,
-      axisY: axisDefaults
+      axisY: axisDefaults,
     };
 
-    var getTitle = function(title) {
+    var getTitle = function (title) {
       if (title instanceof Function) {
         return title();
       }
       return title;
     };
 
-    var getClasses = function(classes) {
+    var getClasses = function (classes) {
       if (classes instanceof Function) {
         return classes();
       }
@@ -53,11 +53,11 @@
     };
 
     Chartist.plugins = Chartist.plugins || {};
-    Chartist.plugins.ctAxisTitle = function(options) {
+    Chartist.plugins.ctAxisTitle = function (options) {
       options = Chartist.extend({}, defaultOptions, options);
 
       return function ctAxisTitle(chart) {
-        chart.on("created", function(data) {
+        chart.on("created", function (data) {
           if (!options.axisX.axisTitle && !options.axisY.axisTitle) {
             throw new Error(
               "ctAxisTitle plugin - You must provide at least one axis title"
@@ -96,7 +96,7 @@
             title.attr({
               x: xPos + options.axisX.offset.x,
               y: yPos + options.axisX.offset.y,
-              "text-anchor": options.axisX.textAnchor
+              "text-anchor": options.axisX.textAnchor,
             });
 
             data.svg.append(title, true);
@@ -132,7 +132,7 @@
               x: xPos + options.axisY.offset.x,
               y: yPos + options.axisY.offset.y,
               transform: transform,
-              "text-anchor": options.axisY.textAnchor
+              "text-anchor": options.axisY.textAnchor,
             });
             data.svg.append(title, true);
           }

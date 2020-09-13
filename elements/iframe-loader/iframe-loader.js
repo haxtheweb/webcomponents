@@ -5,7 +5,7 @@ class IframeLoader extends LitElement {
   static get properties() {
     return {
       loading: { type: Boolean },
-      __iframeHeight: { type: Number }
+      __iframeHeight: { type: Number },
     };
   }
   static get styles() {
@@ -42,8 +42,8 @@ class IframeLoader extends LitElement {
     this.loading = true;
     this.__iframeHeight = 100;
     this.__iframe = null;
-    this.__mutationObserver = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
+    this.__mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
         if (mutation.target.offsetHeight) {
           // if we are still in the loading state
           if (this.loading && mutation.target.offsetHeight > 100) {
@@ -63,9 +63,9 @@ class IframeLoader extends LitElement {
   firstUpdated() {
     this.__observer = new FlattenedNodesObserver(
       this.shadowRoot.querySelector("slot"),
-      info => {
+      (info) => {
         if (info.addedNodes.length > 0) {
-          info.addedNodes.forEach(item => {
+          info.addedNodes.forEach((item) => {
             let iframe = null;
             if (item.nodeName === "IFRAME") {
               iframe = item;
@@ -81,7 +81,7 @@ class IframeLoader extends LitElement {
               // Evergreen only right now.
               iframe.loading = "lazy";
               this.__mutationObserver.observe(this.__iframe, {
-                attributes: true
+                attributes: true,
               });
             }
           });

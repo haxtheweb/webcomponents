@@ -15,7 +15,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * @demo demo/index.html
  */
 // helper to use strings for index in Objects
-Object.byString = function(o, s) {
+Object.byString = function (o, s) {
   return objectValFromStringPos(o, s);
 };
 
@@ -35,65 +35,65 @@ class SiteQuery extends LitElement {
        * Manifest with router / location enhancements
        */
       routerManifest: {
-        type: Object
+        type: Object,
       },
       /**
        * activeId
        */
       activeId: {
         type: String,
-        attribute: "active-id"
+        attribute: "active-id",
       },
       /**
        * result to help illustrate this only lives here
        */
       result: {
-        type: Array
+        type: Array,
       },
       /**
        * Conditions that can be used to slice the data differently in the manifest
        */
       conditions: {
-        type: Object
+        type: Object,
       },
       /**
        * Establish the order items should be displayed in
        */
       sort: {
-        type: Object
+        type: Object,
       },
       /**
        * Boolean flag to force a repaint of what's in the item
        */
       forceRebuild: {
         type: Boolean,
-        attribute: "force-rebuild"
+        attribute: "force-rebuild",
       },
       /**
        * Limit the number of results returned
        */
       limit: {
-        type: Number
+        type: Number,
       },
       /**
        * Where to start returning results from
        */
       startIndex: {
         type: Number,
-        attribute: "start-index"
+        attribute: "start-index",
       },
       /**
        * Randomize results
        */
       random: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Entity to focus on
        */
       entity: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   constructor() {
@@ -102,7 +102,7 @@ class SiteQuery extends LitElement {
     this.conditions = {};
     this.random = false;
     this.sort = {
-      order: "ASC"
+      order: "ASC",
     };
     this.forceRebuild = false;
     this.limit = 0;
@@ -119,8 +119,8 @@ class SiteQuery extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -134,7 +134,7 @@ class SiteQuery extends LitElement {
           "limit",
           "startIndex",
           "random",
-          "forceRebuild"
+          "forceRebuild",
         ].includes(propName)
       ) {
         this.result = [
@@ -148,7 +148,7 @@ class SiteQuery extends LitElement {
             this.startIndex,
             this.random,
             this.forceRebuild
-          )
+          ),
         ];
       }
     });
@@ -198,7 +198,7 @@ class SiteQuery extends LitElement {
                 } else {
                   let tmp2 = {
                     _node: Object.assign({}, items[i]),
-                    value: tmp[i]
+                    value: tmp[i],
                   };
                   newItems.push(tmp2);
                 }
@@ -206,7 +206,7 @@ class SiteQuery extends LitElement {
             } else {
               let tmp2 = {
                 _node: Object.assign({}, items[i]),
-                value: tmp
+                value: tmp,
               };
               newItems.push(tmp2);
             }
@@ -232,12 +232,12 @@ class SiteQuery extends LitElement {
           if (conditions[i] === null) {
             conditions[i] = {
               value: [conditions[i]],
-              operator: "="
+              operator: "=",
             };
           } else if (typeof conditions[i] !== "object") {
             conditions[i] = {
               value: conditions[i],
-              operator: "="
+              operator: "=",
             };
           }
           // normalize special case evaluations
@@ -248,7 +248,7 @@ class SiteQuery extends LitElement {
             evaluate = items[0].id;
           }
           // apply the conditions in order
-          items = items.filter(item => {
+          items = items.filter((item) => {
             switch (conditions[i].operator) {
               case ">":
                 if (Object.byString(item, i) > evaluate) {

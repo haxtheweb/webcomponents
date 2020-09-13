@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 import {
   winEventsElement,
-  stripMSWord
+  stripMSWord,
 } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-export-dialog`
@@ -80,7 +80,7 @@ class HaxExportDialog extends winEventsElement(
           top: 50%;
           left: calc(50% - 70px);
         }
-      `
+      `,
     ];
   }
 
@@ -166,17 +166,17 @@ class HaxExportDialog extends winEventsElement(
        * Title when open.
        */
       title: {
-        type: String
+        type: String,
       },
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Access to the global properties object.
        */
       globalPreferences: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -191,8 +191,8 @@ class HaxExportDialog extends winEventsElement(
         composed: true,
         detail: {
           piece: "haxExport",
-          object: this
-        }
+          object: this,
+        },
       })
     );
   }
@@ -341,7 +341,7 @@ class HaxExportDialog extends winEventsElement(
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.title = "View page source";
     this.fileTypes = {
@@ -349,7 +349,7 @@ class HaxExportDialog extends winEventsElement(
       JSON: "text/json",
       PDF: "application/pdf",
       TXT: "text/plain",
-      HTML: "text/html"
+      HTML: "text/html",
     };
     this.opened = false;
     this.globalPreferences = {};

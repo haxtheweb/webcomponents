@@ -7,7 +7,7 @@ import "@lrnwebcomponents/dynamic-import-registry/dynamic-import-registry.js";
  * `MutationObserverImportMixin`
  * `Super class to do imports of new custom elements on the fly`
  */
-const MutationObserverImportMixin = function(SuperClass) {
+const MutationObserverImportMixin = function (SuperClass) {
   // SuperClass so we can write any web component library / base class
   return class extends SuperClass {
     constructor() {
@@ -18,9 +18,9 @@ const MutationObserverImportMixin = function(SuperClass) {
       if (super.connectedCallback) {
         super.connectedCallback();
       }
-      this._mutationObserver = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-          mutation.addedNodes.forEach(node => {
+      this._mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
             if (node.tagName) {
               this.processNewElement(node);
             }
@@ -28,7 +28,7 @@ const MutationObserverImportMixin = function(SuperClass) {
         });
       });
       this._mutationObserver.observe(this, {
-        childList: true
+        childList: true,
       });
     }
     processElementList(list) {

@@ -37,51 +37,49 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           color: var(--rich-text-editor-selection-bg);
           background-color: transparent;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   static get properties() {
     return {
       editor: {
-        type: Object
+        type: Object,
       },
       collapsed: {
         type: Boolean,
         reflect: true,
-        attribute: "collapsed"
+        attribute: "collapsed",
       },
       hidden: {
         type: Boolean,
         reflect: true,
-        attribute: "hidden"
+        attribute: "hidden",
       },
       observer: {
-        type: Object
+        type: Object,
       },
       range: {
-        type: Object
+        type: Object,
       },
       toolbar: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   constructor() {
     super();
     this.hidden = true;
-    document.addEventListener("selectionchange", e => {
+    document.addEventListener("selectionchange", (e) => {
       this.range = this.getRange();
     });
-    document.addEventListener("select-rich-text-editor-editor", e => {
+    document.addEventListener("select-rich-text-editor-editor", (e) => {
       this._editorChange(e);
     });
-    document.addEventListener("deselect-rich-text-editor-editor", e => {
+    document.addEventListener("deselect-rich-text-editor-editor", (e) => {
       this._editorChange(e);
     });
     this.setAttribute("id", this._generateUUID());
@@ -98,13 +96,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener("selectionchange", e => {
+    document.removeEventListener("selectionchange", (e) => {
       this.range = root.getRange();
     });
-    document.removeEventListener("select-rich-text-editor-editor", e => {
+    document.removeEventListener("select-rich-text-editor-editor", (e) => {
       this._editorChange(e);
     });
-    document.removeEventListener("deselect-rich-text-editor-editor", e => {
+    document.removeEventListener("deselect-rich-text-editor-editor", (e) => {
       this._editorChange(e);
     });
   }
@@ -172,7 +170,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   getAncestor(selector, range = this.range) {
     let wrapper,
       tags = selector.toLowerCase().split(","),
-      getMatchingTag = ancestor => {
+      getMatchingTag = (ancestor) => {
         if (
           !!ancestor &&
           !!ancestor.tagName &&
@@ -323,14 +321,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       root.toolbar = e.detail.toolbar;
       if (root.observer) root.observer.disconnect();
       if (!deselect && e.detail.editor) {
-        root.observer = new MutationObserver(evt => {
+        root.observer = new MutationObserver((evt) => {
           root.range = root.getRange();
         });
         root.observer.observe(e.detail.editor, {
           attributes: false,
           childList: true,
           subtree: true,
-          characterData: false
+          characterData: false,
         });
       }
     }
@@ -365,7 +363,7 @@ window.RichTextEditorSelection.instance = null;
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.RichTextEditorSelection.requestAvailability = function() {
+window.RichTextEditorSelection.requestAvailability = function () {
   if (window.RichTextEditorSelection.instance == null) {
     window.RichTextEditorSelection.instance = new RichTextEditorSelection();
     document.body.appendChild(window.RichTextEditorSelection.instance);

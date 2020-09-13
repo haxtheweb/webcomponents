@@ -4,7 +4,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -13,14 +13,14 @@ export default {
   component: "threaded-discussion",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const ThreadedDiscussionStory = () => {
   return utils.makeElementFromClass(ThreadedDiscussion, {
     source: new URL(`./demo/discussion.json`, import.meta.url),
     commentIcon: "send",
-    demo: true
+    demo: true,
   });
 };

@@ -46,14 +46,14 @@ class IconsetDemo extends PolymerElement {
       iconSets.list.length
     ) {
       var index = 0;
-      iconSets.list.forEach(function(item) {
+      iconSets.list.forEach(function (item) {
         let name = item.name;
         if (!root._hideIconset(name)) {
           temp.push({
             name: name,
-            icons: []
+            icons: [],
           });
-          item.getIconNames().forEach(icon => {
+          item.getIconNames().forEach((icon) => {
             temp[index].icons.push(icon);
           });
           index++;

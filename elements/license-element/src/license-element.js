@@ -8,33 +8,33 @@ export class licenseList {
       by: {
         name: "Attribution",
         link: "https://creativecommons.org/licenses/by/4.0/",
-        image: "https://i.creativecommons.org/l/by/4.0/88x31.png"
+        image: "https://i.creativecommons.org/l/by/4.0/88x31.png",
       },
       "by-sa": {
         name: "Attribution Share a like",
         link: "https://creativecommons.org/licenses/by-sa/4.0/",
-        image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
+        image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png",
       },
       "by-nd": {
         name: "Attribution No derivatives",
         link: "https://creativecommons.org/licenses/by-nd/4.0/",
-        image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png"
+        image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png",
       },
       "by-nc": {
         name: "Attribution non-commercial",
         link: "https://creativecommons.org/licenses/by-nc/4.0/",
-        image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
+        image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png",
       },
       "by-nc-sa": {
         name: "Attribution non-commercial share a like",
         link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-        image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+        image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png",
       },
       "by-nc-nd": {
         name: "Attribution Non-commercial No derivatives",
         link: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-        image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"
-      }
+        image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png",
+      },
     };
     // support mutating the array into a select list
     if (mode == "select") {
@@ -108,7 +108,7 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
         .work-title {
           font-weight: bold;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -183,65 +183,65 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
        * Title of the work.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Person or group that owns / created the work.
        */
       creator: {
-        type: String
+        type: String,
       },
       /**
        * Original Source of the work in question
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * License name, calculated or supplied by the end user if we don't have them.
        */
       licenseName: {
         type: String,
-        attribute: "license-name"
+        attribute: "license-name",
       },
       licenseImage: {
         type: String,
-        attribute: "license-image"
+        attribute: "license-image",
       },
       /**
        * License link for more details
        */
       licenseLink: {
         type: String,
-        attribute: "license-link"
+        attribute: "license-link",
       },
       /**
        * License short hand. Options cc0,
        */
       license: {
-        type: String
+        type: String,
       },
       /**
        * More details label
        */
       moreLabel: {
         type: String,
-        attribute: "more-label"
+        attribute: "more-label",
       },
       /**
        * More details link
        */
       moreLink: {
         type: String,
-        attribute: "more-link"
+        attribute: "more-link",
       },
       /**
        * See if we have more things to point to
        */
       hasMore: {
         type: Boolean,
-        attribute: "has-more"
-      }
+        attribute: "has-more",
+      },
     };
   }
   constructor() {
@@ -276,12 +276,12 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             source: "source",
             title: "title",
             author: "creator",
-            license: "license"
-          }
+            license: "license",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -290,8 +290,8 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "The title of the work being cited.",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -299,7 +299,7 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "The title of the work being cited.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "source",
@@ -307,7 +307,7 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             description: "The source url for the element this is citing.",
             inputMethod: "textfield",
             icon: "link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "license",
@@ -315,15 +315,15 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             description: "The source url for the element this is citing.",
             inputMethod: "select",
             options: new licenseList("select"),
-            icon: "link"
+            icon: "link",
           },
           {
             property: "creator",
             title: "Creator",
             description: "Who made or owns this.",
             inputMethod: "textfield",
-            icon: "link"
-          }
+            icon: "link",
+          },
         ],
         advanced: [
           {
@@ -331,15 +331,15 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             title: "Source link",
             description: "Link to additional licensing details",
             inputMethod: "textfield",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "moreLabel",
             title: "more label",
             description: "Label for more licensing details",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       demoSchema: [
         {
@@ -348,11 +348,11 @@ class LicenseElement extends SchemaBehaviors(LitElement) {
             title: "Wonderland",
             creator: "Mad Hatter",
             source: "https://haxtheweb.org/",
-            license: "by"
+            license: "by",
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
   /**

@@ -57,7 +57,7 @@ class SimpleToast extends LitElement {
           z-index: var(--simple-toast-z-index, inherit);
           font-size: var(--simple-toast-font-size, inherit);
         }
-      `
+      `,
     ];
   }
   // render function
@@ -89,40 +89,40 @@ class SimpleToast extends LitElement {
        */
       opened: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Plain text based message to display
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * Class name, fit-bottom being a useful one
        */
       classStyle: {
         type: String,
-        attribute: "class-style"
+        attribute: "class-style",
       },
       /**
        * Text for the close button
        */
       closeText: {
         type: String,
-        attribute: "close-text"
+        attribute: "close-text",
       },
       /**
        * How long the toast message should be displayed
        */
       duration: {
-        type: Number
+        type: Number,
       },
       /**
        * Event callback when hide is called
        */
       eventCallback: {
         type: String,
-        attribute: "event-callback"
+        attribute: "event-callback",
       },
       /**
        * If there should be a close button shown
@@ -130,8 +130,8 @@ class SimpleToast extends LitElement {
       closeButton: {
         type: Boolean,
         reflect: true,
-        attribute: "close-button"
-      }
+        attribute: "close-button",
+      },
     };
   }
 
@@ -243,7 +243,7 @@ class SimpleToast extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: true,
-        composed: true
+        composed: true,
       });
       this.dispatchEvent(evt);
     }

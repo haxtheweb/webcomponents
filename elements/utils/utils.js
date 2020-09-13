@@ -11,7 +11,7 @@ function valueMapTransform(items, map) {
   // ensure we have a map to render
   let tmpAry = [];
   if (map) {
-    items.forEach(item => {
+    items.forEach((item) => {
       // create tag for the map
       let tmp = {};
       for (var key in map) {
@@ -46,7 +46,7 @@ function valueMapTransform(items, map) {
  * Convert dash case to camel case
  */
 function dashToCamelCase(key) {
-  return key.toLowerCase().replace(/-(.)/g, function(match, group1) {
+  return key.toLowerCase().replace(/-(.)/g, function (match, group1) {
     return group1.toUpperCase();
   });
 }
@@ -63,7 +63,7 @@ function camelToDash(str) {
  * Helper to convert dash to camel; important when reading attributes.
  */
 function dashToCamel(str) {
-  return str.replace(/-([a-z])/g, function(g) {
+  return str.replace(/-([a-z])/g, function (g) {
     return g[1].toUpperCase();
   });
 }
@@ -145,7 +145,7 @@ function haxElementToNode(haxSchema) {
  * Conver camel case to dash case
  */
 function camelCaseToDash(key) {
-  return key.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`);
+  return key.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
 }
 /**
  * Encapsulate script types in an HTML blob
@@ -165,7 +165,7 @@ function encapScript(html) {
     // special case, it's inside a template tag
     html = html.replace(
       /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function(match, contents, offset, input_string) {
+      function (match, contents, offset, input_string) {
         match = match.replace("&lt;script&gt;", "<script>");
         match = match.replace("&lt;/script&gt;", "</script>");
         match = match.replace("&lt;style&gt;", "<style>");
@@ -501,7 +501,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
   let element = {
     tag: tag,
     properties: props,
-    content: slotContent
+    content: slotContent,
   };
 
   if (eventName !== null) {
@@ -513,7 +513,7 @@ function nodeToHaxElement(node, eventName = "insert-element") {
 /**
  * Manage window based events in a consistent and simple manner
  */
-export const winEventsElement = function(SuperClass) {
+export const winEventsElement = function (SuperClass) {
   return class extends SuperClass {
     __applyWinEvents(status) {
       if (this.__winEvents) {
@@ -561,7 +561,7 @@ export {
   varExists,
   varGet,
   objectValFromStringPos,
-  nodeToHaxElement
+  nodeToHaxElement,
 };
 
 /**
@@ -585,7 +585,7 @@ const debug = false;
 const validNodeTypes = [
   Node.ELEMENT_NODE,
   Node.TEXT_NODE,
-  Node.DOCUMENT_FRAGMENT_NODE
+  Node.DOCUMENT_FRAGMENT_NODE,
 ];
 function isValidNode(node) {
   return validNodeTypes.includes(node.nodeType);
@@ -626,7 +626,7 @@ const addInternalListener = (() => {
   const testRoot = testNode.attachShadow({ mode: "open" });
   if (testRoot.getSelection) {
     // getSelection really exists, why are you using us?
-    document.addEventListener("selectionchange", ev => {
+    document.addEventListener("selectionchange", (ev) => {
       document.dispatchEvent(new CustomEvent("-shadow-selectionchange"));
     });
     return () => {};
@@ -635,7 +635,7 @@ const addInternalListener = (() => {
   let withinInternals = false;
   const handlers = [];
 
-  document.addEventListener("selectionchange", ev => {
+  document.addEventListener("selectionchange", (ev) => {
     if (withinInternals) {
       return;
     }
@@ -644,15 +644,15 @@ const addInternalListener = (() => {
     window.setTimeout(() => {
       withinInternals = false;
     }, 0);
-    handlers.forEach(fn => fn(ev));
+    handlers.forEach((fn) => fn(ev));
   });
 
-  return fn => handlers.push(fn);
+  return (fn) => handlers.push(fn);
 })();
 
 let wasCaret = false;
 let resolveTask = null;
-addInternalListener(ev => {
+addInternalListener((ev) => {
   const s = window.getSelection();
   if (s.type === "Caret") {
     wasCaret = true;
@@ -981,6 +981,6 @@ export function internalGetShadowSelection(root) {
   range.setEnd(rightNode, offsetRight);
   return {
     mode: isNaturalDirection ? "right" : "left",
-    range
+    range,
   };
 }

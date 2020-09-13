@@ -40,14 +40,14 @@ class A11yMediaStateManager extends LitElement {
        * Stores an array of all the players on the page.
        */
       players: {
-        type: Array
+        type: Array,
       },
       /**
        * Manages which player is currently active.
        */
       activePlayer: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -57,10 +57,10 @@ class A11yMediaStateManager extends LitElement {
   constructor() {
     super();
     this.players = [];
-    this.__stickyManager = e => this.setStickyPlayer(e.detail);
-    this.__activeManager = e => this.setActivePlayer(e.detail);
-    this.__scrollChecker = e => this._checkScroll(e);
-    this.__playerLoader = e => this.players.push(e.detail);
+    this.__stickyManager = (e) => this.setStickyPlayer(e.detail);
+    this.__activeManager = (e) => this.setActivePlayer(e.detail);
+    this.__scrollChecker = (e) => this._checkScroll(e);
+    this.__playerLoader = (e) => this.players.push(e.detail);
 
     // sets the instance to the current instance
     if (!window.A11yMediaStateManager.instance) {
@@ -73,7 +73,7 @@ class A11yMediaStateManager extends LitElement {
    */
   checkConcurrentPlayers() {
     let active = this.activePlayer;
-    this.players.forEach(player => {
+    this.players.forEach((player) => {
       if (player !== active) {
         player.toggleFullscreen(false);
         if (

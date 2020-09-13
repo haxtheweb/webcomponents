@@ -4,9 +4,9 @@
  *
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
-(function() {
+(function () {
   var d = !1,
-    l = function(e) {
+    l = function (e) {
       return e instanceof l
         ? e
         : this instanceof l
@@ -76,7 +76,7 @@
       41995: "DeviceSettingDescription",
       41996: "SubjectDistanceRange",
       40965: "InteroperabilityIFDPointer",
-      42016: "ImageUniqueID"
+      42016: "ImageUniqueID",
     }),
     c = (l.TiffTags = {
       256: "ImageWidth",
@@ -111,7 +111,7 @@
       272: "Model",
       305: "Software",
       315: "Artist",
-      33432: "Copyright"
+      33432: "Copyright",
     }),
     f = (l.GPSTags = {
       0: "GPSVersionID",
@@ -144,7 +144,7 @@
       27: "GPSProcessingMethod",
       28: "GPSAreaInformation",
       29: "GPSDateStamp",
-      30: "GPSDifferential"
+      30: "GPSDifferential",
     }),
     g = (l.IFD1Tags = {
       256: "ImageWidth",
@@ -166,7 +166,7 @@
       529: "YCbCrCoefficients",
       530: "YCbCrSubSampling",
       531: "YCbCrPositioning",
-      532: "ReferenceBlackWhite"
+      532: "ReferenceBlackWhite",
     }),
     m = (l.StringValues = {
       ExposureProgram: {
@@ -178,7 +178,7 @@
         5: "Creative program",
         6: "Action program",
         7: "Portrait mode",
-        8: "Landscape mode"
+        8: "Landscape mode",
       },
       MeteringMode: {
         0: "Unknown",
@@ -188,7 +188,7 @@
         4: "MultiSpot",
         5: "Pattern",
         6: "Partial",
-        255: "Other"
+        255: "Other",
       },
       LightSource: {
         0: "Unknown",
@@ -211,7 +211,7 @@
         22: "D75",
         23: "D50",
         24: "ISO studio tungsten",
-        255: "Other"
+        255: "Other",
       },
       Flash: {
         0: "Flash did not fire",
@@ -235,7 +235,7 @@
         79: "Flash fired, compulsory flash mode, red-eye reduction mode, return light detected",
         89: "Flash fired, auto mode, red-eye reduction mode",
         93: "Flash fired, auto mode, return light not detected, red-eye reduction mode",
-        95: "Flash fired, auto mode, return light detected, red-eye reduction mode"
+        95: "Flash fired, auto mode, return light detected, red-eye reduction mode",
       },
       SensingMethod: {
         1: "Not defined",
@@ -244,13 +244,13 @@
         4: "Three-chip color area sensor",
         5: "Color sequential area sensor",
         7: "Trilinear sensor",
-        8: "Color sequential linear sensor"
+        8: "Color sequential linear sensor",
       },
       SceneCaptureType: {
         0: "Standard",
         1: "Landscape",
         2: "Portrait",
-        3: "Night scene"
+        3: "Night scene",
       },
       SceneType: { 1: "Directly photographed" },
       CustomRendered: { 0: "Normal process", 1: "Custom process" },
@@ -260,7 +260,7 @@
         1: "Low gain up",
         2: "High gain up",
         3: "Low gain down",
-        4: "High gain down"
+        4: "High gain down",
       },
       Contrast: { 0: "Normal", 1: "Soft", 2: "Hard" },
       Saturation: { 0: "Normal", 1: "Low saturation", 2: "High saturation" },
@@ -269,10 +269,10 @@
         0: "Unknown",
         1: "Macro",
         2: "Close view",
-        3: "Distant view"
+        3: "Distant view",
       },
       FileSource: { 3: "DSC" },
-      Components: { 0: "", 1: "Y", 2: "Cb", 3: "Cr", 4: "R", 5: "G", 6: "B" }
+      Components: { 0: "", 1: "Y", 2: "Cb", 3: "Cr", 4: "R", 5: "G", 6: "B" },
     });
   function i(e) {
     return !!e.exifdata;
@@ -281,7 +281,7 @@
     function t(e) {
       var t = p(e);
       i.exifdata = t || {};
-      var n = (function(e) {
+      var n = (function (e) {
         var t = new DataView(e);
         d && console.log("Got file of length " + e.byteLength);
         if (255 != t.getUint8(0) || 216 != t.getUint8(1))
@@ -309,7 +309,7 @@
         var s, l;
       })(e);
       if (((i.iptcdata = n || {}), l.isXmpEnabled)) {
-        var r = (function(e) {
+        var r = (function (e) {
           if (!("DOMParser" in self)) return;
           var t = new DataView(e);
           d && console.log("Got file of length " + e.byteLength);
@@ -346,7 +346,7 @@
     if (i.src)
       if (/^data\:/i.test(i.src))
         t(
-          (function(e, t) {
+          (function (e, t) {
             (t = t || e.match(/^data\:([^\;]+)\;base64,/im)[1] || ""),
               (e = e.replace(/^data\:([^\;]+)\;base64,/gim, ""));
             for (
@@ -363,22 +363,22 @@
           })(i.src)
         );
       else if (/^blob\:/i.test(i.src)) {
-        ((s = new FileReader()).onload = function(e) {
+        ((s = new FileReader()).onload = function (e) {
           t(e.target.result);
         }),
           (e = i.src),
-          (n = function(e) {
+          (n = function (e) {
             s.readAsArrayBuffer(e);
           }),
           (r = new XMLHttpRequest()).open("GET", e, !0),
           (r.responseType = "blob"),
-          (r.onload = function(e) {
+          (r.onload = function (e) {
             (200 != this.status && 0 !== this.status) || n(this.response);
           }),
           r.send();
       } else {
         var a = new XMLHttpRequest();
-        (a.onload = function() {
+        (a.onload = function () {
           if (200 != this.status && 0 !== this.status)
             throw "Could not load image";
           t(a.response), (a = null);
@@ -392,7 +392,7 @@
       (i instanceof self.Blob || i instanceof self.File)
     ) {
       var s;
-      ((s = new FileReader()).onload = function(e) {
+      ((s = new FileReader()).onload = function (e) {
         d && console.log("Got file of length " + e.target.result.byteLength),
           t(e.target.result);
       }),
@@ -433,7 +433,7 @@
     122: "captionWriter",
     105: "headline",
     116: "copyright",
-    15: "category"
+    15: "category",
   };
   function S(e, t, n) {
     for (var r, i, o, a, s = new DataView(e), l = {}, u = t; u < t + n; )
@@ -596,15 +596,16 @@
         r[i] = a[i];
       }
     return (
-      (r.thumbnail = (function(e, t, n, r) {
+      (r.thumbnail = (function (e, t, n, r) {
         var i,
           o,
           a,
           s,
-          l = ((o = t + n),
-          (a = r),
-          (s = (i = e).getUint16(o, !a)),
-          i.getUint32(o + 2 + 12 * s, !a));
+          l =
+            ((o = t + n),
+            (a = r),
+            (s = (i = e).getUint16(o, !a)),
+            i.getUint32(o + 2 + 12 * s, !a));
         if (!l) return {};
         if (l > e.byteLength) return {};
         var u = P(e, t, t + l, g, r);
@@ -615,7 +616,7 @@
                 var c = t + u.JpegIFOffset,
                   d = u.JpegIFByteCount;
                 u.blob = new Blob([new Uint8Array(e.buffer, c, d)], {
-                  type: "image/jpeg"
+                  type: "image/jpeg",
                 });
               }
               break;
@@ -692,13 +693,13 @@
       console.log(e.message);
     }
   }
-  (l.enableXmp = function() {
+  (l.enableXmp = function () {
     l.isXmpEnabled = !0;
   }),
-    (l.disableXmp = function() {
+    (l.disableXmp = function () {
       l.isXmpEnabled = !1;
     }),
-    (l.getData = function(e, t) {
+    (l.getData = function (e, t) {
       return (
         !(
           ((self.Image && e instanceof self.Image) ||
@@ -707,13 +708,13 @@
         ) && (i(e) ? t && t.call(e) : r(e, t), !0)
       );
     }),
-    (l.getTag = function(e, t) {
+    (l.getTag = function (e, t) {
       if (i(e)) return e.exifdata[t];
     }),
-    (l.getIptcTag = function(e, t) {
+    (l.getIptcTag = function (e, t) {
       if (i(e)) return e.iptcdata[t];
     }),
-    (l.getAllTags = function(e) {
+    (l.getAllTags = function (e) {
       if (!i(e)) return {};
       var t,
         n = e.exifdata,
@@ -721,7 +722,7 @@
       for (t in n) n.hasOwnProperty(t) && (r[t] = n[t]);
       return r;
     }),
-    (l.getAllIptcTags = function(e) {
+    (l.getAllIptcTags = function (e) {
       if (!i(e)) return {};
       var t,
         n = e.iptcdata,
@@ -729,7 +730,7 @@
       for (t in n) n.hasOwnProperty(t) && (r[t] = n[t]);
       return r;
     }),
-    (l.pretty = function(e) {
+    (l.pretty = function (e) {
       if (!i(e)) return "";
       var t,
         n = e.exifdata,
@@ -751,12 +752,12 @@
             : (r += t + " : " + n[t] + "\r\n"));
       return r;
     }),
-    (l.readFromBinaryFile = function(e) {
+    (l.readFromBinaryFile = function (e) {
       return p(e);
     }),
     "function" == typeof define &&
       define.amd &&
-      define("exif-js", [], function() {
+      define("exif-js", [], function () {
         return l;
       });
 }.call(this));

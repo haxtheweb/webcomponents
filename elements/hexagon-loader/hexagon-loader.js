@@ -510,21 +510,14 @@ class HexagonLoader extends LitElement {
             transform: scale(0) translate(-50%, -50%);
           }
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
     return html`
-      <div>
-        ${this.items.map(
-          item =>
-            html`
-              <hex-a-gon></hex-a-gon>
-            `
-        )}
-      </div>
+      <div>${this.items.map((item) => html` <hex-a-gon></hex-a-gon> `)}</div>
     `;
   }
 
@@ -539,7 +532,7 @@ class HexagonLoader extends LitElement {
       color: {
         name: "color",
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * The relative size of this loader. Options small, medium, large
@@ -547,7 +540,7 @@ class HexagonLoader extends LitElement {
       size: {
         name: "size",
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Loading state
@@ -555,11 +548,11 @@ class HexagonLoader extends LitElement {
       loading: {
         name: "loading",
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       items: {
         name: "items",
-        type: Array
+        type: Array,
       },
       /**
        * Count of the items
@@ -568,8 +561,8 @@ class HexagonLoader extends LitElement {
         name: "itemCount",
         type: Number,
         reflect: true,
-        attribute: "item-count"
-      }
+        attribute: "item-count",
+      },
     };
   }
 

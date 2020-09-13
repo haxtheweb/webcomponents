@@ -45,7 +45,7 @@ class ElmslnStudio extends router(
         >
         <elmsln-studio-link
           ?active="${this.route === "submissions" ||
-            this.route === "portfolios"}"
+          this.route === "portfolios"}"
           href="/submissions"
           >Submissions</elmsln-studio-link
         >
@@ -74,10 +74,10 @@ class ElmslnStudio extends router(
           ?demo-mode="${this.demoMode}"
           route="submissions"
           .submissions="${Object.keys(this.submissions || {}).map(
-            key => this.submissions[key]
+            (key) => this.submissions[key]
           )}"
           .comments="${Object.keys(this.discussion || {}).map(
-            key => this.discussion[key]
+            (key) => this.discussion[key]
           )}"
           ?grid="${this.query.grid || false}"
           student-filter="${this.query.student || ""}"
@@ -114,65 +114,65 @@ class ElmslnStudio extends router(
       activitySource: {
         type: String,
         reflect: true,
-        attribute: "activity-source"
+        attribute: "activity-source",
       },
       assignments: { type: Object },
       assignmentsSource: {
         type: String,
         reflect: true,
-        attribute: "assignments-source"
+        attribute: "assignments-source",
       },
       discussion: { type: Object },
       discussionSource: {
         type: String,
         reflect: true,
-        attribute: "discussion-source"
+        attribute: "discussion-source",
       },
       lessons: { type: Object },
       lessonsSource: {
         type: String,
         reflect: true,
-        attribute: "lessons-source"
+        attribute: "lessons-source",
       },
       portfolios: { type: Object },
       portfoliosSource: {
         type: String,
         reflect: true,
-        attribute: "portfolios-source"
+        attribute: "portfolios-source",
       },
       profile: { type: Object },
       profileSource: {
         type: String,
         reflect: true,
-        attribute: "profile-source"
+        attribute: "profile-source",
       },
       projects: { type: Array },
       projectsSource: {
         type: String,
         reflect: true,
-        attribute: "projects-source"
+        attribute: "projects-source",
       },
       sourcePath: {
         type: String,
         reflect: true,
-        attribute: "source-path"
+        attribute: "source-path",
       },
       submissions: { type: Object },
       submissionsSource: {
         type: String,
         reflect: true,
-        attribute: "submissions-source"
+        attribute: "submissions-source",
       },
       users: { type: Object },
       usersSource: {
         type: String,
         reflect: true,
-        attribute: "users"
+        attribute: "users",
       },
       route: { type: String },
       params: { type: Object },
       query: { type: Object },
-      data: { type: Object }
+      data: { type: Object },
     };
   }
 
@@ -180,21 +180,21 @@ class ElmslnStudio extends router(
     return [
       {
         name: "assignments",
-        pattern: "assignments"
+        pattern: "assignments",
       },
       {
         name: "submissions",
-        pattern: "submissions"
+        pattern: "submissions",
       },
       {
         name: "portfolios",
-        pattern: "portfolios/:portfolio"
+        pattern: "portfolios/:portfolio",
       },
       {
         name: "dashboard",
         pattern: "*",
-        data: { title: "Home" }
-      }
+        data: { title: "Home" },
+      },
     ];
   }
 
@@ -254,9 +254,9 @@ class ElmslnStudio extends router(
       ? []
       : Object.keys(this.discussion || {})
           .filter(
-            key => this.discussion[key].submissionId == this.query.submission
+            (key) => this.discussion[key].submissionId == this.query.submission
           )
-          .map(key => this.discussion[key]);
+          .map((key) => this.discussion[key]);
   }
 
   _filterBy(lookup, query, prefix = "") {
@@ -266,15 +266,15 @@ class ElmslnStudio extends router(
   }
   fetchData(source, propName, params) {
     fetch(this._getPath(source, params))
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         this[propName] = data;
         console.log(`${propName} Loaded`, data, this[propName]);
       });
   }
   _getPath(path, params) {
     let query = Object.keys(params || {})
-      .map(p => `${encodeURI(p)}=${encodeURI(params[p])}`)
+      .map((p) => `${encodeURI(p)}=${encodeURI(params[p])}`)
       .join("&");
     return query ? `${path}?${query}` : path;
   }

@@ -73,18 +73,18 @@ class LrndesignMapmenuHeader extends mixinBehaviors(
   static get properties() {
     return {
       title: {
-        type: String
+        type: String,
       },
       label: {
-        type: String
+        type: String,
       },
       avatarLabel: {
         type: String,
-        value: ""
+        value: "",
       },
       opened: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   connectedCallback() {

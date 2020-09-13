@@ -103,7 +103,7 @@ window.MediaBehaviors.Video = {
         "ogg",
         "ogv",
         "wav",
-        "webm"
+        "webm",
       ],
       isLocal = false;
     // some common ones
@@ -130,10 +130,10 @@ window.MediaBehaviors.Video = {
       // not sure but iframe it for funzies
       return "external";
     }
-  }
+  },
 };
 
-export const MediaBehaviorsVideo = function(SuperClass) {
+export const MediaBehaviorsVideo = function (SuperClass) {
   return class extends SuperClass {
     _sourceIsIframe(source) {
       let type = this.getVideoType(source);
@@ -218,7 +218,7 @@ export const MediaBehaviorsVideo = function(SuperClass) {
           "ogg",
           "ogv",
           "wav",
-          "webm"
+          "webm",
         ],
         isLocal = false;
       // some common ones

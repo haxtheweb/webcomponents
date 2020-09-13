@@ -61,7 +61,7 @@ class ImageInspector extends LitElement {
           height: 500px;
           pointer-events: none;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -150,28 +150,28 @@ class ImageInspector extends LitElement {
     return {
       noLeft: {
         type: Boolean,
-        attribute: "no-left"
+        attribute: "no-left",
       },
       /**
        * Image rotation
        */
       degrees: {
         type: Number,
-        reflect: true
+        reflect: true,
       },
       /**
        * Image source.
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        * Hover class for button styling
        */
       hoverClass: {
         type: String,
-        attribute: "hover-class"
-      }
+        attribute: "hover-class",
+      },
     };
   }
   firstUpdated() {

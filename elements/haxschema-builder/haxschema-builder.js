@@ -30,7 +30,7 @@ class HaxschemaBuilder extends LitElement {
         code-editor {
           height: 500px;
         }
-      `
+      `,
     ];
   }
 
@@ -84,8 +84,8 @@ class HaxschemaBuilder extends LitElement {
         handles: [],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -96,11 +96,11 @@ class HaxschemaBuilder extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -113,20 +113,20 @@ class HaxschemaBuilder extends LitElement {
        */
       haxSchema: {
         type: String,
-        attribute: "hax-schema"
+        attribute: "hax-schema",
       },
       /**
        * Optional remote source to pull in
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * String based value passed between the elements to stitch together
        */
       value: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -148,7 +148,7 @@ class HaxschemaBuilder extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("hax-schema-changed", {
-            value: this[propName]
+            value: this[propName],
           })
         );
         this._haxSchemaChanged(this[propName], oldValue);
@@ -225,7 +225,7 @@ class HaxschemaBuilder extends LitElement {
       inputMethod: "textfield",
       icon: "android",
       required: true,
-      validationType: "text"
+      validationType: "text",
     };
   }
   __haxSchemaChanged(e) {

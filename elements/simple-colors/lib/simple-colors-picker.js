@@ -30,7 +30,7 @@ class SimpleColorsPicker extends SimpleColors {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -91,7 +91,7 @@ class SimpleColorsPicker extends SimpleColors {
        */
       ariaLabelledby: {
         type: String,
-        attribute: "aria-labelledby"
+        attribute: "aria-labelledby",
       },
 
       /**
@@ -99,14 +99,14 @@ class SimpleColorsPicker extends SimpleColors {
        */
       blockLabel: {
         type: Boolean,
-        attribute: "block-label"
+        attribute: "block-label",
       },
 
       /**
        * Is the picker disabled?
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
 
       /**
@@ -114,14 +114,14 @@ class SimpleColorsPicker extends SimpleColors {
        */
       expanded: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
        * Optional. The label for the picker input
        */
       label: {
-        type: String
+        type: String,
       },
 
       /**
@@ -137,14 +137,14 @@ class SimpleColorsPicker extends SimpleColors {
         */
       options: {
         type: Array,
-        reflect: false //,observer: false
+        reflect: false, //,observer: false
       },
       /**
        * Show all shades instead of just main accent-colors
        */
       shades: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -152,14 +152,14 @@ class SimpleColorsPicker extends SimpleColors {
        */
       value: {
         type: String,
-        reflect: true //,notify: true
+        reflect: true, //,notify: true
       },
       /**
        *
        */
       __ready: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -179,30 +179,30 @@ class SimpleColorsPicker extends SimpleColors {
     let options = [[]],
       theme = dark !== false ? "dark" : "default";
     if (shades === false) {
-      options = Object.keys(this.colors).map(key => {
+      options = Object.keys(this.colors).map((key) => {
         return [
           {
             alt: key,
-            value: key
-          }
+            value: key,
+          },
         ];
       });
       options.unshift([
         {
           alt: "none",
-          value: null
-        }
+          value: null,
+        },
       ]);
     } else {
       let colorNames = Object.keys(colors);
       for (let i = 0; i < colors[colorNames[0]].length; i++) {
-        let shade = Object.keys(colors).map(key => {
+        let shade = Object.keys(colors).map((key) => {
           let name = key + "-" + (i + 1),
             cssvar = "--simple-colors-" + theme + "-theme-" + name;
           return {
             alt: name,
             style: "background-color: var(" + cssvar + ")",
-            value: cssvar
+            value: cssvar,
           };
         });
         options.push(shade);

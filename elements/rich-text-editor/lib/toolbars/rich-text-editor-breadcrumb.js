@@ -34,7 +34,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
           margin: 0;
           padding: 2px 5px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -65,30 +65,30 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
        * The text-editor that this breadcrumb controls.
        */
       controls: {
-        type: String
+        type: String,
       },
       /**
        * The tag for this breadcrumb.
        */
       tag: {
-        type: String
+        type: String,
       },
       /**
        * The target node that this breadcrumb selects.
        */
       target: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
   constructor() {
     super();
     this.tag = "";
-    this.addEventListener("mousedown", function(e) {
+    this.addEventListener("mousedown", function (e) {
       e.preventDefault();
     });
-    this.addEventListener("keypress", function(e) {
+    this.addEventListener("keypress", function (e) {
       e.preventDefault();
     });
   }
@@ -113,7 +113,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }

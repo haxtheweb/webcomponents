@@ -13,9 +13,9 @@ const AframePattern = {
   replacements: [
     {
       find: "./animatedbox.gltf",
-      replace: require("file-loader!./demo/animatedbox.gltf")
-    }
-  ]
+      replace: require("file-loader!./demo/animatedbox.gltf"),
+    },
+  ],
 };
 window.StorybookUtilities.instance.addPattern(AframePattern);
 
@@ -30,6 +30,6 @@ const AframeStory = {
   props: props,
   slots: {},
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(AframeStory);

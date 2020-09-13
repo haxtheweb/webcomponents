@@ -15,7 +15,7 @@ class CodePenButton extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -57,37 +57,35 @@ class CodePenButton extends LitElement {
     return {
       checkItOut: {
         type: String,
-        attribute: "check-it-out"
+        attribute: "check-it-out",
       },
       /**
        * End point for posting should it change in the future.
        */
       endPoint: {
         type: String,
-        attribute: "end-point"
+        attribute: "end-point",
       },
       /**
        * Data object as a JSON string for the POST data in page.
        */
       dataString: {
         type: String,
-        attribute: "data-string"
+        attribute: "data-string",
       },
       /**
        * Data object to post to code pen
        */
       data: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
    * Return string from data object so it can be posted correctly.
    */
   _getDataString(data) {
-    return JSON.stringify(data)
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&apos;");
+    return JSON.stringify(data).replace(/"/g, "&quot;").replace(/'/g, "&apos;");
   }
 }
 window.customElements.define(CodePenButton.tag, CodePenButton);

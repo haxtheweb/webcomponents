@@ -10,8 +10,8 @@ export default {
   component: "img-view-modal",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 const figures = [
@@ -22,11 +22,11 @@ const figures = [
     "Red cherries on a white dish.",
     "Beach with sunbathers.",
     "String lights on a tree against dark night sky.",
-    "Empty beach with a heart drawn in the sand."
+    "Empty beach with a heart drawn in the sand.",
   ].map((item, i) => {
     return {
       src: new URL(`demo/images/image${i + 1}.jpg`, import.meta.url),
-      info: item
+      info: item,
     };
   }),
   toolbars = {
@@ -40,8 +40,8 @@ const figures = [
         "navXofY",
         "kbdbutton",
         "infobutton",
-        "nextbutton"
-      ]
+        "nextbutton",
+      ],
     },
     bottom: {
       id: "bottom",
@@ -51,15 +51,15 @@ const figures = [
         "rotategroup",
         "zoomgroup",
         "homebutton",
-        "pangroup"
-      ]
-    }
+        "pangroup",
+      ],
+    },
   },
   settings = {
     figures: figures,
     infoToggled: false,
     kbdToggled: false,
-    toolbars: toolbars
+    toolbars: toolbars,
   },
   exclusions = ["src", "sources"];
 export const ImgViewViewerStory = () => {
@@ -70,7 +70,7 @@ export const ImgViewViewerStory = () => {
       infoToggled: false,
       kbdToggled: false,
       toolbars: toolbars,
-      "--img-view-viewer-height": "90vh"
+      "--img-view-viewer-height": "90vh",
     },
     [
       { title: "viewer height", css: "--img-view-viewer-height" },
@@ -79,8 +79,8 @@ export const ImgViewViewerStory = () => {
       { title: "border color", css: "--img-view-viewer-borderColor" },
       {
         title: "background color (toggled buttons)",
-        css: "--img-view-modal-viewer-backgroundColor"
-      }
+        css: "--img-view-modal-viewer-backgroundColor",
+      },
     ]
   );
 };
@@ -93,7 +93,7 @@ export const ImgViewModalStory = () => {
       kbdToggled: false,
       toolbars: toolbars,
       title: utils.getRandomText(),
-      emptyslot: `<button>Open Viewer</button>`
+      emptyslot: `<button>Open Viewer</button>`,
     },
     [
       { title: "Modal button", slot: "" },
@@ -104,8 +104,8 @@ export const ImgViewModalStory = () => {
       { title: "border color", css: "--img-view-modal-borderColor" },
       {
         title: "background color (toggled buttons)",
-        css: "--img-view-modal-toggled-backgroundColor"
-      }
+        css: "--img-view-modal-toggled-backgroundColor",
+      },
     ],
     ["modal"]
   );

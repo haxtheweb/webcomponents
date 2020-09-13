@@ -6,13 +6,13 @@ class GridPlateLayoutOptions {
     this.resizeTimer = null;
     this.activeItem = null;
     this.layouts = {
-      "1": {
+      1: {
         columnLayout: "1: full width",
         xs: ["100%"],
         sm: ["100%"],
         md: ["100%"],
         lg: ["100%"],
-        xl: ["100%"]
+        xl: ["100%"],
       },
       "1-1": {
         columnLayout: "2: equal width",
@@ -20,7 +20,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%"],
         md: ["50%", "50%"],
         lg: ["50%", "50%"],
-        xl: ["50%", "50%"]
+        xl: ["50%", "50%"],
       },
       "2-1": {
         columnLayout: "2: wide & narrow",
@@ -28,7 +28,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%"],
         md: ["66.6666667%", "33.3333337%"],
         lg: ["66.6666667%", "33.3333337%"],
-        xl: ["66.6666667%", "33.3333337%"]
+        xl: ["66.6666667%", "33.3333337%"],
       },
       "1-2": {
         columnLayout: "2: narrow & wide",
@@ -36,7 +36,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%"],
         md: ["33.3333333%", "66.6666667%"],
         lg: ["33.3333333%", "66.6666667%"],
-        xl: ["33.3333333%", "66.6666667%"]
+        xl: ["33.3333333%", "66.6666667%"],
       },
       "3-1": {
         columnLayout: "2: wider & narrower",
@@ -44,7 +44,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%"],
         md: ["75%", "25%"],
         lg: ["75%", "25%"],
-        xl: ["75%", "25%"]
+        xl: ["75%", "25%"],
       },
       "1-3": {
         columnLayout: "2: narrower & wider",
@@ -52,7 +52,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%"],
         md: ["25%", "75%"],
         lg: ["25%", "75%"],
-        xl: ["25%", "75%"]
+        xl: ["25%", "75%"],
       },
       "1-1-1": {
         columnLayout: "3: equal width",
@@ -60,7 +60,7 @@ class GridPlateLayoutOptions {
         sm: ["100%", "100%", "100%"],
         md: ["33.3333333%", "33.3333333%", "33.3333333%"],
         lg: ["33.3333333%", "33.3333333%", "33.3333333%"],
-        xl: ["33.3333333%", "33.3333333%", "33.3333333%"]
+        xl: ["33.3333333%", "33.3333333%", "33.3333333%"],
       },
       "2-1-1": {
         columnLayout: "3: wide, narrow, and narrow",
@@ -68,7 +68,7 @@ class GridPlateLayoutOptions {
         sm: ["100%", "50%", "50%"],
         md: ["50%", "25%", "25%"],
         lg: ["50%", "25%", "25%"],
-        xl: ["50%", "25%", "25%"]
+        xl: ["50%", "25%", "25%"],
       },
       "1-2-1": {
         columnLayout: "3: narrow, wide, and narrow",
@@ -76,7 +76,7 @@ class GridPlateLayoutOptions {
         sm: ["100%", "100%", "100%"],
         md: ["25%", "50%", "25%"],
         lg: ["25%", "50%", "25%"],
-        xl: ["25%", "50%", "25%"]
+        xl: ["25%", "50%", "25%"],
       },
       "1-1-2": {
         columnLayout: "3: narrow, narrow, and wide",
@@ -84,7 +84,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%", "100%"],
         md: ["25%", "25%", "50%"],
         lg: ["25%", "25%", "50%"],
-        xl: ["25%", "25%", "50%"]
+        xl: ["25%", "25%", "50%"],
       },
       "1-1-1-1": {
         columnLayout: "4: equal width",
@@ -92,7 +92,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%", "50%", "50%"],
         md: ["25%", "25%", "25%", "25%"],
         lg: ["25%", "25%", "25%", "25%"],
-        xl: ["25%", "25%", "25%", "25%"]
+        xl: ["25%", "25%", "25%", "25%"],
       },
       "1-1-1-1-1": {
         columnLayout: "5: equal width",
@@ -100,7 +100,7 @@ class GridPlateLayoutOptions {
         sm: ["50%", "50%", "50%", "50%", "50%"],
         md: ["20%", "20%", "20%", "20%", "20%"],
         lg: ["20%", "20%", "20%", "20%", "20%"],
-        xl: ["20%", "20%", "20%", "20%", "20%"]
+        xl: ["20%", "20%", "20%", "20%", "20%"],
       },
       "1-1-1-1-1-1": {
         columnLayout: "6: equal width",
@@ -112,7 +112,7 @@ class GridPlateLayoutOptions {
           "33.3333333%",
           "33.3333333%",
           "33.3333333%",
-          "33.3333333%"
+          "33.3333333%",
         ],
         lg: [
           "16.6666667%",
@@ -120,7 +120,7 @@ class GridPlateLayoutOptions {
           "16.6666667%",
           "16.6666667%",
           "16.6666667%",
-          "16.6666667%"
+          "16.6666667%",
         ],
         xl: [
           "16.6666667%",
@@ -128,9 +128,9 @@ class GridPlateLayoutOptions {
           "16.6666667%",
           "16.6666667%",
           "16.6666667%",
-          "16.6666667%"
-        ]
-      }
+          "16.6666667%",
+        ],
+      },
     };
     this.options = {};
     let layoutFlip = Object.keys(this.layouts);
@@ -337,7 +337,7 @@ class GridPlate extends LitElement {
         .button-holding-pen[hidden] {
           display: none;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -488,15 +488,15 @@ class GridPlate extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
         // only need to apply this when we're in editMode
         // this implies something was added dynamically or drag and drop
         // from outside this element or dragging between grid plates
         // so we need to disconnect the handlers from here and pick them
         // up in the new plate
         if (this.editMode) {
-          mutation.addedNodes.forEach(node => {
+          mutation.addedNodes.forEach((node) => {
             if (node.tagName) {
               // verify this has a slot set otherwise we need to set one on the fly
               // otherwise this won't show up. This could be incorrectly formed HTML
@@ -520,7 +520,7 @@ class GridPlate extends LitElement {
                 node.addEventListener("dragenter", this.dragEnter.bind(this));
                 node.addEventListener("dragleave", this.dragLeave.bind(this));
                 node.addEventListener("dragend", this.dragEnd.bind(this));
-                node.addEventListener("dragover", function(e) {
+                node.addEventListener("dragover", function (e) {
                   e.preventDefault();
                 });
                 // UX normalization
@@ -532,12 +532,12 @@ class GridPlate extends LitElement {
               }, 50);
             }
           });
-          mutation.removedNodes.forEach(node => {
+          mutation.removedNodes.forEach((node) => {
             if (node.tagName) {
               node.removeEventListener("drop", this.dropEvent.bind(this));
               node.removeEventListener("dragenter", this.dragEnter.bind(this));
               node.removeEventListener("dragleave", this.dragLeave.bind(this));
-              node.removeEventListener("dragover", function(e) {
+              node.removeEventListener("dragover", function (e) {
                 e.preventDefault();
               });
               if (node.tagName === "IMG") {
@@ -551,7 +551,7 @@ class GridPlate extends LitElement {
       });
     });
     this.observer.observe(this, {
-      childList: true
+      childList: true,
     });
     // capture keydown events
     window.addEventListener("keydown", this._onKeyDown.bind(this));
@@ -610,8 +610,8 @@ class GridPlate extends LitElement {
           sm: this.breakpointSm,
           md: this.breakpointMd,
           lg: this.breakpointLg,
-          xl: this.breakpointXl
-        }
+          xl: this.breakpointXl,
+        },
       })
     );
     // apply handlers to the columns themselves
@@ -621,7 +621,7 @@ class GridPlate extends LitElement {
         col.addEventListener("drop", this.dropEvent.bind(this));
         col.addEventListener("dragenter", this.dragEnter.bind(this));
         col.addEventListener("dragleave", this.dragLeave.bind(this));
-        col.addEventListener("dragover", function(e) {
+        col.addEventListener("dragover", function (e) {
           e.preventDefault();
         });
       }
@@ -663,8 +663,8 @@ class GridPlate extends LitElement {
         handles: [],
         meta: {
           author: "ELMS:LN",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -675,15 +675,15 @@ class GridPlate extends LitElement {
             description:
               "Style to present these items (may change for small screens)",
             inputMethod: "select",
-            options: new GridPlateLayoutOptions().options
+            options: new GridPlateLayoutOptions().options,
           },
           {
             property: "disableResponsive",
             title: "Disable responsive",
             description:
               "Check box to force layout to stick regardless of screen breakpoins",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         advanced: [
           {
@@ -692,7 +692,7 @@ class GridPlate extends LitElement {
             description:
               "Anything less than this number (in pixels) will render with the smallest version of this layout",
             inputMethod: "textfield",
-            validationType: "number"
+            validationType: "number",
           },
           {
             property: "breakpointMd",
@@ -700,7 +700,7 @@ class GridPlate extends LitElement {
             description:
               "Anything less than this number (in pixels) will render with the small version of this layout",
             inputMethod: "textfield",
-            validationType: "number"
+            validationType: "number",
           },
           {
             property: "breakpointLg",
@@ -708,7 +708,7 @@ class GridPlate extends LitElement {
             description:
               "Anything less than this number (in pixels) will render with the medium version of this layout.",
             inputMethod: "textfield",
-            validationType: "number"
+            validationType: "number",
           },
           {
             property: "breakpointXl",
@@ -716,9 +716,9 @@ class GridPlate extends LitElement {
             description:
               "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
             inputMethod: "textfield",
-            validationType: "number"
-          }
-        ]
+            validationType: "number",
+          },
+        ],
       },
       saveOptions: {
         unsetAttributes: [
@@ -733,9 +733,9 @@ class GridPlate extends LitElement {
           "hideops",
           "activeitem",
           "responsive-width",
-          "hide-ops"
-        ]
-      }
+          "hide-ops",
+        ],
+      },
     };
   }
   static get properties() {
@@ -745,14 +745,14 @@ class GridPlate extends LitElement {
        */
       hideOps: {
         type: Boolean,
-        attribute: "hide-ops"
+        attribute: "hide-ops",
       },
       /**
        * allows other systems to trigger editMode in grid plate via property for D&D
        */
       droppable: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Flag for when using grid-plate in a system WITH hax yet not wanting to
@@ -760,49 +760,49 @@ class GridPlate extends LitElement {
        */
       ignoreHax: {
         type: Boolean,
-        attribute: "ignore-hax"
+        attribute: "ignore-hax",
       },
       /**
        * Custom small breakpoint for the layouts; only updated on attached
        */
       breakpointSm: {
         type: Number,
-        attribute: "breakpoint-sm"
+        attribute: "breakpoint-sm",
       },
       /**
        * Custom medium breakpoint for the layouts; only updated on attached
        */
       breakpointMd: {
         type: Number,
-        attribute: "breakpoint-md"
+        attribute: "breakpoint-md",
       },
       /**
        * Custom large breakpoint for the layouts; only updated on attached
        */
       breakpointLg: {
         type: Number,
-        attribute: "breakpoint-lg"
+        attribute: "breakpoint-lg",
       },
       /**
        * Custom extra-large breakpoint for the layouts; only updated on attached
        */
       breakpointXl: {
         type: Number,
-        attribute: "breakpoint-xl"
+        attribute: "breakpoint-xl",
       },
       /**
        * number of columns at this layout / responsive size
        */
       columns: {
         type: Number,
-        reflect: true
+        reflect: true,
       },
       /**
        * disables responsive layouts for HAX preview
        */
       disableResponsive: {
         type: Boolean,
-        attribute: "disable-responsive"
+        attribute: "disable-responsive",
       },
       /**
        * If the grid plate is in a state where its items
@@ -811,7 +811,7 @@ class GridPlate extends LitElement {
       editMode: {
         reflect: true,
         type: Boolean,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * an object with a layout's column sizes
@@ -819,7 +819,7 @@ class GridPlate extends LitElement {
        */
       layout: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Predefined layouts of column sizes and various responsive widths. 
@@ -836,7 +836,7 @@ class GridPlate extends LitElement {
   }```
       */
       layouts: {
-        type: Object
+        type: Object,
       },
       /**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
@@ -844,21 +844,21 @@ class GridPlate extends LitElement {
       responsiveSize: {
         type: String,
         reflect: true,
-        attribute: "responsive-size"
+        attribute: "responsive-size",
       },
       /**
        * Track active item
        */
       activeItem: {
         type: Object,
-        attribute: "active-item"
+        attribute: "active-item",
       },
       /**
        * name of selected layout
        */
       __columnWidths: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   updated(changedProperties) {
@@ -901,7 +901,7 @@ class GridPlate extends LitElement {
           // fire an event that this is a core piece of the system
           this.dispatchEvent(
             new CustomEvent("disable-responsive-changed", {
-              detail: this[propName]
+              detail: this[propName],
             })
           );
           break;
@@ -1038,7 +1038,7 @@ class GridPlate extends LitElement {
    */
   _activeItemChanged(newValue, oldValue) {
     // remove anything currently with the active class
-    this.querySelectorAll(".grid-plate-active-item").forEach(el => {
+    this.querySelectorAll(".grid-plate-active-item").forEach((el) => {
       el.classList.remove("grid-plate-active-item");
     });
     if (typeof newValue !== typeof undefined && newValue != null) {
@@ -1072,12 +1072,12 @@ class GridPlate extends LitElement {
       let newl = layouts[layout],
         //how old layout names map to the new ones
         oldLayouts = {
-          "12": "1",
+          12: "1",
           "8/4": "2-1",
           "6/6": "1-1",
           "4/8": "1-2",
           "4/4/4": "1-1-1",
-          "3/3/3/3": "1-1-1-1"
+          "3/3/3/3": "1-1-1-1",
         },
         size = disableResponsive !== false ? "xl" : responsiveSize;
       let oldl = oldLayouts[layout];
@@ -1136,7 +1136,7 @@ class GridPlate extends LitElement {
   positionArrows(item, onlyArrows = false) {
     if (!this.hideOps) {
       if (item == null) {
-        this.shadowRoot.querySelectorAll(".direction").forEach(el => {
+        this.shadowRoot.querySelectorAll(".direction").forEach((el) => {
           if (!onlyArrows) {
             el.classList.remove("active");
           } else {
@@ -1146,7 +1146,7 @@ class GridPlate extends LitElement {
           }
         });
       } else {
-        this.shadowRoot.querySelectorAll(".direction").forEach(el => {
+        this.shadowRoot.querySelectorAll(".direction").forEach((el) => {
           el.classList.add("active");
         });
 
@@ -1216,7 +1216,7 @@ class GridPlate extends LitElement {
           children[i].addEventListener("drop", this.dropEvent.bind(this));
           children[i].addEventListener("dragenter", this.dragEnter.bind(this));
           children[i].addEventListener("dragleave", this.dragLeave.bind(this));
-          children[i].addEventListener("dragover", function(e) {
+          children[i].addEventListener("dragover", function (e) {
             e.preventDefault();
           });
           if (children[i].tagName === "IMG") {
@@ -1244,7 +1244,7 @@ class GridPlate extends LitElement {
             "dragleave",
             this.dragLeave.bind(this)
           );
-          children[i].removeEventListener("dragover", function(e) {
+          children[i].removeEventListener("dragover", function (e) {
             e.preventDefault();
           });
           if (children[i].tagName === "IMG") {
@@ -1299,7 +1299,7 @@ class GridPlate extends LitElement {
       // select all direct children w/ a slot attribute and convert to an Array
       let children = Array.prototype.reduce.call(
         this.children,
-        function(acc, e) {
+        function (acc, e) {
           if (e.slot) {
             acc.push(e);
           }
@@ -1308,7 +1308,7 @@ class GridPlate extends LitElement {
         []
       );
       // sort the children by slot id being low to high
-      children = children.sort(function(a, b) {
+      children = children.sort(function (a, b) {
         if (
           parseInt(a.getAttribute("slot").split("-")[1]) <
           parseInt(b.getAttribute("slot").split("-")[1])
@@ -1319,7 +1319,7 @@ class GridPlate extends LitElement {
       });
       // loop through and append these back into the grid plate.
       // which will put them in the right order
-      children.forEach(el => {
+      children.forEach((el) => {
         // sanity check that we only move things that are a direct child
         if (el.parentNode === this) {
           this.appendChild(el);

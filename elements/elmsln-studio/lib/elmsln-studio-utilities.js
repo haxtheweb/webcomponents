@@ -10,7 +10,7 @@ import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
-const ElmslnStudioUtilities = function(SuperClass) {
+const ElmslnStudioUtilities = function (SuperClass) {
   return class extends SuperClass {
     // properties available to the custom element for data binding
     static get properties() {
@@ -19,8 +19,8 @@ const ElmslnStudioUtilities = function(SuperClass) {
         demoMode: {
           type: Boolean,
           attribute: "demo-mode",
-          reflect: true
-        }
+          reflect: true,
+        },
       };
     }
     constructor() {
@@ -49,9 +49,9 @@ const ElmslnStudioUtilities = function(SuperClass) {
             "pageXofY",
             "pangroup",
             "fullscreenbutton",
-            "nextbutton"
-          ]
-        }
+            "nextbutton",
+          ],
+        },
       };
     }
     /**
@@ -92,10 +92,10 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {array}
      */
     toArray(obj, props) {
-      return Object.keys(obj || {}).map(i => {
+      return Object.keys(obj || {}).map((i) => {
         let item = obj[i];
         item.id = i;
-        Object.keys(props || {}).forEach(j => (item[j] = props[j]));
+        Object.keys(props || {}).forEach((j) => (item[j] = props[j]));
         return item;
       });
     }
@@ -135,7 +135,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
       longdesc = "longdesc"
     ) {
       //console.log('getFigures',sources);
-      let images = (sources || []).map(source => {
+      let images = (sources || []).map((source) => {
         return {
           src: source[full] || source[src],
           info:
@@ -145,15 +145,11 @@ const ElmslnStudioUtilities = function(SuperClass) {
                   <div>${source[longdesc]}</div>
                 `
               : source[alt]
-              ? html`
-                  ${source[alt]}
-                `
-              : html`
-                  ${source[longdesc]}
-                `
+              ? html` ${source[alt]} `
+              : html` ${source[longdesc]} `,
         };
       });
-      return images.filter(s => !!s.src);
+      return images.filter((s) => !!s.src);
     }
     getThumnailGrid(s) {
       return html`
@@ -210,14 +206,14 @@ const ElmslnStudioUtilities = function(SuperClass) {
             weekday: "long",
             year: "numeric",
             month: "long",
-            day: "numeric"
+            day: "numeric",
           })
         : format === "short"
         ? d.toLocaleDateString(undefined, { month: "long", day: "numeric" })
         : d.toLocaleDateString(undefined, {
             year: "numeric",
             month: "long",
-            day: "numeric"
+            day: "numeric",
           });
     }
 
@@ -266,11 +262,11 @@ const ElmslnStudioUtilities = function(SuperClass) {
           : activity.activity === "discussion"
           ? ` left feedback for ${[
               activity.creatorFirstName,
-              activity.creatorLastName
+              activity.creatorLastName,
             ].join(" ")}`
           : ` replied to ${[
               activity.reviewerFirstName,
-              activity.reviewerLastName
+              activity.reviewerLastName,
             ].join(" ")}`}
       `;
     }
@@ -311,9 +307,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     submissionLink(submission) {
-      return `/portfolios/${submission.userId}-${
-        submission.projectId
-      }?submission=${submission.id}`;
+      return `/portfolios/${submission.userId}-${submission.projectId}?submission=${submission.id}`;
     }
 
     /**
@@ -331,9 +325,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     feedbackLink(feedback) {
-      return `/portfolios/${feedback.creator}-${
-        feedback.projectId
-      }?submission=${feedback.submissionId}&comment=${feedback.id}`;
+      return `/portfolios/${feedback.creator}-${feedback.projectId}?submission=${feedback.submissionId}&comment=${feedback.id}`;
     }
 
     /**
@@ -342,9 +334,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     feedbackTitle(feedback) {
-      return `${feedback.firstName} left feedback on ${
-        feedback.creatorFirstName
-      }'s
+      return `${feedback.firstName} left feedback on ${feedback.creatorFirstName}'s
         ${feedback.assignment}`;
     }
 
@@ -354,9 +344,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} link
      */
     replyLink(reply) {
-      return `/portfolios/${reply.creator}-${reply.projectId}?submission=${
-        reply.submissionId
-      }&comment=${reply.id}`;
+      return `/portfolios/${reply.creator}-${reply.projectId}?submission=${reply.submissionId}&comment=${reply.id}`;
     }
 
     /**
@@ -365,9 +353,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
      * @returns {string} title
      */
     replyTitle(reply) {
-      return `${reply.firstName} replied to ${
-        reply.feedbackFirstName
-      }'s feedback`;
+      return `${reply.firstName} replied to ${reply.feedbackFirstName}'s feedback`;
     }
 
     _getValign(gravity) {
@@ -403,7 +389,7 @@ const ElmslnStudioUtilities = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: path
+          detail: path,
         })
       );
     }

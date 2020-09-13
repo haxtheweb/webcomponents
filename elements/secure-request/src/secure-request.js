@@ -8,7 +8,7 @@
  * @polymer
  */
 // superclass element mix in
-export const SecureRequestXhr = function(SuperClass) {
+export const SecureRequestXhr = function (SuperClass) {
   return class extends SuperClass {
     /**
      * Set cookies for the request
@@ -103,5 +103,5 @@ window.SecureRequest.xhr = {
   },
   _eraseCookie(name) {
     this._createCookie(name, "", -1);
-  }
+  },
 };

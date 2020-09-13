@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
-export const SchemaBehaviors = function(SuperClass) {
+export const SchemaBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
      * HTMLElement
@@ -18,8 +18,8 @@ export const SchemaBehaviors = function(SuperClass) {
           dc: "http://purl.org/dc/terms/",
           foaf: "http://xmlns.com/foaf/0.1/",
           cc: "http://creativecommons.org/ns#",
-          bib: "http://bib.schema.org"
-        }
+          bib: "http://bib.schema.org",
+        },
       };
     }
     /**
@@ -33,7 +33,7 @@ export const SchemaBehaviors = function(SuperClass) {
          */
         schemaResourceID: {
           type: String,
-          attribute: "schema-resource-id"
+          attribute: "schema-resource-id",
         },
         /**
          * Schema Map for the element, used to generate a valid prefix on the fly
@@ -42,8 +42,8 @@ export const SchemaBehaviors = function(SuperClass) {
         schemaMap: {
           type: Object,
           readOnly: true,
-          observer: "_schemaMapChanged"
-        }
+          observer: "_schemaMapChanged",
+        },
       };
     }
     /**

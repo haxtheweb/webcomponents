@@ -152,7 +152,7 @@ class ThreadedDiscussion extends LitElement {
         .comment-body {
           font-size: var(--threaded-discussion-FontSize, 14px);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -188,10 +188,10 @@ class ThreadedDiscussion extends LitElement {
           ${this.loadingText}
         </div>
         ${this.sortData(this.__data).map(
-          thread => html`
+          (thread) => html`
             <div class="thread">
               ${this.getComment(thread)}
-              ${(thread.replies || []).map(reply =>
+              ${(thread.replies || []).map((reply) =>
                 this.getComment(reply, thread.id)
               )}
               <threaded-discussion-form
@@ -240,12 +240,9 @@ class ThreadedDiscussion extends LitElement {
           </div>
         </div>
         <div class="comment-body">
-          ${(comment.body || "").split(/[\r\n]+/).map(
-            p =>
-              html`
-                <p>${p}</p>
-              `
-          )}
+          ${(comment.body || "")
+            .split(/[\r\n]+/)
+            .map((p) => html` <p>${p}</p> `)}
         </div>
       </div>
     `;
@@ -263,46 +260,46 @@ class ThreadedDiscussion extends LitElement {
       latest: {
         type: Boolean,
         attribute: "latest",
-        reflect: true
+        reflect: true,
       },
       /**
        * label for comment submit button
        */
       commentButtonLabel: {
         type: String,
-        attribute: "comment-button-label"
+        attribute: "comment-button-label",
       },
       /**
        * label for comment textarea
        */
       commentTextareaLabel: {
         type: String,
-        attribute: "comment-textarea-label"
+        attribute: "comment-textarea-label",
       },
       /**
        * optional icon for comment button
        */
       commentIcon: {
         type: String,
-        attribute: "comment-icon"
+        attribute: "comment-icon",
       },
       /**
        * raw data, can be Object or Array
        */
       data: {
-        type: Object
+        type: Object,
       },
       /**
        * locale for date formatting
        */
       dateLocale: {
-        type: String
+        type: String,
       },
       /**
        * JS format object for dates
        */
       dateFormat: {
-        type: Object
+        type: Object,
       },
       /**
        * discussion in demo mode?
@@ -310,14 +307,14 @@ class ThreadedDiscussion extends LitElement {
        * submission is temporarily inserted into data.
        */
       demo: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * text that displays while discussion data loads
        */
       loadingText: {
         type: String,
-        attribute: "loading-text"
+        attribute: "loading-text",
       },
       /**
        * object that will reformat data,
@@ -327,13 +324,13 @@ class ThreadedDiscussion extends LitElement {
        * would use raw data's image property as a avatar
        */
       map: {
-        type: Object
+        type: Object,
       },
       /**
        * query paramerters for getting and sending data
        */
       params: {
-        type: Object
+        type: Object,
       },
       /**
        * label for reply submit button
@@ -341,7 +338,7 @@ class ThreadedDiscussion extends LitElement {
       replyButtonLabel: {
         type: String,
         attribute: "reply-button-label",
-        reflect: true
+        reflect: true,
       },
       /**
        * label for reply textarea
@@ -349,7 +346,7 @@ class ThreadedDiscussion extends LitElement {
       replyTextareaLabel: {
         type: String,
         attribute: "reply-textarea-label",
-        reflect: true
+        reflect: true,
       },
       /**
        * icon for reply submit button
@@ -357,32 +354,32 @@ class ThreadedDiscussion extends LitElement {
       replyIcon: {
         type: String,
         attribute: "reply-icon",
-        reflect: true
+        reflect: true,
       },
       /**
        * path (without parameters) for fetching data
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * path (without parameters) for sending data
        */
       submit: {
-        type: String
+        type: String,
       },
       /**
        * formatted data
        */
       __data: {
-        type: Array
+        type: Array,
       },
       /**
        * whether data is still loading
        */
       __loading: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -396,7 +393,7 @@ class ThreadedDiscussion extends LitElement {
       month: "long",
       day: "numeric",
       hour: "numeric",
-      minute: "2-digit"
+      minute: "2-digit",
     };
     this.demo = false;
     this.map = {};
@@ -440,13 +437,13 @@ class ThreadedDiscussion extends LitElement {
   _handleRawData(data) {
     this.__loading = false;
     return this._getArray(data || [])
-      .filter(comment => !this._getMap(comment, "thread", "replyThread"))
-      .map(thread => {
+      .filter((comment) => !this._getMap(comment, "thread", "replyThread"))
+      .map((thread) => {
         let id = this._getMap(thread, "id"),
           replies =
             this._getMap(thread, "replies") ||
             (data || []).filter(
-              comment => this._getMap(comment, "thread", "replyThread") === id
+              (comment) => this._getMap(comment, "thread", "replyThread") === id
             );
         return {
           //gets all threads and comments if they are not mapped as nested array of thread
@@ -457,7 +454,7 @@ class ThreadedDiscussion extends LitElement {
           body: this._getMap(thread, "body"),
           color: this._getMap(thread, "color"),
           date: this._getMap(thread, "date"),
-          replies: this._getArray(replies).map(reply => {
+          replies: this._getArray(replies).map((reply) => {
             //gets all comments if they are mapped as nested array of thread
             return {
               id: this._getMap(reply, "id", "replyId"),
@@ -467,9 +464,9 @@ class ThreadedDiscussion extends LitElement {
               avatar: this._getMap(reply, "avatar", "replyAvatar"),
               body: this._getMap(reply, "body", "replyBody"),
               color: this._getMap(reply, "color", "replyColor"),
-              date: this._getMap(reply, "date", "replyDate")
+              date: this._getMap(reply, "date", "replyDate"),
             };
-          })
+          }),
         };
       });
   }
@@ -527,7 +524,7 @@ class ThreadedDiscussion extends LitElement {
       newComment.date = this._getDate(new Date());
       newComment.body = e.detail.textarea.value;
       if (e.detail.thread) {
-        let filter = data.filter(thread => thread.id === e.detail.thread),
+        let filter = data.filter((thread) => thread.id === e.detail.thread),
           thread = filter ? filter[0] : undefined;
         newComment.thread = e.detail.thread;
         if (thread) {
@@ -552,8 +549,8 @@ class ThreadedDiscussion extends LitElement {
    */
   fetchDiscussion() {
     fetch(this._getPath(this.source, this.params))
-      .then(response => response.json())
-      .then(data => (this.__data = this._handleRawData(data)));
+      .then((response) => response.json())
+      .then((data) => (this.__data = this._handleRawData(data)));
   }
   /**
    * converts object to array
@@ -565,7 +562,7 @@ class ThreadedDiscussion extends LitElement {
   _getArray(obj) {
     return typeof obj === "array"
       ? obj
-      : Object.keys(obj || {}).map(key => {
+      : Object.keys(obj || {}).map((key) => {
           let item = obj[key];
           item.id = key;
           return item;
@@ -609,7 +606,7 @@ class ThreadedDiscussion extends LitElement {
    */
   _getPath(path, params) {
     let query = Object.keys(params || {})
-      .map(p => `${encodeURI(p)}=${encodeURI(params[p])}`)
+      .map((p) => `${encodeURI(p)}=${encodeURI(params[p])}`)
       .join("&");
     return query ? `${path}?${query}` : path;
   }

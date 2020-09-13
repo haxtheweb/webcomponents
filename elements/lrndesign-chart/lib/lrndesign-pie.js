@@ -29,32 +29,32 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
        * Padding of chart drawing area to container element and labels
        */
       chartPadding: {
-        type: Number
+        type: Number,
       },
       /**
        * Displays chart as donut instead of pie.
        */
       donut: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Draw donut segments as shapes instead of strokes.
        */
       donutSolid: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Donut stroke width, currently done in javascript.
        */
       donutWidth: {
-        type: Number
+        type: Number,
       },
       /**
        * Empty values will be ignored to avoid drawing
        * unncessary slices and labels
        */
       ignoreEmptyValues: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Label direction can be 'neutral', 'explode' or 'implode'.
@@ -65,7 +65,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
        * far away from the center.
        */
       labelDirection: {
-        type: String
+        type: String,
       },
       /**
        * Label position offset from the standard position
@@ -74,7 +74,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
        * Positive values will position the label away from the center.
        */
       labelOffset: {
-        type: Number
+        type: Number,
       },
       /**
        * This option can be set to 'inside', 'outside' or 'center'.
@@ -88,20 +88,20 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
       labelPosition: {
         type: String,
         attribute: "label-position",
-        reflect: true
+        reflect: true,
       },
       /**
        * If a label should be shown.
        */
       showLabel: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        *  Start angle of the pie chart in degrees where 0 points north.
        * A higher value offsets the start angle clockwise..
        */
       startAngle: {
-        type: Number
+        type: Number,
       },
       /**
        * Optional total you can specify. By specifying a total value,
@@ -110,8 +110,8 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
        * of a pie or gauge charts.
        */
       total: {
-        type: Number
-      }
+        type: Number,
+      },
     };
   }
 
@@ -129,24 +129,24 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
         {
           property: "donut",
           title: "Donut",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "showLabel",
           title: "Show Label",
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "startAngle",
           title: "Start Angle",
-          inputMethod: "number"
-        }
+          inputMethod: "number",
+        },
       ],
       pieConfig = [
         {
           property: "chartPadding",
           title: "Padding",
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "total",
@@ -156,7 +156,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
             the sum of the values in the series must be this total in order
             to draw a full pie. You can use this parameter to draw only parts
             of a pie or gauge charts.`,
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "ignoreEmptyValues",
@@ -164,20 +164,20 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
           description: `
             Empty values will be ignored to avoid drawing 
             unncessary slices and labels.`,
-          inputMethod: "boolean"
-        }
+          inputMethod: "boolean",
+        },
       ],
       pieAdvanced = [
         {
           property: "donutWidth",
           title: "Donut Stroke Width",
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "donutSolid",
           title: "Donut Solid",
           description: `Draw donut segments as shapes instead of strokes.`,
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "labelDirection",
@@ -187,8 +187,8 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
           options: {
             neutral: "neutral",
             explode: "explode",
-            implode: "implode"
-          }
+            implode: "implode",
+          },
         },
         {
           property: "labelOffset",
@@ -198,7 +198,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
             which is half distance of the radius.
             This value can be either positive or negative.
             Positive values will position the label away from the center.`,
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "labelPosition",
@@ -207,9 +207,9 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
           options: {
             inside: "inside",
             outside: "outside",
-            center: "center"
-          }
-        }
+            center: "center",
+          },
+        },
       ];
     haxProps.gizmo.title = "Pie Chart";
     haxProps.gizmo.icon = "editor:pie-chart";
@@ -241,7 +241,7 @@ class LrndesignPie extends LrndesignChart(SimpleColors) {
       labelOffset: this.labelOffset,
       labelPosition: this.labelPosition,
       labelDirection: this.labelDirection,
-      ignoreEmptyValues: this.ignoreEmptyValues
+      ignoreEmptyValues: this.ignoreEmptyValues,
     };
   }
 

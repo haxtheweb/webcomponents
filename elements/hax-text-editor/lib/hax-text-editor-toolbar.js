@@ -47,22 +47,22 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
               { label: "Deepest Subheading", tag: "h6" },
               { label: "Preformatted", tag: "pre" },
               { label: "Code Block", tag: "code" },
-              { label: "Quote", tag: "blockquote" }
-            ]
+              { label: "Quote", tag: "blockquote" },
+            ],
           },
           {
             command: "bold",
             icon: "editor:format-bold",
             label: "Bold",
             toggles: "true",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "italic",
             icon: "editor:format-italic",
             label: "Italics",
             toggles: "true",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             collapsedUntil: "xs",
@@ -70,7 +70,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             icon: "editor:format-underlined",
             label: "Underline (not recommended)",
             toggles: "true",
-            type: "rich-text-editor-underline"
+            type: "rich-text-editor-underline",
           },
           {
             collapsedUntil: "sm",
@@ -78,15 +78,15 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             icon: "editor:format-strikethrough",
             label: "Cross Out",
             toggles: "true",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "removeFormat",
             icon: "editor:format-clear",
             label: "Erase Format",
-            type: "rich-text-editor-button"
-          }
-        ]
+            type: "rich-text-editor-button",
+          },
+        ],
       },
       {
         label: "Links",
@@ -95,9 +95,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
           {
             icon: "link",
             label: "Link",
-            type: "rich-text-editor-link"
-          }
-        ]
+            type: "rich-text-editor-link",
+          },
+        ],
       },
       {
         collapsedUntil: "md",
@@ -109,23 +109,23 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             icon: "mdextra:subscript",
             label: "Subscript",
             toggles: "true",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "superscript",
             icon: "mdextra:superscript",
             label: "Superscript",
             toggles: "true",
-            type: "rich-text-editor-button"
-          }
-        ]
+            type: "rich-text-editor-button",
+          },
+        ],
       },
       {
         collapsedUntil: "md",
         icon: "editor:functions",
         label: "Insert Symbol",
         symbolTypes: ["symbols"],
-        type: "rich-text-editor-symbol-picker"
+        type: "rich-text-editor-symbol-picker",
       },
       {
         collapsedUntil: "md",
@@ -134,16 +134,16 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
         buttons: [
           {
             element: LrnVocab,
-            type: "hax-text-editor-inline"
+            type: "hax-text-editor-inline",
           },
           {
-            type: "hax-text-editor-math"
+            type: "hax-text-editor-math",
           },
           {
             element: OerSchemaElement,
-            type: "hax-text-editor-oer-inline"
-          }
-        ]
+            type: "hax-text-editor-oer-inline",
+          },
+        ],
       },
       {
         label: "Lists and Indents",
@@ -154,14 +154,14 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             icon: "editor:format-list-numbered",
             label: "Ordered List",
             toggles: "true",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "insertUnorderedList",
             icon: "editor:format-list-bulleted",
             label: "Unordered List",
             toggles: "true",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             collapsedUntil: "sm",
@@ -169,7 +169,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             icon: "editor:format-indent-increase",
             event: "text-indent",
             command: "indent",
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             collapsedUntil: "sm",
@@ -177,10 +177,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             icon: "editor:format-indent-decrease",
             event: "text-outdent",
             command: "outdent",
-            type: "rich-text-editor-button"
-          }
-        ]
-      }
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
     ]);
   }
 

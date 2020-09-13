@@ -42,20 +42,20 @@ class AbsolutePositionStateManager extends LitElement {
        * Stores an array of all elements using manager.
        */
       elements: {
-        type: Array
+        type: Array,
       },
       /**
        * mutation observer
        */
       __observer: {
-        type: Object
+        type: Object,
       },
       /**
        * resize timeout
        */
       __timeout: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -66,7 +66,7 @@ class AbsolutePositionStateManager extends LitElement {
     super();
     this.elements = [];
     this.__timeout = false;
-    this.__observer = new MutationObserver(mutations =>
+    this.__observer = new MutationObserver((mutations) =>
       this.checkMutations(mutations)
     );
   }
@@ -82,7 +82,7 @@ class AbsolutePositionStateManager extends LitElement {
         attributes: true,
         childList: true,
         subtree: true,
-        characterData: true
+        characterData: true,
       });
       this.updateElements();
       document.addEventListener("load", this.updateElements);
@@ -99,7 +99,7 @@ class AbsolutePositionStateManager extends LitElement {
    * @param {object} element to be removed
    */
   unloadElement(el) {
-    this.elements.filter(element => element === el);
+    this.elements.filter((element) => element === el);
     if (this.elements.length < 1) this.removeEventListeners();
   }
 
@@ -126,7 +126,7 @@ class AbsolutePositionStateManager extends LitElement {
   checkMutations(mutations) {
     let update = false;
 
-    mutations.forEach(mutation => {
+    mutations.forEach((mutation) => {
       if (update) return;
       update =
         update ||
@@ -186,7 +186,7 @@ class AbsolutePositionStateManager extends LitElement {
    * @return {void}
    */
   updateElements() {
-    this.elements.forEach(element => this.positionElement(element));
+    this.elements.forEach((element) => this.positionElement(element));
   }
 
   _getParentNode(node) {
@@ -225,12 +225,12 @@ class AbsolutePositionStateManager extends LitElement {
        */
       setAlign = (v = vertical(el.position)) => {
         //fits element within parent's boundaries
-        let pxToNum = px => parseFloat(px.replace("px", "")),
+        let pxToNum = (px) => parseFloat(px.replace("px", "")),
           min = v
             ? pxToNum(el.style.left) - e.left
             : pxToNum(el.style.top) - e.top,
           startAt = v ? "left" : "top",
-          distance = rect => (v ? rect.width : rect.height),
+          distance = (rect) => (v ? rect.width : rect.height),
           max = min + distance(w) - distance(e),
           align = min;
         if (el.positionAlign === "end") {
@@ -245,7 +245,7 @@ class AbsolutePositionStateManager extends LitElement {
           : align + "px"; //if element size > parent, align where parent begins
       },
       getCoord = (pos = el.position) => {
-        let pxToNum = px => parseFloat(px.replace("px", "")),
+        let pxToNum = (px) => parseFloat(px.replace("px", "")),
           adjust = vertical(pos)
             ? pxToNum(el.style.top) - e.top
             : pxToNum(el.style.left) - e.left;
@@ -257,7 +257,7 @@ class AbsolutePositionStateManager extends LitElement {
       },
       isFit = (pos = el.position) => {
         //determines if room for element between parent and target
-        let distance = rect =>
+        let distance = (rect) =>
           vertical(pos) ? e.height + offset : e.width + offset;
         return before(pos)
           ? t[pos] - w[pos] > distance
@@ -268,7 +268,7 @@ class AbsolutePositionStateManager extends LitElement {
         top: ["bottom", "left", "right"],
         left: ["right", "top", "bottom"],
         bottom: ["top", "right", "left"],
-        right: ["left", "bottom", "top"]
+        right: ["left", "bottom", "top"],
       };
     el.style.position = "absolute";
     /*
@@ -288,7 +288,7 @@ class AbsolutePositionStateManager extends LitElement {
       el.__positions = {
         self: e,
         parent: p,
-        target: t
+        target: t,
       };
     }
   }

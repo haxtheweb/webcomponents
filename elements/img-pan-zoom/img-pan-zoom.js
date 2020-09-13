@@ -50,7 +50,7 @@ class ImgPanZoom extends LitElement {
         hexagon-loader[loading] {
           opacity: 1;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -95,40 +95,40 @@ class ImgPanZoom extends LitElement {
        * image source
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        * array of image sources
        */
       sources: {
-        type: Array
+        type: Array,
       },
       /**
        * if used with multiple images and paged navigation, index of current item
        */
       page: {
         type: Number,
-        attribute: "page"
+        attribute: "page",
       },
       /**
        * aria-describedby attribute
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * Set to true if you are using a deep zoom image
        */
       dzi: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Fade in new items added to the viewer
        */
       fadeIn: {
         type: Boolean,
-        attribute: "fade-in"
+        attribute: "fade-in",
       },
       /**
        * whether fullscreen mode is toggled
@@ -136,7 +136,7 @@ class ImgPanZoom extends LitElement {
       fullscreenToggled: {
         type: Boolean,
         attribute: "fullscreen-toggled",
-        reflect: true
+        reflect: true,
       },
       /**
        * whether images is flipped horizontally
@@ -144,26 +144,26 @@ class ImgPanZoom extends LitElement {
       flipToggled: {
         type: Boolean,
         attribute: "flip-toggled",
-        reflect: true
+        reflect: true,
       },
       /**
        * loading
        */
       loading: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * hides spinner
        */
       hideSpinner: {
         type: Boolean,
-        attribute: "hide-spinner"
+        attribute: "hide-spinner",
       },
       /**
        * loaded
        */
       loaded: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Set to false to prevent the appearance of the default
@@ -172,14 +172,14 @@ class ImgPanZoom extends LitElement {
        */
       showNavigationControl: {
         type: Boolean,
-        attribute: "show-navigation-control"
+        attribute: "show-navigation-control",
       },
       /**
        * Set to true to make the navigator minimap appear.
        */
       showNavigator: {
         type: Boolean,
-        attribute: "show-navigator"
+        attribute: "show-navigator",
       },
       /**
        * The "zoom distance" per mouse click or touch tap. Note:
@@ -188,7 +188,7 @@ class ImgPanZoom extends LitElement {
        */
       zoomPerClick: {
         type: Number,
-        attribute: "zoom-per-click"
+        attribute: "zoom-per-click",
       },
       /**
        * The "zoom distance" per mouse scroll or touch pinch. Note:
@@ -197,7 +197,7 @@ class ImgPanZoom extends LitElement {
        */
       zoomPerScroll: {
         type: Number,
-        attribute: "zoom-per-scroll"
+        attribute: "zoom-per-scroll",
       },
       /**
        * Specifies the animation duration per each OpenSeadragon.Spring
@@ -205,7 +205,7 @@ class ImgPanZoom extends LitElement {
        */
       animationTime: {
         type: Number,
-        attribute: "animation-time"
+        attribute: "animation-time",
       },
       /**
        * If true then the 'previous' button will wrap to the last image
@@ -214,7 +214,7 @@ class ImgPanZoom extends LitElement {
        */
       navPrevNextWrap: {
         type: Boolean,
-        attribute: "nav-prev-next-wrap"
+        attribute: "nav-prev-next-wrap",
       },
       /**
        * If true then the rotate left/right controls will be displayed as
@@ -223,7 +223,7 @@ class ImgPanZoom extends LitElement {
        */
       showRotationControl: {
         type: Boolean,
-        attribute: "show-rotation-control"
+        attribute: "show-rotation-control",
       },
       /**
        * The minimum percentage ( expressed as a number between 0 and 1 ) of
@@ -232,7 +232,7 @@ class ImgPanZoom extends LitElement {
        */
       minZoomImageRatio: {
         type: Number,
-        attribute: "min-zoom-image-ratio"
+        attribute: "min-zoom-image-ratio",
       },
       /**
        * The maximum ratio to allow a zoom-in to affect the highest level
@@ -242,14 +242,14 @@ class ImgPanZoom extends LitElement {
        */
       maxZoomPixelRatio: {
         type: Number,
-        attribute: "max-zoom-pixel-ratio"
+        attribute: "max-zoom-pixel-ratio",
       },
       /**
        * Constrain during pan
        */
       constrainDuringPan: {
         type: Boolean,
-        attribute: "constrain-during-pan"
+        attribute: "constrain-during-pan",
       },
       /**
        * The percentage ( as a number from 0 to 1 ) of the source image
@@ -261,7 +261,7 @@ class ImgPanZoom extends LitElement {
        */
       visibilityRatio: {
         type: Number,
-        attribute: "visibility-ratio"
+        attribute: "visibility-ratio",
       },
       /**
        * whether navigator fades when image is not longer being moved
@@ -269,7 +269,7 @@ class ImgPanZoom extends LitElement {
       navigatorAutoFade: {
         type: Boolean,
         attribute: "navigator-auto-fade",
-        reflect: true
+        reflect: true,
       },
       /**
        * where navigator is positioned: "TOP_LEFT", "BOTTOM_RIGHT", "ABSOLUTE", etc. Default is "TOP_RIGHT"
@@ -277,7 +277,7 @@ class ImgPanZoom extends LitElement {
       navigatorPosition: {
         type: String,
         attribute: "navigator-position",
-        reflect: true
+        reflect: true,
       },
       /**
        * if navigator position is "ABSOLUTE", top position for navigator
@@ -289,7 +289,7 @@ class ImgPanZoom extends LitElement {
       navigatorBottom: {
         type: String,
         attribute: "navigator-bottom",
-        reflect: true
+        reflect: true,
       },
       /**
        * if navigator position is "ABSOLUTE", left position for navigator
@@ -297,7 +297,7 @@ class ImgPanZoom extends LitElement {
       navigatorLeft: {
         type: String,
         attribute: "navigator-left",
-        reflect: true
+        reflect: true,
       },
       /**
        * if navigator position is "ABSOLUTE", right position for navigator
@@ -305,7 +305,7 @@ class ImgPanZoom extends LitElement {
       navigatorRight: {
         type: String,
         attribute: "navigator-right",
-        reflect: true
+        reflect: true,
       },
       /**
        * height of navigator
@@ -313,7 +313,7 @@ class ImgPanZoom extends LitElement {
       navigatorHeight: {
         type: String,
         attribute: "navigator-height",
-        reflect: true
+        reflect: true,
       },
       /**
        * width of navigator
@@ -321,7 +321,7 @@ class ImgPanZoom extends LitElement {
       navigatorWidth: {
         type: String,
         attribute: "navigator-width",
-        reflect: true
+        reflect: true,
       },
       /**
        * whether navigator window mode is toggled
@@ -329,7 +329,7 @@ class ImgPanZoom extends LitElement {
       navigatorToggled: {
         type: Boolean,
         attribute: "navigator-toggled",
-        reflect: true
+        reflect: true,
       },
       /**
        * displays multiple images as a sequence
@@ -350,7 +350,7 @@ class ImgPanZoom extends LitElement {
        */
       referenceStripScroll: {
         type: String,
-        attribute: "reference-strip-scroll"
+        attribute: "reference-strip-scroll",
       },
       /**
        * id of custom previousButton
@@ -375,7 +375,7 @@ class ImgPanZoom extends LitElement {
       /**
        * id of custom zoomInButton
        */
-      fullScreenButton: { type: String }
+      fullScreenButton: { type: String },
     };
   }
   // simple path from a url modifier
@@ -434,8 +434,8 @@ class ImgPanZoom extends LitElement {
         this.dispatchEvent(
           new CustomEvent("loading-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -445,8 +445,8 @@ class ImgPanZoom extends LitElement {
         this.dispatchEvent(
           new CustomEvent("loaded-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -492,8 +492,8 @@ class ImgPanZoom extends LitElement {
     this.animationConfig = {
       fade: {
         name: "fade-in-animation",
-        node: this.shadowRoot.querySelector("#viewer")
-      }
+        node: this.shadowRoot.querySelector("#viewer"),
+      },
     };
     setTimeout(() => {
       // Init openseadragon if we are using a deep zoom image
@@ -513,13 +513,13 @@ class ImgPanZoom extends LitElement {
   // Init openseadragon
   _initOpenSeadragon() {
     setTimeout(() => {
-      var tileSources = [this.src].filter(src => !!src);
+      var tileSources = [this.src].filter((src) => !!src);
       if (!this.dzi) {
-        tileSources = tileSources.map(src => {
+        tileSources = tileSources.map((src) => {
           return {
             type: "image",
             url: src,
-            buildPyramid: false
+            buildPyramid: false,
           };
         });
       }
@@ -560,7 +560,7 @@ class ImgPanZoom extends LitElement {
           fullScreenButton: this.fullScreenButton,
           zoomInButton: this.zoomInButton,
           zoomOutButton: this.zoomOutButton,
-          tileSources: tileSources
+          tileSources: tileSources,
         });
       if (this.viewer) {
         this.viewer.goToPage(0);
@@ -575,72 +575,72 @@ class ImgPanZoom extends LitElement {
       /**
        * @event fires on zoom
        */
-      this.viewer.addHandler("zoom", e =>
+      this.viewer.addHandler("zoom", (e) =>
         this.dispatchEvent(
           new CustomEvent("zoom", {
             detail: {
-              value: e
-            }
+              value: e,
+            },
           })
         )
       );
       /**
        * @event fires on page
        */
-      this.viewer.addHandler("page", e =>
+      this.viewer.addHandler("page", (e) =>
         this.dispatchEvent(
           new CustomEvent("page", {
             detail: {
-              value: e
-            }
+              value: e,
+            },
           })
         )
       );
       /**
        * @event fires on pan
        */
-      this.viewer.addHandler("pan", e =>
+      this.viewer.addHandler("pan", (e) =>
         this.dispatchEvent(
           new CustomEvent("pan", {
             detail: {
-              value: e
-            }
+              value: e,
+            },
           })
         )
       );
       /**
        * @event fires on rotate
        */
-      this.viewer.addHandler("rotate", e =>
+      this.viewer.addHandler("rotate", (e) =>
         this.dispatchEvent(
           new CustomEvent("pan", {
             detail: {
-              value: e
-            }
+              value: e,
+            },
           })
         )
       );
       /**
        * @event
        */
-      this.viewer.addHandler("update-viewport", e =>
+      this.viewer.addHandler("update-viewport", (e) =>
         this.dispatchEvent(
           new CustomEvent("update-viewport", {
             detail: {
-              value: e
-            }
+              value: e,
+            },
           })
         )
       );
       /**
        * @event fires before viewport changes
        */
-      this.viewer.addHandler("viewport-changed", e =>
+      this.viewer.addHandler("viewport-changed", (e) =>
         this.dispatchEvent(
           new CustomEvent("viewport-changed", {
             detail: {
-              value: e
-            }
+              value: e,
+            },
           })
         )
       );
@@ -777,7 +777,7 @@ class ImgPanZoom extends LitElement {
     this.viewer.addTiledImage({
       tileSource: this.src,
       index: 0,
-      replace: true
+      replace: true,
     });
   }
 }

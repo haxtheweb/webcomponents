@@ -147,7 +147,7 @@ class RetroCard extends SimpleColors {
           cursor: pointer;
           font-family: "Roboto Mono", Consolas, Monospace;
         }
-      `
+      `,
     ];
   }
 
@@ -167,10 +167,7 @@ class RetroCard extends SimpleColors {
         <hr />
         <div class="card-tags">
           ${this.__cardTags.map(
-            tag =>
-              html`
-                <span class="project-tag">${tag.trim()}</span>
-              `
+            (tag) => html` <span class="project-tag">${tag.trim()}</span> `
           )}
         </div>
       </a>
@@ -196,13 +193,13 @@ class RetroCard extends SimpleColors {
             source: "hoverSource",
             alt: "subtitle",
             title: "title",
-            name: "title"
-          }
+            name: "title",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -213,7 +210,7 @@ class RetroCard extends SimpleColors {
             description: "Main title of card",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "url",
@@ -221,7 +218,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "textfield",
             required: false,
             icon: "icons:android",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "subtitle",
@@ -229,7 +226,7 @@ class RetroCard extends SimpleColors {
             description: "Sub heading",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "tags",
@@ -237,7 +234,7 @@ class RetroCard extends SimpleColors {
             description: "Comma separated tags",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "mediaSource",
@@ -246,7 +243,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "haxupload",
             required: true,
             icon: "icons:link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "hoverSource",
@@ -255,7 +252,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "haxupload",
             required: false,
             validationType: "url",
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "accentColor",
@@ -263,18 +260,18 @@ class RetroCard extends SimpleColors {
             title: "Accent Color",
             inputMethod: "colorpicker",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Sets base color to be dark mode",
             inputMethod: "boolean",
-            required: false
-          }
+            required: false,
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -283,36 +280,36 @@ class RetroCard extends SimpleColors {
       ...super.properties,
 
       title: {
-        type: String
+        type: String,
       },
       subtitle: {
-        type: String
+        type: String,
       },
       tags: {
-        type: String
+        type: String,
       },
       mediaSource: {
         type: String,
-        attribute: "media-source"
+        attribute: "media-source",
       },
       url: {
-        type: String
+        type: String,
       },
       hoverSource: {
         type: String,
-        attribute: "hover-source"
+        attribute: "hover-source",
       },
       hoverState: {
         type: Boolean,
         attribute: "hover-state",
-        reflect: true
+        reflect: true,
       },
       __cardTags: {
-        type: Array
+        type: Array,
       },
       __source: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

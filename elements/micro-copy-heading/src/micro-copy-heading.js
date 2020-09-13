@@ -7,7 +7,7 @@ import {
   html,
   css,
   customElement,
-  property
+  property,
 } from "lit-element/lit-element.js";
 /**
  * `micro-copy-heading`

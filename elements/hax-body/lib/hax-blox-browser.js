@@ -17,7 +17,7 @@ class HaxBloxBrowser extends LitElement {
           text-align: center;
           margin: 0px 16px;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -28,7 +28,7 @@ class HaxBloxBrowser extends LitElement {
     return html`
       <div class="blox-container">
         ${this.bloxList.map(
-          blox => html`
+          (blox) => html`
             <hax-tray-button
               wide
               index="${blox.index}"
@@ -55,8 +55,8 @@ class HaxBloxBrowser extends LitElement {
        * The list of blox
        */
       bloxList: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 }

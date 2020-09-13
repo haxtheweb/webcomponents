@@ -27,7 +27,7 @@ class MonacoElement extends LitElement {
           padding: 0;
           margin: 0;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -43,7 +43,7 @@ class MonacoElement extends LitElement {
       blur: "blur",
       valueChanged: "valueChanged",
       languageChanged: "languageChanged",
-      themeChanged: "themeChanged"
+      themeChanged: "themeChanged",
     };
     this.language = "javascript";
     this.theme = "vs-dark";
@@ -56,9 +56,7 @@ class MonacoElement extends LitElement {
    * LitElement
    */
   render() {
-    return html`
-      <iframe id="iframe" frameborder="0"></iframe>
-    `;
+    return html` <iframe id="iframe" frameborder="0"></iframe> `;
   }
   /**
    * LitElement / popular convention
@@ -66,15 +64,15 @@ class MonacoElement extends LitElement {
   static get properties() {
     return {
       value: {
-        type: String
+        type: String,
       },
       fontSize: {
         type: Number,
-        attribute: "font-size"
+        attribute: "font-size",
       },
       readOnly: {
         type: Boolean,
-        attribute: "read-only"
+        attribute: "read-only",
       },
       /**
        * THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS
@@ -82,44 +80,44 @@ class MonacoElement extends LitElement {
        */
       uniqueKey: {
         type: String,
-        attribute: "unique-key"
+        attribute: "unique-key",
       },
       eventTypes: {
-        type: Object
+        type: Object,
       },
       language: {
-        type: String
+        type: String,
       },
       theme: {
-        type: String
+        type: String,
       },
       libPath: {
         type: String,
-        attribute: "lib-path"
+        attribute: "lib-path",
       },
       editorReference: {
         type: String,
         reflect: true,
-        attribute: "editor-reference"
+        attribute: "editor-reference",
       },
       /**
        * automatically set focus on the iframe
        */
       autofocus: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * hide line numbers
        */
       hideLineNumbers: {
         type: Boolean,
-        attribute: "hide-line-numbers"
+        attribute: "hide-line-numbers",
       },
       tabSize: {
         type: Number,
-        attribute: "tab-size"
-      }
+        attribute: "tab-size",
+      },
     };
   }
   /**
@@ -153,7 +151,7 @@ class MonacoElement extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("message", message => {
+    window.addEventListener("message", (message) => {
       this.handleMessage(message);
     });
     setTimeout(() => {
@@ -164,7 +162,7 @@ class MonacoElement extends LitElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener("message", message => {
+    window.removeEventListener("message", (message) => {
       this.handleMessage(message);
     });
     this.__init = false;
@@ -313,7 +311,7 @@ class MonacoElement extends LitElement {
         onload: () => {
           this.insertScriptElement({ text: iframeScript });
           this.insertStyle();
-        }
+        },
       });
     }
     if (this.autofocus) this.iframe.focus();
@@ -340,7 +338,7 @@ class MonacoElement extends LitElement {
       const evt = new CustomEvent("value-changed", {
         bubbles: true,
         cancelable: true,
-        detail: data.payload
+        detail: data.payload,
       });
       this.dispatchEvent(evt);
     } else if (data.event === this.eventTypes.ready) {
@@ -357,7 +355,7 @@ class MonacoElement extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -367,7 +365,7 @@ class MonacoElement extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -383,7 +381,7 @@ class MonacoElement extends LitElement {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: true
+          detail: true,
         })
       );
     }, 100);

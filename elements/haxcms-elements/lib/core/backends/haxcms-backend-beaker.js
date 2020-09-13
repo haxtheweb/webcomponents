@@ -24,9 +24,7 @@ class HAXCMSBackendBeaker extends LitElement {
   }
   // render function
   render() {
-    return html`
-      <beaker-broker id="beaker"></beaker-broker>
-    `;
+    return html` <beaker-broker id="beaker"></beaker-broker> `;
   }
   static get properties() {
     return {
@@ -34,20 +32,20 @@ class HAXCMSBackendBeaker extends LitElement {
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String
+        type: String,
       },
       /**
        * Store manifest that makes up the site.
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       /**
        * Track activeItem
        */
       activeItem: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -57,7 +55,7 @@ class HAXCMSBackendBeaker extends LitElement {
     super();
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun(reaction => {
+    autorun((reaction) => {
       this.jwt = toJS(store.jwt);
       this.__disposer.push(reaction);
     });
@@ -130,7 +128,7 @@ class HAXCMSBackendBeaker extends LitElement {
       e.preventDefault();
       e.stopPropagation();
       let reader = new FileReader();
-      reader.onload = event => {
+      reader.onload = (event) => {
         let fileLocation =
           "files/" +
           window.HaxStore.instance.haxTray.shadowRoot.querySelector(
@@ -171,7 +169,7 @@ class HAXCMSBackendBeaker extends LitElement {
       bubbles: true,
       composed: true,
       cancelable: false,
-      detail: true
+      detail: true,
     });
     store.cmsSiteEditor.instance.dispatchEvent(evt);
   }
@@ -194,7 +192,7 @@ class HAXCMSBackendBeaker extends LitElement {
         element.description = "";
         element.metadata = {
           created: Math.floor(Date.now() / 1000),
-          updated: Math.floor(Date.now() / 1000)
+          updated: Math.floor(Date.now() / 1000),
         };
         // make a directory
         this.shadowRoot.querySelector("#beaker").archive.mkdir("pages/" + id);
@@ -217,7 +215,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -225,7 +223,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this.manifest
+        detail: this.manifest,
       })
     );
   }
@@ -256,7 +254,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -264,7 +262,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this.manifest
+        detail: this.manifest,
       })
     );
   }
@@ -318,7 +316,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -326,7 +324,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this.manifest
+        detail: this.manifest,
       })
     );
   }
@@ -341,18 +339,18 @@ class HAXCMSBackendBeaker extends LitElement {
         "haxcms-dev-theme": {
           element: "haxcms-dev-theme",
           path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
-          name: "Developer theme"
+          name: "Developer theme",
         },
         "outline-player": {
           element: "outline-player",
           path: "@lrnwebcomponents/outline-player/outline-player.js",
-          name: "Outline player"
+          name: "Outline player",
         },
         "simple-blog": {
           element: "simple-blog",
           path: "@lrnwebcomponents/simple-blog/simple-blog.js",
-          name: "Simple blog"
-        }
+          name: "Simple blog",
+        },
       };
       // if it's not a core theme we can't really do it
       if (themeData[this.manifest.metadata.theme]) {
@@ -371,7 +369,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: true
+        detail: true,
       })
     );
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -379,7 +377,7 @@ class HAXCMSBackendBeaker extends LitElement {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this.manifest
+        detail: this.manifest,
       })
     );
   }
@@ -417,13 +415,15 @@ class HAXCMSBackendBeaker extends LitElement {
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
-          e => {
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
+        ).then(
+          (e) => {
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
             store.cmsSiteEditor.instance.appStore = appstore;
           },
-          e => {
+          (e) => {
             //import failed
           }
         );
@@ -440,7 +440,7 @@ class HAXCMSBackendBeaker extends LitElement {
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: this
+          detail: this,
         })
       );
     }

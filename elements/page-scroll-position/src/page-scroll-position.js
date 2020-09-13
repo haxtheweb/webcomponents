@@ -8,7 +8,7 @@ class PageScrollPosition extends HTMLElement {
     this.value = 0.0;
     let element = document;
     let valueChangedEvent = new CustomEvent("value-changed", {
-      detail: { value: 0.0 }
+      detail: { value: 0.0 },
     });
     this.dispatchEvent(valueChangedEvent);
 
@@ -24,7 +24,7 @@ class PageScrollPosition extends HTMLElement {
       this.value = c;
 
       valueChangedEvent = new CustomEvent("value-changed", {
-        detail: { value: this.value }
+        detail: { value: this.value },
       });
       this.dispatchEvent(valueChangedEvent);
     });

@@ -136,7 +136,7 @@ class MagazineCover extends LitElement {
             padding: 16px;
           }
         }
-      `
+      `,
     ];
   }
   /**
@@ -208,65 +208,65 @@ class MagazineCover extends LitElement {
        * Title / heading
        */
       header: {
-        type: String
+        type: String,
       },
       /**
        * A secondary title
        */
       subheader: {
-        type: String
+        type: String,
       },
       /**
        * Internal text.
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * Title / heading
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Call to action
        */
       action: {
-        type: String
+        type: String,
       },
       /**
        * aria-describedby attribute
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * Call to action icon
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Link to go to on click.
        */
       link: {
-        type: String
+        type: String,
       },
       /**
        * Optional event binding for the button press.
        */
       eventName: {
         type: String,
-        attribute: "event-name"
+        attribute: "event-name",
       },
       /**
        * Optional event data to send along
        */
       eventData: {
         type: Object,
-        attribute: "event-data"
-      }
+        attribute: "event-data",
+      },
     };
   }
   /**
@@ -281,7 +281,7 @@ class MagazineCover extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this.eventData
+          detail: this.eventData,
         })
       );
     }
@@ -309,12 +309,12 @@ class MagazineCover extends LitElement {
             caption: "subheader",
             citation: "subheader",
             description: "text",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -325,7 +325,7 @@ class MagazineCover extends LitElement {
             inputMethod: "textfield",
             icon: "link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "link",
@@ -334,7 +334,7 @@ class MagazineCover extends LitElement {
             inputMethod: "textfield",
             icon: "send",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "header",
@@ -342,15 +342,15 @@ class MagazineCover extends LitElement {
             description: "Primary header",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
+            required: true,
           },
           {
             property: "subheader",
             title: "Sub-header",
             description: "Secondary header",
             inputMethod: "textfield",
-            icon: "editor:text-fields"
-          }
+            icon: "editor:text-fields",
+          },
         ],
         configure: [
           {
@@ -360,7 +360,7 @@ class MagazineCover extends LitElement {
             inputMethod: "haxupload",
             icon: "link",
             required: true,
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "header",
@@ -368,35 +368,35 @@ class MagazineCover extends LitElement {
             description: "Primary header",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
+            required: true,
           },
           {
             property: "subheader",
             title: "Sub-header",
             description: "Secondary header",
             inputMethod: "textfield",
-            icon: "editor:text-fields"
+            icon: "editor:text-fields",
           },
           {
             property: "text",
             title: "Text",
             description: "Secondary header",
             inputMethod: "textfield",
-            icon: "editor:text-fields"
+            icon: "editor:text-fields",
           },
           {
             property: "action",
             title: "Call to action",
             description: "Text that lives on the button",
             inputMethod: "textfield",
-            icon: "trending-flat"
+            icon: "trending-flat",
           },
           {
             property: "link",
             title: "URL",
             description: "Enter URL for your action link",
             inputMethod: "haxupload",
-            icon: "send"
+            icon: "send",
           },
           {
             property: "icon",
@@ -411,9 +411,9 @@ class MagazineCover extends LitElement {
               "icons:check",
               "icons:favorite",
               "icons:thumb-up",
-              "icons:send"
-            ]
-          }
+              "icons:send",
+            ],
+          },
         ],
         advanced: [
           {
@@ -421,22 +421,22 @@ class MagazineCover extends LitElement {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "event-name",
             title: "Event name",
             description: "Name of the event to fire",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "event-data",
             title: "Event data (JSON)",
             description: "JSON blob of data to send along",
-            inputMethod: "code-editor"
-          }
-        ]
-      }
+            inputMethod: "code-editor",
+          },
+        ],
+      },
     };
   }
 }

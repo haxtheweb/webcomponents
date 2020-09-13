@@ -1,5 +1,5 @@
 var _Mathround = Math.round,
-  Reader = function(el) {
+  Reader = function (el) {
     this.element = el;
     this.reader = el.root.querySelector(".pdf-viewer");
     this.viewportOut = this.reader.querySelector(".pdf-viewport-out");
@@ -27,7 +27,7 @@ var _Mathround = Math.round,
     this.pageRendering = !1;
     this.pageNumPending = null;
   };
-Reader.prototype.setSize = function(attrName, newVal) {
+Reader.prototype.setSize = function (attrName, newVal) {
   if (!this.WIDTH) {
     this.WIDTH = this.viewportOut.offsetWidth;
   }
@@ -45,13 +45,13 @@ Reader.prototype.setSize = function(attrName, newVal) {
   this.viewportOutStyle.height = height + "px";
   this.spinner.style.top = (height - this.toolbarHeight) / 2 + "px";
 };
-Reader.prototype.setSrc = function(src) {
+Reader.prototype.setSrc = function (src) {
   this.SRC = src;
 };
-Reader.prototype.setFitWidth = function(fitWidth) {
+Reader.prototype.setFitWidth = function (fitWidth) {
   this.fitWidth = fitWidth;
 };
-Reader.prototype.queueRenderPage = function(num) {
+Reader.prototype.queueRenderPage = function (num) {
   this.pdfExists = !0;
   if (this.pageRendering) {
     this.pageNumPending = num;
@@ -59,13 +59,13 @@ Reader.prototype.queueRenderPage = function(num) {
     this.renderPDF(num);
   }
 };
-Reader.prototype.loadPDF = function(pageNum) {
+Reader.prototype.loadPDF = function (pageNum) {
   var _this = this;
   this.setSize();
   pageNum = 1;
   var self = this;
   PDFJS.getDocument(this.SRC)
-    .then(function(pdf) {
+    .then(function (pdf) {
       self.PDF = pdf;
       self.queueRenderPage(pageNum);
       self.currentPage = pageNum;
@@ -74,14 +74,14 @@ Reader.prototype.loadPDF = function(pageNum) {
       self.currentZoomVal = self.fitZoomVal = self.widthZoomVal = 0;
       self.createDownloadLink();
     })
-    .catch(function() {
+    .catch(function () {
       _this.pdfExists = !1;
     });
 };
-Reader.prototype.renderPages = function() {
+Reader.prototype.renderPages = function () {
   var self = this;
   self.viewportOut.innerHTML = "";
-  PDFJS.getDocument(this.SRC).then(function(pdf) {
+  PDFJS.getDocument(this.SRC).then(function (pdf) {
     self.PDF = pdf;
     for (var num = 1; num <= self.PDF.numPages; num++) {
       pdf.getPage(num).then(self.renderPDF(num, null, !0));
@@ -94,7 +94,7 @@ Reader.prototype.renderPages = function() {
     self.createDownloadLink();
   });
 };
-Reader.prototype.sidebarSetup = function(currentThis) {
+Reader.prototype.sidebarSetup = function (currentThis) {
   var self = this,
     pdfName = currentThis.src,
     currPage = 1,
@@ -103,7 +103,7 @@ Reader.prototype.sidebarSetup = function(currentThis) {
   if (0 != self.container.innerHTML.length) {
     if (currentThis.changedSideBar) {
       self.container.innerHTML = "";
-      PDFJS.getDocument(this.SRC).then(function(pdf) {
+      PDFJS.getDocument(this.SRC).then(function (pdf) {
         pdfObj = pdf;
         numPages = pdfObj.numPages;
         var container = self.container;
@@ -113,7 +113,7 @@ Reader.prototype.sidebarSetup = function(currentThis) {
     }
   } else {
     self.container.innerHTML = "";
-    PDFJS.getDocument(this.SRC).then(function(pdf) {
+    PDFJS.getDocument(this.SRC).then(function (pdf) {
       pdfObj = pdf;
       numPages = pdfObj.numPages;
       var container = self.container;
@@ -141,7 +141,7 @@ Reader.prototype.sidebarSetup = function(currentThis) {
     div.appendChild(canvas);
     container.appendChild(div);
     var addPage = self.container.childNodes[page.pageIndex];
-    addPage.addEventListener("click", function() {
+    addPage.addEventListener("click", function () {
       var nextPage = page.pageIndex + 1;
       click.sideBarClick(nextPage, currentThis.instance, currentThis);
     });
@@ -155,11 +155,11 @@ Reader.prototype.sidebarSetup = function(currentThis) {
     }
   }
 };
-Reader.prototype.renderPDF = function(pageNum, resize, isFull) {
+Reader.prototype.renderPDF = function (pageNum, resize, isFull) {
   var self = this;
   self.pageRendering = !0;
   self.spinner.active = !0;
-  this.PDF.getPage(pageNum).then(function(page) {
+  this.PDF.getPage(pageNum).then(function (page) {
     var _Mathabs = Math.abs,
       _Mathsin = Math.sin,
       _Mathcos = Math.cos,
@@ -224,22 +224,22 @@ Reader.prototype.renderPDF = function(pageNum, resize, isFull) {
         page.render({ canvasContext: ctx, viewport: viewerViewport });
         if (self.enableTextSelection) {
           self.textLayerDiv.innerHTML = "";
-          page.getTextContent().then(function(textContent) {
+          page.getTextContent().then(function (textContent) {
             PDFJS.renderTextLayer({
               textContent: textContent,
               container: textLayer,
               pageIndex: pageNum,
               viewport: viewerViewport,
-              textDivs: []
+              textDivs: [],
             });
           });
         }
       } else {
         var renderTask = page.render({
           canvasContext: self.ctx,
-          viewport: viewerViewport
+          viewport: viewerViewport,
         });
-        renderTask.promise.then(function() {
+        renderTask.promise.then(function () {
           self.pageRendering = !1;
           self.spinner.active = !1;
           if (null !== self.pageNumPending) {
@@ -250,20 +250,20 @@ Reader.prototype.renderPDF = function(pageNum, resize, isFull) {
       }
       if (self.enableTextSelection) {
         self.textLayerDiv.innerHTML = "";
-        page.getTextContent().then(function(textContent) {
+        page.getTextContent().then(function (textContent) {
           PDFJS.renderTextLayer({
             textContent: textContent,
             container: self.textLayerDiv,
             pageIndex: pageNum,
             viewport: viewerViewport,
-            textDivs: []
+            textDivs: [],
           });
         });
       }
     }
   });
 };
-Reader.prototype.setViewportPos = function(sidebarAdjust) {
+Reader.prototype.setViewportPos = function (sidebarAdjust) {
   var _Mathfloor = Math.floor;
   if (sidebarAdjust) {
     this.currentWidth = 0.75 * this.WIDTH;
@@ -292,44 +292,44 @@ Reader.prototype.setViewportPos = function(sidebarAdjust) {
     this.textLayerDivStyle.top = this.viewportStyle.top;
   }
 };
-Reader.prototype.changePDFSource = function(newSrc) {
+Reader.prototype.changePDFSource = function (newSrc) {
   this.setSrc(newSrc);
   this.loadPDF(1);
 };
-Reader.prototype.zoomInOut = function(step) {
+Reader.prototype.zoomInOut = function (step) {
   this.currentZoomVal =
     _Mathround(10 * (_Mathround(10 * this.currentZoomVal) / 10 + step)) / 10;
   this.queueRenderPage(this.currentPage);
 };
-Reader.prototype.zoomIn = function() {
+Reader.prototype.zoomIn = function () {
   this.currentZoomVal =
     _Mathround(10 * (_Mathround(10 * this.currentZoomVal) / 10 + 0.1)) / 10;
   this.queueRenderPage(this.currentPage);
 };
-Reader.prototype.zoomOut = function() {
+Reader.prototype.zoomOut = function () {
   this.currentZoomVal =
     _Mathround(10 * (_Mathround(10 * this.currentZoomVal) / 10 + -0.1)) / 10;
   this.queueRenderPage(this.currentPage);
 };
-Reader.prototype.zoomPageFit = function() {
+Reader.prototype.zoomPageFit = function () {
   this.currentZoomVal = this.fitZoomVal;
   this.queueRenderPage(this.currentPage);
 };
-Reader.prototype.zoomWidthFit = function() {
+Reader.prototype.zoomWidthFit = function () {
   this.currentZoomVal = this.widthZoomVal;
   this.queueRenderPage(this.currentPage);
 };
-Reader.prototype.getPageNum = function() {
+Reader.prototype.getPageNum = function () {
   return this.PDF.numPages;
 };
-Reader.prototype.createDownloadLink = function() {
+Reader.prototype.createDownloadLink = function () {
   var self = this;
-  this.PDF.getData().then(function(data) {
+  this.PDF.getData().then(function (data) {
     var blob = PDFJS.createBlob(data, "application/pdf");
     self.downloadLink = URL.createObjectURL(blob);
   });
 };
-Reader.prototype.download = function() {
+Reader.prototype.download = function () {
   var a = document.createElement("a"),
     filename = this.SRC.split("/");
   a.href = this.downloadLink;
