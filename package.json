@@ -85,12 +85,12 @@
         "gulp-terser": "1.2.0",
         "gulp-trim": "1.0.2",
         "helmet": "3.21.2",
-        "husky": "4.2.0",
+        "husky": "4.3.0",
         "imagemin-lint-staged": "0.4.0",
         "inquirer-recursive": "0.0.6",
         "jest": "24.1.0",
         "lerna": "3.20.2",
-        "lint-staged": "8.1.7",
+        "lint-staged": "10.3.0",
         "lodash": "4.17.19",
         "lodash.clonedeep": "4.5.0",
         "lorem-ipsum": "^2.0.3",
@@ -132,10 +132,7 @@
     },
     "lint-staged": {
         "*.{js,json}": "prettier --write",
-        "*.{png,jpeg,jpg,gif,svg}": [
-            "imagemin-lint-staged",
-            "git add"
-        ],
+        "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
         "*.css": "stylelint --fix",
         "*.scss": "stylelint --syntax=scss --fix"
     },
