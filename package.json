@@ -31,7 +31,7 @@
         "format:js": "prettier --write **/*.{js,json}",
         "format:css": "stylelint --fix **/*.css",
         "format:scss": "stylelint --syntax=scss --fix **/*.scss",
-        "test": "yarn run build && wct --configFile wct.conf.json test/index.html",
+        "test": "wct --configFile wct.conf.json test/index.html",
         "build": "lerna run build --no-bail",
         "publish": "echo 'NOTICE: You must run `lerna publish` manually'",
         "test-suite-inject": "node scripts/test-suite-inject.js",
