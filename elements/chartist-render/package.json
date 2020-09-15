@@ -43,10 +43,10 @@
   "dependencies": {
     "@polymer/iron-ajax": "^3.0.0",
     "chartist": "^0.11.0",
-    "chartist-plugin-accessibility": "^0.0.4",
+    "chartist-plugin-accessibility": "0.0.5",
     "chartist-plugin-axistitle": "^0.0.7",
     "chartist-plugin-fill-donut": "^0.1.4",
-    "chartist-plugin-pointlabels": "^0.0.4",
+    "chartist-plugin-pointlabels": "0.0.6",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
