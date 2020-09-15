@@ -9,7 +9,7 @@ jobs:
     name: "${{ matrix.platform }}: node.js ${{ matrix.node-version }}"
     strategy:
       matrix:
-        platform: [ubuntu-latest, windows-latest]
+        platform: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [10, 12, 14]
       fail-fast: false
     runs-on: ${{ matrix.platform }}
@@ -35,5 +35,3 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn lerna run build
-      - name: Test
-        run: yarn test --verbose
