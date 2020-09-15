@@ -32,13 +32,13 @@
   "module": "lrndesign-timeline.js",
   "umd": "lrndesign-timeline.umd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-timeline/test/",
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-timeline/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\"",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "polymer serve --npm --module-resolution=node --open",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "nikkimk"
