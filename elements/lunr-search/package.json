@@ -43,7 +43,7 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.7.7",
     "@polymer/iron-ajax": "^3.0.1",
-    "lit-element": "^2.3.1",
+    "lit-element": "2.4.0",
     "lunr": "2.3.6"
   },
   "devDependencies": {
@@ -52,8 +52,8 @@
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/paper-input": "^3.0.2",
-    "@webcomponents/webcomponentsjs": "2.4.1",
-    "concurrently": "5.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.4",
+    "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
     "polymer-build": "3.1.4",

@@ -42,7 +42,7 @@
     "@lrnwebcomponents/simple-colors-shared-styles": "^2.7.7",
     "@lrnwebcomponents/simple-picker": "^2.7.7",
     "@polymer/polymer": "^3.3.1",
-    "lit-element": "^2.3.1"
+    "lit-element": "2.4.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.7.7",
@@ -51,8 +51,8 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@rhelements/rh-sass": "1.0.0-prerelease.7",
-    "@webcomponents/webcomponentsjs": "2.4.1",
-    "concurrently": "5.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.4",
+    "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
     "polymer-build": "3.1.4",
