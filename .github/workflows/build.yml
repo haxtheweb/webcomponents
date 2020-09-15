@@ -8,10 +8,15 @@ jobs:
   build-and-test:
     name: "${{ matrix.platform }}: node.js ${{ matrix.node-version }}"
     strategy:
+      fail-fast: false
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [10, 12, 14]
-      fail-fast: false
+        node-version: [14]
+        include:
+          - platform: ubuntu-latest
+            node-version: 12
+          - platform: ubuntu-latest
+            node-version: 10
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
