@@ -130,6 +130,9 @@
         "promise-polyfill": "8.1.3",
         "rollup-plugin-cpy": "^2.0.1"
     },
+    "resolutions": {
+      "chokidar": "^3.0.0"
+    },
     "lint-staged": {
         "*.{js,json}": "prettier --write",
         "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
