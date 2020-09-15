@@ -175,79 +175,81 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   }
   render() {
     return html`
-      <meta property="oer:assessing" content="${this.relatedResource}" />
-      ${!this.hideTitle
-        ? html` <h3><span property="oer:name">${this.title}</span></h3> `
-        : ``}
-      <div>${this.question}</div>
-      ${this.singleOption
-        ? html`
-            <paper-radio-group>
-              ${this.displayedAnswers.map(
-                (answer, index) => html`
-                  <paper-radio-button
-                    ?disabled="${this.disabled}"
-                    property="oer:answer"
-                    name="${index}"
-                    ?checked="${answer.userGuess}"
-                    @checked-changed="${this.checkedEvent}"
-                    >${answer.label}</paper-radio-button
-                  >
-                `
-              )}
-            </paper-radio-group>
-          `
-        : html`
-            <ul>
-              ${this.displayedAnswers.map(
-                (answer, index) => html`
-                  <li>
-                    <paper-checkbox
+      <confetti-container id="confetti">
+        <meta property="oer:assessing" content="${this.relatedResource}" />
+        ${!this.hideTitle
+          ? html` <h3><span property="oer:name">${this.title}</span></h3> `
+          : ``}
+        <div>${this.question}</div>
+        ${this.singleOption
+          ? html`
+              <paper-radio-group>
+                ${this.displayedAnswers.map(
+                  (answer, index) => html`
+                    <paper-radio-button
                       ?disabled="${this.disabled}"
                       property="oer:answer"
                       name="${index}"
                       ?checked="${answer.userGuess}"
                       @checked-changed="${this.checkedEvent}"
-                      >${answer.label}</paper-checkbox
+                      >${answer.label}</paper-radio-button
                     >
-                  </li>
-                `
-              )}
-            </ul>
-          `}
-      ${!this.hideButtons
-        ? html`
-            <div id="buttons">
-              <paper-button
-                id="check"
-                ?disabled="${this.disabled}"
-                raised
-                @click="${this._verifyAnswers}"
-                >${this.checkLabel}</paper-button
-              >
-              <paper-button
-                id="reset"
-                ?disabled="${this.disabled}"
-                raised
-                @click="${this.resetAnswers}"
-                >${this.resetLabel}</paper-button
-              >
-            </div>
-          `
-        : ``}
-      <paper-toast
-        id="toast"
-        scroll-action="cancel"
-        duration="6000"
-        position-target="${this.positionTarget}"
-        class="fit-bottom ${this.__toastColor}"
-      >
-        ${this.__toastText}
-        <iron-icon
-          icon="${this.__toastIcon}"
-          style="margin-left:16px;"
-        ></iron-icon>
-      </paper-toast>
+                  `
+                )}
+              </paper-radio-group>
+            `
+          : html`
+              <ul>
+                ${this.displayedAnswers.map(
+                  (answer, index) => html`
+                    <li>
+                      <paper-checkbox
+                        ?disabled="${this.disabled}"
+                        property="oer:answer"
+                        name="${index}"
+                        ?checked="${answer.userGuess}"
+                        @checked-changed="${this.checkedEvent}"
+                        >${answer.label}</paper-checkbox
+                      >
+                    </li>
+                  `
+                )}
+              </ul>
+            `}
+        ${!this.hideButtons
+          ? html`
+              <div id="buttons">
+                <paper-button
+                  id="check"
+                  ?disabled="${this.disabled}"
+                  raised
+                  @click="${this._verifyAnswers}"
+                  >${this.checkLabel}</paper-button
+                >
+                <paper-button
+                  id="reset"
+                  ?disabled="${this.disabled}"
+                  raised
+                  @click="${this.resetAnswers}"
+                  >${this.resetLabel}</paper-button
+                >
+              </div>
+            `
+          : ``}
+        <paper-toast
+          id="toast"
+          scroll-action="cancel"
+          duration="6000"
+          position-target="${this.positionTarget}"
+          class="fit-bottom ${this.__toastColor}"
+        >
+          ${this.__toastText}
+          <iron-icon
+            icon="${this.__toastIcon}"
+            style="margin-left:16px;"
+          ></iron-icon>
+        </paper-toast>
+      </confetti-container>
     `;
   }
   checkedEvent(e) {
@@ -439,6 +441,12 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       this.__toastColor = "green";
       this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
+      // make it fun... and performant!
+      import("./lib/confetti-container.js").then((module) => {
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+        }, 0);
+      });
     } else {
       this.__toastColor = "red";
       this.__toastIcon = this.incorrectIcon;
