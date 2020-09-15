@@ -355,6 +355,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      *
      */
     execCommand() {
+      console.log('execCommand',this.range);
       if (this.range) {
         document.execCommand(
           this.operationCommand,

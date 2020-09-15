@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "./lib/rich-text-editor-styles.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
@@ -39,50 +38,44 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.toolbar = "";
     this.type = "rich-text-editor-toolbar";
     this.id = "";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   * @returns {void}
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    if (!this.id) this.id = this._generateUUID();
-    this.getEditor();
+    this.__connectedToolbar = undefined;
     window.RichTextEditorStyleManager.requestAvailability();
+  }
+  firstUpdated() {
+    if(super.firstUpdated) super.firstUpdated();
+    if (!this.id) this.id = this._generateUUID();
+    if(this.isEmpty()) this.innerHTML = "";
+    this.getToolbar();
+  }
+  
+  isEmpty(){
+    return !this.innerHTML || this.innerHTML.replace(/[\s\t\r\n]/gim,'') == "";
   }
   /**
    * connects the mini-toolbar to a mini editor
    * @returns {void}
    */
-  getEditor() {
-    let id = this.toolbar ? "#" + this.toolbar : "",
-      both = document.querySelector(this.type + id),
-      idOnly = id ? document.querySelector(id) : null,
-      typeOnly = document.querySelector(this.type),
-      //try to match both id and type, if no match try id only, and then type only
-      toolbar = both || idOnly || typeOnly;
-    //if still no match, create a region of type
-    if (!this.toolbar) this.toolbar = this._generateUUID();
-    if (!toolbar || !toolbar.addEditableRegion) {
-      toolbar = document.createElement(this.type);
-      toolbar.id = this.toolbar;
-      this.parentNode.appendChild(toolbar);
+  getToolbar() {
+    if(!this.__connectedToolbar){
+      //get toolbar by id
+      let toolbar, filter = !this.toolbar ? [] : (window.RichTextEditorToolbars || []).filter(toolbar=>toolbar.id === this.toolbar);
+      //get toolbar by type
+      if(filter.length === 0){
+        filter = !this.type ? [] : (window.RichTextEditorToolbars || []).filter(toolbar=>toolbar.type === this.type);
+      }
+      if(filter[0]){
+        toolbar = filter[0];
+      } else if(filter.length === 0){
+        //make toolbar
+        toolbar = document.createElement(this.type || 'rich-text-editor-toolbar');
+        this.parentNode.insertBefore(toolbar,this);
+      } 
+      toolbar.id = this.toolbar || this._generateUUID();
+      this.toolbar = toolbar.id;
+      this.__connectedToolbar = toolbar;
     }
-    toolbar.addEditableRegion(this);
-  }
-
-  /**
-   * Normalizes selected range data.
-   *
-   * @returns {object} the selected range
-   */
-  _getRange() {
-    let sel = window.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
-      return sel.getRangeAt(0);
-    } else if (sel) {
-      return sel;
-    } else false;
+    this.__connectedToolbar.addEditableRegion(this);
+    return this.__connectedToolbar;
   }
 
   /**

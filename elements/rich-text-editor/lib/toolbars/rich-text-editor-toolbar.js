@@ -493,11 +493,12 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       if (navigator.clipboard) {
         this.addEventListener("paste-button", this._handlePasteButton);
       }
+      window.ResponsiveUtility.requestAvailability();
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this.__buttons = this._getButtons();
-      window.ResponsiveUtility.requestAvailability();
+      
       window.dispatchEvent(
         new CustomEvent("responsive-element", {
           detail: { element: this.shadowRoot.querySelector("#toolbar") }
@@ -514,6 +515,8 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     connectedCallback() {
       super.connectedCallback();
+      window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
+      window.RichTextEditorToolbars.push(this);
     }
     /**
      * Gets editor buttons array, as determined by `config`.
@@ -569,6 +572,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      */
     disconnectedCallback() {
       super.disconnectedCallback();
+      window.RichTextEditorToolbars = (window.RichTextEditorToolbars || []).filter(toolbar=>toolbar!==this);
       //unbind toolbar to rich-text-editor-selection
       this.dispatchEvent(
         new CustomEvent("deselect-rich-text-editor-editor", {
@@ -590,26 +594,34 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     addEditableRegion(editor) {
+      console.log('addEditableRegion',editor);
       editor.addEventListener("mousedown", e => {
-        this.editTarget(editor);
+        console.log('mousedown',e,editor,this.editor,this.range,this.__selection.range);
+        this.editTarget(editor,e);
+        console.log('mousedown 2',e,editor,this.editor,this.range,this.__selection.range);
       });
       editor.addEventListener("focus", e => {
-        this.editTarget(editor);
+        console.log('focus',e,editor,this.editor,this.range,this.__selection.range);
+        this.editTarget(editor,e);
+        console.log('focus 2',e,editor,this.editor,this.range,this.__selection.range);
       });
       editor.addEventListener("keydown", e => {
         this._handleShortcutKeys(editor, e);
       });
       editor.addEventListener("blur", e => {
+        console.log('blur');
         if (
           e.relatedTarget === null ||
           !e.relatedTarget.startsWith === "rich-text-editor"
         )
           this.editTarget(null);
+          console.log('blur',this.range,this.__selection.range);
       });
-      editor.addEventListener("click", e => this._handleEditorClick(editor, e));
+      //editor.addEventListener("click", e => this._handleEditorClick(editor, e));
     }
     _handleEditorClick(editor, e) {
-      if (editor.contentEditable && e.path[0] !== editor) {
+      console.log('_handleEditorClick',editor, editor.contenteditable, e.path[0]);
+      /*if (editor.contenteditable && e.path[0] !== editor) {
         let button = this.buttons.filter(
             button => button.tag === e.path[0].tagName.toLowerCase()
           ),
@@ -627,10 +639,16 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               : false;
         if (button && button[0] && start === end && start === e.path[0]) {
           button[0]._buttonTap(e);
+          console.log('_handleEditorClick a',this.__selection.range);
         } else if (button && button[0]) {
           this.__selection.selectNode(e.path[0]);
+          console.log('_handleEditorClick b',this.__selection.range);
         }
-      }
+      } else if (editor.contenteditable){
+        console.log('_handleEditorClick c',this.__selection.range);
+        //this.__selection.selectNodeContents(editor);
+      }*/
+      console.log('_handleEditorClick 2',editor, e,this.__selection.range,this.range);
     }
 
     /**
@@ -638,6 +656,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     cancel() {
+      console.log('cancel',this.canceled);
       this.editor.innerHTML = this.canceled;
       this.editTarget(null);
     }
@@ -647,11 +666,13 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @param {object} an HTML object that can be edited
      * @returns {void}
      */
-    editTarget(editor) {
-      if (("editTarget", this.editor !== editor)) {
+    editTarget(editor,e) {
+      console.log('editTarget',editor,this.editor,e);
+      if (this.editor !== editor) {
+        console.log('editTarget 2',editor,this.editor);
         //save changes to previous editor
         if (!!this.editor) {
-          this.editor.contentEditable = false;
+          this.editor.contenteditable = false;
           this.editor = null;
         }
         //bind toolbar to rich-text-editor-selection
@@ -670,32 +691,37 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         if (!!editor) {
           editor.parentNode.insertBefore(this, editor);
           this.canceled = editor.innerHTML;
-          this.editor.contentEditable = true;
+          if(editor && editor.isEmpty()) editor.innerHTML = `<p>${editor.placeholder}</p>`;
+          this.editor.contenteditable = true;
           this.controls = editor.getAttribute("id");
           this._removeHighlight();
         } else {
           this.controls = null;
         }
         console.log("editor change");
-        this.buttons.forEach(button => {
+        (this.buttons || []).forEach(button => {
           button.target = editor;
           button.controls = this.controls;
           button.range = null;
           button.range = this.range;
         });
       }
+      console.log('editTarget 2',editor,this.editor);
     }
 
     /**
      * Normalizes selected range data.
      * @returns {object} selected range
-     */
+     * /
     getRange() {
       let sel = window.getSelection();
-      if (sel.getRangeAt && sel.rangeCount) {
+      console.log('getRange',sel);
+      if (sel && sel.getRangeAt && sel.rangeCount) {
         return sel.getRangeAt(0);
+        console.log('getRange a',sel.getRangeAt(0));
       } else if (sel) {
         return sel;
+        console.log('getRange b',sel);
       } else false;
     }
 
@@ -725,7 +751,6 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       let content = document.createElement("rich-text-editor");
       editor.parentNode.insertBefore(content, editor);
       content.appendChild(editor);
-      this.addEditableRegion(content);
     }
 
     /**
@@ -736,6 +761,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     pasteIntoRange(range, pasteContent) {
+      console.log('pasteIntoRange',this.range,range, pasteContent);
       let div = document.createElement("div"),
         sel = window.getSelection(),
         parent = range.commonAncestorContainer.parentNode,
@@ -753,35 +779,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         }
         div.parentNode.removeChild(div);
       }
-    }
-
-    /**
-     * removes an editor
-     *
-     * @param {object} editor an HTML object that can be edited
-     * @returns {void}
-     */
-    removeEditableRegion(editor) {
-      editor.removeEventListener("mouseout", e => {
-        this.getUpdatedSelection();
-      });
-      editor.removeEventListener("focus", e => {
-        this.editTarget(editor);
-      });
-      editor.removeEventListener("mousedown", e => {
-        this.editTarget(editor);
-      });
-      editor.removeEventListener("keydown", e => {
-        this._handleShortcutKeys(editor, e);
-      });
-      editor.removeEventListener("blur", e => {
-        if (
-          e.relatedTarget === null ||
-          !e.relatedTarget.startsWith === "rich-text-editor"
-        )
-          this.editTarget(null);
-        this.getUpdatedSelection();
-      });
+      console.log('pasteIntoRange 2',this.range,range, pasteContent);
     }
 
     /**
@@ -834,7 +832,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      */
 
     _handleShortcutKeys(editor, e) {
-      if (editor.contentEditable) {
+      if (editor.contenteditable) {
         let key = e.key;
         if (e.shiftKey) key = "shift+" + key;
         if (e.altKey) key = "alt+" + key;
@@ -901,13 +899,15 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      if (document.activeElement === this.editor) {
-        console.log("toolbar _rangeChange", this.range);
+      console.log("toolbar _rangeChange", this.range);
+      if (this.range && this.range.commonAncestorContainer && this.editor && this.editor.contains(this.range.commonAncestorContainer)) {
+        console.log("toolbar _rangeChange 2", this.range);
         this.buttons.forEach(button => {
           button.range = null;
           button.range = this.range;
         });
       }
+      console.log("toolbar _rangeChange 3", this.range);
     }
 
     /**

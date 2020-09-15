@@ -4,8 +4,8 @@
 
 :host {
   display: block;
-  min-height: 20px;
   cursor: pointer;
+  min-height: 40px;
 }
 
 :host([contenteditable="true"]) {
@@ -26,11 +26,13 @@
 
 :host(:empty) {
   border: 1px dashed var(--rich-text-editor-border-color);
+  outline: 1px dashed var(--rich-text-editor-border-color);
 }
 
-:host(:not([contenteditable="true"]):empty):before {
+:host(:empty):before {
   content: attr(placeholder);
   padding: 0 5px;
   display: block;
+  z-index: -1;
   color: var(--rich-text-editor-button-disabled-color);
 }
