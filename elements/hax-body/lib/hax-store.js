@@ -7,6 +7,7 @@ import {
   stripMSWord,
   nodeToHaxElement,
   haxElementToNode,
+  validURL,
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -984,6 +985,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         pasteContent = (e.originalEvent || e).clipboardData.getData(
           "text/html"
         );
+        // if it is purely plain text it could fail to come across as HTML and be empty
+        if (pasteContent == "") {
+          pasteContent = (e.originalEvent || e).clipboardData.getData("text");
+        }
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
@@ -1001,14 +1006,35 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
       console.log(originalContent);
-      console.log(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
       console.log(haxElements);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
-      if (haxElements.length === 0) {
+      if (haxElements.length === 0 && validURL(pasteContent)) {
+        // ONLY use this logic if we're on an empty container
+        if (this.activeNode.innerText.trim() != "") {
+          return false;
+        }
+        // test for a URL since we didn't have HTML / elements of some kind
+        // if it's a URL we might be able to automatically convert it into it's own element
+        let values = {
+          source: pasteContent,
+          title: pasteContent,
+        };
+        // if we DID get a match, block default values
+        if (
+          !window.HaxStore.insertLogicFromValues(
+            values,
+            window.HaxStore.instance
+          )
+        ) {
+          // prevents the text being inserted previously so that the insertLogic does it
+          // for us. false only is returned if we didn't do anthing in this function
+          return false;
+        }
+      } else if (haxElements.length === 0) {
         inlinePaste = true;
         // wrap in a paragraph tag if there is any this ensures it correctly imports
         // as it might not have evaluated above as having elements bc of the scrubber
@@ -1029,21 +1055,26 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         haxElements[0].tag === "a" &&
         haxElements[0].properties.href
       ) {
-        // test for a URL since we didn't have HTML / elements of some kind
-        // if it's a URL we might be able to automatically convert it into it's own element
-        let values = {
-          source: haxElements[0].properties.href,
-          title: haxElements[0].content,
-        };
-        // if we DID get a match, block default values
-        if (
-          window.HaxStore.insertLogicFromValues(
-            values,
-            window.HaxStore.instance
-          )
-        ) {
-          // prevents the text being inserted previously so that the insertLogic does it
-          // for us
+        // ONLY use this logic if we're on an empty container
+        if (this.activeNode.innerText.trim() != "") {
+          newContent = haxElements[0].properties.href;
+          inlinePaste = true;
+        } else {
+          // test for a URL since we didn't have HTML / elements of some kind
+          // if it's a URL we might be able to automatically convert it into it's own element
+          let values = {
+            source: haxElements[0].properties.href,
+            title: haxElements[0].content,
+          };
+          // if we DID get a match, block default values
+          if (
+            !window.HaxStore.insertLogicFromValues(
+              values,
+              window.HaxStore.instance
+            )
+          ) {
+            return false;
+          }
         }
       }
       // account for broken pastes in resolution, just let browser handle it
@@ -1107,7 +1138,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 range.commonAncestorContainer &&
                 range.commonAncestorContainer.parentNode
               ) {
-                if (!siblingEl) {
+                console.log(range.commonAncestorContainer);
+                console.log(range.commonAncestorContainer.parentNode);
+                console.log(this.activeNode);
+                console.log(this.activeContainerNode);
+                if (
+                  !siblingEl &&
+                  this.activeNode != range.commonAncestorContainer
+                ) {
                   siblingEl =
                     range.commonAncestorContainer.parentNode.nextElementSibling;
                   if (!siblingEl) {
@@ -1118,13 +1156,25 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 // should always be there but just in case there was no range
                 // so we avoid an infinite loop
                 if (siblingEl) {
+                  if (siblingEl.getAttribute("slot")) {
+                    activeEl.setAttribute(
+                      "slot",
+                      siblingEl.getAttribute("slot")
+                    );
+                  }
                   siblingEl.parentNode.insertBefore(activeEl, siblingEl);
                 }
                 // attempt insert after active
                 else if (this.activeNode) {
+                  if (this.activeNode.getAttribute("slot")) {
+                    activeEl.setAttribute(
+                      "slot",
+                      this.activeNode.getAttribute("slot")
+                    );
+                  }
                   this.activeNode.parentNode.insertBefore(
                     activeEl,
-                    this.activeNode
+                    this.activeNode.nextElementSibling
                   );
                 }
                 // shouldn't be possible but just to be safe
@@ -2834,10 +2884,30 @@ window.HaxStore.toast = (
  * Simple workflow for logic from inserting based on
  * a series of criteria.
  */
-window.HaxStore.insertLogicFromValues = (values, context) => {
+window.HaxStore.insertLogicFromValues = (
+  values,
+  context,
+  failOnAnything = false
+) => {
   // we have no clue what this is.. let's try and guess..
   let type = window.HaxStore.guessGizmoType(values);
-  let haxElements = window.HaxStore.guessGizmo(type, values, false, true);
+  let typeName = type;
+  // we want to simplify insert but if we get wildcard... do whatever
+  let preferExclusive = true;
+  if (type == "*") {
+    // allow for logic to bail completely if we are told to
+    if (failOnAnything) {
+      return false;
+    }
+    preferExclusive = false;
+    typeName = "link";
+  }
+  let haxElements = window.HaxStore.guessGizmo(
+    type,
+    values,
+    false,
+    preferExclusive
+  );
   // see if we got anything
   if (haxElements.length > 0) {
     if (haxElements.length === 1) {
@@ -2856,7 +2926,7 @@ window.HaxStore.insertLogicFromValues = (values, context) => {
       window.HaxStore.instance.haxAppPicker.presentOptions(
         haxElements,
         type,
-        "Pick how to present the " + type,
+        "Pick how to present this " + typeName,
         "gizmo"
       );
     }

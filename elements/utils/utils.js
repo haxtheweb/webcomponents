@@ -1,7 +1,19 @@
 /**
  * A collection of utility functions exported for convenience
  */
-
+// https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+function validURL(str) {
+  var pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return !!pattern.test(str);
+}
 /**
  * Take an array of items and apply a map of values to generate a new
  * array that is the structure you're looking for with default values
@@ -547,6 +559,7 @@ export const winEventsElement = function (SuperClass) {
 };
 
 export {
+  validURL,
   valueMapTransform,
   dashToCamelCase,
   haxElementToNode,

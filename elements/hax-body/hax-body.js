@@ -781,8 +781,7 @@ class HaxBody extends SimpleColors {
           case "ArrowDown":
           case "ArrowLeft":
           case "ArrowRight":
-            clearTimeout(this.__keyPress);
-            this.__keyPress = setTimeout(() => {
+            setTimeout(() => {
               const tmp = window.HaxStore.getSelection();
               window.HaxStore._tmpSelection = tmp;
               window.HaxStore.write("haxSelectedText", tmp.toString(), this);
@@ -1896,10 +1895,18 @@ class HaxBody extends SimpleColors {
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-plate-create-right":
-        this.haxGridPlateOps(this.activeContainerNode, "right");
+        if (this.activeContainerNode.tagName === "HAX-BODY") {
+          this.haxGridPlateOps(this.activeNode, "right");
+        } else {
+          this.haxGridPlateOps(this.activeContainerNode, "right");
+        }
         break;
       case "hax-plate-remove-right":
-        this.haxGridPlateOps(this.activeContainerNode, "right", false);
+        if (this.activeContainerNode.tagName === "HAX-BODY") {
+          this.haxGridPlateOps(this.activeNode, "right", false);
+        } else {
+          this.haxGridPlateOps(this.activeContainerNode, "right", false);
+        }
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
