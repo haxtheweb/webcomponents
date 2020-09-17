@@ -99,6 +99,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       };
       this.__prompt = window.RichTextEditorPrompt.requestAvailability();
     }
+    
 
     /**
      * Handles button tap
@@ -109,11 +110,11 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
       let block = this._getSelectedBlock();
       this.__selection.selectRange(this.range);
       if (block) {
-        this.range.selectNode(block);
+        this.selectNode(block);
       } else {
         this.__selection.wrap();
       }
-      this.__selection.addHighlight();
+      this.addHighlight();
       this.range = this.__selection.range;
       this.open();
     }
@@ -121,7 +122,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      * cancels the changes
      */
     cancel() {
-      this.__selection.removeHighlight();
+      this.removeHighlight();
     }
 
     /**
@@ -129,7 +130,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
      */
     confirm() {
       this.updateSelection();
-      this.__selection.removeHighlight();
+      this.removeHighlight();
     }
 
     /**
@@ -179,7 +180,7 @@ const RichTextEditorPromptButtonBehaviors = function(SuperClass) {
     }
 
     selectWidget(widget) {
-      this.__selection.selectNode(widget);
+      this.selectNode(widget);
       this.__selectionContents = widget;
     }
 

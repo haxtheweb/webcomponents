@@ -199,12 +199,67 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      this.onfocus = e => this.addHighlight(e);
+      this.ondeselect = e => this.removeHighlight(e);
       /*this.addEventListener("mousedown", function(e) {
         //console.log("mousedown", e);
       });
       this.addEventListener("keypress", function(e) {
         e.preventDefault();
       });*/
+    }
+
+    selectRange(e){
+      this.dispatchEvent(new CustomEvent(
+        "selectrange", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: e.detail
+        }
+      ))
+    }
+
+    selectNode(e){
+      this.dispatchEvent(new CustomEvent(
+        "selectnode", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: e.detail
+        }
+      ))
+    }
+
+    selectNodeCoontents(e){
+      this.dispatchEvent(new CustomEvent(
+        "selectnodeccontents", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: e.detail
+        }
+      ))
+    }
+    addHighlight(e){
+      this.dispatchEvent(new CustomEvent(
+        "addhighlight", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: e.detail
+        }
+      ))
+    }
+    removeHighlight(e){
+      this.dispatchEvent(new CustomEvent(
+        "removehighlight", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: e.detail
+        }
+      ));
     }
     get blockSelectors() {
       return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
@@ -378,7 +433,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     setRange() {
       /* if command is formatBlock expand selection to entire block */
       let block = this._getSelectedBlock();
-      if (block) this.__selection.selectNode(block);
+      if (block) this.selectNode(block);
     }
 
     /**
@@ -405,7 +460,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
     /**
      * gets appplicable selection
-     * @returns {*}
+     * @returns {object}
      */
     _getSelection() {
       return this.command === "formatBlock"
@@ -414,7 +469,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
     }
     /**
      * gets appplicable selection
-     * @returns {*}
+     * @returns {object}
      */
     _getSelectionType() {
       return this.command === "formatBlock"
@@ -426,46 +481,22 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
      * @returns {object}
      */
     _getSelectedBlock(selector = this.blockSelectors) {
-      console.log(
-        "_getSelectedBlock",
-        this.range,
-        !this.range ||
-          !this.range.cloneContents() ||
-          this.range.cloneContents().childNodes,
-        !this.range || this.range.commonAncestorContainer.childNodes
-      );
-      let children =
-          this.range && this.range.cloneContents()
-            ? this.range.cloneContents().childNodes
-            : false,
-        tagNames = selector && selector !== "" ? selector.split(",") : false;
-      console.log("_getSelectedBlock 1", children, tagNames);
-      if (
-        tagNames &&
-        children &&
-        children.length === 1 &&
-        children[0].tagName &&
-        tagNames.includes(children[0].tagName.toLowerCase())
-      ) {
-        let start = this.range.startContainer;
-        console.log(
-          "_getSelectedBlock 1a",
-          start,
-          start.childNodes[this.range.startOffset]
-        );
-        return start.childNodes[this.range.startOffset];
-      } else if (this.range) {
-        let node = this.range.commonAncestorContainer,
-          closest =
-            node.nodeType === 1
-              ? node.closest(selector)
-              : node.parentNode.nodeType === 1
-              ? node.parentNode.closest(selector)
-              : undefined;
-        console.log("_getSelectedBlock 2", this.range, node, closest);
-        return closest;
+      let common = !this.range ? undefined : this.range.commonAncestorContainer,
+        startContainer = !this.range ? undefined : this.range.startContainer,
+        startOffset = !this.range ? undefined : this.range.startOffset,
+        endContainer = !this.range ? undefined : this.range.endContainer,
+        endOffset = !this.range ? undefined : this.range.endOffset,
+        startNode = !startContainer || !startContainer.children ? undefined : startContainer.children[startOffset-1],
+        rootNode = startContainer === endContainer && endOffset - startOffset === 1 ? startNode : common, 
+        tagName = rootNode && rootNode.tagName ? rootNode.tagName.toLowerCase() : undefined,
+        selectorsList = selectors.toLowerCase().replace(/\s*/g,'').split(',');
+      if(selectorsList.includes(tagName)){
+        return node;
+      } else if(rootNode.closest(selectors)) {
+        return rootNode.closest(selectors);
+      } else {
+        return undefined;
       }
-      return undefined;
     }
     /**
      * gets selected html
@@ -519,7 +550,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
       e.preventDefault();
       this._buttonTap(e);
     }
-
+    
     /**
      * handles range changes by getting
      * @event range-changed

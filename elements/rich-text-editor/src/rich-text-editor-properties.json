@@ -11,7 +11,7 @@
   /**
    * Maps to contenteditable attribute
    */
-  "contenteditable": {
+   "contenteditable": {
     "name": "contenteditable",
     "type": "Boolean",
     "reflect": true,
@@ -38,6 +38,15 @@
   },
 
   /**
+   * current range
+   */
+  "range": {
+    "name": "range",
+    "type": "Object",
+    "attribute": "range"
+  },
+
+  /**
    * type of editor toolbar, i.e.
    * full - full for full toolbar with breadcrumb,
    * mini - mini for mini floating toolbar, or
@@ -51,15 +60,22 @@
   },
 
   /**
+   * contains cancelled edits
+   */
+  "__canceledEdits": {
+    "type": "Object"
+  },
+
+  /**
    * connected toolbar
    */
   "__connectedToolbar": {
     "type": "Object"
-  }//,
+  },
   /**
-   * highlight surrounding selected range
-   * /
+   * selection management
+   */
   "__selection": {
     "type": "Object"
-  }*/
+  }
 }

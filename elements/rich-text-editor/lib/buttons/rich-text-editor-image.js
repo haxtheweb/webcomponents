@@ -106,7 +106,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       src = this.__prompt.getPromptValue("src"),
       width = this.__prompt.getPromptValue("width"),
       height = this.__prompt.getPromptValue("height");
-    this.__selection.range.selectNode(this.__selectionContents);
+    this.selectNode(this.__selectionContents);
     this.toggled = !src;
     this.commandVal = !src
       ? ""

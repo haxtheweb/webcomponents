@@ -4,17 +4,18 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import "../singletons/rich-text-editor-selection.js";
 import "./rich-text-editor-breadcrumb.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
- * `A utility that manages the state of multiple rich-text-prompts on one page.`
+ * `A utility that manages state of multiple rich-text-prompts on one page.`
  *
  *  @element rich-text-editor-breadcrumbs
  */
 class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * Store tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-breadcrumbs";
@@ -44,17 +45,18 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
   render() {
     return html`
       ${this.label}
-      ${!this.ancestorNodes
+      ${!this.nodes
         ? ""
-        : (this.ancestorNodes || []).map(
+        : (this.nodes || []).map(
             (crumb, i) => html`
               <rich-text-editor-breadcrumb
                 controls="${this.controls}"
                 tag="${crumb.tag}"
                 .target="${crumb.target}"
+                @breadcrumb-tap="${this._handleBreadcrumb}"
               >
               </rich-text-editor-breadcrumb>
-              ${i + 1 >= this.ancestorNodes.length
+              ${i + 1 >= this.nodes.length
                 ? ""
                 : html`
                     <span class="divider"> &gt; </span>
@@ -67,7 +69,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
   static get properties() {
     return {
       /**
-       * The active rict-text-editor.
+       * active rict-text-editor.
        */
       controls: {
         type: String
@@ -81,19 +83,16 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
         reflect: true
       },
       /**
-       * The breadcrumb labels.
+       * breadcrumb labels.
        */
       label: {
         type: String
       },
-      /**
-       * The selected text.
-       */
-      range: {
-        type: Object
+      nodes: {
+        type: Array
       },
       /**
-       * Should the breadcrumbs stick to the top so that it is always visible?
+       * Should breadcrumbs stick to top so that it is always visible?
        */
       sticky: {
         type: Boolean,
@@ -104,32 +103,34 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
 
   constructor() {
     super();
-    this.hidden = false;
+    this.hidden = true;
     this.sticky = false;
     this.label = `Expand selection: `;
   }
+
+  selectNode(node){
+    this.dispatchEvent(new CustomEvent(
+      "selectnode", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: node
+      }
+    ))
+  }
+
   /**
-   * updates the breadcrumbs
-   * @param {object} the selected range
-   * @param {string} controls id of what the breadcrumbs control
-   * @returns {void}
-   */
-  get ancestorNodes() {
-    let nodes = [],
-      ancestor = false,
-      parent = false,
-      controls = this.controls;
-    if (!!this.range) ancestor = this.range.commonAncestorContainer;
-    if (!!ancestor) parent = ancestor;
-    this.hidden = !ancestor;
-    while (!!parent && parent.nodeName !== "RICH-TEXT-EDITOR") {
-      nodes.unshift({
-        tag: parent.nodeName.toLowerCase(),
-        target: parent
-      });
-      parent = parent.parentNode;
+  * handle a breadcrumb tap by updating the selected text
+  *
+  * @param {object} e the breadcrumb tap event
+  * @returns {void}
+  */
+  _handleBreadcrumb(e) {
+    console.log("_handleBreadcrumbs", e.detail.target);
+    if (e.detail.target) {
+      this.selectNode(e.detail.target);
+      console.log("_handleBreadcrumbs 2", e.detail.target, this.range);
     }
-    return nodes;
   }
 }
 window.customElements.define(

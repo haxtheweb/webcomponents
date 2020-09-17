@@ -103,11 +103,15 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         <div
           id="toolbar"
           aria-live="polite"
-          aria-hidden="${this.controls //|| this.alwaysVisible
+          aria-hidden="${!!this.controls || !!this.alwaysVisible
             ? "false"
             : "true"}"
           ?collapsed="${this.collapsed}"
-          @focus="${this._addHighlight}"
+          @addhighlight="${e=>this.highlight()}"
+          @removehighlight="${e=>this.highlight(false)}"
+          @selectnode="${e=>this.selectNode(e.detail)}"
+          @selectnodecontents="${e=>this.selectNodeContents(e.detail)}"
+          @selectrange="${e=>this.selectRange(e.detail)}"
         >
           <rich-text-editor-more-button
             id="morebutton"
@@ -137,17 +141,11 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       return {
         /**
          * keep toolbar visible even when not editor not focused
-         * /
+         */
         alwaysVisible: {
           type: Boolean,
           attribute: "always-visible",
           reflect: true
-        },
-        /**
-         * editable content, if edits are canceled
-         */
-        canceled: {
-          type: Object
         },
         /**
          * is toolbar collapsed?
@@ -267,12 +265,12 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         /**
          * Tracks inline widgets that require selection data
          */
-        __inlineWidgets: {
-          name: "__inlineWidgets",
+        __clickableElement: {
+          name: "__clickableElement",
           type: Array
         },
         /**
-         * highlight surrounding selected range
+         * selection management
          */
         __selection: {
           type: Object
@@ -303,8 +301,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       this.__selection = window.RichTextEditorSelection.requestAvailability();
 
-      //this.alwaysVisible = false;
-      this.canceled = true;
+      this.alwaysVisible = false;
       this.collapsed = true;
       this.config = [
         {
@@ -479,20 +476,8 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       this.moreShowTextLabel = false;
       this.responsiveSize = "xs";
       this.sticky = false;
-      this.__inlineWidgets = [];
+      this.__clickableElement = [];
       this.__shortcutKeys = [];
-      this.__clipboard = document.createElement("textarea");
-      this.__clipboard.setAttribute("aria-hidden", true);
-      this.__clipboard.style.position = "absolute";
-      this.__clipboard.style.left = "-9999px";
-      this.__clipboard.style.top = "0px";
-      this.__clipboard.style.width = "0px";
-      this.__clipboard.style.height = "0px";
-      document.body.appendChild(this.__clipboard);
-      window.addEventListener("paste", this._handlePaste.bind(this));
-      if (navigator.clipboard) {
-        this.addEventListener("paste-button", this._handlePasteButton);
-      }
       window.ResponsiveUtility.requestAvailability();
     }
     firstUpdated(changedProperties) {
@@ -504,20 +489,31 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           detail: { element: this.shadowRoot.querySelector("#toolbar") }
         })
       );
+      this.__selection.registerToolbar(this);
     }
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
-        if (propName === "sticky") this._stickyChanged(this.sticky, oldValue);
         if (propName === "range") this._rangeChange();
       });
     }
 
     connectedCallback() {
       super.connectedCallback();
-      window.RichTextEditorToolbars = window.RichTextEditorToolbars || [];
-      window.RichTextEditorToolbars.push(this);
+      this.__selection.registerToolbar(this);
+      if (navigator.clipboard) this.addEventListener("paste-button", this._handlePasteButton);
     }
+
+    /**
+     * life cycle, element is disconnected
+     * @returns {void}
+     */
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      this.__selection.registerToolbar(this,false);
+      if (navigator.clipboard) this.removeEventListener("paste-button", this._handlePasteButton);
+    }
+
     /**
      * Gets editor buttons array, as determined by `config`.
      * @readonly
@@ -525,6 +521,103 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     get buttons() {
       return this.__buttons;
     }
+
+    /**
+     * cancels edits to active editor
+     * @returns {void}
+     */
+    cancel() {
+      console.log('cancel');
+      if(this.__selection) this.__selection.cancelEdits(this.editor);
+    }
+    /**
+     * uses selection to create a range placeholder that keeps range highlighted
+     *
+     * @param {boolean} [add=true] add highlight?
+     * @returns {void}
+     */
+    highlight(add=true) {
+      if (this.__selection) this.__selection.highlight(this.editor,add);
+    }
+    /**
+     * selects a given node inside connected editor
+     *
+     * @param {object} node
+     * @returns {void}
+     */
+    selectNode(node){
+      if (this.__selection) this.__selection.selectNode(node,this.editor);
+    }
+    /**
+     * selects a given node inside connected editor
+     *
+     * @param {object} node
+     * @returns {void}
+     */
+    selectNodeContents(node){
+      if (this.__selection) this.__selection.selectNodeContents(node,this.editor);
+    }
+    /**
+     * selects a given node inside connected editor
+     *
+     * @param {object} node
+     * @returns {void}
+     */
+    selectRange(range){
+      if (this.__selection) this.__selection.selectRange(range,this.editor);
+    }
+
+    /**
+     * make an new editable element
+     *
+     * @param {object} editor an HTML object that can be edited
+     * @returns {void}
+     */
+    newEditor(editor) {
+      let content = document.createElement("rich-text-editor");
+      editor.parentNode.insertBefore(content, editor);
+      content.appendChild(editor);
+    }
+
+    /**
+     * pastes sanitized clipboard contents into current editor's selected range
+     * @param {object} editor an HTML object that can be edited
+     * @returns {void}
+     */
+    pasteFromClipboard(){
+      if(this.__selection) this.__selection.pasteFromClipboard(this.editor);
+    }
+
+    /**
+     * Adds a button to toolbar
+     *
+     * @param {object} child child object in config object
+     * @param {object} parent parent object in config object
+     * @returns {object} button
+     */
+    _addButton(child, parent) {
+      let button = document.createElement(child.type),
+        keys = button.shortcutKeys
+          ? button.shortcutKeys.replace(/ctrl\+[xcv]/g, "")
+          : "";
+      //disable clipboard keys since we're already listening for them
+
+      this.__shortcutKeys[keys] = button;
+
+      for (var key in child) {
+        button[key] = child[key];
+      }
+      button.setAttribute("class", "button");
+
+      if (button.inlineWidget) this.push("__clickableElement", button.tag);
+      parent.appendChild(button);
+      return button;
+    }
+    /**
+     * creates buttons based on config
+     *
+     * @returns {array}
+     */
     _getButtons() {
       let toolbar =
         this.shadowRoot && this.shadowRoot.querySelector("#toolbar")
@@ -567,330 +660,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
     }
 
     /**
-     * life cycle, element is disconnected
-     * @returns {void}
-     */
-    disconnectedCallback() {
-      super.disconnectedCallback();
-      window.RichTextEditorToolbars = (window.RichTextEditorToolbars || []).filter(toolbar=>toolbar!==this);
-      //unbind toolbar to rich-text-editor-selection
-      this.dispatchEvent(
-        new CustomEvent("deselect-rich-text-editor-editor", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            toolbar: this,
-            editor: this.editor
-          }
-        })
-      );
-    }
-
-    /**
-     * adds an editor
-     *
-     * @param {object} an HTML object that can be edited
-     * @returns {void}
-     */
-    addEditableRegion(editor) {
-      console.log('addEditableRegion',editor);
-      editor.addEventListener("mousedown", e => {
-        console.log('mousedown',e,editor,this.editor,this.range,this.__selection.range);
-        this.editTarget(editor,e);
-        console.log('mousedown 2',e,editor,this.editor,this.range,this.__selection.range);
-      });
-      editor.addEventListener("focus", e => {
-        console.log('focus',e,editor,this.editor,this.range,this.__selection.range);
-        this.editTarget(editor,e);
-        console.log('focus 2',e,editor,this.editor,this.range,this.__selection.range);
-      });
-      editor.addEventListener("keydown", e => {
-        this._handleShortcutKeys(editor, e);
-      });
-      editor.addEventListener("blur", e => {
-        console.log('blur');
-        if (
-          e.relatedTarget === null ||
-          !e.relatedTarget.startsWith === "rich-text-editor"
-        )
-          this.editTarget(null);
-          console.log('blur',this.range,this.__selection.range);
-      });
-      //editor.addEventListener("click", e => this._handleEditorClick(editor, e));
-    }
-    _handleEditorClick(editor, e) {
-      console.log('_handleEditorClick',editor, editor.contenteditable, e.path[0]);
-      /*if (editor.contenteditable && e.path[0] !== editor) {
-        let button = this.buttons.filter(
-            button => button.tag === e.path[0].tagName.toLowerCase()
-          ),
-          range =
-            this.__selection && this.__selection.range
-              ? this.__selection.range
-              : false,
-          start =
-            range && range.startContainer
-              ? range.startContainer.childNodes[range.startOffset]
-              : false,
-          end =
-            range && range.endContainer
-              ? range.endContainer.childNodes[range.endOffset - 1]
-              : false;
-        if (button && button[0] && start === end && start === e.path[0]) {
-          button[0]._buttonTap(e);
-          console.log('_handleEditorClick a',this.__selection.range);
-        } else if (button && button[0]) {
-          this.__selection.selectNode(e.path[0]);
-          console.log('_handleEditorClick b',this.__selection.range);
-        }
-      } else if (editor.contenteditable){
-        console.log('_handleEditorClick c',this.__selection.range);
-        //this.__selection.selectNodeContents(editor);
-      }*/
-      console.log('_handleEditorClick 2',editor, e,this.__selection.range,this.range);
-    }
-
-    /**
-     * cancels edits to active editor
-     * @returns {void}
-     */
-    cancel() {
-      console.log('cancel',this.canceled);
-      this.editor.innerHTML = this.canceled;
-      this.editTarget(null);
-    }
-    /**
-     * makes a editor editable
-     *
-     * @param {object} an HTML object that can be edited
-     * @returns {void}
-     */
-    editTarget(editor,e) {
-      console.log('editTarget',editor,this.editor,e);
-      if (this.editor !== editor) {
-        console.log('editTarget 2',editor,this.editor);
-        //save changes to previous editor
-        if (!!this.editor) {
-          this.editor.contenteditable = false;
-          this.editor = null;
-        }
-        //bind toolbar to rich-text-editor-selection
-        this.dispatchEvent(
-          new CustomEvent("select-rich-text-editor-editor", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              toolbar: this,
-              editor: this.editor
-            }
-          })
-        );
-        this.editor = editor;
-        if (!!editor) {
-          editor.parentNode.insertBefore(this, editor);
-          this.canceled = editor.innerHTML;
-          if(editor && editor.isEmpty()) editor.innerHTML = `<p>${editor.placeholder}</p>`;
-          this.editor.contenteditable = true;
-          this.controls = editor.getAttribute("id");
-          this._removeHighlight();
-        } else {
-          this.controls = null;
-        }
-        console.log("editor change");
-        (this.buttons || []).forEach(button => {
-          button.target = editor;
-          button.controls = this.controls;
-          button.range = null;
-          button.range = this.range;
-        });
-      }
-      console.log('editTarget 2',editor,this.editor);
-    }
-
-    /**
-     * Normalizes selected range data.
-     * @returns {object} selected range
-     * /
-    getRange() {
-      let sel = window.getSelection();
-      console.log('getRange',sel);
-      if (sel && sel.getRangeAt && sel.rangeCount) {
-        return sel.getRangeAt(0);
-        console.log('getRange a',sel.getRangeAt(0));
-      } else if (sel) {
-        return sel;
-        console.log('getRange b',sel);
-      } else false;
-    }
-
-    /**
-     * paste content into a range;
-     * override this function to make your own filters
-     *
-     * @param {string} pasteContent html to be pasted
-     * @returns {string} filtered html as string
-     */
-    getSanitizeClipboard(pasteContent) {
-      let regex = "<body(.*\n)*>(.*\n)*</body>";
-      if (pasteContent.match(regex) && pasteContent.match(regex).length > 0)
-        pasteContent = pasteContent
-          .match(regex)[0]
-          .replace(/<\?body(.*\n)*\>/i);
-      return pasteContent;
-    }
-
-    /**
-     * make an new editable element
-     *
-     * @param {object} editor an HTML object that can be edited
-     * @returns {void}
-     */
-    makeEditableRegion(editor) {
-      let content = document.createElement("rich-text-editor");
-      editor.parentNode.insertBefore(content, editor);
-      content.appendChild(editor);
-    }
-
-    /**
-     * paste content into a range
-     *
-     * @param {object} range where content will be pasted
-     * @param {string} pasteContent html to be pasted
-     * @returns {void}
-     */
-    pasteIntoRange(range, pasteContent) {
-      console.log('pasteIntoRange',this.range,range, pasteContent);
-      let div = document.createElement("div"),
-        sel = window.getSelection(),
-        parent = range.commonAncestorContainer.parentNode,
-        closest = parent.closest(
-          "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
-        );
-      if ((this.editor = closest)) {
-        div.innerHTML = pasteContent;
-        if (range && range.extractContents) {
-          range.extractContents();
-        }
-        range.insertNode(div);
-        while (div.firstChild) {
-          div.parentNode.insertBefore(div.firstChild, div);
-        }
-        div.parentNode.removeChild(div);
-      }
-      console.log('pasteIntoRange 2',this.range,range, pasteContent);
-    }
-
-    /**
-     * Adds a button to toolbar
-     *
-     * @param {object} child child object in config object
-     * @param {object} parent parent object in config object
-     * @returns {object} button
-     */
-    _addButton(child, parent) {
-      let button = document.createElement(child.type),
-        keys = button.shortcutKeys
-          ? button.shortcutKeys.replace(/ctrl\+[xcv]/g, "")
-          : "";
-      //disable clipboard keys since we're already listening for them
-
-      this.__shortcutKeys[keys] = button;
-
-      for (var key in child) {
-        button[key] = child[key];
-      }
-      button.setAttribute("class", "button");
-      button.addEventListener("deselect", e => {
-        console.log("button deselect", this.range, this.range.isCollapsed);
-        this._removeHighlight();
-        console.log("button deselect 2", this.range, this.range.isCollapsed);
-      });
-
-      if (button.inlineWidget) this.push("__inlineWidgets", button.tag);
-      parent.appendChild(button);
-      return button;
-    }
-    _addHighlight() {
-      console.log("_addHighlight", this.range);
-      if (this.__selection) this.__selection.addHighlight();
-    }
-    _removeHighlight() {
-      console.log("_removeHighlight", this.range);
-      if (this.__selection) this.__selection.removeHighlight();
-    }
-
-    _handleKeyboardShortcuts(e) {
-      console.log("_handleKeyboardShortcuts", e);
-    }
-
-    /**
-     * when a shortcut key is pressed, fire keypressed event on button associated with it
-     * @param {object} editor editor that detects a shortcut key
-     * @param {event} e key event
-     */
-
-    _handleShortcutKeys(editor, e) {
-      if (editor.contenteditable) {
-        let key = e.key;
-        if (e.shiftKey) key = "shift+" + key;
-        if (e.altKey) key = "alt+" + key;
-        if (
-          (window.navigator.platform === "MacIntel" && e.metaKey) ||
-          e.ctrlKey
-        ) {
-          key = "ctrl+" + key;
-        }
-        if (this.__shortcutKeys[key]) this.__shortcutKeys[key]._keysPressed(e);
-      }
-    }
-
-    /**
-     * Handles paste.
-     *
-     * @param {event} e paste event
-     * @returns {void}
-     */
-    _handlePaste(e) {
-      let pasteContent = "";
-      // intercept paste event
-      if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
-        pasteContent = (e.originalEvent || e).clipboardData.getData(
-          "text/html"
-        );
-      } else if (window.clipboardData) {
-        pasteContent = window.clipboardData.getData("Text");
-      }
-      this.pasteIntoRange(
-        this.__selection.getRange(),
-        this.getSanitizeClipboard(pasteContent)
-      );
-      e.preventDefault();
-    }
-
-    /**
-     * Handles paste button.
-     *
-     * @param {event} e paste button event
-     * @returns {void}
-     */
+    * Handles paste button.
+    *
+    * @param {event} e paste button event
+    * @returns {void}
+    */
     _handlePasteButton(e) {
-      setTimeout(async () => {
-        let range = e.detail.range,
-          sel = window.getSelection(),
-          text = await navigator.clipboard.readText();
-        this.__clipboard.value = text;
-        this.__clipboard.focus();
-        this.__clipboard.select();
-        document.execCommand("paste");
-        sel.removeAllRanges();
-        sel.addRange(range);
-        this.pasteIntoRange(
-          range,
-          this.getSanitizeClipboard(this.__clipboard.value)
-        );
-      }, 2000);
+      console.log('pasting');
+      this.pasteFromClipboard(this.editor);
       e.preventDefault();
     }
 
@@ -899,7 +676,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      console.log("toolbar _rangeChange", this.range);
+      console.log("toolbar _rangeChange", this.range,this.__selection.range);
       if (this.range && this.range.commonAncestorContainer && this.editor && this.editor.contains(this.range.commonAncestorContainer)) {
         console.log("toolbar _rangeChange 2", this.range);
         this.buttons.forEach(button => {
@@ -907,18 +684,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           button.range = this.range;
         });
       }
-      console.log("toolbar _rangeChange 3", this.range);
-    }
-
-    /**
-     * updates breadcrumb sticky when sticky property changes
-     *
-     * @param {boolean} newVal new value
-     * @param {boolean} oldVal old value
-     * @returns {void}
-     */
-    _stickyChanged(newVal, oldVal) {
-      if (this.__breadcrumbs) this.__breadcrumbs.sticky = this.sticky;
+      console.log("toolbar _rangeChange 3", this.range,this.__selection.range);
     }
 
     /**

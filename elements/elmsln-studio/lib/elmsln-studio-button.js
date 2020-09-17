@@ -41,10 +41,16 @@ class ElmslnStudioButton extends navigator(LitElement) {
       button {
         border: none;
         background-color: transparent;
+        display: flex;
+        align-items: center;
+        height: 26px;
       }
       button:focus,
       button:hover {
         outline: none;
+      }
+      iron-icon {
+        color: var(--elmsln-studio-button-icon-color);
       }
     `;
   }
@@ -57,6 +63,7 @@ class ElmslnStudioButton extends navigator(LitElement) {
   render() {
     return html`
       <button @click="${this.buttonClick}">
+        <slot name="before"></slot>
         <iron-icon
           aria-hidden="true"
           ?hidden="${!this.icon}"

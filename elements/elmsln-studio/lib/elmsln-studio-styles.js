@@ -118,7 +118,7 @@ const ElmslnStudioStyles = function(SuperClass) {
           }
           button:focus,
           button:hover {
-            color: var(--simple-colors-default-theme-grey11, #222);
+            color: var(--simple-colors-default-theme-grey-11, #222);
           }
           button.load-more {
             text-align: center;
@@ -128,12 +128,12 @@ const ElmslnStudioStyles = function(SuperClass) {
             border-radius: 3px;
             border: none;
             width: 100%;
-            color: var(--simple-colors-default-theme-grey11, #222);
+            color: var(--simple-colors-default-theme-grey-11, #222);
             background-color: var(--simple-colors-default-theme-grey-2, #eee);
           }
           button.load-more:focus,
           button.load-more:hover {
-            color: var(--simple-colors-default-theme-grey12, #000);
+            color: var(--simple-colors-default-theme-grey-12, #000);
             background-color: var(--simple-colors-default-theme-grey-3, #ddd);
           }
           img-view-modal button {

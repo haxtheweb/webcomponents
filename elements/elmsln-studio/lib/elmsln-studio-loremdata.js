@@ -486,13 +486,12 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             "Apprentice (2)",
             "Novice (1)"
           ],
-          values: []
+          values: {}
         };
       for (let i = 0; i < criteria; i++) {
-        rubric.values.push([
-          `${lorem.randomWord()} ${lorem.randomWord()}`,
-          rubric.key.map(k=>lorem.randomSentence(3, 6))
-        ]);
+        rubric.values[`${lorem.randomWord()} ${lorem.randomWord()}`] = rubric.key.map(k=>lorem.randomSentence(3, 6))
+        
+        ;
       }
       this.assignments[assignment.id] = {
         id: assignment.id,

@@ -6,9 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
-import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import "@lrnwebcomponents/threaded-discussion/threaded-discussion.js";
+import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
 
@@ -34,6 +32,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         }
         h1 {
           text-align: center;
+          margin-bottom: calc(0.25 * var(--elmsln-studio-margin, 20px));
         }
         #breadcrumb {
           margin: 0 0 var(--elmsln-studio-margin, 20px);
@@ -48,20 +47,13 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         #breadcrumb > * {
           display: inline;
         }
-        lrndesign-avatar,
-        .student-name,
-        .project-name,
         .assignment-name,
-        .submission-date {
+        .assignment-name,
+        .assignment-date {
           font-weight: normal;
           display: block;
         }
-        .student-name {
-          font-size: calc(2 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: bold;
-          color: #4b4b4b;
-        }
-        .project-name {
+        .assignment-name {
           font-size: calc(1.75 * var(--elmsln-studio-FontSize, 16px));
           color: #95989a;
         }
@@ -71,40 +63,10 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           height: 40px;
           margin-top: -40px;
         }
-        #sort,
-        .submission-header elmsln-studio-button {
-          color: #95989a;
-          font-size: var(--elmsln-studio-FontSize, 16px);
-          text-transform: uppercase;
-          position: absolute;
-          right: 0;
-          top: 0;
-        }
-        #sort:focus,
-        #sort:hover,
-        .submission-header elmsln-studio-button:focus,
-        .submission-header elmsln-studio-button:hover {
-          color: #4b4b4b;
-        }
-        #sort.sort-latest {
-          transform: rotateX(180deg) rotateY(0deg);
-        }
         section {
           border-top: 2px solid #eaeaea;
           padding: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0
             var(--elmsln-studio-margin, 20px);
-        }
-        .view-discussion {
-          border: 1px solid #eaeaea;
-          padding: calc(0.5 * var(--elmsln-studio-margin, 20px));
-        }
-        .view-discussion section {
-          opacity: 0.4;
-          display: none;
-        }
-        .view-discussion section.section-discussion {
-          display: block;
-          opacity: 1;
         }
         h2 {
           margin: calc(2 * var(--elmsln-studio-margin, 20px)) auto;
@@ -114,117 +76,130 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
           font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
           color: #555555;
         }
-        .submission-date {
+        .assignment-date {
+          margin: 0 0 calc(1 * var(--elmsln-studio-margin, 20px));
+          text-align: center;
           font-size: var(--elmsln-studio-FontSize, 16px);
           color: #95989a;
         }
-        .submission-body {
+        .assignment-body {
           color: #95989a;
           line-height: 160%;
           margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) auto
             var(--elmsln-studio-margin, 20px);
         }
-        .submission-body:first-child {
-          margin-top: 0;
+        table {
+          border-collapse: collapse;
+          margin: 0 0 calc(1 * var(--elmsln-studio-margin, 20px));
         }
-        .submission-body:last-child {
-          margin-bottom: 0;
-        }
-        .submission-links {
-          list-style: none;
-          padding-inline-start: 0;
-        }
-        .submission-links > li {
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-        }
-        .submission-links a:link,
-        .submission-links a:visited {
-          font-size: calc(1.5 * var(--elmsln-studio-FontSize, 16px));
-          font-weight: bold;
-          color: #000;
-          text-decoration: none;
-        }
-        .submission-links a:focus,
-        .submission-links a:hover {
-          text-decoration: underline;
-        }
-        .submission-links iron-icon {
-          margin-right: 0.5em;
-        }
-        .submission-links a:focus iron-icon,
-        .submission-links a:hover iron-icon {
-          text-decoration: none;
-        }
-        .callout {
-          font-size: calc(0.75 * var(--elmsln-studio-FontSize, 16px));
+        th, td {
+          padding: 5px;
           border: 1px solid #eaeaea;
-          padding: 0;
         }
-        .discussion-label {
-          text-align: left;
-          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
-          margin: var(--elmsln-studio-margin, 20px) 0
-            calc(0.25 * var(--elmsln-studio-margin, 20px));
-        }
-        .callout > * {
-          padding: calc(0.25 * var(--elmsln-studio-margin, 20px))
-            calc(0.5 * var(--elmsln-studio-margin, 20px));
-        }
-        .callout .callout-label {
-          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
+        th {
           font-weight: normal;
+        }
+        caption {
+          font-size: calc(1.25 * var(--elmsln-studio-FontSize, 16px));
+          font-weight: normal;
+          color: #555555;
+        }
+        thead th {
+          border-bottom: 1px solid #95989a;
+        }
+        thead th:first-child,
+        tbody th {
+          border-right: 1px solid #95989a;
+        }
+        tbody tr:nth-child(2n+1) > * {
+          background-color: #f8f8f8;
+        }
+        ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
+        #uploadlist {
+          display: flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+        #uploadlist li {
+          background-position: center;
+          background-size: cover;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        #uploadlist li:last-child {
+          display: flex;
+          flex: 1 0 auto;
+        }
+        #uploadlist button {
+          width: 150px;
+          height: 150px;
+          border: 1px solid #eaeaea;
+          transition: all 0.5s ease-in-out;
+        }
+        #uploadlist button.delete-upload {
+          background-color: rgba(255,255,255,0.6);
+          opacity: 0;
+        }
+        #uploadlist button:focus,
+        #uploadlist button:hover {
+          opacity: 1;
+          border: 1px solid blue;
+        }
+        #linklist li {
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          margin: 0;
-          color: #4b4b4b;
-          border-bottom: 1px solid #eaeaea;
+          padding-left: -1em;
+          justify-content: space-between;
+          margin: calc(0.5 * var(--elmsln-studio-margin, 20px)) 0;
         }
-        .callout .callout-label iron-icon {
-          margin-right: 1em;
+        #linklist .link, 
+        #linkurl {
+          flex: 1 1 auto;
         }
-        threaded-discussion {
-          background-color: #eaeaea;
-          padding: 1px;
-          --threaded-discussion-comment-button-BackgroundColor: var(
-            --simple-colors-fixed-theme-light-blue-8
-          );
-          --threaded-discussion-comment-button-focus-BackgroundColor: var(
-            --simple-colors-fixed-theme-light-blue-9
-          );
+        #linklist button {
+          flex: 0 1 auto;
+        }
+        #linklist input {
+          line-height: 2em;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px)) 0 0;
+          font-size: calc(1 * var(--elmsln-studio-FontSize, 16px));
+        }
+        #editor {
+          border: 1px solid #eaeaea;
+        }
+        #actions {
+          display: flex;
+          align-items: stretch;
+          justify-content: space-between;
+        }
+        .submit {
+          flex: 0 0 auto;
+          text-align: right;
+          --elmsln-studio-button-icon-color: var(--simple-colors-default-theme-green-7);
+        }
+        .save {
+          flex: 0 0 auto;
+          margin: 0 calc(0.5 * var(--elmsln-studio-margin, 20px));
+        }
+        .delete {
+          flex: 0 0 auto;
+          --elmsln-studio-button-icon-color: var(--simple-colors-default-theme-red-7);
+        }
+        .spacer {
+          flex: 1 1 auto;
+        }
+        #actions elmsln-studio-button:hover,
+        #actions elmsln-studio-button:focus-within {
+          text-decoration: underline;
         }
         @media screen and (min-width: 600px) {
-          :host {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-          }
-          #primary {
-            flex: 1 0 100%;
-          }
-          #primary.view-discussion {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
-          }
           #primary:not(.view-discussion) {
             max-width: calc(1000px - 2 * var(--elmsln-studio-margin, 20px));
             margin: 0 auto;
             border: 1px solid #eaeaea;
             padding: var(--elmsln-studio-margin, 20px);
-          }
-          .view-discussion section {
-            display: block;
-          }
-          .view-discussion section.section-discussion {
-            border: 4px solid #95989a;
-            padding: calc(0.5 * var(--elmsln-studio-margin, 20px))
-              calc(0.5 * var(--elmsln-studio-margin, 20px))
-              var(--elmsln-studio-margin, 20px);
-            opacity: 1;
-          }
-          #secondary {
-            flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
       `
@@ -250,9 +225,10 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             <article id="assignment">
               <h1>
                 <span class="lesson-name">${this.assignment.lesson}</span>
-                <span class="project-name">${this.assignment.assignment}</span>
+                <span class="assignment-name">${this.assignment.assignment}</span>
               </h1>
-              <p>${this.assignment.body}</p>
+              <p class="assignment-date">${this.dateFormat(this.assignment.date, "long")}</p>
+              <p class="assignment-body">${this.assignment.body}</p>
               ${!this.assignment.rubric
                 ? ""
                 : html`
@@ -264,18 +240,21 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                         ? ``
                         : html`
                             <thead>
+                              <th scope="col">Criteria</th>
                               ${this.assignment.rubric.key.map(
                                 col => html`
-                                  <th scope="row">${col}</th>
+                                  <th scope="col">${col}</th>
                                 `
                               )}
                             </thead>
                           `}
                       <tbody>
-                        ${(this.assignment.rubric.values || []).map((row) =>
+                        ${Object.keys(this.assignment.rubric.values || {}).map((key) =>
                           html`
                             <tr>
-                              ${row.map((col) =>html`<td>${col}</td>`
+                              <th scope="row">${key}</th>
+                              ${(this.assignment.rubric.values[key] || []).map((col) =>html`<td>${col}</td>`
+                              
                               )}
                             </tr>
                           `
@@ -283,63 +262,78 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                       </tbody>
                     </table>
                   `}
-              ${!this.assignment.uploads
-                ? ""
-                : html`
-                    <section>
-                      <h2 class="sr-only">Manage Uploads</h2>
-                      
-
-                    </section>
-                  `}
-              ${!this.assignment.links
-                ? ""
-                : html`
-                    <section>
-                      <h2 class="sr-only">Manage Links</h2>
-                      <ul>
-                        ${!this.submission ? '' : (this.submission.links || []).map((link,i)=>html`
-                          <li>
-                            <a id="link-${i}" href="link.url" class="${link.type}">link.text</a>
-                            <button label="delete link" aria-controls="link-${i}">
-                              <iron-icon icon="delete"></iron-icon>
-                            </button>
-                          </li>
-                        `)}
-                        <li>
-                          <label for="newlink" class="sr-only">URL</label>
-                          <input id="newlink" type="text" placeholder="url"/>
-                          <button label="add link" aria-controls="newlink">
-                            <iron-icon icon="add"></iron-icon>
-                          </button>
-                        </li>
-                      </ul>
-                    </section>
-                  `}
-              ${!this.assignment.text
-                ? ""
-                : html`
-                    <section>
-                      <h2 class="sr-only">Edit Text</h2>
-                      <rich-text-editor-toolbar-full 
-                        id="editor" 
-                        controls="text" 
-                        config="${this.__editorConfig}" 
-                        sticky>
-                      </rich-text-editor-toolbar-full>
-                      <rich-text-editor id="text">${this.submission && this.submission.body ? this.submission.body : ''}</rich-text-editor>
-                    </section>
-                  `}
-              <section>
-                <elmsln-studio-button class="delete" icon="" path=""
+              <section id="uploads">
+                <h2 class="sr-only">Manage Uploads</h2>
+                <ul id="uploadlist">
+                  ${!this.submission ? '' : (this.submission.sources || []).map((source,i)=>html`
+                    <li id="source-${i}" style="background-image: url(${source.src})">
+                      <button controls="source-${i}" class="delete-upload">
+                        <span class="sr-only">delete ${source.alt || source.src}</span>
+                        <iron-icon icon="delete"></iron-icon>
+                      </button>
+                    </li>
+                  `)}
+                  <li>
+                    <button id="add-upload" controls="uploadlist">
+                      <span class="sr-only">upload image</span>
+                      <iron-icon icon="add"></iron-icon>
+                    </button>
+                    <span class="spacer"></span>
+                  </li>
+                </ul>
+              </section>
+              <section id="links">
+                <h2 class="sr-only">Manage Links</h2>
+                <ul id="linklist">
+                  ${!this.submission ? '' : (this.submission.links || []).map((link,i)=>html`
+                    <li>
+                      <a id="link-${i}" href="link.url" class="link ${link.type}">
+                        ${link.text} (${link.url})
+                      </a>
+                      <button controls="source-${i}">
+                        <span class="sr-only">delete link</span>
+                        <iron-icon icon="delete"></iron-icon>
+                      </button>
+                    </li>
+                  `)}
+                  <li>
+                    <label for="linktext" class="sr-only">Text</label>
+                    <input id="linktext" type="text" placeholder="link text"/>
+                    <label for="linkurl" class="sr-only">URL</label>
+                    <input id="linkurl" type="text" placeholder="url"/>
+                    <button aria-describedby="linktext linkurl" controls="linklist">
+                      <span class="sr-only">add link</span>
+                      <iron-icon icon="add"></iron-icon>
+                    </button>
+                  </li>
+                </ul>
+              </section>
+              <section id="text">
+                <h2 class="sr-only">Edit Text</h2>
+                <rich-text-editor-toolbar-full 
+                  id="toolbar"
+                  controls="editor" 
+                  .config="${this.__editorConfig}" 
+                  sticky>
+                </rich-text-editor-toolbar-full>
+                <rich-text-editor 
+                  id="editor" 
+                  toolbar="toolbar"
+                  type="rich-text-editor-toolbar-full">
+                  ${this.submission && this.submission.body ? this.submission.body : html`<p>Add text</p>`}
+                </rich-text-editor>
+              </section>
+              <section id="actions">
+                <elmsln-studio-button class="delete" icon="delete" path=""
                   >Delete</elmsln-studio-button
                 >
+                <span class="spacer"></span>
                 <elmsln-studio-button class="save" path=""
                   >Save Draft</elmsln-studio-button
                 >
                 <elmsln-studio-button class="submit" icon="done" path=""
-                  >Submit Assignment</elmsln-studio-button
-                >
+                  ><span slot="before">Submit Assignment</span>
+                </elmsln-studio-button>
               </section>
             </article>
           </div>
