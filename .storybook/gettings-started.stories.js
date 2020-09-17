@@ -26,10 +26,8 @@ export const UsingPennStateCdn = () => {
     <demo-snippet style="${demostyle}">
       <p>Add the following to the <tt>&lt;head&gt;</tt> of your page:</p>
       <template id="template1">
-        <script>
-          window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/";
-          window.__appForceUpgrade=false;
-        </script>
+      <script>window.__appCDN="https://cdn.webcomponents.psu.edu/cdn/";</script>
+      <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>
       </template>
     </demo-snippet>
 
@@ -54,8 +52,8 @@ export const UsingYourOwnCopy = () => {
       <template id="template1">
         <script>
           window.__appCDN="https://path.to.your/unbundled-webcomponents";
-          window.__appForceUpgrade=false;
         </script>
+        <script src="https://path.to.your/unbundled-webcomponents/build.js"></script>
       </template>
     </demo-snippet>
 
