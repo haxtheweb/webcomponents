@@ -202,7 +202,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             padding: var(--elmsln-studio-margin, 20px);
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -345,7 +345,7 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
     return {
       ...super.properties,
       assignment: {
-        type: Object
+        type: Object,
       },
       submission: {
         type: Object

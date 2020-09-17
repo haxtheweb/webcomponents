@@ -66,27 +66,27 @@ class CMSBlock extends PolymerElement {
       loading: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Module supplying the block
        */
       blockModule: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * A delta value relative to the module
        */
       blockDelta: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * block end point updated, change the way we do processing.
        */
       blockEndPoint: {
-        type: String
+        type: String,
       },
       /**
        * Body data which is just block with some encapsulation.
@@ -94,29 +94,29 @@ class CMSBlock extends PolymerElement {
       bodyData: {
         type: Object,
         computed: "_generateBodyData(blockModule, blockDelta)",
-        observer: "_blockChanged"
+        observer: "_blockChanged",
       },
       /**
        * block data from the end point.
        */
       blockData: {
         type: String,
-        observer: "_handleblockResponse"
+        observer: "_handleblockResponse",
       },
       /**
        * Prefix for the block to be processed
        */
       blockPrefix: {
         type: String,
-        observer: "["
+        observer: "[",
       },
       /**
        * Suffix for the block to be processed
        */
       blockSuffix: {
         type: String,
-        observer: "]"
-      }
+        observer: "]",
+      },
     };
   }
   /**
@@ -131,7 +131,7 @@ class CMSBlock extends PolymerElement {
     ) {
       return {
         module: `${blockModule}`,
-        delta: `${blockDelta}`
+        delta: `${blockDelta}`,
       };
     }
   }
@@ -235,12 +235,12 @@ class CMSBlock extends PolymerElement {
         handles: [
           {
             type: "cmsblock",
-            block: "block"
-          }
+            block: "block",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -250,17 +250,17 @@ class CMSBlock extends PolymerElement {
             title: "Module",
             description: "Module to load from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "blockDelta",
             title: "Delta",
             description: "Delta of the block to load from our CMS",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: true,
@@ -268,9 +268,9 @@ class CMSBlock extends PolymerElement {
           "loading",
           "block-data",
           "body-data",
-          "block-end-point"
-        ]
-      }
+          "block-end-point",
+        ],
+      },
     };
   }
   /**
@@ -284,10 +284,10 @@ class CMSBlock extends PolymerElement {
         properties: {
           id: "cmstokenidtolockonto",
           href: "",
-          target: "_blank"
+          target: "_blank",
         },
-        slot: "Edit this block"
-      }
+        slot: "Edit this block",
+      },
     };
     return schema;
   }

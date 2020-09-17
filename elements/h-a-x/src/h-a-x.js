@@ -155,7 +155,7 @@ class HAX extends HTMLElement {
       setTimeout(() => {
         try {
           let appStore = {
-            ...JSON.parse(this.getAttribute("app-store"))
+            ...JSON.parse(this.getAttribute("app-store")),
           };
           if (typeof appStore === "object") {
             window.HaxStore.instance.appStore = appStore;
@@ -270,7 +270,7 @@ class HAX extends HTMLElement {
     if (this.__rendered) {
       // bind to the hax store global on change
       window.HaxStore.instance.appStore = {
-        ...JSON.parse(this.getAttribute("app-store"))
+        ...JSON.parse(this.getAttribute("app-store")),
       };
     }
   }

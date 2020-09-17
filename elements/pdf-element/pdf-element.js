@@ -178,7 +178,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
                 ></paper-icon-button>
                 <paper-icon-button
                   icon="file-download"
-                  hidden\$="{{!downloadable}}"
+                  hidden$="{{!downloadable}}"
                   on-click="download"
                 ></paper-icon-button>
               </app-toolbar>
@@ -189,12 +189,12 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
                   <div
                     id="text-layer"
                     class="textLayer"
-                    hidden\$="{{!enableTextSelection}}"
+                    hidden$="{{!enableTextSelection}}"
                   ></div>
                 </div>
                 <paper-spinner
                   class="spinner"
-                  hidden\$="{{!showSpinner}}"
+                  hidden$="{{!showSpinner}}"
                 ></paper-spinner>
               </div>
             </div>
@@ -217,28 +217,28 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
        */
       src: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be "deeper" than the last.
        */
       elevation: {
         type: Number,
-        value: 1
+        value: 1,
       },
       /**
        * If provided then download icon will appear on the toolbar to download file.
        */
       downloadable: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * If provided then file name will be shown on the toolbar.
        */
       showFileName: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /*
        * If provided then during page rendering loading spinner will be shown.
@@ -246,29 +246,29 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
        */
       showSpinner: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /*
        * If provided then text selection will be enabled.
        */
       enableTextSelection: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /*
        * If provided then the document will be zoomed to maximum width initially.
        */
       fitWidth: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /*
        * If provided then the width will be set.
        */
       width: {
         type: Number,
-        value: 500
-      }
+        value: 500,
+      },
     };
   }
 
@@ -295,17 +295,17 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
           {
             type: "pdf",
             url: "src",
-            source: "src"
+            source: "src",
           },
           {
             type: "document",
             url: "src",
-            source: "src"
-          }
+            source: "src",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -315,8 +315,8 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
             description: "The URL for the pdf",
             inputMethod: "textfield",
             icon: "link",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -325,32 +325,32 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
             description: "The URL for this csv file",
             inputMethod: "textfield",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "downloadable",
             title: "Downloadable",
             description: "User can download this",
             inputMethod: "boolean",
-            icon: "file-download"
+            icon: "file-download",
           },
           {
             property: "enableTextSelection",
             title: "Text Selection",
             description: "User can select text in this element.",
             inputMethod: "boolean",
-            icon: "file-download"
+            icon: "file-download",
           },
           {
             property: "elevation",
             title: "Elevation",
             description: "Visual elevation of the element",
             inputMethod: "number",
-            icon: "flip-to-front"
-          }
+            icon: "flip-to-front",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   /*

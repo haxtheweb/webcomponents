@@ -44,18 +44,16 @@ class FigureLabel extends LitElement {
           padding: 10.8px 13.5px 10.8px;
           font-size: 13.5px;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div id="wrap">
-        <div id="title">${this.title}</div>
-        <div id="description">${this.description}</div>
-      </div>
-    `;
+    return html` <div id="wrap">
+      <div id="title">${this.title}</div>
+      <div id="description">${this.description}</div>
+    </div>`;
   }
 
   // haxProperty definition
@@ -73,8 +71,8 @@ class FigureLabel extends LitElement {
         groups: ["Label"],
         meta: {
           author: "heymp",
-          owner: "PSU"
-        }
+          owner: "PSU",
+        },
       },
       settings: {
         quick: [],
@@ -84,18 +82,18 @@ class FigureLabel extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "description",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -108,15 +106,15 @@ class FigureLabel extends LitElement {
         type: String,
         value: "",
         reflectToAttribute: false,
-        observer: false
+        observer: false,
       },
       description: {
         name: "description",
         type: String,
         value: "",
         reflectToAttribute: false,
-        observer: false
-      }
+        observer: false,
+      },
     };
   }
 

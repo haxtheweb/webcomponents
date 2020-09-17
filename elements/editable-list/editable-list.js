@@ -26,25 +26,24 @@ class EditableList extends LitElement {
         #list {
           height: 100%;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <div id="list">
-        ${this.items.map(
-          item => html`
-            <editable-list-item
-              ?edit-mode="${item.metadata.canEdit}"
-              ?can-edit="${item.metadata.canEdit}"
-              ?can-delete="${item.metadata.canDelete}"
-              value="${item.title}"
-            ></editable-list-item>
-          `
-        )}
-      </div>
-    `;
+    return html` <div id="list">
+      ${this.items.map(
+        (item) => html`
+          <editable-list-item
+            ?edit-mode="${item.metadata.canEdit}"
+            ?can-edit="${item.metadata.canEdit}"
+            ?can-delete="${item.metadata.canDelete}"
+            value="${item.title}"
+          ></editable-list-item>
+        `
+      )}
+    </div>`;
   }
 
   // properties available to the custom element for data binding
@@ -58,21 +57,21 @@ class EditableList extends LitElement {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * items array
        */
       items: {
         type: Array,
-        reflect: false
+        reflect: false,
       },
       /**
        * Active element being worked on in the list
        */
       activeElement: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -114,8 +113,8 @@ class EditableList extends LitElement {
         this.dispatchEvent(
           new CustomEvent("edit-mode-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -124,9 +123,7 @@ class EditableList extends LitElement {
   triggerDeleteModal(e) {
     this.activeElement = e.detail.element;
     let c = document.createElement("div");
-    c.innerHTML = `<div>Are you sure you want to delete <strong>${
-      e.detail.element.value
-    }</strong>?</div>`;
+    c.innerHTML = `<div>Are you sure you want to delete <strong>${e.detail.element.value}</strong>?</div>`;
     let button1 = document.createElement("paper-button");
     button1.raised = true;
     button1.addEventListener("click", this._deleteItemConfirm.bind(this));
@@ -146,11 +143,11 @@ class EditableList extends LitElement {
         title: `Delete ${e.detail.element.value}`,
         elements: {
           content: c,
-          buttons: b
+          buttons: b,
         },
         invokedBy: e.detail.element.shadowRoot.querySelector("#delete"),
-        clone: false
-      }
+        clone: false,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -163,7 +160,7 @@ class EditableList extends LitElement {
       bubbles: true,
       cancelable: true,
       composed: true,
-      detail: {}
+      detail: {},
     });
     this.dispatchEvent(evt);
   }

@@ -28,17 +28,39 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+    );
   }
   // render function
   static get template() {

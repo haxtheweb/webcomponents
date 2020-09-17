@@ -94,54 +94,52 @@ class SimpleLogin extends SimpleColors {
           margin-top: 16px;
           color: var(--login-error-label-color, var(--error-color));
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div id="loginform">
-        <paper-progress
-          ?disabled="${!this.loading}"
-          indeterminate
-        ></paper-progress>
-        <div id="loginformcontent">
-          <h1>${this.title}</h1>
-          <h2>${this.subtitle}</h2>
-          <div id="errormsg">${this.errorMsg}</div>
-          <slot></slot>
-          <simple-fields-field
-            id="userinput"
-            value="${this.username}"
-            @value-changed="${this._usernameChanged}"
-            type="text"
-            ?disabled="${this.loading}"
-            label="${this.userInputLabel}"
-            required
-            error-message="${this.userInputErrMsg}"
-          ></simple-fields-field>
-          <simple-fields-field
-            id="passinput"
-            required
-            value="${this.password}"
-            @value-changed="${this._passwordChanged}"
-            ?disabled="${this.loading}"
-            type="password"
-            label="${this.passwordInputLabel}"
-            error-message="${this.passwordInputErrMsg}"
-          ></simple-fields-field>
-          <mwc-button
-            @click="${this._login}"
-            ?disabled="${this.loading}"
-            id="loginbtn"
-            raised
-            >${this.loginBtnText}
-          </mwc-button>
-          <span id="buttons"><slot name="buttons"></slot></span>
-        </div>
+    return html` <div id="loginform">
+      <paper-progress
+        ?disabled="${!this.loading}"
+        indeterminate
+      ></paper-progress>
+      <div id="loginformcontent">
+        <h1>${this.title}</h1>
+        <h2>${this.subtitle}</h2>
+        <div id="errormsg">${this.errorMsg}</div>
+        <slot></slot>
+        <simple-fields-field
+          id="userinput"
+          value="${this.username}"
+          @value-changed="${this._usernameChanged}"
+          type="text"
+          ?disabled="${this.loading}"
+          label="${this.userInputLabel}"
+          required
+          error-message="${this.userInputErrMsg}"
+        ></simple-fields-field>
+        <simple-fields-field
+          id="passinput"
+          required
+          value="${this.password}"
+          @value-changed="${this._passwordChanged}"
+          ?disabled="${this.loading}"
+          type="password"
+          label="${this.passwordInputLabel}"
+          error-message="${this.passwordInputErrMsg}"
+        ></simple-fields-field>
+        <mwc-button
+          @click="${this._login}"
+          ?disabled="${this.loading}"
+          id="loginbtn"
+          raised
+          >${this.loginBtnText}
+        </mwc-button>
+        <span id="buttons"><slot name="buttons"></slot></span>
       </div>
-    `;
+    </div>`;
   }
 
   // properties available to the custom element for data binding
@@ -165,53 +163,53 @@ class SimpleLogin extends SimpleColors {
        * Content of the username field
        */
       username: {
-        type: String
+        type: String,
       },
       /**
        * Content of the password field
        */
       password: {
-        type: String
+        type: String,
       },
       /**
        * When true, all fields are disabled and the progress bar is visible
        */
       loading: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Placeholder of the username field
        */
       userInputLabel: {
         type: String,
-        attribute: "user-input-label"
+        attribute: "user-input-label",
       },
       /**
        * Error message of the username field
        */
       userInputErrMsg: {
-        type: String
+        type: String,
       },
       /**
        * Placeholder of the password field
        */
       passwordInputLabel: {
         type: String,
-        attribute: "password-input-label"
+        attribute: "password-input-label",
       },
       /**
        * Error message of the password field
        */
       passwordInputErrMsg: {
-        type: String
+        type: String,
       },
       /**
        * Login button label
        */
       loginBtnText: {
         type: String,
-        attribute: "login-btn-text"
-      }
+        attribute: "login-btn-text",
+      },
     };
   }
 
@@ -245,8 +243,8 @@ class SimpleLogin extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -291,8 +289,8 @@ class SimpleLogin extends SimpleColors {
           composed: true,
           detail: {
             u: this.shadowRoot.querySelector("#userinput").value,
-            p: this.shadowRoot.querySelector("#passinput").value
-          }
+            p: this.shadowRoot.querySelector("#passinput").value,
+          },
         })
       );
     }

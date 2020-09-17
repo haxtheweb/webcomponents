@@ -84,7 +84,7 @@ class SimpleSearch extends LitElement {
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
-    selections.forEach(selection => {
+    selections.forEach((selection) => {
       this._searchSelection(selection);
     });
     /**
@@ -226,14 +226,12 @@ class SimpleSearch extends LitElement {
   findMatches(results) {
     this.resultPointer = 0;
     results = results.replace(/<\/?simple-search-match[^>]*>/g, "");
-    this.searchTerms.forEach(term => {
+    this.searchTerms.forEach((term) => {
       let modifier = this.caseSensitive ? "gm" : "gim",
         regex = new RegExp("\\b(" + term + ")\\b", modifier),
-        replacer = match => {
+        replacer = (match) => {
           this.resultCount++;
-          return `<simple-search-match tabindex="0" match-number="${
-            this.resultCount
-          }">${match}</simple-search-match>`;
+          return `<simple-search-match tabindex="0" match-number="${this.resultCount}">${match}</simple-search-match>`;
         };
       results = results.replace(regex, replacer);
     });

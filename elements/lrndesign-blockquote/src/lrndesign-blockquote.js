@@ -545,7 +545,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
           -webkit-filter: grayscale(0);
           filter: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -580,33 +580,33 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
        * Source being cited
        */
       citation: {
-        type: String
+        type: String,
       },
       /**
        * Optional image to use
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * Optional author of the quote
        */
       author: {
-        type: String
+        type: String,
       },
       /**
        * Optional source that links to where the quote is from
        */
       sourceLink: {
         type: String,
-        attribute: "source-link"
+        attribute: "source-link",
       },
       /**
        * Funny 1900s vision.
@@ -614,8 +614,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
       displayMode: {
         type: String,
         reflect: true,
-        attribute: "display-mode"
-      }
+        attribute: "display-mode",
+      },
     };
   }
   updated(changedProperties) {
@@ -625,7 +625,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
         "image",
         "citation",
         "displayMode",
-        "sourceLink"
+        "sourceLink",
       ];
       if (notifiedProps.includes(propName)) {
         // notify
@@ -635,8 +635,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -716,12 +716,12 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             author: "author",
             description: "",
             citation: "citation",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -739,8 +739,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
               poster: "Poster",
               fun: "Fun",
               photo: "Photo",
-              hypercard: "Hypercard"
-            }
+              hypercard: "Hypercard",
+            },
           },
           {
             property: "image",
@@ -749,8 +749,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "editor:short-text",
             required: false,
-            validationType: "text"
-          }
+            validationType: "text",
+          },
         ],
         configure: [
           {
@@ -767,8 +767,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
               poster: "Poster",
               fun: "Fun",
               photo: "Photo",
-              hypercard: "Hypercard"
-            }
+              hypercard: "Hypercard",
+            },
           },
           {
             property: "image",
@@ -777,7 +777,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             inputMethod: "haxupload",
             icon: "editor:short-text",
             required: false,
-            validationType: "text"
+            validationType: "text",
           },
           {
             property: "citation",
@@ -786,7 +786,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "editor:short-text",
             required: false,
-            validationType: "text"
+            validationType: "text",
           },
           {
             property: "author",
@@ -795,7 +795,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "editor:short-text",
             required: false,
-            validationType: "text"
+            validationType: "text",
           },
           {
             slot: "",
@@ -804,7 +804,7 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             icon: "editor:format-quote",
             required: true,
-            validationType: "text"
+            validationType: "text",
           },
           {
             property: "sourceLink",
@@ -813,8 +813,8 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             inputMethod: "haxupload",
             icon: "editor:short-text",
             required: false,
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         advanced: [
           {
@@ -822,10 +822,10 @@ class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
-          }
-        ]
-      }
+            inputMethod: "textfield",
+          },
+        ],
+      },
     };
   }
 }

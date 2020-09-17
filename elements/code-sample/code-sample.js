@@ -78,14 +78,13 @@ class CodeSample extends LitElement {
           top: 0;
           text-transform: uppercase;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div id="theme"></div>
+    return html` <div id="theme"></div>
       <div id="demo" class="demo"></div>
       <slot></slot>
       <div id="code-container">
@@ -99,8 +98,7 @@ class CodeSample extends LitElement {
           Copy
         </button>
         <pre id="code"></pre>
-      </div>
-    `;
+      </div>`;
   }
 
   // haxProperty definition
@@ -116,8 +114,8 @@ class CodeSample extends LitElement {
         color: "blue",
         groups: ["Code", "Development"],
         meta: {
-          author: "kuscamara"
-        }
+          author: "kuscamara",
+        },
       },
       settings: {
         quick: [],
@@ -126,23 +124,23 @@ class CodeSample extends LitElement {
             slot: "",
             slotWrapper: "template",
             slotAttributes: {
-              "preserve-content": "preserve-content"
+              "preserve-content": "preserve-content",
             },
             title: "Source",
             description: "The URL for this video.",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "copyClipboardButton",
             title: "Copy to clipboard button",
             description: "button in top right that says copy to clipboard",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["theme"]
+        unsetAttributes: ["theme"],
       },
       demoSchema: [
         {
@@ -150,10 +148,10 @@ class CodeSample extends LitElement {
           content:
             '<template preserve-content="preserve-content">const great = "example";</template>',
           properties: {
-            "copy-clipboard-button": "copy-clipboard-button"
-          }
-        }
-      ]
+            "copy-clipboard-button": "copy-clipboard-button",
+          },
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding
@@ -164,19 +162,19 @@ class CodeSample extends LitElement {
       // Set to true to show a copy to clipboard button.
       copyClipboardButton: {
         type: Boolean,
-        attribute: "copy-clipboard-button"
+        attribute: "copy-clipboard-button",
       },
       // Tagged template literal with custom styles.
       // Only supported in Shadow DOM.
       theme: {
-        type: Object
+        type: Object,
       },
       // Code type (optional). (eg.: html, js, css)
       // Options are the same as the available classes for `<code>` tag using highlight.js
       type: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -210,7 +208,7 @@ class CodeSample extends LitElement {
         '<template preserve-content="preserve-content">const great="example";</template>';
     }
     if (this.querySelector("template")) {
-      this._observer = new MutationObserver(mutations => {
+      this._observer = new MutationObserver((mutations) => {
         if (this.shadowRoot) {
           this._updateContent();
         }
@@ -218,7 +216,7 @@ class CodeSample extends LitElement {
       this._observer.observe(this, {
         attributes: true,
         childList: true,
-        subtree: true
+        subtree: true,
       });
     } else if (this.childNodes.length) {
       console.error(
@@ -283,7 +281,7 @@ class CodeSample extends LitElement {
     const nodes = this.children;
     return [].filter.call(
       nodes,
-      node => node.nodeType === Node.ELEMENT_NODE
+      (node) => node.nodeType === Node.ELEMENT_NODE
     )[0];
   }
   _highlight(str) {

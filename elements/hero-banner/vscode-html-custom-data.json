@@ -3,11 +3,11 @@
   "tags": [
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `button-text` {`string`} - button label\n\n  * `button-link` {`string`} - url for the button\n\n  * `aria-decsribedby` {`string`} - accessible long description\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\n  * `ariaDescribedby` {`string`} - accessible long description",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+          "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
           "name": "image",
@@ -15,41 +15,19 @@
         },
         {
           "name": "details",
-          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details\n\nDefault: Details"
+          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details"
         },
         {
-          "name": "buttonText",
-          "description": "`buttonText` {`string`} - button label\n\nProperty: buttonText\n\nDefault: Find out more"
+          "name": "button-text",
+          "description": "`button-text` {`string`} - button label\n\nProperty: buttonText"
         },
         {
-          "name": "buttonLink",
-          "description": "`buttonLink` {`string`} - url for the button\n\nProperty: buttonLink"
-        }
-      ]
-    },
-    {
-      "name": "hero-banner",
-      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+          "name": "button-link",
+          "description": "`button-link` {`string`} - url for the button\n\nProperty: buttonLink"
         },
         {
-          "name": "image",
-          "description": "`image` {`string`} - Image\n\nProperty: image"
-        },
-        {
-          "name": "details",
-          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details\n\nDefault: Details"
-        },
-        {
-          "name": "buttonText",
-          "description": "`buttonText` {`string`} - button label\n\nProperty: buttonText\n\nDefault: Find out more"
-        },
-        {
-          "name": "buttonLink",
-          "description": "`buttonLink` {`string`} - url for the button\n\nProperty: buttonLink"
+          "name": "aria-decsribedby",
+          "description": "`aria-decsribedby` {`string`} - accessible long description\n\nProperty: ariaDescribedby"
         }
       ]
     },
@@ -59,11 +37,11 @@
     },
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `button-text` {`string`} - button label\n\n  * `button-link` {`string`} - url for the button\n\n  * `aria-decsribedby` {`string`} - accessible long description\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\n  * `ariaDescribedby` {`string`} - accessible long description",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+          "description": "`title` {`string`} - Title\n\nProperty: title"
         },
         {
           "name": "image",
@@ -71,15 +49,19 @@
         },
         {
           "name": "details",
-          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details\n\nDefault: Details"
+          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details"
         },
         {
-          "name": "buttonText",
-          "description": "`buttonText` {`string`} - button label\n\nProperty: buttonText\n\nDefault: Find out more"
+          "name": "button-text",
+          "description": "`button-text` {`string`} - button label\n\nProperty: buttonText"
         },
         {
-          "name": "buttonLink",
-          "description": "`buttonLink` {`string`} - url for the button\n\nProperty: buttonLink"
+          "name": "button-link",
+          "description": "`button-link` {`string`} - url for the button\n\nProperty: buttonLink"
+        },
+        {
+          "name": "aria-decsribedby",
+          "description": "`aria-decsribedby` {`string`} - accessible long description\n\nProperty: ariaDescribedby"
         }
       ]
     }

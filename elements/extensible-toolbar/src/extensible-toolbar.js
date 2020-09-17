@@ -65,8 +65,8 @@ class ExtensibleToolbar extends LitElement {
         detail: {
           element: root,
           attribute: "responsive-size",
-          relativeToParent: true
-        }
+          relativeToParent: true,
+        },
       })
     );
   }
@@ -102,7 +102,7 @@ class ExtensibleToolbar extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           }
         )
       )

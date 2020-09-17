@@ -7,21 +7,7 @@
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - icon\n\nProperty: icon\n\nDefault: lrn:assignment"
-        }
-      ]
-    },
-    {
-      "name": "lrndesign-paperstack",
-      "description": "`lrndesign-paperstack`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `icon` {`string`} - icon",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: "
         },
         {
           "name": "icon",
@@ -39,7 +25,7 @@
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: "
         },
         {
           "name": "icon",

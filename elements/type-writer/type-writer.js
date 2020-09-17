@@ -87,15 +87,13 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
           -o-animation: flickerAnimation 1s infinite;
           animation: flickerAnimation 1s infinite;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <span id="text"></span><span id="cursor">|</span>
-    `;
+    return html` <span id="text"></span><span id="cursor">|</span>`;
   }
 
   // haxProperty definition
@@ -112,13 +110,13 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         groups: ["Writer"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -128,42 +126,42 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "cursorDuration",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "text",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "speed",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "typing",
             description: "",
             inputMethod: "boolean",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["element-visible"]
-      }
+        unsetAttributes: ["element-visible"],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -172,35 +170,35 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
       ...super.properties,
 
       delay: {
-        type: Number
+        type: Number,
       },
       cursorDuration: {
         type: Number,
-        attribute: "cursor-duration"
+        attribute: "cursor-duration",
       },
       text: {
-        type: String
+        type: String,
       },
       speed: {
-        type: Number
+        type: Number,
       },
       elementVisible: {
-        type: Boolean
+        type: Boolean,
       },
       eraseSpeed: {
         type: Number,
-        attribute: "erase-speed"
+        attribute: "erase-speed",
       },
       typing: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       _length: {
-        type: Number
+        type: Number,
       },
       _oldText: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -258,7 +256,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         new CustomEvent("type-writer-end", {
           detail: this.text,
           bubbles: true,
-          composed: true
+          composed: true,
         })
       );
     }, this.cursorDuration);

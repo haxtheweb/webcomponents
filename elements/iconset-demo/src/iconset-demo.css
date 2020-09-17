@@ -4,13 +4,16 @@
   margin-bottom: 40px;
   padding: 20px 40px;
 }
+
 :host .iconset:not(:first-of-type) {
   border-top: 1px solid #ddd;
 }
+
 :host ul {
   list-style-type: none;
   padding: 0;
 }
+
 :host li {
   display: inline-block;
   width: 160px;
@@ -18,32 +21,41 @@
   text-align: center;
   font-size: 10px;
 }
+
 :host iron-icon {
   font-size: 14px;
   color: rgb(97,97,97);
   display: inline-block;
 }
+
 :host .iconset:nth-of-type(9n+2) iron-icon {
   color: #BE3300;
 }
+
 :host .iconset:nth-of-type(9n+3) iron-icon {
   color: #0000B5;
 }
+
 :host .iconset:nth-of-type(9n+4) iron-icon {
   color: #750075;
 }
+
 :host .iconset:nth-of-type(9n+5) iron-icon {
   color: #AA5D00;
 }
+
 :host .iconset:nth-of-type(9n+6) iron-icon {
   color: #DB0A5B;
 }
+
 :host .iconset:nth-of-type(9n+7) iron-icon {
   color: #005500;
 }
+
 :host .iconset:nth-of-type(9n+8) iron-icon {
   color: #CF000F;
 }
+
 :host .iconset:nth-of-type(9n) iron-icon {
   color: #005f8b;
 }

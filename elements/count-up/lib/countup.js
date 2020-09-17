@@ -1,9 +1,9 @@
 var __assign =
     (this && this.__assign) ||
-    function() {
+    function () {
       return (__assign =
         Object.assign ||
-        function(t) {
+        function (t) {
           for (var i, a = 1, s = arguments.length; a < s; a++)
             for (var n in (i = arguments[a]))
               Object.prototype.hasOwnProperty.call(i, n) && (t[n] = i[n]);
@@ -11,7 +11,7 @@ var __assign =
           return t;
         }).apply(this, arguments);
     },
-  CountUp = (function() {
+  CountUp = (function () {
     function t(t, i, a) {
       var s = this;
       (this.target = t),
@@ -29,7 +29,7 @@ var __assign =
           separator: ",",
           decimal: ".",
           prefix: "",
-          suffix: ""
+          suffix: "",
         }),
         (this.finalEndVal = null),
         (this.useEasing = !0),
@@ -37,7 +37,7 @@ var __assign =
         (this.error = ""),
         (this.startVal = 0),
         (this.paused = !0),
-        (this.count = function(t) {
+        (this.count = function (t) {
           s.startTime || (s.startTime = t);
           var i = t - s.startTime;
           (s.remaining = s.duration - i),
@@ -69,7 +69,7 @@ var __assign =
               ? s.update(s.finalEndVal)
               : s.callback && s.callback();
         }),
-        (this.formatNumber = function(t) {
+        (this.formatNumber = function (t) {
           var i,
             a,
             n,
@@ -95,16 +95,16 @@ var __assign =
           return (
             s.options.numerals &&
               s.options.numerals.length &&
-              ((n = n.replace(/[0-9]/g, function(t) {
+              ((n = n.replace(/[0-9]/g, function (t) {
                 return s.options.numerals[+t];
               })),
-              (e = e.replace(/[0-9]/g, function(t) {
+              (e = e.replace(/[0-9]/g, function (t) {
                 return s.options.numerals[+t];
               }))),
             o + s.options.prefix + n + e + s.options.suffix
           );
         }),
-        (this.easeOutExpo = function(t, i, a, s) {
+        (this.easeOutExpo = function (t, i, a, s) {
           return (a * (1 - Math.pow(2, (-10 * t) / s)) * 1024) / 1023 + i;
         }),
         (this.options = __assign({}, this.defaults, a)),
@@ -130,7 +130,7 @@ var __assign =
     }
 
     return (
-      (t.prototype.determineDirectionAndSmartEasing = function() {
+      (t.prototype.determineDirectionAndSmartEasing = function () {
         var t = this.finalEndVal ? this.finalEndVal : this.endVal;
         this.countDown = this.startVal > t;
         var i = t - this.startVal;
@@ -146,7 +146,7 @@ var __assign =
           ? (this.useEasing = !1)
           : (this.useEasing = this.options.useEasing);
       }),
-      (t.prototype.start = function(t) {
+      (t.prototype.start = function (t) {
         this.error ||
           ((this.callback = t),
           this.duration > 0
@@ -155,7 +155,7 @@ var __assign =
               (this.rAF = requestAnimationFrame(this.count)))
             : this.printValue(this.endVal));
       }),
-      (t.prototype.pauseResume = function() {
+      (t.prototype.pauseResume = function () {
         this.paused
           ? ((this.startTime = null),
             (this.duration = this.remaining),
@@ -165,7 +165,7 @@ var __assign =
           : cancelAnimationFrame(this.rAF),
           (this.paused = !this.paused);
       }),
-      (t.prototype.reset = function() {
+      (t.prototype.reset = function () {
         cancelAnimationFrame(this.rAF),
           (this.paused = !0),
           this.resetDuration(),
@@ -173,7 +173,7 @@ var __assign =
           (this.frameVal = this.startVal),
           this.printValue(this.startVal);
       }),
-      (t.prototype.update = function(t) {
+      (t.prototype.update = function (t) {
         cancelAnimationFrame(this.rAF),
           (this.startTime = null),
           (this.endVal = this.validateValue(t)),
@@ -183,7 +183,7 @@ var __assign =
             this.determineDirectionAndSmartEasing(),
             (this.rAF = requestAnimationFrame(this.count)));
       }),
-      (t.prototype.printValue = function(t) {
+      (t.prototype.printValue = function (t) {
         var i = this.formattingFn(t);
         "INPUT" === this.el.tagName
           ? (this.el.value = i)
@@ -191,16 +191,16 @@ var __assign =
           ? (this.el.textContent = i)
           : (this.el.innerHTML = i);
       }),
-      (t.prototype.ensureNumber = function(t) {
+      (t.prototype.ensureNumber = function (t) {
         return "number" == typeof t && !isNaN(t);
       }),
-      (t.prototype.validateValue = function(t) {
+      (t.prototype.validateValue = function (t) {
         var i = Number(t);
         return this.ensureNumber(i)
           ? i
           : ((this.error = "[CountUp] invalid start or end value: " + t), null);
       }),
-      (t.prototype.resetDuration = function() {
+      (t.prototype.resetDuration = function () {
         (this.startTime = null),
           (this.duration = 1e3 * Number(this.options.duration)),
           (this.remaining = this.duration);

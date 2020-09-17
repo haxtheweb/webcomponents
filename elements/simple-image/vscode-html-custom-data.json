@@ -3,29 +3,7 @@
   "tags": [
     {
       "name": "simple-image",
-      "description": "`simple-image`\n\nAttributes:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\nProperties:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "src",
-          "description": "`src` {`string`} - image source\n\nProperty: src"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - alt data\n\nProperty: alt"
-        },
-        {
-          "name": "caption",
-          "description": "`caption` {`string`} - caption on the image\n\nProperty: caption"
-        },
-        {
-          "name": "credit",
-          "description": "`credit` {`string`} - photo credit / copyright info\n\nProperty: credit"
-        }
-      ]
-    },
-    {
-      "name": "simple-image",
-      "description": "`simple-image`\n\nAttributes:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\nProperties:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`simple-image`\n\nAttributes:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\nProperties:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "src",
@@ -51,7 +29,7 @@
     },
     {
       "name": "simple-image",
-      "description": "`simple-image`\n\nAttributes:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\nProperties:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`simple-image`\n\nAttributes:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\nProperties:\n\n  * `src` {`string`} - image source\n\n  * `alt` {`string`} - alt data\n\n  * `caption` {`string`} - caption on the image\n\n  * `credit` {`string`} - photo credit / copyright info\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "src",

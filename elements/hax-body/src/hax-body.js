@@ -6,7 +6,7 @@ import {
   wipeSlot,
   generateResourceID,
   nodeToHaxElement,
-  haxElementToNode
+  haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
@@ -345,7 +345,7 @@ class HaxBody extends SimpleColors {
             outline: var(--hax-body-active-outline);
           }
         }
-      `
+      `,
     ];
   }
   /**
@@ -473,13 +473,13 @@ class HaxBody extends SimpleColors {
     return {
       ...super.properties,
       openDrawer: {
-        type: Object
+        type: Object,
       },
       /**
        * Text hax-store has detected is selected currently.
        */
       haxSelectedText: {
-        type: String
+        type: String,
       },
       /**
        * State of if we are editing or not.
@@ -487,7 +487,7 @@ class HaxBody extends SimpleColors {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * Bust out the HAX Ray mode
@@ -495,26 +495,26 @@ class HaxBody extends SimpleColors {
       haxRayMode: {
         type: Boolean,
         reflect: true,
-        attribute: "hax-ray-mode"
+        attribute: "hax-ray-mode",
       },
       /**
        * Access to the global properties object.
        */
       globalPreferences: {
-        type: Object
+        type: Object,
       },
       /**
        * A reference to the active node in the slot.
        */
       activeNode: {
-        type: Object
+        type: Object,
       },
       /**
        * A reference to the active node in the slot.
        */
       activeContainerNode: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -529,7 +529,7 @@ class HaxBody extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     // try to normalize paragraph insert on enter
@@ -542,7 +542,7 @@ class HaxBody extends SimpleColors {
     this.shadowRoot
       .querySelector("slot")
       .addEventListener("mousemove", this.hoverEvent.bind(this));
-    this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
+    this.shadowRoot.querySelector("slot").addEventListener("mouseup", (e) => {
       if (!this.openDrawer && this.editMode) {
         setTimeout(() => {
           const tmp = window.HaxStore.getSelection();
@@ -585,8 +585,8 @@ class HaxBody extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent("active-node-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -596,8 +596,8 @@ class HaxBody extends SimpleColors {
         this.dispatchEvent(
           new CustomEvent("active-container-node-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -609,12 +609,12 @@ class HaxBody extends SimpleColors {
   connectedCallback() {
     super.connectedCallback();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = new MutationObserver(mutations => {
+    this._observer = new MutationObserver((mutations) => {
       var mutFind = false;
-      mutations.forEach(mutation => {
+      mutations.forEach((mutation) => {
         // if we've got new nodes, we have to react to that
         if (mutation.addedNodes.length > 0) {
-          mutation.addedNodes.forEach(node => {
+          mutation.addedNodes.forEach((node) => {
             if (this._validElementTest(node)) {
               // edge case, thing is moved around in the dom so let's do the opposite
               // this is something that has PART of these applies
@@ -633,7 +633,7 @@ class HaxBody extends SimpleColors {
                   bubbles: true,
                   cancelable: true,
                   composed: true,
-                  detail: { node: node }
+                  detail: { node: node },
                 })
               );
               // special support for Header tags showing up w.o. identifiers
@@ -660,7 +660,7 @@ class HaxBody extends SimpleColors {
         // if we dropped nodes via the UI (delete event basically)
         if (mutation.removedNodes.length > 0) {
           // handle removing items... not sure we need to do anything here
-          mutation.removedNodes.forEach(node => {
+          mutation.removedNodes.forEach((node) => {
             if (
               this._validElementTest(node) &&
               !node.classList.contains("hax-active")
@@ -670,7 +670,7 @@ class HaxBody extends SimpleColors {
                   bubbles: true,
                   cancelable: true,
                   composed: true,
-                  detail: { node: node }
+                  detail: { node: node },
                 })
               );
             }
@@ -679,7 +679,7 @@ class HaxBody extends SimpleColors {
       });
     });
     this._observer.observe(this, {
-      childList: true
+      childList: true,
     });
     setTimeout(() => {
       window.addEventListener("keydown", this._onKeyDown.bind(this));
@@ -781,8 +781,7 @@ class HaxBody extends SimpleColors {
           case "ArrowDown":
           case "ArrowLeft":
           case "ArrowRight":
-            clearTimeout(this.__keyPress);
-            this.__keyPress = setTimeout(() => {
+            setTimeout(() => {
               const tmp = window.HaxStore.getSelection();
               window.HaxStore._tmpSelection = tmp;
               window.HaxStore.write("haxSelectedText", tmp.toString(), this);
@@ -1232,7 +1231,7 @@ class HaxBody extends SimpleColors {
       } else {
         newNode.scrollIntoView({
           behavior: "smooth",
-          inline: "center"
+          inline: "center",
         });
       }
       this.positionContextMenus();
@@ -1254,7 +1253,7 @@ class HaxBody extends SimpleColors {
     let children =
       this.shadowRoot.querySelector("#body").localName === "slot"
         ? this.shadowRoot.querySelector("#body").assignedNodes({
-            flatten: true
+            flatten: true,
           })
         : [];
     var content = "";
@@ -1378,7 +1377,7 @@ class HaxBody extends SimpleColors {
     var nodeClone = haxElementToNode({
       tag: haxElement.tag,
       content: haxElement.content,
-      properties: haxElement.properties
+      properties: haxElement.properties,
     });
     if (
       nodeClone.tagName.toLowerCase() === "webview" &&
@@ -1584,7 +1583,7 @@ class HaxBody extends SimpleColors {
           case "1-1":
             // implies we are removing the grid plate
             let cloneEl;
-            await node.childNodes.forEach(el => {
+            await node.childNodes.forEach((el) => {
               // verify its a tag
               if (el.tagName) {
                 // remove slot name
@@ -1638,7 +1637,7 @@ class HaxBody extends SimpleColors {
           right.disabled = true;
         }
         if (side == "left") {
-          node.childNodes.forEach(el => {
+          node.childNodes.forEach((el) => {
             if (el.tagName) {
               let s =
                 parseInt(el.getAttribute("slot").replace("col-", ""), 10) + 1;
@@ -1896,10 +1895,18 @@ class HaxBody extends SimpleColors {
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-plate-create-right":
-        this.haxGridPlateOps(this.activeContainerNode, "right");
+        if (this.activeContainerNode.tagName === "HAX-BODY") {
+          this.haxGridPlateOps(this.activeNode, "right");
+        } else {
+          this.haxGridPlateOps(this.activeContainerNode, "right");
+        }
         break;
       case "hax-plate-remove-right":
-        this.haxGridPlateOps(this.activeContainerNode, "right", false);
+        if (this.activeContainerNode.tagName === "HAX-BODY") {
+          this.haxGridPlateOps(this.activeNode, "right", false);
+        } else {
+          this.haxGridPlateOps(this.activeContainerNode, "right", false);
+        }
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
@@ -1911,13 +1918,13 @@ class HaxBody extends SimpleColors {
             {
               icon: "thumb-up",
               color: "green",
-              title: "Yes"
+              title: "Yes",
             },
             {
               icon: "thumb-down",
               color: "red",
-              title: "No"
-            }
+              title: "No",
+            },
           ];
           let tag = this.activeNode.tagName.toLowerCase();
           let humanName = tag.replace("-", " ");
@@ -2231,7 +2238,7 @@ class HaxBody extends SimpleColors {
     let listenerMethod;
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
-    let i = window.HaxStore.instance.gizmoList.findIndex(j => {
+    let i = window.HaxStore.instance.gizmoList.findIndex((j) => {
       if (j) {
         return j.tag === node.tagName.toLowerCase();
       }
@@ -2252,7 +2259,7 @@ class HaxBody extends SimpleColors {
     node[listenerMethod]("drop", this.dropEvent.bind(this));
     node[listenerMethod]("dragenter", this.dragEnter.bind(this));
     node[listenerMethod]("dragleave", this.dragLeave.bind(this));
-    node[listenerMethod]("dragover", function(e) {
+    node[listenerMethod]("dragover", function (e) {
       e.preventDefault();
     });
     // additional things for text based elements
@@ -2272,7 +2279,7 @@ class HaxBody extends SimpleColors {
             links[j].removeAttribute("contenteditable");
             links[j].removeAttribute("data-editable");
           }
-          links[j][listenerMethod]("click", e => {
+          links[j][listenerMethod]("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -2375,7 +2382,7 @@ class HaxBody extends SimpleColors {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: e
+              detail: e,
             })
           );
         } else {
@@ -2431,7 +2438,7 @@ class HaxBody extends SimpleColors {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: this.activeNode
+                detail: this.activeNode,
               })
             );
             setTimeout(() => {
@@ -2442,7 +2449,7 @@ class HaxBody extends SimpleColors {
               } else {
                 this.activeNode.scrollIntoView({
                   behavior: "smooth",
-                  inline: "center"
+                  inline: "center",
                 });
               }
               this.positionContextMenus();
@@ -2675,7 +2682,7 @@ class HaxBody extends SimpleColors {
    */
   _activeNodeChanged(newValue, oldValue) {
     // remove anything currently with the active class
-    this.querySelectorAll(".hax-active").forEach(el => {
+    this.querySelectorAll(".hax-active").forEach((el) => {
       el.classList.remove("hax-active");
     });
     if (

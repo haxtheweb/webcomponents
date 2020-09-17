@@ -149,13 +149,11 @@ class SimpleFieldsContainer extends LitElement {
           flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
           transition: color 0.3s ease-in-out;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      ${this.fieldMainTemplate} ${this.fieldBottom}
-    `;
+    return html` ${this.fieldMainTemplate} ${this.fieldBottom} `;
   }
   static get properties() {
     return {
@@ -163,172 +161,172 @@ class SimpleFieldsContainer extends LitElement {
        * Automatically validate field
        */
       autovalidate: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * a counter text and textareas: "character", "word" or unset for none
        */
       counter: {
-        type: String
+        type: String,
       },
       /**
        * Optional description of the field (or use slot="description")
        */
       description: {
-        type: String
+        type: String,
       },
       /**
        * Whether the form control is disabled
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Optional validation error message to display
        */
       defaultErrorMessage: {
-        type: String
+        type: String,
       },
       /**
        * Optional required validation error message to display
        */
       defaultRequiredMessage: {
-        type: String
+        type: String,
       },
       /**
        * Whether field has errors
        */
       error: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Validation error message to display
        */
       errorMessage: {
-        type: String
+        type: String,
       },
       /**
        * Whether the field is hidden
        */
       hidden: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Field element
        */
       field: {
-        type: Object
+        type: Object,
       },
       /**
        * Unique id
        */
       id: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Whether field and label should be inline
        */
       inline: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Label for the field (or use slot="label")
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Minimum number of checked items in fieldset
        */
       minchecked: {
-        type: Number
+        type: Number,
       },
       /**
        * Minimum number of checked items in fieldset
        */
       maxchecked: {
-        type: Number
+        type: Number,
       },
       /**
        * Maximum number of words in textarea
        */
       maxwords: {
-        type: Number
+        type: Number,
       },
       /**
        * Name of the input form control. Submitted with the form as part of a name/value pair.
        */
       name: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * error message when number of items selected is not between min and max
        */
       numberMessage: {
-        type: String
+        type: String,
       },
       /**
        * regex pattern the value must match to be valid
        */
       pattern: {
-        type: String
+        type: String,
       },
       /**
        * error message when field does not match pattern
        */
       patternMessage: {
-        type: String
+        type: String,
       },
       /**
        * Optional prefix string (or use slot="prefix")
        */
       prefix: {
-        type: String
+        type: String,
       },
       /**
        * Value is not editable
        */
       readonly: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Whether field is required
        */
       required: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * error message when field is required and has no value
        */
       requiredMessage: {
-        type: String
+        type: String,
       },
       /**
        * Optional suffix string (or use slot="suffix")
        */
       suffix: {
-        type: String
+        type: String,
       },
       /**
        * Type of input form control
        */
       type: {
-        type: String
+        type: String,
       },
       /**
        * List of valid field types
        */
       validTypes: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   constructor() {
@@ -361,13 +359,13 @@ class SimpleFieldsContainer extends LitElement {
       "textarea",
       "time",
       "url",
-      "week"
+      "week",
     ];
     this._observeAndListen();
-    this.addEventListener("click", e => this.focus());
+    this.addEventListener("click", (e) => this.focus());
   }
   disconnectedCallback() {
-    this.removeEventListener("click", e => this.focus());
+    this.removeEventListener("click", (e) => this.focus());
     super.disconnectedCallback();
   }
 
@@ -581,7 +579,7 @@ class SimpleFieldsContainer extends LitElement {
       "time",
       "datetime-local",
       "number",
-      "range"
+      "range",
     ].includes(this.type);
   }
   /**
@@ -597,7 +595,7 @@ class SimpleFieldsContainer extends LitElement {
       this._getFieldValue() &&
       (!this.field.multiple
         ? !this._getFieldValue().match(this.pattern)
-        : this._getFieldValue().filter(value => !value.match(this.pattern)))
+        : this._getFieldValue().filter((value) => !value.match(this.pattern)))
     );
   }
 
@@ -763,7 +761,7 @@ class SimpleFieldsContainer extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -800,7 +798,7 @@ class SimpleFieldsContainer extends LitElement {
       ) {
         value = [];
         checked = this.field.querySelectorAll("input:checked");
-        checked.forEach(input => value.push(input.value));
+        checked.forEach((input) => value.push(input.value));
       } else if (this.type === "checkbox") {
         value = this.field.checked ? true : false;
       } else if (this.type === "radio") {
@@ -808,7 +806,7 @@ class SimpleFieldsContainer extends LitElement {
       } else if (this.type === "select") {
         value = this.multiple
           ? Object.keys(this.field.selectedOptions).map(
-              option => this.field.selectedOptions[option].value
+              (option) => this.field.selectedOptions[option].value
             )
           : this.field.selectedOptions[0].value;
       } else {
@@ -853,7 +851,7 @@ class SimpleFieldsContainer extends LitElement {
     if (init) {
       this.slottedFieldObserver.observe(this, {
         attributeFilter: ["disabled", "readonly", "required", "slot"],
-        childlist: true
+        childlist: true,
       });
       this._updateField();
       this.addEventListener("click", this.focus);
@@ -905,15 +903,15 @@ class SimpleFieldsContainer extends LitElement {
       this.readonly = this.field.readonly;
       this.field.setAttribute("aria-describedby", "field-bottom");
       /** add event listeners */
-      this.field.addEventListener("change", e => this._handleFieldChange());
-      this.field.addEventListener("input", e => this._handleFieldChange());
+      this.field.addEventListener("change", (e) => this._handleFieldChange());
+      this.field.addEventListener("input", (e) => this._handleFieldChange());
 
       /** field type-specific adjustments */
       if (this.type === "select") this.multiple = this.field.multiple;
       if (this.type === "textarea") {
         if (!this.field.getAttribute("rows"))
           this.field.setAttribute("rows", 1);
-        this.field.addEventListener("keydown", e => e.stopPropagation());
+        this.field.addEventListener("keydown", (e) => e.stopPropagation());
       }
       if (this.type === "fieldset") {
         let legend = this.querySelector("legend");
@@ -927,10 +925,10 @@ class SimpleFieldsContainer extends LitElement {
           legend.style.paddingInlineEnd = 0;
         }
         this.querySelectorAll("label, input").forEach(
-          el => (el.style.marginRight = "var(--simple-fields-margin, 16px)")
+          (el) => (el.style.marginRight = "var(--simple-fields-margin, 16px)")
         );
         this.querySelectorAll("label input").forEach(
-          el =>
+          (el) =>
             (el.style.marginLeft =
               "calc(0 - var(--simple-fields-margin, 16px))")
         );
@@ -944,9 +942,11 @@ class SimpleFieldsContainer extends LitElement {
       /** remove event listeners from old field */
       if (oldfield) {
         if (oldfield.tagName.toLowerCase() === "textarea")
-          oldfield.addEventListener("keydown", e => e.stopPropagation());
-        oldfield.removeEventListener("change", e => this._handleFieldChange());
-        oldfield.removeEventListener("input", e => this._handleFieldChange());
+          oldfield.addEventListener("keydown", (e) => e.stopPropagation());
+        oldfield.removeEventListener("change", (e) =>
+          this._handleFieldChange()
+        );
+        oldfield.removeEventListener("input", (e) => this._handleFieldChange());
       }
     }
   }

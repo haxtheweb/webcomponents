@@ -7,7 +7,7 @@ const SimpleTooltipPattern = {
   of: "Pattern Library/Molecules/Tooltip",
   name: "Simple Tooltip",
   file: require("raw-loader!./demo/index.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(SimpleTooltipPattern);
 
@@ -20,10 +20,10 @@ const SimpleTooltipStory = {
     slot: {
       name: "slot",
       type: "String",
-      value: `This is a tooltip`
-    }
+      value: `This is a tooltip`,
+    },
   },
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(SimpleTooltipStory);

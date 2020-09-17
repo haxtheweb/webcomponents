@@ -8,7 +8,7 @@ window.StorybookUtilities.requestAvailability();
 const PunnettSquarePattern = {
   of: "Molecules",
   name: "PunnettSquare",
-  file: require("raw-loader!./demo/index.html")
+  file: require("raw-loader!./demo/index.html"),
 };
 window.StorybookUtilities.instance.addPattern(SimplePagesPattern);
 

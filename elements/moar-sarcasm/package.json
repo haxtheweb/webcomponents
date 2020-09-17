@@ -1,0 +1,66 @@
+{
+  "name": "@lrnwebcomponents/moar-sarcasm",
+  "wcfactory": {
+    "className": "MoarSarcasm",
+    "customElementClass": "HTMLElement",
+    "elementName": "moar-sarcasm",
+    "generator-wcfactory-version": "0.8.7",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/moar-sarcasm.css",
+      "scss": "src/moar-sarcasm.scss",
+      "html": "src/moar-sarcasm.html",
+      "js": "src/moar-sarcasm.js",
+      "properties": "src/moar-sarcasm-properties.json",
+      "hax": "src/moar-sarcasm-hax.json"
+    },
+    "sharedHaxProps": [],
+    "sharedProps": [],
+    "sharedStyles": []
+  },
+  "version": "2.7.9",
+  "description": "Provide a laugh and a good example of VanillaJS for demos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "moar-sarcasm.js",
+  "module": "moar-sarcasm.js",
+  "umd": "moar-sarcasm.umd.js",
+  "scripts": {
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/moar-sarcasm/test/",
+    "start": "yarn run dev",
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "2.6.16",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.4",
+    "concurrently": "5.3.0",
+    "es-dev-server": "1.57.4",
+    "gulp-babel": "8.0.0",
+    "lodash": "4.17.15",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

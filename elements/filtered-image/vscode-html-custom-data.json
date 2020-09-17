@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "filtered-image",
-      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
-      "attributes": []
-    },
-    {
-      "name": "filtered-image",
       "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
       "attributes": [
         {
@@ -53,8 +48,13 @@
       "attributes": []
     },
     {
+      "name": "filtered-image",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "attributes": []
+    },
+    {
       "name": "filtered-image-filters",
-      "description": "`filtered-image-filters`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selected-filters` {`any[]`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selectedFilters` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`filtered-image-filters`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selected-filters` {`any[]`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selectedFilters` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "src",
@@ -85,11 +85,6 @@
           "description": "`__selected-filters` {`any[]`} - \n\nProperty: __selectedFilters"
         }
       ]
-    },
-    {
-      "name": "filtered-image",
-      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

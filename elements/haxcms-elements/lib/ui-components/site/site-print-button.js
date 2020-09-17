@@ -39,7 +39,7 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-border-radius: 0;
         }
-      `
+      `,
     ];
   }
   /**
@@ -103,30 +103,30 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
        * icon
        */
       icon: {
-        type: String
+        type: String,
       },
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * label for the button
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * label for the button
        */
       position: {
-        type: String
+        type: String,
       },
       /**
        * How much do you want to print right now
        */
       type: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -146,7 +146,9 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
    */
   async print(e) {
     // now dynamic import the footer so we don't bloat all other page loads
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js"
+    );
     const type = this.type;
     let content = "";
     if (type === "page") {
@@ -166,10 +168,10 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
       );
       for (var i in result) {
         content += await fetch(result[i].location)
-          .then(function(response) {
+          .then(function (response) {
             return response.text();
           })
-          .then(function(response) {
+          .then(function (response) {
             let indent = result[i].indent + 1;
             if (indent > 6) {
               indent = 6;
@@ -190,10 +192,10 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
       );
       for (var i in result) {
         content += await fetch(result[i].location)
-          .then(function(response) {
+          .then(function (response) {
             return response.text();
           })
-          .then(function(response) {
+          .then(function (response) {
             let indent = result[i].indent + 1;
             if (indent > 6) {
               indent = 6;
@@ -206,10 +208,10 @@ class SitePrintButton extends HAXCMSThemeParts(LitElement) {
       const result = store.routerManifest.items;
       for (var i in result) {
         content += await fetch(result[i].location)
-          .then(function(response) {
+          .then(function (response) {
             return response.text();
           })
-          .then(function(response) {
+          .then(function (response) {
             let indent = result[i].indent + 1;
             if (indent > 6) {
               indent = 6;

@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "json-editor",
-      "description": "`json-editor`\n`simple JSON blob data binding to a text area`\n\nProperties:\n\n  * `label` {`string`} - \n\n  * `error` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `maxRows` {`number`} - \n\n  * `value` {`string`} - ",
-      "attributes": []
-    },
-    {
-      "name": "json-editor",
       "description": "`json-editor`\n`simple JSON blob data binding to a text area`\n\nAttributes:\n\n  * `format-test` {`string`} - format test to update value so it's pretty printed\n\n  * `current-data` - The current data object\n\n  * `label` {`string`} - label for the text area\n\n  * `error` {`boolean`} - State of being valid JSON object\n\n  * `disabled` {`boolean`} - toggling disabled state of the editor\n\n  * `max-rows` {`number`} - max rows in the textarea\n\n  * `value` {`string`} - String based value of the editor, use this to set initial value\n\nProperties:\n\n  * `formatTest` {`string`} - format test to update value so it's pretty printed\n\n  * `currentData` - The current data object\n\n  * `label` {`string`} - label for the text area\n\n  * `error` {`boolean`} - State of being valid JSON object\n\n  * `disabled` {`boolean`} - toggling disabled state of the editor\n\n  * `maxRows` {`number`} - max rows in the textarea\n\n  * `value` {`string`} - String based value of the editor, use this to set initial value",
       "attributes": [
         {

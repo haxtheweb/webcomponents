@@ -17,7 +17,7 @@ class HaxStaxBrowser extends LitElement {
           text-align: center;
           margin: 0px 16px;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -28,7 +28,7 @@ class HaxStaxBrowser extends LitElement {
     return html`
       <div class="stax-container">
         ${this.staxList.map(
-          stax => html`
+          (stax) => html`
             <hax-tray-button
               wide
               index="${stax.index}"
@@ -52,8 +52,8 @@ class HaxStaxBrowser extends LitElement {
        * The list of stax
        */
       staxList: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 }

@@ -45,7 +45,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false
+      subtree: false,
     });
   }
   disconnectedCallback() {
@@ -62,8 +62,8 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           sm: 300,
           md: 600,
           lg: 1000,
-          xl: 1500
-        }
+          xl: 1500,
+        },
       })
     );
     this.anchorData = this._getAnchorData();
@@ -91,7 +91,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    * @memberof LrndesignGallery
    */
   get aspect() {
-    let items = (this.items || []).filter(item => item.src && item.src != ""),
+    let items = (this.items || []).filter((item) => item.src && item.src != ""),
       src = items && items[0] ? items[0].src : false;
     if (src) {
       let img = new Image();
@@ -142,7 +142,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           gravity: item.gravity || "center",
           title: item.title,
           tooltip: `${item.title || `Image ${i}`} (Zoom In)`,
-          heading: `${item.title || `Image ${i}`} (Full-Sized)`
+          heading: `${item.title || `Image ${i}`} (Full-Sized)`,
         };
       });
     return itemData;
@@ -168,18 +168,20 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
     if (typeof query === "number" && query >= 0 && query < this.items.length) {
       this.selected = this.items[query] || start;
     } else {
-      let matches = this.items.filter(item => item.id === query);
+      let matches = this.items.filter((item) => item.id === query);
       this.selected = matches.length > 0 ? matches[0] : start;
     }
   }
   updateGallery() {
     let sources = [],
       figures = this.querySelectorAll("figure");
-    figures.forEach(figure => {
+    figures.forEach((figure) => {
       let id = figure.getAttribute("id"),
         img = figure.querySelector("img"),
         sizing = figure.getAttribute("sizing"),
-        query = [1, 2, 3, 4, 5, 6].map(num => `h${num}:first-child`).join(","),
+        query = [1, 2, 3, 4, 5, 6]
+          .map((num) => `h${num}:first-child`)
+          .join(","),
         src =
           img && img.getAttribute("src") ? img.getAttribute("src") : undefined,
         srcset =
@@ -212,7 +214,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         large: large,
         title: title,
         details: details.innerHTML,
-        sizing: sizing
+        sizing: sizing,
       });
     });
     if (sources.length > 0 && (!this.sources || this.sources.length < 1))
@@ -234,7 +236,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
     return {
       id: data.length > 1 ? data[1] : -1,
       gallery: data.length > 0 ? data[0] : -1,
-      zoom: scroll && data.length > 2 && data[2] === "zoom"
+      zoom: scroll && data.length > 2 && data[2] === "zoom",
     };
   }
 }

@@ -60,7 +60,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             font-size: 16px;
           }
         }
-      `
+      `,
     ];
   }
   render() {
@@ -91,15 +91,15 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
       imageBg: {
         type: String,
         attribute: "image-bg",
-        reflect: true
+        reflect: true,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
-      }
+        attribute: "described-by",
+      },
     };
   }
   constructor() {
@@ -150,12 +150,12 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
           {
             type: "image",
             url: "source",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -164,22 +164,22 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             title: "Image",
             description: "image",
             inputMethod: "haxupload",
-            icon: "image"
-          }
+            icon: "image",
+          },
         ],
         configure: [
           {
             property: "imageBg",
             title: "Image",
             description: "image to be involved in the background",
-            inputMethod: "haxupload"
+            inputMethod: "haxupload",
           },
           {
             slot: "parallax_heading",
             title: "Heading area",
             description: "Heading text area",
-            inputMethod: "textarea"
-          }
+            inputMethod: "textarea",
+          },
         ],
         advanced: [
           {
@@ -187,10 +187,10 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
-          }
-        ]
-      }
+            inputMethod: "textfield",
+          },
+        ],
+      },
     };
   }
 }

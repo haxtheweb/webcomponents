@@ -23,17 +23,17 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
    */
   async getCSS() {
     return await fetch("theme/theme.css")
-      .then(response => {
+      .then((response) => {
         return response.text();
       })
-      .then(response => {
+      .then((response) => {
         const evt = new CustomEvent("haxcms-custom-theme-template-ready", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: {
-            css: response
-          }
+            css: response,
+          },
         });
         this.dispatchEvent(evt);
 
@@ -45,17 +45,17 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
    */
   async getHTML() {
     return await fetch("theme/theme.html")
-      .then(response => {
+      .then((response) => {
         return response.text();
       })
-      .then(response => {
+      .then((response) => {
         const evt = new CustomEvent("haxcms-custom-theme-template-ready", {
           bubbles: true,
           composed: true,
           cancelable: false,
           detail: {
-            html: response
-          }
+            html: response,
+          },
         });
         this.dispatchEvent(evt);
         return response;

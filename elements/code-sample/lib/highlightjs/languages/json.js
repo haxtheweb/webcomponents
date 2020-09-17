@@ -12,7 +12,7 @@ function jsonLang(hljs) {
     endsWithParent: true,
     excludeEnd: true,
     contains: TYPES,
-    keywords: LITERALS
+    keywords: LITERALS,
   };
   var OBJECT = {
     begin: "{",
@@ -23,23 +23,23 @@ function jsonLang(hljs) {
         begin: /"/,
         end: /"/,
         contains: [hljs.BACKSLASH_ESCAPE],
-        illegal: "\\n"
+        illegal: "\\n",
       },
-      hljs.inherit(VALUE_CONTAINER, { begin: /:/ })
+      hljs.inherit(VALUE_CONTAINER, { begin: /:/ }),
     ],
-    illegal: "\\S"
+    illegal: "\\S",
   };
   var ARRAY = {
     begin: "\\[",
     end: "\\]",
     contains: [hljs.inherit(VALUE_CONTAINER)], // inherit is a workaround for a bug that makes shared modes with endsWithParent compile only the ending of one of the parents
-    illegal: "\\S"
+    illegal: "\\S",
   };
   TYPES.splice(TYPES.length, 0, OBJECT, ARRAY);
   return {
     contains: TYPES,
     keywords: LITERALS,
-    illegal: "\\S"
+    illegal: "\\S",
   };
 }
 

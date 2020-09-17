@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.8",
+  "version": "2.7.9",
   "description": "create an inflexible baseline build of hax with all elements",
   "repository": {
     "type": "git",
@@ -28,13 +28,13 @@
   "module": "baseline-build-hax.js",
   "umd": "baseline-build-hax.umd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/baseline-build-hax/test/",
+    "test": "wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/baseline-build-hax/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp --gulpfile=gulpfile.cjs && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
-    "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse --gulpfile=gulpfile.cjs"
+    "build": "gulp --gulpfile=gulpfile.cjs && rollup -c && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "es-dev-server -c ../../es-dev-server.config.js",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs"
   },
   "author": {
     "name": "btopro"
@@ -44,9 +44,9 @@
     "@lrnwebcomponents/a11y-gif-player": "^2.7.7",
     "@lrnwebcomponents/aframe-player": "^2.7.7",
     "@lrnwebcomponents/citation-element": "^2.7.7",
-    "@lrnwebcomponents/cms-hax": "^2.7.8",
+    "@lrnwebcomponents/cms-hax": "^2.7.9",
     "@lrnwebcomponents/grid-plate": "^2.7.8",
-    "@lrnwebcomponents/hax-body": "^2.7.8",
+    "@lrnwebcomponents/hax-body": "^2.7.9",
     "@lrnwebcomponents/hax-body-behaviors": "^2.7.7",
     "@lrnwebcomponents/hero-banner": "^2.7.7",
     "@lrnwebcomponents/image-compare-slider": "^2.7.7",
@@ -56,7 +56,7 @@
     "@lrnwebcomponents/lrn-icons": "^2.7.7",
     "@lrnwebcomponents/lrn-math": "^2.7.8",
     "@lrnwebcomponents/lrn-table": "^2.7.7",
-    "@lrnwebcomponents/lrn-vocab": "^2.7.8",
+    "@lrnwebcomponents/lrn-vocab": "^2.7.9",
     "@lrnwebcomponents/lrndesign-blockquote": "^2.7.7",
     "@lrnwebcomponents/magazine-cover": "^2.7.7",
     "@lrnwebcomponents/materializecss-styles": "^2.7.7",
@@ -76,13 +76,13 @@
     "@lrnwebcomponents/stop-note": "^2.7.7",
     "@lrnwebcomponents/tab-list": "^2.7.7",
     "@lrnwebcomponents/task-list": "^2.7.7",
-    "@lrnwebcomponents/video-player": "^2.7.8",
+    "@lrnwebcomponents/video-player": "^2.7.9",
     "@lrnwebcomponents/wave-player": "^2.7.7",
     "@lrnwebcomponents/wikipedia-query": "^2.7.7",
-    "@lrnwebcomponents/wysiwyg-hax": "^2.7.8",
+    "@lrnwebcomponents/wysiwyg-hax": "^2.7.9",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
-    "@webcomponents/webcomponentsjs": "2.4.1",
+    "@webcomponents/webcomponentsjs": "2.4.4",
     "web-animations-js": "2.3.2"
   },
   "devDependencies": {
@@ -90,7 +90,7 @@
     "@lrnwebcomponents/storybook-utilities": "^2.7.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "concurrently": "5.1.0",
+    "concurrently": "5.3.0",
     "gulp-babel": "8.0.0",
     "lodash": "4.17.19",
     "polymer-cli": "1.9.11",

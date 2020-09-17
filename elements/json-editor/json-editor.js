@@ -17,16 +17,17 @@ class JsonEditor extends LitElement {
         :host {
           display: block;
         }
+
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           :host([error]) paper-textarea {
             --iron-autogrow-textarea: {
@@ -61,8 +62,7 @@ class JsonEditor extends LitElement {
         ?readonly="${this.disabled}"
         ?invalid="${this.error}"
         max-rows="${this.maxRows}"
-      ></paper-textarea>
-    `;
+      ></paper-textarea>`;
   }
 
   // properties available to the custom element for data binding
@@ -74,21 +74,21 @@ class JsonEditor extends LitElement {
        * label for the text area
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * State of being valid JSON object
        */
       error: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * toggling disabled state of the editor
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * max rows in the textarea
@@ -96,29 +96,29 @@ class JsonEditor extends LitElement {
       maxRows: {
         type: Number,
         reflect: true,
-        attribute: "max-rows"
+        attribute: "max-rows",
       },
       /**
        * String based value of the editor, use this to set initial value
        */
       value: {
         type: String,
-        reflect: false
+        reflect: false,
       },
       /**
        * format test to update value so it's pretty printed
        */
       formatTest: {
         type: String,
-        attribute: "format-test"
+        attribute: "format-test",
       },
       /**
        * The current data object
        */
       currentData: {
         type: Object,
-        attribute: "current-data"
-      }
+        attribute: "current-data",
+      },
     };
   }
 
@@ -149,8 +149,8 @@ class JsonEditor extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

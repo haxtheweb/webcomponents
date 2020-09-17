@@ -69,7 +69,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         new CustomEvent("type-writer-end", {
           detail: this.text,
           bubbles: true,
-          composed: true
+          composed: true,
         })
       );
     }, this.cursorDuration);

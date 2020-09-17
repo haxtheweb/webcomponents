@@ -16,7 +16,7 @@ class WysiwygHax extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -88,43 +88,43 @@ class WysiwygHax extends LitElement {
        */
       openDefault: {
         type: Boolean,
-        attribute: "open-default"
+        attribute: "open-default",
       },
       redirectLocation: {
         type: String,
-        attribute: "redirect-location"
+        attribute: "redirect-location",
       },
       /**
        * Hide the panel operations (save and cancel),
        */
       hidePanelOps: {
         type: Boolean,
-        attribute: "hide-panel-ops"
+        attribute: "hide-panel-ops",
       },
       /**
        * Hide preferences button
        */
       hidePreferencesButton: {
         type: Boolean,
-        attribute: "hide-preferences-button"
+        attribute: "hide-preferences-button",
       },
       /**
        * Direction to align the hax edit panel
        */
       elementAlign: {
         type: String,
-        attribute: "element-align"
+        attribute: "element-align",
       },
       offsetMargin: {
         type: String,
-        attribute: "offset-margin"
+        attribute: "offset-margin",
       },
       /**
        * Data binding of a hidden text area with the value from the hax-body tag
        */
       bodyValue: {
         type: String,
-        attribute: "body-value"
+        attribute: "body-value",
       },
       /**
        * allowed Tags, usually as dictated by the input filtering
@@ -135,46 +135,46 @@ class WysiwygHax extends LitElement {
        */
       allowedTags: {
         type: Array,
-        attribute: "allowed-tags"
+        attribute: "allowed-tags",
       },
       /**
        * Connection object for talking to an app store.
        */
       appStoreConnection: {
         type: String,
-        attribute: "app-store-connection"
+        attribute: "app-store-connection",
       },
       /**
        * Object reference that will get clicked on
        */
       saveButtonSelector: {
-        type: Object
+        type: Object,
       },
       /**
        * class on the field
        */
       fieldClass: {
         type: String,
-        attribute: "field-class"
+        attribute: "field-class",
       },
       /**
        * fieldId, id value on the input field.
        */
       fieldId: {
         type: String,
-        attribute: "field-id"
+        attribute: "field-id",
       },
       /**
        * fieldName, internal to the form in whatever system it's in.
        */
       fieldName: {
         type: String,
-        attribute: "field-name"
+        attribute: "field-name",
       },
       syncBody: {
         type: Boolean,
         attribute: "sync-body",
-        reflect: true
+        reflect: true,
       },
       /**
        * State of the panel
@@ -182,31 +182,31 @@ class WysiwygHax extends LitElement {
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * Location to save content to.
        */
       endPoint: {
         type: String,
-        attribute: "end-point"
+        attribute: "end-point",
       },
       /**
        * Page data, body of text as a string.
        */
       updatePageData: {
         type: String,
-        attribute: "update-page-data"
+        attribute: "update-page-data",
       },
       /**
        * Reference to activeBody.
        */
       activeHaxBody: {
-        type: Object
+        type: Object,
       },
       __imported: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   createRenderRoot() {

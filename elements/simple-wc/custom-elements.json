@@ -3,10 +3,6 @@
   "tags": [
     {
       "name": "name",
-      "path": "./simple-wc.es6.js"
-    },
-    {
-      "name": "name",
       "path": "./simple-wc.js"
     },
     {

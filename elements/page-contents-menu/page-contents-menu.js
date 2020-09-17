@@ -119,7 +119,7 @@ class PageContentsMenu extends LitElement {
         .indent-6 {
           padding-left: 32px;
         }
-      `
+      `,
     ];
   }
 
@@ -163,11 +163,7 @@ class PageContentsMenu extends LitElement {
           >
             ${this.label}
           </simple-tooltip>
-          ${!this.mobile
-            ? html`
-                <h2 class="label">${this.label}</h2>
-              `
-            : ``}
+          ${!this.mobile ? html` <h2 class="label">${this.label}</h2> ` : ``}
         </div>
         ${this.mobile
           ? html`
@@ -224,7 +220,7 @@ class PageContentsMenu extends LitElement {
       ].object.scrollIntoView({
         behavior: "smooth",
         block: "start",
-        inline: "nearest"
+        inline: "nearest",
       });
       // close menu
       this.hideSettings = true;
@@ -275,53 +271,53 @@ class PageContentsMenu extends LitElement {
         groups: ["Contents"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
       contentContainer: {
-        type: Object
+        type: Object,
       },
       relationship: {
-        type: String
+        type: String,
       },
       items: {
-        type: Array
+        type: Array,
       },
       mobile: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       label: {
-        type: String
+        type: String,
       },
       hideSettings: {
-        type: Boolean
+        type: Boolean,
       },
       hideIfEmpty: {
         type: Boolean,
         attribute: "hide-if-empty",
-        reflect: true
+        reflect: true,
       },
       isEmpty: {
         type: Boolean,
         attribute: "is-empty",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -414,7 +410,7 @@ class PageContentsMenu extends LitElement {
       if (propName == "mobile") {
         if (this[propName]) {
           import("@lrnwebcomponents/simple-popover/simple-popover.js").then(
-            module => {
+            (module) => {
               setTimeout(() => {
                 // hook up the pop over menu
                 this.__toggleTarget = this.shadowRoot.querySelector(
@@ -459,7 +455,7 @@ class PageContentsMenu extends LitElement {
           title: item.innerText,
           link: item.id ? "#" + item.id : null,
           object: item,
-          indent: parseInt(item.tagName.toLowerCase().replace("h", ""))
+          indent: parseInt(item.tagName.toLowerCase().replace("h", "")),
         };
         items.push(reference);
       }

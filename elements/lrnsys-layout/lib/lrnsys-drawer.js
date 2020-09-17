@@ -27,7 +27,7 @@ class LrnsysDrawer extends SimpleColors {
           margin: var(--lrnsys-drawer-button-margin);
           padding: var(--lrnsys-drawer-button-padding);
         }
-      `
+      `,
     ];
   }
   /**
@@ -87,73 +87,73 @@ class LrnsysDrawer extends SimpleColors {
        */
       opened: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * If the button should be visually lifted off the UI.
        */
       raised: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Icon to present for clicking.
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Icon to present for clicking.
        */
       avatar: {
-        type: String
+        type: String,
       },
       /**
        * Text to present for clicking.
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * Side of the screen to align the flyout (right or left)
        */
       align: {
-        type: String
+        type: String,
       },
       /**
        * Alt / hover text for this link
        */
       alt: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Header for the drawer
        */
       header: {
-        type: String
+        type: String,
       },
       /**
        * Disabled state.
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Classes to add / subtract based on the item being hovered
        */
       hoverClass: {
         type: String,
-        attribute: "hover-class"
+        attribute: "hover-class",
       },
       /**
        * Tracks if focus state is applied
        */
       focusState: {
         type: Boolean,
-        attribute: "focus-state"
-      }
+        attribute: "focus-state",
+      },
     };
   }
   /**
@@ -244,8 +244,8 @@ class LrnsysDrawer extends SimpleColors {
         invokedBy: this.shadowRoot.querySelector("#flyouttrigger"),
         align: this.align,
         size: "30%",
-        clone: true
-      }
+        clone: true,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -259,7 +259,7 @@ class LrnsysDrawer extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { focus: this.focusState }
+        detail: { focus: this.focusState },
       })
     );
     // see if it has hover classes

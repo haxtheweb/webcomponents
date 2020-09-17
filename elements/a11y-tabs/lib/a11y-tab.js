@@ -46,7 +46,7 @@ class A11yTab extends LitElement {
         ::slotted(*[slot="label"]) {
           display: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -70,64 +70,64 @@ class A11yTab extends LitElement {
         description: "A single tab.",
         icon: "view-day",
         color: "grey",
-        groups: ["Content", "Presentation", "Tabs"]
+        groups: ["Content", "Presentation", "Tabs"],
       },
       settings: {
         quick: [
           {
             property: "disabled",
             title: "Disabled",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "sticky",
             title: "Sticky.",
             desc:
               "Horizontal tabs stick to the top of the window when scrolling.",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         configure: [
           {
             property: "icon",
             title: "Tab Icon",
-            inputMethod: "iconpicker"
+            inputMethod: "iconpicker",
           },
           {
             property: "disabled",
             title: "Disabled",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "label",
             title: "Tab Label",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "",
             title: "Tab Content",
             description: "A content of the tab.",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
         advanced: [
           {
             property: "id",
             title: "Unique ID",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "flag",
             title: "Optional Flag Text",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "flagIcon",
             title: "Optional Flag Icon",
-            inputMethod: "iconpicker"
-          }
-        ]
-      }
+            inputMethod: "iconpicker",
+          },
+        ],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -138,14 +138,14 @@ class A11yTab extends LitElement {
        */
       flag: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`
        */
       flagIcon: {
         type: String,
-        attribute: "flag-icon"
+        attribute: "flag-icon",
       },
       /**
        * whether the tabbed interface is disabled
@@ -153,7 +153,7 @@ class A11yTab extends LitElement {
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled"
+        attribute: "disabled",
       },
       /**
        * whether the tab is hidden
@@ -161,13 +161,13 @@ class A11yTab extends LitElement {
       hidden: {
         type: Boolean,
         reflect: true,
-        attribute: "hidden"
+        attribute: "hidden",
       },
       /**
        * icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * the unique identifier and anchor for the tab
@@ -175,26 +175,26 @@ class A11yTab extends LitElement {
       id: {
         type: String,
         reflect: true,
-        attribute: "id"
+        attribute: "id",
       },
       /**
        * label for the tab
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * order of the tab
        */
       order: {
-        type: Number
+        type: Number,
       },
       /**
        * total number of tabs
        */
       total: {
-        type: Number
-      }
+        type: Number,
+      },
     };
   }
   constructor() {
@@ -203,7 +203,7 @@ class A11yTab extends LitElement {
     this.hidden = false;
     this.order = 1;
     this.total = 1;
-    this.addEventListener("a11y-tab-flag", e => this.handleFlag(e));
+    this.addEventListener("a11y-tab-flag", (e) => this.handleFlag(e));
   }
 
   /**
@@ -212,7 +212,7 @@ class A11yTab extends LitElement {
    * @returns {object} MutationObserver to unwrap contents
    */
   get observer() {
-    let lc = e => this._labelChanged();
+    let lc = (e) => this._labelChanged();
     return new MutationObserver(lc);
   }
   /**
@@ -233,7 +233,7 @@ class A11yTab extends LitElement {
 
   disconnectedCallback() {
     this.observer.disconnect();
-    this.removeEventListener("a11y-tab-flag", e => this.handleFlag(e));
+    this.removeEventListener("a11y-tab-flag", (e) => this.handleFlag(e));
     this._fireTabChanged();
     super.disconnectedCallback();
   }
@@ -289,7 +289,7 @@ class A11yTab extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: false,
-        detail: this
+        detail: this,
       })
     );
   }

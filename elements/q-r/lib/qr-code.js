@@ -40,7 +40,7 @@ class QRCodeElement extends HTMLElement {
       data: null,
       format: "png",
       modulesize: 5,
-      margin: 4
+      margin: 4,
     };
   }
   static get observedAttributes() {
@@ -67,16 +67,16 @@ class QRCodeElement extends HTMLElement {
           ? QRCodeElement.defaultAttributes[attributeName]
           : value;
       },
-      set: value => {
+      set: (value) => {
         this.setAttribute(attributeName, value);
-      }
+      },
     });
   }
   getOptions() {
     let { modulesize, margin } = this;
     return {
       modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
-      margin: margin !== null ? parseInt(margin) : margin
+      margin: margin !== null ? parseInt(margin) : margin,
     };
   }
   generate() {

@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "simple-colors",
-      "description": "`simple-colors`\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nProperties:\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `__utils` - \n\n  * `colors` - ",
-      "attributes": []
-    },
-    {
-      "name": "simple-colors",
       "description": "`simple-colors`\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
@@ -165,7 +160,7 @@
     },
     {
       "name": "simple-colors-polymer",
-      "description": "`simple-colors-polymer`\nshared set of styles for Polymer @lrnwebcomponents\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`simple-colors-polymer`\nshared set of styles for Polymer @lrnwebcomponents\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "accent-color",

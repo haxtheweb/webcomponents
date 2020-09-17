@@ -191,9 +191,10 @@ class SimpleBlogCard extends LitElement {
         simple-popover:not([for]) {
           display: none;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
     return html`
@@ -241,52 +242,52 @@ class SimpleBlogCard extends LitElement {
 
       title: {
         name: "title",
-        type: String
+        type: String,
       },
       author: {
         name: "author",
-        type: String
+        type: String,
       },
       authorimage: {
         name: "authorimage",
-        type: String
+        type: String,
       },
       authorlink: {
         name: "authorlink",
-        type: String
+        type: String,
       },
       readtime: {
         name: "readtime",
-        type: Number
+        type: Number,
       },
       timestamp: {
         name: "timestamp",
-        type: Number
+        type: Number,
       },
       image: {
         name: "image",
-        type: String
+        type: String,
       },
       link: {
         name: "link",
-        type: String
+        type: String,
       },
       shadow: {
         name: "shadow",
-        type: Number
+        type: Number,
       },
       size: {
         name: "size",
-        type: String
+        type: String,
       },
       placeholder: {
         name: "placeholder",
-        type: String
+        type: String,
       },
       alt: {
         name: "alt",
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

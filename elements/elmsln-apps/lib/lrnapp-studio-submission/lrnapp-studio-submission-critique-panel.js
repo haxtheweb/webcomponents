@@ -102,13 +102,13 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
     return {
       submission: {
         type: Object,
-        notify: true
+        notify: true,
       },
       edit: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   _publishClicked(e) {
@@ -119,7 +119,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -131,7 +131,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -141,7 +141,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }

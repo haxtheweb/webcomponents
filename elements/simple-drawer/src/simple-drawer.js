@@ -178,8 +178,8 @@ class SimpleDrawer extends SimpleColors {
         cancelable: true,
         detail: {
           opened: false,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
@@ -188,8 +188,8 @@ class SimpleDrawer extends SimpleColors {
         cancelable: true,
         detail: {
           opened: true,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     }

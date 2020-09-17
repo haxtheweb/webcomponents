@@ -77,7 +77,7 @@ class SiteSearch extends LitElement {
           --simple-fields-accent-color: var(--site-search-text-color, #000);
           color: var(--site-search-placeholder-color, #222);
         }
-      `
+      `,
     ];
   }
   /**
@@ -121,7 +121,7 @@ class SiteSearch extends LitElement {
       <lunr-search id="lunr"></lunr-search>
 
       ${this.__results.map(
-        item => html`
+        (item) => html`
           <a
             class="result"
             .href="${item.location}"
@@ -150,8 +150,8 @@ class SiteSearch extends LitElement {
     this.dispatchEvent(
       new CustomEvent(`search-item-selected`, {
         detail: {
-          value: e.detail
-        }
+          value: e.detail,
+        },
       })
     );
   }
@@ -172,26 +172,26 @@ class SiteSearch extends LitElement {
     return {
       dataSource: {
         type: String,
-        attribute: "data-source"
+        attribute: "data-source",
       },
       showDate: {
         type: Boolean,
-        attribute: "show-date"
+        attribute: "show-date",
       },
       showPath: {
         type: Boolean,
-        attribute: "show-path"
+        attribute: "show-path",
       },
       hideInput: {
         type: Boolean,
-        attribute: "hide-input"
+        attribute: "hide-input",
       },
       search: {
-        type: String
+        type: String,
       },
       __results: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   /**

@@ -426,21 +426,21 @@ class EditableTable extends displayBehaviors(PolymerElement) {
        */
       editMode: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Hide the borders table styles menu option
        */
       hideBordered: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Hide the condensed table styles menu option
        */
       hideCondensed: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Hide the table display menu group
@@ -448,43 +448,43 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       hideDisplay: {
         type: Boolean,
         computed:
-          "_tableDisplayHidden(hideBordered,hideCondensed,hideStriped,hideResponsive)"
+          "_tableDisplayHidden(hideBordered,hideCondensed,hideStriped,hideResponsive)",
       },
       /**
        * Hide the filtering option.
        */
       hideFilter: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Hide the table sorting & filtering menu group
        */
       hideSortFilter: {
         type: Boolean,
-        computed: "_tableSortHidden(hideSort,hideFilter)"
+        computed: "_tableSortHidden(hideSort,hideFilter)",
       },
       /**
        * Hide the sorting option.
        */
       hideSort: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Hide the responsive table styles menu option
        */
       hideResponsive: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Hide the striped table styles menu option
        */
       hideStriped: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 
@@ -548,7 +548,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     if (edit) {
@@ -582,7 +582,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       ) {
         this.importHTML(table);
       } else {
-        this.set("data", [["", "", ""], ["", "", ""], ["", "", ""]]);
+        this.set("data", [
+          ["", "", ""],
+          ["", "", ""],
+          ["", "", ""],
+        ]);
       }
     }
   }
@@ -673,7 +677,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   _setMinimumData(data) {
     if (data.length < 1 || data[0].length < 1) {
-      this.set("data", [["", "", ""], ["", "", ""], ["", "", ""]]);
+      this.set("data", [
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""],
+      ]);
     }
   }
 

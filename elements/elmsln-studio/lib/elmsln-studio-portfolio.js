@@ -226,7 +226,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
             flex: 0 0 calc(50% - var(--elmsln-studio-margin, 20px));
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -294,7 +294,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                   id="sort"
                   aria-pressed="${this.sortLatest ? "false" : "true"}"
                   class="${!this.sortLatest ? "" : "sort-latest"}"
-                  @click="${e => (this.sortLatest = !this.sortLatest)}"
+                  @click="${(e) => (this.sortLatest = !this.sortLatest)}"
                   controls="portfolio-project"
                 >
                   <iron-icon icon="sort"></iron-icon>
@@ -307,7 +307,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
               ${!this.portfolio
                 ? ``
                 : this.sortedSubmissions.map(
-                    s => html`
+                    (s) => html`
                       <section
                         class="${this.submissionFilter === s.id
                           ? "section-discussion"
@@ -336,7 +336,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                             ? html`
                                 <ul class="submission-links">
                                   ${s.links.map(
-                                    link => html`
+                                    (link) => html`
                                       <li>
                                         <elmsln-studio-link
                                           href="${link.url}"
@@ -356,9 +356,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                                 </ul>
                               `
                             : !s.sources || s.sources.length === 0
-                            ? html`
-                                ${s.body}
-                              `
+                            ? html` ${s.body} `
                             : this.getThumnailGrid(s)}
                         </div>
                       </section>
@@ -384,9 +382,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                   </ul>
                 </div>
               </div>
-              <h2 class="discussion-label">
-                Feedback
-              </h2>
+              <h2 class="discussion-label">Feedback</h2>
               <div class="discussion callout">
                 <p class="callout-label">
                   <iron-icon
@@ -413,24 +409,24 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
     return {
       ...super.properties,
       portfolio: {
-        type: Object
+        type: Object,
       },
       submission: {
-        type: Object
+        type: Object,
       },
       comment: {
         type: String,
-        attribute: "comment"
+        attribute: "comment",
       },
       submissionFilter: {
         type: String,
-        attribute: "submission-filter"
+        attribute: "submission-filter",
       },
       sortLatest: {
         type: Boolean,
         attribute: "sort-latest",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -474,7 +470,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
       !this.submissionFilter || !this.portfolio || !this.portfolio.submissions
         ? []
         : this.portfolio.submissions.filter(
-            s => s.id === this.submissionFilter
+            (s) => s.id === this.submissionFilter
           );
     return !filter ? false : filter[0];
   }

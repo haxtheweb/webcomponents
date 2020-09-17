@@ -8,7 +8,7 @@ import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 import "web-social-share/dist/esm/web-social-share.entry.js";
 import {
   a as patchEsm,
-  b as bootstrapLazy
+  b as bootstrapLazy,
 } from "web-social-share/dist/esm/core-a2e7fe62.js";
 
 const defineCustomElements = (win, options) => {
@@ -17,8 +17,8 @@ const defineCustomElements = (win, options) => {
       [
         [
           "web-social-share",
-          [[1, "web-social-share", { show: [1028], share: [16] }]]
-        ]
+          [[1, "web-social-share", { show: [1028], share: [16] }]],
+        ],
       ],
       options
     );
@@ -53,7 +53,7 @@ class SiteShareWidget extends LitElement {
           color: #ffffff;
           background-color: var(--haxcms-color, #000000);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -80,7 +80,7 @@ class SiteShareWidget extends LitElement {
     this.icon = "social:share";
     this.activeGitFileLink = "";
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       if (store.activeItem) {
         this.activeItem = toJS(store.activeItem);
       }
@@ -101,38 +101,38 @@ class SiteShareWidget extends LitElement {
             facebook: {
               socialShareUrl: location,
               socialSharePopupWidth: 400,
-              socialSharePopupHeight: 400
-            }
+              socialSharePopupHeight: 400,
+            },
           },
           {
             twitter: {
               socialShareUrl: location,
               socialSharePopupWidth: 300,
-              socialSharePopupHeight: 400
-            }
+              socialSharePopupHeight: 400,
+            },
           },
           {
             linkedin: {
-              socialShareUrl: location
-            }
+              socialShareUrl: location,
+            },
           },
           {
             pinterest: {
-              socialShareUrl: location
-            }
+              socialShareUrl: location,
+            },
           },
           {
             email: {
               socialShareTo: email,
-              socialShareBody: location
-            }
+              socialShareBody: location,
+            },
           },
           {
             copy: {
-              socialShareUrl: location
-            }
-          }
-        ]
+              socialShareUrl: location,
+            },
+          },
+        ],
       };
       this.shadowRoot.querySelector("web-social-share").share = share;
     }
@@ -149,7 +149,7 @@ class SiteShareWidget extends LitElement {
       activeItem: { type: Object },
       show: { type: Boolean },
       alt: { type: String },
-      icon: { type: String }
+      icon: { type: String },
     };
   }
 }

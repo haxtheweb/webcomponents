@@ -1,0 +1,80 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-iconset",
+      "path": "./lib/simple-iconset.js",
+      "description": "Singleton to manage iconsets",
+      "properties": [
+        {
+          "name": "iconsets",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "needsHydrated",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "simple-icon",
+      "path": "./simple-icon.js",
+      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./simple-icon.umd.js"
+    },
+    {
+      "name": "simple-icon",
+      "path": "./src/simple-icon.js",
+      "description": "`simple-icon`\n`Render an SVG based icon`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

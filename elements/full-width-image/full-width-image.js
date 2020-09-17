@@ -58,6 +58,7 @@ class FullWidthImage extends LitElement {
           -ms-transition: 0.5s all ease-in-out;
           -o-transition: 0.5s all ease-in-out;
         }
+
         .wrapper:hover {
           opacity: 0;
           background-color: transparent;
@@ -70,22 +71,20 @@ class FullWidthImage extends LitElement {
           color: #fff;
           font-style: italic;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div id="image">
-        <div class="wrapper">
-          <div class="caption">
-            ${this.caption}
-            <slot></slot>
-          </div>
+    return html` <div id="image">
+      <div class="wrapper">
+        <div class="caption">
+          ${this.caption}
+          <slot></slot>
         </div>
       </div>
-    `;
+    </div>`;
   }
 
   // haxProperty definition
@@ -105,13 +104,13 @@ class FullWidthImage extends LitElement {
             type: "image",
             source: "source",
             caption: "caption",
-            title: "caption"
-          }
+            title: "caption",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -121,8 +120,8 @@ class FullWidthImage extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "image:image",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         configure: [
           {
@@ -131,16 +130,16 @@ class FullWidthImage extends LitElement {
             inputMethod: "haxupload",
             required: true,
             icon: "icons:link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "caption",
             description: "",
-            inputMethod: "textfield"
-          }
+            inputMethod: "textfield",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -150,12 +149,12 @@ class FullWidthImage extends LitElement {
 
       source: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       caption: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

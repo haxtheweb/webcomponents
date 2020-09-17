@@ -172,7 +172,7 @@ class SimpleConceptNetworkNode extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * Visualization reflected to attribute for styling
@@ -180,44 +180,44 @@ class SimpleConceptNetworkNode extends PolymerElement {
       visualization: {
         type: String,
         reflectToAttribute: true,
-        value: "3d"
+        value: "3d",
       },
       /**
        * Icon to present
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * image to present
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * disabled status
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * title / label text
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Longer description used for more info
        */
       description: {
-        type: String
+        type: String,
       },
       /**
        * source for a link
        */
       src: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   static get tag() {

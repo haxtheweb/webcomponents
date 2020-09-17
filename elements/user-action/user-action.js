@@ -16,12 +16,9 @@ import { UserActionBroker } from "./lib/UserActionBroker.js";
  */
 class UserAction extends HTMLElement {
   // render function
-  get html() {
-    return `
-<style>
-
-        </style>
-<slot></slot>`;
+  render() {
+    return html` <style></style>
+      <slot></slot>`;
   }
 
   // haxProperty definition
@@ -40,13 +37,13 @@ class UserAction extends HTMLElement {
         handles: [
           {
             type: "inline",
-            text: ""
-          }
+            text: "",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -59,10 +56,10 @@ class UserAction extends HTMLElement {
             options: {
               visibility: "Can see this",
               keypress: "Presses a key here",
-              click: "Clicks this"
+              click: "Clicks this",
             },
             required: true,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             attribute: "every",
@@ -71,7 +68,7 @@ class UserAction extends HTMLElement {
               "Default behavior is just to track the first occurance",
             inputMethod: "boolean",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             slot: "",
@@ -79,11 +76,11 @@ class UserAction extends HTMLElement {
             description: "Content that can emit events",
             inputMethod: "code-editor",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -94,23 +91,23 @@ class UserAction extends HTMLElement {
       track: {
         name: "track",
         type: String,
-        value: "visibility"
+        value: "visibility",
       },
       eventname: {
         name: "eventname",
         type: String,
-        value: "user-engagement"
+        value: "user-engagement",
       },
       every: {
         name: "every",
         type: Boolean,
-        value: false
+        value: false,
       },
       visiblelimit: {
         name: "visiblelimit",
         type: Number,
-        value: 0.5
-      }
+        value: 0.5,
+      },
     };
   }
 
@@ -173,7 +170,7 @@ class UserAction extends HTMLElement {
             {
               root: document.rootElement,
               rootMargin: "0px",
-              threshold: [0.0, 0.25, 0.5, 0.75, 1.0]
+              threshold: [0.0, 0.25, 0.5, 0.75, 1.0],
             }
           );
           this.observer.observe(this);

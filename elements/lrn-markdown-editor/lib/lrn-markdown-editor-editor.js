@@ -27,7 +27,7 @@ class LrnMarkdownEditorEditor extends LitElement {
         .mtz-toolbar {
           flex-grow: 5;
         }
-      `
+      `,
     ];
   }
   /**
@@ -90,8 +90,8 @@ class LrnMarkdownEditorEditor extends LitElement {
   static get properties() {
     return {
       content: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -104,8 +104,8 @@ class LrnMarkdownEditorEditor extends LitElement {
         this.dispatchEvent(
           new CustomEvent("content-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -120,7 +120,7 @@ class LrnMarkdownEditorEditor extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { content: this.content }
+        detail: { content: this.content },
       })
     );
   }

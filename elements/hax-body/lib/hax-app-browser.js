@@ -29,14 +29,14 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         .item-wrapper {
           text-align: center;
         }
-      `
+      `,
     ];
   }
   constructor() {
     super();
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-search-source-updated": "_searchSelected"
+      "hax-search-source-updated": "_searchSelected",
     };
     this.searching = false;
     this.activeApp = null;
@@ -48,7 +48,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     return html`
       <div class="item-wrapper">
         ${this.appList.map(
-          app => html`
+          (app) => html`
             <hax-tray-button
               index="${app.index}"
               label="${app.details.title}"
@@ -76,20 +76,20 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
        * Search term
        */
       search: {
-        type: String
+        type: String,
       },
       /**
        * Searching mode
        */
       searching: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Global activeApp object.
        */
       activeApp: {
-        type: Object
+        type: Object,
       },
       /**
        * If we have an active, scale everything
@@ -97,11 +97,11 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
       hasActive: {
         reflect: true,
         type: Boolean,
-        attribute: "has-active"
+        attribute: "has-active",
       },
       appList: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   updated(changedProperties) {

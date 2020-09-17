@@ -111,7 +111,7 @@ class PaperAvatar extends LitElement {
           fill: var(--paper-avatar-text-color, #ffffff);
           opacity: 0.8;
         }
-      `
+      `,
     ];
   }
   /**
@@ -132,9 +132,7 @@ class PaperAvatar extends LitElement {
         ?hidden="${this.jdenticonExists && this.jdenticon}"
       >
         ${this.icon
-          ? html`
-              <iron-icon icon="${this.icon}"></iron-icon>
-            `
+          ? html` <iron-icon icon="${this.icon}"></iron-icon> `
           : html`
               <span ?two-chars="${this.twoChars}"
                 >${this._label(this.label)}
@@ -185,47 +183,47 @@ class PaperAvatar extends LitElement {
        * Optional iron-icon
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Image address or base64
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        *	Label with username
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Ensure we can support jdenticon before invoking it
        */
       jdenticonExists: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Show two chars in avatar
        */
       twoChars: {
         type: Boolean,
-        attribute: "two-chars"
+        attribute: "two-chars",
       },
 
       /**
        * Array of colors for avatar background
        */
       colors: {
-        type: Array
+        type: Array,
       },
 
       /**
        * Set true if you want use a jdenticon avatar
        */
       jdenticon: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -326,7 +324,7 @@ class PaperAvatar extends LitElement {
           "#FF9800",
           "#FF5722",
           "#9E9E9E",
-          "#607D8B"
+          "#607D8B",
         ];
 
     var hash = 0;

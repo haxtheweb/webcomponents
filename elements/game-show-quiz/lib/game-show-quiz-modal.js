@@ -86,7 +86,7 @@ class GameShowQuizModal extends LitElement {
             font-size: 12px;
           }
         }
-      `
+      `,
     ];
   }
   static get tag() {

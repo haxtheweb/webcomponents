@@ -141,7 +141,7 @@ class HAXApp extends HTMLElement {
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: this.data
+          detail: this.data,
         })
       );
     }

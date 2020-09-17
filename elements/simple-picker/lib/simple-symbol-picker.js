@@ -22,7 +22,7 @@ class SimpleSymbolPicker extends SimplePicker {
         simple-picker-option {
           justify-content: space-around;
         }
-      `
+      `,
     ];
   }
 
@@ -36,8 +36,8 @@ class SimpleSymbolPicker extends SimplePicker {
        */
       symbolTypes: {
         name: "symbolTypes",
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -65,8 +65,8 @@ class SimpleSymbolPicker extends SimplePicker {
       super.firstUpdated(changedProperties);
     }
     let optData = [{ alt: null, icon: this.icon, value: null }];
-    this.symbolTypes.forEach(type =>
-      window.SimplePickerSymbols[type].forEach(symbol => optData.push(symbol))
+    this.symbolTypes.forEach((type) =>
+      window.SimplePickerSymbols[type].forEach((symbol) => optData.push(symbol))
     );
     optData = this._setPickerOptions(optData);
     this.options = optData;
@@ -134,7 +134,7 @@ window.SimplePickerSymbols = window.SimplePickerSymbols || {
     { value: "&frac34;", alt: "&frac34;" },
     { value: "&iquest;", alt: "&iquest;" },
     { value: "&times;", alt: "&times;" },
-    { value: "&divide;", alt: "&divide;" }
+    { value: "&divide;", alt: "&divide;" },
   ],
   math: [
     { value: "&forall;", alt: "&forall;" },
@@ -174,7 +174,7 @@ window.SimplePickerSymbols = window.SimplePickerSymbols || {
     { value: "&oplus;", alt: "&oplus;" },
     { value: "&otimes;", alt: "&otimes;" },
     { value: "&perp;", alt: "&perp;" },
-    { value: "&sdot;", alt: "&sdot;" }
+    { value: "&sdot;", alt: "&sdot;" },
   ],
   characters: [
     { value: "&Agrave;", alt: "&Agrave;" },
@@ -238,7 +238,7 @@ window.SimplePickerSymbols = window.SimplePickerSymbols || {
     { value: "&uuml;", alt: "&uuml;" },
     { value: "&yacute;", alt: "&yacute;" },
     { value: "&thorn;", alt: "&thorn;" },
-    { value: "&yuml;", alt: "&yuml;" }
+    { value: "&yuml;", alt: "&yuml;" },
   ],
   greek: [
     { value: "&Alpha;", alt: "&Alpha;" },
@@ -302,7 +302,7 @@ window.SimplePickerSymbols = window.SimplePickerSymbols || {
     { value: "&uuml;", alt: "&uuml;" },
     { value: "&yacute;", alt: "&yacute;" },
     { value: "&thorn;", alt: "&thorn;" },
-    { value: "&yuml;", alt: "&yuml;" }
+    { value: "&yuml;", alt: "&yuml;" },
   ],
   misc: [
     { value: "&OElig;", alt: "&OElig;" },
@@ -366,8 +366,8 @@ window.SimplePickerSymbols = window.SimplePickerSymbols || {
     { value: "&uuml;", alt: "&uuml;" },
     { value: "&yacute;", alt: "&yacute;" },
     { value: "&thorn;", alt: "&thorn;" },
-    { value: "&yuml;", alt: "&yuml;" }
-  ]
+    { value: "&yuml;", alt: "&yuml;" },
+  ],
 };
 
 window.customElements.define(SimpleSymbolPicker.tag, SimpleSymbolPicker);

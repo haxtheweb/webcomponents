@@ -56,7 +56,7 @@ class LrnsysCollapselist extends SimpleColors {
         .collapse-content {
           padding: 16px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -75,7 +75,7 @@ class LrnsysCollapselist extends SimpleColors {
     return html`
       <ul>
         ${this.items.map(
-          row => html`
+          (row) => html`
             <li>
               <lrnsys-collapselist-item>
                 <span slot="label">
@@ -100,8 +100,8 @@ class LrnsysCollapselist extends SimpleColors {
        * Array of items to present with label and content for the list of collapses.
        */
       items: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 }

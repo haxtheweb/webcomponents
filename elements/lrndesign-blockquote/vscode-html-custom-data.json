@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrndesign-blockquote",
-      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
       "attributes": [
         {
           "name": "citation",
@@ -14,30 +14,8 @@
           "description": "`image` {`string`} - Optional image to use\n\nProperty: image"
         },
         {
-          "name": "author",
-          "description": "`author` {`string`} - Optional author of the quote\n\nProperty: author"
-        },
-        {
-          "name": "source-link",
-          "description": "`source-link` {`string`} - Optional source that links to where the quote is from\n\nProperty: sourceLink"
-        },
-        {
-          "name": "display-mode",
-          "description": "`display-mode` {`string`} - Funny 1900s vision.\n\nProperty: displayMode\n\nDefault: default"
-        }
-      ]
-    },
-    {
-      "name": "lrndesign-blockquote",
-      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
-      "attributes": [
-        {
-          "name": "citation",
-          "description": "`citation` {`string`} - Source being cited\n\nProperty: citation"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - Optional image to use\n\nProperty: image"
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "author",
@@ -59,7 +37,7 @@
     },
     {
       "name": "lrndesign-blockquote",
-      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
       "attributes": [
         {
           "name": "citation",
@@ -68,6 +46,10 @@
         {
           "name": "image",
           "description": "`image` {`string`} - Optional image to use\n\nProperty: image"
+        },
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
         },
         {
           "name": "author",

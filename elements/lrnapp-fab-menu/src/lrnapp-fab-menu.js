@@ -16,9 +16,13 @@ class LrnappFabMenu extends LitElement {
     this.disabled = false;
     setTimeout(() => {
       import("@polymer/paper-fab/paper-fab.js");
-      import("@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js");
+      import(
+        "@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js"
+      );
       import("@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");
-      import("@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js");
+      import(
+        "@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js"
+      );
     }, 0);
   }
   static get styles() {
@@ -53,7 +57,7 @@ class LrnappFabMenu extends LitElement {
         .overlay {
           text-align: right;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -89,7 +93,7 @@ class LrnappFabMenu extends LitElement {
       if (propName == "opened") {
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
-            value: this[propName]
+            value: this[propName],
           })
         );
       }
@@ -101,14 +105,14 @@ class LrnappFabMenu extends LitElement {
   static get properties() {
     return {
       icon: {
-        type: String
+        type: String,
       },
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       disabled: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   // Public methods

@@ -38,7 +38,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
           background: #bbdefb;
           border-bottom: 1px dashed #2196f3;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -48,9 +48,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     }, 0);
   }
   render() {
-    return html`
-      <button>${this.term}</button>
-    `;
+    return html` <button>${this.term}</button> `;
   }
 
   static get tag() {
@@ -61,8 +59,8 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       ...super.properties,
       term: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   /**
@@ -82,14 +80,14 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
       detail: {
         title: this.term,
         elements: {
-          content: c
+          content: c,
         },
         styles: {
           "--simple-modal-width": "50vw",
-          "--simple-modal-height": "50vh"
+          "--simple-modal-height": "50vh",
         },
-        invokedBy: this
-      }
+        invokedBy: this,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -117,13 +115,13 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "inline",
-            text: "term"
-          }
+            text: "term",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          inlineOnly: true
-        }
+          inlineOnly: true,
+        },
       },
       settings: {
         quick: [
@@ -132,8 +130,8 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
             title: "Term",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -141,7 +139,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
             title: "Term",
             inputMethod: "textfield",
             icon: "editor:title",
-            required: true
+            required: true,
           },
           {
             slot: "",
@@ -149,11 +147,11 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
             description:
               "The definitition to display when the term is clicked.",
             inputMethod: "code-editor",
-            required: true
-          }
+            required: true,
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

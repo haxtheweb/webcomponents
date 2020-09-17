@@ -78,15 +78,13 @@ class RelativeHeading extends RelativeHeadingLite {
           outline: var(--relative-heading-button-focus-outline);
           opacity: var(--relative-heading-button-focus-opacity, 1);
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      ${this.template} ${this.button}
-    `;
+    return html` ${this.template} ${this.button}`;
   }
 
   // haxProperty definition
@@ -104,13 +102,13 @@ class RelativeHeading extends RelativeHeadingLite {
         groups: ["Heading"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -119,63 +117,63 @@ class RelativeHeading extends RelativeHeadingLite {
             property: "parent",
             description: "Parent Heading's Resource ID",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "disableLink",
             description: "Disables link button feature.",
             inputMethod: "boolean",
-            required: false
+            required: false,
           },
           {
             property: "linkAlignRight",
             description: "Aligns copy link button to far right of heading.",
             inputMethod: "boolean",
-            required: false
-          }
+            required: false,
+          },
         ],
         advanced: [
           {
             property: "defaultLevel",
             description: "Heading level if parent is not found.",
             inputMethod: "number",
-            required: false
+            required: false,
           },
           {
             property: "copyMessage",
             description:
               "Overrides default text for copy link's toast message.",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "linkLabel",
             description: "Overrides default label copy link button.",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "linkIcon",
             description: "Overrides default icon copy link button.",
             inputMethod: "iconpicker",
-            required: false
+            required: false,
           },
           {
             property: "closeLabel",
             description:
               "Overrides default label for copy link's toast's close button.",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "closeIcon",
             description:
               "Overrides default icon for copy link's toast's close button.",
             inputMethod: "iconpicker",
-            required: false
-          }
-        ]
-      }
+            required: false,
+          },
+        ],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -187,26 +185,26 @@ class RelativeHeading extends RelativeHeadingLite {
        * overrides state manager's default icon for copy link's toast's close button
        */
       closeIcon: {
-        type: String
+        type: String,
       },
       /**
        * overrides state manager's default label for copy link's toast's close button
        */
       closeLabel: {
-        type: String
+        type: String,
       },
       /**
        * overrides state manager's default message for copy link's toast
        */
       copyMessage: {
-        type: String
+        type: String,
       },
       /**
        * The relative-heading resource's UUID.
        */
       disableLink: {
         type: Boolean,
-        attribute: "disable-link"
+        attribute: "disable-link",
       },
       /**
        * label for copy link's button
@@ -214,20 +212,20 @@ class RelativeHeading extends RelativeHeadingLite {
       linkAlignRight: {
         type: Boolean,
         attribute: "link-align-right",
-        reflect: true
+        reflect: true,
       },
       /**
        * icon for copy link's button
        */
       linkIcon: {
-        type: String
+        type: String,
       },
       /**
        * label for copy link's button
        */
       linkLabel: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

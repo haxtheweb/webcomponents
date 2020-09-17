@@ -57,26 +57,25 @@ class SimpleToast extends LitElement {
           z-index: var(--simple-toast-z-index, inherit);
           font-size: var(--simple-toast-font-size, inherit);
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <paper-toast
-        id="toast"
-        text="${this.text}"
-        duration="${this.duration}"
-        ?opened="${this.opened}"
-        @opened-changed="${this.openedChanged}"
-        .class="${this.classStyle}"
+    return html` <paper-toast
+      id="toast"
+      text="${this.text}"
+      duration="${this.duration}"
+      ?opened="${this.opened}"
+      @opened-changed="${this.openedChanged}"
+      .class="${this.classStyle}"
+    >
+      <slot></slot>
+      <paper-button .hidden="${!this.closeButton}" @click="${this.hide}"
+        >${this.closeText}</paper-button
       >
-        <slot></slot>
-        <paper-button .hidden="${!this.closeButton}" @click="${this.hide}"
-          >${this.closeText}</paper-button
-        >
-      </paper-toast>
-    `;
+    </paper-toast>`;
   }
 
   // properties available to the custom element for data binding
@@ -89,40 +88,40 @@ class SimpleToast extends LitElement {
        */
       opened: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Plain text based message to display
        */
       text: {
-        type: String
+        type: String,
       },
       /**
        * Class name, fit-bottom being a useful one
        */
       classStyle: {
         type: String,
-        attribute: "class-style"
+        attribute: "class-style",
       },
       /**
        * Text for the close button
        */
       closeText: {
         type: String,
-        attribute: "close-text"
+        attribute: "close-text",
       },
       /**
        * How long the toast message should be displayed
        */
       duration: {
-        type: Number
+        type: Number,
       },
       /**
        * Event callback when hide is called
        */
       eventCallback: {
         type: String,
-        attribute: "event-callback"
+        attribute: "event-callback",
       },
       /**
        * If there should be a close button shown
@@ -130,8 +129,8 @@ class SimpleToast extends LitElement {
       closeButton: {
         type: Boolean,
         reflect: true,
-        attribute: "close-button"
-      }
+        attribute: "close-button",
+      },
     };
   }
 
@@ -243,7 +242,7 @@ class SimpleToast extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: true,
-        composed: true
+        composed: true,
       });
       this.dispatchEvent(evt);
     }

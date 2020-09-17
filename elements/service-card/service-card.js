@@ -19,7 +19,7 @@ class ServiceCard extends LitElement {
     return {
       source: { type: String },
       title: { type: String },
-      alt: { type: String }
+      alt: { type: String },
     };
   }
 
@@ -31,14 +31,14 @@ class ServiceCard extends LitElement {
       gizmo: {
         title: "Service card",
         description: "Simple presentation of services or info",
-        icon: "hax:calendar",
+        icon: "icons:credit-card",
         color: "orange",
         groups: ["Card"],
         handles: [],
         meta: {
           author: "McGarvelcuddy",
-          owner: "elmsln"
-        }
+          owner: "elmsln",
+        },
       },
       settings: {
         quick: [],
@@ -46,29 +46,29 @@ class ServiceCard extends LitElement {
           {
             property: "source",
             title: "Source",
-            inputMethod: "haxupload"
+            inputMethod: "haxupload",
           },
           {
             property: "alt",
             title: "Alt Text",
             description: "Alternative text for non-sighted users",
-            inputMethod: "alt"
+            inputMethod: "alt",
           },
           {
             property: "title",
             title: "Title",
             description: "Service title / name",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "",
             title: "Decription",
             description: "Details of the service",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 

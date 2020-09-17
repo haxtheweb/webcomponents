@@ -158,13 +158,6 @@ $rh-color--feedback--default--lightest:        $rh-color--gray-100 !default;
 $rh-color--feedback--default--darkest:         $rh-color--gray-800 !default;
 
 
-
-
-
-
-
-
-
 // ========================================================================
 // ALL OF THESE MUST BE RESOLVED.
 // ========================================================================
@@ -230,15 +223,15 @@ $rh-global--color--purple-rain:       #3b0083 !default;      // Old RH purple.
 
 
 $rh-global--color--product-lines: (
-  default:             $rh-global--color--black-soft,
-  storage:             $rh-global--color--gold,
-  storage--dark:       $rh-global--color--orange,
-  infrastructure:      $rh-global--color--blue-sky-deep, // Used to be linux-platforms
-  infrastructure--dark:$rh-global--color--blue-peacock,
-  app-dev:             $rh-global--color--green,
-  app-dev--dark:       $rh-global--color--green-verde,
-  support:             $rh-global--color--gray-nickel,
-  support--dark:       $rh-global--color--gray-charcoal
+default:             $rh-global--color--black-soft,
+storage:             $rh-global--color--gold,
+storage--dark:       $rh-global--color--orange,
+infrastructure:      $rh-global--color--blue-sky-deep, 
+infrastructure--dark:$rh-glob--color--blue-peacock,
+app-dev:             $rh-glob--color--green,
+app-dev--dark:       $rh-glob--color--green-verde,
+support:             $rh-glob--color--gray-nickel,
+support--dark:       $rh-glob--color--gray-charcoal
 ) !default;
 
 

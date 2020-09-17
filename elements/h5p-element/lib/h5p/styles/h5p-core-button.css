@@ -25,15 +25,19 @@ button.h5p-core-button {
   -webkit-transition: initial;
   transition: initial;
 }
+
 button.h5p-core-button:focus {
   background: #1f67a8;
 }
+
 button.h5p-core-button:hover {
   background: rgba(31, 103, 168, 0.83);
 }
+
 button.h5p-core-button:active {
   background: #104888;
 }
+
 button.h5p-core-button:before {
   font-family: 'H5P';
   padding-right: 0.15em;
@@ -41,6 +45,7 @@ button.h5p-core-button:before {
   vertical-align: middle;
   line-height: 0.7;
 }
+
 button.h5p-core-cancel-button:visited,
 button.h5p-core-cancel-button:link,
 button.h5p-core-cancel-button {
@@ -52,6 +57,7 @@ button.h5p-core-cancel-button {
   text-decoration: none;
   cursor: pointer;
 }
+
 button.h5p-core-cancel-button:hover,
 button.h5p-core-cancel-button:focus {
   background: none;

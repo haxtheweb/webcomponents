@@ -62,22 +62,22 @@ class LrnappOpenStudioProjects extends PolymerElement {
             as="assignment"
           >
             <lrnsys-button
-              icon\$="[[_getSubmissionIcon(assignment.id)]]"
-              icon-class\$="[[_getSubmissionClass(assignment.id)]]"
+              icon$="[[_getSubmissionIcon(assignment.id)]]"
+              icon-class$="[[_getSubmissionClass(assignment.id)]]"
               on-click="_scrollToTarget"
               label="[[assignment.title]]"
-              data-assignment-id\$="[[assignment.id]]"
+              data-assignment-id$="[[assignment.id]]"
               class="project-step"
               hover-class="blue white-text"
               raised=""
-              hidden\$="[[!assignment.title]]"
+              hidden$="[[!assignment.title]]"
             ></lrnsys-button>
           </template>
         </div>
         <template is="dom-repeat" items="[[renderSubmissions]]" as="submission">
           <a
             name="[[submission.relationships.assignment.title]]"
-            class\$="assignment-[[submission.relationships.assignment.id]]"
+            class$="assignment-[[submission.relationships.assignment.id]]"
             ><h2 class="assignment-title">
               [[submission.relationships.assignment.title]]
             </h2></a
@@ -97,33 +97,33 @@ class LrnappOpenStudioProjects extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       /**
        * The projects that exist so we can make other calls for data
        */
       projects: {
         type: Array,
-        notify: true
+        notify: true,
       },
       /**
        * The submissions that exist so we can make other calls for data
        */
       submissions: {
         type: Array,
-        notify: true
+        notify: true,
       },
       /**
        * The renderSubmissions we kick to the screen
@@ -132,41 +132,41 @@ class LrnappOpenStudioProjects extends PolymerElement {
         type: Array,
         notify: true,
         computed:
-          "_renderSubmissionsCompute(submissions, activeProject, activeAuthorId)"
+          "_renderSubmissionsCompute(submissions, activeProject, activeAuthorId)",
       },
       activeProjectId: {
         type: String,
         reflectToAttribute: true,
-        value: null
+        value: null,
       },
       activeProject: {
         type: Object,
-        computed: "_activeProjectCompute(activeProjectId, projects)"
+        computed: "_activeProjectCompute(activeProjectId, projects)",
       },
       activeAuthorId: {
         type: String,
         reflectToAttribute: true,
-        value: null
+        value: null,
       },
       showSubmissions: {
         type: Boolean,
         computed: "_showSubmissions(activeProjectId, activeAuthorId)",
-        value: false
+        value: false,
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * base path for the app
        */
       basePath: {
         type: String,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -178,14 +178,14 @@ class LrnappOpenStudioProjects extends PolymerElement {
     let renderSubmissions = [];
     // make an array of parent assignment ids
     const parentAssignments = activeProject.attributes.steps.map(
-      step => step.id
+      (step) => step.id
     );
     // filter the submissions by if they are listed in the active projects steps
-    renderSubmissions = submissions.filter(submission => {
+    renderSubmissions = submissions.filter((submission) => {
       return parentAssignments.includes(submission.relationships.assignment.id);
     });
     // sort render submissions by how the assignment steps are listed in the active project
-    renderSubmissions.sort(function(a, b) {
+    renderSubmissions.sort(function (a, b) {
       for (
         var index = 0;
         index < activeProject.attributes.steps.length;
@@ -211,7 +211,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
   _activeProjectCompute(activeProjectId, projects) {
     let activeProject = null;
     if (projects) {
-      activeProject = projects.find(project => {
+      activeProject = projects.find((project) => {
         return project.id === activeProjectId;
       });
     }
@@ -247,7 +247,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
     if (this.shadowRoot.querySelector(".assignment-" + active)) {
       this.shadowRoot.querySelector(".assignment-" + active).scrollIntoView({
         block: "end",
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   }
@@ -264,7 +264,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

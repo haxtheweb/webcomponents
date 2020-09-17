@@ -33,14 +33,14 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
        */
       axisXOnlyInteger: {
         attribute: "axis-x-only-integer",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * TODO
        */
       axisXScaleMinSpace: {
         attribute: "axis-x-min-space",
-        type: Number
+        type: Number,
       },
       /**
        * If set to true then each bar will represent a series and
@@ -51,7 +51,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
        */
       distributeSeries: {
         attribute: "distribute-series",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Inverts the axes of the bar chart in order to draw
@@ -61,7 +61,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
        */
       horizontalBars: {
         attribute: "horizontal-bars",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Unless low/high are explicitly set, bar chart will be
@@ -69,14 +69,14 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
        */
       referenceValue: {
         attribute: "reference-value",
-        type: Number
+        type: Number,
       },
       /**
        * Specify the distance in pixel of bars in a group.
        */
       seriesBarDistance: {
         attribute: "series-bar-distance",
-        type: Number
+        type: Number,
       },
       /**
        * If set to true this property will cause the series bars
@@ -85,7 +85,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
        */
       stackBars: {
         attribute: "stack-bars",
-        type: Boolean
+        type: Boolean,
       },
       /**
        * If set to "true" this property will form a total
@@ -97,8 +97,8 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
        */
       stackMode: {
         attribute: "stack-mode",
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -122,7 +122,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
             a horizontal bar chart. Be aware that you also need
             to invert your axis settings as the Y Axis will now display
             the labels and the X Axis the values.`,
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "stackBars",
@@ -130,7 +130,7 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
           description: `
             If set to true this property will cause the series bars
             to be stacked.`,
-          inputMethod: "boolean"
+          inputMethod: "boolean",
         },
         {
           property: "distributeSeries",
@@ -139,23 +139,23 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
             If set to true then each bar will represent a series and
             the data array is expected to be a one dimensional array
             of data values rather than a series array of series.`,
-          inputMethod: "boolean"
-        }
+          inputMethod: "boolean",
+        },
       ],
       barX = [
         {
           property: "axisXScaleMinSpace",
           title: "X-Axis Scale Minimum Space",
           description: "Specifies minimum height in pixel of scale steps.",
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "axisXOnlyInteger",
           title: "X-Axis Scale (only integers)",
           description:
             "Use only integer values (whole numbers) for the scale steps.",
-          inputMethod: "boolean"
-        }
+          inputMethod: "boolean",
+        },
       ],
       barY = [
         {
@@ -164,13 +164,13 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
           description: `
             Unless low/high are explicitly set, bar chart will be
             centered at zero by default.`,
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "seriesBarDistance",
           title: "Series Bar Distance",
           description: `Specify the distance in pixel of bars in a group.`,
-          inputMethod: "number"
+          inputMethod: "number",
         },
         {
           property: "stackMode",
@@ -182,8 +182,8 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
             If set to "false" this property will force
             the stacked bars to draw from the zero line.
             In stacked mode the "seriesBarDistance" property will have no effect.`,
-          inputMethod: "boolean"
-        }
+          inputMethod: "boolean",
+        },
       ];
     haxProps.gizmo.title = "Bar Chart";
     haxProps.gizmo.icon = "editor:insert-chart";
@@ -218,14 +218,14 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
       ...this.lineBarOptions,
       axisX: {
         onlyInteger: this.axisXOnlyInteger,
-        scaleMinSpace: this.axisXScaleMinSpace
+        scaleMinSpace: this.axisXScaleMinSpace,
       },
       distributeSeries: this.distributeSeries,
       horizontalBars: this.horizontalBars,
       referenceValue: this.referenceValue,
       seriesBarDistance: this.seriesBarDistance,
       stackBars: this.stackBars,
-      stackMode: this.stackMode
+      stackMode: this.stackMode,
     };
   }
 

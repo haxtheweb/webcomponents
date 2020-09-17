@@ -123,14 +123,13 @@ class EditableOutline extends LitElement {
         li[data-jos-published="false"] {
           text-decoration: line-through;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <iron-a11y-keys
+    return html` <iron-a11y-keys
         keys="enter"
         @keys-pressed="${this._enterPressed}"
         stop-keyboard-event-propagation
@@ -212,8 +211,7 @@ class EditableOutline extends LitElement {
           ><span>Duplicate</span>
         </button>
       </div>
-      <ul id="outline"></ul>
-    `;
+      <ul id="outline"></ul>`;
   }
 
   // properties available to the custom element for data binding
@@ -225,21 +223,21 @@ class EditableOutline extends LitElement {
        * A items list of JSON Outline Schema Items
        */
       items: {
-        type: Array
+        type: Array,
       },
       /**
        * Edit mode
        */
       editMode: {
         type: Boolean,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * Outline node for keyboard key binding
        */
       __outlineNode: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   constructor() {
@@ -280,10 +278,10 @@ class EditableOutline extends LitElement {
    * Expand all items
    */
   _expandall(e) {
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
+    this.shadowRoot.querySelectorAll("li").forEach((el) => {
       el.classList.remove("collapsed-title");
     });
-    this.shadowRoot.querySelectorAll("ul").forEach(el => {
+    this.shadowRoot.querySelectorAll("ul").forEach((el) => {
       el.classList.remove("collapsed-content");
     });
   }
@@ -291,7 +289,7 @@ class EditableOutline extends LitElement {
    * Collapse all items
    */
   _collapseall(e) {
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
+    this.shadowRoot.querySelectorAll("li").forEach((el) => {
       if (el.nextElementSibling && el.nextElementSibling.tagName === "UL") {
         el.classList.add("collapsed-title");
         el.nextElementSibling.classList.add("collapsed-content");
@@ -334,14 +332,14 @@ class EditableOutline extends LitElement {
   }
   firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
-    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
+    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach((el) => {
       el.target = this.__outlineNode;
     });
     this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
     this._observer = new MutationObserver(this._observeRecord.bind(this));
     this._observer.observe(this.__outlineNode, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
   }
   updated(changedProperties) {
@@ -355,8 +353,8 @@ class EditableOutline extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -627,7 +625,7 @@ class EditableOutline extends LitElement {
         this.__blockScrub = true;
         this.__outlineNode.appendChild(outline.firstChild);
       }
-      this.shadowRoot.querySelectorAll("li").forEach(el => {
+      this.shadowRoot.querySelectorAll("li").forEach((el) => {
         el.setAttribute("contenteditable", "true");
       });
     }, 0);
@@ -734,7 +732,7 @@ class EditableOutline extends LitElement {
     if (
       this.__outlineNode.querySelector("li") == null ||
       !node ||
-      (node.tagName && (node.tagName != "UL" && node.tagName != "LI"))
+      (node.tagName && node.tagName != "UL" && node.tagName != "LI")
     ) {
       this.__outlineNode.appendChild(li);
     } else {

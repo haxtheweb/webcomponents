@@ -134,8 +134,8 @@ class LrnappOpenStudioTable extends PolymerElement {
           <template>
             <paper-button
               on-click="_loadProjectRoute"
-              data-project-id\$="{{item.relationships.project.data.id}}"
-              data-author-id\$="{{item.relationships.author.data.id}}"
+              data-project-id$="{{item.relationships.project.data.id}}"
+              data-author-id$="{{item.relationships.author.data.id}}"
               >[[item.relationships.project.data.title]]</paper-button
             >
           </template>
@@ -146,9 +146,7 @@ class LrnappOpenStudioTable extends PolymerElement {
               >Assignment</vaadin-grid-sorter
             >
           </template>
-          <template>
-            [[item.relationships.assignment.data.title]]
-          </template>
+          <template> [[item.relationships.assignment.data.title]] </template>
         </vaadin-grid-column>
         <vaadin-grid-column resizable="" width="20em" flex-grow="0">
           <template class="header">
@@ -159,7 +157,7 @@ class LrnappOpenStudioTable extends PolymerElement {
           <template>
             <paper-button
               on-click="_loadSubmissionUrl"
-              data-submission-id\$="{{item.id}}"
+              data-submission-id$="{{item.id}}"
               >[[item.attributes.title]]</paper-button
             >
           </template>
@@ -184,9 +182,7 @@ class LrnappOpenStudioTable extends PolymerElement {
               >Submitted</vaadin-grid-sorter
             >
           </template>
-          <template>
-            [[item.meta.humandate]]
-          </template>
+          <template> [[item.meta.humandate]] </template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Submitted"
@@ -208,9 +204,7 @@ class LrnappOpenStudioTable extends PolymerElement {
               >Author</vaadin-grid-sorter
             >
           </template>
-          <template>
-            [[item.relationships.author.data.display_name]]
-          </template>
+          <template> [[item.relationships.author.data.display_name]] </template>
         </vaadin-grid-column>
         <vaadin-grid-column resizable="" width="[[_numWidth]]">
           <template class="header">
@@ -341,44 +335,44 @@ class LrnappOpenStudioTable extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       /**
        * The submissions to render
        */
       submissions: {
         type: Array,
-        notify: true
+        notify: true,
       },
       _numWidth: {
         type: String,
-        value: "2.25em"
+        value: "2.25em",
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * base path for the app
        */
       basePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * Active / clicked submission.
@@ -386,8 +380,8 @@ class LrnappOpenStudioTable extends PolymerElement {
       activeSubmission: {
         type: String,
         value: null,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   _loadProjectRoute(e) {
@@ -404,8 +398,8 @@ class LrnappOpenStudioTable extends PolymerElement {
         composed: true,
         detail: {
           data: { page: "projects" },
-          queryParams: { author: author, project: project }
-        }
+          queryParams: { author: author, project: project },
+        },
       })
     );
   }
@@ -437,7 +431,7 @@ class LrnappOpenStudioTable extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

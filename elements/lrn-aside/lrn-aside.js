@@ -34,7 +34,7 @@ class LrnAside extends LitElement {
           float: right;
           max-width: 480px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -55,22 +55,22 @@ class LrnAside extends LitElement {
        * Title for the aside.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Apply CSS sticky styling
        */
       sticky: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Direction to hang off UI if sticky, left or right.
        */
       direction: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -92,12 +92,12 @@ class LrnAside extends LitElement {
         handles: [
           {
             type: "text",
-            title: "title"
-          }
+            title: "title",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -106,8 +106,8 @@ class LrnAside extends LitElement {
             title: "Title",
             description: "Enter title for sticky note",
             inputMethod: "textfield",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -115,20 +115,20 @@ class LrnAside extends LitElement {
             title: "Title",
             description: "Enter title for sticky note.",
             inputMethod: "textfield",
-            required: true
+            required: true,
           },
           {
             slot: "",
             title: "Content",
             description: "Content of the sticky note",
             inputMethod: "code-editor",
-            required: true
+            required: true,
           },
           {
             property: "sticky",
             title: "Stick to page on scroll",
             description: "Appear sticky when the user scrolls past it",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "direction",
@@ -138,12 +138,12 @@ class LrnAside extends LitElement {
             options: {
               "": "none",
               right: "Right",
-              left: "Left"
-            }
-          }
+              left: "Left",
+            },
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

@@ -54,43 +54,48 @@ class ExtensibleToolbar extends LitElement {
           --extensible-toolbar-hidden-until-lg: none;
           --extensible-toolbar-hidden-until-xl: none;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         :host([aria-hidden]) {
           visibility: hidden;
           opacity: 0;
           height: 0;
         }
+
         :host([sticky]) {
           position: sticky;
           top: 0;
         }
+
         :host([collapsed]:not([responsive-size="xs"])) {
           --extensible-toolbar-visible-until-sm: none;
           --extensible-toolbar-hidden-until-sm: unset;
         }
+
         :host([collapsed]:not([responsive-size*="s"])) {
           --extensible-toolbar-visible-until-md: none;
           --extensible-toolbar-hidden-until-md: none;
         }
+
         :host([collapsed][responsive-size*="l"]) {
           --extensible-toolbar-visible-until-lg: none;
           --extensible-toolbar-hidden-until-lg: none;
         }
+
         :host([collapsed][responsive-size="xl"]) {
           --extensible-toolbar-visible-until-xl: none;
           --extensible-toolbar-hidden-until-xl: none;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot>`;
   }
 
   // properties available to the custom element for data binding
@@ -104,7 +109,7 @@ class ExtensibleToolbar extends LitElement {
       collapsed: {
         attribute: "collapsed",
         reflect: true,
-        type: Boolean
+        type: Boolean,
       },
 
       /**
@@ -112,7 +117,7 @@ class ExtensibleToolbar extends LitElement {
        */
       responsiveSize: {
         attribute: "responsive-size",
-        type: String
+        type: String,
       },
 
       /**
@@ -121,8 +126,8 @@ class ExtensibleToolbar extends LitElement {
       sticky: {
         attribute: "sticky",
         type: Boolean,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 
@@ -157,8 +162,8 @@ class ExtensibleToolbar extends LitElement {
         detail: {
           element: root,
           attribute: "responsive-size",
-          relativeToParent: true
-        }
+          relativeToParent: true,
+        },
       })
     );
   }
@@ -194,7 +199,7 @@ class ExtensibleToolbar extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           }
         )
       )

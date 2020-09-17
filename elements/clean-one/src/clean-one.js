@@ -622,7 +622,7 @@ class CleanOne extends HAXCMSThemeParts(
             --site-search-link-color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
             --site-search-result-color: var(--simple-colors-default-theme-light-blue-1,#CFD4E3);
           }
-      `
+      `,
     ];
   }
 
@@ -712,11 +712,11 @@ class CleanOne extends HAXCMSThemeParts(
       target = e.target;
     }
     if (target.value) {
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js").then(
-        () => {
-          this.searchTerm = target.value;
-        }
-      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+      ).then(() => {
+        this.searchTerm = target.value;
+      });
     } else {
       this.searchTerm = "";
     }
@@ -726,8 +726,8 @@ class CleanOne extends HAXCMSThemeParts(
     return {
       ...super.properties,
       searchTerm: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -744,13 +744,23 @@ class CleanOne extends HAXCMSThemeParts(
   constructor() {
     super();
     this.HAXCMSThemeSettings.autoScroll = true;
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+    );
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.searchTerm = "";
       this.__disposer.push(reaction);

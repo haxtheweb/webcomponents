@@ -59,7 +59,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
       </style>
       <paper-card heading="[[name]]" elevation="2">
         <div class="card-content">
-          <div hidden\$="[[hideForm]]">
+          <div hidden$="[[hideForm]]">
             <paper-input label="Task to accomplish" id="itemtext"></paper-input>
             <paper-button raised="" id="itembutton" on-click="_addItemToList"
               >Add item</paper-button
@@ -67,7 +67,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
           </div>
           <ul class="task-list-wrapper">
             <template is="dom-repeat" items="[[items]]" as="item">
-              <li data-item-id\$="[[item.id]]">
+              <li data-item-id$="[[item.id]]">
                 <paper-checkbox
                   checked="{{item.value}}"
                   disabled="[[item.disabled]]"
@@ -96,7 +96,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
       hideForm: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Whether or not the list of items is disabled
@@ -105,14 +105,14 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
       disabledList: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Name of this to do list
        */
       name: {
         type: String,
-        value: "To do list"
+        value: "To do list",
       },
       /**
        * Items
@@ -120,8 +120,8 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
       items: {
         type: Array,
         value: [],
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   /**
@@ -147,7 +147,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         label: this.shadowRoot.querySelector("#itemtext").value,
         value: false,
         disabled: this.disabledList,
-        id: "item-id-" + this.items.length
+        id: "item-id-" + this.items.length,
       });
       this.shadowRoot.querySelector("#itemtext").value = "";
     }
@@ -165,8 +165,8 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         groups: ["List"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -175,8 +175,8 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
             title: "Name",
             description: "The name of this to do list",
             inputMethod: "textfield",
-            icon: "editor:title"
-          }
+            icon: "editor:title",
+          },
         ],
         configure: [
           {
@@ -184,7 +184,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
             title: "Name",
             description: "The name of this to do list",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "items",
@@ -198,19 +198,19 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
                 title: "Task",
                 description: "Name of the task",
                 inputMethod: "textfield",
-                required: true
+                required: true,
               },
               {
                 property: "value",
                 title: "Done",
                 description: "Completion state",
-                inputMethod: "boolean"
-              }
-            ]
-          }
+                inputMethod: "boolean",
+              },
+            ],
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

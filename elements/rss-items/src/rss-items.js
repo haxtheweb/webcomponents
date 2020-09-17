@@ -77,7 +77,7 @@ class RssItems extends LitElement {
    * @param {Array} items RSS items.
    */
   _parseItems(items) {
-    return items.map(item => {
+    return items.map((item) => {
       item.excerpt = this._getItemExcerpt(item);
       item.imageSrc = this._getItemImageScr(item);
       return item;
@@ -134,8 +134,8 @@ class RssItems extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

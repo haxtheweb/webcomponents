@@ -18,9 +18,8 @@ import "@polymer/paper-button/paper-button.js";
  */
 class LayoutBuilder extends PolymerElement {
   // render function
-  static get template() {
-    return html`
-      <style>
+  render() {
+    return html` <style>
         :host {
           display: block;
         }
@@ -29,6 +28,7 @@ class LayoutBuilder extends PolymerElement {
           display: block;
           margin: 0;
         }
+
         :host paper-button,
         :host #content-wrapper {
           border: 1px solid #ddd;
@@ -52,8 +52,7 @@ class LayoutBuilder extends PolymerElement {
       </div>
       <div id="insert-sibling-after">
         <paper-button on-tap="_handleAddSibling">Add new [[type]]</paper-button>
-      </div>
-    `;
+      </div>`;
   }
 
   // haxProperty definition
@@ -70,19 +69,19 @@ class LayoutBuilder extends PolymerElement {
         groups: ["Builder"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -93,13 +92,13 @@ class LayoutBuilder extends PolymerElement {
       type: {
         name: "type",
         type: Boolean,
-        value: "layout"
+        value: "layout",
       },
       id: {
         name: "id",
         type: String,
-        reflecttoAttribute: true
-      }
+        reflecttoAttribute: true,
+      },
     };
   }
 

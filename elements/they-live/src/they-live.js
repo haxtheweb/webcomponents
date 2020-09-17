@@ -63,7 +63,7 @@ class TheyLive extends LitElement {
           visibility: visible;
           opacity: 1;
         }
-      `
+      `,
     ];
   }
 

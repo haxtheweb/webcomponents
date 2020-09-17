@@ -16,16 +16,12 @@ class LrndesignMapmenuItem extends LitElement {
           --iron-icon-height: var(--lrndesign-mapmenu-item-height);
           display: inline-flex;
         }
-      `
+      `,
     ];
   }
   render() {
     return html`
-      ${this.icon
-        ? html`
-            <iron-icon icon="${this.icon}"></iron-icon>
-          `
-        : ``}
+      ${this.icon ? html` <iron-icon icon="${this.icon}"></iron-icon> ` : ``}
       <span id="title">${this.title}</span>
     `;
   }
@@ -41,14 +37,14 @@ class LrndesignMapmenuItem extends LitElement {
   static get properties() {
     return {
       icon: {
-        type: String
+        type: String,
       },
       title: {
-        type: String
+        type: String,
       },
       url: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

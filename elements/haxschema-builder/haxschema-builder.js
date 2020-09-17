@@ -27,46 +27,45 @@ class HaxschemaBuilder extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         code-editor {
           height: 500px;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <vaadin-split-layout>
-        <div>
-          <paper-button raised noink @click="${this.addConfigure}"
-            >Add to configure</paper-button
-          >
-          <paper-button raised noink @click="${this.addAdvanced}"
-            >Add to advanced</paper-button
-          >
-          <code-editor
-            id="code"
-            @value-changed="${this._editorDataChanged}"
-            .value="{}"
-            language="json"
-          ></code-editor>
-          <json-editor
-            id="json"
-            label="JSON"
-            @value-changed="${this.__haxSchemaChanged}"
-            value="${this.haxSchema}"
-          ></json-editor>
-        </div>
-        <div>
-          <hax-schema-form
-            id="form"
-            value="${this.value}"
-            @value-changed="${this.__valueChanged}"
-          ></hax-schema-form>
-        </div>
-      </vaadin-split-layout>
-    `;
+    return html` <vaadin-split-layout>
+      <div>
+        <paper-button raised noink @click="${this.addConfigure}"
+          >Add to configure</paper-button
+        >
+        <paper-button raised noink @click="${this.addAdvanced}"
+          >Add to advanced</paper-button
+        >
+        <code-editor
+          id="code"
+          @value-changed="${this._editorDataChanged}"
+          .value="{}"
+          language="json"
+        ></code-editor>
+        <json-editor
+          id="json"
+          label="JSON"
+          @value-changed="${this.__haxSchemaChanged}"
+          value="${this.haxSchema}"
+        ></json-editor>
+      </div>
+      <div>
+        <hax-schema-form
+          id="form"
+          value="${this.value}"
+          @value-changed="${this.__valueChanged}"
+        ></hax-schema-form>
+      </div>
+    </vaadin-split-layout>`;
   }
 
   // haxProperty definition
@@ -84,8 +83,8 @@ class HaxschemaBuilder extends LitElement {
         handles: [],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -96,11 +95,11 @@ class HaxschemaBuilder extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -113,20 +112,20 @@ class HaxschemaBuilder extends LitElement {
        */
       haxSchema: {
         type: String,
-        attribute: "hax-schema"
+        attribute: "hax-schema",
       },
       /**
        * Optional remote source to pull in
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * String based value passed between the elements to stitch together
        */
       value: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -148,7 +147,7 @@ class HaxschemaBuilder extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("hax-schema-changed", {
-            value: this[propName]
+            value: this[propName],
           })
         );
         this._haxSchemaChanged(this[propName], oldValue);
@@ -225,7 +224,7 @@ class HaxschemaBuilder extends LitElement {
       inputMethod: "textfield",
       icon: "android",
       required: true,
-      validationType: "text"
+      validationType: "text",
     };
   }
   __haxSchemaChanged(e) {

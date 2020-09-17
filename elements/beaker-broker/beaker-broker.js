@@ -19,8 +19,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 class BeakerBroker extends LitElement {
   // render function
   render() {
-    return html`
-      <style>
+    return html` <style>
         :host {
           display: block;
         }
@@ -29,8 +28,7 @@ class BeakerBroker extends LitElement {
           display: none;
         }
       </style>
-      <slot></slot>
-    `;
+      <slot></slot>`;
   }
 
   // haxProperty definition
@@ -46,15 +44,15 @@ class BeakerBroker extends LitElement {
        * Archive
        */
       archive: {
-        type: Object
+        type: Object,
       },
       /**
        * datUrl
        */
       datUrl: {
         type: String,
-        attribute: "dat-url"
-      }
+        attribute: "dat-url",
+      },
     };
   }
 
@@ -90,8 +88,8 @@ class BeakerBroker extends LitElement {
         this.dispatchEvent(
           new CustomEvent("archive-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -101,8 +99,8 @@ class BeakerBroker extends LitElement {
         this.dispatchEvent(
           new CustomEvent("dat-url-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

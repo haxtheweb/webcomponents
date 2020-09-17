@@ -3,38 +3,7 @@
   "tags": [
     {
       "name": "lrn-gitgraph",
-      "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperties:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "commits",
-          "description": "`commits` {`any[]`} - \n\nProperty: commits\n\nDefault: "
-        },
-        {
-          "name": "template",
-          "description": "`template` {`string`} - \n\nProperty: template\n\nDefault: blackarrow"
-        },
-        {
-          "name": "orientation",
-          "description": "`orientation` {`string`} - \n\nProperty: orientation\n\nDefault: horizontal"
-        },
-        {
-          "name": "mode",
-          "description": "`mode` {`string`} - \n\nProperty: mode\n\nDefault: "
-        },
-        {
-          "name": "reverse-arrow",
-          "description": "`reverse-arrow` {`boolean`} - \n\nProperty: reverseArrow\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "config",
-          "description": "`config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperty: config"
-        }
-      ]
-    },
-    {
-      "name": "lrn-gitgraph",
-      "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperties:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperties:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "commits",
@@ -69,7 +38,7 @@
     },
     {
       "name": "lrn-gitgraph",
-      "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperties:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperties:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "commits",

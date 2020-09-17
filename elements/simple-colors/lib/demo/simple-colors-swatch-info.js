@@ -58,7 +58,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
           white-space: nowrap;
           margin: 5px 0;
         }
-      `
+      `,
     ];
   }
   // render function
@@ -86,9 +86,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
             <td style="${this._getInverseBg(this.swatchId)}">inverted color</td>
           </tr>
           <tr>
-            <th scope="row">
-              --simple-colors-fixed-theme-${this.swatchName}
-            </th>
+            <th scope="row">--simple-colors-fixed-theme-${this.swatchName}</th>
             <td style="${this._getBg(this.swatchId)}">default color</td>
             <td style="${this._getBg(this.swatchId)}">fixed color</td>
           </tr>
@@ -109,13 +107,13 @@ class simpleColorsSwatchInfo extends SimpleColors {
           </tr>
         </thead>
         <tbody>
-          ${this._getOptions(this.colors).map(color => {
+          ${this._getOptions(this.colors).map((color) => {
             return html`
               <tr>
                 <th scope="row">${color}</th>
                 <td>
                   ${this._getAa(this.swatchId, color).map(
-                    contrast =>
+                    (contrast) =>
                       html`
                         <span
                           class="contrast"
@@ -127,7 +125,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
                 </td>
                 <td>
                   ${this._getAaLarge(this.swatchId, color).map(
-                    contrast =>
+                    (contrast) =>
                       html`
                         <span
                           class="contrast"
@@ -167,7 +165,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
       swatchId: {
         attribute: "swatch-id",
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * The swatch name (`color-shade`)
@@ -175,8 +173,8 @@ class simpleColorsSwatchInfo extends SimpleColors {
       swatchName: {
         attribute: "swatch-name",
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

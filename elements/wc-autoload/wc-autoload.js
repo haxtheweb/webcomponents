@@ -34,7 +34,7 @@ const fetch_retry = async (url, options, n) => {
  * process the loading event in case we need to ensure timing is
  * better handled downstream.
  */
-window.WCAutoload.process = e => {
+window.WCAutoload.process = (e) => {
   // find the loader
   var loader = window.WCAutoload.requestAvailability();
   loader.loaded = true;
@@ -49,7 +49,7 @@ window.WCAutoload.process = e => {
       loader.processNewElement(target);
     }
     // hack to convert children into array
-    target.querySelectorAll("*").forEach(el => {
+    target.querySelectorAll("*").forEach((el) => {
       if (el.tagName && !list[el.tagName]) {
         loader.processNewElement(el);
         list[el.tagName] = el.tagName;
@@ -66,10 +66,10 @@ window.WCAutoload.process = e => {
         !window.WCAutoloadRegistryFileProcessed
       ) {
         await fetch_retry(window.WCAutoloadRegistryFile, {}, 3)
-          .then(function(response) {
+          .then(function (response) {
             return response.json();
           })
-          .then(function(data) {
+          .then(function (data) {
             window.WCAutoloadRegistryFileProcessed = true;
             window.WCAutoloadRegistry = data;
           });
@@ -79,7 +79,7 @@ window.WCAutoload.process = e => {
         for (var i in window.WCAutoloadRegistry) {
           loader.registry.register({
             tag: i,
-            path: window.WCAutoloadRegistry[i]
+            path: window.WCAutoloadRegistry[i],
           });
         }
       }
@@ -90,7 +90,7 @@ window.WCAutoload.process = e => {
       }
       // mutation observer will pick up changes after initial load
       // but this gets us at load time with fallback support for legacy
-      target.querySelectorAll("*").forEach(el => {
+      target.querySelectorAll("*").forEach((el) => {
         if (el.tagName && !list[el.tagName]) {
           loader.processNewElement(el);
           list[el.tagName] = el.tagName;
@@ -107,7 +107,7 @@ window.addEventListener("load", window.WCAutoload.process);
 // and MutationObserver doesn't pick up the tag being there
 // this could be the result of a slow page load for example
 // in these cases; see the event of the item being in the registry
-window.WCAutoload.postLoaded = e => {
+window.WCAutoload.postLoaded = (e) => {
   setTimeout(() => {
     let loader = window.WCAutoload.requestAvailability();
     if (loader.loaded && document.querySelectorAll(e.detail.tag).length > 0) {
@@ -147,7 +147,7 @@ class WcRegistry extends HTMLElement {
           for (var i in jsonList) {
             this.loader.registry.register({
               tag: i,
-              path: jsonList[i]
+              path: jsonList[i],
             });
           }
         } catch (e) {
@@ -177,14 +177,14 @@ class WcAutoload extends HTMLElement {
     this.registry = window.DynamicImportRegistry.requestAvailability();
     this.options = {
       childList: true,
-      subtree: true
+      subtree: true,
     };
   }
   connectedCallback() {
     // listen for changes and then process any new node that has a tag name
-    this._mutationObserver = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
+    this._mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
           this.processNewElement(node);
         });
       });

@@ -118,8 +118,8 @@ class SimpleCameraSnap extends HTMLElement {
           cancelable: true,
           detail: {
             img: img,
-            raw: raw
-          }
+            raw: raw,
+          },
         })
       );
       selfie.classList.add("has-snap");

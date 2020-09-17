@@ -101,7 +101,7 @@ class PieMenu extends PolymerElement {
           left: 22px;
         }
       </style>
-      <div data-hide-label-text\$="[[hideLabelText]]">
+      <div data-hide-label-text$="[[hideLabelText]]">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.95 193.94">
           <path
             id="right-shape"
@@ -137,29 +137,29 @@ class PieMenu extends PolymerElement {
           ></circle>
         </svg>
         <div id="center-icon" data-button="center" class="icon-container">
-          <iron-icon icon\$="[[centerIcon]]"></iron-icon>
+          <iron-icon icon$="[[centerIcon]]"></iron-icon>
           <div class="icon-label" aria-hidden="true">[[centerLabel]]</div>
         </div>
         <div id="top-icon" data-button="top" class="icon-container">
-          <iron-icon icon\$="[[topIcon]]"></iron-icon>
+          <iron-icon icon$="[[topIcon]]"></iron-icon>
           <div class="icon-label" aria-hidden="true">[[topLabel]]</div>
         </div>
         <div id="right-icon" data-button="right" class="icon-container">
-          <iron-icon icon\$="[[rightIcon]]"></iron-icon>
+          <iron-icon icon$="[[rightIcon]]"></iron-icon>
           <div class="icon-label" aria-hidden="true">[[rightLabel]]</div>
         </div>
         <div id="bottom-icon" data-button="bottom" class="icon-container">
-          <iron-icon icon\$="[[bottomIcon]]"></iron-icon>
+          <iron-icon icon$="[[bottomIcon]]"></iron-icon>
           <div class="icon-label" aria-hidden="true">[[bottomLabel]]</div>
         </div>
         <div id="left-icon" data-button="left" class="icon-container">
-          <iron-icon icon\$="[[leftIcon]]"></iron-icon>
+          <iron-icon icon$="[[leftIcon]]"></iron-icon>
           <div class="icon-label" aria-hidden="true">[[leftLabel]]</div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.95 193.94">
           <circle
             id="center-button"
-            xlink:title\$="[[centerLabel]]"
+            xlink:title$="[[centerLabel]]"
             data-button="center"
             tabindex="0"
             on-click="_itemTapped"
@@ -171,7 +171,7 @@ class PieMenu extends PolymerElement {
           ></circle>
           <path
             id="top-button"
-            xlink:title\$="[[topLabel]]"
+            xlink:title$="[[topLabel]]"
             data-button="top"
             role="button"
             tabindex="0"
@@ -181,7 +181,7 @@ class PieMenu extends PolymerElement {
           ></path>
           <path
             id="right-button"
-            xlink:title\$="[[rightLabel]]"
+            xlink:title$="[[rightLabel]]"
             data-button="right"
             role="button"
             tabindex="0"
@@ -191,7 +191,7 @@ class PieMenu extends PolymerElement {
           ></path>
           <path
             id="bottom-button"
-            xlink:title\$="[[bottomLabel]]"
+            xlink:title$="[[bottomLabel]]"
             data-button="bottom"
             role="button"
             tabindex="0"
@@ -201,7 +201,7 @@ class PieMenu extends PolymerElement {
           ></path>
           <path
             id="left-button"
-            xlink:title\$="[[leftLabel]]"
+            xlink:title$="[[leftLabel]]"
             data-button="left"
             role="button"
             tabindex="0"
@@ -223,78 +223,78 @@ class PieMenu extends PolymerElement {
        */
       hideLabelText: {
         type: String,
-        value: "false"
+        value: "false",
       },
       /**
        * center button label
        */
       centerLabel: {
         type: String,
-        value: "Home"
+        value: "Home",
       },
       /**
        * top button label
        */
       topLabel: {
         type: String,
-        value: "Option 1"
+        value: "Option 1",
       },
       /**
        * left button label
        */
       leftLabel: {
         type: String,
-        value: "Option 2"
+        value: "Option 2",
       },
       /**
        * bottom button label
        */
       bottomLabel: {
         type: String,
-        value: "Option 3"
+        value: "Option 3",
       },
       /**
        * right button label
        */
       rightLabel: {
         type: String,
-        value: "Option 4"
+        value: "Option 4",
       },
       /**
        * center button label
        */
       centerIcon: {
         type: String,
-        value: "icons:check-box-outline-blank"
+        value: "icons:check-box-outline-blank",
       },
       /**
        * top button label
        */
       topIcon: {
         type: String,
-        value: "icons:check-box-outline-blank"
+        value: "icons:check-box-outline-blank",
       },
       /**
        * left button label
        */
       leftIcon: {
         type: String,
-        value: "icons:check-box-outline-blank"
+        value: "icons:check-box-outline-blank",
       },
       /**
        * bottom button label
        */
       bottomIcon: {
         type: String,
-        value: "icons:check-box-outline-blank"
+        value: "icons:check-box-outline-blank",
       },
       /**
        * right button label
        */
       rightIcon: {
         type: String,
-        value: "icons:check-box-outline-blank"
-      }
+        value: "icons:check-box-outline-blank",
+      },
     };
   }
   /**
@@ -314,7 +314,7 @@ class PieMenu extends PolymerElement {
    * add focus or hover states
    */
   _addListenerAddState(menu, button, action, state) {
-    button.addEventListener(action, e => {
+    button.addEventListener(action, (e) => {
       var elements = menu._getButtonElements(menu, button);
       for (var i = 0; i < elements.length; i++) {
         elements[i].classList.add(state);
@@ -325,7 +325,7 @@ class PieMenu extends PolymerElement {
    * remove focus or hover states
    */
   _addListenerRemoveState(menu, button, action, state) {
-    button.addEventListener(action, e => {
+    button.addEventListener(action, (e) => {
       var elements = menu._getButtonElements(menu, button);
       for (var i = 0; i < elements.length; i++) {
         elements[i].classList.remove(state);
@@ -357,7 +357,7 @@ class PieMenu extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { option: localLink }
+        detail: { option: localLink },
       })
     );
   }

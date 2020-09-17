@@ -3,23 +3,28 @@
   "tags": [
     {
       "name": "simple-pages",
-      "path": "./simple-pages.es6.js",
+      "path": "./simple-pages.js",
       "description": "`simple-pages`\n`toggle between pages`",
-      "properties": [
+      "attributes": [
+        {
+          "name": "selected-attribute",
+          "type": "string"
+        },
         {
           "name": "selected",
           "type": "number",
           "default": "0"
         }
-      ]
-    },
-    {
-      "name": "simple-pages",
-      "path": "./simple-pages.js",
-      "description": "`simple-pages`\n`toggle between pages`",
+      ],
       "properties": [
         {
+          "name": "selectedAttribute",
+          "attribute": "selected-attribute",
+          "type": "string"
+        },
+        {
           "name": "selected",
+          "attribute": "selected",
           "type": "number",
           "default": "0"
         }

@@ -10,7 +10,7 @@ const Pattern = {
   of: "Pattern Library/Atoms/Forms", //Pattern library path
   name: "MtzMarkedEditor", //Pattern name
   file: require("raw-loader!./demo/index.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(Pattern);
 

@@ -21,14 +21,14 @@ function cssLang(hljs) {
               contains: [
                 {
                   className: "built_in",
-                  begin: /[\w-]+/
+                  begin: /[\w-]+/,
                 },
                 {
                   begin: /\(/,
                   end: /\)/,
-                  contains: [hljs.APOS_STRING_MODE, hljs.QUOTE_STRING_MODE]
-                }
-              ]
+                  contains: [hljs.APOS_STRING_MODE, hljs.QUOTE_STRING_MODE],
+                },
+              ],
             },
             hljs.CSS_NUMBER_MODE,
             hljs.QUOTE_STRING_MODE,
@@ -36,16 +36,16 @@ function cssLang(hljs) {
             hljs.C_BLOCK_COMMENT_MODE,
             {
               className: "number",
-              begin: "#[0-9A-Fa-f]+"
+              begin: "#[0-9A-Fa-f]+",
             },
             {
               className: "meta",
-              begin: "!important"
-            }
-          ]
-        }
-      }
-    ]
+              begin: "!important",
+            },
+          ],
+        },
+      },
+    ],
   };
 
   return {
@@ -55,26 +55,26 @@ function cssLang(hljs) {
       hljs.C_BLOCK_COMMENT_MODE,
       {
         className: "selector-id",
-        begin: /#[A-Za-z0-9_-]+/
+        begin: /#[A-Za-z0-9_-]+/,
       },
       {
         className: "selector-class",
-        begin: /\.[A-Za-z0-9_-]+/
+        begin: /\.[A-Za-z0-9_-]+/,
       },
       {
         className: "selector-attr",
         begin: /\[/,
         end: /\]/,
-        illegal: "$"
+        illegal: "$",
       },
       {
         className: "selector-pseudo",
-        begin: /:(:)?[a-zA-Z0-9\_\-\+\(\)"'.]+/
+        begin: /:(:)?[a-zA-Z0-9\_\-\+\(\)"'.]+/,
       },
       {
         begin: "@(font-face|page)",
         lexemes: "[a-z-]+",
-        keywords: "font-face page"
+        keywords: "font-face page",
       },
       {
         begin: "@",
@@ -86,7 +86,7 @@ function cssLang(hljs) {
         contains: [
           {
             className: "keyword",
-            begin: /\w+/
+            begin: /\w+/,
           },
           {
             begin: /\s/,
@@ -96,23 +96,23 @@ function cssLang(hljs) {
             contains: [
               hljs.APOS_STRING_MODE,
               hljs.QUOTE_STRING_MODE,
-              hljs.CSS_NUMBER_MODE
-            ]
-          }
-        ]
+              hljs.CSS_NUMBER_MODE,
+            ],
+          },
+        ],
       },
       {
         className: "selector-tag",
         begin: IDENT_RE,
-        relevance: 0
+        relevance: 0,
       },
       {
         begin: "{",
         end: "}",
         illegal: /\S/,
-        contains: [hljs.C_BLOCK_COMMENT_MODE, RULE]
-      }
-    ]
+        contains: [hljs.C_BLOCK_COMMENT_MODE, RULE],
+      },
+    ],
   };
 }
 export { cssLang };

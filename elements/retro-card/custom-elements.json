@@ -3,18 +3,6 @@
   "tags": [
     {
       "name": "retro-card",
-      "path": "./retro-card.es6.js",
-      "description": "`retro-card`\n`Simple card in a cool retro design`",
-      "properties": [
-        {
-          "name": "hoverState",
-          "type": "boolean",
-          "default": "false"
-        }
-      ]
-    },
-    {
-      "name": "retro-card",
       "path": "./retro-card.js",
       "description": "`retro-card`\n`Simple card in a cool retro design`",
       "attributes": [

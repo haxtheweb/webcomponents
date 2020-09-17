@@ -18,7 +18,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.editMode = false;
     this.isLoggedIn = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
@@ -31,14 +31,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
        */
       hexColor: {
         type: String,
-        attribute: "hex-color"
+        attribute: "hex-color",
       },
       /**
        * Color class work to apply
        */
       color: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * editting state for the page
@@ -46,7 +46,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       /**
        * editting state for the page
@@ -54,20 +54,20 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       isLoggedIn: {
         type: Boolean,
         reflect: true,
-        attribute: "is-logged-in"
+        attribute: "is-logged-in",
       },
       /**
        * DOM node that wraps the slot
        */
       contentContainer: {
-        type: Object
+        type: Object,
       },
       /**
        * location as object
        */
       _location: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   static get styles() {
@@ -103,7 +103,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         #slot {
           min-height: 50vh;
         }
-      `
+      `,
     ];
   }
   // LitElement life cycle
@@ -136,7 +136,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
         this._contentContainerChanged(this[propName], oldValue);
@@ -148,7 +148,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -159,7 +159,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this[propName]
+            detail: this[propName],
           })
         );
         this._editModeChanged(this[propName], oldValue);

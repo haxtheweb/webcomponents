@@ -49,22 +49,22 @@ class CircleProgress extends mixinBehaviors(
       <svg id="circle" width="100%" height="100%">
         <circle
           class="circle-background"
-          r\$="[[_radius]]"
-          cx\$="[[_cx]]"
-          cy\$="[[_cy]]"
+          r$="[[_radius]]"
+          cx$="[[_cx]]"
+          cy$="[[_cy]]"
           fill="transparent"
-          stroke-width\$="[[strokeWidth]]"
+          stroke-width$="[[strokeWidth]]"
         ></circle>
         <circle
           class="circle-foreground"
-          r\$="[[_radius]]"
-          cx\$="[[_cx]]"
-          cy\$="[[_cy]]"
+          r$="[[_radius]]"
+          cx$="[[_cx]]"
+          cy$="[[_cy]]"
           fill="transparent"
-          stroke-width\$="[[strokeWidth]]"
-          stroke-dasharray\$="[[_dasharray]]"
-          stroke-dashoffset\$="[[_dashoffset]]"
-          transform\$="[[_transform]]"
+          stroke-width$="[[strokeWidth]]"
+          stroke-dasharray$="[[_dasharray]]"
+          stroke-dashoffset$="[[_dashoffset]]"
+          transform$="[[_transform]]"
         ></circle>
       </svg>
       <slot></slot>
@@ -85,7 +85,7 @@ class CircleProgress extends mixinBehaviors(
       value: {
         name: "value",
         type: Number,
-        value: 0
+        value: 0,
       },
 
       /**
@@ -94,7 +94,7 @@ class CircleProgress extends mixinBehaviors(
       max: {
         name: "max",
         type: Number,
-        value: 100
+        value: 100,
       },
 
       /**
@@ -103,7 +103,7 @@ class CircleProgress extends mixinBehaviors(
       strokeWidth: {
         name: "strokeWidth",
         type: Number,
-        value: 4
+        value: 4,
       },
 
       /**
@@ -112,44 +112,44 @@ class CircleProgress extends mixinBehaviors(
       angle: {
         name: "angle",
         type: Number,
-        value: -90
+        value: -90,
       },
 
       _cx: {
         name: "_cx",
         type: Number,
-        value: null
+        value: null,
       },
 
       _cy: {
         name: "_cy",
         type: Number,
-        value: null
+        value: null,
       },
 
       _radius: {
         name: "_radius",
         type: Number,
-        computed: "_computeRadius(_cx, _cy, strokeWidth)"
+        computed: "_computeRadius(_cx, _cy, strokeWidth)",
       },
 
       _transform: {
         name: "_transform",
         type: String,
-        computed: "_computeTransform(angle, _cx, _cy)"
+        computed: "_computeTransform(angle, _cx, _cy)",
       },
 
       _dasharray: {
         name: "_dasharray",
         type: Number,
-        computed: "_computeDashArray(_radius)"
+        computed: "_computeDashArray(_radius)",
       },
 
       _dashoffset: {
         name: "_dashoffset",
         type: Number,
-        computed: "_computeDashOffset(value, max, _dasharray)"
-      }
+        computed: "_computeDashOffset(value, max, _dasharray)",
+      },
     };
   }
   constructor() {

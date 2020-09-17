@@ -56,42 +56,42 @@ class LrnappStudioSubmissionButton extends PolymerElement {
         type: Boolean,
         reflectToAttribute: true,
         value: false,
-        notify: true
+        notify: true,
       },
       assignmentId: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       submissionId: {
         type: String,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       displayErrors: {
         type: Boolean,
-        value: true
+        value: true,
       },
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       endPoint: {
         type: String,
         notify: true,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 
@@ -116,7 +116,7 @@ class LrnappStudioSubmissionButton extends PolymerElement {
     if (typeof response.errors !== "undefined") {
       var ul = document.createElement("ul");
       var text = "";
-      response.errors.forEach(function(error) {
+      response.errors.forEach(function (error) {
         text = text + " " + error;
       });
       this.shadowRoot.querySelector("#toast").show(text);

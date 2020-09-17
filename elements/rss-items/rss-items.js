@@ -31,6 +31,7 @@ class RssItems extends LitElement {
         :host([hidden]) {
           display: none;
         }
+
         :host {
           display: flex;
           flex-wrap: wrap;
@@ -117,20 +118,20 @@ class RssItems extends LitElement {
             margin-right: 0;
           }
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <iron-ajax
+    return html` <iron-ajax
         id="rssajax"
         url="${this.url}"
         handle-as="xml"
         @last-response-changed="${this.xmlEvent}"
       ></iron-ajax>
       ${this.items.map(
-        item => html`
+        (item) => html`
           <article>
             ${item.imageSrc
               ? html`
@@ -174,8 +175,7 @@ class RssItems extends LitElement {
               : ``}
           </article>
         `
-      )}
-    `;
+      )}`;
   }
 
   // haxProperty definition
@@ -193,13 +193,13 @@ class RssItems extends LitElement {
         handles: [
           {
             type: "rss",
-            source: "source"
-          }
+            source: "source",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -208,17 +208,17 @@ class RssItems extends LitElement {
             property: "url",
             title: "Feed URL",
             description: "URL to the XML feed",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "max",
             title: "Max items",
             description: "Max number of feed items to display",
-            inputMethod: "number"
-          }
+            inputMethod: "number",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -230,64 +230,64 @@ class RssItems extends LitElement {
        * If true init rss request.
        */
       auto: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * The retrieved items array.
        */
       items: {
-        type: Array
+        type: Array,
       },
       /**
        * Max number of items to show. If it is undefined shows all items.
        */
       max: {
-        type: Number
+        type: Number,
       },
       /**
        * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.
        */
       maxExcerptLength: {
         type: Number,
-        attribute: "max-excerpt-length"
+        attribute: "max-excerpt-length",
       },
       /**
        * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.
        */
       maxTitleLength: {
         type: Number,
-        attribute: "max-title-length"
+        attribute: "max-title-length",
       },
       /**
        * Read more anchor text.
        */
       readMoreAnchorText: {
         type: Boolean,
-        attribute: "read-more-anchor-text"
+        attribute: "read-more-anchor-text",
       },
       /**
        * Read more image alternative text.
        */
       readMoreImageAlt: {
         type: Boolean,
-        attribute: "read-more-image-alt"
+        attribute: "read-more-image-alt",
       },
       /**
        * If true the items elements will display a read more link.
        */
       showReadMore: {
         type: Boolean,
-        attribute: "show-read-more"
+        attribute: "show-read-more",
       },
       /**
        * The URL of the RSS.
        */
       url: {
-        type: String
+        type: String,
       },
       xml: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -342,7 +342,7 @@ class RssItems extends LitElement {
    * @param {Array} items RSS items.
    */
   _parseItems(items) {
-    return items.map(item => {
+    return items.map((item) => {
       item.excerpt = this._getItemExcerpt(item);
       item.imageSrc = this._getItemImageScr(item);
       return item;
@@ -399,8 +399,8 @@ class RssItems extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

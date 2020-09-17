@@ -58,49 +58,49 @@ Polymer({
   properties: {
     language: {
       value: "en",
-      notify: true
+      notify: true,
     },
     resources: {
-      value: function() {
+      value: function () {
         return {
           en: {
             prev: "Previous",
             next: "Next",
             submit: "Submit",
-            "add-image": "Click to select an image"
+            "add-image": "Click to select an image",
           },
           es: {
             prev: "Anterior",
             next: "Siguiente",
             submit: "Enviar",
-            "add-image": "Click para adicionar una imagen"
-          }
+            "add-image": "Click para adicionar una imagen",
+          },
         };
-      }
+      },
     },
     schema: {
       type: Object,
       notify: true,
       value: {
-        schema: {}
+        schema: {},
       },
-      observer: "_valueChanged"
+      observer: "_valueChanged",
     },
     value: {
       type: Object,
       notify: true,
-      value: {}
+      value: {},
     },
     page: {
       type: Object,
-      notify: true
+      notify: true,
     },
     pages: {
       type: Object,
-      notify: true
-    }
+      notify: true,
+    },
   },
-  attached: function() {
+  attached: function () {
     this._schema = demoSchema;
 
     //        this.value =          {
@@ -132,11 +132,11 @@ Polymer({
 
     var editorOpts = {
       mode: "tree",
-      onChange: this._schemaChanged.bind(this)
+      onChange: this._schemaChanged.bind(this),
     };
     this.editor = new JSONEditor(this.$.jsoneditor, editorOpts, this._schema);
   },
-  _schemaChanged: function() {
+  _schemaChanged: function () {
     if (!this.editor) {
       console.log("Editor is false");
     } else {
@@ -148,10 +148,10 @@ Polymer({
       }
     }
   },
-  _valueChanged: function(newValue, oldValue) {
+  _valueChanged: function (newValue, oldValue) {
     if (typeof this.$.valueText !== typeof undefined) {
       let json = JSON.stringify(newValue, null, " ");
       this.$.valueText.innerHTML = json;
     }
-  }
+  },
 });

@@ -31,7 +31,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
         <template>
           <paper-button on-click="_loadSubmissionUrl">
             <lrndesign-gallerycard
-              data-submission-id\$="[[item.id]]"
+              data-submission-id$="[[item.id]]"
               title="[[item.attributes.title]]"
               author="[[item.relationships.author.data]]"
               comments="[[item.meta.comment_count]]"
@@ -52,12 +52,12 @@ class LrnappBlockNeedFeedback extends PolymerElement {
     return {
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       response: {
         type: Array,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -81,7 +81,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

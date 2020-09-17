@@ -71,7 +71,7 @@ class SimpleBlogOverview extends SimpleColors {
         a:active {
           color: inherit;
         }
-      `
+      `,
     ];
   }
   /**
@@ -140,39 +140,39 @@ class SimpleBlogOverview extends SimpleColors {
       itemId: {
         type: String,
         reflect: true,
-        attribute: "item-id"
+        attribute: "item-id",
       },
       /**
        * Title
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Body of text
        */
       body: {
-        type: String
+        type: String,
       },
       /**
        * Link referencing the page content.
        */
       link: {
-        type: String
+        type: String,
       },
       /**
        * timestamp (unix) of last time changed
        */
       changed: {
-        type: Number
+        type: Number,
       },
       /**
        * elevation
        */
       elevation: {
         type: Number,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   /**

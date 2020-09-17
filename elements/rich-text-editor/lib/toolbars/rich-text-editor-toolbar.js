@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "../singletons/rich-text-editor-selection.js";
 
-const RichTextEditorToolbarBehaviors = function(SuperClass) {
+const RichTextEditorToolbarBehaviors = function (SuperClass) {
   return class extends RichTextEditorStyles(SuperClass) {
     /**
      * Store tag name to make it easier to obtain directly.
@@ -24,7 +24,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
             position: sticky;
             top: 0;
           }
-        `
+        `,
       ];
     }
 
@@ -89,7 +89,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           #toolbar[responsive-size="lg"][collapsed] *[collapsed-until="xl"] {
             display: none;
           }
-        `
+        `,
       ];
     }
 
@@ -131,9 +131,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
 
     // render function for template
     render() {
-      return html`
-        ${this.toolbarTemplate}
-      `;
+      return html` ${this.toolbarTemplate} `;
     }
 
     // properties available to custom element for data binding
@@ -153,7 +151,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         collapsed: {
           name: "collapsed",
           type: Boolean,
-          attribute: "collapsed"
+          attribute: "collapsed",
         },
         /**
          * Custom configuration of toolbar groups and buttons.
@@ -162,7 +160,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         config: {
           name: "config",
           type: Object,
-          attribute: "config"
+          attribute: "config",
         },
         /**
          * `id` of `rich-text-editor` that toolbar controls.
@@ -170,7 +168,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         controls: {
           name: "controls",
           type: String,
-          attribute: "controls"
+          attribute: "controls",
         },
         /**
          * `rich-text-editor` element that is currently in `contenteditable` mode
@@ -178,7 +176,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         editor: {
           name: "editor",
           type: Object,
-          attribute: "editor"
+          attribute: "editor",
         },
         /**
          * `rich-text-editor` unique id
@@ -187,7 +185,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           name: "id",
           type: String,
           attribute: "id",
-          reflect: true
+          reflect: true,
         },
         /**
          * icon for more button.
@@ -195,7 +193,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         moreIcon: {
           name: "moreIcon",
           type: String,
-          attribute: "more-icon"
+          attribute: "more-icon",
         },
         /**
          * label for more button.
@@ -203,7 +201,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         moreLabel: {
           name: "moreLabel",
           type: String,
-          attribute: "more-label"
+          attribute: "more-label",
         },
         /**
          * label for more button when toggled.
@@ -212,7 +210,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           name: "moreLabelToggled",
           type: String,
           attribute: "more-label-toggled",
-          value: "Fewer Buttons"
+          value: "Fewer Buttons",
         },
         /**
          * show text label for more button.
@@ -220,7 +218,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
         moreShowTextLabel: {
           name: "moreShowTextLabel",
           type: Boolean,
-          attribute: "more-show-text-label"
+          attribute: "more-show-text-label",
         },
         /**
          * size of editor.
@@ -229,14 +227,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           name: "responsiveSize",
           type: String,
           attribute: "responsive-size",
-          reflect: true
+          reflect: true,
         },
         /**
          * current text selected range.
          */
         savedSelection: {
           name: "savedSelection",
-          type: Object
+          type: Object,
         },
 
         /**
@@ -244,7 +242,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
          */
         range: {
           name: "range",
-          type: Object
+          type: Object,
         },
         /**
          * Should toolbar stick to top so that it is always visible?
@@ -253,14 +251,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           name: "sticky",
           type: Boolean,
           attribute: "sticky",
-          reflect: true
+          reflect: true,
         },
         /**
          * raw array of buttons
          */
         __buttons: {
           name: "__buttons",
-          type: Array
+          type: Array,
         },
         /**
          * Tracks inline widgets that require selection data
@@ -273,7 +271,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
          * selection management
          */
         __selection: {
-          type: Object
+          type: Object,
         },
         /**
          * Optional space-sperated list of keyboard shortcuts for editor
@@ -281,8 +279,8 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
          */
         __shortcutKeys: {
           name: "__shortcutKeys",
-          type: Array
-        }
+          type: Array,
+        },
       };
     }
     constructor() {
@@ -313,16 +311,16 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               icon: "undo",
               label: "Undo",
               shortcutKeys: "ctrl+z",
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "redo",
               icon: "redo",
               label: "Redo",
               shortcutKeys: "ctrl+shift+z",
-              type: "rich-text-editor-button"
-            }
-          ]
+              type: "rich-text-editor-button",
+            },
+          ],
         },
         {
           label: "Basic Inline Operations",
@@ -330,7 +328,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
           buttons: [
             {
               label: "Format",
-              type: "rich-text-editor-heading-picker"
+              type: "rich-text-editor-heading-picker",
             },
             {
               command: "bold",
@@ -338,7 +336,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               label: "Bold",
               shortcutKeys: "ctrl+b",
               toggles: true,
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "italic",
@@ -346,15 +344,15 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               label: "Italics",
               shortcutKeys: "ctrl+i",
               toggles: true,
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "removeFormat",
               icon: "editor:format-clear",
               label: "Erase Format",
-              type: "rich-text-editor-button"
-            }
-          ]
+              type: "rich-text-editor-button",
+            },
+          ],
         },
         {
           label: "Links",
@@ -364,9 +362,9 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               icon: "link",
               label: "Link",
               shortcutKeys: "ctrl+k",
-              type: "rich-text-editor-link"
-            }
-          ]
+              type: "rich-text-editor-link",
+            },
+          ],
         },
         {
           label: "Clipboard Operations",
@@ -377,23 +375,23 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               icon: "content-cut",
               label: "Cut",
               shortcutKeys: "ctrl+x",
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "copy",
               icon: "content-copy",
               label: "Copy",
               shortcutKeys: "ctrl+c",
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "paste",
               icon: "content-paste",
               label: "Paste",
               shortcutKeys: "ctrl+v",
-              type: "rich-text-editor-button"
-            }
-          ]
+              type: "rich-text-editor-button",
+            },
+          ],
         },
         {
           collapsedUntil: "md",
@@ -405,23 +403,23 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               icon: "mdextra:subscript",
               label: "Subscript",
               toggles: true,
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "superscript",
               icon: "mdextra:superscript",
               label: "Superscript",
               toggles: true,
-              type: "rich-text-editor-button"
-            }
-          ]
+              type: "rich-text-editor-button",
+            },
+          ],
         },
         {
           collapsedUntil: "sm",
           icon: "editor:functions",
           label: "Insert Symbol",
           symbolTypes: ["symbols"],
-          type: "rich-text-editor-symbol-picker"
+          type: "rich-text-editor-symbol-picker",
         },
         {
           collapsedUntil: "sm",
@@ -433,14 +431,14 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               icon: "editor:format-list-numbered",
               label: "Ordered List",
               toggles: true,
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "insertUnorderedList",
               icon: "editor:format-list-bulleted",
               label: "Unordered List",
               toggles: true,
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               collapsedUntil: "lg",
@@ -449,7 +447,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               label: "Blockquote",
               icon: "editor:format-quote",
               shortcutKeys: "ctrl+'",
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "indent",
@@ -457,7 +455,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               event: "text-indent",
               label: "Increase Indent",
               shortcutKeys: "ctrl+]",
-              type: "rich-text-editor-button"
+              type: "rich-text-editor-button",
             },
             {
               command: "outdent",
@@ -465,10 +463,10 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
               icon: "editor:format-indent-decrease",
               label: "Decrease Indent",
               shortcutKeys: "ctrl+[",
-              type: "rich-text-editor-button"
-            }
-          ]
-        }
+              type: "rich-text-editor-button",
+            },
+          ],
+        },
       ];
       this.moreIcon = "more-vert";
       this.moreLabel = "More Buttons";
@@ -486,7 +484,7 @@ const RichTextEditorToolbarBehaviors = function(SuperClass) {
       
       window.dispatchEvent(
         new CustomEvent("responsive-element", {
-          detail: { element: this.shadowRoot.querySelector("#toolbar") }
+          detail: { element: this.shadowRoot.querySelector("#toolbar") },
         })
       );
       this.__selection.registerToolbar(this);

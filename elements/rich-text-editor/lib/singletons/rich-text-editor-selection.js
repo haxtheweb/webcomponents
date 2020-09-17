@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { RichTextEditorStyles } from "../rich-text-editor-styles.js";
+import { RichTextEditorStyles } from "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
 /**
  * `rich-text-editor-selection`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -37,35 +37,33 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
           color: var(--rich-text-editor-selection-bg);
           background-color: transparent;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   static get properties() {
     return {
       editor: {
-        type: Object
+        type: Object,
       },
       collapsed: {
         type: Boolean,
         reflect: true,
-        attribute: "collapsed"
+        attribute: "collapsed",
       },
       hidden: {
         type: Boolean,
         reflect: true,
-        attribute: "hidden"
+        attribute: "hidden",
       },
       observer: {
-        type: Object
+        type: Object,
       },
       range: {
-        type: Object
+        type: Object,
       },
       toolbar: {
         type: Object
@@ -118,7 +116,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   getAncestor(selector, range = this.getRange()) {
     let wrapper,
       tags = selector.toLowerCase().split(","),
-      getMatchingTag = ancestor => {
+      getMatchingTag = (ancestor) => {
         if (
           !!ancestor &&
           !!ancestor.tagName &&
@@ -713,7 +711,7 @@ window.RichTextEditorSelection.instance = null;
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.RichTextEditorSelection.requestAvailability = function() {
+window.RichTextEditorSelection.requestAvailability = function () {
   if (window.RichTextEditorSelection.instance == null) {
     window.RichTextEditorSelection.instance = new RichTextEditorSelection();
     document.body.appendChild(window.RichTextEditorSelection.instance);

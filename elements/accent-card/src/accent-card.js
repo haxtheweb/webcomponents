@@ -308,7 +308,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
           );
           padding-bottom: var(--accent-card-footer-padding-bottom, unset);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -354,21 +354,21 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
         handles: [
           {
             type: "media",
-            url: "source"
+            url: "source",
           },
           {
             type: "image",
-            source: "imageSrc"
+            source: "imageSrc",
           },
           {
             type: "text",
-            url: "source"
-          }
+            url: "source",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -377,53 +377,53 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             title: "Accent Color",
             description: "An optional accent color.",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean",
-            icon: "icons:invert-colors"
+            icon: "icons:invert-colors",
           },
           {
             property: "horizontal",
             title: "Horizontal",
             description: "Horizontal orientation?",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         configure: [
           {
             slot: "heading",
             title: "Heading",
             description: "A heading for card.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "subheading",
             title: "Subheading",
             description: "An optional subheading for card.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "content",
             title: "Content",
             description: "Content for card.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "footer",
             title: "Footer",
             description: "An optional footer for card.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "imageSrc",
             title: "Image",
             description: "Optional image",
             inputMethod: "haxupload",
-            icon: "editor:insert-photo"
+            icon: "editor:insert-photo",
           },
           {
             property: "imageAlign",
@@ -433,8 +433,8 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             options: {
               left: "left",
               center: "center",
-              right: "right"
-            }
+              right: "right",
+            },
           },
           {
             property: "imageValign",
@@ -444,55 +444,55 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             options: {
               top: "top",
               center: "center",
-              bottom: "bottom"
-            }
+              bottom: "bottom",
+            },
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean",
-            icon: "icons:invert-colors"
+            icon: "icons:invert-colors",
           },
           {
             property: "horizontal",
             title: "Horizontal",
             description: "Horizontal orientation?",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "accentHeading",
             title: "Heading Accent",
             description: "Apply accent color to heading?",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "accentBackground",
             title: "Background Accent",
             description: "Apply accent color to card background?",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "noBorder",
             title: "No Border Accent",
             description: "Remove border accent?",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "flat",
             title: "Flat",
             description: "Remove box shadow?",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
@@ -501,15 +501,15 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
             style: "maxWidth:600px;width:100%;",
             accentColor: "cyan",
             dark: true,
-            imageSrc: "http://placekitten.com/200/600"
+            imageSrc: "http://placekitten.com/200/600",
           },
           content:
-            '<span slot="heading">Card Heading</span>\n<p slot="content">This is the body of the card.</p>'
-        }
+            '<span slot="heading">Card Heading</span>\n<p slot="content">This is the body of the card.</p>',
+        },
       ],
       saveOptions: {
-        unsetAttributes: ["colors", "element-visible"]
-      }
+        unsetAttributes: ["colors", "element-visible"],
+      },
     };
   }
   constructor() {
@@ -535,7 +535,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       accentBackground: {
         type: Boolean,
         attribute: "accent-background",
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -544,7 +544,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       accentHeading: {
         type: Boolean,
         attribute: "accent-heading",
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -552,7 +552,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
        */
       flat: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -560,7 +560,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
        */
       horizontal: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -573,7 +573,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       imageAlign: {
         type: String,
         attribute: "image-align",
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -581,7 +581,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
        */
       imageSrc: {
         type: String,
-        attribute: "image-src"
+        attribute: "image-src",
       },
 
       /**
@@ -594,7 +594,7 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       imageValign: {
         type: String,
         attribute: "image-valign",
-        reflect: true
+        reflect: true,
       },
 
       /**
@@ -603,8 +603,8 @@ class AccentCard extends IntersectionObserverMixin(SimpleColors) {
       noBorder: {
         type: Boolean,
         attribute: "no-border",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 }

@@ -55,8 +55,8 @@ class HAXCMSBackendDemo extends LitElement {
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -67,7 +67,7 @@ class HAXCMSBackendDemo extends LitElement {
     this.jwt = "demo";
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun(reaction => {
+    autorun((reaction) => {
       this.jwt = toJS(store.jwt);
       this.__disposer.push(reaction);
     });
@@ -103,8 +103,10 @@ class HAXCMSBackendDemo extends LitElement {
         }
       }
       try {
-        import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
-          e => {
+        import(
+          "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js"
+        ).then(
+          (e) => {
             // validate availability
             store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
@@ -134,7 +136,7 @@ class HAXCMSBackendDemo extends LitElement {
               window.appSettings.getUserDataPath;
             store.cmsSiteEditor.instance.appStore = window.appSettings.appStore;
           },
-          e => {
+          (e) => {
             //import failed
             console.log(e);
           }

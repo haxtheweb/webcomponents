@@ -1,0 +1,103 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "clean-two",
+      "path": "./clean-two.js",
+      "description": "`clean-two`\n`A 2nd clean theme`",
+      "attributes": [
+        {
+          "name": "prevPage",
+          "type": "string"
+        },
+        {
+          "name": "nextPage",
+          "type": "string"
+        },
+        {
+          "name": "pageTimestamp",
+          "type": "number"
+        },
+        {
+          "name": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "prevPage",
+          "attribute": "prevPage",
+          "type": "string"
+        },
+        {
+          "name": "nextPage",
+          "attribute": "nextPage",
+          "type": "string"
+        },
+        {
+          "name": "pageTimestamp",
+          "attribute": "pageTimestamp",
+          "type": "number"
+        },
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "path": "./clean-two.umd.js"
+    },
+    {
+      "name": "clean-two",
+      "path": "./src/clean-two.js",
+      "description": "`clean-two`\n`A 2nd clean theme`",
+      "attributes": [
+        {
+          "name": "prevPage",
+          "type": "string"
+        },
+        {
+          "name": "nextPage",
+          "type": "string"
+        },
+        {
+          "name": "pageTimestamp",
+          "type": "number"
+        },
+        {
+          "name": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "prevPage",
+          "attribute": "prevPage",
+          "type": "string"
+        },
+        {
+          "name": "nextPage",
+          "attribute": "nextPage",
+          "type": "string"
+        },
+        {
+          "name": "pageTimestamp",
+          "attribute": "pageTimestamp",
+          "type": "number"
+        },
+        {
+          "name": "searchTerm",
+          "attribute": "searchTerm",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

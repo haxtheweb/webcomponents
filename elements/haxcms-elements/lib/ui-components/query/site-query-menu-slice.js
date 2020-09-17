@@ -42,19 +42,19 @@ class SiteQueryMenuSlice extends LitElement {
        * starting level for the menu items
        */
       start: {
-        type: Number
+        type: Number,
       },
       /**
        * ending level for the menu items
        */
       end: {
-        type: Number
+        type: Number,
       },
       /**
        * parent for the menu id
        */
       parent: {
-        type: String
+        type: String,
       },
       /**
        * How we should obtain the parent who's children we should show
@@ -62,7 +62,7 @@ class SiteQueryMenuSlice extends LitElement {
        */
       dynamicMethodology: {
         type: String,
-        attribute: "dynamic-methodology"
+        attribute: "dynamic-methodology",
       },
       /**
        * Use this boolean to force this to fix to 1 parent
@@ -70,24 +70,24 @@ class SiteQueryMenuSlice extends LitElement {
        */
       fixedId: {
         type: Boolean,
-        attribute: "fixed-id"
+        attribute: "fixed-id",
       },
       /**
        * Allow disabling the dynamic leveling
        */
       noDynamicLevel: {
         type: Boolean,
-        attribute: "no-dynamic-level"
+        attribute: "no-dynamic-level",
       },
       /**
        * Results which can be binded to something else
        */
       result: {
-        type: Array
+        type: Array,
       },
       _routerManifest: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -102,7 +102,7 @@ class SiteQueryMenuSlice extends LitElement {
           "parent",
           "dynamicMethodology",
           "_routerManifest",
-          "noDynamicLevel"
+          "noDynamicLevel",
         ].includes(propName)
       ) {
         this.result = this._computeItems(
@@ -116,7 +116,7 @@ class SiteQueryMenuSlice extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("result-changed", {
-            detail: result
+            detail: result,
           })
         );
       }
@@ -148,12 +148,12 @@ class SiteQueryMenuSlice extends LitElement {
    * LitElement life cycle
    */
   firstUpdated(changedProperties) {
-    autorun(reaction => {
+    autorun((reaction) => {
       this._routerManifest = Object.assign({}, toJS(store.routerManifest));
       this.__disposer.push(reaction);
     });
     if (!this.fixedId) {
-      autorun(reaction => {
+      autorun((reaction) => {
         this.parent = toJS(store.activeId);
         this.__disposer.push(reaction);
       });

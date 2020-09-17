@@ -231,8 +231,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           padding: 0;
           --site-rss-color: #000000;
           --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-          --site-rss-paper-button-padding: 0 4px;
-          --site-rss-paper-button-margin: 0;
+          --site-rss-paper-icon-button-padding: 0 4px;
+          --site-rss-paper-icon-button-margin: 0;
         }
 
         @media screen and (max-width: 800px) {
@@ -289,7 +289,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             padding-left: 8px;
           }
         }
-      `
+      `,
     ];
   }
   render() {
@@ -334,7 +334,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             ></site-query>
             <div class="simple-blog-card-wrapper">
               ${this.__mainPosts.map(
-                post => html`
+                (post) => html`
                   <simple-blog-card
                     alt="${post.metadata.fields &&
                     post.metadata.fields.images &&
@@ -374,7 +374,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             ></site-query>
             <div class="simple-blog-card-wrapper">
               ${this.__extraPosts.map(
-                post => html`
+                (post) => html`
                   <simple-blog-card
                     alt="${post.metadata.fields &&
                     post.metadata.fields.images &&
@@ -426,7 +426,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             ></site-query>
             <div class="simple-blog-card-wrapper">
               ${this.__followUpPosts.map(
-                post => html`
+                (post) => html`
                   <simple-blog-card
                     alt="${post.metadata.fields &&
                     post.metadata.fields.images &&
@@ -545,28 +545,28 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       ...super.properties,
 
       manifest: {
-        type: Object
+        type: Object,
       },
       color: {
-        type: String
+        type: String,
       },
       selectedPage: {
         type: Number,
         reflect: true,
-        attribute: "selected-page"
+        attribute: "selected-page",
       },
       stateClass: {
-        type: String
+        type: String,
       },
       __mainPosts: {
-        type: Array
+        type: Array,
       },
       __extraPosts: {
-        type: Array
+        type: Array,
       },
       __followUpPosts: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   __extraPostsChanged(e) {
@@ -587,7 +587,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
    * Delay importing site-search until we click to open it directly
    */
   siteModalClick(e) {
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js"
+    );
   }
   constructor() {
     super();
@@ -598,14 +600,16 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     setTimeout(() => {
       this.selectedPage = 0;
       import("@polymer/iron-pages/iron-pages.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
+      );
       import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
-      autorun(reaction => {
+      autorun((reaction) => {
         let location = toJS(store.location);
         this._noticeLocationChange(location);
         this.__disposer.push(reaction);
       });
-      autorun(reaction => {
+      autorun((reaction) => {
         let manifest = toJS(store.manifest);
         this.title = varGet(manifest, "title", "");
         this.image = varGet(
@@ -621,13 +625,13 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         this.author = varGet(manifest, "metadata.author", {});
         this.__disposer.push(reaction);
       });
-      autorun(reaction => {
+      autorun((reaction) => {
         this.activeManifestIndexCounter = toJS(
           store.activeManifestIndexCounter
         );
         this.__disposer.push(reaction);
       });
-      autorun(reaction => {
+      autorun((reaction) => {
         this.activeTitle = toJS(store.activeTitle);
         this.shareUrl = document.location.href;
         this.shareMsg = this.activeTitle + " " + this.shareUrl;
@@ -653,12 +657,22 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     }
     setTimeout(() => {
       import("@polymer/iron-image/iron-image.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+      );
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+      );
       import("@lrnwebcomponents/social-share-link/social-share-link.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+      import(
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js"
+      );
       import("@polymer/iron-icon/iron-icon.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icons/editor-icons.js");
@@ -704,7 +718,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     } else {
       window.scrollTo({
         top: 0,
-        left: 0
+        left: 0,
       });
       this.selectedPage = 1;
       // @todo hacky timing thing
@@ -738,13 +752,13 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     // and also generate data model mirroring
     window.scrollTo({
       top: 0,
-      left: 0
+      left: 0,
     });
     const evt = new CustomEvent("json-outline-schema-active-item-changed", {
       bubbles: true,
       cancelable: true,
       composed: true,
-      detail: {}
+      detail: {},
     });
     this.dispatchEvent(evt);
     this.selectedPage = 0;

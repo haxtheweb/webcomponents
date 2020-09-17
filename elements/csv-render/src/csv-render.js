@@ -112,7 +112,7 @@ class CsvRender extends SimpleColors {
           color: var(--simple-colors-default-theme-accent-8);
           outline: 2px solid var(--simple-colors-default-theme-accent-6);
         }
-      `
+      `,
     ];
   }
   /**
@@ -179,22 +179,15 @@ class CsvRender extends SimpleColors {
         <thead>
           <tr>
             ${this.tableHeadings.map(
-              heading =>
-                html`
-                  <th scope="col">${heading}</th>
-                `
+              (heading) => html` <th scope="col">${heading}</th> `
             )}
           </tr>
         </thead>
         <tbody>
           ${this.table.map(
-            row => html`
+            (row) => html`
               <tr>
-                ${row.map(
-                  col => html`
-                    <td>${col}</td>
-                  `
-                )}
+                ${row.map((col) => html` <td>${col}</td> `)}
               </tr>
             `
           )}
@@ -216,46 +209,46 @@ class CsvRender extends SimpleColors {
        */
       dataSource: {
         type: String,
-        attribute: "data-source"
+        attribute: "data-source",
       },
 
       /**
        * Caption for the table to improve accessibility and readability.
        */
       caption: {
-        type: String
+        type: String,
       },
       /**
        * Summary to improve accessibility for screen readers.
        */
       summary: {
-        type: String
+        type: String,
       },
       /**
        * Table busted out as an array.
        */
       table: {
-        type: Array
+        type: Array,
       },
       /**
        * Headings from the first row of the csv
        */
       tableHeadings: {
-        type: Array
+        type: Array,
       },
       /**
        * Raw data pulled in from the csv file.
        */
       tableData: {
         type: String,
-        attribute: "table-data"
+        attribute: "table-data",
       },
       /**
        * Color class work to apply
        */
       color: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**

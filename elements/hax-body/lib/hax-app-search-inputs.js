@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
 `hax-app-search-inputs`
@@ -35,7 +35,7 @@ class HaxAppSearchInputs extends LitElement {
           margin: 0;
           padding: 0;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -59,7 +59,7 @@ class HaxAppSearchInputs extends LitElement {
       // dispatch the event directly so that we can data bind to input
       this.dispatchEvent(
         new CustomEvent("search-values-changed", {
-          detail: e.detail.value
+          detail: e.detail.value,
         })
       );
     }
@@ -74,14 +74,14 @@ class HaxAppSearchInputs extends LitElement {
        * Title.
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Schema used to generate the input types.
        */
       schema: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 }

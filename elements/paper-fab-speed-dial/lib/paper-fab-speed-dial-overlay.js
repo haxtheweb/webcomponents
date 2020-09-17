@@ -6,9 +6,7 @@ class PaperFabSpeedDialOverlay extends mixinBehaviors(
   PolymerElement
 ) {
   static get template() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   static get tag() {
     return "paper-fab-speed-dial-overlay";

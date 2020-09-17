@@ -117,13 +117,13 @@ class HaxLogo extends HTMLElement {
         groups: ["Logo"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -136,19 +136,19 @@ class HaxLogo extends HTMLElement {
               mini: "Mini",
               small: "Small",
               normal: "Normal",
-              large: "Large"
+              large: "Large",
             },
-            required: false
+            required: false,
           },
           {
             attribute: "toupper",
             description: "Whether to transform logo to upper case",
             inputMethod: "boolean",
-            required: false
-          }
+            required: false,
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding

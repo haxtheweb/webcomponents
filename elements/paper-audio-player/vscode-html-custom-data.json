@@ -50,54 +50,6 @@
       ]
     },
     {
-      "name": "paper-audio-player",
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `title` {`string`} - \n\n  * `autoPlay` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `currentTime` {`number`} - \n\n  * `timeLeft` {`number`} - \n\n  * `smallSkip` {`number`} - \n\n  * `largeSkip` {`number`} - \n\n  * `error` {`boolean`} - \n\n  * `timeOffset` {`number`} - ",
-      "attributes": [
-        {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Click to play this audio file"
-        },
-        {
-          "name": "autoPlay",
-          "description": "`autoPlay` {`boolean`} - \n\nProperty: autoPlay\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "preload",
-          "description": "`preload` {`string`} - \n\nProperty: preload\n\nDefault: auto"
-        },
-        {
-          "name": "currentTime",
-          "description": "`currentTime` {`number`} - \n\nProperty: currentTime\n\nDefault: 0"
-        },
-        {
-          "name": "timeLeft",
-          "description": "`timeLeft` {`number`} - \n\nProperty: timeLeft\n\nDefault: 0"
-        },
-        {
-          "name": "smallSkip",
-          "description": "`smallSkip` {`number`} - \n\nProperty: smallSkip\n\nDefault: 15"
-        },
-        {
-          "name": "largeSkip",
-          "description": "`largeSkip` {`number`} - \n\nProperty: largeSkip\n\nDefault: 60"
-        },
-        {
-          "name": "error",
-          "description": "`error` {`boolean`} - \n\nProperty: error",
-          "valueSet": "v"
-        },
-        {
-          "name": "timeOffset",
-          "description": "`timeOffset` {`number`} - \n\nProperty: timeOffset\n\nDefault: 0"
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },

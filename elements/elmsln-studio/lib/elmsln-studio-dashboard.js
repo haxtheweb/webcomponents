@@ -164,7 +164,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             margin: 0 auto;
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -196,8 +196,10 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                       !this.profile.completed ||
                       !this.profile.due
                         ? "unknown"
-                        : `${this.profile.completed.length} / ${this.profile
-                            .completed.length + this.profile.due.length}`
+                        : `${this.profile.completed.length} / ${
+                            this.profile.completed.length +
+                            this.profile.due.length
+                          }`
                     }
                   </td>
                 </tr>
@@ -262,7 +264,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                 !this.profile
                   ? "unknown"
                   : (this.profile.due || []).slice(0, 5).map(
-                      a => html`
+                      (a) => html`
                         <nav-card-item
                           accent-color="${this._late(a.date) ? "red" : "grey"}"
                           allow-grey
@@ -306,7 +308,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                 !this.profile
                   ? "unknown"
                   : (this.profile.submissions || []).slice(0, 5).map(
-                      s => html`
+                      (s) => html`
                         <nav-card-item icon="chevron-right">
                           <elmsln-studio-link
                             id="sub-${s.id}"
@@ -337,7 +339,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                 !this.profile
                   ? "unknown"
                   : (this.profile.feedback || []).slice(0, 5).map(
-                      f => html`
+                      (f) => html`
                         <nav-card-item
                           accent-color="${this.accentColor(
                             [f.firstName, f.lastName].join(" ")
@@ -376,7 +378,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
           <span slot="heading">Recent Activity</span>
           <div slot="linklist">
             ${(this.activity || []).slice(0, this.activityLoad).map(
-              a => html`
+              (a) => html`
                 <nav-card-item
                   accent-color="${this.accentColor(
                     [a.firstName, a.lastName].join(" ")
@@ -405,7 +407,7 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
             slot="footer"
             ?disabled="${this.activityLoad >= this.activity.length}"
             ?hidden="${this.activityLoad >= this.activity.length}"
-            @click="${e => (this.activityLoad += 10)}"
+            @click="${(e) => (this.activityLoad += 10)}"
           >
             Load More
           </button>
@@ -419,15 +421,15 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
     return {
       ...super.properties,
       activity: {
-        type: Array
+        type: Array,
       },
       activityLoad: {
         type: Number,
-        attribute: "activity-load"
+        attribute: "activity-load",
       },
       profile: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 

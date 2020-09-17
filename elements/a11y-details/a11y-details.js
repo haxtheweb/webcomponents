@@ -166,14 +166,13 @@ class A11yDetails extends LitElement {
           padding: var(--a11y-details-padding, 0.5em);
           transition: all 0.7s ease-in-out 0.2s;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <details id="details">
+    return html` <details id="details">
         <summary
           @click="${this._handleClick}"
           @keyup="${this._handleKeyup}"
@@ -186,8 +185,7 @@ class A11yDetails extends LitElement {
         </summary>
         <div id="details-inner"><slot name="details"></slot></div>
       </details>
-      <slot hidden></slot>
-    `;
+      <slot hidden></slot>`;
   }
 
   // haxProperty definition
@@ -205,13 +203,13 @@ class A11yDetails extends LitElement {
         groups: ["11"],
         handles: [
           {
-            type: ""
-          }
+            type: "",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -221,48 +219,48 @@ class A11yDetails extends LitElement {
             title: "Button",
             description:
               'Summary of the content that if concealed, eg. "info", "medatadata", etc. ',
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             slot: "details",
             title: "Decription",
             description: "Detailed description that can be hidden or shown",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             slot: "",
             title: "Decription Button",
             description:
               'Default for button that shows/hides description text, eg. "info", "medatadata", etc. ',
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
         advanced: [
           {
             property: "openText",
             title: "Optional summary text when details are open",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "closeText",
             title: "Optional summary text when details are closed",
             inputMethod: "textfield",
-            required: false
-          }
-        ]
+            required: false,
+          },
+        ],
       },
       demoSchema: [
         {
           tag: "a11y-details",
           properties: {
             openText: "Show Aenean",
-            closeText: "Hide Aenean"
+            closeText: "Hide Aenean",
           },
           content:
-            '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>'
-        }
-      ]
+            '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>',
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding
@@ -277,7 +275,7 @@ class A11yDetails extends LitElement {
       closeText: {
         type: String,
         attribute: "close-text",
-        reflect: true
+        reflect: true,
       },
       /**
        * optional text for when summary button is closed,
@@ -286,8 +284,8 @@ class A11yDetails extends LitElement {
       openText: {
         type: String,
         attribute: "open-text",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -350,7 +348,7 @@ class A11yDetails extends LitElement {
         : "",
       this.closeText && this.closeText.trim && this.closeText.trim() !== ""
         ? "has-close-text"
-        : ""
+        : "",
     ].join(" ");
   }
 
@@ -360,7 +358,7 @@ class A11yDetails extends LitElement {
    * @returns {object}
    */
   get observer() {
-    let callback = mutationsList => this._watchChildren(mutationsList);
+    let callback = (mutationsList) => this._watchChildren(mutationsList);
     return new MutationObserver(callback);
   }
 
@@ -428,7 +426,7 @@ class A11yDetails extends LitElement {
     if (details) {
       let clone = details.cloneNode(true),
         filtered = clone.querySelectorAll("* > summary");
-      Object.keys(filtered || {}).forEach(i => filtered[i].remove());
+      Object.keys(filtered || {}).forEach((i) => filtered[i].remove());
       this._copyToSlot("details", clone, "div");
     }
   }
@@ -444,7 +442,7 @@ class A11yDetails extends LitElement {
       this.detailsObserver.observe(this.querySelector("* > details"), {
         childList: true,
         subtree: true,
-        characterData: true
+        characterData: true,
       });
     } else if (
       this._hasMutations(mutationsList, "removedNodes") &&
@@ -464,10 +462,10 @@ class A11yDetails extends LitElement {
    */
   _hasMutations(mutationsList, nodeListType = "addedNodes") {
     return (
-      Object.keys(mutationsList || {}).filter(i => {
+      Object.keys(mutationsList || {}).filter((i) => {
         let nodes = mutationsList[i][nodeListType];
         return (
-          Object.keys(nodes || {}).filter(j => {
+          Object.keys(nodes || {}).filter((j) => {
             let nodeName = nodes[j].tagName;
             return nodeName === "DETAILS";
           }).length > 0
@@ -485,11 +483,11 @@ class A11yDetails extends LitElement {
    */
   _copyToSlot(slotName, clone, tagName = "span") {
     let filteredNodes = Object.keys(clone.childNodes || {})
-      .filter(i => {
+      .filter((i) => {
         let node = clone.childNodes[i];
         return !!node.tagName || node.textContent.trim().length > 0;
       })
-      .map(i => clone.childNodes[parseInt(i)]);
+      .map((i) => clone.childNodes[parseInt(i)]);
     if (filteredNodes.length === 1 && filteredNodes[0].tagName) {
       clone = filteredNodes[0];
       tagName = clone.tagName;

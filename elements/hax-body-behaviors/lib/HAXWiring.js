@@ -179,11 +179,11 @@ export class HAXWiring {
       settings: {
         quick: [],
         configure: [],
-        advanced: []
+        advanced: [],
       },
-      wipeSlot: {}
+      wipeSlot: {},
     };
-    this.pathFromUrl = url => {
+    this.pathFromUrl = (url) => {
       return url.substring(0, url.lastIndexOf("/") + 1);
     };
     /**
@@ -212,7 +212,7 @@ export class HAXWiring {
     /**
      * HAX store is ready so now we can fire events
      */
-    this._haxStoreReady = e => {
+    this._haxStoreReady = (e) => {
       if (
         e.detail &&
         typeof this.tagName !== typeof undefined &&
@@ -229,8 +229,8 @@ export class HAXWiring {
             detail: {
               tag: tag.toLowerCase(),
               properties: props,
-              polymer: false
-            }
+              polymer: false,
+            },
           });
           context.dispatchEvent(evt);
         } else if (
@@ -244,8 +244,8 @@ export class HAXWiring {
             cancelable: true,
             detail: {
               tag: tag.toLowerCase(),
-              properties: props
-            }
+              properties: props,
+            },
           });
           context.dispatchEvent(evt);
         } else if (
@@ -260,8 +260,8 @@ export class HAXWiring {
             cancelable: true,
             detail: {
               tag: this.tagName.toLowerCase(),
-              properties: props
-            }
+              properties: props,
+            },
           });
           context.dispatchEvent(evt);
         }
@@ -353,7 +353,7 @@ export class HAXWiring {
         // support for advanced save options
         if (typeof props.saveOptions === typeof undefined) {
           props.saveOptions = {
-            wipeSlot: false
+            wipeSlot: false,
           };
         }
         // support for demoSchema
@@ -395,8 +395,8 @@ export class HAXWiring {
           detail: {
             tag: tag.toLowerCase(),
             properties: props,
-            polymer: false
-          }
+            polymer: false,
+          },
         });
         context.dispatchEvent(evt);
       } else if (tag != "") {
@@ -406,8 +406,8 @@ export class HAXWiring {
           cancelable: true,
           detail: {
             tag: tag.toLowerCase(),
-            properties: props
-          }
+            properties: props,
+          },
         });
         context.dispatchEvent(evt);
       } else if (typeof this.tagName !== typeof undefined) {
@@ -417,8 +417,8 @@ export class HAXWiring {
           cancelable: true,
           detail: {
             tag: this.tagName.toLowerCase(),
-            properties: props
-          }
+            properties: props,
+          },
         });
         context.dispatchEvent(evt);
       } else if (typeof context.tagName !== typeof undefined) {
@@ -428,8 +428,8 @@ export class HAXWiring {
           cancelable: true,
           detail: {
             tag: context.tagName.toLowerCase(),
-            properties: props
-          }
+            properties: props,
+          },
         });
         context.dispatchEvent(evt);
       } else {
@@ -442,52 +442,52 @@ export class HAXWiring {
     /**
      * Standard advanced properties we support for all forms
      */
-    this.standardAdvancedProps = props => {
+    this.standardAdvancedProps = (props) => {
       // allow classes to be modified this way
       props.settings.advanced.push({
         attribute: "class",
         title: "Classes",
         description: "CSS classes applied manually to the element",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       // allow styles to be modified this way
       props.settings.advanced.push({
         attribute: "style",
         title: "Styles",
         description: "Custom CSS styles as applied to the element",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       // allow schema definitions
       props.settings.advanced.push({
         attribute: "prefix",
         title: "Schema: prefix",
         description: "Schema prefixes",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       props.settings.advanced.push({
         attribute: "typeof",
         title: "Schema: TypeOf",
         description: "typeof definition for Schema usage",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       props.settings.advanced.push({
         attribute: "property",
         title: "Schema: Property",
         description: "typeof definition for Schema usage",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       props.settings.advanced.push({
         attribute: "resource",
         title: "Schema: Resource ID",
         description: "Schema resource identifier",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       // allow the id to be modified
       props.settings.advanced.push({
         attribute: "id",
         title: "ID",
         description: "element ID, only set this if you know why",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       // we need to support slot in the UI but actually shift it around under the hood
       // this is so that shadow roots don't get mad when previewing
@@ -495,14 +495,14 @@ export class HAXWiring {
         attribute: "slot",
         title: "slot",
         description: "DOM slot area",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       });
       return props;
     };
     /**
      * Validate settings object.
      */
-    this.validateSetting = setting => {
+    this.validateSetting = (setting) => {
       // we don't have a property or slot so it's not valid.
       if (
         typeof setting.property === typeof undefined &&
@@ -589,7 +589,7 @@ export class HAXWiring {
         $schema: "http://json-schema.org/schema#",
         title: "HAX " + type + " form schema",
         type: "object",
-        properties: {}
+        properties: {},
       };
       schema.properties = new SimpleFields().fieldsToSchema(settings);
       // support post processing of schema in order to allow for really
@@ -616,20 +616,20 @@ export class HAXWiring {
     /**
      * Default postProcessgetHaxJSONSchema to be overridden.
      */
-    this.postProcessgetHaxJSONSchema = schema => {
+    this.postProcessgetHaxJSONSchema = (schema) => {
       return schema;
     };
     /**
      * Internal helper for getHaxJSONSchema to buiild the properties object
      * correctly with support for recursive nesting thx to objects / arrays.
      */
-    this._getHaxJSONSchemaProperty = settings => {
+    this._getHaxJSONSchemaProperty = (settings) => {
       return new SimpleFields().fieldsToSchema(settings);
     };
     /**
      * Convert input method to schema type
      */
-    this.getHaxJSONSchemaType = inputMethod => {
+    this.getHaxJSONSchemaType = (inputMethod) => {
       var method =
         new SimpleFields().fieldsConversion.inputMethod[inputMethod] ||
         new SimpleFields().fieldsConversion;
@@ -666,12 +666,12 @@ export class HAXWiring {
             {
               type: "data",
               type_exclusive: false,
-              url: "src"
-            }
+              url: "src",
+            },
           ],
           meta: {
-            author: "auto"
-          }
+            author: "auto",
+          },
         },
         settings: {
           quick: [
@@ -679,14 +679,14 @@ export class HAXWiring {
               property: "title",
               title: "Title",
               inputMethod: "textfield",
-              icon: "android"
+              icon: "android",
             },
             {
               property: "primaryColor",
               title: "Primary color",
               inputMethod: "colorpicker",
-              icon: "color"
-            }
+              icon: "color",
+            },
           ],
           configure: [
             {
@@ -696,7 +696,7 @@ export class HAXWiring {
               inputMethod: "textfield",
               icon: "android",
               required: true,
-              validationType: "text"
+              validationType: "text",
             },
             {
               slot: "button",
@@ -705,7 +705,7 @@ export class HAXWiring {
               inputMethod: "textfield",
               icon: "android",
               required: true,
-              validationType: "text"
+              validationType: "text",
             },
             {
               property: "title",
@@ -714,7 +714,7 @@ export class HAXWiring {
               inputMethod: "textfield",
               icon: "android",
               required: true,
-              validationType: "text"
+              validationType: "text",
             },
             {
               property: "primaryColor",
@@ -724,8 +724,8 @@ export class HAXWiring {
               icon: "android",
               required: false,
               validation: ".*",
-              validationType: "text"
-            }
+              validationType: "text",
+            },
           ],
           advanced: [
             {
@@ -734,7 +734,7 @@ export class HAXWiring {
               description:
                 "An optional secondary color used in certain edge cases.",
               inputMethod: "colorpicker",
-              icon: "color"
+              icon: "color",
             },
             {
               property: "endPoint",
@@ -744,13 +744,13 @@ export class HAXWiring {
               inputMethod: "textfield",
               icon: "android",
               validation: "[a-z0-9]",
-              validationType: "url"
-            }
-          ]
+              validationType: "url",
+            },
+          ],
         },
         saveOptions: {
           wipeSlot: false,
-          unsetAttributes: ["end-point", "secondary-color"]
+          unsetAttributes: ["end-point", "secondary-color"],
         },
         demoSchema: [
           {
@@ -759,10 +759,10 @@ export class HAXWiring {
             properties: {
               endPoint: "https://cdn2.thecatapi.com/images/9j5.jpg",
               primaryColor: "yellow",
-              title: "A cat"
-            }
-          }
-        ]
+              title: "A cat",
+            },
+          },
+        ],
       };
       return props;
     };
@@ -772,7 +772,7 @@ export class HAXWiring {
  * Super class element partial. This mixes the HAXWiring capabilities into the element itself.
  * Use this in instances where you want direct access to all the functions in the element itself
  */
-export const HAXElement = function(SuperClass) {
+export const HAXElement = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
@@ -785,7 +785,7 @@ export const HAXElement = function(SuperClass) {
         /**
          * haxProperties
          */
-        haxProperties: window.HAXWiring.haxProperties
+        haxProperties: window.HAXWiring.haxProperties,
       };
     }
     /**
@@ -902,14 +902,14 @@ window.HAXBehaviors.PropertiesBehaviors = {
     /**
      * haxProperties
      */
-    haxProperties: window.HAXWiring.haxProperties
+    haxProperties: window.HAXWiring.haxProperties,
   },
   /**
    * Setter to bridge private haxProperties setter.
    * This is to then be implemented by the ready state of whatever is supplying the
    * properties in order to be able to bubble up the properties for a tag.
    */
-  setHaxProperties: function(props, tag = "", context = this) {
+  setHaxProperties: function (props, tag = "", context = this) {
     if (tag == "" && typeof this.tagName !== typeof undefined) {
       tag = this.tagName.toLowerCase();
     }
@@ -927,19 +927,19 @@ window.HAXBehaviors.PropertiesBehaviors = {
   /**
    * Private function to fire off props when ready
    */
-  _haxStoreReady: function(e) {
+  _haxStoreReady: function (e) {
     return window.HAXWiring._haxStoreReady(e);
   },
   /**
    * Validate settings object.
    */
-  validateSetting: function(setting) {
+  validateSetting: function (setting) {
     return window.HAXWiring.validateSetting(setting);
   },
   /**
    * Match convention for set.
    */
-  getHaxProperties: function() {
+  getHaxProperties: function () {
     return this.haxProperties;
   },
   /**
@@ -947,38 +947,38 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * This allows for complex form building systems based on this data.
    * type is configure or advanced
    */
-  getHaxJSONSchema: function(type, haxProperties, target = this) {
+  getHaxJSONSchema: function (type, haxProperties, target = this) {
     return window.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
   },
   /**
    * Default postProcessgetHaxJSONSchema to be overridden.
    */
-  postProcessgetHaxJSONSchema: function(schema) {
+  postProcessgetHaxJSONSchema: function (schema) {
     return window.HAXWiring.postProcessgetHaxJSONSchema(schema);
   },
   /**
    * Internal helper for getHaxJSONSchema to buiild the properties object
    * correctly with support for recursive nesting thx to objects / arrays.
    */
-  _getHaxJSONSchemaProperty: function(settings) {
+  _getHaxJSONSchemaProperty: function (settings) {
     return new SimpleFields().fieldsToSchema(settings);
   },
   /**
    * Convert input method to schedma type
    */
-  getHaxJSONSchemaType: function(inputMethod) {
+  getHaxJSONSchemaType: function (inputMethod) {
     return window.HAXWiring.getHaxJSONSchemaType(inputMethod);
   },
   /**
    * List valid input methods.
    */
-  validHAXPropertyInputMethod: function() {
+  validHAXPropertyInputMethod: function () {
     return window.HAXWiring.validHAXPropertyInputMethod();
   },
   /**
    * Return a haxProperties prototype / example structure
    */
-  prototypeHaxProperties: function() {
+  prototypeHaxProperties: function () {
     return window.HAXWiring.prototypeHaxProperties();
-  }
+  },
 };

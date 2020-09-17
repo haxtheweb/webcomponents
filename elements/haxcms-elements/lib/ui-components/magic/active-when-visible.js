@@ -26,7 +26,7 @@ class ActiveWhenVisible extends LitElement {
           pointer-events: none;
           background-color: transparent;
         }
-      `
+      `,
     ];
   }
   /**
@@ -62,7 +62,7 @@ class ActiveWhenVisible extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("is-visible-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -75,27 +75,27 @@ class ActiveWhenVisible extends LitElement {
     return {
       itemId: {
         type: String,
-        attribute: "item-id"
+        attribute: "item-id",
       },
       _a: {
-        type: String
+        type: String,
       },
       thresholds: {
-        type: Array
+        type: Array,
       },
       rootMargin: {
         type: String,
-        attribute: "root-margin"
+        attribute: "root-margin",
       },
       visibleLimit: {
         type: Number,
         reflect: true,
-        attribute: "visible-limit"
+        attribute: "visible-limit",
       },
       isVisible: {
         type: Boolean,
-        attribute: "is-visible"
-      }
+        attribute: "is-visible",
+      },
     };
   }
   connectedCallback() {
@@ -106,7 +106,7 @@ class ActiveWhenVisible extends LitElement {
       {
         root: document.rootElement,
         rootMargin: this.rootMargin,
-        threshold: this.thresholds
+        threshold: this.thresholds,
       }
     );
     this.observer.observe(this);

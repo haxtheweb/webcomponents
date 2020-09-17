@@ -25,15 +25,13 @@ class AbsolutePositionBehavior extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot>`;
   }
 
   // properties available to the custom element for data binding
@@ -47,21 +45,21 @@ class AbsolutePositionBehavior extends LitElement {
        */
       auto: {
         type: Boolean,
-        attribute: "auto"
+        attribute: "auto",
       },
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
        */
       fitToVisibleBounds: {
         type: Boolean,
-        attribute: "fit-to-visible-bounds"
+        attribute: "fit-to-visible-bounds",
       },
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
        */
       hidden: {
         type: Boolean,
-        attribute: "hidden"
+        attribute: "hidden",
       },
       /**
        * The id of the element that the tooltip is anchored to. This element
@@ -71,7 +69,7 @@ class AbsolutePositionBehavior extends LitElement {
       for: {
         type: String,
         attribute: "for",
-        reflect: true
+        reflect: true,
       },
       /**
        * The spacing between the top of the tooltip and the element it is
@@ -79,7 +77,7 @@ class AbsolutePositionBehavior extends LitElement {
        */
       offset: {
         type: Number,
-        attribute: "offset"
+        attribute: "offset",
       },
       /**
        * Positions the tooltip to the top, right, bottom, left of its content.
@@ -87,7 +85,7 @@ class AbsolutePositionBehavior extends LitElement {
       position: {
         type: String,
         attribute: "position",
-        reflect: true
+        reflect: true,
       },
       /**
        * Aligns at the start, or end fo target. Default is centered.
@@ -95,20 +93,20 @@ class AbsolutePositionBehavior extends LitElement {
       positionAlign: {
         type: String,
         attribute: "position-align",
-        reflect: true
+        reflect: true,
       },
       /**
        * The actual target element
        */
       target: {
-        type: Object
+        type: Object,
       },
       /**
        * The element's style
        */
       __positions: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 

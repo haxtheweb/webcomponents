@@ -19,7 +19,7 @@ import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "../haxcms-site-store.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `haxcms-site-listing`
@@ -36,7 +36,9 @@ class HAXCMSSiteListing extends PolymerElement {
     setPassiveTouchGestures(true);
     this.HaxSchematizer = HaxSchematizer;
     this.HaxElementizer = HaxElementizer;
-    import("@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js"
+    );
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -494,7 +496,7 @@ class HAXCMSSiteListing extends PolymerElement {
         handle-as="json"
         on-response="handleGetUserDataResponse"
       ></iron-ajax>
-      <div id="loading" data-loading\$="[[!__loading]]">
+      <div id="loading" data-loading$="[[!__loading]]">
         <hexagon-loader item-count="4" loading size="large"></hexagon-loader>
       </div>
       <div class="toolbar">
@@ -905,7 +907,7 @@ class HAXCMSSiteListing extends PolymerElement {
   static get properties() {
     return {
       __loading: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Object, JSON Outline Schema format
@@ -913,11 +915,11 @@ class HAXCMSSiteListing extends PolymerElement {
       sitesResponse: {
         type: Object,
         notify: true,
-        observer: "_sitesResponseChanged"
+        observer: "_sitesResponseChanged",
       },
       method: {
         type: String,
-        value: "POST"
+        value: "POST",
       },
 
       /**
@@ -925,18 +927,18 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       title: {
         type: String,
-        value: "My sites"
+        value: "My sites",
       },
       sites: {
         type: Array,
-        notify: true
+        notify: true,
       },
 
       /**
        * Base path of where this is located.
        */
       basePath: {
-        type: String
+        type: String,
       },
 
       /**
@@ -944,7 +946,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       hideLogin: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -952,7 +954,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       hideGlobalSettings: {
         type: Boolean,
-        value: false
+        value: false,
       },
 
       /**
@@ -960,7 +962,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       dataSource: {
         type: String,
-        observer: "_dataSourceChanged"
+        observer: "_dataSourceChanged",
       },
 
       /**
@@ -969,12 +971,12 @@ class HAXCMSSiteListing extends PolymerElement {
       jwt: {
         type: String,
         notify: true,
-        observer: "_jwtChanged"
+        observer: "_jwtChanged",
       },
       userData: {
         type: Object,
         value: {},
-        observer: "_userDataChanged"
+        observer: "_userDataChanged",
       },
 
       /**
@@ -982,57 +984,57 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       createParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       downloadParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       deleteParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       cloneParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       publishParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       syncParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       archiveParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       configParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       setConfigParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       getUserDataParams: {
         type: Object,
-        value: {}
+        value: {},
       },
       activeOpertion: {
-        type: String
+        type: String,
       },
       HaxSchematizer: {
-        type: Object
+        type: Object,
       },
       HaxElementizer: {
-        type: Object
+        type: Object,
       },
       selectedItems: {
         type: Array,
         value: [],
-        observer: "_selectedItemsChanged"
+        observer: "_selectedItemsChanged",
       },
 
       /**
@@ -1040,7 +1042,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       activeItem: {
         type: Object,
-        notify: true
+        notify: true,
       },
 
       /**
@@ -1051,7 +1053,7 @@ class HAXCMSSiteListing extends PolymerElement {
         value: false,
         notify: true,
         reflectToAttribute: true,
-        observer: "_loggedInChanged"
+        observer: "_loggedInChanged",
       },
 
       /**
@@ -1062,16 +1064,16 @@ class HAXCMSSiteListing extends PolymerElement {
         notify: true,
         reflectToAttribute: true,
         value: false,
-        observer: "_editModeChanged"
+        observer: "_editModeChanged",
       },
       hideCamera: {
         type: Boolean,
-        value: false
+        value: false,
       },
       logoutPhoto: {
         type: String,
-        value: false
-      }
+        value: false,
+      },
     };
   }
 
@@ -1206,7 +1208,7 @@ class HAXCMSSiteListing extends PolymerElement {
       setTimeout(() => {
         this.set("getUserDataParams", {});
         this.set("getUserDataParams", {
-          jwt: newValue
+          jwt: newValue,
         });
         this.notifyPath("getUserDataParams.*");
         this.shadowRoot.querySelector("#getuserdatarequest").generateRequest();
@@ -1300,8 +1302,8 @@ class HAXCMSSiteListing extends PolymerElement {
           detail: {
             text:
               "WARNING: You are using a polyfilled browser. HAXcms requires modern browsers, please upgrade or switch to a modern browser to edit in HAXcms!",
-            duration: 10000
-          }
+            duration: 10000,
+          },
         });
         this.dispatchEvent(evt);
       }
@@ -1389,7 +1391,7 @@ class HAXCMSSiteListing extends PolymerElement {
   loginPromptEvent(e) {
     this._loginUserRoutine({
       u: e.detail.u,
-      p: e.detail.p
+      p: e.detail.p,
     });
   }
   _logoutUserRoutine() {
@@ -1398,7 +1400,7 @@ class HAXCMSSiteListing extends PolymerElement {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: {}
+        detail: {},
       })
     );
   }
@@ -1408,7 +1410,7 @@ class HAXCMSSiteListing extends PolymerElement {
         composed: true,
         bubbles: true,
         cancelable: false,
-        detail: detail
+        detail: detail,
       })
     );
   }
@@ -1436,7 +1438,7 @@ class HAXCMSSiteListing extends PolymerElement {
         title: "id",
         description: "",
         inputMethod: "boolean",
-        hidden: true
+        hidden: true,
       },
       {
         property: "manifest",
@@ -1452,7 +1454,7 @@ class HAXCMSSiteListing extends PolymerElement {
                 description:
                   "This forms the folder name and metadata title for the site",
                 inputMethod: "textfield",
-                required: true
+                required: true,
               },
               {
                 property: "theme",
@@ -1461,22 +1463,22 @@ class HAXCMSSiteListing extends PolymerElement {
                 inputMethod: "select",
                 allowNull: false,
                 options: themeOptions,
-                required: true
+                required: true,
               },
               {
                 property: "description",
                 title: "Description (optional)",
                 description:
                   "Addition detail, for personal use as well as search engine optimization",
-                inputMethod: "textfield"
+                inputMethod: "textfield",
               } /*,
               {
                 property: "domain",
                 title: "URL (optional)",
                 description: "Optional domain name",
                 inputMethod: "textfield"
-              }*/
-            ]
+              }*/,
+            ],
           },
           {
             property: "theme",
@@ -1496,19 +1498,19 @@ class HAXCMSSiteListing extends PolymerElement {
                 title: "Pick an icon.",
                 description:
                   "The icon is used in some designs areas to help you know what site your on",
-                inputMethod: "iconpicker"
+                inputMethod: "iconpicker",
               },
               {
                 property: "color",
                 title: "Color",
                 description:
                   "Choose a primary color to tint the UI or be used in the theme",
-                inputMethod: "colorpicker"
-              }
-            ]
-          }
-        ]
-      }
+                inputMethod: "colorpicker",
+              },
+            ],
+          },
+        ],
+      },
     ];
     fields.value = {
       id: false,
@@ -1517,14 +1519,14 @@ class HAXCMSSiteListing extends PolymerElement {
           name: "",
           description: "",
           //domain: "",
-          theme: firstTheme
+          theme: firstTheme,
         },
         theme: {
           //image: "assets/banner.jpg",
           color: "blue",
-          icon: "icons:add-circle-outline"
-        }
-      }
+          icon: "icons:add-circle-outline",
+        },
+      },
     };
   }
   /**
@@ -1589,7 +1591,7 @@ class HAXCMSSiteListing extends PolymerElement {
       path: "@lrnwebcomponents/product-card/lib/course-card.js",
       properties: {
         number: "title",
-        name: function(item) {
+        name: function (item) {
           return item.slug
             ? item.slug
                 .replace("/_sites/", "")
@@ -1599,13 +1601,13 @@ class HAXCMSSiteListing extends PolymerElement {
         },
         zoom: true,
         url: "location",
-        image: function(item) {
+        image: function (item) {
           if (item.metadata.site && item.metadata.site.logo) {
             return item.slug + item.metadata.site.logo.replace(" ", "%20");
           }
           return item.slug + "assets/banner.jpg";
         },
-        icon: function(item) {
+        icon: function (item) {
           if (
             item.metadata.theme &&
             item.metadata.theme.variables &&
@@ -1615,13 +1617,13 @@ class HAXCMSSiteListing extends PolymerElement {
           }
           return "icons:android";
         },
-        author: function(item) {
+        author: function (item) {
           if (item.metadata.author && item.metadata.author.name) {
             return item.metadata.author.name;
           }
           return "";
         },
-        accentColor: function(item) {
+        accentColor: function (item) {
           if (
             item.metadata.theme &&
             item.metadata.theme.variables &&
@@ -1635,10 +1637,10 @@ class HAXCMSSiteListing extends PolymerElement {
         },
         size: "small",
         dark: true,
-        alt: function(item) {
+        alt: function (item) {
           return "Select to access " + item.title;
-        }
-      }
+        },
+      },
     };
   }
   /**
@@ -1646,7 +1648,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   loadActiveSite(e) {
-    let findSite = this.sites.filter(site => {
+    let findSite = this.sites.filter((site) => {
       if (site.id !== e.detail.id) {
         return false;
       }
@@ -1670,9 +1672,9 @@ class HAXCMSSiteListing extends PolymerElement {
       jwt: this.jwt,
       site: {
         git: {
-          url: this.shadowRoot.querySelector("#importurl").value
-        }
-      }
+          url: this.shadowRoot.querySelector("#importurl").value,
+        },
+      },
     });
     this.set("gitImportParams", {});
     this.set("gitImportParams", values);
@@ -1686,7 +1688,7 @@ class HAXCMSSiteListing extends PolymerElement {
   _createSite(e) {
     let values = Object.assign(
       {
-        jwt: this.jwt
+        jwt: this.jwt,
       },
       this.shadowRoot.querySelector("#createsitefields").value.manifest
     );
@@ -1703,7 +1705,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("downloadParams", {});
     this.set("downloadParams", {
       jwt: this.jwt,
-      site: {}
+      site: {},
     });
     this.notifyPath("downloadParams.*");
 
@@ -1726,7 +1728,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("archiveParams", {});
     this.set("archiveParams", {
       jwt: this.jwt,
-      site: {}
+      site: {},
     });
     this.notifyPath("archiveParams.*");
 
@@ -1782,7 +1784,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("deleteParams", {});
     this.set("deleteParams", {
       jwt: this.jwt,
-      site: {}
+      site: {},
     });
     this.notifyPath("deleteParams.*");
 
@@ -1805,7 +1807,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("cloneParams", {});
     this.set("cloneParams", {
       jwt: this.jwt,
-      site: {}
+      site: {},
     });
     this.notifyPath("cloneParams.*");
 
@@ -1828,7 +1830,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("publishParams", {});
     this.set("publishParams", {
       jwt: this.jwt,
-      site: {}
+      site: {},
     });
     this.notifyPath("publishParams.*");
 
@@ -1851,7 +1853,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("syncParams", {});
     this.set("syncParams", {
       jwt: this.jwt,
-      site: {}
+      site: {},
     });
     this.notifyPath("syncParams.*");
 
@@ -1875,7 +1877,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("configParams", {});
     this.set("configParams", {
       jwt: this.jwt,
-      token: this.createParams.token
+      token: this.createParams.token,
     });
     this.notifyPath("configParams.*");
     this.shadowRoot.querySelector("#getconfigrequest").generateRequest();
@@ -1892,7 +1894,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("setConfigParams", {
       jwt: this.jwt,
       token: this.createParams.token,
-      values: window.HAXCMS.config.values
+      values: window.HAXCMS.config.values,
     });
     this.notifyPath("setConfigParams.*");
     this.shadowRoot.querySelector("#setconfigrequest").generateRequest();
@@ -1908,7 +1910,7 @@ class HAXCMSSiteListing extends PolymerElement {
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: true
+          detail: true,
         })
       );
     }
@@ -1920,8 +1922,8 @@ class HAXCMSSiteListing extends PolymerElement {
         cancelable: true,
         detail: {
           text: toast,
-          duration: 2000
-        }
+          duration: 2000,
+        },
       })
     );
   }
@@ -2034,8 +2036,8 @@ class HAXCMSSiteListing extends PolymerElement {
               bubbles: true,
               cancelable: false,
               detail: {
-                redirect: true
-              }
+                redirect: true,
+              },
             })
           );
           break;
@@ -2053,9 +2055,9 @@ class HAXCMSSiteListing extends PolymerElement {
                 element: {
                   obj: this,
                   callback: "refreshRequest",
-                  params: [target]
-                }
-              }
+                  params: [target],
+                },
+              },
             })
           );
           break;
@@ -2066,8 +2068,8 @@ class HAXCMSSiteListing extends PolymerElement {
             composed: true,
             cancelable: true,
             detail: {
-              text: e.detail.value.status + " " + e.detail.value.statusText
-            }
+              text: e.detail.value.status + " " + e.detail.value.statusText,
+            },
           });
           window.dispatchEvent(evt);
           break;

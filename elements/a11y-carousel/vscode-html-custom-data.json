@@ -2,75 +2,93 @@
   "version": 1,
   "tags": [
     {
-      "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "name": "a11y-carousel-button",
+      "description": "`a11y-carousel-button`\nbutton that controls a carousel\n\nEvents:\n\n  * `select-carousel-item` - \n\nAttributes:\n\n  * `button-type` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `buttonType` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `tabindex` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "name": "button-type",
+          "description": "`button-type` {`string`} - \n\nProperty: buttonType"
         },
         {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+          "name": "controls",
+          "description": "`controls` {`string`} - \n\nProperty: controls"
         },
         {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
-        },
-        {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "name": "active",
+          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - \n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onselect-carousel-item",
+          "description": "`select-carousel-item` - "
         }
       ]
     },
     {
       "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\nProperties:\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
-        },
-        {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
-        },
-        {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "name": "no-buttons",
+          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "no-prev-next",
+          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "prevLabel",
+          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
+        },
+        {
+          "name": "nextLabel",
+          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
         }
       ]
     },
     {
       "name": "tag",
-      "attributes": []
+      "description": "Events:\n\n  * `select-carousel-item` - ",
+      "attributes": [
+        {
+          "name": "onselect-carousel-item",
+          "description": "`select-carousel-item` - "
+        }
+      ]
     },
     {
       "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\nProperties:\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - ",
       "attributes": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "top-src",
-          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
-        },
-        {
-          "name": "bottom-src",
-          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
-        },
-        {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "name": "no-buttons",
+          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "no-prev-next",
+          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "prevLabel",
+          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
+        },
+        {
+          "name": "nextLabel",
+          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
         }
       ]
     }

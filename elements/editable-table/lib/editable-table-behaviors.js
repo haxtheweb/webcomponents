@@ -14,7 +14,7 @@
 /**
  * behaviors needed to display the table in either mode
  */
-export const displayBehaviors = function(SuperClass) {
+export const displayBehaviors = function (SuperClass) {
   return class extends SuperClass {
     static get properties() {
       return {
@@ -27,7 +27,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * a table caption
@@ -35,7 +35,7 @@ export const displayBehaviors = function(SuperClass) {
         caption: {
           type: String,
           value: null,
-          notify: true
+          notify: true,
         },
         /**
          * Display the first row as a column header.
@@ -44,14 +44,14 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * Raw data pulled in from the csv file.
          */
         csvData: {
           type: String,
-          value: ""
+          value: "",
         },
         /**
          * Condense height of table cells.
@@ -60,7 +60,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * raw data
@@ -69,13 +69,13 @@ export const displayBehaviors = function(SuperClass) {
           type: Array,
           value: [],
           notify: true,
-          observer: "_dataChanged"
+          observer: "_dataChanged",
         },
         /**
          * Location of the CSV file.
          */
         dataCsv: {
-          type: String
+          type: String,
         },
         /**
          * Enable filtering by cell value.
@@ -84,7 +84,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * Display the last row as a column footer.
@@ -93,7 +93,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * Display the first column as a row header.
@@ -102,7 +102,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * When table is wider than screens,
@@ -113,7 +113,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * Enable sorting by column header.
@@ -122,7 +122,7 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * Add alternating row striping.
@@ -131,29 +131,29 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true,
-          notify: true
+          notify: true,
         },
         /**
          * Columns in <thead>
          */
         thead: {
           type: Array,
-          computed: "_getThead(data,columnHeader)"
+          computed: "_getThead(data,columnHeader)",
         },
         /**
          * Rows in <tbody>
          */
         tbody: {
           type: Array,
-          computed: "_getTbody(data,columnHeader,footer)"
+          computed: "_getTbody(data,columnHeader,footer)",
         },
         /**
          * Rows in <tfoot>
          */
         tfoot: {
           type: Array,
-          computed: "_getTfoot(data,footer)"
-        }
+          computed: "_getTfoot(data,footer)",
+        },
       };
     }
 
@@ -192,9 +192,9 @@ export const displayBehaviors = function(SuperClass) {
      */
     getTableCSV() {
       return this.data
-        .map(row => {
+        .map((row) => {
           return row
-            .map(cell => {
+            .map((cell) => {
               cell = this._replaceBlankCell(cell);
               return this._isNumeric(cell)
                 ? cell.replace(/,/g, "")
@@ -213,26 +213,26 @@ export const displayBehaviors = function(SuperClass) {
           let th = this.rowHeader ? tr.slice(0, 1) : [],
             td = this.rowHeader ? tr.slice(1) : tr;
           return `\n\t\t<tr>${th
-            .map(cell => {
+            .map((cell) => {
               return `\n\t\t\t<th scope="row">${this._replaceBlankCell(
                 cell
               )}</th>`;
             })
             .join("")}${td
-            .map(cell => {
+            .map((cell) => {
               return `\n\t\t\t<${open}>${this._replaceBlankCell(
                 cell
               )}</${close}>`;
             })
             .join("")}\n\t\t</tr>`;
         },
-        headers = this.thead.map(tr => {
+        headers = this.thead.map((tr) => {
           return getTR(tr, `th scope="col"`, `th`);
         }),
-        body = this.tbody.map(tr => {
+        body = this.tbody.map((tr) => {
           return getTR(tr);
         }),
-        footer = this.tfoot.map(tr => {
+        footer = this.tfoot.map((tr) => {
           return getTR(tr);
         });
       return [
@@ -243,7 +243,7 @@ export const displayBehaviors = function(SuperClass) {
         headers.length > 0 ? `\n\t<thead>${headers.join("")}\n\t</thead>` : "",
         body.length > 0 ? `\n\t<tbody>${body.join("")}\n\t</tbody>` : "",
         footer.length > 0 ? `\n\t<tfoot>${footer.join("")}\n\t</tfoot>` : "",
-        "\n</table>"
+        "\n</table>",
       ].join("");
     }
     /**
@@ -263,7 +263,7 @@ export const displayBehaviors = function(SuperClass) {
         responsive: !this.hideResponsive ? this.responsive : null,
         sort: !this.hideSort ? this.sort : null,
         striped: !this.hideStriped ? this.striped : null,
-        summary: this.summary
+        summary: this.summary,
       };
       return data;
     }
@@ -272,8 +272,8 @@ export const displayBehaviors = function(SuperClass) {
      * @param {HTMLElement} table the table element
      */
     importHTML(table) {
-      let data = [].slice.call(table.querySelectorAll("tr")).map(row => {
-        return [].slice.call(row.querySelectorAll("th,td")).map(cell => {
+      let data = [].slice.call(table.querySelectorAll("tr")).map((row) => {
+        return [].slice.call(row.querySelectorAll("th,td")).map((cell) => {
           return typeof cell.innerHTML === "string"
             ? cell.innerHTML.trim()
             : cell.innerHTML;
@@ -367,7 +367,7 @@ export const displayBehaviors = function(SuperClass) {
 /**
  * behaviors needed for table cells, row headers, and columns
  */
-export const cellBehaviors = function(SuperClass) {
+export const cellBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**
      * Get the row or column label
@@ -380,9 +380,7 @@ export const cellBehaviors = function(SuperClass) {
         return index + 1;
       } else {
         let numerals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-          results = this._getLetter(index)
-            .split("-")
-            .reverse(),
+          results = this._getLetter(index).split("-").reverse(),
           label = "";
         for (let i = 0; i < results.length; i++) {
           if (results[i] !== "") label += numerals[results[i]];

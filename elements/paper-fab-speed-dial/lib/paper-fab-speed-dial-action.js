@@ -8,7 +8,7 @@ class PaperFabSpeedDialAction extends LitElement {
       /**
        * Icon that is shown next to the content
        */
-      icon: String
+      icon: String,
     };
   }
 }

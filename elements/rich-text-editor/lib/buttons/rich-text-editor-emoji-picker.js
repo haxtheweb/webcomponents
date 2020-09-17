@@ -61,8 +61,8 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
        */
       emojiTypes: {
         name: "emojiTypes",
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -77,7 +77,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
       "activities",
       "objects",
       "symbols",
-      "flags"
+      "flags",
     ];
     this.icon = "editor:insert-emoticon";
     this.label = "Insert emoji";

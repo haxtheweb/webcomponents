@@ -2,7 +2,7 @@ import { css, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 
-const HAXCMSUserStylesMenuMixin = function(SuperClass) {
+const HAXCMSUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
     constructor() {
       super();
@@ -284,7 +284,7 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
           :host([color-theme="2"]) .hcusm .hcusm-button:active {
             color: #f4f4f5;
           }
-        `
+        `,
       ];
     }
     HAXCMSUserStylesMenu() {
@@ -379,23 +379,23 @@ const HAXCMSUserStylesMenuMixin = function(SuperClass) {
       return {
         ...props,
         hideUserStylesMenu: {
-          type: Boolean
+          type: Boolean,
         },
         fontSize: {
           type: Number,
           reflect: true,
-          attribute: "font-size"
+          attribute: "font-size",
         },
         fontFamily: {
           type: Number,
           reflect: true,
-          attribute: "font-family"
+          attribute: "font-family",
         },
         colorTheme: {
           type: Number,
           reflect: true,
-          attribute: "color-theme"
-        }
+          attribute: "color-theme",
+        },
       };
     }
     checkUserStylesMenuOpen(e) {

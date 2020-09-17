@@ -8,11 +8,6 @@
     },
     {
       "name": "hexagon-loader",
-      "description": "`hexagon-loader`\n\nProperties:\n\n  * `itemCount` {`number`} - \n\n  * `items` {`never[]`} - ",
-      "attributes": []
-    },
-    {
-      "name": "hexagon-loader",
       "description": "`hexagon-loader`\n\nAttributes:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `item-count` {`number`} - Count of the items\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `itemCount` {`number`} - Count of the items\n\n  * `items` {`any[]`} - ",
       "attributes": [
         {

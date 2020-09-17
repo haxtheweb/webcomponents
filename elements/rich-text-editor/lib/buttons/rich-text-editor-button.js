@@ -8,7 +8,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "../singletons/rich-text-editor-selection.js";
 
-const RichTextEditorButtonBehaviors = function(SuperClass) {
+const RichTextEditorButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonStyles(SuperClass) {
     /**
      * Store the tag name to make it easier to obtain directly.
@@ -27,7 +27,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
             margin: var(--rich-text-editor-button-margin);
             padding: var(--rich-text-editor-button-padding);
           }
-        `
+        `,
       ];
     }
     render() {
@@ -66,14 +66,14 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          * The `id` of the `rich-text-editor` that the toolbar controls.
          */
         controls: {
-          type: String
+          type: String,
         },
 
         /**
          * The command used for document.execCommand.
          */
         command: {
-          type: String
+          type: String,
         },
 
         /**
@@ -81,35 +81,35 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         commandVal: {
           attribute: "command-val",
-          type: Object
+          type: Object,
         },
 
         /**
          * Is the button disabled? Default is false.
          */
         disabled: {
-          type: Boolean
+          type: Boolean,
         },
 
         /**
          * Optional iron icon name for the button.
          */
         icon: {
-          type: String
+          type: String,
         },
 
         /**
          * Label for the icon.
          */
         label: {
-          type: String
+          type: String,
         },
 
         /**
          * The active selected range, inherited from the toolbar
          */
         range: {
-          type: Object
+          type: Object,
         },
 
         /**
@@ -118,7 +118,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         shortcutKeys: {
           attribute: "shortcut-keys",
-          type: String
+          type: String,
         },
 
         /**
@@ -126,20 +126,20 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         showTextLabel: {
           attribute: "show-text-label",
-          type: Boolean
+          type: Boolean,
         },
         /**
          * The active selected range, inherited from the toolbar
          */
         tag: {
-          type: String
+          type: String,
         },
 
         /**
          * The active selected range, inherited from the toolbar
          */
         target: {
-          type: Object
+          type: Object,
         },
 
         /**
@@ -147,14 +147,14 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         toggledCommand: {
           attribute: "toggled-command",
-          type: String
+          type: String,
         },
         /**
          * Optional parameter for the command when toggled.
          */
         toggledCommandVal: {
           attribute: "toggled-command-val",
-          type: Object
+          type: Object,
         },
 
         /**
@@ -162,7 +162,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         toggledIcon: {
           attribute: "toggled-icon",
-          type: String
+          type: String,
         },
 
         /**
@@ -170,21 +170,21 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
          */
         toggledLabel: {
           attribute: "toggled-label",
-          type: String
+          type: String,
         },
 
         /**
          * Can this button toggle?
          */
         toggles: {
-          type: Boolean
+          type: Boolean,
         },
         /**
          * highlight surrounding selected range
          */
         __selection: {
-          type: Object
-        }
+          type: Object,
+        },
       };
     }
 
@@ -357,7 +357,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
         "superscript",
         "undo",
         "unlink",
-        "useCSS"
+        "useCSS",
       ];
     }
 
@@ -422,7 +422,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           })
         );
       }
@@ -454,7 +454,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -537,7 +537,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -561,7 +561,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -588,7 +588,7 @@ const RichTextEditorButtonBehaviors = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }

@@ -20,7 +20,7 @@ class RandomImage extends LitElement {
           border-radius: 50%;
           box-shadow: 0px 5px 10px #ccc;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -48,18 +48,18 @@ class RandomImage extends LitElement {
   static get properties() {
     return {
       mode: {
-        type: String
+        type: String,
       },
       _imgSrc: {
-        type: String
+        type: String,
       },
       _imgTitle: {
-        type: String
+        type: String,
       },
       imagesList: {
         type: Array,
-        attribute: "images-list"
-      }
+        attribute: "images-list",
+      },
     };
   }
 
@@ -85,8 +85,8 @@ class RandomImage extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

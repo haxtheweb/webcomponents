@@ -176,7 +176,7 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
                 close modal
               </simple-tooltip>
               <div class="content">
-                <img loading="lazy" src\$="[[src]]" alt\$="[[alt]]" />
+                <img loading="lazy" src$="[[src]]" alt$="[[alt]]" />
               </div>
 
               <div class="meta">
@@ -189,7 +189,7 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
         <div class="trigger modal">
           <img
             class="simple-img"
-            src\$="[[src]]"
+            src$="[[src]]"
             srcset="
               https://media.edutopia.org/styles/responsive_200px_16x9/s3/masters/2018-05/kids-doing-homework-math-problems-at-the-kitchen-table-at-home_t20_K6blK1_master.jpg   200w,
               https://media.edutopia.org/styles/responsive_250px_16x9/s3/masters/2018-05/kids-doing-homework-math-problems-at-the-kitchen-table-at-home_t20_K6blK1_master.jpg   250w,
@@ -221,7 +221,7 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
               https://media.edutopia.org/styles/responsive_2880px_16x9/s3/masters/2018-05/kids-doing-homework-math-problems-at-the-kitchen-table-at-home_t20_K6blK1_master.jpg 2880w
             "
             sizes="100vw"
-            alt\$="[[alt]]"
+            alt$="[[alt]]"
           />
         </div>
 
@@ -242,26 +242,26 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
        * image source
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        * alt data
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * caption on the image
        */
       caption: {
-        type: String
+        type: String,
       },
       /**
        * photo credit / copyright info
        */
       credit: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   static get haxProperties() {
@@ -279,12 +279,12 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
         handles: [
           {
             type: "image",
-            url: "src"
-          }
+            url: "src",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -294,7 +294,7 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
             description: "The URL for the image.",
             inputMethod: "textfield",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "alt",
@@ -302,8 +302,8 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
             description: "Text to describe the image to non-sighted users.",
             inputMethod: "alt",
             icon: "accessibility",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -312,29 +312,29 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
             description: "The URL for the image.",
             inputMethod: "textfield",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "caption",
             title: "Caption",
             description: "A caption to describe the image usage",
-            inputMethod: "textarea"
+            inputMethod: "textarea",
           },
           {
             property: "alt",
             title: "Alternative text",
             description: "Text to describe the image to non-sighted users.",
-            inputMethod: "alt"
+            inputMethod: "alt",
           },
           {
             property: "credit",
             title: "Credits",
             description: "Who the image is credited to / copyright information",
-            inputMethod: "textarea"
-          }
+            inputMethod: "textarea",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

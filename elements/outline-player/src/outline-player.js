@@ -183,7 +183,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             padding: 8px 8px 8px 8px;
           }
         }
-      `
+      `,
     ];
   }
   /**
@@ -202,12 +202,24 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     this.closed = false;
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js"
+    );
   }
   // render function
   render() {
@@ -313,19 +325,19 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
       ...super.properties,
       opened: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       closed: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       activeId: {
-        type: String
+        type: String,
       },
       narrow: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
   /**
@@ -343,8 +355,8 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         this.dispatchEvent(
           new CustomEvent("closed-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -374,14 +386,14 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
     });

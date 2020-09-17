@@ -241,7 +241,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
             --accent-card-image-width: 50%;
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -254,7 +254,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           label="Project:"
           .options="${this.projectOptions}"
           value="${this.projectFilter || ""}"
-          @value-changed="${e => (this.projectFilter = e.detail.value)}"
+          @value-changed="${(e) => (this.projectFilter = e.detail.value)}"
         >
         </simple-fields-field>
         <simple-fields-field
@@ -262,7 +262,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           label="Assignment:"
           .options="${this.assignmentOptions}"
           value="${this.assignmentFilter || ""}"
-          @value-changed="${e => (this.assignmentFilter = e.detail.value)}"
+          @value-changed="${(e) => (this.assignmentFilter = e.detail.value)}"
         >
         </simple-fields-field>
         <simple-fields-field
@@ -270,20 +270,20 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           label="Student:"
           .options="${this.studentOptions}"
           value="${this.studentFilter || ""}"
-          @value-changed="${e => (this.studentFilter = e.detail.value)}"
+          @value-changed="${(e) => (this.studentFilter = e.detail.value)}"
         >
         </simple-fields-field>
         <div id="layout">
           <button
             aria-pressed="${this.list ? "true" : "false"}"
-            @click="${e => (this.list = true)}"
+            @click="${(e) => (this.list = true)}"
           >
             <iron-icon icon="icons:view-list"></iron-icon>
             <span class="sr-only">display as list</span>
           </button>
           <button
             aria-pressed="${this.list ? "false" : "true"}"
-            @click="${e => (this.list = false)}"
+            @click="${(e) => (this.list = false)}"
           >
             <iron-icon icon="icons:view-module"></iron-icon>
             <span class="sr-only">display as grid</span>
@@ -343,9 +343,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 <div slot="subheading" id="assignment-${s.id}">
                   ${s.assignment}
                 </div>
-                <div slot="content" id="project-${s.id}">
-                  ${s.project}
-                </div>
+                <div slot="content" id="project-${s.id}">${s.project}</div>
                 <div slot="content" class="feature" ?hidden="${!s.feature}">
                   ${s.feature}
                 </div>
@@ -380,7 +378,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
           </div>
           <div slot="linklist">
             ${this.filteredComments.map(
-              f => html`
+              (f) => html`
                 <nav-card-item
                   accent-color="${this.accentColor(this.fullName(f))}"
                   .avatar="${f.avatar}"
@@ -413,26 +411,26 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
       ...super.properties,
       assignmentFilter: {
         type: String,
-        attribute: "assignment-filter"
+        attribute: "assignment-filter",
       },
       comments: {
-        type: Array
+        type: Array,
       },
       list: {
         type: Boolean,
-        attribute: "list"
+        attribute: "list",
       },
       projectFilter: {
         type: String,
-        attribute: "project-filter"
+        attribute: "project-filter",
       },
       studentFilter: {
         type: String,
-        attribute: "student-filter"
+        attribute: "student-filter",
       },
       submissions: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -446,7 +444,7 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   }
   get filteredComments() {
     return (this.comments || []).filter(
-      i =>
+      (i) =>
         this._isFilteredStudent(i.userId) &&
         this._isFilteredAssignment(i.assignmentId) &&
         this._isFilteredProject(i.projectId)
@@ -455,26 +453,26 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   get studentOptions() {
     let options = { "": "All" };
     (this.submissions || []).forEach(
-      i => (options[i.userId] = this.fullName(i))
+      (i) => (options[i.userId] = this.fullName(i))
     );
     return options;
   }
   get assignmentOptions() {
     let options = { "": "All" };
     (this.submissions || [])
-      .filter(i => this._isFilteredProject(i.projectId))
-      .forEach(i => (options[i.assignmentId] = i.assignment));
+      .filter((i) => this._isFilteredProject(i.projectId))
+      .forEach((i) => (options[i.assignmentId] = i.assignment));
     return options;
   }
   get projectOptions() {
     let options = { "": "All" };
     (this.submissions || [])
-      .filter(i => i.project)
-      .forEach(i => (options[i.projectId] = i.project));
+      .filter((i) => i.project)
+      .forEach((i) => (options[i.projectId] = i.project));
     return options;
   }
   get filteredSubmissions() {
-    return (this.submissions || []).filter(i => {
+    return (this.submissions || []).filter((i) => {
       return (
         this._isFilteredStudent(i.userId) &&
         this._isFilteredAssignment(i.assignmentId) &&
@@ -485,12 +483,12 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
   get modalTitle() {
     let assign = [
         this.projectOptions[this.projectFilter],
-        this.assignmentOptions[this.assignmentFilter]
+        this.assignmentOptions[this.assignmentFilter],
       ]
-        .filter(i => !!i && i !== "All")
+        .filter((i) => !!i && i !== "All")
         .join(":"),
       title = [assign, this.studentOptions[this.studentFilter]]
-        .filter(i => !!i && i !== "All" && i !== "")
+        .filter((i) => !!i && i !== "All" && i !== "")
         .join(" by ");
     return title && title != "" ? title : "All Submissions";
   }

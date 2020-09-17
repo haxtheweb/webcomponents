@@ -38,7 +38,7 @@ class SimpleModalTemplate extends LitElement {
             --simple-modal-buttons-background-color
           );
         }
-      `
+      `,
     ];
   }
   /**
@@ -59,14 +59,14 @@ class SimpleModalTemplate extends LitElement {
        * the simple-modal
        */
       modal: {
-        type: Object
+        type: Object,
       },
       /**
        * the modal title
        */
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   //render function
@@ -86,7 +86,7 @@ class SimpleModalTemplate extends LitElement {
    * @returns {object} the modal object
    */
   associateEvents(target, evt = "click", bubbles = true, cancelable = true) {
-    target.addEventListener(evt, e => {
+    target.addEventListener(evt, (e) => {
       this.openModal(target, bubbles, cancelable);
     });
     return this.modal;
@@ -124,8 +124,8 @@ class SimpleModalTemplate extends LitElement {
       "--simple-modal-titlebar-button-outline",
       "--simple-modal-titlebar-button-outline-offset",
       "--simple-modal-titlebar-icon-width",
-      "--simple-modal-titlebar-icon-height"
-    ].forEach(prop => {
+      "--simple-modal-titlebar-icon-height",
+    ].forEach((prop) => {
       styles[prop] = tplStyles.getPropertyValue(prop);
     });
     const evt = new CustomEvent("simple-modal-show", {
@@ -137,14 +137,14 @@ class SimpleModalTemplate extends LitElement {
         elements: {
           header: this._getSlot("header"),
           content: this._getSlot("content"),
-          buttons: this._getSlot("buttons")
+          buttons: this._getSlot("buttons"),
         },
         invokedBy: target,
         modalClass: this.getAttribute("class"),
         styles: styles,
         clone: false,
-        title: this.title !== null ? this.title : false
-      }
+        title: this.title !== null ? this.title : false,
+      },
     });
     window.dispatchEvent(evt);
   }
@@ -161,7 +161,7 @@ class SimpleModalTemplate extends LitElement {
       slot = slot[0].assignedNodes({ flatten: true });
     }
     let container = document.createElement("div");
-    slot.forEach(el => {
+    slot.forEach((el) => {
       container.appendChild(el.cloneNode(true));
     });
     return slot !== null ? container.cloneNode(true) : false;

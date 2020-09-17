@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
-const RichTextEditorPickerBehaviors = function(SuperClass) {
+const RichTextEditorPickerBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
      * Store tag name to make it easier to obtain directly.
@@ -42,7 +42,7 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
             --simple-picker-icon-size: 16px;
             --simple-picker-options-border-width: 1px;
           }
-        `
+        `,
       ];
     }
 
@@ -78,34 +78,34 @@ const RichTextEditorPickerBehaviors = function(SuperClass) {
          * Allow a null option to be selected?
          */
         allowNull: {
-          type: Boolean
+          type: Boolean,
         },
         /**
          * command used for document.execCommand.
          */
         command: {
-          type: String
+          type: String,
         },
         /**
          * Optional icon for null value
          */
         icon: {
-          type: String
+          type: String,
         },
 
         /**
          * Renders html as title. (Good for titles with HTML in them.)
          */
         titleAsHtml: {
-          type: Boolean
+          type: Boolean,
         },
 
         /**
          * value of elected options
          */
         value: {
-          type: Object
-        }
+          type: Object,
+        },
       };
     }
 

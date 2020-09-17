@@ -80,7 +80,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           max-width: var(--media-image-offset-narrow-max-width, 500px);
           margin: auto;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -146,16 +146,12 @@ class MediaImage extends SchemaBehaviors(LitElement) {
         .described-by="${this.describedBy}"
       ></media-image-image>
       <media-image-citation>
-        <slot name="citation">
-          ${this.citation}
-        </slot>
+        <slot name="citation"> ${this.citation} </slot>
       </media-image-citation>
       ${this._hasCaption
         ? html`
             <media-image-caption>
-              <slot name="caption">
-                ${this.caption}
-              </slot>
+              <slot name="caption"> ${this.caption} </slot>
             </media-image-caption>
           `
         : ``}
@@ -168,78 +164,78 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     return {
       ...super.properties,
       __figureLabel: {
-        type: Boolean
+        type: Boolean,
       },
       modalTitle: {
-        type: String
+        type: String,
       },
       _hasCaption: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Image source.
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * Image citation.
        */
       citation: {
-        type: String
+        type: String,
       },
       /**
        * image aria-described by
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * Image caption.
        */
       caption: {
-        type: String
+        type: String,
       },
       /**
        * Image alt.
        */
       alt: {
-        type: String
+        type: String,
       },
       /**
        * The size of the image (small, wide).
        */
       size: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * The shape of the image (round).
        */
       round: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Applies card styling.
        */
       card: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Sets aria-describedby attribute.
        */
       describedBy: {
         type: String,
-        attrbute: "described-by"
+        attrbute: "described-by",
       },
       /**
        * Applies box styling.
        */
       box: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Applies left or right offset
@@ -251,22 +247,22 @@ class MediaImage extends SchemaBehaviors(LitElement) {
        */
       offset: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Added a figure label title to the top of the media-image
        */
       figureLabelTitle: {
         type: String,
-        attribute: "figure-label-title"
+        attribute: "figure-label-title",
       },
       /**
        * Added a figure label description to the top of the media-image
        */
       figureLabelDescription: {
         type: String,
-        attribute: "figure-label-description"
-      }
+        attribute: "figure-label-description",
+      },
     };
   }
 
@@ -283,11 +279,11 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    this._observer = new MutationObserver(mutations => {
+    this._observer = new MutationObserver((mutations) => {
       this._computeHasCaption();
     });
     this._observer.observe(this, {
-      childList: true
+      childList: true,
     });
   }
   disconnectedCallback() {
@@ -315,12 +311,12 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             alt: "alt",
             citation: "citation",
             caption: "caption",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -330,7 +326,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "The URL for the image.",
             inputMethod: "textfield",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "alt",
@@ -338,8 +334,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Text to describe the image to non-sighted users.",
             inputMethod: "textfield",
             icon: "accessibility",
-            required: false
-          }
+            required: false,
+          },
         ],
         configure: [
           {
@@ -348,7 +344,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "The URL for the image.",
             inputMethod: "haxupload",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "alt",
@@ -356,7 +352,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Text to describe the image to non-sighted users.",
             inputMethod: "alt",
             icon: "accessibility",
-            required: true
+            required: true,
           },
           {
             property: "round",
@@ -364,7 +360,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Crops the image appearance to be circle in shape.",
             inputMethod: "boolean",
             icon: "account",
-            required: false
+            required: false,
           },
           {
             property: "card",
@@ -373,7 +369,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
               "Apply a drop shadow to give the appearance of being a raised card.",
             inputMethod: "boolean",
             icon: "check-box-outline-blank",
-            required: false
+            required: false,
           },
           {
             property: "box",
@@ -381,7 +377,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Apply a visual box around the image.",
             inputMethod: "boolean",
             icon: "image:crop-square",
-            required: false
+            required: false,
           },
           {
             property: "offset",
@@ -394,8 +390,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
               left: "left",
               right: "right",
               wide: "wide",
-              narrow: "narrow"
-            }
+              narrow: "narrow",
+            },
           },
           {
             property: "citation",
@@ -403,7 +399,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Citation for the image.",
             inputMethod: "textfield",
             icon: "text-format",
-            required: false
+            required: false,
           },
           {
             property: "caption",
@@ -411,7 +407,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Caption for the image.",
             inputMethod: "textfield",
             icon: "text-format",
-            required: false
+            required: false,
           },
           {
             property: "figureLabelTitle",
@@ -419,7 +415,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Title for the figure label.",
             inputMethod: "textfield",
             icon: "text-format",
-            required: false
+            required: false,
           },
           {
             property: "figureLabelDescription",
@@ -427,8 +423,8 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             description: "Description for the figure label.",
             inputMethod: "textfield",
             icon: "text-format",
-            required: false
-          }
+            required: false,
+          },
         ],
         advanced: [
           {
@@ -436,9 +432,9 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       demoSchema: [
         {
@@ -447,10 +443,10 @@ class MediaImage extends SchemaBehaviors(LitElement) {
             source: "http://unsplash.it/600",
             figureLabelTitle: "1.3",
             figureLabelDescription: "This is the description of the figure.",
-            citation: "This is my citation."
-          }
-        }
-      ]
+            citation: "This is my citation.",
+          },
+        },
+      ],
     };
   }
 }
@@ -481,7 +477,7 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
         :host([round]) iron-image {
           border-radius: 50%;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -526,23 +522,23 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
   static get properties() {
     return {
       source: {
-        type: String
+        type: String,
       },
       alt: {
-        type: String
+        type: String,
       },
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       round: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       modalTitle: {
         type: String,
-        attribute: "modal-title"
-      }
+        attribute: "modal-title",
+      },
     };
   }
   static get tag() {
@@ -574,13 +570,11 @@ class MediaImageCitation extends LitElement {
           color: #4c4c4c;
           margin: 15px 0 15px;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <div class="citation"><slot></slot></div>
-    `;
+    return html` <div class="citation"><slot></slot></div> `;
   }
   static get tag() {
     return "media-image-citation";
@@ -619,17 +613,13 @@ class MediaImageCaption extends LitElement {
         .caption ::slotted(*:last-child) {
           margin-bottom: 0;
         }
-      `
+      `,
     ];
   }
   render() {
     return html`
       <div class="caption">
-        ${!this.__hasContent
-          ? html`
-              <slot id="slot"></slot>
-            `
-          : ``}
+        ${!this.__hasContent ? html` <slot id="slot"></slot> ` : ``}
       </div>
     `;
   }

@@ -88,7 +88,7 @@ class MapMenuHeader extends LitElement {
           justify-content: left;
           margin: 0px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -106,11 +106,7 @@ class MapMenuHeader extends LitElement {
               </div>
             `
           : ``}
-        ${this.icon
-          ? html`
-              <iron-icon icon="${this.icon}"></iron-icon>
-            `
-          : ``}
+        ${this.icon ? html` <iron-icon icon="${this.icon}"></iron-icon> ` : ``}
 
         <div id="center">
           <a tabindex="-1" href="${this.url}">
@@ -173,42 +169,42 @@ class MapMenuHeader extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String
+        type: String,
       },
       label: {
-        type: String
+        type: String,
       },
       avatarLabel: {
         type: String,
-        attribute: "avatar-label"
+        attribute: "avatar-label",
       },
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       url: {
-        type: String
+        type: String,
       },
       id: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       icon: {
-        type: String
+        type: String,
       },
       active: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       selected: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       __collapseIcon: {
-        type: String
+        type: String,
       },
       __collapseAria: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   _openedChanged(newValue, oldValue) {
@@ -227,7 +223,7 @@ class MapMenuHeader extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -260,7 +256,7 @@ class MapMenuHeader extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
     } else if (target && target.id === "toggle") {
@@ -269,7 +265,7 @@ class MapMenuHeader extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
     }

@@ -82,7 +82,7 @@ class ExampleHaxElement extends HTMLElement {
   }
 
   _processQueue() {
-    this._queue.forEach(action => {
+    this._queue.forEach((action) => {
       this[`_${action.type}`](action.data);
     });
 

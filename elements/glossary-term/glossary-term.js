@@ -25,22 +25,19 @@ class GlossaryTerm extends LitElement {
         lrn-vocab {
           display: inline;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      ${this._fallback
-        ? html`
-            <slot></slot>
-          `
-        : `
+    return html` ${this._fallback
+      ? html`<slot></slot>`
+      : `
 <lrn-vocab term="${this.display}">
   <div>${this.definition}</div>
 </lrn-vocab>
-`}
-    `;
+`}`;
   }
 
   // haxProperty definition
@@ -57,13 +54,13 @@ class GlossaryTerm extends LitElement {
         groups: ["Term"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "heyMP",
-          owner: "PSU"
-        }
+          owner: "PSU",
+        },
       },
       settings: {
         quick: [],
@@ -73,25 +70,25 @@ class GlossaryTerm extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "definition",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "display",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -103,37 +100,37 @@ class GlossaryTerm extends LitElement {
         name: "name",
         type: String,
         value: "",
-        reflectToAttribute: false
+        reflectToAttribute: false,
       },
       definition: {
         name: "display",
         type: String,
         value: "",
-        reflectToAttribute: false
+        reflectToAttribute: false,
       },
       display: {
         name: "display",
         type: String,
         value: "",
-        reflectToAttribute: false
+        reflectToAttribute: false,
       },
       serviceType: {
         name: "serviceType",
         type: String,
-        value: "file"
+        value: "file",
       },
       endpoint: {
         name: "endpoint",
         type: String,
-        value: ""
+        value: "",
       },
       _fallback: {
         name: "_fallback",
         type: Boolean,
         value: true,
         reflectToAttribute: false,
-        observer: false
-      }
+        observer: false,
+      },
     };
   }
 
@@ -169,11 +166,11 @@ class GlossaryTerm extends LitElement {
       if (serviceType === "file") {
         fetch(endpoint, {
           method: "GET",
-          headers: { "Content-Type": "application/json" }
+          headers: { "Content-Type": "application/json" },
         })
-          .then(r => r.json())
-          .then(r => {
-            const foundterm = r.terms.find(i => i.name === this.name);
+          .then((r) => r.json())
+          .then((r) => {
+            const foundterm = r.terms.find((i) => i.name === this.name);
             if (foundterm) {
               this.definition = foundterm.definition;
               this._fallback = false;
@@ -186,11 +183,11 @@ class GlossaryTerm extends LitElement {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            query: `{ term(name: "${this.name}") { name definition } }`
-          })
+            query: `{ term(name: "${this.name}") { name definition } }`,
+          }),
         })
-          .then(r => r.json())
-          .then(r => {
+          .then((r) => r.json())
+          .then((r) => {
             try {
               this.definition = r.data.term.definition;
               this._fallback = false;

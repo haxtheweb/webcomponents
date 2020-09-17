@@ -127,44 +127,44 @@ class MoocContent extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       /**
        * Source of data
        */
       sourcePath: {
-        type: String
+        type: String,
       },
       /**
        * Full outline path
        */
       fullOutlinePath: {
-        type: String
+        type: String,
       },
       /**
        * App route tracking.
        */
       route: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * Title for the content
        */
       currentTitle: {
-        type: String
+        type: String,
       },
       /**
        * Params for the request for outline/book to load.
@@ -173,67 +173,67 @@ class MoocContent extends PolymerElement {
         type: Object,
         notify: true,
         value: {
-          node: null
-        }
+          node: null,
+        },
       },
       /**
        * Returned data for processing.
        */
       pageData: {
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * Returned data for processing.
        */
       outlineData: {
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * Ensure scrolling doesn't influence during a transition.
        */
       resetScroll: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Store current page data.
        */
       responseData: {
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * BasePath from drupal
        */
       basePath: {
-        type: String
+        type: String,
       },
       /**
        * elmslnCourse from drupal
        */
       elmslnCourse: {
-        type: String
+        type: String,
       },
       /**
        * nav title
        */
       outlineTitle: {
-        type: String
+        type: String,
       },
       /**
        * Node ID
        */
       nid: {
-        type: Number
+        type: Number,
       },
       /**
        * loading pegged to the ajax call running
        */
       _loading: {
         type: Boolean,
-        observer: "_contentLoading"
+        observer: "_contentLoading",
       },
       /**
        * loading pegged to the ajax call running
@@ -241,21 +241,21 @@ class MoocContent extends PolymerElement {
       loading: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Aliases
        */
       aliases: {
-        type: Array
+        type: Array,
       },
       /**
        * active item for tracking reference after clicks.
        */
       activeNodeItem: {
         type: Object,
-        value: null
-      }
+        value: null,
+      },
     };
   }
   /**
@@ -284,7 +284,7 @@ class MoocContent extends PolymerElement {
         (typeof undefined === "undefined" ? "undefined" : typeof undefined) &&
       !newValue
     ) {
-      setTimeout(function() {
+      setTimeout(function () {
         _this.loading = false;
         _this._resetScroll("anchor");
         _this.$["main-content"].focus();
@@ -354,7 +354,7 @@ class MoocContent extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    afterNextRender(this, function () {
       if (window.Drupal) {
         window.Drupal.attachBehaviors(document, window.Drupal.settings);
       }
@@ -393,7 +393,7 @@ class MoocContent extends PolymerElement {
               new CustomEvent("simple-modal-hide", {
                 bubbles: true,
                 cancelable: true,
-                detail: {}
+                detail: {},
               })
             );
           }
@@ -417,7 +417,7 @@ class MoocContent extends PolymerElement {
             new CustomEvent("simple-modal-hide", {
               bubbles: true,
               cancelable: true,
-              detail: {}
+              detail: {},
             })
           );
         }
@@ -461,7 +461,7 @@ class MoocContent extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

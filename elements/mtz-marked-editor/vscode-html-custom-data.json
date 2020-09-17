@@ -3,31 +3,7 @@
   "tags": [
     {
       "name": "mtz-marked-editor",
-      "description": "`mtz-marked-editor`\n\nAttributes:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textarea-selector` {`string`} - \n\n  * `__textarea` - \n\nProperties:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textareaSelector` {`string`} - \n\n  * `__textarea` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "autofocus",
-          "description": "`autofocus` {`boolean`} - \n\nProperty: autofocus",
-          "valueSet": "v"
-        },
-        {
-          "name": "readonly",
-          "description": "`readonly` {`boolean`} - \n\nProperty: readonly",
-          "valueSet": "v"
-        },
-        {
-          "name": "textarea-selector",
-          "description": "`textarea-selector` {`string`} - \n\nProperty: textareaSelector\n\nDefault: textarea"
-        },
-        {
-          "name": "__textarea",
-          "description": "`__textarea` - \n\nProperty: __textarea"
-        }
-      ]
-    },
-    {
-      "name": "mtz-marked-editor",
-      "description": "`mtz-marked-editor`\n\nAttributes:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textarea-selector` {`string`} - \n\n  * `__textarea` - \n\nProperties:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textareaSelector` {`string`} - \n\n  * `__textarea` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`mtz-marked-editor`\n\nAttributes:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textarea-selector` {`string`} - \n\n  * `__textarea` - \n\nProperties:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textareaSelector` {`string`} - \n\n  * `__textarea` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "autofocus",
@@ -55,7 +31,7 @@
     },
     {
       "name": "mtz-marked-control-generic-line",
-      "description": "Events:\n\n  * `register-control` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntax-prefix` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntaxPrefix` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `register-control` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntax-prefix` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntaxPrefix` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -90,7 +66,7 @@
     },
     {
       "name": "mtz-marked-control-generic-wrap",
-      "description": "Events:\n\n  * `register-control` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntax-prefix` {`string`} - \n\n  * `syntax-suffix` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntaxPrefix` {`string`} - \n\n  * `syntaxSuffix` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `register-control` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntax-prefix` {`string`} - \n\n  * `syntax-suffix` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `syntaxPrefix` {`string`} - \n\n  * `syntaxSuffix` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -129,7 +105,7 @@
     },
     {
       "name": "mtz-marked-control-link",
-      "description": "Events:\n\n  * `register-control` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `register-control` - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `keys` {`string`} - \n\n  * `noink` {`boolean`} - \n\n  * `__editor` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -160,7 +136,7 @@
     },
     {
       "name": "mtz-marked-editor",
-      "description": "`mtz-marked-editor`\n\nAttributes:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textarea-selector` {`string`} - \n\n  * `__textarea` - \n\nProperties:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textareaSelector` {`string`} - \n\n  * `__textarea` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`mtz-marked-editor`\n\nAttributes:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textarea-selector` {`string`} - \n\n  * `__textarea` - \n\nProperties:\n\n  * `autofocus` {`boolean`} - \n\n  * `readonly` {`boolean`} - \n\n  * `textareaSelector` {`string`} - \n\n  * `__textarea` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "autofocus",

@@ -18,8 +18,8 @@ export default {
   component: "a11y-media-player",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities(),
   defaults = {
@@ -36,59 +36,59 @@ const utils = new StorybookUtilities(),
       "top-left",
       "top-right",
       "bottom-left",
-      "bottom-right"
-    ])
+      "bottom-right",
+    ]),
   },
   fields = [
     {
       property: "accentColor",
       title: "Accent color",
-      inputMethod: "colorpicker"
+      inputMethod: "colorpicker",
     },
     {
       property: "dark",
       title: "Dark theme",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "mediaTitle",
       title: "Title",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "source",
       title: "Source",
-      inputMethod: "haxupload"
+      inputMethod: "haxupload",
     },
     {
       property: "track",
       title: "Closed captions",
-      inputMethod: "haxupload"
+      inputMethod: "haxupload",
     },
     {
       property: "thumbnailSrc",
       title: "Thumbnail image",
-      inputMethod: "haxupload"
+      inputMethod: "haxupload",
     },
     {
       property: "linkable",
       title: "Share Link",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "disableSearch",
       title: "Disable Transcript Search",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "disableInteractive",
       title: "Disable Interactive Transcript",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "hideTimestamps",
       title: "Remove Transcript Timestamps",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "crossorigin",
@@ -97,38 +97,38 @@ const utils = new StorybookUtilities(),
       options: {
         "": "",
         anonymous: "anonymous",
-        "use-credentials": "use-credentials"
-      }
+        "use-credentials": "use-credentials",
+      },
     },
     {
       property: "darkTranscript",
       title: "Dark theme for transcript",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "disableInteractive",
       title: "Disable Interactive",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "hideTimestamps",
       title: "Hide timestamps",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "hideTranscript",
       title: "Hide Transcript",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "lang",
       title: "Language",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "linkable",
       title: "Include a share link?",
-      inputMethod: "boolean"
+      inputMethod: "boolean",
     },
     {
       property: "stickyCorner",
@@ -139,8 +139,8 @@ const utils = new StorybookUtilities(),
         "top-left": "top-left",
         "top-right": "top-right",
         "bottom-left": "bottom-left",
-        "bottom-right": "bottom-right"
-      }
+        "bottom-right": "bottom-right",
+      },
     },
     {
       property: "preload",
@@ -149,34 +149,34 @@ const utils = new StorybookUtilities(),
       options: {
         preload: "Preload all media",
         metadata: "Preload media metadata only",
-        none: "Don't preload anything"
-      }
+        none: "Don't preload anything",
+      },
     },
     {
       property: "sources",
       title: "Other sources",
-      inputMethod: "array"
+      inputMethod: "array",
     },
     {
       property: "tracks",
       title: "Track list",
-      inputMethod: "array"
+      inputMethod: "array",
     },
     {
       property: "height",
       title: "Height",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       property: "width",
       title: "width",
-      inputMethod: "textfield"
+      inputMethod: "textfield",
     },
     {
       slot: "",
       title: "<video>",
-      inputMethod: "code-editor"
-    }
+      inputMethod: "code-editor",
+    },
   ];
 
 export const A11yMediaPlayerStory = () => {
@@ -199,7 +199,7 @@ export const A11yMediaPlayerStory = () => {
           `demo/samples/sintel-es.vtt`,
           import.meta.url
         )}">
-      </video>`
+      </video>`,
     })
   );
 };

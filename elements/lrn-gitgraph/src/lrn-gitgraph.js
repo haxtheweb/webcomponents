@@ -30,30 +30,30 @@ class LrnGitgraph extends PolymerElement {
     return {
       commits: {
         type: Array,
-        value: []
+        value: [],
       },
       template: {
         type: String,
-        value: "blackarrow"
+        value: "blackarrow",
       },
       orientation: {
         type: String,
-        value: "horizontal"
+        value: "horizontal",
       },
       mode: {
         type: String,
-        value: ""
+        value: "",
       },
       reverseArrow: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}
        */
       config: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -67,9 +67,9 @@ class LrnGitgraph extends PolymerElement {
       if (commits.length > 0) {
         var gitgraph = new GitGraph(root.config);
         var tree = [];
-        commits.forEach(function(item) {
+        commits.forEach(function (item) {
           if (item.commits) {
-            item.commits.forEach(function(commit) {
+            item.commits.forEach(function (commit) {
               commit["branch"] = item.branch;
               tree.push(commit);
             });
@@ -79,14 +79,14 @@ class LrnGitgraph extends PolymerElement {
         console.log("befor", tree);
         tree = root._treeRemoveDuplicates(tree);
         // sort by date
-        tree = tree.sort(function(a, b) {
+        tree = tree.sort(function (a, b) {
           return new Date(b.date) - new Date(a.date);
         });
         // reverse the tree so the newest oldest is first
         tree.reverse();
         // identify forks
         var branches = [];
-        tree.forEach(function(item, i) {
+        tree.forEach(function (item, i) {
           // if the branch doesn't exist create it
           if (typeof branches[item.branch] === "undefined") {
             branches[item.branch] = gitgraph.branch(item.branch);
@@ -96,7 +96,7 @@ class LrnGitgraph extends PolymerElement {
             sha1: item.commit,
             message: item.subject,
             author: item.author,
-            tag: item.refs
+            tag: item.refs,
           });
         });
       }
@@ -106,7 +106,7 @@ class LrnGitgraph extends PolymerElement {
   _treeRemoveDuplicates(tree) {
     var htTree = [];
     var htCommits = [];
-    tree.forEach(function(t) {
+    tree.forEach(function (t) {
       if (!htCommits.includes(t.commit)) {
         htTree.push(t);
         htCommits.push(t.commit);
@@ -122,7 +122,7 @@ class LrnGitgraph extends PolymerElement {
       template: root.template, // could be: "blackarrow" or "metro" or `myTemplate` (custom Template object)
       reverseArrow: false, // to make arrows point to ancestors, if displayed
       orientation: root.orientation,
-      element: root.shadowRoot.querySelector("#gitGraph")
+      element: root.shadowRoot.querySelector("#gitGraph"),
     };
     if (root.mode !== "") {
       config.mode = root.mode;

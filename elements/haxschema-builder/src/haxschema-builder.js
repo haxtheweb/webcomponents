@@ -36,7 +36,7 @@ class HaxschemaBuilder extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("hax-schema-changed", {
-            value: this[propName]
+            value: this[propName],
           })
         );
         this._haxSchemaChanged(this[propName], oldValue);
@@ -113,7 +113,7 @@ class HaxschemaBuilder extends LitElement {
       inputMethod: "textfield",
       icon: "android",
       required: true,
-      validationType: "text"
+      validationType: "text",
     };
   }
   __haxSchemaChanged(e) {

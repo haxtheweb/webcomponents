@@ -9,8 +9,8 @@ export default {
   component: "relative-heading",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 
 const utils = new StorybookUtilities();
@@ -19,22 +19,22 @@ const parent = {
   property: "parent",
   title: "parent relative-heading's id",
   inputMethod: "select",
-  options: parents
+  options: parents,
 };
 const props = [
   parent,
   {
     property: "disableLink",
     title: "Disable Link to Heading",
-    inputMethod: "boolean"
+    inputMethod: "boolean",
   },
   {
     property: "linkAlignRight",
     title: "Align Link to Right",
-    inputMethod: "boolean"
-  }
+    inputMethod: "boolean",
+  },
 ];
-const knobs = propData =>
+const knobs = (propData) =>
   utils.getKnobs(propData, { parent: utils.getRandomOption(parents) });
 export const RelativeHeadingLiteStory = () => {
   return utils.getDemo(

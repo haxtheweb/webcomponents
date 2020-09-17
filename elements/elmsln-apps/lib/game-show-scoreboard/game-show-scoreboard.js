@@ -211,9 +211,7 @@ class GameShowScoreboard extends PolymerElement {
               >Name</vaadin-grid-sorter
             >
           </template>
-          <template>
-            [[item.name]]
-          </template>
+          <template> [[item.name]] </template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Student"
@@ -303,69 +301,69 @@ class GameShowScoreboard extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       optionsPath: {
-        type: String
+        type: String,
       },
       dataPath: {
-        type: String
+        type: String,
       },
       section: {
-        type: String
+        type: String,
       },
       game: {
         type: String,
-        value: ""
+        value: "",
       },
       dataRequestUrl: {
         type: String,
-        computed: "_computeDataRequestUrl(dataPath, section, game)"
+        computed: "_computeDataRequestUrl(dataPath, section, game)",
       },
 
       /**
        * routing variable for url
        */
       route: {
-        type: String
+        type: String,
       },
       tail: {
-        type: String
+        type: String,
       },
       optionsData: {
         type: Object,
         value: {},
-        observer: "_optionsDataChanged"
+        observer: "_optionsDataChanged",
       },
       sectionOptions: {
         type: Array,
-        value: []
+        value: [],
       },
       gameOptions: {
         type: Array,
-        value: []
+        value: [],
       },
       activeData: {
         type: Object,
         value: {},
-        observer: "_activeDataChanged"
+        observer: "_activeDataChanged",
       },
       visibleData: {
         type: Array,
-        value: []
-      }
+        value: [],
+      },
     };
   }
 
@@ -381,8 +379,8 @@ class GameShowScoreboard extends PolymerElement {
         sections.push([
           {
             alt: newValue.data.sections[i],
-            value: i
-          }
+            value: i,
+          },
         ]);
       }
 
@@ -392,8 +390,8 @@ class GameShowScoreboard extends PolymerElement {
         games.push([
           {
             alt: newValue.data.games[i],
-            value: i
-          }
+            value: i,
+          },
         ]);
       }
 
@@ -434,7 +432,7 @@ class GameShowScoreboard extends PolymerElement {
       return [];
     }
 
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

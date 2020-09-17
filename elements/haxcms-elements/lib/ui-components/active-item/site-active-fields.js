@@ -25,8 +25,8 @@ class SiteActiveFields extends LitElement {
   static get properties() {
     return {
       fields: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -37,7 +37,7 @@ class SiteActiveFields extends LitElement {
       if (propName == "fields") {
         this.dispatchEvent(
           new CustomEvent("fields-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }

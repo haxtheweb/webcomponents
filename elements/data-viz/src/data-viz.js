@@ -56,7 +56,7 @@ class DataViz extends LitElement {
 
     var bardata = {
       labels: queryData.labels,
-      series: queryData.series
+      series: queryData.series,
     };
 
     this.shadowRoot.querySelector("#barChart").data = bardata;

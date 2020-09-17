@@ -61,65 +61,6 @@
       ]
     },
     {
-      "name": "dropdown-select",
-      "description": "`dropdown-select`\nan easy to use, works as expected dropdown menu.\n\nEvents:\n\n  * `change` - \n\n  * `open` - \n\n  * `close` - \n\n  * `value-changed` - \n\n  * `dropdown-select-changed` - \n\nAttributes:\n\n  * `error-message` {`string`} - The error message to display when invalid.\n\n  * `selected-item` - The last selected item.\n\n  * `selected-item-index` {`number`} - The index of the selected item\n\n  * `selected-item-label` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperties:\n\n  * `errorMessage` {`string`} - The error message to display when invalid.\n\n  * `selectedItem` - The last selected item.\n\n  * `selectedItemIndex` {`number`} - The index of the selected item\n\n  * `selectedItemLabel` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `observer` - mutation observer for dropdown\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.",
-      "attributes": [
-        {
-          "name": "error-message",
-          "description": "`error-message` {`string`} - The error message to display when invalid.\n\nProperty: errorMessage"
-        },
-        {
-          "name": "selected-item",
-          "description": "`selected-item` - The last selected item.\n\nProperty: selectedItem"
-        },
-        {
-          "name": "selected-item-index",
-          "description": "`selected-item-index` {`number`} - The index of the selected item\n\nProperty: selectedItemIndex"
-        },
-        {
-          "name": "selected-item-label",
-          "description": "`selected-item-label` {`string`} - The label of the selected item\n\nProperty: selectedItemLabel"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - The default value\n\nProperty: value"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - The label of the select menu\n\nProperty: label\n\nDefault: Select an option."
-        },
-        {
-          "name": "options",
-          "description": "`options` {`any[]`} - Optional options array\n\nProperty: options\n\nDefault: "
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onchange",
-          "description": "`change` - "
-        },
-        {
-          "name": "onopen",
-          "description": "`open` - "
-        },
-        {
-          "name": "onclose",
-          "description": "`close` - "
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` - "
-        },
-        {
-          "name": "ondropdown-select-changed",
-          "description": "`dropdown-select-changed` - "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "description": "Events:\n\n  * `change` - \n\n  * `open` - \n\n  * `close` - \n\n  * `value-changed` - \n\n  * `dropdown-select-changed` - ",
       "attributes": [

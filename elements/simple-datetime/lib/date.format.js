@@ -1,6 +1,6 @@
 /* eslint no-extend-native: 0 */
 
-(function() {
+(function () {
   // Defining locale
   Date.shortMonths = [
     "Jan",
@@ -14,7 +14,7 @@
     "Sep",
     "Oct",
     "Nov",
-    "Dec"
+    "Dec",
   ];
   Date.longMonths = [
     "January",
@@ -28,7 +28,7 @@
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
   Date.shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   Date.longDays = [
@@ -38,29 +38,29 @@
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   // Defining patterns
   var replaceChars = {
     // Day
-    d: function() {
+    d: function () {
       var d = this.getDate();
       return (d < 10 ? "0" : "") + d;
     },
-    D: function() {
+    D: function () {
       return Date.shortDays[this.getDay()];
     },
-    j: function() {
+    j: function () {
       return this.getDate();
     },
-    l: function() {
+    l: function () {
       return Date.longDays[this.getDay()];
     },
-    N: function() {
+    N: function () {
       var N = this.getDay();
       return N === 0 ? 7 : N;
     },
-    S: function() {
+    S: function () {
       var S = this.getDate();
       return S % 10 === 1 && S !== 11
         ? "st"
@@ -70,15 +70,15 @@
         ? "rd"
         : "th";
     },
-    w: function() {
+    w: function () {
       return this.getDay();
     },
-    z: function() {
+    z: function () {
       var d = new Date(this.getFullYear(), 0, 1);
       return Math.ceil((this - d) / 86400000);
     },
     // Week
-    W: function() {
+    W: function () {
       var target = new Date(this.valueOf());
       var dayNr = (this.getDay() + 6) % 7;
       target.setDate(target.getDate() - dayNr + 3);
@@ -92,20 +92,20 @@
       return retVal < 10 ? "0" + retVal : retVal;
     },
     // Month
-    F: function() {
+    F: function () {
       return Date.longMonths[this.getMonth()];
     },
-    m: function() {
+    m: function () {
       var m = this.getMonth();
       return (m < 9 ? "0" : "") + (m + 1);
     },
-    M: function() {
+    M: function () {
       return Date.shortMonths[this.getMonth()];
     },
-    n: function() {
+    n: function () {
       return this.getMonth() + 1;
     },
-    t: function() {
+    t: function () {
       var year = this.getFullYear();
       var nextMonth = this.getMonth() + 1;
       if (nextMonth === 12) {
@@ -115,29 +115,29 @@
       return new Date(year, nextMonth, 0).getDate();
     },
     // Year
-    L: function() {
+    L: function () {
       var L = this.getFullYear();
       return L % 400 === 0 || (L % 100 !== 0 && L % 4 === 0);
     },
-    o: function() {
+    o: function () {
       var d = new Date(this.valueOf());
       d.setDate(d.getDate() - ((this.getDay() + 6) % 7) + 3);
       return d.getFullYear();
     },
-    Y: function() {
+    Y: function () {
       return this.getFullYear();
     },
-    y: function() {
+    y: function () {
       return ("" + this.getFullYear()).substr(2);
     },
     // Time
-    a: function() {
+    a: function () {
       return this.getHours() < 12 ? "am" : "pm";
     },
-    A: function() {
+    A: function () {
       return this.getHours() < 12 ? "AM" : "PM";
     },
-    B: function() {
+    B: function () {
       return Math.floor(
         ((((this.getUTCHours() + 1) % 24) +
           this.getUTCMinutes() / 60 +
@@ -146,37 +146,37 @@
           24
       );
     },
-    g: function() {
+    g: function () {
       return this.getHours() % 12 || 12;
     },
-    G: function() {
+    G: function () {
       return this.getHours();
     },
-    h: function() {
+    h: function () {
       var h = this.getHours();
       return ((h % 12 || 12) < 10 ? "0" : "") + (h % 12 || 12);
     },
-    H: function() {
+    H: function () {
       var H = this.getHours();
       return (H < 10 ? "0" : "") + H;
     },
-    i: function() {
+    i: function () {
       var i = this.getMinutes();
       return (i < 10 ? "0" : "") + i;
     },
-    s: function() {
+    s: function () {
       var s = this.getSeconds();
       return (s < 10 ? "0" : "") + s;
     },
-    v: function() {
+    v: function () {
       var v = this.getMilliseconds();
       return (v < 10 ? "00" : v < 100 ? "0" : "") + v;
     },
     // Timezone
-    e: function() {
+    e: function () {
       return Intl.DateTimeFormat().resolvedOptions().timeZone;
     },
-    I: function() {
+    I: function () {
       var DST = null;
       for (var i = 0; i < 12; ++i) {
         var d = new Date(this.getFullYear(), i, 1);
@@ -190,7 +190,7 @@
       }
       return (this.getTimezoneOffset() === DST) | 0;
     },
-    O: function() {
+    O: function () {
       var O = this.getTimezoneOffset();
       return (
         (-O < 0 ? "-" : "+") +
@@ -201,7 +201,7 @@
           : (Math.abs(O % 60) < 10 ? "0" : "") + Math.abs(O % 60))
       );
     },
-    P: function() {
+    P: function () {
       var P = this.getTimezoneOffset();
       return (
         (-P < 0 ? "-" : "+") +
@@ -213,31 +213,31 @@
           : (Math.abs(P % 60) < 10 ? "0" : "") + Math.abs(P % 60))
       );
     },
-    T: function() {
+    T: function () {
       var tz = this.toLocaleTimeString(navigator.language, {
-        timeZoneName: "short"
+        timeZoneName: "short",
       }).split(" ");
       return tz[tz.length - 1];
     },
-    Z: function() {
+    Z: function () {
       return -this.getTimezoneOffset() * 60;
     },
     // Full Date/Time
-    c: function() {
+    c: function () {
       return this.format("Y-m-d\\TH:i:sP");
     },
-    r: function() {
+    r: function () {
       return this.toString();
     },
-    U: function() {
+    U: function () {
       return Math.floor(this.getTime() / 1000);
-    }
+    },
   };
 
   // Simulates PHP's date function
-  Date.prototype.format = function(format) {
+  Date.prototype.format = function (format) {
     var date = this;
-    return format.replace(/(\\?)(.)/g, function(_, esc, chr) {
+    return format.replace(/(\\?)(.)/g, function (_, esc, chr) {
       return esc === "" && replaceChars[chr]
         ? replaceChars[chr].call(date)
         : chr;

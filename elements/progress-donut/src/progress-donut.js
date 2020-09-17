@@ -59,16 +59,16 @@ class ProgressDonut extends LrndesignPie {
         val = data.value || this.donutTotal / this.donutData.length,
         dur = (this.animation * val) / this.donutTotal;
       data.element.attr({
-        "c": opacity
+        c: opacity,
       });
       var animationDefinition = {
-        "opacity": {
+        opacity: {
           id: "anim" + data.index,
           dur: dur,
           from: -opacity,
           to: 1,
-          fill: "freeze"
-        }
+          fill: "freeze",
+        },
       };
       if (data.index !== 0) {
         animationDefinition["opacity"].begin =
@@ -79,21 +79,33 @@ class ProgressDonut extends LrndesignPie {
       if (this.donutData.length > 0)
         animationDefinition["opacity"].easing =
           Chartist.Svg.Easing.easeOutQuint;
-      data.element.attr({ "opacity": -opacity });
+      data.element.attr({ opacity: -opacity });
       data.element.animate(animationDefinition, false);
     }
-    console.log(data,data.element._node.getTotalLength());
-    if(data && data.index === this.complete.length -1 && this.chart) {
-      data.group.append(new Chartist.Svg('ellipse', {
-        cx: "50%",
-        cy: "50%",
-        rx: "32%",
-        ry: "32%"
-      }, 'ct-center-ellipse'));
-      data.group.append(new Chartist.Svg('image', {
-        href: this.imageSrc,
-        alt: this.imageAlt
-      }, 'ct-center-image'));
+    console.log(data, data.element._node.getTotalLength());
+    if (data && data.index === this.complete.length - 1 && this.chart) {
+      data.group.append(
+        new Chartist.Svg(
+          "ellipse",
+          {
+            cx: "50%",
+            cy: "50%",
+            rx: "32%",
+            ry: "32%",
+          },
+          "ct-center-ellipse"
+        )
+      );
+      data.group.append(
+        new Chartist.Svg(
+          "image",
+          {
+            href: this.imageSrc,
+            alt: this.imageAlt,
+          },
+          "ct-center-image"
+        )
+      );
     }
   }
   get donutData() {
@@ -105,7 +117,10 @@ class ProgressDonut extends LrndesignPie {
     return this.donutData.map((h, i) => `Item ${i + 1}`);
   }
   get donutTotal() {
-    return Math.max(this.donutData.reduce((sum, val) => sum + val), this.total);
+    return Math.max(
+      this.donutData.reduce((sum, val) => sum + val),
+      this.total
+    );
   }
   get options() {
     return super.options;

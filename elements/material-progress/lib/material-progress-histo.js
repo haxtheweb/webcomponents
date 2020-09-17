@@ -36,9 +36,9 @@ class MaterialProgressHisto extends mixinBehaviors(
           <span>test</span>
         </slot>
       </div>
-      <div class="legend" hidden\$="[[_legendNeeded]]">
+      <div class="legend" hidden$="[[_legendNeeded]]">
         <template is="dom-repeat" items="[[_legendItems]]" as="l">
-          <span style\$="color: [[l.color]];">[[l.label]]</span>
+          <span style$="color: [[l.color]];">[[l.label]]</span>
         </template>
       </div>
     `;
@@ -55,8 +55,8 @@ class MaterialProgressHisto extends mixinBehaviors(
       scaleToSum: {
         type: Boolean,
         value: false,
-        observer: "_refresh"
-      }
+        observer: "_refresh",
+      },
     };
   }
   _getWidthForBar(barValue, barValuesSum, maxBarValue, barHeight) {

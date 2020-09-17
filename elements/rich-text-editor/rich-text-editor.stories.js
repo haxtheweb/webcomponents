@@ -11,8 +11,8 @@ export default {
   component: "rich-text-editor",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 
 const utils = new StorybookUtilities();
@@ -37,11 +37,11 @@ consectetur consequat.
 const toolbars = [
   "rich-text-editor-toolbar",
   "rich-text-editor-toolbar-full",
-  "rich-text-editor-toolbar-mini"
+  "rich-text-editor-toolbar-mini",
 ];
 export const RichTextEditorStory = () => {
   let props = utils.getElementProperties(RichTextEditor.properties);
-  props.forEach(prop => {
+  props.forEach((prop) => {
     if (prop.property === "type") {
       prop.inputMethod = "select";
       prop.itemsList = toolbars;
@@ -51,7 +51,7 @@ export const RichTextEditorStory = () => {
     RichTextEditor,
     utils.getKnobs([...props, { slot: "", title: "Content" }], {
       emptyslot: emptyslot,
-      type: utils.getRandomOption(toolbars)
+      type: utils.getRandomOption(toolbars),
     })
   );
 };
@@ -66,16 +66,16 @@ const configs = [
           icon: "undo",
           label: "Undo",
           shortcutKeys: "ctrl+z",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "redo",
           icon: "redo",
           label: "Redo",
           shortcutKeys: "ctrl+shift+z",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       label: "Basic Inline Operations",
@@ -83,7 +83,7 @@ const configs = [
       buttons: [
         {
           label: "Format",
-          type: "rich-text-editor-heading-picker"
+          type: "rich-text-editor-heading-picker",
         },
         {
           command: "bold",
@@ -91,7 +91,7 @@ const configs = [
           label: "Bold",
           shortcutKeys: "ctrl+b",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "italic",
@@ -99,15 +99,15 @@ const configs = [
           label: "Italics",
           shortcutKeys: "ctrl+i",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "removeFormat",
           icon: "editor:format-clear",
           label: "Erase Format",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       label: "Links",
@@ -117,9 +117,9 @@ const configs = [
           icon: "link",
           label: "Link",
           shortcutKeys: "ctrl+k",
-          type: "rich-text-editor-link"
-        }
-      ]
+          type: "rich-text-editor-link",
+        },
+      ],
     },
     {
       label: "Clipboard Operations",
@@ -130,23 +130,23 @@ const configs = [
           icon: "content-cut",
           label: "Cut",
           shortcutKeys: "ctrl+x",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "copy",
           icon: "content-copy",
           label: "Copy",
           shortcutKeys: "ctrl+c",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "paste",
           icon: "content-paste",
           label: "Paste",
           shortcutKeys: "ctrl+v",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       collapsedUntil: "md",
@@ -158,23 +158,23 @@ const configs = [
           icon: "mdextra:subscript",
           label: "Subscript",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "superscript",
           icon: "mdextra:superscript",
           label: "Superscript",
           toggles: true,
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       collapsedUntil: "sm",
       icon: "editor:functions",
       label: "Insert Symbol",
       symbolTypes: ["symbols"],
-      type: "rich-text-editor-symbol-picker"
+      type: "rich-text-editor-symbol-picker",
     },
     {
       collapsedUntil: "sm",
@@ -186,14 +186,14 @@ const configs = [
           icon: "editor:format-list-numbered",
           label: "Ordered List",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "insertUnorderedList",
           icon: "editor:format-list-bulleted",
           label: "Unordered List",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           collapsedUntil: "lg",
@@ -202,7 +202,7 @@ const configs = [
           label: "Blockquote",
           icon: "editor:format-quote",
           shortcutKeys: "ctrl+'",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "indent",
@@ -210,7 +210,7 @@ const configs = [
           event: "text-indent",
           label: "Increase Indent",
           shortcutKeys: "ctrl+]",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "outdent",
@@ -218,10 +218,10 @@ const configs = [
           icon: "editor:format-indent-decrease",
           label: "Decrease Indent",
           shortcutKeys: "ctrl+[",
-          type: "rich-text-editor-button"
-        }
-      ]
-    }
+          type: "rich-text-editor-button",
+        },
+      ],
+    },
   ],
   [
     {
@@ -232,15 +232,15 @@ const configs = [
           command: "undo",
           icon: "undo",
           label: "Undo",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "redo",
           icon: "redo",
           label: "Redo",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       label: "Basic Inline Operations",
@@ -254,36 +254,36 @@ const configs = [
             { label: "Article Title", tag: "h2" },
             { label: "Article Heading", tag: "h3" },
             { label: "Section Heading", tag: "h4" },
-            { label: "Section Subheading", tag: "h5" }
+            { label: "Section Subheading", tag: "h5" },
           ],
-          type: "rich-text-editor-heading-picker"
+          type: "rich-text-editor-heading-picker",
         },
         {
           command: "bold",
           icon: "editor:format-bold",
           label: "Bold",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "italic",
           icon: "editor:format-italic",
           label: "Italics",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "removeFormat",
           icon: "editor:format-clear",
           label: "Erase Format",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       label: "Links",
       type: "button-group",
-      buttons: [{ type: "rich-text-editor-link" }]
+      buttons: [{ type: "rich-text-editor-link" }],
     },
     {
       label: "Clipboard Operations",
@@ -294,21 +294,21 @@ const configs = [
           command: "cut",
           icon: "content-cut",
           label: "Cut",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "copy",
           icon: "content-copy",
           label: "Copy",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "paste",
           icon: "content-paste",
           label: "Paste",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       collapsedUntil: "sm",
@@ -316,21 +316,21 @@ const configs = [
       type: "button-group",
       buttons: [
         {
-          type: "rich-text-editor-image"
+          type: "rich-text-editor-image",
         },
         {
           collapsedUntil: "xl",
           icon: "editor:functions",
           label: "Insert Symbol",
-          type: "rich-text-editor-symbol-picker"
+          type: "rich-text-editor-symbol-picker",
         },
         {
           collapsedUntil: "xl",
           icon: "image:tag-faces",
           label: "Insert Emoji",
-          type: "rich-text-editor-emoji-picker"
-        }
-      ]
+          type: "rich-text-editor-emoji-picker",
+        },
+      ],
     },
     {
       collapsedUntil: "lg",
@@ -342,14 +342,14 @@ const configs = [
           icon: "editor:format-list-numbered",
           label: "Ordered List",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "insertUnorderedList",
           icon: "editor:format-list-bulleted",
           label: "Unordered List",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           collapsedUntil: "lg",
@@ -357,31 +357,31 @@ const configs = [
           commandVal: "<blockquote>",
           label: "Blockquote",
           icon: "editor:format-quote",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           label: "Increase Indent",
           icon: "editor:format-indent-increase",
           event: "text-indent",
           command: "indent",
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           label: "Decrease Indent",
           icon: "editor:format-indent-decrease",
           event: "text-outdent",
           command: "outdent",
-          type: "rich-text-editor-button"
-        }
-      ]
-    }
-  ]
+          type: "rich-text-editor-button",
+        },
+      ],
+    },
+  ],
 ];
-const hasImage = config => {
+const hasImage = (config) => {
   return (
-    (config || []).filter(group => {
+    (config || []).filter((group) => {
       return (
-        (group.buttons || []).filter(button => {
+        (group.buttons || []).filter((button) => {
           return (button.type = "rich-text-editor-image");
         }).length > 0
       );
@@ -394,7 +394,7 @@ const editor = (id, config) =>
       ? ``
       : `<p><img src="//placekitten.com/200/200" width="50px"></p>\n`
   }</rich-text-editor>`;
-const rawProps = toolbarProps => {
+const rawProps = (toolbarProps) => {
   delete toolbarProps.canceled;
   delete toolbarProps.controls;
   delete toolbarProps.editor;
@@ -402,7 +402,7 @@ const rawProps = toolbarProps => {
   delete toolbarProps.savedSelection;
   delete toolbarProps.range;
   let props = utils.getElementProperties(toolbarProps);
-  props.forEach(prop => {
+  props.forEach((prop) => {
     if (prop.property === "moreIcon") prop.inputMethod = "iconpicker";
   });
   return props;
@@ -411,7 +411,7 @@ export const RichTextEditorToolbarStory = () => {
   let props = rawProps(RichTextEditorToolbar.properties);
   let knobs = utils.getKnobs(props, {
     config: utils.getRandomOption(configs),
-    id: "my-toolbar"
+    id: "my-toolbar",
   });
   return utils.getDemo(
     `${utils.makeElement(RichTextEditorToolbar, knobs, true)}${editor(
@@ -424,7 +424,7 @@ export const RichTextEditorToolbarFullStory = () => {
   let props = rawProps(RichTextEditorToolbarFull.properties);
   let knobs = utils.getKnobs(props, {
     config: utils.getRandomOption(configs),
-    id: "my-full-toolbar"
+    id: "my-full-toolbar",
   });
   return utils.getDemo(
     `${utils.makeElement(RichTextEditorToolbarFull, knobs, true)}${editor(
@@ -445,23 +445,23 @@ export const RichTextEditorToolbarMiniStory = () => {
           icon: "editor:format-bold",
           label: "Bold",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "italic",
           icon: "editor:format-italic",
           label: "Italics",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           collapsedUntil: "md",
           command: "removeFormat",
           icon: "editor:format-clear",
           label: "Erase Format",
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       label: "Links",
@@ -476,9 +476,9 @@ export const RichTextEditorToolbarMiniStory = () => {
           toggledIcon: "mdextra:unlink",
           toggledLabel: "Unink",
           toggles: true,
-          type: "rich-text-editor-link"
-        }
-      ]
+          type: "rich-text-editor-link",
+        },
+      ],
     },
     {
       collapsedUntil: "md",
@@ -490,16 +490,16 @@ export const RichTextEditorToolbarMiniStory = () => {
           icon: "mdextra:subscript",
           label: "Subscript",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "superscript",
           icon: "mdextra:superscript",
           label: "Superscript",
           toggles: true,
-          type: "rich-text-editor-button"
-        }
-      ]
+          type: "rich-text-editor-button",
+        },
+      ],
     },
     {
       collapsedUntil: "sm",
@@ -511,21 +511,21 @@ export const RichTextEditorToolbarMiniStory = () => {
           icon: "editor:format-list-numbered",
           label: "Ordered List",
           toggles: true,
-          type: "rich-text-editor-button"
+          type: "rich-text-editor-button",
         },
         {
           command: "insertUnorderedList",
           icon: "editor:format-list-bulleted",
           label: "Unordered List",
           toggles: true,
-          type: "rich-text-editor-button"
-        }
-      ]
-    }
+          type: "rich-text-editor-button",
+        },
+      ],
+    },
   ];
   let knobs = utils.getKnobs(props, {
     config: config,
-    id: "my-mini-toolbar"
+    id: "my-mini-toolbar",
   });
   return utils.getDemo(`${utils.makeElement(
     RichTextEditorToolbarMini,

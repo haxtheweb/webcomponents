@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "lunr-search",
-      "description": "`lunr-search`\n`LunrJS search element`\n\nProperties:\n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `dataSource` - \n\n  * `fields` {`never[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
-      "attributes": []
-    },
-    {
-      "name": "lunr-search",
       "description": "`lunr-search`\n`LunrJS search element`\n\nAttributes:\n\n  * `data` {`any[]`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `method` {`string`} - \n\n  * `no-stop-words` {`boolean`} - \n\n  * `data-source` {`string`} - \n\n  * `fields` {`any[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - \n\nProperties:\n\n  * `data` {`any[]`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `dataSource` {`string`} - \n\n  * `fields` {`any[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
       "attributes": [
         {

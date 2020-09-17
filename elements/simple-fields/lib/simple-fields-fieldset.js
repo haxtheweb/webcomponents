@@ -39,14 +39,12 @@ class SimpleFieldsFieldset extends LitElement {
           font-size: var(--simple-fields-detail-font-size, 12px);
           line-height: var(--simple-fields-detail-line-height, 22px);
         }
-      `
+      `,
     ];
   }
   render() {
     return html`
-      <fieldset>
-        ${this.legend} ${this.desc} ${this.fields}
-      </fieldset>
+      <fieldset>${this.legend} ${this.desc} ${this.fields}</fieldset>
     `;
   }
   get legend() {
@@ -77,35 +75,35 @@ class SimpleFieldsFieldset extends LitElement {
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * whether fieldset has fields with errors
        */
       error: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * whether the tabbed interface is hidden
        */
       hidden: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * whether the tabbed interface is hidden
        */
       readonly: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * fieldset legend
        */
       label: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * unique name
@@ -113,14 +111,14 @@ class SimpleFieldsFieldset extends LitElement {
       name: {
         type: String,
         reflect: true,
-        attribute: "name"
+        attribute: "name",
       },
       /**
        * optional description
        */
       description: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

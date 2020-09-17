@@ -21,25 +21,6 @@
       ]
     },
     {
-      "name": "lrn-aside",
-      "description": "`lrn-aside`\nA content aside as a panel\n\nAttributes:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperties:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title for the aside.\n\nProperty: title\n\nDefault: Related content"
-        },
-        {
-          "name": "sticky",
-          "description": "`sticky` {`boolean`} - Apply CSS sticky styling\n\nProperty: sticky\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "direction",
-          "description": "`direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperty: direction\n\nDefault: "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "attributes": []
     },

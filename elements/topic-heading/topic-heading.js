@@ -26,6 +26,7 @@ class TopicHeading extends LitElement {
           color: var(--topic-heading-text-color);
           display: inline-flex;
         }
+
         iron-icon {
           color: var(--topic-heading-icon-color);
           display: inline-flex;
@@ -36,25 +37,22 @@ class TopicHeading extends LitElement {
           line-height: 16px;
           vertical-align: bottom;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      ${this.icon
-        ? html`
-            <iron-icon icon="${this.icon}"></iron-icon>
-          `
-        : ``}
-      ${this.title
-        ? html`
-            <relative-heading text="${this.title}"
-              >${this.title}</relative-heading
-            >
-          `
-        : ``}
-    `;
+    return html` ${this.icon
+      ? html` <iron-icon icon="${this.icon}"></iron-icon> `
+      : ``}
+    ${this.title
+      ? html`
+          <relative-heading text="${this.title}"
+            >${this.title}</relative-heading
+          >
+        `
+      : ``}`;
   }
 
   // haxProperty definition
@@ -71,13 +69,13 @@ class TopicHeading extends LitElement {
         groups: ["Heading"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -87,18 +85,18 @@ class TopicHeading extends LitElement {
             description: "",
             inputMethod: "iconpicker",
             required: false,
-            icon: "icons:code"
+            icon: "icons:code",
           },
           {
             property: "title",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:heading"
-          }
+            icon: "icons:heading",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -107,11 +105,11 @@ class TopicHeading extends LitElement {
       ...super.properties,
 
       icon: {
-        type: String
+        type: String,
       },
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   constructor() {

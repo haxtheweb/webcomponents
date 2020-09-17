@@ -23,8 +23,8 @@ class LrnappStudioProjectButton extends PolymerElement {
       <template is="dom-if" if="[[createProjectsUrl]]">
         <lrnsys-button
           raised=""
-          class\$="[[classes]]"
-          button-class\$="[[classes]]"
+          class$="[[classes]]"
+          button-class$="[[classes]]"
           icon="[[icon]]"
           on-click="_createProject"
           label="Create project"
@@ -49,42 +49,42 @@ class LrnappStudioProjectButton extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       auto: {
         type: Boolean,
         reflectToAttribute: true,
         value: false,
-        notify: true
+        notify: true,
       },
       displayErrors: {
         type: Boolean,
-        value: true
+        value: true,
       },
       createProjectsUrl: {
         type: String,
-        value: null
+        value: null,
       },
       classes: {
         type: String,
-        value: ""
+        value: "",
       },
       icon: {
         type: String,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
 
@@ -109,7 +109,7 @@ class LrnappStudioProjectButton extends PolymerElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: { project: project }
+            detail: { project: project },
           })
         );
       }
@@ -118,7 +118,7 @@ class LrnappStudioProjectButton extends PolymerElement {
     if (typeof response.errors !== "undefined") {
       var ul = document.createElement("ul");
       var text = "";
-      response.errors.forEach(function(error) {
+      response.errors.forEach(function (error) {
         text = text + " " + error;
       });
       this.shadowRoot.querySelector("#toast").show(text);

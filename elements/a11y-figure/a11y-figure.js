@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element";
+import { html, css } from "lit-element/lit-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yDetails } from "@lrnwebcomponents/a11y-details/a11y-details.js";
 /**
@@ -88,7 +88,7 @@ class A11yFigure extends A11yDetails {
         ::slotted([slot="image"]) {
           width: 100%;
         }
-      `
+      `,
     ];
   }
 
@@ -97,9 +97,7 @@ class A11yFigure extends A11yDetails {
     return html`
       <figure>
         ${this.imgSrc
-          ? html`
-              <img src="${this.imgSrc}" alt="${this.imgAlt}" />
-            `
+          ? html` <img src="${this.imgSrc}" alt="${this.imgAlt}" /> `
           : ``}
         <slot name="image" ?hidden="${this.imgSrc}"></slot>
         <figcaption>
@@ -136,13 +134,13 @@ class A11yFigure extends A11yDetails {
             source: "imgSrc",
             alt: "imgAlt",
             caption: "figcaption",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -150,49 +148,49 @@ class A11yFigure extends A11yDetails {
           {
             property: "imgSrc",
             title: "Image",
-            inputMethod: "haxupload"
+            inputMethod: "haxupload",
           },
           {
             property: "imgAlt",
             title: "Alt Text",
             inputMethod: "alt",
-            required: true
+            required: true,
           },
           {
             slot: "figcaption",
             title: "Figure Caption",
             description: "Figure caption text that is always visible.",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             slot: "details",
             title: "Decription",
             description:
               "Detailed image description that can be hidden or shown",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             slot: "summary",
             title: "Decription Button",
             description:
               'Default for button that shows/hides description text, eg. "info", "medatadata", etc. ',
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
         advanced: [
           {
             property: "openText",
             title: "Optional summary text when details are open",
             inputMethod: "textfield",
-            required: false
+            required: false,
           },
           {
             property: "closeText",
             title: "Optional summary text when details are closed",
             inputMethod: "textfield",
-            required: false
-          }
-        ]
+            required: false,
+          },
+        ],
       },
       demoSchema: [
         {
@@ -202,12 +200,12 @@ class A11yFigure extends A11yDetails {
             imgAlt: "random kitten",
             openText: "Show Description",
             closeText: "Hide Description",
-            style: "max-width:400px"
+            style: "max-width:400px",
           },
           content:
-            '<h4 slot="figcaption">Random Kitten</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>'
-        }
-      ]
+            '<h4 slot="figcaption">Random Kitten</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>',
+        },
+      ],
     };
   }
   // properties available to the custom element for data binding
@@ -216,12 +214,12 @@ class A11yFigure extends A11yDetails {
       ...super.properties,
       imgSrc: {
         type: String,
-        attribute: "img-src"
+        attribute: "img-src",
       },
       imgAlt: {
         type: String,
-        attribute: "img-alt"
-      }
+        attribute: "img-alt",
+      },
     };
   }
 
@@ -245,7 +243,7 @@ class A11yFigure extends A11yDetails {
    * @returns {object}
    */
   get observer() {
-    let callback = mutationsList => this._watchChildren(mutationsList);
+    let callback = (mutationsList) => this._watchChildren(mutationsList);
     return new MutationObserver(callback);
   }
 
@@ -268,7 +266,7 @@ class A11yFigure extends A11yDetails {
       image = figure ? figure.querySelector("* > img") : undefined,
       figcaption = figure ? figure.querySelector("* > figcaption") : undefined;
     if (image) {
-      (this.querySelectorAll("[slot=image]") || []).forEach(image =>
+      (this.querySelectorAll("[slot=image]") || []).forEach((image) =>
         image.remove()
       );
       image.cloneNode();
@@ -279,7 +277,7 @@ class A11yFigure extends A11yDetails {
       this._copyAndFilter(figcaption.cloneNode(true), [
         "figcaption",
         "details",
-        "summary"
+        "summary",
       ]);
     }
   }
@@ -291,7 +289,7 @@ class A11yFigure extends A11yDetails {
           : undefined;
     if (child) {
       this._copyAndFilter(child, nodenames, i + 1);
-      Object.keys(child || {}).forEach(index => child[index].remove());
+      Object.keys(child || {}).forEach((index) => child[index].remove());
     }
     this._copyToSlot(nodenames[i], clone);
   }
@@ -307,7 +305,7 @@ class A11yFigure extends A11yDetails {
       this.figureObserver.observe(this.querySelector("* > figure"), {
         childList: true,
         subtree: true,
-        characterData: true
+        characterData: true,
       });
     } else if (
       this._hasMutations(mutationsList, "removedNodes") &&

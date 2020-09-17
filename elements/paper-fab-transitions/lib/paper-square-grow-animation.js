@@ -35,12 +35,12 @@ class PaperSquareGrowAnimation extends mixinBehaviors(
       [
         {
           height: startSize + "px",
-          width: startSize + "px"
+          width: startSize + "px",
         },
         {
           height: height + "px",
-          width: width + "px"
-        }
+          width: width + "px",
+        },
       ],
       this.timingFromConfig(config)
     );

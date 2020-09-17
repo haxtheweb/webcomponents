@@ -1,0 +1,221 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "midi-player",
+      "path": "./lib/html-midi-player.js",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "sound-font"
+        },
+        {
+          "name": "visualizer"
+        }
+      ],
+      "properties": [
+        {
+          "name": "noteSequence"
+        },
+        {
+          "name": "soundFont",
+          "type": "string | null"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "duration",
+          "type": "number"
+        },
+        {
+          "name": "playing",
+          "type": "boolean"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string | null"
+        }
+      ],
+      "events": [
+        {
+          "name": "load"
+        },
+        {
+          "name": "start"
+        },
+        {
+          "name": "note"
+        },
+        {
+          "name": "stop"
+        }
+      ]
+    },
+    {
+      "name": "midi-visualizer",
+      "path": "./lib/html-midi-player.js",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "type",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "noteSequence"
+        },
+        {
+          "name": "config"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string | null"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string | null"
+        }
+      ]
+    },
+    {
+      "name": "music-player",
+      "path": "./music-player.js",
+      "description": "`music-player`\n`Visualize different types of music and simple format player`",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "no-waterfall",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-visual",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visualizer",
+          "type": "string",
+          "default": "\"staff\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "noWaterfall",
+          "attribute": "no-waterfall",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noVisual",
+          "attribute": "no-visual",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visualizer",
+          "attribute": "visualizer",
+          "type": "string",
+          "default": "\"staff\""
+        }
+      ]
+    },
+    {
+      "name": "midi-player",
+      "path": "./music-player.umd.js",
+      "events": [
+        {
+          "name": "load"
+        },
+        {
+          "name": "start"
+        },
+        {
+          "name": "note"
+        },
+        {
+          "name": "stop"
+        }
+      ]
+    },
+    {
+      "name": "midi-visualizer",
+      "path": "./music-player.umd.js"
+    },
+    {
+      "name": "tag",
+      "path": "./music-player.umd.js"
+    },
+    {
+      "name": "music-player",
+      "path": "./src/music-player.js",
+      "description": "`music-player`\n`Visualize different types of music and simple format player`",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "no-waterfall",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-visual",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visualizer",
+          "type": "string",
+          "default": "\"staff\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "noWaterfall",
+          "attribute": "no-waterfall",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noVisual",
+          "attribute": "no-visual",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visualizer",
+          "attribute": "visualizer",
+          "type": "string",
+          "default": "\"staff\""
+        }
+      ]
+    }
+  ]
+}

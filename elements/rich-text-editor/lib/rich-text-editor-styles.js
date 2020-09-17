@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 
-const RichTextEditorStyles = function(SuperClass) {
+const RichTextEditorStyles = function (SuperClass) {
   return class extends SuperClass {
     static get tag() {
       return "rich-text-editor-styles";
@@ -33,7 +33,7 @@ const RichTextEditorStyles = function(SuperClass) {
           .rich-text-editor-selection {
             background-color: var(--rich-text-editor-selection-bg);
           }
-        `
+        `,
       ];
     }
   };
@@ -61,7 +61,7 @@ window.RichTextEditorStyleManager.instance = null;
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.RichTextEditorStyleManager.requestAvailability = function() {
+window.RichTextEditorStyleManager.requestAvailability = function () {
   if (window.RichTextEditorStyleManager.instance == null) {
     window.RichTextEditorStyleManager.instance = new RichTextEditorStyleManager();
     document.head.append(window.RichTextEditorStyleManager.instance);

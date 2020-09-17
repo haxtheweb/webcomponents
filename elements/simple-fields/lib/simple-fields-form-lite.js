@@ -17,7 +17,7 @@ class SimpleFieldsFormLite extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   static get tag() {
@@ -89,7 +89,7 @@ class SimpleFieldsFormLite extends LitElement {
             bubbles: true,
             composed: true,
             cancelable: false,
-            detail: this.loadResponse
+            detail: this.loadResponse,
           })
         );
       }
@@ -116,7 +116,7 @@ class SimpleFieldsFormLite extends LitElement {
       this.method,
       this.headers,
       this.body
-    ).then(data => {
+    ).then((data) => {
       this.loading = false;
       this.loadResponse = data;
       /**
@@ -126,8 +126,8 @@ class SimpleFieldsFormLite extends LitElement {
       this.dispatchEvent(
         new CustomEvent("simple-fields-form-data-loaded", {
           detail: {
-            value: data
-          }
+            value: data,
+          },
         })
       );
     });
@@ -147,14 +147,14 @@ class SimpleFieldsFormLite extends LitElement {
       }
       response = await fetch(path, {
         method: method,
-        headers: headers
+        headers: headers,
       });
     } else {
       response = await fetch(path, {
         method: method,
         headers: headers,
         //make sure to serialize your JSON body
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       });
     }
 
@@ -189,7 +189,7 @@ class SimpleFieldsFormLite extends LitElement {
     this.autoload = false;
     this.headers = {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
     this.body = {};
   }
@@ -204,7 +204,7 @@ class SimpleFieldsFormLite extends LitElement {
         method: this.method,
         headers: this.headers,
         //make sure to serialize your JSON body
-        body: JSON.stringify(sf.value)
+        body: JSON.stringify(sf.value),
       });
     }
     return sf.value;
@@ -222,14 +222,14 @@ class SimpleFieldsFormLite extends LitElement {
        * Disables autofocus on fields.
        */
       disableAutofocus: {
-        type: Boolean
+        type: Boolean,
       },
       /*
        * Error messages by field name,
        * eg. `{ contactinfo.email: "A valid email is required." }`
        */
       error: {
-        type: Object
+        type: Object,
       },
       /*
        * Language of the fields.
@@ -237,20 +237,20 @@ class SimpleFieldsFormLite extends LitElement {
       language: {
         type: String,
         attribute: "lang",
-        reflect: true
+        reflect: true,
       },
       /*
        * resource link
        */
       resources: {
-        type: Object
+        type: Object,
       },
       /*
        * Fields schema.
        * _See [Fields Schema Format](fields-schema-format) above._
        */
       schema: {
-        type: Object
+        type: Object,
       },
       /**
        * Conversion from JSON Schema to HTML form elements.
@@ -258,14 +258,14 @@ class SimpleFieldsFormLite extends LitElement {
        */
       schemaConversion: {
         type: Object,
-        attribute: "schema-conversion"
+        attribute: "schema-conversion",
       },
       /*
        * value of fields
        */
       value: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -279,32 +279,32 @@ class SimpleFieldsFormLite extends LitElement {
     return {
       autoload: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       loading: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       loadEndpoint: {
         type: String,
-        attribute: "load-endpoint"
+        attribute: "load-endpoint",
       },
       saveEndpoint: {
         type: String,
-        attribute: "save-endpoint"
+        attribute: "save-endpoint",
       },
       method: {
-        type: String
+        type: String,
       },
       headers: {
-        type: Object
+        type: Object,
       },
       body: {
-        type: Object
+        type: Object,
       },
       loadResponse: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -344,7 +344,7 @@ class SimpleFieldsFormLite extends LitElement {
   static get properties() {
     return {
       ...this.fieldProperties,
-      ...this.formProperties
+      ...this.formProperties,
     };
   }
 }

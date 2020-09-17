@@ -27,7 +27,7 @@ class HaxTextEditorVocab extends RichTextEditorPromptButton {
     this.fields = element.haxProperties.settings.configure;
     this.toggles = true;
     this.value = {
-      "": null
+      "": null,
     };
   }
 

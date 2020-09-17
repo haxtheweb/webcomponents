@@ -46,9 +46,8 @@ mode vs resolution (3 levels)
  */
 class OutlineDesigner extends PolymerElement {
   // render function
-  static get template() {
-    return html`
-      <style>
+  render() {
+    return html` <style>
         :host {
           display: block;
         }
@@ -74,6 +73,7 @@ class OutlineDesigner extends PolymerElement {
           -ms-transition: 0.3s all ease;
           -o-transition: 0.3s all ease;
         }
+
         .rotate-90 {
           transform: rotate(90deg);
           -webkit-transform: rotate(90deg);
@@ -85,6 +85,7 @@ class OutlineDesigner extends PolymerElement {
         .breadcrumb-arrow:first-child {
           display: none;
         }
+
         .breadcrumb-arrow {
           color: var(
             --breadcrumb-color1,
@@ -92,6 +93,7 @@ class OutlineDesigner extends PolymerElement {
           );
           margin: -2px 6px 0 6px;
         }
+
         .breadcrumb {
           text-decoration: none;
           -webkit-tap-highlight-color: transparent;
@@ -111,6 +113,7 @@ class OutlineDesigner extends PolymerElement {
           --paper-progress-active-color: rgba(255, 255, 255, 0.5);
           --paper-progress-container-color: transparent;
         }
+
         .card-wrapper {
           padding: 16px;
         }
@@ -135,6 +138,7 @@ class OutlineDesigner extends PolymerElement {
           opacity: 0.6;
           background-color: var(--simple-colors-default-theme-grey-3, #ddd);
         }
+
         .add-button {
           width: 200px;
           height: 200px;
@@ -172,6 +176,7 @@ class OutlineDesigner extends PolymerElement {
           visibility: hidden;
           opacity: 0;
         }
+
         :host([details-mode="mid"]) .mid-detail {
           visibility: visible;
           opacity: 1;
@@ -181,10 +186,12 @@ class OutlineDesigner extends PolymerElement {
           width: 150px;
           height: 150px;
         }
+
         paper-card.card-mid-detail {
           width: 250px;
           height: 250px;
         }
+
         paper-card.card-high-detail {
           width: 250px;
           height: 300px;
@@ -206,11 +213,13 @@ class OutlineDesigner extends PolymerElement {
           -ms-transition: 0.3s all linear;
           -o-transition: 0.3s all linear;
         }
+
         #minimaparea.show-minimap {
           background-color: white;
           opacity: 0.5;
           visibility: visible;
         }
+
         #minimaparea.show-minimap:hover {
           opacity: 0.9;
         }
@@ -220,15 +229,18 @@ class OutlineDesigner extends PolymerElement {
           font-size: 16px;
           overflow: auto;
         }
+
         .tf-tree * {
           transition: 0.3s all ease;
           box-sizing: border-box;
           margin: 0;
           padding: 0;
         }
+
         .tf-tree ul {
           display: inline-flex;
         }
+
         .tf-tree li {
           align-items: center;
           display: flex;
@@ -237,9 +249,11 @@ class OutlineDesigner extends PolymerElement {
           padding: 0 1em;
           position: relative;
         }
+
         .tf-tree li ul {
           margin: 2em 0;
         }
+
         .tf-tree li li:before {
           border-top: 0.0625em solid #000;
           content: "";
@@ -250,23 +264,28 @@ class OutlineDesigner extends PolymerElement {
           top: -1.03125em;
           width: 100%;
         }
+
         .tf-tree li li:first-child:before {
           left: calc(50% - 0.03125em);
           max-width: calc(50% + 0.0625em);
         }
+
         .tf-tree li li:last-child:before {
           left: auto;
           max-width: calc(50% + 0.0625em);
           right: calc(50% - 0.03125em);
         }
+
         .tf-tree li li:only-child:before {
           display: none;
         }
+
         .tf-tree li li:only-child > .tf-nc:before,
         .tf-tree li li:only-child > .tf-node-content:before {
           height: 1.0625em;
           top: -1.0625em;
         }
+
         .tf-tree .tf-nc,
         .tf-tree .tf-node-content {
           border: 0.0625em solid #000;
@@ -274,10 +293,12 @@ class OutlineDesigner extends PolymerElement {
           padding: 0.5em 1em;
           position: relative;
         }
+
         .tf-tree .tf-nc:before,
         .tf-tree .tf-node-content:before {
           top: -1.03125em;
         }
+
         .tf-tree .tf-nc:after,
         .tf-tree .tf-nc:before,
         .tf-tree .tf-node-content:after,
@@ -290,88 +311,109 @@ class OutlineDesigner extends PolymerElement {
           position: absolute;
           width: 0.0625em;
         }
+
         .tf-tree .tf-nc:after,
         .tf-tree .tf-node-content:after {
           top: calc(100% + 0.03125em);
         }
+
         .tf-tree .tf-nc:only-child:after,
         .tf-tree .tf-node-content:only-child:after,
         .tf-tree > ul > li > .tf-nc:before,
         .tf-tree > ul > li > .tf-node-content:before {
           display: none;
         }
+
         .tf-tree.tf-gap-sm li {
           padding: 0 0.6em;
         }
+
         .tf-tree.tf-gap-sm li > .tf-nc:before,
         .tf-tree.tf-gap-sm li > .tf-node-content:before {
           height: 0.6em;
           top: -0.6em;
         }
+
         .tf-tree.tf-gap-sm li > .tf-nc:after,
         .tf-tree.tf-gap-sm li > .tf-node-content:after {
           height: 0.6em;
         }
+
         .tf-tree.tf-gap-sm li ul {
           margin: 1.2em 0;
         }
+
         .tf-tree.tf-gap-sm li li:before {
           top: -0.63125em;
         }
+
         .tf-tree.tf-gap-sm li li:only-child > .tf-nc:before,
         .tf-tree.tf-gap-sm li li:only-child > .tf-node-content:before {
           height: 0.6625em;
           top: -0.6625em;
         }
+
         .tf-tree.tf-gap-lg li {
           padding: 0 1.5em;
         }
+
         .tf-tree.tf-gap-lg li > .tf-nc:before,
         .tf-tree.tf-gap-lg li > .tf-node-content:before {
           height: 1.5em;
           top: -1.5em;
         }
+
         .tf-tree.tf-gap-lg li > .tf-nc:after,
         .tf-tree.tf-gap-lg li > .tf-node-content:after {
           height: 1.5em;
         }
+
         .tf-tree.tf-gap-lg li ul {
           margin: 3em 0;
         }
+
         .tf-tree.tf-gap-lg li li:before {
           top: -1.53125em;
         }
+
         .tf-tree.tf-gap-lg li li:only-child > .tf-nc:before,
         .tf-tree.tf-gap-lg li li:only-child > .tf-node-content:before {
           height: 1.5625em;
           top: -1.5625em;
         }
+
         .tf-tree li.tf-dotted-children .tf-nc:after,
         .tf-tree li.tf-dotted-children .tf-nc:before,
         .tf-tree li.tf-dotted-children .tf-node-content:after,
         .tf-tree li.tf-dotted-children .tf-node-content:before {
           border-left-style: dotted;
         }
+
         .tf-tree li.tf-dotted-children li:before {
           border-top-style: dotted;
         }
+
         .tf-tree li.tf-dotted-children > .tf-nc:before,
         .tf-tree li.tf-dotted-children > .tf-node-content:before {
           border-left-style: solid;
         }
+
         .tf-tree li.tf-dashed-children .tf-nc:after,
         .tf-tree li.tf-dashed-children .tf-nc:before,
         .tf-tree li.tf-dashed-children .tf-node-content:after,
         .tf-tree li.tf-dashed-children .tf-node-content:before {
           border-left-style: dashed;
         }
+
         .tf-tree li.tf-dashed-children li:before {
           border-top-style: dashed;
         }
+
         .tf-tree li.tf-dashed-children > .tf-nc:before,
         .tf-tree li.tf-dashed-children > .tf-node-content:before {
           border-left-style: solid;
         }
+
         .tf-label {
           transition: 0.3s all ease;
           cursor: pointer;
@@ -381,6 +423,7 @@ class OutlineDesigner extends PolymerElement {
           height: 50px;
           position: static;
         }
+
         .node-high-detail li .tf-label {
           z-index: 1;
           position: relative;
@@ -417,6 +460,7 @@ class OutlineDesigner extends PolymerElement {
           );
           border-left-width: 2px;
         }
+
         .node-low-detail li li:before {
           border-top-color: var(
             --simple-colors-default-theme-light-blue-7,
@@ -611,8 +655,7 @@ class OutlineDesigner extends PolymerElement {
         </section>
       </iron-pages>
       <canvas id="minimaparea"></canvas>
-      <slot></slot>
-    `;
+      <slot></slot>`;
   }
 
   // properties available to the custom element for data binding
@@ -627,21 +670,21 @@ class OutlineDesigner extends PolymerElement {
         name: "viewMode",
         type: String,
         value: "cards",
-        observer: "_viewModeChanged"
+        observer: "_viewModeChanged",
       },
       /**
        * Icon for the selected view mode
        */
       viewModeIcon: {
         name: "viewModeIcon",
-        type: String
+        type: String,
       },
       /**
        * Label for the selected view mode
        */
       viewModeLabel: {
         name: "viewModeLabel",
-        type: String
+        type: String,
       },
       /**
        * Which layout to the outline to display
@@ -651,28 +694,28 @@ class OutlineDesigner extends PolymerElement {
         type: String,
         value: "mid",
         reflectToAttribute: true,
-        observer: "_detailsModeChanged"
+        observer: "_detailsModeChanged",
       },
       /**
        * Icon for the selected view mode
        */
       detailsModeIcon: {
         name: "detailsModeIcon",
-        type: String
+        type: String,
       },
       /**
        * Label for the selected view mode
        */
       detailsModeLabel: {
         name: "detailsModeLabel",
-        type: String
+        type: String,
       },
       /**
        * Data binding to show the selected view
        */
       selectedView: {
         name: "selectedView",
-        type: Number
+        type: Number,
       },
       /**
        * Whether or not we are in an editing state
@@ -682,7 +725,7 @@ class OutlineDesigner extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        observer: "_editModeChanged"
+        observer: "_editModeChanged",
       },
       /**
        * Whether or to show the mini map
@@ -692,7 +735,7 @@ class OutlineDesigner extends PolymerElement {
         type: Boolean,
         value: true,
         reflectToAttribute: true,
-        observer: "_miniMapChanged"
+        observer: "_miniMapChanged",
       },
       /**
        * end point / JSON to load
@@ -700,7 +743,7 @@ class OutlineDesigner extends PolymerElement {
       outlineSchemaUrl: {
         name: "outlineSchemaUrl",
         type: String,
-        value: false
+        value: false,
       },
       /**
        * JSON outline schema manifest
@@ -708,7 +751,7 @@ class OutlineDesigner extends PolymerElement {
       manifest: {
         name: "manifest",
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * Data in outline format
@@ -716,8 +759,8 @@ class OutlineDesigner extends PolymerElement {
       outlineData: {
         name: "outlineData",
         type: Object,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -750,12 +793,12 @@ class OutlineDesigner extends PolymerElement {
         "ul,ol,li": "rgba(0, 0, 0, 0.08)",
         "h1,h2,h3,h4,h5,h6,a": "rgba(0, 0, 0, 0.10)",
         "lrnsys-outline-item": "rgba(0, 0, 0, 0.08)",
-        "p,section": "rgba(0, 0, 0, 0.02)"
+        "p,section": "rgba(0, 0, 0, 0.02)",
       },
       back: "rgba(0, 0, 0, 0.02)",
       view: "rgba(0, 0, 0, 0.05)",
       drag: "rgba(0, 0, 0, 0.10)",
-      interval: null
+      interval: null,
     });
   }
   /**
@@ -857,7 +900,7 @@ class OutlineDesigner extends PolymerElement {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: true
+                detail: true,
               })
             );
             window.dispatchEvent(new Event("resize"));
@@ -939,7 +982,7 @@ class OutlineDesigner extends PolymerElement {
                   bubbles: true,
                   cancelable: true,
                   composed: true,
-                  detail: true
+                  detail: true,
                 })
               );
               window.dispatchEvent(new Event("resize"));

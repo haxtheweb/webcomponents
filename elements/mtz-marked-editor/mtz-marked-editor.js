@@ -35,9 +35,9 @@ class MtzMarkedEditor extends mixinBehaviors(
       readonly: Boolean,
       textareaSelector: {
         type: String,
-        value: "textarea"
+        value: "textarea",
       },
-      __textarea: Object
+      __textarea: Object,
     };
   }
   constructor() {
@@ -118,7 +118,7 @@ class MtzMarkedEditor extends mixinBehaviors(
       start,
       end,
       length: end - start,
-      text: textarea.value.substring(start, end)
+      text: textarea.value.substring(start, end),
     };
   }
   /**
@@ -181,6 +181,6 @@ const normalizedMatchesSelector =
  * @param {string} selector Selector to match
  * @return {boolean} True if node matched selector
  */
-export const matchesSelector = function(node, selector) {
+export const matchesSelector = function (node, selector) {
   return normalizedMatchesSelector.call(node, selector);
 };

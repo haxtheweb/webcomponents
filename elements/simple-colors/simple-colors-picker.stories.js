@@ -8,8 +8,8 @@ export default {
   component: "simple-colors-picker",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 
 const utils = new StorybookUtilities();
@@ -18,7 +18,7 @@ export const SimpleColorsPickerStory = () => {
   delete rawProps.accentColor;
   delete rawProps.dark;
   let knobs = utils.getKnobs(utils.getElementProperties(rawProps), {
-    label: 'Select a color from "simple-colors"'
+    label: 'Select a color from "simple-colors"',
   });
   return utils.makeElement(SimpleColorsPicker, knobs);
 };

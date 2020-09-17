@@ -27,7 +27,7 @@ class ElmslnStudioButton extends navigator(LitElement) {
   static get properties() {
     return {
       path: { type: String },
-      icon: { type: String }
+      icon: { type: String },
     };
   }
   static get styles() {

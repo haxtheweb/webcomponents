@@ -29,16 +29,14 @@ class SimpleDatetime extends LitElement {
           color: #b3b3b1;
           line-height: 30px;
         }
-      `
+      `,
     ];
   }
   /**
    * LitElement life cycle - render callback
    */
   render() {
-    return html`
-      <time datetime="${this.date}">${this.date}</time>
-    `;
+    return html` <time datetime="${this.date}">${this.date}</time> `;
   }
   static get tag() {
     return "simple-datetime";
@@ -52,26 +50,26 @@ class SimpleDatetime extends LitElement {
        * Javascript timestamp
        */
       timestamp: {
-        type: Number
+        type: Number,
       },
       /**
        * Format to output, see https://github.com/jacwright/date.format#supported-identifiers
        */
       format: {
-        type: String
+        type: String,
       },
       /**
        * Date, generated from timestamp + format
        */
       date: {
-        type: String
+        type: String,
       },
       /**
        * Support for UNIX timestamp conversion on the fly
        */
       unix: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**

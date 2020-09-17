@@ -54,7 +54,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         editable-outline {
           margin-bottom: 32px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -93,35 +93,35 @@ class HAXCMSOutlineEditorDialog extends LitElement {
        * opened state of the dialog inside here
        */
       opened: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Outline of items in json outline schema format
        */
       manifestItems: {
-        type: Array
+        type: Array,
       },
       /**
        * Stringify'ed representation of items
        */
       manifestItemsStatic: {
         type: String,
-        attribute: "manifest-items-static"
+        attribute: "manifest-items-static",
       },
       /**
        * Display label, switch when hitting the toggle button
        */
       viewLabel: {
         type: String,
-        attribute: "view-label"
+        attribute: "view-label",
       },
       /**
        * Which edit mode to display
        */
       viewMode: {
         type: Boolean,
-        attribute: "view-mode"
-      }
+        attribute: "view-mode",
+      },
     };
   }
   /**
@@ -133,7 +133,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("opened-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -143,7 +143,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         // notify
         this.dispatchEvent(
           new CustomEvent("manifest-edit-mode-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -160,7 +160,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifestItems = [...toJS(store.manifest.items)];
       this.__disposer.push(reaction);
     });
@@ -185,7 +185,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
         composed: true,
         detail: this.shadowRoot
           .querySelector("#outline")
-          .exportJsonOutlineSchemaItems(true)
+          .exportJsonOutlineSchemaItems(true),
       })
     );
   }

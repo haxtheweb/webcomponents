@@ -10,6 +10,7 @@ relative-heading {
   color: var(--topic-heading-text-color);
   display: inline-flex;
 }
+
 iron-icon {
   color: var(--topic-heading-icon-color);
   display: inline-flex;

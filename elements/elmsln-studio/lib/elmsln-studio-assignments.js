@@ -82,7 +82,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
             border-bottom: 1px solid var(--accent-card-border-color, #ddd);
           }
         }
-      `
+      `,
     ];
   }
   // render function
@@ -94,10 +94,10 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       <h1 class="sr-only">Assignments</h1>
       <div id="lessons">
         ${Object.keys(this.lessons || {}).map(
-          l => html`
+          (l) => html`
             <div class="lesson">
               <h2>${this.lessons[l].lesson}</h2>
-              ${(this.lessons[l].assignments || []).map(p =>
+              ${(this.lessons[l].assignments || []).map((p) =>
                 !p.assignments
                   ? html`
                       <div class="assignment">${this.renderAssignment(p)}</div>
@@ -108,7 +108,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
                           ${p.project}
                         </span>
                         <div slot="linklist">
-                          ${this.sortDates(p.assignments || [], true).map(a =>
+                          ${this.sortDates(p.assignments || [], true).map((a) =>
                             this.renderAssignment(a)
                           )}
                         </div>
@@ -159,7 +159,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     return (
       this.profile &&
       this.profile.due &&
-      this.profile.due.filter(s => s.id === id).length > 0
+      this.profile.due.filter((s) => s.id === id).length > 0
     );
   }
 
@@ -168,11 +168,11 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     return {
       ...super.properties,
       lessons: {
-        type: Object
+        type: Object,
       },
       profile: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 

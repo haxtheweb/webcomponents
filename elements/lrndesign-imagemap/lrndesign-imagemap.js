@@ -12,7 +12,9 @@ class LrndesignImagemap extends LitElement {
   constructor() {
     super();
     import("@lrnwebcomponents/relative-heading/relative-heading.js");
-    import("@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js");
+    import(
+      "@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js"
+    );
     import("@lrnwebcomponents/simple-popover/simple-popover.js");
   }
   static get styles() {
@@ -46,7 +48,7 @@ class LrndesignImagemap extends LitElement {
             display: none;
           }
         }
-      `
+      `,
     ];
   }
 
@@ -60,12 +62,8 @@ class LrndesignImagemap extends LitElement {
             parent="${this.parent || this.subtopicOf}"
           >
             ${this.label
-              ? html`
-                  <h1>${this.label}</h1>
-                `
-              : html`
-                  <slot name="heading"></slot>
-                `}
+              ? html` <h1>${this.label}</h1> `
+              : html` <slot name="heading"></slot> `}
           </relative-heading>
           <div id="desc"><slot name="desc"></slot></div>
           <slot name="source" hidden></slot>
@@ -105,20 +103,20 @@ class LrndesignImagemap extends LitElement {
        * Label for the imagemap
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * @deprecated: (8/27/2020, after v.2.6.24) Using slot instead of the path of the SVG
        */
       src: {
-        type: String
+        type: String,
       },
       /**
        * The path of the SVG
        */
       hotspotDetails: {
         type: Array,
-        attribute: "hotspot-details"
+        attribute: "hotspot-details",
       },
       /**
        * @deprecated: (8/27/2020, after v.2.6.24) the id of the heading element that this imagemap is a subtopic of
@@ -126,18 +124,18 @@ class LrndesignImagemap extends LitElement {
       subtopicOf: {
         type: String,
         reflect: true,
-        attribute: "subtopic-of"
+        attribute: "subtopic-of",
       },
 
       parent: {
         type: String,
         reflect: true,
-        attribute: "parent"
+        attribute: "parent",
       },
 
       __activeHotspot: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
 
@@ -158,8 +156,8 @@ class LrndesignImagemap extends LitElement {
 
   _fetchSvg(src) {
     fetch(src)
-      .then(response => response.text())
-      .then(data => this._getSVGHandler(data));
+      .then((response) => response.text())
+      .then((data) => this._getSVGHandler(data));
   }
 
   /**
@@ -178,24 +176,24 @@ class LrndesignImagemap extends LitElement {
     svg.setAttribute("aria-describedBy", this._getInfoNode(svg));
     this.hotspotDetails = [];
     // this is scrape the printable hotspots for info
-    this.querySelectorAll("lrndesign-imagemap-hotspot").forEach(hotspot => {
+    this.querySelectorAll("lrndesign-imagemap-hotspot").forEach((hotspot) => {
       let obj = {
         id: hotspot.hotspotId,
         print: hotspot,
         hotspot: svg.querySelector(`#${hotspot.hotspotId}`),
         label: hotspot.label,
         position: hotspot.position || "bottom",
-        details: document.createElement("div")
+        details: document.createElement("div"),
       };
       // Turning main svg interactive hotspots into buttons
       obj.hotspot.classList.add("hotspot");
       obj.hotspot.setAttribute("role", "button");
       obj.hotspot.setAttribute("controls", "figure");
-      obj.hotspot.addEventListener("click", e => this.openHotspot(obj));
+      obj.hotspot.addEventListener("click", (e) => this.openHotspot(obj));
 
       //Copy hotspot details from printable hotspots
 
-      hotspot.childNodes.forEach(node => {
+      hotspot.childNodes.forEach((node) => {
         obj.details.appendChild(node.cloneNode(true));
       });
       obj.details.slot = "details";
@@ -206,7 +204,7 @@ class LrndesignImagemap extends LitElement {
       hotspots.push(hotspot.hotspotId);
     });
 
-    this.hotspotDetails.forEach(obj => {
+    this.hotspotDetails.forEach((obj) => {
       obj.print.loadSvg(data, hotspots);
     });
   }
@@ -248,7 +246,7 @@ class LrndesignImagemap extends LitElement {
    */
   openHotspot(hotspot) {
     this.__activeHotspot = undefined;
-    this.hotspotDetails.forEach(obj => {
+    this.hotspotDetails.forEach((obj) => {
       if (obj.id === hotspot.id) {
         obj.hotspot.classList.add("selected");
         obj.details.style.display = "block";

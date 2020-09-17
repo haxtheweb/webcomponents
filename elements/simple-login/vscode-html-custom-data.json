@@ -3,37 +3,27 @@
   "tags": [
     {
       "name": "simple-login",
-      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "onsimple-login-login",
-          "description": "`simple-login-login` - "
-        }
-      ]
-    },
-    {
-      "name": "simple-login",
-      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` - \n\nAttributes:\n\n  * `title` {`string`} - Title of the loginscreen\n\n  * `subtitle` {`string`} - Subtitle of the loginscreen\n\n  * `error-msg` {`string`} - Error message to show (example : \"Invalid username\")\n\n  * `username` {`string`} - Content of the username field\n\n  * `password` {`string`} - Content of the password field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `user-input-err-msg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `password-input-err-msg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\nProperties:\n\n  * `title` {`string`} - Title of the loginscreen\n\n  * `subtitle` {`string`} - Subtitle of the loginscreen\n\n  * `errorMsg` {`string`} - Error message to show (example : \"Invalid username\")\n\n  * `username` {`string`} - Content of the username field\n\n  * `password` {`string`} - Content of the password field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` - \n\nAttributes:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\nProperties:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label",
       "attributes": [
         {
           "name": "title",
-          "description": "`title` {`string`} - Title of the loginscreen\n\nProperty: title"
+          "description": "`title` - Title of the loginscreen\n\nProperty: title"
         },
         {
           "name": "subtitle",
-          "description": "`subtitle` {`string`} - Subtitle of the loginscreen\n\nProperty: subtitle"
+          "description": "`subtitle` - Subtitle of the loginscreen\n\nProperty: subtitle"
         },
         {
-          "name": "error-msg",
-          "description": "`error-msg` {`string`} - Error message to show (example : \"Invalid username\")\n\nProperty: errorMsg"
-        },
-        {
-          "name": "username",
-          "description": "`username` {`string`} - Content of the username field\n\nProperty: username"
+          "name": "errorMsg",
+          "description": "`errorMsg` - Error message to show (example : \"Invalid username\")\n\nProperty: errorMsg"
         },
         {
           "name": "password",
-          "description": "`password` {`string`} - Content of the password field\n\nProperty: password"
+          "description": "`password` {`string`} - Content of the password field\n\nProperty: password\n\nDefault: "
+        },
+        {
+          "name": "username",
+          "description": "`username` {`string`} - Content of the username field\n\nProperty: username\n\nDefault: "
         },
         {
           "name": "loading",
@@ -42,19 +32,19 @@
         },
         {
           "name": "user-input-label",
-          "description": "`user-input-label` {`string`} - Placeholder of the username field\n\nProperty: userInputLabel\n\nDefault: Username"
+          "description": "`user-input-label` {`string`} - Placeholder of the username field\n\nProperty: userInputLabel\n\nDefault: User name"
         },
         {
-          "name": "user-input-err-msg",
-          "description": "`user-input-err-msg` {`string`} - Error message of the username field\n\nProperty: userInputErrMsg\n\nDefault: Username required"
+          "name": "userInputErrMsg",
+          "description": "`userInputErrMsg` {`string`} - Error message of the username field\n\nProperty: userInputErrMsg\n\nDefault: User name required"
         },
         {
           "name": "password-input-label",
           "description": "`password-input-label` {`string`} - Placeholder of the password field\n\nProperty: passwordInputLabel\n\nDefault: Password"
         },
         {
-          "name": "password-input-err-msg",
-          "description": "`password-input-err-msg` {`string`} - Error message of the password field\n\nProperty: passwordInputErrMsg\n\nDefault: Password required"
+          "name": "passwordInputErrMsg",
+          "description": "`passwordInputErrMsg` {`string`} - Error message of the password field\n\nProperty: passwordInputErrMsg\n\nDefault: Password required"
         },
         {
           "name": "login-btn-text",
@@ -111,7 +101,7 @@
     },
     {
       "name": "simple-login",
-      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` - \n\nProperties:\n\n  * `password` {`string`} - \n\n  * `username` {`string`} - \n\n  * `loading` {`boolean`} - \n\n  * `userInputLabel` {`string`} - \n\n  * `userInputErrMsg` {`string`} - \n\n  * `passwordInputLabel` {`string`} - \n\n  * `passwordInputErrMsg` {`string`} - \n\n  * `loginBtnText` {`string`} - ",
       "attributes": [
         {
           "name": "onsimple-login-login",

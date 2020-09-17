@@ -2,16 +2,12 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "wc-autoload",
-      "path": "./wc-autoload.es6.js",
-      "description": "`wc-autoload`\n`automatically load new tags in the dom`",
+      "name": "wc-registry",
+      "path": "./wc-autoload.js",
+      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
       "properties": [
         {
-          "name": "html",
-          "type": "string"
-        },
-        {
-          "name": "template"
+          "name": "loader"
         }
       ]
     },
@@ -21,11 +17,17 @@
       "description": "`wc-autoload`\n`automatically load new tags in the dom`",
       "properties": [
         {
-          "name": "html",
-          "type": "string"
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "template"
+          "name": "registry"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "default": "{\"childList\":true,\"subtree\":true}"
         }
       ]
     },
@@ -34,12 +36,32 @@
       "path": "./wc-autoload.umd.js"
     },
     {
+      "name": "wc-registry",
+      "path": "./src/wc-autoload.js",
+      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
+      "properties": [
+        {
+          "name": "loader"
+        }
+      ]
+    },
+    {
       "name": "wc-autoload",
       "path": "./src/wc-autoload.js",
       "description": "`wc-autoload`\n`automatically load new tags in the dom`",
       "properties": [
         {
-          "name": "template"
+          "name": "loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "registry"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "default": "{\"childList\":true,\"subtree\":true}"
         }
       ]
     }

@@ -51,11 +51,11 @@
 // Make a CSS arrow
 @mixin rh-arrow($type, $color, $width: 8px, $height: 5px, $pseudo: false) {
   $direction: (
-    up: 180deg,
-    down: 0deg,
-    right: -90deg,
-    left: 90deg,
-  );
+  up: 180deg,
+  down: 0deg,
+  right: -90deg,
+  left: 90deg,
+);
   border-style: solid;
   border-width: $width $height 0;
   border-color: transparent;

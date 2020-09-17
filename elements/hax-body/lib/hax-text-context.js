@@ -79,13 +79,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
           top: 40px;
           flex-direction: column;
         }
-      `
+      `,
     ];
   }
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     import("@polymer/paper-item/paper-item.js");
     import("@polymer/iron-icon/iron-icon.js");
@@ -315,13 +315,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
   static get properties() {
     return {
       _showIndent: {
-        type: Boolean
+        type: Boolean,
       },
       _showLists: {
-        type: Boolean
+        type: Boolean,
       },
       realSelectedValue: {
-        type: String
+        type: String,
       },
       /**
        * calculated boolean off of if there is currently text
@@ -329,41 +329,41 @@ class HaxTextContext extends winEventsElement(LitElement) {
       hasSelectedText: {
         type: Boolean,
         attribute: "has-selected-text",
-        reflect: true
+        reflect: true,
       },
       /**
        * Text hax-store has detected is selected currently.
        */
       haxSelectedText: {
-        type: String
+        type: String,
       },
       /**
        * Selected value to match format of the tag currently.
        */
       selectedValue: {
         type: Number,
-        attribute: "selected-value"
+        attribute: "selected-value",
       },
       /**
        * Selection tracking
        */
       selection: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * Selected item icon
        */
       formatIcon: {
         type: String,
-        attribute: "format-icon"
+        attribute: "format-icon",
       },
       /**
        * Is this safari
        */
       isSafari: {
         type: Boolean,
-        attribute: "is-safari"
-      }
+        attribute: "is-safari",
+      },
     };
   }
 
@@ -408,7 +408,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("selected-value-changed", {
-            detail: this[propName]
+            detail: this[propName],
           })
         );
       }
@@ -469,7 +469,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
           let values = {
-            text: window.HaxStore.instance.activePlaceHolder.toString()
+            text: window.HaxStore.instance.activePlaceHolder.toString(),
           };
           let type = "inline";
           let haxElements = window.HaxStore.guessGizmo(type, values);
@@ -563,12 +563,12 @@ class HaxTextContext extends winEventsElement(LitElement) {
             );
             selection.focusNode.parentNode.setAttribute("data-editable", true);
             // just to be safe
-            selection.focusNode.parentNode.removeEventListener("click", e => {
+            selection.focusNode.parentNode.removeEventListener("click", (e) => {
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();
             });
-            selection.focusNode.parentNode.addEventListener("click", e => {
+            selection.focusNode.parentNode.addEventListener("click", (e) => {
               e.preventDefault();
               e.stopPropagation();
               e.stopImmediatePropagation();

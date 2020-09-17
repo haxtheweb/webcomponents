@@ -15,16 +15,16 @@ const themes = {
   solarizedLight,
   solarizedDark,
   kustomLight,
-  kustomDark
+  kustomDark,
 };
 
-const changeTheme = e => {
+const changeTheme = (e) => {
   const theme = e.target.value;
   const demo = document.querySelector(e.target.dataset.target);
   demo.theme = themes[theme];
 };
 
 const selects = document.querySelectorAll("select");
-[].forEach.call(selects, select => {
+[].forEach.call(selects, (select) => {
   select.addEventListener("change", changeTheme);
 });

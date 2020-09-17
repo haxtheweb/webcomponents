@@ -1594,8 +1594,8 @@ ${this.poster
     this.__playing = false;
     this.__settingsOpen = false;
     this.__transcriptOption = -1;
-    this.querySelectorAll("video,audio").forEach(html5 => {
-      html5.addEventListener("loadedmetadata", e => {
+    this.querySelectorAll("video,audio").forEach((html5) => {
+      html5.addEventListener("loadedmetadata", (e) => {
         this.__preloadedDuration = html5.duration;
       });
     });
@@ -1608,7 +1608,9 @@ ${this.poster
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
-    import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
+    import(
+      "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js"
+    );
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
@@ -1622,7 +1624,7 @@ ${this.poster
     let anchor = window.AnchorBehaviors;
     return {
       target: anchor ? anchor.getTarget(this) : false,
-      params: anchor ? anchor.params : {}
+      params: anchor ? anchor.params : {},
     };
   }
 
@@ -1672,7 +1674,7 @@ ${this.poster
       !this.captionsTrack || !this.captionsTrack.cues
         ? []
         : this.isYoutube
-        ? Object.keys(this.captionsTrack.cues).map(key => {
+        ? Object.keys(this.captionsTrack.cues).map((key) => {
             let cue = this.captionsTrack.cues[key];
             if (
               cue.startTime <= this.currentTime &&
@@ -1694,7 +1696,7 @@ ${this.poster
   get captionsPicker() {
     let options = {};
     options[-1] = this._getLocal(this.localization, "captions", "off");
-    Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
+    Object.keys(this.loadedTracks.textTracks || {}).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
         this.loadedTracks.textTracks[key].language;
@@ -1820,114 +1822,114 @@ ${this.poster
     return {
       audio: {
         label: "Audio",
-        notSupported: "HTML5 video is not supported."
+        notSupported: "HTML5 video is not supported.",
       },
       autoScroll: {
         label: "Scroll Transcript",
-        icon: "swap-vert"
+        icon: "swap-vert",
       },
       captions: {
         label: "Closed Captions",
         icon: "av:closed-caption",
-        off: "Off"
+        off: "Off",
       },
       download: {
         label: "Download Transcript",
-        icon: "file-download"
+        icon: "file-download",
       },
       forward: {
         label: "Forward",
-        icon: "av:fast-forward"
+        icon: "av:fast-forward",
       },
       fullscreen: {
         label: "Fullscreen",
-        icon: "fullscreen"
+        icon: "fullscreen",
       },
       copyLink: {
         label: "Copy Media Link",
-        icon: "link"
+        icon: "link",
       },
       closeLink: {
         label: "Close",
-        icon: "close"
+        icon: "close",
       },
       loading: {
-        label: "Loading..."
+        label: "Loading...",
       },
       loop: {
-        label: "Loop Playback"
+        label: "Loop Playback",
       },
       mute: {
         label: "Mute",
-        icon: "av:volume-up"
+        icon: "av:volume-up",
       },
       nextResult: {
         label: "Next",
-        icon: "arrow-forward"
+        icon: "arrow-forward",
       },
       pause: {
         label: "Pause",
-        icon: "av:pause"
+        icon: "av:pause",
       },
       play: {
         label: "Play",
-        icon: "av:play-arrow"
+        icon: "av:play-arrow",
       },
       prevResult: {
         label: "Previous",
-        icon: "arrow-back"
+        icon: "arrow-back",
       },
       print: {
         label: "Print Transcript",
-        icon: "print"
+        icon: "print",
       },
       restart: {
         label: "Restart",
-        icon: "av:replay"
+        icon: "av:replay",
       },
       rewind: {
         label: "Backward",
-        icon: "av:fast-rewind"
+        icon: "av:fast-rewind",
       },
       search: {
         label: "Search the transcript.",
-        icon: "search"
+        icon: "search",
       },
       seekSlider: {
-        label: "Seek Slider"
+        label: "Seek Slider",
       },
       settings: {
         label: "Settings",
-        icon: "settings"
+        icon: "settings",
       },
       speed: {
-        label: "Speed %"
+        label: "Speed %",
       },
       transcript: {
         label: "Transcript",
         icon: "description",
         loading: "Loading the transcript(s)...",
         off: "Off",
-        skip: "Skip to the transcript."
+        skip: "Skip to the transcript.",
       },
       unmute: {
         label: "Unmute",
-        icon: "av:volume-off"
+        icon: "av:volume-off",
       },
       video: {
         label: "Video",
-        notSupported: "HTML5 video is not supported."
+        notSupported: "HTML5 video is not supported.",
       },
       volume: {
-        label: "Volume"
+        label: "Volume",
       },
       youTubeLoading: {
         label: "Loading...",
-        startLoading: "Press play."
+        startLoading: "Press play.",
       },
       youTubeTranscript: {
-        label: "Transcript will load once media plays."
-      }
+        label: "Transcript will load once media plays.",
+      },
     };
   }
 
@@ -2163,7 +2165,7 @@ ${this.poster
    */
   get transcriptCues() {
     let cues = !this.cues ? [] : this.cues.slice();
-    return cues.filter(cue => cue.track === this.transcriptTrack);
+    return cues.filter((cue) => cue.track === this.transcriptTrack);
   }
 
   /**
@@ -2175,7 +2177,7 @@ ${this.poster
   get transcriptPicker() {
     let options = {};
     options[-1] = this._getLocal(this.localization, "transcript", "off");
-    Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
+    Object.keys(this.loadedTracks.textTracks || {}).forEach((key) => {
       options[key] =
         this.loadedTracks.textTracks[key].label ||
         this.loadedTracks.textTracks[key].language;
@@ -2223,10 +2225,10 @@ ${this.poster
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
     this._handleMediaLoaded();
-    this.__loadedTracks.addEventListener("loadedmetadata", e =>
+    this.__loadedTracks.addEventListener("loadedmetadata", (e) =>
       this._handleMediaLoaded(e)
     );
-    this.__loadedTracks.addEventListener("timeupdate", e =>
+    this.__loadedTracks.addEventListener("timeupdate", (e) =>
       this._handleTimeUpdate(e)
     );
     this.__playerReady = true;
@@ -2245,15 +2247,15 @@ ${this.poster
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      let change = params => params.includes(propName),
-        mediaChange = param =>
+      let change = (params) => params.includes(propName),
+        mediaChange = (param) =>
           change(["__loadedTracks", "youtubeId", "media", param]),
         flexChange = change([
           "standAlone",
           "hideTranscript",
           "audioNoThumb",
           "stackedLayout",
-          "__cues"
+          "__cues",
         ]),
         media = this.media ? this.media : this.__loadedTracks;
 
@@ -2328,7 +2330,7 @@ ${this.poster
    */
   _captionsChanged() {
     let ccNum = -1;
-    Object.keys(this.loadedTracks.textTracks).forEach(key => {
+    Object.keys(this.loadedTracks.textTracks).forEach((key) => {
       let showing =
         this.cc && this.loadedTracks.textTracks[key] === this.captionsTrack;
       this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
@@ -2342,7 +2344,7 @@ ${this.poster
    */
   _captionsOptionChanged() {
     this.cc = this.__captionsOption > -1;
-    Object.keys(this.loadedTracks.textTracks).forEach(key => {
+    Object.keys(this.loadedTracks.textTracks).forEach((key) => {
       let showing = parseInt(key) == parseInt(this.__captionsOption);
       this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
       if (showing) this.captionsTrack = this.loadedTracks.textTracks[key];
@@ -2363,7 +2365,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2386,7 +2388,7 @@ ${this.poster
       cues = this.transcriptTrack.cues,
       data = Object.keys(cues)
         .map(
-          key =>
+          (key) =>
             `${this._getHHMMSS(cues[key].startTime)} - ${this._getHHMMSS(
               cues[key].endTime
             )}: \t${cues[key].text.replace(/[\n\r\s*]/g, " ")}\n`
@@ -2410,7 +2412,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2438,7 +2440,7 @@ ${this.poster
     <h1>${title}</h1>
     ${Object.keys(cues)
       .map(
-        key =>
+        (key) =>
           `<div style="display: table-row;">
         ${
           this.hideTimestamps
@@ -2474,7 +2476,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2494,7 +2496,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
     /**
@@ -2506,7 +2508,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2526,7 +2528,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2546,7 +2548,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2566,7 +2568,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2587,7 +2589,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2608,7 +2610,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2630,7 +2632,7 @@ ${this.poster
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -2665,7 +2667,7 @@ ${this.poster
       sourceVideo =
         this.source && !this.source && this.source.match(/webm|ogv|mov|mp4$/),
       sourcesVideo =
-        (this.sources || []).filter(source =>
+        (this.sources || []).filter((source) =>
           `${source.type || ""}${source.kind || ""}`.match(/video|mp4|webm|ogv/)
         ).length > 0,
       hasVideo = this.isYoutube || sourceVideo || sourcesVideo;
@@ -2701,7 +2703,7 @@ ${this.poster
       );
       if (!crossorigin) primary.setAttribute("crossorigin", this.crossorigin);
       primary.setAttribute("preload", "metadata");
-      this.querySelectorAll("source,track").forEach(node => {
+      this.querySelectorAll("source,track").forEach((node) => {
         if (node.parentNode === this) primary.appendChild(node);
       });
       this.appendChild(primary);
@@ -2713,20 +2715,20 @@ ${this.poster
     primary.style.maxWidth = "100%";
 
     /* handle deprecated tracks */
-    (this.tracks || []).forEach(track => {
+    (this.tracks || []).forEach((track) => {
       let node = document.createElement("track");
-      Object.keys(track).forEach(key => node.setAttribute(key, track[key]));
+      Object.keys(track).forEach((key) => node.setAttribute(key, track[key]));
       primary.appendChild(node);
     });
 
     /* handle deprecated sources */
-    (this.sources || []).forEach(source => {
+    (this.sources || []).forEach((source) => {
       let node = document.createElement("source");
-      Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
+      Object.keys(source).forEach((key) => node.setAttribute(key, source[key]));
       primary.appendChild(node);
     });
     /* provides a seek function for primary media */
-    primary.seek = time => (primary.currentTime = time);
+    primary.seek = (time) => (primary.currentTime = time);
     this._addSourcesAndTracks(primary, primary);
     return primary;
   }
@@ -2738,7 +2740,7 @@ ${this.poster
   _getTrack(track) {
     if (!track) {
       let defaultTracks = this.loadedTracks.textTracks.filter(
-        track => track.default === true
+        (track) => track.default === true
       );
       return defaultTracks
         ? defaultTracks[0].track
@@ -2771,7 +2773,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2792,7 +2794,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2813,7 +2815,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2844,7 +2846,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2866,7 +2868,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2890,7 +2892,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2910,7 +2912,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2926,7 +2928,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2947,7 +2949,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2968,7 +2970,7 @@ ${this.poster
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -2980,17 +2982,17 @@ ${this.poster
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    Object.keys(media.textTracks).forEach(track =>
+    Object.keys(media.textTracks).forEach((track) =>
       this._onAddTrack(media.textTracks[track])
     );
-    media.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
-    media.textTracks.onaddtrack = e => this._onAddTrack(e.track);
+    media.textTracks.onremovetrack = (e) => this._onRemoveTrack(e.track);
+    media.textTracks.onaddtrack = (e) => this._onAddTrack(e.track);
 
     let d = media.querySelector("track[default]")
         ? media.querySelector("track[default]")
         : media.querySelector("track"),
       defaultTrack =
-        Object.keys(media.textTracks).find(key => {
+        Object.keys(media.textTracks).find((key) => {
           return (
             d.label === media.textTracks[key].label &&
             d.kind === media.textTracks[key].kind &&
@@ -3128,7 +3130,7 @@ ${this.poster
   _getTrackId(track) {
     return this.loadedTracks
       ? Object.keys(this.loadedTracks.textTracks).find(
-          key => this.loadedTracks.textTracks[key] === track
+          (key) => this.loadedTracks.textTracks[key] === track
         ) || -1
       : -1;
   }
@@ -3159,7 +3161,7 @@ ${this.poster
     let loadCueData = setInterval(() => {
       if (track.cues && track.cues.length > 0) {
         clearInterval(loadCueData);
-        let cues = Object.keys(track.cues).map(key => track.cues[key]);
+        let cues = Object.keys(track.cues).map((key) => track.cues[key]);
         this._onRemoveTrack(track); //prevents duplicate tracks
         this.__cues = this.cues.concat(cues).sort((a, b) => {
           let start = a.startTime - b.startTime,
@@ -3177,9 +3179,11 @@ ${this.poster
   _onRemoveTrack(track) {
     if (this.loadedTracks && this.loadedTracks.textTracks)
       Object.keys(this.loadedTracks.textTracks).filter(
-        textTrack => this.loadedTracks.textTracks[textTrack] !== track
+        (textTrack) => this.loadedTracks.textTracks[textTrack] !== track
       );
-    this.__cues = this.cues ? this.cues.filter(cue => cue.track !== track) : [];
+    this.__cues = this.cues
+      ? this.cues.filter((cue) => cue.track !== track)
+      : [];
   }
   firstUpdated() {
     this.style.setProperty(
@@ -3202,8 +3206,8 @@ ${this.poster
             sm: 400,
             md: 700,
             lg: 1000,
-            xl: 1500
-          }
+            xl: 1500,
+          },
         })
       );
 
@@ -3218,7 +3222,7 @@ ${this.poster
           bubbles: true,
           composed: true,
           cancelable: false,
-          detail: this
+          detail: this,
         })
       );
     }, 1000);
@@ -3270,13 +3274,13 @@ ${this.poster
   _getHHMMSS(val, max) {
     val = parseFloat(val);
     max = max === undefined ? val : parseFloat(max);
-    let a = val => {
+    let a = (val) => {
         return val < 10 ? `0${val}` : val;
       },
       b = (val, i, none) => {
         return max >= i ? a(Math.floor(val / i)) + ":" : none;
       },
-      c = val => {
+      c = (val) => {
         return val < 100 ? val + "0" : val;
       };
     return (

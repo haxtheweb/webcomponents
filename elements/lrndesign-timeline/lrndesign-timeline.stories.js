@@ -8,8 +8,8 @@ export default {
   component: "lrndesign-timeline",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 
 export const LrndesignTimelineStory = () => {
@@ -52,7 +52,7 @@ export const LrndesignTimelineStory = () => {
     <section>
       <h3>1953 - The Pennsylvania State University</h3>
       <p>The Pennsylvania State University became official name.</p>
-    </section>`
+    </section>`,
   });
 };
 export const LrndesignTimelineHaxGizmo = () => {
@@ -69,7 +69,7 @@ export const LrndesignTimelineHaxGizmo = () => {
         imagealt:
           "Propfile illustration of, James Pollock, Governor of Pennsylvania 1855-1858.",
         imagesrc:
-          "https://upload.wikimedia.org/wikipedia/commons/5/56/James_Pollock_Pennsylvania_Governor.jpg"
+          "https://upload.wikimedia.org/wikipedia/commons/5/56/James_Pollock_Pennsylvania_Governor.jpg",
       },
       {
         heading: "1856 - Construction of Old Main",
@@ -77,16 +77,16 @@ export const LrndesignTimelineHaxGizmo = () => {
           "Construction of Old Main (the &amp;quot;College Building&amp;quot;) begun; supervised by William G. Waring, who was appointed superintendent to open the school and plan farm, orchards and nursery.",
         imagealt: "Black and white photo original Old Main in an empty field.",
         imagesrc:
-          "https://libraries.psu.edu/sites/default/files/migrated/1287768717666.jpg"
+          "https://libraries.psu.edu/sites/default/files/migrated/1287768717666.jpg",
       },
       {
         heading: "1874 - The Pennsylvania State College ",
-        details: "School renamed The Pennsylvania State College. "
+        details: "School renamed The Pennsylvania State College. ",
       },
       {
         heading: "1953 - The Pennsylvania State University",
-        details: "The Pennsylvania State University became official name."
-      }
-    ]
+        details: "The Pennsylvania State University became official name.",
+      },
+    ],
   });
 };

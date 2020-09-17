@@ -2,30 +2,33 @@
   "version": 1,
   "tags": [
     {
-      "name": "tag",
-      "description": "Events:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - ",
-      "attributes": [
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` - "
-        }
-      ]
-    },
-    {
       "name": "a11y-tab",
-      "description": "`a11y-tab`\n\nEvents:\n\n  * `a11y-tab-changed` - handles any change in the tab attributes\n\nAttributes:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `__xOfY` {`string`} - tab x of y text, eg. `2 of 3`\n\n  * `__toTop` {`string`} - the anchor back to the top of the tab list (`a11y-tabs` id)\n\nProperties:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `__xOfY` {`string`} - tab x of y text, eg. `2 of 3`\n\n  * `__toTop` {`string`} - the anchor back to the top of the tab list (`a11y-tabs` id)",
+      "description": "`a11y-tab`\na single tab within `a11y-tabs`\n\n### Styling\n\n`<a11y-tab>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`\n\nEvents:\n\n  * `a11y-tab-changed` - \n\nAttributes:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs\n\nProperties:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `observer` - returns mutation observer\n\n  * `xOfY` {`string`} - gets x of y string\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `order` {`number`} - order of the tab\n\n  * `total` {`number`} - total number of tabs",
       "attributes": [
         {
           "name": "flag",
-          "description": "`flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperty: flag\n\nDefault: null"
+          "description": "`flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperty: flag"
         },
         {
           "name": "flag-icon",
-          "description": "`flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\nProperty: flagIcon\n\nDefault: null"
+          "description": "`flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\nProperty: flagIcon"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\nProperty: icon"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - the unique identifier and anchor for the tab\n\nProperty: id"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the tab\n\nProperty: label"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - whether the tabbed interface is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "hidden",
@@ -33,100 +36,47 @@
           "valueSet": "v"
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\nProperty: icon\n\nDefault: null"
+          "name": "order",
+          "description": "`order` {`number`} - order of the tab\n\nProperty: order\n\nDefault: 1"
         },
         {
-          "name": "id",
-          "description": "`id` {`string`} - the unique identifier and anchor for the tab\n\nProperty: id\n\nDefault: null"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - label for the tab\n\nProperty: label\n\nDefault: null"
-        },
-        {
-          "name": "__xOfY",
-          "description": "`__xOfY` {`string`} - tab x of y text, eg. `2 of 3`\n\nProperty: __xOfY\n\nDefault: null"
-        },
-        {
-          "name": "__toTop",
-          "description": "`__toTop` {`string`} - the anchor back to the top of the tab list (`a11y-tabs` id)\n\nProperty: __toTop\n\nDefault: null"
+          "name": "total",
+          "description": "`total` {`number`} - total number of tabs\n\nProperty: total\n\nDefault: 1"
         },
         {
           "name": "ona11y-tab-changed",
-          "description": "`a11y-tab-changed` - handles any change in the tab attributes"
+          "description": "`a11y-tab-changed` - "
         }
       ]
     },
     {
       "name": "a11y-tabs",
-      "description": "Events:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nAttributes:\n\n  * `active-tab` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `icon-breakpoint` {`number`} - \n\n  * `id` {`string`} - \n\n  * `layout-breakpoint` {`number`} - \n\n  * `responsive-size` {`string`} - \n\n  * `vertical` {`boolean`} - \n\n  * `__hasIcons` {`boolean`} - \n\n  * `__items` {`any[]`} - \n\n  * `__observer` - \n\nProperties:\n\n  * `activeTab` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `iconBreakpoint` {`number`} - \n\n  * `id` {`string`} - \n\n  * `layoutBreakpoint` {`number`} - \n\n  * `responsiveSize` {`string`} - \n\n  * `vertical` {`boolean`} - \n\n  * `__hasIcons` {`boolean`} - \n\n  * `__items` {`any[]`} - \n\n  * `__observer` - ",
+      "description": "`a11y-tabs`\nan accessible and responsive tabbed interface\n\n### Styling\n\n`<a11y-tabs>` provides the following custom properties\nfor styling:\n\n#### General\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-font-family` | font-family | unset\n`--a11y-tabs-font-size` | font-size | unset\n`--a11y-tabs-border-color` | border | #ddd\n`--a11y-tabs-color` | text color | #222\n`--a11y-tabs-focus-color` | text color when focused | #000\n`--a11y-tabs-margin` |  | 16px 0\n`--a11y-tabs-width` | total width | 100%\n`--a11y-tabs-height` | total height | unset\n`--a11y-tabs-overflow` | default overflow | auto\n`--a11y-tabs-overflow-x` | overflow of x-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-overflow-y` | overflow of y-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-border-radius` | default border radius | 2px\n`--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`\n`--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`\n\n#### Tab Section\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`\n`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`\n`--a11y-tabs-background` | background for active tab and tab content | white\n`--a11y-tabs-faded-background` | background inactive tabs | #eee\n`--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset\n`--a11y-tabs-vertical-background` | background for tabs container when vertical | `--a11y-tabs-border-color`\n`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky and horizontal | `--a11y-tabs-background`\n`--a11y-tabs-justify-tabs` | tab justification | flex-start\n`--a11y-tabs-vertical-justify-tabs` | tab justification when vertical | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-horizontal-justify-tabs` | tab justification when horizontal | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-wrap` | tab wrapping | unset\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-button-padding` | padding for tabs | 8px\n`--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`\n`--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`\n\n#### Content Section\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-content-padding` | padding for content of tab | 16px\n`--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`\n\nEvents:\n\n  * `responsive-element` - \n\n  * `active-tab-changed` - \n\nAttributes:\n\n  * `active-tab` {`string`} - the id of the active tab\n\n  * `icon-breakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layout-breakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\n  * `responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `sticky` {`boolean`} - whether the tabs are sticky\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\nProperties:\n\n  * `activeTab` {`string`} - the id of the active tab\n\n  * `iconBreakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layoutBreakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\n  * `responsiveSize` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `sticky` {`boolean`} - whether the tabs are sticky\n\n  * `iconsOnly` {`boolean`} - determines if tabs should show icons only\n\n  * `observer` - mutation observer for tabs\n\n  * `tabQuery` {`string`} - query selector for tabs\noverride this for custom elements that extend a11y-tabs\n\n  * `tabs` - array of tabs\n\n  * `vertical` {`boolean`} - determines whether tabs should be in vertical layout\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements",
       "attributes": [
         {
           "name": "active-tab",
-          "description": "`active-tab` {`string`} - \n\nProperty: activeTab\n\nDefault: null"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
-        },
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - \n\nProperty: hidden",
-          "valueSet": "v"
+          "description": "`active-tab` {`string`} - the id of the active tab\n\nProperty: activeTab"
         },
         {
           "name": "icon-breakpoint",
-          "description": "`icon-breakpoint` {`number`} - \n\nProperty: iconBreakpoint\n\nDefault: 400"
+          "description": "`icon-breakpoint` {`number`} - Optional minimum breakpoint for showing tab text with icons, or\nDefault is always text with icons.\n`-1` forces icon-only mode.\n\nProperty: iconBreakpoint"
         },
         {
           "name": "id",
-          "description": "`id` {`string`} - \n\nProperty: id\n\nDefault: null"
+          "description": "`id` {`string`} - unique identifier/anchor for the tabbed interface\n\nProperty: id"
         },
         {
           "name": "layout-breakpoint",
-          "description": "`layout-breakpoint` {`number`} - \n\nProperty: layoutBreakpoint\n\nDefault: 600"
+          "description": "`layout-breakpoint` {`number`} - Optional minimum breakpoint for horizontal layout of tabs.\nDefault is unset (always horizontal).\n`-1` forces vertical-only mode.\n\nProperty: layoutBreakpoint"
         },
         {
           "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - \n\nProperty: responsiveSize\n\nDefault: xs"
+          "description": "`responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\nProperty: responsiveSize"
         },
         {
-          "name": "vertical",
-          "description": "`vertical` {`boolean`} - \n\nProperty: vertical",
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - whether the tabs are sticky\n\nProperty: sticky",
           "valueSet": "v"
-        },
-        {
-          "name": "__hasIcons",
-          "description": "`__hasIcons` {`boolean`} - \n\nProperty: __hasIcons",
-          "valueSet": "v"
-        },
-        {
-          "name": "__items",
-          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
-        },
-        {
-          "name": "__observer",
-          "description": "`__observer` - \n\nProperty: __observer"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` - "
-        }
-      ]
-    },
-    {
-      "name": "a11y-tabs",
-      "description": "`a11y-tabs`\n\nEvents:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nAttributes:\n\n  * `active-tab` {`string`} - the id of the active tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `icon-breakpoint` {`number`} - the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layout-breakpoint` {`number`} - the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only\n\n  * `responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `vertical` {`boolean`} - whether the tabbed interface is in vertical layout mode\n\n  * `__has-icons` {`boolean`} - whether the tabbed interface has icons for each tab\n\n  * `__items` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `__observer` - a mutation observer to monitor slotted `a11y-tab` elements\n\nProperties:\n\n  * `activeTab` {`string`} - the id of the active tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `iconBreakpoint` {`number`} - the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layoutBreakpoint` {`number`} - the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only\n\n  * `responsiveSize` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `vertical` {`boolean`} - whether the tabbed interface is in vertical layout mode\n\n  * `__hasIcons` {`boolean`} - whether the tabbed interface has icons for each tab\n\n  * `__items` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `__observer` - a mutation observer to monitor slotted `a11y-tab` elements",
-      "attributes": [
-        {
-          "name": "active-tab",
-          "description": "`active-tab` {`string`} - the id of the active tab\n\nProperty: activeTab\n\nDefault: null"
         },
         {
           "name": "disabled",
@@ -139,52 +89,22 @@
           "valueSet": "v"
         },
         {
-          "name": "icon-breakpoint",
-          "description": "`icon-breakpoint` {`number`} - the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons\n\nProperty: iconBreakpoint\n\nDefault: 400"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - unique identifier/anchor for the tabbed interface\n\nProperty: id\n\nDefault: null"
-        },
-        {
-          "name": "layout-breakpoint",
-          "description": "`layout-breakpoint` {`number`} - the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only\n\nProperty: layoutBreakpoint\n\nDefault: 600"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "vertical",
-          "description": "`vertical` {`boolean`} - whether the tabbed interface is in vertical layout mode\n\nProperty: vertical\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__has-icons",
-          "description": "`__has-icons` {`boolean`} - whether the tabbed interface has icons for each tab\n\nProperty: __hasIcons\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__items",
-          "description": "`__items` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\nProperty: __items\n\nDefault: "
-        },
-        {
-          "name": "__observer",
-          "description": "`__observer` - a mutation observer to monitor slotted `a11y-tab` elements\n\nProperty: __observer"
+          "name": "__tabs",
+          "description": "`__tabs` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\nProperty: __tabs\n\nDefault: "
         },
         {
           "name": "onresponsive-element",
           "description": "`responsive-element` - "
         },
         {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` - "
+          "name": "onactive-tab-changed",
+          "description": "`active-tab-changed` - "
         }
       ]
     },
     {
       "name": "tag",
-      "description": "Events:\n\n  * `a11y-tab-changed` - \n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - ",
+      "description": "Events:\n\n  * `a11y-tab-changed` - \n\n  * `responsive-element` - \n\n  * `active-tab-changed` - ",
       "attributes": [
         {
           "name": "ona11y-tab-changed",
@@ -195,22 +115,22 @@
           "description": "`responsive-element` - "
         },
         {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` - "
+          "name": "onactive-tab-changed",
+          "description": "`active-tab-changed` - "
         }
       ]
     },
     {
       "name": "a11y-tabs",
-      "description": "`a11y-tabs`\n\nEvents:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nProperties:\n\n  * `activeTab` - \n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `iconBreakpoint` {`number`} - \n\n  * `id` - \n\n  * `layoutBreakpoint` {`number`} - \n\n  * `responsiveSize` {`string`} - \n\n  * `vertical` {`boolean`} - \n\n  * `__hasIcons` {`boolean`} - \n\n  * `__items` {`never[]`} - \n\n  * `__observer` - ",
+      "description": "`a11y-tabs`\nan accessible and responsive tabbed interface\n\n### Styling\n\n`<a11y-tabs>` provides the following custom properties\nfor styling:\n\n#### General\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-font-family` | font-family | unset\n`--a11y-tabs-font-size` | font-size | unset\n`--a11y-tabs-border-color` | border | #ddd\n`--a11y-tabs-color` | text color | #222\n`--a11y-tabs-focus-color` | text color when focused | #000\n`--a11y-tabs-margin` |  | 16px 0\n`--a11y-tabs-width` | total width | 100%\n`--a11y-tabs-height` | total height | unset\n`--a11y-tabs-overflow` | default overflow | auto\n`--a11y-tabs-overflow-x` | overflow of x-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-overflow-y` | overflow of y-axis | `--a11y-tabs-overflow`\n`--a11y-tabs-border-radius` | default border radius | 2px\n`--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`\n`--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`\n\n#### Tab Section\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`\n`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`\n`--a11y-tabs-background` | background for active tab and tab content | white\n`--a11y-tabs-faded-background` | background inactive tabs | #eee\n`--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset\n`--a11y-tabs-vertical-background` | background for tabs container when vertical | `--a11y-tabs-border-color`\n`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky and horizontal | `--a11y-tabs-background`\n`--a11y-tabs-justify-tabs` | tab justification | flex-start\n`--a11y-tabs-vertical-justify-tabs` | tab justification when vertical | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-horizontal-justify-tabs` | tab justification when horizontal | `--a11y-tabs-justify-tabs`\n`--a11y-tabs-wrap` | tab wrapping | unset\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-button-padding` | padding for tabs | 8px\n`--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`\n`--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`\n\n#### Content Section\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-content-padding` | padding for content of tab | 16px\n`--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`\n\nEvents:\n\n  * `responsive-element` - \n\n  * `active-tab-changed` - \n\nProperties:\n\n  * `iconsOnly` {`boolean`} - determines if tabs should show icons only\n\n  * `observer` - mutation observer for tabs\n\n  * `tabQuery` {`string`} - query selector for tabs\noverride this for custom elements that extend a11y-tabs\n\n  * `tabs` - array of tabs\n\n  * `vertical` {`boolean`} - determines whether tabs should be in vertical layout\n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `__tabs` {`never[]`} - ",
       "attributes": [
         {
           "name": "onresponsive-element",
           "description": "`responsive-element` - "
         },
         {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` - "
+          "name": "onactive-tab-changed",
+          "description": "`active-tab-changed` - "
         }
       ]
     }

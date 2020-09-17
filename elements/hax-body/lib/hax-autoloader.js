@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import {
   HAXElement,
-  HAXWiring
+  HAXWiring,
 } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { varGet } from "@lrnwebcomponents/utils/utils.js";
 
@@ -23,13 +23,11 @@ class HaxAutoloader extends HAXElement(LitElement) {
         :host {
           display: none;
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   static get tag() {
     return "hax-autoloader";
@@ -45,8 +43,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
        * List of elements processed so we don't double process
        */
       processedList: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   constructor() {
@@ -65,22 +63,22 @@ class HaxAutoloader extends HAXElement(LitElement) {
         composed: true,
         detail: {
           piece: "haxAutoloader",
-          object: this
-        }
+          object: this,
+        },
       })
     );
   }
   connectedCallback() {
     super.connectedCallback();
-    this.observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
+    this.observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
           this.processNewElements(node);
         });
       });
     });
     this.observer.observe(this, {
-      childList: true
+      childList: true,
     });
   }
   disconnectedCallback() {
@@ -112,8 +110,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
               detail: {
                 tag: name,
                 properties: effectiveChildren[i].getHaxProperties(),
-                polymer: true
-              }
+                polymer: true,
+              },
             });
             context.dispatchEvent(evt);
           } else if (typeof effectiveChildren[i].HAXWiring === "function") {
@@ -124,8 +122,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
               detail: {
                 tag: name,
                 properties: effectiveChildren[i].HAXWiring.getHaxProperties(),
-                polymer: false
-              }
+                polymer: false,
+              },
             });
             context.dispatchEvent(evt);
           } else {
@@ -143,7 +141,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                 `@lrnwebcomponents/${name}/${name}.js`
               );
               import(`${basePath}../../../${nameLocation}`)
-                .then(response => {
+                .then((response) => {
                   // get the custom element definition we used to add that file
                   let CEClass = window.customElements.get(name);
                   if (!CEClass) {
@@ -163,7 +161,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                     console.warn(`${name} didn't have hax wiring in the end`);
                   }
                 })
-                .catch(error => {
+                .catch((error) => {
                   /* Error handling */
                   console.warn(error);
                 });
@@ -215,7 +213,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                               property: propName,
                               title: propName,
                               description: "",
-                              inputMethod: "textfield"
+                              inputMethod: "textfield",
                             });
                             break;
                           case "Number":
@@ -223,7 +221,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                               property: propName,
                               title: propName,
                               description: "",
-                              inputMethod: "number"
+                              inputMethod: "number",
                             });
                             break;
                           case "Boolean":
@@ -231,7 +229,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
                               property: propName,
                               title: propName,
                               description: "",
-                              inputMethod: "boolean"
+                              inputMethod: "boolean",
                             });
                             break;
                         }

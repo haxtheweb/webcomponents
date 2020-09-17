@@ -250,7 +250,7 @@ class LrnsysProgressCircle extends PolymerElement {
         value: 0,
         notify: true,
         reflectToAttribute: true,
-        observer: "_testValueComplete"
+        observer: "_testValueComplete",
       },
       /**
        * Whether to add a tooltip on hover.
@@ -258,7 +258,7 @@ class LrnsysProgressCircle extends PolymerElement {
       toolTip: {
         type: Boolean,
         value: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * If this is in a list view, expand the output.
@@ -266,7 +266,7 @@ class LrnsysProgressCircle extends PolymerElement {
       listView: {
         type: Boolean,
         value: true,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Icon.
@@ -274,7 +274,7 @@ class LrnsysProgressCircle extends PolymerElement {
       icon: {
         type: String,
         value: "icons:description",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Special icon to use when the item has been completed.
@@ -282,7 +282,7 @@ class LrnsysProgressCircle extends PolymerElement {
       iconComplete: {
         type: String,
         value: "icons:description",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Loading icon
@@ -290,7 +290,7 @@ class LrnsysProgressCircle extends PolymerElement {
       loadingIcon: {
         type: String,
         value: "hourglass-full",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Finished icon
@@ -298,7 +298,7 @@ class LrnsysProgressCircle extends PolymerElement {
       finishedIcon: {
         type: String,
         value: "thumb-up",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Current value.
@@ -306,7 +306,7 @@ class LrnsysProgressCircle extends PolymerElement {
       activeIcon: {
         type: String,
         notify: true,
-        computed: "_getActiveIcon(icon, iconComplete, status)"
+        computed: "_getActiveIcon(icon, iconComplete, status)",
       },
       /**
        * Array position within a larger body of items.
@@ -314,7 +314,7 @@ class LrnsysProgressCircle extends PolymerElement {
       step: {
         type: Number,
         value: 0,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * If this item is active or not in the larger list
@@ -323,7 +323,7 @@ class LrnsysProgressCircle extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       /**
        * Status of the progression.
@@ -334,21 +334,21 @@ class LrnsysProgressCircle extends PolymerElement {
         value: "available",
         reflectToAttribute: true,
         notify: true,
-        observer: "_statusChange"
+        observer: "_statusChange",
       },
       /**
        * Correctly disable the button if it's status is such.
        */
       disabled: {
         type: Boolean,
-        computed: "_disableStatus(status)"
+        computed: "_disableStatus(status)",
       },
       /**
        * Calculate if something is in a loading status which invokes a swirl.
        */
       loading: {
         type: Boolean,
-        computed: "_loadingStatus(status)"
+        computed: "_loadingStatus(status)",
       },
       /**
        * Boolean to invoke "finished" state. Useful for the last circle
@@ -356,28 +356,28 @@ class LrnsysProgressCircle extends PolymerElement {
        */
       finished: {
         type: Boolean,
-        computed: "_finishedStatus(status)"
+        computed: "_finishedStatus(status)",
       },
       /**
        * Max progression for doing math against.
        */
       max: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Internal property to ensure we only ding 1x
        */
       __chimed: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Internal property to ensure we only finish 1x
        */
       __finishchimed: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * URL to link to on click.
@@ -385,7 +385,7 @@ class LrnsysProgressCircle extends PolymerElement {
       url: {
         type: String,
         value: "#",
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Data url to bubble up for more advanced implementations.
@@ -393,14 +393,14 @@ class LrnsysProgressCircle extends PolymerElement {
       dataUrl: {
         type: String,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Stroke width.
        */
       strokeWidth: {
         type: Number,
-        value: 4
+        value: 4,
       },
       /**
        * Tracks if focus state is applied for element consistency
@@ -408,7 +408,7 @@ class LrnsysProgressCircle extends PolymerElement {
        */
       focusState: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Play sound status; if this should play sound
@@ -417,7 +417,7 @@ class LrnsysProgressCircle extends PolymerElement {
       playSound: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Play sound at end; if this should play sound
@@ -426,21 +426,21 @@ class LrnsysProgressCircle extends PolymerElement {
       playFinishSound: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Play sound on complete.
        */
       completeSound: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Play sound on complete.
        */
       finishedSound: {
         type: String,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Fire and track milestones towards completion state.
@@ -448,11 +448,11 @@ class LrnsysProgressCircle extends PolymerElement {
       _bubbleProgress: {
         type: Object,
         value: {
-          "25": false,
-          "50": false,
-          "75": false
-        }
-      }
+          25: false,
+          50: false,
+          75: false,
+        },
+      },
     };
   }
   // simple path from a url modifier
@@ -468,9 +468,9 @@ class LrnsysProgressCircle extends PolymerElement {
     // this field being unified across all circles when really
     // we have to track this state per circle.
     this._bubbleProgress = {
-      "25": false,
-      "50": false,
-      "75": false
+      25: false,
+      50: false,
+      75: false,
     };
   }
   /**
@@ -494,7 +494,7 @@ class LrnsysProgressCircle extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { percentage: 75 }
+          detail: { percentage: 75 },
         })
       );
       this._bubbleProgress["75"] = true;
@@ -504,7 +504,7 @@ class LrnsysProgressCircle extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { percentage: 50 }
+          detail: { percentage: 50 },
         })
       );
       this._bubbleProgress["50"] = true;
@@ -514,7 +514,7 @@ class LrnsysProgressCircle extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { percentage: 25 }
+          detail: { percentage: 25 },
         })
       );
       this._bubbleProgress["25"] = true;
@@ -592,7 +592,7 @@ class LrnsysProgressCircle extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { target }
+        detail: { target },
       })
     );
   }
@@ -674,7 +674,7 @@ class LrnsysProgressCircle extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { status: newValue }
+          detail: { status: newValue },
         })
       );
     }

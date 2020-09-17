@@ -1,6 +1,7 @@
 :host([hidden]) {
   display: none;
 }
+
 :host {
   display: flex;
   flex-wrap: wrap;

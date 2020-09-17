@@ -19,7 +19,7 @@ import {
   boolean,
   radios,
   files,
-  optionsKnob
+  optionsKnob,
 } from "@open-wc/demoing-storybook";
 
 /**
@@ -46,7 +46,7 @@ window.getStorybookIcons = () => {
   let iconset = window.StorybookIconset,
     list = iconset && iconset.__iconList ? iconset.__iconList : [[]],
     icons = list
-      .map(group => group.icons.map(icon => icon.replace(/^icons\:/, "")))
+      .map((group) => group.icons.map((icon) => icon.replace(/^icons\:/, "")))
       .flat();
   return icons;
 };
@@ -60,12 +60,12 @@ export class StorybookUtilities {
     return new LoremIpsum.loremIpsum({
       sentencesPerParagraph: {
         max: 8,
-        min: 4
+        min: 4,
       },
       wordsPerSentence: {
         max: 16,
-        min: 4
-      }
+        min: 4,
+      },
     });
   }
 
@@ -88,7 +88,7 @@ export class StorybookUtilities {
    * @memberof StorybookUtilities
    */
   kebabToCamel(kebab) {
-    return kebab ? kebab.replace(/-./g, x => x.toUpperCase()[1]) : undefined;
+    return kebab ? kebab.replace(/-./g, (x) => x.toUpperCase()[1]) : undefined;
   }
 
   /**
@@ -119,7 +119,7 @@ export class StorybookUtilities {
       advanced = settings && settings.advanced ? settings.advanced : [],
       all = [...configure, ...advanced, ...quick],
       filter = all.filter(
-        prop => prop.property === title || prop.slot === title
+        (prop) => prop.property === title || prop.slot === title
       );
     return filter && filter.length > 0 ? filter[0] : undefined;
   }
@@ -133,7 +133,7 @@ export class StorybookUtilities {
    */
   getRandomObject(props = []) {
     let obj = {};
-    props.forEach(prop => {
+    props.forEach((prop) => {
       let id = prop.property || prop.slot;
       switch (prop.inputMethod) {
         case "array":
@@ -178,7 +178,7 @@ export class StorybookUtilities {
           break;
         case "tabs":
           obj[id] = prop.properties.map(
-            tab =>
+            (tab) =>
               (tabs[tab.property || tab.slot] = this.getRandomObject(
                 tab.properties
               ))
@@ -252,7 +252,7 @@ export class StorybookUtilities {
     );
     return hax.length > 0
       ? hax
-      : Object.keys(props || {}).map(property => {
+      : Object.keys(props || {}).map((property) => {
           let type = props[property].type;
           return {
             property: property,
@@ -260,7 +260,7 @@ export class StorybookUtilities {
               ? "textfield"
               : type.name
               ? type.name.toLowerCase()
-              : type.toLowerCase()
+              : type.toLowerCase(),
           };
         });
   }
@@ -281,8 +281,8 @@ export class StorybookUtilities {
    */
   getRandomHex() {
     return `#${[0, 0, 0]
-      .map(i => this.getRandomNumber(i, 255).toString(16))
-      .map(i => (i.length < 2 ? `0${i}` : `${i}`))
+      .map((i) => this.getRandomNumber(i, 255).toString(16))
+      .map((i) => (i.length < 2 ? `0${i}` : `${i}`))
       .join("")}`;
   }
 
@@ -312,7 +312,7 @@ export class StorybookUtilities {
       "//placeimg.com/900/900",
       "//placeimg.com/1200/800",
       "//placeimg.com/800/1600",
-      "//placeimg.com/400/1200"
+      "//placeimg.com/400/1200",
     ]);
   }
 
@@ -383,7 +383,7 @@ export class StorybookUtilities {
       "This is definitely the darkest timeline.",
       "I need help reacting to something.",
       "Frankly, my dear, I don't give a dean!",
-      'I give this year a "D", for delightful!'
+      'I give this year a "D", for delightful!',
     ]);
   }
 
@@ -404,7 +404,7 @@ export class StorybookUtilities {
       "Look at me. It's clear to you that I am awesome, but I can never admit that, because that would make me an ass.",
       "Let's do what people do. Let's get a house we can't afford and a dog that makes us angry.",
       "I discovered at a very early age that if I talked long enough, I could make anything right or wrong. So either I'm god, or thruth is relative. Either way: Booyah.",
-      "The funny thing about being smart, is that you can get through most of life without ever having to do any work."
+      "The funny thing about being smart, is that you can get through most of life without ever having to do any work.",
     ]);
   }
 
@@ -444,7 +444,7 @@ export class StorybookUtilities {
   getKnobs(properties, defaults = {}, exclusions = []) {
     console.debug("getKnobs", properties, defaults, exclusions);
     let knobs = { props: {}, slots: {}, css: {} };
-    (properties || []).forEach(field => {
+    (properties || []).forEach((field) => {
       field.name = field.property || field.attribute || field.slot || field.css;
       if (!field.name && field.hasOwnProperty("slot")) field.name = "emptyslot";
       if (field.name.indexOf("__") === -1 && !exclusions.includes(field.name)) {
@@ -499,7 +499,7 @@ export class StorybookUtilities {
         attr: "Attributes",
         props: "Properties",
         slots: "Slots",
-        css: "CSS"
+        css: "CSS",
       },
       method = field.inputMethod,
       options =
@@ -515,7 +515,7 @@ export class StorybookUtilities {
       knob;
     if (!options && field.itemsList) {
       options = {};
-      field.itemsList.forEach(item => (options[item] = item));
+      field.itemsList.forEach((item) => (options[item] = item));
     }
     if (options && options.length > 0) {
       if (method === "select") {
@@ -542,7 +542,7 @@ export class StorybookUtilities {
       );
     } else if (method === "colorpicker" && colors) {
       let options = {};
-      colors.forEach(color => (options[color] = color));
+      colors.forEach((color) => (options[color] = color));
       knob = select(label, options, val, groupName[group]);
     } else if (method === "boolean") {
       knob = boolean(label, val, groupName[group]);
@@ -582,7 +582,7 @@ export class StorybookUtilities {
       attribute: attribute,
       knob: knob,
       method: method,
-      group: group
+      group: group,
     };
   }
   /**
@@ -716,15 +716,15 @@ export class StorybookUtilities {
       content = document.createElement("div");
     if (styles.length > 0) delete demo.properties.style;
 
-    styles.forEach(style => {
+    styles.forEach((style) => {
       let parts = style.split(/:/),
         camel = this.kebabToCamel(parts[0]).trim();
       props[camel] = parts[1].trim();
-      if (additions.filter(addition => addition.css === camel))
+      if (additions.filter((addition) => addition.css === camel))
         additions.push({ css: camel });
     });
     content.innerHTML = demo.content || "";
-    Object.keys(content.children || {}).forEach(child => {
+    Object.keys(content.children || {}).forEach((child) => {
       let node = content.children[child];
       if (node.slot) {
         props[node.slot] = node.outerHTML;
@@ -732,7 +732,9 @@ export class StorybookUtilities {
         props["emptyslot"] = `${props["emptyslot"] || ""}${node.outerHTML}`;
       }
     });
-    Object.keys(defaults || {}).forEach(item => (props[item] = defaults[item]));
+    Object.keys(defaults || {}).forEach(
+      (item) => (props[item] = defaults[item])
+    );
     return this.makeElementFromClass(
       el,
       props,
@@ -744,7 +746,7 @@ export class StorybookUtilities {
 
   _getDemoCss(obj) {
     return Object.keys(obj || {})
-      .map(prop => {
+      .map((prop) => {
         return !obj[prop].knob
           ? ``
           : `${prop.indexOf("--") < 0 ? this.camelToKebab(prop) : prop}:${
@@ -756,7 +758,7 @@ export class StorybookUtilities {
 
   _getDemoSlots(obj) {
     return Object.keys(obj || {})
-      .map(slot => {
+      .map((slot) => {
         return !obj[slot].knob
           ? ``
           : `\n\t` +
@@ -770,7 +772,7 @@ export class StorybookUtilities {
   }
   _getDemoAttributes(obj) {
     return Object.keys(obj || {})
-      .map(key => {
+      .map((key) => {
         let knob = obj[key];
         return !knob.knob ||
           (knob.method === "haxupload" && knob.knob.length < 1)

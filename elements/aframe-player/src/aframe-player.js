@@ -26,7 +26,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
         .a-hidden {
           display: hidden;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -82,57 +82,57 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
        * Source to reference for the 3D object
        */
       source: {
-        type: String
+        type: String,
       },
       /**
        * height of the element
        */
       height: {
-        type: String
+        type: String,
       },
       /**
        * width of the element
        */
       width: {
-        type: String
+        type: String,
       },
       /**
        * Color of the sky / background.
        */
       skyColor: {
         type: String,
-        attribute: "sky-color"
+        attribute: "sky-color",
       },
       /**
        * If this is for augmented reality or not.
        */
       ar: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * x position for the AR element.
        */
       x: {
-        type: String
+        type: String,
       },
       /**
        * y position for the AR element.
        */
       y: {
-        type: String
+        type: String,
       },
       /**
        * z position for the AR element.
        */
       z: {
-        type: String
+        type: String,
       },
       /**
        * Generate a position object when coordinates change.
        */
       position: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   createRenderRoot() {
@@ -159,12 +159,12 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "3d",
-            source: "source"
-          }
+            source: "source",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -175,7 +175,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             type: "bar",
             icon: "image:photo-size-select-small",
-            required: true
+            required: true,
           },
           {
             property: "width",
@@ -184,8 +184,8 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             type: "bar",
             icon: "image:straighten",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -195,7 +195,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             type: "bar",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "x",
@@ -204,7 +204,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             type: "bar",
             icon: "communication:location-on",
-            required: true
+            required: true,
           },
           {
             property: "y",
@@ -213,7 +213,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             type: "bar",
             icon: "communication:location-on",
-            required: true
+            required: true,
           },
           {
             property: "z",
@@ -222,7 +222,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             inputMethod: "textfield",
             type: "bar",
             icon: "communication:location-on",
-            required: true
+            required: true,
           },
           {
             property: "skyColor",
@@ -230,11 +230,11 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
             description: "Select the color of the sky in the scene.",
             inputMethod: "colorpicker",
             type: "bar",
-            icon: "editor:format-color-fill"
-          }
+            icon: "editor:format-color-fill",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   /**
@@ -268,7 +268,7 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     return {
       x: x,
       y: y,
-      z: z
+      z: z,
     };
   }
 

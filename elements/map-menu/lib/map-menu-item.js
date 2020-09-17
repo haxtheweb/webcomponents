@@ -72,7 +72,7 @@ class MapMenuItem extends LitElement {
         #wrapper {
           font-size: var(--map-menu-font-size);
         }
-      `
+      `,
     ];
   }
   /**
@@ -83,9 +83,7 @@ class MapMenuItem extends LitElement {
       <a tabindex="-1" href="${this.url}">
         <paper-button id="wrapper" role="link" noink>
           ${this.__icon
-            ? html`
-                <iron-icon icon="${this.__icon}"></iron-icon>
-              `
+            ? html` <iron-icon icon="${this.__icon}"></iron-icon> `
             : ``}
           <span class="title">${this.title}</span>
           ${this.trackIcon
@@ -116,34 +114,34 @@ class MapMenuItem extends LitElement {
   static get properties() {
     return {
       icon: {
-        type: String
+        type: String,
       },
       __icon: {
-        type: String
+        type: String,
       },
       trackIcon: {
         type: String,
-        attribute: "track-icon"
+        attribute: "track-icon",
       },
       title: {
-        type: String
+        type: String,
       },
       url: {
-        type: String
+        type: String,
       },
       id: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       active: {
-        type: Boolean
+        type: Boolean,
       },
       selected: {
-        type: String
+        type: String,
       },
       published: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -183,7 +181,7 @@ class MapMenuItem extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -195,7 +193,7 @@ class MapMenuItem extends LitElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { id: this.id }
+        detail: { id: this.id },
       })
     );
   }

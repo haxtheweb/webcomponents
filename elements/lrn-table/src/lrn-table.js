@@ -31,7 +31,7 @@ class LrnTable extends SchemaBehaviors(LitElement) {
         .hidden-title {
           display: none;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -59,21 +59,21 @@ class LrnTable extends SchemaBehaviors(LitElement) {
        * Title of this table. This is both for accessibility and presentation.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * The file to load material from.
        */
       csvFile: {
         type: String,
-        attribute: "csv-file"
+        attribute: "csv-file",
       },
       /**
        * An extended description of the material in the table for improved accessibility.
        */
       description: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -94,12 +94,12 @@ class LrnTable extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "csv",
-            source: "csvFile"
-          }
+            source: "csvFile",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -109,14 +109,14 @@ class LrnTable extends SchemaBehaviors(LitElement) {
             description: "The URL for this csv file.",
             inputMethod: "textfield",
             icon: "link",
-            required: true
+            required: true,
           },
           {
             property: "title",
             title: "Title",
             description: "Title for the table to be generated.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "description",
@@ -124,8 +124,8 @@ class LrnTable extends SchemaBehaviors(LitElement) {
             description:
               "More detailed description for improved accessibility of the table data.",
             inputMethod: "textfield",
-            icon: "editor:short-text"
-          }
+            icon: "editor:short-text",
+          },
         ],
         configure: [
           {
@@ -133,24 +133,24 @@ class LrnTable extends SchemaBehaviors(LitElement) {
             title: "Source",
             description: "The URL for this csv file.",
             inputMethod: "haxupload",
-            required: true
+            required: true,
           },
           {
             property: "title",
             title: "Title",
             description: "Title for the table to be generated.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "description",
             title: "Description",
             description:
               "More detailed description for improved accessibility of the table data.",
-            inputMethod: "textfield"
-          }
+            inputMethod: "textfield",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
 }

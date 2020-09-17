@@ -12,7 +12,7 @@ const SimpleColorsPattern = {
   of: "Pattern Library/Atoms",
   name: "Color",
   file: require("raw-loader!./demo/colors.html"),
-  replacements: []
+  replacements: [],
 };
 /**
  * add to the pattern library
@@ -21,7 +21,7 @@ const SimpleColorsPatternPicker = {
   of: "Pattern Library/Atoms/Forms",
   name: "Color Picker",
   file: require("raw-loader!./demo/picker.html"),
-  replacements: []
+  replacements: [],
 };
 window.StorybookUtilities.instance.addPattern(SimpleColorsPattern);
 window.StorybookUtilities.instance.addPattern(SimpleColorsPatternPicker);
@@ -91,7 +91,7 @@ const SimpleColorsStory = {
     </button>
     <button class="confirm">Save</button>
     <button class="delete">Delete</button>
-  </div>`
+  </div>`,
 };
 const picker = SimpleColorsPicker.properties;
 picker.label.value = "Pick a Color";
@@ -101,7 +101,7 @@ const SimpleColorsPickerStory = {
   props: picker,
   slots: {},
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsStory);
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsPickerStory);

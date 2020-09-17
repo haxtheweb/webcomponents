@@ -5,7 +5,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -14,8 +14,8 @@ export default {
   component: "paper-avatar",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel", escapeHTML: false },
+  },
 };
 const utils = new StorybookUtilities();
 export const PaperAvatarStory = () => {
@@ -23,52 +23,54 @@ export const PaperAvatarStory = () => {
       {
         property: "icon",
         title: "Icon",
-        inputMethod: "iconpicker"
+        inputMethod: "iconpicker",
       },
       {
         property: "src",
         title: "Image Source",
-        inputMethod: "haxupload"
+        inputMethod: "haxupload",
       },
       {
         property: "label",
         title: "Label for initials for jdenticon",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       },
       {
         property: "twoChars",
         title: "Two-character initials",
-        inputMethod: "boolean"
+        inputMethod: "boolean",
       },
       {
         property: "colors",
         title: "Array of possible background colors",
-        inputMethod: "array"
+        inputMethod: "array",
       },
       {
         property: "jdenticon",
         title: "Unique icon design based on label",
-        inputMethod: "boolean"
+        inputMethod: "boolean",
       },
       {
         css: "--paper-avatar-width",
         title: "Size",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       },
       {
         css: "--paper-avatar-text-color",
         title: "Text Color",
-        inputMethod: "textfield"
+        inputMethod: "textfield",
       },
       {
         css: "--paper-avatar-color",
         title: "Background Color",
-        inputMethod: "textfield"
-      }
+        inputMethod: "textfield",
+      },
     ],
     knobs = utils.getKnobs(props, {
       label: "Your Name Here",
-      colors: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(color => utils.getRandomHex())
+      colors: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((color) =>
+        utils.getRandomHex()
+      ),
     }),
     avatar = utils.makeElement("paper-avatar", knobs);
   return avatar;

@@ -174,7 +174,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
             display: none !important;
           }
         }
-      `
+      `,
     ];
   }
 
@@ -186,13 +186,13 @@ class LrndesignGalleryBehaviors extends SimpleColors {
        * a named anchor for the gallery
        */
       anchorData: {
-        type: Object
+        type: Object,
       },
       /**
        * aspect ratio of media
        */
       aspectRatio: {
-        type: Number
+        type: Number,
       },
       /**
        * size for responsive CSS
@@ -200,13 +200,13 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       extraWide: {
         type: Boolean,
         reflect: true,
-        attribute: "extra-wide"
+        attribute: "extra-wide",
       },
       /**
        * gallery's unique id
        */
       galleryId: {
-        type: String
+        type: String,
       },
       /**
        * gallery's title
@@ -214,20 +214,20 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       galleryTitle: {
         type: String,
         reflect: true,
-        attribute: "gallery-title"
+        attribute: "gallery-title",
       },
       /**
        * @deprecated Use @link{layout} instead
        */
       grid: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * layout type: currently masonry, carousel, and grid
        */
       layout: {
         type: String,
-        attribute: "layout"
+        attribute: "layout",
       },
       /*
        * parent size for responsive styling
@@ -235,33 +235,33 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       responsiveSize: {
         type: String,
         reflect: true,
-        attribute: "responsive-size"
+        attribute: "responsive-size",
       },
       /*
        * id of item
        */
       selected: {
-        type: Object
+        type: Object,
       },
       /*
        * array of gallery items
        */
       sources: {
-        type: Array
+        type: Array,
       },
       /**
        * default sizing: fit screen by cropping (cover)
        * or with letterboxing (contain)
        */
       sizing: {
-        type: String
+        type: String,
       },
       /**
        * DEPRECATED gallery's title
        */
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -327,7 +327,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: query
+        detail: query,
       })
     );
   }
@@ -342,7 +342,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       top: offsets.reduce((total, num) => {
         return total + num;
       }),
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 }

@@ -145,17 +145,15 @@ class SimpleFields extends SimpleFieldsLite {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div id="schema-fields" aria-live="polite">
-        <slot></slot>
-      </div>
-    `;
+    return html` <div id="schema-fields" aria-live="polite">
+      <slot></slot>
+    </div>`;
   }
 
   // haxProperty definition
@@ -171,7 +169,7 @@ class SimpleFields extends SimpleFieldsLite {
        * Fields to convert to JSON Schema.
        */
       fields: {
-        type: Array
+        type: Array,
       },
       /**
        * Conversion from fields array with inputMethods to JSON schema types and formats.
@@ -179,21 +177,21 @@ class SimpleFields extends SimpleFieldsLite {
        */
       schematizer: {
         type: Object,
-        attribute: "schematizer"
+        attribute: "schematizer",
       },
       /**
        * Schema label
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * tracks all activeTabs as an object
        */
       __activeTabs: {
         type: Object,
-        attribute: "active-path"
-      }
+        attribute: "active-path",
+      },
     };
   }
 
@@ -232,7 +230,7 @@ class SimpleFields extends SimpleFieldsLite {
       title: this.label,
       type: "object",
       required: [],
-      properties: this.fieldsToSchema(this.fields)
+      properties: this.fieldsToSchema(this.fields),
     };
     return schema;
   }
@@ -251,12 +249,12 @@ class SimpleFields extends SimpleFieldsLite {
           invalidProperty: "invalid",
           noWrap: true,
           attributes: {
-            type: "text"
+            type: "text",
           },
           properties: {
             minLength: "minlength",
-            maxLength: "maxlength"
-          }
+            maxLength: "maxlength",
+          },
         },
         format: {
           radio: {
@@ -265,20 +263,20 @@ class SimpleFields extends SimpleFieldsLite {
               noWrap: true,
               attributes: {
                 autofocus: true,
-                type: "radio"
+                type: "radio",
               },
               properties: {
-                options: "options"
+                options: "options",
               },
               child: {
                 element: "simple-fields-array-item",
                 noWrap: true,
                 descriptionProperty: "description",
                 properties: {
-                  previewBy: "previewBy"
-                }
-              }
-            }
+                  previewBy: "previewBy",
+                },
+              },
+            },
           },
           select: {
             defaultSettings: {
@@ -286,25 +284,25 @@ class SimpleFields extends SimpleFieldsLite {
               noWrap: true,
               attributes: {
                 autofocus: true,
-                type: "select"
+                type: "select",
               },
               properties: {
                 options: "options",
-                items: "itemsList"
-              }
-            }
+                items: "itemsList",
+              },
+            },
           },
           "simple-picker": {
             defaultSettings: {
               element: "simple-picker",
               attributes: {
-                autofocus: true
+                autofocus: true,
               },
               properties: {
-                options: "options"
-              }
-            }
-          }
+                options: "options",
+              },
+            },
+          },
         },
         type: {
           array: {
@@ -317,10 +315,10 @@ class SimpleFields extends SimpleFieldsLite {
                 noWrap: true,
                 descriptionProperty: "description",
                 properties: {
-                  previewBy: "previewBy"
-                }
-              }
-            }
+                  previewBy: "previewBy",
+                },
+              },
+            },
           },
           boolean: {
             defaultSettings: {
@@ -329,9 +327,9 @@ class SimpleFields extends SimpleFieldsLite {
               attributes: {
                 autofocus: true,
                 type: "checkbox",
-                value: false
-              }
-            }
+                value: false,
+              },
+            },
           },
           file: {
             defaultSettings: {
@@ -339,12 +337,12 @@ class SimpleFields extends SimpleFieldsLite {
               noWrap: true,
               attributes: {
                 autofocus: true,
-                type: "file"
+                type: "file",
               },
               properties: {
-                accepts: "accepts"
-              }
-            }
+                accepts: "accepts",
+              },
+            },
           },
           integer: {
             defaultSettings: {
@@ -353,30 +351,30 @@ class SimpleFields extends SimpleFieldsLite {
               attributes: {
                 autofocus: true,
                 step: 1,
-                type: "number"
+                type: "number",
               },
               properties: {
                 minimum: "min",
                 maximum: "max",
-                multipleOf: "step"
-              }
-            }
+                multipleOf: "step",
+              },
+            },
           },
           markup: {
             defaultSettings: {
               element: "simple-fields-code",
               setValueProperty: "editorValue",
-              noWrap: true
+              noWrap: true,
             },
             format: {
               "md-block": {
                 defaultSettings: {
                   element: "md-block",
                   setValueProperty: "source",
-                  noWrap: true
-                }
-              }
-            }
+                  noWrap: true,
+                },
+              },
+            },
           },
           number: {
             defaultSettings: {
@@ -385,19 +383,19 @@ class SimpleFields extends SimpleFieldsLite {
               type: "number",
               attributes: {
                 autofocus: true,
-                type: "number"
+                type: "number",
               },
               properties: {
                 minimum: "min",
                 maximum: "max",
-                multipleOf: "step"
-              }
-            }
+                multipleOf: "step",
+              },
+            },
           },
           object: {
             defaultSettings: {
               element: "simple-fields-fieldset",
-              noWrap: true
+              noWrap: true,
             },
             format: {
               tabs: {
@@ -408,14 +406,14 @@ class SimpleFields extends SimpleFieldsLite {
                     element: "simple-fields-tab",
                     noWrap: true,
                     labelSlot: "label",
-                    descriptionSlot: ""
+                    descriptionSlot: "",
                   },
                   properties: {
                     layoutBreakpoint: "layoutBreakpoint",
                     iconBreakpoint: "iconBreakpoint",
-                    sticky: "sticky"
-                  }
-                }
+                    sticky: "sticky",
+                  },
+                },
               },
               fields: {
                 defaultSettings: {
@@ -423,11 +421,11 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   descriptionProperty: "description",
                   properties: {
-                    schema: "schema"
-                  }
-                }
-              }
-            }
+                    schema: "schema",
+                  },
+                },
+              },
+            },
           },
           string: {
             format: {
@@ -437,9 +435,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    required: true
-                  }
-                }
+                    required: true,
+                  },
+                },
               },
               color: {
                 defaultSettings: {
@@ -447,17 +445,17 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "color"
-                  }
-                }
+                    type: "color",
+                  },
+                },
               },
               colorpicker: {
                 defaultSettings: {
                   element: "simple-colors-picker",
                   attributes: {
-                    autofocus: true
-                  }
-                }
+                    autofocus: true,
+                  },
+                },
               },
               date: {
                 defaultSettings: {
@@ -465,9 +463,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "date"
-                  }
-                }
+                    type: "date",
+                  },
+                },
               },
               "date-time": {
                 defaultSettings: {
@@ -475,9 +473,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "datetime-local"
-                  }
-                }
+                    type: "datetime-local",
+                  },
+                },
               },
               date: {
                 defaultSettings: {
@@ -485,9 +483,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "date"
-                  }
-                }
+                    type: "date",
+                  },
+                },
               },
               email: {
                 defaultSettings: {
@@ -495,26 +493,26 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "email"
-                  }
-                }
+                    type: "email",
+                  },
+                },
               },
               fileupload: {
                 defaultSettings: {
                   element: "simple-fields-upload",
                   noWrap: true,
                   attributes: {
-                    autofocus: true
-                  }
-                }
+                    autofocus: true,
+                  },
+                },
               },
               iconpicker: {
                 defaultSettings: {
                   element: "simple-icon-picker",
                   attributes: {
-                    autofocus: true
-                  }
-                }
+                    autofocus: true,
+                  },
+                },
               },
               month: {
                 defaultSettings: {
@@ -522,9 +520,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "month"
-                  }
-                }
+                    type: "month",
+                  },
+                },
               },
               textarea: {
                 defaultSettings: {
@@ -532,9 +530,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "textarea"
-                  }
-                }
+                    type: "textarea",
+                  },
+                },
               },
               time: {
                 defaultSettings: {
@@ -542,9 +540,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "time"
-                  }
-                }
+                    type: "time",
+                  },
+                },
               },
               uri: {
                 defaultSettings: {
@@ -552,13 +550,13 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   attributes: {
                     autofocus: true,
-                    type: "file"
-                  }
-                }
-              }
-            }
-          }
-        }
+                    type: "file",
+                  },
+                },
+              },
+            },
+          },
+        },
       }
     );
   }
@@ -572,157 +570,157 @@ class SimpleFields extends SimpleFieldsLite {
     return (
       this.schematizer || {
         defaultSettings: {
-          type: "string"
+          type: "string",
         },
         format: {
           "simple-fields": {
             defaultSettings: {
               type: "object",
-              format: "simple-fields"
-            }
-          }
+              format: "simple-fields",
+            },
+          },
         },
         inputMethod: {
           alt: {
             defaultSettings: {
               type: "string",
-              format: "alt"
-            }
+              format: "alt",
+            },
           },
           array: {
             defaultSettings: {
-              type: "array"
+              type: "array",
             },
             properties: {
-              label: "itemLabel"
-            }
+              label: "itemLabel",
+            },
           },
           boolean: {
             defaultSettings: {
-              type: "boolean"
-            }
+              type: "boolean",
+            },
           },
           code: {
             defaultSettings: {
-              type: "markup"
-            }
+              type: "markup",
+            },
           },
           "code-editor": {
             defaultSettings: {
-              type: "markup"
-            }
+              type: "markup",
+            },
           },
           color: {
             defaultSettings: {
               type: "string",
-              format: "color"
-            }
+              format: "color",
+            },
           },
           colorpicker: {
             defaultSettings: {
               type: "string",
-              format: "colorpicker"
-            }
+              format: "colorpicker",
+            },
           },
           "date-time": {
             defaultSettings: {
               type: "string",
-              format: "date-time"
-            }
+              format: "date-time",
+            },
           },
           datepicker: {
             defaultSettings: {
               type: "string",
-              format: "date"
-            }
+              format: "date",
+            },
           },
           fieldset: {
             defaultSettings: {
-              type: "object"
-            }
+              type: "object",
+            },
           },
           fileupload: {
             defaultSettings: {
               type: "string",
-              format: "fileupload"
-            }
+              format: "fileupload",
+            },
           },
           haxupload: {
             defaultSettings: {
               type: "string",
-              format: "fileupload"
-            }
+              format: "fileupload",
+            },
           },
           iconpicker: {
             defaultSettings: {
               type: "string",
-              format: "iconpicker"
-            }
+              format: "iconpicker",
+            },
           },
           markup: {
             defaultSettings: {
-              type: "markup"
-            }
+              type: "markup",
+            },
           },
           "md-block": {
             defaultSettings: {
               type: "markup",
-              format: "md-block"
-            }
+              format: "md-block",
+            },
           },
           monthpicker: {
             defaultSettings: {
               type: "string",
-              format: "month"
-            }
+              format: "month",
+            },
           },
           number: {
             defaultSettings: {
-              type: "number"
-            }
+              type: "number",
+            },
           },
           object: {
             defaultSettings: {
-              type: "object"
-            }
+              type: "object",
+            },
           },
           select: {
             defaultSettings: {
               type: "string",
-              format: "select"
-            }
+              format: "select",
+            },
           },
           slider: {
             defaultSettings: {
               type: "number",
-              format: "slider"
-            }
+              format: "slider",
+            },
           },
           tabs: {
             defaultSettings: {
               type: "object",
-              format: "tabs"
-            }
+              format: "tabs",
+            },
           },
           textarea: {
             defaultSettings: {
               type: "string",
-              format: "textarea"
-            }
+              format: "textarea",
+            },
           },
           timepicker: {
             defaultSettings: {
               type: "string",
-              format: "time"
-            }
+              format: "time",
+            },
           },
           weekpicker: {
             defaultSettings: {
               type: "string",
-              format: "week"
-            }
-          }
-        }
+              format: "week",
+            },
+          },
+        },
       }
     );
   }
@@ -759,7 +757,7 @@ class SimpleFields extends SimpleFieldsLite {
   setActivePath(path) {
     let parts = path.split("/"),
       tabId = "";
-    parts.forEach(part => {
+    parts.forEach((part) => {
       this.setActiveTab(part);
       tabId += part;
     });
@@ -775,11 +773,11 @@ class SimpleFields extends SimpleFieldsLite {
    */
   _convertField(field, conversion = this.fieldsConversion, settings = {}) {
     let fieldKeys = Object.keys(field || {}),
-      convKeys = Object.keys(conversion || {}).filter(key =>
+      convKeys = Object.keys(conversion || {}).filter((key) =>
         fieldKeys.includes(key)
       );
     if (conversion.defaultSettings) settings = conversion.defaultSettings;
-    convKeys.forEach(key => {
+    convKeys.forEach((key) => {
       let val = field[key],
         convData = conversion ? conversion[key] : undefined,
         convVal = !convData
@@ -800,7 +798,7 @@ class SimpleFields extends SimpleFieldsLite {
    */
   _fieldToSchema(field) {
     let schema = {};
-    Object.keys(field || {}).forEach(key => {
+    Object.keys(field || {}).forEach((key) => {
       if (!field.inputMethod && field.properties) field.inputMethod = "object";
       let conversion = this._convertField(field);
       if (conversion.type) schema.type = conversion.type;
@@ -811,7 +809,7 @@ class SimpleFields extends SimpleFieldsLite {
         if (conversion.type === "array" && Array.isArray(field.properties)) {
           schema.items = {
             type: "object",
-            properties: this.fieldsToSchema(field.properties)
+            properties: this.fieldsToSchema(field.properties),
           };
         } else if (conversion.type === "array") {
           schema.items = this._fieldToSchema(field.properties);
@@ -830,7 +828,7 @@ class SimpleFields extends SimpleFieldsLite {
           "properties",
           "required",
           "type",
-          "validation"
+          "validation",
         ].includes(key)
       ) {
         schema[key] = field[key];
@@ -848,7 +846,7 @@ class SimpleFields extends SimpleFieldsLite {
   fieldsToSchema(fields) {
     let schema = {};
     if (fields && fields.forEach) {
-      fields.forEach(field => {
+      fields.forEach((field) => {
         let prop = !field.property ? "" : field.property;
         schema[prop] = this._fieldToSchema(field);
       });
@@ -867,7 +865,7 @@ class SimpleFields extends SimpleFieldsLite {
         bubbles: true,
         cancelable: true,
         composed: false,
-        detail: this
+        detail: this,
       })
     );
   }

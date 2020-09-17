@@ -30,7 +30,7 @@ class SiteModal extends LitElement {
         paper-icon-button {
           color: var(--site-modal-icon-color);
         }
-      `
+      `,
     ];
   }
   /**
@@ -78,7 +78,7 @@ class SiteModal extends LitElement {
   fireEvent(e) {
     this.dispatchEvent(
       new CustomEvent("site-modal-click", {
-        detail: { value: true }
+        detail: { value: true },
       })
     );
   }
@@ -86,21 +86,21 @@ class SiteModal extends LitElement {
     return {
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       title: {
-        type: String
+        type: String,
       },
       icon: {
-        type: String
+        type: String,
       },
       buttonLabel: {
         type: String,
-        attribute: "button-label"
+        attribute: "button-label",
       },
       position: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   firstUpdated(changedProperties) {

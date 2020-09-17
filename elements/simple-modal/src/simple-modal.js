@@ -187,8 +187,8 @@ class SimpleModal extends LitElement {
         "--simple-modal-buttons-background",
         "--simple-modal-buttons-padding",
         "--simple-modal-button-color",
-        "--simple-modal-button-background"
-      ].forEach(prop => {
+        "--simple-modal-button-background",
+      ].forEach((prop) => {
         this.style.setProperty(prop, styles[prop] || "unset");
       });
     }
@@ -249,8 +249,8 @@ class SimpleModal extends LitElement {
         cancelable: true,
         detail: {
           opened: false,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
@@ -259,8 +259,8 @@ class SimpleModal extends LitElement {
         cancelable: true,
         detail: {
           opened: true,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     }

@@ -42,8 +42,8 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
       breadcrumbsLabel: {
         name: "breadcrumbsLabel",
         type: String,
-        attribute: "breadcrumbs-label"
-      }
+        attribute: "breadcrumbs-label",
+      },
     };
   }
 

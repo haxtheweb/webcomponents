@@ -100,7 +100,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             );
           }
         }
-      `
+      `,
     ];
   }
   render() {
@@ -137,7 +137,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
         : html`
             <div class="buttons">
               ${(this.itemData || []).map(
-                item => html`
+                (item) => html`
                   <a11y-carousel-button class="button" controls="${item.id}">
                     <span class="sr-only">${item.index + 1}</span>
                   </a11y-carousel-button>
@@ -153,19 +153,19 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
     return {
       ...super.properties,
       nextLabel: {
-        type: String
+        type: String,
       },
       noPrevNext: {
         type: Boolean,
-        attribute: "no-prev-next"
+        attribute: "no-prev-next",
       },
       noButtons: {
         type: Boolean,
-        attribute: "no-buttons"
+        attribute: "no-buttons",
       },
       prevLabel: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -279,7 +279,7 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
       "--a11y-carousel-background-image",
       this._getImage()
     );
-    Object.keys(buttons || {}).forEach(key => {
+    Object.keys(buttons || {}).forEach((key) => {
       let button = buttons[key];
       if (button.buttonType === "first") button.controls = this.first;
       if (button.buttonType === "prev") button.controls = this.prev;

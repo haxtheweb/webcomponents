@@ -84,8 +84,8 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
   static get properties() {
     return {
       embedcode: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   _embedClicked(e) {
@@ -98,7 +98,7 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }

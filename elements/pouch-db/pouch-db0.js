@@ -66,26 +66,26 @@ class PouchDb extends PolymerElement {
         actor: {
           mbox: "mailto:dave@gmail.com",
           name: "Dave Fusco",
-          objectType: "Agent"
+          objectType: "Agent",
         },
         verb: {
           id: "http://adlnet.gov/expapi/verbs/answered",
           display: {
-            "en-US": "answered"
-          }
+            "en-US": "answered",
+          },
         },
         object: {
           id: "http://adlnet.gov/expapi/activities/example",
           definition: {
             name: {
-              "en-US": "Example Activity"
+              "en-US": "Example Activity",
             },
             description: {
-              "en-US": "Example activity description"
-            }
+              "en-US": "Example activity description",
+            },
           },
-          objectType: "Activity"
-        }
+          objectType: "Activity",
+        },
       };
       callback(objectStatement);
     }
@@ -94,7 +94,7 @@ class PouchDb extends PolymerElement {
       var xapistatement = {
         _id: new Date().toISOString(),
         title: text,
-        completed: false
+        completed: false,
       };
       db.put(xapistatement, function callback(err, result) {
         if (!err) {
@@ -109,7 +109,7 @@ class PouchDb extends PolymerElement {
       db.replicate.from(remoteCouch, opts, syncError);
     }
 
-    createStatement(function(backStatement) {
+    createStatement(function (backStatement) {
       addStatement(JSON.stringify(backStatement));
       alert(e.detail.passed);
     });

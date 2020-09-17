@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "social-share-link",
-      "description": "`social-share-link`\n`a link to share content on social`\n\nProperties:\n\n  * `buttonStyle` {`boolean`} - \n\n  * `image` {`string`} - \n\n  * `message` {`string`} - \n\n  * `mode` - \n\n  * `text` - \n\n  * `type` {`string`} - \n\n  * `url` - ",
-      "attributes": []
-    },
-    {
-      "name": "social-share-link",
       "description": "`social-share-link`\n`a link to share content on social`\n\nAttributes:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `button-style` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share\n\nProperties:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `buttonStyle` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share",
       "attributes": [
         {

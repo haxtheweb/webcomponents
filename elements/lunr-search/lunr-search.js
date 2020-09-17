@@ -24,21 +24,19 @@ class LunrSearch extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <iron-ajax
-        ?auto="${this.__auto}"
-        url="${this.dataSource}"
-        method="${this.method}"
-        handle-as="json"
-        @response="${this._dataResponse}"
-      ></iron-ajax>
-    `;
+    return html` <iron-ajax
+      ?auto="${this.__auto}"
+      url="${this.dataSource}"
+      method="${this.method}"
+      handle-as="json"
+      @response="${this._dataResponse}"
+    ></iron-ajax>`;
   }
 
   // properties available to the custom element for data binding
@@ -48,48 +46,48 @@ class LunrSearch extends LitElement {
 
       dataSource: {
         type: String,
-        attribute: "data-source"
+        attribute: "data-source",
       },
       __auto: {
-        type: Boolean
+        type: Boolean,
       },
       data: {
-        type: Array
+        type: Array,
       },
       method: {
-        type: String
+        type: String,
       },
       search: {
-        type: String
+        type: String,
       },
       results: {
-        type: Array
+        type: Array,
       },
       noStopWords: {
         type: Boolean,
-        attribute: "no-stop-words"
+        attribute: "no-stop-words",
       },
       fields: {
-        type: Array
+        type: Array,
       },
       indexNoStopWords: {
-        type: Object
+        type: Object,
       },
       index: {
-        type: Object
+        type: Object,
       },
       __lunrLoaded: {
-        type: Boolean
+        type: Boolean,
       },
       limit: {
-        type: Number
+        type: Number,
       },
       minScore: {
-        type: Number
+        type: Number,
       },
       log: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   constructor() {
@@ -128,8 +126,8 @@ class LunrSearch extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -211,7 +209,7 @@ class LunrSearch extends LitElement {
             break;
           }
           // match on the id within the array of options
-          let tmpItem = data.find(j => j.id == searched[i].ref);
+          let tmpItem = data.find((j) => j.id == searched[i].ref);
           results.push(tmpItem);
         }
       }
@@ -230,7 +228,7 @@ class LunrSearch extends LitElement {
           if (i === limit || searched[i].score < minScore) {
             break;
           }
-          let tmpItem = data.find(j => j.id == searched[i].ref);
+          let tmpItem = data.find((j) => j.id == searched[i].ref);
           results.push(tmpItem);
         }
       }
@@ -242,7 +240,7 @@ class LunrSearch extends LitElement {
       let root = this;
       if (Array.isArray(data) && data.length > 0) {
         if (Array.isArray(fields) && fields.length > 0) {
-          return lunr(function() {
+          return lunr(function () {
             for (var i = 0; i < fields.length; i++) {
               if (fields[i].charAt(0) === fields[i].charAt(0).toUpperCase()) {
                 this.field(fields[i], { boost: 10 });
@@ -277,7 +275,7 @@ class LunrSearch extends LitElement {
           // TODO only word best fields.
           var fields = [];
           var ddup = {};
-          return lunr(function() {
+          return lunr(function () {
             for (
               var indexOfData = 0;
               indexOfData < data.length;

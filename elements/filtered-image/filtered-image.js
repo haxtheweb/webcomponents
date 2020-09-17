@@ -21,30 +21,30 @@ class FilteredImage extends SimpleColors {
         :host {
           display: block;
         }
+
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <svg id="svg" viewBox="0 0 ${this.width} ${this.height}">
-        <rect id="rect" x="0" y="0"></rect>
-        <filter id="${this.__id}">
-          <feColorMatrix
-            id="matrix"
-            type="matrix"
-            values=" 1   0   0   0   0
+    return html` <svg id="svg" viewBox="0 0 ${this.width} ${this.height}">
+      <rect id="rect" x="0" y="0"></rect>
+      <filter id="${this.__id}">
+        <feColorMatrix
+          id="matrix"
+          type="matrix"
+          values=" 1   0   0   0   0
                0   1   0   0   0
                0   0   1   0   0
                0   0   0   1   0 "
-          />
-        </filter>
-        <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>
-      </svg>
-    `;
+        />
+      </filter>
+      <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>
+    </svg>`;
   }
 
   // haxProperty definition
@@ -62,13 +62,13 @@ class FilteredImage extends SimpleColors {
         groups: ["Image"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -78,15 +78,15 @@ class FilteredImage extends SimpleColors {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "alt",
             description: "",
             inputMethod: "alt",
             required: true,
-            icon: "icons:accessibility"
-          }
+            icon: "icons:accessibility",
+          },
         ],
         configure: [
           {
@@ -95,18 +95,18 @@ class FilteredImage extends SimpleColors {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "alt",
             description: "",
             inputMethod: "alt",
             required: true,
-            icon: "icons:accessibility"
-          }
+            icon: "icons:accessibility",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -115,32 +115,32 @@ class FilteredImage extends SimpleColors {
       ...super.properties,
 
       src: {
-        type: String
+        type: String,
       },
       __id: {
-        type: String
+        type: String,
       },
       alt: {
-        type: String
+        type: String,
       },
       height: {
-        type: String
+        type: String,
       },
       width: {
-        type: String
+        type: String,
       },
       color: {
-        type: String
+        type: String,
       },
       strength: {
-        type: Number
+        type: Number,
       },
       contrast: {
-        type: Number
+        type: Number,
       },
       __matrix: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -217,7 +217,7 @@ class FilteredImage extends SimpleColors {
         [1, 0, 0, 0, 0],
         [0, 1, 0, 0, 0],
         [0, 0, 1, 0, 0],
-        [0, 0, 0, 1, 0]
+        [0, 0, 0, 1, 0],
       ],
       svg = this.shadowRoot.querySelector("#svg"),
       matrix = svg.querySelector("#matrix"),

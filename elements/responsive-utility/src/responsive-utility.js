@@ -15,9 +15,7 @@ window.ResponsiveUtility = {};
 window.ResponsiveUtility.instance = null;
 class ResponsiveUtility extends LitElement {
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   static get tag() {
     return "responsive-utility";
@@ -30,8 +28,8 @@ class ResponsiveUtility extends LitElement {
        * Array of details provided by responsive elements
        */
       details: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   connectedCallback() {
@@ -73,7 +71,7 @@ class ResponsiveUtility extends LitElement {
       md: e.detail.md || 1200,
       lg: e.detail.lg || 1500,
       xl: e.detail.xl || 1800,
-      custom: e.detail.custom || "responsive-width"
+      custom: e.detail.custom || "responsive-width",
     };
     detail.observer = this._getObserver(detail);
     detail.observer.observe(detail.element);
@@ -82,8 +80,8 @@ class ResponsiveUtility extends LitElement {
   }
 
   _getObserver(detail) {
-    return new ResizeObserver(en =>
-      en.forEach(e =>
+    return new ResizeObserver((en) =>
+      en.forEach((e) =>
         window.ResponsiveUtility.setSize(
           detail,
           e.contentBoxSize || e.borderBoxSize || e.contentRect || e.target
@@ -98,7 +96,7 @@ class ResponsiveUtility extends LitElement {
    * @param {event} e event to add responsive element
    */
   deleteResponiveElementEvent(e) {
-    this.details = this.details.filter(detail => e.detail !== detail);
+    this.details = this.details.filter((detail) => e.detail !== detail);
   }
   /**
    * An array of objects. Each object is contains data about an element

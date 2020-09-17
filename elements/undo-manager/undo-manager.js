@@ -26,9 +26,7 @@ class UndoManager extends LitElement {
    * LitElement render
    */
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   /**
    * LitElement / popular convention
@@ -41,28 +39,28 @@ class UndoManager extends LitElement {
        */
       canUndo: {
         type: Boolean,
-        attribute: "can-undo"
+        attribute: "can-undo",
       },
       /**
        * If we can currently redo based on stack position
        */
       canRedo: {
         type: Boolean,
-        attribute: "can-redo"
+        attribute: "can-redo",
       },
       /**
        * If we're "dirty" meaning stackPosition and savePosition out of sync
        */
       isDirty: {
         type: Boolean,
-        attribute: "is-dirty"
+        attribute: "is-dirty",
       },
       /**
        * Allow for targetting OTHER elements w/ this behavior
        */
       target: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -93,7 +91,7 @@ class UndoManager extends LitElement {
   _undoLoaded(e) {
     this.stack = new Undo.Stack();
     // simple hook into being notified of changes to the object
-    this.stack.changed = e => {
+    this.stack.changed = (e) => {
       this.canRedo = this.stack.canRedo();
       this.canUndo = this.stack.canUndo();
       this.isDirty = this.stack.dirty();
@@ -108,7 +106,7 @@ class UndoManager extends LitElement {
    */
   connectedCallback() {
     // watch for changes to the element itself
-    this.observer = new MutationObserver(mutations => {
+    this.observer = new MutationObserver((mutations) => {
       // ensure this was not a change record to perform undo/redo itself!
       setTimeout(() => {
         if (this.blocked) {
@@ -130,7 +128,7 @@ class UndoManager extends LitElement {
     this.observer.observe(this, {
       attributes: true,
       childList: true,
-      subtree: true
+      subtree: true,
     });
     super.connectedCallback();
   }
@@ -164,8 +162,8 @@ class UndoManager extends LitElement {
         this.dispatchEvent(
           new CustomEvent("can-undo-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -174,8 +172,8 @@ class UndoManager extends LitElement {
         this.dispatchEvent(
           new CustomEvent("can-redo-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -184,8 +182,8 @@ class UndoManager extends LitElement {
         this.dispatchEvent(
           new CustomEvent("is-dirty-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

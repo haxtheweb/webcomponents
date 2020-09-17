@@ -77,7 +77,7 @@ class LrnMarkdownEditor extends LitElement {
           background: #fff;
           border-left: solid #dcdcdc 1px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -157,22 +157,22 @@ class LrnMarkdownEditor extends LitElement {
   static get properties() {
     return {
       content: {
-        type: String
+        type: String,
       },
       selected: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       layout: {
-        type: String
+        type: String,
       },
       cookies: {
-        type: Boolean
+        type: Boolean,
       },
       elReady: {
         type: Boolean,
-        attribute: "el-ready"
-      }
+        attribute: "el-ready",
+      },
     };
   }
   /**
@@ -188,8 +188,8 @@ class LrnMarkdownEditor extends LitElement {
         this.dispatchEvent(
           new CustomEvent("content-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

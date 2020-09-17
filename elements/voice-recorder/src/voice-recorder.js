@@ -19,7 +19,7 @@ class VoiceRecorder extends LitElement {
         :host {
           display: inline-flex;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -33,14 +33,14 @@ class VoiceRecorder extends LitElement {
   static get properties() {
     return {
       iconState: {
-        type: String
+        type: String,
       },
       textState: {
-        type: String
+        type: String,
       },
       recording: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
   /**
@@ -96,13 +96,13 @@ class VoiceRecorder extends LitElement {
         {
           wasmURL:
             this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-            "../../node_modules/vmsg/vmsg.wasm"
+            "../../node_modules/vmsg/vmsg.wasm",
         },
         this
-      ).then(blob => {
+      ).then((blob) => {
         this.dispatchEvent(
           new CustomEvent("voice-recorder-recording", {
-            value: blob
+            value: blob,
           })
         );
       });

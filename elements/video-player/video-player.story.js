@@ -24,7 +24,7 @@ let getVideoKnobs = () => {
     allKnobs.crossorigin = {
       value: "anonymous",
       type: "Select",
-      options: ["anonymous", "use-credentials", ""]
+      options: ["anonymous", "use-credentials", ""],
     };
     //remove properties we don't want to expose
     [
@@ -43,8 +43,8 @@ let getVideoKnobs = () => {
       "target",
       "search",
       "youtubeId",
-      "youTube"
-    ].forEach(prop => {
+      "youTube",
+    ].forEach((prop) => {
       delete allKnobs[prop];
     });
     return allKnobs;
@@ -56,29 +56,29 @@ videoKnobs.sources.value = [
   {
     src:
       "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4",
-    type: "video/mp4"
-  }
+    type: "video/mp4",
+  },
 ];
 videoKnobs.tracks.value = [
   { src: enVtt, srclang: "en", label: "English" },
   { src: esVtt, srclang: "es", label: "Español" },
-  { src: deVtt, srclang: "de", label: "Deutsch" }
+  { src: deVtt, srclang: "de", label: "Deutsch" },
 ];
 videoKnobs.source = { name: "source", value: null, type: "String" };
 audioKnobs.sources.value = [
   {
     src: buellerMp3,
-    type: "audio/mp3"
-  }
+    type: "audio/mp3",
+  },
 ];
 audioKnobs.tracks.value = [
-  { src: buellerVtt, srclang: "en", label: "English" }
+  { src: buellerVtt, srclang: "en", label: "English" },
 ];
 ytKnobs.tracks.value = [{ src: buellerVtt, srclang: "en", label: "English" }];
 ytKnobs.source = {
   name: "source",
   value: "https://www.youtube.com/watch?v=NP0mQeLWCCo",
-  type: "String"
+  type: "String",
 };
 
 const VideoPlayerStory = {
@@ -87,7 +87,7 @@ const VideoPlayerStory = {
   props: videoKnobs,
   slots: {},
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 const VideoPlayerAudioStory = {
   of: "Web Components/video-player",
@@ -95,7 +95,7 @@ const VideoPlayerAudioStory = {
   props: audioKnobs,
   slots: {},
   attr: ` audio-only="audio-only"`,
-  slotted: ``
+  slotted: ``,
 };
 const VideoPlayerYTStory = {
   of: "Web Components/video-player",
@@ -103,7 +103,7 @@ const VideoPlayerYTStory = {
   props: ytKnobs,
   slots: {},
   attr: ``,
-  slotted: ``
+  slotted: ``,
 };
 window.StorybookUtilities.instance.addLiveDemo(VideoPlayerStory);
 window.StorybookUtilities.instance.addLiveDemo(VideoPlayerAudioStory);

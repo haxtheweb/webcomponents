@@ -38,13 +38,13 @@ class SimpleFieldsTabs extends A11yTabs {
           --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);
           --a11y-tabs-content-padding: var(--simple-fields-margin, 16px);
         }
-      `
+      `,
     ];
   }
   static get properties() {
     return {
       ...super.properties,
-      ...SimpleFieldsFieldset.properties
+      ...SimpleFieldsFieldset.properties,
     };
   }
 

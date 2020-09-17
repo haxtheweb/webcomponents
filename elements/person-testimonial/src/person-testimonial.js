@@ -12,7 +12,9 @@ class PersonTestimonial extends SimpleColorsPolymer {
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/person-testimonial/lib/person-testimonial-icon.js");
+    import(
+      "@lrnwebcomponents/person-testimonial/lib/person-testimonial-icon.js"
+    );
   }
   static get template() {
     return html`
@@ -161,33 +163,33 @@ class PersonTestimonial extends SimpleColorsPolymer {
       elevation: {
         type: Number,
         value: 1,
-        reflectToAttribute: true
+        reflectToAttribute: true,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
        */
       describedBy: {
         type: String,
-        attribute: "described-by"
+        attribute: "described-by",
       },
       /**
        * The profile image to display to the left of the quote.
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * Name of the person making the quote.
        */
       name: {
-        type: String
+        type: String,
       },
       /**
        * The title / position of the person in question.
        */
       position: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   static get haxProperties() {
@@ -207,12 +209,12 @@ class PersonTestimonial extends SimpleColorsPolymer {
             source: "image",
             title: "name",
             caption: "position",
-            ariaDescribedby: "describedBy"
-          }
+            ariaDescribedby: "describedBy",
+          },
         ],
         meta: {
-          author: "EberlyODL / LRNWebComponents"
-        }
+          author: "EberlyODL / LRNWebComponents",
+        },
       },
       settings: {
         quick: [
@@ -221,36 +223,36 @@ class PersonTestimonial extends SimpleColorsPolymer {
             title: "Image",
             description: "Adds image to this testimonial",
             inputMethod: "textfield",
-            icon: "editor:insert-photo"
+            icon: "editor:insert-photo",
           },
           {
             property: "name",
             title: "Full Name",
             description: "Credit the person making the testimonial",
             inputMethod: "textfield",
-            icon: "account-circle"
+            icon: "account-circle",
           },
           {
             property: "position",
             title: "Position or Job Title",
             description: "List the position and job title",
             inputMethod: "textfield",
-            icon: "icons:work"
+            icon: "icons:work",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
-          }
+            icon: "invert-colors",
+          },
         ],
         configure: [
           {
@@ -258,43 +260,43 @@ class PersonTestimonial extends SimpleColorsPolymer {
             title: "Image",
             description: "Adds image to testimonial",
             inputMethod: "haxupload",
-            icon: "editor:insert-photo"
+            icon: "editor:insert-photo",
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
             inputMethod: "boolean",
-            icon: "invert-colors"
+            icon: "invert-colors",
           },
           {
             slot: "",
             title: "User's testimonial:",
             description: "This is where you enter your testimonial.",
             inputMethod: "code-editor",
-            required: true
+            required: true,
           },
           {
             property: "name",
             title: "Full Name",
             description: "Credit the person making the testimonial",
             inputMethod: "textfield",
-            icon: "account-circle"
+            icon: "account-circle",
           },
           {
             property: "position",
             title: "Position or Job Title",
             description: "List the position and job title",
             inputMethod: "textfield",
-            icon: "icons:work"
-          }
+            icon: "icons:work",
+          },
         ],
         advanced: [
           {
@@ -302,10 +304,10 @@ class PersonTestimonial extends SimpleColorsPolymer {
             title: "aria-describedby",
             description:
               "Space-separated list of IDs for elements that describe the image.",
-            inputMethod: "textfield"
-          }
-        ]
-      }
+            inputMethod: "textfield",
+          },
+        ],
+      },
     };
   }
 }

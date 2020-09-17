@@ -187,14 +187,14 @@ class SiteTopMenu extends PolymerElement {
        * manifest of everything, in case we need to check on children of parents
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       /**
        * acitvely selected item
        */
       activeId: {
         type: String,
-        observer: "_activeIdChanged"
+        observer: "_activeIdChanged",
       },
       /**
        * visually stick to top of interface at all times
@@ -202,7 +202,7 @@ class SiteTopMenu extends PolymerElement {
       sticky: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * visualize the indicator as a a line, arrow, or not at all
@@ -210,7 +210,7 @@ class SiteTopMenu extends PolymerElement {
       indicator: {
         type: String,
         reflectToAttribute: true,
-        value: "line"
+        value: "line",
       },
       /**
        * ink on the buttons
@@ -218,7 +218,7 @@ class SiteTopMenu extends PolymerElement {
       noink: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * hide title on the buttons
@@ -226,7 +226,7 @@ class SiteTopMenu extends PolymerElement {
       notitle: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * ink on the buttons
@@ -234,14 +234,14 @@ class SiteTopMenu extends PolymerElement {
       showindex: {
         type: Boolean,
         reflectToAttribute: true,
-        value: false
+        value: false,
       },
       /**
        * Stupid but faster then calculating on the fly for sure
        */
       arrowSize: {
         type: Number,
-        value: 6
+        value: 6,
       },
       /**
        * Allow customization of sort
@@ -249,8 +249,8 @@ class SiteTopMenu extends PolymerElement {
       sort: {
         type: Object,
         value: {
-          order: "ASC"
-        }
+          order: "ASC",
+        },
       },
       /**
        * Allow customization of the conditions if needed
@@ -258,17 +258,17 @@ class SiteTopMenu extends PolymerElement {
       conditions: {
         type: Object,
         value: {
-          parent: null
-        }
+          parent: null,
+        },
       },
       mobileTitle: {
         type: String,
-        value: "Navigation"
+        value: "Navigation",
       },
       editMode: {
         type: Boolean,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
   humanIndex(index) {
@@ -295,11 +295,11 @@ class SiteTopMenu extends PolymerElement {
         if (this.shadowRoot.querySelector('[data-id="' + newValue + '"]')) {
           el = this.shadowRoot.querySelector('[data-id="' + newValue + '"]');
         } else {
-          let tmpItem = this.manifest.items.find(i => i.id == newValue);
+          let tmpItem = this.manifest.items.find((i) => i.id == newValue);
           // fallback, maybe there's a child of this currently active
           while (el === null && tmpItem && tmpItem.parent != null) {
             // take the parent object of this current item
-            tmpItem = this.manifest.items.find(i => i.id == tmpItem.parent);
+            tmpItem = this.manifest.items.find((i) => i.id == tmpItem.parent);
             // see if IT lives in the dom, if not, keep going until we run out
             if (
               tmpItem &&
@@ -344,18 +344,18 @@ class SiteTopMenu extends PolymerElement {
     this.shadowRoot
       .querySelector("#menu")
       .addEventListener("click", this.toggleOpen.bind(this));
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
     // minor timing thing to ensure store has picked active
     // needed if routes set on first paint or lifecycles miss
     setTimeout(() => {
-      autorun(reaction => {
+      autorun((reaction) => {
         this.activeId = toJS(store.activeId);
         this.__disposer.push(reaction);
       });

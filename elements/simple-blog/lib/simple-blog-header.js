@@ -93,7 +93,7 @@ class SimpleBlogHeader extends SimpleColors {
         site-rss-button {
           margin: 0 4px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -104,8 +104,12 @@ class SimpleBlogHeader extends SimpleColors {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js"
+    );
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
+    );
   }
   // render function
   render() {
@@ -132,23 +136,23 @@ class SimpleBlogHeader extends SimpleColors {
     return {
       ...super.properties,
       description: {
-        type: String
+        type: String,
       },
       image: {
-        type: String
+        type: String,
       },
       icon: {
-        type: String
+        type: String,
       },
       title: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       let manifest = toJS(store.manifest);
       if (manifest && manifest.description) {
         this.description = manifest.description;

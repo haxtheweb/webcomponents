@@ -16,20 +16,6 @@
       ]
     },
     {
-      "name": "simple-blog",
-      "description": "`simple-blog`\n`A simple blog and associated elements`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `__disposer` {`never[]`} - \n\n  * `selectedPage` {`number`} - ",
-      "attributes": [
-        {
-          "name": "selected-page",
-          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
-        },
-        {
-          "name": "onjson-outline-schema-active-item-changed",
-          "description": "`json-outline-schema-active-item-changed` - "
-        }
-      ]
-    },
-    {
       "name": "tag",
       "description": "Events:\n\n  * `json-outline-schema-active-item-changed` - ",
       "attributes": [

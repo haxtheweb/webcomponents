@@ -30,8 +30,8 @@ class JwtLogin extends LitElement {
           bubbles: true,
           cancelable: false,
           detail: {
-            value: e.detail.value
-          }
+            value: e.detail.value,
+          },
         })
       );
     }
@@ -66,59 +66,59 @@ class JwtLogin extends LitElement {
        * auto, useful for demos
        */
       auto: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * refreshUrl to get a new JSON web token
        */
       refreshUrl: {
         type: String,
-        attribute: "refresh-url"
+        attribute: "refresh-url",
       },
       /**
        * where to redirect for a login token if we REALLY are logged out
        */
       redirectUrl: {
         type: String,
-        attribute: "redirect-url"
+        attribute: "redirect-url",
       },
       /**
        * logout url
        */
       logoutUrl: {
         type: String,
-        attribute: "logout-url"
+        attribute: "logout-url",
       },
       /**
        * url to get the JWT
        */
       url: {
-        type: String
+        type: String,
       },
       /**
        * Request method
        */
       method: {
-        type: String
+        type: String,
       },
       /**
        * Optional body, useful when doing posts
        */
       body: {
-        type: Object
+        type: Object,
       },
       /**
        * Key that contains the token in local storage
        */
       key: {
-        type: String
+        type: String,
       },
       /**
        * JSON Web token to securely pass around
        */
       jwt: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**
@@ -132,8 +132,8 @@ class JwtLogin extends LitElement {
         this.dispatchEvent(
           new CustomEvent("jwt-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -152,7 +152,7 @@ class JwtLogin extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: false
+          detail: false,
         })
       );
     } else if (newValue) {
@@ -163,7 +163,7 @@ class JwtLogin extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: newValue
+          detail: newValue,
         })
       );
       this.dispatchEvent(
@@ -171,7 +171,7 @@ class JwtLogin extends LitElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
     }

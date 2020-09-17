@@ -3,45 +3,7 @@
   "tags": [
     {
       "name": "paper-stepper",
-      "description": "`paper-stepper`\n\nAttributes:\n\n  * `selected` {`number`} - \n\n  * `progress-bar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `back-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `next-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disable-previous` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disable-next` {`boolean`} - Boolean for disabling the next button.\n\n  * `no-buttons` {`boolean`} - Hide back/next buttons\n\nProperties:\n\n  * `selected` {`number`} - \n\n  * `progressBar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `backLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `nextLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disablePrevious` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disableNext` {`boolean`} - Boolean for disabling the next button.\n\n  * `noButtons` {`boolean`} - Hide back/next buttons\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "selected",
-          "description": "`selected` {`number`} - \n\nProperty: selected\n\nDefault: 0"
-        },
-        {
-          "name": "progress-bar",
-          "description": "`progress-bar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\nProperty: progressBar\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "back-label",
-          "description": "`back-label` {`string`} - Text for the back button. Use this property to localize the element.\n\nProperty: backLabel\n\nDefault: Back"
-        },
-        {
-          "name": "next-label",
-          "description": "`next-label` {`string`} - Text for the back button. Use this property to localize the element.\n\nProperty: nextLabel\n\nDefault: Next"
-        },
-        {
-          "name": "disable-previous",
-          "description": "`disable-previous` {`boolean`} - Boolean for disabling the previous button.\n\nProperty: disablePrevious\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-next",
-          "description": "`disable-next` {`boolean`} - Boolean for disabling the next button.\n\nProperty: disableNext\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-buttons",
-          "description": "`no-buttons` {`boolean`} - Hide back/next buttons\n\nProperty: noButtons\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "paper-stepper",
-      "description": "`paper-stepper`\n\nAttributes:\n\n  * `selected` {`number`} - \n\n  * `progress-bar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `back-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `next-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disable-previous` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disable-next` {`boolean`} - Boolean for disabling the next button.\n\n  * `no-buttons` {`boolean`} - Hide back/next buttons\n\nProperties:\n\n  * `selected` {`number`} - \n\n  * `progressBar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `backLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `nextLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disablePrevious` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disableNext` {`boolean`} - Boolean for disabling the next button.\n\n  * `noButtons` {`boolean`} - Hide back/next buttons\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`paper-stepper`\n\nAttributes:\n\n  * `selected` {`number`} - \n\n  * `progress-bar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `back-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `next-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disable-previous` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disable-next` {`boolean`} - Boolean for disabling the next button.\n\n  * `no-buttons` {`boolean`} - Hide back/next buttons\n\nProperties:\n\n  * `selected` {`number`} - \n\n  * `progressBar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `backLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `nextLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disablePrevious` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disableNext` {`boolean`} - Boolean for disabling the next button.\n\n  * `noButtons` {`boolean`} - Hide back/next buttons\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "selected",
@@ -115,7 +77,7 @@
     },
     {
       "name": "paper-stepper",
-      "description": "`paper-stepper`\n\nAttributes:\n\n  * `selected` {`number`} - \n\n  * `progress-bar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `back-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `next-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disable-previous` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disable-next` {`boolean`} - Boolean for disabling the next button.\n\n  * `no-buttons` {`boolean`} - Hide back/next buttons\n\nProperties:\n\n  * `selected` {`number`} - \n\n  * `progressBar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `backLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `nextLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disablePrevious` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disableNext` {`boolean`} - Boolean for disabling the next button.\n\n  * `noButtons` {`boolean`} - Hide back/next buttons\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`paper-stepper`\n\nAttributes:\n\n  * `selected` {`number`} - \n\n  * `progress-bar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `back-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `next-label` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disable-previous` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disable-next` {`boolean`} - Boolean for disabling the next button.\n\n  * `no-buttons` {`boolean`} - Hide back/next buttons\n\nProperties:\n\n  * `selected` {`number`} - \n\n  * `progressBar` {`boolean`} - True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).\n\n  * `backLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `nextLabel` {`string`} - Text for the back button. Use this property to localize the element.\n\n  * `disablePrevious` {`boolean`} - Boolean for disabling the previous button.\n\n  * `disableNext` {`boolean`} - Boolean for disabling the next button.\n\n  * `noButtons` {`boolean`} - Hide back/next buttons\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "selected",

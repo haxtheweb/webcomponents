@@ -44,11 +44,11 @@ class GlossaryTerm extends LitElement {
       if (serviceType === "file") {
         fetch(endpoint, {
           method: "GET",
-          headers: { "Content-Type": "application/json" }
+          headers: { "Content-Type": "application/json" },
         })
-          .then(r => r.json())
-          .then(r => {
-            const foundterm = r.terms.find(i => i.name === this.name);
+          .then((r) => r.json())
+          .then((r) => {
+            const foundterm = r.terms.find((i) => i.name === this.name);
             if (foundterm) {
               this.definition = foundterm.definition;
               this._fallback = false;
@@ -61,11 +61,11 @@ class GlossaryTerm extends LitElement {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            query: `{ term(name: "${this.name}") { name definition } }`
-          })
+            query: `{ term(name: "${this.name}") { name definition } }`,
+          }),
         })
-          .then(r => r.json())
-          .then(r => {
+          .then((r) => r.json())
+          .then((r) => {
             try {
               this.definition = r.data.term.definition;
               this._fallback = false;

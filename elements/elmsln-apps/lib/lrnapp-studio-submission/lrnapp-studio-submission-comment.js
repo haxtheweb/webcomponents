@@ -68,15 +68,13 @@ class LrnappStudioSubmissionComment extends PolymerElement {
           padding: 0;
         }
       </style>
-      <div class\$="center comment-depth-[[comment.attributes.threadDepth]]">
+      <div class$="center comment-depth-[[comment.attributes.threadDepth]]">
         <lrndesign-avatar
           label="[[comment.relationships.author.data.name]]"
           class="float-left"
         ></lrndesign-avatar>
       </div>
-      <paper-card
-        class\$="paper-card-length-[[comment.attributes.threadDepth]]"
-      >
+      <paper-card class$="paper-card-length-[[comment.attributes.threadDepth]]">
         <div id="body" class="comment-body nowrap">
           <h4>
             [[comment.relationships.author.data.name]]
@@ -84,7 +82,7 @@ class LrnappStudioSubmissionComment extends PolymerElement {
           </h4>
           <word-count>[[comment.attributes.body]]</word-count>
         </div>
-        <div class\$="card-actions">
+        <div class$="card-actions">
           <paper-icon-button
             class="right-actions"
             id="reply"
@@ -115,8 +113,8 @@ class LrnappStudioSubmissionComment extends PolymerElement {
   static get properties() {
     return {
       comment: {
-        type: Object
-      }
+        type: Object,
+      },
     };
   }
   /**
@@ -124,8 +122,8 @@ class LrnappStudioSubmissionComment extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.$.body.addEventListener("click", e => {
+    afterNextRender(this, function () {
+      this.$.body.addEventListener("click", (e) => {
         this.$.body.classList.toggle("nowrap");
       });
     });
@@ -134,7 +132,7 @@ class LrnappStudioSubmissionComment extends PolymerElement {
    * detached life cycle
    */
   disconnectedCallback() {
-    this.$.body.removeEventListener("click", e => {
+    this.$.body.removeEventListener("click", (e) => {
       this.$.body.classList.toggle("nowrap");
     });
     super.disconnectedCallback();

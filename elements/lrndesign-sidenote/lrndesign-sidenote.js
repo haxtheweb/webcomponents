@@ -13,7 +13,7 @@ class LrndesignSidenote extends SimpleColors {
     return {
       ...super.properties,
       label: { type: String },
-      icon: { type: String }
+      icon: { type: String },
     };
   }
 
@@ -28,7 +28,7 @@ class LrndesignSidenote extends SimpleColors {
         icon: "icons:bookmark",
         color: "blue",
         groups: [""],
-        meta: { author: "ELMS:LN" }
+        meta: { author: "ELMS:LN" },
       },
       settings: {
         configure: [
@@ -37,12 +37,12 @@ class LrndesignSidenote extends SimpleColors {
             title: "Label",
             description: "The label of the sidenote.",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "dark",
             title: "Dark",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "icon",
@@ -57,32 +57,32 @@ class LrndesignSidenote extends SimpleColors {
               "icons:feedback",
               "icons:thumb-down",
               "icons:thumb-up",
-              "icons:warning"
-            ]
+              "icons:warning",
+            ],
           },
           {
             property: "accentColor",
             title: "Color",
             description: "The background color of the sidenote.",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             slot: "",
             title: "Content",
             description: "Content of the side note.",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: "lrndesign-sidenote",
           content: "<p>Content goes here...</p>",
-          properties: { label: "Label", icon: "bookmark" }
-        }
-      ]
+          properties: { label: "Label", icon: "bookmark" },
+        },
+      ],
     };
   }
 
@@ -125,7 +125,7 @@ class LrndesignSidenote extends SimpleColors {
           margin: 12.8px 0;
           flex: 1 1 auto;
         }
-      `
+      `,
     ];
   }
 

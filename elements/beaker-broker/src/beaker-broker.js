@@ -51,8 +51,8 @@ class BeakerBroker extends LitElement {
         this.dispatchEvent(
           new CustomEvent("archive-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -62,8 +62,8 @@ class BeakerBroker extends LitElement {
         this.dispatchEvent(
           new CustomEvent("dat-url-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }

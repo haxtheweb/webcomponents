@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "simple-blog-card",
-      "description": "`simple-blog-card`\n`a card commonly found on a blogging website`\n\nProperties:\n\n  * `placeholder` {`string`} - \n\n  * `size` {`string`} - \n\n  * `shadow` {`number`} - ",
-      "attributes": []
-    },
-    {
-      "name": "simple-blog-card",
       "description": "`simple-blog-card`\n`a card commonly found on a blogging website`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `author` {`string`} - \n\n  * `authorimage` {`string`} - \n\n  * `authorlink` {`string`} - \n\n  * `readtime` {`number`} - \n\n  * `timestamp` {`number`} - \n\n  * `image` {`string`} - \n\n  * `link` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `placeholder` {`string`} - \n\n  * `size` {`string`} - \n\n  * `shadow` {`number`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `author` {`string`} - \n\n  * `authorimage` {`string`} - \n\n  * `authorlink` {`string`} - \n\n  * `readtime` {`number`} - \n\n  * `timestamp` {`number`} - \n\n  * `image` {`string`} - \n\n  * `link` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `placeholder` {`string`} - \n\n  * `size` {`string`} - \n\n  * `shadow` {`number`} - ",
       "attributes": [
         {

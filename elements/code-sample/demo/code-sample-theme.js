@@ -1,4 +1,4 @@
-const html = string => string; // only for highlighting purpuses (editor)
+const html = (string) => string; // only for highlighting purpuses (editor)
 const $documentContainer = document.createElement("div");
 $documentContainer.setAttribute("style", "display: none;");
 

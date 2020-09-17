@@ -1,4 +1,4 @@
-export const mtzMarkedControlWrapperBehaviorImpl = function(SuperClass) {
+export const mtzMarkedControlWrapperBehaviorImpl = function (SuperClass) {
   return class extends SuperClass {
     static get properties() {
       return {
@@ -8,8 +8,8 @@ export const mtzMarkedControlWrapperBehaviorImpl = function(SuperClass) {
         syntaxSuffix: {
           // Optionally implement
           type: String,
-          value: ""
-        }
+          value: "",
+        },
       };
     }
     /**

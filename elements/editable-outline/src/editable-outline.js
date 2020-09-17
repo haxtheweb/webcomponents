@@ -52,10 +52,10 @@ class EditableOutline extends LitElement {
    * Expand all items
    */
   _expandall(e) {
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
+    this.shadowRoot.querySelectorAll("li").forEach((el) => {
       el.classList.remove("collapsed-title");
     });
-    this.shadowRoot.querySelectorAll("ul").forEach(el => {
+    this.shadowRoot.querySelectorAll("ul").forEach((el) => {
       el.classList.remove("collapsed-content");
     });
   }
@@ -63,7 +63,7 @@ class EditableOutline extends LitElement {
    * Collapse all items
    */
   _collapseall(e) {
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
+    this.shadowRoot.querySelectorAll("li").forEach((el) => {
       if (el.nextElementSibling && el.nextElementSibling.tagName === "UL") {
         el.classList.add("collapsed-title");
         el.nextElementSibling.classList.add("collapsed-content");
@@ -106,14 +106,14 @@ class EditableOutline extends LitElement {
   }
   firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
-    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
+    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach((el) => {
       el.target = this.__outlineNode;
     });
     this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
     this._observer = new MutationObserver(this._observeRecord.bind(this));
     this._observer.observe(this.__outlineNode, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
   }
   updated(changedProperties) {
@@ -127,8 +127,8 @@ class EditableOutline extends LitElement {
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -399,7 +399,7 @@ class EditableOutline extends LitElement {
         this.__blockScrub = true;
         this.__outlineNode.appendChild(outline.firstChild);
       }
-      this.shadowRoot.querySelectorAll("li").forEach(el => {
+      this.shadowRoot.querySelectorAll("li").forEach((el) => {
         el.setAttribute("contenteditable", "true");
       });
     }, 0);
@@ -506,7 +506,7 @@ class EditableOutline extends LitElement {
     if (
       this.__outlineNode.querySelector("li") == null ||
       !node ||
-      (node.tagName && (node.tagName != "UL" && node.tagName != "LI"))
+      (node.tagName && node.tagName != "UL" && node.tagName != "LI")
     ) {
       this.__outlineNode.appendChild(li);
     } else {

@@ -110,42 +110,42 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       commentTitle: {
         type: String,
         value: "Comment title",
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       actionView: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       dateUpdated: {
         type: String,
         reflectToAttribute: true,
-        notify: true
+        notify: true,
       },
       commentUser: {
         type: Object,
         value: {},
         reflectToAttribute: true,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   /**
@@ -153,8 +153,8 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.$.wrapper.addEventListener("click", function(e) {
+    afterNextRender(this, function () {
+      this.$.wrapper.addEventListener("click", function (e) {
         this.$.comment.classList.toggle("inactive", this.inactive);
       });
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));
@@ -164,7 +164,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
    * detached life cycle
    */
   disconnectedCallback() {
-    this.$.wrapper.removeEventListener("click", function(e) {
+    this.$.wrapper.removeEventListener("click", function (e) {
       this.$.comment.classList.toggle("inactive", this.inactive);
     });
     this.removeEventListener("iron-resize", this.onHeightChange.bind(this));

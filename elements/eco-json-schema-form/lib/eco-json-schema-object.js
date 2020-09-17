@@ -382,7 +382,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       </custom-style>
 
       <template is="dom-if" if="{{!wizard}}">
-        <div class="header" hidden\$="[[!label]]">[[label]]</div>
+        <div class="header" hidden$="[[!label]]">[[label]]</div>
       </template>
       <div class="layout vertical flex start-justified">
         <div
@@ -398,50 +398,50 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   static get properties() {
     return {
       language: {
-        value: "en"
+        value: "en",
       },
       resources: {
         value() {
           return {};
-        }
+        },
       },
       schema: {
         type: Object,
         notify: true,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       label: {
-        type: String
+        type: String,
       },
       value: {
         type: Object,
         notify: true,
         value() {
           return {};
-        }
+        },
       },
       error: {
         type: Object,
-        observer: "_errorChanged"
+        observer: "_errorChanged",
       },
       wizard: {
         type: Boolean,
-        notify: true
+        notify: true,
       },
       /**
        * the name of the code-editor theme
        */
       codeTheme: {
         type: String,
-        value: "vs-light-2"
+        value: "vs-light-2",
       },
       /**
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
   disconnectedCallback() {
@@ -455,14 +455,14 @@ class EcoJsonSchemaObject extends mixinBehaviors(
    */
   _buildSchemaProperties(thisSchema = this.schema) {
     var ctx = this;
-    return Object.keys(thisSchema.properties || []).map(key => {
+    return Object.keys(thisSchema.properties || []).map((key) => {
       var schema = thisSchema.properties[key];
       var property = {
         name: key,
         schema: schema,
         label: schema.title || key,
         description: schema.description,
-        component: schema.component || {}
+        component: schema.component || {},
       };
       if (!property.component.valueProperty) {
         property.component.valueProperty = "value";
@@ -576,8 +576,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
 
         if (detail.value.keySplices) {
           if (property.keyMap) {
-            detail.value.keySplices.forEach(splice => {
-              splice.removed.forEach(k => {
+            detail.value.keySplices.forEach((splice) => {
+              splice.removed.forEach((k) => {
                 delete property.keyMap[path.concat([k]).join(".")];
               });
             });
@@ -585,7 +585,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         }
 
         if (detail.value) {
-          detail.value.indexSplices.forEach(splice => {
+          detail.value.indexSplices.forEach((splice) => {
             var args = [path.join("."), splice.index, splice.removed.length];
             if (splice.addedCount) {
               for (var i = 0, ii = splice.addedCount; i < ii; i++) {
@@ -628,7 +628,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: event.target
+          detail: event.target,
         })
       );
       this.dispatchEvent(
@@ -636,7 +636,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }
@@ -650,7 +650,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     let setter = path.replace(/\[(\d+)\]/g, ".$1");
     if (setter != "") setter = `.${setter}`;
     if (props.length > 0) {
-      props.forEach(property => {
+      props.forEach((property) => {
         if (typeof property.value !== typeof undefined) {
           this.set(
             `value${setter}.${property.property}`,
@@ -670,7 +670,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
    */
   _buildForm(props = this._schemaProperties, container = this, prefix = "") {
     let autofocus = this.autofocus;
-    props.forEach(property => {
+    props.forEach((property) => {
       if (property.component.name === "code-editor") {
         // special case, can't come up with a better way to do this but monoco is very special case
         property.schema.component.properties.editorValue =
@@ -686,7 +686,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         propertyPrefix: propertyPrefix,
         propertyName: propertyName,
         language: this.language,
-        resources: this.resources
+        resources: this.resources,
       });
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
@@ -754,7 +754,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     });
@@ -832,7 +832,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       this.querySelectorAll("[name]"),
       this.error
     );*/
-    this.childNodes.forEach(el => {
+    this.childNodes.forEach((el) => {
       var name = el.getAttribute("name");
       if (this.error && this.error[name]) {
         el.error = this.error[name];

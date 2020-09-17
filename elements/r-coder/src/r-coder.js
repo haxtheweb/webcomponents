@@ -40,8 +40,8 @@ class RCoder extends LitElement {
 
   async ping() {
     const status = await fetch(this.endpoint, {
-      method: "GET"
-    }).then(res => res.status);
+      method: "GET",
+    }).then((res) => res.status);
     this.__connected = status === 200;
   }
 
@@ -54,8 +54,8 @@ class RCoder extends LitElement {
     const code = this.shadowRoot.getElementById("editor").value;
     const data = await fetch(this.endpoint, {
       method: "POST",
-      body: code
-    }).then(res => res.text());
+      body: code,
+    }).then((res) => res.text());
     this.shadowRoot.getElementById("output").innerText = data;
   }
 }

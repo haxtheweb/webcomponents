@@ -63,22 +63,22 @@ class EcoJsonSchemaBoolean extends PolymerElement {
     return {
       schema: {
         type: Object,
-        observer: "_schemaChanged"
+        observer: "_schemaChanged",
       },
       value: {
         type: Boolean,
         notify: true,
-        value: false
+        value: false,
       },
       error: {
         type: Boolean,
-        value: false
+        value: false,
       },
       _label: {
         type: String,
         notify: true,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
   _schemaChanged() {
@@ -86,7 +86,7 @@ class EcoJsonSchemaBoolean extends PolymerElement {
     var inputEl = this.shadowRoot.querySelector("#checkbox");
 
     if (schema.component && schema.component.properties) {
-      Object.keys(schema.component.properties).forEach(function(prop) {
+      Object.keys(schema.component.properties).forEach(function (prop) {
         inputEl[prop] = schema.component.properties[prop];
       });
     }

@@ -66,14 +66,14 @@ class LrnappOpenStudioAssignments extends PolymerElement {
               class="submission-list-item"
               button-class="submission-list-item"
               hover-class="blue white-text"
-              data-submission-id\$="[[submission.id]]"
+              data-submission-id$="[[submission.id]]"
             >
               <span slot="button">
                 <lrndesign-avatar
                   src="[[submission.relationships.author.data.avatar]]"
                   label="[[submission.relationships.author.data.name]]"
                   style="display:inline-block;"
-                  data-submission-id\$="[[submission.id]]"
+                  data-submission-id$="[[submission.id]]"
                 ></lrndesign-avatar>
               </span>
               <span slot="label"
@@ -92,7 +92,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
             ><paper-button
               class="submission-title ferpa-protect"
               on-click="_loadSubmissionUrl"
-              data-submission-id\$="[[submission.id]]"
+              data-submission-id$="[[submission.id]]"
               >Tap to comment on [[submission.attributes.title]] by
               [[submission.relationships.author.data.display_name]]</paper-button
             ></a
@@ -107,71 +107,71 @@ class LrnappOpenStudioAssignments extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       /**
        * The assignments that exist so we can make other calls for data
        */
       assignments: {
         type: Array,
-        notify: true
+        notify: true,
       },
       /**
        * The submissions that exist so we can make other calls for data
        */
       submissions: {
         type: Array,
-        notify: true
+        notify: true,
       },
       activeAssignmentId: {
         type: String,
         reflectToAttribute: true,
         value: null,
-        notify: true
+        notify: true,
       },
       activeAssignment: {
         type: Object,
         notify: true,
-        computed: "_activeAssignmentCompute(activeAssignmentId, assignments)"
+        computed: "_activeAssignmentCompute(activeAssignmentId, assignments)",
       },
       activeAuthorId: {
         type: String,
         reflectToAttribute: true,
         value: null,
-        notify: true
+        notify: true,
       },
       showSubmissions: {
         type: Boolean,
         computed: "_showSubmissions(activeAssignmentId)",
         value: false,
-        notify: true
+        notify: true,
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * base path for the app
        */
       basePath: {
         type: String,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   /**
@@ -190,7 +190,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
   _activeAssignmentCompute(activeAssignmentId, assignments) {
     let activeAssignment = null;
     if (assignments) {
-      activeAssignment = assignments.find(assignment => {
+      activeAssignment = assignments.find((assignment) => {
         return assignment.id == activeAssignmentId;
       });
     }
@@ -224,7 +224,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

@@ -30,16 +30,6 @@
           "description": "`value-changed` - "
         }
       ]
-    },
-    {
-      "name": "page-scroll-position",
-      "description": "Events:\n\n  * `value-changed` - ",
-      "attributes": [
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` - "
-        }
-      ]
     }
   ],
   "globalAttributes": [],

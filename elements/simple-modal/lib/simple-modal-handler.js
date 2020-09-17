@@ -5,7 +5,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
  * @var {string} this.modalTitle - title to display in modal
  * @var {object} this.modalContent - HTML element to display as content
  */
-export const SimpleModalHandler = function(SuperClass) {
+export const SimpleModalHandler = function (SuperClass) {
   return class extends SuperClass {
     connectedCallback() {
       super.connectedCallback();
@@ -45,15 +45,15 @@ export const SimpleModalHandler = function(SuperClass) {
         detail: {
           title: this.modalTitle,
           elements: {
-            content: this.modalContent
+            content: this.modalContent,
           },
           styles: {
             "--simple-modal-min-width": "50vw",
-            "--simple-modal-min-height": "50vh"
+            "--simple-modal-min-height": "50vh",
           },
           invokedBy: this,
-          clone: false
-        }
+          clone: false,
+        },
       });
       this.dispatchEvent(evt);
     }

@@ -16,12 +16,9 @@
  */
 class ToElement extends HTMLElement {
   // render function
-  get html() {
-    return `
-<style>
-
-        </style>
-<slot></slot>`;
+  render() {
+    return html` <style></style>
+      <slot></slot>`;
   }
 
   // properties available to the custom element for data binding
@@ -35,7 +32,7 @@ class ToElement extends HTMLElement {
       element: {
         name: "element",
         type: Object,
-        value: {}
+        value: {},
       },
       /**
        * valid custom element name of the new element to create
@@ -43,7 +40,7 @@ class ToElement extends HTMLElement {
       name: {
         name: "name",
         type: String,
-        value: "new-element"
+        value: "new-element",
       },
       /**
        * optional original location that this came from
@@ -51,7 +48,7 @@ class ToElement extends HTMLElement {
       sourceUrl: {
         name: "sourceUrl",
         type: String,
-        value: ""
+        value: "",
       },
       /**
        * MIME type lookup for file extensions
@@ -63,10 +60,10 @@ class ToElement extends HTMLElement {
             CSV: "text/csv",
             JSON: "text/json",
             PDF: "application/pdf",
-            TXT: "text/plain"
+            TXT: "text/plain",
           };
-        }
-      }
+        },
+      },
     };
   }
 
@@ -136,7 +133,7 @@ class ToElement extends HTMLElement {
   }
 
   _processQueue() {
-    this._queue.forEach(action => {
+    this._queue.forEach((action) => {
       this[`_${action.type}`](action.data);
     });
 
@@ -166,7 +163,7 @@ class ToElement extends HTMLElement {
     let html = this._tmp.outerHTML;
     return {
       html: html,
-      css: css
+      css: css,
     };
   }
   /**
@@ -268,8 +265,8 @@ class ToElement extends HTMLElement {
     return [
       {
         id: id,
-        style: css
-      }
+        style: css,
+      },
     ].concat(children.map(this.recursiveExtract.bind(this)));
   }
 
@@ -283,17 +280,17 @@ class ToElement extends HTMLElement {
 
     return {
       elements: flat,
-      stylesheet: flat.reduce(function(acc, cur) {
+      stylesheet: flat.reduce(function (acc, cur) {
         var style = "    #" + cur.id + " {\n" + cur.style + "    }\n";
         return acc + style;
-      }, "")
+      }, ""),
     };
   }
   /**
    * convert dashed case to camel case
    */
   dashToCamel(str) {
-    return str.replace(/-([a-z])/g, function(g) {
+    return str.replace(/-([a-z])/g, function (g) {
       return g[1].toUpperCase();
     });
   }
@@ -390,7 +387,7 @@ ${tmp.css}</style>
   downloadFromData(data, type, name = "download", newTab = true) {
     const mimeType = this.fileTypes[type.toUpperCase()];
     const blob = new Blob([decodeURIComponent(encodeURI(data))], {
-      type: mimeType
+      type: mimeType,
     });
     const filename = name + "." + type.toLowerCase();
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {

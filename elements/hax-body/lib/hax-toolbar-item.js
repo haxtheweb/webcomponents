@@ -152,7 +152,7 @@ class HaxToolbarItem extends LitElement {
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -214,75 +214,75 @@ class HaxToolbarItem extends LitElement {
        */
       corner: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       height: {
-        type: String
+        type: String,
       },
       /**
        * disabled state
        */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Inverted display mode
        */
       dark: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Style to be presented in a menu
        */
       menu: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Present smaller the normal but consistent
        */
       mini: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Present larger then normal but consistent
        */
       large: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Icon to represent this button, required.
        */
       icon: {
-        type: String
+        type: String,
       },
       /**
        * Text applied to the button
        */
       label: {
-        type: String
+        type: String,
       },
       /**
        * Hover tip text
        */
       tooltip: {
-        type: String
+        type: String,
       },
       /**
        * Direction that the tooltip should flow
        */
       tooltipDirection: {
         type: String,
-        attribute: "tooltip-direction"
+        attribute: "tooltip-direction",
       },
       default: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 }

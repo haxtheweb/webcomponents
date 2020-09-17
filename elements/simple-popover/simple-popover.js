@@ -34,30 +34,37 @@ class SimplePopover extends AbsolutePositionBehavior {
         :host([hidden]) {
           display: none;
         }
+
         :host > div {
           display: flex;
           flex-direction: column-reverse;
           justify-content: stretch;
           z-index: 1;
         }
+
         :host([position="left"]) > div {
           justify-content: flex-start;
           flex-direction: row;
         }
+
         :host([position="right"]) > div {
           justify-content: flex-end;
           flex-direction: row-reverse;
         }
+
         :host([position="top"]) > div {
           flex-direction: column;
         }
+
         :host > div > * {
           width: 100%;
         }
+
         :host([position="left"]) > div > *,
         :host([position="right"]) > div > * {
           width: unset;
         }
+
         #content {
           margin: 0;
           padding: var(--simple-popover-padding, 10px);
@@ -71,9 +78,11 @@ class SimplePopover extends AbsolutePositionBehavior {
             rgba(60, 64, 67, 0.3) 0px 4px 8px 3px
           );
         }
+
         #pointer-outer {
           margin: -1px;
         }
+
         #pointer {
           width: 20px;
           height: 20px;
@@ -81,6 +90,7 @@ class SimplePopover extends AbsolutePositionBehavior {
           overflow: hidden;
           flex: 0 0 20px;
         }
+
         #pointer:after {
           content: "";
           position: absolute;
@@ -92,34 +102,35 @@ class SimplePopover extends AbsolutePositionBehavior {
           top: 15px;
           left: 5px;
         }
+
         :host([position="top"]) #pointer:after {
           top: -5px;
           left: 5px;
         }
+
         :host([position="right"]) #pointer:after {
           top: 5px;
           left: 15px;
         }
+
         :host([position="left"]) #pointer:after {
           top: 5px;
           left: -5px;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div>
-        <div id="content" role="alertdialog">
-          <slot></slot>
-        </div>
-        <div id="pointer-outer">
-          <div id="pointer" .style=${this._getMargins(this.__positions)}></div>
-        </div>
+    return html` <div>
+      <div id="content" role="alertdialog">
+        <slot></slot>
       </div>
-    `;
+      <div id="pointer-outer">
+        <div id="pointer" .style=${this._getMargins(this.__positions)}></div>
+      </div>
+    </div>`;
   }
 
   // haxProperty definition
@@ -137,13 +148,13 @@ class SimplePopover extends AbsolutePositionBehavior {
         groups: ["Popover"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -153,11 +164,11 @@ class SimplePopover extends AbsolutePositionBehavior {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding

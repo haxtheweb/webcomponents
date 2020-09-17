@@ -24,9 +24,11 @@ class FullScreenImage extends LitElement {
           display: block;
           font-variant-ligatures: common-ligatures;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         h2 {
           font-size: 4em;
           font-weight: 200;
@@ -37,6 +39,7 @@ class FullScreenImage extends LitElement {
           letter-spacing: -0.04em;
           font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
         }
+
         p {
           font-weight: 400;
           color: white;
@@ -47,6 +50,7 @@ class FullScreenImage extends LitElement {
           margin-top: 0;
           margin-bottom: 1em;
         }
+
         img {
           position: absolute;
           margin: 0px;
@@ -59,6 +63,7 @@ class FullScreenImage extends LitElement {
           left: 0px;
           top: -57.1875px;
         }
+
         paper-icon-button {
           width: 75px;
           height: 45px;
@@ -71,9 +76,11 @@ class FullScreenImage extends LitElement {
           color: white;
           background-color: rgba(0, 0, 0, 0.6);
         }
+
         .fullpage-container {
           display: block;
         }
+
         .image-wrapper {
           left: 0px;
           top: 0px;
@@ -86,6 +93,7 @@ class FullScreenImage extends LitElement {
           z-index: -999998;
           position: absolute;
         }
+
         .overlay-container {
           display: block;
           position: absolute;
@@ -95,27 +103,25 @@ class FullScreenImage extends LitElement {
           right: 0px;
           background-color: rgba(191, 147, 45, 0.7);
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div class="fullpage-container">
-        <div class="overlay-container">
-          <h2>${this.title}</h2>
-          <p>${this.subtitle}</p>
-        </div>
-        <paper-icon-button
-          id="down"
-          icon="hardware:keyboard-arrow-down"
-        ></paper-icon-button>
-        <div class="image-wrapper">
-          <img loading="lazy" id="img" src="${this.source}" />
-        </div>
+    return html` <div class="fullpage-container">
+      <div class="overlay-container">
+        <h2>${this.title}</h2>
+        <p>${this.subtitle}</p>
       </div>
-    `;
+      <paper-icon-button
+        id="down"
+        icon="hardware:keyboard-arrow-down"
+      ></paper-icon-button>
+      <div class="image-wrapper">
+        <img loading="lazy" id="img" src="${this.source}" />
+      </div>
+    </div>`;
   }
 
   // haxProperty definition
@@ -132,13 +138,13 @@ class FullScreenImage extends LitElement {
         groups: ["Screen"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [
@@ -148,8 +154,8 @@ class FullScreenImage extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
         configure: [
           {
@@ -157,14 +163,14 @@ class FullScreenImage extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "subtitle",
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "source",
@@ -172,11 +178,11 @@ class FullScreenImage extends LitElement {
             inputMethod: "textfield",
             required: true,
             icon: "icons:link",
-            validationType: "url"
-          }
+            validationType: "url",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -185,14 +191,14 @@ class FullScreenImage extends LitElement {
       ...super.properties,
 
       title: {
-        type: String
+        type: String,
       },
       subtitle: {
-        type: String
+        type: String,
       },
       source: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -217,11 +223,11 @@ class FullScreenImage extends LitElement {
    * LitElement ready
    */
   firstUpdated() {
-    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").addEventListener("click", (e) => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   }

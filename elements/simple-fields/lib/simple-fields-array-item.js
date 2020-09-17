@@ -125,7 +125,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         ::slotted([slot="preview"]:last-of-type) {
           margin-bottom: 0;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -160,7 +160,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
             icon="delete"
             label="Remove this item"
             ?disabled="${this.disabled}"
-            @click="${e => this._handleRemove()}"
+            @click="${(e) => this._handleRemove()}"
           >
           </paper-icon-button>
           <simple-tooltip for="remove">Remove this item</simple-tooltip>
@@ -179,7 +179,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
        * is disabled?
        */
       expanded: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * is disabled?
@@ -187,7 +187,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled"
+        attribute: "disabled",
       },
       /**
        * is disabled?
@@ -195,13 +195,13 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       sortable: {
         type: Boolean,
         reflect: true,
-        attribute: "sortable"
+        attribute: "sortable",
       },
       /**
        * is disabled?
        */
       preview: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * fields to preview by
@@ -209,8 +209,8 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       previewBy: {
         type: Array,
         reflect: true,
-        attribute: "preview-by"
-      }
+        attribute: "preview-by",
+      },
       /**
        * fields to sort by
        * /
@@ -242,7 +242,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
     }, 0);
@@ -256,7 +256,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   }
   get slots() {
     let slots = {};
-    this.previewBy.forEach(field => (slots[field] = "preview"));
+    this.previewBy.forEach((field) => (slots[field] = "preview"));
     return slots;
   }
   /**
@@ -280,7 +280,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -295,7 +295,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -314,7 +314,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
     super.disconnectedCallback();

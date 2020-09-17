@@ -99,9 +99,9 @@ class SimpleLoginCamera extends HTMLElement {
       video: {
         width: { min: 320, ideal: 1280, max: 1920 },
         height: { min: 240, ideal: 720, max: 1080 },
-        facingMode: "user"
+        facingMode: "user",
       },
-      audio: this.hasAttribute("audio")
+      audio: this.hasAttribute("audio"),
     });
   }
   takeASnap() {

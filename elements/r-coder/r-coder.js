@@ -31,13 +31,13 @@ class RCoder extends LitElement {
         #button {
           margin: var(--r-code-button-margin, 10px 0);
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <code-editor id="editor" language="r"></code-editor>
+    return html` <code-editor id="editor" language="r"></code-editor>
       <paper-button
         id="button"
         ?disabled="${!this.__connected}"
@@ -45,8 +45,7 @@ class RCoder extends LitElement {
         raised
         >Process</paper-button
       >
-      <div id="output"></div>
-    `;
+      <div id="output"></div>`;
   }
 
   // haxProperty definition
@@ -63,13 +62,13 @@ class RCoder extends LitElement {
         groups: ["Coder"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "heymp",
-          owner: "PSU"
-        }
+          owner: "PSU",
+        },
       },
       settings: {
         quick: [],
@@ -79,11 +78,11 @@ class RCoder extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -92,11 +91,11 @@ class RCoder extends LitElement {
       ...super.properties,
 
       endpoint: {
-        type: String
+        type: String,
       },
       __connected: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -127,8 +126,8 @@ class RCoder extends LitElement {
 
   async ping() {
     const status = await fetch(this.endpoint, {
-      method: "GET"
-    }).then(res => res.status);
+      method: "GET",
+    }).then((res) => res.status);
     this.__connected = status === 200;
   }
 
@@ -141,8 +140,8 @@ class RCoder extends LitElement {
     const code = this.shadowRoot.getElementById("editor").value;
     const data = await fetch(this.endpoint, {
       method: "POST",
-      body: code
-    }).then(res => res.text());
+      body: code,
+    }).then((res) => res.text());
     this.shadowRoot.getElementById("output").innerText = data;
   }
 }

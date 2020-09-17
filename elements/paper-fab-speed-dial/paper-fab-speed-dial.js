@@ -13,7 +13,9 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class PaperFabSpeedDial extends PolymerElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js");
+    import(
+      "@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js"
+    );
   }
   static get tag() {
     return "paper-fab-speed-dial";
@@ -22,16 +24,16 @@ class PaperFabSpeedDial extends PolymerElement {
     return {
       icon: {
         type: String,
-        value: "add"
+        value: "add",
       },
       opened: {
         type: Boolean,
-        notify: true
+        notify: true,
       },
       disabled: {
         type: Boolean,
-        value: false
-      }
+        value: false,
+      },
     };
   }
   // Public methods

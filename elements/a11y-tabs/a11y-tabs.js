@@ -264,27 +264,22 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         :host(:not([icons-only])) #tabs #tabs simple-tooltip {
           display: none;
         }
+
         iron-icon:not([hidden]) {
           display: inline-block;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <ul id="tabs">
-        ${this.tabs.map(
-          (tab, i) => html`
-            <li>${this._tabButton(tab)}</li>
-          `
-        )}
+    return html` <ul id="tabs">
+        ${this.tabs.map((tab, i) => html` <li>${this._tabButton(tab)}</li> `)}
       </ul>
       <div id="content">
         <slot></slot>
-      </div>
-    `;
+      </div>`;
   }
 
   // haxProperty definition
@@ -298,75 +293,75 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         description: "A set of tabs.",
         icon: "view-day",
         color: "grey",
-        groups: ["Content", "Presentation", "Tabs"]
+        groups: ["Content", "Presentation", "Tabs"],
       },
       settings: {
         quick: [
           {
             property: "disabled",
             title: "Disabled",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "hidden",
             title: "Hidden",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "sticky",
             title: "Sticky",
             desc:
               "Horizontal tabs stick to the top of the window when scrolling.",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
         configure: [
           {
             property: "disabled",
             title: "Disabled",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "hidden",
             title: "Hidden",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "sticky",
             title: "Sticky.",
             desc:
               "Horizontal tabs stick to the top of the window when scrolling.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "layoutBreakpoint",
             title: "Layout Breakpoint",
             inputMethod: "Number",
             descripton:
-              "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode."
+              "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode.",
           },
           {
             property: "iconBreakpoint",
             title: "Icon Breakpoint",
             inputMethod: "Number",
             descripton:
-              "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode."
+              "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode.",
           },
           {
             slot: "",
             title: "Tabs",
             description: "A series of <a11y-tab/> elements.",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
         advanced: [
           {
             property: "id",
             title: "Unique ID",
-            inputMethod: "textfield"
-          }
-        ]
-      }
+            inputMethod: "textfield",
+          },
+        ],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -380,7 +375,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       activeTab: {
         type: String,
         reflect: true,
-        attribute: "active-tab"
+        attribute: "active-tab",
       },
       /**
        * whether the tabbed interface is disabled
@@ -388,7 +383,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       disabled: {
         type: Boolean,
         reflect: true,
-        attribute: "disabled"
+        attribute: "disabled",
       },
       /**
        * whether the tabbed interface is hidden
@@ -396,7 +391,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       hidden: {
         type: Boolean,
         reflect: true,
-        attribute: "hidden"
+        attribute: "hidden",
       },
       /**
        * Optional minimum breakpoint for showing tab text with icons, or
@@ -405,14 +400,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        */
       iconBreakpoint: {
         type: Number,
-        attribute: "icon-breakpoint"
+        attribute: "icon-breakpoint",
       },
       /**
        * unique identifier/anchor for the tabbed interface
        */
       id: {
         type: String,
-        reflect: true
+        reflect: true,
       },
       /**
        * Optional minimum breakpoint for horizontal layout of tabs.
@@ -421,7 +416,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        */
       layoutBreakpoint: {
         type: Number,
-        attribute: "layout-breakpoint"
+        attribute: "layout-breakpoint",
       },
       /**
        * the size of the tabs,
@@ -431,7 +426,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       responsiveSize: {
         type: String,
         reflect: true,
-        attribute: "responsive-size"
+        attribute: "responsive-size",
       },
       /**
        * whether the tabs are sticky
@@ -439,14 +434,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       sticky: {
         type: Boolean,
         reflect: true,
-        attribute: "sticky"
+        attribute: "sticky",
       },
       /**
        * an array of tab data based on slotted `a11y-tab` elements
        */
       __tabs: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
 
@@ -471,7 +466,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   get iconsOnly() {
     return (
       this.iconBreakpoint &&
-      (this.tabs || []).filter(tab => !tab.icon).length < 1 &&
+      (this.tabs || []).filter((tab) => !tab.icon).length < 1 &&
       this.responsiveWidth < this.iconBreakpoint
     );
   }
@@ -503,7 +498,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @returns {object}
    */
   get tabs() {
-    return Object.keys(this.__tabs || {}).map(i => {
+    return Object.keys(this.__tabs || {}).map((i) => {
       this.__tabs[i].order = i + 1;
       this.__tabs[i].total = this.__tabs.length;
       return this.__tabs[i];
@@ -530,16 +525,16 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.observer.observe(this, {
       attributes: false,
       childList: true,
-      subtree: false
+      subtree: false,
     });
-    this.addEventListener("a11y-tab-changed", e => this.updateTabs());
+    this.addEventListener("a11y-tab-changed", (e) => this.updateTabs());
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
-    this.removeEventListener("a11y-tab-changed", e => this.updateTabs());
+    this.removeEventListener("a11y-tab-changed", (e) => this.updateTabs());
     super.disconnectedCallback();
   }
 
@@ -583,11 +578,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     let tabs = this.querySelectorAll(this.tabQuery);
     if (tabs && tabs.length > 0) {
       let enabled = Object.keys(tabs || [])
-          .filter(key => !tabs[key].disabled)
-          .map(key => tabs[key].id),
-        filtered = enabled.filter(tabid => tabid === id),
+          .filter((key) => !tabs[key].disabled)
+          .map((key) => tabs[key].id),
+        filtered = enabled.filter((tabid) => tabid === id),
         selected = filtered[0] || enabled[0];
-      tabs.forEach(tab => {
+      tabs.forEach((tab) => {
         tab.hidden = tab.id !== selected;
       });
       this.activeTab = selected;
@@ -611,7 +606,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: this,
       })
     );
   }
@@ -656,10 +651,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         id="${tab.id}-button"
         controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
-        @click="${e => this._handleTab(tab)}"
+        @click="${(e) => this._handleTab(tab)}"
         ?disabled="${tab.id === this.activeTab ||
-          tab.disabled ||
-          this.disabled}"
+        tab.disabled ||
+        this.disabled}"
         .flag="${tab.flag}"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
@@ -678,9 +673,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabFlag(tab) {
     return html`
-      <span class="flag-type" ?hidden="${!tab.flag}">
-        ${tab.flag}
-      </span>
+      <span class="flag-type" ?hidden="${!tab.flag}"> ${tab.flag} </span>
     `;
   }
 
@@ -711,9 +704,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @memberof A11yTabs
    */
   _tabLabel(tab) {
-    return html`
-      <span class="label">${tab.label}</span>
-    `;
+    return html` <span class="label">${tab.label}</span> `;
   }
 
   /**
@@ -726,9 +717,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   _tabTooltip(tab) {
     return html`
-      <simple-tooltip for="${tab.id}-button">
-        ${tab.label}
-      </simple-tooltip>
+      <simple-tooltip for="${tab.id}-button"> ${tab.label} </simple-tooltip>
     `;
   }
 }

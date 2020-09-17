@@ -89,12 +89,12 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
     return {
       propertyName: {
         type: String,
-        value: null
+        value: null,
       },
       schema: {
         type: Object,
-        value: {}
-      }
+        value: {},
+      },
     };
   }
   ready() {
@@ -107,7 +107,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
   _schemaChanged() {
     //make sure the content is there first
     afterNextRender(this, () => {
-      this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
+      this.shadowRoot.querySelectorAll(".item-fields").forEach((item) => {
         let index = item.getAttribute("data-index"),
           propertyName = this.propertyName,
           tab = this.schema.properties[index],
@@ -124,8 +124,8 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
               prefix: prefix,
               properties: tab.schema.properties,
               type: EcoJsonSchemaTabs.tag,
-              value: tab.value || {}
-            }
+              value: tab.value || {},
+            },
           })
         );
       });

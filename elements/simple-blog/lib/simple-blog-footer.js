@@ -137,7 +137,7 @@ class SimpleBlogFooter extends SimpleColors {
           color: black;
           display: inline-flex;
         }
-      `
+      `,
     ];
   }
   /**
@@ -228,31 +228,31 @@ class SimpleBlogFooter extends SimpleColors {
        */
       activeManifestIndex: {
         type: Number,
-        attribute: "active-manifest-index"
+        attribute: "active-manifest-index",
       },
       /**
        * Manifest, JSON Outline Schema object
        */
       manifest: {
-        type: Object
+        type: Object,
       },
       editMode: {
         type: Boolean,
         reflect: true,
-        attribute: "edit-mode"
+        attribute: "edit-mode",
       },
       prevChanged: {
-        type: String
+        type: String,
       },
       nextChanged: {
-        type: String
+        type: String,
       },
       prevTitle: {
-        type: String
+        type: String,
       },
       nextTitle: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   _activeManifestIndexChanged(newValue) {
@@ -279,14 +279,16 @@ class SimpleBlogFooter extends SimpleColors {
     this.prevChanged = "";
     this.nextTitle = "";
     this.nextChanged = "";
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    import(
+      "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
+    );
     import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
   }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = [];
-    autorun(reaction => {
+    autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
       if (varExists(this.manifest, "title")) {
         document.title = this.manifest.title;
@@ -302,11 +304,11 @@ class SimpleBlogFooter extends SimpleColors {
       }
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    autorun(reaction => {
+    autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });

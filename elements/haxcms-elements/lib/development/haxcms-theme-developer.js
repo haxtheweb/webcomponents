@@ -66,17 +66,17 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["page-title"]
-      }
+        unsetAttributes: ["page-title"],
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-active-title", this, true);
     props = {
@@ -91,17 +91,17 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        wipeSlot: false
-      }
+        wipeSlot: false,
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-breadcrumb", this, true);
     props = {
@@ -116,8 +116,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
@@ -126,22 +126,22 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
             property: "preventAutoScroll",
             title: "Prevent auto scroll",
             description: "If the menu should automatically scroll into view",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "hideActiveIndicator",
             title: "Hide active indicator",
             description:
               "Hide active indicator that highlights the active item",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: false,
-        unsetAttributes: ["active-id"]
-      }
+        unsetAttributes: ["active-id"],
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-menu", this, true);
     props = {
@@ -156,8 +156,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
@@ -169,8 +169,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
             inputMethod: "select",
             options: {
               prev: "Previous",
-              next: "Next"
-            }
+              next: "Next",
+            },
           },
           {
             property: "position",
@@ -181,39 +181,39 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
               left: "left",
               right: "right",
               above: "above",
-              below: "below"
-            }
+              below: "below",
+            },
           },
           {
             property: "label",
             title: "Label",
             description: "label to show on hover",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "label",
             title: "Label",
             description: "label to show on hover",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "icon",
             title: "Icon",
             description: "icon for the button",
-            inputMethod: "iconpicker"
+            inputMethod: "iconpicker",
           },
           {
             property: "raised",
             title: "Raised",
             description: "If this has a drop shadow or is flat",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["link"]
-      }
+        unsetAttributes: ["link"],
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-menu-button", this, true);
     props = {
@@ -228,8 +228,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
@@ -241,15 +241,15 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
             inputMethod: "select",
             options: {
               rss: "RSS 2.0",
-              atom: "Atom 1.0"
-            }
-          }
+              atom: "Atom 1.0",
+            },
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["icon", "label", "href"]
-      }
+        unsetAttributes: ["icon", "label", "href"],
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-rss-button", this, true);
     props = {
@@ -264,17 +264,17 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
         configure: [],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["site-title", "home-link"]
-      }
+        unsetAttributes: ["site-title", "home-link"],
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-title", this, true);
     props = {
@@ -289,8 +289,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
         groups: ["Content", "HAXcms"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         quick: [],
@@ -299,37 +299,37 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
             property: "conditions",
             title: "Conditions",
             description: "A JSON object of conditions",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "sort",
             title: "Sort",
             description: "A JSON object of sort conditions",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "grid",
             title: "Display as grid",
             description: "Flex vs display block for all items.",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             slot: "",
             slotWrapper: "template",
             slotAttributes: {
-              "preserve-content": "preserve-content"
+              "preserve-content": "preserve-content",
             },
             title: "Tag to render",
             description: "Render through this per item",
-            inputMethod: "code-editor"
-          }
+            inputMethod: "code-editor",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         wipeSlot: false,
-        unsetAttributes: ["active-id"]
-      }
+        unsetAttributes: ["active-id"],
+      },
     };
     this.HAXWiring.setHaxProperties(props, "site-query", this, true);
   }

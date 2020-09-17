@@ -3,11 +3,6 @@
   "tags": [
     {
       "name": "r-coder",
-      "description": "`r-coder`\n`R coder interface for the r-service backend.`\n\nProperties:\n\n  * `endpoint` {`string`} - ",
-      "attributes": []
-    },
-    {
-      "name": "r-coder",
       "description": "`r-coder`\n`R coder interface for the r-service backend.`\n\nAttributes:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - \n\nProperties:\n\n  * `__connected` {`boolean`} - \n\n  * `endpoint` {`string`} - ",
       "attributes": [
         {

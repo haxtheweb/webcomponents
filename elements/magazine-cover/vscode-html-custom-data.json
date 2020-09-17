@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "magazine-cover",
-      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```\n\nAttributes:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `event-name` {`string`} - Optional event binding for the button press.\n\n  * `event-data` - Optional event data to send along\n\nProperties:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `eventName` {`string`} - Optional event binding for the button press.\n\n  * `eventData` - Optional event data to send along",
+      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```\n\nAttributes:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `described-by` {`string`} - aria-describedby attribute\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `event-name` {`string`} - Optional event binding for the button press.\n\n  * `event-data` - Optional event data to send along\n\nProperties:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `describedBy` {`string`} - aria-describedby attribute\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `eventName` {`string`} - Optional event binding for the button press.\n\n  * `eventData` - Optional event data to send along",
       "attributes": [
         {
           "name": "header",
@@ -22,46 +22,8 @@
           "description": "`image` {`string`} - Title / heading\n\nProperty: image"
         },
         {
-          "name": "action",
-          "description": "`action` {`string`} - Call to action\n\nProperty: action\n\nDefault: Touch to learn more"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - Call to action icon\n\nProperty: icon\n\nDefault: trending-flat"
-        },
-        {
-          "name": "link",
-          "description": "`link` {`string`} - Link to go to on click.\n\nProperty: link\n\nDefault: "
-        },
-        {
-          "name": "event-name",
-          "description": "`event-name` {`string`} - Optional event binding for the button press.\n\nProperty: eventName\n\nDefault: "
-        },
-        {
-          "name": "event-data",
-          "description": "`event-data` - Optional event data to send along\n\nProperty: eventData\n\nDefault: [object Object]"
-        }
-      ]
-    },
-    {
-      "name": "magazine-cover",
-      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```\n\nAttributes:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `event-name` {`string`} - Optional event binding for the button press.\n\n  * `event-data` - Optional event data to send along\n\nProperties:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `eventName` {`string`} - Optional event binding for the button press.\n\n  * `eventData` - Optional event data to send along",
-      "attributes": [
-        {
-          "name": "header",
-          "description": "`header` {`string`} - Title / heading\n\nProperty: header"
-        },
-        {
-          "name": "subheader",
-          "description": "`subheader` {`string`} - A secondary title\n\nProperty: subheader"
-        },
-        {
-          "name": "text",
-          "description": "`text` {`string`} - Internal text.\n\nProperty: text"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - Title / heading\n\nProperty: image"
+          "name": "described-by",
+          "description": "`described-by` {`string`} - aria-describedby attribute\n\nProperty: describedBy"
         },
         {
           "name": "action",
@@ -91,7 +53,7 @@
     },
     {
       "name": "magazine-cover",
-      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```\n\nAttributes:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `event-name` {`string`} - Optional event binding for the button press.\n\n  * `event-data` - Optional event data to send along\n\nProperties:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `eventName` {`string`} - Optional event binding for the button press.\n\n  * `eventData` - Optional event data to send along",
+      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```\n\nAttributes:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `described-by` {`string`} - aria-describedby attribute\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `event-name` {`string`} - Optional event binding for the button press.\n\n  * `event-data` - Optional event data to send along\n\nProperties:\n\n  * `header` {`string`} - Title / heading\n\n  * `subheader` {`string`} - A secondary title\n\n  * `text` {`string`} - Internal text.\n\n  * `image` {`string`} - Title / heading\n\n  * `describedBy` {`string`} - aria-describedby attribute\n\n  * `action` {`string`} - Call to action\n\n  * `icon` {`string`} - Call to action icon\n\n  * `link` {`string`} - Link to go to on click.\n\n  * `eventName` {`string`} - Optional event binding for the button press.\n\n  * `eventData` - Optional event data to send along",
       "attributes": [
         {
           "name": "header",
@@ -108,6 +70,10 @@
         {
           "name": "image",
           "description": "`image` {`string`} - Title / heading\n\nProperty: image"
+        },
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - aria-describedby attribute\n\nProperty: describedBy"
         },
         {
           "name": "action",

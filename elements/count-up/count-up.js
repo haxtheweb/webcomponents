@@ -39,19 +39,17 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
           font-weight: var(--count-up-number-font-weight);
           font-size: var(--count-up-number-font-size);
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <div class="wrapper">
-        <slot name="prefix"></slot>
-        <div id="counter"></div>
-        <slot name="suffix"></slot>
-      </div>
-    `;
+    return html` <div class="wrapper">
+      <slot name="prefix"></slot>
+      <div id="counter"></div>
+      <slot name="suffix"></slot>
+    </div>`;
   }
 
   // haxProperty definition
@@ -68,13 +66,13 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
         groups: ["Up"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -82,54 +80,54 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
           {
             property: "start",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "end",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "duration",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "noeasing",
             description: "",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "decimalplaces",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "separator",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "decimal",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "prefix",
             description: "",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "suffix",
             description: "",
-            inputMethod: "textfield"
-          }
+            inputMethod: "textfield",
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["element-visible"]
-      }
+        unsetAttributes: ["element-visible"],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -141,70 +139,70 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
        * Starting point for counting
        */
       start: {
-        type: Number
+        type: Number,
       },
       /**
        * End point for counting stopping
        */
       end: {
-        type: Number
+        type: Number,
       },
       /**
        * Duration to count
        */
       duration: {
-        type: Number
+        type: Number,
       },
       /**
        * Disable easing animation
        */
       noeasing: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * decimal places to show
        */
       decimalplaces: {
-        type: Number
+        type: Number,
       },
       /**
        * separator for 100s groupings
        */
       separator: {
-        type: String
+        type: String,
       },
       /**
        * decimal point character
        */
       decimal: {
-        type: String
+        type: String,
       },
       /**
        * prefix string before the number counting
        */
       prefixtext: {
-        type: String
+        type: String,
       },
       /**
        * suffix string after the number counting
        */
       suffixtext: {
-        type: String
+        type: String,
       },
       thresholds: {
-        type: Array
+        type: Array,
       },
       rootMargin: {
         type: String,
-        attribute: "root-margin"
+        attribute: "root-margin",
       },
       ratio: {
         type: Number,
-        reflect: true
+        reflect: true,
       },
       elementVisible: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -239,7 +237,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
       separator: this.separator,
       decimal: this.decimal,
       prefix: this.prefixtext,
-      suffix: this.suffixtext
+      suffix: this.suffixtext,
     };
     this._countUp = new CountUp(
       this.shadowRoot.querySelector("#counter"),

@@ -116,7 +116,7 @@ class LrnsysCommentList extends PolymerElement {
       </app-toolbar>
       <grafitto-filter
         id="filteredcomments"
-        items\$="[[_toArray(comments.data)]]"
+        items$="[[_toArray(comments.data)]]"
         where=""
         as="filtered"
         like=""
@@ -148,7 +148,7 @@ class LrnsysCommentList extends PolymerElement {
        * CSRF Token
        */
       csrfToken: {
-        type: String
+        type: String,
       },
       /**
        * Request methods
@@ -160,50 +160,50 @@ class LrnsysCommentList extends PolymerElement {
           create: "POST",
           update: "PUT",
           delete: "DELETE",
-          like: "PATCH"
-        }
+          like: "PATCH",
+        },
       },
       /**
        * Comment currently in scope
        */
       activeComment: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * New stub comment from backend.
        */
       newComment: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * An object containing all comments to render in the list
        */
       comments: {
         type: Object,
-        notify: true
+        notify: true,
       },
       /**
        * Source to pull the comments from
        */
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * Base for ops calls
        */
       commentOpsBase: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * Source to get stub comments from
        */
       createStubUrl: {
         type: String,
-        notify: true
+        notify: true,
       },
       /**
        * Source for CRUD ops against individual comments.
@@ -212,8 +212,8 @@ class LrnsysCommentList extends PolymerElement {
         type: String,
         notify: true,
         computed:
-          "_computeCommentOpsUrl(activeComment, commentOpsBase, csrfToken)"
-      }
+          "_computeCommentOpsUrl(activeComment, commentOpsBase, csrfToken)",
+      },
     };
   }
 
@@ -224,13 +224,13 @@ class LrnsysCommentList extends PolymerElement {
     super.connectedCallback();
     this.shadowRoot
       .querySelector("#filtercomments")
-      .addEventListener("value-changed", e => {
+      .addEventListener("value-changed", (e) => {
         this.shadowRoot.querySelector("#filteredcomments").like =
           e.target.value;
       });
     this.shadowRoot
       .querySelector("#filtertype")
-      .addEventListener("change", e => {
+      .addEventListener("change", (e) => {
         this.shadowRoot.querySelector("#filtercomments").value = "";
         this.shadowRoot.querySelector("#filteredcomments").where =
           e.detail.value;
@@ -243,13 +243,13 @@ class LrnsysCommentList extends PolymerElement {
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#filtercomments")
-      .removeEventListener("value-changed", e => {
+      .removeEventListener("value-changed", (e) => {
         this.shadowRoot.querySelector("#filteredcomments").like =
           e.target.value;
       });
     this.shadowRoot
       .querySelector("#filtertype")
-      .removeEventListener("change", e => {
+      .removeEventListener("change", (e) => {
         this.shadowRoot.querySelector("#filtercomments").value = "";
         this.shadowRoot.querySelector("#filteredcomments").where =
           e.detail.value;
@@ -326,11 +326,11 @@ class LrnsysCommentList extends PolymerElement {
         title: "Delete comment",
         elements: {
           content: c,
-          buttons: b
+          buttons: b,
         },
         invokedBy: e.detail.target,
-        clone: false
-      }
+        clone: false,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -344,8 +344,8 @@ class LrnsysCommentList extends PolymerElement {
       cancelable: true,
       detail: {
         text: "Be awesome to each other",
-        duration: 4000
-      }
+        duration: 4000,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -434,8 +434,8 @@ class LrnsysCommentList extends PolymerElement {
           cancelable: true,
           detail: {
             text: "Comment deleted",
-            duration: 4000
-          }
+            duration: 4000,
+          },
         });
         this.dispatchEvent(evt);
         // bail early
@@ -459,8 +459,8 @@ class LrnsysCommentList extends PolymerElement {
       cancelable: true,
       detail: {
         text: "Comment saved!",
-        duration: 4000
-      }
+        duration: 4000,
+      },
     });
     this.dispatchEvent(evt);
   }
@@ -472,7 +472,7 @@ class LrnsysCommentList extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

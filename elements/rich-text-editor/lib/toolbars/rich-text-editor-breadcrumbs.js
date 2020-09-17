@@ -39,7 +39,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
         .selectednode {
           background-color: var(--rich-text-editor-bg);
         }
-      `
+      `,
     ];
   }
   render() {
@@ -58,9 +58,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
               </rich-text-editor-breadcrumb>
               ${i + 1 >= this.nodes.length
                 ? ""
-                : html`
-                    <span class="divider"> &gt; </span>
-                  `}
+                : html` <span class="divider"> &gt; </span> `}
             `
           )}
     `;
@@ -72,7 +70,7 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
        * active rict-text-editor.
        */
       controls: {
-        type: String
+        type: String,
       },
       /**
        * Hide breadcrumbs
@@ -80,13 +78,13 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
       hidden: {
         type: Boolean,
         attribute: "hidden",
-        reflect: true
+        reflect: true,
       },
       /**
        * breadcrumb labels.
        */
       label: {
-        type: String
+        type: String,
       },
       nodes: {
         type: Array
@@ -96,8 +94,8 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
        */
       sticky: {
         type: Boolean,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 

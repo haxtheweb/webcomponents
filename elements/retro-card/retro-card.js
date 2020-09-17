@@ -41,10 +41,12 @@ class RetroCard extends SimpleColors {
           --retro-card-light-color: #f4f1d0;
           --retro-card-dark-color: #212121;
         }
+
         :host([dark]) {
           --retro-card-dark-color: #f4f1d0;
           --retro-card-light-color: #212121;
         }
+
         :host([hidden]) {
           display: none;
         }
@@ -65,11 +67,13 @@ class RetroCard extends SimpleColors {
             padding 0.4s ease-in-out 0s, border 0.4s ease-in-out 0s,
             box-shadow 0.2s ease-in-out 0s;
         }
+
         .link:nth-child(1n + 0) {
           background-color: var(--retro-card-level-3);
           box-shadow: 8px 8px 0px 0px var(--retro-card-level-1);
           border: 4px var(--retro-card-level-1) solid;
         }
+
         .link {
           display: block;
           background-color: var(--retro-card-level-3);
@@ -107,6 +111,7 @@ class RetroCard extends SimpleColors {
           font-size: 0.9rem;
           padding: 0.75rem 1rem 0;
         }
+
         .card-tags {
           line-height: 1.6;
           text-align: center;
@@ -114,6 +119,7 @@ class RetroCard extends SimpleColors {
           text-rendering: optimizeLegibility;
           font-weight: 300;
         }
+
         .project-tag {
           font-size: 0.7rem;
           padding: 0.25rem 0.5rem;
@@ -147,34 +153,29 @@ class RetroCard extends SimpleColors {
           cursor: pointer;
           font-family: "Roboto Mono", Consolas, Monospace;
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <a
-        tabindex="-1"
-        class="link ${this.color}"
-        href="${this.url}"
-        @click="${this._clickCard}"
-      >
-        <img class="img" loading="lazy" src="${this.__source}" alt="" />
-        <span class="title">${this.title}</span>
-        <span class="name">${this.subtitle}</span>
-        <span class="description"><slot></slot></span>
-        <hr />
-        <div class="card-tags">
-          ${this.__cardTags.map(
-            tag =>
-              html`
-                <span class="project-tag">${tag.trim()}</span>
-              `
-          )}
-        </div>
-      </a>
-    `;
+    return html` <a
+      tabindex="-1"
+      class="link ${this.color}"
+      href="${this.url}"
+      @click="${this._clickCard}"
+    >
+      <img class="img" loading="lazy" src="${this.__source}" alt="" />
+      <span class="title">${this.title}</span>
+      <span class="name">${this.subtitle}</span>
+      <span class="description"><slot></slot></span>
+      <hr />
+      <div class="card-tags">
+        ${this.__cardTags.map(
+          (tag) => html`<span class="project-tag">${tag.trim()}</span>`
+        )}
+      </div>
+    </a>`;
   }
 
   // haxProperty definition
@@ -196,13 +197,13 @@ class RetroCard extends SimpleColors {
             source: "hoverSource",
             alt: "subtitle",
             title: "title",
-            name: "title"
-          }
+            name: "title",
+          },
         ],
         meta: {
           author: "ELMS:LN",
-          owner: "The Pennsylvania State University"
-        }
+          owner: "The Pennsylvania State University",
+        },
       },
       settings: {
         quick: [],
@@ -213,7 +214,7 @@ class RetroCard extends SimpleColors {
             description: "Main title of card",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "url",
@@ -221,7 +222,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "textfield",
             required: false,
             icon: "icons:android",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "subtitle",
@@ -229,7 +230,7 @@ class RetroCard extends SimpleColors {
             description: "Sub heading",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "tags",
@@ -237,7 +238,7 @@ class RetroCard extends SimpleColors {
             description: "Comma separated tags",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "mediaSource",
@@ -246,7 +247,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "haxupload",
             required: true,
             icon: "icons:link",
-            validationType: "url"
+            validationType: "url",
           },
           {
             property: "hoverSource",
@@ -255,7 +256,7 @@ class RetroCard extends SimpleColors {
             inputMethod: "haxupload",
             required: false,
             validationType: "url",
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "accentColor",
@@ -263,18 +264,18 @@ class RetroCard extends SimpleColors {
             title: "Accent Color",
             inputMethod: "colorpicker",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "dark",
             title: "Dark",
             description: "Sets base color to be dark mode",
             inputMethod: "boolean",
-            required: false
-          }
+            required: false,
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -283,36 +284,36 @@ class RetroCard extends SimpleColors {
       ...super.properties,
 
       title: {
-        type: String
+        type: String,
       },
       subtitle: {
-        type: String
+        type: String,
       },
       tags: {
-        type: String
+        type: String,
       },
       mediaSource: {
         type: String,
-        attribute: "media-source"
+        attribute: "media-source",
       },
       url: {
-        type: String
+        type: String,
       },
       hoverSource: {
         type: String,
-        attribute: "hover-source"
+        attribute: "hover-source",
       },
       hoverState: {
         type: Boolean,
         attribute: "hover-state",
-        reflect: true
+        reflect: true,
       },
       __cardTags: {
-        type: Array
+        type: Array,
       },
       __source: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 

@@ -1,4 +1,4 @@
-window.__haxClickEvent = e => {
+window.__haxClickEvent = (e) => {
   if (e.target.tagName !== "TO-ELEMENT") {
     e.preventDefault();
     e.stopPropagation();
@@ -18,10 +18,10 @@ window.__haxClickEvent = e => {
         .downloadNewComponent(e.target, name);
     } else {
       document.body.removeEventListener("click", window.__haxClickEvent);
-      document.body.removeEventListener("mouseover", function(e) {
+      document.body.removeEventListener("mouseover", function (e) {
         e.target.classList.add("hax-injected-highlighter");
       });
-      document.body.removeEventListener("mouseout", function(e) {
+      document.body.removeEventListener("mouseout", function (e) {
         e.target.classList.remove("hax-injected-highlighter");
       });
     }
@@ -45,9 +45,9 @@ alert(
   "Welcome to HAX Element creator. To get started, click on the thing you want to make a new element."
 );
 document.body.addEventListener("click", window.__haxClickEvent);
-document.body.addEventListener("mouseover", function(e) {
+document.body.addEventListener("mouseover", function (e) {
   e.target.classList.add("hax-injected-highlighter");
 });
-document.body.addEventListener("mouseout", function(e) {
+document.body.addEventListener("mouseout", function (e) {
   e.target.classList.remove("hax-injected-highlighter");
 });

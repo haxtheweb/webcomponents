@@ -296,51 +296,49 @@ class LrndesignTimeline extends SimpleColors {
             border-bottom: 1px solid var(--lrndesign-timeline-background);
           }
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <article>
-        <h1 id="title">${this.timelineTitle}</h1>
-        <slot></slot>
-        <div id="timeline">
-          <div id="events" @scroll="${this._checkScroll}">
-            ${this.eventsList.map(
-              (event, index) => html`
-                <section
-                  class="event"
-                  ?has-media="${event.imagesrc && event.imagesrc !== ""}"
-                  tabindex="0"
-                  @focus="${this._setScroll}"
-                >
-                  <div class="event-overview">
-                    <div class="heading"><h2>${event.heading}</h2></div>
-                    <div class="media-outer">
-                      ${!event.imagesrc || event.imagesrc === ""
-                        ? ``
-                        : html`
+    return html` <article>
+      <h1 id="title">${this.timelineTitle}</h1>
+      <slot></slot>
+      <div id="timeline">
+        <div id="events" @scroll="${this._checkScroll}">
+          ${this.eventsList.map(
+            (event, index) => html`
+              <section
+                class="event"
+                ?has-media="${event.imagesrc && event.imagesrc !== ""}"
+                tabindex="0"
+                @focus="${this._setScroll}"
+              >
+                <div class="event-overview">
+                  <div class="heading"><h2>${event.heading}</h2></div>
+                  <div class="media-outer">
+                    ${!event.imagesrc || event.imagesrc === ""
+                      ? ``
+                      : html`
+                          <div>
                             <div>
-                              <div>
-                                <img
-                                  alt="${event.imagealt}"
-                                  src="${event.imagesrc}"
-                                />
-                              </div>
+                              <img
+                                alt="${event.imagealt}"
+                                src="${event.imagesrc}"
+                              />
                             </div>
-                          `}
-                    </div>
+                          </div>
+                        `}
                   </div>
-                  <div class="details">${event.details}</div>
-                </section>
-              `
-            )}
-          </div>
+                </div>
+                <div class="details">${event.details}</div>
+              </section>
+            `
+          )}
         </div>
-      </article>
-    `;
+      </div>
+    </article>`;
   }
 
   // haxProperty definition
@@ -358,12 +356,12 @@ class LrndesignTimeline extends SimpleColors {
         handles: [
           {
             type: "image",
-            source: "image"
-          }
+            source: "image",
+          },
         ],
         meta: {
-          author: "LRNWebComponents"
-        }
+          author: "LRNWebComponents",
+        },
       },
       settings: {
         quick: [
@@ -372,40 +370,40 @@ class LrndesignTimeline extends SimpleColors {
             title: "Accent Color",
             description: "An optional accent color.",
             inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            icon: "editor:format-color-fill",
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
             inputMethod: "boolean",
-            icon: "icons:invert-colors"
-          }
+            icon: "icons:invert-colors",
+          },
         ],
         configure: [
           {
             property: "timelineTitle",
             title: "Timeline Title",
             description: "A title for the timeline.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
-            inputMethod: "colorpicker"
+            inputMethod: "colorpicker",
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             slot: "",
             title: "Timeline Description",
             description: "Optional text describing the timeline.",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "events",
@@ -418,31 +416,31 @@ class LrndesignTimeline extends SimpleColors {
                 property: "heading",
                 title: "Event Heading",
                 description: "The heading for the event.",
-                inputMethod: "textfield"
+                inputMethod: "textfield",
               },
               {
                 property: "details",
                 title: "Event Details",
                 description: "The body text with details for the event.",
-                inputMethod: "textfield"
+                inputMethod: "textfield",
               },
               {
                 property: "imagesrc",
                 title: "Event Image",
                 description: "The path of the image.",
-                inputMethod: "haxupload"
+                inputMethod: "haxupload",
               },
               {
                 property: "imagealt",
                 title: "Event Image Alt Text",
                 description: "The alt text of the image (for accessibility).",
-                inputMethod: "alt"
-              }
-            ]
-          }
+                inputMethod: "alt",
+              },
+            ],
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -466,7 +464,7 @@ class LrndesignTimeline extends SimpleColors {
 ]```
    */
       events: {
-        type: Array
+        type: Array,
       },
       /**
        * the timline size, calculated by responsive utility
@@ -482,16 +480,16 @@ class LrndesignTimeline extends SimpleColors {
         timelineTitle: {
           type: String,
           reflect: true,
-          attribute: "timeline-title"
+          attribute: "timeline-title",
         },
         /**
          * @depeacated: title of timeline
          */
         title: {
           type: String,
-          attribute: "title"
-        }
-      }
+          attribute: "title",
+        },
+      },
     };
   }
 
@@ -519,15 +517,15 @@ class LrndesignTimeline extends SimpleColors {
           sm: 600,
           md: 900,
           lg: 1200,
-          xl: 1600
-        }
+          xl: 1600,
+        },
       })
     );
 
     this.updateTimeline();
     this.observer.observe(this, {
       childList: true,
-      subtree: false
+      subtree: false,
     });
   }
   disconnectedCallback() {
@@ -585,7 +583,7 @@ class LrndesignTimeline extends SimpleColors {
     parent.scroll({
       top: el.offsetTop,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 
@@ -595,7 +593,7 @@ class LrndesignTimeline extends SimpleColors {
   _checkScroll(e) {
     if (this.shadowRoot) {
       let events = this.shadowRoot.querySelectorAll(".event") || [];
-      events.forEach(event => {
+      events.forEach((event) => {
         let top = event.offsetTop,
           target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
           bottom = event.offsetTop + event.offsetHeight;
@@ -615,7 +613,7 @@ class LrndesignTimeline extends SimpleColors {
       this.eventsElement
     ) {
       this.eventsElement.innerHTML = "";
-      sections.forEach(section => {
+      sections.forEach((section) => {
         let clone = section.cloneNode(true),
           div = document.createElement("div"),
           overview = div.cloneNode(),
@@ -653,7 +651,7 @@ class LrndesignTimeline extends SimpleColors {
         overview.appendChild(div);
 
         //get details
-        Object.keys(clone.children || []).forEach(child =>
+        Object.keys(clone.children || []).forEach((child) =>
           details.append(clone.children[child])
         );
         details.classList.add("details");

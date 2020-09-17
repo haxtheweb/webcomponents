@@ -76,13 +76,13 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
     return {
       submission: {
         type: Object,
-        notify: true
+        notify: true,
       },
       edit: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      }
+        reflectToAttribute: true,
+      },
     };
   }
 
@@ -93,7 +93,7 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

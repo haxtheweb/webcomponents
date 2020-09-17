@@ -5,6 +5,7 @@
 :host([hidden]) {
   display: none;
 }
+
 code-editor {
   height: 500px;
 }

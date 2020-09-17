@@ -3,8 +3,16 @@
   "tags": [
     {
       "name": "a11y-gif-player",
-      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `noImage` {`boolean`} - Boolean for if theres a source image or not\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `noImage` {`boolean`} - Boolean for if theres a source image or not",
+      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\nProperties:\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing",
       "attributes": [
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - other id's to add to aria-describedby\n\nProperty: describedBy"
+        },
+        {
+          "name": "longdesc",
+          "description": "`longdesc` {`string`} - longer image description for accesibility\n\nProperty: longdesc"
+        },
         {
           "name": "alt",
           "description": "`alt` {`string`} - Alt text of gif\n\nProperty: alt\n\nDefault: null"
@@ -33,52 +41,6 @@
         {
           "name": "__playing",
           "description": "`__playing` {`boolean`} - whether GIF is playing\n\nProperty: __playing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "noImage",
-          "description": "`noImage` {`boolean`} - Boolean for if theres a source image or not\n\nProperty: noImage\n\nDefault: true",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "a11y-gif-player",
-      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `noImage` {`boolean`} - Boolean for if theres a source image or not\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `noImage` {`boolean`} - Boolean for if theres a source image or not",
-      "attributes": [
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt text of gif\n\nProperty: alt\n\nDefault: null"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether button is disabled\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string`} - Source of animated gif\n\nProperty: src\n\nDefault: null"
-        },
-        {
-          "name": "tooltip",
-          "description": "`tooltip` {`string`} - default tooltip\n\nProperty: tooltip\n\nDefault: Toggle animation"
-        },
-        {
-          "name": "tooltip-playing",
-          "description": "`tooltip-playing` {`string`} - tooltip when playing\n\nProperty: tooltipPlaying\n\nDefault: null"
-        },
-        {
-          "name": "src-without-animation",
-          "description": "`src-without-animation` {`string`} - Source of static version of image\n\nProperty: srcWithoutAnimation\n\nDefault: null"
-        },
-        {
-          "name": "__playing",
-          "description": "`__playing` {`boolean`} - whether GIF is playing\n\nProperty: __playing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "noImage",
-          "description": "`noImage` {`boolean`} - Boolean for if theres a source image or not\n\nProperty: noImage\n\nDefault: true",
           "valueSet": "v"
         }
       ]
@@ -89,8 +51,16 @@
     },
     {
       "name": "a11y-gif-player",
-      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `noImage` {`boolean`} - Boolean for if theres a source image or not\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `noImage` {`boolean`} - Boolean for if theres a source image or not",
+      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltip-playing` {`string`} - tooltip when playing\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\nProperties:\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `src` {`string`} - Source of animated gif\n\n  * `tooltip` {`string`} - default tooltip\n\n  * `tooltipPlaying` {`string`} - tooltip when playing\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `__playing` {`boolean`} - whether GIF is playing",
       "attributes": [
+        {
+          "name": "described-by",
+          "description": "`described-by` {`string`} - other id's to add to aria-describedby\n\nProperty: describedBy"
+        },
+        {
+          "name": "longdesc",
+          "description": "`longdesc` {`string`} - longer image description for accesibility\n\nProperty: longdesc"
+        },
         {
           "name": "alt",
           "description": "`alt` {`string`} - Alt text of gif\n\nProperty: alt\n\nDefault: null"
@@ -119,11 +89,6 @@
         {
           "name": "__playing",
           "description": "`__playing` {`boolean`} - whether GIF is playing\n\nProperty: __playing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "noImage",
-          "description": "`noImage` {`boolean`} - Boolean for if theres a source image or not\n\nProperty: noImage\n\nDefault: true",
           "valueSet": "v"
         }
       ]

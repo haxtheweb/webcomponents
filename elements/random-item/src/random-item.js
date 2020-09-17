@@ -77,7 +77,7 @@ class RandomItem extends HTMLElement {
    * source changed
    */
   async sourceChanged(value) {
-    let data = await fetch(value).then(function(response) {
+    let data = await fetch(value).then(function (response) {
       return response.text();
     });
     this.items = this.CSVtoArray(data);

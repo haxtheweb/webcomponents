@@ -128,24 +128,24 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
     return {
       submission: {
         type: Object,
-        notify: true
+        notify: true,
       },
       uploadFilesUrl: {
-        type: String
+        type: String,
       },
       newlink: {
-        type: String
+        type: String,
       },
       newvideo: {
-        type: String
+        type: String,
       },
       videoGenerateSourceUrl: {
-        type: String
+        type: String,
       },
       submission: {
         type: Object,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
 
@@ -161,7 +161,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -174,7 +174,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -185,7 +185,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: true
+        detail: true,
       })
     );
   }
@@ -197,7 +197,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

@@ -44,34 +44,34 @@ class LrnsysPdf extends SchemaBehaviors(PolymerElement) {
        */
       title: {
         type: String,
-        value: "lrnsys-pdf"
+        value: "lrnsys-pdf",
       },
       /**
        * Whether or not to present this as a card.
        */
       card: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Download Label.
        */
       downloadLabel: {
         type: String,
-        computed: "_computeDownloadLabel(download)"
+        computed: "_computeDownloadLabel(download)",
       },
       /**
        * Active Page
        */
       page: {
-        type: String
+        type: String,
       },
       /**
        * File to present
        */
       file: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   /**

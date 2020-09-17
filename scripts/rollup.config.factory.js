@@ -1,4 +1,5 @@
 import babel from "rollup-plugin-babel";
+import babelPluginDynamicToStaticImport from "babel-plugin-transform-dynamic-imports-to-static-imports";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import del from "rollup-plugin-delete";
@@ -10,7 +11,7 @@ function umdConfig({ elementName, className } = {}) {
     output: {
       file: umdFilename,
       format: "umd",
-      name: className
+      name: className,
     },
     plugins: [
       commonjs(),
@@ -18,13 +19,14 @@ function umdConfig({ elementName, className } = {}) {
         presets: ["@babel/preset-env"],
         plugins: [
           "@babel/plugin-syntax-dynamic-import",
-          "@babel/plugin-syntax-import-meta"
-        ]
+          "@babel/plugin-syntax-import-meta",
+          babelPluginDynamicToStaticImport,
+        ],
       }),
       terser(),
-      del({ targets: "build" })
+      del({ targets: "build" }),
     ],
-    external: id => id.startsWith("..")
+    external: (id) => id.startsWith(".."),
   };
 }
 

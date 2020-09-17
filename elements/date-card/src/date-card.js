@@ -25,7 +25,7 @@ class DateCard extends SimpleColors {
       startTime: { type: String, attribute: "start-time" },
       endTime: { type: String, attribute: "end-time" },
       location: { type: String },
-      borderSpacing: { type: Number, attribute: "border-spacing" }
+      borderSpacing: { type: Number, attribute: "border-spacing" },
     };
   }
 
@@ -43,8 +43,8 @@ class DateCard extends SimpleColors {
         handles: [],
         meta: {
           author: "McGarvelcuddy",
-          owner: "elmsln"
-        }
+          owner: "elmsln",
+        },
       },
       settings: {
         quick: [],
@@ -53,59 +53,59 @@ class DateCard extends SimpleColors {
             property: "month",
             title: "Month",
             description: "Month to display on card",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "date",
             title: "Day of month",
             description: "Numeric date of the month",
-            inputMethod: "number"
+            inputMethod: "number",
           },
           {
             property: "day",
             title: "Day of week",
             description: "Textual day of the week",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "title",
             title: "Title",
             description: "Name of the event",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "location",
             title: "Location",
             description: "Where it is taking place",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "startTime",
             title: "Start",
             description: "Start time",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "endTime",
             title: "End",
             description: "Start time",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
-            inputMethod: "colorpicker"
+            inputMethod: "colorpicker",
           },
           {
             property: "dark",
             title: "Dark Theme",
             description: "Enable Dark Theme",
-            inputMethod: "boolean"
-          }
+            inputMethod: "boolean",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   constructor() {
@@ -200,7 +200,7 @@ class DateCard extends SimpleColors {
           font-size: 16px;
           color: var(--simple-colors-default-theme-accent-10);
         }
-      `
+      `,
     ];
   }
 
@@ -214,11 +214,7 @@ class DateCard extends SimpleColors {
           <p class="dateNumber">
             ${this.date}<sup>${this.nth(this.date)}</sup>
           </p>
-          ${this.day
-            ? html`
-                <p class="dayName">${this.day}</p>
-              `
-            : html``}
+          ${this.day ? html` <p class="dayName">${this.day}</p> ` : html``}
         </div>
       </div>
       ${this.title
@@ -226,28 +222,18 @@ class DateCard extends SimpleColors {
             <span class="details" .style="margin:${this.borderSpacing}px;">
               <p class="title">${this.title}</p>
               <p class="time">
-                ${this.day
-                  ? html`
-                      ${this.day},
-                    `
-                  : html``}${this.month}
+                ${this.day ? html` ${this.day}, ` : html``}${this.month}
                 ${this.date}${this.nth(this.date)}
                 ${this.startTime
                   ? html`
                       ${this.endTime
-                        ? html`
-                            from ${this.startTime} - ${this.endTime}
-                          `
-                        : html`
-                            at ${this.startTime}
-                          `}
+                        ? html` from ${this.startTime} - ${this.endTime} `
+                        : html` at ${this.startTime} `}
                     `
                   : html``}
               </p>
               ${this.location
-                ? html`
-                    <p class="location">${this.location}</p>
-                  `
+                ? html` <p class="location">${this.location}</p> `
                 : html``}
             </span>
           `

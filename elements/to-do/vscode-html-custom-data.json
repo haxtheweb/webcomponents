@@ -3,31 +3,7 @@
   "tags": [
     {
       "name": "to-do",
-      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "hide-form",
-          "description": "`hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\nProperty: hideForm\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled-list",
-          "description": "`disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\nProperty: disabledList\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "name",
-          "description": "`name` {`string`} - Name of this to do list\n\nProperty: name\n\nDefault: To do list"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - Items\n\nProperty: items\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "to-do",
-      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hide-form",
@@ -55,7 +31,7 @@
     },
     {
       "name": "to-do",
-      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hide-form",

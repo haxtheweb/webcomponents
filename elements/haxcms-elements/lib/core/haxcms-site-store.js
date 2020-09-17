@@ -4,7 +4,7 @@ import {
   computed,
   autorun,
   action,
-  toJS
+  toJS,
 } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
@@ -21,10 +21,10 @@ class Store {
     this.activeId = null;
     this.userData = {};
     this.cmsSiteEditor = {
-      instance: null
+      instance: null,
     };
     this.cmsSiteEditorBackend = {
-      instance: null
+      instance: null,
     };
     this.dashboardOpened = false;
   }
@@ -45,17 +45,17 @@ class Store {
         name: manifest.metadata.siteName,
         git: git,
         created: manifest.metadata.created,
-        updated: manifest.metadata.updated
+        updated: manifest.metadata.updated,
       };
       manifest.metadata.theme.variables = {
         image: manifest.metadata.image,
         icon: manifest.metadata.icon,
         hexCode: manifest.metadata.hexCode,
-        cssVariable: manifest.metadata.cssVariable
+        cssVariable: manifest.metadata.cssVariable,
       };
       manifest.metadata.node = {
         dynamicElementLoader: manifest.metadata.dynamicElementLoader,
-        fields: manifest.metadata.fields
+        fields: manifest.metadata.fields,
       };
       delete manifest.metadata.publishing;
       delete manifest.metadata.created;
@@ -85,7 +85,7 @@ class Store {
     // build a new array in the correct order by pushing the old items around
     for (var key in correctOrder) {
       newItems.push(
-        manifest.items.find(element => {
+        manifest.items.find((element) => {
           return element.id === correctOrder[key].id;
         })
       );
@@ -97,7 +97,7 @@ class Store {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: manifest
+        detail: manifest,
       })
     );
   }
@@ -122,7 +122,7 @@ class Store {
       let items = [];
       let data = [];
       let tmpItem;
-      _routerManifest.items.forEach(element => {
+      _routerManifest.items.forEach((element) => {
         // find top level parents
         if (!element.parent) {
           items.push(element);
@@ -130,18 +130,18 @@ class Store {
       });
       switch (dynamicMethodology) {
         case "parent":
-          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          tmpItem = _routerManifest.items.find((d) => parent === d.id);
           // shift up 1 if we found something
           if (tmpItem) {
             parent = tmpItem.parent;
           }
           break;
         case "ancestor":
-          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          tmpItem = _routerManifest.items.find((d) => parent === d.id);
           // walk back up to the root
           while (tmpItem && tmpItem.parent != null) {
             // take the parent object of this current item
-            tmpItem = _routerManifest.items.find(i => i.id == tmpItem.parent);
+            tmpItem = _routerManifest.items.find((i) => i.id == tmpItem.parent);
           }
           if (tmpItem) {
             parent = tmpItem.id;
@@ -160,10 +160,10 @@ class Store {
    */
   _setChildren(item, data) {
     // find all children
-    const children = data.filter(d => item.id === d.parent);
+    const children = data.filter((d) => item.id === d.parent);
     item.children = children;
     if (item.children.length > 0) {
-      item.children.forEach(child => {
+      item.children.forEach((child) => {
         // recursively call itself
         this._setChildren(child, data);
       });
@@ -179,14 +179,14 @@ class Store {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: manifest
+        detail: manifest,
       })
     );
     if (manifest && typeof manifest.items !== "undefined") {
-      let manifestItems = manifest.items.map(i => {
+      let manifestItems = manifest.items.map((i) => {
         let parentLocation = null;
         let parentSlug = null;
-        let parent = manifest.items.find(d => i.parent === d.id);
+        let parent = manifest.items.find((d) => i.parent === d.id);
         if (parent) {
           parentLocation = parent.location;
           parentSlug = parent.slug;
@@ -199,7 +199,7 @@ class Store {
           parentSlug: parentSlug,
           location: location,
           slug: slug,
-          metadata: metadata
+          metadata: metadata,
         });
       });
 
@@ -220,13 +220,13 @@ class Store {
       if (
         varGet(manifest, "metadata.site.settings.publishPagesOn", true) === true
       ) {
-        const filterHiddenParentsRecursive = item => {
+        const filterHiddenParentsRecursive = (item) => {
           // if the item is unpublished then remove it.
           if (item.metadata.published === false) {
             return false;
           }
           // if the item has parents, recursively see if any parent is not published
-          const parent = manifestItems.find(i => i.id === item.parent);
+          const parent = manifestItems.find((i) => i.id === item.parent);
           if (parent) {
             return filterHiddenParentsRecursive(parent);
           }
@@ -235,14 +235,14 @@ class Store {
         };
         // If the user is not logged in then we need to hide unpublished nodes items
         if (!this.isLoggedIn) {
-          manifestItems = manifestItems.filter(i =>
+          manifestItems = manifestItems.filter((i) =>
             filterHiddenParentsRecursive(i)
           );
         }
       }
 
       return Object.assign({}, manifest, {
-        items: manifestItems
+        items: manifestItems,
       });
     }
   }
@@ -263,7 +263,7 @@ class Store {
     // if we are on the homepage then load the first item in the manifest and set it active
     if (this.manifest) {
       const firstItem = this.manifest.items.find(
-        i => typeof i.id !== "undefined"
+        (i) => typeof i.id !== "undefined"
       );
       if (firstItem) {
         return firstItem.slug;
@@ -295,7 +295,7 @@ class Store {
         location: this.activeItem.location,
         slug: this.activeItem.slug,
         created: this.activeItem.metadata.created,
-        updated: this.activeItem.metadata.created
+        updated: this.activeItem.metadata.created,
       };
       // mix in any custom field definitions
       if (this.activeItem.metadata.fields) {
@@ -324,9 +324,9 @@ class Store {
               image: "assets/banner.jpg",
               icon: "icons:record-voice-over",
               hexCode: "#da004e",
-              cssVariable: "pink"
-            }
-          }
+              cssVariable: "pink",
+            },
+          },
         };
       }
       // ooo you sneaky devil you...
@@ -384,7 +384,7 @@ class Store {
   get parentTitle() {
     if (this.manifest && this.activeItem) {
       let tmpItem = this.manifest.items.find(
-        d => this.activeItem.parent === d.id
+        (d) => this.activeItem.parent === d.id
       );
       // shift up 1 if we found something
       if (tmpItem) {
@@ -407,12 +407,12 @@ class Store {
   get ancestorTitle() {
     if (this.manifest && this.activeItem) {
       let tmpItem = this.manifest.items.find(
-        d => this.activeItem.parent === d.id
+        (d) => this.activeItem.parent === d.id
       );
       // walk back up to the root
       while (tmpItem && tmpItem.parent != null) {
         // take the parent object of this current item
-        tmpItem = this.manifest.items.find(i => i.id == tmpItem.parent);
+        tmpItem = this.manifest.items.find((i) => i.id == tmpItem.parent);
       }
       if (tmpItem) {
         return tmpItem.title;
@@ -425,7 +425,7 @@ class Store {
    */
   findItem(id) {
     if (this.manifest && id) {
-      return this.manifest.items.find(item => {
+      return this.manifest.items.find((item) => {
         if (item.id !== id) {
           return false;
         }
@@ -456,7 +456,7 @@ class Store {
       }
       // we've found it. Now everyone below here should match
       if (item.children.length > 0) {
-        item.children.forEach(child => {
+        item.children.forEach((child) => {
           // recursively call itself
           this.spiderChildren(
             child,
@@ -471,7 +471,7 @@ class Store {
       }
     } else {
       if (item.children.length > 0) {
-        item.children.forEach(child => {
+        item.children.forEach((child) => {
           // recursively call itself
           this.spiderChildren(
             child,
@@ -501,7 +501,7 @@ class Store {
       let items = [];
       let data = [];
       let tmpItem;
-      _routerManifest.items.forEach(element => {
+      _routerManifest.items.forEach((element) => {
         // find top level parents
         if (!element.parent) {
           items.push(element);
@@ -509,18 +509,18 @@ class Store {
       });
       switch (dynamicMethodology) {
         case "parent":
-          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          tmpItem = _routerManifest.items.find((d) => parent === d.id);
           // shift up 1 if we found something
           if (tmpItem) {
             parent = tmpItem.parent;
           }
           break;
         case "ancestor":
-          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          tmpItem = _routerManifest.items.find((d) => parent === d.id);
           // walk back up to the root
           while (tmpItem && tmpItem.parent != null) {
             // take the parent object of this current item
-            tmpItem = _routerManifest.items.find(i => i.id == tmpItem.parent);
+            tmpItem = _routerManifest.items.find((i) => i.id == tmpItem.parent);
           }
           if (tmpItem) {
             parent = tmpItem.id;
@@ -564,7 +564,7 @@ decorate(Store, {
   activeTitle: computed, // active page title
   parentTitle: computed, // active page parent title
   ancestorTitle: computed, // active page ancestor title
-  changeActiveItem: action.bound
+  changeActiveItem: action.bound,
 });
 /**
  * Central store
@@ -609,7 +609,7 @@ class HAXCMSSiteStore extends HTMLElement {
         // get the id from the router
         const id = store.location.route.name;
         // make sure that we aren't in edit mode
-        let found = store.manifest.items.filter(item => {
+        let found = store.manifest.items.filter((item) => {
           if (item.id !== id) {
             return false;
           }
@@ -633,7 +633,7 @@ class HAXCMSSiteStore extends HTMLElement {
             bubbles: true,
             composed: true,
             cancelable: false,
-            detail: foundItem
+            detail: foundItem,
           })
         );
       }
@@ -650,7 +650,7 @@ class HAXCMSSiteStore extends HTMLElement {
             bubbles: true,
             composed: true,
             cancelable: false,
-            detail: editMode
+            detail: editMode,
           })
         );
         window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
@@ -714,13 +714,13 @@ class HAXCMSSiteStore extends HTMLElement {
   attributeChangedCallback(name, oldVal, newVal) {
     if (name == "source" && newVal != "") {
       fetch(this[name])
-        .then(response => {
+        .then((response) => {
           return response.json();
         })
-        .then(data => {
+        .then((data) => {
           this.store.loadManifest(data);
         })
-        .catch(err => {
+        .catch((err) => {
           console.warn(err);
         });
     }

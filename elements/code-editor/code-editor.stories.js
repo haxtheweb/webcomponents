@@ -6,7 +6,7 @@ import {
   withKnobs,
   withWebComponentsKnobs,
   text,
-  boolean
+  boolean,
 } from "@open-wc/demoing-storybook";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
@@ -15,8 +15,8 @@ export default {
   component: "code-editor",
   decorators: [withKnobs, withWebComponentsKnobs],
   parameters: {
-    options: { selectedPanel: "storybookjs/knobs/panel" }
-  }
+    options: { selectedPanel: "storybookjs/knobs/panel" },
+  },
 };
 const utils = new StorybookUtilities();
 export const CodeEditorStory = () => {
@@ -24,6 +24,6 @@ export const CodeEditorStory = () => {
     id: "code",
     language: "html",
     fontSize: 13,
-    emptyslot: `<template><p>Things and stuff</p></template>`
+    emptyslot: `<template><p>Things and stuff</p></template>`,
   });
 };

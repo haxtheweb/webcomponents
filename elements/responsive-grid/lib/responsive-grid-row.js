@@ -185,7 +185,7 @@ class ResponsiveGridRow extends LitElement {
         :host #row-inner[gutter="4"] ::slotted(* > #col-inner) {
           padding: 20px;
         }
-      `
+      `,
     ];
   }
   /**
@@ -240,8 +240,8 @@ class ResponsiveGridRow extends LitElement {
         detail: {
           element: this,
           attribute: "screen",
-          relativeToParent: this.responsiveToParent
-        }
+          relativeToParent: this.responsiveToParent,
+        },
       })
     );
   }
@@ -255,8 +255,8 @@ class ResponsiveGridRow extends LitElement {
         this.dispatchEvent(
           new CustomEvent("screen-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -268,37 +268,37 @@ class ResponsiveGridRow extends LitElement {
        * Custom x-small breakpoint
        */
       xs: {
-        type: Number
+        type: Number,
       },
       /**
        * Custom small breakpoint
        */
       sm: {
-        type: Number
+        type: Number,
       },
       /**
        * Custom medium breakpoint
        */
       md: {
-        type: Number
+        type: Number,
       },
       /**
        * Custom large breakpoint
        */
       lg: {
-        type: Number
+        type: Number,
       },
       /**
        * Custom extra-large breakpoint
        */
       xl: {
-        type: Number
+        type: Number,
       },
       /**
        * the gutter-level for the columns from 0-4
        */
       gutter: {
-        type: Number
+        type: Number,
       },
       /**
        * make responsive based on a container instead of the window
@@ -306,15 +306,15 @@ class ResponsiveGridRow extends LitElement {
       responsiveToParent: {
         type: Boolean,
         reflect: true,
-        attribute: "responsive-to-parent"
+        attribute: "responsive-to-parent",
       },
       /*
        * screen size: xs, sm, md, lg, or xl
        */
       screen: {
         type: String,
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 }

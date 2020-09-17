@@ -146,14 +146,13 @@ class SimpleModal extends LitElement {
             --simple-modal-buttons-background
           );
         }
-      `
+      `,
     ];
   }
 
   // render function
   render() {
-    return html`
-      <custom-style>
+    return html` <custom-style>
         <style>
           :host paper-dialog ::slotted(*) {
             @apply --simple-modal-content;
@@ -231,8 +230,7 @@ class SimpleModal extends LitElement {
         <div class="buttons">
           <slot name="buttons"></slot>
         </div>
-      </paper-dialog>
-    `;
+      </paper-dialog>`;
   }
 
   // properties available to the custom element for data binding
@@ -244,41 +242,41 @@ class SimpleModal extends LitElement {
        * heading / label of the modal
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * open state
        */
       opened: {
         type: Boolean,
-        reflect: true
+        reflect: true,
       },
       /**
        * Close label
        */
       closeLabel: {
         attribute: "close-label",
-        type: String
+        type: String,
       },
       /**
        * Close icon
        */
       closeIcon: {
         type: String,
-        attribute: "close-icon"
+        attribute: "close-icon",
       },
       /**
        * The element that invoked this. This way we can track our way back accessibly
        */
       invokedBy: {
-        type: Object
+        type: Object,
       },
       /**
        * support for modal flag
        */
       modal: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
@@ -437,8 +435,8 @@ class SimpleModal extends LitElement {
         "--simple-modal-buttons-background",
         "--simple-modal-buttons-padding",
         "--simple-modal-button-color",
-        "--simple-modal-button-background"
-      ].forEach(prop => {
+        "--simple-modal-button-background",
+      ].forEach((prop) => {
         this.style.setProperty(prop, styles[prop] || "unset");
       });
     }
@@ -499,8 +497,8 @@ class SimpleModal extends LitElement {
         cancelable: true,
         detail: {
           opened: false,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
@@ -509,8 +507,8 @@ class SimpleModal extends LitElement {
         cancelable: true,
         detail: {
           opened: true,
-          invokedBy: this.invokedBy
-        }
+          invokedBy: this.invokedBy,
+        },
       });
       this.dispatchEvent(evt);
     }

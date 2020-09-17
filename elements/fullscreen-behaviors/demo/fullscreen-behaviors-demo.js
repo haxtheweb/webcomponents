@@ -18,7 +18,7 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
     };
   }
   static get styles() {
@@ -48,7 +48,7 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
           width: 100%;
           padding: 0;
         }
-      `
+      `,
     ];
   }
 
@@ -58,7 +58,7 @@ class FullscreenBehaviorsDemo extends FullscreenBehaviors(LitElement) {
       <button
         aria-pressed="${this.__fullscreen ? "true" : "false"}"
         ?disabled="${!this.fullscreenEnabled}"
-        @click="${e => this.toggleFullscreen()}"
+        @click="${(e) => this.toggleFullscreen()}"
       >
         Toggle Fullscreen
       </button>

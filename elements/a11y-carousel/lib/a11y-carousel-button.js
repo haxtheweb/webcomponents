@@ -30,13 +30,11 @@ class a11yCarouselButton extends LitElement {
             display: none !important;
           }
         }
-      `
+      `,
     ];
   }
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -44,28 +42,28 @@ class a11yCarouselButton extends LitElement {
       active: {
         type: Boolean,
         attribute: "active",
-        reflect: true
+        reflect: true,
       },
       buttonType: {
         type: String,
         attribute: "button-type",
-        reflect: true
+        reflect: true,
       },
       controls: {
         type: String,
         attribute: "controls",
-        reflect: true
+        reflect: true,
       },
       disabled: {
         type: Boolean,
         attribute: "disabled",
-        reflect: true
+        reflect: true,
       },
       hidden: {
         type: Boolean,
         attribute: "hidden",
-        reflect: true
-      }
+        reflect: true,
+      },
     };
   }
 
@@ -120,7 +118,7 @@ class a11yCarouselButton extends LitElement {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: this
+            detail: this,
           })
         );
       }

@@ -55,7 +55,7 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
         }
       </style>
       <fieldset>
-        <legend id="legend" class="flex" hidden\$="[[!schema.title]]">
+        <legend id="legend" class="flex" hidden$="[[!schema.title]]">
           [[schema.title]]
         </legend>
         <div hidden$="[[!schema.description]]">[[item.description]]</div>
@@ -67,12 +67,12 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
     return {
       propertyName: {
         type: String,
-        value: null
+        value: null,
       },
       schema: {
         type: Object,
-        value: {}
-      }
+        value: {},
+      },
     };
   }
   ready() {
@@ -100,8 +100,8 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
                 prefix: prefix,
                 properties: this.schema.properties,
                 type: EcoJsonSchemaFieldset.tag,
-                value: this.schema.properties[index].value || {}
-              }
+                value: this.schema.properties[index].value || {},
+              },
             })
           );
         });

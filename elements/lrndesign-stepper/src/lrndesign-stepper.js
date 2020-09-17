@@ -12,7 +12,9 @@ visualization of steps
 class LrndesignStepper extends PolymerElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/lrndesign-stepper/lib/lrndesign-stepper-button.js");
+    import(
+      "@lrnwebcomponents/lrndesign-stepper/lib/lrndesign-stepper-button.js"
+    );
   }
   static get template() {
     return html`
@@ -32,9 +34,9 @@ class LrndesignStepper extends PolymerElement {
     var children = this.shadowRoot
       .querySelector("slot")
       .assignedNodes({ flatten: true })
-      .filter(n => n.nodeType === Node.ELEMENT_NODE);
+      .filter((n) => n.nodeType === Node.ELEMENT_NODE);
     if (children.length > 1) {
-      children.forEach(function(child, index) {
+      children.forEach(function (child, index) {
         if (index === 0) {
           child.setAttribute("location", "start");
         } else if (index === children.length - 1) {

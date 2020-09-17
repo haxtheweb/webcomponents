@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrnsys-button-inner",
+      "description": "`lrnsys-button-inner`\n\nAttributes:\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\nProperties:\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.",
+      "attributes": [
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Text to present for clicking.\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "avatar",
+          "description": "`avatar` {`string`} - Icon to present for clicking.\n\nProperty: avatar\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to present for clicking.\n\nProperty: icon\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-collapselist-item",
+      "description": "`lrnsys-collapselist-item`\n\nEvents:\n\n  * `opened-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - Whether or not this is default open on render.\n\nProperties:\n\n  * `opened` {`boolean`} - Whether or not this is default open on render.\n\n  * `value` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - Whether or not this is default open on render.\n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-collapselist",
+      "description": "`lrnsys-collapselist`\n\nAttributes:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\nProperties:\n\n  * `items` {`any[]`} - Array of items to present with label and content for the list of collapses.",
+      "attributes": [
+        {
+          "name": "items",
+          "description": "`items` {`any[]`} - Array of items to present with label and content for the list of collapses.\n\nProperty: items\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-dialog-toolbar-button",
+      "description": "Events:\n\n  * `button-initialized` - \n\n  * `dialog-toolbar-button-tapped` - \n\nAttributes:\n\n  * `title` {`string`} - The title of the button.\n\n  * `icon` {`string`} - The button icon.\n\n  * `id` {`string`} - The button ID.\n\nProperties:\n\n  * `title` {`string`} - The title of the button.\n\n  * `icon` {`string`} - The button icon.\n\n  * `id` {`string`} - The button ID.",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - The title of the button.\n\nProperty: title"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - The button icon.\n\nProperty: icon"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The button ID.\n\nProperty: id"
+        },
+        {
+          "name": "onbutton-initialized",
+          "description": "`button-initialized` - "
+        },
+        {
+          "name": "ondialog-toolbar-button-tapped",
+          "description": "`dialog-toolbar-button-tapped` - "
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-dialog-toolbar",
+      "description": "Attributes:\n\n  * `_secondaryHasChildren` {`boolean`} - Internal state of secondary toolbar\n\nProperties:\n\n  * `_secondaryHasChildren` {`boolean`} - Internal state of secondary toolbar",
+      "attributes": [
+        {
+          "name": "_secondaryHasChildren",
+          "description": "`_secondaryHasChildren` {`boolean`} - Internal state of secondary toolbar\n\nProperty: _secondaryHasChildren\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-dialog",
+      "description": "`lrnsys-dialog`\n\nEvents:\n\n  * `simple-modal-show` - \n\n  * `focus-changed` - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamic-images` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `heading-class` {`string`} - Default heading classes.\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the dialog\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `dynamicImages` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `headingClass` {`string`} - Default heading classes.\n\n  * `__modal` - ",
+      "attributes": [
+        {
+          "name": "raised",
+          "description": "`raised` {`boolean`} - If the button should be visually lifted off the UI.\n\nProperty: raised",
+          "valueSet": "v"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt / hover text for this link\n\nProperty: alt"
+        },
+        {
+          "name": "header",
+          "description": "`header` {`string`} - Header for the dialog\n\nProperty: header"
+        },
+        {
+          "name": "hover-class",
+          "description": "`hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\nProperty: hoverClass"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Disabled state.\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "dynamic-images",
+          "description": "`dynamic-images` {`boolean`} - Support for dynamic loading of iron-image elements that are in the content slot.\n\nProperty: dynamicImages\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "focus-state",
+          "description": "`focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperty: focusState\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "avatar",
+          "description": "`avatar` {`string`} - Icon to present for clicking.\n\nProperty: avatar\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to present for clicking.\n\nProperty: icon\n\nDefault: "
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Text to present for clicking.\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "heading-class",
+          "description": "`heading-class` {`string`} - Default heading classes.\n\nProperty: headingClass\n\nDefault: white-text black"
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        },
+        {
+          "name": "onfocus-changed",
+          "description": "`focus-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-drawer",
+      "description": "`lrnsys-drawer`\n\nEvents:\n\n  * `simple-drawer-show` - \n\n  * `focus-changed` - \n\nAttributes:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the drawer\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\nProperties:\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `alt` {`string`} - Alt / hover text for this link\n\n  * `header` {`string`} - Header for the drawer\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered\n\n  * `opened` {`boolean`} - State for if it is currently open.\n\n  * `align` {`string`} - Side of the screen to align the flyout (right or left)\n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `avatar` {`string`} - Icon to present for clicking.\n\n  * `icon` {`string`} - Icon to present for clicking.\n\n  * `text` {`string`} - Text to present for clicking.\n\n  * `__modal` - ",
+      "attributes": [
+        {
+          "name": "raised",
+          "description": "`raised` {`boolean`} - If the button should be visually lifted off the UI.\n\nProperty: raised",
+          "valueSet": "v"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt / hover text for this link\n\nProperty: alt"
+        },
+        {
+          "name": "header",
+          "description": "`header` {`string`} - Header for the drawer\n\nProperty: header"
+        },
+        {
+          "name": "hover-class",
+          "description": "`hover-class` {`string`} - Classes to add / subtract based on the item being hovered\n\nProperty: hoverClass"
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - State for if it is currently open.\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align",
+          "description": "`align` {`string`} - Side of the screen to align the flyout (right or left)\n\nProperty: align\n\nDefault: left"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Disabled state.\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "focus-state",
+          "description": "`focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperty: focusState\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "avatar",
+          "description": "`avatar` {`string`} - Icon to present for clicking.\n\nProperty: avatar\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to present for clicking.\n\nProperty: icon\n\nDefault: "
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Text to present for clicking.\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "onsimple-drawer-show",
+          "description": "`simple-drawer-show` - "
+        },
+        {
+          "name": "onfocus-changed",
+          "description": "`focus-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `opened-changed` - \n\n  * `button-initialized` - \n\n  * `dialog-toolbar-button-tapped` - \n\n  * `simple-modal-show` - \n\n  * `focus-changed` - \n\n  * `simple-drawer-show` - ",
+      "attributes": [
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` - "
+        },
+        {
+          "name": "onbutton-initialized",
+          "description": "`button-initialized` - "
+        },
+        {
+          "name": "ondialog-toolbar-button-tapped",
+          "description": "`dialog-toolbar-button-tapped` - "
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        },
+        {
+          "name": "onfocus-changed",
+          "description": "`focus-changed` - "
+        },
+        {
+          "name": "onsimple-drawer-show",
+          "description": "`simple-drawer-show` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

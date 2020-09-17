@@ -149,7 +149,7 @@ class LrndesignContactcard extends PolymerElement {
         <div id="group_icons">
           <div class="icons">
             <template is="dom-if" if="[[email]]">
-              <a tabindex="-1" href\$="mailto:[[email]]">
+              <a tabindex="-1" href$="mailto:[[email]]">
                 <paper-button id="mail" title$="Email address [[email]]">
                   <iron-icon icon="mail" class="mail_icon"></iron-icon>
                 </paper-button>
@@ -159,7 +159,7 @@ class LrndesignContactcard extends PolymerElement {
               >
             </template>
             <template is="dom-if" if="[[phone]]">
-              <a tabindex="-1" href\$="tel:[[phone]]">
+              <a tabindex="-1" href$="tel:[[phone]]">
                 <paper-button id="phone" title$="Phone number [[phone]]">
                   <iron-icon
                     icon="maps:local-phone"
@@ -172,7 +172,7 @@ class LrndesignContactcard extends PolymerElement {
               >
             </template>
             <template is="dom-if" if="[[website]]">
-              <a tabindex="-1" href\$="[[website]]">
+              <a tabindex="-1" href$="[[website]]">
                 <paper-button id="website" title$="Website address [[website]]">
                   <iron-icon
                     icon="hardware:desktop-windows"
@@ -215,50 +215,50 @@ class LrndesignContactcard extends PolymerElement {
        * A url to the image in question.
        */
       image: {
-        type: String
+        type: String,
       },
       /**
        * The email address of the user.
        */
       email: {
-        type: String
+        type: String,
       },
       /**
        * The name of the user.
        */
       name: {
-        type: String
+        type: String,
       },
       /**
        * The job-title / position of the user.
        */
       position: {
-        type: String
+        type: String,
       },
       /**
        * The employer / organization of the user.
        */
       organization: {
-        type: String
+        type: String,
       },
       /**
        * The phone number of the user.
        */
       phone: {
-        type: String
+        type: String,
       },
       /**
        * The associated website of the user.
        */
       website: {
-        type: String
+        type: String,
       },
       /**
        * Twitter account of the user.
        */
       twitter: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 }

@@ -49,7 +49,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
             <paper-icon-button
               icon="delete"
               class="linksfield__delete"
-              data-index\$="{{index}}"
+              data-index$="{{index}}"
               on-click="_deleteLink"
             ></paper-icon-button>
           </div>
@@ -90,12 +90,12 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
       links: {
         type: Array,
         value: null,
-        notify: true
+        notify: true,
       },
       newlink: {
         type: String,
-        value: ""
-      }
+        value: "",
+      },
     };
   }
 

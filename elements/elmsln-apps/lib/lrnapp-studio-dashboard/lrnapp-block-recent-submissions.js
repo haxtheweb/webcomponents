@@ -32,7 +32,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
         <template>
           <paper-button on-click="_loadSubmissionUrl">
             <lrndesign-gallerycard
-              data-submission-id\$="[[item.id]]"
+              data-submission-id$="[[item.id]]"
               title="[[item.attributes.title]]"
               author="[[item.relationships.author.data]]"
               comments="[[item.meta.comment_count]]"
@@ -52,28 +52,28 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
       },
       elmslnSection: {
-        type: String
+        type: String,
       },
       basePath: {
-        type: String
+        type: String,
       },
       csrfToken: {
-        type: String
+        type: String,
       },
       endPoint: {
-        type: String
+        type: String,
       },
       sourcePath: {
         type: String,
-        notify: true
+        notify: true,
       },
       response: {
         type: Array,
-        notify: true
-      }
+        notify: true,
+      },
     };
   }
   /**
@@ -98,7 +98,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
     if (obj == null) {
       return [];
     }
-    return Object.keys(obj).map(function(key) {
+    return Object.keys(obj).map(function (key) {
       return obj[key];
     });
   }

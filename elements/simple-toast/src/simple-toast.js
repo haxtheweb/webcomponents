@@ -135,7 +135,7 @@ class SimpleToast extends LitElement {
         bubbles: true,
         cancelable: true,
         detail: true,
-        composed: true
+        composed: true,
       });
       this.dispatchEvent(evt);
     }

@@ -7,7 +7,7 @@ import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 
-const ChartistRenderSuper = function(SuperClass) {
+const ChartistRenderSuper = function (SuperClass) {
   return class extends SuperClass {
     /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
@@ -31,7 +31,7 @@ const ChartistRenderSuper = function(SuperClass) {
       this.observer.observe(this, {
         attributes: false,
         childList: true,
-        subtree: true
+        subtree: true,
       });
       /**
        * Fired once once chart is ready.
@@ -44,7 +44,7 @@ const ChartistRenderSuper = function(SuperClass) {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this
+          detail: this,
         })
       );
       if (typeof Chartist === "object") this._chartistLoaded.bind(this);
@@ -66,16 +66,16 @@ const ChartistRenderSuper = function(SuperClass) {
       return [
         [
           "Chartist.plugins.ctAxisTitle",
-          "lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js"
+          "lib/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.min.js",
         ],
         [
           "Chartist.plugins.CtPointLabels",
-          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js"
+          "lib/chartist-plugin-pointlabels/dist/chartist-plugin-pointlabels.min.js",
         ],
         [
           "Chartist.plugins.fillDonut",
-          "lib/chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js"
-        ]
+          "lib/chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js",
+        ],
       ];
     }
     /**
@@ -100,7 +100,7 @@ const ChartistRenderSuper = function(SuperClass) {
            */
           this.dispatchEvent(
             new CustomEvent("chart-data-changed", {
-              detail: this
+              detail: this,
             })
           );
           this._getChart();
@@ -111,7 +111,7 @@ const ChartistRenderSuper = function(SuperClass) {
            */
           this.dispatchEvent(
             new CustomEvent("data-source-changed", {
-              detail: this
+              detail: this,
             })
           );
         } else if (
@@ -124,7 +124,7 @@ const ChartistRenderSuper = function(SuperClass) {
            */
           this.dispatchEvent(
             new CustomEvent("data-changed", {
-              detail: this
+              detail: this,
             })
           );
           this._renderTable();
@@ -154,7 +154,7 @@ const ChartistRenderSuper = function(SuperClass) {
         "es-bridge-chartistLib-loaded",
         this._chartistLoaded.bind(this)
       );
-      this.plugins.forEach(plugin =>
+      this.plugins.forEach((plugin) =>
         window.removeEventListener(
           `es-bridge-${plugin[0]}-loaded`,
           this._getChart.bind(this)
@@ -170,7 +170,7 @@ const ChartistRenderSuper = function(SuperClass) {
     _chartistLoaded() {
       this.__chartistLoaded = true;
       this._getChart();
-      this.plugins.forEach(plugin => this._loadScripts(plugin[0], plugin[1]));
+      this.plugins.forEach((plugin) => this._loadScripts(plugin[0], plugin[1]));
     }
 
     /**
@@ -273,7 +273,7 @@ const ChartistRenderSuper = function(SuperClass) {
             this.responsiveOptions !== undefined &&
             this.responsiveOptions.length > 0
           ) {
-            this.responsiveOptions.forEach(option => {
+            this.responsiveOptions.forEach((option) => {
               if (option[1] !== undefined) {
                 if (
                   option[1].axisX &&
@@ -306,7 +306,7 @@ const ChartistRenderSuper = function(SuperClass) {
             target,
             {
               labels: this.chartData.labels || [],
-              series: this.chartData.series || []
+              series: this.chartData.series || [],
             },
             this.fullOptions,
             this.responsiveOptions
@@ -323,11 +323,11 @@ const ChartistRenderSuper = function(SuperClass) {
             bubbles: true,
             cancelable: true,
             composed: true,
-            detail: chart
+            detail: chart,
           })
         );
         if (chart) {
-          chart.on("created", e => {
+          chart.on("created", (e) => {
             /**
              * Fired once chart is created features are added.
              *
@@ -339,11 +339,11 @@ const ChartistRenderSuper = function(SuperClass) {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: e
+                detail: e,
               })
             );
           });
-          chart.on("draw", e => {
+          chart.on("draw", (e) => {
             /**
              * Fired as shapes are being drawn.
              *
@@ -355,7 +355,7 @@ const ChartistRenderSuper = function(SuperClass) {
                 bubbles: true,
                 cancelable: true,
                 composed: true,
-                detail: e
+                detail: e,
               })
             );
           });
@@ -405,11 +405,11 @@ const ChartistRenderSuper = function(SuperClass) {
             ? undefined
             : {
                 row: rowHeads ? data[0][0] : undefined,
-                col: rowHeads ? data[0].slice(1, data[0].length) : data[0]
+                col: rowHeads ? data[0].slice(1, data[0].length) : data[0],
               },
           tbody = data
             .slice(thead ? 1 : 0, data.length)
-            .map(row =>
+            .map((row) =>
               rowHeads
                 ? { th: row[0], td: row.slice(1, row.length) }
                 : { td: row }
@@ -421,7 +421,7 @@ const ChartistRenderSuper = function(SuperClass) {
             ${thead.row ? `<th scope="row">${thead.row}</th>` : ``}
             ${
               thead.col
-                ? thead.col.map(th => `<th scope="col">${th}</th>`).join("")
+                ? thead.col.map((th) => `<th scope="col">${th}</th>`).join("")
                 : ``
             }
           </tr></thead>`;
@@ -430,10 +430,10 @@ const ChartistRenderSuper = function(SuperClass) {
           <tbody>
             ${tbody
               .map(
-                tr => `
+                (tr) => `
               <tr>
                 ${tr.th ? `<th scope="row">${tr.th}</th>` : ``}
-                ${tr.td ? tr.td.map(td => `<td>${td}</td>`).join("") : ``}
+                ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
               </tr>
             `
               )
@@ -462,12 +462,12 @@ const ChartistRenderSuper = function(SuperClass) {
         body = colHeads && data[1] ? data.slice(1, data.length) : data;
       if (rowHeads) {
         labels = labels.slice(1, labels.length);
-        body = body.map(row => row.slice(1, row.length));
+        body = body.map((row) => row.slice(1, row.length));
       }
       this.__dataReady = true;
       this.chartData = {
         labels: labels,
-        series: this.type === "pie" ? body[0] : body
+        series: this.type === "pie" ? body[0] : body,
       };
     }
 
@@ -478,9 +478,9 @@ const ChartistRenderSuper = function(SuperClass) {
       let table = this.querySelector("table"),
         data = [];
       if (table)
-        table.querySelectorAll("tr").forEach(tr => {
+        table.querySelectorAll("tr").forEach((tr) => {
           let temp = [];
-          tr.querySelectorAll("th,td").forEach(td => {
+          tr.querySelectorAll("th,td").forEach((td) => {
             let html = td.innerHTML.trim();
             temp.push(isNaN(html) ? html : parseInt(html));
           });

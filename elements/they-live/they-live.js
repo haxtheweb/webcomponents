@@ -29,17 +29,16 @@ class TheyLive extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      `
+      `,
     ];
   }
+
   // render function
   render() {
-    return html`
-      <div class="content">
-        <div class="truth">${this.truth}</div>
-        <slot></slot>
-      </div>
-    `;
+    return html` <div class="content">
+      <div class="truth">${this.truth}</div>
+      <slot></slot>
+    </div>`;
   }
 
   // properties available to the custom element for data binding
@@ -48,8 +47,8 @@ class TheyLive extends LitElement {
       ...super.properties,
 
       truth: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
 
@@ -96,7 +95,7 @@ class TheyLive extends LitElement {
           visibility: visible;
           opacity: 1;
         }
-      `
+      `,
     ];
   }
 

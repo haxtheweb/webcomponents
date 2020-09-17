@@ -21,7 +21,7 @@ class ResponsiveGridClear extends LitElement {
           display: none;
           clear: both;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -45,32 +45,32 @@ class ResponsiveGridClear extends LitElement {
        * clear the float and force a new worw on an extra-large screen?
        */
       xl: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * clear the float and force a new worw on a large screen?
        */
       lg: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * clear the float and force a new worw on a medium screen?
        */
       md: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * clear the float and force a new worw on a small screen?
        */
       sm: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * clear the float and force a new worw on an extra-small screen?
        */
       xs: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 }

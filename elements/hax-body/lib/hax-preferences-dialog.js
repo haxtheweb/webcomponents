@@ -3,7 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,
-  HaxElementizer
+  HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 /**
  * `hax-export-dialog`
@@ -65,13 +65,13 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           padding: 16px;
           font-style: italic;
         }
-      `
+      `,
     ];
   }
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
     this.ghLink =
       "https://github.com/elmsln/issues/issues/new?body=URL%20base:%20" +
@@ -85,19 +85,19 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         title: "X-Ray vision",
         description: "Visualizes the HTML tag powering the area of the page",
         inputMethod: "boolean",
-        value: false
+        value: false,
       },
       {
         property: "haxVoiceCommands",
         title: "Voice commands",
         description: "Experimental: Voice based control system",
         inputMethod: "boolean",
-        value: false
-      }
+        value: false,
+      },
     ];
     this.schemaValues = {
       haxRayMode: false,
-      haxVoiceCommands: false
+      haxVoiceCommands: false,
     };
     setTimeout(() => {
       import("@polymer/iron-icon/iron-icon.js");
@@ -114,8 +114,8 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         this.dispatchEvent(
           new CustomEvent(`${propName}-changed`, {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
       }
@@ -170,36 +170,36 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
        * github link
        */
       ghLink: {
-        type: String
+        type: String,
       },
       /**
        * Title when open.
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * Schema that has all of inputs / manages state
        */
       schema: {
-        type: Object
+        type: Object,
       },
       /**
        * Preferences managed for everything global about HAX.
        */
       preferences: {
-        type: Object
+        type: Object,
       },
       opened: {
-        type: Boolean
-      }
+        type: Boolean,
+      },
     };
   }
 
   firstUpdated(changedProperties) {
     this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
     this.shadowRoot.querySelector("#settingsform").value = {
-      ...this.schemaValues
+      ...this.schemaValues,
     };
     this.shadowRoot
       .querySelector("#settingsform")
@@ -212,8 +212,8 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         composed: true,
         detail: {
           piece: "haxPreferences",
-          object: this
-        }
+          object: this,
+        },
       })
     );
   }
@@ -253,7 +253,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
     this.opened = true;
     this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
     this.shadowRoot.querySelector("#settingsform").value = {
-      ...this.schemaValues
+      ...this.schemaValues,
     };
   }
   /**

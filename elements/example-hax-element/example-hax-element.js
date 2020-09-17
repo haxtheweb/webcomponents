@@ -16,8 +16,7 @@
 class ExampleHaxElement extends HTMLElement {
   // render function
   render() {
-    return html`
-      <style>
+    return html` <style>
         :host {
           display: block;
         }
@@ -26,8 +25,7 @@ class ExampleHaxElement extends HTMLElement {
           display: none;
         }
       </style>
-      <slot></slot>
-    `;
+      <slot></slot>`;
   }
 
   // haxProperty definition
@@ -45,13 +43,13 @@ class ExampleHaxElement extends HTMLElement {
         groups: ["Hax"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
-          }
+            type: "todo:read-the-docs-for-usage",
+          },
         ],
         meta: {
           author: "You",
-          owner: "Your Company"
-        }
+          owner: "Your Company",
+        },
       },
       settings: {
         quick: [],
@@ -61,18 +59,18 @@ class ExampleHaxElement extends HTMLElement {
             description: "",
             inputMethod: "textfield",
             required: false,
-            icon: "icons:android"
+            icon: "icons:android",
           },
           {
             property: "available",
             description: "",
             inputMethod: "boolean",
             required: false,
-            icon: "icons:android"
-          }
+            icon: "icons:android",
+          },
         ],
-        advanced: []
-      }
+        advanced: [],
+      },
     };
   }
   // properties available to the custom element for data binding
@@ -85,15 +83,15 @@ class ExampleHaxElement extends HTMLElement {
         type: String,
         value: "My Example",
         reflectToAttribute: false,
-        observer: false
+        observer: false,
       },
       available: {
         name: "available",
         type: Boolean,
         value: "",
         reflectToAttribute: false,
-        observer: false
-      }
+        observer: false,
+      },
     };
   }
 
@@ -163,7 +161,7 @@ class ExampleHaxElement extends HTMLElement {
   }
 
   _processQueue() {
-    this._queue.forEach(action => {
+    this._queue.forEach((action) => {
       this[`_${action.type}`](action.data);
     });
 

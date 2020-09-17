@@ -20,7 +20,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
         :host([hidden]) {
           display: none !important;
         }
-      `
+      `,
     ];
   }
   constructor() {
@@ -31,11 +31,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
     return html`
       <a11y-compare-image ?opacity="${this.opacity}">
         <div slot="heading">
-          ${this.title
-            ? html`
-                <h2>${this.title}</h2>
-              `
-            : ``}
+          ${this.title ? html` <h2>${this.title}</h2> ` : ``}
           <slot name="heading"></slot>
         </div>
         <div id="description"><slot name="description"></slot></div>
@@ -67,55 +63,55 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
        */
       bottomAlt: {
         type: String,
-        attribute: "bottom-alt"
+        attribute: "bottom-alt",
       },
       /**
        * aria-describedby for top image
        */
       bottomDescriptionId: {
         type: String,
-        attribute: "bottom-description-id"
+        attribute: "bottom-description-id",
       },
       /**
        * src for top image
        */
       bottomSrc: {
         type: String,
-        attribute: "bottom-src"
+        attribute: "bottom-src",
       },
       /**
        * mode for the slider: wipe
        */
       opacity: {
-        type: Boolean
+        type: Boolean,
       },
       /**
        * @deprecated Use `slot=heading`
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * src for top image
        */
       topAlt: {
         type: String,
-        attribute: "top-alt"
+        attribute: "top-alt",
       },
       /**
        * aria-describedby for top image
        */
       topDescriptionId: {
         type: String,
-        attribute: "top-description-id"
+        attribute: "top-description-id",
       },
       /**
        * src for top image
        */
       topSrc: {
         type: String,
-        attribute: "top-src"
-      }
+        attribute: "top-src",
+      },
     };
   }
   static get haxProperties() {
@@ -135,12 +131,12 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             type: "image",
             source: "bottomSrc",
             source2: "topSrc",
-            title: "title"
-          }
+            title: "title",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -149,7 +145,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "The title of the element",
             inputMethod: "textfield",
-            icon: "editor:title"
+            icon: "editor:title",
           },
           {
             property: "opacity",
@@ -157,20 +153,20 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             description:
               "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
             inputMethod: "boolean",
-            icon: "image:compare"
-          }
+            icon: "image:compare",
+          },
         ],
         configure: [
           {
             slot: "heading",
             title: "Title",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             slot: "description",
             title: "Description",
             description: "Recommended description for accessibility.",
-            inputMethod: "code-editor"
+            inputMethod: "code-editor",
           },
           {
             property: "topSrc",
@@ -178,14 +174,14 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             description: "The base image to swipe over",
             inputMethod: "haxupload",
             validationType: "url",
-            required: true
+            required: true,
           },
           {
             property: "topAlt",
             title: "Top image alt text",
             description: "Required alternate text for accessibility",
             inputMethod: "alt",
-            required: true
+            required: true,
           },
           {
             property: "bottomSrc",
@@ -193,38 +189,38 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             description: "The base image to swipe over",
             inputMethod: "haxupload",
             validationType: "url",
-            required: true
+            required: true,
           },
           {
             property: "bottomAlt",
             title: "Bottom image alt text",
             description: "Required alternate text for accessibility",
             inputMethod: "alt",
-            required: true
-          }
+            required: true,
+          },
         ],
         advanced: [
           {
             property: "title",
             title: "Title (Deprecated)",
             description: "Use heading instead",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "topDescriptionId",
             title: "Top aria-decsribedby",
             description:
               "Space-separated id list for long descriptions that appear elsewhere",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
           },
           {
             property: "bottomDescriptionId",
             title: "Bottom aria-decsribedby",
             description:
               "Space-separated id list for long descriptions that appear elsewhere",
-            inputMethod: "textfield"
-          }
-        ]
+            inputMethod: "textfield",
+          },
+        ],
       },
       demoSchema: [
         {
@@ -236,9 +232,9 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             bottomSrc: "./demo/images/Matterhorn01.png",
             bottomAlt: "Matterhorn with snow.",
             bottomDescription: "snowy",
-            style: "width:100%;max-width:400px"
+            style: "width:100%;max-width:400px",
           },
-          content: `<h2 slot="heading">Image Compare Slider Default</h2><p slot="description">The image on the top or when slider is moved all the way to the right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>. As you move the slider to the left, the image below it reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.</p>`
+          content: `<h2 slot="heading">Image Compare Slider Default</h2><p slot="description">The image on the top or when slider is moved all the way to the right is the <span id="cloudy">Matterhorn on a cloudy day without snow</span>. As you move the slider to the left, the image below it reveals the <span id="snowy">Matterhorn on a clear day with snow</span>.</p>`,
         },
         {
           tag: "image-compare-slider",
@@ -250,7 +246,7 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
             bottomSrc: "./demo/images/Matterhorn01.png",
             bottomAlt: "Matterhorn with snow.",
             bottomDescriptionId: "snowy",
-            style: "width:100%;max-width:400px"
+            style: "width:100%;max-width:400px",
           },
           content: `
             <h2 slot="heading">Image Compare Slider Opacity</h2>
@@ -259,9 +255,9 @@ class ImageCompareSlider extends SchemaBehaviors(LitElement) {
               <span id="cloudy">(Matterhorn on a cloudy day without snow)</span> 
               to reveal the bottom image
               <span id="snowy">(Matterhorn on a clear day with snow)</span>.
-            </div>`
-        }
-      ]
+            </div>`,
+        },
+      ],
     };
   }
 }

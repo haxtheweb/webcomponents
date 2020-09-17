@@ -8,7 +8,7 @@ window.StorybookUtilities.requestAvailability();
 const SimplePagesPattern = {
   of: "Pages",
   name: "Simple Pages",
-  file: require("raw-loader!./demo/index.html")
+  file: require("raw-loader!./demo/index.html"),
 };
 window.StorybookUtilities.instance.addPattern(SimplePagesPattern);
 

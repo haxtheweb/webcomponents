@@ -7,7 +7,7 @@ const Rect = (x, y, w, h) => {
     x,
     y,
     w,
-    h
+    h,
   });
 };
 
@@ -16,7 +16,7 @@ Rect.prototype = {
 
   relativeTo(pos = { x: 0, y: 0 }) {
     return Rect(this.x - pos.x, this.y - pos.y, this.w, this.h);
-  }
+  },
 };
 
 Rect.ofDocument = () => {
@@ -32,22 +32,22 @@ Rect.ofWindow = () => {
   );
 };
 
-const getOffset = el => {
+const getOffset = (el) => {
   const br = el.getBoundingClientRect();
   return {
     x: br.left + window.pageXOffset,
     y: br.top + window.pageYOffset,
     width: br.width,
-    height: br.height
+    height: br.height,
   };
 };
 
-Rect.ofElement = el => {
+Rect.ofElement = (el) => {
   const { x, y, width, height } = getOffset(el);
   return Rect(x, y, width, height);
 };
 
-Rect.ofViewport = el => {
+Rect.ofViewport = (el) => {
   const { x, y } = getOffset(el);
   return Rect(
     x + el.clientLeft,
@@ -57,7 +57,7 @@ Rect.ofViewport = el => {
   );
 };
 
-Rect.ofContent = el => {
+Rect.ofContent = (el) => {
   const { x, y } = getOffset(el);
   return Rect(
     x + el.clientLeft - el.scrollLeft,
@@ -67,7 +67,7 @@ Rect.ofContent = el => {
   );
 };
 
-const black = pc => {
+const black = (pc) => {
   return `rgba(0,0,0,${pc / 100})`;
 };
 const defaults = {
@@ -75,16 +75,16 @@ const defaults = {
   styles: {
     "header,footer,section,article": black(8),
     "h1,a": black(10),
-    "h2,h3,h4": black(8)
+    "h2,h3,h4": black(8),
   },
   back: black(2),
   view: black(5),
   drag: black(10),
-  interval: null
+  interval: null,
 };
 
 const _listener = (el, method, types, fn) =>
-  types.split(/\s+/).forEach(type => el[method](type, fn));
+  types.split(/\s+/).forEach((type) => el[method](type, fn));
 const on = (el, types, fn) => _listener(el, "addEventListener", types, fn);
 const off = (el, types, fn) => _listener(el, "removeEventListener", types, fn);
 
@@ -107,7 +107,7 @@ const pagemap = (canvas, options) => {
   };
 
   const viewport = settings.viewport;
-  const find = sel => Array.from((viewport || doc).querySelectorAll(sel));
+  const find = (sel) => Array.from((viewport || doc).querySelectorAll(sel));
 
   let drag = false;
 
@@ -127,10 +127,10 @@ const pagemap = (canvas, options) => {
     context.fill();
   };
 
-  const applyStyles = styles => {
-    Object.keys(styles).forEach(sel => {
+  const applyStyles = (styles) => {
+    Object.keys(styles).forEach((sel) => {
       const col = styles[sel];
-      find(sel).forEach(el => {
+      find(sel).forEach((el) => {
         drawRect(Rect.ofElement(el).relativeTo(rootRect), col);
       });
     });
@@ -155,7 +155,7 @@ const pagemap = (canvas, options) => {
     );
   };
 
-  const onDrag = ev => {
+  const onDrag = (ev) => {
     ev.preventDefault();
     const cr = Rect.ofViewport(canvas);
     const x = (ev.pageX - cr.x) / scale - viewRect.w * dragRx;
@@ -170,7 +170,7 @@ const pagemap = (canvas, options) => {
     draw();
   };
 
-  const onDragEnd = ev => {
+  const onDragEnd = (ev) => {
     drag = false;
 
     canvas.style.cursor = "pointer";
@@ -180,7 +180,7 @@ const pagemap = (canvas, options) => {
     onDrag(ev);
   };
 
-  const onDragStart = ev => {
+  const onDragStart = (ev) => {
     drag = true;
 
     const cr = Rect.ofViewport(canvas);
@@ -212,7 +212,7 @@ const pagemap = (canvas, options) => {
   init();
 
   return {
-    redraw: draw
+    redraw: draw,
   };
 };
 export { pagemap };

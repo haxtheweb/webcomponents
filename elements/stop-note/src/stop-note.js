@@ -88,7 +88,7 @@ class StopNote extends SchemaBehaviors(LitElement) {
           padding: 5px;
           width: auto;
         }
-      `
+      `,
     ];
   }
   render() {
@@ -103,9 +103,7 @@ class StopNote extends SchemaBehaviors(LitElement) {
           ${this.url
             ? html`
                 <div class="link">
-                  <a href="${this.url}" id="link">
-                    More Information &gt;
-                  </a>
+                  <a href="${this.url}" id="link"> More Information &gt; </a>
                 </div>
               `
             : ``}
@@ -129,20 +127,20 @@ class StopNote extends SchemaBehaviors(LitElement) {
        * Title Message
        */
       title: {
-        type: String
+        type: String,
       },
       /**
        * url to additional resources
        */
       url: {
-        type: String
+        type: String,
       },
       /**
        * Icon selected
        */
       icon: {
-        type: String
-      }
+        type: String,
+      },
     };
   }
   updated(changedProperties) {
@@ -189,12 +187,12 @@ class StopNote extends SchemaBehaviors(LitElement) {
         handles: [
           {
             type: "text",
-            title: "label"
-          }
+            title: "label",
+          },
         ],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [
@@ -203,15 +201,15 @@ class StopNote extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "Enter title for stop-note.",
             inputMethod: "textfield",
-            required: true
+            required: true,
           },
           {
             property: "url",
             title: "URL",
             description: "Enter an external url.",
             inputMethod: "textfield",
-            required: true
-          }
+            required: true,
+          },
         ],
         configure: [
           {
@@ -219,21 +217,21 @@ class StopNote extends SchemaBehaviors(LitElement) {
             title: "Title",
             description: "Enter title for stop-note.",
             inputMethod: "textfield",
-            required: true
+            required: true,
           },
           {
             property: "url",
             title: "URL",
             description: "Enter an external url.",
             inputMethod: "haxupload",
-            required: true
+            required: true,
           },
           {
             slot: "message",
             title: "Message",
             description: "Enter a message for stop-note.",
             inputMethod: "code-editor",
-            required: true
+            required: true,
           },
           {
             property: "icon",
@@ -244,31 +242,31 @@ class StopNote extends SchemaBehaviors(LitElement) {
               "stopnoteicons:stop-icon",
               "stopnoteicons:warning-icon",
               "stopnoteicons:confirm-icon",
-              "stopnoteicons:book-icon"
-            ]
-          }
+              "stopnoteicons:book-icon",
+            ],
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: "stop-note",
           properties: {
-            title: "Hold up there"
+            title: "Hold up there",
           },
           content:
-            '<span slot="message"><strong>Read these important things!</strong>\n</span>\n'
+            '<span slot="message"><strong>Read these important things!</strong>\n</span>\n',
         },
         {
           tag: "stop-note",
           properties: {
             title: "Warning",
-            icon: "stopnoteicons:warning-icon"
+            icon: "stopnoteicons:warning-icon",
           },
           content:
-            '<span slot="message">You can write any warning message you want here.</span>\n'
-        }
-      ]
+            '<span slot="message">You can write any warning message you want here.</span>\n',
+        },
+      ],
     };
   }
 }

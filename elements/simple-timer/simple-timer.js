@@ -36,14 +36,14 @@ class SimpleTimer extends PolymerElement {
        */
       startTime: {
         type: Number,
-        value: 60
+        value: 60,
       },
       /**
        * Current time of the timer, in seconds
        */
       currentTime: {
         type: Number,
-        notify: true
+        notify: true,
       },
       /**
        * True if the timer is currently running
@@ -52,26 +52,26 @@ class SimpleTimer extends PolymerElement {
         type: Boolean,
         reflectToAttribute: true,
         notify: true,
-        value: false
+        value: false,
       },
       /**
        * Set to true to have timer count up
        */
       countUp: {
         type: Boolean,
-        value: false
+        value: false,
       },
       /**
        * Time the timer has spent running since it was started
        */
       _elapsedTime: {
         type: Number,
-        value: 0
+        value: 0,
       },
       _formattedTime: {
         type: String,
-        value: "0"
-      }
+        value: "0",
+      },
     };
   }
   ready() {
@@ -119,7 +119,7 @@ class SimpleTimer extends PolymerElement {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: true
+          detail: true,
         })
       );
       return;

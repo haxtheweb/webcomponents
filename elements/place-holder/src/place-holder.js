@@ -47,7 +47,7 @@ class PlaceHolder extends SimpleColors {
           font-size: 16px;
           font-style: italic;
         }
-      `
+      `,
     ];
   }
   /**
@@ -73,28 +73,28 @@ class PlaceHolder extends SimpleColors {
        * calculate an icon based on the type that was used
        */
       iconFromType: {
-        type: String
+        type: String,
       },
       /**
        * Text place holder for describing this place holder element.
        */
       text: {
-        type: String
+        type: String,
       },
       directions: {
-        type: String
+        type: String,
       },
       /**
        * Calculate text based on the type in the event we have no default.
        */
       calcText: {
-        type: String
+        type: String,
       },
       /**
        * A media type to visualize and also bubble events off of.
        */
       type: {
-        type: String
+        type: String,
       },
       /**
        * Bind dragging state to a variable so we can apply CSS.
@@ -102,8 +102,8 @@ class PlaceHolder extends SimpleColors {
       dragOver: {
         type: Boolean,
         reflect: true,
-        attribute: "drag-over"
-      }
+        attribute: "drag-over",
+      },
     };
   }
   /**
@@ -129,7 +129,7 @@ class PlaceHolder extends SimpleColors {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this.type
+        detail: this.type,
       })
     );
   }
@@ -195,13 +195,13 @@ class PlaceHolder extends SimpleColors {
     this.type = "text";
     this.dragOver = false;
     this.directions = "Double click or drag and drop file to replace";
-    this.addEventListener("dragover", function(e) {
+    this.addEventListener("dragover", function (e) {
       this.dragOver = true;
       e.preventDefault();
       e.stopPropagation();
       this.classList.add("dragover");
     });
-    this.addEventListener("dragleave", function(e) {
+    this.addEventListener("dragleave", function (e) {
       this.dragOver = false;
       e.preventDefault();
       e.stopPropagation();
@@ -210,7 +210,7 @@ class PlaceHolder extends SimpleColors {
     // self bind a drop event enough though something else
     // will need to step in and do something with this.
     // We are just making sure that this doesn't redirect the browser.
-    this.addEventListener("drop", function(e) {
+    this.addEventListener("drop", function (e) {
       this.dragOver = false;
       e.preventDefault();
       e.stopPropagation();
@@ -228,7 +228,7 @@ class PlaceHolder extends SimpleColors {
               bubbles: true,
               cancelable: true,
               composed: true,
-              detail: e
+              detail: e,
             })
           );
         }
@@ -253,8 +253,8 @@ class PlaceHolder extends SimpleColors {
         groups: ["Placeholder", "Content"],
         handles: [],
         meta: {
-          author: "ELMS:LN"
-        }
+          author: "ELMS:LN",
+        },
       },
       settings: {
         quick: [],
@@ -270,23 +270,23 @@ class PlaceHolder extends SimpleColors {
               audio: "Audio",
               video: "Video",
               image: "Image",
-              math: "Math"
-            }
+              math: "Math",
+            },
           },
           {
             property: "text",
             title: "Text",
             description: "Identify the place holder desired in greater detail",
             inputMethod: "textfield",
-            required: false
-          }
+            required: false,
+          },
         ],
-        advanced: []
+        advanced: [],
       },
       saveOptions: {
         unsetAttributes: ["icon-from-type", "calc-text", "colors"],
-        wipeSlot: true
-      }
+        wipeSlot: true,
+      },
     };
   }
 }

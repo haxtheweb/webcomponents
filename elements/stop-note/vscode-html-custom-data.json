@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "stop-note",
+      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `title` {`string`} - Title Message\n\n  * `url` {`string`} - url to additional resources\n\n  * `icon` {`string`} - Icon selected\n\nProperties:\n\n  * `title` {`string`} - Title Message\n\n  * `url` {`string`} - url to additional resources\n\n  * `icon` {`string`} - Icon selected",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title Message\n\nProperty: title"
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - url to additional resources\n\nProperty: url\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon selected\n\nProperty: icon\n\nDefault: stopnoteicons:stop-icon"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "stop-note",
+      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`\n\nAttributes:\n\n  * `title` {`string`} - Title Message\n\n  * `url` {`string`} - url to additional resources\n\n  * `icon` {`string`} - Icon selected\n\nProperties:\n\n  * `title` {`string`} - Title Message\n\n  * `url` {`string`} - url to additional resources\n\n  * `icon` {`string`} - Icon selected",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title Message\n\nProperty: title"
+        },
+        {
+          "name": "url",
+          "description": "`url` {`string`} - url to additional resources\n\nProperty: url\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon selected\n\nProperty: icon\n\nDefault: stopnoteicons:stop-icon"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

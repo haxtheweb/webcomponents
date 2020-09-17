@@ -29,7 +29,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
         :host #floating {
           display: flex;
         }
-      `
+      `,
     ];
   }
 
@@ -61,23 +61,23 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
             icon: "editor:format-bold",
             label: "Bold",
             toggles: true,
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "italic",
             icon: "editor:format-italic",
             label: "Italics",
             toggles: true,
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             collapsedUntil: "md",
             command: "removeFormat",
             icon: "editor:format-clear",
             label: "Erase Format",
-            type: "rich-text-editor-button"
-          }
-        ]
+            type: "rich-text-editor-button",
+          },
+        ],
       },
       {
         label: "Links",
@@ -92,9 +92,9 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
             toggledIcon: "mdextra:unlink",
             toggledLabel: "Unink",
             toggles: true,
-            type: "rich-text-editor-link"
-          }
-        ]
+            type: "rich-text-editor-link",
+          },
+        ],
       },
       {
         collapsedUntil: "md",
@@ -106,16 +106,16 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
             icon: "mdextra:subscript",
             label: "Subscript",
             toggles: true,
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "superscript",
             icon: "mdextra:superscript",
             label: "Superscript",
             toggles: true,
-            type: "rich-text-editor-button"
-          }
-        ]
+            type: "rich-text-editor-button",
+          },
+        ],
       },
       {
         collapsedUntil: "sm",
@@ -127,17 +127,17 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
             icon: "editor:format-list-numbered",
             label: "Ordered List",
             toggles: true,
-            type: "rich-text-editor-button"
+            type: "rich-text-editor-button",
           },
           {
             command: "insertUnorderedList",
             icon: "editor:format-list-bulleted",
             label: "Unordered List",
             toggles: true,
-            type: "rich-text-editor-button"
-          }
-        ]
-      }
+            type: "rich-text-editor-button",
+          },
+        ],
+      },
     ];
   }
   updated(changedProperties) {

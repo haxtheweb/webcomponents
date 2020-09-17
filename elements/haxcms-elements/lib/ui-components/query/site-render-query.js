@@ -23,7 +23,7 @@ class SiteRenderQuery extends LitElement {
         :host {
           display: block;
         }
-      `
+      `,
     ];
   }
   /**
@@ -63,26 +63,26 @@ class SiteRenderQuery extends LitElement {
        * Conditions that can be used to slice the data differently in the manifest
        */
       conditions: {
-        type: Object
+        type: Object,
       },
       /**
        * Establish the order items should be displayed in
        */
       sort: {
-        type: Object
+        type: Object,
       },
       /**
        * iron-list helper for this 1 flag
        */
       grid: {
-        type: Boolean
+        type: Boolean,
       },
       result: {
-        type: Array
+        type: Array,
       },
       __items: {
-        type: Array
-      }
+        type: Array,
+      },
     };
   }
   constructor() {
@@ -99,8 +99,8 @@ class SiteRenderQuery extends LitElement {
         this.dispatchEvent(
           new CustomEvent("result-changed", {
             detail: {
-              value: this[propName]
-            }
+              value: this[propName],
+            },
           })
         );
         this.__items = [...newValue];
