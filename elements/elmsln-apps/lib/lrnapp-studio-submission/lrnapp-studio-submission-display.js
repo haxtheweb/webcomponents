@@ -282,15 +282,17 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       var mdscript = document.createElement("script");
       mdscript.type = "text/markdown";
       mdscript.innerHTML = "";
-      if (newValue && newValue.attributes && newValue.attributes.body) {
-        mdscript.innerHTML = newValue.attributes.body;
-        this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
-        this.shadowRoot.querySelector("#markedarea").markdown =
-          newValue.attributes.body;
+      if (newValue && newValue.attributes) {
+        setTimeout(() => {
+          mdscript.innerHTML = newValue.attributes.body;
+          this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
+          this.shadowRoot.querySelector("#markedarea").markdown =
+            newValue.attributes.body;
+        }, 0);
       }
       // help ensure if a fast object switch of inner content
       // we make sure it's wiped fully
-      if (oldValue && newValue == "") {
+      else if (oldValue && !newValue) {
         this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
         this.shadowRoot.querySelector("#markedarea").markdown = "";
       }
