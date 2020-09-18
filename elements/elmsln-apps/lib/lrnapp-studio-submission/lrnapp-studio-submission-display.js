@@ -272,18 +272,28 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       },
     };
   }
-  _submissionLoaded(newValue) {
+  /**
+   * Submission loaded has to carefully remove what's in the markdown area
+   */
+  _submissionLoaded(newValue, oldValue) {
     // wipe the slot of the marked area
     if (this.shadowRoot && this.shadowRoot.querySelector("#markedarea")) {
       wipeSlot(this.shadowRoot.querySelector("#markedarea"));
-    }
-    if (newValue && newValue.attributes && newValue.attributes.body) {
-      let mdscript = document.createElement("script");
+      var mdscript = document.createElement("script");
       mdscript.type = "text/markdown";
-      mdscript.innerHTML = newValue.attributes.body;
-      this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
-      this.shadowRoot.querySelector("#markedarea").markdown =
-        newValue.attributes.body;
+      mdscript.innerHTML = "";
+      if (newValue && newValue.attributes && newValue.attributes.body) {
+        mdscript.innerHTML = newValue.attributes.body;
+        this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
+        this.shadowRoot.querySelector("#markedarea").markdown =
+          newValue.attributes.body;
+      }
+      // help ensure if a fast object switch of inner content
+      // we make sure it's wiped fully
+      if (oldValue && newValue == "") {
+        this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
+        this.shadowRoot.querySelector("#markedarea").markdown = "";
+      }
     }
   }
 
