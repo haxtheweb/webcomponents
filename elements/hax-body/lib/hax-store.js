@@ -1138,10 +1138,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 range.commonAncestorContainer &&
                 range.commonAncestorContainer.parentNode
               ) {
-                console.log(range.commonAncestorContainer);
-                console.log(range.commonAncestorContainer.parentNode);
-                console.log(this.activeNode);
-                console.log(this.activeContainerNode);
                 if (
                   !siblingEl &&
                   this.activeNode != range.commonAncestorContainer
@@ -1156,7 +1152,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 // should always be there but just in case there was no range
                 // so we avoid an infinite loop
                 if (siblingEl) {
-                  if (siblingEl.getAttribute("slot")) {
+                  // account for a potential textnode
+                  if (
+                    siblingEl.getAttribute &&
+                    siblingEl.getAttribute("slot")
+                  ) {
                     activeEl.setAttribute(
                       "slot",
                       siblingEl.getAttribute("slot")

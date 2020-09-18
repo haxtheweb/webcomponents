@@ -28,41 +28,33 @@ module.exports = {
   outputDir: "../../../storybooks/styleguide",
   // Configuration for rollup (build-storybook only)
   rollup: (config) => {
-    return [
-      config[0],
-      {
-        ...config[1],
-        plugins: [
-          ...config[1].plugins,
-          cpy({
-            files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
-            dest: "../../storybooks/styleguide",
-            options: { parents: true },
-          }),
-          cpy({
-            files: ["node_modules/monaco-editor/min/**/*"],
-            dest: "../../storybooks/styleguide/",
-            options: { parents: true },
-          }),
-          cpy({
-            files: [
-              "elements/chartist-render/lib/chartist/dist/chartist.min.*",
-            ],
-            dest: "../../storybooks/styleguide/",
-            options: { parents: true },
-          }),
-          cpy({
-            files: ["elements/img-pan-zoom/lib/openseadragon/*"],
-            dest: "../../storybooks/styleguide/",
-            options: { parents: true },
-          }),
-          cpy({
-            files: ["elements/fullscreen-behaviors/lib/screenfull/dist/*"],
-            dest: "../../storybooks/styleguide/",
-            options: { parents: true },
-          }),
-        ],
-      },
-    ];
+    config.plugins.push(
+      cpy({
+        files: ["elements/*/demo/**/*.{csv,json,jpg,jpeg,png,vtt,mp3,mp4}"],
+        dest: "../../storybooks/styleguide",
+        options: { parents: true },
+      }),
+      cpy({
+        files: ["node_modules/monaco-editor/min/**/*"],
+        dest: "../../storybooks/styleguide/",
+        options: { parents: true },
+      }),
+      cpy({
+        files: ["elements/chartist-render/lib/chartist/dist/chartist.min.*"],
+        dest: "../../storybooks/styleguide/",
+        options: { parents: true },
+      }),
+      cpy({
+        files: ["elements/img-pan-zoom/lib/openseadragon/*"],
+        dest: "../../storybooks/styleguide/",
+        options: { parents: true },
+      }),
+      cpy({
+        files: ["elements/fullscreen-behaviors/lib/screenfull/dist/*"],
+        dest: "../../storybooks/styleguide/",
+        options: { parents: true },
+      })
+    );
+    return config;
   },
 };
