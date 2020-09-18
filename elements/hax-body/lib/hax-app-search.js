@@ -62,7 +62,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           padding: 4px;
           margin: 0 16px;
         }
-        }
         .tos-text a {
           font-size: 12px;
           color: blue;
