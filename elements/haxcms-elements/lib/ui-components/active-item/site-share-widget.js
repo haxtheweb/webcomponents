@@ -9,7 +9,7 @@ import "web-social-share/dist/esm/web-social-share.entry.js";
 import {
   a as patchEsm,
   b as bootstrapLazy,
-} from "web-social-share/dist/esm/core-a2e7fe62.js";
+} from "web-social-share/dist/esm/index-bef2383e.js";
 
 const defineCustomElements = (win, options) => {
   return patchEsm().then(() => {
