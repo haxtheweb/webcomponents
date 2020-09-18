@@ -1005,10 +1005,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
-      console.log(originalContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
-      console.log(haxElements);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
