@@ -199,8 +199,8 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      this.onfocus = e => this.addHighlight(e);
-      this.ondeselect = e => this.removeHighlight(e);
+      this.onfocus = (e) => this.addHighlight(e);
+      this.ondeselect = (e) => this.removeHighlight(e);
       /*this.addEventListener("mousedown", function(e) {
         //console.log("mousedown", e);
       });
@@ -209,57 +209,57 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       });*/
     }
 
-    selectRange(e){
-      this.dispatchEvent(new CustomEvent(
-        "selectrange", {
+    selectRange(e) {
+      this.dispatchEvent(
+        new CustomEvent("selectrange", {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: e.detail
-        }
-      ))
+          detail: e.detail,
+        })
+      );
     }
 
-    selectNode(e){
-      this.dispatchEvent(new CustomEvent(
-        "selectnode", {
+    selectNode(e) {
+      this.dispatchEvent(
+        new CustomEvent("selectnode", {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: e.detail
-        }
-      ))
+          detail: e.detail,
+        })
+      );
     }
 
-    selectNodeCoontents(e){
-      this.dispatchEvent(new CustomEvent(
-        "selectnodeccontents", {
+    selectNodeCoontents(e) {
+      this.dispatchEvent(
+        new CustomEvent("selectnodeccontents", {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: e.detail
-        }
-      ))
+          detail: e.detail,
+        })
+      );
     }
-    addHighlight(e){
-      this.dispatchEvent(new CustomEvent(
-        "addhighlight", {
+    addHighlight(e) {
+      this.dispatchEvent(
+        new CustomEvent("addhighlight", {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: e.detail
-        }
-      ))
+          detail: e.detail,
+        })
+      );
     }
-    removeHighlight(e){
-      this.dispatchEvent(new CustomEvent(
-        "removehighlight", {
+    removeHighlight(e) {
+      this.dispatchEvent(
+        new CustomEvent("removehighlight", {
           bubbles: true,
           composed: true,
           cancelable: true,
-          detail: e.detail
-        }
-      ));
+          detail: e.detail,
+        })
+      );
     }
     get blockSelectors() {
       return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
@@ -410,7 +410,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      *
      */
     execCommand() {
-      console.log('execCommand',this.range);
+      console.log("execCommand", this.range);
       if (this.range) {
         document.execCommand(
           this.operationCommand,
@@ -480,19 +480,28 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * get selection's parent block
      * @returns {object}
      */
-    _getSelectedBlock(selector = this.blockSelectors) {
+    _getSelectedBlock(selectors = this.blockSelectors) {
       let common = !this.range ? undefined : this.range.commonAncestorContainer,
         startContainer = !this.range ? undefined : this.range.startContainer,
         startOffset = !this.range ? undefined : this.range.startOffset,
         endContainer = !this.range ? undefined : this.range.endContainer,
         endOffset = !this.range ? undefined : this.range.endOffset,
-        startNode = !startContainer || !startContainer.children ? undefined : startContainer.children[startOffset-1],
-        rootNode = startContainer === endContainer && endOffset - startOffset === 1 ? startNode : common, 
-        tagName = rootNode && rootNode.tagName ? rootNode.tagName.toLowerCase() : undefined,
-        selectorsList = selectors.toLowerCase().replace(/\s*/g,'').split(',');
-      if(selectorsList.includes(tagName)){
+        startNode =
+          !startContainer || !startContainer.children
+            ? undefined
+            : startContainer.children[startOffset - 1],
+        rootNode =
+          startContainer === endContainer && endOffset - startOffset === 1
+            ? startNode
+            : common,
+        tagName =
+          rootNode && rootNode.tagName
+            ? rootNode.tagName.toLowerCase()
+            : undefined,
+        selectorsList = selectors.toLowerCase().replace(/\s*/g, "").split(",");
+      if (selectorsList.includes(tagName)) {
         return node;
-      } else if(rootNode.closest(selectors)) {
+      } else if (rootNode && rootNode.closest) {
         return rootNode.closest(selectors);
       } else {
         return undefined;
@@ -550,7 +559,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       e.preventDefault();
       this._buttonTap(e);
     }
-    
+
     /**
      * handles range changes by getting
      * @event range-changed

@@ -11,6 +11,7 @@ import "@vaadin/vaadin-upload/vaadin-upload.js";
  * @element simple-fields-upload
  * @extends a11y-tab
  * @extends simple-fields-fieldset
+ * @demo ./demo/upload.html
  */
 class SimpleFieldsUpload extends SimpleColors {
   static get tag() {

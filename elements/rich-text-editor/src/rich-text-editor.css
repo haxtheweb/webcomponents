@@ -36,3 +36,11 @@
   z-index: -1;
   color: var(--rich-text-editor-button-disabled-color);
 }
+
+::slotted(*:first-child) {
+  margin-top: 0;
+}
+
+::slotted(*:last-child) {
+  margin-bottom: 0;
+}

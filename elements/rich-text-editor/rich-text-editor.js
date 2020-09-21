@@ -24,186 +24,188 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends RichTextEditorStyles(LitElement) {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       ...super.styles,
       css`
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-:host {
-  display: block;
-  cursor: pointer;
-  min-height: 40px;
-}
+        :host {
+          display: block;
+          cursor: pointer;
+          min-height: 40px;
+        }
 
-:host([contenteditable="true"]) {
-  border: var(--rich-text-editor-border);
-  overflow: auto;
-}
+        :host([contenteditable="true"]) {
+          border: var(--rich-text-editor-border);
+          overflow: auto;
+        }
 
-:host([contenteditable="true"]):focus-within,
-:host([contenteditable="true"]):focus {
-  padding: 2px;
-  margin-bottom: 2px;
-}
+        :host([contenteditable="true"]):focus-within,
+        :host([contenteditable="true"]):focus {
+          padding: 2px;
+          margin-bottom: 2px;
+        }
 
-:host(.heightmax[contenteditable="true"]) {
-  max-height: calc(100vh - 200px);
-  overflow-y: scroll;
-}
+        :host(.heightmax[contenteditable="true"]) {
+          max-height: calc(100vh - 200px);
+          overflow-y: scroll;
+        }
 
-:host(:empty) {
-  border: 1px dashed var(--rich-text-editor-border-color);
-  outline: 1px dashed var(--rich-text-editor-border-color);
-}
+        :host(:empty) {
+          border: 1px dashed var(--rich-text-editor-border-color);
+          outline: 1px dashed var(--rich-text-editor-border-color);
+        }
 
-:host(:empty):before {
-  content: attr(placeholder);
-  padding: 0 5px;
-  display: block;
-  z-index: -1;
-  color: var(--rich-text-editor-button-disabled-color);
-}
-      `
+        :host(:empty):before {
+          content: attr(placeholder);
+          padding: 0 5px;
+          display: block;
+          z-index: -1;
+          color: var(--rich-text-editor-button-disabled-color);
+        }
+
+        ::slotted(*:first-child) {
+          margin-top: 0;
+        }
+
+        ::slotted(*:last-child) {
+          margin-bottom: 0;
+        }
+      `,
     ];
   }
 
-// render function
+  // render function
   render() {
-    return html`
-
-<slot></slot>`;
+    return html` <slot></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Rich text-editor",
-    "description": "a standalone rich text editor",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Text"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
-      }
-    ],
-    "meta": {
-      "author": "nikkimk",
-      "owner": "Penn State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "title",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      }
-    ],
-    "advanced": []
-  }
-}
-;
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Rich text-editor",
+        description: "a standalone rich text editor",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Text"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage",
+          },
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "Penn State University",
+        },
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android",
+          },
+        ],
+        advanced: [],
+      },
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * editor's unique id
-   */
-  "id": {
-    "name": "id",
-    "type": String,
-    "reflect": true,
-    "attribute": "id"
-  },
-  /**
-   * Maps to contenteditable attribute
-   */
-   "contenteditable": {
-    "name": "contenteditable",
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "contenteditable"
-  },
-  /**
-   * Placeholder text for empty editable regions
-   */
-  "placeholder": {
-    "name": "placeholder",
-    "type": String,
-    "reflect": true,
-    "attribute": "placeholder"
-  },
+      ...super.properties,
 
-  /**
-   * id for toolbar
-   */
-  "toolbar": {
-    "name": "toolbar",
-    "type": String,
-    "reflect": true,
-    "attribute": "toolbar"
-  },
+      /**
+       * editor's unique id
+       */
+      id: {
+        name: "id",
+        type: String,
+        reflect: true,
+        attribute: "id",
+      },
+      /**
+       * Maps to contenteditable attribute
+       */
+      contenteditable: {
+        name: "contenteditable",
+        type: Boolean,
+        reflect: true,
+        attribute: "contenteditable",
+      },
+      /**
+       * Placeholder text for empty editable regions
+       */
+      placeholder: {
+        name: "placeholder",
+        type: String,
+        reflect: true,
+        attribute: "placeholder",
+      },
 
-  /**
-   * current range
-   */
-  "range": {
-    "name": "range",
-    "type": Object,
-    "attribute": "range"
-  },
+      /**
+       * id for toolbar
+       */
+      toolbar: {
+        name: "toolbar",
+        type: String,
+        reflect: true,
+        attribute: "toolbar",
+      },
 
-  /**
-   * type of editor toolbar, i.e.
-   * full - full for full toolbar with breadcrumb,
-   * mini - mini for mini floating toolbar, or
-   * default toolbar if neither.
-   */
-  "type": {
-    "name": "type",
-    "type": String,
-    "reflect": true,
-    "attribute": "type"
-  },
+      /**
+       * current range
+       */
+      range: {
+        name: "range",
+        type: Object,
+        attribute: "range",
+      },
 
-  /**
-   * contains cancelled edits
-   */
-  "__canceledEdits": {
-    "type": Object
-  },
+      /**
+       * type of editor toolbar, i.e.
+       * full - full for full toolbar with breadcrumb,
+       * mini - mini for mini floating toolbar, or
+       * default toolbar if neither.
+       */
+      type: {
+        name: "type",
+        type: String,
+        reflect: true,
+        attribute: "type",
+      },
 
-  /**
-   * connected toolbar
-   */
-  "__connectedToolbar": {
-    "type": Object
-  },
-  /**
-   * selection management
-   */
-  "__selection": {
-    "type": Object
-  }
-}
-;
+      /**
+       * contains cancelled edits
+       */
+      __canceledEdits: {
+        type: Object,
+      },
+
+      /**
+       * connected toolbar
+       */
+      __connectedToolbar: {
+        type: Object,
+      },
+      /**
+       * selection management
+       */
+      __selection: {
+        type: Object,
+      },
+    };
   }
 
   /**
@@ -221,7 +223,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.type = "rich-text-editor-toolbar";
     this.id = "";
     this.__selection = window.RichTextEditorSelection.requestAvailability();
-    this.addEventListener("paste", e => console.log("editor paste",e));
+    this.addEventListener("paste", (e) => console.log("editor paste", e));
   }
 
   /**
@@ -230,37 +232,37 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @readonly
    * @memberof RichTextEditor
    */
-  get observer(){
+  get observer() {
     let root = this;
-    return new MutationObserver(e => root.updateRange(e));
+    return new MutationObserver((e) => root.updateRange(e));
   }
 
   /**
-    * Called every time the element is removed from the DOM. Useful for 
-    * running clean up code (removing event listeners, etc.).
-    */
+   * Called every time the element is removed from the DOM. Useful for
+   * running clean up code (removing event listeners, etc.).
+   */
   disconnectedCallback() {
     this.contenteditable = false;
     super.disconnectedCallback();
   }
 
   firstUpdated() {
-    if(super.firstUpdated) super.firstUpdated();
-    if(this.isEmpty()) this.innerHTML = "";
+    if (super.firstUpdated) super.firstUpdated();
+    if (this.isEmpty()) this.innerHTML = "";
     this.__selection.registerEditor(this);
     this._editableChange();
   }
-  
+
   updated(changedProperties) {
     super.updated(changedProperties);
-    console.log("updated",this.contenteditable);
+    console.log("updated", this.contenteditable);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
     });
   }
 
-  getRange(){
+  getRange() {
     return !this.__selection ? undefined : this.__selection.getRange(this);
   }
   /**
@@ -269,8 +271,11 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns {string}
    * @memberof RichTextEditor
    */
-  getValue(){
-    return this.isEmpty || this.trimmerHTML(this) === `<p>${editor.placeholder}</p>` ? "" : this.innerHTML;
+  getValue() {
+    return this.isEmpty ||
+      this.trimmerHTML(this) === `<p>${editor.placeholder}</p>`
+      ? ""
+      : this.innerHTML;
   }
   /**
    * determines if editor is empty
@@ -278,24 +283,24 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns {string}
    * @memberof RichTextEditor
    */
-  isEmpty(){
+  isEmpty() {
     return !this.innerHTML || this.trimmerHTML(this) == "";
   }
   /**
-   * 
+   *
    *
    * @memberof RichTextEditor
    */
-  paste(pasteContent,sanitized=true){
-    this.__selection.paste(this,pasteContent);
-    this.pasteIntoRange(this,pasteContent,sanitized);
+  paste(pasteContent, sanitized = true) {
+    this.__selection.paste(this, pasteContent);
+    this.pasteIntoRange(this, pasteContent, sanitized);
   }
   /**
    * revert content to before contenteditable=true
    *
    * @memberof RichTextEditor
    */
-  revert(){
+  revert() {
     this.innerHTML = this.__canceledEdits;
   }
   /**
@@ -304,7 +309,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns node
    * @memberof RichTextEditor
    */
-  rootNode(){
+  rootNode() {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
   /**
@@ -314,72 +319,70 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns string
    * @memberof RichTextEditor
    */
-  trimmerHTML(node){
-    return node.innerHTML.replace(/[\s\t\r\n]/gim,'');
+  trimmerHTML(node) {
+    return node.innerHTML.replace(/[\s\t\r\n]/gim, "");
   }
-  updateRange(e){
-    console.log('updateRange',e);
+  updateRange(e) {
+    console.log("updateRange", e);
     this.range = this.getRange();
-    console.log('updateRange 2',this.range);
+    console.log("updateRange 2", this.range);
   }
   /**
    * updates editor placeholder and watches for range changes
    *
    * @memberof RichTextEditor
    */
-  _editableChange(){
+  _editableChange() {
     let root = this,
       placeholder = `<p>${this.placeholder}</p>`;
-    console.log("updated",this.contenteditable);
-    if(this.contenteditable){
+    console.log("updated", this.contenteditable);
+    if (this.contenteditable) {
       this.__canceledEdits = this.innerHTML;
-      console.log("updated 2",this.__selection);
-      if(this.isEmpty()) this.innerHTML = placeholder;
+      console.log("updated 2", this.__selection);
+      if (this.isEmpty()) this.innerHTML = placeholder;
       this._rangeChange();
-      document.onselectionchange =  e => this.updateRange(e);
+      document.onselectionchange = (e) => this.updateRange(e);
       root.observer.observe(root, {
         attributes: false,
         childList: true,
         subtree: true,
-        characterData: false
+        characterData: false,
       });
     } else {
-      console.log("updated 2b",this.__selection);
+      console.log("updated 2b", this.__selection);
       if (root.observer) root.observer.disconnect();
-      if(this.trimmerHTML(this) === placeholder) {
+      if (this.trimmerHTML(this) === placeholder) {
         this.innerHTML = "";
       }
-      document.onselectionchange =  e => console.log('none');
+      document.onselectionchange = (e) => console.log("none");
     }
-    console.log("updated 3",this.__selection);
+    console.log("updated 3", this.__selection);
   }
 
   /**
-  * Handles paste.
-  *
-  * @param {event} e paste event
-  * @returns {void}
-  */
+   * Handles paste.
+   *
+   * @param {event} e paste event
+   * @returns {void}
+   */
   _handlePaste(e) {
     let pasteContent = "";
     // intercept paste event
     if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
-      pasteContent = (e.originalEvent || e).clipboardData.getData(
-        "text/html"
-      );
+      pasteContent = (e.originalEvent || e).clipboardData.getData("text/html");
     } else if (window.clipboardData) {
       pasteContent = window.clipboardData.getData("Text");
     }
-    this.__selection.pasteFromClipboard(this,pasteContent);
+    this.__selection.pasteFromClipboard(this, pasteContent);
     e.preventDefault();
   }
 
   /**
-   * updates toolbar's range and placeholder content 
+   * updates toolbar's range and placeholder content
    *
    * @memberof RichTextEditor
    */
-  _rangeChange(){
+  _rangeChange() {
     this.__selection.updateToolbars(this);
   }
 }

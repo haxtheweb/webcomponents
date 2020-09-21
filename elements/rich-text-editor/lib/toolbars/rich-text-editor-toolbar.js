@@ -107,16 +107,16 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             ? "false"
             : "true"}"
           ?collapsed="${this.collapsed}"
-          @addhighlight="${e=>this.highlight()}"
-          @removehighlight="${e=>this.highlight(false)}"
-          @selectnode="${e=>this.selectNode(e.detail)}"
-          @selectnodecontents="${e=>this.selectNodeContents(e.detail)}"
-          @selectrange="${e=>this.selectRange(e.detail)}"
+          @addhighlight="${(e) => this.highlight()}"
+          @removehighlight="${(e) => this.highlight(false)}"
+          @selectnode="${(e) => this.selectNode(e.detail)}"
+          @selectnodecontents="${(e) => this.selectNodeContents(e.detail)}"
+          @selectrange="${(e) => this.selectRange(e.detail)}"
         >
           <rich-text-editor-more-button
             id="morebutton"
             class="button"
-            controls="toolbar"
+            aria-controls="toolbar"
             icon="${this.moreIcon}"
             label="${this.moreLabel}"
             ?show-text-label="${this.moreShowTextLabel}"
@@ -143,7 +143,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         alwaysVisible: {
           type: Boolean,
           attribute: "always-visible",
-          reflect: true
+          reflect: true,
         },
         /**
          * is toolbar collapsed?
@@ -167,8 +167,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
          */
         controls: {
           name: "controls",
-          type: String,
-          attribute: "controls",
         },
         /**
          * `rich-text-editor` element that is currently in `contenteditable` mode
@@ -265,7 +263,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
          */
         __clickableElement: {
           name: "__clickableElement",
-          type: Array
+          type: Array,
         },
         /**
          * selection management
@@ -481,7 +479,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
       this.__buttons = this._getButtons();
-      
+
       window.dispatchEvent(
         new CustomEvent("responsive-element", {
           detail: { element: this.shadowRoot.querySelector("#toolbar") },
@@ -499,7 +497,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       this.__selection.registerToolbar(this);
-      if (navigator.clipboard) this.addEventListener("paste-button", this._handlePasteButton);
+      if (navigator.clipboard)
+        this.addEventListener("paste-button", this._handlePasteButton);
     }
 
     /**
@@ -508,8 +507,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       super.disconnectedCallback();
-      this.__selection.registerToolbar(this,false);
-      if (navigator.clipboard) this.removeEventListener("paste-button", this._handlePasteButton);
+      this.__selection.registerToolbar(this, false);
+      if (navigator.clipboard)
+        this.removeEventListener("paste-button", this._handlePasteButton);
     }
 
     /**
@@ -525,8 +525,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     cancel() {
-      console.log('cancel');
-      if(this.__selection) this.__selection.cancelEdits(this.editor);
+      console.log("cancel");
+      if (this.__selection) this.__selection.cancelEdits(this.editor);
     }
     /**
      * uses selection to create a range placeholder that keeps range highlighted
@@ -534,8 +534,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {boolean} [add=true] add highlight?
      * @returns {void}
      */
-    highlight(add=true) {
-      if (this.__selection) this.__selection.highlight(this.editor,add);
+    highlight(add = true) {
+      if (this.__selection) this.__selection.highlight(this.editor, add);
     }
     /**
      * selects a given node inside connected editor
@@ -543,8 +543,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} node
      * @returns {void}
      */
-    selectNode(node){
-      if (this.__selection) this.__selection.selectNode(node,this.editor);
+    selectNode(node) {
+      if (this.__selection) this.__selection.selectNode(node, this.editor);
     }
     /**
      * selects a given node inside connected editor
@@ -552,8 +552,9 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} node
      * @returns {void}
      */
-    selectNodeContents(node){
-      if (this.__selection) this.__selection.selectNodeContents(node,this.editor);
+    selectNodeContents(node) {
+      if (this.__selection)
+        this.__selection.selectNodeContents(node, this.editor);
     }
     /**
      * selects a given node inside connected editor
@@ -561,8 +562,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} node
      * @returns {void}
      */
-    selectRange(range){
-      if (this.__selection) this.__selection.selectRange(range,this.editor);
+    selectRange(range) {
+      if (this.__selection) this.__selection.selectRange(range, this.editor);
     }
 
     /**
@@ -582,8 +583,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @param {object} editor an HTML object that can be edited
      * @returns {void}
      */
-    pasteFromClipboard(){
-      if(this.__selection) this.__selection.pasteFromClipboard(this.editor);
+    pasteFromClipboard() {
+      if (this.__selection) this.__selection.pasteFromClipboard(this.editor);
     }
 
     /**
@@ -628,7 +629,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           temp = [];
         toolbar.innerHTML = "";
         this.__shortcutKeys = [];
-        this.config.forEach(item => {
+        this.config.forEach((item) => {
           if (item.type === "button-group") {
             let group = document.createElement("div");
             group.setAttribute("class", "group");
@@ -638,7 +639,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             )
               group.setAttribute("collapsed-until", item.collapsedUntil);
             max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-            item.buttons.forEach(button => {
+            item.buttons.forEach((button) => {
               max = Math.max(max, sizes.indexOf(button.collapsedUntil));
               if (navigator.clipboard || button.command !== "paste")
                 temp.push(this._addButton(button, group)); //firefox doesn't allow for clipboard button
@@ -658,13 +659,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     }
 
     /**
-    * Handles paste button.
-    *
-    * @param {event} e paste button event
-    * @returns {void}
-    */
+     * Handles paste button.
+     *
+     * @param {event} e paste button event
+     * @returns {void}
+     */
     _handlePasteButton(e) {
-      console.log('pasting');
+      console.log("pasting");
       this.pasteFromClipboard(this.editor);
       e.preventDefault();
     }
@@ -674,15 +675,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      console.log("toolbar _rangeChange", this.range,this.__selection.range);
-      if (this.range && this.range.commonAncestorContainer && this.editor && this.editor.contains(this.range.commonAncestorContainer)) {
+      console.log("toolbar _rangeChange", this.range, this.__selection.range);
+      if (
+        this.range &&
+        this.range.commonAncestorContainer &&
+        this.editor &&
+        this.editor.contains(this.range.commonAncestorContainer)
+      ) {
         console.log("toolbar _rangeChange 2", this.range);
-        this.buttons.forEach(button => {
+        this.buttons.forEach((button) => {
           button.range = null;
           button.range = this.range;
         });
       }
-      console.log("toolbar _rangeChange 3", this.range,this.__selection.range);
+      console.log("toolbar _rangeChange 3", this.range, this.__selection.range);
     }
 
     /**

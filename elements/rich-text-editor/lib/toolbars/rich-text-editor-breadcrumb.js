@@ -49,7 +49,7 @@ class RichTextEditorBreadcrumb extends RichTextEditorButtonStyles(LitElement) {
       <paper-button
         id="button"
         class="rtebutton rtebreadcrumb"
-        controls="${this.controls}"
+        aria-controls="${this.controls}"
         @click="${this._buttonTap}"
         tabindex="0"
         part="button"
