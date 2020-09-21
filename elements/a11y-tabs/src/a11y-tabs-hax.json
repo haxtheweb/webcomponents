@@ -30,6 +30,11 @@
     ],
     "configure": [
       {
+        "property": "ariaLabel",
+        "title": "Label (for accesibility)",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "disabled",
         "title": "Disabled",
         "inputMethod": "boolean"

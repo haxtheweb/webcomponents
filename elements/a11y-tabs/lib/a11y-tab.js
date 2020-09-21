@@ -133,6 +133,11 @@ class A11yTab extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ariaLabelledby: {
+        type: String,
+        reflect: true,
+        attribute: "aria-labelledby",
+      },
       /**
        * optional flag the tab, eg. `new`, `alert`, or `error`
        */
@@ -189,6 +194,17 @@ class A11yTab extends LitElement {
       order: {
         type: Number,
       },
+      role: {
+        type: String,
+        reflect: true,
+        attribute: "role",
+      },
+      /**
+       * total number of tabs
+       */
+      tabindex: {
+        type: Number,
+      },
       /**
        * total number of tabs
        */
@@ -202,7 +218,9 @@ class A11yTab extends LitElement {
     this.disabled = false;
     this.hidden = false;
     this.order = 1;
+    this.role = "tabpanel";
     this.total = 1;
+    this.tabindex = 0;
     this.addEventListener("a11y-tab-flag", (e) => this.handleFlag(e));
   }
 
@@ -249,7 +267,10 @@ class A11yTab extends LitElement {
       if (propName === "flag") this._fireTabChanged();
       if (propName === "flagIcon") this._fireTabChanged();
       if (propName === "icon") this._fireTabChanged();
-      if (propName === "id") this._fireTabChanged();
+      if (propName === "id") {
+        this.ariaLabelledby = `${tab.id}-button`;
+        this._fireTabChanged();
+      }
       if (propName === "label") this._fireTabChanged();
       if (propName === "disabled" && this.disabled) this._fireTabChanged();
     });

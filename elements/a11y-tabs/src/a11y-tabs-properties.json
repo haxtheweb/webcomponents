@@ -1,6 +1,11 @@
 {
+  "ariaLabel": {
+    "type": "String",
+    "reflect": true,
+    "attribute": "aria-label"
+  },
   /**
-   * the id of the active tab
+   * id of active tab
    */
   "activeTab": {
     "type": "String",
@@ -8,7 +13,7 @@
     "attribute": "active-tab"
   },
   /**
-   * whether the tabbed interface is disabled
+   * whether tabbed interface is disabled
    */
   "disabled": {
     "type": "Boolean",
@@ -16,7 +21,7 @@
     "attribute": "disabled"
   },
   /**
-   * whether the tabbed interface is hidden
+   * whether tabbed interface is hidden
    */
   "hidden": {
     "type": "Boolean",
@@ -33,7 +38,7 @@
     "attribute": "icon-breakpoint"
   },
   /**
-   * unique identifier/anchor for the tabbed interface
+   * unique identifier/anchor for tabbed interface
    */
   "id": {
     "type": "String",
@@ -49,9 +54,9 @@
     "attribute": "layout-breakpoint"
   },
   /**
-   * the size of the tabs,
-   * where `xs` is the smaller breakpoint
-   * and `xs` is the larger breakpoint
+   * size of tabs,
+   * where `xs` is smaller breakpoint
+   * and `xs` is larger breakpoint
    */
   "responsiveSize": {
     "type": "String",
@@ -59,7 +64,7 @@
     "attribute": "responsive-size"
   },
   /**
-   * whether the tabs are sticky
+   * whether tabs are sticky
    */
   "sticky": {
     "type": "Boolean",
@@ -71,5 +76,17 @@
    */
   "__tabs": {
     "type": "Array"
+  },
+  /**
+   * an array of tab buttons
+   */
+  "__tabButtons": {
+    "type": "Array"
+  },
+  /**
+   * which tab button has ketboard focus
+   */
+  "__tabFocus": {
+    "type": "Number"
   }
 }

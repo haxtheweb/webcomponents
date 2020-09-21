@@ -1,7 +1,7 @@
 
-<ul id="tabs">
+<ul id="tabs" role="tablist">
   ${this.tabs.map((tab,i) => html`
-    <li>${this._tabButton(tab)}</li>
+    <li>${this._tabButton(tab,i)}</li>
   `)}
 </ul>
 <div id="content">

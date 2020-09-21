@@ -39,7 +39,7 @@
   display: none;
 }
 
-:host #tabs {
+#tabs {
   align-items: stretch;
   flex-wrap: var(--a11y-tabs-wrap, unset);
   margin: 0;
@@ -74,7 +74,7 @@
   top: 0;
 }
 
-:host #tabs li {
+#tabs li {
   display: flex;
   align-items: stretch;
 }
@@ -83,14 +83,14 @@
   flex-direction: column;
 }
 
-:host #tabs .flag-type {
+#tabs .flag-type {
   position: absolute;
   left: -99999px;
   height: 0; 
   overflow: hidden;
 }
 
-:host #content {
+#content {
   padding: var(--a11y-tabs-content-padding);
   background-color: var(--a11y-tabs-content-background);
   border: 1px solid var(--a11y-tabs-border-color);
@@ -107,57 +107,86 @@
   margin-top: -1px;
 }
 
-:host #tabs paper-button {
+#tabs paper-button {
   margin: 0;
   text-transform: unset;
+  text-decoration: var(--a11y-tabs-text-decoration, none);
   color: var(--a11y-tabs-faded-color);
   border: 1px solid var(--a11y-tabs-border-color);
   background-color: var(--a11y-tabs-faded-background);
   padding: var(--a11y-tabs-horizontal-button-padding);
+  font-weight: var(--a11y-tabs-font-weight, normal);
   border-radius: var(--a11y-tabs-horizontal-border-radius) var(--a11y-tabs-horizontal-border-radius) 0 0; 
 }
 
-:host([vertical]) #tabs paper-button {
-  border-top: none;
-  border-left: none;
-  border-radius: 0; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--a11y-tabs-vertical-button-padding);
+:host(:not([vertical])) #tabs paper-button {
+  border-top: var(--a11y-tabs-border-accent);
 }
 
 :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
   border-left: none;
 }
 
-:host #tabs paper-button:active,
-:host #tabs paper-button:focus,
-:host #tabs paper-button:hover {
-  color: var(--a11y-tabs-focus-color);
+:host([vertical]) #tabs paper-button {
+  border-top: none;
+  border-radius: 0; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: var(--a11y-tabs-border-accent);
+  padding: var(--a11y-tabs-vertical-button-padding);
 }
 
-:host #tabs paper-button.active[disabled] {
+#tabs paper-button:focus,
+#tabs paper-button:hover {
   color: var(--a11y-tabs-focus-color);
+  font-weight: var(--a11y-tabs-focus-font-weight, normal);
+  text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
+}
+
+:host(:not([vertical])) #tabs paper-button:focus,
+:host(:not([vertical])) #tabs paper-button:hover {
+  border-top: var(--a11y-tabs-focus-border-accent);
+}
+
+:host([vertical]) #tabs paper-button:focus,
+:host([vertical]) #tabs paper-button:hover {
+  border-left: var(--a11y-tabs-focus-border-accent);
+}
+
+#tabs paper-button[aria-selected="true"] {
+  font-weight: var(--a11y-tabs-selected-font-weight, normal);
+  color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
   background-color: var(--a11y-tabs-background);
+  text-decoration: var(--a11y-tabs-selected-text-decoration, none);
 }
 
-:host(:not([vertical])) #tabs paper-button.active {
+:host(:not([vertical])) #tabs paper-button[aria-selected="true"] {
   border-bottom: var(--a11y-tabs-background);
+  border-top: var(--a11y-tabs-selected-border-accent);
 }
 
-:host([vertical]) #tabs paper-button.active {
+:host([vertical]) #tabs paper-button[aria-selected="true"] {
   border-right: var(--a11y-tabs-background);
+  border-left: var(--a11y-tabs-selected-border-accent);
 }
 
-:host #tabs paper-button:not(.active)[disabled] {
+#tabs paper-button[disabled] {
   color: var(--a11y-tabs-disabled-color);
   background-color: var(--a11y-tabs-disabled-background);
   cursor: not-allowed;
 }
 
-:host #tabs span.label,
-:host #tabs .flag-icon {
+:host(:not([vertical])) #tabs paper-button[disabled] {
+  border-left: var(--a11y-tabs-disabled-border-accent);
+}
+
+:host([vertical]) #tabs paper-button[disabled] {
+  border-top: var(--a11y-tabs-disabled-border-accent);
+}
+
+#tabs span.label,
+#tabs .flag-icon {
   margin-right: 8px;
 }
 

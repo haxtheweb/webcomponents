@@ -34,12 +34,24 @@ Custom property | Description | Default
 `--a11y-tabs-border-radius` | default border radius | 2px
 `--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`
 `--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`
+`--a11y-tabs-text-decoration` | default text decoration for tab button | none
+`--a11y-tabs-focus-text-decoration` | default text on focus or hover | underline
 
-#### Tab Section
+#### Tab Panel
 Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`
 `--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`
+`--a11y-tabs-font-weight` | default font weight | normal
+`--a11y-tabs-selected-font-weight` | font weight of selected tabs | normal
+`--a11y-tabs-focus-font-weight` | font weight of focused/hovered tabs | normal
+`--a11y-tabs-text-decoration` | default text-decoration | none
+`--a11y-tabs-focus-text-decoration` | text-decoration when focused/hovered | underline
+`--a11y-tabs-selected-text-decoration` | text-decoration when selected | none
+`--a11y-tabs-color` | default text color | #000
+`--a11y-tabs-focus-color` | text color of focused/hovered tab | --a11y-tabs-color`
+`--a11y-tabs-faded-color` | text color of disabled items |  #333;
+`--a11y-tabs-selected-color` | text color of selected tab | `--a11y-tabs-focus-color`
 `--a11y-tabs-background` | background for active tab and tab content | white
 `--a11y-tabs-faded-background` | background inactive tabs | #eee
 `--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset
@@ -53,6 +65,10 @@ Custom property | Description | Default
 `--a11y-tabs-button-padding` | padding for tabs | 8px
 `--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`
 `--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`
+`--a11y-tabs-border-accent` | optional thicker border for top of horizontal tabs or left of vertical tabs (ex. 4px solid blue) | unset
+`--a11y-tabs-selected-border-accent` | optional thicker border for top of selected horizontal tab or left of vertical tab | unset
+`--a11y-tabs-selected-focus-accent` | optional thicker border for top of focused/hovered horizontal tab or left of vertical tab | unset
+`--a11y-tabs-selected-disabled-accent` | optional thicker border for top of disabled horizontal tabs or left of vertical tabs | unset
 
 #### Content Section
 Custom property | Description | Default
@@ -124,7 +140,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: none;
         }
 
-        :host #tabs {
+        #tabs {
           align-items: stretch;
           flex-wrap: var(--a11y-tabs-wrap, unset);
           margin: 0;
@@ -165,7 +181,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           top: 0;
         }
 
-        :host #tabs li {
+        #tabs li {
           display: flex;
           align-items: stretch;
         }
@@ -174,14 +190,14 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           flex-direction: column;
         }
 
-        :host #tabs .flag-type {
+        #tabs .flag-type {
           position: absolute;
           left: -99999px;
           height: 0;
           overflow: hidden;
         }
 
-        :host #content {
+        #content {
           padding: var(--a11y-tabs-content-padding);
           background-color: var(--a11y-tabs-content-background);
           border: 1px solid var(--a11y-tabs-border-color);
@@ -198,58 +214,87 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           margin-top: -1px;
         }
 
-        :host #tabs paper-button {
+        #tabs paper-button {
           margin: 0;
           text-transform: unset;
+          text-decoration: var(--a11y-tabs-text-decoration, none);
           color: var(--a11y-tabs-faded-color);
           border: 1px solid var(--a11y-tabs-border-color);
           background-color: var(--a11y-tabs-faded-background);
           padding: var(--a11y-tabs-horizontal-button-padding);
+          font-weight: var(--a11y-tabs-font-weight, normal);
           border-radius: var(--a11y-tabs-horizontal-border-radius)
             var(--a11y-tabs-horizontal-border-radius) 0 0;
         }
 
-        :host([vertical]) #tabs paper-button {
-          border-top: none;
-          border-left: none;
-          border-radius: 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: var(--a11y-tabs-vertical-button-padding);
+        :host(:not([vertical])) #tabs paper-button {
+          border-top: var(--a11y-tabs-border-accent);
         }
 
         :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
           border-left: none;
         }
 
-        :host #tabs paper-button:active,
-        :host #tabs paper-button:focus,
-        :host #tabs paper-button:hover {
-          color: var(--a11y-tabs-focus-color);
+        :host([vertical]) #tabs paper-button {
+          border-top: none;
+          border-radius: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-left: var(--a11y-tabs-border-accent);
+          padding: var(--a11y-tabs-vertical-button-padding);
         }
 
-        :host #tabs paper-button.active[disabled] {
+        #tabs paper-button:focus,
+        #tabs paper-button:hover {
           color: var(--a11y-tabs-focus-color);
+          font-weight: var(--a11y-tabs-focus-font-weight, normal);
+          text-decoration: var(--a11y-tabs-focus-text-decoration, underline);
+        }
+
+        :host(:not([vertical])) #tabs paper-button:focus,
+        :host(:not([vertical])) #tabs paper-button:hover {
+          border-top: var(--a11y-tabs-focus-border-accent);
+        }
+
+        :host([vertical]) #tabs paper-button:focus,
+        :host([vertical]) #tabs paper-button:hover {
+          border-left: var(--a11y-tabs-focus-border-accent);
+        }
+
+        #tabs paper-button[aria-selected="true"] {
+          font-weight: var(--a11y-tabs-selected-font-weight, normal);
+          color: var(--a11y-tabs-selected-color, var(--a11y-tabs-focus-color));
           background-color: var(--a11y-tabs-background);
+          text-decoration: var(--a11y-tabs-selected-text-decoration, none);
         }
 
-        :host(:not([vertical])) #tabs paper-button.active {
+        :host(:not([vertical])) #tabs paper-button[aria-selected="true"] {
           border-bottom: var(--a11y-tabs-background);
+          border-top: var(--a11y-tabs-selected-border-accent);
         }
 
-        :host([vertical]) #tabs paper-button.active {
+        :host([vertical]) #tabs paper-button[aria-selected="true"] {
           border-right: var(--a11y-tabs-background);
+          border-left: var(--a11y-tabs-selected-border-accent);
         }
 
-        :host #tabs paper-button:not(.active)[disabled] {
+        #tabs paper-button[disabled] {
           color: var(--a11y-tabs-disabled-color);
           background-color: var(--a11y-tabs-disabled-background);
           cursor: not-allowed;
         }
 
-        :host #tabs span.label,
-        :host #tabs .flag-icon {
+        :host(:not([vertical])) #tabs paper-button[disabled] {
+          border-left: var(--a11y-tabs-disabled-border-accent);
+        }
+
+        :host([vertical]) #tabs paper-button[disabled] {
+          border-top: var(--a11y-tabs-disabled-border-accent);
+        }
+
+        #tabs span.label,
+        #tabs .flag-icon {
           margin-right: 8px;
         }
 
@@ -274,8 +319,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
   // render function
   render() {
-    return html` <ul id="tabs">
-        ${this.tabs.map((tab, i) => html` <li>${this._tabButton(tab)}</li> `)}
+    return html` <ul id="tabs" role="tablist">
+        ${this.tabs.map(
+          (tab, i) => html` <li>${this._tabButton(tab, i)}</li> `
+        )}
       </ul>
       <div id="content">
         <slot></slot>
@@ -316,6 +363,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           },
         ],
         configure: [
+          {
+            property: "ariaLabel",
+            title: "Label (for accesibility)",
+            inputMethod: "textfield",
+          },
           {
             property: "disabled",
             title: "Disabled",
@@ -369,8 +421,13 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     return {
       ...super.properties,
 
+      ariaLabel: {
+        type: String,
+        reflect: true,
+        attribute: "aria-label",
+      },
       /**
-       * the id of the active tab
+       * id of active tab
        */
       activeTab: {
         type: String,
@@ -378,7 +435,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         attribute: "active-tab",
       },
       /**
-       * whether the tabbed interface is disabled
+       * whether tabbed interface is disabled
        */
       disabled: {
         type: Boolean,
@@ -386,7 +443,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         attribute: "disabled",
       },
       /**
-       * whether the tabbed interface is hidden
+       * whether tabbed interface is hidden
        */
       hidden: {
         type: Boolean,
@@ -403,7 +460,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         attribute: "icon-breakpoint",
       },
       /**
-       * unique identifier/anchor for the tabbed interface
+       * unique identifier/anchor for tabbed interface
        */
       id: {
         type: String,
@@ -419,9 +476,9 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         attribute: "layout-breakpoint",
       },
       /**
-       * the size of the tabs,
-       * where `xs` is the smaller breakpoint
-       * and `xs` is the larger breakpoint
+       * size of tabs,
+       * where `xs` is smaller breakpoint
+       * and `xs` is larger breakpoint
        */
       responsiveSize: {
         type: String,
@@ -429,7 +486,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         attribute: "responsive-size",
       },
       /**
-       * whether the tabs are sticky
+       * whether tabs are sticky
        */
       sticky: {
         type: Boolean,
@@ -441,6 +498,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        */
       __tabs: {
         type: Array,
+      },
+      /**
+       * which tab button has ketboard focus
+       */
+      __tabFocus: {
+        type: Number,
       },
     };
   }
@@ -457,6 +520,10 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.disabled = false;
     this.hidden = false;
     this.__tabs = [];
+    this.__tabFocus = 0;
+  }
+  get buttons() {
+    return this.__tabButtons;
   }
   /**
    * determines if tabs should show icons only
@@ -593,6 +660,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    */
   updateTabs(e) {
     this.__tabs = this.querySelectorAll(this.tabQuery);
+    this.__tabButtons = this.shadowRoot.querySelectorAll("[role=tab]");
     this.selectTab(this.activeTab);
   }
   /**
@@ -629,6 +697,30 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   _handleTab(tab) {
     if (!tab.disabled) this.activeTab = tab.id;
   }
+  _handleKey(i, e) {
+    this.__tabFocus = i;
+    let focus = (dir = 1) => {
+      this.__tabFocus = this.__tabFocus + dir;
+      // If we're at the end, go to the start
+      if (this.__tabFocus >= this.buttons.length) {
+        this.__tabFocus = 0;
+        // If we're at the start, move to the end
+      } else if (this.__tabFocus < 0) {
+        this.__tabFocus = this.buttons.length - 1;
+      }
+      if (this.buttons[this.__tabFocus].disabled && this.__tabFocus !== i)
+        focus(dir);
+    };
+    // Move right
+    if (e.keyCode === 39 || e.keyCode === 37) {
+      this.buttons[i].setAttribute("tabindex", -1);
+      focus(e.keyCode === 39 ? 1 : -1);
+      if (!this.buttons[this.__tabFocus].disabled) {
+        this.buttons[this.__tabFocus].setAttribute("tabindex", 0);
+        this.buttons[this.__tabFocus].focus();
+      }
+    }
+  }
   /**
    * ensures that there is always an id for this tabbed interface so that we can link back to the top of it
    * @param {string} newValue the new id
@@ -645,17 +737,19 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabButton(tab) {
+  _tabButton(tab, i) {
     return html`
       <paper-button
         id="${tab.id}-button"
-        controls="${tab.id}"
+        aria-selected="${tab.id === this.activeTab ? "true" : "false"}"
+        aria-controls="${tab.id}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
-        @click="${(e) => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab ||
-        tab.disabled ||
-        this.disabled}"
         .flag="${tab.flag}"
+        @click="${(e) => this._handleTab(tab)}"
+        @keydown="${(e) => this._handleKey(i, e)}"
+        ?disabled="${tab.disabled || this.disabled}"
+        tabindex="${tab.id === this.activeTab ? 0 : -1}"
+        role="tab"
       >
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
