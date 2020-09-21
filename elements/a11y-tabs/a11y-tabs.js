@@ -482,6 +482,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        */
       responsiveSize: {
         type: String,
+        /**
+         * an array of tab buttons
+         */
+        __tabButtons: {
+          type: Array,
+        },
         reflect: true,
         attribute: "responsive-size",
       },
