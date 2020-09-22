@@ -41,7 +41,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.type = "rich-text-editor-toolbar";
     this.id = "";
     this.__selection = window.RichTextEditorSelection.requestAvailability();
-    this.addEventListener("paste", e => console.log("editor paste",e));
+    this.addEventListener("paste", (e) => console.log("editor paste", e));
   }
 
   /**
@@ -50,38 +50,38 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @readonly
    * @memberof RichTextEditor
    */
-  get observer(){
+  get observer() {
     let root = this;
-    return new MutationObserver(e => root.updateRange(e));
+    return new MutationObserver((e) => root.updateRange(e));
   }
 
   /**
-    * Called every time the element is removed from the DOM. Useful for 
-    * running clean up code (removing event listeners, etc.).
-    */
+   * Called every time the element is removed from the DOM. Useful for
+   * running clean up code (removing event listeners, etc.).
+   */
   disconnectedCallback() {
     this.contenteditable = false;
     super.disconnectedCallback();
   }
 
   firstUpdated() {
-    if(super.firstUpdated) super.firstUpdated();
-    if(this.isEmpty()) this.innerHTML = "";
+    if (super.firstUpdated) super.firstUpdated();
+    if (this.isEmpty()) this.innerHTML = "";
     this.__selection.registerEditor(this);
     this._editableChange();
   }
-  
+
   updated(changedProperties) {
     super.updated(changedProperties);
-    console.log("updated",this.contenteditable);
+    console.log("updated", this.contenteditable);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
       if (propName === "range") this._rangeChange();
     });
   }
 
-  getRange(){
-    return !this.__selection ? undefined : this.__selection.getRange(this);
+  getRange() {
+    return !this.__selection ? undefined : this.__selection.getRange();
   }
   /**
    * gets current value minus placeholder
@@ -89,8 +89,11 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns {string}
    * @memberof RichTextEditor
    */
-  getValue(){
-    return this.isEmpty || this.trimmerHTML(this) === `<p>${editor.placeholder}</p>` ? "" : this.innerHTML;
+  getValue() {
+    return this.isEmpty ||
+      this.trimmerHTML(this) === `<p>${editor.placeholder}</p>`
+      ? ""
+      : this.innerHTML;
   }
   /**
    * determines if editor is empty
@@ -98,24 +101,24 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns {string}
    * @memberof RichTextEditor
    */
-  isEmpty(){
+  isEmpty() {
     return !this.innerHTML || this.trimmerHTML(this) == "";
   }
   /**
-   * 
+   *
    *
    * @memberof RichTextEditor
    */
-  paste(pasteContent,sanitized=true){
-    this.__selection.paste(this,pasteContent);
-    this.pasteIntoRange(this,pasteContent,sanitized);
+  paste(pasteContent, sanitized = true) {
+    this.__selection.paste(this, pasteContent);
+    this.pasteIntoRange(this, pasteContent, sanitized);
   }
   /**
    * revert content to before contenteditable=true
    *
    * @memberof RichTextEditor
    */
-  revert(){
+  revert() {
     this.innerHTML = this.__canceledEdits;
   }
   /**
@@ -124,7 +127,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns node
    * @memberof RichTextEditor
    */
-  rootNode(){
+  rootNode() {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
   /**
@@ -134,72 +137,70 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @returns string
    * @memberof RichTextEditor
    */
-  trimmerHTML(node){
-    return node.innerHTML.replace(/[\s\t\r\n]/gim,'');
+  trimmerHTML(node) {
+    return node.innerHTML.replace(/[\s\t\r\n]/gim, "");
   }
-  updateRange(e){
-    console.log('updateRange',e);
+  updateRange(e) {
+    console.log("updateRange", e);
     this.range = this.getRange();
-    console.log('updateRange 2',this.range);
+    console.log("updateRange 2", this.range);
   }
   /**
    * updates editor placeholder and watches for range changes
    *
    * @memberof RichTextEditor
    */
-  _editableChange(){
+  _editableChange() {
     let root = this,
       placeholder = `<p>${this.placeholder}</p>`;
-    console.log("updated",this.contenteditable);
-    if(this.contenteditable){
+    console.log("updated", this.contenteditable);
+    if (this.contenteditable) {
       this.__canceledEdits = this.innerHTML;
-      console.log("updated 2",this.__selection);
-      if(this.isEmpty()) this.innerHTML = placeholder;
+      console.log("updated 2", this.__selection);
+      if (this.isEmpty()) this.innerHTML = placeholder;
       this._rangeChange();
-      document.onselectionchange =  e => this.updateRange(e);
+      document.onselectionchange = (e) => this.updateRange(e);
       root.observer.observe(root, {
         attributes: false,
         childList: true,
         subtree: true,
-        characterData: false
+        characterData: false,
       });
     } else {
-      console.log("updated 2b",this.__selection);
+      console.log("updated 2b", this.__selection);
       if (root.observer) root.observer.disconnect();
-      if(this.trimmerHTML(this) === placeholder) {
+      if (this.trimmerHTML(this) === placeholder) {
         this.innerHTML = "";
       }
-      document.onselectionchange =  e => console.log('none');
+      document.onselectionchange = (e) => console.log("none");
     }
-    console.log("updated 3",this.__selection);
+    console.log("updated 3", this.__selection);
   }
 
   /**
-  * Handles paste.
-  *
-  * @param {event} e paste event
-  * @returns {void}
-  */
+   * Handles paste.
+   *
+   * @param {event} e paste event
+   * @returns {void}
+   */
   _handlePaste(e) {
     let pasteContent = "";
     // intercept paste event
     if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
-      pasteContent = (e.originalEvent || e).clipboardData.getData(
-        "text/html"
-      );
+      pasteContent = (e.originalEvent || e).clipboardData.getData("text/html");
     } else if (window.clipboardData) {
       pasteContent = window.clipboardData.getData("Text");
     }
-    this.__selection.pasteFromClipboard(this,pasteContent);
+    this.__selection.pasteFromClipboard(this, pasteContent);
     e.preventDefault();
   }
 
   /**
-   * updates toolbar's range and placeholder content 
+   * updates toolbar's range and placeholder content
    *
    * @memberof RichTextEditor
    */
-  _rangeChange(){
+  _rangeChange() {
     this.__selection.updateToolbars(this);
   }
 }

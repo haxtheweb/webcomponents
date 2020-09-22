@@ -8,6 +8,7 @@ import { RichTextEditorButtonStyles } from "@lrnwebcomponents/rich-text-editor/l
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import "./rich-text-editor-selection.js";
 /**
  * `rich-text-editor-prompt`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
@@ -179,6 +180,8 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   constructor() {
     super();
+    this.__selection = window.RichTextEditorSelection.requestAvailability();
+    this.onclick = (e) => console.log("-------->", this.__selection.range);
 
     // sets the instance to the current instance
     if (!window.RichTextEditorPrompt.instance) {
@@ -200,9 +203,10 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    * @param {object} button the button to associate with the prompt
    * @returns {void}
    */
-  setTarget(button) {
+  setTarget(button, node) {
+    console.log("setTarget", button.fields);
     this.clearTarget();
-    this.fields = button.__promptFields;
+    this.fields = [...button.fields];
     this.value = button.value;
     this.__button = button;
     if (button.__selection) this.for = button.__selection.getAttribute("id");

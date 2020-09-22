@@ -104,6 +104,20 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     editor.revert();
     this.edit(editor, false);
   }
+  /**
+   * executes button command on current range
+   *
+   */
+  execCommand(command, val, editor) {
+    if (this.range) {
+      if (this.command !== "paste") {
+        this.selectRange(this.range);
+        document.execCommand(command, false, val);
+      } else if (navigator.clipboard) {
+        this.pasteFromClipboard(editor);
+      }
+    }
+  }
 
   /**
    * searches for a closest ancestor by tagname,
@@ -175,7 +189,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} selected range
    */
   getRange(root = document) {
-    let sel = this.getSelection(root),
+    let sel = this.getSelection(this.getRoot(root)),
       range;
     console.log("getRange", sel);
     if (sel.getRangeAt && sel.rangeCount) {
@@ -344,19 +358,17 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       console.log("highlight 2", add, editor, this.range, range);
       if (add) {
         if (!this.hidden) return;
-        this.hidden = !range || range.collapsed;
-        if (!range || range.collapsed) {
+        if (range) {
           range.surroundContents(this);
+          console.log("highlight 2a", this.range, range, this.innerHTML);
           this.normalize();
           this.innerHTML = this.innerHTML.trim();
-          this.selectNodeContents(this, editor);
           this.dispatchEvent(new CustomEvent("highlight", { detail: this }));
-          this.hidden = false;
-        } else {
-          this.hidden = true;
         }
+        this.hidden = !range || range.collapsed;
         this.range = range;
-        console.log("highlight 3", add, editor, this.range, range);
+        editor.range = range;
+        console.log("highlight 3", this.range, range, this.innerHTML);
       } else {
         if (this.hidden || !range) return;
         this.normalize();
@@ -595,7 +607,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {object} range which oncludes wrapper and wrapped contents
    */
   wrap(wrapper, range = this.getRange()) {
-    console.log("wrap", range);
+    console.log("wrap", range, this.getRange());
     wrapper = wrapper || document.createElement("span");
     range.surroundContents(wrapper);
     console.log("wrap 2", range);
@@ -614,11 +626,15 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   }
 
   _handleBlur(editor, e) {
+    console.log("_handleBlur", editor, e);
     if (
       e.relatedTarget === null ||
       !e.relatedTarget.startsWith === "rich-text-editor"
-    )
+    ) {
       this.edit(editor, true);
+    } else if (editor) {
+      this.highlight(editor);
+    }
   }
 
   /**
@@ -632,6 +648,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
       oldEditor = editable ? toolbar.editor : undefined;
     console.log(toolbar);
+    this.highlight(editor, false);
     if (toolbar && oldEditor !== editor) {
       //reset previous editor
       if (!!oldEditor) {
@@ -643,7 +660,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       toolbar.controls = undefined;
       toolbar.range = undefined;
       toolbar.editor = editor;
-      this.highlight(editor, false);
 
       //connect toolbar
       if (!!editor) {

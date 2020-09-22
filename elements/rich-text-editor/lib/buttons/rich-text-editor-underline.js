@@ -77,7 +77,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
   updateSelection() {
     this.toggled = !this.__prompt.getPromptValue("confirm");
     this.setRange();
-    this.execCommand();
+    this._buttonExec();
   }
 }
 window.customElements.define(

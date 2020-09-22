@@ -24,188 +24,194 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends RichTextEditorStyles(LitElement) {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        :host {
-          display: block;
-          cursor: pointer;
-          min-height: 40px;
-        }
+:host {
+  display: block;
+  cursor: pointer;
+  min-height: 40px;
+}
 
-        :host([contenteditable="true"]) {
-          border: var(--rich-text-editor-border);
-          overflow: auto;
-        }
+:host([contenteditable="true"]) {
+  border: var(--rich-text-editor-border);
+  overflow: auto;
+}
 
-        :host([contenteditable="true"]):focus-within,
-        :host([contenteditable="true"]):focus {
-          padding: 2px;
-          margin-bottom: 2px;
-        }
+:host([contenteditable="true"]):focus-within,
+:host([contenteditable="true"]):focus {
+  padding: 2px;
+  margin-bottom: 2px;
+}
 
-        :host(.heightmax[contenteditable="true"]) {
-          max-height: calc(100vh - 200px);
-          overflow-y: scroll;
-        }
+:host(.heightmax[contenteditable="true"]) {
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
+}
 
-        :host(:empty) {
-          border: 1px dashed var(--rich-text-editor-border-color);
-          outline: 1px dashed var(--rich-text-editor-border-color);
-        }
+:host(:empty) {
+  border: 1px dashed var(--rich-text-editor-border-color);
+  outline: 1px dashed var(--rich-text-editor-border-color);
+}
 
-        :host(:empty):before {
-          content: attr(placeholder);
-          padding: 0 5px;
-          display: block;
-          z-index: -1;
-          color: var(--rich-text-editor-button-disabled-color);
-        }
+:host(:empty):before {
+  content: attr(placeholder);
+  padding: 0 5px;
+  display: block;
+  z-index: -1;
+  color: var(--rich-text-editor-button-disabled-color);
+}
 
-        ::slotted(*:first-child) {
-          margin-top: 0;
-        }
+::slotted(*:first-child) {
+  margin-top: 0;
+}
 
-        ::slotted(*:last-child) {
-          margin-bottom: 0;
-        }
-      `,
+::slotted(*:last-child) {
+  margin-bottom: 0;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <slot></slot>`;
+    return html`
+
+<slot></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University",
-        },
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-        ],
-        advanced: [],
-      },
-    };
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+  
+  ...super.properties,
+  
+  /**
+   * editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  },
+  /**
+   * Maps to contenteditable attribute
+   */
+   "contenteditable": {
+    "name": "contenteditable",
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "contenteditable"
+  },
+  /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": String,
+    "reflect": true,
+    "attribute": "placeholder"
+  },
 
-      /**
-       * editor's unique id
-       */
-      id: {
-        name: "id",
-        type: String,
-        reflect: true,
-        attribute: "id",
-      },
-      /**
-       * Maps to contenteditable attribute
-       */
-      contenteditable: {
-        name: "contenteditable",
-        type: Boolean,
-        reflect: true,
-        attribute: "contenteditable",
-      },
-      /**
-       * Placeholder text for empty editable regions
-       */
-      placeholder: {
-        name: "placeholder",
-        type: String,
-        reflect: true,
-        attribute: "placeholder",
-      },
+  /**
+   * id for toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "reflect": true,
+    "attribute": "toolbar"
+  },
 
-      /**
-       * id for toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        reflect: true,
-        attribute: "toolbar",
-      },
+  /**
+   * current range
+   */
+  "range": {
+    "name": "range",
+    "type": Object,
+    "attribute": "range"
+  },
 
-      /**
-       * current range
-       */
-      range: {
-        name: "range",
-        type: Object,
-        attribute: "range",
-      },
+  /**
+   * type of editor toolbar, i.e.
+   * full - full for full toolbar with breadcrumb,
+   * mini - mini for mini floating toolbar, or
+   * default toolbar if neither.
+   */
+  "type": {
+    "name": "type",
+    "type": String,
+    "reflect": true,
+    "attribute": "type"
+  },
 
-      /**
-       * type of editor toolbar, i.e.
-       * full - full for full toolbar with breadcrumb,
-       * mini - mini for mini floating toolbar, or
-       * default toolbar if neither.
-       */
-      type: {
-        name: "type",
-        type: String,
-        reflect: true,
-        attribute: "type",
-      },
+  /**
+   * contains cancelled edits
+   */
+  "__canceledEdits": {
+    "type": Object
+  },
 
-      /**
-       * contains cancelled edits
-       */
-      __canceledEdits: {
-        type: Object,
-      },
-
-      /**
-       * connected toolbar
-       */
-      __connectedToolbar: {
-        type: Object,
-      },
-      /**
-       * selection management
-       */
-      __selection: {
-        type: Object,
-      },
-    };
+  /**
+   * connected toolbar
+   */
+  "__connectedToolbar": {
+    "type": Object
+  },
+  /**
+   * selection management
+   */
+  "__selection": {
+    "type": Object
+  }
+}
+;
   }
 
   /**
@@ -263,7 +269,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   }
 
   getRange() {
-    return !this.__selection ? undefined : this.__selection.getRange(this);
+    return !this.__selection ? undefined : this.__selection.getRange();
   }
   /**
    * gets current value minus placeholder

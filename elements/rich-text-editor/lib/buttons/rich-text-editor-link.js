@@ -105,7 +105,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.__selectionContents.innerHTML = text;
     this.toggled = !link || !text;
     this.commandVal = link || undefined;
-    this.execCommand();
+    this._buttonExec();
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

@@ -199,8 +199,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      this.onfocus = (e) => this.addHighlight(e);
-      this.ondeselect = (e) => this.removeHighlight(e);
       /*this.addEventListener("mousedown", function(e) {
         //console.log("mousedown", e);
       });
@@ -234,26 +232,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     selectNodeCoontents(e) {
       this.dispatchEvent(
         new CustomEvent("selectnodeccontents", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: e.detail,
-        })
-      );
-    }
-    addHighlight(e) {
-      this.dispatchEvent(
-        new CustomEvent("addhighlight", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: e.detail,
-        })
-      );
-    }
-    removeHighlight(e) {
-      this.dispatchEvent(
-        new CustomEvent("removehighlight", {
           bubbles: true,
           composed: true,
           cancelable: true,
@@ -311,7 +289,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         /* workaround because queryCommandState("underline") returns true on links */
         block =
           this.command === "underline"
-            ? this._getSelectedBlock("u") !== null
+            ? !!this._getSelectedBlock("u")
             : command;
       return !!this.range && this.toggles && !!block ? true : false;
     }
@@ -406,28 +384,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         : this.commandVal;
     }
     /**
-     * executes button command on current range
-     *
-     */
-    execCommand() {
-      console.log("execCommand", this.range);
-      if (this.range) {
-        document.execCommand(
-          this.operationCommand,
-          false,
-          this.operationCommandVal
-        );
-        this.dispatchEvent(
-          new CustomEvent(this.operationCommand + "-button", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this,
-          })
-        );
-      }
-    }
-    /**
      * expands range to selection's parent block
      */
     setRange() {
@@ -441,8 +397,18 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _buttonTap(e) {
       e.preventDefault();
-      if (this.command === "formatBlock") this.setRange();
-      this.execCommand();
+      this._buttonExec();
+    }
+
+    _buttonExec() {
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-button-exec", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
     /**
      * fires when command value changes
@@ -481,6 +447,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @returns {object}
      */
     _getSelectedBlock(selectors = this.blockSelectors) {
+      console.log("_getSelectedBlock", this.range, selectors);
       let common = !this.range ? undefined : this.range.commonAncestorContainer,
         startContainer = !this.range ? undefined : this.range.startContainer,
         startOffset = !this.range ? undefined : this.range.startOffset,
@@ -500,10 +467,17 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             : undefined,
         selectorsList = selectors.toLowerCase().replace(/\s*/g, "").split(",");
       if (selectorsList.includes(tagName)) {
-        return node;
+        console.log("_getSelectedBlock 2a", this.range, rootNode);
+        return rootNode;
       } else if (rootNode && rootNode.closest) {
+        console.log(
+          "_getSelectedBlock 2b",
+          this.range,
+          rootNode.closest(selectors)
+        );
         return rootNode.closest(selectors);
       } else {
+        console.log("_getSelectedBlock 2c", this.range);
         return undefined;
       }
     }
@@ -565,6 +539,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @event range-changed
      */
     _rangeChanged() {
+      console.log("_rangeChanged", this.range);
       this.dispatchEvent(
         new CustomEvent("range-changed", {
           bubbles: true,

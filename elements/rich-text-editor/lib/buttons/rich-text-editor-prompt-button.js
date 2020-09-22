@@ -10,7 +10,7 @@ import "../singletons/rich-text-editor-prompt.js";
 const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
   return class extends RichTextEditorButtonBehaviors(SuperClass) {
     /**
-     * Store the tag name to make it easier to obtain directly.
+     * Store tag name to make it easier to obtain directly.
      */
     static get tag() {
       return "rich-text-editor-prompt-button";
@@ -21,61 +21,54 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       return super.render();
     }
 
-    // properties available to the custom element for data binding
+    // properties available to custom element for data binding
     static get properties() {
       return {
         ...super.properties,
         /**
-         * fields for the prompt popover.
+         * fields for prompt popover.
          */
         fields: {
           type: Array,
         },
         /**
-         * is the element a custom inline widget element?
+         * is element a custom inline widget element?
          */
         inlineWidget: {
           name: "inlineWidget",
           type: Boolean,
         },
         /**
-         * the tag that will wrap the selected range
+         * tag that will wrap selected range
          */
         tag: {
           name: "tag",
           type: String,
         },
         /**
-         * The prefilled value of the prompt
+         * prefilled value of prompt
          */
         value: {
           type: Object,
         },
         /**
-         * fields for the prompt popover.
+         * fields for prompt popover.
          */
         __promptFields: {
           type: Array,
         },
         /**
-         * the contents node inside the selected range
+         * contents node inside selected range
          */
         __oldValue: {
           name: "__oldValue",
           type: Object,
         },
         /**
-         * the prompt that pops up when button is pressed
+         * prompt that pops up when button is pressed
          */
         __prompt: {
           name: "__prompt",
-          type: Object,
-        },
-        /**
-         * the contents node inside the selected range
-         */
-        __selectionContents: {
-          name: "__selectionContents",
           type: Object,
         },
       };
@@ -88,7 +81,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
         {
           slot: "",
           title: "Text",
-          description: "The inner text",
+          description: "inner text",
           inputMethod: "textfield",
         },
       ];
@@ -99,46 +92,43 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       };
       this.__prompt = window.RichTextEditorPrompt.requestAvailability();
     }
-    
 
     /**
      * Handles button tap
-     * @param {event} e the button tap event
+     * @param {event} e button tap event
      */
     _buttonTap(e) {
       e.preventDefault();
       let block = this._getSelectedBlock();
-      this.__selection.selectRange(this.range);
       if (block) {
         this.selectNode(block);
       } else {
         this.__selection.wrap();
       }
-      this.addHighlight();
+      //this.addHighlight();
       this.range = this.__selection.range;
       this.open();
     }
     /**
-     * cancels the changes
+     * cancels changes
      */
-    cancel() {
-      this.removeHighlight();
-    }
+    cancel() {}
 
     /**
-     * updates the insertion based on fields
+     * updates insertion based on fields
      */
     confirm() {
-      this.updateSelection();
-      this.removeHighlight();
+      this.toggled = !this.__prompt.value;
+      this.commandVal = this.__prompt.value;
+      this._buttonExec();
     }
 
     /**
      * Handles editor change
-     * @param {string} newVal the new editor's id
-     * @param {string} oldVal the old editor's id
+     * @param {string} newVal new editor's id
+     * @param {string} oldVal old editor's id
      * @returns {void}
-     */
+     * /
     _editorChanged(newVal, oldVal) {
       let newEditor = newVal ? document.getElementById(newVal) : null,
         oldEditor = oldVal ? document.getElementById(oldVal) : null;
@@ -158,10 +148,10 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
     }
     /**
      *
-     * @param {object} editor the active editor
-     * @param {event} e the edit event
-     * @returns {boolean} whether to prevent the default behavior for an inline widget
-     */
+     * @param {object} editor active editor
+     * @param {event} e edit event
+     * @returns {boolean} whether to prevent default behavior for an inline widget
+     * /
     _editInlineWidget(editor, e) {
       if (
         editor.getAttribute("contenteditable") &&
@@ -188,31 +178,19 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * Handles selecting text and opening prompt
      */
     open() {
+      let node = this._getSelectedBlock(this.tag);
+      console.log("block", node, this.tag);
+
+      if (node) {
+        this.__selection.selectNode(node);
+      } else {
+        this.__selection.wrap();
+      }
       this.updatePrompt();
       this.__prompt.setTarget(this);
     }
 
-    /**
-     * updates prompt fields with selected range data
-     */
-    updatePrompt() {
-      this.__selectionContents = this.__selection.firstChild;
-      this.__promptFields = JSON.parse(JSON.stringify(this.fields));
-    }
-
-    /**
-     * updates the insertion based on fields
-     */
-    updateSelection() {
-      this.__selectionContents = this._getSelectedBlock() || this.__selection;
-      this.setRange();
-      this.toggled = !this.__prompt.value;
-      this.commandVal = this.__prompt.value;
-      this.execCommand();
-    }
-    setRange() {
-      this.__selection.selectRange(this.range);
-    }
+    updatePrompt() {}
   };
 };
 /**

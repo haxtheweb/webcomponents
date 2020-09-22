@@ -107,8 +107,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
             ? "false"
             : "true"}"
           ?collapsed="${this.collapsed}"
-          @addhighlight="${(e) => this.highlight()}"
-          @removehighlight="${(e) => this.highlight(false)}"
           @selectnode="${(e) => this.selectNode(e.detail)}"
           @selectnodecontents="${(e) => this.selectNodeContents(e.detail)}"
           @selectrange="${(e) => this.selectRange(e.detail)}"
@@ -497,8 +495,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       this.__selection.registerToolbar(this);
-      if (navigator.clipboard)
-        this.addEventListener("paste-button", this._handlePasteButton);
+      this.addEventListener("rich-text-editor-button-exec", this._handleButton);
     }
 
     /**
@@ -508,8 +505,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     disconnectedCallback() {
       super.disconnectedCallback();
       this.__selection.registerToolbar(this, false);
-      if (navigator.clipboard)
-        this.removeEventListener("paste-button", this._handlePasteButton);
+      this.removeEventListener(
+        "rich-text-editor-button-exec",
+        this._handleButton
+      );
     }
 
     /**
@@ -657,17 +656,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       }
       return [];
     }
-
-    /**
-     * Handles paste button.
-     *
-     * @param {event} e paste button event
-     * @returns {void}
-     */
-    _handlePasteButton(e) {
-      console.log("pasting");
-      this.pasteFromClipboard(this.editor);
-      e.preventDefault();
+    _handleButton(e) {
+      console.log("_handleButton", e.detail, this.range);
+      let button = e.detail;
+      this.__selection.execCommand(button.command, button.commandVal, this);
     }
 
     /**
