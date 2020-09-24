@@ -8,6 +8,8 @@ import {
   nodeToHaxElement,
   haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
+import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
 const maxStep = 25;
@@ -86,7 +88,7 @@ Custom property | Description | Default
  * @LitElement
  * @element hax-body
  */
-class HaxBody extends SimpleColors {
+class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -353,6 +355,14 @@ class HaxBody extends SimpleColors {
    */
   constructor() {
     super();
+    // history event so we can undo things without triggering multiple MOs
+    this.moProps = {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      characterDataOldValue: true,
+      subtree: true,
+    };
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
     this.___moveLock = false;
@@ -521,9 +531,6 @@ class HaxBody extends SimpleColors {
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
         bubbles: true,
@@ -564,14 +571,14 @@ class HaxBody extends SimpleColors {
     // ensure this resets every append
     this.__tabTrap = false;
     this.__ready = true;
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
   }
   /**
    * LitElement life cycle - properties changed callback
    */
   updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
@@ -602,6 +609,9 @@ class HaxBody extends SimpleColors {
         );
       }
     });
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
   }
   /**
    * HTMLElement
@@ -611,72 +621,74 @@ class HaxBody extends SimpleColors {
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
       var mutFind = false;
-      mutations.forEach((mutation) => {
-        // if we've got new nodes, we have to react to that
-        if (mutation.addedNodes.length > 0) {
-          mutation.addedNodes.forEach((node) => {
-            if (this._validElementTest(node)) {
-              // edge case, thing is moved around in the dom so let's do the opposite
-              // this is something that has PART of these applies
-              // let's make sure that we maintain state associated with contenteditable
+      if (!this.blocked && !this.__fakeEndCap) {
+        mutations.forEach((mutation) => {
+          // if we've got new nodes, we have to react to that
+          if (mutation.addedNodes.length > 0) {
+            mutation.addedNodes.forEach((node) => {
+              if (this._validElementTest(node)) {
+                // edge case, thing is moved around in the dom so let's do the opposite
+                // this is something that has PART of these applies
+                // let's make sure that we maintain state associated with contenteditable
+                if (
+                  this.editMode &&
+                  (node.getAttribute("contenteditable") == "true" ||
+                    node.getAttribute("contenteditable") === true ||
+                    node.getAttribute("contenteditable") == "contenteditable")
+                ) {
+                  this.__applyNodeEditableState(node, !this.editMode);
+                }
+                this.__applyNodeEditableState(node, this.editMode);
+                this.dispatchEvent(
+                  new CustomEvent("hax-body-tag-added", {
+                    bubbles: true,
+                    cancelable: true,
+                    composed: true,
+                    detail: { node: node },
+                  })
+                );
+                // special support for Header tags showing up w.o. identifiers
+                // this way it's easier to anchor to them in the future
+                if (
+                  ["H1", "H2", "H3", "H4", "H5", "H6"].includes(node.tagName) &&
+                  node.getAttribute("id") == null
+                ) {
+                  node.setAttribute("id", generateResourceID("header-"));
+                }
+                // set new nodes to be the active one
+                // only if we didn't just do a grid plate move
+                // if multiple mutations, only accept the 1st one in a group
+                if (!this.___moveLock && !mutFind) {
+                  mutFind = true;
+                  this.activeNode = node;
+                  window.HaxStore.write("activeNode", node, this);
+                } else {
+                  this.___moveLock = false;
+                }
+              }
+            });
+          }
+          // if we dropped nodes via the UI (delete event basically)
+          if (mutation.removedNodes.length > 0) {
+            // handle removing items... not sure we need to do anything here
+            mutation.removedNodes.forEach((node) => {
               if (
-                this.editMode &&
-                (node.getAttribute("contenteditable") == "true" ||
-                  node.getAttribute("contenteditable") === true ||
-                  node.getAttribute("contenteditable") == "contenteditable")
+                this._validElementTest(node) &&
+                !node.classList.contains("hax-active")
               ) {
-                this.__applyNodeEditableState(node, !this.editMode);
+                this.dispatchEvent(
+                  new CustomEvent("hax-body-tag-removed", {
+                    bubbles: true,
+                    cancelable: true,
+                    composed: true,
+                    detail: { node: node },
+                  })
+                );
               }
-              this.__applyNodeEditableState(node, this.editMode);
-              this.dispatchEvent(
-                new CustomEvent("hax-body-tag-added", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: { node: node },
-                })
-              );
-              // special support for Header tags showing up w.o. identifiers
-              // this way it's easier to anchor to them in the future
-              if (
-                ["H1", "H2", "H3", "H4", "H5", "H6"].includes(node.tagName) &&
-                node.getAttribute("id") == null
-              ) {
-                node.setAttribute("id", generateResourceID("header-"));
-              }
-              // set new nodes to be the active one
-              // only if we didn't just do a grid plate move
-              // if multiple mutations, only accept the 1st one in a group
-              if (!this.___moveLock && !mutFind) {
-                mutFind = true;
-                this.activeNode = node;
-                window.HaxStore.write("activeNode", node, this);
-              } else {
-                this.___moveLock = false;
-              }
-            }
-          });
-        }
-        // if we dropped nodes via the UI (delete event basically)
-        if (mutation.removedNodes.length > 0) {
-          // handle removing items... not sure we need to do anything here
-          mutation.removedNodes.forEach((node) => {
-            if (
-              this._validElementTest(node) &&
-              !node.classList.contains("hax-active")
-            ) {
-              this.dispatchEvent(
-                new CustomEvent("hax-body-tag-removed", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: { node: node },
-                })
-              );
-            }
-          });
-        }
-      });
+            });
+          }
+        });
+      }
     });
     this._observer.observe(this, {
       childList: true,
@@ -1225,15 +1237,7 @@ class HaxBody extends SimpleColors {
     window.HaxStore.write("activeNode", newNode, this);
     // wait so that the DOM can have the node to then attach to
     setTimeout(() => {
-      // scroll to it
-      if (typeof newNode.scrollIntoViewIfNeeded === "function") {
-        newNode.scrollIntoViewIfNeeded(true);
-      } else {
-        newNode.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-        });
-      }
+      this.scrollHere(newNode);
       this.positionContextMenus();
     }, 10);
     return true;
@@ -1539,11 +1543,7 @@ class HaxBody extends SimpleColors {
         break;
     }
     setTimeout(() => {
-      if (typeof node.scrollIntoViewIfNeeded === "function") {
-        node.scrollIntoViewIfNeeded(true);
-      } else {
-        node.scrollIntoView({ behavior: "smooth", inline: "center" });
-      }
+      this.scrollHere(node);
       this.positionContextMenus(node, node);
     }, 10);
     return true;
@@ -2084,12 +2084,59 @@ class HaxBody extends SimpleColors {
     return stopProp;
   }
   /**
+   * Simple utility to do nice scrolling or only scroll if we can't see it
+   * as that is better behavior but not in all browsers
+   */
+  scrollHere(node) {
+    // scroll to it
+    if (typeof node.scrollIntoViewIfNeeded === "function") {
+      node.scrollIntoViewIfNeeded(true);
+    } else {
+      node.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+      });
+    }
+  }
+  undo() {
+    super.undo();
+    setTimeout(() => {
+      let active = this.querySelector(".hax-active");
+      if (active) {
+        this.__focusLogic(active);
+        this.scrollHere(active);
+      }
+    }, 100);
+  }
+  redo() {
+    super.redo();
+    setTimeout(() => {
+      let active = this.querySelector(".hax-active");
+      if (active) {
+        this.__focusLogic(active);
+        this.scrollHere(active);
+      }
+    }, 100);
+  }
+  /**
    * Notice the change between states for editing.
    */
   _editModeChanged(newValue, oldValue) {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
+      setTimeout(() => {
+        this.stack = new Undo.Stack();
+        // simple hook into being notified of changes to the object
+        this.stack.changed = (e) => {
+          this.canRedo = this.stack.canRedo();
+          this.canUndo = this.stack.canUndo();
+          this.isDirty = this.stack.dirty();
+        };
+        // execute once just to get these values
+        this.stack.changed();
+        this.stack.save();
+      }, 0);
       if (newValue) {
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
@@ -2442,16 +2489,7 @@ class HaxBody extends SimpleColors {
               })
             );
             setTimeout(() => {
-              if (
-                typeof this.activeNode.scrollIntoViewIfNeeded === "function"
-              ) {
-                this.activeNode.scrollIntoViewIfNeeded(true);
-              } else {
-                this.activeNode.scrollIntoView({
-                  behavior: "smooth",
-                  inline: "center",
-                });
-              }
+              this.scrollHere(this.activeNode);
               this.positionContextMenus();
             }, 250);
           }
@@ -2696,7 +2734,9 @@ class HaxBody extends SimpleColors {
       // this is nessecary because the context menu gets appended into
       // the document
       // only hide if we change containers
-      newValue.classList.add("hax-active");
+      setTimeout(() => {
+        newValue.classList.add("hax-active");
+      }, 0);
       if (
         window.HaxStore.instance.isTextElement(newValue) ||
         window.HaxStore.instance.isGridPlateElement(newValue)

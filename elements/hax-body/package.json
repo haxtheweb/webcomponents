@@ -66,6 +66,7 @@
     "@lrnwebcomponents/simple-toast": "^2.7.7",
     "@lrnwebcomponents/simple-tooltip": "^2.7.7",
     "@lrnwebcomponents/utils": "^2.7.9",
+    "@lrnwebcomponents/undo-manager": "^2.7.7",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/iron-a11y-keys": "^3.0.1",
@@ -105,7 +106,6 @@
     "@vaadin/vaadin-upload": "^4.2.1",
     "app-datepicker": "^3.0.0",
     "lit-element": "2.4.0",
-    "undoer": "^0.1.1",
     "web-animations-js": "2.3.2"
   },
   "devDependencies": {

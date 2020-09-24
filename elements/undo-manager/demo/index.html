@@ -7,6 +7,7 @@
     
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script>window.WCGlobalBasePath = "/node_modules/@lrnwebcomponents/undo-manager/";</script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
@@ -79,7 +80,11 @@
       <div id="dirty"></div>
       <demo-snippet>
         <template>
-          <undo-manager id="manager">
+          <undo-manager id="manager" contenteditable="true">
+            <p>Stuff</p>
+            <p>Stuff</p>
+            <p>Stuff</p>
+            <p>Stuff</p>
             <p>Stuff</p>
           </undo-manager>
         </template>

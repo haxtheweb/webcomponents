@@ -30,6 +30,9 @@ class HaxTray extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
+      "can-redo-changed": "_redoChanged",
+      "can-undo-changed": "_undoChanged",
+      "stack-changed": "_stackChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
@@ -46,8 +49,8 @@ class HaxTray extends winEventsElement(LitElement) {
     this.collapsed = false;
     this.activeTab = "item-0";
     this.activeSchema = [];
-    this.canUndo = true;
-    this.canRedo = true;
+    this.canUndo = false;
+    this.canRedo = false;
     this.elementAlign = "right";
     this.activeTagName = "Select an element to configure";
     this.activeTagIcon = "icons:settings";
@@ -82,6 +85,25 @@ class HaxTray extends winEventsElement(LitElement) {
   }
   _expandSettingsPanel(e) {
     this.shadowRoot.querySelector("#settingscollapse").expand();
+  }
+  _redoChanged(e) {
+    this.canRedo = e.detail.value;
+  }
+  /**
+   * Stack has changed, edge case of 1st opening and having SOMETHING here as base
+   */
+  _stackChanged(e) {
+    if (
+      window.HaxStore.instance.activeHaxBody.stack.commands.length === 1 &&
+      window.HaxStore.instance.activeHaxBody.stack.stackPosition === 0
+    ) {
+      this.canUndo = false;
+    } else {
+      this.canUndo = true;
+    }
+  }
+  _undoChanged(e) {
+    this.canUndo = e.detail.value;
   }
   /**
    * Store updated, sync.
@@ -250,7 +272,6 @@ class HaxTray extends winEventsElement(LitElement) {
         hax-app-browser,
         hax-gizmo-browser {
           transition: 0.2s all ease-in-out;
-          opacity: 1;
           visibility: visible;
         }
         hax-tray-button:not(:defined),
@@ -258,7 +279,6 @@ class HaxTray extends winEventsElement(LitElement) {
         a11y-collapse-group:not(:defined),
         hax-app-browser:not(:defined),
         hax-gizmo-browser:not(:defined) {
-          opacity: 0;
           visibility: hidden;
         }
         *[hidden] {
@@ -578,7 +598,6 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               icon="icons:undo"
-              hidden
               ?disabled="${!this.canUndo}"
               label="Undo previous action"
               event-name="undo"
@@ -588,7 +607,6 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               icon="icons:redo"
-              hidden
               ?disabled="${!this.canRedo}"
               label="Redo previous action"
               event-name="redo"
@@ -801,10 +819,10 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         break;
       case "undo":
-        document.execCommand("undo");
+        window.HaxStore.instance.activeHaxBody.undo();
         break;
       case "redo":
-        document.execCommand("redo");
+        window.HaxStore.instance.activeHaxBody.redo();
         break;
       case "cancel":
         window.HaxStore.write("editMode", false, this);

@@ -32,7 +32,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   render() {
     return html`
       <slot></slot>
-      <undoer-element></undoer-element>
       <iron-ajax
         id="appstore"
         url="${this.appStore.url}"
@@ -628,6 +627,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     );
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     let loadAppStoreData = false;
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "openDrawer") {
@@ -698,6 +700,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     import("@polymer/iron-ajax/iron-ajax.js").then((esModule) => {
       if (this.shadowRoot.querySelector("#appstore")) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
