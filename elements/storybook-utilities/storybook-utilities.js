@@ -668,6 +668,10 @@ export class StorybookUtilities {
       return this.getDemo(child);
     }
   }
+  /**
+   * @param {string} el
+   * @param {string} before
+   */
   getDemo(el, before = "") {
     let demo = document.createElement("demo-snippet"),
       template = document.createElement("template");

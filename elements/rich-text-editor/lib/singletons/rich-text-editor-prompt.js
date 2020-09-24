@@ -181,7 +181,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   constructor() {
     super();
     this.__selection = window.RichTextEditorSelection.requestAvailability();
-    console.log("prompt this.__selection", this.__selection);
     window.addEventListener(
       "rich-text-editor-prompt-open",
       this.open.bind(this)
@@ -202,7 +201,6 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
     super.connectedCallback();
   }
   open(e) {
-    console.log("open this.__selection", e);
     if (e) {
       this.for = this.__selection.id;
       this.button = e.detail;
@@ -236,6 +234,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   _confirm(e) {
     e.preventDefault();
     this.button.confirm(this.value);
+    this.close();
   }
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);

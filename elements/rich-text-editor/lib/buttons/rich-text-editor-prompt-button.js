@@ -99,7 +99,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     _buttonTap(e) {
       e.preventDefault();
-      console.log("-------- _buttonTap", this.selectedNode);
       this.open();
     }
 
@@ -153,24 +152,16 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.selectNode(widget);
       this.__selectionContents = widget;
     }
-    /**
-     * cancels changes
-     */
-    cancel() {
-      this.close();
-    }
 
     /**
      * updates insertion based on fields
      */
     confirm() {
       this.value = this.prompt.value;
-      console.log("-------- confirm", this.value);
       this.updateSelection();
       this.updateToggled();
       this.updateCommandVal();
       this.sendCommand();
-      this.close();
     }
 
     /**
@@ -181,7 +172,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * @memberof RichTextEditorPrompt
      */
     getPropValue(prop) {
-      console.log("getPropValue", prop);
       let val = !!this.value ? this.value : false,
         rawVal =
           !val || !val[prop]
@@ -196,18 +186,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * Handles selecting text and opening prompt
      */
     open() {
-      /*let node = this._getSelectedBlock(this.tag);
-      console.log("block", node, this.tag);
-
-      if (node) {
-        this.prompt.selectNode(node);
-      } else {
-        node = document.createElement('span')
-        this.prompt.wrap(node);
-      }*/
-      let node = this.tag ? this._getSelectedBlock(this.tag) : undefined;
-      console.log("open", node, this.tag, this._getSelectedBlock(this.tag));
-      if (node && node.tagName) this.selectNode(node);
+      let node = this.selectTag();
       this.value = this.getSelectionValue();
       this.prompt.fields = [...this.fields];
       this.prompt.value = { ...this.value };
@@ -222,11 +201,16 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
 
       this.prompt.addEventListener("cancel", this.cancel);
       this.prompt.addEventListener("confirm", this.confirm);
-      console.log("-------------- open", this.prompt, this.selectedNode);
     }
 
     targetNode() {
-      let highlight = this._getSelectedNode(),
+      let common =
+          this.range && this.range.commonAncestorContainer
+            ? this.range.commonAncestorContainer.querySelector(
+                "rich-text-editor-selection"
+              )
+            : undefined,
+        highlight = this._getSelectedNode(),
         firstChild = highlight ? highlight.firstChild : undefined,
         tag = this._getSelectedTag(),
         node =
@@ -235,34 +219,38 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           firstChild.tagName.toLowerCase() === this.tag
             ? firstChild
             : highlight;
-      console.log("CLASS targetNode", highlight, tag, node);
-      return node;
+      return node || common;
+    }
+    selectTag() {
+      let node = this._getSelectedNode(),
+        child =
+          this.tag && node && node.children && node.children.length == 1
+            ? node.querySelector(this.tag)
+            : undefined,
+        closest =
+          !node || !this.tag ? undefined : child || node.closest(this.tag);
+      if (node && closest && closest !== child) this.highlightNode(closest);
     }
 
     targetInnerHTML() {
       let root = this.targetNode();
-      console.log("CLASS targetInnerHTML", root, root ? root.innerHTML : "");
       return root ? root.innerHTML : "";
     }
     setTargetInnerHTML(html) {
       let target = this.targetNode();
-      target.innerHTML = html;
+      if (target) target.innerHTML = html;
     }
 
     /**
      * updates prompt based on values passed from selection
      */
     getSelectionValue() {
-      console.log("CLASS getSelectionValue", this.targetInnerHTML());
-      return {
-        text: this.targetInnerHTML() || "",
-      };
+      return { text: this.targetInnerHTML() || "" };
     }
     /**
      * updates commandVal based on values passed from prompt
      */
     updateCommandVal() {
-      console.log("CLASS updateCommandVal");
       this.commandVal = this.value;
     }
     /**
@@ -275,7 +263,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      * updates toggled based on values passed from prompt
      */
     updateToggled() {
-      console.log("CLASS toggled");
       this.toggled = !this.value;
     }
   };

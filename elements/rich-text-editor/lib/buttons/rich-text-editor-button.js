@@ -210,12 +210,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      /*this.addEventListener("mousedown", function(e) {
-        //console.log("mousedown", e);
-      });
-      this.addEventListener("keypress", function(e) {
-        e.preventDefault();
-      });*/
     }
     get blockSelectors() {
       return "p,h1,h2,h3,h4,h5,h6,div,address,blockquote,pre";
@@ -397,7 +391,7 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       command = this.operationCommand,
       commandVal = this.operationCommandVal
     ) {
-      console.log("sendCommand", command, commandVal);
+      console.log("BUTTON sendCommand", command, commandVal);
       this.dispatchEvent(
         new CustomEvent("command", {
           bubbles: true,
@@ -418,13 +412,26 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       let block = this._getSelectedBlock();
       if (block) this.selectNode(block);
     }
+    /**
+     * expands range an updates highlight
+     * @param {object} nodede
+     */
+    highlightNode(node) {
+      this.dispatchEvent(
+        new CustomEvent("highlightnode", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: node,
+        })
+      );
+    }
 
     /**
      * Handles button tap
      */
     _buttonTap(e) {
       e.preventDefault();
-      console.log("_buttonTap", this, e);
       this.sendCommand();
     }
     _editorChanged() {}
@@ -458,7 +465,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      * @returns {object}
      */
     _getSelectedBlock(selectors = this.blockSelectors) {
-      console.log("_getSelectedBlock", this.range, selectors);
       let rootNode = this._getSelectedNode(),
         tagName =
           rootNode && rootNode.tagName
@@ -466,17 +472,10 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             : undefined,
         selectorsList = selectors.toLowerCase().replace(/\s*/g, "").split(",");
       if (selectorsList.includes(tagName)) {
-        console.log("_getSelectedBlock 2a", this.range, rootNode);
         return rootNode;
       } else if (rootNode && rootNode.closest) {
-        console.log(
-          "_getSelectedBlock 2b",
-          this.range,
-          rootNode.closest(selectors)
-        );
         return rootNode.closest(selectors);
       } else {
-        console.log("_getSelectedBlock 2c", this.range);
         return undefined;
       }
     }

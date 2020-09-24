@@ -82,7 +82,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    */
   getSelectionValue() {
     let target = this.targetNode();
-    console.log("TARGETS", target, target.firstChild, this.range);
+    console.log("LINK getSelectionValue", target, this.range);
     return {
       ...super.getSelectionValue(),
       href:
@@ -91,6 +91,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
 
   updateCommandVal() {
+    console.log("LINK updateCommandVal", this.getPropValue("href"));
     this.commandVal = this.getPropValue("href") || undefined;
   }
 
@@ -98,11 +99,12 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    * updates the insertion based on fields
    */
   updateSelection() {
-    console.log("LINK updateSelection");
+    console.log("LINK updateSelection", this.value);
     super.updateSelection();
   }
   updateToggled() {
-    this.toggled = !this.getPropValue("href") || !this.getPropValue("text");
+    console.log("LINK toggled", this.getPropValue("href"));
+    this.toggled = !this.getPropValue("href");
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
