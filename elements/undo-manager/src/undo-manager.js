@@ -10,9 +10,8 @@ import { LitElement, html } from "lit-element/lit-element.js";
  *  back to life and this time as LitElement + with the web drastically
  *  moved forward vs when this was originally published (2014).
  *
- * @litelement
- * @demo demo/index.html
  * @element undo-manager
+ * @demo demo/index.html
  */
 const UndoManagerBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -124,7 +123,7 @@ const UndoManagerBehaviors = function (SuperClass) {
           this.dispatchEvent(
             new CustomEvent("stack-changed", {
               detail: {
-                value: true,
+                value: this,
               },
               bubbles: true,
               composed: true,
