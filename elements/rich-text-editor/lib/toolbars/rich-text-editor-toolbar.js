@@ -161,12 +161,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           attribute: "config",
         },
         /**
-         * `id` of `rich-text-editor` that toolbar controls.
-         */
-        controls: {
-          name: "controls",
-        },
-        /**
          * `rich-text-editor` element that is currently in `contenteditable` mode
          */
         editor: {
@@ -232,7 +226,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           name: "savedSelection",
           type: Object,
         },
-
         /**
          * current text selected range, which is actually a range.
          */
@@ -252,8 +245,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         /**
          * raw array of buttons
          */
-        __buttons: {
-          name: "__buttons",
+        buttons: {
+          name: "buttons",
           type: Array,
         },
         /**
@@ -264,17 +257,29 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           type: Array,
         },
         /**
-         * selection management
+         * selection singleton
          */
         __selection: {
           type: Object,
         },
         /**
+         * currently selected node
+         */
+        selectedNode: {
+          type: Object,
+        },
+        /**
+         * array of ancestors of currently selected node
+         */
+        selectionAncestors: {
+          type: Array,
+        },
+        /**
          * Optional space-sperated list of keyboard shortcuts for editor
          * to fire this button, see iron-a11y-keys for more info.
          */
-        __shortcutKeys: {
-          name: "__shortcutKeys",
+        shortcutKeys: {
+          name: "shortcutKeys",
           type: Array,
         },
       };
@@ -293,7 +298,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/iron-icons/image-icons.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
-      this.__selection = window.RichTextEditorSelection.requestAvailability();
+      window.ResponsiveUtility.requestAvailability();
 
       this.alwaysVisible = false;
       this.collapsed = true;
@@ -471,31 +476,31 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       this.responsiveSize = "xs";
       this.sticky = false;
       this.__clickableElement = [];
-      this.__shortcutKeys = [];
-      window.ResponsiveUtility.requestAvailability();
+      this.shortcutKeys = [];
     }
     firstUpdated(changedProperties) {
       super.firstUpdated(changedProperties);
-      this.__buttons = this._getButtons();
+      this.buttons = this._getButtons();
 
       window.dispatchEvent(
         new CustomEvent("responsive-element", {
           detail: { element: this.shadowRoot.querySelector("#toolbar") },
         })
       );
-      this.__selection.registerToolbar(this);
+      this.__selection = window.RichTextEditorSelection.requestAvailability();
+      this.register();
     }
     updated(changedProperties) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "range") this._rangeChange();
+        if (propName === "editor") this._editorChange();
       });
     }
 
     connectedCallback() {
       super.connectedCallback();
-      this.__selection.registerToolbar(this);
-      this.addEventListener("rich-text-editor-button-exec", this._handleButton);
+      this.register();
     }
 
     /**
@@ -504,19 +509,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       super.disconnectedCallback();
-      this.__selection.registerToolbar(this, false);
-      this.removeEventListener(
-        "rich-text-editor-button-exec",
-        this._handleButton
-      );
+      this.register(true);
     }
-
     /**
-     * Gets editor buttons array, as determined by `config`.
+     * id of editor currently being controlled
      * @readonly
      */
-    get buttons() {
-      return this.__buttons;
+    get controls() {
+      return !this.editor ? undefined : this.editor.getAttribute("id");
     }
 
     /**
@@ -525,7 +525,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     cancel() {
       console.log("cancel");
-      if (this.__selection) this.__selection.cancelEdits(this.editor);
+      this.dispatchEvent(
+        new c("cancel", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
     }
     /**
      * uses selection to create a range placeholder that keeps range highlighted
@@ -534,7 +541,32 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     highlight(add = true) {
-      if (this.__selection) this.__selection.highlight(this.editor, add);
+      this.dispatchEvent(
+        new CustomEvent("highlight", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: add,
+        })
+      );
+    }
+    /**
+     * handles registration to selection singleton's toolbars list
+     * @param {boolean} remove whether to remove
+     * @event register
+     */
+    register(remove = false) {
+      window.dispatchEvent(
+        new CustomEvent("register", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            remove: remove,
+            toolbar: this,
+          },
+        })
+      );
     }
     /**
      * selects a given node inside connected editor
@@ -543,7 +575,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     selectNode(node) {
-      if (this.__selection) this.__selection.selectNode(node, this.editor);
+      this.dispatchEvent(
+        new CustomEvent("selectnode", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: node,
+        })
+      );
     }
     /**
      * selects a given node inside connected editor
@@ -552,8 +591,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     selectNodeContents(node) {
-      if (this.__selection)
-        this.__selection.selectNodeContents(node, this.editor);
+      this.dispatchEvent(
+        new CustomEvent("selectnodecontents", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: node,
+        })
+      );
+      //if (this.__selection) this.__selection.selectNodeContents(node, this.editor);
     }
     /**
      * selects a given node inside connected editor
@@ -562,7 +608,15 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     selectRange(range) {
-      if (this.__selection) this.__selection.selectRange(range, this.editor);
+      this.dispatchEvent(
+        new CustomEvent("selectrange", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: range,
+        })
+      );
+      //if (this.__selection) this.__selection.selectRange(range, this.editor);
     }
 
     /**
@@ -583,7 +637,14 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     pasteFromClipboard() {
-      if (this.__selection) this.__selection.pasteFromClipboard(this.editor);
+      this.dispatchEvent(
+        new CustomEvent("pastefromclipboard", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this.editor,
+        })
+      );
     }
 
     /**
@@ -600,12 +661,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           : "";
       //disable clipboard keys since we're already listening for them
 
-      this.__shortcutKeys[keys] = button;
+      this.shortcutKeys[keys] = button;
 
       for (var key in child) {
         button[key] = child[key];
       }
       button.setAttribute("class", "button");
+      button.addEventListener("button-command", this._handleButton);
 
       if (button.inlineWidget) this.push("__clickableElement", button.tag);
       parent.appendChild(button);
@@ -627,7 +689,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           sizes = ["xs", "sm", "md", "lg", "xl"],
           temp = [];
         toolbar.innerHTML = "";
-        this.__shortcutKeys = [];
+        this.shortcutKeys = [];
         this.config.forEach((item) => {
           if (item.type === "button-group") {
             let group = document.createElement("div");
@@ -656,10 +718,23 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       }
       return [];
     }
-    _handleButton(e) {
-      console.log("_handleButton", e.detail, this.range);
-      let button = e.detail;
-      this.__selection.execCommand(button.command, button.commandVal, this);
+    /**
+     * sets up breadcrumbs when editor changes
+     * @returns {void}
+     */
+    _editorChange() {
+      this.range = undefined;
+      if (this.c) {
+        this.breadcrumbs.controls = this.controls;
+        this.breadcrumbs.sticky = this.sticky;
+        this.breadcrumbs.controls = this.controls;
+        this.breadcrumbs.hidden = !this.controls && !this.alwaysVisible;
+        if (!!this.editor)
+          this.editor.parentNode.insertBefore(
+            this.breadcrumbs,
+            this.editor.nextSibling
+          );
+      }
     }
 
     /**
@@ -667,20 +742,27 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      console.log("toolbar _rangeChange", this.range, this.__selection.range);
+      console.log("toolbar _rangeChange", this.range);
       if (
         this.range &&
         this.range.commonAncestorContainer &&
         this.editor &&
         this.editor.contains(this.range.commonAncestorContainer)
       ) {
-        console.log("toolbar _rangeChange 2", this.range);
+        console.log("toolbar _rangeChange 2", this.range, this.selectedNode);
         this.buttons.forEach((button) => {
-          button.range = null;
+          button.range = undefined;
           button.range = this.range;
+          button.selectedNode = this.selectedNode;
+          button.selectionAncestors = this.selectionAncestors;
         });
+        if (this.breadcrumbs) {
+          this.breadcrumbs.controls = this.controls;
+          this.breadcrumbs.selectionAncestors = this.selectionAncestors;
+          this.breadcrumbs.hidden = !this.controls && !this.alwaysVisible;
+        }
       }
-      console.log("toolbar _rangeChange 3", this.range, this.__selection.range);
+      console.log("toolbar _rangeChange 3", this.range);
     }
 
     /**

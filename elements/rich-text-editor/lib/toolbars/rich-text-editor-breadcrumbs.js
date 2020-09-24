@@ -45,18 +45,18 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
   render() {
     return html`
       ${this.label}
-      ${!this.nodes
+      ${!this.selectionAncestors
         ? ""
-        : (this.nodes || []).map(
-            (crumb, i) => html`
+        : (this.selectionAncestors || []).map(
+            (ancestor, i) => html`
               <rich-text-editor-breadcrumb
                 controls="${this.controls}"
-                tag="${crumb.tag}"
-                .target="${crumb.target}"
+                tag="${ancestor.nodeName.toLowerCase()}"
+                .target="${ancestor}"
                 @breadcrumb-tap="${this._handleBreadcrumb}"
               >
               </rich-text-editor-breadcrumb>
-              ${i + 1 >= this.nodes.length
+              ${i + 1 >= (this.selectionAncestors || []).length
                 ? ""
                 : html` <span class="divider"> &gt; </span> `}
             `
@@ -86,15 +86,18 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
       label: {
         type: String,
       },
-      nodes: {
-        type: Array
-      },
       /**
        * Should breadcrumbs stick to top so that it is always visible?
        */
       sticky: {
         type: Boolean,
         reflect: true,
+      },
+      /**
+       * array of ancestors of currently selected node
+       */
+      selectionAncestors: {
+        type: Array,
       },
     };
   }
@@ -106,23 +109,23 @@ class RichTextEditorBreadcrumbs extends RichTextEditorStyles(LitElement) {
     this.label = `Expand selection: `;
   }
 
-  selectNode(node){
-    this.dispatchEvent(new CustomEvent(
-      "selectnode", {
+  selectNode(node) {
+    this.dispatchEvent(
+      new CustomEvent("selectnode", {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: node
-      }
-    ))
+        detail: node,
+      })
+    );
   }
 
   /**
-  * handle a breadcrumb tap by updating the selected text
-  *
-  * @param {object} e the breadcrumb tap event
-  * @returns {void}
-  */
+   * handle a breadcrumb tap by updating the selected text
+   *
+   * @param {object} e the breadcrumb tap event
+   * @returns {void}
+   */
   _handleBreadcrumb(e) {
     console.log("_handleBreadcrumbs", e.detail.target);
     if (e.detail.target) {

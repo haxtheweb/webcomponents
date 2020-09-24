@@ -11,7 +11,7 @@
   /**
    * Maps to contenteditable attribute
    */
-   "contenteditable": {
+  "contenteditable": {
     "name": "contenteditable",
     "type": "Boolean",
     "reflect": true,
@@ -77,5 +77,17 @@
    */
   "__selection": {
     "type": "Object"
+  },
+  /**
+   * currently selected node
+   */
+  "__selectedNode": {
+    "type": "Object"
+  },
+  /**
+   * array of ancestors of currently selected node
+   */
+  "__selectedNodeAncestors": {
+    "type": "Array"
   }
 }

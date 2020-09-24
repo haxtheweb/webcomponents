@@ -39,6 +39,15 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           type: Boolean,
         },
         /**
+         * is element a custom inline widget element?
+         */
+        id: {
+          name: "id",
+          type: String,
+          reflect: true,
+          attribute: "id",
+        },
+        /**
          * tag that will wrap selected range
          */
         tag: {
@@ -52,23 +61,17 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
           type: Object,
         },
         /**
-         * fields for prompt popover.
+         * prompt that pops up when button is pressed
          */
-        __promptFields: {
-          type: Array,
+        prompt: {
+          name: "prompt",
+          type: Object,
         },
         /**
          * contents node inside selected range
          */
         __oldValue: {
           name: "__oldValue",
-          type: Object,
-        },
-        /**
-         * prompt that pops up when button is pressed
-         */
-        __prompt: {
-          name: "__prompt",
           type: Object,
         },
       };
@@ -79,18 +82,15 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.inlineWidget = false;
       this.fields = [
         {
-          slot: "",
+          property: "text",
           title: "Text",
           description: "inner text",
           inputMethod: "textfield",
         },
       ];
       this.tag = "span";
-      this.value = {
-        "": null,
-        id: null,
-      };
-      this.__prompt = window.RichTextEditorPrompt.requestAvailability();
+      this.value = { text: undefined };
+      this.prompt = window.RichTextEditorPrompt.requestAvailability();
     }
 
     /**
@@ -99,28 +99,8 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     _buttonTap(e) {
       e.preventDefault();
-      let block = this._getSelectedBlock();
-      if (block) {
-        this.selectNode(block);
-      } else {
-        this.__selection.wrap();
-      }
-      //this.addHighlight();
-      this.range = this.__selection.range;
+      console.log("-------- _buttonTap", this.selectedNode);
       this.open();
-    }
-    /**
-     * cancels changes
-     */
-    cancel() {}
-
-    /**
-     * updates insertion based on fields
-     */
-    confirm() {
-      this.toggled = !this.__prompt.value;
-      this.commandVal = this.__prompt.value;
-      this._buttonExec();
     }
 
     /**
@@ -173,24 +153,131 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.selectNode(widget);
       this.__selectionContents = widget;
     }
+    /**
+     * cancels changes
+     */
+    cancel() {
+      this.close();
+    }
+
+    /**
+     * updates insertion based on fields
+     */
+    confirm() {
+      this.value = this.prompt.value;
+      console.log("-------- confirm", this.value);
+      this.updateSelection();
+      this.updateToggled();
+      this.updateCommandVal();
+      this.sendCommand();
+      this.close();
+    }
+
+    /**
+     * gets a field value (and trims it if it's a string)
+     *
+     * @param {string} prop field name
+     * @returns {*}
+     * @memberof RichTextEditorPrompt
+     */
+    getPropValue(prop) {
+      console.log("getPropValue", prop);
+      let val = !!this.value ? this.value : false,
+        rawVal =
+          !val || !val[prop]
+            ? false
+            : val[prop].trim
+            ? val[prop].trim()
+            : val[prop];
+      return rawVal && rawVal !== "" ? rawVal : false;
+    }
 
     /**
      * Handles selecting text and opening prompt
      */
     open() {
-      let node = this._getSelectedBlock(this.tag);
+      /*let node = this._getSelectedBlock(this.tag);
       console.log("block", node, this.tag);
 
       if (node) {
-        this.__selection.selectNode(node);
+        this.prompt.selectNode(node);
       } else {
-        this.__selection.wrap();
-      }
-      this.updatePrompt();
-      this.__prompt.setTarget(this);
+        node = document.createElement('span')
+        this.prompt.wrap(node);
+      }*/
+      let node = this.tag ? this._getSelectedBlock(this.tag) : undefined;
+      console.log("open", node, this.tag, this._getSelectedBlock(this.tag));
+      if (node && node.tagName) this.selectNode(node);
+      this.value = this.getSelectionValue();
+      this.prompt.fields = [...this.fields];
+      this.prompt.value = { ...this.value };
+      this.dispatchEvent(
+        new CustomEvent("rich-text-editor-prompt-open", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this,
+        })
+      );
+
+      this.prompt.addEventListener("cancel", this.cancel);
+      this.prompt.addEventListener("confirm", this.confirm);
+      console.log("-------------- open", this.prompt, this.selectedNode);
     }
 
-    updatePrompt() {}
+    targetNode() {
+      let highlight = this._getSelectedNode(),
+        firstChild = highlight ? highlight.firstChild : undefined,
+        tag = this._getSelectedTag(),
+        node =
+          firstChild &&
+          firstChild.tagName &&
+          firstChild.tagName.toLowerCase() === this.tag
+            ? firstChild
+            : highlight;
+      console.log("CLASS targetNode", highlight, tag, node);
+      return node;
+    }
+
+    targetInnerHTML() {
+      let root = this.targetNode();
+      console.log("CLASS targetInnerHTML", root, root ? root.innerHTML : "");
+      return root ? root.innerHTML : "";
+    }
+    setTargetInnerHTML(html) {
+      let target = this.targetNode();
+      target.innerHTML = html;
+    }
+
+    /**
+     * updates prompt based on values passed from selection
+     */
+    getSelectionValue() {
+      console.log("CLASS getSelectionValue", this.targetInnerHTML());
+      return {
+        text: this.targetInnerHTML() || "",
+      };
+    }
+    /**
+     * updates commandVal based on values passed from prompt
+     */
+    updateCommandVal() {
+      console.log("CLASS updateCommandVal");
+      this.commandVal = this.value;
+    }
+    /**
+     * updates selection based on values passed from prompt
+     */
+    updateSelection() {
+      this.setTargetInnerHTML(this.getPropValue("text"));
+    }
+    /**
+     * updates toggled based on values passed from prompt
+     */
+    updateToggled() {
+      console.log("CLASS toggled");
+      this.toggled = !this.value;
+    }
   };
 };
 /**

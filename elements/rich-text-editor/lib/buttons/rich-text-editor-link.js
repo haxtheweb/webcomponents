@@ -34,15 +34,13 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     super();
     this.fields = [
       {
-        property: "linktext",
+        property: "text",
         title: "Text",
-        description: "The link text",
         inputMethod: "textfield",
       },
       {
         property: "href",
         title: "Link",
-        description: "The link URL. (Leave blank to remove.)",
         inputMethod: "url",
         autoValidate: true,
       },
@@ -82,30 +80,29 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   /**
    * updates prompt fields with selected range data
    */
-  updatePrompt() {
-    super.updatePrompt();
-    this.value = {
-      linktext: this.__selectionContents
-        ? this.__selectionContents.innerHTML
-        : this.__selection.innerHTML,
+  getSelectionValue() {
+    let target = this.targetNode();
+    console.log("TARGETS", target, target.firstChild, this.range);
+    return {
+      ...super.getSelectionValue(),
       href:
-        this.__selectionContents && this.__selectionContents.getAttribute
-          ? this.__selectionContents.getAttribute("href")
-          : undefined,
+        target && target.getAttribute ? target.getAttribute("href") : undefined,
     };
+  }
+
+  updateCommandVal() {
+    this.commandVal = this.getPropValue("href") || undefined;
   }
 
   /**
    * updates the insertion based on fields
    */
   updateSelection() {
-    let link = this.__prompt.getPromptValue("href"),
-      text = this.__prompt.getPromptValue("linktext");
-    this.setRange();
-    this.__selectionContents.innerHTML = text;
-    this.toggled = !link || !text;
-    this.commandVal = link || undefined;
-    this._buttonExec();
+    console.log("LINK updateSelection");
+    super.updateSelection();
+  }
+  updateToggled() {
+    this.toggled = !this.getPropValue("href") || !this.getPropValue("text");
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

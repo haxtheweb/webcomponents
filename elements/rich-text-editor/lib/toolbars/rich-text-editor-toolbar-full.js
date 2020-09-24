@@ -50,9 +50,9 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbarBehaviors(
   constructor() {
     super();
     this.breadcrumbsLabel = "Expand selection: ";
-    this.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
-    this.__breadcrumbs.onselectnode = e => this._selectNode(e.detail);
-    document.body.appendChild(this.__breadcrumbs);
+    this.breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
+    this.breadcrumbs.onselectnode = (e) => this._selectNode(e.detail);
+    document.body.appendChild(this.breadcrumbs);
   }
 }
 

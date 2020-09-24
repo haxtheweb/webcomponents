@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2018 Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
@@ -11,7 +11,7 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "./rich-text-editor-selection.js";
 /**
  * `rich-text-editor-prompt`
- * `A utility that manages the state of multiple rich-text-prompts on one page.`
+ * `A utility that manages state of multiple rich-text-prompts on one page.`
  *
  * @element rich-text-editor-prompt
  */
@@ -133,43 +133,43 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   }
 
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * Store tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "rich-text-editor-prompt";
   }
 
-  // properties available to the custom element for data binding
+  // properties available to custom element for data binding
   static get properties() {
     return {
       /**
-       * Is the  target id.
-       */
-      for: {
-        type: String,
-      },
-      /**
-       * The selected text.
-       */
-      range: {
-        type: Object,
-      },
-      /**
-       * fields for the prompt popover.
+       * fields for prompt popover.
        */
       fields: {
         type: Array,
       },
       /**
-       * The prefilled value of the prompt
+       * Is  target id.
        */
-      value: {
+      for: {
+        type: String,
+      },
+      /**
+       * selected text.
+       */
+      range: {
         type: Object,
       },
       /**
-       * The prefilled value of the prompt
+       * selected node withing range
+       * /
+      selectedNode: {
+        type: Object
+      },
+      /**
+       * prefilled value of prompt
        */
-      __button: {
+      value: {
         type: Object,
       },
     };
@@ -181,9 +181,13 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   constructor() {
     super();
     this.__selection = window.RichTextEditorSelection.requestAvailability();
-    this.onclick = (e) => console.log("-------->", this.__selection.range);
+    console.log("prompt this.__selection", this.__selection);
+    window.addEventListener(
+      "rich-text-editor-prompt-open",
+      this.open.bind(this)
+    );
 
-    // sets the instance to the current instance
+    // sets instance to current instance
     if (!window.RichTextEditorPrompt.instance) {
       window.RichTextEditorPrompt.instance = this;
       return this;
@@ -191,77 +195,47 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
   }
 
   /**
-   * life cycle, element is afixed to the DOM
+   * life cycle, element is afixed to DOM
    * Makes sure there is a utility ready and listening for elements.
    */
   connectedCallback() {
     super.connectedCallback();
   }
-
-  /**
-   * Associates a button and its selection data with the prompt
-   * @param {object} button the button to associate with the prompt
-   * @returns {void}
-   */
-  setTarget(button, node) {
-    console.log("setTarget", button.fields);
-    this.clearTarget();
-    this.fields = [...button.fields];
-    this.value = button.value;
-    this.__button = button;
-    if (button.__selection) this.for = button.__selection.getAttribute("id");
+  open(e) {
+    console.log("open this.__selection", e);
+    if (e) {
+      this.for = this.__selection.id;
+      this.button = e.detail;
+      this.editor = this.button.editor;
+      this.fields = [...e.detail.fields];
+      this.value = { ...e.detail.value };
+    }
   }
-
-  /**
-   * Disassociates the button and selection data from the prompt
-   * @returns {void}
-   */
-  clearTarget() {
-    if (!this.__button) return;
+  close() {
     this.for = undefined;
-    this.fields = undefined;
-    this.value = undefined;
-    this.__button = undefined;
+    this.button = undefined;
+    this.editor = undefined;
+    this.fields = [];
+    this.value = {};
   }
+
   /**
    * Handles cancel button
-   * @param {event} e the event
+   * @param {event} e event
    * @returns {void}
    */
   _cancel(e) {
     e.preventDefault();
-    if (!this.__button) return;
-    this.__button.cancel();
-    this.clearTarget();
+    this.close();
   }
   /**
-   * Handles the confirm button
-   * @param {event} e the event
+   * Handles confirm button
+   * @param {event} e event
    * @returns {void}
    */
   _confirm(e) {
     e.preventDefault();
-    this.__button.value = this.value;
-    this.__button.confirm();
-    this.clearTarget();
-  }
-
-  /**
-   * gets a field value (and trims it if it's a string)
-   *
-   * @param {string} prop field name
-   * @returns {*}
-   * @memberof RichTextEditorPrompt
-   */
-  getPromptValue(prop) {
-    let val = !!this.value ? this.value : false,
-      rawVal =
-        !val || !val[prop]
-          ? false
-          : val[prop].trim
-          ? val[prop].trim()
-          : val[prop];
-    return rawVal && rawVal !== "" ? rawVal : false;
+    this.button.confirm(this.value);
   }
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
@@ -269,9 +243,9 @@ export { RichTextEditorPrompt };
 
 // register globally so we can make sure there is only one
 window.RichTextEditorPrompt = window.RichTextEditorPrompt || {};
-// request if this exists. This helps invoke the element existing in the dom
+// request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same modal
+// is rendered through same modal
 window.RichTextEditorPrompt.requestAvailability = () => {
   if (!window.RichTextEditorPrompt.instance) {
     window.RichTextEditorPrompt.instance = document.createElement(

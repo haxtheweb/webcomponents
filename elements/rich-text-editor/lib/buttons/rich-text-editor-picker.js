@@ -198,7 +198,7 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
 
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {
-        this._buttonExec();
+        this.sendCommand();
       }
     }
   };

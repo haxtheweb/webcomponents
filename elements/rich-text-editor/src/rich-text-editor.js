@@ -41,7 +41,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.type = "rich-text-editor-toolbar";
     this.id = "";
     this.__selection = window.RichTextEditorSelection.requestAvailability();
-    this.addEventListener("paste", (e) => console.log("editor paste", e));
   }
 
   /**
@@ -55,19 +54,23 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     return new MutationObserver((e) => root.updateRange(e));
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.register();
+  }
+
   /**
-   * Called every time the element is removed from the DOM. Useful for
-   * running clean up code (removing event listeners, etc.).
+   * life cycle, element is disconnected
+   * @returns {void}
    */
   disconnectedCallback() {
-    this.contenteditable = false;
     super.disconnectedCallback();
+    this.register(true);
   }
 
   firstUpdated() {
     if (super.firstUpdated) super.firstUpdated();
     if (this.isEmpty()) this.innerHTML = "";
-    this.__selection.registerEditor(this);
     this._editableChange();
   }
 
@@ -76,12 +79,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     console.log("updated", this.contenteditable);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
-      if (propName === "range") this._rangeChange();
     });
-  }
-
-  getRange() {
-    return !this.__selection ? undefined : this.__selection.getRange();
   }
   /**
    * gets current value minus placeholder
@@ -104,14 +102,65 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   isEmpty() {
     return !this.innerHTML || this.trimmerHTML(this) == "";
   }
+
+  /**
+   * allows editor to fit within a stick toolbar
+   *
+   * @param {boolean} sticky
+   * @memberof RichTextEditor
+   */
+  makeSticky(sticky = true) {
+    if (!sticky) {
+      this.classList.add("heightmax");
+    } else {
+      this.classList.remove("heightmax");
+    }
+  }
+  /**
+   * set observer on or off
+   *
+   * @param {boolean} [on=true]
+   * @memberof RichTextEditor
+   */
+  observeChanges(on = true) {
+    if (on) {
+      let editor = this;
+      this.observer.observe(editor, {
+        attributes: false,
+        childList: true,
+        subtree: true,
+        characterData: false,
+      });
+    } else {
+      if (this.observer) this.observer.disconnect;
+    }
+  }
+
   /**
    *
    *
    * @memberof RichTextEditor
    */
   paste(pasteContent, sanitized = true) {
-    this.__selection.paste(this, pasteContent);
-    this.pasteIntoRange(this, pasteContent, sanitized);
+    this._handlePaste(pasteContent);
+  }
+  /**
+   * handles registration to selection singleton's toolbars list
+   * @param {boolean} remove whether to remove
+   * @event register
+   */
+  register(remove = false) {
+    window.dispatchEvent(
+      new CustomEvent("register", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          remove: remove,
+          editor: this,
+        },
+      })
+    );
   }
   /**
    * revert content to before contenteditable=true
@@ -131,6 +180,15 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     return !this.__selection ? document : this.__selection.getRoot(this);
   }
   /**
+   * holds on to edits so cancel willwork
+   *
+   * @param {string} [html=this.innerHTML]
+   * @memberof RichTextEditor
+   */
+  setCancelHTML(html = this.innerHTML) {
+    this.__canceledEdits = html;
+  }
+  /**
    * gets trimmed version of innerHTML
    *
    * @param {obj} node
@@ -142,7 +200,14 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
   }
   updateRange(e) {
     console.log("updateRange", e);
-    this.range = this.getRange();
+    this.dispatchEvent(
+      new CustomEvent("getrange", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
     console.log("updateRange 2", this.range);
   }
   /**
@@ -151,28 +216,17 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditor
    */
   _editableChange() {
-    let root = this,
-      placeholder = `<p>${this.placeholder}</p>`;
+    let placeholder = `<p>${this.placeholder}</p>`;
     console.log("updated", this.contenteditable);
     if (this.contenteditable) {
-      this.__canceledEdits = this.innerHTML;
       console.log("updated 2", this.__selection);
+      this.setCancelHTML();
       if (this.isEmpty()) this.innerHTML = placeholder;
-      this._rangeChange();
-      document.onselectionchange = (e) => this.updateRange(e);
-      root.observer.observe(root, {
-        attributes: false,
-        childList: true,
-        subtree: true,
-        characterData: false,
-      });
     } else {
       console.log("updated 2b", this.__selection);
-      if (root.observer) root.observer.disconnect();
       if (this.trimmerHTML(this) === placeholder) {
-        this.innerHTML = "";
+        this.setCancelHTML("");
       }
-      document.onselectionchange = (e) => console.log("none");
     }
     console.log("updated 3", this.__selection);
   }
@@ -191,17 +245,15 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     } else if (window.clipboardData) {
       pasteContent = window.clipboardData.getData("Text");
     }
-    this.__selection.pasteFromClipboard(this, pasteContent);
+    this.dispatchEvent(
+      new CustomEvent("pastefromclipboard", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      })
+    );
     e.preventDefault();
-  }
-
-  /**
-   * updates toolbar's range and placeholder content
-   *
-   * @memberof RichTextEditor
-   */
-  _rangeChange() {
-    this.__selection.updateToolbars(this);
   }
 }
 

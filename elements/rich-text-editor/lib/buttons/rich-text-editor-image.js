@@ -102,10 +102,10 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
    * updates the insertion based on fields
    */
   updateSelection() {
-    let alt = this.__prompt.getPromptValue("alt"),
-      src = this.__prompt.getPromptValue("src"),
-      width = this.__prompt.getPromptValue("width"),
-      height = this.__prompt.getPromptValue("height");
+    let alt = this.prompt.getPropValue("alt"),
+      src = this.prompt.getPropValue("src"),
+      width = this.prompt.getPropValue("width"),
+      height = this.prompt.getPropValue("height");
     this.selectNode(this.__selectionContents);
     this.toggled = !src;
     this.commandVal = !src
@@ -113,7 +113,7 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
       : `<img src="${src}"${!alt ? "" : ` alt="${alt}"`}${
           !width ? "" : ` width="${width}"`
         }${!height ? "" : ` width="${height}"`}>`;
-    this._buttonExec();
+    this.sendCommand();
   }
 }
 window.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);
