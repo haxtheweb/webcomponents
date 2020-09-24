@@ -40,8 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.4.0",
-    "undo.js": "0.2.0"
+    "lit-element": "2.4.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.7.7",

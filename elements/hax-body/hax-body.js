@@ -8,7 +8,10 @@ import {
   nodeToHaxElement,
   haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
-import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import {
+  UndoManagerBehaviors,
+  Undo,
+} from "@lrnwebcomponents/undo-manager/undo-manager.js";
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
@@ -2126,7 +2129,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
       setTimeout(() => {
-        this.stack = new Undo.Stack();
+        this.stack = new Undo();
         // simple hook into being notified of changes to the object
         this.stack.changed = (e) => {
           this.canRedo = this.stack.canRedo();
