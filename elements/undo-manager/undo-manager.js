@@ -155,6 +155,8 @@ const UndoManagerBehaviors = function (SuperClass) {
       }
       this.undoStack = new Undo();
       this.undoStack.undoStackLimit = this.undoStackLimit;
+      this.undoStack.undoStackPosition = -1;
+      this.undoStack.commands = [];
       // simple hook into being notified of changes to the object
       this.undoStack.changed = (e) => {
         this.canRedo = this.undoStack.canRedo();
@@ -208,10 +210,6 @@ const UndoManagerBehaviors = function (SuperClass) {
     // return a list of the command stack
     commands() {
       return this.undoStack.commands;
-    }
-    // return current undoStackPosition index
-    undoStackPosition() {
-      return this.undoStack.undoStackPosition;
     }
   };
 };

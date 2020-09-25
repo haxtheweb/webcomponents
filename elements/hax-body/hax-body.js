@@ -2156,6 +2156,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
       setTimeout(() => {
         this.undoStack = new Undo();
+        this.undoStack.undoStackLimit = 20;
+        this.undoStack.undoStackPosition = -1;
+        this.undoStack.commands = [];
         // simple hook into being notified of changes to the object
         this.undoStack.changed = (e) => {
           this.canRedo = this.undoStack.canRedo();
