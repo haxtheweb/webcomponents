@@ -52,10 +52,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "rss-items",
       "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.\n\nProperties:\n\n  * `items` {`never[]`} - \n\n  * `auto` {`boolean`} - \n\n  * `max` {`number`} - \n\n  * `maxExcerptLength` {`number`} - \n\n  * `maxTitleLength` {`number`} - \n\n  * `readMoreAnchorText` {`string`} - \n\n  * `readMoreImageAlt` {`string`} - \n\n  * `showReadMore` {`boolean`} - ",
       "attributes": []

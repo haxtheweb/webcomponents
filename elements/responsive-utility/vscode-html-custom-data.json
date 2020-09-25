@@ -2,22 +2,8 @@
   "version": 1,
   "tags": [
     {
-      "name": "responsive-utility",
-      "description": "Attributes:\n\n  * `details` {`any[]`} - Array of details provided by responsive elements\n\nProperties:\n\n  * `details` {`any[]`} - Array of details provided by responsive elements",
-      "attributes": [
-        {
-          "name": "details",
-          "description": "`details` {`any[]`} - Array of details provided by responsive elements\n\nProperty: details\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "responsive-utility-element",
-      "description": "`responsive-utility-element`\nA simpler way to use responsive utility.\n\nEvents:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nAttributes:\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint",
+      "description": "`responsive-utility-element`\nA simpler way to use responsive utility.\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint",
       "attributes": [
         {
           "name": "responsive-width",
@@ -45,11 +31,21 @@
         },
         {
           "name": "onresponsive-element",
-          "description": "`responsive-element` - "
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
         },
         {
           "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` - "
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "responsive-utility",
+      "description": "Attributes:\n\n  * `details` {`any[]`} - Array of details provided by responsive elements\n\nProperties:\n\n  * `details` {`any[]`} - Array of details provided by responsive elements",
+      "attributes": [
+        {
+          "name": "details",
+          "description": "`details` {`any[]`} - Array of details provided by responsive elements\n\nProperty: details\n\nDefault: "
         }
       ]
     },

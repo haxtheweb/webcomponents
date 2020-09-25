@@ -68,7 +68,9 @@ class BeakerBroker extends LitElement {
    */
   firstUpdated() {
     if (typeof DatArchive === typeof undefined) {
-      console.log("Beaker is not available from this site loading methodology");
+      console.warn(
+        "Beaker is not available from this site loading methodology"
+      );
     }
   }
   /**

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "item-overlay-ops",
-      "description": "`item-overlay-ops`\n\nEvents:\n\n  * `item-overlay-op-changed` - \n\n  * `item-overlay-option-selected` - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `active-title` {`string`} - Title to present of active option\n\n  * `active-op` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixed-height` {`number`} - Allow height to be defined rather than calculated\n\n  * `disable-auto-height` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__any-op` {`boolean`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `activeTitle` {`string`} - Title to present of active option\n\n  * `activeOp` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixedHeight` {`number`} - Allow height to be defined rather than calculated\n\n  * `disableAutoHeight` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__anyOp` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`item-overlay-ops`\n\nEvents:\n\n  * `item-overlay-op-changed` {`CustomEvent<{ element: this; operation: any; }>`} - \n\n  * `item-overlay-option-selected` {`CustomEvent<{ element: this; operation: any; option: any; }>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `active-title` {`string`} - Title to present of active option\n\n  * `active-op` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixed-height` {`number`} - Allow height to be defined rather than calculated\n\n  * `disable-auto-height` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__any-op` {`boolean`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `activeTitle` {`string`} - Title to present of active option\n\n  * `activeOp` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixedHeight` {`number`} - Allow height to be defined rather than calculated\n\n  * `disableAutoHeight` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__anyOp` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -64,31 +64,17 @@
         },
         {
           "name": "onitem-overlay-op-changed",
-          "description": "`item-overlay-op-changed` - "
+          "description": "`item-overlay-op-changed` {`CustomEvent<{ element: this; operation: any; }>`} - "
         },
         {
           "name": "onitem-overlay-option-selected",
-          "description": "`item-overlay-option-selected` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `item-overlay-op-changed` - \n\n  * `item-overlay-option-selected` - ",
-      "attributes": [
-        {
-          "name": "onitem-overlay-op-changed",
-          "description": "`item-overlay-op-changed` - "
-        },
-        {
-          "name": "onitem-overlay-option-selected",
-          "description": "`item-overlay-option-selected` - "
+          "description": "`item-overlay-option-selected` {`CustomEvent<{ element: this; operation: any; option: any; }>`} - "
         }
       ]
     },
     {
       "name": "item-overlay-ops",
-      "description": "`item-overlay-ops`\n\nEvents:\n\n  * `item-overlay-op-changed` - \n\n  * `item-overlay-option-selected` - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `active-title` {`string`} - Title to present of active option\n\n  * `active-op` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixed-height` {`number`} - Allow height to be defined rather than calculated\n\n  * `disable-auto-height` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__any-op` {`boolean`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `activeTitle` {`string`} - Title to present of active option\n\n  * `activeOp` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixedHeight` {`number`} - Allow height to be defined rather than calculated\n\n  * `disableAutoHeight` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__anyOp` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`item-overlay-ops`\n\nEvents:\n\n  * `item-overlay-op-changed` {`CustomEvent<{ element: this; operation: any; }>`} - \n\n  * `item-overlay-option-selected` {`CustomEvent<{ element: this; operation: any; option: any; }>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `active-title` {`string`} - Title to present of active option\n\n  * `active-op` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixed-height` {`number`} - Allow height to be defined rather than calculated\n\n  * `disable-auto-height` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__any-op` {`boolean`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - Edit mode whether it is shown or not\n\n  * `focused` {`boolean`} - Edit mode whether it is shown or not\n\n  * `activeTitle` {`string`} - Title to present of active option\n\n  * `activeOp` {`string`} - Active operation\n\n  * `add` {`boolean`} - Add opertaions\n\n  * `edit` {`boolean`} - Edit opertaions\n\n  * `move` {`boolean`} - Move opertaions\n\n  * `fixedHeight` {`number`} - Allow height to be defined rather than calculated\n\n  * `disableAutoHeight` {`boolean`} - Ability to disable height setting. Useful if using CSS vars.\n\n  * `remove` {`boolean`} - Remove opertaions\n\n  * `duplicate` {`boolean`} - Duplicate opertaions\n\n  * `__anyOp` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -149,11 +135,11 @@
         },
         {
           "name": "onitem-overlay-op-changed",
-          "description": "`item-overlay-op-changed` - "
+          "description": "`item-overlay-op-changed` {`CustomEvent<{ element: this; operation: any; }>`} - "
         },
         {
           "name": "onitem-overlay-option-selected",
-          "description": "`item-overlay-option-selected` - "
+          "description": "`item-overlay-option-selected` {`CustomEvent<{ element: this; operation: any; option: any; }>`} - "
         }
       ]
     }

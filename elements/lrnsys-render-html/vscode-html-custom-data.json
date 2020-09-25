@@ -12,10 +12,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrnsys-render-html",
       "description": "`lrnsys-render-html`\nA legacy element which just directly renders HTML.\nWARNING: DO NOT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING!\n\nThis element is meant to render html from a source that has already been sanitized.\nPolymer will, by design, not render html for security reasons. This element gets around\nthat. Do not render raw user input through this element! This would allow XSS attacks for\nyour users.\n\nAttributes:\n\n  * `html` {`string`} - String to render as HTML directly\n\nProperties:\n\n  * `html` {`string`} - String to render as HTML directly",
       "attributes": [

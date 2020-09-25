@@ -2,6 +2,10 @@
   "version": 1,
   "tags": [
     {
+      "name": "elmsln-base",
+      "attributes": []
+    },
+    {
       "name": "game-show-scoreboard",
       "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `options-path` {`string`} - \n\n  * `data-path` {`string`} - \n\n  * `section` {`string`} - \n\n  * `game` {`string`} - \n\n  * `data-request-url` {`string`} - \n\n  * `route` {`string`} - routing variable for url\n\n  * `tail` {`string`} - \n\n  * `options-data` - \n\n  * `section-options` {`any[]`} - \n\n  * `game-options` {`any[]`} - \n\n  * `active-data` - \n\n  * `visible-data` {`any[]`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `optionsPath` {`string`} - \n\n  * `dataPath` {`string`} - \n\n  * `section` {`string`} - \n\n  * `game` {`string`} - \n\n  * `dataRequestUrl` {`string`} - \n\n  * `route` {`string`} - routing variable for url\n\n  * `tail` {`string`} - \n\n  * `optionsData` - \n\n  * `sectionOptions` {`any[]`} - \n\n  * `gameOptions` {`any[]`} - \n\n  * `activeData` - \n\n  * `visibleData` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
@@ -288,8 +292,8 @@
       ]
     },
     {
-      "name": "lrnapp-open-studio-table",
-      "description": "Events:\n\n  * `route-change` - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `submissions` {`any[]`} - The submissions to render\n\n  * `_num-width` {`string`} - \n\n  * `source-path` {`string`} - Endpoint for submission data.\n\n  * `base-path` {`string`} - base path for the app\n\n  * `active-submission` {`string`} - Active / clicked submission.\n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `submissions` {`any[]`} - The submissions to render\n\n  * `_numWidth` {`string`} - \n\n  * `sourcePath` {`string`} - Endpoint for submission data.\n\n  * `basePath` {`string`} - base path for the app\n\n  * `activeSubmission` {`string`} - Active / clicked submission.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-open-studio-assignments",
+      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `assignments` {`any[]`} - The assignments that exist so we can make other calls for data\n\n  * `submissions` {`any[]`} - The submissions that exist so we can make other calls for data\n\n  * `active-assignment-id` {`string`} - \n\n  * `active-assignment` - \n\n  * `active-author-id` {`string`} - \n\n  * `show-submissions` {`boolean`} - \n\n  * `source-path` {`string`} - Endpoint for submission data.\n\n  * `base-path` {`string`} - base path for the app\n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `assignments` {`any[]`} - The assignments that exist so we can make other calls for data\n\n  * `submissions` {`any[]`} - The submissions that exist so we can make other calls for data\n\n  * `activeAssignmentId` {`string`} - \n\n  * `activeAssignment` - \n\n  * `activeAuthorId` {`string`} - \n\n  * `showSubmissions` {`boolean`} - \n\n  * `sourcePath` {`string`} - Endpoint for submission data.\n\n  * `basePath` {`string`} - base path for the app\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-course",
@@ -308,12 +312,29 @@
           "description": "`end-point` {`string`} - \n\nProperty: endPoint"
         },
         {
-          "name": "submissions",
-          "description": "`submissions` {`any[]`} - The submissions to render\n\nProperty: submissions"
+          "name": "assignments",
+          "description": "`assignments` {`any[]`} - The assignments that exist so we can make other calls for data\n\nProperty: assignments"
         },
         {
-          "name": "_num-width",
-          "description": "`_num-width` {`string`} - \n\nProperty: _numWidth\n\nDefault: 2.25em"
+          "name": "submissions",
+          "description": "`submissions` {`any[]`} - The submissions that exist so we can make other calls for data\n\nProperty: submissions"
+        },
+        {
+          "name": "active-assignment-id",
+          "description": "`active-assignment-id` {`string`} - \n\nProperty: activeAssignmentId\n\nDefault: null"
+        },
+        {
+          "name": "active-assignment",
+          "description": "`active-assignment` - \n\nProperty: activeAssignment"
+        },
+        {
+          "name": "active-author-id",
+          "description": "`active-author-id` {`string`} - \n\nProperty: activeAuthorId\n\nDefault: null"
+        },
+        {
+          "name": "show-submissions",
+          "description": "`show-submissions` {`boolean`} - \n\nProperty: showSubmissions\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "source-path",
@@ -322,14 +343,6 @@
         {
           "name": "base-path",
           "description": "`base-path` {`string`} - base path for the app\n\nProperty: basePath"
-        },
-        {
-          "name": "active-submission",
-          "description": "`active-submission` {`string`} - Active / clicked submission.\n\nProperty: activeSubmission\n\nDefault: null"
-        },
-        {
-          "name": "onroute-change",
-          "description": "`route-change` - "
         }
       ]
     },
@@ -393,8 +406,8 @@
       ]
     },
     {
-      "name": "lrnapp-open-studio-assignments",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `assignments` {`any[]`} - The assignments that exist so we can make other calls for data\n\n  * `submissions` {`any[]`} - The submissions that exist so we can make other calls for data\n\n  * `active-assignment-id` {`string`} - \n\n  * `active-assignment` - \n\n  * `active-author-id` {`string`} - \n\n  * `show-submissions` {`boolean`} - \n\n  * `source-path` {`string`} - Endpoint for submission data.\n\n  * `base-path` {`string`} - base path for the app\n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `assignments` {`any[]`} - The assignments that exist so we can make other calls for data\n\n  * `submissions` {`any[]`} - The submissions that exist so we can make other calls for data\n\n  * `activeAssignmentId` {`string`} - \n\n  * `activeAssignment` - \n\n  * `activeAuthorId` {`string`} - \n\n  * `showSubmissions` {`boolean`} - \n\n  * `sourcePath` {`string`} - Endpoint for submission data.\n\n  * `basePath` {`string`} - base path for the app\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-open-studio-table",
+      "description": "Events:\n\n  * `route-change` {`CustomEvent<{ data: { page: string; }; queryParams: { author: any; project: any; }; }>`} - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `submissions` {`any[]`} - The submissions to render\n\n  * `_num-width` {`string`} - \n\n  * `source-path` {`string`} - Endpoint for submission data.\n\n  * `base-path` {`string`} - base path for the app\n\n  * `active-submission` {`string`} - Active / clicked submission.\n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `submissions` {`any[]`} - The submissions to render\n\n  * `_numWidth` {`string`} - \n\n  * `sourcePath` {`string`} - Endpoint for submission data.\n\n  * `basePath` {`string`} - base path for the app\n\n  * `activeSubmission` {`string`} - Active / clicked submission.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-course",
@@ -413,29 +426,12 @@
           "description": "`end-point` {`string`} - \n\nProperty: endPoint"
         },
         {
-          "name": "assignments",
-          "description": "`assignments` {`any[]`} - The assignments that exist so we can make other calls for data\n\nProperty: assignments"
-        },
-        {
           "name": "submissions",
-          "description": "`submissions` {`any[]`} - The submissions that exist so we can make other calls for data\n\nProperty: submissions"
+          "description": "`submissions` {`any[]`} - The submissions to render\n\nProperty: submissions"
         },
         {
-          "name": "active-assignment-id",
-          "description": "`active-assignment-id` {`string`} - \n\nProperty: activeAssignmentId\n\nDefault: null"
-        },
-        {
-          "name": "active-assignment",
-          "description": "`active-assignment` - \n\nProperty: activeAssignment"
-        },
-        {
-          "name": "active-author-id",
-          "description": "`active-author-id` {`string`} - \n\nProperty: activeAuthorId\n\nDefault: null"
-        },
-        {
-          "name": "show-submissions",
-          "description": "`show-submissions` {`boolean`} - \n\nProperty: showSubmissions\n\nDefault: false",
-          "valueSet": "v"
+          "name": "_num-width",
+          "description": "`_num-width` {`string`} - \n\nProperty: _numWidth\n\nDefault: 2.25em"
         },
         {
           "name": "source-path",
@@ -444,6 +440,14 @@
         {
           "name": "base-path",
           "description": "`base-path` {`string`} - base path for the app\n\nProperty: basePath"
+        },
+        {
+          "name": "active-submission",
+          "description": "`active-submission` {`string`} - Active / clicked submission.\n\nProperty: activeSubmission\n\nDefault: null"
+        },
+        {
+          "name": "onroute-change",
+          "description": "`route-change` {`CustomEvent<{ data: { page: string; }; queryParams: { author: any; project: any; }; }>`} - "
         }
       ]
     },
@@ -515,72 +519,9 @@
       ]
     },
     {
-      "name": "lrnapp-block-recent-project",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `response` - \n\n  * `project` - \n\n  * `has-project` {`boolean`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `response` - \n\n  * `project` - \n\n  * `hasProject` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-block-need-feedback",
+      "description": "Attributes:\n\n  * `source-path` {`string`} - \n\n  * `response` {`any[]`} - \n\nProperties:\n\n  * `sourcePath` {`string`} - \n\n  * `response` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
-        {
-          "name": "elmsln-course",
-          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
-        },
-        {
-          "name": "elmsln-section",
-          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - \n\nProperty: basePath"
-        },
-        {
-          "name": "csrf-token",
-          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
-        },
-        {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
-        },
-        {
-          "name": "source-path",
-          "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
-        },
-        {
-          "name": "response",
-          "description": "`response` - \n\nProperty: response"
-        },
-        {
-          "name": "project",
-          "description": "`project` - \n\nProperty: project"
-        },
-        {
-          "name": "has-project",
-          "description": "`has-project` {`boolean`} - \n\nProperty: hasProject",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "lrnapp-block-recent-submissions",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `response` {`any[]`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `response` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "elmsln-course",
-          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
-        },
-        {
-          "name": "elmsln-section",
-          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - \n\nProperty: basePath"
-        },
-        {
-          "name": "csrf-token",
-          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
-        },
-        {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
-        },
         {
           "name": "source-path",
           "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
@@ -668,9 +609,72 @@
       ]
     },
     {
-      "name": "lrnapp-block-need-feedback",
-      "description": "Attributes:\n\n  * `source-path` {`string`} - \n\n  * `response` {`any[]`} - \n\nProperties:\n\n  * `sourcePath` {`string`} - \n\n  * `response` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-block-recent-project",
+      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `response` - \n\n  * `project` - \n\n  * `has-project` {`boolean`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `response` - \n\n  * `project` - \n\n  * `hasProject` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
+        {
+          "name": "elmsln-course",
+          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
+        },
+        {
+          "name": "elmsln-section",
+          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
+        },
+        {
+          "name": "base-path",
+          "description": "`base-path` {`string`} - \n\nProperty: basePath"
+        },
+        {
+          "name": "csrf-token",
+          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
+        },
+        {
+          "name": "source-path",
+          "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
+        },
+        {
+          "name": "response",
+          "description": "`response` - \n\nProperty: response"
+        },
+        {
+          "name": "project",
+          "description": "`project` - \n\nProperty: project"
+        },
+        {
+          "name": "has-project",
+          "description": "`has-project` {`boolean`} - \n\nProperty: hasProject",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-block-recent-submissions",
+      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `response` {`any[]`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `response` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "elmsln-course",
+          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
+        },
+        {
+          "name": "elmsln-section",
+          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
+        },
+        {
+          "name": "base-path",
+          "description": "`base-path` {`string`} - \n\nProperty: basePath"
+        },
+        {
+          "name": "csrf-token",
+          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
+        },
         {
           "name": "source-path",
           "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
@@ -683,7 +687,7 @@
     },
     {
       "name": "lrnapp-studio-dashboard",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `username` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `source-path` {`string`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `username` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `username` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `source-path` {`string`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `username` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-course",
@@ -712,6 +716,10 @@
         {
           "name": "source-path",
           "description": "`source-path` {`string`} - \n\nProperty: sourcePath"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
         }
       ]
     },
@@ -819,60 +827,8 @@
       ]
     },
     {
-      "name": "lrnapp-studio-project-button",
-      "description": "Events:\n\n  * `project-created` - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `display-errors` {`boolean`} - \n\n  * `create-projects-url` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `displayErrors` {`boolean`} - \n\n  * `createProjectsUrl` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "elmsln-course",
-          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
-        },
-        {
-          "name": "elmsln-section",
-          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - \n\nProperty: basePath"
-        },
-        {
-          "name": "csrf-token",
-          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
-        },
-        {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
-        },
-        {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "display-errors",
-          "description": "`display-errors` {`boolean`} - \n\nProperty: displayErrors\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "create-projects-url",
-          "description": "`create-projects-url` {`string`} - \n\nProperty: createProjectsUrl\n\nDefault: null"
-        },
-        {
-          "name": "classes",
-          "description": "`classes` {`string`} - \n\nProperty: classes\n\nDefault: "
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "onproject-created",
-          "description": "`project-created` - "
-        }
-      ]
-    },
-    {
       "name": "lrnapp-studio-assignment-button",
-      "description": "Events:\n\n  * `assignment-created` - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `display-errors` {`boolean`} - \n\n  * `project-id` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `displayErrors` {`boolean`} - \n\n  * `projectId` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `assignment-created` {`CustomEvent<{ assignment: any; }>`} - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `display-errors` {`boolean`} - \n\n  * `project-id` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `displayErrors` {`boolean`} - \n\n  * `projectId` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-course",
@@ -930,32 +886,14 @@
         },
         {
           "name": "onassignment-created",
-          "description": "`assignment-created` - "
+          "description": "`assignment-created` {`CustomEvent<{ assignment: any; }>`} - "
         }
       ]
     },
     {
-      "name": "lrnapp-studio-submission-button",
-      "description": "`lrnapp-studio-submission-button`\n`Allows users to either start a submission or link to a submission.`\n\nUsage:\n```\n<lrnapp-studio-submission-button assignment-id=\"[[id]]\" submission-id=\"{{submissionId}}\" end-point=\"[[endPoint]]\" csrf-token=[[csrfToken]]></lrnapp-studio-submission-button>\n\nAttributes:\n\n  * `auto` {`boolean`} - \n\n  * `assignment-id` {`string`} - \n\n  * `submission-id` {`string`} - \n\n  * `display-errors` {`boolean`} - \n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\nProperties:\n\n  * `auto` {`boolean`} - \n\n  * `assignmentId` {`string`} - \n\n  * `submissionId` {`string`} - \n\n  * `displayErrors` {`boolean`} - \n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-studio-assignment-display",
+      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `assignment` - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `assignment` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
-        {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "assignment-id",
-          "description": "`assignment-id` {`string`} - \n\nProperty: assignmentId"
-        },
-        {
-          "name": "submission-id",
-          "description": "`submission-id` {`string`} - \n\nProperty: submissionId\n\nDefault: false"
-        },
-        {
-          "name": "display-errors",
-          "description": "`display-errors` {`boolean`} - \n\nProperty: displayErrors\n\nDefault: true",
-          "valueSet": "v"
-        },
         {
           "name": "elmsln-course",
           "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
@@ -975,12 +913,16 @@
         {
           "name": "end-point",
           "description": "`end-point` {`string`} - \n\nProperty: endPoint"
+        },
+        {
+          "name": "assignment",
+          "description": "`assignment` - \n\nProperty: assignment"
         }
       ]
     },
     {
       "name": "lrnapp-studio-kanban",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `active-assignment` {`string`} - \n\n  * `active-assignment-node` - \n\n  * `project-to-delete` {`string`} - \n\n  * `assignment-to-delete` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `submission` - Submission for two-way data binding on return from the button being pushed\n\n  * `project-response` - Response from the server.\n\n  * `backend-response` - Response from the server for non-project requests.\n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `activeAssignment` {`string`} - \n\n  * `activeAssignmentNode` - \n\n  * `projectToDelete` {`string`} - \n\n  * `assignmentToDelete` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `submission` - Submission for two-way data binding on return from the button being pushed\n\n  * `projectResponse` - Response from the server.\n\n  * `backendResponse` - Response from the server for non-project requests.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `active-assignment` {`string`} - \n\n  * `active-assignment-node` - \n\n  * `project-to-delete` {`string`} - \n\n  * `assignment-to-delete` {`string`} - \n\n  * `source-path` {`string`} - \n\n  * `submission` - Submission for two-way data binding on return from the button being pushed\n\n  * `project-response` - Response from the server.\n\n  * `backend-response` - Response from the server for non-project requests.\n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `activeAssignment` {`string`} - \n\n  * `activeAssignmentNode` - \n\n  * `projectToDelete` {`string`} - \n\n  * `assignmentToDelete` {`string`} - \n\n  * `sourcePath` {`string`} - \n\n  * `submission` - Submission for two-way data binding on return from the button being pushed\n\n  * `projectResponse` - Response from the server.\n\n  * `backendResponse` - Response from the server for non-project requests.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-course",
@@ -1033,6 +975,182 @@
         {
           "name": "backend-response",
           "description": "`backend-response` - Response from the server for non-project requests.\n\nProperty: backendResponse"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-project-button",
+      "description": "Events:\n\n  * `project-created` {`CustomEvent<{ project: any; }>`} - \n\nAttributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `display-errors` {`boolean`} - \n\n  * `create-projects-url` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `auto` {`boolean`} - \n\n  * `displayErrors` {`boolean`} - \n\n  * `createProjectsUrl` {`string`} - \n\n  * `classes` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "elmsln-course",
+          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
+        },
+        {
+          "name": "elmsln-section",
+          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
+        },
+        {
+          "name": "base-path",
+          "description": "`base-path` {`string`} - \n\nProperty: basePath"
+        },
+        {
+          "name": "csrf-token",
+          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
+        },
+        {
+          "name": "auto",
+          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "display-errors",
+          "description": "`display-errors` {`boolean`} - \n\nProperty: displayErrors\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "create-projects-url",
+          "description": "`create-projects-url` {`string`} - \n\nProperty: createProjectsUrl\n\nDefault: null"
+        },
+        {
+          "name": "classes",
+          "description": "`classes` {`string`} - \n\nProperty: classes\n\nDefault: "
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
+        },
+        {
+          "name": "onproject-created",
+          "description": "`project-created` {`CustomEvent<{ project: any; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-block",
+      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `icons` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icons` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
+        },
+        {
+          "name": "icons",
+          "description": "`icons` {`string`} - \n\nProperty: icons\n\nDefault: null"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-submission-button",
+      "description": "`lrnapp-studio-submission-button`\n`Allows users to either start a submission or link to a submission.`\n\nUsage:\n```\n<lrnapp-studio-submission-button assignment-id=\"[[id]]\" submission-id=\"{{submissionId}}\" end-point=\"[[endPoint]]\" csrf-token=[[csrfToken]]></lrnapp-studio-submission-button>\n\nAttributes:\n\n  * `auto` {`boolean`} - \n\n  * `assignment-id` {`string`} - \n\n  * `submission-id` {`string`} - \n\n  * `display-errors` {`boolean`} - \n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\nProperties:\n\n  * `auto` {`boolean`} - \n\n  * `assignmentId` {`string`} - \n\n  * `submissionId` {`string`} - \n\n  * `displayErrors` {`boolean`} - \n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "auto",
+          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "assignment-id",
+          "description": "`assignment-id` {`string`} - \n\nProperty: assignmentId"
+        },
+        {
+          "name": "submission-id",
+          "description": "`submission-id` {`string`} - \n\nProperty: submissionId\n\nDefault: false"
+        },
+        {
+          "name": "display-errors",
+          "description": "`display-errors` {`boolean`} - \n\nProperty: displayErrors\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "elmsln-course",
+          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
+        },
+        {
+          "name": "elmsln-section",
+          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
+        },
+        {
+          "name": "base-path",
+          "description": "`base-path` {`string`} - \n\nProperty: basePath"
+        },
+        {
+          "name": "csrf-token",
+          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-submission-comment",
+      "description": "Attributes:\n\n  * `comment` - \n\nProperties:\n\n  * `comment` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "comment",
+          "description": "`comment` - \n\nProperty: comment"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-submission-comments",
+      "description": "Attributes:\n\n  * `submission` - \n\nProperties:\n\n  * `submission` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "submission",
+          "description": "`submission` - \n\nProperty: submission"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-submission-critique-panel",
+      "description": "Events:\n\n  * `submissionPublishClicked` {`CustomEvent<boolean>`} - \n\n  * `submissionSaveDraftClicked` {`CustomEvent<boolean>`} - \n\n  * `submissionDeleteClicked` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\nProperties:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "submission",
+          "description": "`submission` - \n\nProperty: submission"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsubmissionPublishClicked",
+          "description": "`submissionPublishClicked` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsubmissionSaveDraftClicked",
+          "description": "`submissionSaveDraftClicked` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsubmissionDeleteClicked",
+          "description": "`submissionDeleteClicked` {`CustomEvent<boolean>`} - "
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-submission-critique",
+      "description": "Attributes:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\nProperties:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "submission",
+          "description": "`submission` - \n\nProperty: submission"
+        },
+        {
+          "name": "edit",
+          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
@@ -1067,20 +1185,6 @@
       ]
     },
     {
-      "name": "lrnapp-studio-submission-media-editoverlay",
-      "description": "Events:\n\n  * `deleted` - \n\nAttributes:\n\n  * `embedcode` {`string`} - \n\nProperties:\n\n  * `embedcode` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "embedcode",
-          "description": "`embedcode` {`string`} - \n\nProperty: embedcode"
-        },
-        {
-          "name": "ondeleted",
-          "description": "`deleted` - "
-        }
-      ]
-    },
-    {
       "name": "lrnapp-studio-submission-edit-add-asset",
       "description": "Attributes:\n\n  * `icon` {`string`} - \n\n  * `display` {`string`} - Change the display of the add asset element\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `display` {`string`} - Change the display of the add asset element\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
@@ -1091,42 +1195,6 @@
         {
           "name": "display",
           "description": "`display` {`string`} - Change the display of the add asset element\n\nProperty: display\n\nDefault: box"
-        }
-      ]
-    },
-    {
-      "name": "lrnapp-studio-submission-edit-image",
-      "description": "Attributes:\n\n  * `image` - \n\n  * `thumbnail` {`string`} - \n\n  * `embedcode` {`string`} - \n\nProperties:\n\n  * `image` - \n\n  * `thumbnail` {`string`} - \n\n  * `embedcode` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "image",
-          "description": "`image` - \n\nProperty: image"
-        },
-        {
-          "name": "thumbnail",
-          "description": "`thumbnail` {`string`} - \n\nProperty: thumbnail"
-        },
-        {
-          "name": "embedcode",
-          "description": "`embedcode` {`string`} - \n\nProperty: embedcode"
-        }
-      ]
-    },
-    {
-      "name": "lrnapp-studio-submission-edit-images",
-      "description": "Attributes:\n\n  * `images` {`any[]`} - \n\n  * `selected-page` {`string`} - \n\n  * `upload-url` {`string`} - \n\nProperties:\n\n  * `images` {`any[]`} - \n\n  * `selectedPage` {`string`} - \n\n  * `uploadUrl` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "images",
-          "description": "`images` {`any[]`} - \n\nProperty: images\n\nDefault: "
-        },
-        {
-          "name": "selected-page",
-          "description": "`selected-page` {`string`} - \n\nProperty: selectedPage\n\nDefault: 0"
-        },
-        {
-          "name": "upload-url",
-          "description": "`upload-url` {`string`} - \n\nProperty: uploadUrl\n\nDefault: null"
         }
       ]
     },
@@ -1167,24 +1235,38 @@
       ]
     },
     {
-      "name": "lrnapp-studio-submission-edit-video",
-      "description": "Attributes:\n\n  * `videos` {`any[]`} - \n\n  * `selected-page` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `video-generate-source-url` {`string`} - \n\nProperties:\n\n  * `videos` {`any[]`} - \n\n  * `selectedPage` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `videoGenerateSourceUrl` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-studio-submission-edit-image",
+      "description": "Attributes:\n\n  * `image` - \n\n  * `thumbnail` {`string`} - \n\n  * `embedcode` {`string`} - \n\nProperties:\n\n  * `image` - \n\n  * `thumbnail` {`string`} - \n\n  * `embedcode` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
-          "name": "videos",
-          "description": "`videos` {`any[]`} - \n\nProperty: videos"
+          "name": "image",
+          "description": "`image` - \n\nProperty: image"
+        },
+        {
+          "name": "thumbnail",
+          "description": "`thumbnail` {`string`} - \n\nProperty: thumbnail"
+        },
+        {
+          "name": "embedcode",
+          "description": "`embedcode` {`string`} - \n\nProperty: embedcode"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-studio-submission-edit-images",
+      "description": "Attributes:\n\n  * `images` {`any[]`} - \n\n  * `selected-page` {`string`} - \n\n  * `upload-url` {`string`} - \n\nProperties:\n\n  * `images` {`any[]`} - \n\n  * `selectedPage` {`string`} - \n\n  * `uploadUrl` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "`images` {`any[]`} - \n\nProperty: images\n\nDefault: "
         },
         {
           "name": "selected-page",
           "description": "`selected-page` {`string`} - \n\nProperty: selectedPage\n\nDefault: 0"
         },
         {
-          "name": "newvideo",
-          "description": "`newvideo` {`string`} - \n\nProperty: newvideo\n\nDefault: "
-        },
-        {
-          "name": "video-generate-source-url",
-          "description": "`video-generate-source-url` {`string`} - \n\nProperty: videoGenerateSourceUrl\n\nDefault: null"
+          "name": "upload-url",
+          "description": "`upload-url` {`string`} - \n\nProperty: uploadUrl\n\nDefault: null"
         }
       ]
     },
@@ -1213,8 +1295,30 @@
       ]
     },
     {
+      "name": "lrnapp-studio-submission-edit-video",
+      "description": "Attributes:\n\n  * `videos` {`any[]`} - \n\n  * `selected-page` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `video-generate-source-url` {`string`} - \n\nProperties:\n\n  * `videos` {`any[]`} - \n\n  * `selectedPage` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `videoGenerateSourceUrl` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "videos",
+          "description": "`videos` {`any[]`} - \n\nProperty: videos"
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`string`} - \n\nProperty: selectedPage\n\nDefault: 0"
+        },
+        {
+          "name": "newvideo",
+          "description": "`newvideo` {`string`} - \n\nProperty: newvideo\n\nDefault: "
+        },
+        {
+          "name": "video-generate-source-url",
+          "description": "`video-generate-source-url` {`string`} - \n\nProperty: videoGenerateSourceUrl\n\nDefault: null"
+        }
+      ]
+    },
+    {
       "name": "lrnapp-studio-submission-edit",
-      "description": "Events:\n\n  * `submissionPublishClicked` - \n\n  * `submissionSaveDraftClicked` - \n\n  * `submissionDeleteClicked` - \n\nAttributes:\n\n  * `upload-files-url` {`string`} - \n\n  * `newlink` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `video-generate-source-url` {`string`} - \n\n  * `submission` - \n\nProperties:\n\n  * `uploadFilesUrl` {`string`} - \n\n  * `newlink` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `videoGenerateSourceUrl` {`string`} - \n\n  * `submission` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `submissionPublishClicked` {`CustomEvent<boolean>`} - \n\n  * `submissionSaveDraftClicked` {`CustomEvent<boolean>`} - \n\n  * `submissionDeleteClicked` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `upload-files-url` {`string`} - \n\n  * `newlink` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `video-generate-source-url` {`string`} - \n\n  * `submission` - \n\nProperties:\n\n  * `uploadFilesUrl` {`string`} - \n\n  * `newlink` {`string`} - \n\n  * `newvideo` {`string`} - \n\n  * `videoGenerateSourceUrl` {`string`} - \n\n  * `submission` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "upload-files-url",
@@ -1238,71 +1342,39 @@
         },
         {
           "name": "onsubmissionPublishClicked",
-          "description": "`submissionPublishClicked` - "
+          "description": "`submissionPublishClicked` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onsubmissionSaveDraftClicked",
-          "description": "`submissionSaveDraftClicked` - "
+          "description": "`submissionSaveDraftClicked` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onsubmissionDeleteClicked",
-          "description": "`submissionDeleteClicked` - "
+          "description": "`submissionDeleteClicked` {`CustomEvent<boolean>`} - "
         }
       ]
     },
     {
-      "name": "lrnapp-studio-block",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `icons` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `icons` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
-        },
-        {
-          "name": "icons",
-          "description": "`icons` {`string`} - \n\nProperty: icons\n\nDefault: null"
-        }
-      ]
+      "name": "lrnapp-studio-submission-editbar-message",
+      "description": "Properties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
     },
     {
-      "name": "lrnapp-studio-submission-critique-panel",
-      "description": "Events:\n\n  * `submissionPublishClicked` - \n\n  * `submissionSaveDraftClicked` - \n\n  * `submissionDeleteClicked` - \n\nAttributes:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\nProperties:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "submission",
-          "description": "`submission` - \n\nProperty: submission"
-        },
-        {
-          "name": "edit",
-          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsubmissionPublishClicked",
-          "description": "`submissionPublishClicked` - "
-        },
-        {
-          "name": "onsubmissionSaveDraftClicked",
-          "description": "`submissionSaveDraftClicked` - "
-        },
-        {
-          "name": "onsubmissionDeleteClicked",
-          "description": "`submissionDeleteClicked` - "
-        }
-      ]
+      "name": "lrnapp-studio-submission-editbar",
+      "description": "Properties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
     },
     {
-      "name": "lrnapp-studio-submission-critique",
-      "description": "Attributes:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\nProperties:\n\n  * `submission` - \n\n  * `edit` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "lrnapp-studio-submission-media-editoverlay",
+      "description": "Events:\n\n  * `deleted` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `embedcode` {`string`} - \n\nProperties:\n\n  * `embedcode` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
-          "name": "submission",
-          "description": "`submission` - \n\nProperty: submission"
+          "name": "embedcode",
+          "description": "`embedcode` {`string`} - \n\nProperty: embedcode"
         },
         {
-          "name": "edit",
-          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
-          "valueSet": "v"
+          "name": "ondeleted",
+          "description": "`deleted` {`CustomEvent<boolean>`} - "
         }
       ]
     },
@@ -1346,28 +1418,8 @@
       ]
     },
     {
-      "name": "lrnapp-studio-submission-comment",
-      "description": "Attributes:\n\n  * `comment` - \n\nProperties:\n\n  * `comment` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "comment",
-          "description": "`comment` - \n\nProperty: comment"
-        }
-      ]
-    },
-    {
-      "name": "lrnapp-studio-submission-comments",
-      "description": "Attributes:\n\n  * `submission` - \n\nProperties:\n\n  * `submission` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "submission",
-          "description": "`submission` - \n\nProperty: submission"
-        }
-      ]
-    },
-    {
       "name": "lrnapp-studio-submission-page",
-      "description": "Attributes:\n\n  * `id` {`string`} - \n\n  * `hide-menu-bar` {`boolean`} - \n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `req-url` {`string`} - \n\n  * `req-params` - \n\n  * `submission` - \n\n  * `comments-url` {`string`} - \n\n  * `create-stub-url` {`string`} - \n\n  * `comment-ops-base` {`string`} - \n\n  * `edit-page` {`boolean`} - \n\n  * `saving` {`boolean`} - \n\n  * `show-comments` {`boolean`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `hideMenuBar` {`boolean`} - \n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `reqUrl` {`string`} - \n\n  * `reqParams` - \n\n  * `submission` - \n\n  * `commentsUrl` {`string`} - \n\n  * `createStubUrl` {`string`} - \n\n  * `commentOpsBase` {`string`} - \n\n  * `editPage` {`boolean`} - \n\n  * `saving` {`boolean`} - \n\n  * `showComments` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `hide-menu-bar` {`boolean`} - \n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `req-url` {`string`} - \n\n  * `req-params` - \n\n  * `submission` - \n\n  * `comments-url` {`string`} - \n\n  * `create-stub-url` {`string`} - \n\n  * `comment-ops-base` {`string`} - \n\n  * `edit-page` {`boolean`} - \n\n  * `saving` {`boolean`} - \n\n  * `show-comments` {`boolean`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `hideMenuBar` {`boolean`} - \n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `reqUrl` {`string`} - \n\n  * `reqParams` - \n\n  * `submission` - \n\n  * `commentsUrl` {`string`} - \n\n  * `createStubUrl` {`string`} - \n\n  * `commentOpsBase` {`string`} - \n\n  * `editPage` {`boolean`} - \n\n  * `saving` {`boolean`} - \n\n  * `showComments` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "id",
@@ -1436,6 +1488,10 @@
           "name": "show-comments",
           "description": "`show-comments` {`boolean`} - \n\nProperty: showComments",
           "valueSet": "v"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
         }
       ]
     },
@@ -1471,7 +1527,7 @@
     },
     {
       "name": "mooc-content",
-      "description": "`lrnapp-book`\nA LRN element\n\nEvents:\n\n  * `simple-modal-hide` - \n\nAttributes:\n\n  * `elmsln-section` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - Source of data\n\n  * `full-outline-path` {`string`} - Full outline path\n\n  * `route` - App route tracking.\n\n  * `current-title` {`string`} - Title for the content\n\n  * `request-params` - Params for the request for outline/book to load.\n\n  * `page-data` - Returned data for processing.\n\n  * `outline-data` - Returned data for processing.\n\n  * `reset-scroll` {`boolean`} - Ensure scrolling doesn't influence during a transition.\n\n  * `response-data` - Store current page data.\n\n  * `base-path` {`string`} - BasePath from drupal\n\n  * `elmsln-course` {`string`} - elmslnCourse from drupal\n\n  * `outline-title` {`string`} - nav title\n\n  * `nid` {`number`} - Node ID\n\n  * `_loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `aliases` {`any[]`} - Aliases\n\n  * `active-node-item` - active item for tracking reference after clicks.\n\nProperties:\n\n  * `elmslnSection` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - Source of data\n\n  * `fullOutlinePath` {`string`} - Full outline path\n\n  * `route` - App route tracking.\n\n  * `currentTitle` {`string`} - Title for the content\n\n  * `requestParams` - Params for the request for outline/book to load.\n\n  * `pageData` - Returned data for processing.\n\n  * `outlineData` - Returned data for processing.\n\n  * `resetScroll` {`boolean`} - Ensure scrolling doesn't influence during a transition.\n\n  * `responseData` - Store current page data.\n\n  * `basePath` {`string`} - BasePath from drupal\n\n  * `elmslnCourse` {`string`} - elmslnCourse from drupal\n\n  * `outlineTitle` {`string`} - nav title\n\n  * `nid` {`number`} - Node ID\n\n  * `_loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `aliases` {`any[]`} - Aliases\n\n  * `activeNodeItem` - active item for tracking reference after clicks.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnapp-book`\nA LRN element\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `elmsln-section` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `source-path` {`string`} - Source of data\n\n  * `full-outline-path` {`string`} - Full outline path\n\n  * `route` - App route tracking.\n\n  * `current-title` {`string`} - Title for the content\n\n  * `request-params` - Params for the request for outline/book to load.\n\n  * `page-data` - Returned data for processing.\n\n  * `outline-data` - Returned data for processing.\n\n  * `reset-scroll` {`boolean`} - Ensure scrolling doesn't influence during a transition.\n\n  * `response-data` - Store current page data.\n\n  * `base-path` {`string`} - BasePath from drupal\n\n  * `elmsln-course` {`string`} - elmslnCourse from drupal\n\n  * `outline-title` {`string`} - nav title\n\n  * `nid` {`number`} - Node ID\n\n  * `_loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `aliases` {`any[]`} - Aliases\n\n  * `active-node-item` - active item for tracking reference after clicks.\n\nProperties:\n\n  * `elmslnSection` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `sourcePath` {`string`} - Source of data\n\n  * `fullOutlinePath` {`string`} - Full outline path\n\n  * `route` - App route tracking.\n\n  * `currentTitle` {`string`} - Title for the content\n\n  * `requestParams` - Params for the request for outline/book to load.\n\n  * `pageData` - Returned data for processing.\n\n  * `outlineData` - Returned data for processing.\n\n  * `resetScroll` {`boolean`} - Ensure scrolling doesn't influence during a transition.\n\n  * `responseData` - Store current page data.\n\n  * `basePath` {`string`} - BasePath from drupal\n\n  * `elmslnCourse` {`string`} - elmslnCourse from drupal\n\n  * `outlineTitle` {`string`} - nav title\n\n  * `nid` {`number`} - Node ID\n\n  * `_loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `loading` {`boolean`} - loading pegged to the ajax call running\n\n  * `aliases` {`any[]`} - Aliases\n\n  * `activeNodeItem` - active item for tracking reference after clicks.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "elmsln-section",
@@ -1557,54 +1613,14 @@
           "description": "`active-node-item` - active item for tracking reference after clicks.\n\nProperty: activeNodeItem\n\nDefault: null"
         },
         {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
           "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` - "
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         }
       ]
-    },
-    {
-      "name": "elmsln-base",
-      "attributes": []
-    },
-    {
-      "name": "lrnapp-studio-assignment-display",
-      "description": "Attributes:\n\n  * `elmsln-course` {`string`} - \n\n  * `elmsln-section` {`string`} - \n\n  * `base-path` {`string`} - \n\n  * `csrf-token` {`string`} - \n\n  * `end-point` {`string`} - \n\n  * `assignment` - \n\nProperties:\n\n  * `elmslnCourse` {`string`} - \n\n  * `elmslnSection` {`string`} - \n\n  * `basePath` {`string`} - \n\n  * `csrfToken` {`string`} - \n\n  * `endPoint` {`string`} - \n\n  * `assignment` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "elmsln-course",
-          "description": "`elmsln-course` {`string`} - \n\nProperty: elmslnCourse"
-        },
-        {
-          "name": "elmsln-section",
-          "description": "`elmsln-section` {`string`} - \n\nProperty: elmslnSection"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - \n\nProperty: basePath"
-        },
-        {
-          "name": "csrf-token",
-          "description": "`csrf-token` {`string`} - \n\nProperty: csrfToken"
-        },
-        {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - \n\nProperty: endPoint"
-        },
-        {
-          "name": "assignment",
-          "description": "`assignment` - \n\nProperty: assignment"
-        }
-      ]
-    },
-    {
-      "name": "lrnapp-studio-submission-editbar-message",
-      "description": "Properties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": []
-    },
-    {
-      "name": "lrnapp-studio-submission-editbar",
-      "description": "Properties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

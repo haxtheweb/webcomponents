@@ -30,6 +30,24 @@
         {
           "name": "icon",
           "type": "string"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -42,12 +60,29 @@
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ]
-    },
-    {
-      "name": "tag",
-      "path": "./simple-icon.umd.js"
     },
     {
       "name": "simple-icon",
@@ -61,6 +96,24 @@
         {
           "name": "icon",
           "type": "string"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -73,6 +126,27 @@
           "name": "icon",
           "attribute": "icon",
           "type": "string"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ]
     }

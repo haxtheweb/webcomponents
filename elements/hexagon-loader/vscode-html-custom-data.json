@@ -2,11 +2,6 @@
   "version": 1,
   "tags": [
     {
-      "name": "hex-a-gon",
-      "description": "`hex-a-gon`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
-      "attributes": []
-    },
-    {
       "name": "hexagon-loader",
       "description": "`hexagon-loader`\n\nAttributes:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `item-count` {`number`} - Count of the items\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `itemCount` {`number`} - Count of the items\n\n  * `items` {`any[]`} - ",
       "attributes": [
@@ -34,7 +29,8 @@
       ]
     },
     {
-      "name": "tag",
+      "name": "hex-a-gon",
+      "description": "`hex-a-gon`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
       "attributes": []
     },
     {

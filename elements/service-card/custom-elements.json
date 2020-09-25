@@ -40,10 +40,6 @@
       ]
     },
     {
-      "name": "tag",
-      "path": "./service-card.umd.js"
-    },
-    {
       "name": "service-card",
       "path": "./src/service-card.js",
       "description": "`service-card`\n`simple showcase of services provided`",

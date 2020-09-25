@@ -138,7 +138,7 @@ class HAXCMSBackendDemo extends LitElement {
           },
           (e) => {
             //import failed
-            console.log(e);
+            console.warn(e);
           }
         );
       } catch (err) {

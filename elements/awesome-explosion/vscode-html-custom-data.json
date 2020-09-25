@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "awesome-explosion",
-      "description": "`awesome-explosion`\n`An awesome, explosion.`\n\nEvents:\n\n  * `awesome-event` - \n\nAttributes:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `reset-sound` {`boolean`} - Allow for resetting the sound effect.\n\nProperties:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `resetSound` {`boolean`} - Allow for resetting the sound effect.",
+      "description": "`awesome-explosion`\n`An awesome, explosion.`\n\nEvents:\n\n  * `awesome-event` {`CustomEvent<{ message: string; }>`} - \n\nAttributes:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `reset-sound` {`boolean`} - Allow for resetting the sound effect.\n\nProperties:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `resetSound` {`boolean`} - Allow for resetting the sound effect.",
       "attributes": [
         {
           "name": "stopped",
@@ -47,23 +47,13 @@
         },
         {
           "name": "onawesome-event",
-          "description": "`awesome-event` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `awesome-event` - ",
-      "attributes": [
-        {
-          "name": "onawesome-event",
-          "description": "`awesome-event` - "
+          "description": "`awesome-event` {`CustomEvent<{ message: string; }>`} - "
         }
       ]
     },
     {
       "name": "awesome-explosion",
-      "description": "`awesome-explosion`\n`An awesome, explosion.`\n\nEvents:\n\n  * `awesome-event` - \n\nAttributes:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `reset-sound` {`boolean`} - Allow for resetting the sound effect.\n\nProperties:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `resetSound` {`boolean`} - Allow for resetting the sound effect.",
+      "description": "`awesome-explosion`\n`An awesome, explosion.`\n\nEvents:\n\n  * `awesome-event` {`CustomEvent<{ message: string; }>`} - \n\nAttributes:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `reset-sound` {`boolean`} - Allow for resetting the sound effect.\n\nProperties:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `resetSound` {`boolean`} - Allow for resetting the sound effect.",
       "attributes": [
         {
           "name": "stopped",
@@ -107,7 +97,7 @@
         },
         {
           "name": "onawesome-event",
-          "description": "`awesome-event` - "
+          "description": "`awesome-event` {`CustomEvent<{ message: string; }>`} - "
         }
       ]
     }

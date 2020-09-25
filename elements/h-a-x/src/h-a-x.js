@@ -161,7 +161,7 @@ class HAX extends HTMLElement {
             window.HaxStore.instance.appStore = appStore;
           }
         } catch (e) {
-          console.log(e);
+          console.warn(e);
         }
         if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
@@ -265,7 +265,6 @@ class HAX extends HTMLElement {
     return this.getAttribute("app-store");
   }
   set appStore(newValue) {
-    console.log(newValue);
     this.setAttribute("app-store", newValue);
     if (this.__rendered) {
       // bind to the hax store global on change

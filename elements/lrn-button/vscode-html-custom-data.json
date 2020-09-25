@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrn-button",
-      "description": "Events:\n\n  * `focus-changed` - \n\nAttributes:\n\n  * `href` {`string`} - \n\n  * `show-href` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `inner-class` {`string`} - \n\n  * `color` {`string`} - \n\n  * `text-color` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focus-state` {`boolean`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `showHref` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `innerClass` {`string`} - \n\n  * `color` {`string`} - \n\n  * `textColor` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `templateUrl` {`string`} - \n\n  * `propertiesUrl` {`string`} - \n\n  * `HAXPropertiesUrl` {`string`} - \n\n  * `styleUrl` {`string`} - ",
+      "description": "Events:\n\n  * `focus-changed` {`CustomEvent<{ focus: any; }>`} - \n\nAttributes:\n\n  * `href` {`string`} - \n\n  * `show-href` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `inner-class` {`string`} - \n\n  * `color` {`string`} - \n\n  * `text-color` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focus-state` {`boolean`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `showHref` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `innerClass` {`string`} - \n\n  * `color` {`string`} - \n\n  * `textColor` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `templateUrl` {`string`} - \n\n  * `propertiesUrl` {`string`} - \n\n  * `HAXPropertiesUrl` {`string`} - \n\n  * `styleUrl` {`string`} - ",
       "attributes": [
         {
           "name": "href",
@@ -70,13 +70,13 @@
         },
         {
           "name": "onfocus-changed",
-          "description": "`focus-changed` - "
+          "description": "`focus-changed` {`CustomEvent<{ focus: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` - \n\nAttributes:\n\n  * `show-href` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - iron-icon to use (with iconset if needed)\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `icon-class` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `inner-class` {`string`} - Inner container classes.\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `text-color` {`string`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperties:\n\n  * `showHref` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - iron-icon to use (with iconset if needed)\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `iconClass` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `innerClass` {`string`} - Inner container classes.\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `textColor` {`string`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nAttributes:\n\n  * `show-href` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - iron-icon to use (with iconset if needed)\n\n  * `hover-class` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `icon-class` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `inner-class` {`string`} - Inner container classes.\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `text-color` {`string`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperties:\n\n  * `showHref` {`string`} - What to display for the resource\n\n  * `raised` {`boolean`} - If the button should be visually lifted off the UI.\n\n  * `icon` {`string`} - iron-icon to use (with iconset if needed)\n\n  * `hoverClass` {`string`} - Classes to add / subtract based on the item being hovered.\n\n  * `iconClass` {`string`} - Icon class in the event you want it to look different from the text.\n\n  * `innerClass` {`string`} - Inner container classes.\n\n  * `color` {`string`} - materializeCSS color class\n\n  * `textColor` {`string`} - materializeCSS color class for text\n\n  * `prefetch` {`string`} - Allow for prefetch data on hover\n\n  * `alt` {`string`} - Alt via tooltip.\n\n  * `href` {`string`} - Standard href pass down\n\n  * `label` {`string`} - Label to place in the text area\n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - Disabled state.\n\n  * `focusState` {`boolean`} - Tracks if focus state is applied",
       "attributes": [
         {
           "name": "show-href",
@@ -143,27 +143,17 @@
         },
         {
           "name": "onfocus-changed",
-          "description": "`focus-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `focus-changed` - ",
-      "attributes": [
-        {
-          "name": "onfocus-changed",
-          "description": "`focus-changed` - "
+          "description": "`focus-changed` {`CustomEvent<{ focus: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-button",
-      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - ",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`\n\nEvents:\n\n  * `focus-changed` {`CustomEvent<{ focus: boolean; }>`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - ",
       "attributes": [
         {
           "name": "onfocus-changed",
-          "description": "`focus-changed` - "
+          "description": "`focus-changed` {`CustomEvent<{ focus: boolean; }>`} - "
         }
       ]
     }

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrndesign-panelcard",
-      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background",
+      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -17,16 +17,25 @@
           "name": "coloredText",
           "description": "`coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperty: coloredText\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrndesign-panelcard",
-      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background",
+      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\n  * `accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\n  * `accentColor` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -40,6 +49,19 @@
           "name": "coloredText",
           "description": "`coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperty: coloredText\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }

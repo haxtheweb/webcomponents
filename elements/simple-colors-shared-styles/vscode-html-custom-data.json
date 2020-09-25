@@ -16,10 +16,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "simple-colors-shared-styles",
       "description": "Properties:\n\n  * `colors` - \n\n  * `contrasts` - ",
       "attributes": []

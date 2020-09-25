@@ -21,10 +21,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrn-aside",
       "description": "`lrn-aside`\nA content aside as a panel\n\nAttributes:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperties:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.",
       "attributes": [

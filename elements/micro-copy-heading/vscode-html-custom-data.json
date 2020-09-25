@@ -16,10 +16,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "micro-copy-heading",
       "description": "`micro-copy-heading`\n\nProperties:\n\n  * `tag` {`string`} - ",
       "attributes": []

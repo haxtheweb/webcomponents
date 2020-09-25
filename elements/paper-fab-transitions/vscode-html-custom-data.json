@@ -33,11 +33,6 @@
       ]
     },
     {
-      "name": "paper-square-grow-animation",
-      "description": "`<paper-square-grow-animation>` increases the element's width and height from an initial\npredefined pixel square size to its final size.\n\nConfiguration:\n```\n{\n  name: 'expand-animation',\n  node: <node>,\n  startSize: <start-size-in-px>,\n  timing: <animation-timing>,\n}\n```\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": []
-    },
-    {
       "name": "paper-fab-speed-dial",
       "description": "`paper-fab-speed-dial` builds on `iron-dropdown` to allow showing a list of\nspeed dial actions when tapping on a floating action button.\n\nThis element expects its content to contain two children: one with the class\n`dropdown-trigger` , which is initially visible and acts as the trigger, and\nanother one with the class `dropdown-content` , which will be hidden until the\ntrigger is tapped, and will contain the speed dial option elements.\n\nExample:\n\n    <paper-fab-speed-dial>\n      <paper-fab icon=\"add\" class=\"dropdown-trigger\"></paper-fab>\n      <div class=\"dropdown-content\">\n        <paper-fab mini icon=\"star-border\"></paper-fab>\n        <paper-fab mini icon=\"star-half\"></paper-fab>\n        <paper-fab mini icon=\"star\"></paper-fab>\n      </div>\n    </paper-fab-speed-dial>\n\nThe `direction` property can be set to `top`, `bottom`, `left` or `right` to\ncontrol the direction in which the options dropdown is expanded.\n\n### Styling\n\nThe following custom properties and mixins are also available for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-fab-speed-dial-option` | Mixin applied to each option element | `{}`\n\nAttributes:\n\n  * `direction` {`string`} - The direction in which to expand the options. One of `top`, `bottom`\n`left`\n\n  * `offset` {`number`} - A pixel value for the distance of the first option fron the trigger\nbutton.\n\n  * `open-animation-config` {`any[]`} - An animation config. If provided, this will be used to animate the\nopening of the options dropdown.\n\n  * `close-animation-config` {`any[]`} - An animation config. If provided, this will be used to animate the\nclosing of the options dropdown.\n\nProperties:\n\n  * `direction` {`string`} - The direction in which to expand the options. One of `top`, `bottom`\n`left`\n\n  * `offset` {`number`} - A pixel value for the distance of the first option fron the trigger\nbutton.\n\n  * `openAnimationConfig` {`any[]`} - An animation config. If provided, this will be used to animate the\nopening of the options dropdown.\n\n  * `closeAnimationConfig` {`any[]`} - An animation config. If provided, this will be used to animate the\nclosing of the options dropdown.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
@@ -60,7 +55,8 @@
       ]
     },
     {
-      "name": "tag",
+      "name": "paper-square-grow-animation",
+      "description": "`<paper-square-grow-animation>` increases the element's width and height from an initial\npredefined pixel square size to its final size.\n\nConfiguration:\n```\n{\n  name: 'expand-animation',\n  node: <node>,\n  startSize: <start-size-in-px>,\n  timing: <animation-timing>,\n}\n```\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": []
     }
   ],

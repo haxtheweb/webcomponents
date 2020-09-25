@@ -2,209 +2,136 @@
   "version": 1,
   "tags": [
     {
-      "name": "editable-table-editor-rowcol",
-      "description": "`editable-table-editor-rowcol`\nA header label and menu for inserting and deleting a row or a column of the editable-table interface (editable-table.html).\n\nEvents:\n\n  * `rowcol-action` - \n\nAttributes:\n\n  * `controls` {`string`} - The cell that the menu controls\n\n  * `index` {`number`} - Index of the row or column\n\n  * `label` {`string`} - Label of the row or column\n\n  * `row` {`boolean`} - Whether the menu button controls a row\n\nProperties:\n\n  * `controls` {`string`} - The cell that the menu controls\n\n  * `index` {`number`} - Index of the row or column\n\n  * `label` {`string`} - Label of the row or column\n\n  * `row` {`boolean`} - Whether the menu button controls a row\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "editable-table",
+      "description": "`editable-table`\nAn editor interface for tables that toggles between view mode.\n\n### Styling\n\n`<editable-table>` provides the following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--editable-table-font-size` | Main size for the  table. | unset;\n`--editable-table-secondary-font-size` | Smaller font size for the table for minor UI elements. | 12px;\n`--editable-table-caption-font-size` | Font size for the table caption. | var(--editable-table-font-size);\n`--editable-table-font-family` | Main font-family for the table. | inherit;\n`--editable-table-secondary-font-family` | Secondary font-familt for the table's minor UI elements | \"Roboto\", \"Noto\", sans-serif;\n`--editable-table-light-weight` | The lightest table font-weight, for minor UI elements. | 200;\n`--editable-table-medium-weight` | The default table font-weight. | 300;\n`--editable-table-heavy-weight` | The heaviest table font-weight, for emphasis and table  caption. | 600;\n`--editable-table-color` | The table text color. | #222;\n`--editable-table-bg-color` | The table background color. | #fff;\n`--editable-table-caption-color` | The caption text color. | var(--editable-table-color);\n`--editable-table-caption-bg-color` | The caption background color. | #fff;\n`--editable-table-heading-color` | The row/column heading text color. | #000;\n`--editable-table-heading-bg-color` | The row/column heading background color. | #ddd;\n`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #eee;\n`--editable-table-border-width` | The border width for table. | 1px;\n`--editable-table-border-style` | The border style for table. | solid;\n`--editable-table-border-color` | The border color for table. | #999;\n`--editable-table-border` | The table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);\n`--editable-table-button-color` | The default text color of the toggle buttons. | var(--editable-table-border-color);\n`--editable-table-button-bg-color` | The default background color of the toggle buttons. | var(--editable-table-bg-color);\n`--editable-table-button-toggled-color` | The text color of the toggle buttons when toggled. | var(--editable-table-color);\n`--editable-table-button-toggled-bg-color` | The background color of the toggle buttons when toggled. | var(--editable-table-bg-color);\n`--editable-table-button-hover-color` | The text color of the toggle buttons when hovered or focused. | var(--editable-table-button-color);\n`--editable-table-button-hover-bg-color` | The background color of the toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-toggled-hover-color` | The text color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);\n`--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);\n`--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);\n`--editable-table-row-horizontal-padding` | Horizontal appding for cells. | 4px;\n`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 5px;\n`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;\n`--editable-table-row-padding` | Overall default padding for cells. | var(--editable-table-row-vertical-padding) var(--editable-table-row-horizontal-padding);\n`--editable-table-row-padding-condensed` | Overall condensed padding for cells. | var(--editable-table-row-vertical-padding-condensed)var(--editable-table-row-horizontal-padding);\n`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }\n`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }\n`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }\n`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }\n\nEvents:\n\n  * `toggle-edit-mode` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hide-bordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hide-condensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hide-display` {`boolean`} - Hide the table display menu group\n\n  * `hide-filter` {`boolean`} - Hide the filtering option.\n\n  * `hide-sort-filter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hide-sort` {`boolean`} - Hide the sorting option.\n\n  * `hide-responsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hide-striped` {`boolean`} - Hide the striped table styles menu option\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `columnHeader` {`boolean`} - Display the first row as a column header.\n\n  * `csvData` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `dataCsv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `rowHeader` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\nProperties:\n\n  * `editMode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hideBordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hideCondensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hideDisplay` {`boolean`} - Hide the table display menu group\n\n  * `hideFilter` {`boolean`} - Hide the filtering option.\n\n  * `hideSortFilter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hideSort` {`boolean`} - Hide the sorting option.\n\n  * `hideResponsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hideStriped` {`boolean`} - Hide the striped table styles menu option\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `columnHeader` {`boolean`} - Display the first row as a column header.\n\n  * `csvData` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `dataCsv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `rowHeader` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - The cell that the menu controls\n\nProperty: controls"
-        },
-        {
-          "name": "index",
-          "description": "`index` {`number`} - Index of the row or column\n\nProperty: index\n\nDefault: null"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label of the row or column\n\nProperty: label"
-        },
-        {
-          "name": "row",
-          "description": "`row` {`boolean`} - Whether the menu button controls a row\n\nProperty: row\n\nDefault: false",
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\nProperty: editMode\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "onrowcol-action",
-          "description": "`rowcol-action` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-editor-toggle",
-      "description": "`editable-table-editor-toggle`\nA toggle button for an property in the editable-table interface (editable-table.html).\n\n```<editable-table-editor-toggle\nhidden                           //Hide and disable this toggle? Default is false.\nlabel=\"Condensed\"                //The label for the toggle button\nprop=\"condensed\"                 //The property controlled by this toggle\ntooltip=\"Condense cell height.\"  //A tooltip for this toggle.\nvalue=\"true\">                    //The value of this toggle.\n</editable-table-editor-toggle>```\n\nEvents:\n\n  * `change` - \n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Table id for accessibility\n\n  * `id` {`string`} - Button id that matches the table property to toggle\n\n  * `icon` {`string`} - Button icon\n\n  * `label` {`string`} - Button label\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Table id for accessibility\n\n  * `id` {`string`} - Button id that matches the table property to toggle\n\n  * `icon` {`string`} - Button icon\n\n  * `label` {`string`} - Button label\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
+          "name": "hide-bordered",
+          "description": "`hide-bordered` {`boolean`} - Hide the borders table styles menu option\n\nProperty: hideBordered\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - Table id for accessibility\n\nProperty: controls\n\nDefault: table"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - Button id that matches the table property to toggle\n\nProperty: id\n\nDefault: null"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - Button icon\n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Button label\n\nProperty: label\n\nDefault: null"
-        },
-        {
-          "name": "toggled",
-          "description": "`toggled` {`boolean`} - Whether the button is toggled\n\nProperty: toggled\n\nDefault: false",
+          "name": "hide-condensed",
+          "description": "`hide-condensed` {`boolean`} - Hide the condensed table styles menu option\n\nProperty: hideCondensed\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "onchange",
-          "description": "`change` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-editor-cell",
-      "description": "`editable-table-editor-cell`\nAn editable cell in the editable-table-editor (editable-table-editor.html) interface.\n\nEvents:\n\n  * `change` - \n\n  * `cell-move` - \n\nAttributes:\n\n  * `row` {`number`} - Cell row\n\n  * `column` {`number`} - Cell column\n\n  * `label` {`string`} - Cell label\n\n  * `value` {`string`} - Cell contents\n\nProperties:\n\n  * `row` {`number`} - Cell row\n\n  * `column` {`number`} - Cell column\n\n  * `label` {`string`} - Cell label\n\n  * `value` {`string`} - Cell contents\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "row",
-          "description": "`row` {`number`} - Cell row\n\nProperty: row\n\nDefault: null"
-        },
-        {
-          "name": "column",
-          "description": "`column` {`number`} - Cell column\n\nProperty: column\n\nDefault: null"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Cell label\n\nProperty: label"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - Cell contents\n\nProperty: value\n\nDefault: false"
-        },
-        {
-          "name": "onchange",
-          "description": "`change` - "
-        },
-        {
-          "name": "oncell-move",
-          "description": "`cell-move` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-editor-sort",
-      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "column-index",
-          "description": "`column-index` {`number`} - Sort ascending, descending or none\n\nProperty: columnIndex\n\nDefault: null"
-        },
-        {
-          "name": "sort-mode",
-          "description": "`sort-mode` {`string`} - Sort mode: ascending, descending or none\n\nProperty: sortMode\n\nDefault: none"
-        },
-        {
-          "name": "sort-column",
-          "description": "`sort-column` {`number`} - Index of the current sort column\n\nProperty: sortColumn\n\nDefault: -1"
-        },
-        {
-          "name": "sorting",
-          "description": "`sorting` {`boolean`} - Whether the column is being sorted\n\nProperty: sorting",
+          "name": "hide-display",
+          "description": "`hide-display` {`boolean`} - Hide the table display menu group\n\nProperty: hideDisplay",
           "valueSet": "v"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
-        },
-        {
-          "name": "onchange-sort-mode",
-          "description": "`change-sort-mode` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-sort",
-      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "column-index",
-          "description": "`column-index` {`number`} - Sort ascending, descending or none\n\nProperty: columnIndex\n\nDefault: null"
-        },
-        {
-          "name": "sort-mode",
-          "description": "`sort-mode` {`string`} - Sort mode: ascending, descending or none\n\nProperty: sortMode\n\nDefault: none"
-        },
-        {
-          "name": "sort-column",
-          "description": "`sort-column` {`number`} - Index of the current sort column\n\nProperty: sortColumn\n\nDefault: -1"
-        },
-        {
-          "name": "sorting",
-          "description": "`sorting` {`boolean`} - Whether the column is being sorted\n\nProperty: sorting",
+          "name": "hide-filter",
+          "description": "`hide-filter` {`boolean`} - Hide the filtering option.\n\nProperty: hideFilter\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
-        },
-        {
-          "name": "onchange-sort-mode",
-          "description": "`change-sort-mode` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-editor-filter",
-      "description": "`editable-table-editor-filter`\n`Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text",
-      "attributes": [
-        {
-          "name": "column-index",
-          "description": "`column-index` {`number`} - Index of the column\n\nProperty: columnIndex\n\nDefault: null"
-        },
-        {
-          "name": "filtered",
-          "description": "`filtered` {`boolean`} - Whether the column is filtered\n\nProperty: filtered\n\nDefault: false",
+          "name": "hide-sort-filter",
+          "description": "`hide-sort-filter` {`boolean`} - Hide the table sorting & filtering menu group\n\nProperty: hideSortFilter",
           "valueSet": "v"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
-        },
-        {
-          "name": "ontoggle-filter",
-          "description": "`toggle-filter` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-table-filter",
-      "description": "`editable-table-editor-filter`\n`Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text",
-      "attributes": [
-        {
-          "name": "column-index",
-          "description": "`column-index` {`number`} - Index of the column\n\nProperty: columnIndex\n\nDefault: null"
-        },
-        {
-          "name": "filtered",
-          "description": "`filtered` {`boolean`} - Whether the column is filtered\n\nProperty: filtered\n\nDefault: false",
+          "name": "hide-sort",
+          "description": "`hide-sort` {`boolean`} - Hide the sorting option.\n\nProperty: hideSort\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
+          "name": "hide-responsive",
+          "description": "`hide-responsive` {`boolean`} - Hide the responsive table styles menu option\n\nProperty: hideResponsive\n\nDefault: false",
+          "valueSet": "v"
         },
         {
-          "name": "ontoggle-filter",
-          "description": "`toggle-filter` - "
+          "name": "hide-striped",
+          "description": "`hide-striped` {`boolean`} - Hide the striped table styles menu option\n\nProperty: hideStriped\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "bordered",
+          "description": "`bordered` {`boolean`} - Add borders to table and table cells.\n\nProperty: bordered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - a table caption\n\nProperty: caption\n\nDefault: null"
+        },
+        {
+          "name": "columnHeader",
+          "description": "`columnHeader` {`boolean`} - Display the first row as a column header.\n\nProperty: columnHeader\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "csvData",
+          "description": "`csvData` {`string`} - Raw data pulled in from the csv file.\n\nProperty: csvData\n\nDefault: "
+        },
+        {
+          "name": "condensed",
+          "description": "`condensed` {`boolean`} - Condense height of table cells.\n\nProperty: condensed\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "data",
+          "description": "`data` {`any[]`} - raw data\n\nProperty: data\n\nDefault: "
+        },
+        {
+          "name": "dataCsv",
+          "description": "`dataCsv` {`string`} - Location of the CSV file.\n\nProperty: dataCsv"
+        },
+        {
+          "name": "filter",
+          "description": "`filter` {`boolean`} - Enable filtering by cell value.\n\nProperty: filter\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "footer",
+          "description": "`footer` {`boolean`} - Display the last row as a column footer.\n\nProperty: footer\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "rowHeader",
+          "description": "`rowHeader` {`boolean`} - Display the first column as a row header.\n\nProperty: rowHeader\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive",
+          "description": "`responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\nProperty: responsive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "sort",
+          "description": "`sort` {`boolean`} - Enable sorting by column header.\n\nProperty: sort\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "striped",
+          "description": "`striped` {`boolean`} - Add alternating row striping.\n\nProperty: striped\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "thead",
+          "description": "`thead` {`any[]`} - Columns in <thead>\n\nProperty: thead"
+        },
+        {
+          "name": "tbody",
+          "description": "`tbody` {`any[]`} - Rows in <tbody>\n\nProperty: tbody"
+        },
+        {
+          "name": "tfoot",
+          "description": "`tfoot` {`any[]`} - Rows in <tfoot>\n\nProperty: tfoot"
+        },
+        {
+          "name": "ontoggle-edit-mode",
+          "description": "`toggle-edit-mode` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "editable-table-display",
-      "description": "`editable-table-display`\n` An editor interface for editable-table`\n\nEvents:\n\n  * `change` - \n\nAttributes:\n\n  * `filter-column` {`number`} - Index of the current filter column\n\n  * `filtered` {`boolean`} - Whether table is filtered\n\n  * `filter-text` {`string`} - Text for Filtering\n\n  * `options` {`any[]`} - options for the column selector\n\n  * `selected` {`number`} - Selected column to display when in responsive mode\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of the current sort column\n\n  * `hidden` {`boolean`} - Whether the table is hidden\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `column-header` {`boolean`} - Display the first row as a column header.\n\n  * `csv-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `data-csv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `row-header` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\nProperties:\n\n  * `filterColumn` {`number`} - Index of the current filter column\n\n  * `filtered` {`boolean`} - Whether table is filtered\n\n  * `filterText` {`string`} - Text for Filtering\n\n  * `options` {`any[]`} - options for the column selector\n\n  * `selected` {`number`} - Selected column to display when in responsive mode\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of the current sort column\n\n  * `hidden` {`boolean`} - Whether the table is hidden\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `columnHeader` {`boolean`} - Display the first row as a column header.\n\n  * `csvData` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `dataCsv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `rowHeader` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`editable-table-display`\n` An editor interface for editable-table`\n\nEvents:\n\n  * `change` {`CustomEvent<any>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `filter-column` {`number`} - Index of the current filter column\n\n  * `filtered` {`boolean`} - Whether table is filtered\n\n  * `filter-text` {`string`} - Text for Filtering\n\n  * `options` {`any[]`} - options for the column selector\n\n  * `selected` {`number`} - Selected column to display when in responsive mode\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of the current sort column\n\n  * `hidden` {`boolean`} - Whether the table is hidden\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `columnHeader` {`boolean`} - Display the first row as a column header.\n\n  * `csvData` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `dataCsv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `rowHeader` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `filterColumn` {`number`} - Index of the current filter column\n\n  * `filtered` {`boolean`} - Whether table is filtered\n\n  * `filterText` {`string`} - Text for Filtering\n\n  * `options` {`any[]`} - options for the column selector\n\n  * `selected` {`number`} - Selected column to display when in responsive mode\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of the current sort column\n\n  * `hidden` {`boolean`} - Whether the table is hidden\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `columnHeader` {`boolean`} - Display the first row as a column header.\n\n  * `csvData` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `dataCsv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `rowHeader` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "filter-column",
@@ -250,13 +177,13 @@
           "description": "`caption` {`string`} - a table caption\n\nProperty: caption\n\nDefault: null"
         },
         {
-          "name": "column-header",
-          "description": "`column-header` {`boolean`} - Display the first row as a column header.\n\nProperty: columnHeader\n\nDefault: false",
+          "name": "columnHeader",
+          "description": "`columnHeader` {`boolean`} - Display the first row as a column header.\n\nProperty: columnHeader\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "csv-data",
-          "description": "`csv-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: csvData\n\nDefault: "
+          "name": "csvData",
+          "description": "`csvData` {`string`} - Raw data pulled in from the csv file.\n\nProperty: csvData\n\nDefault: "
         },
         {
           "name": "condensed",
@@ -268,8 +195,8 @@
           "description": "`data` {`any[]`} - raw data\n\nProperty: data\n\nDefault: "
         },
         {
-          "name": "data-csv",
-          "description": "`data-csv` {`string`} - Location of the CSV file.\n\nProperty: dataCsv"
+          "name": "dataCsv",
+          "description": "`dataCsv` {`string`} - Location of the CSV file.\n\nProperty: dataCsv"
         },
         {
           "name": "filter",
@@ -282,8 +209,8 @@
           "valueSet": "v"
         },
         {
-          "name": "row-header",
-          "description": "`row-header` {`boolean`} - Display the first column as a row header.\n\nProperty: rowHeader\n\nDefault: false",
+          "name": "rowHeader",
+          "description": "`rowHeader` {`boolean`} - Display the first column as a row header.\n\nProperty: rowHeader\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -314,172 +241,247 @@
           "description": "`tfoot` {`any[]`} - Rows in <tfoot>\n\nProperty: tfoot"
         },
         {
+          "name": "responsive-width",
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "sm",
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+        },
+        {
+          "name": "md",
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+        },
+        {
+          "name": "lg",
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
+        },
+        {
+          "name": "xl",
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
           "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
-      "name": "editable-table",
-      "description": "`editable-table`\nAn editor interface for tables that toggles between view mode.\n\n### Styling\n\n`<editable-table>` provides the following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--editable-table-font-size` | Main size for the  table. | unset;\n`--editable-table-secondary-font-size` | Smaller font size for the table for minor UI elements. | 12px;\n`--editable-table-caption-font-size` | Font size for the table caption. | var(--editable-table-font-size);\n`--editable-table-font-family` | Main font-family for the table. | inherit;\n`--editable-table-secondary-font-family` | Secondary font-familt for the table's minor UI elements | \"Roboto\", \"Noto\", sans-serif;\n`--editable-table-light-weight` | The lightest table font-weight, for minor UI elements. | 200;\n`--editable-table-medium-weight` | The default table font-weight. | 300;\n`--editable-table-heavy-weight` | The heaviest table font-weight, for emphasis and table  caption. | 600;\n`--editable-table-color` | The table text color. | #222;\n`--editable-table-bg-color` | The table background color. | #fff;\n`--editable-table-caption-color` | The caption text color. | var(--editable-table-color);\n`--editable-table-caption-bg-color` | The caption background color. | #fff;\n`--editable-table-heading-color` | The row/column heading text color. | #000;\n`--editable-table-heading-bg-color` | The row/column heading background color. | #ddd;\n`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #eee;\n`--editable-table-border-width` | The border width for table. | 1px;\n`--editable-table-border-style` | The border style for table. | solid;\n`--editable-table-border-color` | The border color for table. | #999;\n`--editable-table-border` | The table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);\n`--editable-table-button-color` | The default text color of the toggle buttons. | var(--editable-table-border-color);\n`--editable-table-button-bg-color` | The default background color of the toggle buttons. | var(--editable-table-bg-color);\n`--editable-table-button-toggled-color` | The text color of the toggle buttons when toggled. | var(--editable-table-color);\n`--editable-table-button-toggled-bg-color` | The background color of the toggle buttons when toggled. | var(--editable-table-bg-color);\n`--editable-table-button-hover-color` | The text color of the toggle buttons when hovered or focused. | var(--editable-table-button-color);\n`--editable-table-button-hover-bg-color` | The background color of the toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-toggled-hover-color` | The text color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);\n`--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);\n`--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);\n`--editable-table-row-horizontal-padding` | Horizontal appding for cells. | 4px;\n`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 5px;\n`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;\n`--editable-table-row-padding` | Overall default padding for cells. | var(--editable-table-row-vertical-padding) var(--editable-table-row-horizontal-padding);\n`--editable-table-row-padding-condensed` | Overall condensed padding for cells. | var(--editable-table-row-vertical-padding-condensed)var(--editable-table-row-horizontal-padding);\n`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }\n`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }\n`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }\n`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }\n\nEvents:\n\n  * `toggle-edit-mode` - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hide-bordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hide-condensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hide-display` {`boolean`} - Hide the table display menu group\n\n  * `hide-filter` {`boolean`} - Hide the filtering option.\n\n  * `hide-sort-filter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hide-sort` {`boolean`} - Hide the sorting option.\n\n  * `hide-responsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hide-striped` {`boolean`} - Hide the striped table styles menu option\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `column-header` {`boolean`} - Display the first row as a column header.\n\n  * `csv-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `data-csv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `row-header` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\nProperties:\n\n  * `editMode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hideBordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hideCondensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hideDisplay` {`boolean`} - Hide the table display menu group\n\n  * `hideFilter` {`boolean`} - Hide the filtering option.\n\n  * `hideSortFilter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hideSort` {`boolean`} - Hide the sorting option.\n\n  * `hideResponsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hideStriped` {`boolean`} - Hide the striped table styles menu option\n\n  * `bordered` {`boolean`} - Add borders to table and table cells.\n\n  * `caption` {`string`} - a table caption\n\n  * `columnHeader` {`boolean`} - Display the first row as a column header.\n\n  * `csvData` {`string`} - Raw data pulled in from the csv file.\n\n  * `condensed` {`boolean`} - Condense height of table cells.\n\n  * `data` {`any[]`} - raw data\n\n  * `dataCsv` {`string`} - Location of the CSV file.\n\n  * `filter` {`boolean`} - Enable filtering by cell value.\n\n  * `footer` {`boolean`} - Display the last row as a column footer.\n\n  * `rowHeader` {`boolean`} - Display the first column as a row header.\n\n  * `responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\n  * `sort` {`boolean`} - Enable sorting by column header.\n\n  * `striped` {`boolean`} - Add alternating row striping.\n\n  * `thead` {`any[]`} - Columns in <thead>\n\n  * `tbody` {`any[]`} - Rows in <tbody>\n\n  * `tfoot` {`any[]`} - Rows in <tfoot>\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "editable-table-editor-cell",
+      "description": "`editable-table-editor-cell`\nAn editable cell in the editable-table-editor (editable-table-editor.html) interface.\n\nEvents:\n\n  * `change` {`CustomEvent<{ row: any; column: any; value: any; }>`} - \n\n  * `cell-move` {`CustomEvent<{ cell: any; direction: string; }>`} - \n\nAttributes:\n\n  * `row` {`number`} - Cell row\n\n  * `column` {`number`} - Cell column\n\n  * `label` {`string`} - Cell label\n\n  * `value` {`string`} - Cell contents\n\nProperties:\n\n  * `row` {`number`} - Cell row\n\n  * `column` {`number`} - Cell column\n\n  * `label` {`string`} - Cell label\n\n  * `value` {`string`} - Cell contents\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
+          "name": "row",
+          "description": "`row` {`number`} - Cell row\n\nProperty: row\n\nDefault: null"
         },
         {
-          "name": "hide-bordered",
-          "description": "`hide-bordered` {`boolean`} - Hide the borders table styles menu option\n\nProperty: hideBordered\n\nDefault: false",
-          "valueSet": "v"
+          "name": "column",
+          "description": "`column` {`number`} - Cell column\n\nProperty: column\n\nDefault: null"
         },
         {
-          "name": "hide-condensed",
-          "description": "`hide-condensed` {`boolean`} - Hide the condensed table styles menu option\n\nProperty: hideCondensed\n\nDefault: false",
-          "valueSet": "v"
+          "name": "label",
+          "description": "`label` {`string`} - Cell label\n\nProperty: label"
         },
         {
-          "name": "hide-display",
-          "description": "`hide-display` {`boolean`} - Hide the table display menu group\n\nProperty: hideDisplay",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-filter",
-          "description": "`hide-filter` {`boolean`} - Hide the filtering option.\n\nProperty: hideFilter\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-sort-filter",
-          "description": "`hide-sort-filter` {`boolean`} - Hide the table sorting & filtering menu group\n\nProperty: hideSortFilter",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-sort",
-          "description": "`hide-sort` {`boolean`} - Hide the sorting option.\n\nProperty: hideSort\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-responsive",
-          "description": "`hide-responsive` {`boolean`} - Hide the responsive table styles menu option\n\nProperty: hideResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-striped",
-          "description": "`hide-striped` {`boolean`} - Hide the striped table styles menu option\n\nProperty: hideStriped\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "bordered",
-          "description": "`bordered` {`boolean`} - Add borders to table and table cells.\n\nProperty: bordered\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "caption",
-          "description": "`caption` {`string`} - a table caption\n\nProperty: caption\n\nDefault: null"
-        },
-        {
-          "name": "column-header",
-          "description": "`column-header` {`boolean`} - Display the first row as a column header.\n\nProperty: columnHeader\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "csv-data",
-          "description": "`csv-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: csvData\n\nDefault: "
-        },
-        {
-          "name": "condensed",
-          "description": "`condensed` {`boolean`} - Condense height of table cells.\n\nProperty: condensed\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "data",
-          "description": "`data` {`any[]`} - raw data\n\nProperty: data\n\nDefault: "
-        },
-        {
-          "name": "data-csv",
-          "description": "`data-csv` {`string`} - Location of the CSV file.\n\nProperty: dataCsv"
-        },
-        {
-          "name": "filter",
-          "description": "`filter` {`boolean`} - Enable filtering by cell value.\n\nProperty: filter\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "footer",
-          "description": "`footer` {`boolean`} - Display the last row as a column footer.\n\nProperty: footer\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "row-header",
-          "description": "`row-header` {`boolean`} - Display the first column as a row header.\n\nProperty: rowHeader\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive",
-          "description": "`responsive` {`boolean`} - When table is wider than screens,\nusers will select a column to display\ninstead of scrolling across the table.\n\nProperty: responsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "sort",
-          "description": "`sort` {`boolean`} - Enable sorting by column header.\n\nProperty: sort\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "striped",
-          "description": "`striped` {`boolean`} - Add alternating row striping.\n\nProperty: striped\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "thead",
-          "description": "`thead` {`any[]`} - Columns in <thead>\n\nProperty: thead"
-        },
-        {
-          "name": "tbody",
-          "description": "`tbody` {`any[]`} - Rows in <tbody>\n\nProperty: tbody"
-        },
-        {
-          "name": "tfoot",
-          "description": "`tfoot` {`any[]`} - Rows in <tfoot>\n\nProperty: tfoot"
-        },
-        {
-          "name": "ontoggle-edit-mode",
-          "description": "`toggle-edit-mode` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `rowcol-action` - \n\n  * `change` - \n\n  * `cell-move` - \n\n  * `toggle-filter` - \n\n  * `change-sort-mode` - \n\n  * `toggle-edit-mode` - ",
-      "attributes": [
-        {
-          "name": "onrowcol-action",
-          "description": "`rowcol-action` - "
+          "name": "value",
+          "description": "`value` {`string`} - Cell contents\n\nProperty: value\n\nDefault: false"
         },
         {
           "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<{ row: any; column: any; value: any; }>`} - "
         },
         {
           "name": "oncell-move",
-          "description": "`cell-move` - "
+          "description": "`cell-move` {`CustomEvent<{ cell: any; direction: string; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-editor-rowcol",
+      "description": "`editable-table-editor-rowcol`\nA header label and menu for inserting and deleting a row or a column of the editable-table interface (editable-table.html).\n\nEvents:\n\n  * `rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - \n\nAttributes:\n\n  * `controls` {`string`} - The cell that the menu controls\n\n  * `index` {`number`} - Index of the row or column\n\n  * `label` {`string`} - Label of the row or column\n\n  * `row` {`boolean`} - Whether the menu button controls a row\n\nProperties:\n\n  * `controls` {`string`} - The cell that the menu controls\n\n  * `index` {`number`} - Index of the row or column\n\n  * `label` {`string`} - Label of the row or column\n\n  * `row` {`boolean`} - Whether the menu button controls a row\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - The cell that the menu controls\n\nProperty: controls"
+        },
+        {
+          "name": "index",
+          "description": "`index` {`number`} - Index of the row or column\n\nProperty: index\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label of the row or column\n\nProperty: label"
+        },
+        {
+          "name": "row",
+          "description": "`row` {`boolean`} - Whether the menu button controls a row\n\nProperty: row\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onrowcol-action",
+          "description": "`rowcol-action` {`CustomEvent<{ insert: boolean; row: any; index: number; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-editor-toggle",
+      "description": "`editable-table-editor-toggle`\nA toggle button for an property in the editable-table interface (editable-table.html).\n\n```<editable-table-editor-toggle\nhidden                           //Hide and disable this toggle? Default is false.\nlabel=\"Condensed\"                //The label for the toggle button\nprop=\"condensed\"                 //The property controlled by this toggle\ntooltip=\"Condense cell height.\"  //A tooltip for this toggle.\nvalue=\"true\">                    //The value of this toggle.\n</editable-table-editor-toggle>```\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Table id for accessibility\n\n  * `id` {`string`} - Button id that matches the table property to toggle\n\n  * `icon` {`string`} - Button icon\n\n  * `label` {`string`} - Button label\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Table id for accessibility\n\n  * `id` {`string`} - Button id that matches the table property to toggle\n\n  * `icon` {`string`} - Button icon\n\n  * `label` {`string`} - Button label\n\n  * `toggled` {`boolean`} - Whether the button is toggled\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "controls",
+          "description": "`controls` {`string`} - Table id for accessibility\n\nProperty: controls\n\nDefault: table"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - Button id that matches the table property to toggle\n\nProperty: id\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Button icon\n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Button label\n\nProperty: label\n\nDefault: null"
+        },
+        {
+          "name": "toggled",
+          "description": "`toggled` {`boolean`} - Whether the button is toggled\n\nProperty: toggled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onchange",
+          "description": "`change` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-editor-filter",
+      "description": "`editable-table-editor-filter`\n`Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text",
+      "attributes": [
+        {
+          "name": "column-index",
+          "description": "`column-index` {`number`} - Index of the column\n\nProperty: columnIndex\n\nDefault: null"
+        },
+        {
+          "name": "filtered",
+          "description": "`filtered` {`boolean`} - Whether the column is filtered\n\nProperty: filtered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
         },
         {
           "name": "ontoggle-filter",
-          "description": "`toggle-filter` - "
+          "description": "`toggle-filter` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-filter",
+      "description": "`editable-table-editor-filter`\n`Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`\n\nEvents:\n\n  * `toggle-filter` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Index of the column\n\n  * `filtered` {`boolean`} - Whether the column is filtered\n\n  * `text` {`string`} - Column header text",
+      "attributes": [
+        {
+          "name": "column-index",
+          "description": "`column-index` {`number`} - Index of the column\n\nProperty: columnIndex\n\nDefault: null"
+        },
+        {
+          "name": "filtered",
+          "description": "`filtered` {`boolean`} - Whether the column is filtered\n\nProperty: filtered\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "ontoggle-filter",
+          "description": "`toggle-filter` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-editor-sort",
+      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "column-index",
+          "description": "`column-index` {`number`} - Sort ascending, descending or none\n\nProperty: columnIndex\n\nDefault: null"
+        },
+        {
+          "name": "sort-mode",
+          "description": "`sort-mode` {`string`} - Sort mode: ascending, descending or none\n\nProperty: sortMode\n\nDefault: none"
+        },
+        {
+          "name": "sort-column",
+          "description": "`sort-column` {`number`} - Index of the current sort column\n\nProperty: sortColumn\n\nDefault: -1"
+        },
+        {
+          "name": "sorting",
+          "description": "`sorting` {`boolean`} - Whether the column is being sorted\n\nProperty: sorting",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
         },
         {
           "name": "onchange-sort-mode",
-          "description": "`change-sort-mode` - "
+          "description": "`change-sort-mode` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "editable-table-sort",
+      "description": "`editable-table-editor-sort`\nA column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).\n\nEvents:\n\n  * `change-sort-mode` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `column-index` {`number`} - Sort ascending, descending or none\n\n  * `sort-mode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sort-column` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\nProperties:\n\n  * `columnIndex` {`number`} - Sort ascending, descending or none\n\n  * `sortMode` {`string`} - Sort mode: ascending, descending or none\n\n  * `sortColumn` {`number`} - Index of the current sort column\n\n  * `sorting` {`boolean`} - Whether the column is being sorted\n\n  * `text` {`string`} - Column header text\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "column-index",
+          "description": "`column-index` {`number`} - Sort ascending, descending or none\n\nProperty: columnIndex\n\nDefault: null"
         },
         {
-          "name": "ontoggle-edit-mode",
-          "description": "`toggle-edit-mode` - "
+          "name": "sort-mode",
+          "description": "`sort-mode` {`string`} - Sort mode: ascending, descending or none\n\nProperty: sortMode\n\nDefault: none"
+        },
+        {
+          "name": "sort-column",
+          "description": "`sort-column` {`number`} - Index of the current sort column\n\nProperty: sortColumn\n\nDefault: -1"
+        },
+        {
+          "name": "sorting",
+          "description": "`sorting` {`boolean`} - Whether the column is being sorted\n\nProperty: sorting",
+          "valueSet": "v"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - Column header text\n\nProperty: text\n\nDefault: "
+        },
+        {
+          "name": "onchange-sort-mode",
+          "description": "`change-sort-mode` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "editable-table",
-      "description": "`editable-table`\nAn editor interface for tables that toggles between view mode.\n\n### Styling\n\n`<editable-table>` provides the following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--editable-table-font-size` | Main size for the  table. | unset;\n`--editable-table-secondary-font-size` | Smaller font size for the table for minor UI elements. | 12px;\n`--editable-table-caption-font-size` | Font size for the table caption. | var(--editable-table-font-size);\n`--editable-table-font-family` | Main font-family for the table. | inherit;\n`--editable-table-secondary-font-family` | Secondary font-familt for the table's minor UI elements | \"Roboto\", \"Noto\", sans-serif;\n`--editable-table-light-weight` | The lightest table font-weight, for minor UI elements. | 200;\n`--editable-table-medium-weight` | The default table font-weight. | 300;\n`--editable-table-heavy-weight` | The heaviest table font-weight, for emphasis and table  caption. | 600;\n`--editable-table-color` | The table text color. | #222;\n`--editable-table-bg-color` | The table background color. | #fff;\n`--editable-table-caption-color` | The caption text color. | var(--editable-table-color);\n`--editable-table-caption-bg-color` | The caption background color. | #fff;\n`--editable-table-heading-color` | The row/column heading text color. | #000;\n`--editable-table-heading-bg-color` | The row/column heading background color. | #ddd;\n`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #eee;\n`--editable-table-border-width` | The border width for table. | 1px;\n`--editable-table-border-style` | The border style for table. | solid;\n`--editable-table-border-color` | The border color for table. | #999;\n`--editable-table-border` | The table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);\n`--editable-table-button-color` | The default text color of the toggle buttons. | var(--editable-table-border-color);\n`--editable-table-button-bg-color` | The default background color of the toggle buttons. | var(--editable-table-bg-color);\n`--editable-table-button-toggled-color` | The text color of the toggle buttons when toggled. | var(--editable-table-color);\n`--editable-table-button-toggled-bg-color` | The background color of the toggle buttons when toggled. | var(--editable-table-bg-color);\n`--editable-table-button-hover-color` | The text color of the toggle buttons when hovered or focused. | var(--editable-table-button-color);\n`--editable-table-button-hover-bg-color` | The background color of the toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-toggled-hover-color` | The text color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);\n`--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);\n`--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);\n`--editable-table-row-horizontal-padding` | Horizontal appding for cells. | 4px;\n`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 5px;\n`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;\n`--editable-table-row-padding` | Overall default padding for cells. | var(--editable-table-row-vertical-padding) var(--editable-table-row-horizontal-padding);\n`--editable-table-row-padding-condensed` | Overall condensed padding for cells. | var(--editable-table-row-vertical-padding-condensed)var(--editable-table-row-horizontal-padding);\n`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }\n`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }\n`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }\n`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }\n\nEvents:\n\n  * `toggle-edit-mode` - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hide-bordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hide-condensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hide-display` {`boolean`} - Hide the table display menu group\n\n  * `hide-filter` {`boolean`} - Hide the filtering option.\n\n  * `hide-sort-filter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hide-sort` {`boolean`} - Hide the sorting option.\n\n  * `hide-responsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hide-striped` {`boolean`} - Hide the striped table styles menu option\n\nProperties:\n\n  * `editMode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hideBordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hideCondensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hideDisplay` {`boolean`} - Hide the table display menu group\n\n  * `hideFilter` {`boolean`} - Hide the filtering option.\n\n  * `hideSortFilter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hideSort` {`boolean`} - Hide the sorting option.\n\n  * `hideResponsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hideStriped` {`boolean`} - Hide the striped table styles menu option\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`editable-table`\nAn editor interface for tables that toggles between view mode.\n\n### Styling\n\n`<editable-table>` provides the following custom properties and mixins\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--editable-table-font-size` | Main size for the  table. | unset;\n`--editable-table-secondary-font-size` | Smaller font size for the table for minor UI elements. | 12px;\n`--editable-table-caption-font-size` | Font size for the table caption. | var(--editable-table-font-size);\n`--editable-table-font-family` | Main font-family for the table. | inherit;\n`--editable-table-secondary-font-family` | Secondary font-familt for the table's minor UI elements | \"Roboto\", \"Noto\", sans-serif;\n`--editable-table-light-weight` | The lightest table font-weight, for minor UI elements. | 200;\n`--editable-table-medium-weight` | The default table font-weight. | 300;\n`--editable-table-heavy-weight` | The heaviest table font-weight, for emphasis and table  caption. | 600;\n`--editable-table-color` | The table text color. | #222;\n`--editable-table-bg-color` | The table background color. | #fff;\n`--editable-table-caption-color` | The caption text color. | var(--editable-table-color);\n`--editable-table-caption-bg-color` | The caption background color. | #fff;\n`--editable-table-heading-color` | The row/column heading text color. | #000;\n`--editable-table-heading-bg-color` | The row/column heading background color. | #ddd;\n`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #eee;\n`--editable-table-border-width` | The border width for table. | 1px;\n`--editable-table-border-style` | The border style for table. | solid;\n`--editable-table-border-color` | The border color for table. | #999;\n`--editable-table-border` | The table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);\n`--editable-table-button-color` | The default text color of the toggle buttons. | var(--editable-table-border-color);\n`--editable-table-button-bg-color` | The default background color of the toggle buttons. | var(--editable-table-bg-color);\n`--editable-table-button-toggled-color` | The text color of the toggle buttons when toggled. | var(--editable-table-color);\n`--editable-table-button-toggled-bg-color` | The background color of the toggle buttons when toggled. | var(--editable-table-bg-color);\n`--editable-table-button-hover-color` | The text color of the toggle buttons when hovered or focused. | var(--editable-table-button-color);\n`--editable-table-button-hover-bg-color` | The background color of the toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-toggled-hover-color` | The text color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);\n`--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);\n`--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);\n`--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);\n`--editable-table-row-horizontal-padding` | Horizontal appding for cells. | 4px;\n`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 5px;\n`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;\n`--editable-table-row-padding` | Overall default padding for cells. | var(--editable-table-row-vertical-padding) var(--editable-table-row-horizontal-padding);\n`--editable-table-row-padding-condensed` | Overall condensed padding for cells. | var(--editable-table-row-vertical-padding-condensed)var(--editable-table-row-horizontal-padding);\n`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }\n`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }\n`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }\n`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }\n\nEvents:\n\n  * `toggle-edit-mode` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hide-bordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hide-condensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hide-display` {`boolean`} - Hide the table display menu group\n\n  * `hide-filter` {`boolean`} - Hide the filtering option.\n\n  * `hide-sort-filter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hide-sort` {`boolean`} - Hide the sorting option.\n\n  * `hide-responsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hide-striped` {`boolean`} - Hide the striped table styles menu option\n\nProperties:\n\n  * `editMode` {`boolean`} - Is the table in edit-mode? Default is false (display mode).\n\n  * `hideBordered` {`boolean`} - Hide the borders table styles menu option\n\n  * `hideCondensed` {`boolean`} - Hide the condensed table styles menu option\n\n  * `hideDisplay` {`boolean`} - Hide the table display menu group\n\n  * `hideFilter` {`boolean`} - Hide the filtering option.\n\n  * `hideSortFilter` {`boolean`} - Hide the table sorting & filtering menu group\n\n  * `hideSort` {`boolean`} - Hide the sorting option.\n\n  * `hideResponsive` {`boolean`} - Hide the responsive table styles menu option\n\n  * `hideStriped` {`boolean`} - Hide the striped table styles menu option\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "edit-mode",
@@ -528,7 +530,7 @@
         },
         {
           "name": "ontoggle-edit-mode",
-          "description": "`toggle-edit-mode` - "
+          "description": "`toggle-edit-mode` {`CustomEvent<this>`} - "
         }
       ]
     }

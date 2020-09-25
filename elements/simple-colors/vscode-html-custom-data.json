@@ -2,9 +2,44 @@
   "version": 1,
   "tags": [
     {
-      "name": "simple-colors",
-      "description": "`simple-colors`\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "name": "simple-colors-swatch-info",
+      "description": "`simple-colors-swatch-info`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nAttributes:\n\n  * `swatch-id` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatch-name` {`string`} - The swatch name (`color-shade`)\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `swatchId` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatchName` {`string`} - The swatch name (`color-shade`)\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
+        {
+          "name": "swatch-id",
+          "description": "`swatch-id` {`string`} - The id of the swatch (`color_index`)\n\nProperty: swatchId\n\nDefault: grey_0"
+        },
+        {
+          "name": "swatch-name",
+          "description": "`swatch-name` {`string`} - The swatch name (`color-shade`)\n\nProperty: swatchName\n\nDefault: grey-1"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        }
+      ]
+    },
+    {
+      "name": "simple-colors-swatches",
+      "description": "`simple-colors-swatches`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\n\n`<simple-colors-swatches>` provides the following custom properties and mixins\nfor styling. See demo of \"all of the colors\" (`demo/colors.html`) for color variable styling.\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-colors-swatch-contrast` | Modal title bar text color. | unset\n`--simple-colors-swatch-color` | Modal title bar background color. | unset\n\nAttributes:\n\n  * `swatch-id` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatch-name` {`string`} - The swatch name (`color-shade`)\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `swatchId` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatchName` {`string`} - The swatch name (`color-shade`)\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "attributes": [
+        {
+          "name": "swatch-id",
+          "description": "`swatch-id` {`string`} - The id of the swatch (`color_index`)\n\nProperty: swatchId\n\nDefault: grey_0"
+        },
+        {
+          "name": "swatch-name",
+          "description": "`swatch-name` {`string`} - The swatch name (`color-shade`)\n\nProperty: swatchName\n\nDefault: grey-1"
+        },
         {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
@@ -22,7 +57,7 @@
     },
     {
       "name": "simple-colors-picker",
-      "description": "`simple-colors-picker`\na select element for changing `simple-colors` attributes in demos\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nEvents:\n\n  * `value-changed` - \n\n  * `change` - \n\n  * `collapse` - \n\n  * `expand` - \n\n  * `option-focus` - \n\nAttributes:\n\n  * `aria-labelledby` {`string`} - Optional. Sets the aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Display as a block\n\n  * `disabled` {`boolean`} - Is the picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `label` {`string`} - Optional. The label for the picker input\n\n  * `shades` {`boolean`} - Show all shades instead of just main accent-colors\n\n  * `value` {`string`} - The value of the option.\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `ariaLabelledby` {`string`} - Optional. Sets the aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Display as a block\n\n  * `disabled` {`boolean`} - Is the picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `label` {`string`} - Optional. The label for the picker input\n\n  * `shades` {`boolean`} - Show all shades instead of just main accent-colors\n\n  * `value` {`string`} - The value of the option.\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "description": "`simple-colors-picker`\na select element for changing `simple-colors` attributes in demos\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\n  * `change` {`CustomEvent<this>`} - \n\n  * `collapse` {`CustomEvent<this>`} - \n\n  * `expand` {`CustomEvent<this>`} - \n\n  * `option-focus` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `aria-labelledby` {`string`} - Optional. Sets the aria-labelledby attribute\n\n  * `block-label` {`boolean`} - Display as a block\n\n  * `disabled` {`boolean`} - Is the picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `label` {`string`} - Optional. The label for the picker input\n\n  * `shades` {`boolean`} - Show all shades instead of just main accent-colors\n\n  * `value` {`string`} - The value of the option.\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `ariaLabelledby` {`string`} - Optional. Sets the aria-labelledby attribute\n\n  * `blockLabel` {`boolean`} - Display as a block\n\n  * `disabled` {`boolean`} - Is the picker disabled?\n\n  * `expanded` {`boolean`} - Is it expanded?\n\n  * `label` {`string`} - Optional. The label for the picker input\n\n  * `shades` {`boolean`} - Show all shades instead of just main accent-colors\n\n  * `value` {`string`} - The value of the option.\n\n  * `__ready` {`boolean`} - \n\n  * `options` {`any[]`} - An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "aria-labelledby",
@@ -80,83 +115,25 @@
         },
         {
           "name": "onvalue-changed",
-          "description": "`value-changed` - "
+          "description": "`value-changed` {`CustomEvent<this>`} - "
         },
         {
           "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<this>`} - "
         },
         {
           "name": "oncollapse",
-          "description": "`collapse` - "
+          "description": "`collapse` {`CustomEvent<this>`} - "
         },
         {
           "name": "onexpand",
-          "description": "`expand` - "
+          "description": "`expand` {`CustomEvent<this>`} - "
         },
         {
           "name": "onoption-focus",
-          "description": "`option-focus` - "
+          "description": "`option-focus` {`CustomEvent<this>`} - "
         }
       ]
-    },
-    {
-      "name": "simple-colors-swatch-info",
-      "description": "`simple-colors-swatch-info`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nAttributes:\n\n  * `swatch-id` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatch-name` {`string`} - The swatch name (`color-shade`)\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `swatchId` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatchName` {`string`} - The swatch name (`color-shade`)\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
-      "attributes": [
-        {
-          "name": "swatch-id",
-          "description": "`swatch-id` {`string`} - The id of the swatch (`color_index`)\n\nProperty: swatchId\n\nDefault: grey_0"
-        },
-        {
-          "name": "swatch-name",
-          "description": "`swatch-name` {`string`} - The swatch name (`color-shade`)\n\nProperty: swatchName\n\nDefault: grey-1"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        }
-      ]
-    },
-    {
-      "name": "simple-colors-swatches",
-      "description": "`simple-colors-swatches`\n`A tool to document of all the colors in simple-colors`\n\n### Styling\n\n`<simple-colors-swatches>` provides the following custom properties and mixins\nfor styling. See demo of \"all of the colors\" (`demo/colors.html`) for color variable styling.\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-colors-swatch-contrast` | Modal title bar text color. | unset\n`--simple-colors-swatch-color` | Modal title bar background color. | unset\n\nAttributes:\n\n  * `swatch-id` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatch-name` {`string`} - The swatch name (`color-shade`)\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `swatchId` {`string`} - The id of the swatch (`color_index`)\n\n  * `swatchName` {`string`} - The swatch name (`color-shade`)\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
-      "attributes": [
-        {
-          "name": "swatch-id",
-          "description": "`swatch-id` {`string`} - The id of the swatch (`color_index`)\n\nProperty: swatchId\n\nDefault: grey_0"
-        },
-        {
-          "name": "swatch-name",
-          "description": "`swatch-name` {`string`} - The swatch name (`color-shade`)\n\nProperty: swatchName\n\nDefault: grey-1"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "colors",
-          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
     },
     {
       "name": "simple-colors-polymer",
@@ -165,6 +142,25 @@
         {
           "name": "accent-color",
           "description": "`accent-color` {`string`} - a selected accent-color: grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        }
+      ]
+    },
+    {
+      "name": "simple-colors",
+      "description": "`simple-colors`\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
           "name": "dark",

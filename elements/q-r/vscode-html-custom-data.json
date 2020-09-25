@@ -2,6 +2,11 @@
   "version": 1,
   "tags": [
     {
+      "name": "qr-code",
+      "description": "Properties:\n\n  * `_defineProperty` - ",
+      "attributes": []
+    },
+    {
       "name": "q-r",
       "description": "`q-r`\n`Polymer wrapper for a qr code.`\n\nAttributes:\n\n  * `data` {`string`} - Data to code via QR code\n\n  * `title` {`string`} - Alternate title for the data\n\n  * `modulesize` {`number`} - module size of the square\n\n  * `margin` {`number`} - Margin on the square\n\n  * `format` {`string`} - format to output\n\nProperties:\n\n  * `data` {`string`} - Data to code via QR code\n\n  * `title` {`string`} - Alternate title for the data\n\n  * `modulesize` {`number`} - module size of the square\n\n  * `margin` {`number`} - Margin on the square\n\n  * `format` {`string`} - format to output",
       "attributes": [
@@ -26,15 +31,6 @@
           "description": "`format` {`string`} - format to output\n\nProperty: format\n\nDefault: png"
         }
       ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
-      "name": "qr-code",
-      "description": "Properties:\n\n  * `_defineProperty` - ",
-      "attributes": []
     },
     {
       "name": "q-r",

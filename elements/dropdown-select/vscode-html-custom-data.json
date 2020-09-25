@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "dropdown-select",
-      "description": "`dropdown-select`\nan easy to use, works as expected dropdown menu.\n\nEvents:\n\n  * `change` - \n\n  * `open` - \n\n  * `close` - \n\n  * `value-changed` - \n\n  * `dropdown-select-changed` - \n\nAttributes:\n\n  * `error-message` {`string`} - The error message to display when invalid.\n\n  * `selected-item` - The last selected item.\n\n  * `selected-item-index` {`number`} - The index of the selected item\n\n  * `selected-item-label` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperties:\n\n  * `errorMessage` {`string`} - The error message to display when invalid.\n\n  * `selectedItem` - The last selected item.\n\n  * `selectedItemIndex` {`number`} - The index of the selected item\n\n  * `selectedItemLabel` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `observer` - mutation observer for dropdown\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.",
+      "description": "`dropdown-select`\nan easy to use, works as expected dropdown menu.\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\n  * `open` {`CustomEvent<this>`} - \n\n  * `close` {`CustomEvent<this>`} - \n\n  * `value-changed` {`CustomEvent<{ value: string; oldValue: string; }>`} - \n\n  * `dropdown-select-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `error-message` {`string`} - The error message to display when invalid.\n\n  * `selected-item` - The last selected item.\n\n  * `selected-item-index` {`number`} - The index of the selected item\n\n  * `selected-item-label` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperties:\n\n  * `errorMessage` {`string`} - The error message to display when invalid.\n\n  * `selectedItem` - The last selected item.\n\n  * `selectedItemIndex` {`number`} - The index of the selected item\n\n  * `selectedItemLabel` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `observer` - mutation observer for dropdown\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.",
       "attributes": [
         {
           "name": "error-message",
@@ -40,55 +40,29 @@
         },
         {
           "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<this>`} - "
         },
         {
           "name": "onopen",
-          "description": "`open` - "
+          "description": "`open` {`CustomEvent<this>`} - "
         },
         {
           "name": "onclose",
-          "description": "`close` - "
+          "description": "`close` {`CustomEvent<this>`} - "
         },
         {
           "name": "onvalue-changed",
-          "description": "`value-changed` - "
+          "description": "`value-changed` {`CustomEvent<{ value: string; oldValue: string; }>`} - "
         },
         {
           "name": "ondropdown-select-changed",
-          "description": "`dropdown-select-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `change` - \n\n  * `open` - \n\n  * `close` - \n\n  * `value-changed` - \n\n  * `dropdown-select-changed` - ",
-      "attributes": [
-        {
-          "name": "onchange",
-          "description": "`change` - "
-        },
-        {
-          "name": "onopen",
-          "description": "`open` - "
-        },
-        {
-          "name": "onclose",
-          "description": "`close` - "
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` - "
-        },
-        {
-          "name": "ondropdown-select-changed",
-          "description": "`dropdown-select-changed` - "
+          "description": "`dropdown-select-changed` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "dropdown-select",
-      "description": "`dropdown-select`\nan easy to use, works as expected dropdown menu.\n\nEvents:\n\n  * `change` - \n\n  * `open` - \n\n  * `close` - \n\n  * `value-changed` - \n\n  * `dropdown-select-changed` - \n\nAttributes:\n\n  * `error-message` {`string`} - The error message to display when invalid.\n\n  * `selected-item` - The last selected item.\n\n  * `selected-item-index` {`number`} - The index of the selected item\n\n  * `selected-item-label` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperties:\n\n  * `errorMessage` {`string`} - The error message to display when invalid.\n\n  * `selectedItem` - The last selected item.\n\n  * `selectedItemIndex` {`number`} - The index of the selected item\n\n  * `selectedItemLabel` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `observer` - mutation observer for dropdown\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.",
+      "description": "`dropdown-select`\nan easy to use, works as expected dropdown menu.\n\nEvents:\n\n  * `change` {`CustomEvent<this>`} - \n\n  * `open` {`CustomEvent<this>`} - \n\n  * `close` {`CustomEvent<this>`} - \n\n  * `value-changed` {`CustomEvent<{ value: string; oldValue: string; }>`} - \n\n  * `dropdown-select-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `error-message` {`string`} - The error message to display when invalid.\n\n  * `selected-item` - The last selected item.\n\n  * `selected-item-index` {`number`} - The index of the selected item\n\n  * `selected-item-label` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.\n\nProperties:\n\n  * `errorMessage` {`string`} - The error message to display when invalid.\n\n  * `selectedItem` - The last selected item.\n\n  * `selectedItemIndex` {`number`} - The index of the selected item\n\n  * `selectedItemLabel` {`string`} - The label of the selected item\n\n  * `value` {`string`} - The default value\n\n  * `observer` - mutation observer for dropdown\n\n  * `label` {`string`} - The label of the select menu\n\n  * `options` {`any[]`} - Optional options array\n\n  * `opened` {`boolean`} - True if the dropdown is open. Otherwise, false.",
       "attributes": [
         {
           "name": "error-message",
@@ -125,23 +99,23 @@
         },
         {
           "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<this>`} - "
         },
         {
           "name": "onopen",
-          "description": "`open` - "
+          "description": "`open` {`CustomEvent<this>`} - "
         },
         {
           "name": "onclose",
-          "description": "`close` - "
+          "description": "`close` {`CustomEvent<this>`} - "
         },
         {
           "name": "onvalue-changed",
-          "description": "`value-changed` - "
+          "description": "`value-changed` {`CustomEvent<{ value: string; oldValue: string; }>`} - "
         },
         {
           "name": "ondropdown-select-changed",
-          "description": "`dropdown-select-changed` - "
+          "description": "`dropdown-select-changed` {`CustomEvent<this>`} - "
         }
       ]
     }

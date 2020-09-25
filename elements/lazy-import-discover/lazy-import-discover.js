@@ -67,7 +67,7 @@ class LazyImportDiscover extends HTMLElement {
   }
   attributeChangedCallback(attr, oldValue, newValue) {
     if (attr === "base" && newValue) {
-      console.log("base changed");
+      console.warn("base changed");
     }
   }
 }

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "oer-schema",
-      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oer-property` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oerProperty` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oer-property` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oerProperty` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "related-resource",
@@ -20,16 +20,20 @@
         {
           "name": "typeof",
           "description": "`typeof` {`string`} - Property value for this oer resource\n\nProperty: typeof\n\nDefault: Resource"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "oer-schema",
-      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oer-property` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oerProperty` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oer-property` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `text` {`string`} - Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.\n\n  * `oerProperty` {`string`} - Property value for this oer resource\n\n  * `typeof` {`string`} - Property value for this oer resource\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "related-resource",
@@ -46,6 +50,14 @@
         {
           "name": "typeof",
           "description": "`typeof` {`string`} - Property value for this oer resource\n\nProperty: typeof\n\nDefault: Resource"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

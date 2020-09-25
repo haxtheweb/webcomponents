@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "aframe-player",
-      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "source",
@@ -41,16 +41,20 @@
         {
           "name": "position",
           "description": "`position` - Generate a position object when coordinates change.\n\nProperty: position\n\nDefault: [object Object]"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "aframe-player",
-      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "source",
@@ -88,6 +92,14 @@
         {
           "name": "position",
           "description": "`position` - Generate a position object when coordinates change.\n\nProperty: position\n\nDefault: [object Object]"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

@@ -3,27 +3,95 @@
   "tags": [
     {
       "name": "example-haxcms-theme",
-      "description": "`example-haxcms-theme`\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\nProperties:\n\n  * `editMode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `activeManifestIndex` {`number`} - Current array index of the active page that's been loaded.\n\n  * `__disposer` {`never[]`} - ",
+      "description": "`example-haxcms-theme`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `activeManifestIndex` {`number`} - Current array index of the active page that's been loaded.\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\nProperty: editMode",
-          "valueSet": "v"
-        },
         {
           "name": "active-manifest-index",
           "description": "`active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\nProperty: activeManifestIndex"
+        },
+        {
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "content-container",
+          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "example-haxcms-theme",
-      "description": "`example-haxcms-theme`\n\nProperties:\n\n  * `__disposer` {`never[]`} - ",
-      "attributes": []
+      "description": "`example-haxcms-theme`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "content-container",
+          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        }
+      ]
     }
   ],
   "globalAttributes": [],

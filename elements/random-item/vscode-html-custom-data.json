@@ -16,10 +16,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "random-item",
       "description": "`random-item`\n\nAttributes:\n\n  * `source` {} - \n\n  * `field` {} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": [

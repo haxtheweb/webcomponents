@@ -3,6 +3,20 @@
   "tags": [
     {
       "name": "user-action",
+      "description": "`user-action`\n\nAttributes:\n\n  * `track` {} - \n\n  * `eventname` {} - \n\nProperties:\n\n  * `UserActionBroker` - \n\n  * `tag` {`string`} - ",
+      "attributes": [
+        {
+          "name": "track",
+          "description": "`track` {} - \n\n"
+        },
+        {
+          "name": "eventname",
+          "description": "`eventname` {} - \n\n"
+        }
+      ]
+    },
+    {
+      "name": "user-action",
       "description": "`user-action`\n\nAttributes:\n\n  * `every` {`boolean`} - \n\n  * `visiblelimit` {`number`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\nProperties:\n\n  * `every` {`boolean`} - \n\n  * `visiblelimit` {`number`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `UserActionBroker` - \n\n  * `tag` {`string`} - ",
       "attributes": [
         {
@@ -21,24 +35,6 @@
         {
           "name": "eventname",
           "description": "`eventname` {`string`} - \n\nProperty: eventname\n\nDefault: user-engagement"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
-      "name": "user-action",
-      "description": "`user-action`\n\nAttributes:\n\n  * `track` {} - \n\n  * `eventname` {} - \n\nProperties:\n\n  * `UserActionBroker` - \n\n  * `tag` {`string`} - ",
-      "attributes": [
-        {
-          "name": "track",
-          "description": "`track` {} - \n\n"
-        },
-        {
-          "name": "eventname",
-          "description": "`eventname` {} - \n\n"
         }
       ]
     }

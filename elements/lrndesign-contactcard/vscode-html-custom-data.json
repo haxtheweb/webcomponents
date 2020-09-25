@@ -40,10 +40,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrndesign-contactcard",
       "description": "`lrndesign-contactcard`\nlrndesign-contactcard\n\nAttributes:\n\n  * `image` {`string`} - A url to the image in question.\n\n  * `email` {`string`} - The email address of the user.\n\n  * `name` {`string`} - The name of the user.\n\n  * `position` {`string`} - The job-title / position of the user.\n\n  * `organization` {`string`} - The employer / organization of the user.\n\n  * `phone` {`string`} - The phone number of the user.\n\n  * `website` {`string`} - The associated website of the user.\n\n  * `twitter` {`string`} - Twitter account of the user.\n\nProperties:\n\n  * `image` {`string`} - A url to the image in question.\n\n  * `email` {`string`} - The email address of the user.\n\n  * `name` {`string`} - The name of the user.\n\n  * `position` {`string`} - The job-title / position of the user.\n\n  * `organization` {`string`} - The employer / organization of the user.\n\n  * `phone` {`string`} - The phone number of the user.\n\n  * `website` {`string`} - The associated website of the user.\n\n  * `twitter` {`string`} - Twitter account of the user.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [

@@ -24,10 +24,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "random-image",
       "description": "`random-image`\nElement to show random image from a given group.\n\nAttributes:\n\n  * `_imgSrc` {`string`} - \n\n  * `_imgTitle` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `images-list` {`any[]`} - \n\nProperties:\n\n  * `_imgSrc` {`string`} - \n\n  * `_imgTitle` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `imagesList` {`any[]`} - ",
       "attributes": [

@@ -24,10 +24,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrndesign-course-banner",
       "description": "`lrndesign-course-banner`\n\nAttributes:\n\n  * `color` {`string`} - Text representation of the color like red or blue\n\n  * `image` {`string`} - Banner image\n\n  * `name` {`string`} - Name of the course\n\n  * `title` {`string`} - Title of the course, longer description.\n\nProperties:\n\n  * `color` {`string`} - Text representation of the color like red or blue\n\n  * `image` {`string`} - Banner image\n\n  * `name` {`string`} - Name of the course\n\n  * `title` {`string`} - Title of the course, longer description.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [

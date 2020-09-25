@@ -21,10 +21,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

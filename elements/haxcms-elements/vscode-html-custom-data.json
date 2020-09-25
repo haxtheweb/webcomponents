@@ -2,18 +2,90 @@
   "version": 1,
   "tags": [
     {
+      "name": "haxcms-backend-beaker",
+      "description": "`haxcms-backend-beaker`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `haxcms-trigger-update-node` {`CustomEvent<boolean>`} - \n\n  * `haxcms-trigger-update` {`CustomEvent<boolean>`} - \n\n  * `json-outline-schema-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-not-logged-in` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `manifest` - Store manifest that makes up the site.\n\n  * `activeItem` - Track activeItem\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `manifest` - Store manifest that makes up the site.\n\n  * `activeItem` - Track activeItem\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt"
+        },
+        {
+          "name": "manifest",
+          "description": "`manifest` - Store manifest that makes up the site.\n\nProperty: manifest"
+        },
+        {
+          "name": "activeItem",
+          "description": "`activeItem` - Track activeItem\n\nProperty: activeItem"
+        },
+        {
+          "name": "onhaxcms-trigger-update-node",
+          "description": "`haxcms-trigger-update-node` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onhaxcms-trigger-update",
+          "description": "`haxcms-trigger-update` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onjson-outline-schema-changed",
+          "description": "`json-outline-schema-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onhaxcms-not-logged-in",
+          "description": "`haxcms-not-logged-in` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-demo",
+      "description": "`haxcms-backend-demo`\n`a simple element to check for and fetch JWTs`\n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt\n\nDefault: demo"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-nodejs",
+      "description": "`haxcms-backend-nodejs`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `haxcms-not-logged-in` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt"
+        },
+        {
+          "name": "onhaxcms-not-logged-in",
+          "description": "`haxcms-not-logged-in` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-php",
+      "description": "`haxcms-backend-php`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `haxcms-not-logged-in` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt"
+        },
+        {
+          "name": "onhaxcms-not-logged-in",
+          "description": "`haxcms-not-logged-in` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
       "name": "haxcms-editor-builder",
-      "description": "`haxcms-editor-builder`\nFigure out what our context is and setup based on that\n\nEvents:\n\n  * `haxcms-editor-builder-ready` - ",
+      "description": "`haxcms-editor-builder`\nFigure out what our context is and setup based on that\n\nEvents:\n\n  * `haxcms-editor-builder-ready` {`CustomEvent<this>`} - ",
       "attributes": [
         {
           "name": "onhaxcms-editor-builder-ready",
-          "description": "`haxcms-editor-builder-ready` - "
+          "description": "`haxcms-editor-builder-ready` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "haxcms-outline-editor-dialog",
-      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` - \n\n  * `manifest-edit-mode-changed` - \n\n  * `haxcms-save-outline` - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display",
+      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`\n\nEvents:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-outline` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifest-items-static` {`string`} - Stringify'ed representation of items\n\n  * `view-label` {`string`} - Display label, switch when hitting the toggle button\n\n  * `view-mode` {`boolean`} - Which edit mode to display\n\nProperties:\n\n  * `opened` {`boolean`} - opened state of the dialog inside here\n\n  * `manifestItems` {`any[]`} - Outline of items in json outline schema format\n\n  * `manifestItemsStatic` {`string`} - Stringify'ed representation of items\n\n  * `viewLabel` {`string`} - Display label, switch when hitting the toggle button\n\n  * `__disposer` {`never[]`} - \n\n  * `viewMode` {`boolean`} - Which edit mode to display",
       "attributes": [
         {
           "name": "opened",
@@ -39,45 +111,21 @@
         },
         {
           "name": "onopened-changed",
-          "description": "`opened-changed` - "
+          "description": "`opened-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onmanifest-edit-mode-changed",
-          "description": "`manifest-edit-mode-changed` - "
+          "description": "`manifest-edit-mode-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-save-outline",
-          "description": "`haxcms-save-outline` - "
+          "description": "`haxcms-save-outline` {`CustomEvent<any>`} - "
         }
       ]
-    },
-    {
-      "name": "haxcms-site-store",
-      "description": "HTMLElement\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\n  * `haxcms-edit-mode-changed` - \n\nAttributes:\n\n  * `source` {`string | null`} - \n\nProperties:\n\n  * `storePieces` - \n\n  * `store` - \n\n  * `source` {`string | null`} - ",
-      "attributes": [
-        {
-          "name": "source",
-          "description": "`source` {`string | null`} - \n\nProperty: source\n\nDefault: ",
-          "values": []
-        },
-        {
-          "name": "onjson-outline-schema-active-item-changed",
-          "description": "`json-outline-schema-active-item-changed` - "
-        },
-        {
-          "name": "onhaxcms-edit-mode-changed",
-          "description": "`haxcms-edit-mode-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "haxcms-site-router",
-      "description": "`haxcms-site-router`\n`front-end router for haxcms`\n\nProperties:\n\n  * `baseURI` {`string | null`} - \n\n  * `router` - \n\n  * `__disposer` - Subscribe to changes in the manifest",
-      "attributes": []
     },
     {
       "name": "haxcms-site-builder",
-      "description": "`haxcms-site-builder`\n`build the site and everything off of this`\n\nEvents:\n\n  * `outline-location-changed` - \n\n  * `manifest-changed` - \n\n  * `active-item-changed` - \n\n  * `active-item-content-changed` - \n\n  * `simple-toast-show` - \n\n  * `haxcms-ready` - \n\n  * `json-outline-schema-active-body-changed` - \n\nAttributes:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `base-uri` {`string`} - Injected by HAXcms\n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `theme-loaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outline-location` {`string`} - support for alternate locations.\n\n  * `active-item-location` {`string`} - \n\nProperties:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `baseURI` {`string`} - Injected by HAXcms\n\n  * `__disposer` {`never[]`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `themeLoaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outlineLocation` {`string`} - support for alternate locations.\n\n  * `activeItemLocation` {`string`} - ",
+      "description": "`haxcms-site-builder`\n`build the site and everything off of this`\n\nEvents:\n\n  * `outline-location-changed` {`CustomEvent<any>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `active-item-changed` {`CustomEvent<any>`} - \n\n  * `active-item-content-changed` {`CustomEvent<any>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; }>`} - \n\n  * `haxcms-ready` {`CustomEvent<this>`} - \n\n  * `json-outline-schema-active-body-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `base-uri` {`string`} - Injected by HAXcms\n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `theme-loaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outline-location` {`string`} - support for alternate locations.\n\n  * `active-item-location` {`string`} - \n\nProperties:\n\n  * `_timeStamp` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `manifest` - Manifest from file\n\n  * `themeData` - Theme, used to boot a design element\n\n  * `themeName` {`string`} - Theme name, which we then use to setup the theme\n\n  * `activeItem` - Active item which is in JSON Outline Schema\n\n  * `activeItemContent` {`string`} - Active item content\n\n  * `file` {`string`} - Location of the site.json file\n\n  * `baseURI` {`string`} - Injected by HAXcms\n\n  * `__disposer` {`never[]`} - \n\n  * `queryParams` - queryParams\n\n  * `loading` {`boolean`} - Loading status of the page to render.\n\n  * `__imported` - Imported items so we can allow theme flipping dynamically\n\n  * `themeLoaded` {`boolean`} - theme loaded to indicate to the theme we have a theme ready to go\n\n  * `outlineLocation` {`string`} - support for alternate locations.\n\n  * `activeItemLocation` {`string`} - ",
       "attributes": [
         {
           "name": "_timeStamp",
@@ -144,37 +192,37 @@
         },
         {
           "name": "onoutline-location-changed",
-          "description": "`outline-location-changed` - "
+          "description": "`outline-location-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onmanifest-changed",
-          "description": "`manifest-changed` - "
+          "description": "`manifest-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onactive-item-changed",
-          "description": "`active-item-changed` - "
+          "description": "`active-item-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onactive-item-content-changed",
-          "description": "`active-item-content-changed` - "
+          "description": "`active-item-content-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; }>`} - "
         },
         {
           "name": "onhaxcms-ready",
-          "description": "`haxcms-ready` - "
+          "description": "`haxcms-ready` {`CustomEvent<this>`} - "
         },
         {
           "name": "onjson-outline-schema-active-body-changed",
-          "description": "`json-outline-schema-active-body-changed` - "
+          "description": "`json-outline-schema-active-body-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "haxcms-site-dashboard",
-      "description": "`haxcms-site-dashboard`\n`Off screen dashboard for modifying internal settings to the site`\n\nEvents:\n\n  * `haxcms-save-site-data` - \n\n  * `haxcms-load-site-dashboard` - \n\nAttributes:\n\n  * `dashboard-opened` {`boolean`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `backText` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `manifest` - Outline of items in json outline schema format\n\nProperties:\n\n  * `dashboardOpened` {`boolean`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `backText` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `__disposer` {`never[]`} - ",
+      "description": "`haxcms-site-dashboard`\n`Off screen dashboard for modifying internal settings to the site`\n\nEvents:\n\n  * `haxcms-save-site-data` {`CustomEvent<any>`} - \n\n  * `haxcms-load-site-dashboard` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `dashboard-opened` {`boolean`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `backText` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `manifest` - Outline of items in json outline schema format\n\nProperties:\n\n  * `dashboardOpened` {`boolean`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `backText` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `__disposer` {`never[]`} - ",
       "attributes": [
         {
           "name": "dashboard-opened",
@@ -208,17 +256,17 @@
         },
         {
           "name": "onhaxcms-save-site-data",
-          "description": "`haxcms-save-site-data` - "
+          "description": "`haxcms-save-site-data` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-load-site-dashboard",
-          "description": "`haxcms-load-site-dashboard` - "
+          "description": "`haxcms-load-site-dashboard` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "haxcms-site-editor-ui",
-      "description": "`haxcms-site-editor-ui`\n`haxcms editor element buttons that you see`\n\nEvents:\n\n  * `haxcms-load-user-data` - \n\n  * `hax-add-voice-command` - \n\n  * `edit-mode-changed` - \n\n  * `manifest-edit-mode-changed` - \n\n  * `haxcms-save-node` - \n\n  * `simple-modal-hide` - \n\n  * `haxcms-load-node-fields` - \n\n  * `hax-cancel` - \n\n  * `simple-modal-show` - \n\n  * `haxcms-create-node` - \n\n  * `haxcms-save-node-details` - \n\n  * `haxcms-delete-node` - \n\n  * `haxcms-load-site-dashboard` - \n\n  * `haxcms-outline-edit-mode-changed` - \n\n  * `haxcms-manifest-edit-mode-changed` - \n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editIcon` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `active-title` {`string`} - \n\n  * `manifest` - \n\n  * `icon` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `page-allowed` {`boolean`} - page allowed\n\n  * `edit-mode` {`boolean`} - if the page is in an edit state or not\n\n  * `manifest-edit-mode` {`boolean`} - Manifest editing state\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editIcon` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `manifest` - \n\n  * `icon` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `pageAllowed` {`boolean`} - page allowed\n\n  * `editMode` {`boolean`} - if the page is in an edit state or not\n\n  * `manifestEditMode` {`boolean`} - Manifest editing state",
+      "description": "`haxcms-site-editor-ui`\n`haxcms editor element buttons that you see`\n\nEvents:\n\n  * `haxcms-load-user-data` {`CustomEvent<boolean>`} - \n\n  * `hax-add-voice-command` {`CustomEvent<{ command: string; context: Element; callback: string; }>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-save-node` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `haxcms-load-node-fields` {`CustomEvent<any>`} - \n\n  * `hax-cancel` {`CustomEvent<any>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; }; elements: { content: HTMLElement; buttons: HTMLSpanElement; }; invokedBy: Element | null; clone: boolean; modal: boolean; }>`} - \n\n  * `haxcms-create-node` {`CustomEvent<{ values: any; }>`} - \n\n  * `haxcms-save-node-details` {`CustomEvent<any>`} - \n\n  * `haxcms-delete-node` {`CustomEvent<{ item: any; }>`} - \n\n  * `haxcms-load-site-dashboard` {`CustomEvent<any>`} - \n\n  * `haxcms-outline-edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-manifest-edit-mode-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `user-name` {`string`} - \n\n  * `user-picture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editIcon` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `active-title` {`string`} - \n\n  * `manifest` - \n\n  * `icon` {`string`} - \n\n  * `dashboard-opened` {`boolean`} - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `page-allowed` {`boolean`} - page allowed\n\n  * `edit-mode` {`boolean`} - if the page is in an edit state or not\n\n  * `manifest-edit-mode` {`boolean`} - Manifest editing state\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `userPicture` {`string`} - \n\n  * `backLink` {`string`} - \n\n  * `__editIcon` {`string`} - \n\n  * `__editText` {`string`} - \n\n  * `__settingsText` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `manifest` - \n\n  * `icon` {`string`} - \n\n  * `dashboardOpened` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `backText` {`string`} - \n\n  * `painting` {`boolean`} - small visual lock that events break on initial paint\n\n  * `pageAllowed` {`boolean`} - page allowed\n\n  * `editMode` {`boolean`} - if the page is in an edit state or not\n\n  * `manifestEditMode` {`boolean`} - Manifest editing state",
       "attributes": [
         {
           "name": "user-name",
@@ -287,69 +335,69 @@
         },
         {
           "name": "onhaxcms-load-user-data",
-          "description": "`haxcms-load-user-data` - "
+          "description": "`haxcms-load-user-data` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onhax-add-voice-command",
-          "description": "`hax-add-voice-command` - "
+          "description": "`hax-add-voice-command` {`CustomEvent<{ command: string; context: Element; callback: string; }>`} - "
         },
         {
           "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` - "
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onmanifest-edit-mode-changed",
-          "description": "`manifest-edit-mode-changed` - "
+          "description": "`manifest-edit-mode-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-save-node",
-          "description": "`haxcms-save-node` - "
+          "description": "`haxcms-save-node` {`CustomEvent<any>`} - "
         },
         {
           "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` - "
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         },
         {
           "name": "onhaxcms-load-node-fields",
-          "description": "`haxcms-load-node-fields` - "
+          "description": "`haxcms-load-node-fields` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhax-cancel",
-          "description": "`hax-cancel` - "
+          "description": "`hax-cancel` {`CustomEvent<any>`} - "
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; }; elements: { content: HTMLElement; buttons: HTMLSpanElement; }; invokedBy: Element | null; clone: boolean; modal: boolean; }>`} - "
         },
         {
           "name": "onhaxcms-create-node",
-          "description": "`haxcms-create-node` - "
+          "description": "`haxcms-create-node` {`CustomEvent<{ values: any; }>`} - "
         },
         {
           "name": "onhaxcms-save-node-details",
-          "description": "`haxcms-save-node-details` - "
+          "description": "`haxcms-save-node-details` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-delete-node",
-          "description": "`haxcms-delete-node` - "
+          "description": "`haxcms-delete-node` {`CustomEvent<{ item: any; }>`} - "
         },
         {
           "name": "onhaxcms-load-site-dashboard",
-          "description": "`haxcms-load-site-dashboard` - "
+          "description": "`haxcms-load-site-dashboard` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-outline-edit-mode-changed",
-          "description": "`haxcms-outline-edit-mode-changed` - "
+          "description": "`haxcms-outline-edit-mode-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-manifest-edit-mode-changed",
-          "description": "`haxcms-manifest-edit-mode-changed` - "
+          "description": "`haxcms-manifest-edit-mode-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "haxcms-site-editor",
-      "description": "`haxcms-site-editor`\n`haxcms editor element that provides all editing capabilities`\n\nEvents:\n\n  * `jwt-login-logout` - \n\n  * `jwt-login-refresh-token` - \n\n  * `simple-toast-show` - \n\n  * `haxcms-site-editor-loaded` - \n\n  * `manifest-changed` - \n\n  * `simple-modal-show` - \n\n  * `haxcms-save-node-details` - \n\n  * `simple-modal-hide` - \n\n  * `haxcms-save-site-data` - \n\n  * `haxcms-trigger-update` - \n\n  * `json-outline-schema-active-item-changed` - \n\n  * `haxcms-trigger-update-node` - \n\nAttributes:\n\n  * `get-user-data-path` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `save-node-path` {`string`} - end point for saving nodes\n\n  * `create-node-path` {`string`} - end point for create new nodes\n\n  * `delete-node-path` {`string`} - end point for delete nodes\n\n  * `save-manifest-path` {`string`} - end point for saving manifest\n\n  * `publish-site-path` {`string`} - end point for publishing\n\n  * `revert-site-path` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `sync-site-path` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `save-outline-path` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `get-node-fields-path` {`string`} - \n\n  * `save-site-fields-path` {`string`} - \n\n  * `get-form-token` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `edit-mode` {`boolean`} - if the node is in an edit state or not\n\nProperties:\n\n  * `getUserDataPath` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `saveNodePath` {`string`} - end point for saving nodes\n\n  * `createNodePath` {`string`} - end point for create new nodes\n\n  * `deleteNodePath` {`string`} - end point for delete nodes\n\n  * `saveManifestPath` {`string`} - end point for saving manifest\n\n  * `publishSitePath` {`string`} - end point for publishing\n\n  * `revertSitePath` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `syncSitePath` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `saveOutlinePath` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `getNodeFieldsPath` {`string`} - \n\n  * `getSiteFieldsPath` {`string`} - \n\n  * `getFormToken` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `__disposer` {`never[]`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `editMode` {`boolean`} - if the node is in an edit state or not",
+      "description": "`haxcms-site-editor`\n`haxcms editor element that provides all editing capabilities`\n\nEvents:\n\n  * `jwt-login-logout` {`CustomEvent<{ redirect: boolean; }>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; }>`} - \n\n  * `haxcms-site-editor-loaded` {`CustomEvent<boolean>`} - \n\n  * `manifest-changed` {`CustomEvent<any>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; }; elements: { content: HTMLElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - \n\n  * `haxcms-save-node-details` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\n  * `haxcms-save-site-data` {`CustomEvent<any>`} - \n\n  * `haxcms-trigger-update` {`CustomEvent<boolean>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-trigger-update-node` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `get-user-data-path` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `save-node-path` {`string`} - end point for saving nodes\n\n  * `create-node-path` {`string`} - end point for create new nodes\n\n  * `delete-node-path` {`string`} - end point for delete nodes\n\n  * `save-manifest-path` {`string`} - end point for saving manifest\n\n  * `publish-site-path` {`string`} - end point for publishing\n\n  * `revert-site-path` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `sync-site-path` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `save-outline-path` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `get-node-fields-path` {`string`} - \n\n  * `save-site-fields-path` {`string`} - \n\n  * `get-form-token` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `edit-mode` {`boolean`} - if the node is in an edit state or not\n\nProperties:\n\n  * `getUserDataPath` {`string`} - \n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `saveNodePath` {`string`} - end point for saving nodes\n\n  * `createNodePath` {`string`} - end point for create new nodes\n\n  * `deleteNodePath` {`string`} - end point for delete nodes\n\n  * `saveManifestPath` {`string`} - end point for saving manifest\n\n  * `publishSitePath` {`string`} - end point for publishing\n\n  * `revertSitePath` {`string`} - end point for revert\n\n  * `appendTarget` - \n\n  * `appElement` - \n\n  * `syncSitePath` {`string`} - end point for sync\n\n  * `publishing` {`boolean`} - Publishing end point, this has CDN implications so show message\n\n  * `saveOutlinePath` {`string`} - end point for saving outline\n\n  * `appStore` - appStore object from backend\n\n  * `activeItem` - Active item of the node being worked on, JSON outline schema item format\n\n  * `manifest` - Outline of items in json outline schema format\n\n  * `getNodeFieldsPath` {`string`} - \n\n  * `getSiteFieldsPath` {`string`} - \n\n  * `getFormToken` {`string`} - \n\n  * `siteDashboard` - Site dashboard element reference\n\n  * `__disposer` {`never[]`} - \n\n  * `method` {`string`} - Allow method to be overridden, useful in local testing\n\n  * `editMode` {`boolean`} - if the node is in an edit state or not",
       "attributes": [
         {
           "name": "get-user-data-path",
@@ -443,201 +491,85 @@
         },
         {
           "name": "onjwt-login-logout",
-          "description": "`jwt-login-logout` - "
+          "description": "`jwt-login-logout` {`CustomEvent<{ redirect: boolean; }>`} - "
         },
         {
           "name": "onjwt-login-refresh-token",
-          "description": "`jwt-login-refresh-token` - "
+          "description": "`jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - "
         },
         {
           "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; }>`} - "
         },
         {
           "name": "onhaxcms-site-editor-loaded",
-          "description": "`haxcms-site-editor-loaded` - "
+          "description": "`haxcms-site-editor-loaded` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onmanifest-changed",
-          "description": "`manifest-changed` - "
+          "description": "`manifest-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; }; elements: { content: HTMLElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; modal: boolean; }>`} - "
         },
         {
           "name": "onhaxcms-save-node-details",
-          "description": "`haxcms-save-node-details` - "
+          "description": "`haxcms-save-node-details` {`CustomEvent<any>`} - "
         },
         {
           "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` - "
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         },
         {
           "name": "onhaxcms-save-site-data",
-          "description": "`haxcms-save-site-data` - "
+          "description": "`haxcms-save-site-data` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-trigger-update",
-          "description": "`haxcms-trigger-update` - "
+          "description": "`haxcms-trigger-update` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
         },
         {
           "name": "onjson-outline-schema-active-item-changed",
-          "description": "`json-outline-schema-active-item-changed` - "
+          "description": "`json-outline-schema-active-item-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onhaxcms-trigger-update-node",
-          "description": "`haxcms-trigger-update-node` - "
+          "description": "`haxcms-trigger-update-node` {`CustomEvent<boolean>`} - "
         }
       ]
     },
     {
-      "name": "haxcms-dev-theme",
-      "description": "`haxcms-dev-theme`\n`A theme intended as the starting point to fork from and build new themes for HAXCMS\n  which allows you to build things that just work using JSON Outline Schema as it's \"backend\"\nand then IF hax is around it'll show up :)`\n\nEvents:\n\n  * `haxcms-active-item-changed` - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "content-container",
-          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` - "
-        }
-      ]
+      "name": "haxcms-site-router",
+      "description": "`haxcms-site-router`\n`front-end router for haxcms`\n\nProperties:\n\n  * `baseURI` {`string | null`} - \n\n  * `router` - \n\n  * `__disposer` - Subscribe to changes in the manifest",
+      "attributes": []
     },
     {
-      "name": "haxcms-theme-developer",
-      "description": "`haxcms-dev-theme`\n`This is a theme used to make new themes (wwaaaaaaa?)\n\nEvents:\n\n  * `haxcms-active-item-changed` - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `HAXWiring` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "name": "haxcms-site-store",
+      "description": "HTMLElement\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-edit-mode-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `source` {`string | null`} - \n\nProperties:\n\n  * `storePieces` - \n\n  * `store` - \n\n  * `source` {`string | null`} - ",
       "attributes": [
         {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+          "name": "source",
+          "description": "`source` {`string | null`} - \n\nProperty: source\n\nDefault: ",
+          "values": []
         },
         {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` {`CustomEvent<any>`} - "
         },
         {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "content-container",
-          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "haxcms-backend-beaker",
-      "description": "`haxcms-backend-beaker`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `haxcms-trigger-update-node` - \n\n  * `haxcms-trigger-update` - \n\n  * `json-outline-schema-changed` - \n\n  * `haxcms-not-logged-in` - \n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `manifest` - Store manifest that makes up the site.\n\n  * `activeItem` - Track activeItem\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `manifest` - Store manifest that makes up the site.\n\n  * `activeItem` - Track activeItem\n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "jwt",
-          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt"
-        },
-        {
-          "name": "manifest",
-          "description": "`manifest` - Store manifest that makes up the site.\n\nProperty: manifest"
-        },
-        {
-          "name": "activeItem",
-          "description": "`activeItem` - Track activeItem\n\nProperty: activeItem"
-        },
-        {
-          "name": "onhaxcms-trigger-update-node",
-          "description": "`haxcms-trigger-update-node` - "
-        },
-        {
-          "name": "onhaxcms-trigger-update",
-          "description": "`haxcms-trigger-update` - "
-        },
-        {
-          "name": "onjson-outline-schema-changed",
-          "description": "`json-outline-schema-changed` - "
-        },
-        {
-          "name": "onhaxcms-not-logged-in",
-          "description": "`haxcms-not-logged-in` - "
-        }
-      ]
-    },
-    {
-      "name": "haxcms-backend-demo",
-      "description": "`haxcms-backend-demo`\n`a simple element to check for and fetch JWTs`\n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "jwt",
-          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt\n\nDefault: demo"
-        }
-      ]
-    },
-    {
-      "name": "haxcms-backend-nodejs",
-      "description": "`haxcms-backend-nodejs`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `haxcms-not-logged-in` - \n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "jwt",
-          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt"
-        },
-        {
-          "name": "onhaxcms-not-logged-in",
-          "description": "`haxcms-not-logged-in` - "
-        }
-      ]
-    },
-    {
-      "name": "haxcms-backend-php",
-      "description": "`haxcms-backend-php`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `haxcms-not-logged-in` - \n\nAttributes:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperties:\n\n  * `jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "jwt",
-          "description": "`jwt` {`string`} - JSON Web token, it'll come from a global call if it's available\n\nProperty: jwt"
-        },
-        {
-          "name": "onhaxcms-not-logged-in",
-          "description": "`haxcms-not-logged-in` - "
+          "name": "onhaxcms-edit-mode-changed",
+          "description": "`haxcms-edit-mode-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "haxcms-site-listing",
-      "description": "`haxcms-site-listing`\n`A listing of all sites being managed by this instance.`\n\nEvents:\n\n  * `simple-toast-show` - \n\n  * `jwt-login-logout` - \n\n  * `jwt-login-login` - \n\n  * `sites-listing-refresh-data` - \n\n  * `jwt-login-refresh-token` - \n\nAttributes:\n\n  * `__loading` {`boolean`} - \n\n  * `sites-response` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `base-path` {`string`} - Base path of where this is located.\n\n  * `hide-login` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hide-global-settings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `data-source` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `user-data` - \n\n  * `create-params` - Request params for creating a new site\n\n  * `download-params` - \n\n  * `delete-params` - \n\n  * `clone-params` - \n\n  * `publish-params` - \n\n  * `sync-params` - \n\n  * `archive-params` - \n\n  * `config-params` - \n\n  * `set-config-params` - \n\n  * `get-user-data-params` - \n\n  * `active-opertion` {`string`} - \n\n  * `selected-items` {`any[]`} - \n\n  * `active-item` - Active item that's being reviewed / has bubbled up.\n\n  * `logged-in` {`boolean`} - Logged in state\n\n  * `edit-mode` {`boolean`} - Edit mode\n\n  * `hide-camera` {`boolean`} - \n\n  * `logout-photo` {`string`} - \n\n  * `-hax-schematizer` - \n\n  * `-hax-elementizer` - \n\nProperties:\n\n  * `__loading` {`boolean`} - \n\n  * `sitesResponse` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `basePath` {`string`} - Base path of where this is located.\n\n  * `hideLogin` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hideGlobalSettings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `dataSource` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `userData` - \n\n  * `createParams` - Request params for creating a new site\n\n  * `downloadParams` - \n\n  * `deleteParams` - \n\n  * `cloneParams` - \n\n  * `publishParams` - \n\n  * `syncParams` - \n\n  * `archiveParams` - \n\n  * `configParams` - \n\n  * `setConfigParams` - \n\n  * `getUserDataParams` - \n\n  * `activeOpertion` {`string`} - \n\n  * `selectedItems` {`any[]`} - \n\n  * `activeItem` - Active item that's being reviewed / has bubbled up.\n\n  * `loggedIn` {`boolean`} - Logged in state\n\n  * `editMode` {`boolean`} - Edit mode\n\n  * `hideCamera` {`boolean`} - \n\n  * `logoutPhoto` {`string`} - \n\n  * `SimpleColors` - \n\n  * `HaxSchematizer` - \n\n  * `HaxElementizer` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`haxcms-site-listing`\n`A listing of all sites being managed by this instance.`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `jwt-login-logout` {`CustomEvent<{}>`} - \n\n  * `jwt-login-login` {`CustomEvent<any>`} - \n\n  * `sites-listing-refresh-data` {`CustomEvent<boolean>`} - \n\n  * `jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - \n\nAttributes:\n\n  * `__loading` {`boolean`} - \n\n  * `sites-response` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `base-path` {`string`} - Base path of where this is located.\n\n  * `hide-login` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hide-global-settings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `data-source` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `user-data` - \n\n  * `create-params` - Request params for creating a new site\n\n  * `download-params` - \n\n  * `delete-params` - \n\n  * `clone-params` - \n\n  * `publish-params` - \n\n  * `sync-params` - \n\n  * `archive-params` - \n\n  * `config-params` - \n\n  * `set-config-params` - \n\n  * `get-user-data-params` - \n\n  * `active-opertion` {`string`} - \n\n  * `selected-items` {`any[]`} - \n\n  * `active-item` - Active item that's being reviewed / has bubbled up.\n\n  * `logged-in` {`boolean`} - Logged in state\n\n  * `edit-mode` {`boolean`} - Edit mode\n\n  * `hide-camera` {`boolean`} - \n\n  * `logout-photo` {`string`} - \n\n  * `-hax-schematizer` - \n\n  * `-hax-elementizer` - \n\nProperties:\n\n  * `__loading` {`boolean`} - \n\n  * `sitesResponse` - Object, JSON Outline Schema format\n\n  * `method` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `sites` {`any[]`} - \n\n  * `basePath` {`string`} - Base path of where this is located.\n\n  * `hideLogin` {`boolean`} - If we should hide the login button all the time or not\n\n  * `hideGlobalSettings` {`boolean`} - If we should hide the login button all the time or not\n\n  * `dataSource` {`string`} - Data Source to power the loading of sites in JSON Outline Schema format.\n\n  * `jwt` {`string`} - JSON Web token\n\n  * `userData` - \n\n  * `createParams` - Request params for creating a new site\n\n  * `downloadParams` - \n\n  * `deleteParams` - \n\n  * `cloneParams` - \n\n  * `publishParams` - \n\n  * `syncParams` - \n\n  * `archiveParams` - \n\n  * `configParams` - \n\n  * `setConfigParams` - \n\n  * `getUserDataParams` - \n\n  * `activeOpertion` {`string`} - \n\n  * `selectedItems` {`any[]`} - \n\n  * `activeItem` - Active item that's being reviewed / has bubbled up.\n\n  * `loggedIn` {`boolean`} - Logged in state\n\n  * `editMode` {`boolean`} - Edit mode\n\n  * `hideCamera` {`boolean`} - \n\n  * `logoutPhoto` {`string`} - \n\n  * `SimpleColors` - \n\n  * `HaxSchematizer` - \n\n  * `HaxElementizer` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "__loading",
@@ -759,37 +691,37 @@
         },
         {
           "name": "-hax-schematizer",
-          "description": "`-hax-schematizer` - \n\nProperty: HaxSchematizer\n\nDefault: HaxSchematizer"
+          "description": "`-hax-schematizer` - \n\nProperty: HaxSchematizer\n\nDefault: [object Object]"
         },
         {
           "name": "-hax-elementizer",
-          "description": "`-hax-elementizer` - \n\nProperty: HaxElementizer\n\nDefault: HaxElementizer"
+          "description": "`-hax-elementizer` - \n\nProperty: HaxElementizer\n\nDefault: [object Object]"
         },
         {
           "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
         },
         {
           "name": "onjwt-login-logout",
-          "description": "`jwt-login-logout` - "
+          "description": "`jwt-login-logout` {`CustomEvent<{}>`} - "
         },
         {
           "name": "onjwt-login-login",
-          "description": "`jwt-login-login` - "
+          "description": "`jwt-login-login` {`CustomEvent<any>`} - "
         },
         {
           "name": "onsites-listing-refresh-data",
-          "description": "`sites-listing-refresh-data` - "
+          "description": "`sites-listing-refresh-data` {`CustomEvent<boolean>`} - "
         },
         {
           "name": "onjwt-login-refresh-token",
-          "description": "`jwt-login-refresh-token` - "
+          "description": "`jwt-login-refresh-token` {`CustomEvent<{ element: { obj: this; callback: string; params: any[]; }; }>`} - "
         }
       ]
     },
     {
       "name": "haxcms-basic-theme",
-      "description": "`haxcms-basic-theme`\n`An incredibly basic theme. Great starting point for new site discussions.\n\nEvents:\n\n  * `haxcms-active-item-changed` - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`haxcms-basic-theme`\n`An incredibly basic theme. Great starting point for new site discussions.\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hex-color",
@@ -818,14 +750,22 @@
           "description": "`_location` - location as object\n\nProperty: _location"
         },
         {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
           "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` - "
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
         }
       ]
     },
     {
       "name": "haxcms-minimalist-theme",
-      "description": "`haxcms-minimalist-theme`\n`Minimalist design, just a whole page really.\n\nEvents:\n\n  * `haxcms-active-item-changed` - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`haxcms-minimalist-theme`\n`Minimalist design, just a whole page really.\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hex-color",
@@ -854,14 +794,22 @@
           "description": "`_location` - location as object\n\nProperty: _location"
         },
         {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
           "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` - "
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
         }
       ]
     },
     {
       "name": "haxcms-slide-theme",
-      "description": "`haxcms-slide-theme`\n`A simple slide playing theme`\n\nEvents:\n\n  * `content-container-changed` - \n\n  * `is-logged-in-changed` - \n\n  * `edit-mode-changed` - \n\n  * `haxcms-active-item-changed` - \n\nAttributes:\n\n  * `manifest-length` {`number`} - \n\n  * `active-manifest-index-counter` {`number`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\nProperties:\n\n  * `manifestLength` {`number`} - \n\n  * `activeManifestIndexCounter` {`number`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - ",
+      "description": "`haxcms-slide-theme`\n`A simple slide playing theme`\n\nEvents:\n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `manifest-length` {`number`} - \n\n  * `active-manifest-index-counter` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperties:\n\n  * `manifestLength` {`number`} - \n\n  * `activeManifestIndexCounter` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint",
       "attributes": [
         {
           "name": "manifest-length",
@@ -872,6 +820,19 @@
           "description": "`active-manifest-index-counter` {`number`} - \n\nProperty: activeManifestIndexCounter"
         },
         {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        },
+        {
           "name": "hex-color",
           "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
         },
@@ -880,8 +841,8 @@
           "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
         },
         {
-          "name": "content-container",
-          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
+          "name": "contentContainer",
+          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
         },
         {
           "name": "_location",
@@ -898,26 +859,66 @@
           "valueSet": "v"
         },
         {
+          "name": "responsive-width",
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "sm",
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+        },
+        {
+          "name": "md",
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+        },
+        {
+          "name": "lg",
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
+        },
+        {
+          "name": "xl",
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
           "name": "oncontent-container-changed",
-          "description": "`content-container-changed` - "
+          "description": "`content-container-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` - "
+          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
         },
         {
           "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` - "
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
         },
         {
           "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` - "
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "haxcms-user-theme",
-      "description": "`haxcms-custom-theme`\n`This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`\n\nEvents:\n\n  * `haxcms-custom-theme-template-ready` - \n\n  * `haxcms-active-item-changed` - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `__counter` {`number`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`haxcms-custom-theme`\n`This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`\n\nEvents:\n\n  * `haxcms-custom-theme-template-ready` {`CustomEvent<{ css: string; }>`} - \n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `__counter` {`number`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hex-color",
@@ -947,17 +948,113 @@
         },
         {
           "name": "onhaxcms-custom-theme-template-ready",
-          "description": "`haxcms-custom-theme-template-ready` - "
+          "description": "`haxcms-custom-theme-template-ready` {`CustomEvent<{ css: string; }>`} - "
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
         },
         {
           "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` - "
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        }
+      ]
+    },
+    {
+      "name": "haxcms-dev-theme",
+      "description": "`haxcms-dev-theme`\n`A theme intended as the starting point to fork from and build new themes for HAXCMS\n  which allows you to build things that just work using JSON Outline Schema as it's \"backend\"\nand then IF hax is around it'll show up :)`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "content-container",
+          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        }
+      ]
+    },
+    {
+      "name": "haxcms-theme-developer",
+      "description": "`haxcms-dev-theme`\n`This is a theme used to make new themes (wwaaaaaaa?)\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `HAXWiring` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "content-container",
+          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
         }
       ]
     },
     {
       "name": "site-active-fields",
-      "description": "`site-active-fields`\n`Title of the active page in the site`\n\nEvents:\n\n  * `fields-changed` - \n\nAttributes:\n\n  * `fields` - \n\nProperties:\n\n  * `fields` - ",
+      "description": "`site-active-fields`\n`Title of the active page in the site`\n\nEvents:\n\n  * `fields-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `fields` - \n\nProperties:\n\n  * `fields` - ",
       "attributes": [
         {
           "name": "fields",
@@ -965,7 +1062,7 @@
         },
         {
           "name": "onfields-changed",
-          "description": "`fields-changed` - "
+          "description": "`fields-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
@@ -1218,7 +1315,7 @@
     },
     {
       "name": "site-modal",
-      "description": "`site-modal`\n`A basic site dialog`\n\nEvents:\n\n  * `site-modal-click` - \n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `button-label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `position` {`string`} - ",
+      "description": "`site-modal`\n`A basic site dialog`\n\nEvents:\n\n  * `site-modal-click` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `button-label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `position` {`string`} - ",
       "attributes": [
         {
           "name": "disabled",
@@ -1243,13 +1340,13 @@
         },
         {
           "name": "onsite-modal-click",
-          "description": "`site-modal-click` - "
+          "description": "`site-modal-click` {`CustomEvent<{ value: boolean; }>`} - "
         }
       ]
     },
     {
       "name": "active-when-visible",
-      "description": "`active-when-visible`\n`Title of the site`\n\nEvents:\n\n  * `is-visible-changed` - \n\nAttributes:\n\n  * `item-id` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `visible-limit` {`number`} - \n\n  * `is-visible` {`boolean`} - \n\nProperties:\n\n  * `itemId` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - \n\n  * `isVisible` {`boolean`} - ",
+      "description": "`active-when-visible`\n`Title of the site`\n\nEvents:\n\n  * `is-visible-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `item-id` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `visible-limit` {`number`} - \n\n  * `is-visible` {`boolean`} - \n\nProperties:\n\n  * `itemId` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - \n\n  * `isVisible` {`boolean`} - ",
       "attributes": [
         {
           "name": "item-id",
@@ -1278,7 +1375,7 @@
         },
         {
           "name": "onis-visible-changed",
-          "description": "`is-visible-changed` - "
+          "description": "`is-visible-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
@@ -1366,12 +1463,48 @@
     },
     {
       "name": "site-menu-content",
-      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - ",
+      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` - \n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - ",
       "attributes": [
         {
           "name": "edit-mode",
           "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
           "valueSet": "v"
+        },
+        {
+          "name": "relationship",
+          "description": "`relationship` {`string`} - \n\nProperty: relationship\n\nDefault: null"
+        },
+        {
+          "name": "items",
+          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "is-empty",
+          "description": "`is-empty` {`boolean`} - \n\nProperty: isEmpty\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-if-empty",
+          "description": "`hide-if-empty` {`boolean`} - \n\nProperty: hideIfEmpty\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "contentContainer",
+          "description": "`contentContainer` - \n\nProperty: contentContainer\n\nDefault: null"
+        },
+        {
+          "name": "mobile",
+          "description": "`mobile` {`boolean`} - \n\nProperty: mobile\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hideSettings",
+          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Contents"
         }
       ]
     },
@@ -1469,7 +1602,7 @@
     },
     {
       "name": "site-query-menu-slice",
-      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_router-manifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
+      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_router-manifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
       "attributes": [
         {
           "name": "parent",
@@ -1507,7 +1640,7 @@
         },
         {
           "name": "onresult-changed",
-          "description": "`result-changed` - "
+          "description": "`result-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
@@ -1561,7 +1694,7 @@
     },
     {
       "name": "site-render-query",
-      "description": "`site-render-query`\n`Render a query result as an iron-list`\n\nEvents:\n\n  * `result-changed` - \n\nAttributes:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - \n\nProperties:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - ",
+      "description": "`site-render-query`\n`Render a query result as an iron-list`\n\nEvents:\n\n  * `result-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - \n\nProperties:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - ",
       "attributes": [
         {
           "name": "conditions",
@@ -1586,7 +1719,7 @@
         },
         {
           "name": "onresult-changed",
-          "description": "`result-changed` - "
+          "description": "`result-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
@@ -1660,7 +1793,7 @@
     },
     {
       "name": "site-search",
-      "description": "`site-search`\n`Searching HAXcms content using the auto-generated lunr search configuration`\n\nEvents:\n\n  * `search-item-selected` - \n\nAttributes:\n\n  * `data-source` {`string`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `show-path` {`boolean`} - \n\n  * `show-date` {`boolean`} - \n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `dataSource` {`string`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `showPath` {`boolean`} - \n\n  * `showDate` {`boolean`} - \n\n  * `__results` {`any[]`} - ",
+      "description": "`site-search`\n`Searching HAXcms content using the auto-generated lunr search configuration`\n\nEvents:\n\n  * `search-item-selected` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `data-source` {`string`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `show-path` {`boolean`} - \n\n  * `show-date` {`boolean`} - \n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `dataSource` {`string`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `search` {`string`} - \n\n  * `showPath` {`boolean`} - \n\n  * `showDate` {`boolean`} - \n\n  * `__results` {`any[]`} - ",
       "attributes": [
         {
           "name": "data-source",
@@ -1691,7 +1824,7 @@
         },
         {
           "name": "onsearch-item-selected",
-          "description": "`search-item-selected` - "
+          "description": "`search-item-selected` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },

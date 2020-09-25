@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "tab-list",
-      "description": "`tab-list`\n\nEvents:\n\n  * `tabs-changed` - \n\nAttributes:\n\n  * `tabs` {`any[]`} - List of tabs\n\nProperties:\n\n  * `tabs` {`any[]`} - List of tabs",
+      "description": "`tab-list`\n\nEvents:\n\n  * `tabs-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `tabs` {`any[]`} - List of tabs\n\nProperties:\n\n  * `tabs` {`any[]`} - List of tabs",
       "attributes": [
         {
           "name": "tabs",
@@ -11,23 +11,13 @@
         },
         {
           "name": "ontabs-changed",
-          "description": "`tabs-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `tabs-changed` - ",
-      "attributes": [
-        {
-          "name": "ontabs-changed",
-          "description": "`tabs-changed` - "
+          "description": "`tabs-changed` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "tab-list",
-      "description": "`tab-list`\n\nEvents:\n\n  * `tabs-changed` - \n\nAttributes:\n\n  * `tabs` {`any[]`} - List of tabs\n\nProperties:\n\n  * `tabs` {`any[]`} - List of tabs",
+      "description": "`tab-list`\n\nEvents:\n\n  * `tabs-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `tabs` {`any[]`} - List of tabs\n\nProperties:\n\n  * `tabs` {`any[]`} - List of tabs",
       "attributes": [
         {
           "name": "tabs",
@@ -35,7 +25,7 @@
         },
         {
           "name": "ontabs-changed",
-          "description": "`tabs-changed` - "
+          "description": "`tabs-changed` {`CustomEvent<any>`} - "
         }
       ]
     }

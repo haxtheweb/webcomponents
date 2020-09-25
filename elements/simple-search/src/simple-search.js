@@ -80,7 +80,6 @@ class SimpleSearch extends LitElement {
       selections = this.controls
         ? this.getRootNode().querySelectorAll(`#${this.controls}${selector}`)
         : null;
-    console.log(this.controls, selections, this.getRootNode());
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;

@@ -3,12 +3,35 @@
   "tags": [
     {
       "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `media-title` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnail-src` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `lang` {`string`} - Language of media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\nProperties:\n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `mediaTitle` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `lang` {`string`} - Language of media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\nProperty: accentColor"
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
         },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        }
+      ]
+    },
+    {
+      "name": "video-player",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `media-title` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnail-src` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `lang` {`string`} - Language of media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `mediaTitle` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `lang` {`string`} - Language of media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
+      "attributes": [
         {
           "name": "height",
           "description": "`height` {`string`} - Height of media player.\n\nProperty: height"
@@ -40,11 +63,6 @@
         {
           "name": "crossorigin",
           "description": "`crossorigin` {`string`} - Cross origin flag for transcripts to load\n\nProperty: crossorigin\n\nDefault: anonymous"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - Enables darker player.\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
         },
         {
           "name": "darkTranscript",
@@ -90,17 +108,29 @@
         {
           "name": "tracks",
           "description": "`tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\nProperty: tracks\n\nDefault: "
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - Enables darker player.\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
-      "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` {`any[]`} - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `crossorigin` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

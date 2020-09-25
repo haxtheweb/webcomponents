@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "wc-registry",
-      "path": "./wc-autoload.js",
+      "path": "./src/wc-autoload.js",
       "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
       "properties": [
         {
@@ -13,7 +13,7 @@
     },
     {
       "name": "wc-autoload",
-      "path": "./wc-autoload.js",
+      "path": "./src/wc-autoload.js",
       "description": "`wc-autoload`\n`automatically load new tags in the dom`",
       "properties": [
         {
@@ -32,12 +32,8 @@
       ]
     },
     {
-      "name": "tag",
-      "path": "./wc-autoload.umd.js"
-    },
-    {
       "name": "wc-registry",
-      "path": "./src/wc-autoload.js",
+      "path": "./wc-autoload.js",
       "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
       "properties": [
         {
@@ -47,7 +43,7 @@
     },
     {
       "name": "wc-autoload",
-      "path": "./src/wc-autoload.js",
+      "path": "./wc-autoload.js",
       "description": "`wc-autoload`\n`automatically load new tags in the dom`",
       "properties": [
         {

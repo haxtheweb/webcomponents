@@ -2,86 +2,8 @@
   "version": 1,
   "tags": [
     {
-      "name": "lrnsys-comment",
-      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.\n\nEvents:\n\n  * `comment-reply` - \n\n  * `comment-like` - \n\n  * `comment-delete-dialog` - \n\n  * `comment-editing` - \n\n  * `comment-save` - \n\nAttributes:\n\n  * `comment` - \n\n  * `display-name` {`string`} - \n\n  * `comment-new` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `comment` - \n\n  * `displayName` {`string`} - \n\n  * `commentNew` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "comment",
-          "description": "`comment` - \n\nProperty: comment"
-        },
-        {
-          "name": "display-name",
-          "description": "`display-name` {`string`} - \n\nProperty: displayName"
-        },
-        {
-          "name": "comment-new",
-          "description": "`comment-new` {`string`} - \n\nProperty: commentNew"
-        },
-        {
-          "name": "hover-class",
-          "description": "`hover-class` {`string`} - \n\nProperty: hoverClass"
-        },
-        {
-          "name": "editform",
-          "description": "`editform` {`boolean`} - \n\nProperty: editform",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
-        },
-        {
-          "name": "oncomment-reply",
-          "description": "`comment-reply` - "
-        },
-        {
-          "name": "oncomment-like",
-          "description": "`comment-like` - "
-        },
-        {
-          "name": "oncomment-delete-dialog",
-          "description": "`comment-delete-dialog` - "
-        },
-        {
-          "name": "oncomment-editing",
-          "description": "`comment-editing` - "
-        },
-        {
-          "name": "oncomment-save",
-          "description": "`comment-save` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `comment-reply` - \n\n  * `comment-like` - \n\n  * `comment-delete-dialog` - \n\n  * `comment-editing` - \n\n  * `comment-save` - ",
-      "attributes": [
-        {
-          "name": "oncomment-reply",
-          "description": "`comment-reply` - "
-        },
-        {
-          "name": "oncomment-like",
-          "description": "`comment-like` - "
-        },
-        {
-          "name": "oncomment-delete-dialog",
-          "description": "`comment-delete-dialog` - "
-        },
-        {
-          "name": "oncomment-editing",
-          "description": "`comment-editing` - "
-        },
-        {
-          "name": "oncomment-save",
-          "description": "`comment-save` - "
-        }
-      ]
-    },
-    {
       "name": "lrnsys-comment-list",
-      "description": "`lrnsys-comment-list`\n\nEvents:\n\n  * `simple-modal-show` - \n\n  * `simple-toast-show` - \n\nAttributes:\n\n  * `csrf-token` {`string`} - CSRF Token\n\n  * `ops-request-method` - Request methods\n\n  * `active-comment` - Comment currently in scope\n\n  * `new-comment` - New stub comment from backend.\n\n  * `comments` - An object containing all comments to render in the list\n\n  * `source-path` {`string`} - Source to pull the comments from\n\n  * `comment-ops-base` {`string`} - Base for ops calls\n\n  * `create-stub-url` {`string`} - Source to get stub comments from\n\n  * `req-url` {`string`} - Source for CRUD ops against individual comments.\n\nProperties:\n\n  * `csrfToken` {`string`} - CSRF Token\n\n  * `opsRequestMethod` - Request methods\n\n  * `activeComment` - Comment currently in scope\n\n  * `newComment` - New stub comment from backend.\n\n  * `comments` - An object containing all comments to render in the list\n\n  * `sourcePath` {`string`} - Source to pull the comments from\n\n  * `commentOpsBase` {`string`} - Base for ops calls\n\n  * `createStubUrl` {`string`} - Source to get stub comments from\n\n  * `reqUrl` {`string`} - Source for CRUD ops against individual comments.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnsys-comment-list`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLParagraphElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\nAttributes:\n\n  * `csrf-token` {`string`} - CSRF Token\n\n  * `ops-request-method` - Request methods\n\n  * `active-comment` - Comment currently in scope\n\n  * `new-comment` - New stub comment from backend.\n\n  * `comments` - An object containing all comments to render in the list\n\n  * `source-path` {`string`} - Source to pull the comments from\n\n  * `comment-ops-base` {`string`} - Base for ops calls\n\n  * `create-stub-url` {`string`} - Source to get stub comments from\n\n  * `req-url` {`string`} - Source for CRUD ops against individual comments.\n\nProperties:\n\n  * `csrfToken` {`string`} - CSRF Token\n\n  * `opsRequestMethod` - Request methods\n\n  * `activeComment` - Comment currently in scope\n\n  * `newComment` - New stub comment from backend.\n\n  * `comments` - An object containing all comments to render in the list\n\n  * `sourcePath` {`string`} - Source to pull the comments from\n\n  * `commentOpsBase` {`string`} - Base for ops calls\n\n  * `createStubUrl` {`string`} - Source to get stub comments from\n\n  * `reqUrl` {`string`} - Source for CRUD ops against individual comments.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "csrf-token",
@@ -121,17 +43,17 @@
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLParagraphElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
         }
       ]
     },
     {
       "name": "lrnsys-comment",
-      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.\n\nEvents:\n\n  * `comment-reply` - \n\n  * `comment-like` - \n\n  * `comment-delete-dialog` - \n\n  * `comment-editing` - \n\n  * `comment-save` - \n\nAttributes:\n\n  * `comment` - \n\n  * `display-name` {`string`} - \n\n  * `comment-new` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `comment` - \n\n  * `displayName` {`string`} - \n\n  * `commentNew` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.\n\nEvents:\n\n  * `comment-reply` {`CustomEvent<{ comment: any; target: any; }>`} - \n\n  * `comment-like` {`CustomEvent<{ comment: any; target: any; }>`} - \n\n  * `comment-delete-dialog` {`CustomEvent<{ comment: any; target: any; }>`} - \n\n  * `comment-editing` {`CustomEvent<{ comment: any; }>`} - \n\n  * `comment-save` {`CustomEvent<{ comment: any; }>`} - \n\nAttributes:\n\n  * `comment` - \n\n  * `display-name` {`string`} - \n\n  * `comment-new` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `comment` - \n\n  * `displayName` {`string`} - \n\n  * `commentNew` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "comment",
@@ -161,23 +83,75 @@
         },
         {
           "name": "oncomment-reply",
-          "description": "`comment-reply` - "
+          "description": "`comment-reply` {`CustomEvent<{ comment: any; target: any; }>`} - "
         },
         {
           "name": "oncomment-like",
-          "description": "`comment-like` - "
+          "description": "`comment-like` {`CustomEvent<{ comment: any; target: any; }>`} - "
         },
         {
           "name": "oncomment-delete-dialog",
-          "description": "`comment-delete-dialog` - "
+          "description": "`comment-delete-dialog` {`CustomEvent<{ comment: any; target: any; }>`} - "
         },
         {
           "name": "oncomment-editing",
-          "description": "`comment-editing` - "
+          "description": "`comment-editing` {`CustomEvent<{ comment: any; }>`} - "
         },
         {
           "name": "oncomment-save",
-          "description": "`comment-save` - "
+          "description": "`comment-save` {`CustomEvent<{ comment: any; }>`} - "
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-comment",
+      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.\n\nEvents:\n\n  * `comment-reply` {`CustomEvent<{ comment: any; target: any; }>`} - \n\n  * `comment-like` {`CustomEvent<{ comment: any; target: any; }>`} - \n\n  * `comment-delete-dialog` {`CustomEvent<{ comment: any; target: any; }>`} - \n\n  * `comment-editing` {`CustomEvent<{ comment: any; }>`} - \n\n  * `comment-save` {`CustomEvent<{ comment: any; }>`} - \n\nAttributes:\n\n  * `comment` - \n\n  * `display-name` {`string`} - \n\n  * `comment-new` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `comment` - \n\n  * `displayName` {`string`} - \n\n  * `commentNew` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `editform` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "comment",
+          "description": "`comment` - \n\nProperty: comment"
+        },
+        {
+          "name": "display-name",
+          "description": "`display-name` {`string`} - \n\nProperty: displayName"
+        },
+        {
+          "name": "comment-new",
+          "description": "`comment-new` {`string`} - \n\nProperty: commentNew"
+        },
+        {
+          "name": "hover-class",
+          "description": "`hover-class` {`string`} - \n\nProperty: hoverClass"
+        },
+        {
+          "name": "editform",
+          "description": "`editform` {`boolean`} - \n\nProperty: editform",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "oncomment-reply",
+          "description": "`comment-reply` {`CustomEvent<{ comment: any; target: any; }>`} - "
+        },
+        {
+          "name": "oncomment-like",
+          "description": "`comment-like` {`CustomEvent<{ comment: any; target: any; }>`} - "
+        },
+        {
+          "name": "oncomment-delete-dialog",
+          "description": "`comment-delete-dialog` {`CustomEvent<{ comment: any; target: any; }>`} - "
+        },
+        {
+          "name": "oncomment-editing",
+          "description": "`comment-editing` {`CustomEvent<{ comment: any; }>`} - "
+        },
+        {
+          "name": "oncomment-save",
+          "description": "`comment-save` {`CustomEvent<{ comment: any; }>`} - "
         }
       ]
     }

@@ -100,10 +100,6 @@
       ]
     },
     {
-      "name": "tag",
-      "path": "./page-contents-menu.umd.js"
-    },
-    {
       "name": "page-contents-menu",
       "path": "./src/page-contents-menu.js",
       "description": "`page-contents-menu`\n`Links that jump you to the right place in the page&#39;s content`",

@@ -17,10 +17,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "example-hax-element",
       "description": "`example-hax-element`\n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
       "attributes": []

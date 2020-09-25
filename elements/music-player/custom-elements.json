@@ -142,28 +142,10 @@
     },
     {
       "name": "midi-player",
-      "path": "./music-player.umd.js",
-      "events": [
-        {
-          "name": "load"
-        },
-        {
-          "name": "start"
-        },
-        {
-          "name": "note"
-        },
-        {
-          "name": "stop"
-        }
-      ]
-    },
-    {
-      "name": "midi-visualizer",
       "path": "./music-player.umd.js"
     },
     {
-      "name": "tag",
+      "name": "midi-visualizer",
       "path": "./music-player.umd.js"
     },
     {

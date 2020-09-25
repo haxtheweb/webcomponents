@@ -38,10 +38,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "simple-toast",
       "description": "`simple-toast`\n`A singular toast / message for conistency`\n\n",
       "attributes": []

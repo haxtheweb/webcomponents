@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "beaker-broker",
-      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`\n\nEvents:\n\n  * `archive-changed` - \n\n  * `dat-url-changed` - \n\nAttributes:\n\n  * `archive` - Archive\n\n  * `dat-url` {`string`} - datUrl\n\nProperties:\n\n  * `archive` - Archive\n\n  * `datUrl` {`string`} - datUrl",
+      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`\n\nEvents:\n\n  * `archive-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `dat-url-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `archive` - Archive\n\n  * `dat-url` {`string`} - datUrl\n\nProperties:\n\n  * `archive` - Archive\n\n  * `datUrl` {`string`} - datUrl",
       "attributes": [
         {
           "name": "archive",
@@ -15,39 +15,25 @@
         },
         {
           "name": "onarchive-changed",
-          "description": "`archive-changed` - "
+          "description": "`archive-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "ondat-url-changed",
-          "description": "`dat-url-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `archive-changed` - \n\n  * `dat-url-changed` - ",
-      "attributes": [
-        {
-          "name": "onarchive-changed",
-          "description": "`archive-changed` - "
-        },
-        {
-          "name": "ondat-url-changed",
-          "description": "`dat-url-changed` - "
+          "description": "`dat-url-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "beaker-broker",
-      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`\n\nEvents:\n\n  * `archive-changed` - \n\n  * `dat-url-changed` - \n\nProperties:\n\n  * `datUrl` {`string`} - ",
+      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`\n\nEvents:\n\n  * `archive-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `dat-url-changed` {`CustomEvent<{ value: any; }>`} - \n\nProperties:\n\n  * `datUrl` {`string`} - ",
       "attributes": [
         {
           "name": "onarchive-changed",
-          "description": "`archive-changed` - "
+          "description": "`archive-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "ondat-url-changed",
-          "description": "`dat-url-changed` - "
+          "description": "`dat-url-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }

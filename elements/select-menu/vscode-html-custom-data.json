@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "select-menu",
-      "description": "`select-menu`\n\nEvents:\n\n  * `change` - \n\nAttributes:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selected-index` {`number`} - The index of the selected item\n\nProperties:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selectedIndex` {`number`} - The index of the selected item\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`select-menu`\n\nEvents:\n\n  * `change` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selected-index` {`number`} - The index of the selected item\n\nProperties:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selectedIndex` {`number`} - The index of the selected item\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "label",
@@ -19,23 +19,13 @@
         },
         {
           "name": "onchange",
-          "description": "`change` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `change` - ",
-      "attributes": [
-        {
-          "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "select-menu",
-      "description": "`select-menu`\n\nEvents:\n\n  * `change` - \n\nAttributes:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selected-index` {`number`} - The index of the selected item\n\nProperties:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selectedIndex` {`number`} - The index of the selected item\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`select-menu`\n\nEvents:\n\n  * `change` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selected-index` {`number`} - The index of the selected item\n\nProperties:\n\n  * `label` {`string`} - The label of the select menu\n\n  * `value` {`string`} - The default value\n\n  * `selectedIndex` {`number`} - The index of the selected item\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "label",
@@ -51,7 +41,7 @@
         },
         {
           "name": "onchange",
-          "description": "`change` - "
+          "description": "`change` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }

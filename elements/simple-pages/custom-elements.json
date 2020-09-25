@@ -28,11 +28,12 @@
           "type": "number",
           "default": "0"
         }
+      ],
+      "events": [
+        {
+          "name": "resize"
+        }
       ]
-    },
-    {
-      "name": "tag",
-      "path": "./simple-pages.umd.js"
     },
     {
       "name": "simple-pages",
@@ -43,6 +44,11 @@
           "name": "selected",
           "type": "number",
           "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "resize"
         }
       ]
     }

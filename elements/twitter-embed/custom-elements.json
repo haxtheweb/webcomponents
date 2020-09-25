@@ -2,8 +2,68 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "twitter-embed-vanilla",
+      "path": "./lib/twitter-embed-vanilla.js",
+      "description": "`twitter-embed-vanilla`\n`A simple way to embed tweets from twitter without their whole API.",
+      "attributes": [
+        {
+          "name": "lang",
+          "type": "string | null"
+        },
+        {
+          "name": "tweet",
+          "type": "string | null"
+        },
+        {
+          "name": "data-width"
+        },
+        {
+          "name": "data-theme"
+        },
+        {
+          "name": "tweet-id"
+        },
+        {
+          "name": "no-popups"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "description": "my own convention, easy to remember",
+          "type": "string"
+        },
+        {
+          "name": "lang",
+          "attribute": "lang",
+          "type": "string | null"
+        },
+        {
+          "name": "dataWidth",
+          "type": "string | null"
+        },
+        {
+          "name": "dataTheme",
+          "type": "string | null"
+        },
+        {
+          "name": "tweet",
+          "attribute": "tweet",
+          "type": "string | null"
+        },
+        {
+          "name": "tweetId",
+          "type": "string | null"
+        },
+        {
+          "name": "allowPopups",
+          "type": "string | string"
+        }
+      ]
+    },
+    {
       "name": "twitter-embed",
-      "path": "./twitter-embed.js",
+      "path": "./src/twitter-embed.js",
       "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement",
       "attributes": [
         {
@@ -80,72 +140,8 @@
       ]
     },
     {
-      "name": "tag",
-      "path": "./twitter-embed.umd.js"
-    },
-    {
-      "name": "twitter-embed-vanilla",
-      "path": "./lib/twitter-embed-vanilla.js",
-      "description": "`twitter-embed-vanilla`\n`A simple way to embed tweets from twitter without their whole API.",
-      "attributes": [
-        {
-          "name": "lang",
-          "type": "string | null"
-        },
-        {
-          "name": "tweet",
-          "type": "string | null"
-        },
-        {
-          "name": "data-width"
-        },
-        {
-          "name": "data-theme"
-        },
-        {
-          "name": "tweet-id"
-        },
-        {
-          "name": "no-popups"
-        }
-      ],
-      "properties": [
-        {
-          "name": "html",
-          "description": "my own convention, easy to remember",
-          "type": "string"
-        },
-        {
-          "name": "lang",
-          "attribute": "lang",
-          "type": "string | null"
-        },
-        {
-          "name": "dataWidth",
-          "type": "string | null"
-        },
-        {
-          "name": "dataTheme",
-          "type": "string | null"
-        },
-        {
-          "name": "tweet",
-          "attribute": "tweet",
-          "type": "string | null"
-        },
-        {
-          "name": "tweetId",
-          "type": "string | null"
-        },
-        {
-          "name": "allowPopups",
-          "type": "string | string"
-        }
-      ]
-    },
-    {
       "name": "twitter-embed",
-      "path": "./src/twitter-embed.js",
+      "path": "./twitter-embed.js",
       "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement",
       "attributes": [
         {

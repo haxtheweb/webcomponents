@@ -472,7 +472,6 @@ class ImgPanZoom extends LitElement {
         this._initOpenSeadragon();
       } else {
         let check = () => {
-            console.log("OpenSeadragon", OpenSeadragon);
             if (OpenSeadragon) {
               this._initOpenSeadragon();
               clearInterval(interval);

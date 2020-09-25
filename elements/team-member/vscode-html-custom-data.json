@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "team-member",
-      "description": "`team-member`\n\nAttributes:\n\n  * `image` {`string`} - Image\n\n  * `full-name` {`string`} - Full name of the team member\n\n  * `first-line` {`string`} - first line\n\n  * `second-line` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\nProperties:\n\n  * `image` {`string`} - Image\n\n  * `fullName` {`string`} - Full name of the team member\n\n  * `firstLine` {`string`} - first line\n\n  * `secondLine` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`team-member`\n\nAttributes:\n\n  * `image` {`string`} - Image\n\n  * `full-name` {`string`} - Full name of the team member\n\n  * `first-line` {`string`} - first line\n\n  * `second-line` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `image` {`string`} - Image\n\n  * `fullName` {`string`} - Full name of the team member\n\n  * `firstLine` {`string`} - first line\n\n  * `secondLine` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
@@ -64,16 +64,20 @@
         {
           "name": "whatsapp",
           "description": "`whatsapp` {`string`} - whatsapp\n\nProperty: whatsapp\n\nDefault: false"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "team-member",
-      "description": "`team-member`\n\nAttributes:\n\n  * `image` {`string`} - Image\n\n  * `full-name` {`string`} - Full name of the team member\n\n  * `first-line` {`string`} - first line\n\n  * `second-line` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\nProperties:\n\n  * `image` {`string`} - Image\n\n  * `fullName` {`string`} - Full name of the team member\n\n  * `firstLine` {`string`} - first line\n\n  * `secondLine` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`team-member`\n\nAttributes:\n\n  * `image` {`string`} - Image\n\n  * `full-name` {`string`} - Full name of the team member\n\n  * `first-line` {`string`} - first line\n\n  * `second-line` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `image` {`string`} - Image\n\n  * `fullName` {`string`} - Full name of the team member\n\n  * `firstLine` {`string`} - first line\n\n  * `secondLine` {`string`} - second line\n\n  * `dribble` {`string`} - dribble\n\n  * `facebook` {`string`} - facebook\n\n  * `github` {`string`} - github\n\n  * `google` {`string`} - google\n\n  * `instagram` {`string`} - instagram\n\n  * `linkedin` {`string`} - linkedin\n\n  * `pinterest` {`string`} - pinterest\n\n  * `tumblr` {`string`} - tumblr\n\n  * `twitch` {`string`} - twitch\n\n  * `twitter` {`string`} - twitter\n\n  * `whatsapp` {`string`} - whatsapp\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
@@ -134,6 +138,14 @@
         {
           "name": "whatsapp",
           "description": "`whatsapp` {`string`} - whatsapp\n\nProperty: whatsapp\n\nDefault: false"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

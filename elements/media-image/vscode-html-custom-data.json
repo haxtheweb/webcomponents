@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "media-image",
-      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `described-by` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `describedBy` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `described-by` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `describedBy` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "__figureLabel",
@@ -69,12 +69,20 @@
         {
           "name": "offset",
           "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `described-by` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `describedBy` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `described-by` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `describedBy` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
       "attributes": [
         {
           "name": "source",
@@ -96,6 +104,10 @@
         {
           "name": "modal-title",
           "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - "
         }
       ]
     },
@@ -110,12 +122,8 @@
       "attributes": []
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "media-image",
-      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `described-by` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `describedBy` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `described-by` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `describedBy` {`string`} - image aria-described by\n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "__figureLabel",
@@ -181,12 +189,20 @@
         {
           "name": "offset",
           "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
       "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `described-by` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `describedBy` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `described-by` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `describedBy` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
       "attributes": [
         {
           "name": "source",
@@ -208,6 +224,10 @@
         {
           "name": "modal-title",
           "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - "
         }
       ]
     },

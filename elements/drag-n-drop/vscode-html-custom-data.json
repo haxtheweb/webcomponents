@@ -13,10 +13,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "drag-n-drop",
       "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`boolean`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": [

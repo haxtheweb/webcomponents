@@ -22,6 +22,73 @@
           "name": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "menu-open",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
         }
       ],
       "properties": [
@@ -45,12 +112,121 @@
           "attribute": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "menuOpen",
+          "attribute": "menu-open",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
         }
       ]
-    },
-    {
-      "name": "tag",
-      "path": "./clean-two.umd.js"
     },
     {
       "name": "clean-two",
@@ -73,6 +249,73 @@
           "name": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "menu-open",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
         }
       ],
       "properties": [
@@ -96,6 +339,119 @@
           "attribute": "searchTerm",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "menuOpen",
+          "attribute": "menu-open",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "HAXCMSThemeSettings",
+          "type": "object",
+          "default": "{\"autoScroll\":false,\"scrollTarget\":\"window\"}"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "responsiveWidth",
+          "attribute": "responsive-width",
+          "description": "width in pixels",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "size for responsive styling: xs, sm, md, lg, xl",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Miniumum value for small breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Miniumum value for medium breakpoint",
+          "type": "number",
+          "default": "900"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Miniumum value for large breakpoint",
+          "type": "number",
+          "default": "1200"
+        },
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Miniumum value for extra-large breakpoint",
+          "type": "number",
+          "default": "1500"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-container-changed"
+        },
+        {
+          "name": "is-logged-in-changed"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "resize"
+        },
+        {
+          "name": "popstate"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
         }
       ]
     }

@@ -12,10 +12,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lorem-data",
       "description": "Attributes:\n\n  * `schemas` - \n\nProperties:\n\n  * `data` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `schemas` - ",
       "attributes": [
