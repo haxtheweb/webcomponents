@@ -358,15 +358,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   constructor() {
     super();
-    // history event so we can undo things without triggering multiple MOs
-    this.moProps = {
-      attributes: true,
-      attributeOldValue: true,
-      childList: true,
-      characterData: true,
-      characterDataOldValue: true,
-      subtree: true,
-    };
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
     this.__mouseMoving = false;
@@ -627,7 +618,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // mutation observer that ensures state of hax applied correctly
     this._observer = new MutationObserver((mutations) => {
       var mutFind = false;
-      if (!this.__mouseMoving && !this.blocked && !this.__fakeEndCap) {
+      if (!this.__mouseMoving && !this.undoStackIgnore && !this.__fakeEndCap) {
         mutations.forEach((mutation) => {
           // if we've got new nodes, we have to react to that
           if (mutation.addedNodes.length > 0) {
@@ -698,7 +689,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // our undo/redo history is being applied. Make sure events
       // are bound but that we don't actively track other changes
       // or it'll poisen our undo stack
-      else if (this.blocked) {
+      else if (this.undoStackIgnore) {
         mutations.forEach((mutation) => {
           if (mutation.addedNodes.length > 0) {
             mutation.addedNodes.forEach((node) => {
@@ -2120,6 +2111,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       if (active) {
         this.__focusLogic(active);
         this.scrollHere(active);
+      } else {
+        this.hideContextMenus();
       }
     }, 0);
   }
@@ -2130,6 +2123,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       if (active) {
         this.__focusLogic(active);
         this.scrollHere(active);
+      } else {
+        this.hideContextMenus();
       }
     }, 0);
   }
@@ -2140,18 +2135,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
-      setTimeout(() => {
-        this.stack = new Undo();
-        // simple hook into being notified of changes to the object
-        this.stack.changed = (e) => {
-          this.canRedo = this.stack.canRedo();
-          this.canUndo = this.stack.canUndo();
-          this.isDirty = this.stack.dirty();
-        };
-        // execute once just to get these values
-        this.stack.changed();
-        this.stack.save();
-      }, 0);
       if (newValue) {
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
@@ -2182,6 +2165,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }, 0);
         }
       }
+      setTimeout(() => {
+        this.undoStack = new Undo();
+        // simple hook into being notified of changes to the object
+        this.undoStack.changed = (e) => {
+          this.canRedo = this.undoStack.canRedo();
+          this.canUndo = this.undoStack.canUndo();
+        };
+        // execute once just to get these values
+        this.undoStack.changed();
+        // reset initial value to avoid some state management issues
+        this.undoStackInitialValue = this.innerHTML;
+      }, 0);
     }
     // hide menus when state changes
     if (newValue == false) {
@@ -2330,6 +2325,44 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    */
   undoManagerStackLogic(mutations) {
     if (!this.__mouseMoving) {
+      let children = this.querySelectorAll(
+        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+      );
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove(
+            "hax-mover",
+            "hax-hovered",
+            "hax-moving",
+            "grid-plate-active-item"
+          );
+          // special support for grid plates as they manage internal drag/drop
+          if (children[i].tagName === "GRID-PLATE") {
+            //children[i].dropEvent(e);
+            for (var j in children[i].children) {
+              if (
+                typeof children[i].children[j].classList !== typeof undefined
+              ) {
+                children[i].children[j].classList.remove(
+                  "hax-mover",
+                  "hax-hovered",
+                  "hax-moving",
+                  "grid-plate-active-item"
+                );
+              }
+            }
+            for (var j = 1; j <= children[i].columns; j++) {
+              if (
+                children[i].shadowRoot.querySelector("#col" + j) !== undefined
+              ) {
+                children[i].shadowRoot
+                  .querySelector("#col" + j)
+                  .classList.remove("hax-mover");
+              }
+            }
+          }
+        }
+      }
       super.undoManagerStackLogic(mutations);
     }
   }

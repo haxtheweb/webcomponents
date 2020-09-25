@@ -36,16 +36,9 @@ const UndoManagerBehaviors = function (SuperClass) {
           attribute: "can-redo",
         },
         /**
-         * If we're "dirty" meaning stackPosition and savePosition out of sync
-         */
-        isDirty: {
-          type: Boolean,
-          attribute: "is-dirty",
-        },
-        /**
          * Properties for the mutation observer
          */
-        moProps: {
+        undoStackObserverProps: {
           type: Object,
         },
         /**
@@ -67,20 +60,24 @@ const UndoManagerBehaviors = function (SuperClass) {
      */
     constructor() {
       super();
-      this.__timer;
-      this.undoTimer = 250;
-      this.blocked = false;
-      this.undoObserver = null;
-      this.moProps = {
+      this.__StackDebounce;
+      this.undoStackLimit = 20;
+      this.undoStackTimer = 300;
+      this.undoStackIgnore = false;
+      this.undoStackObserver = null;
+      // this is aggressive but it should capture everything
+      this.undoStackObserverProps = {
         attributes: true,
+        attributeOldValue: true,
         childList: true,
         characterData: true,
         characterDataOldValue: true,
         subtree: true,
       };
-      setTimeout(() => {
-        this.startValue = this.innerHTML;
-      }, 0);
+      // set beginning value
+      this.undoStackInitialValue = this.innerHTML;
+      // set previous value, to start
+      this.undoStackPrevValue = this.undoStackInitialValue;
     }
     /**
      * Simple path resolution from URL
@@ -93,43 +90,53 @@ const UndoManagerBehaviors = function (SuperClass) {
      */
     connectedCallback() {
       // watch for changes to the element itself
-      this.undoObserver = new MutationObserver((mutations) => {
-        clearTimeout(this.__timer);
-        this.__timer = setTimeout(() => {
+      this.undoStackObserver = new MutationObserver((mutations) => {
+        clearTimeout(this.__StackDebounce);
+        this.__StackDebounce = setTimeout(() => {
           // ensure this was not a change record to perform undo/redo itself!
-          if (this.blocked) {
-            this.blocked = false;
+          if (this.undoStackIgnore) {
+            this.undoStackIgnore = false;
             return;
           }
           // run the stack logic
           this.undoManagerStackLogic(mutations);
-        }, this.undoTimer);
+        }, this.undoStackTimer);
       });
       // watch attributes, children and the subtree for changes
-      this.undoObserver.observe(this, this.moProps);
+      this.undoStackObserver.observe(this, this.undoStackObserverProps);
+      this.undoManagerStackLogic({});
       super.connectedCallback();
     }
+    /**
+     * While a mutation observer, we only respond to there being ANY change
+     * not the specfic record. This lets the developer select granularity
+     * in what to notice (lots of stuff) yet only push state change
+     * if it matches what they care to monitor as far as detail.
+     * Default is to monitor every possible useful detail
+     */
     undoManagerStackLogic(mutations) {
       // compare light dom children to previous value
       const newValue = this.innerHTML;
-      if (this.stack && newValue != this.startValue) {
-        // push an "edit comand"
-        this.stack.execute(
-          new UndoManagerCommand(this, this.startValue, newValue)
+      if (
+        this.undoStack &&
+        newValue != "" &&
+        newValue != this.undoStackPrevValue &&
+        this.undoStackInitialValue != newValue
+      ) {
+        this.undoStack.execute(
+          new UndoManagerCommand(this, this.undoStackPrevValue, newValue)
         );
-        this.startValue = newValue;
+        this.undoStackPrevValue = newValue;
         // we only notify there WAS a change
-        setTimeout(() => {
-          this.dispatchEvent(
-            new CustomEvent("stack-changed", {
-              detail: {
-                value: this,
-              },
-              bubbles: true,
-              composed: true,
-            })
-          );
-        }, 0);
+        this.dispatchEvent(
+          new CustomEvent("stack-changed", {
+            detail: {
+              value: this.undoStack,
+            },
+            bubbles: true,
+            composed: true,
+          })
+        );
       }
     }
     /**
@@ -146,15 +153,15 @@ const UndoManagerBehaviors = function (SuperClass) {
       if (super.firstUpdated) {
         super.firstUpdated(changedProperties);
       }
-      this.stack = new Undo();
+      this.undoStack = new Undo();
+      this.undoStack.undoStackLimit = this.undoStackLimit;
       // simple hook into being notified of changes to the object
-      this.stack.changed = (e) => {
-        this.canRedo = this.stack.canRedo();
-        this.canUndo = this.stack.canUndo();
-        this.isDirty = this.stack.dirty();
+      this.undoStack.changed = (e) => {
+        this.canRedo = this.undoStack.canRedo();
+        this.canUndo = this.undoStack.canUndo();
       };
       // execute once just to get these values
-      this.stack.changed();
+      this.undoStack.changed();
     }
     /**
      * updated / notice property changes
@@ -188,45 +195,23 @@ const UndoManagerBehaviors = function (SuperClass) {
             })
           );
         }
-        if (propName == "isDirty") {
-          // notify
-          this.dispatchEvent(
-            new CustomEvent("is-dirty-changed", {
-              detail: {
-                value: this[propName],
-              },
-              bubbles: true,
-              composed: true,
-            })
-          );
-        }
       });
     }
     // execute an undo
     undo() {
-      return this.stack.undo();
+      return this.undoStack.undo();
     }
     // execute a redo
     redo() {
-      return this.stack.redo();
+      return this.undoStack.redo();
     }
     // return a list of the command stack
     commands() {
-      return this.stack.commands;
+      return this.undoStack.commands;
     }
-    // return current stackPosition index
-    stackPosition() {
-      return this.stack.stackPosition;
-    }
-    // return save index as a reference point
-    savePosition() {
-      return this.stack.savePosition;
-    }
-    /**
-     * Set a save position to check against at a later point in time
-     */
-    save() {
-      this.stack.save();
+    // return current undoStackPosition index
+    undoStackPosition() {
+      return this.undoStack.undoStackPosition;
     }
   };
 };
@@ -247,7 +232,7 @@ class UndoManager extends UndoManagerBehaviors(LitElement) {
 customElements.define("undo-manager", UndoManager);
 
 /*
- * Undo.js - A undo/redo framework for JavaScript
+ * Fork of Undo.js - A undo/redo framework for JavaScript
  *
  * http://jzaefferer.github.com/undo
  *
@@ -256,103 +241,55 @@ customElements.define("undo-manager", UndoManager);
  * MIT licensed.
  */
 
-// based on Backbone.js' inherits
-var ctor = function () {};
-var inherits = function (parent, protoProps) {
-  var child;
-
-  if (protoProps && protoProps.hasOwnProperty("constructor")) {
-    child = protoProps.constructor;
-  } else {
-    child = function () {
-      return parent.apply(this, arguments);
-    };
-  }
-
-  ctor.prototype = parent.prototype;
-  child.prototype = new ctor();
-
-  if (protoProps) extend(child.prototype, protoProps);
-
-  child.prototype.constructor = child;
-  child.__super__ = parent.prototype;
-  return child;
-};
-
-function extend(target, ref) {
-  var name, value;
-  for (name in ref) {
-    value = ref[name];
-    if (value !== undefined) {
-      target[name] = value;
-    }
-  }
-  return target;
-}
-
 class Undo {
   constructor() {
-    this.version = "0.1.15";
     this.commands = [];
-    this.stackPosition = -1;
-    this.savePosition = -1;
+    this.undoStackPosition = -1;
+    this.undoStackLimit = 20;
   }
   execute(command) {
+    // clear out the redo queue
     this._clearRedo();
+    // run the command (inner for inner)
     command.execute();
+    // if we're at our limit, start forgetting about past history but not all of it
+    if (this.undoStackLimit == this.commands.length) {
+      this.commands.splice(Math.round(this.commands.length / 3), 1);
+    } else {
+      // move the position forward
+      this.undoStackPosition++;
+    }
+    // push the command into the stack
     this.commands.push(command);
-    this.stackPosition++;
     this.changed();
   }
   undo() {
-    this.commands[this.stackPosition].undo();
-    this.stackPosition--;
-    this.changed();
+    // sanity check
+    if (this.commands[this.undoStackPosition]) {
+      this.commands[this.undoStackPosition].undo();
+      this.undoStackPosition--;
+      this.changed();
+    }
   }
   canUndo() {
-    return this.stackPosition >= 0;
+    return this.undoStackPosition >= 0;
   }
   redo() {
-    this.stackPosition++;
-    this.commands[this.stackPosition].redo();
-    this.changed();
+    if (this.commands[this.undoStackPosition + 1]) {
+      this.undoStackPosition++;
+      this.commands[this.undoStackPosition].redo();
+      this.changed();
+    }
   }
   canRedo() {
-    return this.stackPosition < this.commands.length - 1;
+    return this.undoStackPosition < this.commands.length - 1;
   }
-  save() {
-    this.savePosition = this.stackPosition;
-    this.changed();
-  }
-  dirty() {
-    return this.stackPosition != this.savePosition;
-  }
+  // remove right above where we are
   _clearRedo() {
-    // TODO there's probably a more efficient way for this
-    this.commands = this.commands.slice(0, this.stackPosition + 1);
+    this.commands = this.commands.slice(0, this.undoStackPosition + 1);
   }
   changed() {
     // do nothing, override
-  }
-}
-
-class Command {
-  constructor(name) {
-    this.name = name;
-  }
-  execute() {
-    throw up;
-  }
-  undo() {
-    throw up;
-  }
-  redo() {
-    this.execute();
-  }
-  extend(protoProps) {
-    var child = inherits(this, protoProps);
-    child.extend = Undo.Command.extend;
-    return child;
   }
 }
 /**
@@ -369,12 +306,27 @@ class UndoManagerCommand {
   execute() {}
   // perform a "undo"
   undo() {
-    this.el.blocked = true;
-    this.el.innerHTML = this.oldValue;
+    this.el.undoStackIgnore = true;
+    // execute the change in value from what it was to what it is now
+    if (
+      this.el.undoStack.commands &&
+      this.el.undoStack.commands[this.el.undoStack.undoStackPosition - 1]
+    ) {
+      this.el.innerHTML = this.el.undoStack.commands[
+        this.el.undoStack.undoStackPosition - 1
+      ].newValue;
+    } else if (
+      this.el.undoStack.commands &&
+      this.el.undoStack.undoStackPosition === 0
+    ) {
+      this.el.innerHTML = this.el.undoStackInitialValue;
+    } else {
+      this.el.innerHTML = this.oldValue;
+    }
   }
   // perform a "redo"
   redo() {
-    this.el.blocked = true;
+    this.el.undoStackIgnore = true;
     this.el.innerHTML = this.newValue;
   }
 }

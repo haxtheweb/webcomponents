@@ -13,12 +13,6 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../undo-manager.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles">
-    #dirty {
-      color: red;
-      font-size: 20px;
-    }
-    </style>
     <script>
       window.addEventListener("load", (e) => {
         const manager = document.getElementById('manager');
@@ -38,13 +32,8 @@
             document.getElementById("redo").setAttribute('disabled', 'disabled');
           }
         });
-        manager.addEventListener('is-dirty-changed', (e) => {
-          if (e.detail.value) {
-            document.getElementById("dirty").innerHTML = '*';
-          }
-          else {
-            document.getElementById("dirty").innerHTML = '';
-          }
+        manager.addEventListener('stack-changed', (e) => {
+          console.log(e.detail);
         });
         var count = 0;
         document.getElementById("undo").addEventListener('click', (e) => {
@@ -52,10 +41,6 @@
         });
         document.getElementById("redo").addEventListener('click', (e) => {
           manager.redo();
-        });
-        document.getElementById("save").addEventListener('click', (e) => {
-          manager.save();
-          console.log(manager.savePosition());
         });
         document.getElementById("p").addEventListener('click', (e) => {
           const elements = ['p', 'h1', 'h2', 'p', 'blockquote'];
@@ -73,19 +58,13 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic undo-manager demo</h3>
-      <button id="undo">Undo</button>
-      <button id="redo">Redo</button>
+      <button id="undo" disabled>Undo</button>
+      <button id="redo" disabled>Redo</button>
       <button id="p">Add tags</button>
-      <button id="save">Save</button>
-      <div id="dirty"></div>
       <demo-snippet>
         <template>
           <undo-manager id="manager" contenteditable="true">
-            <p>Stuff</p>
-            <p>Stuff</p>
-            <p>Stuff</p>
-            <p>Stuff</p>
-            <p>Stuff</p>
+            <p>line1</p>
           </undo-manager>
         </template>
       </demo-snippet>

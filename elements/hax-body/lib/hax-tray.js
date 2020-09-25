@@ -32,7 +32,6 @@ class HaxTray extends winEventsElement(LitElement) {
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
-      "stack-changed": "_stackChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
@@ -88,19 +87,6 @@ class HaxTray extends winEventsElement(LitElement) {
   }
   _redoChanged(e) {
     this.canRedo = e.detail.value;
-  }
-  /**
-   * Stack has changed, edge case of 1st opening and having SOMETHING here as base
-   */
-  _stackChanged(e) {
-    if (
-      window.HaxStore.instance.activeHaxBody.stack.commands.length === 1 &&
-      window.HaxStore.instance.activeHaxBody.stack.stackPosition === 0
-    ) {
-      this.canUndo = false;
-    } else {
-      this.canUndo = true;
-    }
   }
   _undoChanged(e) {
     this.canUndo = e.detail.value;
@@ -902,13 +888,6 @@ class HaxTray extends winEventsElement(LitElement) {
       canRedo: {
         type: Boolean,
         attribute: "can-redo",
-      },
-      /**
-       * If we're "dirty" meaning stackPosition and savePosition out of sync
-       */
-      isDirty: {
-        type: Boolean,
-        attribute: "is-dirty",
       },
       /**
        * Showing preferences area.
