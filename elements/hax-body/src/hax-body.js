@@ -2154,20 +2154,17 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           }, 0);
         }
       }
+      // force a reset when we start editing
+      // the delay gives HAX / HAX endpoints some room to manipulate the DOM first
       setTimeout(() => {
-        this.undoStack = new Undo();
         this.undoStack.undoStackLimit = 20;
         this.undoStack.undoStackPosition = -1;
         this.undoStack.commands = [];
-        // simple hook into being notified of changes to the object
-        this.undoStack.changed = (e) => {
-          this.canRedo = this.undoStack.canRedo();
-          this.canUndo = this.undoStack.canUndo();
-        };
         // execute once just to get these values
         this.undoStack.changed();
         // reset initial value to avoid some state management issues
         this.undoStackInitialValue = this.innerHTML;
+        this.undoStackPrevValue = this.undoStackInitialValue;
       }, 0);
     }
     // hide menus when state changes
