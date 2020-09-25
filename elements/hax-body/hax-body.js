@@ -995,16 +995,9 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let p = document.createElement("p");
       p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p);
-      // allow swap out to happen
-      setTimeout(() => {
-        // set active to this p tag
-        this.activeNode = p;
-        window.HaxStore.write("activeNode", p, this);
-        this.activeContainerNode.setAttribute("contenteditable", true);
-        // focus on it
-        p.focus();
-        this.__focusLogic(p);
-      }, 210);
+      // set active to this p tag
+      this.activeContainerNode.setAttribute("contenteditable", true);
+      this.__focusLogic(p);
     } else {
       this.replaceElementWorkflow();
     }
@@ -1254,7 +1247,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     setTimeout(() => {
       this.scrollHere(newNode);
       this.positionContextMenus();
-    }, 10);
+    }, 0);
     return true;
   }
   /**
@@ -1560,7 +1553,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     setTimeout(() => {
       this.scrollHere(node);
       this.positionContextMenus(node, node);
-    }, 10);
+    }, 0);
     return true;
   }
   /**
@@ -1843,9 +1836,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           detail.value;
         this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
         window.HaxStore.write("activeNode", this.activeNode, this);
-        setTimeout(() => {
-          this.positionContextMenus();
-        }, 100);
+        this.positionContextMenus();
         break;
       case "text-tag-ul":
         // trigger the default selected value in context menu to match
@@ -1853,9 +1844,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           "ul";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
         window.HaxStore.write("activeNode", this.activeNode, this);
-        setTimeout(() => {
-          this.positionContextMenus();
-        }, 100);
+        this.positionContextMenus();
         break;
       case "text-tag-ol":
         // trigger the default selected value in context menu to match
@@ -2525,7 +2514,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             setTimeout(() => {
               this.scrollHere(this.activeNode);
               this.positionContextMenus();
-            }, 50);
+            }, 0);
           }
         }
       } catch (e) {

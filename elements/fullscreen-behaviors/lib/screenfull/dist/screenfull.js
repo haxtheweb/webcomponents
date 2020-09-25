@@ -138,13 +138,13 @@
 		on: function (event, callback) {
 			var eventName = eventNameMap[event];
 			if (eventName) {
-				document.addEventListener(eventName, callback, false);
+				window.addEventListener(eventName, callback, false);
 			}
 		},
 		off: function (event, callback) {
 			var eventName = eventNameMap[event];
 			if (eventName) {
-				document.removeEventListener(eventName, callback, false);
+				window.removeEventListener(eventName, callback, false);
 			}
 		},
 		raw: fn,
