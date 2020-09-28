@@ -7,7 +7,6 @@ import {
   stripMSWord,
   nodeToHaxElement,
   haxElementToNode,
-  validURL,
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -961,6 +960,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     sel.addRange(range);
     return range;
   }
+  validURL(str) {
+    var pattern = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // fragment locator
+    return !!pattern.test(str);
+  }
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
    */
@@ -1015,7 +1026,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
-      if (haxElements.length === 0 && validURL(pasteContent)) {
+      if (haxElements.length === 0 && this.validURL(pasteContent)) {
         // ONLY use this logic if we're on an empty container
         if (this.activeNode.innerText.trim() != "") {
           return false;
