@@ -403,10 +403,7 @@ class MoocContent extends PolymerElement {
         }
       }
       // test for an node alias, then send off
-      else if (
-        typeof this.aliases[urlAlias] !==
-        (typeof undefined === "undefined" ? "undefined" : typeof undefined)
-      ) {
+      else if (this.aliases && urlAlias && this.aliases[urlAlias]) {
         this.nid = this.aliases[urlAlias].replace("node/", "");
         // trigger change if data location changed
         this.requestParams.node = this.nid;
