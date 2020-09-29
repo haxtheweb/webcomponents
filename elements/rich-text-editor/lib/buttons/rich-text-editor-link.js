@@ -86,11 +86,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    */
   getValue() {
     let target = this.rangeElement();
-    console.log("LINK getValue", this, {
-      ...super.getValue(),
-      href:
-        target && target.getAttribute ? target.getAttribute("href") : undefined,
-    });
     return {
       ...super.getValue(),
       href:
@@ -99,12 +94,6 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   }
   setToggled() {
     this.toggled = !!this.getPropValue("href");
-    console.log(
-      "LINK setToggled",
-      this,
-      this.value,
-      !this.getPropValue("href")
-    );
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

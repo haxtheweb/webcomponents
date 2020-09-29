@@ -126,11 +126,6 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       let innerHTML = (this.fields || []).filter(
         (field) => field.property === "innerHTML"
       );
-      console.log(
-        "setsInnerHTML",
-        this.fields,
-        innerHTML && innerHTML.length > 0
-      );
       return innerHTML && innerHTML.length > 0;
     }
 
