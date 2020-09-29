@@ -30,7 +30,7 @@ const RichTextEditorStyles = function (SuperClass) {
             --rich-text-editor-picker-border: #fafafa;
             --rich-text-editor-selection-bg: #b3d9ff;
           }
-          .rich-text-editor-selection {
+          rich-text-editor *::selection .rich-text-editor-selection {
             background-color: var(--rich-text-editor-selection-bg);
           }
         `,

@@ -144,6 +144,13 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
+         * raw array of buttons
+         */
+        buttons: {
+          name: "buttons",
+          type: Array,
+        },
+        /**
          * is toolbar collapsed?
          */
         collapsed: {
@@ -234,33 +241,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           type: Object,
         },
         /**
-         * Should toolbar stick to top so that it is always visible?
-         */
-        sticky: {
-          name: "sticky",
-          type: Boolean,
-          attribute: "sticky",
-          reflect: true,
-        },
-        /**
-         * raw array of buttons
-         */
-        buttons: {
-          name: "buttons",
-          type: Array,
-        },
-        /**
-         * Tracks inline widgets that require selection data
-         */
-        __clickableElement: {
-          name: "__clickableElement",
-          type: Array,
-        },
-        /**
          * selection singleton
          */
-        __selection: {
-          type: Object,
+        registered: {
+          type: Boolean,
         },
         /**
          * currently selected node
@@ -281,6 +265,28 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         shortcutKeys: {
           name: "shortcutKeys",
           type: Array,
+        },
+        /**
+         * Should toolbar stick to top so that it is always visible?
+         */
+        sticky: {
+          name: "sticky",
+          type: Boolean,
+          attribute: "sticky",
+          reflect: true,
+        },
+        /**
+         * Tracks inline widgets that require selection data
+         */
+        __clickableElement: {
+          name: "__clickableElement",
+          type: Array,
+        },
+        /**
+         * selection singleton
+         */
+        __selection: {
+          type: Object,
         },
       };
     }
@@ -524,7 +530,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     cancel() {
-      console.log("cancel");
       this.dispatchEvent(
         new c("cancel", {
           bubbles: true,
@@ -742,14 +747,12 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @returns {void}
      */
     _rangeChange() {
-      console.log("toolbar _rangeChange", this.range);
       if (
         this.range &&
         this.range.commonAncestorContainer &&
         this.editor &&
         this.editor.contains(this.range.commonAncestorContainer)
       ) {
-        console.log("toolbar _rangeChange 2", this.range, this.selectedNode);
         this.buttons.forEach((button) => {
           button.range = undefined;
           button.range = this.range;
@@ -762,7 +765,6 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           this.breadcrumbs.hidden = !this.controls && !this.alwaysVisible;
         }
       }
-      console.log("toolbar _rangeChange 3", this.range);
     }
 
     /**

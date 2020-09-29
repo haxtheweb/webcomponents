@@ -224,6 +224,7 @@ class RichTextEditorPrompt extends RichTextEditorButtonStyles(
    */
   _cancel(e) {
     e.preventDefault();
+    this.button.cancel();
     this.close();
   }
   /**

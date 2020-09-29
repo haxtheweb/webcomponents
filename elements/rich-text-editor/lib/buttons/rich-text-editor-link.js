@@ -33,11 +33,7 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   constructor() {
     super();
     this.fields = [
-      {
-        property: "text",
-        title: "Text",
-        inputMethod: "textfield",
-      },
+      ...super.fields,
       {
         property: "href",
         title: "Link",
@@ -53,7 +49,8 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     this.toggledLabel = "Unlink";
     (this.toggles = "true"), (this.tag = "a");
     this.value = {
-      link: null,
+      ...super.value,
+      href: null,
     };
     this.shortcutKeys = "ctrl+k";
   }
@@ -65,6 +62,13 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
    */
   get blockSelectors() {
     return "a";
+  }
+
+  /**
+   * determaines commandVal based on values passed from prompt
+   */
+  get promptCommandVal() {
+    return this.getPropValue("href") || undefined;
   }
 
   /**
@@ -80,31 +84,27 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
   /**
    * updates prompt fields with selected range data
    */
-  getSelectionValue() {
-    let target = this.targetNode();
-    console.log("LINK getSelectionValue", target, this.range);
+  getValue() {
+    let target = this.rangeElement();
+    console.log("LINK getValue", this, {
+      ...super.getValue(),
+      href:
+        target && target.getAttribute ? target.getAttribute("href") : undefined,
+    });
     return {
-      ...super.getSelectionValue(),
+      ...super.getValue(),
       href:
         target && target.getAttribute ? target.getAttribute("href") : undefined,
     };
   }
-
-  updateCommandVal() {
-    console.log("LINK updateCommandVal", this.getPropValue("href"));
-    this.commandVal = this.getPropValue("href") || undefined;
-  }
-
-  /**
-   * updates the insertion based on fields
-   */
-  updateSelection() {
-    console.log("LINK updateSelection", this.value);
-    super.updateSelection();
-  }
-  updateToggled() {
-    console.log("LINK toggled", this.getPropValue("href"));
-    this.toggled = !this.getPropValue("href");
+  setToggled() {
+    this.toggled = !!this.getPropValue("href");
+    console.log(
+      "LINK setToggled",
+      this,
+      this.value,
+      !this.getPropValue("href")
+    );
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

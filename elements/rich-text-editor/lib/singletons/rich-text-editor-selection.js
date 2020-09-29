@@ -107,34 +107,110 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     super.disconnectedCallback();
   }
 
-  get selectedNode() {
-    return this.getRangeNode(this.range);
-  }
-
-  get selectedNodeAncestors() {
-    return this.getAncestors(this.range).map((breadcrumb) => breadcrumb.target);
-  }
-
+  /**
+   * undo for canceled edits
+   *
+   * @param {object} editor
+   * @memberof RichTextEditorSelection
+   */
   cancelEdits(editor) {
     editor.revert();
     this.edit(editor, false);
   }
   /**
+   * disables contenteditable
+   *
+   * @param {object} editor
+   * @memberof RichTextEditorSelection
+   */
+  disableEditing(editor) {
+    if (!!editor) {
+      this.getRoot(editor).onselectionchange = undefined;
+      //editor.observeChanges(false);
+      editor.contenteditable = false;
+      editor.makeSticky(false);
+    }
+  }
+  /**
    * executes button command on current range
    *
    */
-  execCommand(command, val, editor) {
-    let range = this.hidden ? this.getRange(editor) : this.range;
+  execCommand(command, val, range, toolbar) {
+    console.log(
+      ">>>>>>>> execCommand",
+      command,
+      val,
+      range,
+      toolbar,
+      !range || range.cloneContents()
+    );
+    let editor = toolbar.editor;
     if (range) {
+      this.range = editor.range;
+      this.updateRange(editor, range);
+      this.selectRange(range, editor);
       if (command === "replaceHTML") {
         let node = this.getRangeNode();
         node.innerHTML = val;
       } else if (command !== "paste") {
-        this.selectRange(range);
+        console.log("command", range, this.getRangeNode());
         document.execCommand(command, false, val);
       } else if (navigator.clipboard) {
         this.pasteFromClipboard(editor);
       }
+      this.highlight(toolbar, false);
+    }
+  }
+
+  /**
+   * Updates selected range based on toolbar and editor
+   * @param {event} e editor change event
+   * @param {deselect} if editor is being deselected
+   * @returns {void}
+   */
+  edit(editor, editable = true) {
+    let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
+      oldEditor = editable ? toolbar.editor : undefined;
+    this.highlight(editor, false);
+    if (toolbar && oldEditor !== editor) {
+      this.disableEditing(oldEditor);
+      toolbar.editor = editor;
+      this.enableEditing(editor, toolbar);
+    }
+  }
+  /**
+   * enables content editable
+   *
+   * @param {*} editor
+   * @param {*} [toolbar=this.getConnectedToolbar(editor)]
+   * @memberof RichTextEditorSelection
+   */
+  enableEditing(editor, toolbar = this.getConnectedToolbar(editor)) {
+    if (!!editor) {
+      editor.makeSticky(toolbar.sticky);
+      editor.parentNode.insertBefore(toolbar, editor);
+      editor.contenteditable = true;
+      this.updateRange(editor);
+      //editor.observeChanges(this.getRoot(editor));
+      this.getRoot(editor).onselectionchange = (e) => this.updateRange(editor);
+    }
+  }
+
+  /**
+   * expands selection to a specific ancestor
+   * @param {string} selectors comma-separated list of selectors
+   * @param {object} range
+   * @returns {object} updated range
+   */
+  expandRangeTo(selectors = "", range) {
+    let node = range ? this.getRangeNode(range) : undefined,
+      tagName = node && node.tagName ? node.tagName.toLowerCase() : undefined,
+      selectorsList = selectors.toLowerCase().replace(/\s*/g, "").split(",");
+    if (selectorsList.includes(tagName)) {
+      return node;
+    } else if (node.closest(selectors)) {
+      range.selectNode(node.closest(selectors));
+      return range;
     }
   }
 
@@ -144,7 +220,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * and returns ancestor, or returns null if not found
    * @param {string} tag tag to expand selection to
    * @returns {object} selected node
-   */
+   * /
   getAncestor(selector, range = this.getRange()) {
     let wrapper,
       tags = selector.toLowerCase().split(","),
@@ -178,15 +254,15 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {object} the selected range
    * @param {string} controls id of what the breadcrumbs control
    * @returns {void}
-   */
-  getAncestors(range = this.getRange) {
+   * /
+  getAncestors(range = this.getRange()) {
     let nodes = [];
     let ancestor = false,
       parent = false,
       common = !range ? undefined : range.commonAncestorContainer,
       rangeNode = this.getRangeNode(range),
       rangeTag = !rangeNode ? undefined : rangeNode.tagName;
-    if (!!this.range) ancestor = rangeTag ? rangeNode : common;
+    if (!!range) ancestor = rangeTag ? rangeNode : common;
     if (!!ancestor) parent = ancestor;
     this.hidden = !ancestor;
     while (!!parent && !parent.contenteditable) {
@@ -198,10 +274,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
 
   /**
    * Normalizes selected range data.
-   *
+   * @param {object} document or shadowroot of selection
    * @returns {object} selected range
    */
-  getRange(root = document) {
+  getRange(root = this.toolbar.editor || document) {
     let sel = this.getSelection(this.getRoot(root)),
       range;
     if (sel.getRangeAt && sel.rangeCount) {
@@ -215,21 +291,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   }
 
   /**
-  * gets contents of selected range
-  * @returns {object} range contents
-  * /
-  getRangeContents(range=this.getRange) {
-    return range ? range.cloneContents() : null;
-  }
-
-  /**
-  * node selected or its parent node
-  *
-  * @param {object} [range=this.range]
-  * @returns object
-  * @memberof RichTextEditorSelection
-  */
-  getRangeNode(range = this.range) {
+   * node selected or its parent node
+   *
+   * @param {object} range
+   * @returns object
+   * @memberof RichTextEditorSelection
+   */
+  getRangeNode(range) {
     let common = !range ? undefined : range.commonAncestorContainer,
       startContainer = !range ? undefined : range.startContainer,
       startOffset = !range ? undefined : range.startOffset,
@@ -247,36 +315,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
   }
 
   /**
-   * expands selection to a specific ancestor
-   * @param {string} selectors comma-separated list of selectors
-   * @param {object} range
-   * @returns {object} updated range
-   */
-  expandRangeTo(selectors = "", range = this.range) {
-    let node = this.getRangeNode(range),
-      tagName = node && node.tagName ? node.tagName.toLowerCase() : undefined,
-      selectorsList = selectors.toLowerCase().replace(/\s*/g, "").split(",");
-    if (selectorsList.includes(tagName)) {
-      return node;
-    } else if (node.closest(selectors)) {
-      range.selectNode(node.closest(selectors));
-      return range;
-    }
-  }
-
-  /**
-   * expands selection to a specific ancestor or wraps selection in a default tag
-   * @param {string} selector ancestor selector to find
-   * @param {string} wrapTag tagName to use if ancestor cannot be found
-   * @returns {object} selected node
-   * /
-  expandSelection(selector, range = this.getRange(), wrapTag) {
-    return (
-      this.selectAncestor(selector, range) ||
-      this.wrap(!!wrapTag ? document.createElement(wrapTag) : undefined)
-    );
-  }
-  /**
    * gets closest shadowRoot or document from node
    *
    * @param {object} node
@@ -284,7 +322,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   getRoot(node) {
-    return !node
+    return !node || node === document
       ? document
       : node.parentNode
       ? this.getRoot(node.parentNode)
@@ -315,6 +353,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
     return !root || !root.getSelection ? undefined : root.getSelection();
   }
 
+  /**
+   * gets toolbar currently assocatied with given editor
+   *
+   * @param {*} editor
+   * @returns
+   * @memberof RichTextEditorSelection
+   */
   getConnectedToolbar(editor) {
     if (!editor.id) editor.id = this._generateUUID();
     if (!editor.__connectedToolbar) {
@@ -352,15 +397,14 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * selects and highlights a node
    *
    * @param {object} node
-   * @param {object} [range=this.getRange()]
+   * @param {object} toolbar
    * @returns {void}
    * @memberof RichTextEditorSelection
    */
-  highlightNode(node, editor) {
-    this.selectNode(node, editor.range);
-    this.highlight(editor, false);
-    this.selectNode(node, editor.range);
-    this.highlight(editor);
+  highlightNode(node, toolbar) {
+    console.log("highlightNode", node);
+    this.selectNode(node, toolbar.range);
+    this.highlight(toolbar);
   }
 
   /**
@@ -369,40 +413,24 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {boolean} [add=true] add highlight?
    * @returns {void}
    */
-  highlight(editor, add = true) {
-    let toolbar = this.getConnectedToolbar(editor),
-      range = this.getRange(editor);
+  highlight(toolbar, add = true) {
+    this.toolbar = toolbar;
+    let editor = toolbar.editor;
+    console.log("highlight", !editor || editor.innerHTML, toolbar.range);
     if (add !== false) {
-      if (!this.hidden) return;
-      this.updateHighlight(range);
-      this.hidden = !range || range.collapsed;
-      this.range = range;
-      this.updateRange(editor, range);
-    } else {
-      if (this.hidden || !range) return;
-      this.normalize();
-      let children = this.childNodes;
-      if (children.length > 0) {
-        children.forEach((child, i) => {
-          this.parentNode.insertBefore(child, this);
-          if (i === 0) range.setStart(child, 0);
-          range.setEnd(child, 0);
-        });
-      } else if (this.previousSibling) {
-        this.selectNode(this.previousSibling, range);
-        range.collapse();
-      } else if (this.nextSibling) {
-        this.selectNode(this.nextSibling, range);
-        range.collapse(true);
-      } else if (this.parentNode) {
-        this.selectNode(this.parentNode, range);
-        range.collapse(true);
+      if (toolbar.range) {
+        this.hidden = false;
+        toolbar.range.insertNode(this);
+        toolbar.range.setStartAfter(this);
+        this.range = toolbar.range;
       }
+    } else {
+      this.updateRange(toolbar.editor, toolbar.range);
       this.hidden = true;
-      document.body.appendChild(this);
+      this.toolbar = undefined;
       this.range = undefined;
+      document.body.append(this);
     }
-    return range;
   }
   /**
    * gets clipboard data and pastes into an editor's range
@@ -411,6 +439,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   pasteFromClipboard(editor) {
+    console.log("pasteFromClipboard", editor);
     setTimeout(async () => {
       let sel = this.getSelection(editor),
         range = this.getRange(editor),
@@ -433,6 +462,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @memberof RichTextEditorSelection
    */
   pasteIntoEditor(editor, pasteContent, sanitize = true) {
+    console.log("pasteIntoEditor", editor);
     if (editor)
       this.pasteIntoRange(
         editor,
@@ -449,6 +479,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @returns {void}
    */
   pasteIntoRange(editor, range, pasteContent) {
+    console.log("pasteIntoRange", editor);
     let div = document.createElement("div"),
       parent = range.commonAncestorContainer.parentNode,
       closest = parent.closest(
@@ -481,7 +512,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         blur: (e) => this._handleBlur(editor, e),
         keydown: (e) => this._handleShortcutKeys(editor, e),
         click: (e) => this._handleEditorClick(editor, e),
-        getrange: (e) => this.updateRange(editor, this.getRange(editor)),
+        getrange: (e) => {
+          console.log("getrange", e, editor.innerHTML);
+          this.updateRange(editor, this.getRange(editor));
+        },
         pastefromclipboard: (e) => this.pasteFromClipboard(e.detail),
         pastecontent: (e) => this._handlePaste(e),
       };
@@ -521,16 +555,46 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    */
   registerToolbar(toolbar, remove = false) {
     let handlers = {
-      exec: (e) =>
-        this.execCommand(e.detail.command, e.detail.commandVal, toolbar.editor),
-      highlight: (e) => this.highlight(toolbar.editor, e.detail),
-      highlightnode: (e) => this.highlightNode(e.detail, toolbar.editor),
-      selectnode: (e) => this.selectNode(e.detail, toolbar.range),
-      selectnodecontents: (e) => this.selectNode(e.detail, toolbar.range),
-      selectrange: (e) => this.selectRange(e.detail),
-      pastefromclipboard: (e) => this.pasteFromClipboard(e.detail),
+      exec: (e) => {
+        e.stopImmediatePropagation();
+        this.execCommand(
+          e.detail.command,
+          e.detail.commandVal,
+          e.detail.range,
+          toolbar
+        );
+      },
+      highlight: (e) => {
+        e.stopImmediatePropagation();
+        this.highlight(toolbar.editor, e.detail);
+      },
+      highlightnode: (e) => {
+        e.stopImmediatePropagation();
+        this.highlightNode(e.detail, toolbar);
+      },
+      selectnode: (e) => {
+        e.stopImmediatePropagation();
+        this.selectNode(e.detail, toolbar.range);
+      },
+      selectnodecontents: (e) => {
+        e.stopImmediatePropagation();
+        this.selectNode(e.detail, toolbar.range);
+      },
+      selectrange: (e) => {
+        e.stopImmediatePropagation();
+        console.log("command", e.detail, toolbar, toolbar.editor);
+        this.selectRange(e.detail, toolbar.editor);
+      },
+      pastefromclipboard: (e) => {
+        e.stopImmediatePropagation();
+        this.pasteFromClipboard(e.detail);
+      },
+      wrapselection: (e) => {
+        e.stopImmediatePropagation();
+        this.surroundRange(e.detail, toolbar.range);
+      },
     };
-    if (!remove) {
+    if (!remove && !toolbar.registered) {
       this.__toolbars.push(toolbar);
       toolbar.addEventListener("command", handlers.exec);
       toolbar.addEventListener("highlight", handlers.highlight);
@@ -545,7 +609,10 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         "pastefromclipboard ",
         handlers.pastefromclipboard
       );
+      toolbar.addEventListener("wrapselection ", handlers.wrapselection);
+      toolbar.registered = true;
     } else {
+      toolbar.registered = false;
       toolbar.removeEventListener("command", handlers.exec);
       toolbar.removeEventListener("highlight", handlers.highlight);
       toolbar.removeEventListener("highlightnode", handlers.highlightnode);
@@ -569,7 +636,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * and returns ancestor, or returns null if not found
    * @param {string} tag tag to expand selection to
    * @returns {object} selected node
-   */
+   * /
   selectAncestor(selector, range = this.getRange()) {
     let wrapper = this.getAncestor(selector, range);
     if (wrapper) this.selectNode(wrapper, range);
@@ -581,16 +648,32 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {object} node node to select
    * @returns {void}
    */
-  selectNode(node, range = this.getRange()) {
-    if (range) range.selectNode(node);
-    return range;
+  selectNode(node, range, editor = this.toolbar.editor) {
+    console.log(
+      "selectNode",
+      node,
+      !this.parentNode || this.parentNode.innerHTML,
+      range,
+      editor
+    );
+    if (range) {
+      range.selectNode(node);
+      console.log(
+        "selectNode 2",
+        !this.parentNode || this.parentNode.innerHTML,
+        range,
+        editor
+      );
+      if (editor) this.updateRange(editor, range);
+    }
   }
   /**
    * sets selection range to specified node's contents
    * @param {object} node node to select
    * @returns {void}
    */
-  selectNodeContents(node = null, range = this.getRange()) {
+  selectNodeContents(node, range, editor = this.toolbar.editor) {
+    console.log("selectNodeContents", range);
     if (node) {
       if (!range) {
         let sel = this.getSelection();
@@ -598,7 +681,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
         sel.removeAllRanges();
         sel.addRange(range);
       }
-      range.selectNodeContents(node);
+      if (editor) this.updateRange(editor);
     }
   }
   /**
@@ -608,7 +691,7 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
    * @param {boolean} [select=true] select range?
    * @memberof RichTextEditorSelection
    */
-  selectRange(range = this.getRange(), select = true) {
+  selectRange(range, select = true, editor) {
     if (range) {
       if (select) {
         let sel = this.getSelection();
@@ -617,36 +700,29 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       } else {
         if (!range.isCollapsed) range.collapse();
       }
+      if (editor) this.updateRange(editor);
+    }
+    return range;
+  }
+  surroundRange(node, range) {
+    if (range) {
+      range.surroundContents(node);
+      if (editor) this.updateRange(editor);
     }
     return range;
   }
 
-  updateHighlight(range = this.getRange()) {
-    if (range) {
-      range.surroundContents(this);
-      this.normalize();
-      this.innerHTML = this.innerHTML.trim();
+  updateRange(editor, range) {
+    if (editor) {
+      let toolbar = this.getConnectedToolbar(editor);
+      if (!range) range = this.getRange(editor);
+      editor.range = range;
+      if (toolbar) {
+        toolbar.selectedNode = editor.selectedNode;
+        toolbar.selectionAncestors = editor.selectionAncestors;
+        toolbar.range = editor.range;
+      }
     }
-  }
-
-  updateRange(editor, range = !editor ? undefined : this.getRange(editor)) {
-    let toolbar = this.getConnectedToolbar(editor);
-    editor.range = range;
-    if (toolbar) {
-      toolbar.selectedNode = editor.selectedNode;
-      toolbar.selectionAncestors = editor.selectionAncestors;
-      toolbar.range = editor.range;
-    }
-  }
-  /**
-   * gets range contents in specified wrapper
-   * @param {object} wrapper a node to wrap range contents in
-   * @returns {object} range which oncludes wrapper and wrapped contents
-   */
-  wrap(wrapper, range = this.getRange()) {
-    wrapper = wrapper || document.createElement("span");
-    range.surroundContents(wrapper);
-    return wrapper;
   }
 
   /**
@@ -659,7 +735,13 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       .substring(1);
     return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
-
+  /**
+   * preserves highlight on editor selection when editor is not focus
+   *
+   * @param {*} editor
+   * @param {*} e
+   * @memberof RichTextEditorSelection
+   */
   _handleBlur(editor, e) {
     if (
       e.relatedTarget === null ||
@@ -668,41 +750,6 @@ class RichTextEditorSelection extends RichTextEditorStyles(LitElement) {
       this.edit(editor, true);
     } else if (editor) {
       this.highlight(editor);
-    }
-  }
-
-  /**
-   * Updates selected range based on toolbar and editor
-   * @param {event} e editor change event
-   * @param {deselect} if editor is being deselected
-   * @returns {void}
-   */
-  edit(editor, editable = true) {
-    let toolbar = !editor ? undefined : this.getConnectedToolbar(editor),
-      oldEditor = editable ? toolbar.editor : undefined;
-    this.highlight(editor, false);
-    if (toolbar && oldEditor !== editor) {
-      this.disableEditing(oldEditor);
-      toolbar.editor = editor;
-      this.enableEditing(editor, toolbar);
-    }
-  }
-  disableEditing(editor) {
-    if (!!editor) {
-      this.getRoot(editor).onselectionchange = undefined;
-      editor.observeChanges(false);
-      editor.contenteditable = false;
-      editor.makeSticky(false);
-    }
-  }
-  enableEditing(editor, toolbar = this.getConnectedToolbar(editor)) {
-    if (!!editor) {
-      editor.makeSticky(toolbar.sticky);
-      editor.parentNode.insertBefore(toolbar, editor);
-      editor.contenteditable = true;
-      this.updateRange(editor);
-      editor.observeChanges(this.getRoot(editor));
-      this.getRoot(editor).onselectionchange = (e) => this.updateRange(editor);
     }
   }
 

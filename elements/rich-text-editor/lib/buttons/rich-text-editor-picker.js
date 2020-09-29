@@ -146,7 +146,6 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
      * handles range changes by getting
      */
     _rangeChanged() {
-      console.log("_rangeChanged", this.range);
       let val = this._getSelection();
       if (this.shadowRoot) {
         if (this.blockSelectors.split(",").includes(val)) {
@@ -194,7 +193,6 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
     _pickerChange(e) {
       let val = this._getSelectionType() || "";
       this.commandVal = e.detail.value || "";
-      console.log("_pickerChange", this.range, val, this.commandVal);
 
       /* only update when there is an actual change */
       if (this.range && val !== this.commandVal) {

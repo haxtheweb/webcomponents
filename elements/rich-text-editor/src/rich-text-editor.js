@@ -76,7 +76,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    console.log("updated", this.contenteditable);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
     });
@@ -199,7 +198,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     return node.innerHTML.replace(/[\s\t\r\n]/gim, "");
   }
   updateRange(e) {
-    console.log("updateRange", e);
     this.dispatchEvent(
       new CustomEvent("getrange", {
         bubbles: true,
@@ -208,7 +206,6 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
         detail: this,
       })
     );
-    console.log("updateRange 2", this.range);
   }
   /**
    * updates editor placeholder and watches for range changes
@@ -217,18 +214,14 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   _editableChange() {
     let placeholder = `<p>${this.placeholder}</p>`;
-    console.log("updated", this.contenteditable);
     if (this.contenteditable) {
-      console.log("updated 2", this.__selection);
       this.setCancelHTML();
       if (this.isEmpty()) this.innerHTML = placeholder;
     } else {
-      console.log("updated 2b", this.__selection);
       if (this.trimmerHTML(this) === placeholder) {
         this.setCancelHTML("");
       }
     }
-    console.log("updated 3", this.__selection);
   }
 
   /**
