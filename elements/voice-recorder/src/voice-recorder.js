@@ -84,7 +84,7 @@ class VoiceRecorder extends LitElement {
     });
   }
   vmsgReady(e) {
-    console.log(e.detail.value);
+    console.warn(e.detail.value);
   }
   /**
    * Toggle the LAME bridge

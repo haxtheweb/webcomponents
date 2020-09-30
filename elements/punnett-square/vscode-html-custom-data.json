@@ -25,10 +25,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "punnett-square",
       "description": "`punnett-square`\n\nAttributes:\n\n  * `variant1` {`string`} - Varient 1 - example XY\n\n  * `variant2` {`string`} - Varient 2 - example XX\n\n  * `editable` {`boolean`} - Editable - allow users to change the varient values\n\n  * `__results` {`any[]`} - \n\nProperties:\n\n  * `variant1` {`string`} - Varient 1 - example XY\n\n  * `variant2` {`string`} - Varient 2 - example XX\n\n  * `editable` {`boolean`} - Editable - allow users to change the varient values\n\n  * `__results` {`any[]`} - ",
       "attributes": [

@@ -13,10 +13,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lazy-import-discover",
       "description": "`lazy-import-discover`\n\nAttributes:\n\n  * `base` {`string | null`} - \n\nProperties:\n\n  * `base` {`string | null`} - \n\n  * `tag` {`string`} - ",
       "attributes": [

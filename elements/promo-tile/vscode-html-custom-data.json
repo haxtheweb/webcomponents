@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "promo-tile",
-      "description": "`promo-tile`\n\nAttributes:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\nProperties:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`promo-tile`\n\nAttributes:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
@@ -29,16 +29,20 @@
           "name": "hover",
           "description": "`hover` {`boolean`} - Hover state\n\nProperty: hover\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "promo-tile",
-      "description": "`promo-tile`\n\nAttributes:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\nProperties:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`promo-tile`\n\nAttributes:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `image` {`string`} - Image source\n\n  * `alt` {`string`} - Alt text for image\n\n  * `label` {`string`} - Label for button\n\n  * `title` {`string`} - Title of tile\n\n  * `url` {`string`} - Url for tile\n\n  * `hover` {`boolean`} - Hover state\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "image",
@@ -64,6 +68,14 @@
           "name": "hover",
           "description": "`hover` {`boolean`} - Hover state\n\nProperty: hover\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

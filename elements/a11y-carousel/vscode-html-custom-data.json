@@ -2,8 +2,44 @@
   "version": 1,
   "tags": [
     {
+      "name": "a11y-carousel",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nEvents:\n\n  * `selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\nProperties:\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\n  * `selectedIndex` {`number`} - index of selected item\n\n  * `__observer` - mutation observer for tabs\n\n  * `__allowNull` {`boolean`} - allows no item to be selected\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item",
+      "attributes": [
+        {
+          "name": "no-buttons",
+          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "no-prev-next",
+          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "prevLabel",
+          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
+        },
+        {
+          "name": "nextLabel",
+          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
+        },
+        {
+          "name": "itemData",
+          "description": "`itemData` {`any[]`} - \n\nProperty: itemData"
+        },
+        {
+          "name": "selection",
+          "description": "`selection` {`string`} - \n\nProperty: selection"
+        },
+        {
+          "name": "onselection-changed",
+          "description": "`selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it."
+        }
+      ]
+    },
+    {
       "name": "a11y-carousel-button",
-      "description": "`a11y-carousel-button`\nbutton that controls a carousel\n\nEvents:\n\n  * `select-carousel-item` - \n\nAttributes:\n\n  * `button-type` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `buttonType` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `tabindex` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - ",
+      "description": "`a11y-carousel-button`\nbutton that controls a carousel\n\nEvents:\n\n  * `select-carousel-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `button-type` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `buttonType` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `tabindex` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
         {
           "name": "button-type",
@@ -30,13 +66,13 @@
         },
         {
           "name": "onselect-carousel-item",
-          "description": "`select-carousel-item` - "
+          "description": "`select-carousel-item` {`CustomEvent<this>`} - "
         }
       ]
     },
     {
       "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\nProperties:\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - ",
+      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nEvents:\n\n  * `selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\nProperties:\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\n  * `selectedIndex` {`number`} - index of selected item\n\n  * `__observer` - mutation observer for tabs\n\n  * `__allowNull` {`boolean`} - allows no item to be selected\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item",
       "attributes": [
         {
           "name": "no-buttons",
@@ -55,40 +91,18 @@
         {
           "name": "nextLabel",
           "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `select-carousel-item` - ",
-      "attributes": [
-        {
-          "name": "onselect-carousel-item",
-          "description": "`select-carousel-item` - "
-        }
-      ]
-    },
-    {
-      "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\nProperties:\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - ",
-      "attributes": [
-        {
-          "name": "no-buttons",
-          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
-          "valueSet": "v"
         },
         {
-          "name": "no-prev-next",
-          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
-          "valueSet": "v"
+          "name": "itemData",
+          "description": "`itemData` {`any[]`} - \n\nProperty: itemData"
         },
         {
-          "name": "prevLabel",
-          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
+          "name": "selection",
+          "description": "`selection` {`string`} - \n\nProperty: selection"
         },
         {
-          "name": "nextLabel",
-          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
+          "name": "onselection-changed",
+          "description": "`selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it."
         }
       ]
     }

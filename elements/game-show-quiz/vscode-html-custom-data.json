@@ -2,6 +2,76 @@
   "version": 1,
   "tags": [
     {
+      "name": "game-show-quiz",
+      "description": "`game-show-quiz`\n`Simple game show with questions and answers`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `game-directions-data` {`string`} - \n\n  * `game-directions` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attempts-data` - \n\n  * `points` - Points object\n\n  * `remaining-attempts` {`number`} - Remaining attempts for the user\n\n  * `directions-title` {`string`} - Title to use on the directions dialog.\n\n  * `question-title` {`string`} - Title to use on the question dialog.\n\n  * `game-board` {`any[]`} - Rows on the gameshow board\n\n  * `game-board-data` - \n\n  * `game-data` {`string`} - URL to load data for the game.\n\n  * `game-score-board-backend` {`string`} - \n\n  * `active-question` - Active item that is in the modal.\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `gameDirectionsData` {`string`} - \n\n  * `gameDirections` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attemptsData` - \n\n  * `points` - Points object\n\n  * `remainingAttempts` {`number`} - Remaining attempts for the user\n\n  * `directionsTitle` {`string`} - Title to use on the directions dialog.\n\n  * `questionTitle` {`string`} - Title to use on the question dialog.\n\n  * `gameBoard` {`any[]`} - Rows on the gameshow board\n\n  * `gameBoardData` - \n\n  * `gameData` {`string`} - URL to load data for the game.\n\n  * `gameScoreBoardBackend` {`string`} - \n\n  * `activeQuestion` - Active item that is in the modal.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title"
+        },
+        {
+          "name": "game-directions-data",
+          "description": "`game-directions-data` {`string`} - \n\nProperty: gameDirectionsData"
+        },
+        {
+          "name": "game-directions",
+          "description": "`game-directions` {`string`} - \n\nProperty: gameDirections"
+        },
+        {
+          "name": "token",
+          "description": "`token` {`string`} - \n\nProperty: token"
+        },
+        {
+          "name": "attempts-data",
+          "description": "`attempts-data` - \n\nProperty: attemptsData\n\nDefault: [object Object]"
+        },
+        {
+          "name": "points",
+          "description": "`points` - Points object\n\nProperty: points\n\nDefault: [object Object]"
+        },
+        {
+          "name": "remaining-attempts",
+          "description": "`remaining-attempts` {`number`} - Remaining attempts for the user\n\nProperty: remainingAttempts\n\nDefault: 30"
+        },
+        {
+          "name": "directions-title",
+          "description": "`directions-title` {`string`} - Title to use on the directions dialog.\n\nProperty: directionsTitle\n\nDefault: Directions"
+        },
+        {
+          "name": "question-title",
+          "description": "`question-title` {`string`} - Title to use on the question dialog.\n\nProperty: questionTitle\n\nDefault: Answer the following"
+        },
+        {
+          "name": "game-board",
+          "description": "`game-board` {`any[]`} - Rows on the gameshow board\n\nProperty: gameBoard"
+        },
+        {
+          "name": "game-board-data",
+          "description": "`game-board-data` - \n\nProperty: gameBoardData"
+        },
+        {
+          "name": "game-data",
+          "description": "`game-data` {`string`} - URL to load data for the game.\n\nProperty: gameData"
+        },
+        {
+          "name": "game-score-board-backend",
+          "description": "`game-score-board-backend` {`string`} - \n\nProperty: gameScoreBoardBackend"
+        },
+        {
+          "name": "active-question",
+          "description": "`active-question` - Active item that is in the modal.\n\nProperty: activeQuestion"
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
+        },
+        {
+          "name": "ongame-show-quiz-game-over",
+          "description": "`game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - "
+        }
+      ]
+    },
+    {
       "name": "game-show-quiz-modal",
       "description": "`game-show-quiz-modal`\n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
       "attributes": [
@@ -13,7 +83,7 @@
     },
     {
       "name": "game-show-quiz",
-      "description": "`game-show-quiz`\n`Simple game show with questions and answers`\n\nEvents:\n\n  * `simple-toast-show` - \n\n  * `game-show-quiz-game-over` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `game-directions-data` {`string`} - \n\n  * `game-directions` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attempts-data` - \n\n  * `points` - Points object\n\n  * `remaining-attempts` {`number`} - Remaining attempts for the user\n\n  * `directions-title` {`string`} - Title to use on the directions dialog.\n\n  * `question-title` {`string`} - Title to use on the question dialog.\n\n  * `game-board` {`any[]`} - Rows on the gameshow board\n\n  * `game-board-data` - \n\n  * `game-data` {`string`} - URL to load data for the game.\n\n  * `game-score-board-backend` {`string`} - \n\n  * `active-question` - Active item that is in the modal.\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `gameDirectionsData` {`string`} - \n\n  * `gameDirections` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attemptsData` - \n\n  * `points` - Points object\n\n  * `remainingAttempts` {`number`} - Remaining attempts for the user\n\n  * `directionsTitle` {`string`} - Title to use on the directions dialog.\n\n  * `questionTitle` {`string`} - Title to use on the question dialog.\n\n  * `gameBoard` {`any[]`} - Rows on the gameshow board\n\n  * `gameBoardData` - \n\n  * `gameData` {`string`} - URL to load data for the game.\n\n  * `gameScoreBoardBackend` {`string`} - \n\n  * `activeQuestion` - Active item that is in the modal.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`game-show-quiz`\n`Simple game show with questions and answers`\n\nEvents:\n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `game-directions-data` {`string`} - \n\n  * `game-directions` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attempts-data` - \n\n  * `points` - Points object\n\n  * `remaining-attempts` {`number`} - Remaining attempts for the user\n\n  * `directions-title` {`string`} - Title to use on the directions dialog.\n\n  * `question-title` {`string`} - Title to use on the question dialog.\n\n  * `game-board` {`any[]`} - Rows on the gameshow board\n\n  * `game-board-data` - \n\n  * `game-data` {`string`} - URL to load data for the game.\n\n  * `game-score-board-backend` {`string`} - \n\n  * `active-question` - Active item that is in the modal.\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `gameDirectionsData` {`string`} - \n\n  * `gameDirections` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attemptsData` - \n\n  * `points` - Points object\n\n  * `remainingAttempts` {`number`} - Remaining attempts for the user\n\n  * `directionsTitle` {`string`} - Title to use on the directions dialog.\n\n  * `questionTitle` {`string`} - Title to use on the question dialog.\n\n  * `gameBoard` {`any[]`} - Rows on the gameshow board\n\n  * `gameBoardData` - \n\n  * `gameData` {`string`} - URL to load data for the game.\n\n  * `gameScoreBoardBackend` {`string`} - \n\n  * `activeQuestion` - Active item that is in the modal.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -73,95 +143,11 @@
         },
         {
           "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
+          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
         },
         {
           "name": "ongame-show-quiz-game-over",
-          "description": "`game-show-quiz-game-over` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `simple-toast-show` - \n\n  * `game-show-quiz-game-over` - ",
-      "attributes": [
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
-        },
-        {
-          "name": "ongame-show-quiz-game-over",
-          "description": "`game-show-quiz-game-over` - "
-        }
-      ]
-    },
-    {
-      "name": "game-show-quiz",
-      "description": "`game-show-quiz`\n`Simple game show with questions and answers`\n\nEvents:\n\n  * `simple-toast-show` - \n\n  * `game-show-quiz-game-over` - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `game-directions-data` {`string`} - \n\n  * `game-directions` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attempts-data` - \n\n  * `points` - Points object\n\n  * `remaining-attempts` {`number`} - Remaining attempts for the user\n\n  * `directions-title` {`string`} - Title to use on the directions dialog.\n\n  * `question-title` {`string`} - Title to use on the question dialog.\n\n  * `game-board` {`any[]`} - Rows on the gameshow board\n\n  * `game-board-data` - \n\n  * `game-data` {`string`} - URL to load data for the game.\n\n  * `game-score-board-backend` {`string`} - \n\n  * `active-question` - Active item that is in the modal.\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `gameDirectionsData` {`string`} - \n\n  * `gameDirections` {`string`} - \n\n  * `token` {`string`} - \n\n  * `attemptsData` - \n\n  * `points` - Points object\n\n  * `remainingAttempts` {`number`} - Remaining attempts for the user\n\n  * `directionsTitle` {`string`} - Title to use on the directions dialog.\n\n  * `questionTitle` {`string`} - Title to use on the question dialog.\n\n  * `gameBoard` {`any[]`} - Rows on the gameshow board\n\n  * `gameBoardData` - \n\n  * `gameData` {`string`} - URL to load data for the game.\n\n  * `gameScoreBoardBackend` {`string`} - \n\n  * `activeQuestion` - Active item that is in the modal.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "game-directions-data",
-          "description": "`game-directions-data` {`string`} - \n\nProperty: gameDirectionsData"
-        },
-        {
-          "name": "game-directions",
-          "description": "`game-directions` {`string`} - \n\nProperty: gameDirections"
-        },
-        {
-          "name": "token",
-          "description": "`token` {`string`} - \n\nProperty: token"
-        },
-        {
-          "name": "attempts-data",
-          "description": "`attempts-data` - \n\nProperty: attemptsData\n\nDefault: [object Object]"
-        },
-        {
-          "name": "points",
-          "description": "`points` - Points object\n\nProperty: points\n\nDefault: [object Object]"
-        },
-        {
-          "name": "remaining-attempts",
-          "description": "`remaining-attempts` {`number`} - Remaining attempts for the user\n\nProperty: remainingAttempts\n\nDefault: 30"
-        },
-        {
-          "name": "directions-title",
-          "description": "`directions-title` {`string`} - Title to use on the directions dialog.\n\nProperty: directionsTitle\n\nDefault: Directions"
-        },
-        {
-          "name": "question-title",
-          "description": "`question-title` {`string`} - Title to use on the question dialog.\n\nProperty: questionTitle\n\nDefault: Answer the following"
-        },
-        {
-          "name": "game-board",
-          "description": "`game-board` {`any[]`} - Rows on the gameshow board\n\nProperty: gameBoard"
-        },
-        {
-          "name": "game-board-data",
-          "description": "`game-board-data` - \n\nProperty: gameBoardData"
-        },
-        {
-          "name": "game-data",
-          "description": "`game-data` {`string`} - URL to load data for the game.\n\nProperty: gameData"
-        },
-        {
-          "name": "game-score-board-backend",
-          "description": "`game-score-board-backend` {`string`} - \n\nProperty: gameScoreBoardBackend"
-        },
-        {
-          "name": "active-question",
-          "description": "`active-question` - Active item that is in the modal.\n\nProperty: activeQuestion"
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` - "
-        },
-        {
-          "name": "ongame-show-quiz-game-over",
-          "description": "`game-show-quiz-game-over` - "
+          "description": "`game-show-quiz-game-over` {`CustomEvent<{ game: string; score: any; }>`} - "
         }
       ]
     }

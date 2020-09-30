@@ -21,10 +21,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "editable-outline",
       "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`\n\nProperties:\n\n  * `items` {`never[]`} - \n\n  * `editMode` {`boolean`} - \n\n  * `jos` - ",
       "attributes": []

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "to-do",
-      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hide-form",
@@ -22,16 +22,20 @@
         {
           "name": "items",
           "description": "`items` {`any[]`} - Items\n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "to-do",
-      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`to-do`\n\nAttributes:\n\n  * `hide-form` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabled-list` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `hideForm` {`boolean`} - Allow for hiding the input form for new data.\n\n  * `disabledList` {`boolean`} - Whether or not the list of items is disabled\ncheckboxes.\n\n  * `name` {`string`} - Name of this to do list\n\n  * `items` {`any[]`} - Items\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "hide-form",
@@ -50,6 +54,14 @@
         {
           "name": "items",
           "description": "`items` {`any[]`} - Items\n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

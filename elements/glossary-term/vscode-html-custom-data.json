@@ -33,10 +33,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "glossary-term",
       "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`\n\nProperties:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - ",
       "attributes": []

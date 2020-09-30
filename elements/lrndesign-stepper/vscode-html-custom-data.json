@@ -2,15 +2,6 @@
   "version": 1,
   "tags": [
     {
-      "name": "lrndesign-stepper",
-      "description": "`lrndesign-stepper`\nvisualization of steps\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": []
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrndesign-stepper-button",
       "description": "`lrndesign-stepper-button`\nvisualization of steps\n\nAttributes:\n\n  * `title` {`string`} - The button title.\n\n  * `icon` {`string`} - The button icon.\n\n  * `url` {`string`} - The url for button.\n\n  * `location` {`string`} - The tab location position (start / middle / end).\n\n  * `collapsible` {`boolean`} - Allow for collapsible content with the items inside\n\n  * `opened` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - The button title.\n\n  * `icon` {`string`} - The button icon.\n\n  * `url` {`string`} - The url for button.\n\n  * `location` {`string`} - The tab location position (start / middle / end).\n\n  * `collapsible` {`boolean`} - Allow for collapsible content with the items inside\n\n  * `opened` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
@@ -41,6 +32,11 @@
           "valueSet": "v"
         }
       ]
+    },
+    {
+      "name": "lrndesign-stepper",
+      "description": "`lrndesign-stepper`\nvisualization of steps\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
     },
     {
       "name": "lrndesign-stepper",

@@ -3,6 +3,11 @@
   "tags": [
     {
       "name": "to-element",
+      "description": "`to-element`\n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
+      "attributes": []
+    },
+    {
+      "name": "to-element",
       "description": "`to-element`\n\nAttributes:\n\n  * `element` - object in question to clone and turn into a custom element\n\n  * `name` {`string`} - valid custom element name of the new element to create\n\n  * `sourceUrl` {`string`} - optional original location that this came from\n\n  * `fileTypes` - MIME type lookup for file extensions\n\nProperties:\n\n  * `element` - object in question to clone and turn into a custom element\n\n  * `name` {`string`} - valid custom element name of the new element to create\n\n  * `sourceUrl` {`string`} - optional original location that this came from\n\n  * `fileTypes` - MIME type lookup for file extensions\n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
       "attributes": [
         {
@@ -22,15 +27,6 @@
           "description": "`fileTypes` - MIME type lookup for file extensions\n\nProperty: fileTypes"
         }
       ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
-      "name": "to-element",
-      "description": "`to-element`\n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

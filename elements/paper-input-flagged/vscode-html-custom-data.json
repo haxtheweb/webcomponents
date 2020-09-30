@@ -49,10 +49,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "paper-input-flagged",
       "description": "`paper-input-flagged`\nA LRN element\n\nAttributes:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `input-success` - Passed tests / success data.\n\n  * `flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperties:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `inputSuccess` - Passed tests / success data.\n\n  * `flaggedInput` {`any[]`} - Input to trap and offer feedback about.",
       "attributes": [

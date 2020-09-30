@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `undo-manager`
  * `an undo history manager element`
@@ -11,11 +10,210 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  *  back to life and this time as LitElement + with the web drastically
  *  moved forward vs when this was originally published (2014).
  *
- * @litelement
- * @demo demo/index.html
  * @element undo-manager
+ * @demo demo/index.html
  */
-class UndoManager extends LitElement {
+const UndoManagerBehaviors = function (SuperClass) {
+  return class extends SuperClass {
+    /**
+     * LitElement / popular convention
+     */
+    static get properties() {
+      return {
+        ...super.properties,
+        /**
+         * If we can currently undo based on stack position
+         */
+        canUndo: {
+          type: Boolean,
+          attribute: "can-undo",
+        },
+        /**
+         * If we can currently redo based on stack position
+         */
+        canRedo: {
+          type: Boolean,
+          attribute: "can-redo",
+        },
+        /**
+         * Properties for the mutation observer
+         */
+        undoStackObserverProps: {
+          type: Object,
+        },
+        /**
+         * Allow for targetting OTHER elements w/ this behavior
+         */
+        target: {
+          type: Object,
+        },
+        /**
+         * The undo stack order
+         */
+        stack: {
+          type: Object,
+        },
+      };
+    }
+    /**
+     * HTMLElement
+     */
+    constructor() {
+      super();
+      this.__StackDebounce;
+      this.undoStackLimit = 20;
+      this.undoStackTimer = 300;
+      this.undoStackIgnore = false;
+      this.undoStackObserver = null;
+      // this is aggressive but it should capture everything
+      this.undoStackObserverProps = {
+        attributes: true,
+        attributeOldValue: true,
+        childList: true,
+        characterData: true,
+        characterDataOldValue: true,
+        subtree: true,
+      };
+      // set beginning value
+      this.undoStackInitialValue = this.innerHTML;
+      // set previous value, to start
+      this.undoStackPrevValue = this.undoStackInitialValue;
+    }
+    /**
+     * Simple path resolution from URL
+     */
+    pathFromUrl(url) {
+      return url.substring(0, url.lastIndexOf("/") + 1);
+    }
+    /**
+     * HTMLElement
+     */
+    connectedCallback() {
+      // watch for changes to the element itself
+      this.undoStackObserver = new MutationObserver((mutations) => {
+        clearTimeout(this.__StackDebounce);
+        this.__StackDebounce = setTimeout(() => {
+          // ensure this was not a change record to perform undo/redo itself!
+          if (this.undoStackIgnore) {
+            this.undoStackIgnore = false;
+            return;
+          }
+          // run the stack logic
+          this.undoManagerStackLogic(mutations);
+        }, this.undoStackTimer);
+      });
+      // watch attributes, children and the subtree for changes
+      this.undoStackObserver.observe(this, this.undoStackObserverProps);
+      this.undoManagerStackLogic({});
+      super.connectedCallback();
+    }
+    /**
+     * While a mutation observer, we only respond to there being ANY change
+     * not the specfic record. This lets the developer select granularity
+     * in what to notice (lots of stuff) yet only push state change
+     * if it matches what they care to monitor as far as detail.
+     * Default is to monitor every possible useful detail
+     */
+    undoManagerStackLogic(mutations) {
+      // compare light dom children to previous value
+      const newValue = this.innerHTML;
+      if (
+        this.undoStack &&
+        newValue != "" &&
+        newValue != this.undoStackPrevValue &&
+        this.undoStackInitialValue != newValue
+      ) {
+        this.undoStack.execute(
+          new UndoManagerCommand(this, this.undoStackPrevValue, newValue)
+        );
+        this.undoStackPrevValue = newValue;
+        // we only notify there WAS a change
+        this.dispatchEvent(
+          new CustomEvent("stack-changed", {
+            detail: {
+              value: this.undoStack,
+            },
+            bubbles: true,
+            composed: true,
+          })
+        );
+      }
+    }
+    /**
+     * HTMLElement
+     */
+    disconnectedCallback() {
+      this.undoObserver.disconnect();
+      super.disconnectedCallback();
+    }
+    /**
+     * LitElement ready
+     */
+    firstUpdated(changedProperties) {
+      if (super.firstUpdated) {
+        super.firstUpdated(changedProperties);
+      }
+      this.undoStack = new Undo();
+      this.undoStack.undoStackLimit = this.undoStackLimit;
+      this.undoStack.undoStackPosition = -1;
+      this.undoStack.commands = [];
+      // simple hook into being notified of changes to the object
+      this.undoStack.changed = (e) => {
+        this.canRedo = this.undoStack.canRedo();
+        this.canUndo = this.undoStack.canUndo();
+      };
+      // execute once just to get these values
+      this.undoStack.changed();
+    }
+    /**
+     * updated / notice property changes
+     */
+    updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
+      }
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName == "canUndo") {
+          // notify
+          this.dispatchEvent(
+            new CustomEvent("can-undo-changed", {
+              detail: {
+                value: this[propName],
+              },
+              bubbles: true,
+              composed: true,
+            })
+          );
+        }
+        if (propName == "canRedo") {
+          // notify
+          this.dispatchEvent(
+            new CustomEvent("can-redo-changed", {
+              detail: {
+                value: this[propName],
+              },
+              bubbles: true,
+              composed: true,
+            })
+          );
+        }
+      });
+    }
+    // execute an undo
+    undo() {
+      return this.undoStack.undo();
+    }
+    // execute a redo
+    redo() {
+      return this.undoStack.redo();
+    }
+    // return a list of the command stack
+    commands() {
+      return this.undoStack.commands;
+    }
+  };
+};
+class UndoManager extends UndoManagerBehaviors(LitElement) {
   /**
    * Convention
    */
@@ -26,198 +224,72 @@ class UndoManager extends LitElement {
    * LitElement render
    */
   render() {
-    return html` <slot></slot> `;
-  }
-  /**
-   * LitElement / popular convention
-   */
-  static get properties() {
-    return {
-      ...super.properties,
-      /**
-       * If we can currently undo based on stack position
-       */
-      canUndo: {
-        type: Boolean,
-        attribute: "can-undo",
-      },
-      /**
-       * If we can currently redo based on stack position
-       */
-      canRedo: {
-        type: Boolean,
-        attribute: "can-redo",
-      },
-      /**
-       * If we're "dirty" meaning stackPosition and savePosition out of sync
-       */
-      isDirty: {
-        type: Boolean,
-        attribute: "is-dirty",
-      },
-      /**
-       * Allow for targetting OTHER elements w/ this behavior
-       */
-      target: {
-        type: Object,
-      },
-    };
-  }
-  /**
-   * HTMLElement
-   */
-  constructor() {
-    super();
-    this.blocked = false;
-    this.observer = null;
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}../../undo.js/undo.js`;
-    window.addEventListener(
-      "es-bridge-undojs-loaded",
-      this._undoLoaded.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("undojs", location);
-  }
-  /**
-   * Simple path resolution from URL
-   */
-  pathFromUrl(url) {
-    return url.substring(0, url.lastIndexOf("/") + 1);
-  }
-  /**
-   * undo.js has loaded, now add the stack in
-   */
-  _undoLoaded(e) {
-    this.stack = new Undo.Stack();
-    // simple hook into being notified of changes to the object
-    this.stack.changed = (e) => {
-      this.canRedo = this.stack.canRedo();
-      this.canUndo = this.stack.canUndo();
-      this.isDirty = this.stack.dirty();
-    };
-    // execute once just to get these values
-    this.stack.changed();
-    // remove listener, we're loaded
-    window.removeEventListener("undo-js-loaded", this._undoLoaded.bind(this));
-  }
-  /**
-   * HTMLElement
-   */
-  connectedCallback() {
-    // watch for changes to the element itself
-    this.observer = new MutationObserver((mutations) => {
-      // ensure this was not a change record to perform undo/redo itself!
-      setTimeout(() => {
-        if (this.blocked) {
-          this.blocked = false;
-          return;
-        }
-        // compare light dom children to previous value
-        const newValue = this.innerHTML;
-        if (this.stack && newValue != this.startValue) {
-          // push an "edit comand"
-          this.stack.execute(
-            new UndoManagerCommand(this, this.startValue, newValue)
-          );
-          this.startValue = newValue;
-        }
-      }, 50);
-    });
-    // watch attributes, children and the subtree for changes
-    this.observer.observe(this, {
-      attributes: true,
-      childList: true,
-      subtree: true,
-    });
-    super.connectedCallback();
-  }
-  /**
-   * HTMLElement
-   */
-  disconnectedCallback() {
-    this.observer.disconnect();
-    super.disconnectedCallback();
-  }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    // ready to go, take a snapshot of our light dom children as text
-    this.startValue = this.innerHTML;
-  }
-  /**
-   * updated / notice property changes
-   */
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "canUndo") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("can-undo-changed", {
-            detail: {
-              value: this[propName],
-            },
-          })
-        );
-      }
-      if (propName == "canRedo") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("can-redo-changed", {
-            detail: {
-              value: this[propName],
-            },
-          })
-        );
-      }
-      if (propName == "isDirty") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("is-dirty-changed", {
-            detail: {
-              value: this[propName],
-            },
-          })
-        );
-      }
-    });
-  }
-  // execute an undo
-  undo() {
-    return this.stack.undo();
-  }
-  // execute a redo
-  redo() {
-    return this.stack.redo();
-  }
-  // return a list of the command stack
-  commands() {
-    return this.stack.commands;
-  }
-  // return current stackPosition index
-  stackPosition() {
-    return this.stack.stackPosition;
-  }
-  // return save index as a reference point
-  savePosition() {
-    return this.stack.savePosition;
-  }
-  /**
-   * Set a save position to check against at a later point in time
-   */
-  save() {
-    this.stack.save();
+    return html`<slot></slot>`;
   }
 }
 customElements.define("undo-manager", UndoManager);
 
+/*
+ * Fork of Undo.js - A undo/redo framework for JavaScript
+ *
+ * http://jzaefferer.github.com/undo
+ *
+ * Copyright (c) 2011 Jörn Zaefferer
+ *
+ * MIT licensed.
+ */
+
+class Undo {
+  constructor() {
+    this.commands = [];
+    this.undoStackPosition = -1;
+    this.undoStackLimit = 20;
+  }
+  execute(command) {
+    // clear out the redo queue
+    this._clearRedo();
+    // run the command (inner for inner)
+    command.execute();
+    // if we're at our limit, start forgetting about past history but not all of it
+    if (this.undoStackLimit == this.commands.length) {
+      this.commands.splice(Math.round(this.commands.length / 3), 1);
+    } else {
+      // move the position forward
+      this.undoStackPosition++;
+    }
+    // push the command into the stack
+    this.commands.push(command);
+    this.changed();
+  }
+  undo() {
+    // sanity check
+    if (this.commands[this.undoStackPosition]) {
+      this.commands[this.undoStackPosition].undo();
+      this.undoStackPosition--;
+      this.changed();
+    }
+  }
+  canUndo() {
+    return this.undoStackPosition >= 0;
+  }
+  redo() {
+    if (this.commands[this.undoStackPosition + 1]) {
+      this.undoStackPosition++;
+      this.commands[this.undoStackPosition].redo();
+      this.changed();
+    }
+  }
+  canRedo() {
+    return this.undoStackPosition < this.commands.length - 1;
+  }
+  // remove right above where we are
+  _clearRedo() {
+    this.commands = this.commands.slice(0, this.undoStackPosition + 1);
+  }
+  changed() {
+    // do nothing, override
+  }
+}
 /**
  * UndoManagerCommand, simple command scaffold to bridge undo.js with element
  */
@@ -232,13 +304,28 @@ class UndoManagerCommand {
   execute() {}
   // perform a "undo"
   undo() {
-    this.el.blocked = true;
-    this.el.innerHTML = this.oldValue;
+    this.el.undoStackIgnore = true;
+    // execute the change in value from what it was to what it is now
+    if (
+      this.el.undoStack.commands &&
+      this.el.undoStack.commands[this.el.undoStack.undoStackPosition - 1]
+    ) {
+      this.el.innerHTML = this.el.undoStack.commands[
+        this.el.undoStack.undoStackPosition - 1
+      ].newValue;
+    } else if (
+      this.el.undoStack.commands &&
+      this.el.undoStack.undoStackPosition === 0
+    ) {
+      this.el.innerHTML = this.el.undoStackInitialValue;
+    } else {
+      this.el.innerHTML = this.oldValue;
+    }
   }
   // perform a "redo"
   redo() {
-    this.el.blocked = true;
+    this.el.undoStackIgnore = true;
     this.el.innerHTML = this.newValue;
   }
 }
-export { UndoManager, UndoManagerCommand };
+export { UndoManager, Undo, UndoManagerCommand, UndoManagerBehaviors };

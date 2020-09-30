@@ -25,10 +25,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "git-corner",
       "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\n",
       "attributes": []

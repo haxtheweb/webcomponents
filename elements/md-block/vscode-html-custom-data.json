@@ -16,10 +16,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "md-block",
       "description": "`md-block`\n`a markdown block`\n\nProperties:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - ",
       "attributes": []

@@ -3,16 +3,87 @@
   "tags": [
     {
       "name": "type-writer",
+      "path": "./src/type-writer.js",
+      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+      "attributes": [
+        {
+          "name": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "delay",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "cursorDuration",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "default": "150"
+        },
+        {
+          "name": "eraseSpeed",
+          "type": "number",
+          "default": "80"
+        },
+        {
+          "name": "typing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "element-visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
+        }
+      ],
+      "events": [
+        {
+          "name": "type-writer-end"
+        }
+      ]
+    },
+    {
+      "name": "type-writer",
       "path": "./type-writer.js",
       "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
       "attributes": [
         {
           "name": "text",
           "type": "string"
-        },
-        {
-          "name": "elementVisible",
-          "type": "boolean"
         },
         {
           "name": "delay",
@@ -38,6 +109,11 @@
           "name": "typing",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "elementVisible",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
@@ -45,11 +121,6 @@
           "name": "text",
           "attribute": "text",
           "type": "string"
-        },
-        {
-          "name": "elementVisible",
-          "attribute": "elementVisible",
-          "type": "boolean"
         },
         {
           "name": "delay",
@@ -80,52 +151,37 @@
           "attribute": "typing",
           "type": "boolean",
           "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "type-writer-end"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "path": "./type-writer.umd.js",
-      "events": [
-        {
-          "name": "type-writer-end"
-        }
-      ]
-    },
-    {
-      "name": "type-writer",
-      "path": "./src/type-writer.js",
-      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
-      "properties": [
-        {
-          "name": "delay",
-          "type": "number",
-          "default": "100"
         },
         {
-          "name": "cursorDuration",
-          "type": "number",
-          "default": "0"
-        },
-        {
-          "name": "speed",
-          "type": "number",
-          "default": "150"
-        },
-        {
-          "name": "eraseSpeed",
-          "type": "number",
-          "default": "80"
-        },
-        {
-          "name": "typing",
+          "name": "elementVisible",
+          "attribute": "elementVisible",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "IOThresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "IORootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "IOVisibleLimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "IORemoveOnVisible",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "IODelay",
+          "type": "number",
+          "default": "100"
         }
       ],
       "events": [

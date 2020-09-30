@@ -130,7 +130,7 @@ class SiteRenderItem extends PolymerElement {
                 })
                 .catch((error) => {
                   /* Error handling */
-                  console.log(error);
+                  console.warn(error);
                 });
             }
           }

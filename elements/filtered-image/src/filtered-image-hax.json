@@ -54,5 +54,8 @@
       }
     ],
     "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["colors"]
   }
 }

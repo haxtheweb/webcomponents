@@ -38,6 +38,24 @@
           "name": "border-spacing",
           "type": "number",
           "default": "5"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"light-blue\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -84,14 +102,26 @@
         },
         {
           "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"light-blue\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ]
-    },
-    {
-      "name": "tag",
-      "path": "./date-card.umd.js"
     },
     {
       "name": "date-card",
@@ -130,6 +160,24 @@
           "name": "border-spacing",
           "type": "number",
           "default": "5"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"light-blue\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -176,8 +224,24 @@
         },
         {
           "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
           "type": "string",
           "default": "\"light-blue\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ]
     }

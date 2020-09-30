@@ -32,7 +32,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   render() {
     return html`
       <slot></slot>
-      <undoer-element></undoer-element>
       <iron-ajax
         id="appstore"
         url="${this.appStore.url}"
@@ -628,6 +627,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     );
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     let loadAppStoreData = false;
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "openDrawer") {
@@ -698,6 +700,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     import("@polymer/iron-ajax/iron-ajax.js").then((esModule) => {
       if (this.shadowRoot.querySelector("#appstore")) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
@@ -1005,10 +1010,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
-      console.log(originalContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
-      console.log(haxElements);
       // if interpretation as HTML fails then let's ignore this whole thing
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
@@ -1138,10 +1141,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 range.commonAncestorContainer &&
                 range.commonAncestorContainer.parentNode
               ) {
-                console.log(range.commonAncestorContainer);
-                console.log(range.commonAncestorContainer.parentNode);
-                console.log(this.activeNode);
-                console.log(this.activeContainerNode);
                 if (
                   !siblingEl &&
                   this.activeNode != range.commonAncestorContainer
@@ -1156,7 +1155,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
                 // should always be there but just in case there was no range
                 // so we avoid an infinite loop
                 if (siblingEl) {
-                  if (siblingEl.getAttribute("slot")) {
+                  // account for a potential textnode
+                  if (
+                    siblingEl.getAttribute &&
+                    siblingEl.getAttribute("slot")
+                  ) {
                     activeEl.setAttribute(
                       "slot",
                       siblingEl.getAttribute("slot")

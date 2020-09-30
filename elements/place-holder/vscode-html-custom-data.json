@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "place-holder",
-      "description": "`place-holder`\n\nEvents:\n\n  * `place-holder-replace` - \n\n  * `place-holder-file-drop` - \n\nAttributes:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `drag-over` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\nProperties:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `dragOver` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - ",
+      "description": "`place-holder`\n\nEvents:\n\n  * `place-holder-replace` {`CustomEvent<string>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `drag-over` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `dragOver` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "iconFromType",
@@ -31,32 +31,31 @@
           "description": "`directions` {`string`} - \n\nProperty: directions\n\nDefault: Double click or drag and drop file to replace"
         },
         {
-          "name": "onplace-holder-replace",
-          "description": "`place-holder-replace` - "
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "onplace-holder-file-drop",
-          "description": "`place-holder-file-drop` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `place-holder-file-drop` - \n\n  * `place-holder-replace` - ",
-      "attributes": [
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
         {
-          "name": "onplace-holder-file-drop",
-          "description": "`place-holder-file-drop` - "
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onplace-holder-replace",
-          "description": "`place-holder-replace` - "
+          "description": "`place-holder-replace` {`CustomEvent<string>`} - "
+        },
+        {
+          "name": "onplace-holder-file-drop",
+          "description": "`place-holder-file-drop` {`CustomEvent<any>`} - "
         }
       ]
     },
     {
       "name": "place-holder",
-      "description": "`place-holder`\n\nEvents:\n\n  * `place-holder-replace` - \n\n  * `place-holder-file-drop` - \n\nAttributes:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `drag-over` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\nProperties:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `dragOver` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - ",
+      "description": "`place-holder`\n\nEvents:\n\n  * `place-holder-replace` {`CustomEvent<string>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `drag-over` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `dragOver` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "iconFromType",
@@ -84,12 +83,25 @@
           "description": "`directions` {`string`} - \n\nProperty: directions\n\nDefault: Double click or drag and drop file to replace"
         },
         {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        },
+        {
           "name": "onplace-holder-replace",
-          "description": "`place-holder-replace` - "
+          "description": "`place-holder-replace` {`CustomEvent<string>`} - "
         },
         {
           "name": "onplace-holder-file-drop",
-          "description": "`place-holder-file-drop` - "
+          "description": "`place-holder-file-drop` {`CustomEvent<any>`} - "
         }
       ]
     }

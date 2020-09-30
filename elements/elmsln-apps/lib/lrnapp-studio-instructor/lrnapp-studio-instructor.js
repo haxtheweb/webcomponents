@@ -36,7 +36,7 @@ class LrnappStudioInstructor extends PolymerElement {
   static get template() {
     return html`
     <style include="materializecss-styles">
-      [hidden] {
+      :host([hidden]) {
         display: none !important;
       }
       :host {

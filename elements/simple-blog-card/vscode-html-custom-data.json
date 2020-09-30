@@ -56,10 +56,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "simple-blog-card",
       "description": "`simple-blog-card`\n`a card commonly found on a blogging website`\n\nProperties:\n\n  * `placeholder` {`string`} - \n\n  * `size` {`string`} - \n\n  * `shadow` {`number`} - ",
       "attributes": []

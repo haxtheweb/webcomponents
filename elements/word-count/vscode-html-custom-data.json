@@ -16,10 +16,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "word-count",
       "description": "`word-count`\n`Count the words on whatever this wraps`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - ",
       "attributes": [

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrndesign-blockquote",
-      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "citation",
@@ -28,16 +28,20 @@
         {
           "name": "display-mode",
           "description": "`display-mode` {`string`} - Funny 1900s vision.\n\nProperty: displayMode\n\nDefault: default"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrndesign-blockquote",
-      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`\n\nAttributes:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `source-link` {`string`} - Optional source that links to where the quote is from\n\n  * `display-mode` {`string`} - Funny 1900s vision.\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `citation` {`string`} - Source being cited\n\n  * `image` {`string`} - Optional image to use\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `author` {`string`} - Optional author of the quote\n\n  * `sourceLink` {`string`} - Optional source that links to where the quote is from\n\n  * `displayMode` {`string`} - Funny 1900s vision.\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "citation",
@@ -62,6 +66,14 @@
         {
           "name": "display-mode",
           "description": "`display-mode` {`string`} - Funny 1900s vision.\n\nProperty: displayMode\n\nDefault: default"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

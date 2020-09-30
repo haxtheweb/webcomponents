@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "data-source",
@@ -32,16 +32,25 @@
         {
           "name": "table-data",
           "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "data-source",
@@ -70,6 +79,19 @@
         {
           "name": "table-data",
           "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         }
       ]
     }

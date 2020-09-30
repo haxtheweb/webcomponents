@@ -34,6 +34,24 @@
           "name": "hover-state",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ],
       "properties": [
@@ -72,22 +90,80 @@
           "attribute": "hover-state",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ]
-    },
-    {
-      "name": "tag",
-      "path": "./retro-card.umd.js"
     },
     {
       "name": "retro-card",
       "path": "./src/retro-card.js",
       "description": "`retro-card`\n`Simple card in a cool retro design`",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
+        }
+      ],
       "properties": [
         {
           "name": "hoverState",
           "type": "boolean",
           "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "make the default theme dark?",
+          "type": "object",
+          "default": "\"colors\""
         }
       ]
     }

@@ -21,10 +21,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "code-sample",
       "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nProperties:\n\n  * `_observer` - \n\n  * `theme` - \n\n  * `copyClipboardButton` {`boolean`} - ",
       "attributes": []

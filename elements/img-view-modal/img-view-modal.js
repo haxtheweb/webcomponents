@@ -145,7 +145,6 @@ class ImgViewModal extends LitElement {
     Object.keys(imgStyles || {}).forEach((key) =>
       img.style.setProperty(key, imgStyles[key])
     );
-    console.log("modalOpen", this.figures, this.page);
 
     this.dispatchEvent(
       new CustomEvent("modal-button-click", {

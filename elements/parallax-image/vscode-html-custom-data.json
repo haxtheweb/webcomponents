@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "described-by",
@@ -12,16 +12,20 @@
         {
           "name": "image-bg",
           "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageBg` {`string`} - Image\n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "described-by",
@@ -30,6 +34,14 @@
         {
           "name": "image-bg",
           "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

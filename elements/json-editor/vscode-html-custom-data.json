@@ -38,10 +38,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "json-editor",
       "description": "`json-editor`\n`simple JSON blob data binding to a text area`\n\nProperties:\n\n  * `label` {`string`} - \n\n  * `error` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `maxRows` {`number`} - \n\n  * `value` {`string`} - ",
       "attributes": []

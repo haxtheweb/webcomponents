@@ -29,10 +29,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "wikipedia-query",
       "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - ",
       "attributes": [

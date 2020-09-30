@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrndesign-bar",
-      "description": "`lrndesign-bar`\na bar chart\n\nAttributes:\n\n  * `axis-x-only-integer` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\n  * `axis-x-min-space` {`number`} - TODO\n\n  * `distribute-series` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\n  * `horizontal-bars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\n  * `reference-value` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\n  * `series-bar-distance` {`number`} - Specify the distance in pixel of bars in a group.\n\n  * `stack-bars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\n  * `stack-mode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\n  * `accent-color` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `axisXOnlyInteger` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\n  * `axisXScaleMinSpace` {`number`} - TODO\n\n  * `distributeSeries` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\n  * `horizontalBars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\n  * `referenceValue` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\n  * `seriesBarDistance` {`number`} - Specify the distance in pixel of bars in a group.\n\n  * `stackBars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\n  * `stackMode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\n  * `accentColor` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `axisTitles` {`{ axisX: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; axisY: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; } | undefined`} - gets axis title options\n\n  * `lineBarOptions` - override this with type-specific options\n\n  * `options` {`any[]`} - gets options as an array",
+      "description": "`lrndesign-bar`\na bar chart\n\nEvents:\n\n  * `chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready.\n\n  * `chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes\n\n  * `data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes\n\n  * `data-changed` {`CustomEvent<this>`} - Fires when data changes\n\n  * `chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering.\n\n  * `chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added.\n\n  * `chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn.\n\nAttributes:\n\n  * `axis-x-only-integer` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\n  * `axis-x-min-space` {`number`} - TODO\n\n  * `distribute-series` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\n  * `horizontal-bars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\n  * `reference-value` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\n  * `series-bar-distance` {`number`} - Specify the distance in pixel of bars in a group.\n\n  * `stack-bars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\n  * `stack-mode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` {`any[]`} - gets options as an array\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `show-table` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `accent-color` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `axisXOnlyInteger` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\n  * `axisXScaleMinSpace` {`number`} - TODO\n\n  * `distributeSeries` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\n  * `horizontalBars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\n  * `referenceValue` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\n  * `seriesBarDistance` {`number`} - Specify the distance in pixel of bars in a group.\n\n  * `stackBars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\n  * `stackMode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `axisTitles` {`{ axisX: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; axisY: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; } | undefined`} - gets axis title options\n\n  * `lineBarOptions` - override this with type-specific options\n\n  * `chartTitle` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chartData` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chartDesc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` {`any[]`} - gets options as an array\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `plugins` {`string[][]`} - an array of plugins to load as [ [classname,  relativePath] ]\n\n  * `observer` - mutation observer for table\n\n  * `fullOptions` - gets options plus plugins\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsiveOptions` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `showTable` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `__chartId` {`string`} - \n\n  * `accentColor` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "axis-x-only-integer",
@@ -43,15 +43,6 @@
           "valueSet": "v"
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - Location of the CSV file.\n\nProperty: accentColor"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - Location of the CSV file.\n\nProperty: dark",
-          "valueSet": "v"
-        },
-        {
           "name": "height",
           "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
         },
@@ -63,12 +54,110 @@
         {
           "name": "width",
           "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "chart-title",
+          "description": "`chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\nProperty: chartTitle"
+        },
+        {
+          "name": "chart-data",
+          "description": "`chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\nProperty: chartData"
+        },
+        {
+          "name": "chart-desc",
+          "description": "`chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\nProperty: chartDesc"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - gets options as an array\n\nProperty: options"
+        },
+        {
+          "name": "pluginAxisTitle",
+          "description": "`pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\nProperty: pluginAxisTitle"
+        },
+        {
+          "name": "pluginPointLabels",
+          "description": "`pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\nProperty: pluginPointLabels"
+        },
+        {
+          "name": "pluginFillDonutItems",
+          "description": "`pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\nProperty: pluginFillDonutItems"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The unique identifier of the chart.\n\nProperty: id\n\nDefault: chart"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - The type of chart:bar, line, or pie\n\nProperty: type\n\nDefault: bar"
+        },
+        {
+          "name": "scale",
+          "description": "`scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\nProperty: scale\n\nDefault: ct-minor-seventh"
+        },
+        {
+          "name": "responsive-options",
+          "description": "`responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\nProperty: responsiveOptions\n\nDefault: "
+        },
+        {
+          "name": "data",
+          "description": "`data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\nProperty: data\n\nDefault: "
+        },
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource\n\nDefault: "
+        },
+        {
+          "name": "show-table",
+          "description": "`show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperty: showTable\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - Location of the CSV file.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - Location of the CSV file.\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        },
+        {
+          "name": "onchartist-render-ready",
+          "description": "`chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready."
+        },
+        {
+          "name": "onchart-data-changed",
+          "description": "`chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes"
+        },
+        {
+          "name": "ondata-changed",
+          "description": "`data-changed` {`CustomEvent<this>`} - Fires when data changes"
+        },
+        {
+          "name": "onchartist-render-data",
+          "description": "`chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering."
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added."
+        },
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn."
         }
       ]
     },
     {
       "name": "lrndesign-line",
-      "description": "`lrndesign-line`\na line chart\n\nAttributes:\n\n  * `area-base` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\n  * `full-width` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\n  * `line-smooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\n  * `show-area` {`boolean`} - If the line chart should draw an area.\n\n  * `show-line` {`boolean`} - If the line should be drawn or not.\n\n  * `show-point` {`boolean`} - If the line should be drawn or not.\n\n  * `show-point-labels` {`boolean`} - Optional point labels\n\n  * `point-labels-anchor` {`string`} - Optional anchor for point labels\n\n  * `point-labels-offset-x` {`number`} - Optional x-offset for point labels\n\n  * `point-labels-offset-y` {`number`} - Optional y-offset for point labels\n\n  * `pointLabelFunction` - Optional interpolation function for point labels\n\n  * `accent-color` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `areaBase` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\n  * `fullWidth` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\n  * `lineSmooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\n  * `showArea` {`boolean`} - If the line chart should draw an area.\n\n  * `showLine` {`boolean`} - If the line should be drawn or not.\n\n  * `showPoint` {`boolean`} - If the line should be drawn or not.\n\n  * `showPointLabels` {`boolean`} - Optional point labels\n\n  * `pointLabelsAnchor` {`string`} - Optional anchor for point labels\n\n  * `pointLabelsOffsetX` {`number`} - Optional x-offset for point labels\n\n  * `pointLabelsOffsetY` {`number`} - Optional y-offset for point labels\n\n  * `pointLabelFunction` - Optional interpolation function for point labels\n\n  * `pointLabels` {`{ labelOffset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; labelInterpolationFnc: any; } | undefined`} - gets axis title options\n\n  * `accentColor` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `axisTitles` {`{ axisX: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; axisY: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; } | undefined`} - gets axis title options\n\n  * `lineBarOptions` - override this with type-specific options\n\n  * `options` {`any[]`} - gets options as an array",
+      "description": "`lrndesign-line`\na line chart\n\nEvents:\n\n  * `chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready.\n\n  * `chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes\n\n  * `data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes\n\n  * `data-changed` {`CustomEvent<this>`} - Fires when data changes\n\n  * `chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering.\n\n  * `chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added.\n\n  * `chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn.\n\nAttributes:\n\n  * `area-base` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\n  * `full-width` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\n  * `line-smooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\n  * `show-area` {`boolean`} - If the line chart should draw an area.\n\n  * `show-line` {`boolean`} - If the line should be drawn or not.\n\n  * `show-point` {`boolean`} - If the line should be drawn or not.\n\n  * `show-point-labels` {`boolean`} - Optional point labels\n\n  * `point-labels-anchor` {`string`} - Optional anchor for point labels\n\n  * `point-labels-offset-x` {`number`} - Optional x-offset for point labels\n\n  * `point-labels-offset-y` {`number`} - Optional y-offset for point labels\n\n  * `pointLabelFunction` - Optional interpolation function for point labels\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` {`any[]`} - gets options as an array\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `show-table` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `accent-color` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `areaBase` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\n  * `fullWidth` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\n  * `lineSmooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\n  * `showArea` {`boolean`} - If the line chart should draw an area.\n\n  * `showLine` {`boolean`} - If the line should be drawn or not.\n\n  * `showPoint` {`boolean`} - If the line should be drawn or not.\n\n  * `showPointLabels` {`boolean`} - Optional point labels\n\n  * `pointLabelsAnchor` {`string`} - Optional anchor for point labels\n\n  * `pointLabelsOffsetX` {`number`} - Optional x-offset for point labels\n\n  * `pointLabelsOffsetY` {`number`} - Optional y-offset for point labels\n\n  * `pointLabelFunction` - Optional interpolation function for point labels\n\n  * `pointLabels` {`{ labelOffset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; labelInterpolationFnc: any; } | undefined`} - gets axis title options\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `axisTitles` {`{ axisX: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; axisY: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; } | undefined`} - gets axis title options\n\n  * `lineBarOptions` - override this with type-specific options\n\n  * `chartTitle` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chartData` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chartDesc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` {`any[]`} - gets options as an array\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `plugins` {`string[][]`} - an array of plugins to load as [ [classname,  relativePath] ]\n\n  * `observer` - mutation observer for table\n\n  * `fullOptions` - gets options plus plugins\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsiveOptions` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `showTable` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `__chartId` {`string`} - \n\n  * `accentColor` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "area-base",
@@ -121,15 +210,6 @@
           "description": "`pointLabelFunction` - Optional interpolation function for point labels\n\nProperty: pointLabelFunction"
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - Location of the CSV file.\n\nProperty: accentColor"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - Location of the CSV file.\n\nProperty: dark",
-          "valueSet": "v"
-        },
-        {
           "name": "height",
           "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
         },
@@ -141,12 +221,110 @@
         {
           "name": "width",
           "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "chart-title",
+          "description": "`chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\nProperty: chartTitle"
+        },
+        {
+          "name": "chart-data",
+          "description": "`chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\nProperty: chartData"
+        },
+        {
+          "name": "chart-desc",
+          "description": "`chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\nProperty: chartDesc"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - gets options as an array\n\nProperty: options"
+        },
+        {
+          "name": "pluginAxisTitle",
+          "description": "`pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\nProperty: pluginAxisTitle"
+        },
+        {
+          "name": "pluginPointLabels",
+          "description": "`pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\nProperty: pluginPointLabels"
+        },
+        {
+          "name": "pluginFillDonutItems",
+          "description": "`pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\nProperty: pluginFillDonutItems"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The unique identifier of the chart.\n\nProperty: id\n\nDefault: chart"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - The type of chart:bar, line, or pie\n\nProperty: type\n\nDefault: bar"
+        },
+        {
+          "name": "scale",
+          "description": "`scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\nProperty: scale\n\nDefault: ct-minor-seventh"
+        },
+        {
+          "name": "responsive-options",
+          "description": "`responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\nProperty: responsiveOptions\n\nDefault: "
+        },
+        {
+          "name": "data",
+          "description": "`data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\nProperty: data\n\nDefault: "
+        },
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource\n\nDefault: "
+        },
+        {
+          "name": "show-table",
+          "description": "`show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperty: showTable\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - Location of the CSV file.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - Location of the CSV file.\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        },
+        {
+          "name": "onchartist-render-ready",
+          "description": "`chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready."
+        },
+        {
+          "name": "onchart-data-changed",
+          "description": "`chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes"
+        },
+        {
+          "name": "ondata-changed",
+          "description": "`data-changed` {`CustomEvent<this>`} - Fires when data changes"
+        },
+        {
+          "name": "onchartist-render-data",
+          "description": "`chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering."
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added."
+        },
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn."
         }
       ]
     },
     {
       "name": "lrndesign-pie",
-      "description": "`lrndesign-pie`\na pie chart\n\nAttributes:\n\n  * `chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\n  * `donut` {`boolean`} - Displays chart as donut instead of pie.\n\n  * `donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\n  * `donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\n  * `ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\n  * `labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\n  * `labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\n  * `label-position` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\n  * `showLabel` {`boolean`} - If a label should be shown.\n\n  * `startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\n  * `total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\n  * `accent-color` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\n  * `donut` {`boolean`} - Displays chart as donut instead of pie.\n\n  * `donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\n  * `donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\n  * `ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\n  * `labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\n  * `labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\n  * `labelPosition` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\n  * `showLabel` {`boolean`} - If a label should be shown.\n\n  * `startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\n  * `total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\n  * `accentColor` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `axisTitles` {`{ axisX: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; axisY: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; } | undefined`} - gets axis title options\n\n  * `lineBarOptions` - override this with type-specific options\n\n  * `options` {`any[]`} - gets options as an array",
+      "description": "`lrndesign-pie`\na pie chart\n\nEvents:\n\n  * `chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready.\n\n  * `chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes\n\n  * `data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes\n\n  * `data-changed` {`CustomEvent<this>`} - Fires when data changes\n\n  * `chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering.\n\n  * `chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added.\n\n  * `chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn.\n\nAttributes:\n\n  * `chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\n  * `donut` {`boolean`} - Displays chart as donut instead of pie.\n\n  * `donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\n  * `donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\n  * `ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\n  * `labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\n  * `labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\n  * `label-position` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\n  * `showLabel` {`boolean`} - If a label should be shown.\n\n  * `startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\n  * `total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` {`any[]`} - gets options as an array\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `show-table` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `accent-color` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\n  * `donut` {`boolean`} - Displays chart as donut instead of pie.\n\n  * `donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\n  * `donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\n  * `ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\n  * `labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\n  * `labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\n  * `labelPosition` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\n  * `showLabel` {`boolean`} - If a label should be shown.\n\n  * `startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\n  * `total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\n  * `axisTitles` {`{ axisX: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; axisY: { axisTitle: any; offset: { x: number | undefined; y: number | undefined; }; textAnchor: string | undefined; }; } | undefined`} - gets axis title options\n\n  * `lineBarOptions` - override this with type-specific options\n\n  * `chartTitle` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chartData` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chartDesc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` {`any[]`} - gets options as an array\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `plugins` {`string[][]`} - an array of plugins to load as [ [classname,  relativePath] ]\n\n  * `observer` - mutation observer for table\n\n  * `fullOptions` - gets options plus plugins\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsiveOptions` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `showTable` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `__chartId` {`string`} - \n\n  * `accentColor` {`string`} - Location of the CSV file.\n\n  * `dark` {`boolean`} - Location of the CSV file.\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "chartPadding",
@@ -197,15 +375,6 @@
           "description": "`total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\nProperty: total"
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - Location of the CSV file.\n\nProperty: accentColor"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - Location of the CSV file.\n\nProperty: dark",
-          "valueSet": "v"
-        },
-        {
           "name": "height",
           "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
         },
@@ -217,6 +386,104 @@
         {
           "name": "width",
           "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "chart-title",
+          "description": "`chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\nProperty: chartTitle"
+        },
+        {
+          "name": "chart-data",
+          "description": "`chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\nProperty: chartData"
+        },
+        {
+          "name": "chart-desc",
+          "description": "`chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\nProperty: chartDesc"
+        },
+        {
+          "name": "options",
+          "description": "`options` {`any[]`} - gets options as an array\n\nProperty: options"
+        },
+        {
+          "name": "pluginAxisTitle",
+          "description": "`pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\nProperty: pluginAxisTitle"
+        },
+        {
+          "name": "pluginPointLabels",
+          "description": "`pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\nProperty: pluginPointLabels"
+        },
+        {
+          "name": "pluginFillDonutItems",
+          "description": "`pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\nProperty: pluginFillDonutItems"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The unique identifier of the chart.\n\nProperty: id\n\nDefault: chart"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - The type of chart:bar, line, or pie\n\nProperty: type\n\nDefault: bar"
+        },
+        {
+          "name": "scale",
+          "description": "`scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\nProperty: scale\n\nDefault: ct-minor-seventh"
+        },
+        {
+          "name": "responsive-options",
+          "description": "`responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\nProperty: responsiveOptions\n\nDefault: "
+        },
+        {
+          "name": "data",
+          "description": "`data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\nProperty: data\n\nDefault: "
+        },
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource\n\nDefault: "
+        },
+        {
+          "name": "show-table",
+          "description": "`show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperty: showTable\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - Location of the CSV file.\n\nProperty: accentColor\n\nDefault: grey"
+        },
+        {
+          "name": "dark",
+          "description": "`dark` {`boolean`} - Location of the CSV file.\n\nProperty: dark\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
+        },
+        {
+          "name": "onchartist-render-ready",
+          "description": "`chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready."
+        },
+        {
+          "name": "onchart-data-changed",
+          "description": "`chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes"
+        },
+        {
+          "name": "ondata-changed",
+          "description": "`data-changed` {`CustomEvent<this>`} - Fires when data changes"
+        },
+        {
+          "name": "onchartist-render-data",
+          "description": "`chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering."
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added."
+        },
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn."
         }
       ]
     }

@@ -25,10 +25,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "simple-datetime",
       "description": "`simple-datetime`\n\nAttributes:\n\n  * `timestamp` {`number`} - Javascript timestamp\n\n  * `date` {`string`} - Date, generated from timestamp + format\n\n  * `format` {`string`} - Format to output, see https://github.com/jacwright/date.format#supported-identifiers\n\n  * `unix` {`boolean`} - Support for UNIX timestamp conversion on the fly\n\nProperties:\n\n  * `timestamp` {`number`} - Javascript timestamp\n\n  * `date` {`string`} - Date, generated from timestamp + format\n\n  * `format` {`string`} - Format to output, see https://github.com/jacwright/date.format#supported-identifiers\n\n  * `unix` {`boolean`} - Support for UNIX timestamp conversion on the fly",
       "attributes": [

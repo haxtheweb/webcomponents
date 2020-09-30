@@ -274,23 +274,6 @@ class HaxAppPicker extends LitElement {
             detail: this._elements[key],
           })
         );
-      } else if (this.pickerType == "delete") {
-        if (this._elements[key]["title"] === "Yes") {
-          if (
-            window.HaxStore.instance.activeHaxBody.activeNode !==
-            window.HaxStore.instance.activeHaxBody.activeContainerNode
-          ) {
-            window.HaxStore.instance.activeHaxBody.haxDeleteNode(
-              window.HaxStore.instance.activeHaxBody.activeNode,
-              window.HaxStore.instance.activeHaxBody.activeContainerNode
-            );
-          } else {
-            window.HaxStore.instance.activeHaxBody.haxDeleteNode(
-              window.HaxStore.instance.activeHaxBody.activeNode
-            );
-          }
-          window.HaxStore.toast("Element deleted", 2000);
-        }
       } else {
         // bubble this up
         this.dispatchEvent(

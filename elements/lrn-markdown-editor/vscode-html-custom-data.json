@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "lrn-markdown-editor-editor",
-      "description": "Events:\n\n  * `content-changed` - \n\n  * `content-updated` - \n\nAttributes:\n\n  * `content` {`string`} - \n\nProperties:\n\n  * `content` {`string`} - ",
+      "description": "Events:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `content-updated` {`CustomEvent<{ content: any; }>`} - \n\nAttributes:\n\n  * `content` {`string`} - \n\nProperties:\n\n  * `content` {`string`} - ",
       "attributes": [
         {
           "name": "content",
@@ -11,17 +11,17 @@
         },
         {
           "name": "oncontent-changed",
-          "description": "`content-changed` - "
+          "description": "`content-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "oncontent-updated",
-          "description": "`content-updated` - "
+          "description": "`content-updated` {`CustomEvent<{ content: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
+      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
       "attributes": [
         {
           "name": "selected",
@@ -47,27 +47,13 @@
         },
         {
           "name": "oncontent-changed",
-          "description": "`content-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `content-changed` - \n\n  * `content-updated` - ",
-      "attributes": [
-        {
-          "name": "oncontent-changed",
-          "description": "`content-changed` - "
-        },
-        {
-          "name": "oncontent-updated",
-          "description": "`content-updated` - "
+          "description": "`content-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-markdown-editor",
-      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
+      "description": "`lrn-markdown-editor`\n\nEvents:\n\n  * `content-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `el-ready` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `layout` {`string`} - \n\n  * `content` {`string`} - \n\n  * `cookies` {`boolean`} - \n\n  * `elReady` {`boolean`} - ",
       "attributes": [
         {
           "name": "selected",
@@ -93,7 +79,7 @@
         },
         {
           "name": "oncontent-changed",
-          "description": "`content-changed` - "
+          "description": "`content-changed` {`CustomEvent<{ value: any; }>`} - "
         }
       ]
     }

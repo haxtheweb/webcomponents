@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "count-up",
-      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nAttributes:\n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\nProperties:\n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting",
+      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nAttributes:\n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\n  * `elementVisible` {`boolean`} - \n\nProperties:\n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
       "attributes": [
         {
           "name": "thresholds",
@@ -16,11 +16,6 @@
         {
           "name": "ratio",
           "description": "`ratio` {`number`} - \n\nProperty: ratio"
-        },
-        {
-          "name": "elementVisible",
-          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible",
-          "valueSet": "v"
         },
         {
           "name": "start",
@@ -58,17 +53,24 @@
         {
           "name": "suffixtext",
           "description": "`suffixtext` {`string`} - suffix string after the number counting\n\nProperty: suffixtext\n\nDefault:  "
+        },
+        {
+          "name": "elementVisible",
+          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "count-up",
-      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nProperties:\n\n  * `start` {`number`} - \n\n  * `end` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `noeasing` {`boolean`} - \n\n  * `decimalplaces` {`number`} - \n\n  * `separator` {`string`} - \n\n  * `decimal` {`string`} - \n\n  * `prefixtext` {`string`} - \n\n  * `suffixtext` {`string`} - ",
-      "attributes": []
+      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nAttributes:\n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `start` {`number`} - \n\n  * `end` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `noeasing` {`boolean`} - \n\n  * `decimalplaces` {`number`} - \n\n  * `separator` {`string`} - \n\n  * `decimal` {`string`} - \n\n  * `prefixtext` {`string`} - \n\n  * `suffixtext` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - ",
+      "attributes": [
+        {
+          "name": "element-visible",
+          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     }
   ],
   "globalAttributes": [],

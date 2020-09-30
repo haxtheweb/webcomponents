@@ -2,8 +2,39 @@
   "version": 1,
   "tags": [
     {
+      "name": "editable-list",
+      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array\n\nProperties:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array",
+      "attributes": [
+        {
+          "name": "activeElement",
+          "description": "`activeElement` - Active element being worked on in the list\n\nProperty: activeElement"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - ability to edit the items in the list\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "items",
+          "description": "`items` {`any[]`} - items array\n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "onedit-mode-changed",
+          "description": "`edit-mode-changed` {`CustomEvent<{ value: any; }>`} - "
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - "
+        },
+        {
+          "name": "onsimple-modal-hide",
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
+        }
+      ]
+    },
+    {
       "name": "editable-list-item",
-      "description": "`editable-list-item`\n`an individual list item`\n\nEvents:\n\n  * `edit-mode-changed` - \n\n  * `editable-list-item-delete` - \n\nAttributes:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `can-edit` {`boolean`} - Permission to edit this\n\n  * `can-delete` {`boolean`} - Permission to delete this\n\nProperties:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `canEdit` {`boolean`} - Permission to edit this\n\n  * `canDelete` {`boolean`} - Permission to delete this",
+      "description": "`editable-list-item`\n`an individual list item`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `editable-list-item-delete` {`CustomEvent<{ element: this; }>`} - \n\nAttributes:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `can-edit` {`boolean`} - Permission to edit this\n\n  * `can-delete` {`boolean`} - Permission to delete this\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - make the default theme dark?\n\nProperties:\n\n  * `value` {`string`} - The value that gets bound into the text field\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `editing` {`boolean`} - Editing state of the item\n\n  * `canEdit` {`boolean`} - Permission to edit this\n\n  * `canDelete` {`boolean`} - Permission to delete this\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `__utils` - \n\n  * `colors` - make the default theme dark?",
       "attributes": [
         {
           "name": "value",
@@ -30,83 +61,43 @@
           "valueSet": "v"
         },
         {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` - "
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
         },
         {
-          "name": "oneditable-list-item-delete",
-          "description": "`editable-list-item-delete` - "
-        }
-      ]
-    },
-    {
-      "name": "editable-list",
-      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` - \n\n  * `simple-modal-show` - \n\n  * `simple-modal-hide` - \n\nAttributes:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `edit-mode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array\n\nProperties:\n\n  * `activeElement` - Active element being worked on in the list\n\n  * `editMode` {`boolean`} - ability to edit the items in the list\n\n  * `items` {`any[]`} - items array",
-      "attributes": [
-        {
-          "name": "activeElement",
-          "description": "`activeElement` - Active element being worked on in the list\n\nProperty: activeElement"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - ability to edit the items in the list\n\nProperty: editMode\n\nDefault: false",
+          "name": "dark",
+          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
           "valueSet": "v"
         },
         {
-          "name": "items",
-          "description": "`items` {`any[]`} - items array\n\nProperty: items\n\nDefault: "
+          "name": "colors",
+          "description": "`colors` - make the default theme dark?\n\nProperty: colors\n\nDefault: colors"
         },
         {
           "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` - "
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `edit-mode-changed` - \n\n  * `editable-list-item-delete` - \n\n  * `simple-modal-show` - \n\n  * `simple-modal-hide` - ",
-      "attributes": [
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` - "
+          "description": "`edit-mode-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "oneditable-list-item-delete",
-          "description": "`editable-list-item-delete` - "
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` - "
+          "description": "`editable-list-item-delete` {`CustomEvent<{ element: this; }>`} - "
         }
       ]
     },
     {
       "name": "editable-list",
-      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` - \n\n  * `simple-modal-show` - \n\n  * `simple-modal-hide` - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `items` {`never[]`} - ",
+      "description": "`editable-list`\n`a listing of items that can be edited in place with operations`\n\nEvents:\n\n  * `edit-mode-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `items` {`never[]`} - ",
       "attributes": [
         {
           "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` - "
+          "description": "`edit-mode-changed` {`CustomEvent<{ value: any; }>`} - "
         },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLDivElement; buttons: HTMLDivElement; }; invokedBy: any; clone: boolean; }>`} - "
         },
         {
           "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` - "
+          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
         }
       ]
     }

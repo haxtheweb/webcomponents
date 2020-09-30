@@ -54,10 +54,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "social-share-link",
       "description": "`social-share-link`\n`a link to share content on social`\n\nProperties:\n\n  * `buttonStyle` {`boolean`} - \n\n  * `image` {`string`} - \n\n  * `message` {`string`} - \n\n  * `mode` - \n\n  * `text` - \n\n  * `type` {`string`} - \n\n  * `url` - ",
       "attributes": []

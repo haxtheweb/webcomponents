@@ -436,7 +436,7 @@ class HAXCMSSiteBuilder extends LitElement {
       })
       .catch((error) => {
         /* Error handling */
-        console.log(error);
+        console.warn(error);
       });
     var evt = document.createEvent("UIEvents");
     evt.initUIEvent("resize", true, false, window, 0);
@@ -554,7 +554,7 @@ class HAXCMSSiteBuilder extends LitElement {
                   })
                   .catch((error) => {
                     /* Error handling */
-                    console.log(error);
+                    console.warn(error);
                   });
               }
             }

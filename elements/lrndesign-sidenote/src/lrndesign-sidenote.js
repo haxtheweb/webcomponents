@@ -76,6 +76,9 @@ class LrndesignSidenote extends SimpleColors {
         ],
         advanced: [],
       },
+      saveOptions: {
+        unsetAttributes: ["colors"],
+      },
       demoSchema: [
         {
           tag: "lrndesign-sidenote",

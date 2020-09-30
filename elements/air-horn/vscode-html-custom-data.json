@@ -7,10 +7,6 @@
       "attributes": []
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "air-horn",
       "description": "`air-horn`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
       "attributes": []

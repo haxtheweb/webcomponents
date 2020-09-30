@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hal-9000",
-      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
+      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
       "attributes": [
         {
           "name": "auto",
@@ -42,27 +42,17 @@
         },
         {
           "name": "onhal-9000-online",
-          "description": "`hal-9000-online` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `hal-9000-online` - ",
-      "attributes": [
-        {
-          "name": "onhal-9000-online",
-          "description": "`hal-9000-online` - "
+          "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
         }
       ]
     },
     {
       "name": "hal-9000",
-      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` - \n\nProperties:\n\n  * `commands` - \n\n  * `respondsTo` {`string`} - \n\n  * `debug` {`boolean`} - \n\n  * `pitch` {`number`} - \n\n  * `rate` {`number`} - \n\n  * `language` {`string`} - ",
+      "description": "`hal-9000`\n\nEvents:\n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nProperties:\n\n  * `commands` - \n\n  * `respondsTo` {`string`} - \n\n  * `debug` {`boolean`} - \n\n  * `pitch` {`number`} - \n\n  * `rate` {`number`} - \n\n  * `language` {`string`} - ",
       "attributes": [
         {
           "name": "onhal-9000-online",
-          "description": "`hal-9000-online` - "
+          "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
         }
       ]
     }

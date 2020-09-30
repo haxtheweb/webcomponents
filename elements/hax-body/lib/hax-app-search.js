@@ -536,7 +536,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
               this._resolveObjectPath(map.gizmo.mimetype, data[i])
             );
           } else if (window.HaxStore.guessGizmoType(map.gizmo) != "*") {
-            console.log(window.HaxStore.guessGizmoType(map.gizmo));
             // try and guess the type based on file ending
             media[i].type = window.HaxStore.guessGizmoType(map.gizmo);
           }

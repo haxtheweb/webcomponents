@@ -93,5 +93,8 @@
       }
     ],
     "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["colors"]
   }
 }

@@ -3,31 +3,25 @@
   "tags": [
     {
       "name": "page-scroll-position",
-      "description": "Events:\n\n  * `value-changed` - ",
+      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - ",
       "attributes": [
         {
           "name": "onvalue-changed",
-          "description": "`value-changed` - "
+          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
     },
     {
       "name": "page-scroll-position",
-      "description": "Events:\n\n  * `value-changed` - ",
-      "attributes": [
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` - "
-        }
-      ]
+      "attributes": []
     },
     {
       "name": "page-scroll-position",
-      "description": "Events:\n\n  * `value-changed` - ",
+      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - ",
       "attributes": [
         {
           "name": "onvalue-changed",
-          "description": "`value-changed` - "
+          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
         }
       ]
     }

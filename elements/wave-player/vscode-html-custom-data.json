@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "wave-player",
-      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - ",
+      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "src",
@@ -36,16 +36,20 @@
         {
           "name": "progresscolor",
           "description": "`progresscolor` {`string`} - \n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "wave-player",
-      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - ",
+      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "src",
@@ -78,6 +82,14 @@
         {
           "name": "progresscolor",
           "description": "`progresscolor` {`string`} - \n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        },
+        {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
         }
       ]
     }

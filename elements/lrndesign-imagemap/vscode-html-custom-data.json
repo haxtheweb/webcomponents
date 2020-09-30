@@ -2,6 +2,28 @@
   "version": 1,
   "tags": [
     {
+      "name": "lrndesign-imagemap-hotspot",
+      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map\n\nAttributes:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - \n\nProperties:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspotId` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - ",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label for the hotspot\n\nProperty: label"
+        },
+        {
+          "name": "hotspot-id",
+          "description": "`hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\nProperty: hotspotId"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position"
+        },
+        {
+          "name": "__hotspots",
+          "description": "`__hotspots` {`any[]`} - \n\nProperty: __hotspots"
+        }
+      ]
+    },
+    {
       "name": "lrndesign-imagemap",
       "description": "`lrndesign-imagemap`\n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - \n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - ",
       "attributes": [
@@ -28,32 +50,6 @@
         {
           "name": "__activeHotspot",
           "description": "`__activeHotspot` - \n\nProperty: __activeHotspot"
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "attributes": []
-    },
-    {
-      "name": "lrndesign-imagemap-hotspot",
-      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map\n\nAttributes:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - \n\nProperties:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspotId` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - ",
-      "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the hotspot\n\nProperty: label"
-        },
-        {
-          "name": "hotspot-id",
-          "description": "`hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\nProperty: hotspotId"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position"
-        },
-        {
-          "name": "__hotspots",
-          "description": "`__hotspots` {`any[]`} - \n\nProperty: __hotspots"
         }
       ]
     },

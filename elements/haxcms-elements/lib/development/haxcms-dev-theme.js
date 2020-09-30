@@ -228,7 +228,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
       typeof activeId !== typeof undefined
     ) {
       // console log these so you can debug easily as you build out
-      console.log(this.manifest);
+      console.warn(this.manifest);
     }
   }
 }

@@ -881,19 +881,16 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
     this.page = e.path ? e.path[0].value - 1 : e.target.value;
   }
   loadedChangedEvent(e) {
-    console.log("loadedChangedEvent", e.detail.value, this.src, this.loadSrc);
     this.loaded = e.detail.value;
     if (this.loaded) {
       this.loading = false;
     }
   }
   loadingChangedEvent(e) {
-    console.log("loadingChangedEvent", e.detail.value, this.src, this.loadSrc);
     this.loading = e.detail.value;
   }
 
   _addImage() {
-    console.log("_addImage", this.loadSrc);
     this.viewer.addSimpleImage({
       url: this.loadSrc,
       index: this.page,
@@ -902,7 +899,6 @@ class ImgViewViewer extends FullscreenBehaviors(ImgPanZoom) {
   }
 
   _addTiledImage() {
-    console.log("_addTiledImage", this.loadSrc);
     this.viewer.addTiledImage({
       tileSource: this.loadSrc,
       index: this.page,

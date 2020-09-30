@@ -68,10 +68,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lunr-search",
       "description": "`lunr-search`\n`LunrJS search element`\n\nProperties:\n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `dataSource` - \n\n  * `fields` {`never[]`} - \n\n  * `limit` {`number`} - \n\n  * `__auto` {`boolean`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
       "attributes": []

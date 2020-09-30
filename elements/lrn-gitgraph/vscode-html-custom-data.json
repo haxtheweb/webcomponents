@@ -33,10 +33,6 @@
       ]
     },
     {
-      "name": "tag",
-      "attributes": []
-    },
-    {
       "name": "lrn-gitgraph",
       "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\nProperties:\n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - \n\n  * `config` {{template: String, reverseArrow: Boolean, orientation: String, element: Object}} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [

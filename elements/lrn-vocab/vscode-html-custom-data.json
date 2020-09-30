@@ -3,39 +3,45 @@
   "tags": [
     {
       "name": "lrn-vocab",
-      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `term` {`string`} - \n\nProperties:\n\n  * `term` {`string`} - ",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-height\": string; }; invokedBy: this; }>`} - \n\nAttributes:\n\n  * `term` {`string`} - \n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `term` {`string`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "term",
           "description": "`term` {`string`} - \n\nProperty: term"
         },
         {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
-        }
-      ]
-    },
-    {
-      "name": "tag",
-      "description": "Events:\n\n  * `simple-modal-show` - ",
-      "attributes": [
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
         {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-height\": string; }; invokedBy: this; }>`} - "
         }
       ]
     },
     {
       "name": "lrn-vocab",
-      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `term` {`string`} - \n\nProperties:\n\n  * `term` {`string`} - ",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-height\": string; }; invokedBy: this; }>`} - \n\nAttributes:\n\n  * `term` {`string`} - \n\n  * `schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `term` {`string`} - \n\n  * `schemaResourceID` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
       "attributes": [
         {
           "name": "term",
           "description": "`term` {`string`} - \n\nProperty: term"
         },
         {
+          "name": "schema-resource-id",
+          "description": "`schema-resource-id` {`string`} - Unique Resource ID, generated when schemaMap processes.\n\nProperty: schemaResourceID\n\nDefault: "
+        },
+        {
+          "name": "schemaMap",
+          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+        },
+        {
           "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` - "
+          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-height\": string; }; invokedBy: this; }>`} - "
         }
       ]
     }

@@ -26,18 +26,6 @@
       ]
     },
     {
-      "name": "tag",
-      "path": "./dynamic-import-registry.umd.js",
-      "events": [
-        {
-          "name": "dynamic-import-registry-loaded"
-        },
-        {
-          "name": "dynamic-import-registry-failure"
-        }
-      ]
-    },
-    {
       "name": "dynamic-import-registry",
       "path": "./src/dynamic-import-registry.js",
       "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",

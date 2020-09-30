@@ -82,10 +82,9 @@ const FullscreenBehaviors = function (SuperClass) {
     _updateEnabled() {
       this.__fullscreenEnabled =
         this.fullscreenManager && this.fullscreenManager.enabled;
-      if (screenfull && screenfull.isEnabled)
-        screenfull.on("change", () => {
-          this._updateFullscreen();
-        });
+      if (screenfull && screenfull.isEnabled) {
+        screenfull.on("change", this._updateFullscreen.bind(this));
+      }
     }
 
     toggleFullscreen(mode = !screenfull.isFullscreen) {

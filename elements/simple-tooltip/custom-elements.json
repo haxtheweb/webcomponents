@@ -136,10 +136,6 @@
       ]
     },
     {
-      "name": "tag",
-      "path": "./simple-tooltip.umd.js"
-    },
-    {
       "name": "simple-tooltip",
       "path": "./src/simple-tooltip.js",
       "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`",

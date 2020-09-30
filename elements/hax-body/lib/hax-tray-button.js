@@ -12,6 +12,7 @@ class HAXTrayButton extends SimpleColors {
   }
   constructor() {
     super();
+    this.disabled = false;
     this.mini = false;
     this.wide = false;
     this.eventData = null;
@@ -46,6 +47,10 @@ class HAXTrayButton extends SimpleColors {
         attribute: "color-meaning",
       },
       wide: {
+        type: Boolean,
+        reflect: true,
+      },
+      disabled: {
         type: Boolean,
         reflect: true,
       },
@@ -97,6 +102,10 @@ class HAXTrayButton extends SimpleColors {
             --simple-colors-default-theme-cyan-8,
             #007999
           );
+        }
+        :host([disabled]) {
+          pointer-events: none;
+          opacity: 0.2;
         }
         iron-icon {
           width: 20px;
@@ -220,7 +229,11 @@ class HAXTrayButton extends SimpleColors {
   }
   render() {
     return html`
-      <paper-button title="${this.label}" @click="${this._fireEvent}">
+      <paper-button
+        title="${this.label}"
+        ?disabled="${this.disabled}"
+        @click="${this._fireEvent}"
+      >
         ${this.icon
           ? html`
               <div class="button-inner">

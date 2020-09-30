@@ -513,7 +513,7 @@ class JsonOutlineSchema extends HTMLElement {
           };
           break;
         default:
-          console.log(key);
+          console.warn(key);
           break;
       }
       schema.properties[key] = props;
