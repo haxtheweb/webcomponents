@@ -8,6 +8,7 @@ import "./lib/singletons/rich-text-editor-selection.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
+import * as shadow from "shadow-selection-polyfill/shadow.js";
 /**
  * `rich-text-editor`
  * @element rich-text-editor
@@ -40,7 +41,18 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.toolbar = "";
     this.type = "rich-text-editor-toolbar";
     this.id = "";
+    this.range = undefined;
     this.__selection = window.RichTextEditorSelection.requestAvailability();
+    document.addEventListener(shadow.eventName, this._getRange.bind(this));
+  }
+
+  _getRange() {
+    let shadowRoot = (el) => {
+      let parent = el.parentNode;
+      return parent ? shadowRoot(parent) : el;
+    };
+    this.range = shadow.getRange(shadowRoot(this));
+    this.updateRange();
   }
 
   /**
@@ -51,7 +63,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   get observer() {
     let root = this;
-    return new MutationObserver((e) => root.updateRange(e));
+    return new MutationObserver((e) => root._getRange(e));
   }
 
   connectedCallback() {
@@ -78,6 +90,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
+      if (propName === "range") this._rangeChange();
     });
   }
   /**
@@ -248,6 +261,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     );
     e.preventDefault();
   }
+  _rangeChange(e) {}
 }
 
 window.customElements.define(RichTextEditor.tag, RichTextEditor);

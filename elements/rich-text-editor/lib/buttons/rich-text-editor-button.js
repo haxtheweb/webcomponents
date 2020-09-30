@@ -252,7 +252,15 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             : false,
         /* workaround because queryCommandState("underline") returns true on links */
         block = this.command === "underline" ? !!this.rangeQuery("u") : command;
-      return !!this.selected && this.toggles && !!block ? true : false;
+      console.log(
+        "isToggled",
+        this.command,
+        this.selected,
+        this.range,
+        command,
+        block
+      );
+      return this.toggles && !!block ? true : false;
     }
 
     /**
@@ -442,13 +450,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     startNode() {
       let startContainer = !this.range ? undefined : this.range.startContainer,
         startOffset = !this.range ? undefined : this.range.startOffset;
-      console.log(
-        "startNode",
-        this.range,
-        startContainer,
-        startOffset,
-        !startContainer || startContainer.childNodes
-      );
       return !startContainer
         ? undefined
         : startContainer.children
@@ -502,7 +503,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
         startTag =
           !start || !start.tagName ? undefined : start.tagName.toLowerCase(),
         tags = selectors.split(",");
-      console.log("rangeQuery", start, selectors, startTag, tags);
       return !start
         ? undefined
         : startTag && tags.includes(startTag)

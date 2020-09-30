@@ -8,6 +8,7 @@ import "./lib/singletons/rich-text-editor-selection.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
+import * as shadow from "shadow-selection-polyfill/shadow.js";
 /**
  * `rich-text-editor`
  * @element rich-text-editor
@@ -24,200 +25,200 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends RichTextEditorStyles(LitElement) {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        :host {
-          display: block;
-          cursor: pointer;
-          min-height: 40px;
-        }
+:host {
+  display: block;
+  cursor: pointer;
+  min-height: 40px;
+}
 
-        :host([contenteditable="true"]) {
-          border: var(--rich-text-editor-border);
-          overflow: auto;
-        }
+:host([contenteditable="true"]) {
+  border: var(--rich-text-editor-border);
+  overflow: auto;
+}
 
-        :host([contenteditable="true"]):focus-within,
-        :host([contenteditable="true"]):focus {
-          padding: 2px;
-          margin-bottom: 2px;
-        }
+:host([contenteditable="true"]):focus-within,
+:host([contenteditable="true"]):focus {
+  padding: 2px;
+  margin-bottom: 2px;
+}
 
-        :host(.heightmax[contenteditable="true"]) {
-          max-height: calc(100vh - 200px);
-          overflow-y: scroll;
-        }
+:host(.heightmax[contenteditable="true"]) {
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
+}
 
-        :host(:empty) {
-          border: 1px dashed var(--rich-text-editor-border-color);
-          outline: 1px dashed var(--rich-text-editor-border-color);
-        }
+:host(:empty) {
+  border: 1px dashed var(--rich-text-editor-border-color);
+  outline: 1px dashed var(--rich-text-editor-border-color);
+}
 
-        :host(:empty):before {
-          content: attr(placeholder);
-          padding: 0 5px;
-          display: block;
-          z-index: -1;
-          color: var(--rich-text-editor-button-disabled-color);
-        }
+:host(:empty):before {
+  content: attr(placeholder);
+  padding: 0 5px;
+  display: block;
+  z-index: -1;
+  color: var(--rich-text-editor-button-disabled-color);
+}
 
-        ::slotted(*:first-child) {
-          margin-top: 0;
-        }
+::slotted(*:first-child) {
+  margin-top: 0;
+}
 
-        ::slotted(*:last-child) {
-          margin-bottom: 0;
-        }
-      `,
+::slotted(*:last-child) {
+  margin-bottom: 0;
+}
+      `
     ];
   }
 
-  // render function
+// render function
   render() {
-    return html` <slot></slot>`;
+    return html`
+
+<slot></slot>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage",
-          },
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University",
-        },
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-        ],
-        advanced: [],
-      },
-    };
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+  
+  ...super.properties,
+  
+  /**
+   * editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  },
+  /**
+   * Maps to contenteditable attribute
+   */
+  "contenteditable": {
+    "name": "contenteditable",
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "contenteditable"
+  },
+  /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": String,
+    "reflect": true,
+    "attribute": "placeholder"
+  },
 
-      /**
-       * editor's unique id
-       */
-      id: {
-        name: "id",
-        type: String,
-        reflect: true,
-        attribute: "id",
-      },
-      /**
-       * Maps to contenteditable attribute
-       */
-      contenteditable: {
-        name: "contenteditable",
-        type: Boolean,
-        reflect: true,
-        attribute: "contenteditable",
-      },
-      /**
-       * Placeholder text for empty editable regions
-       */
-      placeholder: {
-        name: "placeholder",
-        type: String,
-        reflect: true,
-        attribute: "placeholder",
-      },
+  /**
+   * id for toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "reflect": true,
+    "attribute": "toolbar"
+  },
 
-      /**
-       * id for toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        reflect: true,
-        attribute: "toolbar",
-      },
+  /**
+   * current range
+   */
+  "range": {
+    "name": "range",
+    "type": Object,
+    "attribute": "range"
+  },
 
-      /**
-       * current range
-       */
-      range: {
-        name: "range",
-        type: Object,
-        attribute: "range",
-      },
+  /**
+   * type of editor toolbar, i.e.
+   * full - full for full toolbar with breadcrumb,
+   * mini - mini for mini floating toolbar, or
+   * default toolbar if neither.
+   */
+  "type": {
+    "name": "type",
+    "type": String,
+    "reflect": true,
+    "attribute": "type"
+  },
+  /**
+   * whether to update range
+   */
+  "updateRange": {
+    "type": Boolean
+  },
 
-      /**
-       * type of editor toolbar, i.e.
-       * full - full for full toolbar with breadcrumb,
-       * mini - mini for mini floating toolbar, or
-       * default toolbar if neither.
-       */
-      type: {
-        name: "type",
-        type: String,
-        reflect: true,
-        attribute: "type",
-      },
+  /**
+   * contains cancelled edits
+   */
+  "__canceledEdits": {
+    "type": Object
+  },
 
-      /**
-       * contains cancelled edits
-       */
-      __canceledEdits: {
-        type: Object,
-      },
-
-      /**
-       * connected toolbar
-       */
-      __connectedToolbar: {
-        type: Object,
-      },
-      /**
-       * selection management
-       */
-      __selection: {
-        type: Object,
-      },
-      /**
-       * currently selected node
-       */
-      __selectedNode: {
-        type: Object,
-      },
-      /**
-       * array of ancestors of currently selected node
-       */
-      __selectedNodeAncestors: {
-        type: Array,
-      },
-    };
+  /**
+   * connected toolbar
+   */
+  "__connectedToolbar": {
+    "type": Object
+  },
+  /**
+   * selection management
+   */
+  "__selection": {
+    "type": Object
+  }
+}
+;
   }
 
   /**
@@ -234,7 +235,18 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     this.toolbar = "";
     this.type = "rich-text-editor-toolbar";
     this.id = "";
+    this.range = undefined;
     this.__selection = window.RichTextEditorSelection.requestAvailability();
+    document.addEventListener(shadow.eventName, this._getRange.bind(this));
+  }
+
+  _getRange() {
+    let shadowRoot = (el) => {
+      let parent = el.parentNode;
+      return parent ? shadowRoot(parent) : el;
+    };
+    this.range = shadow.getRange(shadowRoot(this));
+    this.updateRange();
   }
 
   /**
@@ -245,7 +257,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
    */
   get observer() {
     let root = this;
-    return new MutationObserver((e) => root.updateRange(e));
+    return new MutationObserver((e) => root._getRange(e));
   }
 
   connectedCallback() {
@@ -272,6 +284,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "contenteditable") this._editableChange();
+      if (propName === "range") this._rangeChange();
     });
   }
   /**
@@ -442,6 +455,7 @@ class RichTextEditor extends RichTextEditorStyles(LitElement) {
     );
     e.preventDefault();
   }
+  _rangeChange(e) {}
 }
 
 window.customElements.define(RichTextEditor.tag, RichTextEditor);

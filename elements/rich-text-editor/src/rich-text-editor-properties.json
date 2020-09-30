@@ -58,6 +58,12 @@
     "reflect": true,
     "attribute": "type"
   },
+  /**
+   * whether to update range
+   */
+  "updateRange": {
+    "type": "Boolean"
+  },
 
   /**
    * contains cancelled edits
@@ -77,17 +83,5 @@
    */
   "__selection": {
     "type": "Object"
-  },
-  /**
-   * currently selected node
-   */
-  "__selectedNode": {
-    "type": "Object"
-  },
-  /**
-   * array of ancestors of currently selected node
-   */
-  "__selectedNodeAncestors": {
-    "type": "Array"
   }
 }
