@@ -107,6 +107,9 @@ class FilteredImage extends SimpleColors {
         ],
         advanced: [],
       },
+      saveOptions: {
+        unsetAttributes: ["colors"],
+      },
     };
   }
   // properties available to the custom element for data binding

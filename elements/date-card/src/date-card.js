@@ -106,6 +106,9 @@ class DateCard extends SimpleColors {
         ],
         advanced: [],
       },
+      saveOptions: {
+        unsetAttributes: ["colors"],
+      },
     };
   }
   constructor() {
