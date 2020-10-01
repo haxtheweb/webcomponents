@@ -228,7 +228,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         }
 
         :host(:not([vertical])) #tabs paper-button {
-          border-top: var(--a11y-tabs-border-accent);
+          border-top: 1px solid var(--a11y-tabs-border-color);
         }
 
         :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
@@ -241,7 +241,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-left: var(--a11y-tabs-border-accent);
+          border-left: 1px solid var(--a11y-tabs-border-color);
           padding: var(--a11y-tabs-vertical-button-padding);
         }
 
@@ -254,12 +254,18 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
 
         :host(:not([vertical])) #tabs paper-button:focus,
         :host(:not([vertical])) #tabs paper-button:hover {
-          border-top: var(--a11y-tabs-focus-border-accent);
+          border-top: var(
+            --a11y-tabs-focus-border-accent,
+            1px solid var(--a11y-tabs-border-color)
+          );
         }
 
         :host([vertical]) #tabs paper-button:focus,
         :host([vertical]) #tabs paper-button:hover {
-          border-left: var(--a11y-tabs-focus-border-accent);
+          border-left: var(
+            --a11y-tabs-focus-border-accent,
+            1px solid var(--a11y-tabs-border-color)
+          );
         }
 
         #tabs paper-button[aria-selected="true"] {
@@ -270,13 +276,19 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         }
 
         :host(:not([vertical])) #tabs paper-button[aria-selected="true"] {
-          border-bottom: var(--a11y-tabs-background);
-          border-top: var(--a11y-tabs-selected-border-accent);
+          border-bottom-color: var(--a11y-tabs-background);
+          border-top: var(
+            --a11y-tabs-selected-border-accent,
+            1px solid var(--a11y-tabs-border-color)
+          );
         }
 
         :host([vertical]) #tabs paper-button[aria-selected="true"] {
-          border-right: var(--a11y-tabs-background);
-          border-left: var(--a11y-tabs-selected-border-accent);
+          border-right-color: var(--a11y-tabs-background);
+          border-left: var(
+            --a11y-tabs-selected-border-accent,
+            1px solid var(--a11y-tabs-border-color)
+          );
         }
 
         #tabs paper-button[disabled] {
@@ -286,11 +298,17 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         }
 
         :host(:not([vertical])) #tabs paper-button[disabled] {
-          border-left: var(--a11y-tabs-disabled-border-accent);
+          border-left: var(
+            --a11y-tabs-disabled-border-accent,
+            1px solid var(--a11y-tabs-border-color)
+          );
         }
 
         :host([vertical]) #tabs paper-button[disabled] {
-          border-top: var(--a11y-tabs-disabled-border-accent);
+          border-top: var(
+            --a11y-tabs-disabled-border-accent,
+            1px solid var(--a11y-tabs-border-color)
+          );
         }
 
         #tabs span.label,
@@ -482,12 +500,6 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        */
       responsiveSize: {
         type: String,
-        /**
-         * an array of tab buttons
-         */
-        __tabButtons: {
-          type: Array,
-        },
         reflect: true,
         attribute: "responsive-size",
       },
@@ -503,6 +515,12 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
        * an array of tab data based on slotted `a11y-tab` elements
        */
       __tabs: {
+        type: Array,
+      },
+      /**
+       * an array of tab buttons
+       */
+      __tabButtons: {
         type: Array,
       },
       /**

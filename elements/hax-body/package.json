@@ -105,6 +105,7 @@
     "@vaadin/vaadin-split-layout": "^4.1.0",
     "@vaadin/vaadin-upload": "^4.2.1",
     "app-datepicker": "^3.0.0",
+    "undoer": "^0.1.1",
     "lit-element": "2.4.0",
     "web-animations-js": "2.3.2"
   },

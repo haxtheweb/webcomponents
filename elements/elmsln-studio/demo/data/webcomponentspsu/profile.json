@@ -1,1 +1,2359 @@
-{"id":"tmn823","lastName":"Nebelung","firstName":"Tabby","submissions":[{"id":"assignment-20-tmn823","assignment":"Develop: Prototype","project":"Ritual Project","lesson":"Lesson 2","portfolio":"project-2-tmn823","portfolioId":"project-2-tmn823","assignmentId":"assignment-20","projectId":"project-2","lessonId":"lesson-2","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-13T10:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","imageAlt":"Random arch image #383","imageLongdesc":"This is a long description for image #383. Facilisis neque massa. Venenatis pellentesque vivamus dignissim potenti laoreet et. Elementum diam nullam ultrices suscipit purus justo facilisis auctor venenatis ac finibus ligula. Vel mi et sodales volutpat praesent eget lacinia egestas laoreet vitae ante.","links":[{"url":"http://ultrices.com/scelerisque/lectus/accumsan.pdf","text":"scelerisque lectus accumsan","type":"pdf"}],"feedback":[],"activity":"submission"},{"id":"assignment-3-tmn823","assignment":"Define: Synopsis","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-3","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-13T08:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","imageAlt":"Random tech image #55","imageLongdesc":"This is a long description for image #55. Ullamcorper mauris at a auctor at semper mi dui sollicitudin diam lorem. Dis tempus dapibus dictum et.","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","alt":"Random tech image #56","longdesc":"This is a long description for image #56. Suspendisse odio quis at duis. Quis tellus duis?"},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","alt":"Random tech image #57","longdesc":"This is a long description for image #57. Vitae mattis ultricies rhoncus? Aliquam maximus ullamcorper non nisl malesuada. Aenean semper enim vitae luctus dignissim quam purus in pellentesque lacus consequat sed mi. Magna justo posuere eros phasellus eleifend in tristique mi hendrerit tempus pellentesque viverra et."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","alt":"Random tech image #58","longdesc":"This is a long description for image #58. Risus elit a suscipit integer elit viverra nec elementum semper malesuada congue."}],"feedback":["feedback-33","feedback-34","feedback-35","feedback-36"],"activity":"submission"},{"id":"assignment-16-tmn823","assignment":"Define: Themes & Insights","project":"Ritual Project","lesson":"Lesson 2","portfolio":"project-2-tmn823","portfolioId":"project-2-tmn823","assignmentId":"assignment-16","projectId":"project-2","lessonId":"lesson-2","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-13T06:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","imageAlt":"Random tech image #359","imageLongdesc":"This is a long description for image #359. Neque dolor laoreet lobortis per vitae ullamcorper?","body":"Ultricies tellus ut. Accumsan at varius sem volutpat sit dolor ultricies ultrices?","feedback":["feedback-211","feedback-212","feedback-213"],"activity":"submission"},{"id":"assignment-8-tmn823","assignment":"Deliver: Iterate","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-8","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-13T00:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","imageAlt":"Random tech image #184","imageLongdesc":"This is a long description for image #184. Feugiat ultricies tempor lectus vivamus elit risus pellentesque nunc dui ridiculus pulvinar sed. Ac in mauris ante dolor tincidunt vitae sem enim magna consequat sollicitudin tortor. Rhoncus at finibus libero semper sed facilisis morbi. Turpis massa eu lacinia enim ex blandit sed fames?","body":"Lorem dignissim sed amet congue semper dolor? Sodales a non vivamus ipsum viverra maecenas vel condimentum nisi turpis elit convallis nisi. Lacus ac cursus leo eu ut eu nulla in? Enim efficitur scelerisque ut tempor scelerisque adipiscing.","feedback":[],"activity":"submission"},{"id":"assignment-14-tmn823","assignment":"Discover: Interview","project":"Ritual Project","lesson":"Lesson 2","portfolio":"project-2-tmn823","portfolioId":"project-2-tmn823","assignmentId":"assignment-14","projectId":"project-2","lessonId":"lesson-2","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-12T21:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","imageAlt":"Random tech image #343","imageLongdesc":"This is a long description for image #343. Tortor dictum dignissim risus neque efficitur pellentesque risus a. Per senectus a eget ac suscipit sed mauris quis metus tincidunt maximus consequat efficitur? In laoreet sociosqu vehicula sed non nostra elit aliquam auctor lorem at dignissim euismod!","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","alt":"Random tech image #344","longdesc":"This is a long description for image #344. Venenatis erat mi nec purus odio dui auctor etiam id varius dui magna posuere. Duis quis nisl sem neque ligula massa. Consequat mi a? Integer non viverra interdum tincidunt euismod facilisis."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","alt":"Random tech image #345","longdesc":"This is a long description for image #345. Ac diam vestibulum dui. Ut tellus curabitur et mauris porttitor dolor placerat? Vitae nullam feugiat porta. Mattis leo in maecenas egestas amet augue interdum ultricies maecenas?"},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","alt":"Random tech image #346","longdesc":"This is a long description for image #346. Mus ante in vulputate. Sed est vitae dolor non pellentesque elit congue viverra sed."}],"feedback":["feedback-194","feedback-195","feedback-196"],"activity":"submission"},{"id":"assignment-12-tmn823","assignment":"Lesson 1 Wrap-Up","project":"","lesson":"Lesson 1","portfolio":"assignment-12-tmn823","portfolioId":"assignment-12-tmn823","assignmentId":"assignment-12","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-12T10:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image5.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image5.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image5.jpg","imageAlt":"Random arch image #300","imageLongdesc":"This is a long description for image #300. Amet risus duis felis amet at. Habitant in mattis sed turpis vulputate curae a diam tempus tristique!","feature":"Vel quis vestibulum sem a congue diam elit ipsum donec et turpis hendrerit a. Nec ut sed semper risus urna varius non dui quisque dictum.","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","alt":"Random arch image #301","longdesc":"This is a long description for image #301. Semper in rutrum. Ipsum mattis dui porttitor efficitur et mattis varius maecenas porta metus at volutpat vestibulum?"},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","alt":"Random arch image #302","longdesc":"This is a long description for image #302. Placerat condimentum sagittis ultricies eget faucibus congue justo ipsum nibh malesuada. Maximus dolor massa interdum lacinia dictum dictum bibendum nascetur consequat."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","alt":"Random arch image #303","longdesc":"This is a long description for image #303. Orci sed phasellus sed diam accumsan lacus nibh lobortis."}],"feedback":[],"activity":"submission"},{"id":"assignment-10-tmn823","assignment":"Deliver: Iterate critique","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-10","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-12T08:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","imageAlt":"Random people image #238","imageLongdesc":"This is a long description for image #238. Ac sapien elementum amet elit faucibus eu libero nibh duis urna faucibus porta sed? Sed accumsan non nec dignissim sed sed phasellus?","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","alt":"Random people image #239","longdesc":"This is a long description for image #239. Amet elementum leo velit?"}],"feedback":["feedback-136"],"activity":"submission"},{"id":"assignment-11-tmn823","assignment":"Deliver: Hypertext Narrative","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-11","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-12T02:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","imageAlt":"Random animals image #273","imageLongdesc":"This is a long description for image #273. Eu ut congue morbi vehicula tempus consectetur maximus. Tellus dolor interdum.","feature":"Augue fusce ut et sit pretium erat natoque nam porttitor suscipit. Volutpat etiam efficitur torquent.","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","alt":"Random animals image #274","longdesc":"This is a long description for image #274. Ultrices curae nisi dignissim ex ultrices imperdiet. Sit nulla risus hendrerit. Nunc proin convallis nisi cras. Fusce enim diam sollicitudin nec vel ut nulla eu dictum sagittis dictum venenatis?"},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image4.jpg","alt":"Random animals image #275","longdesc":"This is a long description for image #275. Varius libero quam urna ornare ut elit ex. Ullamcorper efficitur vel accumsan placerat consectetur parturient fermentum malesuada consectetur."}],"feedback":["feedback-150","feedback-151","feedback-152"],"activity":"submission"},{"id":"assignment-2-tmn823","assignment":"Discover: Word-Pairs","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-2","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-11T16:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","imageAlt":"Random arch image #13","imageLongdesc":"This is a long description for image #13. Luctus mi duis justo diam sed eu justo ut.","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","alt":"Random arch image #14","longdesc":"This is a long description for image #14. At lacinia vestibulum proin elit dignissim?"},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","alt":"Random arch image #15","longdesc":"This is a long description for image #15. Quam congue eget tellus placerat aliquam. Tellus magna integer euismod quis scelerisque condimentum potenti elit. Eleifend dapibus risus vitae nisi. Turpis sem lacus sit ut arcu."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","alt":"Random arch image #16","longdesc":"This is a long description for image #16. Eros sed ultrices. Placerat vitae viverra. Nunc interdum proin nunc elementum ornare placerat egestas etiam?"},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","alt":"Random arch image #17","longdesc":"This is a long description for image #17. Mauris ut sit hendrerit leo amet nec praesent vehicula semper cursus ex. Pellentesque turpis eleifend justo diam in penatibus porta eleifend bibendum. Mi at elit ullamcorper."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","alt":"Random arch image #18","longdesc":"This is a long description for image #18. Cubilia sapien arcu ligula tempor ut mi tempus viverra vestibulum."}],"feedback":["feedback-17","feedback-18"],"activity":"submission"},{"id":"assignment-5-tmn823","assignment":"Develop: Characters","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-5","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-11T12:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","imageAlt":"Random nature image #129","imageLongdesc":"This is a long description for image #129. Neque congue ex quisque mauris dui semper sapien elit vehicula. Aenean metus nam eleifend ornare nunc mauris diam elit aliquam! Sed eget eu nibh vel sit facilisi vehicula augue odio nisl blandit amet!","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","alt":"Random nature image #130","longdesc":"This is a long description for image #130. Quis ut sed scelerisque tempus condimentum dui lorem et cursus non nisl morbi eleifend. Vel fusce orci in tristique per vulputate imperdiet non. Lorem sapien diam at ultricies integer enim ut ex. Ante justo bibendum dolor neque massa elit quisque nisi ut lacinia semper euismod malesuada."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image4.jpg","alt":"Random nature image #131","longdesc":"This is a long description for image #131. Accumsan in vel pulvinar auctor ligula. Sem neque proin dui metus."}],"feedback":["feedback-60","feedback-61","feedback-62"],"activity":"submission"},{"id":"assignment-19-tmn823","assignment":"Develop: Storyboard","project":"Ritual Project","lesson":"Lesson 2","portfolio":"project-2-tmn823","portfolioId":"project-2-tmn823","assignmentId":"assignment-19","projectId":"project-2","lessonId":"lesson-2","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-11T12:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","imageAlt":"Random arch image #378","imageLongdesc":"This is a long description for image #378. Eget in ut nulla vehicula nisi eu eget donec consequat. Erat risus ut risus tempor sagittis?","body":"Hendrerit at fermentum. Nulla vel risus? Lobortis turpis non libero lacinia etiam cursus turpis nulla at ac! Tempus a at ut quisque eget aliquam.","feedback":[],"activity":"submission"},{"id":"assignment-1-tmn823","assignment":"Lesson 1 Reading","project":"","lesson":"Lesson 1","portfolio":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","assignmentId":"assignment-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-11T04:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","imageAlt":"Random tech image #2","imageLongdesc":"This is a long description for image #2. Mi metus ut a ac tempus sit etiam ut lectus. Tellus eu et leo est diam suspendisse tempus sed?","links":[{"url":"http://ultricies.com/lorem.pdf","text":"lorem","type":"pdf"}],"feedback":["feedback-2","feedback-3","feedback-4","feedback-5"],"activity":"submission"},{"id":"assignment-6-tmn823","assignment":"Deliver: Hypertext Narrative Draft","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-6","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-10T22:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","imageAlt":"Random animals image #168","imageLongdesc":"This is a long description for image #168. Viverra suspendisse faucibus egestas nullam quam risus? Consectetur mollis dapibus vivamus sollicitudin efficitur. Nisi nam lobortis fames dictum ligula vel et. Proin eros lectus.","feature":"Mollis commodo tellus morbi. Iaculis non leo semper ut suscipit id leo. Nunc elit et velit maecenas in erat sem etiam justo vehicula cursus a. Etiam semper nisl sapien ultrices scelerisque. Sed tincidunt velit sit ut est sit congue nec massa?","links":[{"url":"http://amet.com/tortor/nec","text":"tortor nec","type":"url"},{"url":"http://neque.com/eu/lectus.pdf","text":"eu lectus","type":"pdf"}],"feedback":["feedback-67"],"activity":"submission"},{"id":"assignment-4-tmn823","assignment":"Develop: Story and Plot Elements","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-4","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-10T15:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image6.jpg","imageAlt":"Random nature image #93","imageLongdesc":"This is a long description for image #93. Maecenas cursus sed tempus at? Neque euismod feugiat vestibulum?","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","alt":"Random nature image #94","longdesc":"This is a long description for image #94. Congue congue in. Magna tellus rutrum sapien ac erat laoreet nascetur massa in donec in morbi."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","alt":"Random nature image #95","longdesc":"This is a long description for image #95. Accumsan purus sed. Condimentum velit in. Neque donec lacus nunc eget."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","alt":"Random nature image #96","longdesc":"This is a long description for image #96. Rhoncus lacus eleifend semper. Pellentesque ultricies rutrum erat pellentesque consequat dis tellus nulla semper."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","alt":"Random nature image #97","longdesc":"This is a long description for image #97. Orci augue sodales tempus vitae non ac? Vel donec in donec consectetur id libero cursus quam scelerisque eu condimentum. Porta viverra gravida maecenas semper sit. Tellus fringilla consectetur aliquet eu?"}],"feedback":[],"activity":"submission"},{"id":"assignment-9-tmn823","assignment":"Deliver: Iterate critique","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-9","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-10T08:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image7.jpg","imageAlt":"Random arch image #198","imageLongdesc":"This is a long description for image #198. Mi mi viverra in posuere iaculis euismod elementum. Odio auctor sem nulla? Fringilla phasellus sed elit eget aliquam ligula quis augue.","sources":[{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image8.jpg","alt":"Random arch image #199","longdesc":"This is a long description for image #199. Iaculis nulla donec ultricies sagittis ut ante vitae amet lacus elementum mollis? Laoreet nec pretium vitae pulvinar velit."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","alt":"Random arch image #200","longdesc":"This is a long description for image #200. Libero sed semper aliquam ultricies lectus bibendum risus urna sem tincidunt ultrices a eget. Nisi vulputate placerat ultricies in porttitor."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image2.jpg","alt":"Random arch image #201","longdesc":"This is a long description for image #201. A eu fusce ligula mus nisi ac tincidunt neque eu erat dapibus."},{"src":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image3.jpg","alt":"Random arch image #202","longdesc":"This is a long description for image #202. Tincidunt morbi maecenas mi elementum mauris laoreet adipiscing commodo sit gravida nostra pellentesque! Et nunc efficitur nisi luctus."}],"feedback":["feedback-121","feedback-122","feedback-123","feedback-124"],"activity":"submission"},{"id":"assignment-7-tmn823","assignment":"Deliver: Feedback","project":"Hypertext Narrative Project","lesson":"Lesson 1","portfolio":"project-1-tmn823","portfolioId":"project-1-tmn823","assignmentId":"assignment-7","projectId":"project-1","lessonId":"lesson-1","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","avatar":"","date":"2020-09-10T04:03:12.000Z","image":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","thumbnail":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","full":"/components/@lrnwebcomponents/elmsln-studio/demo/images/image1.jpg","imageAlt":"Random people image #176","imageLongdesc":"This is a long description for image #176. Leo etiam tempus in leo in ultricies magna lorem. Consectetur mi sollicitudin ut curabitur cursus? Metus varius neque suscipit rutrum dapibus maecenas sit feugiat.","body":"In vitae laoreet non ac eu tincidunt at orci in primis ligula ornare. Pretium pellentesque proin eget scelerisque hendrerit dignissim semper nulla at arcu. Malesuada pellentesque nisi felis arcu vitae metus in tempus elementum venenatis purus iaculis faucibus!","feedback":["feedback-91","feedback-92"],"activity":"submission"}],"completed":["assignment-20","assignment-3","assignment-16","assignment-8","assignment-14","assignment-12","assignment-10","assignment-11","assignment-2","assignment-5","assignment-19","assignment-1","assignment-6","assignment-4","assignment-9","assignment-7"],"due":[{"id":"assignment-13","order":0,"lessonId":"lesson-2","assignment":"Lesson 2 Reading","date":"2020-09-05T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["sed sed",["Feugiat pulvinar ultrices?","At lorem suspendisse dolor.","Suscipit sagittis arcu diam ex.","Vestibulum quis suscipit."]],["pulvinar arcu",["Sed pulvinar metus vestibulum maecenas.","Vulputate suspendisse blandit suspendisse?","Etiam pharetra neque elit?","Vehicula dolor erat."]],["semper a",["Risus laoreet non!","Nisi lacus ornare consectetur.","Tincidunt nisi non.","Ex malesuada maximus tempus vitae."]],["a sodales",["Fermentum nam rutrum.","Venenatis laoreet pulvinar laoreet leo?","Faucibus leo vehicula ac sodales.","Vestibulum ex lacus eu sodales."]]]},"body":"Dictum non quisque odio efficitur curabitur donec vestibulum tellus in pellentesque turpis lacus. Ut morbi in eleifend est rhoncus."},{"id":"assignment-15","order":1,"lessonId":"lesson-2","projectId":"project-2","assignment":"Discover: Journey Map","date":"2020-09-07T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["iaculis mi",["Est neque vel!","Arcu malesuada pharetra congue penatibus.","Rutrum cras scelerisque lobortis?","Vitae scelerisque nisl egestas nibh."]],["consequat semper",["Fames ac vel.","Interdum fames vel eu.","Eget dignissim donec quis litora.","Risus massa sit consectetur."]],["fusce purus",["Elit at pulvinar.","Vel nam vitae fermentum mus.","Donec quam fames.","Neque neque aenean fermentum."]],["mauris proin",["Luctus non ultrices?","Bibendum lacus pharetra?","Accumsan porta pharetra nisi.","Urna augue sed."]],["risus magna",["Pellentesque vitae lacinia ornare.","Dolor facilisi lacinia mauris.","Nec morbi porta.","Aenean et semper."]],["ut tortor",["Vel velit per.","Praesent phasellus amet tincidunt vivamus.","Tincidunt facilisis scelerisque sed.","Consequat a sagittis?"]]]},"body":"Praesent maecenas nec dui interdum ligula nec suspendisse in ac ac sed mauris. Adipiscing ultrices sit aliquam maecenas integer nunc consectetur nec et quis. Sit nec sed tellus elementum tortor vehicula. Lacinia elit aenean posuere aliquam fusce et porta consequat eu quam malesuada."},{"id":"assignment-17","order":3,"lessonId":"lesson-2","projectId":"project-2","assignment":"Define: HMW","date":"2020-09-09T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["vel aptent",["Consequat volutpat efficitur interdum.","Ligula dui ultrices imperdiet ac.","Mauris rutrum volutpat quis.","Aliquam sagittis nunc."]],["ut scelerisque",["Taciti lectus odio!","Maximus ac rhoncus tellus non.","Ligula fames lectus cubilia.","Lorem nunc diam."]],["nisl fermentum",["Magna efficitur sapien.","Varius sit sem praesent dui!","Eget ornare quisque.","Turpis ultricies nec varius?"]]]},"body":"Varius vel ut cursus sagittis faucibus sem semper ornare in sed. Rutrum dui ut dui mauris tincidunt rutrum ante mauris aenean? Sit dolor sem. Nunc purus auctor turpis ac eleifend lorem nec vestibulum. Mauris faucibus elit lectus aliquet nascetur duis?"},{"id":"assignment-18","order":4,"lessonId":"lesson-2","projectId":"project-2","assignment":"Develop: Brainstorm","date":"2020-09-10T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["hendrerit ligula",["Non euismod orci.","Arcu nunc enim ultrices sed?","Odio faucibus vestibulum non.","Ultricies in fringilla turpis."]],["ut aliquet",["Eu fermentum egestas urna.","Dignissim et diam?","Donec nulla sapien.","Odio semper pharetra placerat enim?"]],["fermentum augue",["Nunc maecenas orci.","In dictum magna efficitur.","Sapien justo facilisis?","Phasellus dictum eget ac feugiat."]],["arcu viverra",["Dolor semper laoreet integer.","Amet diam eros praesent?","Faucibus venenatis diam a.","Justo sapien lacinia nulla dui."]],["vehicula malesuada",["Nam laoreet massa efficitur mattis.","Placerat ultricies montes nisl?","A ut imperdiet.","Nibh nunc rutrum sit."]],["nisl aliquet",["Leo at sem?","Elit nisl nulla.","In sed facilisis semper finibus.","In interdum nec sodales?"]]]},"body":"Sollicitudin aliquam et condimentum accumsan nec pulvinar a a quisque convallis. Fringilla nullam iaculis quam eu aenean pretium id faucibus lorem. Praesent nec interdum sodales ut malesuada sed fringilla suscipit. Pretium mi dapibus hendrerit sodales amet ullamcorper duis lobortis lacinia sit."},{"id":"assignment-21","order":7,"lessonId":"lesson-2","projectId":"project-2","assignment":"Develop: Test and Iterate","date":"2020-09-13T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["semper sed",["Consequat nunc nam.","Varius leo massa.","Tristique nec donec neque.","Rutrum semper aliquet."]],["donec nec",["Ac integer at risus porttitor.","Sodales id tristique.","Sit velit magnis consequat?","Sed in varius turpis."]],["nullam lobortis",["Sit bibendum fames urna?","Scelerisque arcu metus vitae hendrerit?","Augue neque eget luctus.","Quis faucibus at condimentum eros."]]]},"body":"Neque in orci. Nisl nunc dolor iaculis in ut suscipit commodo. Nisl sed integer metus euismod non nisi aliquam condimentum efficitur."},{"id":"assignment-22","order":8,"lessonId":"lesson-2","projectId":"project-2","assignment":"Deliver: Final Prototype","date":"2020-09-14T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["ipsum nisi",["Vel mi tincidunt ipsum finibus!","Ipsum ut finibus.","Congue eget pellentesque sit!","Nibh nec accumsan in ipsum."]],["integer justo",["Non facilisis fermentum.","Sed proin enim.","Rutrum aliquam est condimentum.","Iaculis dictum praesent."]],["fusce aliquam",["Nec porttitor potenti scelerisque dictum?","Feugiat quisque suscipit sollicitudin.","Condimentum sapien orci tempor?","Sem sed ac donec."]],["nisi eu",["Id amet pharetra vel.","Nunc nam sem.","Suscipit odio tincidunt diam.","Ac phasellus diam elit!"]],["ultricies congue",["Tempor donec sodales.","Tincidunt leo eu quisque sit.","Vestibulum pellentesque at.","Tempus sit volutpat molestie?"]],["justo lorem",["Aliquet nulla nec.","Lorem metus nunc tristique.","Bibendum arcu vel.","Mauris ac proin elementum adipiscing."]]]},"body":"Rutrum turpis diam eleifend tellus nullam. Urna duis eros gravida malesuada! Donec sed purus nec placerat sodales fermentum nam ante maecenas viverra dictum neque ipsum. Vivamus luctus enim placerat vulputate ut sem lacinia vestibulum cursus. Turpis in eget convallis non vivamus amet vel ligula consectetur elit duis?"},{"id":"assignment-23","order":2,"lessonId":"lesson-2","assignment":"Lesson 2 Wrap-Up","date":"2020-09-15T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["quis bibendum",["A euismod eu consectetur mauris.","Nulla bibendum pellentesque nisi ipsum.","Nibh eu ante nisi sed.","Mollis ligula iaculis faucibus?"]],["luctus ut",["Sollicitudin etiam vulputate scelerisque.","Pellentesque lacinia maecenas.","Fusce risus efficitur commodo!","Interdum elementum scelerisque feugiat."]],["et consectetur",["Nec aenean ligula morbi.","Pellentesque ante orci.","Cras aliquam adipiscing neque est.","Lectus urna consectetur vestibulum."]],["nunc suspendisse",["Risus eget congue sollicitudin mauris?","Vivamus ut arcu vehicula lacus?","Aliquam dis convallis a justo.","Ante fermentum fringilla pharetra."]],["scelerisque diam",["Accumsan curabitur vehicula lorem et.","Amet cras eleifend egestas maecenas?","Ullamcorper sem metus lacinia!","Inceptos tempus consectetur nec mattis!"]],["ad in",["Posuere enim aliquam.","Sed lacus vulputate neque lacinia.","Neque fringilla ligula placerat.","Elit bibendum fusce diam a."]]]},"body":"Lobortis dolor finibus amet eget odio etiam enim. Accumsan elementum gravida nec consequat eu fermentum ligula. Elit velit quis massa rutrum lorem bibendum."},{"id":"assignment-24","order":0,"lessonId":"lesson-3","assignment":"Lesson 2 Reading","date":"2020-09-12T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["libero eleifend",["Lacinia blandit ut.","Turpis quisque nunc.","Erat morbi nulla.","Quam turpis sed accumsan?"]],["orci suscipit",["Neque sed nisi porta?","Interdum nec vitae ultrices felis?","Dolor eleifend dignissim quam diam.","Placerat magna euismod."]],[" sit",["Pharetra nibh ut.","Mi efficitur amet ut.","Tincidunt mollis pellentesque.","Dignissim sed vivamus finibus."]],["turpis sed",["Massa imperdiet ipsum sit!","Orci risus egestas libero.","Accumsan sit cras proin nisl.","Maecenas interdum justo."]],["porta nulla",["Tortor placerat eu?","Nam rutrum et?","At semper sit justo?","Maecenas nec est vitae nunc."]]]},"body":"Lobortis bibendum laoreet magna faucibus efficitur. Nisi lacinia ante ultricies. Non accumsan dui massa interdum vel at fames in etiam fermentum erat nam massa. Vestibulum imperdiet ac. Elit magna mattis felis consectetur ultrices?"},{"id":"assignment-25","order":0,"lessonId":"lesson-3","projectId":"project-3","assignment":"Discover: Toy Research","date":"2020-09-13T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["turpis vehicula",["Ac duis et.","Odio diam ut viverra sit?","Porta porta ultrices.","Eu lacinia mauris ornare egestas!"]],["at nullam",["Magnis laoreet nam phasellus metus.","Dictum elementum porta malesuada sit?","Et odio montes.","Elit eu laoreet ante."]],["luctus himenaeos",["Ultrices lacus nec at vel.","A a lacus nunc?","Donec molestie ut.","A sed euismod diam."]],["et quam",["Nulla purus lorem ipsum lobortis.","Nec nibh gravida.","Eu per dolor?","Nam interdum sapien in nibh?"]]]},"body":"Tristique faucibus nibh praesent quis non sapien. Lorem dictum in commodo at. Ut purus pharetra tempus lectus maximus ac elementum metus semper. Libero euismod non ridiculus mauris?"},{"id":"assignment-26","order":1,"lessonId":"lesson-3","projectId":"project-3","assignment":"Discover: Modular Research","date":"2020-09-14T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["et eu",["Nisi id ut.","A nibh feugiat?","Nisl ut ut nisi.","Penatibus vel ipsum phasellus."]],["cursus vitae",["Lobortis metus sem lacinia condimentum.","Porttitor erat ac.","Nisl neque nisl ipsum?","Nisi amet at!"]],["curabitur pharetra",["Nam malesuada dolor.","Magna scelerisque mus.","Proin nam lobortis proin.","Tellus ac nunc sit."]],["nibh sit",["Eu nullam in diam.","Suscipit tincidunt malesuada amet.","Ut convallis nisl nisi nisi.","Sed laoreet duis sed."]]]},"body":"Tempus mi hendrerit? Velit sagittis porta a elit scelerisque diam sapien."},{"id":"assignment-27","order":2,"lessonId":"lesson-3","projectId":"project-3","assignment":"Discover: Resources","date":"2020-09-15T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["nam lacinia",["Condimentum amet taciti senectus.","Nunc aliquet congue nisi lobortis!","Nisi nulla vitae.","Scelerisque vestibulum eget sodales sed."]],["id semper",["Maecenas porttitor quisque.","Justo eu sollicitudin mauris cras.","Proin curae eget in accumsan?","Sit cursus nunc vivamus ligula."]],["amet ultricies",["Dolor ultrices lacus cursus nulla.","Sit iaculis nec orci in?","Fermentum vel phasellus a vehicula?","Massa mollis placerat eleifend cursus."]],["tristique sagittis",["Magna mollis nunc vestibulum.","Nibh justo volutpat ac sed.","Dui at ante sapien?","Integer venenatis vitae lacus?"]],["augue vitae",["Dolor feugiat justo porta!","Pharetra senectus at ligula et.","Mi ac ac.","Vestibulum nisi ante sed."]],["dictum ultricies",["Efficitur aliquam at integer libero.","Quam nunc consectetur.","Amet tempus sapien lorem neque?","Lobortis sed placerat eleifend ultrices."]]]},"body":"Ultrices vel dui ut vulputate laoreet nunc sed rhoncus consectetur tincidunt orci. Nibh commodo inceptos phasellus odio at integer ipsum sem. Ipsum lobortis nec pretium ante condimentum eu feugiat. Lacinia etiam nec ut etiam placerat. Justo nisl iaculis."},{"id":"assignment-28","order":3,"lessonId":"lesson-3","projectId":"project-3","assignment":"Define: Product Pitch","date":"2020-09-16T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["fermentum vivamus",["Viverra eu orci donec?","Ut scelerisque vulputate.","Eleifend phasellus per.","Tellus nisl iaculis?"]],["varius vestibulum",["Sodales mauris nulla morbi consectetur.","Quis eu per ac quis?","Venenatis non at etiam est.","Sed enim eros est."]],["quam lacus",["Tempus pellentesque sed?","Phasellus pellentesque vestibulum!","Non auctor vivamus sapien etiam.","Suspendisse auctor finibus."]],["dolor habitant",["Vel cubilia ultricies diam nostra!","Nunc sem malesuada et.","Ac id nibh consequat?","Aliquet eleifend consequat!"]],["justo eget",["Mattis in urna volutpat nec.","Erat in congue rutrum volutpat.","Nisl pharetra vitae condimentum neque?","Primis pellentesque blandit et odio."]],["lectus mollis",["Pharetra vitae id tempus in.","Luctus et interdum risus tortor.","Id mi dui congue.","In sapien cubilia?"]]]},"body":"Porta aliquam felis penatibus massa vehicula curae vestibulum. Lobortis natoque pellentesque accumsan rutrum phasellus accumsan donec ut?"},{"id":"assignment-29","order":4,"lessonId":"lesson-3","projectId":"project-3","assignment":"Develop: Prototyping","date":"2020-09-17T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["praesent velit",["Volutpat sit eros?","Malesuada nisi donec id.","Condimentum dolor maecenas vel elementum.","Facilisis at integer placerat maecenas."]],["vestibulum pellentesque",["Dolor condimentum dignissim nec in.","Magna risus dolor sociosqu.","Et suscipit pharetra nisi.","Elit pellentesque non aliquam?"]],["et porttitor",["Nam a quis eleifend commodo.","Varius ut nec?","Amet fringilla magnis urna neque.","Ligula accumsan elementum posuere eleifend."]]]},"body":"Elit vel nunc pellentesque vivamus vehicula laoreet sit sed hendrerit scelerisque velit a phasellus? Iaculis mattis suscipit rutrum convallis proin gravida interdum luctus. Blandit vitae mattis a magna porttitor."},{"id":"assignment-30","order":5,"lessonId":"lesson-3","projectId":"project-3","assignment":"Develop: Instructions","date":"2020-09-18T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["leo ultrices",["Dapibus volutpat urna class.","Urna cursus consequat elit consectetur.","Ornare augue vel tincidunt leo.","Ut massa sodales."]],["ultricies quam",["Mi eu metus orci.","Placerat placerat integer natoque!","Lobortis mi ornare dictum hendrerit.","Volutpat scelerisque nam."]],["tristique velit",["Est aliquam lacinia at ac.","Dignissim pulvinar nibh rutrum lacinia.","Vel condimentum phasellus nec lectus.","Condimentum facilisis quis sem?"]],["lacinia nullam",["Sit nulla ultrices eget?","Aenean sed neque?","Nulla nunc est.","Dui et non nec."]],["montes nunc",["Sagittis sit varius.","Id posuere dolor?","Magna vestibulum integer porttitor ac!","Proin dapibus sed."]]]},"body":"Aliquam mollis ligula eget mauris augue condimentum enim ut. Turpis nunc libero eu sed. Faucibus mi tincidunt in ante ut luctus ut nec et diam."},{"id":"assignment-31","order":6,"lessonId":"lesson-3","projectId":"project-3","assignment":"Develop: Test","date":"2020-09-19T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["auctor est",["Habitant mauris varius.","Quam facilisis suscipit vitae.","Donec eget diam ac ac.","Turpis amet scelerisque."]],["euismod vitae",["Accumsan fusce suspendisse.","Gravida vehicula faucibus ultricies finibus?","Auctor mi curabitur.","Justo ultrices facilisis est?"]],["potenti amet",["Aenean varius ut in.","Pellentesque magna condimentum.","Ac nullam ut pellentesque mauris.","Elit orci mus."]],["molestie ligula",["Accumsan integer risus.","Accumsan amet ut.","Lectus nullam porttitor efficitur luctus.","Non lobortis ipsum tortor."]],["consequat nibh",["Mi varius odio dolor ac.","Maecenas mollis ex.","Tortor sapien sed ipsum.","Tempus bibendum sed sapien finibus."]]]},"body":"Nunc mi eleifend pretium consectetur rhoncus nisi accumsan vitae porttitor eros malesuada id est. Aliquam nunc sed tellus vestibulum a in aliquet. Sapien tempor luctus porttitor non urna dui lorem pulvinar pellentesque vestibulum."},{"id":"assignment-32","order":7,"lessonId":"lesson-3","projectId":"project-3","assignment":"Develop: Iterate","date":"2020-09-20T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["elementum magna",["Ipsum ante sed?","Fames ut fusce?","Velit imperdiet mollis amet.","Placerat vivamus at dictum elit."]],["nulla scelerisque",["Praesent dignissim nisi tortor.","Sollicitudin neque laoreet imperdiet justo.","Elit nec dictum urna molestie.","Lacinia nunc interdum."]],["fusce facilisis",["Consequat ante consectetur interdum?","Enim placerat erat volutpat nunc.","Metus placerat nisl.","Id quis viverra."]],["eu eget",["Ligula gravida amet ante.","Suspendisse libero cras.","Porta ultrices dictum volutpat lobortis.","Tellus ipsum nec."]],["et venenatis",["Euismod tristique rutrum tristique.","Dignissim tempor ullamcorper odio rutrum.","Mi bibendum ut magna arcu?","Justo volutpat vestibulum pellentesque libero."]]]},"body":"Pellentesque nisl dapibus maximus libero. Pharetra mus viverra magna?"},{"id":"assignment-33","order":8,"lessonId":"lesson-3","projectId":"project-3","assignment":"Deliver: Open Toy","date":"2020-09-21T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["lorem venenatis",["Nibh nec in urna.","Vitae aliquam ac a elit.","Ac fames consectetur id facilisis.","Congue nibh convallis?"]],["amet maecenas",["Finibus sit montes.","Porta sollicitudin cubilia.","Facilisis hendrerit sed.","Gravida consequat cras urna."]],["himenaeos nisi",["Ut erat ligula.","Felis at nisl.","Vestibulum velit et nisi.","Libero ante porta."]]]},"body":"Vel magna leo convallis venenatis? Mauris pellentesque porta nec gravida ornare ipsum massa condimentum maecenas nec. Maecenas sapien non. Et proin augue."},{"id":"assignment-34","order":2,"lessonId":"lesson-3","assignment":"Lesson 2 Wrap-Up","date":"2020-09-22T17:03:12.000Z","rubric":{"key":["Distinguished (4)","Proficient (3)","Apprentice (2)","Novice (1)"],"values":[["mi praesent",["Est augue mi maximus!","Vestibulum non mollis nunc?","Et nibh vestibulum felis varius.","Primis sem nascetur."]],["tellus neque",["Nullam habitant consequat purus?","Massa pellentesque eu mi.","Volutpat odio quis.","Venenatis duis donec congue."]],["lacus sed",["Turpis tincidunt est maecenas maecenas!","Nibh sed dolor sed.","Porta vitae dapibus.","Vestibulum ut nulla."]],["nec etiam",["Velit neque orci dui.","Vel tellus conubia.","Nulla non in viverra fermentum.","Nulla et convallis."]],["tortor vel",["Dui in venenatis.","Blandit et maecenas dui.","Lobortis pellentesque suspendisse eu venenatis.","Scelerisque metus metus dolor."]],["rhoncus tellus",["Leo dictum tristique non.","Vivamus lobortis enim a amet.","Ut ac ornare mi nisl?","Augue dolor lacus in ut."]]]},"body":"Eu lacinia sit porta et ut condimentum ut tempor eu dictum est varius amet. At fermentum quam interdum libero sem in pellentesque a sit? Dictum a sed ac diam est sem lorem duis eu nulla vivamus pellentesque."}],"features":["assignment-12-tmn823","assignment-11-tmn823","assignment-6-tmn823"],"feedback":[{"id":"feedback-36","userId":"hxb5122","firstName":"Havana","lastName":"Brown","submissionId":"assignment-3-tmn823","portfolioId":"project-1-tmn823","assignment":"Define: Synopsis","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T12:19:12.000Z","body":"Inceptos ullamcorper nisi blandit sapien lacinia justo libero porta.","read":false,"like":true,"replies":[],"activity":"discussion"},{"id":"feedback-35","userId":"fms9811","firstName":"Felix","lastName":"Sphinx","submissionId":"assignment-3-tmn823","portfolioId":"project-1-tmn823","assignment":"Define: Synopsis","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T11:15:12.000Z","body":"Vestibulum suspendisse pharetra nulla feugiat quam libero congue tempor odio. Eu eget morbi laoreet primis purus tellus maecenas faucibus. Per morbi varius dapibus aliquet dolor ipsum est vivamus quis sed ac suspendisse.","read":true,"like":false,"replies":[{"id":"feedback-35-reply-1","feedbackId":"feedback-35","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","reviewerId":"fms9811","reviewerFirstName":"Felix","reviewerLastName":"Sphinx","submissionId":"assignment-3-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-14T22:24:12.000Z","body":"Eleifend elementum vehicula urna augue odio sem magna dictum orci aliquam. Vulputate massa semper id eu sem quisque sem ullamcorper sapien ultrices consectetur vel placerat.","read":true,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-34","userId":"cac488","firstName":"Callie","lastName":"Coe","submissionId":"assignment-3-tmn823","portfolioId":"project-1-tmn823","assignment":"Define: Synopsis","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T10:11:12.000Z","body":"Placerat facilisis ornare ipsum suspendisse diam a purus ad.","read":false,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-213","userId":"hxb5122","firstName":"Havana","lastName":"Brown","submissionId":"assignment-16-tmn823","portfolioId":"project-2-tmn823","assignment":"Define: Themes & Insights","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T09:15:12.000Z","body":"Amet ut in neque faucibus ac viverra.","read":false,"like":true,"replies":[{"id":"feedback-213-reply-1","feedbackId":"feedback-213","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","reviewerId":"hxb5122","reviewerFirstName":"Havana","reviewerLastName":"Brown","submissionId":"assignment-16-tmn823","portfolioId":"project-2-tmn823","date":"2020-09-15T08:46:12.000Z","body":"Lectus morbi nibh ac nulla duis quam eu vitae odio mauris eget. Auctor posuere morbi leo volutpat. Blandit netus sed ipsum pulvinar donec laoreet. In rutrum purus maecenas vitae sagittis tortor consectetur facilisis. Tincidunt tincidunt efficitur ac lorem faucibus luctus.","read":true,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-33","userId":"tjc5167","firstName":"Tom","lastName":"Cat","avatar":"//placekitten.com/g/400/400","submissionId":"assignment-3-tmn823","portfolioId":"project-1-tmn823","assignment":"Define: Synopsis","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T09:07:12.000Z","body":"Iaculis vivamus porta? Nibh neque ultrices eget ligula ultrices neque sapien lobortis lorem a amet pretium.","read":false,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-212","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","submissionId":"assignment-16-tmn823","portfolioId":"project-2-tmn823","assignment":"Define: Themes & Insights","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T08:11:12.000Z","body":"Sagittis cubilia diam aenean accumsan libero ultricies eget neque vehicula in consequat ante felis. Ligula quis faucibus tortor quis ac.","read":true,"like":false,"replies":[{"id":"feedback-212-reply-1","feedbackId":"feedback-212","userId":"hxb5122","firstName":"Havana","lastName":"Brown","reviewerId":"kmk5124","reviewerFirstName":"Kitty","reviewerLastName":"Korat","reviewerAvatar":"//placekitten.com/g/400/300","submissionId":"assignment-16-tmn823","portfolioId":"project-2-tmn823","date":"2020-09-15T09:10:12.000Z","body":"Eu vestibulum conubia ac semper scelerisque lacus dignissim praesent sit. Vivamus ante vitae lorem ante convallis quis augue nullam iaculis nisi ultrices faucibus eu. Malesuada per ac tincidunt libero dis elit. Ac aliquam nisi praesent ut vel efficitur consectetur augue dignissim pharetra elit? Tellus nibh ac praesent porttitor volutpat eu aliquam lobortis.","read":false,"like":false,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-211","userId":"cac488","firstName":"Callie","lastName":"Coe","submissionId":"assignment-16-tmn823","portfolioId":"project-2-tmn823","assignment":"Define: Themes & Insights","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T07:07:12.000Z","body":"Aliquam pretium accumsan facilisis in parturient sapien ut ante lorem metus!","read":true,"like":true,"replies":[{"id":"feedback-211-reply-1","feedbackId":"feedback-211","userId":"srf325","firstName":"Scott","lastName":"Fold","avatar":"//placekitten.com/400/400","reviewerId":"cac488","reviewerFirstName":"Callie","reviewerLastName":"Coe","submissionId":"assignment-16-tmn823","portfolioId":"project-2-tmn823","date":"2020-09-14T06:24:12.000Z","body":"Leo nunc tristique elit vel laoreet tellus ac. Fermentum odio lacinia sed amet maximus sed quisque in aliquam condimentum cras tellus duis. Pellentesque at elit vitae fringilla.","read":true,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-196","userId":"hxb5122","firstName":"Havana","lastName":"Brown","submissionId":"assignment-14-tmn823","portfolioId":"project-2-tmn823","assignment":"Discover: Interview","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-13T00:15:12.000Z","body":"Auctor commodo metus. Suspendisse orci in pellentesque nunc et. Lectus integer ac massa nisl metus ac et libero volutpat ante diam ultricies!","read":true,"like":true,"replies":[],"activity":"discussion"},{"id":"feedback-195","userId":"cac488","firstName":"Callie","lastName":"Coe","submissionId":"assignment-14-tmn823","portfolioId":"project-2-tmn823","assignment":"Discover: Interview","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-12T23:11:12.000Z","body":"Lobortis sed velit iaculis vel consequat dolor. Ut in leo lorem orci lobortis est. Semper lacus nec turpis ultricies quisque interdum hendrerit velit nunc pellentesque nisi mollis massa?","read":false,"like":false,"replies":[{"id":"feedback-195-reply-1","feedbackId":"feedback-195","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","reviewerId":"cac488","reviewerFirstName":"Callie","reviewerLastName":"Coe","submissionId":"assignment-14-tmn823","portfolioId":"project-2-tmn823","date":"2020-09-14T06:51:12.000Z","body":"Etiam a luctus vel enim placerat. Mus placerat interdum maximus justo sed lorem varius. Scelerisque ut ac vehicula porttitor neque at massa interdum nulla ut in varius consectetur. A nunc non ex magna suspendisse sem neque.","read":true,"like":false,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-194","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","submissionId":"assignment-14-tmn823","portfolioId":"project-2-tmn823","assignment":"Discover: Interview","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-12T22:07:12.000Z","body":"Sed tempus neque quam primis quis consectetur etiam turpis dolor nec rutrum?","read":true,"like":true,"replies":[{"id":"feedback-194-reply-1","feedbackId":"feedback-194","userId":"ixp23","firstName":"Person","lastName":"Instructor","avatar":"//placekitten.com/300/400","reviewerId":"kmk5124","reviewerFirstName":"Kitty","reviewerLastName":"Korat","reviewerAvatar":"//placekitten.com/g/400/300","submissionId":"assignment-14-tmn823","portfolioId":"project-2-tmn823","date":"2020-09-13T13:34:12.000Z","body":"Egestas id ante eu vel a phasellus. Metus consectetur maximus suspendisse nisl? Lectus porttitor mollis non consectetur pretium tempus neque varius ut? Accumsan maximus turpis nec amet sit. Massa neque semper sodales consequat donec.","read":true,"like":false,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-136","userId":"srf325","firstName":"Scott","lastName":"Fold","avatar":"//placekitten.com/400/400","submissionId":"assignment-10-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Iterate critique","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-12T09:07:12.000Z","body":"Nunc interdum dictum ac potenti lorem nec eros tellus ac dui sit. Pretium nibh sem suspendisse fusce donec curae vitae in placerat condimentum tempus. Laoreet dui blandit vitae.","read":false,"like":false,"replies":[{"id":"feedback-136-reply-1","feedbackId":"feedback-136","userId":"tjm5488","firstName":"Tortie","lastName":"Manx","avatar":"//placekitten.com/400/300","reviewerId":"srf325","reviewerFirstName":"Scott","reviewerLastName":"Fold","reviewerAvatar":"//placekitten.com/400/400","submissionId":"assignment-10-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-12T21:49:12.000Z","body":"Mi placerat lacinia ullamcorper tristique elit magna praesent in dui in vel vehicula nisl. Feugiat sed ultricies orci dolor. Libero pretium massa molestie ut fermentum vestibulum id in nec finibus? Semper lacus maecenas purus libero nullam urna aliquet et vehicula? Tincidunt ultricies amet porttitor magna condimentum enim ligula?","read":false,"like":false,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-152","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","submissionId":"assignment-11-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Hypertext Narrative","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-12T05:15:12.000Z","body":"Enim elit ullamcorper maecenas vel id consectetur nisl.","read":false,"like":true,"replies":[{"id":"feedback-152-reply-1","feedbackId":"feedback-152","userId":"tjm5488","firstName":"Tortie","lastName":"Manx","avatar":"//placekitten.com/400/300","reviewerId":"kmk5124","reviewerFirstName":"Kitty","reviewerLastName":"Korat","reviewerAvatar":"//placekitten.com/g/400/300","submissionId":"assignment-11-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-13T01:49:12.000Z","body":"Non libero arcu fermentum phasellus? Netus et justo a tincidunt elit mauris diam amet maximus sagittis?","read":false,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-151","userId":"hxb5122","firstName":"Havana","lastName":"Brown","submissionId":"assignment-11-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Hypertext Narrative","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-12T04:11:12.000Z","body":"Tincidunt nascetur consectetur fermentum iaculis. Rutrum nec amet enim interdum et imperdiet erat laoreet magna ac congue.","read":false,"like":true,"replies":[{"id":"feedback-151-reply-1","feedbackId":"feedback-151","userId":"hxb5122","firstName":"Havana","lastName":"Brown","reviewerId":"hxb5122","reviewerFirstName":"Havana","reviewerLastName":"Brown","submissionId":"assignment-11-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-13T13:45:12.000Z","body":"Viverra gravida ultricies etiam nunc. Neque nisl sem cursus ultrices volutpat sollicitudin id vestibulum vel fames quisque pellentesque molestie? Ultricies etiam eget neque! Scelerisque sit non eleifend in lobortis maecenas?","read":false,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-150","userId":"tjc5167","firstName":"Tom","lastName":"Cat","avatar":"//placekitten.com/g/400/400","submissionId":"assignment-11-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Hypertext Narrative","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-12T03:07:12.000Z","body":"Sit proin dui pulvinar nec. Curae eleifend dui ex ac praesent dignissim.","read":true,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-18","userId":"hxb5122","firstName":"Havana","lastName":"Brown","submissionId":"assignment-2-tmn823","portfolioId":"project-1-tmn823","assignment":"Discover: Word-Pairs","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T18:11:12.000Z","body":"Velit dui tristique congue pellentesque. Fringilla lobortis et vitae mi arcu?","read":false,"like":true,"replies":[{"id":"feedback-18-reply-1","feedbackId":"feedback-18","userId":"tmn823","firstName":"Tabby","lastName":"Nebelung","reviewerId":"hxb5122","reviewerFirstName":"Havana","reviewerLastName":"Brown","submissionId":"assignment-2-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-13T08:30:12.000Z","body":"Lectus ultrices convallis ut non odio. Faucibus amet libero. Et fermentum dolor porta. Ut phasellus metus donec.","read":true,"like":false,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-17","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","submissionId":"assignment-2-tmn823","portfolioId":"project-1-tmn823","assignment":"Discover: Word-Pairs","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T17:07:12.000Z","body":"A lectus at porta? Dictum eu id viverra ac nullam turpis diam quisque!","read":true,"like":false,"replies":[{"id":"feedback-17-reply-1","feedbackId":"feedback-17","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","reviewerId":"kmk5124","reviewerFirstName":"Kitty","reviewerLastName":"Korat","reviewerAvatar":"//placekitten.com/g/400/300","submissionId":"assignment-2-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-12T11:49:12.000Z","body":"Ligula erat etiam tempus neque justo sit. Ligula magna vehicula quam lobortis!","read":false,"like":false,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-62","userId":"cac488","firstName":"Callie","lastName":"Coe","submissionId":"assignment-5-tmn823","portfolioId":"project-1-tmn823","assignment":"Develop: Characters","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T15:15:12.000Z","body":"Ultricies arcu ut in quam erat nulla sed euismod. Ac gravida etiam tellus maximus. Accumsan porttitor consequat nisl dictum bibendum a feugiat nibh et pharetra purus sem.","read":false,"like":true,"replies":[{"id":"feedback-62-reply-1","feedbackId":"feedback-62","userId":"cac488","firstName":"Callie","lastName":"Coe","reviewerId":"cac488","reviewerFirstName":"Callie","reviewerLastName":"Coe","submissionId":"assignment-5-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-13T14:07:12.000Z","body":"Mattis tortor ac est arcu? Turpis ipsum quisque at sed nisl sem! A odio semper amet nam. Vivamus ac aliquet urna consectetur condimentum nec.","read":false,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-61","userId":"fms9811","firstName":"Felix","lastName":"Sphinx","submissionId":"assignment-5-tmn823","portfolioId":"project-1-tmn823","assignment":"Develop: Characters","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T14:11:12.000Z","body":"Iaculis ligula sodales purus duis dui dictum quam ante augue nisi vitae.","read":true,"like":false,"replies":[{"id":"feedback-61-reply-1","feedbackId":"feedback-61","userId":"fms9811","firstName":"Felix","lastName":"Sphinx","reviewerId":"fms9811","reviewerFirstName":"Felix","reviewerLastName":"Sphinx","submissionId":"assignment-5-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-12T15:18:12.000Z","body":"Et at elementum velit ut ut massa aenean. Interdum maecenas eu lorem dolor porta? Sed ullamcorper auctor phasellus ac fermentum nec enim viverra sed hendrerit sed.","read":true,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-60","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","submissionId":"assignment-5-tmn823","portfolioId":"project-1-tmn823","assignment":"Develop: Characters","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T13:07:12.000Z","body":"Orci eget libero sit.","read":false,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-5","userId":"srf325","firstName":"Scott","lastName":"Fold","avatar":"//placekitten.com/400/400","submissionId":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","assignment":"Lesson 1 Reading","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T08:19:12.000Z","body":"Iaculis eu nec nibh  venenatis eget justo. Placerat accumsan maecenas praesent elit. Diam semper sollicitudin ligula est integer.","read":false,"like":false,"replies":[{"id":"feedback-5-reply-1","feedbackId":"feedback-5","userId":"hxb5122","firstName":"Havana","lastName":"Brown","reviewerId":"srf325","reviewerFirstName":"Scott","reviewerLastName":"Fold","reviewerAvatar":"//placekitten.com/400/400","submissionId":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","date":"2020-09-12T03:31:12.000Z","body":"Quisque eu iaculis. Sem ut sed velit varius tellus. Sit quam efficitur sed eu dictum facilisi amet consectetur purus. Quisque turpis vitae sem sed ultricies est dolor etiam faucibus eleifend quis?","read":true,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-4","userId":"tjc5167","firstName":"Tom","lastName":"Cat","avatar":"//placekitten.com/g/400/400","submissionId":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","assignment":"Lesson 1 Reading","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T07:15:12.000Z","body":"Ut nisi efficitur convallis felis ac ex suspendisse sed. Amet maximus duis pellentesque lacinia justo lobortis at?","read":false,"like":true,"replies":[],"activity":"discussion"},{"id":"feedback-3","userId":"tjm5488","firstName":"Tortie","lastName":"Manx","avatar":"//placekitten.com/400/300","submissionId":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","assignment":"Lesson 1 Reading","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T06:11:12.000Z","body":"Vel tortor vestibulum placerat id ut curabitur.","read":true,"like":false,"replies":[{"id":"feedback-3-reply-1","feedbackId":"feedback-3","userId":"hxb5122","firstName":"Havana","lastName":"Brown","reviewerId":"tjm5488","reviewerFirstName":"Tortie","reviewerLastName":"Manx","reviewerAvatar":"//placekitten.com/400/300","submissionId":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","date":"2020-09-12T19:03:12.000Z","body":"Pellentesque gravida leo lobortis vel ac dictum. Tincidunt volutpat felis turpis pellentesque non. Proin nulla est ac ornare accumsan magna accumsan lacinia felis fusce ultricies massa lacinia?","read":true,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-2","userId":"cac488","firstName":"Callie","lastName":"Coe","submissionId":"assignment-1-tmn823","portfolioId":"assignment-1-tmn823","assignment":"Lesson 1 Reading","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-11T05:07:12.000Z","body":"Sollicitudin efficitur consequat varius sollicitudin suspendisse mattis at arcu rhoncus nisi eget nibh.","read":true,"like":true,"replies":[],"activity":"discussion"},{"id":"feedback-67","userId":"srf325","firstName":"Scott","lastName":"Fold","avatar":"//placekitten.com/400/400","submissionId":"assignment-6-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Hypertext Narrative Draft","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T23:07:12.000Z","body":"Facilisis sem amet et. Quisque porta aliquam magna! Volutpat sagittis scelerisque erat nunc nec.","read":true,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-124","userId":"tjm5488","firstName":"Tortie","lastName":"Manx","avatar":"//placekitten.com/400/300","submissionId":"assignment-9-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Iterate critique","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T12:19:12.000Z","body":"Volutpat tristique lorem magna libero nibh et vitae enim ac arcu. Non ac facilisis pharetra turpis.","read":true,"like":false,"replies":[{"id":"feedback-124-reply-1","feedbackId":"feedback-124","userId":"hxb5122","firstName":"Havana","lastName":"Brown","reviewerId":"tjm5488","reviewerFirstName":"Tortie","reviewerLastName":"Manx","reviewerAvatar":"//placekitten.com/400/300","submissionId":"assignment-9-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-10T23:21:12.000Z","body":"A sed enim ipsum venenatis aliquam id tempor! Vestibulum id non eget morbi sit! Nulla praesent aliquam consectetur semper in est tristique. Interdum dui elit feugiat leo primis suspendisse.","read":false,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-123","userId":"kmk5124","firstName":"Kitty","lastName":"Korat","avatar":"//placekitten.com/g/400/300","submissionId":"assignment-9-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Iterate critique","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T11:15:12.000Z","body":"Eu non vitae ut mi vel tortor volutpat nulla aliquet varius integer primis. Semper eget imperdiet nec metus elit vivamus interdum.","read":true,"like":false,"replies":[{"id":"feedback-123-reply-1","feedbackId":"feedback-123","userId":"tjm5488","firstName":"Tortie","lastName":"Manx","avatar":"//placekitten.com/400/300","reviewerId":"kmk5124","reviewerFirstName":"Kitty","reviewerLastName":"Korat","reviewerAvatar":"//placekitten.com/g/400/300","submissionId":"assignment-9-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-11T13:11:12.000Z","body":"In ipsum nam aliquet sit et ut? Turpis curabitur vel laoreet vivamus eros tempus. Urna massa ipsum fermentum non. Venenatis etiam in est euismod ultricies consectetur tincidunt pretium neque ut in vel. Blandit eu in nisi metus sem scelerisque pellentesque leo ultricies curabitur mauris.","read":false,"like":true,"activity":"reply"}],"activity":"discussion"},{"id":"feedback-122","userId":"tjc5167","firstName":"Tom","lastName":"Cat","avatar":"//placekitten.com/g/400/400","submissionId":"assignment-9-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Iterate critique","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T10:11:12.000Z","body":"Vel mauris in interdum nullam augue pulvinar. Interdum blandit quis nec fringilla pharetra.","read":true,"like":true,"replies":[],"activity":"discussion"},{"id":"feedback-121","userId":"hxb5122","firstName":"Havana","lastName":"Brown","submissionId":"assignment-9-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Iterate critique","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T09:07:12.000Z","body":"Elementum suspendisse nisl ullamcorper arcu. Aliquam sed in in gravida eu cursus erat risus gravida etiam.","read":false,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-92","userId":"tjm5488","firstName":"Tortie","lastName":"Manx","avatar":"//placekitten.com/400/300","submissionId":"assignment-7-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Feedback","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T06:11:12.000Z","body":"Bibendum sodales congue nulla aliquam massa magna sem eu? Metus ac varius sollicitudin rutrum metus cubilia aenean justo et tempor dolor purus.","read":false,"like":false,"replies":[],"activity":"discussion"},{"id":"feedback-91","userId":"cac488","firstName":"Callie","lastName":"Coe","submissionId":"assignment-7-tmn823","portfolioId":"project-1-tmn823","assignment":"Deliver: Feedback","creatorId":"tmn823","creatorFirstName":"Tabby","creatorLastName":"Nebelung","date":"2020-09-10T05:07:12.000Z","body":"Rutrum quisque nibh vitae quis dignissim penatibus ac elit in quis tortor in. Eget nisi gravida sem placerat congue enim sit volutpat ullamcorper rutrum metus et. Id ultricies lacinia.","read":true,"like":true,"replies":[{"id":"feedback-91-reply-1","feedbackId":"feedback-91","userId":"hxb5122","firstName":"Havana","lastName":"Brown","reviewerId":"cac488","reviewerFirstName":"Callie","reviewerLastName":"Coe","submissionId":"assignment-7-tmn823","portfolioId":"project-1-tmn823","date":"2020-09-11T22:49:12.000Z","body":"Eleifend id pretium velit. Venenatis vitae donec nunc justo ac purus integer ultrices semper. Nisi justo justo tellus sem lobortis ullamcorper potenti quis odio nec vitae. Non rutrum nibh mauris laoreet in sed iaculis dolor? Consectetur leo amet amet venenatis proin nulla ultricies?","read":true,"like":true,"activity":"reply"}],"activity":"discussion"}],"given":["feedback-8","feedback-13","feedback-15","feedback-20","feedback-24","feedback-27","feedback-69","feedback-79","feedback-84","feedback-95","feedback-96","feedback-100","feedback-105","feedback-108","feedback-116","feedback-118","feedback-129","feedback-144","feedback-162","feedback-166","feedback-170","feedback-175","feedback-180","feedback-188","feedback-198","feedback-205","feedback-209","feedback-216","feedback-218","feedback-224","feedback-239","feedback-242","feedback-244","feedback-246","feedback-251","feedback-255"],"replies":["feedback-18-reply-1","feedback-42-reply-1","feedback-43-reply-1","feedback-55-reply-1","feedback-59-reply-1","feedback-63-reply-1","feedback-83-reply-1","feedback-115-reply-1","feedback-119-reply-1","feedback-125-reply-1","feedback-129-reply-1","feedback-138-reply-1","feedback-156-reply-1","feedback-166-reply-1","feedback-195-reply-1","feedback-213-reply-1","feedback-218-reply-1"],"discussions":["feedback-8","feedback-13","feedback-15","feedback-20","feedback-24","feedback-27","feedback-69","feedback-79","feedback-84","feedback-95","feedback-96","feedback-100","feedback-105","feedback-108","feedback-116","feedback-118","feedback-129","feedback-144","feedback-162","feedback-166","feedback-170","feedback-175","feedback-180","feedback-188","feedback-198","feedback-205","feedback-209","feedback-216","feedback-218","feedback-224","feedback-239","feedback-242","feedback-244","feedback-246","feedback-251","feedback-255","feedback-18-reply-1","feedback-42-reply-1","feedback-43-reply-1","feedback-55-reply-1","feedback-59-reply-1","feedback-63-reply-1","feedback-83-reply-1","feedback-115-reply-1","feedback-119-reply-1","feedback-125-reply-1","feedback-129-reply-1","feedback-138-reply-1","feedback-156-reply-1","feedback-166-reply-1","feedback-195-reply-1","feedback-213-reply-1","feedback-218-reply-1"]}
+{
+  "id": "fms9811",
+  "lastName": "Sphinx",
+  "firstName": "Felix",
+  "submissions": [
+    {
+      "id": "assignment-11-fms9811",
+      "assignment": "Deliver: Hypertext Narrative",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-11",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-02T18:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+      "imageAlt": "Random nature image #231",
+      "imageLongdesc": "This is a long description for image #231. Nec netus volutpat ligula nibh et convallis et dictum feugiat nisi duis nunc.",
+      "feature": "Volutpat pulvinar interdum ante ultrices diam consequat non consequat sociosqu ultrices metus. Bibendum tristique lobortis sed primis pretium diam tempus ut eu hendrerit fermentum! Praesent amet ut sed vehicula tempus pretium id sed. Ante sed nec nulla faucibus eu placerat ullamcorper elit aliquet elit tellus venenatis?",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image1.jpg",
+          "alt": "Random nature image #232",
+          "longdesc": "This is a long description for image #232. Rutrum turpis dapibus eros consequat dignissim iaculis tristique."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+          "alt": "Random nature image #233",
+          "longdesc": "This is a long description for image #233. Fermentum ex aliquam phasellus ad amet risus finibus pellentesque metus a. Tincidunt elit vestibulum lectus blandit gravida mattis tristique ut ut nunc aenean laoreet. Odio justo ut fermentum."
+        }
+      ],
+      "feedback": ["feedback-180"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-7-fms9811",
+      "assignment": "Deliver: Feedback",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-7",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-02T15:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "imageAlt": "Random nature image #150",
+      "imageLongdesc": "This is a long description for image #150. Elit quis sem in metus eleifend est enim id urna laoreet ac at?",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+          "alt": "Random nature image #151",
+          "longdesc": "This is a long description for image #151. Ut sapien mi eget. Posuere ut pellentesque integer vehicula fermentum? In massa ligula purus laoreet lectus orci dolor. Ac ut lacinia nisi vehicula id orci euismod?"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image1.jpg",
+          "alt": "Random nature image #152",
+          "longdesc": "This is a long description for image #152. Sit orci id. Eleifend ante maximus phasellus nisi magnis tellus. Leo laoreet et lectus id at suspendisse pharetra ultricies et orci. Pellentesque ut mattis nisl ut ac mattis magna turpis quis at condimentum."
+        }
+      ],
+      "feedback": ["feedback-115"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-10-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-10",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-02T15:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+      "imageAlt": "Random animals image #207",
+      "imageLongdesc": "This is a long description for image #207. Maecenas a ultricies non quis vitae laoreet quis viverra varius justo lorem. Morbi efficitur tempor porta libero.",
+      "links": [
+        { "url": "http://laoreet.com/metus", "text": "metus", "type": "url" },
+        { "url": "http://in.com/lorem.pdf", "text": "lorem", "type": "pdf" },
+        {
+          "url": "http://quisque.com/sagittis.pdf",
+          "text": "sagittis",
+          "type": "pdf"
+        },
+        {
+          "url": "http://vitae.com/semper.pdf",
+          "text": "semper",
+          "type": "pdf"
+        }
+      ],
+      "feedback": ["feedback-161", "feedback-162"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-8-fms9811",
+      "assignment": "Deliver: Iterate",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-8",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-02T09:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image1.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image1.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image1.jpg",
+      "imageAlt": "Random arch image #168",
+      "imageLongdesc": "This is a long description for image #168. Euismod auctor libero tortor consectetur aliquet congue lacus turpis eu augue tellus auctor etiam. Nisl at rutrum varius nisl pharetra orci amet. Ultricies vulputate nec neque diam aenean ut nulla dictum laoreet.",
+      "links": [
+        { "url": "http://ornare.com/eu/non", "text": "eu non", "type": "url" },
+        { "url": "http://ac.com/ex.pdf", "text": "ex", "type": "pdf" },
+        {
+          "url": "http://sed.com/nec/viverra",
+          "text": "nec viverra",
+          "type": "url"
+        },
+        {
+          "url": "http://vel.com/ut/tortor/efficitur.pdf",
+          "text": "ut tortor efficitur",
+          "type": "pdf"
+        },
+        {
+          "url": "http://accumsan.com/laoreet/id/nam.pdf",
+          "text": "laoreet id nam",
+          "type": "pdf"
+        }
+      ],
+      "feedback": ["feedback-128", "feedback-129"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-23-fms9811",
+      "assignment": "Lesson 2 Wrap-Up",
+      "project": "",
+      "lesson": "Lesson 2",
+      "portfolio": "assignment-23-fms9811",
+      "portfolioId": "assignment-23-fms9811",
+      "assignmentId": "assignment-23",
+      "lessonId": "lesson-2",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-02T04:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "imageAlt": "Random animals image #377",
+      "imageLongdesc": "This is a long description for image #377. Leo facilisi elit pretium neque volutpat orci aliquet varius vivamus facilisis faucibus dolor odio. Habitant laoreet felis nibh porta imperdiet suscipit ut elit nec iaculis. Vehicula ornare condimentum a neque.",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+          "alt": "Random animals image #378",
+          "longdesc": "This is a long description for image #378. Scelerisque quis ac volutpat dolor at placerat porttitor lobortis maximus sed risus lacinia velit. Imperdiet sit tortor porttitor. In scelerisque eleifend curae laoreet a quis a lacus quam cursus nec. Tristique eget sit massa ut at diam nunc pellentesque primis!"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+          "alt": "Random animals image #379",
+          "longdesc": "This is a long description for image #379. Leo orci libero nostra quisque libero sapien ut quam eros at dolor? Vel ligula suspendisse neque non etiam elit purus."
+        }
+      ],
+      "feedback": [],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-5-fms9811",
+      "assignment": "Develop: Characters",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-5",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-01T10:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "imageAlt": "Random tech image #83",
+      "imageLongdesc": "This is a long description for image #83. Venenatis nam a pulvinar. Varius nisi in odio ante pellentesque consectetur dignissim eleifend dignissim. Odio vestibulum mi ante nec?",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image5.jpg",
+          "alt": "Random tech image #84",
+          "longdesc": "This is a long description for image #84. Ultricies pharetra imperdiet porttitor. Elit in fusce velit consequat iaculis nibh interdum sed etiam egestas eget? Aenean nisi justo non consequat vehicula est sem quisque dolor tempor mauris nibh bibendum. Ut dolor cubilia duis tempus sem tortor nisi auctor?"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+          "alt": "Random tech image #85",
+          "longdesc": "This is a long description for image #85. Sit condimentum phasellus sed ut pellentesque est efficitur vitae pellentesque augue."
+        }
+      ],
+      "feedback": ["feedback-67", "feedback-68", "feedback-69", "feedback-70"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-14-fms9811",
+      "assignment": "Discover: Interview",
+      "project": "Ritual Project",
+      "lesson": "Lesson 2",
+      "portfolio": "project-2-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignmentId": "assignment-14",
+      "projectId": "project-2",
+      "lessonId": "lesson-2",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-10-01T03:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "imageAlt": "Random animals image #299",
+      "imageLongdesc": "This is a long description for image #299. Consectetur accumsan vel turpis tempus porta vitae. Ante metus lorem viverra. Dui at eu vehicula diam gravida erat nullam nunc vehicula finibus vestibulum. Donec consequat placerat ut sed amet.",
+      "feature": "Ac nec volutpat tellus placerat nisl metus? Ornare amet cursus nisi blandit.",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image5.jpg",
+          "alt": "Random animals image #300",
+          "longdesc": "This is a long description for image #300. Nisi diam vel quis venenatis neque vel sed. Congue dapibus a."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+          "alt": "Random animals image #301",
+          "longdesc": "This is a long description for image #301. Facilisi semper semper cras. Interdum sagittis a ultrices vel nulla facilisi. Nibh magna morbi nec eleifend suspendisse elit rutrum? Maecenas rhoncus dolor non odio non sed porta donec maximus turpis?"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+          "alt": "Random animals image #302",
+          "longdesc": "This is a long description for image #302. Quisque condimentum eros sagittis justo nulla porta nisi ultricies netus venenatis porttitor sed!"
+        }
+      ],
+      "feedback": [],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-18-fms9811",
+      "assignment": "Develop: Brainstorm",
+      "project": "Ritual Project",
+      "lesson": "Lesson 2",
+      "portfolio": "project-2-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignmentId": "assignment-18",
+      "projectId": "project-2",
+      "lessonId": "lesson-2",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-30T21:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "imageAlt": "Random tech image #342",
+      "imageLongdesc": "This is a long description for image #342. Hendrerit ut placerat porttitor non dui tempus nisl at eu sagittis luctus scelerisque pellentesque. Libero in consectetur turpis sapien sed quis orci et. Donec morbi amet semper ligula. Eu ornare maximus dui auctor urna arcu?",
+      "links": [
+        {
+          "url": "http://sodales.com/dolor/lobortis/leo.pdf",
+          "text": "dolor lobortis leo",
+          "type": "pdf"
+        }
+      ],
+      "feedback": ["feedback-239", "feedback-240", "feedback-241"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-9-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-9",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-30T20:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "imageAlt": "Random animals image #187",
+      "imageLongdesc": "This is a long description for image #187. Tortor donec massa elit ut.",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image5.jpg",
+          "alt": "Random animals image #188",
+          "longdesc": "This is a long description for image #188. Est varius porta odio! Id bibendum lacinia maximus urna metus ut leo amet quam litora nisl bibendum ridiculus. Tempus donec cursus."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+          "alt": "Random animals image #189",
+          "longdesc": "This is a long description for image #189. Ut ligula donec. Lectus metus ad ut varius nulla ornare."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+          "alt": "Random animals image #190",
+          "longdesc": "This is a long description for image #190. Aliquam nisl eu orci a lacinia auctor nulla urna at consequat risus eleifend."
+        }
+      ],
+      "feedback": ["feedback-147", "feedback-148", "feedback-149"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-24-fms9811",
+      "assignment": "Lesson 2 Reading",
+      "project": "",
+      "lesson": "Lesson 3",
+      "portfolio": "assignment-24-fms9811",
+      "portfolioId": "assignment-24-fms9811",
+      "assignmentId": "assignment-24",
+      "lessonId": "lesson-3",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-30T15:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+      "imageAlt": "Random tech image #395",
+      "imageLongdesc": "This is a long description for image #395. Scelerisque lacus sapien. Placerat nibh ligula lorem nisl consequat ut pellentesque nisi orci justo?",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image5.jpg",
+          "alt": "Random tech image #396",
+          "longdesc": "This is a long description for image #396. Consectetur quisque volutpat sapien fames orci etiam ac mi porta eget ullamcorper!"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+          "alt": "Random tech image #397",
+          "longdesc": "This is a long description for image #397. Sagittis metus maecenas? Semper lobortis pharetra diam at sagittis consequat et congue."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+          "alt": "Random tech image #398",
+          "longdesc": "This is a long description for image #398. Penatibus pellentesque pellentesque suscipit molestie iaculis at sed suspendisse. Sed in consectetur fusce vel lorem congue tortor varius sagittis."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+          "alt": "Random tech image #399",
+          "longdesc": "This is a long description for image #399. Ut dictum placerat duis lacus lobortis."
+        }
+      ],
+      "feedback": ["feedback-281", "feedback-282"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-3-fms9811",
+      "assignment": "Define: Synopsis",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-3",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-30T12:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "imageAlt": "Random animals image #54",
+      "imageLongdesc": "This is a long description for image #54. Amet justo orci ultrices metus nisi sed elementum in suscipit. Phasellus nec nisl aliquet nisi nisl consectetur et ex est ullamcorper semper libero.",
+      "feature": "Viverra maecenas libero eleifend massa tortor ultrices lobortis vitae accumsan? Ut faucibus donec faucibus ut leo sit nunc semper cras ultricies. Enim porta integer tempor feugiat aenean lectus. Accumsan auctor ex non condimentum ut dignissim nulla eget. Odio mattis justo sed ante nulla dui semper lorem nunc.",
+      "links": [
+        {
+          "url": "http://venenatis.com/mauris/amet.pdf",
+          "text": "mauris amet",
+          "type": "pdf"
+        },
+        {
+          "url": "http://dolor.com/porttitor/suscipit/laoreet.pdf",
+          "text": "porttitor suscipit laoreet",
+          "type": "pdf"
+        },
+        {
+          "url": "http://sapien.com/metus/est/eleifend.pdf",
+          "text": "metus est eleifend",
+          "type": "pdf"
+        },
+        {
+          "url": "http://sem.com/ultricies.pdf",
+          "text": "ultricies",
+          "type": "pdf"
+        },
+        {
+          "url": "http://interdum.com/eget/habitant",
+          "text": "eget habitant",
+          "type": "url"
+        },
+        {
+          "url": "http://at.com/sed/in/lobortis",
+          "text": "sed in lobortis",
+          "type": "url"
+        }
+      ],
+      "feedback": ["feedback-38"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-6-fms9811",
+      "assignment": "Deliver: Hypertext Narrative Draft",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-6",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-30T08:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "imageAlt": "Random people image #113",
+      "imageLongdesc": "This is a long description for image #113. Congue ridiculus elementum nibh tempor dolor felis cursus ut justo ornare nam urna pharetra? Fermentum quam tortor sapien. Tincidunt tortor elit vitae elit.",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+          "alt": "Random people image #114",
+          "longdesc": "This is a long description for image #114. Ornare amet lectus lobortis nibh in ut maximus. Est dolor eu aenean etiam ante ac nec? Eu ullamcorper tellus. Quis convallis non urna malesuada varius sed felis est pulvinar leo sollicitudin sit convallis."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image4.jpg",
+          "alt": "Random people image #115",
+          "longdesc": "This is a long description for image #115. Ante natoque non lectus libero dictum dolor est arcu at massa quis ac. Placerat suspendisse sit lectus sem diam fusce ut sed felis vivamus suscipit!"
+        }
+      ],
+      "feedback": ["feedback-89", "feedback-90"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-1-fms9811",
+      "assignment": "Lesson 1 Reading",
+      "project": "",
+      "lesson": "Lesson 1",
+      "portfolio": "assignment-1-fms9811",
+      "portfolioId": "assignment-1-fms9811",
+      "assignmentId": "assignment-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-30T02:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image6.jpg",
+      "imageAlt": "Random nature image #21",
+      "imageLongdesc": "This is a long description for image #21. Consequat elit lorem elit consectetur scelerisque leo sed? Hendrerit duis efficitur at finibus neque? Nulla feugiat rhoncus arcu ut!",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+          "alt": "Random nature image #22",
+          "longdesc": "This is a long description for image #22. Tempus vel felis maecenas ligula habitant semper ipsum? Feugiat faucibus et felis enim?"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+          "alt": "Random nature image #23",
+          "longdesc": "This is a long description for image #23. Fermentum nulla himenaeos suspendisse sed!"
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image1.jpg",
+          "alt": "Random nature image #24",
+          "longdesc": "This is a long description for image #24. Quisque curabitur aliquet congue venenatis scelerisque? Efficitur sit viverra pharetra lacinia cursus."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+          "alt": "Random nature image #25",
+          "longdesc": "This is a long description for image #25. Pellentesque nisl et vehicula lacus placerat faucibus etiam diam dolor viverra."
+        },
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+          "alt": "Random nature image #26",
+          "longdesc": "This is a long description for image #26. Eu sit purus nascetur eget. Consectetur amet dui libero ut at sit pellentesque vestibulum sagittis a."
+        }
+      ],
+      "feedback": ["feedback-11"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-12-fms9811",
+      "assignment": "Lesson 1 Wrap-Up",
+      "project": "",
+      "lesson": "Lesson 1",
+      "portfolio": "assignment-12-fms9811",
+      "portfolioId": "assignment-12-fms9811",
+      "assignmentId": "assignment-12",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-29T17:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "imageAlt": "Random animals image #270",
+      "imageLongdesc": "This is a long description for image #270. Lobortis magna nisi ultricies bibendum magna eget vel ut nunc ac? Elit ut venenatis turpis! Id a magna augue consequat lobortis nisl lacinia.",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image8.jpg",
+          "alt": "Random animals image #271",
+          "longdesc": "This is a long description for image #271. Tortor himenaeos aenean eu nam risus iaculis massa. Et conubia iaculis varius venenatis dignissim ex laoreet mollis nisi. Scelerisque nibh tempus risus mattis interdum sodales vivamus lobortis cursus lacinia molestie? Dolor morbi neque imperdiet nisl metus ligula nisl laoreet consequat."
+        }
+      ],
+      "feedback": [],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-21-fms9811",
+      "assignment": "Develop: Test and Iterate",
+      "project": "Ritual Project",
+      "lesson": "Lesson 2",
+      "portfolio": "project-2-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignmentId": "assignment-21",
+      "projectId": "project-2",
+      "lessonId": "lesson-2",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-29T16:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+      "imageAlt": "Random nature image #354",
+      "imageLongdesc": "This is a long description for image #354. Lectus nec justo ac sem pellentesque purus tortor. Mi ipsum sollicitudin.",
+      "links": [
+        {
+          "url": "http://in.com/vulputate/sit.pdf",
+          "text": "vulputate sit",
+          "type": "pdf"
+        }
+      ],
+      "feedback": [],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-2-fms9811",
+      "assignment": "Discover: Word-Pairs",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-2",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-29T13:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "imageAlt": "Random people image #46",
+      "imageLongdesc": "This is a long description for image #46. Vel finibus velit. Scelerisque mauris amet hendrerit amet. Consectetur quis ut diam at erat quis ante. Ac aliquam id eu mauris enim et ut et enim?",
+      "links": [
+        {
+          "url": "http://consectetur.com/sagittis/in/imperdiet",
+          "text": "sagittis in imperdiet",
+          "type": "url"
+        },
+        {
+          "url": "http://condimentum.com/pellentesque/nec/lacus",
+          "text": "pellentesque nec lacus",
+          "type": "url"
+        }
+      ],
+      "feedback": ["feedback-24", "feedback-25"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-4-fms9811",
+      "assignment": "Develop: Story and Plot Elements",
+      "project": "Hypertext Narrative Project",
+      "lesson": "Lesson 1",
+      "portfolio": "project-1-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignmentId": "assignment-4",
+      "projectId": "project-1",
+      "lessonId": "lesson-1",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-29T13:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image7.jpg",
+      "imageAlt": "Random people image #62",
+      "imageLongdesc": "This is a long description for image #62. Ac etiam vel augue purus et ut ligula justo eget tincidunt in lacinia dolor? Ut porttitor ullamcorper ligula sapien mattis fringilla velit leo lacinia felis eu. Metus pharetra sit lectus pretium tempor vivamus metus laoreet enim facilisis nisi nisi.",
+      "links": [
+        {
+          "url": "http://suspendisse.com/massa/mi.pdf",
+          "text": "massa mi",
+          "type": "pdf"
+        },
+        { "url": "http://aliquam.com/vel.pdf", "text": "vel", "type": "pdf" },
+        {
+          "url": "http://ultricies.com/elementum/mauris",
+          "text": "elementum mauris",
+          "type": "url"
+        },
+        {
+          "url": "http://consequat.com/orci/magna",
+          "text": "orci magna",
+          "type": "url"
+        },
+        {
+          "url": "http://hendrerit.com/maximus/leo.pdf",
+          "text": "maximus leo",
+          "type": "pdf"
+        }
+      ],
+      "feedback": ["feedback-48"],
+      "activity": "submission"
+    },
+    {
+      "id": "assignment-22-fms9811",
+      "assignment": "Deliver: Final Prototype",
+      "project": "Ritual Project",
+      "lesson": "Lesson 2",
+      "portfolio": "project-2-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignmentId": "assignment-22",
+      "projectId": "project-2",
+      "lessonId": "lesson-2",
+      "userId": "fms9811",
+      "firstName": "Felix",
+      "lastName": "Sphinx",
+      "avatar": "",
+      "date": "2020-09-29T12:04:18.000Z",
+      "image": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "thumbnail": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "full": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image2.jpg",
+      "imageAlt": "Random nature image #369",
+      "imageLongdesc": "This is a long description for image #369. Eget auctor in id nec ipsum in turpis quisque.",
+      "sources": [
+        {
+          "src": "https://webcomponents.psu.edu/styleguide/elements/elmsln-studio/demo/images/image3.jpg",
+          "alt": "Random nature image #370",
+          "longdesc": "This is a long description for image #370. Faucibus rutrum nisi ut."
+        }
+      ],
+      "feedback": ["feedback-270", "feedback-271"],
+      "activity": "submission"
+    }
+  ],
+  "completed": [
+    "assignment-11",
+    "assignment-7",
+    "assignment-10",
+    "assignment-8",
+    "assignment-23",
+    "assignment-5",
+    "assignment-14",
+    "assignment-18",
+    "assignment-9",
+    "assignment-24",
+    "assignment-3",
+    "assignment-6",
+    "assignment-1",
+    "assignment-12",
+    "assignment-21",
+    "assignment-2",
+    "assignment-4",
+    "assignment-22"
+  ],
+  "due": [
+    {
+      "id": "assignment-13",
+      "order": 0,
+      "lessonId": "lesson-2",
+      "assignment": "Lesson 2 Reading",
+      "date": "2020-09-24T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "mi in": [
+            "Sagittis varius senectus rutrum arcu.",
+            "Sit massa nunc justo consequat?",
+            "Nec at sit in lobortis.",
+            "Laoreet sapien felis tempus."
+          ],
+          "fringilla efficitur": [
+            "Tempor nisi erat.",
+            "Elementum elit orci at.",
+            "Pellentesque integer urna mi semper?",
+            "Sit eu consectetur proin."
+          ],
+          "nam tempor": [
+            "Semper interdum nibh tristique.",
+            "Tempor in ipsum nulla.",
+            "Risus orci sit.",
+            "Luctus risus felis justo."
+          ],
+          "sodales sed": [
+            "Lobortis tincidunt pellentesque congue.",
+            "Eros sed semper.",
+            "Odio mauris eget venenatis.",
+            "Nisi dolor ornare ac sodales!"
+          ],
+          "ante ut": [
+            "Est vivamus purus ac.",
+            "Magnis tincidunt lacus.",
+            "Vel sit eget!",
+            "Iaculis vehicula purus pellentesque accumsan."
+          ],
+          "et duis": [
+            "Nec facilisis tristique justo congue.",
+            "Odio elit ornare faucibus.",
+            "Lacus in mi ex a.",
+            "Dolor suspendisse ac justo sem!"
+          ]
+        }
+      },
+      "body": "Id velit turpis bibendum nec? Sem vel augue sed scelerisque a. Non morbi per lobortis fringilla lectus quam laoreet nam. In velit sit metus in in nisi ultrices nec phasellus dolor."
+    },
+    {
+      "id": "assignment-15",
+      "order": 1,
+      "lessonId": "lesson-2",
+      "projectId": "project-2",
+      "assignment": "Discover: Journey Map",
+      "date": "2020-09-26T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "diam diam": [
+            "Neque commodo eu.",
+            "Et in ligula aenean?",
+            "Malesuada faucibus semper!",
+            "Ultrices non et."
+          ],
+          "vitae convallis": [
+            "Semper massa adipiscing phasellus.",
+            "Ut nec velit faucibus proin?",
+            "Enim sed non at ex.",
+            "Interdum non dapibus ut ut."
+          ],
+          "fermentum interdum": [
+            "Nunc ut libero.",
+            "Sem curabitur dui leo nec.",
+            "Lectus lobortis consectetur.",
+            "Risus consequat neque."
+          ],
+          "aliquam sit": [
+            "Euismod risus urna.",
+            "Gravida vehicula sagittis libero neque?",
+            "Hendrerit tortor mollis felis?",
+            "Ex tempus eu vitae in?"
+          ]
+        }
+      },
+      "body": "Fermentum eleifend urna lacus lectus libero vestibulum lectus. Odio urna phasellus volutpat! Consectetur sed a vulputate aliquam curae lorem tristique tellus pellentesque eros."
+    },
+    {
+      "id": "assignment-16",
+      "order": 2,
+      "lessonId": "lesson-2",
+      "projectId": "project-2",
+      "assignment": "Define: Themes & Insights",
+      "date": "2020-09-27T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "tortor velit": [
+            "Malesuada faucibus per cras justo.",
+            "Pellentesque congue consectetur.",
+            "Et id neque.",
+            "Fusce class scelerisque facilisis?"
+          ],
+          "amet magna": [
+            "Sollicitudin nec ut dolor.",
+            "Pellentesque vel class tempus.",
+            "Urna libero ligula risus a.",
+            "Felis hendrerit pellentesque."
+          ],
+          "et morbi": [
+            "Cras habitant finibus.",
+            "Elit maximus mattis?",
+            "Euismod massa pulvinar accumsan.",
+            "Quis sit pharetra placerat."
+          ],
+          "justo lacinia": [
+            "Aliquam in justo purus!",
+            "Dictum efficitur sagittis orci eu.",
+            "Vitae curabitur sem tellus.",
+            "Justo nulla consequat."
+          ],
+          "dui sed": [
+            "Tempor dictum etiam porta vestibulum.",
+            "Interdum velit vitae a ac.",
+            "Varius ullamcorper eleifend nisl.",
+            "Augue venenatis quisque sapien turpis."
+          ]
+        }
+      },
+      "body": "Condimentum libero quis fermentum ut ultricies facilisis maximus sed sem sed fusce sed? Dolor morbi velit est sem sit velit ultricies morbi nunc tincidunt."
+    },
+    {
+      "id": "assignment-17",
+      "order": 3,
+      "lessonId": "lesson-2",
+      "projectId": "project-2",
+      "assignment": "Define: HMW",
+      "date": "2020-09-28T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "at justo": [
+            "Donec ut  nibh fermentum.",
+            "In semper porttitor lorem lectus.",
+            "Urna nec ornare libero vitae.",
+            "Rhoncus tellus nisi pretium."
+          ],
+          "dapibus ultricies": [
+            "Efficitur proin libero elit?",
+            "Vulputate ex elit nisi accumsan.",
+            "Eget tincidunt sit.",
+            "Vitae nibh vivamus."
+          ],
+          "massa dui": [
+            "Nec etiam elit.",
+            "Ante tempus velit iaculis morbi?",
+            "Mus lobortis libero diam!",
+            "Suscipit ultricies laoreet."
+          ],
+          "tortor malesuada": [
+            "Lobortis magna eget.",
+            "Massa in nunc.",
+            "Phasellus semper placerat ut interdum.",
+            "Dictum sem parturient nibh elementum."
+          ]
+        }
+      },
+      "body": "Ultrices dictum tempus vestibulum ut curae efficitur nunc tempus iaculis dolor aenean? Vitae congue scelerisque nec gravida fusce porttitor consequat ornare vel libero ante. Odio luctus quam nec scelerisque ipsum malesuada eget elit vivamus nisi."
+    },
+    {
+      "id": "assignment-19",
+      "order": 5,
+      "lessonId": "lesson-2",
+      "projectId": "project-2",
+      "assignment": "Develop: Storyboard",
+      "date": "2020-09-30T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "convallis augue": [
+            "Sit a aenean ullamcorper urna.",
+            "Posuere mi bibendum sagittis turpis!",
+            "Non in nibh lacus.",
+            "Libero a varius."
+          ],
+          "enim nullam": [
+            "Metus dolor tristique.",
+            "Ornare sem suspendisse.",
+            "Semper ac laoreet ut?",
+            "Quisque vulputate montes risus non."
+          ],
+          "scelerisque ultricies": [
+            "Bibendum vitae sagittis!",
+            "Sollicitudin pulvinar sed eleifend consequat.",
+            "Nec ante ac dolor nunc.",
+            "Tellus et pharetra id suspendisse."
+          ],
+          "vivamus consectetur": [
+            "Velit nulla volutpat mauris.",
+            "Viverra auctor nulla dictum tortor.",
+            "Donec nunc ante?",
+            "In ac eget."
+          ],
+          "eu et": [
+            "Libero id nisl.",
+            "Vestibulum ex nulla.",
+            "Risus volutpat lacinia a at.",
+            "Laoreet orci ut nulla?"
+          ],
+          "laoreet est": [
+            "Nisi lacinia viverra ultricies.",
+            "Sapien semper eget libero?",
+            "Auctor libero ipsum.",
+            "Non magna vestibulum massa pellentesque."
+          ]
+        }
+      },
+      "body": "Nec fermentum finibus erat risus ultricies. Venenatis vivamus porttitor donec morbi. Elit ligula magna eu."
+    },
+    {
+      "id": "assignment-20",
+      "order": 6,
+      "lessonId": "lesson-2",
+      "projectId": "project-2",
+      "assignment": "Develop: Prototype",
+      "date": "2020-10-01T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "imperdiet pellentesque": [
+            "Non ut amet proin semper?",
+            "Ac elit ut.",
+            "Vulputate scelerisque consectetur sed lectus.",
+            "Dui turpis gravida pulvinar."
+          ],
+          "metus sem": [
+            "Tempor penatibus ex.",
+            "Et aliquam at amet?",
+            "Proin maximus at ut aenean.",
+            "Sodales semper tellus!"
+          ],
+          "in turpis": [
+            "Maecenas vel metus.",
+            "Arcu duis eget non urna.",
+            "Eget quis mauris aliquet?",
+            "Aliquet non vestibulum varius mi."
+          ],
+          "eu sed": [
+            "Erat nisl ipsum eget.",
+            "Per quis maximus.",
+            "Nulla ex integer.",
+            "Luctus mattis eleifend."
+          ]
+        }
+      },
+      "body": "Ut ac pellentesque a scelerisque odio. Leo rhoncus eget dictum finibus nunc eu diam sapien malesuada eu sed! Maecenas leo arcu ac consectetur?"
+    },
+    {
+      "id": "assignment-25",
+      "order": 0,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Discover: Toy Research",
+      "date": "2020-10-02T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "ultrices eros": [
+            "Eros arcu odio?",
+            "Dolor ac eu eros.",
+            "Nisi elit magna orci et.",
+            "Mus pellentesque tempus."
+          ],
+          "pulvinar aliquet": [
+            "Feugiat faucibus neque vivamus non.",
+            "Blandit eros posuere aliquet.",
+            "In etiam sed.",
+            "Euismod varius elit laoreet nisi?"
+          ],
+          "sit non": [
+            "Mauris suspendisse ut.",
+            "Varius vestibulum dui.",
+            "Ultricies libero semper risus pulvinar.",
+            "Ut nec maximus ornare duis?"
+          ],
+          "ac tincidunt": [
+            "Et egestas urna nullam curabitur?",
+            "Maecenas natoque tortor turpis?",
+            "Dis vitae consequat.",
+            "Massa neque purus ultricies."
+          ],
+          "porttitor est": [
+            "Orci nec scelerisque id.",
+            "Mollis purus euismod lectus.",
+            "Nec in vehicula phasellus.",
+            "Non sed pellentesque erat vivamus."
+          ],
+          "a ultricies": [
+            "Posuere sollicitudin eu eleifend erat?",
+            "Luctus maximus ut rutrum?",
+            "Urna pretium feugiat.",
+            "Dolor at venenatis egestas."
+          ]
+        }
+      },
+      "body": "Congue in maximus ligula fermentum nibh eu metus nunc lectus scelerisque quis vulputate mauris? Eu nulla mauris aliquet aliquam nec vehicula vestibulum aliquet consectetur faucibus et nullam natoque. Quam nec gravida ultricies malesuada nam lorem erat quis dolor ut lectus. In nec maecenas fusce dictum interdum quisque mauris accumsan volutpat pellentesque arcu quisque. Maximus eget finibus."
+    },
+    {
+      "id": "assignment-26",
+      "order": 1,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Discover: Modular Research",
+      "date": "2020-10-03T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "leo consectetur": [
+            "Ornare at quis rutrum maximus?",
+            "Nisi est pellentesque eu et.",
+            "Mauris nunc sed et rhoncus.",
+            "Ac a tortor."
+          ],
+          "aliquam amet": [
+            "Ipsum tristique rutrum.",
+            "Inceptos phasellus sapien.",
+            "Adipiscing sed auctor egestas.",
+            "Enim massa elementum quis nulla."
+          ],
+          "rutrum luctus": [
+            "Pulvinar mauris efficitur elit?",
+            "Ipsum sit sed duis non.",
+            "Laoreet arcu ipsum.",
+            "Maximus pretium fringilla."
+          ]
+        }
+      },
+      "body": "Ut aliquam consequat maecenas massa risus vivamus vestibulum accumsan. Diam in phasellus dignissim penatibus ornare suscipit accumsan mattis in at. Maecenas nec commodo eget et donec non posuere consequat est. Pulvinar phasellus eu tortor magna suspendisse ac sit. Pretium sit scelerisque vel elit aptent quisque viverra porttitor accumsan euismod amet."
+    },
+    {
+      "id": "assignment-27",
+      "order": 2,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Discover: Resources",
+      "date": "2020-10-04T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "nunc amet": [
+            "Nunc sit sed.",
+            "Tellus elit mauris pulvinar.",
+            "Vitae ante consequat in mollis!",
+            "Odio leo ac?"
+          ],
+          "primis venenatis": [
+            "Hendrerit ut accumsan venenatis rutrum.",
+            "Dignissim hendrerit orci lobortis?",
+            "Vivamus tempor at venenatis magna?",
+            "Fringilla tortor sodales eu orci."
+          ],
+          "interdum quisque": [
+            "Tincidunt aliquet eleifend ornare.",
+            "Venenatis in tristique.",
+            "Eu venenatis quis.",
+            "Nam purus egestas?"
+          ],
+          "nisl consectetur": [
+            "Mi accumsan a pellentesque?",
+            "Fermentum orci sem accumsan id.",
+            "Dictum in tincidunt amet proin.",
+            "Integer ac elit."
+          ],
+          "euismod malesuada": [
+            "Duis nunc fermentum nam?",
+            "Lacinia metus nunc et nisi.",
+            "Eleifend maecenas augue vitae?",
+            "Mi consequat primis placerat varius."
+          ]
+        }
+      },
+      "body": "At imperdiet tellus et et ut. Mattis suscipit aliquet neque quisque consequat ullamcorper varius diam fringilla rutrum neque leo sapien. Metus est viverra vel rhoncus massa id neque lacinia tellus sagittis suspendisse nulla."
+    },
+    {
+      "id": "assignment-28",
+      "order": 3,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Define: Product Pitch",
+      "date": "2020-10-05T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "finibus massa": [
+            "Lorem condimentum quis!",
+            "Nulla lobortis dignissim curabitur?",
+            "Neque ipsum feugiat ac.",
+            "Porttitor fermentum tempus quam consequat?"
+          ],
+          "est eu": [
+            "Malesuada neque sed.",
+            "Nec nisi libero urna.",
+            "Justo sapien erat a lobortis.",
+            "Maecenas nisl eget."
+          ],
+          "felis nisl": [
+            "Quam eu aenean?",
+            "Sed sed sit ac.",
+            "Sapien commodo pellentesque duis.",
+            "Et hendrerit curabitur suspendisse ac?"
+          ],
+          "quis sollicitudin": [
+            "Posuere sagittis et semper at?",
+            "Eu nisi a.",
+            "Et senectus varius aliquam risus.",
+            "Nascetur accumsan suspendisse ligula?"
+          ]
+        }
+      },
+      "body": "Condimentum metus ut consequat blandit. Cras malesuada ac nisi."
+    },
+    {
+      "id": "assignment-29",
+      "order": 4,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Develop: Prototyping",
+      "date": "2020-10-06T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "justo in": [
+            "Lacus eu gravida ante ut.",
+            "Euismod tellus vitae tempus.",
+            "Dignissim semper velit maecenas interdum?",
+            "Scelerisque vestibulum semper."
+          ],
+          "mattis libero": [
+            "Sapien vitae ipsum ut sed?",
+            "Pellentesque orci dui felis mollis.",
+            "Sem erat in.",
+            "Vulputate magna malesuada tempus."
+          ],
+          "vel aliquam": [
+            "Elit primis eu in.",
+            "Interdum turpis gravida.",
+            "Dui eleifend quis donec?",
+            "Sed justo semper."
+          ],
+          "libero vitae": [
+            "Ut ut posuere aliquam ut.",
+            "Iaculis fermentum etiam aliquam!",
+            "Condimentum quisque fermentum porta.",
+            "Dictum quisque donec iaculis!"
+          ],
+          "eu natoque": [
+            "Sed ornare porta?",
+            "Vitae velit viverra.",
+            "Aliquet semper bibendum?",
+            "Nunc ut pellentesque diam aptent."
+          ]
+        }
+      },
+      "body": "Eros dui imperdiet erat nec at consectetur finibus non phasellus cursus eget lobortis est. Vivamus aenean ullamcorper ullamcorper leo amet blandit lectus dictum."
+    },
+    {
+      "id": "assignment-30",
+      "order": 5,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Develop: Instructions",
+      "date": "2020-10-07T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "blandit ut": [
+            "Ut morbi pharetra ex.",
+            "Sagittis ac fermentum tincidunt!",
+            "Ipsum primis blandit viverra venenatis!",
+            "Aliquam eleifend fringilla vestibulum varius?"
+          ],
+          "condimentum turpis": [
+            "Justo quis venenatis class.",
+            "Fusce sollicitudin ac donec aliquam.",
+            "Orci morbi neque aenean.",
+            "Eget lorem et in?"
+          ],
+          "et gravida": [
+            "Eros non placerat.",
+            "Nec mi vestibulum!",
+            "Suscipit  ridiculus porta .",
+            "Cras ornare id?"
+          ],
+          "maximus metus": [
+            "Rhoncus vivamus in fusce leo.",
+            "Condimentum nullam tincidunt.",
+            "Sed in sagittis turpis!",
+            "Aliquet varius sit."
+          ],
+          "turpis consectetur": [
+            "Luctus suscipit fermentum imperdiet faucibus.",
+            "Maecenas vestibulum duis a mi.",
+            "Lacinia aliquam lectus interdum?",
+            "Accumsan consectetur ac justo eu."
+          ]
+        }
+      },
+      "body": "Lacus nullam quis nostra auctor turpis. Nunc senectus proin condimentum congue sapien at non egestas suscipit a. Nisi aptent mollis eget vel quis tellus ac congue volutpat auctor cras vestibulum nec?"
+    },
+    {
+      "id": "assignment-31",
+      "order": 6,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Develop: Test",
+      "date": "2020-10-08T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "ligula dignissim": [
+            "Enim sit convallis.",
+            "A odio et mauris mattis!",
+            "Mattis laoreet sodales.",
+            "Ligula laoreet ornare risus faucibus."
+          ],
+          "sed augue": [
+            "Nullam magna est ac risus?",
+            "Ante suspendisse enim eu?",
+            "Velit malesuada lectus ornare.",
+            "Lorem at nec sit?"
+          ],
+          "vehicula orci": [
+            "Quis venenatis tincidunt nec quis.",
+            "Etiam nisi semper est.",
+            "Vestibulum congue tristique accumsan.",
+            "Massa mauris volutpat pulvinar laoreet."
+          ],
+          "quis lorem": [
+            "Malesuada sodales leo ut libero.",
+            "Rutrum ligula accumsan.",
+            "Sit nullam ac in.",
+            "Maecenas dictum morbi."
+          ],
+          "justo a": [
+            "Facilisis dignissim porta in at.",
+            "Turpis consectetur imperdiet.",
+            "Semper tincidunt et sit.",
+            "Et ligula sodales lacinia?"
+          ],
+          "sit faucibus": [
+            "Diam pharetra aliquam.",
+            "Porta in in nibh ac.",
+            "Efficitur neque pulvinar elementum elementum.",
+            "Tortor nunc nisl proin vestibulum."
+          ]
+        }
+      },
+      "body": "Amet ante tempor suspendisse justo nibh faucibus tortor mattis sit ultrices. Vitae nullam ullamcorper class ac vehicula vel sed ex suspendisse ante fringilla interdum? Leo id ut primis tortor."
+    },
+    {
+      "id": "assignment-32",
+      "order": 7,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Develop: Iterate",
+      "date": "2020-10-09T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "ut sed": [
+            "Porta donec maecenas mollis in.",
+            "Leo tellus eu leo facilisi.",
+            "Ac amet lectus quisque.",
+            "Neque massa eget metus fermentum?"
+          ],
+          "blandit a": [
+            "Sed donec felis!",
+            "Ut dignissim sagittis.",
+            "Netus arcu tristique?",
+            "Eu sagittis diam."
+          ],
+          "consectetur justo": [
+            "Blandit congue enim.",
+            "Turpis condimentum vel vestibulum.",
+            "Non pretium ut.",
+            "Interdum commodo quis varius ultrices?"
+          ],
+          "egestas dolor": [
+            "Placerat felis dis.",
+            "Rutrum pellentesque fringilla mollis lorem.",
+            "Nisl eu vulputate placerat ut?",
+            "Congue nunc consectetur orci."
+          ],
+          "nulla amet": [
+            "Magna tortor porttitor.",
+            "Ac eleifend turpis.",
+            "Adipiscing neque nisl.",
+            "Sapien pellentesque justo sed pellentesque."
+          ]
+        }
+      },
+      "body": "Venenatis amet placerat in primis dignissim semper fermentum sollicitudin? Vehicula ex ut eros? Placerat curabitur elementum."
+    },
+    {
+      "id": "assignment-33",
+      "order": 8,
+      "lessonId": "lesson-3",
+      "projectId": "project-3",
+      "assignment": "Deliver: Open Toy",
+      "date": "2020-10-10T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "fermentum vestibulum": [
+            "Ligula pulvinar eu ac erat.",
+            "Aliquet ornare eget diam sem?",
+            "In euismod lacus malesuada?",
+            "Mattis faucibus hendrerit leo."
+          ],
+          "volutpat ad": [
+            "Ultricies est mi?",
+            "Dui curae lobortis.",
+            "Diam suspendisse purus vel?",
+            "Sit nec dui ac?"
+          ],
+          "condimentum placerat": [
+            "In ac neque.",
+            "Auctor dui magna.",
+            "Amet ante leo nisl nisi.",
+            "Sed at faucibus nec?"
+          ],
+          "egestas urna": [
+            "Sem lacinia suspendisse leo.",
+            "Rhoncus sed convallis.",
+            "Lacinia malesuada id?",
+            "Nunc morbi proin morbi."
+          ],
+          "ut risus": [
+            "Ac id lorem?",
+            "Est eu faucibus.",
+            "Nisi convallis sit at ac.",
+            "Tortor vestibulum nec?"
+          ],
+          "duis ipsum": [
+            "Orci metus sociosqu quis integer?",
+            "In mi amet.",
+            "Integer eu eu posuere.",
+            "Vivamus sapien sed dictum tristique?"
+          ]
+        }
+      },
+      "body": "Mattis in pellentesque vestibulum libero sed consequat metus fringilla risus leo nec nullam. Posuere sodales ridiculus efficitur at amet eget vestibulum? Ex turpis sed libero. Leo sodales proin curabitur enim auctor mattis velit suscipit ullamcorper nam sed nullam. Pellentesque maecenas iaculis."
+    },
+    {
+      "id": "assignment-34",
+      "order": 2,
+      "lessonId": "lesson-3",
+      "assignment": "Lesson 2 Wrap-Up",
+      "date": "2020-10-11T22:04:18.000Z",
+      "rubric": {
+        "key": [
+          "Distinguished (4)",
+          "Proficient (3)",
+          "Apprentice (2)",
+          "Novice (1)"
+        ],
+        "values": {
+          "lorem sed": [
+            "Quisque augue donec.",
+            "Vitae feugiat lorem.",
+            "Elit pellentesque ligula.",
+            "Ultricies accumsan sapien ultricies accumsan."
+          ],
+          "cras quis": [
+            "Odio viverra ac aenean.",
+            "Sed nisl sit id!",
+            "Laoreet id est accumsan ac.",
+            "Sagittis inceptos nunc varius purus!"
+          ],
+          "consequat nullam": [
+            "Venenatis arcu laoreet mattis.",
+            "Pretium non nisi.",
+            "Vitae convallis fames.",
+            "Malesuada libero ipsum."
+          ],
+          "finibus elementum": [
+            "Nulla enim amet.",
+            "A nisl morbi.",
+            "Ullamcorper felis suscipit sed.",
+            "Tincidunt in id?"
+          ]
+        }
+      },
+      "body": "Tincidunt urna vehicula magna faucibus? Placerat dolor sed nec lorem dapibus. Erat scelerisque scelerisque libero phasellus libero tempus dignissim iaculis eu."
+    }
+  ],
+  "features": [
+    "assignment-11-fms9811",
+    "assignment-14-fms9811",
+    "assignment-3-fms9811"
+  ],
+  "feedback": [
+    {
+      "id": "feedback-180",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-11-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Hypertext Narrative",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-02T19:08:18.000Z",
+      "body": "Eleifend metus posuere nisl vel nulla aliquam sodales pulvinar facilisis. Massa pharetra neque sagittis eget eleifend magna rutrum!",
+      "read": true,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-162",
+      "userId": "tjc5167",
+      "firstName": "Tom",
+      "lastName": "Cat",
+      "avatar": "//placekitten.com/g/400/400",
+      "submissionId": "assignment-10-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-02T17:12:18.000Z",
+      "body": "A mattis ut augue at cras ut sagittis turpis neque justo netus non.",
+      "read": true,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-115",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-7-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Feedback",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-02T16:08:18.000Z",
+      "body": "Orci vestibulum velit justo nam elementum tincidunt.",
+      "read": false,
+      "like": false,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-161",
+      "userId": "cac488",
+      "firstName": "Callie",
+      "lastName": "Coe",
+      "submissionId": "assignment-10-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-02T16:08:18.000Z",
+      "body": "In consequat ac eget eleifend accumsan tincidunt ultrices lobortis consectetur.",
+      "read": true,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-161-reply-1",
+          "feedbackId": "feedback-161",
+          "userId": "tjm5488",
+          "firstName": "Tortie",
+          "lastName": "Manx",
+          "avatar": "//placekitten.com/400/300",
+          "reviewerId": "cac488",
+          "reviewerFirstName": "Callie",
+          "reviewerLastName": "Coe",
+          "submissionId": "assignment-10-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-02T22:37:18.000Z",
+          "body": "Vestibulum dictum est sed neque ultrices amet quis tortor ac erat ac. Ac risus ultricies arcu mi purus non sapien. Sapien vehicula justo proin eget in ac sociosqu. Euismod congue nisi.",
+          "read": false,
+          "like": true,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-129",
+      "userId": "tjm5488",
+      "firstName": "Tortie",
+      "lastName": "Manx",
+      "avatar": "//placekitten.com/400/300",
+      "submissionId": "assignment-8-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-02T11:12:18.000Z",
+      "body": "Scelerisque dignissim nibh quis sapien massa ultricies elit metus.",
+      "read": true,
+      "like": false,
+      "replies": [
+        {
+          "id": "feedback-129-reply-1",
+          "feedbackId": "feedback-129",
+          "userId": "tjc5167",
+          "firstName": "Tom",
+          "lastName": "Cat",
+          "avatar": "//placekitten.com/g/400/400",
+          "reviewerId": "tjm5488",
+          "reviewerFirstName": "Tortie",
+          "reviewerLastName": "Manx",
+          "reviewerAvatar": "//placekitten.com/400/300",
+          "submissionId": "assignment-8-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-04T07:02:18.000Z",
+          "body": "Sem nisi in finibus ut orci et. At hendrerit leo lobortis quam accumsan nisl efficitur. Porttitor neque id? Mi aenean rutrum id consequat in at!",
+          "read": false,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-128",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-8-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-02T10:08:18.000Z",
+      "body": "Vestibulum nulla sem. Laoreet volutpat dolor consectetur penatibus ullamcorper praesent elit hendrerit consequat tincidunt velit. Amet donec lectus ut ut?",
+      "read": false,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-128-reply-1",
+          "feedbackId": "feedback-128",
+          "userId": "hxb5122",
+          "firstName": "Havana",
+          "lastName": "Brown",
+          "reviewerId": "kmk5124",
+          "reviewerFirstName": "Kitty",
+          "reviewerLastName": "Korat",
+          "reviewerAvatar": "//placekitten.com/g/400/300",
+          "submissionId": "assignment-8-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-03T14:06:18.000Z",
+          "body": "Neque quisque nulla libero tempus lacus feugiat ut nulla. Ligula nec nam duis mauris consectetur auctor libero luctus dignissim a! Tortor ut maecenas enim lectus blandit sed risus imperdiet?",
+          "read": false,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-70",
+      "userId": "tjm5488",
+      "firstName": "Tortie",
+      "lastName": "Manx",
+      "avatar": "//placekitten.com/400/300",
+      "submissionId": "assignment-5-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Develop: Characters",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-01T14:20:18.000Z",
+      "body": "Et semper quis eu congue pretium consectetur pretium. Tincidunt laoreet felis ut viverra id pharetra ipsum! Sed nunc sem magna sed lorem ipsum vitae mi.",
+      "read": true,
+      "like": false,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-69",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-5-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Develop: Characters",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-01T13:16:18.000Z",
+      "body": "Mauris placerat integer in conubia semper donec sem neque rutrum risus. Urna semper sit convallis leo leo risus porttitor odio sit quisque?",
+      "read": false,
+      "like": false,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-68",
+      "userId": "tmn823",
+      "firstName": "Tabby",
+      "lastName": "Nebelung",
+      "submissionId": "assignment-5-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Develop: Characters",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-01T12:12:18.000Z",
+      "body": "Sed ac efficitur sit porta ultricies dictum eget viverra.",
+      "read": false,
+      "like": false,
+      "replies": [
+        {
+          "id": "feedback-68-reply-1",
+          "feedbackId": "feedback-68",
+          "userId": "hxb5122",
+          "firstName": "Havana",
+          "lastName": "Brown",
+          "reviewerId": "tmn823",
+          "reviewerFirstName": "Tabby",
+          "reviewerLastName": "Nebelung",
+          "submissionId": "assignment-5-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-02T22:26:18.000Z",
+          "body": "Purus phasellus luctus natoque mi sem duis congue metus congue ipsum ut et? Ac eget libero eget quisque diam sem. Tincidunt ipsum justo lobortis tellus risus arcu luctus iaculis class eget at!",
+          "read": false,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-67",
+      "userId": "hxb5122",
+      "firstName": "Havana",
+      "lastName": "Brown",
+      "submissionId": "assignment-5-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Develop: Characters",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-01T11:08:18.000Z",
+      "body": "Ac donec auctor risus convallis nunc augue suspendisse eu amet consectetur.",
+      "read": true,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-241",
+      "userId": "tjc5167",
+      "firstName": "Tom",
+      "lastName": "Cat",
+      "avatar": "//placekitten.com/g/400/400",
+      "submissionId": "assignment-18-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignment": "Develop: Brainstorm",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-10-01T00:16:18.000Z",
+      "body": "Fermentum at ac suscipit lorem tincidunt leo suspendisse vestibulum magna lectus nec. Sapien tempor tempus porta elementum imperdiet tincidunt lacus suscipit hendrerit. Id curabitur eu odio ultricies semper nam sodales placerat in.",
+      "read": false,
+      "like": false,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-149",
+      "userId": "srf325",
+      "firstName": "Scott",
+      "lastName": "Fold",
+      "avatar": "//placekitten.com/400/400",
+      "submissionId": "assignment-9-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T23:16:18.000Z",
+      "body": "Eget quis integer orci pellentesque scelerisque! Non lobortis aliquet risus. Laoreet ullamcorper ultricies tincidunt varius venenatis viverra nulla ipsum massa eu non faucibus rutrum.",
+      "read": true,
+      "like": false,
+      "replies": [
+        {
+          "id": "feedback-149-reply-1",
+          "feedbackId": "feedback-149",
+          "userId": "tjc5167",
+          "firstName": "Tom",
+          "lastName": "Cat",
+          "avatar": "//placekitten.com/g/400/400",
+          "reviewerId": "srf325",
+          "reviewerFirstName": "Scott",
+          "reviewerLastName": "Fold",
+          "reviewerAvatar": "//placekitten.com/400/400",
+          "submissionId": "assignment-9-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-01T11:39:18.000Z",
+          "body": "Justo a in velit eu elementum faucibus quis iaculis quis pharetra pellentesque euismod. Nec turpis commodo. Arcu morbi erat vitae a amet purus vestibulum sem mauris ac. Odio vel augue iaculis? Viverra massa pellentesque ac arcu penatibus auctor pellentesque facilisis venenatis odio faucibus bibendum.",
+          "read": false,
+          "like": true,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-240",
+      "userId": "tmn823",
+      "firstName": "Tabby",
+      "lastName": "Nebelung",
+      "submissionId": "assignment-18-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignment": "Develop: Brainstorm",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T23:12:18.000Z",
+      "body": "Non montes lobortis amet nisi lectus nunc velit placerat consectetur ligula.",
+      "read": true,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-148",
+      "userId": "hxb5122",
+      "firstName": "Havana",
+      "lastName": "Brown",
+      "submissionId": "assignment-9-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T22:12:18.000Z",
+      "body": "Risus et odio maecenas. Aliquet felis odio quis eget massa pretium lorem ipsum nibh dui vivamus luctus.",
+      "read": true,
+      "like": false,
+      "replies": [
+        {
+          "id": "feedback-148-reply-1",
+          "feedbackId": "feedback-148",
+          "userId": "hxb5122",
+          "firstName": "Havana",
+          "lastName": "Brown",
+          "reviewerId": "hxb5122",
+          "reviewerFirstName": "Havana",
+          "reviewerLastName": "Brown",
+          "submissionId": "assignment-9-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-01T15:39:18.000Z",
+          "body": "Felis per metus cursus auctor. Libero ut vitae varius in laoreet porta mi arcu erat fringilla per semper.",
+          "read": true,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-239",
+      "userId": "hxb5122",
+      "firstName": "Havana",
+      "lastName": "Brown",
+      "submissionId": "assignment-18-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignment": "Develop: Brainstorm",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T22:08:18.000Z",
+      "body": "Odio quisque gravida tempor interdum porttitor curabitur ac lectus massa metus porta inceptos. Libero suspendisse ornare volutpat.",
+      "read": false,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-239-reply-1",
+          "feedbackId": "feedback-239",
+          "userId": "tjc5167",
+          "firstName": "Tom",
+          "lastName": "Cat",
+          "avatar": "//placekitten.com/g/400/400",
+          "reviewerId": "hxb5122",
+          "reviewerFirstName": "Havana",
+          "reviewerLastName": "Brown",
+          "submissionId": "assignment-18-fms9811",
+          "portfolioId": "project-2-fms9811",
+          "date": "2020-10-02T15:42:18.000Z",
+          "body": "Orci orci ante quis convallis magna etiam metus? At ut sit faucibus dignissim cursus urna ipsum velit integer curae. Velit vitae aliquet in ipsum quis ac et euismod lacus ut. Nec lobortis libero? Finibus nascetur nunc vitae convallis ac.",
+          "read": true,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-147",
+      "userId": "tmn823",
+      "firstName": "Tabby",
+      "lastName": "Nebelung",
+      "submissionId": "assignment-9-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Iterate critique",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T21:08:18.000Z",
+      "body": "Dolor ac lobortis! Congue varius praesent. Odio libero sed aliquet pellentesque vestibulum dictum metus?",
+      "read": false,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-282",
+      "userId": "tjc5167",
+      "firstName": "Tom",
+      "lastName": "Cat",
+      "avatar": "//placekitten.com/g/400/400",
+      "submissionId": "assignment-24-fms9811",
+      "portfolioId": "assignment-24-fms9811",
+      "assignment": "Lesson 2 Reading",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T17:12:18.000Z",
+      "body": "Pretium ac lobortis odio lacus accumsan aliquet interdum porttitor nisi ullamcorper magna porta nam. Est dis at ac felis suspendisse. Nunc torquent efficitur tristique vel.",
+      "read": true,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-281",
+      "userId": "tjm5488",
+      "firstName": "Tortie",
+      "lastName": "Manx",
+      "avatar": "//placekitten.com/400/300",
+      "submissionId": "assignment-24-fms9811",
+      "portfolioId": "assignment-24-fms9811",
+      "assignment": "Lesson 2 Reading",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T16:08:18.000Z",
+      "body": "Porta semper augue laoreet sed integer donec magna suspendisse risus mauris sodales.",
+      "read": false,
+      "like": false,
+      "replies": [
+        {
+          "id": "feedback-281-reply-1",
+          "feedbackId": "feedback-281",
+          "userId": "hxb5122",
+          "firstName": "Havana",
+          "lastName": "Brown",
+          "reviewerId": "tjm5488",
+          "reviewerFirstName": "Tortie",
+          "reviewerLastName": "Manx",
+          "reviewerAvatar": "//placekitten.com/400/300",
+          "submissionId": "assignment-24-fms9811",
+          "portfolioId": "assignment-24-fms9811",
+          "date": "2020-10-01T19:00:18.000Z",
+          "body": "In sed tincidunt tincidunt et ultricies purus lacinia amet fames quam egestas. Condimentum suscipit massa. Netus vestibulum ac at eleifend vestibulum vitae diam. Ultricies amet donec lobortis elit risus semper quisque porta?",
+          "read": false,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-38",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-3-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Define: Synopsis",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T13:08:18.000Z",
+      "body": "Nunc suscipit laoreet fusce magna ipsum ac bibendum vehicula vel lobortis magna nec orci. Vestibulum vitae neque leo congue maximus felis massa maximus nulla accumsan.",
+      "read": true,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-38-reply-1",
+          "feedbackId": "feedback-38",
+          "userId": "srf325",
+          "firstName": "Scott",
+          "lastName": "Fold",
+          "avatar": "//placekitten.com/400/400",
+          "reviewerId": "kmk5124",
+          "reviewerFirstName": "Kitty",
+          "reviewerLastName": "Korat",
+          "reviewerAvatar": "//placekitten.com/g/400/300",
+          "submissionId": "assignment-3-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-01T03:34:18.000Z",
+          "body": "Massa proin neque iaculis nec ut finibus leo lorem in nisi tincidunt? Vitae fringilla eros elit suscipit ornare amet!",
+          "read": false,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-90",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-6-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Hypertext Narrative Draft",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T10:12:18.000Z",
+      "body": "Nulla eleifend rutrum magna commodo et magna vestibulum at tortor ac diam. Ex fames dapibus id eu ligula nec amet vivamus et nisl. Sem adipiscing rutrum pellentesque in.",
+      "read": true,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-90-reply-1",
+          "feedbackId": "feedback-90",
+          "userId": "cac488",
+          "firstName": "Callie",
+          "lastName": "Coe",
+          "reviewerId": "kmk5124",
+          "reviewerFirstName": "Kitty",
+          "reviewerLastName": "Korat",
+          "reviewerAvatar": "//placekitten.com/g/400/300",
+          "submissionId": "assignment-6-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-01T10:11:18.000Z",
+          "body": "Nulla in libero sit et. Orci a ultrices.",
+          "read": true,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-89",
+      "userId": "tjc5167",
+      "firstName": "Tom",
+      "lastName": "Cat",
+      "avatar": "//placekitten.com/g/400/400",
+      "submissionId": "assignment-6-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Deliver: Hypertext Narrative Draft",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T09:08:18.000Z",
+      "body": "Ut imperdiet fusce.",
+      "read": false,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-89-reply-1",
+          "feedbackId": "feedback-89",
+          "userId": "tmn823",
+          "firstName": "Tabby",
+          "lastName": "Nebelung",
+          "reviewerId": "tjc5167",
+          "reviewerFirstName": "Tom",
+          "reviewerLastName": "Cat",
+          "reviewerAvatar": "//placekitten.com/g/400/400",
+          "submissionId": "assignment-6-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-10-01T01:11:18.000Z",
+          "body": "Amet laoreet nisl dapibus dictum metus ultrices eu non nibh nulla erat. Nibh eleifend sem est lorem quam cursus quisque dui non. In nec sem lacus velit volutpat diam.",
+          "read": true,
+          "like": true,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-11",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-1-fms9811",
+      "portfolioId": "assignment-1-fms9811",
+      "assignment": "Lesson 1 Reading",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-30T03:08:18.000Z",
+      "body": "Nisl a libero lectus eleifend? Lobortis ultrices sit in duis in tempus donec.",
+      "read": false,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-25",
+      "userId": "tjm5488",
+      "firstName": "Tortie",
+      "lastName": "Manx",
+      "avatar": "//placekitten.com/400/300",
+      "submissionId": "assignment-2-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Discover: Word-Pairs",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-29T15:12:18.000Z",
+      "body": "Ornare elementum dolor netus ut. Fermentum nec phasellus adipiscing libero maecenas sodales eleifend lectus at vehicula id est? Aenean bibendum maecenas ut ipsum justo ultricies aliquet semper at diam tristique quisque.",
+      "read": true,
+      "like": false,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-271",
+      "userId": "tjm5488",
+      "firstName": "Tortie",
+      "lastName": "Manx",
+      "avatar": "//placekitten.com/400/300",
+      "submissionId": "assignment-22-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignment": "Deliver: Final Prototype",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-29T14:12:18.000Z",
+      "body": "In eget interdum. Sit leo maecenas et id dui aenean orci.",
+      "read": true,
+      "like": true,
+      "replies": [],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-24",
+      "userId": "srf325",
+      "firstName": "Scott",
+      "lastName": "Fold",
+      "avatar": "//placekitten.com/400/400",
+      "submissionId": "assignment-2-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Discover: Word-Pairs",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-29T14:08:18.000Z",
+      "body": "Lacinia volutpat malesuada. Sollicitudin tortor a varius euismod ac non rutrum condimentum nulla dapibus. Massa rhoncus egestas leo lacus est felis ut arcu mauris inceptos sodales nunc.",
+      "read": true,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-24-reply-1",
+          "feedbackId": "feedback-24",
+          "userId": "tmn823",
+          "firstName": "Tabby",
+          "lastName": "Nebelung",
+          "reviewerId": "srf325",
+          "reviewerFirstName": "Scott",
+          "reviewerLastName": "Fold",
+          "reviewerAvatar": "//placekitten.com/400/400",
+          "submissionId": "assignment-2-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-09-30T10:17:18.000Z",
+          "body": "Egestas elit suspendisse ut urna dolor fringilla urna sed? Neque felis nibh urna nec at laoreet turpis tempus orci aptent. Vestibulum nisi ex nunc ut mollis phasellus nunc et dapibus sed.",
+          "read": false,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-48",
+      "userId": "tjc5167",
+      "firstName": "Tom",
+      "lastName": "Cat",
+      "avatar": "//placekitten.com/g/400/400",
+      "submissionId": "assignment-4-fms9811",
+      "portfolioId": "project-1-fms9811",
+      "assignment": "Develop: Story and Plot Elements",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-29T14:08:18.000Z",
+      "body": "Ac duis ut tempor tristique. Nisi nam iaculis praesent quis ex dapibus risus massa felis venenatis cursus ac nisl. Odio turpis condimentum ridiculus semper ut.",
+      "read": false,
+      "like": true,
+      "replies": [
+        {
+          "id": "feedback-48-reply-1",
+          "feedbackId": "feedback-48",
+          "userId": "hxb5122",
+          "firstName": "Havana",
+          "lastName": "Brown",
+          "reviewerId": "tjc5167",
+          "reviewerFirstName": "Tom",
+          "reviewerLastName": "Cat",
+          "reviewerAvatar": "//placekitten.com/g/400/400",
+          "submissionId": "assignment-4-fms9811",
+          "portfolioId": "project-1-fms9811",
+          "date": "2020-09-30T14:43:18.000Z",
+          "body": "Nibh suspendisse a mauris diam eget pharetra et accumsan condimentum ut tempus neque? Nulla ornare at venenatis turpis vulputate nam ultricies metus adipiscing nec primis proin. Luctus augue in sapien a est scelerisque neque sagittis sit donec aenean justo feugiat! Neque risus nibh metus est morbi consectetur laoreet. Et tincidunt venenatis facilisis mi augue dignissim consequat sed pellentesque maximus interdum?",
+          "read": true,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    },
+    {
+      "id": "feedback-270",
+      "userId": "kmk5124",
+      "firstName": "Kitty",
+      "lastName": "Korat",
+      "avatar": "//placekitten.com/g/400/300",
+      "submissionId": "assignment-22-fms9811",
+      "portfolioId": "project-2-fms9811",
+      "assignment": "Deliver: Final Prototype",
+      "creatorId": "fms9811",
+      "creatorFirstName": "Felix",
+      "creatorLastName": "Sphinx",
+      "date": "2020-09-29T13:08:18.000Z",
+      "body": "Donec leo leo eleifend natoque aliquet integer. Eros dolor in pellentesque sem condimentum nec eleifend hendrerit interdum elit metus quis. Mauris enim nunc lorem in in ac non nulla.",
+      "read": true,
+      "like": false,
+      "replies": [
+        {
+          "id": "feedback-270-reply-1",
+          "feedbackId": "feedback-270",
+          "userId": "fms9811",
+          "firstName": "Felix",
+          "lastName": "Sphinx",
+          "reviewerId": "kmk5124",
+          "reviewerFirstName": "Kitty",
+          "reviewerLastName": "Korat",
+          "reviewerAvatar": "//placekitten.com/g/400/300",
+          "submissionId": "assignment-22-fms9811",
+          "portfolioId": "project-2-fms9811",
+          "date": "2020-10-01T11:44:18.000Z",
+          "body": "Sed in scelerisque nisi id consequat ligula tortor dignissim! Nibh id praesent eu diam euismod.",
+          "read": true,
+          "like": false,
+          "activity": "reply"
+        }
+      ],
+      "activity": "discussion"
+    }
+  ],
+  "given": [
+    "feedback-16",
+    "feedback-19",
+    "feedback-23",
+    "feedback-32",
+    "feedback-35",
+    "feedback-39",
+    "feedback-46",
+    "feedback-55",
+    "feedback-59",
+    "feedback-82",
+    "feedback-104",
+    "feedback-110",
+    "feedback-134",
+    "feedback-153",
+    "feedback-156",
+    "feedback-158",
+    "feedback-166",
+    "feedback-169",
+    "feedback-173",
+    "feedback-179",
+    "feedback-186",
+    "feedback-190",
+    "feedback-199",
+    "feedback-211",
+    "feedback-212",
+    "feedback-219",
+    "feedback-224",
+    "feedback-230",
+    "feedback-245",
+    "feedback-272",
+    "feedback-280"
+  ],
+  "replies": [
+    "feedback-10-reply-1",
+    "feedback-16-reply-1",
+    "feedback-26-reply-1",
+    "feedback-88-reply-1",
+    "feedback-98-reply-1",
+    "feedback-131-reply-1",
+    "feedback-133-reply-1",
+    "feedback-198-reply-1",
+    "feedback-206-reply-1",
+    "feedback-220-reply-1",
+    "feedback-229-reply-1",
+    "feedback-242-reply-1",
+    "feedback-270-reply-1",
+    "feedback-277-reply-1"
+  ],
+  "discussions": [
+    "feedback-16",
+    "feedback-19",
+    "feedback-23",
+    "feedback-32",
+    "feedback-35",
+    "feedback-39",
+    "feedback-46",
+    "feedback-55",
+    "feedback-59",
+    "feedback-82",
+    "feedback-104",
+    "feedback-110",
+    "feedback-134",
+    "feedback-153",
+    "feedback-156",
+    "feedback-158",
+    "feedback-166",
+    "feedback-169",
+    "feedback-173",
+    "feedback-179",
+    "feedback-186",
+    "feedback-190",
+    "feedback-199",
+    "feedback-211",
+    "feedback-212",
+    "feedback-219",
+    "feedback-224",
+    "feedback-230",
+    "feedback-245",
+    "feedback-272",
+    "feedback-280",
+    "feedback-10-reply-1",
+    "feedback-16-reply-1",
+    "feedback-26-reply-1",
+    "feedback-88-reply-1",
+    "feedback-98-reply-1",
+    "feedback-131-reply-1",
+    "feedback-133-reply-1",
+    "feedback-198-reply-1",
+    "feedback-206-reply-1",
+    "feedback-220-reply-1",
+    "feedback-229-reply-1",
+    "feedback-242-reply-1",
+    "feedback-270-reply-1",
+    "feedback-277-reply-1"
+  ]
+}
