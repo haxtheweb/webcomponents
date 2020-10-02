@@ -59,6 +59,7 @@ class AbsolutePositionBehavior extends LitElement {
        */
       hidden: {
         type: Boolean,
+        reflect: true,
         attribute: "hidden",
       },
       /**

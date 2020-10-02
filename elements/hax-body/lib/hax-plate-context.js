@@ -222,18 +222,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
    */
   _dragEnd(e) {
     window.HaxStore.instance._lockContextPosition = false;
-    let children = window.HaxStore.instance.activeHaxBody.children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove(
-          "hax-mover",
-          "hax-hovered",
-          "hax-moving",
-          "grid-plate-active-item"
-        );
-      }
-    }
   }
   /**
    * Drag start so we know what target to set
@@ -244,26 +232,12 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     window.HaxStore.instance._lockContextPosition = true;
     target.classList.add("hax-moving");
     if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setDragImage(target, -20, -20);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
-    setTimeout(() => {
-      // show where things can be dropped only during the drag
-      if (
-        !window.HaxStore.instance.activeHaxBody.openDrawer &&
-        window.HaxStore.instance.editMode
-      ) {
-        let children = window.HaxStore.instance.activeHaxBody.children;
-        // walk the children and apply the draggable state needed
-        for (var i in children) {
-          if (children[i].classList && target !== children[i]) {
-            children[i].classList.add("hax-mover");
-          }
-        }
-      }
-    }, 10);
   }
 }
 window.customElements.define(HaxPlateContext.tag, HaxPlateContext);

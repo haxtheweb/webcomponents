@@ -163,21 +163,12 @@ class GridPlate extends LitElement {
             #dddddd
           );
           --grid-plate-active-border-color: var(
-            --simple-colors-default-theme-cyan-7,
-            #3b97e3
+            --simple-colors-default-theme-grey-4,
+            #eeeeee
           );
-          --grid-plate-target-background-color: var(
-            --simple-colors-default-theme-cyan-2,
-            #9beaff
-          );
+          --grid-plate-target-background-color: inherit;
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
-          --grid-plate-arrow-color: #ffffff;
-          --grid-plate-arrow-color-hover: #000000;
-          --grid-plate-arrow-bg: var(
-            --simple-colors-default-theme-cyan-7,
-            #3b97e3
-          );
         }
         :host .row {
           width: 100%;
@@ -253,64 +244,29 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(ul:active) {
           outline-offset: 8px;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: 1px solid var(--hax-body-active-outline);
+        :host([edit-mode]) ::slotted(*.hax-moving) {
+          outline: 1px solid var(--simple-colors-default-theme-cyan-7, #009dc7);
         }
-        :host([edit-mode]) .column ::slotted(img.hax-hovered),
-        :host([edit-mode]) .column ::slotted(*.hax-hovered):before {
+        :host([edit-mode].hax-hovered) .column ::slotted(img),
+        :host([edit-mode].hax-hovered) .column ::slotted(*):before {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
-          outline: solid 2px var(--grid-plate-active-border-color);
+          outline: solid 1px var(--grid-plate-active-border-color);
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -20px 0 0 0;
+          z-index: 2;
+          height: 20px;
         }
         :host([edit-mode]) .column.hax-hovered {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
-          outline: solid 2px var(--grid-plate-active-border-color);
+          outline: solid 1px var(--grid-plate-active-border-color);
           z-index: 2;
-        }
-        paper-icon-button {
-          display: none;
-          position: absolute;
-          margin: 0;
-          padding: 0;
-          outline: none;
-          width: 20px;
-          height: 20px;
-          color: var(--grid-plate-arrow-color);
-          opacity: 1;
-          background-color: var(--grid-plate-arrow-bg);
-          border-radius: none;
-          box-sizing: content-box !important;
-          z-index: 2;
-          min-width: unset;
-          transition: 0.2s color linear, 0.2s background-color linear;
-        }
-        paper-icon-button:hover {
-          opacity: 1;
-          visibility: visible;
-          color: var(--grid-plate-arrow-color-hover);
-        }
-        #drag {
-          cursor: move;
-        }
-        paper-icon-button[disabled] {
-          opacity: 0.5;
-        }
-        paper-icon-button[disabled]:focus,
-        paper-icon-button[disabled]:hover {
-          cursor: not-allowed;
-        }
-        paper-icon-button.active {
-          display: block;
-        }
-
-        .button-holding-pen {
-          position: relative;
-        }
-        .button-holding-pen[hidden] {
-          display: none;
         }
       `,
     ];
@@ -319,7 +275,6 @@ class GridPlate extends LitElement {
     super();
     this.droppable = false;
     this.ignoreHax = false;
-    this.hideOps = false;
     this.breakpointSm = 900;
     this.breakpointMd = 1200;
     this.breakpointLg = 1500;
@@ -334,9 +289,6 @@ class GridPlate extends LitElement {
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
     setTimeout(() => {
-      import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@polymer/iron-icons/hardware-icons.js");
-      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       this.addEventListener("focusin", this._focusIn.bind(this));
     }, 0);
     window.ResponsiveUtility.requestAvailability();
@@ -346,54 +298,6 @@ class GridPlate extends LitElement {
    */
   render() {
     return html`
-      ${!this.hideOps
-        ? html`
-            <div class="button-holding-pen">
-              <paper-icon-button
-                class="direction"
-                icon="hax:arrow-all"
-                title="Drag"
-                draggable="true"
-                id="drag"
-                @dragstart="${this.dragStart}"
-                @dragend="${this.dragEnd}"
-              >
-              </paper-icon-button>
-              <paper-icon-button
-                class="direction"
-                icon="hardware:keyboard-arrow-up"
-                title="Move up"
-                id="up"
-                @click="${this.moveActiveElement}"
-              >
-              </paper-icon-button>
-              <paper-icon-button
-                class="direction"
-                icon="hardware:keyboard-arrow-right"
-                title="Move right"
-                id="right"
-                @click="${this.moveActiveElement}"
-              >
-              </paper-icon-button>
-              <paper-icon-button
-                class="direction"
-                icon="hardware:keyboard-arrow-down"
-                title="Move down"
-                id="down"
-                @click="${this.moveActiveElement}"
-              >
-              </paper-icon-button>
-              <paper-icon-button
-                class="direction"
-                icon="hardware:keyboard-arrow-left"
-                title="Move left"
-                id="left"
-                @click="${this.moveActiveElement}"
-              >
-              </paper-icon-button>
-            </div>
-          `
-        : ``}
       <div class="row">
         <div
           class="column"
@@ -537,15 +441,6 @@ class GridPlate extends LitElement {
     // dom loaded, resize to be safe
     window.addEventListener("load", this.resize.bind(this));
     // if we resize, listen and react
-    window.addEventListener("resize", this.resizeListener.bind(this));
-  }
-  resizeListener(e) {
-    if (this.activeItem) {
-      clearTimeout(this.resizeTimer);
-      this.resizeTimer = setTimeout(() => {
-        this.positionArrows(this.activeItem);
-      }, 50);
-    }
   }
   _onKeyDown(e) {
     if (this.editMode && this.getAttribute("contenteditable")) {
@@ -559,9 +454,6 @@ class GridPlate extends LitElement {
           ) {
             this.__slot = this.activeItem.getAttribute("slot");
             return true;
-          }
-          if (!this.hideOps) {
-            this.shadowRoot.querySelector("#right").focus();
           }
           break;
         // clear active
@@ -618,7 +510,6 @@ class GridPlate extends LitElement {
       this._haxStorePropertyUpdated.bind(this)
     );
     window.removeEventListener("load", this.resize.bind(this));
-    window.removeEventListener("resize", this.resizeListener.bind(this));
     // clean up mutation observer
     this.observer.disconnect();
     super.disconnectedCallback();
@@ -704,23 +595,14 @@ class GridPlate extends LitElement {
           "options",
           "droppable",
           "ignorehax",
-          "hideops",
           "activeitem",
           "responsive-width",
-          "hide-ops",
         ],
       },
     };
   }
   static get properties() {
     return {
-      /**
-       * Flag to allow hiding button based operations
-       */
-      hideOps: {
-        type: Boolean,
-        attribute: "hide-ops",
-      },
       /**
        * allows other systems to trigger editMode in grid plate via property for D&D
        */
@@ -867,8 +749,7 @@ class GridPlate extends LitElement {
         // observer, ensure we are sized correctly after widths change
         case "__columnWidths":
           // widths changed because of layout somehow, wait for the resize transition
-          // to have processed, then fire a resize event which we are listening for
-          // which will then ensure the arrows are positioned correctly
+          // to have processed, then fire a resize event which we are listening
           this.resize();
           break;
         case "disableResponsive":
@@ -980,34 +861,6 @@ class GridPlate extends LitElement {
   }
 
   /**
-   * Move the active element based on which button got pressed.
-   */
-  moveActiveElement(e) {
-    var local = e.target;
-    // see if this was an up down left or right movement
-    switch (local.id) {
-      case "up":
-        this.moveOrder(this.activeItem, true);
-        break;
-      case "down":
-        this.moveOrder(this.activeItem, false);
-        break;
-      case "left":
-        this.moveSlot(this.activeItem, true);
-        break;
-      case "right":
-        this.moveSlot(this.activeItem, false);
-        break;
-    }
-    // ensure arrows are correctly positioned after the move
-    if (this.activeItem && typeof this.activeItem.focus === "function") {
-      this.positionArrows(this.activeItem);
-      this.activeItem.focus();
-    }
-    this.__sortChildren();
-  }
-
-  /**
    * Notice changes to what's active and ensure UX associated w/ it is visble
    */
   _activeItemChanged(newValue, oldValue) {
@@ -1016,11 +869,7 @@ class GridPlate extends LitElement {
       el.classList.remove("grid-plate-active-item");
     });
     if (typeof newValue !== typeof undefined && newValue != null) {
-      // position arrows
       newValue.classList.add("grid-plate-active-item");
-      this.positionArrows(newValue);
-    } else if (newValue == null) {
-      this.positionArrows(newValue);
     }
     // if we had a previous value then remove the active item class
     if (typeof oldValue !== typeof undefined && oldValue != null) {
@@ -1105,79 +954,6 @@ class GridPlate extends LitElement {
     }
   }
   /**
-   * Position the arrows to change directions around something
-   */
-  positionArrows(item, onlyArrows = false) {
-    if (!this.hideOps) {
-      if (item == null) {
-        this.shadowRoot.querySelectorAll(".direction").forEach((el) => {
-          if (!onlyArrows) {
-            el.classList.remove("active");
-          } else {
-            if (el.id != "drag") {
-              el.classList.remove("active");
-            }
-          }
-        });
-      } else {
-        this.shadowRoot.querySelectorAll(".direction").forEach((el) => {
-          el.classList.add("active");
-        });
-
-        // ensure we disable invalid options contextually
-        // test for an element above us
-        this.shadowRoot.querySelector("#up").disabled = !this.canMoveOrder(
-          item,
-          true
-        );
-        // test for an element below us
-        this.shadowRoot.querySelector("#down").disabled = !this.canMoveOrder(
-          item,
-          false
-        );
-        // test for a column to the left of us
-        this.shadowRoot.querySelector("#left").disabled = !this.canMoveSlot(
-          item,
-          true
-        );
-        // test for a column to the right of us
-        this.shadowRoot.querySelector("#right").disabled = !this.canMoveSlot(
-          item,
-          false
-        );
-        // get coordinates of the page and active element
-        // delay since a transition might move it
-        let bodyRect = this.getBoundingClientRect();
-        let elemRect = item.getBoundingClientRect();
-        let topOffset = elemRect.top - bodyRect.top;
-        let leftOffset = elemRect.left - bodyRect.left;
-
-        // set the arrows to position correctly at all 4 sides
-        this.shadowRoot.querySelector("#up").style.top = topOffset - 10 + "px";
-        this.shadowRoot.querySelector("#down").style.top =
-          topOffset + elemRect.height - 10 + "px";
-        this.shadowRoot.querySelector("#left").style.top =
-          topOffset + elemRect.height / 2 - 10 + "px";
-        this.shadowRoot.querySelector("#right").style.top =
-          topOffset + elemRect.height / 2 - 10 + "px";
-
-        this.shadowRoot.querySelector("#drag").style.top =
-          topOffset - 10 + "px";
-        this.shadowRoot.querySelector("#drag").style.left =
-          leftOffset - 10 + "px";
-
-        this.shadowRoot.querySelector("#up").style.left =
-          leftOffset + elemRect.width / 2 - 10 + "px";
-        this.shadowRoot.querySelector("#down").style.left =
-          leftOffset + elemRect.width / 2 - 10 + "px";
-        this.shadowRoot.querySelector("#left").style.left =
-          leftOffset - 10 + "px";
-        this.shadowRoot.querySelector("#right").style.left =
-          leftOffset + elemRect.width - 10 + "px";
-      }
-    }
-  }
-  /**
    * Notice edit state has changed
    */
   _editModeChanged(newValue, oldValue) {
@@ -1237,6 +1013,7 @@ class GridPlate extends LitElement {
       e.preventDefault();
       if (e.target && e.target.classList) {
         e.target.classList.add("hax-hovered");
+        this.classList.add("hax-hovered");
       }
     }
   }
@@ -1246,6 +1023,7 @@ class GridPlate extends LitElement {
   dragLeave(e) {
     if (this.editMode && e.target && e.target.classList) {
       e.target.classList.remove("hax-hovered");
+      this.classList.remove("hax-hovered");
     }
   }
   /**
@@ -1401,7 +1179,6 @@ class GridPlate extends LitElement {
             }, 10);
           }
         }
-        this.positionArrows(null);
         this.activeItem = null;
       }, 0);
     }
@@ -1472,7 +1249,6 @@ class GridPlate extends LitElement {
         // do nothing, we were told to ignore hax
       } else {
         // if HAX modified our edit state then hide operations
-        this.hideOps = true;
         this[e.detail.property] = e.detail.value;
       }
     }

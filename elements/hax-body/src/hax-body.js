@@ -133,15 +133,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             #007999
           );
           --hax-body-editable-outline: 1px solid
-            var(--simple-colors-default-theme-grey-1, #eeeeee);
+            var(--simple-colors-default-theme-grey-4, #eeeeee);
           --hax-body-active-outline-hover: 1px solid
-            var(--simple-colors-default-theme-grey-1, #eeeeee);
+            var(--simple-colors-default-theme-grey-4, #eeeeee);
           --hax-body-active-outline: 1px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
             );
-          --hax-body-active-drag-outline: 5px solid
+          --hax-body-active-drag-outline: 1px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
@@ -150,7 +150,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             --simple-colors-default-theme-cyan-7,
             #009dc7
           );
-          --hax-body-possible-target-background-color: transparent;
+          --hax-body-possible-target-background-color: inherit;
         }
         .hax-context-menu {
           padding: 0;
@@ -327,10 +327,23 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           z-index: 2;
           height: 20px;
         }
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(img) {
+          outline: var(--hax-body-editable-outline);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered),
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
           outline: var(--hax-body-active-drag-outline);
         }
+        :host([edit-mode]) #bodycontainer ::slotted(img.hax-hovered) {
+          border-top: 10px
+            var(
+              --hax-contextual-action-hover-color,
+              var(--simple-colors-default-theme-cyan-7, #009dc7)
+            );
+          margin-top: -10px;
+        }
+
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           /*
             Define here the CSS styles applied only to Safari browsers
@@ -385,9 +398,28 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.addEventListener("mousedown", this._mouseDown.bind(this));
       this.addEventListener("mouseup", this._mouseUp.bind(this));
       this.addEventListener("dragenter", this.dragEnterBody.bind(this));
+      this.addEventListener("dragend", this.dragEndBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
       this.addEventListener("click", this.clickEvent.bind(this));
     }, 0);
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  dragEndBody(e) {
+    this.__manageFakeEndCap(false);
+    window.HaxStore.instance._lockContextPosition = false;
+    let children = window.HaxStore.instance.activeHaxBody.children;
+    // walk the children and apply the draggable state needed
+    for (var i in children) {
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.remove(
+          "hax-hovered",
+          "hax-moving",
+          "grid-plate-active-item"
+        );
+      }
+    }
   }
   _mouseDown(e) {
     this.__mouseDown = true;
@@ -425,6 +457,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let fake = document.createElement("fake-hax-body-end");
       fake.style.width = "100%";
       fake.style.height = "20px";
+      fake.style.zIndex = "2";
       fake.style.display = "block";
       fake.classList.add("hax-move");
       this.__fakeEndCap = fake;

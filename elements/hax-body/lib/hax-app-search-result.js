@@ -128,25 +128,13 @@ class HaxAppSearchResult extends LitElement {
       this.crt.style.right = "-1000px";
       this.crt.style.transform = "scale(0.25)";
       this.crt.style.opacity = ".8";
+      e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
       document.body.appendChild(this.crt);
       e.dataTransfer.setDragImage(this.crt, 0, 0);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
-    // show where things can be dropped only during the drag
-    if (
-      !window.HaxStore.instance.activeHaxBody.openDrawer &&
-      window.HaxStore.instance.editMode
-    ) {
-      let children = window.HaxStore.instance.activeHaxBody.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (children[i].classList && target !== children[i]) {
-          children[i].classList.add("hax-mover");
-        }
-      }
-    }
   }
   /**
    * When we end dragging ensure we remove the mover class.
@@ -154,23 +142,7 @@ class HaxAppSearchResult extends LitElement {
   _dragEnd(e) {
     this.crt.remove();
     setTimeout(() => {
-      let children = window.HaxStore.instance.activeHaxBody.querySelectorAll(
-        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
-      );
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "hax-mover",
-            "hax-hovered",
-            "hax-moving",
-            "grid-plate-active-item"
-          );
-        }
-      }
-      setTimeout(() => {
-        this._itemSelected(e);
-      }, 100);
+      this._itemSelected(e);
     }, 0);
   }
 

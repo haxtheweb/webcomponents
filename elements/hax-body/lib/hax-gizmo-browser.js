@@ -122,43 +122,19 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
       }
       this.crt.style.opacity = ".8";
       this.crt.style.backgroundColor = e.target.getAttribute("drag-color");
+      e.dataTransfer.effectAllowed = "move";
       e.dataTransfer.dropEffect = "move";
-      document.body.appendChild(this.crt);
+      //document.body.appendChild(this.crt);
       e.dataTransfer.setDragImage(this.crt, 0, 0);
     }
     e.stopPropagation();
     e.stopImmediatePropagation();
-    // show where things can be dropped only during the drag
-    if (
-      !window.HaxStore.instance.activeHaxBody.openDrawer &&
-      window.HaxStore.instance.editMode
-    ) {
-      let children = window.HaxStore.instance.activeHaxBody.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (children[i].classList && target !== children[i]) {
-          children[i].classList.add("hax-mover");
-        }
-      }
-    }
   }
   /**
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
     this.crt.remove();
-    let children = window.HaxStore.instance.activeHaxBody.children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove(
-          "hax-mover",
-          "hax-hovered",
-          "hax-moving",
-          "grid-plate-active-item"
-        );
-      }
-    }
   }
   filteredChanged(e) {
     this.filtered = [...e.detail.value];

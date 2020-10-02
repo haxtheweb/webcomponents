@@ -12,6 +12,7 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import "@lrnwebcomponents/hax-body/lib/hax-map.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -119,7 +120,7 @@ class HaxTray extends winEventsElement(LitElement) {
         :host {
           font-family: var(--simple-fields-font-family, sans-serif);
           display: block;
-          z-index: 1000;
+          z-index: 100000000;
           position: absolute;
           transition: 0.2s all ease-in-out;
           --hax-contextual-action-text-color: var(
@@ -601,11 +602,15 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
-              event-name="open-map-dialog"
+              event-name="open-map"
               icon="maps:map"
+              id="mapbtn"
               label="Content map"
               voice-command="open map"
             ></hax-tray-button>
+            <simple-popover for="mapbtn" auto hidden>
+              <hax-map></hax-map>
+            </simple-popover>
             <hax-tray-button
               mini
               ?hidden="${this.hidePreferencesButton}"
@@ -784,18 +789,17 @@ class HaxTray extends winEventsElement(LitElement) {
           this
         );
         break;
-      case "open-map-dialog":
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxMap,
-          this
-        );
-        break;
       case "toggle-element-align":
         this.elementAlign = this.elementAlign === "right" ? "left" : "right";
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
+        break;
+      case "open-map":
+        this.shadowRoot.querySelector(
+          "simple-popover"
+        ).hidden = !this.shadowRoot.querySelector("simple-popover").hidden;
+        this.shadowRoot.querySelector("hax-map").updateHAXMap();
         break;
       case "open-export-dialog":
         window.HaxStore.write(
