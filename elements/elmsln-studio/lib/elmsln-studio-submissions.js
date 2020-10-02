@@ -335,11 +335,16 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                 <div slot="heading" id="student-${s.id}" class="card-student">
                   ${[s.firstName, s.lastName].join(" ")}
                 </div>
-                <div slot="corner" id="date-${s.id}">
-                  ${this.list
-                    ? this.dateFormat(s.date)
-                    : this.dateFormat(s.date, "short")}
-                </div>
+                <local-time
+                  slot="corner"
+                  id="date-${s.id}"
+                  datetime="${s.date}"
+                  month="long"
+                  day="numeric"
+                  year="${this.list ? "numeric" : undefined}"
+                >
+                  ${this.dateFormat(s.date, "short")}
+                </local-time>
                 <div slot="subheading" id="assignment-${s.id}">
                   ${s.assignment}
                 </div>
@@ -393,9 +398,14 @@ class ElmslnStudioSubmissions extends ElmslnStudioUtilities(
                   >
                     ${this.getActivityTitle(f)}
                   </elmsln-studio-link>
-                  <span id="comment-${f.id}" slot="description">
-                    ${this.dateFormat(f.date)}
-                  </span>
+
+                  <relative-time
+                    id="comment-${f.id}"
+                    slot="description"
+                    datetime="${f.date}"
+                  >
+                    ${this.dateFormat(f.date, "long")}
+                  </relative-time>
                 </nav-card-item>
               `
             )}

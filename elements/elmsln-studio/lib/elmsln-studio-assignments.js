@@ -7,6 +7,7 @@ import { ElmslnStudioUtilities } from "./elmsln-studio-utilities.js";
 import { ElmslnStudioStyles } from "./elmsln-studio-styles.js";
 import "./elmsln-studio-link.js";
 import "./elmsln-studio-button.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
  * `elmsln-studio-assignments`
@@ -44,6 +45,7 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
         }
         nav-card [slot="heading"] {
           color: #4d4d4d;
+          font-size: 80%;
         }
         nav-card-item [slot="label"] {
           font-weight: normal;
@@ -127,40 +129,49 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
       ? ``
       : html`
           <nav-card-item
-            accent-color="${!this._incomplete(assignment.id)
-              ? "green"
-              : this._late(assignment.date)
-              ? "red"
-              : "grey"}"
+            id="act-${assignment.id}-item"
+            accent-color="${this.getStatusColor(
+              this.getSubmission(assignment.id),
+              assignment
+            )}"
             allow-grey
-            avatar="${!this._incomplete(assignment.id)
-              ? "assignment-turned-in"
-              : this._late(assignment.date)
-              ? "icons:assignment-late"
-              : "assignment"}"
+            avatar="${this.getStatusIcon(
+              this.getSubmission(assignment.id),
+              assignment
+            )}"
             invert
           >
             <elmsln-studio-link
               id="act-${assignment.id}"
-              aria-describedby="act-${assignment.id}-desc"
+              aria-describedby="act-${assignment.id}-desc act-${assignment.id}-item"
               slot="label"
               href="/assignments/${assignment.id}"
             >
               ${assignment.assignment}
             </elmsln-studio-link>
             <div id="act-${assignment.id}-desc" slot="description">
-              Due: ${this.dateFormat(assignment.date)}
+              Due:
+              <local-time
+                month="long"
+                day="numeric"
+                year="numeric"
+                hour="2-digit"
+                minute="2-digit"
+                second="2-digit"
+                time-zone-name="short"
+                datetime="${assignment.date}"
+              >
+                ${this.dateFormat(assignment.date)}
+              </local-time>
             </div>
           </nav-card-item>
+          <simple-tooltip for="act-${assignment.id}" position="left">
+            ${this.getStatusMessage(
+              this.getSubmission(assignment.id),
+              assignment
+            )}
+          </simple-tooltip>
         `;
-  }
-
-  _incomplete(id) {
-    return (
-      this.profile &&
-      this.profile.due &&
-      this.profile.due.filter((s) => s.id === id).length > 0
-    );
   }
 
   // properties available to the custom element for data binding
@@ -187,6 +198,15 @@ class ElmslnStudioAssignments extends ElmslnStudioUtilities(
     if (super.updated) super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {});
     console.log("updated", this.lessons, this.profile);
+  }
+  getSubmission(id) {
+    let submissions =
+      this.profile && this.profile.id && this.profile.submissions
+        ? this.profile.submissions.filter(
+            (s) => s.id === `${id}-${this.profile.id}`
+          )
+        : [];
+    return submissions.length > 0 ? submissions[0] : undefined;
   }
   // static get observedAttributes() {
   //   return [];

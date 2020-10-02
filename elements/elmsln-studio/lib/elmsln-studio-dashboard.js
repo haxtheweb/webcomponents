@@ -216,22 +216,6 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">
-                    <elmsln-studio-link href="/submissions${
-                      !this.profile ? "" : `?student=${this.profile.id}`
-                    }">
-                      Total Submissions
-                    </elmsln-studio-link>
-                  </th>
-                  <td>
-                    ${
-                      !this.profile
-                        ? "unknown"
-                        : (this.profile.submissions || []).length
-                    }
-                  </td>
-                </tr>
-                <tr>
                   <th scope="row">Feedback Given</th>
                   <td>
                     ${
@@ -266,9 +250,9 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   : (this.profile.due || []).slice(0, 5).map(
                       (a) => html`
                         <nav-card-item
-                          accent-color="${this._late(a.date) ? "red" : "grey"}"
+                          accent-color="${this.isLate(a.date) ? "red" : "grey"}"
                           allow-grey
-                          avatar="${this._late(a.date)
+                          avatar="${this.isLate(a.date)
                             ? "icons:assignment-late"
                             : "assignment"}"
                           icon="chevron-right"
@@ -282,9 +266,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           >
                             ${a.assignment}
                           </elmsln-studio-link>
-                          <span id="due-${a.id}-desc" slot="description"
-                            >${this.dateFormat(a.date, "long")}</span
+                          <relative-time
+                            id="due-${a.id}-desc"
+                            slot="description"
+                            datetime="${a.date}"
                           >
+                            ${this.dateFormat(a.date, "long")}
+                          </relative-time>
                         </nav-card-item>
                       `
                     )
@@ -318,9 +306,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                           >
                             ${s.assignment}
                           </elmsln-studio-link>
-                          <span id="sub-${s.id}-desc" slot="description"
-                            >${this.dateFormat(s.date)}</span
+                          <relative-time
+                            id="sub-${s.id}-desc"
+                            slot="description"
+                            datetime="${s.date}"
                           >
+                            ${this.dateFormat(s.date)}
+                          </relative-time>
                         </nav-card-item>
                       `
                     )
@@ -357,9 +349,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                             ${[f.firstName, f.lastName].join(" ")}'s feedback on
                             ${f.assignment}
                           </elmsln-studio-link>
-                          <span id="feed-${f.id}-desc" slot="description"
-                            >${this.dateFormat(f.date)}</span
+                          <relative-time
+                            id="feed-${f.id}-desc"
+                            slot="description"
+                            datetime="${f.date}"
                           >
+                            ${this.dateFormat(f.date)}
+                          </relative-time>
                         </nav-card-item>
                       `
                     )
@@ -395,9 +391,13 @@ class ElmslnStudioDashboard extends ElmslnStudioUtilities(
                   >
                     ${this.getActivityTitle(a)}
                   </elmsln-studio-link>
-                  <div id="act-${a.id}-desc" slot="description">
+                  <relative-time
+                    id="act-${a.id}-desc"
+                    slot="description"
+                    datetime="${a.date}"
+                  >
                     ${this.dateFormat(a.date)}
-                  </div>
+                  </relative-time>
                 </nav-card-item>
               `
             )}

@@ -317,8 +317,20 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                           <h2 id="sub-${s.id}">
                             <span class="assignment-name">${s.assignment}</span>
                             <span class="submission-date"
-                              >Submitted: ${this.dateFormat(s.date)}</span
-                            >
+                              >Submitted:
+                              <local-time
+                                month="long"
+                                day="numeric"
+                                year="numeric"
+                                hour="2-digit"
+                                minute="2-digit"
+                                second="2-digit"
+                                time-zone-name="short"
+                                datetime="${s.date}"
+                              >
+                                ${this.dateFormat(s.date)}
+                              </local-time>
+                            </span>
                           </h2>
                           <elmsln-studio-button
                             class="view-discussion-button"
@@ -396,6 +408,7 @@ class ElmslnStudioPortfolio extends ElmslnStudioUtilities(
                   ?demo="${this.demoMode}"
                   .data="${this.submission || []}"
                   latest
+                  relative-dates
                 >
                 </threaded-discussion>
               </div>

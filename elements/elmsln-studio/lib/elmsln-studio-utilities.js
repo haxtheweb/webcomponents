@@ -8,6 +8,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/nav-card/nav-card.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@github/time-elements";
 import { AccentCard } from "@lrnwebcomponents/accent-card/accent-card.js";
 
 const ElmslnStudioUtilities = function (SuperClass) {
@@ -54,6 +55,7 @@ const ElmslnStudioUtilities = function (SuperClass) {
         },
       };
     }
+
     /**
      * sorts array by most recent (or by oldest)
      * @param {array} arr array
@@ -99,8 +101,61 @@ const ElmslnStudioUtilities = function (SuperClass) {
         return item;
       });
     }
-    _late(date) {
+    isEarly(date) {
+      return new Date(date) > new Date();
+    }
+    onTime(date) {
+      return new Date(date) === new Date();
+    }
+    isLate(date) {
       return new Date(date) < new Date();
+    }
+
+    getStatus(submission, assignment, ifOverdue, ifLate, ifSubmitted, ifElse) {
+      let late =
+          !!submission &&
+          !!submission.date &&
+          !!assignment.date &&
+          submission.date > assignment.date,
+        overdue =
+          !submission && !!assignment.date && this.isLate(assignment.date);
+      return overdue
+        ? ifOverdue
+        : late
+        ? ifLate
+        : submission
+        ? ifSubmitted
+        : ifElse;
+    }
+    getStatusIcon(submission, assignment) {
+      return this.getStatus(
+        submission,
+        assignment,
+        "hax:no-assignment",
+        "assignment-late",
+        "assignment-turned-in",
+        "assignment"
+      );
+    }
+    getStatusColor(submission, assignment) {
+      return this.getStatus(
+        submission,
+        assignment,
+        "red",
+        "light-green",
+        "green",
+        "grey"
+      );
+    }
+    getStatusMessage(submission, assignment) {
+      return this.getStatus(
+        submission,
+        assignment,
+        "Overdue",
+        "Submitted Late",
+        "Submitted",
+        "Not Submitted"
+      );
     }
     /**
      * converts and sorts arrat

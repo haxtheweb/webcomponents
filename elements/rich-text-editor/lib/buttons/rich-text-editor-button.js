@@ -252,14 +252,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
             : false,
         /* workaround because queryCommandState("underline") returns true on links */
         block = this.command === "underline" ? !!this.rangeQuery("u") : command;
-      console.log(
-        "isToggled",
-        this.command,
-        this.selected,
-        this.range,
-        command,
-        block
-      );
       return this.toggles && !!block ? true : false;
     }
 

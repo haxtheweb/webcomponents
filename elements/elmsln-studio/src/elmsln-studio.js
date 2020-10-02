@@ -74,9 +74,9 @@ class ElmslnStudio extends router(
         <elmsln-studio-submissions
           ?demo-mode="${this.demoMode}"
           route="submissions"
-          .submissions="${Object.keys(this.submissions || {}).map(
-            (key) => this.submissions[key]
-          )}"
+          .submissions="${Object.keys(this.submissions || {})
+            .filter((key) => !!this.submissions[key].date)
+            .map((key) => this.submissions[key])}"
           .comments="${Object.keys(this.discussion || {}).map(
             (key) => this.discussion[key]
           )}"
@@ -154,6 +154,12 @@ class ElmslnStudio extends router(
         reflect: true,
         attribute: "profile-source",
       },
+      profiles: { type: Object },
+      profilesSource: {
+        type: String,
+        reflect: true,
+        attribute: "profiles-source",
+      },
       projects: { type: Array },
       projectsSource: {
         type: String,
@@ -192,7 +198,7 @@ class ElmslnStudio extends router(
       },
       {
         name: "assignment",
-        pattern: "assignments/:assignment"
+        pattern: "assignments/:assignment",
       },
       {
         name: "submissions",
@@ -219,6 +225,7 @@ class ElmslnStudio extends router(
     this.portfolios = {};
     this.projects = {};
     this.profile = {};
+    this.profiles = {};
     this.submissions = {};
     this.users = {};
 
@@ -258,14 +265,20 @@ class ElmslnStudio extends router(
         this.fetchData(this.discussionSource, "discussion");
     });
   }
-  get assignment(){
-    return this.params.assignment ? this.assignments[this.params.assignment] : {};
+  get assignment() {
+    console.log("assignment", this.params.assignment, this.assignments);
+    return this.params.assignment
+      ? this.assignments[this.params.assignment]
+      : {};
   }
 
   get submission() {
-    let submissions = this.profile.submissions && this.params.assignment 
-      ? this.profile.submissions.filter(s=>s.assignmentId === this.params.assignment) 
-      : undefined;
+    let submissions =
+      this.profile.submissions && this.params.assignment
+        ? this.profile.submissions.filter(
+            (s) => s.assignmentId === this.params.assignment
+          )
+        : undefined;
     return submissions && submissions[0] ? submissions[0] : undefined;
   }
   get portfolio() {

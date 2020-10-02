@@ -23,21 +23,23 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>threaded-discussion demo</h1>
-      <p></p>
       <demo-snippet>
         <template>
           <threaded-discussion 
-            source="./discussions.json" 
-            demo>
+            comment-icon="send" 
+            demo
+            source="./discussion.json">
           </threaded-discussion>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
           <threaded-discussion 
-            comment-icon="send"
-            source="./discussion.json" 
-            demo>
+            comment-icon="send" 
+            demo
+            source="./discussion.json"
+            latest
+            relative-dates>
           </threaded-discussion>
         </template>
       </demo-snippet>

@@ -604,6 +604,13 @@ const template = html`
     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
       <g id="messages-9-plus"><rect x="6" y="6" width="1" height="1"/><path d="M20,2H4A2,2,0,0,0,2,4V22l4-4H20a2,2,0,0,0,2-2V4A2,2,0,0,0,20,2ZM11,12a2,2,0,0,1-2,2H6V12H9V11H8A2,2,0,0,1,6,9V8A2,2,0,0,1,8,6H9a2,2,0,0,1,2,2Zm7-1H16v2H14V11H12V9h2V7h2V9h2Z" transform="translate(-2 -2)"/></g>
     </svg>
+    <!-- no-assignment -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <g id="no-assignment"><path d="M19,4h-4.2c-0.4-1.2-1.5-2-2.8-2S9.6,2.8,9.2,4H5C3.9,4,3,4.9,3,6v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V6
+	C21,4.9,20.1,4,19,4z M12,4c0.5,0,1,0.5,1,1s-0.5,1-1,1s-1-0.5-1-1S11.5,4,12,4z M17.3,17.5L16,18.9l-4-4l-4,4l-1.4-1.4l4-4l-4-4
+	L8,8.2l4,4l4-4l1.4,1.4l-4,4L17.3,17.5z"/></g>
+    </svg>
+    
   </iron-iconset-svg>
 `;
 

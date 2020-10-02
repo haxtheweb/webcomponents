@@ -63,6 +63,9 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       profile: {
         type: Object,
       },
+      profiles: {
+        type: Object,
+      },
       users: {
         type: Object,
       },
@@ -222,6 +225,7 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
 
     this.activity = [];
     this.profile = {};
+    this.profiles = {};
 
     this.projects = {};
     this.lessons = {};
@@ -258,6 +262,10 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       "profile.json": {
         type: "data",
         data: this.profile,
+      },
+      "profiles.json": {
+        type: "data",
+        data: this.profiles,
       },
       "activity.json": {
         type: "data",
@@ -378,41 +386,50 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
       });
     });
     this.activity = lorem.sortDates(this.activity);
-    this.profile = JSON.parse(
-      JSON.stringify(lorem.randomOption(this.students))
+    this.profiles = {};
+    this.students.forEach(
+      (student) => (this.profiles[student.id] = this._profile(student, lorem))
     );
-    this.profile.submissions = lorem.sortDates(
+    this.profile = this.profiles[
+      lorem.randomOption(Object.keys(this.profiles)) || 0
+    ];
+  }
+  _profile(student, lorem) {
+    console.log("profiles", student);
+    let profile = student;
+    profile.submissions = lorem.sortDates(
       Object.keys(this.submissions)
-        .filter((key) => this.submissions[key].userId === this.profile.id)
+        .filter((key) => this.submissions[key].userId === profile.id)
         .map((key) => this.submissions[key])
     );
-    this.profile.completed = this.profile.submissions.map(
+    profile.completed = profile.submissions.map(
       (submission) => submission.assignmentId
     );
-    this.profile.due = Object.keys(this.assignments)
-      .filter((key) => !this.profile.completed.includes(key))
+    profile.due = Object.keys(this.assignments)
+      .filter((key) => !profile.completed.includes(key))
       .map((key) => this.assignments[key]);
-    this.profile.features = this.profile.submissions
+    profile.features = profile.submissions
       .filter((submission) => submission.feature)
       .map((submission) => submission.id);
-    this.profile.feedback = lorem.sortDates(
-      this.profile.submissions
+    profile.feedback = lorem.sortDates(
+      profile.submissions
         .map((submission) => submission.feedback)
         .flat()
         .map((key) => this.discussions[key])
     );
-    this.profile.given = Object.keys(this.discussions).filter(
-      (key) => this.discussions[key].userId === this.profile.id
+    profile.given = Object.keys(this.discussions).filter(
+      (key) => this.discussions[key].userId === profile.id
     );
-    this.profile.replies = Object.keys(this.discussions)
+    profile.replies = Object.keys(this.discussions)
       .map((key) =>
         this.discussions[key].replies.filter(
-          (reply) => reply.userId === this.profile.id
+          (reply) => reply.userId === profile.id
         )
       )
       .flat()
       .map((discussion) => discussion.id);
-    this.profile.discussions = [...this.profile.given, ...this.profile.replies];
+    profile.discussions = [...profile.given, ...profile.replies];
+    return profile;
   }
 
   _assets(type, topic, lorem) {
@@ -486,12 +503,12 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
             "Apprentice (2)",
             "Novice (1)",
           ],
-          values: {}
+          values: {},
         };
       for (let i = 0; i < criteria; i++) {
-        rubric.values[`${lorem.randomWord()} ${lorem.randomWord()}`] = rubric.key.map(k=>lorem.randomSentence(3, 6))
-        
-        ;
+        rubric.values[
+          `${lorem.randomWord()} ${lorem.randomWord()}`
+        ] = rubric.key.map((k) => lorem.randomSentence(3, 6));
       }
       this.assignments[assignment.id] = {
         id: assignment.id,
@@ -499,8 +516,8 @@ class ElmslnStudioLoremdata extends ElmslnStudioUtilities(LitElement) {
         lessonId: lessonId,
         projectId: projectId,
         assignment: assignment.assignment,
-        showDate: Math.random > 0.8 ? lorem.addWeeks(date, -2) : undefined,
-        hideDate: Math.random > 0.8 ? lorem.addWeeks(date, 2) : undefined,
+        showDate: Math.random() > 0.5 ? lorem.addWeeks(date, -2) : undefined,
+        hideDate: Math.random() > 0.5 ? lorem.addWeeks(date, 2) : undefined,
         date: date,
         rubric: rubric,
         body: lorem.randomParagraph(2, 6),

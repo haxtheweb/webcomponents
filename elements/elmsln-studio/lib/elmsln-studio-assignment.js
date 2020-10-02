@@ -48,6 +48,11 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
         #breadcrumb > * {
           display: inline;
         }
+        #alert {
+          text-align: center;
+          margin: 0;
+          font-size: calc(0.8 * var(--elmsln-studio-FontSize, 16px));
+        }
         .assignment-name,
         .assignment-name,
         .assignment-date {
@@ -224,8 +229,61 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               >Assignments</elmsln-studio-link
             >
             <span> > </span>
-            <span>${this.assignment.assignment}</span>
+            <span> ${this.assignment.assignment} </span>
           </div>
+          ${this.editable
+            ? ""
+            : html` <p id="alert">
+                ${(this.submission || {}).date
+                  ? html`
+                      Assignment submitted on
+                      <local-time
+                        month="long"
+                        day="numeric"
+                        year="numeric"
+                        hour="2-digit"
+                        minute="2-digit"
+                        second="2-digit"
+                        time-zone-name="short"
+                        datetime="${(this.submission || {}).date}"
+                      >
+                        ${this.dateFormat((this.submission || {}).date)} </local-time
+                      >.
+                    `
+                  : this.tooEarly
+                  ? html`
+                      Assignment will open for submission on
+                      <local-time
+                        month="long"
+                        day="numeric"
+                        year="numeric"
+                        hour="2-digit"
+                        minute="2-digit"
+                        second="2-digit"
+                        time-zone-name="short"
+                        datetime="${this.assignment.showDate}"
+                      >
+                        ${this.dateFormat(this.assignment.showDate)} </local-time
+                      >.
+                    `
+                  : this.tooLate
+                  ? html`
+                      Assignment closed for submission on
+                      <local-time
+                        month="long"
+                        day="numeric"
+                        year="numeric"
+                        hour="2-digit"
+                        minute="2-digit"
+                        second="2-digit"
+                        time-zone-name="short"
+                        datetime="${this.assignment.hideDate}"
+                      >
+                        ${this.dateFormat(this.assignment.hideDate)} </local-time
+                      >.
+                    `
+                  : html``}
+              </p>`}
           <div
             id="primary"
             ?hidden="${!this.assignment}"
@@ -235,12 +293,27 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
               <h1>
                 <span class="lesson-name">${this.assignment.lesson}</span>
                 <span class="assignment-name"
-                  >${this.assignment.assignment}</span
-                >
+                  >${this.assignment.assignment}
+                </span>
               </h1>
-              <p class="assignment-date">
-                ${this.dateFormat(this.assignment.date, "long")}
-              </p>
+
+              ${this.assignment.date
+                ? html` <p class="assignment-date">
+                    Due
+                    <local-time
+                      month="long"
+                      day="numeric"
+                      year="numeric"
+                      hour="2-digit"
+                      minute="2-digit"
+                      second="2-digit"
+                      time-zone-name="short"
+                      datetime="${this.assignment.date}"
+                    >
+                      ${this.dateFormat(this.assignment.date)}
+                    </local-time>
+                  </p>`
+                : ""}
               <p class="assignment-body">${this.assignment.body}</p>
               ${!this.assignment.rubric
                 ? ""
@@ -275,8 +348,11 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                       </tbody>
                     </table>
                   `}
-              <section id="uploads">
-                <h2 class="sr-only">Manage Uploads</h2>
+              <section
+                id="uploads"
+                ?hidden="${(this.__sources || []).length < 1 && !this.editable}"
+              >
+                <h2 class="sr-only">Uploads</h2>
                 <ul id="uploadlist">
                   ${(this.__sources || []).map(
                     (source, i) => html`
@@ -284,30 +360,37 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                         id="source-${i}"
                         style="background-image: url(${source.src})"
                       >
-                        <button
-                          aria-controls="source-${i}"
-                          class="delete-upload"
-                          @click="${(e) => this._removeUpload(i)}"
-                        >
-                          <span class="sr-only"
-                            >delete ${source.alt || source.src}</span
-                          >
-                          <iron-icon icon="delete"></iron-icon>
-                        </button>
+                        ${!this.editable
+                          ? ``
+                          : html` <button
+                              aria-controls="source-${i}"
+                              class="delete-upload"
+                              @click="${(e) => this._removeUpload(i)}"
+                            >
+                              <span class="sr-only"
+                                >delete ${source.alt || source.src}</span
+                              >
+                              <iron-icon icon="delete"></iron-icon>
+                            </button>`}
                       </li>
                     `
                   )}
-                  <li>
-                    <vaadin-upload
-                      id="add-upload"
-                      @upload-before="${this._addUpload}"
-                    ></vaadin-upload>
-                    <span class="spacer"></span>
-                  </li>
+                  ${!this.editable
+                    ? ``
+                    : html` <li>
+                        <vaadin-upload
+                          id="add-upload"
+                          @upload-before="${this._addUpload}"
+                        ></vaadin-upload>
+                        <span class="spacer"></span>
+                      </li>`}
                 </ul>
               </section>
-              <section id="links">
-                <h2 class="sr-only">Manage Links</h2>
+              <section
+                id="links"
+                ?hidden="${(this.__links || []).length < 1 && !this.editable}"
+              >
+                <h2 class="sr-only">Links</h2>
                 <ul id="linklist">
                   ${(this.__links || []).map(
                     (link, i) => html`
@@ -319,77 +402,92 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
                         >
                           ${link.text} (${link.url})
                         </a>
-                        <button
-                          aria-controls="source-${i}"
-                          @click="${(e) => this._removeLink(i)}"
-                        >
-                          <span class="sr-only">delete link</span>
-                          <iron-icon icon="delete"></iron-icon>
-                        </button>
+                        ${!this.editable
+                          ? ``
+                          : html` <button
+                              aria-controls="source-${i}"
+                              @click="${(e) => this._removeLink(i)}"
+                            >
+                              <span class="sr-only">delete link</span>
+                              <iron-icon icon="delete"></iron-icon>
+                            </button>`}
                       </li>
                     `
                   )}
-                  <li>
-                    <label for="linktext" class="sr-only">Text</label>
-                    <input
-                      id="linktext"
-                      @change="${(e) =>
-                        (this.__newLinkText = this._getFieldVal("linktext"))}"
-                      placeholder="link text"
-                      type="text"
-                    />
-                    <label for="linkurl" class="sr-only">URL</label>
-                    <input
-                      id="linkurl"
-                      @change="${(e) =>
-                        (this.__newLinkUrl = this._getFieldVal("linkurl"))}"
-                      placeholder="url"
-                      required
-                      type="url"
-                    />
-                    <button
-                      aria-controls="linklist"
-                      aria-describedby="linktext linkurl"
-                      @click="${this._addLink}"
-                      ?disabled="${!this.__newLinkUrl}"
-                    >
-                      <span class="sr-only">add link</span>
-                      <iron-icon icon="add"></iron-icon>
-                    </button>
-                  </li>
+                  ${!this.editable
+                    ? ``
+                    : html` <li>
+                        <label for="linktext" class="sr-only">Text</label>
+                        <input
+                          id="linktext"
+                          @change="${(e) =>
+                            (this.__newLinkText = this._getFieldVal(
+                              "linktext"
+                            ))}"
+                          placeholder="link text"
+                          type="text"
+                        />
+                        <label for="linkurl" class="sr-only">URL</label>
+                        <input
+                          id="linkurl"
+                          @change="${(e) =>
+                            (this.__newLinkUrl = this._getFieldVal("linkurl"))}"
+                          placeholder="url"
+                          required
+                          type="url"
+                        />
+                        <button
+                          aria-controls="linklist"
+                          aria-describedby="linktext linkurl"
+                          @click="${this._addLink}"
+                          ?disabled="${!this.__newLinkUrl}"
+                        >
+                          <span class="sr-only">add link</span>
+                          <iron-icon icon="add"></iron-icon>
+                        </button>
+                      </li>`}
                 </ul>
               </section>
-              <section id="text">
-                <h2 class="sr-only">Edit Text</h2>
-                <rich-text-editor-toolbar-full
-                  id="toolbar"
-                  controls="editor"
-                  .config="${this.__editorConfig}"
-                  sticky
-                >
-                </rich-text-editor-toolbar-full>
-                <rich-text-editor
-                  id="editor"
-                  toolbar="toolbar"
-                  type="rich-text-editor-toolbar-full"
-                >
-                  ${this.submission && this.submission.body
-                    ? this.submission.body
-                    : html`<p>Add text</p>`}
-                </rich-text-editor>
+              <section
+                id="text"
+                ?hidden="${(!(this.submission || {}).body ||
+                  this.submission.body.trim() == "") &&
+                !this.editable}"
+              >
+                <h2 class="sr-only">Text</h2>
+                ${!this.editable
+                  ? (this.submission || {}).body
+                  : html` <rich-text-editor-toolbar-full
+                        id="toolbar"
+                        controls="editor"
+                        .config="${this.__editorConfig}"
+                        sticky
+                      >
+                      </rich-text-editor-toolbar-full>
+                      <rich-text-editor
+                        id="editor"
+                        toolbar="toolbar"
+                        type="rich-text-editor-toolbar-full"
+                      >
+                        ${this.submission && (this.submission || {}).body
+                          ? this.submission.body
+                          : html`<p>Add text</p>`}
+                      </rich-text-editor>`}
               </section>
-              <section id="actions">
-                <elmsln-studio-button class="delete" icon="delete" path=""
-                  >Delete</elmsln-studio-button
-                >
-                <span class="spacer"></span>
-                <elmsln-studio-button class="save" path=""
-                  >Save Draft</elmsln-studio-button
-                >
-                <elmsln-studio-button class="submit" icon="done" path=""
-                  ><span slot="before">Submit Assignment</span>
-                </elmsln-studio-button>
-              </section>
+              ${!this.editable
+                ? html``
+                : html` <section id="actions">
+                    <elmsln-studio-button class="delete" icon="delete" path=""
+                      >Delete</elmsln-studio-button
+                    >
+                    <span class="spacer"></span>
+                    <elmsln-studio-button class="save" path=""
+                      >Save Draft</elmsln-studio-button
+                    >
+                    <elmsln-studio-button class="submit" icon="done" path=""
+                      ><span slot="before">Submit Assignment</span>
+                    </elmsln-studio-button>
+                  </section>`}
             </article>
           </div>
         `;
@@ -507,9 +605,19 @@ class ElmslnStudioAssignment extends ElmslnStudioUtilities(
             : [];
       }
     });
+    console.log("updated", this.assignment, this.submission);
   }
   get __newLinkType() {
     return this._getLinkType(this.__newLinkUrl);
+  }
+  get tooEarly() {
+    return this.assignment.showDate && this.isEarly(this.assignment.showDate);
+  }
+  get tooLate() {
+    return this.assignment.hideDate && this.isLate(this.assignment.hideDate);
+  }
+  get editable() {
+    return !(this.submission || {}).date && !this.tooEarly && !this.tooLate;
   }
   _addLink(i) {
     if (this.__newLinkUrl) {
