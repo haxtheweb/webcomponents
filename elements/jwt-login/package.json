@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.7.7",
+  "version": "2.7.10",
   "description": "JSON Web Token login broker / manager",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.7.7",
-    "@lrnwebcomponents/storybook-utilities": "^2.7.7",
+    "@lrnwebcomponents/storybook-utilities": "^2.7.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.4",
