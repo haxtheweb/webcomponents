@@ -5,7 +5,7 @@
     "customElementClass": "LitElement",
     "elementName": "simple-cta",
     "generator-wcfactory-version": "0.8.7",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
       "css": "src/simple-cta.css",
@@ -17,7 +17,9 @@
     },
     "sharedHaxProps": [],
     "sharedProps": [],
-    "sharedStyles": []
+    "sharedStyles": [
+      "...super.styles"
+    ]
   },
   "version": "2.7.9",
   "description": "Simple call to action button",

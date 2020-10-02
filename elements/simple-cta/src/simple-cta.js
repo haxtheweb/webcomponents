@@ -29,16 +29,33 @@ class SimpleCta extends activeStateBehavior(remoteLinkBehavior(SimpleColors)) {
     super();
     this.link = "#";
     this.title = null;
+    this.accentColor = "green";
+    if (this.querySelector("a")) {
+      this.link = this.querySelector("a").getAttribute("href");
+      this.title = this.querySelector("a").innerText;
+      this.innerHTML = null;
+    }
   }
   /**
    * LitElement ready
    */
-  firstUpdated(changedProperties) {}
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this.remoteLinkTarget = this.shadowRoot.querySelector("a");
+  }
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "link") {
+        this.remoteLinkURL = this[propName];
+      }
       /* notify example
       // notify
       if (propName == 'format') {

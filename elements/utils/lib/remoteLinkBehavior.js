@@ -3,6 +3,19 @@ export const remoteLinkBehavior = function (SuperClass) {
     constructor() {
       super();
     }
+    static get properties() {
+      let prop = {};
+      if (super.prop) {
+        prop = super.prop;
+      }
+      prop.remoteLinkTarget = {
+        type: String,
+      };
+      prop.remoteLinkURL = {
+        type: String,
+      };
+      return prop;
+    }
     /**
      * Updated is LitElement specific but could use this without LitElement
      */
@@ -20,12 +33,9 @@ export const remoteLinkBehavior = function (SuperClass) {
      * Evaluates url for correct targeting.
      */
     _remoteLinkURLTarget(target, url) {
-      if (url) {
-        const external = this.remoteLinkURLisExternalLink(url);
-        if (external) {
-          target.setAttribute("target", "_blank");
-          target.setAttribute("rel", "noopener noreferrer");
-        }
+      if (target && url && this.remoteLinkURLisExternalLink(url)) {
+        target.setAttribute("target", "_blank");
+        target.setAttribute("rel", "noopener noreferrer");
       }
     }
     /**

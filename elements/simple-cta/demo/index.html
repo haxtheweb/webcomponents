@@ -13,39 +13,30 @@
       import '../simple-cta.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      simple-cta.super-important {
+        font-size: 50px;
+        margin: 50px;
+        display: block;
+        width: 50%;
+        --simple-cta-bg-color-is-user-selected: var(--simple-colors-default-theme-accent-11,orange);
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic simple-cta demo</h3>
       <demo-snippet>
         <template>
-          <simple-cta>
-            Get started
-          </simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
-          <simple-cta link="https://google.com/" title="Get started"></simple-cta>
+          <simple-cta link="https://haxtheweb.org/" accent-color="purple" dark>Get started</simple-cta>
+          <simple-cta link="https://haxtheweb.org/" class="super-important">Start now!</simple-cta>
+          <div><simple-cta link="https://google.com/" accent-color="purple" title="Get started"></simple-cta></div>
+          <div><simple-cta link="demo/index.html" title="Something SUPER IMPORTANT" style="display:block;"></simple-cta></div>
+          <div>
+            <simple-cta style="display:block;">
+              <a href="demo/index.html">Something SUPER IMPORTANT</a>
+            </simple-cta>
+          </div>
         </template>
       </demo-snippet>
     </div>
