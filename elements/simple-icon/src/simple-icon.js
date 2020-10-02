@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { svg, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/simple-iconset.js";
 /**
@@ -43,7 +43,7 @@ class SimpleIcon extends SimpleColors {
   }
   // render function
   render() {
-    return html`
+    return svg`
       <svg xmlns="http://www.w3.org/2000/svg">
         <filter
           color-interpolation-filters="sRGB"
@@ -52,7 +52,7 @@ class SimpleIcon extends SimpleColors {
           height="100%"
           width="100%"
         >
-          <feFlood result="COLOR" />
+          ${!this.noColorize ? svg`<feFlood result="COLOR" />` : ``}
           <feComposite operator="in" in="COLOR" in2="SourceAlpha" />
         </filter>
         <image
@@ -73,11 +73,19 @@ class SimpleIcon extends SimpleColors {
       src: {
         type: String,
       },
+      noColorize: {
+        type: Boolean,
+        attribute: "no-colorize",
+      },
       icon: {
         type: String,
         reflect: true,
       },
     };
+  }
+  constructor() {
+    super();
+    this.noColorize = false;
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {

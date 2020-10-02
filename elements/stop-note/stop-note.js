@@ -1,12 +1,21 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { remoteLinkBehavior } from "@lrnwebcomponents/utils/lib/remoteLinkBehavior.js";
+import { pathResolver } from "@lrnwebcomponents/simple-icon/lib/simple-iconset.js";
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+// register the iconset
+window.SimpleIconset.requestAvailability().registerIconset(
+  "stopnoteicons",
+  `${pathResolver(import.meta.url)}lib/svgs/`
+);
+
 /**
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
  * @element stop-note
  */
-class StopNote extends SchemaBehaviors(LitElement) {
+class StopNote extends remoteLinkBehavior(SchemaBehaviors(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -21,7 +30,7 @@ class StopNote extends SchemaBehaviors(LitElement) {
           margin-bottom: 20px;
         }
 
-        iron-icon {
+        simple-icon {
           height: 100px;
           width: 100px;
         }
@@ -95,7 +104,9 @@ class StopNote extends SchemaBehaviors(LitElement) {
     return html`
       <div class="container">
         <div class="svg_wrap">
-          <div class="svg"><iron-icon icon="${this.icon}"></iron-icon></div>
+          <div class="svg">
+            <simple-icon icon="${this.icon}" no-colorize></simple-icon>
+          </div>
         </div>
         <div class="message_wrap">
           <div class="main_message">${this.title}</div>
@@ -116,8 +127,6 @@ class StopNote extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("./lib/stop-icon.js");
     this.url = null;
     this.icon = "stopnoteicons:stop-icon";
   }
@@ -144,34 +153,20 @@ class StopNote extends SchemaBehaviors(LitElement) {
     };
   }
   updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "url") {
-        this._urlTarget(this[propName]);
+        this.remoteLinkURL = this[propName];
       }
     });
   }
-  /**
-   * Evaluates url for correct targeting.
-   */
-  _urlTarget(url) {
-    if (url) {
-      const external = this._outsideLink(url);
-      if (external) {
-        let link = this.shadowRoot.querySelector("#link");
-        link.setAttribute("target", "_blank");
-        link.setAttribute("rel", "noopener noreferrer");
-      }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
     }
-  }
-  /**
-   * Internal function to check if a url is external
-   */
-  _outsideLink(url) {
-    if (url.indexOf("http") != 0) return false;
-    var loc = location.href,
-      path = location.pathname,
-      root = loc.substring(0, loc.indexOf(path));
-    return url.indexOf(root) != 0;
+    this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
   }
   static get haxProperties() {
     return {
@@ -247,6 +242,9 @@ class StopNote extends SchemaBehaviors(LitElement) {
           },
         ],
         advanced: [],
+      },
+      saveOptions: {
+        unsetAttributes: ["colors"],
       },
       demoSchema: [
         {
