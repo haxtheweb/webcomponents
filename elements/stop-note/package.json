@@ -43,6 +43,7 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.7.10",
     "@lrnwebcomponents/simple-icon": "^2.7.10",
+    "@lrnwebcomponents/utils": "^2.7.10",
     "lit-element": "2.4.0"
   },
   "devDependencies": {
