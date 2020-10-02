@@ -159,8 +159,8 @@ class GridPlate extends LitElement {
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
           --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-cyan-7,
-            #009dc7
+            --simple-colors-default-theme-grey-4,
+            #dddddd
           );
           --grid-plate-active-border-color: var(
             --simple-colors-default-theme-cyan-7,
@@ -194,14 +194,13 @@ class GridPlate extends LitElement {
         }
         :host([edit-mode]) .column {
           min-height: 150px;
-          transition: 0.2s color linear, 0.2s background-color linear,
-            0.2s outline linear;
+          transition: 0.2s color linear, 0.2s background-color linear;
         }
         :host([edit-mode]) {
           min-height: 150px;
         }
         :host([edit-mode]) .column {
-          outline: 1px solid var(--grid-plate-editable-border-color);
+          outline: 1px dashed var(--grid-plate-editable-border-color);
         }
         :host .column:empty[style="min-height: unset;"] {
           display: none;
@@ -228,8 +227,7 @@ class GridPlate extends LitElement {
           padding: var(--grid-plate-item-margin);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
-          transition: 0.2s color linear, 0.2s background-color linear,
-            0.2s outline linear;
+          transition: 0.2s color linear, 0.2s background-color linear;
         }
         :host([edit-mode]) .column ::slotted(img) {
           display: block;
@@ -245,7 +243,7 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(*:focus),
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
-          outline: 2px solid var(--grid-plate-editable-border-color);
+          outline: 1px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) .column ::slotted(ol:focus),
         :host([edit-mode]) .column ::slotted(ol:hover),
@@ -255,31 +253,8 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(ul:active) {
           outline-offset: 8px;
         }
-        :host([edit-mode]) .column ::slotted(*.hax-mover):before {
-          outline: 1px solid var(--grid-plate-editable-border-color);
-          background-color: var(--grid-plate-possible-target-background-color);
-          content: " ";
-          width: 100%;
-          display: block;
-          position: relative;
-          margin: -30px 0 0 0;
-          z-index: 2;
-          height: 30px;
-        }
-        :host([edit-mode]) .column ::slotted(img.hax-mover) {
-          outline: 1px solid var(--grid-plate-editable-border-color);
-          background-color: var(--grid-plate-possible-target-background-color);
-        }
-        :host([edit-mode]) .column.hax-mover {
-          outline: 1px solid var(--grid-plate-editable-border-color);
-        }
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: 1px solid var(--hax-body-active-border-color);
-          background-color: #eeeeee;
-        }
-        :host([edit-mode]) .column.hax-mover {
-          content: "Double click to create a paragraph here";
-          background-color: var(--grid-plate-possible-target-background-color);
+          outline: 1px solid var(--hax-body-active-outline);
         }
         :host([edit-mode]) .column ::slotted(img.hax-hovered),
         :host([edit-mode]) .column ::slotted(*.hax-hovered):before {
@@ -363,7 +338,6 @@ class GridPlate extends LitElement {
       import("@polymer/iron-icons/hardware-icons.js");
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       this.addEventListener("focusin", this._focusIn.bind(this));
-      this.addEventListener("dragenter", this.dragEnterGrid.bind(this));
     }, 0);
     window.ResponsiveUtility.requestAvailability();
   }
@@ -1256,23 +1230,6 @@ class GridPlate extends LitElement {
     }
   }
   /**
-   * Activation allowed from outside this grid as far as drop areas
-   */
-  dragEnterGrid(e) {
-    const children = this.children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (children[i].classList && children[i] !== this.activeItem) {
-        children[i].classList.add("hax-mover");
-      }
-    }
-    for (var j = 1; j <= this.columns; j++) {
-      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        this.shadowRoot.querySelector("#col" + j).classList.add("hax-mover");
-      }
-    }
-  }
-  /**
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
@@ -1349,36 +1306,29 @@ class GridPlate extends LitElement {
       }
       setTimeout(() => {
         let children = this.querySelectorAll(
-          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+          ".hax-hovered, .hax-moving, .grid-plate-active-item"
         );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove(
-              "hax-mover",
-              "hax-hovered",
-              "hax-moving"
-            );
+            children[i].classList.remove("hax-hovered", "hax-moving");
           }
         }
         for (var j = 1; j <= this.columns; j++) {
           if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
             this.shadowRoot
               .querySelector("#col" + j)
-              .classList.remove("hax-mover", "hax-hovered", "hax-moving");
+              .classList.remove("hax-hovered", "hax-moving");
           }
         }
         // support hax and dropping back inside grid plate
         if (window.HaxStore && window.HaxStore.ready) {
           let childrenHAX = window.HaxStore.instance.activeHaxBody.children;
+          window.HaxStore.instance.activeHaxBody.haxMover = false;
           // walk the children and apply the draggable state needed
           for (var i in childrenHAX) {
             if (childrenHAX[i].classList) {
-              childrenHAX[i].classList.remove(
-                "hax-mover",
-                "hax-hovered",
-                "hax-moving"
-              );
+              childrenHAX[i].classList.remove("hax-hovered", "hax-moving");
             }
           }
         }
@@ -1463,13 +1413,6 @@ class GridPlate extends LitElement {
   dragStart(e) {
     if (this.editMode) {
       if (window.HaxStore && window.HaxStore.ready) {
-        let childrenHAX = window.HaxStore.instance.activeHaxBody.children;
-        // walk the children and apply the draggable state needed
-        for (var i in childrenHAX) {
-          if (childrenHAX[i].classList) {
-            childrenHAX[i].classList.add("hax-mover");
-          }
-        }
         window.HaxStore.instance.__dragTarget = this.activeItem;
       } else {
         this.__dragTarget = this.activeItem;
@@ -1479,18 +1422,6 @@ class GridPlate extends LitElement {
       e.dataTransfer.setDragImage(this.activeItem, 0, 0);
       e.stopPropagation();
       e.stopImmediatePropagation();
-      const children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (children[i].classList && children[i] !== this.activeItem) {
-          children[i].classList.add("hax-mover");
-        }
-      }
-      for (var j = 1; j <= this.columns; j++) {
-        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot.querySelector("#col" + j).classList.add("hax-mover");
-        }
-      }
     }
   }
 
@@ -1501,32 +1432,24 @@ class GridPlate extends LitElement {
     if (this.editMode) {
       setTimeout(() => {
         let children = this.querySelectorAll(
-          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+          ".hax-hovered, .hax-moving, .grid-plate-active-item"
         );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove(
-              "hax-mover",
-              "hax-hovered",
-              "hax-moving"
-            );
+            children[i].classList.remove("hax-hovered", "hax-moving");
           }
         }
         for (var i in this.children) {
           if (typeof this.children[i].classList !== typeof undefined) {
-            this.children[i].classList.remove(
-              "hax-mover",
-              "hax-hovered",
-              "hax-moving"
-            );
+            this.children[i].classList.remove("hax-hovered", "hax-moving");
           }
         }
         for (var j = 1; j <= this.columns; j++) {
           if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
             this.shadowRoot
               .querySelector("#col" + j)
-              .classList.remove("hax-mover", "hax-hovered", "hax-moving");
+              .classList.remove("hax-hovered", "hax-moving");
           }
         }
       }, 100);

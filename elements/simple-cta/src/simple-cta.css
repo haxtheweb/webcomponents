@@ -1,0 +1,40 @@
+/* 
+  LIST SHARED STYLES BELOW
+
+*/
+:host {
+  display: block;
+  --simple-cta-color: white;
+  --simple-cta-bg-color-is-user-selected: red;
+  --simple-cta-bg-color: green;
+  margin: 60px 0 0;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([is-user-selected]) a {
+  background-color: var(--simple-colors-default-theme-red-7, var(--simple-cta-bg-color-is-user-selected));
+}
+
+a {
+  display: inline-block;
+  color: var(--simple-colors-default-theme-grey-1, var(--simple-cta-color));
+  background-color: var(--simple-colors-default-theme-green-7, var(--simple-cta-bg-color));
+  transition: background .3s linear,border .3s linear,border-radius .3s linear,box-shadow .3s linear;
+  text-decoration: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  border-radius: 100px 100px 100px 100px;
+  box-shadow: 0 6px 26px 0 rgba(0,0,0,.16);
+  padding: 16px 40px;
+  font-family: Sans-serif;
+  font-weight: 500;
+  outline: 1px solid var(--simple-colors-default-theme-grey-1, var(--simple-cta-color));
+}
+
+a span {
+  display: flex;
+  justify-content: center;
+}

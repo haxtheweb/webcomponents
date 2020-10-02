@@ -1,0 +1,15 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-cta",
+      "path": "./simple-cta.js",
+      "description": "`simple-cta`\n`Simple call to action button`"
+    },
+    {
+      "name": "simple-cta",
+      "path": "./src/simple-cta.js",
+      "description": "`simple-cta`\n`Simple call to action button`"
+    }
+  ]
+}

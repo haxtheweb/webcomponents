@@ -57,32 +57,46 @@ class HaxMap extends SimpleColors {
           overflow-y: scroll;
           max-height: 50vh;
         }
-        #reportghissue {
-          color: #81a3a9;
-          font-size: 18px;
-          padding: 16px;
-          font-style: italic;
+        table {
+          font-size: 13px;
+        }
+        table caption {
+          font-weight: bold;
+        }
+        table tr th {
+          padding: 2px;
+        }
+        table td {
+          font-size: 21px;
+          font-weight: bold;
+          text-align: center;
         }
         ul {
           list-style: none;
           padding: 0;
           margin: 0;
         }
+        ul li {
+          margin: 4px;
+          padding: 0;
+        }
         ul iron-icon {
-          padding: 0 4px;
+          padding: 0 8px;
         }
         a {
-          font-size: 30px;
-          line-height: 30px;
+          font-size: 24px;
+          line-height: 24px;
           text-decoration: none;
           color: black;
           padding: 4px;
+          display: block;
         }
         a:focus,
         a:hover,
         a:active {
           cursor: pointer;
           font-weight: bold;
+          outline: 2px solid black;
         }
       `,
     ];
@@ -104,6 +118,7 @@ class HaxMap extends SimpleColors {
         let list = window.HaxStore.htmlToHaxElements(
           window.HaxStore.instance.activeHaxBody.haxToContent()
         );
+        this.calcStats(list);
         let elements = [];
         for (var i = 0; i < list.length; i++) {
           let def = window.HaxStore.instance.haxSchemaFromTag(list[i].tag);
@@ -115,6 +130,45 @@ class HaxMap extends SimpleColors {
         this.elementList = [...elements];
       }
     });
+  }
+  /**
+   * Calculate statistics from the array of hax elements
+   */
+  calcStats(elements) {
+    if (elements && window.HaxStore.instance.activeHaxBody.innerText) {
+      let counts = {
+        c: window.HaxStore.instance.activeHaxBody.innerText.length,
+        w: parseInt(
+          window.HaxStore.instance.activeHaxBody.innerText.split(/\s+/g)
+            .length - 1
+        ),
+        h: 0,
+        p: 0,
+        e: 0,
+      };
+      elements.forEach((el) => {
+        switch (el.tag) {
+          case "p":
+            counts.p++;
+            break;
+          case "h1":
+          case "h2":
+          case "h3":
+          case "h4":
+          case "h5":
+          case "h6":
+          case "relative-heading": // special support for our own heading tag
+            counts.h++;
+            break;
+          default:
+            counts.e++;
+            break;
+        }
+      });
+      for (var i in counts) {
+        this[`${i}Count`] = counts[i];
+      }
+    }
   }
   render() {
     return html`
@@ -130,6 +184,26 @@ class HaxMap extends SimpleColors {
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
         <div class="container">
+          <table>
+            <caption>
+              Content statistics
+            </caption>
+            <tr>
+              <th>Words</th>
+              <th>Headings</th>
+              <th>Paragraphs</th>
+              <th>Widgets</th>
+              <th>Characters</th>
+            </tr>
+            <tr>
+              <td>${this.wCount}</td>
+              <td>${this.hCount}</td>
+              <td>${this.pCount}</td>
+              <td>${this.eCount}</td>
+              <td>${this.cCount}</td>
+            </tr>
+          </table>
+          <h4>List view</h4>
           <ul>
             ${this.elementList.map((element, index) => {
               return html`
@@ -199,6 +273,21 @@ class HaxMap extends SimpleColors {
       },
       elementList: {
         type: Array,
+      },
+      cCount: {
+        type: String,
+      },
+      wCount: {
+        type: String,
+      },
+      hCount: {
+        type: String,
+      },
+      pCount: {
+        type: String,
+      },
+      eCount: {
+        type: String,
       },
     };
   }

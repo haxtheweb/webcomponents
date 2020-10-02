@@ -16,7 +16,7 @@ import {
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
 const maxStep = 25;
-const edgeSize = 100;
+const edgeSize = 200;
 
 /**
  * `hax-body`
@@ -133,25 +133,24 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             #007999
           );
           --hax-body-editable-outline: 1px solid
-            var(--simple-colors-default-theme-deep-orange, #ff8a64);
+            var(--simple-colors-default-theme-grey-1, #eeeeee);
           --hax-body-active-outline-hover: 1px solid
+            var(--simple-colors-default-theme-grey-1, #eeeeee);
+          --hax-body-active-outline: 1px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
             );
-          --hax-body-active-outline: 3px solid
+          --hax-body-active-drag-outline: 5px solid
             var(
               --hax-contextual-action-hover-color,
               var(--simple-colors-default-theme-cyan-7, #009dc7)
             );
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-cyan-2,
-            #9beaff
+            --simple-colors-default-theme-cyan-7,
+            #009dc7
           );
-          --hax-body-possible-target-background-color: var(
-            --simple-colors-default-theme-grey-2,
-            #dddddd;
-          );
+          --hax-body-possible-target-background-color: transparent;
         }
         .hax-context-menu {
           padding: 0;
@@ -223,7 +222,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
           outline: none;
-          transition: 0.8s ease-in-out outline;
           caret-color: var(--hax-color-text);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.blinkfocus) {
@@ -316,30 +314,29 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         }
         /* drag and drop */
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
-          outline: var(--hax-body-active-outline);
-          background-color: #eeeeee;
+          outline: var(--hax-body-active-drag-outline);
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover):before {
+        :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*):before {
           outline: var(--hax-body-editable-outline);
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
           width: 100%;
           display: block;
           position: relative;
-          margin: -30px 0 0 0;
+          margin: -20px 0 0 0;
           z-index: 2;
-          height: 30px;
+          height: 20px;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
-          outline: var(--hax-body-active-outline);
+          outline: var(--hax-body-active-drag-outline);
         }
         @media screen and (min-color-index: 0) and(-webkit-min-device-pixel-ratio:0) {
           /*
             Define here the CSS styles applied only to Safari browsers
             (any version and any device) via https://solvit.io/bcf61b6
           */
-          :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover) {
+          :host([edit-mode][hax-mover]) #bodycontainer ::slotted(*) {
             outline: var(--hax-body-editable-outline);
             background-color: var(--hax-body-possible-target-background-color);
           }
@@ -363,6 +360,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.__mouseMoving = false;
     this.___moveLock = false;
     this.editMode = false;
+    this.haxMover = false;
     this.globalPreferences = {};
     // xray goggles for tags visualized in context, developer thing
     this.haxRayMode = false;
@@ -430,9 +428,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       fake.style.display = "block";
       fake.classList.add("hax-move");
       this.__fakeEndCap = fake;
+      this.haxMover = true;
       this.appendChild(this.__fakeEndCap);
     } else if (!create && this.__fakeEndCap) {
       this.__fakeEndCap.remove();
+      this.haxMover = false;
       this.__fakeEndCap = null;
     }
   }
@@ -440,15 +440,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Activation allowed from outside this grid as far as drop areas
    */
   dragEnterBody(e) {
-    const children = this.childNodes;
     // insert a fake child at the end
     this.__manageFakeEndCap(true);
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (children[i].classList && children[i] !== this.activeItem) {
-        children[i].classList.add("hax-mover");
-      }
-    }
   }
   /**
    * LitElement render
@@ -478,6 +471,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
+      haxMover: {
+        type: Boolean,
+        attribute: "hax-mover",
+        reflect: true,
+      },
       openDrawer: {
         type: Object,
       },
@@ -1276,7 +1274,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         children[i].removeAttribute("data-hax-ray");
         // remove some of the protected classes though they shouldn't leak through
         children[i].classList.remove(
-          "hax-mover",
           "hax-moving",
           "hax-hovered",
           "grid-plate-active-item"
@@ -1597,7 +1594,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 // remove slot name
                 cloneEl = el.cloneNode(true);
                 cloneEl.removeAttribute("slot");
-                cloneEl.classList.remove("hax-mover");
                 cloneEl.classList.remove("hax-moving");
                 node.parentNode.insertBefore(cloneEl, node);
               }
@@ -2315,12 +2311,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   undoManagerStackLogic(mutations) {
     if (!this.__mouseMoving) {
       let children = this.querySelectorAll(
-        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+        ".hax-hovered, .hax-moving, .grid-plate-active-item"
       );
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
           children[i].classList.remove(
-            "hax-mover",
             "hax-hovered",
             "hax-moving",
             "grid-plate-active-item"
@@ -2333,20 +2328,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 typeof children[i].children[j].classList !== typeof undefined
               ) {
                 children[i].children[j].classList.remove(
-                  "hax-mover",
                   "hax-hovered",
                   "hax-moving",
                   "grid-plate-active-item"
                 );
-              }
-            }
-            for (var j = 1; j <= children[i].columns; j++) {
-              if (
-                children[i].shadowRoot.querySelector("#col" + j) !== undefined
-              ) {
-                children[i].shadowRoot
-                  .querySelector("#col" + j)
-                  .classList.remove("hax-mover");
               }
             }
           }
@@ -2390,12 +2375,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       }
       // walk the children and remove the draggable state needed
       let children = this.querySelectorAll(
-        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+        ".hax-hovered, .hax-moving, .grid-plate-active-item"
       );
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
           children[i].classList.remove(
-            "hax-mover",
             "hax-hovered",
             "hax-moving",
             "grid-plate-active-item"
@@ -2408,20 +2392,10 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 typeof children[i].children[j].classList !== typeof undefined
               ) {
                 children[i].children[j].classList.remove(
-                  "hax-mover",
                   "hax-hovered",
                   "hax-moving",
                   "grid-plate-active-item"
                 );
-              }
-            }
-            for (var j = 1; j <= children[i].columns; j++) {
-              if (
-                children[i].shadowRoot.querySelector("#col" + j) !== undefined
-              ) {
-                children[i].shadowRoot
-                  .querySelector("#col" + j)
-                  .classList.remove("hax-mover");
               }
             }
           }
