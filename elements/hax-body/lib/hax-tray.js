@@ -13,6 +13,8 @@ import {
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
 import "@lrnwebcomponents/hax-body/lib/hax-map.js";
+import "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -584,6 +586,13 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
+              event-name="start-tour"
+              icon="help"
+              label="Take a tour"
+              voice-command="start tour"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
               icon="icons:undo"
               ?disabled="${!this.canUndo}"
               label="Undo previous action"
@@ -614,11 +623,15 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               ?hidden="${this.hidePreferencesButton}"
-              event-name="open-preferences-dialog"
+              id="prefbtn"
+              event-name="open-preferences"
               icon="settings"
               label="Advanced settings"
               voice-command="open preferences"
             ></hax-tray-button>
+            <simple-popover for="prefbtn" auto hidden>
+              <hax-preferences-dialog></hax-preferences-dialog>
+            </simple-popover>
           </div>
         </div>
         <a11y-collapse-group accordion radio>
@@ -782,12 +795,15 @@ class HaxTray extends winEventsElement(LitElement) {
           })
         );
         break;
-      case "open-preferences-dialog":
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxPreferences,
-          this
-        );
+      case "open-preferences":
+        this.shadowRoot.querySelector(
+          "simple-popover[for='prefbtn']"
+        ).hidden = !this.shadowRoot.querySelector(
+          "simple-popover[for='prefbtn']"
+        ).hidden;
+        this.shadowRoot
+          .querySelector("hax-preferences-dialog")
+          .reloadPreferencesForm();
         break;
       case "toggle-element-align":
         this.elementAlign = this.elementAlign === "right" ? "left" : "right";
@@ -797,8 +813,10 @@ class HaxTray extends winEventsElement(LitElement) {
         break;
       case "open-map":
         this.shadowRoot.querySelector(
-          "simple-popover"
-        ).hidden = !this.shadowRoot.querySelector("simple-popover").hidden;
+          "simple-popover[for='mapbtn']"
+        ).hidden = !this.shadowRoot.querySelector(
+          "simple-popover[for='mapbtn']"
+        ).hidden;
         this.shadowRoot.querySelector("hax-map").updateHAXMap();
         break;
       case "open-export-dialog":
@@ -807,6 +825,9 @@ class HaxTray extends winEventsElement(LitElement) {
           window.HaxStore.instance.haxExport,
           this
         );
+        break;
+      case "start-tour":
+        window.SimpleTourManager.requestAvailability().startTour("hax");
         break;
       case "undo":
         window.HaxStore.instance.activeHaxBody.undo();
@@ -951,6 +972,26 @@ class HaxTray extends winEventsElement(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // establish the tour
+    this.dispatchEvent(
+      new CustomEvent("simple-tour-create-tour-stop", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          name: "hax",
+          target: this.shadowRoot.querySelector("#addcollapse"),
+          title: "Add content",
+          description: `
+          <p>
+            When you want to add any content to the page from text, 
+            to images, to anything more advanced; you can always find 
+            items to add under the Add content menu. Click to expand, then
+            either drag and drop items into the page or click and have them
+            placed near whatever you are actively working on.
+          </p>`,
+        },
+      })
+    );
     if (!this.__setup) {
       setTimeout(() => {
         this.shadowRoot.querySelector(

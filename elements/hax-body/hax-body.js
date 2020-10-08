@@ -1861,8 +1861,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       // text based operations for primatives
       case "text-tag":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          detail.value;
         this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
         window.HaxStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();

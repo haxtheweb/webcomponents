@@ -1,46 +1,28 @@
-import { html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-fields/simple-fields.js";
 /**
- * `hax-export-dialog`
- * @element hax-export-dialog
+ * `hax-preferences-dialog`
+ * @element hax-preferences-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
+class HaxPreferencesDialog extends winEventsElement(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
-      ...super.styles,
       css`
         :host {
           display: block;
         }
-        iron-icon:not(:defined),
-        paper-button:not(:defined),
-        paper-dialog:not(:defined) {
+        iron-icon:not(:defined) {
           display: none;
-        }
-        #dialog {
-          z-index: 100000;
-          margin-top: 56px;
-        }
-        #closedialog {
-          top: 6px;
-          right: 0;
-          position: absolute;
-          padding: 8px;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          width: 40px;
-          height: 40px;
-          min-width: unset;
         }
         .title {
           position: relative;
@@ -99,12 +81,6 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
       haxRayMode: false,
       haxVoiceCommands: false,
     };
-    setTimeout(() => {
-      import("@polymer/iron-icon/iron-icon.js");
-      import("@polymer/paper-button/paper-button.js");
-      import("@lrnwebcomponents/simple-fields/simple-fields.js");
-      import("@polymer/paper-dialog/paper-dialog.js");
-    }, 0);
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -115,6 +91,8 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           new CustomEvent(`${propName}-changed`, {
             detail: {
               value: this[propName],
+              bubbles: true,
+              composed: true,
             },
           })
         );
@@ -123,43 +101,21 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
   }
   render() {
     return html`
-      <paper-dialog
-        id="dialog"
-        ?opened="${this.opened}"
-        @opened-changed="${this.openedChanged}"
-      >
-        <h3 class="title">
-          <iron-icon icon="icons:settings"></iron-icon> ${this.title}
-        </h3>
-        <paper-button id="closedialog" @click="${this.closeEvent}">
-          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-        </paper-button>
-        <div style="height: 100%; overflow: auto;" class="pref-container">
-          <simple-fields
-            id="settingsform"
-            .schematizer="${HaxSchematizer}"
-            .elementizer="${HaxElementizer}"
-          >
-          </simple-fields>
-        </div>
-        <a
-          href="${this.ghLink}"
-          rel="noopener"
-          id="reportghissue"
-          target="_blank"
-          >Report an issue with HAX</a
+      <h3 class="title">
+        <iron-icon icon="icons:settings"></iron-icon> ${this.title}
+      </h3>
+      <div style="height: 100%; overflow: auto;" class="pref-container">
+        <simple-fields
+          id="settingsform"
+          .schematizer="${HaxSchematizer}"
+          .elementizer="${HaxElementizer}"
         >
-      </paper-dialog>
+        </simple-fields>
+      </div>
+      <a href="${this.ghLink}" rel="noopener" id="reportghissue" target="_blank"
+        >Report an issue with HAX</a
+      >
     `;
-  }
-  openedChanged(e) {
-    // force close event to align data model if clicking away
-    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
-      window.HaxStore.write("openDrawer", false, this);
-    }
-  }
-  closeEvent(e) {
-    this.opened = false;
   }
   static get tag() {
     return "hax-preferences-dialog";
@@ -173,7 +129,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         type: String,
       },
       /**
-       * Title when open.
+       * Title.
        */
       title: {
         type: String,
@@ -190,9 +146,6 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
       preferences: {
         type: Object,
       },
-      opened: {
-        type: Boolean,
-      },
     };
   }
 
@@ -204,18 +157,6 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
     this.shadowRoot
       .querySelector("#settingsform")
       .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
-    // fire an event that this is a core piece of the system
-    this.dispatchEvent(
-      new CustomEvent("hax-register-core-piece", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          piece: "haxPreferences",
-          object: this,
-        },
-      })
-    );
   }
   /**
    * Store updated, sync.
@@ -237,6 +178,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
    */
   _preferencesChanged(newValue) {
     if (this.schema && window.HaxStore.ready) {
+      this.schemaValues = newValue;
       window.HaxStore.write("globalPreferences", newValue, this);
     }
   }
@@ -247,20 +189,13 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
   }
 
   /**
-   * open the dialog
+   * force an update of settings
    */
-  open() {
-    this.opened = true;
+  reloadPreferencesForm() {
     this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
     this.shadowRoot.querySelector("#settingsform").value = {
       ...this.schemaValues,
     };
-  }
-  /**
-   * close the dialog
-   */
-  close() {
-    this.opened = false;
   }
 }
 window.customElements.define(HaxPreferencesDialog.tag, HaxPreferencesDialog);

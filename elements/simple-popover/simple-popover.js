@@ -65,8 +65,13 @@ class SimplePopover extends AbsolutePositionBehavior {
           width: unset;
         }
 
+        :host {
+          pointer-events: none;
+        }
+
         #content {
           margin: 0;
+          pointer-events: all;
           padding: var(--simple-popover-padding, 10px);
           color: var(--simple-popover-color, #222);
           background-color: var(--simple-popover-background-color, white);

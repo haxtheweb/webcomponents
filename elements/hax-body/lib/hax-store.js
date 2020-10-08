@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import {
   winEventsElement,
   getRange,
@@ -157,12 +158,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * Hax export dialog element.
        */
       haxExport: {
-        type: Object,
-      },
-      /**
-       * Hax preferences dialog element.
-       */
-      haxPreferences: {
         type: Object,
       },
       /**
@@ -652,7 +647,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "activeHaxBody",
           "haxToast",
           "haxExport",
-          "haxPreferences",
           "haxAppPicker",
           "haxTray",
         ].includes(propName)
@@ -663,7 +657,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeHaxBody,
           this.haxToast,
           this.haxExport,
-          this.haxPreferences,
           this.haxAppPicker,
           this.haxTray
         );
@@ -777,7 +770,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     activeHaxBody,
     haxToast,
     haxExport,
-    haxPreferences,
     haxAppPicker,
     haxTray
   ) {
@@ -787,7 +779,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       haxAutoloader &&
       haxToast &&
       haxExport &&
-      haxPreferences &&
       haxAppPicker &&
       haxTray
     ) {
@@ -1271,6 +1262,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand",
     };
+    // establish the tour
+    this.dispatchEvent(
+      new CustomEvent("simple-tour-register", {
+        bubbles: true,
+        composed: true,
+        detail: "hax",
+      })
+    );
     this.voiceRespondsTo = "(worker)";
     this.voiceCommands = {};
     this.skipHAXConfirmation = false;
@@ -1872,7 +1871,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
-    let drawers = ["haxAppPicker", "haxPreferences", "haxExport"];
+    let drawers = ["haxAppPicker", "haxExport"];
     for (var i in drawers) {
       if (active === this[drawers[i]]) {
         active.open();

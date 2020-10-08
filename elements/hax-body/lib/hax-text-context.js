@@ -1,5 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 /**
  * `hax-text-context`
  * @element hax-text-context
@@ -41,8 +48,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           overflow: hidden;
         }
         paper-item {
-          color: white;
-          background-color: var(--hax-contextual-action-color);
+          color: black;
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
           font-size: 11px;
@@ -58,9 +64,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
         iron-icon {
           width: 20px;
           height: 20px;
-          padding: 4px;
-        }
-        paper-item strong {
           padding: 4px;
         }
         hax-context-item-textop,
@@ -87,18 +90,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
     };
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
     setTimeout(() => {
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
       );
     }, 0);
+    this.showMenu = false;
     this.realSelectedValue = "p";
     this.selection = false;
     this.formatIcon = "hax:format-textblock";
@@ -116,6 +114,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
       this[e.detail.property] = e.detail.value;
     }
   }
+  toggleMenu(e) {
+    this.showMenu = !this.showMenu;
+  }
   render() {
     return html`
       <hax-toolbar
@@ -123,18 +124,24 @@ class HaxTextContext extends winEventsElement(LitElement) {
         ?hide-more="${!this.hasSelectedText}"
         id="toolbar"
       >
-        <hax-context-item-menu
+        <hax-context-item
           action
           mini
           slot="primary"
-          .selected-value="${this.selectedValue}"
-          @selected-value-changed="${this.selectedValueChanged}"
+          @click="${this.toggleMenu}"
+          .icon="${this.realSelectedValue}"
           id="formatsize"
           icon="${this.formatIcon}"
           label="Text format"
-          event-name="text-tag"
+        ></hax-context-item>
+        <simple-popover
+          slot="primary"
+          @click="${this.valueSelected}"
+          for="formatsize"
+          auto
+          .hidden="${this.showMenu}"
+          position="top"
         >
-          <paper-item hidden value=""></paper-item>
           <paper-item value="p"
             ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
           >
@@ -164,7 +171,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           <paper-item value="code"
             ><iron-icon icon="icons:code"></iron-icon>Code
           </paper-item>
-        </hax-context-item-menu>
+        </simple-popover>
         <hax-context-item-textop
           mini
           action
@@ -306,8 +313,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
       </hax-toolbar>
     `;
   }
-  selectedValueChanged(e) {
-    this.selectedValue = e.detail;
+  valueSelected(e) {
+    let target = e.target;
+    if (!target && e.path) {
+      target = e.path[0];
+    }
+    // will force change via event
+    this.realSelectedValue = target.value;
   }
   static get tag() {
     return "hax-text-context";
@@ -315,6 +327,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
   static get properties() {
     return {
       _showIndent: {
+        type: Boolean,
+      },
+      showMenu: {
         type: Boolean,
       },
       _showLists: {
@@ -336,13 +351,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
        */
       haxSelectedText: {
         type: String,
-      },
-      /**
-       * Selected value to match format of the tag currently.
-       */
-      selectedValue: {
-        type: Number,
-        attribute: "selected-value",
       },
       /**
        * Selection tracking
@@ -370,47 +378,29 @@ class HaxTextContext extends winEventsElement(LitElement) {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // computed based on these changing
-      if (
-        this.realSelectedValue &&
-        propName == "realSelectedValue" &&
-        this.shadowRoot
-      ) {
+      if (propName == "realSelectedValue" && this.shadowRoot) {
         this._showIndent = this._computeShowIndent(this.realSelectedValue);
         if (this._showIndent || this.realSelectedValue == "p") {
           this._showLists = true;
         } else {
           this._showLists = false;
         }
-        for (var i in this.shadowRoot.querySelector("#formatsize").children) {
-          if (
-            this.shadowRoot.querySelector("#formatsize").children[i] &&
-            this.shadowRoot.querySelector("#formatsize").children[i]
-              .getAttribute &&
-            this.shadowRoot
-              .querySelector("#formatsize")
-              .children[i].getAttribute("value") == this.realSelectedValue
-          ) {
-            this.selectedValue = i;
-          }
-        }
+        console.log(this.realSelectedValue);
+        this.dispatchEvent(
+          new CustomEvent("hax-context-item-selected", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              eventName: "text-tag",
+              value: this.realSelectedValue,
+            },
+          })
+        );
       }
       // calculate boolean status of having text
       if (propName == "haxSelectedText") {
         this.hasSelectedText = this[propName].length > 0;
-      }
-      if (propName == "selectedValue" && this.selectedValue != "") {
-        this.realSelectedValue = this.shadowRoot
-          .querySelector("#formatsize")
-          .children[this.selectedValue].getAttribute("value");
-        this.formatIcon = this.shadowRoot
-          .querySelector("#formatsize")
-          .children[this[propName]].querySelector("iron-icon").icon;
-        // fire an event that this is a core piece of the system
-        this.dispatchEvent(
-          new CustomEvent("selected-value-changed", {
-            detail: this[propName],
-          })
-        );
       }
     });
   }

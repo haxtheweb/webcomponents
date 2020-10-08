@@ -5,5 +5,4 @@ import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
 import "@lrnwebcomponents/hax-body/lib/hax-app.js";
 import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";

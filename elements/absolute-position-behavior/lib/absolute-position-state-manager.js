@@ -26,8 +26,6 @@ window.AbsolutePositionStateManager.requestAvailability = () => {
  * @element absolute-position-state-manager
  */
 class AbsolutePositionStateManager extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
   /**
    * Store tag name to make it easier to obtain directly.
    */

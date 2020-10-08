@@ -17,9 +17,6 @@ class HaxMap extends SimpleColors {
         :host {
           display: block;
         }
-        iron-icon:not(:defined) {
-          display: none;
-        }
         .title {
           position: relative;
           padding: 16px;
@@ -97,10 +94,24 @@ class HaxMap extends SimpleColors {
     let elements = [];
     for (var i = 0; i < list.length; i++) {
       let def = window.HaxStore.instance.haxSchemaFromTag(list[i].tag);
-      elements.push({
-        icon: def.gizmo.icon,
-        name: def.gizmo.title,
-      });
+      if (def.gizmo) {
+        elements.push({
+          icon: def.gizmo.icon,
+          name: def.gizmo.title,
+        });
+      } else {
+        if (list[i].tag && list[i].tag.includes("-")) {
+          elements.push({
+            icon: "hax:templates",
+            name: "Widget",
+          });
+        } else {
+          elements.push({
+            icon: "hax:paragraph",
+            name: "HTML block",
+          });
+        }
+      }
     }
     this.elementList = [...elements];
   }
@@ -121,6 +132,9 @@ class HaxMap extends SimpleColors {
       };
       elements.forEach((el) => {
         switch (el.tag) {
+          case "blockquote":
+          case "div":
+          case "span":
           case "p":
             counts.p++;
             break;
