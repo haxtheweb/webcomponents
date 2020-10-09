@@ -1332,9 +1332,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * Duplicate node into the local DOM below the current item if we can.
    */
   haxDuplicateNode(node) {
-    // move the context menu before duplicating!!!!
-    this.hideContextMenus(false);
-    let parent = node.parentNode;
     // convert the node to a hax element
     let haxElement = nodeToHaxElement(node, null);
     var props =
@@ -1375,13 +1372,11 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     }
     // shouldn't be possible but might as well check
     if (node !== null) {
-      parent.insertBefore(nodeClone, node.nextSibling);
+      node.parentNode.insertBefore(nodeClone, node.nextSibling);
     } else {
-      parent.appendChild(nodeClone);
+      node.parentNode.appendChild(nodeClone);
     }
-    setTimeout(() => {
-      window.HaxStore.write("activeNode", nodeClone, this);
-    }, 100);
+    window.HaxStore.write("activeNode", nodeClone, this);
     return true;
   }
   /**
@@ -1713,6 +1708,20 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       this.activeNode = node.previousElementSibling;
     } else if (node.nextElementSibling) {
       this.activeNode = node.nextElementSibling;
+    } else {
+      // implies nothing; let's not allow NOTHING as it breaks user context
+      this.haxInsert("p", "", {}, false);
+      try {
+        var range = document.createRange();
+        var sel = window.HaxStore.getSelection();
+        range.setStart(this.activeNode, 0);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        this.activeNode.focus();
+      } catch (e) {
+        console.warn(e);
+      }
     }
     window.HaxStore.write("activeNode", this.activeNode, this);
     try {
@@ -1856,7 +1865,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       case "hax-plate-delete":
         if (this.activeNode != null) {
           this.haxDeleteNode(this.activeNode);
-          window.HaxStore.toast("Element deleted", 2000);
         }
         break;
       case "hax-plate-up":
@@ -2057,7 +2065,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           } catch (e) {
             console.warn(e);
           }
-          this.positionContextMenus();
         }
       }
       // force a reset when we start editing
