@@ -1256,6 +1256,25 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     SimpleTourManager.registerNewTour({
       key: "hax",
       name: "Let's learn HAX",
+      style: `
+      simple-popover-manager::part(simple-popover) {
+        max-width: 250px;
+      }
+      simple-popover-manager button {
+        font-size: 12px;
+        margin: 0px 2px;
+      }
+      simple-popover-manager p {
+        --hax-base-styles-p-font-size: 14px;
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      simple-popover-manager h3 {
+        --hax-base-styles-h3-font-size: 18px;
+        margin: 8px 2px;
+      }`,
     });
     this.voiceRespondsTo = "(worker)";
     this.voiceCommands = {};

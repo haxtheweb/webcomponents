@@ -148,17 +148,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
           id="textformat"
         >
           <style slot="style">
-            simple-popover-manager p {
-              --hax-base-styles-p-font-size: 14px;
-              padding: 0;
-              margin: 0;
-              font-size: 14px;
-              line-height: 20px;
-            }
-            simple-popover-manager h3 {
-              --hax-base-styles-h3-font-size: 18px;
-              margin: 8px 2px;
-            }
             simple-popover-manager paper-item {
               color: var(--simple-colors-default-theme-cyan-8);
               font-size: 10px !important;

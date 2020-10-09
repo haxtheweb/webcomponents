@@ -8,10 +8,7 @@ import {
   nodeToHaxElement,
   haxElementToNode,
 } from "@lrnwebcomponents/utils/utils.js";
-import {
-  UndoManagerBehaviors,
-  Undo,
-} from "@lrnwebcomponents/undo-manager/undo-manager.js";
+import { UndoManagerBehaviors } from "@lrnwebcomponents/undo-manager/undo-manager.js";
 
 // variables required as part of the gravity drag and scroll
 var gravityScrollTimer = null;
@@ -607,7 +604,6 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         this._globalPreferencesUpdated(this[propName], oldValue);
       }
       if (propName == "activeNode" && this.__ready) {
-        console.log(this[propName]);
         this._activeNodeChanged(this[propName], oldValue);
       }
     });
@@ -867,9 +863,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                     rng.commonAncestorContainer,
                     this
                   );
-                  setTimeout(() => {
-                    this.positionContextMenus();
-                  }, 0);
+                  this.positionContextMenus();
                 }
               } else {
               }
@@ -1238,10 +1232,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
     this.activeNode = newNode;
     window.HaxStore.write("activeNode", newNode, this);
     // wait so that the DOM can have the node to then attach to
-    setTimeout(() => {
-      this.scrollHere(newNode);
-      this.positionContextMenus();
-    }, 0);
+    this.scrollHere(newNode);
+    this.positionContextMenus();
     return true;
   }
   /**
@@ -1414,7 +1406,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Reposition context menus to match an element.
    */
-  positionContextMenus(node = this.activeNode, container = this.activeNode) {
+  positionContextMenus(node = this.activeNode) {
     // sanity chekc and ensure we are not told to lock position of all menus
     clearTimeout(this.__positionContextTimer);
     this.__positionContextTimer = setTimeout(() => {
@@ -1441,7 +1433,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           props.element = node;
           this._positionContextMenu(
             this.shadowRoot.querySelector("#cecontextmenu"),
-            container,
+            node,
             -1,
             -30
           );
@@ -1452,7 +1444,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           );
           this._positionContextMenu(
             this.shadowRoot.querySelector("#textcontextmenu"),
-            container,
+            node,
             -1,
             -30
           );
@@ -1462,38 +1454,32 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
             .getBoundingClientRect();
           menuWidth += textRect.width;
         }
-        if (container) {
-          let activeRect = container.getBoundingClientRect();
-          // need to account for the item being small than the menu
-          if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
-            this._positionContextMenu(
-              this.shadowRoot.querySelector("#platecontextmenu"),
-              container,
-              -1,
-              -58
-            );
-          } else {
-            this._positionContextMenu(
-              this.shadowRoot.querySelector("#platecontextmenu"),
-              container,
-              activeRect.width -
-                this.shadowRoot
-                  .querySelector("#platecontextmenu")
-                  .getBoundingClientRect().width +
-                2,
-              -28
-            );
-          }
+        let activeRect = node.getBoundingClientRect();
+        // need to account for the item being small than the menu
+        if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
+          this._positionContextMenu(
+            this.shadowRoot.querySelector("#platecontextmenu"),
+            node,
+            -1,
+            -58
+          );
+        } else {
+          this._positionContextMenu(
+            this.shadowRoot.querySelector("#platecontextmenu"),
+            node,
+            activeRect.width -
+              this.shadowRoot
+                .querySelector("#platecontextmenu")
+                .getBoundingClientRect().width +
+              2,
+            -28
+          );
         }
         // special case for node not matching container yet it being editable
-        if (
-          container &&
-          !window.HaxStore.instance.isTextElement(node) &&
-          node !== container
-        ) {
-          container.removeAttribute("contenteditable");
-        } else if (container) {
-          container.setAttribute("contenteditable", true);
+        if (node && !window.HaxStore.instance.isTextElement(node)) {
+          node.removeAttribute("contenteditable");
+        } else if (node) {
+          node.setAttribute("contenteditable", true);
         }
       }
     }, 10);
@@ -1501,38 +1487,25 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Move grid plate around
    */
-  haxMoveGridPlate(direction, node, container) {
+  haxMoveGridPlate(direction, node) {
     // menu is actually in the element for render purposes
     // support moving things multiple directions
     this.___moveLock = true;
     switch (direction) {
-      case "first":
-        // ensure we can go up, first being a mode of up
-        if (container.previousElementSibling !== null) {
-          this.insertBefore(container, this.firstChild);
-        }
-        break;
       case "up":
         // ensure we can go up
-        if (container.previousElementSibling !== null) {
-          this.insertBefore(container, container.previousElementSibling);
+        if (node.previousElementSibling !== null) {
+          node.parentNode.insertBefore(node, node.previousElementSibling);
         }
         break;
       case "down":
-        if (container.nextElementSibling !== null) {
-          this.insertBefore(container.nextElementSibling, container);
-        }
-        break;
-      case "last":
-        if (container.nextElementSibling !== null) {
-          this.appendChild(container);
+        if (node.nextElementSibling !== null) {
+          node.parentNode.insertBefore(node.nextElementSibling, node);
         }
         break;
     }
-    setTimeout(() => {
-      this.scrollHere(node);
-      this.positionContextMenus(node, node);
-    }, 0);
+    this.scrollHere(node);
+    this.positionContextMenus(node);
     return true;
   }
   /**
@@ -1636,14 +1609,16 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
       grid.disableResponsive = true;
-      node.parentNode.insertBefore(grid, node);
       let col = "2";
       if (side == "right") {
         col = "1";
       }
+      let tmp = node.cloneNode(true);
+      tmp.setAttribute("slot", "col-" + col);
+      grid.appendChild(tmp);
+      node.parentNode.insertBefore(grid, node);
       setTimeout(() => {
-        grid.appendChild(node);
-        node.setAttribute("slot", "col-" + col);
+        node.remove();
       }, 0);
     }
   }
@@ -1733,7 +1708,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
   /**
    * Delete the node passed in
    */
-  haxDeleteNode(node, parent = this) {
+  haxDeleteNode(node) {
     if (node.previousElementSibling) {
       this.activeNode = node.previousElementSibling;
     } else if (node.nextElementSibling) {
@@ -1880,37 +1855,15 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
         break;
       case "hax-plate-delete":
         if (this.activeNode != null) {
-          this.haxDeleteNode(this.activeNode, this.activeNode.parentNode);
+          this.haxDeleteNode(this.activeNode);
           window.HaxStore.toast("Element deleted", 2000);
         }
         break;
-      case "hax-plate-first":
-        this.haxMoveGridPlate(
-          "first",
-          this.activeNode,
-          this.activeNode.parentNode
-        );
-        break;
       case "hax-plate-up":
-        this.haxMoveGridPlate(
-          "up",
-          this.activeNode,
-          this.activeNode.parentNode
-        );
+        this.haxMoveGridPlate("up", this.activeNode);
         break;
       case "hax-plate-down":
-        this.haxMoveGridPlate(
-          "down",
-          this.activeNode,
-          this.activeNode.parentNode
-        );
-        break;
-      case "hax-plate-last":
-        this.haxMoveGridPlate(
-          "last",
-          this.activeNode,
-          this.activeNode.parentNode
-        );
+        this.haxMoveGridPlate("down", this.activeNode);
         break;
     }
   }
@@ -2026,7 +1979,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 console.warn(e);
               }
             }
-            this.positionContextMenus(activeNode, activeNode);
+            this.positionContextMenus(activeNode);
           }, 0);
           stopProp = true;
         }
@@ -2041,15 +1994,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
    * as that is better behavior but not in all browsers
    */
   scrollHere(node) {
-    // scroll to it
-    if (typeof node.scrollIntoViewIfNeeded === "function") {
-      node.scrollIntoViewIfNeeded(true);
-    } else {
-      node.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-      });
-    }
+    // scroll to it w/ timing delay as this uses resources
+    // and we want to ensure it's in the next micro-task
+    setTimeout(() => {
+      if (typeof node.scrollIntoViewIfNeeded === "function") {
+        node.scrollIntoViewIfNeeded(true);
+      } else {
+        node.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+        });
+      }
+    }, 0);
   }
   undo() {
     super.undo();
@@ -2090,20 +2046,18 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           this.__focusLogic(this.children[0]);
         } else {
           this.haxInsert("p", "", {}, false);
-          setTimeout(() => {
-            try {
-              var range = document.createRange();
-              var sel = window.HaxStore.getSelection();
-              range.setStart(this.activeNode, 0);
-              range.collapse(true);
-              sel.removeAllRanges();
-              sel.addRange(range);
-              this.activeNode.focus();
-            } catch (e) {
-              console.warn(e);
-            }
-            this.positionContextMenus();
-          }, 0);
+          try {
+            var range = document.createRange();
+            var sel = window.HaxStore.getSelection();
+            range.setStart(this.activeNode, 0);
+            range.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(range);
+            this.activeNode.focus();
+          } catch (e) {
+            console.warn(e);
+          }
+          this.positionContextMenus();
         }
       }
       // force a reset when we start editing
@@ -2421,10 +2375,8 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
                 detail: this.activeNode,
               })
             );
-            setTimeout(() => {
-              this.scrollHere(this.activeNode);
-              this.positionContextMenus();
-            }, 0);
+            this.scrollHere(this.activeNode);
+            this.positionContextMenus();
           }
         }
       } catch (e) {

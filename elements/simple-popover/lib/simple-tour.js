@@ -59,6 +59,21 @@ class SimpleTour extends LitElement {
     return s;
   }
   /**
+   * It's possible we drop a target from the DOM and then
+   * have to remove it from the tour
+   */
+  removeTarget(name, target) {
+    let dropList = [];
+    this.stacks[name].forEach((item, index) => {
+      if (item.target === target) {
+        dropList.push(index);
+      }
+    });
+    dropList.forEach((i) => {
+      this.stacks[name].splice(i, 1);
+    });
+  }
+  /**
    * Add stops to the tour
    */
   addStops(name, stops) {
@@ -172,7 +187,11 @@ class SimpleTour extends LitElement {
           </h3>
           ${unsafeHTML(
             "<p>" + this.stacks[this.active][this.stop].description + "</p>"
-          )}`;
+          )}${this.tourInfo[this.active].style
+            ? unsafeHTML(
+                "<style>" + this.tourInfo[this.active].style + "</style>"
+              )
+            : ""}`;
         render(content, window.SimplePopoverManager.requestAvailability());
         window.SimplePopoverManager.requestAvailability().setPopover(
           this,

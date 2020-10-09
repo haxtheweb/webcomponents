@@ -368,7 +368,6 @@ class GridPlate extends LitElement {
     super.connectedCallback();
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        console.log("mutation");
         // only need to apply this when we're in editMode
         // this implies something was added dynamically or drag and drop
         // from outside this element or dragging between grid plates
@@ -376,7 +375,6 @@ class GridPlate extends LitElement {
         // up in the new plate
         if (this.editMode) {
           mutation.addedNodes.forEach((node) => {
-            console.log(node);
             if (node.tagName) {
               // verify this has a slot set otherwise we need to set one on the fly
               // otherwise this won't show up. This could be incorrectly formed HTML

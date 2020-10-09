@@ -20,7 +20,7 @@ class SimplePopoverManager extends LitElement {
           --simple-popover-border-color: #222222;
           --simple-popover-background-color: #eeeeee;
           --simple-popover-padding: 4px;
-          max-width: 200px;
+          max-width: var(--simple-popover-manager-max-width, 200px);
         }
       `,
     ];
