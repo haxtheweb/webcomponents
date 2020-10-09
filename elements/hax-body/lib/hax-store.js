@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
+import { SimpleTourManager } from "@lrnwebcomponents/simple-popover/lib/simple-tour.js";
 import {
   winEventsElement,
   getRange,
@@ -164,12 +164,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * Active Node.
        */
       activeNode: {
-        type: Object,
-      },
-      /**
-       * Active container Node, 2nd highest parent of activeNode.
-       */
-      activeContainerNode: {
         type: Object,
       },
       /**
@@ -841,8 +835,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (this.activeNode.previousElementSibling) {
         this.activeNode = this.activeNode.previousElementSibling;
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.activeContainerNode = this.activeNode;
-        window.HaxStore.write("activeContainerNode", this.activeNode, this);
         this._positionCursorInNode(this.activeNode);
       } else {
         this.speak("You are at the top of the document");
@@ -854,8 +846,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (this.activeNode.nextElementSibling) {
         this.activeNode = this.activeNode.nextElementSibling;
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.activeContainerNode = this.activeNode;
-        window.HaxStore.write("activeContainerNode", this.activeNode, this);
         this._positionCursorInNode(this.activeNode);
       } else {
         this.speak("You are at the bottom of the document");
@@ -1263,13 +1253,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-add-voice-command": "_addVoiceCommand",
     };
     // establish the tour
-    this.dispatchEvent(
-      new CustomEvent("simple-tour-register", {
-        bubbles: true,
-        composed: true,
-        detail: "hax",
-      })
-    );
+    SimpleTourManager.registerNewTour({
+      key: "hax",
+      name: "Let's learn HAX",
+    });
     this.voiceRespondsTo = "(worker)";
     this.voiceCommands = {};
     this.skipHAXConfirmation = false;
@@ -1278,7 +1265,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       url: "",
       params: {},
     };
-    this.activeContainerNode = null;
     this.activeNode = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
@@ -1317,7 +1303,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   }
-
+  /**
+   * Add something to the hax store
+   */
+  addToTour(target, title, description, position = "bottom") {
+    SimpleTourManager.createTourStop(
+      "hax",
+      target,
+      position,
+      title,
+      description
+    );
+  }
   /**
    * Build HAX property definitions for primitives that we support.
    */
@@ -1962,7 +1959,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         }
         // set it to nothing
         this.activePlaceHolder = null;
-      } else if (this.activeContainerNode != null) {
+      } else if (this.activeNode.parentNode.tagName != "HAX-BODY") {
         let node = haxElementToNode({
           tag: details.tag,
           content: details.content,
@@ -1970,8 +1967,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         });
         // allow for inserting things into things but not grid plate
         if (
-          this.activeContainerNode &&
-          this.activeContainerNode.tagName === "GRID-PLATE"
+          this.activeNode.parentNode &&
+          this.activeNode.parentNode.tagName === "GRID-PLATE"
         ) {
           // support slot if we have one on the activeNode (most likely)
           if (this.activeNode.getAttribute("slot") != null) {
@@ -2494,7 +2491,6 @@ window.HaxStore.nodeToContent = (node) => {
           ) {
             content += window.HaxStore.nodeToContent(slotnodes[j]);
           } else {
-            slotnodes[j].setAttribute("data-editable", false);
             slotnodes[j].removeAttribute("data-hax-ray");
             slotnodes[j].contentEditable = false;
             content += slotnodes[j].outerHTML;
@@ -2533,7 +2529,6 @@ window.HaxStore.nodeToContent = (node) => {
   // spacing niceness for output readability
   content = content.replace(/&nbsp;/gm, " ");
   // target and remove hax specific things from output if they slipped through
-  content = content.replace(/ data-editable="(\s|.)*?"/gim, "");
   content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
   content = content.replace(/ class=""/gim, "");
   content = content.replace(/ class="hax-active"/gim, "");

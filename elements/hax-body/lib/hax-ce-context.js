@@ -51,10 +51,7 @@ class HaxCeContext extends winEventsElement(LitElement) {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      if (
-        e.detail.property === "activeNode" ||
-        e.detail.property === "activeContainerNode"
-      ) {
+      if (e.detail.property === "activeNode") {
         setTimeout(() => {
           this._computeValues();
         }, 0);

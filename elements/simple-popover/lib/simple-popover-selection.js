@@ -1,7 +1,7 @@
 import { html, LitElement } from "lit-element/lit-element.js";
 import { render } from "lit-html/lib/render.js";
 import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
-import "../simple-popover.js";
+import "./simple-popover-manager.js";
 
 class SimplePopoverSelection extends LitElement {
   constructor() {
@@ -26,7 +26,20 @@ class SimplePopoverSelection extends LitElement {
           div.appendChild(clone);
         }
       }
-      let content = html`${unsafeHTML(div.innerHTML)}`;
+      let content;
+      // support for slot injected styles
+      // this allows you to inject a style local to the manager's pop up
+      // which means you can style things that otherwise would be impossible
+      // due to how shadowDOM + things at the app level / singleton would allow
+      if (this.querySelector('[slot="style"]')) {
+        let style = this.querySelector('[slot="style"]').cloneNode(true);
+        style.removeAttribute("slot");
+        content = html`${unsafeHTML(div.innerHTML)}${unsafeHTML(
+          style.outerHTML
+        )}`;
+      } else {
+        content = html`${unsafeHTML(div.innerHTML)}`;
+      }
       render(content, window.SimplePopoverManager.requestAvailability());
       // delay for render
       setTimeout(() => {
@@ -35,14 +48,24 @@ class SimplePopoverSelection extends LitElement {
           "*"
         );
         for (var i in children) {
-          if (slot[i].addEventListener) {
+          if (children[i].addEventListener) {
             children[i].addEventListener("click", this.itemSelect.bind(this));
           }
         }
-        // set focus on 1st item in the selection
-        window.SimplePopoverManager.requestAvailability()
-          .querySelector(":first-child")
-          .focus();
+        // select the item we were told to activate OR just the 1st element
+        if (
+          window.SimplePopoverManager.requestAvailability().querySelector(
+            "[data-simple-popover-selection-active]"
+          )
+        ) {
+          window.SimplePopoverManager.requestAvailability()
+            .querySelector("[data-simple-popover-selection-active]")
+            .focus();
+        } else {
+          window.SimplePopoverManager.requestAvailability()
+            .querySelector(":first-child")
+            .focus();
+        }
       }, 0);
     }
     window.SimplePopoverManager.requestAvailability().setPopover(
@@ -68,13 +91,11 @@ class SimplePopoverSelection extends LitElement {
     });
   }
   itemSelect(e) {
-    this.realSelectedValue = e.target.value;
+    // allow someone else deal with the item changing
     this.dispatchEvent(
-      new CustomEvent("simple-popover-selection-value", {
+      new CustomEvent("simple-popover-selection-changed", {
         bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this.realSelectedValue,
+        detail: e.target,
       })
     );
     // close after an item is selected

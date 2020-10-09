@@ -1,4 +1,6 @@
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { HAXTourFinder } from "./HAXTourFinder.js";
+
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -6,7 +8,7 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends winEventsElement(HTMLElement) {
+class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
   constructor(delayRender = false) {
     super();
     this.__winEvents = {
@@ -96,25 +98,34 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         label="Drag"
         draggable="true"
         selected-value="0"
-        reset-on-select>
-      <paper-item hidden value=""></paper-item>
-      <hax-context-item
-        action
-        mini
-        icon="hardware:keyboard-arrow-up"
-        label="Move up"
-        event-name="hax-plate-up"
-        direction="left"
-        ></hax-context-item>
-      <hax-context-item
-        action
-        mini
-        icon="hardware:keyboard-arrow-down"
-        label="Move down"
-        event-name="hax-plate-down"
-        direction="left"
-        ></hax-context-item>
-    </hax-context-item-menu>
+        reset-on-select
+        data-simple-tour-stop>
+        <paper-item hidden value=""></paper-item>
+        <hax-context-item
+          action
+          mini
+          icon="hardware:keyboard-arrow-up"
+          label="Move up"
+          event-name="hax-plate-up"
+          direction="left"
+          ></hax-context-item>
+        <hax-context-item
+          action
+          mini
+          icon="hardware:keyboard-arrow-down"
+          label="Move down"
+          event-name="hax-plate-down"
+          direction="left"
+          ></hax-context-item>
+        <div slot="tour">
+        <div data-stop-title>Drag element handle</div>
+        <div data-stop-content>
+          Click the drag handle once to show a menu to just move
+          up or down one item in the content OR click and drag
+          to place the item exactly where you want it to go.
+          </div>
+        </div>
+      </hax-context-item-menu>
       <hax-context-item
       mini
       action
@@ -160,7 +171,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         typeof e.detail.value !== typeof undefined &&
         e.detail.property &&
         this.getAttribute("on-screen") != null &&
-        ["activeNode", "activeContainerNode"].includes(e.detail.property)
+        ["activeNode"].includes(e.detail.property)
       ) {
         // when activeNode changes make sure we reposition
         this.__updatePlatePosition();
@@ -172,9 +183,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       let active = window.HaxStore.instance.activeNode;
       let right = this.shadowRoot.querySelector("#right");
       let rightremove = this.shadowRoot.querySelector("#rightremove");
-      if (window.HaxStore.instance.activeContainerNode) {
-        active = window.HaxStore.instance.activeContainerNode;
-      }
       // support for enabling or disabling
       right.disabled = false;
       rightremove.disabled = false;

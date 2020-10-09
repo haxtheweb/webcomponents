@@ -48,19 +48,19 @@
     <script>
       document.getElementById('tourbtn').addEventListener('click', (e) => {
         let tour = window.SimpleTourManager.requestAvailability();
-        tour.registerNewTour('hax');
-        tour.createTourStop('hax', document.getElementById('p1'), "Paragraph 1", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        tour.createTourStop('hax', document.getElementById('p2'), "Paragraph 2", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        tour.createTourStop('hax', document.getElementById('p3'), "Paragraph 3", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        tour.startTour('hax');
+        tour.registerNewTour({key:'hax', name: "Learn hax"});
+        tour.createTourStop('hax', document.getElementById('p1'), "bottom", "Paragraph 1", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
+        tour.createTourStop('hax', document.getElementById('p2'), "bottom", "Paragraph 2", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
+        tour.createTourStop('hax', document.getElementById('p3'), "bottom", "Paragraph 3", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
+        window.SimpleTourManager.requestAvailability().startTour('hax');
       });
       document.getElementById('tourbtn2').addEventListener('click', (e) => {
         let tour = window.SimpleTourManager.requestAvailability();
-        tour.registerNewTour('hax2');
-        tour.createTourStop('hax2', document.getElementById('p3'), "Whatevers 1", "<p>YOU MONSTER</p>");
-        tour.createTourStop('hax2', document.getElementById('p3'), "Cool 2", "<p>You did this</p>");
-        tour.createTourStop('hax2', document.getElementById('p1'), "SHings", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
-        tour.startTour('hax2');
+        tour.registerNewTour({key:'hax2', name: "Learn hax again"});
+        tour.createTourStop('hax2', document.getElementById('p3'),"bottom", "Whatevers 1", "<p>YOU MONSTER</p>");
+        tour.createTourStop('hax2', document.getElementById('p3'),"bottom", "Cool 2", "<p>You did this</p>");
+        tour.createTourStop('hax2', document.getElementById('p1'),"bottom", "SHings", "<p>I love this paragraph, it is the <strong>greatest</strong></p>");
+        window.SimpleTourManager.requestAvailability().startTour('hax2');
       });
       // say what bubbled up
       document.getElementById('popover').addEventListener('simple-popover-selection-value', (e) => {

@@ -8,6 +8,7 @@ class SimpleTour extends LitElement {
     super();
     this.stacks = {};
     this.active = null;
+    this.tourInfo = {};
     this.activeElementDelay = 500;
     this.stop = -1;
     window.addEventListener(
@@ -22,11 +23,14 @@ class SimpleTour extends LitElement {
   registerNewTourEvent(e) {
     this.registerNewTour(e.detail);
   }
-  registerNewTour(name) {
-    if (!this.stacks[name]) {
-      this.stacks[name] = [];
+  registerNewTour(newTour) {
+    if (!this.stacks[newTour.key]) {
+      this.stacks[newTour.key] = [];
     }
-    return this.stacks[name];
+    if (!this.tourInfo[newTour.key]) {
+      this.tourInfo[newTour.key] = newTour;
+    }
+    return this.stacks[newTour.key];
   }
   /**
    * create tour stop via events
@@ -35,6 +39,7 @@ class SimpleTour extends LitElement {
     this.createTourStop(
       e.detail.name,
       e.detail.target,
+      e.detail.position,
       e.detail.title,
       e.detail.description
     );
@@ -42,9 +47,12 @@ class SimpleTour extends LitElement {
   /**
    * Create a tour stop, add to the stack, then return the stop object
    */
-  createTourStop(name, target, title, description) {
+  createTourStop(name, target, position, title, description) {
     let s = new TourStop();
     s.target = target;
+    if (position) {
+      s.position = position;
+    }
     s.title = title;
     s.description = description;
     this.addStops(name, [s]);
@@ -89,18 +97,25 @@ class SimpleTour extends LitElement {
       false
     );
     this.stop = -1;
+    this.active = null;
   }
   /**
    * Render tour buttons as block
    */
   tourButtons() {
-    return html`<h3>Tour</h3>
+    return html` <h3>
+        ${this.tourInfo[this.active].name}
+        <span style="margin-left:16px"
+          >${this.stop + 1}/${this.stacks[this.active].length}</span
+        >
+      </h3>
       <button
         @click="${this.prevStop.bind(this)}"
         ?disabled="${!this.hasPrev()}"
       >
-        Previous</button
-      ><button
+        Previous
+      </button>
+      <button
         @click="${this.nextStop.bind(this)}"
         ?disabled="${!this.hasNext()}"
       >
@@ -150,13 +165,20 @@ class SimpleTour extends LitElement {
           window.SimplePopoverManager.requestAvailability()
         );
         let content = html`${this.tourButtons()}
-          <h3>${this.stacks[this.active][this.stop].title}</h3>
-          ${unsafeHTML(this.stacks[this.active][this.stop].description)}`;
+          <h3>
+            ${unsafeHTML(
+              "<span>" + this.stacks[this.active][this.stop].title + "</span>"
+            )}
+          </h3>
+          ${unsafeHTML(
+            "<p>" + this.stacks[this.active][this.stop].description + "</p>"
+          )}`;
         render(content, window.SimplePopoverManager.requestAvailability());
         window.SimplePopoverManager.requestAvailability().setPopover(
           this,
           this.stacks[this.active][this.stop].target,
-          true
+          true,
+          this.stacks[this.active][this.stop].position
         );
         this.scrollHere(this.stacks[this.active][this.stop].target);
         let target = this.stacks[this.active][this.stop].target;
@@ -198,6 +220,7 @@ class SimpleTour extends LitElement {
 class TourStop {
   constructor() {
     this.target = null;
+    this.position = "bottom";
     this.title = "Title";
     this.description = "<p>Description</p>";
   }
@@ -219,4 +242,4 @@ window.SimpleTourManager.requestAvailability = () => {
   return window.SimpleTourManager.instance;
 };
 // self append
-window.SimpleTourManager.requestAvailability();
+export const SimpleTourManager = window.SimpleTourManager.requestAvailability();

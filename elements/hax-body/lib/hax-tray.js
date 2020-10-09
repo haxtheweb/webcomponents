@@ -12,15 +12,16 @@ import {
   HaxSchematizer,
   HaxElementizer,
 } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXFields.js";
-import "@lrnwebcomponents/hax-body/lib/hax-map.js";
-import "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js";
+import "./hax-map.js";
+import "./hax-preferences-dialog.js";
+import { HAXTourFinder } from "./HAXTourFinder.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
  * @element hax-tray
  */
-class HaxTray extends winEventsElement(LitElement) {
+class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
   /**
    * Convention we use
    */
@@ -583,7 +584,16 @@ class HaxTray extends winEventsElement(LitElement) {
               icon="code"
               label="View page source"
               voice-command="view (page) source"
-            ></hax-tray-button>
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div data-stop-content>
+                Every change you make in HAX is ultimately writing HTML. Know
+                HTML? Awesome, pop open the source view and make any changes you
+                like. HTML is always behind the scenes ensuring that content is
+                portable, well formatted and easy to read.
+              </div>
+            </hax-tray-button>
             <hax-tray-button
               mini
               event-name="start-tour"
@@ -616,7 +626,15 @@ class HaxTray extends winEventsElement(LitElement) {
               id="mapbtn"
               label="Content map"
               voice-command="open map"
-            ></hax-tray-button>
+              data-simple-tour-stop
+            >
+              <div data-stop-title>Content map</div>
+              <div data-stop-content>
+                This is a simple list of all the block areas of the page that
+                are clickable to jump through items quickly as well as review
+                some simple overview stats.
+              </div>
+            </hax-tray-button>
             <simple-popover for="mapbtn" auto hidden>
               <hax-map></hax-map>
             </simple-popover>
@@ -636,19 +654,33 @@ class HaxTray extends winEventsElement(LitElement) {
         </div>
         <a11y-collapse-group accordion radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse id="addcollapse" accordion>
-            <div slot="heading">
+          <a11y-collapse id="addcollapse" accordion data-simple-tour-stop>
+            <div slot="heading" data-stop-title>
               <iron-icon icon="icons:add"></iron-icon> Add Content
+            </div>
+            <div slot="tour" data-stop-content>
+              When you want to add any content to the page from text, to images,
+              to anything more advanced; you can always find items to add under
+              the Add content menu. Click to expand, then either drag and drop
+              items into the page or click and have them placed near whatever
+              you are actively working on.
             </div>
             <div slot="content">
               <hax-tray-upload></hax-tray-upload>
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse id="settingscollapse" accordion>
-            <div slot="heading">
+          <a11y-collapse id="settingscollapse" accordion data-simple-tour-stop>
+            <div slot="heading" data-stop-title>
               <iron-icon icon="${this.activeTagIcon}"></iron-icon> ${this
                 .activeTagName}
+            </div>
+            <div slot="tour" data-stop-content>
+              Settings panel changes contextually based on the item you are
+              currently working on. If you select a paragraph in the page, it
+              will change to a P tag and show settings specific to that element.
+              Same for video-player's, meme's, images, tables; litereally
+              anything!
             </div>
             <div slot="content">
               <simple-fields
@@ -972,26 +1004,6 @@ class HaxTray extends winEventsElement(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // establish the tour
-    this.dispatchEvent(
-      new CustomEvent("simple-tour-create-tour-stop", {
-        bubbles: true,
-        composed: true,
-        detail: {
-          name: "hax",
-          target: this.shadowRoot.querySelector("#addcollapse"),
-          title: "Add content",
-          description: `
-          <p>
-            When you want to add any content to the page from text, 
-            to images, to anything more advanced; you can always find 
-            items to add under the Add content menu. Click to expand, then
-            either drag and drop items into the page or click and have them
-            placed near whatever you are actively working on.
-          </p>`,
-        },
-      })
-    );
     if (!this.__setup) {
       setTimeout(() => {
         this.shadowRoot.querySelector(

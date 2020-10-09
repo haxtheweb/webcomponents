@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit-element/lit-element.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
 import "../simple-popover.js";
 
 class SimplePopoverManager extends LitElement {
@@ -9,10 +9,27 @@ class SimplePopoverManager extends LitElement {
     this.context = null;
     this.__ignore = false;
   }
+  static get styles() {
+    return [
+      css`
+        simple-popover {
+          font-size: 14px;
+          line-height: 20px;
+          color: black;
+          --simple-popover-color: #222222;
+          --simple-popover-border-color: #222222;
+          --simple-popover-background-color: #eeeeee;
+          --simple-popover-padding: 4px;
+          max-width: 200px;
+        }
+      `,
+    ];
+  }
   render() {
     return html`
       <simple-popover
         auto
+        part="simple-popover"
         ?hidden="${!this.opened}"
         position="${this.position}"
       >

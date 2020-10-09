@@ -205,6 +205,9 @@ class AbsolutePositionStateManager extends LitElement {
    * @return {void}
    */
   positionElement(el) {
+    if (!el.position) {
+      el.position = "bottom";
+    }
     let target = this.findTarget(el),
       parent = el.offsetParent;
     if (!target || !parent) return;

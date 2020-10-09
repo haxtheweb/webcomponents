@@ -1,6 +1,6 @@
 :host {
   display: inline-block;
-  z-index: 99999999;
+  z-index: 99999999999;
   position: absolute;
 }
 

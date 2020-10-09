@@ -6,7 +6,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
+import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
 /**
  * `hax-text-context`
  * @element hax-text-context
@@ -36,6 +36,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
         }
         :host [hidden] {
           display: none;
+        }
+        simple-popover-selection {
+          display: inline-flex;
         }
         .selected-buttons {
           transition: 0.1s all ease-in-out;
@@ -96,7 +99,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
         this._haxContextOperation.bind(this)
       );
     }, 0);
-    this.showMenu = false;
     this.realSelectedValue = "p";
     this.selection = false;
     this.formatIcon = "hax:format-textblock";
@@ -113,9 +115,23 @@ class HaxTextContext extends winEventsElement(LitElement) {
     ) {
       this[e.detail.property] = e.detail.value;
     }
-  }
-  toggleMenu(e) {
-    this.showMenu = !this.showMenu;
+    // update our icon if global changes what we are pointing to
+    if (
+      e.detail.property == "activeNode" &&
+      window.HaxStore.instance.isTextElement(e.detail.value) &&
+      this.shadowRoot.querySelector(
+        '#textformat paper-item[value="' +
+          e.detail.value.tagName.toLowerCase() +
+          '"]'
+      )
+    ) {
+      if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+        this.shadowRoot.querySelector(
+          "simple-popover-selection"
+        ).opened = false;
+      }
+      this.updateTextIconSelection(e.detail.value.tagName.toLowerCase());
+    }
   }
   render() {
     return html`
@@ -124,54 +140,75 @@ class HaxTextContext extends winEventsElement(LitElement) {
         ?hide-more="${!this.hasSelectedText}"
         id="toolbar"
       >
-        <hax-context-item
-          action
-          mini
+        <simple-popover-selection
           slot="primary"
-          @click="${this.toggleMenu}"
-          .icon="${this.realSelectedValue}"
-          id="formatsize"
-          icon="${this.formatIcon}"
-          label="Text format"
-        ></hax-context-item>
-        <simple-popover
-          slot="primary"
-          @click="${this.valueSelected}"
-          for="formatsize"
+          @simple-popover-selection-changed="${this.textFormatChanged}"
           auto
-          .hidden="${this.showMenu}"
           position="top"
+          id="textformat"
         >
-          <paper-item value="p"
+          <style slot="style">
+            simple-popover-manager p {
+              --hax-base-styles-p-font-size: 14px;
+              padding: 0;
+              margin: 0;
+              font-size: 14px;
+              line-height: 20px;
+            }
+            simple-popover-manager h3 {
+              --hax-base-styles-h3-font-size: 18px;
+              margin: 8px 2px;
+            }
+            simple-popover-manager paper-item {
+              color: var(--simple-colors-default-theme-cyan-8);
+              font-size: 10px !important;
+              margin: 0;
+              padding: 2px;
+              min-height: unset;
+            }
+            simple-popover-manager paper-item iron-icon {
+              width: 18px;
+              margin-right: 8px;
+            }
+          </style>
+          <hax-context-item
+            action
+            mini
+            slot="button"
+            id="formatsize"
+            icon="${this.formatIcon}"
+            label="Text format"
+          ></hax-context-item>
+          <paper-item slot="options" value="p"
             ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
           >
-          <paper-item value="ul"
+          <paper-item slot="options" value="ul"
             ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
             list</paper-item
           >
-          <paper-item value="ol"
+          <paper-item slot="options" value="ol"
             ><iron-icon icon="editor:format-list-numbered"></iron-icon>Numbered
             list</paper-item
           >
-          <paper-item value="h2"
+          <paper-item slot="options" value="h2"
             ><iron-icon icon="hax:h2"></iron-icon>Title
           </paper-item>
-          <paper-item value="h3"
+          <paper-item slot="options" value="h3"
             ><iron-icon icon="hax:h3"></iron-icon>Content heading
           </paper-item>
-          <paper-item value="h4"
+          <paper-item slot="options" value="h4"
             ><iron-icon icon="hax:h4"></iron-icon>Subheading
           </paper-item>
-          <paper-item value="h5"
+          <paper-item slot="options" value="h5"
             ><iron-icon icon="hax:h5"></iron-icon>Deep subheading
           </paper-item>
-          <paper-item value="blockquote"
+          <paper-item slot="options" value="blockquote"
             ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote
           </paper-item>
-          <paper-item value="code"
+          <paper-item slot="options" value="code"
             ><iron-icon icon="icons:code"></iron-icon>Code
           </paper-item>
-        </simple-popover>
+        </simple-popover-selection>
         <hax-context-item-textop
           mini
           action
@@ -313,23 +350,12 @@ class HaxTextContext extends winEventsElement(LitElement) {
       </hax-toolbar>
     `;
   }
-  valueSelected(e) {
-    let target = e.target;
-    if (!target && e.path) {
-      target = e.path[0];
-    }
-    // will force change via event
-    this.realSelectedValue = target.value;
-  }
   static get tag() {
     return "hax-text-context";
   }
   static get properties() {
     return {
       _showIndent: {
-        type: Boolean,
-      },
-      showMenu: {
         type: Boolean,
       },
       _showLists: {
@@ -374,18 +400,36 @@ class HaxTextContext extends winEventsElement(LitElement) {
       },
     };
   }
-
+  textFormatChanged(e) {
+    // set internally
+    this.updateTextIconSelection(e.detail.getAttribute("value"));
+  }
+  updateTextIconSelection(tag) {
+    this.realSelectedValue = tag;
+    // clear active if there is one
+    if (
+      this.shadowRoot.querySelector("[data-simple-popover-selection-active]")
+    ) {
+      this.shadowRoot
+        .querySelector("[data-simple-popover-selection-active]")
+        .removeAttribute("data-simple-popover-selection-active");
+    }
+    let localItem = this.shadowRoot.querySelector(
+      '#textformat paper-item[value="' + this.realSelectedValue + '"]'
+    );
+    localItem.setAttribute("data-simple-popover-selection-active", true);
+    this.formatIcon = localItem.querySelector("iron-icon").getAttribute("icon");
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // computed based on these changing
       if (propName == "realSelectedValue" && this.shadowRoot) {
         this._showIndent = this._computeShowIndent(this.realSelectedValue);
-        if (this._showIndent || this.realSelectedValue == "p") {
+        if (this.realSelectedValue == "p") {
           this._showLists = true;
         } else {
           this._showLists = false;
         }
-        console.log(this.realSelectedValue);
         this.dispatchEvent(
           new CustomEvent("hax-context-item-selected", {
             bubbles: true,
@@ -426,12 +470,12 @@ class HaxTextContext extends winEventsElement(LitElement) {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "close-menu":
-        setTimeout(() => {
-          this.shadowRoot
-            .querySelector("#formatsize")
-            .shadowRoot.querySelector("#menu")
-            .hideMenu();
-        }, 200);
+        // force selection menu closed if open
+        if (this.shadowRoot.querySelector("simple-popover-selection").opened) {
+          this.shadowRoot.querySelector(
+            "simple-popover-selection"
+          ).opened = false;
+        }
         break;
       case "insert-inline-gizmo":
         if (
@@ -551,7 +595,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
               "contenteditable",
               true
             );
-            selection.focusNode.parentNode.setAttribute("data-editable", true);
             // just to be safe
             selection.focusNode.parentNode.removeEventListener("click", (e) => {
               e.preventDefault();
