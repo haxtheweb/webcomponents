@@ -95,11 +95,12 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
         id="drag"
         action
         icon="hax:arrow-all"
-        label="Drag"
+        label="Drag handle"
         draggable="true"
         selected-value="0"
         reset-on-select
-        data-simple-tour-stop>
+        data-simple-tour-stop
+        data-stop-title="label">
         <paper-item hidden value=""></paper-item>
         <hax-context-item
           action
@@ -118,7 +119,6 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
           direction="left"
           ></hax-context-item>
         <div slot="tour">
-        <div data-stop-title>Drag element handle</div>
         <div data-stop-content>
           Click the drag handle once to show a menu to just move
           up or down one item in the content OR click and drag

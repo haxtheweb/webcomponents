@@ -1325,14 +1325,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**
    * Add something to the hax store
    */
-  addToTour(target, title, description, position = "bottom") {
-    SimpleTourManager.createTourStop(
-      "hax",
-      target,
-      position,
-      title,
-      description
-    );
+  addToTour(target, title, description) {
+    SimpleTourManager.createTourStop("hax", target, title, description);
   }
   /**
    * Build HAX property definitions for primitives that we support.

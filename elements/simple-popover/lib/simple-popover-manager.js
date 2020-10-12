@@ -97,8 +97,9 @@ class SimplePopoverManager extends LitElement {
       // see if we need to reposition
       this.orientation = orientation;
       let menu = this.popover.target.getBoundingClientRect();
-      // @todo maybe need to support left to right pointing w/ window.innerWidth
-      // top to bottom or left to right orientation automatic assignment
+      // top - bottom or left - right pointer orientation
+      // Highly polarized detection of 50% in any direction
+      // forces the pointer in the opposite direction
       if (this.orientation == "tb") {
         if (menu.y > window.innerHeight / 2) {
           this.position = "top";

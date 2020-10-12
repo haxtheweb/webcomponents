@@ -627,8 +627,8 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               label="Content map"
               voice-command="open map"
               data-simple-tour-stop
+              data-stop-title="label"
             >
-              <div data-stop-title>Content map</div>
               <div data-stop-content>
                 This is a simple list of all the block areas of the page that
                 are clickable to jump through items quickly as well as review
