@@ -99,6 +99,53 @@ class HaxTextContext extends winEventsElement(LitElement) {
         this._haxContextOperation.bind(this)
       );
     }, 0);
+    this.formattingList = [
+      {
+        value: "p",
+        icon: "hax:paragraph",
+        text: "Paragraph",
+      },
+      {
+        value: "ul",
+        icon: "editor:format-list-bulleted",
+        text: "Bulleted list",
+      },
+      {
+        value: "ol",
+        icon: "editor:format-list-numbered",
+        text: "Numbered list",
+      },
+      {
+        value: "h2",
+        icon: "hax:h2",
+        text: "Title",
+      },
+      {
+        value: "h3",
+        icon: "hax:h3",
+        text: "Content heading",
+      },
+      {
+        value: "h4",
+        icon: "hax:h4",
+        text: "Subheading",
+      },
+      {
+        value: "h5",
+        icon: "hax:h5",
+        text: "Deep subheading",
+      },
+      {
+        value: "blockquote",
+        icon: "editor:format-quote",
+        text: "Blockquote",
+      },
+      {
+        value: "code",
+        icon: "icons:code",
+        text: "Code",
+      },
+    ];
     this.realSelectedValue = "p";
     this.selection = false;
     this.formatIcon = "hax:format-textblock";
@@ -144,7 +191,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           @simple-popover-selection-changed="${this.textFormatChanged}"
           auto
-          position="top"
+          orientation="tb"
           id="textformat"
         >
           <style slot="style">
@@ -168,35 +215,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
             icon="${this.formatIcon}"
             label="Text format"
           ></hax-context-item>
-          <paper-item slot="options" value="p"
-            ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
-          >
-          <paper-item slot="options" value="ul"
-            ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
-            list</paper-item
-          >
-          <paper-item slot="options" value="ol"
-            ><iron-icon icon="editor:format-list-numbered"></iron-icon>Numbered
-            list</paper-item
-          >
-          <paper-item slot="options" value="h2"
-            ><iron-icon icon="hax:h2"></iron-icon>Title
-          </paper-item>
-          <paper-item slot="options" value="h3"
-            ><iron-icon icon="hax:h3"></iron-icon>Content heading
-          </paper-item>
-          <paper-item slot="options" value="h4"
-            ><iron-icon icon="hax:h4"></iron-icon>Subheading
-          </paper-item>
-          <paper-item slot="options" value="h5"
-            ><iron-icon icon="hax:h5"></iron-icon>Deep subheading
-          </paper-item>
-          <paper-item slot="options" value="blockquote"
-            ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote
-          </paper-item>
-          <paper-item slot="options" value="code"
-            ><iron-icon icon="icons:code"></iron-icon>Code
-          </paper-item>
+          ${this.formattingList.map(
+            (val) =>
+              html` <paper-item slot="options" value="${val.value}">
+                <iron-icon icon="${val.icon}"></iron-icon>
+                ${val.text}
+              </paper-item>`
+          )}
         </simple-popover-selection>
         <hax-context-item-textop
           mini
@@ -352,6 +377,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
       },
       realSelectedValue: {
         type: String,
+      },
+      formattingList: {
+        type: Array,
       },
       /**
        * calculated boolean off of if there is currently text

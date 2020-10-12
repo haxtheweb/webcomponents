@@ -7,6 +7,8 @@ class SimplePopoverManager extends LitElement {
     this.popover = null;
     this.opened = false;
     this.context = null;
+    this.orientation = "tb";
+    this.position = "bottom";
     this.__ignore = false;
   }
   static get styles() {
@@ -45,12 +47,27 @@ class SimplePopoverManager extends LitElement {
       opened: {
         type: Boolean,
       },
+      orientation: {
+        type: String,
+      },
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // ensure that changes get reflected in the direction it should point
+      // or state of open. This avoids minor timing issues when element
+      // being pointed to requests changes to direction / state
+      if (["opened", "position", "orientation"].includes(propName)) {
+        setTimeout(() => {
+          this.popover.updatePosition();
+        }, 10);
+      }
+    });
   }
   /**
    * set target and optionally change content and open state
    */
-  setPopover(context, el, opened = null, position = null) {
+  setPopover(context, el, opened = null, orientation = "tb") {
     // this has the potential to cause 1 popover to change content and parent
     // in the same action. This would cause a open state change in 1 element
     // which would trigger a global state change to match.
@@ -77,14 +94,28 @@ class SimplePopoverManager extends LitElement {
       if (opened != null) {
         this.opened = opened;
       }
-    }
-    // only reposition if told
-    if (position != null) {
-      this.position = position;
+      // see if we need to reposition
+      this.orientation = orientation;
+      let menu = this.popover.target.getBoundingClientRect();
+      // @todo maybe need to support left to right pointing w/ window.innerWidth
+      // top to bottom or left to right orientation automatic assignment
+      if (this.orientation == "tb") {
+        if (menu.y > window.innerHeight / 2) {
+          this.position = "top";
+        } else {
+          this.position = "bottom";
+        }
+      } else {
+        if (menu.x > window.innerWidth / 2) {
+          this.position = "left";
+        } else {
+          this.position = "right";
+        }
+      }
     }
     setTimeout(() => {
       this.popover.updatePosition();
-    }, 10);
+    }, 0);
   }
   firstUpdated() {
     this.popover = this.shadowRoot.querySelector("simple-popover");

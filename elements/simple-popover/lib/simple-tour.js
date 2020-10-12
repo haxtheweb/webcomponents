@@ -7,6 +7,7 @@ class SimpleTour extends LitElement {
   constructor() {
     super();
     this.stacks = {};
+    this.orientation = "lr";
     this.active = null;
     this.tourInfo = {};
     this.activeElementDelay = 500;
@@ -39,7 +40,6 @@ class SimpleTour extends LitElement {
     this.createTourStop(
       e.detail.name,
       e.detail.target,
-      e.detail.position,
       e.detail.title,
       e.detail.description
     );
@@ -47,12 +47,9 @@ class SimpleTour extends LitElement {
   /**
    * Create a tour stop, add to the stack, then return the stop object
    */
-  createTourStop(name, target, position, title, description) {
+  createTourStop(name, target, title, description) {
     let s = new TourStop();
     s.target = target;
-    if (position) {
-      s.position = position;
-    }
     s.title = title;
     s.description = description;
     this.addStops(name, [s]);
@@ -109,7 +106,8 @@ class SimpleTour extends LitElement {
     window.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this.stacks[this.active][this.stop].target,
-      false
+      false,
+      this.orientation
     );
     this.stop = -1;
     this.active = null;
@@ -197,7 +195,7 @@ class SimpleTour extends LitElement {
           this,
           this.stacks[this.active][this.stop].target,
           true,
-          this.stacks[this.active][this.stop].position
+          this.orientation
         );
         this.scrollHere(this.stacks[this.active][this.stop].target);
         let target = this.stacks[this.active][this.stop].target;
@@ -239,7 +237,6 @@ class SimpleTour extends LitElement {
 class TourStop {
   constructor() {
     this.target = null;
-    this.position = "bottom";
     this.title = "Title";
     this.description = "<p>Description</p>";
   }

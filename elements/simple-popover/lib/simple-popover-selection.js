@@ -7,7 +7,6 @@ class SimplePopoverSelection extends LitElement {
   constructor() {
     super();
     this.opened = false;
-    this.position = "top";
   }
 
   openedToggle(e) {
@@ -71,8 +70,7 @@ class SimplePopoverSelection extends LitElement {
     window.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this.querySelector('[slot="button"]'),
-      state,
-      this.position
+      state
     );
   }
   /**
@@ -111,9 +109,6 @@ class SimplePopoverSelection extends LitElement {
   }
   static get properties() {
     return {
-      position: {
-        type: String,
-      },
       opened: {
         type: Boolean,
         reflect: true,
