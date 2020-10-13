@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js";
 /**
  * `code-editor`
  * `Wrapper on top of a code editor`
@@ -94,10 +95,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.pathFromUrl(decodeURIComponent(import.meta.url)) + "../../";
     }
     this.libPath += "monaco-editor/min/vs";
-    import(
-      "@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js"
-    );
-    import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {
       this.addEventListener(
         "monaco-element-ready",
@@ -130,10 +127,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       >
       </monaco-element>
       <slot hidden></slot>
-      <div class="code-pen-container" ?hidden="${!this.showCodePen}">
-        <span>Check it out on code pen: </span
-        ><code-pen-button .data="${this.codePenData}"></code-pen-button>
-      </div>
+      ${this.showCodePen
+        ? html`<div class="code-pen-container">
+            <span>Check it out on code pen: </span
+            ><code-pen-button .data="${this.codePenData}"></code-pen-button>
+          </div>`
+        : ``}
     `;
   }
 
@@ -398,6 +397,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
             },
           })
         );
+        if (this[propName] && !window.customElements.get("code-pen-button")) {
+          import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
+        }
       }
       if (propName === "value") {
         // notify

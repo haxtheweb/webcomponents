@@ -1477,7 +1477,7 @@ class HaxBody extends UndoManagerBehaviors(SimpleColors) {
           node.setAttribute("contenteditable", true);
         }
       }
-    }, 10);
+    }, 0);
   }
   /**
    * Move grid plate around

@@ -2,23 +2,18 @@
   "name": "@lrnwebcomponents/person-testimonial",
   "wcfactory": {
     "className": "PersonTestimonial",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "person-testimonial",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/person-testimonial.css",
-      "scss": "src/person-testimonial.scss",
-      "html": "src/person-testimonial.html",
-      "js": "src/person-testimonial.js",
-      "properties": "src/person-testimonial-properties.json",
-      "hax": "src/person-testimonial-hax.json"
+      "js": "src/person-testimonial.js"
     },
     "sharedStyles": []
   },
   "version": "2.7.10",
-  "description": "Automated conversion of person-testimonial/",
+  "description": "Automated conversion of person-testimonial",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
@@ -41,12 +36,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "lit-element": "2.4.0",
     "@lrnwebcomponents/simple-colors": "^2.7.10",
-    "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-iconset-svg": "^3.0.0",
     "@polymer/iron-image": "^3.0.1",
-    "@polymer/paper-card": "^3.0.0",
-    "@polymer/polymer": "^3.3.1"
+    "@polymer/paper-card": "^3.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.7.7",

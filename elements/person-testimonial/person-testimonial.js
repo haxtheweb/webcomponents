@@ -1,24 +1,22 @@
-import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/iron-image/iron-image.js";
 /**
  * `person-testimonial`
  * @element person-testimonial
  * `Leaving a testimonial from a person to say your company rocks!`
  * @demo demo/index.html
  */
-class PersonTestimonial extends SimpleColorsPolymer {
+class PersonTestimonial extends SimpleColors {
   constructor() {
     super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import(
-      "@lrnwebcomponents/person-testimonial/lib/person-testimonial-icon.js"
-    );
+    this.elevation = 1;
   }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           --person-testimonial-font-family: sans-serif;
@@ -46,10 +44,10 @@ class PersonTestimonial extends SimpleColorsPolymer {
           background-color: var(--person-testimonial-color);
         }
 
-        iron-icon {
-          --iron-icon-height: 24px;
-          --iron-icon-width: 24px;
-          --iron-icon-fill-color: var(--person-testimonial-color);
+        svg {
+          fill: var(--person-testimonial-color);
+          height: 24px;
+          width: 24px;
         }
 
         .wrap {
@@ -93,7 +91,6 @@ class PersonTestimonial extends SimpleColorsPolymer {
         #quoteend {
           display: inline-flex;
         }
-
         @media screen and (max-width: 850px) {
           paper-card {
             display: flex;
@@ -120,32 +117,40 @@ class PersonTestimonial extends SimpleColorsPolymer {
             text-align: center;
           }
         }
-      </style>
-      <paper-card elevation="[[elevation]]">
+        @media screen and (max-width: 600px) {
+          iron-image {
+            width: 150px;
+            height: 150px;
+          }
+        }
+      `,
+    ];
+  }
+  render() {
+    return html`
+      <paper-card elevation="${this.elevation}">
         <div class="image">
           <iron-image
-            src="[[image]]"
+            src="${this.image}"
             sizing="cover"
-            preload=""
-            fade=""
-            aria-describedby$="[[describedBy]]"
+            preload
+            fade
+            aria-describedby="${this.describedBy}"
           ></iron-image>
         </div>
         <div class="arrow_right"></div>
         <div class="wrap">
           <div class="testimonial">
-            <iron-icon
-              id="quotestart"
-              icon="persontestimonial:format-quote"
-            ></iron-icon>
+            <svg id="quotestart">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
+            </svg>
             <slot></slot>
-            <iron-icon
-              id="quoteend"
-              icon="persontestimonial:format-quote"
-            ></iron-icon>
+            <svg id="quoteend">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
+            </svg>
           </div>
-          <div class="name">[[name]]</div>
-          <div class="position">[[position]]</div>
+          <div class="name">${this.name}</div>
+          <div class="position">${this.position}</div>
         </div>
       </paper-card>
     `;
@@ -162,8 +167,7 @@ class PersonTestimonial extends SimpleColorsPolymer {
        */
       elevation: {
         type: Number,
-        value: 1,
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
        * Aria-describedby data passed down to appropriate tag
@@ -217,43 +221,7 @@ class PersonTestimonial extends SimpleColorsPolymer {
         },
       },
       settings: {
-        quick: [
-          {
-            property: "image",
-            title: "Image",
-            description: "Adds image to this testimonial",
-            inputMethod: "textfield",
-            icon: "editor:insert-photo",
-          },
-          {
-            property: "name",
-            title: "Full Name",
-            description: "Credit the person making the testimonial",
-            inputMethod: "textfield",
-            icon: "account-circle",
-          },
-          {
-            property: "position",
-            title: "Position or Job Title",
-            description: "List the position and job title",
-            inputMethod: "textfield",
-            icon: "icons:work",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color use",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
-          },
-          {
-            property: "dark",
-            title: "Dark",
-            description: "Use dark theme",
-            inputMethod: "boolean",
-            icon: "invert-colors",
-          },
-        ],
+        quick: [],
         configure: [
           {
             property: "image",
@@ -277,13 +245,6 @@ class PersonTestimonial extends SimpleColorsPolymer {
             icon: "invert-colors",
           },
           {
-            slot: "",
-            title: "User's testimonial:",
-            description: "This is where you enter your testimonial.",
-            inputMethod: "code-editor",
-            required: true,
-          },
-          {
             property: "name",
             title: "Full Name",
             description: "Credit the person making the testimonial",
@@ -296,6 +257,13 @@ class PersonTestimonial extends SimpleColorsPolymer {
             description: "List the position and job title",
             inputMethod: "textfield",
             icon: "icons:work",
+          },
+          {
+            slot: "",
+            title: "User's testimonial:",
+            description: "This is where you enter your testimonial.",
+            inputMethod: "code-editor",
+            required: true,
           },
         ],
         advanced: [

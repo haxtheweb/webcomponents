@@ -683,12 +683,7 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               anything!
             </div>
             <div slot="content">
-              <simple-fields
-                id="settingsform"
-                .schematizer="${HaxSchematizer}"
-                .elementizer="${HaxElementizer}"
-              >
-              </simple-fields>
+              <simple-fields id="settingsform"></simple-fields>
             </div>
           </a11y-collapse>
           <a11y-collapse id="searchapps" accordion>
@@ -1005,6 +1000,12 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
       super.firstUpdated(changedProperties);
     }
     if (!this.__setup) {
+      this.shadowRoot.querySelector(
+        "#settingsform"
+      ).schematizer = HaxSchematizer;
+      this.shadowRoot.querySelector(
+        "#settingsform"
+      ).elementizer = HaxElementizer;
       setTimeout(() => {
         this.shadowRoot.querySelector(
           ".wrapper"

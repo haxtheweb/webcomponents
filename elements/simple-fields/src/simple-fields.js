@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
+import "./lib/simple-fields-field.js";
 /**
  * `simple-fields`
  * Uses JSON Schema to display a series of fields
@@ -133,19 +134,29 @@ class SimpleFields extends SimpleFieldsLite {
   static get tag() {
     return "simple-fields";
   }
+  // import all the dependencies
+  __importDependendies() {
+    import("./lib/simple-fields-tabs.js");
+    import("./lib/simple-fields-code.js");
+    import("./lib/simple-fields-upload.js");
+    import("@lrnwebcomponents/simple-picker/simple-picker.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+  }
   constructor() {
     super();
     this.activeTabs = {};
     this.addEventListener("active-tab-changed", this._handleActiveTab);
-    setTimeout(() => {
-      import("./lib/simple-fields-field.js");
-      import("./lib/simple-fields-tabs.js");
-      import("./lib/simple-fields-code.js");
-      import("./lib/simple-fields-upload.js");
-      import("@lrnwebcomponents/simple-picker/simple-picker.js");
-      import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
-      import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-    }, 0);
+    if ("requestIdleCallback" in window) {
+      // Use requestIdleCallback to schedule work.
+      requestIdleCallback(this.__importDependendies.bind(this), {
+        timeout: 1000,
+      });
+    } else {
+      setTimeout(() => {
+        this.__importDependendies();
+      }, 1000);
+    }
   }
 
   /**
