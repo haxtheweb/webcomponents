@@ -566,7 +566,11 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               event-name="toggle-tray-size"
               icon="${this.traySizeIcon}"
               label="${this.traySizeText}"
-            ></hax-tray-button>
+              data-simple-tour-stop
+            >
+              <div data-stop-title>Menu placement</div>
+              <div data-stop-content>Expand or collapse the menu visually.</div>
+            </hax-tray-button>
             <hax-tray-button
               mini
               voice-command="toggle alignment"
@@ -574,7 +578,13 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               event-name="toggle-element-align"
               icon="image:photo-size-select-small"
               label="${this.menuAlignName}"
-            ></hax-tray-button>
+              data-simple-tour-stop
+            >
+              <div data-stop-title>Menu alignment</div>
+              <div data-stop-content>
+                Change which side of the screen the menu is affixed to visually.
+              </div>
+            </hax-tray-button>
           </div>
           <div class="quick">
             <slot name="tray-buttons-pre"></slot>
@@ -609,7 +619,14 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               event-name="undo"
               voice-command="undo"
               class="hide-small"
-            ></hax-tray-button>
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div slot="tour" data-stop-content>
+                Undo the previous operation in the content, whether typing or
+                adding a widget.
+              </div>
+            </hax-tray-button>
             <hax-tray-button
               mini
               icon="icons:redo"
@@ -618,7 +635,13 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               event-name="redo"
               voice-command="redo"
               class="hide-small"
-            ></hax-tray-button>
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div slot="tour" data-stop-content>
+                Redo the last action that you hit Undo on.
+              </div>
+            </hax-tray-button>
             <hax-tray-button
               mini
               event-name="open-map"
@@ -646,7 +669,13 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               icon="settings"
               label="Advanced settings"
               voice-command="open preferences"
-            ></hax-tray-button>
+              data-simple-tour-stop
+              data-stop-title="label"
+            >
+              <div data-stop-content>
+                Some advanced options for developers and experimental purposes.
+              </div>
+            </hax-tray-button>
             <simple-popover for="prefbtn" auto hidden>
               <hax-preferences-dialog></hax-preferences-dialog>
             </simple-popover>
@@ -686,9 +715,14 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
               <simple-fields id="settingsform"></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse id="searchapps" accordion>
-            <div slot="heading">
+          <a11y-collapse id="searchapps" accordion data-simple-tour-stop>
+            <div slot="heading" data-stop-title>
               <iron-icon icon="icons:search"></iron-icon> Search
+            </div>
+            <div slot="tour" data-stop-content>
+              Search for media and content anywhere that your copy of HAX has
+              access to. Pick what to search, perform the search and then click
+              or drag the item into the contnet.
             </div>
             <div slot="content">
               <hax-app-browser id="appbrowser"></hax-app-browser>
@@ -698,9 +732,15 @@ class HaxTray extends HAXTourFinder(winEventsElement(LitElement)) {
             id="templateslayouts"
             accordion
             @expand="${this._refreshLists}"
+            data-simple-tour-stop
           >
-            <div slot="heading">
+            <div slot="heading" data-stop-title>
               <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
+            </div>
+            <div slot="tour" data-stop-content>
+              Predefined layouts and templated areas. use this to rapidly create
+              page content which you can then move around and break apart as
+              needed.
             </div>
             <div slot="content">
               <hax-blox-browser id="bloxbrowser"></hax-blox-browser>

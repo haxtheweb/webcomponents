@@ -7,6 +7,8 @@ import "@lrnwebcomponents/hax-body/lib/hax-context-item.js";
 import "@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
+import { HAXTourFinder } from "./HAXTourFinder.js";
+
 /**
  * `hax-text-context`
  * @element hax-text-context
@@ -14,7 +16,7 @@ import "@lrnwebcomponents/simple-popover/lib/simple-popover-selection.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends winEventsElement(LitElement) {
+class HaxTextContext extends HAXTourFinder(winEventsElement(LitElement)) {
   static get styles() {
     return [
       css`
@@ -214,7 +216,13 @@ class HaxTextContext extends winEventsElement(LitElement) {
             id="formatsize"
             icon="${this.formatIcon}"
             label="Text format"
-          ></hax-context-item>
+            data-simple-tour-stop
+            data-stop-title="label"
+          >
+            <div slot="tour" data-stop-content>
+              Change how the text is structured and visualized in the page.
+            </div>
+          </hax-context-item>
           ${this.formattingList.map(
             (val) =>
               html` <paper-item slot="options" value="${val.value}">

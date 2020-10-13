@@ -118,23 +118,28 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
           event-name="hax-plate-down"
           direction="left"
           ></hax-context-item>
-        <div slot="tour">
-        <div data-stop-content>
+        <div slot="tour" data-stop-content>
           Click the drag handle once to show a menu to just move
           up or down one item in the content OR click and drag
           to place the item exactly where you want it to go.
-          </div>
         </div>
       </hax-context-item-menu>
       <hax-context-item
-      mini
-      action
-      id="right"
-      class="paddle"
-      icon="hax:table-column-remove"
-      label="Add column"
-      event-name="hax-plate-create-right"
-    ></hax-context-item>
+        mini
+        action
+        id="right"
+        class="paddle"
+        icon="hax:table-column-remove"
+        label="Add column"
+        event-name="hax-plate-create-right"
+        data-simple-tour-stop
+        data-stop-title="label"
+      >
+      <div slot="tour" data-stop-content>
+      Add a column to split the current column into two pieces. This can be done up to
+      six pieces columns. For differnet layouts see Grid settings panel.
+      </div>
+    </hax-context-item>
     <hax-context-item
       mini
       action
@@ -143,21 +148,40 @@ class HaxPlateContext extends HAXTourFinder(winEventsElement(HTMLElement)) {
       label="Remove column"
       event-name="hax-plate-remove-right"
       id="rightremove"
-    ></hax-context-item>
+      data-simple-tour-stop
+      data-stop-title="label"
+    >
+    <div slot="tour" data-stop-content>
+      Remove a column from the split column layout. If at two columns and removing it will
+      remove the layout split and make it 100% width.
+    </div>
+    </hax-context-item>
   <hax-context-item
     mini
     action
     label="Duplicate"
     icon="icons:content-copy"
     event-name="hax-plate-duplicate"
-    ></hax-context-item>
+    data-simple-tour-stop
+    data-stop-title="label"
+    >
+    <div slot="tour" data-stop-content>
+      Duplicate the active piece of content and place it below the current item.
+    </div>
+    </hax-context-item>
   <hax-context-item
     mini
     action
     icon="delete"
     label="Remove"
     event-name="hax-plate-delete"
-  ></hax-context-item>
+    data-simple-tour-stop
+    data-stop-title="label"
+  >
+  <div slot="tour" data-stop-content>
+      Delete the current item. You can always use the undo arrow to bring this back.
+    </div>
+  </hax-context-item>
   </div>
   `;
   }
